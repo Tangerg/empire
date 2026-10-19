@@ -1,0 +1,52 @@
+{
+  "topicId": "C01-EQUIP-CEMETERY-COLOSSUS",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4928395005201855,
+  "nearOpaqueFractionAlphaGE250": 0.47789020906623525,
+  "nonzeroAlphaBBox": [
+    25,
+    81,
+    1240,
+    1234
+  ],
+  "visibleAlphaBBoxGE8": [
+    38,
+    135,
+    1218,
+    1124
+  ],
+  "visibleAlphaBBoxGE128": [
+    39,
+    136,
+    1217,
+    1123
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    39,
+    136,
+    37,
+    131
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "f28792331ab2bf77f1847cb3acadaf62be69b0495d4fa28c63f2f872d69a162e",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo.",
+    "Count verified: one stone post, one right-pointing hinge, exactly three separate candle niches each with one candle and one contained flame."
+  ],
+  "identityVerified": "Exactly five assemblies: one tall blank pointed-top stone post at left; one dark iron right-pointing hinge/bracket above right with vertical decorated strap and brass rivets; three separate small pointed-top stone candle niches below, each holding exactly one gold candle and flame. No colossus, graveyard scene or readable inscription.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

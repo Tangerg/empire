@@ -1,0 +1,208 @@
+{
+  "identity": "stone-area-side-e",
+  "mask": 13,
+  "generation_status": "prepared; not yet generated",
+  "technical_coordinate_reference": "/workspace/shared/empire-fortification-topology-plan/pilot-registration-guide/stone-area-side-e-coordinate-reference.png",
+  "coordinate_reference_sha256": "1fb1c18c24911a76a91bc17c333fc4dc20f1445c661ff511e56a1795bc0e5c61",
+  "reference_diagram_note": "Flat technical drawing only. Native fractional corner coordinates are authoritative in JSON; raster guide rounds displayed polygon edges by at most0.25 native pixel. No painted texture was generated in code.",
+  "registration_guide": "/workspace/shared/empire-fortification-topology-plan/pilot-registration-guide/pilot-registration-guide.json",
+  "approved_parent_review": "2026-10-19 18:26 UTC: first masks5/10 bounded imagegen approved; preserve raw and measured drift, no hidden painting or per-state fitting.",
+  "source_anchor_logical": [
+    48,
+    80
+  ],
+  "source_anchor_native": [
+    627,
+    1045
+  ],
+  "canvas_native": [
+    1254,
+    1254
+  ],
+  "canvas_logical": [
+    96,
+    96
+  ],
+  "canvas_hd": [
+    192,
+    192
+  ],
+  "board_pitch_logical": 32,
+  "board_pitch_native": 418,
+  "top_polygon_logical": [
+    [
+      28,
+      32
+    ],
+    [
+      60,
+      32
+    ],
+    [
+      60,
+      64
+    ],
+    [
+      28,
+      64
+    ]
+  ],
+  "ground_polygon_logical": [
+    [
+      32,
+      48
+    ],
+    [
+      64,
+      48
+    ],
+    [
+      64,
+      80
+    ],
+    [
+      32,
+      80
+    ]
+  ],
+  "ports_logical": {
+    "N": [
+      [
+        28,
+        32
+      ],
+      [
+        60,
+        32
+      ]
+    ],
+    "E": [
+      [
+        60,
+        32
+      ],
+      [
+        60,
+        64
+      ]
+    ],
+    "S": [
+      [
+        28,
+        64
+      ],
+      [
+        60,
+        64
+      ]
+    ],
+    "W": [
+      [
+        28,
+        32
+      ],
+      [
+        28,
+        64
+      ]
+    ]
+  },
+  "ports_native": {
+    "N": [
+      [
+        365.75,
+        418.0
+      ],
+      [
+        783.75,
+        418.0
+      ]
+    ],
+    "E": [
+      [
+        783.75,
+        418.0
+      ],
+      [
+        783.75,
+        836.0
+      ]
+    ],
+    "S": [
+      [
+        365.75,
+        836.0
+      ],
+      [
+        783.75,
+        836.0
+      ]
+    ],
+    "W": [
+      [
+        365.75,
+        418.0
+      ],
+      [
+        365.75,
+        836.0
+      ]
+    ]
+  },
+  "expected_opaque_regions_logical": [
+    [
+      [
+        28,
+        32
+      ],
+      [
+        60,
+        32
+      ],
+      [
+        60,
+        64
+      ],
+      [
+        28,
+        64
+      ]
+    ],
+    [
+      [
+        60,
+        32
+      ],
+      [
+        60,
+        64
+      ],
+      [
+        64,
+        80
+      ],
+      [
+        64,
+        48
+      ]
+    ]
+  ],
+  "joined_interfaces": [
+    "N",
+    "S",
+    "W"
+  ],
+  "exterior_boundaries": [
+    "E"
+  ],
+  "visible_vertical_faces": [
+    "E"
+  ],
+  "projection_overhang_logical": {
+    "west": 4,
+    "north": 16
+  },
+  "intended_use": "diagnostic pilot only, no production activation",
+  "no_rotation_or_mirroring": true,
+  "style_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-wall-straight/master.png"
+}

@@ -1,0 +1,174 @@
+{
+  "status": "technical-guide geometry checks only, not generated-pixel validation",
+  "full_cap_area_all_four": 1024,
+  "fixed_anchor_native": [
+    627,
+    1045
+  ],
+  "exact_native_pitch": 418,
+  "native_scale_fraction": "209/16",
+  "all_ports_32px": true,
+  "compatible_adjacent_pilot_pairs": [
+    {
+      "masks": [
+        10,
+        10
+      ],
+      "direction": "E",
+      "translation": [
+        32,
+        0
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        10,
+        13
+      ],
+      "direction": "E",
+      "translation": [
+        32,
+        0
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        7,
+        10
+      ],
+      "direction": "E",
+      "translation": [
+        32,
+        0
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        7,
+        13
+      ],
+      "direction": "E",
+      "translation": [
+        32,
+        0
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        5,
+        5
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        5,
+        7
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        5,
+        13
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        7,
+        5
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        7,
+        7
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        7,
+        13
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        13,
+        5
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        13,
+        7
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    },
+    {
+      "masks": [
+        13,
+        13
+      ],
+      "direction": "S",
+      "translation": [
+        0,
+        32
+      ],
+      "full_cap_port_exact": true
+    }
+  ],
+  "two_by_five_full_top_union_area": 10240,
+  "two_by_five_source_cap_area_sum": 10240,
+  "no_implicit_closed_end_claim": true,
+  "pixel_alpha_and_material_continuity": "not tested; no art sources exist yet",
+  "gameplay_clearance": "not tested; diagnostic-only guide"
+}

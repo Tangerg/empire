@@ -1,0 +1,68 @@
+{
+  "identity": "stone-area-straight-ns",
+  "mask": 5,
+  "status": "FAIL registration and joined-port coverage; native retained unmodified",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9a5cd9f2-ec14-4847-8c78-e321cc38dcaf.png",
+  "native_raw": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/raw.png",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGBA",
+  "sha256": "ef260a7685b39ab92645badc6acd5c34351bd26e28e5c9ea8317b25374ab5195",
+  "strong_alpha_bounds_128": [
+    470,
+    421,
+    835,
+    861
+  ],
+  "intended_cap_bounds_geometric": [
+    365.75,
+    418,
+    783.75,
+    836
+  ],
+  "expected_cap_integer_sample_region": [
+    366,
+    418,
+    784,
+    836
+  ],
+  "expected_cap_sample_coverage_alpha128": 0.5136558228978274,
+  "joined_cap_ports_sampled_1nativepixel_inside": {
+    "N": {
+      "strong_coverage_fraction": 0.0,
+      "min_alpha": 0,
+      "max_alpha": 3
+    },
+    "S": {
+      "strong_coverage_fraction": 0.0,
+      "min_alpha": 0,
+      "max_alpha": 0
+    }
+  },
+  "source_foot_fixed_contract": [
+    627,
+    1045
+  ],
+  "native_pixels_untouched": true,
+  "no_alpha_normalization": true,
+  "no_artistic_or_technical_repair_performed": true,
+  "visual_observations": [
+    "Cap shifted right and shrunk substantially; its south area is missing at the registered cut.",
+    "A broad darker south terminal-looking band appears inside the intended cap instead of a continuous north-south stone field.",
+    "Generated north and south cap cuts retain terminal contour shading, so connection semantics fail independently of alpha."
+  ],
+  "next_action": "Report to parent before further wall generation or any repair.",
+  "edge_alpha_max": {
+    "L": 1,
+    "T": 1,
+    "R": 0,
+    "B": 0
+  },
+  "diagnostic_exports": {
+    "logical": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/diagnostic-96.png",
+    "hd": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/diagnostic-192.png",
+    "method": "entire native1254 canvas uniformly resized to96/192; no bbox fitting, translation, clipping or alpha cleanup"
+  }
+}

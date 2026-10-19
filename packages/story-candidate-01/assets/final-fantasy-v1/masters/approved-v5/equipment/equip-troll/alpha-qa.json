@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-EQUIP-TROLL",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.45487804257635533,
+  "nearOpaqueFractionAlphaGE250": 0.5277949477143635,
+  "nonzeroAlphaBBox": [
+    46,
+    9,
+    1248,
+    1220
+  ],
+  "visibleAlphaBBoxGE8": [
+    49,
+    97,
+    1212,
+    1167
+  ],
+  "visibleAlphaBBoxGE128": [
+    50,
+    98,
+    1211,
+    1166
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    50,
+    98,
+    43,
+    88
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "388c4461cd0d3f3dfdc1a899f2188c752bb0fc7f4c338b5cfb2b6de99a23d030",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two objects: cube-headed gray stone hammer at left, brown wrapped handle and nested hollow diamond relief on front; upright tapered mossy stone slab at right with pale winding upward arrow glyph and forked lower end. No troll, living serpent, extra weapon or glow.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

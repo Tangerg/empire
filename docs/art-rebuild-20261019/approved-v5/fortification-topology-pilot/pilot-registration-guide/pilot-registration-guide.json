@@ -1,0 +1,462 @@
+{
+  "status": "technical guide awaiting parent review; no wall image generation started",
+  "purpose": "four-module diagnostic source pilot only; no partial production activation",
+  "source_contract": "/workspace/shared/empire-fortification-topology-plan/contract.md",
+  "source_contract_sha256": "ec918d3b3353120cb035e53a786170a533176cf5f6baa1e4dc03a96f6c68338b",
+  "logical_canvas": [
+    96,
+    96
+  ],
+  "hd_canvas": [
+    192,
+    192
+  ],
+  "native_canvas_proposal": [
+    1254,
+    1254
+  ],
+  "native_to_logical_scale": 0.07655502392344497,
+  "native_units_per_logical_pixel": 13.0625,
+  "board_pitch_logical": 32,
+  "board_pitch_native": 418.0,
+  "source_anchor_logical": [
+    48,
+    80
+  ],
+  "source_anchor_native": [
+    627.0,
+    1045.0
+  ],
+  "source_anchor_semantics": "fixed projected wall-cell contact, including in transparent space; never re-estimate from alpha or per-variant footing",
+  "board_contact": "((x+0.5)*32,(y+1)*32)",
+  "ground_footprint_logical": [
+    [
+      32,
+      48
+    ],
+    [
+      64,
+      48
+    ],
+    [
+      64,
+      80
+    ],
+    [
+      32,
+      80
+    ]
+  ],
+  "top_footprint_logical": [
+    [
+      28,
+      32
+    ],
+    [
+      60,
+      32
+    ],
+    [
+      60,
+      64
+    ],
+    [
+      28,
+      64
+    ]
+  ],
+  "cap_lift_logical": [
+    -4,
+    -16
+  ],
+  "projection_overhang_logical": {
+    "west": 4,
+    "north": 16
+  },
+  "ports_logical": {
+    "N": [
+      [
+        28,
+        32
+      ],
+      [
+        60,
+        32
+      ]
+    ],
+    "E": [
+      [
+        60,
+        32
+      ],
+      [
+        60,
+        64
+      ]
+    ],
+    "S": [
+      [
+        28,
+        64
+      ],
+      [
+        60,
+        64
+      ]
+    ],
+    "W": [
+      [
+        28,
+        32
+      ],
+      [
+        28,
+        64
+      ]
+    ]
+  },
+  "top_footprint_native": [
+    [
+      365.75,
+      418.0
+    ],
+    [
+      783.75,
+      418.0
+    ],
+    [
+      783.75,
+      836.0
+    ],
+    [
+      365.75,
+      836.0
+    ]
+  ],
+  "ground_footprint_native": [
+    [
+      418.0,
+      627.0
+    ],
+    [
+      836.0,
+      627.0
+    ],
+    [
+      836.0,
+      1045.0
+    ],
+    [
+      418.0,
+      1045.0
+    ]
+  ],
+  "ports_native": {
+    "N": [
+      [
+        365.75,
+        418.0
+      ],
+      [
+        783.75,
+        418.0
+      ]
+    ],
+    "E": [
+      [
+        783.75,
+        418.0
+      ],
+      [
+        783.75,
+        836.0
+      ]
+    ],
+    "S": [
+      [
+        365.75,
+        836.0
+      ],
+      [
+        783.75,
+        836.0
+      ]
+    ],
+    "W": [
+      [
+        365.75,
+        418.0
+      ],
+      [
+        365.75,
+        836.0
+      ]
+    ]
+  },
+  "projection_consequence": "With fixed top-to-ground vector(+4,+16), only S and E vertical faces are visible. Exposed N/W boundaries get closed cap-edge treatment, not an invented outward extrusion or changed camera. Connected sides never get terminal edge outlines or internal vertical faces.",
+  "visible_face_polygons_logical": {
+    "E": [
+      [
+        60,
+        32
+      ],
+      [
+        60,
+        64
+      ],
+      [
+        64,
+        80
+      ],
+      [
+        64,
+        48
+      ]
+    ],
+    "S": [
+      [
+        28,
+        64
+      ],
+      [
+        60,
+        64
+      ],
+      [
+        64,
+        80
+      ],
+      [
+        32,
+        80
+      ]
+    ]
+  },
+  "units_note": "Coordinates are geometric boundary coordinates, not inclusive pixel indices.1254 native mapping is fractional at some boundaries. The whole-canvas96/192 export is uniform, never alpha fitted. Parent review must approve fractional native registration or request a different common source size before generation.",
+  "style_references": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-wall-straight/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-wall-corner/master.png"
+  ],
+  "style_reference_warning": "Use only material, matte planes, upper-left light and line weight. Do not reuse oblique ground axes, thin fence footprint, end piers or old prop scale.",
+  "states": [
+    {
+      "mask": 5,
+      "identity": "stone-area-straight-ns",
+      "joined_interfaces": [
+        "N",
+        "S"
+      ],
+      "exterior_boundaries": [
+        "E",
+        "W"
+      ],
+      "visible_vertical_faces": [
+        "E"
+      ],
+      "closed_rear_cap_boundaries": [
+        "W"
+      ],
+      "expected_opaque_regions_logical": [
+        [
+          [
+            28,
+            32
+          ],
+          [
+            60,
+            32
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            28,
+            64
+          ]
+        ],
+        [
+          [
+            60,
+            32
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            64,
+            80
+          ],
+          [
+            64,
+            48
+          ]
+        ]
+      ],
+      "full_cap_required": true,
+      "no_internal_faces": true
+    },
+    {
+      "mask": 10,
+      "identity": "stone-area-straight-ew",
+      "joined_interfaces": [
+        "E",
+        "W"
+      ],
+      "exterior_boundaries": [
+        "N",
+        "S"
+      ],
+      "visible_vertical_faces": [
+        "S"
+      ],
+      "closed_rear_cap_boundaries": [
+        "N"
+      ],
+      "expected_opaque_regions_logical": [
+        [
+          [
+            28,
+            32
+          ],
+          [
+            60,
+            32
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            28,
+            64
+          ]
+        ],
+        [
+          [
+            28,
+            64
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            64,
+            80
+          ],
+          [
+            32,
+            80
+          ]
+        ]
+      ],
+      "full_cap_required": true,
+      "no_internal_faces": true
+    },
+    {
+      "mask": 7,
+      "identity": "stone-area-side-w",
+      "joined_interfaces": [
+        "N",
+        "E",
+        "S"
+      ],
+      "exterior_boundaries": [
+        "W"
+      ],
+      "visible_vertical_faces": [],
+      "closed_rear_cap_boundaries": [
+        "W"
+      ],
+      "expected_opaque_regions_logical": [
+        [
+          [
+            28,
+            32
+          ],
+          [
+            60,
+            32
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            28,
+            64
+          ]
+        ]
+      ],
+      "full_cap_required": true,
+      "no_internal_faces": true
+    },
+    {
+      "mask": 13,
+      "identity": "stone-area-side-e",
+      "joined_interfaces": [
+        "N",
+        "S",
+        "W"
+      ],
+      "exterior_boundaries": [
+        "E"
+      ],
+      "visible_vertical_faces": [
+        "E"
+      ],
+      "closed_rear_cap_boundaries": [],
+      "expected_opaque_regions_logical": [
+        [
+          [
+            28,
+            32
+          ],
+          [
+            60,
+            32
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            28,
+            64
+          ]
+        ],
+        [
+          [
+            60,
+            32
+          ],
+          [
+            60,
+            64
+          ],
+          [
+            64,
+            80
+          ],
+          [
+            64,
+            48
+          ]
+        ]
+      ],
+      "full_cap_required": true,
+      "no_internal_faces": true
+    }
+  ],
+  "validation_requirements": [
+    "Complete cap is opaque over all32x32 logical area for every state; masks7/13 are filled area states, never thin T branches.",
+    "All connected ports remain stone-filled right to the exact cut without terminal dark outline, bevel transparency or inset.",
+    "Neighboring port alpha and stone color continuity must be measured after exact32px translations at96/192, not inferred from bbox overlap.",
+    "No new cap rotation/mirroring, per-state fit, random offset/scale or ground fill.",
+    "No exterior paint/alpha normalization may repair missing cap or seam. Exact technical export/clipping can reject stray exterior content but cannot fill missing stone.",
+    "Pilot run ends remain declared open continuation cuts; these four identities do not supply closed ends.",
+    "Approve all16 before any general production kit; this four-source set remains diagnostic only."
+  ]
+}

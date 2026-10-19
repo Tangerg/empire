@@ -1,0 +1,169 @@
+{
+  "topicId": "C01-UNIT-RUNE-ARTIFICER",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-RUNE-ARTIFICER",
+    "topicId": "C01-UNIT-RUNE-ARTIFICER",
+    "label": "符文工匠",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-rune-artificer.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-rune-artificer.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-rune-artificer.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/mountain-forge-rune-artificer-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "763825e9705c7c14fbf33686dc5450644e7eb92525574557aff71cdf4909d7e1"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-rune-artificer.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "f2a2d2e35098ca773914aab0d28d4ca08b2c70a6ffdf81bb405212b64d6afca7"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-rune-artificer.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "5903a5552140c3f118870d8a0ca3e840d2b3c8bb6ecdd8a75b79b840a48cacef"
+    }
+  },
+  "referenceExtraction": "Original1672x941 complete four-character board; native unresampled idle cell[0,0,418,941], gear detail[28,375,387,641],face detail[95,245,306,445]. HD four64x96 cells preserved. No color/alpha modifications.",
+  "actualConsumers": [
+    "c01.rune-artificer"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 27,
+    "text": "'c01.rune-artificer': 'C01-UNIT-RUNE-ARTIFICER'"
+  },
+  "status": "Original board and exact four-slot contract inspected; idle pending",
+  "exclusivityCheck": "Coordinator exclusive assignment; target folder absent before this work",
+  "consumerStatus": "Campaign forge artificer, two verified c01-14 enemy actors; no builtin consumer found",
+  "levelEvidence": {
+    "path": "packages/story-candidate-01/src/levels.ts",
+    "lines": [
+      740,
+      743,
+      744,
+      746
+    ],
+    "levelOrder": 14,
+    "levelId": "c01-14",
+    "title": "山炉余烬",
+    "actors": [
+      {
+        "key": "rune-rebel-2",
+        "side": "enemy",
+        "unit": "c01.rune-artificer",
+        "deploymentIndex": 3,
+        "x": 15,
+        "y": 7
+      },
+      {
+        "key": "south-artificer",
+        "side": "enemy",
+        "unit": "c01.rune-artificer",
+        "deploymentIndex": 7,
+        "x": 15,
+        "y": 12
+      }
+    ]
+  },
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Young-adult tan human craftsperson, clean-shaven, large dark eyes, black thick side braid at screen-left and loose side curl. Dark low cylindrical work cap with brown band/rivets and single brass-rimmed flipped-up lavender-gray magnifying lens at screen-right. Slate armor with rectangular four-rivet left shoulder plate, gray collar, rust/brick-red apron, charcoal skirt, brown gloves/belt/boots. Short one-handed rectangular steel hammer in screen-left hand; open arched brass rune-tool with lower crossbar and three blue leaf-shaped pendants in screen-right hand. Silver chisel and orange-black angular inset belt plaque.",
+  "symbolReview": "Preserve industrial geometric tool/gear shapes, no invented sacred meaning or alphabet. Original rune-tool arch shows magenta backdrop through its hole, thus transparent aperture. Hat lens is filled lavender-gray glass. Tiny hammer face angular-loop carving simplified as angular diamond in generated idle; record as stylized simplification, not exact tracing. Orange-black belt plaque is distinct from rune-tool.",
+  "semanticEvidence": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:85",
+    "name": "符文工匠",
+    "weapons": [
+      {
+        "id": "c01.rune-hammer",
+        "definitionLine": 92,
+        "damageType": "blunt",
+        "tags": [
+          "melee",
+          "rune"
+        ]
+      },
+      {
+        "id": "c01.forge-burst",
+        "definitionLines": [
+          93,
+          103
+        ],
+        "damageType": "magic",
+        "maxRange": 2,
+        "cooldown": 2,
+        "effect": "armor_down for2turns",
+        "tags": [
+          "arcane",
+          "rune"
+        ]
+      }
+    ],
+    "tags": [
+      "infantry",
+      "engineer",
+      "arcane",
+      "forge"
+    ],
+    "armorClass": "heavy",
+    "sharedEquipmentTopic": "C01-EQUIP-RUNE-ARTIFICER",
+    "equipmentBindingLines": [
+      112,
+      113
+    ],
+    "separateEffectTopics": [
+      "C01-FX-04",
+      "C01-FX-07"
+    ],
+    "effectBindingLines": [
+      156,
+      157
+    ]
+  },
+  "ruleIllustrationReview": "Source hammer and rune-tool are compatible with blunt melee and ranged magic rules. The existing single attack slot serves both weapons; do not invent a fifth frame or change rules. Prioritize a clear raised hammer strike/windup while retaining right-hand rune-tool; independent hit/burst FX remain separate.",
+  "originalFrameReview": "Original attack is near-idle; original walk-a and walk-b both favor the rightward boot. Reconstruct a meaningful action and clearly opposite contacts while retaining both implements and hand assignments.",
+  "scaleContract": "Proposed44/914 from idle main hat crown55 to mean soles969; lens top44 excluded from body height but retained full canvas. Sourcefoot802,971. Remaining poses await coordinator idle approval."
+}

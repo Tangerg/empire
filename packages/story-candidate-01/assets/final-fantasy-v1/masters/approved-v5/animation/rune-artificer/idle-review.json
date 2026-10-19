@@ -1,0 +1,78 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-78aaeb7d-6849-4bc6-a239-7dfa97e50ee5.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "5c417575c12d1fad6e3c36a69ca71b7d4050f8bc02f58f946be3d35712b87209",
+  "bboxAlphaNonzero": [
+    31,
+    9,
+    1562,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    373,
+    44,
+    1228,
+    972
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1087742,
+  "alphaOnePixels": 5358,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "screen-left",
+      "roi": [
+        450,
+        840,
+        735,
+        985
+      ],
+      "soleY": 971,
+      "bottomFourRowsMeanX": 591.359413202934
+    },
+    {
+      "boot": "screen-right",
+      "roi": [
+        825,
+        840,
+        1145,
+        985
+      ],
+      "soleY": 967,
+      "bottomFourRowsMeanX": 1011.7096774193549
+    }
+  ],
+  "sourceFootMidpoint": [
+    801.5345453111445,
+    969.0
+  ],
+  "suggestedSourceFoot": [
+    802,
+    971
+  ],
+  "mainCapCrownY": 55,
+  "headLensTopY": 44,
+  "bodyHeight": 914.0,
+  "proposedBodyScale": 0.04814004376367615,
+  "bodyScaleNumerator": 44,
+  "bodyScaleDenominator": 914.0,
+  "masterRawHashMatches": true,
+  "semanticReview": "Original cap/lens, tan clean-shaven face, black side braid, slate armor, rust apron, left-hand hammer and right-hand open arched rune-tool retained. Compact hammer face inset simplified to angular diamond, original orange/black belt plaque retained as broad geometric inset. No external FX. Native master and white QA inspected.",
+  "openRuneApertureProbe": {
+    "rectangle": [
+      1134,
+      390,
+      1141,
+      397
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  }
+}

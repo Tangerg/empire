@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-ANCIENT-DRAGON",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5395449076511781,
+  "nearOpaqueFractionAlphaGE250": 0.44671214792091146,
+  "nonzeroAlphaBBox": [
+    0,
+    31,
+    1234,
+    1230
+  ],
+  "visibleAlphaBBoxGE8": [
+    81,
+    85,
+    1189,
+    1187
+  ],
+  "visibleAlphaBBoxGE128": [
+    82,
+    85,
+    1188,
+    1185
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    82,
+    85,
+    66,
+    69
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 3,
+  "sha256": "d2253a3e7d486ef980263e435188fdd7f2d5b6d2c0eadb6d5f010740651ee73a",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo.",
+    "Two complete fragments only, no living creature or invented egg detail. Ancient dragon retains dark slender scales and olive lichen; Ivra retains wider red scales and pale lichen."
+  ],
+  "identityVerified": "Exactly two objects: elongated leaf-shaped charcoal scale-armor fragment at left with overlapping large dark angular scales, sharp lower-left and upper-right tips; oval gray stone at right with olive-green lichen/moss patches. No whole dragon, wing, egg features or new emblem.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

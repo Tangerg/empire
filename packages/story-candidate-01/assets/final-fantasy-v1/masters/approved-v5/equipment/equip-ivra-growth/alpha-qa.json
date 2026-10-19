@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-IVRA-GROWTH",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5773333943819967,
+  "nearOpaqueFractionAlphaGE250": 0.40980441534458156,
+  "nonzeroAlphaBBox": [
+    0,
+    89,
+    1245,
+    1143
+  ],
+  "visibleAlphaBBoxGE8": [
+    75,
+    162,
+    1193,
+    1109
+  ],
+  "visibleAlphaBBoxGE128": [
+    75,
+    163,
+    1191,
+    1108
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    75,
+    163,
+    63,
+    146
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 4,
+  "sha256": "672378646f0bc91788728ad553c6a3885de32b809de9f78721258633bb0e7dc1",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo.",
+    "Two complete fragments only, no living creature or invented egg detail. Ancient dragon retains dark slender scales and olive lichen; Ivra retains wider red scales and pale lichen."
+  ],
+  "identityVerified": "Exactly two objects: broad red-brown overlapping scale-armor fragment at left with jagged upper edge and pointed bottom, plus one oval gray stone at right bearing pale gray-green/cream lichen rosettes. Distinct from ancient-dragon dark slender fragment and olive moss; no person, dragon or egg assumptions.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}
