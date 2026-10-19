@@ -8023,11 +8023,16 @@
     },
     {
       "topicId": "c03-equip-6a62b51e",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6a62b51e/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-057-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -8223,11 +8228,16 @@
     },
     {
       "topicId": "c03-equip-ff5e54ed",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-ff5e54ed/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-057-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -9909,72 +9919,76 @@
       "cellId": "meadow-1",
       "index": 0,
       "status": "exported",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
-      "sourceSha256": "67f2fc5c4cdc77a1102bfeb1c456bc1173b036306cdf18b348597a6549e0758c",
+      "sourceSha256": "85fb74f36bb9a433dda9d044f7b1978d4337b236b9bba245ab6c2dbaa35e45c5",
       "verification": {
         "exportCheck": "passed",
-        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
+        "crossAssetCoherence": "quiet-v2-family-under-review",
         "runtimeVisual": "pending-browser-socket-blocked"
-      }
+      },
+      "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/master.png"
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-2",
       "index": 1,
       "status": "exported",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
-      "sourceSha256": "3eb143144074dbb11cbac2ae678fae595f0bc78ec252fff9798e682b92c811a2",
+      "sourceSha256": "96d35875dbe2986bdbe1ba46c15e254d1e90186633e0e22eb47b6afd277ce099",
       "verification": {
         "exportCheck": "passed",
-        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
+        "crossAssetCoherence": "quiet-v2-family-under-review",
         "runtimeVisual": "pending-browser-socket-blocked"
-      }
+      },
+      "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/master.png"
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-3",
       "index": 2,
       "status": "exported",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
-      "sourceSha256": "cd4ac12b2039b9ca7a715b5c6829d428097613eed98143057b6310d829c1c3d1",
+      "sourceSha256": "12af7a675f13dd83e00d687107a7282ff1365309e41a4896fd6e7b92f6b6fff5",
       "verification": {
         "exportCheck": "passed",
-        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
+        "crossAssetCoherence": "quiet-v2-family-under-review",
         "runtimeVisual": "pending-browser-socket-blocked"
-      }
+      },
+      "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/master.png"
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-4",
       "index": 3,
       "status": "exported",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
-      "sourceSha256": "822e578760219373ab17c9220c26b68a0647e259cf1d546d439115e15f32cdc0",
+      "sourceSha256": "e7c4a721819dd2a94709e21f956974795d5d9ca6507d8eb4f03638265964db1a",
       "verification": {
         "exportCheck": "passed",
-        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
+        "crossAssetCoherence": "quiet-v2-family-under-review",
         "runtimeVisual": "pending-browser-socket-blocked"
-      }
+      },
+      "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/master.png"
     }
   ],
   "baselineSemanticMismatches": [
@@ -10175,6 +10189,6 @@
         "candidateEvidence": "docs/art-rebuild-20261019/surface-002-candidate-evidence.json"
       }
     ],
-    "currentPreview": "docs/art-rebuild-20261019/cohesion-first-meadow/cohesion-placement.json"
+    "currentPreview": "docs/art-rebuild-20261019/cohesion-meadow-v2-family/cohesion-placement.json"
   }
 }

@@ -1,0 +1,218 @@
+[
+  {
+    "atlasId": "surface-meadow",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow.png",
+    "size": [
+      128,
+      32
+    ],
+    "sources": [
+      {
+        "cellId": "meadow-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/revision-2/master.png",
+        "sourceSha256": "85fb74f36bb9a433dda9d044f7b1978d4337b236b9bba245ab6c2dbaa35e45c5",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "meadow-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/revision-2/master.png",
+        "sourceSha256": "96d35875dbe2986bdbe1ba46c15e254d1e90186633e0e22eb47b6afd277ce099",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "meadow-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/revision-2/master.png",
+        "sourceSha256": "12af7a675f13dd83e00d687107a7282ff1365309e41a4896fd6e7b92f6b6fff5",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "meadow-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/revision-2/master.png",
+        "sourceSha256": "e7c4a721819dd2a94709e21f956974795d5d9ca6507d8eb4f03638265964db1a",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "meadow-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 9,
+        "interiorPixelSha256": "9c814208467694b879e5a0888b9f385692dedc9d484ddc503e5b53114c1d0026",
+        "edgeHashes": {
+          "top": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "bottom": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "left": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e",
+          "right": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e"
+        },
+        "pixelSha256": "54f01bbec4261c9dfd2f009b00e7427fad1b9e5685200d035346247681357132"
+      },
+      {
+        "cellId": "meadow-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 123,
+        "maxChannelChange": 8,
+        "interiorPixelSha256": "fe854240c0c96498439cc606173ce80ef0dcee0635535df24a5e97d70e4a0aa4",
+        "edgeHashes": {
+          "top": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "bottom": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "left": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e",
+          "right": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e"
+        },
+        "pixelSha256": "c0f88a4dc325e253134d445b5149dc599dfedde5244e160823e9c273badd2a6f"
+      },
+      {
+        "cellId": "meadow-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 8,
+        "interiorPixelSha256": "c376fed9c6ffa49be7f57683dfef8269f73a72d4e6af5eb27753962a071abc64",
+        "edgeHashes": {
+          "top": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "bottom": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "left": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e",
+          "right": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e"
+        },
+        "pixelSha256": "3bb878710c9f4c6c59dea2d3bff05c4d34488092955592875228417281d9c195"
+      },
+      {
+        "cellId": "meadow-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 8,
+        "interiorPixelSha256": "39c4a3f4df9c33591d1904a1722cb9c5cd132a441c9c3b291bb610fcde5736e3",
+        "edgeHashes": {
+          "top": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "bottom": "891c420b5d85bfc1e592a9f649bd88d7e65cb131fbcf95f46f7dc41b869c4460",
+          "left": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e",
+          "right": "ba2897f34afe31cc4293276a1916dd3e14b916eddeca2aaf31bd5e0fa5da4d8e"
+        },
+        "pixelSha256": "30fb586261048f7c1b35eb16b3dad0b163f55089d3269aa672bc95753e2ca6ba"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "76f6a278b7c72a8b21a0b42f21bbc4e12c1c474a8d84bc48c5b6e5106e95981f",
+    "visualSeamReview": "required-separately"
+  },
+  {
+    "atlasId": "surface-meadow",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png",
+    "size": [
+      256,
+      64
+    ],
+    "sources": [
+      {
+        "cellId": "meadow-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/revision-2/master.png",
+        "sourceSha256": "85fb74f36bb9a433dda9d044f7b1978d4337b236b9bba245ab6c2dbaa35e45c5",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "meadow-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/revision-2/master.png",
+        "sourceSha256": "96d35875dbe2986bdbe1ba46c15e254d1e90186633e0e22eb47b6afd277ce099",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "meadow-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/revision-2/master.png",
+        "sourceSha256": "12af7a675f13dd83e00d687107a7282ff1365309e41a4896fd6e7b92f6b6fff5",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "meadow-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/revision-2/master.png",
+        "sourceSha256": "e7c4a721819dd2a94709e21f956974795d5d9ca6507d8eb4f03638265964db1a",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "meadow-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 8,
+        "interiorPixelSha256": "8dd36d030f1f30fafaba22f9c3746f011aa2234e5b688542e1334bfcc2da5f56",
+        "edgeHashes": {
+          "top": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "bottom": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "left": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a",
+          "right": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a"
+        },
+        "pixelSha256": "861b800c7665c0df5d15cd98d69fc7705af01ed92f0a27fbb10af947c3b166c6"
+      },
+      {
+        "cellId": "meadow-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 249,
+        "maxChannelChange": 6,
+        "interiorPixelSha256": "f92b357d6944e28d2a5bf1b963a059f782e339fbf375b17aa9b1b79179dced12",
+        "edgeHashes": {
+          "top": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "bottom": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "left": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a",
+          "right": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a"
+        },
+        "pixelSha256": "a27dc0bca0678bf0eeb36a33ea2adbb93926524a203b21fa5cd11923a4b6aa75"
+      },
+      {
+        "cellId": "meadow-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 9,
+        "interiorPixelSha256": "92c7aee5500b934dc425bb2be0af22936b21027c899df8fb23961a1a65bb2949",
+        "edgeHashes": {
+          "top": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "bottom": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "left": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a",
+          "right": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a"
+        },
+        "pixelSha256": "0535f26ae5ae63a0f65a8b3a391dfbb0a1301a05d8b9526365b662041ef62589"
+      },
+      {
+        "cellId": "meadow-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 248,
+        "maxChannelChange": 7,
+        "interiorPixelSha256": "af9a0da8041cbaa5d40b30732abdf96024bd8ccbdd3571ddb2e9ba4e15b7816d",
+        "edgeHashes": {
+          "top": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "bottom": "55ed6d055c042808cdbd309ad36139e812502ea1613a3ade27e49f6fa0ac1640",
+          "left": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a",
+          "right": "7b507c5b416dba5f41c5a8ef64753599d364ec6fd202ca18a09f6ad5dd563b3a"
+        },
+        "pixelSha256": "52fd6cafd7576b2faa36e2f4b51dad9c1340604a375bc02b2086486bfd0683e6"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "a9092f57398eff352e4679d861bac4faaba3f2ba7af39d97c37949f8d1bc522a",
+    "visualSeamReview": "required-separately"
+  }
+]
