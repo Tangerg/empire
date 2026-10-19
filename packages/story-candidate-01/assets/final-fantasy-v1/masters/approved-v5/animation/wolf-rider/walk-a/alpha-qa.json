@@ -1,0 +1,120 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7adfd013-ca19-45bf-9c9d-e39348014262.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "cff693f35ae1d0b9c8cc324db40b8e7b31604c6b3cefd2393affd6658c5abeeb",
+  "bboxAlphaNonzero": [
+    69,
+    32,
+    1555,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    237,
+    35,
+    1312,
+    936
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1058480,
+  "alphaOnePixels": 4883,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        400,
+        830,
+        590,
+        950
+      ],
+      "soleY": 933,
+      "bottomFourRowsMeanX": 494.31879194630875
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        580,
+        730,
+        730,
+        905
+      ],
+      "soleY": 886,
+      "bottomFourRowsMeanX": 664.2111111111111
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        1080,
+        800,
+        1230,
+        940
+      ],
+      "soleY": 914,
+      "bottomFourRowsMeanX": 1173.5617283950617
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        860,
+        820,
+        1030,
+        948
+      ],
+      "soleY": 935,
+      "bottomFourRowsMeanX": 955.7364864864865
+    }
+  ],
+  "sourceFootMidpoint": [
+    821.957029484742,
+    917.0
+  ],
+  "suggestedSourceFoot": [
+    822,
+    935
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-paw-gap",
+      "rectangle": [
+        617,
+        922,
+        624,
+        929
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "raised-fore-paw-gap",
+      "rectangle": [
+        1077,
+        932,
+        1084,
+        939
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "under-belly-gap",
+      "rectangle": [
+        792,
+        857,
+        799,
+        864
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Clear diagonal walk: near hind and far fore paws support; near fore and far hind are raised and bent. Four connected wolf legs and paws, one full bushy tail, seated rider, both hands on one spear and side shield are visually checked in native and white-background views. Cap, braid, shoulder plate, pale wrapped forward hand, harness and saddle blanket remain coherent. Rider body follows saddle without independent rescaling. No external FX or floor. Native perimeter alpha is zero.",
+  "visibleWidthAlphaGreaterThan127": 1075,
+  "projectedWidthLogicalAtSharedScale": 61.73384870237438
+}

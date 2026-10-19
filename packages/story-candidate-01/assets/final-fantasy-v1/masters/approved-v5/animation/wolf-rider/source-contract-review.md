@@ -40,3 +40,6 @@ Proceed with verified idle identity, unified shoulder plate, small shield, wrapp
 
 ## Native idle candidate, 20:06 UTC
 Native RGBA 1586x992. Visible alpha >127 bounds [276,56,1273,971]. Cap top y56 to mean near-side hind/fore wolf sole y961.5 gives 905.5 pixels; proposed 52/905.5. Four-paw contact anchor [828,970]. Full canvas fits candidate 128x80 at origin [14,6]. Visible width is 997 pixels / 57.254555 logical, slightly below the initial 60–72 target; this is disclosed for native proportion review rather than changed by independent mount/rider scaling. Original identity, equipment, four wolf paws and full bushy tail are clear. Three negative-space probes are alpha 0. Perimeter max alpha is 1, with zero pixels above 1; original alpha-1 specks retained. Raw/master/native, prompt and reference hashes verified. Coordinator idle review pending before remaining three poses.
+
+## Idle accepted, shared quartet contract locked
+Coordinator 2026-10-19 20:06 UTC accepted idle proportions and actual width 57.254555 without forcing the initial 60 lower bound. Locked shared scale 52/905.5, source foot [828,970], full 1586x992 canvas, candidate 128x80 frame and origin [14,6]. Continue opposite steps and clear two-hand thrust; no per-pose fit.
