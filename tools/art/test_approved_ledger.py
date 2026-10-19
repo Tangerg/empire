@@ -47,6 +47,10 @@ class ApprovedLedgerTests(unittest.TestCase):
             build(self.root)
 
     def test_one_animation_counts_one_topic(self):
+        for pose in ['idle', 'walk-a', 'attack', 'walk-b']:
+            raw = self.root / 'pack/masters/approved-v5/animation/mage' / pose
+            raw.mkdir(parents=True)
+            (raw / 'master.png').write_bytes(b'preserved source placeholder')
         self.topic['qualityTier'] = 'approved-chunky-v5-export-verified'
         self.write('pack/manifest.json', {'assets': [self.topic]})
         self.progress.update(topicStages={'C01-UNIT-MAGE': {'raw': '4 frames'}}, formalRuntimeBoundTopics=1)
@@ -54,6 +58,26 @@ class ApprovedLedgerTests(unittest.TestCase):
         result = build(self.root)
         self.assertEqual(result['summary']['formalBound'], 1)
         self.assertEqual(result['summary']['liveGameVerified'], 0)
+
+    def test_formal_binding_without_native_source_is_rejected(self):
+        self.topic['qualityTier'] = 'approved-chunky-v5-export-verified'
+        self.write('pack/manifest.json', {'assets': [self.topic]})
+        self.progress.update(topicStages={'C01-UNIT-MAGE': {'raw': 'claimed'}}, formalRuntimeBoundTopics=1)
+        self.write(DOC / 'approved-v5/progress.json', self.progress)
+        with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
+            build(self.root)
+
+    def test_skill_master_uses_its_native_skill_directory(self):
+        topic = {**self.topic, 'topicId': 'C01-SKILL-01', 'category': 'skill'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-01', 'label': 'Occupy'}])
+        raw = self.root / 'pack/masters/approved-v5/skill/skill-01'
+        raw.mkdir(parents=True)
+        (raw / 'master.png').write_bytes(b'preserved source placeholder')
+        result = build(self.root)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(result['summary']['formalBound'], 0)
 
     def test_full_scifi_topic_identity_locates_raw_without_counting_binding(self):
         topic = {**self.topic, 'topicId': 'c02-battle-prop-cargo-crates', 'category': 'battle-prop'}
