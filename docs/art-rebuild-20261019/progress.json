@@ -6758,10 +6758,14 @@
     },
     {
       "topicId": "c03-battle-prop-6a51fb07",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-6a51fb07/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "966739bc340a49cf5b7a5fa003a830243f3fcb4189bdf5b181c8e3546f2c7bcf"
     },
     {
       "topicId": "c03-battle-prop-6ecfadac",
@@ -6874,10 +6878,14 @@
     },
     {
       "topicId": "c03-battle-prop-caa5ebba",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-caa5ebba/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "9a16c68d1589752a26fcfc8b08ac2907207d6ed194d08c0f717205debb680f8f"
     },
     {
       "topicId": "c03-battle-prop-cb065f97",
@@ -8427,17 +8435,27 @@
       "atlasId": "forest-temperate",
       "cellId": "bramble-berries",
       "index": 8,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/bramble-berries/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "7bff74b8e1097a708f4ac5ebc4a574749ceb7b9ddf6111c796fbd2cb7afccf37",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "stump-low",
       "index": 9,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/stump-low/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "e479117bc6092125e908156198d0d47bb1eba7029d0487af418e2a4c1f746f87",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",

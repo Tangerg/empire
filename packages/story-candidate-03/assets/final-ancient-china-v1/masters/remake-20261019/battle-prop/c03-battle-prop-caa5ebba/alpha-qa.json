@@ -1,0 +1,40 @@
+{
+  "topicId": "c03-battle-prop-caa5ebba",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-caa5ebba.png",
+  "label": "Undyed plain flag",
+  "observed_original": "Recognizable board object, but runtime clipped and contaminated with neighboring fragments.",
+  "reconstructed_identity": true,
+  "uncertainty": "Reconstructed complete object from inspected full props board. Exact crop mapping unverified. Main emblem and palette supported by board, small ornaments may vary.",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 1083993,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      19,
+      1219,
+      1254
+    ],
+    "128": [
+      181,
+      28,
+      1174,
+      1228
+    ],
+    "240": [
+      182,
+      29,
+      1173,
+      1227
+    ]
+  },
+  "visual_review": "Complete warm-ivory torn flag and wooden pole. No emblem. Narrow top/bottom margins but intact."
+}

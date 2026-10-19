@@ -1,0 +1,40 @@
+{
+  "topicId": "c03-battle-prop-6a51fb07",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-6a51fb07.png",
+  "label": "Official army gateplate",
+  "observed_original": "Recognizable board object, but runtime clipped and contaminated with neighboring fragments.",
+  "reconstructed_identity": true,
+  "uncertainty": "Reconstructed complete object from inspected full props board. Exact crop mapping unverified. Main emblem and palette supported by board, small ornaments may vary.",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 1150985,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      35,
+      1238,
+      1222
+    ],
+    "128": [
+      305,
+      38,
+      954,
+      1212
+    ],
+    "240": [
+      305,
+      39,
+      953,
+      1211
+    ]
+  },
+  "visual_review": "Complete guardian-mask wooden plaque with red side tassels and pole; relief slightly more ornate than board, no text. Gold highlights and red saturation moderately stronger than target."
+}
