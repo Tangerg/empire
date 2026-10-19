@@ -4,18 +4,18 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 58,
+    "formalBound": 59,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 10,
       "equipment": 4,
-      "interactive-structure": 12
+      "interactive-structure": 13
     },
     "rawPreservedTopics": 59,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 52
+    "registeredEnvironmentCells": 56
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -2875,11 +2875,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-forge-workshop.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-forge-workshop.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved",
+        "export": "shared112/1200 scale, stable foundation and native three-background state review passed",
+        "runtimeBinding": "canonical and HD catalog bound; no direct shipped scene consumer found",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-GRAY-FLAG-POINT",
@@ -17883,7 +17888,11 @@
         "wheat-sheaves",
         "wheat-bundles",
         "grain-sacks-baskets",
-        "farm-handcart-tools"
+        "farm-handcart-tools",
+        "wheat-drying-rack",
+        "stone-well",
+        "livestock-pen-small",
+        "roadside-waystation"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -17891,12 +17900,17 @@
           "wheat-sheaves",
           "wheat-bundles",
           "grain-sacks-baskets",
-          "farm-handcart-tools"
+          "farm-handcart-tools",
+          "wheat-drying-rack",
+          "stone-well",
+          "livestock-pen-small",
+          "roadside-waystation"
         ],
-        "count": 4,
+        "count": 8,
         "export": "112/224 full-canvas registered source feet; unselected cells byte-identical to immutable baseline",
-        "runtimeBinding": "actual c01-02 settlement placements and native-size samples reviewed; existing0.3-scale placement retained",
-        "liveGame": "pending"
+        "runtimeBinding": "actual c01-01 rack/well and c01-02 settlement pen samples; waystation explicitly catalog-only; native112/224 with original placement scales",
+        "liveGame": "pending",
+        "sceneScaleReview": "Rack/well clear at actual authored scales; pen keeps existing small settlement decoration scale, pending explicit whole-scene proportion audit. Waystation catalog-only."
       }
     }
   ]

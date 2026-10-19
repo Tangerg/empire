@@ -25,8 +25,8 @@
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 11,
-  "authoredThreeStateBundles": 12,
-  "formalRuntimeBoundTopics": 58,
+  "authoredThreeStateBundles": 13,
+  "formalRuntimeBoundTopics": 59,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -375,6 +375,12 @@
       "export": "shared scale, measured foot registration and native three-background semantic review passed",
       "runtimeBinding": "canonical and HD manifests bound; native frame/pivot/byte equality regression passed",
       "liveGame": "pending"
+    },
+    "C01-STRUCT-FORGE-WORKSHOP": {
+      "raw": "3/3 preserved",
+      "export": "shared112/1200 scale, stable foundation and native three-background state review passed",
+      "runtimeBinding": "canonical and HD catalog bound; no direct shipped scene consumer found",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -488,12 +494,17 @@
         "wheat-sheaves",
         "wheat-bundles",
         "grain-sacks-baskets",
-        "farm-handcart-tools"
+        "farm-handcart-tools",
+        "wheat-drying-rack",
+        "stone-well",
+        "livestock-pen-small",
+        "roadside-waystation"
       ],
-      "count": 4,
+      "count": 8,
       "export": "112/224 full-canvas registered source feet; unselected cells byte-identical to immutable baseline",
-      "runtimeBinding": "actual c01-02 settlement placements and native-size samples reviewed; existing0.3-scale placement retained",
-      "liveGame": "pending"
+      "runtimeBinding": "actual c01-01 rack/well and c01-02 settlement pen samples; waystation explicitly catalog-only; native112/224 with original placement scales",
+      "liveGame": "pending",
+      "sceneScaleReview": "Rack/well clear at actual authored scales; pen keeps existing small settlement decoration scale, pending explicit whole-scene proportion audit. Waystation catalog-only."
     }
   },
   "totalCanonicalScope": 1212,
