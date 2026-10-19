@@ -103,7 +103,12 @@ python3 tools/art/render_environment_review.py docs/art-rebuild-20261019/approve
 
 Add `--second` to the TypeScript command to review grove, edge, hollow stump,
 and fallen log; pass the resulting `environment-runtime-second` directory to
-the Python command. The default set remains oak, dense forest, fern, and boulder.
+the Python command. Add `--third` and use `environment-runtime-third` for dark
+bramble, berry bramble, leaf pile, and boulder-ferns, with the prior oak as a size
+reference. Leaf pile is explicitly labeled a catalog-only draw at placement
+scale 1 because no shipped scene currently selects it; no production selector
+is changed by the diagnostic. The default set remains oak, dense forest, fern,
+and boulder.
 
 The SVG and PNG place the four assets beside the runtime swordsman, and the JSON
 records actual sampled transforms and alpha-128 silhouette measurements. Shared

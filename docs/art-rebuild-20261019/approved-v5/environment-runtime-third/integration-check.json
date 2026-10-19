@@ -1,0 +1,128 @@
+{
+  "baselineCommit": "6207ed3fc6f16d353520519cb294b170ead257cd",
+  "changedCellIndicesByAtlas": {
+    "forest-temperate": [
+      6,
+      8,
+      12,
+      14
+    ],
+    "forest-temperate@2x": [
+      6,
+      8,
+      12,
+      14
+    ],
+    "forest-existing": [],
+    "forest-existing@2x": [],
+    "scenery-regional": [],
+    "scenery-regional@2x": []
+  },
+  "changedCellIds": [
+    "bramble-dark",
+    "bramble-berries",
+    "leaf-pile",
+    "boulder-ferns"
+  ],
+  "metadataDelta": "Only four registered anchors and presentationScale values; all other manifest data identical",
+  "sources": {
+    "bramble-dark": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png",
+      "sha256": "fd21c304b4a7b5d904e2e88847f608530b10f2f2b7d82dfd59c5cbe948a0155b",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          625,
+          990
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "f4fd7c96595e626b2fd776ed43b399346008a762c5b2b3313d07fce0b6495a16",
+        "bramble-dark-master.png": "fd21c304b4a7b5d904e2e88847f608530b10f2f2b7d82dfd59c5cbe948a0155b",
+        "evidence.json": "9b54776d6671bc8c427d97c66a0f1bd9c182dd6c31555dd83f0d8263a3b6b67c",
+        "prompt.txt": "7bc25b429af41de67ea4c24aff85fdcf14d75527fc987c4d36e2a4a2d058cf41",
+        "semantic-notes.md": "4ecea650b05c6d07a9c0758ee5726fc4bfa1b1d36954c4509223a03cd6f947cb"
+      }
+    },
+    "bramble-berries": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/bramble-berries/bramble-berries-master.png",
+      "sha256": "630780cd39e64caeedef7e344ac66210fba7214a629061e57854eb5c01dbc3cb",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          625,
+          960
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "0b739ca27f7be60ef30bafacfcd57e571bd90933be4ffe15368fe807ae4ea4e6",
+        "bramble-berries-master.png": "630780cd39e64caeedef7e344ac66210fba7214a629061e57854eb5c01dbc3cb",
+        "evidence.json": "379c8cb3a3f5118be7dc9bcda031acab4ce23cac65d41a6c7dc3334803938afc",
+        "prompt.txt": "c2b1264db2d28895e7889a591fc8c408c335a8de4a758c03e333fcff6888ae4e",
+        "semantic-notes.md": "9e98a8894c319d254be6ea66ef0b9ad911761a8736b5872739a90190154a0bc8"
+      }
+    },
+    "leaf-pile": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/leaf-pile/leaf-pile-master.png",
+      "sha256": "6a0777769ec0c4891d36d366b5dd8f1704e471c1d714ff0d2114d24c392fc052",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          628,
+          680
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "c5d4288ed65ff9c17c44b075d62566f5fd6ec906d53a8fa64e54c16b801575f0",
+        "evidence.json": "00ea85544bf240a8e604c039dddd8cf853ff75f5e8a2257e89ac10f440c3eeb8",
+        "leaf-pile-master.png": "6a0777769ec0c4891d36d366b5dd8f1704e471c1d714ff0d2114d24c392fc052",
+        "prompt.txt": "fbda5fa0d927ef229167f619dc1304062735e3b90e951b48e8481188267d1f4e",
+        "semantic-notes.md": "94f73b37d38e1daebbf8bbddaff54d9d8bbf8c16a7cd0d570e9dc0aecd4538b0"
+      }
+    },
+    "boulder-ferns": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/boulder-ferns/boulder-ferns-master.png",
+      "sha256": "62a4c8100487af2787152637e1095e607722d2ca257550b699eda4ded8cd03e1",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          625,
+          1015
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "cf1c880123bfd0204c51b3245955f53773df308cee1269f2f27b8a2f237f603d",
+        "attempts/boulder-ferns-attempt-01.png": "1175b79c39a55eddd3c09e71d6e2489b8a6af9d2a7fe6c97ae6a617fbef6417b",
+        "attempts/prompt-attempt-01.txt": "f57958ded2754df402cbdf74c9da1a0cad998af0d3142fbd26762fcbd677e35e",
+        "boulder-ferns-master.png": "62a4c8100487af2787152637e1095e607722d2ca257550b699eda4ded8cd03e1",
+        "evidence.json": "a4c6b269ce52c868bc10493b8f4a2b031465e4335084023d0aedb916c4c10719",
+        "prompt-final.txt": "34828cf9e87936df03032508289cfabdceadc26f696d4dac8d8e7d6d4353f731",
+        "prompt.txt": "f57958ded2754df402cbdf74c9da1a0cad998af0d3142fbd26762fcbd677e35e",
+        "semantic-notes.md": "dfaa0bcb22ae7841c983a812f3d72de7e7aa7cd4cb000c38c57b802bd6382041"
+      }
+    }
+  },
+  "nativeDiagnostic": "native-contact.png",
+  "leafPileSceneStatus": "registered catalog asset; no current scene selector or authored placement; diagnostic uses catalog renderer at placement scale 1",
+  "browserPlayback": false
+}

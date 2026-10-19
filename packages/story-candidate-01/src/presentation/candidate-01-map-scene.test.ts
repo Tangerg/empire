@@ -30,16 +30,23 @@ describe('candidate-01 authored map scenery', () => {
     const context = sceneContext('c01-02', map);
     const field = boardPiecesMarkup(candidate01MapSceneryLayers(context).underUnits);
     const frame = candidate01SceneFrameMarkup(context).foreground;
+    const motherRootMap = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
+    motherRootMap.tiles.fill('c01.mother-root');
+    const motherRoot = boardPiecesMarkup(candidate01MapSceneryLayers(sceneContext('c01-02', motherRootMap)).underUnits);
     const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
     for (const [id, minPlacement, maxPlacement] of [
       ['oak-ancient', 0.74, 0.86], ['mixed-forest-dense', 0.74, 0.86],
       ['fern-bed', 0.58, 0.7], ['boulder-large', 1.05, 1.05],
       ['oak-grove-dense', 0.74, 0.86], ['mixed-forest-edge', 0.74, 0.86],
       ['stump-hollow', 0.58, 0.7], ['fallen-hollow-log', 0.9, 0.9],
+      ['bramble-dark', 0.58, 0.7], ['bramble-berries', 0.58, 0.7],
+      ['boulder-ferns', 0.8, 0.92],
     ] as const) {
       const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
       const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
-      const matches = props(id === 'boulder-large' || id === 'fallen-hollow-log' ? frame : field)
+      const source = id === 'boulder-ferns' ? motherRoot
+        : id === 'boulder-large' || id === 'fallen-hollow-log' ? frame : field;
+      const matches = props(source)
         .filter((markup) => markup.includes('forest-temperate@2x.png') && markup.includes(crop));
       expect(matches.length, id).toBeGreaterThan(0);
       for (const markup of matches) {
