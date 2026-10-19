@@ -7850,9 +7850,14 @@
       "atlasId": "forest-temperate",
       "cellId": "oak-ancient",
       "index": 0,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-ancient/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "ea0407864f18b8fbfd0f838ced7898683bc0e76b8a7c36a2365e5378303cb962",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master backed up; alpha hygiene and deterministic environment adapter not yet accepted"
+      }
     },
     {
       "atlasId": "forest-temperate",
