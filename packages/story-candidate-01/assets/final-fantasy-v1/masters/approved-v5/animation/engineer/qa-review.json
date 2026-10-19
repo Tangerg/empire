@@ -1,0 +1,46 @@
+{
+  "status": "Native quartet visual/geometry QA passes; coordinator export/binding pending",
+  "topic": "C01-UNIT-ENGINEER",
+  "actualConsumers": [
+    "c01.tasha",
+    "c01.engineer"
+  ],
+  "bodyScale": "44/915",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "sourcePaddingRequired": "None; all native canvases are1586x992",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All perimeter alpha<=1; zero silhouette alpha>1 on edges; no alpha cleanup",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "equipmentHandsPreserved": true,
+  "walkContactsOppose": true,
+  "attackSemanticsPass": "Clear forward hammer strike with the screen-right arm extended and short double-faced hammer angled forward. Screen-left glove retains rope coil; back shovel, belt wrench and hip pouch remain intact. Braced stance and focused expression; no external glow or effects.",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b. Engineer has c01.engineer-hammer blunt melee and c01.satchel-charge ranged siege area attack. The shared attack slot visibly strikes with the hammer; no fifth frame or bomb effect is invented.",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

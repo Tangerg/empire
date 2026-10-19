@@ -1,0 +1,334 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-b/master.png"
+    },
+    "scale": 0.048087431693989074,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      819,
+      964
+    ],
+    "sourceFeet": {
+      "idle": [
+        819,
+        964
+      ],
+      "walk-a": [
+        784,
+        964
+      ],
+      "attack": [
+        678,
+        961
+      ],
+      "walk-b": [
+        850,
+        958
+      ]
+    },
+    "registrationLimit": 7,
+    "registrationOffsets": {
+      "walk-a": [
+        1.6830601092896176,
+        0.0
+      ],
+      "attack": [
+        6.780327868852459,
+        0.14426229508196722
+      ],
+      "walk-b": [
+        -1.4907103825136614,
+        0.28852459016393445
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    47.38360655737705,
+    50.35628415300547
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5349,
+        "nearOpaquePixels": 1127,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          6,
+          69,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21496,
+        "nearOpaquePixels": 4613,
+        "edgeMax": 0,
+        "visibleBounds": [
+          57,
+          13,
+          139,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png",
+      "registrationOffset": [
+        1.6830601092896176,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "42d21f6593d4ec862f1a8e098ec9092557e7a2fcf962a493c9543e2aac63021f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5266,
+        "nearOpaquePixels": 1199,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          5,
+          72,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png",
+      "registrationOffset": [
+        1.6830601092896176,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "42d21f6593d4ec862f1a8e098ec9092557e7a2fcf962a493c9543e2aac63021f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21208,
+        "nearOpaquePixels": 4878,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          11,
+          143,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/attack/master.png",
+      "registrationOffset": [
+        6.780327868852459,
+        0.14426229508196722
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9e26deeeab73fa347ced302b9c979b599f30c5886138d18f53eed5cde205dc5a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5071,
+        "nearOpaquePixels": 1352,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          5,
+          89,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/attack/master.png",
+      "registrationOffset": [
+        6.780327868852459,
+        0.14426229508196722
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9e26deeeab73fa347ced302b9c979b599f30c5886138d18f53eed5cde205dc5a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20463,
+        "nearOpaquePixels": 5517,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          10,
+          179,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-b/master.png",
+      "registrationOffset": [
+        -1.4907103825136614,
+        0.28852459016393445
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c030cc5e5d3f684cfee5c134926c4955f768192be2e00be5349a27a0bb8429e5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5313,
+        "nearOpaquePixels": 1146,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          6,
+          70,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-b/master.png",
+      "registrationOffset": [
+        -1.4907103825136614,
+        0.28852459016393445
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c030cc5e5d3f684cfee5c134926c4955f768192be2e00be5349a27a0bb8429e5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21387,
+        "nearOpaquePixels": 4712,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          12,
+          140,
+          101
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 55,
+    "formalBound": 56,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 8,
+      "combat-unit": 9,
       "equipment": 4,
       "interactive-structure": 11
     },
@@ -18,8 +18,8 @@
     "registeredEnvironmentCells": 52
   },
   "sceneCohesion": {
-    "fullMap": "building-depth-review/integration-full@1x.png",
-    "status": "in progress; building scale and unit footing order fixed, static object inter-layer occlusion remains",
+    "fullMap": "standing-depth-current/full-scene-labeled.png",
+    "status": "shared footpoint sorting and building scale verified in complete BoardView scene; real foreground occlusion remains a tactical readability follow-up",
     "liveGame": "pending"
   },
   "authoredTeamVariants": {
@@ -1402,15 +1402,22 @@
       "label": "工程师",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-engineer.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer.png",
+      "stageEvidence": {
+        "raw": "4 native1586x992 poses, prompts, source/role evidence preserved",
+        "export": "shared44/915 scale, measured contacts with6.78033 attack translation; native black/white/olive motion review passed",
+        "runtimeBinding": "c01.tasha and c01.engineer canonical+HD resolver; hammer attack shared with siege action, no extra fifth pose",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-GHOST",
@@ -2816,6 +2823,8 @@
       "label": "圣辉野战医院",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/damaged/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/normal/master.png"
       ],
       "raw": "preserved",

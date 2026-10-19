@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
   },
-  "authoredFourPoseBundles": 9,
+  "authoredFourPoseBundles": 10,
   "authoredThreeStateBundles": 11,
-  "formalRuntimeBoundTopics": 55,
+  "formalRuntimeBoundTopics": 56,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -357,6 +357,12 @@
       "export": "shared full canvas scale/foot registration and black-white-olive native semantic review passed",
       "runtimeBinding": "authored c01-01 scene prop at4.9,10 scale.7; not refugee shelter; canonical/HD parser contract regression",
       "liveGame": "pending"
+    },
+    "C01-UNIT-ENGINEER": {
+      "raw": "4 native1586x992 poses, prompts, source/role evidence preserved",
+      "export": "shared44/915 scale, measured contacts with6.78033 attack translation; native black/white/olive motion review passed",
+      "runtimeBinding": "c01.tasha and c01.engineer canonical+HD resolver; hammer attack shared with siege action, no extra fifth pose",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -481,11 +487,12 @@
   "totalCanonicalScope": 1212,
   "priorTechnicalExportsRequireStyleReview": true,
   "tests": {
-    "focusedRuntime": 67,
+    "focusedRuntime": 72,
     "typecheck": "passed",
-    "artToolTests": 117,
+    "artToolTests": 126,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
-    "liveBrowser": "not validated"
+    "liveBrowser": "not validated",
+    "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {
@@ -516,8 +523,8 @@
     }
   },
   "integrationGate": {
-    "fullMap": "building-depth-review/integration-full@1x.png",
-    "status": "in progress; building scale and unit footing order fixed, static object inter-layer occlusion remains",
+    "fullMap": "standing-depth-current/full-scene-labeled.png",
+    "status": "shared footpoint sorting and building scale verified in complete BoardView scene; real foreground occlusion remains a tactical readability follow-up",
     "liveGame": "pending"
   }
 }

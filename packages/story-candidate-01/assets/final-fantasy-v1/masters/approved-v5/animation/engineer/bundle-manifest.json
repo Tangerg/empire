@@ -1,0 +1,140 @@
+{
+  "asset": "C01-UNIT-ENGINEER",
+  "actualConsumers": [
+    "c01.tasha",
+    "c01.engineer"
+  ],
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical to selected native tool outputs. No painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.048087431693989074,
+  "bodyReferenceSourcePixels": 915,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/registration-evidence.json",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b. Engineer has c01.engineer-hammer blunt melee and c01.satchel-charge ranged siege area attack. The shared attack slot visibly strikes with the hammer; no fifth frame or bomb effect is invented.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "913b5b4605208f274ca8a4ab6271681bdd4603325e987cae4f0483c4df1ccfb2",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        819,
+        964
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        423,
+        47,
+        1274,
+        965
+      ],
+      "sha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8285a040-3c45-43cb-8b9a-f1123563f3eb.png",
+      "review": "Accepted leather-capped engineer with large adult head, gloves and boots; ochre apron, teal vest, cream sleeves, rope coil, front wrench, hip pouch and back shovel. Hammer in screen-right glove, rope in screen-left glove."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "4b15bde0823d658d7c70fd4173453ce7afe238879e1289f2ef40dd47af02021b",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        784,
+        964
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        375,
+        28,
+        1289,
+        965
+      ],
+      "sha256": "42d21f6593d4ec862f1a8e098ec9092557e7a2fcf962a493c9543e2aac63021f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d526ba2f-bb24-4d5b-99c8-595d8170789a.png",
+      "review": "Front screen-right boot is toe-up with heel contact and dark sole visible; rear screen-left boot is flat. All tools remain attached and in the original physical hands. Broad matte face/apron planes retained."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "3757687381ff7d9ea4926131eb58b8567fc4ee08b17f4df291f3c6cf313f9433",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        678,
+        961
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        194,
+        20,
+        1550,
+        962
+      ],
+      "sha256": "9e26deeeab73fa347ced302b9c979b599f30c5886138d18f53eed5cde205dc5a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4c52b61b-c360-46f5-bc30-01819d817493.png",
+      "review": "Clear forward hammer strike with the screen-right arm extended and short double-faced hammer angled forward. Screen-left glove retains rope coil; back shovel, belt wrench and hip pouch remain intact. Braced stance and focused expression; no external glow or effects."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "6b9881cbdb4a22547707826b0905028c954734c77563011a4179511b9c7329af",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        850,
+        958
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        395,
+        37,
+        1323,
+        959
+      ],
+      "sha256": "c030cc5e5d3f684cfee5c134926c4955f768192be2e00be5349a27a0bb8429e5",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c5fa8a92-903f-48e7-ae8b-dae60f10f9a1.png",
+      "review": "Opposite contacts: front screen-right boot is flat and weight-bearing; rear screen-left heel is raised with toe down. Tool hands, back shovel, belt wrench and pouch retained."
+    }
+  }
+}
