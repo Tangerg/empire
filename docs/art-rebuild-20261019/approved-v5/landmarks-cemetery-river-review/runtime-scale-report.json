@@ -1,0 +1,137 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "cemetery-chapel-compound",
+      "anchor": [
+        80,
+        145.57575757575756
+      ],
+      "footprint": [
+        4,
+        4
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-44 -80.06666666666666) scale(0.55)\"><svg width=\"160\" height=\"160\" viewBox=\"0 0 160 160\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/landmarks-large@2x.png\" x=\"0\" y=\"-480\" width=\"640\" height=\"640\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        8.0,
+        14.5,
+        153.5,
+        146.5
+      ],
+      "nativeSampleVisibleHeight": 72.60000000000001,
+      "nativeVisibleHeightRange": [
+        66.0,
+        79.2
+      ],
+      "nativeSampleOverhangBelowContact": 0.50833333333334
+    },
+    {
+      "id": "river-gate-fort",
+      "anchor": [
+        80,
+        147.87878787878788
+      ],
+      "footprint": [
+        4,
+        4
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-44 -81.33333333333334) scale(0.55)\"><svg width=\"160\" height=\"160\" viewBox=\"0 0 160 160\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/landmarks-large@2x.png\" x=\"-160\" y=\"-480\" width=\"640\" height=\"640\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        9.0,
+        9.5,
+        153.0,
+        148.5
+      ],
+      "nativeSampleVisibleHeight": 76.45,
+      "nativeVisibleHeightRange": [
+        69.5,
+        83.39999999999999
+      ],
+      "nativeSampleOverhangBelowContact": 0.34166666666666856
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape",
+  "reviewSourceHashes": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "f27883a831800c9a9b3bd539887bb61bf789384969231195b74273b20a98a00b",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/landmarks-large@2x.png": "da4977a57123ececde162ebe55b8af9e144a9ca6055754815702c891f8ea437b",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "tools/art/environment-overrides.json": "8e8a3c35d13a4134d5802d92b8ab49f04ee8cd94528517763da7a5bc778a5ab7"
+  },
+  "sourceStableAcrossRender": true,
+  "renderedPngSha256": "a3a83c27f12c26d7a00bdfc7848f4b48d27ce172156c254c23b45ed2ca11ea30"
+}

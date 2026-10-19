@@ -1,5 +1,6 @@
 """Rasterize actual renderer markup and measure its authored alpha silhouette."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -18,12 +19,18 @@ def render(directory):
     svg = ET.parse(svg_path).getroot()
     defs = ET.SubElement(svg, f'{{{NS}}}defs')
     flatten_viewports(svg, defs)
+    source_paths = set()
     for image in svg.iter(f'{{{NS}}}image'):
         href = image.get('href')
         path = Path(unquote(urlparse(href).path)) if href.startswith('file:') else (directory / href).resolve()
         if not path.is_file():
             raise ValueError(f'missing renderer image: {path}')
+        source_paths.add(path.resolve())
         image.set('href', os.path.relpath(path, directory))
+    source_paths.add(ROOT / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json')
+    source_paths.add(ROOT / 'tools/art/environment-overrides.json')
+    before = {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(source_paths)}
     ET.register_namespace('', NS)
     ET.ElementTree(svg).write(svg_path, encoding='unicode')
     with tempfile.TemporaryDirectory() as profile:
@@ -52,6 +59,13 @@ def render(directory):
             asset['nativeVisibleHeightRange'] = [visible_height * scale for scale in asset['rendererScaleRange']]
             asset['nativeSampleOverhangBelowContact'] = (logical_bounds[3] - asset['anchor'][1]) * asset['sampleScale']
     report['offlineViewportNormalization'] = 'nested SVG viewports expressed as equivalent clip paths for Inkscape'
+    after = {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+             for path in sorted(source_paths)}
+    if before != after:
+        raise ValueError('environment sources changed during review rendering; rerender after export finishes')
+    report['reviewSourceHashes'] = after
+    report['sourceStableAcrossRender'] = True
+    report['renderedPngSha256'] = hashlib.sha256((directory / 'native-contact.png').read_bytes()).hexdigest()
     report_path.write_text(json.dumps(report, indent=2) + '\n')
     return report
 

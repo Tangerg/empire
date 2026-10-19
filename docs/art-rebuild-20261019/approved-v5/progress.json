@@ -1128,12 +1128,14 @@
         "border-chapel",
         "watch-keep",
         "market-gate-compound",
-        "ruined-gatehouse"
+        "ruined-gatehouse",
+        "cemetery-chapel-compound",
+        "river-gate-fort"
       ],
-      "count": 12,
-      "export": "160/320 full-canvas registration; original metadata/order and untouched four baseline cells preserved",
+      "count": 14,
+      "export": "160/320 full-canvas registered; original metadata/order and remaining two baseline cells preserved",
       "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-      "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation.",
+      "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation. Cemetery/river-gate post-export native0.55 probe passed with stable source hashes. River gate keeps complete towers/gate/hoist/pier and local functional water; seven visible decorative piles versus original five is documented, not an exact-count recovery.",
       "liveGame": "pending"
     }
   },

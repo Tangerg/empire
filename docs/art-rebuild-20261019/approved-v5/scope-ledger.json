@@ -12,15 +12,15 @@
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 143,
+    "rawPreservedTopics": 145,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 135
+    "registeredEnvironmentCells": 137
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 135,
+    "registeredIndividualSourceCells": 137,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -9754,8 +9754,10 @@
       "category": "battle-prop",
       "label": "床铺生活组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-bunks/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9845,8 +9847,10 @@
       "category": "battle-prop",
       "label": "金属杯炊具生活组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-cups-cookware/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -18659,7 +18663,9 @@
         "border-chapel",
         "watch-keep",
         "market-gate-compound",
-        "ruined-gatehouse"
+        "ruined-gatehouse",
+        "cemetery-chapel-compound",
+        "river-gate-fort"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18675,12 +18681,14 @@
           "border-chapel",
           "watch-keep",
           "market-gate-compound",
-          "ruined-gatehouse"
+          "ruined-gatehouse",
+          "cemetery-chapel-compound",
+          "river-gate-fort"
         ],
-        "count": 12,
-        "export": "160/320 full-canvas registration; original metadata/order and untouched four baseline cells preserved",
+        "count": 14,
+        "export": "160/320 full-canvas registered; original metadata/order and remaining two baseline cells preserved",
         "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-        "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation.",
+        "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation. Cemetery/river-gate post-export native0.55 probe passed with stable source hashes. River gate keeps complete towers/gate/hoist/pier and local functional water; seven visible decorative piles versus original five is documented, not an exact-count recovery.",
         "liveGame": "pending"
       }
     },
