@@ -2002,10 +2002,14 @@
     },
     {
       "topicId": "C01-EQUIP-JAVELIN-HUNTER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-javelin-hunter/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "8181685720ea0c0330c077489afa5dbc598174acaece44699ccdb0c097783c9e"
     },
     {
       "topicId": "C01-EQUIP-KNIGHT",
@@ -2105,10 +2109,14 @@
     },
     {
       "topicId": "C01-EQUIP-SILVER-LONGBOW",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-silver-longbow/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "e2b376a663201acc2419adc4938a24c111d7f70affbe40a45ae3e190c81cd2a5"
     },
     {
       "topicId": "C01-EQUIP-SKELETON-GUARD",
