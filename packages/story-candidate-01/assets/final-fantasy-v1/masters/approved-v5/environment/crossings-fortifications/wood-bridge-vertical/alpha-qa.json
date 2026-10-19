@@ -1,0 +1,110 @@
+{
+  "asset": "wood-bridge-vertical",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-96363bad-21db-4182-b3de-52e480093d2f.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1134576,
+  "opaque_pixels": 644,
+  "partial_alpha_pixels": 437296,
+  "near_opaque_alpha_250_255_pixels": 422631,
+  "nonzero_alpha_bbox": [
+    0,
+    55,
+    1240,
+    1230
+  ],
+  "strong_alpha_bbox": [
+    355,
+    111,
+    900,
+    1097
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      55,
+      1240,
+      1230
+    ],
+    "16": [
+      354,
+      110,
+      901,
+      1098
+    ],
+    "128": [
+      355,
+      111,
+      900,
+      1097
+    ],
+    "250": [
+      356,
+      112,
+      899,
+      1096
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    55,
+    14,
+    24
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    355,
+    111,
+    354,
+    157
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 17
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "5aaa5c628d4df234f314c9d04c2f39d1b09290233a8f4db859ebaaa5bcd5a12d",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true,
+  "authored_deck_center_alpha_sample": 253,
+  "north_south_deck_landing_span_px": 853
+}

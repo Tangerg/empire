@@ -1,0 +1,87 @@
+{
+  "identity": "wood-bridge-vertical",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/wood-bridge-vertical-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    620
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "crossings-fortifications",
+  "cell_index": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-96363bad-21db-4182-b3de-52e480093d2f.png",
+  "sha256": "5aaa5c628d4df234f314c9d04c2f39d1b09290233a8f4db859ebaaa5bcd5a12d",
+  "original_manifest_cell": {
+    "id": "wood-bridge-vertical",
+    "footprint": [
+      2,
+      3
+    ],
+    "anchor": [
+      48,
+      91
+    ],
+    "obstructionHeight": 0
+  },
+  "runtime_contract": {
+    "columns": 4,
+    "rows": 4,
+    "logical_cell": [
+      96,
+      96
+    ],
+    "hd_cell": [
+      192,
+      192
+    ],
+    "catalog_anchor": [
+      48,
+      91
+    ],
+    "hd_catalog_anchor": [
+      96,
+      182
+    ],
+    "actual_lying_runtime_pivot": [
+      48,
+      48
+    ],
+    "category": "structure-kit",
+    "tileMode": "modules"
+  },
+  "source_foot_role": "deck-center traversal contact, not standing bottom foot",
+  "deck_landmarks": {
+    "north_landing_center": [
+      627,
+      194
+    ],
+    "south_landing_center": [
+      627,
+      1047
+    ],
+    "north_deck_left_right_x": [
+      510,
+      745
+    ],
+    "south_deck_left_right_x": [
+      491,
+      765
+    ],
+    "near_left_support_base_contact": [
+      421,
+      1091
+    ],
+    "near_right_support_base_contact": [
+      832,
+      1091
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/wood-bridge-vertical-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/vertical-bridge-source-contract.json"
+}

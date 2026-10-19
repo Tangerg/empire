@@ -1,0 +1,105 @@
+{
+  "asset": "stone-bridge-vertical",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte bridge, broad structural faces and quiet grouped timber/stone planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    594
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.473684
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    331,
+    117,
+    327,
+    130
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/stone-bridge-vertical-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "crossings-fortifications",
+  "cell_index": 3,
+  "semantic_counts": {
+    "bridge_deck": 1,
+    "low_side_parapets": 2,
+    "large_corner_piers": 4
+  },
+  "source_foot_role": "deck-center traversal contact; NOT a standing object foot",
+  "source_foot_semantics": "visual midpoint of the traverseable deck including its north/south landing lips, x627,y594; independent of the near support-bottom silhouette",
+  "source_local_landmark_estimates_px": {
+    "north_landing_center": [
+      627,
+      202
+    ],
+    "south_landing_center": [
+      627,
+      986
+    ],
+    "north_deck_left_right_x": [
+      527,
+      727
+    ],
+    "south_deck_left_right_x": [
+      506,
+      752
+    ],
+    "near_left_support_base_contact": [
+      419,
+      1118
+    ],
+    "near_right_support_base_contact": [
+      836,
+      1118
+    ],
+    "near_under_deck_opening_center": [
+      627,
+      1079
+    ]
+  },
+  "travel_axis": "north-south, image top-bottom",
+  "footprint": [
+    2,
+    3
+  ],
+  "obstructionHeight": 1,
+  "logical_cell": [
+    96,
+    96
+  ],
+  "hd_cell": [
+    192,
+    192
+  ],
+  "catalog_anchor": [
+    48,
+    91
+  ],
+  "actual_runtime_lying_pivot": [
+    48,
+    48
+  ],
+  "render_role": "lying traversable bridge deck in scenery layer; current run midpoint placement",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/stone-bridge-vertical-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/vertical-bridge-source-contract.json",
+  "source_edit_count": 0,
+  "horizontal_crossing_unchanged": true,
+  "source_foot_and_landing_registration_pending_parent": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

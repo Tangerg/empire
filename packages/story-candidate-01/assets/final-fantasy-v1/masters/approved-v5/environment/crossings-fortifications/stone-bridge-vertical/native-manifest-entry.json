@@ -1,0 +1,91 @@
+{
+  "identity": "stone-bridge-vertical",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/stone-bridge-vertical-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    594
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "crossings-fortifications",
+  "cell_index": 3,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c836a92f-1de8-4485-b34d-87c674189b58.png",
+  "sha256": "49d5a96e9a051aecb6196d8cb5f9312beb60e31cf6eafcb0f2bc483f543c0e03",
+  "original_manifest_cell": {
+    "id": "stone-bridge-vertical",
+    "footprint": [
+      2,
+      3
+    ],
+    "anchor": [
+      48,
+      91
+    ],
+    "obstructionHeight": 1
+  },
+  "runtime_contract": {
+    "columns": 4,
+    "rows": 4,
+    "logical_cell": [
+      96,
+      96
+    ],
+    "hd_cell": [
+      192,
+      192
+    ],
+    "catalog_anchor": [
+      48,
+      91
+    ],
+    "hd_catalog_anchor": [
+      96,
+      182
+    ],
+    "actual_lying_runtime_pivot": [
+      48,
+      48
+    ],
+    "category": "structure-kit",
+    "tileMode": "modules"
+  },
+  "source_foot_role": "deck-center traversal contact, not standing bottom foot",
+  "deck_landmarks": {
+    "north_landing_center": [
+      627,
+      202
+    ],
+    "south_landing_center": [
+      627,
+      986
+    ],
+    "north_deck_left_right_x": [
+      527,
+      727
+    ],
+    "south_deck_left_right_x": [
+      506,
+      752
+    ],
+    "near_left_support_base_contact": [
+      419,
+      1118
+    ],
+    "near_right_support_base_contact": [
+      836,
+      1118
+    ],
+    "near_under_deck_opening_center": [
+      627,
+      1079
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/stone-bridge-vertical-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/crossings-fortifications/vertical-bridge-source-contract.json"
+}
