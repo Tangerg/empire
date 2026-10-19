@@ -1,0 +1,81 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bd961d67-5ee7-42fa-9471-9175c42870ed.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "d30bf536c2e8bd5168e9e650cb95ad0b2646f4f361f3918745193536110280c1",
+  "bboxAlphaNonzero": [
+    27,
+    36,
+    1558,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    371,
+    40,
+    1249,
+    956
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1099337,
+  "alphaOnePixels": 4946,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        500,
+        870,
+        720,
+        980
+      ],
+      "soleY": 954,
+      "bottomBandMeanX": 633.12109375,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        900,
+        870,
+        1120,
+        980
+      ],
+      "soleY": 955,
+      "bottomBandMeanX": 943.578947368421,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    788.3500205592105,
+    954.5
+  ],
+  "suggestedSourceFoot": [
+    788,
+    955
+  ],
+  "lockedBodyScale": 0.04774823657080846,
+  "masterRawHashMatches": true,
+  "semanticReview": "Front screen-right boot toe-up with visible sole/heel contact; rear screen-left boot flat and weight-bearing. Robe hem moves to reveal both. Original right staff hand, left free hand and basket/bottle retained. Spiral remains genuinely open/transparent; lower shaft naturally occluded behind advancing boot, not canvas-clipped.",
+  "staffSpiralApertureAlphaProbe": {
+    "center": [
+      1152,
+      222
+    ],
+    "region": [
+      1149,
+      219,
+      1156,
+      226
+    ],
+    "minimumAlpha": 0,
+    "maximumAlpha": 2,
+    "alphaZeroPixels": 45,
+    "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+  }
+}

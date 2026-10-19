@@ -1,0 +1,65 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-DRUID",
+  "actualConsumers": [
+    "c01.druid"
+  ],
+  "bodyScale": "44/921.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Idle/walk-a/walk-b native1586x992; attack native1585x992. Common1586x992 requires one transparent right column for attack only in export preparation. All native pixels and full source canvases remain unchanged.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges; native alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "rightStaffHandAndLeftFreeHandPreserved": true,
+  "staffApertureRealTransparencyVerifiedEveryPose": true,
+  "basketAndBottleRetainedEveryPose": true,
+  "twoArmsAndTwoHandsOnly": true,
+  "equipmentCompleteEveryPose": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Right arm extends original wooden staff forward/upward in a clear broad braced casting pose. Left original empty hand raises an open five-digit palm before the chest, connected to left sleeve; exactly two arms/hands and one staff. Basket/bottle remain attached. Original wood spiral stays genuinely open, rope/leaves retained, no embedded or external spell FX. Lower shaft naturally passes behind right robe/boot; no canvas clipping. Existing single action slot also serves heal.",
+  "semanticContract": "C01-UNIT-DRUID binds only c01.druid, the Silverwood druid, with three verified c01-15 actors. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and second-row source identity. Sole weapon c01.oath-bolt is range2 magic, compatible with a staff-forward cast. Shared equipment C01-EQUIP-BATTLE-MAGE and FX C01-FX-06 are rule presentation topics and do not redefine the original character as a battle-mage. Original attack is near-idle; quartet reconstructs a clear right-hand staff cast with an assisting empty left palm and opposite walking contacts. Heal shares the existing single action slot; no fifth pose or gameplay/rule change. Keep independent magic FX outside character.",
+  "symbolContract": "Original wooden spiral is an OPEN aperture; magenta in original source was background through a hole, not a crystal or magical core. All four native outputs preserve real alpha-zero pixels within the aperture. Original leaves, rope and approved green robe-border motif family retained. No new cross, rune, antlers, aura or asserted religious/faction meaning.",
+  "healUsesExistingSingleActionSlot": true,
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

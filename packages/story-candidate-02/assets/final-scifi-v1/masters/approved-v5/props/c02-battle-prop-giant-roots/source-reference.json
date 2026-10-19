@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-giant-roots",
+  "assetId": "C02-SFV1-battle-prop-giant-roots",
+  "label": "巨根掩体组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Original visual source board inspection cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md battle-prop order, consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. The old manifest-complete.json input is absent; no sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-giant-roots.png",
+  "runtimeReferenceSha256": "7d760d8e7e648166daa30af90dc96ef52ca073304589ce90aa8ded45449452dc",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

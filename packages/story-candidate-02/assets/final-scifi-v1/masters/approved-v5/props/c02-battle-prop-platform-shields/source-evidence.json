@@ -1,0 +1,43 @@
+{
+  "topicId": "c02-battle-prop-platform-shields",
+  "assetId": "C02-SFV1-battle-prop-platform-shields",
+  "label": "站台盾掩体组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    622
+  ],
+  "sourceMappingEvidence": "Original visual source board inspection cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md battle-prop order, consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. The old manifest-complete.json input is absent; no sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-platform-shields.png",
+  "runtimeReferenceSha256": "0fb3fce3ab91ae10cb3bcc6e1614e7059162604c8406bad925f8670f9a40aa1d",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e75acbdf-a242-4531-8840-2eba65ca9f72.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "prompt": "prompt.txt",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-platform-shields/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Two freestanding science-fiction shield barriers with ivory armored posts, dark machine feet and lower crossbars, amber hardware and bounded blue panels. Huge sparse hexagonal panel marks express the original powered shield identity; panels are fully opaque colored cel planes with no external light or haze.",
+  "stylePilotApprovedByParent": "Cargo pilot visually approved by inventory parent at 2026-10-19 18:07 UTC; final runtime review remains pending."
+}

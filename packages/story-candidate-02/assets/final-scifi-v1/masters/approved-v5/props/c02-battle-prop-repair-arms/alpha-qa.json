@@ -1,0 +1,39 @@
+{
+  "topicId": "c02-battle-prop-repair-arms",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "canvasEdgeAlpha1Count": 0,
+  "transparentFraction": 0.5633672407784722,
+  "opaqueFractionAlphaGE240": 0.42250953249442297,
+  "visibleAlphaBBoxGE8": [
+    139,
+    52,
+    1141,
+    1206
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    139,
+    52,
+    113,
+    48
+  ],
+  "interiorCoreDefinition": "binary erosion of alpha>=8 silhouette by 8 native pixels (1254px source)",
+  "interiorCoreMinimumAlpha": 250,
+  "interiorCoreBelow240Count": 0,
+  "nearContourFourPixelInsetMinimumAlpha": 236,
+  "nearContourFourPixelInsetBelow240Count": 1,
+  "sha256": "87573552e10c711e9037477f52d2ac47486874142e750887cfc4cd6b448e6085",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable original functional silhouette, exaggerated chunky volumes, bold near-black contours, broad matte cel planes; no visible halo, glow or cast shadow. Any native perimeter alpha 1 residue retained unchanged.",
+  "postprocessing": "None; byte-exact native image copies only",
+  "runtimeReady": false
+}

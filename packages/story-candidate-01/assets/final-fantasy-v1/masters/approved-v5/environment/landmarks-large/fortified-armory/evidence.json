@@ -1,0 +1,120 @@
+{
+  "asset": "fortified-armory",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte architectural family, broad stone/wood/roof planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1117
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.89075
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    19,
+    146,
+    10,
+    123
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/fortified-armory-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 7,
+  "semantic_counts": {
+    "tall_square_open_tower": 1,
+    "tall_round_open_tower": 1,
+    "low_front_round_bastion": 1,
+    "slate_gabled_storage_halls": 2,
+    "sack_benches": 2,
+    "visible_pale_sacks": 12,
+    "outer_gates": 2
+  },
+  "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    4,
+    3
+  ],
+  "obstructionHeight": 2,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "projected whole-compound baseline at x627,y1117 near the nearest round bastion foundation contact; not the front gate stair or upper storage hall threshold",
+  "source_local_landmark_estimates_px": {
+    "front_round_bastion_foundation_contact": [
+      666,
+      1115
+    ],
+    "front_gate_stair_contact": [
+      297,
+      1033
+    ],
+    "right_gate_threshold": [
+      1000,
+      930
+    ],
+    "central_courtyard_ground": [
+      566,
+      746
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/fortified-armory-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "common_full_canvas_calibration": {
+    "uniform_scale_native_to_logical": 0.12121212121212122,
+    "uniform_scale_native_to_hd": 0.24242424242424243,
+    "logical_canvas_origin": [
+      4,
+      4
+    ],
+    "strong_bounds_logical": [
+      6.303,
+      21.697,
+      154.788,
+      141.091
+    ],
+    "source_foot_projected_logical": [
+      80.0,
+      139.394
+    ],
+    "catalog_anchor_not_modified": [
+      80,
+      155
+    ],
+    "method": "parent current full-canvas calibration, no alpha bbox fitting",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

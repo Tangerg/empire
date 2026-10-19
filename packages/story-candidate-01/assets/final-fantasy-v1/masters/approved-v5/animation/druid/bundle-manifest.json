@@ -1,0 +1,213 @@
+{
+  "asset": "C01-UNIT-DRUID",
+  "actualConsumers": [
+    "c01.druid"
+  ],
+  "consumerStatus": "Campaign Silverwood druid; controlled-druid, oath-druid and neutral silverwood-witness in c01-15 verified",
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every selected master/raw PNG is byte-identical to its native output. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04774823657080846,
+  "bodyReferenceSourcePixels": 921.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/registration-evidence.json",
+  "identityContract": "Mature tan/brown human elder with short silver-gray hair/eyebrows, ordinary rounded ears and clean-shaven chin. Green scarf, small leaf clasp, broad tan/green tiered leaf shoulder capelets, pale yellow-cream robe with green leaf/arch/geometric border trim, sage cloth sleeves, brown diagonal strap/belt/boots. Left-hip woven herb basket with leaves and front-left pale-blue potion bottle. Right hand holds one wooden open-spiral staff with rope/leaf sprigs; left hand free. Approved chunky large head/hands/boots and broad matte planes; original green border patterns simplified consistently into readable arch/lozenge/leaf motifs.",
+  "symbolContract": "Original wooden spiral is an OPEN aperture; magenta in original source was background through a hole, not a crystal or magical core. All four native outputs preserve real alpha-zero pixels within the aperture. Original leaves, rope and approved green robe-border motif family retained. No new cross, rune, antlers, aura or asserted religious/faction meaning.",
+  "semanticContract": "C01-UNIT-DRUID binds only c01.druid, the Silverwood druid, with three verified c01-15 actors. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and second-row source identity. Sole weapon c01.oath-bolt is range2 magic, compatible with a staff-forward cast. Shared equipment C01-EQUIP-BATTLE-MAGE and FX C01-FX-06 are rule presentation topics and do not redefine the original character as a battle-mage. Original attack is near-idle; quartet reconstructs a clear right-hand staff cast with an assisting empty left palm and opposite walking contacts. Heal shares the existing single action slot; no fifth pose or gameplay/rule change. Keep independent magic FX outside character.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "Coordinator2026-10-19 18:14UTC viewed and approved identity,44/921.5 scale,1586x992 canvas and foot[770,966].",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "aa392f1c48be9476b81b1ea3e18c6ecebac5fba5202e73fcf4a81201439800ea",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        770,
+        966
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        395,
+        40,
+        1248,
+        967
+      ],
+      "sha256": "24023a5162c822455989233ed678c9e644ed59ba21d246d05d7a58d88841da5f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e23b1527-96d4-4cf2-8abb-7b01fa44a8a2.png",
+      "review": "Mature tan/brown human elder with short silver-gray hair/eyebrows, ordinary rounded ears and clean-shaven chin. Green scarf, small leaf clasp, broad tan/green tiered leaf shoulder capelets, pale yellow-cream robe with green leaf/arch/geometric border trim, sage cloth sleeves, brown diagonal strap/belt/boots. Left-hip woven herb basket with leaves and front-left pale-blue potion bottle. Right hand holds one wooden open-spiral staff with rope/leaf sprigs; left hand free. Approved chunky large head/hands/boots and broad matte planes; original green border patterns simplified consistently into readable arch/lozenge/leaf motifs.",
+      "staffSpiralApertureAlphaProbe": {
+        "center": [
+          1152,
+          240
+        ],
+        "region": [
+          1149,
+          237,
+          1156,
+          244
+        ],
+        "minimumAlpha": 0,
+        "maximumAlpha": 2,
+        "alphaZeroPixels": 44,
+        "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+      }
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "c8e598903951466ec61a7bb6a33ef4bac50c60aac75e1c9b71912f7c798cbb65",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        788,
+        955
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        371,
+        40,
+        1249,
+        956
+      ],
+      "sha256": "d30bf536c2e8bd5168e9e650cb95ad0b2646f4f361f3918745193536110280c1",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bd961d67-5ee7-42fa-9471-9175c42870ed.png",
+      "review": "Front screen-right boot toe-up with visible sole/heel contact; rear screen-left boot flat and weight-bearing. Robe hem moves to reveal both. Original right staff hand, left free hand and basket/bottle retained. Spiral remains genuinely open/transparent; lower shaft naturally occluded behind advancing boot, not canvas-clipped.",
+      "staffSpiralApertureAlphaProbe": {
+        "center": [
+          1152,
+          222
+        ],
+        "region": [
+          1149,
+          219,
+          1156,
+          226
+        ],
+        "minimumAlpha": 0,
+        "maximumAlpha": 2,
+        "alphaZeroPixels": 45,
+        "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+      }
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a0b35d43dbe3013a4d1b8ed47e19a84fa027b0cd3e739f533a9f6905707ef4b4",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        694,
+        958
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        314,
+        24,
+        1502,
+        959
+      ],
+      "sha256": "0f4b1fe79c417f95989083c8c6ead9c2de4c573901d2fb8cf1dbfec97a8ba34b",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f8d0866e-97f9-4875-923c-c2de5d1ee4c1.png",
+      "review": "Right arm extends original wooden staff forward/upward in a clear broad braced casting pose. Left original empty hand raises an open five-digit palm before the chest, connected to left sleeve; exactly two arms/hands and one staff. Basket/bottle remain attached. Original wood spiral stays genuinely open, rope/leaves retained, no embedded or external spell FX. Lower shaft naturally passes behind right robe/boot; no canvas clipping. Existing single action slot also serves heal.",
+      "staffSpiralApertureAlphaProbe": {
+        "center": [
+          1395,
+          118
+        ],
+        "region": [
+          1392,
+          115,
+          1399,
+          122
+        ],
+        "minimumAlpha": 0,
+        "maximumAlpha": 0,
+        "alphaZeroPixels": 49,
+        "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+      }
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "66e93daa7ae07f1692cf00b3d3f8a7ef98da9390bc8e1ad919376e7f74e4dfc9",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        792,
+        942
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        399,
+        46,
+        1291,
+        943
+      ],
+      "sha256": "c47bf5d64616933ac2d436cdf80e6315cc41b7b19ba724dc29a0603b81595c27",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-051c5b2c-a98e-40f4-862a-7047a9defee5.png",
+      "review": "Opposite contacts: front screen-right boot flat/weight-bearing, rear screen-left heel raised/toe down. Same right staff hand and left free hand, attached basket/bottle. Spiral remains open/transparent; no new symbols or FX.",
+      "staffSpiralApertureAlphaProbe": {
+        "center": [
+          1198,
+          242
+        ],
+        "region": [
+          1195,
+          239,
+          1202,
+          246
+        ],
+        "minimumAlpha": 0,
+        "maximumAlpha": 4,
+        "alphaZeroPixels": 19,
+        "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+      }
+    }
+  }
+}

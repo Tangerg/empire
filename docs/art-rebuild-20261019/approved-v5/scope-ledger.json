@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 113,
+    "formalBound": 114,
     "boundByCategory": {
       "battle-prop": 36,
-      "combat-unit": 20,
+      "combat-unit": 21,
       "equipment": 32,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 114,
+    "rawPreservedTopics": 116,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1441,14 +1441,22 @@
       "label": "德鲁伊",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/druid/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/druid/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/druid/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/druid/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/druid/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-druid.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-druid.png",
+      "stageEvidence": {
+        "raw": "four native poses with same elder identity, open transparent staff spiral, basket/bottle retained; no authored external FX",
+        "export": "shared44/921.5 scale, exact measured feet, maximum3.62887 whole-canvas registration, attack one right transparent column; native semantic/alpha review passed",
+        "runtimeBinding": "canonical and HD resolver bound to existing c01.druid consumers; no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-EAGLE-SCOUT",
@@ -9810,8 +9818,10 @@
       "category": "battle-prop",
       "label": "巨根掩体组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-giant-roots/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9922,8 +9932,10 @@
       "category": "battle-prop",
       "label": "站台盾掩体组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-platform-shields/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

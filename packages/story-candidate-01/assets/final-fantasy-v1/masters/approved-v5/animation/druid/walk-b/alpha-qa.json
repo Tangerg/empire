@@ -1,0 +1,81 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-051c5b2c-a98e-40f4-862a-7047a9defee5.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "c47bf5d64616933ac2d436cdf80e6315cc41b7b19ba724dc29a0603b81595c27",
+  "bboxAlphaNonzero": [
+    0,
+    43,
+    1510,
+    960
+  ],
+  "bboxAlphaGreaterThan127": [
+    399,
+    46,
+    1291,
+    943
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1128031,
+  "alphaOnePixels": 4190,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        495,
+        850,
+        700,
+        970
+      ],
+      "soleY": 930,
+      "bottomBandMeanX": 632.8434343434344,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        820,
+        875,
+        1070,
+        975
+      ],
+      "soleY": 942,
+      "bottomBandMeanX": 950.8054474708172,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    791.8244409071258,
+    936.0
+  ],
+  "suggestedSourceFoot": [
+    792,
+    942
+  ],
+  "lockedBodyScale": 0.04774823657080846,
+  "masterRawHashMatches": true,
+  "semanticReview": "Opposite contacts: front screen-right boot flat/weight-bearing, rear screen-left heel raised/toe down. Same right staff hand and left free hand, attached basket/bottle. Spiral remains open/transparent; no new symbols or FX.",
+  "staffSpiralApertureAlphaProbe": {
+    "center": [
+      1198,
+      242
+    ],
+    "region": [
+      1195,
+      239,
+      1202,
+      246
+    ],
+    "minimumAlpha": 0,
+    "maximumAlpha": 4,
+    "alphaZeroPixels": 19,
+    "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+  }
+}

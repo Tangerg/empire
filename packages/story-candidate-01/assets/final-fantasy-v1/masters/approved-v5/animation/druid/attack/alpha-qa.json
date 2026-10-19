@@ -1,0 +1,81 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f8d0866e-97f9-4875-923c-c2de5d1ee4c1.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "0f4b1fe79c417f95989083c8c6ead9c2de4c573901d2fb8cf1dbfec97a8ba34b",
+  "bboxAlphaNonzero": [
+    33,
+    21,
+    1567,
+    974
+  ],
+  "bboxAlphaGreaterThan127": [
+    314,
+    24,
+    1502,
+    959
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1057607,
+  "alphaOnePixels": 5792,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        305,
+        870,
+        485,
+        980
+      ],
+      "soleY": 958,
+      "bottomBandMeanX": 396.5432525951557,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        830,
+        875,
+        1090,
+        975
+      ],
+      "soleY": 955,
+      "bottomBandMeanX": 991.7709090909091,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    694.1570808430324,
+    956.5
+  ],
+  "suggestedSourceFoot": [
+    694,
+    958
+  ],
+  "lockedBodyScale": 0.04774823657080846,
+  "masterRawHashMatches": true,
+  "semanticReview": "Right arm extends original wooden staff forward/upward in a clear broad braced casting pose. Left original empty hand raises an open five-digit palm before the chest, connected to left sleeve; exactly two arms/hands and one staff. Basket/bottle remain attached. Original wood spiral stays genuinely open, rope/leaves retained, no embedded or external spell FX. Lower shaft naturally passes behind right robe/boot; no canvas clipping. Existing single action slot also serves heal.",
+  "staffSpiralApertureAlphaProbe": {
+    "center": [
+      1395,
+      118
+    ],
+    "region": [
+      1392,
+      115,
+      1399,
+      122
+    ],
+    "minimumAlpha": 0,
+    "maximumAlpha": 0,
+    "alphaZeroPixels": 49,
+    "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+  }
+}

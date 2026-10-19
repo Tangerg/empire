@@ -62,5 +62,21 @@
   "bodyCrownY": 40,
   "measuredBodyHeight": 921.5,
   "proposedBodyScale": 0.04774823657080846,
-  "masterRawHashMatches": true
+  "masterRawHashMatches": true,
+  "staffSpiralApertureAlphaProbe": {
+    "center": [
+      1152,
+      240
+    ],
+    "region": [
+      1149,
+      237,
+      1156,
+      244
+    ],
+    "minimumAlpha": 0,
+    "maximumAlpha": 2,
+    "alphaZeroPixels": 44,
+    "interpretation": "Small visually selected region inside the open spiral; alpha-zero confirms real hole, not painted background or gem."
+  }
 }

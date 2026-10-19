@@ -1,0 +1,55 @@
+{
+  "identity": "fortified-armory",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/fortified-armory-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1117
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "landmarks-large",
+  "cell_index": 7,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-4724c6a1-6e07-42ea-892e-0fa95fd00c63.png",
+  "sha256": "7b589d75ee7ee98b0c65f831ba252e76ed1710828935373a3254ebbae66e6bd0",
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "category": "large-landmark",
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "original_manifest_cell": {
+    "id": "fortified-armory",
+    "footprint": [
+      4,
+      3
+    ],
+    "anchor": [
+      80,
+      155
+    ],
+    "obstructionHeight": 2
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/fortified-armory-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json"
+}
