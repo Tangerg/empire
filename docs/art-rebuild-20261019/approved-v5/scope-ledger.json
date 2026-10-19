@@ -16,11 +16,11 @@
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 115
+    "registeredEnvironmentCells": 117
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 115,
+    "registeredIndividualSourceCells": 117,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -18188,7 +18188,9 @@
         "supply-tent-workyard",
         "gray-camp-ground",
         "field-kitchen",
-        "wounded-shelter-ground"
+        "wounded-shelter-ground",
+        "forge-workyard",
+        "livestock-pen"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18200,12 +18202,14 @@
           "supply-tent-workyard",
           "gray-camp-ground",
           "field-kitchen",
-          "wounded-shelter-ground"
+          "wounded-shelter-ground",
+          "forge-workyard",
+          "livestock-pen"
         ],
-        "count": 8,
+        "count": 10,
         "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
         "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe.",
+        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found.",
         "liveGame": "pending"
       }
     },

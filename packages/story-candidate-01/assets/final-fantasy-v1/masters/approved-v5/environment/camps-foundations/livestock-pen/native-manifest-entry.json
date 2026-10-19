@@ -1,0 +1,54 @@
+{
+  "identity": "livestock-pen",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/livestock-pen-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/evidence.json",
+  "source_foot_estimate_px": [
+    670,
+    1105
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7d6f7171-32d1-4426-9c7f-dd247240543d.png",
+  "sha256": "6069409fc1c7b959335278393a9bd565ee423b732be26d5b881164918d3abdb2",
+  "atlas": "camps-foundations",
+  "cell_index": 9,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/livestock-pen-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "livestock-pen",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "catalog foundation module with standing contents; no direct consumer found in inspected src; distinct from rural-life livestock-pen-small"
+}

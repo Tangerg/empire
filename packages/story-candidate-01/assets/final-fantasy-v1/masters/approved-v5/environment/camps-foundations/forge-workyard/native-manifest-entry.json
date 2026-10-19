@@ -1,0 +1,54 @@
+{
+  "identity": "forge-workyard",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/forge-workyard-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1103
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-0f04813e-163f-4ce4-9471-03a72b733ab1.png",
+  "sha256": "730c4711cf8b1f534f88c6c954fbcd2b4d69f6341e69f9884dd629ca0bcc4059",
+  "atlas": "camps-foundations",
+  "cell_index": 8,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/forge-workyard-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "forge-workyard",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "catalog foundation module with standing contents; no direct consumer found in inspected src; preserve bottom-anchor metadata without inventing a runtime layer"
+}

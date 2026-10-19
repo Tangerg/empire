@@ -1,0 +1,93 @@
+{
+  "asset": "livestock-pen",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte campsite family, broad continuous soil and structural cel planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    670,
+    1105
+  ],
+  "source_foot_estimate_normalized": [
+    0.53429,
+    0.88118
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    35,
+    133,
+    24,
+    144
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/livestock-pen-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/abandoned-cart-stop-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/field-kitchen-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "camps-foundations",
+  "cell_index": 9,
+  "semantic_counts": {
+    "enclosed_pen": 1,
+    "lean_to_shelter": 1,
+    "flag": 1,
+    "rectangular_trough": 1,
+    "round_feed_bowl": 1,
+    "hay_patch": 1,
+    "animals": 0,
+    "people": 0
+  },
+  "render_role": "catalog foundation module with standing contents; no direct consumer found in inspected src; distinct from rural-life livestock-pen-small",
+  "logical_cell": [
+    144,
+    144
+  ],
+  "hd_cell": [
+    288,
+    288
+  ],
+  "logical_anchor": [
+    72,
+    139
+  ],
+  "hd_anchor": [
+    144,
+    278
+  ],
+  "footprint": [
+    3,
+    3
+  ],
+  "obstructionHeight": 1,
+  "source_foot_semantics": "visually selected forward soil-apron contact near x670, below and slightly left of the closest right-front fence corner; actual fence corner support is higher, about(754,1063)",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/livestock-pen-source-evidence.json",
+  "source_edit_count": 0,
+  "source_margin_note": "Full outline visually intact, but requested ten percent margin is not guaranteed; measured margins in QA govern review.",
+  "provisional_export": {
+    "uniform_scale_native_to_logical": 0.108,
+    "uniform_scale_native_to_hd": 0.216,
+    "logical_canvas_translation": [
+      -0.35999999999999943,
+      19.659999999999997
+    ],
+    "expected_strong_bounds_logical": [
+      3.42,
+      34.024,
+      132.48,
+      139.54
+    ],
+    "method": "uniform full native canvas registered by independently authored sourceFoot, not bbox",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
