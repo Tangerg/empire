@@ -90,7 +90,13 @@ def build(root, output):
         'kind': 'deterministic-real-asset-comparison-not-gameplay',
         'groundStatus': 'remade' if 'surface-meadow' in catalog['atlases'] else 'legacy-pending-remake',
         'panelOrder': [v[0] for v in variants], 'logicalPanelSize': [320, 224], 'density': 2,
-        'inputsSha256': inputs, 'panels': evidence,
+        'inputsSha256': inputs,
+        'contractsSha256': {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest() for path in (
+            pack / 'manifest-final-fantasy-v1.json', pack / 'manifest-tactical-runtime-hd.json',
+            env / 'manifest-environment-builder-v1.json', root / 'tools/art/source-overrides.json',
+            root / 'tools/art/frame-overrides.json', root / 'tools/art/environment-overrides.json',
+            root / 'tools/art/surface-overrides.json')},
+        'panels': evidence,
         'placementEvidence': [
             'game-ui/src/art/board-surface.ts: TILE32; ground/scenery/structures/units/foreground layer order',
             'game-ui/src/art/runtime-raster.ts: unit footing at tile16,31 minus manifest anchor',
