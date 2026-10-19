@@ -9078,19 +9078,29 @@
       "atlasId": "forest-existing",
       "cellId": "pine-low-shrub",
       "index": 12,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-low-shrub/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-underbrush"
+      "assignmentPhase": "after-underbrush",
+      "sourceSha256": "cbed8d148737b24575f54966c932c76fada1e5a683eca9dfe00bf27329fb5107",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-fallen-log",
       "index": 13,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-fallen-log/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-underbrush"
+      "assignmentPhase": "after-underbrush",
+      "sourceSha256": "ac87db8fc70d1f77d7206d56e6144424eac39ca4160ed3526cadb632289bd67d",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
