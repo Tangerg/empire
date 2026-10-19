@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-SKILL-18",
+  "assetId": "C01-FFV1-SKILL-18",
+  "label": "林地再生",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5fe2000a-d85e-4d00-a91b-08b2890999b1.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-18-cell.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-02.png",
+    "atlasSha256": "990143dee472244d1996c659e13eab791de28c1baad2aa362aa2cf02bb2bcd22",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-02.png, row 1 column 2 (one based)",
+    "topicIndex": 17,
+    "inspectionCropCoordinates": [
+      316,
+      2,
+      625,
+      312
+    ],
+    "inspectionCropTreatment": "Unscaled source cell crop for identity inspection only; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-18.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent explicitly continued skill-17 through skill-20 while integrating the previous quartet; exact authored-order source semantics and original cell 19/20 cross-boundary correction were reported before generation."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-18-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-18-detail.png"
+  ],
+  "identityClarification": "One two-leaf seedling through broken round wooden plank disc with central soil; two opposite metal straps, each with three visible rivet studs. Plank breaks are simplified material structure, not a stump growth-ring invention.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits."
+}

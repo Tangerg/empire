@@ -1,0 +1,96 @@
+{
+  "asset": "highland-hill-cap",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1168
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.931419
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    35,
+    161,
+    14,
+    78
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-hill-cap-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 4,
+  "original_cellOrder_token": "hill-cap",
+  "qualified_original_slot": "cliff-modules-highland:4:hill-cap",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE compact thick blocky highland hill-cap, with a broad approximately square/diamond top covered by a few broad connected patches of settled off-white snow, leaving several large gray rock patches exposed at the edges and in the snow. Preserve the original steep continuous dark gray column cliff sides and the compact high mass, with a few attached angular footing stones carrying small snow caps and sparse dry olive scrub. Snow is on the upper cap and a few base rocks, not coating every wall. No green turf lid, oblong elongated terminus, hollow, staircase, extra hill or large ground disk.",
+  "native_review": "One compact snow-capped block hill retains its broad diamond-like cap, steep continuous column faces, exposed large rock patches and a few snowy basal stones. Snow is broad matte off-white with quiet pale blue shadow facets; no grass lid or tiny snow stipple. Full outline retained. Requested generous side margins were not fully met, but strong silhouette remains clear of edges.",
+  "source_foot_semantics": "whole-module projected foreground baseline at the front basal rocks and scrub, separate from cap center and wall-front contacts",
+  "source_local_landmark_estimates_px": {
+    "front_basal_contact": [
+      627,
+      1168
+    ],
+    "left_basal_contact": [
+      128,
+      923
+    ],
+    "right_basal_contact": [
+      1148,
+      888
+    ],
+    "cap_center": [
+      643,
+      365
+    ],
+    "front_wall_base": [
+      631,
+      1036
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

@@ -1,0 +1,49 @@
+{
+  "atlas": "cliff-modules-highland",
+  "cell_index": 7,
+  "original_cellOrder_token": "mountain-pass",
+  "qualified_slot_address": "cliff-modules-highland:7:mountain-pass",
+  "working_file_alias": "highland-mountain-pass",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "observed_original_geometry": "Two separated steep rock side walls flanking an open snow/stone corridor",
+  "strong_bounds": [
+    938,
+    360,
+    1233,
+    593
+  ],
+  "complete_subject_crop": [
+    930,
+    352,
+    1241,
+    601
+  ],
+  "original_fractional_slot": [
+    940.5,
+    313.5,
+    1254.0,
+    627.0
+  ],
+  "strong_silhouette_crossing_pixels": {
+    "left": 2.5,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_subject_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-mountain-pass-complete-subject-reference.png",
+  "runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-mountain-pass-original-runtime-2x-slot.png",
+  "original_cell_metadata": null,
+  "catalog_status": "catalog-only; no actual draws in16-level audit",
+  "native_metadata_policy": "Do not invent original per-cell footprint, obstruction, passability or heightDelta from temperate siblings or label alone.",
+  "generation_identity_description": "ONE complete highland mountain-pass group consisting of EXACTLY TWO separated long narrow parallel dark gray rock walls flanking ONE visible open snow-and-stone corridor. The route goes from the near-left/lower-left foreground toward the rear-right/upper-right, between the walls. Both walls have bare pale-gray exposed column tops, NOT snow caps. Their heights rise from the nearer short end columns to the farther taller columns. Preserve both complete wall ends and a continuous broad off-white snowy corridor with a few large exposed rock shapes. Keep both near and far route openings clearly open: no cross wall, roof, arch, gate, overhead bridge, blocking rock or third wall. Narrow original attached olive scrub/rock footing is allowed along each wall; the functional snow corridor is part of the source, not an invented display slab.",
+  "original_source_provenance": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-highland-4x4-key.png": "24cc11338ee6233858315c777ca87de0bee539fee0d7c9b008732e9248851a03",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-highland-4x4.png": "02adcbb7d42ea0e215a17871e3cd0b8a9dcdad9eed922c6f3a40dad6250a687e",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland@2x.png": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "ffc1f1b3a64b946ef176d9db3db5001f70b8d85d5ab442a8c12fe1ad849235a6",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/SEMANTIC-CATALOG.json": "1fece5fa9b2d6fe51c4c8bead22e136755a354242ca0ad59602e0edd1483a055"
+  },
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+  "parent_resolution": "Preserve original slot4-7 shapes and cellOrder/index. File aliases do not create runtime IDs. Original cells are empty; do not invent per-cell collision metadata. Measure feet/interfaces without claiming automatic connectivity.",
+  "approved_style_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+}

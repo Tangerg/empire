@@ -1,0 +1,73 @@
+{
+  "topicId": "C01-SKILL-17",
+  "assetId": "C01-FFV1-SKILL-17",
+  "label": "银林隐蔽",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bcae8e09-b4cf-40de-beea-6f377b8f937a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-17-cell.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-02.png",
+    "atlasSha256": "990143dee472244d1996c659e13eab791de28c1baad2aa362aa2cf02bb2bcd22",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-02.png, row 1 column 1 (one based)",
+    "topicIndex": 16,
+    "inspectionCropCoordinates": [
+      2,
+      2,
+      312,
+      312
+    ],
+    "inspectionCropTreatment": "Unscaled source cell crop for identity inspection only; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-17.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent explicitly continued skill-17 through skill-20 while integrating the previous quartet; exact authored-order source semantics and original cell 19/20 cross-boundary correction were reported before generation."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-17-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-17-detail.png"
+  ],
+  "identityClarification": "One concealed bootprint in bounded fern-framed soil: one forefoot cavity, six transverse tread cavities in two columns of three, three right-edge rounded recesses, one heel; two instep pebbles and one bottom rim pebble. Cavities are dark soil surfaces, not cut-through holes.",
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-pebble-count.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "refinementHistory": [
+    {
+      "initialRawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-32d08859-298b-46f9-8056-264873bc9113.png",
+      "preservedCandidate": "candidates/initial/raw.png",
+      "initialPrompt": "candidates/initial/prompt.txt",
+      "reason": "Remove one extra gray instep pebble; preserve source count of two.",
+      "tool": "built-in image_gen__imagegen",
+      "referencePaths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-32d08859-298b-46f9-8056-264873bc9113.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-17-cell.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-17-detail.png"
+      ],
+      "exactPromptFile": "prompt-refine-pebble-count.txt",
+      "result": "Visually verified two instep pebbles; six tread cavities, three right round recesses and bottom rim stone remain."
+    }
+  ]
+}

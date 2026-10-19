@@ -1,0 +1,104 @@
+{
+  "asset": "highland-ramp-level-2",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1160
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.92504
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    42,
+    145,
+    17,
+    87
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-ramp-level-2-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 6,
+  "original_cellOrder_token": "ramp-level-2",
+  "qualified_original_slot": "cliff-modules-highland:6:ramp-level-2",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE connected TWO-LEVEL highland ascent, rising diagonally from low near-left / lower-left foreground to high rear-right / upper-right. Preserve the clearly visible lower snow-covered terrace and the taller rear snow-covered terrace, linked by a narrow sloping rocky snowy path. Both terraces belong to one continuous stepped cliff mass; the entry slope in front reaches the lower terrace, then the second ascent reaches the rear terrace. Tall dark gray column faces distinguish the two heights. Use broad snow patches with a few exposed stone planes, not many individual tiny steps or speckles. Full front approach and high rear cap visible. Do not flatten it into one incline or separate it into independent towers; do not include the adjacent source slot mountain-pass fragment.",
+  "native_review": "Two distinct connected snowy terraces retain the original near-left to rear-right ascending axis. The low approach reaches the lower platform, a second rocky snowy incline reaches the higher rear platform, and the visible continuous right column wall communicates the two heights. No independent extra tower, third wall or neighboring pass fragment. Snow remains broad matte planes with a few exposed large stones. Full silhouette is complete with narrower side margins than requested.",
+  "source_foot_semantics": "projected foreground module baseline near the low approach footing, separate from the off-center low route endpoint and both terrace centers",
+  "source_local_landmark_estimates_px": {
+    "low_route_endpoint_center": [
+      266,
+      1101
+    ],
+    "lower_terrace_center": [
+      586,
+      593
+    ],
+    "upper_link_center": [
+      724,
+      449
+    ],
+    "high_route_endpoint_center": [
+      850,
+      198
+    ],
+    "front_left_basal_contact": [
+      187,
+      1129
+    ],
+    "front_right_basal_contact": [
+      431,
+      1158
+    ],
+    "rear_right_basal_contact": [
+      1199,
+      680
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

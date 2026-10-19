@@ -1,0 +1,92 @@
+{
+  "atlas": "cliff-modules-highland",
+  "status": "catalog-only native pair complete; original slots4/5; aliases do not create semantic cells or collision metadata",
+  "asset_count": 2,
+  "entries": [
+    {
+      "identity": "highland-hill-cap",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/highland-hill-cap-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "cliff-modules-highland",
+      "cell_index": 4,
+      "original_cellOrder_token": "hill-cap",
+      "file_alias_only": true,
+      "catalog_only": true,
+      "original_per_cell_semantic_metadata": null,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-b5a42fe5-31ea-4616-ae5e-cf1688b8d428.png",
+      "sha256": "171463b3b540968121ab54f5425890f6c19f13bcef6e2a7cb6de3e559a660d16",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+      "runtime_atlas_contract": {
+        "logical_cell": [
+          128,
+          128
+        ],
+        "hd_cell": [
+          256,
+          256
+        ],
+        "atlas_anchor": [
+          64,
+          127
+        ],
+        "registered_semantic_cell_id": null
+      }
+    },
+    {
+      "identity": "highland-ramp-level-1",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/highland-ramp-level-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1136
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "cliff-modules-highland",
+      "cell_index": 5,
+      "original_cellOrder_token": "ramp-level-1",
+      "file_alias_only": true,
+      "catalog_only": true,
+      "original_per_cell_semantic_metadata": null,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-b4ab9561-ff0e-458c-991d-78a4cf91b19e.png",
+      "sha256": "a043f4f8f6173ad482df95c8406c54e6def7e9f980b189f1c13514675cbdc5ba",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+      "runtime_atlas_contract": {
+        "logical_cell": [
+          128,
+          128
+        ],
+        "hd_cell": [
+          256,
+          256
+        ],
+        "atlas_anchor": [
+          64,
+          127
+        ],
+        "registered_semantic_cell_id": null
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_automatic_interface_connectivity_claim": true,
+  "no_repository_edits": true
+}
