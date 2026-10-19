@@ -1,5 +1,6 @@
-"""Rasterize runtime ground evidence at native 1x/2x and verify crop invariance."""
+"""Rasterize runtime evidence at display 1x/2x, declaring actual source density."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -10,10 +11,34 @@ from PIL import Image, ImageChops
 from svg_viewports import NS, flatten_viewports
 
 
+def compare_retained(directory, baseline):
+    reports = []
+    for kind in ('field', 'integration'):
+        for density in (1, 2):
+            pairs = (
+                (f'{kind}-full@{density}x.png', f'{kind}-period-1024-diagnostic@{density}x.png'),
+                (f'{kind}-high-density-alternative@{density}x.png', f'{kind}-full@{density}x.png'),
+            )
+            for current_name, previous_name in pairs:
+                with Image.open(directory / current_name) as current, Image.open(baseline / previous_name) as previous:
+                    if current.size != previous.size:
+                        raise ValueError(f'sampling promotion changed comparison dimensions: {current_name}')
+                    current = current.convert('RGBA')
+                    difference = ImageChops.difference(current, previous.convert('RGBA'))
+                    maximum = max(channel.getextrema()[1] for channel in difference.split())
+                    if maximum:
+                        raise ValueError(f'sampling promotion changed comparison pixels: {current_name}')
+                    reports.append({'runtimeRender': current_name,
+                                    'storedComparison': os.path.relpath(baseline / previous_name, directory),
+                                    'maximumChannelDifference': maximum, 'exactPixelMatch': True,
+                                    'runtimePixelSha256': hashlib.sha256(current.tobytes()).hexdigest()})
+    result = {'kind': 'Actual runtime after metadata promotion; comparison with retained first-commit samples', 'comparisons': reports}
+    (directory / 'promotion-comparison.json').write_text(json.dumps(result, indent=2) + '\n')
+    return result
+
+
 def render(directory):
-    names = ('field-full', 'integration-full', 'field-seam-crop', 'integration-seam-crop',
-             'field-period-1024-diagnostic', 'integration-period-1024-diagnostic',
-             'field-period-1024-crop-diagnostic', 'integration-period-1024-crop-diagnostic')
+    names = sorted(path.stem for path in directory.glob('*.svg') if not path.name.endswith('.offline.svg'))
     with tempfile.TemporaryDirectory() as profile:
         for name in names:
             source = directory / f'{name}.svg'
@@ -43,7 +68,10 @@ def render(directory):
                 crops.append({'kind': kind, 'density': density, 'exactPixelMatch': maximum == 0,
                               'maximumChannelDifference': maximum,
                               'note': 'World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips'})
-    result = {'evidence': 'offline Inkscape native rendering of actual BoardPieces', 'cropChecks': crops,
+    provenance = json.loads((directory / 'runtime-provenance.json').read_text())
+    result = {'selectedLogicalPeriod': provenance['material']['logicalSize'],
+              'sourcePixelsPerWorldUnit': provenance['material']['rasterPixelsPerWorldUnit'],
+              'evidence': 'offline Inkscape display-1x/2x rendering of actual BoardPieces', 'cropChecks': crops,
               'fullLogicalExtent': [704, 448], 'browserPlayback': False,
               'repeatSeamVisualReview': 'required separately; these tests prove phase, not artistic tiling'}
     (directory / 'raster-validation.json').write_text(json.dumps(result, indent=2) + '\n')
@@ -53,5 +81,8 @@ def render(directory):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', type=Path)
+    parser.add_argument('--compare-directory', type=Path)
     args = parser.parse_args()
     print(json.dumps(render(args.directory.resolve()), indent=2))
+    if args.compare_directory:
+        print(json.dumps(compare_retained(args.directory.resolve(), args.compare_directory.resolve()), indent=2))

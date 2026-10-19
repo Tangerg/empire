@@ -1,0 +1,61 @@
+{
+  "kind": "Actual runtime after metadata promotion; comparison with retained first-commit samples",
+  "comparisons": [
+    {
+      "runtimeRender": "field-full@1x.png",
+      "storedComparison": "../ground-runtime/field-period-1024-diagnostic@1x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "b0f9a2131ed7c9a633b730d1f0773366cca163660e311e6cbf5036d43995001a"
+    },
+    {
+      "runtimeRender": "field-high-density-alternative@1x.png",
+      "storedComparison": "../ground-runtime/field-full@1x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "11d7fb9e978e96670f17f2dc16ab1c24db3f247d497ea37eda8b10d62fd0c144"
+    },
+    {
+      "runtimeRender": "field-full@2x.png",
+      "storedComparison": "../ground-runtime/field-period-1024-diagnostic@2x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "926d3390728d23a2d758681e5057d3bd4e025cadb8181e435887aabf4fb3cb07"
+    },
+    {
+      "runtimeRender": "field-high-density-alternative@2x.png",
+      "storedComparison": "../ground-runtime/field-full@2x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "8462a3f43de67ac0ece4767591494dc30400d2bc2c718e8cc8dde6b10f163d7c"
+    },
+    {
+      "runtimeRender": "integration-full@1x.png",
+      "storedComparison": "../ground-runtime/integration-period-1024-diagnostic@1x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "606a8bf14fd4a48f1056ce7f9feeb22836140c08e50386c29305ac7d12270580"
+    },
+    {
+      "runtimeRender": "integration-high-density-alternative@1x.png",
+      "storedComparison": "../ground-runtime/integration-full@1x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "445dea63da773d036a46743e9de463a3af091b9d35ff7432b932aebdebedcb91"
+    },
+    {
+      "runtimeRender": "integration-full@2x.png",
+      "storedComparison": "../ground-runtime/integration-period-1024-diagnostic@2x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "dec8f8407ed5759297df9f45edd2b6b71629dbf91e642fb1a79eac0d374f1095"
+    },
+    {
+      "runtimeRender": "integration-high-density-alternative@2x.png",
+      "storedComparison": "../ground-runtime/integration-full@2x.png",
+      "maximumChannelDifference": 0,
+      "exactPixelMatch": true,
+      "runtimePixelSha256": "0cc44054448bd4c9f1381442101d22ac8a2f263b212d9cbe4b2589523f601ea3"
+    }
+  ]
+}

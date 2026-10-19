@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "meadow-base",
   "replaces": {
     "atlas": "surface-meadow",
@@ -8,8 +8,8 @@
   "source": "masters/approved-v5/grass-material/master.png",
   "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
   "logicalSize": [
-    512,
-    512
+    1024,
+    1024
   ],
   "worldOrigin": [
     0,
@@ -20,5 +20,9 @@
     "bleed": 0
   },
   "png": "runtime/meadow-base.png",
-  "png2x": "runtime/meadow-base@2x.png"
+  "png2x": "runtime/meadow-base@2x.png",
+  "rasterSize": [
+    512,
+    512
+  ]
 }

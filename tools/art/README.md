@@ -2,7 +2,7 @@
 
 ## Approved broad field material
 
-`packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v1.json`
+`packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v2.json`
 owns the approved field source/checksum, the exact replaced atlas/tone, logical
 sampling period, world origin, uncropped fit and both runtime paths. The typed
 `candidate-01-field-material.ts` reader and `export_field_material.py` consume
@@ -13,7 +13,7 @@ the old atlas remains intact and hill tone 2 retains its original fit.
 python3 tools/art/export_field_material.py
 python3 tools/art/export_field_material.py --check
 node_modules/.bin/vite-node tools/art/review_ground_runtime.ts
-python3 tools/art/render_ground_review.py docs/art-rebuild-20261019/approved-v5/ground-runtime
+python3 tools/art/render_ground_review.py docs/art-rebuild-20261019/approved-v5/ground-runtime-1024 --compare-directory docs/art-rebuild-20261019/approved-v5/ground-runtime
 ```
 
 The immutable approved grass master is resized as a complete canvas to 512²
@@ -22,27 +22,40 @@ previously approved 1px seam operation. Interior pixels, palette and composition
 are not painted, blurred or recolored. Reports include source, interior and
 edge hashes; `--check` verifies reproducible output without writing.
 
-Runtime samples a 512×512 logical period from world origin (0,0), with explicit
-inset 0 and bleed 0. It emits self-contained material-sized BoardPieces, not
-one large source per 32px game cell. Identical blocks share markup and one HD
-asset URL across the SVG and GPU texture paths. Edge blocks clip the viewport
-without changing source dimensions. At 81×51 cells the base is 24 blocks with
-four distinct pictures, each no larger than 512×512 logical units.
+Runtime now samples a **1024×1024 logical period** from world origin (0,0),
+with explicit inset 0 and bleed 0. Schema 2 separates `rasterSize` (512×512
+physical pixels for the smaller export) from `logicalSize` (1024×1024 world
+units). The `@2x` file remains 1024² physical pixels: its actual selected density
+is **1 source pixel per world unit**, not native 2× detail. The reader and export
+report derive that density explicitly. No PNG was enlarged or regenerated for
+this sampling promotion.
 
-The diagnostic includes the entire 22×14 c01-02 field (704×448), real trees,
-structures and unit pictures, and camera crops crossing x512 at native 1×/2×.
-It is offline renderer evidence, not browser/GPU playback. Field-only crops
-match pixel-for-pixel. Composite crops record small offline antialiasing
-differences from legacy clipped props instead of claiming exact matches.
+The 512-unit high-density alternative is preserved: set `logicalSize` equal to
+`rasterSize` (512×512) in the same manifest, leaving all source/output fields
+unchanged. `--check` verifies exactly the same files at that alternative; their
+actual density is then 2 source pixels per world unit. The Python guard exercises
+both declarations and verifies byte-identical raster files.
 
-The visual repeat gate is **pending**: the approved master's large planes do
-not wrap continuously at x512, despite matching outer pixels. A separately
-labeled 1024-period diagnostic uniformly scales the same field picture, keeps
-origin and upper layers unchanged, and avoids a repeat within this particular
-704px map. It is not an approved runtime selection; its 2× export is an enlarged
-diagnostic, not newly authored HD art. Larger maps would still encounter the
-repeat. Water, roads, shore masks and all other terrain material bindings remain
-unchanged in this increment.
+The renderer emits self-contained material-sized BoardPieces, not one large
+source per 32px game cell. Identical blocks share markup and one asset URL across
+SVG and GPU paths. Edge blocks clip without stretching source UVs. At 81×51 cells
+the selected base is six blocks with four distinct pictures, each at most 1024²
+logical units. A GPU backend baking at display 2× may enlarge these pictures; that
+does not create new source detail.
+
+The current diagnostic defaults to `ground-runtime-1024` and includes the entire
+22×14 c01-02 field (704×448), real trees, structures and unit pictures. It also
+shows the 512 high-density alternative and the same camera crop at display 1×/2×.
+Field-only crops must match pixel-for-pixel. Composite crops report small offline
+antialiasing differences from legacy clipped props. These are offline samples,
+not browser/GPU playback.
+
+The first 512-period evidence remains untouched in `ground-runtime`, including
+the visible large-plane break at x512 and the original comparison. The selected
+1024 period avoids a repeat inside this 704px map and preserves quieter broad
+planes. **Larger fields may still expose the non-periodic master at x1024 or
+y1024**; this does not certify seamless art. Oversized buildings and legacy river,
+road, shore and bridge art remain visible and unchanged.
 
 ## Static transparent master exports
 

@@ -22,28 +22,30 @@ const rasterBox = (markup: string) => {
 };
 
 describe('approved broad world material', () => {
-  it('resolves a checksummed immutable source and native 1x/2x output through one manifest', () => {
+  it('resolves a checksummed immutable source and explicit physical raster output through one manifest', () => {
     const pack = resolve(import.meta.dirname, '../../assets/final-fantasy-v1');
     expect(createHash('sha256').update(readFileSync(resolve(pack, material.source))).digest('hex')).toBe(material.sourceSha256);
     expect(material.source).toBe('masters/approved-v5/grass-material/master.png');
-    expect(material.logicalSize).toEqual([512, 512]);
+    expect(material.logicalSize).toEqual([1024, 1024]);
+    expect(material.rasterSize).toEqual([512, 512]);
+    expect(material.rasterPixelsPerWorldUnit).toEqual([1, 1]);
     expect(material.worldOrigin).toEqual([0, 0]);
     expect(material.fit).toEqual({ inset: 0, bleed: 0 });
     expect(material.replaces).toEqual({ atlas: 'surface-meadow', tone: 0 });
     for (const [density, path] of [[1, material.png], [2, material.png2x]] as const) {
       const png = readFileSync(resolve(pack, 'world-materials-v1', path));
-      expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual(material.logicalSize.map((n) => n * density));
+      expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual(material.rasterSize.map((n) => n * density));
     }
     expect(material.href).toContain(material.png2x);
   });
 
   it('keeps adjacent tactical cells in one world plane and repeats at the approved world period', () => {
-    const pieces = candidate01FieldMaterialPieces(704, 448);
-    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[0, 0], [512, 0]]);
-    expect(pieces.map((piece) => rasterBox(piece.markup))).toEqual([[512, 448, 512, 448], [192, 448, 192, 448]]);
+    const pieces = candidate01FieldMaterialPieces(1408, 448);
+    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[0, 0], [1024, 0]]);
+    expect(pieces.map((piece) => rasterBox(piece.markup))).toEqual([[1024, 448, 1024, 448], [384, 448, 384, 448]]);
     for (const piece of pieces) {
       expect(piece.markup).toContain('<image');
-      expect(piece.markup).toContain('width="512" height="512" preserveAspectRatio="none"');
+      expect(piece.markup).toContain('width="1024" height="1024" preserveAspectRatio="none"');
       expect(piece.markup).not.toContain('url(#');
     }
     const sample = (x: number, y: number) => {
@@ -57,18 +59,21 @@ describe('approved broad world material', () => {
     expect(sample(31.75, 60)).toEqual([31.75, 60]);
     expect(sample(32.25, 60)).toEqual([32.25, 60]);
     expect(sample(511.75, 60)).toEqual([511.75, 60]);
-    expect(sample(512.25, 60)).toEqual([0.25, 60]);
-    expect(sample(703.75, 447.75)).toEqual([191.75, 447.75]);
+    expect(sample(512.25, 60)).toEqual([512.25, 60]);
+    expect(sample(1023.75, 60)).toEqual([1023.75, 60]);
+    expect(sample(1024.25, 60)).toEqual([0.25, 60]);
+    expect(sample(1407.75, 447.75)).toEqual([383.75, 447.75]);
+    expect(candidate01FieldMaterialPieces(704, 448)).toHaveLength(1);
   });
 
   it('bounds texture size and shares repeated block markup on large battlefields', () => {
     const pieces = candidate01FieldMaterialPieces(81 * 32, 51 * 32);
-    expect(pieces).toHaveLength(24);
+    expect(pieces).toHaveLength(6);
     expect(new Set(pieces.map((piece) => piece.markup)).size).toBe(4);
     for (const piece of pieces) {
       const [w, h] = rasterBox(piece.markup);
-      expect(w).toBeLessThanOrEqual(512);
-      expect(h).toBeLessThanOrEqual(512);
+      expect(w).toBeLessThanOrEqual(1024);
+      expect(h).toBeLessThanOrEqual(1024);
       expect(piece.markup.match(/<image /g)).toHaveLength(1);
     }
   });

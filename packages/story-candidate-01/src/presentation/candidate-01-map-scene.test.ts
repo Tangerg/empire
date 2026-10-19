@@ -183,7 +183,8 @@ describe('candidate-01 authored map scenery', () => {
     const painted = candidate01MapSceneryLayers({
       content: TEST_CATALOG, levelId: 'c01-02', map, viewport: square,
     });
-    expect(painted.ground.slice(0, 2)).toEqual(candidate01FieldMaterialPieces(map.width * 32, map.height * 32));
+    const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
+    expect(painted.ground.slice(0, field.length)).toEqual(field);
   });
 
   /**

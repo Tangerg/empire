@@ -10,7 +10,7 @@ from PIL import Image
 from export_overrides import ROOT, read_json, within
 from export_environment_overrides import PACK
 
-MANIFEST = PACK / 'world-materials-v1/manifest-field-material-v1.json'
+MANIFEST = PACK / 'world-materials-v1/manifest-field-material-v2.json'
 
 
 def match_period_edges(image):
@@ -41,12 +41,17 @@ def pixel_hash(image):
 
 def plan(root, manifest):
     data = read_json(manifest)
-    required = {'schemaVersion', 'id', 'replaces', 'source', 'sourceSha256', 'logicalSize', 'worldOrigin', 'fit', 'png', 'png2x'}
-    if set(data) != required or data['schemaVersion'] != 1:
-        raise ValueError('expected field material schemaVersion 1')
+    required = {'schemaVersion', 'id', 'replaces', 'source', 'sourceSha256', 'logicalSize', 'rasterSize', 'worldOrigin', 'fit', 'png', 'png2x'}
+    if set(data) != required or data['schemaVersion'] != 2:
+        raise ValueError('expected field material schemaVersion 2')
     size = data['logicalSize']
     if not isinstance(size, list) or len(size) != 2 or any(type(n) is not int or n < 3 for n in size):
         raise ValueError('expected positive integer logicalSize at least 3')
+    raster_size = data['rasterSize']
+    if not isinstance(raster_size, list) or len(raster_size) != 2 or any(type(n) is not int or n < 3 for n in raster_size):
+        raise ValueError('expected positive integer rasterSize at least 3')
+    if raster_size[0] * size[1] != raster_size[1] * size[0]:
+        raise ValueError('raster and world aspect must agree')
     if data['worldOrigin'] != [0, 0] or data['fit'] != {'inset': 0, 'bleed': 0}:
         raise ValueError('world field requires zero origin and uncropped fit')
     binding = data['replaces']
@@ -68,23 +73,24 @@ def plan(root, manifest):
             raise ValueError('expected opaque RGB or RGBA PNG')
         if opened.mode == 'RGBA' and opened.getchannel('A').getextrema() != (255, 255):
             raise ValueError('field source must be fully opaque')
-        if opened.width * size[1] != opened.height * size[0] or opened.width < size[0] * 2:
-            raise ValueError('source must match logical aspect and support native HD density')
+        if opened.width * size[1] != opened.height * size[0] or opened.width < raster_size[0] * 2:
+            raise ValueError('source must match logical aspect and support the declared raster size')
         image = opened.convert('RGB')
     planned = []
     for density, key in ((1, 'png'), (2, 'png2x')):
         target = within(manifest.parent, data[key])
         if target.parent != (manifest.parent / 'runtime').resolve() or target.suffix != '.png':
             raise ValueError('field output must be a PNG in its runtime directory')
-        dimensions = tuple(n * density for n in size)
+        dimensions = tuple(n * density for n in raster_size)
         resized = image.resize(dimensions, Image.Resampling.LANCZOS)
         exported = match_period_edges(resized)
         width, height = dimensions
         report = {
             'id': data['id'], 'source': str(source.relative_to(root)),
             'sourceSha256': data['sourceSha256'], 'sourceSize': list(image.size),
-            'output': str(target.relative_to(root)), 'density': density, 'size': list(dimensions),
-            'logicalSize': size, 'worldOrigin': data['worldOrigin'], 'fit': data['fit'],
+            'output': str(target.relative_to(root)), 'exportDensity': density, 'size': list(dimensions),
+            'logicalSize': size, 'rasterSize': raster_size,
+            'pixelsPerWorldUnit': [dimensions[axis] / size[axis] for axis in range(2)], 'worldOrigin': data['worldOrigin'], 'fit': data['fit'],
             'replaces': binding, 'edgeBandPixels': 1,
             'derivation': 'full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting',
             'pixelSha256': pixel_hash(exported),
