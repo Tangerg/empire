@@ -1,6 +1,6 @@
 {
   "topicId": "C01-UNIT-AXE-BREAKER",
-  "status": "Idle native QA passes; coordinator review pending before three additional poses",
+  "status": "Idle visually approved by coordinator2026-10-19 17:49UTC; remaining poses authorized",
   "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/master.png",
   "nativeCanvas": [
     1586,
@@ -36,5 +36,10 @@
   "consumerStatus": "Catalog-only; no current rule consumer or invented binding",
   "postprocessing": "none; native pixels and alpha unchanged",
   "exactPrompt": "idle/prompt.txt",
-  "request": "idle/request.json"
+  "request": "idle/request.json",
+  "lockedSharedScale": 0.049162011173184354,
+  "canonicalSourceFoot": [
+    770,
+    963
+  ]
 }
