@@ -2137,10 +2137,14 @@
     },
     {
       "topicId": "C01-EQUIP-GRAVEKEEPER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-gravekeeper/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "1f48ac50fddad5334e10ca1cf96a93cbd383e7dc9238e60a34c78f86e2c1e36f"
     },
     {
       "topicId": "C01-EQUIP-HEAVY-KNIGHT",
