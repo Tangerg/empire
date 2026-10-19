@@ -1,7 +1,16 @@
 {
   "atlas": "surface-earth",
-  "status": "native candidates, parent integration/scene review pending",
-  "original_atlas_contract": "4x1,32 logical/64HD; continuous opaque ground, no standing source foot",
+  "status": "all four exact original native opaque material candidates saved; parent sampling and scene review pending",
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "all_exact_prompt_sha256_verified": true,
+  "full_native_canvas": [
+    1254,
+    1254
+  ],
+  "all_pixels_opaque": true,
+  "sourceFoot": null,
+  "anchor": null,
   "preview_world_periods": [
     [
       128,
@@ -13,6 +22,50 @@
     ]
   ],
   "world_period_selected": null,
+  "parent_direction": "Retain original earth palette/roles; existing road-tan is separate. Compare128/256. Only preserve source-evidenced puddles in source3; no invented water or masks.",
+  "original_atlas_contract": {
+    "id": "surface-earth",
+    "png": "runtime/atlas/surface-earth.png",
+    "png2x": "runtime/atlas/surface-earth@2x.png",
+    "columns": 4,
+    "rows": 1,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 4,
+    "category": "base-surface",
+    "tileMode": "variants",
+    "variants": 4,
+    "cellOrder": [
+      "earth-1",
+      "earth-2",
+      "earth-3",
+      "earth-4"
+    ],
+    "edgeLocked": true
+  },
+  "actual_consumers": {
+    "earth-1": {
+      "via_transition": "transition-meadow-earth",
+      "source_overlay_index": 0,
+      "counts_by_level": {
+        "c01-02": 28,
+        "c01-05": 55,
+        "c01-06": 28,
+        "c01-12": 152,
+        "c01-14": 40
+      },
+      "total_cells": 303
+    },
+    "earth-2": "catalog-only",
+    "earth-3": "catalog-only",
+    "earth-4": "catalog-only"
+  },
+  "consumer_count_basis": "Current code/map-derived cells, not a fresh full-render visible-pixel count",
+  "no_seamlessness_claim": true,
+  "no_repository_edits": true,
+  "asset_count": 2,
   "entries": [
     {
       "atlas": "surface-earth",
@@ -102,7 +155,5 @@
         "native_acceptance": "Opaque catalog source1 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
       }
     }
-  ],
-  "native_pixels_untouched": true,
-  "no_repository_edits": true
+  ]
 }

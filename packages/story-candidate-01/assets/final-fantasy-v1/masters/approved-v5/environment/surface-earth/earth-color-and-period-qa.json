@@ -1,0 +1,376 @@
+{
+  "preview_world_periods": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "all_native_opaque": true,
+  "entries": [
+    {
+      "asset": "earth-1",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+      "RGB_mean": [
+        157.11628562125918,
+        120.48330954979154,
+        78.86931388933404
+      ],
+      "RGB_std": [
+        9.304797320781605,
+        7.2801363976791755,
+        5.3122029303642115
+      ],
+      "luma_mean": 125.26694977590053,
+      "luma_std": 7.467000848043477,
+      "luma_percentiles_5_50_95": [
+        113.55700000000002,
+        125.7616,
+        136.6854
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 121.16452271979665,
+        "bottom": 122.97736289872408,
+        "left": 122.79412988187798,
+        "right": 120.61921004784688,
+        "central_half": 129.23276750933104
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 5.853535353535354,
+        "top_bottom_mean_abs_RGB": 7.278309409888357,
+        "left_right_max_abs_RGB": 32.0,
+        "top_bottom_max_abs_RGB": 24.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Muted light tan compacted soil with sparse grouped embedded gray-brown angular stones and broad shallow diagonal scuffed/swept bands. Dry ground identity remains, without added puddles or explicit wheel tracks.",
+        "style_review": "Far fewer stones and much broader soil shapes than the original fine gravel carpet, but roughly fourteen stone groups and many more soil patch contours than the six-to-ten broad-plane target. Low-contrast residual grain and small edge scallops remain. Some stones have several faceted faces rather than only two.",
+        "palette_caveat": "Visually lighter and more golden tan than the original dusty gray-tan, though not vivid orange. Quantitative mean-color differences are saved.",
+        "scale_caveat": "Larger stone groups about80-150 native pixels:8-15 logical units at128 or16-31 at256. Broad ground bands must remain material coloration, not new roads.",
+        "native_acceptance": "Opaque actual-used source0 candidate.128/256 previews and scene/mask acceptance pending; no natural seamlessness claim."
+      },
+      "reference_material_identity": "Light dry tan compacted earth with many small gray-brown stones and subtle swept/scuffed bands.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_previews": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "earth-2",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5",
+      "RGB_mean": [
+        92.67631617102784,
+        71.97530708749545,
+        50.97843010818332
+      ],
+      "RGB_std": [
+        6.20703816842404,
+        6.152836431806107,
+        5.624152394611019
+      ],
+      "luma_mean": 74.8603671007481,
+      "luma_std": 6.0665285408614915,
+      "luma_percentiles_5_50_95": [
+        65.0206,
+        75.161,
+        85.0166
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 74.32022841656698,
+        "bottom": 72.48182616377592,
+        "left": 75.69545834579347,
+        "right": 73.0657026166268,
+        "central_half": 75.0482902536614
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 3.7913343965975543,
+        "top_bottom_mean_abs_RGB": 4.049175970228601,
+        "left_right_max_abs_RGB": 15.0,
+        "top_bottom_max_abs_RGB": 14.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Dark damp gray-brown mud with two broad low-contrast diagonal rut bands crossing in the middle and sparse embedded gray-brown stone groups. Retains original crossing-rut profile without added pools or new gameplay routes.",
+        "style_review": "About twelve to fourteen stone groups, low contrast and broadly faceted shapes. Ruts are shallow broad dark bands rather than trenches. Soil is simplified from original gravel but retains more patch edges and small cloudy fragments than the strict six-to-ten-plane target.",
+        "palette_caveat": "Dark earthy gray-brown remains distinct from source1 light tan. Native mean comparison saved; no bright wet shine or blue accents.",
+        "scale_caveat": "Stone groups roughly90-170 native pixels,9-17 logical at128 or18-35 at256. Crossed rut motif spans a whole material period and may become obvious in repeats; it is catalog-only and must not create road topology.",
+        "native_acceptance": "Opaque catalog source1 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
+      },
+      "reference_material_identity": "Darker damp gray-brown mud and rubble with intersecting deep brown rut bands; a genuinely wetter/darker variant.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_previews": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "earth-3",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1",
+      "RGB_mean": [
+        145.0933383189742,
+        108.01783765634181,
+        68.04456997575859
+      ],
+      "RGB_std": [
+        10.77958634207729,
+        8.985240959689277,
+        6.521808281642276
+      ],
+      "luma_mean": 113.01401917067933,
+      "luma_std": 9.111739628814874,
+      "luma_percentiles_5_50_95": [
+        100.12659999999998,
+        113.906,
+        127.18279999999999
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 112.07565764802632,
+        "bottom": 110.44233896281897,
+        "left": 111.1133286632775,
+        "right": 109.32694965111642,
+        "central_half": 113.80351221651999
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 6.129984051036683,
+        "top_bottom_mean_abs_RGB": 9.442583732057416,
+        "left_right_max_abs_RGB": 27.0,
+        "top_bottom_max_abs_RGB": 32.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Warm muted ochre compacted soil with two long shallow roughly vertical curved rut bands and sparse gray-brown stone groups. Original longitudinal-track identity is retained and distinct from source2 crossing ruts.",
+        "style_review": "Broad opaque soil planes and about fourteen stone groups with very little fine gravel. Multiple secondary soil contour patches and faint texture remain. Ruts have light central bands with dark edges, making them stronger than the source subtle wheel tracks.",
+        "palette_caveat": "Visually brighter and more golden/tan than original muted ochre, close to new source1 in overall color; source distinction is carried mainly by longitudinal ruts. Quantitative color differences saved.",
+        "scale_caveat": "Stone groups around70-150 native pixels,7-15 logical at128 or14-31 at256. Ruts span full period; their slight diverging curves and repeated phase may create visible track discontinuities. This remains catalog-only material art, not new game roads.",
+        "native_acceptance": "Opaque catalog source2 candidate;128/256 preview only, no natural seamlessness or scene acceptance.",
+        "observed_repeat_limit": "Observed in128/256 untreated repeat contacts: upper/lower rut positions do not match. Repetition creates visible cutoffs and V-like foldback joins. This catalog source is not an automatically connectable road and requires source/scene review before any route use."
+      },
+      "reference_material_identity": "Warm ochre compacted earth with longitudinal wheel/rut bands and pebbles; track identity is already in the original pixels.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_previews": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "earth-4",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "fde3a5007ac460df170aec643f58b3a8705186da809ce2a4ab41c37cfb748621",
+      "RGB_mean": [
+        94.59851219319867,
+        71.94618369542822,
+        47.93776915465407
+      ],
+      "RGB_std": [
+        5.9688409926675705,
+        5.202614336845665,
+        5.880131182696271
+      ],
+      "luma_mean": 75.02866120421032,
+      "luma_std": 5.183432236138505,
+      "luma_percentiles_5_50_95": [
+        67.02059999999999,
+        75.0848,
+        83.4682
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 73.14451321022729,
+        "bottom": 74.66770650667863,
+        "left": 75.39567010815391,
+        "right": 73.63014354066985,
+        "central_half": 75.83782164489433
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 4.860978203083466,
+        "top_bottom_mean_abs_RGB": 4.619351408825093,
+        "left_right_max_abs_RGB": 20.0,
+        "top_bottom_max_abs_RGB": 22.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Dark brown muddy floor with five separated dull gray reflective wet patches and sparse gray-brown stones, preserving the puddles actually visible in the original source. No blue water, new channel, water mask or added terrain topology.",
+        "style_review": "Five broad flat puddle patches have a restrained pale edge segment, with about ten stone groups and broad low-contrast mud regions. Small secondary soil patches and some low-contrast texture remain rather than the requested six-to-ten total regions. Stones have darker outlined bases and may appear slightly raised.",
+        "palette_caveat": "Brown muddy identity is retained but visually warmer/less gray than the original. Wet-patch sizes are larger and cleaner than old small irregular reflective spots; no exact feature-count equivalence is claimed.",
+        "scale_caveat": "Wet patches are around180-230 native pixels across,18-23 logical at128 or37-47 at256. Stone groups roughly80-160 native,8-16 at128 or16-33 at256. This source remains catalog-only.",
+        "native_acceptance": "Opaque catalog source3 candidate; source-evidenced small puddles only.128/256 preview and actual scene review pending; no natural seamlessness claim."
+      },
+      "reference_material_identity": "Dark gray-brown muddy ground with several small pale gray reflective puddle shapes and stones; do not erase confirmed wet/puddle identity by copying dry earth.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_previews": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    }
+  ],
+  "original_native_color_and_texture_measurements": [
+    {
+      "id": "earth-1",
+      "original_swatch_mean_RGB": [
+        135.47639445676725,
+        108.55437414786024,
+        73.31882745568873
+      ],
+      "native_mean_RGB": [
+        157.11628562125918,
+        120.48330954979154,
+        78.86931388933404
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 1.233371109128106,
+      "measurement_only_no_filtering_applied": true
+    },
+    {
+      "id": "earth-2",
+      "original_swatch_mean_RGB": [
+        98.02232338801049,
+        78.61165266563913,
+        57.91886208902816
+      ],
+      "native_mean_RGB": [
+        92.67631617102784,
+        71.97530708749545,
+        50.97843010818332
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 1.021493299460894,
+      "measurement_only_no_filtering_applied": true
+    },
+    {
+      "id": "earth-3",
+      "original_swatch_mean_RGB": [
+        118.97631903969624,
+        93.0847308842593,
+        61.09621410854454
+      ],
+      "native_mean_RGB": [
+        145.0933383189742,
+        108.01783765634181,
+        68.04456997575859
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 1.013940996861163,
+      "measurement_only_no_filtering_applied": true
+    },
+    {
+      "id": "earth-4",
+      "original_swatch_mean_RGB": [
+        96.93156427423129,
+        78.55176939826214,
+        57.08226328320547
+      ],
+      "native_mean_RGB": [
+        94.59851219319867,
+        71.94618369542822,
+        47.93776915465407
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 0.9136467558127095,
+      "measurement_only_no_filtering_applied": true
+    }
+  ],
+  "measurements_not_scene_validation": true
+}

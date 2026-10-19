@@ -1,0 +1,248 @@
+{
+  "atlas": "surface-earth",
+  "status": "all four exact original native opaque material candidates saved; parent sampling and scene review pending",
+  "asset_count": 4,
+  "entries": [
+    {
+      "atlas": "surface-earth",
+      "cell_index": 0,
+      "original_cellOrder_token": "earth-1",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-8df9fe05-6ee7-49a5-b9b6-18fe6c1b3ce1.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/earth-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+      "sha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "preview_world_periods": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Muted light tan compacted soil with sparse grouped embedded gray-brown angular stones and broad shallow diagonal scuffed/swept bands. Dry ground identity remains, without added puddles or explicit wheel tracks.",
+        "style_review": "Far fewer stones and much broader soil shapes than the original fine gravel carpet, but roughly fourteen stone groups and many more soil patch contours than the six-to-ten broad-plane target. Low-contrast residual grain and small edge scallops remain. Some stones have several faceted faces rather than only two.",
+        "palette_caveat": "Visually lighter and more golden tan than the original dusty gray-tan, though not vivid orange. Quantitative mean-color differences are saved.",
+        "scale_caveat": "Larger stone groups about80-150 native pixels:8-15 logical units at128 or16-31 at256. Broad ground bands must remain material coloration, not new roads.",
+        "native_acceptance": "Opaque actual-used source0 candidate.128/256 previews and scene/mask acceptance pending; no natural seamlessness claim."
+      }
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 1,
+      "original_cellOrder_token": "earth-2",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-35e8cb43-6b7c-4ae2-b089-93ac39cafd13.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/earth-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+      "sha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "preview_world_periods": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Dark damp gray-brown mud with two broad low-contrast diagonal rut bands crossing in the middle and sparse embedded gray-brown stone groups. Retains original crossing-rut profile without added pools or new gameplay routes.",
+        "style_review": "About twelve to fourteen stone groups, low contrast and broadly faceted shapes. Ruts are shallow broad dark bands rather than trenches. Soil is simplified from original gravel but retains more patch edges and small cloudy fragments than the strict six-to-ten-plane target.",
+        "palette_caveat": "Dark earthy gray-brown remains distinct from source1 light tan. Native mean comparison saved; no bright wet shine or blue accents.",
+        "scale_caveat": "Stone groups roughly90-170 native pixels,9-17 logical at128 or18-35 at256. Crossed rut motif spans a whole material period and may become obvious in repeats; it is catalog-only and must not create road topology.",
+        "native_acceptance": "Opaque catalog source1 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
+      }
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 2,
+      "original_cellOrder_token": "earth-3",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-86b949e1-85ea-4ca5-a2cb-95053c376be3.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/earth-3-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+      "sha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "preview_world_periods": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Warm muted ochre compacted soil with two long shallow roughly vertical curved rut bands and sparse gray-brown stone groups. Original longitudinal-track identity is retained and distinct from source2 crossing ruts.",
+        "style_review": "Broad opaque soil planes and about fourteen stone groups with very little fine gravel. Multiple secondary soil contour patches and faint texture remain. Ruts have light central bands with dark edges, making them stronger than the source subtle wheel tracks.",
+        "palette_caveat": "Visually brighter and more golden/tan than original muted ochre, close to new source1 in overall color; source distinction is carried mainly by longitudinal ruts. Quantitative color differences saved.",
+        "scale_caveat": "Stone groups around70-150 native pixels,7-15 logical at128 or14-31 at256. Ruts span full period; their slight diverging curves and repeated phase may create visible track discontinuities. This remains catalog-only material art, not new game roads.",
+        "native_acceptance": "Opaque catalog source2 candidate;128/256 preview only, no natural seamlessness or scene acceptance.",
+        "observed_repeat_limit": "Observed in128/256 untreated repeat contacts: upper/lower rut positions do not match. Repetition creates visible cutoffs and V-like foldback joins. This catalog source is not an automatically connectable road and requires source/scene review before any route use."
+      }
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 3,
+      "original_cellOrder_token": "earth-4",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-330894ae-caae-4a79-baaa-a1cd130b6876.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/earth-4-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+      "sha256": "fde3a5007ac460df170aec643f58b3a8705186da809ce2a4ab41c37cfb748621",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "preview_world_periods": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Dark brown muddy floor with five separated dull gray reflective wet patches and sparse gray-brown stones, preserving the puddles actually visible in the original source. No blue water, new channel, water mask or added terrain topology.",
+        "style_review": "Five broad flat puddle patches have a restrained pale edge segment, with about ten stone groups and broad low-contrast mud regions. Small secondary soil patches and some low-contrast texture remain rather than the requested six-to-ten total regions. Stones have darker outlined bases and may appear slightly raised.",
+        "palette_caveat": "Brown muddy identity is retained but visually warmer/less gray than the original. Wet-patch sizes are larger and cleaner than old small irregular reflective spots; no exact feature-count equivalence is claimed.",
+        "scale_caveat": "Wet patches are around180-230 native pixels across,18-23 logical at128 or37-47 at256. Stone groups roughly80-160 native,8-16 at128 or16-33 at256. This source remains catalog-only.",
+        "native_acceptance": "Opaque catalog source3 candidate; source-evidenced small puddles only.128/256 preview and actual scene review pending; no natural seamlessness claim."
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "all_exact_prompt_sha256_verified": true,
+  "full_native_canvas": [
+    1254,
+    1254
+  ],
+  "all_pixels_opaque": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "preview_world_periods": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "parent_direction": "Retain original earth palette/roles; existing road-tan is separate. Compare128/256. Only preserve source-evidenced puddles in source3; no invented water or masks.",
+  "original_atlas_contract": {
+    "id": "surface-earth",
+    "png": "runtime/atlas/surface-earth.png",
+    "png2x": "runtime/atlas/surface-earth@2x.png",
+    "columns": 4,
+    "rows": 1,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 4,
+    "category": "base-surface",
+    "tileMode": "variants",
+    "variants": 4,
+    "cellOrder": [
+      "earth-1",
+      "earth-2",
+      "earth-3",
+      "earth-4"
+    ],
+    "edgeLocked": true
+  },
+  "actual_consumers": {
+    "earth-1": {
+      "via_transition": "transition-meadow-earth",
+      "source_overlay_index": 0,
+      "counts_by_level": {
+        "c01-02": 28,
+        "c01-05": 55,
+        "c01-06": 28,
+        "c01-12": 152,
+        "c01-14": 40
+      },
+      "total_cells": 303
+    },
+    "earth-2": "catalog-only",
+    "earth-3": "catalog-only",
+    "earth-4": "catalog-only"
+  },
+  "consumer_count_basis": "Current code/map-derived cells, not a fresh full-render visible-pixel count",
+  "no_seamlessness_claim": true,
+  "no_repository_edits": true
+}
