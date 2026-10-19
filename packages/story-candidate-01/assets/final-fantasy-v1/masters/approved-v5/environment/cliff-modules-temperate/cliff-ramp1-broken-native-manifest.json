@@ -1,0 +1,47 @@
+{
+  "status": "native pair complete; parent integration review pending",
+  "entries": [
+    {
+      "identity": "temperate-ramp-level-1",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/temperate-ramp-level-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1126
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c5aeb20e-2a47-4879-af6e-c4b5caa87faa.png",
+      "sha256": "ade9315be98a80ac6f4c95deb8e72e96f791cde1b96fa81d5c4ca6069bc72caa",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 5
+    },
+    {
+      "identity": "temperate-broken-ledge",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/temperate-broken-ledge-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1087
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-95d63def-be4a-4502-adc6-d329ef0f449b.png",
+      "sha256": "d47aee9463d19a1ee1cf88c4d27092b28cdc9428529757fe2b7ac2db9d3351e5",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 9
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

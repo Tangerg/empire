@@ -1,0 +1,93 @@
+{
+  "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
+  "label": "灰誓公开告示",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-GRAY-OATH-NOTICE",
+    "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
+    "label": "灰誓公开告示",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-gray-oath-notice.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "sourceAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-06.png",
+  "sourceAtlasSize": [
+    1254,
+    1254
+  ],
+  "sourceAtlasSha256": "5a2cd015ba3746e65a716b1296c957c1e582ca5fe301a19ab671449377181584",
+  "sourceTopicIndexZeroBased": 22,
+  "sourceTopicOrderEvidence": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md; build_final_fantasy_v1.py build_structures groups each board four rows, three state columns",
+  "sourceBoardNumber": 6,
+  "sourceNominalRowZeroBased": 2,
+  "sourceCellBoxes": {
+    "normal": [
+      0,
+      592,
+      418,
+      904
+    ],
+    "damaged": [
+      418,
+      592,
+      836,
+      904
+    ],
+    "captured": [
+      836,
+      592,
+      1254,
+      904
+    ]
+  },
+  "sourceStateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "sourceCropNote": "Original board visually authored third row between white separators at approximately y590 and905; diagnostic crop [592,904) excludes adjacent row subjects. Nominal equal-quarter importer differs; full board governs identity.",
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-gray-oath-notice.png",
+  "stateIdentity": {
+    "normal": "Roofed wooden public notice stand with slate shingle pitched canopy, two large outer posts on stone plinths, two slim interior posts, four framed dark notice panels (broad outer pair/narrow center pair), long low front bench/platform, and one unmarked pale-edged gray swallowtail flag at the upper-left. Abstract faint panel marks only.",
+    "damaged": "Same stand with central-left roof collapse exposing broken rafters, left flag absent, three torn hanging panels plus two fallen framed panels on ground, broken central bench/platform, cracked left post and rope around right post; stone foot locations remain fixed.",
+    "captured": "Intact normal structure and four panels with same unmarked gray flag. Three front cloth swags: left blue-gray/silver, center cream, right pale gray/cream; exactly four attachment knots, blue-gray at the two outer ends and red at the two inner posts. No new emblem."
+  },
+  "textPolicy": "No invented readable lettering or seals; panels use a few quiet abstract incised marks. Gray flag remains unmarked in both normal/captured.",
+  "countCaveat": "The damaged source visibly contains three hanging and two fallen panels versus four intact panels. Preserve the original authored damaged grouping, rather than deleting one to force conservation.",
+  "noRepositoryWrites": true,
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1088
+  ],
+  "sourceFootBasis": "Manually reviewed front bench-foot ground baseline at the canvas center, interpolated from fixed left/right bench support foot contacts. This intentional ground-plane point is in a transparent gap; not the lower-left stone-foot bbox bottom. One shared point applies to all states.",
+  "rawGeneratedSources": {
+    "normal": "/workspace/scratch/84c9fe948755/generated_images/exec-c47eaa0d-abfd-4bc4-83c2-8e9535f3284c.png"
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "postGenerationTransform": "None; copied native PNG bytes unchanged."
+}

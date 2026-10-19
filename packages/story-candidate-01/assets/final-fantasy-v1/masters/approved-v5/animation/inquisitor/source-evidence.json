@@ -1,0 +1,108 @@
+{
+  "topicId": "C01-UNIT-INQUISITOR",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-INQUISITOR",
+    "topicId": "C01-UNIT-INQUISITOR",
+    "label": "审判官",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-inquisitor.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-inquisitor.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-inquisitor.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-berserker-templar-inquisitor-ghost.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "56eee17172d98813cd91ed74627a2245ca5828232ed2b5c6282e605f920e4df7"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-inquisitor.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "97a9c13afdbdb075013701887cc2a08ed5d57847cc09bd814212173f0ad1fe14"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-inquisitor.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "ecec9b13355a8c3fe799965ee170e0dcef29238c7259fcfe7343e0fb2bedf160"
+    }
+  },
+  "status": "Source/contract sent to coordinator before generation; idle pending",
+  "actualConsumers": [
+    "c01.inquisitor"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 22,
+    "text": "'c01.inquisitor': 'C01-UNIT-INQUISITOR'"
+  },
+  "referenceExtraction": "Native unresampled atlas THIRD row[0,630,1254,915], idle cell[0,630,314,915]. Full original board/HD/runtime strips preserved unchanged; native64x96 HD cells extracted without resampling.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Clean-shaven black-haired adult human in rounded gray steel open-face helmet with cheek flaps, pale forehead band and small gold teardrop/oval ornament. Ivory long split-front coat/hood down, slate-blue-gray neck scarf and front hanging panel, gray steel shoulders/forearms/knees/shins, brown diagonal chest strap/belt/pouches, dark gloves and brown boots. Screen-left dark rectangular shield with one gold vertical bar; screen-right wooden staff with circular gold four-arm-cross medallion and gray open curved hook above.",
+  "symbolReview": "Gold cross only inside original staff medallion; shield has one vertical bar, helmet a small teardrop/oval. No added cross on shield or costume. Preserve distinctive third-row equipment, not templar or cleric kit.",
+  "semanticEvidence": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:80",
+    "weaponDefinition": "packages/story-candidate-01/src/weapons.ts:107-116",
+    "weapons": [
+      "c01.inquisitor-flame"
+    ],
+    "damageType": "magic",
+    "range": 2,
+    "area": "cross1",
+    "hitEffect": "silenced duration1",
+    "tags": [
+      "arcane",
+      "ranged"
+    ],
+    "separateEquipmentTopic": "C01-EQUIP-INQUISITOR",
+    "separateEquipmentBindingLine": 117,
+    "separateEffectTopic": "C01-FX-06",
+    "separateEffectBindingLine": 161
+  },
+  "actionContract": "Original attack is visually near-idle and original walk-b repeats walk-a. Preserve canonical order while reconstructing a clear raised/forward-staff casting action with shield retained and opposite walking contacts. No external spell flame is baked into character; existing FX topic remains separate.",
+  "ruleIllustrationReview": "No required weapon-type contradiction: source staff is credible for the single ranged magic action. The rules name inquisitor-flame does not require replacing the source implement or adding a persistent flame. No rule changes or remapping.",
+  "consumerStatus": "Campaign c01.inquisitor only; source unit name is 圣辉审判官. Multiple enemy level definitions use it, not a claim of Gray Flag faction membership or current live actor count.",
+  "scaleContract": "Approved chunky44logical human body, idle first; one locked body scale/full native canvas and measured source feet for quartet.",
+  "actionPlanApproval": "Coordinator2026-10-19 17:13UTC accepted verified inquisitor identity, original staff emblem/shield bar separate, opposite walks and casting without baked independent FX."
+}

@@ -1,0 +1,45 @@
+{
+  "topicId": "C01-UNIT-INQUISITOR",
+  "status": "Accepted by coordinator2026-10-19 17:15UTC; remaining poses authorized on actual1561x1008 canvas",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/master.png",
+  "nativeCanvas": [
+    1561,
+    1008
+  ],
+  "sourceFoot": [
+    753,
+    983
+  ],
+  "sourceFootMidpoint": [
+    753.4618510694256,
+    972.5
+  ],
+  "bodyCrownY": 89,
+  "bodyHeight": 883.5,
+  "proposedSharedScale": {
+    "numerator": 44,
+    "denominator": 883.5,
+    "value": 0.04980192416525184
+  },
+  "identityReview": "Clean-shaven adult, rounded steel helmet with cheek flaps and gold forehead teardrop; ivory coat/hood down, slate-blue scarf/front panel, brown straps/pouch/boots and dark glove. Screen-left rectangular dark shield has one gold vertical bar; screen-right staff has gold cross disk and gray open hook. No exterior FX, source hand assignments intact.",
+  "alphaGate": {
+    "perimeterMaxAlpha": 1,
+    "perimeterCountAlphaGreaterThan1": 0,
+    "passed": true
+  },
+  "completeVisibleBounds": [
+    362,
+    89,
+    1249,
+    984
+  ],
+  "postprocessing": "none; native pixels and alpha unchanged",
+  "nativeCanvasNote": "Generator returned1561x1008 despite requested1586x992. Preserve this complete native size; use accepted native canvas as remaining-pose reference, no resize or regeneration solely for dimensions.",
+  "exactPrompt": "idle/prompt.txt",
+  "request": "idle/request.json",
+  "lockedSharedScale": 0.04980192416525184,
+  "canonicalSourceFoot": [
+    753,
+    983
+  ]
+}
