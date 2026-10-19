@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-LOGISTICS-2",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5976104535661322,
+  "nearOpaqueFractionAlphaGE250": 0.37872555827730847,
+  "nonzeroAlphaBBox": [
+    0,
+    23,
+    1240,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    73,
+    137,
+    1207,
+    1170
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    73,
+    137,
+    47,
+    84
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 36,
+  "sha256": "9619ef35270c03319443c8548a1f164ae58f5f14ef3a5d4e159742e354e0c2fe",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Two-post rack, exactly three blue-water-filled buckets and one wooden dipper retained."
+}

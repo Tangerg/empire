@@ -7,9 +7,12 @@ import hdManifest from '../../assets/final-fantasy-v1/manifest-tactical-runtime-
 import { candidate01Asset, readCandidate01AssetRecord } from './candidate-01-assets';
 import { runtimeAtlasCellMarkup } from '@empire/game-ui';
 
+import sourceOverrides from '../../../../tools/art/source-overrides.json';
+
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-STRUCT-MERCENARY-DEPOT', source: 'buildings/mercenary-depot', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-OATH-TOWER-CONSOLE', source: 'buildings/oath-tower-console', size: [112, 112], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-UNIT-BANNER-GUARD', source: 'animation/banner-guard', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-STRUCT-REFUGEE-SHELTER', source: 'buildings/refugee-shelter', size: [160, 160], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
@@ -84,6 +87,27 @@ describe('authored red sequence file contract', () => {
       expect(png.equals(exported)).toBe(true);
       expect(png.readUInt32BE(16)).toBe(variant.frameWidth * variant.frames * density);
       expect(png.readUInt32BE(20)).toBe(variant.frameHeight * density);
+    }
+  });
+});
+
+
+describe('approved static prop bindings', () => {
+  const props = Object.entries(sourceOverrides.assets)
+    .filter(([, entry]) => entry.source.includes('/masters/approved-v5/props/'))
+    .map(([topic]) => topic);
+  it.each(props)('resolves %s through the canonical 64/128 runtime files', (topic) => {
+    const record = candidate01Asset(topic);
+    const hd = hdManifest.assets.find(entry => entry.topicId === topic);
+    expect(record.qualityTier).toBe('approved-chunky-v5-export-verified');
+    expect([record.width, record.height]).toEqual([64, 64]);
+    expect(hd).toBeDefined();
+    if (!hd) throw new Error(`missing prop HD ${topic}`);
+    expect(record.url).toContain(hd.png);
+    for (const [path, size] of [[record.png, 64], [hd.png, 128]] as const) {
+      const bytes = readFileSync(new URL(path, pack));
+      expect([bytes.readUInt32BE(16), bytes.readUInt32BE(20)]).toEqual([size, size]);
+      expect(bytes[25]).toBe(6); // PNG RGBA colour type, not an opaque RGB export.
     }
   });
 });

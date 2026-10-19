@@ -1,0 +1,234 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/captured/master.png"
+    },
+    "scale": 0.09271523178807947,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      128,
+      128
+    ],
+    "sourceFoot": [
+      627,
+      1180
+    ]
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    62.13245033112583,
+    113.40397350993378
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "3042b915b3073dcec78683da73594b392c0e3f341e5050a741d20e1a7f347486",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8020,
+        "nearOpaquePixels": 7854,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          15,
+          118,
+          113
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "3042b915b3073dcec78683da73594b392c0e3f341e5050a741d20e1a7f347486",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32418,
+        "nearOpaquePixels": 31850,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          29,
+          236,
+          227
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9afdd47db4c1425efa5b6c3a8b83015eaa3d928687c896f5e13953448a931739",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7953,
+        "nearOpaquePixels": 7729,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          14,
+          119,
+          114
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9afdd47db4c1425efa5b6c3a8b83015eaa3d928687c896f5e13953448a931739",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32348,
+        "nearOpaquePixels": 31503,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          29,
+          238,
+          229
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "22257a086ebf640d140e0a63751031601022ed840eb6a62262524350a079ea37",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7668,
+        "nearOpaquePixels": 8151,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          12,
+          117,
+          113
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/mercenary-depot/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "22257a086ebf640d140e0a63751031601022ed840eb6a62262524350a079ea37",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 31050,
+        "nearOpaquePixels": 33077,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          24,
+          234,
+          227
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

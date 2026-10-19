@@ -25,8 +25,8 @@
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 5,
-  "authoredThreeStateBundles": 6,
-  "formalRuntimeBoundTopics": 30,
+  "authoredThreeStateBundles": 7,
+  "formalRuntimeBoundTopics": 35,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -206,6 +206,36 @@
       "raw": "native master, exact prompt and original source evidence preserved",
       "export": "64/128 true-alpha semantic and native review passed",
       "runtimeBinding": "canonical resolver references new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-EVIDENCE-2": {
+      "raw": "exact source and prompt preserved with original board evidence",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical and HD resolver URLs plus RGBA dimensions regression tested",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-EVIDENCE-3": {
+      "raw": "exact source and prompt preserved with original board evidence",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical and HD resolver URLs plus RGBA dimensions regression tested",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-EVIDENCE-4": {
+      "raw": "exact source and prompt preserved with original board evidence",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical and HD resolver URLs plus RGBA dimensions regression tested",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-LOGISTICS-2": {
+      "raw": "exact source and prompt preserved with original board evidence",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical and HD resolver URLs plus RGBA dimensions regression tested",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-MERCENARY-DEPOT": {
+      "raw": "native trio, exact prompts and original state identity preserved",
+      "export": "112 logical visible kiosk; same scale and foot; native semantic review passed",
+      "runtimeBinding": "128-square canonical and256-square HD, registered pivot; existing depot consumer",
       "liveGame": "pending"
     }
   },

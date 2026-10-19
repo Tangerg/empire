@@ -1,0 +1,86 @@
+{
+  "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+  "binding": "depot",
+  "placementEvidence": "Shared Gray Flag experience lab supply-depot; no story-candidate-01 campaign depot placement found",
+  "sourceEvidence": "Atlas02 bottom row and runtime-HD strip, details source.json",
+  "status": "Native trio complete and alpha-gate verified; raw-only delivery without repo edits",
+  "commonCanvas": [
+    1254,
+    1254
+  ],
+  "commonSourceFoot": [
+    627,
+    1180
+  ],
+  "recommendedLogicalVisibleWidth": 128,
+  "logicalScaleStatus": "Suggested, parent scene calibration pending",
+  "postGenerationTransform": "none",
+  "perimeterRequirement": "All actual outermost edges maximum alpha<=1, no gate relaxation or programmatic cleanup",
+  "states": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        23,
+        114,
+        1231,
+        1180
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2941b562-1277-4130-be39-b0cfcf2b26d2.png",
+      "sha256": "3042b915b3073dcec78683da73594b392c0e3f341e5050a741d20e1a7f347486",
+      "postGenerationTransform": "none"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        20,
+        111,
+        1239,
+        1192
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5aeef58c-6eff-4f5f-9dd9-a95122e9540d.png",
+      "sha256": "9afdd47db4c1425efa5b6c3a8b83015eaa3d928687c896f5e13953448a931739",
+      "postGenerationTransform": "none"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        23,
+        88,
+        1219,
+        1181
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-12f28388-a136-4495-a940-7421697fbc61.png",
+      "sha256": "22257a086ebf640d140e0a63751031601022ed840eb6a62262524350a079ea37",
+      "postGenerationTransform": "none"
+    }
+  },
+  "semantic": {
+    "normal": "Ochre pyramidal timber roof, squat timber/stone kiosk, chain/pulley hoist, large front abstract ledger board, right two crates/two sacks/barrel",
+    "damaged": "Same kiosk base, several large roof holes and broken eaves, cracked hoist/support/board, broken crates and spilled supplies, no flag",
+    "captured": "Restored kiosk, ledger replaced by locked timber door, four right crates replacing sacks/barrel, timber lifting crate on left, one source-matched dark-gray forked pale-radial-star roof flag"
+  },
+  "visualReview": "Shared-canvas and suggested128logical-wide previews checked. Body, foundation and camera retained; local damaged rubble changes intentional. Complete silhouettes and genuine RGBA edges.",
+  "limits": [
+    "No live-game review or formal binding performed",
+    "Captured and normal shape positions visually matched; exact pixel identity not claimed",
+    "Do not independently crop or fit state bounds"
+  ]
+}

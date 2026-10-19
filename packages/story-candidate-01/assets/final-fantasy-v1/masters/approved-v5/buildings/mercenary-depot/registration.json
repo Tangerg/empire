@@ -24,7 +24,26 @@
   "logicalScaleStatus": "Suggested, pending parent scene calibration",
   "perStateTransforms": {
     "normal": "none",
-    "damaged": "pending",
-    "captured": "pending"
+    "damaged": "none",
+    "captured": "none"
+  },
+  "sharedExportScaleSuggestion": 0.10596026490066225,
+  "sharedExportScaleBasis": "128/normal visible width1208; one scale/origin for all states, no per-state fit",
+  "stateGeneration": {
+    "normal": {
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2941b562-1277-4130-be39-b0cfcf2b26d2.png",
+      "prompt": "normal/prompt.txt",
+      "rawIsMaster": true
+    },
+    "damaged": {
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5aeef58c-6eff-4f5f-9dd9-a95122e9540d.png",
+      "prompt": "damaged/prompt.txt",
+      "rawIsMaster": true
+    },
+    "captured": {
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-12f28388-a136-4495-a940-7421697fbc61.png",
+      "prompt": "captured/prompt.txt",
+      "rawIsMaster": true
+    }
   }
 }
