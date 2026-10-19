@@ -560,7 +560,7 @@
     },
     {
       "topicId": "C01-UNIT-BANNER-GUARD",
-      "status": "exported",
+      "status": "raw-generated",
       "source": null,
       "verification": {
         "state": "export-checked",
@@ -584,7 +584,11 @@
         },
         "registrationOffsets": "none",
         "note": "One-pixel walk contact variation accepted by visual review; shifting walk-a would fail unchanged edge alpha gate. Pivot remains unchanged.",
-        "runtimeVisual": "pending-browser-socket-blocked"
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "crossAssetScale": "failed-human-body-smaller-than-swordsman-archer",
+        "revisionRequired": "All four poses need larger body and shorter/repositioned banner within unchanged frame",
+        "overallAcceptance": "failed-cross-unit-body-scale",
+        "exportCheckHistory": "prior candidate export passed; active override removed and runtime restored to baseline"
       },
       "assignment": "redraw_grayflag_cover_props",
       "assignmentPhase": "after-equipment-quartet",
@@ -615,7 +619,8 @@
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/master.png",
           "sha256": "e5dd0237ca8b9140274f96e56ad06b16db7771aadac7c9ac3ce6438d8db3810a"
         }
-      }
+      },
+      "runtimeSelection": "legacy-baseline-pending-cohesion-revision"
     },
     {
       "topicId": "C01-UNIT-BATTLE-MAGE",
@@ -2122,10 +2127,14 @@
     },
     {
       "topicId": "C01-EQUIP-INQUISITOR",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-inquisitor/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "da411a038d3ea9b3e4018c449f910be8f6e2e82fa8ffa7a94f1eb0c803a2d61e"
     },
     {
       "topicId": "C01-EQUIP-IVRA-GROWTH",
@@ -2247,10 +2256,14 @@
     },
     {
       "topicId": "C01-EQUIP-RUNE-SHIELD",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-rune-shield/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "35dbb144b76b3490f785a682322d37bc57d79a08931bc33bef98c6c6e3d70985"
     },
     {
       "topicId": "C01-EQUIP-SHAMAN",
@@ -9654,28 +9667,32 @@
       "cellId": "grave-cross-cluster",
       "index": 8,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "scenery-regional",
       "cellId": "grave-signboards",
       "index": 9,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "scenery-regional",
       "cellId": "grave-dead-tree",
       "index": 10,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "scenery-regional",
       "cellId": "grave-marker-lantern",
       "index": 11,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "scenery-regional",
@@ -9735,19 +9752,27 @@
       "atlasId": "surface-meadow",
       "cellId": "meadow-3",
       "index": 2,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-forest-completion"
+      "assignmentPhase": "after-forest-completion",
+      "sourceSha256": "cd4ac12b2039b9ca7a715b5c6829d428097613eed98143057b6310d829c1c3d1",
+      "verification": {
+        "state": "pending-all-four-sources-and-seam-cohesion-review"
+      }
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-4",
       "index": 3,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-forest-completion"
+      "assignmentPhase": "after-forest-completion",
+      "sourceSha256": "822e578760219373ab17c9220c26b68a0647e259cf1d546d439115e15f32cdc0",
+      "verification": {
+        "state": "pending-all-four-sources-and-seam-cohesion-review"
+      }
     }
   ],
   "baselineSemanticMismatches": [
@@ -9864,6 +9889,14 @@
       "Unit, crate and console contours/materials broadly compatible",
       "Legacy grass has conspicuous repeated texture; compare new meadow before acceptance",
       "Fern is brighter than neighboring foliage; assess shared palette after new ground"
+    ],
+    "issues": [
+      {
+        "topicId": "C01-UNIT-BANNER-GUARD",
+        "issue": "human body too small relative to other units",
+        "status": "revision-requested",
+        "evidence": "docs/art-rebuild-20261019/three-unit-scale.png"
+      }
     ]
   }
 }
