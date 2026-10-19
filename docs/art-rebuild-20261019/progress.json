@@ -564,7 +564,7 @@
       "source": null,
       "verification": {
         "state": "partial-frames-only",
-        "note": "3 of four pose masters backed up; topic remains pending"
+        "note": "4 of four pose masters backed up; topic remains pending"
       },
       "assignment": "redraw_grayflag_cover_props",
       "assignmentPhase": "after-equipment-quartet",
@@ -589,6 +589,11 @@
           "status": "raw-generated",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/master.png",
           "sha256": "7020d970d91da4618ba424965633a7d78a2804743557e88fcc34e3f6038a5b57"
+        },
+        "walk-b": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/master.png",
+          "sha256": "e5dd0237ca8b9140274f96e56ad06b16db7771aadac7c9ac3ce6438d8db3810a"
         }
       }
     },
@@ -2099,7 +2104,8 @@
       "topicId": "C01-EQUIP-INQUISITOR",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-IVRA-GROWTH",
@@ -2152,7 +2158,8 @@
       "topicId": "C01-EQUIP-LEGION-SHIELD",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-LONG-RANGE-SCOUT-KIT",
@@ -2213,7 +2220,8 @@
       "topicId": "C01-EQUIP-RUNE-SHIELD",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-SHAMAN",
@@ -2290,7 +2298,8 @@
       "topicId": "C01-EQUIP-TEMPLAR",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-TROLL",
@@ -4852,11 +4861,16 @@
     },
     {
       "topicId": "c02-equipment-field-medic",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-field-medic/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-047-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "assignmentPhase": "after-current-battle-props",
@@ -5023,11 +5037,16 @@
     },
     {
       "topicId": "c02-equipment-repair-engineer",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-repair-engineer/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-047-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "assignmentPhase": "after-current-battle-props",
@@ -7744,11 +7763,15 @@
     },
     {
       "topicId": "c03-equip-4c02a584",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4c02a584/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "after-evidence-revisions-source-review-first"
+      "assignmentPhase": "after-evidence-revisions-source-review-first",
+      "sourceSha256": "13c6a32045cc0e7d76f3f2ae66176ede05b3066c2d88bd4c71b5d4409fa56b22"
     },
     {
       "topicId": "c03-equip-4dad36ef",
@@ -7830,11 +7853,15 @@
     },
     {
       "topicId": "c03-equip-915fc486",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-915fc486/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "after-evidence-revisions-source-review-first"
+      "assignmentPhase": "after-evidence-revisions-source-review-first",
+      "sourceSha256": "05ac59b643f0f3a8007284df8b0ac2400bec653af1b0a2ccd063a653a9ce15e0"
     },
     {
       "topicId": "c03-equip-9881f2a3",
@@ -9088,28 +9115,34 @@
       "atlasId": "forest-existing",
       "cellId": "pine-low-shrub",
       "index": 12,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-low-shrub/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-underbrush",
       "sourceSha256": "cbed8d148737b24575f54966c932c76fada1e5a683eca9dfe00bf27329fb5107",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-018-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-fallen-log",
       "index": 13,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-fallen-log/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-underbrush",
       "sourceSha256": "ac87db8fc70d1f77d7206d56e6144424eac39ca4160ed3526cadb632289bd67d",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-018-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {

@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-915fc486",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-915fc486.png",
+  "label": "Village archer",
+  "observed_original": "Runtime shows ornate red-gold beast-face shield.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed semantic reconstruction by manifest role/ART-DIRECTION, intact matching board objects used for material context. Not recovered from mislabeled slots. Exact atlas mapping unresolved.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 0,
+  "threshold_bboxes": {
+    "1": [
+      23,
+      26,
+      1230,
+      1238
+    ],
+    "128": [
+      281,
+      122,
+      1126,
+      1158
+    ],
+    "240": [
+      282,
+      122,
+      1125,
+      1157
+    ]
+  },
+  "visual_review": "Complete bow, taut string and quiver with3 arrows. Correct nocks/fletching up, heads hidden. Clear compact icon."
+}
