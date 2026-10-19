@@ -1,0 +1,38 @@
+{
+  "focusedTypeScript": {
+    "passed": 23,
+    "failed": 0
+  },
+  "pythonStone": {
+    "passed": 7,
+    "failed": 0
+  },
+  "pythonField": {
+    "passed": 8,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "appBuilds": {
+    "passed": [
+      "game-app",
+      "editor-app",
+      "engine-demo-app",
+      "experience-lab-app"
+    ]
+  },
+  "sparseFullTypeScript": {
+    "passedTests": 985,
+    "failedTests": 3,
+    "passedFiles": 101,
+    "failedFiles": 4,
+    "collectionFailures": 1,
+    "cause": "Missing sparse-worktree files; failures retained without weakening assertions",
+    "failures": [
+      "approved_catalog_bindings.test.ts: candidate-02 manifest absent at collection",
+      "fortification_pilot.test.ts: native stone-top material absent",
+      "architecture-boundaries.test.ts: 45 linked documents/images absent",
+      "candidate-01-crossing.test.ts: immutable crossing baseline absent"
+    ]
+  },
+  "liveBrowserGpu": "not run; actual BoardView/SvgBoardSurface offline projection only"
+}

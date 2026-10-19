@@ -1,0 +1,68 @@
+{
+  "kind": "same-branch complete actual BoardView before/after, fixed camera; old wolf rider retained in both",
+  "checkpoint": "current worktree; exact input hashes recorded",
+  "level": "c01-07",
+  "actors": 23,
+  "structureDrawings": 16,
+  "allActorBindingsPositionsStandingOrderAndStateEqual": true,
+  "viewport": [
+    0,
+    0,
+    884,
+    616
+  ],
+  "commonSourceCount": 36,
+  "unchangedCommonSources": [
+    "packages/game-ui/src/art/battlefield-layer.ts",
+    "packages/game-ui/src/styles/app.css",
+    "packages/game-ui/src/ui/board.ts",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-wolf-rider.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png",
+    "packages/story-candidate-01/src/campaign.ts",
+    "packages/story-candidate-01/src/levels.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-environment.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-road-corridor.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-road-material.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "packages/story-candidate-01/src/presentation/index.ts"
+  ],
+  "changedCommonSources": [
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-world-material.ts"
+  ],
+  "beforeOnlySources": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-stone-road@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-stone-road@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png"
+  ],
+  "afterOnlySources": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-base@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-paving@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-road-edge-masks@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-road-masks@2x.png"
+  ],
+  "pngSourcesEqualWhereShared": true,
+  "liveGpuVerified": false
+}

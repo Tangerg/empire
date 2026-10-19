@@ -1,0 +1,102 @@
+[
+  {
+    "id": "stone-paving",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+    "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-paving.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-old-stone",
+      "tone": 3
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "ce456fc428fd4d3a15dcd470f83bb06970c1af03933f3a7bd1dc7daa790dc3ec",
+    "interiorPixelSha256": "5688c46333c6baf233996b16b0c302d3c231c4c06e2ea5ce8f7a8cef80441763",
+    "edgeHashes": {
+      "top": "92b17991f08f13da0342360e5dd3fdc2885d15d1a8ba7444144710f6dc0cf00c",
+      "bottom": "92b17991f08f13da0342360e5dd3fdc2885d15d1a8ba7444144710f6dc0cf00c",
+      "left": "3e223453784ae4f3ab037922c39c8dd0721ef745480f3d885c8d2896c2bbd6d5",
+      "right": "3e223453784ae4f3ab037922c39c8dd0721ef745480f3d885c8d2896c2bbd6d5"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "stone-paving",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+    "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-paving@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      8.0,
+      8.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-old-stone",
+      "tone": 3
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "3ce60e3eef7d511f08f50381883963aa0b9f19cb6362fe5a069b824be250168e",
+    "interiorPixelSha256": "b5187a3a73d0dd61d9031911e464f270b15a9baaf566583ac8524031e4b1650e",
+    "edgeHashes": {
+      "top": "af5dfe31b1f38fe69f0c0639a8df447eb2208afd502cf523d7160a784549c3c8",
+      "bottom": "af5dfe31b1f38fe69f0c0639a8df447eb2208afd502cf523d7160a784549c3c8",
+      "left": "9362bd1ce80173a48fd2ae4ee2399e7dfaef359d85896b20e1fbac9dfa7288ed",
+      "right": "9362bd1ce80173a48fd2ae4ee2399e7dfaef359d85896b20e1fbac9dfa7288ed"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

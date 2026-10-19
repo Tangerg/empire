@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "stone-base",
+  "replaces": {
+    "atlas": "surface-old-stone",
+    "tone": 0
+  },
+  "source": "masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+  "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+  "logicalSize": [
+    128,
+    128
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/stone-base.png",
+  "png2x": "runtime/stone-base@2x.png"
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "stone-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+    "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-base.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-old-stone",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "8318bca886793f2f71d71da54318d7855e0c34cc03ad037f7c8918b560d9c8f9",
+    "interiorPixelSha256": "7f073c6dad57282baa3630b5383a2c92cd7ec87344799f44cd0dd7270bef1129",
+    "edgeHashes": {
+      "top": "96ad4341ea56eb5c7ecc61498f1169b596847135b435511852aa22a332489df9",
+      "bottom": "96ad4341ea56eb5c7ecc61498f1169b596847135b435511852aa22a332489df9",
+      "left": "ebd4ba1cddc5646b5e286051ccb5616e35317b53783eab32e1d4a92ca5ecc061",
+      "right": "ebd4ba1cddc5646b5e286051ccb5616e35317b53783eab32e1d4a92ca5ecc061"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "stone-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+    "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-base@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      8.0,
+      8.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-old-stone",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "1b9b81a459249cb9cec2c8112c72cfa77e70a45c88eede836e72d2260cebf07a",
+    "interiorPixelSha256": "4996ff2d0056e4607a7315e5461364e3211cb079613d9426bc94b73720734a54",
+    "edgeHashes": {
+      "top": "6426e12896ee46254637431f06f356241c7fd2c92bc775ca79b708ada1d09b31",
+      "bottom": "6426e12896ee46254637431f06f356241c7fd2c92bc775ca79b708ada1d09b31",
+      "left": "cc04fcd2336ca9ac12471cc301d7fdbcf3d5302d229f57b43cd0768af6153e45",
+      "right": "cc04fcd2336ca9ac12471cc301d7fdbcf3d5302d229f57b43cd0768af6153e45"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

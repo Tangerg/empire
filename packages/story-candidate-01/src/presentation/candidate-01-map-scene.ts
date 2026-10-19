@@ -26,6 +26,8 @@ import {
 import { candidate01IsAreaWater, candidate01WaterMaterialPieces } from './candidate-01-water-material';
 import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './candidate-01-field-material';
+import { CANDIDATE_01_STONE_BASE, candidate01StoneConnectorMarkup } from './candidate-01-stone-material';
+import { candidateWorldMaterialTileMarkup } from './candidate-01-world-material';
 import {
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
@@ -306,7 +308,10 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
       // Explicit authored landforms share the continuous meadow. Other terrain
       // surfaces retain their declared atlas pixels and fit.
       if ((atlas !== base.atlas || tone !== base.tone) && !authoredTerrain(levelId, id, x, y, 'authoredTerrainSurface')) {
-        surfaces.push({ markup: surfaceMarkup(atlas, tone), ...at });
+        const stone = CANDIDATE_01_STONE_BASE.replaces;
+        surfaces.push({ markup: atlas === stone.atlas && tone === stone.tone
+          ? candidateWorldMaterialTileMarkup(CANDIDATE_01_STONE_BASE, at.x, at.y)
+          : surfaceMarkup(atlas, tone), ...at });
       }
 
       if (material.blend) {
@@ -331,14 +336,20 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
         const mask = connectedMask(content, field, map, material.connected, x, y);
         const variant = Math.floor(tileHash(x, y, 1102) * 4);
         const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex(material.connected.atlas, mask, variant);
+        const stoneRoute = candidate01StoneConnectorMarkup(material.connected.atlas, cell, at.x, at.y);
         // These two classes are the only ones in this layer a stylesheet reads.
         connections.push({
-          markup: atlasCellMarkup(material.connected.atlas, cell, { className: 'candidate-ground-route' }),
+          markup: stoneRoute !== null
+            ? `<g class="candidate-ground-route">${stoneRoute}</g>`
+            : atlasCellMarkup(material.connected.atlas, cell, { className: 'candidate-ground-route' }),
           ...at,
         });
         if (material.connected.edge) {
+          const stoneEdge = candidate01StoneConnectorMarkup(material.connected.edge, cell, at.x, at.y);
           connections.push({
-            markup: atlasCellMarkup(material.connected.edge, cell, { className: 'candidate-ground-route-edge' }),
+            markup: stoneEdge !== null
+              ? `<g class="candidate-ground-route-edge">${stoneEdge}</g>`
+              : atlasCellMarkup(material.connected.edge, cell, { className: 'candidate-ground-route-edge' }),
             ...at,
           });
         }

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "stone-paving",
+  "replaces": {
+    "atlas": "surface-old-stone",
+    "tone": 3
+  },
+  "source": "masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+  "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+  "logicalSize": [
+    128,
+    128
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/stone-paving.png",
+  "png2x": "runtime/stone-paving@2x.png"
+}
