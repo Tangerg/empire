@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 114,
+    "formalBound": 118,
     "boundByCategory": {
-      "battle-prop": 36,
+      "battle-prop": 40,
       "combat-unit": 21,
       "equipment": 32,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 116,
+    "rawPreservedTopics": 118,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 129
+    "registeredEnvironmentCells": 131
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 129,
+    "registeredIndividualSourceCells": 131,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -9822,11 +9822,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-giant-roots/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-giant-roots.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and original high-resolution shape/count evidence retained",
+        "export": "native64 three-background shape/alpha readability passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-hesha-water-signs",
@@ -9848,13 +9853,20 @@
       "category": "battle-prop",
       "label": "舱壁补片工程组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-hull-patches/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-hull-patches.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and original high-resolution shape/count evidence retained",
+        "export": "native64 three-background shape/alpha readability passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-ice-cracks",
@@ -9936,11 +9948,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-platform-shields/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-platform-shields.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and original high-resolution shape/count evidence retained",
+        "export": "native64 three-background shape/alpha readability passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-repair-arms",
@@ -9948,13 +9965,20 @@
       "category": "battle-prop",
       "label": "维修臂工程组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-repair-arms/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-repair-arms.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and original high-resolution shape/count evidence retained",
+        "export": "native64 three-background shape/alpha readability passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-risk-list-evidence",
@@ -18448,7 +18472,9 @@
         "vilsa-stone-castle",
         "mountain-gate-fort",
         "frontier-longhall",
-        "walled-trade-town"
+        "walled-trade-town",
+        "field-hospital-compound",
+        "fortified-armory"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18458,10 +18484,12 @@
           "vilsa-stone-castle",
           "mountain-gate-fort",
           "frontier-longhall",
-          "walled-trade-town"
+          "walled-trade-town",
+          "field-hospital-compound",
+          "fortified-armory"
         ],
-        "count": 6,
-        "export": "160/320 full authored canvas, measured contacts, exact original metadata/order and untouched10 baseline cells verified",
+        "count": 8,
+        "export": "160/320 full authored canvas, measured contacts, original metadata/order and untouched8 baseline cells verified",
         "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
         "sceneReview": "native0.55 catalog sample passed; no actual scene selector verified, scale is not a production-placement recommendation",
         "liveGame": "pending"
