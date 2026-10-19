@@ -1486,17 +1486,25 @@
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-1",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-logistics-1/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "6601b5b85285107553a2ac7261b2b4cba7ec0390ca78c646b2808e227ecddd40"
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-logistics-2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "648249293546a7cf6e9673ed0d326d1361934a5639faf23b6bb1eb5b0f61a926"
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-3",
