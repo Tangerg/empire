@@ -4,18 +4,18 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 278,
+    "formalBound": 279,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 28,
       "equipment": 95,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "narrative-static": 2,
+      "narrative-static": 3,
       "skill": 48,
       "status": 16
     },
-    "rawPreservedTopics": 280,
+    "rawPreservedTopics": 285,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -811,13 +811,21 @@
       "category": "narrative-static",
       "label": "米蕾尔教廷守墓人",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/attempt-01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "independent native1024x1536 transparent named middle-aged female ledger keeper portrait; separate backdrop retained",
+        "export": "192x224 independent-background card; actual HUD96x112 and48px icon reviewed; complete c01-04/11 reviewed; c01-04 scene occlusion remains held",
+        "runtimeBinding": "named portrait and four-pose named lantern appearance registered; original rules and generic gravekeeper remain unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CHAR-MIREL-02",
@@ -1521,7 +1529,10 @@
       "label": "墓地巨像",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-b/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -2017,8 +2028,10 @@
       "label": "石魔像",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-b/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -6722,8 +6735,10 @@
       "category": "status",
       "label": "占领目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-17/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6736,8 +6751,10 @@
       "category": "status",
       "label": "护送目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-18/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6750,8 +6767,10 @@
       "category": "status",
       "label": "撤离目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-19/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6764,8 +6783,10 @@
       "category": "status",
       "label": "救援目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-20/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

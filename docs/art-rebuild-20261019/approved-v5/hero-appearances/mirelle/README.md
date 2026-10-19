@@ -1,0 +1,9 @@
+# Mirelle named appearance and transparent-source card
+
+Verified original named identity is a middle-aged woman with cream hood, dark brown side-part hair, charcoal robe/cream apron, brown gloves/boots, right-arm ledger and left-hand portable bronze lantern. Original garment linked-square/diamond motifs and small record marks are preserved without assigning invented religious meanings. Existing lantern-staff/oath-dispel/heal rule names do not establish a staff pole in the named source; the portable lantern is retained. The generic male gravekeeper remains unchanged.
+
+All four source poses share44/919 body scale,104x64 frame, origin8,4, common1586x992 canvas with at most one transparent right padding column. Measured support-foot translations max1.244832 logical pixels; no independent scaling or alpha repaint. Opposite support contacts and the extended lantern casting pose were inspected on actual1x/2x exports.
+
+Independent1024x1536 RGBA portrait and separate parchment source compose the192x224 card. Actual game-ui HUD and48px icon projections are retained in card/. Formal hero manifest, c01.mirelle binding and narrative C01-CHAR-MIREL-01 resolver are connected. The appearance adds zero canonical combat topics; the existing narrative card adds one. Only Mirelle's three team picture samples change; all16 level/state/standing contracts remain identical.
+
+Complete c01-04 andc01-11 comparisons are actual BoardView SVG projections, rasterized offline, with no hidden layers omitted. Mirelle is readable in c01-11. c01-04 has pre-existing densely repeated camp tents and crowded southwest deployment/foliage that still conceal actors; its whole-scene visual acceptance is held for a bounded layout/decor audit. Formal binding is not a claim that this integration debt or live browser/animation verification is complete.

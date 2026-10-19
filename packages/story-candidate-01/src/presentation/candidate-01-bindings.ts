@@ -11,7 +11,7 @@ export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, Candidat
   'c01.roderick': { topicId: 'C01-UNIT-HEAVY-KNIGHT', appearanceId: 'roderick-stage01' },
   'c01.cain': { topicId: 'C01-UNIT-LEGION-SHIELD' },
   'c01.bran': { topicId: 'C01-UNIT-RANGER' },
-  'c01.mirelle': { topicId: 'C01-UNIT-GRAVEKEEPER' },
+  'c01.mirelle': { topicId: 'C01-UNIT-GRAVEKEEPER', appearanceId: 'mirelle-stage01' },
   'c01.tasha': { topicId: 'C01-UNIT-ENGINEER' },
   'c01.ivra': { topicId: 'C01-UNIT-IVRA-GROWTH' },
   'c01.swordsman': { topicId: 'C01-UNIT-SWORDSMAN' },

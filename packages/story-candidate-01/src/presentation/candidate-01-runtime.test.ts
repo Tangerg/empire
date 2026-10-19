@@ -69,6 +69,22 @@ describe('candidate-01 runtime art bindings', () => {
     expect(portraitMarkup(art, rule, '#4d86b8')).toContain(card.url);
   });
 
+  it('binds Mirelle to the reviewed lantern-bearing named appearance and transparent-source card', () => {
+    const rule = TEST_CATALOG.units.get('c01.mirelle');
+    const named = unitPicture(art, rule, '#4d86b8');
+    const generic = candidate01Asset('C01-UNIT-GRAVEKEEPER');
+    expect(named.strip?.href).toContain('hero-appearance/mirelle-stage01@2x.png');
+    expect(named.strip).toMatchObject({ frameCount: 4, frameWidth: 104, frameHeight: 64 });
+    expect(named.strip?.clips.find(clip => clip.id === 'walk')?.frames).toEqual([1, 3]);
+    expect(generic.url).toContain('combat-unit/unit-gravekeeper@2x.png');
+    expect(CANDIDATE_01_CHARACTER_ART['c01.mirelle']).toBe('C01-CHAR-MIREL-01');
+    const card = candidate01Asset('C01-CHAR-MIREL-01');
+    expect(card.qualityTier).toBe('approved-chunky-v5-export-verified');
+    expect([card.width, card.height]).toEqual([192, 224]);
+    expect(CANDIDATE_01_PORTRAITS.mirelle).toBe(card.url);
+    expect(portraitMarkup(art, rule, '#4d86b8')).toContain(card.url);
+  });
+
   /**
    * A type this pack has no sheet for is drawn by something else, and stands still.
    *

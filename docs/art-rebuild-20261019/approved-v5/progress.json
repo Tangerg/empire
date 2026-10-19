@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 30,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 278,
+  "formalRuntimeBoundTopics": 279,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1742,6 +1742,12 @@
       "export": "native32 white/dark/olive semantic review; actual alpha checked",
       "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
       "liveGame": "pending"
+    },
+    "C01-CHAR-MIREL-01": {
+      "raw": "independent native1024x1536 transparent named middle-aged female ledger keeper portrait; separate backdrop retained",
+      "export": "192x224 independent-background card; actual HUD96x112 and48px icon reviewed; complete c01-04/11 reviewed; c01-04 scene occlusion remains held",
+      "runtimeBinding": "named portrait and four-pose named lantern appearance registered; original rules and generic gravekeeper remain unchanged",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -2249,14 +2255,13 @@
     }
   },
   "namedHeroAppearances": {
-    "status": "Laiya and Roderick named four-pose appearances plus independent transparent-source cards formally bound; five named identities pending",
+    "status": "Laiya, Roderick and Mirelle named four-pose appearances plus independent transparent-source cards formally bound; four named identities pending",
     "canonicalCountIncrement": 0,
     "audit": "narrative-family-audit/hero-identity-contract.md",
     "knownMismatches": [
-      "Mirelle named woman resolves generic bearded male gravekeeper",
       "IVRA rules describe juvenile; generic growth appearance has maturity mismatch risk"
     ],
-    "nextPilot": "Mirelle: verified middle-aged named ledger and handheld lantern identity",
+    "nextPilot": "Torren: inspect original named identity before authoring",
     "cardContract": "Character master retains real RGBA transparency; any required opaque UI background is separate authored source/layer",
     "liveGameVerified": false,
     "appearances": {
@@ -2278,6 +2283,16 @@
         "cardTopic": "C01-CHAR-RODERICK-01",
         "cardCanonicalCountIncrement": 1,
         "genericHeavyKnight": "unchanged",
+        "liveGame": "pending"
+      },
+      "mirelle-stage01": {
+        "ruleUnit": "c01.mirelle",
+        "baseCanonicalTopic": "C01-UNIT-GRAVEKEEPER",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "shared44-logical body scale and support-foot registration; portable lantern and ledger verified from named original",
+        "cardTopic": "C01-CHAR-MIREL-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericGravekeeper": "unchanged",
         "liveGame": "pending"
       }
     }

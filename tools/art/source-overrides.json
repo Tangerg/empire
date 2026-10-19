@@ -1120,6 +1120,24 @@
     "C01-STATUS-16": {
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-16/master.png",
       "sha256": "59f10945a70b522806a0d1256b6d81454b40c5322c7a45ad26d65c81d1fb716d"
+    },
+    "C01-CHAR-MIREL-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+        "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
     }
   }
 }
