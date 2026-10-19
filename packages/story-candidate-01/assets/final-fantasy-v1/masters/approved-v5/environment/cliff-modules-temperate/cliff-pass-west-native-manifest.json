@@ -1,0 +1,47 @@
+{
+  "status": "native pair complete; parent registration review pending",
+  "entries": [
+    {
+      "identity": "temperate-mountain-pass",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/temperate-mountain-pass-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/evidence.json",
+      "source_foot_estimate_px": [
+        671,
+        992
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5f118de1-0fc2-4e21-ac0e-9f45443d3733.png",
+      "sha256": "4836058fbd9e215d87ccf6e1047fa364cccec44dbb5edfe374d580687f664c38",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 7
+    },
+    {
+      "identity": "temperate-cliff-end-west",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/temperate-cliff-end-west-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/evidence.json",
+      "source_foot_estimate_px": [
+        575,
+        1145
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a27e8f76-d40d-4894-bc4f-9229e1f5c2a8.png",
+      "sha256": "943ece0d5135bb0bc8438fa6900cf024b7a5e5711bef756383b979cbd0819df8",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 1
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

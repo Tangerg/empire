@@ -1,0 +1,72 @@
+{
+  "atlasId": "crossings-fortifications",
+  "cellId": "stone-gatehouse",
+  "cellIndexZeroBased": 12,
+  "status": "normal static pilot; parent full-canvas registration and foot review pending",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8adce98a-c263-42e3-889d-f3841722a7ac.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSourceContract": "original-source-contract.json",
+  "identityReference": "identity-complete-subject.png",
+  "originalKeyedReference": "identity-original-keyed.png",
+  "originalSourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/crossings-fortifications-4x4-key.png",
+  "originalRuntimeContract": {
+    "logicalCell": [
+      96,
+      96
+    ],
+    "hdCell": [
+      192,
+      192
+    ],
+    "logicalAnchor": [
+      48,
+      91
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "obstructionHeight": 2,
+    "layer": "standing scenery",
+    "actualSceneScalesApprox": [
+      0.38,
+      0.5
+    ]
+  },
+  "identityClarification": "Compact gatehouse with two square short flanking battlement piers, lower center link above one rounded stone arch, closed timber barred grille with four horizontal studded crossbars and three main uprights leaving narrow openings, two bronze wall rings, and exactly two slate-gray forked banners with pale four-arm cross emblems. Short outer masonry wings and stepped feet. No extra tower or foreground floor.",
+  "originalCropIssue": "Original complete subject crosses the nominal quarter by 17px above and 20px to the right; complete-subject reference is authoritative, old runtime is clipped.",
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-gatehouse/identity-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "sourceFootNative": [
+    627,
+    1067
+  ],
+  "sourceFootBasis": "Manually reviewed front-ground contact baseline between the two gate piers, interpolated in the image plane at x=627 from the visible left/right front stone-foot contacts. The chosen registration foot lies in the transparent arch/foot gap, so it is deliberately not an alpha-bbox bottom or an opaque-pixel search.",
+  "rawToolResultToFileFNV1aBase64": 4089141637,
+  "fullCanvasRegistration": {
+    "nativeCanvas": [
+      1254,
+      1254
+    ],
+    "preserveWholeCanvas": true,
+    "cropToAlphaBounds": false,
+    "productionMapping": "Pending parent review; no runtime transform, source resize, scale or placement edit made."
+  },
+  "postprocessing": "None; byte-exact native PNG copies. No pixel cleanup, resizing or programmatic drawing. No repository writes.",
+  "runtimeReady": false,
+  "sourceMasterSha256": "62de4cfea9af8197be6a62a7e567fa1ba8475654d3660e16ec19e473bff73d19",
+  "matchesAuditedSourceMasterHash": true
+}

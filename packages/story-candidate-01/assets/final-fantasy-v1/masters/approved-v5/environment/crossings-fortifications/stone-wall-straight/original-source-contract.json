@@ -1,0 +1,590 @@
+{
+  "kind": "Read-only full-source fortification/vertical-bridge contract",
+  "snapshotCommit": "f8789f8",
+  "atlas": {
+    "id": "crossings-fortifications",
+    "png": "runtime/atlas/crossings-fortifications.png",
+    "png2x": "runtime/atlas/crossings-fortifications@2x.png",
+    "columns": 4,
+    "rows": 4,
+    "cellWidth": 96,
+    "cellHeight": 96,
+    "cellWidth2x": 192,
+    "cellHeight2x": 192,
+    "componentCount": 16,
+    "category": "structure-kit",
+    "tileMode": "modules",
+    "cellOrder": [
+      "wood-bridge-horizontal",
+      "wood-bridge-vertical",
+      "stone-bridge-horizontal",
+      "stone-bridge-vertical",
+      "wood-bridgehead-west",
+      "wood-bridgehead-east",
+      "palisade-straight",
+      "palisade-corner",
+      "palisade-gate",
+      "palisade-breach",
+      "stone-wall-straight",
+      "stone-wall-corner",
+      "stone-gatehouse",
+      "stone-wall-breach",
+      "watchtower-wood",
+      "wood-barricade"
+    ],
+    "anchor": [
+      48,
+      91
+    ],
+    "ySort": "bottom-anchor",
+    "cells": [
+      {
+        "id": "wood-bridge-horizontal",
+        "footprint": [
+          3,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 0
+      },
+      {
+        "id": "wood-bridge-vertical",
+        "footprint": [
+          2,
+          3
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 0
+      },
+      {
+        "id": "stone-bridge-horizontal",
+        "footprint": [
+          3,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "stone-bridge-vertical",
+        "footprint": [
+          2,
+          3
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "wood-bridgehead-west",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "wood-bridgehead-east",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "palisade-straight",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "palisade-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "palisade-gate",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "palisade-breach",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "stone-wall-straight",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "stone-wall-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "stone-gatehouse",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 2
+      },
+      {
+        "id": "stone-wall-breach",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      {
+        "id": "watchtower-wood",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 2
+      },
+      {
+        "id": "wood-barricade",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      }
+    ],
+    "bridgeCells": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "wallCells": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "obstructionHeight": 1
+  },
+  "sourceFiles": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/crossings-fortifications-4x4-key.png": "62de4cfea9af8197be6a62a7e567fa1ba8475654d3660e16ec19e473bff73d19",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/crossings-fortifications-4x4.png": "967de5c5a2b13df39e9cd260d642e5d0b34abb4c8c720878cfdecd5ff3691733",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications.png": "43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab"
+  },
+  "records": [
+    {
+      "id": "stone-gatehouse",
+      "index": 12,
+      "runtimeHdBox": [
+        0,
+        576,
+        192,
+        768
+      ],
+      "logicalCell": [
+        96,
+        96
+      ],
+      "hdCell": [
+        192,
+        192
+      ],
+      "originalAnchor": [
+        48,
+        91
+      ],
+      "semanticMetadata": {
+        "id": "stone-gatehouse",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 2
+      },
+      "sourceQuarter": [
+        0,
+        940,
+        314,
+        1254
+      ],
+      "completeSubjectBoundsAlpha128": [
+        29,
+        923,
+        334,
+        1156
+      ],
+      "subjectCrossesQuarter": true,
+      "foreignStrongComponents": [],
+      "referenceCrop": [
+        19,
+        913,
+        344,
+        1166
+      ],
+      "sourceRole": "standing foot",
+      "references": {
+        "complete": "stone-gatehouse-complete-subject-reference.png",
+        "keyed": "stone-gatehouse-original-keyed-reference.png",
+        "oldRuntime": "stone-gatehouse-runtime-slot@2x.png"
+      }
+    },
+    {
+      "id": "stone-wall-corner",
+      "index": 11,
+      "runtimeHdBox": [
+        576,
+        384,
+        768,
+        576
+      ],
+      "logicalCell": [
+        96,
+        96
+      ],
+      "hdCell": [
+        192,
+        192
+      ],
+      "originalAnchor": [
+        48,
+        91
+      ],
+      "semanticMetadata": {
+        "id": "stone-wall-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      "sourceQuarter": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "completeSubjectBoundsAlpha128": [
+        942,
+        691,
+        1199,
+        859
+      ],
+      "subjectCrossesQuarter": false,
+      "foreignStrongComponents": [],
+      "referenceCrop": [
+        932,
+        681,
+        1209,
+        869
+      ],
+      "sourceRole": "standing foot",
+      "references": {
+        "complete": "stone-wall-corner-complete-subject-reference.png",
+        "keyed": "stone-wall-corner-original-keyed-reference.png",
+        "oldRuntime": "stone-wall-corner-runtime-slot@2x.png"
+      }
+    },
+    {
+      "id": "stone-wall-straight",
+      "index": 10,
+      "runtimeHdBox": [
+        384,
+        384,
+        576,
+        576
+      ],
+      "logicalCell": [
+        96,
+        96
+      ],
+      "hdCell": [
+        192,
+        192
+      ],
+      "originalAnchor": [
+        48,
+        91
+      ],
+      "semanticMetadata": {
+        "id": "stone-wall-straight",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      "sourceQuarter": [
+        627,
+        627,
+        940,
+        940
+      ],
+      "completeSubjectBoundsAlpha128": [
+        641,
+        688,
+        901,
+        852
+      ],
+      "subjectCrossesQuarter": false,
+      "foreignStrongComponents": [
+        {
+          "strongAlphaPixels": 619,
+          "wholeBounds": [
+            672,
+            914,
+            888,
+            1162
+          ]
+        }
+      ],
+      "referenceCrop": [
+        631,
+        678,
+        911,
+        862
+      ],
+      "sourceRole": "standing foot",
+      "references": {
+        "complete": "stone-wall-straight-complete-subject-reference.png",
+        "keyed": "stone-wall-straight-original-keyed-reference.png",
+        "oldRuntime": "stone-wall-straight-runtime-slot@2x.png"
+      }
+    },
+    {
+      "id": "wood-bridge-vertical",
+      "index": 1,
+      "runtimeHdBox": [
+        192,
+        0,
+        384,
+        192
+      ],
+      "logicalCell": [
+        96,
+        96
+      ],
+      "hdCell": [
+        192,
+        192
+      ],
+      "originalAnchor": [
+        48,
+        91
+      ],
+      "semanticMetadata": {
+        "id": "wood-bridge-vertical",
+        "footprint": [
+          2,
+          3
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 0
+      },
+      "sourceQuarter": [
+        314,
+        0,
+        627,
+        314
+      ],
+      "completeSubjectBoundsAlpha128": [
+        434,
+        59,
+        569,
+        309
+      ],
+      "subjectCrossesQuarter": false,
+      "foreignStrongComponents": [
+        {
+          "strongAlphaPixels": 1965,
+          "wholeBounds": [
+            39,
+            70,
+            339,
+            294
+          ]
+        }
+      ],
+      "referenceCrop": [
+        424,
+        49,
+        579,
+        319
+      ],
+      "sourceRole": "lying bridge centre (48,48), original foot metadata not used for placement",
+      "references": {
+        "complete": "wood-bridge-vertical-complete-subject-reference.png",
+        "keyed": "wood-bridge-vertical-original-keyed-reference.png",
+        "oldRuntime": "wood-bridge-vertical-runtime-slot@2x.png"
+      }
+    },
+    {
+      "id": "stone-bridge-vertical",
+      "index": 3,
+      "runtimeHdBox": [
+        576,
+        0,
+        768,
+        192
+      ],
+      "logicalCell": [
+        96,
+        96
+      ],
+      "hdCell": [
+        192,
+        192
+      ],
+      "originalAnchor": [
+        48,
+        91
+      ],
+      "semanticMetadata": {
+        "id": "stone-bridge-vertical",
+        "footprint": [
+          2,
+          3
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "obstructionHeight": 1
+      },
+      "sourceQuarter": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "completeSubjectBoundsAlpha128": [
+        1020,
+        60,
+        1173,
+        301
+      ],
+      "subjectCrossesQuarter": false,
+      "foreignStrongComponents": [],
+      "referenceCrop": [
+        1010,
+        50,
+        1183,
+        311
+      ],
+      "sourceRole": "lying bridge centre (48,48), original foot metadata not used for placement",
+      "references": {
+        "complete": "stone-bridge-vertical-complete-subject-reference.png",
+        "keyed": "stone-bridge-vertical-original-keyed-reference.png",
+        "oldRuntime": "stone-bridge-vertical-runtime-slot@2x.png"
+      }
+    }
+  ],
+  "consumer": "candidate-01-terrain-materials.ts wall scenery -> candidate-01-map-scene.ts sceneryPieces; bridge -> crossing() with lying:true and run midpoint, no standing foot",
+  "notes": [
+    "No new bridge binding, rule data, terrain or route topology changes are authorized by this audit",
+    "These diagnostic crops are not registration transforms; new sourceFoot must be independently reviewed",
+    "Both wall and bridge art must fit complete source canvas; original runtime quarters may contain foreign fragments"
+  ]
+}

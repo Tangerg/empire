@@ -1,0 +1,72 @@
+{
+  "atlasId": "crossings-fortifications",
+  "cellId": "stone-wall-corner",
+  "cellIndexZeroBased": 11,
+  "status": "normal static native source complete; parent full-canvas registration review pending",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-421fe4df-a275-4e5e-be2b-25350b881ed7.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSourceContract": "original-source-contract.json",
+  "identityReference": "identity-complete-subject.png",
+  "originalKeyedReference": "identity-original-keyed.png",
+  "originalSourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/crossings-fortifications-4x4-key.png",
+  "originalRuntimeContract": {
+    "logicalCell": [
+      96,
+      96
+    ],
+    "hdCell": [
+      192,
+      192
+    ],
+    "logicalAnchor": [
+      48,
+      91
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "obstructionHeight": 1,
+    "layer": "standing scenery",
+    "actualSceneScalesApprox": [
+      0.38,
+      0.5
+    ]
+  },
+  "identityClarification": "One intact low L-shaped gray masonry corner, two perpendicular wall arms receding back-left and back-right from a thick nearest front corner pier. Three square thickened piers total: nearest corner plus both far terminals. Solid continuous wall courses, slightly taller capped piers, no crenellations, gate, banners, floor or rubble.",
+  "originalCropIssue": "Complete L-shaped subject fits the original quarter. Complete-subject reference governs geometry; no extra objects from neighboring atlas cells.",
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-wall-corner/identity-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "sourceFootNative": [
+    538,
+    1018
+  ],
+  "sourceFootBasis": "Manually selected visible nearest ground-contact point of the front corner pier, slightly left of native canvas center because the original L joint is left of image center. Alpha samples only validate this chosen stone-foot point; no alpha-bbox-derived anchor.",
+  "rawToolResultToFileFNV1aBase64": 2563463416,
+  "fullCanvasRegistration": {
+    "nativeCanvas": [
+      1254,
+      1254
+    ],
+    "preserveWholeCanvas": true,
+    "cropToAlphaBounds": false,
+    "productionMapping": "Pending parent review; no runtime transform, source resize, scale or placement edit made."
+  },
+  "postprocessing": "None; byte-exact native PNG copies. No pixel cleanup, resizing or programmatic drawing. No repository writes.",
+  "runtimeReady": false,
+  "sourceMasterSha256": "62de4cfea9af8197be6a62a7e567fa1ba8475654d3660e16ec19e473bff73d19",
+  "matchesAuditedSourceMasterHash": true
+}

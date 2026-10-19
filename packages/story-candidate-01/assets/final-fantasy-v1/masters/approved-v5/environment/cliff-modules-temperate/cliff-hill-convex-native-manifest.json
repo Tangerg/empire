@@ -1,0 +1,46 @@
+{
+  "status": "native pair complete; parent integration and registration review pending",
+  "entries": [
+    {
+      "identity": "temperate-hill-cap",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1014
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-80aee2b5-d73c-4f61-9cea-697e131f58ee.png",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 4
+    },
+    {
+      "identity": "temperate-cliff-convex-corner",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/temperate-cliff-convex-corner-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1040
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c9b2f835-83b6-4082-a33e-c2f937143012.png",
+      "sha256": "a3ff7ff9ef1ed845ce1d477377c285d0a08b73f35f8a9f0368af608e58d950d7",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 8
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

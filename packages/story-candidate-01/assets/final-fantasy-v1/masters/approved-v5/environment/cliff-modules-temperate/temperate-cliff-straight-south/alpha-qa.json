@@ -103,5 +103,6 @@
   "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
   "source_perimeter_max_allowed_alpha": 1,
   "source_perimeter_gate_pass": true,
-  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true
 }

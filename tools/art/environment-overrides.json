@@ -1626,6 +1626,125 @@
               1108
             ]
           }
+        },
+        "temperate-mountain-pass": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/temperate-mountain-pass-master.png",
+          "sha256": "4836058fbd9e215d87ccf6e1047fa364cccec44dbb5edfe374d580687f664c38",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              671,
+              992
+            ]
+          }
+        },
+        "temperate-cliff-end-west": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/temperate-cliff-end-west-master.png",
+          "sha256": "943ece0d5135bb0bc8438fa6900cf024b7a5e5711bef756383b979cbd0819df8",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              575,
+              1145
+            ]
+          }
+        },
+        "temperate-cliff-end-east": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/temperate-cliff-end-east-master.png",
+          "sha256": "b7124e7f66d1e911a7e2250194b6e0056ec206ce00a9ee10c38fa70528a9c7be",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              748,
+              1095
+            ]
+          }
+        },
+        "temperate-cliff-concave-corner": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/temperate-cliff-concave-corner-master.png",
+          "sha256": "b7c8252c739465ae2c6649ef3d49c0a53a566c71286ba91b17f75e44ed0783f9",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              958
+            ]
+          }
+        }
+      }
+    },
+    "crossings-fortifications": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/crossings-fortifications.png",
+          "sha256": "43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/crossings-fortifications@2x.png",
+          "sha256": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1"
+        }
+      },
+      "cells": {
+        "stone-gatehouse": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-gatehouse/master.png",
+          "sha256": "5aae5c65a3f7b08200464a8a5c58e65ed79ece5d33ff44f492ea9d9e49055478",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1067
+            ]
+          }
+        },
+        "stone-wall-corner": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-wall-corner/master.png",
+          "sha256": "0565c4c05376d233e270d888c842ac2ec8aad241856c8d0e9804d4bee16b3bf6",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              538,
+              1018
+            ]
+          }
+        },
+        "stone-wall-straight": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-wall-straight/master.png",
+          "sha256": "f522f0f190ff343f9fe0cd134007b45767e3abc408e12673dfd0244489a83917",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              850
+            ]
+          }
         }
       }
     }

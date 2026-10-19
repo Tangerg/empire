@@ -1,0 +1,62 @@
+{
+  "atlasId": "crossings-fortifications",
+  "cellId": "stone-gatehouse",
+  "cellIndexZeroBased": 12,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "transparentFraction": 0.5418660287081339,
+  "sourceFootNative": [
+    627,
+    1067
+  ],
+  "sourceFootBasis": "Manually reviewed front-ground contact baseline between the two gate piers, interpolated in the image plane at x=627 from the visible left/right front stone-foot contacts. The chosen registration foot lies in the transparent arch/foot gap, so it is deliberately not an alpha-bbox bottom or an opaque-pixel search.",
+  "sourceFootAlpha": 0,
+  "fullCanvasMustBePreserved": true,
+  "matchesRawGeneratedBytes": true,
+  "sha256": "5aae5c65a3f7b08200464a8a5c58e65ed79ece5d33ff44f492ea9d9e49055478",
+  "visualQA": "Compact gatehouse with two square short flanking battlement piers, lower center link above one rounded stone arch, closed timber barred grille with four horizontal studded crossbars and three main uprights leaving narrow openings, two bronze wall rings, and exactly two slate-gray forked banners with pale four-arm cross emblems. Short outer masonry wings and stepped feet. No extra tower or foreground floor.",
+  "remarks": [
+    "Native alpha1 perimeter residue retained unchanged.",
+    "Registration foot deliberately lies between stone piers; alpha0 there does not indicate an invalid ground-plane foot."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    29,
+    5,
+    1251,
+    1254
+  ],
+  "alphaBBoxGE8": [
+    31,
+    149,
+    1223,
+    1105
+  ],
+  "alphaBBoxGE128": [
+    32,
+    150,
+    1222,
+    1104
+  ],
+  "alphaBBoxGE250": [
+    33,
+    151,
+    1221,
+    1103
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    32,
+    150,
+    32,
+    150
+  ]
+}

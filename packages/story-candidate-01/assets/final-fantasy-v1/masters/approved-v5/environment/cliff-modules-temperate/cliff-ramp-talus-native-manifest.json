@@ -1,0 +1,50 @@
+{
+  "status": "native pair complete",
+  "atlas": "cliff-modules-temperate",
+  "entries": [
+    {
+      "identity": "temperate-ramp-level-2",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/temperate-ramp-level-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1136
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-baf0aaae-2127-486c-a781-56eb2284d3b4.png",
+      "sha256": "606458dfc203703364279fabf0ef2f47fa9e0338b7573dd3fbbbec142e0d1059",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 6
+    },
+    {
+      "identity": "temperate-talus-foot",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/temperate-talus-foot-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1108
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-92bacb91-8ab4-48d3-8c43-38799e031cf4.png",
+      "sha256": "a7eb469a4afd09a8aa571e8fb293ffae6143d850392b26e7260a5b5864c79b9f",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 11
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true,
+  "integration_status": "parent adapter, scale and actual standing registration review pending",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-active-four-source-evidence.json"
+}

@@ -1,0 +1,167 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-26.400000000000002 -44.15438596491228) scale(0.55)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png\" x=\"0\" y=\"-288\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        4.5,
+        13.0,
+        91.5,
+        83.0
+      ],
+      "nativeSampleVisibleHeight": 38.5,
+      "nativeVisibleHeightRange": [
+        35.0,
+        42.0
+      ],
+      "nativeSampleOverhangBelowContact": 1.495614035087723
+    },
+    {
+      "id": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-22.808771929824562 -42.17719298245615) scale(0.55)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png\" x=\"-288\" y=\"-192\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        26.5,
+        91.0,
+        77.0
+      ],
+      "nativeSampleVisibleHeight": 27.775000000000002,
+      "nativeVisibleHeightRange": [
+        25.25,
+        30.299999999999997
+      ],
+      "nativeSampleOverhangBelowContact": 0.17280701754385677
+    },
+    {
+      "id": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-26.400000000000002 -35.3982456140351) scale(0.55)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png\" x=\"-192\" y=\"-192\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        7.0,
+        21.5,
+        90.0,
+        76.5
+      ],
+      "nativeSampleVisibleHeight": 30.250000000000004,
+      "nativeVisibleHeightRange": [
+        27.5,
+        33.0
+      ],
+      "nativeSampleOverhangBelowContact": 6.676754385964907
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

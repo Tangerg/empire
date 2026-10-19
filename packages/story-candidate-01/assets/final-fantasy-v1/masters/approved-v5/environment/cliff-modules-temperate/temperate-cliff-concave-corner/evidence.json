@@ -1,0 +1,91 @@
+{
+  "asset": "temperate-cliff-concave-corner",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad matte gray/olive cliff family",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    958
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.763955
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    76,
+    313,
+    77,
+    288
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/temperate-cliff-concave-corner-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "cliff-modules-temperate",
+  "cell_index": 3,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "logical_anchor": [
+    64,
+    127
+  ],
+  "hd_anchor": [
+    128,
+    254
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "obstructionHeight": 1,
+  "passable": false,
+  "heightDelta": null,
+  "render_role": "independent elevation module with bottom-anchor registration; preserve catalog passability",
+  "semantic_identity": "One connected deep U-shaped inner cliff corner: left and right arms are joined by a rear wall and narrow continuous turf strip. Deep inner recess and open foreground mouth remain empty where appropriate, distinct from the shallow convex notch and the two unjoined mountain-pass walls.",
+  "source_foot_semantics": "Projected module baseline between the two forward arm contacts. The anchor can lie in transparent foreground mouth space; it is not the bottom of the rear inner wall.",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json",
+  "source_crop_findings": "Complete original left boundary914 extends26px left of nominal quarter940; recover complete left arm of U-shaped inner-corner module.",
+  "original_complete_reference_crop": [
+    904,
+    89,
+    1218,
+    281
+  ],
+  "actual_instances_by_level": {
+    "c01-01": 0,
+    "c01-02": 0
+  },
+  "actual_scale_range": null,
+  "native_raw_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/raw.png",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "source_edit_count": 2,
+  "initial_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/attempts/initial-native.png",
+  "initial_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/prompt-initial.txt",
+  "intermediate_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/attempts/square-native.png",
+  "intermediate_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/prompt-square.txt",
+  "revision_note": "Initial1457x1080 output rejected. First native edit corrected square canvas but introduced bright lime color drift and narrow margins. Second native edit matched approved muted olive palette and improved whole-group fit. All three native files and exact prompts retained, no pixel processing.",
+  "diagnostic_final_turf_meanRGB": [
+    136.7,
+    134.4,
+    65.2
+  ]
+}

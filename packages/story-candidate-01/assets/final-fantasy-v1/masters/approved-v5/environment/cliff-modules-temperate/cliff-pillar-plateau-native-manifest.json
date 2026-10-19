@@ -1,0 +1,47 @@
+{
+  "status": "native sources complete; source-foot and runtime scene review remain separate",
+  "entries": [
+    {
+      "identity": "temperate-pillar-wide",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/temperate-pillar-wide-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/evidence.json",
+      "source_foot_estimate_px": [
+        696,
+        1188
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-760ac60a-1639-4dbf-b69b-8b9324fe71de.png",
+      "sha256": "2bb766b7b928e76c2894a03c9c24889aea6b442ac97444292e020b69261d91b0",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 12
+    },
+    {
+      "identity": "temperate-plateau-cap",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/temperate-plateau-cap-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/evidence.json",
+      "source_foot_estimate_px": [
+        670,
+        1110
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1a3ceb00-b082-43b7-bde0-a6c3dacc5e47.png",
+      "sha256": "fb3f9445938c349855d8b569972353ca3183d033a31bc1ce24143de14fd7ee9b",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 15
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

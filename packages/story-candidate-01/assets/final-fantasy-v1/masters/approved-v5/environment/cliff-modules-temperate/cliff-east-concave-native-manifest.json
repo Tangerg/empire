@@ -1,0 +1,50 @@
+{
+  "status": "native pair complete",
+  "atlas": "cliff-modules-temperate",
+  "entries": [
+    {
+      "identity": "temperate-cliff-end-east",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/temperate-cliff-end-east-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/evidence.json",
+      "source_foot_estimate_px": [
+        748,
+        1095
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-03161145-ed9f-4372-8645-0698362c66d0.png",
+      "sha256": "b7124e7f66d1e911a7e2250194b6e0056ec206ce00a9ee10c38fa70528a9c7be",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 2
+    },
+    {
+      "identity": "temperate-cliff-concave-corner",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/temperate-cliff-concave-corner-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        958
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1c4482ed-1d0c-4296-9da9-38339493b497.png",
+      "sha256": "b7c8252c739465ae2c6649ef3d49c0a53a566c71286ba91b17f75e44ed0783f9",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 3
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true,
+  "integration_status": "parent scale and actual standing source-foot review separate",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json"
+}

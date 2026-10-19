@@ -1,0 +1,72 @@
+{
+  "atlasId": "crossings-fortifications",
+  "cellId": "stone-wall-straight",
+  "cellIndexZeroBased": 10,
+  "status": "normal static native source complete; parent full-canvas registration review pending",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-03cadae8-6470-4b68-a9e1-1d45ade4c007.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSourceContract": "original-source-contract.json",
+  "identityReference": "identity-complete-subject.png",
+  "originalKeyedReference": "identity-original-keyed.png",
+  "originalSourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/crossings-fortifications-4x4-key.png",
+  "originalRuntimeContract": {
+    "logicalCell": [
+      96,
+      96
+    ],
+    "hdCell": [
+      192,
+      192
+    ],
+    "logicalAnchor": [
+      48,
+      91
+    ],
+    "footprint": [
+      2,
+      1
+    ],
+    "obstructionHeight": 1,
+    "layer": "standing scenery",
+    "actualSceneScalesApprox": [
+      0.38,
+      0.5
+    ]
+  },
+  "identityClarification": "One intact low straight gray masonry wall with thick square terminal piers at both ends, a solid center span of broad fitted blocks in three main courses, and a continuous block coping line below slightly taller end caps. Left end recedes and right end projects toward viewer. No gate, flags, crenellations, floor, or foreign watchtower piece.",
+  "originalCropIssue": "The old runtime quarter contains 619 strong-alpha pixels from the next-row wooden watchtower. Complete-subject crop excludes that unrelated isolated fragment; no wooden tower piece is part of the wall.",
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-wall-straight/identity-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "sourceFootNative": [
+    627,
+    850
+  ],
+  "sourceFootBasis": "Manually selected visible bottom contact along the middle of the straight wall front face at native x=627. This ground contact is well above the lower-right terminal's bounding-box bottom because of perspective. Alpha samples only validate the chosen point; no alpha-bbox-derived anchor.",
+  "rawToolResultToFileFNV1aBase64": 1001407448,
+  "fullCanvasRegistration": {
+    "nativeCanvas": [
+      1254,
+      1254
+    ],
+    "preserveWholeCanvas": true,
+    "cropToAlphaBounds": false,
+    "productionMapping": "Pending parent review; no runtime transform, source resize, scale or placement edit made."
+  },
+  "postprocessing": "None; byte-exact native PNG copies. No pixel cleanup, resizing or programmatic drawing. No repository writes.",
+  "runtimeReady": false,
+  "sourceMasterSha256": "62de4cfea9af8197be6a62a7e567fa1ba8475654d3660e16ec19e473bff73d19",
+  "matchesAuditedSourceMasterHash": true
+}

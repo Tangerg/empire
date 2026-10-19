@@ -1,0 +1,87 @@
+{
+  "asset": "temperate-mountain-pass",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad matte gray/olive cliff family",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    671,
+    992
+  ],
+  "source_foot_estimate_normalized": [
+    0.535088,
+    0.791069
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    51,
+    271,
+    35,
+    254
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/temperate-mountain-pass-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "cliff-modules-temperate",
+  "cell_index": 7,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "logical_anchor": [
+    64,
+    127
+  ],
+  "hd_anchor": [
+    128,
+    254
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "obstructionHeight": 0,
+  "passable": true,
+  "heightDelta": 1,
+  "render_role": "independent elevation module with bottom-anchor registration; preserve catalog passability",
+  "semantic_identity": "Exactly two distinct rocky side walls, each with its own turf strip, flank a continuous open brown passage. No back wall, bridge or arch closes the rear gap. The complete restored left wall is present. Functional path soil remains part of the module.",
+  "source_foot_semantics": "Visually selected forward basal contact/whole-module registration; not the upper cap center or an alpha-bbox-derived value.",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json",
+  "source_crop_findings": "Complete original left boundary919 extends21px left of nominal quarter940; recover full left wall. Its spill had contaminated ramp-level-2 runtime slot.",
+  "original_complete_reference_crop": [
+    909,
+    359,
+    1218,
+    569
+  ],
+  "actual_instances_by_level": {
+    "c01-01": 3,
+    "c01-02": 0
+  },
+  "actual_scale_range": [
+    0.601,
+    0.605
+  ],
+  "native_raw_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/raw.png",
+  "source_edit_count": 1,
+  "initial_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/attempts/initial-native.png",
+  "initial_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/prompt-initial.txt",
+  "revision_note": "Initial output returned1536x1024 with exterior haze. One built-in native edit corrected square1254 canvas and removed diffuse exterior glow while preserving the two walls/path. No programmatic image cleanup.",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

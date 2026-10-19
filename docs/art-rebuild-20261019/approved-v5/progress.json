@@ -717,12 +717,28 @@
         "temperate-low-ledge",
         "temperate-cliff-straight-south",
         "temperate-ramp-level-2",
-        "temperate-talus-foot"
+        "temperate-talus-foot",
+        "temperate-mountain-pass",
+        "temperate-cliff-end-west",
+        "temperate-cliff-end-east",
+        "temperate-cliff-concave-corner"
       ],
-      "count": 8,
+      "count": 12,
       "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
       "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
-      "sceneReview": "All8 registered module identities reviewed in complete firstlevel; all19 rule actors retained. One active mountain-pass identity and inactive catalog modules remain legacy.",
+      "sceneReview": "First8 reviewed in complete firstlevel; next4 pass/ends/concave raw and native review; updated full-scene review pending new layout.",
+      "liveGame": "pending"
+    },
+    "crossings-fortifications": {
+      "formalRuntimeBoundCells": [
+        "stone-gatehouse",
+        "stone-wall-corner",
+        "stone-wall-straight"
+      ],
+      "count": 3,
+      "export": "96/192 full authored canvas and measured structural contact; untouched other13 cells preserved",
+      "runtimeBinding": "existing later-level fortress selectors; no bridge or gameplay changes",
+      "sceneReview": "Native static review; full fortress context pending",
       "liveGame": "pending"
     }
   },

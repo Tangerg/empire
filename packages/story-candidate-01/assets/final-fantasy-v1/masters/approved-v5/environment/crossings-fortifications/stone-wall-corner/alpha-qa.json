@@ -1,0 +1,62 @@
+{
+  "atlasId": "crossings-fortifications",
+  "cellId": "stone-wall-corner",
+  "cellIndexZeroBased": 11,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "transparentFraction": 0.7154782526855052,
+  "sourceFootNative": [
+    538,
+    1018
+  ],
+  "sourceFootBasis": "Manually selected visible nearest ground-contact point of the front corner pier, slightly left of native canvas center because the original L joint is left of image center. Alpha samples only validate this chosen stone-foot point; no alpha-bbox-derived anchor.",
+  "sourceFootAlpha": 252,
+  "fullCanvasMustBePreserved": true,
+  "matchesRawGeneratedBytes": true,
+  "matchesRawToolResultFNV1a": true,
+  "sha256": "0565c4c05376d233e270d888c842ac2ec8aad241856c8d0e9804d4bee16b3bf6",
+  "visualQA": "One intact low L-shaped gray masonry corner, two perpendicular wall arms receding back-left and back-right from a thick nearest front corner pier. Three square thickened piers total: nearest corner plus both far terminals. Solid continuous wall courses, slightly taller capped piers, no crenellations, gate, banners, floor or rubble.",
+  "remarks": [
+    "Native alpha1 perimeter residue retained unchanged."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    27,
+    83,
+    1220,
+    1254
+  ],
+  "alphaBBoxGE8": [
+    47,
+    330,
+    1213,
+    1023
+  ],
+  "alphaBBoxGE128": [
+    48,
+    331,
+    1213,
+    1021
+  ],
+  "alphaBBoxGE250": [
+    49,
+    332,
+    1212,
+    1020
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    48,
+    331,
+    41,
+    233
+  ]
+}
