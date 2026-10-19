@@ -19,12 +19,22 @@ def water_area_mask(size,mask8):
         if a and b and not diagonal:d.ellipse((cx-inset,cy-inset,cx+inset,cy+inset),fill=0)
     return out.resize((size,size),Image.Resampling.LANCZOS)
 
-def render_water_area(material,occupied,size=64,map_size=None):
+def render_water_area(material,occupied,size=64,map_size=None,uv_cells=4):
     cells={tuple(p) for p in occupied}
     if not cells or any(len(p)!=2 or any(type(v)!=int for v in p) for p in cells):raise ValueError('integer occupied cells required')
     source=Image.open(material)
     if source.width!=source.height or source.width<64 or source.convert('RGBA').getchannel('A').getextrema()!=(255,255):raise ValueError('square opaque material required')
-    tile=match_edges([source.convert('RGB').resize((size,size),Image.Resampling.LANCZOS) for _ in range(4)])[0]
+    if type(uv_cells)!=int or uv_cells<1:raise ValueError('positive integer UV period required')
+    period=size*uv_cells
+    tile=source.convert('RGB').resize((period,period),Image.Resampling.LANCZOS)
+    # Same bounded one-pixel opposite-edge matching at the larger UV period.
+    corner=tuple(round(sum(tile.getpixel((x,y))[c] for x,y in [(0,0),(period-1,0),(0,period-1),(period-1,period-1)])/4) for c in range(3))
+    for i in range(1,period-1):
+        horizontal=tuple(round((tile.getpixel((i,0))[c]+tile.getpixel((i,period-1))[c])/2) for c in range(3))
+        vertical=tuple(round((tile.getpixel((0,i))[c]+tile.getpixel((period-1,i))[c])/2) for c in range(3))
+        tile.putpixel((i,0),horizontal);tile.putpixel((i,period-1),horizontal)
+        tile.putpixel((0,i),vertical);tile.putpixel((period-1,i),vertical)
+    for xy in [(0,0),(period-1,0),(0,period-1),(period-1,period-1)]:tile.putpixel(xy,corner)
     left=min(x for x,y in cells);top=min(y for x,y in cells);right=max(x for x,y in cells)+1;bottom=max(y for x,y in cells)+1
     if map_size is not None:
         if len(map_size)!=2 or any(type(v)!=int or v<=0 for v in map_size) or any(x<0 or y<0 or x>=map_size[0] or y>=map_size[1] for x,y in cells):raise ValueError('cells outside declared map')
@@ -32,8 +42,9 @@ def render_water_area(material,occupied,size=64,map_size=None):
     out=Image.new('RGBA',((right-left)*size,(bottom-top)*size));placements=[]
     for x,y in sorted(cells,key=lambda p:(p[1],p[0])):
         mask=sum(1<<i for i,(dx,dy) in enumerate(NEIGHBORS) if (x+dx,y+dy) in cells)
-        cell=tile.convert('RGBA');cell.putalpha(water_area_mask(size,mask));out.paste(cell,((x-left)*size,(y-top)*size));placements.append({'cell':[x,y],'mask8':mask})
-    return out,{'kind':'calibration-only-area-water','worldOriginCells':[left,top],'logicalTileSize':32,'physicalTileSize':size,'occupiedCells':placements,'sourceSha256':hashlib.sha256(Path(material).read_bytes()).hexdigest(),'geometry':'fullsharedinteriors;10percentinsetonlyexposedshores;concavediagonalnotches','changesGameplayCells':False,'outsideOccupiedCellsAlpha':0}
+        u=(x%uv_cells)*size;v=(y%uv_cells)*size
+        cell=tile.crop((u,v,u+size,v+size)).convert('RGBA');cell.putalpha(water_area_mask(size,mask));out.paste(cell,((x-left)*size,(y-top)*size));placements.append({'cell':[x,y],'mask8':mask})
+    return out,{'kind':'calibration-only-area-water','worldOriginCells':[left,top],'logicalTileSize':32,'physicalTileSize':size,'occupiedCells':placements,'textureUVPeriodCells':uv_cells,'UVOriginWorldCells':[0,0],'sourceSha256':hashlib.sha256(Path(material).read_bytes()).hexdigest(),'geometry':'fullsharedinteriors;10percentinsetonlyexposedshores;concavediagonalnotches','changesGameplayCells':False,'outsideOccupiedCellsAlpha':0}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--material',type=Path,required=True);p.add_argument('--cells-json',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True);p.add_argument('--map-size',type=int,nargs=2);a=p.parse_args();a.output_dir.mkdir(parents=True,exist_ok=True)
