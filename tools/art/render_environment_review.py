@@ -39,7 +39,7 @@ def render(directory):
         atlas = next(a for a in manifest['atlases'] if asset['id'] in a.get('cellOrder', []) )
         with Image.open(environment / atlas['png2x']) as image:
             index = atlas['cellOrder'].index(asset['id'])
-            alpha = image.crop(cell_box(index, atlas['cellWidth2x'])).getchannel('A')
+            alpha = image.crop(cell_box(index, atlas['cellWidth2x'], atlas['columns'])).getchannel('A')
             bounds = alpha.point(lambda value: 255 if value >= 128 else 0).getbbox()
             logical_bounds = [value / 2 for value in bounds]
             visible_height = logical_bounds[3] - logical_bounds[1]

@@ -5,7 +5,9 @@ from pathlib import Path
 import tempfile
 import unittest
 from PIL import Image
+from unittest.mock import patch
 from export_environment_overrides import PACK, export, cell_box, render_cell
+import render_environment_review
 
 
 class EnvironmentTests(unittest.TestCase):
@@ -21,7 +23,7 @@ class EnvironmentTests(unittest.TestCase):
         self.manifest.write_text(json.dumps({'atlases': [{
             'id': 'forest-temperate', 'columns': 4, 'rows': 4, 'cellWidth': 96,
             'cellHeight': 96, 'cellWidth2x': 192, 'cellHeight2x': 192, 'anchor': [48, 91],
-            'tileMode': 'modules', 'cellOrder': order,
+            'tileMode': 'modules', 'componentCount': 16, 'cellOrder': order,
             'cells': [{'id': c, 'anchor': [48, 91], 'footprint': [1, 1]} for c in order],
             'png': 'runtime/atlas/forest-temperate.png', 'png2x': 'runtime/atlas/forest-temperate@2x.png'}]}))
         baselines = {}
@@ -48,6 +50,171 @@ class EnvironmentTests(unittest.TestCase):
 
     def write_catalog(self):
         self.catalog.write_text(json.dumps(self.data))
+
+    def configure_ground_modules(self, atlas_id):
+        path = Path(__file__).resolve().parents[2] / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json'
+        atlas = next(a for a in json.loads(path.read_text())['atlases'] if a['id'] == atlas_id)
+        columns, rows, size = atlas['columns'], atlas['rows'], atlas['cellWidth']
+        baselines = {}
+        for density in (1, 2):
+            image = Image.new('RGBA', (size * density * columns, size * density * rows))
+            for index in range(columns * rows):
+                image.paste((index * 9, 30, 60, 200), cell_box(index, size * density, columns))
+            baselines[f'{density}x'] = self.save(image, f'{atlas_id}-base-{density}.png')
+        indices = (6, 13, 23) if atlas_id == 'decals-small' else (3, 11, 13)
+        cells = {}
+        for index in indices:
+            cell = atlas['cells'][index]
+            cell['anchor'] = list(atlas['anchor'])
+            cell['presentationScale'] = 0.75
+            source_size = 2 * (size - 8)
+            source = Image.new('RGBA', (source_size, source_size))
+            source.paste((index * 9, 100, 60, 253), (10, 10, source_size - 10, source_size - 10))
+            source.putpixel((0, 20), (30, 50, 70, 1))
+            entry = self.save(source, f'{atlas_id}-{cell["id"]}.png')
+            entry['registration'] = {'scale': 0.5, 'origin': [4, 4],
+                                     'sourceFoot': [(n - 4) * 2 for n in atlas['anchor']]}
+            cells[cell['id']] = entry
+        self.manifest.write_text(json.dumps({'atlases': [atlas]}))
+        self.data = {'schemaVersion': 2, 'atlases': {atlas_id: {'baselines': baselines, 'cells': cells}}}
+        self.write_catalog()
+        return indices
+
+    def test_cell_box_six_columns_nonfirst_rows_and_legacy_default(self):
+        self.assertEqual(cell_box(6, 128, 6), (0, 128, 128, 256))
+        self.assertEqual(cell_box(13, 128, 6), (128, 256, 256, 384))
+        self.assertEqual(cell_box(23, 128, 6), (640, 384, 768, 512))
+        self.assertEqual(cell_box(13, 288), (288, 864, 576, 1152))
+
+    def test_decal_and_camp_exact_slots_alpha_baselines_and_semantics(self):
+        for atlas_id in ('decals-small', 'camps-foundations'):
+            with self.subTest(atlas=atlas_id):
+                indices = self.configure_ground_modules(atlas_id)
+                manifest_before = self.manifest.read_bytes()
+                atlas = json.loads(manifest_before)['atlases'][0]
+                self.assertEqual([atlas['cellOrder'][i] for i in indices],
+                                 ['mud-patch', 'exposed-roots', 'ash-scorch'] if atlas_id == 'decals-small'
+                                 else ['village-square-foundation', 'watch-post-ground', 'abandoned-cart-stop'])
+                masters_before = {p: p.read_bytes() for p in (self.pack / 'masters').rglob('*.png')}
+                reports = export(self.root, self.catalog)
+                export(self.root, self.catalog, True)
+                self.assertEqual(self.manifest.read_bytes(), manifest_before)
+                self.assertEqual({p: p.read_bytes() for p in masters_before}, masters_before)
+                for report in reports:
+                    size = atlas['cellWidth'] * report['density']
+                    self.assertEqual(len(report['cells']), atlas['columns'] * atlas['rows'])
+                    with Image.open(self.root / report['output']) as output:
+                        self.assertEqual(output.size, (size * atlas['columns'], size * atlas['rows']))
+                        with Image.open(self.root / report['baseline']['source']) as baseline:
+                            for cell in report['cells']:
+                                # Independent geometry, so a broken shared helper cannot hide a wrong slot.
+                                x, y = cell['index'] % atlas['columns'] * size, cell['index'] // atlas['columns'] * size
+                                box = (x, y, x + size, y + size)
+                                if cell['index'] not in indices:
+                                    self.assertFalse(cell['overridden'])
+                                    self.assertEqual(output.crop(box).tobytes(), baseline.crop(box).tobytes())
+                                    self.assertEqual(cell['baselinePixelSha256'], cell['outputPixelSha256'])
+                                    continue
+                                self.assertTrue(cell['overridden'])
+                                entry = self.data['atlases'][atlas_id]['cells'][cell['id']]
+                                with Image.open(self.root / entry['source']) as source:
+                                    hd_size = atlas['cellWidth2x']
+                                    expected = Image.new('RGBA', (hd_size, hd_size))
+                                    expected.paste(source, (8, 8))
+                                    self.assertEqual(expected.getpixel((8, 28)), (30, 50, 70, 1))
+                                    if report['density'] == 1:
+                                        expected = expected.resize((size, size), Image.Resampling.LANCZOS)
+                                    self.assertEqual(output.crop(box).tobytes(), expected.tobytes())
+                                self.assertEqual(report['sources'][cell['id']]['logicalAnchor'], atlas['anchor'])
+                                self.assertEqual(report['sources'][cell['id']]['presentationScale'], 0.75)
+
+    def test_decal_and_camp_registration_changes_only_selected_anchor(self):
+        for atlas_id in ('decals-small', 'camps-foundations'):
+            with self.subTest(atlas=atlas_id):
+                indices = self.configure_ground_modules(atlas_id)
+                expected = json.loads(self.manifest.read_text())
+                cell = expected['atlases'][0]['cells'][indices[-1]]
+                cell['anchor'][1] -= 2
+                self.data['atlases'][atlas_id]['cells'][cell['id']]['registration']['sourceFoot'][1] -= 4
+                self.write_catalog()
+                export(self.root, self.catalog)
+                self.assertEqual(json.loads(self.manifest.read_text()), expected)
+                export(self.root, self.catalog, True)
+
+    def test_decal_and_camp_wrong_contracts_rejected_before_writes(self):
+        for atlas_id in ('decals-small', 'camps-foundations'):
+            self.configure_ground_modules(atlas_id)
+            original = json.loads(self.manifest.read_text())
+            for key, value in [('columns', 5), ('rows', 5), ('cellWidth', 96), ('cellHeight', 96),
+                               ('cellWidth2x', 192), ('cellHeight2x', 192), ('anchor', [48, 91]),
+                               ('tileMode', 'variants'), ('componentCount', 15)]:
+                with self.subTest(atlas=atlas_id, key=key):
+                    changed = copy.deepcopy(original)
+                    changed['atlases'][0][key] = value
+                    self.manifest.write_text(json.dumps(changed))
+                    before = self.manifest.read_bytes()
+                    with self.assertRaisesRegex(ValueError, 'unsupported scenery contract'):
+                        export(self.root, self.catalog)
+                    self.assertFalse((self.env / 'runtime').exists())
+                    self.assertEqual(self.manifest.read_bytes(), before)
+            changed = copy.deepcopy(original)
+            changed['atlases'][0]['cellOrder'].pop()
+            changed['atlases'][0]['cells'].pop()
+            self.manifest.write_text(json.dumps(changed))
+            with self.assertRaisesRegex(ValueError, 'inconsistent cell order'):
+                export(self.root, self.catalog)
+
+    def test_decal_and_camp_wrong_baseline_dimensions_rejected(self):
+        for atlas_id in ('decals-small', 'camps-foundations'):
+            self.configure_ground_modules(atlas_id)
+            original = copy.deepcopy(self.data)
+            for density in (1, 2):
+                with self.subTest(atlas=atlas_id, density=density):
+                    self.data = copy.deepcopy(original)
+                    self.data['atlases'][atlas_id]['baselines'][f'{density}x'] = self.save(
+                        Image.new('RGBA', (384 * density, 384 * density)), f'{atlas_id}-wrong-{density}.png')
+                    self.write_catalog()
+                    with self.assertRaisesRegex(ValueError, 'baseline atlas dimensions'):
+                        export(self.root, self.catalog)
+                    self.assertFalse((self.env / 'runtime').exists())
+
+    def test_mixed_forest_decal_and_camp_geometry_is_local_to_each_atlas(self):
+        atlases = [json.loads(self.manifest.read_text())['atlases'][0]]
+        overrides = dict(self.data['atlases'])
+        for atlas_id in ('decals-small', 'camps-foundations'):
+            self.configure_ground_modules(atlas_id)
+            atlases.append(json.loads(self.manifest.read_text())['atlases'][0])
+            overrides.update(self.data['atlases'])
+        for order in (atlases, list(reversed(atlases))):
+            self.manifest.write_text(json.dumps({'atlases': order}))
+            before = self.manifest.read_bytes()
+            self.data['atlases'] = {a['id']: overrides[a['id']] for a in order}
+            self.write_catalog()
+            reports = export(self.root, self.catalog)
+            export(self.root, self.catalog, True)
+            self.assertEqual(len(reports), 6)
+            self.assertEqual(self.manifest.read_bytes(), before)
+            for report in reports:
+                atlas = next(a for a in order if a['id'] == report['atlasId'])
+                size = atlas['cellWidth'] * report['density']
+                with Image.open(self.root / report['output']) as output:
+                    self.assertEqual(output.size, (size * atlas['columns'], size * atlas['rows']))
+
+    def test_six_column_review_measures_correct_nonfirst_row(self):
+        self.configure_ground_modules('decals-small')
+        export(self.root, self.catalog)
+        directory = self.root / 'review'
+        directory.mkdir()
+        (directory / 'native-contact.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
+        (directory / 'runtime-scale-report.json').write_text(json.dumps({'assets': [
+            {'id': 'exposed-roots', 'sampleScale': 0.56, 'rendererScaleRange': [0.56, 0.58], 'anchor': [32, 60]}]}))
+        with patch.object(render_environment_review, 'ROOT', self.root), patch.object(render_environment_review.subprocess, 'run'):
+            report = render_environment_review.render(directory)
+        asset = report['assets'][0]
+        self.assertEqual(asset['logicalVisibleBoundsAlpha128'], [9, 9, 55, 55])
+        self.assertAlmostEqual(asset['nativeSampleVisibleHeight'], 46 * 0.56)
+        self.assertEqual(asset['nativeVisibleHeightRange'], [46 * 0.56, 46 * 0.58])
+        self.assertAlmostEqual(asset['nativeSampleOverhangBelowContact'], -5 * 0.56)
 
     def configure_rural(self):
         # Use the shipped semantic metadata rather than a parallel rural catalog.

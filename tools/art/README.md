@@ -104,11 +104,20 @@ must satisfy the same genuine-alpha contract. Whole authored canvas fitting and
 ## Environment module cell overrides (separate from canonical topics)
 
 Run `python3 tools/art/export_environment_overrides.py` then the same command with
-`--check`. The supported 4×4 module atlases have these exact manifest contracts:
+`--check`. The supported module atlases have these exact manifest contracts:
 
-- forest-temperate, forest-existing, scenery-regional: 96²/192² cells,
+- forest-temperate, forest-existing, scenery-regional: 4×4 / 16 slots, 96²/192² cells,
   384²/768² baseline atlases, default anchor [48,91]
-- rural-life: 112²/224² cells, 448²/896² baseline atlases, default anchor [56,108]
+- rural-life: 4×4 / 16 slots, 112²/224² cells, 448²/896² baseline atlases, default anchor [56,108]
+- decals-small: 6×4 / 24 slots, 64²/128² cells, 384×256 / 768×512 baseline atlases,
+  default anchor [32,60]
+- camps-foundations: 4×4 / 16 slots, 144²/288² cells, 576²/1152² baseline atlases,
+  default anchor [72,139]
+
+All use `tileMode: modules`. Packing, unchanged-cell checks, and review measurements
+use the validated atlas column count, including non-first-row six-column cells.
+The shared `cell_box(index, size, columns=4)` helper retains its four-column default
+for existing callers; atlas-aware callers pass the manifest's actual columns.
 
 Keep immutable copies of the original runtime atlases under the pack masters
 directory before first export. Register their byte SHA256 as baselines; never
@@ -161,6 +170,13 @@ farm-handcart-tools (14), using the manifest's existing identities/order. Adding
 exporter support does not register or replace any of these cells; their reviewed
 sources, registrations, immutable baselines, and resulting exports must be
 committed together in a separate binding change.
+
+Decal and camp support is likewise contract-only: it does not register cells,
+modify a source atlas, or change any scene consumer. These atlases use the same
+full-canvas registration and per-cell sourceFoot projection. Their footprints,
+obstruction, presentationScale and other semantic metadata are retained; only a
+registered cell's anchor may change to its explicitly projected contact. Future
+bindings must supply reviewed per-subject sources and immutable baseline hashes.
 
 The adapter overlays registered cells onto checksummed baselines, preserving
 unregistered slices exactly. Reports include per-cell pixel hashes, source

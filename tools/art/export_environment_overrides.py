@@ -64,8 +64,8 @@ def render_cell(source, registration, cell_size=96):
     return logical, hd, anchor
 
 
-def cell_box(index, size):
-    x, y = index % 4 * size, index // 4 * size
+def cell_box(index, size, columns=4):
+    x, y = index % columns * size, index // columns * size
     return x, y, x + size, y + size
 
 
@@ -82,20 +82,31 @@ def plan(root, catalog):
     manifest_path = env / 'manifest-environment-builder-v1.json'
     manifest = read_json(manifest_path)
     planned = []
+    contracts = {
+        'forest-temperate': (4, 96, [48, 91]),
+        'forest-existing': (4, 96, [48, 91]),
+        'scenery-regional': (4, 96, [48, 91]),
+        'rural-life': (4, 112, [56, 108]),
+        'decals-small': (6, 64, [32, 60]),
+        'camps-foundations': (4, 144, [72, 139]),
+    }
     for atlas_id, override in data['atlases'].items():
-        if atlas_id not in ('forest-temperate', 'forest-existing', 'scenery-regional', 'rural-life'):
+        if atlas_id not in contracts:
             raise ValueError('unsupported environment atlas')
         matches = [a for a in manifest['atlases'] if a['id'] == atlas_id]
         if len(matches) != 1:
             raise ValueError('atlas must have exactly one manifest record')
         atlas = matches[0]
-        cell_size, default_anchor = (112, [56, 108]) if atlas_id == 'rural-life' else (96, [48, 91])
+        columns, cell_size, default_anchor = contracts[atlas_id]
+        cell_count = columns * 4
         if (atlas['columns'], atlas['rows'], atlas['cellWidth'], atlas['cellHeight'],
-            atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['anchor'], atlas['tileMode']) != (4, 4, cell_size, cell_size, cell_size * 2, cell_size * 2, default_anchor, 'modules'):
+            atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['anchor'], atlas['tileMode'],
+            atlas['componentCount']) != (columns, 4, cell_size, cell_size, cell_size * 2,
+                                        cell_size * 2, default_anchor, 'modules', cell_count):
             raise ValueError('unsupported scenery contract')
         cell_sizes = (atlas['cellWidth'], atlas['cellWidth2x'])
         order = atlas['cellOrder']
-        if len(order) != 16 or len(set(order)) != 16 or [c['id'] for c in atlas['cells']] != order:
+        if len(order) != cell_count or len(set(order)) != cell_count or [c['id'] for c in atlas['cells']] != order:
             raise ValueError('inconsistent cell order')
         for cell in atlas['cells']:
             if not point(cell['anchor']):
@@ -128,7 +139,7 @@ def plan(root, catalog):
                 'presentationScale': metadata.get('presentationScale', 1),
             }
             for output, cell, size in zip(outputs, (logical, hd), cell_sizes):
-                output.paste(cell, cell_box(index, size)[:2])
+                output.paste(cell, cell_box(index, size, columns)[:2])
             changed.add(index)
         for density, base, output, size, key in zip((1, 2), baselines, outputs, cell_sizes, ('png', 'png2x')):
             target = within(env, atlas[key])
@@ -136,8 +147,8 @@ def plan(root, catalog):
                 raise ValueError('unexpected atlas destination')
             cells = []
             for i, cell_id in enumerate(order):
-                before = pixel_hash(base.crop(cell_box(i, size)))
-                after = pixel_hash(output.crop(cell_box(i, size)))
+                before = pixel_hash(base.crop(cell_box(i, size, columns)))
+                after = pixel_hash(output.crop(cell_box(i, size, columns)))
                 if i not in changed and before != after:
                     raise ValueError('unaffected cell changed')
                 cells.append({'id': cell_id, 'index': i, 'overridden': i in changed,
