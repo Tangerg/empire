@@ -1,3 +1,4 @@
+import { CANDIDATE_01_HORIZONTAL_CROSSING } from '../../packages/story-candidate-01/src/presentation/candidate-01-crossing';
 /** Offline, full-field evidence from the real candidate BoardPieces. */
 import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -88,6 +89,8 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   waterAndBridgeCells: map.tiles.flatMap((id, index) => id === 'water' || id === 'bridge' ? [[index % map.width, Math.floor(index / map.width)]] : []),
   layerCounts: Object.fromEntries(Object.entries(layers).map(([key, value]) => [key, value.length])),
   buildingCount: buildings.length, unitCount: units.length, buildingRegistrations,
+  horizontalCrossing: CANDIDATE_01_HORIZONTAL_CROSSING,
+  crossingPlacements: layers.underUnits.filter((piece) => piece.markup.includes(CANDIDATE_01_HORIZONTAL_CROSSING.href)),
   connectorBinding: JSON.parse(readFileSync(resolve(root, 'tools/art/connector-overrides.json'), 'utf8')),
   integrationOrder: 'ground, terrain buildings, under-unit scenery, units sorted by foot y/x, over-unit scenery',
   mapSha256: createHash('sha256').update(before).digest('hex'), gameplayTopologyChanged: false,
@@ -103,6 +106,6 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
     densityWarning: 'Display 2x of the selected broad field is enlarged existing art, not new native2x source detail' },
   limitations: ['Static initial unit poses, no animation, browser or GPU playback',
     'Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting',
-    'Legacy shore, crossings, non-base surfaces and decals remain visible; buildings may overlap'],
+    'Legacy shore, vertical crossings, non-base surfaces and decals remain visible; buildings may overlap'],
 }, null, 2) + '\n');
 console.log(output);

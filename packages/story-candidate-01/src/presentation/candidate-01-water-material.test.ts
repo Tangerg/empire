@@ -65,7 +65,7 @@ describe('approved reusable area water', () => {
     expect(candidate01IsAreaWater(candidateMaterial(content, 'bridge'))).toBe(true);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'road'))).toBe(false);
     expect(layers.ground.every((piece) => !piece.markup.includes('/water-slow-river'))).toBe(true);
-    expect(layers.underUnits.filter((piece) => piece.markup.includes('crossings-fortifications'))).toHaveLength(3);
+    expect(layers.underUnits.filter((piece) => piece.markup.includes('stone-crossing-horizontal@2x.png'))).toHaveLength(3);
     expect(JSON.stringify(map)).toBe(before);
   });
 

@@ -1,0 +1,280 @@
+{
+  "kind": "offline real BoardPieces diagnostic; not a live gameplay screenshot",
+  "levelId": "c01-02",
+  "mapSize": [
+    22,
+    14
+  ],
+  "logicalExtent": [
+    704,
+    448
+  ],
+  "material": {
+    "schemaVersion": 2,
+    "id": "water-area",
+    "replaces": {
+      "atlas": "water-slow-river",
+      "mask": "same"
+    },
+    "source": "masters/approved-v5/water-material/master.png",
+    "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+    "logicalSize": [
+      512,
+      512
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "png": "runtime/water-area.png",
+    "png2x": "runtime/water-area@2x.png",
+    "occupancy": {
+      "tileSize": 32,
+      "columns": 16,
+      "rows": 16,
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ],
+      "geometry": "full-shared-interiors-exposed-shore-inset-concave-notch-v1",
+      "png": "runtime/water-masks.png",
+      "png2x": "runtime/water-masks@2x.png"
+    },
+    "rasterPixelsPerWorldUnit": [
+      2,
+      2
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png"
+  },
+  "fieldPieces": [
+    {
+      "x": 0,
+      "y": 0,
+      "markup": "<svg width=\"512\" height=\"448\" viewBox=\"0 0 512 448\" overflow=\"hidden\" data-runtime-raster=\"area-water\"><defs><mask id=\"c01-water-10_0_28-11_0_112-10_1_31-11_1_241-10_2_31-11_2_241-10_3_31-11_3_241-10_4_31-11_4_241-10_5_31-11_5_241-10_6_31-11_6_241-10_7_31-11_7_241-10_8_31-11_8_241-10_9_31-11_9_241-10_10_31-11_10_241-10_11_31-11_11_241-10_12_31-11_12_241-10_13_7-11_13_193\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"512\" height=\"512\"><g transform=\"translate(320 0)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-384\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 0)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"0\" y=\"-224\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 32)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 32)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 64)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 64)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 96)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 96)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 128)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 128)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 160)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 160)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 192)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 192)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 224)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 224)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 256)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 256)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 288)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 288)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 320)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 320)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 352)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 352)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 384)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-480\" y=\"-32\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 384)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-480\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(320 416)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-224\" y=\"0\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g><g transform=\"translate(352 416)\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png\" x=\"-32\" y=\"-384\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g></mask></defs><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\" mask=\"url(#c01-water-10_0_28-11_0_112-10_1_31-11_1_241-10_2_31-11_2_241-10_3_31-11_3_241-10_4_31-11_4_241-10_5_31-11_5_241-10_6_31-11_6_241-10_7_31-11_7_241-10_8_31-11_8_241-10_9_31-11_9_241-10_10_31-11_10_241-10_11_31-11_11_241-10_12_31-11_12_241-10_13_7-11_13_193)\"/></svg>"
+    }
+  ],
+  "waterAndBridgeCells": [
+    [
+      10,
+      0
+    ],
+    [
+      11,
+      0
+    ],
+    [
+      10,
+      1
+    ],
+    [
+      11,
+      1
+    ],
+    [
+      10,
+      2
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      10,
+      3
+    ],
+    [
+      11,
+      3
+    ],
+    [
+      10,
+      4
+    ],
+    [
+      11,
+      4
+    ],
+    [
+      10,
+      5
+    ],
+    [
+      11,
+      5
+    ],
+    [
+      10,
+      6
+    ],
+    [
+      11,
+      6
+    ],
+    [
+      10,
+      7
+    ],
+    [
+      11,
+      7
+    ],
+    [
+      10,
+      8
+    ],
+    [
+      11,
+      8
+    ],
+    [
+      10,
+      9
+    ],
+    [
+      11,
+      9
+    ],
+    [
+      10,
+      10
+    ],
+    [
+      11,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      11
+    ],
+    [
+      10,
+      12
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      10,
+      13
+    ],
+    [
+      11,
+      13
+    ]
+  ],
+  "layerCounts": {
+    "ground": 213,
+    "underUnits": 46,
+    "overUnits": 0
+  },
+  "buildingCount": 9,
+  "unitCount": 20,
+  "horizontalCrossing": {
+    "schemaVersion": 1,
+    "id": "approved-stone-crossing-horizontal",
+    "orientation": "horizontal",
+    "source": "masters/approved-v5/bridge/bridge-master.png",
+    "sourceSha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+    "sourceSize": [
+      1729,
+      910
+    ],
+    "sourceFoot": [
+      864,
+      418
+    ],
+    "logicalPerSourcePixel": 0.08098336948662328,
+    "png": "runtime/stone-crossing-horizontal.png",
+    "png2x": "runtime/stone-crossing-horizontal@2x.png",
+    "approvedExports": {
+      "png": "2fb201b72ceaf579ca1453a003697b612685cd3baafb63cecb92a93a718c7c58",
+      "png2x": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d"
+    },
+    "logicalSize": [
+      140.02024584237165,
+      73.69486623282718
+    ],
+    "anchor": [
+      69.96963123644251,
+      33.85104844540853
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png"
+  },
+  "crossingPlacements": [
+    {
+      "markup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-69.96963123644251 -33.85104844540853)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png\" width=\"140.02024584237165\" height=\"73.69486623282718\" preserveAspectRatio=\"none\"/></g>",
+      "x": 352,
+      "y": 112
+    },
+    {
+      "markup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-69.96963123644251 -33.85104844540853)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png\" width=\"140.02024584237165\" height=\"73.69486623282718\" preserveAspectRatio=\"none\"/></g>",
+      "x": 352,
+      "y": 208
+    },
+    {
+      "markup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-69.96963123644251 -33.85104844540853)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png\" width=\"140.02024584237165\" height=\"73.69486623282718\" preserveAspectRatio=\"none\"/></g>",
+      "x": 352,
+      "y": 304
+    }
+  ],
+  "connectorBinding": {
+    "schemaVersion": 1,
+    "atlas": "route-dirt-road",
+    "edgeAtlas": "route-edge-dirt-road",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+    "sha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "roadWidthLogical": 22,
+    "approved2xOutputs": {
+      "route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+      "route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a"
+    },
+    "previous1xOutputs": {
+      "route-dirt-road.png": "f6670b9a964f159e296d63a22db92e85b314b8dc59fa4f270ac00cd2ff1bc053",
+      "route-edge-dirt-road.png": "9634403a7054655f2eeb24f833bd741d01d72f3478aad967831ce9ee6a39970b"
+    },
+    "derivation1x": "independent-64-to-32-lanczos-then-open-port-rgb-match"
+  },
+  "integrationOrder": "ground, terrain buildings, under-unit scenery, units sorted by foot y/x, over-unit scenery",
+  "mapSha256": "f991b517c8340aa2c9d72ec89fc699824813cce19f2528452512ffd6ad6aa2a7",
+  "gameplayTopologyChanged": false,
+  "provenance": "candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions",
+  "cropWorldBox": [
+    288,
+    96,
+    128,
+    256
+  ],
+  "samplingComparison": {
+    "selectedRuntimePeriod": [
+      512,
+      512
+    ],
+    "status": "512 selected at native2x; 128 ribbon/plane repeat evidence retained separately"
+  },
+  "limitations": [
+    "Static initial unit poses, no animation, browser or GPU playback",
+    "Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting",
+    "Legacy shore, vertical crossings, non-base surfaces and decals remain visible; buildings may overlap"
+  ]
+}

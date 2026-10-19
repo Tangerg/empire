@@ -294,3 +294,15 @@ pixels of open ports are then averaged against existing opposing open-port
 pixels; every alpha and interior pixel is unchanged. Reports include delta and
 pixel hashes. Every opposing port pair is exactRGBA at1x and2x. The previous
 contaminated1x pair is retained with evidence in `road-runtime/previous-whole-sheet-1x`.
+
+## Registered horizontal crossing
+
+`export_crossing.py [--check]` reads the typed runtime binding's
+`registered-crossings-v1/manifest-crossing-v1.json`. It exports only the full
+approved transparent canvas, with the reviewed source contact and scale, at
+independently rounded1x/2x densities. Source and both approved output hashes are
+checked before writes. The runtime places that contact at the existing horizontal
+run midpoint, without changing terrain/run logic or scaling to span length.
+The old vertical crossings/fortifications atlas stays byte-identical, and the
+interactive three-state bridge topic remains separate. No authored vertical
+counterpart exists yet. Full-map native evidence is in `crossing-runtime`.

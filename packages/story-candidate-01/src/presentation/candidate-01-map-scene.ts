@@ -1,3 +1,4 @@
+import { candidate01HorizontalCrossingMarkup } from './candidate-01-crossing';
 import { candidate01BlobMask as blobMask } from './candidate-01-square-mask';
 import { tileHash, type ContentCatalog, type GameMap, type TerrainId, inBounds, idx} from '@empire/battle-engine';
 import { candidate01Asset } from './candidate-01-assets';
@@ -25,7 +26,7 @@ import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './c
 import {
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
-  CANDIDATE_CROSSINGS,
+  CANDIDATE_VERTICAL_CROSSINGS,
   CANDIDATE_FRAME_TREES,
   CANDIDATE_RIVER_STONES,
   CANDIDATE_SETTLEMENT_LIFE,
@@ -383,10 +384,10 @@ function authoredPlacementPieces(
 /**
  * The deck spanning one crossing, drawn once at the run's near end.
  *
- * A crossing is as many cells as the channel is wide, and the kit's deck is one
- * 96-unit module for the whole span. So the module is placed by the *run*: the
- * cell that starts it draws it, centred across every cell it covers, and the rest
- * of the run draws nothing.
+ * The run owns the midpoint, not the artwork. The approved horizontal image
+ * places its registered deck contact there; vertical runs retain the legacy
+ * atlas-centre placement until an authored counterpart exists. No run is stretched
+ * or changed to fit art, and only its near end draws.
  */
 function crossing(
   content: ContentCatalog,
@@ -405,12 +406,13 @@ function crossing(
   let length = 1;
   while (alongX ? deck(length, 0) : deck(0, length)) length += 1;
 
-  const decks = alongX ? CANDIDATE_CROSSINGS.alongX : CANDIDATE_CROSSINGS.alongY;
-  const pick = decks[Math.floor(tileHash(x, y, 1131) * decks.length)];
+  const markup = alongX ? candidate01HorizontalCrossingMarkup()
+    : environmentCellMarkup(CANDIDATE_VERTICAL_CROSSINGS[Math.floor(tileHash(x, y, 1131) * CANDIDATE_VERTICAL_CROSSINGS.length)],
+      { className: 'is-standing', lying: true });
   const middle = (span: number) => (span + length / 2) * TILE;
   // The middle of the run, both ways: a deck lies across the channel.
   parts.push({
-    markup: environmentCellMarkup(pick, { className: 'is-standing', lying: true }),
+    markup,
     x: alongX ? middle(x) : (x + 0.5) * TILE,
     y: alongX ? (y + 0.5) * TILE : middle(y),
   });
@@ -493,9 +495,9 @@ function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, 
  * old rule asked whether the cell was near the *map's* border, which is a
  * different question with the same answer only on chapter one's map.
  *
- * A crossing is drawn along the way it carries. `wood-bridge-horizontal` and
- * `-vertical` are two pictures, and which one a cell wants is decided by the
- * neighbours a traveller could reach from it.
+ * A crossing is drawn along the way it carries. The horizontal source is
+ * registered separately; vertical runs retain the existing authored direction.
+ * Reachable neighbouring routes still decide which direction the run carries.
  */
 function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
   const field = materialField(content, map);

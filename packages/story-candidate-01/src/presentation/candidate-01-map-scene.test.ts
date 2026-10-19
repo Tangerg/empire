@@ -205,7 +205,7 @@ describe('candidate-01 authored map scenery', () => {
     expect(map.tiles).toContain('bridge');
     expect(ground).toContain('water-area@2x.png');
     expect(ground).toContain('transition-meadow-forest');
-    expect(standing).toContain('crossings-fortifications');
+    expect(standing).toContain('stone-crossing-horizontal@2x.png');
     // A wood's edge carries the tall-prop shadow; its inside carries undergrowth.
     expect(standing).toContain('is-standing');
     expect(standing).toContain('forest-temperate');
