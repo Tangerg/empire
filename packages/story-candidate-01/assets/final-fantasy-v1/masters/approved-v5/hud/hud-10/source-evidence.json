@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-HUD-10",
+  "assetId": "C01-FFV1-HUD-10",
+  "label": "治疗点",
+  "category": "hud",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-10-complete-subject.png",
+  "identityClarification": "Exactly TWO healing-point objects side by side: on the left an upright antique brass lantern with one circular top hanging loop and one small orange-yellow flame contained inside its glass chamber; on the right a cream rolled bandage with a clearly visible spiral at its top and one dark gray equal-arm medical cross on its front. Preserve gold lantern, warm orange contained flame, pale cream bandage, dark cross. No exterior glow, extra bottle, colored red cross, letters or other objects.",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
+    "atlasSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+    "atlasCell": "row 3, column 2 (one based)",
+    "inspectionCropCoordinates": [
+      319,
+      632,
+      622,
+      935
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; magenta retained for inspection, white grid excluded by five-pixel inset; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/baseline-runtime-hud-10.png",
+    "baselineRuntimeSha256": "ecc34e51571321d543414ef9aba400cd50e7888ec3199c756bcde89b47692182",
+    "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png"
+  ],
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
+  "runtimeReady": false,
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits."
+}

@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-HUD-04",
+  "assetId": "C01-FFV1-HUD-04",
+  "label": "可招降",
+  "category": "hud",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-04-complete-subject.png",
+  "identityClarification": "Exactly TWO side-by-side recruitment symbols from the original: on the left one upright gray open palm facing the viewer with four raised fingers together, a thumb extended left, a short wrist cuff, and a few broad palm creases; on the right a short vertical wooden flagpole with a horizontal wood crossbar tied with gold cord, carrying a cream/off-white hanging banner with one broad muted slate-blue center stripe and a deeply forked ragged lower edge. The palm and banner are separate with a clear transparent gap. Preserve gray hand, cream banner, blue stripe and warm brown pole; no letters or extra symbols.",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
+    "atlasSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+    "atlasCell": "row 1, column 4 (one based)",
+    "inspectionCropCoordinates": [
+      945,
+      5,
+      1249,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; magenta retained for inspection, white grid excluded by five-pixel inset; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/baseline-runtime-hud-04.png",
+    "baselineRuntimeSha256": "7527b914f1ca3d396327750075f4427ac40320abaf65db375f856be1eb435ad4",
+    "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png"
+  ],
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
+  "runtimeReady": false,
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits.",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fde8a340-9427-47a6-8013-3d984227bbda.png",
+  "localRaw": "raw.png",
+  "sha256": "b15619ec6ecf1f6ae51b13c1647822b9c586ac95cc21d9b7054f299019ccd267"
+}

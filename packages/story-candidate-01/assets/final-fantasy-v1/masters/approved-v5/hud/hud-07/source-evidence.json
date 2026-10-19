@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-HUD-07",
+  "assetId": "C01-FFV1-HUD-07",
+  "label": "护送目标",
+  "category": "hud",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-07-complete-subject.png",
+  "identityClarification": "Exactly ONE upright wooden wagon wheel with a brass-brown rim, central metal hub, and exactly EIGHT straight spokes, surrounded left and right by two separate thick blue-gray square brackets opening inward toward the wheel. The wheel center and bracket openings are transparent. Preserve brown wheel and blue-gray bracket pair; no wagon body, extra wheel, axle or arrows.",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
+    "atlasSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+    "atlasCell": "row 2, column 3 (one based)",
+    "inspectionCropCoordinates": [
+      632,
+      319,
+      935,
+      622
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; magenta retained for inspection, white grid excluded by five-pixel inset; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/baseline-runtime-hud-07.png",
+    "baselineRuntimeSha256": "8f9282a2323122c648c000aff3d9186161cec06589bdf37adc57142b131a6e9e",
+    "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png"
+  ],
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
+  "runtimeReady": false,
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits."
+}

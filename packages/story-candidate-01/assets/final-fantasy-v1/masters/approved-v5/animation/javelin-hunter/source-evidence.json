@@ -1,0 +1,102 @@
+{
+  "topicId": "C01-UNIT-JAVELIN-HUNTER",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-JAVELIN-HUNTER",
+    "topicId": "C01-UNIT-JAVELIN-HUNTER",
+    "label": "投矛猎手",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-javelin-hunter.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "status": "Idle generated; coordinator scale review pending",
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-axebreaker-golem-shaman-javelin.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d4b3ad5bc57f65ca25758b2394ee4d6d843460bfc0e4c0903d9a7cd2946215e8"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-javelin-hunter.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "18a4cae0f911241feef4934c28df26498b2df01a7dd8770d43d80066eac1bc41"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-javelin-hunter.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "c4986333d71ad2dcffd3b2e8933a36306d5889fbaa146eb6905ae349a566c8cd"
+    },
+    "approved-spearman-idle.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/idle/master.png",
+      "size": [
+        1586,
+        992
+      ],
+      "sha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f"
+    },
+    "approved-torren-idle.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/idle/master.png",
+      "size": [
+        1586,
+        992
+      ],
+      "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1"
+    }
+  },
+  "referenceExtraction": "Visually verified FOURTH row of original1254x1254 board. Preserved complete board, native unresampled row[0,918,1254,1254] and complete idle cell[0,918,314,1254]. Chose y918 rather than nominal y940 quarter boundary to preserve spear tips crossing the nominal grid. Original runtime128x48 and HD256x96 retained, individual32x48/64x96 pose cells extracted for inspection.",
+  "originalIdentity": "Dark-brown-skinned young man with short curly black hair and strong eyebrows, no beard. Slate blue-gray scarf, ochre diamond-quilted padded coat, brown diagonal strap, brown gloves/bracers, square brass belt buckle, dark trousers, beige cuff wraps and brown boots. Three spare wooden javelins with gray points protrude above back/left shoulder, plus one held brown-shafted javelin with gray leaf point. Round wooden plank shield on screen-left forearm, gray riveted rim, pale brass/tan central boss and brace bands.",
+  "originalCounts": {
+    "heldJavelin": 1,
+    "backSpareJavelins": 3,
+    "shield": 1
+  },
+  "symbols": "No faction emblem, rune or crest. Shield boss and brace bands are physical hardware, not an invented heraldic symbol.",
+  "actionContract": "Original idle and attack nearly repeat. Original walk-a and walk-b both advance same leg and omit shield while holding javelin with two hands. New four-pose sequence must preserve shield and3spares+1held javelin through every pose, reconstruct opposite walking contacts and one clear overhand javelin throw wind-up/drive before release. No independently baked projectile or FX.",
+  "equipmentTopicDifference": "Separate C01-EQUIP-JAVELIN-HUNTER icon shows three total javelins and a hide-covered oval shield. It is not the character identity reference. Preserve original unit wooden plank shield and three back spares plus one held, rather than silently remap character to distinct equipment icon.",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only topic; no c01.javelin-hunter unit or corresponding art/weapon binding. Existing built-in soldier_javelin belongs to soldier bound to C01-UNIT-SWORDSMAN and is not a consumer of this topic. No binding invented.",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "sha256": "8e14f8bdda35df7fe908a4bda550a12a0d12622a413207464c395915793e53f4",
+    "unitBindings": "No C01-UNIT-JAVELIN-HUNTER",
+    "weaponBindings": "No javelin-hunter binding"
+  },
+  "ruleSearch": {
+    "paths": [
+      "packages/story-candidate-01/src/units.ts",
+      "packages/story-candidate-01/src/weapons.ts",
+      "packages/content-ancient-empires/src/units.ts",
+      "packages/content-ancient-empires/src/weapons.ts"
+    ],
+    "result": "No javelin-hunter rule. soldier_javelin exists separately on built-in soldier."
+  },
+  "scaleContract": "Pending idle approval; proposed44logical infantry body height from crown95 to mean soles973 =>44/878; same single scale on all full authored canvases."
+}

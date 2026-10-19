@@ -1,0 +1,165 @@
+{
+  "artifactKind": "named-character-source-audit",
+  "unitType": "c01.cain",
+  "appearanceIdProposal": "cain-stage01",
+  "canonicalCardTopicId": "C01-CHAR-CAIN-01",
+  "canonicalCardAssetId": "C01-FFV1-CHAR-CAIN-01",
+  "canonicalTopicCountDelta": 0,
+  "originalSource": {
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "cell": 2,
+    "nativeCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "legacyCatalogSlot": 2,
+    "nativeCell": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/c01-char-cain-01-original-cell.png",
+      "sha256": "7f8acdd6fe78206b0fa7106ea164dd3691a9d104dd96cef468bb46cb364a9318",
+      "size": [
+        617,
+        617
+      ],
+      "mode": "RGB"
+    }
+  },
+  "stage02": "C01-CHAR-CAIN-02 independent reform army commander, excluded from this stage01 task",
+  "identity": {
+    "age": "Young adult imperial general from candidate-01/README.md:305–307; no numerical age established",
+    "face": "Clean-shaven stern angular young adult face, strong dark brows, long nose, compact unsmiling mouth; dark hair largely concealed by helmet, no invented exposed hairstyle",
+    "helmet": "Navy domed military helmet with small brim, antique-gold front-to-back center strip and lower rim, long cheek/neck guards, no plume",
+    "clothing": "Navy standardized heavy plate and tabard with antique-gold vertical trim and small four-point star on front hanging panel; large pale-gold layered shoulder plates, burgundy neck scarf and short cape, brown belt with square gold buckle and side pouch, navy gloves and segmented armored boots",
+    "shield": "Tall navy rectangular shield with angled lower corners, broad antique-gold riveted rim, one gold vertical central band and horizontal crossbar, outlined gold diamond centered with small diamond inset",
+    "sourceEquipment": "Shield in source image-left arm, short thick command baton in source image-right gloved hand, gold rounded end cap and simple grip bands. ART-DIRECTION.md:28 explicitly confirms command baton"
+  },
+  "rules": {
+    "unitSource": "packages/story-candidate-01/src/units.ts:36–40; default foot at11",
+    "movementClass": "foot",
+    "armorClass": "heavy",
+    "movement": 4,
+    "tags": [
+      "hero",
+      "commander",
+      "infantry"
+    ],
+    "weapons": [
+      "c01.legion-spear",
+      "c01.knight-charge"
+    ],
+    "legionSpear": {
+      "damageType": "pierce",
+      "power": 42,
+      "tags": [
+        "melee",
+        "formation",
+        "anti-cavalry"
+      ]
+    },
+    "knightCharge": {
+      "power": 60,
+      "tags": [
+        "melee",
+        "mounted",
+        "charge"
+      ],
+      "note": "Name/tag does not grant mounted movement; unit remains foot. Do not add horse or change rules."
+    }
+  },
+  "bindingAudit": {
+    "battle": "candidate-01-bindings.ts:12 c01.cain aliases generic C01-UNIT-LEGION-SHIELD",
+    "portrait": "candidate-01-bindings.ts:97 binds existing C01-CHAR-CAIN-01",
+    "requiredChange": "Coordinator creates presentation-only cain-stage01 appearance under existing base topic; generic legion-shield unchanged, no new rule unit/topic"
+  },
+  "battlePortraitDistinction": "Battle spear replaces only original command baton to depict actual legion-spear rules; original narrative portrait retains baton. Original named face, armor, shield and colors govern both. No reinterpretation as generic soldier.",
+  "sources": {
+    "packages/story-candidate-01/src/units.ts": "5aec43c370aebde9587f6ef7ea564215806df9ce60a76939528e968a069ba36c",
+    "packages/story-candidate-01/src/weapons.ts": "0c6136b2a46146e05c1ee2de109b656edd5fc597c4b59908951a28e4d4f668ef",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "8e14f8bdda35df7fe908a4bda550a12a0d12622a413207464c395915793e53f4",
+    "packages/story-candidate-01/assets/final-fantasy-v1/ART-DIRECTION.md": "06c6cc519f4f2dda0534667aa81b8e35b203557f0fa922f11e60c84a878a2f2f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py": "b533ecffd7628905c744d9ddcfa40c93f08e76800b2c4427ee7d1ca5d9d74bd7",
+    "docs/story-candidates/candidate-01/README.md": "053923dda6e0d8c18419aa637021b5cf5f0f3ede60c1fd08622b801e8af54f42"
+  },
+  "referenceFiles": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/approved-torren-idle.png",
+      "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/char-cain-02.png",
+      "sha256": "e96e0b2f151bc20d2932c95b0ecac564ee86480b5da3984969f8aea4890959b6",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/char-cain-01.png",
+      "sha256": "e776ca71e97fbed77f9d546b94155e593f8d334070db49d0fdd87f736de3e4d1",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/approved-mirelle-idle.png",
+      "sha256": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+      "size": [
+        1585,
+        992
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/c01-char-cain-01-original-cell.png",
+      "sha256": "7f8acdd6fe78206b0fa7106ea164dd3691a9d104dd96cef468bb46cb364a9318",
+      "size": [
+        617,
+        617
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "idleCandidate": {
+    "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/master.png",
+    "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/raw.png",
+    "sha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "proposedScaleRatio": "44/912.5",
+    "sourceFoot": [
+      681,
+      966
+    ],
+    "review": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle-review.json",
+    "comparison": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/native-scale-comparison.png"
+  },
+  "coordinatorIdleContract": "2026-10-19 22:31UTC confirmed stage01 named foot officer, battle spear replaces baton, portrait preserves baton"
+}

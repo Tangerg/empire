@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-HUD-03",
+  "assetId": "C01-FFV1-HUD-03",
+  "label": "中立",
+  "category": "hud",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-03-complete-subject.png",
+  "identityClarification": "Exactly ONE simple front-facing golden ochre annular ring. A thick smooth gold metal band encircles one large empty transparent round hole. Broad bevel on both the inner and outer edge, dark charcoal contour. Preserve circular symmetry and original ochre-gold functional color. No gem, engraving, token, extra notch, added center fill or decoration.",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
+    "atlasSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+    "atlasCell": "row 1, column 3 (one based)",
+    "inspectionCropCoordinates": [
+      632,
+      5,
+      935,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; magenta retained for inspection, white grid excluded by five-pixel inset; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/baseline-runtime-hud-03.png",
+    "baselineRuntimeSha256": "e2c7b37314a0c0f9b84cc041f71cbd988bbf2dffb1956bf5aec0a09a9bb5924c",
+    "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png"
+  ],
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
+  "runtimeReady": false,
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits.",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-036872e2-727b-402c-b243-60826422ee8a.png",
+  "localRaw": "raw.png",
+  "sha256": "713a6d4a55c5c30dc2450f3bee9c272e4a3412e065cf726d348d86f2f4f5227c"
+}
