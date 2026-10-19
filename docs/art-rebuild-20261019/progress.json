@@ -516,7 +516,8 @@
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
           "sha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95"
         }
-      }
+      },
+      "contactReviewPolicy": "Archer-specific maximum2logicalpx contact offset approved, only consistentallposes/no visiblefloat/clean nativealpha; declaredanchor unchanged, not a global tolerance"
     },
     {
       "topicId": "C01-UNIT-ASSASSIN",
@@ -8600,17 +8601,27 @@
       "atlasId": "forest-temperate",
       "cellId": "leaf-pile",
       "index": 12,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/leaf-pile/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "d56a362a91e2a235993720bd2147baa3e2edac4fdcbfe15e1de0d68009d7bcce",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "boulder-large",
       "index": 13,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-large/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "26832d2209824e4c9aa593914789fb48cfa2d04cf7e2622cce94c1dff38d83fb",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
