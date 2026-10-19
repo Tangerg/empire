@@ -39,7 +39,7 @@ The full-frame comparison changes 12,712 native pixels, all within the road boun
 
 `render-invariants.json` compares all16 levels: only normal-play c01-01 ground changes. All level/state hashes, actor bindings, standing layers/order and editor ground hashes remain identical. `replay-comparison.json` records independent before/after sweeps of all60 replay/profile combinations: the complete 3,534,788-byte event/output stream is identical, SHA256 `3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9`.
 
-`verification.json` and compressed logs record actual checks. At this handoff the final frozen single-worker full suite is still running; it is not reported as passed. The sparse engineering checkout temporarily links omitted supporting art/docs to main for the full suite; those links are excluded from the commit and cleaned after the run. Runtime capture inputs are ordinary local files with the hashes above. The integrator should still run the complete suite/build and capture at its fixed main checkpoint.
+`verification.json` and compressed logs record actual checks. The final frozen engineering suite finished931/932 with one unchanged SVG frame-clock assertion failing. A subsequent original two-file retest was20/21. This is not reported as an all-green full run. The sparse engineering checkout temporarily links omitted supporting art/docs to main for the full suite; all6487 temporary links were excluded from the commit and have now been removed. Runtime capture inputs are ordinary local files with the hashes above. The integrator should still run the complete suite/build and capture at its fixed main checkpoint.
 
 The first full run caught a real integration error: graph connectivity initially ignored overridden catalog route tags. The implementation now uses the supplied catalog for connections while preserving paint ownership, and the existing catalog-isolation test verifies84 disconnected caps when those route tags are removed. The shared `inBounds` owner is also used. No assertion or timeout was disabled. One intermediate run overlapped a function-signature edit and is not the final frozen verification.
 
@@ -58,3 +58,9 @@ CONTRACT_OUTPUT=/tmp/road-turn-contract.json npx vite-node tools/art/review_cand
 ```
 
 The Python corridor suite invokes the production projection, rasterizes its SVG, checks all256 patterns and rotations, the actual map, cycles/aprons/bridge/chunk boundaries, and deliberately corrupts a center, port, protected notch and overhang pixel to prove the guards reject them.
+
+## Independent test-clock root-cause correction
+
+The failed fixture mixed real `performance.now()` for clip start with an RAF timestamp fixed to the earlier `install()` time. A real setup delay above75ms shifts the8fps/at200 test back to frame0; the4fps/at300 fixture has only50ms headroom. The test helper now owns both `now()` and RAF time and restores the original host functions afterward. `pump()` advances that same virtual time by16ms per frame. Production animation code and existing frame/timeout assertions are unchanged.
+
+The two existing surface/backend files plus two new clock regressions pass23/23. A simulated100,000ms host-clock delay before play and before the callback leaves animation phase unchanged. Deliberately restoring the old fixture makes both new regressions fail, including the expected frame1 receiving frame0. Failure, original retest, fixed tests and mutation logs are retained. Typecheck passes. The full old engineering suite was not repeated after this isolated fixture fix; fixed-checkpoint integrated main validation is owned by the integrator.

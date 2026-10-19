@@ -1,3 +1,5 @@
+import { vi, type MockInstance } from 'vitest';
+
 /**
  * A test that is the clock.
  *
@@ -16,8 +18,8 @@ export class FrameClock {
   private pending: Array<(time: number) => void> = [];
   private realRequest: typeof requestAnimationFrame | null = null;
   private realCancel: typeof cancelAnimationFrame | null = null;
-  /** When the clock started, so a test can say "two hundred milliseconds in". */
-  private base = 0;
+  private time = 0;
+  private now: MockInstance<() => number> | null = null;
 
   /** How many frames were asked for since the last `pump`. */
   requests = 0;
@@ -28,7 +30,9 @@ export class FrameClock {
     this.realCancel = globalThis.cancelAnimationFrame;
     this.pending = [];
     this.requests = 0;
-    this.base = performance.now();
+    this.time = 0;
+    // Clip start and RAF callbacks must share one clock, regardless of host load.
+    this.now = vi.spyOn(performance, 'now').mockImplementation(() => this.time);
     globalThis.requestAnimationFrame = ((callback: (time: number) => void) => {
       this.requests += 1;
       this.pending.push(callback);
@@ -44,6 +48,8 @@ export class FrameClock {
     if (this.realCancel) globalThis.cancelAnimationFrame = this.realCancel;
     this.realRequest = null;
     this.realCancel = null;
+    this.now?.mockRestore();
+    this.now = null;
   }
 
   /**
@@ -55,9 +61,10 @@ export class FrameClock {
    * call it with a timestamp they had computed.
    */
   at(ms: number): void {
+    this.time = ms;
     const due = this.pending;
     this.pending = [];
-    for (const callback of due) callback(this.base + ms);
+    for (const callback of due) callback(this.time);
   }
 
   /**
@@ -69,9 +76,7 @@ export class FrameClock {
   pump(frames = 1): number {
     this.requests = 0;
     for (let frame = 0; frame < frames; frame++) {
-      const due = this.pending;
-      this.pending = [];
-      for (const callback of due) callback(performance.now() + frame * 16);
+      this.at(this.time + 16);
     }
     return this.requests;
   }

@@ -29,10 +29,19 @@
     "onlyChange": "c01-01 normal-play ground"
   },
   "fullFrozenSuite": {
-    "status": "running",
+    "status": "failed",
     "command": "npm test -- --maxWorkers=1 --minWorkers=1",
-    "knownFailuresAtHandoff": 0,
-    "logIsPartialSnapshot": true
+    "passed": 931,
+    "failed": 1,
+    "filesPassed": 98,
+    "filesTotal": 99,
+    "failure": "svg-board-surface.test.ts:132: frame0 instead of frame1 at clock.at(200)",
+    "log": "frozen-full-tests-complete.txt.gz",
+    "codeUnchangedInRoadCommit": [
+      "frame-clock.ts",
+      "svg-board-surface.ts",
+      "frame-animation.ts"
+    ]
   },
   "initialParallelFullRun": {
     "passed": 926,
@@ -53,10 +62,31 @@
   "temporarySupportLinks": {
     "count": 6487,
     "staged": 0,
-    "cleanup": "after full suite completes",
+    "cleanup": "complete: all6487 own temporary symlinks removed; sparse index exclusions restored; no original art deleted",
     "baseline": "read-only main art/docs support; integrator owns fixed-checkpoint full validation"
   },
   "capture": "actual BoardView/SvgBoardSurface, offline Inkscape",
   "liveBrowserGpuPixels": "not run",
-  "appBuilds": "not run in this bounded worktree; integrator will validate fixed main"
+  "appBuilds": "not run in this bounded worktree; integrator will validate fixed main",
+  "frameClockRetestBeforeFix": {
+    "passed": 20,
+    "failed": 1,
+    "failure": "same svg-board-surface frame-phase assertion",
+    "log": "frame-clock-retest-before-fix.txt.gz"
+  },
+  "testOnlyClockRootCauseFix": {
+    "scope": [
+      "packages/game-ui/src/art/__tests__/frame-clock.ts",
+      "packages/game-ui/src/art/__tests__/frame-clock.test.ts"
+    ],
+    "rootCause": "RAF used install-time base while clip start used later real performance.now; setup>75ms changes at200/8fps phase",
+    "fix": "one virtual now/RAF time, explicit16ms pump advances, original globals restored",
+    "regression": "host-time jumps0 and100000ms before play and callback leave phase identical",
+    "passed": 23,
+    "testFiles": 3,
+    "mutationOldFixtureFailedBothNewTests": true,
+    "productionFilesChanged": 0,
+    "typecheck": "passed",
+    "fullSuiteAfterFixtureFix": "not rerun here; integrator validates main"
+  }
 }
