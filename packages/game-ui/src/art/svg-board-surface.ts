@@ -2,6 +2,7 @@ import { FrameAnimationSystem } from './frame-animation';
 import {
   drawableBody,
   DrawingPlacement,
+  DrawingSelection,
   BoardDepthOrder,
   GRID_ALPHA,
   BOARD_LAYERS,
@@ -21,6 +22,8 @@ import {
   type BoardSurfaceScene,
   type BoardSurfaceFactory,
   TILE_MIDDLE,
+  SELECTION_CUE_MATRIX,
+  SELECTION_CUE_OPACITY,
 } from './board-surface';
 import { clear, fromMarkup, setAttrs, svg } from './svg';
 import { listenForPointer } from './letterbox';
@@ -55,6 +58,8 @@ const STATE_CLASS: Readonly<Record<Exclude<BoardState, 'hidden'>, string>> = {
   selected: 'is-selected',
 };
 
+const SELECTION_FILTER = 'board-selection-silhouette';
+
 /**
  * One SVG group, with the transform it is currently under.
  *
@@ -79,6 +84,9 @@ class SvgDrawing implements BoardDrawing {
   private readonly parts = new Map<BoardRole, SvgDrawing>();
   /** The strip this drawing registered on the timeline, if it drew one. */
   private playing = false;
+  private readonly selection = new DrawingSelection();
+  private selectionSource: SVGElement | null = null;
+  private selectionCue: { root: SVGGElement; figure: SVGGElement; copy: SVGElement } | null = null;
 
   /**
    * @param pivot the drawing's own middle, which is what `swell` scales about.
@@ -91,6 +99,7 @@ class SvgDrawing implements BoardDrawing {
     private readonly id: string,
     picture: BoardPicture,
     private readonly onPlace?: (x: number, y: number) => void,
+    private readonly selectionLayer?: SVGGElement,
   ) {
     el.append(this.figure);
     this.body(drawableBody(picture));
@@ -116,14 +125,18 @@ class SvgDrawing implements BoardDrawing {
 
   opacity(value: number): void {
     this.el.style.opacity = value >= 1 ? '' : String(value);
+    this.syncSelectionCue();
   }
 
   say(state: BoardState, on: boolean): void {
+    this.selection.say(state, on);
     if (state === 'hidden') {
       this.el.style.display = on ? 'none' : '';
+      this.syncSelectionCue();
       return;
     }
     this.el.classList.toggle(STATE_CLASS[state], on);
+    this.syncSelectionCue();
   }
 
   part(role: BoardRole): BoardDrawing | null {
@@ -157,7 +170,14 @@ class SvgDrawing implements BoardDrawing {
   /** Replaces the picture under this drawing, leaving its parts alone. */
   body(markup: string): void {
     clear(this.figure);
-    if (markup) this.figure.append(fromMarkup(markup));
+    if (!markup) {
+      this.selectionSource = null;
+      this.syncSelectionCue();
+      return;
+    }
+    const body = fromMarkup(markup);
+    this.figure.append(body);
+    this.selectSource(body);
   }
 
   /**
@@ -170,6 +190,7 @@ class SvgDrawing implements BoardDrawing {
   detach(): void {
     if (this.playing) this.animations.unregister(this.id);
     this.playing = false;
+    this.removeSelectionCue();
     this.el.remove();
   }
 
@@ -184,9 +205,13 @@ class SvgDrawing implements BoardDrawing {
   private draw(strip: BoardStrip): void {
     const window = fromMarkup(boardStripMarkup(strip)).firstElementChild as SVGSVGElement;
     this.figure.append(window);
+    this.selectSource(window);
     this.animations.register(this.id, {
       frameCount: strip.frameCount,
-      setFrame: (frame) => setAttrs(window, { viewBox: boardStripWindow(strip, frame) }),
+      setFrame: (frame) => {
+        setAttrs(window, { viewBox: boardStripWindow(strip, frame) });
+        this.syncSelectionCue();
+      },
     }, strip.clips);
     this.playing = true;
     if (strip.playing) this.animations.play(this.id, strip.playing);
@@ -201,6 +226,51 @@ class SvgDrawing implements BoardDrawing {
         ? ` scale(${scale.toFixed(4)})`
         : ` translate(${this.pivot},${this.pivot}) scale(${scale.toFixed(4)}) translate(${-this.pivot},${-this.pivot})`;
     setAttrs(this.el, { transform: `${moved}${scaled}` });
+    this.syncSelectionCue();
+  }
+
+  private selectSource(source: SVGElement): void {
+    if (!this.selectionLayer) return;
+    this.selectionSource = source;
+    this.removeSelectionCue();
+    this.syncSelectionCue();
+  }
+
+  private removeSelectionCue(): void {
+    this.selectionCue?.root.remove();
+    this.selectionCue = null;
+  }
+
+  private syncSelectionCue(): void {
+    if (!this.selectionLayer || !this.selection.shown || !this.selectionSource) {
+      this.removeSelectionCue();
+      return;
+    }
+    if (!this.selectionCue) {
+      const root = svg('g', { class: 'selection-cue', 'pointer-events': 'none' });
+      root.append(fromMarkup(`<defs><filter id="${SELECTION_FILTER}" color-interpolation-filters="sRGB">`
+        + `<feColorMatrix type="matrix" values="${SELECTION_CUE_MATRIX.join(' ')}"/></filter></defs>`));
+      const figure = svg('g');
+      // Filter the already-clipped copy, never the sprite-sheet viewport itself.
+      const silhouette = svg('g', { filter: `url(#${SELECTION_FILTER})` });
+      const copy = this.selectionSource.cloneNode(true);
+      if (!(copy instanceof SVGElement)) throw new Error('selection source must be SVG');
+      silhouette.append(copy);
+      figure.append(silhouette);
+      root.append(figure);
+      this.selectionLayer.prepend(root);
+      this.selectionCue = { root, figure, copy };
+    }
+    // The source's one timeline advances both viewports; the copy registers none.
+    const viewBox = this.selectionSource.getAttribute('viewBox');
+    if (viewBox !== null) this.selectionCue.copy.setAttribute('viewBox', viewBox);
+    setAttrs(this.selectionCue.root, {
+      transform: this.el.getAttribute('transform') ?? '',
+      opacity: String(SELECTION_CUE_OPACITY * Number(this.el.style.opacity || 1)),
+    });
+    setAttrs(this.selectionCue.figure, {
+      transform: this.el.classList.contains(STATE_CLASS.facingLeft) ? `translate(${TILE_MIDDLE * 2} 0) scale(-1 1)` : '',
+    });
   }
 }
 
@@ -290,6 +360,7 @@ export class SvgBoardSurface implements BoardSurface {
         this.depth.placeUnit(id, drawing.el, x, y, picture.foot);
         this.sortStanding();
       },
+      this.layers.effects,
     );
     // The badges group is the surface's own, not the picture's: it is what
     // `fill('badges', …)` replaces every render, and it must not mirror with the
@@ -350,6 +421,7 @@ export class SvgBoardSurface implements BoardSurface {
   dispose(): void {
     this.stopListening?.();
     this.stopListening = null;
+    for (const drawing of this.units.values()) drawing.detach();
     this.animations.dispose();
     this.units.clear();
     this.depth.clear();

@@ -59,7 +59,7 @@ def validate_water_render(directory, provenance):
             'comparison': 'Actual SVG raster against approved occupancy/UV calibration; transparent RGB ignored'}
 
 
-def rasterize(directory):
+def rasterize(directory, densities=(1, 2)):
     names = sorted(path.stem for path in directory.glob('*.svg') if not path.name.endswith('.offline.svg'))
     with tempfile.TemporaryDirectory() as profile:
         for name in names:
@@ -71,7 +71,7 @@ def rasterize(directory):
             flatten_viewports(svg, defs)
             normalized = directory / f'{name}.offline.svg'
             ET.ElementTree(svg).write(normalized, encoding='unicode')
-            for density in (1, 2):
+            for density in densities:
                 subprocess.run(['inkscape', str(normalized), '--export-type=png',
                                 f'--export-width={int(float(svg.get("width"))) * density}',
                                 f'--export-filename={directory / f"{name}@{density}x.png"}'],

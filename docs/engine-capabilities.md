@@ -332,6 +332,7 @@
 | 一个单位站在格子里的哪个位置 | `UNIT_FOOTING`（`art/shading.ts`；阵营环和朝向标记共用这一份几何） |
 | 定居点周围放什么 | `CANDIDATE_SETTLEMENT_LIFE`（生活道具放在建筑旁边的空地，脚点决定与建筑的前后关系） |
 | 站立图片与移动单位谁遮挡谁 | `BoardDepthOrder`（`BoardPiece.foot` 加放置原点；按 y/x、来源层、稳定序号排序；SVG、Pixi、编辑器和静态复核共用） |
+| 已选单位被场景遮挡时是否显示提示 | `DrawingSelection`（现有 selected 且非 hidden）；`SELECTION_CUE_MATRIX` / `SELECTION_CUE_OPACITY` 声明共同外观，两个 surface 只投影当前帧 |
 | 画在格内的身体落脚在哪 | `CELL_FOOT`（`board-surface.ts`；角色和建筑的标准接触点，不是精灵左上角） |
 | 岸边和水里画什么 | `CANDIDATE_SHORE` / `CANDIDATE_RIVER_STONES`（不是任何地形的材质，是地面挨着水时会发生的事） |
 | 一座桥怎么画 | `crossing`（一段桥格一份 96 单位模件，按 `lying` 以自身中心落位，不是按脚） |

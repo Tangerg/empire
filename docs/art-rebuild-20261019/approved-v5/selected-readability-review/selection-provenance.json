@@ -1,0 +1,300 @@
+{
+  "kind": "offline actual BoardView/SvgBoardSurface selected-actor prototype; not live browser or GPU playback",
+  "levelId": "c01-02",
+  "opacity": 0.12,
+  "renders": [
+    {
+      "filename": "tree-baseline",
+      "scenario": "tree",
+      "cue": false,
+      "actorId": 11,
+      "key": "bridge-cleric",
+      "hidden": false,
+      "facing": "east",
+      "cell": [
+        2,
+        9
+      ],
+      "worldFoot": [
+        80,
+        319
+      ],
+      "screenFoot": [
+        154,
+        381
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 20,
+      "buildings": 9,
+      "cueCount": 0,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "tree-cue",
+      "scenario": "tree",
+      "cue": true,
+      "actorId": 11,
+      "key": "bridge-cleric",
+      "hidden": false,
+      "facing": "east",
+      "cell": [
+        2,
+        9
+      ],
+      "worldFoot": [
+        80,
+        319
+      ],
+      "screenFoot": [
+        154,
+        381
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 20,
+      "buildings": 9,
+      "cueCount": 1,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "granary-baseline",
+      "scenario": "granary",
+      "cue": false,
+      "actorId": 5,
+      "key": "bridge-guard-1",
+      "hidden": false,
+      "facing": "east",
+      "cell": [
+        1,
+        10
+      ],
+      "worldFoot": [
+        48,
+        351
+      ],
+      "screenFoot": [
+        122,
+        413
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 20,
+      "buildings": 9,
+      "cueCount": 0,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "granary-cue",
+      "scenario": "granary",
+      "cue": true,
+      "actorId": 5,
+      "key": "bridge-guard-1",
+      "hidden": false,
+      "facing": "east",
+      "cell": [
+        1,
+        10
+      ],
+      "worldFoot": [
+        48,
+        351
+      ],
+      "screenFoot": [
+        122,
+        413
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 20,
+      "buildings": 9,
+      "cueCount": 1,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "unobstructed-baseline",
+      "scenario": "unobstructed",
+      "cue": false,
+      "actorId": 4,
+      "key": "bridge-knight",
+      "hidden": false,
+      "facing": "east",
+      "cell": [
+        3,
+        7
+      ],
+      "worldFoot": [
+        112,
+        255
+      ],
+      "screenFoot": [
+        186,
+        317
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 20,
+      "buildings": 9,
+      "cueCount": 0,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "unobstructed-cue",
+      "scenario": "unobstructed",
+      "cue": true,
+      "actorId": 4,
+      "key": "bridge-knight",
+      "hidden": false,
+      "facing": "east",
+      "cell": [
+        3,
+        7
+      ],
+      "worldFoot": [
+        112,
+        255
+      ],
+      "screenFoot": [
+        186,
+        317
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 20,
+      "buildings": 9,
+      "cueCount": 1,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "hidden-selected-baseline",
+      "scenario": "hidden-selected",
+      "cue": false,
+      "actorId": 11,
+      "key": "bridge-cleric",
+      "hidden": true,
+      "facing": "east",
+      "cell": [
+        2,
+        9
+      ],
+      "worldFoot": [
+        80,
+        319
+      ],
+      "screenFoot": [
+        154,
+        381
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 19,
+      "buildings": 9,
+      "cueCount": 0,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "hidden-selected-cue",
+      "scenario": "hidden-selected",
+      "cue": true,
+      "actorId": 11,
+      "key": "bridge-cleric",
+      "hidden": true,
+      "facing": "east",
+      "cell": [
+        2,
+        9
+      ],
+      "worldFoot": [
+        80,
+        319
+      ],
+      "screenFoot": [
+        154,
+        381
+      ],
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actors": 20,
+      "visibleActors": 19,
+      "buildings": 9,
+      "cueCount": 0,
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    }
+  ],
+  "sources": {
+    "packages/game-ui/src/styles/app.css": "1828de426c9184eba0046d17d89c57c87087cd8dfb6e9bdc790e10987d9af754",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "d88d431b995af4b8e3951c03ca5656f1eb972abdaca13ab3ba770d2d39037059",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png": "acce57525056c38a6105b54b686241b90b92ee26acaa4984313e36b33e7f3e2e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6"
+  },
+  "scope": "Only the already-visible selected actor gets this cue. No general occlusion detection, source depth change or second timeline.",
+  "omissions": [],
+  "gameplayChanged": false,
+  "limitations": [
+    "Initial poses only",
+    "New/legacy mixed art at integration 5d72a1a",
+    "The hidden-selected negative case deliberately hides one actor through the existing overlay contract; its selection ring remains existing UI behavior"
+  ]
+}

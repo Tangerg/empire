@@ -1,0 +1,78 @@
+{
+  "kind": "Offline actual 1x scene comparison; contact-sheet details enlarged 2x with nearest-neighbor pixels",
+  "opacity": 0.12,
+  "comparisons": [
+    {
+      "scenario": "tree",
+      "cropScreenBox": [
+        84,
+        291,
+        244,
+        396
+      ],
+      "maximumChannelDifference": 25,
+      "differenceBounds": [
+        139,
+        336,
+        169,
+        381
+      ],
+      "baselinePixelSha256": "ffa512a136d085be55f82c4507b914f69266c76a3b3ee54698cdccbaae61e5f3",
+      "cuePixelSha256": "cc6a39688e9974aa433cb34bbdbb2e492a41fd666b09a6a5caaf1b6a485a266f",
+      "exactPixelMatch": false
+    },
+    {
+      "scenario": "granary",
+      "cropScreenBox": [
+        52,
+        323,
+        212,
+        428
+      ],
+      "maximumChannelDifference": 25,
+      "differenceBounds": [
+        101,
+        360,
+        156,
+        414
+      ],
+      "baselinePixelSha256": "ba0a54c9a9f7cce37139599adde5e94712134191bcc8886a5ddd7ea425c5cf23",
+      "cuePixelSha256": "f80c2d49f43b399e9088fe789468e11e552b0cd29399b88ded46b8e7c2c81f39",
+      "exactPixelMatch": false
+    },
+    {
+      "scenario": "unobstructed",
+      "cropScreenBox": [
+        116,
+        227,
+        276,
+        332
+      ],
+      "maximumChannelDifference": 25,
+      "differenceBounds": [
+        171,
+        278,
+        201,
+        317
+      ],
+      "baselinePixelSha256": "c97f5d18a5fcd19750ba28b84838d55965c94ce14808e53fc8156217363fa7d9",
+      "cuePixelSha256": "daf7ffd7d861771a857ba640feaec005d64e0bc61bb197f7b5e643bde6d305a0",
+      "exactPixelMatch": false
+    },
+    {
+      "scenario": "hidden-selected",
+      "cropScreenBox": [
+        84,
+        291,
+        244,
+        396
+      ],
+      "maximumChannelDifference": 0,
+      "differenceBounds": null,
+      "baselinePixelSha256": "5623fcc67dd3aec831b5a997d0dcf75226df51fdc92f03c3d876759f79e2e3a9",
+      "cuePixelSha256": "5623fcc67dd3aec831b5a997d0dcf75226df51fdc92f03c3d876759f79e2e3a9",
+      "exactPixelMatch": true
+    }
+  ],
+  "browserPlayback": false
+}

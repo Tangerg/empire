@@ -246,6 +246,28 @@ export const boardPiecesMarkup = (pieces: readonly BoardPiece[]): string =>
  */
 export type BoardState = 'facingLeft' | 'selected' | 'hidden';
 
+/** Selection can mark an already-visible actor through scenery, never reveal one. */
+export class DrawingSelection {
+  private selected = false;
+  private hidden = false;
+
+  say(state: BoardState, on: boolean): void {
+    if (state === 'selected') this.selected = on;
+    if (state === 'hidden') this.hidden = on;
+  }
+
+  get shown(): boolean { return this.selected && !this.hidden; }
+}
+
+/** A quiet selection cue, not a second rendering of the actor's normal colors. */
+export const SELECTION_CUE_OPACITY = 0.12;
+export const SELECTION_CUE_MATRIX = Object.freeze([
+  0, 0, 0, 0, 225 / 255,
+  0, 0, 0, 0, 197 / 255,
+  0, 0, 0, 0, 129 / 255,
+  0, 0, 0, 1, 0,
+] as const);
+
 /**
  * Whether a unit facing this way is drawn mirrored.
  *

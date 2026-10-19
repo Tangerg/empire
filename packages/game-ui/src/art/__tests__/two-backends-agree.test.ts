@@ -10,6 +10,8 @@ import { FrameClock } from './frame-clock';
 import {
   BOARD_LAYERS,
   CELL_FOOT,
+  SELECTION_CUE_MATRIX,
+  SELECTION_CUE_OPACITY,
   boardScenePieces,
   type BoardPiece,
   type BoardLayer,
@@ -236,6 +238,141 @@ describe('two backends draw the same board', () => {
     expect(clock.pump(3)).toBe(0);
     same();
     for (const surface of [svg, gpu]) surface.dispose();
+  });
+
+  it('projects only a visible selected actor above scenery, on its existing frame and lifetime', async () => {
+    const scene: BoardSurfaceScene = { width: 320, height: 320, originX: 0, originY: 0,
+      shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
+    const svg = new SvgBoardSurface(scene);
+    const textures = new InstantTextures();
+    const gpu = new PixiBoardSurface(scene, { textures, painter: new IdlePainter() });
+    const strip: BoardStrip = { href: 'selected-walk.png', frameWidth: 32, frameHeight: 32, frameCount: 2,
+      x: -8, y: -16, clips: [{ id: 'walk', frames: [0, 1], fps: 4, loop: true }], playing: 'walk' };
+    const actors = [svg, gpu].map((surface) => {
+      surface.setLayer('scenery', [{ markup: '<rect x="-32" y="-96" width="64" height="96"/>',
+        x: 48, y: 80, foot: { x: 0, y: 0 } }]);
+      const actor = surface.unit(7, () => ({ body: '<ellipse cx="16" cy="31" rx="10" ry="2"/>', strip }));
+      actor.place(32, 32);
+      return actor;
+    });
+    const gpuLayer = (name: BoardLayer) => gpu.scene.children[0].children.find((child) => child.label === `layer-${name}`)!;
+    const gpuActor = gpuLayer('units').children.find((child) => child.label === 'unit-7')!;
+    const gpuSource = gpuActor.children[0].children[1] as Sprite;
+    const svgActor = svg.element.querySelector('.unit')!;
+    const source = svgActor.querySelector('.board-strip')!;
+    const domCue = () => svg.element.querySelector('.selection-cue');
+    const gpuCue = () => gpuLayer('effects').children.find((child) => child.label === 'selection-cue');
+    const same = () => expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    expect(domCue()).toBeNull();
+    expect(gpuCue()).toBeUndefined();
+    actors.forEach((actor) => actor.say('selected', true));
+    await Promise.resolve();
+    expect(domCue()!.querySelector('.board-strip')!.getAttribute('viewBox')).toBe(source.getAttribute('viewBox'));
+    expect(domCue()!.querySelector('image')!.getAttribute('href')).toBe(strip.href);
+    expect(domCue()!.querySelectorAll('ellipse')).toHaveLength(0);
+    expect(domCue()!.querySelector('feColorMatrix')!.getAttribute('values')).toBe(SELECTION_CUE_MATRIX.join(' '));
+    expect(Number(domCue()!.getAttribute('opacity'))).toBe(SELECTION_CUE_OPACITY);
+    expect(gpuCue()!.alpha).toBe(SELECTION_CUE_OPACITY);
+    expect(gpuCue()!.children[0].children).toHaveLength(1);
+    expect((gpuCue()!.children[0].children[0] as Sprite).texture).toBe(gpuSource.texture);
+    expect(svgActor.classList.contains('is-selected')).toBe(true);
+    expect(gpuActor.children[0].filters).toHaveLength(1);
+    expect(svg.element.querySelector('.layer-units')!.firstElementChild).toBe(svgActor);
+    same();
+
+    clock.at(300);
+    expect(source.getAttribute('viewBox')).toBe('32 0 32 32');
+    expect(domCue()!.querySelector('.board-strip')!.getAttribute('viewBox')).toBe(source.getAttribute('viewBox'));
+    expect((gpuCue()!.children[0].children[0] as Sprite).texture).toBe(textures.cut.get(strip.href)![1]);
+    actors.forEach((actor) => { actor.place(64, 96); actor.nudge(3, -7); actor.swell(1.2); actor.say('facingLeft', true); actor.opacity(0.5); });
+    expect(domCue()!.getAttribute('transform')).toBe(svgActor.getAttribute('transform'));
+    expect(domCue()!.lastElementChild!.getAttribute('transform')).toBe('translate(32 0) scale(-1 1)');
+    expect([gpuCue()!.x, gpuCue()!.y]).toEqual([gpuActor.x, gpuActor.y]);
+    expect([gpuCue()!.scale.x, gpuCue()!.scale.y]).toEqual([gpuActor.scale.x, gpuActor.scale.y]);
+    expect(gpuCue()!.children[0].scale.x).toBe(-1);
+    expect(gpuCue()!.alpha).toBe(SELECTION_CUE_OPACITY * 0.5);
+    expect(Number(domCue()!.getAttribute('opacity'))).toBe(gpuCue()!.alpha);
+    expect(svg.element.querySelector('.layer-units')!.lastElementChild).toBe(svgActor);
+    same();
+    const effects = [svg, gpu].map((surface) => surface.effect({ body: '<rect width="4" height="4"/>' }));
+    expect(svg.element.querySelector('.layer-effects')!.firstElementChild).toBe(domCue());
+    expect(gpuLayer('effects').children[0]).toBe(gpuCue());
+    expect(BOARD_LAYERS.indexOf('effects')).toBeLessThan(BOARD_LAYERS.indexOf('cursor'));
+
+    // Hidden wins regardless of the order in which callers say the two states.
+    actors.forEach((actor) => { actor.say('hidden', true); actor.say('selected', true); });
+    expect(domCue()).toBeNull(); expect(gpuCue()).toBeUndefined();
+    expect((svgActor as SVGElement).style.display).toBe('none'); expect(gpuActor.visible).toBe(false);
+    actors.forEach((actor) => actor.say('hidden', false));
+    expect(domCue()).not.toBeNull(); expect(gpuCue()).toBeDefined();
+    actors.forEach((actor) => actor.say('selected', false));
+    expect(domCue()).toBeNull(); expect(gpuCue()).toBeUndefined();
+    actors.forEach((actor) => { actor.say('hidden', true); actor.say('selected', false); actor.say('hidden', false); });
+    expect(domCue()).toBeNull(); expect(gpuCue()).toBeUndefined();
+    expect(clock.pump(2)).toBeGreaterThan(0);
+    actors.forEach((actor) => actor.say('selected', true));
+    effects.forEach((effect) => effect.remove());
+    for (const surface of [svg, gpu]) surface.removeUnit(7);
+    expect(domCue()).toBeNull(); expect(gpuCue()).toBeUndefined();
+    expect(clock.pump(2)).toBe(0);
+    for (const surface of [svg, gpu]) surface.dispose();
+  });
+
+  it('uses the same selected cue for a body without a strip and releases it on disposal', async () => {
+    const scene: BoardSurfaceScene = { width: 64, height: 64, originX: 0, originY: 0,
+      shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
+    const svg = new SvgBoardSurface(scene);
+    const textures = new InstantTextures();
+    const gpu = new PixiBoardSurface(scene, { textures, painter: new IdlePainter() });
+    const actors = [svg, gpu].map((surface) => surface.unit(4, () => ({ body: '<rect width="16" height="24"/>' })));
+    await Promise.resolve();
+    const bakes = textures.asked.length;
+    actors.forEach((actor) => actor.say('selected', true));
+    expect(svg.element.querySelector('.selection-cue rect')).not.toBeNull();
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    expect(SELECTION_CUE_OPACITY).toBeGreaterThan(0);
+    expect(SELECTION_CUE_OPACITY).toBeLessThanOrEqual(0.2);
+    actors.forEach((actor) => { actor.say('selected', false); actor.say('selected', true); });
+    expect(textures.asked).toHaveLength(bakes);
+    expect(textures.cut.size).toBe(0);
+    expect(clock.pump(2)).toBe(0);
+    for (const surface of [svg, gpu]) surface.dispose();
+    expect(svg.element.querySelector('.selection-cue')).toBeNull();
+  });
+
+  it('never projects a hidden selected actor from the actual BoardView overlay', () => {
+    const level = CANDIDATE_01_LEVELS.find((candidate) => candidate.id === 'c01-02')!;
+    const engine = createBattleEngine({ content: TEST_CATALOG });
+    const state = engine.createState(level);
+    const before = JSON.stringify(state);
+    const unit = state.units.find((actor) => actor.key === 'bridge-cleric')!;
+    const scene: BoardSurfaceScene = { width: 704, height: 448, originX: 0, originY: 0,
+      shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
+    const svg = new SvgBoardSurface(scene);
+    const gpu = new PixiBoardSurface(scene, { textures: new InstantTextures(), painter: new IdlePainter() });
+    const boards = [svg, gpu].map((surface) => new BoardView({ content: TEST_CATALOG,
+      grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART, renderer: () => surface }, state,
+    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} }));
+    const overlay = emptyOverlay();
+    overlay.selected = { x: unit.x, y: unit.y };
+    overlay.hiddenUnits.add(unit.id);
+    const count = () => svg.element.querySelectorAll('.selection-cue').length;
+    boards.forEach((board) => board.render(overlay));
+    expect(count()).toBe(0);
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    overlay.hiddenUnits.clear();
+    boards.forEach((board) => board.render(overlay));
+    expect(count()).toBe(1);
+    overlay.hiddenUnits.add(unit.id);
+    boards.forEach((board) => board.render(overlay));
+    expect(count()).toBe(0);
+    overlay.selected = null;
+    overlay.hiddenUnits.clear();
+    boards.forEach((board) => board.render(overlay));
+    expect(count()).toBe(0);
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    expect(JSON.stringify(state)).toBe(before);
+    boards.forEach((board) => board.dispose());
   });
 
   it('draws every c01-02 building, scenery piece and actor through the same depth contract', () => {

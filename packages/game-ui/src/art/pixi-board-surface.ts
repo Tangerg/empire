@@ -2,6 +2,7 @@ import { autoDetectRenderer, ColorMatrixFilter, Container, Sprite, Texture } fro
 import {
   drawableBody,
   DrawingPlacement,
+  DrawingSelection,
   BoardDepthOrder,
   GRID_ALPHA,
   BOARD_LAYERS,
@@ -17,6 +18,8 @@ import {
   type BoardSurface,
   type BoardSurfaceFactory,
   TILE_MIDDLE,
+  SELECTION_CUE_MATRIX,
+  SELECTION_CUE_OPACITY,
   type BoardSurfaceScene,
 } from './board-surface';
 import { FrameAnimationSystem } from './frame-animation';
@@ -108,6 +111,9 @@ class PixiDrawing implements BoardDrawing {
   private highlight: ColorMatrixFilter | null = null;
   /** Whether this drawing has a strip on the timeline. */
   private playing = false;
+  private readonly selection = new DrawingSelection();
+  private selectionSource: Sprite | null = null;
+  private selectionCue: { root: Container; figure: Container; sprite: Sprite; filter: ColorMatrixFilter } | null = null;
 
   constructor(
     private readonly tools: DrawingTools,
@@ -116,6 +122,7 @@ class PixiDrawing implements BoardDrawing {
     private readonly id: string,
     picture: BoardPicture,
     private readonly onPlace?: (x: number, y: number) => void,
+    private readonly selectionLayer?: Container,
   ) {
     root.pivot.set(pivot, pivot);
     this.figure.pivot.set(TILE_MIDDLE, TILE_MIDDLE);
@@ -145,26 +152,32 @@ class PixiDrawing implements BoardDrawing {
 
   opacity(value: number): void {
     this.root.alpha = value;
+    this.syncSelectionCue();
   }
 
   say(state: BoardState, on: boolean): void {
+    this.selection.say(state, on);
     if (state === 'hidden') {
       this.root.visible = !on;
+      this.syncSelectionCue();
       return;
     }
     if (state === 'facingLeft') {
       this.figure.scale.x = on ? -1 : 1;
+      this.syncSelectionCue();
       return;
     }
     // A glow needs a blur pass this backend does not run. Brighter is a highlight,
     // and being plainly not the same one is better than pretending.
     if (!on) {
       this.figure.filters = [];
+      this.syncSelectionCue();
       return;
     }
     this.highlight ??= new ColorMatrixFilter();
     this.highlight.brightness(SELECTED_BRIGHTNESS, false);
     this.figure.filters = [this.highlight];
+    this.syncSelectionCue();
   }
 
   part(role: BoardRole): BoardDrawing | null {
@@ -197,6 +210,8 @@ class PixiDrawing implements BoardDrawing {
   destroy(): void {
     if (this.playing) this.tools.animations.unregister(this.id);
     this.playing = false;
+    this.removeSelectionCue();
+    this.highlight?.destroy();
     this.root.destroy({ children: true });
   }
 
@@ -211,10 +226,13 @@ class PixiDrawing implements BoardDrawing {
   body(markup: string): void {
     const generation = ++this.generation;
     this.figure.removeChildren().forEach((child) => child.destroy());
-    if (!markup) return;
+    this.selectionSource = null;
+    if (!markup) { this.syncSelectionCue(); return; }
     const sprite = new Sprite(Texture.EMPTY);
     sprite.scale.set(1 / this.tools.textures.resolution);
     this.figure.addChild(sprite);
+    this.selectionSource = sprite;
+    this.syncSelectionCue();
     // A bake that fails must not leave a silently blank sprite: the rejection is
     // re-thrown with the picture that caused it, so it reaches the console as
     // something a person can act on.
@@ -233,6 +251,7 @@ class PixiDrawing implements BoardDrawing {
     sprite.texture = picture.texture;
     sprite.position.set(picture.left, picture.top);
     sprite.scale.set(1 / this.tools.textures.resolution);
+    this.syncSelectionCue();
   }
 
   /**
@@ -255,12 +274,15 @@ class PixiDrawing implements BoardDrawing {
     // per-sprite multiply, so the shared frame textures stay shared.
     if (strip.tint) sprite.tint = strip.tint;
     this.figure.addChild(sprite);
+    this.selectionSource = sprite;
+    this.syncSelectionCue();
 
     let frames: readonly Texture[] = [];
     let wanted = 0;
     const show = (frame: number): void => {
       sprite.texture = frames[frame];
       sprite.setSize(strip.frameWidth, strip.frameHeight);
+      this.syncSelectionCue();
     };
     void this.tools.textures.frames(strip).then(
       (cut) => {
@@ -287,6 +309,46 @@ class PixiDrawing implements BoardDrawing {
   private write(): void {
     this.root.position.set(this.at.x + this.pivot, this.at.y + this.pivot);
     this.root.scale.set(this.at.scale);
+    this.syncSelectionCue();
+  }
+
+  private removeSelectionCue(): void {
+    if (!this.selectionCue) return;
+    this.selectionCue.root.destroy({ children: true });
+    this.selectionCue.filter.destroy();
+    this.selectionCue = null;
+  }
+
+  private syncSelectionCue(): void {
+    if (!this.selectionLayer || !this.selection.shown || !this.selectionSource) {
+      this.removeSelectionCue();
+      return;
+    }
+    if (!this.selectionCue) {
+      const root = new Container({ label: 'selection-cue', eventMode: 'none' });
+      const figure = new Container();
+      const sprite = new Sprite();
+      const filter = new ColorMatrixFilter();
+      filter.matrix = [...SELECTION_CUE_MATRIX];
+      figure.filters = [filter];
+      figure.addChild(sprite);
+      root.addChild(figure);
+      this.selectionLayer.addChildAt(root, 0);
+      this.selectionCue = { root, figure, sprite, filter };
+    }
+    const cue = this.selectionCue;
+    cue.root.pivot.copyFrom(this.root.pivot);
+    cue.root.position.copyFrom(this.root.position);
+    cue.root.scale.copyFrom(this.root.scale);
+    cue.root.alpha = SELECTION_CUE_OPACITY * this.root.alpha;
+    cue.figure.pivot.copyFrom(this.figure.pivot);
+    cue.figure.position.copyFrom(this.figure.position);
+    cue.figure.scale.copyFrom(this.figure.scale);
+    // Texture references and geometry project the source drawing's current frame.
+    // The cue owns no bake, animation registration or frame counter.
+    cue.sprite.texture = this.selectionSource.texture;
+    cue.sprite.position.copyFrom(this.selectionSource.position);
+    cue.sprite.scale.copyFrom(this.selectionSource.scale);
   }
 }
 
@@ -369,7 +431,7 @@ export class PixiBoardSurface implements BoardSurface {
     const drawing = this.drawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, picture, (x, y) => {
       this.depth.placeUnit(id, drawing.root, x, y, picture.foot);
       this.sortStanding();
-    });
+    }, this.layers.effects);
     // The badges part is the surface's own, exactly as in the SVG tree: it is what
     // `fill('badges', …)` replaces every render, and it must not mirror with the
     // sprite when the unit faces west.
@@ -451,6 +513,7 @@ export class PixiBoardSurface implements BoardSurface {
   dispose(): void {
     this.stopListening?.();
     this.stopListening = null;
+    for (const drawing of this.units.values()) drawing.destroy();
     this.drawingTools.animations.dispose();
     this.tools.painter.detach(this.scene);
     this.units.clear();
@@ -464,8 +527,9 @@ export class PixiBoardSurface implements BoardSurface {
   }
 
   /** One drawing of this surface's, with its own place on the shared timeline. */
-  private drawing(root: Container, pivot: number, picture: BoardPicture, onPlace?: (x: number, y: number) => void): PixiDrawing {
-    return new PixiDrawing(this.drawingTools, root, pivot, `strip:${this.serial++}`, picture, onPlace);
+  private drawing(root: Container, pivot: number, picture: BoardPicture,
+    onPlace?: (x: number, y: number) => void, selectionLayer?: Container): PixiDrawing {
+    return new PixiDrawing(this.drawingTools, root, pivot, `strip:${this.serial++}`, picture, onPlace, selectionLayer);
   }
 
   /**
