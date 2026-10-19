@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "transparent_background": true,
+  "promptFile": "prompt.txt",
+  "promptSha256": "93807307de7b811e528f01c269242b8f6fa3a81e25aefbd082a842059191f0d7",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/candidate-v2/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/master.png"
+  ],
+  "referenceSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/candidate-v2/master.png": "42a72946567b6410c4db990bf8e0b2e1f63c79d675874b1224acd5ebff4ed74e",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/master.png": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451"
+  },
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a1e2401c-f05e-46d8-b9a8-da7d820f1e1c.png",
+  "noPostprocessing": true,
+  "correctionOf": "attack/candidate-v2"
+}

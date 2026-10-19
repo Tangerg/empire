@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-b/master.png"
+    },
+    "scale": 0.0683371298405467,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      821,
+      946
+    ],
+    "sourceFeet": {
+      "idle": [
+        821,
+        946
+      ],
+      "walk-a": [
+        847,
+        965
+      ],
+      "attack": [
+        739,
+        945
+      ],
+      "walk-b": [
+        858,
+        949
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -1.7767653758542141,
+        -1.2984054669703873
+      ],
+      "attack": [
+        5.603644646924829,
+        0.0683371298405467
+      ],
+      "walk-b": [
+        -2.5284738041002277,
+        -0.2050113895216401
+      ]
+    },
+    "registrationLimit": 6,
+    "canvasPaddingTolerance": 1,
+    "meaning": "original headless grave-gate assemblage; six tablets and three lamps; common60-logical crown-to-sole scale; measured attack support translation"
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    64.10478359908885,
+    68.64692482915717
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b7d00daa13b0a574601765bd3bf1aaaad90c356343afe6c9febd3e8708c35dc4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7545,
+        "nearOpaquePixels": 2251,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          8,
+          95,
+          69
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b7d00daa13b0a574601765bd3bf1aaaad90c356343afe6c9febd3e8708c35dc4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 30577,
+        "nearOpaquePixels": 9378,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          16,
+          190,
+          137
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-a/master.png",
+      "registrationOffset": [
+        -1.7767653758542141,
+        -1.2984054669703873
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "e79df08e02d34e3dcfa79aa92bf440df0aa10ddd52464ae30850a5c7b4c01676",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7599,
+        "nearOpaquePixels": 2202,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          7,
+          100,
+          69
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-a/master.png",
+      "registrationOffset": [
+        -1.7767653758542141,
+        -1.2984054669703873
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "e79df08e02d34e3dcfa79aa92bf440df0aa10ddd52464ae30850a5c7b4c01676",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 30794,
+        "nearOpaquePixels": 9152,
+        "edgeMax": 0,
+        "visibleBounds": [
+          50,
+          13,
+          200,
+          137
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/attack/master.png",
+      "registrationOffset": [
+        5.603644646924829,
+        0.0683371298405467
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4d78b06548c2ca65fd4d17cbcf3fb9a2de02d66c534cc5740ffca8af6cbdf387",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7207,
+        "nearOpaquePixels": 2536,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          7,
+          118,
+          69
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/attack/master.png",
+      "registrationOffset": [
+        5.603644646924829,
+        0.0683371298405467
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4d78b06548c2ca65fd4d17cbcf3fb9a2de02d66c534cc5740ffca8af6cbdf387",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 29296,
+        "nearOpaquePixels": 10576,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          14,
+          236,
+          137
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-b/master.png",
+      "registrationOffset": [
+        -2.5284738041002277,
+        -0.2050113895216401
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "db61db98ff279c25cb21a17ee6a374a61fbcbd523cfed8715c1cc9a0080f46d8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7564,
+        "nearOpaquePixels": 2259,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          7,
+          97,
+          69
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-b/master.png",
+      "registrationOffset": [
+        -2.5284738041002277,
+        -0.2050113895216401
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "db61db98ff279c25cb21a17ee6a374a61fbcbd523cfed8715c1cc9a0080f46d8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 30642,
+        "nearOpaquePixels": 9378,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          14,
+          193,
+          137
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,10 @@
+Use case: precise-object-edit.
+Asset type: C01-UNIT-STONE-GOLEM ATTACK sprite, exact body-scale correction.
+
+Image1 is the target: an anatomically correct heavy downward fist slam with the forked amber forearm rune on the correct screen-left arm. Image2 is the approved idle scale authority. Keep image1's exact attack pose, stone anatomy, correct arm sides, original symbols, colors, camera, expression, dark outlines and matte cel-rendering. Correct ONLY its source-pixel body scale and placement to match image2.
+
+Image1 grew approximately7% too large relative to the idle. Redraw its complete character UNIFORMLY at93% of its current image1 size, on the SAME1586x992 transparent canvas. Keep all body parts in proportion together: head, torso, arms, fists, legs, feet, rune strokes and line thickness all reduce by the same amount. This is a single whole-character scale correction, not a change to pose or proportions. Place the completed reduced character so its two soles are again centered near x764,y974 and its head top is close to y218, matching the head-to-sole body scale of image2. Preserve all space around the silhouette. Do not resize the canvas or zoom the camera to fit the smaller figure back into the old occupied rectangle.
+
+Keep the slam pose EXACTLY: left-side rune forearm lowered diagonally toward bottom-right, its closed fist low in front of the belt/left knee; plain opposite fist braced near right waist. Keep the forked amber rune on this left-side forearm, spiral on left chest, hook on right shoulder, tiny insets and amber eye slits. No swapping symbols or limbs. The approved idle is solely the body-scale reference, not a request to restore its raised arm.
+
+Deliver one complete RGBA sprite with genuinely transparent background, no new art elements. No ground, shadow, background, effects, dust, glow, new symbols, weapons, particles, labels, text or cropping. Keep clean transparent perimeter. Preserve matte broad stone planes, not gritty or glossy.

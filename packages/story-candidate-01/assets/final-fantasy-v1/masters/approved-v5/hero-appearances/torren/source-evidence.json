@@ -1,0 +1,527 @@
+{
+  "artifactKind": "named-campaign-actor-source-audit",
+  "status": "Coordinator approved stage01 battle idle with rule-based straight-sword substitution; source generation in progress, no binding",
+  "campaignRosterId": "torren",
+  "levelUnitKey": "campaign-torren",
+  "actualUnitType": "c01.swordsman",
+  "baseTopicId": "C01-UNIT-SWORDSMAN",
+  "proposedStageCard": "C01-CHAR-TORREN-01",
+  "canonicalTopicCountDelta": 0,
+  "newRuleUnit": "none; c01.torren does not exist",
+  "stages": {
+    "C01-CHAR-TORREN-01": {
+      "canonical": {
+        "assetId": "C01-FFV1-CHAR-TORREN-01",
+        "topicId": "C01-CHAR-TORREN-01",
+        "label": "托伦北丘士兵",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/char-torren-01.png",
+        "width": 192,
+        "height": 224,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "character-card"
+      },
+      "originalBoard": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+        "sha256": "773dc261c19609d5fb8ba9c3da6955e0675c3eaa7d55dd417a9f2ca1864e4354",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "cell": 0,
+      "nativeCropBox": [
+        5,
+        5,
+        622,
+        622
+      ],
+      "crop": {
+        "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/references/c01-char-torren-01-original-cell.png",
+        "sha256": "7983714a466969faa743676c00c1e940cfe7ac00d22bf0eb3798aabb7ef8ea34",
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "card": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-torren-01.png",
+        "sha256": "81cd8c7b89ae4e4c164f822c51a9eaeaabaf99c99889f0169f24ae90610febe6",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "legacyCatalogSlot": 42,
+      "directConsumerAtAudit": false
+    },
+    "C01-CHAR-TORREN-02": {
+      "canonical": {
+        "assetId": "C01-FFV1-CHAR-TORREN-02",
+        "topicId": "C01-CHAR-TORREN-02",
+        "label": "托伦旧旗军官",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/char-torren-02.png",
+        "width": 192,
+        "height": 224,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "character-card"
+      },
+      "originalBoard": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+        "sha256": "773dc261c19609d5fb8ba9c3da6955e0675c3eaa7d55dd417a9f2ca1864e4354",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "cell": 1,
+      "nativeCropBox": [
+        632,
+        5,
+        1249,
+        622
+      ],
+      "crop": {
+        "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/references/c01-char-torren-02-original-cell.png",
+        "sha256": "f295dfbb568e7544814b8df04d623bfa782889d5add71cdb4a44c3280c8775be",
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "card": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-torren-02.png",
+        "sha256": "b6caa67d062bc6de935fce884eee65fc0c6adb9470865b49997d71ac90153854",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "legacyCatalogSlot": 43,
+      "directConsumerAtAudit": false
+    }
+  },
+  "genericRuntime": {
+    "canonical": {
+      "assetId": "C01-FFV1-UNIT-SWORDSMAN",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "label": "剑士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-swordsman.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.44444444444444,
+        53.27777777777778
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true
+    },
+    "sheet": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman.png",
+      "sha256": "f2af7db2fc4abbbb7328986dfdb33dbd731c92d635b8d89033c1810634af2dd1",
+      "size": [
+        384,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "hd": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+      "sha256": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+      "size": [
+        768,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "styleOnly": "Current generic approved chunky swordsman is a bearded blue-armored soldier and must remain independent. Borrow body/stroke style, not face/kit."
+  },
+  "sourceFileHashes": {
+    "packages/story-candidate-01/src/units.ts": "5aec43c370aebde9587f6ef7ea564215806df9ce60a76939528e968a069ba36c",
+    "packages/story-candidate-01/src/weapons.ts": "0c6136b2a46146e05c1ee2de109b656edd5fc597c4b59908951a28e4d4f668ef",
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/campaign.ts": "4c217fe0b950c81a7e3d5c6f49192c69bdefdb6eaa0f7ab857ed25137f50bf9a",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "8e14f8bdda35df7fe908a4bda550a12a0d12622a413207464c395915793e53f4",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts": "cb1dac72cd493ea6559a97abcf99d8c88a66ea0af0d39a650ebd1861a2a21cd0",
+    "packages/story-candidate-01/src/presentation/index.ts": "6f709d780a4bf2b12d1df9b0b6cd77dfe34bf265134dc5c0e90700a5fe406633",
+    "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md": "6460b6636d855e2d1b69075e4199a4c8841e3d256745a3a808807f14f5a4ce27",
+    "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md": "c6907417589d8457dc1ad2c8306fa0e033ea8b903227e46fa5d428775ea9cdfb",
+    "docs/story-candidates/candidate-01/deep-novel-v2/02-grey-banner-exile-novel.md": "765d0eb3cd49897f0bb3d29925b85e8bad5bfd7ebc84480726d024d8931f559b",
+    "docs/story-candidates/candidate-01/deep-novel-v2/04-grey-banner-queen-novel.md": "c5730aa0ec773d603bca08328210bd2e0c22d76d0028582fe5afb5ff53d0a955",
+    "docs/story-candidates/candidate-01/deep-novel-v2/07-throne-without-king-novel.md": "5e39c9367bf7d788b100369713386c84fc27967867a80c3bc6ca4563d1a39da3"
+  },
+  "stage01Identity": {
+    "age": "Young male; explicit18-year-old Twin Hills self in chapter07 flashback line397 supports stage01 age18. The source drawing has tired eyes/faint stubble, not a large beard.",
+    "face": "Dark hair/brows, downturned tired eyes, pronounced nose, light beard-shadow; no stage02 cheek scar imported",
+    "helmet": "Round gray steel kettle helmet, slight brim, central seam and ear/cheek guards; no crest/plume",
+    "clothing": "Gray scarf/cowl, gray-brown quilted padded jacket with simple large patches, dark trousers, brown leather belt/square buckle and wrapped brown boots; bare hands",
+    "symbol": "Small source cross-shaped pendant with rounded ends; preserve without new symbolism",
+    "sourceWeapons": "Right hand/image-left holds tall wooden spear with faceted metal point, left arm/image-right carries round wooden shield with dark steel rim and central boss. Lower image-left shield quadrant has an irregular repair plate/patch. No sword visible in exact named cell."
+  },
+  "stage02Identity": {
+    "card": "C01-CHAR-TORREN-02",
+    "face": "Same man older-looking, visible image-right cheek scar and stubble, same basic helmet",
+    "costume": "Blue officer coat with horizontal frog fasteners, leather shoulder strap, mail visible at lower hem, round patched shield retained",
+    "handItem": "Right hand/image-left carries rolled document rather than the stage01 spear; original board rear view shows rolled map case and small blue tattered flag",
+    "stageBoundary": "Later officer stage must not be silently used for stage01. No automatic story age/stage selection currently proven."
+  },
+  "rules": {
+    "unitSource": "units.ts:64 with defaults11–12",
+    "weapons": [
+      "c01.border-blade"
+    ],
+    "weaponName": "边境长剑",
+    "damageType": "slash",
+    "power": 39,
+    "weaponSource": "weapons.ts:5,13",
+    "maxHp": 98,
+    "movement": 3,
+    "movementClass": "foot",
+    "armorClass": "light",
+    "tags": [
+      "infantry"
+    ],
+    "actualCampaignRoster": "campaign.ts:137 idtorren, unitTypec01.swordsman, retinue/infantry, rank0",
+    "initialActorSeed": "levels.ts:348,403,slot1 of baseParty"
+  },
+  "actualInitialPlacements": [
+    {
+      "levelId": "c01-01",
+      "title": "双子丘陵",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        5,
+        8
+      ],
+      "sourceLine": 410
+    },
+    {
+      "levelId": "c01-02",
+      "title": "三桥河谷",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        8
+      ],
+      "sourceLine": 441
+    },
+    {
+      "levelId": "c01-03",
+      "title": "赤石围城",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        6
+      ],
+      "sourceLine": 463
+    },
+    {
+      "levelId": "c01-04",
+      "title": "黑旗营地",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        3,
+        9
+      ],
+      "sourceLine": 519
+    },
+    {
+      "levelId": "c01-05",
+      "title": "焚村令",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        7,
+        6
+      ],
+      "sourceLine": 551
+    },
+    {
+      "levelId": "c01-06",
+      "title": "白河夜渡",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        8,
+        8
+      ],
+      "sourceLine": 584
+    },
+    {
+      "levelId": "c01-07",
+      "title": "无主之城",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        10,
+        7
+      ],
+      "sourceLine": 610
+    },
+    {
+      "levelId": "c01-08",
+      "title": "佣兵之价",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        3,
+        6
+      ],
+      "sourceLine": 627
+    },
+    {
+      "levelId": "c01-09",
+      "title": "笼中之火",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        9
+      ],
+      "sourceLine": 645
+    },
+    {
+      "levelId": "c01-10",
+      "title": "旧旗下的追兵",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        9,
+        6
+      ],
+      "sourceLine": 664
+    },
+    {
+      "levelId": "c01-11",
+      "title": "无声墓园",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        7
+      ],
+      "sourceLine": 688
+    },
+    {
+      "levelId": "c01-12",
+      "title": "沉没钟塔",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        6
+      ],
+      "sourceLine": 702
+    },
+    {
+      "levelId": "c01-13",
+      "title": "圣城档案",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        3,
+        8
+      ],
+      "sourceLine": 726
+    },
+    {
+      "levelId": "c01-14",
+      "title": "山炉余烬",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        7
+      ],
+      "sourceLine": 740
+    },
+    {
+      "levelId": "c01-15",
+      "title": "银林长梦",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        7
+      ],
+      "sourceLine": 754
+    },
+    {
+      "levelId": "c01-16",
+      "title": "记住我的名字",
+      "key": "campaign-torren",
+      "campaignRosterId": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 1,
+      "position": [
+        2,
+        8
+      ],
+      "sourceLine": 780
+    }
+  ],
+  "placementMethod": "Source-derived slot1 of every baseParty at16 initial levels, owner1/east; not a rendered runtime screenshot or proof of campaign survival.",
+  "conditionalPlacement": {
+    "levelId": "c01-01",
+    "flag": "twin_hills_rushed",
+    "position": [
+      9,
+      4
+    ],
+    "hpUpperBound": 72,
+    "source": "campaign.ts:162–164; levels.ts TWIN_HILLS_RUSH_POSITION"
+  },
+  "narrativeContinuity": [
+    "deep-customized creative-bible54–58: young swordsman rescued by Roderick, later chooses old banner and becomes officer.",
+    "deep-novel-v2 chapter01:11–19 damaged boots replaced;113 shields bowman;121 name托伦·维斯;137 injured ankle. Do not bake permanent limp/injury into every generic animation without explicit stage/state contract.",
+    "deep-novel-v2 chapter02:371 and395: still limps, now small squad-leader band, returns to old banner.",
+    "deep-novel-v2 chapter04:399–417 later old-banner squad leader; do not infer stage02 runtime from prose alone.",
+    "deep-novel-v2 chapter07:397–399 explicitly recalls18-year-old self without later scar at Twin Hills."
+  ],
+  "bindingAudit": {
+    "currentUnitArt": "CANDIDATE_01_UNIT_ART c01.swordsman => C01-UNIT-SWORDSMAN, shared with all generic swordsmen",
+    "currentCardArt": "CANDIDATE_01_CHARACTER_ART has neither c01.swordsman nor Torren; both TORREN cards remain catalog-only at snapshot",
+    "currentPictureSignature": "candidate01UnitPicture(type,team), runtime.ts:137; no actor context at this boundary",
+    "currentPortraitFallback": "presentation/index.ts portraitMarkup(type,team) chooses card by unitType; otherwise first frame of shared unit strip",
+    "requiredSelector": "Coordinator-owned deliberate presentation-only actor identity from campaignRosterId torren / levelUnitKey campaign-torren. Do not globally override c01.swordsman, invent a rule alias, use a name heuristic or claim existing unit-type selection is sufficient."
+  },
+  "mismatchDecisionPending": {
+    "mismatch": "Named stage01 card spear versus young-swordsman narrative and actual border-blade/slash rule",
+    "recommendation": "Retain stage01 young face/helmet/quilted coat/scarf/bare hands/patched round shield; battle right hand uses a plain straight sword as explicit rule-supported equipment reconstruction. No new rule weapon. Portrait equipment requires explicit coordinator decision to preserve source spear or align with battle sword.",
+    "notYetAuthorized": "Superseded by approved battle-idle contract22:08UTC. Portrait equipment remains a later explicit decision."
+  },
+  "idleProposal": {
+    "bodyHeightLogical": 44,
+    "nativeCanvasCandidate": [
+      1586,
+      992
+    ],
+    "bodyHeightMeasurement": "Helmet dome crown to mean planted sole baseline; long weapons never determine body scale",
+    "camera": "Approved chunky raised three-quarter east-facing",
+    "style": "Concept-v2/native blue swordsman proportions and broad matte2–3tone shapes, large young head/bare hands/boots. Remove mottled source microtexture while keeping major patch/symbol identity.",
+    "semanticOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "sequenceScale": "Lock from inspected first idle; complete canvases, common foot registration, no per-frame fit",
+    "bindingGuard": "Do not activate incomplete quartet or change generic troop/card/rules. Source work only in shared directory."
+  },
+  "coordinatorIdleContract": {
+    "time": "2026-10-19 22:08UTC",
+    "scope": "Stage01 young face/gray kettle helmet/gray quilted coat/scarf/patched roundshield, right-hand straight sword for actual border-blade/slash.44logical human scale. Actor selector implementation separate; do not globally bind generic swordsmen.",
+    "portrait": "Original narrative spear source preserved; no new portrait generated yet.",
+    "stage02": "Separate original later officer role, no automatic outfit/face progression"
+  }
+}

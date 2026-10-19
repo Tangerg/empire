@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-STATUS-20",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5701563608891738,
+  "nearOpaqueFractionAlphaGE250": 0.40329255791356017,
+  "nonzeroAlphaBBox": [
+    0,
+    35,
+    1234,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    32,
+    47,
+    1222,
+    1211
+  ],
+  "visibleAlphaBBoxGE128": [
+    32,
+    48,
+    1221,
+    1210
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    32,
+    48,
+    33,
+    44
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 23,
+  "sha256": "d6d18813e740602338247ec9704926add845e440219c5979c9a0deb109ae5ec0",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: protective pair of hands, lit lantern and broken iron grille remain identifiable. Three bar segments and two fragments retained natively; fine finger/bar details are small atHUD28. Warm flame confined to lantern, no broad exterior haze."
+  ],
+  "identityVerified": "Exactly TWO tan human hands, each emerging from a short brown leather bracer, cup protectively on either side of exactly ONE hanging bronze/dark-metal lantern. Lantern is centered, with one round hanging ring above, enclosed golden glass panels, and one warm gold flame inside. Preserve the mirrored protective hand pose and bracers, no additional person. BELOW them retain the original broken iron-grille grouping: exactly THREE broken upright iron bar segments, with TWO at left connected by ONE long horizontal crossbar, and ONE separate right upright bearing ONE short horizontal stub. Exactly TWO small detached dark metal fragments sit beneath/right of the bars. Preserve jagged broken tops, no blood. Flame stays inside the lantern glass; warm reflection can appear on inward hand surfaces only. Entire exterior and gaps genuinely transparent, absolutely no outer glow cloud, halo, smoke, fog or broad haze. Do not replace original bars with a chain or tools.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-20/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: protective pair of hands, lit lantern and broken iron grille remain identifiable. Three bar segments and two fragments retained natively; fine finger/bar details are small atHUD28. Warm flame confined to lantern, no broad exterior haze."
+  },
+  "reviewComplete": true,
+  "brokenBarClarification": "Two detached small fragments are below/right. Additional small ends beside the three upright bars are original attached broken crossbar stubs, not additional free debris."
+}

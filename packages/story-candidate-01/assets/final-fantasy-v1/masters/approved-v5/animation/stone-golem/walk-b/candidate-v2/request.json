@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "transparent_background": true,
+  "promptFile": "prompt.txt",
+  "promptSha256": "fae3172002fee782c2f199084863452ffd9a2047d55b2f91e56cff702d4fa7e9",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/candidate-v1/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/master.png"
+  ],
+  "referenceSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/candidate-v1/master.png": "f028ca33fe1e4a79a7e9b137609c4ccca9f5b83bd2c162ddb9c5ebe952ad3aaa",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/master.png": "4103521c5b144faca60ec2ece1f9f189d6466b44766ec080dbf00b81790c0b86"
+  },
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-21540989-f2f2-4e1b-bf24-4301535f6634.png",
+  "noPostprocessing": true,
+  "correctionOf": "walk-b/candidate-v1"
+}

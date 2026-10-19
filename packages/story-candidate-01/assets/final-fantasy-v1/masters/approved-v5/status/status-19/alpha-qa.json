@@ -1,0 +1,62 @@
+{
+  "topicId": "C01-STATUS-19",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6246454726056841,
+  "nearOpaqueFractionAlphaGE250": 0.34998753589788595,
+  "nonzeroAlphaBBox": [
+    39,
+    17,
+    1208,
+    1212
+  ],
+  "visibleAlphaBBoxGE8": [
+    100,
+    89,
+    1151,
+    1165
+  ],
+  "visibleAlphaBBoxGE128": [
+    103,
+    90,
+    1150,
+    1164
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    103,
+    90,
+    104,
+    90
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "1839c69f9cea5179bfe5a871b196932d875ea9024e1612e25ce23e3a070e99ce",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: two open palisade gate leaves and receding bootprint trail remain identifiable. Seven sole/heel groups retained in native source; farthest prints are very small atHUD28."
+  ],
+  "identityVerified": "Exactly TWO opened wooden palisade gate leaves face inward from LEFT and RIGHT, with pointed thick timber uprights, simple gray iron straps/hinges and brown rope lashings as in image1. The gap between them is open. Exactly SEVEN black/dark-charcoal bootprints form a receding trail through the opening: largest lower-left foreground, then right, then left, then right, then left, then right, then tiniest left farthest away. Each bootprint has one larger sole/toe shape and one smaller separate heel. Keep all seven footprint groups distinct with generous gaps; no new prints, no whole boots, no people, no ground plate or walkway. Simplify gate into chunky big wooden masses without tiny grain.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-19/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: two open palisade gate leaves and receding bootprint trail remain identifiable. Seven sole/heel groups retained in native source; farthest prints are very small atHUD28."
+  },
+  "reviewComplete": true
+}

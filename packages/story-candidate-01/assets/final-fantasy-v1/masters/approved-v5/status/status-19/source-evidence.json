@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-19",
+  "assetId": "C01-FFV1-STATUS-19",
+  "label": "撤离目标",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-512ad0fa-e0e9-4fdc-a1e8-bc9858792bb5.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-19-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-02.png",
+    "atlasSha256": "f10d9f5a15e15cdea261cc72eba879a241a74b8509d16acb3c290fcc54b9d6e0",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-02.png, row 1 column 3 (one based)",
+    "topicIndex": 18,
+    "inspectionCropCoordinates": [
+      892,
+      5,
+      1325,
+      439
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-19.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-19-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      889,
+      2,
+      1328,
+      442
+    ],
+    "sourceCellCorrection": "No grid lines; complete subject retained in nominal interior.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-19-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly TWO opened wooden palisade gate leaves face inward from LEFT and RIGHT, with pointed thick timber uprights, simple gray iron straps/hinges and brown rope lashings as in image1. The gap between them is open. Exactly SEVEN black/dark-charcoal bootprints form a receding trail through the opening: largest lower-left foreground, then right, then left, then right, then left, then right, then tiniest left farthest away. Each bootprint has one larger sole/toe shape and one smaller separate heel. Keep all seven footprint groups distinct with generous gaps; no new prints, no whole boots, no people, no ground plate or walkway. Simplify gate into chunky big wooden masses without tiny grain.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog objective icon; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}
