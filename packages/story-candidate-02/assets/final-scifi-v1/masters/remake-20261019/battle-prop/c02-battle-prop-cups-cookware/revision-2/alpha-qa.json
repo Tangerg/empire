@@ -1,0 +1,30 @@
+{
+  "asset_id": "c02-battle-prop-cups-cookware",
+  "revision": 2,
+  "mode": "RGBA",
+  "size": [
+    1024,
+    1536
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "transparent_pixels": 787358,
+  "opaque_pixels": 0,
+  "partial_alpha_pixels": 785506,
+  "alpha_bbox": [
+    0,
+    80,
+    1002,
+    1536
+  ],
+  "alpha_bbox_over_128": [
+    32,
+    83,
+    999,
+    1454
+  ],
+  "pixel_cleanup": false,
+  "visual_review": "FAILED haze correction: broad gray/brown halo remains visible around cluster. Object identity retained. Do not promote revision2; original and correction retained for history."
+}

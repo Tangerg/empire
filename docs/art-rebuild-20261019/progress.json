@@ -4183,7 +4183,13 @@
         "semanticReview": "identity passed; needs imagegen internal-halo removal beforeexport"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "9682fbd4c24c2bfa2835f56c93f46d50874b69d7ae71448301ad9b576862dca9"
+      "sourceSha256": "9682fbd4c24c2bfa2835f56c93f46d50874b69d7ae71448301ad9b576862dca9",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-cups-cookware/revision-3/master.png",
+        "sha256": "a38e3074022753b36c07a8d6abaed5bebcbfd63f3d8894c7c94b5df9d16724d9",
+        "status": "haze-review-pending",
+        "rejectedPrevious": "revision2 failed visible halo check"
+      }
     },
     {
       "topicId": "c02-battle-prop-dead-fungus-beds",
