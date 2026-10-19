@@ -560,11 +560,31 @@
     },
     {
       "topicId": "C01-UNIT-BANNER-GUARD",
-      "status": "pending",
+      "status": "exported",
       "source": null,
       "verification": {
-        "state": "partial-frames-only",
-        "note": "4 of four pose masters backed up; topic remains pending"
+        "state": "export-checked",
+        "exportCheck": "passed",
+        "exporterTests": 42,
+        "evidence": "docs/art-rebuild-20261019/frame-004-export-evidence.json",
+        "staticVisualReview": "passed-four-semantic-poses-and-native32-HD64",
+        "visibleBaseY": {
+          "idle": 46,
+          "walk-a": 45,
+          "attack": 46,
+          "walk-b": 46
+        },
+        "declaredPivotY": 47,
+        "placement": {
+          "renderWidth": 30,
+          "origin": [
+            1,
+            2
+          ]
+        },
+        "registrationOffsets": "none",
+        "note": "One-pixel walk contact variation accepted by visual review; shifting walk-a would fail unchanged edge alpha gate. Pivot remains unchanged.",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "assignmentPhase": "after-equipment-quartet",
@@ -576,22 +596,22 @@
       ],
       "frames": {
         "idle": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/master.png",
           "sha256": "d7830242b3703b7942386914d882071d1b8828294dc38bdf79cdfae1cba2cf34"
         },
         "walk-a": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/master.png",
           "sha256": "b40132c296cc7c64ff9cb94e29fd1535b71674786fc3244e4ae0ff325a4a25d8"
         },
         "attack": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/master.png",
           "sha256": "7020d970d91da4618ba424965633a7d78a2804743557e88fcc34e3f6038a5b57"
         },
         "walk-b": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/master.png",
           "sha256": "e5dd0237ca8b9140274f96e56ad06b16db7771aadac7c9ac3ce6438d8db3810a"
         }
@@ -7763,11 +7783,16 @@
     },
     {
       "topicId": "c03-equip-4c02a584",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4c02a584/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-048-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "after-evidence-revisions-source-review-first",
@@ -7853,11 +7878,16 @@
     },
     {
       "topicId": "c03-equip-915fc486",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-915fc486/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-048-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "after-evidence-revisions-source-review-first",
@@ -8789,8 +8819,11 @@
     },
     {
       "id": "forest-existing",
-      "status": "pending",
-      "componentCount": 16
+      "status": "exported",
+      "componentCount": 16,
+      "exportedComponents": 16,
+      "staticVisualReview": "pending-whole-atlas-review",
+      "runtimeVisual": "pending-browser-socket-blocked"
     },
     {
       "id": "forest-temperate",
@@ -9149,28 +9182,34 @@
       "atlasId": "forest-existing",
       "cellId": "pine-stump",
       "index": 14,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-stump/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-current-four",
       "sourceSha256": "7d20008f11ec06dbbca3734802942813b4485cbdd1345811ba7903be2dfa7253",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-019-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-mossy-rock",
       "index": 15,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mossy-rock/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-current-four",
       "sourceSha256": "44d1d325b6277a297b883d9001a90cca867341b3bc3e88a1abb2524b4bebdaf2",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-019-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
