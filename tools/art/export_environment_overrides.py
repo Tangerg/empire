@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic forest cell overlay onto immutable, checksummed atlas baselines."""
+"""Deterministic scenery cell overlay onto immutable, checksummed atlas baselines."""
 import argparse
 import hashlib
 import io
@@ -59,7 +59,7 @@ def plan(root, catalog):
     manifest = read_json(env / 'manifest-environment-builder-v1.json')
     planned = []
     for atlas_id, override in data['atlases'].items():
-        if atlas_id not in ('forest-temperate', 'forest-existing'):
+        if atlas_id not in ('forest-temperate', 'forest-existing', 'scenery-regional'):
             raise ValueError('unsupported environment atlas')
         matches = [a for a in manifest['atlases'] if a['id'] == atlas_id]
         if len(matches) != 1:
@@ -67,7 +67,7 @@ def plan(root, catalog):
         atlas = matches[0]
         if (atlas['columns'], atlas['rows'], atlas['cellWidth'], atlas['cellHeight'],
             atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['anchor'], atlas['tileMode']) != (4, 4, 96, 96, 192, 192, [48, 91], 'modules'):
-            raise ValueError('unsupported forest contract')
+            raise ValueError('unsupported scenery contract')
         order = atlas['cellOrder']
         if len(order) != 16 or len(set(order)) != 16 or [c['id'] for c in atlas['cells']] != order or any(c['anchor'] != [48, 91] for c in atlas['cells']):
             raise ValueError('inconsistent cell order/anchors')

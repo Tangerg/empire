@@ -132,3 +132,8 @@ reported per source and export. Use only measured contact/registration fixes,
 not automatic pose fitting. Archer walk-a's reviewed[0,1] correction with common
 renderWidth30/origin[1,2] preserves its entire30×45 canvas and aligns contact with
 idle; it does not change the declared anchor or semantic frame order.
+
+The environment adapter also accepts `scenery-regional`, whose 4×4,96/192px
+module and [48,91] anchor contract matches the forest atlases. Existing category,
+footprint, obstruction and cell order metadata are read-only. Opaque terrain
+surfaces and other module dimensions remain unsupported.

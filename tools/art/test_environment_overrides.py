@@ -60,6 +60,28 @@ class EnvironmentTests(unittest.TestCase):
         export(self.root, self.catalog, True)
         self.assertEqual(before, self.manifest.read_bytes())
 
+    def test_regional_scenery_preserves_other_cells_and_semantics(self):
+        data = json.loads(self.manifest.read_text())
+        atlas = data['atlases'][0]
+        atlas['id'] = 'scenery-regional'
+        atlas['category'] = 'regional-scenery'
+        atlas['png'] = 'runtime/atlas/scenery-regional.png'
+        atlas['png2x'] = 'runtime/atlas/scenery-regional@2x.png'
+        atlas['cells'][0]['obstructionHeight'] = 2
+        atlas['cells'][0]['footprint'] = [2, 2]
+        self.manifest.write_text(json.dumps(data))
+        before = self.manifest.read_bytes()
+        self.data['atlases']['scenery-regional'] = self.data['atlases'].pop('forest-temperate')
+        self.write_catalog()
+        reports = export(self.root, self.catalog)
+        export(self.root, self.catalog, True)
+        self.assertEqual(self.manifest.read_bytes(), before)
+        for report in reports:
+            self.assertIn('scenery-regional', report['output'])
+            for cell in report['cells']:
+                if cell['index'] not in (0, 2):
+                    self.assertEqual(cell['baselinePixelSha256'], cell['outputPixelSha256'])
+
     def test_complete_canvas_alpha_and_bottom_placement(self):
         source = Image.new('RGBA', (172, 172))
         source.paste((20, 30, 40, 253), (10, 10, 160, 160))
