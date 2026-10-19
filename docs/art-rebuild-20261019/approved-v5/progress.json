@@ -162,12 +162,19 @@
         "oak-grove-dense",
         "mixed-forest-edge",
         "stump-hollow",
-        "fallen-hollow-log"
+        "fallen-hollow-log",
+        "bramble-dark",
+        "bramble-berries",
+        "leaf-pile",
+        "boulder-ferns"
       ],
-      "count": 8,
+      "count": 12,
       "export": "96/192 registered source contacts; unrelated atlas cells byte-identical",
       "runtimeBinding": "manifest anchors and presentationScale consumed once by actual scenery renderer; offline native contact sheet reviewed",
-      "liveGame": "pending"
+      "liveGame": "pending",
+      "catalogOnlyNoCurrentPlacement": [
+        "leaf-pile"
+      ]
     }
   },
   "totalCanonicalScope": 1212,
