@@ -4,24 +4,24 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 186,
+    "formalBound": 190,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 26,
-      "equipment": 51,
+      "equipment": 55,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 20
     },
-    "rawPreservedTopics": 188,
+    "rawPreservedTopics": 193,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 147
+    "registeredEnvironmentCells": 151
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 147,
+    "registeredIndividualSourceCells": 151,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1986,8 +1986,10 @@
       "category": "combat-unit",
       "label": "狼骑兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5662,8 +5664,10 @@
       "category": "skill",
       "label": "圣辉照明盾",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-21/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5676,8 +5680,10 @@
       "category": "skill",
       "label": "归名唤醒",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-22/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10764,13 +10770,21 @@
       "category": "equipment",
       "label": "守卫机器人主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-guard-robot/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-guard-robot.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and bounded emissive details reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-heat-lamp-shield",
@@ -10838,11 +10852,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-long-beam-sniper/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-long-beam-sniper.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and bounded emissive details reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-magboot-tractor-set",
@@ -10952,11 +10972,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-power-swordsman/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-power-swordsman.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and bounded emissive details reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-protocol-adjudicator",
@@ -11170,13 +11196,21 @@
       "category": "equipment",
       "label": "星脉术士主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-star-vein-mage/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-star-vein-mage.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and bounded emissive details reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-starbreaker-sapper",
@@ -18771,7 +18805,11 @@
         "hill-cap",
         "ramp-level-1",
         "ramp-level-2",
-        "mountain-pass"
+        "mountain-pass",
+        "convex-corner",
+        "broken-ledge",
+        "low-ledge",
+        "talus-foot"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18783,10 +18821,14 @@
           "hill-cap",
           "ramp-level-1",
           "ramp-level-2",
-          "mountain-pass"
+          "mountain-pass",
+          "convex-corner",
+          "broken-ledge",
+          "low-ledge",
+          "talus-foot"
         ],
         "status": "catalog-only index-preserving export; no scene consumer verified",
-        "source": "8 native transparent masters",
+        "source": "12 native transparent masters",
         "registration": "fullcanvas124logical at[2,2]; originalanchor64,127 unchanged; measured contact differs",
         "liveGame": "pending",
         "evidence": "approved-v5/highland-index-export"

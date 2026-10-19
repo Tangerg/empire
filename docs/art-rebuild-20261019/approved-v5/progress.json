@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 28,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 186,
+  "formalRuntimeBoundTopics": 190,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1178,6 +1178,34 @@
       "runtimeBinding": "canonical48x48 anchor24,24, noHD",
       "liveGame": "pending",
       "evidence": "approved-v5/skill-17-20/native48-review.png"
+    },
+    "c02-equipment-power-swordsman": {
+      "raw": "nativeRGBA master/prompt and original board matching preserved",
+      "export": "48px black/white readability and bounded emissive details reviewed",
+      "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+      "liveGame": "pending",
+      "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+    },
+    "c02-equipment-long-beam-sniper": {
+      "raw": "nativeRGBA master/prompt and original board matching preserved",
+      "export": "48px black/white readability and bounded emissive details reviewed",
+      "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+      "liveGame": "pending",
+      "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+    },
+    "c02-equipment-guard-robot": {
+      "raw": "nativeRGBA master/prompt and original board matching preserved",
+      "export": "48px black/white readability and bounded emissive details reviewed",
+      "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+      "liveGame": "pending",
+      "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
+    },
+    "c02-equipment-star-vein-mage": {
+      "raw": "nativeRGBA master/prompt and original board matching preserved",
+      "export": "48px black/white readability and bounded emissive details reviewed",
+      "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+      "liveGame": "pending",
+      "evidence": "approved-v5/scifi-equipment-second-four/native48-review.png"
     }
   },
   "supplementalBundles": {
@@ -1441,10 +1469,14 @@
         "hill-cap",
         "ramp-level-1",
         "ramp-level-2",
-        "mountain-pass"
+        "mountain-pass",
+        "convex-corner",
+        "broken-ledge",
+        "low-ledge",
+        "talus-foot"
       ],
       "status": "catalog-only index-preserving export; no scene consumer verified",
-      "source": "8 native transparent masters",
+      "source": "12 native transparent masters",
       "registration": "fullcanvas124logical at[2,2]; originalanchor64,127 unchanged; measured contact differs",
       "liveGame": "pending",
       "evidence": "approved-v5/highland-index-export"
