@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-118c7423",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-118c7423.png",
+  "label": "Market escort",
+  "observed_original": "Runtime shows command tablet.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed functional role combination from board materials, not recovered original slot mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      19,
+      1232,
+      1254
+    ],
+    "128": [
+      103,
+      157,
+      1173,
+      1109
+    ],
+    "240": [
+      103,
+      158,
+      1172,
+      1108
+    ]
+  },
+  "visual_review": "Plain round wooden shield with leather travel satchel. No heraldry/text. Clear compact protection/travel abstraction."
+}

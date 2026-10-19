@@ -1446,7 +1446,9 @@
       "topicId": "C01-STRUCT-REPAIRABLE-GATE",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props",
+      "assignmentPhase": "normal-first-shared-placement-review"
     },
     {
       "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
@@ -5383,7 +5385,11 @@
         "staticVisualReview": "failed-exterior-haze-revision-requested"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "7d44501d326315253feb54e9d7ded488f9ab19701b0c03b98b8e513791c4ed63"
+      "sourceSha256": "7d44501d326315253feb54e9d7ded488f9ab19701b0c03b98b8e513791c4ed63",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-vacuum-trooper/revision-2/master.png",
+        "status": "pending-visual-review"
+      }
     },
     {
       "topicId": "c02-equipment-wind-sail-skirmisher",
@@ -7903,7 +7909,9 @@
       "topicId": "c03-equip-0137a889",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-0609e6e6",
@@ -7919,11 +7927,15 @@
     },
     {
       "topicId": "c03-equip-118c7423",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-118c7423/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "a706588f043c3bbfb589600a0e381666b83918dac55d1f8322cb9247dd7c4eee"
     },
     {
       "topicId": "c03-equip-15c058cc",
@@ -8124,7 +8136,9 @@
       "topicId": "c03-equip-747800db",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-75ee37ba",
@@ -8134,11 +8148,15 @@
     },
     {
       "topicId": "c03-equip-76cd6822",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-76cd6822/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "0026922b00639bd184071efbe6d2c975e28e1ba234b4d1dea97d4c8e51c1d5d0"
     },
     {
       "topicId": "c03-equip-79f06a6f",
@@ -8150,7 +8168,9 @@
       "topicId": "c03-equip-8842d111",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-8f49e6ef",
@@ -8269,7 +8289,9 @@
       "topicId": "c03-equip-f0a4ddaa",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-fd4c21da",

@@ -1,0 +1,33 @@
+{
+  "kind": "deterministic-real-asset-comparison-not-gameplay",
+  "placementsEqual": true,
+  "rows": [
+    {
+      "label": "A  Legacy ground + yellow fern",
+      "report": "/workspace/shared/empire-art-rebuild/qa/cohesion-legacy-ground/cohesion-placement.json",
+      "reportSha256": "abed23c532eee437ef7980a8f39a1262be78a37f83af7d9fcd43e5d725afb848"
+    },
+    {
+      "label": "B  Quiet meadow v2 + same objects",
+      "report": "/workspace/shared/empire-art-rebuild/qa/cohesion-meadow-v2-family/cohesion-placement.json",
+      "reportSha256": "aba7c273adf529277f5562220b960e0bd590ab5ed79aa7c1dda33f3f3241d1e5"
+    },
+    {
+      "label": "C  Quiet meadow v2 + harmonized fern v5",
+      "report": "/workspace/shared/empire-art-rebuild/qa/cohesion-meadow-v2-fern-v5/cohesion-placement.json",
+      "reportSha256": "71e85d9b8ff393734fe1552c40a106244eba8accdd13714438bf2ea6dbde5a75"
+    }
+  ],
+  "changes": {
+    "AtoB": [
+      "surface-meadow ground only"
+    ],
+    "BtoC": [
+      "fern-bed palette via imagegen only"
+    ]
+  },
+  "pending": [
+    "actual renderer effects and animation",
+    "forest transition material compatibility"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-76cd6822",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-76cd6822.png",
+  "label": "Gate shield infantry",
+  "observed_original": "Runtime shows drum.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed functional role combination from board materials, not recovered original slot mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      25,
+      27,
+      1218,
+      1254
+    ],
+    "128": [
+      199,
+      84,
+      1172,
+      1170
+    ],
+    "240": [
+      199,
+      85,
+      1171,
+      1169
+    ]
+  },
+  "visual_review": "Tall plain plank shield with iron bands and short dao behind; complete and distinct from round shield infantry. No emblem."
+}
