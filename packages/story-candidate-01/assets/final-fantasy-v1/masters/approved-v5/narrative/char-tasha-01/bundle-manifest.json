@@ -1,0 +1,128 @@
+{
+  "artifactKind": "named-character-transparent-narrative-master",
+  "unitType": "c01.tasha",
+  "cardTopicId": "C01-CHAR-TASHA-01",
+  "slug": "char-tasha-01",
+  "status": "All four battle poses and original-ledger/wrench transparent portrait accepted by coordinator; source delivery complete; formal export and binding coordinator-owned",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/master.png",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "7da47fb6bda98b6cc37aeec2981eadd2f5643efc2cc78f88a9e6ec7b005e8047",
+  "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5f97ba06-f131-4943-80db-94e3d09193e5.png",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/prompt.txt",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/request.json",
+  "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/request-provenance.json",
+  "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/alpha-qa.json",
+  "sourcePostprocessing": "none",
+  "nativeAttemptCount": 3,
+  "supersededAttempts": [
+    "rejected/attempt01-halo",
+    "rejected/attempt02-halo-edit"
+  ],
+  "identitySources": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/master.png": "fe787e65f2c06d6e78bb92bf87839b67ffce932c4802519a92ae44db4cba38e6"
+  },
+  "battleSourceEvidence": "../../hero-appearances/tasha/source-evidence.json",
+  "battleQuartetManifest": "../../hero-appearances/tasha/bundle-manifest.json",
+  "originalNamedIdentity": "Original character-board-02 cell1 crop[632,5,1249,622], C01-CHAR-TASHA-01 woman mercenary leader/organizer. Dark-brown bun, rust quilted coat, ledger, keys and wrench.",
+  "equipmentContract": "Original ledger and wrench portrait; rule engineer-hammer held in battle, original wrench/book stowed. c01.tasha retains existing engineer-hammer and satchel-charge rules.",
+  "cardCompositionContract": "Whole1024x1536 native transparent canvas uniformly placed192x224 and92x112. No alpha crop/silhouette fit. Independent backdrop composed later by coordinator.",
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        29.937499999999996,
+        5.541666666666667,
+        169.0625,
+        217.58333333333334
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim",
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        12.968749999999998,
+        2.7708333333333335,
+        82.53125,
+        108.79166666666667
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim",
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0
+    }
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        457,
+        1309,
+        464,
+        1316
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "inside-wrench-jaw",
+      "rectangle": [
+        954,
+        360,
+        961,
+        367
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "outside-hair",
+      "rectangle": [
+        821,
+        147,
+        828,
+        154
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-wrench-arm",
+      "rectangle": [
+        881,
+        835,
+        888,
+        842
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "formalBinding": "Coordinator owns tasha-stage01 under existing C01-UNIT-ENGINEER and existing C01-CHAR-TASHA-01. Generic engineer and canonical topic counts remain unchanged.",
+  "coordinatorFinalApproval": "2026-10-19 23:08UTC: coordinator viewed quartet native2x and original card black/white/olive proofs. Named rust-coat/bun/ledger identity, clear hammer attack and opposite walk contacts pass. Registration limit4 with exact feet and1px bottom padding approved."
+}

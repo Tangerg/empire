@@ -1,0 +1,64 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9ae2b9f5-ed4e-44e1-b9e7-d4d3f4dd5240.png",
+  "size": [
+    1553,
+    1013
+  ],
+  "mode": "RGBA",
+  "sha256": "418fb763f8a5cb6c6b62c73363ec8d7433564197c5aab82e0c04635f571b7f06",
+  "bboxAlphaNonzero": [
+    289,
+    21,
+    1346,
+    975
+  ],
+  "bboxAlphaGreaterThan127": [
+    350,
+    24,
+    1343,
+    970
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1089424,
+  "alphaOnePixels": 2459,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "semanticReview": "Actual image-left knee and boot project forward, large lifted sole faces viewer. Image-right leg bears weight and right boot is side-view planted. This visibly opposes walk-a without mirroring upper-body kit.",
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        550,
+        700,
+        790,
+        925
+      ],
+      "soleCenterXBottomFourRows": 687.6336633663366,
+      "soleY": 911
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        820,
+        840,
+        1100,
+        985
+      ],
+      "soleCenterXBottomFourRows": 986.5564202334631,
+      "soleY": 969
+    }
+  ],
+  "sourceFoot": [
+    837,
+    969
+  ],
+  "commonScale": 0.04561949196474858,
+  "logicalRegistrationOffset": [
+    -3.2846034214618975,
+    0.9123898392949715
+  ],
+  "derivedPerimeterMaxAlpha": 0,
+  "rawEqualsMaster": true
+}

@@ -1,0 +1,146 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-661c376a-a9fb-4da4-a278-d2dd2a94c64d.png",
+  "sha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaNonzeroBounds": [
+    23,
+    27,
+    1549,
+    978
+  ],
+  "alphaGreater127Bounds": [
+    402,
+    58,
+    1359,
+    976
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterPixelsAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1060364,
+  "alphaOnePixels": 7578,
+  "postprocessing": "None: native raw and master byte-identical tool output",
+  "hairCrownY": 58,
+  "feetMeasurement": [
+    {
+      "hoof": "near-hind",
+      "roi": [
+        410,
+        865,
+        540,
+        970
+      ],
+      "soleY": 960,
+      "bottomFourRowsMeanX": 478.7125748502994
+    },
+    {
+      "hoof": "far-hind",
+      "roi": [
+        650,
+        870,
+        785,
+        960
+      ],
+      "soleY": 946,
+      "bottomFourRowsMeanX": 729.4822335025381
+    },
+    {
+      "hoof": "near-fore",
+      "roi": [
+        845,
+        875,
+        980,
+        980
+      ],
+      "soleY": 975,
+      "bottomFourRowsMeanX": 923.991935483871
+    },
+    {
+      "hoof": "far-fore",
+      "roi": [
+        1080,
+        880,
+        1220,
+        970
+      ],
+      "soleY": 960,
+      "bottomFourRowsMeanX": 1156.9556962025317
+    }
+  ],
+  "nearSideHoofSoleMeanY": 967.5,
+  "bodyHeightSource": 909.5,
+  "sharedScale": 0.05937328202308961,
+  "sharedScaleFraction": "54/909.5",
+  "targetWholeMountedHeight": 54,
+  "sourceFoot": [
+    822,
+    975
+  ],
+  "measurementMethod": "Rider hair crown to mean near-side hind and fore hoof soles; contact x averages four hoof bottom-four-row centers and y is lowest hoof. Rider boot excluded.",
+  "logicalVisibleWidth": 56.82023089609676,
+  "candidateFrame": [
+    128,
+    80
+  ],
+  "candidateOrigin": [
+    14,
+    6
+  ],
+  "fullCanvasBounds": [
+    14,
+    6,
+    108.10665200659703,
+    64.8982957669049
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hindleg-gap",
+      "rect": [
+        581,
+        877,
+        588,
+        884
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "middle-gap",
+      "rect": [
+        802,
+        881,
+        809,
+        888
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "foreleg-gap",
+      "rect": [
+        1012,
+        895,
+        1019,
+        902
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "antler-gap",
+      "rect": [
+        1147,
+        210,
+        1154,
+        217
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Original pointed ear, tied dark hair, bare face, green leaf shoulders, brown straps and boots, rear-hand short spear and forward-hand reins retained. Original ear-detail crop confirms small gold drop ornament. One white four-hoof stag, branched brown antlers, bridle and blue/gold geometric saddlecloth retained. No extra figures, effects or ground. Four complete hooves and negative spaces are readable. Native perimeter zero; all alpha-1 dust remains unchanged.",
+  "status": "Identity and measured54logical scale proposal pending coordinator gate; other poses not generated"
+}

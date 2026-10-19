@@ -1,28 +1,77 @@
 {
-  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9ae2b9f5-ed4e-44e1-b9e7-d4d3f4dd5240.png",
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8f6d53f2-b9d0-4f56-891a-d069a195d8fa.png",
   "size": [
-    1553,
-    1013
+    1561,
+    1007
   ],
   "mode": "RGBA",
-  "sha256": "418fb763f8a5cb6c6b62c73363ec8d7433564197c5aab82e0c04635f571b7f06",
+  "sha256": "50eee100d3be0512acdc7f5c49b2cdb45d2c6c466fe603d49688a3d701062a68",
   "bboxAlphaNonzero": [
-    289,
-    21,
-    1346,
-    975
+    35,
+    20,
+    1366,
+    979
   ],
   "bboxAlphaGreaterThan127": [
-    350,
+    349,
     24,
-    1343,
-    970
+    1337,
+    967
   ],
   "perimeterMaxAlpha": 0,
   "perimeterCountAlphaGreaterThan1": 0,
-  "alphaZeroPixels": 1089424,
-  "alphaOnePixels": 2459,
+  "alphaZeroPixels": 1090018,
+  "alphaOnePixels": 3138,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "semanticReview": "Actual image-left knee and boot project forward, large lifted sole faces viewer. Image-right leg bears weight and right boot is side-view planted. This visibly opposes walk-a without mirroring upper-body kit.",
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        550,
+        700,
+        790,
+        925
+      ],
+      "soleCenterXBottomFourRows": 684.3732394366198,
+      "soleY": 907
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        820,
+        840,
+        1100,
+        985
+      ],
+      "soleCenterXBottomFourRows": 983.0847457627119,
+      "soleY": 966
+    }
+  ],
+  "sourceFoot": [
+    834,
+    966
+  ],
+  "commonScale": 0.04561949196474858,
+  "logicalRegistrationOffset": [
+    -3.147744945567652,
+    1.0492483151892174
+  ],
+  "derivedPerimeterMaxAlpha": 0,
+  "rawEqualsMaster": true,
+  "negativeSpaceProbes": [
+    {
+      "name": "between-legs",
+      "rectangle": [
+        750,
+        897,
+        757,
+        904
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ]
 }

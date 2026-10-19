@@ -1,0 +1,97 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3d223abb-548e-4dac-8f15-dde562f8daf8.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "f39f1eb7f3a498bc889332463a59f37cca5fadee9f5627817938a31f1bf4e56d",
+  "bboxAlphaNonzero": [
+    130,
+    27,
+    1528,
+    1008
+  ],
+  "bboxAlphaGreaterThan127": [
+    207,
+    31,
+    1525,
+    969
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1090598,
+  "alphaOnePixels": 5337,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    687,
+    968
+  ],
+  "sourceFootMidpoint": [
+    687.2152827792729,
+    968
+  ],
+  "semanticReview": "Outer hind and fore hooves support; two inner hooves are bent and visibly airborne. Same upper identity, horse torso, lance and canvas scale; minor tail sway.",
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-gap",
+      "rectangle": [
+        502,
+        906,
+        509,
+        913
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "central-gap",
+      "rectangle": [
+        662,
+        885,
+        669,
+        892
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-gap",
+      "rectangle": [
+        844,
+        912,
+        851,
+        919
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lance-clearance",
+      "rectangle": [
+        1147,
+        507,
+        1154,
+        514
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "spearProjectionMeasurement": {
+    "endpoints": [
+      [
+        261,
+        472.0
+      ],
+      [
+        1524,
+        374.5
+      ]
+    ],
+    "length": 1266.7577708465024,
+    "versusIdleRatio": 1.0016070717418635
+  }
+}

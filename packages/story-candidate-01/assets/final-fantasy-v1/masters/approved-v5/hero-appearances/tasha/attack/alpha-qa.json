@@ -24,5 +24,54 @@
   "alphaOnePixels": 7263,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "semanticReview": "Grounded wide step and forward torso turn. Original image-right hand extends continuous rigid engineer hammer toward screen-right at waist height; free hand balances behind. No wrench strike, impact FX or duplicated gear.",
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        255,
+        800,
+        500,
+        990
+      ],
+      "soleCenterXBottomFourRows": 345.9422222222222,
+      "soleY": 957
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        895,
+        820,
+        1185,
+        995
+      ],
+      "soleCenterXBottomFourRows": 1074.7377049180327,
+      "soleY": 977
+    }
+  ],
+  "sourceFoot": [
+    710,
+    977
+  ],
+  "commonScale": 0.04561949196474858,
+  "logicalRegistrationOffset": [
+    2.5090720580611716,
+    0.547433903576983
+  ],
+  "derivedPerimeterMaxAlpha": 0,
+  "rawEqualsMaster": true,
+  "negativeSpaceProbes": [
+    {
+      "name": "between-legs",
+      "rectangle": [
+        823,
+        892,
+        830,
+        899
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ]
 }

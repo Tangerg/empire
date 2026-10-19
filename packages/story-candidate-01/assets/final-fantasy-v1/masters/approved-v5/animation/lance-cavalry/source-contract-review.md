@@ -1,0 +1,11 @@
+# C01-UNIT-LANCE-CAVALRY source and consumer contract
+
+Exact topic: C01-UNIT-LANCE-CAVALRY; asset C01-FFV1-UNIT-LANCE-CAVALRY. Original canonical runtime is256x48, four64x48 frames, order idle/walk-a/attack/walk-b, anchor32,47, footprint2x2. Original HD is512x96, four128x96 frames. Source authority is second row of the1254x1254 original master combat-atlas-ballista-cavalry-battlemage-eagle.png. Native original row and idle crop are reference crops only, never runtime replacements.
+
+Identity: original young clean-shaven male soldier with dark hair, angular steel cap and cheek/neck guards. Navy lamellar shoulder/chest/skirt armor with red edging, brown gloves and boots, gold buckle. Rectangular cream shield with bevelled corners, dark rim and narrow vertical gold strip. Plain long wood lance, steel point, brown horse with dark mane/tail, pale face/nose blaze, bridle and reins, saddle and stirrups, navy/red lamellar barding. Exactly one rider and one horse.
+
+Consumers: packages/story-candidate-01/src/presentation/candidate-01-bindings.ts contains no unit-art mapping to this exact topic. c01.knight and built-in knight map to distinct C01-UNIT-KNIGHT; c01.roderick maps to C01-UNIT-HEAVY-KNIGHT with named appearance. c01.knight-charge maps to C01-EQUIP-LANCE-CAVALRY only. No unit rule, attack range, new content id, art remap or appearance binding is being introduced here.
+
+Attack: exact source quartet depicts a forward mounted lance action; redraw as an unmistakable controlled lance thrust with rider leaning slightly forward and horse braced/driving. Existing related c01.knight-lance is mounted melee/pierce, c01.knight-charge is mounted melee charge with forced push; these are contextual construction evidence, not a new gameplay consumer. No projectile, magic, sword, explosion or weapon substitution.
+
+Art target: broad matte chunky-v5 cartoon forms, strong contour, restrained shade planes. Source navy/red/cream/brown/steel retained. Scale pilot uses56logical px mounted height, compared with approved Roderick56, wolf-rider52 and human44. Raw/master byte preservation; no trim, crop, paint, palette or alpha edits. Later scale/registration is one full-canvas uniform transform and whole-canvas translation, never independent body fit.

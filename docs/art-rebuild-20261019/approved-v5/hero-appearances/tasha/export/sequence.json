@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/walk-b/master.png"
+    },
+    "scale": 0.04561949196474858,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      765,
+      989
+    ],
+    "sourceFeet": {
+      "idle": [
+        765,
+        989
+      ],
+      "walk-a": [
+        794,
+        970
+      ],
+      "attack": [
+        710,
+        977
+      ],
+      "walk-b": [
+        834,
+        966
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -1.3229652669777088,
+        0.866770347330223
+      ],
+      "attack": [
+        2.5090720580611716,
+        0.547433903576983
+      ],
+      "walk-b": [
+        -3.147744945567652,
+        1.0492483151892174
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Original named rust-coat engineer Tasha; common44/964.5 scale and actual support feet, rule hammer battle/original wrench portrait distinction"
+  },
+  "authoredCanvas": [
+    1561,
+    1008
+  ],
+  "logicalPivot": [
+    42.89891135303266,
+    49.117677553136346
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fe787e65f2c06d6e78bb92bf87839b67ffce932c4802519a92ae44db4cba38e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5494,
+        "nearOpaquePixels": 981,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          5,
+          69,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fe787e65f2c06d6e78bb92bf87839b67ffce932c4802519a92ae44db4cba38e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22086,
+        "nearOpaquePixels": 4037,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          10,
+          139,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/walk-a/master.png",
+      "registrationOffset": [
+        -1.3229652669777088,
+        0.866770347330223
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c858de3685ecad13c6a805b6954c5eafae4645d5a075fa8bd220885b0a8991a4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5585,
+        "nearOpaquePixels": 881,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          6,
+          68,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/walk-a/master.png",
+      "registrationOffset": [
+        -1.3229652669777088,
+        0.866770347330223
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c858de3685ecad13c6a805b6954c5eafae4645d5a075fa8bd220885b0a8991a4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22444,
+        "nearOpaquePixels": 3641,
+        "edgeMax": 0,
+        "visibleBounds": [
+          46,
+          12,
+          136,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/attack/master.png",
+      "registrationOffset": [
+        2.5090720580611716,
+        0.547433903576983
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cbfa66d8a7ed0ef8532a9d99d92329c0128d2aace52234b7454ce6a9013017bf",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5399,
+        "nearOpaquePixels": 1039,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          5,
+          78,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/attack/master.png",
+      "registrationOffset": [
+        2.5090720580611716,
+        0.547433903576983
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cbfa66d8a7ed0ef8532a9d99d92329c0128d2aace52234b7454ce6a9013017bf",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21705,
+        "nearOpaquePixels": 4246,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          10,
+          157,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/walk-b/master.png",
+      "registrationOffset": [
+        -3.147744945567652,
+        1.0492483151892174
+      ],
+      "sourceCanvas": [
+        1561,
+        1007
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "50eee100d3be0512acdc7f5c49b2cdb45d2c6c466fe603d49688a3d701062a68",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5575,
+        "nearOpaquePixels": 906,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          6,
+          66,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/tasha/walk-b/master.png",
+      "registrationOffset": [
+        -3.147744945567652,
+        1.0492483151892174
+      ],
+      "sourceCanvas": [
+        1561,
+        1007
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "50eee100d3be0512acdc7f5c49b2cdb45d2c6c466fe603d49688a3d701062a68",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22428,
+        "nearOpaquePixels": 3716,
+        "edgeMax": 0,
+        "visibleBounds": [
+          42,
+          12,
+          132,
+          98
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,97 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-62053e58-933f-4b40-9b4c-e2d67e258e5c.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "891f15951067f8eebffe0aedf68f65e3b4626d189e98338651b6d6fb2aaf00d7",
+  "bboxAlphaNonzero": [
+    25,
+    58,
+    1543,
+    1008
+  ],
+  "bboxAlphaGreaterThan127": [
+    73,
+    62,
+    1541,
+    965
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1033863,
+  "alphaOnePixels": 8789,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    665,
+    964
+  ],
+  "sourceFootMidpoint": [
+    665.3648422105804,
+    964
+  ],
+  "semanticReview": "Rider leans forward and visibly drives lance with right glove; left glove controls reins and left arm retains cream shield. Horse braces in wider stance. Same lance length within measured redraw variation; no projectile or external FX.",
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-gap",
+      "rectangle": [
+        382,
+        887,
+        389,
+        894
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "central-gap",
+      "rectangle": [
+        682,
+        892,
+        689,
+        899
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-gap",
+      "rectangle": [
+        927,
+        912,
+        934,
+        919
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lance-clearance",
+      "rectangle": [
+        1217,
+        402,
+        1224,
+        409
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "spearProjectionMeasurement": {
+    "endpoints": [
+      [
+        245,
+        329.0
+      ],
+      [
+        1540,
+        285.0
+      ]
+    ],
+    "length": 1295.7472747414906,
+    "versusIdleRatio": 1.0245286537331113
+  }
+}

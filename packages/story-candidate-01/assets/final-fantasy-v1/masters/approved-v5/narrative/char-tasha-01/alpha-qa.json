@@ -24,5 +24,104 @@
   "alphaOnePixels": 7898,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "status": "All four battle poses and original-ledger/wrench transparent portrait accepted by coordinator; source delivery complete; formal export and binding coordinator-owned",
+  "semanticReview": "Original named woman Tasha brown bun/eyes, rust coat, charcoal scarf, leather satchel, keys/tags and original ledger in image-left hand plus wrench in image-right. Battle hammer intentionally absent.",
+  "compositionReview": "New vertical1024x1536 portrait; full bun, wrench, book, satchel and boots retained. Entire native canvas uniformly composed192x224 and92x112, no alpha trim.",
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        457,
+        1309,
+        464,
+        1316
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "inside-wrench-jaw",
+      "rectangle": [
+        954,
+        360,
+        961,
+        367
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "outside-hair",
+      "rectangle": [
+        821,
+        147,
+        828,
+        154
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-wrench-arm",
+      "rectangle": [
+        881,
+        835,
+        888,
+        842
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        29.937499999999996,
+        5.541666666666667,
+        169.0625,
+        217.58333333333334
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim",
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        12.968749999999998,
+        2.7708333333333335,
+        82.53125,
+        108.79166666666667
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim",
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0
+    }
+  },
+  "rawEqualsMaster": true,
+  "sourcePostprocessing": "none",
+  "rawViewerCaveat": "Raw viewer shows nonzero RGB under alpha0 as apparent brown aura. Actual white/black alpha composites are clean and exterior/gap numeric probes are0. Earlier two attempts were unnecessarily superseded; corrected notes retained.",
+  "coordinatorFinalApproval": "2026-10-19 23:08UTC: coordinator viewed quartet native2x and original card black/white/olive proofs. Named rust-coat/bun/ledger identity, clear hammer attack and opposite walk contacts pass. Registration limit4 with exact feet and1px bottom padding approved."
 }

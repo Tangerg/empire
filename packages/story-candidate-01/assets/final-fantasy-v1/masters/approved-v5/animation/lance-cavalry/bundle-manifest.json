@@ -1,0 +1,435 @@
+{
+  "asset": "C01-UNIT-LANCE-CAVALRY",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only canonical topic; no current C01 unit-art binding. No invented actual consumer.",
+  "status": "Coordinator native quartet approved; ready for sole-integrator formal export/catalog registration",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files byte-identical to native tool outputs. No painting, recoloring, cropping, resizing, alpha cleanup or edge editing. Black/white and common-scale previews are QA-only derived artifacts.",
+  "sharedScale": 0.059637912673056445,
+  "scaleFraction": "56/939",
+  "bodyReferenceSourcePixels": 939,
+  "bodyTargetHeightLogicalPixels": 56,
+  "speciesScaleContract": "Coordinator approved56logical mounted height: original young rider helmet crown y31 to mean near-side hoof soles y970 gives939native pixels. One shared56/939 scale for all full1560x1008 canvases. Hoof anchor, not rider boot, controls registration; no independent rider/horse fit.",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1560,
+    1008
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/registration-evidence.json",
+  "identityContract": "Original board second row: young clean-shaven helmeted soldier in navy lamellar with red piping, brown gloves/boots, rectangular cream shield with narrow gold vertical strip. Brown horse, dark mane/tail, pale facial/nose blaze, bridle/reins, saddle, stirrups, navy/red lamellar barding. Wood lance with steel point.",
+  "symbolContract": "Plain cream shield has one narrow vertical gold strip from original; no invented heraldry or emblems. Navy/red barding remains functional armor edging.",
+  "semanticContract": "Exact original canonical C01-UNIT-LANCE-CAVALRY quartet only. No current C01 unit-art consumer. Distinct C01-UNIT-KNIGHT remains mapped to c01.knight/built-in knight; knight-charge equipment topic does not establish a cavalry unit-art consumer. Source mounted lance attack is preserved as a clear right-hand physical thrust, left hand on reins; no invented content, binding, weapon rule or effects.",
+  "projectionVariation": "Attack projected lance length1295.7473 versus idle1264.7253 (ratio1.02452865). Native redraw variation, no programmatic extension. Attack tip retains19native pixels clear margin; all native perimeter pixels alpha<=1.",
+  "selectedAttempts": {
+    "idle": "attempt-02: reveal reins hand and separate reins from lance",
+    "walk-a": "first native output",
+    "attack": "first native output",
+    "walk-b": "first native output"
+  },
+  "supersededAttempts": [
+    {
+      "pose": "idle",
+      "directory": "idle/rejected-attempt-01-hidden-rein-hand",
+      "reason": "Left rein hand hidden and right-hand rein routing ambiguous; preserved unmodified with exact request."
+    }
+  ],
+  "idleApproval": {
+    "time": "2026-10-19 23:07 UTC",
+    "scaleFraction": "56/939",
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "sourceFoot": [
+      702,
+      977
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "origin": [
+      14,
+      6
+    ],
+    "review": "Original young rider and horse/gear clearly distinct from Roderick; mounted56 scale passes. Catalog-only status correct; no invented consumer."
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ccded61fd50822e74c043e601cb31638736d256989cb652cb4c0854808b694f6",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/idle/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        702,
+        977
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        227,
+        31,
+        1523,
+        978
+      ],
+      "sha256": "cee7ff7ddf94561beeb702f240a9bfbb799581aee1604dca6129ba4e628c3dce",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6a7dfe96-7934-422a-a1f6-3945768e8460.png",
+      "review": "Approved mounted idle: all four connected horse legs planted; young original helmeted rider, shield, reins/lance hands, barding, horse and functional colors retained.",
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rectangle": [
+            507,
+            912,
+            514,
+            919
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "central-gap",
+          "rectangle": [
+            688,
+            875,
+            695,
+            882
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rectangle": [
+            867,
+            907,
+            874,
+            914
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "lance-clearance",
+          "rectangle": [
+            1147,
+            507,
+            1154,
+            514
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "spearProjectionMeasurement": {
+        "endpoints": [
+          [
+            261,
+            471.5
+          ],
+          [
+            1522,
+            374.5
+          ]
+        ],
+        "length": 1264.7252666093138,
+        "versusIdleRatio": 1.0
+      }
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "bcd001ea88af010edf8b5ded9a6a2cfa20f06a6bfaa38d5a4d06b20e0a877653",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-a/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        687,
+        968
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        207,
+        31,
+        1525,
+        969
+      ],
+      "sha256": "f39f1eb7f3a498bc889332463a59f37cca5fadee9f5627817938a31f1bf4e56d",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3d223abb-548e-4dac-8f15-dde562f8daf8.png",
+      "review": "Outer hind and fore hooves support; two inner hooves are bent and visibly airborne. Same upper identity, horse torso, lance and canvas scale; minor tail sway.",
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rectangle": [
+            502,
+            906,
+            509,
+            913
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "central-gap",
+          "rectangle": [
+            662,
+            885,
+            669,
+            892
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rectangle": [
+            844,
+            912,
+            851,
+            919
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "lance-clearance",
+          "rectangle": [
+            1147,
+            507,
+            1154,
+            514
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "spearProjectionMeasurement": {
+        "endpoints": [
+          [
+            261,
+            472.0
+          ],
+          [
+            1524,
+            374.5
+          ]
+        ],
+        "length": 1266.7577708465024,
+        "versusIdleRatio": 1.0016070717418635
+      }
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "d80b2374f6cb65566388266d8bcc5765fcdf727c296770a96f701292dfbb7d3e",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/attack/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        665,
+        964
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        73,
+        62,
+        1541,
+        965
+      ],
+      "sha256": "891f15951067f8eebffe0aedf68f65e3b4626d189e98338651b6d6fb2aaf00d7",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-62053e58-933f-4b40-9b4c-e2d67e258e5c.png",
+      "review": "Rider leans forward and visibly drives lance with right glove; left glove controls reins and left arm retains cream shield. Horse braces in wider stance. Same lance length within measured redraw variation; no projectile or external FX.",
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rectangle": [
+            382,
+            887,
+            389,
+            894
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "central-gap",
+          "rectangle": [
+            682,
+            892,
+            689,
+            899
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rectangle": [
+            927,
+            912,
+            934,
+            919
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "lance-clearance",
+          "rectangle": [
+            1217,
+            402,
+            1224,
+            409
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "spearProjectionMeasurement": {
+        "endpoints": [
+          [
+            245,
+            329.0
+          ],
+          [
+            1540,
+            285.0
+          ]
+        ],
+        "length": 1295.7472747414906,
+        "versusIdleRatio": 1.0245286537331113
+      }
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "efbacf29b3f904915833fe922790a0e0cac452dc201156d7e7561a6f7f9d71fd",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/walk-b/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        647,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        204,
+        30,
+        1526,
+        976
+      ],
+      "sha256": "b20cf72ab0665b676ec8aa2f3bd48ffd19fae4cd7ed9f5c150e1b0d9cbf8d097",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f69f983c-c576-4a46-bff5-c8f2bff01858.png",
+      "review": "Both hind and fore supports reverse walk-a: outer hind and fore hooves lift; inner hind and fore hooves support. Four connected legs, four separate hooves and transparent negative spaces retained.",
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rectangle": [
+            472,
+            874,
+            479,
+            881
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "central-gap",
+          "rectangle": [
+            667,
+            914,
+            674,
+            921
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rectangle": [
+            841,
+            915,
+            848,
+            922
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "lance-clearance",
+          "rectangle": [
+            1147,
+            507,
+            1154,
+            514
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "spearProjectionMeasurement": {
+        "endpoints": [
+          [
+            260,
+            471.0
+          ],
+          [
+            1525,
+            374.5
+          ]
+        ],
+        "length": 1268.675391895027,
+        "versusIdleRatio": 1.003123307005879
+      }
+    }
+  },
+  "coordinatorSequenceApproval": {
+    "time": "2026-10-19 23:14 UTC",
+    "review": "Viewed shared native quartet on all backgrounds. Identity, opposing hoof phases and forward lance thrust pass; complete lance retained.",
+    "scaleFraction": "56/939",
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "registrationLimitLogicalPixels": 4,
+    "maximumMeasuredRegistrationLogicalPixels": 3.2800851970181046,
+    "perPoseScaling": false,
+    "catalogOnly": true,
+    "instruction": "No more generation needed; finish bundle."
+  }
+}

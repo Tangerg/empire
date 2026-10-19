@@ -110,6 +110,50 @@
       ],
       "hdWidth": 832,
       "hdHeight": 128
+    },
+    {
+      "id": "bran-stage01",
+      "topicId": "C01-UNIT-RANGER",
+      "png": "runtime-approved-v5/hero-appearance/bran-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.81419624217119,
+        49.102296450939455
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    },
+    {
+      "id": "tasha-stage01",
+      "topicId": "C01-UNIT-ENGINEER",
+      "png": "runtime-approved-v5/hero-appearance/tasha-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/tasha-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.89891135303266,
+        49.117677553136346
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
     }
   ],
   "teamVariants": []

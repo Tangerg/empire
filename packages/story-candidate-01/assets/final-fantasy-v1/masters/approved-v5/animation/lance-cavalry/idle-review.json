@@ -1,0 +1,179 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6a7dfe96-7934-422a-a1f6-3945768e8460.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "cee7ff7ddf94561beeb702f240a9bfbb799581aee1604dca6129ba4e628c3dce",
+  "bboxAlphaNonzero": [
+    0,
+    28,
+    1540,
+    984
+  ],
+  "bboxAlphaGreaterThan127": [
+    227,
+    31,
+    1523,
+    978
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1079879,
+  "alphaOnePixels": 5823,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "bodyMeasurement": {
+    "helmetCrownY": 31,
+    "hoofMeasurements": {
+      "near-hind": {
+        "roi": [
+          340,
+          870,
+          490,
+          985
+        ],
+        "soleY": 963,
+        "bottomFourRowsMeanX": 417.9329608938547
+      },
+      "far-hind": {
+        "roi": [
+          550,
+          870,
+          695,
+          975
+        ],
+        "soleY": 946,
+        "bottomFourRowsMeanX": 626.8389830508474
+      },
+      "near-fore": {
+        "roi": [
+          700,
+          890,
+          850,
+          990
+        ],
+        "soleY": 977,
+        "bottomFourRowsMeanX": 781.0904977375566
+      },
+      "far-fore": {
+        "roi": [
+          900,
+          880,
+          1050,
+          985
+        ],
+        "soleY": 967,
+        "bottomFourRowsMeanX": 981.1318681318681
+      }
+    },
+    "meanNearSideHoofSoleY": 970.0,
+    "bodyReferenceSourcePixels": 939.0,
+    "bodyTargetHeightLogicalPixels": 56,
+    "sharedScale": 0.059637912673056445,
+    "scaleFraction": "56/939",
+    "sourceFoot": [
+      702,
+      977
+    ],
+    "visibleWidthLogical": 77.29073482428116,
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "origin": [
+      14,
+      6
+    ]
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-leg-gap",
+      "rectangle": [
+        507,
+        912,
+        514,
+        919
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "middle-leg-gap",
+      "rectangle": [
+        688,
+        875,
+        695,
+        882
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "fore-leg-gap",
+      "rectangle": [
+        867,
+        907,
+        874,
+        914
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "lance-to-horse-gap",
+      "rectangle": [
+        1147,
+        507,
+        1154,
+        514
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "selectedAttempt": "attempt-02",
+  "semanticReview": "Original young clean-shaven helmeted soldier in navy/red lamellar, cream rectangular gold-strip shield, brown four-hoof armored horse and complete lance retained. Newly visible left glove controls reins at shield edge; right glove holds lance. All four hooves planted; no added symbols or weapons.",
+  "status": "Coordinator native quartet approved; ready for sole-integrator formal export/catalog registration",
+  "coordinatorApproval": {
+    "time": "2026-10-19 23:07 UTC",
+    "scaleFraction": "56/939",
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "sourceFoot": [
+      702,
+      977
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "origin": [
+      14,
+      6
+    ],
+    "review": "Original young rider and horse/gear clearly distinct from Roderick; mounted56 scale passes. Catalog-only status correct; no invented consumer."
+  },
+  "coordinatorSequenceApproval": {
+    "time": "2026-10-19 23:14 UTC",
+    "review": "Viewed shared native quartet on all backgrounds. Identity, opposing hoof phases and forward lance thrust pass; complete lance retained.",
+    "scaleFraction": "56/939",
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "registrationLimitLogicalPixels": 4,
+    "maximumMeasuredRegistrationLogicalPixels": 3.2800851970181046,
+    "perPoseScaling": false,
+    "catalogOnly": true,
+    "instruction": "No more generation needed; finish bundle."
+  }
+}

@@ -1,0 +1,1 @@
+Pose and identity pass, genuinely opposite contact. Native canvas1553x1013 exceeds exporter2px padding tolerance versus canonical1561x1008; retained as framing-correction source. One imagegen canvas correction authorized; no source resize/repaint.

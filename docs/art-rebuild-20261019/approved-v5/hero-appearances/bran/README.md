@@ -1,0 +1,3 @@
+# Bran stage01
+
+Original young olive scout identity replaces the generic armored ranger only for c01.bran. Bow/quiver, rope, keys, patched hunter tunic and youthful face are retained. Original portrait keeps hand-carried provisions; active ranger-bow rules support the battle bow. Older crossbow wording conflicts with the stage01 source/current rule and is explicitly recorded rather than silently adopted. Four poses use one44/958 scale,104x64 frame, origin8,4 and measured offsets up to3.215 under4limit; one transparent padding column, no per-pose fitting. Actual export/HUD/card/native and complete c12 review passed; all12 Bran actors change, generic rangers remain. Existing scene overlaps and live playback remain separate pending gates.

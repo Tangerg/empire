@@ -24,5 +24,54 @@
   "alphaOnePixels": 4022,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "semanticReview": "Actual image-right leg projects forward with broad boot sole visible, while image-left leg trails with side-view boot planted. Original requested side wording was not followed; recorded actual contact is used as opposite-contact reference.",
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        590,
+        800,
+        790,
+        965
+      ],
+      "soleCenterXBottomFourRows": 723.6652719665271,
+      "soleY": 947
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        800,
+        800,
+        1030,
+        985
+      ],
+      "soleCenterXBottomFourRows": 864.408695652174,
+      "soleY": 970
+    }
+  ],
+  "sourceFoot": [
+    794,
+    970
+  ],
+  "commonScale": 0.04561949196474858,
+  "logicalRegistrationOffset": [
+    -1.3229652669777088,
+    0.866770347330223
+  ],
+  "derivedPerimeterMaxAlpha": 0,
+  "rawEqualsMaster": true,
+  "negativeSpaceProbes": [
+    {
+      "name": "between-legs",
+      "rectangle": [
+        802,
+        923,
+        809,
+        930
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ]
 }

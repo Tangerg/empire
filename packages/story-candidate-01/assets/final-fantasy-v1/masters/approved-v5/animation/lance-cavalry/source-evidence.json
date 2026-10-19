@@ -1,0 +1,107 @@
+{
+  "canonical": {
+    "assetId": "C01-FFV1-UNIT-LANCE-CAVALRY",
+    "topicId": "C01-UNIT-LANCE-CAVALRY",
+    "label": "\u957f\u67aa\u9a91\u5175",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-lance-cavalry.png",
+    "width": 256,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-lance-cavalry.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-lance-cavalry.png"
+    ]
+  },
+  "references": {
+    "original-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ballista-cavalry-battlemage-eagle.png",
+      "sha256": "ad56bb98b2d14d011ac029d2ba1793ab59a45aaf81f4e6ea04ac4670b30494ea",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "original-runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-lance-cavalry.png",
+      "sha256": "d77b3ab4136c07fa144c1e3fb960992359e74945a0f223bb11db88dfdf6897b3",
+      "size": [
+        256,
+        48
+      ]
+    },
+    "original-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-lance-cavalry.png",
+      "sha256": "a7499d0fda2ca425bf64b12c5eaadf010c5eed25639e1c20335765594f0bdde6",
+      "size": [
+        512,
+        96
+      ]
+    },
+    "original-row-native.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-row-native.png",
+      "sha256": "eedbae78902010ae11ed4adc7ee3473c11ab9363e8eb6d5c3ffd42fbc021bff7",
+      "size": [
+        1254,
+        301
+      ]
+    },
+    "original-idle-native.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-idle-native.png",
+      "sha256": "d34e54142246fda74a89b488a776bb8bfad27feccbaf04487d9f96a37e17ab76",
+      "size": [
+        340,
+        301
+      ]
+    }
+  },
+  "identity": "Original board second row: young clean-shaven helmeted soldier in navy lamellar with red piping, brown gloves/boots, rectangular cream shield with narrow gold vertical strip. Brown horse, dark mane/tail, pale facial/nose blaze, bridle/reins, saddle, stirrups, navy/red lamellar barding. Wood lance with steel point.",
+  "consumerAudit": "No actual C01 unit-art consumer maps C01-UNIT-LANCE-CAVALRY. c01.knight and built-in knight map separate C01-UNIT-KNIGHT. c01.knight-charge maps C01-EQUIP-LANCE-CAVALRY only. Do not remap any consumer.",
+  "attackContract": "Original canonical attack is mounted lance forward thrust. Related mounted melee pierce lance and charge are in packages/story-candidate-01/src/weapons.ts but no gameplay identity is reassigned.",
+  "status": "Coordinator native quartet approved; ready for sole-integrator formal export/catalog registration",
+  "quartetManifest": "bundle-manifest.json",
+  "sharedScaleContract": "56/939; source foot702,977; native1560x1008; frame128x80; common origin14,6; whole-canvas translations only",
+  "finalSelectedNativeSha256": {
+    "idle": "cee7ff7ddf94561beeb702f240a9bfbb799581aee1604dca6129ba4e628c3dce",
+    "walk-a": "f39f1eb7f3a498bc889332463a59f37cca5fadee9f5627817938a31f1bf4e56d",
+    "attack": "891f15951067f8eebffe0aedf68f65e3b4626d189e98338651b6d6fb2aaf00d7",
+    "walk-b": "b20cf72ab0665b676ec8aa2f3bd48ffd19fae4cd7ed9f5c150e1b0d9cbf8d097"
+  },
+  "coordinatorSequenceApproval": {
+    "time": "2026-10-19 23:14 UTC",
+    "review": "Viewed shared native quartet on all backgrounds. Identity, opposing hoof phases and forward lance thrust pass; complete lance retained.",
+    "scaleFraction": "56/939",
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "registrationLimitLogicalPixels": 4,
+    "maximumMeasuredRegistrationLogicalPixels": 3.2800851970181046,
+    "perPoseScaling": false,
+    "catalogOnly": true,
+    "instruction": "No more generation needed; finish bundle."
+  }
+}

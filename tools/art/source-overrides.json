@@ -1270,6 +1270,42 @@
           4
         ]
       }
+    },
+    "C01-CHAR-BRAN-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png",
+        "sha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-TASHA-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-tasha-01/master.png",
+        "sha256": "7da47fb6bda98b6cc37aeec2981eadd2f5643efc2cc78f88a9e6ec7b005e8047"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
     }
   }
 }

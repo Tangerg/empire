@@ -29,7 +29,7 @@
   "bodyTopY": 24,
   "soleMeasurements": [
     {
-      "name": "image-left-boot",
+      "boot": "image-left",
       "roi": [
         440,
         850,
@@ -40,7 +40,7 @@
       "soleY": 989
     },
     {
-      "name": "image-right-boot",
+      "boot": "image-right",
       "roi": [
         820,
         850,
@@ -91,10 +91,19 @@
       "zeroPixels": 49
     }
   ],
-  "semanticReview": "Named adult woman with original brown swept hair/bun, brown eyes, rust coat, charcoal scarf, crossbody ledger satchel, keys, tags and wrench retained. Rule-correct engineer hammer is held in original wrench hand; wrench stowed. Small closed belt satchel represents charge. No generic helmet/apron identity.",
+  "semanticReview": "Stable planted ready stance. Named female rust-coat/brown-bun logistics identity; rule hammer held in original image-right tool hand, original wrench stowed.",
   "styleReview": "Large head, broad bare hands/boots, thick contour and broad matte rust/brown/gray planes. Simple quilting, no fine realism.",
   "bodyMeasurementDefinition": "Hair crown24 to mean boot soles; hammer and bag extent excluded. Source foot x is mean bottom-four-row boot centers and y is lower sole.",
   "rawEqualsMaster": true,
   "derivedPerimeterMaxAlpha": 0,
-  "derivedPerimeterNonzeroCount": 0
+  "derivedPerimeterNonzeroCount": 0,
+  "sourceFoot": [
+    765,
+    989
+  ],
+  "commonScale": 0.04561949196474858,
+  "logicalRegistrationOffset": [
+    0.0,
+    0.0
+  ]
 }

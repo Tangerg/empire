@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 36,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 311,
+  "formalRuntimeBoundTopics": 313,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1932,13 +1932,25 @@
     "C01-CHAR-CAIN-01": {
       "raw": "independent native1024x1536 transparent named young imperial officer with original command baton portrait; separate backdrop retained",
       "export": "192x224 separate-background card, actual HUD96x112/icon48, native registered quartet and complete c01-01/02/12 projections reviewed",
-      "runtimeBinding": "named portrait and four-pose named spear appearance registered; original rules and generic gravekeeper remain unchanged",
+      "runtimeBinding": "named portrait and independent four-pose cain appearance through explicit existing type binding; generic legion shield and rules unchanged",
       "liveGame": "pending"
     },
     "C01-UNIT-TROLL": {
       "raw": "four native transparent poses, original troll with stone hammer and gray spiral plate; rejected repeated-step attempts preserved",
       "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
       "runtimeBinding": "existing builtin ogre in actual siege; complete offline rules/actors/layers unchanged; full-scene readability held for recorded neighbor and pen occlusion",
+      "liveGame": "pending"
+    },
+    "C01-CHAR-BRAN-01": {
+      "raw": "independent native1024x1536 transparent named young olive-clad scout with original bow and hand-carried provisions portrait; separate backdrop retained",
+      "export": "native quartet and true-alpha portrait, actual HUD96x112/icon48 and complete c12 scene reviewed; c04 unchanged negative control",
+      "runtimeBinding": "named portrait and independent four-pose bran appearance through explicit existing type binding; generic ranger and rules unchanged",
+      "liveGame": "pending"
+    },
+    "C01-CHAR-TASHA-01": {
+      "raw": "independent native1024x1536 transparent named brown-bun rust-coated engineer with original ledger and wrench portrait; separate backdrop retained",
+      "export": "native quartet and true-alpha portrait, actual HUD96x112/icon48 and complete c12 scene reviewed; c04 unchanged negative control",
+      "runtimeBinding": "named portrait and independent four-pose tasha appearance through explicit existing type binding; generic engineer and rules unchanged",
       "liveGame": "pending"
     }
   },
@@ -2447,13 +2459,13 @@
     }
   },
   "namedHeroAppearances": {
-    "status": "Laiya, Roderick, Mirelle, Torren and Cain formally bound; Bran and Tasha in progress",
+    "status": "All seven reviewed stage01 named identities formally bound: Laiya, Roderick, Mirelle, Torren, Cain, Bran and Tasha; full-scene/live verification remains separate",
     "canonicalCountIncrement": 0,
     "audit": "narrative-family-audit/hero-identity-contract.md",
     "knownMismatches": [
       "IVRA rules describe juvenile; generic growth appearance has maturity mismatch risk"
     ],
-    "nextPilot": "Bran and Tasha: original named identities audited independently",
+    "nextPilot": "Remaining canonical units and mission roles; stage02 progression is not activated",
     "cardContract": "Character master retains real RGBA transparency; any required opaque UI background is separate authored source/layer",
     "liveGameVerified": false,
     "appearances": {
@@ -2506,6 +2518,26 @@
         "cardTopic": "C01-CHAR-CAIN-01",
         "cardCanonicalCountIncrement": 1,
         "genericLegionShield": "unchanged",
+        "liveGame": "pending"
+      },
+      "bran-stage01": {
+        "ruleUnit": "c01.bran",
+        "baseCanonicalTopic": "C01-UNIT-RANGER",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "shared44/958 body scale; measured feet and bow attack, original olive scout identity; older crossbow source conflict documented",
+        "cardTopic": "C01-CHAR-BRAN-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericRanger": "unchanged",
+        "liveGame": "pending"
+      },
+      "tasha-stage01": {
+        "ruleUnit": "c01.tasha",
+        "baseCanonicalTopic": "C01-UNIT-ENGINEER",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "shared44/964.5 body scale; actual hammer strike and opposite walks, original ledger/wrench portrait preserved",
+        "cardTopic": "C01-CHAR-TASHA-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericEngineer": "unchanged",
         "liveGame": "pending"
       }
     }

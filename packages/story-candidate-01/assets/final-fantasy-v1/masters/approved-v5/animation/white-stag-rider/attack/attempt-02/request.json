@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Correct only the two arm/hand assignments and short spear length in reference1, the current white-stag attack. Reference2 is approved idle authority for which arm holds which item. Reference3 is original identity. Keep the entire current attack mounted body, four stag legs/hooves, antlers, head, rider face/hair, costume, camera, scale, palette, saddlecloth, tail and full1585x992transparent canvas unchanged.\nThe current attack incorrectly puts reins in the nearer foreground arm and spear in the farther arm. SWAP THEIR ROLES while keeping anatomically continuous arms: the NEAR shoulder on screen-left must connect through its foreground brown-bracer forearm to the hand grasping the forward-thrusting spear; raise/extend this near arm forward across the torso into the spear grip. The FAR shoulder on screen-right must connect to the other forearm lowered to hold the brown reins, not spear. Exactly two arms/two hands. Do not draw crossed or disconnected arms. Idle reference2 shows the correct identity of these limbs: near arm is original screen-left spear arm. Near arm remains spear arm in attack.\nShorten only the wooden shaft about90source pixels while keeping the steel head original physical size. Move complete spear tip left from aboutx1530 to aboutx1435, keep butt aroundx735. Final full spear projection about700source pixels, not an exaggerated long lance. Make the corrected near spear hand grip aroundx965,y300 and far reins hand aroundx870,y415, modifying arm bends naturally. One continuous spear, one set of reins. Keep all antler tips visible, no new emblem or effects. Genuine RGBA alpha with existing matte chunky style and transparent leg/antler gaps. No floor, shadow, checkerboard, opaque background, extra figures, text or labels.\n",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/attempt-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-idle-native.png"
+  ],
+  "transparent_background": true,
+  "promptSha256": "0e8d5634d1845bf7351ca00392c8068e248169f49c90c8c0bb1721575a48ff27",
+  "referenceSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/attempt-01/master.png": "7e076098f31d23fb35d1a7ae446e46963e3f3cd5354b43870c9d04fe676e5164",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/master.png": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-idle-native.png": "72622cbfb6b0ba39b4b85b557414e6467d2c90534d371e1f9c5eefd05058ef73"
+  },
+  "attempt": 2
+}

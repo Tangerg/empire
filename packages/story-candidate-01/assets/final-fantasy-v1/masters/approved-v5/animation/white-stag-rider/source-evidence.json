@@ -1,0 +1,85 @@
+{
+  "asset": "C01-UNIT-WHITE-STAG-RIDER",
+  "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/source-contract-review.md",
+  "sourceFiles": [
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-walker-druid-stag-runeshield.png",
+      "saved": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/source-board.png",
+      "sha256": "f882ce4361b4f5307a84f1183666fd6f53ae362e7fe0fe71db19ad71d3f21085",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-white-stag-rider.png",
+      "saved": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/runtime-strip.png",
+      "sha256": "bfa4e40fa29bfaa596f0cd052d76dfa5f5ef054c218b7a55dda71daa27baeae9",
+      "size": [
+        256,
+        48
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-white-stag-rider.png",
+      "saved": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/runtime-hd-strip.png",
+      "sha256": "beac4cff7d1d66f47e18896e2bbad1fb76581e786c746fa5fc12c7ae31e62baf",
+      "size": [
+        512,
+        96
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "catalogContract": {
+    "frameSize": [
+      64,
+      48
+    ],
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "hdFrameSize": [
+      128,
+      96
+    ]
+  },
+  "actualConsumerStatus": "Catalog-only. No unit definition, art binding, weapon rule or campaign actor found by full packages TypeScript search. README:631 describes woodland light cavalry.",
+  "ruleClaim": "No implemented combat rule claimed. One-hand spear attack is a semantic pose clarification grounded in original spear artwork.",
+  "identity": "Pointed-ear tan young adult, dark tied hair, small gold drop ear ornament verified by enlarged original crop; leaf-green armor, brown straps/boots, rear-hand short spear, forward-hand reins. White four-hoof stag, branching brown antlers, blue-gold patterned saddlecloth.",
+  "method": "Built-in image_gen, native RGBA outputs retained unmodified. QA composites/resizes only. No repository or Git writes.",
+  "references": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/ear-review-enlarged.png": "6e19789ceb120c3c059456ec9c6ab5db16158a7d65dfdc92aaec76cfefba8c78",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-attack-hd.png": "b0e14971b53cfa7d23b1082a8b0449fe5f3bcd25bc0114eafe5b14156eff96a9",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-idle-hd.png": "3461b507a4d6c720507f71a4720f7b727e1efe97232ff2dfa51d0242e6468b5b",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-idle-native.png": "72622cbfb6b0ba39b4b85b557414e6467d2c90534d371e1f9c5eefd05058ef73",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-row-native.png": "fb90db26ec2c9e0a474eb58ca237a5a04e46a88c46746328bc7442a7ae13f7af",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-walk-a-hd.png": "3c08bf27b5030cad477218958ddfd79942ee43162daa6bf311a49be100969d11",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-walk-b-hd.png": "3467d137d69eec1f37c3e4d1b3bf6447cd9c51dbcfc67d276ae3a740beb5aecf",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/rider-gear-detail.png": "b2d4b6cdd580b112f44dabadab4725e55383a79816099f50345b22b6bd1bd3fe",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/runtime-hd-strip.png": "beac4cff7d1d66f47e18896e2bbad1fb76581e786c746fa5fc12c7ae31e62baf",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/runtime-strip.png": "bfa4e40fa29bfaa596f0cd052d76dfa5f5ef054c218b7a55dda71daa27baeae9",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/source-board.png": "f882ce4361b4f5307a84f1183666fd6f53ae362e7fe0fe71db19ad71d3f21085"
+  },
+  "idleNative": {
+    "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/raw.png",
+    "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/master.png",
+    "sha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+    "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/prompt.txt",
+    "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/request.json",
+    "status": "Await coordinator identity/scale gate"
+  }
+}

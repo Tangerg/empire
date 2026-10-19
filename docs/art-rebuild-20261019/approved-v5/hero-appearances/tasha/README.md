@@ -1,0 +1,3 @@
+# Tasha stage01
+
+Original brown bun, rust quilted coat, ledger, keys and wrench identity replaces the generic helmet/apron engineer only for c01.tasha. Active engineer-hammer rule supports the battle hammer; independent true-transparent portrait retains ledger and wrench. Four poses use one44/964.5 scale,104x64 frame, origin8,4 and measured offsets up to3.148 under4limit; one transparent padding row. Opposite contacts and hammer strike reviewed. All9 Tasha actors change, generic engineers remain. Raw-viewer colored RGB outside alpha0 was initially misread as haze; corrected black/white proofs and all preserved attempts document that distinction. Actual export/HUD/card/native and complete c12 review passed; existing scene overlaps and live playback remain separate.

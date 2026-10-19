@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 311,
+    "formalBound": 313,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 33,
@@ -12,11 +12,11 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 2,
-      "narrative-static": 5,
+      "narrative-static": 7,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 311,
+    "rawPreservedTopics": 315,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -664,13 +664,20 @@
       "category": "narrative-static",
       "label": "布兰苇草村猎人",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "independent native1024x1536 transparent named young olive-clad scout with original bow and hand-carried provisions portrait; separate backdrop retained",
+        "export": "native quartet and true-alpha portrait, actual HUD96x112/icon48 and complete c12 scene reviewed; c04 unchanged negative control",
+        "runtimeBinding": "named portrait and independent four-pose bran appearance through explicit existing type binding; generic ranger and rules unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CHAR-BRAN-02",
@@ -703,7 +710,7 @@
       "stageEvidence": {
         "raw": "independent native1024x1536 transparent named young imperial officer with original command baton portrait; separate backdrop retained",
         "export": "192x224 separate-background card, actual HUD96x112/icon48, native registered quartet and complete c01-01/02/12 projections reviewed",
-        "runtimeBinding": "named portrait and four-pose named spear appearance registered; original rules and generic gravekeeper remain unchanged",
+        "runtimeBinding": "named portrait and independent four-pose cain appearance through explicit existing type binding; generic legion shield and rules unchanged",
         "liveGame": "pending"
       }
     },
@@ -934,13 +941,20 @@
       "category": "narrative-static",
       "label": "塔莎佣兵首领",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-tasha-01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-tasha-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "independent native1024x1536 transparent named brown-bun rust-coated engineer with original ledger and wrench portrait; separate backdrop retained",
+        "export": "native quartet and true-alpha portrait, actual HUD96x112/icon48 and complete c12 scene reviewed; c04 unchanged negative control",
+        "runtimeBinding": "named portrait and independent four-pose tasha appearance through explicit existing type binding; generic engineer and rules unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CHAR-TORREN-01",
@@ -1834,8 +1848,10 @@
       "category": "combat-unit",
       "label": "长枪骑兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2163,8 +2179,10 @@
       "category": "combat-unit",
       "label": "白鹿骑手",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

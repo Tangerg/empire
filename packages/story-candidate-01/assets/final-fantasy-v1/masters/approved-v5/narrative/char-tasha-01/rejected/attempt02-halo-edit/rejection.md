@@ -1,1 +1,1 @@
-Rejected: imagegen edit preserved unwanted brown alpha halo. No programmatic source edits; regenerate from clean idle identity instead.
+Superseded during review, not an actual alpha failure. Initial raw-viewer appearance was mistakenly read as a brown halo; numerical alpha probes and actual white/black composites showed the brown values were hidden RGB under alpha0. No alpha cleanup occurred. Preserved as a superseded native attempt with original exact request/provenance. Selected current portrait is a newer independent composition.

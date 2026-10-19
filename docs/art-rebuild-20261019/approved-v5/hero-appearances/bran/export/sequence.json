@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-b/master.png"
+    },
+    "scale": 0.04592901878914405,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      758,
+      982
+    ],
+    "sourceFeet": {
+      "idle": [
+        758,
+        982
+      ],
+      "walk-a": [
+        780,
+        979
+      ],
+      "attack": [
+        737,
+        972
+      ],
+      "walk-b": [
+        828,
+        982
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -1.010438413361169,
+        0.13778705636743216
+      ],
+      "attack": [
+        0.9645093945720251,
+        0.4592901878914405
+      ],
+      "walk-b": [
+        -3.2150313152400836,
+        0.0
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Original named young olive scout Bran; one common44/958 scale and actual support feet, separate generic ranger unchanged"
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    42.81419624217119,
+    49.102296450939455
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5539,
+        "nearOpaquePixels": 899,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          5,
+          63,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22288,
+        "nearOpaquePixels": 3724,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          10,
+          127,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-a/master.png",
+      "registrationOffset": [
+        -1.010438413361169,
+        0.13778705636743216
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5614,
+        "nearOpaquePixels": 801,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          5,
+          64,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-a/master.png",
+      "registrationOffset": [
+        -1.010438413361169,
+        0.13778705636743216
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22638,
+        "nearOpaquePixels": 3309,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          10,
+          128,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/attack/master.png",
+      "registrationOffset": [
+        0.9645093945720251,
+        0.4592901878914405
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "bb72afbc0909dd0a2e783d4a598f94dae6d6602241a8b1c5ddebe7cef611f0c0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5548,
+        "nearOpaquePixels": 855,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          5,
+          71,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/attack/master.png",
+      "registrationOffset": [
+        0.9645093945720251,
+        0.4592901878914405
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "bb72afbc0909dd0a2e783d4a598f94dae6d6602241a8b1c5ddebe7cef611f0c0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22334,
+        "nearOpaquePixels": 3541,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          10,
+          142,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-b/master.png",
+      "registrationOffset": [
+        -3.2150313152400836,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "c4b220a4544d74a91bb5addc33e7f78fc4bfd22b3a0b68b3a213238cc06ad972",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5633,
+        "nearOpaquePixels": 796,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          4,
+          61,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-b/master.png",
+      "registrationOffset": [
+        -3.2150313152400836,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "c4b220a4544d74a91bb5addc33e7f78fc4bfd22b3a0b68b3a213238cc06ad972",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22666,
+        "nearOpaquePixels": 3292,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          9,
+          122,
+          98
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

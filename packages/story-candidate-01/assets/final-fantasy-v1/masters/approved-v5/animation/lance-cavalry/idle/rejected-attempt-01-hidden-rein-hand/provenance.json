@@ -1,0 +1,23 @@
+{
+  "exactTool": "built-in image_gen",
+  "requestFile": "request.json",
+  "promptSha256": "3c851f22d370f307aa9411874be5da918534d8be8f8110900180f8389551a4a8",
+  "referencesAtCall": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/references/original-idle-native.png": {
+      "snapshot": "/workspace/shared/empire-art-rebuild/approved-v5/animation/lance-cavalry/references/original-idle-native.png",
+      "sha256": "d34e54142246fda74a89b488a776bb8bfad27feccbaf04487d9f96a37e17ab76"
+    },
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png": {
+      "snapshot": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png",
+      "sha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80"
+    },
+    "/workspace/shared/empire-art-rebuild/approved-v5/red-swordsman/master.png": {
+      "snapshot": "/workspace/shared/empire-art-rebuild/approved-v5/red-swordsman/master.png",
+      "sha256": "61a409632d9ec39467bb27f17218c31218822eca0eb6db821ed7ab155d3755f2"
+    }
+  },
+  "outputNative": "/workspace/scratch/84c9fe948755/generated_images/exec-db93c0c9-d920-434c-9ee5-cd7f866c0493.png",
+  "outputSha256": "1d5ad33a99a35daaa851df33c24b90a119540376f66a2b7b22ab3a34b6aab886",
+  "rawMasterByteIdentical": true,
+  "sourcePixelEditing": "None; native bytes copied unchanged; QA composites are separate derived inspection artifacts only."
+}

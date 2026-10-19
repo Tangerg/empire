@@ -1,0 +1,340 @@
+{
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonNativeCanvas": [
+    1561,
+    1008
+  ],
+  "actualNativeSizes": {
+    "idle": [
+      1561,
+      1008
+    ],
+    "walk-a": [
+      1561,
+      1008
+    ],
+    "attack": [
+      1561,
+      1008
+    ],
+    "walk-b": [
+      1561,
+      1007
+    ]
+  },
+  "commonScaleRatio": "44/964.5",
+  "commonScale": 0.04561949196474858,
+  "referenceSourceFoot": [
+    765,
+    989
+  ],
+  "sourceFeet": [
+    [
+      765,
+      989
+    ],
+    [
+      794,
+      970
+    ],
+    [
+      710,
+      977
+    ],
+    [
+      834,
+      966
+    ]
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "origin": [
+    8,
+    4
+  ],
+  "suggestedRegistrationLimit": 4,
+  "maximumMeasuredLogicalOffset": 3.147744945567652,
+  "maximumTransparentCanvasPadding": {
+    "right": 0,
+    "bottom": 1
+  },
+  "frameAnchor": [
+    42.89891135303266,
+    49.117677553136346
+  ],
+  "method": "Native masters unchanged. Common envelope1561x1008: transparent bottom1 for walk-b only at export. Every original source pixel retained. One uniform44/964.5 scale and per-pose whole-canvas translations from measured sole centers. No alpha trim, silhouette fit, per-pose scaling or equipment transforms. One-pixel transparent padding is within exporter tolerance.",
+  "poses": [
+    {
+      "pose": "idle",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bb125cf9-b7bf-4125-b4c1-e4bf4454369f.png",
+      "sha256": "fe787e65f2c06d6e78bb92bf87839b67ffce932c4802519a92ae44db4cba38e6",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/idle/alpha-qa.json",
+      "sourceFoot": [
+        765,
+        989
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            440,
+            850,
+            680,
+            1000
+          ],
+          "soleCenterXBottomFourRows": 544.1316872427983,
+          "soleY": 989
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            820,
+            850,
+            1100,
+            1000
+          ],
+          "soleCenterXBottomFourRows": 985.7717842323651,
+          "soleY": 988
+        }
+      ],
+      "logicalRegistrationOffset": [
+        0.0,
+        0.0
+      ],
+      "wholeCanvasOutputBounds": [
+        8.0,
+        4.0,
+        79.21202695697254,
+        49.98444790046656
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0,
+      "semanticReview": "Stable planted ready stance. Named female rust-coat/brown-bun logistics identity; rule hammer held in original image-right tool hand, original wrench stowed."
+    },
+    {
+      "pose": "walk-a",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-a/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-a/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-95c96b53-2701-4757-9395-80b3a1e9d92b.png",
+      "sha256": "c858de3685ecad13c6a805b6954c5eafae4645d5a075fa8bd220885b0a8991a4",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-a/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-a/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-a/alpha-qa.json",
+      "sourceFoot": [
+        794,
+        970
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            590,
+            800,
+            790,
+            965
+          ],
+          "soleCenterXBottomFourRows": 723.6652719665271,
+          "soleY": 947
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            800,
+            800,
+            1030,
+            985
+          ],
+          "soleCenterXBottomFourRows": 864.408695652174,
+          "soleY": 970
+        }
+      ],
+      "logicalRegistrationOffset": [
+        -1.3229652669777088,
+        0.866770347330223
+      ],
+      "wholeCanvasOutputBounds": [
+        6.677034733022291,
+        4.866770347330223,
+        77.88906168999483,
+        50.85121824779679
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0,
+      "semanticReview": "Actual image-right leg projects forward with broad boot sole visible, while image-left leg trails with side-view boot planted. Original requested side wording was not followed; recorded actual contact is used as opposite-contact reference."
+    },
+    {
+      "pose": "attack",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/attack/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/attack/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b77731bb-9078-4485-a9a2-15efba362fcf.png",
+      "sha256": "cbfa66d8a7ed0ef8532a9d99d92329c0128d2aace52234b7454ce6a9013017bf",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/attack/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/attack/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/attack/alpha-qa.json",
+      "sourceFoot": [
+        710,
+        977
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            255,
+            800,
+            500,
+            990
+          ],
+          "soleCenterXBottomFourRows": 345.9422222222222,
+          "soleY": 957
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            895,
+            820,
+            1185,
+            995
+          ],
+          "soleCenterXBottomFourRows": 1074.7377049180327,
+          "soleY": 977
+        }
+      ],
+      "logicalRegistrationOffset": [
+        2.5090720580611716,
+        0.547433903576983
+      ],
+      "wholeCanvasOutputBounds": [
+        10.509072058061172,
+        4.547433903576983,
+        81.7210990150337,
+        50.53188180404354
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0,
+      "semanticReview": "Grounded wide step and forward torso turn. Original image-right hand extends continuous rigid engineer hammer toward screen-right at waist height; free hand balances behind. No wrench strike, impact FX or duplicated gear."
+    },
+    {
+      "pose": "walk-b",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-b/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-b/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8f6d53f2-b9d0-4f56-891a-d069a195d8fa.png",
+      "sha256": "50eee100d3be0512acdc7f5c49b2cdb45d2c6c466fe603d49688a3d701062a68",
+      "nativeSize": [
+        1561,
+        1007
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-b/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-b/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/tasha/walk-b/alpha-qa.json",
+      "sourceFoot": [
+        834,
+        966
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            550,
+            700,
+            790,
+            925
+          ],
+          "soleCenterXBottomFourRows": 684.3732394366198,
+          "soleY": 907
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            820,
+            840,
+            1100,
+            985
+          ],
+          "soleCenterXBottomFourRows": 983.0847457627119,
+          "soleY": 966
+        }
+      ],
+      "logicalRegistrationOffset": [
+        -3.147744945567652,
+        1.0492483151892174
+      ],
+      "wholeCanvasOutputBounds": [
+        4.852255054432348,
+        5.049248315189217,
+        76.06428201140488,
+        51.03369621565578
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        1
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "derivedPerimeterMaxAlpha": 0,
+      "derivedPerimeterNonzeroCount": 0,
+      "semanticReview": "Actual image-left knee and boot project forward, large lifted sole faces viewer. Image-right leg bears weight and right boot is side-view planted. This visibly opposes walk-a without mirroring upper-body kit."
+    }
+  ],
+  "coordinatorApproval": "2026-10-19 23:08UTC: coordinator viewed quartet native2x and original card black/white/olive proofs. Named rust-coat/bun/ledger identity, clear hammer attack and opposite walk contacts pass. Registration limit4 with exact feet and1px bottom padding approved."
+}

@@ -1,0 +1,97 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6a7dfe96-7934-422a-a1f6-3945768e8460.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "cee7ff7ddf94561beeb702f240a9bfbb799581aee1604dca6129ba4e628c3dce",
+  "bboxAlphaNonzero": [
+    0,
+    28,
+    1540,
+    984
+  ],
+  "bboxAlphaGreaterThan127": [
+    227,
+    31,
+    1523,
+    978
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1079879,
+  "alphaOnePixels": 5823,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    702,
+    977
+  ],
+  "sourceFootMidpoint": [
+    701.7485774535317,
+    977
+  ],
+  "semanticReview": "Approved mounted idle: all four connected horse legs planted; young original helmeted rider, shield, reins/lance hands, barding, horse and functional colors retained.",
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-gap",
+      "rectangle": [
+        507,
+        912,
+        514,
+        919
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "central-gap",
+      "rectangle": [
+        688,
+        875,
+        695,
+        882
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-gap",
+      "rectangle": [
+        867,
+        907,
+        874,
+        914
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lance-clearance",
+      "rectangle": [
+        1147,
+        507,
+        1154,
+        514
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "spearProjectionMeasurement": {
+    "endpoints": [
+      [
+        261,
+        471.5
+      ],
+      [
+        1522,
+        374.5
+      ]
+    ],
+    "length": 1264.7252666093138,
+    "versusIdleRatio": 1.0
+  }
+}
