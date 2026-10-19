@@ -1,0 +1,392 @@
+[
+  {
+    "variant": "renderer-baseline",
+    "viewBox": [
+      -96,
+      0,
+      640,
+      512
+    ],
+    "cropWorld": [
+      0,
+      3,
+      14,
+      10
+    ],
+    "overscanLogical": 96,
+    "groundFit": {
+      "meadowInset": 3,
+      "bleed": 0.5
+    },
+    "substitutions": [],
+    "inputHashes": {
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/water-slow-river@2x.png": "4a05475471866bf1fc73814ef487be601025224673df96a88f3f805bcd135573",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "32574fc940f70d56b091a20504e49f767b6ae2f76937511815da685f370b644c",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "3ceea3ad6cd60ea4e3893f5c30ed4e578a00b2096c8a9600fdd111e252f925e8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "a97a59137629a20416f684417731d715a74c8d55555eb5de09b0c2210f634301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "a9a99a3a441e745c1dd599713a6db2ca7db7838e15ce63b43ed3dbfc1e017301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-joint-granary.png": "826652bdcc5e0a352afdaf041668a74440747e0b1827fd7220afb62a4d2d234d",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-lorne-keep.png": "734694bf3fd9b19c43fa9147486d7f1fa959085f24f39f42acadcce47c52b568",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-banner-guard.png": "417591c53a1598543eb3cc85b39edd6d3d2678f4dee88f2218ff37713aa72379",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-swordsman.png": "624ef9d83d787178c9e279fb27211ec680e15266a90983cb9850769e9ebd4c64",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-archer.png": "909705c453e65641877118cc4a68f0129e6d801179e5c75ce7cfc27d1b5b8a21",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a"
+    },
+    "kind": "actual-renderer-piece-art-study-not-gameplay",
+    "provenance": "Only three calibration masters are new style; other pixels are current branch mixed legacy/previous remake",
+    "limitations": [
+      "Buildings use normal state without owner banner for shape study; original owner data retained",
+      "Unit team is neutral blue-gray; idle frames only",
+      "No CSS lighting, shadows, animation or camera"
+    ],
+    "acceptance": "pending-user-style-review"
+  },
+  {
+    "variant": "trial-keep96",
+    "viewBox": [
+      -96,
+      0,
+      640,
+      512
+    ],
+    "cropWorld": [
+      0,
+      3,
+      14,
+      10
+    ],
+    "overscanLogical": 96,
+    "groundFit": {
+      "meadowInset": 0,
+      "bleed": 0.5
+    },
+    "substitutions": [
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          80.18315,
+          197.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.078125,
+        "fullCanvasLogical": [
+          97.96875,
+          97.96875
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "lorne-keep",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png",
+        "pointWorld": [
+          48,
+          127
+        ],
+        "sourceFoot": [
+          632,
+          1177
+        ],
+        "logicalPerSourcePixel": 0.07888249794576828,
+        "fullCanvasLogical": [
+          98.91865242399342,
+          98.91865242399342
+        ],
+        "sourceSha256": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          80,
+          287
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.06962025316455696,
+        "fullCanvasLogical": [
+          87.30379746835443,
+          87.30379746835443
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      }
+    ],
+    "inputHashes": {
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/water-slow-river@2x.png": "4a05475471866bf1fc73814ef487be601025224673df96a88f3f805bcd135573",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "32574fc940f70d56b091a20504e49f767b6ae2f76937511815da685f370b644c",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "3ceea3ad6cd60ea4e3893f5c30ed4e578a00b2096c8a9600fdd111e252f925e8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "a97a59137629a20416f684417731d715a74c8d55555eb5de09b0c2210f634301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "a9a99a3a441e745c1dd599713a6db2ca7db7838e15ce63b43ed3dbfc1e017301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-joint-granary.png": "826652bdcc5e0a352afdaf041668a74440747e0b1827fd7220afb62a4d2d234d",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-lorne-keep.png": "734694bf3fd9b19c43fa9147486d7f1fa959085f24f39f42acadcce47c52b568",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-banner-guard.png": "417591c53a1598543eb3cc85b39edd6d3d2678f4dee88f2218ff37713aa72379",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-archer.png": "909705c453e65641877118cc4a68f0129e6d801179e5c75ce7cfc27d1b5b8a21",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-swordsman.png": "624ef9d83d787178c9e279fb27211ec680e15266a90983cb9850769e9ebd4c64",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a"
+    },
+    "kind": "actual-renderer-piece-art-study-not-gameplay",
+    "provenance": "Only three calibration masters are new style; other pixels are current branch mixed legacy/previous remake",
+    "limitations": [
+      "Buildings use normal state without owner banner for shape study; original owner data retained",
+      "Unit team is neutral blue-gray; idle frames only",
+      "No CSS lighting, shadows, animation or camera"
+    ],
+    "acceptance": "pending-user-style-review"
+  },
+  {
+    "variant": "trial-keep144",
+    "viewBox": [
+      -96,
+      0,
+      640,
+      512
+    ],
+    "cropWorld": [
+      0,
+      3,
+      14,
+      10
+    ],
+    "overscanLogical": 96,
+    "groundFit": {
+      "meadowInset": 0,
+      "bleed": 0.5
+    },
+    "substitutions": [
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          80.18315,
+          197.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.078125,
+        "fullCanvasLogical": [
+          97.96875,
+          97.96875
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "lorne-keep",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png",
+        "pointWorld": [
+          48,
+          127
+        ],
+        "sourceFoot": [
+          632,
+          1177
+        ],
+        "logicalPerSourcePixel": 0.11832374691865243,
+        "fullCanvasLogical": [
+          148.37797863599013,
+          148.37797863599013
+        ],
+        "sourceSha256": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          80,
+          287
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.06962025316455696,
+        "fullCanvasLogical": [
+          87.30379746835443,
+          87.30379746835443
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      }
+    ],
+    "inputHashes": {
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/water-slow-river@2x.png": "4a05475471866bf1fc73814ef487be601025224673df96a88f3f805bcd135573",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "32574fc940f70d56b091a20504e49f767b6ae2f76937511815da685f370b644c",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "3ceea3ad6cd60ea4e3893f5c30ed4e578a00b2096c8a9600fdd111e252f925e8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "a97a59137629a20416f684417731d715a74c8d55555eb5de09b0c2210f634301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "a9a99a3a441e745c1dd599713a6db2ca7db7838e15ce63b43ed3dbfc1e017301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-joint-granary.png": "826652bdcc5e0a352afdaf041668a74440747e0b1827fd7220afb62a4d2d234d",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-lorne-keep.png": "734694bf3fd9b19c43fa9147486d7f1fa959085f24f39f42acadcce47c52b568",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-banner-guard.png": "417591c53a1598543eb3cc85b39edd6d3d2678f4dee88f2218ff37713aa72379",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-archer.png": "909705c453e65641877118cc4a68f0129e6d801179e5c75ce7cfc27d1b5b8a21",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-swordsman.png": "624ef9d83d787178c9e279fb27211ec680e15266a90983cb9850769e9ebd4c64",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a"
+    },
+    "kind": "actual-renderer-piece-art-study-not-gameplay",
+    "provenance": "Only three calibration masters are new style; other pixels are current branch mixed legacy/previous remake",
+    "limitations": [
+      "Buildings use normal state without owner banner for shape study; original owner data retained",
+      "Unit team is neutral blue-gray; idle frames only",
+      "No CSS lighting, shadows, animation or camera"
+    ],
+    "acceptance": "pending-user-style-review"
+  },
+  {
+    "variant": "trial-keep144-human34",
+    "viewBox": [
+      -96,
+      0,
+      640,
+      512
+    ],
+    "cropWorld": [
+      0,
+      3,
+      14,
+      10
+    ],
+    "overscanLogical": 96,
+    "groundFit": {
+      "meadowInset": 0,
+      "bleed": 0.5
+    },
+    "substitutions": [
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          80.18315,
+          197.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.078125,
+        "fullCanvasLogical": [
+          97.96875,
+          97.96875
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "lorne-keep",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png",
+        "pointWorld": [
+          48,
+          127
+        ],
+        "sourceFoot": [
+          632,
+          1177
+        ],
+        "logicalPerSourcePixel": 0.11832374691865243,
+        "fullCanvasLogical": [
+          148.37797863599013,
+          148.37797863599013
+        ],
+        "sourceSha256": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          80,
+          287
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.05379746835443038,
+        "fullCanvasLogical": [
+          67.4620253164557,
+          67.4620253164557
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      }
+    ],
+    "inputHashes": {
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/water-slow-river@2x.png": "4a05475471866bf1fc73814ef487be601025224673df96a88f3f805bcd135573",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "32574fc940f70d56b091a20504e49f767b6ae2f76937511815da685f370b644c",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "3ceea3ad6cd60ea4e3893f5c30ed4e578a00b2096c8a9600fdd111e252f925e8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "a97a59137629a20416f684417731d715a74c8d55555eb5de09b0c2210f634301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "a9a99a3a441e745c1dd599713a6db2ca7db7838e15ce63b43ed3dbfc1e017301",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-joint-granary.png": "826652bdcc5e0a352afdaf041668a74440747e0b1827fd7220afb62a4d2d234d",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-lorne-keep.png": "734694bf3fd9b19c43fa9147486d7f1fa959085f24f39f42acadcce47c52b568",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-banner-guard.png": "417591c53a1598543eb3cc85b39edd6d3d2678f4dee88f2218ff37713aa72379",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-archer.png": "909705c453e65641877118cc4a68f0129e6d801179e5c75ce7cfc27d1b5b8a21",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-swordsman.png": "624ef9d83d787178c9e279fb27211ec680e15266a90983cb9850769e9ebd4c64",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a"
+    },
+    "kind": "actual-renderer-piece-art-study-not-gameplay",
+    "provenance": "Only three calibration masters are new style; other pixels are current branch mixed legacy/previous remake",
+    "limitations": [
+      "Buildings use normal state without owner banner for shape study; original owner data retained",
+      "Unit team is neutral blue-gray; idle frames only",
+      "No CSS lighting, shadows, animation or camera"
+    ],
+    "acceptance": "pending-user-style-review"
+  }
+]
