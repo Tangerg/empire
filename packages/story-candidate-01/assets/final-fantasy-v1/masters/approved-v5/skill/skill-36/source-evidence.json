@@ -1,0 +1,80 @@
+{
+  "topicId": "C01-SKILL-36",
+  "assetId": "C01-FFV1-SKILL-36",
+  "label": "抬运伤员",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9aa9916b-a59f-46c0-8d45-647a7bcdbc37.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-36-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-03.png",
+    "atlasSha256": "f664dad2fcf7486124e974613c68cae528ed38e6db9ae070b91f57addf268c5d",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-03.png, row 1 column 4 (one based)",
+    "topicIndex": 35,
+    "inspectionCropCoordinates": [
+      946,
+      4,
+      1252,
+      307
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-36.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-33 through skill-36; exact authored-order subjects, visible counts, blank stretcher identity, and white grid exclusion were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-36-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      2,
+      1252,
+      312
+    ],
+    "sourceCellCorrection": "Original atlas-03 has white grid dividers; nominal two-pixel-inset crop includes white divider slivers. Complete subject crop excludes only the grid while preserving the full subject. No neighboring object contamination observed."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-36-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One empty blue-cloth rectangular stretcher on a timber frame, with two long side poles, two crosspieces, four broad cloth attachment tabs and two near-corner rope collars. Two separate cropped forearms wearing brown fingerless gloves grip its far handles, left and right. No patient or full-body figures.",
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-exterior-alpha.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "visualInterpretationNotes": "Two gloved hands hold one EMPTY blue stretcher. Four corner attachment locations retained; paired front metal clamp blocks are a cosmetic simplification. No patient or additional figure. Refined native square has complete but tight 4px left / 5px right meaningful margins; full canvas must be preserved.",
+  "refinementHistory": [
+    {
+      "initialRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-af66af98-2d4e-4482-99de-f609d7e209b7.png",
+      "preservedCandidate": "candidates/initial/raw.png",
+      "reason": "Diffuse brown/blue exterior haze around otherwise correct empty stretcher.",
+      "tool": "built-in image_gen__imagegen",
+      "prompt": "prompt-refine-exterior-alpha.txt",
+      "referencePaths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-af66af98-2d4e-4482-99de-f609d7e209b7.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-36-complete-subject.png"
+      ],
+      "resultRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9aa9916b-a59f-46c0-8d45-647a7bcdbc37.png",
+      "result": "Exterior haze removed by image generation; complete square true-alpha source. No pixel edits or alpha cleanup."
+    }
+  ]
+}

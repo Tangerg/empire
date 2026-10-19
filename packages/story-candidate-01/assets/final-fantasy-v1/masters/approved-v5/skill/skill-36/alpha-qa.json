@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-SKILL-36",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6791651086539024,
+  "nearOpaqueFractionAlphaGE250": 0.304265266617319,
+  "nonzeroAlphaBBox": [
+    0,
+    87,
+    1253,
+    1198
+  ],
+  "visibleAlphaBBoxGE8": [
+    3,
+    268,
+    1250,
+    1000
+  ],
+  "visibleAlphaBBoxGE128": [
+    4,
+    269,
+    1249,
+    999
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    4,
+    269,
+    5,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 32,
+  "sha256": "20d6b0cdb6e1ce9e60579acfb6d2a7836ec1be4ecd61007a482ce31e367c2b01",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, with transparent exterior and open gaps.",
+    "No invented readable lettering, broad exterior glow, haze, scene background or added square tile.",
+    "Initial diffuse exterior halo removed with built-in imagegen; revised opaque painted objects and clean transparent surrounding field inspected."
+  ],
+  "identityVerified": "One empty blue-cloth rectangular stretcher on a timber frame, with two long side poles, two crosspieces, four broad cloth attachment tabs and two near-corner rope collars. Two separate cropped forearms wearing brown fingerless gloves grip its far handles, left and right. No patient or full-body figures.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset.",
+    "Meaningful left/right margins are tight at 4/5 pixels but outlines/cuffs are intact; do not crop, stretch or programmatically resize source master."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticInspection": "Two gloved hands hold one EMPTY blue stretcher. Four corner attachment locations retained; paired front metal clamp blocks are a cosmetic simplification. No patient or additional figure. Refined native square has complete but tight 4px left / 5px right meaningful margins; full canvas must be preserved."
+}

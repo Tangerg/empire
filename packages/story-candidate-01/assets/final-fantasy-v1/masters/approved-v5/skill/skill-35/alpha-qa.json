@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-SKILL-35",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.459535546856121,
+  "nearOpaqueFractionAlphaGE250": 0.5246808299565792,
+  "nonzeroAlphaBBox": [
+    0,
+    73,
+    1216,
+    1220
+  ],
+  "visibleAlphaBBoxGE8": [
+    53,
+    120,
+    1210,
+    1168
+  ],
+  "visibleAlphaBBoxGE128": [
+    54,
+    121,
+    1209,
+    1167
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    54,
+    121,
+    45,
+    87
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 37,
+  "sha256": "bba7fcaf1127bef58f2043ff65f01ec35bf8f490d549173b936a8669e33cc386",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, with transparent exterior and open gaps.",
+    "No invented readable lettering, broad exterior glow, haze, scene background or added square tile."
+  ],
+  "identityVerified": "Exactly three first-aid groups: one cream rolled bandage at left with brown retaining strap and visible spiral ends; one center bundle of four wooden splint strips held by broad crossed cream bandage; one corked amber medicine bottle at right carrying one square beige label with one dark equal-armed cross. No blood, patient or additional symbols.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticInspection": "Three main equipment groups verified: one bandage roll, one bound four-strip splint bundle, one corked amber bottle with one dark equal-armed cross. No new label lettering."
+}

@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-spore-shooter",
+  "assetId": "C02-SFV1-equipment-spore-shooter",
+  "label": "孢子射手主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 3
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-spore-shooter.png",
+  "runtimeReferenceSha256": "52b96d2ee5669dd9860bed0895e21f3d7bf3478b4e82824e6751dc05201122e4",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

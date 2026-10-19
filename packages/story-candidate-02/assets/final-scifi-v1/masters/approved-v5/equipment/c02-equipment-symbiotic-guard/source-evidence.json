@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-symbiotic-guard",
+  "assetId": "C02-SFV1-equipment-symbiotic-guard",
+  "label": "共生卫士主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    309
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-symbiotic-guard.png",
+  "runtimeReferenceSha256": "3c4e5cb9753b3a5c8cf5d9b7a1743d5d7210062bd526f8df254fd226de3bcf84",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f58b37b3-1dd6-420c-a250-60f5d3629103.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-symbiotic-guard/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board01 R1C3 and old runtime verified as a two-piece equipment set. Exactly one pointed leaf-armored shield plus one five-finger mechanical gauntlet retained in source arrangement. Shield has bounded oval green core and olive/deep-teal layered plates; gauntlet retains ivory/ochre cuff, cyan wrist inset and thick symbiotic vines. No human body or character invented. Actual48 black/white review keeps the two main pieces distinct with transparent separation/vine gaps and no external green halo.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
