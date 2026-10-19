@@ -9706,9 +9706,14 @@
       "atlasId": "scenery-regional",
       "cellId": "grave-cross-cluster",
       "index": 8,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/scenery-regional/grave-cross-cluster/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "5c79115e5a1acd82b2f29f8bf38911fcb1993133b8c7cae7009615cf3d7d36e8",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "scenery-regional",
@@ -9903,6 +9908,34 @@
       "observedOriginal": "saddled horse",
       "status": "designed-role-equipment-reconstruction",
       "uncertainty": "Exact historical atlas mapping unresolved; scout saddle/map intentionally abstracts mounted role"
+    },
+    {
+      "topicId": "c03-equip-6fa9292e",
+      "label": "强弩营",
+      "observedOriginal": "round shield",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-c11ad030",
+      "label": "甲骑",
+      "observedOriginal": "spear/polearm",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-ff5e54ed",
+      "label": "陌刀队",
+      "observedOriginal": "leaf spear",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-6a62b51e",
+      "label": "铁锤破阵手",
+      "observedOriginal": "grain containers",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved"
     }
   ],
   "visualReviewIssues": [
