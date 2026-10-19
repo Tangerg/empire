@@ -20,7 +20,8 @@
           "elevation": 0,
           "canReceiveFoot": true,
           "occupant": null,
-          "structure": null
+          "structure": null,
+          "presentationFacing": "source-right"
         },
         {
           "x": 9,
@@ -30,7 +31,8 @@
           "elevation": 0,
           "canReceiveFoot": true,
           "occupant": null,
-          "structure": null
+          "structure": null,
+          "presentationFacing": "source-right"
         },
         {
           "x": 8,
@@ -40,7 +42,8 @@
           "elevation": 0,
           "canReceiveFoot": true,
           "occupant": null,
-          "structure": null
+          "structure": null,
+          "presentationFacing": "source-right"
         },
         {
           "x": 13,
@@ -50,7 +53,8 @@
           "elevation": 0,
           "canReceiveFoot": true,
           "occupant": null,
-          "structure": null
+          "structure": null,
+          "presentationFacing": "left-mirrored"
         },
         {
           "x": 12,
@@ -60,7 +64,8 @@
           "elevation": 0,
           "canReceiveFoot": true,
           "occupant": null,
-          "structure": null
+          "structure": null,
+          "presentationFacing": "left-mirrored"
         },
         {
           "x": 13,
@@ -70,12 +75,13 @@
           "elevation": 0,
           "canReceiveFoot": true,
           "occupant": null,
-          "structure": null
+          "structure": null,
+          "presentationFacing": "left-mirrored"
         }
       ],
       "actualStateSha256": "a75c3ee8d53e4aec28a180a9c1f35c8179d91b2dc914a72e72483fb2633c8fc9",
       "stateUnchanged": true,
-      "identitySubstitution": "All six actors deliberately use the existing calibration swordsman; owner indicated by blue/red rings; same pose/facing",
+      "identitySubstitution": "All six actors use the same existing swordsman source; owner shown by blue/red rings; right team horizontally mirrored around standing cell center using the existing renderer facing transform",
       "markerContract": {
         "contact": {
           "cx": 16,
@@ -102,7 +108,13 @@
         "Selected scenery omissions remain; no added tree/building locations",
         "No actual combat simulation, turn progression or unit stats are represented",
         "All actual bridge rows remain present where they intersect the camera"
-      ]
+      ],
+      "facingContract": {
+        "source": "packages/game-ui/src/styles/app.css:549",
+        "localTransform": "translate(32px,0) scale(-1,1)",
+        "worldEquivalent": "translate(2*(cellX*32+16),0) scale(-1,1)",
+        "sourcePixelsChanged": false
+      }
     },
     "viewBox": [
       160,
@@ -336,6 +348,7 @@
     "substitutions": [
       {
         "identity": "riverbank-module-v2",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/riverbank-module/master-v2.png",
         "pointWorld": [
           320,
@@ -370,6 +383,7 @@
       },
       {
         "identity": "pine",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
         "pointWorld": [
           175.24445,
@@ -404,6 +418,7 @@
       },
       {
         "identity": "stone-bridge",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
         "pointWorld": [
           352,
@@ -438,6 +453,7 @@
       },
       {
         "identity": "pine",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
         "pointWorld": [
           80.18315,
@@ -472,6 +488,7 @@
       },
       {
         "identity": "stone-bridge",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
         "pointWorld": [
           352,
@@ -506,6 +523,7 @@
       },
       {
         "identity": "pine",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
         "pointWorld": [
           204.40936,
@@ -540,6 +558,7 @@
       },
       {
         "identity": "pine",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
         "pointWorld": [
           81.46457,
@@ -574,6 +593,7 @@
       },
       {
         "identity": "stone-bridge",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
         "pointWorld": [
           352,
@@ -608,6 +628,7 @@
       },
       {
         "identity": "pine",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
         "pointWorld": [
           209.98783,
@@ -642,6 +663,7 @@
       },
       {
         "identity": "lorne-keep",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png",
         "pointWorld": [
           48,
@@ -676,6 +698,7 @@
       },
       {
         "identity": "swordsman",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
         "pointWorld": [
           272,
@@ -710,6 +733,7 @@
       },
       {
         "identity": "swordsman",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
         "pointWorld": [
           304,
@@ -744,6 +768,7 @@
       },
       {
         "identity": "swordsman",
+        "presentationFacing": "source-right",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
         "pointWorld": [
           272,
@@ -778,6 +803,7 @@
       },
       {
         "identity": "swordsman",
+        "presentationFacing": "left-mirrored",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
         "pointWorld": [
           432,
@@ -804,14 +830,15 @@
           28.0
         ],
         "visibleWorldBounds": [
-          418.88607594936707,
+          418.93037974683546,
           163.0,
-          445.06962025316454,
+          445.11392405063293,
           191.0
         ]
       },
       {
         "identity": "swordsman",
+        "presentationFacing": "left-mirrored",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
         "pointWorld": [
           400,
@@ -838,14 +865,15 @@
           28.0
         ],
         "visibleWorldBounds": [
-          386.88607594936707,
+          386.93037974683546,
           195.0,
-          413.06962025316454,
+          413.11392405063293,
           223.0
         ]
       },
       {
         "identity": "swordsman",
+        "presentationFacing": "left-mirrored",
         "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
         "pointWorld": [
           432,
@@ -872,9 +900,9 @@
           28.0
         ],
         "visibleWorldBounds": [
-          418.88607594936707,
+          418.93037974683546,
           227.0,
-          445.06962025316454,
+          445.11392405063293,
           255.0
         ]
       }
@@ -904,7 +932,7 @@
     "provenance": "Only listed master substitutions and explicitly named connector/water layers use new calibration; other pixels remain current branch mixed legacy/previous remake",
     "limitations": [
       "STAGED six-unit encounter, not original deployment or observed gameplay",
-      "Shared swordsman identity and same facing for both teams",
+      "Shared swordsman identity; right team mirrored using existing cell-center horizontal facing transform",
       "Runtime contact ellipse and team rings restored; no dynamic lighting, animation or combat UI",
       "Selected scenery omissions remain explicit"
     ],

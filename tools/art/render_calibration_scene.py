@@ -64,19 +64,25 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
                         image.set(key, str(float(image.get(key)) / (32 / 26) + 3))
             group.extend(list(parsed)); svg.append(group)
 
-        def master_piece(identity, point, foot, scale, source_file=None):
+        def master_piece(identity, point, foot, scale, source_file=None, mirrored=False):
             path = source_file or masters / identity / 'master.png'
             with Image.open(path) as image:
                 width, height = image.size
                 visible = image.convert('RGBA').getchannel('A').point(lambda value: 255 if value >= 128 else 0).getbbox()
             image = element('image', {'href': path.as_uri(), 'x': str(point[0] - foot[0] * scale),
                 'y': str(point[1] - foot[1] * scale), 'width': str(width * scale), 'height': str(height * scale)})
+            if mirrored:
+                image.set('transform', f'translate({2*point[0]},0) scale(-1,1)')
             svg.append(image)
-            substitutions.append({'identity': identity, 'source': str(path), 'pointWorld': point,
+            substitutions.append({'identity': identity, 'presentationFacing': 'left-mirrored' if mirrored else 'source-right', 'source': str(path), 'pointWorld': point,
                 'sourceFoot': foot, 'logicalPerSourcePixel': scale, 'fullCanvasLogical': [width * scale, height * scale],
                 'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest(),
                 'alpha128SourceBounds': list(visible), 'visibleLogicalSize': [(visible[2]-visible[0])*scale,(visible[3]-visible[1])*scale],
                 'visibleWorldBounds': [point[0]+(visible[0]-foot[0])*scale,point[1]+(visible[1]-foot[1])*scale,point[0]+(visible[2]-foot[0])*scale,point[1]+(visible[3]-foot[1])*scale]})
+
+            if mirrored:
+                bounds = substitutions[-1]['visibleWorldBounds']
+                substitutions[-1]['visibleWorldBounds'] = [2*point[0]-bounds[2], bounds[1], 2*point[0]-bounds[0], bounds[3]]
 
         ground_report = append_ground(svg, defs, data['map'], ground_base, grass_patch, ground_period, ground_flat, grass_broad) if ground_base else None
         water_inserted = False
@@ -128,7 +134,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
                         marker = stage['markerContract']; contact = marker['contact']; ring = marker['ring']
                         svg.append(element('ellipse', {'cx':str(piece['x']+contact['cx']), 'cy':str(piece['y']+contact['cy']), 'rx':str(contact['rx']), 'ry':str(contact['ry']), 'fill':contact['fill'], 'opacity':str(contact['opacity'])}))
                         svg.append(element('ellipse', {'cx':str(piece['x']+ring['cx']), 'cy':str(piece['y']+ring['cy']), 'rx':str(ring['rx']), 'ry':str(ring['ry']), 'fill':ring['fill'], 'stroke':marker['colors'][str(piece['owner'])], 'stroke-width':str(ring['strokeWidth'])}))
-                    master_piece('swordsman', [piece['x'] + 16, piece['y'] + 31], [641, 965], human_height / 632)
+                    master_piece('swordsman', [piece['x'] + 16, piece['y'] + 31], [641, 965], human_height / 632, mirrored=bool(stage and piece['owner']==2))
                 continue
             if keep_width and (piece['x'], piece['y']) == (64, 256):
                 master_piece('swordsman', [80, 287], [641, 965], human_height / 632)
@@ -171,7 +177,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
             'waterAreaCalibration': str(water_area) if water_area and 'area-water' in name else None,
             'selectionStudy': {'enabled': selected, 'unitPositions': ('six validated staged cells, deliberately not initial deployment; shared swordsman identity with team rings' if stage else 'first five actual party deployments; all deliberately represented by one swordsman identity') if selected else 'actual original identities except selected Torren', 'forestPositions': 'five actual canopy placement points represented by the same pine' if selected else 'one pine substitution', 'omitted': 'all legacy ground decals, foundation props, forest-floor blend underlays and settlement road-threshold underlays; other standing scenery, other buildings, remaining units and foreground; tactical terrain surfaces/transitions/routes/water and data unchanged' if selected else 'none beyond stated effects'},
             'provenance': 'Only listed master substitutions and explicitly named connector/water layers use new calibration; other pixels remain current branch mixed legacy/previous remake',
-            'limitations': (['STAGED six-unit encounter, not original deployment or observed gameplay', 'Shared swordsman identity and same facing for both teams', 'Runtime contact ellipse and team rings restored; no dynamic lighting, animation or combat UI', 'Selected scenery omissions remain explicit'] if stage else data['presentationSubstitutions']), 'acceptance': 'pending-user-style-review'})
+            'limitations': (['STAGED six-unit encounter, not original deployment or observed gameplay', 'Shared swordsman identity; right team mirrored using existing cell-center horizontal facing transform', 'Runtime contact ellipse and team rings restored; no dynamic lighting, animation or combat UI', 'Selected scenery omissions remain explicit'] if stage else data['presentationSubstitutions']), 'acceptance': 'pending-user-style-review'})
     (output / 'registration-and-provenance.json').write_text(json.dumps(reports, indent=2) + '\n')
     return reports
 

@@ -17,7 +17,8 @@
       "elevation": 0,
       "canReceiveFoot": true,
       "occupant": null,
-      "structure": null
+      "structure": null,
+      "presentationFacing": "source-right"
     },
     {
       "x": 9,
@@ -27,7 +28,8 @@
       "elevation": 0,
       "canReceiveFoot": true,
       "occupant": null,
-      "structure": null
+      "structure": null,
+      "presentationFacing": "source-right"
     },
     {
       "x": 8,
@@ -37,7 +39,8 @@
       "elevation": 0,
       "canReceiveFoot": true,
       "occupant": null,
-      "structure": null
+      "structure": null,
+      "presentationFacing": "source-right"
     },
     {
       "x": 13,
@@ -47,7 +50,8 @@
       "elevation": 0,
       "canReceiveFoot": true,
       "occupant": null,
-      "structure": null
+      "structure": null,
+      "presentationFacing": "left-mirrored"
     },
     {
       "x": 12,
@@ -57,7 +61,8 @@
       "elevation": 0,
       "canReceiveFoot": true,
       "occupant": null,
-      "structure": null
+      "structure": null,
+      "presentationFacing": "left-mirrored"
     },
     {
       "x": 13,
@@ -67,12 +72,13 @@
       "elevation": 0,
       "canReceiveFoot": true,
       "occupant": null,
-      "structure": null
+      "structure": null,
+      "presentationFacing": "left-mirrored"
     }
   ],
   "actualStateSha256": "a75c3ee8d53e4aec28a180a9c1f35c8179d91b2dc914a72e72483fb2633c8fc9",
   "stateUnchanged": true,
-  "identitySubstitution": "All six actors deliberately use the existing calibration swordsman; owner indicated by blue/red rings; same pose/facing",
+  "identitySubstitution": "All six actors use the same existing swordsman source; owner shown by blue/red rings; right team horizontally mirrored around standing cell center using the existing renderer facing transform",
   "markerContract": {
     "contact": {
       "cx": 16,
@@ -99,5 +105,11 @@
     "Selected scenery omissions remain; no added tree/building locations",
     "No actual combat simulation, turn progression or unit stats are represented",
     "All actual bridge rows remain present where they intersect the camera"
-  ]
+  ],
+  "facingContract": {
+    "source": "packages/game-ui/src/styles/app.css:549",
+    "localTransform": "translate(32px,0) scale(-1,1)",
+    "worldEquivalent": "translate(2*(cellX*32+16),0) scale(-1,1)",
+    "sourcePixelsChanged": false
+  }
 }
