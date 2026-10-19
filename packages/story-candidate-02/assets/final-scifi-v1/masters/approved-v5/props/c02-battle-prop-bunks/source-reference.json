@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-bunks",
+  "assetId": "C02-SFV1-battle-prop-bunks",
+  "label": "床铺生活组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Verified directly against original full props-board-03 top-row visual identities and original topic-catalog positions16-19; row-major4x2 mapping. No sorted final manifest inference.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-bunks.png",
+  "runtimeReferenceSha256": "d4cddfd96a330517c0f1353c54596d412040acda487b065cbbdb5b02631be342",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

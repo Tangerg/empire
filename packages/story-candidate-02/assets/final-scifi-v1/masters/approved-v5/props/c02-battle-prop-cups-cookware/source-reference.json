@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-cups-cookware",
+  "assetId": "C02-SFV1-battle-prop-cups-cookware",
+  "label": "金属杯炊具生活组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceCropBox": [
+    5,
+    5,
+    309,
+    622
+  ],
+  "sourceMappingEvidence": "Verified directly against original full props-board-03 top-row visual identities and original topic-catalog positions16-19; row-major4x2 mapping. No sorted final manifest inference.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-cups-cookware.png",
+  "runtimeReferenceSha256": "8332dfecd4f884792228f390198cf9ae6ab46a116732a49498d21ab4354b5aa2",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

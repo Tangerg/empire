@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-bunks",
+  "assetId": "C02-SFV1-battle-prop-bunks",
+  "label": "床铺生活组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Verified directly against original full props-board-03 top-row visual identities and original topic-catalog positions16-19; row-major4x2 mapping. No sorted final manifest inference.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-bunks.png",
+  "runtimeReferenceSha256": "d4cddfd96a330517c0f1353c54596d412040acda487b065cbbdb5b02631be342",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1e190490-8e74-4abb-9dab-ccb71875e2fb.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 r1c2 identity preserved: one two-level industrial bunk with tan sleeping surfaces, right ladder and bounded cyan cylinder, one teal bedroll with tan pillow, one small crate with hanging tan towel. Broad matte planes and exact major component count remain legible at actual64.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

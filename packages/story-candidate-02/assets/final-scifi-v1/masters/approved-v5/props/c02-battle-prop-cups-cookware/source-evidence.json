@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-cups-cookware",
+  "assetId": "C02-SFV1-battle-prop-cups-cookware",
+  "label": "金属杯炊具生活组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceCropBox": [
+    5,
+    5,
+    309,
+    622
+  ],
+  "sourceMappingEvidence": "Verified directly against original full props-board-03 top-row visual identities and original topic-catalog positions16-19; row-major4x2 mapping. No sorted final manifest inference.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-cups-cookware.png",
+  "runtimeReferenceSha256": "8332dfecd4f884792228f390198cf9ae6ab46a116732a49498d21ab4354b5aa2",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ea3a37ef-3eb6-40c2-939d-7bc130c2c9d8.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 r1c1 five-object identity preserved: tall handleless cup with cyan insert, round lidded pot with amber knob, skillet with right amber handle, one ladle inside the skillet, small separate bowl. Broad matte planes and native64 white/black review pass. Supplemental morphology low-alpha pixels occur near narrow handles/gaps and do not indicate an opaque-body failure.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
