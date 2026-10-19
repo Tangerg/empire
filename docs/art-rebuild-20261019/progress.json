@@ -4524,7 +4524,12 @@
         "alphaVisualReview": "needs imagegen revision: visible broad purple halo, raw only"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "0162cc4f13e01d817f31d8a067d24825e607ad95d6d4da8561b734cb6f7033df"
+      "sourceSha256": "0162cc4f13e01d817f31d8a067d24825e607ad95d6d4da8561b734cb6f7033df",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-spore-sacs/revision-2/master.png",
+        "sha256": "2c0aa3abdd949a8490801ec1c42f267a72151f6500a7c322fbfc2dcc081010b5",
+        "status": "semantic-and-halo-review-pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-stretcher-medkits",
@@ -6844,10 +6849,14 @@
     },
     {
       "topicId": "c03-battle-prop-1f1ab459",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-1f1ab459/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "0b6a3156dd5efdab654a131bf363fcd78ad25364b23ee27da67448612e22ea5c"
     },
     {
       "topicId": "c03-battle-prop-27872fa1",
@@ -6978,10 +6987,14 @@
     },
     {
       "topicId": "c03-battle-prop-7a878eb8",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-7a878eb8/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "ee729bde2b49d7c1a926527bc3cfaffa99e0dad1eb917e827b5b87bbe19da062"
     },
     {
       "topicId": "c03-battle-prop-7d42603a",
@@ -8765,6 +8778,11 @@
       "verification": {
         "state": "needs-framing-revision",
         "note": "contactrequires19HD beyondsafeoffset10; do notcropcanvas or expandbound"
+      },
+      "revisionCandidate": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-large/revisions/master-v3.png",
+        "sha256": "34a48295f49a1c1a078b69a1220e4f77468f4c5a27c36df5b4001d0ecc1124af",
+        "status": "framing-review-pending"
       }
     },
     {
@@ -8802,6 +8820,11 @@
       "verification": {
         "state": "pending",
         "note": "Raw backed up; placement and deterministic output checks pending"
+      },
+      "revisionCandidate": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/forest-floor-cluster/revisions/master-v2.png",
+        "sha256": "eddca15fb12ab472d9c4d23779c327e43c06bf749ea48768afc15c9ddb33d9f8",
+        "status": "framing-review-pending"
       }
     }
   ],

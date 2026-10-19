@@ -1,0 +1,40 @@
+{
+  "topicId": "c03-battle-prop-7a878eb8",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-7a878eb8.png",
+  "label": "Fire-oil jars",
+  "observed_original": "Unrelated clipped atlas fragments.",
+  "reconstructed_identity": true,
+  "uncertainty": "Reconstructed semantic object from manifest label and inspected complete props board, exact historical crop mapping unverified.",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 771729,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      9,
+      1240,
+      1254
+    ],
+    "128": [
+      120,
+      119,
+      1158,
+      1140
+    ],
+    "240": [
+      120,
+      119,
+      1158,
+      1139
+    ]
+  },
+  "visual_review": "Three ceramic jars, two upright and one tipped, bounded oil spill. Physically readable. White ceramic specular spots and oil reflections exceed matte target; flagged for reviewer."
+}
