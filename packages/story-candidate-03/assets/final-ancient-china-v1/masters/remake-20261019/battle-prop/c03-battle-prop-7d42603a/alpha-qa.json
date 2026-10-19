@@ -1,0 +1,40 @@
+{
+  "topicId": "c03-battle-prop-7d42603a",
+  "status": "newmaster-pending-review",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-7d42603a.png",
+  "label": "Shipwreck name tags",
+  "observed_original": "Unrelated clipped atlas fragments, ship input includes boat-banner fragment not valid name-tag identity.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed semantic reconstruction from manifest label, ART-DIRECTION semantic priority and board vocabulary. Exact historical crop mapping and tax-set appearance unknown.",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 926776,
+  "threshold_bboxes": {
+    "1": [
+      51,
+      29,
+      1214,
+      1254
+    ],
+    "128": [
+      215,
+      101,
+      1188,
+      1195
+    ],
+    "240": [
+      216,
+      102,
+      1187,
+      1194
+    ]
+  },
+  "visual_review": "Two weathered tied tablets. WARNING: generated incision marks include intersecting three-horizontal/one-vertical shapes that can read as 王; requested no readable writing, needs review/revision."
+}
