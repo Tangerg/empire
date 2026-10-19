@@ -1,0 +1,1 @@
+Rejected native portrait: identity and original book/wrench correct, but visible diffuse brown alpha halo surrounds body on black proof. Raw source retained byte-identical. Correction is imagegen-only; no alpha cleanup.

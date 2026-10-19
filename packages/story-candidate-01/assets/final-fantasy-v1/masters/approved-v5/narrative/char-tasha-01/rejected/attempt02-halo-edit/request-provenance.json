@@ -1,0 +1,17 @@
+{
+  "generationTool": "built-in image_gen",
+  "exactRequest": {
+    "prompt": "Use case: background-extraction.\nAsset type: clean native transparent full-body named Tasha narrative portrait for C01-CHAR-TASHA-01.\nImage1 is the exact edit target, a completed1024\u00d71536 Tasha portrait with an unwanted translucent brown/dark glow around the outside of her silhouette. Make ONE targeted correction: REMOVE ALL of that outer brown/dark aura, soft halo, haze and floor/contact shadow to make every exterior/background pixel genuinely alpha0 transparent, including the gap between the legs and outside the hair bun, coat, bag, wrench and boots. Keep natural antialiased character contours, but do not leave diffuse semitransparent haze several pixels outside them. The final background must be entirely transparent, not black or white.\nPRESERVE everything else: identical face/expression/eyes, brown bun, rust quilted coat, charcoal scarf, leather crossbody satchel, belt buckle, keys, tags, hand-held leather ledger at image-left and single hand-held open-ended wrench at image-right, hands, legs, boots, pose, contour style, broad matte color planes. Do not add battle hammer. Keep exactly the same full1024\u00d71536 native canvas, unchanged camera and character size/position; no crop, alpha trim or rescale. Exactly one full-body character, full hair/tool/feet remain inside canvas. No new glow, background, floor, shadow, frame, words or watermark. Return native genuine RGBA transparency.",
+    "referenced_image_paths": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/rejected/attempt01-halo/master.png"
+    ],
+    "transparent_background": true
+  },
+  "exactPromptMatch": true,
+  "referenceSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-tasha-01/rejected/attempt01-halo/master.png": "2c958dbeec97ddbc22af927594b2de6e640eae2615f2c8f459d3c59d52412cbc"
+  },
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0846de84-b4eb-47fe-a8af-fcb0c4b1d09f.png",
+  "nativeSha256": "83ffad3b26fcb3e507210840c7970583d0473de7adcbea7436ba89050689ffa9",
+  "postprocessing": "none; raw/master are byte-identical native files"
+}

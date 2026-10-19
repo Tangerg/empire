@@ -2,16 +2,19 @@
   "tool": "image_gen__imagegen",
   "exactRequestFile": "request.json",
   "exactPromptFile": "prompt.txt",
-  "promptSha256": "0bf93e1c0d2e90b2b137c3a4801b476f40dbfdec94a913bea9f5a465a3e5c71e",
+  "promptSha256": "29da7861631084ed1aac5edc87e2b25d831de8800e90917ded67d6509e5a09b2",
   "referenceImages": [
     {
-      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
-      "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341"
-    },
-    {
-      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/attempt-01/master.png",
-      "sha256": "9376f7d9640284edc2af59605b5866072b7b6e0c342a828097f03da7718ea8ab"
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/attempt-02/master.png",
+      "sha256": "627d95f44797c4b554f1b4cf5ff4a71e3b75f27309d7c54fffb4b08f726c41f4"
     }
   ],
-  "transparent_background": true
+  "transparent_background": true,
+  "exactPromptMatch": true,
+  "exactRequestSent": true,
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cc3a50fa-2e2a-40b2-a2e4-2cf35f5fa18d.png",
+  "nativeSha256": "c4b220a4544d74a91bb5addc33e7f78fc4bfd22b3a0b68b3a213238cc06ad972",
+  "rawEqualsMaster": true,
+  "rawEqualsNative": true,
+  "referencesVerified": true
 }

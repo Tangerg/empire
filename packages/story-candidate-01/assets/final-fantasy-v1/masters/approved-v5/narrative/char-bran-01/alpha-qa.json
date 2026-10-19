@@ -1,0 +1,116 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-efe6a320-facd-49fa-9777-ca536001fe0b.png",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "sha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+  "bboxAlphaNonzero": [
+    0,
+    35,
+    1018,
+    1536
+  ],
+  "bboxAlphaGreaterThan127": [
+    86,
+    86,
+    992,
+    1456
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 772783,
+  "alphaOnePixels": 9116,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "status": "All four battle poses and independent original-equipment transparent portrait accepted by coordinator; source delivery complete; formal export and binding coordinator-owned",
+  "semanticReview": "Original young clean-shaven Bran, brown tousled fringe, olive village-hunter hood/cowl/cape, gray-brown tunic, bare hands/wraps, source tools/rope/quiver. Original right/image-left hand holds netted pale provisions; left/image-right hand grips wood bow with proper string. No battle long sheath, no generic metal/blue ranger kit, no crossbow.",
+  "compositionReview": "Independent1024×1536full native portrait. Significant silhouette bound[86,86,992,1456], complete bow/net/boots. Full authored canvas uniformly composed into192×224 and92×112; no trim.",
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        569,
+        1292,
+        576,
+        1299
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "inside-upper-bow",
+      "rectangle": [
+        893,
+        688,
+        900,
+        695
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-provision-hand",
+      "rectangle": [
+        247,
+        1032,
+        254,
+        1039
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "clear-margin-above-hood",
+      "rectangle": [
+        400,
+        42,
+        407,
+        49
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "hiddenRGBCheck": "Native viewer may show colored RGB in alpha0 pixels. Direct pixel probes and proper black/white alpha composites verify these are invisible, not a rendered halo.",
+  "rawEqualsMaster": true,
+  "rawEqualsNative": true,
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    }
+  },
+  "blackAndWhiteCompositesVisuallyInspected": true,
+  "coordinatorAcceptance": {
+    "time": "2026-10-19 23:00UTC",
+    "review": "Coordinator viewed actual native2x quartet and full white portrait; young olive identity, correct bow attack, opposite contacts pass; source accepted for integration.",
+    "registrationLimit": 4
+  }
+}

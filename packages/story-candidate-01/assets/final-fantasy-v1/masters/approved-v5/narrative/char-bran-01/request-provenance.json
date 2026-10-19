@@ -1,0 +1,24 @@
+{
+  "tool": "image_gen__imagegen",
+  "exactRequestFile": "request.json",
+  "exactPromptFile": "prompt.txt",
+  "promptSha256": "56d53b16894d6664f910960dcb819afc957e7ed0ed0a74f62d65620d73928bbf",
+  "referenceImages": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01-cell.png",
+      "sha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+      "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341"
+    }
+  ],
+  "transparent_background": true,
+  "exactPromptMatch": true,
+  "exactRequestSent": true,
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-efe6a320-facd-49fa-9777-ca536001fe0b.png",
+  "nativeSha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+  "rawEqualsMaster": true,
+  "rawEqualsNative": true,
+  "referencesVerified": true
+}

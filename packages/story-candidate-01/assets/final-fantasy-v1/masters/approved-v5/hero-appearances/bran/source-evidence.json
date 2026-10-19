@@ -132,7 +132,7 @@
     "Portrait source carries netted provisions in right/image-left hand; battle keeps this netted field bag stowed at belt to free draw hand. Portrait retains original carrying pose.",
     "Four-frame existing contract has one attack slot. Primary bow shot serves that slot; melee actions still share it. No dispatch or rules change."
   ],
-  "status": "First named Bran stage01 battle idle candidate measured; review pending",
+  "status": "All four battle poses and independent original-equipment transparent portrait accepted by coordinator; source delivery complete; formal export and binding coordinator-owned",
   "idleCandidate": {
     "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
     "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/raw.png",
@@ -148,5 +148,36 @@
     ],
     "review": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle-review.json",
     "comparison": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/native-scale-comparison.png"
-  }
+  },
+  "coordinatorAcceptance": {
+    "time": "2026-10-19 23:00UTC",
+    "review": "Coordinator viewed actual native2x quartet and full white portrait; young olive identity, correct bow attack, opposite contacts pass; source accepted for integration.",
+    "registrationLimit": 4
+  },
+  "textSourceHashes": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/units.ts",
+      "sha256": "5aec43c370aebde9587f6ef7ea564215806df9ce60a76939528e968a069ba36c"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/weapons.ts",
+      "sha256": "0c6136b2a46146e05c1ee2de109b656edd5fc597c4b59908951a28e4d4f668ef"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "sha256": "0bda224f2979eacfa0681b4188413b19de41ad04bf75566146b69aff4af5e193"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-story.ts",
+      "sha256": "f35bc9c0da43f598834af29a26e08eb43e5d4d46467914c5774e1ea579768068"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/story-candidates/candidate-01/README.md",
+      "sha256": "053923dda6e0d8c18419aa637021b5cf5f0f3ede60c1fd08622b801e8af54f42"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "sha256": "f58d80c8b17003ae22029c8058d4ee53650349568b9e9335ff695d94dfaa4587"
+    }
+  ]
 }

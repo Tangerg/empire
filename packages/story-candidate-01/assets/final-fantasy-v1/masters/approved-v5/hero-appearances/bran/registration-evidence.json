@@ -1,0 +1,336 @@
+{
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonNativeCanvas": [
+    1586,
+    992
+  ],
+  "actualNativeSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonScaleRatio": "44/958",
+  "commonScale": 0.04592901878914405,
+  "referenceSourceFoot": [
+    758,
+    982
+  ],
+  "sourceFeet": [
+    [
+      758,
+      982
+    ],
+    [
+      780,
+      979
+    ],
+    [
+      737,
+      972
+    ],
+    [
+      828,
+      982
+    ]
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "origin": [
+    8,
+    4
+  ],
+  "suggestedRegistrationLimit": 4,
+  "maximumMeasuredLogicalOffset": 3.2150313152400836,
+  "maximumTransparentCanvasPadding": {
+    "right": 1,
+    "bottom": 0
+  },
+  "frameAnchor": [
+    42.81419624217119,
+    49.102296450939455
+  ],
+  "method": "Native master bytes unchanged. Explicit one-column transparent right padding for walk-b only at export makes common1586\u00d7992. One uniform44/958 scale and per-pose whole-canvas translation from measured source feet. No alpha trim, silhouette fitting, per-pose scale or equipment transforms. Footx mean bottom-four-row boot centers; footy lowest sole.",
+  "poses": [
+    {
+      "pose": "idle",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5b5fa264-e761-479c-87e7-fba6435977c6.png",
+      "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/alpha-qa.json",
+      "sourceFoot": [
+        758,
+        982
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            475,
+            850,
+            720,
+            990
+          ],
+          "soleCenterXBottomFourRows": 560.8969072164948,
+          "soleY": 966
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            820,
+            850,
+            1050,
+            990
+          ],
+          "soleCenterXBottomFourRows": 954.8571428571429,
+          "soleY": 982
+        }
+      ],
+      "logicalRegistrationOffset": [
+        0.0,
+        0.0
+      ],
+      "wholeCanvasOutputBounds": [
+        8.0,
+        4.0,
+        80.84342379958247,
+        49.561586638830896
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "rawEqualsNative": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Young source olive-hooded village hunter stands ready with original wood bow, relaxed free right hand, source netted bag stowed for battle, secondary border sword sheathed."
+    },
+    {
+      "pose": "walk-a",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-313c3d75-1b58-4f50-bc3c-5dd987c93200.png",
+      "sha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/alpha-qa.json",
+      "sourceFoot": [
+        780,
+        979
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            565,
+            825,
+            740,
+            960
+          ],
+          "soleCenterXBottomFourRows": 683.6525821596244,
+          "soleY": 942
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            845,
+            825,
+            1050,
+            990
+          ],
+          "soleCenterXBottomFourRows": 876.7083333333334,
+          "soleY": 979
+        }
+      ],
+      "logicalRegistrationOffset": [
+        -1.010438413361169,
+        0.13778705636743216
+      ],
+      "wholeCanvasOutputBounds": [
+        6.989561586638831,
+        4.137787056367432,
+        79.8329853862213,
+        49.699373695198325
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "rawEqualsNative": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Actual generated bow-side left leg is forward with raised toe/heel-leading large boot at lower-right; sword/net-side right leg trails toward lower-left. Initial prompt named near leg but the delivered actual contact is explicitly recorded."
+    },
+    {
+      "pose": "attack",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-318cbcf0-1a89-4821-bd75-62748aab5d33.png",
+      "sha256": "bb72afbc0909dd0a2e783d4a598f94dae6d6602241a8b1c5ddebe7cef611f0c0",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack/alpha-qa.json",
+      "sourceFoot": [
+        737,
+        972
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            385,
+            850,
+            615,
+            985
+          ],
+          "soleCenterXBottomFourRows": 470.5265151515151,
+          "soleY": 959
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            870,
+            850,
+            1100,
+            985
+          ],
+          "soleCenterXBottomFourRows": 1002.6449275362319,
+          "soleY": 972
+        }
+      ],
+      "logicalRegistrationOffset": [
+        0.9645093945720251,
+        0.4592901878914405
+      ],
+      "wholeCanvasOutputBounds": [
+        8.964509394572024,
+        4.45929018789144,
+        81.80793319415449,
+        50.020876826722336
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "rawEqualsNative": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "One straight arrow aimed screen-right, nock and string at right-hand cheek anchor, left bare hand grips original short wood bow, exactly two limbs and one taut V string. Grounded knees, one bow shot in existing shared attack slot, net bag and border sword remain stowed."
+    },
+    {
+      "pose": "walk-b",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cc3a50fa-2e2a-40b2-a2e4-2cf35f5fa18d.png",
+      "sha256": "c4b220a4544d74a91bb5addc33e7f78fc4bfd22b3a0b68b3a213238cc06ad972",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/alpha-qa.json",
+      "sourceFoot": [
+        828,
+        982
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            660,
+            885,
+            915,
+            990
+          ],
+          "soleCenterXBottomFourRows": 813.5678571428572,
+          "soleY": 982
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            830,
+            805,
+            965,
+            890
+          ],
+          "soleCenterXBottomFourRows": 842.5686274509804,
+          "soleY": 889
+        }
+      ],
+      "logicalRegistrationOffset": [
+        -3.2150313152400836,
+        0.0
+      ],
+      "wholeCanvasOutputBounds": [
+        4.784968684759916,
+        4.0,
+        77.62839248434238,
+        49.561586638830896
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        1,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "rawEqualsNative": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Corrected opposite contact: sword/net-side near right thigh overlaps front, its broad boot contacts lower/front-left; bow-side far left leg trails behind at upper-right. No horizontal mirror and all asymmetric kit stays in original position. Two rejected attempts are preserved."
+    }
+  ],
+  "coordinatorAcceptedRegistrationLimit": 4
+}

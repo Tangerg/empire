@@ -1,0 +1,200 @@
+{
+  "status": "All four battle poses and independent original-equipment transparent portrait accepted by coordinator; source delivery complete; formal export and binding coordinator-owned",
+  "acceptedAssets": 5,
+  "nativeGenerationsRetained": 7,
+  "allRawMasterNativeMatch": true,
+  "allExactPromptsMatch": true,
+  "allReferenceHashesMatch": true,
+  "allAcceptedStrictAlphaGatePass": true,
+  "commonScaleRatio": "44/958",
+  "registrationLimit": 4,
+  "maximumMeasuredLogicalOffset": 3.2150313152400836,
+  "noRepositoryOrGitEdits": true,
+  "sourceMastersNeverPostprocessed": true,
+  "checks": [
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle",
+      "accepted": true,
+      "rawMasterNativeMatch": true,
+      "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01-cell.png",
+          "expectedSha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd",
+          "actualSha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd",
+          "match": true
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png",
+          "expectedSha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+          "actualSha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+          "match": true
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/master.png",
+          "expectedSha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+          "actualSha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 1,
+      "strictAlphaGatePass": true
+    },
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a",
+      "accepted": true,
+      "rawMasterNativeMatch": true,
+      "sha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+          "expectedSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "actualSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 0,
+      "strictAlphaGatePass": true
+    },
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/attack",
+      "accepted": true,
+      "rawMasterNativeMatch": true,
+      "sha256": "bb72afbc0909dd0a2e783d4a598f94dae6d6602241a8b1c5ddebe7cef611f0c0",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+          "expectedSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "actualSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 0,
+      "strictAlphaGatePass": true
+    },
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b",
+      "accepted": true,
+      "rawMasterNativeMatch": true,
+      "sha256": "c4b220a4544d74a91bb5addc33e7f78fc4bfd22b3a0b68b3a213238cc06ad972",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/attempt-02/master.png",
+          "expectedSha256": "627d95f44797c4b554f1b4cf5ff4a71e3b75f27309d7c54fffb4b08f726c41f4",
+          "actualSha256": "627d95f44797c4b554f1b4cf5ff4a71e3b75f27309d7c54fffb4b08f726c41f4",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "perimeterMaxAlpha": 1,
+      "strictAlphaGatePass": true
+    },
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/attempt-01",
+      "accepted": false,
+      "rawMasterNativeMatch": true,
+      "sha256": "9376f7d9640284edc2af59605b5866072b7b6e0c342a828097f03da7718ea8ab",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+          "expectedSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "actualSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "match": true
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/master.png",
+          "expectedSha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+          "actualSha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 1,
+      "strictAlphaGatePass": true
+    },
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/attempt-02",
+      "accepted": false,
+      "rawMasterNativeMatch": true,
+      "sha256": "627d95f44797c4b554f1b4cf5ff4a71e3b75f27309d7c54fffb4b08f726c41f4",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+          "expectedSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "actualSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "match": true
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-b/attempt-01/master.png",
+          "expectedSha256": "9376f7d9640284edc2af59605b5866072b7b6e0c342a828097f03da7718ea8ab",
+          "actualSha256": "9376f7d9640284edc2af59605b5866072b7b6e0c342a828097f03da7718ea8ab",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 2,
+      "strictAlphaGatePass": false
+    },
+    {
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01",
+      "accepted": true,
+      "rawMasterNativeMatch": true,
+      "sha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+      "sha256MatchesQA": true,
+      "exactPromptMatch": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01-cell.png",
+          "expectedSha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd",
+          "actualSha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd",
+          "match": true
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+          "expectedSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "actualSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+          "match": true
+        }
+      ],
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "perimeterMaxAlpha": 1,
+      "strictAlphaGatePass": true
+    }
+  ]
+}

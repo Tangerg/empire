@@ -1,0 +1,66 @@
+{
+  "artifactKind": "named-character-transparent-narrative-master",
+  "unitType": "c01.bran",
+  "cardTopicId": "C01-CHAR-BRAN-01",
+  "status": "All four battle poses and independent original-equipment transparent portrait accepted by coordinator; source delivery complete; formal export and binding coordinator-owned",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01/master.png",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+  "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-efe6a320-facd-49fa-9777-ca536001fe0b.png",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01/prompt.txt",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01/request.json",
+  "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01/request-provenance.json",
+  "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-bran-01/alpha-qa.json",
+  "sourcePostprocessing": "none",
+  "nativeAttemptCount": 1,
+  "supersededAttempts": [],
+  "identitySources": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01-cell.png": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341"
+  },
+  "battleSourceEvidence": "../../hero-appearances/bran/source-evidence.json",
+  "battleQuartetManifest": "../../hero-appearances/bran/bundle-manifest.json",
+  "originalNamedIdentity": "Original board02 top-left crop[0,0,627,627], canonical C01-CHAR-BRAN-01 village hunter. Exact numeric age unspecified; original boyish clean-shaven identity preserved.",
+  "equipmentContract": "Original narrative hand-carried netted provisions and simple wood bow/field tools. Battle independently stows bag and adds actual secondary sheathed border sword; active rules unchanged. Older short-crossbow text conflict documented in battle source review, no crossbow substituted.",
+  "cardCompositionContract": "Entire1024×1536native transparent canvas uniformly placed into192×224 and92×112; no alpha trimming or per-element fit. Background independent and coordinator-owned.",
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    }
+  },
+  "coordinatorAcceptance": {
+    "time": "2026-10-19 23:00UTC",
+    "review": "Coordinator viewed actual native2x quartet and full white portrait; young olive identity, correct bow attack, opposite contacts pass; source accepted for integration.",
+    "registrationLimit": 4
+  }
+}
