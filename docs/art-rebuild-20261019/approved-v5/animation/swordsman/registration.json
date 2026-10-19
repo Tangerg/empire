@@ -1,0 +1,40 @@
+{
+  "frames": {
+    "idle": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "walk-a": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-a/master.png",
+    "attack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/attack/master.png",
+    "walk-b": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-b/master.png"
+  },
+  "scale": 0.05555555555555555,
+  "origin": [
+    4,
+    4
+  ],
+  "frameSize": [
+    96,
+    64
+  ],
+  "sourceFoot": [
+    800,
+    887
+  ],
+  "registrationOffsets": {
+    "idle": [
+      0,
+      0
+    ],
+    "walk-a": [
+      0,
+      -1.2222222222222223
+    ],
+    "attack": [
+      0,
+      -0.1111111111111111
+    ],
+    "walk-b": [
+      0,
+      -0.9444444444444444
+    ]
+  },
+  "registrationBasis": "Visible planted sole 887/909/889/904 source y; same source pixel scale, bounded translation only. No per-pose fitting or scaling."
+}

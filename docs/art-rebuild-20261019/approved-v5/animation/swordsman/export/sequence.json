@@ -1,0 +1,256 @@
+{
+  "config": {
+    "frames": {
+      "idle": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+      "walk-a": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-a/master.png",
+      "attack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/attack/master.png",
+      "walk-b": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-b/master.png"
+    },
+    "scale": 0.05555555555555555,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      96,
+      64
+    ],
+    "sourceFoot": [
+      800,
+      887
+    ],
+    "registrationOffsets": {
+      "idle": [
+        0,
+        0
+      ],
+      "walk-a": [
+        0,
+        -1.2222222222222223
+      ],
+      "attack": [
+        0,
+        -0.1111111111111111
+      ],
+      "walk-b": [
+        0,
+        -0.9444444444444444
+      ]
+    },
+    "registrationBasis": "Visible planted sole 887/909/889/904 source y; same source pixel scale, bounded translation only. No per-pose fitting or scaling."
+  },
+  "authoredCanvas": [
+    1585,
+    992
+  ],
+  "logicalPivot": [
+    48.44444444444444,
+    53.27777777777778
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceSha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4527,
+        "nearOpaquePixels": 1421,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          10,
+          75,
+          54
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceSha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18286,
+        "nearOpaquePixels": 5813,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          19,
+          150,
+          107
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-a/master.png",
+      "registrationOffset": [
+        0,
+        -1.2222222222222223
+      ],
+      "sourceSha256": "56edfbbb7f6209e004f5adcd5b744756f625673543694fe343044cb2c5a1ca4c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4534,
+        "nearOpaquePixels": 1397,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          9,
+          77,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-a/master.png",
+      "registrationOffset": [
+        0,
+        -1.2222222222222223
+      ],
+      "sourceSha256": "56edfbbb7f6209e004f5adcd5b744756f625673543694fe343044cb2c5a1ca4c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18330,
+        "nearOpaquePixels": 5742,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          17,
+          153,
+          107
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/attack/master.png",
+      "registrationOffset": [
+        0,
+        -0.1111111111111111
+      ],
+      "sourceSha256": "53a0961d950a3d47fbc65aa4749a2b579a01869881734ff907a5aa0c63d6011e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4678,
+        "nearOpaquePixels": 1255,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          10,
+          86,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/attack/master.png",
+      "registrationOffset": [
+        0,
+        -0.1111111111111111
+      ],
+      "sourceSha256": "53a0961d950a3d47fbc65aa4749a2b579a01869881734ff907a5aa0c63d6011e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18932,
+        "nearOpaquePixels": 5151,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          19,
+          173,
+          107
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-b/master.png",
+      "registrationOffset": [
+        0,
+        -0.9444444444444444
+      ],
+      "sourceSha256": "f9b222576291ed5a2c5e65e3592892928c9fa0a1a62d315d64ec0346b0f9d9a8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4602,
+        "nearOpaquePixels": 1340,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          9,
+          74,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-b/master.png",
+      "registrationOffset": [
+        0,
+        -0.9444444444444444
+      ],
+      "sourceSha256": "f9b222576291ed5a2c5e65e3592892928c9fa0a1a62d315d64ec0346b0f9d9a8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18577,
+        "nearOpaquePixels": 5500,
+        "edgeMax": 0,
+        "visibleBounds": [
+          42,
+          17,
+          149,
+          107
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

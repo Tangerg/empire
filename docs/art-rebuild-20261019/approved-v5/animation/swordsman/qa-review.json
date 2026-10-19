@@ -1,0 +1,32 @@
+{
+  "status": "four semantic poses, native alpha and deterministic scene reviewed",
+  "poses": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonAuthoredCanvas": [
+    1585,
+    992
+  ],
+  "commonScale": 0.05555555555555555,
+  "logicalFrame": [
+    96,
+    64
+  ],
+  "pivot": [
+    48.44444444444444,
+    53.27777777777778
+  ],
+  "soleRegistration": "bounded translation, all planted soles at common y; no per-frame scale",
+  "semanticReview": "opposite planted boots, distinct forward thrust, consistent helmet/mustache/blue cloth/shield/broad sword",
+  "nativeReview": "white black olive 2x and staged scene inspected, no obvious halo or cut tips",
+  "limitations": [
+    "four-pose stylized motion, not smooth multi-frame animation",
+    "actual game binding/playback pending",
+    "attack silhouette expands rightward intentionally"
+  ],
+  "sourcePixelsModified": false,
+  "testsPassed": 81
+}

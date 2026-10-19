@@ -9,7 +9,7 @@
   "completeAnimationTopics": 0,
   "liveGameAcceptance": false,
   "sources": {
-    "swordsman": "single idle export and static scene checked",
+    "swordsman": "four-pose bundle exported with shared scale and registered sole; static frame and staged sequence QA passed; live binding pending",
     "red-swordsman": "single idle, minor authored geometry drift registered, static scene checked",
     "pine": "transparent source and static scene checked",
     "bridge": "transparent source and static scene checked",
@@ -24,5 +24,6 @@
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
-  }
+  },
+  "authoredFourPoseBundles": 1
 }
