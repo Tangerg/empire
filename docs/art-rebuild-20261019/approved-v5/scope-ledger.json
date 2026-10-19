@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 194,
+    "formalBound": 198,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 26,
-      "equipment": 55,
+      "equipment": 59,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 24
     },
-    "rawPreservedTopics": 199,
+    "rawPreservedTopics": 201,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -10671,13 +10671,21 @@
       "category": "equipment",
       "label": "接舷队主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-boarding-team/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-boarding-team.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and exact shield/device identity reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-third-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-defoliator-pilot",
@@ -10753,11 +10761,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-floating-city-guard/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-floating-city-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and exact shield/device identity reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-third-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-forest-beast-handler",
@@ -10847,11 +10861,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-hover-lancer/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-hover-lancer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and exact shield/device identity reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-third-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-ice-hook-hunter",
@@ -11157,13 +11177,21 @@
       "category": "equipment",
       "label": "环城轨卫主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-ring-rail-guard/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-ring-rail-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA master/prompt and original board matching preserved",
+        "export": "48px black/white readability and exact shield/device identity reviewed",
+        "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-third-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-sand-rider",
