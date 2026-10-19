@@ -1556,17 +1556,25 @@
     },
     {
       "topicId": "C01-BPROP-HAZARD-1",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-hazard-1/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "d065242cd19f4eaf3f118dd3a2fa06196b5f4eb1d3a9707e1714820fa51b60ea"
     },
     {
       "topicId": "C01-BPROP-HAZARD-2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-hazard-2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "39234bb1b9ae3fb50a830eedc7ab29645445a278ca6106885bc279b31f5ecbfa"
     },
     {
       "topicId": "C01-BPROP-HAZARD-3",
