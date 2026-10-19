@@ -1,0 +1,34 @@
+{
+  "asset": "mixed-forest-autumn",
+  "visual_inspection": "native output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad chunky cel planes with subdued olive/teal dominant foliage",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    640,
+    1090
+  ],
+  "source_foot_estimate_normalized": [
+    0.510367,
+    0.869219
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strong_alpha_margins_LTRB": [
+    164,
+    104,
+    132,
+    104
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/forest-temperate/mixed-forest-autumn.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-edge/mixed-forest-edge-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-autumn/prompt.txt",
+  "production_status": "not integrated"
+}

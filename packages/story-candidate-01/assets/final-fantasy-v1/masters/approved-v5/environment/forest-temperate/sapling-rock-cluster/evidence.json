@@ -1,0 +1,34 @@
+{
+  "asset": "sapling-rock-cluster",
+  "visual_inspection": "native output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad chunky cel planes with subdued olive/teal dominant foliage",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    650,
+    1060
+  ],
+  "source_foot_estimate_normalized": [
+    0.518341,
+    0.845295
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strong_alpha_margins_LTRB": [
+    196,
+    151,
+    171,
+    126
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/forest-temperate/sapling-rock-cluster.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/boulder-ferns-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/sapling-rock-cluster/prompt.txt",
+  "production_status": "not integrated"
+}

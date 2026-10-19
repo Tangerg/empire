@@ -1,0 +1,51 @@
+{
+  "asset": "mixed-forest-autumn",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-23836c35-0f1f-4201-9401-ae6b1872548c.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 990814,
+  "opaque_pixels": 1842,
+  "partial_alpha_pixels": 579860,
+  "near_opaque_alpha_250_255_pixels": 554127,
+  "nonzero_alpha_bbox": [
+    41,
+    37,
+    1216,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    164,
+    104,
+    1122,
+    1150
+  ],
+  "margin_pixels_LTRB": [
+    41,
+    37,
+    38,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    164,
+    104,
+    132,
+    104
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "sha256": "94f95dfa3d942daf5bf23b4b2febeb6d94a42afe9fac779b4a3dcce08beeb2a5",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration"
+}

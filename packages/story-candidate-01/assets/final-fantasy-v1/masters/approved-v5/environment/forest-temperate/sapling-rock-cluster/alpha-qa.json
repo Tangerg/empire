@@ -1,0 +1,51 @@
+{
+  "asset": "sapling-rock-cluster",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-40691db6-9682-4649-801c-b719a4327878.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1213834,
+  "opaque_pixels": 2089,
+  "partial_alpha_pixels": 356593,
+  "near_opaque_alpha_250_255_pixels": 323123,
+  "nonzero_alpha_bbox": [
+    47,
+    37,
+    1234,
+    1214
+  ],
+  "strong_alpha_bbox": [
+    196,
+    151,
+    1083,
+    1128
+  ],
+  "margin_pixels_LTRB": [
+    47,
+    37,
+    20,
+    40
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    196,
+    151,
+    171,
+    126
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "sha256": "eb49874200fc99bf6b54c3545fd8c712d1963bccc1bddb1f890c66a53a2f4987",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration"
+}

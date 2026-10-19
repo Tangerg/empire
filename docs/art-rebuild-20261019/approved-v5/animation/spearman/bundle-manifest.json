@@ -1,0 +1,144 @@
+{
+  "asset": "Gray Flag spearman, approved chunky style, four-pose native transparent masters",
+  "status": "Native quartet complete; parent review and runtime binding pending",
+  "generationTool": "built-in image_gen, recovered prior-worker outputs; no new generation needed",
+  "transparent_background": true,
+  "masterPolicy": "All masters and raw copies retain generated pixels byte-for-byte. No painting, recolor, resize, crop, background removal or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.0546583850931677,
+  "bodyReferenceHeightSourcePixels": 805,
+  "bodyReference": "Accepted idle main helmet dome top y130 to source-foot y935; top knob at y89 retained, excluded only from body-height measurement.",
+  "bodyTargetHeightPixels": 44,
+  "nativeCanvas": [
+    1586,
+    992
+  ],
+  "provenanceLimitation": "The recovered walk-a, attack and walk-b exact tool-call prompts are unverified. Each preserved prompt.txt is its intended pose brief, not claimed as an exact historical call transcript.",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/raw.png",
+      "intendedPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/prompt.txt",
+      "exactHistoricalCallPromptVerified": null,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        747,
+        935
+      ],
+      "bothBootSoleBandMidpoint": [
+        746.75,
+        935.0
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        69,
+        89,
+        1546,
+        938
+      ],
+      "sha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-78d77322-7a9e-4da1-b5fc-e651ec74f265.png",
+      "review": "Accepted idle preserved. Both boots planted, full spear held two-handed at waist, rounded knobbed kettle helmet, gray quilted armor, blue-gray skirt, dark oversized boots/gloves, no shield."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/raw.png",
+      "intendedPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/prompt.txt",
+      "exactHistoricalCallPromptVerified": false,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        737,
+        933
+      ],
+      "bothBootSoleBandMidpoint": [
+        736.82,
+        926.5
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        84,
+        82,
+        1534,
+        934
+      ],
+      "sha256": "897bbf978b59deecf0f878d80b97b6492001663bc0be274830c4863bcb8386e3",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-62ca2e24-de96-4623-b41a-0954451d1abb.png",
+      "review": "Front screen-right boot is tilted toe-up with low heel; rear screen-left boot is planted. This opposes walk-b contact states. Same full spear held two-handed at waist and same right-facing three-quarter identity."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/attack/raw.png",
+      "intendedPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/attack/prompt.txt",
+      "exactHistoricalCallPromptVerified": false,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        579,
+        906
+      ],
+      "bothBootSoleBandMidpoint": [
+        578.7,
+        905.5
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        45,
+        120,
+        1571,
+        907
+      ],
+      "sha256": "54acfce08c976e253b53bb2c65cbd8f33be8c3e9a39223eff994709e802c63a0",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-abee06e1-d7a3-4495-9181-b8eadbfa1b55.png",
+      "review": "Clear two-handed rightward spear thrust: front arm extended and rear hand drives the shaft; wide braced short-legged stance. Full spear, knobbed helmet and both boots visible. Whole character shifts left natively; registration must use foot evidence, retain torso lean and apply only common-scale full-canvas translation."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/raw.png",
+      "intendedPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/prompt.txt",
+      "exactHistoricalCallPromptVerified": false,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        777,
+        920
+      ],
+      "bothBootSoleBandMidpoint": [
+        776.85,
+        912.5
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        74,
+        84,
+        1549,
+        921
+      ],
+      "sha256": "10ccd717afa446fbed792565d8050732d82c7ccb9d2ec9928a3ede94049b422a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5701c8ba-bf1b-4804-a668-6aece370324d.png",
+      "review": "Front screen-right boot is planted flat; rear screen-left heel is lifted with bent short knee. This opposes walk-a contact states. Same full spear held two-handed at waist and same right-facing three-quarter identity."
+    }
+  }
+}
