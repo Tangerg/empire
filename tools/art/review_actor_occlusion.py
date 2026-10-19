@@ -17,6 +17,9 @@ def review(directory):
     provenance = json.loads((directory / 'runtime-scene-provenance.json').read_text())
     render = next(item for item in provenance['renders'] if item['filename'] == 'runtime-standing-full.svg')
     source = ET.parse(directory / render['filename']).getroot()
+    raster_size = tuple(int(float(source.get(axis))) for axis in ('width', 'height'))
+    if any(size <= 0 for size in raster_size):
+        raise ValueError('snapshot requires positive native display dimensions')
     world = source.find(f'{{{NS}}}g[@class="board-world"]')
     layer = world.find(f'{{{NS}}}g[@class="layer layer-units"]')
     drawings = list(layer)
@@ -70,9 +73,12 @@ def review(directory):
             flatten_viewports(svg, defs)
             input_path, output_path = temporary / f'{index}.svg', temporary / f'{index}.png'
             ET.ElementTree(svg).write(input_path, encoding='unicode')
-            subprocess.run(['inkscape', str(input_path), '--export-type=png', f'--export-filename={output_path}', '--export-width=852'],
+            subprocess.run(['inkscape', str(input_path), '--export-type=png', f'--export-filename={output_path}', f'--export-width={raster_size[0]}'],
                            env={**os.environ, 'INKSCAPE_PROFILE_DIR': str(temporary / 'profile')}, check=True, capture_output=True)
-            masks.append(np.asarray(Image.open(output_path).convert('RGBA').getchannel('A'), dtype=float) / 255)
+            with Image.open(output_path) as image:
+                if image.size != raster_size:
+                    raise ValueError(f'occlusion mask is not native display size: {image.size} != {raster_size}')
+                masks.append(np.asarray(image.convert('RGBA').getchannel('A'), dtype=float) / 255)
     actors = []
     for index, metadata in enumerate(order):
         if 'actorId' not in metadata:
@@ -90,7 +96,7 @@ def review(directory):
                        'occludedFraction': round(1 - float((silhouette * remaining).sum()) / area, 5),
                        'coveringObjects': covering})
     result = {'kind': 'offline 1x alpha-mask diagnostic of actual initial-pose scene drawings',
-              'levelId': provenance['levelId'], 'actorCount': len(actors), 'actors': actors,
+              'levelId': provenance['levelId'], 'rasterSize': raster_size, 'actorCount': len(actors), 'actors': actors,
               'method': 'Actor sprite only, excluding team rings/badges/contact shadows and root-scoped scene grading/glow. Alpha-weighted overlap with every later drawing, with actual source clipping and facing. Pairwise fractions overlap and must not be added. Entries below 0.1% are omitted; total includes them.',
               'limitations': ['Not browser/GPU pixel verification', 'Initial pose only; visibility changes during movement and animation',
                               'Masks count source alpha, including semitransparent sprite edge/shadow pixels; they are diagnostic, not a gameplay visibility rule']}
