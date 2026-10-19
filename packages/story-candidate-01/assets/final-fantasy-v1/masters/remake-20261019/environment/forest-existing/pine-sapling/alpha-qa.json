@@ -1,0 +1,65 @@
+{
+  "mode": "RGBA",
+  "size": [
+    1254,
+    1254
+  ],
+  "sha256": "62b60dbfbbd57a47cb231a8ec78bf2c8ab065eececc826a3e118b51c85aaf35f",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_bbox": [
+    49,
+    117,
+    967,
+    1158
+  ],
+  "visible_bbox_alpha_over_8": [
+    459,
+    516,
+    799,
+    1153
+  ],
+  "transparent_pixels": 1470084,
+  "opaque_pixels": 283,
+  "partial_alpha_pixels": 102149,
+  "boundary_max_alpha": 0,
+  "alpha_histogram_most_common": [
+    [
+      0,
+      1470084
+    ],
+    [
+      253,
+      34091
+    ],
+    [
+      252,
+      30838
+    ],
+    [
+      251,
+      7915
+    ],
+    [
+      1,
+      5279
+    ],
+    [
+      250,
+      3494
+    ],
+    [
+      249,
+      2118
+    ],
+    [
+      2,
+      1642
+    ]
+  ],
+  "tool": "built-in image_gen",
+  "raw_master_unchanged": true,
+  "acceptance": "Raw numeric alpha QA only; runtime sizing, anchor and compositing acceptance remains pipeline-owned. No pixels altered; threshold only used for measurement."
+}
