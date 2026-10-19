@@ -1,0 +1,42 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-cb3a979d-b585-4b39-96e5-cbfff03e7f11.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    119,
+    17,
+    1140,
+    1248
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    119,
+    17,
+    114,
+    6
+  ],
+  "nearOpaquePixelCountGE240": 738258,
+  "diagnostic8pxErosion": {
+    "minAlpha": 112,
+    "pixelsBelow240": 24,
+    "notAcceptanceGate": true
+  },
+  "actual64EdgeMaxAlpha": 0,
+  "actual64NearOpaquePixelsGE240": 1358,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain60x60 centered64x64 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-battle-prop-discarded-arms",
+  "sha256": "aa699f81e9d5870ddcbdd1cc9e88e719e0be6a90da7497859f71dd3d8b4fe415",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual64 white/black inspection: correct functional identity and main component count, thick outlines/broad cel planes, intact silhouette, no visible halo, haze, solid background or external glow. Narrow-gap antialiasing is not judged as solid-body opacity failure by supplemental morphology.",
+  "postprocessing": "Native master unchanged byte-exact copy. Diagnostic-only full-canvas64 exports and white/black composites are separate. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false
+}

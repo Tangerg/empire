@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-discarded-arms",
+  "assetId": "C02-SFV1-battle-prop-discarded-arms",
+  "label": "弃械战后组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 2
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-04 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-discarded-arms.png",
+  "runtimeReferenceSha256": "445f6c62dc40e7ad7f3d483c8e5eb1f51c1094b89d2054867855dfef0d0e72e7",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cb3a979d-b585-4b39-96e5-cbfff03e7f11.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 r2c1 preserved: seven separate long fictional weapons/tools in parallel rows, including cyan rifle, pale long rifle, blue heavy device with attached ivory head, amber compact weapon, thin rod, hook-ended rod and chunky barrel device. Three supporting objects remain: small rectangular module, closed crate and hollow helmet shell. Broad matte masses replace realistic microdamage; no exterior dust or gray haze. Native bottom margin6px is narrow but intact and actual64 retains padded full silhouettes.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-broken-rails",
+  "assetId": "C02-SFV1-battle-prop-broken-rails",
+  "label": "断轨战后组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-04 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-broken-rails.png",
+  "runtimeReferenceSha256": "a19d3036d668f6d7783ec2d965f90e0edbecb6d3265cc32259728cf4ecfc264d",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2c66e7e3-8acf-4d72-9a09-efaaad6a98e6.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 r2c2 preserved: one C-shaped raised blue/gray rail with two broken left ends, broad cracks, heavy fastening clamps, hanging and severed cables, separate chunky rubble. Open C interior and cable gaps stay transparent; source and actual64 black/white review passed without smoke/haze. Supplemental morphology low-alpha readings from thin cable gaps do not imply an opaque-body failure.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
