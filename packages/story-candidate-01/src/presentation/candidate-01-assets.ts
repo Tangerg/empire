@@ -57,6 +57,7 @@ export interface Candidate01AssetRecord {
   fps?: number;
   loop?: boolean;
   blendMode?: string;
+  presentationScale?: number;
 }
 
 interface Candidate01AssetManifest {
@@ -101,6 +102,9 @@ export function readCandidate01AssetRecord(raw: (typeof manifestJson)['assets'][
       ? {}
       : { tileMode: oneOf(TILE_MODES, tileMode, 'tileMode', raw.assetId) }),
   };
+  if (record.presentationScale !== undefined && (!Number.isFinite(record.presentationScale) || record.presentationScale <= 0)) {
+    throw new Error(`candidate-01: "${record.topicId}" has invalid presentation scale`);
+  }
   if (record.frameWidth !== undefined || record.frameHeight !== undefined || record.frames !== undefined) {
     const { frameWidth, frameHeight, frames } = record;
     if (

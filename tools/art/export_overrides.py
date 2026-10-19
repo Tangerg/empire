@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
 
 from PIL import Image, ImageOps
@@ -108,7 +109,11 @@ def plan(root: Path, catalog: Path):
         if category not in contracts or asset.get('frames') or asset.get('variants'):
             raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud exports supported')
         side = contracts[category]
-        if (asset['width'], asset['height'], asset.get('anchor')) != (side, side, [side // 2, side // 2]):
+        anchor = asset.get('anchor')
+        valid_anchor = (isinstance(anchor, list) and len(anchor) == 2
+                        and all(isinstance(v, (int, float)) and math.isfinite(v) and 0 <= v <= side for v in anchor))
+        if ((asset['width'], asset['height']) != (side, side) or not valid_anchor
+                or (category != 'battle-prop' and anchor != [side // 2, side // 2])):
             raise ValueError(f'{topic}: unsupported logical size/anchor')
         if not isinstance(override, dict) or set(override) != {'source', 'sha256'}:
             raise ValueError(f'{topic}: expected source and sha256 only')

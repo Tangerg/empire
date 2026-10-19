@@ -1,0 +1,35 @@
+{
+  "topicId": "C01-BPROP-AFTERMATH-2",
+  "assetId": "C01-FFV1-BPROP-AFTERMATH-2",
+  "label": "\u5f03\u68b0\u5806",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e927f3fd-a39d-4d9a-a6a0-54b618adc490.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/generated/grayflag-support-props/bprop-aftermath-2-master.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-04.png, bottom row column 2",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "inspectionCrop": "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-aftermath-2-cell.png",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-04.png",
+    "atlasSha256": "7f6723b17ffce9681af543fe03565034ef4dda0e7d6724b7ab94a97be6c6068a",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/generated/grayflag-support-props/bprop-aftermath-2-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "postprocessing": "None. Byte-exact native PNG copy. No output pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "identityClarification": "Close inspection of the exact original atlas cell resolves three swords plus one spear, not the initial prose's two swords plus one spear. The generated output retains three swords plus one spear, matching the atlas and identity reference. Three shields also match. The original exact tool prompt is retained unaltered for provenance.",
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

@@ -9,8 +9,8 @@
   "completeAnimationTopics": 0,
   "liveGameAcceptance": false,
   "sources": {
-    "swordsman": "four-pose bundle exported with shared scale and registered sole; static frame and staged sequence QA passed; live binding pending",
-    "red-swordsman": "single idle, minor authored geometry drift registered, static scene checked",
+    "swordsman": "four poses exported and formally bound; live game pending",
+    "red-swordsman": "four poses exported; authored team selection pending",
     "pine": "transparent source and static scene checked",
     "bridge": "transparent source and static scene checked",
     "grass-material": "opaque material and static scene checked",
@@ -20,14 +20,14 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Formal bind swordsman and Keep; continue archer, granary, forest and props under approved style.",
+  "next": "Finish granary/registry, forest registered cells and spearman; continue remaining approved-style families.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 3,
   "authoredThreeStateBundles": 2,
-  "formalRuntimeBoundTopics": 4,
+  "formalRuntimeBoundTopics": 8,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -51,6 +51,30 @@
       "raw": "4/4 preserved",
       "export": "shared-scale and native semantic QA passed",
       "runtimeBinding": "canonical manifest and HD resolver bound; regression tests passed",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-COVER-1": {
+      "raw": "preserved approved chunky source and prompt",
+      "export": "64/128 alpha and native black/white/olive review passed",
+      "runtimeBinding": "canonical existing resolver points to new PNG; cover pivots and scales regression tested",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-COVER-2": {
+      "raw": "preserved approved chunky source and prompt",
+      "export": "64/128 alpha and native black/white/olive review passed",
+      "runtimeBinding": "canonical existing resolver points to new PNG; cover pivots and scales regression tested",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-LOGISTICS-1": {
+      "raw": "preserved approved chunky source and prompt",
+      "export": "64/128 alpha and native black/white/olive review passed",
+      "runtimeBinding": "existing canonical manifest and HD resolver reference replaced bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-FACTION-2": {
+      "raw": "preserved approved chunky source and prompt",
+      "export": "64/128 alpha and native black/white/olive review passed",
+      "runtimeBinding": "existing canonical manifest and HD resolver reference replaced bytes",
       "liveGame": "pending"
     }
   },

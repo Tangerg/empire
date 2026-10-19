@@ -1,0 +1,45 @@
+{
+  "asset": "bramble-berries",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-0e96ee6d-eda4-41d5-bbcf-bad32ba53055.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1007094,
+  "opaque_pixels": 2191,
+  "partial_alpha_pixels": 563231,
+  "near_opaque_alpha_250_255_pixels": 541465,
+  "nonzero_alpha_bbox": [
+    0,
+    45,
+    1220,
+    1198
+  ],
+  "strong_alpha_bbox": [
+    52,
+    278,
+    1217,
+    1016
+  ],
+  "margin_pixels_LTRB": [
+    0,
+    45,
+    34,
+    56
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "sha256": "630780cd39e64caeedef7e344ac66210fba7214a629061e57854eb5c01dbc3cb",
+  "production_integration_status": "raw master only; runtime sizing and anchoring pending parent integration"
+}

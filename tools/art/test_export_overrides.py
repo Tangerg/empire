@@ -49,6 +49,20 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(unrelated.read_bytes(), b'legacy unchanged')
         self.assertEqual(before, {p: p.read_bytes() for p in self.root.rglob('*.json')})
 
+    def test_registered_battle_prop_anchor_is_metadata_not_pixel_transform(self):
+        manifest = self.pack / 'manifest-final-fantasy-v1.json'
+        data = json.loads(manifest.read_text())
+        original = export(self.root, self.catalog)
+        before = [(self.root / r['output']).read_bytes() for r in original]
+        data['assets'][0]['anchor'] = [32, 58.5]
+        manifest.write_text(json.dumps(data))
+        after = export(self.root, self.catalog)
+        self.assertEqual(before, [(self.root / r['output']).read_bytes() for r in after])
+        data['assets'][0]['anchor'] = [32, 65]
+        manifest.write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError, 'anchor'):
+            export(self.root, self.catalog)
+
     def test_fit_preserves_authored_alpha_without_double_mask(self):
         with Image.open(self.source) as source:
             result = fit(source, (64, 64), 2)

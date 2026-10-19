@@ -1,0 +1,36 @@
+{
+  "topicId": "C01-STRUCT-MILITARY-REGISTRY",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-06.png",
+  "sha256": "5a2cd015ba3746e65a716b1296c957c1e582ca5fe301a19ab671449377181584",
+  "method": "Visually matched runtime-HD strip to atlas06 bottom row; left/middle/right normal/damaged/captured",
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        904,
+        418,
+        1254
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        418,
+        904,
+        836,
+        1254
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        836,
+        904,
+        1254,
+        1254
+      ]
+    }
+  ],
+  "stateEvidence": "Normal and captured originals both show the same plain gray forked roof pennant and four displayed documents plus three hanging tags. Captured original is a clean intact/restored version, not a new flag/emblem state. Damaged removes pennant, collapses roof, empties central shelf with loose papers and rubble."
+}

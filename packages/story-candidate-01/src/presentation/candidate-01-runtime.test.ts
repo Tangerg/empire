@@ -3,7 +3,7 @@ import { portraitMarkup, terrainMarkup, unitPicture } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { CANDIDATE_01_ART } from './index';
-import { candidate01UnitIcon } from './candidate-01-runtime';
+import { candidate01UnitIcon, candidate01CoverPropMarkup } from './candidate-01-runtime';
 
 /** The pack's own art, composed rather than registered into a global. */
 const art = CANDIDATE_01_ART;
@@ -104,5 +104,20 @@ describe('candidate-01 runtime art bindings', () => {
     expect(castle).toContain('#d8483f');
     expect(castle).not.toBe(keep('#3f7fd8'));
     expect(keep()).not.toContain('candidate-owner-banner');
+  });
+});
+
+
+describe('registered cover proportions', () => {
+  it('grounds half and full cover at the same tactical foot while retaining distinct visual heights', () => {
+    const half = candidate01CoverPropMarkup('half');
+    const full = candidate01CoverPropMarkup('full');
+    expect(half).toContain('width="38.4" height="38.4"');
+    expect(full).toContain('width="76.8" height="76.8"');
+    const y = (markup: string) => Number(markup.match(/ y="([^"]+)"/)![1]);
+    expect(y(half) + 58 * .6).toBeCloseTo(31);
+    expect(y(full) + 49 * 1.2).toBeCloseTo(31);
+    expect(half).toContain('bprop-cover-1.png');
+    expect(full).toContain('bprop-cover-2.png');
   });
 });

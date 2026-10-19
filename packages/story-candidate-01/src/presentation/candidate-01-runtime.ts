@@ -184,7 +184,10 @@ export function candidate01StructureMarkup(
 /** Illustrated cover art complements, but never replaces, the directional rules overlay. */
 export function candidate01CoverPropMarkup(level: 'half' | 'full'): string {
   const topic = level === 'full' ? 'C01-BPROP-COVER-2' : 'C01-BPROP-COVER-1';
-  return `<image href="${attr(candidate01AssetUrl(topic))}" x="-16" y="-20" width="64" height="64" class="candidate-battle-prop" preserveAspectRatio="xMidYMid meet"/>`;
+  const record = candidate01Asset(topic);
+  const scale = record.presentationScale ?? 1;
+  const anchor = record.anchor ?? [record.width / 2, record.height / 2];
+  return `<image href="${attr(record.url)}" x="${16 - anchor[0] * scale}" y="${31 - anchor[1] * scale}" width="${record.width * scale}" height="${record.height * scale}" class="candidate-battle-prop" preserveAspectRatio="xMidYMid meet"/>`;
 }
 
 export function candidate01MarkerMarkup(marker: BattlefieldMarker): string {
