@@ -10383,14 +10383,15 @@
     }
   ],
   "globalQualityGate": {
-    "state": "paused-pending-user-concept-alignment",
-    "userMessageId": "Sentinel_ba9f9a24526881918d0e3b7613816d42",
-    "reason": "User reports actual composite far from approved concept. Isolated/export checks do not establish accepted overall direction.",
-    "generation": "finish-only-already-in-flight; no-new-calls",
-    "next": "representative actual-scene prototype and concept-gap diagnosis before bulk continuation"
+    "state": "approved-v5-direction-full-remake-authorized",
+    "userMessageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
+    "quote": "确认了，就按照这个方向做剩下的",
+    "acceptedReference": "docs/art-rebuild-20261019/approved-v5/edge-wide-labeled.png",
+    "generation": "continue remaining asset families under approved-v5 style",
+    "previousExports": "historical technical results retained; all require approved-v5 style review or remake"
   },
   "styleCalibration": {
-    "state": "bounded-prototype-ready-awaiting-user-style-direction",
+    "state": "superseded-by-approved-v5",
     "productionMutation": false,
     "fixture": "docs/art-rebuild-20261019/calibration/three-bridges-fixture.json",
     "masterCount": 7,
@@ -10426,5 +10427,15 @@
       "normal keep substitutes actual owned state",
       "actual gameplay and camera effects unverified"
     ]
+  },
+  "approvedV5": {
+    "progress": "docs/art-rebuild-20261019/approved-v5/progress.json",
+    "stages": [
+      "raw-preserved",
+      "export-and-native-qa",
+      "formal-runtime-bound",
+      "live-game-verified"
+    ],
+    "legacyExportCountsDoNotCarryForward": true
   }
 }

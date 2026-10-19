@@ -1,0 +1,317 @@
+{
+  "config": {
+    "frames": {
+      "idle": "/workspace/shared/empire-art-rebuild/approved-v5/red-swordsman/master.png",
+      "walk-a": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/walk-a/master.png",
+      "attack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/attack/master.png",
+      "walk-b": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/walk-b/master.png"
+    },
+    "scale": 0.05432098765432099,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      96,
+      64
+    ],
+    "sourceFoot": [
+      815,
+      907
+    ],
+    "canvasPaddingTolerance": 1,
+    "registrationOffsets": {
+      "walk-a": [
+        0,
+        -0.05432098765432099
+      ],
+      "attack": [
+        0,
+        0.05432098765432099
+      ],
+      "walk-b": [
+        0,
+        0.2716049382716049
+      ]
+    },
+    "registrationBasis": "Shared red idle scale; native canvases differ by one transparent right column, retained at identical pixel scale. Sole907 baseline, translations only."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    48.27160493827161,
+    53.26913580246914
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/red-swordsman/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "61a409632d9ec39467bb27f17218c31218822eca0eb6db821ed7ab155d3755f2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4534,
+        "nearOpaquePixels": 1420,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          10,
+          75,
+          54
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/red-swordsman/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "61a409632d9ec39467bb27f17218c31218822eca0eb6db821ed7ab155d3755f2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18312,
+        "nearOpaquePixels": 5797,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          19,
+          150,
+          107
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/walk-a/master.png",
+      "registrationOffset": [
+        0,
+        -0.05432098765432099
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "40572ee99f8c67b6d31b3fa9ba9f87739c95421c9474d2a16b5b2939bd27bdbb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4605,
+        "nearOpaquePixels": 1339,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          10,
+          75,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/walk-a/master.png",
+      "registrationOffset": [
+        0,
+        -0.05432098765432099
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "40572ee99f8c67b6d31b3fa9ba9f87739c95421c9474d2a16b5b2939bd27bdbb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18591,
+        "nearOpaquePixels": 5494,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          19,
+          150,
+          107
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/attack/master.png",
+      "registrationOffset": [
+        0,
+        0.05432098765432099
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "85ee2fdcd4a1d898f11868ec3b7c1898dfbd93b0180c1dc0628663e24e4d1eb6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4639,
+        "nearOpaquePixels": 1307,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          9,
+          86,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/attack/master.png",
+      "registrationOffset": [
+        0,
+        0.05432098765432099
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "85ee2fdcd4a1d898f11868ec3b7c1898dfbd93b0180c1dc0628663e24e4d1eb6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18720,
+        "nearOpaquePixels": 5344,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          18,
+          173,
+          107
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/walk-b/master.png",
+      "registrationOffset": [
+        0,
+        0.2716049382716049
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d4b7a4c926966c2402c76e89b5e7b1717307f64b29509c64a03b3f0a9ed4b708",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4673,
+        "nearOpaquePixels": 1278,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          10,
+          73,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/red-swordsman/walk-b/master.png",
+      "registrationOffset": [
+        0,
+        0.2716049382716049
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d4b7a4c926966c2402c76e89b5e7b1717307f64b29509c64a03b3f0a9ed4b708",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 18857,
+        "nearOpaquePixels": 5237,
+        "edgeMax": 0,
+        "visibleBounds": [
+          41,
+          20,
+          146,
+          107
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}
