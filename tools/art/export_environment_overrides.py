@@ -42,6 +42,15 @@ FORTIFICATION_SLOTS = [
     'stone-wall-breach', 'watchtower-wood', 'wood-barricade',
 ]
 
+# This one catalog-only sheet has no semantic cell records. These are original
+# slot labels, not runtime cell IDs; exporting it must not invent cell metadata.
+HIGHLAND_SLOT_LABELS = [
+    'straight-south', 'end-west', 'end-east', 'concave-corner',
+    'hill-cap', 'ramp-level-1', 'ramp-level-2', 'mountain-pass',
+    'convex-corner', 'broken-ledge', 'low-ledge', 'talus-foot',
+    'pillar-wide', 'pillar-narrow', 'ledge-end', 'plateau-cap',
+]
+
 
 def load_source(root, pack, entry):
     if not isinstance(entry, dict) or set(entry) != {'source', 'sha256'}:
@@ -121,6 +130,7 @@ def plan(root, catalog):
         'camps-foundations': (4, 144, [72, 139]),
         'landmarks-large': (4, 160, [80, 155]),
         'cliff-modules-temperate': (4, 128, [64, 127]),
+        'cliff-modules-highland': (4, 128, [64, 127]),
         'crossings-fortifications': (4, 96, [48, 91]),
     }
     for atlas_id, override in data['atlases'].items():
@@ -139,7 +149,18 @@ def plan(root, catalog):
             raise ValueError('unsupported scenery contract')
         cell_sizes = (atlas['cellWidth'], atlas['cellWidth2x'])
         labels = atlas['cellOrder']
-        order = [c['id'] for c in atlas['cells']]
+        index_only = atlas_id == 'cliff-modules-highland'
+        if index_only:
+            if (atlas['cells'] != [] or labels != HIGHLAND_SLOT_LABELS
+                    or atlas.get('category') != 'elevation-module'
+                    or atlas.get('ySort') != 'bottom-anchor'
+                    or atlas.get('heightDeltaRange') != [1, 2]
+                    or atlas.get('rampCells') != [5, 6, 7]
+                    or atlas.get('blockingByDefault') is not True):
+                raise ValueError('inconsistent highland index-only contract')
+            order = labels
+        else:
+            order = [c['id'] for c in atlas['cells']]
         if (len(labels) != cell_count or len(set(labels)) != cell_count
                 or len(order) != cell_count or len(set(order)) != cell_count):
             raise ValueError('inconsistent cell order')
@@ -176,14 +197,23 @@ def plan(root, catalog):
                 raise ValueError('cell expects source, sha256 and registration')
             source = load_source(root, pack, {k: entry[k] for k in ('source', 'sha256')})
             logical, hd, anchor = render_cell(source, entry['registration'], cell_sizes[0])
-            metadata = atlas['cells'][index]
-            if any(not math.isclose(metadata['anchor'][i], anchor[i], abs_tol=1e-10) for i in (0, 1)):
-                metadata['anchor'] = anchor
             sources[cell_id] = {
                 'sourceSha256': entry['sha256'], 'sourceAlpha': validate_alpha(source, cell_id),
-                'registration': entry['registration'], 'logicalAnchor': metadata['anchor'],
-                'presentationScale': metadata.get('presentationScale', 1),
+                'registration': entry['registration'],
             }
+            if index_only:
+                if (entry['registration']['origin'] != [2, 2]
+                        or not math.isclose(entry['registration']['scale'], 124 / max(source.size),
+                                            rel_tol=1e-12, abs_tol=0)):
+                    raise ValueError('highland requires complete canvas fitted to 124 logical pixels at [2, 2]')
+                sources[cell_id].update(logicalAnchor=list(default_anchor), sourceFootLogical=anchor,
+                                        contactCalibrated=False)
+            else:
+                metadata = atlas['cells'][index]
+                if any(not math.isclose(metadata['anchor'][i], anchor[i], abs_tol=1e-10) for i in (0, 1)):
+                    metadata['anchor'] = anchor
+                sources[cell_id].update(logicalAnchor=metadata['anchor'],
+                                        presentationScale=metadata.get('presentationScale', 1))
             for output, cell, size in zip(outputs, (logical, hd), cell_sizes):
                 output.paste(cell, cell_box(index, size, columns)[:2])
             changed.add(index)
@@ -197,11 +227,14 @@ def plan(root, catalog):
                 after = pixel_hash(output.crop(cell_box(i, size, columns)))
                 if i not in changed and before != after:
                     raise ValueError('unaffected cell changed')
-                cells.append({'id': cell_id, 'index': i, 'overridden': i in changed,
+                cells.append({'label' if index_only else 'id': cell_id, 'index': i, 'overridden': i in changed,
                               'baselinePixelSha256': before, 'outputPixelSha256': after})
             report = {'atlasId': atlas_id, 'density': density, 'output': str(target.relative_to(root)),
                       'baseline': override['baselines'][f'{density}x'], 'sources': sources,
                       'pixelSha256': pixel_hash(output), 'cells': cells}
+            if index_only:
+                report.update(cellAddressing='original-slot-label-and-index',
+                              anchorPolicy='atlas-default-preserved', integration='catalog-only')
             planned.append((target, output, report))
     return planned, manifest_path, manifest
 

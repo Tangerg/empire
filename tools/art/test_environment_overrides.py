@@ -114,6 +114,145 @@ class EnvironmentTests(unittest.TestCase):
         self.assertEqual(cell_box(23, 128, 6), (640, 384, 768, 512))
         self.assertEqual(cell_box(13, 288), (288, 864, 576, 1152))
 
+    def configure_highland(self, indices=(0, 1)):
+        path = Path(__file__).resolve().parents[2] / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json'
+        atlas = next(a for a in json.loads(path.read_text())['atlases'] if a['id'] == 'cliff-modules-highland')
+        self.assertEqual(atlas['cells'], [])
+        baselines = {}
+        for density in (1, 2):
+            size = 128 * density
+            image = Image.new('RGBA', (size * 4, size * 4))
+            for index in range(16):
+                image.paste((index * 9, 30, 60, 200), cell_box(index, size))
+            baselines[f'{density}x'] = self.save(image, f'highland-base-{density}.png')
+        cells = {}
+        for index in indices:
+            label = atlas['cellOrder'][index]
+            source = Image.new('RGBA', (1254, 1254))
+            source.paste((index * 9, 100, 60, 253), (30, 40, 1200, 1210))
+            source.paste((200, index * 30, 70, 220), (40, 90, 500, 650))
+            source.putpixel((0, 20), (30, 50, 70, 1))
+            entry = self.save(source, f'highland-{label}.png')
+            entry['registration'] = {'scale': 124 / 1254, 'origin': [2, 2],
+                                     'sourceFoot': [627, 1070 + 12 * index]}
+            cells[label] = entry
+        self.manifest.write_text(json.dumps({'atlases': [atlas]}))
+        self.data = {'schemaVersion': 2, 'atlases': {'cliff-modules-highland': {
+            'baselines': baselines, 'cells': cells}}}
+        self.write_catalog()
+
+    def test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels(self):
+        for indices in ((0, 1), (0, 1, 2, 3)):
+            with self.subTest(indices=indices):
+                self.configure_highland(indices)
+                before = self.manifest.read_bytes()
+                masters = {p: p.read_bytes() for p in (self.pack / 'masters').rglob('*.png')}
+                reports = export(self.root, self.catalog)
+                export(self.root, self.catalog, True)
+                self.assertEqual(self.manifest.read_bytes(), before)
+                self.assertEqual({p: p.read_bytes() for p in masters}, masters)
+                atlas = json.loads(before)['atlases'][0]
+                self.assertEqual(atlas['anchor'], [64, 127])
+                self.assertEqual(atlas['cells'], [])
+                self.assertEqual(atlas['rampCells'], [5, 6, 7])
+                for report in reports:
+                    self.assertEqual(report['cellAddressing'], 'original-slot-label-and-index')
+                    self.assertEqual(report['integration'], 'catalog-only')
+                    self.assertEqual(report['anchorPolicy'], 'atlas-default-preserved')
+                    self.assertEqual(sum(cell['overridden'] for cell in report['cells']), len(indices))
+                    size = 128 * report['density']
+                    with Image.open(self.root / report['output']) as output, Image.open(
+                            self.root / report['baseline']['source']) as baseline:
+                        for cell in report['cells']:
+                            index = cell['index']
+                            self.assertNotIn('id', cell)
+                            self.assertEqual(cell['label'], atlas['cellOrder'][index])
+                            x, y = index % 4 * size, index // 4 * size
+                            box = (x, y, x + size, y + size)
+                            if index not in indices:
+                                self.assertEqual(output.crop(box).tobytes(), baseline.crop(box).tobytes())
+                                self.assertEqual(cell['baselinePixelSha256'], cell['outputPixelSha256'])
+                                continue
+                            entry = self.data['atlases']['cliff-modules-highland']['cells'][cell['label']]
+                            with Image.open(self.root / entry['source']) as source:
+                                expected = Image.new('RGBA', (256, 256))
+                                expected.paste(source.resize((248, 248), Image.Resampling.LANCZOS), (4, 4))
+                                # The whole source canvas has a four-HD-pixel outer margin.
+                                self.assertIsNone(expected.getchannel('A').crop((0, 0, 256, 4)).getbbox())
+                                self.assertIsNone(expected.getchannel('A').crop((252, 0, 256, 256)).getbbox())
+                                if report['density'] == 1:
+                                    expected = expected.resize((128, 128), Image.Resampling.LANCZOS)
+                                self.assertEqual(output.crop(box).tobytes(), expected.tobytes())
+                            qa = report['sources'][cell['label']]
+                            self.assertEqual(qa['logicalAnchor'], [64, 127])
+                            self.assertEqual(qa['sourceFootLogical'], [64, 2 + (1070 + 12 * index) * 124 / 1254])
+                            self.assertFalse(qa['contactCalibrated'])
+                            self.assertNotIn('presentationScale', qa)
+
+    def test_highland_rejects_changed_labels_semantics_and_contract_before_writes(self):
+        self.configure_highland()
+        original = json.loads(self.manifest.read_text())
+        atlas = original['atlases'][0]
+        labels = atlas['cellOrder']
+        changes = [('cells', [{'id': 'invented', 'anchor': [64, 127]}]),
+                   ('cellOrder', [labels[1], labels[0], *labels[2:]]),
+                   ('cellOrder', labels[:-1]), ('rampCells', [4, 5, 6]),
+                   ('heightDeltaRange', [0, 2]), ('blockingByDefault', False),
+                   ('category', 'scenery'), ('ySort', 'center')]
+        for field, value in changes:
+            with self.subTest(field=field):
+                changed = copy.deepcopy(original)
+                changed['atlases'][0][field] = value
+                self.manifest.write_text(json.dumps(changed))
+                before = self.manifest.read_bytes()
+                with self.assertRaisesRegex(ValueError, 'highland index-only contract'):
+                    export(self.root, self.catalog)
+                self.assertEqual(self.manifest.read_bytes(), before)
+                self.assertFalse((self.env / 'runtime').exists())
+        self.manifest.write_text(json.dumps(original))
+        original_catalog = copy.deepcopy(self.data)
+        for key in ('highland-cliff-straight-south', '0', '16', 'unknown'):
+            self.data = copy.deepcopy(original_catalog)
+            cells = self.data['atlases']['cliff-modules-highland']['cells']
+            cells[key] = cells.pop('straight-south')
+            self.write_catalog()
+            with self.assertRaisesRegex(ValueError, 'unknown environment cell'):
+                export(self.root, self.catalog)
+            self.assertFalse((self.env / 'runtime').exists())
+
+    def test_highland_contact_is_qa_only_and_invalid_later_source_is_atomic(self):
+        self.configure_highland()
+        reports = export(self.root, self.catalog)
+        paths = [self.manifest, *(self.root / report['output'] for report in reports)]
+        before = {path: path.read_bytes() for path in paths}
+        cells = self.data['atlases']['cliff-modules-highland']['cells']
+        cells['end-west']['registration']['sourceFoot'] = [600, 1200]
+        self.write_catalog()
+        reports = export(self.root, self.catalog)
+        self.assertEqual(reports[0]['sources']['end-west']['sourceFootLogical'],
+                         [2 + 600 * 124 / 1254, 2 + 1200 * 124 / 1254])
+        self.assertEqual({path: path.read_bytes() for path in paths}, before)
+        original = copy.deepcopy(self.data)
+        for change in [{'sha256': 'bad'},
+                       {'registration': {'scale': 128 / 1254, 'origin': [0, 0], 'sourceFoot': [627, 1100]}},
+                       {'registration': {'scale': 124 / 1254, 'origin': [1, 2], 'sourceFoot': [627, 1100]}},
+                       {'registration': {'scale': 124 / 1254, 'origin': [2, 2], 'sourceFoot': [627, 1300]}}]:
+            with self.subTest(change=change):
+                self.data = copy.deepcopy(original)
+                self.data['atlases']['cliff-modules-highland']['cells']['end-west'].update(change)
+                self.write_catalog()
+                with self.assertRaises(ValueError):
+                    export(self.root, self.catalog)
+                self.assertEqual({path: path.read_bytes() for path in paths}, before)
+
+    def test_index_only_support_does_not_relax_other_atlases(self):
+        original = json.loads(self.manifest.read_text())
+        original['atlases'][0]['cells'] = []
+        self.manifest.write_text(json.dumps(original))
+        with self.assertRaisesRegex(ValueError, 'inconsistent cell order'):
+            export(self.root, self.catalog)
+        self.assertFalse((self.env / 'runtime').exists())
+
     def test_module_exact_slots_alpha_baselines_and_semantics(self):
         for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate', 'crossings-fortifications', 'landmarks-large'):
             with self.subTest(atlas=atlas_id):
