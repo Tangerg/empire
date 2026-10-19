@@ -691,14 +691,24 @@
       "topicId": "C01-UNIT-SWORDSMAN",
       "status": "pending",
       "source": null,
-      "verification": null,
+      "verification": {
+        "state": "partial-frames-only",
+        "note": "One of four pose masters backed up; topic remains pending"
+      },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
         "idle",
         "walk-a",
         "attack",
         "walk-b"
-      ]
+      ],
+      "frames": {
+        "idle": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/idle/master.png",
+          "sha256": "af1dd6de6b519620325e99b35cbcf7de49df8e7035b59df7a36fc0ecf54a67dd"
+        }
+      }
     },
     {
       "topicId": "C01-UNIT-TEMPLAR",
@@ -4187,7 +4197,7 @@
       "verification": {
         "state": "pending",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "semanticReview": "pending original masterboard comparison before registration/export"
+        "semanticReview": "passed original board review; stronger gloss pending style review"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "72fcca1f78eb4ea8a6caf96b69f026d1b5c8c2479c7d221659f9fa9eb6283c8a"
@@ -4253,7 +4263,7 @@
       "verification": {
         "state": "pending",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "semanticReview": "pending original masterboard comparison before registration/export"
+        "semanticReview": "needs revision: heatlamps incorrectly converted to sun-sign discs"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "99ece8d41bdb24a0407e8c337f56940cd3a0182b7789486a086ab4dbe473240f"
