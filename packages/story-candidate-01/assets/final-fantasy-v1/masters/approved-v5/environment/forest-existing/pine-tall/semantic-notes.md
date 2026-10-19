@@ -1,0 +1,5 @@
+Exactly one very tall slender pine with one pointed top, a narrow tapered silhouette, broad layered angular canopy and one exposed warm-brown grounded trunk. Broad forest-green/teal planes and muted yellow-olive lit planes follow the approved pine style. No needle or brushy microtexture. Full tree and root tips visible, with less vertical breathing room than the prompt requested but no strong-alpha border contact. Source foot (640,1165) is the trunk/root contact above the lowest front root tip.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [344, 56, 345, 39]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate permits measured native alpha-1 residue unchanged and rejects alpha 2 or greater. This source passes that gate; the separate all-alpha-zero diagnostic is not used as the production rejection threshold. No normalization applied.

@@ -1,0 +1,106 @@
+{
+  "size": [
+    1584,
+    993
+  ],
+  "alphaRange": [
+    0,
+    255
+  ],
+  "visibleBounds": [
+    33,
+    0,
+    1540,
+    977
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    248,
+    5,
+    1529,
+    965
+  ],
+  "fullyTransparentPixels": 965731,
+  "nearOpaquePixels": 576755,
+  "partialAlphaPixels": 605881,
+  "edgeMax": 1,
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-612306a5-1914-4f92-b518-108cdc4c584c.png",
+  "sha256": "1b75df55149f8e643acb437ed2ac1a331d8a5eee22b2b885755aaf5d2c8c4b6b",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/attack/prompt.txt",
+  "exactToolCallPromptVerified": true,
+  "masterTransform": "None; raw and master are byte-for-byte native copies.",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/attack/master.png"
+  ],
+  "mode": "RGBA",
+  "fullyOpaquePixels": 1300,
+  "helmetTopSourceY": 165,
+  "helmetTopMeasurementROI": [
+    500,
+    90,
+    1030,
+    450
+  ],
+  "lowestBootContourSourceY": 964,
+  "approxBodyHeightSourcePixels": 799,
+  "sourceFootAnchorSuggested": [
+    670,
+    964
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. Native master unchanged.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          230,
+          780,
+          510,
+          993
+        ],
+        "soleLowestContourY": 947,
+        "lowestThreeRowsXSpan": [
+          312,
+          404
+        ],
+        "soleBandCenterX": 358.55,
+        "contactInterpretation": "braced rear sole"
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          750,
+          800,
+          1120,
+          993
+        ],
+        "soleLowestContourY": 964,
+        "lowestThreeRowsXSpan": [
+          923,
+          1039
+        ],
+        "soleBandCenterX": 981.06,
+        "contactInterpretation": "planted bent-knee front sole"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      669.8,
+      955.5
+    ],
+    "sourceSupportAnchorEstimated": [
+      670,
+      964
+    ],
+    "anchorInterpretation": "Horizontal midpoint of both low sole bands; vertical contacting-foot contour uses the lowest visible contacting sole/heel. Raised heel and projected foot depths are preserved."
+  },
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 1,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha crosses native perimeter. Native alpha=1 specks are retained; no cleanup."
+  },
+  "status": "Native four-pose review passed; coordinator registration/export review pending",
+  "visualReview": "Clear drawn-sword strike with separate readable sword hand and flag hand, empty hip sheath, rectangular back shield retained. Full sword tip, finial, gray forked cloth and both boots visible. Compact wide lunge preserves head/body/hand/boot scale. Same gray-mustached veteran, kettle helmet, teal/mail tunic, back shield, brown gear, exact one-bar/three-tick emblem. Black and white QA checked; no visible opaque background, ground, cast shadow or halo."
+}

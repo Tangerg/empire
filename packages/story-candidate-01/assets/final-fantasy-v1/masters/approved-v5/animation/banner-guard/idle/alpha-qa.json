@@ -1,5 +1,5 @@
 {
-  "status": "Idle candidate native review complete; awaiting coordinator acceptance before other poses",
+  "status": "Native four-pose review passed; coordinator registration/export review pending",
   "size": [
     1586,
     992
@@ -46,13 +46,13 @@
     450
   ],
   "lowestBootContourSourceY": 981,
-  "approxBodyHeightSourcePixels": 817.0,
+  "approxBodyHeightSourcePixels": 817,
   "sourceFootAnchorSuggested": [
     763,
     981
   ],
   "footSupportEvidence": {
-    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. No pixel modification.",
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. Native master unchanged.",
     "boots": [
       {
         "side": "screen-left",
@@ -68,7 +68,7 @@
           601
         ],
         "soleBandCenterX": 545.0,
-        "contactInterpretation": "broad flat planted sole"
+        "contactInterpretation": "planted rear sole"
       },
       {
         "side": "screen-right",
@@ -84,14 +84,25 @@
           1034
         ],
         "soleBandCenterX": 980.16,
-        "contactInterpretation": "broad flat planted sole"
+        "contactInterpretation": "planted front sole"
       }
     ],
     "bothBootSoleBandMidpoint": [
       762.58,
       981.0
-    ]
+    ],
+    "sourceSupportAnchorEstimated": [
+      763,
+      981
+    ],
+    "anchorInterpretation": "Horizontal midpoint of both low sole bands; vertical contacting-foot contour uses the lowest visible contacting sole/heel. Raised heel and projected foot depths are preserved."
   },
   "bodyBoundsInterpretation": "Main helmet top to planted-sole midpoint excludes tall pole/flag from body-scale reference. Shield and sword remain complete but are equipment, not body-height measurement.",
-  "visualReview": "Broad compact veteran body, huge head/gloves/boots, gray mustache, steel ridge kettle helmet, muted teal tunic over large stylized silver mail forms. Rectangular wooden back shield and sheathed hip sword preserved. Exactly one pale horizontal stroke crossed by3short vertical ticks on gray forked banner. Pole finial and both flag tails complete. Whole visible silhouette has top9px/bottom10px margin; closer than requested40px but no visible clipping. No ground, shadow, opaque background or halo. Native alpha=1 edge specks retained."
+  "visualReview": "Coordinator accepted broad body framing and exact emblem. Both boots planted, both hands holding pole, sword sheathed. Same gray-mustached veteran, kettle helmet, teal/mail tunic, back shield, brown gear, exact one-bar/three-tick emblem. Black and white QA checked; no visible opaque background, ground, cast shadow or halo.",
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 1,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha crosses native perimeter. Native alpha=1 specks are retained; no cleanup."
+  }
 }

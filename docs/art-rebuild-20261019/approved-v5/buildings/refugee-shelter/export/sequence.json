@@ -1,0 +1,235 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/captured/master.png"
+    },
+    "scale": 0.11822660098522167,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      160,
+      160
+    ],
+    "sourceFoot": [
+      627,
+      1108
+    ],
+    "registrationBasis": "One shared A-frame footprint, scale and source support point for all states, no per-state fitting."
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    78.12807881773399,
+    134.99507389162562
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "92ef557d8b3a82ae7164198cb95e2ace92a092badce1c68b5fe4cbf1dd62a674",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14360,
+        "nearOpaquePixels": 10396,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          22,
+          150,
+          135
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "92ef557d8b3a82ae7164198cb95e2ace92a092badce1c68b5fe4cbf1dd62a674",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 57931,
+        "nearOpaquePixels": 42239,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          44,
+          300,
+          270
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c0fe30cc9a7ddf26e60696b4cb603f498ed8920849a67e199951fad394f193c0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14192,
+        "nearOpaquePixels": 10340,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          21,
+          151,
+          137
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c0fe30cc9a7ddf26e60696b4cb603f498ed8920849a67e199951fad394f193c0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 57283,
+        "nearOpaquePixels": 42080,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          42,
+          303,
+          274
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "625842c6713b5e403cb06157b4c0a418d9990891457f9678e9bf6c2bd704fdae",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14324,
+        "nearOpaquePixels": 10428,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          22,
+          150,
+          135
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "625842c6713b5e403cb06157b4c0a418d9990891457f9678e9bf6c2bd704fdae",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 57811,
+        "nearOpaquePixels": 42356,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          44,
+          300,
+          270
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

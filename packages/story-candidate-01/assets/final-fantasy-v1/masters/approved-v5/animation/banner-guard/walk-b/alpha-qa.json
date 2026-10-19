@@ -33,5 +33,74 @@
   "referenceInputs": [
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/master.png",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/walk-b/master.png"
-  ]
+  ],
+  "mode": "RGBA",
+  "fullyOpaquePixels": 1848,
+  "helmetTopSourceY": 100,
+  "helmetTopMeasurementROI": [
+    500,
+    90,
+    1030,
+    450
+  ],
+  "lowestBootContourSourceY": 952,
+  "approxBodyHeightSourcePixels": 852,
+  "sourceFootAnchorSuggested": [
+    787,
+    952
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. Native master unchanged.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          420,
+          790,
+          690,
+          992
+        ],
+        "soleLowestContourY": 942,
+        "lowestThreeRowsXSpan": [
+          542,
+          623
+        ],
+        "soleBandCenterX": 581.53,
+        "contactInterpretation": "rear heel lifted, low toe contact"
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          795,
+          800,
+          1140,
+          992
+        ],
+        "soleLowestContourY": 952,
+        "lowestThreeRowsXSpan": [
+          936,
+          1047
+        ],
+        "soleBandCenterX": 991.94,
+        "contactInterpretation": "forward boot planted flat"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      786.74,
+      947.0
+    ],
+    "sourceSupportAnchorEstimated": [
+      787,
+      952
+    ],
+    "anchorInterpretation": "Horizontal midpoint of both low sole bands; vertical contacting-foot contour uses the lowest visible contacting sole/heel. Raised heel and projected foot depths are preserved."
+  },
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 1,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha crosses native perimeter. Native alpha=1 specks are retained; no cleanup."
+  },
+  "status": "Native four-pose review passed; coordinator registration/export review pending",
+  "visualReview": "Opposite contact state: forward boot planted flat and rear heel lifted with bent short knee. Both hands hold pole, hip sword remains sheathed. Same gray-mustached veteran, kettle helmet, teal/mail tunic, back shield, brown gear, exact one-bar/three-tick emblem. Black and white QA checked; no visible opaque background, ground, cast shadow or halo."
 }

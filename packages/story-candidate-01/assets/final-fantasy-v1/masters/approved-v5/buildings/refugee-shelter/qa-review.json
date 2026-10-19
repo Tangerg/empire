@@ -1,0 +1,82 @@
+{
+  "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+  "mapBinding": "c01.field-post",
+  "sourceEvidence": "source.json; original-source.png in each state directory; original runtime-HD strip compared visually",
+  "commonCanvas": [
+    1254,
+    1254
+  ],
+  "commonGroundAnchor": [
+    627,
+    1108
+  ],
+  "postGenerationTransform": "none",
+  "perimeterRequirement": "Native PNG maximum alpha on every perimeter edge <=1; do not relax or programmatically modify alpha",
+  "states": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        18,
+        153,
+        1236,
+        1108
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8aa452f8-397c-4fa4-9599-2a4a528c13d6.png",
+      "sha256": "92ef557d8b3a82ae7164198cb95e2ace92a092badce1c68b5fe4cbf1dd62a674",
+      "postGenerationTransform": "none"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        17,
+        141,
+        1248,
+        1125
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-525d6b81-3588-4448-b434-13f9bff6e6c3.png",
+      "sha256": "c0fe30cc9a7ddf26e60696b4cb603f498ed8920849a67e199951fad394f193c0",
+      "postGenerationTransform": "none"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        17,
+        153,
+        1237,
+        1109
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-92086bf0-ae70-41fc-bd6c-3e10b3883c2f.png",
+      "sha256": "625842c6713b5e403cb06157b4c0a418d9990891457f9678e9bf6c2bd704fdae",
+      "postGenerationTransform": "none"
+    }
+  },
+  "semantic": {
+    "normal": "Patchwork tan/brown/gray A-frame shelter with front bedding awning, two bedrolls, roped timber construction, left cooking pot/stone ring, right open supply crate/sack and stacked logs; no flags or decoration",
+    "damaged": "Same recognizable shelter and standing end frame, torn slumped roof and awning, broken ridge/poles, damaged bedding, lowered pot with no fire, tipped sack and broken crate, chunky debris tight to footprint; no flag",
+    "captured": "Same intact normal shelter with only original gold/red/blue ridge cloth ties; no flag/emblem invented"
+  },
+  "visualReview": "Three states preserve camera and recognizable body/footprint on common native canvas. Captured closely follows normal placement. Damaged local silhouette/cloth/pole/debris changes are intentional. Complete cutout with true alpha and all extremities retained.",
+  "limits": [
+    "No live-game review or repository binding performed",
+    "Detailed source materials simplified into approved chunky cel-shaded style; damage has more jagged shapes than intact canvas",
+    "Do not independently crop or fit individual states during export"
+  ]
+}

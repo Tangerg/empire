@@ -1,0 +1,35 @@
+{
+  "status": "native master and QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "pine-tall",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/pine-tall-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/evidence.json",
+      "source_foot_estimate_px": [
+        640,
+        1165
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "pine-pair",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/pine-pair-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/evidence.json",
+      "source_foot_estimate_px": [
+        650,
+        1050
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

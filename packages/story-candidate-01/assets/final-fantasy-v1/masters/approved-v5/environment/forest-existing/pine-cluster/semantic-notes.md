@@ -1,0 +1,5 @@
+Exactly three complete pines with three distinct pointed tops and three separately readable rooted warm-brown trunks. Center tree tallest, left tree shorter and right shortest. Broad stepped angular matte canopies overlap into a coherent compact group; no hidden or fourth tree. Dark green/teal planes and restrained olive-yellow upper highlights match the approved pine authority. No needle texture, brushy noise, ground elements or cast shadow. Full treetops, side branches and root tips visible. Source foot (635,1065) is the shared rooted support among the three bases.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [153, 143, 161, 130]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate permits measured native alpha-1 residue unchanged and rejects alpha 2 or greater. This source passes that gate; the separate all-alpha-zero diagnostic is not used as the production rejection threshold. No normalization applied.

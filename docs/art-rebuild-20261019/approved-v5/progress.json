@@ -1,12 +1,11 @@
 {
-  "phase": "approved concept to bounded real-layer slice",
+  "phase": "approved-style full collection remake; formal runtime integration ongoing",
   "approval": {
     "messageId": "Sentinel_7330580e60f08191b111a4b2d50b5e82",
     "quote": "新版本很合适啊，就是这个 feel",
     "concept": "calibration-v5-concept/concept-v2.png"
   },
   "fullBulkResumed": true,
-  "completeAnimationTopics": 0,
   "liveGameAcceptance": false,
   "sources": {
     "swordsman": "four poses exported and formally bound; live game pending",
@@ -20,14 +19,14 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Finish granary/registry, forest registered cells and spearman; continue remaining approved-style families.",
+  "next": "Continue formal ground sampling, forest-existing cells, heavy-knight motion, console states and remaining props.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 4,
-  "authoredThreeStateBundles": 4,
-  "formalRuntimeBoundTopics": 19,
+  "authoredFourPoseBundles": 5,
+  "authoredThreeStateBundles": 5,
+  "formalRuntimeBoundTopics": 25,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -142,6 +141,42 @@
       "export": "64/128 alpha and native light/dark semantic review passed",
       "runtimeBinding": "existing canonical catalog and HD resolver reference new bytes; catalog presence is not proof of a current scene placement",
       "liveGame": "pending"
+    },
+    "C01-UNIT-BANNER-GUARD": {
+      "raw": "4 semantic frames preserved",
+      "export": "shared-scale, measured-foot registration, alpha and native semantic review passed",
+      "runtimeBinding": "canonical manifest and HD resolver bound; full-frame geometry tests",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-REFUGEE-SHELTER": {
+      "raw": "3 semantic frames preserved",
+      "export": "shared-scale, measured-foot registration, alpha and native semantic review passed",
+      "runtimeBinding": "canonical manifest and HD resolver bound; full-frame geometry tests",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-ENGINEERING-1": {
+      "raw": "approved chunky source, exact prompt and source evidence preserved",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-ENGINEERING-2": {
+      "raw": "approved chunky source, exact prompt and source evidence preserved",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-ENGINEERING-3": {
+      "raw": "approved chunky source, exact prompt and source evidence preserved",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-ENGINEERING-4": {
+      "raw": "approved chunky source, exact prompt and source evidence preserved",
+      "export": "64/128 true alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -190,5 +225,6 @@
     "artToolTests": 83,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
     "liveBrowser": "not validated"
-  }
+  },
+  "liveGameVerifiedAnimationTopics": 0
 }

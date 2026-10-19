@@ -1138,13 +1138,13 @@
       "topicId": "C01-UNIT-BANNER-GUARD",
       "label": "旗卫",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-banner-guard.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-banner-guard.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1153,13 +1153,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        49.09179926560588,
+        56.83231334149327
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
@@ -4103,13 +4104,13 @@
       "topicId": "C01-STRUCT-REFUGEE-SHELTER",
       "label": "难民避难棚",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-refugee-shelter.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-refugee-shelter.png",
+      "width": 480,
+      "height": 160,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 160,
+      "frameHeight": 160,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -4117,8 +4118,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        78.12807881773399,
+        134.99507389162562
       ],
       "footprint": [
         2,

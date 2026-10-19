@@ -17,7 +17,7 @@ def validate(config):
     for path in config['frames'].values():
         image=Image.open(path);alpha_report(image)
         tolerance=config.get('canvasPaddingTolerance',0)
-        if tolerance not in (0,1):raise ValueError('only explicit one-pixel canvas padding is supported')
+        if tolerance not in (0,1,2):raise ValueError('only explicit up-to-two-pixel canvas padding is supported')
         if size and any(abs(size[i]-image.size[i])>tolerance for i in (0,1)):raise ValueError('shared authored canvas required; no independent fit')
         size=tuple(max(size[i],image.size[i]) for i in (0,1)) if size else image.size;hashes.append(hashlib.sha256(Path(path).read_bytes()).hexdigest())
     if len(set(hashes))!=len(hashes):raise ValueError('duplicate source frames')

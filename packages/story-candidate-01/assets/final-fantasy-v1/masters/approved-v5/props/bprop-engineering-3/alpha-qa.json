@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-ENGINEERING-3",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6731867911041922,
+  "nearOpaqueFractionAlphaGE250": 0.3190301402338673,
+  "nonzeroAlphaBBox": [
+    0,
+    39,
+    1224,
+    1059
+  ],
+  "visibleAlphaBBoxGE8": [
+    125,
+    249,
+    1173,
+    1052
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    125,
+    249,
+    81,
+    202
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 7,
+  "sha256": "d17634b891ce90521bc3b0d8bb7b22797d36f8e1302a9c6654ea57ea955ff412",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Long parallel bridge-board bundle with stacked exposed ends, gold straps and gray brackets retained; repeated boards simplified into larger masses."
+}

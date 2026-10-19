@@ -1,0 +1,5 @@
+Exactly one sparse young pine with one exposed warm-brown upright stem, one pointed top tuft and three widely separated pairs of short angular side boughs. Clear transparent gaps expose the stem through the center. Broad green/teal foliage wedges and olive-yellow lit planes preserve the approved chunky style without miniature needles. Small root foot, no dense mature crown, second plant, ground bed or shadow. Full branch tips and roots visible. Source foot (644,1085) is the stem/root contact above the front root tip.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [311, 158, 306, 120]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate permits measured native alpha-1 residue unchanged and rejects alpha 2 or greater. This source passes that gate; the separate all-alpha-zero diagnostic is not used as the production rejection threshold. No normalization applied.

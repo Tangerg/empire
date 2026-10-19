@@ -39,3 +39,9 @@ class RegisteredSequenceTests(unittest.TestCase):
   self.assertEqual(validate(self.c),(16,16))
   self.c['registrationOffsets']['attack']=[7,0]
   with self.assertRaisesRegex(ValueError,'match measured'):validate(self.c)
+
+ def test_two_pixel_padding_preserves_native_pixel_scale(self):
+  im=Image.new('RGBA',(18,17));im.paste((90,80,70,253),(3,3,13,13));im.save(self.frames['attack']);self.c['canvasPaddingTolerance']=2
+  self.assertEqual(validate(self.c),(18,17));self.assertEqual(self.c['scale'],1)
+  self.c['canvasPaddingTolerance']=1
+  with self.assertRaises(ValueError):validate(self.c)

@@ -16,8 +16,8 @@
   "sourceScale": 1,
   "perStateTransforms": {
     "normal": "none",
-    "damaged": "pending",
-    "captured": "pending"
+    "damaged": "none",
+    "captured": "none"
   },
   "generationMethod": "built-in image_gen; keep native RGBA and no alpha postprocessing",
   "normalSource": "exec-8aa452f8-397c-4fa4-9599-2a4a528c13d6.png",
@@ -28,5 +28,21 @@
     153,
     1236,
     1108
-  ]
+  ],
+  "stateGeneration": {
+    "normal": {
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-8aa452f8-397c-4fa4-9599-2a4a528c13d6.png",
+      "prompt": "normal/prompt-correction-v2.txt",
+      "initialPrompt": "normal/prompt.txt"
+    },
+    "damaged": {
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-525d6b81-3588-4448-b434-13f9bff6e6c3.png",
+      "prompt": "damaged/prompt.txt"
+    },
+    "captured": {
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-92086bf0-ae70-41fc-bd6c-3e10b3883c2f.png",
+      "prompt": "captured/prompt.txt"
+    }
+  },
+  "strictPixelIdentity": "Not claimed for damaged local tears and broken poles; native full canvas and same base placement retained without per-state fitting."
 }

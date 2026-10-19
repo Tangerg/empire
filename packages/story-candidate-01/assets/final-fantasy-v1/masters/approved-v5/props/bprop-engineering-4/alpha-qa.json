@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-ENGINEERING-4",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5214102749987918,
+  "nearOpaqueFractionAlphaGE250": 0.45429490065601874,
+  "nonzeroAlphaBBox": [
+    0,
+    33,
+    1240,
+    1236
+  ],
+  "visibleAlphaBBoxGE8": [
+    168,
+    63,
+    1110,
+    1175
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    168,
+    63,
+    144,
+    79
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 27,
+  "sha256": "e518f0e7cb6a1de522d204a80e05d1e17fffb3c2280d711863084235aae0f69b",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Open four-post scaffold, diagonal braces, five-rung rope ladder, upper/lower pulleys, connecting rope and hanging hook retained."
+}

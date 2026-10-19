@@ -1,0 +1,5 @@
+Exactly two pines with two distinct pointed tops, two visible warm-brown trunks and two complete root feet. Left tree taller, right shorter and lightly behind; lower canopies overlap into one coherent group. Large angular matte foliage planes and heavy dark contours match the approved pine. No third tree, shrubs, ground bed or shadow. Source foot (650,1050) is the shared midpoint between the grounded tree bases.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [224, 148, 198, 146]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate permits measured native alpha-1 residue unchanged and rejects alpha 2 or greater. This source passes that gate; the separate all-alpha-zero diagnostic is not used as the production rejection threshold. No normalization applied.
