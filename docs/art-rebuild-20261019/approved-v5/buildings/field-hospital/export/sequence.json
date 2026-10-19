@@ -1,0 +1,255 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/captured/master.png"
+    },
+    "scale": 0.09256198347107437,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      128,
+      128
+    ],
+    "sourceFoot": [
+      627,
+      1225
+    ],
+    "sourceFeet": {
+      "normal": [
+        627,
+        1225
+      ],
+      "damaged": [
+        627,
+        1193
+      ],
+      "captured": [
+        627,
+        1225
+      ]
+    },
+    "registrationLimit": 3,
+    "registrationOffsets": {
+      "damaged": [
+        0,
+        2.96198347107438
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    62.03636363636363,
+    117.3884297520661
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "72162e69d505ceb322847d30e7919ffa58aa4d5a9006b27750a292b25ad6cdd2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9683,
+        "nearOpaquePixels": 6209,
+        "edgeMax": 0,
+        "visibleBounds": [
+          7,
+          18,
+          119,
+          117
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "72162e69d505ceb322847d30e7919ffa58aa4d5a9006b27750a292b25ad6cdd2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 39151,
+        "nearOpaquePixels": 25228,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          35,
+          238,
+          235
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/damaged/master.png",
+      "registrationOffset": [
+        0,
+        2.96198347107438
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "e0ec72b72a68366a159e90b3962c8a2110ed681a2bb70c8265c4cb720c678565",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9917,
+        "nearOpaquePixels": 5963,
+        "edgeMax": 0,
+        "visibleBounds": [
+          7,
+          20,
+          119,
+          117
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/damaged/master.png",
+      "registrationOffset": [
+        0,
+        2.96198347107438
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "e0ec72b72a68366a159e90b3962c8a2110ed681a2bb70c8265c4cb720c678565",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 40041,
+        "nearOpaquePixels": 24274,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          41,
+          238,
+          235
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ebd29714d64dcca6f634004554f5d86272f50a461379912245c3ceab474a7d61",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9259,
+        "nearOpaquePixels": 6564,
+        "edgeMax": 0,
+        "visibleBounds": [
+          8,
+          14,
+          119,
+          117
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ebd29714d64dcca6f634004554f5d86272f50a461379912245c3ceab474a7d61",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 37498,
+        "nearOpaquePixels": 26686,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          28,
+          238,
+          235
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

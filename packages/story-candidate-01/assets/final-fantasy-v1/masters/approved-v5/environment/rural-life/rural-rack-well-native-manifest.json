@@ -1,0 +1,49 @@
+{
+  "status": "native masters and source QA complete; raw only, rural integration pending",
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "runtime_anchor": [
+    56,
+    108
+  ],
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json",
+  "assets": [
+    {
+      "identity": "wheat-drying-rack",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/wheat-drying-rack-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/evidence.json",
+      "source_foot_estimate_px": [
+        545,
+        923
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "stone-well",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/stone-well-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        1105
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

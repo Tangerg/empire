@@ -1,0 +1,68 @@
+{
+  "asset": "wheat-drying-rack",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte wood/stone/wheat forms with broad angular planes and bold contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    545,
+    923
+  ],
+  "source_foot_estimate_normalized": [
+    0.434609,
+    0.736045
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    80,
+    256,
+    67,
+    204
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/wheat-drying-rack.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/wheat-sheaves-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 1,
+  "original_render_layer": "under-units",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "no_ground_platform": true,
+  "no_exterior_glow": true,
+  "original_slot_zero_based": 7,
+  "original_gameplay_footprint": [
+    2,
+    1
+  ],
+  "visually_verified_subject_counts": {
+    "drying_rack": 1,
+    "hanging_wheat_sheaves": 5
+  },
+  "foot_estimate_basis": "approximate midpoint of visible front support-foot contact line",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

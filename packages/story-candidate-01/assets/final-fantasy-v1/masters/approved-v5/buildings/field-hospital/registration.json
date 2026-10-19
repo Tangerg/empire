@@ -1,12 +1,46 @@
 {
+  "topicId": "C01-STRUCT-FIELD-HOSPITAL",
   "nativeCanvas": [
     1254,
     1254
   ],
-  "sourceFoot": [
+  "normalSourceFoot": [
     627,
     1225
   ],
+  "requestedSharedOutputFoot": [
+    627,
+    1225
+  ],
+  "nativeStateSourceFoot": {
+    "normal": [
+      627,
+      1225
+    ],
+    "damaged": [
+      627,
+      1193
+    ],
+    "captured": [
+      627,
+      1225
+    ]
+  },
+  "proposedRegistrationTranslation": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      32
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "translationStatus": "Parent accepted measured registration offset2026-10-19. Native master/raw unchanged; apply whole-canvas draw offset only at common export scale.",
   "normalVisibleBoundsAlphaAbove32": [
     36,
     145,
@@ -14,8 +48,77 @@
     1225
   ],
   "normalVisibleWidth": 1210,
-  "proposedLogicalVisibleWidth": 112,
+  "parentAcceptedLogicalVisibleWidth": 112,
   "sharedScaleSuggestion": 0.09256198347107437,
-  "stateTransforms": "none; native full canvases remain unchanged; one shared scale only",
-  "status": "normal for parent review; state edits pending"
+  "stateScalePolicy": "One normal-derived factor112/1210 for all native full canvases; no per-state fitting. Proposed damaged translation only, no resize/rotation.",
+  "anchorEvidence": "Damaged v3 has continuous platform and front footing post at bottom1193 with all debris above its front edge; this is actual foundation contact, not lowest detached rubble. Normal/captured corresponding contact is1225.",
+  "registrationQualification": "Native AI foundation edges have local shape/position variation, not exact pixel identity. V1/v2 rejected for shortened/displaced base; v3 restores architecture and proposed32px vertical registration corrects contact height.",
+  "status": "native trio and registration complete; parent owns formal export/integration",
+  "stateBoundsAlphaAbove32": {
+    "normal": [
+      36,
+      145,
+      1246,
+      1225
+    ],
+    "damaged": [
+      36,
+      145,
+      1241,
+      1193
+    ],
+    "captured": [
+      37,
+      104,
+      1245,
+      1225
+    ]
+  },
+  "stateBoundsAlphaAbove1": {
+    "normal": [
+      34,
+      143,
+      1248,
+      1227
+    ],
+    "damaged": [
+      33,
+      142,
+      1243,
+      1196
+    ],
+    "captured": [
+      35,
+      102,
+      1248,
+      1227
+    ]
+  },
+  "sourceFoot": [
+    627,
+    1225
+  ],
+  "acceptedRegistrationOffsetLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      2.96198347107438
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "exportCanvasLogical": [
+    128,
+    128
+  ],
+  "exportOriginLogical": [
+    4,
+    4
+  ],
+  "parentAcceptance": "Reviewed hospital comparison. Accept damaged source foot[627,1193] vs normal/captured[627,1225], whole-canvas registrationOffsetY32*112/1210, unchanged shared scale. Keep full canvas in128 export at origin4; no edited master."
 }

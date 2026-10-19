@@ -1,0 +1,98 @@
+{
+  "topicId": "C01-UNIT-LEGION-SHIELD",
+  "actualConsumers": [
+    "c01.cain",
+    "c01.legion-shield"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "lines": [
+      7,
+      16
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/imperial-legion-shield-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ee56c96dec5a41070d292b545cca4c0e77a814a8f65cd9224baf69374204ac1e"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-legion-shield.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "ac74c2fb699e0a148d0e434ae1880b7808b9c9084de0192860d96a1f66febdb3"
+    }
+  },
+  "referenceExtraction": "Native non-resampled first source board cell[0,0,418,941]; HD frames64x96. No color/alpha edits. Magenta backdrop is reference only.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityObserved": [
+    "Stern clean-shaven adult with dark hair mostly covered by low angular steel helmet and broad hinged cheek/neck flaps",
+    "Dark blue-gray lamellar torso, shoulder and short skirt armor with red edging, small brass fasteners and gold cord/tassel at screen-left shoulder",
+    "Brown leather belt, brass buckle, brown slatted bracer; bare weapon hand; huge brown cuffed boots",
+    "Screen-left bare hand carries short wooden spear with angular triangular silver head pointing down-right across the body",
+    "Tall chamfered cream rectangular shield at screen-right, dark steel riveted frame and exactly one narrow vertical brass/gold rectangular strip at center; no added crest or writing"
+  ],
+  "semanticEvidence": {
+    "unitDefinitions": "packages/story-candidate-01/src/units.ts:36-39,68",
+    "weaponDefinitions": "packages/story-candidate-01/src/weapons.ts:27-33,36-42",
+    "weapon": "c01.legion-spear",
+    "actionSemantics": "Piercing melee formation/anti-cavalry spear; Cain also has knight-charge. Existing attack slot will show a clear forward spear thrust while retaining the shield, no extra action or mounted form."
+  },
+  "status": "Source/idle preparation",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+    "topicId": "C01-UNIT-LEGION-SHIELD",
+    "label": "军团盾卫",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-legion-shield.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-legion-shield.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png"
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "topicId": "C01-STRUCT-FIELD-HOSPITAL",
+  "status": "complete native trio and parent-reviewed registration",
+  "nativeMasterIntegrity": "Every raw/master pair byte-identical built-in imagegen output; no programmatic alpha editing, resize, crop, geometry transform or repaint.",
+  "perimeterGate": "All three actual native perimeter alpha max1; zero pixels>1. Gate unchanged.",
+  "registration": {
+    "commonScale": 0.09256198347107437,
+    "normalCapturedSourceFoot": [
+      627,
+      1225
+    ],
+    "damagedSourceFoot": [
+      627,
+      1193
+    ],
+    "acceptedDamagedDrawOffsetLogical": [
+      0,
+      2.96198347107438
+    ],
+    "normalCapturedDrawOffsetLogical": [
+      0,
+      0
+    ],
+    "nativeTranslationApplied": false,
+    "exportCanvas": [
+      128,
+      128
+    ],
+    "exportOrigin": [
+      4,
+      4
+    ],
+    "basis": "Damaged v3 front footing post and continuous base contact, not lowest detached rubble. Parent accepted measured32px vertical contact difference. No per-state fit."
+  },
+  "visualChecks": {
+    "normal": "Off-white broad canvas, TWO slate-blue plus signs, left lantern, entry steps/platform, two blue bottles and right supply boxes",
+    "damaged": "Right roof/frame collapse, ragged tears, large roof plus survives while small front plus panel is gone; left lantern hangs; two prone bottles; complete front platform and steps retained. Loose pieces stay on platform.",
+    "captured": "Intact normal subject with ONE dark roof flag carrying pale interwoven bandage-rosette emblem; no extra medical symbols",
+    "style": "Broad chunky matte planes, bold outlines, readable112 logical-width group",
+    "background": "True transparent exterior, full contained silhouette and genuine open gaps",
+    "scale": "Same112/1210 factor for full1254 native canvases. Parent-approved damaged offset2.961983 logical aligns foundation height. Dense-map live integration remains separate."
+  },
+  "attemptHistory": {
+    "damaged/rejected-registration-v1": "Roof/state good but platform shortened and retreated upward",
+    "damaged/rejected-registration-v2": "Continuous base restored but footing remained displaced; superseded by v3",
+    "damaged/prompt-locked-foundation-v3.txt": "Active final damaged prompt, normal-targeted foundation-preserving generation"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "acceptedLogical112Registration": "qa-logical-112.png",
+    "nativeLogical112": "qa-logical-112-native.png"
+  },
+  "consumerQualification": "Catalog/runtime-HD exists; no direct static consumer or current live render claimed.",
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        36,
+        145,
+        1246,
+        1225
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-09c8b071-7905-4dc4-bc19-51d720555c60.png",
+      "sha256": "72162e69d505ceb322847d30e7919ffa58aa4d5a9006b27750a292b25ad6cdd2",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        34,
+        143,
+        1248,
+        1227
+      ],
+      "fullyTransparentPixelCount": 811458,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained object; no clipping",
+      "activePrompt": "prompt.txt",
+      "status": "accepted native master",
+      "registrationOffsetLogical": [
+        0,
+        0
+      ],
+      "nativeFoot": [
+        627,
+        1225
+      ]
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        36,
+        145,
+        1241,
+        1193
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5c652f11-62f4-432e-9f3b-cffbce0158b0.png",
+      "sha256": "e0ec72b72a68366a159e90b3962c8a2110ed681a2bb70c8265c4cb720c678565",
+      "postGenerationTransform": "none",
+      "status": "accepted native master",
+      "activePrompt": "prompt-locked-foundation-v3.txt",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        33,
+        142,
+        1243,
+        1196
+      ],
+      "fullyTransparentPixelCount": 835958,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained object; no clipping",
+      "registrationOffsetLogical": [
+        0,
+        2.96198347107438
+      ],
+      "nativeFoot": [
+        627,
+        1193
+      ]
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        37,
+        104,
+        1245,
+        1225
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf7e14cf-ccd4-4767-bb10-742e3623c0d7.png",
+      "sha256": "ebd29714d64dcca6f634004554f5d86272f50a461379912245c3ceab474a7d61",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        35,
+        102,
+        1248,
+        1227
+      ],
+      "fullyTransparentPixelCount": 764797,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained object; no clipping",
+      "activePrompt": "prompt.txt",
+      "status": "accepted native master",
+      "registrationOffsetLogical": [
+        0,
+        0
+      ],
+      "nativeFoot": [
+        627,
+        1225
+      ]
+    }
+  },
+  "noRepositoryWrites": true
+}

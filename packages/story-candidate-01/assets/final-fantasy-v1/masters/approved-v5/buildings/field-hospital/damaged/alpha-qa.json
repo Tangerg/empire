@@ -15,6 +15,24 @@
   "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5c652f11-62f4-432e-9f3b-cffbce0158b0.png",
   "sha256": "e0ec72b72a68366a159e90b3962c8a2110ed681a2bb70c8265c4cb720c678565",
   "postGenerationTransform": "none",
-  "status": "foundation restored; parent reviewing residual native registration drift",
-  "activePrompt": "prompt-locked-foundation-v3.txt"
+  "status": "accepted native master",
+  "activePrompt": "prompt-locked-foundation-v3.txt",
+  "nativeRawEqualsMaster": true,
+  "alphaAbove1Bounds": [
+    33,
+    142,
+    1243,
+    1196
+  ],
+  "fullyTransparentPixelCount": 835958,
+  "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+  "visibleSilhouetteReview": "complete contained object; no clipping",
+  "registrationOffsetLogical": [
+    0,
+    2.96198347107438
+  ],
+  "nativeFoot": [
+    627,
+    1193
+  ]
 }

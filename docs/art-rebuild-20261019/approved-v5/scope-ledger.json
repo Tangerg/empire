@@ -4,14 +4,14 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 56,
+    "formalBound": 57,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 9,
       "equipment": 4,
-      "interactive-structure": 11
+      "interactive-structure": 12
     },
-    "rawPreservedTopics": 57,
+    "rawPreservedTopics": 58,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1547,8 +1547,10 @@
       "category": "combat-unit",
       "label": "军团盾卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2828,11 +2830,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/field-hospital/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-field-hospital.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-field-hospital.png",
+      "stageEvidence": {
+        "raw": "3 native1254 RGBA masters and2 rejected damage attempts preserved",
+        "export": "common112/1210 scale; measured damaged foundation +2.961983Y translation; native3background state review passed",
+        "runtimeBinding": "canonical/HD catalog only; no active consumer found; not wounded shelter",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-FORGE-GUN-POSITION",

@@ -1,0 +1,41 @@
+{
+  "status": "Accepted; remaining three poses in progress",
+  "topic": "C01-UNIT-LEGION-SHIELD",
+  "actualConsumers": [
+    "c01.cain",
+    "c01.legion-shield"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/master.png",
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "identityPass": true,
+  "bodyStyleReview": "Large clean-shaven adult head and angular helmet, huge bare spear hand, broad navy/red lamellar body, short legs and huge brown boots",
+  "equipmentHandAssignment": "Screen-left bare hand holds short spear; screen-right arm carries cream chamfered shield with one gold vertical strip",
+  "visibleBoundsAlphaGreaterThan127": [
+    260,
+    60,
+    1345,
+    972
+  ],
+  "bodyTop": 60,
+  "sourceFootMidpoint": [
+    773.65,
+    969.5
+  ],
+  "suggestedSourceFoot": [
+    774,
+    971
+  ],
+  "proposedBodyReferenceSourcePixels": 909.5,
+  "proposedBodyScale": 0.04837822979659153,
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "semanticNextPose": "Opposing walking contacts and clear spear thrust while retaining shield and original weapon hand.",
+  "acceptedScale": "44/909.5",
+  "acceptanceEvidence": "Parent2026-10-19 15:14:21UTC: approved original cream/gold shield, angular steel helmet, navy/red armor and spear in chunky proportions; lock44/909.5 and foot774,971; preserve spear blade/hand and shield stripe."
+}
