@@ -1830,10 +1830,14 @@
     },
     {
       "topicId": "C01-EQUIP-ASSASSIN",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-assassin/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "1de54a2a8d8bb5abd8e3e919b1ddb19a2132d4ce5820d311ef3cc39332545a3a"
     },
     {
       "topicId": "C01-EQUIP-AXE-BREAKER",
@@ -2056,10 +2060,14 @@
     },
     {
       "topicId": "C01-EQUIP-RANGER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-ranger/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "70dd14badf4846bd87b4d5bfa3ad7a3057c0ecb2d2a74bd48beda25590474855"
     },
     {
       "topicId": "C01-EQUIP-RUNE-ARTIFICER",
