@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 301,
+    "formalBound": 309,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 32,
       "equipment": 95,
-      "hud": 8,
+      "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 2,
       "narrative-static": 4,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 307,
+    "rawPreservedTopics": 311,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2137,7 +2137,8 @@
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-b/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -7466,11 +7467,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-09/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-09.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-10",
@@ -7482,11 +7488,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-10/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-10.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-11",
@@ -7498,11 +7509,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-11/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-11.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-12",
@@ -7514,11 +7530,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-12/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-12.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-13",
@@ -7526,13 +7547,20 @@
       "category": "hud",
       "label": "可修复结构",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-13/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-13.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-14",
@@ -7540,13 +7568,20 @@
       "category": "hud",
       "label": "增援入口",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-14/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-14.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-15",
@@ -7554,13 +7589,20 @@
       "category": "hud",
       "label": "撤离出口",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-15/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-15.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-HUD-16",
@@ -7568,13 +7610,20 @@
       "category": "hud",
       "label": "多阵营权限争议点",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-16/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/hud/hud-16.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-arch-farlight-01",

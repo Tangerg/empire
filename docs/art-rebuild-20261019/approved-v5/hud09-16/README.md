@@ -1,0 +1,3 @@
+# C01 HUD09–16 formal integration
+
+Original functional subjects preserved: supply chest, lantern and bandage, hammer and gear, breached wall, braced wall, gate with three footprints, exit gate with blue pennant, and gray/red/blue/green open faction rings. Actual32px exports and28px HUD source previews reviewed on white/dark/olive; outer alpha remains transparent and full source aspect is preserved. Existing generic HUD provider and exact primary-objective callsite retain the same IDs and32px contract. Source master/reference/request/hash evidence is retained. No live browser acceptance is claimed.
