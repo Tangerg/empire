@@ -6667,11 +6667,17 @@
     },
     {
       "topicId": "c03-battle-prop-2e0af0f2",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-2e0af0f2/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "semanticReview": "passed fullboard medkitidentity; small jarhighlight variation",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-029-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
@@ -6866,7 +6872,8 @@
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cd97a638/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "semanticReview": "needs imagegen revision: metal arrowheads and fletching at sameend"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
