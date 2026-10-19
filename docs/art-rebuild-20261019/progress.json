@@ -5,7 +5,7 @@
   "statusDefinitions": {
     "pending": "not remade",
     "raw-generated": "new master backed up, not accepted or exported",
-    "exported": "derived runtime files exist, pending full QA",
+    "exported": "Deterministic export and export check passed; consumer visual acceptance remains separately recorded",
     "verified": "identity, visual, transparency and consumer checks pass"
   },
   "topics": [
@@ -1313,7 +1313,8 @@
         "exportCheck": "passed",
         "exportTests": 13,
         "evidence": "docs/art-rebuild-20261019/batch-001-export-evidence.json",
-        "visualAndConsumerAcceptance": "pending"
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "sourceSha256": "c2234a533e8c3dcd0c6d864c00a0f2bbc1bed95e9abcea539a4635723ac55a90"
     },
@@ -1325,7 +1326,8 @@
         "exportCheck": "passed",
         "evidence": "docs/art-rebuild-20261019/batch-002-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "observation": "128px preview reviewed: recognizable static prop; cart includes extra sack versus original reference"
+        "observation": "128px preview reviewed: recognizable static prop; cart includes extra sack versus original reference",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "42c14fa7ded2abb60e059b073442328f5e72abc325554a50081d8c95c1f3a695"
@@ -1338,7 +1340,8 @@
         "exportCheck": "passed",
         "exportTests": 13,
         "evidence": "docs/art-rebuild-20261019/batch-001-export-evidence.json",
-        "visualAndConsumerAcceptance": "pending"
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "sourceSha256": "c2f9347c692cd71aa6156166e9d49e15288ea501e4e3f8c4e97a2637bffde136"
     },
@@ -1350,7 +1353,8 @@
         "exportCheck": "passed",
         "evidence": "docs/art-rebuild-20261019/batch-002-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "observation": "128px preview reviewed: recognizable static prop; cart includes extra sack versus original reference"
+        "observation": "128px preview reviewed: recognizable static prop; cart includes extra sack versus original reference",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "b620c8ce7af13991fd09d404ad43659ee766742b8433fc050b6fbd1c0b978b10"
@@ -1413,7 +1417,8 @@
         "exportCheck": "passed",
         "exportTests": 13,
         "evidence": "docs/art-rebuild-20261019/batch-001-export-evidence.json",
-        "visualAndConsumerAcceptance": "pending"
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "sourceSha256": "a6819b0561cbf501afd3a1125011c0b432239046b75a25e769ea39dd7ea1eda7"
     },
@@ -1486,22 +1491,28 @@
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-1",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-logistics-1/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "note": "Raw master preserved; exported and in-game QA not yet accepted",
+        "exportCheck": "passed",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "evidence": "docs/art-rebuild-20261019/batch-003-export-evidence.json"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "6601b5b85285107553a2ac7261b2b4cba7ec0390ca78c646b2808e227ecddd40"
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-2",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-logistics-2/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "note": "Raw master preserved; exported and in-game QA not yet accepted",
+        "exportCheck": "passed",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "evidence": "docs/art-rebuild-20261019/batch-003-export-evidence.json"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "648249293546a7cf6e9673ed0d326d1361934a5639faf23b6bb1eb5b0f61a926"
@@ -1521,7 +1532,8 @@
         "exportCheck": "passed",
         "exportTests": 13,
         "evidence": "docs/art-rebuild-20261019/batch-001-export-evidence.json",
-        "visualAndConsumerAcceptance": "pending"
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "sourceSha256": "8301cda0f6921a51b5c3689a338cb2142abaa98e480bad3907ebdf71d002f723"
     },
@@ -7526,6 +7538,25 @@
       "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/environment/env-twin-hills-ground.png",
       "status": "pending",
       "relationship": "derived from terrain-atlas-capital-silverwood.png cell(0,1); no extra independent design"
+    }
+  ],
+  "verificationStages": {
+    "export": "source alpha, dimensions, deterministic outputs",
+    "consumer-tests": "existing relevant presentation tests, separate from visual review",
+    "runtime-visual": "actual rendered scene review, must not infer from PNG export"
+  },
+  "batchChecks": [
+    {
+      "topics": [
+        "C01-BPROP-COVER-1",
+        "C01-BPROP-COVER-3",
+        "C01-BPROP-FACTION-1",
+        "C01-BPROP-LOGISTICS-4"
+      ],
+      "exportTests": 13,
+      "presentationTests": 12,
+      "runtimeVisual": "blocked: browser socket permission; no actual screenshot",
+      "consumerEvidence": "cover-1 directly used in authored scene; other first-batch topics catalog-only at checked paths"
     }
   ]
 }
