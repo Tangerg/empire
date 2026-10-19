@@ -1,0 +1,353 @@
+{
+  "atlas": "landmarks-large",
+  "count": 4,
+  "status": "native review only",
+  "occupancy_warning": "footprint and obstruction are original metadata, not compound visual bounds; do not infer sourceFoot from alpha bounds",
+  "entries": [
+    {
+      "identity": "cemetery-chapel-compound",
+      "cell_index": 12,
+      "semantic_counts": {
+        "chapel": 1,
+        "attached_square_bell_tower": 1,
+        "upright_grave_markers": 4,
+        "tall_stone_lantern_posts": 2,
+        "closed_double_leaf_front_gate": 1,
+        "visible_right_nave_windows": 3
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1168 near the closest front cemetery boundary/rock footing; distinct from the offset front gate paving and chapel threshold",
+      "source_local_landmark_estimates_px": {
+        "nearest_front_rock_footing_contact": [
+          533,
+          1171
+        ],
+        "front_gate_approach_contact": [
+          185,
+          1115
+        ],
+        "front_barred_gate_threshold": [
+          228,
+          1014
+        ],
+        "chapel_door_threshold": [
+          362,
+          784
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        33,
+        87,
+        22,
+        79
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          8.0,
+          14.545,
+          153.333,
+          146.424
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          145.576
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/cemetery-chapel-compound-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/alpha-qa.json"
+    },
+    {
+      "identity": "river-gate-fort",
+      "cell_index": 13,
+      "semantic_counts": {
+        "main_round_towers": 2,
+        "roofed_round_tower": 1,
+        "open_round_tower": 1,
+        "central_large_arched_entry": 1,
+        "timber_hoist": 1,
+        "swallowtail_flag": 1,
+        "wooden_dock": 1,
+        "visible_dock_piles": 7,
+        "small_water_level_arch": 1
+      },
+      "count_qualifiers": {
+        "visible_dock_piles": "Original 5, intact native 7; decorative count variation documented for parent review. Essential fort/pier identity preserved. Parent instructed no further generation solely for this count."
+      },
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1187
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1187 near the closest localized water/stone support perimeter; structural fort and dock contacts are recorded separately rather than deriving this point from alpha bounds",
+      "source_local_landmark_estimates_px": {
+        "front_right_wall_pier_contact": [
+          936,
+          1113
+        ],
+        "front_near_dock_pile_water_contact": [
+          416,
+          1115
+        ],
+        "front_left_dock_pile_water_contact": [
+          225,
+          1033
+        ],
+        "main_gate_threshold": [
+          674,
+          755
+        ],
+        "small_water_arch_lower_contact": [
+          330,
+          851
+        ]
+      },
+      "foot_alpha_sample": 3,
+      "strong_alpha_margins_LTRB": [
+        40,
+        47,
+        26,
+        61
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          8.848,
+          9.697,
+          152.848,
+          148.606
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          147.879
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/river-gate-fort-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/alpha-qa.json"
+    },
+    {
+      "identity": "guildhall-market",
+      "cell_index": 14,
+      "semantic_counts": {
+        "main_timber_guildhall": 1,
+        "projecting_front_entry_gable": 1,
+        "main_stone_stair": 1,
+        "cloth_canopy_stalls": 4,
+        "raised_front_stall_platform": 1
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1164
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1164 aligned near the foreground paved footing beneath the raised stall; distinct from main hall and stall stairs",
+      "source_local_landmark_estimates_px": {
+        "front_stall_platform_footing_contact": [
+          749,
+          1147
+        ],
+        "nearest_paved_perimeter_contact": [
+          741,
+          1170
+        ],
+        "main_hall_stair_lower_contact": [
+          549,
+          796
+        ],
+        "front_stall_stair_lower_contact": [
+          503,
+          1053
+        ],
+        "main_hall_door_threshold": [
+          603,
+          659
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        25,
+        102,
+        25,
+        78
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          7.03,
+          16.364,
+          152.97,
+          146.545
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          145.091
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/guildhall-market-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/alpha-qa.json"
+    },
+    {
+      "identity": "black-oath-fortress",
+      "cell_index": 15,
+      "semantic_counts": {
+        "dominant_square_watchtower": 1,
+        "lower_connected_hall_podium": 1,
+        "outer_barred_gate": 1,
+        "front_stone_approach": 1,
+        "long_hanging_dark_standards": 2,
+        "top_swallowtail_pennant": 1,
+        "flags_total": 3
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1176 near the closest foreground rock/wall footing; separate from the offset entrance stair and raised inner hall",
+      "source_local_landmark_estimates_px": {
+        "nearest_front_rock_footing_contact": [
+          745,
+          1179
+        ],
+        "front_stair_approach_contact": [
+          387,
+          1153
+        ],
+        "front_barred_gate_threshold": [
+          456,
+          1004
+        ],
+        "inner_hall_front_arch_threshold": [
+          518,
+          788
+        ],
+        "right_standard_pole_base": [
+          1025,
+          929
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        26,
+        79,
+        13,
+        71
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          7.152,
+          13.576,
+          154.424,
+          147.394
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          146.545
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/black-oath-fortress-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/alpha-qa.json"
+    }
+  ]
+}

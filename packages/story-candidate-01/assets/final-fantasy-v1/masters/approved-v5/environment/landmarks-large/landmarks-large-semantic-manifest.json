@@ -1,0 +1,1351 @@
+{
+  "atlas": "landmarks-large",
+  "asset_count": 16,
+  "source_foot_warning": "Independent approximate whole-compound projected feet, often in transparent space; physical contacts separately recorded. Never derive foot from alpha bbox. Footprint/obstruction are original occupancy metadata, not visual extents.",
+  "entries": [
+    {
+      "identity": "border-palisade-fort",
+      "cell_index": 0,
+      "native_counts": {
+        "central_raised_gray_pavilion_hall": 1,
+        "flanking_gray_awnings": 2,
+        "front_guard_booth": 1,
+        "front_stone_gateway": 1,
+        "swallowtail_flags": 2
+      },
+      "original_source_counts": {
+        "central_raised_gray_pavilion_hall": 1,
+        "flanking_gray_awnings": 2,
+        "front_guard_booth": 1,
+        "front_stone_gateway": 1,
+        "swallowtail_flags": 2
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Wood-dominant compact enclosure, not a low empty camp or large round stone castle. Exact palisade-post count is not asserted; preserve continuous perimeter and source silhouettes with thicker fewer readable stakes. Original flag tip at y5 is intact, near whole atlas top.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "source_foot_semantics": "visually selected central foreground contact of the rocky compound footing, near the frontmost central rock cluster; distinct from the offset gate threshold",
+      "physical_contacts_and_landmarks_px": {
+        "front_gate_threshold_center": [
+          425,
+          1121
+        ],
+        "inner_stair_base": [
+          614,
+          831
+        ],
+        "central_compound_ground_projection": [
+          675,
+          870
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        32,
+        26,
+        26,
+        61
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          146.545
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-palisade-fort-source-evidence.json"
+    },
+    {
+      "identity": "lorne-stone-castle",
+      "cell_index": 1,
+      "native_counts": {
+        "major_round_towers": 4,
+        "round_conical_roofs": 3,
+        "open_round_battlement_top": 1,
+        "central_square_roofed_hall": 1,
+        "burgundy_front_banners": 2,
+        "muted_blue_vertical_banners": 2,
+        "small_roof_pennants": 3
+      },
+      "original_source_counts": {
+        "major_round_towers": 4,
+        "round_conical_roofs": 3,
+        "open_round_battlement_top": 1,
+        "central_square_roofed_hall": 1,
+        "burgundy_front_banners": 2,
+        "muted_blue_vertical_banners": 2,
+        "small_roof_pennants": 3
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Original multi-tower silhouette is unrelated to the single-tower C01-STRUCT-LORNE-KEEP geometry despite similar name. Keep original mixed burgundy/blue banners; do not infer faction colors from the ID.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        672,
+        1204
+      ],
+      "source_foot_semantics": "visually selected foreground contact of the nearest round tower masonry base; intentional x672 offset follows the compound geometry, not full-canvas center or alpha bottom",
+      "physical_contacts_and_landmarks_px": {
+        "front_gate_stair_contact": [
+          431,
+          1178
+        ],
+        "foreground_round_tower_base": [
+          672,
+          1204
+        ],
+        "right_annex_door_threshold": [
+          971,
+          1116
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        44,
+        27,
+        41,
+        24
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          85.455,
+          149.939
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/lorne-stone-castle-source-evidence.json"
+    },
+    {
+      "identity": "vilsa-stone-castle",
+      "cell_index": 2,
+      "native_counts": {
+        "major_towers": 4,
+        "square_open_tower": 1,
+        "round_open_tower": 1,
+        "round_roofed_towers": 2,
+        "small_gray_pennants": 2,
+        "wooden_arch_entries": 2
+      },
+      "original_source_counts": {
+        "major_towers": 4,
+        "square_open_tower": 1,
+        "round_open_tower": 1,
+        "round_roofed_towers": 2,
+        "small_gray_pennants": 2,
+        "wooden_arch_entries": 2
+      },
+      "count_qualifiers": {
+        "wooden_arch_entries": "Exactly two OUTER entries. Visible subordinate inner-hall doors are excluded."
+      },
+      "source_profile_caveats": "Must remain distinct from Lorne castle: one square tower and one open round tower, courtyard and two roofed round towers; no large burgundy/blue banners. Subordinate roof bays are connected hall masses rather than separately counted buildings.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1195
+      ],
+      "source_foot_semantics": "visually authored projected whole-compound registration baseline at x627,y1195, aligned near the foreground corner foundation contact; the chosen projection lies in transparent space and is intentionally not a physical center pixel or an alpha-bbox minimum",
+      "physical_contacts_and_landmarks_px": {
+        "main_gate_front_apron_contact": [
+          286,
+          1119
+        ],
+        "front_corner_masonry_contact": [
+          797,
+          1195
+        ],
+        "inner_courtyard_ground": [
+          640,
+          799
+        ],
+        "side_gate_threshold": [
+          1007,
+          1021
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        40,
+        47,
+        28,
+        40
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          148.848
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/vilsa-stone-castle-source-evidence.json"
+    },
+    {
+      "identity": "mountain-gate-fort",
+      "cell_index": 3,
+      "native_counts": {
+        "tall_square_gate_towers": 2,
+        "small_front_sentry_booths": 2,
+        "reddish_brown_roofs": 4,
+        "side_cliff_groups": 2,
+        "central_closed_portcullis": 1,
+        "blue_tower_banners": 2,
+        "rear_gray_hanging_standard": 1,
+        "small_central_pennant": 1
+      },
+      "original_source_counts": {
+        "tall_square_gate_towers": 2,
+        "small_front_sentry_booths": 2,
+        "reddish_brown_roofs": 4,
+        "side_cliff_groups": 2,
+        "central_closed_portcullis": 1,
+        "blue_tower_banners": 2,
+        "rear_gray_hanging_standard": 1,
+        "small_central_pennant": 1
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Cliff-embedded closed-gate compound, distinct from compact repairable/capital/wall-lift interactive gates. Side jagged rock groups and front approach are required identity, not optional decorative backing.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1184
+      ],
+      "source_foot_semantics": "visually authored projected whole-compound registration baseline at x627,y1184, referenced to the nearest approach/parapet foundation contacts; this projection lies in transparent space rather than forcing the offset approach or a cliff tip to the canvas center",
+      "physical_contacts_and_landmarks_px": {
+        "front_approach_paving_contact": [
+          308,
+          1183
+        ],
+        "front_right_parapet_rock_contact": [
+          430,
+          1184
+        ],
+        "central_gate_threshold": [
+          584,
+          803
+        ],
+        "right_cliff_contact": [
+          1068,
+          1143
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        20,
+        57,
+        13,
+        51
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          147.515
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/mountain-gate-fort-source-evidence.json"
+    },
+    {
+      "identity": "frontier-longhall",
+      "cell_index": 4,
+      "native_counts": {
+        "main_longhall": 1,
+        "attached_entry_porch_gables": 2,
+        "front_stair": 1,
+        "tall_hanging_banner": 1,
+        "front_crates": 3
+      },
+      "original_source_counts": {
+        "main_longhall": 1,
+        "attached_entry_porch_gables": 2,
+        "front_stair": 1,
+        "tall_hanging_banner": 1,
+        "front_crates": 3
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Timber-dominant civic hall with a two-level functional yard, 4x3 occupancy. Do not erase the integrated lower court or replace it with a round display base. Exact partly occluded rail/post counts are not asserted.",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1147
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1147, near the nearest lower-court corner fence footing; not the elevated hall doorway or stair tread",
+      "physical_contacts_and_landmarks_px": {
+        "nearest_front_fence_post_base": [
+          615,
+          1147
+        ],
+        "lower_path_entry_contact": [
+          401,
+          1095
+        ],
+        "main_stair_lower_contact": [
+          416,
+          850
+        ],
+        "upper_entry_threshold": [
+          489,
+          693
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        13,
+        117,
+        12,
+        91
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          143.03
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/frontier-longhall-source-evidence.json"
+    },
+    {
+      "identity": "walled-trade-town",
+      "cell_index": 5,
+      "native_counts": {
+        "tall_square_open_watchtower": 1,
+        "main_upper_gabled_house": 1,
+        "arched_market_entry": 1,
+        "right_roofed_trading_counter": 1,
+        "hoist_beam": 1,
+        "suspended_box_shaped_object": 1,
+        "long_tower_banner": 1
+      },
+      "original_source_counts": {
+        "tall_square_open_watchtower": 1,
+        "main_upper_gabled_house": 1,
+        "arched_market_entry": 1,
+        "right_roofed_trading_counter": 1,
+        "hoist_beam": 1,
+        "suspended_box_shaped_object": 1,
+        "long_tower_banner": 1
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Old nominal row-2 slot includes the next-row watch-keep flag tip at original y623. Actual town body ends y603; complete reference crop stops y611 and excludes that neighbor. Tiny suspended object function is unresolved; preserve its silhouette without inventing glow or machinery. Ancillary partly occluded storage objects are preserved as source groups, not asserted as an exact total.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1155
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1155, aligned with the front masonry support; distinct from the offset lower-left entrance apron and suspended load",
+      "physical_contacts_and_landmarks_px": {
+        "front_masonry_footing_contact": [
+          576,
+          1155
+        ],
+        "left_entry_apron_contact": [
+          342,
+          1110
+        ],
+        "central_arch_threshold": [
+          524,
+          883
+        ],
+        "right_counter_foundation_contact": [
+          855,
+          1130
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        60,
+        88,
+        55,
+        80
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          144.0
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/walled-trade-town-source-evidence.json"
+    },
+    {
+      "identity": "field-hospital-compound",
+      "cell_index": 6,
+      "native_counts": {
+        "large_canvas_medical_shelters": 2,
+        "roof_blue_crosses": 2,
+        "cloth_covered_treatment_table": 1,
+        "table_blue_cross": 1,
+        "small_roofed_stone_gate_tower": 1,
+        "tower_pennant": 1,
+        "tall_hanging_medical_standard": 1,
+        "front_wall_outer_gate": 1
+      },
+      "original_source_counts": {
+        "large_canvas_medical_shelters": 2,
+        "roof_blue_crosses": 2,
+        "cloth_covered_treatment_table": 1,
+        "table_blue_cross": 1,
+        "small_roofed_stone_gate_tower": 1,
+        "tower_pennant": 1,
+        "tall_hanging_medical_standard": 1,
+        "front_wall_outer_gate": 1
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Distinct large environment compound, not a state of the existing FIELD-HOSPITAL building topic or the refugee shelter used by c01.field-post. Original subordinate supply shapes are partly occluded; no invented precise total or patients. Keep source blue medical marks, not red symbols.",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1155
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1155 near the nearest front wall/foundation corner, independent of the offset outer entry and courtyard table",
+      "physical_contacts_and_landmarks_px": {
+        "nearest_front_wall_foundation_contact": [
+          636,
+          1158
+        ],
+        "outer_front_gate_threshold": [
+          278,
+          1014
+        ],
+        "rear_gate_tower_threshold": [
+          745,
+          708
+        ],
+        "courtyard_ground_center": [
+          596,
+          808
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        22,
+        82,
+        23,
+        81
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          144.0
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/field-hospital-compound-source-evidence.json"
+    },
+    {
+      "identity": "fortified-armory",
+      "cell_index": 7,
+      "native_counts": {
+        "tall_square_open_tower": 1,
+        "tall_round_open_tower": 1,
+        "low_front_round_bastion": 1,
+        "slate_gabled_storage_halls": 2,
+        "sack_benches": 2,
+        "visible_pale_sacks": 12,
+        "outer_gates": 2
+      },
+      "original_source_counts": {
+        "tall_square_open_tower": 1,
+        "tall_round_open_tower": 1,
+        "low_front_round_bastion": 1,
+        "slate_gabled_storage_halls": 2,
+        "sack_benches": 2,
+        "visible_pale_sacks": 12,
+        "outer_gates": 2
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Original armory identity is expressed through fortified storage halls and supply benches; do not invent weapon displays from the name. Rear wall corner crenellations are wall geometry, not an additional major tower. Strong silhouette starts x940, half a source pixel before the fractional 940.5 nominal boundary; use the complete subject reference, not a strict slot.",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1117
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1117 near the nearest round bastion foundation contact; not the front gate stair or upper storage hall threshold",
+      "physical_contacts_and_landmarks_px": {
+        "front_round_bastion_foundation_contact": [
+          666,
+          1115
+        ],
+        "front_gate_stair_contact": [
+          297,
+          1033
+        ],
+        "right_gate_threshold": [
+          1000,
+          930
+        ],
+        "central_courtyard_ground": [
+          566,
+          746
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        19,
+        146,
+        10,
+        123
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          139.394
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/fortified-armory-source-evidence.json"
+    },
+    {
+      "identity": "border-chapel",
+      "cell_index": 8,
+      "native_counts": {
+        "main_chapel_compound": 1,
+        "tall_square_bell_tower": 1,
+        "main_front_stair": 1,
+        "roof_cross": 1,
+        "small_tower_pennant": 1,
+        "tall_left_hanging_standard": 1
+      },
+      "original_source_counts": {
+        "main_chapel_compound": 1,
+        "tall_square_bell_tower": 1,
+        "main_front_stair": 1,
+        "roof_cross": 1,
+        "small_tower_pennant": 1,
+        "tall_left_hanging_standard": 1
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "One connected chapel with attached nave/low wing, not multiple detached buildings. Preserve timber enclosure and functional court. Partly occluded crate/post totals are not asserted; retain the source groups without inventing clutter.",
+      "footprint": [
+        3,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1184
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1184 near the closest front palisade/rock footing; separate from the offset entry path and elevated chapel stair",
+      "physical_contacts_and_landmarks_px": {
+        "nearest_front_palisade_contact": [
+          710,
+          1183
+        ],
+        "front_path_outer_contact": [
+          414,
+          1120
+        ],
+        "main_stair_lower_contact": [
+          527,
+          960
+        ],
+        "main_chapel_door_threshold": [
+          595,
+          827
+        ]
+      },
+      "source_foot_alpha_sample": 255,
+      "strong_alpha_margins_LTRB": [
+        50,
+        62,
+        54,
+        57
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          147.515
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-chapel/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-chapel/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-chapel-source-evidence.json"
+    },
+    {
+      "identity": "watch-keep",
+      "cell_index": 9,
+      "native_counts": {
+        "major_round_towers": 3,
+        "roofed_round_towers": 2,
+        "open_front_round_tower": 1,
+        "small_gray_pennants": 2,
+        "long_tower_banner": 1,
+        "small_inner_gabled_porch": 1,
+        "front_outer_gate": 1,
+        "back_right_inner_arch": 1
+      },
+      "original_source_counts": {
+        "major_round_towers": 3,
+        "roofed_round_towers": 2,
+        "open_front_round_tower": 1,
+        "small_gray_pennants": 2,
+        "long_tower_banner": 1,
+        "small_inner_gabled_porch": 1,
+        "front_outer_gate": 1,
+        "back_right_inner_arch": 1
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Main source flag begins y623, four pixels above the old nominal y627 row boundary. Complete crop recovers it. Different from both Lorne and Vilsa castles: one dominant central cylindrical keep with two lower round towers, not their four-tower groupings.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1191
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1191, aligned to the nearest foreground tower foundation; distinct from the lower-left gate stair and internal porch",
+      "physical_contacts_and_landmarks_px": {
+        "foreground_round_tower_foundation_contact": [
+          752,
+          1196
+        ],
+        "front_gate_stair_contact": [
+          374,
+          1128
+        ],
+        "inner_porch_threshold": [
+          672,
+          824
+        ],
+        "back_right_arch_threshold": [
+          908,
+          812
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        79,
+        49,
+        53,
+        42
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          148.364
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/watch-keep-source-evidence.json"
+    },
+    {
+      "identity": "market-gate-compound",
+      "cell_index": 10,
+      "native_counts": {
+        "major_round_gate_towers": 2,
+        "roofed_round_tower": 1,
+        "open_round_tower": 1,
+        "central_gateway_arch": 1,
+        "burgundy_cloth_awning": 1,
+        "cream_cloth_awnings": 2,
+        "far_left_timber_kiosk": 1,
+        "flags_total": 3
+      },
+      "original_source_counts": {
+        "major_round_gate_towers": 2,
+        "roofed_round_tower": 1,
+        "open_round_tower": 1,
+        "central_gateway_arch": 1,
+        "burgundy_cloth_awning": 1,
+        "cream_cloth_awnings": 2,
+        "far_left_timber_kiosk": 1,
+        "flags_total": 3
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Whole source reaches x610, seventeen pixels left of the old nominal x627 slot boundary. The full far-left wooden kiosk and small attached accents must be recovered from complete source, not treated as a neighboring fragment. Crate totals under partly occluded stalls are not asserted.",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1149
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1149, aligned near the front paved/rock support below the market awnings; independent of the gateway threshold and kiosk",
+      "physical_contacts_and_landmarks_px": {
+        "front_right_awning_footing_contact": [
+          782,
+          1156
+        ],
+        "front_left_paved_court_contact": [
+          415,
+          1045
+        ],
+        "central_gateway_threshold": [
+          677,
+          815
+        ],
+        "far_left_kiosk_contact": [
+          159,
+          876
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        31,
+        110,
+        23,
+        78
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          143.273
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/market-gate-compound-source-evidence.json"
+    },
+    {
+      "identity": "ruined-gatehouse",
+      "cell_index": 11,
+      "native_counts": {
+        "major_broken_upright_wall_remnants": 2,
+        "central_surviving_archway": 1,
+        "front_stair": 1,
+        "dead_tree": 1,
+        "intact_roofs": 0,
+        "flags": 0
+      },
+      "original_source_counts": {
+        "major_broken_upright_wall_remnants": 2,
+        "central_surviving_archway": 1,
+        "front_stair": 1,
+        "dead_tree": 1,
+        "intact_roofs": 0,
+        "flags": 0
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Keep the asymmetric left-taller/right-lower ruined mass and continuous surviving arch. Debris simplifies into a few broad clusters without rebuilding walls or copying a carpet of small stones. Strong source begins x940, half a pixel before the fractional last-column boundary940.5; use the complete reference.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1168, near the front-right courtyard corner rubble/foundation; separate from the offset descending stair",
+      "physical_contacts_and_landmarks_px": {
+        "front_courtyard_corner_rubble_contact": [
+          635,
+          1172
+        ],
+        "front_stair_approach_contact": [
+          269,
+          1099
+        ],
+        "central_arch_threshold": [
+          535,
+          755
+        ],
+        "right_dead_tree_ground_projection": [
+          1055,
+          740
+        ]
+      },
+      "source_foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        23,
+        77,
+        20,
+        62
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          145.576
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/ruined-gatehouse-source-evidence.json"
+    },
+    {
+      "identity": "cemetery-chapel-compound",
+      "cell_index": 12,
+      "native_counts": {
+        "chapel": 1,
+        "attached_square_bell_tower": 1,
+        "upright_grave_markers": 4,
+        "tall_stone_lantern_posts": 2,
+        "closed_double_leaf_front_gate": 1,
+        "visible_right_nave_windows": 3
+      },
+      "original_source_counts": {
+        "chapel": 1,
+        "attached_square_bell_tower": 1,
+        "upright_grave_markers": 4,
+        "tall_stone_lantern_posts": 2,
+        "closed_double_leaf_front_gate": 1,
+        "visible_right_nave_windows": 3
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "One chapel in an enclosed functional cemetery court. Tiny tower finial is readable as a pointed finial; do not invent a large cross or lettering. Exactly four grave markers and two lamp posts are clear in the original. Fence panel/post totals are partly occluded and not asserted.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1168 near the closest front cemetery boundary/rock footing; distinct from the offset front gate paving and chapel threshold",
+      "physical_contacts_and_landmarks_px": {
+        "nearest_front_rock_footing_contact": [
+          533,
+          1171
+        ],
+        "front_gate_approach_contact": [
+          185,
+          1115
+        ],
+        "front_barred_gate_threshold": [
+          228,
+          1014
+        ],
+        "chapel_door_threshold": [
+          362,
+          784
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        33,
+        87,
+        22,
+        79
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          145.576
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/cemetery-chapel-compound-source-evidence.json"
+    },
+    {
+      "identity": "river-gate-fort",
+      "cell_index": 13,
+      "native_counts": {
+        "main_round_towers": 2,
+        "roofed_round_tower": 1,
+        "open_round_tower": 1,
+        "central_large_arched_entry": 1,
+        "timber_hoist": 1,
+        "swallowtail_flag": 1,
+        "wooden_dock": 1,
+        "visible_dock_piles": 7,
+        "small_water_level_arch": 1
+      },
+      "original_source_counts": {
+        "main_round_towers": 2,
+        "roofed_round_tower": 1,
+        "open_round_tower": 1,
+        "central_large_arched_entry": 1,
+        "timber_hoist": 1,
+        "swallowtail_flag": 1,
+        "wooden_dock": 1,
+        "visible_dock_piles": 5,
+        "small_water_level_arch": 1
+      },
+      "count_qualifiers": {
+        "visible_dock_piles": "Original 5, intact native 7; decorative count variation documented for parent review. Essential fort/pier identity preserved. Parent instructed no further generation solely for this count."
+      },
+      "source_profile_caveats": "Localized water is part of the original compound and must remain. Detailed dock inspection confirms five visible piles, including the partly occluded smaller rear-left pile. Wall corner piers are not additional main towers. Bare pole on the right tower is distinct from the single central flag.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1187
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1187 near the closest localized water/stone support perimeter; structural fort and dock contacts are recorded separately rather than deriving this point from alpha bounds",
+      "physical_contacts_and_landmarks_px": {
+        "front_right_wall_pier_contact": [
+          936,
+          1113
+        ],
+        "front_near_dock_pile_water_contact": [
+          416,
+          1115
+        ],
+        "front_left_dock_pile_water_contact": [
+          225,
+          1033
+        ],
+        "main_gate_threshold": [
+          674,
+          755
+        ],
+        "small_water_arch_lower_contact": [
+          330,
+          851
+        ]
+      },
+      "source_foot_alpha_sample": 3,
+      "strong_alpha_margins_LTRB": [
+        40,
+        47,
+        26,
+        61
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          147.879
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/river-gate-fort-source-evidence.json"
+    },
+    {
+      "identity": "guildhall-market",
+      "cell_index": 14,
+      "native_counts": {
+        "main_timber_guildhall": 1,
+        "projecting_front_entry_gable": 1,
+        "main_stone_stair": 1,
+        "cloth_canopy_stalls": 4,
+        "raised_front_stall_platform": 1
+      },
+      "original_source_counts": {
+        "main_timber_guildhall": 1,
+        "projecting_front_entry_gable": 1,
+        "main_stone_stair": 1,
+        "cloth_canopy_stalls": 4,
+        "raised_front_stall_platform": 1
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Four canopies are clear; ancillary supplies are partly occluded, so exact crate/barrel totals are not asserted. The original runtime slot contains a tiny neighboring black-oath-fortress fragment at the far right, which is excluded from the recovered complete-subject reference. Main hall roof reads warm long-board/timber bands; preserve its color and broad material identity.",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1164
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1164 aligned near the foreground paved footing beneath the raised stall; distinct from main hall and stall stairs",
+      "physical_contacts_and_landmarks_px": {
+        "front_stall_platform_footing_contact": [
+          749,
+          1147
+        ],
+        "nearest_paved_perimeter_contact": [
+          741,
+          1170
+        ],
+        "main_hall_stair_lower_contact": [
+          549,
+          796
+        ],
+        "front_stall_stair_lower_contact": [
+          503,
+          1053
+        ],
+        "main_hall_door_threshold": [
+          603,
+          659
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        25,
+        102,
+        25,
+        78
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          145.091
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/guildhall-market-source-evidence.json"
+    },
+    {
+      "identity": "black-oath-fortress",
+      "cell_index": 15,
+      "native_counts": {
+        "dominant_square_watchtower": 1,
+        "lower_connected_hall_podium": 1,
+        "outer_barred_gate": 1,
+        "front_stone_approach": 1,
+        "long_hanging_dark_standards": 2,
+        "top_swallowtail_pennant": 1,
+        "flags_total": 3
+      },
+      "original_source_counts": {
+        "dominant_square_watchtower": 1,
+        "lower_connected_hall_podium": 1,
+        "outer_barred_gate": 1,
+        "front_stone_approach": 1,
+        "long_hanging_dark_standards": 2,
+        "top_swallowtail_pennant": 1,
+        "flags_total": 3
+      },
+      "count_qualifiers": {},
+      "source_profile_caveats": "Original strong subject extends 5.5px left and 0.5px above its fractional nominal slot boundary; complete-subject crop recovers the entire fortress. Small edge pixels that appear in the neighboring guildhall runtime slot belong here. Minor perimeter stakes/piers are partly occluded, so no unsupported exact total. Symbols are simple pale forked marks, not text.",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1176 near the closest foreground rock/wall footing; separate from the offset entrance stair and raised inner hall",
+      "physical_contacts_and_landmarks_px": {
+        "nearest_front_rock_footing_contact": [
+          745,
+          1179
+        ],
+        "front_stair_approach_contact": [
+          387,
+          1153
+        ],
+        "front_barred_gate_threshold": [
+          456,
+          1004
+        ],
+        "inner_hall_front_arch_threshold": [
+          518,
+          788
+        ],
+        "right_standard_pole_base": [
+          1025,
+          929
+        ]
+      },
+      "source_foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        26,
+        79,
+        13,
+        71
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "native_to_logical_scale": 0.12121212121212122,
+        "logical_origin": [
+          4,
+          4
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          146.545
+        ],
+        "catalog_anchor_unchanged": [
+          80,
+          155
+        ],
+        "review_only_no_art_transform": true
+      },
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/black-oath-fortress-source-evidence.json"
+    }
+  ]
+}

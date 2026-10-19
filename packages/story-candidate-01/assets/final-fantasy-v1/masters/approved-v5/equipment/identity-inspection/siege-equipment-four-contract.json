@@ -1,0 +1,108 @@
+[
+  {
+    "slug": "lance-cavalry",
+    "topic": "C01-EQUIP-LANCE-CAVALRY",
+    "index": 17,
+    "board": "03",
+    "row": 1,
+    "col": 2,
+    "box": [
+      316,
+      2,
+      625,
+      312
+    ],
+    "sha": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-lance-cavalry-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-lance-cavalry",
+    "unitRefs": [],
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+    ],
+    "subject": "Exactly THREE separate equipment objects arranged like original reference 1. LEFT: one long straight brown wooden LANCE, diagonally from lower-left to upper-middle, large silver triangular faceted spearhead pointing up-right. CENTER: one cream-colored rounded kite shield, curved upper edge and single pointed lower tip, four large blank cream panels divided by a narrow horizontal seam and ONE dark iron vertical center rib. Keep the little original large corner fasteners; shield has NO emblem, no cross motif, no boss and no tower emblem. RIGHT: ONE single iron STIRRUP with its large open interior, a broad flat footplate, and one short loop of brown leather attached above. The three items stay separate and complete. No rider, mount, saddle, extra stirrup or extra weapon.",
+    "identity": "Exactly THREE separate equipment objects arranged like original reference 1. LEFT: one long straight brown wooden LANCE, diagonally from lower-left to upper-middle, large silver triangular faceted spearhead pointing up-right. CENTER: one cream-colored rounded kite shield, curved upper edge and single pointed lower tip, four large blank cream panels divided by a narrow horizontal seam and ONE dark iron vertical center rib. Keep the little original large corner fasteners; shield has NO emblem, no cross motif, no boss and no tower emblem. RIGHT: ONE single iron STIRRUP with its large open interior, a broad flat footplate, and one short loop of brown leather attached above. The three items stay separate and complete. No rider, mount, saddle, extra stirrup or extra weapon.",
+    "unitNote": "No corresponding approved unit idle source found in current approved-v5 tree; original equipment board and baseline equipment runtime remain identity authority. Existing chunky equipment family governs material style.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ec3eb09c-849a-49a5-bbbd-23fb84c36e5d.png"
+  },
+  {
+    "slug": "ballista",
+    "topic": "C01-EQUIP-BALLISTA",
+    "index": 16,
+    "board": "03",
+    "row": 1,
+    "col": 1,
+    "box": [
+      2,
+      2,
+      312,
+      312
+    ],
+    "sha": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-ballista-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-ballista",
+    "unitRefs": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/master.png"
+    ],
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+    ],
+    "subject": "Exactly TWO equipment groups matching original reference 1. LEFT: one compact wooden WINDLASS / STRING-TENSIONING FRAME seen from slightly above, as an equipment mechanism rather than an entire ballista cart: thick rear horizontal timber with two iron-capped upper brackets, thick front horizontal winding roller with iron end caps, two chunky side rails, central wooden guide plank, exposed rope lengths linking the corners and crossing across the front. ONE square iron winding housing at front with an L-shaped crank and short brown handle projecting toward lower-left. Two short simple timber feet at its base; NO wheels and NO bow arms beyond the reference. The top stays open so the broad internal planks and tension ropes remain visible. RIGHT: EXACTLY ONE separate thick short bolt, brown shaft with a few broad wrap bands, large triangular silver arrowhead pointing upper-right and faceted silver butt at bottom-left. No loaded extra bolt, no operator, no soldier or full wheeled cart.",
+    "identity": "Exactly TWO equipment groups matching original reference 1. LEFT: one compact wooden WINDLASS / STRING-TENSIONING FRAME seen from slightly above, as an equipment mechanism rather than an entire ballista cart: thick rear horizontal timber with two iron-capped upper brackets, thick front horizontal winding roller with iron end caps, two chunky side rails, central wooden guide plank, exposed rope lengths linking the corners and crossing across the front. ONE square iron winding housing at front with an L-shaped crank and short brown handle projecting toward lower-left. Two short simple timber feet at its base; NO wheels and NO bow arms beyond the reference. The top stays open so the broad internal planks and tension ropes remain visible. RIGHT: EXACTLY ONE separate thick short bolt, brown shaft with a few broad wrap bands, large triangular silver arrowhead pointing upper-right and faceted silver butt at bottom-left. No loaded extra bolt, no operator, no soldier or full wheeled cart.",
+    "unitNote": "Approved new ballista unit inspected. It includes a crewman and full wheeled cart with loaded bolt; these unit-only parts are intentionally excluded because original equipment icon is a compact windlass mechanism plus one separate bolt. Equipment atlas identity governs.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf1c3fc0-090d-45d2-84e0-e2234f51c8d1.png"
+  },
+  {
+    "slug": "cannon-wagon",
+    "topic": "C01-EQUIP-CANNON-WAGON",
+    "index": 30,
+    "board": "03",
+    "row": 4,
+    "col": 3,
+    "box": [
+      629,
+      942,
+      938,
+      1252
+    ],
+    "sha": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-cannon-wagon-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-cannon-wagon",
+    "unitRefs": [],
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+    ],
+    "subject": "Exactly TWO equipment assemblies from original reference 1. LEFT / CENTER: one very compact short warm BRASS CANNON on a little brown wooden cradle/carriage. Its broad hollow muzzle faces LEFT and a little toward viewer, its barrel rises to upper-right, with a few large raised rings and one dark trunnion. The blocky wooden cradle below has EXACTLY TWO visible large round wooden spoked wheels: one lower-left and one lower-right, the right wheel with a dark iron tire. Preserve this original miniature equipment silhouette without adding a crew or chassis extension. LOWER RIGHT: ONE separate wooden scoop, bowl full of a small clustered handful of dark round shot/pellets, and a short handle projecting upper-right. Simplify the tiny shot texture into a few clear chunky dark rounded forms; keep the filled scoop's functional meaning. No sparks, flame, smoke, fuse, explosion, emblem, crew, horse or scenery.",
+    "identity": "Exactly TWO equipment assemblies from original reference 1. LEFT / CENTER: one very compact short warm BRASS CANNON on a little brown wooden cradle/carriage. Its broad hollow muzzle faces LEFT and a little toward viewer, its barrel rises to upper-right, with a few large raised rings and one dark trunnion. The blocky wooden cradle below has EXACTLY TWO visible large round wooden spoked wheels: one lower-left and one lower-right, the right wheel with a dark iron tire. Preserve this original miniature equipment silhouette without adding a crew or chassis extension. LOWER RIGHT: ONE separate wooden scoop, bowl full of a small clustered handful of dark round shot/pellets, and a short handle projecting upper-right. Simplify the tiny shot texture into a few clear chunky dark rounded forms; keep the filled scoop's functional meaning. No sparks, flame, smoke, fuse, explosion, emblem, crew, horse or scenery.",
+    "unitNote": "No corresponding approved unit idle source found in current approved-v5 tree; original equipment board and baseline equipment runtime remain identity authority. Existing chunky equipment family governs material style.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-39178985-3a66-483e-aab6-429b623da391.png"
+  },
+  {
+    "slug": "anti-large-kit",
+    "topic": "C01-EQUIP-ANTI-LARGE-KIT",
+    "index": 44,
+    "board": "04",
+    "row": 4,
+    "col": 1,
+    "box": [
+      2,
+      942,
+      312,
+      1252
+    ],
+    "sha": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-anti-large-kit-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-anti-large-kit",
+    "unitRefs": [],
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+    ],
+    "subject": "Exactly TWO equipment tools matching original reference 1. LEFT: one long thick dark iron armor-piercing spike, diagonally lower-left to upper-right. Its top is a broad angular TRIANGULAR arrowhead with two swept side points; its long squared metal shank reaches a heavy polygonal collar near the lower-left, from which a short narrow metal tail ends in ONE closed oval EYE RING. Preserve the visible open hole and arrowhead orientation. RIGHT: ONE short heavy war hammer, thick brown wooden shaft with only a few broad grip-wrap bands, broad gray rectangular head with a flat blunt left end and a chunky POINTED WEDGE projecting to the RIGHT. A little wood end is visible above its head. Keep both tools separated, parallel diagonal hierarchy, plain matte metal with no rune, crest or readable mark. No extra spear shaft, chain, creature, shield, or hand.",
+    "identity": "Exactly TWO equipment tools matching original reference 1. LEFT: one long thick dark iron armor-piercing spike, diagonally lower-left to upper-right. Its top is a broad angular TRIANGULAR arrowhead with two swept side points; its long squared metal shank reaches a heavy polygonal collar near the lower-left, from which a short narrow metal tail ends in ONE closed oval EYE RING. Preserve the visible open hole and arrowhead orientation. RIGHT: ONE short heavy war hammer, thick brown wooden shaft with only a few broad grip-wrap bands, broad gray rectangular head with a flat blunt left end and a chunky POINTED WEDGE projecting to the RIGHT. A little wood end is visible above its head. Keep both tools separated, parallel diagonal hierarchy, plain matte metal with no rune, crest or readable mark. No extra spear shaft, chain, creature, shield, or hand.",
+    "unitNote": "No corresponding approved unit idle source found in current approved-v5 tree; original equipment board and baseline equipment runtime remain identity authority. Existing chunky equipment family governs material style.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-15601f0f-6162-4316-8af1-0018638cf43a.png"
+  }
+]

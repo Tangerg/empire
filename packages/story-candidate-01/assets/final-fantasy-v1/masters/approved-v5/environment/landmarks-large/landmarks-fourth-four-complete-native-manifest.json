@@ -1,0 +1,255 @@
+{
+  "atlas": "landmarks-large",
+  "status": "last four native sources complete; runtime registration and gameplay review handled separately by parent",
+  "asset_count": 4,
+  "entries": [
+    {
+      "identity": "cemetery-chapel-compound",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/cemetery-chapel-compound-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 12,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-386ccc16-9197-48ef-a8d9-d04cbe3fe283.png",
+      "sha256": "ce3f344e3d8989a07c85aced9de2c66c7737087d4b63391512c40d73db8645ac",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "cemetery-chapel-compound",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/cemetery-chapel-compound-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    },
+    {
+      "identity": "river-gate-fort",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/river-gate-fort-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1187
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 13,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-820a0193-0bfd-49bc-b0b1-5dfc50194410.png",
+      "sha256": "36d9eb6b73cbba267838b5ad91f9fabe5db08c67267923bb44041f47b5124825",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "river-gate-fort",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/river-gate-fort-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    },
+    {
+      "identity": "guildhall-market",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/guildhall-market-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1164
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 14,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-93a96d59-020a-4b1a-94e7-db5542d0dc5b.png",
+      "sha256": "c8fede6af0dc38667b1e3ebadf46885187b57a511bd2c6a2f38f0b77ba818e7a",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "guildhall-market",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/guildhall-market-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    },
+    {
+      "identity": "black-oath-fortress",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/black-oath-fortress-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 15,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7ef03fec-a0c6-4314-8ca2-69f1b9bd1e8a.png",
+      "sha256": "71f8ba47ecae4b5a69999b5c6c05ffe488750058933481e636cf702df36e872b",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "black-oath-fortress",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/black-oath-fortress-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    }
+  ],
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "all_source_gates_pass": true,
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "full_native_canvas": [
+      1254,
+      1254
+    ]
+  },
+  "scene_policy": "c01-01 denyAtlases and formal interactive three-state bindings unchanged",
+  "no_repository_edits": true
+}

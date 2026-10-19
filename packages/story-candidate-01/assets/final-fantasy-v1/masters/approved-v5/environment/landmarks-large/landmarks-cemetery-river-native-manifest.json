@@ -1,0 +1,119 @@
+{
+  "atlas": "landmarks-large",
+  "asset_count": 2,
+  "status": "native pair complete; river decorative pile variation pending parent review; registration pending",
+  "entries": [
+    {
+      "identity": "cemetery-chapel-compound",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/cemetery-chapel-compound-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 12,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/cemetery-chapel-compound/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-386ccc16-9197-48ef-a8d9-d04cbe3fe283.png",
+      "sha256": "ce3f344e3d8989a07c85aced9de2c66c7737087d4b63391512c40d73db8645ac",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "cemetery-chapel-compound",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/cemetery-chapel-compound-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    },
+    {
+      "identity": "river-gate-fort",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/river-gate-fort-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1187
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 13,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/river-gate-fort/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-820a0193-0bfd-49bc-b0b1-5dfc50194410.png",
+      "sha256": "36d9eb6b73cbba267838b5ad91f9fabe5db08c67267923bb44041f47b5124825",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "river-gate-fort",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/river-gate-fort-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

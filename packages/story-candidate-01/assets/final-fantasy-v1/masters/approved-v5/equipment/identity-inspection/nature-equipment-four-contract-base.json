@@ -1,0 +1,76 @@
+[
+  {
+    "slug": "druid",
+    "topic": "C01-EQUIP-DRUID",
+    "index": 21,
+    "board": "03",
+    "row": 2,
+    "col": 2,
+    "box": [
+      316,
+      316,
+      625,
+      625
+    ],
+    "sha": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-druid-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-druid",
+    "unitRefs": []
+  },
+  {
+    "slug": "rune-artificer",
+    "topic": "C01-EQUIP-RUNE-ARTIFICER",
+    "index": 8,
+    "board": "02",
+    "row": 1,
+    "col": 1,
+    "box": [
+      2,
+      2,
+      442,
+      442
+    ],
+    "sha": "54cc903dacbc853b5b842fe56e771f0d561486a61e1be4a8a1f4f20e7d049e6a",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-rune-artificer-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-rune-artificer",
+    "unitRefs": []
+  },
+  {
+    "slug": "woodland-walker",
+    "topic": "C01-EQUIP-WOODLAND-WALKER",
+    "index": 20,
+    "board": "03",
+    "row": 2,
+    "col": 1,
+    "box": [
+      2,
+      316,
+      312,
+      625
+    ],
+    "sha": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-woodland-walker-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-woodland-walker",
+    "unitRefs": []
+  },
+  {
+    "slug": "gravekeeper",
+    "topic": "C01-EQUIP-GRAVEKEEPER",
+    "index": 10,
+    "board": "02",
+    "row": 1,
+    "col": 3,
+    "box": [
+      889,
+      2,
+      1328,
+      442
+    ],
+    "sha": "54cc903dacbc853b5b842fe56e771f0d561486a61e1be4a8a1f4f20e7d049e6a",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-gravekeeper-cell.png",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-gravekeeper",
+    "unitRefs": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/master.png"
+    ]
+  }
+]

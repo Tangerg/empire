@@ -1,0 +1,119 @@
+{
+  "atlas": "landmarks-large",
+  "asset_count": 2,
+  "status": "native pair complete; parent registration pending",
+  "entries": [
+    {
+      "identity": "guildhall-market",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/guildhall-market-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1164
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 14,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-93a96d59-020a-4b1a-94e7-db5542d0dc5b.png",
+      "sha256": "c8fede6af0dc38667b1e3ebadf46885187b57a511bd2c6a2f38f0b77ba818e7a",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "guildhall-market",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/guildhall-market-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    },
+    {
+      "identity": "black-oath-fortress",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/black-oath-fortress-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 15,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7ef03fec-a0c6-4314-8ca2-69f1b9bd1e8a.png",
+      "sha256": "71f8ba47ecae4b5a69999b5c6c05ffe488750058933481e636cf702df36e872b",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "black-oath-fortress",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/black-oath-fortress-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json"
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}
