@@ -1,0 +1,235 @@
+{
+  "atlas": "cliff-modules-highland",
+  "count": 4,
+  "status": "native catalog review only",
+  "original_cells_empty": true,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "shape_label_findings": "Slot8 convex-corner is actually a broken stepped rock ledge, high rear-left descending foreground-right, with a little basal snow. Slot9 broken-ledge is a narrow compact column bundle; slot10 low-ledge is a slightly broader compact column bundle, not a long ledge. Preserve these actual original forms and labels/index without remapping. Slot11 is a snow-dusted rubble slope, high rear-right descending front-left; it extends2.5px left of the nominal fractional slot. No collision metadata inferred.",
+  "runtime_neighbor_contamination": {
+    "slot8_bottom": "spike tip from slot12 crossing upward5.5px; excluded from new slot8 subject",
+    "slot10_bottom": "spike tip from slot14 crossing upward5.5px; excluded from new slot10 subject"
+  },
+  "source_foot_warning": "Projected module feet are approximate visual registration measurements, separate from physical contacts and surface endpoints. No automatically connecting ports or gameplay traversal metadata is asserted.",
+  "entries": [
+    {
+      "working_file_alias": "highland-cliff-convex-corner",
+      "registered_semantic_cell_id": null,
+      "cell_index": 8,
+      "original_cellOrder_token": "convex-corner",
+      "catalog_only": true,
+      "observed_original_geometry": "Broken/stepped rocky ledge with descending block steps; differs from a simple convex corner",
+      "native_review": "Actual original broken stepped ledge retained despite convex-corner label: a broad high rear-left rock group descends through irregular attached column terraces to the front-right. Top remains bare stone, with only a little original-like snow among low front rocks. Complete connected silhouette and coarse matte planes; no smooth convex clone, detached pillar tip, artificial regular staircase or snow cap.",
+      "source_foot_estimate_px": [
+        627,
+        1097
+      ],
+      "source_foot_semantics": "whole-group projected front basal baseline, separate from the high rear cap and lower-right step contacts",
+      "source_local_landmark_estimates_px": {
+        "high_rear_cap_center": [
+          612,
+          226
+        ],
+        "mid_terrace_center": [
+          733,
+          657
+        ],
+        "low_front_rock_contact": [
+          741,
+          1090
+        ],
+        "left_basal_contact": [
+          144,
+          841
+        ],
+        "right_basal_contact": [
+          1130,
+          972
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        40,
+        168,
+        20,
+        148
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-convex-corner/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-convex-corner/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-convex-corner/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-broken-ledge",
+      "registered_semantic_cell_id": null,
+      "cell_index": 9,
+      "original_cellOrder_token": "broken-ledge",
+      "catalog_only": true,
+      "observed_original_geometry": "Single narrow faceted column/block rock pillar; differs from implied broken ledge",
+      "native_review": "Actual original narrow solid column bundle retained despite broken-ledge label. One asymmetric bare-rock cap and joined steep upright column faces taper into a few attached basal stones. Small snow touches remain confined to front foot stones; no snowy cap, horizontal ledge, terrace, detached second pillar or needle spire. Tall narrow silhouette is complete and differs from the wider preceding stepped group.",
+      "source_foot_estimate_px": [
+        627,
+        1183
+      ],
+      "source_foot_semantics": "projected whole-pillar front baseline near the foremost basal stone, distinct from front wall contact and cap center",
+      "source_local_landmark_estimates_px": {
+        "cap_center": [
+          602,
+          280
+        ],
+        "front_wall_base": [
+          624,
+          979
+        ],
+        "front_basal_rock_contact": [
+          738,
+          1183
+        ],
+        "left_basal_contact": [
+          316,
+          945
+        ],
+        "right_basal_contact": [
+          1011,
+          1038
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        161,
+        115,
+        133,
+        60
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 1,
+        "right": 0,
+        "bottom": 0
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-broken-ledge/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-broken-ledge/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-broken-ledge/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-low-ledge",
+      "registered_semantic_cell_id": null,
+      "cell_index": 10,
+      "original_cellOrder_token": "low-ledge",
+      "catalog_only": true,
+      "observed_original_geometry": "Single broader low block pillar with bare cap; no long horizontal ledge",
+      "native_review": "Original slightly broader compact column block retained despite low-ledge label. One continuous bare-rock cap and joined tall column faces form a fuller, wider silhouette than slot9; it was not transformed into a long low ledge. Sparse basal olive groups and small snow patches on a few front stones remain subordinate. Complete top and footing, no detached slot14 tip, second tower, snowy top or terrace.",
+      "source_foot_estimate_px": [
+        627,
+        1185
+      ],
+      "source_foot_semantics": "whole-block projected front baseline along the front basal rock/scrub group, distinct from cap center and front cliff-wall contact",
+      "source_local_landmark_estimates_px": {
+        "cap_center": [
+          650,
+          317
+        ],
+        "front_wall_base": [
+          671,
+          1046
+        ],
+        "front_basal_contact": [
+          638,
+          1176
+        ],
+        "left_basal_contact": [
+          291,
+          1057
+        ],
+        "right_basal_contact": [
+          1073,
+          1038
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        124,
+        156,
+        57,
+        60
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 1,
+        "right": 0,
+        "bottom": 0
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-talus-foot",
+      "registered_semantic_cell_id": null,
+      "cell_index": 11,
+      "original_cellOrder_token": "talus-foot",
+      "catalog_only": true,
+      "observed_original_geometry": "Snow-dusted rocky slope/rubble ramp descending toward foreground-left",
+      "native_review": "Original snow-dusted rocky slope retained, ascending from low front-left to high rear-right. Large exposed irregular blocks interrupt the snow strip and make the surface rougher and less filled than slot5 continuous snow ramp. The increasingly tall right side and complete low approach remain visible; no two-level terrace or separate pillar. The strong silhouette excludes the old fractional-slot clip and remains complete.",
+      "source_foot_estimate_px": [
+        627,
+        1098
+      ],
+      "source_foot_semantics": "projected whole-slope foreground baseline near the low rock footing, separate from low route endpoint and high cap",
+      "source_local_landmark_estimates_px": {
+        "low_surface_endpoint_center": [
+          266,
+          991
+        ],
+        "high_surface_endpoint_center": [
+          913,
+          264
+        ],
+        "middle_slope_center": [
+          591,
+          644
+        ],
+        "left_front_basal_contact": [
+          193,
+          1052
+        ],
+        "right_front_basal_contact": [
+          513,
+          1095
+        ],
+        "rear_right_basal_contact": [
+          1171,
+          768
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        31,
+        210,
+        18,
+        145
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/alpha-qa.json"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "asset": "highland-low-ledge",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1185
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.944976
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 1,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    124,
+    156,
+    57,
+    60
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-low-ledge-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 10,
+  "original_cellOrder_token": "low-ledge",
+  "qualified_original_slot": "cliff-modules-highland:10:low-ledge",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE compact broadish upright rock-column block. The exact original source is a tight joined cluster of gray columns with an exposed pale-gray rock cap, despite its legacy low-ledge name. Preserve its slightly wider compact cap and rounder/squarer block profile than the preceding narrow pillar, without exaggerating it into a very short flat rock. Tall continuous dark gray column faces descend to a few attached angular basal stones and sparse low dry olive scrub. A few original foot rocks can carry tiny restrained snow patches, but the upper cap remains bare stone. No long horizontal wall or ledge, extra independent tower, staircase, hollow, spire, snow lid or turf cap.",
+  "native_review": "Original slightly broader compact column block retained despite low-ledge label. One continuous bare-rock cap and joined tall column faces form a fuller, wider silhouette than slot9; it was not transformed into a long low ledge. Sparse basal olive groups and small snow patches on a few front stones remain subordinate. Complete top and footing, no detached slot14 tip, second tower, snowy top or terrace.",
+  "source_foot_semantics": "whole-block projected front baseline along the front basal rock/scrub group, distinct from cap center and front cliff-wall contact",
+  "source_local_landmark_estimates_px": {
+    "cap_center": [
+      650,
+      317
+    ],
+    "front_wall_base": [
+      671,
+      1046
+    ],
+    "front_basal_contact": [
+      638,
+      1176
+    ],
+    "left_basal_contact": [
+      291,
+      1057
+    ],
+    "right_basal_contact": [
+      1073,
+      1038
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

@@ -1,0 +1,42 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-6f36fe1b-835b-4945-8692-d06da5375cf5.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    54,
+    99,
+    1223,
+    1204
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    54,
+    99,
+    31,
+    50
+  ],
+  "nearOpaquePixelCountGE240": 673411,
+  "diagnostic8pxErosion": {
+    "minAlpha": 38,
+    "pixelsBelow240": 54,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 751,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-equipment-star-vein-mage",
+  "sha256": "0390904e838e7ebf59e16d94b7f7b514371a0afe008e1c4400f920abab2cab4d",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual48 white/black inspection: correct functional identity and main component count, thick outlines/broad cel planes, intact silhouette, no visible halo, haze, solid background or external glow. Narrow-gap antialiasing is not judged as solid-body opacity failure by supplemental morphology.",
+  "postprocessing": "Native master unchanged byte-exact copy. Diagnostic-only full-canvas48 exports and white/black composites are separate. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false
+}

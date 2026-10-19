@@ -1,0 +1,92 @@
+{
+  "atlas": "cliff-modules-highland",
+  "status": "catalog-only original slots10/11 complete; actual compact column and coarse snowy slope retained",
+  "asset_count": 2,
+  "entries": [
+    {
+      "identity": "highland-low-ledge",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/highland-low-ledge-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1185
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "cliff-modules-highland",
+      "cell_index": 10,
+      "original_cellOrder_token": "low-ledge",
+      "file_alias_only": true,
+      "catalog_only": true,
+      "original_per_cell_semantic_metadata": null,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-3a78fa28-06a9-45cf-8489-f2665e8744ec.png",
+      "sha256": "2369abf535aac3f651d103d237e7ae34df10d5df7f79cadb3090554064826795",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-low-ledge/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+      "runtime_atlas_contract": {
+        "logical_cell": [
+          128,
+          128
+        ],
+        "hd_cell": [
+          256,
+          256
+        ],
+        "atlas_anchor": [
+          64,
+          127
+        ],
+        "registered_semantic_cell_id": null
+      }
+    },
+    {
+      "identity": "highland-talus-foot",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/highland-talus-foot-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1098
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "cliff-modules-highland",
+      "cell_index": 11,
+      "original_cellOrder_token": "talus-foot",
+      "file_alias_only": true,
+      "catalog_only": true,
+      "original_per_cell_semantic_metadata": null,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-d1b17483-c4ab-4d57-ae95-2512a1903375.png",
+      "sha256": "df90f6a5507e72de2c8685ad9017c25d0291a8077b9abfa255f695fd28b76dae",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-talus-foot/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+      "runtime_atlas_contract": {
+        "logical_cell": [
+          128,
+          128
+        ],
+        "hd_cell": [
+          256,
+          256
+        ],
+        "atlas_anchor": [
+          64,
+          127
+        ],
+        "registered_semantic_cell_id": null
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_automatic_interface_connectivity_claim": true,
+  "no_repository_edits": true
+}

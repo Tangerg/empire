@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-guard-robot",
+  "assetId": "C02-SFV1-equipment-guard-robot",
+  "label": "守卫机器人主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 4
+  },
+  "sourceCropBox": [
+    945,
+    945,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 subjects and catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-guard-robot.png",
+  "runtimeReferenceSha256": "3f40c26a4967b030b124c5ad96d462ada85a0fe6330cc961229671025a71980e",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-44bb068f-86cf-485d-9be7-693dfb694d3d.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-guard-robot/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original equipment-board-01 r4c4 preserved: one isolated guard forearm/gripper with exactly two curved segmented pincer fingers, open C gap, ivory/graphite chassis, amber hose loop and opaque cyan circular coupling plus bounded side inserts. No full character or extra fingers. Broad matte geometry; source perimeter<=1 and actual48 white-black review passed.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
