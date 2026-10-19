@@ -13,15 +13,15 @@
       "mission-unit": 1,
       "skill": 24
     },
-    "rawPreservedTopics": 195,
+    "rawPreservedTopics": 199,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 151
+    "registeredEnvironmentCells": 155
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 151,
+    "registeredIndividualSourceCells": 155,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1987,7 +1987,10 @@
       "label": "狼骑兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-b/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -5752,8 +5755,10 @@
       "category": "skill",
       "label": "架桥",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-25/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5766,8 +5771,10 @@
       "category": "skill",
       "label": "拆桥",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-26/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10742,8 +10749,10 @@
       "category": "equipment",
       "label": "浮城枪卫主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-floating-city-guard/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10834,8 +10843,10 @@
       "category": "equipment",
       "label": "悬浮枪骑主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-hover-lancer/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -18837,7 +18848,11 @@
         "convex-corner",
         "broken-ledge",
         "low-ledge",
-        "talus-foot"
+        "talus-foot",
+        "pillar-wide",
+        "pillar-narrow",
+        "ledge-end",
+        "plateau-cap"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18853,10 +18868,14 @@
           "convex-corner",
           "broken-ledge",
           "low-ledge",
-          "talus-foot"
+          "talus-foot",
+          "pillar-wide",
+          "pillar-narrow",
+          "ledge-end",
+          "plateau-cap"
         ],
         "status": "catalog-only index-preserving export; no scene consumer verified",
-        "source": "12 native transparent masters",
+        "source": "16 native transparent masters",
         "registration": "fullcanvas124logical at[2,2]; originalanchor64,127 unchanged; measured contact differs",
         "liveGame": "pending",
         "evidence": "approved-v5/highland-index-export"
