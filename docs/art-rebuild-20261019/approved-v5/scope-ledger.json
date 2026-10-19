@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 290,
+    "formalBound": 291,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 30,
+      "combat-unit": 31,
       "equipment": 95,
       "interactive-structure": 24,
       "mission-unit": 2,
@@ -1524,11 +1524,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-cannon-wagon.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-cannon-wagon.png",
+      "stageEvidence": {
+        "raw": "four native transparent poses, original covered cannon cart plus one crew; rejected flash/step attempts preserved",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no domain unit consumer, explicitly not c01.supply-wagon",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
