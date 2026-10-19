@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-950c9135-aaa2-4717-86b5-398ca4dca119.png",
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "sha256": "24af27ccfd3f89264ce21ed7db74bcee7516510355bc27b08f1aa19e61ba5f1a",
+  "bboxAlphaNonzero": [
+    51,
+    42,
+    1448,
+    965
+  ],
+  "bboxAlphaGreaterThan127": [
+    343,
+    46,
+    1349,
+    962
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1115789,
+  "alphaOnePixels": 4063,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        400,
+        918,
+        600,
+        975
+      ],
+      "soleY": 937,
+      "bottomBandMeanX": 552.0793650793651,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        790,
+        850,
+        1085,
+        980
+      ],
+      "soleY": 961,
+      "bottomBandMeanX": 967.9529780564263,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    760.0161715678958,
+    949.0
+  ],
+  "suggestedSourceFoot": [
+    760,
+    961
+  ],
+  "lockedBodyScale": 0.04837822979659153,
+  "masterRawHashMatches": true,
+  "semanticReview": "Front screen-right boot flat and weight-bearing; rear screen-left heel clearly raised with toe down. Opposite walk-a, same facing and physical leg identity. Each hand retains its original separate short single-bladed axe."
+}

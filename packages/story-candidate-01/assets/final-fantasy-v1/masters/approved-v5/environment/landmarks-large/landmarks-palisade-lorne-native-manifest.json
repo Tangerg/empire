@@ -1,0 +1,119 @@
+{
+  "atlas": "landmarks-large",
+  "status": "native pair complete; parent160/320 registration and review pending",
+  "asset_count": 2,
+  "entries": [
+    {
+      "identity": "border-palisade-fort",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/border-palisade-fort-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 0,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-54016ba6-fb94-4017-8db2-e6ca7a43f02a.png",
+      "sha256": "5125f1cc588a485a4f0e7b5bdc537ca0b96548ec7b5805cabf3de1ae8e02fb67",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "border-palisade-fort",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-palisade-fort-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-first-four-consumer-contract.json"
+    },
+    {
+      "identity": "lorne-stone-castle",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/lorne-stone-castle-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/evidence.json",
+      "source_foot_estimate_px": [
+        672,
+        1204
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-accdf0c6-bba8-4d87-bbaf-4ede6beb87b1.png",
+      "sha256": "be648d31f13e5b8312b655be1147890a39edae788415e363658a640fbde76298",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "lorne-stone-castle",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/lorne-stone-castle-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-first-four-consumer-contract.json"
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

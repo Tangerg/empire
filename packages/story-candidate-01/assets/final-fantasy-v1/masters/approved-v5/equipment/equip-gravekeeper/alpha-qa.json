@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-EQUIP-GRAVEKEEPER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5488497414334735,
+  "nearOpaqueFractionAlphaGE250": 0.4287136029140562,
+  "nonzeroAlphaBBox": [
+    0,
+    20,
+    1240,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    60,
+    77,
+    1177,
+    1183
+  ],
+  "visibleAlphaBBoxGE128": [
+    62,
+    78,
+    1176,
+    1181
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    62,
+    78,
+    78,
+    73
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 76,
+  "sha256": "f0ea168b0e807c4abbfa19baa591329c8fd42440f42554d0bf1c10096081f5af",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo.",
+    "Exactly three overlapping wood tags retained, plus one shovel and one round stamp tool; no lantern imported from unit."
+  ],
+  "identityVerified": "Exactly three assemblies: short brown-handled steel shovel at left, three blank wood tags suspended from one rope loop upper-right, heavy round metal seal stamp lower-right with a short round knob/handle and a compact indistinct raised original motif on the oval-appearing stamp face. No lantern or added readable inscriptions.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCaveat": "Seal stamp motif literal meaning remains uncertain in the original; verified only its raised rounded top bar, narrow central voids and branching side/lower lobes. Selected source follows those contours without claiming a readable or newly defined symbol."
+}

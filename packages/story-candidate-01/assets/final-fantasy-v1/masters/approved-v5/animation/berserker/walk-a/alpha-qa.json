@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7f9bae26-014d-4702-95fb-a8c67a23a940.png",
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "sha256": "9782723dc6f1f031095d8b3259fd479eb6e9d4e8dfc676ff90d274f07b6da542",
+  "bboxAlphaNonzero": [
+    2,
+    23,
+    1418,
+    964
+  ],
+  "bboxAlphaGreaterThan127": [
+    363,
+    51,
+    1332,
+    961
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1117328,
+  "alphaOnePixels": 3603,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        450,
+        910,
+        665,
+        985
+      ],
+      "soleY": 956,
+      "bottomBandMeanX": 561.405325443787,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        880,
+        850,
+        1140,
+        985
+      ],
+      "soleY": 960,
+      "bottomBandMeanX": 913.6933333333334,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    737.5493293885602,
+    958.0
+  ],
+  "suggestedSourceFoot": [
+    738,
+    960
+  ],
+  "lockedBodyScale": 0.04837822979659153,
+  "masterRawHashMatches": true,
+  "semanticReview": "Front screen-right boot clearly toe-up with visible sole/heel contact; rear screen-left boot flat and weight-bearing. Both separate original axes retained, one per hand, no hand/shaft fusion."
+}

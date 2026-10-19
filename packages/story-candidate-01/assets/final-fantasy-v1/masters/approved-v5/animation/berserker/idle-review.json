@@ -1,0 +1,46 @@
+{
+  "topicId": "C01-UNIT-BERSERKER",
+  "status": "Idle visually approved by coordinator2026-10-19 18:02UTC; remaining poses authorized",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/master.png",
+  "nativeCanvas": [
+    1586,
+    992
+  ],
+  "sourceFoot": [
+    782,
+    962
+  ],
+  "sourceFootMidpoint": [
+    781.7860625179237,
+    957.5
+  ],
+  "bodyCrownY": 48,
+  "bodyHeight": 909.5,
+  "proposedSharedScale": {
+    "numerator": 44,
+    "denominator": 909.5,
+    "value": 0.04837822979659153
+  },
+  "identityReview": "Original olive-green skin, pointed ears/small tusks, dark swept-back braids, bone necklace, rust-red quilted coat and arm ties, brown bracers/pouch/boots. Two separate short single-bladed axes, one in each original hand. Broad matte head/hands/boots; complete silhouette.",
+  "alphaGate": {
+    "perimeterMaxAlpha": 1,
+    "perimeterCountAlphaGreaterThan1": 0,
+    "passed": true
+  },
+  "completeVisibleBounds": [
+    391,
+    48,
+    1314,
+    963
+  ],
+  "consumerStatus": "Catalog-only; no current rule consumer/binding",
+  "sourceContinuityRepair": "Coordinator2026-10-19 17:59UTC explicitly authorized keeping both axes in attack, repairing original disappearing left axe rather than claiming exact replication.",
+  "postprocessing": "none; native pixels/alpha unchanged",
+  "exactPrompt": "idle/prompt.txt",
+  "request": "idle/request.json",
+  "lockedSharedScale": 0.04837822979659153,
+  "canonicalSourceFoot": [
+    782,
+    962
+  ]
+}

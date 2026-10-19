@@ -1,0 +1,109 @@
+{
+  "asset": "lorne-stone-castle",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-accdf0c6-bba8-4d87-bbaf-4ede6beb87b1.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 727510,
+  "opaque_pixels": 640,
+  "partial_alpha_pixels": 844366,
+  "near_opaque_alpha_250_255_pixels": 813774,
+  "nonzero_alpha_bbox": [
+    40,
+    24,
+    1224,
+    1235
+  ],
+  "strong_alpha_bbox": [
+    44,
+    27,
+    1213,
+    1230
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      40,
+      24,
+      1224,
+      1235
+    ],
+    "16": [
+      43,
+      26,
+      1214,
+      1230
+    ],
+    "128": [
+      44,
+      27,
+      1213,
+      1230
+    ],
+    "250": [
+      45,
+      32,
+      1212,
+      1228
+    ]
+  },
+  "margin_pixels_LTRB": [
+    40,
+    24,
+    30,
+    19
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    44,
+    27,
+    41,
+    24
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": true,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "be648d31f13e5b8312b655be1147890a39edae788415e363658a640fbde76298",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true,
+  "authored_foot_alpha_sample": 252
+}

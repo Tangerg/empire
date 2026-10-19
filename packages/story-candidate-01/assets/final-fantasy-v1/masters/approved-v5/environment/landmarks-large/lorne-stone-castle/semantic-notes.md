@@ -1,0 +1,24 @@
+# lorne-stone-castle, landmarks-large index1
+
+## Original identity and native review
+One complete tightly grouped multi-tower gray stone castle in the exact source arrangement. Preserve FOUR major ROUND towers: the tallest roofed rear-left round tower, a shorter roofed front-left round tower, a roofed rear-right round tower, and the nearer front-center/right open crenellated round tower. Thus three round towers have broad dark slate CONICAL roofs and the fourth front round tower has an OPEN battlement top. Between them stands exactly ONE taller narrow square/rectangular central hall with a pointed dark slate hipped roof and one long desaturated blue hanging banner. Preserve the main closed wooden arched gate at lower front-left between the foreground round towers, its short stone steps, the low linked slate-roof gatehouse, and compact attached stepped slate-roof rooms at lower-right. TWO dark burgundy vertical banners hang on the two foreground round towers, with one additional muted blue banner on the right-facing side of the front round tower. Three small source pennants remain on the tall rear-left, central and rear-right roof peaks; leftmost is muted burgundy and the others subdued gray. Keep the tiny source crate group at lower-left and one barrel by the lower-right wall. No extra isolated tower, moat, people, trees or large ground plaza.
+
+Original multi-tower silhouette is unrelated to the single-tower C01-STRUCT-LORNE-KEEP geometry despite similar name. Keep original mixed burgundy/blue banners; do not infer faction colors from the ID.
+
+Native visual review: All four major round towers retained, three with conical roofs and one foreground open battlement; central square roofed hall is separate. Exactly two burgundy and two blue vertical banners plus three small pennants retained. Main front steps, subordinate attached right roofs and little source crate/barrel groups intact. Formal single-tower Lorne keep geometry was used only as style, never substituted.
+
+## Semantic, occupancy and consumer contract
+Original atlas is4x4, 160 logical /320 HD, anchor(80,155)/(160,310), category large-landmark, bottom-anchor ySort. Original occupancy metadata footprint4x4 and obstructionHeight3 are retained. Occupancy is metadata, NOT a measured sprite rectangle, a new collision mask or a request to add a square ground tile.
+Current main src has no direct selector for this environment ID; c01-01.scene.json explicitly denies landmarks-large and an existing test locks that policy. This compound is a distinct catalog environment identity, not an additional normal/damaged/captured state of any of the24 finished interactive structures. C01-STRUCT-LORNE-KEEP and existing gate topics retain their own bindings and geometry. No scene allowlist, footprint, interaction/state binding or repository file was changed.
+
+## Visual foundation and authored source foot
+SourceFoot(672, 1204) is visually selected foreground contact of the nearest round tower masonry base; intentional x672 offset follows the compound geometry, not full-canvas center or alpha bottom. It was chosen on direct native visual review, never computed from global alpha bounds. Physical constituent contacts/landmarks are separately estimated: {"front_gate_stair_contact": [431, 1178], "foreground_round_tower_base": [672, 1204], "right_annex_door_threshold": [971, 1116]}. They are for review, not occupancy cells. The visual base includes only the original tight foundation, stone approach or integral rock support, no extra broad soil slab.
+Provisional full-canvas uniform export factor .12 logical/native (.24 HD/native) maps that sourceFoot to(80,155), with translation(-0.640,10.520) and measured strong-alpha logical bounds[4.64, 13.76, 144.92, 158.12]. This is a calibration suggestion for the parent's tested160/320 adapter, not a tight-alpha crop. Preserve the entire1254 square and review scene scale independently. Native margins are measured in QA; requests for100px were not guaranteed despite complete silhouettes and passing perimeter gate.
+
+## Provenance
+Original full1254 atlas and complete subject crop were inspected; fractional313.5 source quarters are diagnostic only. Exact prompt and source/consumer contracts are saved. Native output was copied byte-exact into raw.png and master with no image cleanup, painting, color adjustment, resize or alpha normalization. Parent handles runtime integration separately.
+
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [44, 27, 41, 24]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

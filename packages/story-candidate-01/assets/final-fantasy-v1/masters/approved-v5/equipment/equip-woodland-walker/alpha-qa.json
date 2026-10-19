@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-WOODLAND-WALKER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5640018925085659,
+  "nearOpaqueFractionAlphaGE250": 0.4156625433381918,
+  "nonzeroAlphaBBox": [
+    0,
+    17,
+    1234,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    81,
+    91,
+    1197,
+    1188
+  ],
+  "visibleAlphaBBoxGE128": [
+    82,
+    92,
+    1196,
+    1185
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    82,
+    92,
+    58,
+    69
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 25,
+  "sha256": "542225e939dab2635811061495262d9f3ed550b426f2069a4add80281a29fcd4",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two objects: upright forked branch club with a few leaves at left, hollow sleeveless bark cuirass at right with visible neck and arm openings, overlapping broad wood plates, a few green vine bindings and a central green heart-shaped inset with subtle leaf veins. No living tree-person or shield.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

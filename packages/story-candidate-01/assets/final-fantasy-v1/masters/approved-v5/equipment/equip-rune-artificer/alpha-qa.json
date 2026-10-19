@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-RUNE-ARTIFICER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5354438365015046,
+  "nearOpaqueFractionAlphaGE250": 0.4394072937890616,
+  "nonzeroAlphaBBox": [
+    0,
+    3,
+    1230,
+    1238
+  ],
+  "visibleAlphaBBoxGE8": [
+    78,
+    123,
+    1177,
+    1170
+  ],
+  "visibleAlphaBBoxGE128": [
+    78,
+    124,
+    1176,
+    1168
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    78,
+    124,
+    78,
+    86
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 22,
+  "sha256": "15a51a4822c16ed6e2a3602f3767b0b29be898d3d7e98ff1bc5b3d6990036e27",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly four objects: square-headed iron hammer with raised pale square-spiral face at left, bronze two-legged divider/compass upper-right with top loop and adjustment screw, two separate bronze/amber rune tiles below (left hollow diamond, right forked Y-shaped glyph). No extra runes or anvil.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

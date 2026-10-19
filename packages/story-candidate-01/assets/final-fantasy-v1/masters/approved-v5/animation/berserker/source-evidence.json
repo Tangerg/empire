@@ -1,0 +1,97 @@
+{
+  "topicId": "C01-UNIT-BERSERKER",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-BERSERKER",
+    "topicId": "C01-UNIT-BERSERKER",
+    "label": "狂战士",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-berserker.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-berserker.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-berserker.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-berserker-templar-inquisitor-ghost.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "56eee17172d98813cd91ed74627a2245ca5828232ed2b5c6282e605f920e4df7"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-berserker.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "3f6903bbdaafbefba2c2ec7f705659fe458369ff438fa49f6a8fa9280d6971dd"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-berserker.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "a97144d3e30015c52d96693f7dadd9f3300349c6a8ddde48dfb18085bcf4e2a0"
+    }
+  },
+  "status": "Source identity reported before generation; idle authorized",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only canonical combat-unit; no current campaign or built-in rule consumer/binding found",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "result": "No C01-UNIT-BERSERKER or berserker unit/weapon mapping"
+  },
+  "ruleSearch": {
+    "paths": [
+      "packages/story-candidate-01/src/units.ts",
+      "packages/story-candidate-01/src/weapons.ts",
+      "packages/content-ancient-empires/src/units.ts",
+      "packages/content-ancient-empires/src/weapons.ts"
+    ],
+    "result": "No berserker unit/weapon rule found"
+  },
+  "referenceExtraction": "Original1254x1254 board FIRST row. Native unresampled row[0,0,1254,320], idle[0,0,314,320], attack[627,0,941,320]; full board/HD/runtime copied unchanged. Four64x96 HD cells extracted.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Adult olive-green orc-like humanoid with pointed ears, small ivory lower tusks, exposed swept-back dark braids, strong brows and clean-shaven chin. Rust-red quilted long sleeveless coat, tan upper-arm bands, brown bracers, bare olive hands, bone/tooth necklace, brown belt/pouch/boots and dark gray-brown front loincloth. Red cloth knot on screen-left upper arm. Each hand holds one short-handled single-bladed axe; left low/down-right, right outward/up-right.",
+  "symbolReview": "Original red upper-arm cloth and bone/tooth necklace retained without invented faction meanings. No new rune, skull or cross.",
+  "sourceFrameInconsistency": "Original third/attack frame drops the screen-left axe and leaves an empty fist; idle/walk frames show both axes. Original walks also advance the same front right foot.",
+  "proposedActionContract": "Use verified idle two-axe identity consistently, reconstruct a meaningful one-axe forward chop with other retained guard and opposite walk contacts. Preserve original hand assignment, no new fifth pose or FX.",
+  "equipmentArtReview": "Distinct C01-EQUIP-BERSERKER original icon shows two single-bladed axes plus a forearm wrap, broadly compatible with unit; equipment is not a character identity replacement.",
+  "scaleContract": "Approved44logical infantry body after idle measurement; one shared scale for full native canvases and measured feet, no per-pose silhouette fit.",
+  "exclusivityCheck": "Coordinator exclusive assignment; target absent before task.",
+  "sourceContinuityRepairApproval": "Coordinator2026-10-19 17:59UTC: retain verified idle two-axe identity consistently; original attack missing left axe is repaired continuity, not exact source replication. Asymmetric two-arm attack approved; no new rule/consumer binding."
+}

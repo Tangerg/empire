@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-DRUID",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5902426430001348,
+  "nearOpaqueFractionAlphaGE250": 0.385522309470937,
+  "nonzeroAlphaBBox": [
+    0,
+    39,
+    1234,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    54,
+    75,
+    1213,
+    1182
+  ],
+  "visibleAlphaBBoxGE128": [
+    55,
+    78,
+    1213,
+    1180
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    55,
+    78,
+    41,
+    74
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 34,
+  "sha256": "09f9cda585108f918473f6229961a16d3ec747f2b950b1ec942db0280dee4288",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly three objects: wooden spiral-crook branch staff with green leaves at left, tied brown leather satchel with three-leaf green emblem at center, round corked brown bottle with incised three-leaf emblem at right. No antlers, person or extra potion.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

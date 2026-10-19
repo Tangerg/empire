@@ -1,0 +1,28 @@
+{
+  "topicId": "c02-battle-prop-cargo-crates",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Original visual source board inspection cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md battle-prop order (lines 255-269), consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. The old manifest-complete.json input is absent; no sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-cargo-crates.png",
+  "runtimeReferenceSha256": "74dc59ceb979150266ff19613779397a7cccf47bf4b471463f1700c491568f68",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

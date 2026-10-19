@@ -1,0 +1,55 @@
+{
+  "identity": "border-palisade-fort",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/border-palisade-fort-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1176
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "landmarks-large",
+  "cell_index": 0,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-54016ba6-fb94-4017-8db2-e6ca7a43f02a.png",
+  "sha256": "5125f1cc588a485a4f0e7b5bdc537ca0b96548ec7b5805cabf3de1ae8e02fb67",
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "category": "large-landmark",
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "original_manifest_cell": {
+    "id": "border-palisade-fort",
+    "footprint": [
+      4,
+      4
+    ],
+    "anchor": [
+      80,
+      155
+    ],
+    "obstructionHeight": 2
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-palisade-fort-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-first-four-consumer-contract.json"
+}

@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6ee3eb4a-4b0a-4763-ad3a-58b35f4acd0d.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "7c68c241fd278e656c6c10c67cf52629fe866049766f6990325f7e4e480b66dd",
+  "bboxAlphaNonzero": [
+    89,
+    42,
+    1523,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    273,
+    45,
+    1350,
+    953
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1105047,
+  "alphaOnePixels": 4587,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        260,
+        850,
+        480,
+        975
+      ],
+      "soleY": 941,
+      "bottomBandMeanX": 361.84142394822004,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        895,
+        850,
+        1175,
+        980
+      ],
+      "soleY": 952,
+      "bottomBandMeanX": 1066.9640287769785,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    714.4027263625992,
+    946.5
+  ],
+  "suggestedSourceFoot": [
+    714,
+    952
+  ],
+  "lockedBodyScale": 0.04837822979659153,
+  "masterRawHashMatches": true,
+  "semanticReview": "Clear asymmetric dual-axe melee action: original near/screen-left arm extends across the front into a forward chop with its own short axe; original far/screen-right arm raises its own second axe in guarded preparation. Two anatomically connected arms and hands, one independent shaft per hand. Front right knee bent/flat, rear left leg braced wide. Both axes complete, no new weapon or FX. This intentionally repairs the original attack disappearing left axe; it does not replicate that source defect."
+}

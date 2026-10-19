@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-EQUIP-GRAVEKEEPER",
+  "assetId": "C01-FFV1-EQUIP-GRAVEKEEPER",
+  "label": "守墓人主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-804d863c-f16e-4670-a37a-1295992dfd7d.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-gravekeeper-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-02.png, row 1 column 3 (one based)",
+    "topicIndex": 10,
+    "inspectionCropCoordinates": [
+      889,
+      2,
+      1328,
+      442
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-gravekeeper.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-02.png",
+    "atlasSha256": "54cc903dacbc853b5b842fe56e771f0d561486a61e1be4a8a1f4f20e7d049e6a",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-gravekeeper-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/master.png"
+  ],
+  "unitIdentityNote": "Current approved gravekeeper unit inspected for material/contours only. It carries a lantern and six tags; the original equipment icon has a shovel, three tags and a seal stamp. Original icon count/grouping wins. Stamp motif is visibly present but literal identity remains uncertain; preserve its contours without assigning a new emblem.",
+  "identityClarification": "Exactly three assemblies: short brown-handled steel shovel at left, three blank wood tags suspended from one rope loop upper-right, heavy round metal seal stamp lower-right with a short round knob/handle and a compact indistinct raised original motif on the oval-appearing stamp face. No lantern or added readable inscriptions.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

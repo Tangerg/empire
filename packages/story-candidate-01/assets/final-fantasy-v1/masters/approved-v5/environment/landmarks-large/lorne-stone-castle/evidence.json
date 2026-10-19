@@ -1,0 +1,108 @@
+{
+  "asset": "lorne-stone-castle",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte architecture family with large stone/wood/roof planes and clear contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    672,
+    1204
+  ],
+  "source_foot_estimate_normalized": [
+    0.535885,
+    0.960128
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    44,
+    27,
+    41,
+    24
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/lorne-stone-castle-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 1,
+  "semantic_counts": {
+    "major_round_towers": 4,
+    "round_conical_roofs": 3,
+    "open_round_battlement_top": 1,
+    "central_square_roofed_hall": 1,
+    "burgundy_front_banners": 2,
+    "muted_blue_vertical_banners": 2,
+    "small_roof_pennants": 3
+  },
+  "render_role": "catalog large-landmark module with upright compound geometry; no direct current consumer and c01-01 explicitly denies this atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    4,
+    4
+  ],
+  "obstructionHeight": 3,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "visually selected foreground contact of the nearest round tower masonry base; intentional x672 offset follows the compound geometry, not full-canvas center or alpha bottom",
+  "source_local_landmark_estimates_px": {
+    "front_gate_stair_contact": [
+      431,
+      1178
+    ],
+    "foreground_round_tower_base": [
+      672,
+      1204
+    ],
+    "right_annex_door_threshold": [
+      971,
+      1116
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/lorne-stone-castle-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-first-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "provisional_export": {
+    "uniform_scale_native_to_logical": 0.12,
+    "uniform_scale_native_to_hd": 0.24,
+    "logical_canvas_translation": [
+      -0.6400000000000006,
+      10.52000000000001
+    ],
+    "expected_strong_bounds_logical": [
+      4.64,
+      13.76,
+      144.92,
+      158.12
+    ],
+    "method": "full native canvas registered via independent visual sourceFoot; not alpha bbox",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
