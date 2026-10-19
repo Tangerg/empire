@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 95,
+    "formalBound": 100,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 18,
-      "equipment": 20,
+      "combat-unit": 19,
+      "equipment": 24,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 96,
+    "rawPreservedTopics": 100,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 121
+    "registeredEnvironmentCells": 123
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 121,
+    "registeredIndividualSourceCells": 123,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1264,14 +1264,22 @@
       "label": "战斧兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/axe-breaker/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/axe-breaker/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/axe-breaker/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/axe-breaker/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/axe-breaker/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-axe-breaker.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-axe-breaker.png",
+      "stageEvidence": {
+        "raw": "native4 poses and original single-blade unit evidence preserved; independent equipment icon has two cutting edges",
+        "export": "shared44/895 scale, measured feet, explicit7.177654 maximum registration/limit8,1 right padding column, native semantic/alpha review passed",
+        "runtimeBinding": "canonical and HD art resolver bound; catalog-only, no current rule consumer invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-BALLISTA",
@@ -4388,13 +4396,20 @@
       "category": "equipment",
       "label": "鹰骑斥候主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-eagle-scout/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-eagle-scout.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment-only source with verified original atlas symbols and counts",
+        "export": "native48 light/dark/olive readability, complete silhouettes and alpha passed",
+        "runtimeBinding": "canonical48 equipment icon resolved, no HD or mounts invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-ENGINEER",
@@ -4885,13 +4900,20 @@
       "category": "equipment",
       "label": "白鹿骑手主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-white-stag-rider/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-white-stag-rider.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment-only source with verified original atlas symbols and counts",
+        "export": "native48 light/dark/olive readability, complete silhouettes and alpha passed",
+        "runtimeBinding": "canonical48 equipment icon resolved, no HD or mounts invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-WOLF-RIDER",
@@ -4899,13 +4921,20 @@
       "category": "equipment",
       "label": "狼骑兵主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-wolf-rider/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-wolf-rider.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment-only source with verified original atlas symbols and counts",
+        "export": "native48 light/dark/olive readability, complete silhouettes and alpha passed",
+        "runtimeBinding": "canonical48 equipment icon resolved, no HD or mounts invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-WOODLAND-WALKER",
@@ -4927,13 +4956,20 @@
       "category": "equipment",
       "label": "飞龙骑手主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-wyvern-rider/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-wyvern-rider.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment-only source with verified original atlas symbols and counts",
+        "export": "native48 light/dark/olive readability, complete silhouettes and alpha passed",
+        "runtimeBinding": "canonical48 equipment icon resolved, no HD or mounts invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-01",
@@ -18259,7 +18295,9 @@
         "keep-foundation",
         "supply-yard",
         "watch-post-ground",
-        "border-gate-ground"
+        "border-gate-ground",
+        "ruined-foundation",
+        "memorial-ground"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18277,12 +18315,14 @@
           "keep-foundation",
           "supply-yard",
           "watch-post-ground",
-          "border-gate-ground"
+          "border-gate-ground",
+          "ruined-foundation",
+          "memorial-ground"
         ],
-        "count": 14,
+        "count": 16,
         "export": "144/288 full-canvas registration, immutable baseline and every non-overridden cell checked",
         "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained. Watch-post and open border-gate native catalog silhouettes/alpha reviewed, original groundPieces and obstruction retained; actual outpost ground0.3 distinguished from catalog0.55 probe.",
+        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained. Watch-post and open border-gate native catalog silhouettes/alpha reviewed, original groundPieces and obstruction retained; actual outpost ground0.3 distinguished from catalog0.55 probe. Final ruined foundation and memorial native review passed; source2wallgroups/1dead tree and1stone/2pines/4candles retained. Entire16-cell family formally exported, actual per-selector scene acceptance remains distinct.",
         "liveGame": "pending"
       }
     },

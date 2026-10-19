@@ -1,6 +1,6 @@
 {
   "topicId": "C01-UNIT-AXE-BREAKER",
-  "status": "Idle visually approved by coordinator2026-10-19 17:49UTC; remaining poses authorized",
+  "status": "Native quartet complete; coordinator final sequence review/export pending",
   "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/master.png",
   "nativeCanvas": [
     1586,
@@ -41,5 +41,7 @@
   "canonicalSourceFoot": [
     770,
     963
-  ]
+  ],
+  "quartetManifest": "bundle-manifest.json",
+  "remainingPosesGenerated": true
 }

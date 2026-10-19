@@ -1,0 +1,864 @@
+{
+  "atlas": "camps-foundations",
+  "asset_count": 16,
+  "entries": [
+    {
+      "id": "gray-camp-ground",
+      "index": 0,
+      "source_foot_estimate_px": [
+        627,
+        1107
+      ],
+      "source_foot_semantics": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "gray-camp-ground",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72.0,
+          121.76076555023923
+        ],
+        "obstructionHeight": 0
+      },
+      "current_main_consumer_summary": "groundPieces foundation for barracks",
+      "semantic_counts": "Flat gray-faction camp ground with exactly five slate-gray hanging banners: tallest at back-center, two rear sides and two near-front sides. Pale silver angular spoke/ring rune emblem copied from the original, not the village cross. Broad tan earth/flagstone court, low central stone ring with unlit/dark contents, sparse perimeter rocks. No active flame or tents.",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/source-evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/master.png",
+      "sha256": "9f333173f36ce246c4ece73864acbbc469de735d8ae3e026c1617ffb150d92cb",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        58,
+        159,
+        57,
+        121
+      ],
+      "foot_alpha_sample": 255,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "vilsa-camp-ground",
+      "index": 1,
+      "source_foot_estimate_px": [
+        627,
+        1086
+      ],
+      "source_foot_semantics": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "vilsa-camp-ground",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72.0,
+          119.58373205741627
+        ],
+        "obstructionHeight": 0
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": "Flat red-brown Vilsa camp ground with exactly five red-brown hanging banners, tallest at back-center, two rear-side and two near-front sides. Banners have gold trim and the original angular radial star/rune motif. Wide open tan stone/earth court, low central stone-ring small active flame and sparse perimeter rocks. No tents.",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/source-evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/master.png",
+      "sha256": "2eb40a8a101aa2a154eaea39207e49cf07b3df28e2ba8754eb9f25caa9c198b1",
+      "alpha_edge_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        110,
+        177,
+        108,
+        146
+      ],
+      "foot_alpha_sample": 253,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "keep-foundation",
+      "index": 2,
+      "source_foot_estimate_px": [
+        627,
+        1148
+      ],
+      "source_foot_semantics": "projected whole-module foreground registration baseline at x627, y1148, aligned to the visually reviewed foremost approach/earth edge; this anchor intentionally falls in transparent space to the right of the diagonal approach, not on a physical stair tread or alpha bbox bottom",
+      "source_foot_kind": "projected whole-module baseline; transparent coordinate intentional",
+      "local_landmark_estimates_px": {
+        "approximate_front_approach_edge_midpoint": [
+          280,
+          1050
+        ],
+        "front_right_approach_corner": [
+          470,
+          1132
+        ],
+        "upper_court_center": [
+          680,
+          480
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "keep-foundation",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          126.01116427432217
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "groundPieces foundation for castle/c01.keep",
+      "semantic_counts": {
+        "raised_empty_stone_court": 1,
+        "corner_piers": 4,
+        "entrance_brazier_pillars": 2,
+        "contained_braziers": 2,
+        "waving_flags": 4,
+        "hanging_banner": 1,
+        "stairs": 1,
+        "paved_approach": 1,
+        "building": 0
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/keep-foundation-master.png",
+      "sha256": "26f5f90fceb81233ac74eaa6f7c524546df4c80f30ddcfc5ac3a9963743f2200",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_margins_LTRB": [
+        62,
+        92,
+        41,
+        88
+      ],
+      "foot_alpha_sample": 0,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "village-square-foundation",
+      "index": 3,
+      "source_foot_estimate_px": [
+        627,
+        1088
+      ],
+      "source_foot_semantics": "Manually reviewed front-center earth-apron boundary, aligned to native canvas center. Selected on the visible ground contact edge, not computed from alpha bounds. Alpha sampled afterwards at this selected point is 243. This is a pilot registration estimate for parent review.",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "village-square-foundation",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72.0,
+          119.79106858054226
+        ],
+        "obstructionHeight": 0
+      },
+      "current_main_consumer_summary": "groundPieces foundation for village",
+      "semantic_counts": "One central open circular masonry well with timber lifting mechanism, continuous paved plaza, three low table/stall stations, one slate-gray flag with pale cross, perimeter crate/tub groups. Functional floor retained intact. The open walking area remains around the well; no invented roof or building.",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/source-evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/master.png",
+      "sha256": "61ae8994f0db7574c7929a63f219d8bab74a25b4a31be70af3b7addc6359bfb4",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        23,
+        213,
+        21,
+        150
+      ],
+      "foot_alpha_sample": 243,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "field-tent-cluster",
+      "index": 4,
+      "source_foot_estimate_px": [
+        627,
+        1000
+      ],
+      "source_foot_semantics": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "field-tent-cluster",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          110.66826156299841
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "CANDIDATE_SETTLEMENT_LIFE standing scenery",
+      "semantic_counts": "Exactly five gray-cloth tents: rear-left large rectangular peaked pavilion, rear-right large round/conical pavilion with open flap, front-left small A-frame/pyramid tent, front-right small peaked tent, and a tiny rear-center tent. Center stone-ring fire with small flame, single central-back crate, left barrel and right small bucket. Maintain collective open camp ground.",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/source-evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/master.png",
+      "sha256": "7c168fe54e501fffa931f409f31342950a508f66eb763b0680f7c78c64ab9fa5",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_margins_LTRB": [
+        112,
+        293,
+        107,
+        242
+      ],
+      "foot_alpha_sample": 209,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "supply-tent-workyard",
+      "index": 5,
+      "source_foot_estimate_px": [
+        627,
+        991
+      ],
+      "source_foot_semantics": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "supply-tent-workyard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          109.73524720893143
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "CANDIDATE_SETTLEMENT_LIFE standing scenery",
+      "semantic_counts": "One open-sided long gray-cloth supply canopy on timber posts, rear-left gray hanging flag with source pale geometric mark/dark middle band, crates stored underneath, several barrel/tub groups around sides, small ceramic jar at front-left, short leaning wood ladder under front-right canopy, and an outside worktable at front-right with broad pale work items. Keep open front workyard and continuous floor.",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/source-evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/master.png",
+      "sha256": "8f4e9e9963503f6eba004a23fe15b0d93a37514d3f72d717ba0c0a0823e74aa6",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        99,
+        227,
+        83,
+        242
+      ],
+      "foot_alpha_sample": 237,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "field-kitchen",
+      "index": 6,
+      "source_foot_estimate_px": [
+        627,
+        1112
+      ],
+      "source_foot_semantics": "visually selected front-center earth contact near the lower central tan perimeter; not the lowest off-center lobe",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "field-kitchen",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          122.27910685805422
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "flag": 1,
+        "tripod": 1,
+        "hanging_cauldron": 1,
+        "contained_fire": 1,
+        "meat_rack": 1,
+        "hanging_meat_strips": 4,
+        "rear_narrow_workbench": 1,
+        "square_stools": 2,
+        "front_table": 1,
+        "front_short_bench": 1,
+        "large_barrel": 1,
+        "wooden_pail": 1,
+        "metal_pot_by_flag": 1
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/field-kitchen-master.png",
+      "sha256": "cce6bfe077aec6d46075a18c9845cd0d01efb76299af6e8983517bd19f115761",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        26,
+        114,
+        25,
+        116
+      ],
+      "foot_alpha_sample": 252,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "wounded-shelter-ground",
+      "index": 7,
+      "source_foot_estimate_px": [
+        627,
+        1144
+      ],
+      "source_foot_semantics": "visually selected front-center soil-apron contact, slightly left of the deepest low lobe; grounded module anchor, not a cot or tent-post foot",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "wounded-shelter-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          125.59649122807018
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "groundPieces foundation for c01.field-post",
+      "semantic_counts": {
+        "open_gray_canvas_shelter": 1,
+        "corner_supports": 4,
+        "cot_or_stretcher": 1,
+        "flag": 1,
+        "left_open_supply_crate": 1,
+        "right_large_supply_crate": 1,
+        "partly_occluded_supply_stacks": 2,
+        "large_ceramic_urn": 1,
+        "small_jug": 1,
+        "people": 0
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/wounded-shelter-ground-master.png",
+      "sha256": "df80711f3edc544804d42913667f5b6bc454de74337c3d5155448c0fd9547ca1",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_margins_LTRB": [
+        31,
+        100,
+        31,
+        94
+      ],
+      "foot_alpha_sample": 252,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "forge-workyard",
+      "index": 8,
+      "source_foot_estimate_px": [
+        627,
+        1103
+      ],
+      "source_foot_semantics": "visually selected front-center earth-apron contact on the low rounded central soil lobe; whole module anchor, separate from individual worktable legs",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "forge-workyard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          121.34609250398724
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "open_front_shed": 1,
+        "flag": 1,
+        "stone_forge": 1,
+        "round_fuel_container": 1,
+        "foreground_anvil_table": 1,
+        "prominent_anvil": 1,
+        "small_left_tool_table": 1,
+        "upright_weapon_rack": 1,
+        "upright_spears": 3,
+        "barrel": 1,
+        "angled_front_tool_support": 1,
+        "long_tools_on_front_support": 2
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/forge-workyard-master.png",
+      "sha256": "730c4711cf8b1f534f88c6c954fbcd2b4d69f6341e69f9884dd629ca0bcc4059",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        36,
+        120,
+        32,
+        141
+      ],
+      "foot_alpha_sample": 253,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "livestock-pen",
+      "index": 9,
+      "source_foot_estimate_px": [
+        670,
+        1105
+      ],
+      "source_foot_semantics": "visually selected forward soil-apron contact near x670, below and slightly left of the closest right-front fence corner; actual fence corner support is higher, about(754,1063)",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "livestock-pen",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          76.45773524720893,
+          121.55342902711324
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "enclosed_pen": 1,
+        "lean_to_shelter": 1,
+        "flag": 1,
+        "rectangular_trough": 1,
+        "round_feed_bowl": 1,
+        "hay_patch": 1,
+        "animals": 0,
+        "people": 0
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/livestock-pen-master.png",
+      "sha256": "6069409fc1c7b959335278393a9bd565ee423b732be26d5b881164918d3abdb2",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        35,
+        133,
+        24,
+        144
+      ],
+      "foot_alpha_sample": 253,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "supply-yard",
+      "index": 10,
+      "source_foot_estimate_px": [
+        627,
+        1107
+      ],
+      "source_foot_semantics": "visually selected front-center low earth contact under the open central yard; individual furniture contacts remain higher and are not this whole-group anchor",
+      "source_foot_kind": "visible whole-ground contact",
+      "local_landmark_estimates_px": {
+        "folding_frame_front_contact": [
+          473,
+          993
+        ],
+        "front_sorting_table_leg_contact": [
+          868,
+          722
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "supply-yard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          121.76076555023923
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "flag": 1,
+        "narrow_rolled_awning": 1,
+        "slatted_sorting_table": 1,
+        "prominent_gray_iron_bound_chests": 2,
+        "wrapped_bales_left": 2,
+        "barrel": 1,
+        "central_open_box": 1,
+        "foreground_folding_frame": 1,
+        "left_storage_cluster": 1,
+        "right_storage_cluster": 1
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/supply-yard-master.png",
+      "sha256": "f4aa7972fff8a1abfb8690f85675055cc142039a05476643a652a41d2ed01a68",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        35,
+        133,
+        34,
+        134
+      ],
+      "foot_alpha_sample": 252,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "watch-post-ground",
+      "index": 11,
+      "source_foot_estimate_px": [
+        665,
+        1174
+      ],
+      "source_foot_semantics": "visually selected central foreground soil-apron contact below the tower and scattered rocks; whole clearing anchor",
+      "source_foot_kind": "visible whole-ground contact",
+      "local_landmark_estimates_px": {
+        "front_right_tower_leg_contact": [
+          577,
+          837
+        ],
+        "front_ladder_foot": [
+          431,
+          870
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "watch-post-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          75.93939393939394,
+          128.70653907496012
+        ],
+        "obstructionHeight": 2
+      },
+      "current_main_consumer_summary": "groundPieces foundation for c01.outpost",
+      "semantic_counts": {
+        "elevated_timber_watch_platform": 1,
+        "support_legs": 4,
+        "shallow_plank_canopy": 1,
+        "ladder": 1,
+        "flag": 1,
+        "rear_fence_run": 1,
+        "front_right_broken_fence_remnant": 1,
+        "occupants": 0
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/watch-post-ground-master.png",
+      "sha256": "092016f2fb340c01ac1c4141044e1d97b98d91b45dea44a9748880f0e24e2071",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        42,
+        87,
+        41,
+        72
+      ],
+      "foot_alpha_sample": 183,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "border-gate-ground",
+      "index": 12,
+      "source_foot_estimate_px": [
+        627,
+        1143
+      ],
+      "source_foot_semantics": "visually selected foreground outer earth-verge contact near the center of the whole road-and-gateway module; not the midpoint of the diagonal road end or individual tower foot",
+      "source_foot_kind": "visible whole-ground contact",
+      "local_landmark_estimates_px": {
+        "foreground_road_edge_midpoint": [
+          355,
+          1059
+        ],
+        "clear_gate_passage_center": [
+          630,
+          650
+        ],
+        "right_gatepost_ground_contact": [
+          907,
+          865
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "border-gate-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          125.49282296650718
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "stone_gateposts": 2,
+        "pyramidal_cap_roofs": 2,
+        "roof_finials": 2,
+        "open_gate_leaves": 2,
+        "outer_fence_wings": 2,
+        "continuous_paved_road": 1,
+        "wheel_rut_bands": 2
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/border-gate-ground-master.png",
+      "sha256": "1387e9c395c78d976f9a8e81d2d9766651978ee4d8d4301c1c0e71de2a39a179",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_margins_LTRB": [
+        58,
+        178,
+        30,
+        104
+      ],
+      "foot_alpha_sample": 249,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "abandoned-cart-stop",
+      "index": 13,
+      "source_foot_estimate_px": [
+        627,
+        1054
+      ],
+      "source_foot_semantics": "visually selected forward contact edge of whole functional muddy stopping-place; retains group standing registration; not alpha bottom",
+      "source_foot_kind": "see individual evidence",
+      "local_landmark_estimates_px": {},
+      "original_manifest_cell": {
+        "id": "abandoned-cart-stop",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          116.26634768740031
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "CANDIDATE_SETTLEMENT_LIFE standing scenery",
+      "semantic_counts": {
+        "covered_wagon": 1,
+        "visible_near_side_wheels": 2,
+        "forward_shafts": 2,
+        "barrels": 2,
+        "open_crate": 1,
+        "low_wooden_table_or_platform": 1,
+        "lantern_post": 1,
+        "hanging_lantern": 1
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/abandoned-cart-stop-master.png",
+      "sha256": "d6fca81800922e3934083481cd557522d6746141c8591bc8ee4d41cb159d36f0",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        104,
+        237,
+        84,
+        183
+      ],
+      "foot_alpha_sample": 253,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "ruined-foundation",
+      "index": 14,
+      "source_foot_estimate_px": [
+        627,
+        1074
+      ],
+      "source_foot_semantics": "visually selected central foreground earth contact below the empty ruined footprint; separate from surviving wall/tree contact points",
+      "source_foot_kind": "visible whole-ground contact",
+      "local_landmark_estimates_px": {
+        "left_wall_foreground_contact": [
+          315,
+          790
+        ],
+        "short_wall_foreground_contact": [
+          932,
+          985
+        ],
+        "tree_root_area": [
+          995,
+          715
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "ruined-foundation",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "connected_left_rear_ruined_wall_group": 1,
+        "tall_chimney_like_stone_pier": 1,
+        "low_doorway_or_fireplace_opening": 1,
+        "separate_front_right_short_wall": 1,
+        "dead_tree": 1,
+        "intact_roof": 0,
+        "people": 0
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/ruined-foundation-master.png",
+      "sha256": "3c145b12af9c322263ffabf0688ba5d3d56833decea1db368628ec1dae46b765",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_margins_LTRB": [
+        19,
+        148,
+        18,
+        169
+      ],
+      "foot_alpha_sample": 252,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    },
+    {
+      "id": "memorial-ground",
+      "index": 15,
+      "source_foot_estimate_px": [
+        627,
+        1115
+      ],
+      "source_foot_semantics": "visually selected front-center inner contact of the low earth outline, near the shallow notch between two rounded foreground lobes",
+      "source_foot_kind": "visible whole-ground contact",
+      "local_landmark_estimates_px": {
+        "memorial_base_contact": [
+          638,
+          809
+        ],
+        "left_tree_base": [
+          431,
+          643
+        ],
+        "right_tree_base": [
+          974,
+          723
+        ],
+        "front_right_candle_base": [
+          800,
+          971
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "memorial-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "semantic_counts": {
+        "upright_memorial_stone": 1,
+        "conifer_pines": 2,
+        "candles": 4,
+        "contained_candle_flames": 4,
+        "text": 0
+      },
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/evidence.json",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/memorial-ground-master.png",
+      "sha256": "797af86bb69557991ea86631a0c5a2f93043ea64f1911ad9e4d2e74463a835aa",
+      "alpha_edge_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_margins_LTRB": [
+        47,
+        125,
+        37,
+        114
+      ],
+      "foot_alpha_sample": 253,
+      "integration_warning": "Explicit sourceFoot and original layer semantics required; retain entire native canvas, never crop-to-alpha. Functional earth/paving is content."
+    }
+  ],
+  "current_main_consumer_scope": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src",
+  "critical_contract": "Atlas category foundation and obstructionHeight do not imply one universal runtime layer. Preserve actual groundPieces foundations versus standing settlement scenery; catalog-only identities retain original metadata until separately assigned. Each foot is a supplied visual authoring estimate, not alpha bbox. Keep foundation uses a projected baseline intentionally located in transparent space; local approach/court landmarks are in individual evidence.",
+  "contact_sheet": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/camps-foundations-full16-contact.png",
+  "no_repository_edits": true
+}

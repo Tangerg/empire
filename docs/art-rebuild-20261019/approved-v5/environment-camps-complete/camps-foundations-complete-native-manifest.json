@@ -1,0 +1,1067 @@
+{
+  "atlas": "camps-foundations",
+  "status": "all16 native sources complete and reverified; runtime integrations handled separately",
+  "asset_count": 16,
+  "entries": [
+    {
+      "identity": "gray-camp-ground",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/raw.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/prompt.txt",
+      "prompt_files": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/prompt.txt"
+      ],
+      "source_foot_estimate_px": [
+        627,
+        1107
+      ],
+      "atlas": "camps-foundations",
+      "cell_index": 0,
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-8a200063-f20b-41a6-826f-26d53b309068.png",
+      "sha256": "9f333173f36ce246c4ece73864acbbc469de735d8ae3e026c1617ffb150d92cb",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "gray-camp-ground",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72.0,
+          121.76076555023923
+        ],
+        "obstructionHeight": 0
+      },
+      "current_main_consumer_summary": "groundPieces foundation for barracks",
+      "source_perimeter_gate_pass": true,
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "vilsa-camp-ground",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/raw.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/prompt.txt",
+      "prompt_files": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/prompt.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/vilsa-camp-ground/refinement-prompt.txt"
+      ],
+      "source_foot_estimate_px": [
+        627,
+        1086
+      ],
+      "atlas": "camps-foundations",
+      "cell_index": 1,
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-087f8a49-7571-4279-a748-39e86bd87e00.png",
+      "sha256": "2eb40a8a101aa2a154eaea39207e49cf07b3df28e2ba8754eb9f25caa9c198b1",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "vilsa-camp-ground",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72.0,
+          119.58373205741627
+        ],
+        "obstructionHeight": 0
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "source_perimeter_gate_pass": true,
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "keep-foundation",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/keep-foundation-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1148
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/keep-foundation/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-907edae4-86bd-4a87-86c2-a03c7c4dacfc.png",
+      "sha256": "26f5f90fceb81233ac74eaa6f7c524546df4c80f30ddcfc5ac3a9963743f2200",
+      "atlas": "camps-foundations",
+      "cell_index": 2,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/keep-foundation-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "keep-foundation",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "actual CANDIDATE_FOUNDATIONS castle and c01.keep consumer in groundPieces; scale0.3 at tile lower center; preserve ground-foundation rendering despite raised stone contents",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "keep-foundation",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          126.01116427432217
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "groundPieces foundation for castle/c01.keep",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "village-square-foundation",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/raw.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/prompt.txt",
+      "prompt_files": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/prompt.txt"
+      ],
+      "source_foot_estimate_px": [
+        627,
+        1088
+      ],
+      "atlas": "camps-foundations",
+      "cell_index": 3,
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-960d7ce1-8d00-4b1a-a73a-355d65f4be0a.png",
+      "sha256": "61ae8994f0db7574c7929a63f219d8bab74a25b4a31be70af3b7addc6359bfb4",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "village-square-foundation",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72.0,
+          119.79106858054226
+        ],
+        "obstructionHeight": 0
+      },
+      "current_main_consumer_summary": "groundPieces foundation for village",
+      "source_perimeter_gate_pass": true,
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "field-tent-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/raw.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/prompt.txt",
+      "prompt_files": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/prompt.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/refinement-prompt.txt"
+      ],
+      "source_foot_estimate_px": [
+        627,
+        1000
+      ],
+      "atlas": "camps-foundations",
+      "cell_index": 4,
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7e138cb5-6fc8-4c98-b92b-1535ed16bc68.png",
+      "sha256": "7c168fe54e501fffa931f409f31342950a508f66eb763b0680f7c78c64ab9fa5",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "field-tent-cluster",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          110.66826156299841
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "CANDIDATE_SETTLEMENT_LIFE standing scenery",
+      "source_perimeter_gate_pass": true,
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "supply-tent-workyard",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/raw.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/prompt.txt",
+      "prompt_files": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/prompt.txt"
+      ],
+      "source_foot_estimate_px": [
+        627,
+        991
+      ],
+      "atlas": "camps-foundations",
+      "cell_index": 5,
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-59ed23a5-40ab-40ac-a45b-ca0b729fc4cb.png",
+      "sha256": "8f4e9e9963503f6eba004a23fe15b0d93a37514d3f72d717ba0c0a0823e74aa6",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "original_manifest_cell": {
+        "id": "supply-tent-workyard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          109.73524720893143
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "CANDIDATE_SETTLEMENT_LIFE standing scenery",
+      "source_perimeter_gate_pass": true,
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "field-kitchen",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/field-kitchen-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1112
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-41442e55-3fbc-4b54-8166-886219e7a9a5.png",
+      "sha256": "cce6bfe077aec6d46075a18c9845cd0d01efb76299af6e8983517bd19f115761",
+      "atlas": "camps-foundations",
+      "cell_index": 6,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/field-kitchen-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "field-kitchen",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with standing contents; no direct consumer found in inspected src; preserve bottom-anchor metadata without inventing a runtime layer",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "field-kitchen",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          122.27910685805422
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "wounded-shelter-ground",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/wounded-shelter-ground-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1144
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-cf06658f-3d8a-46b0-a93a-8c4647ce6189.png",
+      "sha256": "df80711f3edc544804d42913667f5b6bc454de74337c3d5155448c0fd9547ca1",
+      "atlas": "camps-foundations",
+      "cell_index": 7,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/wounded-shelter-ground-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "wounded-shelter-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "actual CANDIDATE_FOUNDATIONS c01.field-post consumer in groundPieces; scale 0.3 at tile lower center; keep ground-foundation behavior even though canvas contains upright shelter",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "wounded-shelter-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          125.59649122807018
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "groundPieces foundation for c01.field-post",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "forge-workyard",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/forge-workyard-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1103
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/forge-workyard/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-0f04813e-163f-4ce4-9471-03a72b733ab1.png",
+      "sha256": "730c4711cf8b1f534f88c6c954fbcd2b4d69f6341e69f9884dd629ca0bcc4059",
+      "atlas": "camps-foundations",
+      "cell_index": 8,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/forge-workyard-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "forge-workyard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with standing contents; no direct consumer found in inspected src; preserve bottom-anchor metadata without inventing a runtime layer",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "forge-workyard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          121.34609250398724
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "livestock-pen",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/livestock-pen-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/evidence.json",
+      "source_foot_estimate_px": [
+        670,
+        1105
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/livestock-pen/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7d6f7171-32d1-4426-9c7f-dd247240543d.png",
+      "sha256": "6069409fc1c7b959335278393a9bd565ee423b732be26d5b881164918d3abdb2",
+      "atlas": "camps-foundations",
+      "cell_index": 9,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/livestock-pen-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "livestock-pen",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with standing contents; no direct consumer found in inspected src; distinct from rural-life livestock-pen-small",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "livestock-pen",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          76.45773524720893,
+          121.55342902711324
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "supply-yard",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/supply-yard-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1107
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1cc20d81-b6f6-4a76-98f1-63b86666a346.png",
+      "sha256": "f4aa7972fff8a1abfb8690f85675055cc142039a05476643a652a41d2ed01a68",
+      "atlas": "camps-foundations",
+      "cell_index": 10,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/supply-yard-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "supply-yard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with standing stored objects; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "supply-yard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          121.76076555023923
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "watch-post-ground",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/watch-post-ground-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/evidence.json",
+      "source_foot_estimate_px": [
+        665,
+        1174
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-51c08cea-8feb-42f9-b756-ffcaa264a130.png",
+      "sha256": "092016f2fb340c01ac1c4141044e1d97b98d91b45dea44a9748880f0e24e2071",
+      "atlas": "camps-foundations",
+      "cell_index": 11,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/watch-post-ground-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "watch-post-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 2
+      },
+      "render_role": "actual CANDIDATE_FOUNDATIONS c01.outpost consumer in groundPieces; scale0.3 at tile lower center; preserve this ground-foundation rendering despite tower and obstructionHeight2",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "watch-post-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          75.93939393939394,
+          128.70653907496012
+        ],
+        "obstructionHeight": 2
+      },
+      "current_main_consumer_summary": "groundPieces foundation for c01.outpost",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "border-gate-ground",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/border-gate-ground-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1143
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-b6d88d01-7e28-443e-9ee2-c53feab1d93a.png",
+      "sha256": "1387e9c395c78d976f9a8e81d2d9766651978ee4d8d4301c1c0e71de2a39a179",
+      "atlas": "camps-foundations",
+      "cell_index": 12,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/border-gate-ground-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "border-gate-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with upright gateposts and functional through-road; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "border-gate-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          125.49282296650718
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "abandoned-cart-stop",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/abandoned-cart-stop-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1054
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-d4ff9570-12e3-4e6a-8d43-b25cc3972154.png",
+      "sha256": "d6fca81800922e3934083481cd557522d6746141c8591bc8ee4d41cb159d36f0",
+      "atlas": "camps-foundations",
+      "cell_index": 13,
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "abandoned-cart-stop",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72.0,
+          116.26634768740031
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "CANDIDATE_SETTLEMENT_LIFE standing scenery",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "ruined-foundation",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/ruined-foundation-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1074
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1aae78e3-b49c-4e1a-ae16-62424f19d2f4.png",
+      "sha256": "3c145b12af9c322263ffabf0688ba5d3d56833decea1db368628ec1dae46b765",
+      "atlas": "camps-foundations",
+      "cell_index": 14,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/ruined-foundation-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "ruined-foundation",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with standing ruin fragments and dead tree; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "ruined-foundation",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    },
+    {
+      "identity": "memorial-ground",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/memorial-ground-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1115
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-35f8e42e-7bb7-490c-aa0a-a0ee67c57af6.png",
+      "sha256": "797af86bb69557991ea86631a0c5a2f93043ea64f1911ad9e4d2e74463a835aa",
+      "atlas": "camps-foundations",
+      "cell_index": 15,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/memorial-ground-source-evidence.json",
+      "runtime_contract": {
+        "logical_cell": [
+          144,
+          144
+        ],
+        "hd_cell": [
+          288,
+          288
+        ],
+        "logical_anchor": [
+          72,
+          139
+        ],
+        "hd_anchor": [
+          144,
+          278
+        ]
+      },
+      "manifest_cell": {
+        "id": "memorial-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "render_role": "catalog foundation module with standing memorial and trees; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer",
+      "native_canvas": [
+        1254,
+        1254
+      ],
+      "original_manifest_cell": {
+        "id": "memorial-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "current_main_consumer_summary": "catalog-only in inspected current main src; no direct selector found",
+      "perimeter_max_alpha": 1,
+      "raw_master_native_byte_identical": true
+    }
+  ],
+  "source_pixels_untouched": true,
+  "all_native_master_raw_byte_identical": true,
+  "all_source_alpha_perimeter_le1": true,
+  "no_repository_edits": true,
+  "no_extra_checkout": true,
+  "contact_sheet": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/camps-foundations-full16-contact.png"
+}

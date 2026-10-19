@@ -1,0 +1,54 @@
+{
+  "identity": "memorial-ground",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/memorial-ground-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1115
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-35f8e42e-7bb7-490c-aa0a-a0ee67c57af6.png",
+  "sha256": "797af86bb69557991ea86631a0c5a2f93043ea64f1911ad9e4d2e74463a835aa",
+  "atlas": "camps-foundations",
+  "cell_index": 15,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/memorial-ground-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "memorial-ground",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "catalog foundation module with standing memorial and trees; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer"
+}

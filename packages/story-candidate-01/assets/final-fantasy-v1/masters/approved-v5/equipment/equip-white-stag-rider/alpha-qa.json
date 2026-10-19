@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-WHITE-STAG-RIDER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5411754157032425,
+  "nearOpaqueFractionAlphaGE250": 0.4410676902492566,
+  "nonzeroAlphaBBox": [
+    0,
+    64,
+    1227,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    40,
+    67,
+    1225,
+    1149
+  ],
+  "visibleAlphaBBoxGE128": [
+    40,
+    67,
+    1224,
+    1148
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    40,
+    67,
+    30,
+    106
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 71,
+  "sha256": "b89a671ec396949b11c6d3f9fdd3a1288e695cb40764994ad8c6337eae231594",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two assemblies: short steel leaf-point spear at left with a green leafy tie under the head, and one brown leather saddle draped with an olive-green fringed saddlecloth at right; cloth has one white full-body antlered stag emblem facing left. No living stag or rider.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

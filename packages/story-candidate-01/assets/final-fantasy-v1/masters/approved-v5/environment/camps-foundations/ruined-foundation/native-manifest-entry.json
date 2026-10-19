@@ -1,0 +1,54 @@
+{
+  "identity": "ruined-foundation",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/ruined-foundation-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1074
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/ruined-foundation/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1aae78e3-b49c-4e1a-ae16-62424f19d2f4.png",
+  "sha256": "3c145b12af9c322263ffabf0688ba5d3d56833decea1db368628ec1dae46b765",
+  "atlas": "camps-foundations",
+  "cell_index": 14,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/ruined-foundation-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "ruined-foundation",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "catalog foundation module with standing ruin fragments and dead tree; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer"
+}

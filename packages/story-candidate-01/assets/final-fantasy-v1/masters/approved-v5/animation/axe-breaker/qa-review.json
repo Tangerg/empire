@@ -1,0 +1,63 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export pending",
+  "topic": "C01-UNIT-AXE-BREAKER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current campaign or built-in rule consumer/binding",
+  "bodyScale": "44/895",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Idle native1586x992; other three native1585x992. Common1586x992 requires only one transparent right column for walk-a/attack/walk-b in export preparation. Native pixels and all original canvases remain unchanged.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges; native alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "sameTwoHandsOnOneContinuousHaftEveryPose": true,
+  "originalRearFrontGripOrderPreserved": true,
+  "singleCuttingEdgeRetained": true,
+  "equipmentCompleteEveryPose": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Strong diagonal downward two-handed chop follow-through. Torso leans right, front right knee bent and planted, rear left leg braced wide. Rear screen-left hand and front screen-right hand retain original order on one continuous descending-right haft. Exactly one single cutting edge, full head/tip and butt retained; no extra arms, weapon or FX.",
+  "semanticContract": "C01-UNIT-AXE-BREAKER is a canonical combat-unit catalog topic with no current campaign or built-in rule consumer/binding. No new binding or weapon rule is invented. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1. Original attack nearly repeats idle and both walks advance the same front foot. The new quartet reconstructs a clear two-handed downward chop and opposite contacts. The separate original C01-EQUIP-AXE-BREAKER icon is double-bitted while the original character holds a single-bladed axe. Preserve each original subject; the equipment topic does not remap or redesign this unit. No fifth pose or independent FX.",
+  "equipmentTopicDifference": "Original unit has one downward-flared cutting edge; distinct original equipment icon is double-bitted. Coordinator explicitly confirmed preserving both original subjects without silent remap.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 8,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "newConsumerBindingInvented": false,
+  "gameplayFixClaimed": false
+}

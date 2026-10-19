@@ -396,3 +396,14 @@ exports the full production viewport with/without only these fourteen patches,
 both with shared standing depth. Use `render_ground_review.py DIRECTORY
 --scene-only` to rasterize it. Evidence and remaining repeated-bank visual debt
 are recorded in `docs/art-rebuild-20261019/approved-v5/edge-runtime/README.md`.
+
+### Large landmark modules
+
+`export_environment_overrides.py` also accepts the exact shipped `landmarks-large`
+4×4 module contract:160×160 logical cells,320×320 HD cells, default anchor[80,155].
+Each override retains its full authored canvas and records a projected contact;
+footprint, obstruction, slot order and unrelated baseline cells remain unchanged.
+These compound catalog landmarks are independent of the interactive three-state
+structure topics. Export support does not add a scene selector or override an
+existing level's denied-atlas policy. The module tests cover mixed geometry,
+unchanged source bytes/other cells, metadata preservation and invalid dimensions.

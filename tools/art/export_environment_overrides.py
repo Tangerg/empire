@@ -119,6 +119,7 @@ def plan(root, catalog):
         'rural-life': (4, 112, [56, 108]),
         'decals-small': (6, 64, [32, 60]),
         'camps-foundations': (4, 144, [72, 139]),
+        'landmarks-large': (4, 160, [80, 155]),
         'cliff-modules-temperate': (4, 128, [64, 127]),
         'crossings-fortifications': (4, 96, [48, 91]),
     }

@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-EAGLE-SCOUT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6755676889774095,
+  "nearOpaqueFractionAlphaGE250": 0.300954648474165,
+  "nonzeroAlphaBBox": [
+    0,
+    31,
+    1253,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    123,
+    54,
+    1203,
+    1188
+  ],
+  "visibleAlphaBBoxGE128": [
+    124,
+    54,
+    1202,
+    1186
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    124,
+    54,
+    52,
+    68
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 46,
+  "sha256": "4dbb9a439a20f659d69dd3074fe5d82ed22bb58d57cce4c69496ed4b64d2a84c",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two equipment assemblies: short plain brown bow at left with one string; brown leather riding harness/bridle at right with looped straps, brass buckles and one large brass eagle-head medallion facing left. No arrow, quiver or living eagle.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

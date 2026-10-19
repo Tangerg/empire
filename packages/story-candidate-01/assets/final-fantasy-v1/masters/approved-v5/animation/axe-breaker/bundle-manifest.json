@@ -1,0 +1,147 @@
+{
+  "asset": "C01-UNIT-AXE-BREAKER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current campaign or built-in rule consumer/binding",
+  "status": "Native quartet complete; coordinator final sequence review/export pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every selected master/raw PNG is byte-identical to its native output. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.049162011173184354,
+  "bodyReferenceSourcePixels": 895,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/registration-evidence.json",
+  "identityContract": "Original mature stocky tan man, charcoal-gray full beard/moustache, close dark crown and brown headband with one brass-rimmed forehead lens. Dark segmented steel armor, rust-red leather bib apron, belt and brown boots. One original single-bladed axe with downward-flared steel edge, two-rivet socket, brown continuous haft, central metal band, butt cap and protruding wooden tip. Original screen-left rear grip and screen-right front grip retained. No shield. Approved chunky head/hands/boots and broad matte planes.",
+  "semanticContract": "C01-UNIT-AXE-BREAKER is a canonical combat-unit catalog topic with no current campaign or built-in rule consumer/binding. No new binding or weapon rule is invented. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1. Original attack nearly repeats idle and both walks advance the same front foot. The new quartet reconstructs a clear two-handed downward chop and opposite contacts. The separate original C01-EQUIP-AXE-BREAKER icon is double-bitted while the original character holds a single-bladed axe. Preserve each original subject; the equipment topic does not remap or redesign this unit. No fifth pose or independent FX.",
+  "equipmentTopicDifference": "Original unit has one downward-flared cutting edge; distinct original equipment icon is double-bitted. Coordinator explicitly confirmed preserving both original subjects without silent remap.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "Coordinator2026-10-19 17:49UTC viewed and accepted idle identity/framing,44/895 scale,1586x992 canvas and foot[770,963].",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a5c0db7137bdbe68222abd0173654b6762b836c258bd0b18b881d0f87c82dbc0",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        770,
+        963
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        339,
+        63,
+        1450,
+        964
+      ],
+      "sha256": "4b19690ab3c7ed17cf3d1c38135697035e7d7e69d13e7d721f28fd359d3d67cc",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ac28637e-b066-4e4c-9e10-6925bfd10832.png",
+      "review": "Original mature stocky tan man, charcoal-gray full beard/moustache, close dark crown and brown headband with one brass-rimmed forehead lens. Dark segmented steel armor, rust-red leather bib apron, belt and brown boots. One original single-bladed axe with downward-flared steel edge, two-rivet socket, brown continuous haft, central metal band, butt cap and protruding wooden tip. Original screen-left rear grip and screen-right front grip retained. No shield. Approved chunky head/hands/boots and broad matte planes."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "163ce3f1e7dc9e9249bbf2d8b19fc8eb53f9a9a9d823fc1a66eed89d148e27f9",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        740,
+        943
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        344,
+        59,
+        1453,
+        944
+      ],
+      "sha256": "d4d1aaef25f6d4396d259fd0acff13718746566f37a6283d13148048a973eecd",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3b65efbb-5c4c-4f54-b7b8-8d7ccc3ba9bf.png",
+      "review": "Front screen-right boot toe-up with visible sole/heel contact; rear screen-left flat. Same original two-hand grip on one shaft; single cutting edge, lens, beard and apron unchanged."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "f73ff4c474e7e3decf8d411370045c8e5a763ebd261289302e7e9adee48721e9",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        624,
+        935
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        172,
+        75,
+        1478,
+        971
+      ],
+      "sha256": "4644f8c2e1c5146a86546165c145c278ac9afd63a161c3ff39eec6a6001aa15b",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0179fcc6-9186-45c5-80b9-e5c198c30ff8.png",
+      "review": "Strong diagonal downward two-handed chop follow-through. Torso leans right, front right knee bent and planted, rear left leg braced wide. Rear screen-left hand and front screen-right hand retain original order on one continuous descending-right haft. Exactly one single cutting edge, full head/tip and butt retained; no extra arms, weapon or FX."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7b0ec16c33eedcadd6ef1b2241369d5bbe98457a1d399ed647f414377ee268dd",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        793,
+        952
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        389,
+        66,
+        1504,
+        953
+      ],
+      "sha256": "4e7fa55cc180f67fd3cfcde733a90c3c5f276c4ab687d0121a5da811233659dc",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-be466e79-8599-4d7e-beaa-29ba5d4b6bd8.png",
+      "review": "Front screen-right boot flat and planted; rear screen-left boot heel raised/toe down. Opposite walk-a. Both original hands hold same continuous shaft, one single blade retained."
+    }
+  }
+}

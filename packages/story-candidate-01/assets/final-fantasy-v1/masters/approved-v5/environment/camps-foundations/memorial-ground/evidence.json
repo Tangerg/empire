@@ -1,0 +1,111 @@
+{
+  "asset": "memorial-ground",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte campsite family, broad continuous soil and structural cel planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1115
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.889155
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    47,
+    125,
+    37,
+    114
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/memorial-ground-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/field-kitchen-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/stone-well-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/attempts/initial-native.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-a/pine-mature-a-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/memorial-ground/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "camps-foundations",
+  "cell_index": 15,
+  "semantic_counts": {
+    "upright_memorial_stone": 1,
+    "conifer_pines": 2,
+    "candles": 4,
+    "contained_candle_flames": 4,
+    "text": 0
+  },
+  "render_role": "catalog foundation module with standing memorial and trees; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer",
+  "logical_cell": [
+    144,
+    144
+  ],
+  "hd_cell": [
+    288,
+    288
+  ],
+  "logical_anchor": [
+    72,
+    139
+  ],
+  "hd_anchor": [
+    144,
+    278
+  ],
+  "footprint": [
+    3,
+    3
+  ],
+  "obstructionHeight": 1,
+  "source_local_landmark_estimates_px": {
+    "memorial_base_contact": [
+      638,
+      809
+    ],
+    "left_tree_base": [
+      431,
+      643
+    ],
+    "right_tree_base": [
+      974,
+      723
+    ],
+    "front_right_candle_base": [
+      800,
+      971
+    ]
+  },
+  "source_foot_kind": "visible whole-ground contact",
+  "source_foot_semantics": "visually selected front-center inner contact of the low earth outline, near the shallow notch between two rounded foreground lobes",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/memorial-ground-source-evidence.json",
+  "source_edit_count": 1,
+  "source_margin_note": "Full outline visually intact, but requested ten percent margin is not guaranteed; measured margins in QA govern review.",
+  "provisional_export": {
+    "uniform_scale_native_to_logical": 0.108,
+    "uniform_scale_native_to_hd": 0.216,
+    "logical_canvas_translation": [
+      4.284000000000006,
+      18.58
+    ],
+    "expected_strong_bounds_logical": [
+      9.36,
+      32.08,
+      135.72,
+      141.7
+    ],
+    "method": "uniform full native canvas registered by independently authored sourceFoot, not bbox",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-WOLF-RIDER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5553126327490467,
+  "nearOpaqueFractionAlphaGE250": 0.42430983214161255,
+  "nonzeroAlphaBBox": [
+    21,
+    35,
+    1206,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    77,
+    74,
+    1196,
+    1204
+  ],
+  "visibleAlphaBBoxGE128": [
+    79,
+    76,
+    1195,
+    1203
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    79,
+    76,
+    59,
+    51
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 4,
+  "sha256": "83380fb76b2df9f022d745a4e5e32fe1fef2cbb7858c09f40fb9548753d7ebaf",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly three objects: one brown-handled short spear with strongly curved hooked steel head at left, one oval plank-wood shield with pale rough braided/fiber rim and a silver round boss at upper-right, one tied brown rope hank at lower-right. No wolf or wolf emblem.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

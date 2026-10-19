@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-WYVERN-RIDER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6280082364821725,
+  "nearOpaqueFractionAlphaGE250": 0.34984127347511884,
+  "nonzeroAlphaBBox": [
+    0,
+    31,
+    1216,
+    1246
+  ],
+  "visibleAlphaBBoxGE8": [
+    43,
+    47,
+    1213,
+    1203
+  ],
+  "visibleAlphaBBoxGE128": [
+    44,
+    48,
+    1213,
+    1202
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    44,
+    48,
+    41,
+    52
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 9,
+  "sha256": "e40b8f5005182b7a2745c8faa8d4b6ed207bd16f510207a1cf4181f7306a1855",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly three objects: short spear at left with steel point and red rag tie below head, one vertically folded brown rope loop/hank at center, one blue-gray rectangular leather-edged pad with exactly two tan repair patches at right. No dragon, wings, or wyvern emblem.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}
