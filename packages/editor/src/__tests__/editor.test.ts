@@ -350,9 +350,10 @@ describe('a general editor knows no particular game', () => {
     new EditorApp(TEST_SETUP, opened()).mount(host);
 
     // A marker only the composed pack's art can produce: its buildings in the
-    // shared standing plane, its atlas surfaces under them, its sprites in the palette.
+    // shared standing plane, its world-sampled meadow under them, its sprites in the palette.
     expect(host.querySelector('.layer-units [data-candidate-art="structure"]')).not.toBeNull();
-    expect(host.querySelector('.layer-ground')!.innerHTML).toContain('surface-meadow');
+    expect(host.querySelector('.layer-ground')!.innerHTML).toContain('world-materials-v1/runtime/meadow-base@2x.png');
+    expect(host.querySelector('.layer-ground')!.innerHTML).toContain('data-runtime-raster="world-material"');
     expect(host.querySelector('.palette')!.innerHTML).toContain('data-runtime-raster');
 
     const generic = document.createElement('div');

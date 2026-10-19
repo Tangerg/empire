@@ -1,0 +1,128 @@
+{
+  "codeBaseline": "014406a",
+  "implementationCommit": "c7ffb19",
+  "coordinateSystem": "original zero-based tone; cell IDs preserve original one-based slot",
+  "activeCells": 154,
+  "roles": [
+    {
+      "atlas": "surface-meadow",
+      "tone": 0,
+      "cellId": "meadow-1",
+      "sha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+      "consumers": {},
+      "status": "existing-approved-world-base"
+    },
+    {
+      "atlas": "surface-meadow",
+      "tone": 1,
+      "cellId": "meadow-2",
+      "sha256": "2f24cb862772ace7f663a85ded73be1d3517179a80f3d72442f2e7e3a8c4bb81",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-meadow",
+      "tone": 2,
+      "cellId": "meadow-3",
+      "sha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea",
+      "consumers": {
+        "c01-02": 7,
+        "c01-03": 7,
+        "c01-04": 6,
+        "c01-05": 6,
+        "c01-06": 6,
+        "c01-09": 5,
+        "c01-10": 13,
+        "c01-12": 6,
+        "c01-15": 12
+      },
+      "status": "world-material-active"
+    },
+    {
+      "atlas": "surface-meadow",
+      "tone": 3,
+      "cellId": "meadow-4",
+      "sha256": "fd4467d10e99f153e0163ce145156f3a1f1db1f957b974eb25fa4ab7a3424db9",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-snow",
+      "tone": 0,
+      "cellId": "snow-1",
+      "sha256": "78b0a0b3abfadbb6c007e1540619799797207ccc6bd9ca24f36f42b40c5ed2be",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-snow",
+      "tone": 1,
+      "cellId": "snow-2",
+      "sha256": "0d97d4a3d13dc15a9a0904614190f6d2c9ea6bd400015f7946d6f075af481744",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-snow",
+      "tone": 2,
+      "cellId": "snow-3",
+      "sha256": "a68cb73536fdd58c641a59c58abb9ac7e95a9fbe358d74b8a9ad0582c0211d4c",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-snow",
+      "tone": 3,
+      "cellId": "snow-4",
+      "sha256": "19d95e2543c4a5d9bbc279e1e4b7e5d60f24f0af4163e6d51dc8d68ff2835ec1",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-wasteland",
+      "tone": 0,
+      "cellId": "wasteland-1",
+      "sha256": "160ed4145ffc283c256501b96863cf936a82cddc933c7b977596e00dac1333fe",
+      "consumers": {},
+      "status": "catalog-only"
+    },
+    {
+      "atlas": "surface-wasteland",
+      "tone": 1,
+      "cellId": "wasteland-2",
+      "sha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972",
+      "consumers": {
+        "c01-14": 56
+      },
+      "status": "world-material-active"
+    },
+    {
+      "atlas": "surface-wasteland",
+      "tone": 2,
+      "cellId": "wasteland-3",
+      "sha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+      "consumers": {
+        "c01-03": 1,
+        "c01-09": 1,
+        "c01-10": 28
+      },
+      "status": "world-material-active"
+    },
+    {
+      "atlas": "surface-wasteland",
+      "tone": 3,
+      "cellId": "wasteland-4",
+      "sha256": "8e16adfac9c197ab621c6149f3bf45c270dbcf9f9020544f4fc7e36d7eb93e77",
+      "consumers": {},
+      "status": "catalog-only"
+    }
+  ],
+  "unchanged": [
+    "candidateMaterial mappings",
+    "authoredTerrainSurface suppression",
+    "terrain collision and movement",
+    "standing pieces and targets",
+    "all transition and connection alpha masks"
+  ],
+  "catalogOnlyCaution": "Snow source/export coverage has no current campaign consumer and is not a full-scene acceptance claim."
+}

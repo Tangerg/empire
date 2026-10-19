@@ -4,27 +4,27 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 315,
+    "formalBound": 316,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 35,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 2,
+      "mission-unit": 3,
       "narrative-static": 7,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 315,
+    "rawPreservedTopics": 316,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 175
+    "registeredEnvironmentCells": 186
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 175,
+    "registeredIndividualSourceCells": 186,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -36,7 +36,8 @@
       "graveyard-world-material",
       "forge-world-material",
       "forest-world-material",
-      "earth-world-material"
+      "earth-world-material",
+      "open-ground-world-materials"
     ]
   },
   "sceneCohesion": {
@@ -77,7 +78,7 @@
       "export": "512/1024 physical raster pair, hashes and technical seam deltas checked",
       "runtimeBinding": "typed world material manifest,1024 sampling origin0, uncropped; canonical ground consumer",
       "liveGame": "pending",
-      "limits": "1 source pixel per logical world unit; not native2x detail at1024 period; only base meadowtone0, legacy other materials remain"
+      "limits": "1 raster pixel per logical world unit at1024 period; not native2x detail. This stage covers meadow tone0 only. Other active materials have their own explicit world-material stages; original-index catalog roles are tracked separately. Large-map periodicity and live-game verification remain pending."
     },
     "water-area": {
       "raw": "approved opaque source unchanged",
@@ -179,6 +180,28 @@
       "maskAlpha": "exact original32/64 alpha and all256 neighbor mappings",
       "scope": "169 explicit terrain plus134 automatic shore across5levels; all16rules/standing and60replays unchanged",
       "liveGame": "pending"
+    },
+    "open-ground-world-materials": {
+      "status": "Formal role-specific world-coordinate sampling; offline role-scale review passed, complete composition/live acceptance pending.",
+      "sourceSlots": [
+        "surface-meadow:2",
+        "surface-wasteland:1",
+        "surface-wasteland:2"
+      ],
+      "logicalPeriod": 128,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "rasterPixelsPerWorldUnit": 8,
+      "activeRoleCount": 3,
+      "activeCellCount": 154,
+      "newCatalogOnlyRoleCount": 8,
+      "scope": "68 hill,56 scorched,30 scree cells across10 campaign maps. Original tone ownership, authored-terrain suppression, standing pieces, gameplay/targets and every transition/connection mask remain unchanged.",
+      "validation": "All16 state/standing contracts and60 event/outcome replays identical;23 focused TypeScript tests and21 Python exporter tests passed; nine1x/2x128/256 world-plane comparisons exact; wrong tone0 mutation rejected.",
+      "sceneReview": "Completec03/c09/c10/c14 before/after at1x; diagnostic256 completec10/c14.128 selected by decorative ground accent scale, with residual microdetail/repetition and pre-existing standing clutter explicitly retained.",
+      "liveGame": "pending",
+      "evidence": "approved-v5/remaining-surface-materials"
     }
   },
   "canonicalTopics": [
@@ -2532,13 +2555,23 @@
       "category": "mission-unit",
       "label": "难民儿童",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-refugee-child.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-refugee-child.png",
+      "stageEvidence": {
+        "raw": "four true-alpha noncombat child poses; original teddy/bottle and small stature preserved, rejected duplicate walk retained",
+        "export": "one shared37.3/875 scale, measured feet,1px transparent padding, native3-background actual export review passed",
+        "runtimeBinding": "canonical and HD catalog only; no child domain/map consumer; existing c01.refugee adult binding unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-RELEASED-VETERAN",
@@ -19570,9 +19603,39 @@
     {
       "atlasId": "surface-meadow",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "meadow-2",
+        "meadow-3",
+        "meadow-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "registration": "Full opaque sources; independent32/64 catalog and512/1024 world raster exports. Only approved outermost1px edge matching; no crop, blur, recolor or source mutation.",
+        "liveGame": "pending",
+        "evidence": "approved-v5/remaining-surface-materials",
+        "formalRuntimeBoundCells": [
+          "meadow-2",
+          "meadow-3",
+          "meadow-4"
+        ],
+        "count": 3,
+        "catalogExportedCells": [
+          "meadow-1",
+          "meadow-2",
+          "meadow-3",
+          "meadow-4"
+        ],
+        "existingFunctionalReplacementCells": [
+          "meadow-1"
+        ],
+        "counting": "meadow-1 reuses the already-counted grass-material world-base source; do not count it again as a new exact original-index source identity.",
+        "catalogOnlyNoCurrentPlacement": [
+          "meadow-2",
+          "meadow-4"
+        ],
+        "runtimeBinding": "Original zero-based tone2 (meadow-3) uses128-unit world sampling on68 non-authored hill cells across9levels; approved tone0 world base stays1024.",
+        "sceneReview": "Completec03/c09/c10 role-scale review, withc10 native128/256 comparison;128 selected. Existing hard material boundaries and hill/scenery occlusion unchanged."
+      }
     },
     {
       "atlasId": "surface-forest-floor",
@@ -19649,16 +19712,62 @@
     {
       "atlasId": "surface-snow",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "snow-1",
+        "snow-2",
+        "snow-3",
+        "snow-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "registration": "Full opaque sources; independent32/64 catalog and512/1024 world raster exports. Only approved outermost1px edge matching; no crop, blur, recolor or source mutation.",
+        "liveGame": "pending",
+        "evidence": "approved-v5/remaining-surface-materials",
+        "formalRuntimeBoundCells": [
+          "snow-1",
+          "snow-2",
+          "snow-3",
+          "snow-4"
+        ],
+        "count": 4,
+        "catalogOnlyNoCurrentPlacement": [
+          "snow-1",
+          "snow-2",
+          "snow-3",
+          "snow-4"
+        ],
+        "status": "Exact original-index catalog exports only. No campaign terrain or transition-meadow-snow consumer exists; no world binding or complete snow-scene acceptance is claimed."
+      }
     },
     {
       "atlasId": "surface-wasteland",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "wasteland-1",
+        "wasteland-2",
+        "wasteland-3",
+        "wasteland-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "registration": "Full opaque sources; independent32/64 catalog and512/1024 world raster exports. Only approved outermost1px edge matching; no crop, blur, recolor or source mutation.",
+        "liveGame": "pending",
+        "evidence": "approved-v5/remaining-surface-materials",
+        "formalRuntimeBoundCells": [
+          "wasteland-1",
+          "wasteland-2",
+          "wasteland-3",
+          "wasteland-4"
+        ],
+        "count": 4,
+        "catalogOnlyNoCurrentPlacement": [
+          "wasteland-1",
+          "wasteland-4"
+        ],
+        "runtimeBinding": "Original tone1 (wasteland-2) on56 c01-14 scorched cells; original tone2 (wasteland-3) on30 non-authored mountain cells (c03:1,c09:1,c10:28). Both use128-unit world sampling.",
+        "sceneReview": "Completec03/c09/c10/c14 views and native128/256 comparisons preserve all actors/props.128 selected for subordinate decorative accent scale. Densec14 forge/construct/prop overlap remains unchanged and is not accepted as complete composition.",
+        "styleLimitations": "Scorched source retains substantial repeated small scrub/pebble detail, residual fine soil texture and a visibly recurring4-cell motif at128. Source warmth/saturation remains unchanged. Ground-scale integration does not establish broad concept-level simplicity or natural seamlessness."
+      }
     },
     {
       "atlasId": "surface-graveyard",

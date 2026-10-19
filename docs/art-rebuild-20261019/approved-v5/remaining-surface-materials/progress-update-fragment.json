@@ -1,0 +1,106 @@
+{
+  "environmentCells": {
+    "surface-meadow": {
+      "registration": "Full opaque sources; independent32/64 catalog and512/1024 world raster exports. Only approved outermost1px edge matching; no crop, blur, recolor or source mutation.",
+      "liveGame": "pending",
+      "evidence": "approved-v5/remaining-surface-materials",
+      "formalRuntimeBoundCells": [
+        "meadow-2",
+        "meadow-3",
+        "meadow-4"
+      ],
+      "count": 3,
+      "catalogExportedCells": [
+        "meadow-1",
+        "meadow-2",
+        "meadow-3",
+        "meadow-4"
+      ],
+      "existingFunctionalReplacementCells": [
+        "meadow-1"
+      ],
+      "counting": "meadow-1 reuses the already-counted grass-material world-base source; do not count it again as a new exact original-index source identity.",
+      "catalogOnlyNoCurrentPlacement": [
+        "meadow-2",
+        "meadow-4"
+      ],
+      "runtimeBinding": "Original zero-based tone2 (meadow-3) uses128-unit world sampling on68 non-authored hill cells across9levels; approved tone0 world base stays1024.",
+      "sceneReview": "Completec03/c09/c10 role-scale review, withc10 native128/256 comparison;128 selected. Existing hard material boundaries and hill/scenery occlusion unchanged."
+    },
+    "surface-wasteland": {
+      "registration": "Full opaque sources; independent32/64 catalog and512/1024 world raster exports. Only approved outermost1px edge matching; no crop, blur, recolor or source mutation.",
+      "liveGame": "pending",
+      "evidence": "approved-v5/remaining-surface-materials",
+      "formalRuntimeBoundCells": [
+        "wasteland-1",
+        "wasteland-2",
+        "wasteland-3",
+        "wasteland-4"
+      ],
+      "count": 4,
+      "catalogOnlyNoCurrentPlacement": [
+        "wasteland-1",
+        "wasteland-4"
+      ],
+      "runtimeBinding": "Original tone1 (wasteland-2) on56 c01-14 scorched cells; original tone2 (wasteland-3) on30 non-authored mountain cells (c03:1,c09:1,c10:28). Both use128-unit world sampling.",
+      "sceneReview": "Completec03/c09/c10/c14 views and native128/256 comparisons preserve all actors/props.128 selected for subordinate decorative accent scale. Densec14 forge/construct/prop overlap remains unchanged and is not accepted as complete composition.",
+      "styleLimitations": "Scorched source retains substantial repeated small scrub/pebble detail, residual fine soil texture and a visibly recurring4-cell motif at128. Source warmth/saturation remains unchanged. Ground-scale integration does not establish broad concept-level simplicity or natural seamlessness."
+    },
+    "surface-snow": {
+      "registration": "Full opaque sources; independent32/64 catalog and512/1024 world raster exports. Only approved outermost1px edge matching; no crop, blur, recolor or source mutation.",
+      "liveGame": "pending",
+      "evidence": "approved-v5/remaining-surface-materials",
+      "formalRuntimeBoundCells": [
+        "snow-1",
+        "snow-2",
+        "snow-3",
+        "snow-4"
+      ],
+      "count": 4,
+      "catalogOnlyNoCurrentPlacement": [
+        "snow-1",
+        "snow-2",
+        "snow-3",
+        "snow-4"
+      ],
+      "status": "Exact original-index catalog exports only. No campaign terrain or transition-meadow-snow consumer exists; no world binding or complete snow-scene acceptance is claimed."
+    }
+  },
+  "materialStages": {
+    "meadow-base": {
+      "limits": "1 raster pixel per logical world unit at1024 period; not native2x detail. This stage covers meadow tone0 only. Other active materials have their own explicit world-material stages; original-index catalog roles are tracked separately. Large-map periodicity and live-game verification remain pending."
+    },
+    "open-ground-world-materials": {
+      "status": "Formal role-specific world-coordinate sampling; offline role-scale review passed, complete composition/live acceptance pending.",
+      "sourceSlots": [
+        "surface-meadow:2",
+        "surface-wasteland:1",
+        "surface-wasteland:2"
+      ],
+      "logicalPeriod": 128,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "rasterPixelsPerWorldUnit": 8,
+      "activeRoleCount": 3,
+      "activeCellCount": 154,
+      "newCatalogOnlyRoleCount": 8,
+      "scope": "68 hill,56 scorched,30 scree cells across10 campaign maps. Original tone ownership, authored-terrain suppression, standing pieces, gameplay/targets and every transition/connection mask remain unchanged.",
+      "validation": "All16 state/standing contracts and60 event/outcome replays identical;23 focused TypeScript tests and21 Python exporter tests passed; nine1x/2x128/256 world-plane comparisons exact; wrong tone0 mutation rejected.",
+      "sceneReview": "Completec03/c09/c10/c14 before/after at1x; diagnostic256 completec10/c14.128 selected by decorative ground accent scale, with residual microdetail/repetition and pre-existing standing clutter explicitly retained.",
+      "liveGame": "pending",
+      "evidence": "approved-v5/remaining-surface-materials"
+    }
+  },
+  "expectedAccounting": {
+    "priorRegisteredEnvironmentIdentities": 175,
+    "addedUniqueOriginalIndexIdentities": 11,
+    "registeredEnvironmentIdentities": 186,
+    "canonicalTopicsUnchanged": 315,
+    "allSurfaceCatalogRoles": 32,
+    "exactOriginalIndexSurfaceSources": 31,
+    "reusedExistingFunctionalMeadowBase": 1
+  },
+  "application": "Merge only the supplied environmentCells and materialStages entries into current progress; materialStages.meadow-base contains a limits-only patch, so retain its other existing fields. expectedAccounting and application are review guidance, not additional progress-schema fields. Regenerate scope-ledger with the existing updater."
+}

@@ -1,0 +1,5333 @@
+{
+  "kind": "offline actual BoardView/SvgBoardSurface snapshot; not live browser or GPU playback",
+  "levelId": "c01-09",
+  "renders": [
+    {
+      "filename": "runtime-standing-full.svg",
+      "namedPieces": [
+        {
+          "sourceId": "terrain:0",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-36.39551122194514 -60.142643391521204) scale(0.65)",
+          "opacity": "1",
+          "origin": [
+            32,
+            32
+          ],
+          "worldFoot": [
+            48,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:1",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-36.39551122194514 -60.142643391521204) scale(0.65)",
+          "opacity": "1",
+          "origin": [
+            576,
+            32
+          ],
+          "worldFoot": [
+            592,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:2",
+          "sourceImage": "field-post-compact@2x.png",
+          "cellIndex": null,
+          "transform": "translate(0 4.4999999999999964) scale(0.5)",
+          "opacity": "1",
+          "origin": [
+            224,
+            128
+          ],
+          "worldFoot": [
+            240,
+            159
+          ]
+        },
+        {
+          "sourceId": "terrain:3",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-36.46896551724138 -61.98758620689655) scale(0.6)",
+          "opacity": "1",
+          "origin": [
+            384,
+            224
+          ],
+          "worldFoot": [
+            400,
+            255
+          ]
+        },
+        {
+          "sourceId": "terrain:4",
+          "sourceImage": "field-post-compact@2x.png",
+          "cellIndex": null,
+          "transform": "translate(0 4.4999999999999964) scale(0.5)",
+          "opacity": "1",
+          "origin": [
+            224,
+            256
+          ],
+          "worldFoot": [
+            240,
+            287
+          ]
+        },
+        {
+          "sourceId": "terrain:5",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-36.39551122194514 -60.142643391521204) scale(0.65)",
+          "opacity": "1",
+          "origin": [
+            32,
+            384
+          ],
+          "worldFoot": [
+            48,
+            415
+          ]
+        },
+        {
+          "sourceId": "terrain:6",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-36.39551122194514 -60.142643391521204) scale(0.65)",
+          "opacity": "1",
+          "origin": [
+            608,
+            384
+          ],
+          "worldFoot": [
+            624,
+            415
+          ]
+        },
+        {
+          "sourceId": "ground:101",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.560 -24.399) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            176,
+            32
+          ]
+        },
+        {
+          "sourceId": "ground:102",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 6,
+          "cellId": "mud-patch",
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -24.488) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            272,
+            32
+          ]
+        },
+        {
+          "sourceId": "ground:103",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            304,
+            32
+          ]
+        },
+        {
+          "sourceId": "ground:104",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 6,
+          "cellId": "mud-patch",
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -24.488) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            32
+          ]
+        },
+        {
+          "sourceId": "ground:105",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 11,
+          "cellId": "watch-post-ground",
+          "anchor": [
+            75.93939393939394,
+            128.70653907496012
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-22.782 -38.612) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            48,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:106",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.560 -24.399) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            80,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:107",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            112,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:108",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 5,
+          "cellId": "stone-cluster-c",
+          "anchor": [
+            32.109375,
+            40.75
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-17.660 -22.413) scale(0.550)",
+          "opacity": "0.72",
+          "origin": [
+            272,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:109",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.416 -25.842) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            336,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:110",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            400,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:111",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.382 -24.976) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            464,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:112",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(19.200 -25.240) scale(-0.600 0.600)",
+          "opacity": "0.72",
+          "origin": [
+            496,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:113",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 11,
+          "cellId": "watch-post-ground",
+          "anchor": [
+            75.93939393939394,
+            128.70653907496012
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-22.782 -38.612) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            592,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:114",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 6,
+          "cellId": "mud-patch",
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -24.488) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            64
+          ]
+        },
+        {
+          "sourceId": "ground:115",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            16,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:116",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.560 -24.399) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            176,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:117",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 4,
+          "cellId": "stone-cluster-b",
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(17.537 -21.642) scale(-0.550 0.550)",
+          "opacity": "0.72",
+          "origin": [
+            272,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:118",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            464,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:119",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.793 -26.264) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            496,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:120",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.227 -26.330) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:121",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.560 -24.399) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            96
+          ]
+        },
+        {
+          "sourceId": "ground:122",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.871 -25.065) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            176,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:123",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.249 -25.065) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            240,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:124",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.893 -26.330) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            304,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:125",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.704 -25.842) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            432,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:126",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.560 -24.399) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            464,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:127",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.893 -26.330) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:128",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.382 -24.976) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            128
+          ]
+        },
+        {
+          "sourceId": "ground:129",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.249 -25.065) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            16,
+            160
+          ]
+        },
+        {
+          "sourceId": "ground:130",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            48,
+            160
+          ]
+        },
+        {
+          "sourceId": "ground:131",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.560 -24.399) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            144,
+            160
+          ]
+        },
+        {
+          "sourceId": "ground:132",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 7,
+          "cellId": "wounded-shelter-ground",
+          "anchor": [
+            72,
+            125.59649122807018
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-21.600 -37.679) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            240,
+            160
+          ]
+        },
+        {
+          "sourceId": "ground:133",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.937 -25.753) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            592,
+            160
+          ]
+        },
+        {
+          "sourceId": "ground:134",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.560 -24.399) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            160
+          ]
+        },
+        {
+          "sourceId": "ground:135",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.416 -25.842) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            80,
+            192
+          ]
+        },
+        {
+          "sourceId": "ground:136",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.704 -25.842) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            112,
+            192
+          ]
+        },
+        {
+          "sourceId": "ground:137",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            368,
+            192
+          ]
+        },
+        {
+          "sourceId": "ground:138",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 17,
+          "cellId": "mossy-boulder",
+          "anchor": [
+            33.72248803827751,
+            45.7799043062201
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-19.559 -26.552) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            400,
+            192
+          ]
+        },
+        {
+          "sourceId": "ground:139",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            192
+          ]
+        },
+        {
+          "sourceId": "ground:140",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.937 -25.753) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            144,
+            224
+          ]
+        },
+        {
+          "sourceId": "ground:141",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            496,
+            224
+          ]
+        },
+        {
+          "sourceId": "ground:142",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.249 -25.065) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            592,
+            224
+          ]
+        },
+        {
+          "sourceId": "ground:143",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.183 -25.753) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            224
+          ]
+        },
+        {
+          "sourceId": "ground:144",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 17,
+          "cellId": "mossy-boulder",
+          "anchor": [
+            33.72248803827751,
+            45.7799043062201
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-19.559 -26.552) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            224
+          ]
+        },
+        {
+          "sourceId": "ground:145",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 6,
+          "cellId": "mud-patch",
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.627 -24.488) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            48,
+            256
+          ]
+        },
+        {
+          "sourceId": "ground:146",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.937 -25.753) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            112,
+            256
+          ]
+        },
+        {
+          "sourceId": "ground:147",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 17,
+          "cellId": "mossy-boulder",
+          "anchor": [
+            33.72248803827751,
+            45.7799043062201
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(17.561 -26.552) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            144,
+            256
+          ]
+        },
+        {
+          "sourceId": "ground:148",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 3,
+          "cellId": "village-square-foundation",
+          "anchor": [
+            72,
+            119.79106858054226
+          ],
+          "footprint": [
+            4,
+            3
+          ],
+          "transform": "translate(-21.600 -35.937) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            400,
+            256
+          ]
+        },
+        {
+          "sourceId": "ground:149",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.416 -25.842) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            16,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:150",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.227 -26.330) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            112,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:151",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.227 -26.330) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            144,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:152",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 5,
+          "cellId": "stone-cluster-c",
+          "anchor": [
+            32.109375,
+            40.75
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-17.660 -22.413) scale(0.550)",
+          "opacity": "0.72",
+          "origin": [
+            208,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:153",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 7,
+          "cellId": "wounded-shelter-ground",
+          "anchor": [
+            72,
+            125.59649122807018
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-21.600 -37.679) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            240,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:154",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 5,
+          "cellId": "stone-cluster-c",
+          "anchor": [
+            32.109375,
+            40.75
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-17.660 -22.413) scale(0.550)",
+          "opacity": "0.72",
+          "origin": [
+            272,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:155",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 5,
+          "cellId": "stone-cluster-c",
+          "anchor": [
+            32.109375,
+            40.75
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-17.660 -22.413) scale(0.550)",
+          "opacity": "0.72",
+          "origin": [
+            304,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:156",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.793 -26.264) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            400,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:157",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 4,
+          "cellId": "stone-cluster-b",
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -22.823) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            464,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:158",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 17,
+          "cellId": "mossy-boulder",
+          "anchor": [
+            33.72248803827751,
+            45.7799043062201
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-19.559 -26.552) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            528,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:159",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:160",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 4,
+          "cellId": "stone-cluster-b",
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -22.823) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            288
+          ]
+        },
+        {
+          "sourceId": "ground:161",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            144,
+            320
+          ]
+        },
+        {
+          "sourceId": "ground:162",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.871 -25.065) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            176,
+            320
+          ]
+        },
+        {
+          "sourceId": "ground:163",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 6,
+          "cellId": "mud-patch",
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -24.488) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            304,
+            320
+          ]
+        },
+        {
+          "sourceId": "ground:164",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.382 -24.976) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            320
+          ]
+        },
+        {
+          "sourceId": "ground:165",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            320
+          ]
+        },
+        {
+          "sourceId": "ground:166",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.738 -24.976) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            16,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:167",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            112,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:168",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.382 -24.976) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            144,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:169",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 5,
+          "cellId": "stone-cluster-c",
+          "anchor": [
+            32.109375,
+            40.75
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-17.660 -22.413) scale(0.550)",
+          "opacity": "0.72",
+          "origin": [
+            208,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:170",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.893 -26.330) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            336,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:171",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.871 -25.065) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            432,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:172",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.183 -25.753) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            464,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:173",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.416 -25.842) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            496,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:174",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 0,
+          "cellId": "grass-tuft-a",
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.382 -24.976) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:175",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.183 -25.753) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:176",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.560 -24.399) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            352
+          ]
+        },
+        {
+          "sourceId": "ground:177",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 2,
+          "cellId": "grass-tuft-c",
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.416 -25.842) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            400,
+            384
+          ]
+        },
+        {
+          "sourceId": "ground:178",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.560 -24.399) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            496,
+            384
+          ]
+        },
+        {
+          "sourceId": "ground:179",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 4,
+          "cellId": "stone-cluster-b",
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -22.823) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            560,
+            384
+          ]
+        },
+        {
+          "sourceId": "ground:180",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 4,
+          "cellId": "stone-cluster-b",
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -22.823) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            384
+          ]
+        },
+        {
+          "sourceId": "ground:181",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 11,
+          "cellId": "watch-post-ground",
+          "anchor": [
+            75.93939393939394,
+            128.70653907496012
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-22.782 -38.612) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            48,
+            416
+          ]
+        },
+        {
+          "sourceId": "ground:182",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.937 -25.753) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            336,
+            416
+          ]
+        },
+        {
+          "sourceId": "ground:183",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 9,
+          "cellId": "bootprints",
+          "anchor": [
+            32.057416267942585,
+            47.08133971291866
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-17.632 -25.895) scale(0.550)",
+          "opacity": "0.72",
+          "origin": [
+            368,
+            416
+          ]
+        },
+        {
+          "sourceId": "ground:184",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 11,
+          "cellId": "watch-post-ground",
+          "anchor": [
+            75.93939393939394,
+            128.70653907496012
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-22.782 -38.612) scale(0.300)",
+          "opacity": "1",
+          "origin": [
+            624,
+            416
+          ]
+        },
+        {
+          "sourceId": "ground:185",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 1,
+          "cellId": "grass-tuft-b",
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.893 -26.330) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            16,
+            448
+          ]
+        },
+        {
+          "sourceId": "ground:186",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 4,
+          "cellId": "stone-cluster-b",
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.493 -22.823) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            80,
+            448
+          ]
+        },
+        {
+          "sourceId": "ground:187",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 6,
+          "cellId": "mud-patch",
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.627 -24.488) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            304,
+            448
+          ]
+        },
+        {
+          "sourceId": "ground:188",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.183 -25.753) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            400,
+            448
+          ]
+        },
+        {
+          "sourceId": "ground:189",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 11,
+          "cellId": "fallen-leaves",
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.327 -26.264) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            656,
+            448
+          ]
+        },
+        {
+          "sourceId": "ground:190",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 13,
+          "cellId": "exposed-roots",
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.871 -25.065) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            16,
+            480
+          ]
+        },
+        {
+          "sourceId": "ground:191",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 10,
+          "cellId": "animal-tracks",
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-18.937 -25.753) scale(0.580)",
+          "opacity": "0.72",
+          "origin": [
+            112,
+            480
+          ]
+        },
+        {
+          "sourceId": "ground:192",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 17,
+          "cellId": "mossy-boulder",
+          "anchor": [
+            33.72248803827751,
+            45.7799043062201
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(17.561 -26.552) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            368,
+            480
+          ]
+        },
+        {
+          "sourceId": "ground:193",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 3,
+          "cellId": "stone-cluster-a",
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(18.560 -24.399) scale(-0.580 0.580)",
+          "opacity": "0.72",
+          "origin": [
+            624,
+            480
+          ]
+        },
+        {
+          "sourceId": "scenery:1",
+          "sourceImage": "forest-temperate@2x.png",
+          "atlas": "forest-temperate",
+          "cellIndex": 1,
+          "cellId": "mixed-forest-autumn",
+          "anchor": [
+            48.89154704944178,
+            79.75279106858054
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(55.452 -93.879) scale(-1.177 1.177)",
+          "opacity": "1",
+          "origin": [
+            82.96541,
+            37.76
+          ],
+          "worldFoot": [
+            82.96541,
+            37.76
+          ]
+        },
+        {
+          "sourceId": "scenery:2",
+          "sourceImage": "forest-existing@2x.png",
+          "atlas": "forest-existing",
+          "cellIndex": 10,
+          "cellId": "pine-mature-b",
+          "anchor": [
+            48.75438596491228,
+            78.9298245614035
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-64.797 -104.901) scale(1.329)",
+          "opacity": "1",
+          "origin": [
+            435.98133,
+            37.76
+          ],
+          "worldFoot": [
+            435.98133,
+            37.76
+          ]
+        },
+        {
+          "sourceId": "scenery:3",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 5,
+          "cellId": "supply-tent-workyard",
+          "anchor": [
+            72,
+            109.73524720893143
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-24.614 -37.515) scale(0.342)",
+          "opacity": "1",
+          "origin": [
+            590.80118,
+            37.76
+          ],
+          "worldFoot": [
+            590.80118,
+            37.76
+          ]
+        },
+        {
+          "sourceId": "scenery:4",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 13,
+          "cellId": "farm-fence-corner",
+          "anchor": [
+            55.61722488038278,
+            83.71291866028709
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(-18.232 -27.442) scale(0.328)",
+          "opacity": "1",
+          "origin": [
+            81.20701,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ]
+        },
+        {
+          "sourceId": "scenery:5",
+          "sourceImage": "cliff-modules-temperate@2x.png",
+          "atlas": "cliff-modules-temperate",
+          "cellIndex": 4,
+          "cellId": "temperate-hill-cap",
+          "anchor": [
+            64,
+            102.26794258373205
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(31.383 -50.147) scale(-0.490 0.490)",
+          "opacity": "1",
+          "origin": [
+            493.9503,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            493.9503,
+            69.75999999999999
+          ]
+        },
+        {
+          "sourceId": "scenery:6",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 11,
+          "cellId": "livestock-pen-small",
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "transform": "translate(-32.047 -48.679) scale(0.539)",
+          "opacity": "1",
+          "origin": [
+            626.02629,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ]
+        },
+        {
+          "sourceId": "scenery:7",
+          "sourceImage": "forest-existing@2x.png",
+          "atlas": "forest-existing",
+          "cellIndex": 10,
+          "cellId": "pine-mature-b",
+          "anchor": [
+            48.75438596491228,
+            78.9298245614035
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-62.394 -101.011) scale(1.280)",
+          "opacity": "1",
+          "origin": [
+            110.91685,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            110.91685,
+            101.75999999999999
+          ]
+        },
+        {
+          "sourceId": "scenery:8",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 10,
+          "cellId": "stone-well",
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(-22.464 -37.093) scale(0.401)",
+          "opacity": "1",
+          "origin": [
+            588.90397,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            588.90397,
+            101.75999999999999
+          ]
+        },
+        {
+          "sourceId": "scenery:9",
+          "sourceImage": "forest-existing@2x.png",
+          "atlas": "forest-existing",
+          "cellIndex": 2,
+          "cellId": "pine-cluster",
+          "anchor": [
+            48.548644338118024,
+            78.03827751196172
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(56.145 -92.336) scale(-1.183 1.183)",
+          "opacity": "1",
+          "origin": [
+            492.26959,
+            133.76
+          ],
+          "worldFoot": [
+            492.26959,
+            133.76
+          ]
+        },
+        {
+          "sourceId": "scenery:10",
+          "sourceImage": "cliff-modules-temperate@2x.png",
+          "atlas": "cliff-modules-temperate",
+          "cellIndex": 10,
+          "cellId": "temperate-low-ledge",
+          "anchor": [
+            68.25199362041467,
+            110.87081339712918
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(-33.390 -54.240) scale(0.489)",
+          "opacity": "1",
+          "origin": [
+            45.96195,
+            197.76
+          ],
+          "worldFoot": [
+            45.96195,
+            197.76
+          ]
+        },
+        {
+          "sourceId": "scenery:11",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 10,
+          "cellId": "stone-wall-straight",
+          "anchor": [
+            48,
+            64.3604465709729
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(22.879 -30.677) scale(-0.477 0.477)",
+          "opacity": "1",
+          "origin": [
+            208,
+            197.76
+          ],
+          "worldFoot": [
+            208,
+            197.76
+          ]
+        },
+        {
+          "sourceId": "scenery:12",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 10,
+          "cellId": "stone-wall-straight",
+          "anchor": [
+            48,
+            64.3604465709729
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(-20.150 -27.018) scale(0.420)",
+          "opacity": "1",
+          "origin": [
+            240,
+            197.76
+          ],
+          "worldFoot": [
+            240,
+            197.76
+          ]
+        },
+        {
+          "sourceId": "scenery:13",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 11,
+          "cellId": "stone-wall-corner",
+          "anchor": [
+            41.47049441786284,
+            76.68580542264753
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(21.491 -30.223) scale(-0.394 0.394)",
+          "opacity": "1",
+          "origin": [
+            272,
+            197.76
+          ],
+          "worldFoot": [
+            272,
+            197.76
+          ]
+        },
+        {
+          "sourceId": "scenery:14",
+          "sourceImage": "forest-existing@2x.png",
+          "atlas": "forest-existing",
+          "cellIndex": 2,
+          "cellId": "pine-cluster",
+          "anchor": [
+            48.548644338118024,
+            78.03827751196172
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(52.810 -86.851) scale(-1.113 1.113)",
+          "opacity": "1",
+          "origin": [
+            435.43107,
+            197.76
+          ],
+          "worldFoot": [
+            435.43107,
+            197.76
+          ]
+        },
+        {
+          "sourceId": "scenery:15",
+          "sourceImage": "cliff-modules-temperate@2x.png",
+          "atlas": "cliff-modules-temperate",
+          "cellIndex": 11,
+          "cellId": "temperate-talus-foot",
+          "anchor": [
+            64,
+            111.56299840510367
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(33.314 -58.073) scale(-0.521 0.521)",
+          "opacity": "1",
+          "origin": [
+            558.7724,
+            197.76
+          ],
+          "worldFoot": [
+            558.7724,
+            197.76
+          ]
+        },
+        {
+          "sourceId": "scenery:16",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 12,
+          "cellId": "stone-gatehouse",
+          "anchor": [
+            48,
+            80.28070175438596
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(18.572 -31.062) scale(-0.387 0.387)",
+          "opacity": "1",
+          "origin": [
+            208,
+            229.76
+          ],
+          "worldFoot": [
+            208,
+            229.76
+          ]
+        },
+        {
+          "sourceId": "scenery:17",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 11,
+          "cellId": "stone-wall-corner",
+          "anchor": [
+            41.47049441786284,
+            76.68580542264753
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(-19.234 -35.567) scale(0.464)",
+          "opacity": "1",
+          "origin": [
+            272,
+            229.76
+          ],
+          "worldFoot": [
+            272,
+            229.76
+          ]
+        },
+        {
+          "sourceId": "scenery:18",
+          "sourceImage": "decals-small@2x.png",
+          "atlas": "decals-small",
+          "cellIndex": 16,
+          "cellId": "firewood-stack",
+          "anchor": [
+            32.995215311004785,
+            48.688995215311
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-13.191 -19.465) scale(0.400)",
+          "opacity": "1",
+          "origin": [
+            397.18915,
+            229.76
+          ],
+          "worldFoot": [
+            397.18915,
+            229.76
+          ]
+        },
+        {
+          "sourceId": "scenery:19",
+          "sourceImage": "forest-temperate@2x.png",
+          "atlas": "forest-temperate",
+          "cellIndex": 4,
+          "cellId": "mixed-forest-edge",
+          "anchor": [
+            48.89154704944178,
+            80.43859649122807
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(58.942 -100.645) scale(-1.251 1.251)",
+          "opacity": "1",
+          "origin": [
+            81.76904,
+            261.76
+          ],
+          "worldFoot": [
+            81.76904,
+            261.76
+          ]
+        },
+        {
+          "sourceId": "scenery:20",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 10,
+          "cellId": "stone-wall-straight",
+          "anchor": [
+            48,
+            64.3604465709729
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(-23.735 -31.825) scale(0.494)",
+          "opacity": "1",
+          "origin": [
+            208,
+            261.76
+          ],
+          "worldFoot": [
+            208,
+            261.76
+          ]
+        },
+        {
+          "sourceId": "scenery:21",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 12,
+          "cellId": "stone-gatehouse",
+          "anchor": [
+            48,
+            80.28070175438596
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(21.329 -35.673) scale(-0.444 0.444)",
+          "opacity": "1",
+          "origin": [
+            240,
+            261.76
+          ],
+          "worldFoot": [
+            240,
+            261.76
+          ]
+        },
+        {
+          "sourceId": "scenery:22",
+          "sourceImage": "crossings-fortifications@2x.png",
+          "atlas": "crossings-fortifications",
+          "cellIndex": 12,
+          "cellId": "stone-gatehouse",
+          "anchor": [
+            48,
+            80.28070175438596
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(20.691 -34.606) scale(-0.431 0.431)",
+          "opacity": "1",
+          "origin": [
+            272,
+            261.76
+          ],
+          "worldFoot": [
+            272,
+            261.76
+          ]
+        },
+        {
+          "sourceId": "scenery:23",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 10,
+          "cellId": "stone-well",
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(-21.472 -35.454) scale(0.383)",
+          "opacity": "1",
+          "origin": [
+            397.17963,
+            261.76
+          ],
+          "worldFoot": [
+            397.17963,
+            261.76
+          ]
+        },
+        {
+          "sourceId": "scenery:24",
+          "sourceImage": "forest-temperate@2x.png",
+          "atlas": "forest-temperate",
+          "cellIndex": 0,
+          "cellId": "oak-ancient",
+          "anchor": [
+            48.89154704944178,
+            83.8676236044657
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(47.988 -85.434) scale(-1.019 1.019)",
+          "opacity": "1",
+          "origin": [
+            561.13346,
+            261.76
+          ],
+          "worldFoot": [
+            561.13346,
+            261.76
+          ]
+        },
+        {
+          "sourceId": "scenery:25",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 5,
+          "cellId": "wheat-bundles",
+          "anchor": [
+            57.07177033492823,
+            87.46411483253588
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(20.683 -32.935) scale(-0.377 0.377)",
+          "opacity": "1",
+          "origin": [
+            206.40939,
+            293.76
+          ],
+          "worldFoot": [
+            206.40939,
+            293.76
+          ]
+        },
+        {
+          "sourceId": "scenery:26",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 14,
+          "cellId": "farm-handcart-tools",
+          "anchor": [
+            53.933014354066984,
+            76.89952153110048
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(-22.509 -32.094) scale(0.417)",
+          "opacity": "1",
+          "origin": [
+            274.64292,
+            293.76
+          ],
+          "worldFoot": [
+            274.64292,
+            293.76
+          ]
+        },
+        {
+          "sourceId": "scenery:27",
+          "sourceImage": "cliff-modules-temperate@2x.png",
+          "atlas": "cliff-modules-temperate",
+          "cellIndex": 11,
+          "cellId": "temperate-talus-foot",
+          "anchor": [
+            64,
+            111.56299840510367
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "transform": "translate(-30.766 -53.630) scale(0.481)",
+          "opacity": "1",
+          "origin": [
+            78.05425,
+            357.76
+          ],
+          "worldFoot": [
+            78.05425,
+            357.76
+          ]
+        },
+        {
+          "sourceId": "scenery:28",
+          "sourceImage": "forest-temperate@2x.png",
+          "atlas": "forest-temperate",
+          "cellIndex": 2,
+          "cellId": "mixed-forest-dense",
+          "anchor": [
+            48.89154704944178,
+            83.52472089314195
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(55.188 -97.850) scale(-1.172 1.172)",
+          "opacity": "1",
+          "origin": [
+            364.30055,
+            357.76
+          ],
+          "worldFoot": [
+            364.30055,
+            357.76
+          ]
+        },
+        {
+          "sourceId": "scenery:29",
+          "sourceImage": "camps-foundations@2x.png",
+          "atlas": "camps-foundations",
+          "cellIndex": 5,
+          "cellId": "supply-tent-workyard",
+          "anchor": [
+            72,
+            109.73524720893143
+          ],
+          "footprint": [
+            3,
+            3
+          ],
+          "transform": "translate(-29.536 -45.016) scale(0.410)",
+          "opacity": "1",
+          "origin": [
+            47.17862,
+            389.76
+          ],
+          "worldFoot": [
+            47.17862,
+            389.76
+          ]
+        },
+        {
+          "sourceId": "scenery:30",
+          "sourceImage": "forest-temperate@2x.png",
+          "atlas": "forest-temperate",
+          "cellIndex": 1,
+          "cellId": "mixed-forest-autumn",
+          "anchor": [
+            48.89154704944178,
+            79.75279106858054
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(56.930 -96.380) scale(-1.208 1.208)",
+          "opacity": "1",
+          "origin": [
+            142.38891,
+            389.76
+          ],
+          "worldFoot": [
+            142.38891,
+            389.76
+          ]
+        },
+        {
+          "sourceId": "scenery:31",
+          "sourceImage": "cliff-modules-temperate@2x.png",
+          "atlas": "cliff-modules-temperate",
+          "cellIndex": 4,
+          "cellId": "temperate-hill-cap",
+          "anchor": [
+            64,
+            102.26794258373205
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(-33.823 -54.048) scale(0.528)",
+          "opacity": "1",
+          "origin": [
+            527.6211,
+            389.76
+          ],
+          "worldFoot": [
+            527.6211,
+            389.76
+          ]
+        },
+        {
+          "sourceId": "scenery:32",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 5,
+          "cellId": "wheat-bundles",
+          "anchor": [
+            57.07177033492823,
+            87.46411483253588
+          ],
+          "footprint": [
+            1,
+            1
+          ],
+          "transform": "translate(-23.610 -36.184) scale(0.414)",
+          "opacity": "1",
+          "origin": [
+            625.77758,
+            389.76
+          ],
+          "worldFoot": [
+            625.77758,
+            389.76
+          ]
+        },
+        {
+          "sourceId": "scenery:33",
+          "sourceImage": "rural-life@2x.png",
+          "atlas": "rural-life",
+          "cellIndex": 13,
+          "cellId": "farm-fence-corner",
+          "anchor": [
+            55.61722488038278,
+            83.71291866028709
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(17.601 -26.133) scale(-0.312 0.312)",
+          "opacity": "1",
+          "origin": [
+            48.19005,
+            453.76
+          ],
+          "worldFoot": [
+            48.19005,
+            453.76
+          ]
+        },
+        {
+          "sourceId": "scenery:34",
+          "sourceImage": "forest-temperate@2x.png",
+          "atlas": "forest-temperate",
+          "cellIndex": 3,
+          "cellId": "oak-grove-dense",
+          "anchor": [
+            47.8628389154705,
+            79.75279106858054
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(62.464 -103.489) scale(-1.298 1.298)",
+          "opacity": "1",
+          "origin": [
+            111.59266,
+            453.76
+          ],
+          "worldFoot": [
+            111.59266,
+            453.76
+          ]
+        },
+        {
+          "sourceId": "scenery:35",
+          "sourceImage": "forest-existing@2x.png",
+          "atlas": "forest-existing",
+          "cellIndex": 2,
+          "cellId": "pine-cluster",
+          "anchor": [
+            48.548644338118024,
+            78.03827751196172
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(-56.933 -91.516) scale(1.173)",
+          "opacity": "1",
+          "origin": [
+            434.40714,
+            453.76
+          ],
+          "worldFoot": [
+            434.40714,
+            453.76
+          ]
+        },
+        {
+          "sourceId": "scenery:36",
+          "sourceImage": "cliff-modules-temperate@2x.png",
+          "atlas": "cliff-modules-temperate",
+          "cellIndex": 8,
+          "cellId": "temperate-cliff-convex-corner",
+          "anchor": [
+            64,
+            104.83891547049441
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "transform": "translate(41.309 -67.669) scale(-0.645 0.645)",
+          "opacity": "1",
+          "origin": [
+            205.2712,
+            485.76
+          ],
+          "worldFoot": [
+            205.2712,
+            485.76
+          ]
+        },
+        {
+          "sourceId": "structures:0",
+          "sourceImage": "struct-oath-tower-console@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-39.44615384615385 -63.91282051282052) scale(1)",
+          "opacity": "1",
+          "origin": [
+            224,
+            128
+          ],
+          "worldFoot": [
+            240,
+            159
+          ]
+        },
+        {
+          "sourceId": "structures:1",
+          "sourceImage": "struct-oath-tower-console@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-39.44615384615385 -63.91282051282052) scale(1)",
+          "opacity": "1",
+          "origin": [
+            288,
+            192
+          ],
+          "worldFoot": [
+            304,
+            223
+          ]
+        },
+        {
+          "sourceId": "structures:2",
+          "sourceImage": "struct-oath-tower-console@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-39.44615384615385 -63.91282051282052) scale(1)",
+          "opacity": "1",
+          "origin": [
+            224,
+            256
+          ],
+          "worldFoot": [
+            240,
+            287
+          ]
+        },
+        {
+          "sourceId": "structures:3",
+          "sourceImage": "struct-oath-tower-console@2x.png",
+          "cellIndex": null,
+          "transform": "translate(-39.44615384615385 -63.91282051282052) scale(1)",
+          "opacity": "1",
+          "origin": [
+            160,
+            192
+          ],
+          "worldFoot": [
+            176,
+            223
+          ]
+        }
+      ],
+      "viewport": [
+        0,
+        0,
+        820,
+        616
+      ],
+      "unitCount": 23,
+      "buildingCount": 11,
+      "actors": [
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            320
+          ],
+          "worldFoot": [
+            48,
+            351
+          ],
+          "topicId": "C01-UNIT-BANNER-GUARD",
+          "appearanceId": "laiya-stage01",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ],
+          "topicId": "C01-UNIT-SWORDSMAN",
+          "appearanceId": "torren-stage01",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            352
+          ],
+          "worldFoot": [
+            80,
+            383
+          ],
+          "topicId": "C01-UNIT-ARCHER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:4",
+          "actorId": 4,
+          "key": "campaign-mirelle",
+          "type": "c01.mirelle",
+          "cell": [
+            3,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            256
+          ],
+          "worldFoot": [
+            112,
+            287
+          ],
+          "topicId": "C01-UNIT-GRAVEKEEPER",
+          "appearanceId": "mirelle-stage01",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "campaign-bran",
+          "type": "c01.bran",
+          "cell": [
+            3,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            384
+          ],
+          "worldFoot": [
+            112,
+            415
+          ],
+          "topicId": "C01-UNIT-RANGER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "campaign-tasha",
+          "type": "c01.tasha",
+          "cell": [
+            4,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            128,
+            320
+          ],
+          "worldFoot": [
+            144,
+            351
+          ],
+          "topicId": "C01-UNIT-ENGINEER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "chain-breaker",
+          "type": "c01.engineer",
+          "cell": [
+            5,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ],
+          "topicId": "C01-UNIT-ENGINEER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "prison-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            13
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            416
+          ],
+          "worldFoot": [
+            48,
+            447
+          ],
+          "topicId": "C01-UNIT-BANNER-GUARD",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:9",
+          "actorId": 9,
+          "key": "prison-scout",
+          "type": "c01.archer",
+          "cell": [
+            6,
+            13
+          ],
+          "facing": "east",
+          "origin": [
+            192,
+            416
+          ],
+          "worldFoot": [
+            208,
+            447
+          ],
+          "topicId": "C01-UNIT-ARCHER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "prison-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            4,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            128,
+            384
+          ],
+          "worldFoot": [
+            144,
+            415
+          ],
+          "topicId": "C01-UNIT-GRAVEKEEPER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "west-breach-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            7,
+            13
+          ],
+          "facing": "east",
+          "origin": [
+            224,
+            416
+          ],
+          "worldFoot": [
+            240,
+            447
+          ],
+          "topicId": "C01-UNIT-BANNER-GUARD",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:12",
+          "actorId": 12,
+          "key": "east-breach-sword",
+          "type": "c01.swordsman",
+          "cell": [
+            8,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            256,
+            384
+          ],
+          "worldFoot": [
+            272,
+            415
+          ],
+          "topicId": "C01-UNIT-SWORDSMAN",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:13",
+          "actorId": 13,
+          "key": "escort-1",
+          "type": "c01.inquisitor",
+          "cell": [
+            7,
+            2
+          ],
+          "facing": "west",
+          "origin": [
+            224,
+            64
+          ],
+          "worldFoot": [
+            240,
+            95
+          ],
+          "topicId": "C01-UNIT-INQUISITOR",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:14",
+          "actorId": 14,
+          "key": "escort-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            10,
+            4
+          ],
+          "facing": "west",
+          "origin": [
+            320,
+            128
+          ],
+          "worldFoot": [
+            336,
+            159
+          ],
+          "topicId": "C01-UNIT-LEGION-SHIELD",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:15",
+          "actorId": 15,
+          "key": "escort-3",
+          "type": "c01.knight",
+          "cell": [
+            12,
+            7
+          ],
+          "facing": "west",
+          "origin": [
+            384,
+            224
+          ],
+          "worldFoot": [
+            400,
+            255
+          ],
+          "topicId": "C01-UNIT-KNIGHT",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:16",
+          "actorId": 16,
+          "key": "escort-4",
+          "type": "c01.archer",
+          "cell": [
+            10,
+            10
+          ],
+          "facing": "west",
+          "origin": [
+            320,
+            320
+          ],
+          "worldFoot": [
+            336,
+            351
+          ],
+          "topicId": "C01-UNIT-ARCHER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:17",
+          "actorId": 17,
+          "key": "escort-mage",
+          "type": "c01.battle-mage",
+          "cell": [
+            9,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            288,
+            352
+          ],
+          "worldFoot": [
+            304,
+            383
+          ],
+          "topicId": "C01-UNIT-BATTLE-MAGE",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:18",
+          "actorId": 18,
+          "key": "north-chain-guard",
+          "type": "c01.templar",
+          "cell": [
+            14,
+            3
+          ],
+          "facing": "west",
+          "origin": [
+            448,
+            96
+          ],
+          "worldFoot": [
+            464,
+            127
+          ],
+          "topicId": "C01-UNIT-TEMPLAR",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:19",
+          "actorId": 19,
+          "key": "east-chain-guard",
+          "type": "c01.legion-shield",
+          "cell": [
+            16,
+            7
+          ],
+          "facing": "west",
+          "origin": [
+            512,
+            224
+          ],
+          "worldFoot": [
+            528,
+            255
+          ],
+          "topicId": "C01-UNIT-LEGION-SHIELD",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:20",
+          "actorId": 20,
+          "key": "south-chain-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            14,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            448,
+            352
+          ],
+          "worldFoot": [
+            464,
+            383
+          ],
+          "topicId": "C01-UNIT-SWORDSMAN",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:21",
+          "actorId": 21,
+          "key": "west-chain-bow",
+          "type": "c01.archer",
+          "cell": [
+            4,
+            5
+          ],
+          "facing": "west",
+          "origin": [
+            128,
+            160
+          ],
+          "worldFoot": [
+            144,
+            191
+          ],
+          "topicId": "C01-UNIT-ARCHER",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:22",
+          "actorId": 22,
+          "key": "inner-jailer",
+          "type": "c01.swordsman",
+          "cell": [
+            12,
+            6
+          ],
+          "facing": "west",
+          "origin": [
+            384,
+            192
+          ],
+          "worldFoot": [
+            400,
+            223
+          ],
+          "topicId": "C01-UNIT-SWORDSMAN",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png",
+          "usesApprovedV5": true
+        },
+        {
+          "id": "actor:23",
+          "actorId": 23,
+          "key": "caged-ivra",
+          "type": "c01.ivra",
+          "cell": [
+            7,
+            6
+          ],
+          "facing": "west",
+          "origin": [
+            224,
+            192
+          ],
+          "worldFoot": [
+            240,
+            223
+          ],
+          "topicId": "C01-UNIT-IVRA-GROWTH",
+          "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+          "usesApprovedV5": true
+        }
+      ],
+      "standingDrawOrder": [
+        {
+          "id": "scenery:1",
+          "layer": "scenery",
+          "index": 1,
+          "origin": [
+            82.96541,
+            37.76
+          ],
+          "worldFoot": [
+            82.96541,
+            37.76
+          ],
+          "displayIndex": 0
+        },
+        {
+          "id": "scenery:2",
+          "layer": "scenery",
+          "index": 2,
+          "origin": [
+            435.98133,
+            37.76
+          ],
+          "worldFoot": [
+            435.98133,
+            37.76
+          ],
+          "displayIndex": 1
+        },
+        {
+          "id": "scenery:3",
+          "layer": "scenery",
+          "index": 3,
+          "origin": [
+            590.80118,
+            37.76
+          ],
+          "worldFoot": [
+            590.80118,
+            37.76
+          ],
+          "displayIndex": 2
+        },
+        {
+          "id": "terrain:0",
+          "layer": "terrain",
+          "index": 0,
+          "origin": [
+            32,
+            32
+          ],
+          "worldFoot": [
+            48,
+            63
+          ],
+          "displayIndex": 3
+        },
+        {
+          "id": "terrain:1",
+          "layer": "terrain",
+          "index": 1,
+          "origin": [
+            576,
+            32
+          ],
+          "worldFoot": [
+            592,
+            63
+          ],
+          "displayIndex": 4
+        },
+        {
+          "id": "scenery:4",
+          "layer": "scenery",
+          "index": 4,
+          "origin": [
+            81.20701,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ],
+          "displayIndex": 5
+        },
+        {
+          "id": "scenery:5",
+          "layer": "scenery",
+          "index": 5,
+          "origin": [
+            493.9503,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            493.9503,
+            69.75999999999999
+          ],
+          "displayIndex": 6
+        },
+        {
+          "id": "scenery:6",
+          "layer": "scenery",
+          "index": 6,
+          "origin": [
+            626.02629,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ],
+          "displayIndex": 7
+        },
+        {
+          "id": "actor:13",
+          "actorId": 13,
+          "key": "escort-1",
+          "type": "c01.inquisitor",
+          "cell": [
+            7,
+            2
+          ],
+          "facing": "west",
+          "origin": [
+            224,
+            64
+          ],
+          "worldFoot": [
+            240,
+            95
+          ],
+          "displayIndex": 8
+        },
+        {
+          "id": "scenery:7",
+          "layer": "scenery",
+          "index": 7,
+          "origin": [
+            110.91685,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            110.91685,
+            101.75999999999999
+          ],
+          "displayIndex": 9
+        },
+        {
+          "id": "scenery:8",
+          "layer": "scenery",
+          "index": 8,
+          "origin": [
+            588.90397,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            588.90397,
+            101.75999999999999
+          ],
+          "displayIndex": 10
+        },
+        {
+          "id": "actor:18",
+          "actorId": 18,
+          "key": "north-chain-guard",
+          "type": "c01.templar",
+          "cell": [
+            14,
+            3
+          ],
+          "facing": "west",
+          "origin": [
+            448,
+            96
+          ],
+          "worldFoot": [
+            464,
+            127
+          ],
+          "displayIndex": 11
+        },
+        {
+          "id": "scenery:9",
+          "layer": "scenery",
+          "index": 9,
+          "origin": [
+            492.26959,
+            133.76
+          ],
+          "worldFoot": [
+            492.26959,
+            133.76
+          ],
+          "displayIndex": 12
+        },
+        {
+          "id": "terrain:2",
+          "layer": "terrain",
+          "index": 2,
+          "origin": [
+            224,
+            128
+          ],
+          "worldFoot": [
+            240,
+            159
+          ],
+          "displayIndex": 13
+        },
+        {
+          "id": "structures:0",
+          "layer": "structures",
+          "index": 0,
+          "origin": [
+            224,
+            128
+          ],
+          "worldFoot": [
+            240,
+            159
+          ],
+          "displayIndex": 14
+        },
+        {
+          "id": "actor:14",
+          "actorId": 14,
+          "key": "escort-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            10,
+            4
+          ],
+          "facing": "west",
+          "origin": [
+            320,
+            128
+          ],
+          "worldFoot": [
+            336,
+            159
+          ],
+          "displayIndex": 15
+        },
+        {
+          "id": "actor:21",
+          "actorId": 21,
+          "key": "west-chain-bow",
+          "type": "c01.archer",
+          "cell": [
+            4,
+            5
+          ],
+          "facing": "west",
+          "origin": [
+            128,
+            160
+          ],
+          "worldFoot": [
+            144,
+            191
+          ],
+          "displayIndex": 16
+        },
+        {
+          "id": "scenery:10",
+          "layer": "scenery",
+          "index": 10,
+          "origin": [
+            45.96195,
+            197.76
+          ],
+          "worldFoot": [
+            45.96195,
+            197.76
+          ],
+          "displayIndex": 17
+        },
+        {
+          "id": "scenery:11",
+          "layer": "scenery",
+          "index": 11,
+          "origin": [
+            208,
+            197.76
+          ],
+          "worldFoot": [
+            208,
+            197.76
+          ],
+          "displayIndex": 18
+        },
+        {
+          "id": "scenery:12",
+          "layer": "scenery",
+          "index": 12,
+          "origin": [
+            240,
+            197.76
+          ],
+          "worldFoot": [
+            240,
+            197.76
+          ],
+          "displayIndex": 19
+        },
+        {
+          "id": "scenery:13",
+          "layer": "scenery",
+          "index": 13,
+          "origin": [
+            272,
+            197.76
+          ],
+          "worldFoot": [
+            272,
+            197.76
+          ],
+          "displayIndex": 20
+        },
+        {
+          "id": "scenery:14",
+          "layer": "scenery",
+          "index": 14,
+          "origin": [
+            435.43107,
+            197.76
+          ],
+          "worldFoot": [
+            435.43107,
+            197.76
+          ],
+          "displayIndex": 21
+        },
+        {
+          "id": "scenery:15",
+          "layer": "scenery",
+          "index": 15,
+          "origin": [
+            558.7724,
+            197.76
+          ],
+          "worldFoot": [
+            558.7724,
+            197.76
+          ],
+          "displayIndex": 22
+        },
+        {
+          "id": "structures:3",
+          "layer": "structures",
+          "index": 3,
+          "origin": [
+            160,
+            192
+          ],
+          "worldFoot": [
+            176,
+            223
+          ],
+          "displayIndex": 23
+        },
+        {
+          "id": "actor:23",
+          "actorId": 23,
+          "key": "caged-ivra",
+          "type": "c01.ivra",
+          "cell": [
+            7,
+            6
+          ],
+          "facing": "west",
+          "origin": [
+            224,
+            192
+          ],
+          "worldFoot": [
+            240,
+            223
+          ],
+          "displayIndex": 24
+        },
+        {
+          "id": "structures:1",
+          "layer": "structures",
+          "index": 1,
+          "origin": [
+            288,
+            192
+          ],
+          "worldFoot": [
+            304,
+            223
+          ],
+          "displayIndex": 25
+        },
+        {
+          "id": "actor:22",
+          "actorId": 22,
+          "key": "inner-jailer",
+          "type": "c01.swordsman",
+          "cell": [
+            12,
+            6
+          ],
+          "facing": "west",
+          "origin": [
+            384,
+            192
+          ],
+          "worldFoot": [
+            400,
+            223
+          ],
+          "displayIndex": 26
+        },
+        {
+          "id": "scenery:16",
+          "layer": "scenery",
+          "index": 16,
+          "origin": [
+            208,
+            229.76
+          ],
+          "worldFoot": [
+            208,
+            229.76
+          ],
+          "displayIndex": 27
+        },
+        {
+          "id": "scenery:17",
+          "layer": "scenery",
+          "index": 17,
+          "origin": [
+            272,
+            229.76
+          ],
+          "worldFoot": [
+            272,
+            229.76
+          ],
+          "displayIndex": 28
+        },
+        {
+          "id": "scenery:18",
+          "layer": "scenery",
+          "index": 18,
+          "origin": [
+            397.18915,
+            229.76
+          ],
+          "worldFoot": [
+            397.18915,
+            229.76
+          ],
+          "displayIndex": 29
+        },
+        {
+          "id": "terrain:3",
+          "layer": "terrain",
+          "index": 3,
+          "origin": [
+            384,
+            224
+          ],
+          "worldFoot": [
+            400,
+            255
+          ],
+          "displayIndex": 30
+        },
+        {
+          "id": "actor:15",
+          "actorId": 15,
+          "key": "escort-3",
+          "type": "c01.knight",
+          "cell": [
+            12,
+            7
+          ],
+          "facing": "west",
+          "origin": [
+            384,
+            224
+          ],
+          "worldFoot": [
+            400,
+            255
+          ],
+          "displayIndex": 31
+        },
+        {
+          "id": "actor:19",
+          "actorId": 19,
+          "key": "east-chain-guard",
+          "type": "c01.legion-shield",
+          "cell": [
+            16,
+            7
+          ],
+          "facing": "west",
+          "origin": [
+            512,
+            224
+          ],
+          "worldFoot": [
+            528,
+            255
+          ],
+          "displayIndex": 32
+        },
+        {
+          "id": "scenery:19",
+          "layer": "scenery",
+          "index": 19,
+          "origin": [
+            81.76904,
+            261.76
+          ],
+          "worldFoot": [
+            81.76904,
+            261.76
+          ],
+          "displayIndex": 33
+        },
+        {
+          "id": "scenery:20",
+          "layer": "scenery",
+          "index": 20,
+          "origin": [
+            208,
+            261.76
+          ],
+          "worldFoot": [
+            208,
+            261.76
+          ],
+          "displayIndex": 34
+        },
+        {
+          "id": "scenery:21",
+          "layer": "scenery",
+          "index": 21,
+          "origin": [
+            240,
+            261.76
+          ],
+          "worldFoot": [
+            240,
+            261.76
+          ],
+          "displayIndex": 35
+        },
+        {
+          "id": "scenery:22",
+          "layer": "scenery",
+          "index": 22,
+          "origin": [
+            272,
+            261.76
+          ],
+          "worldFoot": [
+            272,
+            261.76
+          ],
+          "displayIndex": 36
+        },
+        {
+          "id": "scenery:23",
+          "layer": "scenery",
+          "index": 23,
+          "origin": [
+            397.17963,
+            261.76
+          ],
+          "worldFoot": [
+            397.17963,
+            261.76
+          ],
+          "displayIndex": 37
+        },
+        {
+          "id": "scenery:24",
+          "layer": "scenery",
+          "index": 24,
+          "origin": [
+            561.13346,
+            261.76
+          ],
+          "worldFoot": [
+            561.13346,
+            261.76
+          ],
+          "displayIndex": 38
+        },
+        {
+          "id": "actor:4",
+          "actorId": 4,
+          "key": "campaign-mirelle",
+          "type": "c01.mirelle",
+          "cell": [
+            3,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            256
+          ],
+          "worldFoot": [
+            112,
+            287
+          ],
+          "displayIndex": 39
+        },
+        {
+          "id": "terrain:4",
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            224,
+            256
+          ],
+          "worldFoot": [
+            240,
+            287
+          ],
+          "displayIndex": 40
+        },
+        {
+          "id": "structures:2",
+          "layer": "structures",
+          "index": 2,
+          "origin": [
+            224,
+            256
+          ],
+          "worldFoot": [
+            240,
+            287
+          ],
+          "displayIndex": 41
+        },
+        {
+          "id": "scenery:25",
+          "layer": "scenery",
+          "index": 25,
+          "origin": [
+            206.40939,
+            293.76
+          ],
+          "worldFoot": [
+            206.40939,
+            293.76
+          ],
+          "displayIndex": 42
+        },
+        {
+          "id": "scenery:26",
+          "layer": "scenery",
+          "index": 26,
+          "origin": [
+            274.64292,
+            293.76
+          ],
+          "worldFoot": [
+            274.64292,
+            293.76
+          ],
+          "displayIndex": 43
+        },
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ],
+          "displayIndex": 44
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            320
+          ],
+          "worldFoot": [
+            48,
+            351
+          ],
+          "displayIndex": 45
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "campaign-tasha",
+          "type": "c01.tasha",
+          "cell": [
+            4,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            128,
+            320
+          ],
+          "worldFoot": [
+            144,
+            351
+          ],
+          "displayIndex": 46
+        },
+        {
+          "id": "actor:16",
+          "actorId": 16,
+          "key": "escort-4",
+          "type": "c01.archer",
+          "cell": [
+            10,
+            10
+          ],
+          "facing": "west",
+          "origin": [
+            320,
+            320
+          ],
+          "worldFoot": [
+            336,
+            351
+          ],
+          "displayIndex": 47
+        },
+        {
+          "id": "scenery:27",
+          "layer": "scenery",
+          "index": 27,
+          "origin": [
+            78.05425,
+            357.76
+          ],
+          "worldFoot": [
+            78.05425,
+            357.76
+          ],
+          "displayIndex": 48
+        },
+        {
+          "id": "scenery:28",
+          "layer": "scenery",
+          "index": 28,
+          "origin": [
+            364.30055,
+            357.76
+          ],
+          "worldFoot": [
+            364.30055,
+            357.76
+          ],
+          "displayIndex": 49
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            352
+          ],
+          "worldFoot": [
+            80,
+            383
+          ],
+          "displayIndex": 50
+        },
+        {
+          "id": "actor:17",
+          "actorId": 17,
+          "key": "escort-mage",
+          "type": "c01.battle-mage",
+          "cell": [
+            9,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            288,
+            352
+          ],
+          "worldFoot": [
+            304,
+            383
+          ],
+          "displayIndex": 51
+        },
+        {
+          "id": "actor:20",
+          "actorId": 20,
+          "key": "south-chain-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            14,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            448,
+            352
+          ],
+          "worldFoot": [
+            464,
+            383
+          ],
+          "displayIndex": 52
+        },
+        {
+          "id": "scenery:29",
+          "layer": "scenery",
+          "index": 29,
+          "origin": [
+            47.17862,
+            389.76
+          ],
+          "worldFoot": [
+            47.17862,
+            389.76
+          ],
+          "displayIndex": 53
+        },
+        {
+          "id": "scenery:30",
+          "layer": "scenery",
+          "index": 30,
+          "origin": [
+            142.38891,
+            389.76
+          ],
+          "worldFoot": [
+            142.38891,
+            389.76
+          ],
+          "displayIndex": 54
+        },
+        {
+          "id": "scenery:31",
+          "layer": "scenery",
+          "index": 31,
+          "origin": [
+            527.6211,
+            389.76
+          ],
+          "worldFoot": [
+            527.6211,
+            389.76
+          ],
+          "displayIndex": 55
+        },
+        {
+          "id": "scenery:32",
+          "layer": "scenery",
+          "index": 32,
+          "origin": [
+            625.77758,
+            389.76
+          ],
+          "worldFoot": [
+            625.77758,
+            389.76
+          ],
+          "displayIndex": 56
+        },
+        {
+          "id": "terrain:5",
+          "layer": "terrain",
+          "index": 5,
+          "origin": [
+            32,
+            384
+          ],
+          "worldFoot": [
+            48,
+            415
+          ],
+          "displayIndex": 57
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "campaign-bran",
+          "type": "c01.bran",
+          "cell": [
+            3,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            384
+          ],
+          "worldFoot": [
+            112,
+            415
+          ],
+          "displayIndex": 58
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "prison-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            4,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            128,
+            384
+          ],
+          "worldFoot": [
+            144,
+            415
+          ],
+          "displayIndex": 59
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "chain-breaker",
+          "type": "c01.engineer",
+          "cell": [
+            5,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ],
+          "displayIndex": 60
+        },
+        {
+          "id": "actor:12",
+          "actorId": 12,
+          "key": "east-breach-sword",
+          "type": "c01.swordsman",
+          "cell": [
+            8,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            256,
+            384
+          ],
+          "worldFoot": [
+            272,
+            415
+          ],
+          "displayIndex": 61
+        },
+        {
+          "id": "terrain:6",
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            608,
+            384
+          ],
+          "worldFoot": [
+            624,
+            415
+          ],
+          "displayIndex": 62
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "prison-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            13
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            416
+          ],
+          "worldFoot": [
+            48,
+            447
+          ],
+          "displayIndex": 63
+        },
+        {
+          "id": "actor:9",
+          "actorId": 9,
+          "key": "prison-scout",
+          "type": "c01.archer",
+          "cell": [
+            6,
+            13
+          ],
+          "facing": "east",
+          "origin": [
+            192,
+            416
+          ],
+          "worldFoot": [
+            208,
+            447
+          ],
+          "displayIndex": 64
+        },
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "west-breach-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            7,
+            13
+          ],
+          "facing": "east",
+          "origin": [
+            224,
+            416
+          ],
+          "worldFoot": [
+            240,
+            447
+          ],
+          "displayIndex": 65
+        },
+        {
+          "id": "scenery:33",
+          "layer": "scenery",
+          "index": 33,
+          "origin": [
+            48.19005,
+            453.76
+          ],
+          "worldFoot": [
+            48.19005,
+            453.76
+          ],
+          "displayIndex": 66
+        },
+        {
+          "id": "scenery:34",
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            111.59266,
+            453.76
+          ],
+          "worldFoot": [
+            111.59266,
+            453.76
+          ],
+          "displayIndex": 67
+        },
+        {
+          "id": "scenery:35",
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            434.40714,
+            453.76
+          ],
+          "worldFoot": [
+            434.40714,
+            453.76
+          ],
+          "displayIndex": 68
+        },
+        {
+          "id": "scenery:36",
+          "layer": "scenery",
+          "index": 36,
+          "origin": [
+            205.2712,
+            485.76
+          ],
+          "worldFoot": [
+            205.2712,
+            485.76
+          ],
+          "displayIndex": 69
+        }
+      ],
+      "edgeDecorationCount": 0,
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 7,
+        "ground": 194,
+        "scenery": 38,
+        "foreground": 0,
+        "spatial": 6,
+        "structures": 4,
+        "markers": 0,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "standingSources": [
+        {
+          "layer": "terrain",
+          "index": 0,
+          "origin": [
+            32,
+            32
+          ],
+          "worldFoot": [
+            48,
+            63
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 1,
+          "origin": [
+            576,
+            32
+          ],
+          "worldFoot": [
+            592,
+            63
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 2,
+          "origin": [
+            224,
+            128
+          ],
+          "worldFoot": [
+            240,
+            159
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 3,
+          "origin": [
+            384,
+            224
+          ],
+          "worldFoot": [
+            400,
+            255
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            224,
+            256
+          ],
+          "worldFoot": [
+            240,
+            287
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 5,
+          "origin": [
+            32,
+            384
+          ],
+          "worldFoot": [
+            48,
+            415
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            608,
+            384
+          ],
+          "worldFoot": [
+            624,
+            415
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 1,
+          "origin": [
+            82.96541,
+            37.76
+          ],
+          "worldFoot": [
+            82.96541,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 2,
+          "origin": [
+            435.98133,
+            37.76
+          ],
+          "worldFoot": [
+            435.98133,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 3,
+          "origin": [
+            590.80118,
+            37.76
+          ],
+          "worldFoot": [
+            590.80118,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 4,
+          "origin": [
+            81.20701,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 5,
+          "origin": [
+            493.9503,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            493.9503,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 6,
+          "origin": [
+            626.02629,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 7,
+          "origin": [
+            110.91685,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            110.91685,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 8,
+          "origin": [
+            588.90397,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            588.90397,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 9,
+          "origin": [
+            492.26959,
+            133.76
+          ],
+          "worldFoot": [
+            492.26959,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 10,
+          "origin": [
+            45.96195,
+            197.76
+          ],
+          "worldFoot": [
+            45.96195,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 11,
+          "origin": [
+            208,
+            197.76
+          ],
+          "worldFoot": [
+            208,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 12,
+          "origin": [
+            240,
+            197.76
+          ],
+          "worldFoot": [
+            240,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 13,
+          "origin": [
+            272,
+            197.76
+          ],
+          "worldFoot": [
+            272,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 14,
+          "origin": [
+            435.43107,
+            197.76
+          ],
+          "worldFoot": [
+            435.43107,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 15,
+          "origin": [
+            558.7724,
+            197.76
+          ],
+          "worldFoot": [
+            558.7724,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 16,
+          "origin": [
+            208,
+            229.76
+          ],
+          "worldFoot": [
+            208,
+            229.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 17,
+          "origin": [
+            272,
+            229.76
+          ],
+          "worldFoot": [
+            272,
+            229.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 18,
+          "origin": [
+            397.18915,
+            229.76
+          ],
+          "worldFoot": [
+            397.18915,
+            229.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 19,
+          "origin": [
+            81.76904,
+            261.76
+          ],
+          "worldFoot": [
+            81.76904,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 20,
+          "origin": [
+            208,
+            261.76
+          ],
+          "worldFoot": [
+            208,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 21,
+          "origin": [
+            240,
+            261.76
+          ],
+          "worldFoot": [
+            240,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 22,
+          "origin": [
+            272,
+            261.76
+          ],
+          "worldFoot": [
+            272,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 23,
+          "origin": [
+            397.17963,
+            261.76
+          ],
+          "worldFoot": [
+            397.17963,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 24,
+          "origin": [
+            561.13346,
+            261.76
+          ],
+          "worldFoot": [
+            561.13346,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 25,
+          "origin": [
+            206.40939,
+            293.76
+          ],
+          "worldFoot": [
+            206.40939,
+            293.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 26,
+          "origin": [
+            274.64292,
+            293.76
+          ],
+          "worldFoot": [
+            274.64292,
+            293.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 27,
+          "origin": [
+            78.05425,
+            357.76
+          ],
+          "worldFoot": [
+            78.05425,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 28,
+          "origin": [
+            364.30055,
+            357.76
+          ],
+          "worldFoot": [
+            364.30055,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 29,
+          "origin": [
+            47.17862,
+            389.76
+          ],
+          "worldFoot": [
+            47.17862,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 30,
+          "origin": [
+            142.38891,
+            389.76
+          ],
+          "worldFoot": [
+            142.38891,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 31,
+          "origin": [
+            527.6211,
+            389.76
+          ],
+          "worldFoot": [
+            527.6211,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 32,
+          "origin": [
+            625.77758,
+            389.76
+          ],
+          "worldFoot": [
+            625.77758,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 33,
+          "origin": [
+            48.19005,
+            453.76
+          ],
+          "worldFoot": [
+            48.19005,
+            453.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            111.59266,
+            453.76
+          ],
+          "worldFoot": [
+            111.59266,
+            453.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            434.40714,
+            453.76
+          ],
+          "worldFoot": [
+            434.40714,
+            453.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 36,
+          "origin": [
+            205.2712,
+            485.76
+          ],
+          "worldFoot": [
+            205.2712,
+            485.76
+          ]
+        },
+        {
+          "layer": "structures",
+          "index": 0,
+          "origin": [
+            224,
+            128
+          ],
+          "worldFoot": [
+            240,
+            159
+          ]
+        },
+        {
+          "layer": "structures",
+          "index": 1,
+          "origin": [
+            288,
+            192
+          ],
+          "worldFoot": [
+            304,
+            223
+          ]
+        },
+        {
+          "layer": "structures",
+          "index": 2,
+          "origin": [
+            224,
+            256
+          ],
+          "worldFoot": [
+            240,
+            287
+          ]
+        },
+        {
+          "layer": "structures",
+          "index": 3,
+          "origin": [
+            160,
+            192
+          ],
+          "worldFoot": [
+            176,
+            223
+          ]
+        }
+      ],
+      "displayedLayerCounts": {
+        "ground": 194,
+        "terrain": 0,
+        "scenery": 2,
+        "spatial": 6,
+        "grid": 0,
+        "range": 0,
+        "path": 0,
+        "structures": 0,
+        "markers": 0,
+        "units": 70,
+        "foreground": 0,
+        "effects": 0,
+        "cursor": 0
+      },
+      "stateSha256": "d4ffe2422e50de8729fb1ace1f91a47596b828ca1e7d2ca09bda0f863f51fc6e"
+    }
+  ],
+  "sources": {
+    "packages/game-ui/src/styles/app.css": "1828de426c9184eba0046d17d89c57c87087cd8dfb6e9bdc790e10987d9af754",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "403d7bb620d17d69bb111e1e6cd922eb7bb9679e98add6345f24aa9b7eac2b27",
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/campaign.ts": "4c217fe0b950c81a7e3d5c6f49192c69bdefdb6eaa0f7ab857ed25137f50bf9a",
+    "packages/story-candidate-01/src/presentation/index.ts": "8614f871aee8fbbf59e4317617effbd2e27c720c02bdb287202290420a2a720a",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "0bda224f2979eacfa0681b4188413b19de41ad04bf75566146b69aff4af5e193",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts": "2450dbd03bacf71ed8b758f09d11774e4f274a75e3d3ad26c6b39043e3f48aa0",
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts": "20c1960e89c8766fea25017e5cd02aa0f30a90ca6bff71e58f9bb41d8e8c8a56",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-structure-presentations.ts": "f07c0d1fe8cb14afa6fdacc0efdb4d3c75fb8b8dfce0af68bc54c20c25ea3c64",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json": "07b5ee84456d6a0dacdbbd86d818d30295f289c552cdfd35ccf8c20585d947ee",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json": "ac737f644028f521a1e8353c814740942af6bbaeba176f2360cfa86264d04334",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-map-structure-presentations.json": "a7ad8ffe2c4dda62bea8619d481ef96ce0a99d846c8f42ec99810c447d4115ee",
+    "packages/story-candidate-01/src/presentation/candidate-01-actor-art.ts": "6ec4cea40ad93bfa054b4c0d48d6cb8b110d01b5dd8ab9e94d5a462f6f7d3a0c",
+    "packages/story-candidate-01/src/presentation/candidate-01-hero-appearances.ts": "3e77e372cc288f9be1a7d99e230806fea851498fe0b7ff8d4f9385b02349c509",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-hero-appearances.json": "4b19c38f749fc8e462d9ea8a2917bddc80ffd5eef9d0368a3f70b1fa52f52420",
+    "packages/game-ui/src/art/battlefield-layer.ts": "cff6cff51586064380f3f7886a2e9f70af014ee28f3ed6cdb967c5296ba08ebc",
+    "packages/game-ui/src/ui/board.ts": "7211c79358e4f6d1422fa8ef84df5b2b2706d89bb05563ff47b054c3b5901ad1",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "54c13bfd2d10ce68e06b40a0426e81a13189f2b3fc52e454084bd7a1c05554f2",
+    "packages/story-candidate-01/src/presentation/candidate-01-road-material.ts": "21e5ec01dead4f7c5cd6e74a75b0dce3e7baf89fc33f535ce17bc5f60420961f",
+    "packages/story-candidate-01/src/presentation/candidate-01-road-corridor.ts": "142753b667667e698b819afdfc99f753328e2d12d3a6c8a42ca9732ceab4b00e",
+    "packages/story-candidate-01/src/presentation/candidate-01-environment.ts": "62cd083de74a415ede152594be4432d58c294612d82b4ba5117119df8bb67b14",
+    "packages/story-candidate-01/src/presentation/candidate-01-world-material.ts": "ca94877f7b9cf50066b75a54f38f5a29faaf92fcac990234f3e04b37bb491bed",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json": "d870cf164c04afb1ee11dfb037be8eaf596106713992eaf3a7d9ef8ea4645bf6",
+    "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-base@2x.png": "d3e6b7868425e315f280e8198fe952e3e603af2dcea262e5509aed8637fd584e",
+    "../empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-stony@2x.png": "29dbd116ccb70da0253d0ac85440b6f2dd3f0ddbf85bb21a9a1eafd8a70fa531",
+    "../empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/wasteland-scree@2x.png": "a5e5f25a345b6e848fbce77f2434fb778f6b4953af285e388641c7bca5c52975",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forest-floor@2x.png": "d6e01a08400a3b880f7e2cedd2d041b4a4b8efba26476bf223573df6e993f167",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forest-blend-masks@2x.png": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "59a6e5e226f6ce004ea53f4dc36a0df9825abd7a5ef339b28977b5f70719e9b1",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/map-structure-presentation/field-post-compact@2x.png": "568733cd8d49377641b5543d49e9bd98da7285fdd30f6b0ed72e5f030e311b23",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png": "7cbf51570e465c109cb3d3cacc7bf9eb070203289ccdd9f52aac07d3cc5a9fea",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "cc772464cc6d6e524978fa40ff58d11b10f572ccf1b18a2a5fb482b122364531",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png": "acce57525056c38a6105b54b686241b90b92ee26acaa4984313e36b33e7f3e2e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png": "4aa82bcc86b6d330fc89c31f3a5fc41c25abe6ede20b12f2a4c5d336bb3cc131",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/torren-stage01@2x.png": "456d29121b7e597f05c00a3f00ef529de638eca0da32160d4dad7979db5205c3",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a"
+  },
+  "checkpoint": "c7ffb19-remaining-surface-materials-128",
+  "omissions": [],
+  "captureMutatesGameplay": false,
+  "comparison": "none; complete actual production scene",
+  "limitations": [
+    "Initial poses only; no browser or GPU pixel verification",
+    "Real front canopies can occlude rear actors; no selective fading or removal is applied"
+  ]
+}

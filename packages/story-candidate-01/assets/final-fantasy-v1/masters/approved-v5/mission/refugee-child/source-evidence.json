@@ -92,5 +92,46 @@
     "adultLogicalHeight": 44,
     "proposedChildLogicalHeightApprox": 37.3,
     "nativeComposition": "Landscape1586x992, crown≈170, soles≈965. Child-sized body not adult-normalized. Fixed camera, scale and entire canvas across all four poses."
+  },
+  "status": "Native quartet complete; source-faithful child identity and37.3logical stature gate accepted. No domain consumer found; coordinator owns integration.",
+  "approvedStyleReferences": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/master.png",
+      "role": "Approved matte chunky-v5 style and adult44 stature",
+      "sha256": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6",
+      "nativeSize": [
+        1585,
+        992
+      ]
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/bridge-laborer/idle/master.png",
+      "role": "Approved matte chunky-v5 style and adult44 stature",
+      "sha256": "0e8f7d734443e8e7ee141c0aa90d090dfe678fe4d30c4a79aa7be4691c209ac1",
+      "nativeSize": [
+        1585,
+        992
+      ]
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+      "role": "Human44 scale proof only; not an image-generation input",
+      "sha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+      "nativeSize": [
+        1585,
+        992
+      ]
+    }
+  ],
+  "actualNativeCanvas": [
+    1561,
+    1008
+  ],
+  "nativeVariation": "walk-a1561x1007 only; one bottom transparent row proposed at export, raw/master bytes retained unchanged",
+  "scaleAccepted": {
+    "logicalHeight": 37.3,
+    "nativeBodyHeight": 875,
+    "sharedScale": 0.042628571428571425,
+    "gate": "identity-scale-gate.json"
   }
 }

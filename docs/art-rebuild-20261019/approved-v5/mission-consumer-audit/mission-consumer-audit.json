@@ -1,0 +1,3132 @@
+{
+  "schemaVersion": 1,
+  "auditedAtUTC": "2026-10-19T23:28:32Z",
+  "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+  "scope": "Read-only mission artwork consumer and original source identity audit; no generation, repo writes or Git commands. Only audit artifacts and exact original RGB crops saved outside repo.",
+  "counts": {
+    "allMissionTopics": 24,
+    "formalExcluded": 2,
+    "activeWorkerExcluded": 1,
+    "remainingTopics": 21,
+    "remainingSceneActive": 1,
+    "remainingCatalogOnly": 20,
+    "remainingDomainActive": 0,
+    "levelsAudited": 16,
+    "initialActorsAudited": 340,
+    "reinforcementActorsAudited": 14
+  },
+  "frameContract": {
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "domainAnimationAdapter": "unitSheet uses idle0, walk[1,3], and carry-or-work2 in the board action clip. This is not permission to invent combat rules.",
+    "sceneFrame": "topicPlacementPiece draws0 regardless of four frames; metadata populationBindings is not a renderer/spawner."
+  },
+  "findings": [
+    "24 mission topics. After excluding the two formal bundles and active child worker:21 remain, with1 scene-active and20 catalog-only. Zero remaining mission domain types are bound.",
+    "All16 levels resolve340 initial actors and14 scripted reinforcement actors. Mission domain art covers9 refugee actors (c01-02/05/06) and2 laborer actors (c01-06/14), all excluded as already formal. No mission reinforcement actors.",
+    "BORDER-FARMER has exactly2 actual scene placements. The third topic reference is populationBindings metadata; nothing renders or spawns it. topicPlacementPiece always draws atlas frame0, so current farmers are idle-only.",
+    "Canonical baseline and old progress say pending for all24, including the two formal remakes. approved-v5/progress.json and current runtime manifests are the reliable current-stage evidence; runtimeReady means loadable catalog, not authored use or accepted v5 art.",
+    "approved-v5 adult progress prose says three c01.refugee actors; the all16 authored count is9. Bridge progress mentions c01-02/14 offline review but real c01.laborer actors are in c01-06/14.",
+    "The original builder TOPIC_SOURCE manifest-complete.json is absent. Source mapping is recovered from the surviving07-topic-catalog.md mission order plus MISSION_BOARDS/build_units order, all six board pixel inspections, and legacy-row pixel verification. Never zip alphabetical canonical manifest rows to board rows.",
+    "Original row identities are coherent with the current miniature preview, but many boards repeat idle and walk poses or drop/swap props in the third/fourth cells. Preserve identity and declared four semantic roles rather than reproducing a false four-frame animation.",
+    "c01-14 forge-laborer is c01.laborer→BRIDGE-LABORER, not FORGE-ARTISAN. c01-05/07 militia-named actors are swordsman/archer/banner-guard, not TOWN-MILITIA. c01-15 controlled actors use druid/longbow/walker combat art; silverwood-witness is c01.druid, not DETAINED-WITNESS. c01-04 saved_witnesses is a signal and escort objective names Laiya/Mirelle, not a witness-unit spawn."
+  ],
+  "recommendations": [
+    {
+      "rank": 1,
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "scope": "Four-pose source bundle with immediate existing scene consumer benefit",
+      "consumerCount": 2,
+      "sourceRowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/border-farmer/original-row.png",
+      "sourceIdleCrop": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/border-farmer/original-idle-cell.png",
+      "poses": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "specificAction": "A small controlled noncombat hoe-working or seed-pouch handling action using the same source tools; preserve the original woman and hand/prop identities. Make the walking contacts genuinely opposite, not mirrored copies.",
+      "bindingConstraint": "Keep existing c01-01 positions/layer/scale/opacity/flip and domain tables unchanged. Current scene draws frame0 only; source completion does not make animation reachable.",
+      "scaleConstraint": "Proposed adult-scale four-pose bundle consistent with approved44-logical-pixel body convention; preserve shared camera/body scale and complete tools. Ambient placement scales0.70/0.68 remain separate authored choices."
+    },
+    {
+      "rank": 2,
+      "topicId": "C01-MISSION-FORGE-ARTISAN",
+      "scope": "Optional next catalog-only four-pose source bundle for full-collection completion; no current consumer benefit",
+      "consumerCount": 0,
+      "sourceRowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/forge-artisan/original-row.png",
+      "sourceIdleCrop": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/forge-artisan/original-idle-cell.png",
+      "poses": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "specificAction": "Purposeful handling of the same tongs, small hot round workpiece and blue-gray vessel; preserve the original woman, bun, earring, charcoal sleeves and rust apron. Do not add a large anvil, hammer or combat weapon solely from the label.",
+      "bindingConstraint": "Do not rebind c01-14 forge-laborer or generic c01.laborer: both currently use BRIDGE-LABORER. No second remaining active mission identity exists; catalog-only art must remain labeled as such.",
+      "priorityBasis": "Bounded source row is fully preserved and visually distinct. This ranks as collection work only, not as an inferred active forge worker."
+    }
+  ],
+  "topics": [
+    {
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "assetId": "C01-FFV1-MISSION-BORDER-FARMER",
+      "label": "边境农户",
+      "scope": "remaining",
+      "classification": "scene-active-idle-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 2,
+        "nonrenderingPopulationMetadata": 1
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [
+        {
+          "level": "c01-01",
+          "topicId": "C01-MISSION-BORDER-FARMER",
+          "x": 11.5,
+          "y": 8.65,
+          "layer": "under-units",
+          "scale": 0.7,
+          "opacity": 0.9
+        },
+        {
+          "level": "c01-01",
+          "topicId": "C01-MISSION-BORDER-FARMER",
+          "x": 16.4,
+          "y": 9.15,
+          "layer": "under-units",
+          "scale": 0.68,
+          "opacity": 0.88,
+          "flip": true
+        }
+      ],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+        "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 0,
+        "rowIndex1": 1,
+        "rowCropXYXY": [
+          0,
+          0,
+          1254,
+          314
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            0,
+            314,
+            314
+          ],
+          [
+            314,
+            0,
+            627,
+            314
+          ],
+          [
+            627,
+            0,
+            940,
+            314
+          ],
+          [
+            940,
+            0,
+            1254,
+            314
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            5,
+            309,
+            309
+          ],
+          [
+            319,
+            5,
+            622,
+            309
+          ],
+          [
+            632,
+            5,
+            935,
+            309
+          ],
+          [
+            945,
+            5,
+            1249,
+            309
+          ]
+        ],
+        "observedIdentity": "Older woman, warm tan skin, concerned dark eyes; taupe/olive headscarf tied under chin; patched beige tunic/dress, rope belt, brown trousers and boots. Screen-left hand holds a tied round seed pouch; screen-right holds a short wooden-handled hoe with bent gray metal blade."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-border-farmer.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-BORDER-FARMER",
+        "png": "runtime-hd/mission-unit/mission-border-farmer.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-ADULT",
+      "assetId": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "label": "难民成人",
+      "scope": "already-formal",
+      "classification": "domain-active",
+      "actualConsumerCounts": {
+        "domainBindings": 1,
+        "initialActors": 9,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [
+        {
+          "level": "c01-02",
+          "key": "refugee-1",
+          "x": 1,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-02",
+          "key": "refugee-2",
+          "x": 2,
+          "y": 12,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-02",
+          "key": "refugee-3",
+          "x": 3,
+          "y": 12,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-05",
+          "key": "villager-1",
+          "x": 5,
+          "y": 3,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-05",
+          "key": "villager-2",
+          "x": 12,
+          "y": 10,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-05",
+          "key": "villager-3",
+          "x": 11,
+          "y": 9,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-06",
+          "key": "refugee-1",
+          "x": 7,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-06",
+          "key": "refugee-2",
+          "x": 8,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "level": "c01-06",
+          "key": "refugee-3",
+          "x": 9,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        }
+      ],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+        "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 1,
+        "rowIndex1": 2,
+        "rowCropXYXY": [
+          0,
+          314,
+          1254,
+          627
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            314,
+            314,
+            627
+          ],
+          [
+            314,
+            314,
+            627,
+            627
+          ],
+          [
+            627,
+            314,
+            940,
+            627
+          ],
+          [
+            940,
+            314,
+            1254,
+            627
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            319,
+            309,
+            622
+          ],
+          [
+            319,
+            319,
+            622,
+            622
+          ],
+          [
+            632,
+            319,
+            935,
+            622
+          ],
+          [
+            945,
+            319,
+            1249,
+            622
+          ]
+        ],
+        "observedIdentity": "Dark-haired bearded adult man in patched brown coat, carrying cooking pot and rolled blanket. Already formal; excluded."
+      },
+      "logicalRuntime": {
+        "png": "runtime-approved-v5/mission-unit/mission-refugee-adult.png",
+        "width": 416,
+        "height": 64,
+        "frameWidth": 104,
+        "frameHeight": 64,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          47.34117647058824,
+          49.83529411764706
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-REFUGEE-ADULT",
+        "png": "runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png",
+        "width": 832,
+        "height": 128,
+        "pixelDensity": 2
+      },
+      "formalProgress": {
+        "raw": "4/4 preserved",
+        "export": "shared44/935 scale, measured foot registration, exact carry-or-work third frame and native three-background review passed",
+        "runtimeBinding": "canonical and HD mission resolver bound with authored civilian palette; three c01.refugee actors",
+        "liveGame": "pending"
+      },
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-CHILD",
+      "assetId": "C01-FFV1-MISSION-REFUGEE-CHILD",
+      "label": "难民儿童",
+      "scope": "active-source-worker",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+        "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 2,
+        "rowIndex1": 3,
+        "rowCropXYXY": [
+          0,
+          627,
+          1254,
+          940
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            627,
+            314,
+            940
+          ],
+          [
+            314,
+            627,
+            627,
+            940
+          ],
+          [
+            627,
+            627,
+            940,
+            940
+          ],
+          [
+            940,
+            627,
+            1254,
+            940
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            632,
+            309,
+            935
+          ],
+          [
+            319,
+            632,
+            622,
+            935
+          ],
+          [
+            632,
+            632,
+            935,
+            935
+          ],
+          [
+            945,
+            632,
+            1249,
+            935
+          ]
+        ],
+        "observedIdentity": "Small dark-haired child, charcoal patched buttoned coat, tan rag doll and small red-tied corked bottle. Separate source worker active; excluded."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-refugee-child.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-REFUGEE-CHILD",
+        "png": "runtime-hd/mission-unit/mission-refugee-child.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-EVACUATION-DRIVER",
+      "assetId": "C01-FFV1-MISSION-EVACUATION-DRIVER",
+      "label": "撤离车夫",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+        "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 3,
+        "rowIndex1": 4,
+        "rowCropXYXY": [
+          0,
+          940,
+          1254,
+          1254
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            940,
+            314,
+            1254
+          ],
+          [
+            314,
+            940,
+            627,
+            1254
+          ],
+          [
+            627,
+            940,
+            940,
+            1254
+          ],
+          [
+            940,
+            940,
+            1254,
+            1254
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            945,
+            309,
+            1249
+          ],
+          [
+            319,
+            945,
+            622,
+            1249
+          ],
+          [
+            632,
+            945,
+            935,
+            1249
+          ],
+          [
+            945,
+            945,
+            1249,
+            1249
+          ]
+        ],
+        "observedIdentity": "Older gray-haired adult man in brown cap and blue-gray coat with pale collar, cross-body strap and pouch. Screen-left hand holds coiled rope; screen-right hand gestures. No cart or horse is part of the source figure."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-evacuation-driver.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-EVACUATION-DRIVER",
+        "png": "runtime-hd/mission-unit/mission-evacuation-driver.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-BAKER",
+      "assetId": "C01-FFV1-MISSION-BAKER",
+      "label": "面包师",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+        "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+        "size": [
+          1024,
+          1536
+        ],
+        "rowIndex0": 0,
+        "rowIndex1": 1,
+        "rowCropXYXY": [
+          0,
+          0,
+          1024,
+          384
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            0,
+            256,
+            384
+          ],
+          [
+            256,
+            0,
+            512,
+            384
+          ],
+          [
+            512,
+            0,
+            768,
+            384
+          ],
+          [
+            768,
+            0,
+            1024,
+            384
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            5,
+            251,
+            379
+          ],
+          [
+            261,
+            5,
+            507,
+            379
+          ],
+          [
+            517,
+            5,
+            763,
+            379
+          ],
+          [
+            773,
+            5,
+            1019,
+            379
+          ]
+        ],
+        "observedIdentity": "Dark wavy-haired mustached adult man, cream rolled sleeves and brown flour-marked apron. Large wicker basket of dark loaves with wooden paddle at waist; brown trousers and boots."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-baker.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-BAKER",
+        "png": "runtime-hd/mission-unit/mission-baker.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-MINER",
+      "assetId": "C01-FFV1-MISSION-MINER",
+      "label": "采矿工",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+        "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+        "size": [
+          1024,
+          1536
+        ],
+        "rowIndex0": 1,
+        "rowIndex1": 2,
+        "rowCropXYXY": [
+          0,
+          384,
+          1024,
+          768
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            384,
+            256,
+            768
+          ],
+          [
+            256,
+            384,
+            512,
+            768
+          ],
+          [
+            512,
+            384,
+            768,
+            768
+          ],
+          [
+            768,
+            384,
+            1024,
+            768
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            389,
+            251,
+            763
+          ],
+          [
+            261,
+            389,
+            507,
+            763
+          ],
+          [
+            517,
+            389,
+            763,
+            763
+          ],
+          [
+            773,
+            389,
+            1019,
+            763
+          ]
+        ],
+        "observedIdentity": "Warm medium-brown-skinned woman with long black braid, brown lamp helmet, charcoal work coat and gloves. Screen-left hand holds yellow lantern, screen-right small pickaxe in idle. Preserve her identity rather than substituting a stereotypical male miner."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-miner.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-MINER",
+        "png": "runtime-hd/mission-unit/mission-miner.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-FORGE-ARTISAN",
+      "assetId": "C01-FFV1-MISSION-FORGE-ARTISAN",
+      "label": "炉城工匠",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+        "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+        "size": [
+          1024,
+          1536
+        ],
+        "rowIndex0": 2,
+        "rowIndex1": 3,
+        "rowCropXYXY": [
+          0,
+          768,
+          1024,
+          1152
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            768,
+            256,
+            1152
+          ],
+          [
+            256,
+            768,
+            512,
+            1152
+          ],
+          [
+            512,
+            768,
+            768,
+            1152
+          ],
+          [
+            768,
+            768,
+            1024,
+            1152
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            773,
+            251,
+            1147
+          ],
+          [
+            261,
+            773,
+            507,
+            1147
+          ],
+          [
+            517,
+            773,
+            763,
+            1147
+          ],
+          [
+            773,
+            773,
+            1019,
+            1147
+          ]
+        ],
+        "observedIdentity": "Warm bronze-skinned woman with dark gray-streaked hair in bun and silver round earring; rolled charcoal sleeves, rust-red leather apron, brown gloves and boots. Screen-right hand holds black tongs with a small orange-hot round workpiece; screen-left holds a small blue-gray handled vessel."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-forge-artisan.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-FORGE-ARTISAN",
+        "png": "runtime-hd/mission-unit/mission-forge-artisan.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-BRIDGE-LABORER",
+      "assetId": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "label": "桥梁劳工",
+      "scope": "already-formal",
+      "classification": "domain-active",
+      "actualConsumerCounts": {
+        "domainBindings": 1,
+        "initialActors": 2,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [
+        {
+          "level": "c01-06",
+          "key": "refugee-4",
+          "x": 8,
+          "y": 12,
+          "unit": "c01.laborer",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-BRIDGE-LABORER"
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-laborer",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.laborer",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-BRIDGE-LABORER"
+        }
+      ],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+        "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+        "size": [
+          1024,
+          1536
+        ],
+        "rowIndex0": 3,
+        "rowIndex1": 4,
+        "rowCropXYXY": [
+          0,
+          1152,
+          1024,
+          1536
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            1152,
+            256,
+            1536
+          ],
+          [
+            256,
+            1152,
+            512,
+            1536
+          ],
+          [
+            512,
+            1152,
+            768,
+            1536
+          ],
+          [
+            768,
+            1152,
+            1024,
+            1536
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            1157,
+            251,
+            1531
+          ],
+          [
+            261,
+            1157,
+            507,
+            1531
+          ],
+          [
+            517,
+            1157,
+            763,
+            1531
+          ],
+          [
+            773,
+            1157,
+            1019,
+            1531
+          ]
+        ],
+        "observedIdentity": "Dark-brown-skinned curly-haired bearded adult man, cream sleeves, ochre vest, gray-green patched trousers, hip rope; squared shoulder timber and wooden mallet. Already formal; excluded."
+      },
+      "logicalRuntime": {
+        "png": "runtime-approved-v5/mission-unit/mission-bridge-laborer.png",
+        "width": 416,
+        "height": 64,
+        "frameWidth": 104,
+        "frameHeight": 64,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          44.93514644351465,
+          49.10460251046025
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-BRIDGE-LABORER",
+        "png": "runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png",
+        "width": 832,
+        "height": 128,
+        "pixelDensity": 2
+      },
+      "formalProgress": {
+        "raw": "four native transparent poses, original timber/wood mallet/rope and person identity; byte-exact master pairs",
+        "export": "shared44/956 scale,104x64 frame, measured soles, full-canvas1x/2x; genuine noncombat carry-or-work third frame",
+        "runtimeBinding": "canonical and HD c01.laborer resolver; complete c01-02/14 offline review; all16 state/standing contracts identical; existing surrounding occlusion remains",
+        "liveGame": "pending"
+      },
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-RELIEF-COOK",
+      "assetId": "C01-FFV1-MISSION-RELIEF-COOK",
+      "label": "救济厨工",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+        "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 0,
+        "rowIndex1": 1,
+        "rowCropXYXY": [
+          0,
+          0,
+          1254,
+          314
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            0,
+            314,
+            314
+          ],
+          [
+            314,
+            0,
+            627,
+            314
+          ],
+          [
+            627,
+            0,
+            940,
+            314
+          ],
+          [
+            940,
+            0,
+            1254,
+            314
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            5,
+            309,
+            309
+          ],
+          [
+            319,
+            5,
+            622,
+            309
+          ],
+          [
+            632,
+            5,
+            935,
+            309
+          ],
+          [
+            945,
+            5,
+            1249,
+            309
+          ]
+        ],
+        "observedIdentity": "Olive-green-skinned tusked pointed-ear adult, graying dark hair, rusty red coat, cream apron, brown trousers. Idle has screen-right metal ladle and screen-left tied cloth sack. Source is visibly nonhuman; do not turn this into a human cook."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-relief-cook.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-RELIEF-COOK",
+        "png": "runtime-hd/mission-unit/mission-relief-cook.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-CITY-DOCTOR",
+      "assetId": "C01-FFV1-MISSION-CITY-DOCTOR",
+      "label": "城市医师",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+        "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 1,
+        "rowIndex1": 2,
+        "rowCropXYXY": [
+          0,
+          314,
+          1254,
+          627
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            314,
+            314,
+            627
+          ],
+          [
+            314,
+            314,
+            627,
+            627
+          ],
+          [
+            627,
+            314,
+            940,
+            627
+          ],
+          [
+            940,
+            314,
+            1254,
+            627
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            319,
+            309,
+            622
+          ],
+          [
+            319,
+            319,
+            622,
+            622
+          ],
+          [
+            632,
+            319,
+            935,
+            622
+          ],
+          [
+            945,
+            319,
+            1249,
+            622
+          ]
+        ],
+        "observedIdentity": "Warm tan-skinned woman with short black bob, cream open coat over blue-gray dress, cross-body brown medical satchel with rolled cloth; screen-right amber corked bottle. No modern red cross or stethoscope in source."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-city-doctor.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-CITY-DOCTOR",
+        "png": "runtime-hd/mission-unit/mission-city-doctor.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-WOUNDED",
+      "assetId": "C01-FFV1-MISSION-WOUNDED",
+      "label": "伤员",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+        "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 2,
+        "rowIndex1": 3,
+        "rowCropXYXY": [
+          0,
+          627,
+          1254,
+          940
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            627,
+            314,
+            940
+          ],
+          [
+            314,
+            627,
+            627,
+            940
+          ],
+          [
+            627,
+            627,
+            940,
+            940
+          ],
+          [
+            940,
+            627,
+            1254,
+            940
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            632,
+            309,
+            935
+          ],
+          [
+            319,
+            632,
+            622,
+            935
+          ],
+          [
+            632,
+            632,
+            935,
+            935
+          ],
+          [
+            945,
+            632,
+            1249,
+            935
+          ]
+        ],
+        "observedIdentity": "Dark-haired adult man with cream forehead bandage and arm sling, patched charcoal coat, brown patched trousers; wooden crutch at screen-right. No gore or combat weapon."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-wounded.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-WOUNDED",
+        "png": "runtime-hd/mission-unit/mission-wounded.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-WALL-LABORER",
+      "assetId": "C01-FFV1-MISSION-WALL-LABORER",
+      "label": "城墙劳工",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+        "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 3,
+        "rowIndex1": 4,
+        "rowCropXYXY": [
+          0,
+          940,
+          1254,
+          1254
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            940,
+            314,
+            1254
+          ],
+          [
+            314,
+            940,
+            627,
+            1254
+          ],
+          [
+            627,
+            940,
+            940,
+            1254
+          ],
+          [
+            940,
+            940,
+            1254,
+            1254
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            945,
+            309,
+            1249
+          ],
+          [
+            319,
+            945,
+            622,
+            1249
+          ],
+          [
+            632,
+            945,
+            935,
+            1249
+          ],
+          [
+            945,
+            945,
+            1249,
+            1249
+          ]
+        ],
+        "observedIdentity": "Older gray-haired woman with gray headscarf, ochre sleeveless work tunic over gray sleeves, brown gloves and boots. Screen-left wicker basket filled with gray stones; screen-right masonry trowel."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-wall-laborer.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-WALL-LABORER",
+        "png": "runtime-hd/mission-unit/mission-wall-laborer.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-SCRIBE",
+      "assetId": "C01-FFV1-MISSION-SCRIBE",
+      "label": "抄写员",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+        "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 0,
+        "rowIndex1": 1,
+        "rowCropXYXY": [
+          0,
+          0,
+          1254,
+          314
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            0,
+            314,
+            314
+          ],
+          [
+            314,
+            0,
+            627,
+            314
+          ],
+          [
+            627,
+            0,
+            940,
+            314
+          ],
+          [
+            940,
+            0,
+            1254,
+            314
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            5,
+            309,
+            309
+          ],
+          [
+            319,
+            5,
+            622,
+            309
+          ],
+          [
+            632,
+            5,
+            935,
+            309
+          ],
+          [
+            945,
+            5,
+            1249,
+            309
+          ]
+        ],
+        "observedIdentity": "Young adult man with tousled dark-brown hair, muted plum coat and dark scarf, brown cross-body satchel with scrolls. Small writing board/book in screen-right hand and writing implement in screen-left."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-scribe.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-SCRIBE",
+        "png": "runtime-hd/mission-unit/mission-scribe.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-NAME-REGISTRAR",
+      "assetId": "C01-FFV1-MISSION-NAME-REGISTRAR",
+      "label": "姓名登记员",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+        "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 1,
+        "rowIndex1": 2,
+        "rowCropXYXY": [
+          0,
+          314,
+          1254,
+          627
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            314,
+            314,
+            627
+          ],
+          [
+            314,
+            314,
+            627,
+            627
+          ],
+          [
+            627,
+            314,
+            940,
+            627
+          ],
+          [
+            940,
+            314,
+            1254,
+            627
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            319,
+            309,
+            622
+          ],
+          [
+            319,
+            319,
+            622,
+            622
+          ],
+          [
+            632,
+            319,
+            935,
+            622
+          ],
+          [
+            945,
+            319,
+            1249,
+            622
+          ]
+        ],
+        "observedIdentity": "Older woman with brown-gray bun and dark slate scarf; long charcoal/taupe coat hung with rectangular name tags. Screen-left arm holds large brown register; screen-right holds lit square lantern. No combat gear."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-name-registrar.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-NAME-REGISTRAR",
+        "png": "runtime-hd/mission-unit/mission-name-registrar.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+      "assetId": "C01-FFV1-MISSION-COUNCIL-DELEGATE",
+      "label": "地方议会代表",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+        "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 2,
+        "rowIndex1": 3,
+        "rowCropXYXY": [
+          0,
+          627,
+          1254,
+          940
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            627,
+            314,
+            940
+          ],
+          [
+            314,
+            627,
+            627,
+            940
+          ],
+          [
+            627,
+            627,
+            940,
+            940
+          ],
+          [
+            940,
+            627,
+            1254,
+            940
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            632,
+            309,
+            935
+          ],
+          [
+            319,
+            632,
+            622,
+            935
+          ],
+          [
+            632,
+            632,
+            935,
+            935
+          ],
+          [
+            945,
+            632,
+            1249,
+            935
+          ]
+        ],
+        "observedIdentity": "Older olive-brown-skinned pointed-ear woman, long gray braids, patched dark coat with ochre panels. Screen-left hand holds carved oval tablet/medallion; screen-right rolled parchment with colored ribbon ties."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-council-delegate.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+        "png": "runtime-hd/mission-unit/mission-council-delegate.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-FIELD-MESSENGER",
+      "assetId": "C01-FFV1-MISSION-FIELD-MESSENGER",
+      "label": "战地传令员",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+        "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 3,
+        "rowIndex1": 4,
+        "rowCropXYXY": [
+          0,
+          940,
+          1254,
+          1254
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            940,
+            314,
+            1254
+          ],
+          [
+            314,
+            940,
+            627,
+            1254
+          ],
+          [
+            627,
+            940,
+            940,
+            1254
+          ],
+          [
+            940,
+            940,
+            1254,
+            1254
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            945,
+            309,
+            1249
+          ],
+          [
+            319,
+            945,
+            622,
+            1249
+          ],
+          [
+            632,
+            945,
+            935,
+            1249
+          ],
+          [
+            945,
+            945,
+            1249,
+            1249
+          ]
+        ],
+        "observedIdentity": "Young short-haired man in patched blue-gray tunic, scarf and cross-body satchel with scroll tube. Screen-right hand holds small dark blue triangular flag on wooden pole. No horse or weapon."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-field-messenger.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-FIELD-MESSENGER",
+        "png": "runtime-hd/mission-unit/mission-field-messenger.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-CARAVAN-ESCORT",
+      "assetId": "C01-FFV1-MISSION-CARAVAN-ESCORT",
+      "label": "商团护运员",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+        "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 0,
+        "rowIndex1": 1,
+        "rowCropXYXY": [
+          0,
+          0,
+          1254,
+          314
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            0,
+            314,
+            314
+          ],
+          [
+            314,
+            0,
+            627,
+            314
+          ],
+          [
+            627,
+            0,
+            940,
+            314
+          ],
+          [
+            940,
+            0,
+            1254,
+            314
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            5,
+            309,
+            309
+          ],
+          [
+            319,
+            5,
+            622,
+            309
+          ],
+          [
+            632,
+            5,
+            935,
+            309
+          ],
+          [
+            945,
+            5,
+            1249,
+            309
+          ]
+        ],
+        "observedIdentity": "Brown-haired woman with bun, teal scarf and blue-gray coat under brown scale vest. Round wooden shield at screen-right; sheathed short blade/handle at screen-left hip, keys/tags and rope at belt."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-caravan-escort.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-CARAVAN-ESCORT",
+        "png": "runtime-hd/mission-unit/mission-caravan-escort.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+      "assetId": "C01-FFV1-MISSION-CEMETERY-CARETAKER",
+      "label": "墓园看守",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+        "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 1,
+        "rowIndex1": 2,
+        "rowCropXYXY": [
+          0,
+          314,
+          1254,
+          627
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            314,
+            314,
+            627
+          ],
+          [
+            314,
+            314,
+            627,
+            627
+          ],
+          [
+            627,
+            314,
+            940,
+            627
+          ],
+          [
+            940,
+            314,
+            1254,
+            627
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            319,
+            309,
+            622
+          ],
+          [
+            319,
+            319,
+            622,
+            622
+          ],
+          [
+            632,
+            319,
+            935,
+            622
+          ],
+          [
+            945,
+            319,
+            1249,
+            622
+          ]
+        ],
+        "observedIdentity": "Elderly woman in gray hood/headscarf and pale cream belted gown. Screen-left metal watering can, screen-right straw broom. This is a living civilian, not the combat gravekeeper."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-cemetery-caretaker.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+        "png": "runtime-hd/mission-unit/mission-cemetery-caretaker.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-TOWN-MILITIA",
+      "assetId": "C01-FFV1-MISSION-TOWN-MILITIA",
+      "label": "城镇民兵",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+        "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 2,
+        "rowIndex1": 3,
+        "rowCropXYXY": [
+          0,
+          627,
+          1254,
+          940
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            627,
+            314,
+            940
+          ],
+          [
+            314,
+            627,
+            627,
+            940
+          ],
+          [
+            627,
+            627,
+            940,
+            940
+          ],
+          [
+            940,
+            627,
+            1254,
+            940
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            632,
+            309,
+            935
+          ],
+          [
+            319,
+            632,
+            622,
+            935
+          ],
+          [
+            632,
+            632,
+            935,
+            935
+          ],
+          [
+            945,
+            632,
+            1249,
+            935
+          ]
+        ],
+        "observedIdentity": "Brown-haired mustached adult man with blue-gray sleeves and brown leather apron/vest. Screen-left round gray metal shield, screen-right wooden spear with gray leaf-shaped tip; patched trousers."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-town-militia.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-TOWN-MILITIA",
+        "png": "runtime-hd/mission-unit/mission-town-militia.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
+      "assetId": "C01-FFV1-MISSION-MERCENARY-QUARTERMASTER",
+      "label": "佣兵军需员",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+        "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 3,
+        "rowIndex1": 4,
+        "rowCropXYXY": [
+          0,
+          940,
+          1254,
+          1254
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            940,
+            314,
+            1254
+          ],
+          [
+            314,
+            940,
+            627,
+            1254
+          ],
+          [
+            627,
+            940,
+            940,
+            1254
+          ],
+          [
+            940,
+            940,
+            1254,
+            1254
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            945,
+            309,
+            1249
+          ],
+          [
+            319,
+            945,
+            622,
+            1249
+          ],
+          [
+            632,
+            945,
+            935,
+            1249
+          ],
+          [
+            945,
+            945,
+            1249,
+            1249
+          ]
+        ],
+        "observedIdentity": "Brown-haired woman with bun, cream sleeves and ochre long sleeveless coat; clipboard at screen-right, ring of keys, sealed pouch and rope coil on belt. No helmet or weapon."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-mercenary-quartermaster.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
+        "png": "runtime-hd/mission-unit/mission-mercenary-quartermaster.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
+      "assetId": "C01-FFV1-MISSION-CONTROLLED-SOLDIER",
+      "label": "被控制的普通士兵",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-controlled-veteran-nursery-witness.png",
+        "sha256": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 0,
+        "rowIndex1": 1,
+        "rowCropXYXY": [
+          0,
+          0,
+          1254,
+          314
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            0,
+            314,
+            314
+          ],
+          [
+            314,
+            0,
+            627,
+            314
+          ],
+          [
+            627,
+            0,
+            940,
+            314
+          ],
+          [
+            940,
+            0,
+            1254,
+            314
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            5,
+            309,
+            309
+          ],
+          [
+            319,
+            5,
+            622,
+            309
+          ],
+          [
+            632,
+            5,
+            935,
+            309
+          ],
+          [
+            945,
+            5,
+            1249,
+            309
+          ]
+        ],
+        "observedIdentity": "Worried young adult man, gray riveted helmet and segmented gray armor with ornate gold collar/wrist bands; empty hands. Source does not contain a sword, shield or visible magical aura."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-controlled-soldier.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
+        "png": "runtime-hd/mission-unit/mission-controlled-soldier.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-RELEASED-VETERAN",
+      "assetId": "C01-FFV1-MISSION-RELEASED-VETERAN",
+      "label": "解除控制的退伍兵",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-controlled-veteran-nursery-witness.png",
+        "sha256": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 1,
+        "rowIndex1": 2,
+        "rowCropXYXY": [
+          0,
+          314,
+          1254,
+          627
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            314,
+            314,
+            627
+          ],
+          [
+            314,
+            314,
+            627,
+            627
+          ],
+          [
+            627,
+            314,
+            940,
+            627
+          ],
+          [
+            940,
+            314,
+            1254,
+            627
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            319,
+            309,
+            622
+          ],
+          [
+            319,
+            319,
+            622,
+            622
+          ],
+          [
+            632,
+            319,
+            935,
+            622
+          ],
+          [
+            945,
+            319,
+            1249,
+            622
+          ]
+        ],
+        "observedIdentity": "Elderly gray-haired woman, patched gray coat over brown top and gray skirt, dark green neck scarf. Screen-left walking cane; screen-right broken gold ring/collar with hanging chain/key. Do not substitute an armored male soldier."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-released-veteran.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-RELEASED-VETERAN",
+        "png": "runtime-hd/mission-unit/mission-released-veteran.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-NURSERY-CARETAKER",
+      "assetId": "C01-FFV1-MISSION-NURSERY-CARETAKER",
+      "label": "森林育儿屋照护者",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-controlled-veteran-nursery-witness.png",
+        "sha256": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 2,
+        "rowIndex1": 3,
+        "rowCropXYXY": [
+          0,
+          627,
+          1254,
+          940
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            627,
+            314,
+            940
+          ],
+          [
+            314,
+            627,
+            627,
+            940
+          ],
+          [
+            627,
+            627,
+            940,
+            940
+          ],
+          [
+            940,
+            627,
+            1254,
+            940
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            632,
+            309,
+            935
+          ],
+          [
+            319,
+            632,
+            622,
+            935
+          ],
+          [
+            632,
+            632,
+            935,
+            935
+          ],
+          [
+            945,
+            632,
+            1249,
+            935
+          ]
+        ],
+        "observedIdentity": "Older dark-brown-skinned woman with short curly gray hair, green patched dress and gold earrings. Wicker back basket with pale green cloth bundles, small produce basket at screen-left and terracotta cup at screen-right. No visible baby in the original source."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-nursery-caretaker.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-NURSERY-CARETAKER",
+        "png": "runtime-hd/mission-unit/mission-nursery-caretaker.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    },
+    {
+      "topicId": "C01-MISSION-DETAINED-WITNESS",
+      "assetId": "C01-FFV1-MISSION-DETAINED-WITNESS",
+      "label": "被押证人",
+      "scope": "remaining",
+      "classification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      },
+      "actualDomainActors": [],
+      "actualScenePlacements": [],
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-controlled-veteran-nursery-witness.png",
+        "sha256": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+        "size": [
+          1254,
+          1254
+        ],
+        "rowIndex0": 3,
+        "rowIndex1": 4,
+        "rowCropXYXY": [
+          0,
+          940,
+          1254,
+          1254
+        ],
+        "cellCropsXYXY": [
+          [
+            0,
+            940,
+            314,
+            1254
+          ],
+          [
+            314,
+            940,
+            627,
+            1254
+          ],
+          [
+            627,
+            940,
+            940,
+            1254
+          ],
+          [
+            940,
+            940,
+            1254,
+            1254
+          ]
+        ],
+        "legacyInset5CellCropsXYXY": [
+          [
+            5,
+            945,
+            309,
+            1249
+          ],
+          [
+            319,
+            945,
+            622,
+            1249
+          ],
+          [
+            632,
+            945,
+            935,
+            1249
+          ],
+          [
+            945,
+            945,
+            1249,
+            1249
+          ]
+        ],
+        "observedIdentity": "Tired dark-haired adult man in patched teal coat, tan shirt and brown trousers; wrists bound together with thick golden rope in front, sealed scroll tube at hip. No visible metal manacles."
+      },
+      "logicalRuntime": {
+        "png": "runtime/mission-unit/mission-detained-witness.png",
+        "width": 128,
+        "height": 48,
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "carry-or-work",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hdRuntime": {
+        "topicId": "C01-MISSION-DETAINED-WITNESS",
+        "png": "runtime-hd/mission-unit/mission-detained-witness.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "formalProgress": null,
+      "baselineCanonicalStatus": "pending-redraw"
+    }
+  ],
+  "verificationLimits": [
+    "No live-game/browser acceptance claimed.",
+    "No art or binding changes made.",
+    "Current consumers are authored initial placements, declared reinforcements, and scene renderer paths; catalog diagnostics or previews are not gameplay consumers."
+  ],
+  "originalSourceRowVerification": {
+    "file": "original-row-pixel-verification.json",
+    "originalLogicalStripsPixelExact": 24,
+    "originalHDStripsPixelExact": 24,
+    "total": 24,
+    "qualification": "Compares retained original runtime/runtime-hd strips, not v5 approved replacements. All mappings verified independently of labels."
+  },
+  "evidenceIndex": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": "139-166",
+      "proves": "Original24 topic order, not alphabetically sorted canonical order"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": "48-55,249-263",
+      "proves": "Six-board order,4 rows per board,4 columns,5px inset; semantic frame order"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "lines": "8-39",
+      "proves": "Only2 mission topic bindings"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-actor-art.ts",
+      "lines": "41-47",
+      "proves": "Only named actor override is campaign-torren; no hidden mission actor override"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-environment.ts",
+      "lines": "1-6,56,144-157",
+      "proves": "Six registered authored scene documents; populationBindings retained as metadata"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+      "lines": "367-389",
+      "proves": "2 farmer placements and1 nonrendered population metadata record"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+      "lines": "184-210",
+      "proves": "Mission scene placement draws only frame0 and exact existing placement transforms"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+      "lines": "39-67",
+      "proves": "Mission unit semantic animation adapter"
+    },
+    {
+      "path": "packages/story-candidate-01/src/levels.ts",
+      "lines": "409-800,837-915",
+      "proves": "All16 battle definitions and exact baseParty/placement resolution"
+    },
+    {
+      "path": "packages/story-candidate-01/src/units.ts",
+      "lines": "91-92",
+      "proves": "The only two mission domain unit definitions and wait/escort semantics"
+    }
+  ],
+  "sourceCropVerification": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/border-farmer/original-row.png",
+      "cropXYXY": [
+        0,
+        0,
+        1254,
+        314
+      ],
+      "size": [
+        1254,
+        314
+      ],
+      "mode": "RGB",
+      "originalPixelsExact": true,
+      "sha256": "adf42a857e6924b447528bd4420a1d86a15a9042fa0ff85fa12174a70025f910"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/border-farmer/original-idle-cell.png",
+      "cropXYXY": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "size": [
+        314,
+        314
+      ],
+      "mode": "RGB",
+      "originalPixelsExact": true,
+      "sha256": "e9067e684da7ccfcc02999e846658aafac570aa3331f7d8b989c4837f1928464"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/forge-artisan/original-row.png",
+      "cropXYXY": [
+        0,
+        768,
+        1024,
+        1152
+      ],
+      "size": [
+        1024,
+        384
+      ],
+      "mode": "RGB",
+      "originalPixelsExact": true,
+      "sha256": "9fb659d7aa23d1b3a9d5ae78e4176a0098c3bc32180304e91cfaecec12f8899b"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/original-crops/forge-artisan/original-idle-cell.png",
+      "cropXYXY": [
+        0,
+        768,
+        256,
+        1152
+      ],
+      "size": [
+        256,
+        384
+      ],
+      "mode": "RGB",
+      "originalPixelsExact": true,
+      "sha256": "c33971d9bb3bde88b160f0d076584a70889af93ce5123ff44bdaf29d852ca4aa"
+    }
+  ]
+}

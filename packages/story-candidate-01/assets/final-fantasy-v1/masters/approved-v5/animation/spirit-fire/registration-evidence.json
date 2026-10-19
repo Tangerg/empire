@@ -1,0 +1,294 @@
+{
+  "status": "Measured source quartet, coordinator sequence acceptance pending",
+  "sharedScale": 0.06382978723404255,
+  "scaleFraction": "60/940",
+  "overallIdleHeightLogicalPixels": 60,
+  "bodyReferenceSourcePixels": 940,
+  "bodyTargetHeightLogicalPixels": 60,
+  "bodyMeasureQualification": "Here body refers to complete original floating spirit including attached flame mantle, not humanoid anatomy. Stone face itself has inspected outer height513sourcepx,32.7447logical.",
+  "canonicalSourceFoot": [
+    870,
+    958
+  ],
+  "virtualAnchorNotPhysicalFootContact": true,
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "proposedCommonFrameSize": [
+    116,
+    76
+  ],
+  "proposedOrigin": [
+    6,
+    5
+  ],
+  "canvasPaddingToleranceRequired": 2,
+  "maximumPadRight": 2,
+  "maximumPadBottom": 1,
+  "paddingPolicy": "Native idle/walk-a1585x992 pad1right+1bottom; attack1584x993 pad2right; walk-b1586x992 pad1bottom. Transparent padding is export/QA-only; raw/master remain unchanged.",
+  "registrationMethod": "A virtual hover presentation anchor, not contact. Read-only gray-stone segmentation selects largest13x13-closed8-connected diagnostic component. CenterX of its lowest9-row stone band and its lowestY supply rigid chin landmarks. Fixed idle calibration adds26.3272727273x and165y to give accepted idle anchor870,958. Apply same calibration to all poses, round-half-up, translate complete authored canvas at one locked60/940 scale. Wisp-tip swing does not pull the face around.",
+  "measurementMask": "Within full read-only native RGBA: alpha>200,R>55,G>50,B>40,R>=G>=B,R-G<23,G-B<26.13x13closing and8-connected largest component used ONLY for measurement, never to generate or alter alpha/art.",
+  "virtualHoverExplanation": "At idle, anchor x870 is the inspected stone-chin-axis projection and y958 is the lowest attached cyan-wisp pixel. Since this floating being has no ground contact, equivalent later anchors follow rigid chin with the same idle-derived hover offset; changing wisp tails are motion, not feet.",
+  "idleCalibration": [
+    26.32727272727277,
+    165
+  ],
+  "originalFootprint": [
+    2,
+    2
+  ],
+  "originalRuntimeFrame": [
+    64,
+    64
+  ],
+  "originalRuntimeAnchor": [
+    32,
+    63
+  ],
+  "footprintChanged": false,
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        870,
+        958
+      ],
+      "chinLandmarkDiagnostic": {
+        "filledStoneBoundsInclusive": [
+          648,
+          292,
+          1001,
+          793
+        ],
+        "filledStoneHeight": 502,
+        "chinBandCenterX": 843.6727272727272,
+        "chinBandBottomY": 793,
+        "chinBandPixelCount": 110,
+        "maskPixels": 102337
+      },
+      "stoneHeightDeviationPercentVsIdle": 0.0,
+      "registrationOffsetSource": [
+        0,
+        0
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        470,
+        19,
+        1130,
+        959
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        39,
+        17,
+        1543,
+        970
+      ],
+      "proposedLogicalVisibleBounds": [
+        36.0,
+        6.212765957446808,
+        78.12765957446808,
+        66.2127659574468
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        6.0,
+        5.0,
+        107.23404255319149,
+        68.38297872340425
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        939,
+        944
+      ],
+      "chinLandmarkDiagnostic": {
+        "filledStoneBoundsInclusive": [
+          728,
+          294,
+          1056,
+          779
+        ],
+        "filledStoneHeight": 486,
+        "chinBandCenterX": 912.2699784017278,
+        "chinBandBottomY": 779,
+        "chinBandPixelCount": 463,
+        "maskPixels": 96651
+      },
+      "stoneHeightDeviationPercentVsIdle": -3.1872509960159334,
+      "registrationOffsetSource": [
+        -69,
+        14
+      ],
+      "registrationOffsetLogical": [
+        -4.404255319148936,
+        0.8936170212765957
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        391,
+        33,
+        1188,
+        930
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        49,
+        27,
+        1545,
+        932
+      ],
+      "proposedLogicalVisibleBounds": [
+        26.5531914893617,
+        8.0,
+        77.42553191489361,
+        65.25531914893617
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        1.5957446808510642,
+        5.8936170212765955,
+        102.82978723404256,
+        69.27659574468085
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0
+    },
+    "attack": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        784,
+        969
+      ],
+      "chinLandmarkDiagnostic": {
+        "filledStoneBoundsInclusive": [
+          578,
+          316,
+          927,
+          804
+        ],
+        "filledStoneHeight": 489,
+        "chinBandCenterX": 757.2435897435897,
+        "chinBandBottomY": 804,
+        "chinBandPixelCount": 78,
+        "maskPixels": 104257
+      },
+      "stoneHeightDeviationPercentVsIdle": -2.589641434262946,
+      "registrationOffsetSource": [
+        86,
+        -11
+      ],
+      "registrationOffsetLogical": [
+        5.489361702127659,
+        -0.702127659574468
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        374,
+        37,
+        1381,
+        967
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        371,
+        35,
+        1434,
+        972
+      ],
+      "proposedLogicalVisibleBounds": [
+        35.36170212765957,
+        6.659574468085106,
+        99.63829787234042,
+        66.02127659574468
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        11.48936170212766,
+        4.297872340425532,
+        112.72340425531914,
+        67.68085106382978
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0
+    },
+    "walk-b": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        901,
+        954
+      ],
+      "chinLandmarkDiagnostic": {
+        "filledStoneBoundsInclusive": [
+          649,
+          297,
+          984,
+          789
+        ],
+        "filledStoneHeight": 493,
+        "chinBandCenterX": 875.1587677725119,
+        "chinBandBottomY": 789,
+        "chinBandPixelCount": 422,
+        "maskPixels": 100706
+      },
+      "stoneHeightDeviationPercentVsIdle": -1.7928286852589626,
+      "registrationOffsetSource": [
+        -31,
+        4
+      ],
+      "registrationOffsetLogical": [
+        -1.978723404255319,
+        0.2553191489361702
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        504,
+        25,
+        1201,
+        943
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        105,
+        23,
+        1538,
+        968
+      ],
+      "proposedLogicalVisibleBounds": [
+        36.191489361702125,
+        6.851063829787234,
+        80.68085106382978,
+        65.44680851063829
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        4.0212765957446805,
+        5.25531914893617,
+        105.25531914893617,
+        68.63829787234042
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 5.489361702127659,
+  "recommendedRegistrationLimitLogicalPixels": 6
+}

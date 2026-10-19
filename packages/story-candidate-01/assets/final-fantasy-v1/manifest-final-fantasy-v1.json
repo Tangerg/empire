@@ -2630,13 +2630,13 @@
       "topicId": "C01-MISSION-REFUGEE-CHILD",
       "label": "难民儿童",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-refugee-child.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-refugee-child.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2645,13 +2645,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        40.514942857142856,
+        48.71028571428571
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-RELEASED-VETERAN",

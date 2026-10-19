@@ -1,0 +1,63 @@
+{
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "bboxAlphaNonzero": [
+    0,
+    0,
+    1571,
+    979
+  ],
+  "bboxAlphaGreaterThan127": [
+    476,
+    36,
+    1235,
+    976
+  ],
+  "alphaZeroFraction": 0.7344967945456395,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "bootMeasurement": "alpha>127, separate left/right boot, bottom4rows; no source changes",
+  "measuredBootSoleBands": [
+    {
+      "xRange": [
+        350,
+        760
+      ],
+      "bottom": 975,
+      "bottom4RowsBounds": [
+        580,
+        972,
+        680,
+        976
+      ],
+      "soleCenterX": 629.5
+    },
+    {
+      "xRange": [
+        760,
+        1150
+      ],
+      "bottom": 970,
+      "bottom4RowsBounds": [
+        882,
+        967,
+        983,
+        971
+      ],
+      "soleCenterX": 932.0
+    }
+  ],
+  "sourceFoot": [
+    780.75,
+    975
+  ],
+  "sha256": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+  "rawMatchesMaster": true,
+  "nativeAlphaUntouched": true
+}

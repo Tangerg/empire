@@ -1,0 +1,131 @@
+{
+  "topicId": "C01-UNIT-SPIRIT-FIRE",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-SPIRIT-FIRE",
+    "topicId": "C01-UNIT-SPIRIT-FIRE",
+    "label": "灵火精怪",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-spirit-fire.png",
+    "width": 256,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-spirit-fire.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-spirit-fire.png"
+    ]
+  },
+  "hdTopic": {
+    "topicId": "C01-UNIT-SPIRIT-FIRE",
+    "png": "runtime-hd/combat-unit/unit-spirit-fire.png",
+    "width": 512,
+    "height": 128,
+    "pixelDensity": 2
+  },
+  "references": {
+    "original-runtime-strip.png": {
+      "size": [
+        256,
+        64
+      ],
+      "sha256": "57101fccafad8c6ed8bcdd9ca54bc092cafd47995a34d61a6689332a61456c3f"
+    },
+    "approved-swordsman-style.png": {
+      "size": [
+        1585,
+        992
+      ],
+      "sha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95"
+    },
+    "original-row-native-crop.png": {
+      "size": [
+        1254,
+        310
+      ],
+      "sha256": "a4229d14f0bbf41126ee5c925cdc7de6ddcc60d738cd2d8c74d671ff616176fc"
+    },
+    "approved-concept-v2.png": {
+      "size": [
+        1586,
+        992
+      ],
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+    },
+    "original-idle-native-crop.png": {
+      "size": [
+        224,
+        275
+      ],
+      "sha256": "9a23d77c3b664f595fb339f6e50984a0364c9a13918a47e4388925ae05ee56a8"
+    },
+    "original-source-board.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "391ecd7a6bf91164bf08a7320454a23d9768d7247111903f14c3d3d36af96474"
+    },
+    "original-runtime-hd-strip.png": {
+      "size": [
+        512,
+        128
+      ],
+      "sha256": "9da984f31e97b621dabce63c9b096786122905ae2fdca619855df9aa6ce78f10"
+    }
+  },
+  "originalSourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-heavyknight-spirit-cannon-troll.png",
+  "originalSourceSlot": "Second row, all four columns: original stone-mask spirit visually matches preserved runtime and HD. Heavy knight row1, spirit fire row2, cannon wagon row3, troll row4. Legacy builder lists board at COMBAT_BOARDS index4 after12 independent sources, giving reconstructed source slot29; current manifest list order has since changed (spirit fire currently index31) and is NOT used to infer identity. Original manifest-complete.json referenced by legacy builder is absent.",
+  "referenceExtraction": "Read-only unresampled original board crops: row[0,314,1254,624], idle[36,324,260,599]. No source art, runtime image, or generated native master altered.",
+  "identityContract": "Floating cracked warm-gray stone face-mask; elongated oval shape, hollow black eyes, long angular nose, closed grave mouth, no body/limbs/feet. Gold/cream flame tongues above and around mask; cyan/blue curled lower side wisps; a few close dark gray stone fragments. These functional colors must survive unchanged.",
+  "actualConsumers": [],
+  "consumerEvidence": [
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "finding": "Read full unit and core fallback binding tables: no spirit-fire or C01-UNIT-SPIRIT-FIRE binding."
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-assets.ts:145-201",
+      "finding": "Every manifest record loaded into catalog; HD selected and dimension-checked by resolveRuntimeUrl. Catalog availability is not gameplay usage."
+    },
+    {
+      "path": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+      "finding": "Audit says runtime-hd resolution, no-static-consumer-reference-found, not observed in browser."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/README.md:630",
+      "finding": "Design-only roster: Silverwood spirit supports aura/purification and counters undead; no deployed ability implementation found."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/03-elder-peoples.md:406",
+      "finding": "Narrative design unlock mention, not actual unit runtime binding."
+    }
+  ],
+  "scopeBoundary": "Author source quartet. No invented unit stats, weapon, consumer, gameplay occupancy or implementation changes. Original presentation footprint2x2 preserved as contract. Formal export/integration is coordinator-owned.",
+  "styleReferences": [
+    "references/approved-swordsman-style.png",
+    "references/approved-concept-v2.png"
+  ],
+  "sourceSupport": "Virtual hover support only, no physical foot contact. Final per-frame stone-mask and attached-wisp landmarks documented in registration-evidence.json."
+}

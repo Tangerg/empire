@@ -1,0 +1,204 @@
+{
+  "asset": "C01-UNIT-SPIRIT-FIRE",
+  "actualConsumers": [],
+  "consumerQualification": "Catalog topic and narrative design roster exist; no actual static campaign actor binding found. Do not claim gameplay scene verification.",
+  "status": "Native source quartet measured, coordinator sequence/export acceptance pending",
+  "generationTool": "built-in image_gen",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sharedScale": 0.06382978723404255,
+  "bodyReferenceSourcePixels": 940,
+  "bodyTargetHeightLogicalPixels": 60,
+  "canonicalSourceFoot": [
+    870,
+    958
+  ],
+  "virtualAnchorNotPhysicalFootContact": true,
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "masterPolicy": "Every selected raw/master is a byte-identical native image_gen output; superseded originals preserved in attempt-01. No alpha cleanup, recolor, crop, fit or source image edits. Diagnostic composites are separate.",
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/registration-evidence.json",
+  "identityContract": "Floating cracked warm-gray stone face-mask with hollow eyes/long nose/closed mouth except attack; distinct gold/cream tongues and blue/cyan wisps plus small stone chips; no humanoid body/feet/weapon.",
+  "selectedAttempts": {
+    "idle": "attempt01",
+    "walk-a": "attempt02 face-scale correction",
+    "attack": "attempt02 face-scale correction",
+    "walk-b": "attempt01"
+  },
+  "supersededAttempts": [
+    {
+      "path": "walk-a/attempt-01",
+      "reason": "Filled-stone face span461 vs502idle(-8.17%); imagegen-corrected to486(-3.19%)."
+    },
+    {
+      "path": "attack/attempt-01",
+      "reason": "Filled-stone face span472 vs502idle(-5.98%); imagegen-corrected to489(-2.59%)."
+    }
+  ],
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "fb0fe52063fb6a9c8bed723ea5aee571156e00f7e2c3976caa132c1789345344",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/references/original-idle-native-crop.png": {
+          "sha256": "9a23d77c3b664f595fb339f6e50984a0364c9a13918a47e4388925ae05ee56a8",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/references/original-idle-native-crop.png"
+        },
+        "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png": {
+          "sha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+        },
+        "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png": {
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png"
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        870,
+        958
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        470,
+        19,
+        1130,
+        959
+      ],
+      "sha256": "79cf647e0103a34e447a00c56c24c472683e0a8aca8def08ca7fe70e6585ac55",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5ea6729c-e914-4adc-b8ba-d8fe739765fd.png",
+      "review": "Stable upright stone-face hover; gold crown rises and cyan lower tip curls centrally."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ce8ff98407dc2ca6db1e18e6b45dab16559d79f8a61aa83bbd3373e03baa5655",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/attempt-01/master.png": {
+          "sha256": "1b7f27b9975e68d070fd14e982239e1a0e6aa15e4742d9bd01ad41453b4ad223",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/attempt-01/master.png"
+        },
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png": {
+          "sha256": "79cf647e0103a34e447a00c56c24c472683e0a8aca8def08ca7fe70e6585ac55",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png"
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        939,
+        944
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        391,
+        33,
+        1188,
+        930
+      ],
+      "sha256": "4fded1153c3a49cadc662510e2fbfc84a13da05d8af0b813891340a90b489ccd",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fb068e60-048e-42e2-921e-c1ecb4d52598.png",
+      "review": "Leftward trailing gold/blue mantle and broad lower-left cyan sweep, rigid face gently tilted. Attempt02 restores source face size; filled-stone span486 vs idle502(-3.19%)."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "5879d95d9b824fded0d2eadbb9248e17782034c97c0090ebe07bcb8153d5b03e",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/attempt-01/master.png": {
+          "sha256": "e10284debef2329dbf28ba80383c1439de6e708c7591cc01fe9bd6d9709263bd",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/attempt-01/master.png"
+        },
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png": {
+          "sha256": "79cf647e0103a34e447a00c56c24c472683e0a8aca8def08ca7fe70e6585ac55",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png"
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        784,
+        969
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        374,
+        37,
+        1381,
+        967
+      ],
+      "sha256": "b004b04c315ad413e11a038fa8ff1b47f9d381f37fa9bb9352ede49f67e62512",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ae518589-61df-4b98-91a1-b4d4a8e0fb69.png",
+      "review": "Forward compact gold flare attached to mantle at right, narrow open dark mouth, no weapon/body. Attempt02 restores rigid mask scale; filled-stone span489 vs502(-2.59%)."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a349edc52e6d7ed4084f05503ae6a90244928edd2cec3ef09673de0106953092",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png": {
+          "sha256": "79cf647e0103a34e447a00c56c24c472683e0a8aca8def08ca7fe70e6585ac55",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/idle/master.png"
+        },
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/references/original-row-native-crop.png": {
+          "sha256": "a4229d14f0bbf41126ee5c925cdc7de6ddcc60d738cd2d8c74d671ff616176fc",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/references/original-row-native-crop.png"
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spirit-fire/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        901,
+        954
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        504,
+        25,
+        1201,
+        943
+      ],
+      "sha256": "5ffdb79b7c652eb3d7ea64866d53ef68515b052d2309f1b90d9fdcfb7cdfcc20",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-af4e5490-14d2-4574-aed7-2a101b8298bd.png",
+      "review": "Opposite rightward crown/lower-cyan sweep; preserved stone identity and closed mouth, no mirroring. Filled-stone span493 vs502(-1.79%)."
+    }
+  },
+  "quartetManifest": "bundle-manifest.json"
+}

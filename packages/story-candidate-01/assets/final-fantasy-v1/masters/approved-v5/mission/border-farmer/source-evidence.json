@@ -1,0 +1,143 @@
+{
+  "topicId": "C01-MISSION-BORDER-FARMER",
+  "assetId": "C01-FFV1-MISSION-BORDER-FARMER",
+  "label": "\u8fb9\u5883\u519c\u6237",
+  "scope": "remaining",
+  "classification": "scene-active-idle-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 2,
+    "nonrenderingPopulationMetadata": 1
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [
+    {
+      "level": "c01-01",
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "x": 11.5,
+      "y": 8.65,
+      "layer": "under-units",
+      "scale": 0.7,
+      "opacity": 0.9
+    },
+    {
+      "level": "c01-01",
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "x": 16.4,
+      "y": 9.15,
+      "layer": "under-units",
+      "scale": 0.68,
+      "opacity": 0.88,
+      "flip": true
+    }
+  ],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+    "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 0,
+    "rowIndex1": 1,
+    "rowCropXYXY": [
+      0,
+      0,
+      1254,
+      314
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        0,
+        314,
+        314
+      ],
+      [
+        314,
+        0,
+        627,
+        314
+      ],
+      [
+        627,
+        0,
+        940,
+        314
+      ],
+      [
+        940,
+        0,
+        1254,
+        314
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        5,
+        309,
+        309
+      ],
+      [
+        319,
+        5,
+        622,
+        309
+      ],
+      [
+        632,
+        5,
+        935,
+        309
+      ],
+      [
+        945,
+        5,
+        1249,
+        309
+      ]
+    ],
+    "observedIdentity": "Older woman, warm tan skin, concerned dark eyes; taupe/olive headscarf tied under chin; patched beige tunic/dress, rope belt, brown trousers and boots. Screen-left hand holds a tied round seed pouch; screen-right holds a short wooden-handled hoe with bent gray metal blade."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-border-farmer.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-BORDER-FARMER",
+    "png": "runtime-hd/mission-unit/mission-border-farmer.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "referenceCopies": {
+    "original-idle-cell.png": "e9067e684da7ccfcc02999e846658aafac570aa3331f7d8b989c4837f1928464",
+    "original-masterboard.png": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+    "original-row.png": "adf42a857e6924b447528bd4420a1d86a15a9042fa0ff85fa12174a70025f910"
+  },
+  "status": "Idle identity/scale gate pending; native outputs remain unmodified"
+}

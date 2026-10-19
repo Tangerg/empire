@@ -1,0 +1,117 @@
+{
+  "topicId": "C01-MISSION-REFUGEE-CHILD",
+  "category": "mission-unit",
+  "status": "Native quartet complete with QA and shared-scale registration; coordinator handles export and any binding decisions.",
+  "actualConsumers": [],
+  "consumerQualification": "No static child topic/domain binding. c01.refugee remains adult-bound. Do not claim browser use or invent a child combat consumer.",
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Exact raw/master byte-identical to native tool output; no crop/trim/recolor/alpha cleanup or pose-specific scale. Source alpha<=1 dust retained. QA composites are derived review images only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "sharedScale": 0.042628571428571425,
+  "commonSourceCanvas": [
+    1561,
+    1008
+  ],
+  "bodyTargetHeightLogicalPixels": 37.3,
+  "semanticContract": "Original mission slots idle/walk-a/carry-or-work/walk-b. Fictional noncombat child carries tan cloth teddy and corked bottle with red ties. No weapons/armor/attack invented.",
+  "qa": [
+    "qa-native37-black-white.png",
+    "qa-native37-black-white-3x.png",
+    "qa-native-quartet-white.png",
+    "qa-sequence.gif",
+    "qa-walking-loop.gif",
+    "qa-review.json"
+  ],
+  "rejectedAttempts": [
+    "walk-b/rejected-attempt-01"
+  ],
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "request": "idle/request.json",
+      "prompt": "idle/prompt.txt",
+      "alphaQA": "idle/alpha-qa.json",
+      "generationResult": "idle/generation-result.json",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        762.75,
+        955
+      ],
+      "sha256": "ffef4fefe2cfbdf24ebcbf5a1c30132f130c09955f6f50604540522fa704a6cb",
+      "rawMasterGeneratedSourceBytesIdentical": true,
+      "exactPromptSha256": "48ac7afd5f1a60b48a113c7257892227acb821fa734a8f0d77f399251848ae0a",
+      "review": "Accepted first identity/scale gate by coordinator: gray hood-down patched coat, dark bob, small worried face, tan teddy and red-tied corked bottle; child37.3 versus human44."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "request": "walk-a/request.json",
+      "prompt": "walk-a/prompt.txt",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "generationResult": "walk-a/generation-result.json",
+      "nativeSize": [
+        1561,
+        1007
+      ],
+      "sourceFootAnchorSuggested": [
+        730.0,
+        939
+      ],
+      "sha256": "610baa77437280076916770e5dabfe1c5d99466470111f4ad538fb6c0283b3d7",
+      "rawMasterGeneratedSourceBytesIdentical": true,
+      "exactPromptSha256": "89816443da8399339c2e0bd6b44af0981c21e2ac8fd3a64b9902fb027243cb1e",
+      "review": "Clear right-screen boot supporting at forward heel/sole; left-screen boot lifted behind. Same two belongings and original hand assignment."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "request": "carry-or-work/request.json",
+      "prompt": "carry-or-work/prompt.txt",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        785.5,
+        952
+      ],
+      "sha256": "8a644e9ccf0a871ee23dbc6b97e90bffa823ddabf9fb0cfb2617e19db7ea326d",
+      "rawMasterGeneratedSourceBytesIdentical": true,
+      "exactPromptSha256": "9a13f502b79931f8bbaba786b4ef946bca9161da0677daeddebd5b74732673c2",
+      "review": "Gentle secure-carry gesture: teddy lifted under chin, child glances down, bottle drawn inward and upright. Stable feet, no combat."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "request": "walk-b/request.json",
+      "prompt": "walk-b/prompt.txt",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "generationResult": "walk-b/generation-result.json",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        796.0,
+        951
+      ],
+      "sha256": "6b7fc25d7642d7f1454c53d7bcb43bb5f921af069c3a238afff2f9137b65f8e4",
+      "rawMasterGeneratedSourceBytesIdentical": true,
+      "exactPromptSha256": "835fe90731f286e914fdf7f914a7e013e0fcb029e8656e5956f9fe623a718b7f",
+      "review": "Corrected opposite support: screen-left boot flat/down; screen-right boot lifted forward with visible sole. Distinct from walk-a support contact. Rejected first attempt retained."
+    }
+  }
+}

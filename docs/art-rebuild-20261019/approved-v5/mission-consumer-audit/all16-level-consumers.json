@@ -1,0 +1,652 @@
+{
+  "method": "Read-only evaluation of the authored levels.ts module after TypeScript transpilation; imported resource constants read verbatim from resources.ts. This resolves actual baseParty/deployment coordinates and nested spawnUnits. No game state mutations or battle replay.",
+  "domainBindings": {
+    "c01.refugee": "C01-MISSION-REFUGEE-ADULT",
+    "c01.laborer": "C01-MISSION-BRIDGE-LABORER"
+  },
+  "levels": [
+    {
+      "id": "c01-01",
+      "name": "01 · 双子丘陵",
+      "unitCount": 19,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.cain",
+        "c01.gravekeeper",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.roderick",
+        "c01.swordsman"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [
+        {
+          "topicId": "C01-MISSION-BORDER-FARMER",
+          "x": 11.5,
+          "y": 8.65,
+          "layer": "under-units",
+          "scale": 0.7,
+          "opacity": 0.9
+        },
+        {
+          "topicId": "C01-MISSION-BORDER-FARMER",
+          "x": 16.4,
+          "y": 9.15,
+          "layer": "under-units",
+          "scale": 0.68,
+          "opacity": 0.88,
+          "flip": true
+        }
+      ],
+      "missionPopulationMetadata": [
+        {
+          "topicId": "C01-MISSION-BORDER-FARMER",
+          "role": "village-ambient",
+          "maximum": 2
+        }
+      ]
+    },
+    {
+      "id": "c01-02",
+      "name": "02 · 三桥河谷",
+      "unitCount": 20,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.ballista",
+        "c01.banner-guard",
+        "c01.cain",
+        "c01.gravekeeper",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.refugee",
+        "c01.swordsman"
+      ],
+      "missionActors": [
+        {
+          "key": "refugee-1",
+          "x": 1,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "refugee-2",
+          "x": 2,
+          "y": 12,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "refugee-3",
+          "x": 3,
+          "y": 12,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        }
+      ],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-03",
+      "name": "03 · 赤石围城",
+      "unitCount": 19,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.ballista",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.engineer",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.roderick",
+        "c01.skeleton-guard",
+        "c01.swordsman",
+        "c01.templar"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [
+        {
+          "key": "redstone-wave-guard",
+          "x": 0,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "redstone-wave-engineer",
+          "x": 1,
+          "y": 14,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "redstone-wave-bow",
+          "x": 2,
+          "y": 14,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east"
+        }
+      ],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-04",
+      "name": "04 · 黑旗营地",
+      "unitCount": 19,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.laiya",
+        "c01.mirelle",
+        "c01.swordsman"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-05",
+      "name": "05 · 焚村令",
+      "unitCount": 21,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.refugee",
+        "c01.swordsman",
+        "c01.templar"
+      ],
+      "missionActors": [
+        {
+          "key": "villager-1",
+          "x": 5,
+          "y": 3,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "villager-2",
+          "x": 12,
+          "y": 10,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "villager-3",
+          "x": 11,
+          "y": 9,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        }
+      ],
+      "reinforcementUnits": [
+        {
+          "key": "purifier-reinforcement",
+          "x": 0,
+          "y": 13,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "east"
+        },
+        {
+          "key": "purifier-west-shield",
+          "x": 0,
+          "y": 14,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "east"
+        },
+        {
+          "key": "purifier-west-bow",
+          "x": 2,
+          "y": 14,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "east"
+        }
+      ],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-06",
+      "name": "06 · 白河夜渡",
+      "unitCount": 21,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.ballista",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.gravekeeper",
+        "c01.knight",
+        "c01.laborer",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.refugee",
+        "c01.swordsman"
+      ],
+      "missionActors": [
+        {
+          "key": "refugee-1",
+          "x": 7,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "refugee-2",
+          "x": 8,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "refugee-3",
+          "x": 9,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-REFUGEE-ADULT"
+        },
+        {
+          "key": "refugee-4",
+          "x": 8,
+          "y": 12,
+          "unit": "c01.laborer",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-BRIDGE-LABORER"
+        }
+      ],
+      "reinforcementUnits": [
+        {
+          "key": "pursuit-wave-knight",
+          "x": 0,
+          "y": 1,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "east"
+        },
+        {
+          "key": "pursuit-wave-sword",
+          "x": 0,
+          "y": 2,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "east"
+        },
+        {
+          "key": "pursuit-wave-bow",
+          "x": 1,
+          "y": 3,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "east"
+        }
+      ],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-07",
+      "name": "07 · 无主之城",
+      "unitCount": 23,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.engineer",
+        "c01.gravekeeper",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.swordsman",
+        "c01.wolf-rider"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-08",
+      "name": "08 · 佣兵之价",
+      "unitCount": 21,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.bran",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.wolf-rider"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-09",
+      "name": "09 · 笼中之火",
+      "unitCount": 23,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.engineer",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.ivra",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.templar"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-10",
+      "name": "10 · 旧旗下的追兵",
+      "unitCount": 21,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.gravekeeper",
+        "c01.ivra",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.roderick",
+        "c01.swordsman",
+        "c01.tasha"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [
+        {
+          "key": "old-banner-west-knight",
+          "x": 0,
+          "y": 4,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "east"
+        },
+        {
+          "key": "old-banner-west-shield",
+          "x": 0,
+          "y": 5,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "east"
+        },
+        {
+          "key": "old-banner-west-bow",
+          "x": 1,
+          "y": 6,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "east"
+        }
+      ],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-11",
+      "name": "11 · 无声墓园",
+      "unitCount": 21,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.bran",
+        "c01.cemetery-colossus",
+        "c01.ghost",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.ivra",
+        "c01.laiya",
+        "c01.mirelle",
+        "c01.skeleton-guard",
+        "c01.swordsman",
+        "c01.tasha"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-12",
+      "name": "12 · 沉没钟塔",
+      "unitCount": 19,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.cain",
+        "c01.engineer",
+        "c01.ghost",
+        "c01.ivra",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.skeleton-guard",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.templar"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [
+        {
+          "key": "drowned-echo-west",
+          "x": 6,
+          "y": 0,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "south"
+        },
+        {
+          "key": "drowned-echo-east",
+          "x": 16,
+          "y": 0,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "south"
+        }
+      ],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-13",
+      "name": "13 · 圣城档案",
+      "unitCount": 24,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.engineer",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.ivra",
+        "c01.knight",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.templar"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-14",
+      "name": "14 · 山炉余烬",
+      "unitCount": 22,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.engineer",
+        "c01.ivra",
+        "c01.laborer",
+        "c01.laiya",
+        "c01.mirelle",
+        "c01.rune-artificer",
+        "c01.rune-shield",
+        "c01.stone-golem",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.templar"
+      ],
+      "missionActors": [
+        {
+          "key": "forge-laborer",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.laborer",
+          "owner": 1,
+          "facing": "east",
+          "topicId": "C01-MISSION-BRIDGE-LABORER"
+        }
+      ],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-15",
+      "name": "15 · 银林长梦",
+      "unitCount": 22,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.bran",
+        "c01.druid",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.ivra",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.silver-longbow",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.templar",
+        "c01.woodland-walker"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    },
+    {
+      "id": "c01-16",
+      "name": "16 · 记住我的名字",
+      "unitCount": 25,
+      "authoredUnitTypes": [
+        "c01.archer",
+        "c01.banner-guard",
+        "c01.battle-mage",
+        "c01.bran",
+        "c01.cemetery-colossus",
+        "c01.engineer",
+        "c01.ghost",
+        "c01.gravekeeper",
+        "c01.inquisitor",
+        "c01.ivra",
+        "c01.laiya",
+        "c01.legion-shield",
+        "c01.mirelle",
+        "c01.skeleton-guard",
+        "c01.swordsman",
+        "c01.tasha",
+        "c01.templar"
+      ],
+      "missionActors": [],
+      "reinforcementUnits": [],
+      "missionReinforcements": [],
+      "missionScenePlacements": [],
+      "missionPopulationMetadata": []
+    }
+  ]
+}

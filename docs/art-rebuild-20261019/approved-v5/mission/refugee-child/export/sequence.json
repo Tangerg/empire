@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-b/master.png"
+    },
+    "scale": 0.042628571428571425,
+    "origin": [
+      8,
+      8
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      762.75,
+      955
+    ],
+    "sourceFeet": {
+      "idle": [
+        762.75,
+        955
+      ],
+      "walk-a": [
+        730.0,
+        939
+      ],
+      "carry-or-work": [
+        785.5,
+        952
+      ],
+      "walk-b": [
+        796.0,
+        951
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.3960857142857142,
+        0.6820571428571428
+      ],
+      "carry-or-work": [
+        -0.9697999999999999,
+        0.12788571428571427
+      ],
+      "walk-b": [
+        -1.4174,
+        0.1705142857142857
+      ]
+    },
+    "registrationLimit": 2,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Original small noncombat child, original teddy and bottle, opposite walk contacts and gentle carry gesture. Catalog-only, no current domain or map binding."
+  },
+  "authoredCanvas": [
+    1561,
+    1008
+  ],
+  "logicalPivot": [
+    40.514942857142856,
+    48.71028571428571
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ffef4fefe2cfbdf24ebcbf5a1c30132f130c09955f6f50604540522fa704a6cb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5991,
+        "nearOpaquePixels": 567,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          11,
+          53,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ffef4fefe2cfbdf24ebcbf5a1c30132f130c09955f6f50604540522fa704a6cb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23990,
+        "nearOpaquePixels": 2326,
+        "edgeMax": 0,
+        "visibleBounds": [
+          60,
+          23,
+          105,
+          97
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-a/master.png",
+      "registrationOffset": [
+        1.3960857142857142,
+        0.6820571428571428
+      ],
+      "sourceCanvas": [
+        1561,
+        1007
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "610baa77437280076916770e5dabfe1c5d99466470111f4ad538fb6c0283b3d7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 6007,
+        "nearOpaquePixels": 545,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          12,
+          54,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-a/master.png",
+      "registrationOffset": [
+        1.3960857142857142,
+        0.6820571428571428
+      ],
+      "sourceCanvas": [
+        1561,
+        1007
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "610baa77437280076916770e5dabfe1c5d99466470111f4ad538fb6c0283b3d7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 24072,
+        "nearOpaquePixels": 2218,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          24,
+          108,
+          97
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.9697999999999999,
+        0.12788571428571427
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8a644e9ccf0a871ee23dbc6b97e90bffa823ddabf9fb0cfb2617e19db7ea326d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 6043,
+        "nearOpaquePixels": 518,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          12,
+          50,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.9697999999999999,
+        0.12788571428571427
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8a644e9ccf0a871ee23dbc6b97e90bffa823ddabf9fb0cfb2617e19db7ea326d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 24206,
+        "nearOpaquePixels": 2138,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          23,
+          100,
+          97
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-b/master.png",
+      "registrationOffset": [
+        -1.4174,
+        0.1705142857142857
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6b7fc25d7642d7f1454c53d7bcb43bb5f921af069c3a238afff2f9137b65f8e4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 6006,
+        "nearOpaquePixels": 537,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          11,
+          51,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-child/walk-b/master.png",
+      "registrationOffset": [
+        -1.4174,
+        0.1705142857142857
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6b7fc25d7642d7f1454c53d7bcb43bb5f921af069c3a238afff2f9137b65f8e4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 24081,
+        "nearOpaquePixels": 2210,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          22,
+          101,
+          97
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}
