@@ -18,10 +18,11 @@ const thirdSet = process.argv.includes('--third');
 const fourthSet = process.argv.includes('--fourth');
 const pineSet = process.argv.includes('--pine-first');
 const brushSet = process.argv.includes('--pine-underbrush');
-const extended = thirdSet || fourthSet || pineSet || brushSet;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const matureSet = process.argv.includes('--pine-mature');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -41,7 +42,13 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = brushSet ? [
+const columns: readonly ReviewColumn[] = matureSet ? [
+  { id: 'pine-mature-a', x: 85, placement: [0.74, 0.86] },
+  { id: 'pine-mature-b', x: 235, placement: [0.74, 0.86] },
+  { id: 'pine-dead', x: 385, placement: [1, 1], catalogOnly: true },
+  { id: 'pine-mature-c', x: 515, placement: [0.86, 1.06] },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : brushSet ? [
   { id: 'pine-underbrush-a', x: 85, placement: [0.58, 0.7] },
   { id: 'pine-underbrush-b', x: 235, placement: [1, 1], catalogOnly: true },
   { id: 'pine-underbrush-c', x: 385, placement: [0.58, 0.7] },
@@ -82,7 +89,7 @@ for (const { id, x, placement, catalogOnly = false, reference = false, reconstru
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
   const source = id === 'boulder-ferns' ? motherRoot
-    : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair'].includes(id) ? frame : field;
+    : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair', 'pine-mature-c'].includes(id) ? frame : field;
   const matches = props(source)
     .filter((markup) => markup.includes(`${atlas.id}@2x.png`) && markup.includes(crop));
   const samples = matches.map((markup) => {

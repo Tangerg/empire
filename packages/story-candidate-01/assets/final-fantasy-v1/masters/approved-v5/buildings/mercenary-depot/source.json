@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+  "binding": "depot",
+  "bindingEvidence": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts:84",
+  "placementEvidence": "packages/experience-lab/src/index.ts:121 supply-depot, owner2 x23 y10; shared Gray Flag battle lab",
+  "campaignPlacement": "No depot type instance found in story-candidate-01/src/levels.ts; do not claim campaign placement",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-02.png",
+  "sourceSHA256": "9194804968ce3164104b78e0384bf35725a51bacd5d4cbe9a33993bc03569f5d",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        1087,
+        362,
+        1448
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        1087,
+        724,
+        1448
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        1087,
+        1086,
+        1448
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-mercenary-depot.png",
+  "stateEvidence": "Normal squat timber kiosk with stone footings, ochre pyramidal plank roof, left chain hoist/pulley, large front ledger board and right crates/sacks. Damaged roof holes/broken posts and board, loose crates and spilled supplies. Captured is restored, front ledger replaced by locked timber door, more neat crate stacks, and one dark gray forked roof flag with pale radial-star emblem.",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ]
+}

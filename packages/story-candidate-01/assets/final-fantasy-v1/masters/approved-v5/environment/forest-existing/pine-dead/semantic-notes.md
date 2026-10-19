@@ -1,0 +1,5 @@
+One tall mostly dead sparse pine snag. Very exposed long angular brown trunk with broken bare tip, widely spaced drooping skeletal branch pairs, and exactly three remaining coarse green/teal foliage tufts on lower branches. Large transparent gaps, no healthy crown or continuous canopy. Small root flares and full branch tips. Broad matte woody facets and heavy dark outline follow the approved pine language. No fine twig noise, needle microtexture, ground elements or shadow. Source foot (655,1107) is the central trunk/root contact above the lowest flared root tips.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [431, 65, 337, 105]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.
