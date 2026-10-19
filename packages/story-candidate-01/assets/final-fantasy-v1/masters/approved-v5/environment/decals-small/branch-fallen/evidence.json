@@ -1,0 +1,82 @@
+{
+  "asset": "branch-fallen",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte wood planes and large outline groups, no fine grain scratches",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    626,
+    931
+  ],
+  "source_foot_estimate_normalized": [
+    0.499203,
+    0.742424
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    185,
+    333,
+    59,
+    243
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/decals-small/branch-fallen-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/exposed-roots/exposed-roots-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/branch-fallen/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-tracks-twigs-stump-branch-source-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-tracks-twigs-stump-branch-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 0,
+  "original_gameplay_footprint": [
+    1,
+    1
+  ],
+  "original_atlas_category": "ground-decal",
+  "actual_render_layer": "catalog category ground-decal; no explicit current consumer found",
+  "original_runtime_cell_size": [
+    64,
+    64
+  ],
+  "original_runtime_cell_size_2x": [
+    128,
+    128
+  ],
+  "original_runtime_anchor": [
+    32,
+    60
+  ],
+  "original_runtime_opacity": 0.72,
+  "opacity_scope": "0.72 is generic groundPieces contract if selected; no active placement claimed for these IDs",
+  "raw_master_opacity_preapplied": false,
+  "raw_master_only": true,
+  "no_added_ground_platform": true,
+  "no_exterior_glow": true,
+  "consumer_classification": "catalog available only; no explicit runtime selector/placement found, zero in both audited scenes",
+  "original_slot_zero_based": 15,
+  "source_ground_center_estimate_px": [
+    675,
+    722
+  ],
+  "original_source_crop_problem": "Exact legacy cell clips upper fallen-branch tips above y512 and includes a rope-coil fragment from next visual row.",
+  "audited_counts": {
+    "c01-02": 0,
+    "c01-01": 0
+  },
+  "visually_verified_subject_counts": {
+    "fallen_main_branch": 1,
+    "olive_leaves": 3,
+    "rope_coils": 0
+  },
+  "foot_estimate_basis": "visual foreground structural contact line; ground-center estimate kept separately",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

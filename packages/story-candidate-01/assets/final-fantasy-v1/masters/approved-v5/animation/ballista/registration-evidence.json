@@ -1,0 +1,438 @@
+{
+  "status": "Measured whole-canvas proposal; no runtime writes",
+  "sharedScale": 0.05036447978793903,
+  "scaleFraction": "76/1509",
+  "scaleReference": "Accepted idle complete-unit visible alpha>127 width 1509 source pixels mapped to 76 logical pixels. Not a humanoid 44-high fit.",
+  "visibleUnitReferenceWidthSourcePixels": 1509,
+  "visibleUnitTargetWidthLogicalPixels": 76,
+  "operatorReference": "Idle helmet-to-exposed-boot comparison is approximately 41.198 logical pixels in an operating stance. Parent reviewed beside 44-high standing infantry; no forced body-height scale.",
+  "canonicalSourceFoot": [
+    922,
+    983
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "paddingPolicy": "Attack is 1586x992. Idle, walk-a and walk-b are 1585x992 and require exactly one transparent column at the right during export preparation only. Preserve every native master/raw byte. No resize/crop/alpha cleanup or independent fitting.",
+  "canvasPaddingToleranceRequired": 1,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "For each pose, x is the mean of three visible wheel bottom-four-row alpha>127 support bands; y is the lowest near/front-wheel contact. Explicit wheel ROIs and contact measurements are in each alpha QA file. Fourth far-rear contact is occluded and not invented. Translate the complete source canvas at the single shared scale.",
+  "originalRulesFootprint": [
+    2,
+    2
+  ],
+  "originalRuntimeFrameSize": [
+    64,
+    48
+  ],
+  "originalRuntimeAnchor": [
+    32,
+    47
+  ],
+  "rulesFootprintChanged": false,
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        922,
+        983
+      ],
+      "visibleWheelContactMidpoint": [
+        921.826,
+        935.0
+      ],
+      "wheelContacts": {
+        "nearRearWheel": {
+          "roi": [
+            380,
+            760,
+            635,
+            945
+          ],
+          "contactY": 924,
+          "bottomBandRows": 4,
+          "meanX": 486.541,
+          "spanX": [
+            458,
+            518
+          ]
+        },
+        "nearFrontWheel": {
+          "roi": [
+            810,
+            840,
+            1085,
+            991
+          ],
+          "contactY": 983,
+          "bottomBandRows": 4,
+          "meanX": 927.626,
+          "spanX": [
+            900,
+            958
+          ]
+        },
+        "farFrontWheel": {
+          "roi": [
+            1320,
+            760,
+            1490,
+            930
+          ],
+          "contactY": 898,
+          "bottomBandRows": 4,
+          "meanX": 1351.311,
+          "spanX": [
+            1323,
+            1380
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        57,
+        36,
+        1566,
+        984
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        32,
+        1569,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        10.870775,
+        5.813121,
+        86.870775,
+        53.558648
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        87.878065,
+        53.961564
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 crosses a source edge."
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        932,
+        975
+      ],
+      "visibleWheelContactMidpoint": [
+        931.933,
+        928.333
+      ],
+      "wheelContacts": {
+        "nearRearWheel": {
+          "roi": [
+            380,
+            760,
+            635,
+            945
+          ],
+          "contactY": 915,
+          "bottomBandRows": 4,
+          "meanX": 503.522,
+          "spanX": [
+            474,
+            535
+          ]
+        },
+        "nearFrontWheel": {
+          "roi": [
+            810,
+            840,
+            1085,
+            991
+          ],
+          "contactY": 975,
+          "bottomBandRows": 4,
+          "meanX": 939.574,
+          "spanX": [
+            909,
+            972
+          ]
+        },
+        "farFrontWheel": {
+          "roi": [
+            1320,
+            760,
+            1490,
+            930
+          ],
+          "contactY": 895,
+          "bottomBandRows": 4,
+          "meanX": 1352.704,
+          "spanX": [
+            1326,
+            1381
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        -0.503644798,
+        0.402915838
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        31,
+        44,
+        1562,
+        976
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        27,
+        41,
+        1571,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        9.057654,
+        6.618953,
+        86.165673,
+        53.558648
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.496355,
+        4.402916,
+        87.37442,
+        54.36448
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 crosses a source edge."
+      }
+    },
+    "attack": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        923,
+        984
+      ],
+      "visibleWheelContactMidpoint": [
+        923.356,
+        936.0
+      ],
+      "wheelContacts": {
+        "nearRearWheel": {
+          "roi": [
+            380,
+            760,
+            635,
+            945
+          ],
+          "contactY": 925,
+          "bottomBandRows": 4,
+          "meanX": 487.143,
+          "spanX": [
+            461,
+            514
+          ]
+        },
+        "nearFrontWheel": {
+          "roi": [
+            810,
+            840,
+            1085,
+            991
+          ],
+          "contactY": 984,
+          "bottomBandRows": 4,
+          "meanX": 929.799,
+          "spanX": [
+            900,
+            961
+          ]
+        },
+        "farFrontWheel": {
+          "roi": [
+            1320,
+            760,
+            1490,
+            930
+          ],
+          "contactY": 899,
+          "bottomBandRows": 4,
+          "meanX": 1353.127,
+          "spanX": [
+            1325,
+            1382
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        -0.05036448,
+        -0.05036448
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        57,
+        33,
+        1544,
+        985
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        43,
+        30,
+        1568,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        10.820411,
+        5.611663,
+        85.712392,
+        53.558648
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.949636,
+        3.949636,
+        87.8277,
+        53.911199
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 crosses a source edge."
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        928,
+        980
+      ],
+      "visibleWheelContactMidpoint": [
+        927.727,
+        932.0
+      ],
+      "wheelContacts": {
+        "nearRearWheel": {
+          "roi": [
+            380,
+            760,
+            635,
+            945
+          ],
+          "contactY": 919,
+          "bottomBandRows": 4,
+          "meanX": 495.494,
+          "spanX": [
+            467,
+            526
+          ]
+        },
+        "nearFrontWheel": {
+          "roi": [
+            810,
+            840,
+            1085,
+            991
+          ],
+          "contactY": 980,
+          "bottomBandRows": 4,
+          "meanX": 931.112,
+          "spanX": [
+            903,
+            961
+          ]
+        },
+        "farFrontWheel": {
+          "roi": [
+            1320,
+            760,
+            1490,
+            930
+          ],
+          "contactY": 897,
+          "bottomBandRows": 4,
+          "meanX": 1356.575,
+          "spanX": [
+            1328,
+            1387
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        -0.302186879,
+        0.151093439
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        37,
+        43,
+        1564,
+        981
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        34,
+        40,
+        1567,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        9.561299,
+        6.316766,
+        86.46786,
+        53.558648
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.697813,
+        4.151093,
+        87.575878,
+        54.112657
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 crosses a source edge."
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 0.503644798,
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "translationBasis": "Measured wheel-ground contacts only; maximum shift is below one logical pixel. No shared-scale changes."
+}

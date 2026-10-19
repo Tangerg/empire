@@ -1,0 +1,94 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "mossy-boulder",
+  "cellIndexZeroBased": 17,
+  "category": "ground-decal",
+  "expectedRuntimeSizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ]
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-633a0406-cf21-4460-8545-d0ffd34d00cd.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-mossy-boulder-semantic-subject.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-selected-readability-20261019",
+    "baselineCommit": "36555c4",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "atlasGrid": [
+      6,
+      4
+    ],
+    "atlasNativeSize": [
+      1536,
+      1024
+    ],
+    "registeredMasterCellCrop": [
+      1280,
+      512,
+      1536,
+      768
+    ],
+    "semanticSubjectCrop": [
+      1280,
+      445,
+      1536,
+      630
+    ],
+    "identityCropTreatment": "Unscaled original-master crops retained unchanged. Registered-cell crop preserved separately; semantic crop is identity authority after complete-sheet inspection.",
+    "crossCellContamination": "Registered row crop clips the boulder's crown and includes an ash-scorch/fire-ring subject below. Semantic crop includes entire small rounded boulder and excludes the fire-ring.",
+    "audit": "docs/art-rebuild-20261019/approved-v5/ground-debris-audit/debris-inventory.json",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json",
+    "oldLogicalAnchor": [
+      32,
+      60
+    ],
+    "oldObstructionHeight": 1,
+    "oldAnchorIsNotNewSourceFootpoint": true,
+    "atlasSha256": "ec62ec03545fadca86f8c67a265633a59496cd981a92e7572cce472d54f016fd",
+    "matchesBaselineAtlasBytes": true
+  },
+  "actualConsumer": {
+    "module": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "renderer": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+    "existingGroundOpacity": 0.72,
+    "existingHorizontalFlip": true,
+    "observedGroundMapCounts": {
+      "c01-02": 7,
+      "c01-01": 5
+    },
+    "observedGroundScales": [
+      0.5,
+      0.58
+    ],
+    "note": "Actual groundPieces consumer at plain and river choices; alpha footpoint proposed separately without changing old obstructionHeight=1 metadata.",
+    "registrationNotChanged": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/stone-cluster-a/stone-cluster-a-master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-mossy-boulder-semantic-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/stone-cluster-a/stone-cluster-a-master.png"
+  ],
+  "identityClarification": "Single compact relatively narrow round-domed gray boulder. Moss is localized over crown and upper-left shoulder with a central bare front face and gray right face. Two small gray stones sit toward the lower-right base. Distinct from the larger broader flatter-crowned heavily moss-draped boulder.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No output cleanup, resizing, alpha editing or repository writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "newSourceFootpointNative": [
+    672.0,
+    987
+  ],
+  "newSourceFootpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding."
+}

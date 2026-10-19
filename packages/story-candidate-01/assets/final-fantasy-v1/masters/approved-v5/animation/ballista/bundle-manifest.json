@@ -1,0 +1,150 @@
+{
+  "asset": "C01-UNIT-BALLISTA",
+  "actualConsumers": [
+    "c01.ballista",
+    "ballista (built-in)"
+  ],
+  "status": "Native quartet visually accepted; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical to native tool outputs. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.05036447978793903,
+  "scaleFraction": "76/1509",
+  "visibleUnitReferenceWidthSourcePixels": 1509,
+  "visibleUnitTargetWidthLogicalPixels": 76,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "originalRulesFootprint": [
+    2,
+    2
+  ],
+  "originalRuntimeFrameSize": [
+    64,
+    48
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/registration-evidence.json",
+  "semanticContract": "Exact C01-UNIT-BALLISTA combat-unit contract: idle, walk-a, attack, walk-b. The original source includes the operator; neither equipment-only art nor the separate deployment platform substitutes for the unit. Gameplay remains heavy siege/ranged, piercing range 2-4, no move-and-attack. Walk frames are opposite pushing phases; attack is the post-release shot. The consumed bolt is absent only in attack, while the whole permanent vehicle remains intact. The existing separate projectile contract is not changed or duplicated here.",
+  "acceptanceEvidence": "Parent 2026-10-19 16:11 UTC accepted idle width/operator mass beside 44-high swordsman; parent 16:19 UTC accepted native quartet opposite pushing contacts and post-release empty-guide attack.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "d654e5885e5e76065df650a9353948b2c31db6616385dc39639c0da6c4a9dbb3",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        922,
+        983
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        57,
+        36,
+        1566,
+        984
+      ],
+      "sha256": "0dfb631783dc73e6106102d7ba3b06cd7218f06599ef52375bbfba1da62ba3b3",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-40455ea5-7a01-46be-a3a0-c92b6cf4089b.png",
+      "review": "Accepted complete four-wheel wooden ballista and one large-headed imperial operator. Steel kettle helmet/cheek flaps, navy/red armor, gold cord, huge bare hands and brown boots; thick timber carriage, metal caps/brackets, disk wheels, rope string and loaded steel-tipped bolt aimed right."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "12a3de42724cdd7cac5103dc76b29533479bfb4154da5e78f1fd15d8f6a59d13",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        932,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        31,
+        44,
+        1562,
+        976
+      ],
+      "sha256": "914d78729dbe3636868b038797a8768dfc7c3cf30effa3e40d2a277bbde6d42c",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ccc53aff-9762-443e-a79c-d7a5ba30256c.png",
+      "review": "Operator leans forward pushing both original rear controls. Exposed rearward leg has heel raised/toe contact; opposite boot bears weight forward behind the rear wheel. Diagonal disk-wheel plank seams show rolling. Loaded bolt and complete chassis retained."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "93a1a101a1bb2f2daec874b57c4c7a3205c1aee7b32746b074e8a30dc68c607a",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        923,
+        984
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        57,
+        33,
+        1544,
+        985
+      ],
+      "sha256": "ce53db35ec108bddb386cb1a4a018f394ed4a7fac3794f4306a60ce14e96bcf8",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5f174e76-5258-45b1-8005-de78bdaa3c78.png",
+      "review": "Unmistakable post-release firing moment: loaded bolt has left the guide, rope string is forward, bow assembly has relaxed and operator pulls the rear control up while bracing. Empty guide and visible released string distinguish attack from idle. Four wheels, complete permanent chassis and operator identity retained. No detached projectile or external effects are added."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a957b951f447d3581a37df03e7b9a83c9e001fb26c82fc36a4b6a0024053768b",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        928,
+        980
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        37,
+        43,
+        1564,
+        981
+      ],
+      "sha256": "098ddae6b0375b3fcbd966c9b1da7ad207c2493d8f41e741c6e293603fbbc0ea",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0b95ae30-57df-4831-a9d4-8ae1b5e71fc1.png",
+      "review": "Opposite pushing contact: the forward boot is toe-up/heel-contact beside the rear wheel, opposite boot trails with heel raised. Disk-wheel seam rotation differs from walk-a. Same operator, mechanical proportions, four wheels and loaded right-facing bolt."
+    }
+  }
+}

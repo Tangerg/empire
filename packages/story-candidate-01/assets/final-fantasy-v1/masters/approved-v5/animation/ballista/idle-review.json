@@ -1,5 +1,5 @@
 {
-  "status": "Accepted; remaining three poses in progress",
+  "status": "Native quartet complete and visually accepted; formal export/binding pending coordinator",
   "topic": "C01-UNIT-BALLISTA",
   "actualConsumers": [
     "c01.ballista",
@@ -89,7 +89,7 @@
   "perimeterAlphaGreaterThan1": 0,
   "rawPreserved": true,
   "exactPromptVerified": true,
-  "remainingPosesGenerated": false,
+  "remainingPosesGenerated": true,
   "oldRulesFootprint": [
     2,
     2
@@ -104,11 +104,12 @@
     "attack",
     "walk-b"
   ],
-  "nextGate": "Coordinator reviews idle mechanical scale and ground anchor before walking/loading/shooting frames.",
+  "nextGate": "Coordinator formal full-canvas export, runtime sequence review and binding",
   "acceptedScale": "76/1509",
   "acceptedSourceFoot": [
     922,
     983
   ],
-  "acceptanceEvidence": "Parent2026-10-19 16:11UTC: native and76-wide beside44-high swordsman reviewed; mechanical width/operator mass/wood beams/bolt readable. Continue common scale and wheel-ground basis, opposing pushing steps/wheel rotation and clear string/shooting action without breathing scale."
+  "acceptanceEvidence": "Parent2026-10-19 16:11UTC: native and76-wide beside44-high swordsman reviewed; mechanical width/operator mass/wood beams/bolt readable. Continue common scale and wheel-ground basis, opposing pushing steps/wheel rotation and clear string/shooting action without breathing scale.",
+  "quartetManifest": "bundle-manifest.json"
 }

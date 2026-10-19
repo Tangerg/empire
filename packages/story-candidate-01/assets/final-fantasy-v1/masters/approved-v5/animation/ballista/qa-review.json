@@ -1,0 +1,60 @@
+{
+  "status": "Native quartet visually accepted; all source integrity and geometry gates pass; formal export/binding pending coordinator",
+  "topic": "C01-UNIT-BALLISTA",
+  "actualConsumers": [
+    "c01.ballista",
+    "ballista (built-in)"
+  ],
+  "scale": "76/1509",
+  "scaleBasis": "Accepted idle complete-unit visible alpha>127 width 1509 source pixels mapped to 76 logical pixels. Not a humanoid 44-high fit.",
+  "operatorReference": "Idle helmet-to-exposed-boot comparison is approximately 41.198 logical pixels in an operating stance. Parent reviewed beside 44-high standing infantry; no forced body-height scale.",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1585,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "sourcePaddingRequired": "Idle, walk-a and walk-b: one transparent right column only. Attack: none.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges. Native alpha=1 specks retained unchanged.",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalOperatorIdentityRetained": true,
+  "fourWheelChassisRetained": true,
+  "mechanicalAndHumanVolumeConsistent": true,
+  "walkContactsOppose": true,
+  "wheelDiskRotationChanges": true,
+  "attackSemanticsPass": "Unmistakable post-release firing moment: loaded bolt has left the guide, rope string is forward, bow assembly has relaxed and operator pulls the rear control up while bracing. Empty guide and visible released string distinguish attack from idle. Four wheels, complete permanent chassis and operator identity retained. No detached projectile or external effects are added.",
+  "semanticContract": "Exact C01-UNIT-BALLISTA combat-unit contract: idle, walk-a, attack, walk-b. The original source includes the operator; neither equipment-only art nor the separate deployment platform substitutes for the unit. Gameplay remains heavy siege/ranged, piercing range 2-4, no move-and-attack. Walk frames are opposite pushing phases; attack is the post-release shot. The consumed bolt is absent only in attack, while the whole permanent vehicle remains intact. The existing separate projectile contract is not changed or duplicated here.",
+  "originalRulesFootprint": [
+    2,
+    2
+  ],
+  "rulesFootprintChanged": false,
+  "originalRuntimeFrameSize": [
+    64,
+    48
+  ],
+  "displayFrameQualification": "Proposed 104x64 display frame preserves full native canvases and does not redefine rules occupancy.",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

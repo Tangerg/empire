@@ -1,0 +1,7 @@
+# branch-fallen
+
+Full original1536x1024 source and exact6x4 slot15 inspected. Exact legacy cell clips upper fallen-branch tips above y512 and includes a rope-coil fragment from next visual row. One diagonal fallen woody branch, rough lower-left broken end, complete split upper-right end and a small number of broad side forks. Exactly THREE muted olive leaves on the right-side offshoot. Main limb remains single; no bundle, sawn disk, rope coil or detached wood pile. Full upper tips recovered from original subject, not the defective grid cell. Native foreground-contact registration estimate(626,931) spans the broken-base/lower-offshoot side; ground center approx(675,722). A lying branch has extended contact rather than one trunk foot, so this is a visual registration estimate for parent review, not a standing-depth claim. Catalog-only identity, no explicit current selector/placement found and zero instances in both audited initial scenes.64/128,anchor32,60,footprint1x1,obstruction0,ground-decal. No layer or gameplay change; generic renderer opacity not preapplied to raw.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [185, 333, 59, 243]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

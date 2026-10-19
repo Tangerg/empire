@@ -1,0 +1,58 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "firewood-stack",
+  "cellIndexZeroBased": 16,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.719154526885577,
+  "nearOpaqueFractionAlphaGE250": 0.2715648044280631,
+  "nonzeroAlphaBBox": [
+    41,
+    52,
+    1173,
+    1196
+  ],
+  "visibleAlphaBBoxGE8": [
+    137,
+    204,
+    1169,
+    1064
+  ],
+  "subjectAlphaBBoxGE128": [
+    138,
+    205,
+    1168,
+    1063
+  ],
+  "solidAlphaBBoxGE250": [
+    139,
+    206,
+    1167,
+    1062
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    138,
+    205,
+    86,
+    191
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "suggestedRegistrationFootpointNative": [
+    653.0,
+    1063
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "d7b07d420855f7ca911efd3ddf0d59ce16ec0d1730bc76fa47ab2565019da9b6",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete loose diagonal firewood stack with two front circular log ends, chunky split timbers and modest moss. No clipping or neighboring folded-canvas fragment.",
+  "remarks": [],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
