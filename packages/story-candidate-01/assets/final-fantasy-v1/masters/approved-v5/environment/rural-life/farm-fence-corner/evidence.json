@@ -1,0 +1,87 @@
+{
+  "asset": "farm-fence-corner",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte squared timber with broad angular planes and bold dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    622,
+    989
+  ],
+  "source_foot_estimate_normalized": [
+    0.496013,
+    0.788676
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    83,
+    340,
+    83,
+    226
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/farm-fence-corner.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/livestock-pen-small-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/frontier-granary/frontier-granary-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-corner/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-houses-fences-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-houses-fences-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 1,
+  "original_render_layer": "under-units",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "no_ground_platform": true,
+  "no_exterior_glow": true,
+  "scale_recommendation": {
+    "authored_placement_scale": 0.58,
+    "random_settlement_scale": 0.3,
+    "initial_presentation_scale": 1.0,
+    "native_mapping": "Use identical full1254 canvas-to-rural112 mapping for both fence variants. Do not independently bbox-normalize to a common height: native posts already have matching heights.",
+    "relative_size": "low boundary fence; post height below house eave height, never palisade or building scale",
+    "validation_status": "recommendation only; parent in-scene unit comparison required"
+  },
+  "original_slot_zero_based": 13,
+  "original_gameplay_footprint": [
+    2,
+    2
+  ],
+  "visually_verified_subject_counts": {
+    "L_shaped_corner": 1,
+    "timber_posts": 3,
+    "wings": 2,
+    "rail_levels_per_wing": 2,
+    "rail_spans_total": 4
+  },
+  "foot_estimate_basis": "foreground corner post ground contact, not lowest loose pebble",
+  "legacy_reference_foot_estimate_px": [
+    147,
+    228
+  ],
+  "legacy_reference_dimensions": [
+    313,
+    314
+  ],
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

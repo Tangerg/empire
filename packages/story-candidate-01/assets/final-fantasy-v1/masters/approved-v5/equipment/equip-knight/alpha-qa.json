@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-KNIGHT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5164869546637363,
+  "nearOpaqueFractionAlphaGE250": 0.46668396378796784,
+  "nonzeroAlphaBBox": [
+    0,
+    25,
+    1222,
+    1232
+  ],
+  "visibleAlphaBBoxGE8": [
+    46,
+    84,
+    1220,
+    1192
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    46,
+    84,
+    34,
+    62
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 30,
+  "sha256": "d1b9aedd3a5d310dfb93d64a128e1689839ba47ad962dd518b3255ddb11be329",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

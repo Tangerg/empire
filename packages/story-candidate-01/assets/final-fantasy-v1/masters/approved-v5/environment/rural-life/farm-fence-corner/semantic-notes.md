@@ -1,0 +1,7 @@
+# Corner farm fence
+
+Exact rural-life slot13, full original master, alpha cell and runtime consumers inspected. One L-shaped fence corner viewed from outside as an open V. Exactly THREE timber posts and TWO rail levels on each of TWO wings, FOUR rail spans total. The center foreground corner post provides the structural foot landmark. Broad rope wraps and sparse grouped olive tufts/contact stones; the interior and spaces between ground contacts remain transparent, with no pen floor or extra fence side. Native structural foot(622,989) lies at the foreground post's ground contact, not the lowest loose pebble. Legacy reference foot approx(147,228) on313x314 cell. Footprint2x2, obstruction1, under-units.112/224 anchor56,108. Explicit scene scale0.58 and settlement scale0.3. Use the same full native-canvas mapping as the straight fence; their post heights already match, so bbox-based height normalization would wrongly inflate the corner. Native source only.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [83, 340, 83, 226]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

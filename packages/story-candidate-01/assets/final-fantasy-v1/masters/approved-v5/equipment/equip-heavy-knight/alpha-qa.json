@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-HEAVY-KNIGHT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5017189014293019,
+  "nearOpaqueFractionAlphaGE250": 0.48083389930531706,
+  "nonzeroAlphaBBox": [
+    0,
+    1,
+    1206,
+    1236
+  ],
+  "visibleAlphaBBoxGE8": [
+    72,
+    54,
+    1203,
+    1196
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    72,
+    54,
+    51,
+    58
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 52,
+  "sha256": "ee051a23018801fa16817800800b54858f47a3f0d3711de317f186ea7f812c2a",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

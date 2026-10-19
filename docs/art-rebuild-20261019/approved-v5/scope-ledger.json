@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 60,
+    "formalBound": 61,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 10,
       "equipment": 4,
-      "interactive-structure": 13,
+      "interactive-structure": 14,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 61,
+    "rawPreservedTopics": 63,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2944,11 +2944,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/holy-medicine-shed/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-holy-medicine-shed.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-holy-medicine-shed.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved",
+        "export": "shared104/1152 scale, unchanged foundation, native state semantic review and alpha passed",
+        "runtimeBinding": "canonical and HD catalog bound; no direct shipped scene consumer found",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-JOINT-GRANARY",
@@ -4238,8 +4243,10 @@
       "category": "equipment",
       "label": "重装骑士主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-heavy-knight/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4294,8 +4301,10 @@
       "category": "equipment",
       "label": "骑士主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-knight/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

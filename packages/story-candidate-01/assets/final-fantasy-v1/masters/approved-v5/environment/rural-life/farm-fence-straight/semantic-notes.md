@@ -1,0 +1,7 @@
+# Straight farm fence
+
+Exact rural-life slot12, full original master, alpha cell and runtime consumers inspected. One straight low fence with exactly TWO timber end posts and TWO rail levels. The central splice is rope only; it does not become a third post. Broad end lashings, central rope connector and one lower-rail notch preserve the source. Sparse olive tufts and four large contact stones have transparent gaps; no solid ground strip or tile. Native structural foot(634,859) is the approximate midpoint of the two visible post-foot ground contacts, not the lowest right post or low grass. Legacy reference structural midpoint approx(153,191) on314x314 cell. Footprint2x1, obstruction1, under-units.112/224 anchor56,108. Explicit scene scale0.58, village/settlement scale0.3. Both fence variants should retain equal native-canvas scale so their posts have matching physical height; do not enlarge the corner based on its shorter bbox. Native source only.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [81, 252, 83, 185]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

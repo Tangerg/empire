@@ -1,0 +1,79 @@
+{
+  "status": "Native masters and source QA complete; integration and scene scale comparison pending",
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "runtime_anchor": [
+    56,
+    108
+  ],
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-houses-fences-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-houses-fences-consumer-evidence.json",
+  "assets": [
+    {
+      "identity": "farm-fence-straight",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-straight/farm-fence-straight-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-straight/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-straight/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-straight/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-straight/evidence.json",
+      "source_foot_estimate_px": [
+        634,
+        859
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "slot": 12,
+      "sha256": "d252c8e803a103a40f7d7511e483de5d88e7f03d8b192db0e00f5430a798f378",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-952452ff-5952-434a-95dc-31812b9feebc.png",
+      "source_foot_estimate_normalized": [
+        0.505582,
+        0.685008
+      ],
+      "scale_recommendation": {
+        "authored_placement_scale": 0.58,
+        "random_settlement_scale": 0.3,
+        "initial_presentation_scale": 1.0,
+        "native_mapping": "Use identical full1254 canvas-to-rural112 mapping for both fence variants. Do not independently bbox-normalize to a common height: native posts already have matching heights.",
+        "relative_size": "low boundary fence; post height below house eave height, never palisade or building scale",
+        "validation_status": "recommendation only; parent in-scene unit comparison required"
+      }
+    },
+    {
+      "identity": "farm-fence-corner",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-corner/farm-fence-corner-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-corner/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-corner/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-corner/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-fence-corner/evidence.json",
+      "source_foot_estimate_px": [
+        622,
+        989
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "slot": 13,
+      "sha256": "ed934a87bf9e879e63ba64dd16a42bd01acadb50f76d64d866dc1e535df278ec",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-81d19c9b-fc21-4b4e-86c7-5e6befdddfd1.png",
+      "source_foot_estimate_normalized": [
+        0.496013,
+        0.788676
+      ],
+      "scale_recommendation": {
+        "authored_placement_scale": 0.58,
+        "random_settlement_scale": 0.3,
+        "initial_presentation_scale": 1.0,
+        "native_mapping": "Use identical full1254 canvas-to-rural112 mapping for both fence variants. Do not independently bbox-normalize to a common height: native posts already have matching heights.",
+        "relative_size": "low boundary fence; post height below house eave height, never palisade or building scale",
+        "validation_status": "recommendation only; parent in-scene unit comparison required"
+      }
+    }
+  ]
+}
