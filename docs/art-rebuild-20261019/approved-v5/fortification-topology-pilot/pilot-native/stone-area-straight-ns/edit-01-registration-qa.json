@@ -1,0 +1,67 @@
+{
+  "identity": "stone-area-straight-ns",
+  "mask": 5,
+  "attempt": "one authorized targeted native edit",
+  "status": "FAIL shared projection/required exterior face; full cap improved but not a registered module",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-2a67fafd-0e74-4b50-8532-b96c7863be96.png",
+  "native_raw": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/raw-edit-01.png",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGBA",
+  "sha256": "6c4cd2fa581cfd542a1afd36460c32c9eadb16e0d30b7ab4876b760810abff61",
+  "strong_alpha_bounds_128": [
+    367,
+    393,
+    889,
+    1075
+  ],
+  "intended_cap_bounds_geometric": [
+    365.75,
+    418,
+    783.75,
+    836
+  ],
+  "expected_opaque_region_coverage": {
+    "cap": {
+      "sample_pixels": 174724,
+      "strong_coverage_alpha128": 0.9952496508779561,
+      "missing_pixels_alpha128": 830,
+      "near_opaque_coverage_alpha250": 0.9903504956388361
+    },
+    "east_face": {
+      "sample_pixels": 21736,
+      "strong_coverage_alpha128": 0.8149153478100847,
+      "missing_pixels_alpha128": 4023,
+      "near_opaque_coverage_alpha250": 0.8085664335664335
+    },
+    "cap_plus_east_face": {
+      "sample_pixels": 196460,
+      "strong_coverage_alpha128": 0.9752977705385321,
+      "missing_pixels_alpha128": 4853,
+      "near_opaque_coverage_alpha250": 0.9702382164308256
+    }
+  },
+  "joined_cap_port_samples_alpha128": {
+    "N": 0.9976076555023924,
+    "S": 0.9952153110047847
+  },
+  "visual_cap_right_edge_estimate_px": 824,
+  "contract_cap_right_edge_px": 783.75,
+  "visual_right_face_shift_px_approx": 40.25,
+  "source_foot_fixed_contract": [
+    627,
+    1045
+  ],
+  "native_pixels_untouched": true,
+  "no_alpha_normalization": true,
+  "no_artistic_or_technical_repair_performed": true,
+  "visual_observations": [
+    "Required cap is now filled, but top/right-face boundary is displaced roughly40 native pixels right of the common geometry.",
+    "The intended lower-right vertical face polygon remains partly missing and partly occupied by top-facing material; clipping cannot relocate that face or repair missing stone.",
+    "Strong local top lighting variation would also require actual seam review even if geometry were corrected.",
+    "No second edit or remaining module generation has been started."
+  ],
+  "next_action": "Stop this exact-geometry imagegen path after the approved one edit and report alternative material-plane source approach."
+}

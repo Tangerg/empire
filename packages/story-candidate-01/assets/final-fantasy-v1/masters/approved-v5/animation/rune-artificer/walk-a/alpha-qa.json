@@ -1,0 +1,73 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1f692a02-b40d-4293-9aac-50500d8d48c0.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "739accb8dca0bc3ff82d3477c13a274a6be4c69c11a776ef48f9158da4b7b5d7",
+  "bboxAlphaNonzero": [
+    97,
+    25,
+    1494,
+    960
+  ],
+  "bboxAlphaGreaterThan127": [
+    355,
+    28,
+    1240,
+    957
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1108804,
+  "alphaOnePixels": 4239,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "trailing-screen-left",
+      "roi": [
+        430,
+        790,
+        715,
+        952
+      ],
+      "soleY": 929,
+      "bottomFourRowsMeanX": 619.9181034482758
+    },
+    {
+      "boot": "leading-screen-right",
+      "roi": [
+        790,
+        800,
+        1150,
+        975
+      ],
+      "soleY": 956,
+      "bottomFourRowsMeanX": 861.4202334630351
+    }
+  ],
+  "sourceFootMidpoint": [
+    740.6691684556554,
+    942.5
+  ],
+  "suggestedSourceFoot": [
+    741,
+    956
+  ],
+  "lockedBodyScale": 0.04814004376367615,
+  "masterRawHashMatches": true,
+  "semanticReview": "Walk-a: original screen-right leg leads to right, screen-left leg trails with bent heel; same left lowered hammer/right arched rune-tool and three blue pendants. Same lens/head proportions. Native and white QA viewed; no baked FX.",
+  "openRuneApertureProbe": {
+    "rectangle": [
+      1147,
+      358,
+      1154,
+      365
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  }
+}

@@ -1,7 +1,7 @@
 {
   "identity": "stone-area-straight-ns",
   "mask": 5,
-  "generation_status": "first native attempt generated, fails required full cap and joining coverage; awaiting parent direction",
+  "generation_status": "bounded exact-module generation stopped after first attempt and one approved edit; no accepted source",
   "technical_coordinate_reference": "/workspace/shared/empire-fortification-topology-plan/pilot-registration-guide/stone-area-straight-ns-coordinate-reference.png",
   "coordinate_reference_sha256": "1fb1c18c24911a76a91bc17c333fc4dc20f1445c661ff511e56a1795bc0e5c61",
   "reference_diagram_note": "Flat technical drawing only. Native fractional corner coordinates are authoritative in JSON; raster guide rounds displayed polygon edges by at most0.25 native pixel. No painted texture was generated in code.",
@@ -208,5 +208,6 @@
   "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9a5cd9f2-ec14-4847-8c78-e321cc38dcaf.png",
   "native_raw": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/raw.png",
   "sha256": "ef260a7685b39ab92645badc6acd5c34351bd26e28e5c9ea8317b25374ab5195",
-  "qa": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/alpha-registration-qa.json"
+  "qa": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/alpha-registration-qa.json",
+  "attempts_manifest": "/workspace/shared/empire-fortification-topology-plan/pilot-native/pilot-attempts-manifest.json"
 }

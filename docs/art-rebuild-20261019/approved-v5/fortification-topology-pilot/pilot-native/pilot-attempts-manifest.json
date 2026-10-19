@@ -1,0 +1,38 @@
+{
+  "status": "bounded exact-module generation stopped after first attempt and one approved edit; no accepted source",
+  "requested_pilot_masks": [
+    5,
+    10,
+    7,
+    13
+  ],
+  "generated_masks": [
+    5
+  ],
+  "not_generated_masks": [
+    10,
+    7,
+    13
+  ],
+  "native_source_count": 2,
+  "production_activated": false,
+  "raw_pixels_unchanged": true,
+  "attempts": [
+    {
+      "attempt": 0,
+      "raw": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/raw.png",
+      "prompt": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/prompt.txt",
+      "qa": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/alpha-registration-qa.json",
+      "sha256": "ef260a7685b39ab92645badc6acd5c34351bd26e28e5c9ea8317b25374ab5195"
+    },
+    {
+      "attempt": 1,
+      "raw": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/raw-edit-01.png",
+      "prompt": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/prompt-edit-01.txt",
+      "qa": "/workspace/shared/empire-fortification-topology-plan/pilot-native/stone-area-straight-ns/edit-01-registration-qa.json",
+      "sha256": "6c4cd2fa581cfd542a1afd36460c32c9eadb16e0d30b7ab4876b760810abff61"
+    }
+  ],
+  "fixed_contract": "/workspace/shared/empire-fortification-topology-plan/pilot-registration-guide/pilot-registration-guide.json",
+  "stopping_reason": "Missing required face material and displaced top/face boundary cannot be repaired by clipping alone. No per-variant fitting, arbitrary stretch, painting or alpha cleanup permitted."
+}
