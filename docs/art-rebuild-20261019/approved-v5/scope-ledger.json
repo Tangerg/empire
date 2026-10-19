@@ -4,11 +4,11 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 211,
+    "formalBound": 215,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 27,
-      "equipment": 63,
+      "equipment": 67,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 32
@@ -1514,7 +1514,8 @@
       "label": "幽魂",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -11190,11 +11191,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-rain-tower-engineer/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rain-tower-engineer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and exact original board reference preserved",
+        "export": "48px three-background semantic and alpha gates passed; faint raw radar speck preserved and invisible at48",
+        "runtimeBinding": "canonical48px static resolver bound, noHD",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-repair-engineer",
@@ -11413,11 +11419,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-tide-anchor-engineer/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-tide-anchor-engineer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and exact original board reference preserved",
+        "export": "48px three-background semantic and alpha gates passed; faint raw radar speck preserved and invisible at48",
+        "runtimeBinding": "canonical48px static resolver bound, noHD",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-tide-fin-scout",
@@ -11429,11 +11440,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-tide-fin-scout/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-tide-fin-scout.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and exact original board reference preserved",
+        "export": "48px three-background semantic and alpha gates passed; faint raw radar speck preserved and invisible at48",
+        "runtimeBinding": "canonical48px static resolver bound, noHD",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-tide-priest",
@@ -11445,11 +11461,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-tide-priest/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-tide-priest.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source and exact original board reference preserved",
+        "export": "48px three-background semantic and alpha gates passed; faint raw radar speck preserved and invisible at48",
+        "runtimeBinding": "canonical48px static resolver bound, noHD",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-turret-vehicle",
