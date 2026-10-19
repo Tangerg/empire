@@ -1,0 +1,65 @@
+{
+  "asset": "wasteland-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+  "RGB_mean": [
+    144.2865179114235,
+    113.26096713801323,
+    75.40094790768424
+  ],
+  "RGB_std": [
+    12.158463027217508,
+    9.722601735813738,
+    6.829869504742328
+  ],
+  "luma_mean": 117.1235058440105,
+  "luma_std": 9.937971471592267,
+  "luma_percentiles_5_50_95": [
+    102.80399999999999,
+    116.9874,
+    133.1238
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 114.10648729565389,
+    "bottom": 109.87657907446173,
+    "left": 108.52941897926634,
+    "right": 110.32053521979665,
+    "central_half": 121.63486824465497
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 4.736576289207868,
+    "top_bottom_mean_abs_RGB": 4.806751727804359,
+    "left_right_max_abs_RGB": 24.0,
+    "top_bottom_max_abs_RGB": 42.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Dusty ochre/gray-brown bare rock soil with scattered gray-brown angular stones, almost no vegetation and broad pale eroded bands. Original non-paved bare scree identity retained.",
+    "density_caveat": "More than 25 visible stone groups and individual stones, above proposed 12-18. Quiet overall contrast but residual fine soil facets and scattered small marks remain.",
+    "composition_caveat": "A few connected pale erosion bands create branching streaks across the surface. These are baked material coloration, not new traversable paths or geometry; catalog/scene review should assess their repeated visibility.",
+    "scale_caveat": "Main stones commonly read roughly 8-18 world units wide at the proposed 256 period, above guidance. Palette is warmer/lighter ochre than the original muted dusty earth.",
+    "native_acceptance": "1254 fully opaque native, current tone 2 source candidate for 30 non-authored mountain cells. No scene binding or natural seamlessness claim."
+  },
+  "reference_material_identity": "Muted dusty ochre/gray-brown bare rock soil with scattered small angular gray stones and subtle broad scuffed/eroded ground bands; very little vegetation. The source represents bare scree/rock soil, not old-stone paving or a new tall rock object.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

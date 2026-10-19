@@ -1,0 +1,95 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-44b637d7-f501-4073-8f6e-875d97101212.png",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+  "bboxAlphaNonzero": [
+    0,
+    18,
+    1012,
+    1536
+  ],
+  "bboxAlphaGreaterThan127": [
+    71,
+    21,
+    976,
+    1505
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 843163,
+  "alphaOnePixels": 8539,
+  "postprocessing": "none; native output raw/master copies exact",
+  "upper-right-empty": {
+    "range": [
+      0,
+      1
+    ],
+    "median": 0.0
+  },
+  "left-empty": {
+    "range": [
+      0,
+      1
+    ],
+    "median": 0.0
+  },
+  "between-boots": {
+    "range": [
+      0,
+      252
+    ],
+    "median": 0.0
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        646,
+        1360,
+        653,
+        1367
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "pole-to-scabbard",
+      "rectangle": [
+        391,
+        1050,
+        398,
+        1057
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "flag-braid-opening",
+      "rectangle": [
+        384,
+        790,
+        391,
+        797
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "nativeCanvasAspect": "2:3",
+  "fullVisibleMarginsAlphaGreaterThan127": {
+    "left": 71,
+    "top": 21,
+    "right": 48,
+    "bottom": 31
+  },
+  "requestedMarginCaveat": "Prompt suggested50-70px, actual complete finial has21px top and boots31px bottom; no cropping or perimeter silhouette contact. Margin judged visually, no programmatic extension or fit applied.",
+  "semanticReview": "Independent vertical named Laiya fullbody; face/brown side braid/gray-blue armor/plain torn flag/right flag hand/left wrist guard and complete sheathed sword match approved new battle family. Full finial/crossbar/pole/cloth/boots/sheath insidecanvas. White and black composites inspected; native exterior transparency is real, not a background extraction. Parent supplies independent card background.",
+  "status": "Native transparent narrative master ready for coordinator identity/card consumer review",
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "allThreeNegativeSpaceProbesAlphaZero": true
+}

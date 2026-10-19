@@ -1,0 +1,65 @@
+{
+  "asset": "wasteland-2",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972",
+  "RGB_mean": [
+    127.17252352281312,
+    71.69877699177624,
+    40.49116702151202
+  ],
+  "RGB_std": [
+    17.86257093274716,
+    10.508384129998028,
+    7.1586663929247285
+  ],
+  "luma_mean": 81.2393060644216,
+  "luma_std": 11.535769641520396,
+  "luma_percentiles_5_50_95": [
+    60.2422,
+    82.02040000000001,
+    98.21979999999999
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 80.29890253688198,
+    "bottom": 83.32178721590908,
+    "left": 81.73597154356061,
+    "right": 83.62577154854465,
+    "central_half": 83.32762640522942
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 8.271664008506114,
+    "top_bottom_mean_abs_RGB": 8.635034556087188,
+    "left_right_max_abs_RGB": 43.0,
+    "top_bottom_max_abs_RGB": 42.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Rust/red-brown scorched soil with gray-brown stone groups and burnt orange dry tufts; original warm material distinction retained without lava, emissive fissures, fire or symbols.",
+    "palette_caveat": "Ground is noticeably more orange/red and more saturated than the original restrained brown swatch. Read-only color metrics record the shift for parent review.",
+    "density_caveat": "Around 25-35 accent groups rather than 12-18; main stones and tufts are larger than 3-8-unit guidance at 256 period. Broad soil patches contain residual fine low-contrast mottling despite a clean-plane prompt.",
+    "scale_caveat": "Main accent groups commonly read about 10-24 world units at the proposed 256 period. These remain material marks, not new colliders or standing objects.",
+    "native_acceptance": "1254 fully opaque native candidate, original tone 1 active on c01-14. No scene binding or natural seamlessness claim."
+  },
+  "reference_material_identity": "Red/rust-brown scorched dry soil with dark compact patches, gray-brown stones and dry burnt orange-brown tufts. Warm reddish identity is explicitly selected for molten terrain, but the original pixels show earth and stones, no lava pool, glowing fissures or flame.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

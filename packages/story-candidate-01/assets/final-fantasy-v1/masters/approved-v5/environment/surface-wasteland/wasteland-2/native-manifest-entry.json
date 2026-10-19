@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-wasteland",
+  "cell_index": 1,
+  "original_cellOrder_token": "wasteland-2",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f692a8e5-56c7-4cca-a33a-5cd3e67047cc.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/wasteland-2-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json",
+  "sha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Rust/red-brown scorched soil with gray-brown stone groups and burnt orange dry tufts; original warm material distinction retained without lava, emissive fissures, fire or symbols.",
+    "palette_caveat": "Ground is noticeably more orange/red and more saturated than the original restrained brown swatch. Read-only color metrics record the shift for parent review.",
+    "density_caveat": "Around 25-35 accent groups rather than 12-18; main stones and tufts are larger than 3-8-unit guidance at 256 period. Broad soil patches contain residual fine low-contrast mottling despite a clean-plane prompt.",
+    "scale_caveat": "Main accent groups commonly read about 10-24 world units at the proposed 256 period. These remain material marks, not new colliders or standing objects.",
+    "native_acceptance": "1254 fully opaque native candidate, original tone 1 active on c01-14. No scene binding or natural seamlessness claim."
+  }
+}

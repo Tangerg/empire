@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-wasteland",
+  "cell_index": 1,
+  "original_cellOrder_token": "wasteland-2",
+  "source_board_index": 5,
+  "source_crop": [
+    314,
+    314,
+    627,
+    627
+  ],
+  "source_crop_dimensions": [
+    313,
+    313
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-2-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-2-current-runtime-2x-cell.png",
+  "original_visual_identity": "Red/rust-brown scorched dry soil with dark compact patches, gray-brown stones and dry burnt orange-brown tufts. Warm reddish identity is explicitly selected for molten terrain, but the original pixels show earth and stones, no lava pool, glowing fissures or flame.",
+  "original_mean_RGB": [
+    116.46279945697108,
+    86.6048852187937,
+    62.498810848329576
+  ],
+  "original_opaque": true,
+  "current_usage": "tone 1: c01-14 molten terrain, 56 cells",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent confirmed exclusive wasteland quartet 2026-10-19 21:06 UTC; actual-used tone 1/2 first, retain all four distinct original colors, initial 256 preview.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-2-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original material and palette; reduce microtexture",
+    "approved quiet broad soil planes only, not a uniform palette template"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-2-original-master-swatch.png": "ed9f58f77f5a492b33030268ee12b6aab24a5aaf235e71f32705059d504af33d",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native only; parent owns seam/world sampling and actual scene review",
+  "prompt_sha256": "60d278b7474a395aa4ef70ae76e40e015f0da7dfd852fe965160c7790f1e3979"
+}

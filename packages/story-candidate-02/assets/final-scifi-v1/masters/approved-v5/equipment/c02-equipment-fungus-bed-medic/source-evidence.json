@@ -1,0 +1,64 @@
+{
+  "topicId": "c02-equipment-fungus-bed-medic",
+  "assetId": "C02-SFV1-equipment-fungus-bed-medic",
+  "label": "菌床医师主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 4
+  },
+  "sourceCropBox": [
+    632,
+    945,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-fungus-bed-medic.png",
+  "runtimeReferenceSha256": "5344355a63b795519f3f91d971e3a2daae32e59002aadf858ced78ee8d4bfbf9",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-abdef609-776f-48bc-bb0c-81fb75f5a1c5.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-fungus-bed-medic/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board02 R4C3, enlarged original and runtime verified. One medical culture pod retains purple dome with seven prominent mushroom caps plus source small round central nodule, low ivory/graphite base, one purple medical cross and one bounded cyan status bar. No red/green symbol substitution. Opaque cel-painted dome and broad spots, no surrounding purple haze. Actual48 white/black/olive preserves mushroom-dome and purple cross identity.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

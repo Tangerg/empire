@@ -1,0 +1,53 @@
+{
+  "artifactKind": "independent-transparent-named-narrative-master",
+  "canonicalTopicId": "C01-CHAR-LEIA-01",
+  "unitType": "c01.laiya",
+  "status": "Transparent narrative master and independent-background card consumer comparisons accepted",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/master.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/raw.png",
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-44b637d7-f501-4073-8f6e-875d97101212.png",
+  "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/prompt.txt",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/request.json",
+  "exactPromptSha256": "abaebd6d1d76ff24b47976d33dc8fb484d50064c00f4434902184a41be5ace72",
+  "references": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/references/laiya-original-cell-native.png": "2f15c7334db9cc49c208f16ca536272a0e26b937cca380862eabb2289b4fd2f7"
+  },
+  "allNativeRawMasterPromptReferenceHashesVerified": true,
+  "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/alpha-qa.json",
+  "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/qa-white.png",
+  "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/qa-black.png",
+  "fullCanvasCardProof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-leia-01/qa-card-fullcanvas-2x.png",
+  "cardProofContract": {
+    "logicalCard": [
+      192,
+      224
+    ],
+    "uniformScale": 0.14583333333333334,
+    "fullCanvasBounds": [
+      21.33333333333333,
+      0,
+      170.66666666666669,
+      224
+    ],
+    "visibleBoundsAlphaGreaterThan127": [
+      31.687499999999996,
+      3.0625,
+      163.66666666666669,
+      219.47916666666669
+    ],
+    "diagnosticOnly": true,
+    "backgrounds": "white/black diagnostic composites; actual authored independent card background is coordinator supplied"
+  },
+  "identityContract": "Same18-year-old Laiya as accepted battle appearance: exposed youthful female face, brown side braid, gray-blue quilted/mail-edged armor, silver wrap clasp, brown belt/trousers/boots; right hand holds plain torn gray banner, left steel wrist guard, complete sheathed modest sword at original right hip. No generic male face or flag emblem.",
+  "sourcePolicy": "First native built-in imagegen output preserved unchanged. No painting, extraction, alpha cleanup, crop or master resize. Card proof uniformly resamples the complete native canvas only for diagnostic review; it is not a source replacement. Independent background is not part of this character alpha.",
+  "marginCaveat": "Prompt suggested50-70px, actual complete finial has21px top and boots31px bottom; no cropping or perimeter silhouette contact. Margin judged visually, no programmatic extension or fit applied.",
+  "battleIdentityManifest": "../../hero-appearances/laiya/bundle-manifest.json",
+  "repositoryWrites": false,
+  "coordinatorNarrativeApproval": "Coordinator2026-10-19 21:11UTC reviewed transparent vertical master composited over independent background:192x224,92x112 and44px views retain same braid/face/armor/plainflag as battle appearance. Narrative source and card consumer comparison accepted; coordinator owns formal registration, scene verification andtests."
+}

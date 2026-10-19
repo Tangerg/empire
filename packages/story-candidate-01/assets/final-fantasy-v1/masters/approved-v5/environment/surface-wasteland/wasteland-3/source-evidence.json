@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-wasteland",
+  "cell_index": 2,
+  "original_cellOrder_token": "wasteland-3",
+  "source_board_index": 6,
+  "source_crop": [
+    627,
+    314,
+    940,
+    627
+  ],
+  "source_crop_dimensions": [
+    313,
+    313
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-3-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-3-current-runtime-2x-cell.png",
+  "original_visual_identity": "Muted dusty ochre/gray-brown bare rock soil with scattered small angular gray stones and subtle broad scuffed/eroded ground bands; very little vegetation. The source represents bare scree/rock soil, not old-stone paving or a new tall rock object.",
+  "original_mean_RGB": [
+    132.38928640692464,
+    106.09286611070848,
+    74.15916259224856
+  ],
+  "original_opaque": true,
+  "current_usage": "tone 2: c01-03 1 cell, c01-09 1, c01-10 28; c01-01 excluded by authored surface zones",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent confirmed exclusive wasteland quartet 2026-10-19 21:06 UTC; actual-used tone 1/2 first, retain all four distinct original colors, initial 256 preview.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-3-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original material and palette; reduce microtexture",
+    "approved quiet broad soil planes only, not a uniform palette template"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-3-original-master-swatch.png": "d081434d24e669179ad6b15f822c6ce49f0c8d1614d15c52b89a0e7e3928c384",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native only; parent owns seam/world sampling and actual scene review",
+  "prompt_sha256": "cb6f036253937492bfc1695a0a78e4b8fa7e01073ce9219a9a911c165e0b4501"
+}

@@ -1,0 +1,63 @@
+{
+  "topicId": "C01-SKILL-45",
+  "assetId": "C01-FFV1-SKILL-45",
+  "label": "白鹿穿林",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6a737f12-2452-4aca-a357-20b87575d3df.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-45-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-03.png",
+    "atlasSha256": "f664dad2fcf7486124e974613c68cae528ed38e6db9ae070b91f57addf268c5d",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-03.png, row 4 column 1 (one based)",
+    "topicIndex": 44,
+    "inspectionCropCoordinates": [
+      4,
+      946,
+      307,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-45.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-45 through skill-48. Exact source identities reported first; parent explicitly authorized semantic reconstruction of damaged stag close-up with complete antler tips, natural foreground foliage occlusion of rear crop, and no invented hindquarters. Golden spirit keeps original identity, true transparent exterior and no thick haze. Independent actual-48 white/black/olive preview requested; native raw/master remains immutable.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-45-cell.png",
+    "nominalGridCellCoordinates": [
+      2,
+      942,
+      312,
+      1252
+    ],
+    "sourceCellCorrection": "White atlas grid excluded by unscaled subject crop. No adjacent subject contamination. Original painting itself hard-crops rear torso at left and some antler tips at top inside the cell; full board has no missing portions. Parent authorized semantic reconstruction of head/shoulder/front-leg woodland close-up: finish antler tips, naturally close rear edge with foreground foliage, do not add unseen hindquarters. This is not exact restoration."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-45-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "Source is a white-stag woodland close-up, facing right, with head, branching antlers, shoulder, extended near foreleg and bent farther foreleg, ferns and bounded earthy/rocky ground. Original itself truncates rear torso and antler tips. Parent expressly authorized semantic reconstruction: finish antler tips and naturally occlude rear crop boundary with foreground foliage; do not invent unseen hindquarters or whole deer.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits."
+}
