@@ -1,0 +1,179 @@
+{
+  "status": "Evidence and proposal only, not runtime binding",
+  "sharedScale": 0.0546583850931677,
+  "canonicalSourceFoot": [
+    747,
+    935
+  ],
+  "proposedCommonFrameSize": [
+    112,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Translate entire native canvas at locked 44/805 scale. No per-pose fit, resize, crop, or torso recentering. Preserve intended pose lean.",
+  "existingRegistrationLimitLogicalPixels": 4,
+  "requiredMaximumTranslationLogicalPixels": 9.182608696,
+  "proposedRegistrationLimitLogicalPixels": 10,
+  "extensionBasis": "Recovered attack support x579 versus accepted idle x747 requires +168 source px = +9.182609 logical px at the unchanged shared scale. More output margin is necessary; this is measured whole-stance alignment, not a hidden fit.",
+  "poses": {
+    "idle": {
+      "sourceSupportAnchorEstimated": [
+        747,
+        935
+      ],
+      "bothBootSoleBandMidpoint": [
+        746.75,
+        935.0
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        69,
+        89,
+        1546,
+        938
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        66,
+        23,
+        1549,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        11.771429,
+        8.864596,
+        92.501863,
+        55.269565
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        94.688199,
+        58.221118
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    },
+    "walk-a": {
+      "sourceSupportAnchorEstimated": [
+        737,
+        933
+      ],
+      "bothBootSoleBandMidpoint": [
+        736.82,
+        926.5
+      ],
+      "registrationOffsetLogical": [
+        0.546583851,
+        0.10931677
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        84,
+        82,
+        1534,
+        934
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        47,
+        80,
+        1537,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        13.137888,
+        8.591304,
+        92.392547,
+        55.160248
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.546584,
+        4.109317,
+        95.234783,
+        58.330435
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    },
+    "attack": {
+      "sourceSupportAnchorEstimated": [
+        579,
+        906
+      ],
+      "bothBootSoleBandMidpoint": [
+        578.7,
+        905.5
+      ],
+      "registrationOffsetLogical": [
+        9.182608696,
+        1.585093168
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        45,
+        120,
+        1571,
+        907
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        42,
+        19,
+        1574,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        19.642236,
+        12.144099,
+        103.050932,
+        55.160248
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        17.182609,
+        5.585093,
+        103.870807,
+        59.806211
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    },
+    "walk-b": {
+      "sourceSupportAnchorEstimated": [
+        777,
+        920
+      ],
+      "bothBootSoleBandMidpoint": [
+        776.85,
+        912.5
+      ],
+      "registrationOffsetLogical": [
+        -1.639751553,
+        0.819875776
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        74,
+        84,
+        1549,
+        921
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        25,
+        1553,
+        976
+      ],
+      "proposedLogicalVisibleBounds": [
+        10.404969,
+        9.41118,
+        91.026087,
+        55.160248
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        6.360248,
+        4.819876,
+        93.048447,
+        59.040994
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    }
+  }
+}

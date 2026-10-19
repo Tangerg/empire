@@ -30,3 +30,12 @@ class RegisteredSequenceTests(unittest.TestCase):
  def test_semantic_order_required(self):
   self.c['frames']=dict(reversed(list(self.frames.items())))
   with self.assertRaises(ValueError):validate(self.c)
+
+ def test_large_registration_requires_measured_foot_and_full_canvas(self):
+  self.c.update(registrationLimit=10,frameSize=[32,24],sourceFoot=[8,8])
+  with self.assertRaisesRegex(ValueError,'measured source feet'):validate(self.c)
+  self.c['sourceFeet']={n:[8,8] for n in self.frames}
+  self.c['sourceFeet']['attack']=[2,8];self.c['registrationOffsets']={'attack':[6,0]}
+  self.assertEqual(validate(self.c),(16,16))
+  self.c['registrationOffsets']['attack']=[7,0]
+  with self.assertRaisesRegex(ValueError,'match measured'):validate(self.c)

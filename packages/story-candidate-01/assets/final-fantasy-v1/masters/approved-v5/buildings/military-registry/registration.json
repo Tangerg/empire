@@ -1,0 +1,42 @@
+{
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonFrameOrigin": [
+    0,
+    0
+  ],
+  "sourceScale": 1,
+  "perStateTransforms": {
+    "normal": "none",
+    "damaged": "none",
+    "captured": "none"
+  },
+  "basis": "All state edits retain exact native canvas and are intended to inherit one shared export scale and origin from normal. Do not independently fit each state to its visible bounds.",
+  "stateGeneration": {
+    "normal": {
+      "rawSource": "exec-678d5355-dafd-4cbd-ac50-872b81b65476.png",
+      "prompt": "normal/prompt.txt"
+    },
+    "damaged": {
+      "rawSource": "exec-e1332475-4510-43cd-b2f6-9fb2b444f49e.png",
+      "prompt": "damaged/prompt-correction.txt",
+      "inputs": [
+        "damaged/raw-attempt-1.png",
+        "normal/master.png"
+      ],
+      "recoveredPriorRaw": "exec-fae9aa48-6de8-411d-966a-a7cf761a4af9.png",
+      "priorPrompt": "damaged/prompt-attempt-1.txt"
+    },
+    "captured": {
+      "rawSource": "exec-d7704bb9-bf96-4fee-ab06-a88f16dfea38.png",
+      "prompt": "captured/prompt.txt",
+      "inputs": [
+        "normal/master.png",
+        "captured/original-source.png"
+      ]
+    }
+  },
+  "strictPixelRegistration": "Not claimed for AI-damaged local geometry; no post-processing or per-state fit used."
+}

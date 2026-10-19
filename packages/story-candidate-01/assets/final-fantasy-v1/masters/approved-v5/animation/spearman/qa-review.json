@@ -1,0 +1,16 @@
+{
+  "status": "Four poses native visual and alpha review passed; runtime binding not performed",
+  "sameCanvas": true,
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "sameScaleEvidence": "Helmet brim widths remain approximately388\u2013394 source pixels across native images; pose shortening in attack is intentional lean/crouch. Shared scale locked44/805, no pose-specific rescale.",
+  "contactReview": "Walk-a forward toe up/rear planted; walk-b forward planted/rear heel up. Distinct opposing contact states, unmirrored right-facing character.",
+  "attackReview": "Single complete spear; exactly two gloved grips; clearly extended front arm and chest-level thrust.",
+  "transparency": "Real RGBA with fully transparent background. Alpha=1 scattered fringe/edge pixels are retained as native output; visible silhouette has clean alpha>127 edge margins.",
+  "registrationReview": "Attack requires evidenced +9.182609 logical px x translation at shared scale, exceeding previous4px limit. Proposed common112x64 frame with origin8,4 contains every full native canvas after measured translations. Parent must review extension before formal binding.",
+  "provenance": "Recovered outputs are byte-identical to generated files; exact historical tool-call prompt unavailable for three recovered poses. Intended saved prompts preserved without claiming equivalence.",
+  "liveGame": false,
+  "noRuntimeOrRepositoryEdits": true
+}

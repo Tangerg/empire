@@ -1,0 +1,30 @@
+{
+  "asset": "boulder-ferns",
+  "visual_inspection": "native output inspected directly",
+  "subject_semantics": "pass; complete boulder-left/fern-right/sprig-back group recovered from the full old subject reference",
+  "style_coherence": "pass; bold chunky stone planes and subdued olive/teal broad foliage after one built-in refinement",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    625,
+    1015
+  ],
+  "source_foot_estimate_normalized": [
+    0.498405,
+    0.80941
+  ],
+  "source_foot_confidence": "approximate visual estimate; not alpha bottom",
+  "qa_caveats": [
+    "Six coarse fronds remain instead of the prompt's literal four.",
+    "Strong-alpha right margin is 24 px.",
+    "Native alpha-1 dust reaches the left edge. No image cleanup performed."
+  ],
+  "provenance": "Built-in imagegen generation from full old subject plus approved boulder and fern references, followed by one built-in refinement to subdue bright lime highlights. Both native outputs and exact prompts preserved.",
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/boulder-ferns-complete-master-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fern-bed/fern-bed-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/attempts/boulder-ferns-attempt-01.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/prompt-final.txt",
+  "production_status": "not integrated"
+}

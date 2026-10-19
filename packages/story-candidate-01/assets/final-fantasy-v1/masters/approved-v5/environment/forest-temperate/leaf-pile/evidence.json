@@ -1,0 +1,27 @@
+{
+  "asset": "leaf-pile",
+  "visual_inspection": "native output inspected directly",
+  "subject_semantics": "pass; shallow coherent autumn leaf pile with large simplified angular leaves",
+  "style_coherence": "pass; chunky broad cel planes and strong outlines; autumn palette intentionally differs from green forest siblings",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    628,
+    680
+  ],
+  "source_foot_estimate_normalized": [
+    0.500797,
+    0.542265
+  ],
+  "source_foot_confidence": "approximate visual estimate; not alpha bottom",
+  "qa_caveats": [
+    "Narrow strong-alpha horizontal margins: left 20 px, right 18 px.",
+    "Native alpha-1 dust reaches the left edge. No image cleanup performed."
+  ],
+  "provenance": "Recovered native output from the prior worker, matching the existing subject/style prompt. Existing prompt was preserved unchanged; no repeat generation was issued.",
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/forest-temperate/leaf-pile.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-ancient/oak-ancient-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/prompt.txt",
+  "production_status": "not integrated"
+}

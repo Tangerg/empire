@@ -1,0 +1,95 @@
+{
+  "topicId": "C01-STRUCT-MILITARY-REGISTRY",
+  "method": "Built-in image_gen edit, native outputs preserved without post-generation crop, resize, alpha modification or per-state fit",
+  "canvas": [
+    1254,
+    1254
+  ],
+  "semanticReview": {
+    "normal": "intact slate roof; one plain gray forked pennant; four document boards; three hanging wood tags; two arched doors",
+    "damaged": "collapsed slate roof with exposed broken rafters; no pennant; empty standing shelves; slumped and fallen document boards; three hanging wood tags; local rubble; recognizable doors",
+    "captured": "intact restored version of normal; same plain gray forked pennant, four document boards, three hanging wood tags; no invented capture emblem"
+  },
+  "visualReview": "Pass on intended state semantics, chunky cel planes, bold outline and native common canvas. Captured closely follows normal registration. Damaged has AI-authored local architectural/rubble changes; no corrective per-state fitting was applied.",
+  "limitations": [
+    "Strict pixel-identical architectural anchoring across damaged and normal has not been claimed; generated local geometry differs.",
+    "No live-game test or repository binding was performed."
+  ],
+  "frames": {
+    "normal": {
+      "file": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/military-registry/normal/master.png",
+      "rawIsMaster": true,
+      "sha256": "f979cbe56fd6134d7e3fcb7f182847069335263aabee222e9aaf4e6809489c9a",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 728849,
+      "alphaAtLeast250Pixels": 817110,
+      "alphaAbove32Bounds": [
+        26,
+        129,
+        1233,
+        1136
+      ],
+      "visibleAlphaAbove32BorderPixels": 0,
+      "nativeCanvasPreserved": true,
+      "postGenerationTransform": "none"
+    },
+    "damaged": {
+      "file": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/military-registry/damaged/master.png",
+      "rawIsMaster": true,
+      "sha256": "1bd37831df4ff41c37abae510e4f0eb538820b8ea1f486ef679298251f0e4dbd",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 737864,
+      "alphaAtLeast250Pixels": 795190,
+      "alphaAbove32Bounds": [
+        4,
+        251,
+        1252,
+        1143
+      ],
+      "visibleAlphaAbove32BorderPixels": 0,
+      "nativeCanvasPreserved": true,
+      "postGenerationTransform": "none"
+    },
+    "captured": {
+      "file": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/military-registry/captured/master.png",
+      "rawIsMaster": true,
+      "sha256": "993c65b715e25c4e8fe43bc36c4c716dd53f2918b846b8a7dea794976fa614b0",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 731976,
+      "alphaAtLeast250Pixels": 821266,
+      "alphaAbove32Bounds": [
+        26,
+        128,
+        1234,
+        1137
+      ],
+      "visibleAlphaAbove32BorderPixels": 0,
+      "nativeCanvasPreserved": true,
+      "postGenerationTransform": "none"
+    }
+  }
+}

@@ -1837,13 +1837,13 @@
       "topicId": "C01-UNIT-SPEARMAN",
       "label": "枪兵",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-spearman.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-spearman.png",
+      "width": 448,
+      "height": 64,
       "runtimeReady": true,
       "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "frameWidth": 112,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1852,8 +1852,8 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        48.82981366459627,
+        55.1055900621118
       ],
       "footprint": [
         1,

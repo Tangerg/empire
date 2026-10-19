@@ -1,0 +1,86 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "fullyTransparentPixels": 1140730,
+  "nearOpaquePixels": 411942,
+  "fullyOpaquePixels": 594,
+  "partialAlphaPixels": 431988,
+  "visibleBounds": [
+    47,
+    80,
+    1537,
+    992
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    84,
+    82,
+    1534,
+    934
+  ],
+  "edgeMax": 1,
+  "sha256": "897bbf978b59deecf0f878d80b97b6492001663bc0be274830c4863bcb8386e3",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-62ca2e24-de96-4623-b41a-0954451d1abb.png",
+  "generationTool": "built-in image_gen, recovered prior-worker output",
+  "masterTransform": "none; native output copied byte-for-byte",
+  "promptProvenance": "Exact historical tool-call prompt cannot be verified after prior-worker context failure. prompt.txt is the preserved intended pose brief, not a verified call transcript. Good native artwork was recovered without regeneration.",
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, last3rows sole contour mass centers. No master editing.",
+    "boots": [
+      {
+        "inspectionROI": [
+          400,
+          740,
+          710,
+          960
+        ],
+        "soleLowestContourY": 920,
+        "lowestThreeRowsXSpan": [
+          556,
+          636
+        ],
+        "soleBandCenterX": 596.51,
+        "side": "screen-left",
+        "contactInterpretation": "planted rear sole"
+      },
+      {
+        "inspectionROI": [
+          800,
+          740,
+          1135,
+          960
+        ],
+        "soleLowestContourY": 933,
+        "lowestThreeRowsXSpan": [
+          858,
+          899
+        ],
+        "soleBandCenterX": 877.13,
+        "side": "screen-right",
+        "contactInterpretation": "toe-up forward foot, low heel contact"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      736.82,
+      926.5
+    ],
+    "sourceSupportAnchorEstimated": [
+      737,
+      933
+    ],
+    "anchorInterpretation": "Horizontal anchor is the rounded midpoint of the two lowest sole-band centers. Vertical anchor is the lowest visible contacting sole/heel; walking feet have different projected depths. This is a stylized support estimate, not a skeleton coordinate."
+  },
+  "reviewStatus": "passed native visual review; runtime registration pending coordinator",
+  "intendedPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/prompt.txt",
+  "visualReview": "Front screen-right boot is tilted toe-up with low heel; rear screen-left boot is planted. This opposes walk-b contact states. Same full spear held two-handed at waist and same right-facing three-quarter identity. Black and white composites inspected: no visible opaque background, ground, shadow or halo. Native alpha=1 edge specks are retained without cleanup.",
+  "sourceSupportAnchorEstimated": [
+    737,
+    933
+  ]
+}

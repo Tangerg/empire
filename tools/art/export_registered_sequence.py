@@ -27,7 +27,16 @@ def validate(config):
     if scale<=0 or any(origin[i]<0 or origin[i]+size[i]*scale>frame[i] for i in (0,1)):
         raise ValueError('full authored canvas must fit at the single shared scale')
     limit=config.get('registrationLimit',2)
-    if not math.isfinite(limit) or not 0<=limit<=4:raise ValueError('explicit registration limit must be between zero and four logical pixels')
+    if not math.isfinite(limit) or not 0<=limit<=16:raise ValueError('explicit registration limit must be between zero and sixteen logical pixels')
+    if limit>4:
+        feet=config.get('sourceFeet')
+        if not isinstance(feet,dict) or set(feet)!=set(names):raise ValueError('larger registration requires measured source feet for every pose')
+        for name in names:
+            foot=feet[name]
+            if len(foot)!=2 or any(not math.isfinite(v) or v<0 or v>size[i] for i,v in enumerate(foot)):raise ValueError('invalid measured source foot')
+            expected=[(config['sourceFoot'][i]-foot[i])*scale for i in (0,1)]
+            actual=config.get('registrationOffsets',{}).get(name,[0,0])
+            if any(abs(expected[i]-actual[i])>1e-8 for i in (0,1)):raise ValueError('registration must match measured source foot')
     for name in names:
         offset=config.get('registrationOffsets',{}).get(name,[0,0])
         if len(offset)!=2 or any(not math.isfinite(v) or abs(v)>limit for v in offset):raise ValueError('registration translation exceeds recorded logical-pixel limit')

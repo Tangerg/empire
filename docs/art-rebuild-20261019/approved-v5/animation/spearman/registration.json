@@ -1,0 +1,59 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-b/master.png"
+  },
+  "scale": 0.0546583850931677,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    112,
+    64
+  ],
+  "sourceFoot": [
+    747,
+    935
+  ],
+  "sourceFeet": {
+    "idle": [
+      747,
+      935
+    ],
+    "walk-a": [
+      737,
+      933
+    ],
+    "attack": [
+      579,
+      906
+    ],
+    "walk-b": [
+      777,
+      920
+    ]
+  },
+  "registrationLimit": 10,
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      0.5465838509316769,
+      0.1093167701863354
+    ],
+    "attack": [
+      9.182608695652174,
+      1.5850931677018634
+    ],
+    "walk-b": [
+      -1.639751552795031,
+      0.8198757763975155
+    ]
+  },
+  "registrationBasis": "Measured boot support coordinates; common scale and full source canvas retained. Attack translation9.18px corrects authored position, not body size. Larger margin preserves full spear. Exact recovered call prompts unverified."
+}

@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-b/master.png"
+    },
+    "scale": 0.0546583850931677,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      112,
+      64
+    ],
+    "sourceFoot": [
+      747,
+      935
+    ],
+    "sourceFeet": {
+      "idle": [
+        747,
+        935
+      ],
+      "walk-a": [
+        737,
+        933
+      ],
+      "attack": [
+        579,
+        906
+      ],
+      "walk-b": [
+        777,
+        920
+      ]
+    },
+    "registrationLimit": 10,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.5465838509316769,
+        0.1093167701863354
+      ],
+      "attack": [
+        9.182608695652174,
+        1.5850931677018634
+      ],
+      "walk-b": [
+        -1.639751552795031,
+        0.8198757763975155
+      ]
+    },
+    "registrationBasis": "Measured boot support coordinates; common scale and full source canvas retained. Attack translation9.18px corrects authored position, not body size. Larger margin preserves full spear. Exact recovered call prompts unverified."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    48.82981366459627,
+    55.1055900621118
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5731,
+        "nearOpaquePixels": 1179,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          9,
+          92,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23148,
+        "nearOpaquePixels": 4911,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          18,
+          185,
+          111
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-a/master.png",
+      "registrationOffset": [
+        0.5465838509316769,
+        0.1093167701863354
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "897bbf978b59deecf0f878d80b97b6492001663bc0be274830c4863bcb8386e3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5763,
+        "nearOpaquePixels": 1143,
+        "edgeMax": 0,
+        "visibleBounds": [
+          13,
+          9,
+          92,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-a/master.png",
+      "registrationOffset": [
+        0.5465838509316769,
+        0.1093167701863354
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "897bbf978b59deecf0f878d80b97b6492001663bc0be274830c4863bcb8386e3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23288,
+        "nearOpaquePixels": 4756,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          17,
+          185,
+          110
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/attack/master.png",
+      "registrationOffset": [
+        9.182608695652174,
+        1.5850931677018634
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "54acfce08c976e253b53bb2c65cbd8f33be8c3e9a39223eff994709e802c63a0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5753,
+        "nearOpaquePixels": 1141,
+        "edgeMax": 0,
+        "visibleBounds": [
+          20,
+          12,
+          103,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/attack/master.png",
+      "registrationOffset": [
+        9.182608695652174,
+        1.5850931677018634
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "54acfce08c976e253b53bb2c65cbd8f33be8c3e9a39223eff994709e802c63a0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23260,
+        "nearOpaquePixels": 4727,
+        "edgeMax": 0,
+        "visibleBounds": [
+          39,
+          24,
+          206,
+          110
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-b/master.png",
+      "registrationOffset": [
+        -1.639751552795031,
+        0.8198757763975155
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "10ccd717afa446fbed792565d8050732d82c7ccb9d2ec9928a3ede94049b422a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5761,
+        "nearOpaquePixels": 1138,
+        "edgeMax": 0,
+        "visibleBounds": [
+          10,
+          9,
+          91,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/walk-b/master.png",
+      "registrationOffset": [
+        -1.639751552795031,
+        0.8198757763975155
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "10ccd717afa446fbed792565d8050732d82c7ccb9d2ec9928a3ede94049b422a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23276,
+        "nearOpaquePixels": 4760,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          19,
+          182,
+          110
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

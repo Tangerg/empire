@@ -1,0 +1,31 @@
+{
+  "status": "native masters and source QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "leaf-pile",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/leaf-pile-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/prompt.txt",
+      "original_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        680
+      ]
+    },
+    {
+      "identity": "boulder-ferns",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/boulder-ferns-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/prompt-final.txt",
+      "original_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/evidence.json",
+      "source_foot_estimate_px": [
+        625,
+        1015
+      ]
+    }
+  ]
+}
