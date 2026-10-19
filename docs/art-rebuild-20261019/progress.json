@@ -4062,7 +4062,8 @@
       "topicId": "c02-battle-prop-five-world-flags",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-folding-tables",
@@ -4094,7 +4095,8 @@
       "topicId": "c02-battle-prop-hesha-water-signs",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-hull-patches",
@@ -4132,7 +4134,8 @@
       "topicId": "c02-battle-prop-permission-lights",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-physical-film",
@@ -4192,14 +4195,19 @@
       "topicId": "c02-battle-prop-soler-heat-emblems",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-spare-part-racks",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-spare-part-racks/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "4ddcf372d6c13064bb50216efb97571ac0baead77b1e1e3e8c75a50774acdcf3"
     },
     {
       "topicId": "c02-battle-prop-spore-sacs",
@@ -4209,10 +4217,14 @@
     },
     {
       "topicId": "c02-battle-prop-stretcher-medkits",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-stretcher-medkits/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "c8e44c0f6c5256a993db4e242ba355a90944924cd306dc45794da3129d217fda"
     },
     {
       "topicId": "c02-battle-prop-tickets-manifests",
