@@ -1,0 +1,309 @@
+{
+  "kind": "deterministic-road-geometry-and-export-verification",
+  "generatedAt": "2026-10-19T17:52:23.659151+00:00",
+  "scope": "c01-01 road presentation assets; technical alpha only, existing approved earth unchanged",
+  "checks": [
+    {
+      "command": "python -m unittest discover -s tools/art -p 'test_road_area.py' -v",
+      "result": "passed",
+      "tests": 16,
+      "seconds": 25.249
+    },
+    {
+      "command": "PYTHONPATH=tools/art python -m unittest test_field_material test_water_material -v",
+      "result": "passed",
+      "tests": 12,
+      "seconds": 3.172,
+      "note": "Read-only support fixtures restored before rerun; previously absent water-runtime fixture now passes"
+    },
+    {
+      "command": "python tools/art/export_road_material.py --check",
+      "result": "passed",
+      "reportIdenticalToInitialExport": true
+    },
+    {
+      "command": "python -m py_compile tools/art/road_area.py tools/art/export_road_material.py tools/art/test_road_area.py",
+      "result": "passed"
+    }
+  ],
+  "geometry": {
+    "definition": "external-inset-rounded-convex-concave-v1",
+    "logicalCellSize": 32,
+    "externalInset": 5,
+    "convexRadius": 9,
+    "concaveRadius": 5,
+    "commonSamplesPerWorldUnit": 16,
+    "downsampling": "Independent integer area integration from one common logical grid to 32px and 64px cells",
+    "all256Masks": {
+      "rotationsExactAtBothDensities": true,
+      "opaqueCenterRadius": 8,
+      "opaqueOrthogonalPortWidth": 22,
+      "absentCardinalEdgesFullyTransparent": true,
+      "connectedWithoutIslandsOrHoles": true,
+      "diagonalOnlyNeighborsCreateNoJoins": true
+    },
+    "sharedEdges": {
+      "validEastWestPairsChecked": 1024,
+      "northSouthCoveredByExactRotationEquivariance": true,
+      "geometricBoundaryCoverageExact": true,
+      "highDensityAdjacentPixelColumnsExact": true,
+      "lowDensityMaxAdjacentColumnAlphaDifference": 8,
+      "lowDensityAlphaDenominator": 255,
+      "lowDensityPairsWithDifferentAdjacentAreaCoverage": 768,
+      "interpretation": "Adjacent native pixels integrate distinct world areas near a tangent concave curve; their up-to-8/255 alpha difference is not a discontinuity of the common boundary. All shared 22px opaque cores match exactly. No corrective paint or edge averaging is applied."
+    },
+    "fixtures": {
+      "singleLaneOpaqueWidth": 22,
+      "doubleLaneOpaqueWidth": 54,
+      "rotatedLTCrossAndLoopTopologyPreserved": true,
+      "bridgeConnectsOpaqueLandPort": true,
+      "bridgeCellPainted": false,
+      "paintOutsideOccupiedCells": false,
+      "maximumOutsideAlpha": 0
+    },
+    "actualAuthoredMap": {
+      "source": "packages/story-candidate-01/src/levels.ts TWIN_HILLS, read directly",
+      "dimensions": [
+        27,
+        17
+      ],
+      "paintCells": 84,
+      "roadCells": 80,
+      "settlementCells": 4,
+      "opaqueTwoByTwoApronInteriorsChecked": 14,
+      "villageNotchCellsRemainUnpainted": [
+        [
+          11,
+          8
+        ],
+        [
+          12,
+          8
+        ]
+      ],
+      "openWestRows": [
+        9,
+        10
+      ],
+      "openEastRows": [
+        6,
+        7
+      ],
+      "roadComponents": 1,
+      "exclusionAlphaExactlyZero": true
+    }
+  },
+  "sourceAndSampling": {
+    "approvedMasterSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "masterSize": [
+      1254,
+      1254
+    ],
+    "sourceUnchanged": true,
+    "logicalPeriod": [
+      1024,
+      1024
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "exportSizes": [
+      [
+        512,
+        512
+      ],
+      [
+        1024,
+        1024
+      ]
+    ],
+    "pixelsPerWorldUnit": [
+      [
+        0.5,
+        0.5
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "everyRgbPixelEqualsIndependentUncroppedSourceLanczosResample": true,
+    "edgeCorrectionPixels": 0,
+    "colorCorrection": false,
+    "referenceChunkAndNonTileAlignedCropSamplingExact": true
+  },
+  "mutationGuardsRejected": [
+    "one road cell",
+    "one diagonal-neighbor bit",
+    "one alpha pixel",
+    "one exported mask pixel",
+    "one approved source pixel",
+    "one RGB pixel",
+    "one-world-pixel UV shift",
+    "chunk-local UV reset",
+    "wrong source checksum",
+    "wrong world scale/origin",
+    "cropped fit",
+    "wrong replacement material",
+    "wrong concave radius",
+    "output path escape",
+    "output path collision"
+  ],
+  "exports": [
+    {
+      "id": "road-earth",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+      "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-earth.png",
+      "exportDensity": 1,
+      "size": [
+        512,
+        512
+      ],
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "pixelsPerWorldUnit": [
+        0.5,
+        0.5
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "replaces": {
+        "atlas": "route-dirt-road",
+        "mask": "route"
+      },
+      "edgeBandPixels": 0,
+      "derivation": "independent uncropped full-source Lanczos resize; no painting, recolor or edge averaging",
+      "pixelSha256": "2e358cc9b20ecd50c26a9ec7b5ffcca174e29f73c67b2f904086ac4f10a55aef",
+      "fileSha256": "0922a25b245317037a0334605ff77fcff389507530da9e2652adb9785accae57"
+    },
+    {
+      "id": "road-earth",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+      "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-earth@2x.png",
+      "exportDensity": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "pixelsPerWorldUnit": [
+        1.0,
+        1.0
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "replaces": {
+        "atlas": "route-dirt-road",
+        "mask": "route"
+      },
+      "edgeBandPixels": 0,
+      "derivation": "independent uncropped full-source Lanczos resize; no painting, recolor or edge averaging",
+      "pixelSha256": "216aa8efa0874420a47add93aa1cb7879f302dd5b8819f154fb5232615f57607",
+      "fileSha256": "bbdae871cfd2ce1e54c441d47f4bfa12d3929a21b116c63861d6174146727879"
+    },
+    {
+      "id": "road-occupancy-masks",
+      "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-masks.png",
+      "exportDensity": 1,
+      "size": [
+        512,
+        512
+      ],
+      "logicalCellSize": 32,
+      "geometry": "external-inset-rounded-convex-concave-v1",
+      "inset": 5,
+      "convexRadius": 9,
+      "concaveRadius": 5,
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ],
+      "supersamplePerWorldUnit": 16,
+      "derivation": "analytic bounded contour on one common 16x grid; independent integer area integration",
+      "pixelSha256": "d31eb1e9a66ace442a6ba1a33e4085d38627efecfab1112d9867762a1bbfeb93",
+      "source": "technical white-alpha occupancy geometry; no painted art",
+      "fileSha256": "78c1a30dcac606ed55f754c0c5413cb452df24d16f6f9f6891493658252d944a"
+    },
+    {
+      "id": "road-occupancy-masks",
+      "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-masks@2x.png",
+      "exportDensity": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "logicalCellSize": 32,
+      "geometry": "external-inset-rounded-convex-concave-v1",
+      "inset": 5,
+      "convexRadius": 9,
+      "concaveRadius": 5,
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ],
+      "supersamplePerWorldUnit": 16,
+      "derivation": "analytic bounded contour on one common 16x grid; independent integer area integration",
+      "pixelSha256": "c26ace0887f331abb22add23dc312eb4411db6cf6be863bcd26b0ceb32a417c6",
+      "source": "technical white-alpha occupancy geometry; no painted art",
+      "fileSha256": "aa10a0fe5713819c0a9c0a77d9c4fe685a7b95a3fed88a9ff14b80b67fe4db80"
+    }
+  ],
+  "implementationFileSha256": {
+    "tools/art/road_area.py": "66ae0345c4a1c8968d2475ff8b1dd7104c6c08e6824637a0015c8f3748cd8abb",
+    "tools/art/export_road_material.py": "cfcbf52e12425d3cf3f87ae5f1ff1294534436bb179ccc9bfaf7727cae0f4a10",
+    "tools/art/test_road_area.py": "bcd6ac37f9d564a6a95cc0bace686af8cd0789d67d4aa49cae21ca34b8fec490",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json": "d870cf164c04afb1ee11dfb037be8eaf596106713992eaf3a7d9ef8ea4645bf6"
+  },
+  "limitations": [
+    "Python occupancy assembly and chunk sampling are reference invariants; actual BoardView/SvgBoardSurface and browser/GPU verification belongs to the separate runtime integration evidence",
+    "Lower-density earth is 0.5 pixels per logical world unit; the 1024px high-density export is 1 pixel per world unit, not native 2x world detail"
+  ]
+}

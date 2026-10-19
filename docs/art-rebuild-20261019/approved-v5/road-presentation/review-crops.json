@@ -1,0 +1,42 @@
+{
+  "cameraPixels": [
+    1012,
+    680
+  ],
+  "fieldOriginPixels": [
+    74,
+    62
+  ],
+  "logicalCellSize": 32,
+  "densities": [
+    1,
+    2
+  ],
+  "cropBoundsInCellsExclusive": {
+    "west-apron": [
+      0,
+      7,
+      7,
+      12
+    ],
+    "village-bend": [
+      9,
+      5,
+      18,
+      11
+    ],
+    "southern-route": [
+      4,
+      10,
+      17,
+      15
+    ],
+    "east-apron": [
+      19,
+      4,
+      27,
+      10
+    ]
+  },
+  "source": "Unmodified full offline BoardView rasters; no objects selectively removed or redrawn"
+}

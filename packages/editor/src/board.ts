@@ -196,7 +196,7 @@ export class EditorBoard {
       // top of it. Two layers because they answer two questions: what this cell is
       // made of, and what stands on it.
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      const scene = mapScenePieces({ art: this.art, content: this.content, grid }, levelId, map);
+      const scene = mapScenePieces({ art: this.art, content: this.content, grid, editing: true }, levelId, map);
       this.fill('ground', scene.ground);
       this.fill('terrain', terrainLayerPieces(
         { art: this.art, layout: squareLayout, content: this.content },

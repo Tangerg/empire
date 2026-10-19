@@ -1,8 +1,7 @@
 import { candidate01BlobMask } from './candidate-01-square-mask';
 import document from '../../assets/final-fantasy-v1/world-materials-v1/manifest-water-material-v2.json';
-import { escapeAttr, runtimeAtlasCellMarkup, TILE, type BoardPiece, type RuntimeCellAtlas } from '@empire/game-ui';
-import { candidateWorldMaterialUrls, readCandidateWorldMaterial } from './candidate-01-world-material';
-import type { CandidateMaterial } from './candidate-01-terrain-materials';
+import { escapeAttr, runtimeAtlasCellMarkup, TILE, type BoardPiece } from '@empire/game-ui';
+import { candidateConnectedMaterialMatcher, readCandidateOccupancyAtlas, readCandidateWorldMaterial } from './candidate-01-world-material';
 
 export const CANDIDATE_01_WATER_MATERIAL = readCandidateWorldMaterial(document);
 const material = CANDIDATE_01_WATER_MATERIAL;
@@ -13,15 +12,10 @@ if (occupancy.tileSize !== TILE || occupancy.columns !== 16 || occupancy.rows !=
   || material.logicalSize.some((size) => size % TILE !== 0)) {
   throw new Error('candidate-01: water requires a complete eight-neighbour square-cell mask atlas');
 }
-const maskHref = candidateWorldMaterialUrls[`../../assets/final-fantasy-v1/world-materials-v1/${occupancy.png2x}`];
-if (!maskHref) throw new Error('candidate-01: missing water occupancy masks');
-const masks: RuntimeCellAtlas = {
-  href: maskHref, cellWidth: TILE, cellHeight: TILE, columns: occupancy.columns, rows: occupancy.rows,
-};
+const masks = readCandidateOccupancyAtlas(occupancy);
 
 /** Water and bridge retain the same material identity; only their rendering changes. */
-export const candidate01IsAreaWater = (value: CandidateMaterial): boolean =>
-  value.connected?.atlas === material.replaces.atlas && value.connected.mask === material.replaces.mask;
+export const candidate01IsAreaWater = candidateConnectedMaterialMatcher(material.replaces);
 
 /**
  * One self-contained masked texture per world period, rather than one repeated

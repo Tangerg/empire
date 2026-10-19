@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-10-19T18:01:23.526877+00:00",
+  "codeBaseline": "28d03f8",
+  "branch": "dot/road-presentation-20261019",
+  "results": [
+    {
+      "command": "npm test -- --maxWorkers=1 --minWorkers=1",
+      "exitCode": 0,
+      "filesPassed": 99,
+      "testsPassed": 915,
+      "durationSeconds": 359.99
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "vitest run packages/battle-engine/src/__tests__/architecture-boundaries.test.ts --maxWorkers=1 --minWorkers=1",
+      "exitCode": 0,
+      "testsPassed": 104,
+      "note": "Rerun after saving the source-controlled scene-contract reproduction harness"
+    },
+    {
+      "command": "npm run --silent sweep",
+      "exitCode": 0,
+      "runs": 60,
+      "comparison": "Complete output byte-identical to phase-one baseline; see replay-comparison.json"
+    }
+  ],
+  "pythonTests": "geometry-export-tests.json",
+  "logs": {
+    "full-suite": {
+      "path": "full-suite.log.gz",
+      "uncompressedSha256": "dc5c7c25654ddc1f53dfb6e34e09bd994941d126ad0754e68a1d00ca0e8b7e98"
+    },
+    "architecture": {
+      "path": "architecture.log.gz",
+      "uncompressedSha256": "3e15b6510052afd775e34c519de03f89968a48b3f4bb1fe5cfda8082f8304ee9"
+    },
+    "typecheck": {
+      "path": "typecheck.log.gz",
+      "uncompressedSha256": "cc16254694d58908a905d56c8830b63ad93ad7f2d231a6835945ccf7877465ae"
+    }
+  },
+  "initialFullRun": {
+    "testsPassed": 914,
+    "testsFailed": 1,
+    "reason": "Duplicate road/water binding helpers; corrected by giving shared material binding and occupancy resolution one owner. No disabled assertions or changed timeouts."
+  },
+  "fixtureCaveat": "This sparse worktree used 6,635 temporary read-only support symlinks to evolving main art/docs. Full suite is engineering validation, not an immutable self-contained branch snapshot. All captured runtime raster sources were regular local files, none support symlinks; exact before/after source hashes are pinned. Integrator owns complete fixed-checkpoint main validation.",
+  "browserOrLiveGpuVerification": false
+}

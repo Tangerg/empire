@@ -502,7 +502,8 @@ describe('two backends draw the same board', () => {
   it('leaves no piece pointing at a definition it does not carry', () => {
     const square = TacticalGrids.get('square4');
     const offenders: string[] = [];
-    let pieces = 0;
+    const checkedScenes: string[] = [];
+    let references = 0;
 
     for (const art of [CANDIDATE_01_ART, new ArtDirection()]) {
       const presentation = art.presentation;
@@ -521,11 +522,13 @@ describe('two backends draw the same board', () => {
           map,
           viewport,
         });
+        expect(Object.values(layers).some(layer => layer.length > 0), `${presentation.id} ${level.id}`).toBe(true);
+        checkedScenes.push(`${presentation.id}:${level.id}`);
         for (const [name, layer] of Object.entries(layers)) {
           for (const piece of layer) {
-            pieces += 1;
             const defined = new Set([...piece.markup.matchAll(/\sid="([^"]+)"/g)].map(([, id]) => id));
             for (const [, used] of piece.markup.matchAll(/url\(#([^)]+)\)/g)) {
+              references += 1;
               if (!defined.has(used)) offenders.push(`${presentation.id} ${name}: url(#${used})`);
             }
           }
@@ -533,8 +536,10 @@ describe('two backends draw the same board', () => {
       }
     }
 
-    // A sweep that produced no pieces would pass by having drawn nothing.
-    expect(pieces).toBeGreaterThan(1000);
+    // Area materials intentionally merge many cell pieces; count covered scenes
+    // and actual definition references instead of requiring a fragmented drawing.
+    expect(new Set(checkedScenes).size).toBe(6);
+    expect(references).toBeGreaterThan(0);
     expect([...new Set(offenders)]).toEqual([]);
   });
 

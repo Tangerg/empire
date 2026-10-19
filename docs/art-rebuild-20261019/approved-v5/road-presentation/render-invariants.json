@@ -1,0 +1,39 @@
+{
+  "kind": "actual production scene projection and complete BoardView comparison",
+  "baseline": "28d03f8",
+  "levelCount": 16,
+  "onlyChangedLayerHashes": {
+    "c01-01": [
+      "groundSha256"
+    ]
+  },
+  "levelDefinitionsUnchanged": true,
+  "stateBeforeAndAfterRenderingIdentical": true,
+  "all16EditorGroundLayersIdentical": true,
+  "actorCount": 19,
+  "ruleBuildingCount": 4,
+  "actorsCellsFacingsBindingsIdentical": true,
+  "allStandingDrawOrderAndSourcesIdentical": true,
+  "sameViewport": [
+    0,
+    0,
+    1012,
+    680
+  ],
+  "commonRasterCount": 25,
+  "changedCommonRasters": [],
+  "removedFromRoadFrame": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png"
+  ],
+  "addedToRoadFrame": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-masks@2x.png",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-earth@2x.png"
+  ],
+  "sourceHashDocuments": [
+    "before/runtime-scene-provenance.json",
+    "after/runtime-scene-provenance.json"
+  ],
+  "approvedEarthMasterSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+  "limitation": "SVG offline rendering; backend placement/definition tests are not live GPU pixel verification"
+}

@@ -50,7 +50,7 @@ describe('battle presentation', () => {
     const scene = { content: TEST_CATALOG, levelId: 'c01-01', map, viewport };
     expect(presentation.sceneFrame(scene).backdrop).toContain('authored-wide');
     expect(boardPiecesMarkup(presentation.sceneLayers(scene).ground))
-      .toContain('candidate-ground-route');
+      .toContain('data-runtime-raster="area-road"');
   });
 
   /**
@@ -89,17 +89,17 @@ describe('battle presentation', () => {
     // falls to the sheet's unconnected mask.
     const original = groundWith(TEST_CATALOG);
     const changed = groundWith(withoutRoutes);
-    expect(original).toContain('candidate-ground-route');
-    expect(changed).toContain('candidate-ground-route');
+    expect(original).toContain('data-runtime-raster="area-road"');
+    expect(changed).toContain('data-runtime-raster="area-road"');
     expect(changed).not.toBe(original);
 
     const roadCells = (markup: string) => new Set(
-      [...markup.matchAll(/route-dirt-road@2x\.png" x="(-?\d+)"/g)].map(([, x]) => x),
+      [...markup.matchAll(/road-masks@2x\.png" x="(-?\d+)" y="(-?\d+)"/g)].map(([, x, y]) => `${x},${y}`),
     );
-    // Sixteen masks × four variants; with nothing to link to, only the four
-    // variants of the unconnected mask are left.
-    expect(roadCells(original).size).toBeGreaterThan(4);
-    expect(roadCells(changed).size).toBe(4);
+    // The area profile carries all eight neighbors; removing route tags leaves
+    // only the isolated-cell mask, while paint ownership stays unchanged.
+    expect(roadCells(original).size).toBeGreaterThan(1);
+    expect(roadCells(changed).size).toBe(1);
   });
 
   /** A terrain the pack never named is painted from what the rules say about it. */

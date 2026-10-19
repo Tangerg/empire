@@ -95,6 +95,8 @@ export interface BattlePresentation {
 
 /** Everything a presentation may read about one scene, explicitly injected. */
 export interface BattleSceneContext {
+  /** Editable geometry may retain cell-local presentation instead of authored scene profiles. */
+  readonly editing?: boolean;
   readonly content: ContentCatalog;
   readonly levelId: string;
   readonly map: GameMap;

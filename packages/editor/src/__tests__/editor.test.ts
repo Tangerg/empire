@@ -26,7 +26,7 @@ import { EditorDocument } from '../document';
 import { BrushSettings } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
-import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { CANDIDATE_01_CONTENT_PACK, candidate01Level } from '@empire/story-candidate-01';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 /** Composed per suite, exactly like an application composition root. */
@@ -170,6 +170,16 @@ describe('map editor', () => {
     expect(board.querySelectorAll('.layer-ground > g').length).toBeGreaterThanOrEqual(cells);
     expect(board.querySelectorAll('.layer-terrain > g').length).toBeLessThan(cells / 10);
     expect(host.querySelector('.props')!.textContent).toContain('检查');
+  });
+
+  it('retains cell-local roads while editing the authored Twin Hills level', () => {
+    app.dispose();
+    app = new EditorApp(TEST_SETUP, candidate01Level('c01-01'));
+    app.mount(host);
+    const ground = host.querySelector('.layer-ground')!;
+    expect(ground.innerHTML).toContain('route-dirt-road@2x.png');
+    expect(ground.querySelector('[data-runtime-raster="area-road"]')).toBeNull();
+    expect(app.exportLevel().units).toHaveLength(19);
   });
 
   it('paints terrain with the brush and records it in the exported level', () => {

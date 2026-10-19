@@ -1,4 +1,5 @@
-import type { RuntimeTileFit } from '@empire/game-ui';
+import type { CandidateMaterial } from './candidate-01-terrain-materials';
+import type { RuntimeCellAtlas, RuntimeTileFit } from '@empire/game-ui';
 import { fixedNumbers, type FixedNumbers } from './candidate-01-documents';
 
 /** Shared source identity, sampling scale and raster density for world materials. */
@@ -52,4 +53,19 @@ export function readCandidateWorldMaterial<T extends WorldMaterialDocument>(docu
   if (!href || !candidateWorldMaterialUrls[`${ROOT}${document.png}`]) throw new Error(`candidate-01: missing world material raster ${document.id}`);
   const rasterPixelsPerWorldUnit = fixedNumbers(2, rasterSize.map((pixels, axis) => pixels * 2 / logicalSize[axis]), 'rasterPixelsPerWorldUnit', document.id);
   return { ...document, logicalSize, rasterSize, rasterPixelsPerWorldUnit, worldOrigin, href };
+}
+
+/** Resolve an occupancy sheet once; material RGB and mask alpha have separate sources. */
+export function readCandidateOccupancyAtlas(occupancy: {
+  readonly png2x: string; readonly tileSize: number; readonly columns: number; readonly rows: number;
+}): RuntimeCellAtlas {
+  const href = candidateWorldMaterialUrls[`${ROOT}${occupancy.png2x}`];
+  if (!href) throw new Error(`candidate-01: missing world occupancy atlas ${occupancy.png2x}`);
+  return { href, cellWidth: occupancy.tileSize, cellHeight: occupancy.tileSize,
+    columns: occupancy.columns, rows: occupancy.rows };
+}
+
+/** One binding decides which existing connected terrain material an area replaces. */
+export function candidateConnectedMaterialMatcher(binding: { readonly atlas: string; readonly mask: string }): (value: CandidateMaterial) => boolean {
+  return value => value.connected?.atlas === binding.atlas && value.connected.mask === binding.mask;
 }

@@ -25,6 +25,7 @@ export interface CandidateEnvironmentScene {
   readonly schemaVersion: string;
   readonly levelId: string;
   readonly runtimeReady: boolean;
+  readonly roadMaterial?: 'continuous-earth';
   readonly mapSize: FixedNumbers<2>;
   readonly zones: readonly {
     readonly id: string;
@@ -80,6 +81,7 @@ function readScene(document: typeof twinHillsSceneJson): CandidateEnvironmentSce
   const subject = document.levelId;
   return {
     ...document,
+    roadMaterial: oneOf(['continuous-earth'] as const, document.roadMaterial, 'roadMaterial', subject),
     mapSize: fixedNumbers(2, document.mapSize, 'mapSize', subject),
     zones: document.zones.map((zone) => ({
       ...zone,

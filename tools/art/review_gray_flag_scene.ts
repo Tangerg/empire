@@ -24,6 +24,9 @@ for (const path of [environmentPath,
   'packages/game-ui/src/ui/board.ts',
   'packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json',
   'packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts',
+  'packages/story-candidate-01/src/presentation/candidate-01-road-material.ts',
+  'packages/story-candidate-01/src/presentation/candidate-01-world-material.ts',
+  'packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json',
   'packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts',
 ]) sources.set(path, createHash('sha256').update(readFileSync(resolve(root, path))).digest('hex'));
 const renders = [];

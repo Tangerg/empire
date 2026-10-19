@@ -116,8 +116,8 @@ describe('candidate-01 authored map scenery', () => {
     const markup = boardPiecesMarkup([...layers.ground, ...layers.underUnits, ...layers.overUnits]);
 
     expect(markup).toContain('data-runtime-raster="atlas-cell"');
-    expect(boardPiecesMarkup(layers.ground)).toContain('candidate-ground-route');
-    expect(boardPiecesMarkup(layers.ground)).toContain('candidate-ground-route-edge');
+    expect(boardPiecesMarkup(layers.ground)).toContain('data-runtime-raster="area-road"');
+    expect(boardPiecesMarkup(layers.ground)).not.toContain('route-edge-dirt-road');
     expect(boardPiecesMarkup(layers.ground)).toContain('meadow-base@2x.png');
     /*
      * Every authored placement reaches the depth it was declared at.
@@ -148,7 +148,7 @@ describe('candidate-01 authored map scenery', () => {
       .map((piece) => piece.markup);
     expect(surfaces).toEqual([]);
     // Board position stays external; area-water masks also place cells inside their shared texture block.
-    expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale') || piece.markup.includes('data-runtime-raster="area-water"')))
+    expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale') || piece.markup.includes('data-runtime-raster="area-water"') || piece.markup.includes('data-runtime-raster="area-road"')))
       .toBe(true);
   });
 

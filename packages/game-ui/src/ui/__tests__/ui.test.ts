@@ -400,7 +400,7 @@ describe('game controller', () => {
     const children = [...world.children];
     expect(children.indexOf(ground)).toBeLessThan(children.indexOf(units));
     expect(children.indexOf(units)).toBeLessThan(children.indexOf(foreground));
-    expect(ground.querySelector('.candidate-ground-route')).toBeTruthy();
+    expect(ground.querySelector('[data-runtime-raster="area-road"]')).toBeTruthy();
     // A painted scene draws no lattice. This used to assert one stand node per
     // cell — 12,393 nodes on the largest map — which a rule in `battle.css` then
     // set to `opacity: 0`. The board and the stylesheet were both right and the

@@ -44,6 +44,7 @@ export function battlefieldRenderKey(map: GameMap): string {
 
 /** Everything a picture of a map needs: the art, the catalog, and the tiling. */
 export interface MapCanvas {
+  readonly editing?: boolean;
   readonly art: ArtDirection;
   readonly content: ContentCatalog;
   readonly grid: TacticalGrid;
@@ -82,7 +83,9 @@ export function mapScenePieces(canvas: MapCanvas, levelId: string, map: GameMap)
     TILE,
     presentation.sceneProfile(levelId),
   );
-  return presentation.sceneLayers({ content: canvas.content, levelId, map, viewport });
+  return presentation.sceneLayers({ content: canvas.content, levelId, map, viewport,
+    ...(canvas.editing === undefined ? {} : { editing: canvas.editing }),
+  });
 }
 
 /**

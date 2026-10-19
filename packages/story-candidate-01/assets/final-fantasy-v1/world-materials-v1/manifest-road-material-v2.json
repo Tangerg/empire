@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 2,
+  "id": "road-earth",
+  "replaces": { "atlas": "route-dirt-road", "mask": "route" },
+  "source": "masters/approved-v5/earth-material/revision-2/master.png",
+  "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+  "logicalSize": [1024, 1024],
+  "rasterSize": [512, 512],
+  "worldOrigin": [0, 0],
+  "fit": { "inset": 0, "bleed": 0 },
+  "png": "runtime/road-earth.png",
+  "png2x": "runtime/road-earth@2x.png",
+  "occupancy": {
+    "tileSize": 32,
+    "columns": 16,
+    "rows": 16,
+    "bitOrder": ["N", "NE", "E", "SE", "S", "SW", "W", "NW"],
+    "geometry": "external-inset-rounded-convex-concave-v1",
+    "inset": 5,
+    "convexRadius": 9,
+    "concaveRadius": 5,
+    "png": "runtime/road-masks.png",
+    "png2x": "runtime/road-masks@2x.png"
+  }
+}
