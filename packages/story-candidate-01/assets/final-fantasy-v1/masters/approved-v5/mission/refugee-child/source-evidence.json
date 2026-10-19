@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-MISSION-REFUGEE-CHILD",
+  "canonical": {
+    "assetId": "C01-FFV1-MISSION-REFUGEE-CHILD",
+    "topicId": "C01-MISSION-REFUGEE-CHILD",
+    "label": "难民儿童",
+    "category": "mission-unit",
+    "png": "runtime/mission-unit/mission-refugee-child.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-refugee-child.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-child.png"
+    ]
+  },
+  "references": {
+    "original-masterboard.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f"
+    },
+    "original-runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-refugee-child.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "ec1e31efe13fc7347d820167fd17d97667e9d66b9721b4db9ed6bd110befa1b0"
+    },
+    "original-runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-child.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "86cd9a1297281ecf6ff389e9f65d58b358902366b367c33c4011f505d93471ec"
+    }
+  },
+  "referenceExtraction": "Third masterboard row y627..941; idle cell x0..314,y627..914 excludes fourth-row hat. Exact unresampled crops. Original magenta remains reference-only. HD64x96 frames and runtime32x48 frames preserved unchanged.",
+  "actualConsumers": [],
+  "consumerAudit": {
+    "binding": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts:38 maps c01.refugee to REFUGEE-ADULT; no REFUGEE-CHILD binding.",
+    "unit": "packages/story-candidate-01/src/units.ts:91 refugee has wait ability, civilian/escort tags; no child unit definition.",
+    "levels": "levels.ts:442/450,552,585/591 use adult-bound c01.refugee. No child actor binding located.",
+    "qualification": "Static repository audit, not a browser observation. Preserve as unbound topic; do not invent child weapon/combat rules or replace adult art binding."
+  },
+  "identity": [
+    "Small young child, light warm skin, large worried dark eyes, straight short uneven dark brown/black bob, no headgear",
+    "Oversized charcoal-gray hooded coat with hood down, three round front buttons, muted gray/olive sewn patches and tan worn patch at lower front",
+    "Brown trousers mostly hidden by coat and plain short brown boots",
+    "Screen-left hand holds a small worn tan cloth teddy/rag-doll against torso; simple stitched dark face",
+    "Screen-right hand carries one small bulb-shaped corked bottle by neck with red ribbon/cloth ties; brown/amber contents, ordinary belonging with no magic effect",
+    "No weapons, armor, wounds, dramatic danger or added combat"
+  ],
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "scaleProposal": {
+    "originalChildHeightApprox": 228,
+    "originalAdultHeightApprox": 269,
+    "ratio": 0.8475836431226765,
+    "adultLogicalHeight": 44,
+    "proposedChildLogicalHeightApprox": 37.3,
+    "nativeComposition": "Landscape1586x992, crown≈170, soles≈965. Child-sized body not adult-normalized. Fixed camera, scale and entire canvas across all four poses."
+  }
+}

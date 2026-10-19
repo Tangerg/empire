@@ -1,0 +1,102 @@
+[
+  {
+    "id": "meadow-stony",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-meadow/meadow-3/master.png",
+    "sourceSha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-stony.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 2
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "52b791a7bffa1c9ed675e3e5eaaf0a739571d28a2714721d8f0a509875b5843e",
+    "interiorPixelSha256": "d6f1ed778e73db55e353831d394210b1ae69174c252b47e29e4ae057408ca901",
+    "edgeHashes": {
+      "top": "35d032e782cb25b1369f1ffd9e27904f6a7e70fb6259a73cf8ea143a402ebecf",
+      "bottom": "35d032e782cb25b1369f1ffd9e27904f6a7e70fb6259a73cf8ea143a402ebecf",
+      "left": "318fca3a26497b0f6030809a4f485ff579d6b232df641d0572c8180276a7fc44",
+      "right": "318fca3a26497b0f6030809a4f485ff579d6b232df641d0572c8180276a7fc44"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "meadow-stony",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-meadow/meadow-3/master.png",
+    "sourceSha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-stony@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      8.0,
+      8.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 2
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "333f0706a444cec272fe0d4149b74472bfe81b276c343b55e23e652494461fd4",
+    "interiorPixelSha256": "41855afcdfaab3f65ca31cfe38edb624a98daabb6a6d58c0157ed158e18dc406",
+    "edgeHashes": {
+      "top": "52b0fcd291c6eda71ed809ec6fdb91d882143f4cd5c432b6dc7ebd80d198359d",
+      "bottom": "52b0fcd291c6eda71ed809ec6fdb91d882143f4cd5c432b6dc7ebd80d198359d",
+      "left": "e5455f91cf2ced1163d2833fc0f7ce371c6c6913000f814d39e55ca03d6190fe",
+      "right": "e5455f91cf2ced1163d2833fc0f7ce371c6c6913000f814d39e55ca03d6190fe"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

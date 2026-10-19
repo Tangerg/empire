@@ -1,0 +1,36 @@
+{
+  "status": "Idle identity/scale gate only; pending coordinator review before more poses.",
+  "nativeCanvas": [
+    1561,
+    1008
+  ],
+  "nativeCrown": 80,
+  "nativeBootSoles": [
+    [
+      702.5,
+      955
+    ],
+    [
+      823.0,
+      941
+    ]
+  ],
+  "canonicalSourceFoot": [
+    762.75,
+    955
+  ],
+  "bodyReferenceSourcePixels": 875,
+  "bodyTargetHeightLogicalPixels": 37.3,
+  "sharedScale": 0.042628571428571425,
+  "originalAtlasRatio": 0.8475836431226765,
+  "proposalReason": "Original child is about84.8% adult height.37.3logical=84.77% of human44. No adult normalization.",
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    8
+  ],
+  "policy": "Full canvas uniform scaling only, raw/native untouched. Lock this body scale and actual generated canvas for remaining poses."
+}

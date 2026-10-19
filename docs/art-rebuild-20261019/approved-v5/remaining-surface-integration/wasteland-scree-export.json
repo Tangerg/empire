@@ -1,0 +1,102 @@
+[
+  {
+    "id": "wasteland-scree",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-wasteland/wasteland-3/master.png",
+    "sourceSha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/wasteland-scree.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-wasteland",
+      "tone": 2
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "c2f4c23cf3329338068b3b7f6708c773e493635e879abe75ae2244e6c8096896",
+    "interiorPixelSha256": "ab9a802163dc47f374ac50df7e935025371ff5b3f076bbc4e5b7736b39cb67f4",
+    "edgeHashes": {
+      "top": "93d450ad79fbbbf93b991102aa8f3ea15d8590d0f4445b2f9dcefd43f33ea782",
+      "bottom": "93d450ad79fbbbf93b991102aa8f3ea15d8590d0f4445b2f9dcefd43f33ea782",
+      "left": "780969761133d081583caedbe76fbe2cfd064bb691d3f9999592f1410f2d2f8c",
+      "right": "780969761133d081583caedbe76fbe2cfd064bb691d3f9999592f1410f2d2f8c"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "wasteland-scree",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-wasteland/wasteland-3/master.png",
+    "sourceSha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/wasteland-scree@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      8.0,
+      8.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-wasteland",
+      "tone": 2
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "50f24dcf577c2904038793a479697d0093108d1969d4be1e053f71a05e857223",
+    "interiorPixelSha256": "686aa2018ed7f5301fea39b7c9cdf28f2541f63152606f226716eaa03e33a3d7",
+    "edgeHashes": {
+      "top": "c4f3f7a9d4e5e5072d9773c2c77bbacf2547831c096a1af883f1a9b1395d4efb",
+      "bottom": "c4f3f7a9d4e5e5072d9773c2c77bbacf2547831c096a1af883f1a9b1395d4efb",
+      "left": "0c8e5710447d6a3c4897a27953363c412adb3a69745091408de8dbcf190f18a1",
+      "right": "0c8e5710447d6a3c4897a27953363c412adb3a69745091408de8dbcf190f18a1"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]
