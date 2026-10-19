@@ -464,6 +464,18 @@
         "wasteland-broken-standard"
       ],
       "atlasStaticReview": "all16 regional identities registered; native class samples reviewed; actual full-map cohesion/live pending"
+    },
+    "rural-life": {
+      "formalRuntimeBoundCells": [
+        "wheat-sheaves",
+        "wheat-bundles",
+        "grain-sacks-baskets",
+        "farm-handcart-tools"
+      ],
+      "count": 4,
+      "export": "112/224 full-canvas registered source feet; unselected cells byte-identical to immutable baseline",
+      "runtimeBinding": "actual c01-02 settlement placements and native-size samples reviewed; existing0.3-scale placement retained",
+      "liveGame": "pending"
     }
   },
   "totalCanonicalScope": 1212,

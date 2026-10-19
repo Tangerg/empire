@@ -1,6 +1,7 @@
 /** Render a contact sheet from real scene-prop markup, without changing a battle. */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { JSDOM } from 'jsdom';
 import { pathToFileURL } from 'node:url';
 import { mapFromLevel } from '@empire/battle-engine';
 import { boardPictureMarkup, boardPiecesMarkup, runtimeAtlasCellMarkup } from '@empire/game-ui';
@@ -50,7 +51,10 @@ moltenMap.tiles.fill('c01.molten');
 const molten = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: moltenMap }).underUnits);
 const ruralMap = mapFromLevel(content, candidate01Level('c01-02'));
 const rural = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: ruralMap }).underUnits);
-const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
+const props = (markup: string): string[] => {
+  const document = new JSDOM(`<svg xmlns="http://www.w3.org/2000/svg">${markup}</svg>`, { contentType: 'image/svg+xml' }).window.document;
+  return [...document.querySelectorAll('g.candidate-environment-prop')].map((element) => element.outerHTML);
+};
 interface ReviewColumn {
   readonly id: string;
   readonly x: number;

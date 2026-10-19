@@ -1,0 +1,91 @@
+{
+  "asset": "farm-handcart-tools",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte angular wood/cloth planes and bold contours; pale tan elongated wheat grain",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    600,
+    900
+  ],
+  "source_foot_estimate_normalized": [
+    0.478469,
+    0.717703
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    144,
+    156,
+    82,
+    151
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/farm-handcart-tools.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/attempts/initial-native.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-first-quartet-original-reference-evidence.json",
+  "original_gameplay_obstruction_height": 1,
+  "original_render_layer": "under-units",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "no_ground_platform": true,
+  "no_exterior_glow": true,
+  "refinement_reason": "Initial grain fill read too much as gold chunks; one targeted built-in imagegen material refinement changed exposed fill to pale elongated wheat grains while retaining the grouping.",
+  "original_slot_zero_based": 14,
+  "original_gameplay_footprint": [
+    2,
+    1
+  ],
+  "visually_verified_subject_counts": {
+    "handcart": 1,
+    "long_pulling_shafts": 2,
+    "upright_tool_handles": 4,
+    "grain_basket": 1,
+    "small_bucket": 1,
+    "front_cloth_sacks": 2
+  },
+  "initial_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/prompt-initial.txt",
+  "initial_native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-820c4513-96be-4579-9c84-0d070f765417.png",
+  "initial_native_preserved_copy": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/attempts/initial-native.png",
+  "final_generation_reference_paths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-820c4513-96be-4579-9c84-0d070f765417.png"
+  ],
+  "generation_history": [
+    {
+      "stage": "initial",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-820c4513-96be-4579-9c84-0d070f765417.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/prompt-initial.txt"
+    },
+    {
+      "stage": "grain material refinement",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5262e9a5-cedc-4f4b-bd96-36e707cdbad6.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/prompt.txt",
+      "reference_input": "/workspace/scratch/84c9fe948755/generated_images/exec-820c4513-96be-4579-9c84-0d070f765417.png"
+    }
+  ],
+  "foot_estimate_basis": "wheel/cart contact center, excludes forward pulling-shaft tips",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

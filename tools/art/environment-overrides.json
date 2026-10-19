@@ -762,6 +762,80 @@
           }
         }
       }
+    },
+    "rural-life": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/rural-life.png",
+          "sha256": "8b6751439e652bcc437fa34929813f8a09326c8470771e3fe5c82966ddef5578"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/rural-life@2x.png",
+          "sha256": "3ceea3ad6cd60ea4e3893f5c30ed4e578a00b2096c8a9600fdd111e252f925e8"
+        }
+      },
+      "cells": {
+        "wheat-sheaves": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/rural-life/wheat-sheaves/wheat-sheaves-master.png",
+          "sha256": "883416e3b72297787ef25f08e0491ed7730f34dbb9b1a055ede4115b53e71503",
+          "registration": {
+            "scale": 0.07655502392344497,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              630,
+              1010
+            ]
+          }
+        },
+        "wheat-bundles": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/rural-life/wheat-bundles/wheat-bundles-master.png",
+          "sha256": "03d8eeb3b83a4f60cbac635b72f9850302e247918b6f2accc25fa90322592b33",
+          "registration": {
+            "scale": 0.07655502392344497,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              641,
+              1038
+            ]
+          }
+        },
+        "grain-sacks-baskets": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/rural-life/grain-sacks-baskets/grain-sacks-baskets-master.png",
+          "sha256": "2ac8706238be430283f83fa11e0eacec5bc8830c5b326219bf3636963f042a41",
+          "registration": {
+            "scale": 0.07655502392344497,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              626,
+              1010
+            ]
+          }
+        },
+        "farm-handcart-tools": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+          "sha256": "09abd455837ce3715b4cd02b2882ba26bd038c15488cd29ba5f923f5b512bce7",
+          "registration": {
+            "scale": 0.07655502392344497,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              600,
+              900
+            ]
+          }
+        }
+      }
     }
   }
 }

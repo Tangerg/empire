@@ -71,6 +71,24 @@ describe('candidate-01 environment builder v1.1', () => {
     expect(CANDIDATE_01_ENVIRONMENT.cell('wheat-sheaves').cell.presentationScale).toBeUndefined();
   });
 
+  it('uses the separate112 logical rural geometry with registered native footpoints', () => {
+    const rows = [
+      { id: 'wheat-sheaves', foot: [630, 1010], footprint: [1, 1] },
+      { id: 'wheat-bundles', foot: [641, 1038], footprint: [1, 1] },
+      { id: 'grain-sacks-baskets', foot: [626, 1010], footprint: [1, 1] },
+      { id: 'farm-handcart-tools', foot: [600, 900], footprint: [2, 1] },
+    ];
+    for (const { id, foot, footprint } of rows) {
+      const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
+      expect(cell.anchor?.[0]).toBeCloseTo(8 + foot[0] * 96 / 1254, 12);
+      expect(cell.anchor?.[1]).toBeCloseTo(8 + foot[1] * 96 / 1254, 12);
+      expect(cell.footprint).toEqual(footprint);
+      expect(cell.obstructionHeight).toBe(1);
+      expect(atlas.raster).toMatchObject({ cellWidth: 112, cellHeight: 112, columns: 4, rows: 4 });
+      expect(atlas.raster.href).toContain('rural-life@2x.png');
+    }
+  });
+
   it('rejects invalid presentation scales at the catalog boundary', () => {
     const manifest = (presentationScale: number): EnvironmentManifest => ({ atlases: [{
       id: 'probe', category: 'forest-scenery', png: 'probe.png', columns: 1, rows: 1,

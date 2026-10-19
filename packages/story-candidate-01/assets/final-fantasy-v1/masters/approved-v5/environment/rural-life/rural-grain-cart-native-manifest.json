@@ -1,0 +1,48 @@
+{
+  "status": "native masters and source QA complete; raw only, rural export adapter pending",
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "runtime_anchor": [
+    56,
+    108
+  ],
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-first-quartet-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "grain-sacks-baskets",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/grain-sacks-baskets-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        1010
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "farm-handcart-tools",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/evidence.json",
+      "source_foot_estimate_px": [
+        600,
+        900
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

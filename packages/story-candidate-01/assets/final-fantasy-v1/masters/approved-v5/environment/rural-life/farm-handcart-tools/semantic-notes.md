@@ -1,0 +1,7 @@
+# Farm handcart and tools
+
+Exact rural-life slot 14 and full original atlas inspected. Final native output inspected directly: one open wooden handcart, two fully visible pulling shafts toward foreground-right, one prominent near-left spoked wheel with far wheel occluded by the body, four upright farm-tool handles, one handled grain basket, one small bucket and two front cloth sack bodies. Tool tops preserve the source's rake-like, bent-head, rounded-handle and T-grip distinctions. Wood is broad and matte with bold structural joints. One targeted native imagegen refinement corrected yellow nugget-like grain to pale tan elongated wheat kernels; initial native candidate and prompt are retained. Source foot (600,900) estimates the wheel/cart ground contact center, NOT the lower-right shaft tips or alpha bottom. Catalog contract: 112 logical / 224 HD cells, anchor (56,108), 2x1 footprint, obstruction 1, under-units. Untouched native 1254 RGBA master only; runtime scale and contact alignment need rural adapter review.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [144, 156, 82, 151]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

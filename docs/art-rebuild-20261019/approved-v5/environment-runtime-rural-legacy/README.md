@@ -1,0 +1,1 @@
+Historical diagnostic only. Its original regex sampler could concatenate a non-atlas bridge group with a following rural prop. Do not use this board as identity or scale acceptance evidence. The current rural-first review uses XML element selection and actual individual prop groups. Original evidence is retained rather than silently overwritten.
