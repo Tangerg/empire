@@ -1,0 +1,530 @@
+{
+  "kind": "deterministic-real-asset-comparison-not-gameplay",
+  "groundStatus": "remade",
+  "panelOrder": [
+    "normal-idle",
+    "damaged-walk-a",
+    "captured-walk-b"
+  ],
+  "logicalPanelSize": [
+    320,
+    224
+  ],
+  "density": 2,
+  "inputsSha256": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "a9a99a3a441e745c1dd599713a6db2ca7db7838e15ce63b43ed3dbfc1e017301",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/battle-prop/bprop-cover-1.png": "ba01c1934bb2938ed81ab47c4c121c24d769e4f5342e6508853a9714d8cdf4a4",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-oath-tower-console.png": "c02f5ab3fc9789ba1f5eb0e4ea0ee2bd2a05c83d7a1da4622437a186b6b82488",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-swordsman.png": "624ef9d83d787178c9e279fb27211ec680e15266a90983cb9850769e9ebd4c64",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-archer.png": "909705c453e65641877118cc4a68f0129e6d801179e5c75ce7cfc27d1b5b8a21"
+  },
+  "contractsSha256": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json": "69a71625ad08f0eba8b8ccb575ffdefd506883f503f1e17c052e41572ad03291",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json": "d550cb59cb09b2c1bbc2f6d2b70d75f580b85cf9ed04fe8e22f73e62ce7b1574",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "136946c91144cfcddba45aaaece8c96df466d40556a9b683059f7a15a6916472",
+    "tools/art/source-overrides.json": "9db9bbc196d30f870afe0526aecafdd5822943bd64ecda69283d75f335683201",
+    "tools/art/frame-overrides.json": "7c3a2b3c3841f28aa14698d7ade5e101b8d970f68715b53fe225117f2bba7610",
+    "tools/art/environment-overrides.json": "eae8e4a6ef3482b2022d518f1d4f454124c7edab66e4c33b022cdfc56cd68a9d",
+    "tools/art/surface-overrides.json": "8614757ae28216a872c9fcde21b6b00aa3b33f726be988fe6bbcfe35f6c05e68"
+  },
+  "panels": [
+    {
+      "panel": "normal-idle",
+      "placements": [
+        {
+          "id": "oak-ancient",
+          "layer": "scenery",
+          "pointLogical": [
+            56,
+            105
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.8,
+          "destinationPixels": [
+            35,
+            64
+          ],
+          "renderedSize": [
+            154,
+            154
+          ]
+        },
+        {
+          "id": "mixed-forest-dense",
+          "layer": "scenery",
+          "pointLogical": [
+            264,
+            115
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.8,
+          "destinationPixels": [
+            451,
+            84
+          ],
+          "renderedSize": [
+            154,
+            154
+          ]
+        },
+        {
+          "id": "fern-bed",
+          "layer": "scenery",
+          "pointLogical": [
+            80,
+            180
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.64,
+          "destinationPixels": [
+            99,
+            244
+          ],
+          "renderedSize": [
+            123,
+            123
+          ]
+        },
+        {
+          "id": "C01-BPROP-COVER-1",
+          "layer": "scenery",
+          "pointLogical": [
+            250,
+            180
+          ],
+          "anchorLogical": [
+            32,
+            32
+          ],
+          "scale": 0.7,
+          "destinationPixels": [
+            455,
+            315
+          ],
+          "renderedSize": [
+            90,
+            90
+          ]
+        },
+        {
+          "id": "C01-STRUCT-OATH-TOWER-CONSOLE",
+          "stateIndex": 0,
+          "layer": "structures",
+          "pointLogical": [
+            160,
+            115
+          ],
+          "anchorLogical": [
+            32,
+            63
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            256,
+            104
+          ],
+          "renderedSize": [
+            128,
+            128
+          ]
+        },
+        {
+          "id": "C01-UNIT-SWORDSMAN",
+          "poseIndex": 0,
+          "layer": "units",
+          "pointLogical": [
+            135,
+            174
+          ],
+          "anchorLogical": [
+            16,
+            47
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            238,
+            254
+          ],
+          "renderedSize": [
+            64,
+            96
+          ]
+        },
+        {
+          "id": "C01-UNIT-ARCHER",
+          "poseIndex": 0,
+          "layer": "units",
+          "pointLogical": [
+            185,
+            174
+          ],
+          "anchorLogical": [
+            16,
+            47
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            338,
+            254
+          ],
+          "renderedSize": [
+            64,
+            96
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "damaged-walk-a",
+      "placements": [
+        {
+          "id": "oak-ancient",
+          "layer": "scenery",
+          "pointLogical": [
+            56,
+            105
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.8,
+          "destinationPixels": [
+            35,
+            64
+          ],
+          "renderedSize": [
+            154,
+            154
+          ]
+        },
+        {
+          "id": "mixed-forest-dense",
+          "layer": "scenery",
+          "pointLogical": [
+            264,
+            115
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.8,
+          "destinationPixels": [
+            451,
+            84
+          ],
+          "renderedSize": [
+            154,
+            154
+          ]
+        },
+        {
+          "id": "fern-bed",
+          "layer": "scenery",
+          "pointLogical": [
+            80,
+            180
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.64,
+          "destinationPixels": [
+            99,
+            244
+          ],
+          "renderedSize": [
+            123,
+            123
+          ]
+        },
+        {
+          "id": "C01-BPROP-COVER-1",
+          "layer": "scenery",
+          "pointLogical": [
+            250,
+            180
+          ],
+          "anchorLogical": [
+            32,
+            32
+          ],
+          "scale": 0.7,
+          "destinationPixels": [
+            455,
+            315
+          ],
+          "renderedSize": [
+            90,
+            90
+          ]
+        },
+        {
+          "id": "C01-STRUCT-OATH-TOWER-CONSOLE",
+          "stateIndex": 1,
+          "layer": "structures",
+          "pointLogical": [
+            160,
+            115
+          ],
+          "anchorLogical": [
+            32,
+            63
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            256,
+            104
+          ],
+          "renderedSize": [
+            128,
+            128
+          ]
+        },
+        {
+          "id": "C01-UNIT-SWORDSMAN",
+          "poseIndex": 1,
+          "layer": "units",
+          "pointLogical": [
+            135,
+            174
+          ],
+          "anchorLogical": [
+            16,
+            47
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            238,
+            254
+          ],
+          "renderedSize": [
+            64,
+            96
+          ]
+        },
+        {
+          "id": "C01-UNIT-ARCHER",
+          "poseIndex": 1,
+          "layer": "units",
+          "pointLogical": [
+            185,
+            174
+          ],
+          "anchorLogical": [
+            16,
+            47
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            338,
+            254
+          ],
+          "renderedSize": [
+            64,
+            96
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "captured-walk-b",
+      "placements": [
+        {
+          "id": "oak-ancient",
+          "layer": "scenery",
+          "pointLogical": [
+            56,
+            105
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.8,
+          "destinationPixels": [
+            35,
+            64
+          ],
+          "renderedSize": [
+            154,
+            154
+          ]
+        },
+        {
+          "id": "mixed-forest-dense",
+          "layer": "scenery",
+          "pointLogical": [
+            264,
+            115
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.8,
+          "destinationPixels": [
+            451,
+            84
+          ],
+          "renderedSize": [
+            154,
+            154
+          ]
+        },
+        {
+          "id": "fern-bed",
+          "layer": "scenery",
+          "pointLogical": [
+            80,
+            180
+          ],
+          "anchorLogical": [
+            48,
+            91
+          ],
+          "scale": 0.64,
+          "destinationPixels": [
+            99,
+            244
+          ],
+          "renderedSize": [
+            123,
+            123
+          ]
+        },
+        {
+          "id": "C01-BPROP-COVER-1",
+          "layer": "scenery",
+          "pointLogical": [
+            250,
+            180
+          ],
+          "anchorLogical": [
+            32,
+            32
+          ],
+          "scale": 0.7,
+          "destinationPixels": [
+            455,
+            315
+          ],
+          "renderedSize": [
+            90,
+            90
+          ]
+        },
+        {
+          "id": "C01-STRUCT-OATH-TOWER-CONSOLE",
+          "stateIndex": 2,
+          "layer": "structures",
+          "pointLogical": [
+            160,
+            115
+          ],
+          "anchorLogical": [
+            32,
+            63
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            256,
+            104
+          ],
+          "renderedSize": [
+            128,
+            128
+          ]
+        },
+        {
+          "id": "C01-UNIT-SWORDSMAN",
+          "poseIndex": 3,
+          "layer": "units",
+          "pointLogical": [
+            135,
+            174
+          ],
+          "anchorLogical": [
+            16,
+            47
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            238,
+            254
+          ],
+          "renderedSize": [
+            64,
+            96
+          ]
+        },
+        {
+          "id": "C01-UNIT-ARCHER",
+          "poseIndex": 3,
+          "layer": "units",
+          "pointLogical": [
+            185,
+            174
+          ],
+          "anchorLogical": [
+            16,
+            47
+          ],
+          "scale": 1,
+          "destinationPixels": [
+            338,
+            254
+          ],
+          "renderedSize": [
+            64,
+            96
+          ]
+        }
+      ]
+    }
+  ],
+  "placementEvidence": [
+    "game-ui/src/art/board-surface.ts: TILE32; ground/scenery/structures/units/foreground layer order",
+    "game-ui/src/art/runtime-raster.ts: unit footing at tile16,31 minus manifest anchor",
+    "story-candidate-01/src/presentation/candidate-01-runtime.ts: structure tile16,31 minus anchor",
+    "story-candidate-01/src/presentation/candidate-01-map-scene.ts: scenery uses manifest anchor; standing point at cell+.5,+1.18",
+    "story-candidate-01/src/presentation/candidate-01-terrain-materials.ts: forest scale .74 plus hash jitter up to .12"
+  ],
+  "comparisonChoices": [
+    "authored test arrangement, not a particular live level",
+    "canopy fixed .8 within .74-.86 renderer range; fern .64 within .58-.70 understory range",
+    "crate .7 is an explicit comparison choice, not a verified level placement",
+    "ascending scenery y is explicit comparison ordering, not a claim of global engine y-sort"
+  ],
+  "omittedRuntimeEffects": [
+    "team-color multiply tint",
+    "contact shadows and team rings",
+    "CSS standing shadows",
+    "field sunlight overlays",
+    "camera transforms and subpixel SVG clipping",
+    "animation timing and state-switch behavior"
+  ],
+  "acceptance": "visual review required; actual gameplay pending",
+  "outputs": {
+    "cohesion-native.png": {
+      "file": "cohesion-native.png",
+      "sha256": "0c0d64a28f316d76202b01945485c47d8122ba03fc4f8617d6205780f2428b99"
+    },
+    "cohesion-2x.png": {
+      "file": "cohesion-2x.png",
+      "sha256": "667345c6cbfdde7cec2461b4e25bc57aabb15f198fffa4e3e333bc8d152eb9d2"
+    }
+  }
+}

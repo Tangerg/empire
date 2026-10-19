@@ -9021,7 +9021,7 @@
       "status": "exported",
       "componentCount": 4,
       "exportedComponents": 4,
-      "staticVisualReview": "export-checked-cohesion-revision-required",
+      "staticVisualReview": "passed-quiet-v2-family-repeats-and-base-scene-transition-pending",
       "runtimeVisual": "pending-browser-socket-blocked"
     },
     {
@@ -9679,21 +9679,23 @@
       "cellId": "fern-bed",
       "index": 7,
       "status": "exported",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revision-5/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "sourceSha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
+      "sourceSha256": "7fbfc6aec3e86215f3025eaf751587d62c375b33c4ac313bbe485bb30d9ec87d",
       "verification": {
         "exportCheck": "passed",
         "tests": 22,
-        "evidence": "docs/art-rebuild-20261019/environment-005-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/environment-021-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "runtimeVisual": "pending-browser-socket-blocked"
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "crossAssetCoherence": "passed-quiet-meadow-v2-and-sage-fern-v5-static-scene"
       },
       "revisionCandidate": {
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png",
         "sha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
         "status": "contact-reviewed"
-      }
+      },
+      "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png"
     },
     {
       "atlasId": "forest-temperate",
@@ -9979,7 +9981,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "quiet-v2-family-under-review",
+        "crossAssetCoherence": "passed-quiet-v2-family-static-comparison-transition-pending",
         "runtimeVisual": "pending-browser-socket-blocked"
       },
       "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/master.png"
@@ -9998,7 +10000,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "quiet-v2-family-under-review",
+        "crossAssetCoherence": "passed-quiet-v2-family-static-comparison-transition-pending",
         "runtimeVisual": "pending-browser-socket-blocked"
       },
       "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/master.png"
@@ -10017,7 +10019,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "quiet-v2-family-under-review",
+        "crossAssetCoherence": "passed-quiet-v2-family-static-comparison-transition-pending",
         "runtimeVisual": "pending-browser-socket-blocked"
       },
       "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/master.png"
@@ -10036,7 +10038,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-003-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "quiet-v2-family-under-review",
+        "crossAssetCoherence": "passed-quiet-v2-family-static-comparison-transition-pending",
         "runtimeVisual": "pending-browser-socket-blocked"
       },
       "supersededSource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/master.png"
@@ -10186,7 +10188,7 @@
     }
   ],
   "crossAssetCoherence": {
-    "status": "revision-required-ground-and-fern",
+    "status": "base-ground-foliage-unit-structure-static-comparison-passed-transition-pending",
     "contract": "docs/art-rebuild-20261019/cross-asset-coherence.md",
     "requiredInputs": [
       "surface-meadow",
@@ -10224,22 +10226,35 @@
       {
         "atlasId": "surface-meadow",
         "issue": "high-frequency yellow speckle competes with actors",
-        "status": "imagegen-revision-requested",
+        "status": "resolved-complete-quiet-v2-family-static-comparison",
         "evidence": "docs/art-rebuild-20261019/cohesion-first-meadow/cohesion-2x.png"
       },
       {
         "atlasId": "forest-temperate",
         "cellId": "fern-bed",
         "issue": "yellow foliage too prominent against shared scene palette",
-        "status": "harmonization-after-ground-revision"
+        "status": "resolved-fern-v5-static-comparison"
       },
       {
         "atlasId": "surface-meadow",
         "issue": "mixed-version family produces dark grid seam",
-        "status": "candidate-rejected-runtime-returned-to-v1-family",
+        "status": "resolved-complete-quiet-v2-family-static-comparison",
         "candidateEvidence": "docs/art-rebuild-20261019/surface-002-candidate-evidence.json"
       }
     ],
-    "currentPreview": "docs/art-rebuild-20261019/cohesion-meadow-v2-family/cohesion-placement.json"
-  }
+    "currentPreview": "docs/art-rebuild-20261019/cohesion-meadow-v2-fern-v5/cohesion-placement.json"
+  },
+  "environmentMaterials": [
+    {
+      "materialId": "transition-meadow-forest/forest-floor-material",
+      "atlasId": "transition-meadow-forest",
+      "status": "pending",
+      "assignment": "redraw_grayflag_environment_trees",
+      "source": null,
+      "derivedComponentCount": 47,
+      "maskPolicy": "preserve-original-alpha-byte-for-byte",
+      "unusedCellPolicy": "preserve-original48th-entirely",
+      "designCount": 1
+    }
+  ]
 }
