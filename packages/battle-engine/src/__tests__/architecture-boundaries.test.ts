@@ -2176,8 +2176,11 @@ describe('a picture is not optional', () => {
   it('draws a field object the presentation declined', () => {
     const board = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
     for (const declined of ['structure', 'marker']) {
-      const asked = new RegExp(String.raw`presentation\.${declined}\([^)]*\)\s*\n?\s*\?\?\s*\w+FromRules\(`);
+      const fallback = declined === 'structure' ? String.raw`\{\s*markup:\s*structureFromRules` : 'markerFromRules';
+      const asked = new RegExp(String.raw`presentation\.${declined}\([^)]*\)\s*\?\?\s*${fallback}\(`);
       expect(asked.test(stripComments(board)), declined).toBe(true);
+      const withoutFallback = stripComments(board).replace(new RegExp(`${declined}FromRules\\(`, 'g'), 'missingDrawing(');
+      expect(asked.test(withoutFallback), `${declined} without its fallback`).toBe(false);
     }
   });
 

@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TILE } from '../../art/board-surface';
+import { fromMarkup } from '../../art/svg';
+import { structureFromRules } from '../../art/field-objects-from-rules';
 import { portraitSvg } from '../../art/portraits';
 import { unitIcon } from '../../art/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
@@ -132,7 +134,7 @@ describe('game controller', () => {
      * This used to count `.layer-terrain`, because the campaign's art stamped one
      * tile per cell there for every level except the one chapter whose scene
      * painted its own ground. The scene paints every level now, so the surface is
-     * in `.layer-ground` and what is left in `.layer-terrain` is the buildings.
+     * in `.layer-ground` and standing buildings join the units depth plane.
      */
     expect(board.querySelectorAll('.layer-ground > g').length)
       .toBeGreaterThanOrEqual(level.width * level.height);
@@ -268,6 +270,9 @@ describe('game controller', () => {
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     stubLayout(board);
+    // jsdom has no scrolling; keyboard selection recentres the real battlefield.
+    const scroll = vi.fn();
+    (c.root.querySelector('.battlefield') as HTMLElement).scrollTo = scroll;
 
     const settle = async () => {
       for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
@@ -281,6 +286,7 @@ describe('game controller', () => {
     press('ArrowRight');
     await settle();
     expect(hudSays(c.root)).not.toBe('');
+    expect(scroll).toHaveBeenCalledOnce();
 
     // Pinned against the board's own answer rather than against arithmetic: after
     // pressing right from a unit's cell, the screen must read exactly as it does
@@ -399,9 +405,11 @@ describe('game controller', () => {
      */
     const terrain = world.querySelector('.layer-terrain')!;
     expect(terrain.children.length).toBeLessThan(level.width * level.height / 10);
-    // What is left is the cells this art does draw: its map structures.
-    expect(terrain.children.length).toBeGreaterThan(0);
-    expect([...terrain.children].every((piece) => piece.innerHTML.trim().length > 0)).toBe(true);
+    // Empty ground stays empty; the buildings survive in the shared standing plane.
+    expect(terrain.children).toHaveLength(0);
+    const buildings = [...units.querySelectorAll('[data-candidate-art="structure"]')];
+    expect(buildings.length).toBeGreaterThan(0);
+    expect(buildings.every((piece) => piece.innerHTML.trim().length > 0)).toBe(true);
     board.dispose();
   });
 
@@ -464,13 +472,24 @@ describe('game controller', () => {
     expect(withStructures.length).toBeGreaterThan(2);
 
     for (const level of withStructures) {
-      const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
-      host.append(c.root);
-      const drawn = [...c.root.querySelectorAll('.layer-structures > g')];
-      expect(drawn, level.id).toHaveLength(level.structures!.length);
-      for (const group of drawn) expect(group.innerHTML.length, level.id).toBeGreaterThan(40);
-      c.dispose();
-      host.innerHTML = '';
+      const state = TEST_ENGINE.createState(level);
+      const board = new BoardView(composition(ART), state, {
+        onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {},
+      });
+      board.render(emptyOverlay());
+      const drawn = [...board.el.querySelectorAll('.layer-structures > g, .layer-units > g')];
+      for (const structure of state.structures) {
+        const definition = TEST_CATALOG.structures.get(structure.type);
+        const color = state.players.find((player) => player.id === structure.owner)?.color;
+        const picture = ART.presentation.structure(structure, definition, color)
+          ?? { markup: structureFromRules(structure, definition, color) };
+        const expected = fromMarkup(picture.markup).innerHTML;
+        const matches = drawn.filter((group) => group.innerHTML === expected
+          && group.getAttribute('transform') === `translate(${(structure.x * TILE).toFixed(2)},${(structure.y * TILE).toFixed(2)})`);
+        expect(expected.length, level.id).toBeGreaterThan(40);
+        expect(matches, `${level.id}/${structure.id}`).toHaveLength(1);
+      }
+      board.dispose();
     }
   });
 

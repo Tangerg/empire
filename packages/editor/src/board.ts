@@ -8,6 +8,9 @@ import {
   battlefieldRenderKey,
   mapScenePieces,
   boardPiecesMarkup,
+  BoardDepthOrder,
+  CELL_FOOT,
+  type BoardLayer,
   type BoardPiece,
   TILE,
   terrainLayerPieces,
@@ -71,6 +74,7 @@ export class EditorBoard {
   private drawing = false;
   private last: string | null = null;
   private signature = '';
+  private readonly depth = new BoardDepthOrder<SVGGElement>();
 
   constructor(
     private map: GameMap,
@@ -88,13 +92,21 @@ export class EditorBoard {
     });
     this.layers = {};
     // Depth order, and the lattice sits above the art so it stays a lattice.
-    for (const n of ['ground', 'terrain', 'scenery', 'grid', 'units', 'marks', 'cursor']) {
+    for (const n of ['ground', 'terrain', 'scenery', 'grid', 'units', 'foreground', 'marks', 'cursor']) {
       const g = svg('g', { class: `layer layer-${n}` });
       this.layers[n] = g;
       this.el.append(g);
     }
     this.bind();
     this.resize(map);
+  }
+
+  private fill(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
+    const drawings = [...fromMarkup(boardPiecesMarkup(pieces)).children] as SVGGElement[];
+    const old = this.depth.replaceLayer(layer, pieces.map((piece, index) => ({ piece, drawing: drawings[index] })));
+    old.forEach((drawing) => drawing.remove());
+    this.layers[layer].append(...this.depth.ordered(layer));
+    if (layer !== 'units') this.layers.units.append(...this.depth.ordered('units'));
   }
 
   resize(map: GameMap): void {
@@ -183,39 +195,33 @@ export class EditorBoard {
       // The ground the scene paints, then the tiles the per-cell painters draw on
       // top of it. Two layers because they answer two questions: what this cell is
       // made of, and what stands on it.
-      clear(this.layers.ground);
-      clear(this.layers.terrain);
-      clear(this.layers.scenery);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
       const scene = mapScenePieces({ art: this.art, content: this.content, grid }, levelId, map);
-      const fill = (layer: string, pieces: readonly BoardPiece[]): void => {
-        if (!pieces.length) return;
-        this.layers[layer].append(...[...fromMarkup(boardPiecesMarkup(pieces)).childNodes]);
-      };
-      fill('ground', scene.ground);
-      fill('terrain', terrainLayerPieces(
+      this.fill('ground', scene.ground);
+      this.fill('terrain', terrainLayerPieces(
         { art: this.art, layout: squareLayout, content: this.content },
         map,
         colorOf,
       ));
       // What stands on a cell, so editing a wood shows a wood.
-      fill('scenery', [...scene.underUnits, ...scene.overUnits]);
+      this.fill('scenery', scene.underUnits);
+      this.fill('foreground', scene.overUnits);
     }
 
-    clear(this.layers.units);
-    const unitParts = units
+    const unitParts: BoardPiece[] = units
       .map((u) => {
         const color = players.find((p) => p.id === u.owner)?.color ?? PAL.neutral;
         const bad = this.isBadPlacement(u);
         // The figure is what a mirror flips, and the bad-placement wash is not part
         // of it — the same shape the board's own surface builds.
-        return `<g class="unit${facesLeft(grid, u.facing) ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
-          <g class="figure">${boardPictureMarkup(unitPicture(this.art, this.content.units.get(u.unit), color))}</g>
-          ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
-        </g>`;
-      })
-      .join('');
-    if (unitParts) this.layers.units.append(fromMarkup(unitParts));
+        const picture = unitPicture(this.art, this.content.units.get(u.unit), color);
+        return { x: u.x * TILE, y: u.y * TILE, foot: picture.foot ?? CELL_FOOT,
+          markup: `<g class="unit${facesLeft(grid, u.facing) ? ' face-left' : ''}">
+            <g class="figure">${boardPictureMarkup(picture)}</g>
+            ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
+          </g>` };
+      });
+    this.fill('units', unitParts);
 
     clear(this.layers.marks);
     const marks: string[] = [];

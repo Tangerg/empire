@@ -9,10 +9,15 @@ import { createTestCatalog } from '@empire/test-content';
 import { FrameClock } from './frame-clock';
 import {
   BOARD_LAYERS,
+  CELL_FOOT,
+  boardScenePieces,
+  type BoardPiece,
   type BoardLayer,
   type BoardStrip,
   type BoardSurfaceScene,
 } from '../board-surface';
+import { terrainLayerPieces } from '../terrain';
+import { squareLayout } from '../board-decorations';
 import { ArtDirection, GENERIC_ART } from '../direction';
 import { createSceneViewport } from '../scene-viewport';
 import { SvgBoardSurface } from '../svg-board-surface';
@@ -171,6 +176,100 @@ describe('two backends draw the same board', () => {
     expect(order()[0]).toBe('32.00,80.00');
     expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
     for (const surface of [svg, gpu]) { surface.removeUnit(4); surface.dispose(); }
+  });
+
+  it('merges still objects and moving actors by foot without resetting clips or tactical overlays', async () => {
+    const scene: BoardSurfaceScene = { width: 320, height: 320, originX: 0, originY: 0,
+      shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
+    const svg = new SvgBoardSurface(scene);
+    const gpu = new PixiBoardSurface(scene, { textures: new InstantTextures(), painter: new IdlePainter() });
+    const building: BoardPiece = { markup: '<rect width="64" height="96"/>', x: 32, y: 32, foot: CELL_FOOT };
+    const tree: BoardPiece = { markup: '<rect x="-30" y="-80" width="60" height="80"/>', x: 48, y: 70,
+      foot: { x: 0, y: 0 } };
+    const flat: BoardPiece = { markup: '<rect width="64" height="16"/>', x: 0, y: 200 };
+    const strip: BoardStrip = { href: 'walking.png', frameWidth: 32, frameHeight: 32, frameCount: 2, x: 0, y: 0,
+      clips: [{ id: 'walk', frames: [0, 1], fps: 4, loop: true }], playing: 'walk' };
+    const actors = [svg, gpu].map((surface) => {
+      // Arrival order does not decide world order.
+      surface.setLayer('scenery', [tree, flat]);
+      surface.setLayer('terrain', [building]);
+      surface.setLayer('range', [flat]);
+      surface.setLayer('cursor', [flat]);
+      const actor = surface.unit(7, () => ({ body: '', strip }));
+      actor.place(32, 0);
+      return actor;
+    });
+    const order = () => svgDisplayList(svg.element).find((layer) => layer.layer === 'units')!.at;
+    const same = () => expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    expect(order()).toEqual(['32.00,0.00', '32.00,32.00', '48.00,70.00']);
+    expect(svgDisplayList(svg.element).find((layer) => layer.layer === 'scenery')!.at).toEqual(['0.00,200.00']);
+    same();
+    const unitNode = svg.element.querySelector('.unit');
+    await Promise.resolve();
+    clock.at(300);
+    const frame = svg.element.querySelector('.board-strip')!.getAttribute('viewBox');
+    expect(frame).toBe('32 0 32 32');
+    actors.forEach((actor) => actor.place(32, 32));
+    expect(order()).toEqual(['32.00,32.00', '32.00,32.00', '48.00,70.00']);
+    expect(svg.element.querySelector('.layer-units')!.children[1]).toBe(unitNode);
+    same();
+    actors.forEach((actor) => actor.place(32, 36));
+    expect(order()).toEqual(['32.00,32.00', '32.00,36.00', '48.00,70.00']);
+    same();
+    actors.forEach((actor) => actor.place(32, 48));
+    expect(order()).toEqual(['32.00,32.00', '48.00,70.00', '32.00,48.00']);
+    actors.forEach((actor) => { actor.nudge(0, -100); actor.swell(2); });
+    expect(order().at(-1)).toBe('32.00,-52.00');
+    same();
+    for (const surface of [svg, gpu]) {
+      surface.setLayer('terrain', [{ ...building, y: 100 }]);
+      surface.setLayer('scenery', []);
+    }
+    expect(order()).toEqual(['32.00,-52.00', '32.00,100.00']);
+    expect(svg.element.querySelector('.unit')).toBe(unitNode);
+    expect(svg.element.querySelector('.board-strip')!.getAttribute('viewBox')).toBe(frame);
+    expect(svg.element.querySelector('.layer-range')!.children).toHaveLength(1);
+    expect(svg.element.querySelector('.layer-cursor')!.children).toHaveLength(1);
+    same();
+    for (const surface of [svg, gpu]) surface.removeUnit(7);
+    expect(order()).toEqual(['32.00,100.00']);
+    expect(clock.pump(3)).toBe(0);
+    same();
+    for (const surface of [svg, gpu]) surface.dispose();
+  });
+
+  it('draws every c01-02 building, scenery piece and actor through the same depth contract', () => {
+    const level = CANDIDATE_01_LEVELS.find((candidate) => candidate.id === 'c01-02')!;
+    const engine = createBattleEngine({ content: TEST_CATALOG });
+    const state = engine.createState(level);
+    const before = JSON.stringify(state);
+    const grid = engine.rules.grids.get('square4');
+    const scene = CANDIDATE_01_ART.presentation.sceneLayers({ content: TEST_CATALOG, levelId: level.id, map: state.map,
+      viewport: createSceneViewport(grid, level.width, level.height, 32, CANDIDATE_01_ART.presentation.sceneProfile(level.id)) });
+    const buildings = terrainLayerPieces({ art: CANDIDATE_01_ART, content: TEST_CATALOG, layout: squareLayout },
+      state.map, (owner) => state.players.find((player) => player.id === owner)?.color);
+    expect(buildings).toHaveLength(9);
+    expect(buildings.every((piece) => piece.foot?.x === 16 && piece.foot.y === 31)).toBe(true);
+    expect(state.units).toHaveLength(20);
+    expect(scene.underUnits).toHaveLength(46);
+    expect(scene.overUnits).toEqual([]);
+    expect(scene.underUnits.filter((piece) => !piece.foot)).toHaveLength(5);
+    const actors = state.units.map((unit) => ({ markup: '', x: unit.x * 32, y: unit.y * 32, foot: CELL_FOOT }));
+    const expected = boardScenePieces({ terrain: buildings, scenery: scene.underUnits, units: actors })
+      .filter((piece) => piece.foot).map(({ x, y }) => `${x.toFixed(2)},${y.toFixed(2)}`);
+    const handlers = { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} };
+    const svg = new SvgBoardSurface({ width: 704, height: 448, originX: 0, originY: 0, shapeRendering: 'crispEdges', backdrop: '', foreground: '' });
+    const gpu = new PixiBoardSurface({ width: 704, height: 448, originX: 0, originY: 0, shapeRendering: 'crispEdges', backdrop: '', foreground: '' },
+      { textures: new InstantTextures(), painter: new IdlePainter() });
+    const boards = [svg, gpu].map((surface) => new BoardView({ content: TEST_CATALOG, grid, art: CANDIDATE_01_ART,
+      renderer: () => surface }, state, handlers));
+    boards.forEach((board) => board.render(emptyOverlay()));
+    expect(svgDisplayList(svg.element).find((layer) => layer.layer === 'units')!.at).toEqual(expected);
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    expect(svg.drawnUnits()).toHaveLength(20);
+    expect(svg.element.querySelectorAll('[data-candidate-art="structure"]')).toHaveLength(9);
+    expect(JSON.stringify(state)).toBe(before);
+    boards.forEach((board) => board.dispose());
   });
 
   it('puts the same number of pictures in the same places in every layer', () => {

@@ -38,7 +38,7 @@
 | --- | --- |
 | `unitPicture` | 棋盘单位 |
 | `unitIcon` | 菜单和列表单位图标 |
-| `terrainMarkup` | 单格地形（参数是 `TileContext`） |
+| `terrainPicture` | 单格地形图片与可选脚点（参数是 `TileContext`，返回 `BoardImage`） |
 | `portraitMarkup` | 角色或兵种立绘 |
 | `iconMarkup` | 通用界面图标 |
 | `abilityIcon`、`weaponIcon`、`statusIcon` | 规则对象图标 |
@@ -59,7 +59,8 @@
 - `sceneProfile(levelId)`：声明场景画布留白
 - `sceneFrame(scene)`：提供战术区域外的背景和前景
 - `sceneLayers(scene)`：提供战术区域内的三层场景素材，每层是一串放在位置上的图（`BoardPiece[]`）
-- `structure()` 和 `marker()`：覆盖题材实体表现
+- `structure()`：返回结构的 `BoardImage`（图片与可选脚点）
+- `marker()`：覆盖地面标记表现
 - `weaponFx()` 和 `effect()`：将语义效果转为 SVG 标记
 
 两个场景函数只接收一份 `BattleSceneContext`：当前会话的 `content`、`levelId`、`map` 和已经算好的 `viewport`。题材表现根据传入内容目录里的标签判断道路等语义，不 import 某个题材的原始定义数组，也不从表现 id 猜规则。测试会替换目录中的道路标签并要求场景随输入改变，防止静态题材依赖重新长回来。
@@ -408,7 +409,7 @@ sceneFrame.foreground
 
 一格地形有三个答案，按顺序取第一个有答案的：
 
-1. **题材包的 `terrainMarkup` 按 id 认领**——最好的答案，authored 的贴图。
+1. **题材包的 `terrainPicture` 按 id 认领**——最好的答案，authored 的贴图。
 2. **本仓库自带的手绘表**——`plain` / `road` / `forest` / … 十一格，是这里第一款游戏的样子。
 3. **按规则推导**——`terrain-from-rules.ts`。
 
@@ -925,3 +926,13 @@ flex 行里**没法**告诉一段裸文本别缩。直接写在 flex 容器里�
 最后两个值得单说。`data-scene-layout` 的最后一个读者是上一轮删掉的那条 CSS 规则,我没注意到。`data-unit` 是留给人看的——好在 `board-digest` 的输出里认出某一块属于哪个单位;而**全仓库唯一提到它的代码是 `tools/board-scale.ts`,把它去掉**,因为它让每个单位的包装组都成了一张不同的图。一个需要工具绕开的标签,不是任何东西在读的标签。
 
 写这条守卫本身踩了它自己警告过的坑:它的说明段落里点名了 `data-tile` 和 `.sprite-raster`,而注释没被剥掉时,守卫把自己的散文当成了「有人在读」的证据——两个标签重新发出来它照样通过。现在每个文件的注释都先剥掉。
+
+## 站立物体的脚点深度
+
+`BoardImage` 将静态图片的 `markup` 和可选 `foot` 放在同一份返回值里；`BoardPiece` 再声明放置原点。`foot` 是图片局部坐标，不是贴图矩形的左上角或最低不透明像素。候选战役的建筑与单位使用 `CELL_FOOT = (16,31)`；以脚点为原点的树木与生活道具使用 `(0,0)`。
+
+`BoardDepthOrder` 是唯一深度排序实现。带脚点的静态物体与单位共用现有 `units` 平面，以世界脚点的 y、x 排序，同点时按来源层和原数组序号（单位为稳定 id）排序。单位 `place` 更新脚点；攻击 `nudge`、`swell` 不改变站位深度。替换一层只移除该层静态图片，不重建单位、不重启帧动画。
+
+没有脚点的图片仍按 `BOARD_LAYERS` 与原数组顺序绘制。地面、桥面、光照、道路与贴地装饰保留在地面平面；范围和路径在站立物体下，前景、特效和光标在上。SVG、Pixi、编辑器和 `boardScenePieces` 静态复核共享同一契约，不修改地形、可走格或规则状态。
+
+树冠可以按真实前后关系遮挡其后的单位。本次没有隐藏、缩小或自动淡化遮挡物；交互中的战术可见性是另一个需要明确视觉设计的问题。

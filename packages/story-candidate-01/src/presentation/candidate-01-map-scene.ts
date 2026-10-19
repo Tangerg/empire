@@ -183,6 +183,7 @@ function topicPlacementPiece(placement: CandidateEnvironmentPlacement): BoardPie
     // string somewhere in the markup.
     markup: `<g class="candidate-scenery-topic is-${placement.layer ?? 'under-units'}"`
       + ` transform="${transform}" opacity="${placement.opacity ?? 1}">${figure}</g>`,
+    ...((placement.layer ?? 'under-units') === 'under-units' ? { foot: { x: 0, y: 0 } } : {}),
     x: placement.x * TILE,
     y: (placement.y + 1) * TILE,
   };
@@ -198,6 +199,7 @@ function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | 
       opacity: placement.opacity ?? 1,
       className: `is-${placement.layer ?? 'under-units'}`,
     }),
+    ...((placement.layer ?? 'under-units') === 'under-units' ? { foot: { x: 0, y: 0 } } : {}),
     x: placement.x * TILE,
     y: (placement.y + 1) * TILE,
   };
@@ -505,6 +507,7 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
   const stand = (id: string, x: number, y: number, placing: EnvironmentCellPlacing, jitter = 0): void => {
     parts.push({
       markup: environmentCellMarkup(id, placing),
+      foot: { x: 0, y: 0 },
       x: (x + 0.5) * TILE + (tileHash(x, y, 1122) - 0.5) * jitter,
       y: (y + 1.18) * TILE,
     });
@@ -527,9 +530,8 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
         && ORTHOGONAL.every(([dx, dy]) => field(x + dx, y + dy)?.blend === material.blend);
       const scenery = enclosed
         ? CANDIDATE_FOREST_FLOOR
-        // Open ground next to a settlement is where its life is kept, and where
-        // its life can be drawn: the scenery layer is over the terrain layer, so a
-        // prop on the building's own cell would stand in front of the building.
+        // Settlement life belongs on the neighbouring ground. Its foot, rather
+        // than its source layer, decides which building it stands behind.
         : material.scenery ?? (neighboursSettlement(content, map, x, y) ? CANDIDATE_SETTLEMENT_LIFE : undefined);
       if (!scenery) continue;
       if (scenery.chance !== undefined && tileHash(x, y, 1119) > scenery.chance) continue;

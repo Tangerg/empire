@@ -433,8 +433,9 @@ export class BoardView {
     this.surface.setLayer('structures', s.structures.map((state) => {
       const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
       const definition = this.content.structures.get(state.type);
-      return this.at(state, this.presentation.structure(state, definition, ownerColor)
-        ?? structureFromRules(state, definition, ownerColor));
+      const picture = this.presentation.structure(state, definition, ownerColor)
+        ?? { markup: structureFromRules(state, definition, ownerColor) };
+      return { ...picture, ...this.origin(state) };
     }));
 
     this.surface.setLayer('markers', s.markers.map((marker) => {

@@ -32,7 +32,8 @@ export interface SceneFrameMarkup {
 
 /**
  * Explicit depth contract for art inside the interactive battlefield.
- * Ground can never cover a tactical actor; overUnits is reserved for authored
+ * Ground can never cover a tactical actor. A piece with a foot joins actor depth;
+ * unannotated underUnits pieces stay below actors. overUnits is reserved for authored
  * canopies and other silhouettes that intentionally cross the actor plane.
  *
  * Pieces, not strings — the last place a layer crossed the renderer seam as a

@@ -2,7 +2,7 @@ import { FrameAnimationSystem } from './frame-animation';
 import {
   drawableBody,
   DrawingPlacement,
-  UnitDepthOrder,
+  BoardDepthOrder,
   GRID_ALPHA,
   BOARD_LAYERS,
   boardPiecesMarkup,
@@ -215,7 +215,7 @@ export class SvgBoardSurface implements BoardSurface {
   readonly element: SVGSVGElement;
   private readonly layers: Record<BoardLayer, SVGGElement>;
   private readonly units = new Map<number, SvgDrawing>();
-  private readonly unitDepth = new UnitDepthOrder();
+  private readonly depth = new BoardDepthOrder<SVGGElement>();
   /**
    * The sprite timeline for everything this surface draws.
    *
@@ -260,17 +260,15 @@ export class SvgBoardSurface implements BoardSurface {
   }
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
-    const host = this.layers[layer];
-    clear(host);
-    if (!pieces.length) return;
-    // One parse for the whole layer: building four thousand groups by hand is
-    // slower than letting the parser do it, and the string is the same one
-    // `boardPiecesMarkup` hands to a thumbnail or to the editor's own canvas.
-    // The parsed pieces, not the group the parser wrapped them in. That wrapper made
-    // a layer filled by `setLayer` a different shape from the units layer, whose
-    // drawings are direct children — two spellings of "the pictures in a layer",
-    // which is one more than a second backend can be held to.
-    host.append(...[...fromMarkup(boardPiecesMarkup(pieces)).childNodes]);
+    const drawings = [...fromMarkup(boardPiecesMarkup(pieces)).children] as SVGGElement[];
+    const old = this.depth.replaceLayer(layer, pieces.map((piece, index) => ({ piece, drawing: drawings[index] })));
+    old.forEach((drawing) => drawing.remove());
+    this.layers[layer].append(...this.depth.ordered(layer));
+    if (layer !== 'units') this.sortStanding();
+  }
+
+  private sortStanding(): void {
+    this.layers.units.append(...this.depth.ordered('units'));
   }
 
   drawnUnits(): number[] {
@@ -289,10 +287,8 @@ export class SvgBoardSurface implements BoardSurface {
       `strip:${this.serial++}`,
       picture,
       (x, y) => {
-        for (const ordered of this.unitDepth.place(id, x, y)) {
-          const unit = this.units.get(ordered);
-          if (unit) this.layers.units.append(unit.el);
-        }
+        this.depth.placeUnit(id, drawing.el, x, y, picture.foot);
+        this.sortStanding();
       },
     );
     // The badges group is the surface's own, not the picture's: it is what
@@ -301,6 +297,7 @@ export class SvgBoardSurface implements BoardSurface {
     drawing.addPart('badges', '');
     this.layers.units.append(drawing.el);
     this.units.set(id, drawing);
+    drawing.place(0, 0);
     return drawing;
   }
 
@@ -313,7 +310,7 @@ export class SvgBoardSurface implements BoardSurface {
     if (!drawing) return;
     drawing.detach();
     this.units.delete(id);
-    this.unitDepth.remove(id);
+    this.depth.removeUnit(id);
   }
 
   effect(picture: BoardPicture): BoardEffect {
@@ -355,7 +352,7 @@ export class SvgBoardSurface implements BoardSurface {
     this.stopListening = null;
     this.animations.dispose();
     this.units.clear();
-    this.unitDepth.clear();
+    this.depth.clear();
   }
 }
 

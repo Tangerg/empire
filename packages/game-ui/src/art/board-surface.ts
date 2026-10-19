@@ -93,28 +93,11 @@ export class DrawingPlacement {
   }
 }
 
-/** Unit footing order, shared by DOM and GPU backends, independent of creation order. */
-export class UnitDepthOrder {
-  private readonly positions = new Map<number, { x: number; y: number }>();
-
-  place(id: number, x: number, y: number): readonly number[] {
-    this.positions.set(id, { x, y });
-    return [...this.positions.keys()].sort((a, b) => {
-      const left = this.positions.get(a)!;
-      const right = this.positions.get(b)!;
-      return left.y - right.y || left.x - right.x || a - b;
-    });
-  }
-
-  remove(id: number): void { this.positions.delete(id); }
-  clear(): void { this.positions.clear(); }
-}
-
 /**
  * The layers a board has, deepest first.
  *
- * Order is the depth contract, and it is stated here rather than in a renderer so
- * that two backends cannot disagree about what covers what.
+ * Fixed layer order is shared by both renderers. Pictures declaring a foot are
+ * merged with actors in the units plane by BoardDepthOrder below.
  */
 export const BOARD_LAYERS = [
   'ground',
@@ -133,6 +116,21 @@ export const BOARD_LAYERS = [
 ] as const;
 
 export type BoardLayer = (typeof BOARD_LAYERS)[number];
+
+/** A contact point in picture-local coordinates, independent of its painted bounds. */
+export interface BoardFoot {
+  readonly x: number;
+  readonly y: number;
+}
+
+/** The standard footing of a figure painted in a board cell. */
+export const CELL_FOOT: BoardFoot = Object.freeze({ x: TILE_MIDDLE, y: TILE - 1 });
+
+/** Still art and its optional standing contact; unannotated art keeps its layer. */
+export interface BoardImage {
+  readonly markup: string;
+  readonly foot?: BoardFoot;
+}
 
 /**
  * One picture, and where its origin sits in scene units.
@@ -153,10 +151,61 @@ export type BoardLayer = (typeof BOARD_LAYERS)[number];
  * Markup that has no place — line work across the whole field, a clip definition —
  * is a piece at the origin. That is the same rule, not a second one.
  */
-export interface BoardPiece {
-  readonly markup: string;
+export interface BoardPiece extends BoardImage {
   readonly x: number;
   readonly y: number;
+}
+
+/**
+ * One owner of scene depth for both backends and static map pictures.
+ *
+ * Opted-in still pictures share the units plane. Their origin plus local foot,
+ * never their image bounds, determines back-to-front order. Equal contacts use
+ * source layer then source index; actors use their stable ids. Ground overlays
+ * remain below this plane and foreground/effects/cursor remain above it.
+ *
+ * Only actor placement advances its depth. Attack nudges and swell are visual
+ * offsets, and replacing still art does not replace any actor drawing or clip.
+ */
+export class BoardDepthOrder<T> {
+  private readonly layers = new Map<BoardLayer, readonly { piece: BoardPiece; drawing: T }[]>();
+  private readonly units = new Map<number, { drawing: T; foot: BoardFoot }>();
+
+  replaceLayer(layer: BoardLayer, entries: readonly { piece: BoardPiece; drawing: T }[]): readonly T[] {
+    const old = this.layers.get(layer) ?? [];
+    this.layers.set(layer, entries);
+    return old.map(({ drawing }) => drawing);
+  }
+
+  placeUnit(id: number, drawing: T, x: number, y: number, foot: BoardFoot = CELL_FOOT): void {
+    this.units.set(id, { drawing, foot: { x: x + foot.x, y: y + foot.y } });
+  }
+
+  removeUnit(id: number): void { this.units.delete(id); }
+
+  ordered(layer: BoardLayer): readonly T[] {
+    const fixed = (this.layers.get(layer) ?? []).filter(({ piece }) => !piece.foot).map(({ drawing }) => drawing);
+    if (layer !== 'units') return fixed;
+    const standing: Array<{ drawing: T; foot: BoardFoot; layer: number; index: number }> = [];
+    for (const [source, entries] of this.layers) {
+      entries.forEach(({ piece, drawing }, index) => {
+        if (piece.foot) standing.push({ drawing, foot: { x: piece.x + piece.foot.x, y: piece.y + piece.foot.y },
+          layer: BOARD_LAYERS.indexOf(source), index });
+      });
+    }
+    for (const [id, unit] of this.units) standing.push({ ...unit, layer: BOARD_LAYERS.indexOf('units'), index: id });
+    standing.sort((a, b) => a.foot.y - b.foot.y || a.foot.x - b.foot.x || a.layer - b.layer || a.index - b.index);
+    return [...fixed, ...standing.map(({ drawing }) => drawing)];
+  }
+
+  clear(): void { this.layers.clear(); this.units.clear(); }
+}
+
+/** Still renderers use exactly the same standing-depth contract as live surfaces. */
+export function boardScenePieces(layers: Partial<Record<BoardLayer, readonly BoardPiece[]>>): readonly BoardPiece[] {
+  const order = new BoardDepthOrder<BoardPiece>();
+  for (const layer of BOARD_LAYERS) order.replaceLayer(layer, (layers[layer] ?? []).map((piece) => ({ piece, drawing: piece })));
+  return BOARD_LAYERS.flatMap((layer) => order.ordered(layer));
 }
 
 /** Markup with no place of its own, as the one piece a layer is made of. */
@@ -354,6 +403,8 @@ export const boardStripMarkup = (strip: BoardStrip, frame = 0): string =>
  */
 export interface BoardPicture {
   readonly body: string;
+  /** Local contact for actor depth; cell-shaped figures use CELL_FOOT by default. */
+  readonly foot?: BoardFoot;
   readonly strip?: BoardStrip | undefined;
   readonly parts?: readonly BoardPart[];
   /**

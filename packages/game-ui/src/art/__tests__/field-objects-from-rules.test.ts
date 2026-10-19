@@ -51,7 +51,7 @@ describe('nothing the rules track is invisible', () => {
       const state = standing(definition);
       for (const art of [GENERIC_ART, CANDIDATE_01_ART]) {
         const presentation = art.presentation;
-        const markup = presentation.structure(state, definition, '#d8483f')
+        const markup = presentation.structure(state, definition, '#d8483f')?.markup
           ?? structureFromRules(state, definition, '#d8483f');
         expect(markup.length, `${art === GENERIC_ART ? 'generic' : 'candidate-01'} / ${definition.id}`)
           .toBeGreaterThan(40);

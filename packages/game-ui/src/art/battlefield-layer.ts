@@ -1,10 +1,10 @@
 import type { ArtDirection } from './direction';
 import type { ContentCatalog, GameMap, TacticalGrid, TerrainDef } from '@empire/battle-engine';
-import { boardPiecesMarkup, wholeField, type BoardPiece } from './board-surface';
+import { boardPiecesMarkup, boardScenePieces, wholeField, type BoardPiece } from './board-surface';
 import { edgeLine, type BoardLayout } from './board-decorations';
 import { createSceneViewport, type SceneLayers } from './scene-viewport';
 import { paintsCells } from './battle-presentation';
-import { terrainMarkup } from './terrain';
+import { terrainPicture } from './terrain';
 import { TILE } from './board-surface';
 
 const featureColor = {
@@ -110,15 +110,16 @@ export function terrainSwatch(canvas: MapCanvas, terrain: TerrainDef, ownerColor
     directionalCover: [],
   };
   const scene = mapScenePieces(canvas, SWATCH_LEVEL, map);
-  const tile = terrainMarkup(canvas.art, terrain, {
+  const tile = terrainPicture(canvas.art, terrain, {
     x: 0,
     y: 0,
     ownerColor,
     linked: { n: false, e: false, s: false, w: false },
   });
   return `<svg viewBox="0 -14 32 46" width="32" height="46" shape-rendering="crispEdges">`
-    + `${boardPiecesMarkup(scene.ground)}${tile}`
-    + `${boardPiecesMarkup([...scene.underUnits, ...scene.overUnits])}</svg>`;
+    + boardPiecesMarkup(boardScenePieces({ ground: scene.ground,
+      terrain: tile.markup ? [{ ...tile, x: 0, y: 0 }] : [], scenery: scene.underUnits, foreground: scene.overUnits }))
+    + '</svg>';
 }
 
 /**

@@ -4,15 +4,16 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { idx, mapFromLevel } from '@empire/battle-engine';
-import { boardPictureMarkup, boardPiecesMarkup, TILE } from '@empire/game-ui';
+import { boardPictureMarkup, boardPiecesMarkup, boardScenePieces, terrainLayerPieces, squareLayout, CELL_FOOT, TILE } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK, candidate01Level } from '@empire/story-candidate-01';
 import { candidate01MapSceneryLayers } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-scene';
-import { candidate01TerrainMarkup, candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
+import { candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from '../../packages/story-candidate-01/src/presentation/candidate-01-field-material';
 import { CANDIDATE_01_WATER_MATERIAL } from '../../packages/story-candidate-01/src/presentation/candidate-01-water-material';
 import { CANDIDATE_01_MAP_STRUCTURE_ART } from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
 import { candidate01Asset } from '../../packages/story-candidate-01/src/presentation/candidate-01-assets';
+import { CANDIDATE_01_ART } from '../../packages/story-candidate-01/src/presentation';
 import { candidateReviewViewport } from './candidate_review_viewport';
 
 const root = resolve(import.meta.dirname, '../..');
@@ -25,15 +26,11 @@ const before = JSON.stringify(map);
 const viewport = candidateReviewViewport(map);
 const layers = candidate01MapSceneryLayers({ content, levelId: level.id, map, viewport });
 const colors: Readonly<Record<number, string>> = { 1: '#4d86b8', 2: '#a8493f', 3: '#998c6e' };
-const buildings = [];
+const buildings = terrainLayerPieces({ art: CANDIDATE_01_ART, layout: squareLayout, content }, map, (id) => colors[id], level.id);
 const buildingRegistrations = [];
 for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
   const tile = idx(map, x, y);
-  const markup = candidate01TerrainMarkup(map.tiles[tile], {
-    x, y, ownerColor: colors[map.owners[tile]], linked: { n: false, e: false, s: false, w: false },
-  });
-  if (markup) {
-    buildings.push({ x: x * TILE, y: y * TILE, markup });
+  if (CANDIDATE_01_MAP_STRUCTURE_ART[map.tiles[tile]]) {
     const topic = CANDIDATE_01_MAP_STRUCTURE_ART[map.tiles[tile]]!;
     const record = candidate01Asset(topic);
     buildingRegistrations.push({ topic, cell: [x,y], owner: map.owners[tile],
@@ -45,7 +42,7 @@ for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
 const units = [...level.units].sort((a,b) => a.y-b.y || a.x-b.x).map((unit) => {
   const picture = candidate01UnitPicture(unit.unit, colors[unit.owner] ?? '#998c6e');
   if (!picture) throw new Error(`missing unit picture: ${unit.unit}`);
-  return { x: unit.x * TILE, y: unit.y * TILE, markup: boardPictureMarkup(picture) };
+  return { x: unit.x * TILE, y: unit.y * TILE, markup: boardPictureMarkup(picture), foot: picture.foot ?? CELL_FOOT };
 });
 const width = map.width * TILE;
 const height = map.height * TILE;
@@ -53,7 +50,8 @@ const field = candidate01FieldMaterialPieces(width, height);
 const sampled = waterReview ? layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"')) : field;
 const world = boardPiecesMarkup(sampled);
 const crop = waterReview ? [288, 96, 128, 256] : [448, 64, 256, 256];
-const upper = [...layers.ground.slice(field.length), ...buildings, ...layers.underUnits, ...units, ...layers.overUnits];
+const upper = boardScenePieces({ ground: layers.ground.slice(field.length), terrain: buildings,
+  scenery: layers.underUnits, units, foreground: layers.overUnits });
 const integration = boardPiecesMarkup([...field, ...upper]);
 // Preserve the 512-unit/native-2x alternative without changing source pixels.
 // Only this diagnostic changes placement scale; the selected runtime stays broad.
@@ -89,12 +87,16 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   waterAndBridgeCells: map.tiles.flatMap((id, index) => id === 'water' || id === 'bridge' ? [[index % map.width, Math.floor(index / map.width)]] : []),
   layerCounts: Object.fromEntries(Object.entries(layers).map(([key, value]) => [key, value.length])),
   buildingCount: buildings.length, unitCount: units.length, buildingRegistrations,
+  standingCount: upper.filter((piece) => piece.foot).length,
+  standingOrder: upper.filter((piece) => piece.foot).map((piece) => ({ origin: [piece.x, piece.y],
+    foot: [piece.x + piece.foot!.x, piece.y + piece.foot!.y],
+    kind: buildings.includes(piece) ? 'building' : units.includes(piece as typeof units[number]) ? 'unit' : 'scenery' })),
   horizontalCrossing: CANDIDATE_01_HORIZONTAL_CROSSING,
   crossingPlacements: layers.underUnits.filter((piece) => piece.markup.includes(CANDIDATE_01_HORIZONTAL_CROSSING.href)),
   connectorBinding: JSON.parse(readFileSync(resolve(root, 'tools/art/connector-overrides.json'), 'utf8')),
-  integrationOrder: 'ground, terrain buildings, under-unit scenery, units sorted by foot y/x, over-unit scenery',
+  integrationOrder: 'fixed ground/light/bridge layers, then buildings/scenery/actors by shared world foot y/x; foreground above',
   mapSha256: createHash('sha256').update(before).digest('hex'), gameplayTopologyChanged: false,
-  provenance: 'candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions',
+  provenance: 'candidate01MapSceneryLayers + terrainLayerPieces + candidate01UnitPicture + shared BoardDepthOrder; no SVG material substitutions',
   cropWorldBox: crop,
   samplingComparison: waterReview ? { selectedRuntimePeriod: CANDIDATE_01_WATER_MATERIAL.logicalSize,
     status: process.env.GROUND_REVIEW_STATUS ?? '512 selected at native2x; 128 ribbon/plane repeat evidence retained separately' } : { selectedRuntimePeriod: CANDIDATE_01_FIELD_MATERIAL.logicalSize,
@@ -106,6 +108,6 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
     densityWarning: 'Display 2x of the selected broad field is enlarged existing art, not new native2x source detail' },
   limitations: ['Static initial unit poses, no animation, browser or GPU playback',
     'Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting',
-    'Legacy shore, vertical crossings, non-base surfaces and decals remain visible; buildings may overlap'],
+    'Legacy shore, vertical crossings, non-base surfaces and decals remain visible; footpoint occlusion may hide actors behind tall canopies; no tactical fade is applied'],
 }, null, 2) + '\n');
 console.log(output);

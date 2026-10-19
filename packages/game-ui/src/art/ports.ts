@@ -1,5 +1,5 @@
 import type { TerrainId, UnitTypeId, WeaponId } from '@empire/battle-engine';
-import type { BoardPicture } from './board-surface';
+import type { BoardImage, BoardPicture } from './board-surface';
 
 /**
  * Everything a painter may know about one cell it is asked to draw.
@@ -50,7 +50,7 @@ export interface ArtProvider {
   id: string;
   unitPicture?(type: UnitTypeId, team: string): BoardPicture | null;
   unitIcon?(type: UnitTypeId, team: string, size: number): string | null;
-  terrainMarkup?(id: TerrainId, context: TileContext): string | null;
+  terrainPicture?(id: TerrainId, context: TileContext): BoardImage | null;
   portraitMarkup?(type: UnitTypeId, team: string): string | null;
   iconMarkup?(topic: string, size?: number, className?: string): string | null;
   abilityIcon?(ability: string): string | null;

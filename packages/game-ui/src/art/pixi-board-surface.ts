@@ -2,7 +2,7 @@ import { autoDetectRenderer, ColorMatrixFilter, Container, Sprite, Texture } fro
 import {
   drawableBody,
   DrawingPlacement,
-  UnitDepthOrder,
+  BoardDepthOrder,
   GRID_ALPHA,
   BOARD_LAYERS,
   type BoardDrawing,
@@ -304,7 +304,7 @@ export class PixiBoardSurface implements BoardSurface {
   private readonly world = new Container();
   private readonly layers: Record<BoardLayer, Container>;
   private readonly units = new Map<number, PixiDrawing>();
-  private readonly unitDepth = new UnitDepthOrder();
+  private readonly depth = new BoardDepthOrder<Container>();
   /** The same timeline the DOM backend uses, driving textures instead of attributes. */
   private readonly drawingTools: DrawingTools;
   private serial = 0;
@@ -347,25 +347,28 @@ export class PixiBoardSurface implements BoardSurface {
   }
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
-    const host = this.layers[layer];
-    host.removeChildren().forEach((child) => child.destroy({ children: true }));
-    for (const piece of pieces) {
-      // A layer's pictures are still, so none of them needs a place on the timeline.
+    const entries = pieces.map((piece) => {
       const drawing = this.drawing(new Container(), 0, { body: piece.markup });
       drawing.place(piece.x, piece.y);
-      host.addChild(drawing.root);
-    }
+      return { piece, drawing: drawing.root };
+    });
+    this.depth.replaceLayer(layer, entries).forEach((drawing) => drawing.destroy({ children: true }));
+    for (const drawing of this.depth.ordered(layer)) this.layers[layer].addChild(drawing);
+    if (layer !== 'units') this.sortStanding();
+  }
+
+  private sortStanding(): void {
+    for (const drawing of this.depth.ordered('units')) this.layers.units.addChild(drawing);
   }
 
   unit(id: number, draw: () => BoardPicture): BoardDrawing {
     const existing = this.units.get(id);
     if (existing) return existing;
 
-    const drawing = this.drawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, draw(), (x, y) => {
-      this.unitDepth.place(id, x, y).forEach((ordered, index) => {
-        const unit = this.units.get(ordered);
-        if (unit) this.layers.units.setChildIndex(unit.root, index);
-      });
+    const picture = draw();
+    const drawing = this.drawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, picture, (x, y) => {
+      this.depth.placeUnit(id, drawing.root, x, y, picture.foot);
+      this.sortStanding();
     });
     // The badges part is the surface's own, exactly as in the SVG tree: it is what
     // `fill('badges', …)` replaces every render, and it must not mirror with the
@@ -373,6 +376,7 @@ export class PixiBoardSurface implements BoardSurface {
     drawing.addPart('badges', '');
     this.layers.units.addChild(drawing.root);
     this.units.set(id, drawing);
+    drawing.place(0, 0);
     return drawing;
   }
 
@@ -385,7 +389,7 @@ export class PixiBoardSurface implements BoardSurface {
     if (!drawing) return;
     drawing.destroy();
     this.units.delete(id);
-    this.unitDepth.remove(id);
+    this.depth.removeUnit(id);
   }
 
   drawnUnits(): number[] {
@@ -450,7 +454,7 @@ export class PixiBoardSurface implements BoardSurface {
     this.drawingTools.animations.dispose();
     this.tools.painter.detach(this.scene);
     this.units.clear();
-    this.unitDepth.clear();
+    this.depth.clear();
     this.scene.destroy({ children: true });
   }
 

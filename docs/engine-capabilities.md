@@ -324,13 +324,15 @@
 | 一场战斗怎么存下来、又怎么被拒绝 | `BattleSave` + `SAVE_CHECKS`（七条具名检查） |
 | 一份存档是不是当前版本 | `readCurrentDocument`（战役与战斗共用） |
 | 一个原始字段够不够格被读 | `storedField` + `requireStoredShape`（战役与战斗共用；两份格式各自只拥有拒绝的措辞） |
-| 一份美术在画什么格子 | `TileContext`（端口自己的词汇，一处声明；`terrainMarkup` 的参数） |
+| 一份美术在画什么格子 | `TileContext`（端口自己的词汇，一处声明；`terrainPicture` 的参数） |
 | 一格有多大 | `TILE` / `TILE_MIDDLE`（`board-surface.ts`；端口的坐标单位，以前是三个名字四处声明） |
 | 哪些地形标签算「路」「门槛」「障碍」 | `GROUND_TAGS` + `taggedGround`（`art/ports.ts`；两个不同的问题共用这套词汇） |
 | 一格地面是什么做的 | `candidateMaterial`（`candidate-01-terrain-materials.ts`；按地形 id 说材质，标签兜底） |
 | 一格地面画成什么样才不接出格线 | `RuntimeTileFit`（`bleed` 治光栅缝，`inset` 治图里烤进去的边框） |
 | 一个单位站在格子里的哪个位置 | `UNIT_FOOTING`（`art/shading.ts`；阵营环和朝向标记共用这一份几何） |
-| 定居点周围放什么 | `CANDIDATE_SETTLEMENT_LIFE`（景物层在地形层之上，所以生活道具放在建筑旁边的空地） |
+| 定居点周围放什么 | `CANDIDATE_SETTLEMENT_LIFE`（生活道具放在建筑旁边的空地，脚点决定与建筑的前后关系） |
+| 站立图片与移动单位谁遮挡谁 | `BoardDepthOrder`（`BoardPiece.foot` 加放置原点；按 y/x、来源层、稳定序号排序；SVG、Pixi、编辑器和静态复核共用） |
+| 画在格内的身体落脚在哪 | `CELL_FOOT`（`board-surface.ts`；角色和建筑的标准接触点，不是精灵左上角） |
 | 岸边和水里画什么 | `CANDIDATE_SHORE` / `CANDIDATE_RIVER_STONES`（不是任何地形的材质，是地面挨着水时会发生的事） |
 | 一座桥怎么画 | `crossing`（一段桥格一份 96 单位模件，按 `lying` 以自身中心落位，不是按脚） |
 | 一格在不在盘上、它在数组的哪一位 | `inBounds` / `idx`（`grid.ts`；以前各有七处和九处手写） |

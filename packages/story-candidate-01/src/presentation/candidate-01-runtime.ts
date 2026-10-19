@@ -22,11 +22,13 @@ import {
 } from './candidate-01-bindings';
 import {
   boardPictureMarkup,
+  CELL_FOOT,
   escapeAttr as attr,
   runtimeAtlasCellMarkup,
   runtimeUnitPicture,
   shade,
   tileGaugeBar,
+  type BoardImage,
   type BoardPicture,
   type RuntimeCellAtlas,
   type TileContext,
@@ -126,10 +128,10 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
   const atlas = cellAtlas(record);
   const anchor = record.anchor ?? [atlas.cellWidth / 2, atlas.cellHeight - 1];
   const scale = record.presentationScale ?? 1;
-  const x = 16 - anchor[0] * scale;
-  const y = 31 - anchor[1] * scale;
+  const x = CELL_FOOT.x - anchor[0] * scale;
+  const y = CELL_FOOT.y - anchor[1] * scale;
   const owner = ownerColor ? ownerBanner(ownerColor) : '';
-  return `<g data-candidate-art="structure" data-presentation-scale="${scale}" transform="translate(${x} ${y}) scale(${scale})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
+  return `<g data-candidate-art="structure" transform="translate(${x} ${y}) scale(${scale})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
 }
 
 export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {
@@ -169,13 +171,17 @@ export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number
  * painter's way of saying the ground is somebody else's business. (Not `null`:
  * that means "no opinion" and lets the generic painter draw a tile underneath.)
  */
-export function candidate01TerrainMarkup(id: TerrainId, ctx: TileContext): string {
+export function candidate01TerrainPicture(id: TerrainId, ctx: TileContext): BoardImage {
   const structureTopic = CANDIDATE_01_MAP_STRUCTURE_ART[id];
-  if (!structureTopic) return '';
+  if (!structureTopic) return { markup: '' };
   const record = candidate01Asset(structureTopic);
   const frame = structureFrame(record, ctx.ownerColor !== undefined ? 'captured' : 'normal');
-  return structureAssetMarkup(record, frame, ctx.ownerColor);
+  return { markup: structureAssetMarkup(record, frame, ctx.ownerColor), foot: CELL_FOOT };
 }
+
+/** Markup-only previews project the same picture that supplies scene depth. */
+export const candidate01TerrainMarkup = (id: TerrainId, ctx: TileContext): string =>
+  candidate01TerrainPicture(id, ctx).markup;
 
 /** Render a destructible battle structure without leaking campaign art into the engine model. */
 export function candidate01StructureMarkup(
@@ -190,6 +196,12 @@ export function candidate01StructureMarkup(
   const frame = structureFrame(record, visualState);
   const ratio = gaugeRatio(state.hp, def.maxHp);
   return `${structureAssetMarkup(record, frame, ownerColor)}${tileGaugeBar(ratio)}`;
+}
+
+/** The destructible structure uses the same contact as its painted frame. */
+export function candidate01StructurePicture(state: StructureState, def: StructureDef, ownerColor?: string): BoardImage | null {
+  const markup = candidate01StructureMarkup(state, def, ownerColor);
+  return markup === null ? null : { markup, foot: CELL_FOOT };
 }
 
 /** Illustrated cover art complements, but never replaces, the directional rules overlay. */

@@ -8,7 +8,7 @@ import {
   idx,
   inBounds,
 } from '@empire/battle-engine';
-import type { BoardPiece } from './board-surface';
+import type { BoardImage, BoardPiece } from './board-surface';
 import { PAL } from './palette';
 import { GROUND_TAGS, taggedGround, type TileContext } from './ports';
 import { terrainFromRules } from './terrain-from-rules';
@@ -300,16 +300,20 @@ const cellClipDefinition = (layout: TerrainLayout): string =>
  * `painters[id] ?? painters.plain`, which answered every unfamiliar terrain with
  * a meadow.
  */
-export function terrainMarkup(art: ArtDirection, terrain: TerrainDef, ctx: TileContext): string {
-  const runtime = art.resolve((provider) => provider.terrainMarkup?.(terrain.id, ctx));
+export function terrainPicture(art: ArtDirection, terrain: TerrainDef, ctx: TileContext): BoardImage {
+  const runtime = art.resolve((provider) => provider.terrainPicture?.(terrain.id, ctx));
   // Empty is an answer: a painted scene that has drawn its own ground asks for no
   // tile here. This used to be `if (runtime)`, so the only way to say that was to
   // return something non-empty and invisible — and the campaign did, one empty
   // group per cell, 8,352 nodes of nothing on the largest map.
   if (runtime !== null) return runtime;
   const painter = painters[terrain.id];
-  return painter ? painter(ctx) : terrainFromRules(terrain, ctx);
+  return { markup: painter ? painter(ctx) : terrainFromRules(terrain, ctx) };
 }
+
+/** The markup-only projection used by icons and existing tile consumers. */
+export const terrainMarkup = (art: ArtDirection, terrain: TerrainDef, ctx: TileContext): string =>
+  terrainPicture(art, terrain, ctx).markup;
 
 /** True when the neighbour should visually connect to this tile. */
 function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, y: number): boolean {
@@ -361,11 +365,12 @@ export function terrainLayerPieces(
           w: links(content, map, id, x - 1, y),
         },
       };
-      const tile = terrainMarkup(art, content.terrains.get(id), ctx);
+      const tile = terrainPicture(art, content.terrains.get(id), ctx);
       // A cell nobody draws is not a piece, the same rule `wholeField` states.
-      if (!tile) continue;
+      if (!tile.markup) continue;
       pieces.push({
-        markup: clipped ? `<g clip-path="url(#${CELL_CLIP_ID})">${tile}</g>` : tile,
+        ...tile,
+        markup: clipped ? `<g clip-path="url(#${CELL_CLIP_ID})">${tile.markup}</g>` : tile.markup,
         ...layout.origin({ x, y }),
       });
     }

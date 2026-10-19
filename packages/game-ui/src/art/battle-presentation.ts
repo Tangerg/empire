@@ -7,7 +7,7 @@ import type {
   WeaponId,
 } from '@empire/battle-engine';
 import { SquareBoardDecorations, type BoardDecorations } from './board-decorations';
-import { wholeField, type BoardPicture } from './board-surface';
+import { wholeField, type BoardImage, type BoardPicture } from './board-surface';
 import { markerFromRules, structureFromRules } from './field-objects-from-rules';
 import type {
   SceneFrameMarkup,
@@ -73,7 +73,7 @@ export interface BattlePresentation {
    * invisible: `c01-15` asks the player to destroy a 500 HP structure whose type
    * the campaign's art has no topic for, and it was drawn as nothing at all.
    */
-  structure(state: StructureState, def: StructureDef, ownerColor?: string): string | null;
+  structure(state: StructureState, def: StructureDef, ownerColor?: string): BoardImage | null;
   /** A mark left on the ground, or `null` for no opinion. */
   marker(marker: BattlefieldMarker, ownerColor?: string): string | null;
   weaponFx(weapon: WeaponId): string | null;
@@ -152,7 +152,7 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   }),
   // The floor under every presentation, and therefore total: whatever a painted
   // scene declines is still drawn, from what the rules can see about it.
-  structure: structureFromRules,
+  structure: (state: StructureState, def: StructureDef, ownerColor?: string) => ({ markup: structureFromRules(state, def, ownerColor) }),
   marker: markerFromRules,
   weaponFx: () => null,
   effect: () => NO_PICTURE,

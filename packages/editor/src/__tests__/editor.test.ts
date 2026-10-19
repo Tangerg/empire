@@ -321,8 +321,8 @@ describe('a general editor knows no particular game', () => {
     new EditorApp(TEST_SETUP, opened()).mount(host);
 
     // A marker only the composed pack's art can produce: its buildings in the
-    // terrain layer, its atlas surfaces under them, its sprites in the palette.
-    expect(host.querySelector('.layer-terrain')!.innerHTML).toContain('data-runtime-raster');
+    // shared standing plane, its atlas surfaces under them, its sprites in the palette.
+    expect(host.querySelector('.layer-units [data-candidate-art="structure"]')).not.toBeNull();
     expect(host.querySelector('.layer-ground')!.innerHTML).toContain('surface-meadow');
     expect(host.querySelector('.palette')!.innerHTML).toContain('data-runtime-raster');
 

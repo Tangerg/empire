@@ -25,6 +25,19 @@ const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => 
 };
 
 describe('candidate-01 authored map scenery', () => {
+  it('declares contacts only for standing scenery and leaves every bridge and light on the ground', () => {
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
+    const before = JSON.stringify(map);
+    const layers = candidate01MapSceneryLayers(sceneContext('c01-02', map));
+    expect(layers.ground.every((piece) => piece.foot === undefined)).toBe(true);
+    const bridges = layers.underUnits.filter((piece) => piece.markup.includes('crossings-fortifications'));
+    expect(bridges).toHaveLength(3);
+    expect(bridges.every((piece) => piece.foot === undefined)).toBe(true);
+    expect(layers.underUnits.filter((piece) => piece.foot)).toHaveLength(41);
+    expect(layers.underUnits.filter((piece) => piece.foot).every((piece) => piece.foot!.x === 0 && piece.foot!.y === 0)).toBe(true);
+    expect(JSON.stringify(map)).toBe(before);
+  });
+
   it('applies each registered forest scale once while keeping its contact at the placement origin', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
     map.tiles.fill('forest');
