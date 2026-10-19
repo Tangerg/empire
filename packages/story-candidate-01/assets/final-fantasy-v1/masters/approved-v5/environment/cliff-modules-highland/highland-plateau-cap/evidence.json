@@ -1,0 +1,104 @@
+{
+  "asset": "highland-plateau-cap",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1196
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.953748
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    61,
+    119,
+    59,
+    50
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-plateau-cap-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-plateau-cap/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 15,
+  "original_cellOrder_token": "plateau-cap",
+  "qualified_original_slot": "cliff-modules-highland:15:plateau-cap",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE compact broad-base natural stacked-boulder formation. Follow the actual source plateau-cap pixels: several broad irregular flattened gray rock tiers step inward as they rise, culminating in one small rounded/polygonal top cap. Preserve about four visibly thick stepped courses of large joined stone slabs, the lower tiers wider than upper tiers, asymmetric slight offsets and a few subordinate basal rocks. It is a solid squat tiered cairn-like rocky mass, not a continuous flat plateau, a tall column bundle, pyramid building, stairway or second tower. A few large structural seams and broad matte planes replace dense cracks. Bare stone on upper tiers; only tiny original snow patches on lower foot stones and sparse dry olive basal scrub.",
+  "native_review": "Original single broad-base tiered boulder formation retained: several thick irregular flattened courses step inward toward a small rounded cap. Broad base and asymmetric offsets distinguish it from the column bundles and spire groups. The stack remains one solid natural mass, not a flat plateau, building or second tower. Small snow touches occur on basal rocks and a few subordinate ledges; one higher left ledge carries a small snow patch as a minor placement variation. Complete cap and full footing with broad matte rock facets.",
+  "source_foot_semantics": "projected whole-stack front basal baseline at the foreground rock/scrub group, separate from upper cap and tier centers",
+  "source_local_landmark_estimates_px": {
+    "top_cap_center": [
+      573,
+      195
+    ],
+    "upper_tier_center": [
+      628,
+      388
+    ],
+    "middle_tier_center": [
+      597,
+      614
+    ],
+    "lower_tier_center": [
+      648,
+      811
+    ],
+    "left_basal_contact": [
+      299,
+      1085
+    ],
+    "right_basal_contact": [
+      991,
+      1074
+    ],
+    "front_basal_contact": [
+      630,
+      1189
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-plateau-cap/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-fourth-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
