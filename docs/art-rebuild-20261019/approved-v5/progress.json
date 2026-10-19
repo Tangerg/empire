@@ -27,7 +27,7 @@
   },
   "authoredFourPoseBundles": 3,
   "authoredThreeStateBundles": 3,
-  "formalRuntimeBoundTopics": 9,
+  "formalRuntimeBoundTopics": 13,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -82,6 +82,30 @@
       "export": "one shared scale; captured whole-canvas offset corrects authored foundation displacement; native semantic and alpha review passed",
       "runtimeBinding": "canonical 172x172 geometry and registered pivot; existing HD resolver points to approved sheet",
       "liveGame": "pending"
+    },
+    "C01-BPROP-AFTERMATH-2": {
+      "raw": "native chunky master preserved with original identity evidence",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-AFTERMATH-3": {
+      "raw": "native chunky master preserved with original identity evidence",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-EVIDENCE-1": {
+      "raw": "native chunky master preserved with original identity evidence",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-LOGISTICS-3": {
+      "raw": "native chunky master preserved with original identity evidence",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "existing canonical and HD resolver reference new bytes",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -93,28 +117,16 @@
     }
   },
   "environmentCells": {
-    "oak-ancient": {
-      "raw": "preserved",
-      "export": "pending registered atlas",
-      "runtimeBinding": "pending",
-      "liveGame": "pending"
-    },
-    "mixed-forest-dense": {
-      "raw": "preserved",
-      "export": "pending registered atlas",
-      "runtimeBinding": "pending",
-      "liveGame": "pending"
-    },
-    "fern-bed": {
-      "raw": "preserved",
-      "export": "pending registered atlas",
-      "runtimeBinding": "pending",
-      "liveGame": "pending"
-    },
-    "boulder-large": {
-      "raw": "preserved",
-      "export": "pending registered atlas",
-      "runtimeBinding": "pending",
+    "forest-temperate": {
+      "formalRuntimeBoundCells": [
+        "oak-ancient",
+        "mixed-forest-dense",
+        "fern-bed",
+        "boulder-large"
+      ],
+      "count": 4,
+      "export": "96/192 registered source contacts; unrelated atlas cells byte-identical",
+      "runtimeBinding": "manifest anchors and presentationScale consumed once by actual scenery renderer; offline native contact sheet reviewed",
       "liveGame": "pending"
     }
   },

@@ -1,0 +1,82 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "fullyTransparentPixels": 1128226,
+  "nearOpaquePixels": 427192,
+  "fullyOpaquePixels": 662,
+  "partialAlphaPixels": 444424,
+  "visibleBounds": [
+    66,
+    23,
+    1549,
+    992
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    69,
+    89,
+    1546,
+    938
+  ],
+  "edgeMax": 1,
+  "sha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-78d77322-7a9e-4da1-b5fc-e651ec74f265.png",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "masterTransform": "none; native output copied byte-for-byte",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/references/unit-spearman/source-board.png",
+    "/workspace/shared/empire-art-rebuild/references/unit-spearman/idle.png"
+  ],
+  "visualReview": "Black and white composites inspected: source knobbed kettle helmet, gray quilted torso, bluegray skirt, dark leather, huge gloves and boots, complete two-hand long spear, no shield. Thick dark contour and matte cel planes. No visible ground/background/halo. Body848px including helmet knob; pending coordinator scale review.",
+  "helmetTopSourceY": 89,
+  "lowestBootContourSourceY": 937,
+  "approxBodyHeightSourcePixels": 848,
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, last3rows sole contour mass centers. No image editing.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          390,
+          800,
+          670,
+          992
+        ],
+        "soleLowestContourY": 937,
+        "lowestThreeRowsXSpan": [
+          483,
+          575
+        ],
+        "soleBandCenterX": 528.9
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          780,
+          800,
+          1090,
+          992
+        ],
+        "soleLowestContourY": 933,
+        "lowestThreeRowsXSpan": [
+          924,
+          1006
+        ],
+        "soleBandCenterX": 964.6
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      746.75,
+      935.0
+    ]
+  }
+}

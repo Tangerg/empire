@@ -1,0 +1,70 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "fullyTransparentPixels": 1138691,
+  "nearOpaquePixels": 410992,
+  "fullyOpaquePixels": 568,
+  "partialAlphaPixels": 434053,
+  "visibleBounds": [
+    42,
+    19,
+    1574,
+    992
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    45,
+    120,
+    1571,
+    907
+  ],
+  "edgeMax": 1,
+  "sha256": "54acfce08c976e253b53bb2c65cbd8f33be8c3e9a39223eff994709e802c63a0",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-abee06e1-d7a3-4495-9181-b8eadbfa1b55.png",
+  "generationTool": "built-in image_gen, recovered prior-worker output",
+  "masterTransform": "none; native output copied byte-for-byte",
+  "promptProvenance": "Not yet confirmed; saved candidate prompts exist in pose folders. Awaiting coordinator evidence before claiming an exact generating prompt.",
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, last3rows sole contour mass centers. No master editing.",
+    "boots": [
+      {
+        "inspectionROI": [
+          140,
+          730,
+          460,
+          960
+        ],
+        "soleLowestContourY": 906,
+        "lowestThreeRowsXSpan": [
+          252,
+          333
+        ],
+        "soleBandCenterX": 292.5
+      },
+      {
+        "inspectionROI": [
+          665,
+          730,
+          1020,
+          960
+        ],
+        "soleLowestContourY": 905,
+        "lowestThreeRowsXSpan": [
+          823,
+          906
+        ],
+        "soleBandCenterX": 864.9
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      578.7,
+      905.5
+    ]
+  }
+}
