@@ -4,14 +4,14 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 317,
+    "formalBound": 318,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 36,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 3,
+      "mission-unit": 4,
       "narrative-static": 7,
       "skill": 48,
       "status": 24
@@ -2322,14 +2322,22 @@
       "label": "边境农户",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-border-farmer.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-border-farmer.png",
+      "stageEvidence": {
+        "raw": "four native transparent older-woman farmer poses, source seed pouch and hoe hands preserved, rejected hand-swap retained",
+        "export": "one shared44/939 scale, measured feet,2px transparent padding; native quartet and actual exported frames reviewed",
+        "runtimeBinding": "canonical/HD resolver, two actual c01-01 idle ambient placements. Complete scene preserves250 other named pieces, actors/rules/viewport; registered anchor-based flip corrected and regression-tested. Existing village/prop occlusion remains; no domain actor binding",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-BRIDGE-LABORER",

@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-b/master.png"
+    },
+    "scale": 0.046858359957401494,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      780.75,
+      975
+    ],
+    "sourceFeet": {
+      "idle": [
+        780.75,
+        975
+      ],
+      "walk-a": [
+        766.5,
+        958
+      ],
+      "carry-or-work": [
+        773.0,
+        946
+      ],
+      "walk-b": [
+        754.0,
+        967
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.6677316293929713,
+        0.7965921192758254
+      ],
+      "carry-or-work": [
+        0.36315228966986157,
+        1.3588924387646433
+      ],
+      "walk-b": [
+        1.25346112886049,
+        0.37486687965921195
+      ]
+    },
+    "registrationLimit": 2,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original older female farmer with seed pouch and hoe in source hands; shared adult44 scale; actual2 ambient idle consumers in c01-01, no domain unit binding."
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    44.584664536741215,
+    49.68690095846646
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5679,
+        "nearOpaquePixels": 820,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          6,
+          66,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22808,
+        "nearOpaquePixels": 3396,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          11,
+          132,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-a/master.png",
+      "registrationOffset": [
+        0.6677316293929713,
+        0.7965921192758254
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "0599431a4c21ad957258efd015d40b41d2dfc66117581983e3341d53c8455d34",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5656,
+        "nearOpaquePixels": 831,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          6,
+          66,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-a/master.png",
+      "registrationOffset": [
+        0.6677316293929713,
+        0.7965921192758254
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "0599431a4c21ad957258efd015d40b41d2dfc66117581983e3341d53c8455d34",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22747,
+        "nearOpaquePixels": 3412,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          13,
+          132,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/carry-or-work/master.png",
+      "registrationOffset": [
+        0.36315228966986157,
+        1.3588924387646433
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "2f85e93ccf0d61799be8f15dcfd07bd4f492aa8a270fc727536c7b697082776f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5686,
+        "nearOpaquePixels": 802,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          7,
+          67,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/carry-or-work/master.png",
+      "registrationOffset": [
+        0.36315228966986157,
+        1.3588924387646433
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "2f85e93ccf0d61799be8f15dcfd07bd4f492aa8a270fc727536c7b697082776f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22881,
+        "nearOpaquePixels": 3331,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          13,
+          133,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-b/master.png",
+      "registrationOffset": [
+        1.25346112886049,
+        0.37486687965921195
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "364eb6d39b98d4bad9bfa5a52dff4f6d4f22c44b91261b3c32c1da47632fa5b1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5718,
+        "nearOpaquePixels": 778,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          6,
+          67,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/walk-b/master.png",
+      "registrationOffset": [
+        1.25346112886049,
+        0.37486687965921195
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "364eb6d39b98d4bad9bfa5a52dff4f6d4f22c44b91261b3c32c1da47632fa5b1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22990,
+        "nearOpaquePixels": 3210,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          12,
+          134,
+          99
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

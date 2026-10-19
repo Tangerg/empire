@@ -1,0 +1,43 @@
+{
+  "status": "Native source quartet passes identity, geometry, hand/prop, pose semantics and three-background QA; awaiting coordinator integration",
+  "topicId": "C01-MISSION-BORDER-FARMER",
+  "scale": 0.046858359957401494,
+  "bodyReferenceSourcePixels": 939,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "Idle max1; other selected poses0. All have zero silhouette alpha>1 perimeter pixels.",
+  "sourceCanvas": [
+    1586,
+    993
+  ],
+  "paddingTolerance": 2,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 1.3588924387646433,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Older worried warm-tan woman with taupe chin-tied headscarf, beige patched dress/tunic, brown waist tie, trousers and huge boots. Screen-left patched-sleeve hand holds tied seed pouch; screen-right plain-sleeve hand holds short wooden-handled bent-blade hoe. Both boots planted.",
+    "walk-a": "Front screen-right boot heel-first with toe raised and dark sole visible; rear screen-left boot flat. Seed pouch swings back while staying in the original patched-sleeve hand; hoe stays in original opposite hand.",
+    "carry-or-work": "Distinct noncombat seed-pouch check: patched-sleeve screen-left hand lifts pouch near chest/waist; eyes glance down toward it. Plain-sleeve screen-right hand lowers the same hoe outward, blade safely down. Both boots planted. Corrected generation preserves source physical hands.",
+    "walk-b": "Opposite contacts from walk-a: front screen-right foot flat and weight-bearing; rear screen-left heel raised and knee bent, toe contacting behind her. Pouch swings forward. Clothing, tool, hand assignment and camera remain unchanged."
+  },
+  "rejections": [
+    {
+      "path": "carry-or-work/attempt-01/raw.png",
+      "reason": "Swapped source physical prop hands. Rejected; preserved raw, exact prompt, request, source metadata and rejection reason."
+    }
+  ],
+  "currentRuntimeRole": "Two c01-01 idle-only ambient placements. No domain actor binding or combat behavior.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-native44-three-backgrounds-3x.png",
+    "qa-sequence.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png"
+  ]
+}

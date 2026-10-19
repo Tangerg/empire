@@ -192,7 +192,7 @@ function topicPlacementPiece(placement: CandidateEnvironmentPlacement): BoardPie
   const x = -anchor[0] * scale;
   const y = -anchor[1] * scale;
   const transform = placement.flip
-    ? `translate(${(x + frameWidth * scale).toFixed(3)} ${y.toFixed(3)}) scale(-${scale} ${scale})`
+    ? `translate(${(anchor[0] * scale).toFixed(3)} ${y.toFixed(3)}) scale(-${scale} ${scale})`
     : `translate(${x.toFixed(3)} ${y.toFixed(3)}) scale(${scale})`;
   const figure = frames > 1
     ? runtimeAtlasCellMarkup({ href: record.url, cellWidth: frameWidth, cellHeight: frameHeight, columns: frames, rows: 1 }, 0)

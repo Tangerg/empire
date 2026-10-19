@@ -3,7 +3,7 @@ from PIL import Image,ImageDraw
 import numpy as np,json,hashlib
 B=Path(__file__).parent
 POSES=['idle','walk-a','carry-or-work','walk-b']
-BOOT_SPLITS={'idle':760,'walk-a':760,'carry-or-work':760,'walk-b':760}
+BOOT_SPLITS={'idle':760,'walk-a':760,'carry-or-work':760,'walk-b':700}
 COLORS={'white':(255,255,255),'black':(16,16,16),'scene':(114,128,86)}
 for p in POSES:
  d=B/p

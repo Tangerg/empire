@@ -1,0 +1,84 @@
+{
+  "changedPieces": [
+    {
+      "before": {
+        "sourceId": "scenery:153",
+        "sourceImage": "mission-border-farmer.png",
+        "cellIndex": null,
+        "transform": "translate(-11.200 -32.900) scale(0.7)",
+        "opacity": "0.9",
+        "origin": [
+          368,
+          308.8
+        ],
+        "worldFoot": [
+          368,
+          308.8
+        ]
+      },
+      "after": {
+        "sourceId": "scenery:153",
+        "sourceImage": "mission-border-farmer@2x.png",
+        "cellIndex": null,
+        "transform": "translate(-31.209 -34.781) scale(0.7)",
+        "opacity": "0.9",
+        "origin": [
+          368,
+          308.8
+        ],
+        "worldFoot": [
+          368,
+          308.8
+        ]
+      }
+    },
+    {
+      "before": {
+        "sourceId": "scenery:154",
+        "sourceImage": "mission-border-farmer.png",
+        "cellIndex": null,
+        "transform": "translate(10.880 -31.960) scale(-0.68 0.68)",
+        "opacity": "0.88",
+        "origin": [
+          524.8,
+          324.8
+        ],
+        "worldFoot": [
+          524.8,
+          324.8
+        ]
+      },
+      "after": {
+        "sourceId": "scenery:154",
+        "sourceImage": "mission-border-farmer@2x.png",
+        "cellIndex": null,
+        "transform": "translate(30.318 -33.787) scale(-0.68 0.68)",
+        "opacity": "0.88",
+        "origin": [
+          524.8,
+          324.8
+        ],
+        "worldFoot": [
+          524.8,
+          324.8
+        ]
+      }
+    }
+  ],
+  "unchangedNamedPieces": 250,
+  "unchangedContracts": [
+    "viewport",
+    "unitCount",
+    "buildingCount",
+    "actors",
+    "standingDrawOrder",
+    "sourceLayerCounts",
+    "displayedLayerCounts",
+    "stateSha256"
+  ],
+  "nativeIdleConsumers": 2,
+  "allOtherMissionsUnchanged": true,
+  "mirrorFix": "Flip about registered anchor rather than full-canvas centre; old formula shifted non-centred source contact10.084856logical pixels. Guard failed first, exact anchor transform now passes. Only flipped topic placement in all16scenes is this farmer.",
+  "liveGame": "pending",
+  "limits": "initial offline complete scene only; village structures/props still cause local occlusion, no claim every ambient figure is unobstructed"
+}

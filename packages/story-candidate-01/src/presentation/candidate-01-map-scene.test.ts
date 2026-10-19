@@ -14,6 +14,7 @@ import { CANDIDATE_01_ENVIRONMENT, candidate01EnvironmentScene } from './candida
 import { boardPiecesMarkup, createSceneViewport, type BoardPiece } from '@empire/game-ui';
 import { CANDIDATE_01_HORIZONTAL_CROSSING } from './candidate-01-crossing';
 import { candidate01FieldMaterialPieces } from './candidate-01-field-material';
+import { candidate01Asset } from './candidate-01-assets';
 
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
@@ -26,6 +27,28 @@ const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => 
 };
 
 describe('candidate-01 authored map scenery', () => {
+  it('mirrors authored topic sprites about their registered contact, not their canvas centre', () => {
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
+    const before = JSON.stringify(map);
+    const placements = candidate01EnvironmentScene('c01-01')!.placements.filter(p => p.topicId === 'C01-MISSION-BORDER-FARMER');
+    const pieces = candidate01MapSceneryLayers(sceneContext('c01-01', map)).underUnits.filter(p => p.markup.includes('mission-border-farmer'));
+    const asset = candidate01Asset('C01-MISSION-BORDER-FARMER');
+    expect(placements).toHaveLength(2);
+    expect(pieces).toHaveLength(2);
+    const anchor = asset.anchor!;
+    expect(anchor[0]).not.toBe(asset.frameWidth! / 2);
+    for (const [i, placement] of placements.entries()) {
+      const piece = pieces[i];
+      const scale = placement.scale ?? 1;
+      const expectedX = anchor[0] * scale * (placement.flip ? 1 : -1);
+      expect(piece.markup).toContain(`translate(${expectedX.toFixed(3)} ${(-anchor[1] * scale).toFixed(3)})`);
+      expect(piece.x).toBeCloseTo(placement.x * 32);
+      expect(piece.y).toBeCloseTo((placement.y + 1) * 32);
+      expect(piece.foot).toEqual({ x: 0, y: 0 });
+    }
+    expect(JSON.stringify(map)).toBe(before);
+  });
+
   it('places the farmhouse outside the village road while preserving normal depth', () => {
     const level = candidate01Level('c01-01');
     const engine = createBattleEngine({ content: TEST_CATALOG });

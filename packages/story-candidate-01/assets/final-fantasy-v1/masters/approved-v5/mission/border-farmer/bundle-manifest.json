@@ -1,0 +1,114 @@
+{
+  "topicId": "C01-MISSION-BORDER-FARMER",
+  "assetId": "C01-FFV1-MISSION-BORDER-FARMER",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/binding pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every selected raw/master/native output is byte-identical. No alpha cleanup, painting, recoloring, cropping, per-pose scaling or source padding. QA composites are separate only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "actualConsumers": [
+    {
+      "level": "c01-01",
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "x": 11.5,
+      "y": 8.65,
+      "layer": "under-units",
+      "scale": 0.7,
+      "opacity": 0.9
+    },
+    {
+      "level": "c01-01",
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "x": 16.4,
+      "y": 9.15,
+      "layer": "under-units",
+      "scale": 0.68,
+      "opacity": 0.88,
+      "flip": true
+    }
+  ],
+  "domainActorCount": 0,
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Existing ambient scene consumers draw frame0 only. Carry-or-work is seed-pouch handling, never combat. Source completion does not make animation reachable.",
+  "palettePolicy": "Preserve original warm-tan skin, taupe/olive scarf, beige dress/tunic, brown trousers/boots/seed pouch/wood handle and gray bent iron blade; no faction recolor.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        780.75,
+        975
+      ],
+      "review": "Older worried warm-tan woman with taupe chin-tied headscarf, beige patched dress/tunic, brown waist tie, trousers and huge boots. Screen-left patched-sleeve hand holds tied seed pouch; screen-right plain-sleeve hand holds short wooden-handled bent-blade hoe. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "0599431a4c21ad957258efd015d40b41d2dfc66117581983e3341d53c8455d34",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        766.5,
+        958
+      ],
+      "review": "Front screen-right boot heel-first with toe raised and dark sole visible; rear screen-left boot flat. Seed pouch swings back while staying in the original patched-sleeve hand; hoe stays in original opposite hand."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "2f85e93ccf0d61799be8f15dcfd07bd4f492aa8a270fc727536c7b697082776f",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        773.0,
+        946
+      ],
+      "review": "Distinct noncombat seed-pouch check: patched-sleeve screen-left hand lifts pouch near chest/waist; eyes glance down toward it. Plain-sleeve screen-right hand lowers the same hoe outward, blade safely down. Both boots planted. Corrected generation preserves source physical hands."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "364eb6d39b98d4bad9bfa5a52dff4f6d4f22c44b91261b3c32c1da47632fa5b1",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        754.0,
+        967
+      ],
+      "review": "Opposite contacts from walk-a: front screen-right foot flat and weight-bearing; rear screen-left heel raised and knee bent, toe contacting behind her. Pouch swings forward. Clothing, tool, hand assignment and camera remain unchanged."
+    }
+  }
+}
