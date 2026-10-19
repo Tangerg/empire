@@ -1,0 +1,52 @@
+{
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "bbox": [
+    41,
+    38,
+    1541,
+    992
+  ],
+  "threshold_bboxes": {
+    "8": [
+      318,
+      104,
+      1310,
+      911
+    ],
+    "32": [
+      318,
+      104,
+      1310,
+      910
+    ],
+    "128": [
+      318,
+      105,
+      1310,
+      910
+    ],
+    "240": [
+      319,
+      106,
+      1309,
+      909
+    ]
+  },
+  "transparent_pixels": 1079922,
+  "partial_alpha_pixels": 491494,
+  "opaque_pixels": 904,
+  "canvas_matches_idle": true,
+  "alpha_value_percentiles_nonzero": {
+    "p0": 1.0,
+    "p10": 253.0,
+    "p50": 253.0,
+    "p90": 254.0,
+    "p100": 255.0
+  },
+  "native_sha256": "56edfbbb7f6209e004f5adcd5b744756f625673543694fe343044cb2c5a1ca4c",
+  "no_resizing_cropping_or_alpha_modification": true
+}

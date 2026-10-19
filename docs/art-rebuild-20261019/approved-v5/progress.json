@@ -5,7 +5,7 @@
     "quote": "新版本很合适啊，就是这个 feel",
     "concept": "calibration-v5-concept/concept-v2.png"
   },
-  "fullBulkResumed": false,
+  "fullBulkResumed": true,
   "completeAnimationTopics": 0,
   "liveGameAcceptance": false,
   "sources": {
@@ -20,5 +20,9 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "blue swordsman four poses and Lorne Keep three-state pilot; other bulk remains gated"
+  "next": "Finish four-pose blue swordsman and three-state Keep, then remaining families under approved style; prior exports require review/remake.",
+  "continuationApproval": {
+    "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
+    "quote": "确认了，就按照这个方向做剩下的"
+  }
 }

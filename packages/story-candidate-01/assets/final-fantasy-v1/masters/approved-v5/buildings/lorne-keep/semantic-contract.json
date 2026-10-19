@@ -1,0 +1,36 @@
+{
+  "topicId": "C01-STRUCT-LORNE-KEEP",
+  "sourceMaster": "packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-01.png",
+  "masterRow": 2,
+  "runtimeFrameSize": [
+    64,
+    64
+  ],
+  "hdFrameSize": [
+    128,
+    128
+  ],
+  "stateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "anchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "identity": "Left round crenellated tower, brown conical roof and metal finial, cream/burgundy diagonal gold-edged banner; lower right rectangular gatehouse with arched wood door; side wood palisades, right barrels.",
+  "damagedCues": "Broken roof and right battlements, exposed timber, torn banner, base rubble, dark smoke behind right side of tower.",
+  "capturedCues": "Intact structure restored; gray forked pennant added on pole at tower roof. Banner remains cream/burgundy.",
+  "approvedStyleRefs": [
+    "calibration-v5-concept/concept-v2.png",
+    "approved-v5/pine/pine-master.png",
+    "approved-v5/swordsman/master.png"
+  ],
+  "registrationPolicy": "Review normal first; subsequent states must use its full canvas and unchanged architecture/foundation/camera/scale. No individual frame fitting.",
+  "status": "Normal generated; awaiting parent review before further states."
+}
