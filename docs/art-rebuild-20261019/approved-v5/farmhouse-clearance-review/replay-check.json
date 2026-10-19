@@ -1,0 +1,9 @@
+{
+  "beforeCheckpoint": "75f66fb",
+  "after": "75f66fb + farmhouse presentation-only placement",
+  "command": "npx vite-node tools/replay-sweep.ts",
+  "replayCount": 60,
+  "eventStreamsAndOutcomeDigestsByteIdentical": true,
+  "stdoutSha256": "af965d1720053ac60d409bf960c607714a33665e2f90854da6047e5e7f2b1cd2",
+  "stdoutBytes": 3550814
+}

@@ -1,0 +1,382 @@
+{
+  "kind": "Exact actual BoardView SVG and 1x offline pixel comparison",
+  "inputCheckpoint": "75f66fb",
+  "productionChange": "One authored pure-decoration placement x/y; no renderer change",
+  "placementBefore": [
+    12.5,
+    7.1
+  ],
+  "placementAfter": [
+    10.8,
+    6.7
+  ],
+  "worldFootBefore": [
+    400,
+    259.2
+  ],
+  "worldFootAfter": [
+    345.6,
+    246.4
+  ],
+  "displacement": [
+    -54.4,
+    -12.8
+  ],
+  "displacementLength": 55.88559742903354,
+  "scaleBeforeAndAfter": 0.7,
+  "ordinaryDepthDisplayIndexBeforeAndAfter": 94,
+  "exactSvgMatchExceptOneTranslation": true,
+  "sourceSha256Changes": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json"
+  ],
+  "stateSha256BeforeAndAfter": "d8987f972460aecb8e0b811a947a6df23c6951eb62f9e3a4dddd99c84e46963e",
+  "counts": {
+    "actors": 19,
+    "ruleBuildings": 4,
+    "sourceLayers": {
+      "grid": 0,
+      "terrain": 4,
+      "ground": 408,
+      "scenery": 206,
+      "foreground": 0,
+      "spatial": 10,
+      "range": 0,
+      "path": 0,
+      "cursor": 0
+    }
+  },
+  "changedPixelBounds": [
+    388,
+    262,
+    503,
+    329
+  ],
+  "changedPixels": 4290,
+  "clearanceChecks": [
+    {
+      "name": "west rule granary door and facade",
+      "screenBox": [
+        452,
+        307,
+        484,
+        349
+      ],
+      "changedPixels": 482,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 1
+    },
+    {
+      "name": "east rule granary door and facade",
+      "screenBox": [
+        516,
+        307,
+        548,
+        349
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "west rule granary front steps",
+      "screenBox": [
+        456,
+        337,
+        479,
+        346
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "west rule granary entrance ground",
+      "screenBox": [
+        452,
+        348,
+        482,
+        361
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "west main road approach",
+      "screenBox": [
+        358,
+        322,
+        392,
+        345
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "east main road approach",
+      "screenBox": [
+        607,
+        322,
+        650,
+        345
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "south village road approach",
+      "screenBox": [
+        531,
+        377,
+        610,
+        404
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:1 occupied visual region",
+      "screenBox": [
+        122,
+        317,
+        186,
+        391
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:2 occupied visual region",
+      "screenBox": [
+        154,
+        285,
+        218,
+        359
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:3 occupied visual region",
+      "screenBox": [
+        154,
+        349,
+        218,
+        423
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:4 occupied visual region",
+      "screenBox": [
+        122,
+        285,
+        186,
+        359
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:5 occupied visual region",
+      "screenBox": [
+        154,
+        381,
+        218,
+        455
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:6 occupied visual region",
+      "screenBox": [
+        250,
+        477,
+        314,
+        551
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:7 occupied visual region",
+      "screenBox": [
+        90,
+        317,
+        154,
+        391
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:8 occupied visual region",
+      "screenBox": [
+        250,
+        413,
+        314,
+        487
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:9 occupied visual region",
+      "screenBox": [
+        218,
+        221,
+        282,
+        295
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:10 occupied visual region",
+      "screenBox": [
+        186,
+        413,
+        250,
+        487
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:11 occupied visual region",
+      "screenBox": [
+        282,
+        381,
+        346,
+        455
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:12 occupied visual region",
+      "screenBox": [
+        538,
+        157,
+        602,
+        231
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:13 occupied visual region",
+      "screenBox": [
+        666,
+        189,
+        730,
+        263
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:14 occupied visual region",
+      "screenBox": [
+        762,
+        125,
+        826,
+        199
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:15 occupied visual region",
+      "screenBox": [
+        826,
+        189,
+        890,
+        263
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:16 occupied visual region",
+      "screenBox": [
+        698,
+        317,
+        762,
+        391
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:17 occupied visual region",
+      "screenBox": [
+        826,
+        413,
+        890,
+        487
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:18 occupied visual region",
+      "screenBox": [
+        634,
+        445,
+        698,
+        519
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    },
+    {
+      "name": "actor:19 occupied visual region",
+      "screenBox": [
+        794,
+        285,
+        858,
+        359
+      ],
+      "changedPixels": 0,
+      "pixelsChangedByMoreThanOneLevel": 0,
+      "maximum8bitChannelDifference": 0
+    }
+  ],
+  "doorDifferenceExplanation": "The west rule granary remains in front; 482 facade pixels differ by exactly one 8-bit level through retained source alpha/compositing. Its steps and entrance ground are pixel-identical. East door, road approaches and all 19 actor regions are pixel-identical.",
+  "cropScreenBox": [
+    340,
+    220,
+    680,
+    465
+  ],
+  "cropSampling": "2x nearest-neighbor enlargement of exact full 1x raster crop",
+  "limitations": [
+    "Initial state only; moving actors may still pass behind normal standing art",
+    "Visual road approaches are sampled display regions, not navigation polygons",
+    "No browser or GPU playback claimed"
+  ]
+}

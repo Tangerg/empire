@@ -1,0 +1,22 @@
+{
+  "baseCommit": "75f66fb",
+  "productionFilesChanged": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json"
+  ],
+  "productionDelta": "Only frontier-farmhouse x/y: 12.5,7.1 -> 10.8,6.7",
+  "typecheck": "passed",
+  "vitest": {
+    "command": "npm test",
+    "filesPassed": 97,
+    "testsPassed": 885,
+    "failures": 0
+  },
+  "regressionMutation": {
+    "mutation": "Restore farmhouse x/y to 12.5,7.1",
+    "result": "new regression fails as expected; approved coordinates restored before passing aggregate run"
+  },
+  "replay": "60 complete event streams and outcome digests exactly identical; see replay-check.json",
+  "buildApps": "not rerun for this scene-coordinate-only change",
+  "browserOrGpuPixelValidation": false,
+  "initialAggregateFailureResolved": "Removed temporary untracked map probe caught by existing architecture grid-index guard; full suite rerun without weakening checks"
+}

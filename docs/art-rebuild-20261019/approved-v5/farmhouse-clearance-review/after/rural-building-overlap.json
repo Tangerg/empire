@@ -1,0 +1,73 @@
+{
+  "kind": "Offline initial-pose alpha overlap diagnostic of exact scene drawings; all later scene drawings plus actual frame included.",
+  "checkpoint": "75f66fb + farmhouse presentation-only placement",
+  "results": [
+    {
+      "sourceId": "scenery:194",
+      "worldFoot": [
+        345.6,
+        246.4
+      ],
+      "displayIndex": 94,
+      "screenBox": [
+        370,
+        235,
+        125,
+        110
+      ],
+      "sourceAlphaArea": 2217.270588235294,
+      "occludedFraction": 0.11166441320251175,
+      "coveringExamples": [
+        {
+          "sourceId": "terrain:1",
+          "worldFoot": [
+            400,
+            287
+          ],
+          "pairwiseOccludedFraction": 0.0808944248228683
+        },
+        {
+          "sourceId": "terrain:2",
+          "worldFoot": [
+            464,
+            287
+          ],
+          "pairwiseOccludedFraction": 0.0
+        }
+      ]
+    },
+    {
+      "sourceId": "scenery:193",
+      "worldFoot": [
+        502.4,
+        329.6
+      ],
+      "displayIndex": 119,
+      "screenBox": [
+        526,
+        301,
+        100,
+        115
+      ],
+      "sourceAlphaArea": 2057.6470588235293,
+      "occludedFraction": 0.0,
+      "coveringExamples": [
+        {
+          "sourceId": "scenery:198",
+          "worldFoot": [
+            521.6,
+            380.8
+          ],
+          "pairwiseOccludedFraction": 0.0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Alpha-weighted source area, not gameplay visibility rules",
+    "Pairwise overlap can overlap; do not sum",
+    "Initial poses only; no browser/GPU playback",
+    "Independent masks omit root-scoped scene grading/glow"
+  ],
+  "sceneProvenanceSha256": "cbf830484d778df580cb47dfc7b9cbf44d23f0cf54d7d3a42eda82350bd831a4"
+}

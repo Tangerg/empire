@@ -1,4 +1,4 @@
-import { TacticalGrids, mapFromLevel } from '@empire/battle-engine';
+import { TacticalGrids, createBattleEngine, mapFromLevel } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
@@ -26,6 +26,36 @@ const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => 
 };
 
 describe('candidate-01 authored map scenery', () => {
+  it('keeps the farmhouse facade clear through decorative placement, without moving rule objects', () => {
+    const level = candidate01Level('c01-01');
+    const engine = createBattleEngine({ content: TEST_CATALOG });
+    const state = engine.createState(level);
+    const map = mapFromLevel(TEST_CATALOG, level);
+    const before = JSON.stringify({ level, state, map });
+    const farmhouse = candidate01EnvironmentScene(level.id)!.placements
+      .filter((placement) => placement.id === 'frontier-farmhouse');
+    // Only the presentation owner moved: this avoids the rule granary at (12, 8).
+    // Keeping size and normal footpoint depth is part of the approved clearance.
+    expect(farmhouse).toEqual([
+      { id: 'frontier-farmhouse', x: 10.8, y: 6.7, layer: 'under-units', scale: 0.7 },
+    ]);
+    const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell('frontier-farmhouse');
+    const crop = `x="${-(cell.index % atlas.columns) * atlas.cellWidth}" y="${-Math.floor(cell.index / atlas.columns) * atlas.cellHeight}"`;
+    const layers = candidate01MapSceneryLayers(sceneContext(level.id, map));
+    const isFarmhouse = (piece: BoardPiece) => piece.markup.includes('rural-life@2x.png') && piece.markup.includes(crop);
+    const rendered = layers.underUnits.filter(isFarmhouse);
+    expect(rendered).toHaveLength(1);
+    expect(rendered[0].x).toBeCloseTo(345.6);
+    expect(rendered[0].y).toBeCloseTo(246.4);
+    expect(rendered[0].foot).toEqual({ x: 0, y: 0 });
+    expect(rendered[0].markup).toContain('scale(0.700)');
+    expect(layers.ground.some(isFarmhouse)).toBe(false);
+    expect(layers.overUnits.some(isFarmhouse)).toBe(false);
+    expect(state.units).toHaveLength(19);
+    expect(before).not.toContain('frontier-farmhouse');
+    expect(JSON.stringify({ level, state, map })).toBe(before);
+  });
+
   it('declares contacts only for standing scenery and leaves every bridge and light on the ground', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
     const before = JSON.stringify(map);

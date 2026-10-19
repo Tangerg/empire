@@ -1,0 +1,246 @@
+{
+  "method": "Read-only local search of a manually traced door/frame/steps polygon against every later scene drawing. Candidates stay in the same footpoint-order interval (233.6,261.76), so the foreground set is unchanged. No navigation or rule changes.",
+  "masterDoorPolygon": [
+    [
+      675,
+      740
+    ],
+    [
+      825,
+      680
+    ],
+    [
+      843,
+      884
+    ],
+    [
+      920,
+      927
+    ],
+    [
+      906,
+      987
+    ],
+    [
+      830,
+      1030
+    ],
+    [
+      730,
+      987
+    ],
+    [
+      689,
+      937
+    ]
+  ],
+  "sourceFoot": [
+    634,
+    1018
+  ],
+  "sourceToLogicalScale": 0.05358851674641148,
+  "gridStepInPlacementCoordinates": 0.1,
+  "testedX": [
+    8.5,
+    12.5
+  ],
+  "testedY": [
+    6.4,
+    7.1
+  ],
+  "criterion": "<=0.1% alpha-weighted foreground overlap in polygon",
+  "closestClear": [
+    {
+      "placement": [
+        10.8,
+        6.7
+      ],
+      "worldFoot": [
+        345.6,
+        246.4
+      ],
+      "distance": 55.88559742903351,
+      "doorAndStepsOcclusion": 2.334267040149393e-05
+    },
+    {
+      "placement": [
+        10.8,
+        6.6
+      ],
+      "worldFoot": [
+        345.6,
+        243.2
+      ],
+      "distance": 56.7041444693419,
+      "doorAndStepsOcclusion": 0.000196078431372549
+    },
+    {
+      "placement": [
+        10.7,
+        6.6
+      ],
+      "worldFoot": [
+        342.4,
+        243.2
+      ],
+      "distance": 59.78093341526211,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.7,
+        6.5
+      ],
+      "worldFoot": [
+        342.4,
+        240.0
+      ],
+      "distance": 60.715731075232895,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.7,
+        6.4
+      ],
+      "worldFoot": [
+        342.4,
+        236.8
+      ],
+      "distance": 61.802265330649504,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.6,
+        6.6
+      ],
+      "worldFoot": [
+        339.2,
+        243.2
+      ],
+      "distance": 62.87002465404321,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.6,
+        6.5
+      ],
+      "worldFoot": [
+        339.2,
+        240.0
+      ],
+      "distance": 63.75954830454808,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.6,
+        6.4
+      ],
+      "worldFoot": [
+        339.2,
+        236.8
+      ],
+      "distance": 64.79506154021308,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.5,
+        6.6
+      ],
+      "worldFoot": [
+        336.0,
+        243.2
+      ],
+      "distance": 65.96969000988257,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.5,
+        6.5
+      ],
+      "worldFoot": [
+        336.0,
+        240.0
+      ],
+      "distance": 66.81796165702751,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.5,
+        6.4
+      ],
+      "worldFoot": [
+        336.0,
+        236.8
+      ],
+      "distance": 67.80678432133469,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.4,
+        6.6
+      ],
+      "worldFoot": [
+        332.8,
+        243.2
+      ],
+      "distance": 69.07850606375328,
+      "doorAndStepsOcclusion": 0.0002493482942309872
+    },
+    {
+      "placement": [
+        10.4,
+        6.5
+      ],
+      "worldFoot": [
+        332.8,
+        240.0
+      ],
+      "distance": 69.88905493709296,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.4,
+        6.4
+      ],
+      "worldFoot": [
+        332.8,
+        236.8
+      ],
+      "distance": 70.83501958777168,
+      "doorAndStepsOcclusion": 0.0
+    },
+    {
+      "placement": [
+        10.3,
+        6.6
+      ],
+      "worldFoot": [
+        329.6,
+        243.2
+      ],
+      "distance": 72.19529070514224,
+      "doorAndStepsOcclusion": 0.0
+    }
+  ],
+  "current": {
+    "placement": [
+      12.5,
+      7.1
+    ],
+    "worldFoot": [
+      400.0,
+      259.2
+    ],
+    "distance": 0.0,
+    "doorAndStepsOcclusion": 0.9923481587757055
+  }
+}
