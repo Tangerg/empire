@@ -1,0 +1,65 @@
+{
+  "asset": "old-stone-1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+  "RGB_mean": [
+    134.7864301539698,
+    121.27846839078266,
+    102.92020176583259
+  ],
+  "RGB_std": [
+    17.891916842379626,
+    17.067985236404084,
+    18.778944611205056
+  ],
+  "luma_mean": 122.82479421131485,
+  "luma_std": 17.312022133249705,
+  "luma_percentiles_5_50_95": [
+    86.9588,
+    128.3106,
+    143.8132
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 127.18138166616826,
+    "bottom": 116.6132988586523,
+    "left": 125.60429396431418,
+    "right": 119.6825137210925,
+    "central_half": 122.94276861789523
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 21.76581605528974,
+    "top_bottom_mean_abs_RGB": 18.996278575225944,
+    "left_right_max_abs_RGB": 74.0,
+    "top_bottom_max_abs_RGB": 72.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "material_identity": "Irregular broad rounded-polygon cobbles with a small number of medium infill stones and restrained olive-earth joints.",
+    "style": "Low-contrast warm gray/taupe matte faces with broad quiet tonal facets; no outer square frame or center spotlight. Some soft irregular face shading remains, but original dense grit/chips are greatly reduced.",
+    "stone_scale": "Visual estimate approximately6-8 main cobbles across representative horizontal bands, plus infill; requested10-14 main stones was not fully achieved. Retained honestly as a candidate, not stretched or regenerated before parent review.",
+    "candidate128_world_effect": "Main stones approximately16-23logical units across by rough visual width estimates; parent should judge actual scene scale.",
+    "coverage": "Opaque edge-to-edge stones, no silhouette or margin; no natural seamlessness claim."
+  },
+  "reference_material_identity": "Irregular large rounded/polygonal old cobbles, warm weathered gray with narrow earth seams and sparse small moss",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    128,
+    128
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

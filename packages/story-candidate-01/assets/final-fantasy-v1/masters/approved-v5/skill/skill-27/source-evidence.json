@@ -1,0 +1,92 @@
+{
+  "topicId": "C01-SKILL-27",
+  "assetId": "C01-FFV1-SKILL-27",
+  "label": "修塔",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f8d91d1b-1754-4ca1-8325-3445a94cc0d1.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-27-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-02.png",
+    "atlasSha256": "990143dee472244d1996c659e13eab791de28c1baad2aa362aa2cf02bb2bcd22",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-02.png, row 3 column 3 (one based)",
+    "topicIndex": 26,
+    "inspectionCropCoordinates": [
+      629,
+      629,
+      902,
+      916
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-27.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent explicitly continued skill-25 through skill-28 while integrating the previous quartet; exact authored-order subjects and bottom/side nominal-cell contamination corrections were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-27-cell.png",
+    "nominalGridCellCoordinates": [
+      629,
+      629,
+      938,
+      938
+    ],
+    "sourceCellCorrection": "Original gridless atlas is not perfectly cell-registered. Nominal cells 25/26/27 contain small next-row tips at bottom; cell 27 also contains left band/handle of 28 and cell 28 cuts them. Full-board subject crop removes neighbor pixels and restores 28 complete subject; original nominal crops retained."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-27-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One eight-crenellation round tower with one arched window, two-upright scaffold/two crosspieces/one diagonal brace/four rope junctions, and one claw hammer; two front stones plus small side rubble retained.",
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-crenellation-count.txt",
+    "prompt-refine-front-notch.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "semanticReview": "Final native edit leaves exactly eight top rim stones with an open front-center notch and back-right gap. One arch, two-post scaffold with four rope junctions and one claw hammer remain.",
+  "refinementHistory": [
+    {
+      "tool": "built-in image_gen__imagegen",
+      "input": "/workspace/scratch/84c9fe948755/generated_images/exec-d984c19a-8d94-4717-ba89-bb69789c5f7f.png",
+      "preservedCandidate": "candidates/initial/raw.png",
+      "prompt": "prompt-refine-crenellation-count.txt",
+      "references": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-d984c19a-8d94-4717-ba89-bb69789c5f7f.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-27-complete-subject.png"
+      ],
+      "result": "/workspace/scratch/84c9fe948755/generated_images/exec-7a40b2ca-4c27-4d42-b07d-57638a9f7c5e.png",
+      "review": "Removed extra back-right filler but only shrank extra front-center filler; incomplete count correction."
+    },
+    {
+      "tool": "built-in image_gen__imagegen",
+      "input": "/workspace/scratch/84c9fe948755/generated_images/exec-7a40b2ca-4c27-4d42-b07d-57638a9f7c5e.png",
+      "preservedCandidate": "candidates/refine-1/raw.png",
+      "prompt": "prompt-refine-front-notch.txt",
+      "references": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-7a40b2ca-4c27-4d42-b07d-57638a9f7c5e.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-27-complete-subject.png"
+      ],
+      "result": "/workspace/scratch/84c9fe948755/generated_images/exec-f8d91d1b-1754-4ca1-8325-3445a94cc0d1.png",
+      "review": "Removed remaining front-center filler. Eight visible rim blocks verified; rest of subject preserved."
+    }
+  ]
+}

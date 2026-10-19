@@ -1,0 +1,42 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-6d5af53f-9c04-4617-aad9-0bb0690a30dd.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    123,
+    77,
+    1172,
+    1187
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    123,
+    77,
+    82,
+    67
+  ],
+  "nearOpaquePixelCountGE240": 509720,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 546,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-equipment-stargate-guard",
+  "sha256": "f2e8f981869cd08b4904bc6ff277c908786fd0e3dd82eec667fcb1b09f7f8e21",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual48 white/black inspection: correct functional identity and main component count, thick outlines/broad cel planes, intact silhouette, no visible halo, haze, solid background or external glow. Narrow-gap antialiasing is not judged as solid-body opacity failure by supplemental morphology.",
+  "postprocessing": "Native master unchanged byte-exact copy. Diagnostic-only full-canvas48 exports and white/black composites are separate. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false
+}

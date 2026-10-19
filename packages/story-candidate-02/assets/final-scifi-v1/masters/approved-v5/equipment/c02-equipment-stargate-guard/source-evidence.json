@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-stargate-guard",
+  "assetId": "C02-SFV1-equipment-stargate-guard",
+  "label": "星门守卫主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    319,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-stargate-guard.png",
+  "runtimeReferenceSha256": "841400154d5a4e69eae775fcdb02d3c8846f45bd005e528c3949794672f20176",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6d5af53f-9c04-4617-aad9-0bb0690a30dd.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-stargate-guard/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board02 R2C4 confirmed against runtime and enlarged original crop. One ring-head key with open gear-notched center and exactly three block key teeth along shaft, separated by two stepped gaps; source has three teeth, not two. Ivory/graphite plates, cyan ring inserts and ochre segment retained. Key remains legible at actual48 with true open center and bounded color, no exterior glow.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
