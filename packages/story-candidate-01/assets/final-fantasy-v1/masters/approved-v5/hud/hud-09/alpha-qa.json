@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-09",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4819702947378596,
+  "nearOpaqueFractionAlphaGE250": 0.5081417295595084,
+  "nonzeroAlphaBBox": [
+    0,
+    119,
+    1236,
+    1142
+  ],
+  "visibleAlphaBBoxGE8": [
+    72,
+    204,
+    1191,
+    1118
+  ],
+  "visibleAlphaBBoxGE128": [
+    74,
+    205,
+    1190,
+    1117
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    72,
+    204,
+    63,
+    136
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 24,
+  "sha256": "c4c2a58dec071d571c255fe4338ed8eb43ba83c2e65dc707546a10af09bed094",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE closed squat wooden supply chest in a slight three-quarter view, front and right side visible, flat plank lid. Two wide dark gray metal strap bands pass over the lid and down the front; one small centered gray latch hangs on the front. Warm golden-brown wood planes, charcoal gray straps and latch; no treasure spilling out, jewels, coins, lid opening, magic or added symbols.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-09/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: closed brown chest, two gray straps and central latch remain readable. Native alpha1 edge residue retained unchanged; meaningful bounds inset."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: closed brown chest, two gray straps and central latch remain readable. Native alpha1 edge residue retained unchanged; meaningful bounds inset."
+  ]
+}

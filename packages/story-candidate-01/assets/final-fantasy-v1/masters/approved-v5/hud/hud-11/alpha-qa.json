@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-11",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5751318269575636,
+  "nearOpaqueFractionAlphaGE250": 0.4103144260535346,
+  "nonzeroAlphaBBox": [
+    53,
+    50,
+    1202,
+    1202
+  ],
+  "visibleAlphaBBoxGE8": [
+    99,
+    54,
+    1147,
+    1170
+  ],
+  "visibleAlphaBBoxGE128": [
+    100,
+    55,
+    1146,
+    1168
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    99,
+    54,
+    107,
+    84
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "ea29ca89cd25cc2b431923a7f88e2355f181d219debb8f00fb180048c174c607",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE short-handled hammer crossing diagonally in front of ONE dark gray cogwheel. The hammer has a broad rectangular gray stone/iron head at the upper-left, wood handle running down-right to a round visible cut end. A gray gear sits behind its lower-right portion with a round central hole, eight VISIBLE broad teeth, four visible above/right of the diagonal handle and four visible below/left; the handle naturally hides the other portions of the rim. The wood handle passes through the hammer head and a short brown handle end protrudes at the upper-left side of the head. Preserve gray hammer and gear versus warm brown wooden handle; no wrench, extra hammer or spark.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-11/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: hammer-over-gear silhouette and warm wooden handle readable. Native image retains eight visible teeth, four each side of the diagonal handle; individual teeth compact at28."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: hammer-over-gear silhouette and warm wooden handle readable. Native image retains eight visible teeth, four each side of the diagonal handle; individual teeth compact at28."
+  ]
+}

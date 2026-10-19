@@ -1,0 +1,67 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence/export review pending",
+  "topic": "C01-UNIT-JAVELIN-HUNTER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current binding. No consumer invented.",
+  "bodyScale": "44/878",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1585,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1584,
+      993
+    ],
+    "walk-b": [
+      1584,
+      993
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourcePaddingRequired": "Native idle1585x992, walk-a1586x992, attack/walk-b1584x993. Export preparation may add transparent right/bottom padding to common1586x993; maximum2right/1bottom. No native pixel changes or per-pose fitting.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "allExactToolRequestsStored": true,
+  "rejectedAttemptsRetained": {
+    "attack/attempt-01": "Rejected because shield and throwing arm switched screen sides relative to idle.",
+    "walk-b/attempt-01": "Rejected because it repeated walk-a forward-right-leg contact."
+  },
+  "alphaPerimeterGate": "All selected native perimeters alpha<=1; no silhouette alpha>1 on edges; alpha1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "shieldPresentEveryPose": true,
+  "sameShieldArmEveryPose": true,
+  "exactlyThreeBackSparesPlusOneHeldJavelinEveryPose": true,
+  "allWeaponAndShieldTipsComplete": true,
+  "walkContactsOppose": true,
+  "walkReview": "Walk-a far/right heel leads and near/left toe trails. Walk-b near/left heel leads toward foreground with toe lifted and sole visible; far/right toe trails with heel lifted.",
+  "attackReview": "Accepted overhand throwing wind-up: original screen-right spear arm raised overhead, complete held shaft aimed screen-right; shield remains on original screen-left forearm. Broad braced legs. All three back spare tips remain countable. Exactly two arms and two legs; no projectile or independent FX.",
+  "independentFXBakedIntoCharacter": false,
+  "transparentLegAndGearGapsRetained": true,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 3,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "newConsumerBindingInvented": false
+}

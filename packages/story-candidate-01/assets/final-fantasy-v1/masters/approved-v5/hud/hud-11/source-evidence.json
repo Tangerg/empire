@@ -15,7 +15,7 @@
   "tool": "built-in image_gen__imagegen",
   "transparent_background": true,
   "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-11-complete-subject.png",
-  "identityClarification": "Exactly ONE short-handled hammer crossing diagonally in front of ONE dark gray cogwheel. The hammer has a broad rectangular gray stone/iron head at the upper-left, wood handle running down-right to a round visible cut end. A gray gear sits behind its lower-right portion with a round central hole, eight broad teeth. Preserve gray hammer and gear versus warm brown wooden handle; no wrench, extra hammer or spark.",
+  "identityClarification": "Exactly ONE short-handled hammer crossing diagonally in front of ONE dark gray cogwheel. The hammer has a broad rectangular gray stone/iron head at the upper-left, wood handle running down-right to a round visible cut end. A gray gear sits behind its lower-right portion with a round central hole, eight VISIBLE broad teeth, four visible above/right of the diagonal handle and four visible below/left; the handle naturally hides the other portions of the rim. The wood handle passes through the hammer head and a short brown handle end protrudes at the upper-left side of the head. Preserve gray hammer and gear versus warm brown wooden handle; no wrench, extra hammer or spark.",
   "originalSourceEvidence": {
     "baselineCommit": "2276a89",
     "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
@@ -44,5 +44,8 @@
   ],
   "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
   "runtimeReady": false,
-  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits."
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits.",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-889a3b5b-9bce-466b-b249-240a59e9ebbe.png",
+  "localRaw": "raw.png",
+  "sha256": "ea29ca89cd25cc2b431923a7f88e2355f181d219debb8f00fb180048c174c607"
 }

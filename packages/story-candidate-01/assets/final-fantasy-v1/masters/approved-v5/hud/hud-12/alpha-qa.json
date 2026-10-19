@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-12",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5747248358681247,
+  "nearOpaqueFractionAlphaGE250": 0.41282060087146966,
+  "nonzeroAlphaBBox": [
+    73,
+    85,
+    1224,
+    1162
+  ],
+  "visibleAlphaBBoxGE8": [
+    128,
+    150,
+    1172,
+    1135
+  ],
+  "visibleAlphaBBoxGE128": [
+    129,
+    151,
+    1171,
+    1134
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    128,
+    150,
+    82,
+    119
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "9f9294d5600f20da43f10cda7e5d96faf5c0607d3bb15abe4132cfe458f5e16f",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE broken gray stone wall fragment, taller on the left with missing upper-right portion and a lower right block step. A small detached gray hammer head and very short dark handle float at lower right, separated from the wall by a clear gap. Use a handful of broad stone blocks with dark seams; preserve irregular breached silhouette and separate tiny hammer. No debris spray, explosion, dust or added badge.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-12/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: stepped broken-wall silhouette and separate small hammer remain identifiable."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: stepped broken-wall silhouette and separate small hammer remain identifiable."
+  ]
+}

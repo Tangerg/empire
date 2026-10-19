@@ -1,0 +1,132 @@
+{
+  "asset": "C01-UNIT-JAVELIN-HUNTER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current binding. No consumer invented.",
+  "status": "Native quartet complete; coordinator final sequence review/export pending",
+  "generationTool": "built-in image_gen",
+  "transparentBackground": true,
+  "masterPolicy": "Selected native/raw/master bytes identical. No painting, resizing, cropping, recoloring or alpha cleanup. QA composites and whole-canvas fixed-scale previews are separate review artifacts only.",
+  "sharedScale": 0.05011389521640091,
+  "bodyReferenceSourcePixels": 878,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "identityContract": "Dark-brown-skinned young clean-shaven man, short curled black hair, bold brows, slate blue-gray scarf, ochre large-diamond quilted coat, brown strap/gloves/boots, brass belt buckle and beige cuff wraps. Exactly three spare pointed javelins in back carrier plus one held javelin, one original wooden plank shield with gray riveted rim and pale brass boss/brace bands. Shield stays screen-left and held spear screen-right. Exaggerated chunky head/hands/boots and broad matte color planes.",
+  "semanticContract": "Catalog-only C01-UNIT-JAVELIN-HUNTER; no current campaign/built-in unit binding. Existing built-in soldier_javelin is on soldier, which uses C01-UNIT-SWORDSMAN, not this topic. Preserve original four-slot idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1. Reconstruct opposite walking contacts, retain shield throughout, and depict a clear overhand throwing wind-up just before release, retaining one held javelin and three back spares. No independent projectile/FX or new consumer.",
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/registration-evidence.json",
+  "equipmentTopicDifference": "Separate equipment icon has three total javelins and hide shield; original unit has three back spares plus held javelin and wooden plank shield. Preserve original unit identity.",
+  "idleApproval": "Coordinator2026-10-19 22:32UTC accepted native idle and44/878 human comparison beside spearman and Torren; required shield and three spares plus held spear throughout.",
+  "selectedAttempts": {
+    "idle": "attempt-01",
+    "walk-a": "attempt-01",
+    "attack": "attempt-02",
+    "walk-b": "attempt-02"
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/tool-request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "19be83c0a0e41e33f04298a9b4726808383f944b25a9158fdd4babae03b4111d",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/idle/qa-black.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        737,
+        976
+      ],
+      "sha256": "9a9618734a3e75b2c7e4531806a2049bad5fe1c4e6781c34f973eab3969b861f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0d3dfab6-f6c1-44a3-8b92-4d4c4f74f8db.png",
+      "review": "Approved idle preserves original identity/gear; both boots planted with full shield, three back spare javelins and one held spear."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/tool-request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "f3fbc18416e5fe8c553bef98799b41d3d221d282509b77b5ed9984dc96f35bee",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-a/qa-black.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        697,
+        969
+      ],
+      "sha256": "6fa718372ac855af0707aa2badbb8ababe08b1f8986d9c441c8e0b7acc6e10bb",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-03d98e12-d24e-4814-b27c-644f7f5d54d6.png",
+      "review": "Right/far boot reaches forward and lands heel-first; left/near shield-side boot extends behind, heel lifted and toe low. One plank shield stays screen-left, held javelin stays screen-right, exactly three back spare tips. Same identity, canvas and apparent body scale."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/tool-request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "1bb1c30b8114ca1f5be5f08c8d82def97a2637d81e80e2f2bae7ce856274c5ef",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/attack/qa-black.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        701,
+        975
+      ],
+      "sha256": "29850f4fba2accc200326c80abf6c3e570e710701bcb2fdc8676d31b3cacf6d3",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6b402157-c04b-4f67-a6df-594ddb457c6c.png",
+      "review": "Accepted overhand throwing wind-up: original screen-right spear arm raised overhead, complete held shaft aimed screen-right; shield remains on original screen-left forearm. Broad braced legs. All three back spare tips remain countable. Exactly two arms and two legs; no projectile or independent FX."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/tool-request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a4a15e32962079dbf9140d08a5e708d0af3b0ae09f9c19e224af4b590386c4c5",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/javelin-hunter/walk-b/qa-black.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        731,
+        968
+      ],
+      "sha256": "6819c89b27759d81a5125fed8216ff08c8bd5fe009676c7fae4ba469e9d7c930",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-dd1a64cf-752a-4a18-9166-e309eb8c492f.png",
+      "review": "Accepted opposite contacts: near/shield-side screen-left boot is advanced into the foreground, heel down and toe raised with sole visible; far/spear-side screen-right boot trails on toe with heel lifted. This reverses walk-a right-heel-forward/left-toe-back. Shield remains screen-left and held spear screen-right, three spare tips, two legs, clear open leg gap."
+    }
+  },
+  "rejectedAttempts": {
+    "attack/attempt-01": "Rejected because shield and throwing arm switched screen sides relative to idle.",
+    "walk-b/attempt-01": "Rejected because it repeated walk-a forward-right-leg contact."
+  }
+}

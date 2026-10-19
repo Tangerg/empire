@@ -1,0 +1,331 @@
+{
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonNativeCanvas": [
+    1586,
+    992
+  ],
+  "actualNativeSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonScaleRatio": "44/912.5",
+  "commonScale": 0.04821917808219178,
+  "referenceSourceFoot": [
+    681,
+    966
+  ],
+  "sourceFeet": [
+    [
+      681,
+      966
+    ],
+    [
+      646,
+      960
+    ],
+    [
+      531,
+      928
+    ],
+    [
+      709,
+      951
+    ]
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "origin": [
+    8,
+    4
+  ],
+  "suggestedRegistrationLimit": 8,
+  "maximumMeasuredLogicalOffset": 7.232876712328768,
+  "maximumTransparentCanvasPadding": {
+    "right": 1,
+    "bottom": 0
+  },
+  "frameAnchor": [
+    40.8372602739726,
+    50.579726027397264
+  ],
+  "method": "Native master bytes unchanged. Explicit one-column transparent right padding for attack/walk-b at export makes common1586\u00d7992. One uniform44/912.5 scale and per-pose whole-canvas translation from measured source feet. No alpha trim, silhouette fitting, per-pose scale or equipment transforms. Footx mean bottom-four-row centers; footy lowest sole.",
+  "poses": [
+    {
+      "pose": "idle",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f9baaca0-d95c-4a48-a09b-cb796e10242c.png",
+      "sha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/alpha-qa.json",
+      "sourceFoot": [
+        681,
+        966
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            325,
+            850,
+            590,
+            980
+          ],
+          "soleCenterXBottomFourRows": 424.53584905660375,
+          "soleY": 966
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            750,
+            850,
+            1050,
+            980
+          ],
+          "soleCenterXBottomFourRows": 937.5273311897106,
+          "soleY": 953
+        }
+      ],
+      "logicalRegistrationOffset": [
+        0.0,
+        0.0
+      ],
+      "wholeCanvasOutputBounds": [
+        8.0,
+        4.0,
+        84.47561643835617,
+        51.83342465753425
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Stable planted readiness, original named identity; shield image-left and rules spear in image-right original baton hand."
+    },
+    {
+      "pose": "walk-a",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-a/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-a/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4cc9f7fd-0102-4b6d-97c8-12955dd86a22.png",
+      "sha256": "4fc84d833104f3a79ea114aa6f57d1a0a361542dac16f114ff75087a0bde39e6",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-a/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-a/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-a/alpha-qa.json",
+      "sourceFoot": [
+        646,
+        960
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            430,
+            800,
+            660,
+            980
+          ],
+          "soleCenterXBottomFourRows": 580.2558139534884,
+          "soleY": 930
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            680,
+            800,
+            940,
+            980
+          ],
+          "soleCenterXBottomFourRows": 711.765625,
+          "soleY": 960
+        }
+      ],
+      "logicalRegistrationOffset": [
+        1.6876712328767125,
+        0.2893150684931507
+      ],
+      "wholeCanvasOutputBounds": [
+        9.687671232876713,
+        4.289315068493151,
+        86.16328767123288,
+        52.122739726027405
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        0,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Near shield-side leg crosses forward with knee raised and heel-leading boot; far leg trails under cape."
+    },
+    {
+      "pose": "attack",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/attack/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/attack/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-701b2cc3-a77b-4078-8042-3203f1387ef0.png",
+      "sha256": "5272a25476e86e984b46686bdc01910b45fd6a9d0afe05dfb45d84afa524db25",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/attack/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/attack/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/attack/alpha-qa.json",
+      "sourceFoot": [
+        531,
+        928
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            45,
+            795,
+            300,
+            950
+          ],
+          "soleCenterXBottomFourRows": 144.03614457831324,
+          "soleY": 928
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            725,
+            780,
+            1030,
+            960
+          ],
+          "soleCenterXBottomFourRows": 918.15625,
+          "soleY": 924
+        }
+      ],
+      "logicalRegistrationOffset": [
+        7.232876712328768,
+        1.8323287671232877
+      ],
+      "wholeCanvasOutputBounds": [
+        15.232876712328768,
+        5.832328767123288,
+        91.70849315068494,
+        53.66575342465754
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        1,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Heavy foot-infantry wide grounded lunge with original spear-hand extended horizontally toward screen-right; source diamond shield braced. Spear tip complete near right edge. Rear spear shaft/butt naturally hidden behind torso/shield, not canvas-clipped; cannot independently measure fully occluded physical length."
+    },
+    {
+      "pose": "walk-b",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-b/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-b/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fff7e07e-0393-4142-b0b4-3ed397c15483.png",
+      "sha256": "f3d0d949498c1adf08cc9cab49a99423e1ca865b0cec39984ebeea085d4f0189",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-b/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-b/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/walk-b/alpha-qa.json",
+      "sourceFoot": [
+        709,
+        951
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            380,
+            790,
+            630,
+            970
+          ],
+          "soleCenterXBottomFourRows": 532.1934523809524,
+          "soleY": 935
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            840,
+            780,
+            1100,
+            980
+          ],
+          "soleCenterXBottomFourRows": 885.0222222222222,
+          "soleY": 951
+        }
+      ],
+      "logicalRegistrationOffset": [
+        -1.35013698630137,
+        0.7232876712328767
+      ],
+      "wholeCanvasOutputBounds": [
+        6.64986301369863,
+        4.723287671232876,
+        83.1254794520548,
+        52.55671232876713
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "transparentPaddingRightBottom": [
+        1,
+        0
+      ],
+      "rawEqualsMaster": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0,
+      "semanticReview": "Near shield-side leg now trailing/back with knee left; far spear-side leg forward, knee and heel-leading boot at right. Opposite leg contact from walk-a without mirroring kit."
+    }
+  ]
+}

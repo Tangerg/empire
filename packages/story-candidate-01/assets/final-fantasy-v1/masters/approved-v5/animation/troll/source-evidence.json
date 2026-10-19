@@ -46,5 +46,67 @@
       "attack",
       "walk-b"
     ]
-  }
+  },
+  "actualConsumers": [
+    "ogre"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 61,
+    "entry": "ogre: { topicId: 'C01-UNIT-TROLL' }"
+  },
+  "shippedAppearances": [
+    {
+      "source": "packages/content-ancient-empires/src/levels/03-siege.json",
+      "levelId": "siege",
+      "unit": "ogre",
+      "owner": 1,
+      "position": [
+        3,
+        4
+      ]
+    },
+    {
+      "source": "packages/content-ancient-empires/src/levels/03-siege.json",
+      "levelId": "siege",
+      "unit": "ogre",
+      "owner": 2,
+      "position": [
+        15,
+        5
+      ]
+    }
+  ],
+  "ruleIdentity": {
+    "source": "packages/content-ancient-empires/src/units.ts:86-99",
+    "id": "ogre",
+    "name": "巨魔",
+    "weapons": [
+      "ogre_club"
+    ],
+    "maxHp": 150,
+    "movement": 3,
+    "movementClass": "heavy",
+    "armorClass": "heavy",
+    "tags": [
+      "monster"
+    ]
+  },
+  "attackRule": {
+    "source": "packages/content-ancient-empires/src/weapons.ts:98",
+    "id": "ogre_club",
+    "name": "巨棒",
+    "power": 52,
+    "damageType": "blunt",
+    "tags": [
+      "melee",
+      "impact"
+    ]
+  },
+  "consumerCorrection": "Initial handoff suspected catalog-only. Current source explicitly binds the built-in ancient-empires ogre, ships two in siege and lists ogre as producible by barracks; no c01.troll or c01.ogre is declared. Preserve existing ogre binding, do not alias or invent a unit.",
+  "originalIdentity": "Gray-olive broad troll; short tied-back black hair, heavy brows, large flat nose, lower ivory tusks. Brown stitched padded hide tunic, tan fur collar/cuffs/skirt trim, crossed brown leather harness and small muted-brass square buckles. Screen-right waist pouch and screen-left hanging gray plaque with circular/spiral inset and lower rectangular notch. Thick bare hands and large bare stubby toes. Long wrapped dark wood haft with rectangular broad beveled gray stone hammer head, large spiral/circular carvings. Three-quarter right-facing, low carried hammer.",
+  "symbolContract": "Keep only source circular/spiral stone engravings and existing buckle shapes; no new glowing rune, faction crest, textual mark or weapon form.",
+  "runtimeSourceIssue": "The legacy128×96HD runtime cells visibly truncate the head and hair. The higher-resolution1254×1254 original atlas fourth row is the authoritative complete identity. New full native canvases must preserve all hair, feet, hammer, both hands.",
+  "masterPolicy": "Every native output copied byte-for-byte to raw.png and master.png. Built-in imagegen transparency only. No code painting, recoloring, alpha cleanup, source replacement or per-pose fit. Reference crops and composites are inspection evidence only.",
+  "proposedScale": "58/931 shared idle body scale; 44human/62stonegolem comparison saved. Await coordinator approval before remaining poses."
 }

@@ -1,0 +1,99 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a97b6e89-2af9-4577-b808-186a9f56b3df.png",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "sha256": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17",
+  "bboxAlphaNonzero": [
+    0,
+    16,
+    1010,
+    1508
+  ],
+  "bboxAlphaGreaterThan127": [
+    14,
+    123,
+    1007,
+    1412
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 788097,
+  "alphaOnePixels": 5732,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "status": "Independent original-baton transparent portrait inspected; coordinator acceptance pending",
+  "semanticReview": "Original C01-CHAR-CAIN-01 named young clean-shaven officer, navy/gold helmet and armor, burgundy scarf/cape, original gold-diamond rectangular shield and short capped command baton. No battle spear, horse, later-stage reform identity or generic soldier substituted.",
+  "compositionReview": "New native vertical2:3 portrait. Full helmet/baton/shield/boots complete; silhouette alpha>127 bounded14..1006 horizontally and123..1411 vertically. All full-canvas192\u00d7224/92\u00d7112 diagnostic compositions retain entire source. Native side margin narrow but complete; no silhouette fitting.",
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        472,
+        1312,
+        479,
+        1319
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-baton-arm",
+      "rectangle": [
+        817,
+        939,
+        824,
+        946
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        23.374999999999996,
+        17.9375,
+        168.1875,
+        205.91666666666669
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        9.687499999999998,
+        8.96875,
+        82.09375,
+        102.95833333333334
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    }
+  },
+  "rawEqualsMaster": true,
+  "sourcePostprocessing": "none"
+}

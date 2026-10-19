@@ -1,0 +1,98 @@
+{
+  "artifactKind": "named-character-transparent-narrative-master",
+  "unitType": "c01.cain",
+  "cardTopicId": "C01-CHAR-CAIN-01",
+  "status": "Independent original-baton transparent portrait inspected; coordinator acceptance pending",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-cain-01/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-cain-01/master.png",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17",
+  "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a97b6e89-2af9-4577-b808-186a9f56b3df.png",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-cain-01/prompt.txt",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-cain-01/request.json",
+  "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-cain-01/request-provenance.json",
+  "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-cain-01/alpha-qa.json",
+  "sourcePostprocessing": "none",
+  "nativeAttemptCount": 1,
+  "supersededAttempts": [],
+  "identitySources": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/master.png": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/references/c01-char-cain-01-original-cell.png": "7f8acdd6fe78206b0fa7106ea164dd3691a9d104dd96cef468bb46cb364a9318"
+  },
+  "battleSourceEvidence": "../../hero-appearances/cain/source-evidence.json",
+  "battleQuartetManifest": "../../hero-appearances/cain/bundle-manifest.json",
+  "originalNamedIdentity": "Original board01 bottom-left cell2, native crop[5,632,622,1249], catalog slot2 C01-CHAR-CAIN-01. Young imperial general from story README; no numerical age invented. ART-DIRECTION.md:28 anchors rectangular shield, standardized armor and command baton.",
+  "equipmentContract": "Explicit coordinator-approved distinction: original narrative portrait command baton and original gold-diamond shield; battle spear follows actual c01.legion-spear rules, c01.cain remains foot/heavy/infantry despite knight-charge tag. No game-rule changes.",
+  "cardCompositionContract": "Entire1024\u00d71536native transparent canvas uniformly placed into192\u00d7224 and92\u00d7112; no alpha trimming or per-element fit. Background is independent and coordinator-owned.",
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        23.374999999999996,
+        17.9375,
+        168.1875,
+        205.91666666666669
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        9.687499999999998,
+        8.96875,
+        82.09375,
+        102.95833333333334
+      ],
+      "method": "uniform whole-native-canvas scale, no alpha trim"
+    }
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        472,
+        1312,
+        479,
+        1319
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-baton-arm",
+      "rectangle": [
+        817,
+        939,
+        824,
+        946
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "formalBinding": "Coordinator owns cain-stage01 battle binding under existing C01-UNIT-LEGION-SHIELD and this existing C01-CHAR-CAIN-01 card. Generic legion-shield unchanged; canonical topic count unchanged; stage02 excluded."
+}

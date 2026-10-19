@@ -1,0 +1,3 @@
+# C01 HUD01–08 formal integration
+
+Original functional subjects and colors preserved: ally gray shield/blue boss, red enemy shield, neutral gold ring with open hole, open hand/hanging banner, gold main-objective diamond, gray secondary diamond/two studs, eight-spoke escort wheel, and five-plate flame warning. Actual32px exports and28px HUD source previews reviewed on white/dark/olive; outer alpha remains transparent and full source aspect is preserved. Existing generic HUD provider and exact primary-objective callsite retain the same IDs and32px contract. Source master/reference/request/hash evidence is retained. No live browser acceptance is claimed.
