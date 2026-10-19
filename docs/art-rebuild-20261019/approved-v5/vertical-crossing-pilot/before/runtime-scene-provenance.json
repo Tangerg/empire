@@ -1,0 +1,104 @@
+{
+  "kind": "offline complete actual BoardView with explicitly proposed four bridge-picture substitutions",
+  "levelId": "c01-12",
+  "variant": "before",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "omissions": [],
+  "sources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "cc772464cc6d6e524978fa40ff58d11b10f572ccf1b18a2a5fb482b122364531",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png": "65afc66a4ebfdda0681f4dee79463286e5fe574d9e3d9e6583d25815284e5572",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png": "fc511c10f580b297f4454aeb51b0f00902d8eb567abadba7ccc387411b0c1d93",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "59a6e5e226f6ce004ea53f4dc36a0df9825abd7a5ef339b28977b5f70719e9b1",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ghost.png": "9445f40da928ccf8c6f192d80adc98e26788da989a16305112de95f97abbcf56",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png": "7dc4db3ff2bcb40b0dc39a877559f7be040c0257c342412d890e2a0f0e7d4857",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+  },
+  "placements": [
+    {
+      "x": 6,
+      "y": 2,
+      "kind": "wood",
+      "world": [
+        208,
+        144
+      ]
+    },
+    {
+      "x": 17,
+      "y": 2,
+      "kind": "wood",
+      "world": [
+        560,
+        144
+      ]
+    },
+    {
+      "x": 6,
+      "y": 9,
+      "kind": "stone",
+      "world": [
+        208,
+        336
+      ]
+    },
+    {
+      "x": 17,
+      "y": 9,
+      "kind": "stone",
+      "world": [
+        560,
+        336
+      ]
+    }
+  ],
+  "registration": {
+    "wood": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/master.png",
+      "foot": [
+        627,
+        628
+      ],
+      "span": 1081,
+      "length": 5
+    },
+    "stone": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/stone-bridge-vertical-master.png",
+      "foot": [
+        627,
+        594
+      ],
+      "span": 784,
+      "length": 3
+    }
+  },
+  "stateHash": "7770de01ae1c52519760d1142f2dffbd881bbef434c9aaa27c5f38cd6fa43bfb",
+  "actorCount": 19,
+  "structureDrawingCount": 9,
+  "actorsAndBuildingsByteIdentical": false,
+  "caveat": "Along-channel walkway runs intersect horizontal crossings; no north/south bank landing is claimed. Candidate is not production-bound."
+}
