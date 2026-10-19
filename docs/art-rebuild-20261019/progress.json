@@ -564,7 +564,7 @@
       "source": null,
       "verification": {
         "state": "partial-frames-only",
-        "note": "1 of four pose masters backed up; topic remains pending"
+        "note": "3 of four pose masters backed up; topic remains pending"
       },
       "assignment": "redraw_grayflag_cover_props",
       "assignmentPhase": "after-equipment-quartet",
@@ -579,6 +579,16 @@
           "status": "raw-generated",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/master.png",
           "sha256": "d7830242b3703b7942386914d882071d1b8828294dc38bdf79cdfae1cba2cf34"
+        },
+        "walk-a": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/master.png",
+          "sha256": "b40132c296cc7c64ff9cb94e29fd1535b71674786fc3244e4ae0ff325a4a25d8"
+        },
+        "attack": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/master.png",
+          "sha256": "7020d970d91da4618ba424965633a7d78a2804743557e88fcc34e3f6038a5b57"
         }
       }
     },
@@ -9632,6 +9642,12 @@
       "contact",
       "occlusion",
       "gameplay-readability"
+    ],
+    "preliminaryLegacyGroundPreview": "docs/art-rebuild-20261019/cohesion-legacy-ground/cohesion-placement.json",
+    "preliminaryObservations": [
+      "Unit, crate and console contours/materials broadly compatible",
+      "Legacy grass has conspicuous repeated texture; compare new meadow before acceptance",
+      "Fern is brighter than neighboring foliage; assess shared palette after new ground"
     ]
   }
 }
