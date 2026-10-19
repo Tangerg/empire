@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-58b98436",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-58b98436.png",
+  "label": "Frontier scout",
+  "observed_original": "Runtime shows saddled horse.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from matching board vocabulary. Not exact recovery of runtime slot. Atlas mapping unresolved.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 0,
+  "threshold_bboxes": {
+    "1": [
+      33,
+      19,
+      1236,
+      1224
+    ],
+    "128": [
+      249,
+      213,
+      1113,
+      1041
+    ],
+    "240": [
+      250,
+      213,
+      1112,
+      1041
+    ]
+  },
+  "visual_review": "Plain leather saddle, two stirrups, rolled map. Map has small mountain pictograms, no text. Deliberate equipment abstraction rather than recovered horse slot content."
+}

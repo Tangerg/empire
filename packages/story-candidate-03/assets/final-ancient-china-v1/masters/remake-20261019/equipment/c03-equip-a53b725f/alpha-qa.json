@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-a53b725f",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-a53b725f.png",
+  "label": "Grain quartermaster",
+  "observed_original": "Runtime shows rocket rack.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from matching board vocabulary. Not exact recovery of runtime slot. Atlas mapping unresolved.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 0,
+  "threshold_bboxes": {
+    "1": [
+      121,
+      32,
+      1127,
+      1230
+    ],
+    "128": [
+      184,
+      174,
+      1108,
+      1104
+    ],
+    "240": [
+      185,
+      175,
+      1107,
+      1103
+    ]
+  },
+  "visual_review": "Grain sack, square millet measure and plain blue ledger. Clear role and no labels, complete matte group."
+}
