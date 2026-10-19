@@ -1,0 +1,38 @@
+{
+  "status": "native generation and source QA complete; production runtime integration pending",
+  "generation_mode": "built-in imagegen, exactly one call per identity",
+  "assets": [
+    {
+      "identity": "oak-grove-dense",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-grove-dense/oak-grove-dense-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-grove-dense/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-grove-dense/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-grove-dense/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-grove-dense/evidence.json"
+    },
+    {
+      "identity": "mixed-forest-edge",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-edge/mixed-forest-edge-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-edge/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-edge/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-edge/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-edge/evidence.json"
+    },
+    {
+      "identity": "stump-hollow",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-hollow/stump-hollow-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-hollow/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-hollow/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-hollow/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-hollow/evidence.json"
+    },
+    {
+      "identity": "fallen-hollow-log",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fallen-hollow-log/fallen-hollow-log-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fallen-hollow-log/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fallen-hollow-log/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fallen-hollow-log/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fallen-hollow-log/evidence.json"
+    }
+  ]
+}

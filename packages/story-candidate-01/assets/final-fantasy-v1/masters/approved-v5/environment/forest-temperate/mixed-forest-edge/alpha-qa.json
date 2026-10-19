@@ -1,0 +1,45 @@
+{
+  "asset": "mixed-forest-edge",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9a0d8acd-b27c-4315-8a05-a4a54f77e791.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 910010,
+  "opaque_pixels": 2168,
+  "partial_alpha_pixels": 660338,
+  "near_opaque_alpha_250_255_pixels": 635132,
+  "nonzero_alpha_bbox": [
+    0,
+    31,
+    1227,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    91,
+    113,
+    1188,
+    1155
+  ],
+  "margin_pixels_LTRB": [
+    0,
+    31,
+    27,
+    0
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "sha256": "b553937eed0ce4e543bf9881f41d15aacbfa13ca7bc765f4d0ea533b64ce1b64",
+  "production_integration_status": "raw master only; runtime sizing and anchoring pending parent integration"
+}

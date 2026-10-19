@@ -1,0 +1,91 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "fullyTransparentPixels": 1110925,
+  "nearOpaquePixels": 442709,
+  "fullyOpaquePixels": 2179,
+  "partialAlphaPixels": 460208,
+  "visibleBounds": [
+    43,
+    23,
+    1484,
+    982
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    410,
+    62,
+    1301,
+    903
+  ],
+  "edgeMax": 0,
+  "sha256": "6f0bb1e46f6188428c839ec550db5834ff0df39d384ea2424d51db82bea98226",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-fb9c95f6-5706-4cdc-b2a4-fa5328b79850.png",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "masterTransform": "none; native output copied byte-for-byte",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/references/unit-archer/walk-b.png"
+  ],
+  "visualReview": "Opposite half-cycle: forward boot planted flat, rear heel lifted; free glove swung forward. Same right-facing character, never mirrored. Bow carried undrawn. Black and white composites inspected: no visible ground, shadow, opaque background or white halo; complete character and equipment.",
+  "hoodTopSourceY": 115,
+  "lowestBootContourSourceY": 902,
+  "sourceFootAnchorSuggested": [
+    836,
+    902
+  ],
+  "sharedScale": 0.05569620253164557,
+  "sharedScaleLocked": true,
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          480,
+          750,
+          720,
+          992
+        ],
+        "soleLowestContourY": 882,
+        "lowestThreeRowsXSpan": [
+          597,
+          656
+        ],
+        "soleBandCenterX": 626.8
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          830,
+          750,
+          1185,
+          992
+        ],
+        "soleLowestContourY": 902,
+        "lowestThreeRowsXSpan": [
+          996,
+          1093
+        ],
+        "soleBandCenterX": 1045.9
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      836.35,
+      892.0
+    ],
+    "sourceSupportAnchorEstimated": [
+      836,
+      902
+    ],
+    "interpretation": "Rear screen-left boot is raised. Front screen-right boot is planted at y902. Both-boot horizontal footprint midpoint is x836; ground y uses planted front boot y902, not arithmetic mean of raised and planted boots."
+  }
+}

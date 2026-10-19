@@ -1,0 +1,38 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/archer/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/archer/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/archer/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/archer/walk-b/master.png"
+  },
+  "scale": 0.05569620253164557,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    797,
+    910
+  ],
+  "canvasPaddingTolerance": 1,
+  "registrationLimit": 4,
+  "registrationOffsets": {
+    "walk-a": [
+      1.0582278481012657,
+      -0.1670886075949367
+    ],
+    "attack": [
+      3.620253164556962,
+      -0.11139240506329114
+    ],
+    "walk-b": [
+      -2.1721518987341772,
+      0.44556962025316454
+    ]
+  },
+  "registrationBasis": "Boot-only footprint evidence: idle797,910; walk-a778,913; attack732,912; walk-b836,902. Common scale, enlarged transparent frame104x64 allows fullcanvas and <=4px translation. Torso lean retained."
+}

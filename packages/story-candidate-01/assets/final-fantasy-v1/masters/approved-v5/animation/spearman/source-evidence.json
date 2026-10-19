@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-UNIT-SPEARMAN",
+  "manifest": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+  "HDManifest": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json",
+  "HDStrip": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-spearman.png",
+  "HDDimensions": [
+    256,
+    96
+  ],
+  "HDFrameDimensions": [
+    64,
+    96
+  ],
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "runtimeStrip": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-spearman.png",
+  "runtimeDimensions": [
+    128,
+    48
+  ],
+  "runtimeFrameDimensions": [
+    32,
+    48
+  ],
+  "nativeMasterBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/gray-banner-spearman-source.png",
+  "nativeMasterDimensions": [
+    1774,
+    887
+  ],
+  "referenceFrameExtraction": "Native pixel crop only, each64\u00d796 HD frame, no resize/alpha edits; original master board copied byte-for-byte.",
+  "actualIdentity": "Rounded steel kettle helmet with top knob, gray padded/quilted armor, blue-gray tunic skirt, dark brown/gray gloves and boots, brown belt, two-handed wooden spear with pointed steel leaf head, dark cropped hair/stubble; right-facing three-quarter. No shield in any source frame.",
+  "sourcePoseLimitations": "Source walk-a and walk-b visually near-duplicate leg phases; source attack is almost idle. Explicit requested opposite walk phases and clear forward thrust will be newly differentiated while preserving identity and orientation.",
+  "sourceSha256": "dd3a547e95f1c85e68d02d4971487f522da409fc4c742199101273b4c22a184b"
+}

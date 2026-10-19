@@ -1,0 +1,318 @@
+{
+  "config": {
+    "frames": {
+      "idle": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+      "walk-a": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/master.png",
+      "attack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/master.png",
+      "walk-b": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/master.png"
+    },
+    "scale": 0.05569620253164557,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      797,
+      910
+    ],
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "walk-a": [
+        1.0582278481012657,
+        -0.1670886075949367
+      ],
+      "attack": [
+        3.620253164556962,
+        -0.11139240506329114
+      ],
+      "walk-b": [
+        -2.1721518987341772,
+        0.44556962025316454
+      ]
+    },
+    "registrationBasis": "Boot-only footprint evidence: idle797,910; walk-a778,913; attack732,912; walk-b836,902. Common scale, enlarged transparent frame104x64 allows fullcanvas and <=4px translation. Torso lean retained."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    52.38987341772152,
+    54.68354430379747
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d605b70ba2b88f7c5143dca09c65a645be064885cd95d7adab4ebb791fc665b6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4870,
+        "nearOpaquePixels": 1459,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          8,
+          82,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d605b70ba2b88f7c5143dca09c65a645be064885cd95d7adab4ebb791fc665b6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 19754,
+        "nearOpaquePixels": 6080,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          15,
+          163,
+          109
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/master.png",
+      "registrationOffset": [
+        1.0582278481012657,
+        -0.1670886075949367
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "9021095612d8373c05b5567a6194250851776481826273dd8dd90f3d8cc3093e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4914,
+        "nearOpaquePixels": 1405,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          7,
+          81,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/master.png",
+      "registrationOffset": [
+        1.0582278481012657,
+        -0.1670886075949367
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "9021095612d8373c05b5567a6194250851776481826273dd8dd90f3d8cc3093e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 19956,
+        "nearOpaquePixels": 5844,
+        "edgeMax": 0,
+        "visibleBounds": [
+          52,
+          13,
+          163,
+          109
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/master.png",
+      "registrationOffset": [
+        3.620253164556962,
+        -0.11139240506329114
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "3598e90aefa9e18f032060daae447de5d10d335e1f3aca18273254b8e7fead56",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4885,
+        "nearOpaquePixels": 1404,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          7,
+          94,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/master.png",
+      "registrationOffset": [
+        3.620253164556962,
+        -0.11139240506329114
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "3598e90aefa9e18f032060daae447de5d10d335e1f3aca18273254b8e7fead56",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 19835,
+        "nearOpaquePixels": 5884,
+        "edgeMax": 0,
+        "visibleBounds": [
+          60,
+          14,
+          188,
+          109
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/master.png",
+      "registrationOffset": [
+        -2.1721518987341772,
+        0.44556962025316454
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6f0bb1e46f6188428c839ec550db5834ff0df39d384ea2424d51db82bea98226",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5090,
+        "nearOpaquePixels": 1256,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          8,
+          78,
+          55
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/master.png",
+      "registrationOffset": [
+        -2.1721518987341772,
+        0.44556962025316454
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6f0bb1e46f6188428c839ec550db5834ff0df39d384ea2424d51db82bea98226",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20632,
+        "nearOpaquePixels": 5250,
+        "edgeMax": 0,
+        "visibleBounds": [
+          57,
+          16,
+          157,
+          110
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

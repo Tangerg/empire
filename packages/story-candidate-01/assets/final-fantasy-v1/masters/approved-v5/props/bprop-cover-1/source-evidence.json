@@ -1,0 +1,33 @@
+{
+  "topicId": "C01-BPROP-COVER-1",
+  "assetId": "C01-FFV1-BPROP-COVER-1",
+  "label": "\u6728\u7bb1\u5806",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-da71f2cc-aa77-437c-9f9c-bb799a45a77e.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/generated/bprop-cover-1/master.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-01.png, top row column 1",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-01.png",
+    "atlasSha256": "d172b42ad63c32f1a97ccc378a42c947b87e1f2b5d529ca6758f447b56b49ae5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "postprocessing": "None. Byte-exact native PNG copy. No pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/generated/bprop-cover-1/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ]
+}

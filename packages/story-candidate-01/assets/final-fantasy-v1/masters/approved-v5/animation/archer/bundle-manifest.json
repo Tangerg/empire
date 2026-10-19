@@ -1,0 +1,297 @@
+{
+  "asset": "Gray Flag archer, approved chunky style, four-pose native transparent masters",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "masterPolicy": "All masters are byte-for-byte copies of generated native outputs; no resize, crop, background removal, alpha fix or post-processing. Black/white composites are QA only.",
+  "sharedScale": 0.05569620253164557,
+  "bodyReferenceHeightSourcePixels": 790,
+  "bodyTargetHeightPixels": 44,
+  "recommendedFrameSize": [
+    96,
+    64
+  ],
+  "canvasPolicy": "Idle, walk-b and attack are 1586\u00d7992; walk-a is 1585\u00d7992. Consumer may pad walk-a with 1 transparent column on the right; never fit or rescale each image independently. Native masters remain unchanged.",
+  "registrationPolicy": "Use the common 44/790 scale based on body hood-to-sole, never weapon bounds. Keep masters unchanged. Boot-only source support estimates and evidence are provided for parent registration review. Do not align torso centers or neutralize intentional torso lean. Any final bounded translation must be based on tactical foot support, with common fullcanvas/scale and sufficient transparent output padding.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "hoodTopSourceY": 113,
+      "lowestBootContourSourceY": 910,
+      "sourceFootAnchorSuggested": [
+        797,
+        910
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        362,
+        63,
+        1322,
+        911
+      ],
+      "sha256": "d605b70ba2b88f7c5143dca09c65a645be064885cd95d7adab4ebb791fc665b6",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-348a8a96-5d7a-45e6-90fb-b68b036f360f.png",
+      "review": "Coordinator accepted idle style and shared scale. Huge hood/head, broad compact body, huge hands and boots, right-three-quarter idle; whole bow and quiver visible.",
+      "footSupportEvidence": {
+        "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+        "boots": [
+          {
+            "side": "screen-left",
+            "inspectionROI": [
+              420,
+              750,
+              725,
+              992
+            ],
+            "soleLowestContourY": 910,
+            "lowestThreeRowsXSpan": [
+              529,
+              619
+            ],
+            "soleBandCenterX": 573.8
+          },
+          {
+            "side": "screen-right",
+            "inspectionROI": [
+              810,
+              750,
+              1130,
+              992
+            ],
+            "soleLowestContourY": 910,
+            "lowestThreeRowsXSpan": [
+              977,
+              1063
+            ],
+            "soleBandCenterX": 1020.1
+          }
+        ],
+        "bothBootSoleBandMidpoint": [
+          796.95,
+          910.0
+        ],
+        "sourceSupportAnchorEstimated": [
+          797,
+          910
+        ],
+        "interpretation": "Both broad soles are planted. Midpoint of two low sole bands provides stance support anchor."
+      }
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "hoodTopSourceY": 107,
+      "lowestBootContourSourceY": 913,
+      "sourceFootAnchorSuggested": [
+        778,
+        901
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        308,
+        48,
+        1301,
+        914
+      ],
+      "sha256": "9021095612d8373c05b5567a6194250851776481826273dd8dd90f3d8cc3093e",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-75cf0ccd-9955-4357-b9eb-690ace8ce34b.png",
+      "review": "First walking half-cycle: large forward boot shows sole/toe-up; opposite rear boot supports behind; free glove swung backward. Bow carried undrawn on same screen-right side.",
+      "footSupportEvidence": {
+        "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+        "boots": [
+          {
+            "side": "screen-left",
+            "inspectionROI": [
+              500,
+              750,
+              780,
+              992
+            ],
+            "soleLowestContourY": 889,
+            "lowestThreeRowsXSpan": [
+              604,
+              690
+            ],
+            "soleBandCenterX": 647.3
+          },
+          {
+            "side": "screen-right",
+            "inspectionROI": [
+              800,
+              750,
+              1160,
+              992
+            ],
+            "soleLowestContourY": 913,
+            "lowestThreeRowsXSpan": [
+              873,
+              953
+            ],
+            "soleBandCenterX": 907.9
+          }
+        ],
+        "bothBootSoleBandMidpoint": [
+          777.6,
+          901.0
+        ],
+        "sourceSupportAnchorEstimated": [
+          778,
+          901
+        ],
+        "interpretation": "Rear screen-left boot is the clear support; forward screen-right boot is toe-up with low heel. Both footprint midpoint is [778,901]; forward heel reaches y913, rear support y889. This is a walking-pose estimate, not two flat planted feet."
+      }
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "hoodTopSourceY": 115,
+      "lowestBootContourSourceY": 902,
+      "sourceFootAnchorSuggested": [
+        836,
+        902
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        410,
+        62,
+        1301,
+        903
+      ],
+      "sha256": "6f0bb1e46f6188428c839ec550db5834ff0df39d384ea2424d51db82bea98226",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fb9c95f6-5706-4cdc-b2a4-fa5328b79850.png",
+      "review": "Opposite half-cycle: forward boot planted flat, rear heel lifted; free glove swung forward. Same right-facing character, never mirrored. Bow carried undrawn.",
+      "footSupportEvidence": {
+        "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+        "boots": [
+          {
+            "side": "screen-left",
+            "inspectionROI": [
+              480,
+              750,
+              720,
+              992
+            ],
+            "soleLowestContourY": 882,
+            "lowestThreeRowsXSpan": [
+              597,
+              656
+            ],
+            "soleBandCenterX": 626.8
+          },
+          {
+            "side": "screen-right",
+            "inspectionROI": [
+              830,
+              750,
+              1185,
+              992
+            ],
+            "soleLowestContourY": 902,
+            "lowestThreeRowsXSpan": [
+              996,
+              1093
+            ],
+            "soleBandCenterX": 1045.9
+          }
+        ],
+        "bothBootSoleBandMidpoint": [
+          836.35,
+          892.0
+        ],
+        "sourceSupportAnchorEstimated": [
+          836,
+          902
+        ],
+        "interpretation": "Rear screen-left boot is raised. Front screen-right boot is planted at y902. Both-boot horizontal footprint midpoint is x836; ground y uses planted front boot y902, not arithmetic mean of raised and planted boots."
+      }
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "hoodTopSourceY": 126,
+      "lowestBootContourSourceY": 912,
+      "sourceFootAnchorSuggested": [
+        732,
+        912
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        329,
+        54,
+        1485,
+        913
+      ],
+      "sha256": "3598e90aefa9e18f032060daae447de5d10d335e1f3aca18273254b8e7fead56",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-96164090-41dc-4b35-b8c5-de673fc8fa8e.png",
+      "review": "Full bow draw with one straight horizontal nocked arrow pointing right, pulling hand at cheek and clear V-shaped string attached to both bow tips. Complete bow and arrow tip. Stable stance. Both support footprints shift left as documented in footSupportEvidence; keep deliberate torso lean. Parent decides foot-based registration, never torso centering. Black and white composites inspected: no visible ground, shadow, opaque background or white halo; complete character and equipment.",
+      "footSupportEvidence": {
+        "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+        "boots": [
+          {
+            "side": "screen-left",
+            "inspectionROI": [
+              330,
+              750,
+              635,
+              992
+            ],
+            "soleLowestContourY": 911,
+            "lowestThreeRowsXSpan": [
+              437,
+              527
+            ],
+            "soleBandCenterX": 481.6
+          },
+          {
+            "side": "screen-right",
+            "inspectionROI": [
+              775,
+              750,
+              1100,
+              992
+            ],
+            "soleLowestContourY": 912,
+            "lowestThreeRowsXSpan": [
+              942,
+              1023
+            ],
+            "soleBandCenterX": 982.7
+          }
+        ],
+        "bothBootSoleBandMidpoint": [
+          732.15,
+          911.5
+        ],
+        "sourceSupportAnchorEstimated": [
+          732,
+          912
+        ],
+        "interpretation": "Both soles planted. Support midpoint [732,911.5] is about65 source px left of idle [797,910], equivalent to3.62 logical px at locked44/790scale. Individual sole shifts left92 and37px show a shifted/asymmetric whole stance, beyond torso lean alone. Preserve deliberate torso lean; parent decides bounded stance registration translation."
+      }
+    }
+  }
+}

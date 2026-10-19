@@ -1,0 +1,91 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "fullyTransparentPixels": 1049567,
+  "nearOpaquePixels": 498762,
+  "fullyOpaquePixels": 1332,
+  "partialAlphaPixels": 522413,
+  "visibleBounds": [
+    27,
+    17,
+    1504,
+    974
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    329,
+    54,
+    1485,
+    913
+  ],
+  "edgeMax": 0,
+  "sha256": "3598e90aefa9e18f032060daae447de5d10d335e1f3aca18273254b8e7fead56",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-96164090-41dc-4b35-b8c5-de673fc8fa8e.png",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "masterTransform": "none; native output copied byte-for-byte",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/references/unit-archer/attack.png"
+  ],
+  "visualReview": "Full bow draw with one straight horizontal nocked arrow pointing right, pulling hand at cheek and clear V-shaped string attached to both bow tips. Complete bow and arrow tip. Stable stance. Both support footprints shift left as documented in footSupportEvidence; keep deliberate torso lean. Parent decides foot-based registration, never torso centering. Black and white composites inspected: no visible ground, shadow, opaque background or white halo; complete character and equipment.",
+  "hoodTopSourceY": 126,
+  "lowestBootContourSourceY": 912,
+  "sourceFootAnchorSuggested": [
+    732,
+    912
+  ],
+  "sharedScale": 0.05569620253164557,
+  "sharedScaleLocked": true,
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          330,
+          750,
+          635,
+          992
+        ],
+        "soleLowestContourY": 911,
+        "lowestThreeRowsXSpan": [
+          437,
+          527
+        ],
+        "soleBandCenterX": 481.6
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          775,
+          750,
+          1100,
+          992
+        ],
+        "soleLowestContourY": 912,
+        "lowestThreeRowsXSpan": [
+          942,
+          1023
+        ],
+        "soleBandCenterX": 982.7
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      732.15,
+      911.5
+    ],
+    "sourceSupportAnchorEstimated": [
+      732,
+      912
+    ],
+    "interpretation": "Both soles planted. Support midpoint [732,911.5] is about65 source px left of idle [797,910], equivalent to3.62 logical px at locked44/790scale. Individual sole shifts left92 and37px show a shifted/asymmetric whole stance, beyond torso lean alone. Preserve deliberate torso lean; parent decides bounded stance registration translation."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-COVER-1",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4215664578293639,
+  "nearOpaqueFractionAlphaGE250": 0.5685188576777597,
+  "nonzeroAlphaBBox": [
+    0,
+    16,
+    1230,
+    1224
+  ],
+  "visibleAlphaBBoxGE8": [
+    80,
+    72,
+    1187,
+    1207
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    80,
+    72,
+    67,
+    47
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 14,
+  "sha256": "4ccb5c34a860964d27915a759db65be0991f0bd09e568ec88e804e2ea88d3c1f",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable silhouette, bold dark contours, exaggerated chunky forms, broad matte cel planes, no miniature surface texture, no background or broad cast shadow.",
+  "remarks": [
+    "Native generator has a few alpha=1 pixels at canvas edges. They are retained unchanged; no visible silhouette clipping.",
+    "Visual margins are complete but narrower than requested 8% on at least one side."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

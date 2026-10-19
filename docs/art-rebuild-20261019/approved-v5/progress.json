@@ -25,9 +25,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 2,
+  "authoredFourPoseBundles": 3,
   "authoredThreeStateBundles": 2,
-  "formalRuntimeBoundTopics": 3,
+  "formalRuntimeBoundTopics": 4,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -48,9 +48,9 @@
       "liveGame": "pending"
     },
     "C01-UNIT-ARCHER": {
-      "raw": "idle preserved; remaining poses in progress",
-      "export": "pending",
-      "runtimeBinding": "pending",
+      "raw": "4/4 preserved",
+      "export": "shared-scale and native semantic QA passed",
+      "runtimeBinding": "canonical manifest and HD resolver bound; regression tests passed",
       "liveGame": "pending"
     }
   },
@@ -91,7 +91,7 @@
   "totalCanonicalScope": 1212,
   "priorTechnicalExportsRequireStyleReview": true,
   "tests": {
-    "focusedRuntime": 14,
+    "focusedRuntime": 15,
     "typecheck": "passed",
     "artToolTests": 83,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",

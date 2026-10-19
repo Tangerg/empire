@@ -1025,13 +1025,13 @@
       "topicId": "C01-UNIT-ARCHER",
       "label": "弓箭手",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-archer.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-archer.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1040,8 +1040,8 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        52.38987341772152,
+        54.68354430379747
       ],
       "footprint": [
         1,

@@ -43,10 +43,62 @@
     1322,
     911
   ],
-  "visualReview": "Black and white composites inspected: complete hood, quiver, bow, both boots; no visible ground, shadow, background, or white halos; strong approved thick-outline giant-head cel-shaded style match. Native alpha retained without edits. Pending coordinator shared-scale review.",
+  "visualReview": "Coordinator accepted idle style and shared scale. Huge hood/head, broad compact body, huge hands and boots, right-three-quarter idle; whole bow and quiver visible. Black and white composites inspected: no visible ground, shadow, opaque background or white halo; complete character and equipment.",
   "approximateBodyRegistration": {
     "hoodTop": 115,
     "soleY": 905,
     "footCenterX": 785
+  },
+  "hoodTopSourceY": 113,
+  "lowestBootContourSourceY": 910,
+  "sourceFootAnchorSuggested": [
+    797,
+    910
+  ],
+  "sharedScale": 0.05569620253164557,
+  "sharedScaleLocked": true,
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, manually isolated lower-boot ROIs, lower3rows sole contour mass center. Pixel data measured without editing image. These are stylized projected silhouette/support estimates, not skeletal rig coordinates.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          420,
+          750,
+          725,
+          992
+        ],
+        "soleLowestContourY": 910,
+        "lowestThreeRowsXSpan": [
+          529,
+          619
+        ],
+        "soleBandCenterX": 573.8
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          810,
+          750,
+          1130,
+          992
+        ],
+        "soleLowestContourY": 910,
+        "lowestThreeRowsXSpan": [
+          977,
+          1063
+        ],
+        "soleBandCenterX": 1020.1
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      796.95,
+      910.0
+    ],
+    "sourceSupportAnchorEstimated": [
+      797,
+      910
+    ],
+    "interpretation": "Both broad soles are planted. Midpoint of two low sole bands provides stance support anchor."
   }
 }

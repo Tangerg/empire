@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-BPROP-COVER-2",
+  "assetId": "C01-FFV1-BPROP-COVER-2",
+  "label": "\u4e34\u65f6\u76fe\u5899",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-56c27e40-49a2-40cb-92ee-da68bcddac6f.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/generated/bprop-cover-2/master.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-01.png, top row column 2",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-01.png",
+    "atlasSha256": "d172b42ad63c32f1a97ccc378a42c947b87e1f2b5d529ca6758f447b56b49ae5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "postprocessing": "None. Byte-exact native PNG copy. No pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "initialGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fb6e9649-a07d-4b89-8ea4-4a6d826bb0d7.png",
+  "refinement": {
+    "reason": "Wider native transparent framing; initial assembly had narrow right margin",
+    "input": "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-cover-2/candidate-v1.png",
+    "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-cover-2/refinement-prompt.txt",
+    "method": "built-in image_gen, no pixel postprocessing",
+    "toolInputReferencePaths": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-cover-2/candidate-v1.png"
+    ]
+  },
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt.txt"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/generated/bprop-cover-2/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ]
+}

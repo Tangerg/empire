@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-BPROP-FACTION-2",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6994459833795014,
+  "nearOpaqueFractionAlphaGE250": 0.2903366325048521,
+  "nonzeroAlphaBBox": [
+    0,
+    20,
+    1240,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    324,
+    75,
+    973,
+    1197
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    324,
+    75,
+    281,
+    57
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 12,
+  "sha256": "a3129b6ca589e7deea7346f7951b593012860b32d924144041eb7f30292f0ad6",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable silhouette, bold dark contours, exaggerated chunky forms, broad matte cel planes, no miniature surface texture, no background or broad cast shadow.",
+  "remarks": [
+    "Native generator has a few alpha=1 pixels at canvas edges. They are retained unchanged; no visible silhouette clipping.",
+    "Visual margins are complete but narrower than requested 8% on at least one side."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Ivory upper field and burgundy lower field meet at upward central peak, verified against original atlas. Not the diagonal keep banner."
+}
