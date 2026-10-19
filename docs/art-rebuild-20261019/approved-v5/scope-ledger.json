@@ -12,7 +12,7 @@
       "interactive-structure": 22,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 83,
+    "rawPreservedTopics": 85,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1529,8 +1529,11 @@
       "category": "combat-unit",
       "label": "审判官",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-a/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3044,8 +3047,10 @@
       "category": "interactive-structure",
       "label": "灰誓公开告示",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-oath-notice/normal/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -18134,7 +18139,7 @@
         "count": 3,
         "export": "96/192 full authored canvas and measured structural contact; untouched other13 cells preserved",
         "runtimeBinding": "existing later-level fortress selectors; no bridge or gameplay changes",
-        "sceneReview": "Native static review; full fortress context pending",
+        "sceneReview": "Unresolved legacy topology: c01-13 randomly places26 decorative gatehouses on impassable wall cells;28/35 north-south adjacent wall pairs have alpha gaps up to15.55px. Native source/export pass does not establish coherent fortress integration.",
         "liveGame": "pending"
       }
     },

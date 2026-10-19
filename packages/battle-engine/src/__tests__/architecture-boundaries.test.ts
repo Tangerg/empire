@@ -1,3 +1,12 @@
+// Compile public barrels during test collection; boundary assertions do not measure cold Vite transforms.
+import * as boundary_battle from '../index';
+import * as boundary_common from '../../../content-common/src/index';
+import * as boundary_ancient from '../../../content-ancient-empires/src/index';
+import * as boundary_candidate from '../../../story-candidate-01/src/index';
+import * as boundary_presentation from '../../../story-candidate-01/src/presentation/index';
+import * as boundary_experience from '../../../experience-lab/src/index';
+import * as boundary_testContent from '../../../test-content/src/index';
+import * as boundary_gameUi from '../../../game-ui/src/index';
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join, relative, sep } from 'node:path';
@@ -916,7 +925,7 @@ describe('a package publishes one way in', () => {
     // kernel, manufacture a naked state, or bypass the aggregate's writer.
     // These names were all exported by `export *`, although no production
     // package used them. That made the internal implementation look canonical.
-    const api = await import('../index');
+    const api = boundary_battle;
     const privateNames = [
       'BattleEngine',
       'SrpgMicrokernel',
@@ -948,15 +957,13 @@ describe('a package publishes one way in', () => {
     expect(privateNames.filter((name) => name in api)).toEqual([]);
     expect(api.createBattleEngine).toBeTypeOf('function');
 
-    const [common, ancient, candidate, presentation, experience, testContent, gameUi] = await Promise.all([
-      import('../../../content-common/src/index'),
-      import('../../../content-ancient-empires/src/index'),
-      import('../../../story-candidate-01/src/index'),
-      import('../../../story-candidate-01/src/presentation/index'),
-      import('../../../experience-lab/src/index'),
-      import('../../../test-content/src/index'),
-      import('../../../game-ui/src/index'),
-    ]);
+    const common = boundary_common;
+    const ancient = boundary_ancient;
+    const candidate = boundary_candidate;
+    const presentation = boundary_presentation;
+    const experience = boundary_experience;
+    const testContent = boundary_testContent;
+    const gameUi = boundary_gameUi;
     expect(Object.keys(common).sort()).toEqual(['COMMON_CONTENT_PACK', 'IMPASSABLE', 'moveCosts']);
     expect(Object.keys(ancient).sort()).toEqual(['ANCIENT_EMPIRES_CONTENT_PACK', 'ANCIENT_EMPIRES_LEVELS']);
     expect(Object.keys(candidate).sort()).toEqual([

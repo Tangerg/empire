@@ -36,12 +36,15 @@ describe('registered horizontal crossing', () => {
     }
   });
 
-  it('preserves both complete legacy atlas files for vertical and unrelated fortification consumers', () => {
+  it('preserves immutable legacy atlases and excludes bridge cells from registered fortress overlays', () => {
+    const catalog = JSON.parse(readFileSync(resolve(pack, '../../../../tools/art/environment-overrides.json'), 'utf8'));
+    expect(Object.keys(catalog.atlases['crossings-fortifications'].cells).sort()).toEqual(['stone-gatehouse', 'stone-wall-corner', 'stone-wall-straight']);
+    // Exact unchanged-cell pixel checks are also enforced by export_environment_overrides --check.
     for (const [name, hash] of [
       ['crossings-fortifications.png', '43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab'],
       ['crossings-fortifications@2x.png', '3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1'],
     ]) {
-      const bytes = readFileSync(resolve(pack, 'environment-builder-v1/runtime/atlas', name));
+      const bytes = readFileSync(resolve(pack, 'masters/approved-v5/environment/baselines', name));
       expect(createHash('sha256').update(bytes).digest('hex')).toBe(hash);
     }
   });
