@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-SKILL-05",
+  "assetId": "C01-FFV1-SKILL-05",
+  "label": "侦察",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7b61b902-8430-4e94-90e6-10716adfa498.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-05-cell.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-01.png",
+    "atlasSha256": "7a6dd8241717ebdacbae85330bd6362b6b7cae98bc34544b0f5515ff9dbb5c49",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-01.png, row 2 column 1 (one based)",
+    "topicIndex": 4,
+    "inspectionCropCoordinates": [
+      2,
+      316,
+      312,
+      625
+    ],
+    "inspectionCropTreatment": "Unscaled source cell crop for identity inspection only; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-05.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent assigned skill-05 through skill-08 after approving the first four actual-48px exports; source semantics reported before generation."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-05-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One SCOUT skill symbol copied from original reference 1. UPPER HALF: one gray pointed hood with broad cloth folds and short shoulder flaps, its face opening is a flat opaque near-black recess holding EXACTLY ONE ivory almond-shaped EYE with a black round pupil. This is an abstract hood-and-eye symbol, no nose, mouth, whole person or extra eyes. LOWER HALF: one broad unfolded tan parchment MAP with a few large folds and a slightly irregular lower edge. Preserve its functional route graphic precisely: EXACTLY THREE dark X marks at lower-left, lower-center and lower-right; three dashed routes rise from those marks and converge centrally; from the meeting point ONE large dark arrow points UP, with a smaller upward arrowhead on the same center shaft just below the large one, as in source. Keep the three X positions, three branches and upward direction. Reference 4 is an original map detail. No letters, numbers, cities, compass rose or extra map marks. The map is a functional backing object and must remain.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits."
+}
