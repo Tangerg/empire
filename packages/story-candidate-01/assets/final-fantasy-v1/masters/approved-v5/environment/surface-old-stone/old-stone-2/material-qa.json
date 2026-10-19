@@ -1,0 +1,65 @@
+{
+  "asset": "old-stone-2",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "4427b87a7726ecc6b48d0acff1b7784218da2ae6990f1f06c4fd7d7be2a78b17",
+  "RGB_mean": [
+    119.98473592637531,
+    108.93518539715971,
+    91.53824126431782
+  ],
+  "RGB_std": [
+    16.406554660047796,
+    14.846699090327302,
+    18.99024144499024
+  ],
+  "luma_mean": 110.02826047327977,
+  "luma_std": 15.339423659281426,
+  "luma_percentiles_5_50_95": [
+    79.7486,
+    112.25959999999999,
+    132.5364
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 110.85039143989235,
+    "bottom": 107.41773381429425,
+    "left": 115.1292541716507,
+    "right": 112.30091605612041,
+    "central_half": 109.61582857671713
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 8.001594896331738,
+    "top_bottom_mean_abs_RGB": 13.576023391812866,
+    "left_right_max_abs_RGB": 57.0,
+    "top_bottom_max_abs_RGB": 67.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "material_identity": "Broad irregular rectangular/square flagstone slabs in loose offset courses, with olive moss in joints. Distinct from rounded cobbles.",
+    "style": "Warm gray-brown low-contrast matte faces, no square outer border or bright center. Some soft face mottling remains. Moss occurs in more joints and is more nearly continuous than the requested sparse-patch direction; noted for parent review.",
+    "stone_scale": "Visual estimate approximately4-6 main slabs across representative horizontal bands plus smaller infill, below requested10-14. No forced stretch or repeat edit; native candidate retained.",
+    "candidate128_world_effect": "Main slab widths roughly22-40logical units at128full-source period; parent should choose sample period or request one targeted density revision.",
+    "coverage": "Native opaque edge-to-edge material; not claimed seamless."
+  },
+  "reference_material_identity": "Larger irregular rectangular/square stone slabs with visible sparse olive moss in their wider joints",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    128,
+    128
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

@@ -2058,13 +2058,13 @@
       "topicId": "C01-UNIT-WOLF-RIDER",
       "label": "狼骑兵",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-wolf-rider.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-wolf-rider.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2073,13 +2073,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        61.549420209828824,
+        61.70403092214246
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-WOODLAND-WALKER",

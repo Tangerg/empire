@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 198,
+    "formalBound": 199,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 26,
+      "combat-unit": 27,
       "equipment": 59,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 24
     },
-    "rawPreservedTopics": 201,
+    "rawPreservedTopics": 205,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1993,11 +1993,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-wolf-rider.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-wolf-rider.png",
+      "stageEvidence": {
+        "raw": "four distinct poses preserved; overlong attack spear rejected and corrected native source retained",
+        "export": "shared scale and registered feet, native silhouette/pose review passed",
+        "runtimeBinding": "canonical plus HD resolver bound; full c01-07 offline comparison, rule positions unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-WOODLAND-WALKER",
@@ -5787,8 +5792,10 @@
       "category": "skill",
       "label": "修塔",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-27/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5801,8 +5808,10 @@
       "category": "skill",
       "label": "切断控制",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-28/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11299,8 +11308,10 @@
       "category": "equipment",
       "label": "星门守卫主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-stargate-guard/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11383,8 +11394,10 @@
       "category": "equipment",
       "label": "真空兵主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-vacuum-trooper/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

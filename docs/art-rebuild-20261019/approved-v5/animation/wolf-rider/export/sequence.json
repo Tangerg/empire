@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-b/master.png"
+    },
+    "scale": 0.05742683600220872,
+    "origin": [
+      14,
+      6
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      828,
+      970
+    ],
+    "sourceFeet": {
+      "idle": [
+        828,
+        970
+      ],
+      "walk-a": [
+        822,
+        935
+      ],
+      "attack": [
+        751,
+        950
+      ],
+      "walk-b": [
+        870,
+        949
+      ]
+    },
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 5,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.34456101601325234,
+        2.009939260077305
+      ],
+      "attack": [
+        4.421866372170071,
+        1.1485367200441745
+      ],
+      "walk-b": [
+        -2.411927112092766,
+        1.205963556046383
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    61.549420209828824,
+    61.70403092214246
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ff238f393f6021f3dad378df1094cd601fbb6c4b2100c74663c2c27a11f56c9d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 8412,
+        "nearOpaquePixels": 1495,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          9,
+          87,
+          62
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ff238f393f6021f3dad378df1094cd601fbb6c4b2100c74663c2c27a11f56c9d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33906,
+        "nearOpaquePixels": 6263,
+        "edgeMax": 0,
+        "visibleBounds": [
+          60,
+          18,
+          174,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-a/master.png",
+      "registrationOffset": [
+        0.34456101601325234,
+        2.009939260077305
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "cff693f35ae1d0b9c8cc324db40b8e7b31604c6b3cefd2393affd6658c5abeeb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8398,
+        "nearOpaquePixels": 1487,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          10,
+          90,
+          62
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-a/master.png",
+      "registrationOffset": [
+        0.34456101601325234,
+        2.009939260077305
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "cff693f35ae1d0b9c8cc324db40b8e7b31604c6b3cefd2393affd6658c5abeeb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33922,
+        "nearOpaquePixels": 6234,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          20,
+          179,
+          124
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/attack/master.png",
+      "registrationOffset": [
+        4.421866372170071,
+        1.1485367200441745
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "ebf27d908f8e98bbe27007704073ec88cc5f1662e40c7fee409004d75383a753",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8114,
+        "nearOpaquePixels": 1753,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          10,
+          98,
+          62
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/attack/master.png",
+      "registrationOffset": [
+        4.421866372170071,
+        1.1485367200441745
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "ebf27d908f8e98bbe27007704073ec88cc5f1662e40c7fee409004d75383a753",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32819,
+        "nearOpaquePixels": 7278,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          21,
+          196,
+          124
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-b/master.png",
+      "registrationOffset": [
+        -2.411927112092766,
+        1.205963556046383
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "454d2fe00e66e72cd45c8003f17e08194373b5e81d9d8df2cdf20b8582f00e3e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8378,
+        "nearOpaquePixels": 1505,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          9,
+          87,
+          62
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wolf-rider/walk-b/master.png",
+      "registrationOffset": [
+        -2.411927112092766,
+        1.205963556046383
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "454d2fe00e66e72cd45c8003f17e08194373b5e81d9d8df2cdf20b8582f00e3e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33812,
+        "nearOpaquePixels": 6345,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          19,
+          174,
+          123
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

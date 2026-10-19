@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-old-stone",
+  "cell_index": 1,
+  "original_cellOrder_token": "old-stone-2",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c30229c3-6649-4e8f-b0bb-3fc554762d17.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/old-stone-2-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json",
+  "sha256": "4427b87a7726ecc6b48d0acff1b7784218da2ae6990f1f06c4fd7d7be2a78b17",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    128,
+    128
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "material_identity": "Broad irregular rectangular/square flagstone slabs in loose offset courses, with olive moss in joints. Distinct from rounded cobbles.",
+    "style": "Warm gray-brown low-contrast matte faces, no square outer border or bright center. Some soft face mottling remains. Moss occurs in more joints and is more nearly continuous than the requested sparse-patch direction; noted for parent review.",
+    "stone_scale": "Visual estimate approximately4-6 main slabs across representative horizontal bands plus smaller infill, below requested10-14. No forced stretch or repeat edit; native candidate retained.",
+    "candidate128_world_effect": "Main slab widths roughly22-40logical units at128full-source period; parent should choose sample period or request one targeted density revision.",
+    "coverage": "Native opaque edge-to-edge material; not claimed seamless."
+  }
+}

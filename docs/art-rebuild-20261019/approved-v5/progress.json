@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 28,
+  "authoredFourPoseBundles": 29,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 198,
+  "formalRuntimeBoundTopics": 199,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1262,6 +1262,12 @@
       "runtimeBinding": "canonical48x48 anchor24,24; noHD; catalog-only",
       "liveGame": "pending",
       "evidence": "approved-v5/scifi-equipment-third-four/native48-review.png"
+    },
+    "C01-UNIT-WOLF-RIDER": {
+      "raw": "four distinct poses preserved; overlong attack spear rejected and corrected native source retained",
+      "export": "shared scale and registered feet, native silhouette/pose review passed",
+      "runtimeBinding": "canonical plus HD resolver bound; full c01-07 offline comparison, rule positions unchanged",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
