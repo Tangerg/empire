@@ -1,0 +1,58 @@
+{
+  "method": "Read-only native image matching of three broad surviving body patches, sparse4px samples, no image transformation",
+  "results": [
+    {
+      "region": "left_lower",
+      "normalBox": [
+        80,
+        600,
+        410,
+        980
+      ],
+      "bestNativeDelta": [
+        0,
+        42
+      ],
+      "meanAbsRgbError": 10.64201815269621
+    },
+    {
+      "region": "door",
+      "normalBox": [
+        430,
+        650,
+        750,
+        980
+      ],
+      "bestNativeDelta": [
+        0,
+        42
+      ],
+      "meanAbsRgbError": 9.75556902560994
+    },
+    {
+      "region": "right_lower",
+      "normalBox": [
+        760,
+        700,
+        1180,
+        1100
+      ],
+      "bestNativeDelta": [
+        0,
+        42
+      ],
+      "meanAbsRgbError": 10.102586771447282
+    }
+  ],
+  "normalFoundationY": 1126,
+  "capturedFoundationY": 1167,
+  "suggestedNativeDrawOffset": [
+    0,
+    -41
+  ],
+  "suggestedLogicalDrawOffset": [
+    0,
+    -3.8915254237288135
+  ],
+  "masterEdited": false
+}

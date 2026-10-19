@@ -19,7 +19,7 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Finish final ground decals, four high-coverage cliff modules, ranger poses and old-city tunnel states; retain full-map cohesion gate.",
+  "next": "Replace remaining active cliffs and camps, complete capital-gate states and assassin poses; then remaining canonical and environment scope. Keep full-map cohesion/occlusion review and live-game gate.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
@@ -712,7 +712,7 @@
       "scope": "b0562c6 ranger/firstcliffpair runtime checkpoint; later atlas-only additions separately export-checked"
     },
     "latestBindingAndEdges": "89 asset/environment tests passed after ranger and first cliff pair",
-    "artPythonLatest": "147 passed in exact cliff-contract engineering checkpoint",
+    "artPythonLatest": "147 passed at f8789f8 integration checkpoint",
     "typecheckLatest": "passed after firstfour cliffs and village square"
   },
   "liveGameVerifiedAnimationTopics": 0,
@@ -751,8 +751,10 @@
     }
   },
   "integrationGate": {
-    "fullMap": "standing-depth-current/full-scene-labeled.png",
-    "status": "shared footpoint sorting and building scale verified in complete BoardView scene; real foreground occlusion remains a tactical readability follow-up",
+    "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
+    "secondLevel": "cart-stop-full-scene/full-scene-labeled.png",
+    "status": "Full firstlevel19/19 and secondlevel20/20 initial ruleactors use approved art. All objects retained, shared foot-depth and selected-visible-only cue retained. Decorative farmer NPCs, remaining cliff/camp identities and other terrain material families remain legacy; no overall completion claim.",
+    "pureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
     "liveGame": "pending"
   }
 }

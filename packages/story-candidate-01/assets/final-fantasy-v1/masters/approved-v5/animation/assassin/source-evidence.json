@@ -1,0 +1,133 @@
+{
+  "topicId": "C01-UNIT-ASSASSIN",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-ASSASSIN",
+    "topicId": "C01-UNIT-ASSASSIN",
+    "label": "刺客",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-assassin.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-assassin.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-assassin.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ranger-assassin-mage-knight.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "106fa7d2969edddf6d6a700577eb599ded691423c28e0dced1a956c9a0cbd0eb"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-assassin.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "4d8800a6e21853a70a8257d134161eb72dfb2bb86a952d688150d967269c1f68"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-assassin.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "7d96473518c07c11aa4d38a75be5286942714733080505a1b89dd7dc2bf0bcee"
+    }
+  },
+  "status": "Identity verified; idle generation pending",
+  "actualConsumers": [
+    "rogue"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 52,
+    "text": "rogue: 'C01-UNIT-ASSASSIN'"
+  },
+  "referenceExtraction": "Native unresampled atlas second-row crop [0,330,1254,645] and first idle cell [0,330,314,645], stops before mage hair at next row. Four HD frames are native64x96 crops. Original full board and both strips preserved unchanged.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Unhooded adult human man, short tousled black hair, close dark jaw/chin beard, uncovered stern face. Charcoal-blue-gray raised-collar long jacket with cream edge/lapels, cream neck/chest and wrist wraps with small muted reddish marks, brown fingerless gloves/belt/pouch/boots, olive-brown trousers. Exactly two compact curved steel daggers: screen-left blade low angled down-right, screen-right blade up-right. No helmet, mask, shield or ranged weapon.",
+  "semanticEvidence": {
+    "unitDefinition": "packages/content-ancient-empires/src/units.ts:39-47",
+    "weaponDefinition": "packages/content-ancient-empires/src/weapons.ts:30-40",
+    "weapons": [
+      "rogue_blades"
+    ],
+    "weaponName": "淬毒双刃",
+    "damageType": "pierce",
+    "tags": [
+      "melee"
+    ],
+    "hitEffect": "poisoned status, duration2",
+    "visualContract": "Original third frame is visually near-idle and fourth repeats first walking phase; remake keeps canonical order and reconstructs a clear compact dual-dagger melee lunge and opposite walk contacts. No external poison effects invented."
+  },
+  "actualLevelDefinitions": [
+    {
+      "file": "packages/content-ancient-empires/src/levels/02-three-bridges.json",
+      "units": [
+        {
+          "cell": [
+            5,
+            8
+          ],
+          "owner": 1
+        },
+        {
+          "cell": [
+            18,
+            9
+          ],
+          "owner": 2
+        }
+      ]
+    },
+    {
+      "file": "packages/content-ancient-empires/src/levels/04-cliff-training.json",
+      "units": [
+        {
+          "cell": [
+            7,
+            5
+          ],
+          "owner": 2,
+          "facing": "west"
+        }
+      ]
+    }
+  ],
+  "consumerStatus": "Built-in rogue only. No c01 campaign protagonist binding. Level coordinates are source definitions, not a claim of current live actors.",
+  "scaleContract": "Approved chunky human family44logical standing body; idle first before locking one scale across quartet."
+}

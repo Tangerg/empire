@@ -12,15 +12,17 @@
       "interactive-structure": 20,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 79,
+    "rawPreservedTopics": 81,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
     "registeredEnvironmentCells": 94
   },
   "sceneCohesion": {
-    "fullMap": "standing-depth-current/full-scene-labeled.png",
-    "status": "shared footpoint sorting and building scale verified in complete BoardView scene; real foreground occlusion remains a tactical readability follow-up",
+    "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
+    "secondLevel": "cart-stop-full-scene/full-scene-labeled.png",
+    "status": "Full firstlevel19/19 and secondlevel20/20 initial ruleactors use approved art. All objects retained, shared foot-depth and selected-visible-only cue retained. Decorative farmer NPCs, remaining cliff/camp identities and other terrain material families remain legacy; no overall completion claim.",
+    "pureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
     "liveGame": "pending"
   },
   "authoredTeamVariants": {
@@ -1225,8 +1227,10 @@
       "category": "combat-unit",
       "label": "刺客",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2895,8 +2899,11 @@
       "category": "interactive-structure",
       "label": "王都宫门",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/capital-gate/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/capital-gate/normal/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
