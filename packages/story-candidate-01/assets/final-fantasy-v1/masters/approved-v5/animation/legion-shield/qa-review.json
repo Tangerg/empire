@@ -1,0 +1,46 @@
+{
+  "status": "Native quartet visual/geometry QA passes; coordinator export/binding pending",
+  "topic": "C01-UNIT-LEGION-SHIELD",
+  "actualConsumers": [
+    "c01.cain",
+    "c01.legion-shield"
+  ],
+  "bodyScale": "44/909.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1585,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1584,
+      993
+    ],
+    "walk-b": [
+      1584,
+      993
+    ]
+  },
+  "sourcePaddingRequired": "Common1585x993: idle/walk-a one bottom row; attack/walk-b one right column. None applied to native masters",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All perimeter alpha<=1; zero silhouette alpha>1 on edges; no alpha cleanup",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "equipmentHandsPreserved": true,
+  "walkContactsOppose": true,
+  "attackSemanticsPass": "Clear horizontal piercing spear thrust with extended original bare weapon hand and braced wide stance. Rigid spear shaft and stepped triangular blade project ahead of the retained upright shield. Same helmet, armor, shield stripe and physical equipment hands, no effects.",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b. c01.legion-spear is piercing melee with formation and anti-cavalry tags; Cain also has knight-charge. The shared attack slot visibly thrusts the spear while retaining the shield, with no extra action or mounted form.",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

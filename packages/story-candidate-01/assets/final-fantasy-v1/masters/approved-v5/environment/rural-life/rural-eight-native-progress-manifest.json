@@ -1,0 +1,479 @@
+{
+  "family": "rural-life",
+  "status": "eight assigned native sources complete; remaining eight rural identities not claimed",
+  "asset_count": 8,
+  "catalog_total": 16,
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "runtime_anchor": [
+    56,
+    108
+  ],
+  "all_current_alpha_gates_pass": true,
+  "runtime_integration_not_claimed": true,
+  "assets": [
+    {
+      "identity": "wheat-sheaves",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/wheat-sheaves-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/evidence.json",
+      "source_foot_estimate_px": [
+        630,
+        1010
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "883416e3b72297787ef25f08e0491ed7730f34dbb9b1a055ede4115b53e71503",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7613c582-4179-4a75-88f2-b339380a780c.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.502392,
+        0.805423
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/wheat-sheaves.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/wasteland-dry-grass-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        83,
+        154,
+        72,
+        144
+      ],
+      "original_slot_zero_based": 4,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "upright_wheat_sheaves": 4
+      }
+    },
+    {
+      "identity": "wheat-bundles",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-bundles/wheat-bundles-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-bundles/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-bundles/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-bundles/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-bundles/evidence.json",
+      "source_foot_estimate_px": [
+        641,
+        1038
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "03d8eeb3b83a4f60cbac635b72f9850302e247918b6f2accc25fa90322592b33",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5df8281b-3988-45c2-b917-3fe8d6573cd3.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.511164,
+        0.827751
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/wheat-bundles.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/wasteland-dry-grass-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        89,
+        247,
+        82,
+        137
+      ],
+      "original_slot_zero_based": 5,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "horizontal_wheat_bundles": 5,
+        "bottom_row": 3,
+        "top_row": 2
+      }
+    },
+    {
+      "identity": "grain-sacks-baskets",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/grain-sacks-baskets-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        1010
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "2ac8706238be430283f83fa11e0eacec5bc8830c5b326219bf3636963f042a41",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e0d01d50-df93-4c3a-ac73-b5e64b70efd0.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.805423
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/grain-sacks-baskets.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/forge-coal-sacks-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/attempts/initial-native.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        83,
+        230,
+        69,
+        171
+      ],
+      "original_slot_zero_based": 6,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "cloth_sacks": 3,
+        "wooden_grain_barrels": 2,
+        "grain_basket": 1
+      }
+    },
+    {
+      "identity": "wheat-drying-rack",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/wheat-drying-rack-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-drying-rack/evidence.json",
+      "source_foot_estimate_px": [
+        545,
+        923
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "193a25a3e53cf1b3e87606adf430eba735d024258f73556727266feb7ceddcb2",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-d493b47c-9ea4-44bc-8a31-c95e841eb882.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.434609,
+        0.736045
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/wheat-drying-rack.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/wheat-sheaves-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        80,
+        256,
+        67,
+        204
+      ],
+      "original_slot_zero_based": 7,
+      "original_gameplay_footprint": [
+        2,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "drying_rack": 1,
+        "hanging_wheat_sheaves": 5
+      },
+      "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json"
+    },
+    {
+      "identity": "stone-well",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/stone-well-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        1105
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "f7d73d22e3d3726bcaeeddce19a431bbea563dbb522c96393ed6df70767e44ab",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f2556cc0-83ad-4c16-a2c4-00ae4c4643fd.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.500797,
+        0.88118
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/stone-well.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/forge-charcoal-kiln-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        178,
+        100,
+        68,
+        77
+      ],
+      "original_slot_zero_based": 10,
+      "original_gameplay_footprint": [
+        2,
+        2
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "stone_well": 1,
+        "upright_posts": 2,
+        "windlass": 1,
+        "buckets": 2,
+        "crate": 1
+      },
+      "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json"
+    },
+    {
+      "identity": "livestock-pen-small",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/livestock-pen-small-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/evidence.json",
+      "source_foot_estimate_px": [
+        672,
+        1075
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "2654e26317dbc3ff8682887dfd794bf89a3c5044d8105259b249a228d83be9b0",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-caaaef2e-4596-41d1-a309-1028e4032e8a.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.535885,
+        0.857257
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/livestock-pen-small.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/attempts/initial-native.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        53,
+        230,
+        39,
+        163
+      ],
+      "original_slot_zero_based": 11,
+      "original_gameplay_footprint": [
+        3,
+        2
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "empty_pen": 1,
+        "raised_plank_feeding_platform": 1,
+        "rectangular_open_trough": 1,
+        "livestock": 0
+      },
+      "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json"
+    },
+    {
+      "identity": "farm-handcart-tools",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/evidence.json",
+      "source_foot_estimate_px": [
+        600,
+        900
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "09abd455837ce3715b4cd02b2882ba26bd038c15488cd29ba5f923f5b512bce7",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5262e9a5-cedc-4f4b-bd96-36e707cdbad6.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.478469,
+        0.717703
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/farm-handcart-tools.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/attempts/initial-native.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        144,
+        156,
+        82,
+        151
+      ],
+      "original_slot_zero_based": 14,
+      "original_gameplay_footprint": [
+        2,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "handcart": 1,
+        "long_pulling_shafts": 2,
+        "upright_tool_handles": 4,
+        "grain_basket": 1,
+        "small_bucket": 1,
+        "front_cloth_sacks": 2
+      }
+    },
+    {
+      "identity": "roadside-waystation",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/roadside-waystation-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/evidence.json",
+      "source_foot_estimate_px": [
+        635,
+        1040
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "7f182aaa396008cfec2d591b372bb9f42ccf24e6fc235b07706938691f1081b9",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-df8d2ddf-f61c-4a31-8f8d-c43c1105b9a4.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.829346
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/rural-life/roadside-waystation.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-bundles/wheat-bundles-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/attempts/initial-native.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        97,
+        104,
+        78,
+        149
+      ],
+      "original_slot_zero_based": 15,
+      "original_gameplay_footprint": [
+        3,
+        2
+      ],
+      "original_gameplay_obstruction_height": 2,
+      "original_render_layer": "under-units",
+      "visually_verified_subject_counts": {
+        "roofed_shelter": 1,
+        "structural_posts": 4,
+        "long_plank_furnishings": 2,
+        "left_stave_containers": 2,
+        "stump": 1,
+        "hanging_lantern": 1
+      },
+      "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json"
+    }
+  ]
+}

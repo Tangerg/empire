@@ -1,0 +1,335 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-b/master.png"
+    },
+    "scale": 0.04837822979659153,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      774,
+      971
+    ],
+    "sourceFeet": {
+      "idle": [
+        774,
+        971
+      ],
+      "walk-a": [
+        751,
+        939
+      ],
+      "attack": [
+        537,
+        954
+      ],
+      "walk-b": [
+        798,
+        963
+      ]
+    },
+    "registrationLimit": 12,
+    "canvasPaddingTolerance": 1,
+    "registrationOffsets": {
+      "walk-a": [
+        1.1126992853216051,
+        1.548103353490929
+      ],
+      "attack": [
+        11.465640461792193,
+        0.822429906542056
+      ],
+      "walk-b": [
+        -1.1610775151181967,
+        0.38702583837273224
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1585,
+    993
+  ],
+  "logicalPivot": [
+    45.44474986256184,
+    50.975261132490374
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "efb0135b69c06878d18c76edea07f30a33dfc17869308b198f908f29ad50f25f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5112,
+        "nearOpaquePixels": 1362,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          7,
+          73,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "efb0135b69c06878d18c76edea07f30a33dfc17869308b198f908f29ad50f25f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20553,
+        "nearOpaquePixels": 5565,
+        "edgeMax": 0,
+        "visibleBounds": [
+          41,
+          14,
+          146,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-a/master.png",
+      "registrationOffset": [
+        1.1126992853216051,
+        1.548103353490929
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "cd94e004d29b77be41884db7873acfddd0b5b0d4d6eade4cffbfbb10673a6694",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5166,
+        "nearOpaquePixels": 1313,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          8,
+          74,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-a/master.png",
+      "registrationOffset": [
+        1.1126992853216051,
+        1.548103353490929
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "cd94e004d29b77be41884db7873acfddd0b5b0d4d6eade4cffbfbb10673a6694",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20787,
+        "nearOpaquePixels": 5341,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          17,
+          149,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/attack/master.png",
+      "registrationOffset": [
+        11.465640461792193,
+        0.822429906542056
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d2aed26b3101f937688bc2e0cfbe6b525e1555ddbf123de1d25f778d003fcf4a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5164,
+        "nearOpaquePixels": 1301,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          8,
+          93,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/attack/master.png",
+      "registrationOffset": [
+        11.465640461792193,
+        0.822429906542056
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d2aed26b3101f937688bc2e0cfbe6b525e1555ddbf123de1d25f778d003fcf4a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20766,
+        "nearOpaquePixels": 5294,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          15,
+          187,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-b/master.png",
+      "registrationOffset": [
+        -1.1610775151181967,
+        0.38702583837273224
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "e12d2faa49003048bddcb7410765eeb519c30dd7539b01a00174d0cf43b8a238",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5129,
+        "nearOpaquePixels": 1338,
+        "edgeMax": 0,
+        "visibleBounds": [
+          19,
+          7,
+          72,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-b/master.png",
+      "registrationOffset": [
+        -1.1610775151181967,
+        0.38702583837273224
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "e12d2faa49003048bddcb7410765eeb519c30dd7539b01a00174d0cf43b8a238",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20643,
+        "nearOpaquePixels": 5474,
+        "edgeMax": 0,
+        "visibleBounds": [
+          39,
+          15,
+          144,
+          102
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

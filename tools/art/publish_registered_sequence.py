@@ -48,7 +48,7 @@ def publish(topic, export_dir, root=ROOT):
     record.update(png=base + '.png', width=width * len(expected), height=height,
                   frameWidth=width, frameHeight=height, anchor=pivot,
                   qualityTier='approved-chunky-v5-export-verified')
-    if record['category'] == 'combat-unit':
+    if record['category'] in ('combat-unit', 'mission-unit'):
         record['preserveAuthoredPalette'] = True
     hd.update(png=base + '@2x.png', width=width * len(expected) * 2,
               height=height * 2, pixelDensity=2)

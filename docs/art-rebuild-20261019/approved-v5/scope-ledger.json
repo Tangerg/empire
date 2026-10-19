@@ -4,14 +4,14 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 57,
+    "formalBound": 58,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 9,
+      "combat-unit": 10,
       "equipment": 4,
       "interactive-structure": 12
     },
-    "rawPreservedTopics": 58,
+    "rawPreservedTopics": 59,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1548,14 +1548,22 @@
       "label": "军团盾卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-legion-shield.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield.png",
+      "stageEvidence": {
+        "raw": "4/4 preserved",
+        "export": "shared scale, measured foot registration and native three-background semantic review passed",
+        "runtimeBinding": "canonical and HD manifests bound; native frame/pivot/byte equality regression passed",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-MAGE",
@@ -2861,8 +2869,12 @@
       "category": "interactive-structure",
       "label": "山炉工坊",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/normal/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

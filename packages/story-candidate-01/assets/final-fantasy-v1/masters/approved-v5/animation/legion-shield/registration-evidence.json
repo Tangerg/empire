@@ -1,0 +1,236 @@
+{
+  "status": "Measured proposal only; no runtime writes",
+  "sharedScale": 0.04837822979659153,
+  "bodyReferenceSourcePixels": 909.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Accepted idle helmet crown60 to exact two-sole midpoint969.5. Preserve identical common scale for every pose.",
+  "canonicalSourceFoot": [
+    774,
+    971
+  ],
+  "commonSourceCanvas": [
+    1585,
+    993
+  ],
+  "paddingPolicy": "Idle/walk-a native1585x992 need one transparent bottom row in export; attack/walk-b native1584x993 need one transparent right column. Common source1585x993. Preserve native master/raw bytes. No resize/crop/alpha cleanup.",
+  "canvasPaddingToleranceRequired": 1,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Translate whole source canvas using measured sole support at locked44/909.5scale. Anchor x is mean of each boot bottom4-row alpha>127 band; anchor y is lowest sole. Exact two-sole midpoint also retained.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        774,
+        971
+      ],
+      "bothBootSoleBandMidpoint": [
+        773.65,
+        969.5
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        260,
+        60,
+        1345,
+        972
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        49,
+        53,
+        1565,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        20.57834,
+        6.902694,
+        73.068719,
+        51.023639
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        84.679494,
+        52.039582
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 specks retained unchanged; no silhouette alpha>1 crosses any edge."
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        751,
+        939
+      ],
+      "bothBootSoleBandMidpoint": [
+        751.241,
+        938.0
+      ],
+      "registrationOffsetLogical": [
+        1.112699285,
+        1.548103353
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        255,
+        56,
+        1350,
+        940
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        39,
+        39,
+        1547,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        21.449148,
+        8.257284,
+        74.42331,
+        51.023639
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        9.112699,
+        5.548103,
+        85.792194,
+        53.587686
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 specks retained unchanged; no silhouette alpha>1 crosses any edge."
+      }
+    },
+    "attack": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        537,
+        954
+      ],
+      "bothBootSoleBandMidpoint": [
+        536.613,
+        953.5
+      ],
+      "registrationOffsetLogical": [
+        11.465640462,
+        0.822429907
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        94,
+        60,
+        1531,
+        955
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        57,
+        1534,
+        989
+      ],
+      "proposedLogicalVisibleBounds": [
+        24.013194,
+        7.725124,
+        93.53271,
+        51.023639
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        19.46564,
+        4.82243,
+        96.145135,
+        52.862012
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 specks retained unchanged; no silhouette alpha>1 crosses any edge."
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        798,
+        963
+      ],
+      "bothBootSoleBandMidpoint": [
+        797.908,
+        954.5
+      ],
+      "registrationOffsetLogical": [
+        -1.161077515,
+        0.387025838
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        258,
+        59,
+        1345,
+        964
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        56,
+        1564,
+        993
+      ],
+      "proposedLogicalVisibleBounds": [
+        19.320506,
+        7.241341,
+        71.907642,
+        51.023639
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        6.838922,
+        4.387026,
+        83.518417,
+        52.426608
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 specks retained unchanged; no silhouette alpha>1 crosses any edge."
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 11.465640462,
+  "recommendedRegistrationLimitLogicalPixels": 12,
+  "translationBasis": "Measured sole support only; attack requires right11.465640462/down0.822429907logicalpx. Shared scale never changes.",
+  "coordinatorApproval": "Parent2026-10-19 15:21UTC accepts measured registration limit12 with all whole canvases, unchanged44/909.5 scale,104x64 frame and explicit1px padding; native sequence review remains before binding."
+}

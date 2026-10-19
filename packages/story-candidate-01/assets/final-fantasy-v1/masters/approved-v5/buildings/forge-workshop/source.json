@@ -1,0 +1,71 @@
+{
+  "topicId": "C01-STRUCT-FORGE-WORKSHOP",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-02.png",
+  "sourceSHA256": "9194804968ce3164104b78e0384bf35725a51bacd5d4cbe9a33993bc03569f5d",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        365,
+        362,
+        724
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        365,
+        724,
+        724
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        365,
+        1086,
+        724
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-forge-workshop.png",
+  "consumerStatus": "Manifest/runtime-HD asset verified, no direct static source binding or authored scene placement found for exact topic. Catalog-only in current audit; no live usage claimed.",
+  "consumerAudit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "suggestedLogicalVisibleWidth": 112,
+  "stateEvidence": "Normal dark-stone/timber smithy with rust-brown tiled roofs, tall left square chimney, orange lit arched furnace, hanging tools, small front box, right anvil/barrel and upper-right timber hoist with bare hanging ring. Damaged broken chimney and roof, furnace dark, right anvil absent and replaced by fallen boards/rubble; hoist retained. Captured intact with lit furnace/anvil, slate-gray cloth drapes across roof and hoist and one golden rectangular hanging sign from hoist bearing original angular R-like rune; no flag.",
+  "parentAcceptedLogicalVisibleWidth": 112,
+  "sourceFoot": [
+    627,
+    1190
+  ],
+  "stateOriginalCropSHA256": {
+    "normal": "cf64048d64c0f3bdf8d2b269607b63788e618746b65474b092b846d24e390fb5",
+    "damaged": "09ed58c637907bf1713976ac9c7351878d046c09b92b3ac746647d734143348e",
+    "captured": "4ebb882e596b06106c40dc2053dbd3e71a98cba4d8b3c8b9cd7e722fe14a6af3"
+  },
+  "consumerEvidence": {
+    "auditEvidence": "no-static-consumer-reference-found",
+    "references": [],
+    "observedInBrowser": false,
+    "qualification": "Exact Forge Workshop topic has manifest/runtime-HD asset but no direct static source binding or scene consumer. It is not the Forge Gun Position topic."
+  }
+}

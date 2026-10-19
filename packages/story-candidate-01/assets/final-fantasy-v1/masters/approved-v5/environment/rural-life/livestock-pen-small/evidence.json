@@ -1,0 +1,89 @@
+{
+  "asset": "livestock-pen-small",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte structural planes and bold contours; integral earth simplified to quiet broad fill",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    672,
+    1075
+  ],
+  "source_foot_estimate_normalized": [
+    0.535885,
+    0.857257
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    53,
+    230,
+    39,
+    163
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/livestock-pen-small.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/attempts/initial-native.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json",
+  "original_gameplay_footprint": [
+    3,
+    2
+  ],
+  "original_render_layer": "under-units",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "no_added_decorative_ground_platform": true,
+  "no_exterior_glow": true,
+  "refinement_reason": "First native candidate had tiled/mosaic earthen fill. One targeted built-in imagegen edit simplified integral earth; no programmatic image or alpha changes.",
+  "original_slot_zero_based": 11,
+  "original_gameplay_obstruction_height": 1,
+  "visually_verified_subject_counts": {
+    "empty_pen": 1,
+    "raised_plank_feeding_platform": 1,
+    "rectangular_open_trough": 1,
+    "livestock": 0
+  },
+  "initial_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/prompt-initial.txt",
+  "initial_native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a9de3bcc-ed4a-4b21-aff5-63647e05985e.png",
+  "initial_native_preserved_copy": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/attempts/initial-native.png",
+  "final_generation_reference_paths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-a9de3bcc-ed4a-4b21-aff5-63647e05985e.png"
+  ],
+  "generation_history": [
+    {
+      "stage": "initial",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a9de3bcc-ed4a-4b21-aff5-63647e05985e.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/prompt-initial.txt"
+    },
+    {
+      "stage": "integral earth simplification",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-caaaef2e-4596-41d1-a309-1028e4032e8a.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/prompt.txt",
+      "reference_input": "/workspace/scratch/84c9fe948755/generated_images/exec-a9de3bcc-ed4a-4b21-aff5-63647e05985e.png"
+    }
+  ],
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

@@ -1,0 +1,140 @@
+{
+  "asset": "C01-UNIT-LEGION-SHIELD",
+  "actualConsumers": [
+    "c01.cain",
+    "c01.legion-shield"
+  ],
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical to selected native tool outputs. No painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04837822979659153,
+  "bodyReferenceSourcePixels": 909.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1585,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/registration-evidence.json",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b. c01.legion-spear is piercing melee with formation and anti-cavalry tags; Cain also has knight-charge. The shared attack slot visibly thrusts the spear while retaining the shield, with no extra action or mounted form.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "25de04f275a234f40327e1e4e09cd27429002978fbebe4700f1a934a91194c29",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        774,
+        971
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        260,
+        60,
+        1345,
+        972
+      ],
+      "sha256": "efb0135b69c06878d18c76edea07f30a33dfc17869308b198f908f29ad50f25f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-af5f13b8-3c93-45c1-8ad5-0c19a6373498.png",
+      "review": "Accepted angular steel helmet, clean-shaven adult face, broad navy/red lamellar body, gold shoulder cord, huge bare spear hand and brown boots. Screen-left hand holds stepped triangular steel spear; screen-right arm holds cream chamfered shield with single gold vertical strip."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "283b88104696b838f6170b046c73f3615b9080174da61b4850c491942e174bf4",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        751,
+        939
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        255,
+        56,
+        1350,
+        940
+      ],
+      "sha256": "cd94e004d29b77be41884db7873acfddd0b5b0d4d6eade4cffbfbb10673a6694",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-744b7d51-8086-4455-802b-5c5d0168f3d5.png",
+      "review": "Front screen-right boot is toe-up with heel contact and dark sole visible; rear screen-left boot flat. Original spear hand, blade design, shield face and stripe remain unchanged."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "cbd724b70c2ad2ca2cd8dcde93502c1ab74cd8db45775751acd70627815ad32a",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        537,
+        954
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        94,
+        60,
+        1531,
+        955
+      ],
+      "sha256": "d2aed26b3101f937688bc2e0cfbe6b525e1555ddbf123de1d25f778d003fcf4a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-31558833-25bb-4681-9186-35d846883d67.png",
+      "review": "Clear horizontal piercing spear thrust with extended original bare weapon hand and braced wide stance. Rigid spear shaft and stepped triangular blade project ahead of the retained upright shield. Same helmet, armor, shield stripe and physical equipment hands, no effects."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "70c6edbc776e977cc73cba811fbe84df7bf4ae27dffbfb850d1dfebb9b0c9fae",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/walk-b/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        798,
+        963
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        258,
+        59,
+        1345,
+        964
+      ],
+      "sha256": "e12d2faa49003048bddcb7410765eeb519c30dd7539b01a00174d0cf43b8a238",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8e70a159-49d9-4282-ac25-eece1c899f36.png",
+      "review": "Opposite contacts: front screen-right boot is flat and weight-bearing; rear screen-left heel raised with toe down. Same head/body scale, equipment hands, spear blade and shield stripe."
+    }
+  }
+}

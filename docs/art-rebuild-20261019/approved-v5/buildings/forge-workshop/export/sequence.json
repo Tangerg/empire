@@ -1,0 +1,234 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/captured/master.png"
+    },
+    "scale": 0.09333333333333334,
+    "origin": [
+      3,
+      3
+    ],
+    "frameSize": [
+      124,
+      124
+    ],
+    "sourceFoot": [
+      627,
+      1190
+    ]
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    61.52,
+    114.06666666666668
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "355fd15701ff1730f57e774c24c5556c8dc94aca1a23b0e68f309bbd6003ea73",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7362,
+        "nearOpaquePixels": 7423,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          13,
+          117,
+          114
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "355fd15701ff1730f57e774c24c5556c8dc94aca1a23b0e68f309bbd6003ea73",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 29921,
+        "nearOpaquePixels": 30138,
+        "edgeMax": 0,
+        "visibleBounds": [
+          11,
+          26,
+          235,
+          228
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fe4e24d3f18c0148ef2fa5e21a4627fe5b727feca230cd97baf27c6604159403",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7369,
+        "nearOpaquePixels": 7426,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          13,
+          118,
+          114
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fe4e24d3f18c0148ef2fa5e21a4627fe5b727feca230cd97baf27c6604159403",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 29931,
+        "nearOpaquePixels": 30155,
+        "edgeMax": 0,
+        "visibleBounds": [
+          11,
+          25,
+          235,
+          228
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "43c67a04e57c08ecf66cf2511c30b1cec5f6162b21cc631ac4145d7bc1ba66a3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7053,
+        "nearOpaquePixels": 7718,
+        "edgeMax": 0,
+        "visibleBounds": [
+          6,
+          13,
+          118,
+          114
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-workshop/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "43c67a04e57c08ecf66cf2511c30b1cec5f6162b21cc631ac4145d7bc1ba66a3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 28661,
+        "nearOpaquePixels": 31352,
+        "edgeMax": 0,
+        "visibleBounds": [
+          11,
+          25,
+          236,
+          228
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,115 @@
+{
+  "asset": "roadside-waystation",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-df8d2ddf-f61c-4a31-8f8d-c43c1105b9a4.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 830462,
+  "opaque_pixels": 2107,
+  "partial_alpha_pixels": 739947,
+  "near_opaque_alpha_250_255_pixels": 708632,
+  "nonzero_alpha_bbox": [
+    0,
+    28,
+    1226,
+    1198
+  ],
+  "strong_alpha_bbox": [
+    97,
+    104,
+    1176,
+    1105
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      28,
+      1226,
+      1198
+    ],
+    "16": [
+      96,
+      103,
+      1176,
+      1106
+    ],
+    "128": [
+      97,
+      104,
+      1176,
+      1105
+    ],
+    "250": [
+      98,
+      105,
+      1175,
+      1104
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    28,
+    28,
+    56
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    97,
+    104,
+    78,
+    149
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 2
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "7f182aaa396008cfec2d591b372bb9f42ccf24e6fc235b07706938691f1081b9",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "native_lower_contact_edge_red_residue": {
+    "test_region_y_min": 950,
+    "predicate": "r>140 and r>2*g and r>2*b and alpha>0",
+    "pixel_count": 86,
+    "max_alpha": 7,
+    "pixels_alpha_at_least_16": 0,
+    "interpretation": "faint native contact-edge antialias color residue retained; no strong red silhouette. Composite/runtime review remains separate."
+  }
+}

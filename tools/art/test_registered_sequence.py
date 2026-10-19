@@ -45,3 +45,7 @@ class RegisteredSequenceTests(unittest.TestCase):
   self.assertEqual(validate(self.c),(18,17));self.assertEqual(self.c['scale'],1)
   self.c['canvasPaddingTolerance']=1
   with self.assertRaises(ValueError):validate(self.c)
+
+ def test_mission_semantic_order(self):
+  self.c['frames']={('carry-or-work' if k=='attack' else k):v for k,v in self.frames.items()}
+  self.assertEqual(validate(self.c),(16,16))

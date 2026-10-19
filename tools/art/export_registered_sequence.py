@@ -11,7 +11,7 @@ NS='http://www.w3.org/2000/svg'
 
 def validate(config):
     names=list(config['frames'])
-    if names not in [['idle','walk-a','attack','walk-b'],['normal','damaged','captured']]:
+    if names not in [['idle','walk-a','attack','walk-b'],['idle','walk-a','carry-or-work','walk-b'],['normal','damaged','captured']]:
         raise ValueError('explicit semantic frame order required')
     size=None;hashes=[]
     for path in config['frames'].values():
@@ -65,7 +65,8 @@ def export(config_path, output):
         sheet=Image.new('RGBA',(fw*density*len(frames),fh*density))
         for index,name in enumerate(frames):sheet.paste(frames[name][density],(index*fw*density,0))
         sheet.save(output/f'sheet@{density}x.png')
-    order=['idle','walk-a','walk-b','walk-a','walk-b','idle','attack','idle'] if 'idle' in frames else list(frames)
+    action='carry-or-work' if 'carry-or-work' in frames else 'attack'
+    order=['idle','walk-a','walk-b','walk-a','walk-b','idle',action,'idle'] if 'idle' in frames else list(frames)
     gif_frames=[]
     for name in order:
         canvas=Image.new('RGBA',(fw*2,fh*2),'#66764a');canvas.alpha_composite(frames[name][2]);gif_frames.append(canvas.convert('RGB'))

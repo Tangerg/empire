@@ -52,3 +52,17 @@ class PublishSequenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'geometry'):
             publish('unit', self.export, self.root)
         self.assertFalse((self.pack / 'runtime-approved-v5').exists())
+
+    def test_mission_preserves_authored_palette_and_work_order(self):
+        path = self.pack / 'manifest-final-fantasy-v1.json'
+        document = json.loads(path.read_text())
+        record = document['assets'][0]
+        record['category'] = 'mission-unit'
+        record['frameOrder'] = ['idle', 'walk-a', 'carry-or-work', 'walk-b']
+        path.write_text(json.dumps(document))
+        self.sequence['config']['frames'] = {k: 'source' for k in record['frameOrder']}
+        self.write_sequence()
+        publish('unit', self.export, self.root)
+        actual = json.loads(path.read_text())['assets'][0]
+        self.assertTrue(actual['preserveAuthoredPalette'])
+        self.assertEqual(actual['frameOrder'], record['frameOrder'])

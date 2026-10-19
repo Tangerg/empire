@@ -26,6 +26,8 @@ def build(root=ROOT):
         stem = topic.split('-', 1)[1].lower()
         if stem.startswith('unit-'):
             relative = Path('animation') / stem.removeprefix('unit-')
+        elif stem.startswith('mission-'):
+            relative = Path('mission') / stem.removeprefix('mission-')
         elif stem.startswith('struct-'):
             relative = Path('buildings') / stem.removeprefix('struct-')
         elif stem.startswith('bprop-'):

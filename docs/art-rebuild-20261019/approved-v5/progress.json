@@ -2,7 +2,7 @@
   "phase": "approved-style full collection remake; formal runtime integration ongoing",
   "approval": {
     "messageId": "Sentinel_7330580e60f08191b111a4b2d50b5e82",
-    "quote": "\u65b0\u7248\u672c\u5f88\u5408\u9002\u554a\uff0c\u5c31\u662f\u8fd9\u4e2a feel",
+    "quote": "新版本很合适啊，就是这个 feel",
     "concept": "calibration-v5-concept/concept-v2.png"
   },
   "fullBulkResumed": true,
@@ -22,11 +22,11 @@
   "next": "Cross-object foot depth and full-map integration review; remaining approved-style collection",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
-    "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
+    "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 10,
+  "authoredFourPoseBundles": 11,
   "authoredThreeStateBundles": 12,
-  "formalRuntimeBoundTopics": 57,
+  "formalRuntimeBoundTopics": 58,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -369,6 +369,12 @@
       "export": "common112/1210 scale; measured damaged foundation +2.961983Y translation; native3background state review passed",
       "runtimeBinding": "canonical/HD catalog only; no active consumer found; not wounded shelter",
       "liveGame": "pending"
+    },
+    "C01-UNIT-LEGION-SHIELD": {
+      "raw": "4/4 preserved",
+      "export": "shared scale, measured foot registration and native three-background semantic review passed",
+      "runtimeBinding": "canonical and HD manifests bound; native frame/pivot/byte equality regression passed",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -498,7 +504,13 @@
     "artToolTests": 126,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
     "liveBrowser": "not validated",
-    "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint"
+    "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
+    "fullSuiteLatestAttempt": {
+      "passed": 859,
+      "failed": 1,
+      "failure": "architecture-boundaries dynamic import exceeded default5000ms; all104 architecture tests pass with explicit20000ms diagnostic retry",
+      "notClaimedFullDefaultPass": true
+    }
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

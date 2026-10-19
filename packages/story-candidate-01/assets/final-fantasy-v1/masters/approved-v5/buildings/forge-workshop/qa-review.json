@@ -1,0 +1,121 @@
+{
+  "topicId": "C01-STRUCT-FORGE-WORKSHOP",
+  "status": "complete native trio; native/common-scale visual QA reviewed",
+  "masterIntegrity": "Raw/master pairs byte-identical native built-in imagegen outputs. No alpha editing, crop, resize, painting or geometric transform of master files.",
+  "perimeterGate": "All states actual outermost alpha maximum1; zero perimeter pixels>1. Gate unchanged.",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sharedSourceFoot": [
+    627,
+    1190
+  ],
+  "acceptedLogicalWidth": 112,
+  "scaleApplication": "One112/1200 factor for every1254 native canvas; no independent per-state fit",
+  "visualChecks": {
+    "normal": "Intact tall square chimney, rust tile roofs, bright enclosed furnace, front tools/box, right-front anvil and barrel, bare hoist ring",
+    "damaged": "Jagged chimney rim and central roof hole, lower cracked tiles, furnace unlit, anvil absent replaced by grounded boards/stones, tan sack at retained barrel, bare hoist ring",
+    "captured": "Intact lit forge/anvil with two slate-gray fabric swags and tie, amber hanging rectangular sign with original angular R-like rune, no roof flag",
+    "style": "Broad matte chunky stone/timber/roof planes with bold dark contours, few surface marks",
+    "registration": "Outer foundation pavers, corner positions and front steps remain visually stable; all rubble contained on base. Local AI edge changes are not claimed pixel-identical.",
+    "alpha": "True transparent exterior and appropriate gaps, no ground/background tile, no clipped overhang or sign",
+    "scale": "Shared112 logical width preview reviewed; all state meanings remain distinct. Dense-map live scale gate remains separate."
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical112": "qa-logical-112.png"
+  },
+  "consumerQualification": "Manifest/runtime-HD asset verified, no direct static source binding or authored scene placement found for exact topic. Catalog-only in current audit; no live usage claimed.",
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        27,
+        105,
+        1227,
+        1190
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-167544c9-0ace-402d-8a9b-81e1b2af0901.png",
+      "sha256": "355fd15701ff1730f57e774c24c5556c8dc94aca1a23b0e68f309bbd6003ea73",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        25,
+        103,
+        1229,
+        1192
+      ],
+      "fullyTransparentPixelCount": 677933,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete, contained; no clipped hoist/sign, chimney, stone base or debris",
+      "activePrompt": "prompt.txt"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        27,
+        102,
+        1229,
+        1192
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-be3ae5ca-c04f-4690-a4d8-db027c275814.png",
+      "sha256": "fe4e24d3f18c0148ef2fa5e21a4627fe5b727feca230cd97baf27c6604159403",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        25,
+        100,
+        1232,
+        1194
+      ],
+      "fullyTransparentPixelCount": 677462,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete, contained; no clipped hoist/sign, chimney, stone base or debris",
+      "activePrompt": "prompt.txt"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        27,
+        102,
+        1234,
+        1191
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5bddd81d-c661-4aaa-b637-65dfa3542d8c.png",
+      "sha256": "43c67a04e57c08ecf66cf2511c30b1cec5f6162b21cc631ac4145d7bc1ba66a3",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        25,
+        100,
+        1236,
+        1193
+      ],
+      "fullyTransparentPixelCount": 642569,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete, contained; no clipped hoist/sign, chimney, stone base or debris",
+      "activePrompt": "prompt.txt"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

@@ -1,0 +1,49 @@
+{
+  "status": "native masters and source QA complete; raw only, rural integration pending",
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "runtime_anchor": [
+    56,
+    108
+  ],
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-rack-well-pen-waystation-consumer-evidence.json",
+  "assets": [
+    {
+      "identity": "livestock-pen-small",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/livestock-pen-small-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/evidence.json",
+      "source_foot_estimate_px": [
+        672,
+        1075
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "roadside-waystation",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/roadside-waystation-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/evidence.json",
+      "source_foot_estimate_px": [
+        635,
+        1040
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}
