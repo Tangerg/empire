@@ -18,11 +18,11 @@
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 163
+    "registeredEnvironmentCells": 167
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 163,
+    "registeredIndividualSourceCells": 167,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -31,7 +31,8 @@
       "horizontal-crossing",
       "edge-decoration",
       "stone-world-material",
-      "graveyard-world-material"
+      "graveyard-world-material",
+      "forge-world-material"
     ]
   },
   "sceneCohesion": {
@@ -130,6 +131,19 @@
         1024
       ],
       "scope": "258 c01-11 and296 c01-16 actual ground cells; other14level ground unchanged; rules/standing layers and60replays identical",
+      "liveGame": "pending"
+    },
+    "forge-world-material": {
+      "status": "formal world-coordinate ground binding",
+      "sourceSlots": [
+        "surface-forge-stone:0"
+      ],
+      "logicalPeriod": 256,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "scope": "252 c01-14 cells; other15ground outputs unchanged; all16rules/standing projections and60replays identical",
       "liveGame": "pending"
     }
   },
@@ -19123,9 +19137,26 @@
     {
       "atlasId": "surface-forge-stone",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "forge-stone-1",
+        "forge-stone-2",
+        "forge-stone-3",
+        "forge-stone-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "forge-stone-1",
+          "forge-stone-2",
+          "forge-stone-3",
+          "forge-stone-4"
+        ],
+        "status": "four original32/64catalog slots exported; tone0 also formally bound with256logical world period",
+        "source": "four opaque native materials preserved",
+        "registration": "fullcanvas, approved outermost1px seam matching only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/forge-world-material"
+      }
     },
     {
       "atlasId": "transition-meadow-earth",

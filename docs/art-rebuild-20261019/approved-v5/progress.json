@@ -1872,6 +1872,19 @@
       "registration": "fullcanvas; only approved outermost one-pixel edge matching, no blanket blur/recolor",
       "liveGame": "pending",
       "evidence": "approved-v5/graveyard-world-material"
+    },
+    "surface-forge-stone": {
+      "formalRuntimeBoundCells": [
+        "forge-stone-1",
+        "forge-stone-2",
+        "forge-stone-3",
+        "forge-stone-4"
+      ],
+      "status": "four original32/64catalog slots exported; tone0 also formally bound with256logical world period",
+      "source": "four opaque native materials preserved",
+      "registration": "fullcanvas, approved outermost1px seam matching only",
+      "liveGame": "pending",
+      "evidence": "approved-v5/forge-world-material"
     }
   },
   "totalCanonicalScope": 1212,
@@ -1960,6 +1973,19 @@
         1024
       ],
       "scope": "258 c01-11 and296 c01-16 actual ground cells; other14level ground unchanged; rules/standing layers and60replays identical",
+      "liveGame": "pending"
+    },
+    "forge-world-material": {
+      "status": "formal world-coordinate ground binding",
+      "sourceSlots": [
+        "surface-forge-stone:0"
+      ],
+      "logicalPeriod": 256,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "scope": "252 c01-14 cells; other15ground outputs unchanged; all16rules/standing projections and60replays identical",
       "liveGame": "pending"
     }
   },
