@@ -1,0 +1,147 @@
+{
+  "asset": "C01-UNIT-GRAVEKEEPER",
+  "actualConsumers": [
+    "c01.gravekeeper",
+    "c01.mirelle"
+  ],
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical to selected native tool outputs. No painting, recoloring, cropping, resizing or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04905239687848383,
+  "bodyReferenceSourcePixels": 897,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/registration-evidence.json",
+  "semanticContract": "Existing idle / walk-a / attack / walk-b contract for C01-UNIT-GRAVEKEEPER. Range-2 magic/arcane support permits the attack slot to present a forward lantern cast/dispel while retaining the practical shovel. Heal continues to share the existing action animation contract; no fifth pose is introduced.",
+  "semanticMismatch": {
+    "status": "Pre-existing naming/visual discrepancy documented; no binding or gameplay change",
+    "detail": "The c01-02 actor named bridge-cleric is c01.gravekeeper, not the separate built-in cleric. The gameplay weapon is called lantern-staff, while the exact original artwork carries a separate long spade and candle lantern. Preserve the canonical source identity and physical equipment hands.",
+    "evidence": "source-contract-review.md",
+    "gameplaySemanticFixClaimed": false,
+    "identityRemapPerformed": false
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "f4cc140e99c3e7be56661466286975b7b93bf4c6bbde3e7e6aa87786a451b4ef",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        832,
+        979
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        326,
+        76,
+        1267,
+        980
+      ],
+      "sha256": "ce82001cd6d41b67b3197cdbdf475a268abb3e2e6ffcbd06aa7478321bd7697b",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f251d4a3-c24f-4132-b301-bc38e6423f7e.png",
+      "review": "Accepted older living human with swept-back gray hair and short beard, broad charcoal/olive tabard, cream sleeves, blue-gray scarf, huge bare hands and boots. Screen-left hand holds the complete long spade; screen-right hand carries the separate candle lantern. Wooden tags, pouch and silver vial retained."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "452eb49f803ddf2837a54c4869a47999c67ed8fc71dd650ac881ed9b17f9f621",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        804,
+        967
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        318,
+        75,
+        1283,
+        968
+      ],
+      "sha256": "26c9e597dc1ba593fc31aded8922b3b409a82b31c985af4dc38c2c8c5604e98e",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c93dcc33-2520-41de-808c-58358f271032.png",
+      "review": "Front screen-right boot advances toe-up with heel contact and visible sole; rear screen-left boot stays flat. Same spade/lantern hands, head, tabard, scarf, tags, pouch and vial. Gentle walking sway without external effects."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "5017345c9a2ae359645ad9b627bbe8b91a19a601e97b1a980beb53b82caf64af",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        802,
+        951
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        230,
+        56,
+        1413,
+        952
+      ],
+      "sha256": "ecb1d5f52421645ae8c19f63085e0c829220c499780e895676b590d82a281a9e",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b2ea6b24-cc98-4aee-8996-62b0306fc25a.png",
+      "review": "Clear raised forward lantern cast/dispel: original screen-right bare hand extends the intact upright lantern toward the target at chest/face height, focused face and wide braced boots. Original screen-left hand retains the complete spade. Candle warmth stays inside the lantern cage; no external glow or added effects."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a8ef2ef20aae9e1ac5b7835c3986cd4bb9c5ba7b967dd37c645188715895bd68",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        866,
+        952
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        331,
+        74,
+        1293,
+        953
+      ],
+      "sha256": "ebaf32053740f300a97ad62d0ec411ec0f63cbe1cd67c808d0aafb13debfc4ff",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5c7d8fb9-3a36-4e1a-bf48-acca2ee820b2.png",
+      "review": "Opposite contacts: front screen-right boot is flat and weight-bearing; rear screen-left heel is raised with toe contact. Same physical equipment hands and identity. The native image is one column narrower; preserve it unchanged and pad only in export."
+    }
+  }
+}

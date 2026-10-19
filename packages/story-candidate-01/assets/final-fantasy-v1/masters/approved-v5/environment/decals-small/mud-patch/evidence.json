@@ -1,0 +1,152 @@
+{
+  "asset": "mud-patch",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad low-detail matte ground/wood planes and clear complete contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    630,
+    894
+  ],
+  "source_foot_estimate_normalized": [
+    0.502392,
+    0.712919
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    118,
+    387,
+    78,
+    347
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/decals-small/mud-patch-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/livestock-pen-small/livestock-pen-small-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/mud-patch/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-priority-four-source-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-priority-four-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 0,
+  "original_gameplay_footprint": [
+    1,
+    1
+  ],
+  "original_atlas_category": "ground-decal",
+  "actual_render_layer": "groundPieces detail; no standing unit depth marker",
+  "original_runtime_cell_size": [
+    64,
+    64
+  ],
+  "original_runtime_cell_size_2x": [
+    128,
+    128
+  ],
+  "original_runtime_anchor": [
+    32,
+    60
+  ],
+  "original_runtime_opacity": 0.72,
+  "raw_master_opacity_preapplied": false,
+  "raw_master_only": true,
+  "no_added_ground_platform": true,
+  "no_exterior_glow": true,
+  "scale_guidance": "Retain actual caller scales. Use new coherent-subject registration and uniform scale, never contaminated legacy whole-cell bounds. Preserve ground-piece semantics and external caller opacity0.72.",
+  "original_slot_zero_based": 6,
+  "source_ground_center_estimate_px": [
+    634,
+    652
+  ],
+  "foot_estimate_basis": "front coherent-subject ground-contact line, distinct from visual ground center and unrelated legacy fragments",
+  "original_source_crop_problem": "Exact6x4 legacy cell includes burned-twigs from the next visual row at its lower edge. Semantic subject crop excludes that unrelated sliver without modifying any source pixel.",
+  "audited_actual_consumer_summary": {
+    "priority": 3,
+    "id": "mud-patch",
+    "atlas": "decals-small",
+    "cellIndexZeroBased": 6,
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+    "runtime2xCrop": [
+      0,
+      128,
+      128,
+      256
+    ],
+    "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "masterCrop": [
+      0,
+      256,
+      256,
+      512
+    ],
+    "runtimeLogicalCell": [
+      64,
+      64
+    ],
+    "logicalAlpha128Bounds": [
+      9.5,
+      4.0,
+      53.5,
+      60.0
+    ],
+    "c01-02Count": 8,
+    "c01-01Count": 4,
+    "c01-02Scales": [
+      0.56,
+      0.58
+    ],
+    "c01-02WindowSizes": [
+      35.84,
+      37.12
+    ],
+    "c01-02Alpha128Sizes": [
+      {
+        "scale": 0.56,
+        "size": [
+          24.64,
+          31.36
+        ]
+      },
+      {
+        "scale": 0.58,
+        "size": [
+          25.52,
+          32.48
+        ]
+      }
+    ],
+    "example": {
+      "sourceId": "ground:132",
+      "scale": 0.56,
+      "worldFoot": [
+        400.0,
+        96.0
+      ],
+      "screenFoot": [
+        474.0,
+        158.0
+      ]
+    },
+    "exampleSceneCrop": [
+      438,
+      108,
+      510,
+      172
+    ]
+  },
+  "semantic_reconstruction_basis": "Complete subject visible in original full master; exact grid cell retains crop defect as evidence, not copied into new subject.",
+  "visually_verified_subject_counts": {
+    "mud_patch": 1,
+    "edge_pebbles": 4,
+    "burned_twig_fragments": 0
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

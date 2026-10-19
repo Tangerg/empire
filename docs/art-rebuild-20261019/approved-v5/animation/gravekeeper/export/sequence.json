@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png"
+    },
+    "scale": 0.04905239687848383,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      832,
+      979
+    ],
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 4,
+    "sourceFeet": {
+      "idle": [
+        832,
+        979
+      ],
+      "walk-a": [
+        804,
+        967
+      ],
+      "attack": [
+        802,
+        951
+      ],
+      "walk-b": [
+        866,
+        952
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.3734671125975473,
+        0.588628762541806
+      ],
+      "attack": [
+        1.471571906354515,
+        1.3734671125975473
+      ],
+      "walk-b": [
+        -1.6677814938684503,
+        1.3244147157190636
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    48.81159420289855,
+    52.02229654403567
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ce82001cd6d41b67b3197cdbdf475a268abb3e2e6ffcbd06aa7478321bd7697b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5259,
+        "nearOpaquePixels": 1153,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          8,
+          70,
+          52
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "ce82001cd6d41b67b3197cdbdf475a268abb3e2e6ffcbd06aa7478321bd7697b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21200,
+        "nearOpaquePixels": 4762,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          16,
+          140,
+          104
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
+      "registrationOffset": [
+        1.3734671125975473,
+        0.588628762541806
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "26c9e597dc1ba593fc31aded8922b3b409a82b31c985af4dc38c2c8c5604e98e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5268,
+        "nearOpaquePixels": 1148,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          8,
+          72,
+          52
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
+      "registrationOffset": [
+        1.3734671125975473,
+        0.588628762541806
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "26c9e597dc1ba593fc31aded8922b3b409a82b31c985af4dc38c2c8c5604e98e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21216,
+        "nearOpaquePixels": 4735,
+        "edgeMax": 0,
+        "visibleBounds": [
+          50,
+          17,
+          145,
+          104
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/attack/master.png",
+      "registrationOffset": [
+        1.471571906354515,
+        1.3734671125975473
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "ecb1d5f52421645ae8c19f63085e0c829220c499780e895676b590d82a281a9e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5143,
+        "nearOpaquePixels": 1260,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          8,
+          79,
+          52
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/attack/master.png",
+      "registrationOffset": [
+        1.471571906354515,
+        1.3734671125975473
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "ecb1d5f52421645ae8c19f63085e0c829220c499780e895676b590d82a281a9e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20734,
+        "nearOpaquePixels": 5187,
+        "edgeMax": 0,
+        "visibleBounds": [
+          41,
+          16,
+          158,
+          104
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png",
+      "registrationOffset": [
+        -1.6677814938684503,
+        1.3244147157190636
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "ebaf32053740f300a97ad62d0ec411ec0f63cbe1cd67c808d0aafb13debfc4ff",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5299,
+        "nearOpaquePixels": 1107,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          9,
+          70,
+          52
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png",
+      "registrationOffset": [
+        -1.6677814938684503,
+        1.3244147157190636
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "ebaf32053740f300a97ad62d0ec411ec0f63cbe1cd67c808d0aafb13debfc4ff",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21359,
+        "nearOpaquePixels": 4596,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          18,
+          139,
+          104
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

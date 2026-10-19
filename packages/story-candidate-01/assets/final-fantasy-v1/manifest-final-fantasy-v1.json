@@ -1422,13 +1422,13 @@
       "topicId": "C01-UNIT-GRAVEKEEPER",
       "label": "守墓人",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-gravekeeper.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-gravekeeper.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1437,13 +1437,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        48.81159420289855,
+        52.02229654403567
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-HEAVY-KNIGHT",
@@ -3815,13 +3816,13 @@
       "topicId": "C01-STRUCT-GRAY-FLAG-POINT",
       "label": "灰旗旗点",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-gray-flag-point.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-gray-flag-point.png",
+      "width": 318,
+      "height": 106,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 106,
+      "frameHeight": 106,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -3829,8 +3830,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        52.581548599670505,
+        95.99505766062602
       ],
       "footprint": [
         2,

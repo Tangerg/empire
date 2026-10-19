@@ -1,0 +1,140 @@
+{
+  "topicId": "C01-STRUCT-GRAY-FLAG-POINT",
+  "status": "Complete native trio; source semantics and native/common-scale previews visually reviewed",
+  "masterIntegrity": "All raw/master pairs are byte-identical native built-in imagegen outputs; no alpha cleanup, crop, resize, translation, repaint or per-state fit",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "perimeterGate": "All three actual outermost alpha maxima1; zero edge pixels>1 in every state",
+  "sharedStructuralSourceFoot": [
+    627,
+    1176
+  ],
+  "acceptedLogicalWidth": 96,
+  "scaleApplication": "One96/1214 factor for every full native1254 canvas",
+  "visualChecks": {
+    "normal": "Blank charcoal gray hanging split-bottom banner with silver round finials, round timber deck on stone base, stout posts/rails and left spear tub/right barrel+crate",
+    "damaged": "Broken leaning main standard and smaller gray remnant, local broken guard posts/rails, cracked planks and foundation, bounded loose boards/stones",
+    "captured": "Restored intact normal structure with a physical segmented brass round shield and raised dark metal boss hanging centrally on the gray banner; no painted logo or extra flag",
+    "style": "Chunky broad matte wood/stone/cloth planes and strong contours, simple major highlights",
+    "registration": "Same round platform ground contact and shared scale; damaged loose rubble does not redefine foot",
+    "alpha": "True transparent exterior; complete frame contained; no ground tile/background",
+    "nativeReadability": "96 logical shared-scale preview retains clear blank banner/broken standard/shield state distinction"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical96": "qa-logical-96.png",
+    "normal": "qa-normal-logical-96.png"
+  },
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic and runtime slug search in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Manifest/runtime existence establishes catalog asset, not actual placed campaign use; external dynamic inputs are not excluded"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        30,
+        140,
+        1244,
+        1176
+      ],
+      "alphaAbove1Bounds": [
+        27,
+        138,
+        1247,
+        1179
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-78f6e588-74ea-469c-a89c-1d34ece377cf.png",
+      "sha256": "088511e61de75dac23a0a2dd42e1c8fbe403a914ca4c6bfd42fcb3b5a6055517",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 851578,
+      "perimeterGate": "Actual outermost alpha maximum <=1, zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1176
+      ],
+      "visibleSilhouetteReview": "Complete contained standard/cloth, circular platform, side supplies and bounded damage rubble"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        29,
+        207,
+        1246,
+        1195
+      ],
+      "alphaAbove1Bounds": [
+        27,
+        205,
+        1248,
+        1197
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a745e4e4-7b20-4703-998e-61e7a7ce6e8c.png",
+      "sha256": "58c8a6676d5a4161a5d45a60ba0655853aafe7bd6b2fca4f8be38f051a4eacb1",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 892165,
+      "perimeterGate": "Actual outermost alpha maximum <=1, zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1176
+      ],
+      "visibleSilhouetteReview": "Complete contained standard/cloth, circular platform, side supplies and bounded damage rubble"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        29,
+        140,
+        1244,
+        1177
+      ],
+      "alphaAbove1Bounds": [
+        27,
+        138,
+        1247,
+        1179
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2186d424-aea2-4440-ae42-4b2e9e95c02a.png",
+      "sha256": "9702bb4e78f8ea305bf88f87ba92e2e00103c293bfb87116f5baead59f9d0ba8",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 846611,
+      "perimeterGate": "Actual outermost alpha maximum <=1, zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1176
+      ],
+      "visibleSilhouetteReview": "Complete contained standard/cloth, circular platform, side supplies and bounded damage rubble"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

@@ -1,0 +1,43 @@
+{
+  "status": "Idle accepted; native quartet complete",
+  "topic": "C01-UNIT-GRAVEKEEPER",
+  "actualConsumers": [
+    "c01.gravekeeper",
+    "c01.mirelle"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/gravekeeper/idle/master.png",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "identityPass": true,
+  "bodyStyleReview": "Large exposed gray-haired older head and short beard, huge bare hands and boots, broad dark tabard/cream sleeves, blue-gray scarf, wooden tags/pouch/vial",
+  "equipmentHandAssignment": "Screen-left bare hand holds full upright wooden spade; screen-right bare hand carries separate candle lantern, flame fully contained",
+  "visibleBoundsAlphaGreaterThan127": [
+    326,
+    76,
+    1267,
+    980
+  ],
+  "bodyTop": 76,
+  "sourceFootMidpoint": [
+    831.509,
+    973.0
+  ],
+  "suggestedSourceFoot": [
+    832,
+    979
+  ],
+  "proposedBodyReferenceSourcePixels": 897.0,
+  "proposedBodyScale": 0.04905239687848383,
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "semanticNextPose": "Opposing walks and forward lantern cast/dispel for range2 magic action, retaining shovel and equipment hands; no external glow.",
+  "semanticMismatch": "bridge-cleric is c01.gravekeeper, not built-in cleric. Source has separate shovel and candle lantern although weapon is named lantern-staff. Preserve original identity; no remap or gameplay-semantic fix claimed.",
+  "acceptedScale": "44/897",
+  "acceptanceEvidence": "Parent2026-10-19 15:56UTC: head/body, shovel and candle lantern clear and consistent with chunky style; continue walk-a/attack/walk-b at same canvas/scale, attack may cast with lantern while retaining shovel; record actual source feet.",
+  "quartetManifest": "bundle-manifest.json"
+}

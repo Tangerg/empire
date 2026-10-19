@@ -1,0 +1,55 @@
+{
+  "status": "Native quartet visual/geometry QA passes; coordinator export/binding pending",
+  "topic": "C01-UNIT-GRAVEKEEPER",
+  "actualConsumers": [
+    "c01.gravekeeper",
+    "c01.mirelle"
+  ],
+  "bodyScale": "44/897",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "sourcePaddingRequired": "Attack and walk-b: exactly one transparent column on the right in export only. Idle and walk-a: none.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All perimeter alpha<=1; zero silhouette alpha>1 on edges; native alpha=1 specks retained unchanged.",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "equipmentHandsPreserved": true,
+  "walkContactsOppose": true,
+  "attackSemanticsPass": "Clear raised forward lantern cast/dispel: original screen-right bare hand extends the intact upright lantern toward the target at chest/face height, focused face and wide braced boots. Original screen-left hand retains the complete spade. Candle warmth stays inside the lantern cage; no external glow or added effects.",
+  "semanticContract": "Existing idle / walk-a / attack / walk-b contract for C01-UNIT-GRAVEKEEPER. Range-2 magic/arcane support permits the attack slot to present a forward lantern cast/dispel while retaining the practical shovel. Heal continues to share the existing action animation contract; no fifth pose is introduced.",
+  "semanticMismatch": {
+    "status": "Pre-existing naming/visual discrepancy documented; no binding or gameplay change",
+    "detail": "The c01-02 actor named bridge-cleric is c01.gravekeeper, not the separate built-in cleric. The gameplay weapon is called lantern-staff, while the exact original artwork carries a separate long spade and candle lantern. Preserve the canonical source identity and physical equipment hands.",
+    "evidence": "source-contract-review.md",
+    "gameplaySemanticFixClaimed": false,
+    "identityRemapPerformed": false
+  },
+  "originalArtIdentityRetainedWithoutRemapping": true,
+  "gameplaySemanticFixClaimed": false,
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

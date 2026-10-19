@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 72,
+    "formalBound": 74,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 11,
+      "combat-unit": 12,
       "equipment": 12,
-      "interactive-structure": 16,
+      "interactive-structure": 17,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 73,
+    "rawPreservedTopics": 74,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 70
+    "registeredEnvironmentCells": 72
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -1448,16 +1448,22 @@
       "label": "守墓人",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-gravekeeper.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper.png",
+      "stageEvidence": {
+        "raw": "4/4 preserved; one-column transparent common canvas extension recorded",
+        "export": "single44/897 scale, measured foot registration; opposite steps and retained-spade lantern casting inspected at native size",
+        "runtimeBinding": "canonical+HD, existing c01.gravekeeper and c01.mirelle bindings; gameplay role unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-HEAVY-KNIGHT",
@@ -2943,13 +2949,22 @@
       "category": "interactive-structure",
       "label": "灰旗旗点",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-flag-point/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-flag-point/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-flag-point/normal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-gray-flag-point.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-gray-flag-point.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved",
+        "export": "single96/1214 scale, same foundation and three-state native review; damaged debris excluded from anchor",
+        "runtimeBinding": "canonical+HD catalog bound; no static scene consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
@@ -17999,7 +18014,9 @@
         "stone-cluster-a",
         "stone-cluster-b",
         "grass-tuft-c",
-        "fallen-leaves"
+        "fallen-leaves",
+        "mud-patch",
+        "exposed-roots"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18009,12 +18026,14 @@
           "stone-cluster-a",
           "stone-cluster-b",
           "grass-tuft-c",
-          "fallen-leaves"
+          "fallen-leaves",
+          "mud-patch",
+          "exposed-roots"
         ],
-        "count": 6,
+        "count": 8,
         "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
         "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-        "sceneScaleReview": "Six broad grass/stone/leaf accents reviewed at actual0.56–0.58 and0.72opacity. Full actual c01-02 scene preserved20actors/9buildings; mud/roots and other old decorations remain. No game-rule placements removed.",
+        "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain.",
         "liveGame": "pending"
       }
     },

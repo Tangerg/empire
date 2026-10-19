@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-STRUCT-GRAY-FLAG-POINT",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "normalVisibleBounds": [
+    30,
+    140,
+    1244,
+    1176
+  ],
+  "normalVisibleWidth": 1214,
+  "proposedLogicalVisibleWidth": 96,
+  "sharedScale": 0.07907742998352553,
+  "sourceFoot": [
+    627,
+    1176
+  ],
+  "registrationRule": "Full native canvas and one normal-derived scale shared by all states; no per-state fit",
+  "postGenerationTransform": "none",
+  "status": "Complete native trio with accepted common-scale normal contract",
+  "acceptedLogicalVisibleWidth": 96,
+  "stateVisibleBounds": {
+    "normal": [
+      30,
+      140,
+      1244,
+      1176
+    ],
+    "damaged": [
+      29,
+      207,
+      1246,
+      1195
+    ],
+    "captured": [
+      29,
+      140,
+      1244,
+      1177
+    ]
+  },
+  "stateLogicalTotalWidths": {
+    "normal": 96.0,
+    "damaged": 96.23723228995058,
+    "captured": 96.07907742998353
+  },
+  "registrationOffsetsLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "rubbleCaveat": "Damaged detached front rubble reaches1195; shared structural base contact remains1176. Do not anchor to detached rubble",
+  "geometryReview": "Circular base and side supply groups maintain shared camera/scale and ground registration. Broken leaning standard has local displacement from damage; minor native contour variations are not individually fitted"
+}

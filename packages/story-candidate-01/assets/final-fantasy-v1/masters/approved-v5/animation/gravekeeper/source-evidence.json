@@ -1,0 +1,129 @@
+{
+  "topicId": "C01-UNIT-GRAVEKEEPER",
+  "actualConsumers": [
+    "c01.gravekeeper",
+    "c01.mirelle"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "lines": [
+      9,
+      17
+    ]
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+    "topicId": "C01-UNIT-GRAVEKEEPER",
+    "label": "守墓人",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-gravekeeper.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-gravekeeper.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/cemetery-gravekeeper-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0a441910b29fa45faa3199e3b9633d6df30d8bd67af03122c7b1d4063fe9af89"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-gravekeeper.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "b52d53f597b7ad1f5a78c5b5db93a2ec60a1972d876f7cddcac8fc8110a036f5"
+    }
+  },
+  "referenceExtraction": "Native non-resampled first source board cell[0,0,418,941]; HD frames64x96. No color/alpha edits. Magenta backdrop retained in references only.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sourceIdentity": [
+    "Older human man, swept-back gray hair with center part, short gray beard and mustache, tired serious face, no helmet",
+    "Dark charcoal/olive sleeveless hooded tabard with hood down, cream sleeves, blue-gray neck scarf, brown belt and boots",
+    "Screen-left bare hand holds a full long straight wooden-handled spade/shovel upright; broad pointed steel spade head with central rib and rope wrapping near socket",
+    "Screen-right bare hand holds separate compact dark metal candle lantern by top handle; warm flame entirely inside glass cage",
+    "Wooden memorial tags hang from chest and belt, plus brown hip pouch and small silver stoppered bottle/vial; no skull or gravestone props"
+  ],
+  "sceneEvidence": {
+    "level": "c01-02",
+    "actor": "bridge-cleric",
+    "cell": [
+      2,
+      9
+    ],
+    "owner": 1,
+    "facing": "east",
+    "tileWorldBounds": [
+      64,
+      288,
+      96,
+      320
+    ],
+    "source": "calibration-v4/full-level-diagnostic/whole-level-layout.json:111-116"
+  },
+  "semanticEvidence": {
+    "unitDefinitions": "packages/story-candidate-01/src/units.ts:47-50,69",
+    "weaponDefinitions": "packages/story-candidate-01/src/weapons.ts:64-77",
+    "abilities": [
+      "heal",
+      "attack",
+      "capture",
+      "wait"
+    ],
+    "weapons": [
+      "c01.lantern-staff",
+      "c01.oath-dispel"
+    ],
+    "actionSemantics": "Both weapons are range2 magic/arcane support. Existing attack slot can show forward raised lantern cast/dispel while retaining shovel and equipment hands, with flame contained and no external glow/effect. Heal shares existing action contract; no fifth frame."
+  },
+  "semanticMismatch": {
+    "status": "Naming/visible-equipment discrepancy retained, no remap or gameplay changes",
+    "detail": "Actor key bridge-cleric actually binds c01.gravekeeper, not built-in cleric. Weapon named lantern-staff is visually a separate long shovel plus handheld candle lantern in the original. Preserve exact canonical visible identity, do not merge into a new staff or invent skeleton/gravestone."
+  },
+  "status": "Native quartet complete; originals and exact source crops preserved",
+  "quartetManifest": "bundle-manifest.json"
+}

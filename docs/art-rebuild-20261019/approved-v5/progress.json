@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 13,
-  "authoredThreeStateBundles": 16,
-  "formalRuntimeBoundTopics": 72,
+  "authoredFourPoseBundles": 14,
+  "authoredThreeStateBundles": 17,
+  "formalRuntimeBoundTopics": 74,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -460,6 +460,18 @@
       "export": "shared104/1191 scale and fixed foundation; normal empty track, damaged ring/rack and captured chain/lamp reviewed",
       "runtimeBinding": "canonical+HD catalog bound; no direct scene consumer verified",
       "liveGame": "pending"
+    },
+    "C01-UNIT-GRAVEKEEPER": {
+      "raw": "4/4 preserved; one-column transparent common canvas extension recorded",
+      "export": "single44/897 scale, measured foot registration; opposite steps and retained-spade lantern casting inspected at native size",
+      "runtimeBinding": "canonical+HD, existing c01.gravekeeper and c01.mirelle bindings; gameplay role unchanged",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-GRAY-FLAG-POINT": {
+      "raw": "3/3 preserved",
+      "export": "single96/1214 scale, same foundation and three-state native review; damaged debris excluded from anchor",
+      "runtimeBinding": "canonical+HD catalog bound; no static scene consumer verified",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -600,12 +612,14 @@
         "stone-cluster-a",
         "stone-cluster-b",
         "grass-tuft-c",
-        "fallen-leaves"
+        "fallen-leaves",
+        "mud-patch",
+        "exposed-roots"
       ],
-      "count": 6,
+      "count": 8,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
       "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-      "sceneScaleReview": "Six broad grass/stone/leaf accents reviewed at actual0.56–0.58 and0.72opacity. Full actual c01-02 scene preserved20actors/9buildings; mud/roots and other old decorations remain. No game-rule placements removed.",
+      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain.",
       "liveGame": "pending"
     }
   },
@@ -619,12 +633,12 @@
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 863,
+      "passed": 884,
       "failed": 0,
-      "files": 96,
+      "files": 97,
       "command": "npx vitest run --maxWorkers 2 --minWorkers 1",
       "defaultTestTimeoutUnchanged": true,
-      "scope": "integrated selected-readability and legion/forge checkpoint before edge-decoration/refugee additions"
+      "scope": "7067409 six-ground-accent checkpoint; subsequent gravekeeper/gray-flag-point covered by focused binding tests"
     },
     "latestBindingAndEdges": "75 asset binding tests passed before ballista emplacement addition",
     "artPythonLatest": "144 passed",
