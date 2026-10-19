@@ -6624,7 +6624,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Runtime is clipped atlas fragments",
+        "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
+      }
     },
     {
       "topicId": "c03-battle-prop-2e7df413",
@@ -6761,7 +6765,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Runtime is clipped atlas fragments",
+        "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
+      }
     },
     {
       "topicId": "c03-battle-prop-caa5ebba",
@@ -6771,11 +6779,16 @@
     },
     {
       "topicId": "c03-battle-prop-cb065f97",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cb065f97/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-025-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
@@ -6789,15 +6802,24 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Runtime is clipped atlas fragments",
+        "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
+      }
     },
     {
       "topicId": "c03-battle-prop-cfb13cec",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cfb13cec/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-025-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
@@ -6823,7 +6845,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Runtime is clipped atlas fragments",
+        "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
+      }
     },
     {
       "topicId": "c03-battle-prop-ff4a64b9",
@@ -8232,14 +8258,16 @@
       "atlasId": "forest-temperate",
       "cellId": "fern-bed",
       "index": 7,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending",
-        "contactReview": "v4 intact; visible root91logical, outeredge0 afterexport"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-005-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "revisionCandidate": {
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png",
