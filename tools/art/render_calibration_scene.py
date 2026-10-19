@@ -55,6 +55,14 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
 
         water_inserted = False
         for piece in data['layers']['ground']:
+            if selected and 'candidate-environment-prop' in piece['markup']:
+                continue
+            if selected and 'transition-meadow-forest@2x.png' in piece['markup']:
+                continue
+            if selected and ('route-dirt-road@2x.png' in piece['markup'] or 'route-edge-dirt-road@2x.png' in piece['markup']):
+                cell_x, cell_y = round(piece['x'] / 32), round(piece['y'] / 32)
+                terrain = data['map']['tiles'][cell_y * data['map']['width'] + cell_x]
+                if terrain != 'road': continue
             if water_area and 'area-water' in name and 'water-slow-river@2x.png' in piece['markup']:
                 if not water_inserted:
                     with Image.open(water_area) as image: area_width, area_height = image.size
@@ -128,7 +136,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
             'substitutions': substitutions, 'inputHashes': hashes, 'kind': 'actual-renderer-piece-art-study-not-gameplay',
             'connectorCalibration': str(connectors) if connectors and ('corrected-connectors' in name or 'area-water' in name) else None,
             'waterAreaCalibration': str(water_area) if water_area and 'area-water' in name else None,
-            'selectionStudy': {'enabled': selected, 'unitPositions': 'first five actual party deployments; all deliberately represented by one swordsman identity' if selected else 'actual original identities except selected Torren', 'forestPositions': 'five actual canopy placement points represented by the same pine' if selected else 'one pine substitution', 'omitted': 'other standing scenery, other buildings, remaining units and foreground; tactical data unchanged' if selected else 'none beyond stated effects'},
+            'selectionStudy': {'enabled': selected, 'unitPositions': 'first five actual party deployments; all deliberately represented by one swordsman identity' if selected else 'actual original identities except selected Torren', 'forestPositions': 'five actual canopy placement points represented by the same pine' if selected else 'one pine substitution', 'omitted': 'all legacy ground decals, foundation props, forest-floor blend underlays and settlement road-threshold underlays; other standing scenery, other buildings, remaining units and foreground; tactical terrain surfaces/transitions/routes/water and data unchanged' if selected else 'none beyond stated effects'},
             'provenance': 'Only listed master substitutions and explicitly named connector/water layers use new calibration; other pixels remain current branch mixed legacy/previous remake',
             'limitations': data['presentationSubstitutions'], 'acceptance': 'pending-user-style-review'})
     (output / 'registration-and-provenance.json').write_text(json.dumps(reports, indent=2) + '\n')

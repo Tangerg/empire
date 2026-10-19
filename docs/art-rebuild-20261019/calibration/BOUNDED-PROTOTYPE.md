@@ -6,4 +6,8 @@ Visible human height34, pine90, keep width128, bridge width96. Every sprite reta
 
 The isolated connector adapter removes old alpha bars and doubled shoulders. The water-area layer uses unchanged water/bridge cells and diagonal occupancy checks, leaving no holes or pixels outside water occupancy. Broad water UV sampling is continuous in world coordinates. None of these calibration outputs replace production assets.
 
-Still unresolved: straight macro terrain shapes, legacy ground clutter/foundations, homogeneous substituted actors/trees, and runtime lighting/camera/animation. Normal keep is a deliberate shape-study substitution for the actual owned/captured state. Full concept acceptance and bulk production remain paused pending user direction.
+The final selected layer explicitly omits legacy floor decals, foundation props, forest-floor blend underlays, settlement road-threshold underlays, other standing scenery/buildings/actors and foreground. Actual road cells, water occupancy, ground surfaces and tactical data remain unchanged. The separate full diagnostic retains the omitted content.
+
+Still unresolved: straight macro terrain shapes, homogeneous substituted actors/trees, and runtime lighting/camera/animation. Normal keep is a deliberate shape-study substitution for the actual owned/captured state. Full concept acceptance and bulk production remain paused pending user direction.
+
+Latest review image: `scene-final-selected/selected-layer-area-water-bridge-bank-2x.png`, with native companion and source-hashed registration JSON. Earlier cluttered trials remain as historical evidence.
