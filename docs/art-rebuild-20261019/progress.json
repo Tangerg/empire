@@ -1902,11 +1902,16 @@
     },
     {
       "topicId": "C01-EQUIP-HEAVY-KNIGHT",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-heavy-knight/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-030-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "a275daf0a9cc349f1ce7568700c3cf618584e52910d399d55ee171926368ecf9"
@@ -1931,11 +1936,16 @@
     },
     {
       "topicId": "C01-EQUIP-KNIGHT",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-knight/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-030-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "25546858371705164bde93ac0c037eefa0fc54801c773eecef950c36d9bbe3fd"
@@ -4064,11 +4074,17 @@
     },
     {
       "topicId": "c02-battle-prop-bunks",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-bunks/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "semanticReview": "passed higher-resolution board comparison",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-030-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "ba1d8bcf9c4b5f899440fe2cf51862795fcd0c81b9a3748c570f39c84123a72d"
@@ -4127,7 +4143,8 @@
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-cups-cookware/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "semanticReview": "identity passed; needs imagegen internal-halo removal beforeexport"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "9682fbd4c24c2bfa2835f56c93f46d50874b69d7ae71448301ad9b576862dca9"
