@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-forest-floor",
+  "cell_index": 0,
+  "original_cellOrder_token": "forest-floor-1",
+  "source_board_index": 4,
+  "source_crop": [
+    0,
+    314,
+    314,
+    627
+  ],
+  "source_crop_dimensions": [
+    314,
+    313
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-1-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-1-current-runtime-2x-cell.png",
+  "original_visual_identity": "Dark brown earth beneath mixed green/olive and brown broadleaf litter, a few pebbles and twigs.",
+  "original_mean_RGB": [
+    70.65231680266987,
+    56.3588449563501,
+    35.4834252457215
+  ],
+  "original_opaque": true,
+  "current_usage": "actual overlay source0 for transition-meadow-forest in 625 current map/selector-derived cells over 11 levels",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent exclusive quartet approval 2026-10-19 21:24 UTC, actual625 forest transition consumers, original four roles and muted colors, opaque native sources for existing real mask geometry",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+  "original_full_source_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-1-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original woodland ground identity and muted palette, simplify detail",
+    "approved clean broad ground plane style only, not tan palette"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-1-original-master-swatch.png": "4190fca6a07e81b62f7e0a6c4d9a929f056bdff1fe904883f3da7f0ed3288b2e",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native only, engineering owns masks and world sampling",
+  "prompt_sha256": "d34a1717de9bc1a072399dc793f1d975d22984292106df5f30bb027dd0291db6"
+}

@@ -1,0 +1,36 @@
+{
+  "atlas": "surface-forest-floor",
+  "cell_index": 0,
+  "original_cellOrder_token": "forest-floor-1",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-693aae63-63a0-4246-aee8-2743d0e459ec.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/forest-floor-1-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+  "sha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Deep warm brown ground with sparse muted olive-green and dry brown broadleaf groups, a few blunt twigs and gray-brown embedded stones. Broad open soil dominates; mixed green/brown identity survives.",
+    "style_review": "Much calmer and more broadly grouped than the original leaf carpet, with roughly ten to fourteen groups including edge-clipped groups. Leaf faces have two to four angular planes and some center-fold marks; soil retains faint low-contrast cloudy texture rather than absolutely flat graphic interiors. No neon, fine leaf carpet or added standing scenery.",
+    "scale_caveat": "A broad leaf group is around180-270 native pixels, about37-55 logical units at256 period; individual leaves often6-20 units. These are larger than scattered original fine litter. Compare actual forest-mask/scene scale before binding.",
+    "native_acceptance": "Opaque native candidate reviewed, no natural seamlessness or actual-scene acceptance claimed."
+  }
+}

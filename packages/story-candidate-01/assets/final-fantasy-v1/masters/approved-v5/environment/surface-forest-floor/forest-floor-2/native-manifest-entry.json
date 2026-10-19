@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-forest-floor",
+  "cell_index": 1,
+  "original_cellOrder_token": "forest-floor-2",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a14bf68d-1212-4269-a01c-053d882e4c4a.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/forest-floor-2-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+  "sha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Subdued yellow-olive broadleaf litter on warm brown soil, sparse gray stones and longer angular branch/root segments. More yellow/ochre and visibly lighter than source1, preserving the source distinction.",
+    "style_review": "About twelve to sixteen leaf groups including clipped edge clusters, broad uncluttered ground and chunky faceted branches. Leaf center folds and some secondary faceting remain; soil retains faint cloudy texture. Branches are thicker and more object-like than original thin tracery but stay ground accents, without trees or standing props.",
+    "scale_caveat": "Most leaf groups are around180-260 native pixels, about37-53 units at256. Larger branched segments span roughly400-550 native pixels or82-112 world units, requiring actual masked scene review for scale.",
+    "palette_caveat": "Leaves are more golden ochre and slightly stronger in color than the original subdued yellow-olive litter. Exact color matching is not claimed.",
+    "native_acceptance": "Opaque native candidate only; no natural seamlessness or actual-scene acceptance claimed."
+  }
+}

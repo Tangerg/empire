@@ -1,0 +1,64 @@
+{
+  "asset": "forest-floor-1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+  "RGB_mean": [
+    73.62264740072597,
+    51.55371392087584,
+    32.81591983801755
+  ],
+  "RGB_std": [
+    8.456670760926285,
+    7.489128044030461,
+    2.8801248402760553
+  ],
+  "luma_mean": 54.892700445909604,
+  "luma_std": 7.146166122249944,
+  "luma_percentiles_5_50_95": [
+    47.169,
+    53.6624,
+    72.41539999999999
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 54.84921496212121,
+    "bottom": 53.56683537181021,
+    "left": 57.37158255582136,
+    "right": 55.52490024172647,
+    "central_half": 55.031916678161394
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 7.998670919723551,
+    "top_bottom_mean_abs_RGB": 6.0026581605528975,
+    "left_right_max_abs_RGB": 48.0,
+    "top_bottom_max_abs_RGB": 30.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Deep warm brown ground with sparse muted olive-green and dry brown broadleaf groups, a few blunt twigs and gray-brown embedded stones. Broad open soil dominates; mixed green/brown identity survives.",
+    "style_review": "Much calmer and more broadly grouped than the original leaf carpet, with roughly ten to fourteen groups including edge-clipped groups. Leaf faces have two to four angular planes and some center-fold marks; soil retains faint low-contrast cloudy texture rather than absolutely flat graphic interiors. No neon, fine leaf carpet or added standing scenery.",
+    "scale_caveat": "A broad leaf group is around180-270 native pixels, about37-55 logical units at256 period; individual leaves often6-20 units. These are larger than scattered original fine litter. Compare actual forest-mask/scene scale before binding.",
+    "native_acceptance": "Opaque native candidate reviewed, no natural seamlessness or actual-scene acceptance claimed."
+  },
+  "reference_material_identity": "Dark brown earth beneath mixed green/olive and brown broadleaf litter, a few pebbles and twigs.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

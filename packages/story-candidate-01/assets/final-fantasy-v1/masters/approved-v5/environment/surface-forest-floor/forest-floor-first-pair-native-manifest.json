@@ -1,0 +1,86 @@
+{
+  "atlas": "surface-forest-floor",
+  "status": "native source candidates, parent scene review pending",
+  "original_atlas_contract": "4 x 1, 32 logical / 64 HD; continuous opaque ground, no source foot",
+  "world_period_proposal": [
+    256,
+    256
+  ],
+  "entries": [
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 0,
+      "original_cellOrder_token": "forest-floor-1",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-693aae63-63a0-4246-aee8-2743d0e459ec.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/forest-floor-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+      "sha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Deep warm brown ground with sparse muted olive-green and dry brown broadleaf groups, a few blunt twigs and gray-brown embedded stones. Broad open soil dominates; mixed green/brown identity survives.",
+        "style_review": "Much calmer and more broadly grouped than the original leaf carpet, with roughly ten to fourteen groups including edge-clipped groups. Leaf faces have two to four angular planes and some center-fold marks; soil retains faint low-contrast cloudy texture rather than absolutely flat graphic interiors. No neon, fine leaf carpet or added standing scenery.",
+        "scale_caveat": "A broad leaf group is around180-270 native pixels, about37-55 logical units at256 period; individual leaves often6-20 units. These are larger than scattered original fine litter. Compare actual forest-mask/scene scale before binding.",
+        "native_acceptance": "Opaque native candidate reviewed, no natural seamlessness or actual-scene acceptance claimed."
+      }
+    },
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 1,
+      "original_cellOrder_token": "forest-floor-2",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a14bf68d-1212-4269-a01c-053d882e4c4a.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/forest-floor-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+      "sha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Subdued yellow-olive broadleaf litter on warm brown soil, sparse gray stones and longer angular branch/root segments. More yellow/ochre and visibly lighter than source1, preserving the source distinction.",
+        "style_review": "About twelve to sixteen leaf groups including clipped edge clusters, broad uncluttered ground and chunky faceted branches. Leaf center folds and some secondary faceting remain; soil retains faint cloudy texture. Branches are thicker and more object-like than original thin tracery but stay ground accents, without trees or standing props.",
+        "scale_caveat": "Most leaf groups are around180-260 native pixels, about37-53 units at256. Larger branched segments span roughly400-550 native pixels or82-112 world units, requiring actual masked scene review for scale.",
+        "palette_caveat": "Leaves are more golden ochre and slightly stronger in color than the original subdued yellow-olive litter. Exact color matching is not claimed.",
+        "native_acceptance": "Opaque native candidate only; no natural seamlessness or actual-scene acceptance claimed."
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

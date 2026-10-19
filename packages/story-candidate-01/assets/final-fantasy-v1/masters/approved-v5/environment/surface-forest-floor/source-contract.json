@@ -1,0 +1,382 @@
+{
+  "atlas": "surface-forest-floor",
+  "status": "Parent approved four opaque sources on2026-10-19 21:24 UTC after complete remaining audit",
+  "audit_utc": "2026-10-19T21:26:04.563500+00:00",
+  "source_inspection_commit": "9dd042c0e14015696e837daf13593bdb95268c89",
+  "original_atlas_record": {
+    "id": "surface-forest-floor",
+    "png": "runtime/atlas/surface-forest-floor.png",
+    "png2x": "runtime/atlas/surface-forest-floor@2x.png",
+    "columns": 4,
+    "rows": 1,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 4,
+    "category": "base-surface",
+    "tileMode": "variants",
+    "variants": 4,
+    "cellOrder": [
+      "forest-floor-1",
+      "forest-floor-2",
+      "forest-floor-3",
+      "forest-floor-4"
+    ],
+    "edgeLocked": true
+  },
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+  "source_board_dimensions": [
+    1254,
+    1254
+  ],
+  "source_board_mode": "RGB",
+  "source_board_row_zero_based": 1,
+  "source_board_indices": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "records": [
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 0,
+      "original_cellOrder_token": "forest-floor-1",
+      "source_board_index": 4,
+      "source_crop": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "source_crop_dimensions": [
+        314,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-1-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-1-current-runtime-2x-cell.png",
+      "original_visual_identity": "Dark brown earth beneath mixed green/olive and brown broadleaf litter, a few pebbles and twigs.",
+      "original_mean_RGB": [
+        70.65231680266987,
+        56.3588449563501,
+        35.4834252457215
+      ],
+      "original_opaque": true,
+      "current_usage": "actual overlay source0 for transition-meadow-forest in 625 current map/selector-derived cells over 11 levels",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 1,
+      "original_cellOrder_token": "forest-floor-2",
+      "source_board_index": 5,
+      "source_crop": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "source_crop_dimensions": [
+        313,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-2-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-2-current-runtime-2x-cell.png",
+      "original_visual_identity": "Lighter yellow-olive leaf litter with long thin branches/roots crossing the ground and occasional gray stones.",
+      "original_mean_RGB": [
+        84.08303647072033,
+        67.51055946268718,
+        38.15242576733456
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only in current 16 levels; no direct surface or transition selector uses this variant",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 2,
+      "original_cellOrder_token": "forest-floor-3",
+      "source_board_index": 6,
+      "source_crop": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "source_crop_dimensions": [
+        313,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-3-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-3-current-runtime-2x-cell.png",
+      "original_visual_identity": "Exposed deep brown earth with orange-brown needle/twig/root tracery, sparse ochre leaves and small stones.",
+      "original_mean_RGB": [
+        74.2308281190989,
+        56.14115689656932,
+        36.80037562902551
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only in current 16 levels; no direct surface or transition selector uses this variant",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 3,
+      "original_cellOrder_token": "forest-floor-4",
+      "source_board_index": 7,
+      "source_crop": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "source_crop_dimensions": [
+        314,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-4-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forest-floor/forest-floor-4-current-runtime-2x-cell.png",
+      "original_visual_identity": "Dense ochre/brown oak-like leaf litter and scattered gray pebbles on brown earth; visibly browner than slots 0/1.",
+      "original_mean_RGB": [
+        77.18794896318757,
+        58.82250055961417,
+        35.63856046885493
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only in current 16 levels; no direct surface or transition selector uses this variant",
+      "sourceFoot": null,
+      "anchor": null
+    }
+  ],
+  "current_sampling_contract": {
+    "logical_surface_cell": [
+      32,
+      32
+    ],
+    "hd_surface_cell": [
+      64,
+      64
+    ],
+    "direct_surface_fit": {
+      "inset_logical": 3,
+      "bleed_logical": 0.5
+    },
+    "actual_transition_sampling": "47 existing Blob mask cells at32logical/64HD drawn via atlasCellMarkup, not the direct surface fitted core; RGB from original forest-floor variant0",
+    "standing_foot_or_anchor": null
+  },
+  "consumer_findings": {
+    "actual_transition": {
+      "atlas": "transition-meadow-forest",
+      "original_atlas_record": {
+        "id": "transition-meadow-forest",
+        "png": "runtime/atlas/transition-meadow-forest.png",
+        "png2x": "runtime/atlas/transition-meadow-forest@2x.png",
+        "columns": 16,
+        "rows": 3,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 47,
+        "category": "transition",
+        "tileMode": "blob-47",
+        "baseSurface": "surface-meadow",
+        "overlaySurface": "surface-forest-floor",
+        "maskOrder": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          16,
+          17,
+          20,
+          21,
+          23,
+          28,
+          29,
+          31,
+          64,
+          65,
+          68,
+          69,
+          71,
+          80,
+          81,
+          84,
+          85,
+          87,
+          92,
+          93,
+          95,
+          112,
+          113,
+          116,
+          117,
+          119,
+          124,
+          125,
+          127,
+          193,
+          197,
+          199,
+          209,
+          213,
+          215,
+          221,
+          223,
+          241,
+          245,
+          247,
+          253,
+          255
+        ],
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ]
+      },
+      "source_overlay_atlas": "surface-forest-floor",
+      "source_overlay_index": 0,
+      "source_overlay_cell_id": "forest-floor-1",
+      "source_rgb_rule": "Legacy transition_atlases uses families[overlay][0]; baseSurface is metadata. No new independent original painting per Blob47 mask.",
+      "derived_cells": 47,
+      "original_mask_order": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "current_counts_by_level": {
+        "c01-01": 126,
+        "c01-02": 13,
+        "c01-03": 9,
+        "c01-04": 17,
+        "c01-05": 11,
+        "c01-06": 12,
+        "c01-09": 11,
+        "c01-10": 13,
+        "c01-11": 24,
+        "c01-15": 364,
+        "c01-16": 25
+      },
+      "current_total_cells": 625,
+      "consumer_status": "active in current 16-level maps",
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest.png",
+          "current_sha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
+          "frozen_original_sha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png",
+          "current_sha256": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+          "frozen_original_sha256": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "pending_work": "Technical source/material resampling through existing mask topology and world UV; parent engineering owns it. Do not generate 47 independent paintings or count mask cells as native art.",
+      "current_render_path": "candidate-01-map-scene.ts: material.blend and CANDIDATE_SHORE call atlasCellMarkup directly; registered world surface replacement does not replace this RGB automatically."
+    },
+    "current_direct_surface_consumers": 0,
+    "exact_binding": "forest and c01.mother-root -> transition-meadow-forest; source overlay index0 only; renderer forest-floor props are separate standing assets",
+    "counts_basis": "Read-only exact map and selector reconstruction in complete audit; not a fresh rendered SVG visible-pixel count",
+    "catalog_only_indices": [
+      1,
+      2,
+      3
+    ],
+    "coordination": "Parent handles world UV and genuine unchanged Blob47 topology, engineering worker notified before generation"
+  },
+  "confirmed_generation_contract": {
+    "native_sources": 4,
+    "exact_ids": [
+      "forest-floor-1",
+      "forest-floor-2",
+      "forest-floor-3",
+      "forest-floor-4"
+    ],
+    "native_canvas": [
+      1254,
+      1254
+    ],
+    "opaque": true,
+    "proposed_world_period": [
+      256,
+      256
+    ],
+    "generation_order": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "style": "Quiet broad matte brown soil planes, low-density grouped leaf/twig accents, muted source-specific green/brown/yellow-olive/needle-floor/oak-leaf palette; no micrograin carpet or neon",
+    "identity_policy": "Retain four actual original role/color identities, not blanket gray-brown recolors or transparent raised leaf piles",
+    "registration": "Flat opaque continuous material, no foot/anchor/footprint/obstruction. Parent owns genuine existing mask geometry and world sampling.",
+    "raw_policy": "Preserve generated pixels and exact prompt; only read-only alpha/color/seam QA and diagnostic preview resampling. No source blur, offset, edge lock, repaint, alpha cleanup or edits."
+  },
+  "source_sha256": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor@2x.png": "ff0b2b2d87a9dc18d37d600d2e44dd6f7c435df788b2b4fb82582498a7ee6f3e",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "complete_current_consumers_audit": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/surface-transition-completion-audit.json",
+  "no_repository_edits": true
+}
