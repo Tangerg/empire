@@ -34,6 +34,8 @@ def build(root=ROOT):
             relative = Path('props') / stem
         elif stem.startswith('equip-'):
             relative = Path('equipment') / stem
+        elif stem.startswith('skill-') and topic.startswith('C01-'):
+            relative = Path('skill') / stem
         else:
             directory = {'battle-prop': 'props', 'equipment': 'equipment',
                          'combat-unit': 'animation', 'mission-unit': 'mission',
@@ -44,6 +46,8 @@ def build(root=ROOT):
             directory = root / Path(path).parent / 'masters/approved-v5' / relative
             raw = [str(p.relative_to(root)) for p in sorted(directory.glob('master.png'))]
             raw += [str(p.relative_to(root)) for p in sorted(directory.glob('*/master.png'))]
+        if bound and not raw:
+            raise ValueError(f'formally bound topic lacks a discoverable approved native master: {topic}')
         rows.append({'topicId': topic, 'campaign': old['campaign'], 'category': current['category'],
                      'label': old['label'], 'baselineManifest': path, 'selectedRawMasters': raw,
                      'raw': 'preserved' if raw else 'pending',

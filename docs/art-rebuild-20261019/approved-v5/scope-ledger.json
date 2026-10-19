@@ -13,7 +13,7 @@
       "mission-unit": 1,
       "skill": 4
     },
-    "rawPreservedTopics": 148,
+    "rawPreservedTopics": 152,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -5186,8 +5186,10 @@
       "category": "skill",
       "label": "占领",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-01/master.png"
+      ],
+      "raw": "preserved",
       "export": "reviewed",
       "formalBinding": "bound",
       "liveGame": "pending",
@@ -5205,8 +5207,10 @@
       "category": "skill",
       "label": "护卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-02/master.png"
+      ],
+      "raw": "preserved",
       "export": "reviewed",
       "formalBinding": "bound",
       "liveGame": "pending",
@@ -5224,8 +5228,10 @@
       "category": "skill",
       "label": "反骑",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-03/master.png"
+      ],
+      "raw": "preserved",
       "export": "reviewed",
       "formalBinding": "bound",
       "liveGame": "pending",
@@ -5243,8 +5249,10 @@
       "category": "skill",
       "label": "射击",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-04/master.png"
+      ],
+      "raw": "preserved",
       "export": "reviewed",
       "formalBinding": "bound",
       "liveGame": "pending",
