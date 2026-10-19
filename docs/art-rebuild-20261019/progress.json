@@ -1300,11 +1300,25 @@
     },
     {
       "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
-      "status": "pending",
+      "status": "exported",
       "source": null,
       "verification": {
-        "state": "partial-frames-only",
-        "note": "3 individual frame masters backed up; whole topic not yet accepted"
+        "state": "export-checked",
+        "exportCheck": "passed",
+        "exporterTests": 33,
+        "evidence": "docs/art-rebuild-20261019/frame-003-export-evidence.json",
+        "staticVisualReview": "passed-three-states-native64-and-HD128",
+        "visibleBaseY": 61,
+        "declaredPivotY": 63,
+        "placement": {
+          "renderWidth": 62,
+          "origin": [
+            1,
+            2
+          ]
+        },
+        "note": "Anchor is a placement pivot; original visible base approximately55. All three new state bases consistent61.",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -1314,17 +1328,17 @@
       ],
       "frames": {
         "normal": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/normal/master.png",
           "sha256": "846e6c0ae75015c527836fef3d8cff10463184ebc7eb771f4e0a146237c24592"
         },
         "damaged": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/damaged/master.png",
           "sha256": "358133393960b18cdbcd2aedd8352265346df3806e8b6bbc3d8f31e24f6955ce"
         },
         "captured": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/captured/master.png",
           "sha256": "e9a29ac7622564b3511517f18e365673f695bd152b8aba1de67a4a9e3c8fb3dc"
         }
@@ -7133,12 +7147,17 @@
     },
     {
       "topicId": "c03-battle-prop-6fff5dc5",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-6fff5dc5/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; export and visual acceptance pending",
-        "staticVisualReview": "passed-original-board-and-native64-three-backgrounds"
+        "staticVisualReview": "passed-original-board-and-native64-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-041-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "e373ea7a6676dcb696e35aa035db55ba14c2fea4455638b9d2064c879f032e79"
@@ -7243,12 +7262,17 @@
     },
     {
       "topicId": "c03-battle-prop-b31edea6",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-b31edea6/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; export and visual acceptance pending",
-        "staticVisualReview": "passed-original-board-and-native64-three-backgrounds"
+        "staticVisualReview": "passed-original-board-and-native64-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-041-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "79c089fdd89602bf76626637d9b9ae33e1a648420b6afc13062b2cc73fe45327"
@@ -8750,17 +8774,27 @@
       "atlasId": "forest-existing",
       "cellId": "pine-underbrush-a",
       "index": 4,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-a/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "aaf31685fe2f41dc563afb5d008059c0a8d3429f3f9e3dac5f3b423ebce0608b",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-underbrush-b",
       "index": 5,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-b/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "0615a2563992f6badf14de21bd2570f02960ab913fa1bd95411d6ce45208007d",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
