@@ -18,6 +18,7 @@ import {
   CANDIDATE_01_STRUCTURE_ART,
   CANDIDATE_01_WEAPON_FX,
 } from './candidate-01-bindings';
+import { CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, resolveCandidate01MapStructureArt } from './candidate-01-map-structure-presentations';
 import { CANDIDATE_01_ACTOR_ART, resolveCandidate01PresentationBinding } from './candidate-01-actor-art';
 import { CANDIDATE_01_HERO_APPEARANCES, resolveCandidate01UnitArt } from './candidate-01-hero-appearances';
 import {
@@ -173,9 +174,9 @@ export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number
  * that means "no opinion" and lets the generic painter draw a tile underneath.)
  */
 export function candidate01TerrainPicture(id: TerrainId, ctx: TileContext): BoardImage {
-  const structureTopic = CANDIDATE_01_MAP_STRUCTURE_ART[id];
-  if (!structureTopic) return { markup: '' };
-  const record = candidate01Asset(structureTopic);
+  const binding = CANDIDATE_01_MAP_STRUCTURE_ART[id];
+  if (!binding) return { markup: '' };
+  const record = resolveCandidate01MapStructureArt(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, binding);
   const frame = structureFrame(record, ctx.ownerColor !== undefined ? 'captured' : 'normal');
   return { markup: structureAssetMarkup(record, frame, ctx.ownerColor), foot: CELL_FOOT };
 }

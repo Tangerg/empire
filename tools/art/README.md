@@ -465,3 +465,36 @@ Run focused fixtures with:
 python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
 python3 -m unittest discover -s tools/art -p 'test_narrative_card_overrides.py' -v
 ```
+
+### Map-structure presentation variants
+
+`manifest-map-structure-presentations.json` registers role-specific sheets under an
+existing interactive-structure topic. `CANDIDATE_01_MAP_STRUCTURE_ART` chooses an
+optional `presentationId`; the resolver returns the ordinary runtime asset used
+by `structureAssetMarkup`. These variants add no canonical topics and do not
+change the 404-topic campaign or 1,212-topic overall scope. The refugee-shelter
+catalog sheet remains available with its original geometry and bytes.
+
+The catalog starts empty until the source trio and shared registration pass
+review. A registration includes explicit native/HD paths, frame dimensions,
+normal/damaged/captured order, contact, visual footprint and presentation scale.
+It never owns terrain rules, per-level selection, gameplay occupancy, visibility,
+actor identity or a separate renderer.
+
+After registering an approved trio, verify the actual runtime sheets against the
+unchanged registered export:
+
+```sh
+python tools/art/check_map_structure_presentation.py field-post-compact \
+  docs/art-rebuild-20261019/approved-v5/map-structure-presentations/field-post/export \
+  --world-support -14 -26 14 0
+python -m unittest discover -s tools/art -p 'test_map_structure_presentation.py'
+```
+
+The verifier checks full-canvas source placement, source SHA-256, native/HD byte
+identity, exact state order/geometry/contact, zero derived perimeter, and projected
+alpha>=2 bounds including translucent source edges/shadow. It separately reports
+all nonzero and alpha>=128 bounds; alpha=1 native dust is retained, never erased.
+Passing this geometry/provenance gate does not substitute for visual approval of
+normal/damaged/captured, owner banners, all six consumer levels, or native-scale
+standing/moving/selected and hidden-visibility review.

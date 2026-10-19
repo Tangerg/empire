@@ -11,8 +11,8 @@ import { candidate01MapSceneryLayers } from '../../packages/story-candidate-01/s
 import { candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from '../../packages/story-candidate-01/src/presentation/candidate-01-field-material';
 import { CANDIDATE_01_WATER_MATERIAL } from '../../packages/story-candidate-01/src/presentation/candidate-01-water-material';
+import { CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, resolveCandidate01MapStructureArt } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-structure-presentations';
 import { CANDIDATE_01_MAP_STRUCTURE_ART } from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
-import { candidate01Asset } from '../../packages/story-candidate-01/src/presentation/candidate-01-assets';
 import { CANDIDATE_01_EDGE_DECORATIONS, candidate01EdgeDecorationPieces } from '../../packages/story-candidate-01/src/presentation/candidate-01-edge-decoration';
 import { CANDIDATE_01_ART } from '../../packages/story-candidate-01/src/presentation';
 import { candidateReviewViewport } from './candidate_review_viewport';
@@ -33,9 +33,10 @@ const buildingRegistrations = [];
 for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
   const tile = idx(map, x, y);
   if (CANDIDATE_01_MAP_STRUCTURE_ART[map.tiles[tile]]) {
-    const topic = CANDIDATE_01_MAP_STRUCTURE_ART[map.tiles[tile]]!;
-    const record = candidate01Asset(topic);
-    buildingRegistrations.push({ topic, cell: [x,y], owner: map.owners[tile],
+    const binding = CANDIDATE_01_MAP_STRUCTURE_ART[map.tiles[tile]]!;
+    const record = resolveCandidate01MapStructureArt(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, binding);
+    const topic = binding.topicId;
+    buildingRegistrations.push({ topic, ...binding, cell: [x,y], owner: map.owners[tile],
       state: colors[map.owners[tile]] ? 'captured' : 'normal',
       source: record.png, frameSize: [record.frameWidth,record.frameHeight], anchor: record.anchor,
       presentationScale: record.presentationScale ?? 1, footprint: record.footprint, worldFoot: [x*TILE+16,y*TILE+31] });

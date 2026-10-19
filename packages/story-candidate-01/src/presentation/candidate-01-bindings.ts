@@ -74,13 +74,18 @@ export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, Candidat
  * vocabulary, for every level.
  */
 
-export const CANDIDATE_01_MAP_STRUCTURE_ART: Readonly<Partial<Record<TerrainId, string>>> = {
-  village: 'C01-STRUCT-JOINT-GRANARY',
-  barracks: 'C01-STRUCT-MILITARY-REGISTRY',
-  castle: 'C01-STRUCT-LORNE-KEEP',
-  'c01.outpost': 'C01-STRUCT-LORNE-KEEP',
-  'c01.field-post': 'C01-STRUCT-REFUGEE-SHELTER',
-  'c01.keep': 'C01-STRUCT-LORNE-KEEP',
+export interface Candidate01MapStructureArtBinding {
+  readonly topicId: string;
+  readonly presentationId?: string;
+}
+
+export const CANDIDATE_01_MAP_STRUCTURE_ART: Readonly<Partial<Record<TerrainId, Candidate01MapStructureArtBinding>>> = {
+  village: { topicId: 'C01-STRUCT-JOINT-GRANARY' },
+  barracks: { topicId: 'C01-STRUCT-MILITARY-REGISTRY' },
+  castle: { topicId: 'C01-STRUCT-LORNE-KEEP' },
+  'c01.outpost': { topicId: 'C01-STRUCT-LORNE-KEEP' },
+  'c01.field-post': { topicId: 'C01-STRUCT-REFUGEE-SHELTER' },
+  'c01.keep': { topicId: 'C01-STRUCT-LORNE-KEEP' },
 };
 
 export const CANDIDATE_01_STRUCTURE_ART: Readonly<Partial<Record<StructureTypeId, string>>> = {
