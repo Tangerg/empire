@@ -1,0 +1,29 @@
+{
+  "status": "parent approved2026-10-19 18:35 UTC; one generation per material",
+  "native_canvas_requested": [
+    1254,
+    1254
+  ],
+  "coverage_contract": "fully opaque painted material over entire canvas; no sprite silhouette or empty exterior",
+  "candidate_core_rect_px": [
+    115,
+    115,
+    1139,
+    1139
+  ],
+  "candidate_wall_horizontal_band_px": [
+    115,
+    435,
+    1139,
+    819
+  ],
+  "candidate_rect_convention": "half-open x0,y0,x1,y1; recommendations only, raw never pre-cropped",
+  "raw_preservation": "native bytes copied unchanged; no alpha changes, paint, stretch, color adjustment or cleanup",
+  "semantic_roles": {
+    "stone-top-material": "strict orthographic top plane",
+    "stone-wall-face-material": "strict orthographic frontal horizontal masonry face"
+  },
+  "runtime_geometry": "not a registered sprite; no sprite foot/anchor; parent engineer controls exact occupied polygons and shared worldUV separately",
+  "repeat_edges": "measure only; do not claim generated material is naturally seamless",
+  "source_style_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-wall-straight/master.png"
+}

@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-EQUIP-CANNON-WAGON",
+  "assetId": "C01-FFV1-EQUIP-CANNON-WAGON",
+  "label": "火炮车主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-39178985-3a66-483e-aab6-429b623da391.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-cannon-wagon-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-03.png, row 4 column 3 (one based)",
+    "topicIndex": 30,
+    "inspectionCropCoordinates": [
+      629,
+      942,
+      938,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-cannon-wagon.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-03.png",
+    "atlasSha256": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-cannon-wagon-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "No corresponding approved unit idle source found in current approved-v5 tree; original equipment board and baseline equipment runtime remain identity authority. Existing chunky equipment family governs material style.",
+  "identityClarification": "Exactly TWO equipment assemblies from original reference 1. LEFT / CENTER: one very compact short warm BRASS CANNON on a little brown wooden cradle/carriage. Its broad hollow muzzle faces LEFT and a little toward viewer, its barrel rises to upper-right, with a few large raised rings and one dark trunnion. The blocky wooden cradle below has EXACTLY TWO visible large round wooden spoked wheels: one lower-left and one lower-right, the right wheel with a dark iron tire. Preserve this original miniature equipment silhouette without adding a crew or chassis extension. LOWER RIGHT: ONE separate wooden scoop, bowl full of a small clustered handful of dark round shot/pellets, and a short handle projecting upper-right. Simplify the tiny shot texture into a few clear chunky dark rounded forms; keep the filled scoop's functional meaning. No sparks, flame, smoke, fuse, explosion, emblem, crew, horse or scenery.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSubjectAuthority": "Original full equipment atlas, high-resolution equipment slot and baseline 2276a89 runtime icon. Character names do not redefine icon objects.",
+  "smallDetailSimplification": "The original scoop has a partially overlapping dark pellet cluster without a reliably encoded exact count. Preserved one filled scoop, rendered with six larger discrete dark pellets for 48px legibility. Cannon body, two visible wheels and scoop count/orientation are preserved."
+}

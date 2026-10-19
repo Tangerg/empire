@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-EQUIP-ANTI-LARGE-KIT",
+  "assetId": "C01-FFV1-EQUIP-ANTI-LARGE-KIT",
+  "label": "反大型破甲包",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-15601f0f-6162-4316-8af1-0018638cf43a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-anti-large-kit-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 4 column 1 (one based)",
+    "topicIndex": 44,
+    "inspectionCropCoordinates": [
+      2,
+      942,
+      312,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-anti-large-kit.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-anti-large-kit-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "No corresponding approved unit idle source found in current approved-v5 tree; original equipment board and baseline equipment runtime remain identity authority. Existing chunky equipment family governs material style.",
+  "identityClarification": "Exactly TWO equipment tools matching original reference 1. LEFT: one long thick dark iron armor-piercing spike, diagonally lower-left to upper-right. Its top is a broad angular TRIANGULAR arrowhead with two swept side points; its long squared metal shank reaches a heavy polygonal collar near the lower-left, from which a short narrow metal tail ends in ONE closed oval EYE RING. Preserve the visible open hole and arrowhead orientation. RIGHT: ONE short heavy war hammer, thick brown wooden shaft with only a few broad grip-wrap bands, broad gray rectangular head with a flat blunt left end and a chunky POINTED WEDGE projecting to the RIGHT. A little wood end is visible above its head. Keep both tools separated, parallel diagonal hierarchy, plain matte metal with no rune, crest or readable mark. No extra spear shaft, chain, creature, shield, or hand.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSubjectAuthority": "Original full equipment atlas, high-resolution equipment slot and baseline 2276a89 runtime icon. Character names do not redefine icon objects."
+}

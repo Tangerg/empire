@@ -1,0 +1,64 @@
+{
+  "status": "two native opaque material sources complete; diagnostic renderer validation pending",
+  "entries": [
+    {
+      "identity": "stone-top-material",
+      "master": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-top-material/master.png",
+      "raw": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-top-material/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e4ea6d59-6935-45e3-a552-5d4846dfc5d1.png",
+      "sha256": "7086ba504e68824dc94f761bda9e369229d2033d6664e79c82e1753e7d1e775f",
+      "prompt": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-top-material/prompt.txt",
+      "qa": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-top-material/material-qa.json",
+      "source_contract": "/workspace/shared/empire-fortification-topology-plan/material-sources/material-source-contract.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "coverage": "entire native source opaque",
+      "candidate_core_rect_px": [
+        115,
+        115,
+        1139,
+        1139
+      ],
+      "candidate_wall_horizontal_band_px": null,
+      "natural_repeat_seamless": false,
+      "production_status": "unbound diagnostic material source"
+    },
+    {
+      "identity": "stone-wall-face-material",
+      "master": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-wall-face-material/master.png",
+      "raw": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-wall-face-material/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-42b08c4c-7a05-42f0-9b36-2efa09ba2e39.png",
+      "sha256": "f239c6dacebdfbaccd9341d4ed0edddeea6325226eb1a568758536165325c31c",
+      "prompt": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-wall-face-material/prompt.txt",
+      "qa": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-wall-face-material/material-qa.json",
+      "source_contract": "/workspace/shared/empire-fortification-topology-plan/material-sources/material-source-contract.json",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "coverage": "entire native source opaque",
+      "candidate_core_rect_px": [
+        115,
+        115,
+        1139,
+        1139
+      ],
+      "candidate_wall_horizontal_band_px": [
+        115,
+        435,
+        1139,
+        819
+      ],
+      "natural_repeat_seamless": false,
+      "production_status": "unbound diagnostic material source"
+    }
+  ],
+  "native_pixels_unchanged": true,
+  "no_repository_edits": true,
+  "no_natural_seamless_claim": true,
+  "exact_wall_module_failure_preserved": "../pilot-native/pilot-attempts-manifest.json"
+}

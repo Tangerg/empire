@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-CANNON-WAGON",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4667685416237418,
+  "nearOpaqueFractionAlphaGE250": 0.5203692681028365,
+  "nonzeroAlphaBBox": [
+    0,
+    68,
+    1223,
+    1236
+  ],
+  "visibleAlphaBBoxGE8": [
+    60,
+    69,
+    1221,
+    1192
+  ],
+  "visibleAlphaBBoxGE128": [
+    63,
+    71,
+    1221,
+    1191
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    63,
+    71,
+    33,
+    63
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 8,
+  "sha256": "1d82ae7e2d2b69a78f007dd68fd3f7ba029e3b920621c321b4b57bdf75943213",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly TWO equipment assemblies from original reference 1. LEFT / CENTER: one very compact short warm BRASS CANNON on a little brown wooden cradle/carriage. Its broad hollow muzzle faces LEFT and a little toward viewer, its barrel rises to upper-right, with a few large raised rings and one dark trunnion. The blocky wooden cradle below has EXACTLY TWO visible large round wooden spoked wheels: one lower-left and one lower-right, the right wheel with a dark iron tire. Preserve this original miniature equipment silhouette without adding a crew or chassis extension. LOWER RIGHT: ONE separate wooden scoop, bowl full of a small clustered handful of dark round shot/pellets, and a short handle projecting upper-right. Simplify the tiny shot texture into a few clear chunky dark rounded forms; keep the filled scoop's functional meaning. No sparks, flame, smoke, fuse, explosion, emblem, crew, horse or scenery.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "One compact cannon/cradle assembly with two visible wheels and one filled wooden scoop; six large pellets simplify the original small overlapping cluster. No crew, smoke or invented emblem."
+}

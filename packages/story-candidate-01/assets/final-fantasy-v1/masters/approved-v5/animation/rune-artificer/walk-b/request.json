@@ -1,17 +1,12 @@
 {
   "tool": "built-in image_gen",
   "promptFile": "prompt.txt",
-  "promptSha256": "e6aa8bacfe7be3e5c86cf4c6d687e2e073e24cce9dfd31fdaecb7edeebad3225",
+  "promptSha256": "936a33e753b0bcc571c126490f697e7ce310d93997c601ce6d99d9448b4f6612",
   "referenced_image_paths": [
-    "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/master.png",
-    "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/references/source-gear-detail.png",
-    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/master.png"
   ],
   "transparent_background": true,
   "exactPromptVerified": true,
-  "approvedIdleScale": "44/914",
-  "canonicalSourceFoot": [
-    802,
-    971
-  ]
+  "attempt": 3,
+  "reason": "Rebuild opposite contact from approved idle alone to avoid inherited bad-leg phase"
 }

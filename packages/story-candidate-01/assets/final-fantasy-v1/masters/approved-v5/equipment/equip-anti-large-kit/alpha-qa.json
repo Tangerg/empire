@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-ANTI-LARGE-KIT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6561961849672754,
+  "nearOpaqueFractionAlphaGE250": 0.32395473241607714,
+  "nonzeroAlphaBBox": [
+    0,
+    81,
+    1221,
+    1224
+  ],
+  "visibleAlphaBBoxGE8": [
+    54,
+    88,
+    1218,
+    1191
+  ],
+  "visibleAlphaBBoxGE128": [
+    56,
+    89,
+    1218,
+    1190
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    56,
+    89,
+    36,
+    64
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 8,
+  "sha256": "db6e043c0e740d00d8d57c42b611f23b0b697b3f92ab7859181a5279f9ccb994",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly TWO equipment tools matching original reference 1. LEFT: one long thick dark iron armor-piercing spike, diagonally lower-left to upper-right. Its top is a broad angular TRIANGULAR arrowhead with two swept side points; its long squared metal shank reaches a heavy polygonal collar near the lower-left, from which a short narrow metal tail ends in ONE closed oval EYE RING. Preserve the visible open hole and arrowhead orientation. RIGHT: ONE short heavy war hammer, thick brown wooden shaft with only a few broad grip-wrap bands, broad gray rectangular head with a flat blunt left end and a chunky POINTED WEDGE projecting to the RIGHT. A little wood end is visible above its head. Keep both tools separated, parallel diagonal hierarchy, plain matte metal with no rune, crest or readable mark. No extra spear shaft, chain, creature, shield, or hand.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "Exactly one metal arrowheaded piercing spike with a single eye ring and one wood-handled hammer whose wedge points right."
+}

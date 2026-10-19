@@ -1,0 +1,71 @@
+{
+  "identity": "stone-wall-face-material",
+  "status": "full coverage and native-preservation pass; material-repeat/renderer review pending",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-42b08c4c-7a05-42f0-9b36-2efa09ba2e39.png",
+  "native_sha256": "f239c6dacebdfbaccd9341d4ed0edddeea6325226eb1a568758536165325c31c",
+  "native_raw_master_byte_identical": true,
+  "alpha_coverage_semantics": "RGB native image is fully opaque by definition; no alpha channel was added to the saved files",
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "full_canvas_opaque_fraction": 1.0,
+  "candidate_core_rect_px": [
+    115,
+    115,
+    1139,
+    1139
+  ],
+  "candidate_core_opaque_fraction": 1.0,
+  "candidate_wall_band_rect_px": [
+    115,
+    435,
+    1139,
+    819
+  ],
+  "raw_cropped_or_modified": false,
+  "full_canvas_repeat_edge_metrics": {
+    "opposite_LR_rgb_mae_0_255": 15.631047248840332,
+    "opposite_TB_rgb_mae_0_255": 43.357521057128906,
+    "mean_adjacent_horizontal_rgb_mae": 0.8882215023040771,
+    "mean_adjacent_vertical_rgb_mae": 1.4068248271942139,
+    "mean_rgb": [
+      129.23806762695312,
+      120.85867309570312,
+      112.83502197265625
+    ],
+    "note": "Color discontinuity measurements only, not proof of natural seamlessness or registered module continuity."
+  },
+  "candidate_core_repeat_edge_metrics": {
+    "opposite_LR_rgb_mae_0_255": 21.4404296875,
+    "opposite_TB_rgb_mae_0_255": 36.69661331176758,
+    "mean_adjacent_horizontal_rgb_mae": 0.9024191498756409,
+    "mean_adjacent_vertical_rgb_mae": 1.6021900177001953,
+    "mean_rgb": [
+      127.909912109375,
+      119.75787353515625,
+      111.88278198242188
+    ],
+    "note": "Color discontinuity measurements only, not proof of natural seamlessness or registered module continuity."
+  },
+  "seamless_claim": false,
+  "registration_claim": "material source only, no sprite module/foot/anchor; geometry and worldUV are separate engineer work",
+  "visual_review": "Fully covered continuous coarse warm-gray matte stone; no empty exterior, raised outer frame, pillars, doors or perspective. Broad irregular slabs for top; horizontal coarse masonry courses for wall face. No high-frequency grain or bright white highlights.",
+  "candidate_wall_band_repeat_metrics": {
+    "opposite_LR_rgb_mae_0_255": 34.72222137451172,
+    "opposite_TB_rgb_mae_0_255": 14.406901359558105,
+    "mean_adjacent_horizontal_rgb_mae": 0.9066810607910156,
+    "mean_adjacent_vertical_rgb_mae": 1.5172789096832275,
+    "mean_rgb": [
+      129.0350341796875,
+      120.7606201171875,
+      112.6943130493164
+    ],
+    "note": "Color discontinuity measurements only, not proof of natural seamlessness or registered module continuity."
+  }
+}
