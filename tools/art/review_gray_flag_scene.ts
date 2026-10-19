@@ -105,8 +105,8 @@ const renders = [];
       ...(binding?.appearanceId ? { appearanceId: binding.appearanceId } : {}), runtimeImage,
       usesApprovedV5: runtimeImage.includes('/runtime-approved-v5/') };
   });
-  const markup = svg.outerHTML.replace(/href="(\/packages\/[^"?]+)(?:\?[^"]*)?"/g, (_, path: string) => {
-    const file = resolve(root, `.${path}`);
+  const markup = svg.outerHTML.replace(/href="(\/(?:packages\/|@fs\/)[^"?]+)(?:\?[^"]*)?"/g, (_, path: string) => {
+    const file = path.startsWith('/@fs/') ? resolve(path.slice(4)) : resolve(root, `.${path}`);
     sources.set(relative(root, file), createHash('sha256').update(readFileSync(file)).digest('hex'));
     return `href="${relative(output, file)}"`;
   });

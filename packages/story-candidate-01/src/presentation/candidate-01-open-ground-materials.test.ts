@@ -81,6 +81,8 @@ describe('native meadow and wasteland keep their original semantic tones', () =>
         }
         const actual = scene.ground.filter(piece => piece.markup.includes(world.href));
         expect(actual, `${level.id}:${world.id}`).toEqual(expected);
+        expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground
+          .filter(piece => piece.markup.includes(world.href)), `${level.id}:${world.id}`).toEqual(actual);
         counts.push(actual.length);
         totals[index] += actual.length;
         for (const layer of [scene.underUnits, scene.overUnits]) expect(layer.some(piece => piece.markup.includes(world.href))).toBe(false);
@@ -89,7 +91,6 @@ describe('native meadow and wasteland keep their original semantic tones', () =>
       for (const atlas of ['surface-meadow', 'surface-wasteland']) {
         expect(scene.ground.map(piece => piece.markup).join('')).not.toContain(CANDIDATE_01_ENVIRONMENT.atlas(atlas).raster.href);
       }
-      expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground, level.id).toEqual(scene.ground);
       expect(candidate01MapSceneryLayers({ ...context, viewport: { ...context.viewport, sceneWidth: context.viewport.sceneWidth + 97 } }), level.id).toEqual(scene);
       expect(JSON.stringify({ level, map })).toBe(before);
     }
