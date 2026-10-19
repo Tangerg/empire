@@ -24,6 +24,28 @@
           "offsetY2x": 10
         }
       }
+    },
+    "forest-existing": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-existing.png",
+          "sha256": "830f302ca75048881d251e691eea88fde1cc107e4971024ce23bf8e92e7be7c6"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-existing@2x.png",
+          "sha256": "bd7b48efffde1b774c17c62d2684fdc54d808ea841d50a5b7050d5fc73fcb8ae"
+        }
+      },
+      "cells": {
+        "pine-mature-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-a/master.png",
+          "sha256": "8c118e7f1003c3c416c761e2b954469bb4aa189fc58be33247f5234bdf2bb4bc"
+        },
+        "pine-mature-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-b/master.png",
+          "sha256": "a79459d1ebc98c80b21dd731c4f051586870fdfe69dc2be37c4658ea0ec8a55f"
+        }
+      }
     }
   }
 }
