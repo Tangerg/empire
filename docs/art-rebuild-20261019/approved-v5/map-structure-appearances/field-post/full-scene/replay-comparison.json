@@ -1,0 +1,18 @@
+{
+  "baselineCommit": "085a37e",
+  "activationCommit": "dbbd78a",
+  "profiles": [
+    0.35,
+    0.58,
+    0.8
+  ],
+  "shippedLevels": 20,
+  "runs": 60,
+  "eventStreamsAndOutcomeDigestsByteIdentical": true,
+  "normalization": "Removed exactly four npm command-banner lines from baseline, because activated invocation used npm run --silent sweep. No replay data changed.",
+  "bodyBytes": 3534788,
+  "bodyLines": 47812,
+  "bodySha256": "3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9",
+  "baselinePath": "before/sweep.txt",
+  "activatedPath": "activated/sweep.txt"
+}
