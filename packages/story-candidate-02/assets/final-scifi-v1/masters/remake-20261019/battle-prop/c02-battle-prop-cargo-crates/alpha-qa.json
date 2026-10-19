@@ -1,0 +1,29 @@
+{
+  "asset_id": "c02-battle-prop-cargo-crates",
+  "mode": "RGBA",
+  "size": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1069612,
+  "opaque_pixels": 537,
+  "partial_alpha_pixels": 502367,
+  "alpha_bbox": [
+    207,
+    37,
+    1160,
+    1077
+  ],
+  "visual_review": "Pass: matte readable isolated prop; no visible background/checkerboard. Low-alpha edge specks may extend bbox; generated pixels unchanged.",
+  "alpha_bbox_over_128": [
+    211,
+    189,
+    1043,
+    1061
+  ],
+  "alpha_histogram_peak": 253
+}

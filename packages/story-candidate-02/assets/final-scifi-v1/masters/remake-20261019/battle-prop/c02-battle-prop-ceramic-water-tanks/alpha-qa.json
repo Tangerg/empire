@@ -1,0 +1,30 @@
+{
+  "asset_id": "c02-battle-prop-ceramic-water-tanks",
+  "mode": "RGBA",
+  "size": [
+    1239,
+    1269
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 828933,
+  "opaque_pixels": 849,
+  "partial_alpha_pixels": 742509,
+  "alpha_bbox": [
+    0,
+    21,
+    1221,
+    1269
+  ],
+  "pixel_cleanup": false,
+  "alpha_bbox_over_128": [
+    116,
+    107,
+    1145,
+    1138
+  ],
+  "alpha_histogram_peak": 253,
+  "visual_review": "Pass: matte readable isolated prop; no visible background/checkerboard. Low-alpha edge specks may extend bbox; generated pixels unchanged."
+}
