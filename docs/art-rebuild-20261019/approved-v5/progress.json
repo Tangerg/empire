@@ -1130,12 +1130,14 @@
         "market-gate-compound",
         "ruined-gatehouse",
         "cemetery-chapel-compound",
-        "river-gate-fort"
+        "river-gate-fort",
+        "guildhall-market",
+        "black-oath-fortress"
       ],
-      "count": 14,
-      "export": "160/320 full-canvas registered; original metadata/order and remaining two baseline cells preserved",
+      "count": 16,
+      "export": "All16 native160/320 full-canvas cells registered with preserved original metadata/order and source hashes",
       "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-      "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation. Cemetery/river-gate post-export native0.55 probe passed with stable source hashes. River gate keeps complete towers/gate/hoist/pier and local functional water; seven visible decorative piles versus original five is documented, not an exact-count recovery.",
+      "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation. Cemetery/river-gate post-export native0.55 probe passed with stable source hashes. River gate keeps complete towers/gate/hoist/pier and local functional water; seven visible decorative piles versus original five is documented, not an exact-count recovery. Final guildhall four awnings and black fortress three flags retained. All16 native catalog samples reviewed; no direct large-landmark scene selector verified, so no production placement scale is inferred.",
       "liveGame": "pending"
     }
   },
