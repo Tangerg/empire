@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-EQUIP-STONE-GOLEM",
+  "assetId": "C01-FFV1-EQUIP-STONE-GOLEM",
+  "label": "石魔像主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3478e7f9-1aa3-4b51-b1be-3bd85323072e.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-stone-golem-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-03.png, row 3 column 2 (one based)",
+    "topicIndex": 25,
+    "inspectionCropCoordinates": [
+      316,
+      629,
+      625,
+      938
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-stone-golem.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-03.png",
+    "atlasSha256": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-stone-golem-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "No approved-v5 animation idle master exists for this unit at source inspection. Original equipment atlas defines objects and symbols. Do not infer a creature, whole body or new role symbol from the unit name.",
+  "identityClarification": "Exactly two objects: blocky gray stone gauntlet at left, four broad finger columns and side thumb with a hollow cuff; one beveled rectangular dark stone tablet at right, amber interlinked angular-loop rune centered on face and small amber corner accents. No whole golem or arm/body.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

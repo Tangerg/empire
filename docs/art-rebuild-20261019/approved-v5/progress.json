@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 22,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 106,
+  "formalRuntimeBoundTopics": 113,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -664,6 +664,48 @@
       "export": "shared44/909.5 scale, measured feet/maximum3.28972 registration,2 right/1 bottom transparent padding; native pose/alpha review passed",
       "runtimeBinding": "canonical and HD art resolver bound; catalog-only, no current rule consumer invented",
       "liveGame": "pending"
+    },
+    "C01-EQUIP-SKELETON-GUARD": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-GHOST": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-SPIRIT-FIRE": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-STONE-GOLEM": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-ceramic-water-tanks": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-cable-reels": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-anchor-winches": {
+      "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+      "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+      "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -896,12 +938,16 @@
     "landmarks-large": {
       "formalRuntimeBoundCells": [
         "border-palisade-fort",
-        "lorne-stone-castle"
+        "lorne-stone-castle",
+        "vilsa-stone-castle",
+        "mountain-gate-fort",
+        "frontier-longhall",
+        "walled-trade-town"
       ],
-      "count": 2,
-      "export": "160/320 full-canvas registration, original baseline and untouched14 cells checked",
+      "count": 6,
+      "export": "160/320 full authored canvas, measured contacts, exact original metadata/order and untouched10 baseline cells verified",
       "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-      "sceneReview": "native0.55 catalog sample silhouettes/alpha/identity passed; not a production placement or replacement of interactive three-state buildings",
+      "sceneReview": "native0.55 catalog sample passed; no actual scene selector verified, scale is not a production-placement recommendation",
       "liveGame": "pending"
     }
   },

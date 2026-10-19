@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-STONE-GOLEM",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5205358800800755,
+  "nearOpaqueFractionAlphaGE250": 0.4643831922854839,
+  "nonzeroAlphaBBox": [
+    0,
+    17,
+    1212,
+    1230
+  ],
+  "visibleAlphaBBoxGE8": [
+    73,
+    131,
+    1195,
+    1155
+  ],
+  "visibleAlphaBBoxGE128": [
+    74,
+    132,
+    1194,
+    1154
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    74,
+    132,
+    60,
+    100
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 12,
+  "sha256": "5208b0fcefcd3a154b969fbb9b6319adb259b2af84753224d8dfbfca7e104804",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo.",
+    "Two separate equipment objects with hollow cuff, original orange angular knot/tablet identity. No whole golem; no external light haze."
+  ],
+  "identityVerified": "Exactly two objects: blocky gray stone gauntlet at left, four broad finger columns and side thumb with a hollow cuff; one beveled rectangular dark stone tablet at right, amber interlinked angular-loop rune centered on face and small amber corner accents. No whole golem or arm/body.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

@@ -1,0 +1,55 @@
+{
+  "identity": "walled-trade-town",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/walled-trade-town-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1155
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "landmarks-large",
+  "cell_index": 5,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-dc33c60c-56f7-46cd-bf85-a8e5cd1bfb27.png",
+  "sha256": "78596ca9354a1a2e23f3981f883a0435f203d534b3b21397d7fd728c37f8cf68",
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "category": "large-landmark",
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "original_manifest_cell": {
+    "id": "walled-trade-town",
+    "footprint": [
+      4,
+      4
+    ],
+    "anchor": [
+      80,
+      155
+    ],
+    "obstructionHeight": 3
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/walled-trade-town-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json"
+}

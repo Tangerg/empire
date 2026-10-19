@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-SPIRIT-FIRE",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.45259952839907513,
+  "nearOpaqueFractionAlphaGE250": 0.5320810726250162,
+  "nonzeroAlphaBBox": [
+    0,
+    19,
+    1191,
+    1230
+  ],
+  "visibleAlphaBBoxGE8": [
+    79,
+    77,
+    1188,
+    1194
+  ],
+  "visibleAlphaBBoxGE128": [
+    80,
+    78,
+    1187,
+    1193
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    80,
+    78,
+    67,
+    61
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 9,
+  "sha256": "08830d862acc38f661f9b5ad9c9596ddf9c2c161c278d82b8e9263e91d920b7c",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo.",
+    "Both flame silhouette edges are hard and alpha-separated from exterior; no broad haze or glow. Two orange eyes and two cheek spirals retained."
+  ],
+  "identityVerified": "One cracked gray stone face-mask assembly: orange eyes, long raised nose, downturned mouth, central split and two cheek spiral carvings; exactly two bounded side flame plumes, orange-yellow on image left and cyan-blue on image right. No whole creature, smoke or diffuse glow.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

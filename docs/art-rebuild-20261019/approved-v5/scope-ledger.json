@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 106,
+    "formalBound": 113,
     "boundByCategory": {
-      "battle-prop": 33,
+      "battle-prop": 36,
       "combat-unit": 20,
-      "equipment": 28,
+      "equipment": 32,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 106,
+    "rawPreservedTopics": 114,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 125
+    "registeredEnvironmentCells": 129
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 125,
+    "registeredIndividualSourceCells": 129,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1440,8 +1440,10 @@
       "category": "combat-unit",
       "label": "德鲁伊",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/druid/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4488,13 +4490,20 @@
       "category": "equipment",
       "label": "幽魂主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-ghost/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-ghost.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-GRAVEKEEPER",
@@ -4817,13 +4826,20 @@
       "category": "equipment",
       "label": "骸骨卫士主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-skeleton-guard/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-skeleton-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-SPEARMAN",
@@ -4852,13 +4868,20 @@
       "category": "equipment",
       "label": "灵火精怪主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-spirit-fire/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-spirit-fire.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-STONE-GOLEM",
@@ -4866,13 +4889,20 @@
       "category": "equipment",
       "label": "石魔像主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-stone-golem/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-stone-golem.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C01 canonical48 equipment manifest/resolver bound; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-SWORDSMAN",
@@ -9556,13 +9586,20 @@
       "category": "battle-prop",
       "label": "潮锚绞盘工程组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-anchor-winches/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-anchor-winches.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-broken-rails",
@@ -9598,13 +9635,20 @@
       "category": "battle-prop",
       "label": "线缆卷工程组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-cable-reels/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-cable-reels.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-cargo-crates",
@@ -9633,13 +9677,20 @@
       "category": "battle-prop",
       "label": "陶瓷水罐掩体组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-ceramic-water-tanks/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-ceramic-water-tanks.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source retained; original high-resolution object and symbol evidence reviewed",
+        "export": "native48 equipment or native64 prop three-background semantic/alpha review passed",
+        "runtimeBinding": "C02 canonical manifest/runtime PNG replaced; no implemented C02 playable consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-community-repairs",
@@ -18381,18 +18432,26 @@
       "baselineComponentCount": 16,
       "registeredApprovedCells": [
         "border-palisade-fort",
-        "lorne-stone-castle"
+        "lorne-stone-castle",
+        "vilsa-stone-castle",
+        "mountain-gate-fort",
+        "frontier-longhall",
+        "walled-trade-town"
       ],
       "liveGame": "pending",
       "stageEvidence": {
         "formalRuntimeBoundCells": [
           "border-palisade-fort",
-          "lorne-stone-castle"
+          "lorne-stone-castle",
+          "vilsa-stone-castle",
+          "mountain-gate-fort",
+          "frontier-longhall",
+          "walled-trade-town"
         ],
-        "count": 2,
-        "export": "160/320 full-canvas registration, original baseline and untouched14 cells checked",
+        "count": 6,
+        "export": "160/320 full authored canvas, measured contacts, exact original metadata/order and untouched10 baseline cells verified",
         "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-        "sceneReview": "native0.55 catalog sample silhouettes/alpha/identity passed; not a production placement or replacement of interactive three-state buildings",
+        "sceneReview": "native0.55 catalog sample passed; no actual scene selector verified, scale is not a production-placement recommendation",
         "liveGame": "pending"
       }
     },

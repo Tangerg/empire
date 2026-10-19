@@ -1,0 +1,23 @@
+# walled-trade-town, landmarks-large index 5
+
+## Source identity and visual review
+ONE compact connected stone-and-timber trading compound, not a whole miniature city. At rear-left retain exactly ONE tall narrow SQUARE stone watchtower with an OPEN crenellated top and one long muted blue-gray banner. At upper middle retain ONE two-story timber-framed house with a broad dark slate gable roof above the central large arched market entry; the arch has a closed or recessed timber doorway and restrained warm interior color contained inside. Keep the connected lower slate-roof annex bays on the left and middle-right as subordinate architecture. At front-right retain exactly ONE open timber trading counter/stall under its low slate roof, with a few large readable goods shapes on the counter. A single upright timber/stone hoist post at right supports ONE long horizontal wooden beam reaching rightward, with ONE rope and a small suspended box-shaped object at the end. Preserve that tiny original object as a plain hanging wooden box shape; its precise load-versus-lantern function is ambiguous, so no added lamp glow. Keep the original left/front crate group, one crate by the central entry and one long low chest in front of the right counter. Preserve the paved entry apron and narrow connected stone footing. No new pennant below the base, no extra tower/house, no crowds or broad ground square.
+
+Source caveats: Old nominal row-2 slot includes the next-row watch-keep flag tip at original y623. Actual town body ends y603; complete reference crop stops y611 and excludes that neighbor. Tiny suspended object function is unresolved; preserve its silhouette without inventing glow or machinery. Ancillary partly occluded storage objects are preserved as source groups, not asserted as an exact total.
+
+Native review: One square open watchtower, one upper gabled house, one central arch entry and one lower-right roofed trading counter retained. Single hoist beam and one plain suspended box preserved without invented glow. Source left crate group, entry crate and long counter-side chest remain distinct. No contaminating next-row flag tip or extra tall building.
+
+## Original runtime semantics
+4x4 atlas, 160 logical / 320 HD cells, anchor (80,155) / (160,310), large-landmark modules, bottom-anchor ySort. Original footprint [4, 4] and obstruction 3 remain metadata, not sprite bounds or new collision geometry. Current src and scene JSON have no exact selector for this ID; c01-01 denies this atlas. Existing formal interactive structure states and bindings remain independent.
+
+## Authored source foot and functional foundation
+Source foot [627, 1155]: projected whole-compound baseline at x627,y1155, aligned with the front masonry support; distinct from the offset lower-left entrance apron and suspended load. It is an approximate visual registration estimate, not an alpha-bbox statistic. Physical constituent contacts and internal landmarks are separately estimated: {"front_masonry_footing_contact": [576, 1155], "left_entry_apron_contact": [342, 1110], "central_arch_threshold": [524, 883], "right_counter_foundation_contact": [855, 1130]}. The original enclosed floor, entry steps, terrace or narrow stone support are retained; there is no invented broad terrain slab.
+Parent reports its first landmark pair was reviewed with the full 1254-square native canvas scaled by 152/1254 into a 160 cell at origin (4,4). At that same common scale, this source has strong bounds [11.273, 14.667, 149.333, 146.303] and the authored source foot projects to [80.0, 144.0]. This is a calibration report, not a change to the catalog anchor. No tight-alpha fitting, foot normalization, source rotation or mirror was used. Scene placement/scale remains parent review.
+
+## Provenance and QA
+Exact original full board and complete subject crop inspected, source/consumer contracts and prompt saved. Source crops are diagnostic only: original fractional 313.5px quarters are never reused as new source coordinates. Native output, raw and master are byte-identical. No programmatic paint, resize, color or alpha cleanup. Requested 100px margin is separately tested; silhouette completeness and perimeter alpha <=1 are the current source gate. No repository edits.
+
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [60, 88, 55, 80]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

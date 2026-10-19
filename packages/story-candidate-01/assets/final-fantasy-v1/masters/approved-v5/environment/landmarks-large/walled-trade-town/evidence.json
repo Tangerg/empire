@@ -1,0 +1,120 @@
+{
+  "asset": "walled-trade-town",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte architectural family, broad stone/wood/roof planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1155
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.921053
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    60,
+    88,
+    55,
+    80
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/walled-trade-town-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 5,
+  "semantic_counts": {
+    "tall_square_open_watchtower": 1,
+    "main_upper_gabled_house": 1,
+    "arched_market_entry": 1,
+    "right_roofed_trading_counter": 1,
+    "hoist_beam": 1,
+    "suspended_box_shaped_object": 1,
+    "long_tower_banner": 1
+  },
+  "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    4,
+    4
+  ],
+  "obstructionHeight": 3,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "projected whole-compound baseline at x627,y1155, aligned with the front masonry support; distinct from the offset lower-left entrance apron and suspended load",
+  "source_local_landmark_estimates_px": {
+    "front_masonry_footing_contact": [
+      576,
+      1155
+    ],
+    "left_entry_apron_contact": [
+      342,
+      1110
+    ],
+    "central_arch_threshold": [
+      524,
+      883
+    ],
+    "right_counter_foundation_contact": [
+      855,
+      1130
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/walled-trade-town-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "common_full_canvas_calibration": {
+    "uniform_scale_native_to_logical": 0.12121212121212122,
+    "uniform_scale_native_to_hd": 0.24242424242424243,
+    "logical_canvas_origin": [
+      4,
+      4
+    ],
+    "strong_bounds_logical": [
+      11.273,
+      14.667,
+      149.333,
+      146.303
+    ],
+    "source_foot_projected_logical": [
+      80.0,
+      144.0
+    ],
+    "catalog_anchor_not_modified": [
+      80,
+      155
+    ],
+    "method": "parent current full-canvas calibration, no alpha bbox fitting",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
