@@ -1981,6 +1981,19 @@
       "registration": "fullcanvas, approved outermost1px seam matching only",
       "liveGame": "pending",
       "evidence": "approved-v5/forge-world-material"
+    },
+    "surface-forest-floor": {
+      "formalRuntimeBoundCells": [
+        "forest-floor-1",
+        "forest-floor-2",
+        "forest-floor-3",
+        "forest-floor-4"
+      ],
+      "status": "four original32/64catalog sources exported; source0 sampled through exact original47alpha masks on625cells/11levels",
+      "source": "four opaque native sources, no programmatic art repaint",
+      "registration": "128logical world period with original mask alpha and indexes retained",
+      "liveGame": "pending",
+      "evidence": "approved-v5/forest-world-material"
     }
   },
   "totalCanonicalScope": 1212,
@@ -2082,6 +2095,21 @@
         1024
       ],
       "scope": "252 c01-14 cells; other15ground outputs unchanged; all16rules/standing projections and60replays identical",
+      "liveGame": "pending"
+    },
+    "forest-world-material": {
+      "status": "formal world material under original Blob47 alpha",
+      "sourceSlots": [
+        "surface-forest-floor:0"
+      ],
+      "logicalPeriod": 128,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "maskCount": 47,
+      "maskAlpha": "exact original32/64bytes, all256 neighbor-index mappings unchanged",
+      "scope": "625logical forest transition consumers across11levels;16rule/standing contracts and60replays unchanged",
       "liveGame": "pending"
     }
   },

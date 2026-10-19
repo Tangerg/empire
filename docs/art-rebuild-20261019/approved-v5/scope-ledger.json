@@ -15,15 +15,15 @@
       "skill": 48,
       "status": 8
     },
-    "rawPreservedTopics": 265,
+    "rawPreservedTopics": 266,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 167
+    "registeredEnvironmentCells": 171
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 167,
+    "registeredIndividualSourceCells": 171,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -33,7 +33,8 @@
       "edge-decoration",
       "stone-world-material",
       "graveyard-world-material",
-      "forge-world-material"
+      "forge-world-material",
+      "forest-world-material"
     ]
   },
   "sceneCohesion": {
@@ -145,6 +146,21 @@
         1024
       ],
       "scope": "252 c01-14 cells; other15ground outputs unchanged; all16rules/standing projections and60replays identical",
+      "liveGame": "pending"
+    },
+    "forest-world-material": {
+      "status": "formal world material under original Blob47 alpha",
+      "sourceSlots": [
+        "surface-forest-floor:0"
+      ],
+      "logicalPeriod": 128,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "maskCount": 47,
+      "maskAlpha": "exact original32/64bytes, all256 neighbor-index mappings unchanged",
+      "scope": "625logical forest transition consumers across11levels;16rule/standing contracts and60replays unchanged",
       "liveGame": "pending"
     }
   },
@@ -835,8 +851,12 @@
       "category": "narrative-static",
       "label": "罗德里克教程导师",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/attempt-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/attempt-02/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -19166,9 +19186,26 @@
     {
       "atlasId": "surface-forest-floor",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "forest-floor-1",
+        "forest-floor-2",
+        "forest-floor-3",
+        "forest-floor-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "forest-floor-1",
+          "forest-floor-2",
+          "forest-floor-3",
+          "forest-floor-4"
+        ],
+        "status": "four original32/64catalog sources exported; source0 sampled through exact original47alpha masks on625cells/11levels",
+        "source": "four opaque native sources, no programmatic art repaint",
+        "registration": "128logical world period with original mask alpha and indexes retained",
+        "liveGame": "pending",
+        "evidence": "approved-v5/forest-world-material"
+      }
     },
     {
       "atlasId": "surface-earth",
