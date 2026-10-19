@@ -10393,13 +10393,14 @@
     "state": "pending-representative-scene-approval",
     "productionMutation": false,
     "fixture": "docs/art-rebuild-20261019/calibration/three-bridges-fixture.json",
-    "masterCount": 5,
+    "masterCount": 6,
     "masters": [
       "swordsman",
       "pine",
       "lorne-keep",
       "river-material",
-      "stone-bridge"
+      "stone-bridge",
+      "riverbank-module"
     ],
     "scope": "Only root-authorized bounded style trials; bulk generation remains paused",
     "trialRoles": [
@@ -10411,6 +10412,9 @@
       "shore depth and material cohesion",
       "user acceptance of representative scene"
     ],
-    "mechanicalScope": "unchanged actual tactical map, ownership, deployment, movement and attack rules"
+    "mechanicalScope": "unchanged actual tactical map, ownership, deployment, movement and attack rules",
+    "candidateHolds": {
+      "riverbank-module": "not-accepted-yellow-grass-and-faint-halo-review"
+    }
   }
 }
