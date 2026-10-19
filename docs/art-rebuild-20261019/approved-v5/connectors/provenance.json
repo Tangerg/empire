@@ -1,0 +1,98 @@
+{
+  "kind": "calibration-only-native-connector-geometry",
+  "productionMutation": false,
+  "topology": "NESW16; index mask*4+variant",
+  "widthRatios": {
+    "road": 0.6875,
+    "water": 0.57
+  },
+  "roadWidthLogical": 22.0,
+  "roadWidthSemantics": "nominal core cross-section; 32logical cell and NESW topology unchanged; thin shoulder adds up to0.5logical per side; maximum30 retains disconnected-edge margin",
+  "removed": [
+    "variant-dependent mask warp",
+    "~128 interior alpha noise",
+    "forced255 port rectangles",
+    "variant-specific decorative edge marks"
+  ],
+  "roadPortGeometry": "widths above15.36 share canonical twoHDpixel straight-port neighborhoods and transparent2x2HDcorner guards; disconnected sides remain closed",
+  "roadShoulder": "oneHDpixelgeometryring75maxalpha;companionedgeblanktoavoiddoubleborder",
+  "textureTreatment": "original master cell resize plus outermost-row/column edge matching only",
+  "geometrySource": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "sha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c"
+  },
+  "sources": {
+    "route-dirt-road": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/master.png",
+      "sha256": "b0f073ace361efbaf998850bddc7f8ccd13d47cf9d235269aad3e322b58051e6",
+      "variants": "same single generated material; no invented variants"
+    },
+    "water-slow-river": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/water-materials-4x4.png",
+      "sha256": "f1fe91018d3c89c217ff880d488afb20631d3316ace16485c8cf77fdb60265c0",
+      "row": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "outputs": {
+    "route-dirt-road@2x.png": {
+      "sha256": "d7a2714bb033c6312eb5bee5488c5ad333e774a969190fae7eeb398444a98614",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "density": 2,
+      "cells": 64
+    },
+    "route-dirt-road.png": {
+      "sha256": "7b514431d22e21c86077424dfd0b6207f77248aed012dc65b2b9f8bc7802ba44",
+      "dimensions": [
+        512,
+        128
+      ],
+      "density": 1,
+      "cells": 64
+    },
+    "route-edge-dirt-road@2x.png": {
+      "sha256": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "density": 2,
+      "cells": 64
+    },
+    "route-edge-dirt-road.png": {
+      "sha256": "9634403a7054655f2eeb24f833bd741d01d72f3478aad967831ce9ee6a39970b",
+      "dimensions": [
+        512,
+        128
+      ],
+      "density": 1,
+      "cells": 64
+    },
+    "water-slow-river@2x.png": {
+      "sha256": "60e49fbfcb7c618569fd56a361180c8d5a35a1593783998a3ae91c6b0c406419",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "density": 2,
+      "cells": 64
+    },
+    "water-slow-river.png": {
+      "sha256": "0a5804ba1b248d253956d02db613f747b43d45f14d96498ac8ef124c74761df2",
+      "dimensions": [
+        512,
+        128
+      ],
+      "density": 1,
+      "cells": 64
+    }
+  }
+}

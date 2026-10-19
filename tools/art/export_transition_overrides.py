@@ -14,6 +14,23 @@ CATALOG = Path('tools/art/transition-overrides.json')
 MASKS = [0, 1, 4, 5, 7, 16, 17, 20, 21, 23, 28, 29, 31, 64, 65, 68, 69, 71, 80, 81, 84, 85, 87, 92, 93, 95, 112, 113, 116, 117, 119, 124, 125, 127, 193, 197, 199, 209, 213, 215, 221, 223, 241, 245, 247, 253, 255]
 
 
+def replace_mask_material(baseline, source, size):
+    """Apply a generated opaque material to the existing 47 masks, unchanged."""
+    if baseline.mode != 'RGBA' or baseline.size != (size*16,size*3):
+        raise ValueError('expected exact 47-mask atlas and unused final cell')
+    if source.convert('RGBA').getchannel('A').getextrema() != (255,255):
+        raise ValueError('material must be opaque')
+    before = source.convert('RGB').resize((size,size),Image.Resampling.LANCZOS)
+    texture = match_edges([before]*4)[0]
+    output = baseline.copy()
+    for i in range(47):
+        x,y = i%16*size,i//16*size
+        cell = texture.convert('RGBA')
+        cell.putalpha(baseline.crop((x,y,x+size,y+size)).getchannel('A'))
+        output.paste(cell,(x,y))
+    return output, before, texture
+
+
 def plan(root, catalog):
     data = read_json(catalog)
     if set(data) != {'schemaVersion', 'atlases'} or data['schemaVersion'] != 1 or not isinstance(data['atlases'], dict):
@@ -50,16 +67,11 @@ def plan(root, catalog):
             baseline = load_source(root, pack, baseline_entry)
             if baseline.size != (size * 16, size * 3):
                 raise ValueError('incorrect transition baseline size')
-            before = source.resize((size, size), Image.Resampling.LANCZOS)
-            texture = match_edges([before] * 4)[0]
-            output = baseline.copy()
+            output, before, texture = replace_mask_material(baseline, source, size)
             mask_reports = []
             for i, mask in enumerate(MASKS):
                 x, y = i % 16 * size, i // 16 * size
                 alpha = baseline.crop((x, y, x + size, y + size)).getchannel('A')
-                cell = texture.convert('RGBA')
-                cell.putalpha(alpha)
-                output.paste(cell, (x, y))
                 mask_reports.append({'index': i, 'mask': mask, 'alphaSha256': hashlib.sha256(alpha.tobytes()).hexdigest()})
             if output.getchannel('A').tobytes() != baseline.getchannel('A').tobytes():
                 raise ValueError('transition alpha geometry changed')

@@ -1,0 +1,79 @@
+{
+  "baselineSvg": "/workspace/shared/empire-art-rebuild/calibration-v4/staged-bridgehead/selected-layer-area-water-bridge-bank.svg",
+  "assets": {
+    "swordsman": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/swordsman/master.png",
+      "sourceFoot": [
+        800,
+        887
+      ],
+      "logicalPerSourcePixel": 0.05555555555555555,
+      "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+      "baselineCanvas": [
+        1254,
+        1254
+      ],
+      "baselineFoot": [
+        641,
+        965
+      ],
+      "expectedInstances": 3,
+      "mirroredOnly": false
+    },
+    "pine": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/pine/pine-master.png",
+      "sourceFoot": [
+        640,
+        1130
+      ],
+      "logicalPerSourcePixel": 0.08144796380090498,
+      "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+      "baselineCanvas": [
+        1254,
+        1254
+      ],
+      "baselineFoot": [
+        640,
+        1201
+      ],
+      "expectedInstances": 5
+    },
+    "stone-bridge": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/bridge/bridge-master.png",
+      "sourceFoot": [
+        864,
+        418
+      ],
+      "logicalPerSourcePixel": 0.08098336948662328,
+      "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
+      "baselineCanvas": [
+        1254,
+        1254
+      ],
+      "baselineFoot": [
+        627,
+        625
+      ],
+      "expectedInstances": 3
+    },
+    "red-swordsman": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/red-swordsman/master.png",
+      "sourceFoot": [
+        815,
+        907
+      ],
+      "logicalPerSourcePixel": 0.05432098765432099,
+      "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+      "baselineCanvas": [
+        1254,
+        1254
+      ],
+      "baselineFoot": [
+        641,
+        965
+      ],
+      "expectedInstances": 3,
+      "mirroredOnly": true
+    }
+  }
+}

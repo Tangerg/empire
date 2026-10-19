@@ -50,6 +50,7 @@ def build(config_path, output):
         for node in tree.getroot().iter(f'{{{NS}}}image'):
             href = node.get('href') or node.get(f'{{{XLINK}}}href')
             if href != Path(spec['baselineSource']).as_uri(): continue
+            if 'mirroredOnly' in spec and bool(node.get('transform')) != spec['mirroredOnly']: continue
             old_scale = float(node.get('width'))/spec['baselineCanvas'][0]
             point = [float(node.get('x'))+spec['baselineFoot'][0]*old_scale,
                      float(node.get('y'))+spec['baselineFoot'][1]*old_scale]

@@ -1,0 +1,25 @@
+{
+  "method": "Built-in image_gen edit; one revision; image file copied byte-for-byte without pixel manipulation",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "opaque": true,
+  "original_untouched": true,
+  "original_sha256": "b0f073ace361efbaf998850bddc7f8ccd13d47cf9d235269aad3e322b58051e6",
+  "revision_sha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+  "visual_qa": {
+    "large_regions": 5,
+    "palette": "Muted matte tan-brown, significantly lower orange/yellow saturation",
+    "no_rocks_pebbles_cracks_stipple": true,
+    "fullbleed_square": true,
+    "caveat": "Slight soft tonal variation inside broad regions; not mathematically uniform flat colors. Actual 32-logical-mask scene sampling must be checked by integrating worker."
+  },
+  "references": [
+    "../master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/material-scene/scene@2x.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png"
+  ],
+  "prompt": "prompt.txt"
+}
