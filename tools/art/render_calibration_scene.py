@@ -18,11 +18,13 @@ def element(tag, attrs=None):
     return ET.Element(f'{{{NS}}}{tag}', attrs or {})
 
 
-def build(root, source, masters, output):
+def build(root, source, masters, output, connectors=None, only=None):
     data = json.loads((source / 'pieces.json').read_text())
     output.mkdir(parents=True, exist_ok=True)
     reports = []
-    for name, keep_width, human_height in [('renderer-baseline', None, 44), ('trial-keep96', 96, 44), ('trial-keep144', 144, 44), ('trial-keep144-human34', 144, 34)]:
+    for name, keep_width, human_height in [('renderer-baseline', None, 44), ('trial-keep96', 96, 44), ('trial-keep144', 144, 44), ('trial-keep144-human34', 144, 34), ('selected-layer-keep128-human34', 128, 34), ('selected-layer-corrected-connectors', 128, 34)]:
+        if only and name != only: continue
+        selected = name.startswith('selected-layer')
         svg = element('svg', {'viewBox': '-96 0 640 512', 'width': '1280', 'height': '1024'})
         defs = element('defs'); svg.append(defs)
         hashes = {}; substitutions = []; clip_index = 0
@@ -53,20 +55,32 @@ def build(root, source, masters, output):
 
         for piece in data['layers']['ground']: add_piece(piece, 'ground')
         for index, piece in enumerate(data['layers']['underUnits']):
+            if selected:
+                if index in (11, 19, 27, 29, 36):
+                    master_piece('pine', [piece['x'], piece['y']], [640, 1201], 90 / 1152)
+                elif 'crossings-fortifications' in piece['markup']:
+                    add_piece(piece, 'legacy-crossing')
+                continue
             if keep_width and index == 19:
                 if abs(piece['x'] - 80.18315) > .01 or abs(piece['y'] - 197.76) > .01:
                     raise ValueError('selected actual forest placement changed')
                 master_piece('pine', [piece['x'], piece['y']], [640, 1201], 90 / 1152)
             else: add_piece(piece, 'scenery')
         for piece in data['buildings']:
+            if selected and (piece['x'], piece['y']) != (32, 96): continue
             if keep_width and (piece['x'], piece['y']) == (32, 96):
                 master_piece('lorne-keep', [48, 127], [632, 1177], keep_width / 1217)
             else: add_piece(piece, 'building')
-        for piece in data['units']:
+        for index, piece in enumerate(data['units']):
+            if selected:
+                if index < 5:
+                    master_piece('swordsman', [piece['x'] + 16, piece['y'] + 31], [641, 965], human_height / 632)
+                continue
             if keep_width and (piece['x'], piece['y']) == (64, 256):
                 master_piece('swordsman', [80, 287], [641, 965], human_height / 632)
             else: add_piece(piece, 'unit')
-        for piece in data['layers']['overUnits']: add_piece(piece, 'foreground')
+        if not selected:
+            for piece in data['layers']['overUnits']: add_piece(piece, 'foreground')
 
         # Inkscape does not reliably apply nested SVG overflow clipping. Spell
         # the identical viewport clipping and viewBox transform explicitly.
@@ -85,6 +99,8 @@ def build(root, source, masters, output):
         for image in svg.iter(f'{{{NS}}}image'):
             href = image.get('href')
             path = root / href.lstrip('/') if href.startswith('/packages/') else Path(href.removeprefix('file://'))
+            if connectors and name.endswith('corrected-connectors') and path.name in ('route-dirt-road@2x.png', 'route-edge-dirt-road@2x.png', 'water-slow-river@2x.png'):
+                path = connectors / path.name
             if not path.is_file(): raise ValueError(f'missing image {path}')
             image.set('href', path.as_uri()); image.set(f'{{{XLINK}}}href', path.as_uri())
             hashes[str(path)] = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -97,6 +113,8 @@ def build(root, source, masters, output):
         reports.append({'variant': name, 'viewBox': [-96, 0, 640, 512], 'cropWorld': [0, 3, 14, 10],
             'overscanLogical': 96, 'groundFit': {'meadowInset': 0 if keep_width else 3, 'bleed': .5},
             'substitutions': substitutions, 'inputHashes': hashes, 'kind': 'actual-renderer-piece-art-study-not-gameplay',
+            'connectorCalibration': str(connectors) if connectors and name.endswith('corrected-connectors') else None,
+            'selectionStudy': {'enabled': selected, 'unitPositions': 'first five actual party deployments; all deliberately represented by one swordsman identity' if selected else 'actual original identities except selected Torren', 'forestPositions': 'five actual canopy placement points represented by the same pine' if selected else 'one pine substitution', 'omitted': 'other standing scenery, other buildings, remaining units and foreground; tactical data unchanged' if selected else 'none beyond stated effects'},
             'provenance': 'Only three calibration masters are new style; other pixels are current branch mixed legacy/previous remake',
             'limitations': data['presentationSubstitutions'], 'acceptance': 'pending-user-style-review'})
     (output / 'registration-and-provenance.json').write_text(json.dumps(reports, indent=2) + '\n')
@@ -109,5 +127,7 @@ if __name__ == '__main__':
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--masters', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--connectors', type=Path)
+    parser.add_argument('--only')
     args = parser.parse_args()
-    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve())
+    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only)
