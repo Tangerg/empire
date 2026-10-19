@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 122,
+    "formalBound": 126,
     "boundByCategory": {
       "battle-prop": 40,
       "combat-unit": 21,
-      "equipment": 36,
+      "equipment": 40,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 125,
+    "rawPreservedTopics": 129,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1728,7 +1728,10 @@
       "label": "符文工匠",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-b/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -4185,13 +4188,20 @@
       "category": "equipment",
       "label": "反大型破甲包",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-anti-large-kit/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-anti-large-kit.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment identity/counts verified against original full boards; cannon spoon shot cluster simplified and recorded",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no HD or actor identity invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-ANTI-OATH-GEAR",
@@ -4276,13 +4286,20 @@
       "category": "equipment",
       "label": "弩车主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-ballista/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-ballista.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment identity/counts verified against original full boards; cannon spoon shot cluster simplified and recorded",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no HD or actor identity invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-BANNER-GUARD",
@@ -4367,13 +4384,20 @@
       "category": "equipment",
       "label": "火炮车主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-cannon-wagon/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-cannon-wagon.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment identity/counts verified against original full boards; cannon spoon shot cluster simplified and recorded",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no HD or actor identity invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-CEMETERY-COLOSSUS",
@@ -4661,13 +4685,20 @@
       "category": "equipment",
       "label": "长枪骑兵主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-lance-cavalry/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-lance-cavalry.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment identity/counts verified against original full boards; cannon spoon shot cluster simplified and recorded",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no HD or actor identity invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-LEGION-SHIELD",
