@@ -8310,26 +8310,32 @@
       "atlasId": "forest-temperate",
       "cellId": "sapling-rock-cluster",
       "index": 5,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/sapling-rock-cluster/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "5ccbd8df32c7d77e96724d96dca67f13d5186374c67bc95c8d85eb67a464d3f8",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-007-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "bramble-dark",
       "index": 6,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/bramble-dark/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "983679fed24377e505d5b52549a8b9580323fa01d9c0b8efaa9c2ffffb412380",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-007-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
