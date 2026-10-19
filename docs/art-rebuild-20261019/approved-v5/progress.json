@@ -1805,6 +1805,19 @@
       "registration": "fullcanvas sources, approved one-pixel edge matching; no foot anchor for flat material",
       "liveGame": "pending",
       "evidence": "approved-v5/old-stone-surface and approved-v5/stone-world-material"
+    },
+    "surface-graveyard": {
+      "formalRuntimeBoundCells": [
+        "graveyard-1",
+        "graveyard-2",
+        "graveyard-3",
+        "graveyard-4"
+      ],
+      "status": "four original32/64catalog slots exported; tone0 also formally bound with256logical world period",
+      "source": "four independent opaque native sources; no opaque character source",
+      "registration": "fullcanvas; only approved outermost one-pixel edge matching, no blanket blur/recolor",
+      "liveGame": "pending",
+      "evidence": "approved-v5/graveyard-world-material"
     }
   },
   "totalCanonicalScope": 1212,
@@ -1880,6 +1893,19 @@
       ],
       "connectionGeometry": "original128 route/edge mask alpha states preserved exactly at1x/2x; same index and bleed",
       "scope": "285base and250road+250edge in c01-07; shared material changes8actuallevels, map/rule/standing layers unchanged",
+      "liveGame": "pending"
+    },
+    "graveyard-world-material": {
+      "status": "formal world-coordinate base binding",
+      "sourceSlots": [
+        "surface-graveyard:0"
+      ],
+      "logicalPeriod": 256,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "scope": "258 c01-11 and296 c01-16 actual ground cells; other14level ground unchanged; rules/standing layers and60replays identical",
       "liveGame": "pending"
     }
   },

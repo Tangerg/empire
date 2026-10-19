@@ -17,11 +17,11 @@
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 159
+    "registeredEnvironmentCells": 163
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 159,
+    "registeredIndividualSourceCells": 163,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -29,7 +29,8 @@
       "dirt-road",
       "horizontal-crossing",
       "edge-decoration",
-      "stone-world-material"
+      "stone-world-material",
+      "graveyard-world-material"
     ]
   },
   "sceneCohesion": {
@@ -103,6 +104,19 @@
       ],
       "connectionGeometry": "original128 route/edge mask alpha states preserved exactly at1x/2x; same index and bleed",
       "scope": "285base and250road+250edge in c01-07; shared material changes8actuallevels, map/rule/standing layers unchanged",
+      "liveGame": "pending"
+    },
+    "graveyard-world-material": {
+      "status": "formal world-coordinate base binding",
+      "sourceSlots": [
+        "surface-graveyard:0"
+      ],
+      "logicalPeriod": 256,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "scope": "258 c01-11 and296 c01-16 actual ground cells; other14level ground unchanged; rules/standing layers and60replays identical",
       "liveGame": "pending"
     }
   },
@@ -19000,9 +19014,26 @@
     {
       "atlasId": "surface-graveyard",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "graveyard-1",
+        "graveyard-2",
+        "graveyard-3",
+        "graveyard-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "graveyard-1",
+          "graveyard-2",
+          "graveyard-3",
+          "graveyard-4"
+        ],
+        "status": "four original32/64catalog slots exported; tone0 also formally bound with256logical world period",
+        "source": "four independent opaque native sources; no opaque character source",
+        "registration": "fullcanvas; only approved outermost one-pixel edge matching, no blanket blur/recolor",
+        "liveGame": "pending",
+        "evidence": "approved-v5/graveyard-world-material"
+      }
     },
     {
       "atlasId": "surface-forge-stone",
