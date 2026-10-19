@@ -31,7 +31,7 @@
     ]
   },
   "sceneCohesion": {
-    "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
+    "fullMap": "road-presentation/integrated-main/full-scene-labeled.png",
     "secondLevel": "cart-stop-full-scene/full-scene-labeled.png",
     "status": "Full firstlevel19/19 and secondlevel20/20 initial ruleactors use approved art. All objects retained, shared foot-depth and selected-visible-only cue retained. Decorative farmer NPCs, remaining cliff/camp identities and other terrain material families remain legacy; no overall completion claim.",
     "pureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
@@ -58,7 +58,12 @@
       "raw": "approved earthy material and2x connector bytes preserved",
       "export": "isolated1x cell downsample with bounded outeredgeRGB match; alpha and interior unchanged; allports exact1x/2x",
       "runtimeBinding": "existing connected masks/roadcells, core22logical, blank redundant edgeatlas",
-      "liveGame": "pending"
+      "liveGame": "pending",
+      "firstLevelAreaRoad": {
+        "binding": "84 actual route/settlement cells derive rounded connected occupancy, one1024world sampled approved source",
+        "validation": "all256 neighbor patterns, exact actual alpha/RGB source audit, all60 replay outputs unchanged, other15 scenes/editor outputs unchanged",
+        "limits": "1 raster pixel/logical unit; grid-shaped route silhouette still visible; live pending"
+      }
     },
     "horizontal-crossing": {
       "raw": "approved transparent source unchanged",

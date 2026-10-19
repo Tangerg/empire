@@ -19,7 +19,7 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Parallel first-level playable layout redesign and ongoing cliff/fortification/character remake; keep all source backups and formal stages distinct.",
+  "next": "Parallel remaining artwork and scene integration; first-level continuous road checkpoint verified, grid-shaped route silhouette remains.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
@@ -864,19 +864,20 @@
     "focusedRuntime": 72,
     "typecheck": "passed",
     "artToolTests": 126,
-    "fullSuite": "906 tests /98 files passed at8ed0cf8",
+    "fullSuite": "929/929 tests across99 files at7c69f53",
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 906,
+      "passed": 929,
       "failed": 0,
-      "files": 98,
+      "files": 99,
       "command": "npx vitest run --maxWorkers 2 --minWorkers 1",
-      "scope": "8ed0cf8 integrated first-level layout main checkpoint"
+      "scope": "fixed7c69f53 integrated road/main checkpoint"
     },
     "latestBindingAndEdges": "93 asset/environment tests passed after templar/forge/camps",
-    "artPythonLatest": "150 passed at9003b5b; exact crossing/cliff contracts included",
-    "typecheckLatest": "passed at9003b5b"
+    "artPythonLatest": "150 passed at73a9b2f including landmark contract subtests",
+    "typecheckLatest": "passed at7c69f53",
+    "appBuildsLatest": "all4 passed at7c69f53"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {
@@ -897,7 +898,12 @@
       "raw": "approved earthy material and2x connector bytes preserved",
       "export": "isolated1x cell downsample with bounded outeredgeRGB match; alpha and interior unchanged; allports exact1x/2x",
       "runtimeBinding": "existing connected masks/roadcells, core22logical, blank redundant edgeatlas",
-      "liveGame": "pending"
+      "liveGame": "pending",
+      "firstLevelAreaRoad": {
+        "binding": "84 actual route/settlement cells derive rounded connected occupancy, one1024world sampled approved source",
+        "validation": "all256 neighbor patterns, exact actual alpha/RGB source audit, all60 replay outputs unchanged, other15 scenes/editor outputs unchanged",
+        "limits": "1 raster pixel/logical unit; grid-shaped route silhouette still visible; live pending"
+      }
     },
     "horizontal-crossing": {
       "raw": "approved transparent source unchanged",
@@ -914,7 +920,7 @@
     }
   },
   "integrationGate": {
-    "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
+    "fullMap": "road-presentation/integrated-main/full-scene-labeled.png",
     "secondLevel": "cart-stop-full-scene/full-scene-labeled.png",
     "status": "Full firstlevel19/19 and secondlevel20/20 initial ruleactors use approved art. All objects retained, shared foot-depth and selected-visible-only cue retained. Decorative farmer NPCs, remaining cliff/camp identities and other terrain material families remain legacy; no overall completion claim.",
     "pureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
