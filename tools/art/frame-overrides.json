@@ -84,6 +84,34 @@
           2
         ]
       }
+    },
+    "C01-UNIT-BANNER-GUARD": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/master.png",
+          "sha256": "d7830242b3703b7942386914d882071d1b8828294dc38bdf79cdfae1cba2cf34"
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/master.png",
+          "sha256": "b40132c296cc7c64ff9cb94e29fd1535b71674786fc3244e4ae0ff325a4a25d8"
+        },
+        "attack": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/master.png",
+          "sha256": "7020d970d91da4618ba424965633a7d78a2804743557e88fcc34e3f6038a5b57"
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/master.png",
+          "sha256": "e5dd0237ca8b9140274f96e56ad06b16db7771aadac7c9ac3ce6438d8db3810a"
+        }
+      },
+      "placement": {
+        "renderWidth": 30,
+        "origin": [
+          1,
+          2
+        ]
+      }
     }
   }
 }

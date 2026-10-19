@@ -9149,19 +9149,29 @@
       "atlasId": "forest-existing",
       "cellId": "pine-stump",
       "index": 14,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-stump/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-current-four"
+      "assignmentPhase": "after-current-four",
+      "sourceSha256": "7d20008f11ec06dbbca3734802942813b4485cbdd1345811ba7903be2dfa7253",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-mossy-rock",
       "index": 15,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mossy-rock/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-current-four"
+      "assignmentPhase": "after-current-four",
+      "sourceSha256": "44d1d325b6277a297b883d9001a90cca867341b3bc3e88a1abb2524b4bebdaf2",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
