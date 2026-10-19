@@ -7029,7 +7029,8 @@
       "topicId": "c03-battle-prop-6fff5dc5",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-7a878eb8",
@@ -7050,10 +7051,14 @@
     },
     {
       "topicId": "c03-battle-prop-809c152b",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-809c152b/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "b340672e91ebba183854f77edcdaedf21c9e0bc32c806372c7d195c1d63391a7"
     },
     {
       "topicId": "c03-battle-prop-8ec886d2",
@@ -7115,7 +7120,8 @@
       "topicId": "c03-battle-prop-b31edea6",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-b6bd8efb",
@@ -7135,7 +7141,8 @@
       "topicId": "c03-battle-prop-ba469b15",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-c7e05f1c",
@@ -7244,14 +7251,19 @@
       "topicId": "c03-battle-prop-d983ce23",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-ede52a71",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-ede52a71/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "8eb0543b9c8d4950ff7e437654ca9cf785c28a79aac87d34ed91c5cc44d62bfb"
     },
     {
       "topicId": "c03-battle-prop-f7033df9",
@@ -8473,17 +8485,27 @@
       "atlasId": "forest-existing",
       "cellId": "pine-tall",
       "index": 0,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-tall/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "023f0a00283611b95894ceb1cf3f213cfd2fa39d3cefb3b6a11f0e25ff664196",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-pair",
       "index": 1,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-pair/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "a5cffbdab9cfc3378fb6325191accaa7c89748358bae435edf39635bb44073be",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
