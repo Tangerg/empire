@@ -1563,13 +1563,13 @@
       "topicId": "C01-UNIT-KNIGHT",
       "label": "骑士",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-knight.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-knight.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1578,13 +1578,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.7908787541713,
+        50.93659621802002
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-LANCE-CAVALRY",
@@ -3652,13 +3653,13 @@
       "topicId": "C01-STRUCT-ARCHIVE-FURNACE",
       "label": "山炉档案炉",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-archive-furnace.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-archive-furnace.png",
+      "width": 384,
+      "height": 128,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -3666,8 +3667,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        63.02051282051283,
+        118.25470085470086
       ],
       "footprint": [
         2,

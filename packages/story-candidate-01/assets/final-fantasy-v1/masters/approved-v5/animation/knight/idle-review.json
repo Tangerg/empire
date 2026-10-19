@@ -1,0 +1,42 @@
+{
+  "status": "Idle accepted; native quartet complete",
+  "topic": "C01-UNIT-KNIGHT",
+  "actualConsumers": [
+    "c01.knight",
+    "knight (built-in)"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/master.png",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "identityPass": true,
+  "bodyStyleReview": "Large adult bearded head and rounded steel helmet, huge brown gloves and boots, broad cream/red riveted armor and short legs",
+  "equipmentHandAssignment": "Screen-left brown glove holds short straight sword; screen-right arm holds dark pointed oval shield with gold branching central mark",
+  "visibleBoundsAlphaGreaterThan127": [
+    382,
+    57,
+    1204,
+    960
+  ],
+  "bodyTop": 57,
+  "sourceFootMidpoint": [
+    813.404,
+    956.0
+  ],
+  "suggestedSourceFoot": [
+    813,
+    959
+  ],
+  "proposedBodyReferenceSourcePixels": 899.0,
+  "proposedBodyScale": 0.048943270300333706,
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "semanticMismatch": "Original art is foot sword/shield, while c01.knight gameplay has mounted/lance/charge. Preserve explicit canonical art mapping; no horse invented, no remap, no gameplay-semantic fix claimed.",
+  "acceptedScale": "44/899",
+  "acceptanceEvidence": "Parent2026-10-19 15:39:45UTC: original foot identity, cream/red riveted armor, gold branching shield mark and chunky style accepted. Continue same44/899scale and equipment orientation; keep broad matte metal rather than overall oily/glossy highlights.",
+  "quartetManifest": "bundle-manifest.json"
+}

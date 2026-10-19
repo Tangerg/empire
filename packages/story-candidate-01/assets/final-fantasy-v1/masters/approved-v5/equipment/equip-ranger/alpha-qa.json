@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-RANGER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6188789176071976,
+  "nearOpaqueFractionAlphaGE250": 0.3533833678003912,
+  "nonzeroAlphaBBox": [
+    0,
+    47,
+    1238,
+    1238
+  ],
+  "visibleAlphaBBoxGE8": [
+    56,
+    49,
+    1193,
+    1204
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    56,
+    49,
+    61,
+    50
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 13,
+  "sha256": "16d8b38161ea39e6f51e6adf6ddcd073f2d96e01b54865b0d436521547678bfb",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

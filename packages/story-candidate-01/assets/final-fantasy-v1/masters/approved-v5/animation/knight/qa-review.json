@@ -1,0 +1,53 @@
+{
+  "status": "Native quartet visual/geometry QA passes; coordinator export/binding pending",
+  "topic": "C01-UNIT-KNIGHT",
+  "actualConsumers": [
+    "c01.knight",
+    "knight (built-in)"
+  ],
+  "bodyScale": "44/899",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "sourcePaddingRequired": "None; all native canvases are1586x992",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All perimeter alpha<=1; zero silhouette alpha>1 on edges; no alpha cleanup",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "equipmentHandsPreserved": true,
+  "walkContactsOppose": true,
+  "attackSemanticsPass": "Clear compact forward sword thrust, original brown gloved weapon hand extended, blade horizontal ahead of the retained upright shield. Braced short-legged stance, focused face, gold branching mark preserved. No horse, lance, effects or equipment-hand swap.",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b for exact canonical C01-UNIT-KNIGHT. Preserve original foot sword/shield identity and depict a compact sword thrust. Gameplay c01.knight remains mounted with lance/charge; that pre-existing semantic mismatch is documented, not changed or claimed fixed. No remap to distinct C01-UNIT-LANCE-CAVALRY.",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "semanticMismatch": {
+    "status": "Pre-existing and unresolved; no gameplay changes or art remapping",
+    "detail": "c01.knight gameplay uses mounted cavalry, knight-lance and knight-charge while the exact original artwork is a foot sword/shield soldier. C01-UNIT-LANCE-CAVALRY is a distinct topic with different source, frame width and footprint.",
+    "evidence": "source-contract-review.md"
+  },
+  "originalArtIdentityRetainedWithoutRemapping": true,
+  "gameplaySemanticFixClaimed": false
+}

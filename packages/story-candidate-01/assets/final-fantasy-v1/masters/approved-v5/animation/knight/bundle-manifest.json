@@ -1,0 +1,145 @@
+{
+  "asset": "C01-UNIT-KNIGHT",
+  "actualConsumers": [
+    "c01.knight",
+    "knight (built-in)"
+  ],
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical to selected native tool outputs. No painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.048943270300333706,
+  "bodyReferenceSourcePixels": 899,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/registration-evidence.json",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b for exact canonical C01-UNIT-KNIGHT. Preserve original foot sword/shield identity and depict a compact sword thrust. Gameplay c01.knight remains mounted with lance/charge; that pre-existing semantic mismatch is documented, not changed or claimed fixed. No remap to distinct C01-UNIT-LANCE-CAVALRY.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "89b684eda9c1832131bc7e1ed5548db13d29e7b2363948cb0164a351ded62611",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        813,
+        959
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        382,
+        57,
+        1204,
+        960
+      ],
+      "sha256": "88a072adfa8b1cb383b81e5265e0997b3faff67df6edc57cd43ae42214efafe9",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4c2a7b2a-71e5-4e93-b5af-f3bbdc0d5201.png",
+      "review": "Accepted bearded foot knight in rounded steel helmet, broad cream/red riveted armor, chainmail bands, huge brown gloves and boots with spurs. Screen-left sword hand and screen-right dark pointed oval shield with gold branching mark retain original source identity."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "020842001388f5cde8d79c891d3e9e4b3cc841d72ffea9ead1d9cf392923d338",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        795,
+        950
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        387,
+        56,
+        1226,
+        951
+      ],
+      "sha256": "63124ac7351dec55b1ca89d652ffec095ae2f2cb8ee19d2f2afdf2dd0623655e",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9f191203-4bfd-44f4-9e1b-9793bfb77d60.png",
+      "review": "Front screen-right boot toe-up/heel-contact with dark sole visible; rear screen-left boot flat. Same sword/shield hands, gold branching mark, armor, helmet and attached spurs."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "0d8dc4f5d7ef1fc8643ae1937c8dcb945eda4d1acbe7c6319071cb11a4cca4a3",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        624,
+        943
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        234,
+        48,
+        1416,
+        944
+      ],
+      "sha256": "7f32d89cdf4df5e5cc6e33eb5c170fef638a5d7f87abdf4de0b1c59f6cc25432",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6aa3b88d-9b9e-4f63-b17e-9e2fca00fd98.png",
+      "review": "Clear compact forward sword thrust, original brown gloved weapon hand extended, blade horizontal ahead of the retained upright shield. Braced short-legged stance, focused face, gold branching mark preserved. No horse, lance, effects or equipment-hand swap."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "bc8d1ce0dab6e4fed052d4be8faff1f4c4a4f3a3536d4bf8ad3c4cd88d6a2e3d",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/knight/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        831,
+        944
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        384,
+        52,
+        1230,
+        945
+      ],
+      "sha256": "05c9901ebe0cc37bfb0e3782113c50b3b499dbf4d1cc563ab910b6a414388fec",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-87b6fb26-8a76-41c4-89c5-453475ae7d67.png",
+      "review": "Opposite contacts: front screen-right boot flat and weight-bearing, rear screen-left heel raised/toe down. Same foot-knight identity, equipment hands, shield mark and matte armor."
+    }
+  },
+  "semanticMismatch": {
+    "status": "Pre-existing and unresolved; no gameplay changes or art remapping",
+    "detail": "c01.knight gameplay uses mounted cavalry, knight-lance and knight-charge while the exact original artwork is a foot sword/shield soldier. C01-UNIT-LANCE-CAVALRY is a distinct topic with different source, frame width and footprint.",
+    "evidence": "source-contract-review.md"
+  }
+}

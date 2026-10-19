@@ -1,0 +1,7 @@
+# grain-drying-mat-earth
+
+Exact rural-life slot2, full original atlas, alpha cell and actual consumers inspected. One earth-brown square drying surface, exactly FOUR corner stakes and their rope lashings, one low central spread of broad short straw/chaff groups and a few elongated kernels. Compact broken grain/chaff is distinct from the whole wheat ears on linen/dark variants. Source's functional brown surface is preserved, with no large terrain platform added. No tied sheaf, high haystack or container. Explicit c01-01 consumer(16.0,10.3),foundation,scale0.68. Native front-ground landmark(628, 1024) is the foreground corner stake/sheet contact, not mat center. Ground center approx(627,650). Original reference front landmark(158, 274) on313x314.112/224 anchor56,108,footprint2x2,obstruction0,foundation. Preserve original ground-layer semantics despite small stakes. All source geometry and functional opaque/near-opaque interior remain native, no cleanup.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [60, 255, 60, 211]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

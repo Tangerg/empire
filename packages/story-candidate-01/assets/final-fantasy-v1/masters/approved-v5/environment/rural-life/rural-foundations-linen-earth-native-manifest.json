@@ -1,0 +1,48 @@
+{
+  "status": "Native foundation sources complete; actual c01-01 consumers verified, runtime integration pending",
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "render_layer": "foundation",
+  "assets": [
+    {
+      "identity": "grain-drying-mat-linen",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/grain-drying-mat-linen-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        1044
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "grain-drying-mat-earth",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/grain-drying-mat-earth-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        1024
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

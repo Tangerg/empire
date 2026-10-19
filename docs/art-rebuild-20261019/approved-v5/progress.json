@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 12,
-  "authoredThreeStateBundles": 14,
-  "formalRuntimeBoundTopics": 65,
+  "authoredFourPoseBundles": 13,
+  "authoredThreeStateBundles": 15,
+  "formalRuntimeBoundTopics": 67,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -416,6 +416,19 @@
       "raw": "preserved unchanged with original atlas evidence",
       "export": "native48 three-background identity/alpha review passed",
       "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+      "liveGame": "pending"
+    },
+    "C01-UNIT-KNIGHT": {
+      "raw": "4/4 preserved",
+      "export": "shared44/899 scale, measured foot translation, native opposite walk and sword-thrust review passed",
+      "runtimeBinding": "canonical+HD mapping preserved; actual c01-02 bridge-knight",
+      "sourceSemanticCaveat": "Original bound art is foot sword/shield knight, while gameplay tags mounted/lance; no unsupported remap to separate cavalry topic",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-ARCHIVE-FURNACE": {
+      "raw": "3/3 preserved",
+      "export": "shared112/1170 scale, fixed foundation and native three-background state review passed",
+      "runtimeBinding": "canonical+HD catalog bound; no direct scene consumer verified",
       "liveGame": "pending"
     }
   },

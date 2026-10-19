@@ -1,0 +1,7 @@
+# grain-drying-mat-linen
+
+Exact rural-life slot1, full original atlas, alpha cell and actual consumers inspected. One pale linen square drying sheet, exactly FOUR corner stakes and their rope lashings, one low central spread of whole wheat ears lying diagonally. Four broad cloth edges and simple attachment tabs remain. No upright sheaf, growing wheat, container, new turf island or deleted sheet. The internal cloth/grain surface is preserved as near-opaque native paint, exterior genuinely transparent. Explicit c01-01 consumer(11.3,10.3),foundation,scale0.68. Native front-ground landmark(628, 1044) is the foreground corner stake/sheet contact, not mat center. Ground center approx(627,650). Original reference front landmark(158, 263) on313x314.112/224 anchor56,108,footprint2x2,obstruction0,foundation. Preserve original ground-layer semantics despite small stakes. All source geometry and functional opaque/near-opaque interior remain native, no cleanup.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [37, 224, 36, 194]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

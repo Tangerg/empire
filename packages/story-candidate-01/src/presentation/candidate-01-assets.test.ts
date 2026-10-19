@@ -12,6 +12,8 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-UNIT-KNIGHT', source: 'animation/knight', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
+  { topic: 'C01-STRUCT-ARCHIVE-FURNACE', source: 'buildings/archive-furnace', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-HOLY-MEDICINE-SHED', source: 'buildings/holy-medicine-shed', size: [120, 120], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-MISSION-REFUGEE-ADULT', source: 'mission/refugee-adult', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-UNIT-LEGION-SHIELD', source: 'animation/legion-shield', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
@@ -40,6 +42,10 @@ const bundles = [
 ];
 
 describe('approved runtime asset documents', () => {
+  it('covers every formally bound approved sequence with an explicit geometry and byte-equality contract', () => {
+    const bound = manifest.assets.filter(record => record.qualityTier === 'approved-chunky-v5-export-verified' && record.frames !== undefined).map(record => record.topicId).sort();
+    expect(bundles.map(bundle => bundle.topic).sort()).toEqual(bound);
+  });
   it.each(bundles)('binds $topic to byte-identical approved sheets and registered logical geometry', ({ topic, source, size, footprint, frames }) => {
     const record = candidate01Asset(topic);
     const hd = hdManifest.assets.find((entry) => entry.topicId === topic);

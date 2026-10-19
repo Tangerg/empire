@@ -1,0 +1,133 @@
+{
+  "topicId": "C01-STRUCT-ARCHIVE-FURNACE",
+  "status": "complete native trio; native/common-scale visual QA reviewed",
+  "masterIntegrity": "All raw/master pairs are byte-identical native built-in imagegen files. No alpha cleanup, geometric fit, resize, crop, transform or repaint applied.",
+  "perimeterGate": "Normal/damaged/captured actual perimeter maxima1/0/0; zero edge pixels>1. Gate unchanged.",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sharedStructuralSourceFoot": [
+    627,
+    1204
+  ],
+  "acceptedLogicalWidth": 112,
+  "scaleApplication": "One112/1170 factor on every complete1254 native canvas; no independent fit",
+  "visualChecks": {
+    "normal": "Squat stone archive furnace, paired three-drawer brass bays, blue-gray sloped roof with central open vent, rear-right chimney, lit front furnace and brass-rimmed wheel",
+    "damaged": "Collapsed open roof/vent and broken chimney rim, pulled-out drawer and two grounded detached drawer boxes, localized stone rubble; furnace deliberately remains lit",
+    "captured": "Same normal camera and visible drawer layout, amber lantern over vent, slate-gray swags/pale tassels and pointed brass finials; no flag",
+    "style": "Broad chunky stone/brass/metal planes and strong dark outlines, readable functional silhouette",
+    "registration": "Same front threshold and foundation. Damaged detached pieces extend silhouette but do not define anchor. Captured original rotated view normalized by keeping approved normal view, not by post-generation fitting.",
+    "alpha": "Genuine RGBA exterior with all silhouettes contained and no background/ground tile",
+    "scale": "112 logical shared-scale preview reviewed; original damage/decoration meanings clear. Live-map integration/scale gate remains separate."
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical112": "qa-logical-112.png"
+  },
+  "consumerQualification": "All10 remaining original interactive-structure topics have no static consumer reference in current audit; direct source/scene search confirmed no references. Selected first unfinished original-manifest entry. No live gameplay usage claimed.",
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        41,
+        128,
+        1211,
+        1204
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1c66bde2-b9b1-4318-bdfa-904350d113af.png",
+      "sha256": "a04c56d52cedf66ee5a4658a73f51a8e0d94c9912597b760530ab706e01402b7",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        39,
+        126,
+        1214,
+        1207
+      ],
+      "fullyTransparentPixelCount": 675411,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained platform/roof/chimney/drawers/debris/decorations",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1204
+      ]
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        19,
+        124,
+        1237,
+        1209
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b21d64b9-0430-4590-9507-24c1b3e9c36f.png",
+      "sha256": "d864216d79c59641c9f60afd3ab01e874e5da987001801ce99e4925a4c723938",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        17,
+        122,
+        1239,
+        1211
+      ],
+      "fullyTransparentPixelCount": 641220,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained platform/roof/chimney/drawers/debris/decorations",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1204
+      ]
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        41,
+        115,
+        1211,
+        1204
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-82e93b27-467d-477c-89ca-fa95aa91791c.png",
+      "sha256": "034064987068bc8e6127f6ab88a4fa8f9f785e5a954c676d55d8f7521da8903f",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        39,
+        112,
+        1213,
+        1206
+      ],
+      "fullyTransparentPixelCount": 658852,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained platform/roof/chimney/drawers/debris/decorations",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1204
+      ]
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

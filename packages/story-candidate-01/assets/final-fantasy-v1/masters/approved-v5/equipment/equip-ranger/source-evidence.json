@@ -1,0 +1,49 @@
+{
+  "topicId": "C01-EQUIP-RANGER",
+  "assetId": "C01-FFV1-EQUIP-RANGER",
+  "label": "\u6e38\u4fa0\u4e3b\u88c5\u5907",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-89abf6ac-7acd-4709-a9d2-f190a4b6bd61.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-ranger-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-02.png, bottom row column 1",
+    "inspectionCropCoordinates": [
+      0,
+      445,
+      442,
+      887
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-ranger.png",
+    "slotVerification": "Original full board and high-resolution crop visually matched against baseline runtime icon and canonical current manifest topic.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-02.png",
+    "atlasSha256": "54cc903dacbc853b5b842fe56e771f0d561486a61e1be4a8a1f4f20e7d049e6a",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-archer/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-ranger-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-archer/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "Original grouping: shortbow with leaf-like wood decoration, one curved hunting knife and one tied olive herb bundle. No quiver or arrow substituted.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No pixel cleanup, resizing, alpha editing or Git writes. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 65,
+    "formalBound": 67,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 10,
+      "combat-unit": 11,
       "equipment": 8,
-      "interactive-structure": 14,
+      "interactive-structure": 15,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 67,
+    "rawPreservedTopics": 69,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1528,16 +1528,23 @@
       "label": "骑士",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/idle/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/walk-a/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-knight.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight.png",
+      "stageEvidence": {
+        "raw": "4/4 preserved",
+        "export": "shared44/899 scale, measured foot translation, native opposite walk and sword-thrust review passed",
+        "runtimeBinding": "canonical+HD mapping preserved; actual c01-02 bridge-knight",
+        "sourceSemanticCaveat": "Original bound art is foot sword/shield knight, while gameplay tags mounted/lance; no unsupported remap to separate cavalry topic",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-LANCE-CAVALRY",
@@ -2813,14 +2820,21 @@
       "label": "山炉档案炉",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/archive-furnace/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/archive-furnace/damaged/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/archive-furnace/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-archive-furnace.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-archive-furnace.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved",
+        "export": "shared112/1170 scale, fixed foundation and native three-background state review passed",
+        "runtimeBinding": "canonical+HD catalog bound; no direct scene consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
@@ -4011,8 +4025,10 @@
       "category": "equipment",
       "label": "刺客主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-assassin/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4438,8 +4454,10 @@
       "category": "equipment",
       "label": "游侠主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-ranger/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

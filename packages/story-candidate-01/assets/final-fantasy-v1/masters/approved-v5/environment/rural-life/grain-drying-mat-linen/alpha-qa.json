@@ -1,0 +1,115 @@
+{
+  "asset": "grain-drying-mat-linen",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-8bbee265-6571-4b0e-80e0-18735060cfaf.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1106725,
+  "opaque_pixels": 650,
+  "partial_alpha_pixels": 465141,
+  "near_opaque_alpha_250_255_pixels": 450716,
+  "nonzero_alpha_bbox": [
+    0,
+    31,
+    1222,
+    1230
+  ],
+  "strong_alpha_bbox": [
+    37,
+    224,
+    1218,
+    1060
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      31,
+      1222,
+      1230
+    ],
+    "16": [
+      37,
+      223,
+      1219,
+      1061
+    ],
+    "128": [
+      37,
+      224,
+      1218,
+      1060
+    ],
+    "250": [
+      40,
+      225,
+      1217,
+      1059
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    31,
+    32,
+    24
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    37,
+    224,
+    36,
+    194
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 15
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "61e917eb8795e0f2a62bf88a21e84e108bcd121af4b6b28445fca40225244ebb",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "functional_interior_alpha_check": {
+    "sample_region": "inner diamond: abs(x-627)/510 + abs(y-650)/330 <0.65",
+    "minimum_alpha": 252,
+    "maximum_alpha": 254,
+    "sample_pixels": 142211,
+    "alpha_below_250_pixels": 0,
+    "interpretation": "Functional sheet/grain interior remains near-opaque, no transparent holes; native fractional alpha retained unchanged."
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

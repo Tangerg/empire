@@ -1,0 +1,60 @@
+{
+  "updatedUTC": "2026-10-19T15:48:00Z",
+  "counting": "Assignments do not imply completion; scope-ledger owns formal stages.",
+  "batches": [
+    {
+      "family": "mission/combat",
+      "current": [
+        "C01-UNIT-GRAVEKEEPER"
+      ],
+      "pendingIntegration": [
+        "C01-UNIT-KNIGHT"
+      ],
+      "next": "verify actual ballista source contract"
+    },
+    {
+      "family": "interactive-structure",
+      "pendingIntegration": [
+        "C01-STRUCT-ARCHIVE-FURNACE"
+      ],
+      "next": "next unbound canonical three-state identity; no source remapping"
+    },
+    {
+      "family": "rural-life",
+      "current": [
+        "grain-drying-mat-dark",
+        "grain-drying-mat-linen",
+        "grain-drying-mat-earth",
+        "threshing-floor"
+      ],
+      "next": [
+        "decals-small:stone-cluster-a",
+        "decals-small:stone-cluster-b",
+        "decals-small:mud-patch",
+        "decals-small:exposed-roots"
+      ]
+    },
+    {
+      "family": "equipment",
+      "current": [
+        "C01-EQUIP-RANGER",
+        "C01-EQUIP-ASSASSIN",
+        "C01-EQUIP-SILVER-LONGBOW",
+        "C01-EQUIP-JAVELIN-HUNTER"
+      ],
+      "next": [
+        "decals-small:grass-tuft-a",
+        "decals-small:grass-tuft-b",
+        "decals-small:grass-tuft-c",
+        "decals-small:fallen-leaves"
+      ]
+    },
+    {
+      "family": "export-engineering",
+      "current": [
+        "decals-small exact6x4 64/128 adapter",
+        "camps-foundations exact4x4 144/288 adapter"
+      ]
+    }
+  ]
+}

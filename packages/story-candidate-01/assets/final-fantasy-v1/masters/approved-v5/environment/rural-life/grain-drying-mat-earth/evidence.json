@@ -1,0 +1,98 @@
+{
+  "asset": "grain-drying-mat-earth",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte sheet planes, chunky harvested-wheat groups and bold dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    628,
+    1024
+  ],
+  "source_foot_estimate_normalized": [
+    0.500797,
+    0.816587
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    60,
+    255,
+    60,
+    211
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/grain-drying-mat-earth.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/wheat-sheaves/wheat-sheaves-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/grain-sacks-baskets-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-foundations-source-inspection.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-foundations-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 0,
+  "original_gameplay_footprint": [
+    2,
+    2
+  ],
+  "original_render_layer": "foundation",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "functional_ground_surface_preserved": true,
+  "no_added_external_ground_platform": true,
+  "no_exterior_glow": true,
+  "source_ground_center_estimate_px": [
+    627,
+    650
+  ],
+  "foot_estimate_basis": "foreground square corner stake/sheet ground-contact landmark, distinct from ground center",
+  "renderer_ground_contract": "Authored foundation uses normal cell/atlas anchor, not lying:true or image center; it enters ground layer and has no under-unit foot-sort marker.",
+  "scale_recommendation": {
+    "authored_placement_scale": 0.68,
+    "initial_presentation_scale": 1.0,
+    "native_mapping": "same full1254-to-rural112 canvas mapping for all drying mats, preserving diamond aspect ratio",
+    "validation_status": "recommendation only; parent actual scene review pending"
+  },
+  "original_slot_zero_based": 2,
+  "visually_verified_subject_counts": {
+    "square_drying_surface": 1,
+    "corner_stakes": 4,
+    "central_harvest_spread": 1
+  },
+  "legacy_reference_foot_estimate_px": [
+    158,
+    274
+  ],
+  "legacy_reference_dimensions": [
+    313,
+    314
+  ],
+  "consumer_classification": "explicit c01-01 foundation placement, no random selector found",
+  "functional_interior_alpha_check": {
+    "sample_region": "inner diamond: abs(x-627)/510 + abs(y-650)/330 <0.65",
+    "minimum_alpha": 250,
+    "maximum_alpha": 254,
+    "sample_pixels": 142211,
+    "alpha_below_250_pixels": 0,
+    "interpretation": "Functional sheet/grain interior remains near-opaque, no transparent holes; native fractional alpha retained unchanged."
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

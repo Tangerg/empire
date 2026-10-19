@@ -24,5 +24,47 @@
   "alphaOnePixels": 2925,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        515,
+        850,
+        745,
+        980
+      ],
+      "soleY": 950,
+      "bottomBandRows": 4,
+      "meanX": 634.22,
+      "spanX": [
+        581,
+        687
+      ]
+    },
+    "screenRight": {
+      "roi": [
+        910,
+        770,
+        1190,
+        980
+      ],
+      "soleY": 945,
+      "bottomBandRows": 4,
+      "meanX": 955.305,
+      "spanX": [
+        924,
+        992
+      ]
+    }
+  },
+  "sourceFootMidpoint": [
+    794.763,
+    947.5
+  ],
+  "suggestedSourceFoot": [
+    795,
+    950
+  ],
+  "lockedBodyScale": "44/899",
+  "masterRawHashMatches": true
 }
