@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-public-supply-crate",
+  "assetId": "C02-SFV1-equipment-public-supply-crate",
+  "label": "公共补给箱",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 3
+  },
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-public-supply-crate.png",
+  "runtimeReferenceSha256": "58537087aaf46b84a6e503d79c6e384a6e82fb0137f416087c980a2a2a919ccf",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

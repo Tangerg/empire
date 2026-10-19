@@ -1,0 +1,56 @@
+{
+  "status_utc": "2026-10-19T21:40:51.775317+00:00",
+  "baseline_audit": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/surface-transition-completion-audit.json",
+  "scope": "native-source completion addendum only; original code/runtime snapshot retained",
+  "exact_cell_aligned_new_native_sources_saved": 28,
+  "functional_world_meadow_tone_0_replacement": 1,
+  "remaining_individual_surface_roles": 3,
+  "pending_surface_cells": [
+    {
+      "atlas": "surface-meadow",
+      "cell_id": "meadow-2",
+      "index": 1
+    },
+    {
+      "atlas": "surface-meadow",
+      "cell_id": "meadow-3",
+      "index": 2
+    },
+    {
+      "atlas": "surface-meadow",
+      "cell_id": "meadow-4",
+      "index": 3
+    }
+  ],
+  "newly_completed_family": "surface-earth",
+  "new_family_manifest": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-complete-native-manifest.json",
+  "previous_new_family_manifest": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-complete-native-manifest.json",
+  "current_integration_status": "Not re-audited by this addendum; parent owns formal world/mask bindings and complete-scene review",
+  "remaining_transition_scope": "Four existing Blob47 families need separately verified integration;188 derived masks are not independent paintings",
+  "native_source_added_by_this_addendum": [
+    {
+      "id": "earth-1",
+      "index": 0,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/master.png",
+      "sha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c"
+    },
+    {
+      "id": "earth-2",
+      "index": 1,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/master.png",
+      "sha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5"
+    },
+    {
+      "id": "earth-3",
+      "index": 2,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/master.png",
+      "sha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1"
+    },
+    {
+      "id": "earth-4",
+      "index": 3,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-4/master.png",
+      "sha256": "fde3a5007ac460df170aec643f58b3a8705186da809ce2a4ab41c37cfb748621"
+    }
+  ]
+}

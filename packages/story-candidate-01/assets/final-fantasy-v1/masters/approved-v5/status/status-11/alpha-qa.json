@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-11",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5247501456264992,
+  "nearOpaqueFractionAlphaGE250": 0.45876925894553694,
+  "nonzeroAlphaBBox": [
+    0,
+    48,
+    1206,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    63,
+    51,
+    1202,
+    1201
+  ],
+  "visibleAlphaBBoxGE128": [
+    65,
+    52,
+    1202,
+    1199
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    65,
+    52,
+    52,
+    55
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 25,
+  "sha256": "21d05cd28e45a80b29cc754d44e5c55c628b9a070975b7d461356549c8e743fd",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: two-arrow quiver and powder-container/dipper grouping remain identifiable. Four feather faces are native-readable; fine separation and dipper-tip hole are small atHUD28."
+  ],
+  "identityVerified": "Exactly ONE cylindrical wooden arrow quiver on the LEFT, tilted slightly upward-right, bound by TWO broad gray metal bands. It holds exactly TWO visible brown arrow shafts with pale fletching: TWO feather faces per shaft, FOUR feather faces total. Arrow tails point upward; no arrowheads visible outside quiver. On the RIGHT is exactly ONE low round tan/brown powder container with an open gray metal mouth. Exactly ONE gray metal measuring dipper rests in it, with dark gray powder in the dipper bowl and its handle pointing upper-right; preserve ONE round hanging hole at the handle tip. Keep quiver and powder-container/dipper as two separate large groups. No bullets, gun, sparks, explosion, additional arrows or readable lettering.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-11/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: two-arrow quiver and powder-container/dipper grouping remain identifiable. Four feather faces are native-readable; fine separation and dipper-tip hole are small atHUD28."
+  },
+  "reviewComplete": true
+}

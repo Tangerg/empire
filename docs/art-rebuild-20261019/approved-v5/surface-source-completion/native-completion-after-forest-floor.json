@@ -1,0 +1,75 @@
+{
+  "status_utc": "2026-10-19T21:32:35.532901+00:00",
+  "baseline_audit": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/surface-transition-completion-audit.json",
+  "scope": "native-source completion addendum only; original audit retains its code, runtime hashes and counts snapshot",
+  "exact_cell_aligned_new_native_sources_saved": 24,
+  "functional_world_meadow_tone_0_replacement": 1,
+  "remaining_individual_surface_roles": 7,
+  "pending_surface_cells": [
+    {
+      "atlas": "surface-meadow",
+      "cell_id": "meadow-2",
+      "index": 1
+    },
+    {
+      "atlas": "surface-meadow",
+      "cell_id": "meadow-3",
+      "index": 2
+    },
+    {
+      "atlas": "surface-meadow",
+      "cell_id": "meadow-4",
+      "index": 3
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_id": "earth-1",
+      "index": 0
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_id": "earth-2",
+      "index": 1
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_id": "earth-3",
+      "index": 2
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_id": "earth-4",
+      "index": 3
+    }
+  ],
+  "newly_completed_family": "surface-forest-floor",
+  "new_family_manifest": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-complete-native-manifest.json",
+  "current_integration_status": "Not re-audited by this addendum; parent owns formal world/mask bindings and complete-scene review",
+  "remaining_transitions": "Four existing Blob47 families require separate integration; derived188 masks are not independent images",
+  "native_source_added_by_this_addendum": [
+    {
+      "id": "forest-floor-1",
+      "index": 0,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+      "sha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d"
+    },
+    {
+      "id": "forest-floor-2",
+      "index": 1,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-2/master.png",
+      "sha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d"
+    },
+    {
+      "id": "forest-floor-3",
+      "index": 2,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/master.png",
+      "sha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b"
+    },
+    {
+      "id": "forest-floor-4",
+      "index": 3,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/master.png",
+      "sha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55"
+    }
+  ]
+}

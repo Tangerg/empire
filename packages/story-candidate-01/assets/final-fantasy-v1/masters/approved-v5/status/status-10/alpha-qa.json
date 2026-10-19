@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-10",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5098949708619817,
+  "nearOpaqueFractionAlphaGE250": 0.47896555583536193,
+  "nonzeroAlphaBBox": [
+    0,
+    39,
+    1248,
+    1157
+  ],
+  "visibleAlphaBBoxGE8": [
+    41,
+    125,
+    1212,
+    1149
+  ],
+  "visibleAlphaBBoxGE128": [
+    42,
+    126,
+    1212,
+    1148
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    42,
+    126,
+    42,
+    106
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 10,
+  "sha256": "fea68840a48bbcf19cfea6e3f950c7094ae13ec40c8b53a94ec2c726c8dbee4c",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: open grain sack and single scored loaf remain clearly separated; four scoring slashes are retained in native source, with reduced detail at28."
+  ],
+  "identityVerified": "Exactly ONE open tan/brown grain sack standing at the LEFT/REAR, mouth ruffled open and filled with a compact group of broad golden grain kernels. A simple rope band cinches the neck with a short hanging end, as in original. Exactly ONE oval dark-brown bread loaf lies at the RIGHT/FRONT with exactly FOUR broad diagonal scoring slashes across its top. Preserve warm earthy sack/loaf colors and clearly distinguish both big silhouettes. Grain is a low-density clustered fill, no hundreds of tiny specks, no extra food, wheat sheaf, plate or lettering.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-10/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: open grain sack and single scored loaf remain clearly separated; four scoring slashes are retained in native source, with reduced detail at28."
+  },
+  "reviewComplete": true
+}

@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-meadow",
+  "cell_index": 3,
+  "original_cellOrder_token": "meadow-4",
+  "source_board_index": 3,
+  "source_crop": [
+    940,
+    0,
+    1254,
+    314
+  ],
+  "source_crop_dimensions": [
+    314,
+    314
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-meadow/meadow-4-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-meadow/meadow-4-current-runtime-2x-cell.png",
+  "original_visual_identity": "Darker green/olive meadow with small pale blue-white flowers and comparatively continuous grass.",
+  "original_mean_RGB": [
+    80.80040772445129,
+    84.47465414418434,
+    46.4848168282689
+  ],
+  "original_opaque": true,
+  "current_usage": "catalog-only in current16 level selectors",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent remaining meadow originalslots1/2/3 approved2026-10-19 21:40 UTC, actual68 hill cells prioritized, same quiet meadow-base palette, no uniform micropebble noise",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+  "original_full_source_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-meadow/meadow-4-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/grass-material/master.png"
+  ],
+  "reference_roles": [
+    "exact original variant identity, simplify dense detail",
+    "approved meadow-base broad matte style and muted green palette"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-meadow/meadow-4-original-master-swatch.png": "c8d176763bfaa59abcccc7b9a524bfc8c6523b905fde2a70b91a87f8725a6030",
+    "/workspace/shared/empire-art-rebuild/approved-v5/grass-material/master.png": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "preview_world_periods": [
+    128,
+    256
+  ],
+  "binding_status": "native only, parent owns world sampling and actual scene acceptance",
+  "prompt_sha256": "11383684cfb11d8bcef06462ccc0e536692841120f1cec141937e9b560d8aa19"
+}

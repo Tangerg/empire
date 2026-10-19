@@ -1,0 +1,64 @@
+{
+  "topicId": "c02-equipment-multi-standard-repair-pack",
+  "assetId": "C02-SFV1-equipment-multi-standard-repair-pack",
+  "label": "多规格维修背架",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 3
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-multi-standard-repair-pack.png",
+  "runtimeReferenceSha256": "da7f12ba96425f47b71aa27425032e3335c9b3665ed3222f01501e88f97c7391",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7ea8e1c3-8144-4b22-9887-baf4981322cc.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R3C2: one repair backpack, ivory flap and olive body, two orange-buckled front straps, one horizontal top roll with two teal bands, lower front and side pouches, one orange-capped right-side container and rear shoulder loop. Cyan status insets retained and bounded. Full native and actual48 white/black/olive reviewed: broad matte panels, intact open loop and margins, no outer haze. Source perimeter alpha1 unchanged, actual48 edge0.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

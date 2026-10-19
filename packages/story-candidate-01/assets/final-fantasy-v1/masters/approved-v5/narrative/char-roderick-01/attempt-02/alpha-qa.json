@@ -24,5 +24,135 @@
   "alphaOnePixels": 6104,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "selectedAttempt": "attempt-02",
+  "nativeCanvasRatio": "2:3",
+  "semanticReview": "Same named elder face with exposed swept gray hair, full gray beard/moustache, strong dark brows, broad matte gray steel armor and blue-gray scarf/tabard as the approved mounted quartet. Dismounted fullbody stance uses original named portrait vocabulary: one straight sword held in right hand, original plain round shield on left arm. Extra short sheathed weapon from attempt01 removed; ordinary brown flap pouch restored; a single long empty brown scabbard remains naturally partly obscured behind the held sword/hand. No horse needed for this separate portrait; mounted rules unchanged.",
+  "revisionReview": "Targeted extra-equipment removal succeeds; original and correction native bytes/prompts preserved. Face, hands, shield and standing pose remain consistent; long scabbard is slightly extended in correction, disclosed as native redraw.",
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        501,
+        1380,
+        508,
+        1387
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "right-glove-to-tunic",
+      "rectangle": [
+        263,
+        767,
+        270,
+        774
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "empty-sheath-to-boot",
+      "rectangle": [
+        182,
+        1239,
+        189,
+        1246
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "emptyExteriorSamples": [
+    {
+      "name": "upper-left-outside",
+      "rectangle": [
+        0,
+        0,
+        250,
+        300
+      ],
+      "maxAlpha": 0,
+      "medianAlpha": 0.0,
+      "zeroPixels": 75000,
+      "pixelCount": 75000
+    },
+    {
+      "name": "upper-right-outside",
+      "rectangle": [
+        800,
+        0,
+        1024,
+        300
+      ],
+      "maxAlpha": 1,
+      "medianAlpha": 0.0,
+      "zeroPixels": 67199,
+      "pixelCount": 67200
+    },
+    {
+      "name": "between-boot-bottoms",
+      "rectangle": [
+        460,
+        1430,
+        560,
+        1500
+      ],
+      "maxAlpha": 1,
+      "medianAlpha": 0.0,
+      "zeroPixels": 6999,
+      "pixelCount": 7000
+    }
+  ],
+  "visibleMarginsSourcePixels": {
+    "left": 28,
+    "top": 79,
+    "right": 24,
+    "bottom": 78
+  },
+  "marginCaveat": "Horizontal visible margins28/24px are narrower than prompt50–75 target, but entire figure/roundshield/held-sword pommel and blade tips are complete with native perimeterA>1 count0. No trim/fit used.",
+  "previewTransparencyCaveat": "Tool inline preview may show hidden RGB haze, but actual white/black alpha composites and exterior alpha samples show clean transparency. Native hidden RGB/alpha1 samples are retained; no cleanup.",
+  "status": "Transparent named portrait source inspected; coordinator card/hero consistency review pending",
+  "sourcePostprocessing": "None. Raw/master/native bytes identical. Composites and whole-canvas downscale previews are diagnostic only.",
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        25.416666666666664,
+        11.520833333333334,
+        167.16666666666669,
+        212.625
+      ]
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        10.708333333333332,
+        5.760416666666667,
+        81.58333333333334,
+        106.3125
+      ]
+    }
+  }
 }

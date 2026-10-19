@@ -1,0 +1,44 @@
+{
+  "atlas": "surface-meadow",
+  "cell_index": 1,
+  "original_cellOrder_token": "meadow-2",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-8d791872-8f65-470b-b7bd-b5b427da86cb.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/meadow-2-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/source-contract.json",
+  "sha256": "2f24cb862772ace7f663a85ded73be1d3517179a80f3d72442f2e7e3a8c4bb81",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "preview_world_periods": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Olive/gray-green grass with larger irregular tan bare-earth openings and fewer prominent stone groups than meadow3. Original sparse grass/exposed-earth identity retained within approved meadow-base palette.",
+    "style_review": "Several broad dirt openings and sparse simple grass marks. Most green areas are quiet broad planes, but exposed soil contains many small stone-like facets and denser edge fragmentation than requested. Fine detail is bounded inside dirt patches rather than uniform across the whole ground.",
+    "palette_caveat": "Greener/brighter than the original yellow-olive/brown swatch because approved meadow-base palette leads. Bare earth is warmer tan. Exact original color matching is not claimed.",
+    "scale_caveat": "Larger stone accents around70-130 native pixels,7-13 at128 or14-27 at256. Dirt openings form a loose diagonal chain that can read as an unbound path, but remain material coloration without road geometry.",
+    "native_acceptance": "Opaque catalog-only tone1 candidate;128/256 preview and actual scene acceptance pending. No natural seamlessness claim."
+  }
+}

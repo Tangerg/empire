@@ -1,0 +1,64 @@
+{
+  "topicId": "c02-equipment-sealed-medical-kit",
+  "assetId": "C02-SFV1-equipment-sealed-medical-kit",
+  "label": "密封担架医疗包",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 3
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-sealed-medical-kit.png",
+  "runtimeReferenceSha256": "c4e094eb5f159eed28b9839a0846d725257ae01b0e7634c933f0e8cac0fc2f7f",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ad970b23-4bb4-4e04-b577-604cbf9a35ef.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R3C1: one closed elongated stretcher pod, pale upper shell with orange-red medical plus in circular medallion, two transverse orange straps, open tubular carry rails, two visible circular side fittings and one rear antenna. Full native and actual48 white/black/olive show clear medical symbol and rail silhouette with no external haze. Source perimeter alpha1 unchanged, actual48 edge0. Supplemental 32 low-alpha pixels belong to narrow rail-gap antialiasing, not body failure; formal gate and three-background review pass.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

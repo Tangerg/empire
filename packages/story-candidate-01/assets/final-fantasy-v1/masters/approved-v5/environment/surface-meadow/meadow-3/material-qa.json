@@ -1,0 +1,72 @@
+{
+  "asset": "meadow-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea",
+  "RGB_mean": [
+    103.11768147351124,
+    113.20716927522518,
+    56.82736137501939
+  ],
+  "RGB_std": [
+    15.545422807943632,
+    11.407702522770807,
+    7.340348215149626
+  ],
+  "luma_mean": 106.99152203818593,
+  "luma_std": 10.991509525280389,
+  "luma_percentiles_5_50_95": [
+    89.931,
+    107.54719999999999,
+    128.2344
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 110.07493433014352,
+    "bottom": 102.11857773125998,
+    "left": 105.22239500598084,
+    "right": 102.35000863736043,
+    "central_half": 108.81408361850376
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 12.475013290802764,
+    "top_bottom_mean_abs_RGB": 12.311270600744285,
+    "left_right_max_abs_RGB": 50.0,
+    "top_bottom_max_abs_RGB": 53.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Muted olive/gray-green meadow planes with broken tan-brown soil openings, sparse embedded gray stone groups and simple broad grass marks. Preserves stony grass/earth hill-ground identity without new cliff or slope geometry.",
+    "style_review": "About ten main stone groups and broad grass planes, harmonizing strongly with approved meadow base. More secondary grass/soil contour fragments and grassy marks than the strict six-to-ten main regions. Stone faces retain multiple small facets and some brighter face fragments, but no uniform micropebble field.",
+    "palette_caveat": "Much greener and brighter than the original muddy/olive swatch, intentionally influenced by the approved meadow base. Compare against both original and approved-base mean colors in aggregate QA; exact original palette matching is not claimed.",
+    "scale_caveat": "Stone groups roughly140-220 native pixels,14-22 world units at128 or29-45 at256. Several exposed-earth openings form loose diagonal bands that remain material color, not roads.",
+    "native_acceptance": "Opaque actual-used tone2 candidate;68 code-derived hill cells.128/256 preview and actual scene acceptance pending; no natural seamlessness claim."
+  },
+  "reference_material_identity": "Olive grass broken by brown earth and larger/denser gray stones; actual hill tone 2, distinct from uniformly grassy meadow.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_previews": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

@@ -1,0 +1,64 @@
+{
+  "topicId": "c02-equipment-offline-scout-instrument",
+  "assetId": "C02-SFV1-equipment-offline-scout-instrument",
+  "label": "离线侦察仪",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 3
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-offline-scout-instrument.png",
+  "runtimeReferenceSha256": "74aad75a6d940b81a95af74301602111e0fe9bec0aed1b743a20fc21036618cc",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d6737a1d-5b1d-428b-81cc-0c266591ea0b.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R3C3: one handheld instrument with cyan radar rings/radial crosshair and one yellow lower-right tracking blip, orange top knob, cyan top button, round cyan side fitting and navigation pad flanked by two orange buttons. All marks contained in hardware screen. Full native and actual48 white/black/olive reviewed: readable radar and clear silhouette with no outside haze. Source perimeter alpha1 unchanged, actual48 edge0. Narrow bottom native margin28px is intact and full canvas is preserved.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

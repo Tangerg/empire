@@ -1,0 +1,44 @@
+{
+  "atlas": "surface-meadow",
+  "cell_index": 3,
+  "original_cellOrder_token": "meadow-4",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-2e683a8e-1bfd-4fb6-8e6b-eeec207cddbd.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/meadow-4-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/meadow-4/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-meadow/source-contract.json",
+  "sha256": "fd4467d10e99f153e0163ce145156f3a1f1db1f957b974eb25fa4ab7a3424db9",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "preview_world_periods": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Darker muted olive/gray-green continuous meadow with six small scattered pale blue-white flower groups and sparse simple grass marks. Original floral identity retained without added soil patches, rocks or tall shrubs.",
+    "style_review": "Strong match to approved meadow-base broad planes and low-density accents. Faint brush/cloud texture and more than six-to-ten secondary contour regions remain; flowers have recognizable petal/stem detail but are bounded in six groups, not uniform white confetti.",
+    "palette_caveat": "More saturated/green and brighter than original dark olive floral swatch, but visibly darker than new meadow2/3 and close to approved base. Exact original palette match is not claimed.",
+    "scale_caveat": "Flower groups roughly80-120 native pixels,8-12 logical at128 or16-24 at256. Individual blossoms stay small; source remains catalog-only.",
+    "native_acceptance": "Opaque catalog tone3 candidate;128/256 preview and actual scene acceptance pending, no natural seamlessness claim."
+  }
+}

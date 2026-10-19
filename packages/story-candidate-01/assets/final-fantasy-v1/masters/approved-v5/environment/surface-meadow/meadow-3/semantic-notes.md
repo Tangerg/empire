@@ -1,0 +1,13 @@
+# meadow-3: opaque original-meadow variant
+
+Original index 2: Olive grass broken by brown earth and larger/denser gray stones; actual hill tone 2, distinct from uniformly grassy meadow.
+
+Native review: {"identity": "Muted olive/gray-green meadow planes with broken tan-brown soil openings, sparse embedded gray stone groups and simple broad grass marks. Preserves stony grass/earth hill-ground identity without new cliff or slope geometry.", "style_review": "About ten main stone groups and broad grass planes, harmonizing strongly with approved meadow base. More secondary grass/soil contour fragments and grassy marks than the strict six-to-ten main regions. Stone faces retain multiple small facets and some brighter face fragments, but no uniform micropebble field.", "palette_caveat": "Much greener and brighter than the original muddy/olive swatch, intentionally influenced by the approved meadow base. Compare against both original and approved-base mean colors in aggregate QA; exact original palette matching is not claimed.", "scale_caveat": "Stone groups roughly140-220 native pixels,14-22 world units at128 or29-45 at256. Several exposed-earth openings form loose diagonal bands that remain material color, not roads.", "native_acceptance": "Opaque actual-used tone2 candidate;68 code-derived hill cells.128/256 preview and actual scene acceptance pending; no natural seamlessness claim."}
+
+The native 1254 x 1254 RGB image is fully opaque. Generator/raw/master/named-master bytes match SHA 5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea; no source crop, rescale, recolor, filter, blur, edge lock, alpha cleanup or painting was applied. Diagnostic previews alone use resampling.
+
+Only original meadow-3 / index2 is currently used among these three candidates:68 hill surface cells across9 levels, derived from current code/maps with authoredTerrainSurface suppression. The current c01-01 hills are excluded by its authored landforms. Meadow-2 and meadow-4 are catalog-only. Existing approved grass-material/master.png remains the functional meadow tone0 world base with1024 logical period and was not regenerated.
+
+Native meadow variants preserve their original soil/stone/flower identity while using the approved meadow base as muted olive/gray-green style and palette authority. Existing source-specific art does not invent paths, cliffs, height topology or standing props. These flat materials have no standing foot, anchor, footprint or obstruction.128/256 previews are proposals, not a selected world period or actual scene acceptance. Opposite-edge differences are measured; natural seamlessness is not claimed.
+
+Exact prompts, original references, native hashes, approval and consumer evidence are saved. No repository edits.

@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-07",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6549955612534308,
+  "nearOpaqueFractionAlphaGE250": 0.30610562944987524,
+  "nonzeroAlphaBBox": [
+    0,
+    19,
+    1234,
+    1224
+  ],
+  "visibleAlphaBBoxGE8": [
+    89,
+    95,
+    1203,
+    1190
+  ],
+  "visibleAlphaBBoxGE128": [
+    89,
+    96,
+    1203,
+    1189
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    89,
+    96,
+    51,
+    65
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 10,
+  "sha256": "44112ca06d0f89cf59d6c690afdcafe3f2b9b1e20d1318a1dbf42e78a9a2e39a",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: pawn under bounded wind/rain is recognizable. Native rain count is eleven (left6/right5). Fine individual rain gaps soften at28; no broad exterior cloud/haze. Main leading wind assembly retains original nested bend, with two other broad assemblies and three detached accent arcs."
+  ],
+  "identityVerified": "Exactly ONE gray pawn token centered low, a simple spherical head on tapering body and round foot. ABOVE it retain exactly THREE main curled gray wind-ribbon assemblies and THREE smaller detached gray accent arcs: one small upper-left, one lower-left of wind group, one lower-right. Preserve original storm shape layout. Around the pawn place exactly ELEVEN separate thick diagonal gray rain strokes, SIX on the LEFT (three upper, two middle, one lower) and FIVE on the RIGHT (three upper, one middle, one lower), matching image 1. All rain tilts from upper-right to lower-left. Every wind/rain mark must have a finite solid readable silhouette and transparent gaps. NO soft cloud, vapor, haze, fog, ground or background wash; discard original keyed wispy fringe while retaining the functional bounded wind forms.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-07/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: pawn under bounded wind/rain is recognizable. Native rain count is eleven (left6/right5). Fine individual rain gaps soften at28; no broad exterior cloud/haze. Main leading wind assembly retains original nested bend, with two other broad assemblies and three detached accent arcs."
+  },
+  "reviewComplete": true
+}

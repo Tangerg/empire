@@ -1,0 +1,120 @@
+{
+  "artifactKind": "named-character-transparent-narrative-master",
+  "cardTopicId": "C01-CHAR-RODERICK-01",
+  "unitType": "c01.roderick",
+  "status": "Transparent portrait accepted for card trial; full native evidence complete",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-roderick-01/master.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-roderick-01/raw.png",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a",
+  "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-789d3997-5fcb-4889-a460-1154b21eafa7.png",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-roderick-01/prompt.txt",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-roderick-01/request.json",
+  "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-roderick-01/alpha-qa.json",
+  "sourcePostprocessing": "none",
+  "selectedAttempt": "attempt-02",
+  "supersededAttempts": [
+    {
+      "directory": "attempt-01",
+      "reason": "Unintended extra short sheathed weapon at upper hip. Native imagegen edit removes it and restores plain pouch."
+    }
+  ],
+  "identitySources": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/roderick-original-cell-native.png": "9da1be81f06c8a00d272d86732a35f25f96aea0e316f1ea4081e77115151e8eb"
+  },
+  "promptChain": [
+    "attempt-01/prompt.txt",
+    "attempt-02/prompt.txt"
+  ],
+  "battleSourceEvidence": "../../hero-appearances/roderick/source-evidence.json",
+  "battleQuartetManifest": "../../hero-appearances/roderick/bundle-manifest.json",
+  "originalNamedIdentity": "Exact original top-right named board crop [632,5,1249,622]; original card C01-CHAR-RODERICK-01. No numerical age invented.",
+  "cardCompositionContract": "Preserve entire2:3transparent native canvas. Fit uniformly into192x224 and92x112. Background is a separately authored layer, not alpha-extracted or generated into this person master.",
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        25.416666666666664,
+        11.520833333333334,
+        167.16666666666669,
+        212.625
+      ]
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        10.708333333333332,
+        5.760416666666667,
+        81.58333333333334,
+        106.3125
+      ]
+    }
+  },
+  "semanticReview": "Same named elder face with exposed swept gray hair, full gray beard/moustache, strong dark brows, broad matte gray steel armor and blue-gray scarf/tabard as the approved mounted quartet. Dismounted fullbody stance uses original named portrait vocabulary: one straight sword held in right hand, original plain round shield on left arm. Extra short sheathed weapon from attempt01 removed; ordinary brown flap pouch restored; a single long empty brown scabbard remains naturally partly obscured behind the held sword/hand. No horse needed for this separate portrait; mounted rules unchanged.",
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        501,
+        1380,
+        508,
+        1387
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "right-glove-to-tunic",
+      "rectangle": [
+        263,
+        767,
+        270,
+        774
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "empty-sheath-to-boot",
+      "rectangle": [
+        182,
+        1239,
+        189,
+        1246
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "coordinatorNarrativeApproval": {
+    "time": "2026-10-19 21:44UTC",
+    "status": "Corrected portrait white composite accepted for card trial",
+    "review": "Clean older likeness, broad armor, one sword/empty sheath/roundshield match named identity",
+    "pending": "Coordinator independent background/card consumer review, formal named binding and complete level comparison"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "topicId": "C01-STATUS-09",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.48341511310536744,
+  "nearOpaqueFractionAlphaGE250": 0.5058288755090569,
+  "nonzeroAlphaBBox": [
+    73,
+    83,
+    1208,
+    1214
+  ],
+  "visibleAlphaBBoxGE8": [
+    75,
+    86,
+    1200,
+    1124
+  ],
+  "visibleAlphaBBoxGE128": [
+    76,
+    86,
+    1199,
+    1124
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    76,
+    86,
+    55,
+    130
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "bcebc1d2563aae712fc768d773a4dd655f1048edf58a676578492730c18a850d",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: four bronze/silver coin groups and tall/short stacking hierarchy are clear. Native counts verified bronze4+1, silver6+2; individual rear-stack layers are not all separately countable atHUD28."
+  ],
+  "identityVerified": "Exactly FOUR groups of blank coins arranged like image 1: rear-left a stack of FOUR bronze coins; in front-left ONE loose bronze coin; rear-right a taller stack of SIX silver coins; front-right a shorter stack of TWO silver coins. Thus 5 bronze and8 silver coins, thirteen total. Keep each layer broad and countable in the native source, but prioritize four distinct coin-group silhouettes at tiny display. Rear silver stack remains tallest and may be partially overlapped by the short foreground silver stack as in original, without losing a layer. Flat unmarked faces with simple concentric rims, warm bronze versus neutral gray silver. No numbers, currency signs, portraits, emblems, additional coins or bags.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-09/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: four bronze/silver coin groups and tall/short stacking hierarchy are clear. Native counts verified bronze4+1, silver6+2; individual rear-stack layers are not all separately countable atHUD28."
+  },
+  "reviewComplete": true,
+  "refinementHistory": [
+    {
+      "initialCandidate": "candidates/initial/raw.png",
+      "initialPrompt": "candidates/initial/prompt.txt",
+      "reason": "Initial native image exposed five rear silver coin layers; exact original has six.",
+      "refinementPrompt": "prompt-refine-six-silver.txt",
+      "refinementInputPaths": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/status/status-09/candidates/initial/raw.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-09-complete-subject.png"
+      ],
+      "finalGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-641ee9c7-8754-4fca-af95-27f4025a5b33.png",
+      "result": "Tall rear silver pile changed to six visibly layered coins; four bronze, one loose bronze and two front silver preserved.",
+      "pixelPostprocessing": "None"
+    }
+  ],
+  "countVerification": "Four groups, thirteen coins: bronze4+1, silver6+2. Six rear silver layers visually verified along exposed left edge."
+}
