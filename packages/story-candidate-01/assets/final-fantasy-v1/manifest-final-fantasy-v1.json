@@ -1829,13 +1829,13 @@
       "topicId": "C01-UNIT-SKELETON-GUARD",
       "label": "骸骨卫士",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-skeleton-guard.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-skeleton-guard.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1844,13 +1844,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        51.13023255813953,
+        54.08837209302325
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-SPEARMAN",
