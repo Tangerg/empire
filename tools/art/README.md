@@ -41,3 +41,39 @@ and skill are 48×48 with anchor [24,24]; status and hud are32×32 with anchor
 [16,16]. Each uses its own runtime/category directory and no HD entry. Sources
 must satisfy the same genuine-alpha contract. Whole authored canvas fitting and
 2px transparent padding remain deterministic; tiny icons still need visual review.
+
+## Environment forest cell overrides (separate from canonical topics)
+
+Run `python3 tools/art/export_environment_overrides.py` then the same command with
+`--check`. Only forest-temperate and forest-existing module atlases are supported.
+Keep immutable copies of the original 384² and768² runtime atlases under the pack
+masters directory before first export. Register their byte SHA256 as baselines;
+do not replace those baseline files with already-overridden outputs.
+
+`tools/art/environment-overrides.json` uses this structure:
+
+```json
+{"schemaVersion":1,"atlases":{"forest-temperate":{
+  "baselines":{
+    "1x":{"source":"packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate.png","sha256":"SHA256"},
+    "2x":{"source":"packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate@2x.png","sha256":"SHA256"}
+  },
+  "cells":{"oak-ancient":{"source":"packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-ancient/master.png","sha256":"SHA256"}}
+}}}
+```
+
+Each raw master is fitted as its **complete authored canvas** inside172²,
+bottom-centered on192² with bottom at182, then downsampled to96². Unlike the
+legacy builder's nonzero-alpha-bbox crop, this deliberately preserves authored
+framing and cannot magnify stray alpha1 residue into a crop decision. It does
+not clean, threshold, recolor, or repaint source pixels. Generation should use
+roughly5–10% margins; inspect apparent root/contact placement and canopy scale
+before accepting. Declared anchor remains[48,91] /[96,182].
+
+The adapter overlays only registered cells onto checksummed baselines, preserving
+all other atlas slices exactly. Output report contains per-cell before/after
+pixel hashes and source hashes/alpha measurements. Manifest IDs, order, anchors,
+footprints and gameplay metadata stay unchanged. All inputs validate before any
+writes. Ground, route connectivity and masks are outside this adapter's scope.
+Run this overlay after legacy builds. `--check` proves reproducibility, not visual
+acceptance: actual game screenshots and occlusion review remain separate gates.
