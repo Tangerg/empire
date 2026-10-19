@@ -1,0 +1,3 @@
+from pathlib import Path
+import hashlib,json,sys
+b=Path(__file__).parent/sys.argv[1];r=json.loads((b/'request.json').read_text());q=json.loads((b/'alpha-qa.json').read_text());p={'generationTool':'built-in image_gen','exactRequest':r,'exactPromptMatch':(b/'prompt.txt').read_text().rstrip('\n')==r['prompt'],'referenceSha256':{p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in r['referenced_image_paths']},'nativeSource':q['nativeSource'],'nativeSha256':q['sha256'],'postprocessing':'none; raw/master are byte-identical native files'};(b/'request-provenance.json').write_text(json.dumps(p,indent=2)+'\n');print(q['sha256'])

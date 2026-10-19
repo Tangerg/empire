@@ -1,0 +1,64 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f6caca18-a11e-4308-ba65-2a367d6d46b8.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "bc4c6e68909fc6880bd79ae0b6c68ea4478993a081b2083f9020b50c054f8c43",
+  "bboxAlphaNonzero": [
+    25,
+    9,
+    1545,
+    992
+  ],
+  "bboxAlphaGreaterThan1": [
+    70,
+    10,
+    1512,
+    975
+  ],
+  "bboxAlphaGreaterThan127": [
+    73,
+    12,
+    1509,
+    972
+  ],
+  "alphaZeroCount": 986097,
+  "alphaOpaqueCount": 1453,
+  "alphaSemitransparentCount": 584770,
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "boots": [
+    {
+      "roi": [
+        250,
+        800,
+        570,
+        992
+      ],
+      "soleY": 965,
+      "soleBandMeanX": 387.86764705882354
+    },
+    {
+      "roi": [
+        900,
+        800,
+        1270,
+        992
+      ],
+      "soleY": 971,
+      "soleBandMeanX": 1131.3846153846155
+    }
+  ],
+  "sourceFootMidpoint": [
+    759.6261312217196,
+    968.0
+  ],
+  "suggestedSourceFoot": [
+    760,
+    971
+  ],
+  "semanticReview": "REJECTED: clear overhand attack and complete gear, but swaps shield to screen-right and spear to screen-left relative to approved idle instead of preserving arm assignment. Retain raw attempt; regenerate with explicit locked screen-side equipment.",
+  "nativeBytesPreserved": true
+}

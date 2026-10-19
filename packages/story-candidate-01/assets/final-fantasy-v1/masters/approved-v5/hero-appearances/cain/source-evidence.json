@@ -35,7 +35,7 @@
   },
   "stage02": "C01-CHAR-CAIN-02 independent reform army commander, excluded from this stage01 task",
   "identity": {
-    "age": "Young adult imperial general from candidate-01/README.md:305–307; no numerical age established",
+    "age": "Young adult imperial general from candidate-01/README.md:305\u2013307; no numerical age established",
     "face": "Clean-shaven stern angular young adult face, strong dark brows, long nose, compact unsmiling mouth; dark hair largely concealed by helmet, no invented exposed hairstyle",
     "helmet": "Navy domed military helmet with small brim, antique-gold front-to-back center strip and lower rim, long cheek/neck guards, no plume",
     "clothing": "Navy standardized heavy plate and tabard with antique-gold vertical trim and small four-point star on front hanging panel; large pale-gold layered shoulder plates, burgundy neck scarf and short cape, brown belt with square gold buckle and side pouch, navy gloves and segmented armored boots",
@@ -43,7 +43,7 @@
     "sourceEquipment": "Shield in source image-left arm, short thick command baton in source image-right gloved hand, gold rounded end cap and simple grip bands. ART-DIRECTION.md:28 explicitly confirms command baton"
   },
   "rules": {
-    "unitSource": "packages/story-candidate-01/src/units.ts:36–40; default foot at11",
+    "unitSource": "packages/story-candidate-01/src/units.ts:36\u201340; default foot at11",
     "movementClass": "foot",
     "armorClass": "heavy",
     "movement": 4,
@@ -161,5 +161,14 @@
     "review": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle-review.json",
     "comparison": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/native-scale-comparison.png"
   },
-  "coordinatorIdleContract": "2026-10-19 22:31UTC confirmed stage01 named foot officer, battle spear replaces baton, portrait preserves baton"
+  "coordinatorIdleContract": "2026-10-19 22:31UTC confirmed stage01 named foot officer, battle spear replaces baton, portrait preserves baton",
+  "coordinatorIdleApproval": {
+    "time": "2026-10-19 22:34UTC",
+    "scaleRatio": "44/912.5",
+    "sourceFoot": [
+      681,
+      966
+    ],
+    "review": "Original navy/gold officer, tall shield and spear distinct beside Torren/Mirelle; accepted. Three poses authorized with stable shared scale."
+  }
 }

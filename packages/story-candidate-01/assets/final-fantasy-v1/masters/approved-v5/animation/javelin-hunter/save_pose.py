@@ -1,11 +1,11 @@
 from pathlib import Path
 from PIL import Image
 import numpy as np
-import json, hashlib, shutil, sys
+import json, hashlib, shutil, sys, os
 
 b = Path(__file__).parent
 pose, source, roi_json, review = sys.argv[1:]
-d = b / pose / 'attempt-01'
+d = b / pose / os.environ.get('ATTEMPT', 'attempt-01')
 src = Path(source)
 for name in ['raw.png', 'master.png']:
     shutil.copyfile(src, d / name)
@@ -40,6 +40,7 @@ req = json.loads((d / 'request.json').read_text())
 req['promptSha256'] = hashlib.sha256((d / 'prompt.txt').read_bytes()).hexdigest()
 req['nativeOutput'] = str(src)
 (d / 'request.json').write_text(json.dumps(req, indent=2) + '\n')
-for p in d.iterdir():
-    if p.is_file(): shutil.copyfile(p, b / pose / p.name)
+if os.environ.get('SELECTED', '1') == '1':
+    for p in d.iterdir():
+        if p.is_file(): shutil.copyfile(p, b / pose / p.name)
 print(json.dumps(q, indent=2))

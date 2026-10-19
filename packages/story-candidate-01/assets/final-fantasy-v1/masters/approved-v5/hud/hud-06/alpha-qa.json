@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-06",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6406605719751023,
+  "nearOpaqueFractionAlphaGE250": 0.3527118325028171,
+  "nonzeroAlphaBBox": [
+    0,
+    98,
+    1124,
+    1160
+  ],
+  "visibleAlphaBBoxGE8": [
+    131,
+    101,
+    1122,
+    1135
+  ],
+  "visibleAlphaBBoxGE128": [
+    132,
+    101,
+    1121,
+    1134
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    131,
+    101,
+    132,
+    119
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 5,
+  "sha256": "889f5a2a29d2a0803b17ad7f5e5bc3a7e79fc728661b771b0510ce1c60a0b6fb",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE diamond-shaped secondary-objective badge with thick silver-gray rim, charcoal edge and dark blue-slate inset face. Exactly TWO pale warm-gray circular studs are stacked vertically on the centerline, one above the other, with clear space between. Preserve two round studs, gray frame, and blue-slate face; no third stud, gem, star or writing.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-06/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: exactly two pale studs remain distinct against blue-slate face. Native alpha1 residue at five edge pixels retained unchanged; meaningful silhouette inset."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: exactly two pale studs remain distinct against blue-slate face. Native alpha1 residue at five edge pixels retained unchanged; meaningful silhouette inset."
+  ]
+}
