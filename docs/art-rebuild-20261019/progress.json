@@ -1383,9 +1383,13 @@
     },
     {
       "topicId": "C01-BPROP-FACTION-1",
-      "status": "pending",
-      "source": null,
-      "verification": null
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/art-rebuild-20261019/masters/battle-prop/bprop-faction-1/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw generated master preserved without pixel modification; not runtime accepted"
+      },
+      "sourceSha256": "a6819b0561cbf501afd3a1125011c0b432239046b75a25e769ea39dd7ea1eda7"
     },
     {
       "topicId": "C01-BPROP-FACTION-2",
