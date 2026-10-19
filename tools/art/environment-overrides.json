@@ -1016,6 +1016,110 @@
           }
         }
       }
+    },
+    "decals-small": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/decals-small.png",
+          "sha256": "5de4daacaca825b3a9c0b51c7afbf7fafe04aececcd0b0459d9d39daa0731499"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/decals-small@2x.png",
+          "sha256": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68"
+        }
+      },
+      "cells": {
+        "grass-tuft-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/grass-tuft-a/master.png",
+          "sha256": "9c8e650d2c71b27b584c5542f23d0edaa449158597c460fd03819b60bece0ac7",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              635,
+              916
+            ]
+          }
+        },
+        "grass-tuft-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/grass-tuft-b/master.png",
+          "sha256": "5c477db6a8e417803dce9daa121d44fe504a61ebf7eca20967c200e3f7e57ea2",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              642,
+              977
+            ]
+          }
+        },
+        "stone-cluster-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/stone-cluster-a/stone-cluster-a-master.png",
+          "sha256": "b7f622aed83b4516809109a4471b53094ecdafa5ee680715cf1c8a4d76b51a10",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              627,
+              890
+            ]
+          }
+        },
+        "stone-cluster-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/stone-cluster-b/stone-cluster-b-master.png",
+          "sha256": "3ef9b4b567497b20d170d2819aa652012c23a5af033195e9e85f4ec703c28b44",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              630,
+              819
+            ]
+          }
+        },
+        "grass-tuft-c": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/grass-tuft-c/master.png",
+          "sha256": "e447c513e44668a87be08d667f8784097b8a3413263ded5be0c27cc10a1c333b",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              633.5,
+              955
+            ]
+          }
+        },
+        "fallen-leaves": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/fallen-leaves/master.png",
+          "sha256": "22b74ccefd3d2c13c4da7a6bf96c7b19119c4ed3b523b26505d8900d2faed8ee",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              637.5,
+              974
+            ]
+          }
+        }
+      }
     }
   }
 }

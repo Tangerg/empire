@@ -1,0 +1,79 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "grass-tuft-b",
+  "cellIndexZeroBased": 1,
+  "category": "ground-decal",
+  "expectedRuntimeSizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ]
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c91aca53-2302-4c20-b1c1-e6d615eaf86f.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-grass-tuft-b-registered-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-selected-readability-20261019",
+    "baselineCommit": "36555c4",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "atlasGrid": [
+      6,
+      4
+    ],
+    "atlasNativeSize": [
+      1536,
+      1024
+    ],
+    "registeredMasterCellCrop": [
+      256,
+      0,
+      512,
+      256
+    ],
+    "identityCropTreatment": "Unscaled legacy identity crop; no cleanup or resizing",
+    "audit": "docs/art-rebuild-20261019/approved-v5/ground-debris-audit/debris-inventory.json",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json",
+    "oldLogicalAnchor": [
+      32,
+      60
+    ],
+    "oldAnchorIsNotNewSourceFootpoint": true,
+    "atlasSha256": "ec62ec03545fadca86f8c67a265633a59496cd981a92e7572cce472d54f016fd",
+    "matchesBaselineAtlasBytes": true
+  },
+  "actualConsumer": {
+    "module": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "renderer": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts::groundPieces",
+    "existingOpacity": 0.72,
+    "existingHorizontalFlip": true,
+    "c01_02Count": 5,
+    "observedScales": [
+      0.58
+    ],
+    "registrationNotChanged": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-grass-tuft-b-registered-cell.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png"
+  ],
+  "identityClarification": "Two taller fan tufts and low broadleaf accent retained; old miniature strands and soil noise replaced by few broad leaf planes.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No output cleanup, resizing, alpha editing or repository writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "newSourceFootpointNative": [
+    642.0,
+    977
+  ],
+  "newSourceFootpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding."
+}

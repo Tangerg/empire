@@ -1,59 +1,41 @@
 {
-  "updatedUTC": "2026-10-19T15:48:00Z",
+  "updatedUTC": "2026-10-19T16:03:40Z",
   "counting": "Assignments do not imply completion; scope-ledger owns formal stages.",
   "batches": [
     {
-      "family": "mission/combat",
+      "family": "combat",
       "current": [
         "C01-UNIT-GRAVEKEEPER"
       ],
-      "pendingIntegration": [
-        "C01-UNIT-KNIGHT"
-      ],
-      "next": "verify actual ballista source contract"
+      "next": "C01-UNIT-BALLISTA source contract review"
     },
     {
       "family": "interactive-structure",
-      "pendingIntegration": [
-        "C01-STRUCT-ARCHIVE-FURNACE"
-      ],
-      "next": "next unbound canonical three-state identity; no source remapping"
-    },
-    {
-      "family": "rural-life",
       "current": [
-        "grain-drying-mat-dark",
-        "grain-drying-mat-linen",
-        "grain-drying-mat-earth",
-        "threshing-floor"
-      ],
-      "next": [
-        "decals-small:stone-cluster-a",
-        "decals-small:stone-cluster-b",
-        "decals-small:mud-patch",
-        "decals-small:exposed-roots"
+        "C01-STRUCT-GRAY-FLAG-POINT"
       ]
     },
     {
-      "family": "equipment",
+      "family": "ground-decal-stone",
       "current": [
-        "C01-EQUIP-RANGER",
-        "C01-EQUIP-ASSASSIN",
-        "C01-EQUIP-SILVER-LONGBOW",
-        "C01-EQUIP-JAVELIN-HUNTER"
+        "mud-patch",
+        "exposed-roots"
       ],
-      "next": [
-        "decals-small:grass-tuft-a",
-        "decals-small:grass-tuft-b",
-        "decals-small:grass-tuft-c",
-        "decals-small:fallen-leaves"
+      "next": "remaining unassigned ground decals"
+    },
+    {
+      "family": "ground-decal-other",
+      "current": [
+        "stone-cluster-c",
+        "dry-crack",
+        "cart-ruts",
+        "bootprints"
       ]
     },
     {
-      "family": "export-engineering",
+      "family": "integration-engineering",
       "current": [
-        "decals-small exact6x4 64/128 adapter",
-        "camps-foundations exact4x4 144/288 adapter"
+        "c01-01 decorative farmhouse minimal visual placement correction; no gameplay mutation"
       ]
     }
   ]

@@ -592,6 +592,21 @@
       "runtimeBinding": "All16 catalog cells bound; linen/earth foundations sampled from actual c01-01 ground layer at0.68; dark mat/threshing/waystation explicitly catalog-only",
       "liveGame": "pending",
       "sceneScaleReview": "All12 subjects native reviewed. Pen presentationScale1.5 accepted from full-scene1/1.5/1.8 comparison; castle entrance and granary door core unchanged,3px right pillar overlap documented. Other scales unchanged. Final4 foundations preserve bounded functional ground platforms and real transparent exterior; native actual-contact review passed. Complete c01-01 farmhouse overlap remains under separate layout review."
+    },
+    "decals-small": {
+      "formalRuntimeBoundCells": [
+        "grass-tuft-a",
+        "grass-tuft-b",
+        "stone-cluster-a",
+        "stone-cluster-b",
+        "grass-tuft-c",
+        "fallen-leaves"
+      ],
+      "count": 6,
+      "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
+      "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
+      "sceneScaleReview": "Six broad grass/stone/leaf accents reviewed at actual0.56–0.58 and0.72opacity. Full actual c01-02 scene preserved20actors/9buildings; mud/roots and other old decorations remain. No game-rule placements removed.",
+      "liveGame": "pending"
     }
   },
   "totalCanonicalScope": 1212,
@@ -613,7 +628,7 @@
     },
     "latestBindingAndEdges": "75 asset binding tests passed before ballista emplacement addition",
     "artPythonLatest": "144 passed",
-    "typecheckLatest": "passed at a334a32"
+    "typecheckLatest": "passed at75f66fb plus decal review tools"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

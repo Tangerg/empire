@@ -12,11 +12,11 @@
       "interactive-structure": 16,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 72,
+    "rawPreservedTopics": 73,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 64
+    "registeredEnvironmentCells": 70
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -1447,8 +1447,12 @@
       "category": "combat-unit",
       "label": "守墓人",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -17989,9 +17993,30 @@
     {
       "atlasId": "decals-small",
       "baselineComponentCount": 24,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "grass-tuft-a",
+        "grass-tuft-b",
+        "stone-cluster-a",
+        "stone-cluster-b",
+        "grass-tuft-c",
+        "fallen-leaves"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "grass-tuft-a",
+          "grass-tuft-b",
+          "stone-cluster-a",
+          "stone-cluster-b",
+          "grass-tuft-c",
+          "fallen-leaves"
+        ],
+        "count": 6,
+        "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
+        "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
+        "sceneScaleReview": "Six broad grass/stone/leaf accents reviewed at actual0.56–0.58 and0.72opacity. Full actual c01-02 scene preserved20actors/9buildings; mud/roots and other old decorations remain. No game-rule placements removed.",
+        "liveGame": "pending"
+      }
     },
     {
       "atlasId": "rural-life",

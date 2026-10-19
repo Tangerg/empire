@@ -24,15 +24,17 @@ const lowSet = process.argv.includes('--pine-low');
 const graveSet = process.argv.includes('--regional-graves');
 const forgeSet = process.argv.includes('--regional-forge');
 const wastelandSet = process.argv.includes('--regional-wasteland');
+const decalsFirstSet = process.argv.includes('--decals-first');
+const decalsSecondSet = process.argv.includes('--decals-second');
 const ruralFourthSet = process.argv.includes('--rural-fourth');
 const ruralThirdSet = process.argv.includes('--rural-third');
 const ruralSecondSet = process.argv.includes('--rural-second');
 const ruralSet = process.argv.includes('--rural-first');
 const snowSet = process.argv.includes('--regional-snow');
-const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet || ruralSet || ruralSecondSet || ruralThirdSet || ruralFourthSet;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet, ruralSet, ruralSecondSet, ruralThirdSet, ruralFourthSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet || ruralSet || ruralSecondSet || ruralThirdSet || ruralFourthSet || decalsFirstSet || decalsSecondSet;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet, ruralSet, ruralSecondSet, ruralThirdSet, ruralFourthSet, decalsFirstSet, decalsSecondSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${ruralFourthSet ? '-rural-fourth' : ruralThirdSet ? '-rural-third' : ruralSecondSet ? '-rural-second' : ruralSet ? '-rural-first' : wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${decalsFirstSet ? '-decals-first' : decalsSecondSet ? '-decals-second' : ruralFourthSet ? '-rural-fourth' : ruralThirdSet ? '-rural-third' : ruralSecondSet ? '-rural-second' : ruralSet ? '-rural-first' : wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -54,6 +56,7 @@ moltenMap.tiles.fill('c01.molten');
 const molten = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: moltenMap }).underUnits);
 const ruralMap = mapFromLevel(content, candidate01Level('c01-02'));
 const rural = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: ruralMap }).underUnits);
+const actualGround = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: ruralMap, levelId: 'c01-02' }).ground);
 const authoredRuralMap = mapFromLevel(content, candidate01Level('c01-01'));
 const authoredRural = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: authoredRuralMap, levelId: 'c01-01' }).underUnits);
 const authoredRuralGround = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: authoredRuralMap, levelId: 'c01-01' }).ground);
@@ -69,7 +72,19 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = ruralFourthSet ? [
+const columns: readonly ReviewColumn[] = decalsFirstSet ? [
+  { id: 'grass-tuft-a', x: 85, placement: [0.5, 0.6] },
+  { id: 'grass-tuft-b', x: 230, placement: [0.5, 0.6] },
+  { id: 'stone-cluster-a', x: 375, placement: [0.5, 0.6] },
+  { id: 'stone-cluster-b', x: 520, placement: [0.5, 0.6] },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : decalsSecondSet ? [
+  { id: 'grass-tuft-c', x: 85, placement: [0.5, 0.6] },
+  { id: 'fallen-leaves', x: 230, placement: [0.5, 0.6] },
+  { id: 'mud-patch', x: 375, placement: [0.5, 0.6] },
+  { id: 'exposed-roots', x: 520, placement: [0.5, 0.6] },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : ruralFourthSet ? [
   { id: 'grain-drying-mat-dark', x: 85, placement: [1, 1], catalogOnly: true },
   { id: 'grain-drying-mat-linen', x: 230, placement: [0.68, 0.68] },
   { id: 'grain-drying-mat-earth', x: 375, placement: [0.68, 0.68] },
@@ -168,8 +183,8 @@ const reports = [];
 const pictures = [];
 for (const { id, x, placement, catalogOnly = false, reference = false, reconstruction = false } of columns) {
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
-  const crop = `x="${-(cell.index % 4) * atlas.raster.cellWidth}" y="${-Math.floor(cell.index / 4) * atlas.raster.cellHeight}"`;
-  const source = ['grain-drying-mat-linen', 'grain-drying-mat-earth'].includes(id) ? authoredRuralGround : ['wheat-drying-rack', 'stone-well', 'frontier-granary', 'frontier-farmhouse', 'farm-fence-straight', 'farm-fence-corner'].includes(id) ? authoredRural : ['wheat-sheaves', 'wheat-bundles', 'grain-sacks-baskets', 'farm-handcart-tools', 'livestock-pen-small'].includes(id) ? rural : id.startsWith('wasteland-') ? molten : id.startsWith('forge-') ? forges : id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
+  const crop = `x="${-(cell.index % atlas.raster.columns) * atlas.raster.cellWidth}" y="${-Math.floor(cell.index / atlas.raster.columns) * atlas.raster.cellHeight}"`;
+  const source = atlas.id === 'decals-small' ? actualGround : ['grain-drying-mat-linen', 'grain-drying-mat-earth'].includes(id) ? authoredRuralGround : ['wheat-drying-rack', 'stone-well', 'frontier-granary', 'frontier-farmhouse', 'farm-fence-straight', 'farm-fence-corner'].includes(id) ? authoredRural : ['wheat-sheaves', 'wheat-bundles', 'grain-sacks-baskets', 'farm-handcart-tools', 'livestock-pen-small'].includes(id) ? rural : id.startsWith('wasteland-') ? molten : id.startsWith('forge-') ? forges : id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
     : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair', 'pine-mature-c'].includes(id) ? frame : field;
   const matches = props(source)
     .filter((markup) => markup.includes(`${atlas.id}@2x.png`) && markup.includes(crop));

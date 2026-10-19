@@ -1,0 +1,218 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "grass-tuft-a",
+      "anchor": [
+        32.30622009569378,
+        43.0622009569378
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.58,
+        0.58
+      ],
+      "sampleScale": 0.58,
+      "sampleCount": 13,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop \" transform=\"translate(-18.738 -24.976) scale(0.580)\" opacity=\"0.72\">\n    <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        12.0,
+        21.0,
+        52.5,
+        43.0
+      ],
+      "nativeSampleVisibleHeight": 12.76,
+      "nativeVisibleHeightRange": [
+        11.0,
+        13.2
+      ],
+      "nativeSampleOverhangBelowContact": -0.03607655502392447
+    },
+    {
+      "id": "grass-tuft-b",
+      "anchor": [
+        32.57416267942584,
+        45.39712918660287
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.58,
+        0.58
+      ],
+      "sampleScale": 0.58,
+      "sampleCount": 5,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop \" transform=\"translate(-18.893 -26.330) scale(0.580)\" opacity=\"0.72\">\n    <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-64\" y=\"0\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        13.0,
+        18.5,
+        52.0,
+        45.5
+      ],
+      "nativeSampleVisibleHeight": 15.659999999999998,
+      "nativeVisibleHeightRange": [
+        13.5,
+        16.2
+      ],
+      "nativeSampleOverhangBelowContact": 0.05966507177033662
+    },
+    {
+      "id": "stone-cluster-a",
+      "anchor": [
+        32,
+        42.066985645933016
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.56,
+        0.6
+      ],
+      "sampleScale": 0.56,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop \" transform=\"translate(17.920 -23.558) scale(-0.560 0.560)\" opacity=\"0.72\">\n    <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-192\" y=\"0\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        14.5,
+        22.5,
+        49.5,
+        43.5
+      ],
+      "nativeSampleVisibleHeight": 11.760000000000002,
+      "nativeVisibleHeightRange": [
+        10.5,
+        12.6
+      ],
+      "nativeSampleOverhangBelowContact": 0.8024880382775109
+    },
+    {
+      "id": "stone-cluster-b",
+      "anchor": [
+        32.11483253588517,
+        39.34928229665071
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.5,
+        0.58
+      ],
+      "sampleScale": 0.58,
+      "sampleCount": 8,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop \" transform=\"translate(-18.627 -22.823) scale(0.580)\" opacity=\"0.72\">\n    <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-256\" y=\"0\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        13.5,
+        25.5,
+        50.5,
+        40.5
+      ],
+      "nativeSampleVisibleHeight": 8.7,
+      "nativeVisibleHeightRange": [
+        7.5,
+        9.0
+      ],
+      "nativeSampleOverhangBelowContact": 0.6674162679425861
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

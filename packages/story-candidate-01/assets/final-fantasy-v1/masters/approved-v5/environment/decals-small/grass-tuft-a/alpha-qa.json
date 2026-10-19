@@ -1,0 +1,58 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "grass-tuft-a",
+  "cellIndexZeroBased": 0,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.7925884378918879,
+  "nearOpaqueFractionAlphaGE250": 0.19443490559078572,
+  "nonzeroAlphaBBox": [
+    25,
+    53,
+    1236,
+    1222
+  ],
+  "visibleAlphaBBoxGE8": [
+    105,
+    338,
+    1165,
+    917
+  ],
+  "subjectAlphaBBoxGE128": [
+    106,
+    339,
+    1164,
+    916
+  ],
+  "solidAlphaBBoxGE250": [
+    106,
+    339,
+    1163,
+    916
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    106,
+    339,
+    90,
+    338
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "suggestedRegistrationFootpointNative": [
+    635.0,
+    916
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "9c8e650d2c71b27b584c5542f23d0edaa449158597c460fd03819b60bece0ac7",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete subject silhouette, broad chunky matte cel planes, simple grouped foliage/leaf shapes, no thin-strand noise or imported adjacent atlas subject. Genuine transparent gaps and no painted ground/backdrop.",
+  "remarks": [],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

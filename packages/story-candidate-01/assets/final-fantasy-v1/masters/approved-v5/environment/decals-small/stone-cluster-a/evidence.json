@@ -1,0 +1,156 @@
+{
+  "asset": "stone-cluster-a",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad angular matte stone planes and bold outlines, low decorative decal profile",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    890
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.709729
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    172,
+    370,
+    167,
+    326
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/decals-small/stone-cluster-a-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/stone-cluster-a/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-priority-four-source-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-priority-four-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 0,
+  "original_gameplay_footprint": [
+    1,
+    1
+  ],
+  "original_atlas_category": "ground-decal",
+  "actual_render_layer": "groundPieces detail; no standing unit depth marker",
+  "original_runtime_cell_size": [
+    64,
+    64
+  ],
+  "original_runtime_cell_size_2x": [
+    128,
+    128
+  ],
+  "original_runtime_anchor": [
+    32,
+    60
+  ],
+  "original_runtime_opacity": 0.72,
+  "raw_master_opacity_preapplied": false,
+  "raw_master_only": true,
+  "no_added_ground_platform": true,
+  "no_exterior_glow": true,
+  "scale_guidance": "Retain actual caller scales. Calibrate uniform presentationScale against clean subject width, not fragment-contaminated legacy cell height. Use new measured foot; do not copy legacy stray-fragment extrema or classify as standing obstacle.",
+  "original_slot_zero_based": 3,
+  "source_ground_center_estimate_px": [
+    626,
+    741
+  ],
+  "foot_estimate_basis": "forward low stone-group ground-contact line, not largest-rock summit or unrelated legacy fragment",
+  "original_source_crop_problem": "Exact6x4 source cell preserved for evidence; full subject obtained from upper source group with no neighboring row fragments.",
+  "audited_actual_consumer_summary": {
+    "priority": 1,
+    "id": "stone-cluster-a",
+    "atlas": "decals-small",
+    "cellIndexZeroBased": 3,
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+    "runtime2xCrop": [
+      384,
+      0,
+      512,
+      128
+    ],
+    "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "masterCrop": [
+      768,
+      0,
+      1024,
+      256
+    ],
+    "runtimeLogicalCell": [
+      64,
+      64
+    ],
+    "logicalAlpha128Bounds": [
+      6.0,
+      6.5,
+      59.5,
+      60.0
+    ],
+    "c01-02Count": 11,
+    "c01-01Count": 8,
+    "c01-02Scales": [
+      0.56,
+      0.58,
+      0.6
+    ],
+    "c01-02WindowSizes": [
+      35.84,
+      37.12,
+      38.4
+    ],
+    "c01-02Alpha128Sizes": [
+      {
+        "scale": 0.56,
+        "size": [
+          29.96,
+          29.96
+        ]
+      },
+      {
+        "scale": 0.58,
+        "size": [
+          31.03,
+          31.03
+        ]
+      },
+      {
+        "scale": 0.6,
+        "size": [
+          32.1,
+          32.1
+        ]
+      }
+    ],
+    "example": {
+      "sourceId": "ground:173",
+      "scale": 0.56,
+      "worldFoot": [
+        304.0,
+        256.0
+      ],
+      "screenFoot": [
+        378.0,
+        318.0
+      ]
+    },
+    "exampleSceneCrop": [
+      342,
+      268,
+      414,
+      332
+    ]
+  },
+  "source_subject_group": "three principal rocks plus low front stone and supporting pebbles",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
