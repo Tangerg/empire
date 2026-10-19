@@ -61,7 +61,21 @@
       "bleed": 0.5
     },
     "insetSampling": "26/32 source interior enlarged32/26; verify actual runtime fit before comparing",
-    "anchor": "preserve gameplay pivot; visual bounds need independent art-direction review"
+    "anchor": "preserve gameplay pivot; visual bounds need independent art-direction review",
+    "surfaceComparison": {
+      "baseline": {
+        "inset": 3,
+        "bleed": 0.5,
+        "sourceMagnification": 1.2307692307692308,
+        "sampledPhysicalMargin2x": 6
+      },
+      "candidate": {
+        "inset": 0,
+        "bleed": 0.5,
+        "status": "proposed-for-calibration-only"
+      },
+      "important": "Current inset crops away the edge-matched outer pixels. Direct tile composites do not reproduce current runtime sampling. Candidate sampling changes must be labeled explicitly."
+    }
   },
   "excludedClaims": [
     "gameplay screenshot",
