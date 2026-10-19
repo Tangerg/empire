@@ -1744,11 +1744,16 @@
     },
     {
       "topicId": "C01-EQUIP-ARCHER",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-archer/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-021-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "staticVisualReview": "48px light/dark/olive review passed; source identity and thin bowstring readable",
+        "preview": "docs/art-rebuild-20261019/first-equipment-48px.png"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "78a899105be83b4ae2f4034abf94408205ed0cd85dcbc1f756a1002607576673"
@@ -1979,11 +1984,16 @@
     },
     {
       "topicId": "C01-EQUIP-SWORDSMAN",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-swordsman/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-021-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "staticVisualReview": "48px light/dark/olive review passed; source identity and thin bowstring readable",
+        "preview": "docs/art-rebuild-20261019/first-equipment-48px.png"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "7362ba36975e5073f9bcfcfbc40bfdb6029b192993a91da8392123f8a2dcc3f3"
@@ -6511,7 +6521,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Original runtime has hard-cropped mixed fragments",
+        "recovery": "Inspect masterboard + semantic label before clean reconstruction; original slot mapping not established"
+      }
     },
     {
       "topicId": "c03-battle-prop-16fa4a1f",
@@ -6554,7 +6568,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Original runtime has hard-cropped mixed fragments",
+        "recovery": "Inspect masterboard + semantic label before clean reconstruction; original slot mapping not established"
+      }
     },
     {
       "topicId": "c03-battle-prop-5cc33643",
@@ -6673,7 +6691,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Original runtime has hard-cropped mixed fragments",
+        "recovery": "Inspect masterboard + semantic label before clean reconstruction; original slot mapping not established"
+      }
     },
     {
       "topicId": "c03-battle-prop-cd97a638",
@@ -6686,7 +6708,11 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "assignment": "redraw_grayflag_support_props",
+      "sourceIntegrity": {
+        "issue": "Original runtime has hard-cropped mixed fragments",
+        "recovery": "Inspect masterboard + semantic label before clean reconstruction; original slot mapping not established"
+      }
     },
     {
       "topicId": "c03-battle-prop-d983ce23",
@@ -8048,7 +8074,8 @@
       "cellId": "mixed-forest-autumn",
       "index": 1,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
@@ -8073,19 +8100,23 @@
       "cellId": "oak-grove-dense",
       "index": 3,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "mixed-forest-edge",
       "index": 4,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-edge/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "ca9263a00a20d1b5747b1f549584a619289ec533dfbe090c7a09c5e2e350a68c",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-004-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
@@ -8093,14 +8124,16 @@
       "cellId": "sapling-rock-cluster",
       "index": 5,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "bramble-dark",
       "index": 6,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
