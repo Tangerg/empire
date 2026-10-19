@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-starbreaker-sapper",
+  "assetId": "C02-SFV1-equipment-starbreaker-sapper",
+  "label": "断星工兵主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    319,
+    935,
+    622
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-starbreaker-sapper.png",
+  "runtimeReferenceSha256": "6a2c68985bf6db95f52506e08597f7c971f5797448121191b2c46c651647cd93",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

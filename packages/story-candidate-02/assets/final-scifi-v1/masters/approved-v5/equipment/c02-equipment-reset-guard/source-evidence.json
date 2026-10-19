@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-reset-guard",
+  "assetId": "C02-SFV1-equipment-reset-guard",
+  "label": "归零守卫主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 2
+  },
+  "sourceCropBox": [
+    5,
+    319,
+    309,
+    622
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-reset-guard.png",
+  "runtimeReferenceSha256": "6d846992fdd6bf21b8a3f96acc4ce35d1ab897dc9632a4adc6c6a59c21dab2b0",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-11175aef-3680-4568-8523-cc75b17da4b3.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-reset-guard/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R2C1 confirmed against runtime. One tall polygon shield with sparse large cyan face cells, one amber/gray center hub and lower brace, thick ivory/graphite rim and amber joints. Original attached tubular frame retained around upper/right/lower-right perimeter with a bounded purple top slot; openings remain transparent at actual48. Face is opaque and distinct from star-shield, no star emblem or external cyan haze.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
