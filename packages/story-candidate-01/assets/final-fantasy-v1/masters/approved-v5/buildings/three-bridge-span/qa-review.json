@@ -1,0 +1,85 @@
+{
+  "topicId": "C01-STRUCT-THREE-BRIDGE-SPAN",
+  "status": "Native three-state source art and shared112logical preview complete, no formal consumer binding claimed",
+  "consumerStatus": "Catalog/runtime-HD only; no static source binding or campaign placement found. Distinct from C01-ARCH-THREE-BRIDGES and horizontal map-crossing decoration.",
+  "consumerAudit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json records no-static-consumer-reference-found",
+  "sourceEvidence": "Atlas03 top row plus runtime-HD strip, source.json records full paths/crops/hash",
+  "commonCanvas": [
+    1254,
+    1254
+  ],
+  "commonSourceFoot": [
+    627,
+    1095
+  ],
+  "logicalVisibleWidth": 112,
+  "postGenerationTransform": "none",
+  "perimeterRequirement": "Actual outermost edges maxalpha<=1; no relaxed gate or programmatic cleanup",
+  "states": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        29,
+        210,
+        1240,
+        1095
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-980a710a-0bb9-45fb-81ea-0e3cbd9045ea.png",
+      "sha256": "3cfb0bdaa31d78ced4e57f2e9cd46e5e861c23b5ef7899bb53cfe36d74e45d7e",
+      "postGenerationTransform": "none"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        29,
+        222,
+        1239,
+        1095
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5d9db86f-dd10-41e0-9548-55881c0a863e.png",
+      "sha256": "746511535925b7bd725f21dc537a0d02d8e43090158f23caa1c84d6b5fab4d19",
+      "postGenerationTransform": "none"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        30,
+        167,
+        1240,
+        1096
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-79dd04b4-e4be-4bf0-8f39-58f86d5a1427.png",
+      "sha256": "de03805d89cf632feda546f347fa7c0af0cbd6aa96105072bd4000a0a485b670",
+      "postGenerationTransform": "none"
+    }
+  },
+  "semantic": {
+    "normal": "Oblique plank deck with upper-left to lower-right travel axis, four capped stone piers, two rope rails and local water/rocks/reeds",
+    "damaged": "Central deck collapsed, rope rails broken/sagging, rear capstones reveal timber cores, front-right upper pier damaged; all four footings retained",
+    "captured": "Intact normal span plus single dark-gray hanging rectangular flag bearing pale four-armed flared cross on rear-right pier; no radial star/forked pennant"
+  },
+  "visualReview": "Reviewed side-by-side native canvas and112logical total width. Four support footings and local pool footprint visually stable across states; damaged interruption and captured flag remain readable.",
+  "limits": [
+    "Catalog artifact only, not claimed as current gameplay consumer",
+    "No repository edits or runtime binding performed",
+    "Strict pixel identity not claimed for local AI-authored state changes"
+  ]
+}

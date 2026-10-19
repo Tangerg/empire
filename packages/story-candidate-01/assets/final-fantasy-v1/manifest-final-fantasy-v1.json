@@ -1279,13 +1279,13 @@
       "topicId": "C01-UNIT-CLERIC",
       "label": "牧师",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-cleric.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-cleric.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1294,13 +1294,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.06681766704417,
+        51.23895809739525
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-DRUID",
@@ -3909,7 +3910,8 @@
       "footprint": [
         2,
         2
-      ]
+      ],
+      "presentationScale": 0.6
     },
     {
       "assetId": "C01-FFV1-STRUCT-LORNE-KEEP",
@@ -3936,7 +3938,8 @@
       "footprint": [
         2,
         2
-      ]
+      ],
+      "presentationScale": 0.65
     },
     {
       "assetId": "C01-FFV1-STRUCT-MERCENARY-DEPOT",
@@ -3990,7 +3993,8 @@
       "footprint": [
         2,
         2
-      ]
+      ],
+      "presentationScale": 0.6
     },
     {
       "assetId": "C01-FFV1-STRUCT-NAME-MEMORIAL",
@@ -4125,7 +4129,8 @@
       "footprint": [
         2,
         2
-      ]
+      ],
+      "presentationScale": 0.65
     },
     {
       "assetId": "C01-FFV1-STRUCT-REPAIRABLE-GATE",

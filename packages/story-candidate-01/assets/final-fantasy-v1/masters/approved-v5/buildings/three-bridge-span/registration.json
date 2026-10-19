@@ -21,11 +21,31 @@
   ],
   "sourceScale": 1,
   "suggestedLogicalVisibleWidth": 112,
-  "logicalScaleStatus": "Suggested for catalog interactive sprite review; no real map binding found",
+  "logicalScaleStatus": "Parent reviewed normal and accepted shared112logical total width and sourceFoot[627,1095] for this catalog-only family",
   "consumerStatus": "No static consumer reference; distinct from horizontal map crossing decoration",
   "perStateTransforms": {
     "normal": "none",
-    "damaged": "pending",
-    "captured": "pending"
+    "damaged": "none",
+    "captured": "none"
+  },
+  "logicalVisibleWidth": 112,
+  "sharedExportScaleSuggestion": 0.09248554913294797,
+  "sharedExportScaleBasis": "112 / normal visible width1211, one common scale/origin; no per-state fitting",
+  "stateGeneration": {
+    "normal": {
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-980a710a-0bb9-45fb-81ea-0e3cbd9045ea.png",
+      "prompt": "normal/prompt.txt",
+      "rawIsMaster": true
+    },
+    "damaged": {
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5d9db86f-dd10-41e0-9548-55881c0a863e.png",
+      "prompt": "damaged/prompt.txt",
+      "rawIsMaster": true
+    },
+    "captured": {
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-79dd04b4-e4be-4bf0-8f39-58f86d5a1427.png",
+      "prompt": "captured/prompt.txt",
+      "rawIsMaster": true
+    }
   }
 }

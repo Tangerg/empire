@@ -13,7 +13,7 @@
     "pine": "transparent source and static scene checked",
     "bridge": "transparent source and static scene checked",
     "grass-material": "formally bound world-coordinate base meadow with1024 logical sampling, source density1px/logical; full-map offline review; larger-map periodicity still pending",
-    "water-material": "opaque source to unchanged actual water mask, static scene checked",
+    "water-material": "formal world occupancy/UV binding,512logical period/native2x; no topology change",
     "earth-material": "revision2 selected, original rejected density retained",
     "grass-edge": "revision2 broad flat patch, static overlay checked",
     "bank-edge": "revision3 broad flat patch, static overlay checked"
@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
   },
-  "authoredFourPoseBundles": 6,
+  "authoredFourPoseBundles": 7,
   "authoredThreeStateBundles": 8,
-  "formalRuntimeBoundTopics": 41,
+  "formalRuntimeBoundTopics": 42,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -273,6 +273,12 @@
       "export": "shared112 logical width and fixed foundation; alpha and native state review passed",
       "runtimeBinding": "canonical128 square/HD256 sheet and existing boss_part resolver; campaign12 bell nodes",
       "liveGame": "pending"
+    },
+    "C01-UNIT-CLERIC": {
+      "raw": "four native1585x992 frames and hand-assignment correction preserved",
+      "export": "shared44/883 scale, measured whole-canvas foot registration, native identity and opposite walks reviewed",
+      "runtimeBinding": "canonical104x64 and HD208x128 frame contract; existing built-in cleric binding",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -363,9 +369,9 @@
   "totalCanonicalScope": 1212,
   "priorTechnicalExportsRequireStyleReview": true,
   "tests": {
-    "focusedRuntime": 49,
+    "focusedRuntime": 61,
     "typecheck": "passed",
-    "artToolTests": 102,
+    "artToolTests": 107,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
     "liveBrowser": "not validated"
   },
@@ -377,6 +383,17 @@
       "runtimeBinding": "typed world material manifest,1024 sampling origin0, uncropped; canonical ground consumer",
       "liveGame": "pending",
       "limits": "1 source pixel per logical world unit; not native2x detail at1024 period; only base meadowtone0, legacy other materials remain"
+    },
+    "water-area": {
+      "raw": "approved opaque source unchanged",
+      "export": "512/1024 textures, all256 neighbour masks and exact native crop comparisons",
+      "runtimeBinding": "actual water/bridge occupancy,512 logical world sampling at native2x density;28 cells on fullc01-02",
+      "liveGame": "pending"
     }
+  },
+  "integrationGate": {
+    "fullMap": "building-depth-review/integration-full@1x.png",
+    "status": "in progress; building scale and unit footing order fixed, static object inter-layer occlusion remains",
+    "liveGame": "pending"
   }
 }

@@ -125,10 +125,11 @@ function ownerBanner(color: string): string {
 function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ownerColor?: string): string {
   const atlas = cellAtlas(record);
   const anchor = record.anchor ?? [atlas.cellWidth / 2, atlas.cellHeight - 1];
-  const x = 16 - anchor[0];
-  const y = 31 - anchor[1];
+  const scale = record.presentationScale ?? 1;
+  const x = 16 - anchor[0] * scale;
+  const y = 31 - anchor[1] * scale;
   const owner = ownerColor ? ownerBanner(ownerColor) : '';
-  return `<g data-candidate-art="structure" transform="translate(${x} ${y})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
+  return `<g data-candidate-art="structure" data-presentation-scale="${scale}" transform="translate(${x} ${y}) scale(${scale})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
 }
 
 export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {

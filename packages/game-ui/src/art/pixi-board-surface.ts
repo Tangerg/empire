@@ -2,6 +2,7 @@ import { autoDetectRenderer, ColorMatrixFilter, Container, Sprite, Texture } fro
 import {
   drawableBody,
   DrawingPlacement,
+  UnitDepthOrder,
   GRID_ALPHA,
   BOARD_LAYERS,
   type BoardDrawing,
@@ -114,6 +115,7 @@ class PixiDrawing implements BoardDrawing {
     private readonly pivot: number,
     private readonly id: string,
     picture: BoardPicture,
+    private readonly onPlace?: (x: number, y: number) => void,
   ) {
     root.pivot.set(pivot, pivot);
     this.figure.pivot.set(TILE_MIDDLE, TILE_MIDDLE);
@@ -128,6 +130,7 @@ class PixiDrawing implements BoardDrawing {
   place(x: number, y: number): void {
     this.at.place(x, y);
     this.write();
+    this.onPlace?.(x, y);
   }
 
   nudge(dx: number, dy: number): void {
@@ -301,6 +304,7 @@ export class PixiBoardSurface implements BoardSurface {
   private readonly world = new Container();
   private readonly layers: Record<BoardLayer, Container>;
   private readonly units = new Map<number, PixiDrawing>();
+  private readonly unitDepth = new UnitDepthOrder();
   /** The same timeline the DOM backend uses, driving textures instead of attributes. */
   private readonly drawingTools: DrawingTools;
   private serial = 0;
@@ -357,7 +361,12 @@ export class PixiBoardSurface implements BoardSurface {
     const existing = this.units.get(id);
     if (existing) return existing;
 
-    const drawing = this.drawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, draw());
+    const drawing = this.drawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, draw(), (x, y) => {
+      this.unitDepth.place(id, x, y).forEach((ordered, index) => {
+        const unit = this.units.get(ordered);
+        if (unit) this.layers.units.setChildIndex(unit.root, index);
+      });
+    });
     // The badges part is the surface's own, exactly as in the SVG tree: it is what
     // `fill('badges', …)` replaces every render, and it must not mirror with the
     // sprite when the unit faces west.
@@ -376,6 +385,7 @@ export class PixiBoardSurface implements BoardSurface {
     if (!drawing) return;
     drawing.destroy();
     this.units.delete(id);
+    this.unitDepth.remove(id);
   }
 
   drawnUnits(): number[] {
@@ -440,6 +450,7 @@ export class PixiBoardSurface implements BoardSurface {
     this.drawingTools.animations.dispose();
     this.tools.painter.detach(this.scene);
     this.units.clear();
+    this.unitDepth.clear();
     this.scene.destroy({ children: true });
   }
 
@@ -449,8 +460,8 @@ export class PixiBoardSurface implements BoardSurface {
   }
 
   /** One drawing of this surface's, with its own place on the shared timeline. */
-  private drawing(root: Container, pivot: number, picture: BoardPicture): PixiDrawing {
-    return new PixiDrawing(this.drawingTools, root, pivot, `strip:${this.serial++}`, picture);
+  private drawing(root: Container, pivot: number, picture: BoardPicture, onPlace?: (x: number, y: number) => void): PixiDrawing {
+    return new PixiDrawing(this.drawingTools, root, pivot, `strip:${this.serial++}`, picture, onPlace);
   }
 
   /**

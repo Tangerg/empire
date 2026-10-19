@@ -2,6 +2,7 @@ import { FrameAnimationSystem } from './frame-animation';
 import {
   drawableBody,
   DrawingPlacement,
+  UnitDepthOrder,
   GRID_ALPHA,
   BOARD_LAYERS,
   boardPiecesMarkup,
@@ -89,6 +90,7 @@ class SvgDrawing implements BoardDrawing {
     private readonly pivot: number,
     private readonly id: string,
     picture: BoardPicture,
+    private readonly onPlace?: (x: number, y: number) => void,
   ) {
     el.append(this.figure);
     this.body(drawableBody(picture));
@@ -99,6 +101,7 @@ class SvgDrawing implements BoardDrawing {
   place(x: number, y: number): void {
     this.at.place(x, y);
     this.write();
+    this.onPlace?.(x, y);
   }
 
   nudge(dx: number, dy: number): void {
@@ -212,6 +215,7 @@ export class SvgBoardSurface implements BoardSurface {
   readonly element: SVGSVGElement;
   private readonly layers: Record<BoardLayer, SVGGElement>;
   private readonly units = new Map<number, SvgDrawing>();
+  private readonly unitDepth = new UnitDepthOrder();
   /**
    * The sprite timeline for everything this surface draws.
    *
@@ -284,6 +288,12 @@ export class SvgBoardSurface implements BoardSurface {
       TILE_MIDDLE,
       `strip:${this.serial++}`,
       picture,
+      (x, y) => {
+        for (const ordered of this.unitDepth.place(id, x, y)) {
+          const unit = this.units.get(ordered);
+          if (unit) this.layers.units.append(unit.el);
+        }
+      },
     );
     // The badges group is the surface's own, not the picture's: it is what
     // `fill('badges', …)` replaces every render, and it must not mirror with the
@@ -303,6 +313,7 @@ export class SvgBoardSurface implements BoardSurface {
     if (!drawing) return;
     drawing.detach();
     this.units.delete(id);
+    this.unitDepth.remove(id);
   }
 
   effect(picture: BoardPicture): BoardEffect {
@@ -344,6 +355,7 @@ export class SvgBoardSurface implements BoardSurface {
     this.stopListening = null;
     this.animations.dispose();
     this.units.clear();
+    this.unitDepth.clear();
   }
 }
 

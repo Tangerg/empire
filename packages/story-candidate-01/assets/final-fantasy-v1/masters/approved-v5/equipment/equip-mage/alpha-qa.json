@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-MAGE",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5605640896499622,
+  "nearOpaqueFractionAlphaGE250": 0.42485227495300526,
+  "nonzeroAlphaBBox": [
+    0,
+    27,
+    1232,
+    1206
+  ],
+  "visibleAlphaBBoxGE8": [
+    71,
+    90,
+    1186,
+    1168
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    71,
+    90,
+    68,
+    86
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 7,
+  "sha256": "81193826ede8c72ae5f15ff05637f69f8a1eafcc4ad1576ab44a0d038385e858",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

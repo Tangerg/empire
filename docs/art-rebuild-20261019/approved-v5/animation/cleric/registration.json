@@ -1,0 +1,54 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cleric/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cleric/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cleric/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cleric/walk-b/master.png"
+  },
+  "scale": 0.04983012457531144,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    784,
+    948
+  ],
+  "sourceFeet": {
+    "idle": [
+      784,
+      948
+    ],
+    "walk-a": [
+      729,
+      948
+    ],
+    "attack": [
+      710,
+      917
+    ],
+    "walk-b": [
+      808,
+      932
+    ]
+  },
+  "registrationLimit": 4,
+  "registrationOffsets": {
+    "walk-a": [
+      2.7406568516421292,
+      0.0
+    ],
+    "attack": [
+      3.6874292185730466,
+      1.5447338618346547
+    ],
+    "walk-b": [
+      -1.1959229898074746,
+      0.797281993204983
+    ]
+  }
+}

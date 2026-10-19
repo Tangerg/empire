@@ -1,0 +1,47 @@
+{
+  "topicId": "C01-EQUIP-MAGE",
+  "assetId": "C01-FFV1-EQUIP-MAGE",
+  "label": "\u6cd5\u5e08\u4e3b\u88c5\u5907",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-144b3bd8-56c8-4acd-b354-ec7e404f2fc3.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-mage-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-02.png, bottom row column 3",
+    "inspectionCropCoordinates": [
+      882,
+      443,
+      1330,
+      887
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion. Mage crop extends slightly left of grid boundary to retain staff tip.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-mage.png",
+    "slotVerification": "Original full board and high-resolution crop visually matched against baseline runtime icon and canonical manifest topic.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-02.png",
+    "atlasSha256": "54cc903dacbc853b5b842fe56e771f0d561486a61e1be4a8a1f4f20e7d049e6a",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-mage-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/archer/idle/master.png"
+  ],
+  "identityClarification": "Original orb staff and open book satchel retained, including two pale ivory chalk-like sticks. Orb swirl and brightness remain contained. No book lettering or emblem invented.",
+  "postprocessing": "None. Byte-exact native PNG copy. No output pixel cleanup, resizing, alpha editing or Git writes. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

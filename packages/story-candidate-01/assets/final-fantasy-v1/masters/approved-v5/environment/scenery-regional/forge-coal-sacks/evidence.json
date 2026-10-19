@@ -1,0 +1,54 @@
+{
+  "asset": "forge-coal-sacks",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte angular coal, cloth and wood planes with heavy dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    635,
+    1000
+  ],
+  "source_foot_estimate_normalized": [
+    0.50638,
+    0.797448
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    50,
+    214,
+    47,
+    165
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-coal-sacks.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-original-reference-evidence.json",
+  "original_atlas_cell_coordinates_zero_based": "bottom row, original scenery-regional 4x4 atlas",
+  "original_gameplay_footprint": [
+    1,
+    1
+  ],
+  "original_gameplay_obstruction_height": 1,
+  "no_ground_platform": true,
+  "no_exterior_glow": true,
+  "original_slot_zero_based": 13,
+  "visually_verified_subject_counts": {
+    "sacks": 2,
+    "wooden_barrels": 1
+  },
+  "temperature_semantics": "cold coal; no active embers",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

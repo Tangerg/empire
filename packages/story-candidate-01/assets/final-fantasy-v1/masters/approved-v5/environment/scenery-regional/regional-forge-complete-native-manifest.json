@@ -1,0 +1,187 @@
+{
+  "family": "scenery-regional",
+  "subset": "forge quartet",
+  "status": "all four native masters and QA complete; runtime integration pending",
+  "asset_count": 4,
+  "all_native_sources_byte_identical_to_generated_outputs": true,
+  "all_current_alpha_gates_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "no_programmatic_paint_or_alpha_cleanup": true,
+  "runtime_integrated": false,
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "forge-coal-pile",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/forge-coal-pile-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        966
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "588906ed6b3cce571c9e13db3529a5d41992240ba01fec774468051c8b64c06f",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-718cc718-1747-414a-87ae-909176583bd4.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.770335
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-coal-pile.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        91,
+        213,
+        47,
+        186
+      ]
+    },
+    {
+      "identity": "forge-coal-sacks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/forge-coal-sacks-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/evidence.json",
+      "source_foot_estimate_px": [
+        635,
+        1000
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "e74145373ad23c8459ebd7f3b205c42873e99003a3a795e139ab2b235f8d017e",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-ac274598-30cb-434f-b592-6cce15b19993.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.797448
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-coal-sacks.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        50,
+        214,
+        47,
+        165
+      ]
+    },
+    {
+      "identity": "forge-ember-pile",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/forge-ember-pile-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/evidence.json",
+      "source_foot_estimate_px": [
+        635,
+        924
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "4539550f0d6e9ebc13d785f70233dba9d9db57afe1cc11b425dae472bcfb0088",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f1b724b5-7d49-4ef1-a39e-03da9aa7f193.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.736842
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-ember-pile.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        88,
+        298,
+        76,
+        253
+      ]
+    },
+    {
+      "identity": "forge-charcoal-kiln",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/forge-charcoal-kiln-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        1000
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "ab99082d90097266128722820797803089e4e9df522676198316645891ed4602",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5a9ec019-d4b9-441d-8c6b-a7fc758a6844.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.797448
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-charcoal-kiln.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        176,
+        240,
+        176,
+        210
+      ]
+    }
+  ]
+}

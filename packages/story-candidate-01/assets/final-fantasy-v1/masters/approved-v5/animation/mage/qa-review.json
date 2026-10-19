@@ -1,0 +1,43 @@
+{
+  "status": "Native quartet visual/geometry QA passes; export/binding awaits coordinator",
+  "topic": "C01-UNIT-MAGE",
+  "actualConsumer": "Built-in mage. Campaign c01.battle-mage/C01-UNIT-BATTLE-MAGE is a separate family.",
+  "bodyScale": "44/897.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "sourcePaddingRequired": "One transparent right column on attack only; none applied to masters",
+  "nativeMastersUnmodified": true,
+  "allRawMasterHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All perimeter alpha<=1, zero silhouette alpha>1 on edges; no alpha cleanup performed",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "equipmentHandsPreserved": true,
+  "walkContactsOppose": true,
+  "attackSemanticsPass": "Staff-forward ranged arcane cast, book held at chest in original hand; no external glow haze",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b order. Attack visibly casts using the orb staff, matching ranged arcane mage weapons; no extra action frame or external effect asset.",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

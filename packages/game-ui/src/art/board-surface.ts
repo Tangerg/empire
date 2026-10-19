@@ -93,6 +93,23 @@ export class DrawingPlacement {
   }
 }
 
+/** Unit footing order, shared by DOM and GPU backends, independent of creation order. */
+export class UnitDepthOrder {
+  private readonly positions = new Map<number, { x: number; y: number }>();
+
+  place(id: number, x: number, y: number): readonly number[] {
+    this.positions.set(id, { x, y });
+    return [...this.positions.keys()].sort((a, b) => {
+      const left = this.positions.get(a)!;
+      const right = this.positions.get(b)!;
+      return left.y - right.y || left.x - right.x || a - b;
+    });
+  }
+
+  remove(id: number): void { this.positions.delete(id); }
+  clear(): void { this.positions.clear(); }
+}
+
 /**
  * The layers a board has, deepest first.
  *

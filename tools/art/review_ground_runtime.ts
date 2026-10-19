@@ -10,6 +10,8 @@ import { candidate01MapSceneryLayers } from '../../packages/story-candidate-01/s
 import { candidate01TerrainMarkup, candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from '../../packages/story-candidate-01/src/presentation/candidate-01-field-material';
 import { CANDIDATE_01_WATER_MATERIAL } from '../../packages/story-candidate-01/src/presentation/candidate-01-water-material';
+import { CANDIDATE_01_MAP_STRUCTURE_ART } from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
+import { candidate01Asset } from '../../packages/story-candidate-01/src/presentation/candidate-01-assets';
 import { candidateReviewViewport } from './candidate_review_viewport';
 
 const root = resolve(import.meta.dirname, '../..');
@@ -23,14 +25,23 @@ const viewport = candidateReviewViewport(map);
 const layers = candidate01MapSceneryLayers({ content, levelId: level.id, map, viewport });
 const colors: Readonly<Record<number, string>> = { 1: '#4d86b8', 2: '#a8493f', 3: '#998c6e' };
 const buildings = [];
+const buildingRegistrations = [];
 for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
   const tile = idx(map, x, y);
   const markup = candidate01TerrainMarkup(map.tiles[tile], {
     x, y, ownerColor: colors[map.owners[tile]], linked: { n: false, e: false, s: false, w: false },
   });
-  if (markup) buildings.push({ x: x * TILE, y: y * TILE, markup });
+  if (markup) {
+    buildings.push({ x: x * TILE, y: y * TILE, markup });
+    const topic = CANDIDATE_01_MAP_STRUCTURE_ART[map.tiles[tile]]!;
+    const record = candidate01Asset(topic);
+    buildingRegistrations.push({ topic, cell: [x,y], owner: map.owners[tile],
+      state: colors[map.owners[tile]] ? 'captured' : 'normal',
+      source: record.png, frameSize: [record.frameWidth,record.frameHeight], anchor: record.anchor,
+      presentationScale: record.presentationScale ?? 1, footprint: record.footprint, worldFoot: [x*TILE+16,y*TILE+31] });
+  }
 }
-const units = level.units.map((unit) => {
+const units = [...level.units].sort((a,b) => a.y-b.y || a.x-b.x).map((unit) => {
   const picture = candidate01UnitPicture(unit.unit, colors[unit.owner] ?? '#998c6e');
   if (!picture) throw new Error(`missing unit picture: ${unit.unit}`);
   return { x: unit.x * TILE, y: unit.y * TILE, markup: boardPictureMarkup(picture) };
@@ -41,7 +52,7 @@ const field = candidate01FieldMaterialPieces(width, height);
 const sampled = waterReview ? layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"')) : field;
 const world = boardPiecesMarkup(sampled);
 const crop = waterReview ? [288, 96, 128, 256] : [448, 64, 256, 256];
-const upper = [...layers.ground.slice(field.length), ...layers.underUnits, ...buildings, ...units, ...layers.overUnits];
+const upper = [...layers.ground.slice(field.length), ...buildings, ...layers.underUnits, ...units, ...layers.overUnits];
 const integration = boardPiecesMarkup([...field, ...upper]);
 // Preserve the 512-unit/native-2x alternative without changing source pixels.
 // Only this diagnostic changes placement scale; the selected runtime stays broad.
@@ -76,7 +87,7 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   material: waterReview ? CANDIDATE_01_WATER_MATERIAL : CANDIDATE_01_FIELD_MATERIAL, fieldPieces: sampled,
   waterAndBridgeCells: map.tiles.flatMap((id, index) => id === 'water' || id === 'bridge' ? [[index % map.width, Math.floor(index / map.width)]] : []),
   layerCounts: Object.fromEntries(Object.entries(layers).map(([key, value]) => [key, value.length])),
-  buildingCount: buildings.length, unitCount: units.length,
+  buildingCount: buildings.length, unitCount: units.length, buildingRegistrations,
   mapSha256: createHash('sha256').update(before).digest('hex'), gameplayTopologyChanged: false,
   provenance: 'candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions',
   cropWorldBox: crop,

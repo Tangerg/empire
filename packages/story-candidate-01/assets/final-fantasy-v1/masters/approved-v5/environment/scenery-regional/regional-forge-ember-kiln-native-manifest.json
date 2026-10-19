@@ -1,0 +1,36 @@
+{
+  "status": "native masters and source QA complete; production integration pending",
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "forge-ember-pile",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/forge-ember-pile-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/evidence.json",
+      "source_foot_estimate_px": [
+        635,
+        924
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "forge-charcoal-kiln",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/forge-charcoal-kiln-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        1000
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

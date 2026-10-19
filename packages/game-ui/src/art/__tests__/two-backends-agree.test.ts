@@ -150,6 +150,29 @@ function draw(level: LevelData, renderer: BoardComposition['renderer']): BoardVi
 }
 
 describe('two backends draw the same board', () => {
+  it('orders units by current footing, including movement across a neighbour', () => {
+    const scene: BoardSurfaceScene = { width: 320, height: 320, originX: 0, originY: 0,
+      shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
+    const svg = new SvgBoardSurface(scene);
+    const gpu = new PixiBoardSurface(scene, { textures: new InstantTextures(), painter: new IdlePainter() });
+    for (const surface of [svg, gpu]) {
+      surface.unit(9, () => ({ body: '<rect width="32" height="44"/>' })).place(32, 96);
+      surface.unit(2, () => ({ body: '<rect width="32" height="44"/>' })).place(64, 32);
+      surface.unit(4, () => ({ body: '<rect width="32" height="44"/>' })).place(0, 32);
+    }
+    const order = () => svgDisplayList(svg.element).find((layer) => layer.layer === 'units')!.at;
+    expect(order()).toEqual(['0.00,32.00', '64.00,32.00', '32.00,96.00']);
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    for (const surface of [svg, gpu]) surface.drawnUnit(9)!.place(32, 0);
+    expect(order()).toEqual(['32.00,0.00', '0.00,32.00', '64.00,32.00']);
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    // A strike nudge changes the picture, not the unit's standing depth.
+    for (const surface of [svg, gpu]) surface.drawnUnit(9)!.nudge(0, 80);
+    expect(order()[0]).toBe('32.00,80.00');
+    expect(pixiDisplayList(gpu)).toEqual(svgDisplayList(svg.element));
+    for (const surface of [svg, gpu]) { surface.removeUnit(4); surface.dispose(); }
+  });
+
   it('puts the same number of pictures in the same places in every layer', () => {
     const level = BUILTIN_LEVELS[0];
 

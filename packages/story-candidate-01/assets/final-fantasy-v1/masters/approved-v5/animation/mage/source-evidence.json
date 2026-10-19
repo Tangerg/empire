@@ -1,0 +1,101 @@
+{
+  "topicId": "C01-UNIT-MAGE",
+  "actualConsumer": "mage, built-in engine unit. Distinct from c01.battle-mage/C01-UNIT-BATTLE-MAGE.",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 54,
+    "text": "mage: 'C01-UNIT-MAGE'"
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-MAGE",
+    "topicId": "C01-UNIT-MAGE",
+    "label": "法师",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-mage.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-mage.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-mage.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ranger-assassin-mage-knight.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "106fa7d2969edddf6d6a700577eb599ded691423c28e0dced1a956c9a0cbd0eb"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-mage.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "e2e8ceaeffbe2e02bd6ab89cbf9e5a02bcb6e6b56b0612aa2e87ba1ff169a2f4"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-mage.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "122e876dce8871d7cb8faed359ee93caa9e12f1f8646ee5eeab602b9fba9426c"
+    }
+  },
+  "referenceExtraction": "Native non-resampled crops: source board third row[0,627,1254,941], first cell[0,627,314,941]; HD64x96frames. No color/alpha edits. Original magenta backdrop is reference only.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "status": "Native quartet complete; original sources preserved",
+  "identityObserved": [
+    "Mature clean-shaven adult with full gray wavy/curly hair; no hood/hat",
+    "Plum open-front coat with cream/tan fleece trim",
+    "Blue-gray tunic and dark teal neck scarf/cowl",
+    "Brown crossbody strap with buckle, brown waist belt, screen-left satchel and small screen-right belt pouch",
+    "Screen-left bare hand holds closed blue-gray/teal book with pale page block",
+    "Screen-right bare hand holds crooked dark-brown staff with twisting fork cradling one pale blue-gray orb",
+    "Large brown boots"
+  ],
+  "semanticEvidence": {
+    "unitDefinition": "packages/content-ancient-empires/src/units.ts:61-70",
+    "weaponDefinitions": "packages/content-ancient-empires/src/weapons.ts:42-76",
+    "weapons": [
+      "mage_bolt",
+      "mage_overcharge",
+      "mage_meteor"
+    ],
+    "actionSemantics": "Ranged arcane magic, including charged meteor; action pose must clearly cast/aim staff while preserving book in other hand.",
+    "animationContract": "Existing four-frame idle/walk-a/attack/walk-b. Original board action frame is weakly differentiated; remake must make casting readable without new frame/effect assets."
+  },
+  "scopeClarification": "Parent2026-10-19 14:28:28UTC explicitly selected C01-UNIT-MAGE; campaign battle-mage is a different canonical family to be covered separately."
+}

@@ -1,0 +1,141 @@
+{
+  "asset": "C01-UNIT-MAGE",
+  "actualConsumer": "Built-in mage. Campaign c01.battle-mage/C01-UNIT-BATTLE-MAGE is a separate family.",
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every master/raw pair is byte-identical to selected native tool output. No painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04902506963788301,
+  "bodyReferenceSourcePixels": 897.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/registration-evidence.json",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b order. Attack visibly casts using the orb staff, matching ranged arcane mage weapons; no extra action frame or external effect asset.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ea4a26e0e24ed2eb732ba46fc205780e5bab13bb9462f8b074b1e068eb1cf8ca",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        787,
+        956
+      ],
+      "hairTopSourceY": 54,
+      "visibleBoundsAlphaGreaterThan127": [
+        390,
+        54,
+        1295,
+        957
+      ],
+      "sha256": "c34a0ccdfb8eb986430b38f5aa856e694dbfe75eac1adcc3fe79d01ca824fac8",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-89795195-071e-4b8d-8db7-3b00cb83f099.png",
+      "review": "Accepted chunky gray-curled mage, broad plum coat, huge hands/boots, upright orb staff in screen-right hand and closed book in screen-left hand."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a30d2088bb26bc3e91978bb24c71c45722429b1293411279ec803dedf11f7d05",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        746,
+        955
+      ],
+      "hairTopSourceY": 55,
+      "visibleBoundsAlphaGreaterThan127": [
+        370,
+        55,
+        1325,
+        956
+      ],
+      "sha256": "48d82a282c2fbdc12f1550791faa606aca8f7be53edc3322533dd2095f74dca9",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-65e26fc5-4b5b-4ecc-a2ce-04586dbb8ce3.png",
+      "review": "Forward screen-right boot toe-up/heel-contact with visible dark sole; rear screen-left boot planted flat. Staff butt remains visible behind the lifted front boot; equipment hand assignment unchanged."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7548c1ffecdab19db3f504b546e5c050b31c288d6809d23a591763e33d5b9960",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        592,
+        940
+      ],
+      "hairTopSourceY": 47,
+      "visibleBoundsAlphaGreaterThan127": [
+        143,
+        47,
+        1518,
+        941
+      ],
+      "sha256": "aa5872956369480fd16b16555585e8a71796d3bc6806cc3d79d3f63e5a0cdd97",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-abef4b75-cc3d-45fd-a7ee-2bbfb6a138dc.png",
+      "review": "Clear staff-forward arcane casting stance, extended screen-right staff arm, screen-left hand holding closed book to chest, broad planted boots and focused face. Pale facets stay inside orb, no external glow. Lower staff angles back toward the front boot and naturally meets/overlaps coat/boot at its butt; nothing is clipped by canvas."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "1bf1b5aa6d6e64866980a9a6e4b7278813164c3e2c667c7ad3ab2a55c724393d",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/mage/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        811,
+        945
+      ],
+      "hairTopSourceY": 56,
+      "visibleBoundsAlphaGreaterThan127": [
+        375,
+        56,
+        1311,
+        946
+      ],
+      "sha256": "6e396c705bf1e8d4a8b272b6895f04a016c1fce28491abbf56037106a916e75f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-61e10eaa-ae76-4dd1-9509-cf955d3c49ad.png",
+      "review": "Opposite contacts: front screen-right boot planted flat and rear screen-left heel raised/toe down; both boots read clearly. Staff and closed book remain in original hands."
+    }
+  }
+}

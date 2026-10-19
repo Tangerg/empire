@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-04-source-4col.png",
+  "sourceSHA256": "6a66e37ca1925fb36f0905e4df6a9b472a0fd77b01e189441eb7c2bb5df6a216",
+  "sourceSize": [
+    1672,
+    941
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        738,
+        418,
+        941
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        418,
+        738,
+        836,
+        941
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        836,
+        738,
+        1254,
+        941
+      ]
+    }
+  ],
+  "unusedFourthColumn": "Not a fourth runtime state; canonical runtime has normal/damaged/captured only. Third column matches visible steel-gray wrappings of runtime captured.",
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-wasteland-chevaux.png",
+  "consumerStatus": "Actual bulkhead binding in candidate-01-bindings.ts:85. bulkhead defined in content-common/src/structures.ts:24. No placed bulkhead instance found in campaign or experience-lab TypeScript.",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "suggestedLogicalVisibleWidth": 104,
+  "stateEvidence": "Normal low oblique linked row of crossed sharpened timber stakes with golden ochre rope lashings, patterned hanging wooden tabs, and separate gray rock foot clusters. Damaged snapped/tipped central stakes and broken lashings with fragments, retained end-footing extent. Captured intact crossed stakes, steel-gray reinforcements/wrappings and a pale hanging cloth at left; normal decorative wooden tabs removed, no flag."
+}

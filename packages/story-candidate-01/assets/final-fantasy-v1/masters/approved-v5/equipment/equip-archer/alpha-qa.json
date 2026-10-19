@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-ARCHER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6865990552719337,
+  "nearOpaqueFractionAlphaGE250": 0.29327141981385246,
+  "nonzeroAlphaBBox": [
+    49,
+    17,
+    1184,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    97,
+    54,
+    1181,
+    1205
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    97,
+    54,
+    73,
+    49
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 31,
+  "sha256": "e1018c4042bde0e23abb6a613949140e0b29298f16795c8578ffdbeaf8c5bf65",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

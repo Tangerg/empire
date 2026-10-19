@@ -1,0 +1,457 @@
+{
+  "kind": "offline real BoardPieces diagnostic; not a live gameplay screenshot",
+  "levelId": "c01-02",
+  "mapSize": [
+    22,
+    14
+  ],
+  "logicalExtent": [
+    704,
+    448
+  ],
+  "material": {
+    "schemaVersion": 2,
+    "id": "meadow-base",
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 0
+    },
+    "source": "masters/approved-v5/grass-material/master.png",
+    "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+    "logicalSize": [
+      1024,
+      1024
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "png": "runtime/meadow-base.png",
+    "png2x": "runtime/meadow-base@2x.png",
+    "rasterSize": [
+      512,
+      512
+    ],
+    "rasterPixelsPerWorldUnit": [
+      1,
+      1
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png"
+  },
+  "fieldPieces": [
+    {
+      "x": 0,
+      "y": 0,
+      "markup": "<svg width=\"704\" height=\"448\" viewBox=\"0 0 704 448\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"world-material\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png\" width=\"1024\" height=\"1024\" preserveAspectRatio=\"none\"/></svg>"
+    }
+  ],
+  "waterAndBridgeCells": [
+    [
+      10,
+      0
+    ],
+    [
+      11,
+      0
+    ],
+    [
+      10,
+      1
+    ],
+    [
+      11,
+      1
+    ],
+    [
+      10,
+      2
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      10,
+      3
+    ],
+    [
+      11,
+      3
+    ],
+    [
+      10,
+      4
+    ],
+    [
+      11,
+      4
+    ],
+    [
+      10,
+      5
+    ],
+    [
+      11,
+      5
+    ],
+    [
+      10,
+      6
+    ],
+    [
+      11,
+      6
+    ],
+    [
+      10,
+      7
+    ],
+    [
+      11,
+      7
+    ],
+    [
+      10,
+      8
+    ],
+    [
+      11,
+      8
+    ],
+    [
+      10,
+      9
+    ],
+    [
+      11,
+      9
+    ],
+    [
+      10,
+      10
+    ],
+    [
+      11,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      11
+    ],
+    [
+      10,
+      12
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      10,
+      13
+    ],
+    [
+      11,
+      13
+    ]
+  ],
+  "layerCounts": {
+    "ground": 213,
+    "underUnits": 46,
+    "overUnits": 0
+  },
+  "buildingCount": 9,
+  "unitCount": 20,
+  "buildingRegistrations": [
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        2,
+        1
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        80,
+        63
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        20,
+        1
+      ],
+      "owner": 2,
+      "state": "captured",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        656,
+        63
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        1,
+        3
+      ],
+      "owner": 1,
+      "state": "captured",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        48,
+        127
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        6,
+        5
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        208,
+        191
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        14,
+        5
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        464,
+        191
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        1,
+        11
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        48,
+        383
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        17,
+        11
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        560,
+        383
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        5,
+        12
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        176,
+        415
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        20,
+        12
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        656,
+        415
+      ]
+    }
+  ],
+  "mapSha256": "f991b517c8340aa2c9d72ec89fc699824813cce19f2528452512ffd6ad6aa2a7",
+  "gameplayTopologyChanged": false,
+  "provenance": "candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions",
+  "cropWorldBox": [
+    448,
+    64,
+    256,
+    256
+  ],
+  "samplingComparison": {
+    "selectedRuntimePeriod": [
+      1024,
+      1024
+    ],
+    "highDensityAlternativePeriod": [
+      512,
+      512
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "selectedPixelsPerWorldUnit": [
+      1,
+      1
+    ],
+    "alternativePixelsPerWorldUnit": [
+      2,
+      2
+    ],
+    "method": "uniform placement scale of actual field BoardPieces; identical source and upper layers",
+    "status": "1024 selected at 1 source pixel/unit; 512 alternative preserves 2 source pixels/unit",
+    "densityWarning": "Display 2x of the selected broad field is enlarged existing art, not new native2x source detail"
+  },
+  "limitations": [
+    "Static initial unit poses, no animation, browser or GPU playback",
+    "Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting",
+    "Legacy shore, road, crossings, non-base surfaces and decals remain visible; buildings may overlap"
+  ]
+}

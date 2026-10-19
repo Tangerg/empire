@@ -3,6 +3,7 @@ import { portraitMarkup, terrainMarkup, unitPicture } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { CANDIDATE_01_ART } from './index';
+import { candidate01Asset } from './candidate-01-assets';
 import { candidate01UnitIcon, candidate01CoverPropMarkup } from './candidate-01-runtime';
 
 /** The pack's own art, composed rather than registered into a global. */
@@ -89,7 +90,11 @@ describe('candidate-01 runtime art bindings', () => {
     expect(castle).toContain('x="-320"');
     expect(castle).toContain('width="480" height="160"');
     expect(castle).toContain('viewBox="0 0 160 160"');
-    expect(castle).toContain('transform="translate(-64.60847880299252 -109.21945137157107)"');
+    const record = candidate01Asset('C01-STRUCT-LORNE-KEEP');
+    const scale = record.presentationScale!;
+    expect(scale).toBe(0.65);
+    expect(castle).toContain(`transform="translate(${16 - record.anchor![0] * scale} ${31 - record.anchor![1] * scale}) scale(${scale})"`);
+    expect(record.footprint).toEqual([2, 2]);
     expect(keep()).toContain('x="0" y="0" width="480" height="160"');
 
     /*
