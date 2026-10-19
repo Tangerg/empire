@@ -30,7 +30,7 @@ class FrameTests(unittest.TestCase):
         frames = {}
         for i, name in enumerate(ORDERS['combat-unit']):
             source = Image.new('RGBA', (30, 46))
-            source.paste((50 + i * 20, 80, 100, 253), (4, 4, 26, 44))
+            source.paste((50 + i * 20, 80, 100, 253), (4, 4, 26, 40))
             source.putpixel((3, 4), (60, 80, 100, 100))
             path = self.pack / 'masters/pilot' / f'{name}.png'
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -115,6 +115,28 @@ class FrameTests(unittest.TestCase):
             self.assertEqual(report[0]['size'], [side * len(order), height])
             self.assertEqual([r['pose'] for r in report[0]['frames']], order)
             export(self.root, self.catalog, True)
+
+    def test_explicit_registration_preserves_pixels_order_anchor(self):
+        before = export(self.root, self.catalog)
+        with Image.open(self.root / before[0]['output']) as im:
+            original = im.crop((32, 0, 64, 48))
+        self.entry['frames']['walk-a']['registrationOffset'] = [0, 1]
+        self.write()
+        after = export(self.root, self.catalog)
+        self.assertEqual(after[0]['logicalAnchor'], [16, 47])
+        self.assertEqual([f['pose'] for f in after[0]['frames']], ORDERS['combat-unit'])
+        self.assertEqual(after[0]['frames'][1]['registrationOffset'], [0, 1])
+        with Image.open(self.root / after[0]['output']) as im:
+            shifted = im.crop((32, 0, 64, 48))
+            self.assertEqual(original.crop((1, 1, 31, 47)).tobytes(),
+                             shifted.crop((1, 2, 31, 48)).tobytes())
+        export(self.root, self.catalog, True)
+
+    def test_registration_clipping_and_invalid_offsets_rejected(self):
+        for offset in ([0, 2], [2, 0], [0, 3], [0, 0.5], [0, True]):
+            self.entry['frames']['walk-a']['registrationOffset'] = offset;self.write()
+            with self.assertRaises(ValueError):
+                export(self.root, self.catalog)
 
     def test_stale_frame_export_rejected(self):
         result = export(self.root, self.catalog)

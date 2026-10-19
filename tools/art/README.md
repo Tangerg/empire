@@ -122,3 +122,13 @@ foot contact, structure state consistency and native-resolution motion preview
 must be reviewed separately. The JSON report explicitly leaves semantic review
 required. The current renderer has two walk frames at6.25fps and a single attack
 pose, not a fluid attack sequence. Baked-in structure characters remain static.
+
+A frame source entry may additionally specify `registrationOffset:[dx,dy]`,
+reviewed integer translation in logical pixels, each component between-2 and2.
+Default[0,0]. This is distinct from source identity and shared scale; the common
+rendered canvas size never changes. Full translated canvas must remain inside
+its frame, and the existing per-frame alpha gate still applies. Offsets are
+reported per source and export. Use only measured contact/registration fixes,
+not automatic pose fitting. Archer walk-a's reviewed[0,1] correction with common
+renderWidth30/origin[1,2] preserves its entire30×45 canvas and aligns contact with
+idle; it does not change the declared anchor or semantic frame order.

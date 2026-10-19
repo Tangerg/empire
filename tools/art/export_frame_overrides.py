@@ -46,12 +46,16 @@ def plan(root, catalog):
         width, origin = placement['renderWidth'], placement['origin']
         if type(width) is not int or width < 1 or not isinstance(origin, list) or len(origin) != 2 or any(type(n) is not int or n < 0 for n in origin):
             raise ValueError('placement must use positive width and nonnegative integer origin')
-        sources, provenance, hashes = [], [], set()
+        sources, provenance, hashes, offsets = [], [], set(), []
         source_size = None
         for name in order:
             entry = override['frames'][name]
-            if not isinstance(entry, dict) or set(entry) != {'source', 'sha256'}:
-                raise ValueError('frame expects source and sha256')
+            if not isinstance(entry, dict) or set(entry) not in ({'source', 'sha256'}, {'source', 'sha256', 'registrationOffset'}):
+                raise ValueError('frame expects source, sha256 and optional registrationOffset')
+            offset = entry.get('registrationOffset', [0, 0])
+            if not isinstance(offset, list) or len(offset) != 2 or any(type(n) is not int or abs(n) > 2 for n in offset):
+                raise ValueError('registrationOffset must contain two integers between -2 and 2')
+            offsets.append(offset)
             path = within(root, entry['source'])
             if not path.is_relative_to((pack / 'masters').resolve()):
                 raise ValueError('source must be in own pack masters')
@@ -72,10 +76,13 @@ def plan(root, catalog):
                 raise ValueError('duplicate decoded source poses; meaningful distinct poses required')
             hashes.add(pixel_digest)
             sources.append(source)
-            provenance.append({'pose': name, 'source': entry['source'], 'sourceSha256': entry['sha256'], 'sourceAlpha': alpha})
+            provenance.append({'pose': name, 'source': entry['source'], 'sourceSha256': entry['sha256'], 'sourceAlpha': alpha, 'registrationOffset': offset})
         height = round(source_size[1] * width / source_size[0])
         if height < 1 or origin[0] + width > fw or origin[1] + height > fh:
             raise ValueError('shared transform would clip authored canvas')
+        for dx, dy in offsets:
+            if origin[0] + dx < 0 or origin[1] + dy < 0 or origin[0] + dx + width > fw or origin[1] + dy + height > fh:
+                raise ValueError('registration offset would clip authored canvas')
         exports = [(asset, 1)]
         if hd:
             if (hd['width'], hd['height'], hd['pixelDensity']) != (asset['width'] * 2, fh * 2, 2):
@@ -91,14 +98,15 @@ def plan(root, catalog):
             for i, (name, source) in enumerate(zip(order, sources)):
                 resized = source.resize((width * density, height * density), Image.Resampling.LANCZOS)
                 cell = Image.new('RGBA', (fw * density, fh * density))
-                cell.paste(resized, (origin[0] * density, origin[1] * density))
+                dx, dy = offsets[i]
+                cell.paste(resized, ((origin[0] + dx) * density, (origin[1] + dy) * density))
                 alpha = validate_alpha(cell, name)
                 digest = hashlib.sha256(cell.tobytes()).hexdigest()
                 if digest in rendered_hashes:
                     raise ValueError('duplicate rendered poses at target resolution')
                 rendered_hashes.add(digest)
                 sheet.paste(cell, (i * fw * density, 0))
-                frame_reports.append({'pose': name, 'pixelSha256': digest, 'alpha': alpha})
+                frame_reports.append({'pose': name, 'pixelSha256': digest, 'alpha': alpha, 'registrationOffset': offsets[i]})
             report = {'topicId': topic, 'density': density, 'output': str(target.relative_to(root)),
                       'size': list(sheet.size), 'logicalAnchor': asset['anchor'], 'placement': placement,
                       'renderedCanvasSize': [width * density, height * density], 'sources': provenance,
