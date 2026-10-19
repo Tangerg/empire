@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-rain-tower-engineer",
+  "assetId": "C02-SFV1-equipment-rain-tower-engineer",
+  "label": "雨塔工程员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 3
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    935
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rain-tower-engineer.png",
+  "runtimeReferenceSha256": "0ec659986f0b32627d0771d2ef15ef35f5c49438ffcf9ba9686356ee903e4801",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

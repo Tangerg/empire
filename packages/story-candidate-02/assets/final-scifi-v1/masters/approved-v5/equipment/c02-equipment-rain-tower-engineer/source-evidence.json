@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-rain-tower-engineer",
+  "assetId": "C02-SFV1-equipment-rain-tower-engineer",
+  "label": "雨塔工程员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 3
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    935
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rain-tower-engineer.png",
+  "runtimeReferenceSha256": "0ec659986f0b32627d0771d2ef15ef35f5c49438ffcf9ba9686356ee903e4801",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-05af51e3-0634-406e-bd05-7a2b8b173c0d.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-rain-tower-engineer/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board02 R3C1 confirmed against full board and runtime, not inferred from rain-tower name. One open-ended wrench retains two fork jaws, a toothed circular center with inset orange valve wheel, cyan handle side panel and open tail hole. Wheel simplified into broad spokes; functional wheel, fork, grip and hanging-hole identity retained at actual48. Matte contour style and no energy aura; actual48 black/white backgrounds remain clear.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
