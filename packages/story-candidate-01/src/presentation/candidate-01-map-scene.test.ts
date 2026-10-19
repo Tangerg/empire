@@ -10,7 +10,7 @@ import {
   candidate01PaintsCells,
   candidate01SceneProfile,
 } from './candidate-01-map-scene';
-import { candidate01EnvironmentScene } from './candidate-01-environment';
+import { CANDIDATE_01_ENVIRONMENT, candidate01EnvironmentScene } from './candidate-01-environment';
 import { boardPiecesMarkup, createSceneViewport, type BoardPiece } from '@empire/game-ui';
 
 import { createTestCatalog } from '@empire/test-content';
@@ -24,6 +24,36 @@ const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => 
 };
 
 describe('candidate-01 authored map scenery', () => {
+  it('applies each registered forest scale once while keeping its contact at the placement origin', () => {
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
+    map.tiles.fill('forest');
+    const context = sceneContext('c01-02', map);
+    const field = boardPiecesMarkup(candidate01MapSceneryLayers(context).underUnits);
+    const frame = candidate01SceneFrameMarkup(context).foreground;
+    const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
+    for (const [id, minPlacement, maxPlacement] of [
+      ['oak-ancient', 0.74, 0.86], ['mixed-forest-dense', 0.74, 0.86],
+      ['fern-bed', 0.58, 0.7], ['boulder-large', 1.05, 1.05],
+    ] as const) {
+      const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
+      const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
+      const matches = props(id === 'boulder-large' ? frame : field)
+        .filter((markup) => markup.includes('forest-temperate@2x.png') && markup.includes(crop));
+      expect(matches.length, id).toBeGreaterThan(0);
+      for (const markup of matches) {
+        const transform = /transform="translate\(([-\d.]+) ([-\d.]+)\) scale\(([-\d.]+)/.exec(markup);
+        if (!transform || !cell.anchor || !cell.presentationScale) throw new Error(`incomplete forest presentation: ${id}`);
+        const scale = Number(transform[3]);
+        expect(Math.abs(scale)).toBeGreaterThanOrEqual(minPlacement * cell.presentationScale - 0.0005);
+        expect(Math.abs(scale)).toBeLessThanOrEqual(maxPlacement * cell.presentationScale + 0.0005);
+        // Translation and scale are rounded independently to 0.001 by the SVG adapter.
+        const x = scale < 0 ? (atlas.cellWidth - cell.anchor[0]) * -scale : -cell.anchor[0] * scale;
+        expect(Number(transform[1])).toBeCloseTo(x, 1);
+        expect(Number(transform[2])).toBeCloseTo(-cell.anchor[1] * Math.abs(scale), 1);
+      }
+    }
+  });
+
   it('composes high-resolution surfaces, connected roads and authored regions for Twin Hills', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     expect(candidate01EnvironmentScene('c01-01')?.mapSize).toEqual([map.width, map.height]);

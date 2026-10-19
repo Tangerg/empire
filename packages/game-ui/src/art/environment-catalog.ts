@@ -15,6 +15,8 @@ export interface EnvironmentCellRecord {
   readonly index?: number;
   readonly footprint?: readonly number[];
   readonly anchor?: readonly number[];
+  /** Authored visual size, multiplied once by a scene placement's scale. */
+  readonly presentationScale?: number;
   readonly tags?: readonly string[];
   readonly passable?: boolean;
   readonly heightDelta?: number;
@@ -118,6 +120,10 @@ export class EnvironmentCatalog {
         const cell = Object.freeze({ ...source, index: source.index ?? declaredIndex });
         checkPair(cell.anchor, 'anchor', cell.id);
         checkPair(cell.footprint, 'footprint', cell.id);
+        if (cell.presentationScale !== undefined
+          && (!Number.isFinite(cell.presentationScale) || cell.presentationScale <= 0)) {
+          throw new Error(`Environment presentationScale of ${cell.id} must be finite and positive`);
+        }
         if (this.cellsById.has(cell.id)) {
           throw new Error(`Duplicate environment cell id: ${cell.id}`);
         }

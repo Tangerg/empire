@@ -8,6 +8,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 from PIL import Image
 from calibration_ground import append_ground
+from svg_viewports import flatten_viewports
 
 NS = 'http://www.w3.org/2000/svg'
 XLINK = 'http://www.w3.org/1999/xlink'
@@ -49,10 +50,9 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         native_size = (448,280) if stage else (640,512)
         svg = element('svg', {'viewBox': ' '.join(map(str,camera)), 'width': str(native_size[0]*2), 'height': str(native_size[1]*2)})
         defs = element('defs'); svg.append(defs)
-        hashes = {}; substitutions = []; clip_index = 0
+        hashes = {}; substitutions = []
 
         def add_piece(piece, layer):
-            nonlocal clip_index
             group = element('g', {'transform': f"translate({piece['x']:.2f},{piece['y']:.2f})"})
             parsed = ET.fromstring(f'<svg xmlns="{NS}">{piece["markup"]}</svg>')
             if keep_width and layer == 'ground' and 'surface-meadow@2x.png' in piece['markup']:
@@ -142,20 +142,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         if not selected:
             for piece in data['layers']['overUnits']: add_piece(piece, 'foreground')
 
-        # Inkscape does not reliably apply nested SVG overflow clipping. Spell
-        # the identical viewport clipping and viewBox transform explicitly.
-        for parent in list(svg.iter()):
-            for child in list(parent):
-                if child.tag != f'{{{NS}}}svg': continue
-                clip_index += 1
-                vx, vy, vw, vh = map(float, child.get('viewBox').split())
-                x, y = float(child.get('x', '0')), float(child.get('y', '0'))
-                w, h = float(child.get('width', str(vw))), float(child.get('height', str(vh)))
-                clip = ET.SubElement(defs, f'{{{NS}}}clipPath', {'id': f'viewport-{clip_index}', 'clipPathUnits': 'userSpaceOnUse'})
-                clip.append(element('rect', dict(zip(('x', 'y', 'width', 'height'), map(str, (vx, vy, vw, vh))))))
-                group = element('g', {'transform': f'translate({x} {y}) scale({w/vw} {h/vh}) translate({-vx} {-vy})'})
-                inside = ET.SubElement(group, f'{{{NS}}}g', {'clip-path': f'url(#viewport-{clip_index})'})
-                inside.extend(list(child)); parent.insert(list(parent).index(child), group); parent.remove(child)
+        flatten_viewports(svg, defs)
         for image in svg.iter(f'{{{NS}}}image'):
             href = image.get('href')
             path = root / href.lstrip('/') if href.startswith('/packages/') else Path(href.removeprefix('file://'))

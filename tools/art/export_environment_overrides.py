@@ -4,8 +4,9 @@ import argparse
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
-from PIL import Image, ImageOps
+from PIL import Image
 from export_overrides import ROOT, read_json, within, validate_alpha
 
 PACK = Path('packages/story-candidate-01/assets/final-fantasy-v1')
@@ -27,18 +28,40 @@ def load_source(root, pack, entry):
         return im.copy()
 
 
-def render_cell(source, offset_y_2x=0):
-    # Preserve complete authored canvas including alpha1 residue. No inferred crop.
-    if type(offset_y_2x) is not int or not -10 <= offset_y_2x <= 10:
-        raise ValueError('offsetY2x must be integer between -10 and 10')
+def finite_number(value):
+    return type(value) in (int, float) and math.isfinite(value)
+
+
+def point(value):
+    return isinstance(value, list) and len(value) == 2 and all(finite_number(n) for n in value)
+
+
+def render_cell(source, registration):
+    # One explicit full-canvas transform, including alpha1 residue. No inferred crop.
+    if not isinstance(registration, dict) or set(registration) != {'scale', 'origin', 'sourceFoot'}:
+        raise ValueError('registration requires scale, origin and sourceFoot')
+    scale, origin, foot = (registration[key] for key in ('scale', 'origin', 'sourceFoot'))
+    if not finite_number(scale) or scale <= 0 or not point(origin) or not point(foot):
+        raise ValueError('registration must contain a positive scale and finite coordinate pairs')
+    if any(n < 0 or not (n * 2).is_integer() for n in map(float, origin)):
+        raise ValueError('registration origin must use nonnegative half-logical-pixel steps')
+    if any(foot[i] < 0 or foot[i] > source.size[i] for i in (0, 1)):
+        raise ValueError('sourceFoot must lie on the authored canvas')
+    size = tuple(round(n * scale * 2) for n in source.size)
+    origin_hd = tuple(round(n * 2) for n in origin)
+    if any(size[i] < 1 or origin_hd[i] + size[i] > 192 for i in (0, 1)):
+        raise ValueError('registration would clip the full authored canvas')
     validate_alpha(source, 'environment master')
-    fitted = ImageOps.contain(source, (172, 172), Image.Resampling.LANCZOS)
+    fitted = source.resize(size, Image.Resampling.LANCZOS)
     hd = Image.new('RGBA', (192, 192))
-    hd.paste(fitted, ((192 - fitted.width) // 2, 182 - fitted.height + offset_y_2x))
+    hd.paste(fitted, origin_hd)
     logical = hd.resize((96, 96), Image.Resampling.LANCZOS)
     validate_alpha(hd, 'HD cell')
     validate_alpha(logical, 'logical cell')
-    return logical, hd
+    # Raster dimensions are rounded once at HD density; the pivot follows that
+    # actual transform, including on nonsquare authored canvases.
+    anchor = [origin[i] + foot[i] * size[i] / (2 * source.size[i]) for i in (0, 1)]
+    return logical, hd, anchor
 
 
 def cell_box(index, size):
@@ -52,11 +75,12 @@ def pixel_hash(image):
 
 def plan(root, catalog):
     data = read_json(catalog)
-    if set(data) != {'schemaVersion', 'atlases'} or data['schemaVersion'] != 1 or not isinstance(data['atlases'], dict):
-        raise ValueError('expected schemaVersion1 and atlases object')
+    if set(data) != {'schemaVersion', 'atlases'} or data['schemaVersion'] != 2 or not isinstance(data['atlases'], dict):
+        raise ValueError('expected schemaVersion2 and atlases object')
     pack = root / PACK
     env = pack / 'environment-builder-v1'
-    manifest = read_json(env / 'manifest-environment-builder-v1.json')
+    manifest_path = env / 'manifest-environment-builder-v1.json'
+    manifest = read_json(manifest_path)
     planned = []
     for atlas_id, override in data['atlases'].items():
         if atlas_id not in ('forest-temperate', 'forest-existing', 'scenery-regional'):
@@ -69,8 +93,14 @@ def plan(root, catalog):
             atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['anchor'], atlas['tileMode']) != (4, 4, 96, 96, 192, 192, [48, 91], 'modules'):
             raise ValueError('unsupported scenery contract')
         order = atlas['cellOrder']
-        if len(order) != 16 or len(set(order)) != 16 or [c['id'] for c in atlas['cells']] != order or any(c['anchor'] != [48, 91] for c in atlas['cells']):
-            raise ValueError('inconsistent cell order/anchors')
+        if len(order) != 16 or len(set(order)) != 16 or [c['id'] for c in atlas['cells']] != order:
+            raise ValueError('inconsistent cell order')
+        for cell in atlas['cells']:
+            if not point(cell['anchor']):
+                raise ValueError('cell anchor must be a finite coordinate pair')
+            presentation_scale = cell.get('presentationScale', 1)
+            if not finite_number(presentation_scale) or presentation_scale <= 0:
+                raise ValueError('cell presentationScale must be finite and positive')
         if not isinstance(override, dict) or set(override) != {'baselines', 'cells'} or set(override['baselines']) != {'1x', '2x'} or not isinstance(override['cells'], dict):
             raise ValueError('expected baselines 1x/2x and cells')
         baselines = [load_source(root, pack, override['baselines'][k]) for k in ('1x', '2x')]
@@ -83,13 +113,19 @@ def plan(root, catalog):
             if cell_id not in order:
                 raise ValueError('unknown environment cell')
             index = order.index(cell_id)
-            if not isinstance(entry, dict) or set(entry) not in ({'source', 'sha256'}, {'source', 'sha256', 'offsetY2x'}):
-                raise ValueError('cell expects source, sha256 and optional offsetY2x')
+            if not isinstance(entry, dict) or set(entry) != {'source', 'sha256', 'registration'}:
+                raise ValueError('cell expects source, sha256 and registration')
             source = load_source(root, pack, {k: entry[k] for k in ('source', 'sha256')})
-            offset = entry.get('offsetY2x', 0)
-            cells = render_cell(source, offset)
-            sources[cell_id] = {'sourceSha256': entry['sha256'], 'sourceAlpha': validate_alpha(source, cell_id), 'offsetY2x': offset}
-            for output, cell, size in zip(outputs, cells, (96, 192)):
+            logical, hd, anchor = render_cell(source, entry['registration'])
+            metadata = atlas['cells'][index]
+            if any(not math.isclose(metadata['anchor'][i], anchor[i], abs_tol=1e-10) for i in (0, 1)):
+                metadata['anchor'] = anchor
+            sources[cell_id] = {
+                'sourceSha256': entry['sha256'], 'sourceAlpha': validate_alpha(source, cell_id),
+                'registration': entry['registration'], 'logicalAnchor': metadata['anchor'],
+                'presentationScale': metadata.get('presentationScale', 1),
+            }
+            for output, cell, size in zip(outputs, (logical, hd), (96, 192)):
                 output.paste(cell, cell_box(index, size)[:2])
             changed.add(index)
         for density, base, output, size, key in zip((1, 2), baselines, outputs, (96, 192), ('png', 'png2x')):
@@ -108,11 +144,14 @@ def plan(root, catalog):
                       'baseline': override['baselines'][f'{density}x'], 'sources': sources,
                       'pixelSha256': pixel_hash(output), 'cells': cells}
             planned.append((target, output, report))
-    return planned
+    return planned, manifest_path, manifest
 
 
 def export(root, catalog, check=False):
-    planned = plan(root, catalog)
+    planned, manifest_path, manifest = plan(root, catalog)
+    metadata_changed = read_json(manifest_path) != manifest
+    if check and metadata_changed:
+        raise ValueError('stale environment registration anchors')
     for target, output, _ in planned:
         if check:
             with Image.open(target) as current:
@@ -121,6 +160,8 @@ def export(root, catalog, check=False):
         else:
             target.parent.mkdir(parents=True, exist_ok=True)
             output.save(target, format='PNG', optimize=True)
+    if not check and metadata_changed:
+        manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return [report for _, _, report in planned]
 
 

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "atlases": {
     "forest-temperate": {
       "baselines": {
@@ -14,84 +14,244 @@
       },
       "cells": {
         "oak-ancient": {
-          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-ancient/master.png",
-          "sha256": "ea0407864f18b8fbfd0f838ced7898683bc0e76b8a7c36a2365e5378303cb962",
-          "offsetY2x": 8
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/oak-ancient/oak-ancient-master.png",
+          "sha256": "b92e846d095310a2d53b853b6c7e07fb3a9924683b01c088ff2099ca56becac9",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              640,
+              1150
+            ]
+          }
         },
         "mixed-forest-dense": {
-          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-dense/master.png",
-          "sha256": "402a7621fda7789174fd405c97a24e0651121f2efcd156d07f195b9e0d85af2f",
-          "offsetY2x": 10
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/mixed-forest-dense/mixed-forest-dense-master.png",
+          "sha256": "f5f9beb40e3ce134e5cfffba2acf20b159f75548f793eb03b8506b9c481fceb1",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              640,
+              1145
+            ]
+          }
         },
         "mixed-forest-edge": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-edge/master.png",
           "sha256": "ca9263a00a20d1b5747b1f549584a619289ec533dfbe090c7a09c5e2e350a68c",
-          "offsetY2x": 6
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1210.2558139534883
+            ]
+          }
         },
         "fern-bed": {
-          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revision-5/master.png",
-          "sha256": "7fbfc6aec3e86215f3025eaf751587d62c375b33c4ac313bbe485bb30d9ec87d",
-          "offsetY2x": 0
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/fern-bed/fern-bed-master.png",
+          "sha256": "61ec76b048093b40fabcee72c28dab68103d28b9c83567b645340c3f5178c152",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              625,
+              955
+            ]
+          }
         },
         "oak-grove-dense": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-grove-dense/master.png",
           "sha256": "9a6c21e053118d5a3e2fab0f4ac60dbfa6cfd218ccd00397ddc4ccb90b5fcc36",
-          "offsetY2x": 4
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              7.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1224.8372093023256
+            ]
+          }
         },
         "sapling-rock-cluster": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/sapling-rock-cluster/master.png",
           "sha256": "5ccbd8df32c7d77e96724d96dca67f13d5186374c67bc95c8d85eb67a464d3f8",
-          "offsetY2x": 6
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1210.2558139534883
+            ]
+          }
         },
         "bramble-dark": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/bramble-dark/master.png",
           "sha256": "983679fed24377e505d5b52549a8b9580323fa01d9c0b8efaa9c2ffffb412380",
-          "offsetY2x": 3
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              6.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1232.1279069767443
+            ]
+          }
         },
         "mixed-forest-autumn": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-autumn/revision-2/master.png",
           "sha256": "94ff581f0413764278694e0e9b59d2948ab7f0cb387f45d68e4371fd9066fa93",
-          "offsetY2x": 9
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              9.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1188.3837209302326
+            ]
+          }
         },
         "bramble-berries": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/bramble-berries/master.png",
           "sha256": "7bff74b8e1097a708f4ac5ebc4a574749ceb7b9ddf6111c796fbd2cb7afccf37",
-          "offsetY2x": 7
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1202.9651162790697
+            ]
+          }
         },
         "stump-low": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/stump-low/master.png",
           "sha256": "e479117bc6092125e908156198d0d47bb1eba7029d0487af418e2a4c1f746f87",
-          "offsetY2x": 3
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              6.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1232.1279069767443
+            ]
+          }
         },
         "stump-hollow": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/stump-hollow/master.png",
           "sha256": "c8bed8cba184429ec62a2c2efbd4c826dc40e6531ef942a976fcd508b559bbf8",
-          "offsetY2x": 3
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              6.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1232.1279069767443
+            ]
+          }
         },
         "fallen-hollow-log": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fallen-hollow-log/master.png",
           "sha256": "1a87d8292e468accb4c69c09d609993e5e2314e0b2a777fc1a641a13e7ca8aac",
-          "offsetY2x": 3
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              6.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1232.1279069767443
+            ]
+          }
         },
         "leaf-pile": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/leaf-pile/master.png",
           "sha256": "d56a362a91e2a235993720bd2147baa3e2edac4fdcbfe15e1de0d68009d7bcce",
-          "offsetY2x": 6
+          "registration": {
+            "scale": 0.06195965417867435,
+            "origin": [
+              5.0,
+              24.0
+            ],
+            "sourceFoot": [
+              694.0,
+              1084.442857142857
+            ]
+          }
         },
         "boulder-ferns": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-ferns/master.png",
           "sha256": "ce0a6087d70042afe262f82717b8bc50622c8f1824b1883608da55dce8395ef2",
-          "offsetY2x": 7
+          "registration": {
+            "scale": 0.06060606060606061,
+            "origin": [
+              5.0,
+              27.5
+            ],
+            "sourceFoot": [
+              709.5,
+              1050.1194029850747
+            ]
+          }
         },
         "boulder-large": {
-          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-large/revisions/master-v3.png",
-          "sha256": "34a48295f49a1c1a078b69a1220e4f77468f4c5a27c36df5b4001d0ecc1124af",
-          "offsetY2x": 6
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+          "sha256": "1e370b81ccda303555b954ab6fced233b07d399d74ff02a0ca4274c8bda8bc2a",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              640,
+              1048
+            ]
+          }
         },
         "forest-floor-cluster": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/forest-floor-cluster/revisions/master-v2.png",
           "sha256": "eddca15fb12ab472d9c4d23779c327e43c06bf749ea48768afc15c9ddb33d9f8",
-          "offsetY2x": 4
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              7.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1224.8372093023256
+            ]
+          }
         }
       }
     },
@@ -110,82 +270,242 @@
         "pine-mature-a": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-a/master.png",
           "sha256": "8c118e7f1003c3c416c761e2b954469bb4aa189fc58be33247f5234bdf2bb4bc",
-          "offsetY2x": 5
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              7.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1217.546511627907
+            ]
+          }
         },
         "pine-mature-b": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-b/master.png",
           "sha256": "a79459d1ebc98c80b21dd731c4f051586870fdfe69dc2be37c4658ea0ec8a55f",
-          "offsetY2x": 10
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              10.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1181.093023255814
+            ]
+          }
         },
         "pine-tall": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-tall/master.png",
           "sha256": "023f0a00283611b95894ceb1cf3f213cfd2fa39d3cefb3b6a11f0e25ff664196",
-          "offsetY2x": 4
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              7.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1224.8372093023256
+            ]
+          }
         },
         "pine-pair": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-pair/master.png",
           "sha256": "a5cffbdab9cfc3378fb6325191accaa7c89748358bae435edf39635bb44073be",
-          "offsetY2x": 7
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1202.9651162790697
+            ]
+          }
         },
         "pine-cluster": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-cluster/master.png",
           "sha256": "e10c07280c14f9c763b8c71a86f345f0c82fdf5d24cb9845f6f5e0335d1a27bd",
-          "offsetY2x": 10
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              10.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1181.093023255814
+            ]
+          }
         },
         "pine-sapling": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-sapling/revision-2/master.png",
           "sha256": "7ce904f2d16c7420f803fc011db077432ef0085e615a9d0ab4112adfef4d507a",
-          "offsetY2x": 10
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              10.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1181.093023255814
+            ]
+          }
         },
         "pine-underbrush-a": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-a/master.png",
           "sha256": "aaf31685fe2f41dc563afb5d008059c0a8d3429f3f9e3dac5f3b423ebce0608b",
-          "offsetY2x": 7
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1202.9651162790697
+            ]
+          }
         },
         "pine-underbrush-b": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-b/master.png",
           "sha256": "0615a2563992f6badf14de21bd2570f02960ab913fa1bd95411d6ce45208007d",
-          "offsetY2x": 10
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              10.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1181.093023255814
+            ]
+          }
         },
         "pine-underbrush-c": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-c/master.png",
           "sha256": "3ad4f3cf60d7e29672f0f1b1c32dbc834f4d91cbb5af9871b3fa23e1aaccdcc1",
-          "offsetY2x": 5
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              7.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1217.546511627907
+            ]
+          }
         },
         "pine-underbrush-d": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-d/revision-2/master.png",
           "sha256": "8ff7be11328b1609992ddc8a91789f91f5642e68efc5875808afdc7b08df89f5",
-          "offsetY2x": 8
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              9.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1195.6744186046512
+            ]
+          }
         },
         "pine-dead": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-dead/master.png",
           "sha256": "669b96a1aff1cc36a8d6cdfb3e8a78cc1cdf452f86464be08ce12107af728b4a",
-          "offsetY2x": 7
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1202.9651162790697
+            ]
+          }
         },
         "pine-mature-c": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-c/master.png",
           "sha256": "bde824d130b6874897a804c1e3b2cbb8f9247218f7a45dd1c43345f28a1bc7db",
-          "offsetY2x": 7
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              8.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1202.9651162790697
+            ]
+          }
         },
         "pine-low-shrub": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-low-shrub/master.png",
           "sha256": "cbed8d148737b24575f54966c932c76fada1e5a683eca9dfe00bf27329fb5107",
-          "offsetY2x": 10
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              10.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1181.093023255814
+            ]
+          }
         },
         "pine-fallen-log": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-fallen-log/master.png",
           "sha256": "ac87db8fc70d1f77d7206d56e6144424eac39ca4160ed3526cadb632289bd67d",
-          "offsetY2x": 5
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              7.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1217.546511627907
+            ]
+          }
         },
         "pine-stump": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-stump/master.png",
           "sha256": "7d20008f11ec06dbbca3734802942813b4485cbdd1345811ba7903be2dfa7253",
-          "offsetY2x": 9
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              9.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1188.3837209302326
+            ]
+          }
         },
         "pine-mossy-rock": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mossy-rock/master.png",
           "sha256": "44d1d325b6277a297b883d9001a90cca867341b3bc3e88a1abb2524b4bebdaf2",
-          "offsetY2x": 3
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              6.5
+            ],
+            "sourceFoot": [
+              627.0,
+              1232.1279069767443
+            ]
+          }
         }
       }
     },
@@ -204,7 +524,17 @@
         "grave-cross-cluster": {
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/scenery-regional/grave-cross-cluster/master.png",
           "sha256": "5c79115e5a1acd82b2f29f8bf38911fcb1993133b8c7cae7009615cf3d7d36e8",
-          "offsetY2x": 10
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5.0,
+              10.0
+            ],
+            "sourceFoot": [
+              627.0,
+              1181.093023255814
+            ]
+          }
         }
       }
     }

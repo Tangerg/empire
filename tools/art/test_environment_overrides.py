@@ -33,8 +33,9 @@ class EnvironmentTests(unittest.TestCase):
         source.paste((45, 100, 60, 253), (10, 10, 162, 162))
         source.putpixel((0, 20), (30, 50, 70, 1))
         entry = self.save(source, 'tree.png')
-        self.data = {'schemaVersion': 1, 'atlases': {'forest-temperate': {
-            'baselines': baselines, 'cells': {'cell-0': entry, 'cell-2': entry}}}}
+        entry['registration'] = {'scale': 0.5, 'origin': [5, 5], 'sourceFoot': [86, 172]}
+        self.data = {'schemaVersion': 2, 'atlases': {'forest-temperate': {
+            'baselines': baselines, 'cells': {'cell-0': entry, 'cell-2': dict(entry)}}}}
         self.catalog = self.root / 'catalog.json'
         self.write_catalog()
 
@@ -87,7 +88,8 @@ class EnvironmentTests(unittest.TestCase):
         source.paste((20, 30, 40, 253), (10, 10, 160, 160))
         source.putpixel((0, 20), (30, 50, 70, 1))
         original = source.tobytes()
-        small, hd = render_cell(source)
+        small, hd, anchor = render_cell(source, {'scale': 0.5, 'origin': [5, 5], 'sourceFoot': [86, 172]})
+        self.assertEqual(anchor, [48, 91])
         self.assertEqual(hd.getpixel((10, 30)), (30, 50, 70, 1))
         self.assertEqual(hd.getpixel((20, 20)), (20, 30, 40, 253))
         self.assertEqual(source.tobytes(), original)
@@ -95,18 +97,38 @@ class EnvironmentTests(unittest.TestCase):
 
     def test_explicit_source_placement_preserves_alpha(self):
         entry = self.data['atlases']['forest-temperate']['cells']['cell-0']
-        entry['offsetY2x'] = 8
+        entry['registration'] = {'scale': 0.5, 'origin': [5, 9], 'sourceFoot': [86, 164]}
         self.write_catalog()
         reports = export(self.root, self.catalog)
-        self.assertEqual(reports[0]['sources']['cell-0']['offsetY2x'], 8)
+        self.assertEqual(reports[0]['sources']['cell-0']['logicalAnchor'], [48, 91])
         with Image.open(self.root / entry['source']) as source:
-            _, normal = render_cell(source)
-            _, moved = render_cell(source, 8)
+            _, normal, _ = render_cell(source, {'scale': 0.5, 'origin': [5, 5], 'sourceFoot': [86, 172]})
+            _, moved, _ = render_cell(source, entry['registration'])
             self.assertEqual(normal.crop((10, 10, 182, 182)).tobytes(),
                              moved.crop((10, 18, 182, 190)).tobytes())
-            for invalid in (-11, 11, 1.5, True):
-                with self.assertRaisesRegex(ValueError, 'offsetY2x'):
-                    render_cell(source, invalid)
+
+    def test_stem_anchor_preserves_visible_overhang(self):
+        entry = self.data['atlases']['forest-temperate']['cells']['cell-0']
+        entry['registration'] = {'scale': 0.5, 'origin': [5, 5], 'sourceFoot': [86, 140]}
+        self.write_catalog()
+        original = json.loads(self.manifest.read_text())['atlases'][0]['cells'][0]
+        export(self.root, self.catalog)
+        cell = json.loads(self.manifest.read_text())['atlases'][0]['cells'][0]
+        self.assertEqual(cell, {**original, 'anchor': [48, 75]})
+        with Image.open(self.root / entry['source']) as source:
+            logical, hd, anchor = render_cell(source, entry['registration'])
+            self.assertGreater(hd.getchannel('A').getbbox()[3], anchor[1] * 2)
+            self.assertGreater(logical.getchannel('A').getbbox()[3], anchor[1])
+            self.assertEqual(hd.getpixel((10, 30)), (30, 50, 70, 1))
+
+    def test_registration_rejects_clipping_and_invalid_coordinates(self):
+        entry = self.data['atlases']['forest-temperate']['cells']['cell-0']
+        with Image.open(self.root / entry['source']) as source:
+            for change in [{'scale': 2}, {'scale': float('nan')}, {'scale': True},
+                           {'origin': [-1, 5]}, {'origin': [5, 11]}, {'origin': [5, 5.25]},
+                           {'sourceFoot': [86, 200]}, {'sourceFoot': [86, float('inf')]}]:
+                with self.assertRaises(ValueError):
+                    render_cell(source, {**entry['registration'], **change})
 
     def test_bad_later_source_prevents_writes(self):
         self.data['atlases']['forest-temperate']['cells']['cell-2'] = {'source': 'bad', 'sha256': 'bad'}
@@ -133,11 +155,26 @@ class EnvironmentTests(unittest.TestCase):
             export(self.root, self.catalog)
 
     def test_changed_anchor_rejected(self):
+        export(self.root, self.catalog)
         data = json.loads(self.manifest.read_text())
         data['atlases'][0]['cells'][0]['anchor'] = [48, 90]
         self.manifest.write_text(json.dumps(data))
-        with self.assertRaisesRegex(ValueError, 'anchors'):
-            export(self.root, self.catalog)
+        with self.assertRaisesRegex(ValueError, 'stale environment registration anchors'):
+            export(self.root, self.catalog, True)
+
+    def test_presentation_scale_has_one_manifest_owner(self):
+        data = json.loads(self.manifest.read_text())
+        data['atlases'][0]['cells'][0]['presentationScale'] = 0.65
+        self.manifest.write_text(json.dumps(data))
+        before = self.manifest.read_bytes()
+        report = export(self.root, self.catalog)
+        self.assertEqual(report[0]['sources']['cell-0']['presentationScale'], 0.65)
+        self.assertEqual(self.manifest.read_bytes(), before)
+        for value in [0, -1, float('nan'), float('inf'), True]:
+            data['atlases'][0]['cells'][0]['presentationScale'] = value
+            self.manifest.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError, 'presentationScale'):
+                export(self.root, self.catalog)
 
     def test_stale_output_rejected(self):
         result = export(self.root, self.catalog)

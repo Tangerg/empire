@@ -45,45 +45,68 @@ must satisfy the same genuine-alpha contract. Whole authored canvas fitting and
 ## Environment forest cell overrides (separate from canonical topics)
 
 Run `python3 tools/art/export_environment_overrides.py` then the same command with
-`--check`. Only forest-temperate and forest-existing module atlases are supported.
-Keep immutable copies of the original 384² and768² runtime atlases under the pack
-masters directory before first export. Register their byte SHA256 as baselines;
-do not replace those baseline files with already-overridden outputs.
+`--check`. The supported module atlases are forest-temperate, forest-existing,
+and scenery-regional. Keep immutable copies of the original 384² and 768²
+runtime atlases under the pack masters directory before first export. Register
+their byte SHA256 as baselines; never replace them with overridden outputs.
 
-`tools/art/environment-overrides.json` uses this structure:
+`tools/art/environment-overrides.json` uses schemaVersion 2. Each registered cell
+contains its source path/hash and one explicit full-canvas registration:
 
 ```json
-{"schemaVersion":1,"atlases":{"forest-temperate":{
+{"schemaVersion":2,"atlases":{"forest-temperate":{
   "baselines":{
-    "1x":{"source":"packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate.png","sha256":"SHA256"},
-    "2x":{"source":"packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate@2x.png","sha256":"SHA256"}
+    "1x":{"source":"PACK/masters/environment/baseline.png","sha256":"SHA256"},
+    "2x":{"source":"PACK/masters/environment/baseline@2x.png","sha256":"SHA256"}
   },
-  "cells":{"oak-ancient":{"source":"packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-ancient/master.png","sha256":"SHA256"}}
+  "cells":{"oak-ancient":{
+    "source":"PACK/masters/approved-v5/environment/forest-temperate/oak-ancient/oak-ancient-master.png",
+    "sha256":"SHA256",
+    "registration":{"scale":0.0685805422647528,"origin":[5,5],"sourceFoot":[640,1150]}
+  }}
 }}}
 ```
 
-Each raw master is fitted as its **complete authored canvas** inside172²,
-bottom-centered on192² with bottom at182, then downsampled to96². Unlike the
-legacy builder's nonzero-alpha-bbox crop, this deliberately preserves authored
-framing and cannot magnify stray alpha1 residue into a crop decision. It does
-not clean, threshold, recolor, or repaint source pixels. Generation should use
-roughly5–10% margins; inspect apparent root/contact placement and canopy scale
-before accepting. Declared anchor remains[48,91] /[96,182].
+Replace PACK with the repository-relative campaign pack directory. `scale` is
+logical pixels per source pixel; `origin` is the canvas top-left in logical
+pixels, using half-pixel increments; `sourceFoot` is the reviewed ground contact
+in source pixels. The complete source is resized once at density 2, placed on a
+192² transparent cell, and downsampled to 96². The exporter projects sourceFoot
+through that same rounded raster transform into the manifest cell anchor. It
+rejects a transform that would clip the full canvas. No alpha-bounds fitting,
+source crop, thresholding, recoloring, or repainting is performed.
 
-The adapter overlays only registered cells onto checksummed baselines, preserving
-all other atlas slices exactly. Output report contains per-cell before/after
-pixel hashes and source hashes/alpha measurements. Manifest IDs, order, anchors,
-footprints and gameplay metadata stay unchanged. All inputs validate before any
-writes. Ground, route connectivity and masks are outside this adapter's scope.
-Run this overlay after legacy builds. `--check` proves reproducibility, not visual
-acceptance: actual game screenshots and occlusion review remain separate gates.
+The four approved-v5 forest masters use the complete 1254² canvas at 86 logical
+pixels, starting at [5,5]. Roots and fronds may extend below their reviewed
+contact. Other registered cells retain their previous pixels and [48,91] pivots
+through equivalent explicit registrations; `offsetY2x` is no longer supported.
 
-Cell entries may explicitly declare `offsetY2x` (integer -10 through10, default0)
-for reviewed root/contact placement. This translates the entire fitted canvas
-vertically without cropping it, changing scale, or altering alpha. The declared
-anchor stays fixed; placement is reported in provenance. It is never inferred
-from alpha bounds. Initial reviewed masters need +8 for oak-ancient and +10 for
-mixed-forest-dense to bring their visible root bases back near logical y91.
+The manifest owns each cell's runtime anchor and optional positive
+`presentationScale`. The scene renderer multiplies presentationScale by its
+placement scale exactly once, around that anchor. Raster registration never
+uses presentationScale. Footprints, obstruction, identity, cell order, and all
+other gameplay metadata remain unchanged. The atlas-level default anchor is
+still [48,91]; registered cells supply their own anchors.
+
+The adapter overlays registered cells onto checksummed baselines, preserving
+unregistered slices exactly. Reports include per-cell pixel hashes, source
+hashes/alpha measurements, registration, logical anchor, and presentationScale.
+All inputs validate before writes. `--check` verifies both pixels and projected
+anchors without writing. Run the overlay after legacy builds.
+
+For a native-size diagnostic using actual renderer markup:
+
+```sh
+node_modules/.bin/vite-node tools/art/review_environment_runtime.ts
+python3 tools/art/render_environment_review.py docs/art-rebuild-20261019/approved-v5/environment-runtime
+```
+
+The SVG and PNG place the four assets beside the runtime swordsman, and the JSON
+records actual sampled transforms and alpha-128 silhouette measurements. Shared
+viewport normalization makes Inkscape honor the same nested atlas clipping as
+the browser. This is an offline contact/scale diagnostic, not browser playback
+or a production gameplay screenshot; map-level occlusion remains a separate QA
+gate. Ground, routes, and connectivity masks are outside this adapter's scope.
 
 ## Framed units and structure states
 
@@ -132,11 +155,6 @@ reported per source and export. Use only measured contact/registration fixes,
 not automatic pose fitting. Archer walk-a's reviewed[0,1] correction with common
 renderWidth30/origin[1,2] preserves its entire30×45 canvas and aligns contact with
 idle; it does not change the declared anchor or semantic frame order.
-
-The environment adapter also accepts `scenery-regional`, whose 4×4,96/192px
-module and [48,91] anchor contract matches the forest atlases. Existing category,
-footprint, obstruction and cell order metadata are read-only. Opaque terrain
-surfaces and other module dimensions remain unsupported.
 
 ## Opaque surface meadow
 

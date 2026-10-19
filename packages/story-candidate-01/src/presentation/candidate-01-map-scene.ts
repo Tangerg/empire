@@ -128,8 +128,9 @@ interface EnvironmentCellPlacing {
  * old ones, because the old ones were the rounded sum.
  */
 function environmentCellMarkup(id: string, placing: EnvironmentCellPlacing = {}): string {
-  const { scale = 1, flip = false, opacity = 1, className = '', lying = false } = placing;
+  const { scale: placementScale = 1, flip = false, opacity = 1, className = '', lying = false } = placing;
   const record = CANDIDATE_01_ENVIRONMENT.cell(id);
+  const scale = placementScale * (record.cell.presentationScale ?? 1);
   const anchor = lying
     ? [record.atlas.cellWidth / 2, record.atlas.cellHeight / 2]
     : record.cell.anchor ?? record.atlas.anchor ?? [record.atlas.cellWidth / 2, record.atlas.cellHeight];
