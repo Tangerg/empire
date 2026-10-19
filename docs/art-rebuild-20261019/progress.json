@@ -1361,29 +1361,39 @@
     },
     {
       "topicId": "C01-BPROP-ENGINEERING-1",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-engineering-1/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "c3d8e2b4721faebc97fd838418728523d020fd5f3c09acbac6a8feed471f91f2"
     },
     {
       "topicId": "C01-BPROP-ENGINEERING-2",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-ENGINEERING-3",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-engineering-3/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "5be9f71cabac4b0ec0703cee4e2653ee38f28b3fe495a561e851e2129c151e8c"
     },
     {
       "topicId": "C01-BPROP-ENGINEERING-4",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-1",
@@ -1426,13 +1436,15 @@
       "topicId": "C01-BPROP-FACTION-2",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-FACTION-3",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-FACTION-4",
