@@ -18,11 +18,11 @@ def element(tag, attrs=None):
     return ET.Element(f'{{{NS}}}{tag}', attrs or {})
 
 
-def build(root, source, masters, output, connectors=None, only=None, water_area=None):
+def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None):
     data = json.loads((source / 'pieces.json').read_text())
     output.mkdir(parents=True, exist_ok=True)
     reports = []
-    for name, keep_width, human_height in [('renderer-baseline', None, 44), ('trial-keep96', 96, 44), ('trial-keep144', 144, 44), ('trial-keep144-human34', 144, 34), ('selected-layer-keep128-human34', 128, 34), ('selected-layer-corrected-connectors', 128, 34), ('selected-layer-area-water', 128, 34), ('selected-layer-area-water-bridge', 128, 34)]:
+    for name, keep_width, human_height in [('renderer-baseline', None, 44), ('trial-keep96', 96, 44), ('trial-keep144', 144, 44), ('trial-keep144-human34', 144, 34), ('selected-layer-keep128-human34', 128, 34), ('selected-layer-corrected-connectors', 128, 34), ('selected-layer-area-water', 128, 34), ('selected-layer-area-water-bridge', 128, 34), ('selected-layer-area-water-bridge-bank', 128, 34)]:
         if only and name != only: continue
         selected = name.startswith('selected-layer')
         svg = element('svg', {'viewBox': '-96 0 640 512', 'width': '1280', 'height': '1024'})
@@ -42,8 +42,8 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
                         image.set(key, str(float(image.get(key)) / (32 / 26) + 3))
             group.extend(list(parsed)); svg.append(group)
 
-        def master_piece(identity, point, foot, scale):
-            path = masters / identity / 'master.png'
+        def master_piece(identity, point, foot, scale, source_file=None):
+            path = source_file or masters / identity / 'master.png'
             with Image.open(path) as image:
                 width, height = image.size
             image = element('image', {'href': path.as_uri(), 'x': str(point[0] - foot[0] * scale),
@@ -62,12 +62,14 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
                     water_inserted = True
                 continue
             add_piece(piece, 'ground')
+        if bank and name.endswith('-bank'):
+            master_piece('riverbank-module-v2', [320, 414], [660, 1475], 80 / 1453, bank)
         for index, piece in enumerate(data['layers']['underUnits']):
             if selected:
                 if index in (11, 19, 27, 29, 36):
                     master_piece('pine', [piece['x'], piece['y']], [640, 1201], 90 / 1152)
                 elif 'crossings-fortifications' in piece['markup']:
-                    if name.endswith('-bridge'):
+                    if '-bridge' in name:
                         master_piece('stone-bridge', [piece['x'], piece['y']], [627, 625], 96 / 1186)
                     else:
                         add_piece(piece, 'legacy-crossing')
@@ -142,5 +144,6 @@ if __name__ == '__main__':
     parser.add_argument('--connectors', type=Path)
     parser.add_argument('--only')
     parser.add_argument('--water-area', type=Path)
+    parser.add_argument('--bank', type=Path)
     args = parser.parse_args()
-    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None)
+    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None)
