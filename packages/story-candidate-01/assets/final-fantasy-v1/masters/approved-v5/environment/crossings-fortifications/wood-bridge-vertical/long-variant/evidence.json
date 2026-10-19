@@ -1,0 +1,130 @@
+{
+  "asset": "long-variant",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "identity pass; approximate requested5:1 proportion narrower; actual scene suitability pending",
+  "style_coherence": "pass; long thin chunky timber walkway with broad grouped planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    628
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.500797
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    473,
+    41,
+    472,
+    57
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/wood-bridge-vertical-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/prompt.txt",
+  "production_status": "candidate retained for actual c01-12 scene trial",
+  "atlas": "crossings-fortifications",
+  "original_identity": "wood-bridge-vertical",
+  "cell_index": 1,
+  "variant": "long-variant",
+  "semantic_counts": {
+    "bridge_deck": 1,
+    "side_rail_runs": 2,
+    "main_support_posts": 8
+  },
+  "source_foot_role": "deck traversal center; not standing bottom",
+  "source_local_landmark_estimates_px": {
+    "deck_center": [
+      627,
+      628
+    ],
+    "north_deck_end": [
+      627,
+      87
+    ],
+    "south_deck_end": [
+      627,
+      1168
+    ],
+    "near_left_support_base_contact": [
+      516,
+      1193
+    ],
+    "near_right_support_base_contact": [
+      741,
+      1193
+    ]
+  },
+  "native_generation_calls_for_variant": 1,
+  "target_geometry_assessment": {
+    "requested_native_clear_deck_ratio": 5,
+    "observed_clear_deck_ratio_range": [
+      6.714285714285714,
+      8.71774193548387
+    ],
+    "observed_middle_clear_deck_ratio": 7.7214285714285715,
+    "native_deck_span": 1081,
+    "native_clear_width_samples": [
+      {
+        "station": "north interior",
+        "y": 200,
+        "left": 568,
+        "right": 692,
+        "native_clear_width": 124,
+        "logical_clear_width_at160_span": 18.353376503237744,
+        "native_span_width_ratio": 8.71774193548387
+      },
+      {
+        "station": "middle",
+        "y": 628,
+        "left": 559,
+        "right": 699,
+        "native_clear_width": 140,
+        "logical_clear_width_at160_span": 20.721554116558742,
+        "native_span_width_ratio": 7.7214285714285715
+      },
+      {
+        "station": "south interior",
+        "y": 1100,
+        "left": 550,
+        "right": 711,
+        "native_clear_width": 161,
+        "logical_clear_width_at160_span": 23.829787234042552,
+        "native_span_width_ratio": 6.714285714285714
+      }
+    ],
+    "uniform_native_to_logical_scale_for160_span": 0.14801110083256244,
+    "logical_clear_width_range": [
+      18.353376503237744,
+      23.829787234042552
+    ],
+    "logical_max_silhouette_width": 45.735430157261796,
+    "strong_bounds_native": [
+      473,
+      41,
+      782,
+      1197
+    ],
+    "geometry_status": "Narrower than requested approximate5:1: middle7.72:1. Candidate retained for actual scene trial; this is not a gameplay or alpha rejection.",
+    "registration_status": "Parent will compare full c01-12 with horizontal intersections and humanoids before choosing",
+    "nominal96px_channel_side_clearances": [
+      25.206290471785383,
+      25.05827937095282
+    ],
+    "method": "Manual visible inner-rail widths, approximate +/-5px native; strong silhouette measured at alpha128; no source pixels modified",
+    "logical_cell_width_is_not_strict_opaque_deck_width_requirement": true,
+    "visual_acceptance_pending_scene_review": true
+  },
+  "no_repository_edits": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

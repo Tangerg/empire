@@ -1,0 +1,59 @@
+{
+  "requested_native_clear_deck_ratio": 5,
+  "observed_clear_deck_ratio_range": [
+    6.714285714285714,
+    8.71774193548387
+  ],
+  "observed_middle_clear_deck_ratio": 7.7214285714285715,
+  "native_deck_span": 1081,
+  "native_clear_width_samples": [
+    {
+      "station": "north interior",
+      "y": 200,
+      "left": 568,
+      "right": 692,
+      "native_clear_width": 124,
+      "logical_clear_width_at160_span": 18.353376503237744,
+      "native_span_width_ratio": 8.71774193548387
+    },
+    {
+      "station": "middle",
+      "y": 628,
+      "left": 559,
+      "right": 699,
+      "native_clear_width": 140,
+      "logical_clear_width_at160_span": 20.721554116558742,
+      "native_span_width_ratio": 7.7214285714285715
+    },
+    {
+      "station": "south interior",
+      "y": 1100,
+      "left": 550,
+      "right": 711,
+      "native_clear_width": 161,
+      "logical_clear_width_at160_span": 23.829787234042552,
+      "native_span_width_ratio": 6.714285714285714
+    }
+  ],
+  "uniform_native_to_logical_scale_for160_span": 0.14801110083256244,
+  "logical_clear_width_range": [
+    18.353376503237744,
+    23.829787234042552
+  ],
+  "logical_max_silhouette_width": 45.735430157261796,
+  "strong_bounds_native": [
+    473,
+    41,
+    782,
+    1197
+  ],
+  "geometry_status": "Narrower than requested approximate5:1: middle7.72:1. Candidate retained for actual scene trial; this is not a gameplay or alpha rejection.",
+  "registration_status": "Parent will compare full c01-12 with horizontal intersections and humanoids before choosing",
+  "nominal96px_channel_side_clearances": [
+    25.206290471785383,
+    25.05827937095282
+  ],
+  "method": "Manual visible inner-rail widths, approximate +/-5px native; strong silhouette measured at alpha128; no source pixels modified",
+  "logical_cell_width_is_not_strict_opaque_deck_width_requirement": true,
+  "visual_acceptance_pending_scene_review": true
+}

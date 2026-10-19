@@ -1,0 +1,20 @@
+{
+  "identity": "wood-bridge-vertical",
+  "original_cell_index": 1,
+  "variant": "purpose-authored long narrow walkway for existing5cell along-channel run",
+  "requested_clear_deck_length_width_ratio": 5,
+  "target_runtime_travel_span": 160,
+  "native_canvas": [
+    1254,
+    1254
+  ],
+  "requested_native_deck_span": 1000,
+  "requested_clear_deck_width": 200,
+  "scope": "one native imagegen variant only; original source and revisions preserved",
+  "native_generation_not_anisotropic_resize": true,
+  "topology": "along-channel walkway intersected by separate horizontal crossings; north/south ends do not touch invented banks",
+  "reference": "../wood-bridge-vertical-master.png",
+  "new_catalog_cell": false,
+  "no_rule_or_terrain_changes": true,
+  "source_registration_pending_measurement": true
+}

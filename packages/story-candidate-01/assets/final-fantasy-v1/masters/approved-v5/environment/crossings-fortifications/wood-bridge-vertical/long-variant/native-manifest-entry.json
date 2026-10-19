@@ -1,0 +1,47 @@
+{
+  "identity": "wood-bridge-vertical",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    628
+  ],
+  "strict_perimeter_all_alpha_zero": true,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "variant": "long-variant",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-fe534ae2-d89b-4e80-9329-3a67b7a5fb28.png",
+  "sha256": "4c1a2c671da15ae0c82a1dbfcc860f6f7ec7e09397db533665ce55a0180d4550",
+  "deck_landmarks": {
+    "deck_center": [
+      627,
+      628
+    ],
+    "north_deck_end": [
+      627,
+      87
+    ],
+    "south_deck_end": [
+      627,
+      1168
+    ],
+    "near_left_support_base_contact": [
+      516,
+      1193
+    ],
+    "near_right_support_base_contact": [
+      741,
+      1193
+    ]
+  },
+  "assessment": "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/deck-geometry-assessment.json",
+  "new_catalog_cell": false,
+  "geometry_target_pass": false,
+  "scene_trial_status": "retain candidate; parent compares with actual humanoids and horizontal crossing intersections",
+  "logical32_cell_not_opaque_width_constraint": true,
+  "generation_calls": 1
+}
