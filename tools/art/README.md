@@ -154,3 +154,11 @@ maximum channel change and source provenance. `--check` verifies reproducibility
 `--preview-dir PATH` writes real-pixel repeated2×2 and mixed4×4 QA sheets at both
 native densities. Exact matching alone does not guarantee visually good seams;
 review these sheets and actual scene composites before visual acceptance.
+
+`preview_cohesion.py --root REPOSITORY --output-dir DIRECTORY` builds three
+real-export comparison panels: normal/idle, damaged/walk-a, captured/walk-b.
+It reads production HD sheets and manifests, keeps declared anchors and layer
+order, and records every source hash and authored placement. Native and density2
+PNGs are art-review evidence, not gameplay screenshots. Runtime team tint,
+shadows, sunlight and animation are explicitly omitted to inspect source art;
+these omissions and any non-level-specific placement choices are in the JSON.
