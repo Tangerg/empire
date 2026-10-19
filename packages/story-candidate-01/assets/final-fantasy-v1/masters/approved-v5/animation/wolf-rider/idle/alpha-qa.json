@@ -143,5 +143,20 @@
     105.07896189950303,
     62.96742131419105
   ],
-  "status": "Idle candidate inspected; coordinator body scale and pose expansion approval pending"
+  "status": "Idle candidate inspected; coordinator body scale and pose expansion approval pending",
+  "spearProjectionMeasurement": {
+    "estimatedButtAndTipSourceCoordinates": [
+      [
+        499,
+        550
+      ],
+      [
+        1254,
+        229
+      ]
+    ],
+    "approximateProjectedSpanSourcePixels": 820.4059970526788,
+    "approximateProjectedSpanLogicalPixels": 47.113320647972714,
+    "method": "Native visual endpoint estimates along the spear overall butt-to-tip line; not a claim of recovered 3D weapon length."
+  }
 }

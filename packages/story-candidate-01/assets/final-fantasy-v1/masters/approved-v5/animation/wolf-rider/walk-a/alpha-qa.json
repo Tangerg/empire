@@ -116,5 +116,20 @@
   ],
   "semanticReview": "Clear diagonal walk: near hind and far fore paws support; near fore and far hind are raised and bent. Four connected wolf legs and paws, one full bushy tail, seated rider, both hands on one spear and side shield are visually checked in native and white-background views. Cap, braid, shoulder plate, pale wrapped forward hand, harness and saddle blanket remain coherent. Rider body follows saddle without independent rescaling. No external FX or floor. Native perimeter alpha is zero.",
   "visibleWidthAlphaGreaterThan127": 1075,
-  "projectedWidthLogicalAtSharedScale": 61.73384870237438
+  "projectedWidthLogicalAtSharedScale": 61.73384870237438,
+  "spearProjectionMeasurement": {
+    "estimatedButtAndTipSourceCoordinates": [
+      [
+        513,
+        511
+      ],
+      [
+        1280,
+        216
+      ]
+    ],
+    "approximateProjectedSpanSourcePixels": 821.774908353863,
+    "approximateProjectedSpanLogicalPixels": 47.19193289276739,
+    "method": "Native visual endpoint estimates along the spear overall butt-to-tip line; not a claim of recovered 3D weapon length."
+  }
 }

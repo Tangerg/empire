@@ -24,5 +24,112 @@
   "alphaOnePixels": 8666,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        135,
+        800,
+        330,
+        920
+      ],
+      "soleY": 903,
+      "bottomFourRowsMeanX": 237.64628820960698
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        500,
+        770,
+        730,
+        920
+      ],
+      "soleY": 894,
+      "bottomFourRowsMeanX": 631.2977941176471
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        800,
+        840,
+        1040,
+        970
+      ],
+      "soleY": 948,
+      "bottomFourRowsMeanX": 932.7295081967213
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1100,
+        800,
+        1330,
+        940
+      ],
+      "soleY": 922,
+      "bottomFourRowsMeanX": 1209.3858267716535
+    }
+  ],
+  "sourceFootMidpoint": [
+    752.7648543239072,
+    916.75
+  ],
+  "suggestedSourceFoot": [
+    753,
+    948
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-paw-gap",
+      "rectangle": [
+        397,
+        847,
+        404,
+        854
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "fore-paw-gap",
+      "rectangle": [
+        1067,
+        917,
+        1074,
+        924
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "under-belly-gap",
+      "rectangle": [
+        732,
+        847,
+        739,
+        854
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Clear forward lean and two-hand spear thrust while the wolf braces all four paws in a wide stance. Four connected wolf legs, one full bushy tail, two rider arms/hands on one shaft, and the attached plain round side shield are visually verified in native and white-background views. Cap, braid, shoulder plate, face, clothing, harness and saddle blanket remain coherent. Forward hand remains pale against the bare near hand; fine wrap divisions are simplified. No independent impact FX or ground shadow. The projected spear span is materially longer than idle; this variation is explicitly recorded for native sequence review, not claimed as exact length continuity.",
+  "visibleWidthAlphaGreaterThan127": 1474,
+  "projectedWidthLogicalAtSharedScale": 84.64715626725565,
+  "spearProjectionMeasurement": {
+    "estimatedButtAndTipSourceCoordinates": [
+      [
+        417,
+        411
+      ],
+      [
+        1548,
+        332
+      ]
+    ],
+    "approximateProjectedSpanSourcePixels": 1133.755705608576,
+    "approximateProjectedSpanLogicalPixels": 65.10800297255211,
+    "method": "Native visual endpoint estimates along the spear overall butt-to-tip line; not a claim of recovered 3D weapon length."
+  }
 }
