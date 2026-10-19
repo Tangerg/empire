@@ -1,0 +1,112 @@
+{
+  "asset": "highland-mountain-pass",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1117
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.89075
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    38,
+    184,
+    16,
+    129
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-mountain-pass-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 7,
+  "original_cellOrder_token": "mountain-pass",
+  "qualified_original_slot": "cliff-modules-highland:7:mountain-pass",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE complete highland mountain-pass group consisting of EXACTLY TWO separated long narrow parallel dark gray rock walls flanking ONE visible open snow-and-stone corridor. The route goes from the near-left/lower-left foreground toward the rear-right/upper-right, between the walls. Both walls have bare pale-gray exposed column tops, NOT snow caps. Their heights rise from the nearer short end columns to the farther taller columns. Preserve both complete wall ends and a continuous broad off-white snowy corridor with a few large exposed rock shapes. Keep both near and far route openings clearly open: no cross wall, roof, arch, gate, overhead bridge, blocking rock or third wall. Narrow original attached olive scrub/rock footing is allowed along each wall; the functional snow corridor is part of the source, not an invented display slab.",
+  "native_review": "Exactly two separated long column walls flank the continuous snowy corridor. Both low near ends, tall rear ends and the route openings are complete. Bare gray wall caps correctly remain unsnowed, while snow belongs to the functional corridor. The corridor has only a few broad protruding stones and remains visually open, with no cross-wall, arch, gate, roof or third mass. Whole group follows the original lower-left to upper-right route axis; no old-slot crop fragment retained.",
+  "source_foot_semantics": "whole-group projected foreground baseline along the near snow-corridor edge, separately measured from the route endpoint center and each wall footing",
+  "source_local_landmark_estimates_px": {
+    "near_route_endpoint_center": [
+      408,
+      1036
+    ],
+    "far_route_endpoint_center": [
+      718,
+      559
+    ],
+    "corridor_midpoint": [
+      589,
+      807
+    ],
+    "left_near_wall_basal_contact": [
+      166,
+      971
+    ],
+    "right_near_wall_basal_contact": [
+      824,
+      1053
+    ],
+    "left_rear_wall_basal_contact": [
+      646,
+      576
+    ],
+    "right_rear_wall_basal_contact": [
+      1172,
+      734
+    ],
+    "left_rear_cap_center": [
+      498,
+      216
+    ],
+    "right_rear_cap_center": [
+      1047,
+      258
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 2.5,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

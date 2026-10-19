@@ -1,0 +1,92 @@
+{
+  "atlas": "cliff-modules-highland",
+  "status": "catalog-only native pair complete; original slots6/7; original two-level ramp and separate-wall pass retained",
+  "asset_count": 2,
+  "entries": [
+    {
+      "identity": "highland-ramp-level-2",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/highland-ramp-level-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1160
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "cliff-modules-highland",
+      "cell_index": 6,
+      "original_cellOrder_token": "ramp-level-2",
+      "file_alias_only": true,
+      "catalog_only": true,
+      "original_per_cell_semantic_metadata": null,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-55a3e1f9-34a6-4413-9eaf-d09d4fe202f5.png",
+      "sha256": "0f632465ef8e74a2c1fac5a1ef997944173c3cac50ab6ab304b91d7da6df15de",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+      "runtime_atlas_contract": {
+        "logical_cell": [
+          128,
+          128
+        ],
+        "hd_cell": [
+          256,
+          256
+        ],
+        "atlas_anchor": [
+          64,
+          127
+        ],
+        "registered_semantic_cell_id": null
+      }
+    },
+    {
+      "identity": "highland-mountain-pass",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/highland-mountain-pass-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1117
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "cliff-modules-highland",
+      "cell_index": 7,
+      "original_cellOrder_token": "mountain-pass",
+      "file_alias_only": true,
+      "catalog_only": true,
+      "original_per_cell_semantic_metadata": null,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-443342d3-8ba7-43d7-b6cb-62b6a8eea5e3.png",
+      "sha256": "fc66de22decafdc8ee28ed0ec1dce3b0e9079b6b0f1609c55617b58f34479142",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-second-four-source-contract.json",
+      "runtime_atlas_contract": {
+        "logical_cell": [
+          128,
+          128
+        ],
+        "hd_cell": [
+          256,
+          256
+        ],
+        "atlas_anchor": [
+          64,
+          127
+        ],
+        "registered_semantic_cell_id": null
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_automatic_interface_connectivity_claim": true,
+  "no_repository_edits": true
+}

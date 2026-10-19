@@ -1,0 +1,255 @@
+{
+  "atlas": "cliff-modules-highland",
+  "count": 4,
+  "status": "native catalog review only",
+  "original_cells_empty": true,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "shape_label_findings": "Original slots4-7 broadly agree with their labels. Snow belongs to cap/ramp surfaces and the pass corridor; the two pass walls have bare stone caps.",
+  "source_foot_warning": "Projected module feet are approximate visual registration measurements, separate from physical contacts and route endpoints. No automatically connecting ports or gameplay traversal metadata is asserted.",
+  "entries": [
+    {
+      "working_file_alias": "highland-hill-cap",
+      "registered_semantic_cell_id": null,
+      "cell_index": 4,
+      "original_cellOrder_token": "hill-cap",
+      "catalog_only": true,
+      "observed_original_geometry": "Snow-capped blocky hill with steep column faces and base rocks",
+      "native_review": "One compact snow-capped block hill retains its broad diamond-like cap, steep continuous column faces, exposed large rock patches and a few snowy basal stones. Snow is broad matte off-white with quiet pale blue shadow facets; no grass lid or tiny snow stipple. Full outline retained. Requested generous side margins were not fully met, but strong silhouette remains clear of edges.",
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "source_foot_semantics": "whole-module projected foreground baseline at the front basal rocks and scrub, separate from cap center and wall-front contacts",
+      "source_local_landmark_estimates_px": {
+        "front_basal_contact": [
+          627,
+          1168
+        ],
+        "left_basal_contact": [
+          128,
+          923
+        ],
+        "right_basal_contact": [
+          1148,
+          888
+        ],
+        "cap_center": [
+          643,
+          365
+        ],
+        "front_wall_base": [
+          631,
+          1036
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        35,
+        161,
+        14,
+        78
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-ramp-level-1",
+      "registered_semantic_cell_id": null,
+      "cell_index": 5,
+      "original_cellOrder_token": "ramp-level-1",
+      "catalog_only": true,
+      "observed_original_geometry": "Continuous snowy incline/ramp, low near-left to higher rear-right",
+      "native_review": "One continuous long snowy incline rises from near-left/lower-left to rear-right/upper-right. The open low approach and high end are complete, and the right cliff face increases smoothly in height. Broad snow planes stay continuous across exposed large stones; no two-level terrace or wall barrier was introduced. Full silhouette and original direction retained, with measured side margins smaller than requested.",
+      "source_foot_estimate_px": [
+        627,
+        1136
+      ],
+      "source_foot_semantics": "whole-module projected foreground baseline aligned near the low-front footing; x627 is central module registration, distinct from the off-center visible low route endpoint",
+      "source_local_landmark_estimates_px": {
+        "low_route_endpoint_center": [
+          242,
+          1034
+        ],
+        "high_route_endpoint_center": [
+          873,
+          329
+        ],
+        "mid_incline_center": [
+          565,
+          734
+        ],
+        "front_left_basal_contact": [
+          180,
+          1050
+        ],
+        "front_right_basal_contact": [
+          457,
+          1145
+        ],
+        "rear_right_basal_contact": [
+          1161,
+          802
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        47,
+        260,
+        19,
+        94
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-ramp-level-2",
+      "registered_semantic_cell_id": null,
+      "cell_index": 6,
+      "original_cellOrder_token": "ramp-level-2",
+      "catalog_only": true,
+      "observed_original_geometry": "Two-level snowy ascent with linked low and high terraces",
+      "native_review": "Two distinct connected snowy terraces retain the original near-left to rear-right ascending axis. The low approach reaches the lower platform, a second rocky snowy incline reaches the higher rear platform, and the visible continuous right column wall communicates the two heights. No independent extra tower, third wall or neighboring pass fragment. Snow remains broad matte planes with a few exposed large stones. Full silhouette is complete with narrower side margins than requested.",
+      "source_foot_estimate_px": [
+        627,
+        1160
+      ],
+      "source_foot_semantics": "projected foreground module baseline near the low approach footing, separate from the off-center low route endpoint and both terrace centers",
+      "source_local_landmark_estimates_px": {
+        "low_route_endpoint_center": [
+          266,
+          1101
+        ],
+        "lower_terrace_center": [
+          586,
+          593
+        ],
+        "upper_link_center": [
+          724,
+          449
+        ],
+        "high_route_endpoint_center": [
+          850,
+          198
+        ],
+        "front_left_basal_contact": [
+          187,
+          1129
+        ],
+        "front_right_basal_contact": [
+          431,
+          1158
+        ],
+        "rear_right_basal_contact": [
+          1199,
+          680
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        42,
+        145,
+        17,
+        87
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-mountain-pass",
+      "registered_semantic_cell_id": null,
+      "cell_index": 7,
+      "original_cellOrder_token": "mountain-pass",
+      "catalog_only": true,
+      "observed_original_geometry": "Two separated steep rock side walls flanking an open snow/stone corridor",
+      "native_review": "Exactly two separated long column walls flank the continuous snowy corridor. Both low near ends, tall rear ends and the route openings are complete. Bare gray wall caps correctly remain unsnowed, while snow belongs to the functional corridor. The corridor has only a few broad protruding stones and remains visually open, with no cross-wall, arch, gate, roof or third mass. Whole group follows the original lower-left to upper-right route axis; no old-slot crop fragment retained.",
+      "source_foot_estimate_px": [
+        627,
+        1117
+      ],
+      "source_foot_semantics": "whole-group projected foreground baseline along the near snow-corridor edge, separately measured from the route endpoint center and each wall footing",
+      "source_local_landmark_estimates_px": {
+        "near_route_endpoint_center": [
+          408,
+          1036
+        ],
+        "far_route_endpoint_center": [
+          718,
+          559
+        ],
+        "corridor_midpoint": [
+          589,
+          807
+        ],
+        "left_near_wall_basal_contact": [
+          166,
+          971
+        ],
+        "right_near_wall_basal_contact": [
+          824,
+          1053
+        ],
+        "left_rear_wall_basal_contact": [
+          646,
+          576
+        ],
+        "right_rear_wall_basal_contact": [
+          1172,
+          734
+        ],
+        "left_rear_cap_center": [
+          498,
+          216
+        ],
+        "right_rear_cap_center": [
+          1047,
+          258
+        ]
+      },
+      "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        38,
+        184,
+        16,
+        129
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/alpha-qa.json"
+    }
+  ]
+}

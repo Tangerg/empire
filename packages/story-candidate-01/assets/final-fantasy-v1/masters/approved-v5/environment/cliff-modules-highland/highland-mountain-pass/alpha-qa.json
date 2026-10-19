@@ -1,0 +1,109 @@
+{
+  "asset": "highland-mountain-pass",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-443342d3-8ba7-43d7-b6cb-62b6a8eea5e3.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 854852,
+  "opaque_pixels": 1175,
+  "partial_alpha_pixels": 716489,
+  "near_opaque_alpha_250_255_pixels": 697744,
+  "nonzero_alpha_bbox": [
+    0,
+    81,
+    1241,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    38,
+    184,
+    1238,
+    1125
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      81,
+      1241,
+      1254
+    ],
+    "16": [
+      38,
+      184,
+      1239,
+      1126
+    ],
+    "128": [
+      38,
+      184,
+      1238,
+      1125
+    ],
+    "250": [
+      39,
+      185,
+      1237,
+      1124
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    81,
+    13,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    38,
+    184,
+    16,
+    129
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 20
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 1,
+      "nonzero_pixels": 12
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "fc66de22decafdc8ee28ed0ec1dce3b0e9079b6b0f1609c55617b58f34479142",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true,
+  "authored_foot_alpha_sample": 0
+}
