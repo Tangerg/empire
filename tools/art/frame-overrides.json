@@ -60,6 +60,30 @@
           2
         ]
       }
+    },
+    "C01-STRUCT-OATH-TOWER-CONSOLE": {
+      "kind": "frames-v1",
+      "frames": {
+        "normal": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/normal/master.png",
+          "sha256": "846e6c0ae75015c527836fef3d8cff10463184ebc7eb771f4e0a146237c24592"
+        },
+        "damaged": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/damaged/master.png",
+          "sha256": "358133393960b18cdbcd2aedd8352265346df3806e8b6bbc3d8f31e24f6955ce"
+        },
+        "captured": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/captured/master.png",
+          "sha256": "e9a29ac7622564b3511517f18e365673f695bd152b8aba1de67a4a9e3c8fb3dc"
+        }
+      },
+      "placement": {
+        "renderWidth": 62,
+        "origin": [
+          1,
+          2
+        ]
+      }
     }
   }
 }
