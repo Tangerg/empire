@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 173,
+    "formalBound": 181,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 25,
-      "equipment": 47,
+      "equipment": 51,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 12
+      "skill": 16
     },
-    "rawPreservedTopics": 177,
+    "rawPreservedTopics": 184,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1599,8 +1599,11 @@
       "category": "combat-unit",
       "label": "伊芙拉成长单位",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-a/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5479,11 +5482,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-13/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-13.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-13-16/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-14",
@@ -5495,11 +5504,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-14/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-14.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-13-16/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-15",
@@ -5511,11 +5526,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-15/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-15.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-13-16/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-16",
@@ -5527,11 +5548,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-16/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-16.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-13-16/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-17",
@@ -5539,8 +5566,10 @@
       "category": "skill",
       "label": "银林隐蔽",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-17/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5553,8 +5582,10 @@
       "category": "skill",
       "label": "林地再生",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-18/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10619,13 +10650,21 @@
       "category": "equipment",
       "label": "战地医师主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-field-medic/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-field-medic.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-first-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-floating-city-guard",
@@ -10927,13 +10966,21 @@
       "category": "equipment",
       "label": "轨道步枪手主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-rail-rifleman/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rail-rifleman.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-first-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-rain-shepherd",
@@ -10969,13 +11016,21 @@
       "category": "equipment",
       "label": "维修师主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-repair-engineer/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-repair-engineer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-first-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-reset-guard",
@@ -11053,13 +11108,21 @@
       "category": "equipment",
       "label": "星盾兵主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-star-shield/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-star-shield.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master, prompt and original identity evidence retained",
+        "export": "native48 black/white review and strict alpha gate passed",
+        "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-equipment-first-four/native48-review.png"
+      }
     },
     {
       "topicId": "c02-equipment-star-vein-mage",
