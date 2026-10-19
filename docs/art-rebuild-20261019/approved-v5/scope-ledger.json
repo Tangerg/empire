@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 118,
+    "formalBound": 122,
     "boundByCategory": {
       "battle-prop": 40,
       "combat-unit": 21,
-      "equipment": 32,
+      "equipment": 36,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 118,
+    "rawPreservedTopics": 125,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1727,8 +1727,10 @@
       "category": "combat-unit",
       "label": "符文工匠",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4162,13 +4164,20 @@
       "category": "equipment",
       "label": "古龙主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-ancient-dragon/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-ancient-dragon.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment objects only; original high-resolution counts/symbols/scale-vs-stone distinction verified",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no full creature or HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-ANTI-LARGE-KIT",
@@ -4372,13 +4381,20 @@
       "category": "equipment",
       "label": "墓地巨像主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-cemetery-colossus/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-cemetery-colossus.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment objects only; original high-resolution counts/symbols/scale-vs-stone distinction verified",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no full creature or HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-CLERIC",
@@ -4582,13 +4598,20 @@
       "category": "equipment",
       "label": "伊芙拉成长单位主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-ivra-growth/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-ivra-growth.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment objects only; original high-resolution counts/symbols/scale-vs-stone distinction verified",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no full creature or HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-JAVELIN-HUNTER",
@@ -4960,13 +4983,20 @@
       "category": "equipment",
       "label": "巨魔主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-troll/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-troll.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent equipment objects only; original high-resolution counts/symbols/scale-vs-stone distinction verified",
+        "export": "native48 three-background alpha/semantic readability passed",
+        "runtimeBinding": "canonical48 equipment manifest/resolver bound; no full creature or HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-WHITE-STAG-RIDER",
@@ -10000,8 +10030,10 @@
       "category": "battle-prop",
       "label": "种子冷柜后勤组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-seed-coolers/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10084,8 +10116,10 @@
       "category": "battle-prop",
       "label": "水桶后勤组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-water-barrels/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
