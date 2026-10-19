@@ -1,0 +1,59 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-b/master.png"
+  },
+  "scale": 0.05263157894736842,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    800,
+    956
+  ],
+  "sourceFeet": {
+    "idle": [
+      800,
+      956
+    ],
+    "walk-a": [
+      809,
+      955
+    ],
+    "attack": [
+      756,
+      967
+    ],
+    "walk-b": [
+      787,
+      962
+    ]
+  },
+  "canvasPaddingTolerance": 0,
+  "registrationLimit": 4,
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      -0.47368421052631576,
+      0.05263157894736842
+    ],
+    "attack": [
+      2.3157894736842106,
+      -0.5789473684210527
+    ],
+    "walk-b": [
+      0.6842105263157894,
+      -0.3157894736842105
+    ]
+  }
+}

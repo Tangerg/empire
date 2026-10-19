@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-b/master.png"
+    },
+    "scale": 0.05263157894736842,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      800,
+      956
+    ],
+    "sourceFeet": {
+      "idle": [
+        800,
+        956
+      ],
+      "walk-a": [
+        809,
+        955
+      ],
+      "attack": [
+        756,
+        967
+      ],
+      "walk-b": [
+        787,
+        962
+      ]
+    },
+    "canvasPaddingTolerance": 0,
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.47368421052631576,
+        0.05263157894736842
+      ],
+      "attack": [
+        2.3157894736842106,
+        -0.5789473684210527
+      ],
+      "walk-b": [
+        0.6842105263157894,
+        -0.3157894736842105
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1585,
+    992
+  ],
+  "logicalPivot": [
+    50.10526315789473,
+    54.315789473684205
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9da42312622ff0da9c817ff1a86e2db46c123dbbc6ec9a5e7e1fb1b1631990dc",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5414,
+        "nearOpaquePixels": 928,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          5,
+          75,
+          54
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9da42312622ff0da9c817ff1a86e2db46c123dbbc6ec9a5e7e1fb1b1631990dc",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21895,
+        "nearOpaquePixels": 3886,
+        "edgeMax": 0,
+        "visibleBounds": [
+          69,
+          9,
+          150,
+          109
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png",
+      "registrationOffset": [
+        -0.47368421052631576,
+        0.05263157894736842
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "bd5b933c84f584094e593d738e7180320ef6261fe5f7d3b71727b33af221dd79",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5462,
+        "nearOpaquePixels": 867,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          5,
+          73,
+          54
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png",
+      "registrationOffset": [
+        -0.47368421052631576,
+        0.05263157894736842
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "bd5b933c84f584094e593d738e7180320ef6261fe5f7d3b71727b33af221dd79",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22144,
+        "nearOpaquePixels": 3646,
+        "edgeMax": 0,
+        "visibleBounds": [
+          67,
+          10,
+          146,
+          109
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/attack/master.png",
+      "registrationOffset": [
+        2.3157894736842106,
+        -0.5789473684210527
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8815e397b3c973ce87087b7055a9627a9619bc8ad7ec981b0e72497ce06ef826",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5506,
+        "nearOpaquePixels": 817,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          4,
+          83,
+          54
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/attack/master.png",
+      "registrationOffset": [
+        2.3157894736842106,
+        -0.5789473684210527
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8815e397b3c973ce87087b7055a9627a9619bc8ad7ec981b0e72497ce06ef826",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22287,
+        "nearOpaquePixels": 3389,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          8,
+          165,
+          109
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-b/master.png",
+      "registrationOffset": [
+        0.6842105263157894,
+        -0.3157894736842105
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "42acbeef51fce6a106315e0e6dc718179da94d788078c035018d598e6867f87f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5466,
+        "nearOpaquePixels": 882,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          4,
+          74,
+          54
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-b/master.png",
+      "registrationOffset": [
+        0.6842105263157894,
+        -0.3157894736842105
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "42acbeef51fce6a106315e0e6dc718179da94d788078c035018d598e6867f87f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22112,
+        "nearOpaquePixels": 3717,
+        "edgeMax": 0,
+        "visibleBounds": [
+          70,
+          9,
+          148,
+          109
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

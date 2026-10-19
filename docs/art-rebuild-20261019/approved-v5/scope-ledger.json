@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 135,
+    "formalBound": 136,
     "boundByCategory": {
       "battle-prop": 44,
-      "combat-unit": 22,
+      "combat-unit": 23,
       "equipment": 44,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 136,
+    "rawPreservedTopics": 143,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1790,15 +1790,22 @@
       "label": "长弓守卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-silver-longbow.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-silver-longbow.png",
+      "stageEvidence": {
+        "raw": "four native1585x992 poses and exact prompts preserved, no padding",
+        "export": "shared44/836 scale, measured feet, maximum2.31579px registration; native white/dark identity, opposite steps and drawn-bow anatomy reviewed; projected bow height changes with bend, no per-pose scaling",
+        "runtimeBinding": "canonical and HD sequence resolver bound; c01-15 four actual enemies; separate projectile FX unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-SKELETON-GUARD",
@@ -4217,8 +4224,10 @@
       "category": "equipment",
       "label": "抗誓文护具",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-anti-oath-gear/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4378,8 +4387,10 @@
       "category": "equipment",
       "label": "桥塔工程包",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-bridge-tower-tools/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4518,8 +4529,10 @@
       "category": "equipment",
       "label": "证据封存交互包",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-evidence-seal-kit/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9873,8 +9886,10 @@
       "category": "battle-prop",
       "label": "五界材料旗组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-five-world-flags/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9936,8 +9951,10 @@
       "category": "battle-prop",
       "label": "赫沙水务标识组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-hesha-water-signs/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10013,8 +10030,10 @@
       "category": "battle-prop",
       "label": "权限状态灯组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-permission-lights/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10118,8 +10137,10 @@
       "category": "battle-prop",
       "label": "索勒热灯标识组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-soler-heat-emblems/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

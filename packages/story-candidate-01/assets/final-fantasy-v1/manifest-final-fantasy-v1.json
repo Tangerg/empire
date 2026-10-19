@@ -1800,13 +1800,13 @@
       "topicId": "C01-UNIT-SILVER-LONGBOW",
       "label": "长弓守卫",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-silver-longbow.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-silver-longbow.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1815,13 +1815,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        50.10526315789473,
+        54.315789473684205
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-SKELETON-GUARD",
