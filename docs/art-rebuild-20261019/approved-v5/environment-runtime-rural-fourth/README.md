@@ -1,0 +1,3 @@
+# Rural foundation quartet
+
+Four full native RGBA canvases are registered at the same96/1254 scale inside112/224 cells. Linen and earth mats are sampled from the actual c01-01 foundation ground layer at0.68; dark mat and threshing circle are explicitly catalog-only probes. The functional mat/stone platform remains opaque inside its silhouette, with genuine transparent exterior. No per-cell independent fitting, source painting or rule changes. Native contacts and subject identities passed offline review; live gameplay remains pending. Before images preserve the legacy sources. The related farmhouse/granary overlap is a separate standing-object layout issue, not concealed by these contact sheets.

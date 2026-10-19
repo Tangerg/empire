@@ -1,0 +1,141 @@
+{
+  "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
+  "status": "Complete native trio, source semantics and native/shared-scale previews visually reviewed",
+  "masterIntegrity": "All raw/master pairs byte-identical native built-in imagegen. No alpha cleanup, crop, resize, translate, repaint or individual geometry fit applied",
+  "perimeterGate": "Normal/damaged/captured actual outermost alpha maxima1/1/1, all zero edge pixels>1; gate unchanged",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sharedStructuralSourceFoot": [
+    627,
+    1086
+  ],
+  "acceptedLogicalWidth": 104,
+  "scaleApplication": "One104/1191 factor on every complete1254 native canvas; no independent fit",
+  "visualChecks": {
+    "normal": "Low empty circular stone deployment platform, intact brass ring, rear-left four-bolt rack, front brass clamps and timber inserts",
+    "damaged": "Front ring gap with blunt broken ends and one loose segment, rack absent with broken bolts among left-back stones, cracked floor/front stones and local grounded rubble",
+    "captured": "Intact normal structure/rack; heavy gray chain across front-left paving and around ring, one amber lantern on rear-right merlon; no flag",
+    "identity": "Deployment structure stays empty; never substituted combat-unit ballista or equipment ballista",
+    "style": "Large chunky matte stone/wood/brass planes, bold dark contours, sparse readable shading, no terrain background",
+    "registration": "Same full native canvas, front base and clamps align; damaged loose rubble extends6native pixels below shared structural foot and does not move anchor",
+    "alpha": "True RGBA clear exterior; complete silhouette and no perimeter contamination",
+    "nativeReadability": "104 shared-scale preview shows ring, missing rack/ring break and captured lantern/chain distinctly; map placement scale remains integration gate"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical104": "qa-logical-104.png",
+    "normal": "qa-normal-logical-104.png"
+  },
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "rg exact topic and runtime slug across *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Unit/equipment ballista bindings are distinct and do not establish use of this empty deployment platform"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        38,
+        401,
+        1229,
+        1086
+      ],
+      "alphaAbove1Bounds": [
+        35,
+        401,
+        1231,
+        1089
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9f6f69c3-8aeb-40a0-b033-6ddb4af204b8.png",
+      "sha256": "ee8947bbb53bae74c400b6bd15a7e040c7a335507043d7bb96d2a5103fb1b753",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 935392,
+      "perimeterGate": "Actual outermost maximum alpha <=1 and zero perimeter pixels >1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1086
+      ],
+      "visibleSilhouetteReview": "Complete contained base, merlons, ring, rack or local damage, and captured lantern/chain"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        37,
+        422,
+        1230,
+        1092
+      ],
+      "alphaAbove1Bounds": [
+        35,
+        419,
+        1232,
+        1093
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4d3308da-9dfd-4b44-859d-0731399f969b.png",
+      "sha256": "9793b763ea2f356def3779c3334c0adef2bd95bc4cdd17c8b4c0e15fcc497d51",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 949458,
+      "perimeterGate": "Actual outermost maximum alpha <=1 and zero perimeter pixels >1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1086
+      ],
+      "visibleSilhouetteReview": "Complete contained base, merlons, ring, rack or local damage, and captured lantern/chain"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        37,
+        402,
+        1230,
+        1086
+      ],
+      "alphaAbove1Bounds": [
+        35,
+        401,
+        1233,
+        1089
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-514a924a-b05c-4d55-8b3a-d40904e26519.png",
+      "sha256": "193ae8c164bc909b05f2692b059a61b122848a3c21dcd018815d9044f21f0063",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 929431,
+      "perimeterGate": "Actual outermost maximum alpha <=1 and zero perimeter pixels >1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1086
+      ],
+      "visibleSilhouetteReview": "Complete contained base, merlons, ring, rack or local damage, and captured lantern/chain"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

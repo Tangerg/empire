@@ -25,8 +25,8 @@
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 13,
-  "authoredThreeStateBundles": 15,
-  "formalRuntimeBoundTopics": 71,
+  "authoredThreeStateBundles": 16,
+  "formalRuntimeBoundTopics": 72,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -454,6 +454,12 @@
       "export": "native48 three-background identity/alpha review passed",
       "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
       "liveGame": "pending"
+    },
+    "C01-STRUCT-BALLISTA-EMPLACEMENT": {
+      "raw": "3/3 preserved",
+      "export": "shared104/1191 scale and fixed foundation; normal empty track, damaged ring/rack and captured chain/lamp reviewed",
+      "runtimeBinding": "canonical+HD catalog bound; no direct scene consumer verified",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -575,13 +581,17 @@
         "frontier-granary",
         "frontier-farmhouse",
         "farm-fence-straight",
-        "farm-fence-corner"
+        "farm-fence-corner",
+        "grain-drying-mat-dark",
+        "grain-drying-mat-linen",
+        "grain-drying-mat-earth",
+        "threshing-floor"
       ],
-      "count": 12,
+      "count": 16,
       "export": "112/224 full-canvas registered source feet; unselected cells byte-identical to immutable baseline",
-      "runtimeBinding": "actual c01-01 rack/well and c01-02 settlement pen samples; waystation explicitly catalog-only; native112/224 with original placement scales",
+      "runtimeBinding": "All16 catalog cells bound; linen/earth foundations sampled from actual c01-01 ground layer at0.68; dark mat/threshing/waystation explicitly catalog-only",
       "liveGame": "pending",
-      "sceneScaleReview": "All12 subjects native reviewed. Pen presentationScale1.5 accepted from full-scene1/1.5/1.8 comparison; castle entrance and granary door core unchanged,3px right pillar overlap documented. Other scales unchanged."
+      "sceneScaleReview": "All12 subjects native reviewed. Pen presentationScale1.5 accepted from full-scene1/1.5/1.8 comparison; castle entrance and granary door core unchanged,3px right pillar overlap documented. Other scales unchanged. Final4 foundations preserve bounded functional ground platforms and real transparent exterior; native actual-contact review passed. Complete c01-01 farmhouse overlap remains under separate layout review."
     }
   },
   "totalCanonicalScope": 1212,
@@ -601,8 +611,8 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "integrated selected-readability and legion/forge checkpoint before edge-decoration/refugee additions"
     },
-    "latestBindingAndEdges": "68 passed after refugee and edge binding",
-    "artPythonLatest": "137 passed",
+    "latestBindingAndEdges": "75 asset binding tests passed before ballista emplacement addition",
+    "artPythonLatest": "144 passed",
     "typecheckLatest": "passed at a334a32"
   },
   "liveGameVerifiedAnimationTopics": 0,

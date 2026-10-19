@@ -1,0 +1,212 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "grain-drying-mat-dark",
+      "anchor": [
+        57.22488038277512,
+        86.69856459330144
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        1,
+        1
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 1,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-57.22488038277512 -86.69856459330144) scale(1)\"><svg width=\"112\" height=\"112\" viewBox=\"0 0 112 112\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png\" x=\"0\" y=\"0\" width=\"448\" height=\"448\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        12.5,
+        28.5,
+        101.0,
+        88.0
+      ],
+      "nativeSampleVisibleHeight": 59.5,
+      "nativeVisibleHeightRange": [
+        59.5,
+        59.5
+      ],
+      "nativeSampleOverhangBelowContact": 1.301435406698559
+    },
+    {
+      "id": "grain-drying-mat-linen",
+      "anchor": [
+        56.07655502392345,
+        87.92344497607655
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.68,
+        0.68
+      ],
+      "rendererScaleRange": [
+        0.68,
+        0.68
+      ],
+      "sampledRendererScaleRange": [
+        0.68,
+        0.68
+      ],
+      "sampleScale": 0.68,
+      "sampleCount": 1,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-foundation\" transform=\"translate(-38.132 -59.788) scale(0.680)\" opacity=\"1\">\n    <svg width=\"112\" height=\"112\" viewBox=\"0 0 112 112\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png\" x=\"-112\" y=\"0\" width=\"448\" height=\"448\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.0,
+        25.0,
+        101.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 43.52,
+      "nativeVisibleHeightRange": [
+        43.52,
+        43.52
+      ],
+      "nativeSampleOverhangBelowContact": 0.7320574162679441
+    },
+    {
+      "id": "grain-drying-mat-earth",
+      "anchor": [
+        56.07655502392345,
+        86.39234449760765
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.68,
+        0.68
+      ],
+      "rendererScaleRange": [
+        0.68,
+        0.68
+      ],
+      "sampledRendererScaleRange": [
+        0.68,
+        0.68
+      ],
+      "sampleScale": 0.68,
+      "sampleCount": 1,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-foundation\" transform=\"translate(-38.132 -58.747) scale(0.680)\" opacity=\"1\">\n    <svg width=\"112\" height=\"112\" viewBox=\"0 0 112 112\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png\" x=\"-224\" y=\"0\" width=\"448\" height=\"448\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        12.5,
+        27.5,
+        99.5,
+        88.0
+      ],
+      "nativeSampleVisibleHeight": 41.14,
+      "nativeVisibleHeightRange": [
+        41.14,
+        41.14
+      ],
+      "nativeSampleOverhangBelowContact": 1.0932057416267964
+    },
+    {
+      "id": "threshing-floor",
+      "anchor": [
+        56,
+        86.85167464114832
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        1,
+        1
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 1,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-56 -86.85167464114832) scale(1)\"><svg width=\"112\" height=\"112\" viewBox=\"0 0 112 112\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png\" x=\"-336\" y=\"0\" width=\"448\" height=\"448\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        12.0,
+        28.5,
+        100.0,
+        87.5
+      ],
+      "nativeSampleVisibleHeight": 59.0,
+      "nativeVisibleHeightRange": [
+        59.0,
+        59.0
+      ],
+      "nativeSampleOverhangBelowContact": 0.6483253588516789
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 71,
+    "formalBound": 72,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 11,
       "equipment": 12,
-      "interactive-structure": 15,
+      "interactive-structure": 16,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 71,
+    "rawPreservedTopics": 72,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 60
+    "registeredEnvironmentCells": 64
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -2842,13 +2842,22 @@
       "category": "interactive-structure",
       "label": "弩车部署位",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/ballista-emplacement/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/ballista-emplacement/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/ballista-emplacement/normal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-ballista-emplacement.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-ballista-emplacement.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved",
+        "export": "shared104/1191 scale and fixed foundation; normal empty track, damaged ring/rack and captured chain/lamp reviewed",
+        "runtimeBinding": "canonical+HD catalog bound; no direct scene consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-CAPITAL-GATE",
@@ -17999,7 +18008,11 @@
         "frontier-granary",
         "frontier-farmhouse",
         "farm-fence-straight",
-        "farm-fence-corner"
+        "farm-fence-corner",
+        "grain-drying-mat-dark",
+        "grain-drying-mat-linen",
+        "grain-drying-mat-earth",
+        "threshing-floor"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18015,13 +18028,17 @@
           "frontier-granary",
           "frontier-farmhouse",
           "farm-fence-straight",
-          "farm-fence-corner"
+          "farm-fence-corner",
+          "grain-drying-mat-dark",
+          "grain-drying-mat-linen",
+          "grain-drying-mat-earth",
+          "threshing-floor"
         ],
-        "count": 12,
+        "count": 16,
         "export": "112/224 full-canvas registered source feet; unselected cells byte-identical to immutable baseline",
-        "runtimeBinding": "actual c01-01 rack/well and c01-02 settlement pen samples; waystation explicitly catalog-only; native112/224 with original placement scales",
+        "runtimeBinding": "All16 catalog cells bound; linen/earth foundations sampled from actual c01-01 ground layer at0.68; dark mat/threshing/waystation explicitly catalog-only",
         "liveGame": "pending",
-        "sceneScaleReview": "All12 subjects native reviewed. Pen presentationScale1.5 accepted from full-scene1/1.5/1.8 comparison; castle entrance and granary door core unchanged,3px right pillar overlap documented. Other scales unchanged."
+        "sceneScaleReview": "All12 subjects native reviewed. Pen presentationScale1.5 accepted from full-scene1/1.5/1.8 comparison; castle entrance and granary door core unchanged,3px right pillar overlap documented. Other scales unchanged. Final4 foundations preserve bounded functional ground platforms and real transparent exterior; native actual-contact review passed. Complete c01-01 farmhouse overlap remains under separate layout review."
       }
     }
   ]

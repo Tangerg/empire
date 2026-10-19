@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
+  "label": "弩车部署位",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-BALLISTA-EMPLACEMENT",
+    "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
+    "label": "弩车部署位",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-ballista-emplacement.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "selection": "Next unfinished interactive-structure topic in original manifest order after archive furnace",
+  "sourceAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-04-source-4col.png",
+  "sourceAtlasSize": [
+    1672,
+    941
+  ],
+  "sourceAtlasSha256": "6a66e37ca1925fb36f0905e4df6a9b472a0fd77b01e189441eb7c2bb5df6a216",
+  "sourceStateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "sourceCellBoxes": {
+    "normal": [
+      0,
+      298,
+      418,
+      533
+    ],
+    "damaged": [
+      418,
+      298,
+      836,
+      533
+    ],
+    "captured": [
+      836,
+      298,
+      1254,
+      533
+    ]
+  },
+  "fourthAtlasColumn": "duplicate/alternate unused by three-state runtime; not a fourth state",
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-ballista-emplacement.png",
+  "runtimeReferenceCaveat": "Runtime strip contains some upper-row contamination; clean exact second-row atlas crops define the asset, not those fragments",
+  "consumerEvidence": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "rg exact topic and runtime slug across *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Unit/equipment ballista bindings are distinct and do not establish use of this empty deployment platform"
+  },
+  "stateIdentity": {
+    "normal": "Empty circular stone platform with brass ring rail, low crenellated back/side walls and rear-left bolt rack",
+    "damaged": "Broken rail and paving, missing bolt rack with scattered bolts, local broken stones; same circular base",
+    "captured": "Intact platform and bolt rack; dark gray chain draped around rail/front and amber lantern on rear-right merlon; no flag"
+  },
+  "proposedLogicalVisibleWidth": 104,
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1086
+  ],
+  "styleReference": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+  "noRepositoryWrites": true,
+  "normalVisibleWidth": 1191,
+  "acceptedLogicalVisibleWidth": 104,
+  "originalCropSha256": {
+    "normal": "55b702fc699409c9d292b4f842dc6007442385cf5b13c2d06b0ca26dfa4e035a",
+    "damaged": "a29d92c32592f0085eb6c9fbd22c04e1b96a424ba27b30f04181fd4fca6c578e",
+    "captured": "355cc52c76d26ed60d74a4b1100a6b821a47c3b3582b241fc6b2ce5ddcd51be8"
+  }
+}

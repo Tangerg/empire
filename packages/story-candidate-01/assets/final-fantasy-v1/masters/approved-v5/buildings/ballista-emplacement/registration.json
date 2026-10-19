@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "normalVisibleBounds": [
+    38,
+    401,
+    1229,
+    1086
+  ],
+  "normalVisibleWidth": 1191,
+  "proposedLogicalVisibleWidth": 104,
+  "sharedScale": 0.0873215785054576,
+  "sourceFoot": [
+    627,
+    1086
+  ],
+  "registrationRule": "Use complete native canvas for all states, one normal-derived scale, no per-state fit; foot is front structural base contact",
+  "postGenerationTransform": "none",
+  "status": "Complete native trio; accepted normal scale applied unchanged to all states",
+  "acceptedLogicalVisibleWidth": 104,
+  "stateVisibleBounds": {
+    "normal": [
+      38,
+      401,
+      1229,
+      1086
+    ],
+    "damaged": [
+      37,
+      422,
+      1230,
+      1092
+    ],
+    "captured": [
+      37,
+      402,
+      1230,
+      1086
+    ]
+  },
+  "stateLogicalTotalWidths": {
+    "normal": 104.0,
+    "damaged": 104.17464315701092,
+    "captured": 104.17464315701092
+  },
+  "registrationOffsetsLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "rubbleCaveat": "Damaged front detached chunks reach y1092; shared anchor remains structural base contact1086, not the lowest loose rubble",
+  "geometryReview": "Base and fixed brass supports remain aligned at shared camera/scale; native AI minor local contour variation is not post-generation fitted"
+}
