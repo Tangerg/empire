@@ -16,9 +16,9 @@ import {
 import {
   CANDIDATE_01_MAP_STRUCTURE_ART,
   CANDIDATE_01_STRUCTURE_ART,
-  CANDIDATE_01_UNIT_ART,
   CANDIDATE_01_WEAPON_FX,
 } from './candidate-01-bindings';
+import { CANDIDATE_01_ACTOR_ART, resolveCandidate01PresentationBinding } from './candidate-01-actor-art';
 import { CANDIDATE_01_HERO_APPEARANCES, resolveCandidate01UnitArt } from './candidate-01-hero-appearances';
 import {
   boardPictureMarkup,
@@ -28,6 +28,7 @@ import {
   runtimeUnitPicture,
   shade,
   tileGaugeBar,
+  type UnitArtContext,
   type BoardImage,
   type BoardPicture,
   type RuntimeCellAtlas,
@@ -134,8 +135,8 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
   return `<g data-candidate-art="structure" transform="translate(${x} ${y}) scale(${scale})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
 }
 
-export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {
-  const binding = CANDIDATE_01_UNIT_ART[type];
+export function candidate01UnitPicture(type: UnitTypeId, team: string, context?: UnitArtContext): BoardPicture | null {
+  const { unitArt: binding } = resolveCandidate01PresentationBinding(CANDIDATE_01_ACTOR_ART, type, context);
   if (!binding) return null;
   const record = resolveCandidate01UnitArt(CANDIDATE_01_HERO_APPEARANCES, binding, team);
   const picture = runtimeUnitPicture(unitSheet(record), team);
@@ -148,8 +149,8 @@ export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPic
   return picture;
 }
 
-export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number): string | null {
-  const picture = candidate01UnitPicture(type, team);
+export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number, context?: UnitArtContext): string | null {
+  const picture = candidate01UnitPicture(type, team, context);
   if (!picture) return null;
   const strip = picture.strip;
   if (!strip) throw new Error(`candidate-01 unit picture has no strip: ${type}`);

@@ -5,7 +5,7 @@ export interface Candidate01UnitArtBinding {
   readonly appearanceId?: string;
 }
 
-/** Engine ids stay story-agnostic; this table is the only unit-to-art translation. */
+/** Default type-to-art translation; explicit actor overrides live in candidate-01-actor-art. */
 export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, Candidate01UnitArtBinding>>> = {
   'c01.laiya': { topicId: 'C01-UNIT-BANNER-GUARD', appearanceId: 'laiya-stage01' },
   'c01.roderick': { topicId: 'C01-UNIT-HEAVY-KNIGHT', appearanceId: 'roderick-stage01' },

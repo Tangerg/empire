@@ -1,5 +1,6 @@
 import { boardPictureMarkup, type BoardPicture } from './board-surface';
 import type { ArtDirection } from './direction';
+import type { UnitArtContext } from './ports';
 import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
 import { PAL, shade, spriteColors, type SpriteColors } from './palette';
 import { groundShadow } from './shading';
@@ -189,8 +190,8 @@ const sprites: Record<UnitTypeId, Sprite> = {
  * A picture rather than markup, because a generated unit is a spritesheet and a
  * drawn one is not, and that difference is the renderer's to act on.
  */
-export function unitPicture(art: ArtDirection, unit: UnitDef, team: string): BoardPicture {
-  const runtime = art.resolve((provider) => provider.unitPicture?.(unit.id, team));
+export function unitPicture(art: ArtDirection, unit: UnitDef, team: string, context?: UnitArtContext): BoardPicture {
+  const runtime = art.resolve((provider) => provider.unitPicture?.(unit.id, team, context));
   if (runtime !== null) return runtime;
   const colors = spriteColors(team);
   const sprite = sprites[unit.id];
@@ -204,10 +205,10 @@ export function unitPicture(art: ArtDirection, unit: UnitDef, team: string): Boa
 }
 
 /** Standalone svg string, for palettes, menus and the recruit dialog. */
-export function unitIcon(art: ArtDirection, unit: UnitDef, team: string, size = 32): string {
-  const runtime = art.resolve((provider) => provider.unitIcon?.(unit.id, team, size));
+export function unitIcon(art: ArtDirection, unit: UnitDef, team: string, size = 32, context?: UnitArtContext): string {
+  const runtime = art.resolve((provider) => provider.unitIcon?.(unit.id, team, size, context));
   if (runtime !== null) return runtime;
-  const picture = boardPictureMarkup(unitPicture(art, unit, team));
+  const picture = boardPictureMarkup(unitPicture(art, unit, team, context));
   return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${picture}</svg>`;
 }
 

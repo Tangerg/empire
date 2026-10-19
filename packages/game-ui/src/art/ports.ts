@@ -46,12 +46,17 @@ export interface TileContext {
   readonly linked: { n: boolean; e: boolean; s: boolean; w: boolean };
 }
 
+/** Optional stable scenario identity; type-only catalogs and recruitment omit it. */
+export interface UnitArtContext {
+  readonly actorKey?: string | undefined;
+}
+
 export interface ArtProvider {
   id: string;
-  unitPicture?(type: UnitTypeId, team: string): BoardPicture | null;
-  unitIcon?(type: UnitTypeId, team: string, size: number): string | null;
+  unitPicture?(type: UnitTypeId, team: string, context?: UnitArtContext): BoardPicture | null;
+  unitIcon?(type: UnitTypeId, team: string, size: number, context?: UnitArtContext): string | null;
   terrainPicture?(id: TerrainId, context: TileContext): BoardImage | null;
-  portraitMarkup?(type: UnitTypeId, team: string): string | null;
+  portraitMarkup?(type: UnitTypeId, team: string, context?: UnitArtContext): string | null;
   iconMarkup?(topic: string, size?: number, className?: string): string | null;
   abilityIcon?(ability: string): string | null;
   weaponIcon?(weapon: WeaponId): string | null;

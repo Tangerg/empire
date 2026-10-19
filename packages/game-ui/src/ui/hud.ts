@@ -411,7 +411,7 @@ export class Hud {
           const active = unit.id === view.turnOrder.activeUnit && index === 0;
           return `<span class="order-slot ${active ? 'is-active' : ''}" style="--team:${owner?.color ?? PAL.neutral}"
             title="${escapeHtml(definition.name)} · ${escapeHtml(owner?.name ?? '')}">
-            ${unitIcon(this.art, definition, owner?.color ?? PAL.neutral, active ? 26 : 20)}
+            ${unitIcon(this.art, definition, owner?.color ?? PAL.neutral, active ? 26 : 20, { actorKey: unit.key })}
           </span>`;
         })
         .join('')}
@@ -676,7 +676,7 @@ export class Hud {
   private unitHeader(view: HudView, unit: Unit, definition: UnitDef): string {
     const owner = view.state.players.find((player) => player.id === unit.owner);
     return `<div class="unit-head">
-      ${portraitSvg(this.art, definition, owner?.color ?? PAL.neutral, 84)}
+      ${portraitSvg(this.art, definition, owner?.color ?? PAL.neutral, 84, { actorKey: unit.key })}
       <div class="unit-meta">
         <div class="unit-name">${escapeHtml(definition.name)}
           <span class="team-tag" style="--team:${owner?.color}">${escapeHtml(owner?.name ?? '中立')}</span>

@@ -214,7 +214,7 @@ export class EditorBoard {
         const bad = this.isBadPlacement(u);
         // The figure is what a mirror flips, and the bad-placement wash is not part
         // of it — the same shape the board's own surface builds.
-        const picture = unitPicture(this.art, this.content.units.get(u.unit), color);
+        const picture = unitPicture(this.art, this.content.units.get(u.unit), color, { actorKey: u.key });
         return { x: u.x * TILE, y: u.y * TILE, foot: picture.foot ?? CELL_FOOT,
           markup: `<g class="unit${facesLeft(grid, u.facing) ? ' face-left' : ''}">
             <g class="figure">${boardPictureMarkup(picture)}</g>

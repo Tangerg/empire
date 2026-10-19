@@ -512,7 +512,7 @@ export class BoardView {
       // Every actor on the board is lifted off the terrain. Said here because
       // that is what the stylesheet's `.layer-units .unit` meant: it is the
       // board's look, not the art pack's, and not the DOM backend's alone.
-      return { ...unitPicture(this.art, this.content.units.get(unit.type), color), relief: true };
+      return { ...unitPicture(this.art, this.content.units.get(unit.type), color, { actorKey: unit.key }), relief: true };
     });
   }
 

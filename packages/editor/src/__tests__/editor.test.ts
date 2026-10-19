@@ -2,7 +2,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { GENERIC_ART, TILE } from '@empire/game-ui';
+import { ArtDirection, GENERIC_ART, TILE, type UnitArtContext } from '@empire/game-ui';
 import {
   ContentPackInstaller,
   createContentCatalog,
@@ -170,6 +170,25 @@ describe('map editor', () => {
     expect(board.querySelectorAll('.layer-ground > g').length).toBeGreaterThanOrEqual(cells);
     expect(board.querySelectorAll('.layer-terrain > g').length).toBeLessThan(cells / 10);
     expect(host.querySelector('.props')!.textContent).toContain('检查');
+  });
+
+  it('passes actual placed actor keys while keeping the unit palette type-only', () => {
+    app.dispose();
+    const pictures: Array<{ type: string; context?: UnitArtContext | undefined }> = [];
+    const icons: Array<{ type: string; context?: UnitArtContext | undefined }> = [];
+    const art = new ArtDirection([{ id: 'record-actor-context',
+      unitPicture: (type, _team, context) => { pictures.push({ type, context }); return { body: '<circle r="2"/>' }; },
+      unitIcon: (type, _team, _size, context) => { icons.push({ type, context }); return '<svg/>'; },
+    }]);
+    const source = candidate01Level('c01-01');
+    app = new EditorApp({ ...TEST_SETUP, art }, source);
+    app.mount(host);
+    expect(pictures).toHaveLength(source.units.length);
+    expect(pictures).toContainEqual({ type: 'c01.swordsman', context: { actorKey: 'campaign-torren' } });
+    expect(pictures.filter(entry => entry.type === 'c01.swordsman').some(entry => entry.context?.actorKey !== 'campaign-torren')).toBe(true);
+    expect(icons.map(entry => entry.type)).toContain('c01.swordsman');
+    expect(icons.every(entry => entry.context === undefined)).toBe(true);
+    expect(app.exportLevel().units).toEqual(source.units);
   });
 
   it('retains cell-local roads while editing the authored Twin Hills level', () => {

@@ -4,6 +4,7 @@ import {
   definitionKey,
   escapeAttr as attr,
   GroundBoardDecorations,
+  type UnitArtContext,
   type ArtProvider,
   type BattlePresentation,
   type StoryCampaignAdapter,
@@ -33,11 +34,11 @@ import {
   candidate01UnitPicture,
   candidate01WeaponFxTopic,
 } from './candidate-01-runtime';
+import { CANDIDATE_01_ACTOR_ART, resolveCandidate01PresentationBinding } from './candidate-01-actor-art';
 import { candidate01AssetUrl } from './candidate-01-assets';
 import { CANDIDATE_01_PORTRAITS, candidate01ChapterArt, candidate01StoryArt } from './candidate-01-story';
 import {
   CANDIDATE_01_ABILITY_ART,
-  CANDIDATE_01_CHARACTER_ART,
   CANDIDATE_01_STATUS_ART,
   CANDIDATE_01_WEAPON_ART,
 } from './candidate-01-bindings';
@@ -55,20 +56,20 @@ import {
  * A sheet is not a picture. The figure is one *frame* of it — the same frame the
  * board stands the unit on — drawn about its own origin and scaled to the plate.
  */
-function portraitMarkup(type: UnitTypeId, team: string): string | null {
+function portraitMarkup(type: UnitTypeId, team: string, context?: UnitArtContext): string | null {
   const key = `candidate-${definitionKey(type, team)}`;
   const plate = `<defs><clipPath id="${key}"><rect width="96" height="112" rx="8"/></clipPath></defs>`
     + `<g clip-path="url(#${key})"><rect width="96" height="112" fill="${attr(team)}" opacity="0.42"/>`;
   const frame = `<path d="M0 96h96v16H0z" fill="${attr(team)}" opacity="0.72"/></g>`
     + `<rect x="0.75" y="0.75" width="94.5" height="110.5" rx="8" fill="none" stroke="#201914" stroke-width="1.5"/>`;
 
-  const characterTopic = CANDIDATE_01_CHARACTER_ART[type];
+  const { characterTopicId: characterTopic } = resolveCandidate01PresentationBinding(CANDIDATE_01_ACTOR_ART, type, context);
   if (characterTopic) {
     return `${plate}<image href="${attr(candidate01AssetUrl(characterTopic))}" x="-8" y="0"`
       + ` width="112" height="112" preserveAspectRatio="xMidYMid slice" class="candidate-portrait-image"/>${frame}`;
   }
 
-  const picture = candidate01UnitPicture(type, team);
+  const picture = candidate01UnitPicture(type, team, context);
   if (!picture) return null;
   const strip = picture.strip;
   if (!strip) throw new Error(`candidate-01 unit picture has no strip: ${type}`);

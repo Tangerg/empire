@@ -1,4 +1,5 @@
 import type { ArtDirection } from './direction';
+import type { UnitArtContext } from './ports';
 import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
 import { PAL, shade, spriteColors, type SpriteColors } from './palette';
 import { definitionKey } from './svg';
@@ -255,8 +256,8 @@ function portraitFromRules(unit: UnitDef, c: SpriteColors): string {
  * layer up: every type nobody drew wore the same face in the inspector. The
  * fallback is built from the shared template and what the rules can see.
  */
-export function portraitMarkup(art: ArtDirection, unit: UnitDef, team: string): string {
-  const provided = art.resolve((provider) => provider.portraitMarkup?.(unit.id, team));
+export function portraitMarkup(art: ArtDirection, unit: UnitDef, team: string, context?: UnitArtContext): string {
+  const provided = art.resolve((provider) => provider.portraitMarkup?.(unit.id, team, context));
   if (provided !== null) return provided;
   const c = spriteColors(team);
   const drawn = portraits[unit.id];
@@ -278,11 +279,12 @@ export function portraitMarkup(art: ArtDirection, unit: UnitDef, team: string): 
     <rect x="0.75" y="0.75" width="${FRAME_W - 1.5}" height="${FRAME_H - 1.5}" rx="8" fill="none" stroke="${shade(team, -0.4)}" stroke-width="1.5"/>`;
 }
 
-export function portraitSvg(art: ArtDirection, unit: UnitDef, team: string, width = 96): string {
+export function portraitSvg(art: ArtDirection, unit: UnitDef, team: string, width = 96, context?: UnitArtContext): string {
   const height = Math.round((width / FRAME_W) * FRAME_H);
   return `<svg viewBox="0 0 ${FRAME_W} ${FRAME_H}" width="${width}" height="${height}" class="portrait">${portraitMarkup(
     art,
     unit,
     team,
+    context,
   )}</svg>`;
 }

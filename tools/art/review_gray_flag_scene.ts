@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { content, engine, shippedLevel, CANDIDATE_01_ART, emptyOverlay } from '../board-harness';
-import { CANDIDATE_01_UNIT_ART } from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
+import { CANDIDATE_01_ACTOR_ART, resolveCandidate01PresentationBinding } from '../../packages/story-candidate-01/src/presentation/candidate-01-actor-art';
 import { BoardDepthOrder, BoardView, CELL_FOOT, SvgBoardSurface, TILE, type BoardLayer, type BoardPiece } from '@empire/game-ui';
 
 const root = resolve(import.meta.dirname, '../..');
@@ -22,6 +22,10 @@ for (const path of [environmentPath,
   'packages/story-candidate-01/src/levels.ts',
   'packages/story-candidate-01/src/campaign.ts',
   'packages/story-candidate-01/src/presentation/index.ts',
+  'packages/story-candidate-01/src/presentation/candidate-01-bindings.ts',
+  'packages/story-candidate-01/src/presentation/candidate-01-actor-art.ts',
+  'packages/story-candidate-01/src/presentation/candidate-01-hero-appearances.ts',
+  'packages/story-candidate-01/assets/final-fantasy-v1/manifest-hero-appearances.json',
   'packages/game-ui/src/art/battlefield-layer.ts',
   'packages/game-ui/src/ui/board.ts',
   'packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts',
@@ -90,7 +94,7 @@ const renders = [];
     const displayIndex = standingDrawOrder.findIndex((entry) => entry.id === actor.id);
     const element = svg.querySelector('.layer-units')!.children[displayIndex];
     const runtimeImage = element.querySelector('image')!.getAttribute('href')!.split('?')[0];
-    const binding = CANDIDATE_01_UNIT_ART[actor.type];
+    const { unitArt: binding } = resolveCandidate01PresentationBinding(CANDIDATE_01_ACTOR_ART, actor.type, { actorKey: actor.key });
     return { ...actor, topicId: binding?.topicId,
       ...(binding?.appearanceId ? { appearanceId: binding.appearanceId } : {}), runtimeImage,
       usesApprovedV5: runtimeImage.includes('/runtime-approved-v5/') };
