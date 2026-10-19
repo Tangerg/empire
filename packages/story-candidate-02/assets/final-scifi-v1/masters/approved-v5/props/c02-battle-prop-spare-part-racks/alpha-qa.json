@@ -1,0 +1,42 @@
+{
+  "topicId": "c02-battle-prop-spare-part-racks",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "canvasEdgeAlpha1Count": 19,
+  "visibleAlphaBBoxGE8": [
+    144,
+    71,
+    1111,
+    1183
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    144,
+    71,
+    143,
+    71
+  ],
+  "opaqueFractionAlphaGE240": 0.4835314871200039,
+  "sha256": "b65970dd3abc4f4323224db010fd1e9735785c695ddc1c6f343eba311e614c82",
+  "matchesRawGeneratedBytes": true,
+  "formalSourceAlphaContract": "PASS: RGBA, exterior alpha0 present, near-opaque subject alpha>=240 present, perimeter max<=1, intact silhouette",
+  "actual64Contract": "PASS: full source60x60 Lanczos in64x64 with2px padding; edge alpha0, 1584 pixels alpha>=240; reviewed on white and black backgrounds, no visible halo/haze or solid background",
+  "additionalErosionDiagnostic": {
+    "definition": "8px erosion of alpha>=8 threshold",
+    "minimumAlpha": 71,
+    "pixelsBelow240": 55,
+    "interpretation": "The earlier failed-alpha filenames reflect a supplementary morphology test that misclassified a narrow anti-aliased negative-space seam as subject interior. It is not a formal export-contract failure. History filenames and pixels retained unchanged."
+  },
+  "parentVisualAcceptance": "Inventory parent accepted v3 at 2026-10-19 18:43 UTC after inspecting native64 white/black comparison, silhouette and bottom spacing.",
+  "visualQA": "Pass: original single rack with two utility bins, gear/coil/motor/spare-part identities preserved in chunky style. Complete visible silhouette. No visible halo or external glow.",
+  "postprocessing": "None for native master. Byte-exact generated-source copies only; diagnostic64 resizing/compositing kept separate.",
+  "runtimeReady": false
+}

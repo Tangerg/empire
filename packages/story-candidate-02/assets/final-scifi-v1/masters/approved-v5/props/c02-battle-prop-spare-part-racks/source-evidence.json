@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-battle-prop-spare-part-racks",
+  "assetId": "C02-SFV1-battle-prop-spare-part-racks",
+  "label": "备件架后勤组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-02.png",
+  "originalMasterSha256": "5da84be37462ae7332ef56b28eeccef9a442513ac75f59fe12e758a8f8b0809b",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Original full visual source board inspection and exact slot crop cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md original battle-prop order; consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-spare-part-racks.png",
+  "runtimeReferenceSha256": "9265e412e0986b138eb06f1062efd522b405e3067634886e06980208dd6d2e50",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-faf8171c-643d-4bbf-986d-91ccba6270cf.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v3.png",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt-v2.txt",
+    "refinement-prompt-v3.txt"
+  ],
+  "unexecutedPrompt": "refinement-prompt-v4.txt was drafted but never sent to imagegen; generation stopped after native64 review.",
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/candidate-v2-failed-alpha.png"
+  ],
+  "historicalCandidates": [
+    "candidate-v1-failed-alpha.png",
+    "candidate-v2-failed-alpha.png",
+    "candidate-v3-failed-alpha.png"
+  ],
+  "historicalDiagnosticClarification": "The earlier failed-alpha filenames reflect a supplementary morphology test that misclassified a narrow anti-aliased negative-space seam as subject interior. It is not a formal export-contract failure. History filenames and pixels retained unchanged.",
+  "semanticNotes": "One open multi-level spare-parts rack retains original large gear/couplings, coil, motor and electronics categories; two floor bins remain green and amber with loose ring and bearing hub. Subtle native negative-space antialiasing retained.",
+  "parentVisualAcceptance": "Inventory parent accepted v3 at 2026-10-19 18:43 UTC after inspecting native64 white/black comparison, silhouette and bottom spacing."
+}

@@ -1,0 +1,38 @@
+{
+  "rowsTopToBottom": [
+    "v1",
+    "v2",
+    "v3"
+  ],
+  "columns": [
+    "white",
+    "black"
+  ],
+  "derivation": "Diagnostic only: exact exporter contract equivalent ImageOps.contain full authored canvas to60x60 Lanczos, centered in64x64 with2px padding. Source pixels unchanged; no crop, recolor or alpha cleanup. White/black composites are inspection proofs only.",
+  "versions": [
+    {
+      "candidate": "v1",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/candidate-v1-failed-alpha.png",
+      "rawSha256": "436076fe335096219d450805f0173795b1383be3c087db7aaa3efc0e8a348e03",
+      "canvasEdgeAlphaMax": 0,
+      "visiblePixelsAlphaGE240": 1610,
+      "actual64": "candidate-v1-64.png"
+    },
+    {
+      "candidate": "v2",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/candidate-v2-failed-alpha.png",
+      "rawSha256": "8174df2c09db028b147b85c584516fab8bd9798d9bbdc652849f4b9cf3e8eae4",
+      "canvasEdgeAlphaMax": 0,
+      "visiblePixelsAlphaGE240": 1594,
+      "actual64": "candidate-v2-64.png"
+    },
+    {
+      "candidate": "v3",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/candidate-v3-failed-alpha.png",
+      "rawSha256": "b65970dd3abc4f4323224db010fd1e9735785c695ddc1c6f343eba311e614c82",
+      "canvasEdgeAlphaMax": 0,
+      "visiblePixelsAlphaGE240": 1584,
+      "actual64": "candidate-v3-64.png"
+    }
+  ]
+}
