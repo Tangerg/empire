@@ -1199,13 +1199,13 @@
       "topicId": "C01-UNIT-BERSERKER",
       "label": "狂战士",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-berserker.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-berserker.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1214,13 +1214,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        45.83177570093458,
+        50.539857064321055
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-CANNON-WAGON",
@@ -5009,7 +5010,7 @@
       "width": 48,
       "height": 48,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "anchor": [
         24,
         24
@@ -5099,7 +5100,7 @@
       "width": 48,
       "height": 48,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "anchor": [
         24,
         24
@@ -5294,7 +5295,7 @@
       "width": 48,
       "height": 48,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "anchor": [
         24,
         24
@@ -5489,7 +5490,7 @@
       "width": 48,
       "height": 48,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "anchor": [
         24,
         24

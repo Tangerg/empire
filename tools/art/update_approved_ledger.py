@@ -35,7 +35,10 @@ def build(root=ROOT):
         elif stem.startswith('equip-'):
             relative = Path('equipment') / stem
         else:
-            relative = None
+            directory = {'battle-prop': 'props', 'equipment': 'equipment',
+                         'combat-unit': 'animation', 'mission-unit': 'mission',
+                         'interactive-structure': 'buildings'}.get(current['category'])
+            relative = Path(directory) / topic if directory else None
         raw = []
         if relative:
             directory = root / Path(path).parent / 'masters/approved-v5' / relative

@@ -1,0 +1,63 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export pending",
+  "topic": "C01-UNIT-BERSERKER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current campaign or built-in rule consumer/binding",
+  "bodyScale": "44/909.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1584,
+      993
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1584,
+      993
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourcePaddingRequired": "Idle native1586x992; walk-a/walk-b native1584x993; attack native1585x992. Common1586x993 requires two transparent right columns for walks, one right column for attack, and one bottom row for idle/attack during export preparation only. Native pixels/canvases remain unchanged.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges; native alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "exactlyTwoSeparateAxesEveryPose": true,
+  "oneOriginalAxePerOriginalHand": true,
+  "twoArmsAndTwoHandsOnly": true,
+  "equipmentCompleteEveryPose": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Clear asymmetric dual-axe melee action: original near/screen-left arm extends across the front into a forward chop with its own short axe; original far/screen-right arm raises its own second axe in guarded preparation. Two anatomically connected arms and hands, one independent shaft per hand. Front right knee bent/flat, rear left leg braced wide. Both axes complete, no new weapon or FX. This intentionally repairs the original attack disappearing left axe; it does not replicate that source defect.",
+  "semanticContract": "C01-UNIT-BERSERKER is a catalog-only canonical combat-unit with no current campaign/built-in rule consumer or weapon binding. Preserve idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1. Original attack drops the near screen-left axe and both original walks advance the same front foot. Coordinator explicitly approved repairing continuity using verified idle identity: two separate short single-bladed axes, one in each original hand, in all four poses. New attack is an asymmetric forward chop with the other axe raised in guard; this is a deliberate continuity repair, not exact replication of the defective source frame. New walks have opposite contacts. No additional rule, consumer binding, fifth pose or independent rage/impact FX.",
+  "sourceContinuityRepair": "Coordinator2026-10-19 17:59UTC: retain verified idle two-axe identity consistently; original attack missing left axe is repaired continuity, not exact source replication. Asymmetric two-arm attack approved; no new rule/consumer binding.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "newConsumerBindingInvented": false,
+  "gameplayFixClaimed": false
+}

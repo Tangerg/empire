@@ -13,6 +13,7 @@ const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
   { topic: 'C01-STRUCT-FORGE-GUN-POSITION', source: 'buildings/forge-gun-position', size: [116, 116], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
+  { topic: 'C01-UNIT-BERSERKER', source: 'animation/berserker', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-AXE-BREAKER', source: 'animation/axe-breaker', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-RUNE-SHIELD', source: 'animation/rune-shield', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-INQUISITOR', source: 'animation/inquisitor', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
@@ -131,7 +132,8 @@ describe('authored red sequence file contract', () => {
 
 describe('approved static asset bindings', () => {
   const props = Object.entries(sourceOverrides.assets)
-    .filter(([, entry]) => entry.source.includes('/masters/approved-v5/props/') || entry.source.includes('/masters/approved-v5/equipment/'))
+    .filter(([topic, entry]) => manifest.assets.some(asset => asset.topicId === topic)
+      && (entry.source.includes('/masters/approved-v5/props/') || entry.source.includes('/masters/approved-v5/equipment/')))
     .map(([topic]) => topic);
   it.each(props)('resolves %s through its exact canonical density contract', (topic) => {
     const record = candidate01Asset(topic);

@@ -54,3 +54,16 @@ class ApprovedLedgerTests(unittest.TestCase):
         result = build(self.root)
         self.assertEqual(result['summary']['formalBound'], 1)
         self.assertEqual(result['summary']['liveGameVerified'], 0)
+
+    def test_full_scifi_topic_identity_locates_raw_without_counting_binding(self):
+        topic = {**self.topic, 'topicId': 'c02-battle-prop-cargo-crates', 'category': 'battle-prop'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-02', 'label': 'Cargo crates'}])
+        raw = self.root / 'pack/masters/approved-v5/props/c02-battle-prop-cargo-crates'
+        raw.mkdir(parents=True)
+        (raw / 'master.png').write_bytes(b'preserved source placeholder')
+        result = build(self.root)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(result['summary']['formalBound'], 0)
+        self.assertEqual(result['summary']['liveGameVerified'], 0)

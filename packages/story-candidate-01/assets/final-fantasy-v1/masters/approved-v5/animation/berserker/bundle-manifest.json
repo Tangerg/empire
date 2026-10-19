@@ -1,0 +1,147 @@
+{
+  "asset": "C01-UNIT-BERSERKER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current campaign or built-in rule consumer/binding",
+  "status": "Native quartet complete; coordinator final sequence review/export pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every selected master/raw PNG is byte-identical to its native output. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04837822979659153,
+  "bodyReferenceSourcePixels": 909.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/registration-evidence.json",
+  "identityContract": "Adult olive-green orc-like humanoid with pointed ears, small ivory lower tusks, exposed swept-back dark braids, strong brows and clean-shaven chin. Rust-red quilted long sleeveless coat, tan upper-arm bands, brown bracers, bare olive hands, bone/tooth necklace, brown belt/pouch/boots and dark gray-brown front loincloth. Red cloth knot on screen-left upper arm. Each hand holds one short-handled single-bladed axe; left low/down-right, right outward/up-right. Approved chunky head/hands/boots, broad matte cel planes and clean complete alpha silhouette.",
+  "semanticContract": "C01-UNIT-BERSERKER is a catalog-only canonical combat-unit with no current campaign/built-in rule consumer or weapon binding. Preserve idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1. Original attack drops the near screen-left axe and both original walks advance the same front foot. Coordinator explicitly approved repairing continuity using verified idle identity: two separate short single-bladed axes, one in each original hand, in all four poses. New attack is an asymmetric forward chop with the other axe raised in guard; this is a deliberate continuity repair, not exact replication of the defective source frame. New walks have opposite contacts. No additional rule, consumer binding, fifth pose or independent rage/impact FX.",
+  "sourceContinuityRepair": "Coordinator2026-10-19 17:59UTC: retain verified idle two-axe identity consistently; original attack missing left axe is repaired continuity, not exact source replication. Asymmetric two-arm attack approved; no new rule/consumer binding.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "Coordinator2026-10-19 18:02UTC viewed and accepted idle,44/909.5 scale,1586x992 canvas and foot[782,962].",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "fd3a214418a4caa9f6218b9a1bff8211b07421446c79c88234c6e141f925ff03",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        782,
+        962
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        391,
+        48,
+        1314,
+        963
+      ],
+      "sha256": "9ef6e4bf71ac588eae5d5e00b024d3e496d4f7f3c56f712de33344428829bdf8",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-97988455-b66e-4d15-8cf0-64995d520b55.png",
+      "review": "Adult olive-green orc-like humanoid with pointed ears, small ivory lower tusks, exposed swept-back dark braids, strong brows and clean-shaven chin. Rust-red quilted long sleeveless coat, tan upper-arm bands, brown bracers, bare olive hands, bone/tooth necklace, brown belt/pouch/boots and dark gray-brown front loincloth. Red cloth knot on screen-left upper arm. Each hand holds one short-handled single-bladed axe; left low/down-right, right outward/up-right. Approved chunky head/hands/boots, broad matte cel planes and clean complete alpha silhouette."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "44d787f3a249a41f3fc33c84af46c14f9d10380b704f0fb66f9afb1bcf72e872",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-a/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        738,
+        960
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        363,
+        51,
+        1332,
+        961
+      ],
+      "sha256": "9782723dc6f1f031095d8b3259fd479eb6e9d4e8dfc676ff90d274f07b6da542",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7f9bae26-014d-4702-95fb-a8c67a23a940.png",
+      "review": "Front screen-right boot clearly toe-up with visible sole/heel contact; rear screen-left boot flat and weight-bearing. Both separate original axes retained, one per hand, no hand/shaft fusion."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "fa6373ef2e6419b6cd64463e50e06a37abbab46c885cd8565cac5dd96d64e095",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        714,
+        952
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        273,
+        45,
+        1350,
+        953
+      ],
+      "sha256": "7c68c241fd278e656c6c10c67cf52629fe866049766f6990325f7e4e480b66dd",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6ee3eb4a-4b0a-4763-ad3a-58b35f4acd0d.png",
+      "review": "Clear asymmetric dual-axe melee action: original near/screen-left arm extends across the front into a forward chop with its own short axe; original far/screen-right arm raises its own second axe in guarded preparation. Two anatomically connected arms and hands, one independent shaft per hand. Front right knee bent/flat, rear left leg braced wide. Both axes complete, no new weapon or FX. This intentionally repairs the original attack disappearing left axe; it does not replicate that source defect."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "8c8290f0a9c868eb7c6dd5966c18ad6901de79a66f3acc5517f6a67d740f1f3a",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/berserker/walk-b/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        760,
+        961
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        343,
+        46,
+        1349,
+        962
+      ],
+      "sha256": "24af27ccfd3f89264ce21ed7db74bcee7516510355bc27b08f1aa19e61ba5f1a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-950c9135-aaa2-4717-86b5-398ca4dca119.png",
+      "review": "Front screen-right boot flat and weight-bearing; rear screen-left heel clearly raised with toe down. Opposite walk-a, same facing and physical leg identity. Each hand retains its original separate short single-bladed axe."
+    }
+  }
+}

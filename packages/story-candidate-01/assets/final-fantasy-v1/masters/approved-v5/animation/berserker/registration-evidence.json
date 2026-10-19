@@ -1,0 +1,238 @@
+{
+  "status": "Measured whole-canvas proposal; coordinator final export/review pending",
+  "sharedScale": 0.04837822979659153,
+  "scaleFraction": "44/909.5",
+  "bodyReferenceSourcePixels": 909.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Accepted idle crown y48 to exact two-sole mean y957.5. One body-derived scale applies to every complete native canvas.",
+  "canonicalSourceFoot": [
+    782,
+    962
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "paddingPolicy": "Idle native1586x992; walk-a/walk-b native1584x993; attack native1585x992. Common1586x993 requires two transparent right columns for walks, one right column for attack, and one bottom row for idle/attack during export preparation only. Native pixels/canvases remain unchanged.",
+  "canvasPaddingToleranceRequired": 2,
+  "maximumPadRight": 2,
+  "maximumPadBottom": 1,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Whole-canvas translation at locked44/909.5. Anchor x is mean of both boot bottom-four-row alpha>127 support bands; y is lowest sole. Manual boot-only ROIs exclude the near axe blade; exact midpoint and ROIs preserved.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        782,
+        962
+      ],
+      "bothBootSoleBandMidpoint": [
+        781.7860625179237,
+        957.5
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        391,
+        48,
+        1314,
+        963
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        21,
+        1526,
+        973
+      ],
+      "proposedLogicalVisibleBounds": [
+        26.915888,
+        6.322155,
+        71.568994,
+        50.588235
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        84.727872,
+        52.039582
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 reaches any edge."
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        738,
+        960
+      ],
+      "bothBootSoleBandMidpoint": [
+        737.5493293885602,
+        958.0
+      ],
+      "registrationOffsetLogical": [
+        2.128642111,
+        0.09675646
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        363,
+        51,
+        1332,
+        961
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        2,
+        23,
+        1418,
+        964
+      ],
+      "proposedLogicalVisibleBounds": [
+        27.68994,
+        6.564046,
+        74.568444,
+        50.588235
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        10.128642,
+        4.096756,
+        86.856515,
+        52.136339
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 reaches any edge."
+      }
+    },
+    "attack": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        714,
+        952
+      ],
+      "bothBootSoleBandMidpoint": [
+        714.4027263625992,
+        946.5
+      ],
+      "registrationOffsetLogical": [
+        3.289719626,
+        0.483782298
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        273,
+        45,
+        1350,
+        953
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        89,
+        42,
+        1523,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        24.496976,
+        6.660803,
+        76.60033,
+        50.588235
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        11.28972,
+        4.483782,
+        88.017592,
+        52.523364
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 reaches any edge."
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        760,
+        961
+      ],
+      "bothBootSoleBandMidpoint": [
+        760.0161715678958,
+        949.0
+      ],
+      "registrationOffsetLogical": [
+        1.064321056,
+        0.04837823
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        343,
+        46,
+        1349,
+        962
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        51,
+        42,
+        1448,
+        965
+      ],
+      "proposedLogicalVisibleBounds": [
+        25.658054,
+        6.273777,
+        74.326553,
+        50.588235
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        9.064321,
+        4.048378,
+        85.792194,
+        52.08796
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha=1 specks retained; no silhouette alpha>1 reaches any edge."
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 3.289719626,
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "translationBasis": "Measured attack foot[714,952] differs from idle[782,962] by[68,10]source pixels. At44/909.5, whole-canvas offset is x+3.289719626,y+0.483782298logical. Existing limit4 suffices; all complete canvases fit104x64 at origin[8,4], with no independent scale or silhouette fitting."
+}

@@ -1957,6 +1957,50 @@
           }
         }
       }
+    },
+    "landmarks-large": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/landmarks-large.png",
+          "sha256": "9f4080139a033bdf07c396034200150797014b30966d7d97f79d4768a84e97db"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/landmarks-large@2x.png",
+          "sha256": "45f25f982c9b470e9274883c5be71483ed08693a3d1b640ad300737525c76c30"
+        }
+      },
+      "cells": {
+        "border-palisade-fort": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/landmarks-large/border-palisade-fort/border-palisade-fort-master.png",
+          "sha256": "5125f1cc588a485a4f0e7b5bdc537ca0b96548ec7b5805cabf3de1ae8e02fb67",
+          "registration": {
+            "scale": 0.12121212121212122,
+            "origin": [
+              4,
+              4
+            ],
+            "sourceFoot": [
+              627,
+              1176
+            ]
+          }
+        },
+        "lorne-stone-castle": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/landmarks-large/lorne-stone-castle/lorne-stone-castle-master.png",
+          "sha256": "be648d31f13e5b8312b655be1147890a39edae788415e363658a640fbde76298",
+          "registration": {
+            "scale": 0.12121212121212122,
+            "origin": [
+              4,
+              4
+            ],
+            "sourceFoot": [
+              672,
+              1204
+            ]
+          }
+        }
+      }
     }
   }
 }

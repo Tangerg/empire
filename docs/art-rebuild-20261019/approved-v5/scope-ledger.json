@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 100,
+    "formalBound": 106,
     "boundByCategory": {
-      "battle-prop": 32,
-      "combat-unit": 19,
-      "equipment": 24,
+      "battle-prop": 33,
+      "combat-unit": 20,
+      "equipment": 28,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 100,
+    "rawPreservedTopics": 106,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 123
+    "registeredEnvironmentCells": 125
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 123,
+    "registeredIndividualSourceCells": 125,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1364,13 +1364,23 @@
       "category": "combat-unit",
       "label": "狂战士",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-berserker.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-berserker.png",
+      "stageEvidence": {
+        "raw": "four native poses; original green-skinned identity and two axes retained, original attack missing-axe continuity repaired",
+        "export": "shared44/909.5 scale, measured feet/maximum3.28972 registration,2 right/1 bottom transparent padding; native pose/alpha review passed",
+        "runtimeBinding": "canonical and HD art resolver bound; catalog-only, no current rule consumer invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-CANNON-WAGON",
@@ -4387,13 +4397,20 @@
       "category": "equipment",
       "label": "德鲁伊主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-druid/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-druid.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "original equipment objects/symbols verified, native source unchanged",
+        "export": "native48 three-background semantic/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon, no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-EAGLE-SCOUT",
@@ -4485,13 +4502,20 @@
       "category": "equipment",
       "label": "守墓人主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-gravekeeper/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-gravekeeper.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "original equipment objects/symbols verified, native source unchanged",
+        "export": "native48 three-background semantic/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon, no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-HEAVY-KNIGHT",
@@ -4716,13 +4740,20 @@
       "category": "equipment",
       "label": "符文工匠主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-rune-artificer/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-rune-artificer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "original equipment objects/symbols verified, native source unchanged",
+        "export": "native48 three-background semantic/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon, no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-RUNE-SHIELD",
@@ -4947,13 +4978,20 @@
       "category": "equipment",
       "label": "林地行者主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-woodland-walker/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-woodland-walker.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "original equipment objects/symbols verified, native source unchanged",
+        "export": "native48 three-background semantic/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon, no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-WYVERN-RIDER",
@@ -9574,13 +9612,20 @@
       "category": "battle-prop",
       "label": "货箱掩体组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-cargo-crates/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-cargo-crates.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "first C02 chunky pilot: original armored crates/latches/indicators retained",
+        "export": "native64 alpha and three-background semantic readability passed",
+        "runtimeBinding": "C02 canonical asset manifest/runtime PNG replaced; C02 has no implemented playable campaign/runtime consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-ceramic-water-tanks",
@@ -18334,9 +18379,22 @@
     {
       "atlasId": "landmarks-large",
       "baselineComponentCount": 16,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "border-palisade-fort",
+        "lorne-stone-castle"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "border-palisade-fort",
+          "lorne-stone-castle"
+        ],
+        "count": 2,
+        "export": "160/320 full-canvas registration, original baseline and untouched14 cells checked",
+        "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
+        "sceneReview": "native0.55 catalog sample silhouettes/alpha/identity passed; not a production placement or replacement of interactive three-state buildings",
+        "liveGame": "pending"
+      }
     },
     {
       "atlasId": "decals-small",

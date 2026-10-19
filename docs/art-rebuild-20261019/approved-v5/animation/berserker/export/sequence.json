@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-b/master.png"
+    },
+    "scale": 0.04837822979659153,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      782,
+      962
+    ],
+    "sourceFeet": {
+      "idle": [
+        782,
+        962
+      ],
+      "walk-a": [
+        738,
+        960
+      ],
+      "attack": [
+        714,
+        952
+      ],
+      "walk-b": [
+        760,
+        961
+      ]
+    },
+    "canvasPaddingTolerance": 2,
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        2.1286421110500275,
+        0.09675645959318306
+      ],
+      "attack": [
+        3.289719626168224,
+        0.4837822979659153
+      ],
+      "walk-b": [
+        1.0643210555250138,
+        0.04837822979659153
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    45.83177570093458,
+    50.539857064321055
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "9ef6e4bf71ac588eae5d5e00b024d3e496d4f7f3c56f712de33344428829bdf8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5502,
+        "nearOpaquePixels": 966,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          6,
+          71,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "9ef6e4bf71ac588eae5d5e00b024d3e496d4f7f3c56f712de33344428829bdf8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22125,
+        "nearOpaquePixels": 4001,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          13,
+          143,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-a/master.png",
+      "registrationOffset": [
+        2.1286421110500275,
+        0.09675645959318306
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "9782723dc6f1f031095d8b3259fd479eb6e9d4e8dfc676ff90d274f07b6da542",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5500,
+        "nearOpaquePixels": 956,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          7,
+          74,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-a/master.png",
+      "registrationOffset": [
+        2.1286421110500275,
+        0.09675645959318306
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "9782723dc6f1f031095d8b3259fd479eb6e9d4e8dfc676ff90d274f07b6da542",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22158,
+        "nearOpaquePixels": 3904,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          13,
+          149,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/attack/master.png",
+      "registrationOffset": [
+        3.289719626168224,
+        0.4837822979659153
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "7c68c241fd278e656c6c10c67cf52629fe866049766f6990325f7e4e480b66dd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5476,
+        "nearOpaquePixels": 955,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          7,
+          76,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/attack/master.png",
+      "registrationOffset": [
+        3.289719626168224,
+        0.4837822979659153
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "7c68c241fd278e656c6c10c67cf52629fe866049766f6990325f7e4e480b66dd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22024,
+        "nearOpaquePixels": 3976,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          13,
+          153,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-b/master.png",
+      "registrationOffset": [
+        1.0643210555250138,
+        0.04837822979659153
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "24af27ccfd3f89264ce21ed7db74bcee7516510355bc27b08f1aa19e61ba5f1a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5499,
+        "nearOpaquePixels": 948,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          6,
+          74,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/berserker/walk-b/master.png",
+      "registrationOffset": [
+        1.0643210555250138,
+        0.04837822979659153
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "24af27ccfd3f89264ce21ed7db74bcee7516510355bc27b08f1aa19e61ba5f1a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22137,
+        "nearOpaquePixels": 3912,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          13,
+          149,
+          101
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}
