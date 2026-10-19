@@ -1,0 +1,7479 @@
+{
+  "schemaVersion": 1,
+  "baseline": "2276a89f75b5a6734e6347f62941d4a0e5b37d03",
+  "sampleReferenceCommit": "ac2a95ef923ea040620b8691d5733365a36ca0a4",
+  "statusDefinitions": {
+    "pending": "not remade",
+    "raw-generated": "new master backed up, not accepted or exported",
+    "exported": "derived runtime files exist, pending full QA",
+    "verified": "identity, visual, transparency and consumer checks pass"
+  },
+  "topics": [
+    {
+      "topicId": "C01-ARCH-ANSEL-TOWER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-BONE-TOWER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-CAPITAL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-FIELD-HOSPITAL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-FORGE-CITY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-GRAY-CAMP",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-LOAK-BAKERY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-MERCENARY-MARKET",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-REDSTONE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-SILVERWOOD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-TWIN-HILLS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-ARCH-VEINPORT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH01-S00",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH01-S01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH01-S02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH01-S05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH02-S06",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH02-S09",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH03-S11",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH03-S14",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH03-S16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH04-S19",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH05-S22",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH05-S24",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH05-S26",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH06-S29",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH06-S32",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH07-S33-EST",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH07-S34",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CH07-S36E",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-ADA-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-ADA-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-BRAN-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-BRAN-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-CAIN-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-CAIN-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-IVRA-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-IVRA-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-IVRA-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-LEIA-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-LEIA-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-LEIA-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-MIREL-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-MIREL-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-NOBANNER-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-NOBANNER-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-RODERICK-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-RODERICK-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-SEVERIN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-TASHA-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-TORREN-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-CHAR-TORREN-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-ADA-MEDICINE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-CASUALTY-REGISTER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-CONTROL-FRAGMENT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-CROWN-FRAGMENT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-EVACUATION-MAP",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-EXILE-HARDTACK",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-EXPIRING-MANDATE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-FIRST-GREY-FLAG",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-FREE-OATH-STONE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-GRANARY-KEY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-LEFT-GLOVE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-NAME-TAGS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SCENE-ARCHIVE-FORGE-OPEN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SCENE-NURSERY-DEBATE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SCENE-OLD-FLAG-HOMECOMING",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SCENE-PUBLIC-RATIONS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SCENE-REFUGEE-BRIDGEWORK",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STYLE-BORDER-AUTUMN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STYLE-CAPITAL-ORDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STYLE-ELDER-PEOPLES",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STYLE-KEYART",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STYLE-LONG-NIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STYLE-OATH-LIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-ANCIENT-DRAGON",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-ARCHER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-ASSASSIN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-AXE-BREAKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-BALLISTA",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-BATTLE-MAGE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-BERSERKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-CANNON-WAGON",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-CLERIC",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-DRUID",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-EAGLE-SCOUT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-ENGINEER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-GHOST",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-INQUISITOR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-JAVELIN-HUNTER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-KNIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-MAGE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-RANGER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-ARTIFICER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-SHIELD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-SHAMAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-SILVER-LONGBOW",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-SKELETON-GUARD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-SPEARMAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-SPIRIT-FIRE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-STONE-GOLEM",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-TEMPLAR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-TROLL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-WHITE-STAG-RIDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-WOLF-RIDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-WOODLAND-WALKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-UNIT-WYVERN-RIDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-BAKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-BRIDGE-LABORER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-CARAVAN-ESCORT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-CITY-DOCTOR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-DETAINED-WITNESS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-EVACUATION-DRIVER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-FIELD-MESSENGER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-FORGE-ARTISAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-MINER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-NAME-REGISTRAR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-NURSERY-CARETAKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-ADULT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-CHILD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-RELEASED-VETERAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-RELIEF-COOK",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-SCRIBE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-TOWN-MILITIA",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-WALL-LABORER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-MISSION-WOUNDED",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-DRAGON-COVENANT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-GRAY-BANNER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-HOLY-LIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-LATE-ALLIANCE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-LORNE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-MILITIA-MERCENARY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-MOUNTAIN-FORGE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-NAMED-DEAD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-OATH-CONTROLLED",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-SILVERWOOD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-VILSA",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FACTION-WASTELAND",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-ARCHIVE-FURNACE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-CAPITAL-GATE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-FIELD-HOSPITAL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-FORGE-GUN-POSITION",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-FORGE-WORKSHOP",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-GRAY-FLAG-POINT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-HOLY-MEDICINE-SHED",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-JOINT-GRANARY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-LORNE-KEEP",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-MILITARY-REGISTRY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-NAME-MEMORIAL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-PUBLIC-RATION-POINT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-THREE-BRIDGE-SPAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-COVER-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-COVER-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-COVER-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-COVER-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-ANCIENT-DRAGON",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-ANTI-LARGE-KIT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-ANTI-OATH-GEAR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-ARCHER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-ASSASSIN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-AXE-BREAKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-BALLISTA",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-BANNER-GUARD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-BATTLE-MAGE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-BERSERKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-BRIDGE-TOWER-TOOLS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-CANNON-WAGON",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-CEMETERY-COLOSSUS",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-CLERIC",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-DRUID",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-EAGLE-SCOUT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-ENGINEER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-EVIDENCE-SEAL-KIT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-FIELD-MEDICAL-KIT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-GHOST",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-GRAVEKEEPER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-HEAVY-KNIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-INQUISITOR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-IVRA-GROWTH",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-JAVELIN-HUNTER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-KNIGHT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-LANCE-CAVALRY",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-LEGION-SHIELD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-LONG-RANGE-SCOUT-KIT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-MAGE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-MOBILITY-GEAR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-QUARTERMASTER-SUPPLY-KIT",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-RANGER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-RUNE-ARTIFICER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-RUNE-SHIELD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-SHAMAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-SILVER-LONGBOW",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-SKELETON-GUARD",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-SPEARMAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-SPIRIT-FIRE",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-STONE-GOLEM",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-SWORDSMAN",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-TEMPLAR",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-TROLL",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-WHITE-STAG-RIDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-WOLF-RIDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-WOODLAND-WALKER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-EQUIP-WYVERN-RIDER",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-04",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-06",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-07",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-08",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-09",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-10",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-11",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-12",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-13",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-14",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-15",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-17",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-18",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-19",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-20",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-21",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-22",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-23",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-24",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-25",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-26",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-27",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-28",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-29",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-30",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-31",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-32",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-33",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-34",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-35",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-36",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-37",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-38",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-39",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-40",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-41",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-42",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-43",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-44",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-45",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-46",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-47",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-SKILL-48",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-04",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-06",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-07",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-08",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-09",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-10",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-11",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-12",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-13",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-14",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-15",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-17",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-18",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-19",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-20",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-21",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-22",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-23",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-STATUS-24",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-04",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-06",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-07",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-08",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-09",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-10",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-11",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-12",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-13",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-14",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-15",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-17",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-18",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-19",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-20",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-21",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-22",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-23",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-FX-24",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-04",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-06",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-07",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-08",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-09",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-10",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-11",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-12",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-13",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-14",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-15",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "C01-HUD-16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-farlight-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-farlight-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-farlight-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-hesha-water-guild",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-inverted-city",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-kairon-outer-repair",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-nereia-float",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-nereia-tide-anchor",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-rain-tower",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-ring-city",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-soler-archive",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-soler-heat-chain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-uker-city",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-verdant-fungus-clinic",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-arch-verdant-living-city",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-firefly",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-helo",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-ishan",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-iya",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-kota",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-lanko",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-mira-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-mira-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-mira-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-misa-family",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-naim-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-naim-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-olo",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-roan-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-roan-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-sadi",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-char-talos-7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-creature-rain-shepherd",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-covenant-table",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-firefly-drone",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-five-world-roster",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-hesha-cup",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-iya-door",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-living-isolation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-maintenance-key",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-memory-echo-container",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-mira-license",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-physical-route-box",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-public-cargo-rotation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-rain-filter-core",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-roan-risk-list",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-talos-wills",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-prop-two-tickets",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-falling-ring-team",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-farlight-departure",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-five-world-broadcast",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-folding-table-covenant",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-growing-wall",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-inverted-city-maintenance",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-iya-gets-door",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-kairon-train-evacuation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-last-natural-rain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-nereia-platform-vote",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-quarantine-ship-rotation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-return-hesha",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-sandstorm-water-repair",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-season-without-rain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-seven-minute-rain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-soler-heat-shift",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-soler-ice-beacon",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-two-percent-dock",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-uker-festival",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-scene-verdant-bridge-pruning",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-dark-stars",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-echo-tide",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-farlight-life",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-five-world-materials",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-hesha",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-kairon",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-keyart",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-nereia",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-post-milight",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-ring-maintenance",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-soler",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-style-verdant",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-antler-knight",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-boarding-team",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-defoliator-pilot",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-echo-tracker",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-eco-maintainer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-field-medic",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-floating-city-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-forest-beast-handler",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-fungus-bed-medic",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-gravity-rescuer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-guard-robot",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-heat-lamp-shield",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-hover-lancer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-ice-hook-hunter",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-light-mech",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-long-beam-sniper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-memory-monk",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-physical-archive-keeper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-power-swordsman",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-protocol-adjudicator",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-protocol-analyst",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-rail-rifleman",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-rain-shepherd",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-rain-tower-engineer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-repair-engineer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-reset-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-ring-rail-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-sand-rider",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-spore-shooter",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-star-shield",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-star-vein-mage",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-starbreaker-sapper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-stargate-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-symbiotic-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-tide-anchor-engineer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-tide-fin-scout",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-tide-priest",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-turret-vehicle",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-vacuum-trooper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-unit-wind-sail-skirmisher",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-cargo-crew",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-climate-observer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-dock-builder",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-eco-cultivator",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-evacuation-registrar",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-five-world-medic",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-floating-city-civilian",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-food-cultivator",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-heat-lamp-monk",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-maintenance-union-rep",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-named-echo-civilian",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-offline-courier",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-outer-ring-worker",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-patient",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-physical-archivist",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-quarantine-resident",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-rain-dispatcher",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-red-sand-child",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-refugee",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-ring-train-conductor",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-seed-bank-carer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-vacuum-rescuer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-water-collector",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-mission-water-maintainer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-echo-tide-corruption",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-hesha",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-kairon",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-light-chaser-fleet",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-milight-emergency",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-nereia",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-reset-state",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-returners-farlight",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-ring-court",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-soler",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-uker",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-faction-verdant",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-farlight-cargo-hold",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-farlight-living-deck",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-farlight-projection-garden",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-farlight-service-pipes",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-hesha-glass-sea",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-hesha-red-sand",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-hesha-sandstorm-quicksand",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-hesha-sealed-waterway",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-kairon-separation-ring",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-kairon-train-platform",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-kairon-vacuum-breach",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-kairon-vertical-city",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-milight-corona-service",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-milight-inverted-city",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-milight-rotating-blackout",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-milight-vein-ring",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-nereia-deep-water",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-nereia-floating-platform",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-nereia-reverse-current",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-nereia-shallow-tide",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-soler-blue-ice",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-soler-brittle-ice",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-soler-deep-factory",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-soler-heated-walkway",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-uker-grave-fragments",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-uker-memory-overlay",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-uker-physical-ruin",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-uker-reality-rebuild",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-verdant-fungus-bed",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-verdant-living-bridge",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-verdant-root-nest",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-terrain-verdant-spore-fog",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-cargo-terminal",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-civil-shelter",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-emergency-life-support",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-evacuation-point",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-five-world-broadcast-node",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-folding-turret",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-fungus-seed-bank",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-gravity-switch",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-heat-lamp-hub",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-living-isolation-grid",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-medical-isolation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-movable-platform",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-orbital-gun-console",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-permission-log",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-physical-archive-cabinet",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-pressure-door",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-public-cargo-board",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-rail-switch",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-rain-tower-console",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-sky-elevator",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-star-vein-node",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-tide-anchor-console",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-vacuum-bulkhead",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-structure-water-filter-station",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-anchor-winches",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-broken-rails",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-bunks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-cable-reels",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-cargo-crates",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-ceramic-water-tanks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-community-repairs",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-cups-cookware",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-dead-fungus-beds",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-discarded-arms",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-drying-racks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-five-world-flags",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-folding-tables",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-fuel-oxygen-tanks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-giant-roots",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-hesha-water-signs",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-hull-patches",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-ice-cracks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-overload-nodes",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-permission-badges",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-permission-lights",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-physical-film",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-platform-shields",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-repair-arms",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-risk-list-evidence",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-seed-coolers",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-soler-heat-emblems",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-spare-part-racks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-spore-sacs",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-stretcher-medkits",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-tickets-manifests",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-battle-prop-water-barrels",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-anti-large-charge",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-antler-knight",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-boarding-team",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-defoliator-pilot",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-echo-tracker",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-eco-maintainer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-field-medic",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-floating-city-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-forest-beast-handler",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-fungus-bed-medic",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-gravity-rescuer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-guard-robot",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-heat-lamp-shield",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-hover-lancer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-ice-hook-hunter",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-light-mech",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-long-beam-sniper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-magboot-tractor-set",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-memory-monk",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-memory-spore-isolator",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-mission-evidence-box",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-multi-standard-repair-pack",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-offline-scout-instrument",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-physical-archive-keeper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-power-swordsman",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-protocol-adjudicator",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-protocol-analyst",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-public-supply-crate",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-rail-rifleman",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-rain-shepherd",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-rain-tower-engineer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-repair-engineer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-reset-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-ring-rail-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-sand-rider",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-sealed-medical-kit",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-spore-shooter",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-star-shield",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-star-vein-mage",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-starbreaker-sapper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-stargate-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-symbiotic-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-tide-anchor-engineer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-tide-fin-scout",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-tide-priest",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-turret-vehicle",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-vacuum-trooper",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-equipment-wind-sail-skirmisher",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-assault",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-boarding",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-brace-platform",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-climate-correction",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-confirm-permission",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-deploy-tide-anchor",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-deploy-turret",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-echo-isolation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-emergency-heat",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-emergency-water",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-field-heal",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-five-world-combo",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-fungus-purify",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-gravity-rescue",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-guard",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-heat-zone",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-ice-hook",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-maintainer-rebuild",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-mark-evacuation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-medical-transfer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-memory-reality-overlap",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-memory-reveal",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-physical-backup",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-prune-bridge",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-publish-cargo",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-quick-repair",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-rail-calibration",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-rail-permission",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-redirect-wind",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-repair-node",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-reroute-water",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-rescue-dash",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-resupply-ammo",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-rider-rescue-chain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-rotate-gravity",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-sand-sail",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-scan",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-shield-chain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-shift-tide",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-snipe",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-spore-shot",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-suppress",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-switch-rail",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-symbiotic-regen",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-toggle-bulkhead",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-vacuum-traction",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-vein-downgrade",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-skill-zero-permission-breach",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-ammo",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-capture",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-cargo-capacity",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-controlled",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-deliver-evidence",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-destroy",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-escort",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-evacuate",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-heat",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-hidden",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-hold-timer",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-hypothermia",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-local-support",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-low-oxygen",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-memory-corrosion",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-overheated",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-permission",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-repair",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-rescue",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-shielded",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-spare-parts",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-spore-contamination",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-star-vein-energy",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-status-water",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-bio-hit",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-blade-hit",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-blunt-hit",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-capture-light",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-control",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-crush",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-energy-pulse",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-explosion",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-healing",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-heat-zone",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-ice-cold",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-memory-overlay",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-offline",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-rail-penetration",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-rain-black-rain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-repair-sparks",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-sandstorm",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-shield",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-spore-fog",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-stealth",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-structure-damage",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-tide-water",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-vacuum-rupture",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-fx-vacuum-zone",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-ally",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-breakable",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-danger",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-enemy",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-engineering",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-escort",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-evacuation",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-healing",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-main-objective",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-neutral",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-permission-dispute",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-recruitable",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-reinforcement",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-repairable",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-side-objective",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c02-hud-supply",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-floating-bridge",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-granary",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-great-lake-fleet",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-hezhou-gate",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-huai-dike-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-huai-dike-final",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-jiangdong-salt-port",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-linchuan-hub",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-old-capital",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-palace-gate",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-wuyue-gate",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-arch-yanyun-post",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-aletan-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-han-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-han-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-han-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-jiang-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-jiang-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-lu-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-lu-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-lu-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-pei-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-pei-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-peng-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-peng-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-shen-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-shen-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-shen-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-shen-04",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-wen-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-xiao-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-xiao-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-xiaoman-01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-xiaoman-02",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-char-xiaoman-03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-aletan-covenant",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-broken-official-seal",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-field-markers",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-first-banner",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-grain-seal",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-pei-campaign-map",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-pei-clan-roll",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-register-evidence-set",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-shoe-ledger",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-sunken-roll",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-temp-roll",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-unstable-list",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-white-lantern-gilded",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-white-lantern-patched",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-prop-white-lantern-plain",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-01690aa0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-016bc02a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-10cdb51a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-1330acd2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-32b53c29",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-3a40b552",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-3b834342",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-61b2f412",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-6f493710",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-737e345e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-77b27d08",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-85b49a10",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-8be502ba",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-ab61a45c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-adb9cf25",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-bb81dbfe",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-c16fafcf",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-ch01-s03",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-ch02-s08",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-ch04-s18",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-ch07-s35e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-df2a730d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-scene-f40c6e2b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-164bde4a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-1ff31937",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-33bd8704",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-4f44ef3f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-6a81a91d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-87d29bfe",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-style-cd7cb289",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-0137a889",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-0609e6e6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-0c42f6d3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-118c7423",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-15c058cc",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-222078e0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-25f91749",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-2bc4ddf7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-2be16bd2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-3d86046f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-3f4a6e1d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-3f6fea2f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-4377f3e4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-4566788b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-4619e546",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-4c02a584",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-4dad36ef",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-58b98436",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-5e64c3a6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-6a62b51e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-6d03b909",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-6fa9292e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-73d2bcb4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-747800db",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-75ee37ba",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-76cd6822",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-79f06a6f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-8842d111",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-8f49e6ef",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-915fc486",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-9881f2a3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-9ad7ca0f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-a53b725f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-b59c3f96",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-c11ad030",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-c30bf360",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-cecc448d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-f0a4ddaa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-fd4c21da",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-unit-ff5e54ed",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-06ca7225",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-0d1763ad",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-1ba1c2b5",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-236dc958",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-281d4f68",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-2edb8e76",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-3278b1cd",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-500e07b9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-57df34e0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-74ec4633",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-7d65d7f6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-80d52653",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-81ca03bd",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-8e6e6bf3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-8fd93354",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-9f089520",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-b283af47",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-c1a88dc7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-c2e2ed84",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-cb07fe5d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-cdee8e3c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-d647c582",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-d658ba41",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-mission-f8a23f60",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-18a38531",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-26acaef4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-48d391ea",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-53ed52e7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-5eb3995f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-98861b36",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-a61b76f9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-abad59fa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-bf730961",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-d149da6f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-e58fb49d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-faction-fb407e16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-06ce5a60",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-144e2a2b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-237c17a6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-23ed43fa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-3422fba2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-44bffd59",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-4bc2c8ba",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-5540f619",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-603bcbff",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-62e36a0f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-6d3d030c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-70b193fa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-769e91a5",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-7e8540ac",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-87e77f14",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-980abbed",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-98a758f5",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-99390ac8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-9af6eb7b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-b499c3bf",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-b7e36bf1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-c053bd0c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-c644d0f1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-c84c1d67",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-cf372208",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-e1b682d1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-e8301db7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-efd25ffa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-f059779e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-f38c3861",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-f3c866de",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-terrain-fb94afb0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-109b2230",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-14b4ae0d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-1fbf8e8c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-45b46002",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-47186f13",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-59225afb",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-731f5440",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-733300be",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-80221641",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-81e32d79",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-84e7f122",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-8c1f5eac",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-945da1f8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-94c75092",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-b854f5d8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-c3e2e8d7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-c627d407",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-d577aa95",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-da2f5b93",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-dfc98ebc",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-edac22ef",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-f793619a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-f93c3796",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-structure-f9b43d6b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-0fb580c9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-10c026c1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-16fa4a1f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-1f1ab459",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-27872fa1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-2e0af0f2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-2e7df413",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-2f038eea",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-30a92ab8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-5cc33643",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-6a51fb07",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-6ecfadac",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-6fff5dc5",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-7a878eb8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-7d42603a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-809c152b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-8ec886d2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-a4886438",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-a7b85246",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-a7c96f59",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-b31edea6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-b6bd8efb",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-ba469b15",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-c7e05f1c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-caa5ebba",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-cb065f97",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-cd97a638",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-cfb13cec",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-d983ce23",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-ede52a71",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-f7033df9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-battle-prop-ff4a64b9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-0137a889",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-0609e6e6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-0c42f6d3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-118c7423",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-15c058cc",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-222078e0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-25f91749",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-2bc4ddf7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-2be16bd2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-3d86046f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-3f4a6e1d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-3f6fea2f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-4377f3e4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-4566788b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-4619e546",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-4c02a584",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-4dad36ef",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-58b98436",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-5e64c3a6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-6a62b51e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-6d03b909",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-6fa9292e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-73d2bcb4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-747800db",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-75ee37ba",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-76cd6822",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-79f06a6f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-8842d111",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-8f49e6ef",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-915fc486",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-9881f2a3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-9ad7ca0f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-a53b725f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-b59c3f96",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-c11ad030",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-c30bf360",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-cecc448d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-f0a4ddaa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-fd4c21da",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-ff5e54ed",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-0adf8733",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-4193591d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-5d494e47",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-6233dfe4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-8cbab9a4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-b4ba078c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-d36a6ab2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-equip-shared-eff22900",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-07289cb2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-140c5ddd",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-150f6cb7",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-1c47f1ad",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-1d2f003b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-1d9ed8c4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-1e43d47b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-1f8a786a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-21b44a84",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-234774fc",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-323f8c16",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-344cc154",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-365f19b0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-3abf88f6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-3fef707a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-4181fbc8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-4389724e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-44305486",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-5298b5cb",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-55ec4964",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-59e0edce",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-6765b63a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-67a1d71b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-747800db",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-77348937",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-7c407c64",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-7d81885c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-7f769954",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-8156df8c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-8ac12991",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-8e16d375",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-9238e301",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-95324d93",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-96f19d01",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-96ff26d1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-98f13147",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-9d34d1f6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-9f597d11",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-a8710e0b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-a938b019",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-b1de2bea",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-be079d47",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-ca79981a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-cf3faa1b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-d8f6782c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-ee087273",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-f739d46e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-skill-fb3f53d1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-05257b52",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-09f44016",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-12899841",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-1fecbd7e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-201997b4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-355f61aa",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-360f3511",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-396c70f2",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-444f7804",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-55c056d4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-56a19fe9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-5bdbd94c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-6dd467a1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-856740bc",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-93ea9434",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-a32c64c0",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-a59da10d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-a9b5519b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-aac93b06",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-bdc136db",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-c70d591b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-d40c7a28",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-f13c9402",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-status-fd77fd05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-0d47f747",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-28309fac",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-2e92cff9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-38a88bd8",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-409f272d",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-606c54e3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-65554e05",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-78d874c1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-7a8b685c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-7b06f9cf",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-7f7b464c",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-840b63e6",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-979062e9",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-9b4246b5",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-aab458ba",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-bdc68cab",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-c2f22b7a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-ccb081fb",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-d7178f8f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-da112311",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-e590996f",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-e835ecd4",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-fb2a2599",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-fx-fcfbdba1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-04abec3b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-1024fd1a",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-27d02a24",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-358588ad",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-55f762c1",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-6bf4f047",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-930f0f89",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-a6a1a227",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-abe1e247",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-c7c36f93",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-cb1f5cc3",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-cc6af821",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-e4f24d33",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-ed346324",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-ed62237e",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    },
+    {
+      "topicId": "c03-hud-f870305b",
+      "status": "pending",
+      "source": null,
+      "verification": null
+    }
+  ],
+  "environmentAtlases": [
+    {
+      "id": "surface-meadow",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-forest-floor",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-earth",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-old-stone",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-snow",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-wasteland",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-graveyard",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "surface-forge-stone",
+      "status": "pending",
+      "componentCount": 4
+    },
+    {
+      "id": "transition-meadow-earth",
+      "status": "pending",
+      "componentCount": 47
+    },
+    {
+      "id": "transition-meadow-forest",
+      "status": "pending",
+      "componentCount": 47
+    },
+    {
+      "id": "transition-meadow-snow",
+      "status": "pending",
+      "componentCount": 47
+    },
+    {
+      "id": "transition-earth-stone",
+      "status": "pending",
+      "componentCount": 47
+    },
+    {
+      "id": "route-dirt-road",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-edge-dirt-road",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-mud-road",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-edge-mud-road",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-stone-road",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-edge-stone-road",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-forest-trail",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "route-edge-forest-trail",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "water-slow-river",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "water-shallow-stream",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "water-marsh-channel",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "water-icy-water",
+      "status": "pending",
+      "componentCount": 64
+    },
+    {
+      "id": "elevation-auto-temperate",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "cliff-modules-temperate",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "elevation-auto-highland",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "cliff-modules-highland",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "forest-existing",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "forest-temperate",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "scenery-regional",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "crossings-fortifications",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "camps-foundations",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "landmarks-large",
+      "status": "pending",
+      "componentCount": 16
+    },
+    {
+      "id": "decals-small",
+      "status": "pending",
+      "componentCount": 24
+    },
+    {
+      "id": "rural-life",
+      "status": "pending",
+      "componentCount": 16
+    }
+  ],
+  "supplementalOutputs": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/environment/twin-hills-forest-atlas-v1.png",
+      "status": "pending",
+      "relationship": "forest-existing source dependency; verify exact regeneration"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/environment/env-twin-hills-ground.png",
+      "status": "pending",
+      "relationship": "derived from terrain-atlas-capital-silverwood.png cell(0,1); no extra independent design"
+    }
+  ]
+}
