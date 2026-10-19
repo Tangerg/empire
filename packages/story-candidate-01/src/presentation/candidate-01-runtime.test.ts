@@ -164,3 +164,19 @@ describe('authored team palette selection', () => {
     expect(unitPicture(art, def, '#A8493F').strip!.href).toBe(red.strip!.href);
   });
 });
+
+
+describe('native status icon consumers', () => {
+  it('keeps status meanings and32px contracts through the actual HUD provider', () => {
+    const bindings = { poisoned: '01', silenced: '02', 'c01.oath-controlled': '04', shaken: '05', inspired: '12', armor_down: '08' };
+    for (const [status, slot] of Object.entries(bindings)) {
+      const markup = art.resolve(provider => provider.statusIcon?.(status));
+      expect(markup, status).toContain(`runtime/status/status-${slot}.png`);
+      const asset = candidate01Asset(`C01-STATUS-${slot}`);
+      expect(asset.width).toBe(32);
+      expect(asset.height).toBe(32);
+      expect(asset.anchor).toEqual([16, 16]);
+    }
+    expect(art.resolve(provider => provider.statusIcon?.('not-a-status'))).toBeNull();
+  });
+});

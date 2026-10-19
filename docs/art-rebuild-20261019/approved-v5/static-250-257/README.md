@@ -1,0 +1,3 @@
+# Static eight-topic integration
+
+C01 status01/02/04/05 at32px plus HUD28px, and C02 equipment tenth quartet at48px. Original board subject/count review and actual native white/dark/olive previews accepted. Status originals retain their exact existing meanings and condition bindings; no rule status was renamed. Status04 two gold-band points were restored by imagegen, with the rejected three-point version retained. True source alpha preserved; whole-canvas deterministic fitting only. Functional colored device surfaces remain bounded. No C02 playable mission is claimed. This does not add hero or animation completion.

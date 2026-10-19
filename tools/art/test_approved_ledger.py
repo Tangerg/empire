@@ -111,3 +111,17 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         self.assertEqual(len(result['canonicalTopics'][0]['selectedRawMasters']), 1)
         self.assertNotIn('card-background', result['canonicalTopics'][0]['selectedRawMasters'][0])
+
+    def test_status_and_hud_sources_use_native_category_without_inflating_stage(self):
+        for category in ['status', 'hud']:
+            with self.subTest(category=category):
+                topic = {**self.topic, 'topicId': f'C01-{category.upper()}-01', 'category': category}
+                self.write('pack/manifest.json', {'assets': [topic]})
+                self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest, 'campaign': 'story-candidate-01', 'label': category}])
+                raw = self.root / f'pack/masters/approved-v5/{category}/{category}-01'
+                raw.mkdir(parents=True)
+                (raw / 'master.png').write_bytes(b'preserved source placeholder')
+                result = build(self.root)
+                self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+                self.assertEqual(result['summary']['formalBound'], 0)
+                self.assertEqual(result['summary']['liveGameVerified'], 0)
