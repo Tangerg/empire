@@ -1,0 +1,339 @@
+{
+  "source_period_candidate": [
+    256,
+    256
+  ],
+  "all_native_opaque": true,
+  "entries": [
+    {
+      "asset": "forest-floor-1",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+      "RGB_mean": [
+        73.62264740072597,
+        51.55371392087584,
+        32.81591983801755
+      ],
+      "RGB_std": [
+        8.456670760926285,
+        7.489128044030461,
+        2.8801248402760553
+      ],
+      "luma_mean": 54.892700445909604,
+      "luma_std": 7.146166122249944,
+      "luma_percentiles_5_50_95": [
+        47.169,
+        53.6624,
+        72.41539999999999
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 54.84921496212121,
+        "bottom": 53.56683537181021,
+        "left": 57.37158255582136,
+        "right": 55.52490024172647,
+        "central_half": 55.031916678161394
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 7.998670919723551,
+        "top_bottom_mean_abs_RGB": 6.0026581605528975,
+        "left_right_max_abs_RGB": 48.0,
+        "top_bottom_max_abs_RGB": 30.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Deep warm brown ground with sparse muted olive-green and dry brown broadleaf groups, a few blunt twigs and gray-brown embedded stones. Broad open soil dominates; mixed green/brown identity survives.",
+        "style_review": "Much calmer and more broadly grouped than the original leaf carpet, with roughly ten to fourteen groups including edge-clipped groups. Leaf faces have two to four angular planes and some center-fold marks; soil retains faint low-contrast cloudy texture rather than absolutely flat graphic interiors. No neon, fine leaf carpet or added standing scenery.",
+        "scale_caveat": "A broad leaf group is around180-270 native pixels, about37-55 logical units at256 period; individual leaves often6-20 units. These are larger than scattered original fine litter. Compare actual forest-mask/scene scale before binding.",
+        "native_acceptance": "Opaque native candidate reviewed, no natural seamlessness or actual-scene acceptance claimed."
+      },
+      "reference_material_identity": "Dark brown earth beneath mixed green/olive and brown broadleaf litter, a few pebbles and twigs.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        256,
+        256
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "forest-floor-2",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d",
+      "RGB_mean": [
+        88.33693774816918,
+        63.34120988276113,
+        36.91664949673008
+      ],
+      "RGB_std": [
+        12.5746384918992,
+        10.246005399979566,
+        3.7765095262300186
+      ],
+      "luma_mean": 66.74744836707545,
+      "luma_std": 9.96751629061011,
+      "luma_percentiles_5_50_95": [
+        58.803999999999995,
+        63.654399999999995,
+        91.6248
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 67.47127847886762,
+        "bottom": 65.89541144587321,
+        "left": 68.2676973833732,
+        "right": 68.27685637460127,
+        "central_half": 65.60933920138748
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 5.63317384370016,
+        "top_bottom_mean_abs_RGB": 3.455342902711324,
+        "left_right_max_abs_RGB": 42.0,
+        "top_bottom_max_abs_RGB": 41.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Subdued yellow-olive broadleaf litter on warm brown soil, sparse gray stones and longer angular branch/root segments. More yellow/ochre and visibly lighter than source1, preserving the source distinction.",
+        "style_review": "About twelve to sixteen leaf groups including clipped edge clusters, broad uncluttered ground and chunky faceted branches. Leaf center folds and some secondary faceting remain; soil retains faint cloudy texture. Branches are thicker and more object-like than original thin tracery but stay ground accents, without trees or standing props.",
+        "scale_caveat": "Most leaf groups are around180-260 native pixels, about37-53 units at256. Larger branched segments span roughly400-550 native pixels or82-112 world units, requiring actual masked scene review for scale.",
+        "palette_caveat": "Leaves are more golden ochre and slightly stronger in color than the original subdued yellow-olive litter. Exact color matching is not claimed.",
+        "native_acceptance": "Opaque native candidate only; no natural seamlessness or actual-scene acceptance claimed."
+      },
+      "reference_material_identity": "Lighter yellow-olive leaf litter with long thin branches/roots crossing the ground and occasional gray stones.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        256,
+        256
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "forest-floor-3",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+      "RGB_mean": [
+        77.17900739960675,
+        55.19623647708513,
+        35.755912817421255
+      ],
+      "RGB_std": [
+        14.479303544234078,
+        8.998096315697902,
+        3.3020947546669186
+      ],
+      "luma_mean": 58.466182206985486,
+      "luma_std": 9.561336592477673,
+      "luma_percentiles_5_50_95": [
+        50.5312,
+        55.309400000000004,
+        84.10820000000001
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 61.94189350328948,
+        "bottom": 60.952405729166664,
+        "left": 60.97904752791068,
+        "right": 59.50314946670654,
+        "central_half": 57.14588370471419
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 8.341573631047316,
+        "top_bottom_mean_abs_RGB": 7.715842636895268,
+        "left_right_max_abs_RGB": 69.0,
+        "top_bottom_max_abs_RGB": 74.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Exposed deep brown floor with grouped blunt orange-brown needle/twig strokes, a few ochre/olive lobed leaves and angular gray stones. Distinct twig/needle accents survive rather than duplicating the broadleaf-only first two.",
+        "style_review": "About ten main scattered groups with broad open brown earth. Source fine root/needle tracery becomes thicker flat angular straw-like slivers, and secondary green leaves are more prominent than the original. Soil retains low-contrast cloud/grain, but no dense carpet, glow or invented path.",
+        "scale_caveat": "Main groups are around200-320 native pixels, about41-65 logical units at256. Broad needles/twig strokes read as sticks rather than original hairline needles; actual masked scene scale remains unverified.",
+        "palette_caveat": "Orange twig and ochre leaf marks are stronger and lighter than the original subtle litter; the dark warm soil identity remains.",
+        "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+      },
+      "reference_material_identity": "Exposed deep brown earth with orange-brown needle/twig/root tracery, sparse ochre leaves and small stones.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        256,
+        256
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "forest-floor-4",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55",
+      "RGB_mean": [
+        81.35503804094839,
+        56.75497292237408,
+        34.541108007804056
+      ],
+      "RGB_std": [
+        12.244429495048227,
+        9.396630763587327,
+        3.6364503451310974
+      ],
+      "luma_mean": 60.38110571975102,
+      "luma_std": 9.40446849666847,
+      "luma_percentiles_5_50_95": [
+        53.449799999999996,
+        57.4458,
+        85.29180000000001
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 62.328694991028705,
+        "bottom": 62.44510406698564,
+        "left": 61.42367207187001,
+        "right": 62.07925316238038,
+        "central_half": 60.26707345480549
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 7.993354598617756,
+        "top_bottom_mean_abs_RGB": 6.917862838915471,
+        "left_right_max_abs_RGB": 55.0,
+        "top_bottom_max_abs_RGB": 56.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "identity": "Muted ochre/copper-brown blunt-lobed leaf groups over dark warm brown earth with sparse gray stones and a few blunt twigs. Leaf-litter dominant rather than the previous needle/twig-stroke variant.",
+        "style_review": "Approximately ten to fourteen broad leaf groups including clipped edge groups, with large low-contrast open soil areas. Leaves have broad matte planes, few center-fold marks, and no vein networks. Ground still has subtle cloudy texture and more secondary patch contours than the strict six-to-ten-plane prompt.",
+        "palette_caveat": "Additional olive-green leaves are more prominent than the original brown-dominant source, although ochre/copper-brown remains the main identity. Exact color/leaf-species recovery is not claimed.",
+        "scale_caveat": "Main groups about220-350 native pixels, about45-71 world units at256; individual lobed leaves can be12-25 units. Review with actual mask/world sampling before binding.",
+        "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+      },
+      "reference_material_identity": "Dense ochre/brown oak-like leaf litter and scattered gray pebbles on brown earth; visibly browner than slots 0/1.",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        256,
+        256
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    }
+  ],
+  "original_native_color_and_texture_measurements": [
+    {
+      "id": "forest-floor-1",
+      "original_swatch_mean_RGB": [
+        70.65231680266987,
+        56.3588449563501,
+        35.4834252457215
+      ],
+      "native_mean_RGB": [
+        73.62264740072597,
+        51.55371392087584,
+        32.81591983801755
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 1.2082547967715432e-05,
+      "native_mean_abs_second_luma_difference": 1.127834734154221,
+      "measurement_only_no_filtering_applied": true
+    },
+    {
+      "id": "forest-floor-2",
+      "original_swatch_mean_RGB": [
+        84.08303647072033,
+        67.51055946268718,
+        38.15242576733456
+      ],
+      "native_mean_RGB": [
+        88.33693774816918,
+        63.34120988276113,
+        36.91664949673008
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 1.2328179828383041,
+      "measurement_only_no_filtering_applied": true
+    },
+    {
+      "id": "forest-floor-3",
+      "original_swatch_mean_RGB": [
+        74.2308281190989,
+        56.14115689656932,
+        36.80037562902551
+      ],
+      "native_mean_RGB": [
+        77.17900739960675,
+        55.19623647708513,
+        35.755912817421255
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 1.4951256484043394,
+      "measurement_only_no_filtering_applied": true
+    },
+    {
+      "id": "forest-floor-4",
+      "original_swatch_mean_RGB": [
+        77.18794896318757,
+        58.82250055961417,
+        35.63856046885493
+      ],
+      "native_mean_RGB": [
+        81.35503804094839,
+        56.75497292237408,
+        34.541108007804056
+      ],
+      "native_luma_below_16_fraction": 0.0,
+      "native_luma_below_32_fraction": 0.0,
+      "native_mean_abs_second_luma_difference": 1.168992702393874,
+      "measurement_only_no_filtering_applied": true
+    }
+  ],
+  "measurements_not_scene_validation": true
+}

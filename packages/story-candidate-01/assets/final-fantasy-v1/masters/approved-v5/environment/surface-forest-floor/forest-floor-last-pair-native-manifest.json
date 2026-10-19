@@ -1,0 +1,144 @@
+{
+  "atlas": "surface-forest-floor",
+  "status": "all four native opaque material candidates saved; parent sampling and scene review pending",
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "all_exact_prompt_sha256_verified": true,
+  "full_native_canvas": [
+    1254,
+    1254
+  ],
+  "all_pixels_opaque": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "source_period_candidate": [
+    256,
+    256
+  ],
+  "parent_direction": "Retain muted original four-slot woodland identities;256 is an initial world sampling trial; engineering reuses genuine original Blob47 alpha",
+  "original_atlas_contract": {
+    "id": "surface-forest-floor",
+    "png": "runtime/atlas/surface-forest-floor.png",
+    "png2x": "runtime/atlas/surface-forest-floor@2x.png",
+    "columns": 4,
+    "rows": 1,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 4,
+    "category": "base-surface",
+    "tileMode": "variants",
+    "variants": 4,
+    "cellOrder": [
+      "forest-floor-1",
+      "forest-floor-2",
+      "forest-floor-3",
+      "forest-floor-4"
+    ],
+    "edgeLocked": true
+  },
+  "actual_consumers": {
+    "forest-floor-1": {
+      "via_transition": "transition-meadow-forest",
+      "source_overlay_index": 0,
+      "counts_by_level": {
+        "c01-01": 126,
+        "c01-02": 13,
+        "c01-03": 9,
+        "c01-04": 17,
+        "c01-05": 11,
+        "c01-06": 12,
+        "c01-09": 11,
+        "c01-10": 13,
+        "c01-11": 24,
+        "c01-15": 364,
+        "c01-16": 25
+      },
+      "total_cells": 625
+    },
+    "forest-floor-2": "catalog-only",
+    "forest-floor-3": "catalog-only",
+    "forest-floor-4": "catalog-only"
+  },
+  "consumer_count_basis": "Current code/map-derived counts, not a fresh full-render visible-pixel measurement",
+  "no_seamlessness_claim": true,
+  "no_repository_edits": true,
+  "asset_count": 2,
+  "entries": [
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 2,
+      "original_cellOrder_token": "forest-floor-3",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a40e970a-8399-4645-8955-f66fb9e38b8b.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/forest-floor-3-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+      "sha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Exposed deep brown floor with grouped blunt orange-brown needle/twig strokes, a few ochre/olive lobed leaves and angular gray stones. Distinct twig/needle accents survive rather than duplicating the broadleaf-only first two.",
+        "style_review": "About ten main scattered groups with broad open brown earth. Source fine root/needle tracery becomes thicker flat angular straw-like slivers, and secondary green leaves are more prominent than the original. Soil retains low-contrast cloud/grain, but no dense carpet, glow or invented path.",
+        "scale_caveat": "Main groups are around200-320 native pixels, about41-65 logical units at256. Broad needles/twig strokes read as sticks rather than original hairline needles; actual masked scene scale remains unverified.",
+        "palette_caveat": "Orange twig and ochre leaf marks are stronger and lighter than the original subtle litter; the dark warm soil identity remains.",
+        "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+      }
+    },
+    {
+      "atlas": "surface-forest-floor",
+      "cell_index": 3,
+      "original_cellOrder_token": "forest-floor-4",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9f07d5bd-be88-49ce-854c-543c0a662f46.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/forest-floor-4-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-4/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+      "sha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Muted ochre/copper-brown blunt-lobed leaf groups over dark warm brown earth with sparse gray stones and a few blunt twigs. Leaf-litter dominant rather than the previous needle/twig-stroke variant.",
+        "style_review": "Approximately ten to fourteen broad leaf groups including clipped edge groups, with large low-contrast open soil areas. Leaves have broad matte planes, few center-fold marks, and no vein networks. Ground still has subtle cloudy texture and more secondary patch contours than the strict six-to-ten-plane prompt.",
+        "palette_caveat": "Additional olive-green leaves are more prominent than the original brown-dominant source, although ochre/copper-brown remains the main identity. Exact color/leaf-species recovery is not claimed.",
+        "scale_caveat": "Main groups about220-350 native pixels, about45-71 world units at256; individual lobed leaves can be12-25 units. Review with actual mask/world sampling before binding.",
+        "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+      }
+    }
+  ]
+}

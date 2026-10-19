@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-05",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6202092697308008,
+  "nearOpaqueFractionAlphaGE250": 0.3616389276802271,
+  "nonzeroAlphaBBox": [
+    0,
+    39,
+    1239,
+    1172
+  ],
+  "visibleAlphaBBoxGE8": [
+    34,
+    238,
+    1237,
+    1056
+  ],
+  "visibleAlphaBBoxGE128": [
+    34,
+    239,
+    1236,
+    1055
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    34,
+    239,
+    18,
+    199
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 18,
+  "sha256": "76c334901efd699be55e92c111861b9a0a626d01d6c820bf982ae18d0340ce92",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "At native32 and HUD28 on white/black/olive, fallen chevron shield and two distinct bootprint groups remain recognizable. Small stones reduce to supporting base accents."
+  ],
+  "identityVerified": "Exactly ONE tilted fallen slate-blue kite shield on a SMALL bounded brown dirt patch with a few broad stones. Preserve its pale metal rim and original cream angular upward-chevron heraldic band seen in perspective, matching image 1 rather than inventing a new emblem. To the RIGHT of the shield there are exactly TWO separate dark charcoal bootprints arranged on a diagonal, one above-left of the other; each print has one larger toe/sole and one separate smaller heel. Keep both pairs of sole/heel shapes legible with clear transparent gaps. This dirt is the original functional footing only, confined directly under the shield; no broad exterior cast shadow. No people, additional footprints, letters or extra objects.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-05/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "At native32 and HUD28 on white/black/olive, fallen chevron shield and two distinct bootprint groups remain recognizable. Small stones reduce to supporting base accents."
+  },
+  "reviewComplete": true
+}

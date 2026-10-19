@@ -1,0 +1,80 @@
+{
+  "topicId": "C01-STATUS-04",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.564053402318323,
+  "nearOpaqueFractionAlphaGE250": 0.4242322494651883,
+  "nonzeroAlphaBBox": [
+    112,
+    23,
+    1235,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    114,
+    59,
+    1206,
+    1174
+  ],
+  "visibleAlphaBBoxGE128": [
+    115,
+    61,
+    1206,
+    1174
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    115,
+    61,
+    48,
+    80
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 7,
+  "sha256": "13fa538e270fe5eab97cb711a76ef7e4806fe75722ee650644a05edc8e7b3271",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "At native32 and HUD28 on white/black/olive, clenched hand, bright gold cuff and brown knot/tails remain recognizable. The exact small scroll and two boss dots are retained in native source but not individually resolvable at HUD28."
+  ],
+  "identityVerified": "Exactly ONE clenched tan hand and short forearm pointing diagonally upward-right, wearing ONE broad antique-gold cuff. Preserve original cuff symbol: ONE continuous serpentine scrolling line with curled ends and TWO separate small rounded bosses around it. This is an ornamental scroll, not writing. On the cuff lower-right, preserve ONE brown rope knot ending in exactly TWO short visible tails. Keep clear cuff/hand/rope silhouettes. The original forearm fades at lower-left: make a clean finite softly rounded illustrated endpoint inside generous transparent margins, not a canvas-edge crop, no blood or anatomical cut surface. Do not add sleeve, handcuffs, chains, additional hands or letters.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-04/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "At native32 and HUD28 on white/black/olive, clenched hand, bright gold cuff and brown knot/tails remain recognizable. The exact small scroll and two boss dots are retained in native source but not individually resolvable at HUD28."
+  },
+  "reviewComplete": true,
+  "refinementHistory": [
+    {
+      "initialCandidate": "candidates/initial/raw.png",
+      "initialRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3182b3a1-daf4-44fa-af9e-7615bf0e0e2d.png",
+      "reason": "Initial generation added three circular cuff bosses; original has two isolated bosses.",
+      "refinementPrompt": "prompt-refine-two-bosses.txt",
+      "refinementInputPaths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-3182b3a1-daf4-44fa-af9e-7615bf0e0e2d.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-complete-subject.png"
+      ],
+      "finalGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-67bea8cd-3243-468e-b192-245c02bad1bc.png",
+      "result": "One upper-left added boss removed by built-in imagegen, retaining exactly two; all other major identities/pose/canvas preserved.",
+      "pixelPostprocessing": "None"
+    }
+  ],
+  "sourceBoundaryInterpretation": "Original lower-left forearm fades into keyed backdrop. Reconstructed as a finite clean icon endpoint inside canvas, preserving all original hand/cuff/rope content. This is semantic boundary completion, not exact recovered pixels."
+}

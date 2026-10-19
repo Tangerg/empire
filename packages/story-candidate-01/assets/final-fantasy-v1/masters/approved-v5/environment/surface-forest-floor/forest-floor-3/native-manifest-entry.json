@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-forest-floor",
+  "cell_index": 2,
+  "original_cellOrder_token": "forest-floor-3",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a40e970a-8399-4645-8955-f66fb9e38b8b.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/forest-floor-3-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/forest-floor-3/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forest-floor/source-contract.json",
+  "sha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Exposed deep brown floor with grouped blunt orange-brown needle/twig strokes, a few ochre/olive lobed leaves and angular gray stones. Distinct twig/needle accents survive rather than duplicating the broadleaf-only first two.",
+    "style_review": "About ten main scattered groups with broad open brown earth. Source fine root/needle tracery becomes thicker flat angular straw-like slivers, and secondary green leaves are more prominent than the original. Soil retains low-contrast cloud/grain, but no dense carpet, glow or invented path.",
+    "scale_caveat": "Main groups are around200-320 native pixels, about41-65 logical units at256. Broad needles/twig strokes read as sticks rather than original hairline needles; actual masked scene scale remains unverified.",
+    "palette_caveat": "Orange twig and ochre leaf marks are stronger and lighter than the original subtle litter; the dark warm soil identity remains.",
+    "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+  }
+}

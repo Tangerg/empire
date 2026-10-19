@@ -1,0 +1,65 @@
+{
+  "asset": "forest-floor-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55",
+  "RGB_mean": [
+    81.35503804094839,
+    56.75497292237408,
+    34.541108007804056
+  ],
+  "RGB_std": [
+    12.244429495048227,
+    9.396630763587327,
+    3.6364503451310974
+  ],
+  "luma_mean": 60.38110571975102,
+  "luma_std": 9.40446849666847,
+  "luma_percentiles_5_50_95": [
+    53.449799999999996,
+    57.4458,
+    85.29180000000001
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 62.328694991028705,
+    "bottom": 62.44510406698564,
+    "left": 61.42367207187001,
+    "right": 62.07925316238038,
+    "central_half": 60.26707345480549
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 7.993354598617756,
+    "top_bottom_mean_abs_RGB": 6.917862838915471,
+    "left_right_max_abs_RGB": 55.0,
+    "top_bottom_max_abs_RGB": 56.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Muted ochre/copper-brown blunt-lobed leaf groups over dark warm brown earth with sparse gray stones and a few blunt twigs. Leaf-litter dominant rather than the previous needle/twig-stroke variant.",
+    "style_review": "Approximately ten to fourteen broad leaf groups including clipped edge groups, with large low-contrast open soil areas. Leaves have broad matte planes, few center-fold marks, and no vein networks. Ground still has subtle cloudy texture and more secondary patch contours than the strict six-to-ten-plane prompt.",
+    "palette_caveat": "Additional olive-green leaves are more prominent than the original brown-dominant source, although ochre/copper-brown remains the main identity. Exact color/leaf-species recovery is not claimed.",
+    "scale_caveat": "Main groups about220-350 native pixels, about45-71 world units at256; individual lobed leaves can be12-25 units. Review with actual mask/world sampling before binding.",
+    "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+  },
+  "reference_material_identity": "Dense ochre/brown oak-like leaf litter and scattered gray pebbles on brown earth; visibly browner than slots 0/1.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

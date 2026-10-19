@@ -1,0 +1,65 @@
+{
+  "asset": "forest-floor-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+  "RGB_mean": [
+    77.17900739960675,
+    55.19623647708513,
+    35.755912817421255
+  ],
+  "RGB_std": [
+    14.479303544234078,
+    8.998096315697902,
+    3.3020947546669186
+  ],
+  "luma_mean": 58.466182206985486,
+  "luma_std": 9.561336592477673,
+  "luma_percentiles_5_50_95": [
+    50.5312,
+    55.309400000000004,
+    84.10820000000001
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 61.94189350328948,
+    "bottom": 60.952405729166664,
+    "left": 60.97904752791068,
+    "right": 59.50314946670654,
+    "central_half": 57.14588370471419
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 8.341573631047316,
+    "top_bottom_mean_abs_RGB": 7.715842636895268,
+    "left_right_max_abs_RGB": 69.0,
+    "top_bottom_max_abs_RGB": 74.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Exposed deep brown floor with grouped blunt orange-brown needle/twig strokes, a few ochre/olive lobed leaves and angular gray stones. Distinct twig/needle accents survive rather than duplicating the broadleaf-only first two.",
+    "style_review": "About ten main scattered groups with broad open brown earth. Source fine root/needle tracery becomes thicker flat angular straw-like slivers, and secondary green leaves are more prominent than the original. Soil retains low-contrast cloud/grain, but no dense carpet, glow or invented path.",
+    "scale_caveat": "Main groups are around200-320 native pixels, about41-65 logical units at256. Broad needles/twig strokes read as sticks rather than original hairline needles; actual masked scene scale remains unverified.",
+    "palette_caveat": "Orange twig and ochre leaf marks are stronger and lighter than the original subtle litter; the dark warm soil identity remains.",
+    "native_acceptance": "Opaque catalog-only native candidate; no natural seamlessness or actual-scene acceptance claimed."
+  },
+  "reference_material_identity": "Exposed deep brown earth with orange-brown needle/twig/root tracery, sparse ochre leaves and small stones.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

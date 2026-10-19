@@ -1,0 +1,82 @@
+{
+  "topicId": "C01-STATUS-04",
+  "assetId": "C01-FFV1-STATUS-04",
+  "label": "誓文受控",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": "c01.oath-controlled",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-67bea8cd-3243-468e-b192-245c02bad1bc.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "atlasSha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-01.png, row 1 column 4 (one based)",
+    "topicIndex": 3,
+    "inspectionCropCoordinates": [
+      945,
+      5,
+      1249,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-04.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      2,
+      1252,
+      312
+    ],
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively authorized first actual consumers status01/02/04/05 after full24 source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized.",
+    "sourceBoundaryInterpretation": "Original lower-left forearm fades into keyed backdrop. Reconstructed as a finite clean icon endpoint inside canvas, preserving all original hand/cuff/rope content. This is semantic boundary completion, not exact recovered pixels."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "Exactly ONE clenched tan hand and short forearm pointing diagonally upward-right, wearing ONE broad antique-gold cuff. Preserve original cuff symbol: ONE continuous serpentine scrolling line with curled ends and TWO separate small rounded bosses around it. This is an ornamental scroll, not writing. On the cuff lower-right, preserve ONE brown rope knot ending in exactly TWO short visible tails. Keep clear cuff/hand/rope silhouettes. The original forearm fades at lower-left: make a clean finite softly rounded illustrated endpoint inside generous transparent margins, not a canvas-edge crop, no blood or anatomical cut surface. Do not add sleeve, handcuffs, chains, additional hands or letters.",
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-two-bosses.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "refinementHistory": [
+    {
+      "initialCandidate": "candidates/initial/raw.png",
+      "initialRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3182b3a1-daf4-44fa-af9e-7615bf0e0e2d.png",
+      "reason": "Initial generation added three circular cuff bosses; original has two isolated bosses.",
+      "refinementPrompt": "prompt-refine-two-bosses.txt",
+      "refinementInputPaths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-3182b3a1-daf4-44fa-af9e-7615bf0e0e2d.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-complete-subject.png"
+      ],
+      "finalGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-67bea8cd-3243-468e-b192-245c02bad1bc.png",
+      "result": "One upper-left added boss removed by built-in imagegen, retaining exactly two; all other major identities/pose/canvas preserved.",
+      "pixelPostprocessing": "None"
+    }
+  ]
+}
