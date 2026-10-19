@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import xml.etree.ElementTree as ET
 from PIL import Image
+from calibration_ground import append_ground
 
 NS = 'http://www.w3.org/2000/svg'
 XLINK = 'http://www.w3.org/1999/xlink'
@@ -18,7 +19,7 @@ def element(tag, attrs=None):
     return ET.Element(f'{{{NS}}}{tag}', attrs or {})
 
 
-def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None):
+def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None):
     data = json.loads((source / 'pieces.json').read_text())
     output.mkdir(parents=True, exist_ok=True)
     reports = []
@@ -53,8 +54,11 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
                 'sourceFoot': foot, 'logicalPerSourcePixel': scale, 'fullCanvasLogical': [width * scale, height * scale],
                 'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest()})
 
+        ground_report = append_ground(svg, defs, data['map'], ground_base, grass_patch) if ground_base else None
         water_inserted = False
         for piece in data['layers']['ground']:
+            if ground_base and 'surface-meadow@2x.png' in piece['markup']:
+                continue
             if selected and 'candidate-environment-prop' in piece['markup']:
                 continue
             if selected and 'transition-meadow-forest@2x.png' in piece['markup']:
@@ -132,7 +136,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         with Image.open(png) as image:
             image.resize((640, 512), Image.Resampling.LANCZOS).save(output / f'{name}-native.png')
         reports.append({'variant': name, 'viewBox': [-96, 0, 640, 512], 'cropWorld': [0, 3, 14, 10],
-            'overscanLogical': 96, 'groundFit': {'meadowInset': 0 if keep_width else 3, 'bleed': .5},
+            'overscanLogical': 96, 'groundStudy': ground_report, 'groundFit': {'meadowInset': 0 if keep_width else 3, 'bleed': .5},
             'substitutions': substitutions, 'inputHashes': hashes, 'kind': 'actual-renderer-piece-art-study-not-gameplay',
             'connectorCalibration': str(connectors) if connectors and ('corrected-connectors' in name or 'area-water' in name) else None,
             'waterAreaCalibration': str(water_area) if water_area and 'area-water' in name else None,
@@ -153,5 +157,7 @@ if __name__ == '__main__':
     parser.add_argument('--only')
     parser.add_argument('--water-area', type=Path)
     parser.add_argument('--bank', type=Path)
+    parser.add_argument('--ground-base', type=Path)
+    parser.add_argument('--grass-patch', type=Path)
     args = parser.parse_args()
-    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None)
+    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None)
