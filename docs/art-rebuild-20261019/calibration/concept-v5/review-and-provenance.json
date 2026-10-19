@@ -1,0 +1,81 @@
+{
+  "kind": "opaque-whole-scene-style-concept-not-runtime-or-transparent-asset",
+  "generation": "built-in image_gen; v1 style transfer then targeted shape-language revision v2",
+  "selected": "concept-v2.png",
+  "countChecks": {
+    "soldiers": 6,
+    "blueTeam": 3,
+    "redTeam": 3,
+    "bridges": 3
+  },
+  "visualReview": {
+    "improved": [
+      "broad oversized blades and hands",
+      "angular expressive veteran faces",
+      "chunky pointed grouped pine crowns",
+      "thick graphic contours and matte cel planes"
+    ],
+    "preserved": [
+      "three horizontal crossings and vertical river",
+      "three soldiers on each bank facing opponents",
+      "blue/red team readability",
+      "approximate camera and triangular formation"
+    ],
+    "notStrictlyPreserved": [
+      "soldier visual size and exact standing centers",
+      "tree canopy scale and partial edge-tree visibility",
+      "grass, bank, water and stone interior drawing"
+    ],
+    "limits": [
+      "concept-only: no production asset/level/renderer replacement",
+      "opaque background intentional; zero transparent-asset completion credit",
+      "not a pixel-exact same-layout comparison",
+      "style acceptance still requires user review"
+    ]
+  },
+  "reference": "Official Legends of Kingdom Rush Steam screenshot08, https://store.steampowered.com/app/1904860/Legends_of_Kingdom_Rush/",
+  "files": {
+    "before.png": {
+      "sha256": "4ac76ad8226a880fd0faafd2e133d96e6d3e25000ce65d94859330e6ab82ad5d",
+      "size": [
+        896,
+        560
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "concept-v1.png": {
+      "sha256": "e5aa1f9d8affe241b91c9b8eec447450443b089c350e75587c57b078fb2230b5",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGB",
+      "alphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "concept-v2.png": {
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGB",
+      "alphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "prompt-v1.txt": {
+      "sha256": "ab550ecbbbbf67d0956acf887c60739fe12eba1dc78b1fef5741d864017c98b0"
+    },
+    "prompt-v2.txt": {
+      "sha256": "c71d9005633aab3e9e9bd6b9d64edd982fabeac2129e81e3a36d8968c622e14c"
+    }
+  }
+}
