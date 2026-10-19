@@ -10,7 +10,6 @@ import type {
 import {
   candidate01Asset,
   candidate01AssetUrl,
-  candidate01TeamAsset,
   candidate01TryAsset,
   type Candidate01RuntimeAsset,
 } from './candidate-01-assets';
@@ -20,6 +19,7 @@ import {
   CANDIDATE_01_UNIT_ART,
   CANDIDATE_01_WEAPON_FX,
 } from './candidate-01-bindings';
+import { CANDIDATE_01_HERO_APPEARANCES, resolveCandidate01UnitArt } from './candidate-01-hero-appearances';
 import {
   boardPictureMarkup,
   CELL_FOOT,
@@ -135,9 +135,9 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
 }
 
 export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {
-  const topic = CANDIDATE_01_UNIT_ART[type];
-  if (!topic) return null;
-  const record = candidate01TeamAsset(topic, team);
+  const binding = CANDIDATE_01_UNIT_ART[type];
+  if (!binding) return null;
+  const record = resolveCandidate01UnitArt(CANDIDATE_01_HERO_APPEARANCES, binding, team);
   const picture = runtimeUnitPicture(unitSheet(record), team);
   if (record.preserveAuthoredPalette && picture.strip) {
     // These sources already carry reviewed cloth/metal palettes. Keep the team

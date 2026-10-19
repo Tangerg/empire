@@ -1,37 +1,42 @@
 import type { StructureTypeId, TerrainId, UnitTypeId, WeaponId } from '@empire/battle-engine';
 
+export interface Candidate01UnitArtBinding {
+  readonly topicId: string;
+  readonly appearanceId?: string;
+}
+
 /** Engine ids stay story-agnostic; this table is the only unit-to-art translation. */
-export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, string>>> = {
-  'c01.laiya': 'C01-UNIT-BANNER-GUARD',
-  'c01.roderick': 'C01-UNIT-HEAVY-KNIGHT',
-  'c01.cain': 'C01-UNIT-LEGION-SHIELD',
-  'c01.bran': 'C01-UNIT-RANGER',
-  'c01.mirelle': 'C01-UNIT-GRAVEKEEPER',
-  'c01.tasha': 'C01-UNIT-ENGINEER',
-  'c01.ivra': 'C01-UNIT-IVRA-GROWTH',
-  'c01.swordsman': 'C01-UNIT-SWORDSMAN',
-  'c01.banner-guard': 'C01-UNIT-BANNER-GUARD',
-  'c01.archer': 'C01-UNIT-ARCHER',
-  'c01.knight': 'C01-UNIT-KNIGHT',
-  'c01.legion-shield': 'C01-UNIT-LEGION-SHIELD',
-  'c01.gravekeeper': 'C01-UNIT-GRAVEKEEPER',
-  'c01.engineer': 'C01-UNIT-ENGINEER',
-  'c01.wolf-rider': 'C01-UNIT-WOLF-RIDER',
-  'c01.skeleton-guard': 'C01-UNIT-SKELETON-GUARD',
-  'c01.ghost': 'C01-UNIT-GHOST',
-  'c01.inquisitor': 'C01-UNIT-INQUISITOR',
-  'c01.templar': 'C01-UNIT-TEMPLAR',
-  'c01.ballista': 'C01-UNIT-BALLISTA',
-  'c01.battle-mage': 'C01-UNIT-BATTLE-MAGE',
-  'c01.rune-shield': 'C01-UNIT-RUNE-SHIELD',
-  'c01.rune-artificer': 'C01-UNIT-RUNE-ARTIFICER',
-  'c01.stone-golem': 'C01-UNIT-STONE-GOLEM',
-  'c01.silver-longbow': 'C01-UNIT-SILVER-LONGBOW',
-  'c01.woodland-walker': 'C01-UNIT-WOODLAND-WALKER',
-  'c01.druid': 'C01-UNIT-DRUID',
-  'c01.cemetery-colossus': 'C01-UNIT-CEMETERY-COLOSSUS',
-  'c01.refugee': 'C01-MISSION-REFUGEE-ADULT',
-  'c01.laborer': 'C01-MISSION-BRIDGE-LABORER',
+export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, Candidate01UnitArtBinding>>> = {
+  'c01.laiya': { topicId: 'C01-UNIT-BANNER-GUARD' },
+  'c01.roderick': { topicId: 'C01-UNIT-HEAVY-KNIGHT' },
+  'c01.cain': { topicId: 'C01-UNIT-LEGION-SHIELD' },
+  'c01.bran': { topicId: 'C01-UNIT-RANGER' },
+  'c01.mirelle': { topicId: 'C01-UNIT-GRAVEKEEPER' },
+  'c01.tasha': { topicId: 'C01-UNIT-ENGINEER' },
+  'c01.ivra': { topicId: 'C01-UNIT-IVRA-GROWTH' },
+  'c01.swordsman': { topicId: 'C01-UNIT-SWORDSMAN' },
+  'c01.banner-guard': { topicId: 'C01-UNIT-BANNER-GUARD' },
+  'c01.archer': { topicId: 'C01-UNIT-ARCHER' },
+  'c01.knight': { topicId: 'C01-UNIT-KNIGHT' },
+  'c01.legion-shield': { topicId: 'C01-UNIT-LEGION-SHIELD' },
+  'c01.gravekeeper': { topicId: 'C01-UNIT-GRAVEKEEPER' },
+  'c01.engineer': { topicId: 'C01-UNIT-ENGINEER' },
+  'c01.wolf-rider': { topicId: 'C01-UNIT-WOLF-RIDER' },
+  'c01.skeleton-guard': { topicId: 'C01-UNIT-SKELETON-GUARD' },
+  'c01.ghost': { topicId: 'C01-UNIT-GHOST' },
+  'c01.inquisitor': { topicId: 'C01-UNIT-INQUISITOR' },
+  'c01.templar': { topicId: 'C01-UNIT-TEMPLAR' },
+  'c01.ballista': { topicId: 'C01-UNIT-BALLISTA' },
+  'c01.battle-mage': { topicId: 'C01-UNIT-BATTLE-MAGE' },
+  'c01.rune-shield': { topicId: 'C01-UNIT-RUNE-SHIELD' },
+  'c01.rune-artificer': { topicId: 'C01-UNIT-RUNE-ARTIFICER' },
+  'c01.stone-golem': { topicId: 'C01-UNIT-STONE-GOLEM' },
+  'c01.silver-longbow': { topicId: 'C01-UNIT-SILVER-LONGBOW' },
+  'c01.woodland-walker': { topicId: 'C01-UNIT-WOODLAND-WALKER' },
+  'c01.druid': { topicId: 'C01-UNIT-DRUID' },
+  'c01.cemetery-colossus': { topicId: 'C01-UNIT-CEMETERY-COLOSSUS' },
+  'c01.refugee': { topicId: 'C01-MISSION-REFUGEE-ADULT' },
+  'c01.laborer': { topicId: 'C01-MISSION-BRIDGE-LABORER' },
 
   /*
    * The nine unit types the built-in levels are fought with.
@@ -47,15 +52,15 @@ export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, string>>
    * pack's art, and it does not care which content pack declared the id. The
    * generated figures stay the answer for a type nobody has drawn.
    */
-  soldier: 'C01-UNIT-SWORDSMAN',
-  archer: 'C01-UNIT-ARCHER',
-  rogue: 'C01-UNIT-ASSASSIN',
-  cleric: 'C01-UNIT-CLERIC',
-  mage: 'C01-UNIT-MAGE',
-  knight: 'C01-UNIT-KNIGHT',
-  ogre: 'C01-UNIT-TROLL',
-  ballista: 'C01-UNIT-BALLISTA',
-  dragon: 'C01-UNIT-ANCIENT-DRAGON',
+  soldier: { topicId: 'C01-UNIT-SWORDSMAN' },
+  archer: { topicId: 'C01-UNIT-ARCHER' },
+  rogue: { topicId: 'C01-UNIT-ASSASSIN' },
+  cleric: { topicId: 'C01-UNIT-CLERIC' },
+  mage: { topicId: 'C01-UNIT-MAGE' },
+  knight: { topicId: 'C01-UNIT-KNIGHT' },
+  ogre: { topicId: 'C01-UNIT-TROLL' },
+  ballista: { topicId: 'C01-UNIT-BALLISTA' },
+  dragon: { topicId: 'C01-UNIT-ANCIENT-DRAGON' },
 };
 
 /*

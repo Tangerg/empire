@@ -1,0 +1,31 @@
+{
+  "newHeroContractTests": 24,
+  "focusedWithExistingAssetTests": 159,
+  "integration": {
+    "passed": 228,
+    "failed": 0,
+    "files": 7,
+    "includes": [
+      "unit resolver and metadata",
+      "runtime pictures",
+      "full UI",
+      "campaign UI",
+      "SVG/GPU projection contract",
+      "hidden-selected actor boundary"
+    ]
+  },
+  "typecheck": "passed",
+  "appBuilds": [
+    "game-app",
+    "editor-app",
+    "engine-demo-app",
+    "experience-lab-app"
+  ],
+  "fullSuite": "not rerun in this sparse worktree; parent runs integrated complete-tree suite",
+  "sourceGeneration": "none",
+  "activatedAppearances": 0,
+  "nativeAlphaContentValidation": "not applicable: no source registered; future activation needs source/sequence alpha QA, not just PNG RGBA container",
+  "liveBrowserGpu": "not run; actual offline SVG and backend projection contract only",
+  "initialDevelopmentFailures": "First typecheck/test run exposed two mission binding strings left unmigrated and Partial<Record> undefined guards; fixed at their owner, raw logs retained",
+  "remainingIdentityIssues": "All seven named heroes still use their prior generic/stage mappings until complete reviewed appearances are registered"
+}

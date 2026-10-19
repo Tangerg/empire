@@ -90,7 +90,9 @@ const renders = [];
     const displayIndex = standingDrawOrder.findIndex((entry) => entry.id === actor.id);
     const element = svg.querySelector('.layer-units')!.children[displayIndex];
     const runtimeImage = element.querySelector('image')!.getAttribute('href')!.split('?')[0];
-    return { ...actor, topicId: CANDIDATE_01_UNIT_ART[actor.type], runtimeImage,
+    const binding = CANDIDATE_01_UNIT_ART[actor.type];
+    return { ...actor, topicId: binding?.topicId,
+      ...(binding?.appearanceId ? { appearanceId: binding.appearanceId } : {}), runtimeImage,
       usesApprovedV5: runtimeImage.includes('/runtime-approved-v5/') };
   });
   const markup = svg.outerHTML.replace(/href="(\/packages\/[^"?]+)(?:\?[^"]*)?"/g, (_, path: string) => {
