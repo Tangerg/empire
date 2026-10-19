@@ -1,0 +1,163 @@
+{
+  "asset": "C01-UNIT-TEMPLAR",
+  "actualConsumers": [
+    "c01.templar"
+  ],
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Selected master/raw files are byte-identical to native outputs. No programmatic image editing; black/white composites are QA only.",
+  "sharedScale": 0.046585494970884066,
+  "bodyReferenceSourcePixels": 944.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/registration-evidence.json",
+  "semanticContract": "C01-UNIT-TEMPLAR binds only c01.templar. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and uncovered gray-haired ivory/gold sword-and-shield identity. The shield has one long gold vertical bar, not a cross; the cross-bearing staff belongs to the distinct inquisitor row. Original equipment continuity and rule-to-art discrepancies are explicitly documented.",
+  "sourceAndRulesDiscrepancies": [
+    {
+      "kind": "Original frame equipment continuity",
+      "status": "Visual continuity repaired with coordinator approval",
+      "detail": "Original board and HD idle/attack carry sword and shield; original walk-a/walk-b remove shield and introduce a second sword. Remake consistently retains the approved idle sword-and-shield identity in all four poses."
+    },
+    {
+      "kind": "Rule weapon versus original illustration",
+      "status": "Existing mismatch retained and documented, not a gameplay fix",
+      "detail": "c01.templar rules list c01.legion-spear and c01.inquisitor-flame, while canonical artwork shows an uncovered gray-haired sword-and-shield veteran. No spear, new symbol or flame is invented, no topic remap occurs and no weapon rules are changed."
+    },
+    {
+      "kind": "Single action slot",
+      "status": "Existing shared-action limitation retained",
+      "detail": "One original attack slot serves both rule weapons. The source-faithful sword thrust remains the shared illustration for those actions. No fifth pose or weapon-specific animation dispatch is introduced."
+    }
+  ],
+  "selectedAttempts": {
+    "idle": "attempt-01",
+    "walk-a": "first successful native output",
+    "attack": "attempt-02",
+    "walk-b": "first successful native output"
+  },
+  "attackCorrection": "First native attack made the blade about490source pixels long versus idle about315. Preserved attack/attempt-01. Selected native attempt-02 restores about330source-pixel compact blade while retaining attack body/lunge/shield. Exact edit-call input path snapshot is preserved and hashed in request.json because the selected root master later advances to attempt02.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "4e8a658957ba20d4d9db5412de9febf46a243acea61648cf995dfd4888b0f908",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        753,
+        973
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        335,
+        24,
+        1250,
+        974
+      ],
+      "sha256": "6f632f215c28b9022164b4dc9a56a776be6f8128bf5a8a53aa988b0f5643e4f0",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f3d31b0d-cfcb-4b6d-b9a1-2e00214bd4ed.png",
+      "review": "Accepted uncovered silver-gray swept-back hair and short gray beard/moustache, older tan face, ivory/gold armored surcoat and steel shoulder/arm/hip/knee/leg/boot plates. Large bare sword hand screen-left; tall cream shield with one gold vertical bar screen-right. Broad matte chunky head/body/hands/boots."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "957ca1ce7100caeff3b4496391f07f252843f3be254947d771a9f222f32d91c4",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        742,
+        970
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        270,
+        23,
+        1247,
+        971
+      ],
+      "sha256": "380c514a508f8409d3e96e24d7dceaaa2f3b6ad7b7620ef04e33fb89b0917004",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f5e652ee-a3a6-44b5-b5f0-29147d7a0fc0.png",
+      "review": "Front screen-right steel boot advances toe-up with heel contact and visible sole; rear screen-left boot remains flat and weight-bearing. Same sword and shield remain in original physical hands. Small arm/surcoat motion; no shield disappearance."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "51290e474bbb33b1e439c8e5aae21d113603f5a24ea91935155b45a887b4b66f",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        594,
+        940
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        126,
+        29,
+        1349,
+        941
+      ],
+      "sha256": "77529c4a9f7d491b41823995c72fe7e362ae025ac92da8c09d26a03b2dd83e7a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3ca0ef55-05a7-4e85-9221-fdf26c192877.png",
+      "review": "Clear planted sword thrust with front bent knee and rear extended bracing leg. Original screen-left connected arm and bare fist extend the compact sword horizontally in front of the shield. Original shield arm remains naturally occluded behind its full shield. One sword, one shield, two arms/hands total; no limb duplication, shield penetration or hand swap. Selected correction restores about330source-pixel blade length, matching the accepted short-sword identity."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7011018b941be81b391e613bd958569e78c2d0a1831a759718f1261542497c6e",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        794,
+        964
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        320,
+        24,
+        1256,
+        965
+      ],
+      "sha256": "bf503c0ab4dae5d3c4f883fecdd5f6749a6d00a65e53a6f0cdf4641b878fba59",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-15766ba0-88c0-44ba-9935-7016b5698c8e.png",
+      "review": "Opposite walking contact: front screen-right steel boot is flat and weight-bearing, rear screen-left heel is raised with toe contact. Same camera and sword/shield hands; not mirrored or repeated walk-a."
+    }
+  }
+}

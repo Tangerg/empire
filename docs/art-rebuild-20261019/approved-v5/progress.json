@@ -2,7 +2,7 @@
   "phase": "approved-style full collection remake; formal runtime integration ongoing",
   "approval": {
     "messageId": "Sentinel_7330580e60f08191b111a4b2d50b5e82",
-    "quote": "新版本很合适啊，就是这个 feel",
+    "quote": "\u65b0\u7248\u672c\u5f88\u5408\u9002\u554a\uff0c\u5c31\u662f\u8fd9\u4e2a feel",
     "concept": "calibration-v5-concept/concept-v2.png"
   },
   "fullBulkResumed": true,
@@ -19,14 +19,14 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Replace remaining active cliffs and camps, complete capital-gate states and assassin poses; then remaining canonical and environment scope. Keep full-map cohesion/occlusion review and live-game gate.",
+  "next": "Parallel first-level playable layout redesign and ongoing cliff/fortification/character remake; keep all source backups and formal stages distinct.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
-    "quote": "确认了，就按照这个方向做剩下的"
+    "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
   },
-  "authoredFourPoseBundles": 17,
-  "authoredThreeStateBundles": 21,
-  "formalRuntimeBoundTopics": 81,
+  "authoredFourPoseBundles": 18,
+  "authoredThreeStateBundles": 22,
+  "formalRuntimeBoundTopics": 83,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -514,6 +514,18 @@
       "export": "one44/942.5 body scale, four measured feet; attack6.442logical translation and1px canvas padding fully recorded; native light/dark motion review passed",
       "runtimeBinding": "canonical/HD binding for existing rogue role, footprint1x1 unchanged, no new poison effects",
       "liveGame": "pending"
+    },
+    "C01-STRUCT-FORGE-GUN-POSITION": {
+      "raw": "3 exact native1536x1024 states, original empty brass mount/plaque/ammunition identity retained",
+      "export": "shared104/1469 scale and foundation768952, no pose offsets, native alpha and state cues reviewed",
+      "runtimeBinding": "canonical and HD resolver bound with original footprint2x2; catalog-only current selector audit",
+      "liveGame": "pending"
+    },
+    "C01-UNIT-TEMPLAR": {
+      "raw": "4 native poses, exact sword/shield identity and repaired original walk equipment continuity; rejected long-blade attack preserved",
+      "export": "shared44/944.5 scale, measured feet, max7.40709 logical registration and1 transparent padding column; native light/dark/olive pose review passed",
+      "runtimeBinding": "canonical and HD resolver bound, footprint1x1; original rule weapon mismatch and single attack slot documented",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -676,8 +688,8 @@
       ],
       "count": 24,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
-      "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
+      "runtimeBinding": "actual c01-02 ground layer samples at0.56\u20130.58 and original0.72 opacity; no scattering or placement changes",
+      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56\u20130.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
       "liveGame": "pending",
       "atlasStaticReview": "All24 exact identities registered. Full original subjects reconstructed where legacy slots cropped; native matte silhouettes and transparent margins checked."
     },
@@ -686,9 +698,11 @@
         "abandoned-cart-stop",
         "village-square-foundation",
         "field-tent-cluster",
-        "vilsa-camp-ground"
+        "vilsa-camp-ground",
+        "supply-tent-workyard",
+        "gray-camp-ground"
       ],
-      "count": 4,
+      "count": 6,
       "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
       "sceneReview": "Complete firstlevel with field tents and red camp reviewed; original ground/standing layering retained. Remaining gray camp/supply tent legacy.",

@@ -1,0 +1,62 @@
+{
+  "atlasId": "camps-foundations",
+  "cellId": "gray-camp-ground",
+  "cellIndexZeroBased": 0,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5469451503196152,
+  "nearOpaqueFractionAlphaGE250": 0.4313348798994732,
+  "canvasEdgeMaxAlpha": 1,
+  "sourceFootNative": [
+    627,
+    1107
+  ],
+  "sourceFootBasis": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+  "sourceFootAlpha": 255,
+  "fullCanvasMustBePreserved": true,
+  "matchesRawGeneratedBytes": true,
+  "sha256": "9f333173f36ce246c4ece73864acbbc469de735d8ae3e026c1617ffb150d92cb",
+  "visualQA": "Flat gray-faction camp ground with exactly five slate-gray hanging banners: tallest at back-center, two rear sides and two near-front sides. Pale silver angular spoke/ring rune emblem copied from the original, not the village cross. Broad tan earth/flagstone court, low central stone ring with unlit/dark contents, sparse perimeter rocks. No active flame or tents. Complete functional ground retained; approved chunky matte planes; transparent exterior.",
+  "remarks": [
+    "Native alpha1 perimeter residue retained unchanged."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    0,
+    4,
+    1230,
+    1254
+  ],
+  "alphaBBoxGE8": [
+    57,
+    158,
+    1197,
+    1134
+  ],
+  "alphaBBoxGE128": [
+    58,
+    159,
+    1197,
+    1133
+  ],
+  "alphaBBoxGE250": [
+    60,
+    160,
+    1195,
+    1132
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    58,
+    159,
+    57,
+    121
+  ]
+}

@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 81,
+    "formalBound": 83,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 15,
+      "combat-unit": 16,
       "equipment": 12,
-      "interactive-structure": 21,
+      "interactive-structure": 22,
       "mission-unit": 1
     },
     "rawPreservedTopics": 83,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 100
+    "registeredEnvironmentCells": 102
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 100,
+    "registeredIndividualSourceCells": 102,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1828,15 +1828,22 @@
       "label": "圣殿骑士",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-templar.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar.png",
+      "stageEvidence": {
+        "raw": "4 native poses, exact sword/shield identity and repaired original walk equipment continuity; rejected long-blade attack preserved",
+        "export": "shared44/944.5 scale, measured feet, max7.40709 logical registration and1 transparent padding column; native light/dark/olive pose review passed",
+        "runtimeBinding": "canonical and HD resolver bound, footprint1x1; original rule weapon mismatch and single attack slot documented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-TROLL",
@@ -2970,14 +2977,20 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-gun-position/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-gun-position/damaged/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-gun-position/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-forge-gun-position.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-forge-gun-position.png",
+      "stageEvidence": {
+        "raw": "3 exact native1536x1024 states, original empty brass mount/plaque/ammunition identity retained",
+        "export": "shared104/1469 scale and foundation768952, no pose offsets, native alpha and state cues reviewed",
+        "runtimeBinding": "canonical and HD resolver bound with original footprint2x2; catalog-only current selector audit",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-FORGE-WORKSHOP",
@@ -18109,7 +18122,9 @@
         "abandoned-cart-stop",
         "village-square-foundation",
         "field-tent-cluster",
-        "vilsa-camp-ground"
+        "vilsa-camp-ground",
+        "supply-tent-workyard",
+        "gray-camp-ground"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18117,9 +18132,11 @@
           "abandoned-cart-stop",
           "village-square-foundation",
           "field-tent-cluster",
-          "vilsa-camp-ground"
+          "vilsa-camp-ground",
+          "supply-tent-workyard",
+          "gray-camp-ground"
         ],
-        "count": 4,
+        "count": 6,
         "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
         "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
         "sceneReview": "Complete firstlevel with field tents and red camp reviewed; original ground/standing layering retained. Remaining gray camp/supply tent legacy.",

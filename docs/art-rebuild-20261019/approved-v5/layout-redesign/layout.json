@@ -1,0 +1,2236 @@
+{
+  "schemaVersion": "empire-layout-design-v1",
+  "status": "design-spec-not-runtime-proof",
+  "levelId": "c01-01",
+  "coordinateSystem": "zero-based x right / y down; square4; map cells authoritative",
+  "mapSize": [
+    27,
+    17
+  ],
+  "terrain": [
+    "TTTTTTTT....TTTTTTT...TTTTT",
+    "TTTTTTT......TTTTT.....TTTT",
+    "TTTTT..h^^h..TTTT.......TTT",
+    "TTTT..h^^^^h..TT.........TT",
+    "TTT...h^^^^h..TT..........T",
+    "TT...-hh^^hh...............",
+    "T...--.hhhh--.......----q--",
+    "....-.....--v-....-----.---",
+    "..q--.-----..------....--..",
+    "--------..-....v.....---..T",
+    "-----...TT.....--------..TT",
+    "....--..TT..-----hh^^h...TT",
+    "T....-...----....h^^^^h.TTT",
+    "TT...-----......h^^^^hh.TTT",
+    "TTTT.......TT....h^^^h.TTTT",
+    "TTTTTT....TTTT....hhh.TTTTT",
+    "TTTTTTTT..TTTTT.......TTTTT"
+  ],
+  "elevation": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "buildings": [
+    {
+      "id": "gray-camp",
+      "terrain": "q",
+      "x": 2,
+      "y": 8,
+      "owner": 1
+    },
+    {
+      "id": "village-granary",
+      "terrain": "v",
+      "x": 12,
+      "y": 7,
+      "owner": 0
+    },
+    {
+      "id": "village-waystation",
+      "terrain": "v",
+      "x": 15,
+      "y": 9,
+      "owner": 0
+    },
+    {
+      "id": "vilsa-camp",
+      "terrain": "q",
+      "x": 24,
+      "y": 6,
+      "owner": 2
+    }
+  ],
+  "owners": [
+    {
+      "x": 2,
+      "y": 8,
+      "owner": 1
+    },
+    {
+      "x": 12,
+      "y": 7,
+      "owner": 0
+    },
+    {
+      "x": 15,
+      "y": 9,
+      "owner": 0
+    },
+    {
+      "x": 24,
+      "y": 6,
+      "owner": 2
+    }
+  ],
+  "actors": [
+    {
+      "key": "campaign-laiya",
+      "x": 3,
+      "y": 9,
+      "owner": 1
+    },
+    {
+      "key": "campaign-torren",
+      "x": 5,
+      "y": 8,
+      "owner": 1
+    },
+    {
+      "key": "campaign-elin",
+      "x": 3,
+      "y": 11,
+      "owner": 1
+    },
+    {
+      "key": "field-cleric",
+      "x": 2,
+      "y": 10,
+      "owner": 1
+    },
+    {
+      "key": "roderick-reserve",
+      "x": 2,
+      "y": 12,
+      "owner": 1
+    },
+    {
+      "key": "ridge-scout",
+      "x": 5,
+      "y": 5,
+      "owner": 1
+    },
+    {
+      "key": "ridge-guard",
+      "x": 4,
+      "y": 6,
+      "owner": 1
+    },
+    {
+      "key": "west-spear",
+      "x": 1,
+      "y": 9,
+      "owner": 1
+    },
+    {
+      "key": "village-runner",
+      "x": 7,
+      "y": 8,
+      "owner": 1
+    },
+    {
+      "key": "camp-guard",
+      "x": 2,
+      "y": 7,
+      "owner": 1
+    },
+    {
+      "key": "field-knight",
+      "x": 6,
+      "y": 11,
+      "owner": 1
+    },
+    {
+      "key": "vanguard-1",
+      "x": 17,
+      "y": 6,
+      "owner": 2
+    },
+    {
+      "key": "vanguard-2",
+      "x": 20,
+      "y": 7,
+      "owner": 2
+    },
+    {
+      "key": "vanguard-archer",
+      "x": 21,
+      "y": 4,
+      "owner": 2
+    },
+    {
+      "key": "vanguard-cain",
+      "x": 24,
+      "y": 7,
+      "owner": 2
+    },
+    {
+      "key": "north-shield",
+      "x": 13,
+      "y": 5,
+      "owner": 2
+    },
+    {
+      "key": "south-sword",
+      "x": 22,
+      "y": 10,
+      "owner": 2
+    },
+    {
+      "key": "south-bow",
+      "x": 20,
+      "y": 12,
+      "owner": 2
+    },
+    {
+      "key": "camp-bow",
+      "x": 25,
+      "y": 5,
+      "owner": 2
+    }
+  ],
+  "deployment": {
+    "player": "3,9 5,8 3,11 2,10 2,12 5,5 4,6 1,9 7,8 2,7 6,11",
+    "enemy": "17,6 20,7 21,4 24,7 13,5 22,10 20,12 25,5"
+  },
+  "rushTorren": {
+    "x": 9,
+    "y": 4,
+    "hpCap": 72,
+    "reason": "north hill crest, separated from main support; replaces stale (4,0)"
+  },
+  "routes": {
+    "village-road": [
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        12,
+        7
+      ],
+      [
+        13,
+        7
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        8
+      ],
+      [
+        18,
+        7
+      ],
+      [
+        19,
+        7
+      ],
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        22,
+        6
+      ],
+      [
+        23,
+        6
+      ],
+      [
+        24,
+        6
+      ],
+      [
+        25,
+        6
+      ],
+      [
+        26,
+        6
+      ]
+    ],
+    "south-bypass": [
+      [
+        3,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        12,
+        12
+      ],
+      [
+        12,
+        11
+      ],
+      [
+        13,
+        11
+      ],
+      [
+        14,
+        11
+      ],
+      [
+        15,
+        11
+      ],
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        18,
+        10
+      ],
+      [
+        19,
+        10
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        22,
+        10
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        23,
+        9
+      ],
+      [
+        23,
+        8
+      ],
+      [
+        24,
+        8
+      ],
+      [
+        24,
+        7
+      ],
+      [
+        24,
+        6
+      ]
+    ],
+    "north-hill-west-spur": [
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "north-hill-east-spur": [
+      [
+        11,
+        6
+      ],
+      [
+        12,
+        6
+      ],
+      [
+        12,
+        7
+      ]
+    ],
+    "village-yard-spur": [
+      [
+        15,
+        8
+      ],
+      [
+        15,
+        9
+      ],
+      [
+        15,
+        10
+      ],
+      [
+        15,
+        11
+      ]
+    ],
+    "gray-camp-spur": [
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        10
+      ]
+    ]
+  },
+  "terrainRegions": [
+    {
+      "id": "northwest-wood",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 0,
+          "xRanges": [
+            [
+              0,
+              7
+            ]
+          ]
+        },
+        {
+          "y": 1,
+          "xRanges": [
+            [
+              0,
+              6
+            ]
+          ]
+        },
+        {
+          "y": 2,
+          "xRanges": [
+            [
+              0,
+              4
+            ]
+          ]
+        },
+        {
+          "y": 3,
+          "xRanges": [
+            [
+              0,
+              3
+            ]
+          ]
+        },
+        {
+          "y": 4,
+          "xRanges": [
+            [
+              0,
+              2
+            ]
+          ]
+        },
+        {
+          "y": 5,
+          "xRanges": [
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "y": 6,
+          "xRanges": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-finger",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 0,
+          "xRanges": [
+            [
+              12,
+              18
+            ]
+          ]
+        },
+        {
+          "y": 1,
+          "xRanges": [
+            [
+              13,
+              17
+            ]
+          ]
+        },
+        {
+          "y": 2,
+          "xRanges": [
+            [
+              13,
+              16
+            ]
+          ]
+        },
+        {
+          "y": 3,
+          "xRanges": [
+            [
+              14,
+              15
+            ]
+          ]
+        },
+        {
+          "y": 4,
+          "xRanges": [
+            [
+              14,
+              15
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "northeast-wood",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 0,
+          "xRanges": [
+            [
+              22,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 1,
+          "xRanges": [
+            [
+              23,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 2,
+          "xRanges": [
+            [
+              24,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 3,
+          "xRanges": [
+            [
+              25,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 4,
+          "xRanges": [
+            [
+              26,
+              26
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southeast-wood",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 9,
+          "xRanges": [
+            [
+              26,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 10,
+          "xRanges": [
+            [
+              25,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 11,
+          "xRanges": [
+            [
+              25,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 12,
+          "xRanges": [
+            [
+              24,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 13,
+          "xRanges": [
+            [
+              24,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 14,
+          "xRanges": [
+            [
+              23,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 15,
+          "xRanges": [
+            [
+              22,
+              26
+            ]
+          ]
+        },
+        {
+          "y": 16,
+          "xRanges": [
+            [
+              22,
+              26
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southwest-wood",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 12,
+          "xRanges": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "y": 13,
+          "xRanges": [
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "y": 14,
+          "xRanges": [
+            [
+              0,
+              3
+            ]
+          ]
+        },
+        {
+          "y": 15,
+          "xRanges": [
+            [
+              0,
+              5
+            ]
+          ]
+        },
+        {
+          "y": 16,
+          "xRanges": [
+            [
+              0,
+              7
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-copse",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 14,
+          "xRanges": [
+            [
+              11,
+              12
+            ]
+          ]
+        },
+        {
+          "y": 15,
+          "xRanges": [
+            [
+              10,
+              13
+            ]
+          ]
+        },
+        {
+          "y": 16,
+          "xRanges": [
+            [
+              10,
+              14
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inner-copse",
+      "terrain": "T",
+      "rows": [
+        {
+          "y": 10,
+          "xRanges": [
+            [
+              8,
+              9
+            ]
+          ]
+        },
+        {
+          "y": 11,
+          "xRanges": [
+            [
+              8,
+              9
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-crown",
+      "terrain": "^",
+      "rows": [
+        {
+          "y": 2,
+          "xRanges": [
+            [
+              8,
+              9
+            ]
+          ]
+        },
+        {
+          "y": 3,
+          "xRanges": [
+            [
+              7,
+              10
+            ]
+          ]
+        },
+        {
+          "y": 4,
+          "xRanges": [
+            [
+              7,
+              10
+            ]
+          ]
+        },
+        {
+          "y": 5,
+          "xRanges": [
+            [
+              8,
+              9
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-slope",
+      "terrain": "h",
+      "rows": [
+        {
+          "y": 2,
+          "xRanges": [
+            [
+              7,
+              7
+            ],
+            [
+              10,
+              10
+            ]
+          ]
+        },
+        {
+          "y": 3,
+          "xRanges": [
+            [
+              6,
+              6
+            ],
+            [
+              11,
+              11
+            ]
+          ]
+        },
+        {
+          "y": 4,
+          "xRanges": [
+            [
+              6,
+              6
+            ],
+            [
+              11,
+              11
+            ]
+          ]
+        },
+        {
+          "y": 5,
+          "xRanges": [
+            [
+              6,
+              7
+            ],
+            [
+              10,
+              11
+            ]
+          ]
+        },
+        {
+          "y": 6,
+          "xRanges": [
+            [
+              7,
+              10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-ridge",
+      "terrain": "^",
+      "rows": [
+        {
+          "y": 11,
+          "xRanges": [
+            [
+              19,
+              20
+            ]
+          ]
+        },
+        {
+          "y": 12,
+          "xRanges": [
+            [
+              18,
+              21
+            ]
+          ]
+        },
+        {
+          "y": 13,
+          "xRanges": [
+            [
+              17,
+              20
+            ]
+          ]
+        },
+        {
+          "y": 14,
+          "xRanges": [
+            [
+              18,
+              20
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-slope",
+      "terrain": "h",
+      "rows": [
+        {
+          "y": 11,
+          "xRanges": [
+            [
+              17,
+              18
+            ],
+            [
+              21,
+              21
+            ]
+          ]
+        },
+        {
+          "y": 12,
+          "xRanges": [
+            [
+              17,
+              17
+            ],
+            [
+              22,
+              22
+            ]
+          ]
+        },
+        {
+          "y": 13,
+          "xRanges": [
+            [
+              16,
+              16
+            ],
+            [
+              21,
+              22
+            ]
+          ]
+        },
+        {
+          "y": 14,
+          "xRanges": [
+            [
+              17,
+              17
+            ],
+            [
+              21,
+              21
+            ]
+          ]
+        },
+        {
+          "y": 15,
+          "xRanges": [
+            [
+              18,
+              20
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "clearPockets": [
+    {
+      "id": "west-staging",
+      "bounds": [
+        1,
+        7,
+        7,
+        12
+      ]
+    },
+    {
+      "id": "village-contest",
+      "bounds": [
+        10,
+        6,
+        17,
+        10
+      ]
+    },
+    {
+      "id": "enemy-approach",
+      "bounds": [
+        17,
+        4,
+        25,
+        9
+      ]
+    }
+  ],
+  "recommendedScenePlacements": [
+    {
+      "id": "gray-camp-ground",
+      "x": 2.5,
+      "y": 10.6,
+      "layer": "foundation",
+      "scale": 0.8
+    },
+    {
+      "id": "village-square-foundation",
+      "x": 13.2,
+      "y": 8.9,
+      "layer": "foundation",
+      "scale": 0.82
+    },
+    {
+      "id": "vilsa-camp-ground",
+      "x": 24.1,
+      "y": 8.3,
+      "layer": "foundation",
+      "scale": 0.8
+    },
+    {
+      "id": "grain-drying-mat-linen",
+      "x": 11.2,
+      "y": 10.7,
+      "layer": "foundation",
+      "scale": 0.6
+    },
+    {
+      "id": "grain-drying-mat-earth",
+      "x": 16.1,
+      "y": 9.9,
+      "layer": "foundation",
+      "scale": 0.55
+    },
+    {
+      "id": "temperate-hill-cap",
+      "x": 8.55,
+      "y": 4.5,
+      "layer": "under-units",
+      "scale": 0.82
+    },
+    {
+      "id": "temperate-cliff-straight-south",
+      "x": 8.8,
+      "y": 5.65,
+      "layer": "under-units",
+      "scale": 0.82
+    },
+    {
+      "id": "temperate-cliff-convex-corner",
+      "x": 6.75,
+      "y": 4.8,
+      "layer": "under-units",
+      "scale": 0.7
+    },
+    {
+      "id": "temperate-ramp-level-2",
+      "x": 10.4,
+      "y": 5.8,
+      "layer": "under-units",
+      "scale": 0.7
+    },
+    {
+      "id": "temperate-hill-cap",
+      "x": 19.0,
+      "y": 12.9,
+      "layer": "under-units",
+      "scale": 0.86,
+      "flip": true
+    },
+    {
+      "id": "temperate-cliff-straight-south",
+      "x": 19.2,
+      "y": 14.2,
+      "layer": "under-units",
+      "scale": 0.92
+    },
+    {
+      "id": "temperate-cliff-convex-corner",
+      "x": 17.25,
+      "y": 13.65,
+      "layer": "under-units",
+      "scale": 0.75,
+      "flip": true
+    },
+    {
+      "id": "temperate-ramp-level-2",
+      "x": 21.5,
+      "y": 12.4,
+      "layer": "under-units",
+      "scale": 0.75,
+      "flip": true
+    },
+    {
+      "id": "field-tent-cluster",
+      "x": 1.45,
+      "y": 11.2,
+      "layer": "under-units",
+      "scale": 0.6
+    },
+    {
+      "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+      "x": 3.2,
+      "y": 12.2,
+      "layer": "under-units",
+      "scale": 0.55
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-1",
+      "x": 0.8,
+      "y": 11.1,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-2",
+      "x": 1.0,
+      "y": 7.6,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "id": "wheat-sheaves",
+      "x": 11.0,
+      "y": 7.6,
+      "layer": "under-units",
+      "scale": 0.5
+    },
+    {
+      "id": "grain-sacks-baskets",
+      "x": 16.0,
+      "y": 8.6,
+      "layer": "under-units",
+      "scale": 0.5
+    },
+    {
+      "id": "frontier-granary",
+      "x": 16.7,
+      "y": 7.2,
+      "layer": "under-units",
+      "scale": 0.5
+    },
+    {
+      "id": "frontier-farmhouse",
+      "x": 10.7,
+      "y": 10.1,
+      "layer": "under-units",
+      "scale": 0.55
+    },
+    {
+      "id": "stone-well",
+      "x": 14.2,
+      "y": 6.1,
+      "layer": "under-units",
+      "scale": 0.42
+    },
+    {
+      "id": "wheat-drying-rack",
+      "x": 13.8,
+      "y": 10.0,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "id": "farm-fence-straight",
+      "x": 10.2,
+      "y": 11.4,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "id": "farm-fence-corner",
+      "x": 16.3,
+      "y": 9.6,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "id": "supply-tent-workyard",
+      "x": 24.0,
+      "y": 9.0,
+      "layer": "under-units",
+      "scale": 0.6,
+      "flip": true
+    },
+    {
+      "topicId": "C01-BPROP-COVER-2",
+      "x": 23.2,
+      "y": 10.9,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-3",
+      "x": 25.0,
+      "y": 8.6,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-3",
+      "x": 25.0,
+      "y": 6.5,
+      "layer": "under-units",
+      "scale": 0.45
+    },
+    {
+      "id": "bootprints",
+      "x": 19.7,
+      "y": 7.1,
+      "layer": "ground-decal",
+      "scale": 0.6
+    },
+    {
+      "id": "cart-ruts",
+      "x": 8.6,
+      "y": 8.2,
+      "layer": "ground-decal",
+      "scale": 0.7
+    },
+    {
+      "id": "stone-cluster-b",
+      "x": 6.2,
+      "y": 5.2,
+      "layer": "ground-decal",
+      "scale": 0.6
+    },
+    {
+      "id": "fallen-leaves",
+      "x": 12.8,
+      "y": 4.9,
+      "layer": "ground-decal",
+      "scale": 0.5
+    }
+  ],
+  "ambientFarmers": [
+    {
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "x": 11.5,
+      "y": 8.65,
+      "layer": "under-units",
+      "scale": 0.7,
+      "opacity": 0.9
+    },
+    {
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "x": 16.4,
+      "y": 9.15,
+      "layer": "under-units",
+      "scale": 0.68,
+      "opacity": 0.88,
+      "flip": true
+    }
+  ],
+  "sceneZones": [
+    {
+      "id": "gray-camp",
+      "bounds": [
+        0,
+        7,
+        7,
+        13
+      ],
+      "role": "player-camp"
+    },
+    {
+      "id": "north-hill",
+      "bounds": [
+        6,
+        2,
+        11,
+        6
+      ],
+      "role": "elevation-2"
+    },
+    {
+      "id": "central-village",
+      "bounds": [
+        10,
+        6,
+        17,
+        11
+      ],
+      "role": "neutral-village"
+    },
+    {
+      "id": "east-hill",
+      "bounds": [
+        16,
+        11,
+        22,
+        15
+      ],
+      "role": "elevation-2"
+    },
+    {
+      "id": "vilsa-camp",
+      "bounds": [
+        21,
+        4,
+        26,
+        11
+      ],
+      "role": "enemy-vanguard"
+    }
+  ],
+  "frameCoordinateSystem": "world-cell contact coordinates: translate by viewport origin; cx=x*TILE, baseY=y*TILE (NOT scene placement y+1)",
+  "frameMassPlacements": [
+    {
+      "region": "northwest",
+      "id": "oak-grove-dense",
+      "contact": [
+        -0.7,
+        1.2
+      ],
+      "scale": 0.92,
+      "flip": true
+    },
+    {
+      "region": "northwest",
+      "id": "mixed-forest-edge",
+      "contact": [
+        0.8,
+        -0.1
+      ],
+      "scale": 0.78,
+      "flip": false
+    },
+    {
+      "region": "northwest",
+      "id": "mixed-forest-dense",
+      "contact": [
+        2.5,
+        -0.2
+      ],
+      "scale": 1.04,
+      "flip": true
+    },
+    {
+      "region": "northwest",
+      "id": "pine-cluster",
+      "contact": [
+        4.7,
+        -0.4
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "region": "northwest",
+      "id": "oak-ancient",
+      "contact": [
+        6.4,
+        -0.55
+      ],
+      "scale": 0.96,
+      "flip": true
+    },
+    {
+      "region": "northwest",
+      "id": "oak-grove-dense",
+      "contact": [
+        -1.15,
+        3.5
+      ],
+      "scale": 0.92,
+      "flip": false
+    },
+    {
+      "region": "northwest",
+      "id": "mixed-forest-edge",
+      "contact": [
+        -0.7,
+        5.1
+      ],
+      "scale": 0.78,
+      "flip": true
+    },
+    {
+      "region": "north",
+      "id": "pine-cluster",
+      "contact": [
+        12.3,
+        -0.6
+      ],
+      "scale": 0.78,
+      "flip": false
+    },
+    {
+      "region": "north",
+      "id": "oak-ancient",
+      "contact": [
+        14,
+        -0.2
+      ],
+      "scale": 1.04,
+      "flip": true
+    },
+    {
+      "region": "north",
+      "id": "oak-grove-dense",
+      "contact": [
+        16.1,
+        -0.5
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "region": "north",
+      "id": "mixed-forest-edge",
+      "contact": [
+        17.8,
+        -0.8
+      ],
+      "scale": 0.96,
+      "flip": true
+    },
+    {
+      "region": "northeast",
+      "id": "mixed-forest-edge",
+      "contact": [
+        22.9,
+        -0.2
+      ],
+      "scale": 1.04,
+      "flip": true
+    },
+    {
+      "region": "northeast",
+      "id": "mixed-forest-dense",
+      "contact": [
+        24.9,
+        -0.1
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "region": "northeast",
+      "id": "pine-cluster",
+      "contact": [
+        27,
+        1
+      ],
+      "scale": 0.96,
+      "flip": true
+    },
+    {
+      "region": "northeast",
+      "id": "oak-ancient",
+      "contact": [
+        27.5,
+        3.5
+      ],
+      "scale": 0.92,
+      "flip": false
+    },
+    {
+      "region": "southeast",
+      "id": "oak-ancient",
+      "contact": [
+        27.5,
+        10.6
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "region": "southeast",
+      "id": "oak-grove-dense",
+      "contact": [
+        27,
+        12.8
+      ],
+      "scale": 0.96,
+      "flip": true
+    },
+    {
+      "region": "southeast",
+      "id": "mixed-forest-edge",
+      "contact": [
+        25.9,
+        14.7
+      ],
+      "scale": 0.92,
+      "flip": false
+    },
+    {
+      "region": "southeast",
+      "id": "mixed-forest-dense",
+      "contact": [
+        24.8,
+        17.5
+      ],
+      "scale": 0.78,
+      "flip": true
+    },
+    {
+      "region": "southeast",
+      "id": "pine-cluster",
+      "contact": [
+        22.9,
+        17.2
+      ],
+      "scale": 1.04,
+      "flip": false
+    },
+    {
+      "region": "southwest",
+      "id": "mixed-forest-dense",
+      "contact": [
+        -0.7,
+        13.8
+      ],
+      "scale": 0.96,
+      "flip": true
+    },
+    {
+      "region": "southwest",
+      "id": "pine-cluster",
+      "contact": [
+        0.1,
+        16.6
+      ],
+      "scale": 0.92,
+      "flip": false
+    },
+    {
+      "region": "southwest",
+      "id": "oak-ancient",
+      "contact": [
+        2.8,
+        17.3
+      ],
+      "scale": 0.78,
+      "flip": true
+    },
+    {
+      "region": "southwest",
+      "id": "oak-grove-dense",
+      "contact": [
+        5.4,
+        17.6
+      ],
+      "scale": 1.04,
+      "flip": false
+    },
+    {
+      "region": "southwest",
+      "id": "mixed-forest-edge",
+      "contact": [
+        7.1,
+        17.1
+      ],
+      "scale": 0.84,
+      "flip": true
+    },
+    {
+      "region": "south",
+      "id": "oak-grove-dense",
+      "contact": [
+        10.5,
+        17.7
+      ],
+      "scale": 0.92,
+      "flip": false
+    },
+    {
+      "region": "south",
+      "id": "mixed-forest-edge",
+      "contact": [
+        12.4,
+        17.5
+      ],
+      "scale": 0.78,
+      "flip": true
+    },
+    {
+      "region": "south",
+      "id": "mixed-forest-dense",
+      "contact": [
+        14.4,
+        17.7
+      ],
+      "scale": 1.04,
+      "flip": false
+    }
+  ],
+  "visualRules": {
+    "preserveSquare4": true,
+    "doNotMaskPlayableCells": true,
+    "roadOpenings": {
+      "west": [
+        7,
+        11.5
+      ],
+      "east": [
+        4.5,
+        8.5
+      ]
+    },
+    "maximumUnbrokenFrameTreeRunCells": 5,
+    "notes": [
+      "Full-bleed meadow beyond rules rectangle; no rectangular dark vignette or 360-degree uniform tree wall.",
+      "The seven terrain woodland regions read as five broad peripheral masses plus two small separating copses; gaps and depth vary.",
+      "Draw hills as coherent connected crowns plus edge faces; do not stack a full cliff/pillar once per mountain cell and then add authored cliffs again.",
+      "Tall trees belong at region lobes with low understory between; keep random decals sparse in tactical pockets.",
+      "Scene props use existing registered sprite anchors/presentationScale once. These anchors are a starting point requiring actual BoardView screenshot QA, not a claim of pixel clearance.",
+      "Ramps must visually agree with high-to-low cells; north southeast ramp meets h(10,5)/(10,6); east ramp meets h(21,11)/(22,12)."
+    ]
+  },
+  "designDiagnostics": {
+    "scope": "Static topology only; ignores elevations, units, zone of control and runtime movement rules. Engineering must run engine tests/replay.",
+    "terrainDimensionsValid": true,
+    "uniqueActors": 19,
+    "actorsOnForestOrBuilding": [],
+    "footConnectedBetweenBuildings": true,
+    "mountedConnectedBetweenBuildings": true,
+    "nearestOpposingManhattanDistance": 8,
+    "rushTerrain": "^"
+  }
+}

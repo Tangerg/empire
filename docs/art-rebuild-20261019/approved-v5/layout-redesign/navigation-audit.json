@@ -1,0 +1,1616 @@
+[
+  {
+    "name": "before",
+    "validation": [],
+    "pacing": {
+      "id": "c01-01",
+      "width": 27,
+      "height": 17,
+      "cells": 459,
+      "playerUnits": 11,
+      "enemyUnits": 8,
+      "reinforcements": 0,
+      "playerSpan": {
+        "width": 7,
+        "height": 9,
+        "area": 63
+      },
+      "enemySpan": {
+        "width": 10,
+        "height": 11,
+        "area": 110
+      },
+      "occupiedSectors": 6,
+      "closestContact": 12,
+      "initialDensity": 0.04139433551198257
+    },
+    "starts": [
+      {
+        "key": "campaign-laiya",
+        "at": [
+          2,
+          9
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 25
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 13
+          }
+        ],
+        "northCrest": 16
+      },
+      {
+        "key": "campaign-torren",
+        "at": [
+          3,
+          8
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 25
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 11
+          }
+        ],
+        "northCrest": 14
+      },
+      {
+        "key": "campaign-elin",
+        "at": [
+          3,
+          10
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 23
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 13
+          }
+        ],
+        "northCrest": 16
+      },
+      {
+        "key": "field-cleric",
+        "at": [
+          2,
+          8
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 6
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 26
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 10
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 12
+          }
+        ],
+        "northCrest": 15
+      },
+      {
+        "key": "roderick-reserve",
+        "at": [
+          3,
+          11
+        ],
+        "profile": "mounted",
+        "admitted": true,
+        "reachableCells": 431,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 10
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 24
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 14
+          }
+        ],
+        "northCrest": null
+      },
+      {
+        "key": "ridge-scout",
+        "at": [
+          6,
+          14
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 16
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 22
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 14
+          }
+        ],
+        "northCrest": 17
+      },
+      {
+        "key": "ridge-guard",
+        "at": [
+          1,
+          9
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 6
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 26
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 14
+          }
+        ],
+        "northCrest": 17
+      },
+      {
+        "key": "west-spear",
+        "at": [
+          6,
+          12
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 20
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 10
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 12
+          }
+        ],
+        "northCrest": 15
+      },
+      {
+        "key": "village-runner",
+        "at": [
+          5,
+          6
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 25
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 11
+          }
+        ],
+        "northCrest": 10
+      },
+      {
+        "key": "camp-guard",
+        "at": [
+          4,
+          12
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 22
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 14
+          }
+        ],
+        "northCrest": 17
+      },
+      {
+        "key": "field-knight",
+        "at": [
+          7,
+          11
+        ],
+        "profile": "mounted",
+        "admitted": true,
+        "reachableCells": 431,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 20
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 8
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 10
+          }
+        ],
+        "northCrest": null
+      },
+      {
+        "key": "vanguard-1",
+        "at": [
+          15,
+          4
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 15
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 17
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 5
+          }
+        ],
+        "northCrest": 6
+      },
+      {
+        "key": "vanguard-2",
+        "at": [
+          19,
+          5
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 20
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 10
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 8
+          }
+        ],
+        "northCrest": 11
+      },
+      {
+        "key": "vanguard-archer",
+        "at": [
+          22,
+          3
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 21
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 15
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 13
+          }
+        ],
+        "northCrest": 14
+      },
+      {
+        "key": "vanguard-cain",
+        "at": [
+          24,
+          5
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 25
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 15
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 13
+          }
+        ],
+        "northCrest": 16
+      },
+      {
+        "key": "north-shield",
+        "at": [
+          20,
+          9
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 25
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 7
+          }
+        ],
+        "northCrest": 16
+      },
+      {
+        "key": "south-sword",
+        "at": [
+          24,
+          12
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 32
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 2
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 16
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 14
+          }
+        ],
+        "northCrest": 23
+      },
+      {
+        "key": "south-bow",
+        "at": [
+          18,
+          13
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 27
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 9
+          }
+        ],
+        "northCrest": 18
+      },
+      {
+        "key": "camp-bow",
+        "at": [
+          23,
+          8
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              1,
+              3
+            ],
+            "steps": 27
+          },
+          {
+            "at": [
+              25,
+              11
+            ],
+            "steps": 5
+          },
+          {
+            "at": [
+              12,
+              8
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              14,
+              8
+            ],
+            "steps": 9
+          }
+        ],
+        "northCrest": 18
+      }
+    ]
+  },
+  {
+    "name": "proposal",
+    "validation": [],
+    "pacing": {
+      "id": "c01-01",
+      "width": 27,
+      "height": 17,
+      "cells": 459,
+      "playerUnits": 11,
+      "enemyUnits": 8,
+      "reinforcements": 0,
+      "playerSpan": {
+        "width": 7,
+        "height": 8,
+        "area": 56
+      },
+      "enemySpan": {
+        "width": 13,
+        "height": 9,
+        "area": 117
+      },
+      "occupiedSectors": 8,
+      "closestContact": 8,
+      "initialDensity": 0.04139433551198257
+    },
+    "starts": [
+      {
+        "key": "campaign-laiya",
+        "at": [
+          3,
+          9
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 2
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 24
+          }
+        ],
+        "northCrest": 11
+      },
+      {
+        "key": "campaign-torren",
+        "at": [
+          5,
+          8
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 3
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 8
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 21
+          }
+        ],
+        "northCrest": 8
+      },
+      {
+        "key": "campaign-elin",
+        "at": [
+          3,
+          11
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 4
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 13
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 26
+          }
+        ],
+        "northCrest": 13
+      },
+      {
+        "key": "field-cleric",
+        "at": [
+          2,
+          10
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 2
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 13
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 26
+          }
+        ],
+        "northCrest": 13
+      },
+      {
+        "key": "roderick-reserve",
+        "at": [
+          2,
+          12
+        ],
+        "profile": "mounted",
+        "admitted": true,
+        "reachableCells": 434,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 4
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 15
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 16
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 28
+          }
+        ],
+        "northCrest": null
+      },
+      {
+        "key": "ridge-scout",
+        "at": [
+          5,
+          5
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 6
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 20
+          }
+        ],
+        "northCrest": 5
+      },
+      {
+        "key": "ridge-guard",
+        "at": [
+          4,
+          6
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 4
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 20
+          }
+        ],
+        "northCrest": 7
+      },
+      {
+        "key": "west-spear",
+        "at": [
+          1,
+          9
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 2
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 13
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 26
+          }
+        ],
+        "northCrest": 13
+      },
+      {
+        "key": "village-runner",
+        "at": [
+          7,
+          8
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 5
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 6
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 9
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 19
+          }
+        ],
+        "northCrest": 6
+      },
+      {
+        "key": "camp-guard",
+        "at": [
+          2,
+          7
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 1
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 10
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 15
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 23
+          }
+        ],
+        "northCrest": 10
+      },
+      {
+        "key": "field-knight",
+        "at": [
+          6,
+          11
+        ],
+        "profile": "mounted",
+        "admitted": true,
+        "reachableCells": 434,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 10
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 23
+          }
+        ],
+        "northCrest": null
+      },
+      {
+        "key": "vanguard-1",
+        "at": [
+          17,
+          6
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 17
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 6
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 5
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 7
+          }
+        ],
+        "northCrest": 10
+      },
+      {
+        "key": "vanguard-2",
+        "at": [
+          20,
+          7
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 19
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 8
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 7
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 5
+          }
+        ],
+        "northCrest": 14
+      },
+      {
+        "key": "vanguard-archer",
+        "at": [
+          21,
+          4
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 23
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 5
+          }
+        ],
+        "northCrest": 12
+      },
+      {
+        "key": "vanguard-cain",
+        "at": [
+          24,
+          7
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 23
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 12
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 11
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 1
+          }
+        ],
+        "northCrest": 18
+      },
+      {
+        "key": "north-shield",
+        "at": [
+          13,
+          5
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 3
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 6
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 12
+          }
+        ],
+        "northCrest": 5
+      },
+      {
+        "key": "south-sword",
+        "at": [
+          22,
+          10
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 22
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 13
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 8
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 6
+          }
+        ],
+        "northCrest": 19
+      },
+      {
+        "key": "south-bow",
+        "at": [
+          20,
+          12
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 22
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 13
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 8
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 10
+          }
+        ],
+        "northCrest": 19
+      },
+      {
+        "key": "camp-bow",
+        "at": [
+          25,
+          5
+        ],
+        "profile": "foot",
+        "admitted": true,
+        "reachableCells": 459,
+        "buildings": [
+          {
+            "at": [
+              2,
+              8
+            ],
+            "steps": 26
+          },
+          {
+            "at": [
+              12,
+              7
+            ],
+            "steps": 15
+          },
+          {
+            "at": [
+              15,
+              9
+            ],
+            "steps": 14
+          },
+          {
+            "at": [
+              24,
+              6
+            ],
+            "steps": 2
+          }
+        ],
+        "northCrest": 17
+      }
+    ]
+  }
+]

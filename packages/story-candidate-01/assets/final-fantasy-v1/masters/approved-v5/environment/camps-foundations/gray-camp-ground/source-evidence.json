@@ -1,0 +1,68 @@
+{
+  "atlasId": "camps-foundations",
+  "cellId": "gray-camp-ground",
+  "cellIndexZeroBased": 0,
+  "status": "native source complete; parent full-canvas registration review pending",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8a200063-f20b-41a6-826f-26d53b309068.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSourceContract": "original-source-contract.json",
+  "identityReference": "identity-complete-subject.png",
+  "originalSourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+  "originalRuntimeContract": {
+    "logicalCell": [
+      144,
+      144
+    ],
+    "hdCell": [
+      288,
+      288
+    ],
+    "logicalAnchor": [
+      72,
+      139
+    ],
+    "footprint": [
+      4,
+      3
+    ],
+    "obstructionHeight": 0,
+    "layer": "ground foundation",
+    "actualSceneScales": [
+      0.9
+    ]
+  },
+  "identityClarification": "Flat gray-faction camp ground with exactly five slate-gray hanging banners: tallest at back-center, two rear sides and two near-front sides. Pale silver angular spoke/ring rune emblem copied from the original, not the village cross. Broad tan earth/flagstone court, low central stone ring with unlit/dark contents, sparse perimeter rocks. No active flame or tents.",
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/gray-camp-ground/identity-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/master.png"
+  ],
+  "sourceFootNative": [
+    627,
+    1107
+  ],
+  "sourceFootBasis": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+  "fullCanvasRegistration": {
+    "nativeCanvas": [
+      1254,
+      1254
+    ],
+    "preserveWholeCanvas": true,
+    "cropToAlphaBounds": false,
+    "productionMapping": "Pending parent review; no runtime transform, source resize, scene scale or placement edit made."
+  },
+  "postprocessing": "None; byte-exact native PNG copies to raw.png and master.png. No output cleanup/resizing/pixel drawing and no repository writes.",
+  "runtimeReady": false,
+  "sourceMasterSha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d",
+  "matchesAuditedSourceMasterHash": true
+}

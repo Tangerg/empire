@@ -1,25 +1,190 @@
 {
   "topicId": "C01-STRUCT-FORGE-GUN-POSITION",
-  "status": "Normal pilot complete, parent review pending before variants",
-  "normalAlphaGate": "Actual native perimeter max1, zero edge pixels>1",
-  "nativeRawEqualsMaster": true,
+  "status": "Complete native trio; source identity, state cues, alpha, common-scale previews inspected",
+  "masterIntegrity": "All raw/master pairs byte-identical to native built-in imagegen outputs; no crop, resizing, repaint, alpha cleanup, translation or independent fit applied",
   "nativeCanvas": [
     1536,
     1024
   ],
-  "normalSourceFoot": [
+  "canvasVariance": "Initial normal prompt asked square but built-in returned wide native1536x1024. Parent explicitly accepted this frame; both variants match exactly.",
+  "perimeterGate": "All three actual perimeter alpha maxima1, zero outermost pixels>1",
+  "sharedStructuralSourceFoot": [
     768,
     952
   ],
-  "logicalWidthTrial": 104,
+  "acceptedLogicalWidth": 104,
   "normalVisibleWidth": 1469,
-  "visualChecks": {
-    "identity": "Low polygonal stone gun platform, open brass mounting socket with surrounding ring and forward-left beam, ammunition cabinet containing round shot, angular front plaque",
-    "style": "Chunky broad matte planes and bold contours, coherent at104logicalwidth",
-    "sourceMapping": "Atlas04 third row. Runtime-HD preceding-row debris not copied",
-    "transparency": "Full standalone platform and complete clear margins"
+  "sharedScale": 0.07079646017699115,
+  "registrationOffsetsLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      0
+    ]
   },
-  "canvasVariance": "Built-in native result1536x1024 instead of requested1254square; no resizing/cropping applied. Proposal to retain native widecanvas shared for whole family awaiting parent review",
-  "consumerQualification": "Catalog-only/no-static-consumer-reference-found; no live-game claim",
-  "noRepositoryWrites": true
+  "registrationTolerance": "Foundation masonry and stable right-front outline continuous; lowest-edge local variations damaged+3/captured+2native pixels <=0.213logical. No independent alignment/fit performed.",
+  "visualChecks": {
+    "normal": "Low polygonal dark stone cannon emplacement; empty brass socket and surrounding segmented circular mount, forward-left beam, original angular-mark brass front plaque, rear-right cannonball cabinet. No cannon unit or barrel.",
+    "damaged": "Split central brass socket and broken forward beam, front-left parapet/plaque breach with local debris, chipped rear-left wall and damaged ammunition cabinet without orderly round-shot stack. Stable right-front foundation remains.",
+    "captured": "Intact normal mount/plaque/cabinet, one pointed golden amber lantern at right and heavy graychain along outer front-right wall. No flag or new emblem.",
+    "identity": "Atlas04 third row defines this gun position. Ballista emplacement in preceding row is distinct and is not used as identity; no spikes/bolt rack added.",
+    "style": "Broad chunky matte planes, bold contours, uncluttered readability at104logicalwidth",
+    "alpha": "Native trueRGBA with clear exterior and complete silhouettes. No procedural alpha modification."
+  },
+  "sourceStateMapping": {
+    "normal": [
+      0,
+      534,
+      418,
+      736
+    ],
+    "damaged": [
+      418,
+      534,
+      836,
+      736
+    ],
+    "captured": [
+      836,
+      534,
+      1254,
+      736
+    ]
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical104": "qa-logical-104.png",
+    "normal": "qa-normal-logical-104.png",
+    "normalNativeHalf": "qa-normal-native-half.png"
+  },
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog/runtime asset exists; actual authored campaign placement unproven, dynamic external input not excluded"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1536,
+        1024
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        41,
+        206,
+        1510,
+        952
+      ],
+      "alphaAbove1Bounds": [
+        39,
+        204,
+        1512,
+        955
+      ],
+      "fullyTransparentPixelCount": 776450,
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-df6819e9-156e-4d0b-bcdd-2e4b06bfe050.png",
+      "sha256": "d06b15afd7a73300d59cf01236cca773dbd8d298fac0709872d99b0011d12523",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "activePrompt": "prompt.txt",
+      "perimeterGate": "Actual outermost max alpha<=1 and zero edge pixels>1",
+      "sharedStructuralSourceFoot": [
+        768,
+        952
+      ],
+      "displayRegistrationOffsetLogical": [
+        0,
+        0
+      ],
+      "visibleSilhouetteReview": "Full platform, original mechanism/cabinet state and all rubble/lantern/chain completely contained"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1536,
+        1024
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        41,
+        199,
+        1511,
+        955
+      ],
+      "alphaAbove1Bounds": [
+        38,
+        197,
+        1514,
+        957
+      ],
+      "fullyTransparentPixelCount": 771611,
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5b7bb4da-64c7-4a56-aa0e-d04a56fd8d1a.png",
+      "sha256": "899f76300df3d515c9fc1f6a2f40ebfed9033820c203e9ae69160d7998755a84",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "activePrompt": "prompt.txt",
+      "perimeterGate": "Actual outermost max alpha<=1 and zero edge pixels>1",
+      "sharedStructuralSourceFoot": [
+        768,
+        952
+      ],
+      "displayRegistrationOffsetLogical": [
+        0,
+        0
+      ],
+      "visibleSilhouetteReview": "Full platform, original mechanism/cabinet state and all rubble/lantern/chain completely contained"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1536,
+        1024
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        41,
+        204,
+        1511,
+        954
+      ],
+      "alphaAbove1Bounds": [
+        39,
+        202,
+        1513,
+        956
+      ],
+      "fullyTransparentPixelCount": 754841,
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-552b271e-ba1f-45de-9936-072fe056086e.png",
+      "sha256": "5cff7ae0d5d5fbf6be035a77ae6cf079137f16035c11657e9d74de5f7dbc9154",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "activePrompt": "prompt.txt",
+      "perimeterGate": "Actual outermost max alpha<=1 and zero edge pixels>1",
+      "sharedStructuralSourceFoot": [
+        768,
+        952
+      ],
+      "displayRegistrationOffsetLogical": [
+        0,
+        0
+      ],
+      "visibleSilhouetteReview": "Full platform, original mechanism/cabinet state and all rubble/lantern/chain completely contained"
+    }
+  },
+  "rejectedAttempts": [],
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
 }

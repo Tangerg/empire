@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3ca0ef55-05a7-4e85-9221-fdf26c192877.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "77529c4a9f7d491b41823995c72fe7e362ae025ac92da8c09d26a03b2dd83e7a",
+  "bboxAlphaNonzero": [
+    81,
+    26,
+    1365,
+    954
+  ],
+  "bboxAlphaGreaterThan127": [
+    126,
+    29,
+    1349,
+    941
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 991542,
+  "alphaOnePixels": 3560,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        110,
+        800,
+        370,
+        965
+      ],
+      "soleY": 923,
+      "bottomBandMeanX": 225.84279475982532,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        720,
+        790,
+        1090,
+        970
+      ],
+      "soleY": 940,
+      "bottomBandMeanX": 961.8379204892966,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    593.840357624561,
+    931.5
+  ],
+  "suggestedSourceFoot": [
+    594,
+    940
+  ],
+  "lockedBodyScale": 0.046585494970884066,
+  "masterRawHashMatches": true,
+  "semanticReview": "Selected short-sword correction: clear planted lunge with original sword arm forward, one connected bare grip, compact steel blade in front of shield, original shield arm naturally occluded behind full shield. One sword/one shield; no new symbols or effects."
+}

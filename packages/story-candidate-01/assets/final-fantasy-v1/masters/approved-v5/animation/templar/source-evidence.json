@@ -63,7 +63,7 @@
       "sha256": "a06efa15a97adcd27d002318128dac1b5646b08313014b6760f58c22fe6c5140"
     }
   },
-  "status": "Identity verified; idle generation pending; continuity/action plan sent to coordinator",
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
   "actualConsumers": [
     "c01.templar"
   ],
@@ -102,20 +102,24 @@
   },
   "sourceDiscrepancies": [
     {
-      "kind": "source equipment continuity",
-      "detail": "Original board and HD idle/attack show sword and shield; both walking cells remove shield and put a second sword in its hand. Proposed remake retains accepted idle sword/shield across all four poses."
+      "kind": "Original frame equipment continuity",
+      "status": "Visual continuity repaired with coordinator approval",
+      "detail": "Original board and HD idle/attack carry sword and shield; original walk-a/walk-b remove shield and introduce a second sword. Remake consistently retains the approved idle sword-and-shield identity in all four poses."
     },
     {
-      "kind": "gameplay-to-art mismatch",
-      "detail": "Actual c01.templar rules use legion-spear plus inquisitor-flame, but canonical source is uncovered gray-haired sword/shield veteran. Preserve original artwork identity, document mismatch, no silent remap or claim of rule correction."
+      "kind": "Rule weapon versus original illustration",
+      "status": "Existing mismatch retained and documented, not a gameplay fix",
+      "detail": "c01.templar rules list c01.legion-spear and c01.inquisitor-flame, while canonical artwork shows an uncovered gray-haired sword-and-shield veteran. No spear, new symbol or flame is invented, no topic remap occurs and no weapon rules are changed."
     },
     {
-      "kind": "single action slot",
-      "detail": "Existing four-frame contract has one attack slot shared by both rules weapons. Proposed source-faithful sword thrust remains a shared visual limitation; no new fifth pose or dispatch change."
+      "kind": "Single action slot",
+      "status": "Existing shared-action limitation retained",
+      "detail": "One original attack slot serves both rule weapons. The source-faithful sword thrust remains the shared illustration for those actions. No fifth pose or weapon-specific animation dispatch is introduced."
     }
   ],
   "symbolReview": "No cross in original templar shield. Gold vertical bar only. Cross-bearing round staff belongs to distinct inquisitor row below, not templar.",
   "consumerStatus": "Campaign c01.templar appears in multiple level definitions; not a built-in or protagonist binding. No current live actor count claimed.",
   "scaleContract": "Approved chunky human44logical body family; idle first then locked scale and full-canvas foot registration.",
-  "continuityPlanApproval": "Coordinator2026-10-19 16:54UTC approved preserving original idle sword/shield in all four frames, correcting walking shield disappearance, documenting weapon-rule mismatch and single-action-slot limitation, without changing rules."
+  "continuityPlanApproval": "Coordinator2026-10-19 16:54UTC approved preserving original idle sword/shield in all four frames, correcting walking shield disappearance, documenting weapon-rule mismatch and single-action-slot limitation, without changing rules.",
+  "quartetManifest": "bundle-manifest.json"
 }

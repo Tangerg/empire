@@ -1,0 +1,68 @@
+{
+  "atlasId": "camps-foundations",
+  "cellId": "supply-tent-workyard",
+  "cellIndexZeroBased": 5,
+  "status": "native source complete; parent full-canvas registration review pending",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-59ed23a5-40ab-40ac-a45b-ca0b729fc4cb.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "originalSourceContract": "original-source-contract.json",
+  "identityReference": "identity-complete-subject.png",
+  "originalSourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+  "originalRuntimeContract": {
+    "logicalCell": [
+      144,
+      144
+    ],
+    "hdCell": [
+      288,
+      288
+    ],
+    "logicalAnchor": [
+      72,
+      139
+    ],
+    "footprint": [
+      3,
+      3
+    ],
+    "obstructionHeight": 1,
+    "layer": "standing settlement scenery",
+    "actualSceneScales": [
+      0.7
+    ]
+  },
+  "identityClarification": "One open-sided long gray-cloth supply canopy on timber posts, rear-left gray hanging flag with source pale geometric mark/dark middle band, crates stored underneath, several barrel/tub groups around sides, small ceramic jar at front-left, short leaning wood ladder under front-right canopy, and an outside worktable at front-right with broad pale work items. Keep open front workyard and continuous floor.",
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-tent-workyard/identity-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-tent-cluster/master.png"
+  ],
+  "sourceFootNative": [
+    627,
+    991
+  ],
+  "sourceFootBasis": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+  "fullCanvasRegistration": {
+    "nativeCanvas": [
+      1254,
+      1254
+    ],
+    "preserveWholeCanvas": true,
+    "cropToAlphaBounds": false,
+    "productionMapping": "Pending parent review; no runtime transform, source resize, scene scale or placement edit made."
+  },
+  "postprocessing": "None; byte-exact native PNG copies to raw.png and master.png. No output cleanup/resizing/pixel drawing and no repository writes.",
+  "runtimeReady": false,
+  "sourceMasterSha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d",
+  "matchesAuditedSourceMasterHash": true
+}

@@ -1,0 +1,79 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-TEMPLAR",
+  "actualConsumers": [
+    "c01.templar"
+  ],
+  "bodyScale": "44/944.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1585,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Native idle/walk-a/attack are1585x992 and each require one transparent right column in export preparation; walk-b is1586x992. Common1586x992. No native resizing, cropping, painting, recoloring or alpha cleanup; full canvas preserved.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "attackEditInputSnapshotsHashVerified": true,
+  "alphaPerimeterGate": "Native perimeter alpha<=1 in all selected poses; zero silhouette alpha>1 on edges, alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "swordAndShieldHandsPreserved": true,
+  "shieldRetainedEveryPose": true,
+  "singleVerticalGoldBarNoCross": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Clear planted sword thrust with front bent knee and rear extended bracing leg. Original screen-left connected arm and bare fist extend the compact sword horizontally in front of the shield. Original shield arm remains naturally occluded behind its full shield. One sword, one shield, two arms/hands total; no limb duplication, shield penetration or hand swap. Selected correction restores about330source-pixel blade length, matching the accepted short-sword identity.",
+  "shortSwordCorrection": "First native attack made the blade about490source pixels long versus idle about315. Preserved attack/attempt-01. Selected native attempt-02 restores about330source-pixel compact blade while retaining attack body/lunge/shield. Exact edit-call input path snapshot is preserved and hashed in request.json because the selected root master later advances to attempt02.",
+  "semanticContract": "C01-UNIT-TEMPLAR binds only c01.templar. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and uncovered gray-haired ivory/gold sword-and-shield identity. The shield has one long gold vertical bar, not a cross; the cross-bearing staff belongs to the distinct inquisitor row. Original equipment continuity and rule-to-art discrepancies are explicitly documented.",
+  "sourceAndRulesDiscrepancies": [
+    {
+      "kind": "Original frame equipment continuity",
+      "status": "Visual continuity repaired with coordinator approval",
+      "detail": "Original board and HD idle/attack carry sword and shield; original walk-a/walk-b remove shield and introduce a second sword. Remake consistently retains the approved idle sword-and-shield identity in all four poses."
+    },
+    {
+      "kind": "Rule weapon versus original illustration",
+      "status": "Existing mismatch retained and documented, not a gameplay fix",
+      "detail": "c01.templar rules list c01.legion-spear and c01.inquisitor-flame, while canonical artwork shows an uncovered gray-haired sword-and-shield veteran. No spear, new symbol or flame is invented, no topic remap occurs and no weapon rules are changed."
+    },
+    {
+      "kind": "Single action slot",
+      "status": "Existing shared-action limitation retained",
+      "detail": "One original attack slot serves both rule weapons. The source-faithful sword thrust remains the shared illustration for those actions. No fifth pose or weapon-specific animation dispatch is introduced."
+    }
+  ],
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 8,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

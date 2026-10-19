@@ -1964,13 +1964,13 @@
       "topicId": "C01-UNIT-TEMPLAR",
       "label": "圣殿骑士",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-templar.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-templar.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1979,13 +1979,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        43.0788777130757,
+        49.3276866066702
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-TROLL",
@@ -3765,13 +3766,13 @@
       "topicId": "C01-STRUCT-FORGE-GUN-POSITION",
       "label": "山炉炮位",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-forge-gun-position.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-forge-gun-position.png",
+      "width": 348,
+      "height": 116,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 116,
+      "frameHeight": 116,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -3779,8 +3780,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        57.3716814159292,
+        70.39823008849558
       ],
       "footprint": [
         2,

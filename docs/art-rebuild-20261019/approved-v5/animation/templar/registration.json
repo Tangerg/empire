@@ -1,0 +1,60 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/walk-b/master.png"
+  },
+  "scale": 0.046585494970884066,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    753,
+    973
+  ],
+  "sourceFeet": {
+    "idle": [
+      753,
+      973
+    ],
+    "walk-a": [
+      742,
+      970
+    ],
+    "attack": [
+      594,
+      940
+    ],
+    "walk-b": [
+      794,
+      964
+    ]
+  },
+  "canvasPaddingTolerance": 1,
+  "registrationLimit": 8,
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      0.5124404446797247,
+      0.1397564849126522
+    ],
+    "attack": [
+      7.407093700370567,
+      1.5373213340391743
+    ],
+    "walk-b": [
+      -1.9100052938062466,
+      0.41926945473795657
+    ]
+  },
+  "semanticReview": "Shared identity, persistent sword/shield, opposite walk contacts and compact sword thrust reviewed. Legacy weapon-rule mismatch documented in bundle manifest; no gameplay change."
+}

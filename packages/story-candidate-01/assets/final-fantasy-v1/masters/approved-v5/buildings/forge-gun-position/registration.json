@@ -17,10 +17,18 @@
     952
   ],
   "footReason": "Lowest structural front-right parapet foundation stone baseline, excluding no detached rubble in normal",
-  "normalCanvasNote": "Built-in tool returned native1536x1024 despite square request; preserved untouched; proposed as common native trio canvas because original low wide silhouette fits naturally",
+  "normalCanvasNote": "Built-in tool returned native1536x1024 despite initial square request; parent explicitly accepted native wide canvas and required both variants to match. All masters retained byte-identical",
   "perStateFit": false,
   "stateDisplayOffsets": {
     "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
       0,
       0
     ]
@@ -32,5 +40,47 @@
     952
   ],
   "parentNormalAccepted": true,
-  "commonCanvasAccepted": true
+  "commonCanvasAccepted": true,
+  "status": "Normal-derived common scale and complete native canvas retained across all three states",
+  "stateVisibleBounds": {
+    "normal": [
+      41,
+      206,
+      1510,
+      952
+    ],
+    "damaged": [
+      41,
+      199,
+      1511,
+      955
+    ],
+    "captured": [
+      41,
+      204,
+      1511,
+      954
+    ]
+  },
+  "recommendedPreviewFrame": [
+    128,
+    128
+  ],
+  "recommendedPreviewOrigin": [
+    6,
+    6
+  ],
+  "fullCanvasLogicalBoundsAtOrigin6": [
+    6,
+    6,
+    114.7433628318584,
+    78.49557522123894
+  ],
+  "foundationResiduals": {
+    "normal": 0,
+    "damaged": 3,
+    "captured": 2
+  },
+  "foundationResidualNote": "Local lowest right-front stone edge variation versus normal <=3native pixels, <=0.213logical; no rigid-body shift evidenced and no display offset applied. Foundation layout and body positions visually stable.",
+  "parentNormalReview": "Accepted104/1469 and foot768952; explicit native1536x1024 acceptance"
 }

@@ -1,10 +1,23 @@
 {
   "tool": "built-in image_gen",
   "promptFile": "prompt.txt",
-  "promptSha256": "234bfe34401679a7c992b22574e19dbdc904fcc3b37842c8e684831c1b77c1f6",
+  "promptSha256": "51290e474bbb33b1e439c8e5aae21d113603f5a24ea91935155b45a887b4b66f",
   "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/master.png",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/master.png"
   ],
   "transparent_background": true,
-  "exactPromptVerified": true
+  "exactPromptVerified": true,
+  "inputSnapshots": [
+    {
+      "toolCallPath": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/master.png",
+      "preservedSnapshot": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/attack/attempt-01/master.png",
+      "sha256": "0ac701796fcab3232716fe6fb0e8a522478fb4fc9f0f02354eff734192acd57f",
+      "note": "Exact tool-call path held first attack when editing; selected root master later advances to attempt02. Original input preserved byte-identically."
+    },
+    {
+      "toolCallPath": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/master.png",
+      "sha256": "6f632f215c28b9022164b4dc9a56a776be6f8128bf5a8a53aa988b0f5643e4f0"
+    }
+  ]
 }
