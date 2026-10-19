@@ -1,0 +1,47 @@
+{
+  "topicId": "C01-UNIT-HEAVY-KNIGHT",
+  "runtimeIdentity": "Actual Roderick protagonist binding, per coordinator task",
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-heavyknight-spirit-cannon-troll.png",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceBoardSha256": "391ecd7a6bf91164bf08a7320454a23d9768d7247111903f14c3d3d36af96474",
+  "sourceBoardSlot": "top row, four columns; lower rows spirit/cannon/troll not this unit",
+  "sourceUnitRowExtraction": [
+    0,
+    0,
+    1254,
+    314
+  ],
+  "extractionPolicy": "Native pixel crop only; no scale, recolor, background removal or alpha modification. Whole original board also copied byte-for-byte.",
+  "runtimeHDStrip": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-heavy-knight.png",
+  "runtimeHDSize": [
+    256,
+    96
+  ],
+  "runtimeHDSha256": "065240b222d2ca6cec3a626f6ab5ed0b678042550392c4fd0befe2445740c407",
+  "runtimeHDFrameSize": [
+    64,
+    96
+  ],
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "runtimeStrip": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-heavy-knight.png",
+  "runtimeSize": [
+    128,
+    48
+  ],
+  "sourceIdentity": "Right-facing three-quarter clean-shaven stern human with black hair and fully visible face; low angular segmented riveted steel helmet with short horizontal brow brim, broad cheek/neck flaps, no horn/plume/closed face visor. Dark desaturated navy-blue lamellar chest, shoulders and skirt armor with metallic studs and red trim/undergarment; gold cord/tassel at shoulder. Brown leather belt, bracers and boots. Visible weapon hand is bare skin, not a metal gauntlet. Long rigid brown shaft mace with a steel butt cap and a bulky star/spiked gray-steel head; no chain. Tall cream/ivory shield with chamfered corners, dark steel rim and rivets, and exactly one short narrow gold vertical strip near face center; no cross, animal or letters.",
+  "sourcePoseLimitations": "Original attack barely differs from idle; original walking poses near duplicate. New poses will need clear action after idle acceptance.",
+  "styleAuthority": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/master.png"
+  ],
+  "sizePolicy": "Broader/heavier body mass, not arbitrary gigantic height. Match approximately805\u2013820 source-pixel helmet-to-sole body on1586\u00d7992 landscape native canvas, eventual44\u201346logical-pixel body height. Body scale excludes weapon/shield bounds."
+}

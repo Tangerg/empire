@@ -16,10 +16,11 @@ const root = resolve(import.meta.dirname, '../..');
 const secondSet = process.argv.includes('--second');
 const thirdSet = process.argv.includes('--third');
 const fourthSet = process.argv.includes('--fourth');
-const extended = thirdSet || fourthSet;
-if ([secondSet, thirdSet, fourthSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const pineSet = process.argv.includes('--pine-first');
+const extended = thirdSet || fourthSet || pineSet;
+if ([secondSet, thirdSet, fourthSet, pineSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -39,7 +40,13 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = fourthSet ? [
+const columns: readonly ReviewColumn[] = pineSet ? [
+  { id: 'pine-tall', x: 85, placement: [0.86, 1.06] },
+  { id: 'pine-pair', x: 235, placement: [0.86, 1.06] },
+  { id: 'pine-cluster', x: 385, placement: [0.74, 0.86] },
+  { id: 'pine-sapling', x: 515, placement: [1, 1], catalogOnly: true },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : fourthSet ? [
   { id: 'mixed-forest-autumn', x: 85, placement: [0.74, 0.86] },
   { id: 'sapling-rock-cluster', x: 235, placement: [0.58, 0.7] },
   { id: 'stump-low', x: 385, placement: [0.58, 0.7] },
@@ -68,9 +75,9 @@ for (const { id, x, placement, catalogOnly = false, reference = false, reconstru
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
   const source = id === 'boulder-ferns' ? motherRoot
-    : id === 'boulder-large' || id === 'fallen-hollow-log' ? frame : field;
+    : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair'].includes(id) ? frame : field;
   const matches = props(source)
-    .filter((markup) => markup.includes('forest-temperate@2x.png') && markup.includes(crop));
+    .filter((markup) => markup.includes(`${atlas.id}@2x.png`) && markup.includes(crop));
   const samples = matches.map((markup) => {
     const transform = /transform="translate\(([-\d.]+) ([-\d.]+)\) scale\(([-\d.]+)/.exec(markup);
     if (!transform) throw new Error(`missing prop transform: ${id}`);

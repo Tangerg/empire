@@ -215,6 +215,21 @@
         "leaf-pile"
       ],
       "atlasStaticReview": "all16 cells registered; four native class comparison sheets reviewed; actual map-level occlusion pending"
+    },
+    "forest-existing": {
+      "formalRuntimeBoundCells": [
+        "pine-tall",
+        "pine-pair",
+        "pine-cluster",
+        "pine-sapling"
+      ],
+      "count": 4,
+      "export": "96/192 full-canvas registered; unrelated cells preserved",
+      "runtimeBinding": "manifest foot pivots and presentationScale; actual renderer native samples reviewed",
+      "catalogOnlyNoCurrentPlacement": [
+        "pine-sapling"
+      ],
+      "liveGame": "pending"
     }
   },
   "totalCanonicalScope": 1212,

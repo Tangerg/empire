@@ -1,0 +1,30 @@
+{
+  "status": "Idle only; pending coordinator review, no other poses started",
+  "currentCandidate": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png",
+  "selectedAttempt": "attempt-02",
+  "sourceIdentityEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/source-evidence.json",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "nativeSha256": "f04f1b84b595d4bc4495a00576567f9d27f6a7019d4626c4d78cab6af3865b07",
+  "visibleBoundsAlphaGreaterThan127": [
+    135,
+    65,
+    1424,
+    962
+  ],
+  "helmetTopSourceY": 65,
+  "footSupport": [
+    790.27,
+    960.5
+  ],
+  "bodyHeightSourcePixels": 895.5,
+  "proposedBodyTargetLogicalPixels": 45,
+  "proposedBodyScale": 0.05025125628140704,
+  "sourceHeightCaveat": "Native body remains about895px rather than nominal805px. Proposed source-body calibration makes it45logical px tall; broad armor/head/hands/boots provide heavier identity without arbitrary giant runtime height. No physical resize applied.",
+  "rawAndExactPromptsPreserved": true,
+  "nativePerimeterAlpha": 0,
+  "allEquipmentComplete": true,
+  "noRepositoryEdits": true
+}

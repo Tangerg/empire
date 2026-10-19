@@ -1,0 +1,35 @@
+{
+  "status": "native masters and QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "pine-underbrush-c",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/pine-underbrush-c-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/evidence.json",
+      "source_foot_estimate_px": [
+        610,
+        927
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "pine-underbrush-d",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/pine-underbrush-d-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/evidence.json",
+      "source_foot_estimate_px": [
+        608,
+        884
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

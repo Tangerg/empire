@@ -35,9 +35,9 @@ def render(directory):
     report = json.loads(report_path.read_text())
     environment = ROOT / PACK / 'environment-builder-v1'
     manifest = json.loads((environment / 'manifest-environment-builder-v1.json').read_text())
-    atlas = next(a for a in manifest['atlases'] if a['id'] == 'forest-temperate')
-    with Image.open(environment / atlas['png2x']) as image:
-        for asset in report['assets']:
+    for asset in report['assets']:
+        atlas = next(a for a in manifest['atlases'] if asset['id'] in a.get('cellOrder', []) )
+        with Image.open(environment / atlas['png2x']) as image:
             index = atlas['cellOrder'].index(asset['id'])
             alpha = image.crop(cell_box(index, 192)).getchannel('A')
             bounds = alpha.point(lambda value: 255 if value >= 128 else 0).getbbox()

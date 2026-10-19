@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+  "mapBinding": "command_node",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-01.png",
+  "sourceSHA256": "521f775030b3ade3126be9150eeb99ec66f5568108ddc821f7f033c123f4f819",
+  "sourceSize": [
+    1448,
+    1086
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        556,
+        483,
+        791
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        483,
+        556,
+        966,
+        791
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        966,
+        556,
+        1448,
+        791
+      ]
+    }
+  ],
+  "method": "Matched runtime-HD state references to structures-atlas-01 third row, left/middle/right normal/damaged/captured",
+  "stateEvidence": "Squat octagonal stone/brass console with two tilted side levers, central amber crystal on round brass socket, front brass inset panel with plain circular fitting. Normal has intact crystal and rim with no chain. Damaged has short broken crystal shards, collapsed/chipped front rim, broken left lever and scattered stone rubble; right lever remains. Captured has the intact normal device plus a single distinctive dark metal chain draped in a U across the front/top between lever mount areas. No flags or color flips.",
+  "runtimeAnchor": [
+    32,
+    63
+  ],
+  "runtimeFrameSize": [
+    64,
+    64
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "logicalScaleGuidance": "Small interactive console, visibly smaller than Keep. Recommend approximately 88-96 logical pixels wide pending parent scene calibration; do not automatically use 144-wide building scale."
+}

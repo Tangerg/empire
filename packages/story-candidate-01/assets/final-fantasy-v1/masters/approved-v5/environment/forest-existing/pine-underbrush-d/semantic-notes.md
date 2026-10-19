@@ -1,0 +1,5 @@
+One low wide fan-branched shrub, shortest/widest of the set. Three dominant warm-brown angular woody arms fan from a very low shared base and remain exposed across the front; a shallow arch of olive/teal leafy masses sits above and behind them. Small leafy side/base accents and a clear lower central opening distinguish it from the closed B/C mounds. Coarse matte planes and heavy contours, no mature tree trunk or large roots. Branch-cut faces are broad structural accents, not a thorn-covered bramble. No berries, flowers, ground bed or shadow. Full branch and leaf tips visible. Source-foot estimate (608,884) lies at the low branch convergence under the small center leaves.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [69, 427, 51, 322]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: any native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

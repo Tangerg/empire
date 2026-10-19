@@ -1,0 +1,40 @@
+{
+  "topicId": "C01-BPROP-FACTION-4",
+  "assetId": "C01-FFV1-BPROP-FACTION-4",
+  "label": "\u5723\u8f89\u72b6\u6001\u706f",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-49d9cca0-d8c7-430a-970b-56220da55e45.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-faction-4-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-04.png, top row column 4",
+    "inspectionCropCoordinates": [
+      1332,
+      0,
+      1774,
+      442
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-04.png",
+    "atlasSha256": "7f6723b17ffce9681af543fe03565034ef4dda0e7d6724b7ab94a97be6c6068a",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-faction-4-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "postprocessing": "None. Byte-exact native PNG copy. No output pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

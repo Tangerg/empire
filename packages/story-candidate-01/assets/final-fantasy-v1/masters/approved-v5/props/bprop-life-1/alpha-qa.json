@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-LIFE-1",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6246022298024313,
+  "nearOpaqueFractionAlphaGE250": 0.3541229469207309,
+  "nonzeroAlphaBBox": [
+    0,
+    20,
+    1251,
+    1238
+  ],
+  "visibleAlphaBBoxGE8": [
+    45,
+    205,
+    1213,
+    1115
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    45,
+    205,
+    41,
+    139
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 14,
+  "sha256": "cee995bad5a9353dc471610ea8b94ec5cc425d22ae164b3cdd76aad23a10ae93",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Six-object group retained: pot, pan, spoon, unlit stone hearth, brown bowl and green bowl."
+}

@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1108
+  ],
+  "sourceFootBasis": "Front center of common octagonal foundation ground line, retained across states",
+  "sourceScale": 1,
+  "commonFrameOrigin": [
+    0,
+    0
+  ],
+  "normalVisibleBounds": [
+    42,
+    237,
+    1212,
+    1108
+  ],
+  "recommendedLogicalVisibleWidth": 96,
+  "scaleWarning": "Interactive device smaller than Keep; do not use144-wide building default",
+  "perStateTransforms": {
+    "normal": "none",
+    "damaged": "none",
+    "captured": "none"
+  },
+  "logicalVisibleWidth": 96,
+  "logicalWidthApproval": "Parent accepted 96 logical width after normal review, 2026-10-19",
+  "sharedExportScaleSuggestion": 0.08205128205128205,
+  "sharedExportScaleBasis": "96 / normal visible width1170, identical for all states; sourceFoot remains [627,1108], never per-state-fit",
+  "stateGeneration": {
+    "normal": {
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-95440e78-c8c4-4b36-80a0-b4d34a4c7695.png",
+      "prompt": "normal/prompt.txt",
+      "inputIdentity": "normal/original-source.png",
+      "nativeRGBAUntouched": true
+    },
+    "damaged": {
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-3dce6ed2-9c8a-4c02-bdc9-dc6e5068d23b.png",
+      "prompt": "damaged/prompt.txt",
+      "inputIdentity": "damaged/original-source.png",
+      "nativeRGBAUntouched": true,
+      "editTarget": "normal/master.png"
+    },
+    "captured": {
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-997b67be-8baa-4562-a9c6-8ec13c981184.png",
+      "prompt": "captured/prompt.txt",
+      "inputIdentity": "captured/original-source.png",
+      "nativeRGBAUntouched": true,
+      "editTarget": "normal/master.png"
+    }
+  }
+}

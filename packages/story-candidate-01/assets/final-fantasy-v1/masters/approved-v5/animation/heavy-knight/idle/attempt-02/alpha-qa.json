@@ -1,0 +1,99 @@
+{
+  "status": "Idle candidate ready for coordinator review before other poses",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "visibleBounds": [
+    33,
+    62,
+    1468,
+    966
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    135,
+    65,
+    1424,
+    962
+  ],
+  "fullyTransparentPixels": 853850,
+  "nearOpaquePixels": 702430,
+  "fullyOpaquePixels": 805,
+  "partialAlphaPixels": 718657,
+  "edgeMax": 0,
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 0,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passes": true
+  },
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-fa972693-8f77-49f0-a12c-1a4d3a61f074.png",
+  "sha256": "f04f1b84b595d4bc4495a00576567f9d27f6a7019d4626c4d78cab6af3865b07",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/attempt-02/prompt.txt",
+  "exactToolCallPromptVerified": true,
+  "masterTransform": "None; raw and master are byte-for-byte native copies.",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/attempt-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/master.png"
+  ],
+  "helmetTopSourceY": 65,
+  "helmetTopMeasurementROI": [
+    550,
+    30,
+    1120,
+    430
+  ],
+  "lowestBootContourSourceY": 961,
+  "bodyHeightSourcePixels": 895.5,
+  "sourceFootAnchorSuggested": [
+    790,
+    960
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, manually isolated boot-only ROIs, lowest3rows sole contour mass centers. Master pixels unchanged.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          330,
+          820,
+          760,
+          992
+        ],
+        "soleLowestContourY": 961,
+        "lowestThreeRowsXSpan": [
+          451,
+          565
+        ],
+        "soleBandCenterX": 507.98
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          880,
+          850,
+          1230,
+          992
+        ],
+        "soleLowestContourY": 960,
+        "lowestThreeRowsXSpan": [
+          1015,
+          1129
+        ],
+        "soleBandCenterX": 1072.56
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      790.27,
+      960.5
+    ]
+  },
+  "visualReview": "Source identity retained: clean-shaven stern man, low angular riveted helmet with side flaps, dark navy lamellar with red trim and gold shoulder cords, huge bare mace hand, leather bracers/belt/boots, rigid-shaft spiked mace with steel butt cap, chamfered cream shield with one gold vertical strip and two end studs. Second attempt increases head, hand and boot proportions, broadens armor and shortens torso. Complete weapon, shield and boots. No background, ground, halo or shadow. Native height remains larger than requested805px, so eventual45logical-pixel body height should be calibrated from measured source body rather than total silhouette."
+}

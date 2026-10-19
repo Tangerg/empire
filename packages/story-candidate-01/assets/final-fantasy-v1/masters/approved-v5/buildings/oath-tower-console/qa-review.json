@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+  "mapBinding": "command_node",
+  "status": "Native source trio complete; exact alpha gate and shared scale visual QA passed",
+  "sourceEvidence": "source.json + original-source.png and runtime-reference.png in each state folder, atlas01 third row",
+  "commonCanvas": [
+    1254,
+    1254
+  ],
+  "commonSourceFoot": [
+    627,
+    1108
+  ],
+  "logicalVisibleWidth": 96,
+  "postGenerationTransform": "none",
+  "perimeterRequirement": "Max alpha <=1 on all outermost edge pixels; no relaxed gate or programmatic alpha cleaning",
+  "states": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        42,
+        237,
+        1212,
+        1108
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-95440e78-c8c4-4b36-80a0-b4d34a4c7695.png",
+      "sha256": "3cb23571a444f6c960edafbe4f7aa184c8c65c741e38b95abcff14092ddb05ac",
+      "postGenerationTransform": "none"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        43,
+        324,
+        1212,
+        1119
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3dce6ed2-9c8a-4c02-bdc9-dc6e5068d23b.png",
+      "sha256": "f619b1851ac5933e4180c9c55482ab5abc851c2cb808b11a4f9bf43412b3e5a2",
+      "postGenerationTransform": "none"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        42,
+        237,
+        1213,
+        1109
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-997b67be-8baa-4562-a9c6-8ec13c981184.png",
+      "sha256": "e32202b72b71a2f9e4247b0c34f6e413caa774d96e30bbdc56fd8f1a2c43561c",
+      "postGenerationTransform": "none"
+    }
+  },
+  "semantic": {
+    "normal": "Intact squat octagonal stone/brass device, two wooden-tipped metal levers, amber crystal, round socket and circular front fitting; no chain",
+    "damaged": "Same foundation, broken left lever, intact right lever, three short amber shards and broken socket, collapsed central upper rim, local rubble; no chain",
+    "captured": "Intact normal device plus one dark linked metal chain draped as U from lever mounts across front/top; no flag or color flip"
+  },
+  "visualReview": "Reviewed native-width comparison and shared96-logical-width preview. Common foundation/camera maintained; damaged shards and localized rubble intentional. Complete silhouettes, no clipped parts.",
+  "limitations": [
+    "No live-game review or repository binding performed",
+    "AI edits preserve visual registration but strict unchanged pixel identity is not claimed"
+  ]
+}
