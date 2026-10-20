@@ -38,6 +38,8 @@ def build(root=ROOT):
             relative = Path(current['category']) / stem
         elif current['category'] == 'narrative-static' and current.get('kind') == 'character-card' and stem.startswith('char-'):
             relative = Path('narrative') / stem
+        elif current['category'] == 'narrative-static' and current.get('kind') == 'scene' and topic.startswith('C01-'):
+            relative = Path('narrative') / stem
         else:
             directory = {'battle-prop': 'props', 'equipment': 'equipment',
                          'combat-unit': 'animation', 'mission-unit': 'mission',

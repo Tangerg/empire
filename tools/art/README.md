@@ -463,7 +463,8 @@ Commands are the existing `export_overrides.py` / `--check`. All registered inpu
 are validated before any output writes. Existing static icon/prop registrations
 retain their original schema, pixels, alpha QA and reports. No narrative source,
 background or production catalog entry is included in this tooling change.
-There is no scene/key-prop reclassification, HD contract or UI change.
+There is no scene/key-prop reclassification or UI change. The independent scene
+contract below does not change character-card composition or add card HD.
 
 Verify the new source/composition in the real dialogue92×112, mobile64×88,
 roster44², and96×112 HUD slice consumers before publishing. Preserve named hero
@@ -474,6 +475,130 @@ Run focused fixtures with:
 ```sh
 python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
 python3 -m unittest discover -s tools/art -p 'test_narrative_card_overrides.py' -v
+```
+
+## Gray Flag opaque narrative scene plates
+
+`export_overrides.py` also accepts existing C01 `narrative-static`, kind `scene`,
+unframed 256×144 records. Use this distinct entry in `source-overrides.json`:
+
+```json
+{
+  "kind": "opaque-scene-v1",
+  "scene": {
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s05/master.png",
+    "sha256": "actual complete master PNG file SHA-256"
+  },
+  "sourceCropBox": null
+}
+```
+
+This is an **unregistered schema example**. No scene master, runtime export,
+manifest/quality-tier change or new asset registration is included in the tooling
+change. The first reviewed batch is expected to use the exact existing IDs
+`C01-CH01-S05`, `C01-CH01-S01`, `C01-ARCH-THREE-BRIDGES`, `C01-ARCH-REDSTONE`.
+Source identity comes from the remaining-narrative audit, not alphabetical
+manifest order. Preserve all seven approved character cards and their separate
+battle appearances. `CH01-S00` and `CH03-S11` remain key-prop records and cannot
+be smuggled through the scene exporter; this contract does not reclassify them.
+
+### Immutable source and explicit framing
+
+Keep the complete original PNG in the pack's masters directory and register its
+file hash. RGB and fully opaque RGBA are valid complete scene paintings. Any
+transparency anywhere in an RGBA master is rejected, including outside a crop.
+A painted person or object inside this composition is not a reusable transparent
+character/prop source; those must be authored and retained independently.
+
+`sourceCropBox` is required. `null` samples the **entire** source, which must be
+exactly 16:9. A non-16:9 source requires an explicitly reviewed integer
+`[left, top, right, bottom]` box in original pixels (right/bottom exclusive),
+strictly positive, within the source, and exactly 16:9. For example a 1536×1024
+painting may explicitly register `[0,80,1536,944]` only after that framing is
+reviewed. The original 1536×1024 file and hash remain untouched. No automatic
+center crop, stretch, alpha extraction, painting, blur, recolor, sharpening,
+padding or aspect-ratio rounding is performed. This explicit source crop is
+separate from the later browser cover crop described below.
+
+A near-16:9 native image is still not stretched: for 1672×941, the explicit box
+`[4,2,1668,938]` selects 1664×936 and reports left 4, top 2, right 4, bottom 3 source
+pixels removed. This is a framing example, not automatic approval of that crop.
+
+The declared region is copied and resized with Pillow LANCZOS to opaque RGBA
+256×144 at the existing canonical `runtime/narrative-static/*.png` path. The
+region must be at least the largest requested export size; upsampling a legacy
+256×144 file into a purported HD scene is rejected. The report records the
+complete source path/hash/mode/size, opaque alpha, nullable declared crop,
+resolved source region, pixels removed from each side, retained area fraction,
+filter, density and output pixel hash. It explicitly leaves visual review
+required. Pixel reproducibility does not establish framing, scene identity,
+faux transparency or named-person identity.
+
+### Optional 2× output uses the existing resolver
+
+All inspected scene consumers use `candidate01AssetUrl` through
+`candidate01StoryArt`, `candidate01ChapterArt` or `CANDIDATE_01_MENU_ART` in
+`packages/story-candidate-01/src/presentation/candidate-01-story.ts`.
+`candidate-01-assets.ts` already resolves an explicitly registered HD record,
+checks physical dimensions against the logical record, and includes
+`runtime-hd/**/*.png` in the Vite graph. No second scene resolver is necessary.
+
+For a reviewed scene, an optional entry in the existing
+`manifest-tactical-runtime-hd.json` may name the same topic, a
+`runtime-hd/narrative-static/*.png` path, width 512, height 288 and pixelDensity 2.
+Keep that manifest's density 2, assetCount and categories accurate. The exporter
+validates dimensions, density, count and directory, then independently resizes
+the same source region to 512×288; it never enlarges the 256×144 export. Canonical
+logical dimensions remain 256×144. Without an HD record only the native file is
+exported; no HD path, record or runtime selection is invented. 512×288 is the
+existing density convention, not a claim of full-screen display resolution.
+
+### Actual UI cover crop is a second review gate
+
+These are the inspected consumers; this tooling does not change their CSS:
+
+- `packages/game-ui/src/ui/campaign-game.ts` renders the exact story URL twice
+  in the shell (blurred wash and foreground), chapter defaults for choices,
+  staging backgrounds and results, and the briefing URL separately in the
+  staging hero. `campaign.css` uses cover centered 50% 50%, viewport inset 66px
+  from the top, and a separate responsive hero box. The blurred wash additionally
+  scales 1.08; do not confuse that treatment with source pixel modification
+- `apps/game/src/main.ts` uses CH01-S05 as the title image; `app.css .title-art`
+  uses cover at 50% 46% with overlays and display filters
+- `apps/experience-lab/src/main.ts` uses that same menu URL;
+  `experience.css .experience-art` uses cover at 50% 50%, changing to 60% 50% below
+  the 700px media query, with overlays and display filters
+
+For a rendered box `(W,H)` and the 256×144 logical plate, cover retains
+`cw=min(256,144*W/H)`, `ch=min(144,256*H/W)` source pixels. Its visible box is
+`[(256-cw)*px,(144-ch)*py,left+cw,top+ch]`, where `(px,py)` is the CSS position
+as fractions. HD changes sample density, not this crop. For example 1920×900
+title art retains `[0,11.04,256,131.04]`; a portrait layout removes much more of
+the sides. A 16:9 export alone cannot promise that every viewport shows every
+bridge, person or flag. Inspect actual desktop/mobile title, lab, story, choice,
+staging hero/background and result consumers after binding; reject a crop that
+loses essential topic identity. Do not silently compensate with a new selector,
+CSS position, art edit or reused character face.
+
+The approved ledger discovers native scene originals at
+`masters/approved-v5/narrative/<topic-without-C01-prefix-lowercased>/master.png`
+or one child revision directory, matching the existing narrative convention.
+Raw presence alone does not count a formal binding; quality tier and progress
+must agree. The catalog ownership guard understands the separate opaque scene
+source without requiring transparent PNG color type for the master.
+
+All inputs validate before any export writes. `--check` reads and compares
+decoded pixels without repairing outputs. The contract tests cover RGB/RGBA,
+whole-master preservation, explicit crop/aspect/dimensions, independent native
+and HD sampling, manifests/path/hash gates, atomic planning, stale outputs and
+the 76 untouched narrative topics in a four-scene fixture:
+
+```sh
+python3 -m unittest discover -s tools/art -p 'test_narrative_scene_overrides.py' -v
+python3 -m unittest discover -s tools/art -p 'test_narrative_card_overrides.py' -v
+python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
+python3 -m unittest discover -s tools/art -p 'test_approved_ledger.py' -v
+npm test -- packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts tools/art/approved_catalog_bindings.test.ts
 ```
 
 ### Map-structure presentation variants

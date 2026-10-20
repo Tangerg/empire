@@ -16,24 +16,43 @@ const catalogs = packs.map(([campaign, folder, name]) => {
 });
 type SourceRef = { source: string; sha256: string };
 type CardOverride = { kind: 'character-card-composite-v1'; character: SourceRef; background: SourceRef; placement: { renderWidth: number; origin: number[] } };
-const entries = Object.entries(overrides.assets) as Array<[string, SourceRef | CardOverride]>;
-const approved = entries.filter(([, entry]) => ('kind' in entry ? entry.character.source : entry.source).includes('/masters/approved-v5/'));
+type SceneOverride = { kind: 'opaque-scene-v1'; scene: SourceRef; sourceCropBox: number[] | null };
+type Override = SourceRef | CardOverride | SceneOverride;
+function sourcesOf(entry: Override): SourceRef[] {
+  if (!('kind' in entry)) return [entry];
+  return entry.kind === 'opaque-scene-v1' ? [entry.scene] : [entry.character, entry.background];
+}
+const entries = Object.entries(overrides.assets) as Array<[string, Override]>;
+const approved = entries.filter(([, entry]) => sourcesOf(entry).some(source => source.source.includes('/masters/approved-v5/')));
 
 describe('approved static catalogs preserve campaign ownership', () => {
+  it('reads opaque scene provenance independently from reusable transparent character/card sources', () => {
+    const scene = { source: 'scene.png', sha256: 'scene hash' };
+    const character = { source: 'character.png', sha256: 'character hash' };
+    const background = { source: 'background.png', sha256: 'background hash' };
+    expect(sourcesOf({ kind: 'opaque-scene-v1', scene, sourceCropBox: null })).toEqual([scene]);
+    expect(sourcesOf({ kind: 'character-card-composite-v1', character, background,
+      placement: { renderWidth: 144, origin: [24, 4] } })).toEqual([character, background]);
+    expect(sourcesOf(character)).toEqual([character]);
+  });
   it.each(approved)('validates %s in its owning manifest without inventing a playable consumer', (topic, entry) => {
     const matches = catalogs.flatMap(catalog => catalog.assets.filter(asset => asset.topicId === topic).map(asset => ({ ...catalog, asset })));
     expect(matches).toHaveLength(1);
     const { directory, asset } = matches[0]!;
-    const sources = 'kind' in entry ? [entry.character, entry.background] : [entry];
-    for (const source of sources) {
+    for (const source of sourcesOf(entry)) {
       expect(source.source.startsWith(`${directory}masters/approved-v5/`)).toBe(true);
       expect(createHash('sha256').update(readFileSync(new URL(source.source, root))).digest('hex')).toBe(source.sha256);
     }
-    if ('kind' in entry) {
+    if ('kind' in entry && entry.kind === 'character-card-composite-v1') {
       expect(entry.character.source).not.toBe(entry.background.source);
       const character = readFileSync(new URL(entry.character.source, root));
       expect(character[25]).toBe(6);
       expect([asset.width, asset.height]).toEqual([192, 224]);
+    }
+    if ('kind' in entry && entry.kind === 'opaque-scene-v1') {
+      const scene = readFileSync(new URL(entry.scene.source, root));
+      expect([2, 6]).toContain(scene[25]); // Native RGB or RGBA; exporter checks opaque pixels.
+      expect([asset.width, asset.height]).toEqual([256, 144]);
     }
     expect(asset.qualityTier).toBe('approved-chunky-v5-export-verified');
     const png = readFileSync(new URL(`${directory}${asset.png}`, root));

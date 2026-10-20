@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export registered masters and explicit character/background card compositions."""
+"""Export registered masters, character/background cards and opaque scene plates."""
 from __future__ import annotations
 
 import argparse
@@ -162,6 +162,66 @@ def compose_character_card(root: Path, pack: Path, asset, hd, override):
     return rendered, provenance
 
 
+def render_scene(root: Path, pack: Path, asset, hd, override):
+    topic = asset['topicId']
+    if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
+            or asset.get('kind') != 'scene'
+            or (asset['width'], asset['height']) != (256, 144)
+            or any(key in asset for key in ('frames', 'variants', 'frameWidth', 'frameHeight', 'anchor'))):
+        raise ValueError(f'{topic}: only existing Gray Flag 256x144 unframed scene contracts supported')
+    if (not isinstance(override, dict)
+            or set(override) != {'kind', 'scene', 'sourceCropBox'}
+            or override['kind'] != 'opaque-scene-v1'):
+        raise ValueError(f'{topic}: expected opaque-scene-v1 with scene and explicit sourceCropBox')
+    source, digest = read_source(root, pack, override['scene'], f'{topic} scene')
+    if (source.mode not in ('RGB', 'RGBA')
+            or (source.mode == 'RGBA' and source.getchannel('A').getextrema() != (255, 255))):
+        raise ValueError(f'{topic}: complete scene master must be RGB or fully opaque RGBA')
+    crop = override['sourceCropBox']
+    if crop is None:
+        box = [0, 0, source.width, source.height]
+    else:
+        if (not isinstance(crop, list) or len(crop) != 4
+                or any(type(value) is not int for value in crop)
+                or not (0 <= crop[0] < crop[2] <= source.width
+                        and 0 <= crop[1] < crop[3] <= source.height)):
+            raise ValueError(f'{topic}: sourceCropBox must be an integer box inside the complete master')
+        box = crop
+    width, height = box[2] - box[0], box[3] - box[1]
+    if width * 9 != height * 16:
+        raise ValueError(f'{topic}: scene source region must be exactly 16:9; register a reviewed crop explicitly')
+    output_records = [(asset, 1)]
+    if hd:
+        hd_manifest = read_json(pack / 'manifest-tactical-runtime-hd.json')
+        if ((hd.get('width'), hd.get('height'), hd.get('pixelDensity')) != (512, 288, 2)
+                or hd_manifest.get('pixelDensity') != 2
+                or hd_manifest.get('assetCount') != len(hd_manifest['assets'])):
+            raise ValueError(f'{topic}: scene HD contract must be 512x288 at manifest density 2 with matching assetCount')
+        output_records.append((hd, 2))
+    largest_density = output_records[-1][1]
+    if width < 256 * largest_density or height < 144 * largest_density:
+        raise ValueError(f'{topic}: scene source region is smaller than the largest requested export')
+    # Only this declared region is sampled, independently at each density. Never
+    # infer a center-cover crop or rewrite the complete immutable source file.
+    region = source.crop(tuple(box)).convert('RGBA')
+    provenance = {
+        'kind': override['kind'],
+        'sources': {'scene': {**override['scene'], 'sha256': digest,
+                              'size': list(source.size), 'mode': source.mode,
+                              'alphaExtrema': [255, 255]}},
+        'sceneFit': {'method': 'explicit-region-resize', 'resampling': 'LANCZOS',
+                     'sourceCropBox': crop, 'sourceRegion': box,
+                     'croppedSourcePixels': {'left': box[0], 'top': box[1],
+                                             'right': source.width - box[2], 'bottom': source.height - box[3]},
+                     'retainedAreaFraction': width * height / (source.width * source.height)},
+        'outputAlpha': {'extrema': [255, 255],
+                        'meaning': 'opaque scene painting; reusable people/props require separate transparent masters'},
+        'visualReviewRequired': ['complete master and topic identity', 'native exports', 'actual UI cover crops'],
+    }
+    return [(record, density, region.resize((record['width'], record['height']), Image.Resampling.LANCZOS),
+             {**provenance, 'pixelDensity': density}) for record, density in output_records]
+
+
 def plan(root: Path, catalog: Path):
     data = read_json(catalog)
     if data.get('schemaVersion') != 1 or not isinstance(data.get('assets'), dict):
@@ -176,8 +236,11 @@ def plan(root: Path, catalog: Path):
         category = asset['category']
         contracts = {'battle-prop': 64, 'equipment': 48, 'skill': 48, 'status': 32, 'hud': 32}
         if category == 'narrative-static':
-            rendered, provenance = compose_character_card(root, pack, asset, hd, override)
-            exports = [(asset, 1, rendered, provenance)]
+            if asset.get('kind') == 'scene':
+                exports = render_scene(root, pack, asset, hd, override)
+            else:
+                rendered, provenance = compose_character_card(root, pack, asset, hd, override)
+                exports = [(asset, 1, rendered, provenance)]
         elif category not in contracts or asset.get('frames') or asset.get('variants'):
             raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud exports supported')
         else:
