@@ -1,0 +1,25 @@
+{
+  "topicId": "C01-FACTION-SILVERWOOD",
+  "status": "pass-source-review-pending-parent-binding",
+  "reviewedSources": [
+    "full original cell",
+    "labeled source board",
+    "audit exact slot mapping",
+    "approved-v5 equipment masters",
+    "approved concept-v2"
+  ],
+  "identityChecks": [
+    "Complete oval vertical-plank wooden shield with vine-bound rim, moss ties, simple round iron boss and one horizontal dark wood crossbar. The clipped source left edge is restored.",
+    "Folded moss-green swatch retains brown patched repairs, prominent lacing and ragged bottom.",
+    "Pale curved wooden longbow retains wrapped grip, taut string and both complete tips.",
+    "Exactly three source objects in left/center/right grouping; no heraldic tree, leaf crest, arrow, pouch, text or new symbol.",
+    "First generated candidate contained invented vertical steel strip; imagegen refinement removed it and restored wooden crossbar. Candidate is retained as rejected identity evidence, not promoted."
+  ],
+  "styleChecks": [
+    "Broad matte planes and bold dark contour",
+    "Complete silhouettes and transparent inter-object gaps",
+    "Native 128px white/dark/olive visual proof generated from full authored canvas with 2px padding",
+    "No opaque backdrop, labels, text, ground shadow or generic crest"
+  ],
+  "noRepositoryOrGitWrites": true
+}

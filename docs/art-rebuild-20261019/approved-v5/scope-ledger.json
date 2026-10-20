@@ -4,12 +4,12 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 352,
+    "formalBound": 354,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
-      "faction-kit": 2,
+      "faction-kit": 4,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -17,7 +17,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 352,
+    "rawPreservedTopics": 354,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -3072,13 +3072,20 @@
       "category": "faction-kit",
       "label": "山炉装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-mountain-forge/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-mountain-forge.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original hammer-emblem iron shield, dark smith apron and square hammer with source geometric face stamp; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-NAMED-DEAD",
@@ -3114,13 +3121,20 @@
       "category": "faction-kit",
       "label": "银林装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-silverwood/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-silverwood.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original complete vine-rim wooden oval shield, patched green cloth and longbow; no invented steel strip or crest; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-VILSA",

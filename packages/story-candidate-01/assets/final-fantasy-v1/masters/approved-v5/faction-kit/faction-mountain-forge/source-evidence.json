@@ -1,0 +1,85 @@
+{
+  "topicId": "C01-FACTION-MOUNTAIN-FORGE",
+  "assetId": "C01-FFV1-FACTION-MOUNTAIN-FORGE",
+  "label": "山炉装备基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      314,
+      418,
+      627,
+      836
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      319,
+      423,
+      622,
+      831
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/06-faction-mountain-forge-full-cell.png",
+    "referenceLegacyInset5": "source-crops/06-faction-mountain-forge-legacy-inset5.png",
+    "referenceFullCellSha256": "31790cbecec14b6497657cb258fc8529bf278470d958324a05b37681c9901040",
+    "referenceLegacyInset5Sha256": "11dff2446f2921be3fa392791efa9bd6d54bf710b2e7a99e0e26213c38b557ae"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Angular six-sided iron shield with riveted border and large amber hammer-like smithing emblem over a downward shaft and warm forge curl",
+      "Dark leather work apron with neck loop and tool pocket",
+      "Short thick square-headed metal hammer with small source-specific stamped face detail"
+    ],
+    "emblem": "Preserve source hammer/shaft/forge-curl emblem and hammer-face stamp, rather than adding mountain/cog/anvil heraldry",
+    "palette": "Iron-black, stone-gray, worn leather, restrained amber; craft and archive institution"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "babf3a445d3b636d9acfc35dfce9c7c48b160745e215dde6e32a0c47c39aa30d",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/06-faction-mountain-forge-full-cell.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/06-faction-mountain-forge-full-cell.png",
+          "sha256": "31790cbecec14b6497657cb258fc8529bf278470d958324a05b37681c9901040"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-rune-artificer/master.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-rune-artificer/master.png",
+          "sha256": "15a51a4822c16ed6e2a3602f3767b0b29be898d3d7e98ff1bc5b3d6990036e27"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0c598b6b-528c-421d-9b7a-ebb790fa5ec3.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "6afefbeb5c0129745adf6d521d3b2d153a28efcff447c8b68fa7cfd46853d964",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "promptHashes": {
+    "prompt.txt": "678b39d568aef6f4b39753c08b500fbfe0cd1db3ae2592424dfef1cd22065cbc"
+  },
+  "postprocessing": "None; raw and master are byte-identical native generated PNG copies. QA previews only use full-canvas containment.",
+  "runtimeReady": false
+}

@@ -1,0 +1,105 @@
+{
+  "topicId": "C01-FACTION-SILVERWOOD",
+  "assetId": "C01-FFV1-FACTION-SILVERWOOD",
+  "label": "银林装备基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      0,
+      418,
+      314,
+      836
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      5,
+      423,
+      309,
+      831
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/05-faction-silverwood-full-cell.png",
+    "referenceLegacyInset5": "source-crops/05-faction-silverwood-legacy-inset5.png",
+    "referenceFullCellSha256": "7303cbb4449ac3930144189689b2c207a0b60b203ec0b9f1d591d7df2b7c4218",
+    "referenceLegacyInset5Sha256": "6609d81e65e4fafef77b83978072e42a569db27a354d78f6e93f9db081fcb860"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Oval vertically planked wooden shield with woven/vine-bound rim and iron boss",
+      "Patched moss/sage cloth swatch with lacing and ragged edge",
+      "Curved wooden longbow with string"
+    ],
+    "emblem": "No heraldic tree/leaf symbol is drawn; preserve woven wood, cloth repair and longbow as identity",
+    "palette": "Sage/moss green, bark brown, wood and textile; avoid flawless white aristocratic elf styling"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "4dcfdc03ef9dc3c623188cfb337e80d59d9da2940e3432b12167c6bb4e09a6d5",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/05-faction-silverwood-full-cell.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/05-faction-silverwood-full-cell.png",
+          "sha256": "7303cbb4449ac3930144189689b2c207a0b60b203ec0b9f1d591d7df2b7c4218"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-silver-longbow/master.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-silver-longbow/master.png",
+          "sha256": "c46d00d92c85492f5f59b507170f73d74512ec050130f1358be0da9c7913d523"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+        }
+      ]
+    },
+    {
+      "file": "refinement-request.json",
+      "sha256": "8a731ef9c044bc855a77a33875551d59c6649d5424bf71649e77ff2ef954f98e",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-silverwood/master.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-silverwood/candidate-v1.png",
+          "sha256": "b411a2fd3c1f6104cddd25bfc9a0f153f12a5030c591dce50a0bfd7fdbb36921"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/05-faction-silverwood-full-cell.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/05-faction-silverwood-full-cell.png",
+          "sha256": "7303cbb4449ac3930144189689b2c207a0b60b203ec0b9f1d591d7df2b7c4218"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5c43ad9a-09c2-45e1-ac51-11745c2b9191.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "06a59db401fcee011a2afb198304f8de60e1cef4566e1bf6ddc5dd32883aedff",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt.txt"
+  ],
+  "promptHashes": {
+    "prompt.txt": "5a1f76688762bf82eece3b3ab4f06590677b788780793ceb700c086b7e96abbb",
+    "refinement-prompt.txt": "30a0b07c84469e1cddefc2f5f4afc9917346bde75a333bb8d782322cad909381"
+  },
+  "postprocessing": "None; raw and master are byte-identical native generated PNG copies. QA previews only use full-canvas containment.",
+  "runtimeReady": false
+}
