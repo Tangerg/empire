@@ -660,3 +660,64 @@ standing/moving/selected and hidden-visibility review.
 ### Faction-kit source overrides
 
 The audited C01 collection has 12 static faction kits at128×128 with centered[64,64] anchors and no HD records. Use the existing source+sha256 override schema, preserve the full authored RGBA canvas and the existing alpha gate, then fit inside a2-pixel export margin. No per-component crops, palette changes or alpha extraction. The family is catalog-bundled; this does not imply an authored gameplay/UI consumer. Preserve exact source insignia; the Dragon Covenant source uses balance scales. Original row-major source mapping and clipped legacy edges are documented in the approved-v5 faction-kit audit.
+
+## Canonical BORDER1–4 material exports
+
+`canonical-terrain-overrides.json` is intentionally empty until reviewed materials
+and their source windows are explicitly registered. `export_canonical_terrain_overrides.py`
+accepts only `C01-TERRAIN-BORDER-1` through `-4`. This is the canonical catalog,
+not the environment/world-material system that currently paints gameplay ground.
+It does not change manifests, map bindings, geometry, anchors, masks or progress counts.
+
+Each entry has `source`, `sha256` and `registration`. The source is one immutable
+RGB or fully opaque RGBA PNG in this pack's `masters/`, with its exact file SHA256.
+The registration contains `sourceSize: [width, height]` and `windowsXYXY`, a list of
+integer, right/bottom-exclusive square crops measured on that actual source.
+BORDER1/3 require four distinct windows in a/b/c/d order; BORDER2/4 require one
+window shared by all sixteen masks. All windows within a topic have equal side
+length, at least 64 source pixels, and must fit the canvas. There are no automatic
+legacy .62 windows, per-mask zooms, rotations, recoloring or .82/.94 adjustments.
+Do not copy the historical masterboard coordinates onto a newly generated source.
+
+The exporter samples each registered window directly at 32 and 64 with LANCZOS,
+then reuses the approved surface export's bounded opposite-edge averaging helper.
+Only the outermost physical row/column may change. A connected material uses its
+own opposite edges; four variants share their family edge signatures. The exact
+historical binary masks are rasterized independently at each density and checked
+against pinned alpha-strip SHA256 values. Mask 0 is the isolated central pad,
+mask 15 the four-way cross; N/E/S/W bits are 1/2/4/8. Invisible RGB is zeroed outside
+alpha. No source file is rewritten and no texture detail is painted.
+
+```sh
+python3 tools/art/export_canonical_terrain_overrides.py --check
+python3 -m unittest discover -s tools/art -p 'test_canonical_terrain_overrides.py'
+npm test -- packages/story-candidate-01/src/presentation/candidate-01-canonical-terrain.test.ts packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts
+# Only after deliberate registration; output is the reproducibility report:
+python3 tools/art/export_canonical_terrain_overrides.py --preview-dir /tmp/canonical-terrain-review
+```
+
+Every catalog entry, source checksum, explicit crop, destination and manifest
+contract is validated and all images are planned before the first runtime write.
+An empty catalog writes nothing and needs no source files. `--check` compares
+registered exports without writes; it cannot be combined with `--preview-dir`.
+Unregistered topics and all manifest bytes remain untouched. Source SHA256,
+canvas, source-pixel hash, crop, common logical sampling scale, resized sample
+hash, unchanged-interior hash, exact alpha, output hash and edge comparisons
+appear in the report. Four canonical identities derive 40 cells at each density;
+these are not 80 new artworks and add zero environment cells.
+
+Machine verification compares all 16 E/W plus 16 S/N opaque variant pairings and
+all 64 E/W plus 64 S/N open connected-mask pairings, at each density. Previews copy
+actual output cells into opaque 2×2 repeats and 4×4 mixes, or all 16 masks plus
+isolated/end/NS/EW/corner/T/cross fixtures. Exact seam equality is not a visual
+acceptance claim. Review source identity, complete local motifs, visible seam
+bands and 32px readability, then inspect cohesion with approved actors. A common
+material crop can legitimately end a ground stroke at a mask boundary; it must
+not misrepresent a severed object or an invented directional route. Report a
+source/mask semantic conflict rather than adding topology or per-mask art.
+
+The owning evidence is
+`docs/art-rebuild-20261019/approved-v5/canonical-terrain-audit/first-family-border-contract.json`.
+Keep historical provenance there. Successful export does not register quality,
+increment the approved-art ledger, or demonstrate a current gameplay consumer;
+those acceptance and publication steps belong to the parent integration review.

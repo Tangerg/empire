@@ -1,0 +1,52 @@
+import { readFileSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+import manifest from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
+import hdManifest from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
+import { candidate01Asset, validateCandidate01HdAsset } from './candidate-01-assets';
+
+const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
+const topics = [
+  ['C01-TERRAIN-BORDER-1', 'variants', 4],
+  ['C01-TERRAIN-BORDER-2', 'nesw-16', 16],
+  ['C01-TERRAIN-BORDER-3', 'variants', 4],
+  ['C01-TERRAIN-BORDER-4', 'nesw-16', 16],
+] as const;
+
+describe('canonical border terrain catalog contract', () => {
+  it.each(topics)('resolves %s through HD without changing logical geometry', (topic, mode, count) => {
+    const matches = manifest.assets.filter(asset => asset.topicId === topic);
+    const high = hdManifest.assets.filter(asset => asset.topicId === topic);
+    expect(matches).toHaveLength(1);
+    expect(high).toHaveLength(1);
+    const record = candidate01Asset(topic);
+    const hd = high[0]!;
+    expect(record.category).toBe('terrain');
+    expect(record.tileMode).toBe(mode);
+    expect([record.width, record.height, record.tileWidth, record.tileHeight]).toEqual([count * 32, 32, 32, 32]);
+    expect([hd.width, hd.height, hd.pixelDensity]).toEqual([count * 64, 64, 2]);
+    expect(record.url).toContain(hd.png);
+    expect(record.anchor).toBeUndefined();
+    expect(record.footprint).toBeUndefined();
+    expect(record.frames).toBeUndefined();
+    if (mode === 'variants') {
+      expect(matches[0]).toMatchObject({ variants: 4, variantOrder: ['a', 'b', 'c', 'd'] });
+      expect(record.connectionMasks).toBeUndefined();
+    } else {
+      expect(matches[0]).toMatchObject({ connectionMasks: 16, maskBits: ['N', 'E', 'S', 'W'] });
+      expect(record.variants).toBeUndefined();
+    }
+    for (const descriptor of [record, hd]) {
+      const bytes = readFileSync(new URL(descriptor.png, pack));
+      expect(bytes.subarray(1, 4).toString()).toBe('PNG');
+      expect([bytes.readUInt32BE(16), bytes.readUInt32BE(20)]).toEqual([descriptor.width, descriptor.height]);
+      expect(bytes[25]).toBe(6);
+    }
+    expect(() => validateCandidate01HdAsset(record, { ...hd, pixelDensity: 1 })).toThrow();
+    expect(() => validateCandidate01HdAsset(record, { ...hd, width: record.width })).toThrow();
+  });
+
+  it('counts the four source identities independently from their forty derived cells', () => {
+    expect(new Set(topics.map(([topic]) => topic)).size).toBe(4);
+    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(40);
+  });
+});
