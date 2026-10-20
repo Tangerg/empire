@@ -1,0 +1,946 @@
+{
+  "topicId": "C01-FX-06",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/fx-source-audit.json",
+  "auditSha256": "4e7e77ceba7077e10a7b16ad7869fda6098ba618872a8a1ef3d136f6616c1cd2",
+  "originalBoard": {
+    "boardIndex": 2,
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-02.png",
+    "sourceSha256": "37fd8d95a3286cb65db28a0f702d9235c8d927b65b5a7b77817ee1b79cdac7a3",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "intermediate": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/fx/fx-atlas-02.png",
+    "intermediateSha256": "a623eb393ccca85daf0b9b5d82f8e89ee5fa49b138778a7b5afd08db2a6d3b35",
+    "originalAlpha": "RGB opaque board with chroma/panel background",
+    "rawReference": {
+      "path": "boards/fx-atlas-02-original.png",
+      "sha256": "4c7f6210796de508d4b4fc422b6a9ad1af0fea5119c7831a3d6b144adbac6efc",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "decodedSha256": "784365a37cc9636e463490d9308e156e3de99d5008462bd796d4972cb6ce02e6"
+    }
+  },
+  "originalTopic": {
+    "topicId": "C01-FX-06",
+    "label": "琥珀誓火",
+    "semanticName": "amber-oathfire",
+    "manifest": {
+      "assetId": "C01-FFV1-FX-06",
+      "topicId": "C01-FX-06",
+      "label": "琥珀誓火",
+      "category": "fx",
+      "png": "runtime/fx/fx-06.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    "hdManifest": {
+      "topicId": "C01-FX-06",
+      "png": "runtime-hd/fx/fx-06.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    "remainingStatus": "pending-redraw",
+    "sourceBoard": 2,
+    "sourceRow1Based": 2,
+    "sourceRowBoundsXYXY": [
+      0,
+      314,
+      1254,
+      627
+    ],
+    "originalRowCrop": {
+      "path": "source-crops/C01-FX-06/original-row.png",
+      "sha256": "791e517fda19eed26438d2a1afb4bd2b8717f0f638b234986d0ddb8c7492aa38",
+      "size": [
+        1254,
+        313
+      ],
+      "mode": "RGB",
+      "decodedSha256": "b98e72611bd27294908e873747080fd71ad42c516796338b461d39dbd27780d7"
+    },
+    "slots": [
+      {
+        "phaseIndex": 0,
+        "sourceColumn1Based": 1,
+        "sourceRow1Based": 2,
+        "fullGridBoundsXYXY": [
+          0,
+          314,
+          314,
+          627
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          5,
+          319,
+          309,
+          622
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-06/original-f0.png",
+          "sha256": "f2fc57bc5140fe86522d2c9141e1ae813fb62d5e23d8ecfa7de39cd614711f5b",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "346b8bcd0b922d496bee6167afa0c43846cd56b405644cf46a20c2f440f02375"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-06/legacy-alpha-f0.png",
+          "sha256": "c78e4a24d2f9ad122d8ad1a794fe3c445732dcdc4c0259b6669cf5fbabcc2b36",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "5a4e1251283b4d8ba39e54781eb329e2bb0da11c385e8d120d248e58d4ed1018"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          48,
+          132,
+          255,
+          254
+        ],
+        "phaseObservation": "low broken amber rune ring",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 86966,
+          "translucentPixels1to239": 1714,
+          "nearOpaquePixels240to255": 3432,
+          "visiblePixels": 5146,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            48,
+            132,
+            255,
+            254
+          ],
+          "pixelSha256Rgba": "5a4e1251283b4d8ba39e54781eb329e2bb0da11c385e8d120d248e58d4ed1018"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            207,
+            122
+          ],
+          "scale": 0.14492753623188406
+        }
+      },
+      {
+        "phaseIndex": 1,
+        "sourceColumn1Based": 2,
+        "sourceRow1Based": 2,
+        "fullGridBoundsXYXY": [
+          314,
+          314,
+          627,
+          627
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          319,
+          319,
+          622,
+          622
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-06/original-f1.png",
+          "sha256": "275f62e8ead5ea1d9777fef7fa861b21e475797371d5bf13e321439d094ef2b9",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "a2caf557867b5dc0c12a1ec746dc3655e16ed08e3a230b347962c46eb382c31a"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-06/legacy-alpha-f1.png",
+          "sha256": "d84326f043452bb796995ae3cd0222a50c0604a150217e417a76c1b4294310a9",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "2535b61a39fbed6dc8dbf5c539db9ffd8b5c60c273fb899a2ae2275b56fd08cb"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          25,
+          25,
+          257,
+          260
+        ],
+        "phaseObservation": "rising larger segmented ring",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 76953,
+          "translucentPixels1to239": 3667,
+          "nearOpaquePixels240to255": 11189,
+          "visiblePixels": 14856,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            25,
+            25,
+            257,
+            260
+          ],
+          "pixelSha256Rgba": "2535b61a39fbed6dc8dbf5c539db9ffd8b5c60c273fb899a2ae2275b56fd08cb"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            232,
+            235
+          ],
+          "scale": 0.1276595744680851
+        }
+      },
+      {
+        "phaseIndex": 2,
+        "sourceColumn1Based": 3,
+        "sourceRow1Based": 2,
+        "fullGridBoundsXYXY": [
+          627,
+          314,
+          940,
+          627
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          632,
+          319,
+          935,
+          622
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-06/original-f2.png",
+          "sha256": "5259e78ed533eaa92d73ff88885936ab2107719eb8cc0147cd197d15cf682811",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "7f6a3bbd0b11c1e19391e7f924817fb854636a298028de86b37a8ea3f94d41f1"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-06/legacy-alpha-f2.png",
+          "sha256": "75bceb7ca497a0e74a2be794d27336ee9aefe5e5fa45b2255bdaf5c1dfabcbca",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "288c7d78d01667c4bc316f9d6ff432aa7b325d6f9611285e0bb2c99820dd112f"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          23,
+          18,
+          271,
+          264
+        ],
+        "phaseObservation": "complete bright segmented amber ring",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 71246,
+          "translucentPixels1to239": 3573,
+          "nearOpaquePixels240to255": 16990,
+          "visiblePixels": 20563,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            23,
+            18,
+            271,
+            264
+          ],
+          "pixelSha256Rgba": "288c7d78d01667c4bc316f9d6ff432aa7b325d6f9611285e0bb2c99820dd112f"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            248,
+            246
+          ],
+          "scale": 0.12096774193548387
+        }
+      },
+      {
+        "phaseIndex": 3,
+        "sourceColumn1Based": 4,
+        "sourceRow1Based": 2,
+        "fullGridBoundsXYXY": [
+          940,
+          314,
+          1254,
+          627
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          945,
+          319,
+          1249,
+          622
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-06/original-f3.png",
+          "sha256": "1d1668c2e63379e305085e58fb8fb2601c808be3223869ab7cb6d099bad4416d",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "c6fdd0f015c2e47d94a7998b18ff14be0ebb8047249222fdf157b81f571707c2"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-06/legacy-alpha-f3.png",
+          "sha256": "adecc278d5d024beebce37f14a2c1192287eb7131c4fb127397cbb67b929649d",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "52d26af7ef0c0072883e6efa3a4394d692f84639169bf80fb76e816dbd47adf5"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          31,
+          44,
+          261,
+          259
+        ],
+        "phaseObservation": "ring broken into floating amber fragments",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 85320,
+          "translucentPixels1to239": 2210,
+          "nearOpaquePixels240to255": 4582,
+          "visiblePixels": 6792,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            31,
+            44,
+            261,
+            259
+          ],
+          "pixelSha256Rgba": "52d26af7ef0c0072883e6efa3a4394d692f84639169bf80fb76e816dbd47adf5"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            230,
+            215
+          ],
+          "scale": 0.13043478260869565
+        }
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "density": 1,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-06.png",
+        "sha256": "07eaa8bf43953ff595d8b132554e8fec1d97c6c3bd049dbf8fdbc93e3dc0fb28",
+        "size": [
+          128,
+          32
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 2379,
+          "translucentPixels1to239": 1407,
+          "nearOpaquePixels240to255": 310,
+          "visiblePixels": 1717,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            1,
+            1,
+            127,
+            31
+          ],
+          "pixelSha256Rgba": "ac74d10dd710c7b8ea31d6ad592d2bc75e4da7e6da2fda2b42427fe7133b1970"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 749,
+            "translucentPixels1to239": 248,
+            "nearOpaquePixels240to255": 27,
+            "visiblePixels": 275,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              7,
+              31,
+              25
+            ],
+            "pixelSha256Rgba": "21b1dc38daf4153f01a5f7c3d788fe94d465c2c41b86e9661cd34e9ffe8485df"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 503,
+            "translucentPixels1to239": 422,
+            "nearOpaquePixels240to255": 99,
+            "visiblePixels": 521,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              1,
+              31,
+              31
+            ],
+            "pixelSha256Rgba": "65611e2b1cea49c940e305bfdfddb7dbb530700735fa8b52a35ed8e25860fbc7"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 475,
+            "translucentPixels1to239": 392,
+            "nearOpaquePixels240to255": 157,
+            "visiblePixels": 549,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              1,
+              31,
+              31
+            ],
+            "pixelSha256Rgba": "ca8cb9e85b1f3b1395cd8208ffc8e65a06efb35ec0ae9641020982a9e81e0e3b"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 652,
+            "translucentPixels1to239": 345,
+            "nearOpaquePixels240to255": 27,
+            "visiblePixels": 372,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              2,
+              31,
+              30
+            ],
+            "pixelSha256Rgba": "fe5bc60a10e70108fec058d49ae02f32d3a59f38f119ffddbfcb7b59639a23a8"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-06@1x.png",
+          "sha256": "5f8f10f65b32d9bf389125c44f5e3d544379202052c737759f3cd6dbebbb14ae",
+          "size": [
+            128,
+            32
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "ac74d10dd710c7b8ea31d6ad592d2bc75e4da7e6da2fda2b42427fe7133b1970"
+        }
+      },
+      {
+        "density": 2,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-06.png",
+        "sha256": "cf5ca8060af7a6dddd6851c4c67096b8a7899fee9c5238bea836b31985831753",
+        "size": [
+          256,
+          64
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 11159,
+          "translucentPixels1to239": 3366,
+          "nearOpaquePixels240to255": 1859,
+          "visiblePixels": 5225,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            2,
+            2,
+            254,
+            62
+          ],
+          "pixelSha256Rgba": "fd62a92c0577d7782a63e2fbed60b18e38aa62e1b08d162bb0dff4078c4e29d6"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3310,
+            "translucentPixels1to239": 575,
+            "nearOpaquePixels240to255": 211,
+            "visiblePixels": 786,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              14,
+              62,
+              49
+            ],
+            "pixelSha256Rgba": "d5bbbad4365332788b0ade76b7e60c136033fa4132cd40a2f3efd852f1de1c91"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2501,
+            "translucentPixels1to239": 1018,
+            "nearOpaquePixels240to255": 577,
+            "visiblePixels": 1595,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              2,
+              61,
+              62
+            ],
+            "pixelSha256Rgba": "b1799355076800de84bbfd77bce878415d2c49482ead3dcda711d2185b456587"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2289,
+            "translucentPixels1to239": 963,
+            "nearOpaquePixels240to255": 844,
+            "visiblePixels": 1807,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              2,
+              62,
+              62
+            ],
+            "pixelSha256Rgba": "510b0d857fc80fd90b45c791a7a458ec19136e7b19bb8eb12b6fef881c929fca"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3059,
+            "translucentPixels1to239": 810,
+            "nearOpaquePixels240to255": 227,
+            "visiblePixels": 1037,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              4,
+              62,
+              60
+            ],
+            "pixelSha256Rgba": "f21436beec2daaa726cbce4203340c2baa177ef9dddb6b695fea38f8784b3b91"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-06@2x.png",
+          "sha256": "9eecd23bee9132a02c5f4aa6bf02f7fa50bc9c6b592d75a0955a627825ba1c20",
+          "size": [
+            256,
+            64
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "fd62a92c0577d7782a63e2fbed60b18e38aa62e1b08d162bb0dff4078c4e29d6"
+        }
+      }
+    ],
+    "consumers": {
+      "status": "statically-bound-weapon-hit",
+      "weaponBindings": [
+        {
+          "weaponId": "c01.gray-oath",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 155
+        },
+        {
+          "weaponId": "c01.oath-dispel",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 163
+        },
+        {
+          "weaponId": "c01.inquisitor-flame",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 171
+        },
+        {
+          "weaponId": "c01.oath-bolt",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 174
+        }
+      ],
+      "unitDefinitions": [
+        {
+          "unitId": "c01.laiya",
+          "weapons": [
+            "c01.border-blade",
+            "c01.gray-oath"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 23,
+          "boundWeaponsForThisFx": [
+            "c01.gray-oath"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 347,
+              "text": "laiya: hero('laiya', 'c01.laiya'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.mirelle",
+          "weapons": [
+            "c01.lantern-staff",
+            "c01.oath-dispel"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 47,
+          "boundWeaponsForThisFx": [
+            "c01.oath-dispel"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 351,
+              "text": "mirelle: hero('mirelle', 'c01.mirelle'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.gravekeeper",
+          "weapons": [
+            "c01.lantern-staff",
+            "c01.oath-dispel"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 69,
+          "boundWeaponsForThisFx": [
+            "c01.oath-dispel"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 412,
+              "text": "ally('field-cleric', 'c01.gravekeeper'), ally('roderick-reserve', 'c01.roderick'),"
+            },
+            {
+              "line": 442,
+              "text": "player: baseParty(ally('bridge-knight', 'c01.knight'), ally('bridge-guard-1', 'c01.banner-guard'), ally('bridge-guard-2', 'c01.archer'), ally('refugee-1', 'c01.refugee'), ally('refugee-2', 'c01.refugee'), ally('refugee-3', 'c01.refugee'), ally('river-scout', 'c01.swordsman'), ally('bridge-cleric', 'c01.gravekeeper'), ally('bridge-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 464,
+              "text": "player: baseParty(ally('roderick', 'c01.roderick'), ally('siege-mage', 'c01.battle-mage'), ally('siege-engineer', 'c01.engineer'), ally('siege-guard', 'c01.banner-guard'), ally('field-cleric', 'c01.gravekeeper'), ally('north-sapper', 'c01.engineer'), ally('south-spear', 'c01.banner-guard')),"
+            },
+            {
+              "line": 520,
+              "text": "player: baseParty(PARTY.mirelle, ally('scout-1', 'c01.swordsman'), ally('scout-2', 'c01.banner-guard'), ally('scout-3', 'c01.archer'), ally('scout-4', 'c01.swordsman'), ally('scout-cleric', 'c01.gravekeeper'), ally('scout-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 552,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('village-guard', 'c01.banner-guard'), ally('village-guard-2', 'c01.banner-guard'), ally('villager-1', 'c01.refugee'), ally('villager-2', 'c01.refugee'), ally('villager-3', 'c01.refugee'), ally('village-cleric', 'c01.gravekeeper'), ally('west-militia', 'c01.swordsman'), ally('east-militia', 'c01.archer')),"
+            },
+            {
+              "line": 585,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('rearguard', 'c01.banner-guard'), ally('rearguard-2', 'c01.banner-guard'), ally('refugee-1', 'c01.refugee'), ally('refugee-2', 'c01.refugee'), ally('refugee-3', 'c01.refugee'), ally('refugee-4', 'c01.laborer'), ally('mounted-rearguard', 'c01.knight'), ally('white-river-cleric', 'c01.gravekeeper')),"
+            },
+            {
+              "line": 611,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('militia', 'c01.banner-guard'), ally('militia-2', 'c01.banner-guard'), ally('engineer', 'c01.engineer'), ally('west-militia', 'c01.swordsman'), ally('east-militia', 'c01.archer'), ally('city-cleric', 'c01.gravekeeper'), ally('north-militia', 'c01.banner-guard'), ally('south-militia', 'c01.swordsman')),"
+            },
+            {
+              "line": 628,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, ally('mercenary-guard', 'c01.banner-guard'), ally('ledger-guard', 'c01.banner-guard'), ally('warehouse-bow', 'c01.archer'), ally('mercenary-cleric', 'c01.gravekeeper'), ally('mercenary-spear', 'c01.banner-guard'), ally('mercenary-scout', 'c01.swordsman')),"
+            },
+            {
+              "line": 646,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, ally('chain-breaker', 'c01.engineer'), ally('prison-guard', 'c01.banner-guard'), ally('prison-scout', 'c01.archer'), ally('prison-cleric', 'c01.gravekeeper'), ally('west-breach-guard', 'c01.banner-guard'), ally('east-breach-sword', 'c01.swordsman')),"
+            },
+            {
+              "line": 665,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('gray-rearguard', 'c01.banner-guard'), ally('gray-scout', 'c01.archer'), ally('old-banner-cleric', 'c01.gravekeeper'), ally('old-banner-guard', 'c01.banner-guard')),"
+            },
+            {
+              "line": 689,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('gravekeeper-escort', 'c01.gravekeeper'), ally('cemetery-shield', 'c01.banner-guard'), ally('cemetery-bow', 'c01.archer')),"
+            },
+            {
+              "line": 727,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('archive-guard', 'c01.banner-guard'), ally('archive-engineer', 'c01.engineer'), ally('archive-bow', 'c01.archer'), ally('archive-sword', 'c01.swordsman'), ally('archive-cleric', 'c01.gravekeeper'), ally('archive-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 755,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('silverwood-guard', 'c01.banner-guard'), ally('silverwood-scout', 'c01.woodland-walker'), ally('silverwood-cleric', 'c01.gravekeeper')),"
+            },
+            {
+              "line": 783,
+              "text": "ally('memory-gravekeeper', 'c01.gravekeeper'), ally('memory-guard', 'c01.banner-guard'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.inquisitor",
+          "weapons": [
+            "c01.inquisitor-flame"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 80,
+          "boundWeaponsForThisFx": [
+            "c01.inquisitor-flame"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 466,
+              "text": "foe('oath-guard-1', 'c01.skeleton-guard'), foe('oath-guard-2', 'c01.skeleton-guard'), foe('redstone-ballista', 'c01.ballista'), foe('redstone-shield', 'c01.legion-shield'), foe('redstone-inquisitor', 'c01.inquisitor'),"
+            },
+            {
+              "line": 522,
+              "text": "foe('camp-guard-1', 'c01.swordsman'), foe('camp-guard-2', 'c01.swordsman'), foe('camp-inquisitor', 'c01.inquisitor'), foe('camp-bow', 'c01.archer'), foe('camp-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 554,
+              "text": "foe('purifier-1', 'c01.inquisitor'), foe('purifier-2', 'c01.templar'), foe('purifier-3', 'c01.legion-shield'), foe('purifier-4', 'c01.archer'), foe('purifier-5', 'c01.knight'),"
+            },
+            {
+              "line": 572,
+              "text": "{ key: 'purifier-reinforcement', x: 0, y: 13, unit: 'c01.inquisitor', owner: 2, facing: 'east' },"
+            },
+            {
+              "line": 630,
+              "text": "foe('thief-chief', 'c01.wolf-rider'), foe('thief-1', 'c01.swordsman'), foe('thief-2', 'c01.archer'), foe('thief-3', 'c01.wolf-rider'), foe('fraud-enforcer', 'c01.inquisitor'),"
+            },
+            {
+              "line": 648,
+              "text": "foe('escort-1', 'c01.inquisitor'), foe('escort-2', 'c01.legion-shield'), foe('escort-3', 'c01.knight'), foe('escort-4', 'c01.archer'), foe('escort-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 692,
+              "text": "foe('north-echo', 'c01.skeleton-guard'), foe('south-echo', 'c01.skeleton-guard'), foe('east-ghost', 'c01.ghost'), foe('west-ghost', 'c01.ghost'), foe('grave-inquisitor', 'c01.inquisitor'), foe('ossuary-guard', 'c01.skeleton-guard'),"
+            },
+            {
+              "line": 729,
+              "text": "foe('archive-inquisitor', 'c01.inquisitor'), foe('archive-guard-1', 'c01.legion-shield'), foe('archive-guard-2', 'c01.legion-shield'), foe('archive-mage', 'c01.battle-mage'), foe('archive-knight', 'c01.knight'),"
+            },
+            {
+              "line": 730,
+              "text": "foe('west-archive-guard', 'c01.templar'), foe('north-archive-bow', 'c01.archer'), foe('central-archive-mage', 'c01.battle-mage'), foe('east-archive-guard', 'c01.legion-shield'), foe('south-archive-knight', 'c01.knight'), foe('exit-inquisitor', 'c01.inquisitor'),"
+            },
+            {
+              "line": 757,
+              "text": "foe('controlled-druid', 'c01.druid'), foe('controlled-longbow-1', 'c01.silver-longbow'), foe('controlled-longbow-2', 'c01.silver-longbow'), foe('controlled-walker', 'c01.woodland-walker'), foe('inquisitor-handler', 'c01.inquisitor'),"
+            },
+            {
+              "line": 790,
+              "text": "foe('unflagged', 'c01.cemetery-colossus'), foe('memory-1', 'c01.ghost'), foe('memory-2', 'c01.ghost'), foe('memory-3', 'c01.skeleton-guard'), foe('memory-inquisitor', 'c01.inquisitor'),"
+            },
+            {
+              "line": 855,
+              "text": "(unit.unit === 'c01.cain' || unit.unit === 'c01.roderick' || unit.unit === 'c01.inquisitor'));"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.templar",
+          "weapons": [
+            "c01.legion-spear",
+            "c01.inquisitor-flame"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 81,
+          "boundWeaponsForThisFx": [
+            "c01.inquisitor-flame"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 467,
+              "text": "foe('outer-screen', 'c01.swordsman'), foe('south-tower-bow', 'c01.archer'), foe('keep-reserve', 'c01.templar'), foe('node-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 554,
+              "text": "foe('purifier-1', 'c01.inquisitor'), foe('purifier-2', 'c01.templar'), foe('purifier-3', 'c01.legion-shield'), foe('purifier-4', 'c01.archer'), foe('purifier-5', 'c01.knight'),"
+            },
+            {
+              "line": 555,
+              "text": "foe('north-purifier', 'c01.swordsman'), foe('south-purifier', 'c01.templar'), foe('fire-support', 'c01.battle-mage'),"
+            },
+            {
+              "line": 649,
+              "text": "foe('north-chain-guard', 'c01.templar'), foe('east-chain-guard', 'c01.legion-shield'), foe('south-chain-guard', 'c01.swordsman'), foe('west-chain-bow', 'c01.archer'), foe('inner-jailer', 'c01.swordsman'),"
+            },
+            {
+              "line": 706,
+              "text": "foe('east-imperial', 'c01.knight'), foe('north-echo', 'c01.skeleton-guard'), foe('south-echo', 'c01.ghost'), foe('tower-bow', 'c01.archer'), foe('mechanism-guard', 'c01.templar'),"
+            },
+            {
+              "line": 730,
+              "text": "foe('west-archive-guard', 'c01.templar'), foe('north-archive-bow', 'c01.archer'), foe('central-archive-mage', 'c01.battle-mage'), foe('east-archive-guard', 'c01.legion-shield'), foe('south-archive-knight', 'c01.knight'), foe('exit-inquisitor', 'c01.inquisitor'),"
+            },
+            {
+              "line": 744,
+              "text": "foe('north-golem', 'c01.stone-golem'), foe('east-rune-shield', 'c01.rune-shield'), foe('south-artificer', 'c01.rune-artificer'), foe('forge-guard-1', 'c01.templar'), foe('forge-guard-2', 'c01.rune-shield'), foe('forge-bow-guard', 'c01.archer'),"
+            },
+            {
+              "line": 758,
+              "text": "foe('north-longbow', 'c01.silver-longbow'), foe('south-longbow', 'c01.silver-longbow'), foe('east-walker', 'c01.woodland-walker'), foe('root-guard-1', 'c01.templar'), foe('root-guard-2', 'c01.legion-shield'), foe('oath-druid', 'c01.druid'),"
+            },
+            {
+              "line": 791,
+              "text": "foe('memory-4', 'c01.ghost'), foe('memory-5', 'c01.skeleton-guard'), foe('memory-6', 'c01.ghost'), foe('inquisitor-guard-1', 'c01.templar'), foe('inquisitor-guard-2', 'c01.legion-shield'), foe('memory-mage', 'c01.battle-mage'), foe('memory-bow-guard', 'c01.archer'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.battle-mage",
+          "weapons": [
+            "c01.oath-bolt"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 83,
+          "boundWeaponsForThisFx": [
+            "c01.oath-bolt"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 464,
+              "text": "player: baseParty(ally('roderick', 'c01.roderick'), ally('siege-mage', 'c01.battle-mage'), ally('siege-engineer', 'c01.engineer'), ally('siege-guard', 'c01.banner-guard'), ally('field-cleric', 'c01.gravekeeper'), ally('north-sapper', 'c01.engineer'), ally('south-spear', 'c01.banner-guard')),"
+            },
+            {
+              "line": 467,
+              "text": "foe('outer-screen', 'c01.swordsman'), foe('south-tower-bow', 'c01.archer'), foe('keep-reserve', 'c01.templar'), foe('node-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 522,
+              "text": "foe('camp-guard-1', 'c01.swordsman'), foe('camp-guard-2', 'c01.swordsman'), foe('camp-inquisitor', 'c01.inquisitor'), foe('camp-bow', 'c01.archer'), foe('camp-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 555,
+              "text": "foe('north-purifier', 'c01.swordsman'), foe('south-purifier', 'c01.templar'), foe('fire-support', 'c01.battle-mage'),"
+            },
+            {
+              "line": 588,
+              "text": "foe('north-pursuer', 'c01.archer'), foe('ford-shield', 'c01.legion-shield'), foe('river-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 614,
+              "text": "foe('west-raider', 'c01.archer'), foe('north-raider', 'c01.wolf-rider'), foe('east-royal', 'c01.legion-shield'), foe('royal-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 648,
+              "text": "foe('escort-1', 'c01.inquisitor'), foe('escort-2', 'c01.legion-shield'), foe('escort-3', 'c01.knight'), foe('escort-4', 'c01.archer'), foe('escort-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 667,
+              "text": "foe('roderick', 'c01.roderick'), foe('royal-guard-1', 'c01.knight'), foe('royal-guard-2', 'c01.legion-shield'), foe('royal-bow', 'c01.archer'), foe('royal-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 705,
+              "text": "foe('imperial-cain', 'c01.cain'), foe('imperial-1', 'c01.legion-shield'), foe('imperial-2', 'c01.battle-mage'), foe('oath-echo-1', 'c01.skeleton-guard'), foe('oath-echo-2', 'c01.ghost'),"
+            },
+            {
+              "line": 729,
+              "text": "foe('archive-inquisitor', 'c01.inquisitor'), foe('archive-guard-1', 'c01.legion-shield'), foe('archive-guard-2', 'c01.legion-shield'), foe('archive-mage', 'c01.battle-mage'), foe('archive-knight', 'c01.knight'),"
+            },
+            {
+              "line": 730,
+              "text": "foe('west-archive-guard', 'c01.templar'), foe('north-archive-bow', 'c01.archer'), foe('central-archive-mage', 'c01.battle-mage'), foe('east-archive-guard', 'c01.legion-shield'), foe('south-archive-knight', 'c01.knight'), foe('exit-inquisitor', 'c01.inquisitor'),"
+            },
+            {
+              "line": 743,
+              "text": "foe('golem-1', 'c01.stone-golem'), foe('golem-2', 'c01.stone-golem'), foe('rune-rebel-1', 'c01.rune-shield'), foe('rune-rebel-2', 'c01.rune-artificer'), foe('forge-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 791,
+              "text": "foe('memory-4', 'c01.ghost'), foe('memory-5', 'c01.skeleton-guard'), foe('memory-6', 'c01.ghost'), foe('inquisitor-guard-1', 'c01.templar'), foe('inquisitor-guard-2', 'c01.legion-shield'), foe('memory-mage', 'c01.battle-mage'), foe('memory-bow-guard', 'c01.archer'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.druid",
+          "weapons": [
+            "c01.oath-bolt"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 89,
+          "boundWeaponsForThisFx": [
+            "c01.oath-bolt"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 757,
+              "text": "foe('controlled-druid', 'c01.druid'), foe('controlled-longbow-1', 'c01.silver-longbow'), foe('controlled-longbow-2', 'c01.silver-longbow'), foe('controlled-walker', 'c01.woodland-walker'), foe('inquisitor-handler', 'c01.inquisitor'),"
+            },
+            {
+              "line": 758,
+              "text": "foe('north-longbow', 'c01.silver-longbow'), foe('south-longbow', 'c01.silver-longbow'), foe('east-walker', 'c01.woodland-walker'), foe('root-guard-1', 'c01.templar'), foe('root-guard-2', 'c01.legion-shield'), foe('oath-druid', 'c01.druid'),"
+            },
+            {
+              "line": 760,
+              "text": "neutral: [{ key: 'silverwood-witness', unit: 'c01.druid', owner: 3, x: 3, y: 13, directive: { mode: 'guard' } }],"
+            }
+          ]
+        }
+      ],
+      "livePlaybackObserved": false,
+      "genericConsumer": "packages/game-ui/src/ui/board.ts:611-644"
+    },
+    "semanticPhaseRequirement": "Preserve angular oath segments and open center; this is not generic orange fire or a sunburst.",
+    "alphaPolicy": "Genuine transparent exterior; preserve intentional interior translucency and luminous/smoke detail. No requirement that every phase reach alpha 240. Review on dark/light/terrain backgrounds; no opaque panel, matte color key or unrelated backing.",
+    "specialRisks": []
+  },
+  "auditedPhaseOrder": [
+    "low-ring",
+    "rising-ring",
+    "sealed-ring",
+    "fading-fragments"
+  ],
+  "phaseSemantics": [
+    "Low broken amber angular ring, horizontally compressed open oval",
+    "Rising tall segmented amber ring with top and bottom diamond sigils",
+    "Complete brightest interlocking angular ring with top and bottom diamond sigils",
+    "Ring dispersed into separated fading amber bent segments and diamond fragments"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "currentRuntimeAnchor": [
+    16,
+    16
+  ],
+  "consumerAudit": {
+    "binding": "candidate-01-bindings.ts:155,163,171,174",
+    "weapons": [
+      "c01.gray-oath",
+      "c01.oath-dispel",
+      "c01.inquisitor-flame",
+      "c01.oath-bolt"
+    ],
+    "placement": "board.ts:611-642 target-cell-center hit overlay",
+    "fps": 12,
+    "loop": false,
+    "removalMs": 420,
+    "finalPhaseStartMs": 250,
+    "finalHoldMs": 170
+  },
+  "runtimeOverlayExcluded": [
+    "white expanding circle",
+    "damage number"
+  ],
+  "livePlaybackObserved": false
+}

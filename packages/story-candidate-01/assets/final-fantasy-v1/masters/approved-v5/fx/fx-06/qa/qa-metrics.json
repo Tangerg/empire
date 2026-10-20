@@ -1,0 +1,191 @@
+{
+  "topicId": "C01-FX-06",
+  "phaseOrder": [
+    "low-ring",
+    "rising-ring"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "registrationNote": "Open ring remains centered on shared target pivot(627,627); source bounds measurements are diagnostic only, never used to fit or shift.",
+  "perPhaseFitCropShiftOrAlphaCleanup": false,
+  "sourceEdgeGate": "alpha <= 1, actual composites and native borders separately reviewed",
+  "nativeFinal2pxBorderGate": 0,
+  "fps": 12,
+  "loop": false,
+  "frameStartTimesMs": [
+    0,
+    83.33333333333333,
+    166.66666666666666,
+    250
+  ],
+  "finalFrameHoldMs": 170,
+  "removalTimeMs": 420,
+  "runtimeConsumer": "BoardView.animateHit target cell center; candidate01FxPicture uses metadata [16,16] and HD strip; normal source-over",
+  "excludedRuntimeOverlays": [
+    "white circle",
+    "damage number"
+  ],
+  "liveGameObserved": false,
+  "frames": [
+    {
+      "phase": "low-ring",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "96438fd50128b407d45bb76a1365f16568c567fbe556cc8f31a3924d22ca206f",
+      "decodedPixelSha256": "99d73997189d209c669d8c63bc3653bb5bd561823eb2c08b2db770d556680f19",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        89,
+        128,
+        1212,
+        1206
+      ],
+      "bboxAlpha128": [
+        206,
+        464,
+        1079,
+        868
+      ],
+      "alphaMass": 60735.07843137255,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "d358d7f821d99a1c5dad4d01d38d42c6e36f233d0e790e79e948fac3f429a016",
+          "bboxAlpha1": [
+            4,
+            10,
+            28,
+            24
+          ],
+          "alphaMass": 32.94509803921569,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "8499ece7a4bb9304fee799f13a140fb1e45dd341b8e15ea76808bf2536d65c05",
+          "bboxAlpha1": [
+            11,
+            22,
+            55,
+            45
+          ],
+          "alphaMass": 125.19607843137256,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "ringBoundsAlpha32": [
+        206,
+        464,
+        1079,
+        869
+      ],
+      "boundsCenterAlpha32": [
+        642.5,
+        666.5
+      ],
+      "center100x100AlphaMax": 1,
+      "faintExteriorAlpha1to4Pixels": 7962
+    },
+    {
+      "phase": "rising-ring",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "a075dea3675657b353da7b944ff2a76f97ec7b9f5133fb57ad757847db4139bb",
+      "decodedPixelSha256": "fde6daed7b2f7c9ab348ad8c4f548290be006ccb64e9287f1bfa7a8b004011fb",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        33,
+        35,
+        1238,
+        1222
+      ],
+      "bboxAlpha128": [
+        107,
+        73,
+        1154,
+        1133
+      ],
+      "alphaMass": 244011.19607843139,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "48ad4c63a1a5650693aebfc1115ddc50bbd4c1726fe6502602c7cdd65860b5f3",
+          "bboxAlpha1": [
+            2,
+            2,
+            30,
+            30
+          ],
+          "alphaMass": 125.45882352941176,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "4a42bcbad541a8388b85a8f03985bc21be02deac55f8980869a2c2dab58406e4",
+          "bboxAlpha1": [
+            6,
+            5,
+            58,
+            57
+          ],
+          "alphaMass": 491.90980392156865,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "ringBoundsAlpha32": [
+        106,
+        72,
+        1155,
+        1133
+      ],
+      "boundsCenterAlpha32": [
+        630.5,
+        602.5
+      ],
+      "center100x100AlphaMax": 1,
+      "faintExteriorAlpha1to4Pixels": 32759
+    }
+  ],
+  "apng": []
+}
