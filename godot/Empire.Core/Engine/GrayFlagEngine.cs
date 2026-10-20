@@ -41,6 +41,9 @@ public sealed partial class GrayFlagEngine
     public ScenarioSystem Scenarios { get; }
     public BattleResources Resources { get; } = new();
 
+    public string UnitTypeName(string id) => StateJson.Text(Content.Get("units", id), "name");
+    public string CareerName(string id) => StateJson.Text(Content.Get("careers", id), "name");
+
     public GrayFlagEngine(JsonArray contentPacks)
     {
         packs = Empire.Core.Determinism.EcmaJson.Normalize(contentPacks)!.AsArray();

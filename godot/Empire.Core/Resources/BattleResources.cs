@@ -9,19 +9,21 @@ public sealed class BattleResources
     public sealed record Subject(string Kind, JsonObject Holder, string? Weapon = null);
     public sealed record Amount(string Resource, double Value);
 
-    private static readonly IReadOnlyDictionary<string, string> Kinds = new Dictionary<string, string>
+    private static readonly IReadOnlyDictionary<string, (string Kind, string Name)> Kinds = new Dictionary<string, (string Kind, string Name)>
     {
-        ["funds"] = "player", ["command_points"] = "player",
-        ["momentum"] = "unit", ["weapon_uses"] = "weapon"
+        ["funds"] = ("player", "资金"), ["command_points"] = ("player", "指挥点"),
+        ["momentum"] = ("unit", "气势"), ["weapon_uses"] = ("weapon", "武器次数")
     };
 
     public static IReadOnlyList<string> SupportedResources { get; } = System.Array.AsReadOnly(Kinds.Keys.ToArray());
+
+    public string? Name(string resource) => Kinds.TryGetValue(resource, out var definition) ? definition.Name : null;
 
     private static JsonObject? FindAccount(Subject subject, string resource)
     {
         if (!Kinds.TryGetValue(resource, out var kind))
             throw new DomainInvariantException($"unknown resource adapter \"{resource}\"");
-        if (kind != subject.Kind) return null;
+        if (kind.Kind != subject.Kind) return null;
         var resources = subject.Kind == "weapon"
             ? subject.Holder["weaponState"]?[subject.Weapon ?? ""]?["resources"]
             : subject.Holder["resources"];
@@ -31,8 +33,8 @@ public sealed class BattleResources
     private static JsonObject Account(Subject subject, string resource)
     {
         var account = FindAccount(subject, resource);
-        if (Kinds[resource] != subject.Kind)
-            throw new DomainInvariantException($"resource \"{resource}\" requires {Kinds[resource]} subject, received {subject.Kind}");
+        if (Kinds[resource].Kind != subject.Kind)
+            throw new DomainInvariantException($"resource \"{resource}\" requires {Kinds[resource].Kind} subject, received {subject.Kind}");
         return account ?? throw new DomainInvariantException($"resource \"{resource}\" is not available for this {subject.Kind}");
     }
 

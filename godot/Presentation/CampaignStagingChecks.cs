@@ -1,0 +1,102 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Nodes;
+using Empire.Core.Determinism;
+using Godot;
+
+namespace Empire.Presentation;
+
+public partial class CampaignStagingChecks : Node
+{
+    private int assertions;
+    public override void _Ready()
+    {
+        try
+        {
+            var arguments = OS.GetCmdlineUserArgs();
+            if (arguments.Length != 1) throw new ArgumentException("Pass staging source oracle JSON after --");
+            var oracle = EcmaJson.Parse(System.IO.File.ReadAllText(arguments[0]))!.AsObject();
+            var item = oracle["cases"]!.AsArray().OfType<JsonObject>().First();
+            var metadata = oracle["metadata"]!.AsObject();
+            string UnitName(string id) => EcmaJson.ReadString(oracle["unitNames"]![id]);
+            CampaignStagingView View(bool pending) => CampaignStaging.Create(EcmaJson.ToElement(item["state"]),
+                EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]), EcmaJson.ToElement(metadata), UnitName, pending);
+            var assets = AssetCatalog.Load();
+            var view = View(false);
+            var screen = new CampaignStagingScreen(); AddChild(screen);
+            var starts = 0;
+            screen.ShowStaging(view, assets, () => starts++);
+            var text = string.Join("\n", Descendants(screen).OfType<Label>().Select(label => label.Text));
+            foreach (var value in new[] { view.Title, view.Description, view.Eyebrow, view.ChapterHeading, view.Progress,
+                CampaignStagingView.RosterHeading, CampaignStagingView.StateHeading, view.ActionNote })
+                Require(text.Contains(value, StringComparison.Ordinal), $"Staging omitted source text: {value}");
+            foreach (var unit in view.Roster)
+            {
+                Require(text.Contains(unit.Name, StringComparison.Ordinal) && text.Contains(unit.Status, StringComparison.Ordinal), "Roster omitted source unit status");
+                var row = Descendants(screen).OfType<HBoxContainer>().Single(node => node.Name == "Roster_" + unit.Id);
+                var picture = row.GetNode<TextureRect>("Avatar");
+                Require(picture.Texture is AtlasTexture, "Unavailable portraits must use selected actual unit sprites, not a geometric placeholder");
+                var expected = assets.ResolveUnit(unit.UnitType, unit.ActorKey);
+                Require(((AtlasTexture)picture.Texture).Atlas.ResourcePath == expected.ResourcePath,
+                    "Roster fallback must respect the explicit actor binding and its source texture");
+            }
+            Require(screen.RenderingDiagnostics.Any(value => value.Contains("chapter backdrop", StringComparison.Ordinal)), "Missing source chapter art must be reported");
+            foreach (var unit in view.Roster.Where(unit => unit.Portrait is not null))
+                Require(screen.RenderingDiagnostics.Any(value => value.Contains($"portrait {unit.Id}", StringComparison.Ordinal)), "Missing authored portrait must be reported");
+            var oldButton = Descendants(screen).OfType<Button>().Single();
+            Require(oldButton.Text == view.StartLabel, "First entry label must match source");
+            oldButton.EmitSignal(Button.SignalName.Pressed); oldButton.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1 && oldButton.Disabled, "Start callback must run once");
+            var reentry = View(true);
+            screen.ShowStaging(reentry, assets, () => starts++);
+            oldButton.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1, "Stale callback after rebind must not start another battle");
+            var newButton = Descendants(screen).OfType<Button>().Single();
+            Require(newButton.Text == "重新进入战斗 →", "Reentry must not be called resume or continue");
+            Require(Descendants(screen).OfType<Label>().Any(label => label.Text == "离开战场后将从本关开局重新开始。"), "Reentry must disclose restart semantics");
+            var buttonParent = newButton.GetParent();
+            buttonParent.RemoveChild(newButton);
+            Require(screen.IsInsideTree() && !newButton.IsInsideTree(), "Detached-button regression must leave its screen mounted");
+            newButton.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1, "Detached Start button must not act on campaign state while its screen stays mounted");
+            buttonParent.AddChild(newButton);
+            RemoveChild(screen); newButton.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1, "Unmounted callback must not act on campaign state");
+            AddChild(screen); screen.ShowStaging(view, assets, () => starts++);
+            Descendants(screen).OfType<Button>().Single().EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 2, "Remounted and explicitly rebound screen must accept one new action");
+            metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+            foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
+            {
+                var live = CampaignStaging.Create(EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
+                    EcmaJson.ToElement(sourceCase["level"]), EcmaJson.ToElement(metadata), UnitName, sourceCase["pending"]!.GetValue<bool>());
+                screen.ShowStaging(live, assets, () => starts++);
+                Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");
+                foreach (var unit in live.Roster.Where(unit => unit.Portrait is not null))
+                {
+                    var row = Descendants(screen).OfType<HBoxContainer>().Single(node => node.Name == "Roster_" + unit.Id);
+                    Require(row.GetNode<TextureRect>("Avatar").Texture.ResourcePath == unit.Portrait!.ResourcePath,
+                        "Exported named portrait must be used instead of the unit-sprite fallback");
+                }
+            }
+            RemoveChild(screen); screen.QueueFree();
+            GD.Print($"Campaign staging native checks passed: {assertions} assertions.");
+            GetTree().Quit();
+        }
+        catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+    private static IEnumerable<Node> Descendants(Node root)
+    {
+        foreach (var child in root.GetChildren())
+        {
+            yield return child;
+            foreach (var descendant in Descendants(child)) yield return descendant;
+        }
+    }
+    private void Require(bool condition, string message)
+    {
+        assertions++;
+        if (!condition) throw new Exception(message);
+    }
+}

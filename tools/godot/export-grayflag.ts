@@ -14,6 +14,7 @@ import { ANCIENT_EMPIRES_CONTENT_PACK } from '../../packages/content-ancient-emp
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS, CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN, candidate01Level } from '../../packages/story-candidate-01/src/index';
 import { candidateMaterial, CANDIDATE_FOREST_FLOOR, CANDIDATE_SETTLEMENT_LIFE, CANDIDATE_RIVER_STONES, CANDIDATE_SHORE_DECALS, CANDIDATE_SHORE, CANDIDATE_VERTICAL_CROSSINGS, CANDIDATE_FOUNDATIONS, CANDIDATE_SURFACE_FIT } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
 import { candidate01Story, candidate01Choice, CANDIDATE_01_SPEAKER_NAMES } from '../../packages/story-candidate-01/src/story';
+import { candidate01CampaignAdapter } from '../../packages/story-candidate-01/src/presentation/index';
 import * as bindings from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
 const assetRoot = resolve('packages/story-candidate-01/assets/final-fantasy-v1');
 const output = resolve('godot');
@@ -148,6 +149,29 @@ function copy(png: string): { resourcePath: string; sha256: string } {
   const destination = resolve(output, 'assets', png); mkdirSync(dirname(destination), { recursive: true });
   copyFileSync(source, destination, constants.COPYFILE_FICLONE); return { resourcePath: `res://assets/${png}`, sha256: hash(readFileSync(source)) };
 }
+// Narrative presentation remains sourced from the original campaign adapter.
+const campaignAdapter = candidate01CampaignAdapter();
+function narrativeArt(source: string) {
+  const prefix = '/packages/story-candidate-01/assets/final-fantasy-v1/';
+  if (!source.startsWith(prefix)) throw new Error(`Unknown narrative asset root: ${source}`);
+  const relative = source.slice(prefix.length);
+  return { source, ...copy(relative) };
+}
+write('data/grayflag-staging.json', {
+  schema: 1, title: campaignAdapter.title,
+  battleTotal: campaign.nodes.filter(node => node.type === 'battle').length,
+  joinAfter: campaignAdapter.joinAfter, relationLabels: campaignAdapter.relationLabels,
+  resourceLabels: campaignAdapter.resourceLabels,
+  portraits: Object.fromEntries(Object.entries(campaignAdapter.portraits).map(([id, path]) => [id, narrativeArt(path)])),
+  levels: Object.fromEntries(CANDIDATE_01_LEVELS.map(level => {
+    const chapter = campaignAdapter.chapterOf(level), order = campaignAdapter.levelOrder(level);
+    const briefingId = campaignAdapter.briefingId(level);
+    const scene = campaignAdapter.story(briefingId).scene;
+    return [level.id, { chapter, order, chapterTitle: campaignAdapter.chapterTitle(chapter), briefingId,
+      chapterArt: narrativeArt(campaignAdapter.chapterArt(chapter)),
+      briefingArt: scene ? narrativeArt(campaignAdapter.storyArt(scene)) : null }];
+  })),
+});
 for (const asset of assets) Object.assign(asset, copy(asset.png));
 write('data/selected-assets.json', { schema: 1, logicalTileSize: 32, assets });
 const environment = read('environment-builder-v1/manifest-environment-builder-v1.json');

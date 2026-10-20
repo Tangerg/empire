@@ -1,6 +1,9 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Campaign;
 using Empire.Core.Engine;
+using Empire.Core.Combat;
+using Empire.Core.Determinism;
+using Empire.Presentation.Feedback;
 
 namespace Empire.Application;
 
@@ -10,6 +13,9 @@ public sealed class GrayFlagCampaign
     private readonly JsonObject definition;
     private readonly GrayFlagEngine engine;
     private readonly CampaignBattleBridge bridge;
+    private readonly IReadOnlyDictionary<string, JsonObject> levels;
+    public bool AtCamp { get; private set; }
+    public JsonObject BattleLevel() => (JsonObject)levels[Runtime.Node()["level"]!.GetValue<string>()].DeepClone();
     public CampaignRuntime Runtime { get; private set; }
     public GrayFlagSession? Battle { get; private set; }
     public JsonObject? Request { get; private set; }
@@ -19,6 +25,7 @@ public sealed class GrayFlagCampaign
         this.definition = Empire.Core.Determinism.EcmaJson.Normalize(definition)!.AsObject();
         this.engine = engine;
         var catalog = levels.OfType<JsonObject>().ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
+        this.levels = catalog;
         bridge = new CampaignBattleBridge(id => catalog.TryGetValue(id, out var level) ? (JsonObject)level.DeepClone()
             : throw new InvalidOperationException($"Unknown campaign level {id}"), packs);
         Runtime = new CampaignRuntime(definition);
@@ -26,7 +33,11 @@ public sealed class GrayFlagCampaign
 
     public void BeginBattle()
     {
-        if (Battle is not null) throw new InvalidOperationException("A battle is already open.");
+        if (Battle is not null)
+        {
+            if (!AtCamp) throw new InvalidOperationException("A battle is already open.");
+            RestartBattle(); return;
+        }
         var before = Runtime.Snapshot();
         try
         {
@@ -37,24 +48,48 @@ public sealed class GrayFlagCampaign
         catch { Runtime = new CampaignRuntime(definition, before); throw; }
     }
 
+    public (string Outcome, CampaignBattleSummary Summary) BattleSummary()
+    {
+        if (Battle is null || Request is null || Battle.Snapshot()["phase"]?.GetValue<string>() != "over")
+            throw new InvalidOperationException("The battle has not concluded.");
+        var state = Battle.Snapshot();
+        var events = Battle.Events;
+        var result = bridge.Result(Request, state, events);
+        var level = Request["level"]!.AsObject();
+        var chapter = level["extra"]?["chapter"]?.GetValue<int>() ?? 1;
+        if (chapter == 0) chapter = 1;
+        return (result["outcome"]!.GetValue<string>(), CampaignBattleSummary.Create(
+            level["name"]!.GetValue<string>(), chapter, Request["perspectivePlayer"]!.GetValue<int>(),
+            EcmaJson.ToElement(state), engine.UnitTypeName,
+            result["signals"]!.AsArray().Select(signal => signal!.GetValue<string>()), BattleEventFacts.StrikeCount(events)));
+    }
+
     public void FinishBattle()
     {
         if (Battle is null || Request is null || Battle.Snapshot()["phase"]!.GetValue<string>() != "over")
             throw new InvalidOperationException("The battle has not concluded.");
         var result = bridge.Result(Request, Battle.Snapshot(), Battle.Events);
         Runtime.CompleteBattle(Candidate01CampaignPolicy.ApplyBattleResult(result, Runtime.Snapshot()));
-        Battle = null; Request = null;
+        Battle = null; Request = null; AtCamp = false;
+    }
+
+    public void ExitBattle()
+    {
+        if (Battle is null || Request is null) throw new InvalidOperationException("No battle to leave.");
+        RestartBattle();
+        AtCamp = true;
     }
 
     public void RestartBattle()
     {
         if (Request is null) throw new InvalidOperationException("No battle to restart.");
         Battle = new GrayFlagSession(engine, Request["level"]!.AsObject());
+        AtCamp = false;
     }
 
     public JsonObject Save() => new()
     {
-        ["schema"] = 1,
+        ["schema"] = 1, ["atCamp"] = AtCamp,
         ["campaign"] = CampaignSave.Create(definition, Runtime.Snapshot()),
         ["request"] = Request?.DeepClone(),
         ["battle"] = Battle?.Save(),
@@ -69,6 +104,8 @@ public sealed class GrayFlagCampaign
         var restored = new CampaignRuntime(definition, state);
         var request = document["request"] as JsonObject;
         var savedBattle = document["battle"];
+        var atCamp = document["atCamp"]?.GetValue<bool>() ?? false;
+        if (atCamp && (request is null || savedBattle is null)) throw new InvalidOperationException("Camp return has no retained battle request.");
         if (document["events"] is not JsonArray recordedEvents || recordedEvents.Any(value => value is not JsonObject || value["type"] is not JsonValue type || !type.TryGetValue<string>(out var eventType) || string.IsNullOrEmpty(eventType)))
             throw new InvalidOperationException("Saved event history is malformed.");
         if ((request is null) != (savedBattle is null) || (state["pendingBattle"] is null) != (request is null))
@@ -84,6 +121,6 @@ public sealed class GrayFlagCampaign
             if (battle.Snapshot()["levelId"]?.GetValue<string>() != request["levelId"]?.GetValue<string>())
                 throw new InvalidOperationException("Battle level identity mismatch.");
         }
-        Runtime = restored; Request = request is null ? null : (JsonObject)request.DeepClone(); Battle = battle;
+        Runtime = restored; Request = request is null ? null : (JsonObject)request.DeepClone(); Battle = battle; AtCamp = atCamp;
     }
 }

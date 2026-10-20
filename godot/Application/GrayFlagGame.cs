@@ -3,6 +3,7 @@ using System.Text.Json.Nodes;
 using Empire.Core.Engine;
 using Empire.Core.Geometry;
 using Empire.Presentation;
+using Empire.Presentation.Feedback;
 
 namespace Empire.Application;
 
@@ -18,8 +19,8 @@ public partial class GrayFlagGame : Node
     private Control? view;
     private double computerDelay;
     private bool resultOffered;
-    private AcceptDialog? resultDialog;
     private const string SavePath = "user://grayflag-campaign-save.json";
+    private const string CampaignSavePath = "user://grayflag-campaign-autosave.json";
 
     public override void _Ready()
     {
@@ -39,21 +40,25 @@ public partial class GrayFlagGame : Node
             if (!resultOffered)
             {
                 resultOffered = true;
-                var result = new AcceptDialog { Title = "战斗结束", DialogText = session.Snapshot()["endReason"]!.GetValue<string>() };
-                resultDialog = result;
                 var expectedSession = session;
-                var handled = false;
-                result.CloseRequested += () => {
-                    if (handled || !ReferenceEquals(resultDialog, result)) return;
-                    handled = true; resultOffered = false; resultDialog = null; result.QueueFree();
-                };
-                result.GetOkButton().Text = "继续战役";
-                result.Confirmed += () => {
-                    if (handled || !ReferenceEquals(resultDialog, result) || !ReferenceEquals(session, expectedSession)) return;
-                    handled = true;
-                    campaign.FinishBattle(); session = null; resultDialog = null; result.QueueFree(); ShowNode();
-                };
-                AddChild(result); result.PopupCentered();
+                var report = campaign.BattleSummary();
+                var result = new BattleResultScreen();
+                screen = null;
+                SetView(result);
+                var state = expectedSession.Snapshot();
+                result.ShowCompletion(state["winnerTeam"] is null ? "平局" : report.Outcome == "victory" ? "胜利" : "战败",
+                    state["endReason"]?.GetValue<string>() ?? "", report.Outcome == "victory",
+                    () => {
+                        if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
+                        campaign.FinishBattle(); session = null;
+                        var summary = new BattleResultScreen(); SetView(summary);
+                        summary.ShowResult("victory", report.Summary, () => { if (ReferenceEquals(view, summary)) ShowNode(); });
+                    },
+                    () => {
+                        if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
+                        campaign.RestartBattle(); resultOffered = false; ShowBattle("");
+                    },
+                    () => { if (ReferenceEquals(session, expectedSession) && ReferenceEquals(view, result)) ExitBattle(); });
             }
             return;
         }
@@ -77,16 +82,16 @@ public partial class GrayFlagGame : Node
         view = next; AddChild(next);
     }
 
-    private void ShowNode()
+    private void ShowNode(string? battleLogMessage = null)
     {
-        if (resultDialog is not null) { resultDialog.QueueFree(); resultDialog = null; }
         screen = null; session = null; resultOffered = false;
         var node = campaign.Runtime.Node();
         var type = node["type"]!.GetValue<string>();
         if (type == "battle")
         {
-            if (campaign.Battle is null) campaign.BeginBattle();
-            ShowBattle(); return;
+            if (campaign.Battle is null || campaign.AtCamp) ShowStaging();
+            else ShowBattle(battleLogMessage);
+            return;
         }
         var story = new StoryScreen(); SetView(story);
         var presentation = node["presentation"]?.GetValue<string>();
@@ -99,7 +104,32 @@ public partial class GrayFlagGame : Node
                 () => { if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") campaign.Runtime.Advance(); if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") ShowNode(); else Notify("灰旗战役已结束。F5 保存，F9 读取存档。"); });
     }
 
-    private void ShowBattle()
+    private void ShowStaging()
+    {
+        screen = null; session = null; resultOffered = false;
+        var staging = new CampaignStagingScreen(); SetView(staging);
+        var metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+        var projection = CampaignStaging.Create(Empire.Core.Determinism.EcmaJson.ToElement(campaign.Runtime.Snapshot()),
+            Empire.Core.Determinism.EcmaJson.ToElement(campaign.Runtime.Node()),
+            Empire.Core.Determinism.EcmaJson.ToElement(campaign.BattleLevel()),
+            Empire.Core.Determinism.EcmaJson.ToElement(metadata), engine.UnitTypeName, campaign.Request is not null);
+        staging.ShowStaging(projection, AssetCatalog.Load(), () => {
+            if (!ReferenceEquals(view, staging)) return;
+            if (campaign.Request is null)
+            {
+                try { WriteSave(CampaignSavePath); }
+                catch (Exception error) { ShowStaging(); Notify("自动保存失败，尚未进入战斗：" + error.Message); return; }
+            }
+            campaign.BeginBattle(); ShowBattle();
+        });
+    }
+
+    private void ExitBattle()
+    {
+        campaign.ExitBattle(); ShowStaging();
+    }
+
+    private void ShowBattle(string? initialLogMessage = null)
     {
         session = campaign.Battle!;
         var level = campaign.Request!["level"]!.AsObject();
@@ -114,22 +144,28 @@ public partial class GrayFlagGame : Node
         var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
         screen.BindSession(session, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(),
             facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
-            facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); });
+            facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); }, initialLogMessage);
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         screen.ConfigureDynamicState(packs);
         screen.BindApplicationActions(Save, Load, () => {
-            if (resultDialog is not null) { resultDialog.QueueFree(); resultDialog = null; }
-            campaign.RestartBattle(); resultOffered = false; ShowBattle();
-        });
+                campaign.RestartBattle(); resultOffered = false; ShowBattle("");
+        }, ExitBattle);
+    }
+
+    private void WriteSave(string resourcePath)
+    {
+        var path = ProjectSettings.GlobalizePath(resourcePath);
+        System.IO.File.WriteAllText(path + ".tmp", Empire.Core.Determinism.EcmaJson.Stringify(campaign.Save()));
+        System.IO.File.Move(path + ".tmp", path, true);
     }
 
     private void Save()
     {
+        if (screen?.IsPresenting == true) return;
         try
         {
-            var path = ProjectSettings.GlobalizePath(SavePath);
-            System.IO.File.WriteAllText(path + ".tmp", Empire.Core.Determinism.EcmaJson.Stringify(campaign.Save()));
-            System.IO.File.Move(path + ".tmp", path, true);
+            WriteSave(SavePath);
+            if (session is not null) screen?.AppendMessage($"已保存第 {session.Snapshot()["turn"]} 回合的进度");
             Notify("战役和战斗进度已保存。F9 可读取。");
         }
         catch (Exception error) { Notify("保存失败：" + error.Message); }
@@ -137,12 +173,13 @@ public partial class GrayFlagGame : Node
 
     private void Load()
     {
+        if (screen?.IsPresenting == true) return;
         try
         {
             campaign.Load(Empire.Core.Determinism.EcmaJson.Parse(System.IO.File.ReadAllText(ProjectSettings.GlobalizePath(SavePath)))!.AsObject());
         }
-        catch (Exception error) { Notify("读取失败，当前进度未变：" + error.Message); return; }
-        try { ShowNode(); Notify("已读取存档。"); }
+        catch (Exception error) { screen?.AppendMessage("无法读取存档：" + error.Message); Notify("读取失败，当前进度未变：" + error.Message); return; }
+        try { ShowNode(campaign.Battle is null ? null : $"已读取第 {campaign.Battle.Snapshot()["turn"]} 回合的存档"); Notify("已读取存档。"); }
         catch (Exception error) { Notify("存档已恢复，但画面加载失败：" + error.Message); }
     }
 
@@ -151,6 +188,7 @@ public partial class GrayFlagGame : Node
         if (screen is not null) { screen.ShowFeedback(message); return; }
         var dialog = new AcceptDialog { Title = "灰旗", DialogText = message };
         dialog.Confirmed += dialog.QueueFree;
+        dialog.CloseRequested += dialog.QueueFree;
         AddChild(dialog); dialog.PopupCentered();
     }
 }

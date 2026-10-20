@@ -40,7 +40,10 @@ public partial class BattleScreenChecks : Node
         Bind(session);
         var order = session.GetLegalOrders(2).First(choice => choice.PresentationRole == "move"
             && choice.Target is { } at && at != new BoardCell(5, 8));
+        Require(screen.RecentMessages.SequenceEqual(new[] { session.GetSnapshot().InitialLogMessage }),
+            "New battle log must contain only the original opening line.");
         screen.SubmitOrder(order);
+        Require(screen.RecentMessages.Count == 1, "Event text must wait until its animation completes.");
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Accepted move must hold the presentation gate.");
         var revision = session.GetSnapshot().Revision;
         screen.SubmitOrder(order); screen.SelectCell(new BoardCell(5, 8)); screen.Refresh();
@@ -49,8 +52,12 @@ public partial class BattleScreenChecks : Node
         for (var step = 0; step < 100 && screen.IsPresenting; step++) screen.Board.AdvancePresentation(0.1);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == revision,
             "Timeline completion must settle the committed revision and release input.");
+        var expectedLog = new Feedback.BattleLog();
+        expectedLog.Add(session.GetSnapshot().InitialLogMessage!);
+        foreach (var line in session.GetSnapshot().Transition!.EventDescriptions) expectedLog.Add(line);
+        Require(screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Descriptions must append once in receipt order after presentation.");
         screen.Refresh();
-        Require(!screen.IsPresenting, "Refreshing a settled revision must not replay it.");
+        Require(!screen.IsPresenting && screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Refreshing a settled revision must not replay it.");
         var superseded = new GrayFlagSession(engine, level);
         var replaceable = new ReplaceableSession(superseded);
         screen.BindSession(replaceable, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
@@ -71,11 +78,19 @@ public partial class BattleScreenChecks : Node
         var loaded = GrayFlagSession.FromSave(engine, fresh.Save()); Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
+        screen.BindSession(loaded, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false,
+            initialLogMessage: "已读取第 1 回合的存档");
+        Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
         var last = new GrayFlagSession(engine, level); Bind(last); screen.SubmitOrder(order);
+        var saves = 0;
+        screen.BindApplicationActions(() => saves++);
+        var staleSave = Buttons(screen).Single(button => button.Text == "保存");
         var lastRevision = last.GetSnapshot().Revision;
         RemoveChild(screen);
+        staleSave.EmitSignal(Button.SignalName.Pressed);
+        Require(saves == 0, "Unmounted application callbacks must not save or load.");
         screen.SubmitOrder(order);
         Require(last.GetSnapshot().Revision == lastRevision, "Unmounted callbacks must not dispatch.");
         Require(!screen.IsPresenting && !screen.Board.IsPresenting, "Unmount must release all presentation waiters.");

@@ -6,6 +6,7 @@ using Empire.Core.Geometry;
 using Empire.Core.Tactics;
 using Empire.Core.Transactions;
 using Empire.Presentation;
+using Empire.Presentation.Feedback;
 
 namespace Empire.Application;
 
@@ -16,6 +17,7 @@ public sealed class GrayFlagSession : IBattleSession
     private readonly Battle battle;
     private long revision;
     private BattlePresentationTransition? transition;
+    private readonly BattleEventText eventText = BattleEventText.CreateDefault().Seal();
     private readonly List<JsonObject> actions = new();
     private readonly List<JsonObject> events = new();
 
@@ -73,7 +75,9 @@ public sealed class GrayFlagSession : IBattleSession
             var status = Empire.Core.Scenario.CompositeRules.Status(state, id);
             return $"{id}：{status.Neutralized}/{composite["parts"]!.AsArray().Count} · {status.State}";
         });
-        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives), transition);
+        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives), transition,
+            state["phase"]?.GetValue<string>() == "deployment" ? "战前部署 · 调整站位后确认部署"
+                : $"第 1 回合 · {state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["controller"]?.GetValue<string>() == "human")?["name"]?.GetValue<string>() ?? ""} 开始行动");
     }
     public IReadOnlyList<JsonObject> ActionLog => actions.Select(action => (JsonObject)action.DeepClone()).ToArray();
 
@@ -189,11 +193,14 @@ public sealed class GrayFlagSession : IBattleSession
         actions.Add((JsonObject)command.DeepClone());
         events.AddRange(receipt.Events.Select(value => (JsonObject)value.DeepClone()));
         revision++;
+        var after = Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot());
+        var eventValues = receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray();
+        var logContext = new BattleLogContext(after, engine.UnitTypeName, engine.CareerName, id => engine.Resources.Name(id) ?? id);
         transition = new BattlePresentationTransition(revision,
             Empire.Core.Determinism.EcmaJson.ToElement(receipt.Before),
             Empire.Core.Determinism.EcmaJson.ToElement(command),
-            receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray(),
-            Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot()), computer, beforeVisible);
+            eventValues, after, computer, beforeVisible,
+            eventValues.Select(value => eventText.Describe(logContext, value)).ToArray());
         return receipt;
     }
 

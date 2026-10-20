@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Godot;
+using Empire.Presentation.Feedback;
 
 namespace Empire.Presentation;
 
@@ -24,6 +25,9 @@ public partial class BattleScreen : Control
     private Label _selection = null!;
     private Label _modeHint = null!;
     private Label _feedback = null!;
+    private Label _eventLog = null!;
+    private readonly BattleLog _messages = new();
+    public System.Collections.Generic.IReadOnlyList<string> RecentMessages => _messages.Recent();
     private Label _coverage = null!;
     private Label _objectiveSummary = null!;
     private VBoxContainer _modeButtons = null!;
@@ -32,6 +36,7 @@ public partial class BattleScreen : Control
     private HBoxContainer _applicationActions = null!;
     private ConfirmationDialog _restartConfirmation = null!;
     private Action? _restart;
+    private Action? _restartRequest;
     private IReadOnlyList<BattleOrderChoice> _legalOrders = Array.Empty<BattleOrderChoice>();
     private int? _selectedId;
     private BoardCell? _target;
@@ -40,11 +45,13 @@ public partial class BattleScreen : Control
     private bool _bound;
     private bool _presenting;
     private int _presentationGeneration;
+    private int _bindingGeneration;
     private long _presentedRevision = -1;
     public bool IsPresenting => _presenting;
 
     public override void _ExitTree()
     {
+        _bindingGeneration++;
         _presentationGeneration++;
         _presenting = false;
         _bound = false;
@@ -62,10 +69,14 @@ public partial class BattleScreen : Control
     }
 
     public void BindSession(IBattleSession session, AssetCatalog assets, JsonObject level,
-        AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null)
+        AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null, string? initialLogMessage = null)
     {
         ArgumentNullException.ThrowIfNull(session);
         BuildInterface();
+        _bindingGeneration++;
+        _restart = null;
+        _restartRequest = null;
+        _restartConfirmation.Hide();
         _presentationGeneration++;
         _presenting = false;
         _board.CancelPresentation();
@@ -77,6 +88,8 @@ public partial class BattleScreen : Control
         _selectedId = null;
         _target = null;
         _feedback.Text = "选择单位，查看规则允许的命令。";
+        _messages.Clear();
+        AppendMessage(initialLogMessage ?? session.GetSnapshot().InitialLogMessage ?? "");
         Refresh();
         FitBoard();
     }
@@ -93,21 +106,38 @@ public partial class BattleScreen : Control
         if (_state is not null) Refresh();
     }
 
-    public void BindApplicationActions(Action? onSave = null, Action? onLoad = null, Action? onRestart = null)
+    public void BindApplicationActions(Action? onSave = null, Action? onLoad = null, Action? onRestart = null, Action? onExit = null)
     {
         BuildInterface();
         Clear(_applicationActions);
-        _restart = onRestart;
-        void AddAction(string text, Action callback)
+        _restartRequest = null;
+        _restartConfirmation.Hide();
+        var generation = ++_bindingGeneration;
+        var session = _session;
+        bool Current() => _bound && IsInsideTree() && generation == _bindingGeneration && ReferenceEquals(session, _session);
+        _restart = onRestart is null ? null : () => { if (Current() && !_presenting) onRestart(); };
+        void AddAction(string text, Action callback, bool requireIdle = false)
         {
-            var button = Button(text, callback);
+            Button button = null!;
+            button = Button(text, () => { if (button.IsInsideTree() && Current() && (!requireIdle || !_presenting)) callback(); });
             button.AutowrapMode = TextServer.AutowrapMode.Off;
             button.CustomMinimumSize = new Vector2(90, 38);
             _applicationActions.AddChild(button);
         }
         if (onSave is not null) AddAction("保存", onSave);
         if (onLoad is not null) AddAction("读取", onLoad);
-        if (onRestart is not null) AddAction("重新开始", () => _restartConfirmation.PopupCentered());
+        if (onRestart is not null) AddAction("重新开始", () => {
+            _restartRequest = _restart;
+            _restartConfirmation.PopupCentered();
+        }, true);
+        if (onExit is not null) AddAction("战役营地", onExit, true);
+    }
+
+    public void AppendMessage(string message)
+    {
+        BuildInterface();
+        _messages.Add(message);
+        _eventLog.Text = string.Join("\n", _messages.Recent().TakeLast(4));
     }
 
     public void ShowFeedback(string message)
@@ -194,6 +224,11 @@ public partial class BattleScreen : Control
     {
         if (_built) return;
         _built = true;
+        _board.EventPresented += (transition, index) =>
+        {
+            if (_presenting && _bound && IsInsideTree() && transition.Revision == _presentedRevision)
+                AppendMessage(transition.EventDescriptions[index]);
+        };
         _board.PresentationRepaintRequested += () =>
         {
             if (!_presenting || !_bound || _session is null || !IsInsideTree()) return;
@@ -229,7 +264,12 @@ public partial class BattleScreen : Control
         _restartConfirmation = new ConfirmationDialog {
             Title = "重新开始？", DialogText = "当前未保存的战斗进度将丢失。",
             OkButtonText = "重新开始", CancelButtonText = "取消" };
-        _restartConfirmation.Confirmed += () => _restart?.Invoke();
+        _restartConfirmation.Confirmed += () => {
+            var request = _restartRequest;
+            _restartRequest = null;
+            if (_bound && IsInsideTree()) request?.Invoke();
+        };
+        _restartConfirmation.Canceled += () => _restartRequest = null;
         AddChild(_restartConfirmation);
         var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         body.AddThemeConstantOverride("separation", 20);
@@ -278,6 +318,11 @@ public partial class BattleScreen : Control
         _feedback.MaxLinesVisible = 4;
         _feedback.AddThemeColorOverride("font_color", new Color("#f1d99f"));
         side.AddChild(_feedback);
+        _eventLog = Wrapped("");
+        _eventLog.Name = "BattleEventLog";
+        _eventLog.AddThemeFontSizeOverride("font_size", 14);
+        _eventLog.MaxLinesVisible = 8;
+        side.AddChild(_eventLog);
         _coverage = Wrapped("Native C# migration");
         _coverage.AddThemeFontSizeOverride("font_size", 12);
         _coverage.AddThemeColorOverride("font_color", new Color("#aab6a5"));
@@ -409,6 +454,7 @@ public partial class BattleScreen : Control
         // The JSON is the session's complete canonical command, not a UI reconstruction.
         var result = _session.Dispatch(order.Action, _snapshot.Revision);
         ShowFeedback(result.Message);
+        if (!result.Accepted) AppendMessage("无法执行：" + result.Message);
         Refresh();
     }
 

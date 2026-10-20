@@ -19,11 +19,14 @@ public sealed record BattlePresentationTransition
     public JsonElement After { get; }
     public bool IsComputerAction { get; init; }
     public IReadOnlySet<int>? BeforeVisibleUnitIds { get; }
+    public IReadOnlyList<string> EventDescriptions { get; }
 
     public BattlePresentationTransition(long Revision, JsonElement Before, JsonElement Action,
         IReadOnlyList<JsonElement> Events, JsonElement After, bool IsComputerAction,
-        IReadOnlySet<int>? BeforeVisibleUnitIds = null)
+        IReadOnlySet<int>? BeforeVisibleUnitIds = null, IReadOnlyList<string>? EventDescriptions = null)
     {
+        if (EventDescriptions is not null && EventDescriptions.Count != Events.Count)
+            throw new System.ArgumentException("Event descriptions must correspond to the ordered receipt.", nameof(EventDescriptions));
         this.Revision = Revision;
         this.Before = Before.Clone();
         this.Action = Action.Clone();
@@ -31,13 +34,14 @@ public sealed record BattlePresentationTransition
         this.After = After.Clone();
         this.IsComputerAction = IsComputerAction;
         this.BeforeVisibleUnitIds = BeforeVisibleUnitIds?.ToFrozenSet();
+        this.EventDescriptions = System.Array.AsReadOnly(EventDescriptions?.ToArray() ?? Enumerable.Repeat("", Events.Count).ToArray());
     }
 }
 
 /// <summary>State must be a detached JsonElement.Clone(); its JSON is immutable to the view.</summary>
 public sealed record BattleSnapshot(long Revision, JsonElement State, IReadOnlySet<int>? VisibleUnitIds = null,
     IReadOnlySet<BoardCell>? VisibleCells = null, IReadOnlyDictionary<BoardCell, double>? Incoming = null, string? ObjectiveSummary = null,
-    BattlePresentationTransition? Transition = null);
+    BattlePresentationTransition? Transition = null, string? InitialLogMessage = null);
 
 /// <summary>
 /// The adapter supplies complete canonical actions, including any move-and-wait or

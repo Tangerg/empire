@@ -86,6 +86,26 @@ the real story entry successfully. `--full` was not rerun as one aggregate comma
 unhandled events remain settle-only rather than receiving invented death/FX.
 See ACTION-PRESENTATION.md for source references, exact tested scope and timing contracts.
 
+## Descriptive event log and postbattle summary
+
+Source event descriptions now appear after their corresponding animation, in a
+single bounded/coalesced log. Opening/restart/load/save behavior follows the
+original controller. Victory summaries use canonical bridge signals/outcome and
+combat strike counts, with turns, survivors and fallen names. No in-battle
+scenario popup or audio behavior was invented. See BATTLE-FEEDBACK.md. The isolated
+feedback tree passed the base aggregate verification (build 0 warnings/errors,
+core 14, persistence 96, application continuation, terrain 16, dynamic 100,
+animation 177 and UI contracts). Both real campaign routes again matched 376/414
+independent actions and 14 saved resumptions each, ending in source-matching losses.
+Those autonomous core outcomes are not the interactive-shell commitment policy:
+only explicit victory settlement advances the native campaign. Defeat supports
+retry/camp without committing failure. The camp-flow regression uses an actual
+92-action defeat and verifies 149 state/persistence assertions. Staging matches
+371 source comparisons and 145 native screen assertions, including all original
+exported art with zero missing-art diagnostics. The source-style prebattle autosave
+uses a separate file from manual midbattle saves; complete campaign auto-resume
+and menu behavior remain pending.
+
 ## Explicit remaining gaps
 
-Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Descriptive battle-event logs, postbattle signals/metrics/fallen-unit summaries and source-authored lighting/shadows still require work. Source camera follow/panning is not yet reproduced. The recovered source has no audio playback implementation, so silence is not an omitted original feature. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.
+Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Source-authored lighting/shadows still require work. Source camera follow/panning is not yet reproduced in this checkpoint. Story beat-by-beat speaker/scene presentation, full campaign autosave/startup menu and terminal-ending navigation remain required, not completed by battle-rule parity. The recovered source has no audio playback implementation, so silence is not an omitted original feature. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.

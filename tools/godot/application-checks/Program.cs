@@ -26,6 +26,10 @@ while(campaign.Battle.Snapshot()["phase"]!.GetValue<string>()!="over")
  Act(campaign);Act(restored);
  if(StateDigest.Hash(restored.Battle!.Snapshot())!=StateDigest.Hash(campaign.Battle.Snapshot()))throw new Exception("Restored action divergence");
 }
+var summary=campaign.BattleSummary();var restoredSummary=restored.BattleSummary();
+if(summary.Outcome!=restoredSummary.Outcome || summary.Summary.Outcome!=restoredSummary.Summary.Outcome ||
+   summary.Summary.StrikeCount!=restoredSummary.Summary.StrikeCount || !summary.Summary.Signals.SequenceEqual(restoredSummary.Summary.Signals) ||
+   !summary.Summary.Fallen.SequenceEqual(restoredSummary.Summary.Fallen))throw new Exception("Postbattle summary changed after save/load");
 campaign.FinishBattle();restored.FinishBattle();
 if(StateDigest.Hash(campaign.Runtime.Snapshot())!=StateDigest.Hash(restored.Runtime.Snapshot()))throw new Exception("Campaign result divergence after save");
 var before=StateDigest.Hash(restored.Runtime.Snapshot());var invalid=saved.DeepClone().AsObject();invalid["request"]!["id"]="wrong";
@@ -50,6 +54,7 @@ void Act(GrayFlagCampaign value)
   if(!result.Accepted)throw new Exception(result.Message);
  }
  var after=battle.GetSnapshot();var transition=after.Transition??throw new Exception("Accepted action has no presentation receipt");
+ if(transition.EventDescriptions.Count!=transition.Events.Count)throw new Exception("Event descriptions lost receipt alignment");
  if(transition.Revision!=after.Revision || after.Revision!=previous.Revision+1 || transition.IsComputerAction!=computer)
   throw new Exception("Presentation revision or actor attribution differs");
  if(!EcmaJson.DeepEquals(EcmaJson.Parse(transition.Before.GetRawText()),before) ||

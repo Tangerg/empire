@@ -20,6 +20,7 @@ public partial class BoardView
     public bool IsPresenting => _playback is not null;
     public bool AnimationsEnabled { get; set; } = true;
     public event Action? PresentationRepaintRequested;
+    public event Action<BattlePresentationTransition, int>? EventPresented;
     internal bool AdvanceAnimationsAutomatically { get; set; } = true;
 
     public override void _EnterTree() => _exiting = false;
@@ -70,10 +71,12 @@ public partial class BoardView
             // a second march. Only an accepted receipt reaches this adapter.
             if (Text(action, "kind") == "command" && action["path"] is JsonArray path && path.Count > 1)
                 if (!await AnimateMove(playback, Integer(action, "unit"), path)) return false;
-            foreach (var item in events)
+            for (var index = 0; index < events.Length; index++)
             {
                 if (!ReferenceEquals(_playback, playback)) return false;
-                if (!await PresentEvent(playback, item)) return false;
+                if (!await PresentEvent(playback, events[index])) return false;
+                if (!ReferenceEquals(_playback, playback)) return false;
+                EventPresented?.Invoke(transition, index);
             }
             return true;
         }

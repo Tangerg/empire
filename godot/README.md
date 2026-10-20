@@ -66,7 +66,7 @@ capabilities before gameplay. See `tools/godot/scenario-checks` and
 ## Scope and remaining migration work
 
 This is a playable-level integration checkpoint, not the finished migration.
-The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, descriptive event logs and postbattle summaries, lighting/shadows, camera follow/panning, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
+The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, lighting/shadows, camera follow/panning, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
 See `docs/RECOVERY.md` for evidence and `docs/COMPATIBILITY.md` for explicit
 malformed-input hardening differences. Original source and art are preserved.
 

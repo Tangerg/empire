@@ -1,0 +1,307 @@
+{
+  "schema": 1,
+  "title": "断冠之誓",
+  "battleTotal": 16,
+  "joinAfter": {
+    "mirelle": 3,
+    "bran": 4,
+    "tasha": 7,
+    "ivra": 9
+  },
+  "relationLabels": {
+    "cain": "凯恩",
+    "mirelle": "米蕾尔",
+    "tasha": "塔莎",
+    "refugees": "灰境难民",
+    "silverwood": "银林",
+    "mountain-forge": "山炉氏族",
+    "named-dead": "归名者"
+  },
+  "resourceLabels": {
+    "supplies": "补给",
+    "treasury": "国库"
+  },
+  "portraits": {
+    "laiya": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-leia-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-leia-01.png",
+      "sha256": "43ae13b305aa88868779cad493e8796c0aa4b5fb3d11e524c23f94977daf7de1"
+    },
+    "roderick": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-roderick-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-roderick-01.png",
+      "sha256": "406d8c694941b1c200c794e7603c7717773ae69908de10130d59d77d48e3e131"
+    },
+    "cain": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-cain-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-cain-01.png",
+      "sha256": "25c90647fc310c75cf0d834d75677582067a03abefc6dcda58eb1670c980e227"
+    },
+    "mirelle": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-mirel-01.png",
+      "sha256": "beb329a6f103f04346703a20cdd6098c533d7f7374f88e4410c0becd3d6a4894"
+    },
+    "bran": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-bran-01.png",
+      "sha256": "5b7ce3338e8a2405a507406c8bec310145f48e02d43f35120d622294515e3c2c"
+    },
+    "tasha": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-tasha-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-tasha-01.png",
+      "sha256": "0d370f848eb926b2927372810cbe8c30a92c8a36070772efefbe54887f5e56a1"
+    },
+    "ivra": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-01.png",
+      "resourcePath": "res://assets/runtime/narrative-static/char-ivra-01.png",
+      "sha256": "0b86a713cbe8350b74e010c31f3b93ab813e6a112bb5e2fffcba97034312f6ff"
+    }
+  },
+  "levels": {
+    "c01-01": {
+      "chapter": 1,
+      "order": 1,
+      "chapterTitle": "边境之火",
+      "briefingId": "c01/brief-01",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s01.png",
+        "sha256": "071b12d5d44e5ca3dc609700a7ec3ea7b219fed331724428dd3833d82bae01cf"
+      }
+    },
+    "c01-02": {
+      "chapter": 1,
+      "order": 2,
+      "chapterTitle": "边境之火",
+      "briefingId": "c01/brief-02",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s02.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s02.png",
+        "sha256": "7bd1c7c9b50ebf538d503158fa29a4d28193524845b18cd983543f3596100112"
+      }
+    },
+    "c01-03": {
+      "chapter": 1,
+      "order": 3,
+      "chapterTitle": "边境之火",
+      "briefingId": "c01/brief-03",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      }
+    },
+    "c01-04": {
+      "chapter": 1,
+      "order": 4,
+      "chapterTitle": "边境之火",
+      "briefingId": "c01/brief-04",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      },
+      "briefingArt": null
+    },
+    "c01-05": {
+      "chapter": 1,
+      "order": 5,
+      "chapterTitle": "边境之火",
+      "briefingId": "c01/brief-05",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s05.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s05.png",
+        "sha256": "e20af417541b6b6d79684d6933b2eeb2e5dcf48797cb29de0dc645a96e7b92c0"
+      }
+    },
+    "c01-06": {
+      "chapter": 2,
+      "order": 6,
+      "chapterTitle": "灰旗流亡",
+      "briefingId": "c01/brief-06",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch02-s06.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/ch02-s06.png",
+        "sha256": "9f2cf7bbfe09d1bac8c15f4ace1f5b98296ee452495c847d22b971edc4d70f41"
+      }
+    },
+    "c01-07": {
+      "chapter": 2,
+      "order": 7,
+      "chapterTitle": "灰旗流亡",
+      "briefingId": "c01/brief-07",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/scene-public-rations.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/scene-public-rations.png",
+        "sha256": "eb46595a4de0dbc92d7a3ef7664fa379920fed87e47cc2440885b871a3560e6a"
+      }
+    },
+    "c01-08": {
+      "chapter": 2,
+      "order": 8,
+      "chapterTitle": "灰旗流亡",
+      "briefingId": "c01/brief-08",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/scene-public-rations.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/scene-public-rations.png",
+        "sha256": "eb46595a4de0dbc92d7a3ef7664fa379920fed87e47cc2440885b871a3560e6a"
+      }
+    },
+    "c01-09": {
+      "chapter": 2,
+      "order": 9,
+      "chapterTitle": "灰旗流亡",
+      "briefingId": "c01/brief-09",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch02-s09.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/ch02-s09.png",
+        "sha256": "6ae627123578565d5e2724e979caaa414ff1495613c211b75b0dc64302746fe7"
+      }
+    },
+    "c01-10": {
+      "chapter": 2,
+      "order": 10,
+      "chapterTitle": "灰旗流亡",
+      "briefingId": "c01/brief-10",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      },
+      "briefingArt": null
+    },
+    "c01-11": {
+      "chapter": 3,
+      "order": 11,
+      "chapterTitle": "古老诸族",
+      "briefingId": "c01/brief-11",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      }
+    },
+    "c01-12": {
+      "chapter": 3,
+      "order": 12,
+      "chapterTitle": "古老诸族",
+      "briefingId": "c01/brief-12",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      }
+    },
+    "c01-13": {
+      "chapter": 3,
+      "order": 13,
+      "chapterTitle": "古老诸族",
+      "briefingId": "c01/brief-13",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      },
+      "briefingArt": null
+    },
+    "c01-14": {
+      "chapter": 3,
+      "order": 14,
+      "chapterTitle": "古老诸族",
+      "briefingId": "c01/brief-14",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch03-s14.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/ch03-s14.png",
+        "sha256": "7c029f66c6fa894ea1056643178508a4984d49224f77f18d2959d3baaf50542f"
+      }
+    },
+    "c01-15": {
+      "chapter": 3,
+      "order": 15,
+      "chapterTitle": "古老诸族",
+      "briefingId": "c01/brief-15",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      }
+    },
+    "c01-16": {
+      "chapter": 3,
+      "order": 16,
+      "chapterTitle": "古老诸族",
+      "briefingId": "c01/brief-16",
+      "chapterArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      },
+      "briefingArt": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      }
+    }
+  }
+}
