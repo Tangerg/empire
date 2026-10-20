@@ -22,9 +22,11 @@ run_scene() {
     return 1
   fi
 }
-for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks BattleResultFlowChecks CameraChecks CameraIntegrationChecks LightingLifetimeChecks TacticalHudChecks AiPacingIntegrationChecks; do
+for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks BattleResultFlowChecks CameraChecks CameraIntegrationChecks LightingLifetimeChecks TacticalHudChecks AiPacingIntegrationChecks BoardDecorationChecks LightingPerformanceChecks; do
   run_scene "$scene"
 done
+run_scene SceneryChecks -- --scenery-oracle=res://tests/oracle/board-scenery.json.gz
+run_scene ConnectorDecorationChecks -- --connectors="$PWD/godot/tests/oracle/board-connectors.json.gz"
 run_scene LightingChecks -- --lighting-oracle="$PWD/godot/tests/oracle/lighting.json"
 ORACLE_DATA="$(mktemp -d /tmp/empire-native-oracles.XXXXXX)"
 for fixture in narrative campaign-menu staging session-contracts tactical-queries tactical-selection tactical-adapter tactical-hud ai-pacing; do
@@ -60,6 +62,10 @@ if [[ "${1:-}" == '--full' ]]; then
   bash tools/godot/campaign-slot-checks/run.sh --native --verify-guard
   bash tools/godot/camera-checks/run.sh --native --verify-guard
   bash tools/godot/lighting-checks/run.sh
+  bash tools/godot/board-decoration-checks/run.sh
+  python3 tools/godot/board-decoration-checks/mutants.py
+  bash tools/godot/scenery-checks/run.sh
+  bash tools/godot/scenery-checks/check-mutants.sh
   bash tools/godot/camp-flow-checks/run.sh
   bash tools/godot/campaign-battle-checks/run.sh
   bash tools/godot/campaign-route-checks/run.sh first

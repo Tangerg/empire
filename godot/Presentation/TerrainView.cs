@@ -179,7 +179,7 @@ public partial class TerrainView : Node2D
                     }
                 }, diagnostics);
 
-            var connectors = new Dictionary<string, Dictionary<BoardCell, int>>(StringComparer.Ordinal);
+            var connectors = new List<(string Atlas, BoardCell Cell, int Index)>();
             foreach (var cell in cells)
             {
                 var binding = At(cell.X, cell.Y)!.Connected;
@@ -194,25 +194,67 @@ public partial class TerrainView : Node2D
                 var index = _environment.ConnectedIndex(binding.Atlas, mask, (int)Math.Floor(TileArtVariation.Hash(cell.X, cell.Y, 1102) * 4));
                 foreach (var id in new[] { binding.Atlas, binding.Edge }.Where(id => id is not null).Cast<string>())
                 {
-                    if (!connectors.TryGetValue(id, out var indices)) connectors.Add(id, indices = new());
-                    indices.Add(cell, index);
+                    connectors.Add((id, cell, index));
                 }
             }
-            foreach (var (atlasId, indices) in connectors)
-                TryLayer($"Connected terrain {atlasId}", () => {
-                    if (_manifest.ConnectorMasks.TryGetValue(atlasId, out var spec))
-                    {
-                        using var mask = AtlasMask(size, spec, (x, y) => indices.ContainsKey(new BoardCell(x, y)),
-                            (x, y) => indices[new BoardCell(x, y)]);
-                        ground.AddChild(Masked($"Connector_{atlasId}", mask, MaterialRecord("stone-paving"), size));
-                    }
-                    else foreach (var (cell, index) in indices)
-                    {
-                        var sprite = _environment.CreateGroundTile(atlasId, index);
-                        sprite.Position += new Vector2(cell.X, cell.Y) * 32;
+            // Source emits route then edge for each row-major cell, filtering each
+            // before compositing. Grouping by atlas changes overlapping seams.
+            var routeImages = new Dictionary<string, Image>(StringComparer.Ordinal);
+            Image RouteImage(string key, Texture2D texture)
+            {
+                if (routeImages.TryGetValue(key, out var cached)) return cached;
+                var image = texture.GetImage();
+                PrepareImage(image);
+                routeImages.Add(key, image);
+                return image;
+            }
+            try
+            {
+                foreach (var (atlasId, cell, index) in connectors)
+                    TryLayer($"Connected terrain {atlasId}", () => {
+                        Sprite2D sprite;
+                        var position = new Vector2(cell.X, cell.Y) * 32;
+                        if (_manifest.ConnectorMasks.TryGetValue(atlasId, out var spec))
+                        {
+                            var material = MaterialRecord("stone-paving");
+                            var maskTexture = Texture(spec.ResourcePath, spec.Columns * 64, spec.Rows * 64);
+                            var materialTexture = MaterialTexture(material);
+                            var period = new Vector2(material.LogicalSize[0], material.LogicalSize[1]);
+                            sprite = CandidateRouteComposition.Create(RouteImage(spec.ResourcePath, maskTexture),
+                                new Rect2I(index % spec.Columns * 64, index / spec.Columns * 64, 64, 64),
+                                RouteImage(material.ResourcePath, materialTexture), period, position,
+                                ("route-cell", maskTexture, materialTexture, index, position.X % period.X, position.Y % period.Y), _shadows);
+                        }
+                        else
+                        {
+                            sprite = _environment.CreateGroundTile(atlasId, index);
+                            sprite.Position += position;
+                            var density = 1 / System.Math.Abs(sprite.Scale.X);
+                            if (_shadows is not null)
+                                sprite.AddChild(CandidateSpriteShadows.Create(sprite, CandidateShadowKind.Route, density, _shadows));
+                            else
+                            {
+                                using var input = CandidateSpriteShadows.ReadFrame(sprite.Texture);
+                                var filtered = CandidateShadowRaster.Filter(input, CandidateSpriteShadows.Drops(CandidateShadowKind.Route), density);
+                                using (filtered.Image)
+                                {
+                                    var effect = OwnedLightingSprite.Create(filtered.Image);
+                                    effect.Centered = sprite.Centered;
+                                    effect.Offset = sprite.Offset - (sprite.Centered ? Vector2.Zero : Vector2.One * filtered.Padding);
+                                    effect.TextureFilter = TextureFilterEnum.Linear;
+                                    sprite.SelfModulate = new Color(1, 1, 1, 0);
+                                    sprite.AddChild(effect);
+                                }
+                            }
+                        }
+                        sprite.SetMeta("route_atlas", atlasId);
+                        sprite.SetMeta("route_cell_x", cell.X);
+                        sprite.SetMeta("route_cell_y", cell.Y);
+                        sprite.SetMeta("route_index", index);
                         ground.AddChild(sprite);
-                    }
-                }, diagnostics);
+                    }, diagnostics);
+            }
+            finally { foreach (var image in routeImages.Values) image.Dispose(); }
 
             if (_scene.RoadCorridor is { } corridor)
                 TryLayer("Road material", () => {

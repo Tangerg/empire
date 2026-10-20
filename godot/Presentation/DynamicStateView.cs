@@ -17,6 +17,7 @@ public sealed record DynamicStateProjection(Node2D Root, IReadOnlyList<DynamicSt
 public sealed class DynamicStateView
 {
     private readonly AssetCatalog assets;
+    private readonly float markerOpacity = BoardDecorationDocument.Load().MarkerOpacity;
     private readonly CandidateShadowCache? shadows;
     private readonly Dictionary<string, JsonObject> definitions;
     private readonly Dictionary<string, JsonObject> unitDefinitions;
@@ -122,9 +123,10 @@ public sealed class DynamicStateView
                     var asset = assets.ResolveTopic(topic);
                     var sprite = new Sprite2D
                     {
+                        Modulate = new Color(1, 1, 1, markerOpacity),
                         Name = "AuthoredMarker", Texture = assets.CreateFrameTexture(asset, 0), Position = new Vector2(0, -15),
                         Scale = Vector2.One * (48f / Math.Max(asset.FrameWidth, asset.FrameHeight) / asset.PixelDensity),
-                        TextureFilter = CanvasItem.TextureFilterEnum.Nearest,
+                        TextureFilter = CanvasItem.TextureFilterEnum.Linear,
                     };
                     sprite.SetMeta("topic_id", topic);
                     node.AddChild(sprite);

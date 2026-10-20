@@ -141,7 +141,7 @@ public partial class PresentationChecks : Node
         Require(terrain.RenderedSceneryCount > 0, "Terrain must use deterministic resource-backed scenery.");
         Require(!terrain.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
             string.Join("\n", terrain.Diagnostics));
-        Require(board.StatusText.Contains("Lighting/shadow parity remains incomplete", StringComparison.Ordinal),
+        Require(board.StatusText.Contains("native visual acceptance and first-use responsiveness remain pending", StringComparison.Ordinal),
             "Native terrain must not be described as full compositor parity.");
         var ground = terrain.GetNode<Node2D>("ComposedTerrain/Ground");
         var field = ground.GetNode<Polygon2D>("WorldField");

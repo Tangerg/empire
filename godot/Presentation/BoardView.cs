@@ -37,11 +37,13 @@ public partial class BoardView : Node2D
     public int RenderedUnitCount { get; private set; }
     public int ProjectionUnitCount { get; private set; }
     public int RenderedAuthoredPlacementCount { get; private set; }
+    public int RenderedPerimeterPlacementCount { get; private set; }
+    public int RenderedCoverPropCount { get; private set; }
     public int RenderedStructureCount { get; private set; }
     public int RenderedMarkerCount { get; private set; }
     public string StatusText => (_terrain is null
         ? "Native actor/placement renderer; terrain compositor is not migrated."
-        : "Native C# preview · source field lights and composited contact/figure/prop shadows. Lighting/shadow parity remains incomplete: remaining overlay/perimeter paths and native visual inspection are pending.")
+        : "Native C# preview · source field lights and composited contact/figure/prop shadows. Source overlays, cover and perimeter are implemented; native visual acceptance and first-use responsiveness remain pending.")
         + (Diagnostics.Count > 0 ? $" {Diagnostics.Count} resource/coverage diagnostics." : "");
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
@@ -88,6 +90,7 @@ public partial class BoardView : Node2D
         var shadows = new CandidateShadowCache();
         var diagnostics = new List<string>();
         var rendered = 0;
+        var perimeter = 0;
         try
         {
             for (var index = 0; index < scene.Placements.Count; index++)
@@ -149,6 +152,8 @@ public partial class BoardView : Node2D
                     diagnostics.Add($"Frame placement {index} ({placement.Id}): {error.Message}");
                 }
             }
+            if (!scene.HasAuthoredFramePlacements)
+                perimeter = CandidateBoardScenery.AddPerimeter(frame, environment, width, height, shadows, diagnostics);
             if (!scene.RuntimeReady)
                 diagnostics.Add("Authored scene is marked runtimeReady=false in the source document.");
             if (!environment.RuntimeReady)
@@ -181,6 +186,8 @@ public partial class BoardView : Node2D
         _sceneDiagnostics.AddRange(diagnostics);
         _diagnostics = diagnostics.AsReadOnly();
         RenderedAuthoredPlacementCount = rendered;
+        RenderedPerimeterPlacementCount = perimeter;
+        RenderedCoverPropCount = 0;
         RenderedUnitCount = ProjectionUnitCount = 0;
         RenderedStructureCount = RenderedMarkerCount = 0;
     }
@@ -197,6 +204,7 @@ public partial class BoardView : Node2D
         var renderedUnits = 0;
         var renderedStructures = 0;
         var renderedMarkers = 0;
+        var renderedCover = 0;
         try
         {
             if (_terrain is not null)
@@ -239,6 +247,9 @@ public partial class BoardView : Node2D
                 renderedStructures = dynamicProjection.Structures;
                 renderedMarkers = dynamicProjection.Markers;
             }
+            var cover = new Node2D { Name = "IllustratedCover", ZIndex = -3 };
+            staging.AddChild(cover);
+            renderedCover = CandidateBoardScenery.AddCover(cover, canonicalState["map"]!.AsObject(), assets, _shadows, diagnostics);
             foreach (var unit in snapshot.Units)
             {
                 if (visibleUnitIds is not null && !visibleUnitIds.Contains(unit.Id)) continue;
@@ -289,6 +300,7 @@ public partial class BoardView : Node2D
         RenderedUnitCount = renderedUnits;
         RenderedStructureCount = renderedStructures;
         RenderedMarkerCount = renderedMarkers;
+        RenderedCoverPropCount = renderedCover;
         _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
     }
 

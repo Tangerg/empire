@@ -22,20 +22,34 @@ internal static class CandidateShadowRaster
         var spill = 0f;
         foreach (var drop in drops) spill += Math.Max(Math.Abs(drop.Offset.X), Math.Abs(drop.Offset.Y)) + 4 * drop.Sigma;
         var padding = checked((int)Math.Ceiling(spill * density) + 1);
-        var width = checked(source.GetWidth() + padding * 2);
-        var height = checked(source.GetHeight() + padding * 2);
+        var sourceWidth = source.GetWidth(); var sourceHeight = source.GetHeight();
+        var width = checked(sourceWidth + padding * 2);
+        var height = checked(sourceHeight + padding * 2);
         var original = new float[checked(width * height)];
-        for (var y = 0; y < source.GetHeight(); y++) for (var x = 0; x < source.GetWidth(); x++)
+        for (var y = 0; y < sourceHeight; y++) for (var x = 0; x < sourceWidth; x++)
             original[(y + padding) * width + x + padding] = source.GetPixel(x, y).A;
         var alpha = (float[])original.Clone();
         var red = new float[alpha.Length]; var green = new float[alpha.Length]; var blue = new float[alpha.Length]; var shadowAlpha = new float[alpha.Length];
+        // Every pass overwrites its scratch buffers; they never outlive this bake.
+        var blurred = new float[alpha.Length];
+        float[]? horizontal = null;
         foreach (var drop in drops)
         {
-            var blurred = Blur(alpha, width, height, drop.Sigma * density);
+            var sigma = drop.Sigma * density;
+            if (sigma == 0) Array.Copy(alpha, blurred, alpha.Length);
+            else Blur(alpha, width, height, sigma, horizontal ??= new float[alpha.Length], blurred);
+            var offsetX = drop.Offset.X * density;
+            var offsetY = drop.Offset.Y * density;
+            var integralOffset = offsetX == MathF.Floor(offsetX) && offsetY == MathF.Floor(offsetY);
+            var integerX = (int)offsetX; var integerY = (int)offsetY;
             for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
             {
                 var index = y * width + x;
-                var added = Sample(blurred, width, height, x - drop.Offset.X * density, y - drop.Offset.Y * density) * drop.Color.A * (1 - shadowAlpha[index]);
+                var sampleX = x - integerX; var sampleY = y - integerY;
+                var sample = integralOffset
+                    ? (sampleX < 0 || sampleY < 0 || sampleX >= width || sampleY >= height ? 0 : blurred[sampleY * width + sampleX])
+                    : Sample(blurred, width, height, x - offsetX, y - offsetY);
+                var added = sample * drop.Color.A * (1 - shadowAlpha[index]);
                 red[index] += drop.Color.R * added;
                 green[index] += drop.Color.G * added;
                 blue[index] += drop.Color.B * added;
@@ -85,6 +99,15 @@ internal static class CandidateShadowRaster
     {
         if (sigma == 0) return (float[])source.Clone();
         if (!float.IsFinite(sigma) || sigma < 0) throw new ArgumentOutOfRangeException(nameof(sigma));
+        var horizontal = new float[source.Length];
+        var output = new float[source.Length];
+        Blur(source, width, height, sigma, horizontal, output);
+        return output;
+    }
+
+    private static void Blur(float[] source, int width, int height, float sigma, float[] horizontal, float[] output)
+    {
+        if (!float.IsFinite(sigma) || sigma <= 0) throw new ArgumentOutOfRangeException(nameof(sigma));
         // Four-sigma support bounds truncation; this is a Gaussian rasterization,
         // not a claim of pixel-identical browser-specific blur implementations.
         var radius = checked((int)Math.Ceiling(sigma * 4));
@@ -93,17 +116,27 @@ internal static class CandidateShadowRaster
         for (var offset = -radius; offset <= radius; offset++)
             total += kernel[offset + radius] = MathF.Exp(-offset * offset / (2 * sigma * sigma));
         for (var index = 0; index < kernel.Length; index++) kernel[index] /= total;
-        var horizontal = new float[source.Length];
-        var output = new float[source.Length];
+        // Clip omitted zero-padding taps without changing their accumulation order.
         for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
-            for (var offset = -radius; offset <= radius; offset++)
-                if (x + offset >= 0 && x + offset < width)
-                    horizontal[y * width + x] += source[y * width + x + offset] * kernel[offset + radius];
+        {
+            var first = Math.Max(-radius, -x);
+            var last = Math.Min(radius, width - x - 1);
+            var index = y * width + x;
+            var sum = 0f;
+            for (var offset = first; offset <= last; offset++)
+                sum += source[index + offset] * kernel[offset + radius];
+            horizontal[index] = sum;
+        }
         for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
-            for (var offset = -radius; offset <= radius; offset++)
-                if (y + offset >= 0 && y + offset < height)
-                    output[y * width + x] += horizontal[(y + offset) * width + x] * kernel[offset + radius];
-        return output;
+        {
+            var first = Math.Max(-radius, -y);
+            var last = Math.Min(radius, height - y - 1);
+            var index = y * width + x;
+            var sum = 0f;
+            for (var offset = first; offset <= last; offset++)
+                sum += horizontal[index + offset * width] * kernel[offset + radius];
+            output[index] = sum;
+        }
     }
 
     private static float Sample(float[] data, int width, int height, float x, float y)

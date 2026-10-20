@@ -66,7 +66,11 @@ internal static class CandidateFilterComposition
         {
             var point = topLeft + new Vector2(x + .5f, y + .5f) * (size / 4);
             if (!layer.Bounds.HasPoint(point)) continue;
-            if (layer.Cutouts is not null && layer.Cutouts.Any(cut => cut.HasPoint(point))) continue;
+            var cutout = false;
+            if (layer.Cutouts is not null)
+                foreach (var cut in layer.Cutouts)
+                    if (cut.HasPoint(point)) { cutout = true; break; }
+            if (cutout) continue;
             hits++;
         }
         return hits / 16f;

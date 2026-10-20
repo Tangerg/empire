@@ -291,7 +291,10 @@ public partial class BattleScreen : Control
         _state = Empire.Core.Determinism.EcmaJson.Parse(_snapshot.State.GetRawText()) as JsonObject
             ?? throw new InvalidOperationException("Battle session returned a non-object state.");
         _board.RenderState(_state, _snapshot.VisibleUnitIds);
-        _overlay.ShowPublicState(_state["map"]!["width"]!.GetValue<int>(), _state["map"]!["height"]!.GetValue<int>(), _snapshot.VisibleCells, _snapshot.Incoming);
+        _overlay.ShowPublicState(_state["map"]!["width"]!.GetValue<int>(), _state["map"]!["height"]!.GetValue<int>(), _snapshot.VisibleCells, _snapshot.Incoming,
+            _state["map"]!["tiles"]!.AsArray().Select((tile, index) => (tile, index))
+                .Where(pair => !_outsideTerrain.Contains(pair.tile!.GetValue<string>()))
+                .Select(pair => new BoardCell(pair.index % _state["map"]!["width"]!.GetValue<int>(), pair.index / _state["map"]!["width"]!.GetValue<int>())).ToHashSet());
         SynchronizeTactical(next);
         UpdateHeader();
         UpdateTactical();

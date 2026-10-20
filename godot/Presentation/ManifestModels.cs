@@ -118,7 +118,14 @@ public sealed class AuthoredScene
     public bool RuntimeReady { get; init; }
     public int[] MapSize { get; init; } = Array.Empty<int>();
     public List<AuthoredPlacement> Placements { get; init; } = new();
-    public List<FramePlacement> FramePlacements { get; init; } = new();
+    private List<FramePlacement> _framePlacements = new();
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool HasAuthoredFramePlacements { get; private set; }
+    public List<FramePlacement> FramePlacements
+    {
+        get => _framePlacements;
+        init { _framePlacements = value ?? throw new InvalidOperationException("Authored frame placements cannot be null."); HasAuthoredFramePlacements = true; }
+    }
     public double[][] GroundOutline { get; init; } = Array.Empty<double[]>();
     public RoadCorridorProfile? RoadCorridor { get; init; }
     public RiverProfile? River { get; init; }

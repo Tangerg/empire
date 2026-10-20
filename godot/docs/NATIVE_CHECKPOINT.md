@@ -206,7 +206,7 @@ The next frozen integration replaces the generic menu consumer with the original
 destination-first selection flow and complete canonical HUD projections. Focused
 source evidence is 430 controller assertions/eleven mutants, 2,398 adapter and
 real-dispatch assertions/six mutants, 821 core query assertions/eleven mutants,
-and 7,429 actual source GameController.hudView→Hud.render comparisons/ten projection mutants. The revised HUD
+and 7,429 actual source GameController.hudView→Hud.render comparisons/fourteen projection mutants. The revised HUD
 oracle executes actual GameController.hudView into actual Hud.render; constructor-only
 board/camera/event wiring is intentionally omitted. The overlay oracle likewise
 executes GameController.overlay, not merely selection.paint. Native HUD checks cover 62
@@ -227,3 +227,18 @@ marker/filter/cover/perimeter rendering and cold-composition performance, the
 original open extension kernel, real-window campaign acceptance and standalone
 desktop export. Missing authored scenery in nine recovered levels is explicit,
 not silently filled from another map. Original sources remain preserved.
+
+The tactical integration above is committed as `041abb24`. Its corrected exact
+index passed verify-native.sh with clean process exits, including full source
+Game.overlay composition, actual Game.hudView→Hud.render fixture consumers and
+all previous suites. Four additional HUD composition mutants brought the
+recorded pure suite to fourteen total (the preceding staged text retained the
+older ten); no production changes were required by that audit. Source replay
+hashes remain 3942584e, f0fe6f08 and ecb676a7. Recovery restoration matched all
+898 tracked files. New renderer/performance changes are separate, uncommitted
+work and not covered by that result.
+
+
+## Frozen renderer batch after 041abb24
+
+Source ground decorations, per-cell connector filters, live cover and generic perimeter are implemented. Focused checks passed 470 decoration, 9,227 connector/marker and 8,254 scenery assertions with clean exits; eight renderer and three scenery negative controls were rejected. Nine missing authored scene documents remain missing, not replaced by invented authored content. The source-defined generic perimeter is separate. Exact raster optimization passed 195 assertions and matched fresh-process timing; first-use latency remains a performance gate. Combined immutable aggregate and repeated teardown validation are pending before this batch is committed. No new GUI or publication acceptance is claimed.

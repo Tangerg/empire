@@ -136,7 +136,7 @@ for (const unit of CANDIDATE_01_LEVELS.flatMap(candidate => candidate.units)) {
 for (const tile of terrainIds) { const binding = bindings.CANDIDATE_01_MAP_STRUCTURE_ART[tile]; if (binding) { topics.add(binding.topicId); if (binding.presentationId) presentations.add(binding.presentationId); } }
 for (const prop of scenes.flatMap(scene => [...scene.placements, ...(scene.framePlacements ?? [])])) if (prop.topicId) topics.add(prop.topicId);
 for (const structure of CANDIDATE_01_LEVELS.flatMap(candidate => candidate.structures ?? [])) { const topic = bindings.CANDIDATE_01_STRUCTURE_ART[structure.type]; if (topic) topics.add(topic); }
-for (const topic of [...Object.values(bindings.CANDIDATE_01_STRUCTURE_ART), 'C01-BPROP-AFTERMATH-2', 'C01-BPROP-AFTERMATH-3', 'C01-BPROP-EVIDENCE-1']) if (topic !== undefined) topics.add(topic);
+for (const topic of [...Object.values(bindings.CANDIDATE_01_STRUCTURE_ART), 'C01-BPROP-COVER-1', 'C01-BPROP-COVER-2', 'C01-BPROP-AFTERMATH-2', 'C01-BPROP-AFTERMATH-3', 'C01-BPROP-EVIDENCE-1']) if (topic !== undefined) topics.add(topic);
 for (const topic of [...Object.values(bindings.CANDIDATE_01_WEAPON_FX), healFx]) if (topic !== undefined) topics.add(topic);
 const assets = manifest.assets.filter((record: { topicId: string }) => topics.has(record.topicId)).map((record: { topicId: string; png: string; width: number; height: number }) => {
   const physical = hd.assets.find((entry: { topicId: string }) => entry.topicId === record.topicId);
