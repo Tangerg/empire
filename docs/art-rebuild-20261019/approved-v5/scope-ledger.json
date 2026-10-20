@@ -16,7 +16,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 345,
+    "rawPreservedTopics": 346,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -347,7 +347,7 @@
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-redstone.png",
       "stageEvidence": {
         "raw": "Opaque complete architecture backdrop; Round stone oath tower with amber crystal, pale radial flags and cliff ascent retained; immutable original and prompt evidence preserved",
-        "export": "Explicit4/2/4/3px edgecrop; independent256x144 and512x288; native HD and viewport covers reviewed",
+        "export": "Canonical256x144 unchanged; reviewed source-native1664x936 crop copied without resampling into formal fullscreen path, per-entry density6.5; whole source immutable. Offline crop/consumer tests; live pending.",
         "runtimeBinding": "Canonical and HD narrative resolver; actual chapter backdrop consumer",
         "liveGame": "pending"
       }
@@ -368,7 +368,7 @@
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-silverwood.png",
       "stageEvidence": {
         "raw": "Opaque suspended living tree-city scene; original source identity retained. V1 dense bright leaf repetition rejected, selected v2 groups broad muted canopy planes; both native versions preserved",
-        "export": "Explicit4/2/4/3px edgecrop, independent256x144 and512x288; actual512 and mobilecover reviewed",
+        "export": "Canonical256x144 unchanged; reviewed source-native1664x936 crop copied without resampling into formal fullscreen path, per-entry density6.5; whole source immutable. Offline crop/consumer tests; live pending.",
         "runtimeBinding": "Canonical and HD narrative resolver, chapter3 staging/choices/results and actual Silverwood story consumers",
         "liveGame": "pending"
       }
@@ -389,7 +389,7 @@
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-three-bridges.png",
       "stageEvidence": {
         "raw": "Opaque complete architecture backdrop; Two stone bridges and one timber crossing, divided river, farms and repair-cloth identity retained; immutable original and prompt evidence preserved",
-        "export": "Explicit4/2/4/3px edgecrop; independent256x144 and512x288; native HD and viewport covers reviewed",
+        "export": "Canonical256x144 unchanged; reviewed source-native1664x936 crop copied without resampling into formal fullscreen path, per-entry density6.5; whole source immutable. Offline crop/consumer tests; live pending.",
         "runtimeBinding": "Canonical and HD narrative resolver; actual chapter backdrop consumer",
         "liveGame": "pending"
       }
@@ -452,7 +452,7 @@
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s01.png",
       "stageEvidence": {
         "raw": "Opaque complete scene with source-matched early Lorne standard and approved Laiya identity; native/request evidence retained",
-        "export": "Explicit4/2/4/3px edgecrop, independent256x144 and512x288; actual HD and viewport covers reviewed",
+        "export": "Canonical256x144 unchanged; reviewed source-native1664x936 crop copied without resampling into formal fullscreen path, per-entry density6.5; whole source immutable. Offline crop/consumer tests; live pending.",
         "runtimeBinding": "Canonical+HD narrative resolver for prologue, first brief/aftermath and staging hero",
         "liveGame": "pending"
       }
@@ -473,7 +473,7 @@
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s02.png",
       "stageEvidence": {
         "raw": "Opaque complete bridge-ceasefire scene reconstructed from actual story.ts92–104; exactly3 central civilians and approved Laiya/Cain. Wrong original amber-pylon plate preserved, not asserted faithful story setting",
-        "export": "Explicit4/2/4/3px edgecrop; independent256x144/512x288; actualnative reviewed. Mobile retains civilians/officerfaces but clips peripheral braid/cape edges; landscape complete",
+        "export": "Canonical256x144 unchanged; reviewed source-native1664x936 crop copied without resampling into formal fullscreen path, per-entry density6.5; whole source immutable. Offline crop/consumer tests; live pending.",
         "runtimeBinding": "Canonical and HD story resolver for level02 briefing/aftermath/staging; story text and gameplay unchanged",
         "liveGame": "pending"
       }
@@ -494,7 +494,7 @@
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s05.png",
       "stageEvidence": {
         "raw": "Opaque scenev2 selected, complete native master and rejectedv1 provenance retained",
-        "export": "Explicit8x5total edge crop; native256x144+HD512x288 independently sampled; actual exports and six viewport cover checks passed",
+        "export": "Canonical256x144 unchanged; reviewed source-native1664x936 crop copied without resampling into formal fullscreen path, per-entry density6.5; whole source immutable. Offline crop/consumer tests; live pending.",
         "runtimeBinding": "Formal canonical+HD manifests and existing menu/story/staging/experience resolver;266focused tests and typecheck passed",
         "liveGame": "pending"
       }
@@ -2581,8 +2581,13 @@
       "category": "mission-unit",
       "label": "被押证人",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

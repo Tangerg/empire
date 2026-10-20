@@ -1,0 +1,100 @@
+{
+  "write": true,
+  "manifest": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json",
+  "schemaVersion": "candidate-01-runtime-hd-v2",
+  "removedGlobalDensity": true,
+  "scenes": [
+    {
+      "topicId": "C01-CH01-S05",
+      "png": "runtime-hd/narrative-static/ch01-s05.png",
+      "before": [
+        512,
+        288,
+        2
+      ],
+      "after": [
+        1664,
+        936,
+        6.5
+      ],
+      "sourceSha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3"
+    },
+    {
+      "topicId": "C01-CH01-S01",
+      "png": "runtime-hd/narrative-static/ch01-s01.png",
+      "before": [
+        512,
+        288,
+        2
+      ],
+      "after": [
+        1664,
+        936,
+        6.5
+      ],
+      "sourceSha256": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722"
+    },
+    {
+      "topicId": "C01-CH01-S02",
+      "png": "runtime-hd/narrative-static/ch01-s02.png",
+      "before": [
+        512,
+        288,
+        2
+      ],
+      "after": [
+        1664,
+        936,
+        6.5
+      ],
+      "sourceSha256": "38ff98456bea1116ebcc1a20afeba0d0e35f0a3f723725e7cd18af554bfa7b01"
+    },
+    {
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "png": "runtime-hd/narrative-static/arch-three-bridges.png",
+      "before": [
+        512,
+        288,
+        2
+      ],
+      "after": [
+        1664,
+        936,
+        6.5
+      ],
+      "sourceSha256": "8f9fc6d169f66c0932023fdf7dd8ca2f99f2e01b0e0695f64389d8dd0e1fa237"
+    },
+    {
+      "topicId": "C01-ARCH-REDSTONE",
+      "png": "runtime-hd/narrative-static/arch-redstone.png",
+      "before": [
+        512,
+        288,
+        2
+      ],
+      "after": [
+        1664,
+        936,
+        6.5
+      ],
+      "sourceSha256": "e59d492c2b93f6b70fbe47d9c36ad39d31cab60d62968c4f11e220dd8b2f3642"
+    },
+    {
+      "topicId": "C01-ARCH-SILVERWOOD",
+      "png": "runtime-hd/narrative-static/arch-silverwood.png",
+      "before": [
+        512,
+        288,
+        2
+      ],
+      "after": [
+        1664,
+        936,
+        6.5
+      ],
+      "sourceSha256": "96ce33ae7c6b84471842d459b169a2d69cae0f1a230c790f22252d3c7b04dddf"
+    }
+  ],
+  "otherEntryCountUnchanged": 177,
+  "next": "Export the six registered scenes, verify unchanged canonical/source hashes, then run integration checks"
+}
