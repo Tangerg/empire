@@ -3,12 +3,20 @@ using System.Text.Json.Nodes;
 using Empire.Core.Engine;
 using Empire.Core.Determinism;
 using Empire.Core.Tactics;
+using Empire.Core.Progression;
+using Empire.Core.Combat;
 
 var fixture = Path.GetFullPath(args.Length == 0 ? "/tmp/empire-progression-oracle.json" : args[0]);
 var input = JsonNode.Parse(File.ReadAllText(fixture))!.AsObject();
 var diagnostics = Path.GetDirectoryName(fixture)!;
 var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-var engines = input["catalogs"]!.AsArray().Select(packs => new GrayFlagEngine(packs!.AsArray())).ToArray();
+var catalogs = input["catalogs"]!.AsArray();
+// Catalog 2 deliberately bypasses the original installer to characterize raw
+// career/formation helpers on cyclic and missing references. Production engine
+// composition correctly rejects it; keep this test at the same raw boundary.
+var engines = catalogs.Select((packs, index) => index == 2 ? null : new GrayFlagEngine(packs!.AsArray())).ToArray();
+var rawProgression = new BattleProgression(catalogs[2]!.AsArray(), engines[0]!.Grids,
+    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(catalogs[2]!.AsArray()));
 var count = 0;
 var kinds = new Dictionary<string, int>();
 foreach (var entry in input["cases"]!.AsArray())
@@ -16,8 +24,9 @@ foreach (var entry in input["cases"]!.AsArray())
     var item = entry!.AsObject();
     var name = item["name"]!.GetValue<string>();
     var kind = item["operation"]!.GetValue<string>();
-    var engine = engines[item["catalog"]!.GetValue<int>()];
-    var progression = engine.Progression;
+    var catalog = item["catalog"]!.GetValue<int>();
+    var engine = engines[catalog] ?? engines[0]!;
+    var progression = catalog == 2 ? rawProgression : engine.Progression;
     var parameters = item["params"]!.AsObject();
     var state = item["before"]!.DeepClone().AsObject();
     var unit = state["units"]![0]!.AsObject();

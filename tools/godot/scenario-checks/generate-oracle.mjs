@@ -7,6 +7,8 @@ import { applyScenarioEffect, conditionMet } from '../../../packages/battle-engi
 import { compositeStatus } from '../../../packages/battle-engine/src/composites';
 import { hashState } from '../../../packages/battle-engine/src/replay';
 import { objectiveOutcome, evaluateVictory } from '../../../packages/battle-engine/src/victory';
+import { appendScenarioCases } from './extra-cases.mjs';
+import { advanceTerrainOverlayRound } from '../../../packages/battle-engine/src/overlays';
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const output = process.env.EMPIRE_SCENARIO_ORACLE_OUTPUT;
@@ -29,21 +31,24 @@ function base() {
   state.scenario.overlays = []; state.scenario.engagementRules = [];
   return state;
 }
-function run(name, input, effects = [], condition = null, composite = null, objective = null, victory = false) {
+function run(name, input, effects = [], condition = null, composite = null, objective = null, victory = false, overlayRounds = 0) {
   const state = clone(input), initial = clone(input), events = [], hashes = [];
   const emit = event => { events.push(event); hashes.push(hashState(state)); };
   let result = null, error = null;
   try {
     for (const effect of effects) applyScenarioEffect(rules, state, effect, emit);
-    if (condition) result = conditionMet(rules, state, condition);
+    for (let round = 0; round < overlayRounds; round++) advanceTerrainOverlayRound(state, emit);
+    if (condition) result = Array.isArray(condition) ? condition.map(value => conditionMet(rules, state, value)) : conditionMet(rules, state, condition);
     if (composite) result = compositeStatus(state, composite);
     if (objective) result = { outcome: objectiveOutcome(rules, state, 1, objective), description: rules.objectives.describe(objective) };
     if (victory) result = evaluateVictory(rules, state, emit);
   } catch (caught) {
-    if (!['DomainInvariantError', 'IllegalActionError'].includes(caught.name)) throw caught;
+    if (!['DomainInvariantError', 'IllegalActionError', 'RangeError'].includes(caught.name)) throw caught;
     error = { kind: caught.name.replace('Error', ''), message: caught.message };
   }
-  cases.push({ name, initial, effects, condition, composite, objective, victory, result, error, events, hashes, after: state });
+  const entry = { name, initial, effects, condition, composite, objective, victory, overlayRounds, result, error, events, hashes, after: state };
+  cases.push(entry);
+  return entry;
 }
 for (const level of levels) {
   const state = createState(rules, level);
@@ -155,5 +160,6 @@ for (const type of ['optional', 'failOn', 'all', 'any', 'sequence']) {
   run('composite custom label wins', state, [], null, null, objective);
   run('composite custom label victory reason', state, [], null, null, null, true);
 }
-writeFileSync(output, JSON.stringify({ packs, cases }));
+const integrationCases = appendScenarioCases({ base, clone, run, rules, original });
+writeFileSync(output, JSON.stringify({ packs, cases, integrationCases, effectKinds: rules.scenarioEffects.keys().sort(), conditionKinds: rules.scenarioConditions.keys().sort() }));
 console.log(`Wrote ${cases.length} live TypeScript scenario cases across ${levels.length} authored levels`);

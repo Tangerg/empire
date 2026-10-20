@@ -51,9 +51,26 @@ resources. The TypeScript exporter is a development-only oracle/data tool.
 
 All 12 original action kinds have native handlers. Focused differential suites for deployment (2,519 checks), career/formation progression (175), recruitment (25), and transport (81 direct cases plus 24 dispatch steps and save/resume guards) are reproducible with the corresponding `tools/godot/*-checks/run.sh` scripts. This does not establish complete extension-registry parity.
 
+All 34 default scenario effects and 16 conditions are implemented, with 466 direct
+source comparisons and 29 JSON-save/resume engine steps. Canonical `EcmaJson`
+preserves valid JavaScript lone-surrogate strings and keys; 2,100 source vectors
+verify the boundary. Catalog/level/deferred-reference checks reject unsupported
+capabilities before gameplay. See `tools/godot/scenario-checks` and
+`tools/godot/utf16-boundary-checks` for reproducible commands and limitations.
+
 ## Scope and remaining migration work
 
 This is a playable-level integration checkpoint, not the finished migration.
 The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, action animation/effects, sound, richer scenario feedback, lighting/shadows, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
 See `docs/RECOVERY.md` for evidence and `docs/COMPATIBILITY.md` for explicit
 malformed-input hardening differences. Original source and art are preserved.
+
+## Reproducible verification
+
+From the repository root in the configured local toolchain environment, run
+`bash tools/godot/verify-native.sh` for compilation, core/application/persistence
+checks and native scene contracts. Add `--full` for source-oracle comparisons,
+all 16 independent battles and two real campaign choice routes. The full route
+tests preserve natural AI losses; they do not manufacture victories. Original
+TypeScript and installed development dependencies are needed only for those oracle
+tools, never for the running game. These checks do not alter the user's save.

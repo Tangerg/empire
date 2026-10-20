@@ -41,3 +41,29 @@ owned cells and cover adjacency. The native integer grid rejects fractional visi
 radii explicitly; original content admission does not enforce this and its grid
 loops can produce fractional coordinates. Exported GrayFlag definitions use integer
 vision. This is input hardening, not exact behavior for arbitrary numeric radii.
+
+## Definition and deferred payload admission
+
+Engine composition validates the complete supplied catalog, not only definitions
+already used by living units. The original content invariants and default-rule
+references therefore cover future recruitment, unused weapons, and unlearned
+career mastery abilities before a battle starts. Authored levels pass the
+source-compatible structural/reference checks before state construction.
+Capability IDs come from the actual composed rule owners via `BattleSaveFeatures`,
+not a GrayFlag content whitelist or a plugin name.
+
+Native admission additionally refuses unregistered resource adapters and tactic
+effect kinds, condition kinds nested in `failOn` objectives, and unsupported
+ability/reaction/directive/resource overrides in future spawn declarations. These
+are explicit fail-closed unsupported-extension guards: the source admission code
+does not catch every one of these declarations before its handlers encounter it.
+`BattleLevelValidator.Issues` preserves the source error-level checks; the extra
+execution-capability guard is a separate composition step. Source linter warnings
+and arbitrary plugin-defined payload validation are not claimed.
+
+Saved scenario payloads also validate their declared catalog, zone, objective,
+map-cell/edge, directive, resource, and composite references. They do not pre-run
+selectors or future occupancy/placement legality. Neutral selector owners and
+currently absent selected IDs remain valid; missing former structures remain
+valid for damage/destroy checks where source behavior is a no-op or successful
+absence. Save/load rejection remains atomic and does not mutate the supplied JSON.

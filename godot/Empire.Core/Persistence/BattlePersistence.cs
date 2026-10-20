@@ -100,7 +100,7 @@ public sealed partial class BattlePersistence
         var header = RequireHeader(save);
         var state = State(save);
         foreach (var key in new[] { "levelId", "levelName", "turn", "phase" })
-            if (!JsonNode.DeepEquals(header[key], state[key])) StoredSchema.Reject("战斗摘要与战斗状态不一致");
+            if (!Empire.Core.Determinism.EcmaJson.DeepEquals(header[key], state[key])) StoredSchema.Reject("战斗摘要与战斗状态不一致");
     }
 
     private void CheckMap(JsonObject save)

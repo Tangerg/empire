@@ -116,7 +116,7 @@ public partial class GrayFlagGame : Node
         try
         {
             var path = ProjectSettings.GlobalizePath(SavePath);
-            System.IO.File.WriteAllText(path + ".tmp", campaign.Save().ToJsonString());
+            System.IO.File.WriteAllText(path + ".tmp", Empire.Core.Determinism.EcmaJson.Stringify(campaign.Save()));
             System.IO.File.Move(path + ".tmp", path, true);
             Notify("战役和战斗进度已保存。F9 可读取。");
         }
@@ -127,7 +127,7 @@ public partial class GrayFlagGame : Node
     {
         try
         {
-            campaign.Load(JsonNode.Parse(System.IO.File.ReadAllText(ProjectSettings.GlobalizePath(SavePath)))!.AsObject());
+            campaign.Load(Empire.Core.Determinism.EcmaJson.Parse(System.IO.File.ReadAllText(ProjectSettings.GlobalizePath(SavePath)))!.AsObject());
         }
         catch (Exception error) { Notify("读取失败，当前进度未变：" + error.Message); return; }
         try { ShowNode(); Notify("已读取存档。"); }

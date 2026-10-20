@@ -16,7 +16,7 @@ public sealed class GrayFlagCampaign
 
     public GrayFlagCampaign(JsonObject definition, JsonArray levels, JsonArray packs, GrayFlagEngine engine)
     {
-        this.definition = (JsonObject)definition.DeepClone();
+        this.definition = Empire.Core.Determinism.EcmaJson.Normalize(definition)!.AsObject();
         this.engine = engine;
         var catalog = levels.OfType<JsonObject>().ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
         bridge = new CampaignBattleBridge(id => catalog.TryGetValue(id, out var level) ? (JsonObject)level.DeepClone()
@@ -63,6 +63,7 @@ public sealed class GrayFlagCampaign
 
     public void Load(JsonObject document)
     {
+        document = Empire.Core.Determinism.EcmaJson.Normalize(document)!.AsObject();
         if (document["schema"]?.GetValue<int>() != 1) throw new InvalidOperationException("Unsupported application save schema.");
         var state = CampaignSave.Load(document["campaign"], definition)["state"]!.AsObject();
         var restored = new CampaignRuntime(definition, state);

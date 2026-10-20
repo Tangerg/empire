@@ -10,7 +10,7 @@ public sealed class Battle
     private bool _dispatching;
     public Battle(JsonObject initialState, BattleActionRegistry registry)
     {
-        _state = (JsonObject)initialState.DeepClone();
+        _state = EcmaJson.Normalize(initialState)!.AsObject();
         _handlers = registry.Freeze();
     }
     public JsonObject Snapshot() => (JsonObject)_state.DeepClone();
@@ -18,6 +18,7 @@ public sealed class Battle
     public BattleReceipt Dispatch(JsonObject action)
     {
         if (_dispatching) throw new DomainInvariantException("Battle dispatch cannot be reentrant");
+        action = EcmaJson.Normalize(action)!.AsObject();
         var kind = action["kind"]?.GetValue<string>() ?? throw new DomainInvariantException("Action requires a kind");
         if (!_handlers.TryGetValue(kind, out var handler)) throw new IllegalActionException($"没有处理行动类型「{kind}」的规则策略");
         var before = Snapshot();

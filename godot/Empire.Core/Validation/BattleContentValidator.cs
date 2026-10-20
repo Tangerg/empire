@@ -1,0 +1,179 @@
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using Empire.Core.Persistence;
+using Empire.Core.State;
+using static Empire.Core.State.StateJson;
+
+namespace Empire.Core.Validation;
+
+/// <summary>Source catalog installation invariants, followed by actual runtime capability checks.</summary>
+public sealed class BattleContentValidator
+{
+    private readonly JsonArray packs;
+    private readonly StateContent content;
+    private readonly BattleSaveFeatures features;
+    public BattleContentValidator(JsonArray packs, BattleSaveFeatures features)
+    {
+        this.packs = (JsonArray)packs.DeepClone();
+        content = new StateContent(this.packs);
+        this.features = features.Snapshot();
+    }
+    private static double N(JsonNode? raw) => raw is not null && raw.GetValueKind() == JsonValueKind.Number &&
+        double.TryParse(raw.ToJsonString(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var value)
+            ? value : double.NaN;
+    private static bool Whole(double value) => double.IsFinite(value) && value == Math.Truncate(value);
+    private void RequireId(string family, string id, string owner)
+    {
+        if (content.TryGet(family, id) is null) throw new DomainInvariantException($"{owner} references missing content id \"{id}\"");
+    }
+    private static void Accounts(JsonNode? raw, string owner)
+    {
+        foreach (var (id, node) in Object(raw, "resource accounts"))
+        {
+            if (RulePayloadReferences.Blank(id)) throw new DomainInvariantException($"{owner} has an empty resource id");
+            var account = Object(node, "resource account"); var current = N(account["current"]);
+            if (!double.IsFinite(current) || current < 0)
+                throw new DomainInvariantException($"{owner} resource \"{id}\" current must be finite and non-negative");
+            if (!account.ContainsKey("capacity") || account["capacity"] is { } capacity && (!double.IsFinite(N(capacity)) || N(capacity) < current))
+                throw new DomainInvariantException($"{owner} resource \"{id}\" capacity must be null or at least current");
+        }
+    }
+    private static void Amounts(JsonNode? raw, string owner)
+    {
+        foreach (var amount in Objects(raw, "resource amounts"))
+        {
+            var id = Text(amount, "resource");
+            if (RulePayloadReferences.Blank(id)) throw new DomainInvariantException($"{owner} has an empty resource id");
+            if (!double.IsFinite(N(amount["amount"])) || N(amount["amount"]) <= 0)
+                throw new DomainInvariantException($"{owner} resource \"{id}\" amount must be finite and positive");
+        }
+    }
+    public void Validate()
+    {
+        // StateContent has already checked pack identity/dependencies, duplicate
+        // definitions and terrain encoding. The remaining checks keep source order.
+        var matchups = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var pack in Objects(packs, "packs")) foreach (var matchup in Objects(pack["damageMatchups"], "damage matchups"))
+        {
+            var damage = Text(matchup, "damageType"); var armor = Text(matchup, "armorClass");
+            if (!double.IsFinite(N(matchup["multiplier"])) || N(matchup["multiplier"]) <= 0)
+                throw new DomainInvariantException($"damage matchup \"{damage}\" -> \"{armor}\" must be > 0");
+            if (!matchups.Add(damage + "\0" + armor))
+                throw new DomainInvariantException($"damage matchup already registered: \"{damage}\" -> \"{armor}\"");
+        }
+        foreach (var unit in content.All("units"))
+        {
+            var owner = $"unit \"{Text(unit, "id")}\"";
+            if (!double.IsFinite(N(unit["value"])) || N(unit["value"]) < 0)
+                throw new DomainInvariantException($"{owner} value must be finite and non-negative");
+            Accounts(unit["resources"], owner); Amounts(unit["recruitCosts"], owner + " recruit cost");
+            if (unit["morale"] is JsonObject morale && (!double.IsFinite(N(morale["maximum"])) || N(morale["maximum"]) < 1 ||
+                !double.IsFinite(N(morale["resilience"])) || N(morale["resilience"]) < 0 || N(morale["resilience"]) > 0.9))
+                throw new DomainInvariantException($"{owner} has an invalid morale profile");
+            if (unit["transport"] is JsonObject transport && (!Whole(N(transport["capacity"])) || N(transport["capacity"]) < 1))
+                throw new DomainInvariantException($"{owner} transport capacity must be a positive integer");
+            RequireId("movementProfiles", Text(unit, "movementClass"), owner);
+            RequireId("armorClasses", Text(unit, "armorClass"), owner);
+            var weapons = Array(unit["weapons"], "weapons");
+            if (weapons.Count == 0) throw new DomainInvariantException($"{owner} must define at least one weapon");
+            foreach (var weapon in weapons) RequireId("weapons", Text(weapon, "weapon"), owner);
+            foreach (var formation in unit["formations"] as JsonArray ?? new JsonArray()) RequireId("formations", Text(formation, "formation"), owner);
+        }
+        foreach (var weapon in content.All("weapons"))
+        {
+            var owner = $"weapon \"{Text(weapon, "id")}\"";
+            Accounts(weapon["resources"], owner); Amounts(weapon["resourceRequirements"], owner + " requirement"); Amounts(weapon["resourceCosts"], owner + " cost");
+            RequireId("damageTypes", Text(weapon, "damageType"), owner);
+            foreach (var effect in Objects(weapon["hitEffects"], "hit effects"))
+            {
+                var kind = Text(effect, "type");
+                if (kind is "addStatus" or "removeStatus") RequireId("statuses", Text(effect, "status"), owner);
+                else if (kind == "forcedMove" && (!Whole(N(effect["distance"])) || N(effect["distance"]) < 0 ||
+                    effect.ContainsKey("collisionDamage") && (!double.IsFinite(N(effect["collisionDamage"])) || N(effect["collisionDamage"]) < 0)))
+                    throw new DomainInvariantException($"{owner} has an invalid forced-movement effect");
+            }
+        }
+        foreach (var terrain in content.All("terrains"))
+        {
+            var owner = $"terrain \"{Text(terrain, "id")}\"";
+            Amounts(terrain["ownerTurnGrants"], owner + " grant");
+            foreach (var unit in Array(terrain["produces"], "produces")) RequireId("units", Text(unit, "unit"), owner);
+        }
+        foreach (var career in content.All("careers"))
+        {
+            var owner = $"career \"{Text(career, "id")}\""; Amounts(career["costs"], owner + " cost");
+            if (!Whole(N(career["tier"])) || N(career["tier"]) < 0) throw new DomainInvariantException($"{owner} tier must be a non-negative integer");
+            if (!double.IsFinite(N(career["minimumMastery"])) || N(career["minimumMastery"]) < 0 ||
+                !double.IsFinite(N(career["masteryThreshold"])) || N(career["masteryThreshold"]) < 1)
+                throw new DomainInvariantException($"{owner} mastery values are invalid");
+            RequireId("units", Text(career, "unitType"), owner);
+            foreach (var from in Array(career["from"], "from")) RequireId("careers", Text(from, "career"), owner);
+            foreach (var ability in Array(career["masteryAbilities"], "masteryAbilities"))
+                if (RulePayloadReferences.Blank(Text(ability, "ability"))) throw new DomainInvariantException($"{owner} has an empty mastery ability id");
+        }
+        var visiting = new HashSet<string>(StringComparer.Ordinal); var visited = new HashSet<string>(StringComparer.Ordinal);
+        void Visit(JsonObject career)
+        {
+            var id = Text(career, "id"); if (visited.Contains(id)) return;
+            if (!visiting.Add(id)) throw new DomainInvariantException($"cyclic career dependency involving \"{id}\"");
+            foreach (var predecessor in Array(career["from"], "from")) Visit(content.Get("careers", Text(predecessor, "career")));
+            visiting.Remove(id); visited.Add(id);
+        }
+        foreach (var career in content.All("careers")) Visit(career);
+        foreach (var formation in content.All("formations"))
+            if (!double.IsFinite(N(formation["attackMultiplier"])) || N(formation["attackMultiplier"]) <= 0 ||
+                !double.IsFinite(N(formation["defenseDelta"])) || !Whole(N(formation["movementDelta"])) ||
+                !Whole(N(formation["minimumAdjacentAllies"])) || N(formation["minimumAdjacentAllies"]) < 0)
+                throw new DomainInvariantException($"formation \"{Text(formation, "id")}\" has invalid modifiers");
+        foreach (var tactic in content.All("tactics"))
+        {
+            var owner = $"tactic \"{Text(tactic, "id")}\""; Amounts(tactic["costs"], owner + " cost");
+            foreach (var effect in Objects(tactic["effects"], "effects")) RequireId("statuses", Text(effect, "status"), owner);
+        }
+        foreach (var overlay in content.All("terrainOverlays"))
+            if (overlay["turnStartStatus"] is JsonObject status)
+                RequireId("statuses", Text(status, "id"), $"terrain overlay \"{Text(overlay, "id")}\"");
+        foreach (var pack in Objects(packs, "packs"))
+        {
+            var units = Objects(pack["units"], "units").ToArray();
+            var damageTypes = Objects(pack["weapons"], "weapons").Select(weapon => Text(weapon, "damageType"))
+                .Concat(units.SelectMany(unit => Array(unit["weapons"], "weapons").Select(id => Text(content.Get("weapons", Text(id, "weapon")), "damageType")))).Distinct(StringComparer.Ordinal);
+            var armors = units.Select(unit => Text(unit, "armorClass")).Distinct(StringComparer.Ordinal).ToArray();
+            foreach (var damage in damageTypes) foreach (var armor in armors)
+                if (!matchups.Contains(damage + "\0" + armor)) throw new DomainInvariantException($"missing damage matchup: \"{damage}\" -> \"{armor}\"");
+        }
+        var issues = CapabilityIssues();
+        if (issues.Count > 0) throw new DomainInvariantException("invalid battle engine configuration:\n" + string.Join("\n", issues.Select(issue => "- " + issue)));
+    }
+
+    public IReadOnlyList<string> CapabilityIssues()
+    {
+        var issues = new List<string>();
+        void Reference(string family, string subject, string id, string owner)
+        { if (!features.Has(family, id)) issues.Add($"{owner} 引用了未注册的{subject}「{id}」"); }
+        foreach (var unit in content.All("units")) foreach (var ability in Array(unit["abilities"], "abilities"))
+            Reference("abilities", "能力", Text(ability, "ability"), $"兵种 {Text(unit, "id")}");
+        foreach (var career in content.All("careers")) foreach (var ability in Array(career["masteryAbilities"], "masteryAbilities"))
+            Reference("abilities", "能力", Text(ability, "ability"), $"职业 {Text(career, "id")}");
+        foreach (var weapon in content.All("weapons")) foreach (var effect in Objects(weapon["hitEffects"], "hit effects"))
+            Reference("hitEffects", "命中效果", Text(effect, "type"), $"武器 {Text(weapon, "id")}");
+        foreach (var weapon in content.All("weapons")) Reference("areaShapes", "爆炸形状", Text(weapon, "area"), $"武器 {Text(weapon, "id")}");
+        foreach (var unit in content.All("units")) Reference("reactions", "反应姿态", Text(unit, "defaultReaction"), $"兵种 {Text(unit, "id")}");
+        // Additional native admission guards: resource/tactic adapters cannot be
+        // inferred from a pack manifest or from currently materialized units.
+        void ResourceAccounts(JsonNode? raw, string owner)
+        { foreach (var account in Object(raw, "accounts")) Reference("resources", "资源", account.Key, owner); }
+        void Transactions(JsonNode? raw, string owner)
+        { foreach (var amount in Objects(raw, "transactions")) Reference("resources", "资源", Text(amount, "resource"), owner); }
+        foreach (var unit in content.All("units")) { var owner = $"兵种 {Text(unit, "id")}"; ResourceAccounts(unit["resources"], owner); Transactions(unit["recruitCosts"], owner); }
+        foreach (var weapon in content.All("weapons")) { var owner = $"武器 {Text(weapon, "id")}"; ResourceAccounts(weapon["resources"], owner); Transactions(weapon["resourceCosts"], owner); Transactions(weapon["resourceRequirements"], owner); }
+        foreach (var terrain in content.All("terrains")) Transactions(terrain["ownerTurnGrants"], $"地形 {Text(terrain, "id")}");
+        foreach (var career in content.All("careers")) Transactions(career["costs"], $"职业 {Text(career, "id")}");
+        foreach (var tactic in content.All("tactics"))
+        {
+            var owner = $"战术 {Text(tactic, "id")}"; Transactions(tactic["costs"], owner);
+            foreach (var effect in Objects(tactic["effects"], "effects")) Reference("tacticEffects", "战术效果", Text(effect, "type"), owner);
+        }
+        return issues.Distinct(StringComparer.Ordinal).ToArray();
+    }
+}

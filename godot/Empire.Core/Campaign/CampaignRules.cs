@@ -53,8 +53,8 @@ public sealed class CampaignConditionRegistry : CampaignRegistry<CampaignConditi
     internal static bool Contains(JsonNode? array, string value) => Array(array, "values").Any(item => Text(item, "value") == value);
     private static bool Compare(JsonNode? left, string operation, JsonNode? right)
     {
-        if (operation == "eq") return JsonNode.DeepEquals(left, right);
-        if (operation == "neq") return !JsonNode.DeepEquals(left, right);
+        if (operation == "eq") return Empire.Core.Determinism.EcmaJson.DeepEquals(left, right);
+        if (operation == "neq") return !Empire.Core.Determinism.EcmaJson.DeepEquals(left, right);
         if (left?.GetValueKind() != System.Text.Json.JsonValueKind.Number || right?.GetValueKind() != System.Text.Json.JsonValueKind.Number) return false;
         return operation == "gte" ? Number(left, "left") >= Number(right, "right") : Number(left, "left") <= Number(right, "right");
     }

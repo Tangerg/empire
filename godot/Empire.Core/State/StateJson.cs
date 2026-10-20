@@ -22,8 +22,8 @@ internal static class StateJson
 
     internal static string Text(JsonNode? value, string subject)
     {
-        if (value is JsonValue scalar && scalar.TryGetValue<string>(out var result))
-            return result;
+        if (value is JsonValue scalar && scalar.GetValueKind() == System.Text.Json.JsonValueKind.String)
+            return Empire.Core.Determinism.EcmaJson.ReadString(scalar);
         throw new DomainInvariantException($"{subject} must be a string");
     }
 

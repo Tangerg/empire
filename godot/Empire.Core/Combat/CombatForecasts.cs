@@ -42,10 +42,15 @@ public sealed class CombatForecasts
         foreach (var pack in StateJson.Objects(packs, "packs"))
             foreach (var entry in StateJson.Objects(pack["damageMatchups"], "damageMatchups"))
             {
-                var key = (StateJson.Text(entry, "damageType"), StateJson.Text(entry, "armorClass"));
-                var multiplier = StateJson.Number(entry, "multiplier", 1);
-                if (multiplier <= 0 || !matchups.TryAdd(key, multiplier))
-                    throw new DomainInvariantException($"invalid or duplicate damage matchup {key}");
+                var key = (Damage: StateJson.Text(entry, "damageType"), Armor: StateJson.Text(entry, "armorClass"));
+                double multiplier;
+                try { multiplier = StateJson.Number(entry, "multiplier", 1); }
+                catch (DomainInvariantException)
+                { throw new DomainInvariantException($"damage matchup \"{key.Damage}\" -> \"{key.Armor}\" must be > 0"); }
+                if (multiplier <= 0)
+                    throw new DomainInvariantException($"damage matchup \"{key.Damage}\" -> \"{key.Armor}\" must be > 0");
+                if (!matchups.TryAdd(key, multiplier))
+                    throw new DomainInvariantException($"damage matchup already registered: \"{key.Damage}\" -> \"{key.Armor}\"");
             }
         foreach (var reaction in reactionDefinitions ?? DefaultReactions())
             if (!reactions.TryAdd(reaction.Id, reaction)) throw new DomainInvariantException($"duplicate reaction {reaction.Id}");

@@ -51,8 +51,8 @@ public sealed class CampaignRuntime
     public JsonObject State => Snapshot();
     public CampaignRuntime(JsonObject definition, JsonObject? state = null, CampaignRules? rules = null)
     {
-        this.definition = (JsonObject)definition.DeepClone();
-        this.state = state is null ? CampaignValidation.CreateState(definition) : (JsonObject)state.DeepClone();
+        this.definition = Empire.Core.Determinism.EcmaJson.Normalize(definition)!.AsObject();
+        this.state = state is null ? CampaignValidation.CreateState(this.definition) : Empire.Core.Determinism.EcmaJson.Normalize(state)!.AsObject();
         this.rules = (rules ?? CampaignRules.Create()).FrozenClone();
         aggregate = new CampaignAggregate(this.definition, this.state, this.rules);
     }

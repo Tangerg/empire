@@ -197,7 +197,7 @@ public static class CampaignValidation
     private static bool NumberEquals(JsonNode? value, double expected) => TryNumber(value, out var number) && number == expected;
     internal static bool Same(JsonNode? first, JsonNode? second) =>
         TryNumber(first, out var firstNumber) && TryNumber(second, out var secondNumber)
-            ? firstNumber == secondNumber : JsonNode.DeepEquals(first, second);
+            ? firstNumber == secondNumber : Empire.Core.Determinism.EcmaJson.DeepEquals(first, second);
     private static bool OneOf(JsonNode? value, params string[] choices) =>
         value is JsonValue scalar && scalar.TryGetValue<string>(out var text) && choices.Contains(text, StringComparer.Ordinal);
     private static bool TryNumber(JsonNode? value, out double number)

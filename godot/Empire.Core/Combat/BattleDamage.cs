@@ -140,8 +140,11 @@ public sealed class BattleDamage
     }
 
     public JsonObject Withdraw(JsonObject state, int unitId, bool leaveCorpse, Action<JsonObject> emit)
+        => Withdraw(state, TacticalQueries.RequireUnit(state, unitId), leaveCorpse, emit);
+
+    public JsonObject Withdraw(JsonObject state, JsonObject unit, bool leaveCorpse, Action<JsonObject> emit)
     {
-        var unit = TacticalQueries.RequireUnit(state, unitId);
+        var unitId = StateJson.Integer(unit, "id");
         var at = TacticalQueries.Position(unit);
         var marker = CreateMarker(state, unit, leaveCorpse ? "corpse" : "withdrawn", at);
         AnnounceMarker(marker, emit);
@@ -260,8 +263,10 @@ public sealed class BattleDamage
 
     private static void RemoveUnit(JsonObject state, JsonObject unit)
     {
-        ClearCaptureAt(state, TacticalQueries.Position(unit));
-        StateJson.Array(state["units"], "units").Remove(unit);
+        var standing = TacticalQueries.UnitById(state, StateJson.Integer(unit, "id"));
+        if (standing is null) return;
+        ClearCaptureAt(state, TacticalQueries.Position(standing));
+        StateJson.Array(state["units"], "units").Remove(standing);
     }
 
     private static void ClearCaptureAt(JsonObject state, Coord at)

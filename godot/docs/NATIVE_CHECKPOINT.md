@@ -21,6 +21,39 @@ The original Chinese prologue, mission briefing and choice screens rendered legi
 
 The native viewport was 1180×812. The cloud machine has no usable audio device and falls back to Godot's dummy driver; no audio playback was validated.
 
+## Complete default scenario and text boundary
+
+All 34 default scenario effect kinds and all 16 conditions are implemented through
+canonical owners. 466 live-source cases compare state, ordered events and every
+emission-time digest; 29 real-engine steps save and reload JSON text after every
+action. This includes formerly failing lone-surrogate streams, IDs, variable keys,
+values and signals. No skipped compatibility probes remain. Overlay-expiry and
+transport capture-reset deliberate defects are detected by the tests.
+
+The canonical `EcmaJson` boundary preserves JavaScript UTF-16 code units, including
+lone surrogates in strings and property keys. 2,100 live-source vectors verify
+parsing, cloning, RNG counters, save/load, immutable transfer and exact digests.
+Use its Parse/Stringify/DeepEquals APIs, not System.Text.Json's lossy defaults.
+See the UTF-16 runner README for the explicit lazy-object input boundary.
+
+Catalog and level admission now validate the actual composed capability owners.
+68 source catalog cases, 215 level behaviors, 100 persistence payload cases and
+explicit native unsupported-capability guards pass. Native fail-closed additions
+are distinguished from source-exact validation in COMPATIBILITY.md.
+
+After this integration, all 16 battles again reproduce 2,983 independent actions;
+main core 14, persistence 96, deployment 2,519 and native dynamic 100 checks pass.
+The two real campaign choice routes reproduce 376 and 414 actions and 14 save/resume
+checkpoints each, naturally ending in second-battle defeats, not invented wins.
+
+The final built-in audit additionally exercises 27 action refusal cases, 96
+resource queries and 62 resource announcements, including deliberately invalid
+zero-amount and non-finite calls. Three targeted semantic mutants are detected.
+The core checkpoint was reconstructed from the staged tree without the ongoing
+animation work: its Godot build had zero warnings/errors, core 14/application/
+persistence 96 checks passed, and native terrain 16/dynamic 100/BattleScreen
+contracts passed. This is headless validation, not renewed desktop acceptance.
+
 ## Native presentation and query expansion
 
 Source-backed water, river banks, three registered bridges, material families,
@@ -38,4 +71,4 @@ new integrated UI interaction remains unverified after this renderer expansion.
 
 ## Explicit remaining gaps
 
-Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Action animations/effects, sound, richer scenario feedback and lighting/shadows require more work. All original dispatch kinds are implemented, but full extension-registry coverage still requires an independent audit; unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.
+Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Action animations/effects, sound, richer scenario feedback and lighting/shadows require more work. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.

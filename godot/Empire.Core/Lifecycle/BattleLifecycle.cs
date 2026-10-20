@@ -182,19 +182,7 @@ public sealed class BattleLifecycle
         if (healed > 0) emit(new JsonObject { ["type"] = "regen", ["unit"] = Integer(unit, "id"), ["amount"] = healed });
     }
 
-    private void AdvanceOverlayRound()
-    {
-        var overlays = Array(Object(state["scenario"], "scenario")["overlays"], "overlays");
-        foreach (var overlay in Objects(overlays, "overlays").ToArray())
-        {
-            if (overlay["remainingRounds"] is null) continue;
-            var remaining = Number(overlay["remainingRounds"], "remainingRounds") - 1;
-            overlay["remainingRounds"] = remaining;
-            if (remaining > 0) continue;
-            overlays.Remove(overlay);
-            emit(new JsonObject { ["type"] = "overlayRemoved", ["overlay"] = Text(overlay, "id") });
-        }
-    }
+    private void AdvanceOverlayRound() => Empire.Core.Terrain.BattleOverlays.AdvanceRound(state, emit);
 
     private IEnumerable<JsonObject> OverlaysAt(JsonObject unit) => Objects(Object(state["scenario"], "scenario")["overlays"], "overlays")
         .Where(overlay => Objects(overlay["cells"], "overlay cells").Any(cell => ScenarioSystem.SameCell(cell, unit)));

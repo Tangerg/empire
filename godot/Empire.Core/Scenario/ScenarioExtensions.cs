@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
 using Empire.Core.Lifecycle;
+using Empire.Core.Resources;
 using Empire.Core.State;
 using Empire.Core.Tactics;
 using static Empire.Core.State.StateJson;
@@ -9,27 +10,35 @@ using static Empire.Core.State.StateJson;
 namespace Empire.Core.Scenario;
 
 /// <summary>Authored campaign effects, composed through the lifecycle's explicit extra-handler ports.</summary>
-public sealed class ScenarioExtensions
+public sealed partial class ScenarioExtensions
 {
     public static IReadOnlyList<string> SupportedEffects { get; } = System.Array.AsReadOnly(new[]
     {
         "setVariable", "addVariable", "changeUnitOwner", "spawnUnits", "removeEngagementRule",
         "damageStructure", "changeMorale", "setUnitDirective", "moveComposite",
+        "addStatus", "removeStatus", "withdrawUnits", "reviveMarkers", "removeMarkers", "setPlayerTeam",
+        "forceMove", "teleportUnits", "addOverlay", "removeOverlay", "activateObjective", "cancelObjective",
+        "completeObjective", "revealObjective", "changeUnitResource", "surrenderUnits", "restoreWithdrawnUnits",
+        "addEngagementRule", "replaceTerrain", "setElevation", "addElevation", "setCliffs", "setDirectionalCover", "repairStructure",
     });
     public static IReadOnlyList<string> SupportedConditions { get; } = System.Array.AsReadOnly(new[] { "composite" });
     private readonly StateContent content;
     private readonly ScenarioSystem selection;
     private readonly MovementRules movement;
     private readonly BattleCombat combat;
+    private readonly BattleResources resources;
+    private readonly Empire.Core.Terrain.BattleOverlays overlays;
     private readonly Func<JsonObject, JsonObject, bool, JsonObject> spawnUnit;
 
-    public ScenarioExtensions(JsonArray packs, MovementRules movement, BattleCombat combat,
+    public ScenarioExtensions(JsonArray packs, MovementRules movement, BattleCombat combat, BattleResources resources,
         Func<JsonObject, JsonObject, bool, JsonObject> spawnUnit)
     {
         content = new StateContent(packs);
         selection = new ScenarioSystem(packs);
         this.movement = movement;
         this.combat = combat;
+        this.resources = resources;
+        overlays = new Empire.Core.Terrain.BattleOverlays(packs);
         this.spawnUnit = spawnUnit;
     }
 
@@ -73,6 +82,53 @@ public sealed class ScenarioExtensions
                 if (removed is not null) rules.Remove(removed);
                 break;
             case "damageStructure": combat.DamageStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit); break;
+            case "repairStructure": combat.RepairStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit); break;
+            case "addStatus":
+                foreach (var unit in Select(state, effect)) combat.Effects.AddStatus(unit, Text(effect, "status"), Number(effect["duration"], "duration"), null, emit);
+                break;
+            case "removeStatus":
+                foreach (var unit in Select(state, effect)) combat.Effects.RemoveStatus(unit, Text(effect, "status"), emit);
+                break;
+            case "withdrawUnits":
+                foreach (var unit in Select(state, effect)) combat.Damage.Withdraw(state, unit, IsTrue(effect["leaveCorpse"]), emit);
+                break;
+            case "surrenderUnits":
+                foreach (var unit in Standing(state, effect)) combat.Damage.Surrender(state, Integer(unit, "id"), effect["to"] is null ? null : Integer(effect, "to"), emit);
+                break;
+            case "forceMove":
+                foreach (var unit in Standing(state, effect)) combat.ForceMove(state, Integer(unit, "id"), TacticalQueries.Position(Object(effect["source"], "source")),
+                    Text(effect, "mode"), Number(effect["distance"], "distance"), Number(effect, "collisionDamage", 0), emit);
+                break;
+            case "teleportUnits": TeleportSelected(state, effect, emit); break;
+            case "reviveMarkers": ReviveMarkers(state, effect, emit); break;
+            case "restoreWithdrawnUnits": RestoreWithdrawn(state, effect, emit); break;
+            case "removeMarkers":
+                foreach (var marker in selection.SelectMarkers(state, Object(effect["selector"], "selector")))
+                {
+                    Array(state["markers"], "markers").Remove(marker);
+                    emit(new JsonObject { ["type"] = "markerRemoved", ["marker"] = marker["id"]!.DeepClone(), ["kind"] = marker["kind"]!.DeepClone(), ["at"] = marker["at"]!.DeepClone() });
+                }
+                break;
+            case "setPlayerTeam":
+                var player = TacticalQueries.Player(state, Integer(effect, "player"));
+                var from = Integer(player, "team");
+                var team = Integer(effect, "team");
+                if (from == team) break;
+                player["team"] = team;
+                emit(new JsonObject { ["type"] = "playerTeamChanged", ["player"] = player["id"]!.DeepClone(), ["from"] = from, ["to"] = team });
+                break;
+            case "activateObjective": ChangeObjective(state, effect, "active", null, emit); break;
+            case "cancelObjective": ChangeObjective(state, effect, "cancelled", null, emit); break;
+            case "completeObjective": ChangeObjective(state, effect, "completed", null, emit); break;
+            case "revealObjective": ChangeObjective(state, effect, null, false, emit); break;
+            case "changeUnitResource":
+                foreach (var unit in Select(state, effect)) ChangeResource(unit, Text(effect, "resource"), Number(effect["amount"], "amount"), emit);
+                break;
+            case "addEngagementRule": AddEngagementRule(state, Object(effect["rule"], "rule")); break;
+            case "addOverlay": AddOverlay(state, effect, emit); break;
+            case "removeOverlay": Empire.Core.Terrain.BattleOverlays.Remove(state, Text(effect, "id"), emit); break;
+            case "replaceTerrain": case "setElevation": case "addElevation": case "setCliffs": case "setDirectionalCover":
+                ApplyMapEffect(state, effect, emit); break;
             case "changeMorale":
                 foreach (var unit in Select(state, effect))
                     if (TacticalQueries.UnitById(state, Integer(unit, "id")) is not null)
@@ -87,6 +143,12 @@ public sealed class ScenarioExtensions
 
     private IReadOnlyList<JsonObject> Select(JsonObject state, JsonObject effect) =>
         selection.SelectUnits(state, Object(effect["selector"], "selector"));
+
+    private IEnumerable<JsonObject> Standing(JsonObject state, JsonObject effect)
+    {
+        foreach (var unit in Select(state, effect))
+            if (TacticalQueries.UnitById(state, Integer(unit, "id")) is not null) yield return unit;
+    }
 
     private void Spawn(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {

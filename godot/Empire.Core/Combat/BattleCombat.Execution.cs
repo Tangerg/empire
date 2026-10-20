@@ -105,6 +105,19 @@ public sealed partial class BattleCombat
             ["at"] = TacticalQueries.CoordinateJson(TacticalQueries.Position(structure)) });
         return amount;
     }
+    public double RepairStructure(JsonObject state, string id, double requested, Action<JsonObject> emit)
+    {
+        var structure = StateJson.Objects(state["structures"], "structures").FirstOrDefault(value => StateJson.Text(value, "id") == id)
+            ?? throw new DomainInvariantException($"unknown structure \"{id}\"");
+        var definition = content.Get("structures", StateJson.Text(structure, "type"));
+        if (!StateJson.IsTrue(definition["repairable"]) || requested <= 0) return 0;
+        var hp = StateJson.Number(structure["hp"], "hp");
+        var amount = Math.Min(StateJson.Round(requested), Math.Max(0, StateJson.Number(definition["maxHp"], "maxHp") - hp));
+        structure["hp"] = hp + amount;
+        if (hp + amount > 0) structure["disabled"] = false;
+        if (amount > 0) emit(new JsonObject { ["type"] = "structureRepaired", ["structure"] = id, ["amount"] = amount, ["hpAfter"] = hp + amount });
+        return amount;
+    }
     public void ResolvePartingShots(JsonObject state, JsonObject unit, Coord from, Coord to, Action<JsonObject> emit)
     {
         if (!StateJson.IsTrue(state["rules"]!["zoneOfControl"])) return;

@@ -43,9 +43,10 @@ public sealed class CombatEffects
         return null;
     }
 
-    public void AddStatus(JsonObject unit, string id, int duration, int? sourceUnitId, Action<JsonObject>? emit)
+    public void AddStatus(JsonObject unit, string id, double duration, int? sourceUnitId, Action<JsonObject>? emit)
     {
-        if (duration < 1) throw new DomainInvariantException("status duration must be >= 1");
+        if (!double.IsFinite(duration) || duration < 1 || duration != Math.Truncate(duration))
+            throw new DomainInvariantException("status duration must be >= 1");
         var definition = content.Get("statuses", id);
         var statuses = unit["statuses"]!.AsArray();
         var carried = statuses.OfType<JsonObject>().FirstOrDefault(value => StateJson.Text(value, "id") == id);

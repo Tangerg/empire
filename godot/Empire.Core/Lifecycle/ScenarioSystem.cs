@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Empire.Core.Determinism;
 using Empire.Core.State;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Lifecycle.TurnOrderSystem;
@@ -11,7 +12,7 @@ public sealed class ScenarioSystem
 {
     public static IReadOnlyList<string> SupportedConditions { get; } = System.Array.AsReadOnly(new[]
     {
-        "turnAtLeast", "turnCycle", "currentPlayer", "variable", "unitCount", "eventCount",
+        "turnAtLeast", "turnCycle", "chance", "markerCount", "currentPlayer", "variable", "unitCount", "eventCount",
         "unitInZone", "unitHealth", "structure", "objective", "all", "any", "not",
     });
     public static IReadOnlyList<string> SupportedEffects { get; } = System.Array.AsReadOnly(new[] { "emitSignal" });
@@ -31,8 +32,29 @@ public sealed class ScenarioSystem
         (selector["owner"] is null || Integer(selector, "owner") == Integer(unit, "owner")) &&
         (selector["zone"] is null || Zone(state, Text(selector, "zone")).Any(cell => SameCell(unit, cell))) &&
         (selector["anyTags"] is not JsonArray tags || tags.Count == 0 ||
-            Array(content.Get("units", Text(unit, "type"))["tags"], "unit tags").Any(tag => tags.Any(candidate => JsonNode.DeepEquals(candidate, tag)))))
+            Array(content.Get("units", Text(unit, "type"))["tags"], "unit tags").Any(tag => tags.Any(candidate => Empire.Core.Determinism.EcmaJson.DeepEquals(candidate, tag)))))
         .ToArray();
+
+    public IReadOnlyList<JsonObject> SelectMarkers(JsonObject state, JsonObject selector) =>
+        Objects(state["markers"], "markers").Where(marker =>
+            (selector["ids"] is not JsonArray ids || ids.Any(id => Empire.Core.Determinism.EcmaJson.DeepEquals(id, marker["id"]))) &&
+            (selector["kind"] is null || Text(selector, "kind") == Text(marker, "kind")) &&
+            (selector["owner"] is null || Empire.Core.Determinism.EcmaJson.DeepEquals(selector["owner"], marker["owner"])) &&
+            (selector["zone"] is null || Zone(state, Text(selector, "zone")).Any(cell => SameCell(Object(marker["at"], "marker position"), cell))))
+        .ToArray();
+
+    private static bool Chance(JsonObject state, JsonObject condition)
+    {
+        var stored = Object(state["random"], "random");
+        var counters = Object(stored["counters"], "random counters");
+        var random = new RandomState(EcmaNumber.ToUint32(Number(stored["seed"], "seed")),
+            counters.ToDictionary(pair => pair.Key, pair => Number(pair.Value, "random counter"), StringComparer.Ordinal));
+        var stream = condition["stream"] is { } streamValue ? EcmaJson.ReadString(streamValue) : "scenario.chance";
+        var result = new SplitMixRandom().Chance(random, stream, Number(condition["percent"], "percent"));
+        // Preserve insertion order and untouched counters; the canonical RNG owns all arithmetic.
+        if (random.Counters.TryGetValue(stream, out var counter)) counters[stream] = counter;
+        return result;
+    }
 
     public bool ConditionMet(JsonObject state, JsonObject condition)
     {
@@ -45,6 +67,8 @@ public sealed class ScenarioSystem
                 var offset = Round(Number(condition, "offset", 1));
                 var turn = Number(state["turn"], "turn");
                 return every >= 1 && every == Math.Truncate(every) && turn >= offset && (turn - offset) % every == 0;
+            case "chance": return Chance(state, condition);
+            case "markerCount": return Compare(JsonValue.Create(SelectMarkers(state, Object(condition["selector"], "selector")).Count), Text(condition, "op"), condition["value"]);
             case "currentPlayer": return Integer(state, "currentPlayer") == Integer(condition, "player");
             case "variable": return Compare(Object(scenario["variables"], "variables")[Text(condition, "key")], Text(condition, "op"), condition["value"]);
             case "unitCount": return Compare(JsonValue.Create(SelectUnits(state, Object(condition["selector"], "selector")).Count), Text(condition, "op"), condition["value"]);
@@ -127,8 +151,8 @@ public sealed class ScenarioSystem
 
     internal static bool Compare(JsonNode? left, string operation, JsonNode? right) => operation switch
     {
-        "eq" => JsonNode.DeepEquals(left, right),
-        "neq" => !JsonNode.DeepEquals(left, right),
+        "eq" => Empire.Core.Determinism.EcmaJson.DeepEquals(left, right),
+        "neq" => !Empire.Core.Determinism.EcmaJson.DeepEquals(left, right),
         "gte" => left?.GetValueKind() == JsonValueKind.Number && right?.GetValueKind() == JsonValueKind.Number && Number(left, "left") >= Number(right, "right"),
         "lte" => left?.GetValueKind() == JsonValueKind.Number && right?.GetValueKind() == JsonValueKind.Number && Number(left, "left") <= Number(right, "right"),
         _ => throw new DomainInvariantException($"unknown scenario comparison \"{operation}\""),

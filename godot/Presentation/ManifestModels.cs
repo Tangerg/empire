@@ -156,7 +156,10 @@ public static class PresentationJson
         using var file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
         if (file is null)
             throw new InvalidOperationException($"Cannot read presentation document {path}: {Godot.FileAccess.GetOpenError()}");
-        return JsonSerializer.Deserialize<T>(file.GetAsText(),
+        var text = file.GetAsText();
+        if (typeof(System.Text.Json.Nodes.JsonNode).IsAssignableFrom(typeof(T)))
+            return (T)(object)(Empire.Core.Determinism.EcmaJson.Parse(text) ?? throw new InvalidOperationException($"Empty presentation document: {path}"));
+        return JsonSerializer.Deserialize<T>(text,
             new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })
             ?? throw new InvalidOperationException($"Empty presentation document: {path}");
     }

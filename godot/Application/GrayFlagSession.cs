@@ -73,7 +73,7 @@ public sealed class GrayFlagSession : IBattleSession
             var status = Empire.Core.Scenario.CompositeRules.Status(state, id);
             return $"{id}：{status.Neutralized}/{composite["parts"]!.AsArray().Count} · {status.State}";
         });
-        return new BattleSnapshot(revision, JsonSerializer.SerializeToElement(state), visible, cells, incoming, string.Join("\n", objectives));
+        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives));
     }
     public IReadOnlyList<JsonObject> ActionLog => actions.Select(action => (JsonObject)action.DeepClone()).ToArray();
 
@@ -164,7 +164,7 @@ public sealed class GrayFlagSession : IBattleSession
     {
         if (expectedRevision != revision) return new(false, "战场已变化，请重新选择命令。");
         if (IsComputerTurn) return new(false, "正在执行敌方回合。");
-        var command = JsonNode.Parse(action.GetRawText()) as JsonObject;
+        var command = Empire.Core.Determinism.EcmaJson.Parse(action.GetRawText()) as JsonObject;
         if (command is null) return new(false, "命令必须是对象。");
         try
         {
@@ -185,5 +185,5 @@ public sealed class GrayFlagSession : IBattleSession
 
     private static BattleOrderChoice Choice(string label, string role, Coord? at, JsonObject action) =>
         new(label, role, at is { } target ? new BoardCell(target.X, target.Y) : null,
-            JsonSerializer.SerializeToElement(action));
+            Empire.Core.Determinism.EcmaJson.ToElement(action));
 }
