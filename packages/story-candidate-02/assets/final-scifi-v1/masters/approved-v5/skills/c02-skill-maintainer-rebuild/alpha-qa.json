@@ -1,0 +1,52 @@
+{
+  "topicId": "c02-skill-maintainer-rebuild",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 776962,
+  "partialAlphaPixels": 791513,
+  "opaquePixels": 4041,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    61,
+    163,
+    1199,
+    1155
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    61,
+    163,
+    55,
+    99
+  ],
+  "nearOpaquePixelCountGE240": 761135,
+  "diagnostic8pxErosion": {
+    "minAlpha": 108,
+    "pixelsBelow240": 12,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48TwoPixelBorderMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 787,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only: whole authored source canvas contained with LANCZOS within 44x44 and centered on 48x48 with 2px padding; no alpha-bounds crop or generated-pixel changes. All composites are separate QA-only derivatives.",
+  "sha256": "c8a4e7585ee8924a87c6895f5c250451f6b1c1da0d4036a7747718742609f498",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only resizing and compositing.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, the two large arms, upright cyan-outlined figure and circular platform remain distinct on all three backgrounds. The narrow intentional opening between the figure’s right arm and torso contains 12 samples below alpha 240 in the supplemental 8px-eroded mask, minimum 108 at native coordinates near [714,715]. Native white inspection and retained diagnostic crops confirm these are cutout antialiasing samples, not a translucent material core. Other physical masses are near-opaque. No broad halo or clipped part is visible. The shortest source margin is 55px; final 2px border is zero alpha.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true,
+  "sourceReadyMeaning": "Ready for parent review and binding only; formal category status remains unchanged."
+}

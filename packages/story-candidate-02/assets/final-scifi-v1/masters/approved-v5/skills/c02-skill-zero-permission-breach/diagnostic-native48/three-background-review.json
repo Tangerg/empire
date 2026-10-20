@@ -1,0 +1,22 @@
+{
+  "topicId": "c02-skill-zero-permission-breach",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "twoPixelBorderMaxAlpha": 0,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, the gate silhouette, right cyan panel, broken left edge and orange crossing impact remain readable on white, black and olive. Source512 and full-native inspection show opaque broad material planes and an angular bounded burst without flame, smoke or surrounding haze. Source margins are at least 56px, below the requested target but without clipping. The 2px output border is entirely zero alpha.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}

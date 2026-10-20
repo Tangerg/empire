@@ -4,22 +4,22 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 510,
+    "formalBound": 524,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 15,
+      "fx": 17,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
       "narrative-static": 80,
-      "skill": 84,
+      "skill": 96,
       "status": 24,
       "terrain": 32
     },
-    "rawPreservedTopics": 510,
+    "rawPreservedTopics": 524,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -8494,13 +8494,23 @@
       "category": "fx",
       "label": "七塔灰光",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/graylight-crest/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/residual-rays/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/rising-fan/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/short-rays/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-16.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent semantic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps, loop=False; four equal phases, lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-17",
@@ -8508,13 +8518,23 @@
       "category": "fx",
       "label": "治疗",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-onset/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-peak/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/leaf-spiral/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/orbit-dissipation/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-17.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent semantic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Actual CANDIDATE_01_ART healFx -> FX17 HD32/64 strip,12fps nonloop, BoardView.animateHeal500ms lifetime; phase3 held250–499ms then removed. Real headless adapter/timing test preserves centred pivot,+amount independent text and battle state.",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-18",
@@ -13775,13 +13795,20 @@
       "category": "skill",
       "label": "回声隔离",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-echo-isolation/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-echo-isolation.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-emergency-heat",
@@ -13852,13 +13879,20 @@
       "category": "skill",
       "label": "五界协同",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-five-world-combo/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-five-world-combo.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-fungus-purify",
@@ -13971,13 +14005,20 @@
       "category": "skill",
       "label": "维护体重构",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-maintainer-rebuild/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-maintainer-rebuild.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-mark-evacuation",
@@ -13985,13 +14026,20 @@
       "category": "skill",
       "label": "撤离标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-mark-evacuation/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-mark-evacuation.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-medical-transfer",
@@ -14020,13 +14068,20 @@
       "category": "skill",
       "label": "记忆现实重叠",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-memory-reality-overlap/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-memory-reality-overlap.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-memory-reveal",
@@ -14034,13 +14089,20 @@
       "category": "skill",
       "label": "记忆显影",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-memory-reveal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-memory-reveal.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-physical-backup",
@@ -14048,13 +14110,20 @@
       "category": "skill",
       "label": "物理备份",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-physical-backup/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-physical-backup.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-prune-bridge",
@@ -14083,13 +14152,20 @@
       "category": "skill",
       "label": "公开货舱",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-publish-cargo/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-publish-cargo.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-quick-repair",
@@ -14181,13 +14257,20 @@
       "category": "skill",
       "label": "修复节点",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-repair-node/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-repair-node.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-reroute-water",
@@ -14258,13 +14341,20 @@
       "category": "skill",
       "label": "游骑连救",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-rider-rescue-chain/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-rider-rescue-chain.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-rotate-gravity",
@@ -14524,13 +14614,20 @@
       "category": "skill",
       "label": "星脉降权",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-vein-downgrade/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-vein-downgrade.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-zero-permission-breach",
@@ -14538,13 +14635,20 @@
       "category": "skill",
       "label": "零权限突入",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-zero-permission-breach/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-zero-permission-breach.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-ammo",

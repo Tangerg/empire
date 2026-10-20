@@ -1,0 +1,560 @@
+{
+  "topicId": "C01-FX-16",
+  "method": "Upper alpha128 components clipped at y800, detached stone components filtered by size/aspect above y1060, plus separate fixed tower ROI registration. These diagnostics never feed pixel edits or image placement.",
+  "frames": [
+    {
+      "phase": "short-rays",
+      "upperAlpha128ComponentsClippedAtY800": [
+        {
+          "bounds": [
+            477,
+            428,
+            793,
+            800
+          ],
+          "pixels": 29085,
+          "centroid": [
+            631.6795599106068,
+            653.9283823276603
+          ],
+          "meanRGB": [
+            123.90850954100051,
+            117.64280556988139,
+            107.97070654976793
+          ]
+        }
+      ],
+      "detachedStoneComponents": [],
+      "wholeSourceAlphaMass": 144683.70196078432,
+      "visibleTopYAlpha128": 428
+    },
+    {
+      "phase": "rising-fan",
+      "upperAlpha128ComponentsClippedAtY800": [
+        {
+          "bounds": [
+            523,
+            285,
+            748,
+            800
+          ],
+          "pixels": 34604,
+          "centroid": [
+            632.2450583747543,
+            579.1859033637729
+          ],
+          "meanRGB": [
+            143.2477748237198,
+            136.23907640735175,
+            122.0805976187724
+          ]
+        },
+        {
+          "bounds": [
+            708,
+            582,
+            888,
+            800
+          ],
+          "pixels": 9729,
+          "centroid": [
+            805.9141741186145,
+            689.1012437043889
+          ],
+          "meanRGB": [
+            144.98324596566965,
+            140.934834001439,
+            132.16579299002981
+          ]
+        },
+        {
+          "bounds": [
+            382,
+            584,
+            553,
+            800
+          ],
+          "pixels": 9533,
+          "centroid": [
+            458.85565928878634,
+            690.4764502255324
+          ],
+          "meanRGB": [
+            149.10311549354873,
+            144.82335046679952,
+            135.85744256792196
+          ]
+        },
+        {
+          "bounds": [
+            487,
+            634,
+            532,
+            685
+          ],
+          "pixels": 1661,
+          "centroid": [
+            510.53883202889824,
+            659.0457555689344
+          ],
+          "meanRGB": [
+            45.749548464780254,
+            43.00782661047562,
+            40.295605057194464
+          ]
+        },
+        {
+          "bounds": [
+            738,
+            643,
+            770,
+            682
+          ],
+          "pixels": 964,
+          "centroid": [
+            753.7780082987551,
+            661.7468879668049
+          ],
+          "meanRGB": [
+            37.69917012448133,
+            35.47095435684647,
+            32.982365145228215
+          ]
+        },
+        {
+          "bounds": [
+            784,
+            750,
+            850,
+            800
+          ],
+          "pixels": 1490,
+          "centroid": [
+            824.6503355704698,
+            780.0134228187919
+          ],
+          "meanRGB": [
+            113.06845637583892,
+            109.1751677852349,
+            102.71275167785235
+          ]
+        },
+        {
+          "bounds": [
+            413,
+            751,
+            478,
+            800
+          ],
+          "pixels": 1456,
+          "centroid": [
+            436.8241758241758,
+            780.6696428571429
+          ],
+          "meanRGB": [
+            115.82967032967034,
+            111.47664835164835,
+            105.05357142857143
+          ]
+        }
+      ],
+      "detachedStoneComponents": [
+        {
+          "bounds": [
+            487,
+            634,
+            532,
+            685
+          ],
+          "centroid": [
+            510.53883202889824,
+            659.0457555689344
+          ]
+        },
+        {
+          "bounds": [
+            738,
+            643,
+            770,
+            682
+          ],
+          "centroid": [
+            753.7780082987551,
+            661.7468879668049
+          ]
+        },
+        {
+          "bounds": [
+            821,
+            863,
+            881,
+            930
+          ],
+          "centroid": [
+            852.3690476190476,
+            895.6309523809524
+          ]
+        },
+        {
+          "bounds": [
+            399,
+            881,
+            460,
+            949
+          ],
+          "centroid": [
+            428.146773074254,
+            915.6821651630812
+          ]
+        },
+        {
+          "bounds": [
+            767,
+            960,
+            814,
+            1002
+          ],
+          "centroid": [
+            791.3659217877095,
+            980.5055865921788
+          ]
+        },
+        {
+          "bounds": [
+            457,
+            966,
+            489,
+            998
+          ],
+          "centroid": [
+            472.28983688833125,
+            981.3086574654956
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 183759.53725490195,
+      "visibleTopYAlpha128": 285
+    },
+    {
+      "phase": "graylight-crest",
+      "upperAlpha128ComponentsClippedAtY800": [
+        {
+          "bounds": [
+            497,
+            65,
+            764,
+            800
+          ],
+          "pixels": 62326,
+          "centroid": [
+            628.3297660687354,
+            458.6825883258993
+          ],
+          "meanRGB": [
+            142.47188974103906,
+            137.7381028784135,
+            127.02448416391233
+          ]
+        },
+        {
+          "bounds": [
+            711,
+            364,
+            1035,
+            800
+          ],
+          "pixels": 29169,
+          "centroid": [
+            890.9299941718948,
+            568.9811443655937
+          ],
+          "meanRGB": [
+            146.75096849394905,
+            143.8480235866845,
+            137.7252219822414
+          ]
+        },
+        {
+          "bounds": [
+            221,
+            366,
+            543,
+            800
+          ],
+          "pixels": 28726,
+          "centroid": [
+            363.2006544593748,
+            569.2410708069344
+          ],
+          "meanRGB": [
+            149.50393371858246,
+            146.52704866671309,
+            140.27083478381954
+          ]
+        },
+        {
+          "bounds": [
+            429,
+            494,
+            483,
+            555
+          ],
+          "pixels": 2299,
+          "centroid": [
+            457.52718573292736,
+            524.0922140060896
+          ],
+          "meanRGB": [
+            44.56372335798173,
+            42.481513701609394,
+            40.46107003044802
+          ]
+        },
+        {
+          "bounds": [
+            783,
+            513,
+            821,
+            557
+          ],
+          "pixels": 1257,
+          "centroid": [
+            801.9856801909308,
+            534.4391408114559
+          ],
+          "meanRGB": [
+            35.91646778042959,
+            34.21957040572792,
+            32.77724741447892
+          ]
+        },
+        {
+          "bounds": [
+            798,
+            648,
+            980,
+            800
+          ],
+          "pixels": 5762,
+          "centroid": [
+            910.3090940645609,
+            721.4467198889274
+          ],
+          "meanRGB": [
+            120.2707393266227,
+            117.624783061437,
+            111.89743144741409
+          ]
+        },
+        {
+          "bounds": [
+            282,
+            650,
+            458,
+            800
+          ],
+          "pixels": 5664,
+          "centroid": [
+            347.74947033898303,
+            722.2653601694915
+          ],
+          "meanRGB": [
+            123.80579096045197,
+            121.0409604519774,
+            115.37588276836158
+          ]
+        }
+      ],
+      "detachedStoneComponents": [
+        {
+          "bounds": [
+            429,
+            494,
+            483,
+            555
+          ],
+          "centroid": [
+            457.52718573292736,
+            524.0922140060896
+          ]
+        },
+        {
+          "bounds": [
+            783,
+            513,
+            821,
+            557
+          ],
+          "centroid": [
+            801.9856801909308,
+            534.4391408114559
+          ]
+        },
+        {
+          "bounds": [
+            858,
+            793,
+            937,
+            886
+          ],
+          "centroid": [
+            899.6319695528068,
+            838.6862036156042
+          ]
+        },
+        {
+          "bounds": [
+            369,
+            828,
+            435,
+            906
+          ],
+          "centroid": [
+            400.6931476931477,
+            867.4804804804805
+          ]
+        },
+        {
+          "bounds": [
+            797,
+            920,
+            851,
+            978
+          ],
+          "centroid": [
+            825.0471111111111,
+            948.6662222222222
+          ]
+        },
+        {
+          "bounds": [
+            442,
+            944,
+            480,
+            983
+          ],
+          "centroid": [
+            460.79477947794777,
+            962.8784878487849
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 262545.2431372549,
+      "visibleTopYAlpha128": 65
+    },
+    {
+      "phase": "residual-rays",
+      "upperAlpha128ComponentsClippedAtY800": [
+        {
+          "bounds": [
+            506,
+            429,
+            685,
+            800
+          ],
+          "pixels": 12506,
+          "centroid": [
+            595.4146809531425,
+            644.427234927235
+          ],
+          "meanRGB": [
+            121.51735167119783,
+            112.51095474172398,
+            98.35422996961458
+          ]
+        },
+        {
+          "bounds": [
+            696,
+            642,
+            812,
+            800
+          ],
+          "pixels": 3863,
+          "centroid": [
+            761.0913797566658,
+            716.0520320994046
+          ],
+          "meanRGB": [
+            116.34506859953405,
+            111.39502976960911,
+            102.04530157908361
+          ]
+        }
+      ],
+      "detachedStoneComponents": [
+        {
+          "bounds": [
+            358,
+            930,
+            422,
+            998
+          ],
+          "centroid": [
+            389.66590163934427,
+            964.2295081967213
+          ]
+        },
+        {
+          "bounds": [
+            864,
+            948,
+            929,
+            1013
+          ],
+          "centroid": [
+            898.0422393563526,
+            979.8783104257459
+          ]
+        },
+        {
+          "bounds": [
+            826,
+            1018,
+            871,
+            1054
+          ],
+          "centroid": [
+            848.9828473413379,
+            1035.260720411664
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 139115.26274509804,
+      "visibleTopYAlpha128": 429
+    }
+  ],
+  "materialRegistrationProof": "material-registration-proof.json",
+  "toneRepairProof": "tone-repair-proof.json",
+  "lowerTowerBoundsSpreadSourcePx": [
+    1,
+    0,
+    1,
+    2
+  ],
+  "lowerTowerMaxBoundsSpreadLogicalPx": 0.044657097288676235,
+  "adjacentWholeSourceAlphaMassChangesPercent": [
+    27.00776574317189,
+    42.87434930414817,
+    -47.01284202190989
+  ],
+  "sequenceInterpretation": [
+    "Three short straight gray rays rise from the fixed amber tower cap; no airborne stones.",
+    "Seven narrower mid-length rays and six lower floating stones form the rising fan.",
+    "Seven full broad rays form the maximum fan. The central tip rises from y285 to y65. Six stones move outward/upward.",
+    "Three slim unequal rays remain, the main ray tilts left, and the lower stone cohort settles. One small left stone reaches the rubble contour."
+  ],
+  "continuityCaveats": [
+    "The fan expands from three rays to seven, grows to the crest, then returns to three thinner rays. This is an energy-envelope change, not seven conserved solid objects translating through space.",
+    "Total alpha mass changes by about +27.0%, +42.9%, then -47.0%. The crest-to-residual change can feel abrupt at 12 fps. It is authored geometry loss rather than a global opacity fade.",
+    "Six airborne stones appear at rising-fan and move outward/upward at the crest. The two high stones retire by the final pose; four lower stones settle, with the small left stone contacting the rubble contour. Three final stones remain separate alpha128 components. No full landing or unique particle correspondence is claimed.",
+    "The selected short-rays tone repair reduces the whole lower-tower mean luminance from 81.55 to 65.19 versus crest 60.90. The other selected poses measure 63.67 and 62.55. Minor material-lighting and amber-core variation remains, although the severe initial light-stone jump is removed.",
+    "Tower bounds vary at most 2 source pixels (0.045 logical pixels) and fixed material ROI best offsets are at most 1 pixel per axis. Source shading and exact ray edges are not byte-identical.",
+    "The original peak central ray is clipped by the atlas crop. The new peak has a complete visible tip at y65 with genuine exterior margins; the correction is intentional, not a matching failure.",
+    "Tiny floating fragments and dark tower details are subordinate at 32 pixels, especially on black/dark earth, and clearer at 64 pixels. Live browser/game playback remains unobserved.",
+    "The last frame is a nonblank terminal pose. No 4-to-1 seam, blank ending, scene removal time or 420 ms lifetime is inferred for this catalog-only nonloop effect."
+  ],
+  "loop": false,
+  "browserObserved": false,
+  "liveGameObserved": false
+}

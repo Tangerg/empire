@@ -540,6 +540,78 @@
           627
         ]
       }
+    },
+    "C01-FX-16": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "short-rays",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/short-rays/master.png",
+          "sha256": "732e59378c78d529ec6a27e70206c787e25fbef82cf8f9299d520bb391b1e857"
+        },
+        {
+          "phase": "rising-fan",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/rising-fan/master.png",
+          "sha256": "ce9afcd21efc31ac880278a24cf4040f69f616d34953ceb2e8a132f4bd86e71b"
+        },
+        {
+          "phase": "graylight-crest",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/graylight-crest/master.png",
+          "sha256": "fe4746667001389ab2dc1a9d005d4040c24524042659b09a997c26502b8e85f7"
+        },
+        {
+          "phase": "residual-rays",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/residual-rays/master.png",
+          "sha256": "85ddaabd9d348e7d13844273425dadb29bd32383c93341c88698d06101a3e2d4"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    },
+    "C01-FX-17": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "healing-onset",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-onset/master.png",
+          "sha256": "15a2d590c452dc0acfaa6236da71807a21762ef71506ee589a3a4fa19d5ea19a"
+        },
+        {
+          "phase": "leaf-spiral",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/leaf-spiral/master.png",
+          "sha256": "18622666a9296dd601b54f03a923c8525453568d86e11dfc069979dd23e0a7ed"
+        },
+        {
+          "phase": "healing-peak",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-peak/master.png",
+          "sha256": "3dd97e7f0c89e588bf16c88654d602c5fe9b00884f210aa1a402040f32f2e870"
+        },
+        {
+          "phase": "orbit-dissipation",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/orbit-dissipation/master.png",
+          "sha256": "204bcd279f9887335e35a0857c83bda81c85244c7bd709c5470549a1d1b6ca85"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
     }
   }
 }

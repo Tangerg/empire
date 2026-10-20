@@ -1,0 +1,72 @@
+{
+  "topicId": "c02-skill-zero-permission-breach",
+  "assetId": "C02-SFV1-skill-zero-permission-breach",
+  "label": "零权限突入",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-zero-permission-breach",
+    "topicId": "c02-skill-zero-permission-breach",
+    "label": "零权限突入",
+    "category": "skill",
+    "png": "runtime/skill/skill-zero-permission-breach.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 44,
+  "sourceCropBox": [
+    5,
+    945,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates the identity and original order. No alphabetical final-manifest slot inference was used.",
+  "functionalMotif": "A broken graphite access gate with side keypad, centered orange/yellow impact burst and broken left-side pieces.",
+  "semanticConflictDetected": false,
+  "labelAmbiguity": "The Chinese label is treated as catalog identity; the original picture determines the motif. No invented story or authored gameplay use is claimed.",
+  "oldSourceCondition": "The original board has an opaque saturated magenta field. The legacy runtime was produced by the old crop/chroma/despill workflow and has softened colored boundaries; the paired-arm original particularly shows pale colored fringe. Intentional purple parts in the planet and downgrade motifs are not mislabeled as contamination. The verified grid crop contains the complete intended motif without observable clipping or neighboring-card bleed. Original board and runtime bytes are preserved; no old keyed pixels are reused in the generated master.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-zero-permission-breach.png",
+  "runtimeReferenceSha256": "424c5a7e31ae0e3f50cedcb550a52bc3461402d268ed85b96039528232b1cea3",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ],
+    "noHdEntry": true
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting.",
+  "legacyBuilderEvidence": "The read-only build_final_scifi_v1.py chroma() function invokes remove_chroma_key.py, then additionally removes saturated magenta pixels; fit_transparent() crops to alpha bounds. This is historical provenance only. New previews use whole-canvas contain and preserve generated alpha.",
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f4ba6e9e-b704-478a-ac44-0a39983596d4.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-zero-permission-breach/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-zero-permission-breach/style-reference.png"
+  ],
+  "semanticNotes": "The verified forced-access motif is retained: a shallow three-quarter graphite gate, damaged and separated pieces on the left, an intact three-bar cyan control panel on the right, an orange inner seal, and one sharp orange/yellow crossing impact starburst over the opening. The long principal rays preserve the original crossing diagonals. Flat opaque burst planes replace any broad light effect. No person, weapon, padlock, numeric zero or separate door is invented.",
+  "native48Review": "diagnostic-native48/native48-white-black-olive.png",
+  "visualStyle": "Approved chunky C02 broad matte planes and bold contour; original skill motif plus approved cargo-crate style-only reference.",
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-zero-permission-breach/master.png",
+  "sourceReady": true,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false
+}

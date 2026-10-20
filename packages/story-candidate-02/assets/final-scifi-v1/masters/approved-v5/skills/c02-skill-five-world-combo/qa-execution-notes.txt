@@ -1,0 +1,1 @@
+Initial QA serialization failed because NumPy booleans were not JSON serializable. No generated source pixels were changed. Converted only the boolean report values to Python bool and reran the same deterministic composite/resize workflow. This was not an image generation failure.

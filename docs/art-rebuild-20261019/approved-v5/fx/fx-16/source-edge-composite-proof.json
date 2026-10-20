@@ -1,0 +1,76 @@
+{
+  "sourceGate": "Actual source perimeter alpha <= 1, retained without cleanup; all selected perimeters are exactly 0.",
+  "frames": [
+    {
+      "phase": "short-rays",
+      "sourceSHA256": "732e59378c78d529ec6a27e70206c787e25fbef82cf8f9299d520bb391b1e857",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Actual full-source black/white composites are clean, with no matte card, clipped ray, broad glow wash or colored fringe. Transparent raw display artifacts were not treated as composite evidence."
+    },
+    {
+      "phase": "rising-fan",
+      "sourceSHA256": "ce9afcd21efc31ac880278a24cf4040f69f616d34953ceb2e8a132f4bd86e71b",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Actual full-source black/white composites are clean, with no matte card, clipped ray, broad glow wash or colored fringe. Transparent raw display artifacts were not treated as composite evidence."
+    },
+    {
+      "phase": "graylight-crest",
+      "sourceSHA256": "fe4746667001389ab2dc1a9d005d4040c24524042659b09a997c26502b8e85f7",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Actual full-source black/white composites are clean, with no matte card, clipped ray, broad glow wash or colored fringe. Transparent raw display artifacts were not treated as composite evidence."
+    },
+    {
+      "phase": "residual-rays",
+      "sourceSHA256": "85ddaabd9d348e7d13844273425dadb29bd32383c93341c88698d06101a3e2d4",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Actual full-source black/white composites are clean, with no matte card, clipped ray, broad glow wash or colored fringe. Transparent raw display artifacts were not treated as composite evidence."
+    }
+  ],
+  "finalPadding": "Every final cell has 2 logical pixels of alpha 0 padding, 4 physical pixels at 2x.",
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeSixBackgroundsReviewed": true
+}

@@ -1,0 +1,22 @@
+{
+  "topicId": "c02-skill-maintainer-rebuild",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "twoPixelBorderMaxAlpha": 0,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, the two large arms, upright cyan-outlined figure and circular platform remain distinct on all three backgrounds. The narrow intentional opening between the figure’s right arm and torso contains 12 samples below alpha 240 in the supplemental 8px-eroded mask, minimum 108 at native coordinates near [714,715]. Native white inspection and retained diagnostic crops confirm these are cutout antialiasing samples, not a translucent material core. Other physical masses are near-opaque. No broad halo or clipped part is visible. The shortest source margin is 55px; final 2px border is zero alpha.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}

@@ -1,0 +1,59 @@
+{
+  "topicId": "c02-skill-echo-isolation",
+  "assetId": "C02-SFV1-skill-echo-isolation",
+  "label": "回声隔离",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-echo-isolation",
+    "topicId": "c02-skill-echo-isolation",
+    "label": "回声隔离",
+    "category": "skill",
+    "png": "runtime/skill/skill-echo-isolation.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceIndexZeroBased": 23,
+  "catalogIndexZeroBased": 23,
+  "sourceBoardCellIndexZeroBased": 7,
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    319,
+    1249,
+    622
+  ],
+  "completeMotifCropBox": [
+    940,
+    339,
+    1222,
+    618
+  ],
+  "sourceMappingEvidence": "Actual original 48px runtime pixels and complete full boards were visually inspected before matching subject. Topic catalog order independently agrees. Alphabetical manifest ordering was not used.",
+  "functionalMotif": "One upright cylindrical containment canister with dark tan/graphite end caps, a single cyan human memory silhouette inside, and three cyan echo arcs on each side.",
+  "sourceUncertainty": "The actual runtime includes the dark scene-card ground and translucent cylinder haze. The redraw preserves the containment silhouette, inner anonymous human symbol and paired echo arcs with opaque bounded forms; it does not depict an actual trapped person or a new gameplay effect.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-echo-isolation.png",
+  "runtimeReferenceSha256": "e82bc1333c847e33f96ba13d8d5b29c8210d41d15bf5a5f97a9f22f831ceba70",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved."
+}

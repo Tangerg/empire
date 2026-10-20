@@ -1,0 +1,52 @@
+{
+  "topicId": "c02-skill-zero-permission-breach",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 581882,
+  "partialAlphaPixels": 988238,
+  "opaquePixels": 2396,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    77,
+    68,
+    1183,
+    1198
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    77,
+    68,
+    71,
+    56
+  ],
+  "nearOpaquePixelCountGE240": 973986,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48TwoPixelBorderMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 1124,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only: whole authored source canvas contained with LANCZOS within 44x44 and centered on 48x48 with 2px padding; no alpha-bounds crop or generated-pixel changes. All composites are separate QA-only derivatives.",
+  "sha256": "a4a91b6862b708f209c04a6f3034e7e07255614c92b68ee30756e1d973ae3d4f",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only resizing and compositing.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, the gate silhouette, right cyan panel, broken left edge and orange crossing impact remain readable on white, black and olive. Source512 and full-native inspection show opaque broad material planes and an angular bounded burst without flame, smoke or surrounding haze. Source margins are at least 56px, below the requested target but without clipping. The 2px output border is entirely zero alpha.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true,
+  "sourceReadyMeaning": "Ready for parent review and binding only; formal category status remains unchanged."
+}

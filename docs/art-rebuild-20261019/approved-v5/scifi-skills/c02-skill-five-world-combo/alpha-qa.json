@@ -1,0 +1,52 @@
+{
+  "topicId": "c02-skill-five-world-combo",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 880086,
+  "partialAlphaPixels": 689427,
+  "opaquePixels": 3003,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    45,
+    68,
+    1207,
+    1157
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    45,
+    68,
+    47,
+    97
+  ],
+  "nearOpaquePixelCountGE240": 665920,
+  "diagnostic8pxErosion": {
+    "minAlpha": 252,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48TwoPixelBorderMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 694,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only: whole authored source canvas contained with LANCZOS within 44x44 and centered on 48x48 with 2px padding; no alpha-bounds crop or generated-pixel changes. All composites are separate QA-only derivatives.",
+  "sha256": "c58cb2db0d360d39e9c5210cb07faef54fd20ef0df57c2d66540414be21bbad7",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only resizing and compositing.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, all five planet colors, outer ring and central three-spoke hub remain legible on white, black and olive. Full-native white and source512 black/olive inspections show opaque planetary surfaces and clean transparent ring gaps. The shortest visible source margin is 45px, less than the prompt target but with no clipped subject; whole-canvas export retains a fully zero-alpha 2px border.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true,
+  "sourceReadyMeaning": "Ready for parent review and binding only; formal category status remains unchanged."
+}

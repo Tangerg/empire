@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-publish-cargo",
+  "assetId": "C02-SFV1-skill-publish-cargo",
+  "label": "公开货舱",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-publish-cargo",
+    "topicId": "c02-skill-publish-cargo",
+    "label": "公开货舱",
+    "category": "skill",
+    "png": "runtime/skill/skill-publish-cargo.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceIndexZeroBased": 39,
+  "sourceBoardCellIndexZeroBased": 7,
+  "sourceCropBox": [
+    945,
+    319,
+    1249,
+    622
+  ],
+  "sourceCropSize": [
+    304,
+    303
+  ],
+  "sourceMappingEvidence": "Actual original 48x48 runtime visually inspected first, then matched by depicted action to full original board and exact source cell. Catalog independently agrees; alphabetical manifest order was not used.",
+  "functionalMotif": "One closed cubic cargo container with a central orange latch is encircled by two cyan curved arrows.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-publish-cargo.png",
+  "runtimeReferenceSha256": "befd9af9b0a056de6557df65240ff307bf3af93f88f0d1caccdfa70b2baa045d",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crops and separate QA only; new generated alpha will remain unchanged."
+}

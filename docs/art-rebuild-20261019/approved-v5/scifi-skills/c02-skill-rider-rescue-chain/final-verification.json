@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-rider-rescue-chain",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "731a7464179b080ff1ed1fadd205ad5c987423471b35b3c86f3d41bd249a42d7",
+    "raw-native-v1.png": "731a7464179b080ff1ed1fadd205ad5c987423471b35b3c86f3d41bd249a42d7",
+    "native.png": "731a7464179b080ff1ed1fadd205ad5c987423471b35b3c86f3d41bd249a42d7",
+    "master.png": "731a7464179b080ff1ed1fadd205ad5c987423471b35b3c86f3d41bd249a42d7"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "At 48 pixels, the single buggy, two chains and two rescued silhouettes remain distinct; individual finger grips, small wheel divisions and dust-puff lobes simplify and cannot be judged in anatomical detail. Grip semantics are verified at full source size. The visible left/right margins are 36/34 pixels, below the requested 8–10 percent, with complete limbs and vehicle. The dust groups include small detached lobes, a secondary detail variation from the prompt.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T06:09:35.827739+00:00"
+}

@@ -1,0 +1,72 @@
+{
+  "topicId": "c02-skill-vein-downgrade",
+  "assetId": "C02-SFV1-skill-vein-downgrade",
+  "label": "星脉降权",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-vein-downgrade",
+    "topicId": "c02-skill-vein-downgrade",
+    "label": "星脉降权",
+    "category": "skill",
+    "png": "runtime/skill/skill-vein-downgrade.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceIndexZeroBased": 6,
+  "sourceCropBox": [
+    632,
+    319,
+    935,
+    622
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates the identity and original order. No alphabetical final-manifest slot inference was used.",
+  "functionalMotif": "One broad cyan downward arrow over purple fractured material and branching cyan circuit traces ending in circular terminals.",
+  "semanticConflictDetected": false,
+  "labelAmbiguity": "The Chinese label is treated as catalog identity; the original picture determines the motif. No invented story or authored gameplay use is claimed.",
+  "oldSourceCondition": "The original board has an opaque saturated magenta field. The legacy runtime was produced by the old crop/chroma/despill workflow and has softened colored boundaries; the paired-arm original particularly shows pale colored fringe. Intentional purple parts in the planet and downgrade motifs are not mislabeled as contamination. The verified grid crop contains the complete intended motif without observable clipping or neighboring-card bleed. Original board and runtime bytes are preserved; no old keyed pixels are reused in the generated master.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-vein-downgrade.png",
+  "runtimeReferenceSha256": "63ddcde1171b764da9f3d3b070ec67301ec4b911ad88a7a6a3a5fd2249bd4235",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ],
+    "noHdEntry": true
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting.",
+  "legacyBuilderEvidence": "The read-only build_final_scifi_v1.py chroma() function invokes remove_chroma_key.py, then additionally removes saturated magenta pixels; fit_transparent() crops to alpha bounds. This is historical provenance only. New previews use whole-canvas contain and preserve generated alpha.",
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3919288e-45c7-4257-8701-c742612f7846.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-vein-downgrade/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-vein-downgrade/style-reference.png"
+  ],
+  "semanticNotes": "The original downgrade identity is retained: one large vertical downward cyan arrow, deep graphite backing, exactly eight cyan circular circuit terminals on four paths per side, and jagged purple fractured material behind it. Purple remains intentionally present in the source motif; it is not treated as chroma contamination to erase. Broad arrow bevel planes replace the original glossy diagonal stripes. No extra arrow, padlock, minus sign or device is invented.",
+  "native48Review": "diagnostic-native48/native48-white-black-olive.png",
+  "visualStyle": "Approved chunky C02 broad matte planes and bold contour; original skill motif plus approved cargo-crate style-only reference.",
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-vein-downgrade/master.png",
+  "sourceReady": true,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false
+}

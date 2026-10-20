@@ -1,0 +1,19 @@
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageOps,ImageFilter
+import json,hashlib,numpy as np
+O=Path('/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills')
+slugs=['five-world-combo','maintainer-rebuild','vein-downgrade','zero-permission-breach']
+colors={'white':(255,255,255,255),'black':(0,0,0,255),'olive':(103,108,63,255)}
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def edge(a):return np.concatenate([a[0,:],a[-1,:],a[:,0],a[:,-1]])
+review=Image.new('RGB',(960,4*296),'#d6d2c7');draw=ImageDraw.Draw(review)
+for row,slug in enumerate(slugs):
+ topic='c02-skill-'+slug;d=O/topic;out=d/'diagnostic-native48';out.mkdir(exist_ok=True);source=Image.open(d/'master.png');a=np.array(source.getchannel('A'));e=edge(a);mask=Image.fromarray((a>=8).astype('uint8')*255);box=mask.getbbox();core=np.array(mask.filter(ImageFilter.MinFilter(17)))>0
+ fitted=ImageOps.contain(source,(44,44),Image.Resampling.LANCZOS);native=Image.new('RGBA',(48,48),(0,0,0,0));native.alpha_composite(fitted,((48-fitted.width)//2,(48-fitted.height)//2));native.save(out/'runtime48-diagnostic.png');na=np.array(native.getchannel('A'));border=na.copy();border[2:-2,2:-2]=0
+ strip=Image.new('RGB',(144,48));draw.text((8,row*296+4),topic,fill='#111111')
+ for col,(name,color) in enumerate(colors.items()):
+  full=Image.new('RGBA',source.size,color);full.alpha_composite(source);full.convert('RGB').save(d/f'qa-full-native-on-{name}.png');mid=full.resize((512,512),Image.Resampling.LANCZOS).convert('RGB');mid.save(d/f'qa-source512-on-{name}.png');small=Image.new('RGBA',(48,48),color);small.alpha_composite(native);small.convert('RGB').save(out/f'native48-on-{name}.png');strip.paste(small.convert('RGB'),(col*48,0));review.paste(mid.resize((256,256),Image.Resampling.LANCZOS),(col*256,row*296+26))
+ strip.save(out/'native48-white-black-olive.png');strip.resize((864,288),Image.Resampling.NEAREST).save(out/'native48-white-black-olive-6x-nearest.png');review.paste(strip,(792,row*296+60));draw.text((792,row*296+116),'actual 48px, no scale',fill='#111111')
+ q={'topicId':topic,'source':'master.png','nativeSize':list(source.size),'mode':source.mode,'alphaExtrema':[int(a.min()),int(a.max())],'zeroAlphaPixels':int((a==0).sum()),'partialAlphaPixels':int(((a>0)&(a<255)).sum()),'opaquePixels':int((a==255).sum()),'canvasEdgeMaxAlpha':int(e.max()),'canvasEdgeAlpha2PlusCount':int((e>=2).sum()),'visibleAlphaBBoxGE8':list(box),'visibleMarginsPixelsL_T_R_B':[box[0],box[1],source.width-box[2],source.height-box[3]],'nearOpaquePixelCountGE240':int((a>=240).sum()),'diagnostic8pxErosion':{'minAlpha':int(a[core].min()),'pixelsBelow240':int((a[core]<240).sum()),'notAcceptanceGate':True},'actual48EdgeMaxAlpha':int(edge(na).max()),'actual48TwoPixelBorderMaxAlpha':int(border.max()),'actual48NearOpaquePixelsGE240':int((na>=240).sum()),'formalSourceContractPass':source.mode=='RGBA' and bool((a==0).any()) and bool((a>=240).any()) and bool(e.max()<=1) and bool(border.max()==0),'derivation':'Diagnostic only: whole authored source canvas contained with LANCZOS within 44x44 and centered on 48x48 with 2px padding; no alpha-bounds crop or generated-pixel changes. All composites are separate QA-only derivatives.','sha256':sha(d/'master.png'),'matchesRawGeneratedBytes':sha(d/'master.png')==sha(d/'raw.png')==sha(d/'raw-native-v1.png'),'postprocessing':'No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only resizing and compositing.','runtimeReady':False,'formalRuntimeIntegration':False,'liveGameVerified':False}
+ (d/'alpha-qa.json').write_text(json.dumps(q,indent=2)+'\n');print(topic, json.dumps({k:q[k] for k in ['canvasEdgeMaxAlpha','canvasEdgeAlpha2PlusCount','visibleMarginsPixelsL_T_R_B','diagnostic8pxErosion','actual48TwoPixelBorderMaxAlpha','formalSourceContractPass']}))
+review.save(O/'c02-skill-five-world-combo/final-four-source-and-native48-review.png')

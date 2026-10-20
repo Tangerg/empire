@@ -1,0 +1,117 @@
+{
+  "topicId": "C01-FX-17",
+  "label": "治疗",
+  "status": "accepted-source-static-phase-candidate",
+  "phaseOrder": [
+    "healing-onset",
+    "leaf-spiral",
+    "healing-peak",
+    "orbit-dissipation"
+  ],
+  "phaseOrderApproval": "Parent approved nonloop healing phase design on 2026-10-20T05:58:28Z and confirmed exact phase names were added to the exporter contract by 06:03:50Z.",
+  "peakBaselineApproval": "Parent accepted actual source black/white and native32/64 baseline on 2026-10-20T06:03:50Z, retaining the observed center near source y710.",
+  "parentFinalStaticPhaseAcceptance": "Accepted on 2026-10-20T06:11:02Z after four-phase native and terminal review; 0.65 logical-pixel center variation explicitly accepted for this asset.",
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": [],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    0,
+    1,
+    1,
+    0
+  ],
+  "sourceEdgeNonzeroSamples": [
+    0,
+    287,
+    59,
+    0
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeFullAndTerminalReviewed": true,
+  "consumerHoldRemovalSamplesReviewed": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "subjectPreserved": "Olive medical plus, beige crossed bandages, sage orbital ribbons and olive leaves; terminal leaves and broken arcs after the plus and bandages disappear.",
+  "plusCentersSource": [
+    [
+      627.5,
+      736.5
+    ],
+    [
+      627.0,
+      720.5
+    ],
+    [
+      627.5,
+      707.5
+    ]
+  ],
+  "plusCenterMaximumPairDistanceLogicalPx": 0.6475279106858054,
+  "phaseReview": "qa/PHASE-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "sourceHashProof": "final-quartet.json",
+  "semanticCaveats": [
+    "Leaf correspondence is not tracked as an exact continuous path; static evidence establishes purposeful changing poses and orbit geometry, not every leaf trajectory.",
+    "The developing spiral envelope is already nearly peak width, but open arcs and lower alpha mass distinguish it from the full peak.",
+    "Source center variation is reported rather than corrected by shifting pixels.",
+    "Decoded frame/timing verification is not observed browser playback."
+  ],
+  "APNGVerification": {
+    "proof": "qa/apng-timing-verification.json",
+    "files": 28,
+    "decodedFrames": 112,
+    "exact12fpsFiles": 14,
+    "slowDiagnosticFiles": 14,
+    "everyDecodedFrameMatchesExpected": true,
+    "exactAuthoredFrameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "numPlays": 1,
+    "loop": false,
+    "encodedFinalHoldInAuthoredClip": false
+  },
+  "consumerLifecycleVerification": {
+    "proof": "qa/consumer-lifecycle-verification.json",
+    "diagnosticFiles": 14,
+    "decodedFrames": 70,
+    "effectLifetimeMs": 500,
+    "terminalFrameStartMs": 250,
+    "terminalVisibleMs": 250,
+    "removalAtMs": 500,
+    "blankIsDiagnosticOnly": true,
+    "hit420msApplied": false,
+    "independentAmountOverlayBakedIntoArt": false,
+    "parentReportedRuntimeRegression": "Parent reported on 2026-10-20T06:03:50Z that actual BoardView heal 500 ms removal, final frame 250–499 ms hold and separate hit 420 ms regressions passed. New source masters were not yet bound at that time.",
+    "newSourceBindingClaimed": false
+  },
+  "browserObserved": false,
+  "browserBlocker": "Established browser/socket restriction; no repeated browser attempts were made.",
+  "authoredSceneConsumer": "Existing C01-FX-17 heal presentation binding; new source registration owned by parent",
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false
+}

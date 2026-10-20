@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-mark-evacuation",
+  "assetId": "C02-SFV1-skill-mark-evacuation",
+  "label": "撤离标记",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-mark-evacuation",
+    "topicId": "c02-skill-mark-evacuation",
+    "label": "撤离标记",
+    "category": "skill",
+    "png": "runtime/skill/skill-mark-evacuation.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceIndexZeroBased": 37,
+  "sourceBoardCellIndexZeroBased": 5,
+  "sourceCropBox": [
+    319,
+    319,
+    622,
+    622
+  ],
+  "sourceCropSize": [
+    303,
+    303
+  ],
+  "sourceMappingEvidence": "Actual original 48x48 runtime visually inspected first, then matched by depicted action to full original board and exact source cell. Catalog independently agrees; alphabetical manifest order was not used.",
+  "functionalMotif": "One small dark running figure follows a broad cyan bent arrow along a short boarding ramp into a sci-fi doorway.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-mark-evacuation.png",
+  "runtimeReferenceSha256": "f2e36d54f52e88586fbaf40ea190ca832175ff2b867857d5b8e2748ad351694f",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crops and separate QA only; new generated alpha will remain unchanged."
+}

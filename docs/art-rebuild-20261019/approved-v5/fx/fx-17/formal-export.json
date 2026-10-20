@@ -1,0 +1,426 @@
+[
+  {
+    "topicId": "C01-FX-17",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-17.png",
+    "size": [
+      128,
+      32
+    ],
+    "frameSize": [
+      32,
+      32
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      28,
+      28
+    ],
+    "sources": [
+      {
+        "phase": "healing-onset",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-onset/master.png",
+        "sourceSha256": "15a2d590c452dc0acfaa6236da71807a21762ef71506ee589a3a4fa19d5ea19a",
+        "sourcePixelSha256": "4e92cc99cd2068a159846d77731ff9d63309451ac3dbe017d0ac6d0d15620a0c",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            25,
+            39,
+            1232,
+            1222
+          ],
+          "nonzeroPixels": 172165
+        }
+      },
+      {
+        "phase": "leaf-spiral",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/leaf-spiral/master.png",
+        "sourceSha256": "18622666a9296dd601b54f03a923c8525453568d86e11dfc069979dd23e0a7ed",
+        "sourcePixelSha256": "8fa457c859743604604b8ea75b0d69f1327d010aaf5a8c55bf776e3fd5fd4292",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 287,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            21,
+            1240,
+            1254
+          ],
+          "nonzeroPixels": 396417
+        }
+      },
+      {
+        "phase": "healing-peak",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-peak/master.png",
+        "sourceSha256": "3dd97e7f0c89e588bf16c88654d602c5fe9b00884f210aa1a402040f32f2e870",
+        "sourcePixelSha256": "f1e77d8f5020a3954d878fb95acc8f1d8cc4b7c2866293bdbcd3787a930fa1ae",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 59,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            21,
+            1244,
+            1254
+          ],
+          "nonzeroPixels": 448098
+        }
+      },
+      {
+        "phase": "orbit-dissipation",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/orbit-dissipation/master.png",
+        "sourceSha256": "204bcd279f9887335e35a0857c83bda81c85244c7bd709c5470549a1d1b6ca85",
+        "sourcePixelSha256": "02cb75061e2a4e26490167b85edf4d3aef100ce9355c55b94ccebc3c403d391e",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            27,
+            41,
+            1244,
+            1212
+          ],
+          "nonzeroPixels": 125444
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "healing-onset",
+        "pixelSha256": "663260e33244decf839d8d43834403cb411ddb8772efe49c65f749754d367e52",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            4,
+            8,
+            28,
+            27
+          ],
+          "nonzeroPixels": 256
+        }
+      },
+      {
+        "phase": "leaf-spiral",
+        "pixelSha256": "7c452268f3a187b4b20e7f179c80ed5756115e3d30247ea5d1ec3cea665cf1b4",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            5,
+            30,
+            28
+          ],
+          "nonzeroPixels": 398
+        }
+      },
+      {
+        "phase": "healing-peak",
+        "pixelSha256": "0beca2b38364e4cab1e4e320702afc323bbec853d19ed992cb9917873e20370d",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            5,
+            30,
+            29
+          ],
+          "nonzeroPixels": 426
+        }
+      },
+      {
+        "phase": "orbit-dissipation",
+        "pixelSha256": "940664e7ebd1ffe984cb3cb4b6487e1bb671ae5b977cbb32fdbb78d48438c245",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            6,
+            30,
+            29
+          ],
+          "nonzeroPixels": 235
+        }
+      }
+    ],
+    "pixelSha256": "3f18cd86f80983c5146866a9ae2de13b9f5db6a61f2b510ec600897b24562f23",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "playback": {
+      "mode": "once-hold",
+      "sequenceDurationMs": 333.3333333333333,
+      "afterLastFrame": "hold-last-frame",
+      "wrapTransition": null,
+      "lifetimeOwner": "consumer"
+    },
+    "loopClosureReview": "not-applicable",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "33789aaf7a10707df5c3803ac61a186f618a253d786168df43751e11aacfecd2"
+  },
+  {
+    "topicId": "C01-FX-17",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-17.png",
+    "size": [
+      256,
+      64
+    ],
+    "frameSize": [
+      64,
+      64
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      56,
+      56
+    ],
+    "sources": [
+      {
+        "phase": "healing-onset",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-onset/master.png",
+        "sourceSha256": "15a2d590c452dc0acfaa6236da71807a21762ef71506ee589a3a4fa19d5ea19a",
+        "sourcePixelSha256": "4e92cc99cd2068a159846d77731ff9d63309451ac3dbe017d0ac6d0d15620a0c",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            25,
+            39,
+            1232,
+            1222
+          ],
+          "nonzeroPixels": 172165
+        }
+      },
+      {
+        "phase": "leaf-spiral",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/leaf-spiral/master.png",
+        "sourceSha256": "18622666a9296dd601b54f03a923c8525453568d86e11dfc069979dd23e0a7ed",
+        "sourcePixelSha256": "8fa457c859743604604b8ea75b0d69f1327d010aaf5a8c55bf776e3fd5fd4292",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 287,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            21,
+            1240,
+            1254
+          ],
+          "nonzeroPixels": 396417
+        }
+      },
+      {
+        "phase": "healing-peak",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/healing-peak/master.png",
+        "sourceSha256": "3dd97e7f0c89e588bf16c88654d602c5fe9b00884f210aa1a402040f32f2e870",
+        "sourcePixelSha256": "f1e77d8f5020a3954d878fb95acc8f1d8cc4b7c2866293bdbcd3787a930fa1ae",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 59,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            21,
+            1244,
+            1254
+          ],
+          "nonzeroPixels": 448098
+        }
+      },
+      {
+        "phase": "orbit-dissipation",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-17/orbit-dissipation/master.png",
+        "sourceSha256": "204bcd279f9887335e35a0857c83bda81c85244c7bd709c5470549a1d1b6ca85",
+        "sourcePixelSha256": "02cb75061e2a4e26490167b85edf4d3aef100ce9355c55b94ccebc3c403d391e",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            27,
+            41,
+            1244,
+            1212
+          ],
+          "nonzeroPixels": 125444
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "healing-onset",
+        "pixelSha256": "0199fac8add4244f96c22bcc8eb8915d3c8acc37a903fba90e88af9987d26605",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            11,
+            19,
+            54,
+            52
+          ],
+          "nonzeroPixels": 724
+        }
+      },
+      {
+        "phase": "leaf-spiral",
+        "pixelSha256": "5bdcc8c38ff8d85ccd62e8bcf9028a07a140dd535c71408794c8b1c1adffc999",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            6,
+            12,
+            59,
+            60
+          ],
+          "nonzeroPixels": 1276
+        }
+      },
+      {
+        "phase": "healing-peak",
+        "pixelSha256": "51425194de7d56963328ca4b6eeaa080e576262dd411527db49a3a14674bec1c",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            13,
+            60,
+            57
+          ],
+          "nonzeroPixels": 1383
+        }
+      },
+      {
+        "phase": "orbit-dissipation",
+        "pixelSha256": "97dfba74d84960fcbf110c9751b5b2edcbb89e2a0abf416c093b85443d54cfc3",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            14,
+            59,
+            55
+          ],
+          "nonzeroPixels": 590
+        }
+      }
+    ],
+    "pixelSha256": "b86d19360791a14a69446784fd1956d3f5c30afbd3aec642f3a336a84374707c",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "playback": {
+      "mode": "once-hold",
+      "sequenceDurationMs": 333.3333333333333,
+      "afterLastFrame": "hold-last-frame",
+      "wrapTransition": null,
+      "lifetimeOwner": "consumer"
+    },
+    "loopClosureReview": "not-applicable",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "3d25f4cc15d78de1ba8f06014deb1d10ee44fc2c8698f5c2bcc03fb67dd45d27"
+  }
+]

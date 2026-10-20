@@ -1,0 +1,72 @@
+{
+  "topicId": "c02-skill-maintainer-rebuild",
+  "assetId": "C02-SFV1-skill-maintainer-rebuild",
+  "label": "维护体重构",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-maintainer-rebuild",
+    "topicId": "c02-skill-maintainer-rebuild",
+    "label": "维护体重构",
+    "category": "skill",
+    "png": "runtime/skill/skill-maintainer-rebuild.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 43,
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    935
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates the identity and original order. No alphabetical final-manifest slot inference was used.",
+  "functionalMotif": "A cyan digitized humanoid standing on a round machine platform between two inward-pointing bronze/graphite robotic arms.",
+  "semanticConflictDetected": false,
+  "labelAmbiguity": "The Chinese label is treated as catalog identity; the original picture determines the motif. No invented story or authored gameplay use is claimed.",
+  "oldSourceCondition": "The original board has an opaque saturated magenta field. The legacy runtime was produced by the old crop/chroma/despill workflow and has softened colored boundaries; the paired-arm original particularly shows pale colored fringe. Intentional purple parts in the planet and downgrade motifs are not mislabeled as contamination. The verified grid crop contains the complete intended motif without observable clipping or neighboring-card bleed. Original board and runtime bytes are preserved; no old keyed pixels are reused in the generated master.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-maintainer-rebuild.png",
+  "runtimeReferenceSha256": "553795c67b37580159e439dd3c4e801781df6e8117ab1bf4e0f5c303b4624178",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ],
+    "noHdEntry": true
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting.",
+  "legacyBuilderEvidence": "The read-only build_final_scifi_v1.py chroma() function invokes remove_chroma_key.py, then additionally removes saturated magenta pixels; fit_transparent() crops to alpha bounds. This is historical provenance only. New previews use whole-canvas contain and preserve generated alpha.",
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-52ca6d1c-4a71-41fb-af97-dab1afcf7e52.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-maintainer-rebuild/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-maintainer-rebuild/style-reference.png"
+  ],
+  "semanticNotes": "The complete reconstruction station is retained: a graphite segmented circular platform, exactly two bronze/graphite articulated arms with inward-pointing grippers, a dark-teal upright human silhouette bounded by cyan, and a few square cyan reconstruction pixels. The left gripper remains slightly higher than the right. The platform inset, figure and pixels are bounded material/graphic planes, without a broad projection cone or haze. No combat robot, face, medical equipment or extra robotic arm is invented.",
+  "native48Review": "diagnostic-native48/native48-white-black-olive.png",
+  "visualStyle": "Approved chunky C02 broad matte planes and bold contour; original skill motif plus approved cargo-crate style-only reference.",
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-maintainer-rebuild/master.png",
+  "sourceReady": true,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false
+}

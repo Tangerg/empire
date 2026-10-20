@@ -1,0 +1,53 @@
+{
+  "topicId": "c02-skill-memory-reveal",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 730718,
+  "partialAlphaPixels": 839802,
+  "opaquePixels": 1996,
+  "nearOpaquePixelCountGE240": 828053,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    90,
+    103,
+    1188,
+    1175
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    90,
+    103,
+    66,
+    79
+  ],
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48TwoPixelBorderMaxAlpha": 0,
+  "actual48TwoPixelBorderNonzeroCount": 0,
+  "actual48NearOpaquePixelsGE240": 945,
+  "sourceNumericContractPass": true,
+  "visualCompositeReviewPending": false,
+  "sha256": "fce89a0c9bd4d34f21efcb083257b0ed40c3d49bebe930a35b8cb48b6d943710",
+  "matchesRawGeneratedBytes": true,
+  "derivation": "Offline diagnostic only: entire generated canvas Lanczos contain44x44 centered in48x48 with2px margin; no bbox crop, alpha change, recolor or cleanup. All source bytes preserved.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "source512WhiteBlackOliveVisualPass": true,
+  "actual48WhiteBlackOliveVisualPass": true,
+  "noVisibleExteriorGlowObserved": true,
+  "formalSourceContractPass": true,
+  "sourceEdgeAlphaOneAcceptedOnlyAfterActualCompositeInspection": true,
+  "actual48EdgeMaxAlpha": 0
+}

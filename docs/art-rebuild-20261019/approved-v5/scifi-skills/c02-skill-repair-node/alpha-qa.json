@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-repair-node",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 792326,
+  "partialAlphaPixels": 778217,
+  "opaquePixels": 1973,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    80,
+    83,
+    1201,
+    1186
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    80,
+    83,
+    53,
+    68
+  ],
+  "nearOpaquePixelCountGE240": 762916,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 863,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "a727ea3cdadad0c8c816192d1a68da4bcf008afd7dc4c39d68f982e10b89c8a6",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

@@ -1,0 +1,68 @@
+{
+  "topicId": "c02-skill-repair-node",
+  "assetId": "C02-SFV1-skill-repair-node",
+  "label": "修复节点",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-repair-node",
+    "topicId": "c02-skill-repair-node",
+    "label": "修复节点",
+    "category": "skill",
+    "png": "runtime/skill/skill-repair-node.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 24,
+  "sourceBoardCellIndexZeroBased": 8,
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    935
+  ],
+  "sourceCropSize": [
+    304,
+    303
+  ],
+  "sourceMappingEvidence": "Actual original 48x48 runtime visually inspected first, then matched by depicted action to full original board and exact source cell. Catalog independently agrees; alphabetical manifest order was not used.",
+  "functionalMotif": "One cyan-topped short node cylinder sits on a squat functional platform while a mechanical repair arm/tool services its side.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-repair-node.png",
+  "runtimeReferenceSha256": "911da5b48cd24bbdabc867ee7eb9228e536ae4692d5ba148cd52f3a2fdf7092d",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crops and separate QA only; new generated alpha will remain unchanged.",
+  "completeMotifCropBox": [
+    34,
+    638,
+    315,
+    892
+  ],
+  "completeMotifCropSize": [
+    281,
+    254
+  ],
+  "completeMotifSource": "source-complete-motif.png",
+  "legacySourceCropDefect": "Uniform crop includes the top strip of the next row rail-switch card at y=913..934 and clips the intended card right strip beyond x=309.",
+  "legacyBackgroundConflict": "Dark wall/floor/card backing is source scene content, excluded from the transparent functional icon.",
+  "restorationPlan": "Use the complete intended card as reference; restore full node platform and repair-tool silhouette, retain side-service action, exclude adjacent rail-switch fragment and nonfunctional environment. Keep raw exact legacy cell/runtime separately."
+}

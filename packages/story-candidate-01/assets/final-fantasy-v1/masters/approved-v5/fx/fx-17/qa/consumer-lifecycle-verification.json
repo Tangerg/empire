@@ -1,0 +1,524 @@
+{
+  "topicId": "C01-FX-17",
+  "type": "Source/export consumer-lifetime illustration, not a runtime test or live playback observation",
+  "normalMotionConsumer": "BoardView.animateHeal",
+  "effectLifetimeMs": 500,
+  "hit420msApplied": false,
+  "authoredSourceCount": 4,
+  "sourceClipFps": 12,
+  "sourceClipLoop": false,
+  "sourceClipNominalSeconds": "1/3",
+  "consumerDisplayedDurationsSeconds": [
+    "1/12",
+    "1/12",
+    "1/12",
+    "1/4"
+  ],
+  "terminalSampleStartMs": 250,
+  "terminalSampleTotalVisibleMs": 250,
+  "removalAtMs": 500,
+  "removalDiagnosticAddsAuthoredPhase": false,
+  "blankObservationSeconds": "1/12",
+  "numberOverlayOmitted": true,
+  "expectedTimestampSamples": [
+    {
+      "atMs": 0,
+      "authoredFrameIndex": 0,
+      "effectPresent": true
+    },
+    {
+      "atMs": 83.34,
+      "authoredFrameIndex": 1,
+      "effectPresent": true
+    },
+    {
+      "atMs": 166.67,
+      "authoredFrameIndex": 2,
+      "effectPresent": true
+    },
+    {
+      "atMs": 250,
+      "authoredFrameIndex": 3,
+      "effectPresent": true
+    },
+    {
+      "atMs": 333.34,
+      "authoredFrameIndex": 3,
+      "effectPresent": true
+    },
+    {
+      "atMs": 419,
+      "authoredFrameIndex": 3,
+      "effectPresent": true
+    },
+    {
+      "atMs": 420,
+      "authoredFrameIndex": 3,
+      "effectPresent": true
+    },
+    {
+      "atMs": 499,
+      "authoredFrameIndex": 3,
+      "effectPresent": true
+    },
+    {
+      "atMs": 500,
+      "authoredFrameIndex": null,
+      "effectPresent": false
+    }
+  ],
+  "files": [
+    {
+      "file": "consumer-500ms-removal-transparent@1x.apng",
+      "sha256": "9963a8b34b2bf599ec3982dc9daed657391b783fb5783c615a0897e5efeff467",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "663260e33244decf839d8d43834403cb411ddb8772efe49c65f749754d367e52",
+        "7c452268f3a187b4b20e7f179c80ed5756115e3d30247ea5d1ec3cea665cf1b4",
+        "0beca2b38364e4cab1e4e320702afc323bbec853d19ed992cb9917873e20370d",
+        "940664e7ebd1ffe984cb3cb4b6487e1bb671ae5b977cbb32fdbb78d48438c245",
+        "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-black@1x.apng",
+      "sha256": "c15d72a559c7b9bddaff583170b3250e1f4c4dd363f0e8808df76c0064112129",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "dab7854643792615b2a780be082a26cd374e6a46cb2c950fc5d894053e5ad6f1",
+        "ab6acaa2a3ab7edf3cf2f0b06cff184e858d2de1278dbec5c4aac656b372fac3",
+        "abd2c7c9c74f670d991c45ee9bb8e2c4fc653cc14df17fec54c24316ecd03ea0",
+        "b4e8d41f22f06c1674586619d07e275a24ae769b05cc99dc488bfb0ac7a60b1f",
+        "df894663e850afa3619ed3d3825d9d1c6520f15fcd76aac25c4407c405fa8cfe"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-white@1x.apng",
+      "sha256": "111808ce03ce3dd16319030c3693cc1f07b6b7af84ee97544b682f24add7d23e",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "a5cf1f99ad8c9c682b54608ce7531902d7d2ef6932cc042f52fceeb9fe5bd490",
+        "02a64b0b6080a175fce2a514540f2a86237a9a7d027f7987f2fb0236ff38c7df",
+        "9054388083821eb178656dd362c3cb3f183555ce70f91ebedcf8579bc8c2839f",
+        "f51bbf321569423ea0bd14efe0ee808904f56b93adc6054a5f8f483d27e1bc49",
+        "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-bright-stone@1x.apng",
+      "sha256": "fd2b0b6b9b3f648f5b5f4bda3924a3c371192acfbf3e22126c360989e44e8785",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "35d7782194cdab4b8517fe3ea4f3638e7afb207fb120748a72b1a2d51261095a",
+        "71259f9f5cb4d71a315f39349f0cddd0cfe33fb8bd458ce8e959ac68205c2ec9",
+        "1a19c15cfc67b922542d24887be1a77e157d33bbb5302e15fdbfd6574a91eb3c",
+        "57a182614ce06f944b7b844b98982dfa6824afe7a4d70632dc4c4d009aca6d1a",
+        "075ae09a2d17ac7bc2a1e6fc8fd72058bb2fc98f95e590bc429aa2fd57d94db8"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-green-ground@1x.apng",
+      "sha256": "29d14764fad375846416ab792d0790b3962597ff85f9de1c8f8225d97e705a34",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "57e0b07a75c5865b1ef1d3e761b7394864ce6c8a3a36874e71e912cc867b31fe",
+        "f75619e7154e093a19a8ca13a830f57006753a53dce2b7a4705f0b5ab899efad",
+        "777489aa8025b456bc0b2ebcf1e46e4900f77b55da789d50bb25b0e0a5ad25ac",
+        "5e5ecb5ab5e39805153a734dd7095efc4d575af868327ae47857fa0fbac3a71a",
+        "31f33330609fa3872cf15a2410c7ff380dadadc826a8a7a55588529d9e5e8dfb"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-dark-earth@1x.apng",
+      "sha256": "0317b0b9fae0430bb02316836c82c2930bd77292c378a74af08c6b9b058bffdc",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "260ecc8e1026163ad0f0ea4c9c9b97cd2d489b707d39b4124feeba7b745e7204",
+        "abbbf95bf0723bd951d69a0ae6d6ae668047ad6accbf4b1c61390eaad1788694",
+        "fc84ece6fa8b9644c8763c75cbd7f436e9a25150a057c342df1e55a3b29fc03b",
+        "6151c5b26ea0280e531268502c7aec077c1b3edc3f2dce9865a2c3783edc831d",
+        "35f7fe15bdc217284ed19a43cbe94ae02949b87a1df96eaea7a7611d7203c8e0"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-checker@1x.apng",
+      "sha256": "c4dfb0948f5b29e84506ce09f572dfb35002afb3049714e8e46a88dbda03bd46",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "34ecf601f62183e7e9344a8d3ac3d5750061631c102be08601fa6a516db2c7c1",
+        "7a85bbe22b84f78535e15d05b70e26abfdfe1e83bacd03d59e860d0a5a9f9025",
+        "dfb666f35145b5bb6d989d9237c2313efafe01dbaf81c720d92b4725a562e896",
+        "cfce0bd06c8cab6673672528274117a1a29137e9b6b6c4bac03549ad90f581bb",
+        "151a5ccfd78067a75b1d8cf02f04a6877b4cdff21c2f0c24c43a2167c27f2641"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-transparent@2x.apng",
+      "sha256": "ff260fe84426615c1cd49fa2f02c1b9e51028da35a549d0e48854d7bbb8e5c90",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "0199fac8add4244f96c22bcc8eb8915d3c8acc37a903fba90e88af9987d26605",
+        "5bdcc8c38ff8d85ccd62e8bcf9028a07a140dd535c71408794c8b1c1adffc999",
+        "51425194de7d56963328ca4b6eeaa080e576262dd411527db49a3a14674bec1c",
+        "97dfba74d84960fcbf110c9751b5b2edcbb89e2a0abf416c093b85443d54cfc3",
+        "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-black@2x.apng",
+      "sha256": "02ef85c7de1af2f64dd922305fff9483aadae3a9fea91f6ae444ba47d19f3c2d",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "cc61601eec5887e4e59aac263eafa20e3179449abbb5621d7d436d4c113d56ad",
+        "5d6a51b13891e9f37747becf97e456bb1aa7023a920797eb17042762bb69d790",
+        "dbe2f86526ccd364813d9d082bca614f5842044f0257c973321b264129e4b848",
+        "7ebfa7a0774d243ddf7cca3ca9561c96c8975fb07772ae1cb02c50f9f9ccaa66",
+        "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-white@2x.apng",
+      "sha256": "00209f6ee020bd3a518438807e8d79a816ca8315a2d73fdf4181f3ecf3f572b4",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "a28b45247be48da12786e7248e8260c499ab76956d571133a97c38cfd1dd8f25",
+        "6bb8c1c530ca2f978e3e0871a9c62367e1322b99a34ba154ac95432a1b596116",
+        "b669535dc9083526d227f64aaddebfed5dd4f65a4b28731945e16b7827022900",
+        "aa52469f6457c4f0a14a35fdeccfcdc443321e4e525dadcbc64c5b51e2f1dc8b",
+        "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-bright-stone@2x.apng",
+      "sha256": "c483dd51d34a50f5fee8971ad529334c4fdb71afa4f64dd8329e1b5a7e86afff",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "a1cea8a8f283148daf5dffa1be4ff8c45fb93496ab9038bf0b226048f096e45d",
+        "b23bbe61e9e8cc7bc02fc469b26208d02399eb99027e16a64c24cdc50e90ddd2",
+        "6e906c0bb249bde8adbedfbac8897ec9aacf03b08d2988a7255b6c0a4f033f71",
+        "c1fc1905e35942fe65a587ac56d8802e8d7eeb357d35f3cbd214234dfb22910a",
+        "276a75248832db1c8a16ace134687dfb23d8b207a6403831d674cf5d822e21c2"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-green-ground@2x.apng",
+      "sha256": "2242a841dad9e89708cf02c104a63399ff2dc01c0b9d2026017c236041122f23",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "00bdf175c5429f8aa076c5923ef8f9b2317bf8fe41b04d9147432cf265bee40b",
+        "23364c13a533275ce0d52c96347e0bc41a4240c083a6a09db641bcf11ab40dff",
+        "28955cdfe114e0608c5dcb3418d7f76b9520db622840bb87e9c7bfc20030b447",
+        "50a240db7a1e8ee64c902ba12413d7059f683a86e74cbb98d39e7a09575e27f0",
+        "40031e7edc73fd591418a19ae89d4e361f0574149c9970f041daf4d74833a701"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-dark-earth@2x.apng",
+      "sha256": "b240844b8f04e2b33ba8d581c7aa74a61198eef0b0845f853f89c8b0c1b2de22",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "21faa6554f743540b77abdcb4dedbf40e170455b05610739fcab08710abba32b",
+        "0560dffacef15eba3e0ce2e6c9dbe4dcdb2138e6c1ad997aec286084fa1cac4c",
+        "9843c6130bf85cf38ac54e4f9215d73610d41a68a8d0789d2c6c40c598b4dfa4",
+        "9c6b8a91f1405536cb66ab812a7c695c6802ff9bfa87bc5d8e38848bf2b435ff",
+        "ba08fdcbaf7627589c60d88020b923f80f777148bc756c0e9f4f9a3f521a0a54"
+      ]
+    },
+    {
+      "file": "consumer-500ms-removal-checker@2x.apng",
+      "sha256": "304c19f576bd28c40cd145f62fd4defc9bc9bf2be1685accf7e1799be3040fb2",
+      "numPlays": 1,
+      "frameCount": 5,
+      "authoredSourceCount": 4,
+      "lastSample": "Empty effect at 500 ms, diagnostic removal only; not a fifth authored phase",
+      "frameStartsSeconds": [
+        "0",
+        "1/12",
+        "1/6",
+        "1/4",
+        "1/2"
+      ],
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/4",
+        "1/12"
+      ],
+      "effectLifetimeSeconds": "1/2",
+      "includingRemovalObservationSeconds": "7/12",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "421cfb3792ab6f0768e4dae4511d0e89ae14bf3e092767a211a315a4a9276df0",
+        "861b844f01f7129eb06d1bf4d2818df63158f8d9de8ca00275677de67da49d22",
+        "2be6d0a8cce80272feff4bb7873713c1b39ccff705d8c48fd6094523f283daaf",
+        "815dd45e3cabf5324aa391f780989393ab442871901f1fe29ac9b59e89eeb9a9",
+        "6d8ba8bedc324c721bf582719e30e48e586b1c94399849a407f44f13555d9b40"
+      ]
+    }
+  ],
+  "verifiedFrames": 70,
+  "parentReportedRuntimeRegression": "Parent reported on 2026-10-20T06:03:50Z that actual BoardView heal 500 ms removal, final frame 250–499 ms hold and separate hit 420 ms regressions passed. New source masters were not yet bound at that time.",
+  "newSourcesIntegrated": false,
+  "browserObserved": false
+}

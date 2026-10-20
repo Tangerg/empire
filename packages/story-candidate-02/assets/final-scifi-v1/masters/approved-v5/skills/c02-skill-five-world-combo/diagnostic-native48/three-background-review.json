@@ -1,0 +1,22 @@
+{
+  "topicId": "c02-skill-five-world-combo",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "twoPixelBorderMaxAlpha": 0,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, all five planet colors, outer ring and central three-spoke hub remain legible on white, black and olive. Full-native white and source512 black/olive inspections show opaque planetary surfaces and clean transparent ring gaps. The shortest visible source margin is 45px, less than the prompt target but with no clipped subject; whole-canvas export retains a fully zero-alpha 2px border.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}

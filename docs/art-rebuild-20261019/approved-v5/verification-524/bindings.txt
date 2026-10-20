@@ -1,0 +1,19 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-fx.test.ts (50 tests) 236ms
+ ✓ packages/story-candidate-02/src/status-art.test.ts (1 test) 5ms
+ ✓ packages/story-candidate-02/src/skill-art.test.ts (49 tests) 317ms
+ ✓ packages/game-ui/src/ui/__tests__/candidate-fx-playback.test.ts (2 tests) 225ms
+
+ Test Files  4 passed (4)
+      Tests  102 passed (102)
+   Start at  14:15:52
+   Duration  9.60s (transform 3.72s, setup 0ms, collect 6.51s, tests 783ms, environment 1.01s, prepare 295ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

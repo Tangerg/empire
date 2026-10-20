@@ -34,7 +34,7 @@
   "functionalMotif": "Five different colored planetary disks arranged around one cyan circular ring, with a cyan center hub and three spokes.",
   "semanticConflictDetected": false,
   "labelAmbiguity": "The Chinese label is treated as catalog identity; the original picture determines the motif. No invented story or authored gameplay use is claimed.",
-  "oldSourceCondition": "The original board has an opaque magenta field. The old keyed 48px runtime has faint magenta/purple antialiasing contamination. The full verified grid crop contains the complete intended motif without neighboring-card contamination or observable clipping. No old-keyed pixels are reused in the new generated master.",
+  "oldSourceCondition": "The original board has an opaque saturated magenta field. The legacy runtime was produced by the old crop/chroma/despill workflow and has softened colored boundaries; the paired-arm original particularly shows pale colored fringe. Intentional purple parts in the planet and downgrade motifs are not mislabeled as contamination. The verified grid crop contains the complete intended motif without observable clipping or neighboring-card bleed. Original board and runtime bytes are preserved; no old keyed pixels are reused in the generated master.",
   "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-five-world-combo.png",
   "runtimeReferenceSha256": "6c8363d5739406c7e575972c19e358fdc2add4fec93abccbaa5adbed90c7a05a",
   "runtimeContract": {
@@ -47,5 +47,6 @@
     "noHdEntry": true
   },
   "formalRuntimeIntegration": false,
-  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting."
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting.",
+  "legacyBuilderEvidence": "The read-only build_final_scifi_v1.py chroma() function invokes remove_chroma_key.py, then additionally removes saturated magenta pixels; fit_transparent() crops to alpha bounds. This is historical provenance only. New previews use whole-canvas contain and preserve generated alpha."
 }

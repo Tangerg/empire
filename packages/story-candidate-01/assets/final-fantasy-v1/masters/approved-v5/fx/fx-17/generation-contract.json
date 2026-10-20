@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "topicId": "C01-FX-17",
   "label": "治疗",
-  "status": "four-phase nonloop heal source contract approved by parent at 2026-10-20T05:58:28Z; peak source review before other phases",
+  "status": "accepted-source-static-phase-candidate",
   "phaseOrder": [
     "healing-onset",
     "leaf-spiral",
@@ -202,5 +202,6 @@
     "Separate labeled consumer diagnostic preserves first three 1/12-second frames then fourth 1/4-second frame, showing 500 ms total. Removal is explicitly shown separately and is not a fifth authored phase.",
     "Parent owns actual integration tests for heal binding, final-frame hold, removal at 500 ms and runtime state invariants. No browser-observed claim."
   ],
-  "authorityNote": "Current manifest and runtime use anchor16,16. Historical legacy builder/audit anchor16,24 is not restored."
+  "authorityNote": "Current manifest and runtime use anchor16,16. Historical legacy builder/audit anchor16,24 is not restored.",
+  "parentFinalStaticAcceptance": "Accepted on 2026-10-20T06:11:02Z after four-phase native and terminal review; 0.65 logical-pixel center variation explicitly accepted for this asset."
 }

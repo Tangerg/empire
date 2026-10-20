@@ -1,0 +1,77 @@
+{
+  "topicId": "C01-FX-17",
+  "label": "治疗",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-05.png",
+    "sha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5",
+    "row1Based": 1,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-row.png",
+    "peakSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-f2.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-17.png",
+    "builderMapping": "build_final_fantasy_v1.py build_fx appends four rows per atlas in order; FX17 is atlas05 row1."
+  },
+  "originalRowOneBased": 1,
+  "semanticPhases": [
+    "Compact sage ellipse around a centered olive medical plus, two beige crossed-bandage pairs and a few olive leaves.",
+    "Broader developing spiral with the same centered plus, bandages moving along its sides, and more lifted leaves.",
+    "Fullest broad sage elliptical orbit, centered plus and two bandage pairs with leaves distributed around the arc.",
+    "Cross and bandages are gone; sparse separated olive leaves, thin broken sage arcs and a few small cream motes remain."
+  ],
+  "contract": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/generation-contract.json",
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-17",
+    "topicId": "C01-FX-17",
+    "label": "治疗",
+    "category": "fx",
+    "png": "runtime/fx/fx-17.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/consumer-audit.json",
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/current-runtime@1x.png",
+      "sha256": "a138612e4bbeec3384bc31f16c101008d75e45de4728d683c8113c35babf9e9a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/current-runtime@2x.png",
+      "sha256": "0a8a337e0b5662cab6af992cd8db05e94822ecbf1dbceaee2c55f1e447807d5e"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-board.png",
+      "sha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-f0.png",
+      "sha256": "f8d303c26b0f1538694eb1eb4bbe72f70a87c18d063526933ebb04f194901e63"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-f1.png",
+      "sha256": "85cf80252c74dee7a038eabb5c2efe9a0744a0fc835529e63b2ce1c93192a1e9"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-f2.png",
+      "sha256": "bb31f301511f34baffced6c0a854a209dc423b33c56c0700181bc3252252a91a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-f3.png",
+      "sha256": "39b3d240931c49a5c476f5d0d099bc5174589f84afd755a635539fee33ef125d"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-17/reference/original-row.png",
+      "sha256": "15a535a82b76b6e82fdb9e1dc6717e1c6b50d8ad888cd2844a75ab925b983189"
+    }
+  ]
+}
