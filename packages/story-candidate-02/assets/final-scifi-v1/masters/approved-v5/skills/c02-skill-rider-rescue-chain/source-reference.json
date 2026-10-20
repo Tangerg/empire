@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-rider-rescue-chain",
+  "assetId": "C02-SFV1-skill-rider-rescue-chain",
+  "label": "游骑连救",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-rider-rescue-chain",
+    "topicId": "c02-skill-rider-rescue-chain",
+    "label": "游骑连救",
+    "category": "skill",
+    "png": "runtime/skill/skill-rider-rescue-chain.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 41,
+  "sourceBoardCellIndexZeroBased": 9,
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    935
+  ],
+  "sourceCropSize": [
+    303,
+    303
+  ],
+  "sourceMappingEvidence": "Actual original 48x48 runtime visually inspected first, then matched by depicted action to full original board and exact source cell. Catalog independently agrees; alphabetical manifest order was not used.",
+  "functionalMotif": "One small rescue vehicle at upper-left pulls two dark human figures at lower-right through two separate chain links with local dust puffs.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-rider-rescue-chain.png",
+  "runtimeReferenceSha256": "51ad0fe29fab1aab10417963eee76db733fa5b12b0940977db3ff0470b0de4a0",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crops and separate QA only; new generated alpha will remain unchanged."
+}

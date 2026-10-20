@@ -1,0 +1,51 @@
+{
+  "topicId": "c02-skill-five-world-combo",
+  "assetId": "C02-SFV1-skill-five-world-combo",
+  "label": "五界协同",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-five-world-combo",
+    "topicId": "c02-skill-five-world-combo",
+    "label": "五界协同",
+    "category": "skill",
+    "png": "runtime/skill/skill-five-world-combo.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 45,
+  "sourceCropBox": [
+    319,
+    945,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates the identity and original order. No alphabetical final-manifest slot inference was used.",
+  "functionalMotif": "Five different colored planetary disks arranged around one cyan circular ring, with a cyan center hub and three spokes.",
+  "semanticConflictDetected": false,
+  "labelAmbiguity": "The Chinese label is treated as catalog identity; the original picture determines the motif. No invented story or authored gameplay use is claimed.",
+  "oldSourceCondition": "The original board has an opaque magenta field. The old keyed 48px runtime has faint magenta/purple antialiasing contamination. The full verified grid crop contains the complete intended motif without neighboring-card contamination or observable clipping. No old-keyed pixels are reused in the new generated master.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-five-world-combo.png",
+  "runtimeReferenceSha256": "6c8363d5739406c7e575972c19e358fdc2add4fec93abccbaa5adbed90c7a05a",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ],
+    "noHdEntry": true
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting."
+}

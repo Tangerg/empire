@@ -1,0 +1,47 @@
+{
+  "topicId": "c02-skill-memory-reality-overlap",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 779044,
+  "partialAlphaPixels": 791832,
+  "opaquePixels": 1640,
+  "nearOpaquePixelCountGE240": 779814,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    120,
+    133,
+    1146,
+    1124
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    120,
+    133,
+    108,
+    130
+  ],
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48TwoPixelBorderMaxAlpha": 0,
+  "actual48TwoPixelBorderNonzeroCount": 0,
+  "actual48NearOpaquePixelsGE240": 898,
+  "sourceNumericContractPass": true,
+  "visualCompositeReviewPending": true,
+  "sha256": "f29e62835179680742e8832b505bba0e4f3f967716d20ba56c45c2b8954ac0a5",
+  "matchesRawGeneratedBytes": true,
+  "derivation": "Offline diagnostic only: entire generated canvas Lanczos contain44x44 centered in48x48 with2px margin; no bbox crop, alpha change, recolor or cleanup. All source bytes preserved.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}
