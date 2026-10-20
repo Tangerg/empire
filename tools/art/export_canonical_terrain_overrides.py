@@ -198,7 +198,7 @@ def plan(root, catalog):
             or not isinstance(data['assets'], dict)):
         raise ValueError('expected schemaVersion 1 and assets object')
     if any(topic not in TOPICS for topic in data['assets']):
-        raise ValueError('unsupported canonical terrain topic; only BORDER1–4 are accepted')
+        raise ValueError('unsupported canonical terrain topic; only explicitly reviewed material families are accepted')
     if not data['assets']:
         return []
     targets = validate_manifests(root, data['assets'])

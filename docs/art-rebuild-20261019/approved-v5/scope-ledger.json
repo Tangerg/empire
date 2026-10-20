@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 389,
+    "formalBound": 397,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 29,
+      "narrative-static": 33,
       "skill": 48,
       "status": 24,
-      "terrain": 8
+      "terrain": 12
     },
-    "rawPreservedTopics": 393,
+    "rawPreservedTopics": 397,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1175,11 +1175,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-control-fragment/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-control-fragment.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Canonical object identity preserved rather than invented ending/language/ownership meanings",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter0/control or<=1 residue documented for other3; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-CROWN-FRAGMENT",
@@ -1212,11 +1217,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-dragon-alliance-clasp/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-dragon-alliance-clasp.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Canonical object identity preserved rather than invented ending/language/ownership meanings",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter0/control or<=1 residue documented for other3; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-EVACUATION-MAP",
@@ -1287,13 +1297,20 @@
       "category": "narrative-static",
       "label": "自由誓石",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-free-oath-stone/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-free-oath-stone.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Canonical object identity preserved rather than invented ending/language/ownership meanings",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter0/control or<=1 residue documented for other3; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-GRANARY-KEY",
@@ -1371,13 +1388,20 @@
       "category": "narrative-static",
       "label": "三族盟约扣件",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-three-peoples-clasp/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-three-peoples-clasp.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Canonical object identity preserved rather than invented ending/language/ownership meanings",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter0/control or<=1 residue documented for other3; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-SCENE-ARCHIVE-FORGE-OPEN",
@@ -3509,11 +3533,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/forge-1/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; stone/grate, molten material, hex paving, or archive rails/parchment identities",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Forge4 uses600px windows to retain whole coupling/paper motifs. Paving/rail joint resets across variants and missing complete trench-bank decoration remain explicit limits",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,28derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-FORGE-2",
@@ -3525,11 +3554,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/forge-2/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; stone/grate, molten material, hex paving, or archive rails/parchment identities",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Forge4 uses600px windows to retain whole coupling/paper motifs. Paving/rail joint resets across variants and missing complete trench-bank decoration remain explicit limits",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,28derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-FORGE-3",
@@ -3537,13 +3571,20 @@
       "category": "terrain",
       "label": "符文地面",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/forge-3/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-3.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; stone/grate, molten material, hex paving, or archive rails/parchment identities",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Forge4 uses600px windows to retain whole coupling/paper motifs. Paving/rail joint resets across variants and missing complete trench-bank decoration remain explicit limits",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,28derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-FORGE-4",
@@ -3551,13 +3592,20 @@
       "category": "terrain",
       "label": "档案炉区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/forge-4/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-4.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; stone/grate, molten material, hex paving, or archive rails/parchment identities",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Forge4 uses600px windows to retain whole coupling/paper motifs. Paving/rail joint resets across variants and missing complete trench-bank decoration remain explicit limits",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,28derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-GRAVEYARD-1",
