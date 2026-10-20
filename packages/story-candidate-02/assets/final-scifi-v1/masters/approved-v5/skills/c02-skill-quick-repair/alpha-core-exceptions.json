@@ -1,0 +1,33 @@
+{
+  "topicId": "c02-skill-quick-repair",
+  "diagnosticOnly": true,
+  "criterion": "Alpha below 240 within 8-pixel erosion of alpha >= 8 mask",
+  "pixels": [
+    {
+      "xy": [
+        697,
+        711
+      ],
+      "rgba": [
+        40,
+        170,
+        207,
+        214
+      ]
+    },
+    {
+      "xy": [
+        697,
+        712
+      ],
+      "rgba": [
+        24,
+        99,
+        126,
+        223
+      ]
+    }
+  ],
+  "count": 2,
+  "sourceEdited": false
+}

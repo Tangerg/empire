@@ -1,0 +1,20 @@
+{
+  "topicId": "c02-skill-boarding",
+  "label": "接舷突入",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Visual inspection of actual original runtime and full original board, independently confirmed by zero-difference in-memory legacy pixel reconstruction.",
+  "preservedMotifs": "One dark running humanoid crosses a broken cyan barrier in a thick tan sci-fi doorway, with displaced rubble at the right and lower edge. The dark body separates from the cyan breach plane.",
+  "rendering": "Chunky matte cel planes, bold dark silhouette, functional sci-fi materials and bounded action color.",
+  "noBroadExteriorGlowObserved": true,
+  "inspection": [
+    "Full 1254x1254 selected master",
+    "256x256 source composites on white, black and olive",
+    "Actual 48x48 full-canvas diagnostic on white, black and olive"
+  ],
+  "parentReview": "Parent confirmed all four high-resolution original-slot relations and actual 48px white/black/olive previews; main binding remains a separate step.",
+  "native48Limitations": "Individual rubble chips and fine door seams merge at 48 pixels. The doorway, running body and breach action remain legible. The result contains more rubble pieces than the prompt preference, without altering the source action.",
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful stylization; no label/pixel mismatch or topic reassignment."
+}

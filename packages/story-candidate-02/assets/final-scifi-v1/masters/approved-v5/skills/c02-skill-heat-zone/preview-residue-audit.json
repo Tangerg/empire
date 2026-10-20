@@ -1,0 +1,31 @@
+{
+  "rawPreviewRedSpeckleAudit": {
+    "rgbPredicate": "R > 200, G < 50, B < 50",
+    "matchingPixelCount": 23650,
+    "alphaHistogram": {
+      "1": 18776,
+      "2": 829,
+      "3": 163,
+      "4": 53,
+      "5": 19,
+      "6": 204,
+      "7": 10,
+      "184": 1,
+      "240": 1,
+      "243": 3,
+      "244": 3,
+      "245": 17,
+      "246": 30,
+      "247": 24,
+      "248": 27,
+      "249": 56,
+      "250": 213,
+      "251": 284,
+      "252": 1326,
+      "253": 1474,
+      "254": 74,
+      "255": 63
+    },
+    "note": "Raw RGB visualization can expose colors beneath transparent pixels. Accepted on correctly alpha-composited black, white and olive backgrounds; no source alpha cleanup."
+  }
+}

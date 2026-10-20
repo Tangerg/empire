@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Whole authored canvas contained at 44 x 44 and centered inside 48 x 48 with a 2 px logical margin. No visible-bounds recrop. This is a diagnostic reproduction of static-export geometry, not a formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source512-on-white.png",
+    "qa-source512-on-black.png",
+    "qa-source512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "The overhead segmented pipe and central nozzle, large central water drop, six small surrounding drops and two cupped helping hands are retained. The short bounded cyan flow segment belongs to the nozzle. No ground disk, aura or added symbol is introduced.",
+  "rawMasterSha256": "5d0a00d41a0663ca07fd3fd5e7d62562ef3d42777220e3173fd5310ed490d56e",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48 px fine seams and minor material highlights merge; the main functional silhouette and action cues remain legible. No live scene, interactive state or UI-overlay claim."
+}

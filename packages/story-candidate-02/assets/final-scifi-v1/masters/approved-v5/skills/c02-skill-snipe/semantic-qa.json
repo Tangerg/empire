@@ -1,0 +1,20 @@
+{
+  "topicId": "c02-skill-snipe",
+  "label": "长束狙击",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Visual inspection of actual original runtime and full original board, independently confirmed by zero-difference in-memory legacy pixel reconstruction.",
+  "preservedMotifs": "The squat lower-left gun, narrow diagonal orange beam, upper-right circular reticle and central hit star remain separately readable. The ring and all four aiming ticks are complete.",
+  "rendering": "Chunky matte cel planes, bold dark silhouette, functional sci-fi materials and bounded action color.",
+  "noBroadExteriorGlowObserved": true,
+  "inspection": [
+    "Full 1254x1254 selected master",
+    "256x256 source composites on white, black and olive",
+    "Actual 48x48 full-canvas diagnostic on white, black and olive"
+  ],
+  "parentReview": "Parent confirmed all four high-resolution original-slot relations and actual 48px white/black/olive previews; main binding remains a separate step.",
+  "native48Limitations": "The small star points, gun panel seams and muzzle rings simplify at 48 pixels. The required focus-and-target relation remains clear. The right visible margin is 34 native pixels, below the requested 7 percent but complete and unclipped.",
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful stylization; no label/pixel mismatch or topic reassignment."
+}

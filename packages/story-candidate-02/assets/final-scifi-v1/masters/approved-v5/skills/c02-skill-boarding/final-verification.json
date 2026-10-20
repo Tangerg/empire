@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-skill-boarding",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "862ec81c7edc24fca2798115d82ce05e2d7d5a38a4e5bac3d1cbffd342bc2127",
+    "raw-native-v1.png": "862ec81c7edc24fca2798115d82ce05e2d7d5a38a4e5bac3d1cbffd342bc2127",
+    "native.png": "862ec81c7edc24fca2798115d82ce05e2d7d5a38a4e5bac3d1cbffd342bc2127",
+    "master.png": "862ec81c7edc24fca2798115d82ce05e2d7d5a38a4e5bac3d1cbffd342bc2127"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Individual rubble chips and fine door seams merge at 48 pixels. The doorway, running body and breach action remain legible. The result contains more rubble pieces than the prompt preference, without altering the source action.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:29:26.796795+00:00"
+}

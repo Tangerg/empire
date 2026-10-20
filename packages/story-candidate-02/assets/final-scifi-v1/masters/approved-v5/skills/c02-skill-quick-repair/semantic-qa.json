@@ -1,0 +1,20 @@
+{
+  "topicId": "c02-skill-quick-repair",
+  "label": "快速维修",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Visual inspection of actual original runtime and full original board, independently confirmed by zero-difference in-memory legacy pixel reconstruction.",
+  "preservedMotifs": "Two separate gloved hands hold two tools converging on one localized cyan-white service spark beside a squat mechanical housing. The cyan circular side inset, top peg, cable and loose cover plate remain source-consistent.",
+  "rendering": "Chunky matte cel planes, bold dark silhouette, functional sci-fi materials and bounded action color.",
+  "noBroadExteriorGlowObserved": true,
+  "inspection": [
+    "Full 1254x1254 selected master",
+    "256x256 source composites on white, black and olive",
+    "Actual 48x48 full-canvas diagnostic on white, black and olive"
+  ],
+  "parentReview": "Parent confirmed all four high-resolution original-slot relations and actual 48px white/black/olive previews; main binding remains a separate step.",
+  "native48Limitations": "The small spark points, finger divisions and service-panel details simplify at 48 pixels. The converging tools, device and localized repair point remain readable. Two internal diagnostic alpha values are below 240 near the service spark; the source is retained unchanged.",
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful stylization; no label/pixel mismatch or topic reassignment."
+}

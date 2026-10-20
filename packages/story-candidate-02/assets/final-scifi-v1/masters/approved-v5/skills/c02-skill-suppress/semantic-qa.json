@@ -1,0 +1,20 @@
+{
+  "topicId": "c02-skill-suppress",
+  "label": "轨道压制",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Visual inspection of actual original runtime and full original board, independently confirmed by zero-difference in-memory legacy pixel reconstruction.",
+  "preservedMotifs": "The short left turret and large rightward orange fire fan remain dominant. A wide bounded cone distinguishes suppression from the snipe icon. Three debris pieces sit inside the fan.",
+  "rendering": "Chunky matte cel planes, bold dark silhouette, functional sci-fi materials and bounded action color.",
+  "noBroadExteriorGlowObserved": true,
+  "inspection": [
+    "Full 1254x1254 selected master",
+    "256x256 source composites on white, black and olive",
+    "Actual 48x48 full-canvas diagnostic on white, black and olive"
+  ],
+  "parentReview": "Parent confirmed all four high-resolution original-slot relations and actual 48px white/black/olive previews; main binding remains a separate step.",
+  "native48Limitations": "Fine fan rays and turret bevels simplify at 48 pixels; the complete cone and broad base remain readable. The right visible margin is 34 native pixels, below the requested 7 percent but complete and unclipped.",
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful stylization; no label/pixel mismatch or topic reassignment."
+}

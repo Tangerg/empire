@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Whole authored canvas contained at 44 x 44 and centered inside 48 x 48 with a 2 px logical margin. No visible-bounds recrop. This is a diagnostic reproduction of static-export geometry, not a formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source512-on-white.png",
+    "qa-source512-on-black.png",
+    "qa-source512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "The compact left-facing cannon, pivoting cradle, round deployment base, side stabilizer and cyan curved downward arrow are retained. The legacy grid crop includes an unrelated lower-card strip; the recovered complete intended card, not that strip, was used as the subject reference. The dark source card and its backdrop were excluded.",
+  "rawMasterSha256": "6cf38a062d974d197a4c93597ab1a49cd8ff88a2cc02407e9dad87c726c0afc2",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48 px fine seams and minor material highlights merge; the main functional silhouette and action cues remain legible. No live scene, interactive state or UI-overlay claim."
+}

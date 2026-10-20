@@ -1,0 +1,79 @@
+{
+  "topicId": "c02-skill-deploy-turret",
+  "assetId": "C02-SFV1-skill-deploy-turret",
+  "label": "部署炮台",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-deploy-turret",
+    "topicId": "c02-skill-deploy-turret",
+    "label": "部署炮台",
+    "category": "skill",
+    "png": "runtime/skill/skill-deploy-turret.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 26,
+  "catalogIndexZeroBased": 26,
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    935
+  ],
+  "sourceMappingEvidence": "Actual48 runtime visually inspected first; complete boards inspected and subject independently matched. Catalog sequence agrees with visual result. Alphabetical runtime-manifest order was not used. Legacy builder manifest-complete.json is absent; only its grid algorithm was read, never executed.",
+  "functionalMotif": "Compact forward-left cannon turret on mechanical round base with cyan downward curved deployment arrow",
+  "semanticConflictDetected": false,
+  "legacyBackgroundConflict": "Boards02 embeds dark scene cards; cards, ground/water backgrounds and glow are excluded from the new transparent icon.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-deploy-turret.png",
+  "runtimeReferenceSha256": "913192bab21e37bab541fe26701e1fe9894bfaf3268f66e6b38cb517188e6633",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact original reference crop and separate QA diagnostics only; generated raw/master kept immutable.",
+  "completeMotifCropBox": [
+    638,
+    638,
+    919,
+    892
+  ],
+  "legacySourceCropDefect": "Legacy uniform grid crop includes a strip of the next card below; complete source card recovered separately.",
+  "labelPixelConflictDetected": false,
+  "completeMotifSource": "source-complete-motif.png",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fb6c4568-21de-4287-9746-7a8913b7e373.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-deploy-turret/source-complete-motif.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-deploy-turret/style-reference-cargo-crates.png"
+  ],
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "The compact left-facing cannon, pivoting cradle, round deployment base, side stabilizer and cyan curved downward arrow are retained. The legacy grid crop includes an unrelated lower-card strip; the recovered complete intended card, not that strip, was used as the subject reference. The dark source card and its backdrop were excluded.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "liveGameVerified": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-deploy-turret/master.png"
+}

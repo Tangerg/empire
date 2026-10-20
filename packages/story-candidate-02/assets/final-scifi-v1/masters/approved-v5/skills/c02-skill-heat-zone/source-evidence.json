@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-skill-heat-zone",
+  "assetId": "C02-SFV1-skill-heat-zone",
+  "label": "热灯区",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-heat-zone",
+    "topicId": "c02-skill-heat-zone",
+    "label": "热灯区",
+    "category": "skill",
+    "png": "runtime/skill/skill-heat-zone.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 14,
+  "catalogIndexZeroBased": 14,
+  "sourceCropBox": [
+    632,
+    945,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual48 runtime visually inspected first; complete boards inspected and subject independently matched. Catalog sequence agrees with visual result. Alphabetical runtime-manifest order was not used. Legacy builder manifest-complete.json is absent; only its grid algorithm was read, never executed.",
+  "functionalMotif": "Squat heat lamp with orange light panels, circular heated zone, outlined orange dome and three rising heat waves",
+  "semanticConflictDetected": false,
+  "legacyBackgroundConflict": "Magenta source background is chroma, not part of the subject.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-heat-zone.png",
+  "runtimeReferenceSha256": "7f3bc9de9e56758a064870d0b148d5ca1587366735ab97460871a1cd3660f68b",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact original reference crop and separate QA diagnostics only; generated raw/master kept immutable.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2442d9f1-1691-4c3c-b452-a9be131d9e7e.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-heat-zone/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-heat-zone/style-reference-cargo-crates.png"
+  ],
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "The stout industrial lamp, two orange heater panels, bounded orange zone rim and dome arc, and three rising waves are retained. The original floor, cracks and loose sparks are excluded. The warmth cue uses painted opaque strokes with transparent gaps; no filled energy dome. Raw RGB preview residue is documented separately and remains unchanged in the alpha-preserved master.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "liveGameVerified": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-heat-zone/master.png"
+}

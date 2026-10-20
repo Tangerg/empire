@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Whole authored canvas contained at 44 x 44 and centered inside 48 x 48 with a 2 px logical margin. No visible-bounds recrop. This is a diagnostic reproduction of static-export geometry, not a formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source512-on-white.png",
+    "qa-source512-on-black.png",
+    "qa-source512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "The stout industrial lamp, two orange heater panels, bounded orange zone rim and dome arc, and three rising waves are retained. The original floor, cracks and loose sparks are excluded. The warmth cue uses painted opaque strokes with transparent gaps; no filled energy dome. Raw RGB preview residue is documented separately and remains unchanged in the alpha-preserved master.",
+  "rawMasterSha256": "8b18b7662a98ac66e47c0a4a8ae68e92cbb89c0c9cf7e6cc4376c89a8c7cd6ee",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48 px fine seams and minor material highlights merge; the main functional silhouette and action cues remain legible. No live scene, interactive state or UI-overlay claim."
+}

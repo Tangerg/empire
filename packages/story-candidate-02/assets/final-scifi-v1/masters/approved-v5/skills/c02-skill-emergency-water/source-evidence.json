@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-skill-emergency-water",
+  "assetId": "C02-SFV1-skill-emergency-water",
+  "label": "应急供水",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-emergency-water",
+    "topicId": "c02-skill-emergency-water",
+    "label": "应急供水",
+    "category": "skill",
+    "png": "runtime/skill/skill-emergency-water.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 33,
+  "catalogIndexZeroBased": 33,
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    309
+  ],
+  "sourceMappingEvidence": "Actual48 runtime visually inspected first; complete boards inspected and subject independently matched. Catalog sequence agrees with visual result. Alphabetical runtime-manifest order was not used. Legacy builder manifest-complete.json is absent; only its grid algorithm was read, never executed.",
+  "functionalMotif": "Water nozzle in a metal semicircular overhead pipe, large blue drop and cupped helping hands",
+  "semanticConflictDetected": false,
+  "legacyBackgroundConflict": "Magenta source background is chroma, not part of the subject.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-emergency-water.png",
+  "runtimeReferenceSha256": "7d17f30ec2a48e4ed4cbcc53e134af69e00c637f314130cf928d4fa0feda0499",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact original reference crop and separate QA diagnostics only; generated raw/master kept immutable.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-414a45c8-8f45-4a71-9940-c6884b3c2b27.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-emergency-water/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-emergency-water/style-reference-cargo-crates.png"
+  ],
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "The overhead segmented pipe and central nozzle, large central water drop, six small surrounding drops and two cupped helping hands are retained. The short bounded cyan flow segment belongs to the nozzle. No ground disk, aura or added symbol is introduced.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "liveGameVerified": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-emergency-water/master.png"
+}

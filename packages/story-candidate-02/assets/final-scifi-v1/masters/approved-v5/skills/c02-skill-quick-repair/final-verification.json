@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-skill-quick-repair",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "709139f68d9d4e1b62d2b8206e342432f327e16d4905979b549ea28e20036c99",
+    "raw-native-v1.png": "709139f68d9d4e1b62d2b8206e342432f327e16d4905979b549ea28e20036c99",
+    "native.png": "709139f68d9d4e1b62d2b8206e342432f327e16d4905979b549ea28e20036c99",
+    "master.png": "709139f68d9d4e1b62d2b8206e342432f327e16d4905979b549ea28e20036c99"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "The small spark points, finger divisions and service-panel details simplify at 48 pixels. The converging tools, device and localized repair point remain readable. Two internal diagnostic alpha values are below 240 near the service spark; the source is retained unchanged.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:29:27.194656+00:00"
+}

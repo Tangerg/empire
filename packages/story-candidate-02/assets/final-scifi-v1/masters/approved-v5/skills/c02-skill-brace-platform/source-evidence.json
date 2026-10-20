@@ -1,0 +1,79 @@
+{
+  "topicId": "c02-skill-brace-platform",
+  "assetId": "C02-SFV1-skill-brace-platform",
+  "label": "加固浮台",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-brace-platform",
+    "topicId": "c02-skill-brace-platform",
+    "label": "加固浮台",
+    "category": "skill",
+    "png": "runtime/skill/skill-brace-platform.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 29,
+  "catalogIndexZeroBased": 29,
+  "sourceCropBox": [
+    319,
+    945,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual48 runtime visually inspected first; complete boards inspected and subject independently matched. Catalog sequence agrees with visual result. Alphabetical runtime-manifest order was not used. Legacy builder manifest-complete.json is absent; only its grid algorithm was read, never executed.",
+  "functionalMotif": "Squat square floating platform on four flotation pods, upward arrow and cyan reinforcement brackets",
+  "semanticConflictDetected": false,
+  "legacyBackgroundConflict": "Boards02 embeds dark scene cards; cards, ground/water backgrounds and glow are excluded from the new transparent icon.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-brace-platform.png",
+  "runtimeReferenceSha256": "838ab2a891007bd19d9ab6a066f65fef3fc66614c5e25a43b9e313173f646ced",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact original reference crop and separate QA diagnostics only; generated raw/master kept immutable.",
+  "completeMotifCropBox": [
+    336,
+    913,
+    617,
+    1193
+  ],
+  "legacySourceCropDefect": "Legacy uniform grid crop truncates the upward arrow at the top; complete original source card recovers it.",
+  "labelPixelConflictDetected": false,
+  "completeMotifSource": "source-complete-motif.png",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c17bb666-0e22-471f-beac-0b3cf6b7f4e7.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-brace-platform/source-complete-motif.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-brace-platform/style-reference-cargo-crates.png"
+  ],
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "The diamond-view floating deck, three visible support pods, cyan side reinforcement frame and upward arrow are retained. The legacy grid truncates the arrow; the recovered complete intended card supplies the full arrow. The source water surface and dark card are excluded. The unseen rear support is occluded by the deck rather than newly invented as a visible appendage.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "liveGameVerified": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-brace-platform/master.png"
+}

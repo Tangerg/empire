@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-skill-suppress",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "2b17cd31dbf8f4b1f46bf2e35dc94feb62eec4fd3ea8cacac2726aa63b910892",
+    "raw-native-v1.png": "2b17cd31dbf8f4b1f46bf2e35dc94feb62eec4fd3ea8cacac2726aa63b910892",
+    "native.png": "2b17cd31dbf8f4b1f46bf2e35dc94feb62eec4fd3ea8cacac2726aa63b910892",
+    "master.png": "2b17cd31dbf8f4b1f46bf2e35dc94feb62eec4fd3ea8cacac2726aa63b910892"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Fine fan rays and turret bevels simplify at 48 pixels; the complete cone and broad base remain readable. The right visible margin is 34 native pixels, below the requested 7 percent but complete and unclipped.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:29:26.736732+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-skill-snipe",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "46bde23bc51229b72ac2e7a98c96750801d09f6290741270ba0bebd9cf7c1062",
+    "raw-native-v1.png": "46bde23bc51229b72ac2e7a98c96750801d09f6290741270ba0bebd9cf7c1062",
+    "native.png": "46bde23bc51229b72ac2e7a98c96750801d09f6290741270ba0bebd9cf7c1062",
+    "master.png": "46bde23bc51229b72ac2e7a98c96750801d09f6290741270ba0bebd9cf7c1062"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "The small star points, gun panel seams and muzzle rings simplify at 48 pixels. The required focus-and-target relation remains clear. The right visible margin is 34 native pixels, below the requested 7 percent but complete and unclipped.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:29:26.593092+00:00"
+}
