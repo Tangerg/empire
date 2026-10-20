@@ -1,0 +1,212 @@
+{
+  "topicId": "C01-CHAR-LEIA-03",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-1da14d61-19d6-4404-883e-85b44086cf62.png",
+  "selectedAttempt": 2,
+  "generationCalls": 2,
+  "rejectedAttempts": [
+    {
+      "attempt": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/attempt-01/raw.png",
+      "sha256": "d6f883b6a1d0f17ca30ecdca2a2fe72f80cebe8b54eaabf68e339ae3e22de2ae",
+      "reason": "Native alpha and semantic details pass, but side-by-side192x224 review shows smaller head, taller body, darker fine-textured rendering than approved chunky named portrait family. Retained, not selected."
+    }
+  ],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a",
+  "rawSha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a",
+  "masterSha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 728308,
+    "transparentFraction": 0.46304575602213544,
+    "nearOpaquePixels": 822969,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      50,
+      42,
+      999,
+      1515
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/attempt-01/raw.png": "d6f883b6a1d0f17ca30ecdca2a2fe72f80cebe8b54eaabf68e339ae3e22de2ae"
+  },
+  "firstAttemptAuthorityReferenceHashes": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-leia-03-original-cell.png": "88c37aff1f552516e0109f8ac27b0ac6c9087893f37cbb93c91a2be2729867a1",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/master.png": "6f6e1c546cb475e2c77bf9570f66d1f77587a05a53d0f4a02f03f6026bb00546"
+  },
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+  "originalFullboardSha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+  "originalCell": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-leia-03-original-cell.png",
+  "originalCellSha256": "88c37aff1f552516e0109f8ac27b0ac6c9087893f37cbb93c91a2be2729867a1",
+  "originalCropBox": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "designedReconstruction": "Multi-flag cloak panels and three-peoples clasp reconstructed from explicit stage brief and approved prop master; original only shows generic ribbon tabs.",
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "f124e3bcd54288c065a85e67522da94d090348e0f354f0d83485990b9820761d"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "verificationLimits": [
+    "Inspection-only source and mathematically modeled UI crop QA; no browser/GPU/live-game acceptance",
+    "No repo/Git/exporter/binding/consumer edits",
+    "No stage selector changes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed source and modeled UI-crop visual inspection; ready for integrator review",
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-3ce9978f-1d74-4070-80c6-f20b263ba3b9.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/attempt-01/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "d6f883b6a1d0f17ca30ecdca2a2fe72f80cebe8b54eaabf68e339ae3e22de2ae",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/attempt-01/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/attempt-01/prompt.txt",
+      "referenceHashes": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-leia-03-original-cell.png": "88c37aff1f552516e0109f8ac27b0ac6c9087893f37cbb93c91a2be2729867a1",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/master.png": "6f6e1c546cb475e2c77bf9570f66d1f77587a05a53d0f4a02f03f6026bb00546"
+      }
+    },
+    {
+      "attempt": 2,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-1da14d61-19d6-4404-883e-85b44086cf62.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/attempt-01/raw.png": "d6f883b6a1d0f17ca30ecdca2a2fe72f80cebe8b54eaabf68e339ae3e22de2ae"
+      }
+    }
+  ],
+  "visualReview": {
+    "identity": "Same Laiya face and brown braid, believable27-year-old adulthood with original silver forelock and healed cheek mark. Old left wrist guard retained, no crown/circlet/headband.",
+    "stage": "Multi-flag cloak broad muted panels and three-peoples fastening make alliance commander stage distinct. Command ledger and protective costume preserved. Clasp and multicolor panels are designed reconstruction.",
+    "crop": "Full card head/cape/boots fit. Desktop/mobile and HUD keep face, covenant colors and ledger visible. Roster44px retains multicolor cloak silhouette but cannot resolve small clasp parts. HUD uses expected lower-body crop.",
+    "sourceMargins": "Entire figure remains inside native canvas; clean white/black exterior and no source shadow or frame."
+  },
+  "reviewedProofFiles": [
+    "qa-native-white.png",
+    "qa-native-black.png",
+    "qa-native-checker.png",
+    "qa-native-black-white.png",
+    "card-preview.png",
+    "qa-ui-desktop-dialogue.png",
+    "qa-ui-mobile-dialogue.png",
+    "qa-ui-roster.png",
+    "qa-ui-hud.png"
+  ],
+  "qaComparison": "../char-leia-02/qa-three-card-and-ui-comparison.png",
+  "transparentComparison": "../char-leia-02/qa-three-character-transparent-proof.png"
+}

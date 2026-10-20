@@ -1,0 +1,1 @@
+Initial offline QA script failed on desktop cover because binary floating-point calculation produced x0=-1.1368683772161603e-13 for a theoretically zero offset. Clamped cover source width/height to the physical image dimensions and reran. No source pixels changed; no image-generation failure was hidden.

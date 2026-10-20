@@ -1,0 +1,34 @@
+{
+  "topicId": "C01-FX-07",
+  "readyForIntegrationReview": true,
+  "phaseOrder": [
+    "airborne-burst",
+    "falling-pieces",
+    "falling-remnants",
+    "settled-heap"
+  ],
+  "hashes": {
+    "airborne-burst": {
+      "raw": "ebc945b8d07e0f763040f32f0bedeb6797e281215fe532aa66efd11c0f06cad8",
+      "master": "ebc945b8d07e0f763040f32f0bedeb6797e281215fe532aa66efd11c0f06cad8",
+      "decodedRgba": "caf509ca2cd1fc8dc4b7ff228eaffd32afcd1f4a8aaf69080f44ff58b2dbc6f5"
+    },
+    "falling-pieces": {
+      "raw": "f6cd42c6b833008307cc5d6c0437a93cea41a42699474acdba04ba28ac1b1e26",
+      "master": "f6cd42c6b833008307cc5d6c0437a93cea41a42699474acdba04ba28ac1b1e26",
+      "decodedRgba": "161897f396e1d23be20c87f3b143449327ca8c823efc64969bbfb0a292f188de"
+    },
+    "falling-remnants": {
+      "raw": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f",
+      "master": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f",
+      "decodedRgba": "acb4fb470a5de88f7ba6fc9184f76fc64659f12fc02b21685227b8eafceeae5e"
+    },
+    "settled-heap": {
+      "raw": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc",
+      "master": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc",
+      "decodedRgba": "e37e72530d441720205495880381abf447e4bb9995a0bbc74ab853912fbd7639"
+    }
+  },
+  "review": "final-review.json",
+  "integrationCatalog": "integration-catalog.json"
+}

@@ -1,0 +1,174 @@
+{
+  "topicId": "C01-CH03-S11",
+  "canonicalManifestRecordAtSourcePreparation": {
+    "assetId": "C01-FFV1-CH03-S11",
+    "topicId": "C01-CH03-S11",
+    "label": "墓园姓名木片",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch03-s11.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "canonicalManifestReadOnly": true,
+  "canonicalKindConfirmed": "scene",
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+    "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "slot": "top-left",
+    "cellIndexZeroBased": 0,
+    "originalNarrativeIndexZeroBased": 54,
+    "fullCellCropBox": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "originalPixelCropsVerified": true,
+    "fullBoardAndSlotVisuallyInspectedBeforeGeneration": true
+  },
+  "historicalAuditRecord": {
+    "topicId": "C01-CH03-S11",
+    "label": "墓园姓名木片",
+    "originalNarrativeIndexZeroBased": 54,
+    "subgroup": "chapter-topic-as-key-prop",
+    "kind": "key-prop",
+    "formalBoundAtSnapshot": false,
+    "preserveApproved": false,
+    "remaining": true,
+    "ledger": {
+      "topicId": "C01-CH03-S11",
+      "campaign": "story-candidate-01",
+      "category": "narrative-static",
+      "label": "墓园姓名木片",
+      "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+      "selectedRawMasters": [],
+      "raw": "pending",
+      "export": "pending",
+      "formalBinding": "pending",
+      "liveGame": "pending",
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s11.png",
+      "stageEvidence": null
+    },
+    "source": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+      "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "mode": "RGB",
+        "hasAlpha": false,
+        "effectiveAlphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "family": "scenes",
+      "slotIndices": [
+        54,
+        55,
+        56,
+        57
+      ],
+      "cellIndexZeroBased": 0,
+      "columnZeroBased": 0,
+      "rowZeroBased": 0,
+      "cellLabel": "top-left",
+      "legacyInsetCropBox": [
+        5,
+        5,
+        622,
+        622
+      ],
+      "legacyInsetPx": 5
+    },
+    "originalExportVerification": {
+      "topicId": "C01-CH03-S11",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    "canonicalManifest": {
+      "assetId": "C01-FFV1-CH03-S11",
+      "topicId": "C01-CH03-S11",
+      "label": "墓园姓名木片",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch03-s11.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop"
+    },
+    "runtime": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s11.png",
+      "sha256": "e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58",
+      "size": [
+        128,
+        128
+      ],
+      "alpha": {
+        "mode": "RGBA",
+        "hasAlpha": true,
+        "extrema": [
+          255,
+          255
+        ],
+        "zeroPixels": 0,
+        "partialPixels": 0,
+        "opaquePixels": 16384,
+        "edgeMaxAlpha": 255,
+        "alphaBoundingBox": [
+          0,
+          0,
+          128,
+          128
+        ]
+      }
+    },
+    "hdRecord": null,
+    "actualUse": false,
+    "consumers": {
+      "storyScenes": [],
+      "stagingHeroLevels": [],
+      "storyDialogue": [],
+      "directRosterIds": [],
+      "hudUnitTypes": [],
+      "hudActorKeys": [],
+      "hudInitialActors": [],
+      "hudReinforcements": [],
+      "codexUnitTypes": [],
+      "chapterDefaultBackgrounds": [],
+      "chapterChoiceScreens": [],
+      "chapterStagingAndResultLevels": [],
+      "menuConsumers": [],
+      "boardPictureConsumers": []
+    },
+    "masterAlphaContract": "independent native genuine-RGBA reusable prop with transparent exterior/open gaps; CH03-S11 original is an opaque scene exception requiring identity/kind decision",
+    "exportContract": "canonical128x128 PNG, no anchor/frames/HD entry; new explicit whole-canvas transparent-prop export path required; legacy bbox/chroma cleanup is evidence only",
+    "risks": [
+      "Declared key-prop128x128 is actually scene-board07 cell0 full cemetery scene and fully opaque. No isolated name-tag master here; distinct PROP-NAME-TAGS exists. Do not silently remap/reclassify."
+    ]
+  },
+  "historicalAuditNote": "Historical key-prop classification for CH03-S11 was superseded by the explicit cemetery scene classification correction; square128 geometry remains unchanged.",
+  "classificationProof": {
+    "path": "docs/art-rebuild-20261019/approved-v5/cemetery-scene-classification/evidence.json",
+    "sha256": "4a06bbad6a72a59fe2bab36bd1cd2982678ce42ae7df93271c62bfe9eb03a12a"
+  }
+}

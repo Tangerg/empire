@@ -1,0 +1,50 @@
+{
+  "method": "Fresh copied read-only TypeScript transpile/evaluation collector; source literal scan excludes generated art/manifests and separately identifies tests.",
+  "collectorSha256": "b26a58f9ec33669685729bbc23d37473e13c4e78566a42578654258224851242",
+  "consumerExtractionSha256": "428227f1b12e005beb5b09aa1ea50056e21cce5603118622fdceaf0202ba924a",
+  "storyCount": 35,
+  "choiceCount": 11,
+  "levelCount": 16,
+  "topicHitsInExtractedConsumerData": [],
+  "sourceLiteralMatches": [
+    {
+      "file": "packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts",
+      "line": 46,
+      "text": "const asset = candidate01Asset('C01-CH03-S11');",
+      "testOnly": true
+    },
+    {
+      "file": "packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts",
+      "line": 47,
+      "text": "expect(asset).toMatchObject({ assetId: 'C01-FFV1-CH03-S11', topicId: 'C01-CH03-S11',",
+      "testOnly": true
+    },
+    {
+      "file": "packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts",
+      "line": 49,
+      "text": "width: 128, height: 128, png: 'runtime/narrative-static/ch03-s11.png',",
+      "testOnly": true
+    },
+    {
+      "file": "packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts",
+      "line": 47,
+      "text": "const square = candidate01Asset('C01-CH03-S11');",
+      "testOnly": true
+    },
+    {
+      "file": "packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts",
+      "line": 49,
+      "text": "const hd = { topicId: square.topicId, png: 'runtime-hd/narrative-static/ch03-s11.png',",
+      "testOnly": true
+    },
+    {
+      "file": "packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts",
+      "line": 85,
+      "text": "for (const record of [scene, candidate01Asset('C01-CH03-S11')]) {",
+      "testOnly": true
+    }
+  ],
+  "noCurrentShippedConsumerFound": true,
+  "genericApiReachabilityIsNotConsumer": true,
+  "browserOrLiveVerification": false
+}

@@ -15,7 +15,7 @@ physical.resize(logical,Image.Resampling.LANCZOS).save(D/f'qa-logical-{logical[0
 views=[('story-desktop',(960,534)),('story-mobile',(390,778)),('staging-inset',(280,245)),('staging-mobile',(366,220))]
 rows=[];tiles=[]
 for name,(tw,th) in views:
- scale=max(tw/cw,th/ch);sw=tw/scale;sh=th/scale;x0=(cw-sw)/2;y0=(ch-sh)/2;cb=[x0,y0,x0+sw,y0+sh]
+ scale=max(tw/cw,th/ch);sw=min(cw,tw/scale);sh=min(ch,th/scale);x0=(cw-sw)/2;y0=(ch-sh)/2;cb=[x0,y0,x0+sw,y0+sh]
  out=physical.resize((tw,th),Image.Resampling.LANCZOS,box=cb);out.save(D/f'qa-cover-{name}.png')
  rows.append({'view':name,'targetSize':[tw,th],'input':native_name,'nativeExportCrop':formal_box,'sourceCropInPhysicalExport':cb,'objectPosition':[0.5,0.5],'actualConsumerGeometry':False,'hypotheticalCompatibilityGeometry':True,'cssSource':'packages/game-ui/src/styles/campaign.css:180-213,475-499,746-755','provenance':'Offline CSS-cover geometry approximation from proposed source-native export. No direct current topic consumer found. Not browser/live evidence. Display filters, overlays and text are not simulated.'})
  tile=Image.new('RGB',(500,470),'#e0ded8');preview=out.copy();preview.thumbnail((480,425));tile.paste(preview,((500-preview.width)//2,35));ImageDraw.Draw(tile).text((10,10),f'{name} {tw}x{th}',fill='#151515');tiles.append(tile)

@@ -1,0 +1,235 @@
+{
+  "topicId": "C01-CHAR-RODERICK-02",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-10cc803e-5386-490f-b764-75663b173b8a.png",
+  "selectedAttempt": 3,
+  "generationCalls": 3,
+  "rejectedAttempts": [
+    {
+      "attempt": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-01/raw.png",
+      "sha256": "0261f832ae6fb8c7574263ed2d6fd4e698d1a21784c4144ecda5464133680ec1",
+      "reason": "Native alpha and semantic details pass, but side-by-side192x224 review shows smaller head, taller body, darker fine-textured rendering than approved chunky named portrait family. Retained, not selected."
+    },
+    {
+      "attempt": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-02/raw.png",
+      "sha256": "c3150c505e4641a005f174c59ece56725ea57b57bc2641f35d6b24a716892f3a",
+      "reason": "Proportions and bold matte rendering improved, but armor and cloth are too pristine for explicit same-equipment-aged stage brief. Retained; use as exact pose/identity/style target for broad wear correction."
+    }
+  ],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b",
+  "rawSha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b",
+  "masterSha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 655715,
+    "transparentFraction": 0.4168923695882161,
+    "nearOpaquePixels": 898483,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      34,
+      68,
+      1011,
+      1488
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-02/raw.png": "c3150c505e4641a005f174c59ece56725ea57b57bc2641f35d6b24a716892f3a"
+  },
+  "firstAttemptAuthorityReferenceHashes": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-roderick-02-original-cell.png": "93c14955a585ebf217de94f8f9227da783aacd797fd5f221f27a6631f949e571",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a"
+  },
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+  "originalFullboardSha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+  "originalCell": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-roderick-02-original-cell.png",
+  "originalCellSha256": "93c14955a585ebf217de94f8f9227da783aacd797fd5f221f27a6631f949e571",
+  "originalCropBox": [
+    5,
+    5,
+    622,
+    622
+  ],
+  "designedReconstruction": "Aging of approved named stage01 equipment deliberately reconstructed using explicit brief; original stage02 pose and royal motifs retained. Standing portrait does not affect mounted lance combat.",
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "7f6f04bd2c3599961991e6b063d42ddfa2fee231da502a93295ad46717e2248c"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "verificationLimits": [
+    "Inspection-only source and mathematically modeled UI crop QA; no browser/GPU/live-game acceptance",
+    "No repo/Git/exporter/binding/consumer edits",
+    "No stage selector changes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed source and modeled UI-crop visual inspection; ready for integrator review",
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-7fa2de12-ea29-46d5-aeee-31a7fc9bc480.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-01/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "0261f832ae6fb8c7574263ed2d6fd4e698d1a21784c4144ecda5464133680ec1",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-01/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-01/prompt.txt",
+      "referenceHashes": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-roderick-02-original-cell.png": "93c14955a585ebf217de94f8f9227da783aacd797fd5f221f27a6631f949e571",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a"
+      }
+    },
+    {
+      "attempt": 2,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-934995ab-65e8-48ff-8b57-d8b6e51b754d.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "c3150c505e4641a005f174c59ece56725ea57b57bc2641f35d6b24a716892f3a",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a",
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-01/raw.png": "0261f832ae6fb8c7574263ed2d6fd4e698d1a21784c4144ecda5464133680ec1"
+      }
+    },
+    {
+      "attempt": 3,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-10cc803e-5386-490f-b764-75663b173b8a.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/attempt-02/raw.png": "c3150c505e4641a005f174c59ece56725ea57b57bc2641f35d6b24a716892f3a"
+      }
+    }
+  ],
+  "visualReview": {
+    "identity": "Approved older gray-haired gray-bearded Roderick face and broad chunky knight anatomy retained, steady stern expression.",
+    "stage": "Standing sword/shield with original crown/royal motifs, same lightsteel/navy/gold material family; visible broad wear, patch and repaired cloak express later equipment aging without evil black armor. Standing portrait does not alter mounted lance combat identity.",
+    "crop": "Full card head/sword tip/shield/boots fit. Desktop/mobile and HUD retain face and royal shield silhouette. Roster44px preserves older grayhead/steel/bluegold shield identity, small wear details naturally unreadable. HUD uses expected lower-body crop.",
+    "sourceMargins": "Complete source and props inside native canvas; white/black composites show no halo, shadow or backdrop."
+  },
+  "reviewedProofFiles": [
+    "qa-native-white.png",
+    "qa-native-black.png",
+    "qa-native-checker.png",
+    "qa-native-black-white.png",
+    "card-preview.png",
+    "qa-ui-desktop-dialogue.png",
+    "qa-ui-mobile-dialogue.png",
+    "qa-ui-roster.png",
+    "qa-ui-hud.png"
+  ],
+  "qaComparison": "../char-leia-02/qa-three-card-and-ui-comparison.png",
+  "transparentComparison": "../char-leia-02/qa-three-character-transparent-proof.png"
+}

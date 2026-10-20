@@ -830,6 +830,18 @@
   },
   "livePlaybackObserved": false,
   "semanticRequirement": "Dense airborne debris descends into fewer falling pieces, sparse small remnants, then opaque settled heap. Do not reverse to growth or invent frost, fire, weapons, glyphs or a fading heap.",
-  "sourceCanvasRegistration": "Each full source cell maps to full1254 source square. Source center is hit-pivot627,627; settled-ground baseline approximately y1000. Natural down/out trajectory is authored, never bbox-fit or whole-source-shift.",
-  "referenceProof": "reference/reference-verification.json"
+  "sourceCanvasRegistration": "Full source canvas and pivot627,627 are the authority. Authored ground settles low in the canvas around y1120-1178. Alpha32 bottom differences are about one logical pixel across changing shapes, not a whole-image origin shift. No per-frame bbox, fit, crop or translate has been applied.",
+  "referenceProof": "reference/reference-verification.json",
+  "actualRuntimeAnchor": [
+    16,
+    16
+  ],
+  "sourceHistoricalAnchor": [
+    16,
+    24
+  ],
+  "anchorNote": "Source audit preserves legacy metadata anchor16,24. Current manifest and actual target-hit consumer now use16,16; currentRuntimeRecord captures that actual record.",
+  "sourceReferenceVerification": "reference/reference-verification.json",
+  "consumerCodeEvidence": "reference/consumer-source-snapshots.json",
+  "noAuthoredFade": "Final source is a compact opaque settled heap. Board removal at420ms is separate from intrinsic source-alpha fading."
 }

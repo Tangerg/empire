@@ -25,7 +25,7 @@
       16
     ]
   },
-  "registrationNote": "Debris retains full source canvas registered to shared target pivot(627,627); common ground baseline near y1000; source bounds measurements are diagnostic only, never used to fit or shift.",
+  "registrationNote": "Full source canvas and pivot627,627 are the authority. Authored ground settles low in the canvas around y1120-1178. Alpha32 bottom differences are about one logical pixel across changing shapes, not a whole-image origin shift. No per-frame bbox, fit, crop or translate has been applied.",
   "perPhaseFitCropShiftOrAlphaCleanup": false,
   "sourceEdgeGate": "alpha <= 1, actual composites and native borders separately reviewed",
   "nativeFinal2pxBorderGate": 0,

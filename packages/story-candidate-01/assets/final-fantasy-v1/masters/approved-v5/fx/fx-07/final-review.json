@@ -1,0 +1,62 @@
+{
+  "topicId": "C01-FX-07",
+  "label": "攻城碎屑",
+  "subject": "siege wood and stone debris",
+  "selectedPhaseOrder": [
+    "airborne-burst",
+    "falling-pieces",
+    "falling-remnants",
+    "settled-heap"
+  ],
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "attemptCount": 4,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "perFrameCropFitShiftPaintCleanup": false,
+  "actualCurrentRuntimeAnchor": [
+    16,
+    16
+  ],
+  "acceptedSourceEdgeMaxima": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "acceptedSourceEdgeNonzeroSamples": [
+    20,
+    52,
+    0,
+    0
+  ],
+  "sourceResidueDisclosure": "First two perimeters contain only alpha1 numerical residue,20 and52 samples. Last two perimeters are exactly zero. Exterior is visually clean on full1254 black/white/green composites; source files are untouched.",
+  "allNativeTwoPixelBordersAlpha0": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth"
+  ],
+  "fullSourceBackgroundsActuallyInspected": [
+    "black",
+    "white",
+    "green-ground"
+  ],
+  "semanticReview": "Dense airborne large brown timber and gray stones descend to fewer large pieces, then sparse small low remnants, then a compact solid settled heap. Progression follows original board2 row3 and is not reversed into growth. No symbols, panels or haze added.",
+  "registrationReview": "Full source canvas and pivot627,627 are the authority. Authored ground settles low in the canvas around y1120-1178. Alpha32 bottom differences are about one logical pixel across changing shapes, not a whole-image origin shift. No per-frame bbox, fit, crop or translate has been applied.",
+  "nativeReadability": "Four silhouettes and downward reduction are distinct at32 and64; tiny last-remnant chips are intentionally faint at32, matching sparse source semantics. Settled heap remains a low compact readable cluster.",
+  "finalPhaseMaxAlpha": 255,
+  "finalPhaseOpaquePixels": 1116,
+  "finalPhaseAlphaMassRelativeToSparseRemnants": 2.5686446561625007,
+  "finalPhaseDoesNotIntrinsicallyFade": true,
+  "rejectedAttempts": [],
+  "APNGVerification": "12 APNGs,48 decoded frames match exports,exact1/12+1/12+1/12+17/100 seconds=420ms,one play. Offline evidence only.",
+  "actualLiveGameObserved": false,
+  "runtimeAndGitWrites": false,
+  "reviewedBy": "native image inspection and deterministic source/alpha/transform/APNG checks"
+}

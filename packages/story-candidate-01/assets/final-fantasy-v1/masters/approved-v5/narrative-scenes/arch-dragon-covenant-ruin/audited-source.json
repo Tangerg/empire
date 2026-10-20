@@ -1,0 +1,169 @@
+{
+  "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+  "canonicalManifestRecordAtSourcePreparation": {
+    "assetId": "C01-FFV1-ARCH-DRAGON-COVENANT-RUIN",
+    "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+    "label": "古龙盟约遗址",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/arch-dragon-covenant-ruin.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "canonicalManifestReadOnly": true,
+  "canonicalKindConfirmed": "scene",
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+    "sha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "slot": "bottom-left",
+    "cellIndexZeroBased": 2,
+    "originalNarrativeIndexZeroBased": 72,
+    "fullCellCropBox": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "originalPixelCropsVerified": true,
+    "fullBoardAndSlotVisuallyInspectedBeforeGeneration": true
+  },
+  "historicalAuditRecord": {
+    "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+    "label": "古龙盟约遗址",
+    "originalNarrativeIndexZeroBased": 72,
+    "subgroup": "architecture-scene",
+    "kind": "scene",
+    "formalBoundAtSnapshot": false,
+    "preserveApproved": false,
+    "remaining": true,
+    "ledger": {
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "campaign": "story-candidate-01",
+      "category": "narrative-static",
+      "label": "古龙盟约遗址",
+      "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+      "selectedRawMasters": [],
+      "raw": "pending",
+      "export": "pending",
+      "formalBinding": "pending",
+      "liveGame": "pending",
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-dragon-covenant-ruin.png",
+      "stageEvidence": null
+    },
+    "source": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+      "sha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "mode": "RGB",
+        "hasAlpha": false,
+        "effectiveAlphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "family": "scenes",
+      "slotIndices": [
+        70,
+        71,
+        72,
+        null
+      ],
+      "cellIndexZeroBased": 2,
+      "columnZeroBased": 0,
+      "rowZeroBased": 1,
+      "cellLabel": "bottom-left",
+      "legacyInsetCropBox": [
+        5,
+        632,
+        622,
+        1249
+      ],
+      "legacyInsetPx": 5
+    },
+    "originalExportVerification": {
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    "canonicalManifest": {
+      "assetId": "C01-FFV1-ARCH-DRAGON-COVENANT-RUIN",
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "label": "古龙盟约遗址",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-dragon-covenant-ruin.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene"
+    },
+    "runtime": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-dragon-covenant-ruin.png",
+      "sha256": "9d3e868e30f2b98c860185482ef09411997ee09ee1b293ce9fce65c539e23ebb",
+      "size": [
+        256,
+        144
+      ],
+      "alpha": {
+        "mode": "RGBA",
+        "hasAlpha": true,
+        "extrema": [
+          255,
+          255
+        ],
+        "zeroPixels": 0,
+        "partialPixels": 0,
+        "opaquePixels": 36864,
+        "edgeMaxAlpha": 255,
+        "alphaBoundingBox": [
+          0,
+          0,
+          256,
+          144
+        ]
+      }
+    },
+    "hdRecord": null,
+    "actualUse": false,
+    "consumers": {
+      "storyScenes": [],
+      "stagingHeroLevels": [],
+      "storyDialogue": [],
+      "directRosterIds": [],
+      "hudUnitTypes": [],
+      "hudActorKeys": [],
+      "hudInitialActors": [],
+      "hudReinforcements": [],
+      "codexUnitTypes": [],
+      "chapterDefaultBackgrounds": [],
+      "chapterChoiceScreens": [],
+      "chapterStagingAndResultLevels": [],
+      "menuConsumers": [],
+      "boardPictureConsumers": []
+    },
+    "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+    "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+    "risks": []
+  },
+  "historicalAuditNote": "Original architecture scene identity retained.",
+  "classificationProof": null
+}

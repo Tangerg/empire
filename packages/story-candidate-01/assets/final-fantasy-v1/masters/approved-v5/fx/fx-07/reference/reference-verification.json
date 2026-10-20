@@ -1,78 +1,83 @@
 [
   {
-    "path": "reference/consumer-source-snapshots.json",
-    "sha256": "a9dba6c582124182fe0b451aca00a0097c3074e896e329bbede138253d8fad28"
-  },
-  {
-    "path": "reference/current-runtime-at-worker-audit@1x.png",
-    "sha256": "591363c0757afd4a72b24153b661a01a334eba233ab88eb212619bf9527e0083"
-  },
-  {
-    "path": "reference/current-runtime-at-worker-audit@2x.png",
-    "sha256": "0606442f2b7285444e11b71a5cf9bb97c51899a5af58bfafb938535bfc1d04ed"
-  },
-  {
-    "path": "reference/legacy-alpha-f0.png",
-    "sha256": "15e0b95d14d1240989cafe1c2958bbb01d8ea6fe34e8eddf9a6628249d17c730"
-  },
-  {
-    "path": "reference/legacy-alpha-f1.png",
-    "sha256": "0c910dc54dce5d7dbe30046799b117b2672fded9914627e5fb453e00a0c45fd3"
-  },
-  {
-    "path": "reference/legacy-alpha-f2.png",
-    "sha256": "17f9051771a8d56a4dbcef0b2acebe8d6edb989811d5493ce20c491a07a66a9f"
-  },
-  {
-    "path": "reference/legacy-alpha-f3.png",
-    "sha256": "7ef27db8b95b11f7f290f98e2dccdbe22edadf1e9eebba6568d167128147b26f"
-  },
-  {
-    "path": "reference/legacy-runtime@1x.png",
-    "sha256": "305bf4df9bd26344fcc6d0eca2ba1ad8c84f78e3946db67ab65210809b30cf4a"
-  },
-  {
-    "path": "reference/legacy-runtime@2x.png",
-    "sha256": "0c4042d963143c93a146c0996aec02bebed1f8775fad9541b0471b75a6d70dfd"
-  },
-  {
-    "path": "reference/original-board.png",
-    "sha256": "37fd8d95a3286cb65db28a0f702d9235c8d927b65b5a7b77817ee1b79cdac7a3"
-  },
-  {
-    "path": "reference/original-f0.png",
-    "sha256": "b1b974e35e59ed40f6d7689c94850d783cc691f88c1573ebb8b0db6045b0211f"
-  },
-  {
-    "path": "reference/original-f1.png",
-    "sha256": "683058f8f6316f8ae1a703e1aaaafd431a5174ecdf9460d4652780d003186efc"
-  },
-  {
-    "path": "reference/original-f2.png",
-    "sha256": "1a904bf2d859be22bd66f113b2813acc88ca89e4b5c780dc39566e1b4d1e0ea0"
-  },
-  {
-    "path": "reference/original-f3.png",
-    "sha256": "111c3d2278bbf1a93efed1c9a916568881f8dbfa9efbd20c61dda2fda9a3ccd4"
-  },
-  {
+    "phaseIndex": 0,
+    "boundsXYXY": [
+      0,
+      627,
+      314,
+      940
+    ],
     "path": "reference/original-full-cell-f0.png",
+    "decodedEqualOriginalBoardCell": true,
     "sha256": "93c627bc659bdd8ff47b7507315570c9de563c301961c883f38a4a840e1d95d0"
   },
   {
+    "phaseIndex": 1,
+    "boundsXYXY": [
+      314,
+      627,
+      627,
+      940
+    ],
     "path": "reference/original-full-cell-f1.png",
+    "decodedEqualOriginalBoardCell": true,
     "sha256": "58327f050aeb0e5d6326264d8c0e7cfbba38260676fb101376197214ad44590c"
   },
   {
+    "phaseIndex": 2,
+    "boundsXYXY": [
+      627,
+      627,
+      940,
+      940
+    ],
     "path": "reference/original-full-cell-f2.png",
+    "decodedEqualOriginalBoardCell": true,
     "sha256": "de7b2e85c41694e76b2d25ff8069629b789042224a3245c1c4fee973b0934970"
   },
   {
+    "phaseIndex": 3,
+    "boundsXYXY": [
+      940,
+      627,
+      1254,
+      940
+    ],
     "path": "reference/original-full-cell-f3.png",
+    "decodedEqualOriginalBoardCell": true,
     "sha256": "0f28d485252682cb3ee3489899a8a9b488447edc313db405530902e4e44c12be"
   },
   {
-    "path": "reference/original-row.png",
-    "sha256": "4d407f7f72c59391b04141cbdb1de07fadc835f4169e5921603a618bbec314e5"
+    "path": "reference/original-board.png",
+    "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-02.png",
+    "repositoryFileSha256": "37fd8d95a3286cb65db28a0f702d9235c8d927b65b5a7b77817ee1b79cdac7a3",
+    "savedFileSha256": "37fd8d95a3286cb65db28a0f702d9235c8d927b65b5a7b77817ee1b79cdac7a3",
+    "decodedPixelsExact": true
+  },
+  {
+    "path": "reference/legacy-runtime@1x.png",
+    "sourceAuditSnapshot": "docs/art-rebuild-20261019/approved-v5/fx-source-audit/current-runtime/C01-FX-07@1x.png",
+    "sha256": "305bf4df9bd26344fcc6d0eca2ba1ad8c84f78e3946db67ab65210809b30cf4a",
+    "decodedPixelsExact": true
+  },
+  {
+    "path": "reference/current-runtime-at-worker-audit@1x.png",
+    "sha256": "591363c0757afd4a72b24153b661a01a334eba233ab88eb212619bf9527e0083",
+    "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-07.png",
+    "matchesCurrentRepositoryRuntimeAtFinalization": true,
+    "snapshotContext": "Snapshot captured before worker generation; no claim that integrator has installed the new sources."
+  },
+  {
+    "path": "reference/legacy-runtime@2x.png",
+    "sourceAuditSnapshot": "docs/art-rebuild-20261019/approved-v5/fx-source-audit/current-runtime/C01-FX-07@2x.png",
+    "sha256": "0c4042d963143c93a146c0996aec02bebed1f8775fad9541b0471b75a6d70dfd",
+    "decodedPixelsExact": true
+  },
+  {
+    "path": "reference/current-runtime-at-worker-audit@2x.png",
+    "sha256": "0606442f2b7285444e11b71a5cf9bb97c51899a5af58bfafb938535bfc1d04ed",
+    "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-07.png",
+    "matchesCurrentRepositoryRuntimeAtFinalization": true,
+    "snapshotContext": "Snapshot captured before worker generation; no claim that integrator has installed the new sources."
   }
 ]
