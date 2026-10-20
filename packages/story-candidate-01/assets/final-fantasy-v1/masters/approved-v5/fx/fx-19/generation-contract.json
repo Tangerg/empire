@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "topicId": "C01-FX-19",
+  "label": "隐蔽",
+  "status": "Phase order approved by parent on 2026-10-20T06:14:25Z; dense baseline generation in progress",
+  "phaseOrder": [
+    "dense-veil",
+    "curling-veil",
+    "veil-breakup",
+    "leaf-wisps"
+  ],
+  "phaseObservations": [
+    "Already dense gray-green leafy smoke, a broad low cloud with a rising central curl.",
+    "The cloud turns into stronger rolling curls and opens irregular gaps at its sides, with leaves changing positions.",
+    "Broken separated smoke ribbons and small puffs with large transparent holes; olive leaves remain.",
+    "Only a few small gray-green wisps and separated olive leaves remain. No figure or visible target is revealed."
+  ],
+  "fixedLandmark": "Common smoke emission volume and lower central origin, not a persistent ground tile or leaf bed. The smoke changes and separates around this shared canvas registration.",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-05.png",
+    "sha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5",
+    "row1Based": 3,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-row.png",
+    "denseSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f0.png",
+    "breakupSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f2.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-19.png",
+    "builderMapping": "build_final_fantasy_v1.py build_fx appends four rows per atlas in order; FX19 is atlas05 row3."
+  },
+  "existingManifest": {
+    "assetId": "C01-FFV1-FX-19",
+    "topicId": "C01-FX-19",
+    "label": "隐蔽",
+    "category": "fx",
+    "png": "runtime/fx/fx-19.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumer": {
+    "status": "catalog-only-no-current-literal-consumer-found",
+    "search": {
+      "command": [
+        "rg",
+        "-n",
+        "C01-FX-19|C01-FFV1-FX-19|fx-19\\.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/apps",
+        "--glob",
+        "*.{ts,tsx,json}",
+        "--glob",
+        "!manifest*.json",
+        "--glob",
+        "!package-lock.json",
+        "--glob",
+        "!pnpm-lock.yaml"
+      ],
+      "exitCode": 1,
+      "matches": [],
+      "scope": "All packages and apps TypeScript, TSX and nonmanifest JSON."
+    },
+    "existingVisibilityOwnership": "Vision rules determine unit visibility; Game overlay adds hiddenUnits; BoardView marks the actor hidden and skips its visible rendering. SVG and Pixi backends implement hidden state. No FX19 invocation was found in this flow.",
+    "visibilityCodeTrace": [
+      {
+        "relativePath": "packages/battle-engine/src/vision.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/battle-engine/src/vision.ts",
+        "sha256": "58179a25e5772410f1a9622c3d9ec41e0a15e32d2ab77e68ea24eb3bd6995275",
+        "lineStart": 15,
+        "lineEnd": 61,
+        "excerpt": "15:  * Fog of war (off by default, per-level flag). Terrain is always known — only\n16:  * units are hidden — and a unit sitting in cover (`opaque` terrain) is spotted\n17:  * only from an adjacent tile. Simple, readable, and enough to make scouting\n18:  * matter for future modes.\n19:  */\n20: export function visibleTiles(rules: VisionRules, state: GameState, viewer: PlayerId): Set<number> {\n21:   const content = rules.content;\n22:   const seen = new Set<number>();\n23:   const battlefield = new Battlefield(state, content);\n24:   if (!state.rules.fog) {\n25:     for (let i = 0; i < state.map.tiles.length; i++) seen.add(i);\n26:     return seen;\n27:   }\n28:   for (const u of state.units) {\n29:     if (!areAllies(state, u.owner, viewer) && u.owner !== viewer) continue;\n30:     const def = content.units.get(u.type);\n31:     const bonus = battlefield.cell(u).vision;\n32:     for (const index of boardOf(rules, state).ringIndices({ x: u.x, y: u.y }, 0, def.vision + bonus)) {\n33:       seen.add(index);\n34:     }\n35:   }\n36:   for (let i = 0; i < state.map.owners.length; i++) {\n37:     if (state.map.owners[i] === viewer) seen.add(i);\n38:   }\n39:   return seen;\n40: }\n41: \n42: export function isUnitVisible(\n43:   rules: VisionRules,\n44:   state: GameState,\n45:   viewer: PlayerId,\n46:   u: Unit,\n47:   seen?: Set<number>,\n48: ): boolean {\n49:   if (!state.rules.fog) return true;\n50:   if (u.owner === viewer || areAllies(state, u.owner, viewer)) return true;\n51:   const i = idx(state.map, u.x, u.y);\n52:   const visible = seen ?? visibleTiles(rules, state, viewer);\n53:   if (!visible.has(i)) return false;\n54:   if (!new Battlefield(state, rules.content).cell(u).terrain.opaque) return true;\n55:   // Hidden in cover unless something friendly is standing right next to it.\n56:   const board = boardOf(rules, state);\n57:   return state.units.some(\n58:     (o) =>\n59:       (o.owner === viewer || areAllies(state, o.owner, viewer)) &&\n60:       board.distance({ x: o.x, y: o.y }, { x: u.x, y: u.y }) === 1,\n61:   );"
+      },
+      {
+        "relativePath": "packages/game-ui/src/ui/game.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/game.ts",
+        "sha256": "8c8473fc04d498016661c050fcb48316547691d53f7fac008cc255e9c7c41e0c",
+        "lineStart": 773,
+        "lineEnd": 789,
+        "excerpt": "773: \n774:   private isVisible(unit: Unit): boolean {\n775:     const me = this.human?.id ?? this.state.currentPlayer;\n776:     return this.session.isUnitVisible(me, unit);\n777:   }\n778: \n779:   private overlay(): BoardOverlay {\n780:     const o = emptyOverlay();\n781:     const state = this.state;\n782:     const viewer = this.human?.id ?? state.currentPlayer;\n783: \n784:     if (state.rules.fog) {\n785:       o.visible = this.session.visibleTiles(viewer);\n786:       for (const u of state.units) {\n787:         if (!this.session.isUnitVisible(viewer, u, o.visible)) o.hiddenUnits.add(u.id);\n788:       }\n789:     }"
+      },
+      {
+        "relativePath": "packages/game-ui/src/ui/board.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/board.ts",
+        "sha256": "7211c79358e4f6d1422fa8ef84df5b2b2706d89bb05563ff47b054c3b5901ad1",
+        "lineStart": 519,
+        "lineEnd": 536,
+        "excerpt": "519:   private renderUnits(o: BoardOverlay): void {\n520:     const s = this.state;\n521:     const alive = new Set(s.units.map((u) => u.id));\n522:     for (const id of this.surface.drawnUnits()) {\n523:       if (alive.has(id)) continue;\n524:       this.surface.removeUnit(id);\n525:     }\n526: \n527:     for (const u of s.units) {\n528:       const drawing = this.drawingFor(u);\n529:       if (!this.walking.has(u.id)) drawing.say('facingLeft', facesLeft(this.viewport.grid, u.facing));\n530:       const hidden = o.hiddenUnits.has(u.id);\n531:       drawing.say('hidden', hidden);\n532:       if (hidden) continue;\n533:       const origin = this.origin(u);\n534:       drawing.place(origin.x, origin.y);\n535:       drawing.say('selected', !!o.selected && sameCoord(o.selected, u));\n536: "
+      },
+      {
+        "relativePath": "packages/game-ui/src/art/svg-board-surface.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/art/svg-board-surface.ts",
+        "sha256": "87292eddf303d133460f25dda76e38fffbd9062b2de5ae30d90f05bd22f50f31",
+        "lineStart": 130,
+        "lineEnd": 140,
+        "excerpt": "130: \n131:   say(state: BoardState, on: boolean): void {\n132:     this.selection.say(state, on);\n133:     if (state === 'hidden') {\n134:       this.el.style.display = on ? 'none' : '';\n135:       this.syncSelectionCue();\n136:       return;\n137:     }\n138:     this.el.classList.toggle(STATE_CLASS[state], on);\n139:     this.syncSelectionCue();\n140:   }"
+      },
+      {
+        "relativePath": "packages/game-ui/src/art/pixi-board-surface.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/art/pixi-board-surface.ts",
+        "sha256": "8d786726a1a66c24fb2f8f07d76cbc7f185d04b6aaf658370e58727cbd359519",
+        "lineStart": 156,
+        "lineEnd": 166,
+        "excerpt": "156:   }\n157: \n158:   say(state: BoardState, on: boolean): void {\n159:     this.selection.say(state, on);\n160:     if (state === 'hidden') {\n161:       this.root.visible = !on;\n162:       this.syncSelectionCue();\n163:       return;\n164:     }\n165:     if (state === 'facingLeft') {\n166:       this.figure.scale.x = on ? -1 : 1;"
+      }
+    ],
+    "gameplayConcealmentChange": false,
+    "revealHiddenEnemy": false,
+    "newConsumerOrEnemyPositionMarker": false,
+    "consumerLifetimeMs": null,
+    "hit420msAssumed": false,
+    "heal500msAssumed": false,
+    "liveGamePlaybackObserved": false
+  },
+  "timing": {
+    "fps": 12,
+    "frames": 4,
+    "loop": false,
+    "authoredClipFrameDurationsSeconds": [
+      "1/12",
+      "1/12",
+      "1/12",
+      "1/12"
+    ],
+    "frameStartTimesSeconds": [
+      "0",
+      "1/12",
+      "1/6",
+      "1/4"
+    ],
+    "nominalClipSeconds": "1/3",
+    "consumerLifetimeMs": null,
+    "finalFrame": "Sparse nonempty leaves and wisps; future explicitly authorized consumer owns any hold/removal.",
+    "hit420msLifetimeAssumed": false,
+    "heal500msLifetimeAssumed": false
+  },
+  "canvas": [
+    1254,
+    1254
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "output": {
+    "1x": [
+      128,
+      32
+    ],
+    "2x": [
+      256,
+      64
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "blend": "normal source-over"
+  },
+  "style": "Gray-green matte smoke curls, subdued olive leaves and dark restrained cartoon contours. Genuine transparent exterior and breakup gaps. Controlled smoke translucency is allowed; no forced minimum opaque core. No glow, backing panel, actor silhouette, eye marker, medical icon, ground tile or revealed enemy.",
+  "alpha": "Source perimeter at most 1 with actual clean black/white composites; final logical 2px alpha0. No alpha edits.",
+  "gates": [
+    "Parent reviews exact phase order before source generation or exporter extension.",
+    "Inspect dense baseline first, then author three independent geometry changes using the same source registration.",
+    "Preserve original ordering: the source begins already dense and dissipates; do not invent an empty buildup stage.",
+    "Full-source black/white, native32/64 on six backgrounds, full and terminal phase review.",
+    "Exact four-frame single-play rational timing and every decoded frame/export equality.",
+    "Keep catalog-only status and existing visibility ownership explicit. No runtime concealment behavior, enemy-revealing placement or assumed lifetime is introduced.",
+    "No browser/live observation claim."
+  ]
+}

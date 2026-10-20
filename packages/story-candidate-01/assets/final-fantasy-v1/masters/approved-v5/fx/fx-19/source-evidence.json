@@ -1,0 +1,78 @@
+{
+  "topicId": "C01-FX-19",
+  "label": "隐蔽",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-05.png",
+    "sha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5",
+    "row1Based": 3,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-row.png",
+    "denseSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f0.png",
+    "breakupSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f2.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-19.png",
+    "builderMapping": "build_final_fantasy_v1.py build_fx appends four rows per atlas in order; FX19 is atlas05 row3."
+  },
+  "originalRowOneBased": 3,
+  "semanticPhases": [
+    "Already dense gray-green leafy smoke, a broad low cloud with a rising central curl.",
+    "The cloud turns into stronger rolling curls and opens irregular gaps at its sides, with leaves changing positions.",
+    "Broken separated smoke ribbons and small puffs with large transparent holes; olive leaves remain.",
+    "Only a few small gray-green wisps and separated olive leaves remain. No figure or visible target is revealed."
+  ],
+  "contract": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/generation-contract.json",
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-19",
+    "topicId": "C01-FX-19",
+    "label": "隐蔽",
+    "category": "fx",
+    "png": "runtime/fx/fx-19.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/consumer-audit.json",
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/current-runtime@1x.png",
+      "sha256": "67f23f59cda70260d7637047099c909bf53f7e08fb19bb04ef1584f65f4e9f90"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/current-runtime@2x.png",
+      "sha256": "a79ff1fb3473de79a7efb78e5f162a77cb068c01c59e6c1ce28f7b0e49779627"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-board.png",
+      "sha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f0.png",
+      "sha256": "228ef43af9246970fca17cb67f9ab22f180640236308ef87aab5f3ce08ea19f8"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f1.png",
+      "sha256": "a780fd2a75d9dfc6f387404ce66409fa876309aca9855d965a744402acd4289a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f2.png",
+      "sha256": "f94f96d30234e85bf75a00042326007fafdcadd33cabb285f3b668e51c86aeff"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-f3.png",
+      "sha256": "8a324186034da6698985e55465869c4e07c927589cc0171c6c12aa123ca19eff"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-19/reference/original-row.png",
+      "sha256": "8465ae92fee5a71f0a7fd15d3abc488d89efb0cb1653b3f864a16844b20ed3c6"
+    }
+  ]
+}

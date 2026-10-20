@@ -1,0 +1,94 @@
+{
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-05.png",
+  "sourceBoardSha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5",
+  "sourceBoardMode": "RGB",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceRowBoundsXYXY": [
+    0,
+    314,
+    1254,
+    627
+  ],
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-18",
+    "topicId": "C01-FX-18",
+    "label": "受控",
+    "category": "fx",
+    "png": "runtime/fx/fx-18.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "earlierAuditManifestAnchor": [
+    16,
+    24
+  ],
+  "cropChecks": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        319,
+        309,
+        622
+      ],
+      "path": "reference/original-f0.png",
+      "sha256": "09fcfc662a94942b9ebcceece83fbd08e359e3b48ed4cddff81572656644dae7",
+      "matchesPriorAudit": true,
+      "sourceObservation": "broken amber bands and diamonds"
+    },
+    {
+      "phase": 1,
+      "box": [
+        319,
+        319,
+        622,
+        622
+      ],
+      "path": "reference/original-f1.png",
+      "sha256": "2cc1ccf6be0f74cbd1cafe7abbdd007e9c3fdde36e0ed115164e288ad2d03f01",
+      "matchesPriorAudit": true,
+      "sourceObservation": "bands align into ring"
+    },
+    {
+      "phase": 2,
+      "box": [
+        632,
+        319,
+        935,
+        622
+      ],
+      "path": "reference/original-f2.png",
+      "sha256": "361bc57cb8ca87b7bc3d8d3b211f621cea542eab65e3794b86769c91d5091509",
+      "matchesPriorAudit": true,
+      "sourceObservation": "double closed restraint rings"
+    },
+    {
+      "phase": 3,
+      "box": [
+        945,
+        319,
+        1249,
+        622
+      ],
+      "path": "reference/original-f3.png",
+      "sha256": "2d294633db0ee3035fdf0aaabc42cf5c0918f4df15ece4ba53cea465ee648dfc",
+      "matchesPriorAudit": true,
+      "sourceObservation": "settled smaller double restraint rings"
+    }
+  ]
+}
