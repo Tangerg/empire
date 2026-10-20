@@ -8,7 +8,7 @@ dotnet run --project godot/Empire.Core.Tests -- godot/tests/oracle
 dotnet run --project tools/godot/application-checks -- .
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
 "$GODOT_NET" --headless --editor --path godot --import
-for scene in PresentationChecks DynamicStateChecks BattleScreenChecks; do
+for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks; do
   "$GODOT_NET" --headless --path godot "res://Scenes/$scene.tscn"
 done
 if [[ "${1:-}" == '--full' ]]; then

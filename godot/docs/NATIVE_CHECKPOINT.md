@@ -69,6 +69,23 @@ have gameplay controls and are not a new campaign interaction acceptance test.
 The cloud desktop subsequently became unresponsive to bounded read-only checks;
 new integrated UI interaction remains unverified after this renderer expansion.
 
+## Committed-transition animation integration
+
+The view receives immutable detached Before/Action/Events/After facts and never
+recomputes rules. Source movement and ordered strike/impact/death/heal/recruit/
+turn-banner timing now drive named actor frames and numeric effect strips.
+The session emits no new transition for rejected actions; loaded sessions do not
+replay history. AI advancement and result dialogs wait for view settlement.
+Controller checks cover repeated clicks/refresh, cancellation, load/rebind,
+superseding transition-free snapshots and unmounted stale callbacks.
+The exact staged animation tree passed the complete `verify-native.sh` base
+command: build (0 warnings/errors), core 14, persistence 96, application
+continuation, terrain 16, dynamic 100, animation 177 and native BattleScreen
+contracts. `run-native.sh --headless --quit-after 2` also built/imported/launched
+the real story entry successfully. `--full` was not rerun as one aggregate command. Source
+unhandled events remain settle-only rather than receiving invented death/FX.
+See ACTION-PRESENTATION.md for source references, exact tested scope and timing contracts.
+
 ## Explicit remaining gaps
 
-Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Action animations/effects, sound, richer scenario feedback and lighting/shadows require more work. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.
+Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Descriptive battle-event logs, postbattle signals/metrics/fallen-unit summaries and source-authored lighting/shadows still require work. Source camera follow/panning is not yet reproduced. The recovered source has no audio playback implementation, so silence is not an omitted original feature. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.

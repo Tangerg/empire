@@ -38,6 +38,18 @@ public partial class BattleScreen : Control
     private string _role = "";
     private bool _built;
     private bool _bound;
+    private bool _presenting;
+    private int _presentationGeneration;
+    private long _presentedRevision = -1;
+    public bool IsPresenting => _presenting;
+
+    public override void _ExitTree()
+    {
+        _presentationGeneration++;
+        _presenting = false;
+        _bound = false;
+        _board.CancelPresentation();
+    }
 
     public BoardView Board => _board;
     public int? SelectedUnitId => _selectedId;
@@ -54,6 +66,11 @@ public partial class BattleScreen : Control
     {
         ArgumentNullException.ThrowIfNull(session);
         BuildInterface();
+        _presentationGeneration++;
+        _presenting = false;
+        _board.CancelPresentation();
+        _snapshot = null;
+        _presentedRevision = session.GetSnapshot().Revision;
         _board.Configure(assets, level, authoredScene, environment, facesLeft, directionVector);
         _session = session;
         _bound = true;
@@ -103,8 +120,58 @@ public partial class BattleScreen : Control
     /// <summary>Allows the application root to refresh after an external session transition.</summary>
     public void Refresh()
     {
-        if (!_bound || _session is null) return;
-        _snapshot = _session.GetSnapshot();
+        if (!_bound || _session is null || !IsInsideTree()) return;
+        var next = _session.GetSnapshot();
+        if (_presenting && next.Revision == _presentedRevision) return;
+        if (next.Transition is { } transition && transition.Revision == next.Revision && next.Revision > _presentedRevision)
+        {
+            _presentedRevision = next.Revision;
+            PresentCommitted(next, transition);
+            return;
+        }
+        if (_presenting)
+        {
+            _presentationGeneration++;
+            _presenting = false;
+            _board.CancelPresentation();
+        }
+        ApplySnapshot(next);
+    }
+
+    private async void PresentCommitted(BattleSnapshot next, BattlePresentationTransition transition)
+    {
+        var generation = ++_presentationGeneration;
+        var session = _session;
+        _board.CancelPresentation();
+        _presenting = true;
+        _legalOrders = Array.Empty<BattleOrderChoice>();
+        Clear(_orders); Clear(_globalOrders); Clear(_modeButtons);
+        _overlay.ShowTargets(null, Array.Empty<BoardCell>(), "", null);
+        try
+        {
+            var settled = await _board.PresentTransitionAsync(transition, next.VisibleUnitIds);
+            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session)) return;
+            var current = session!.GetSnapshot();
+            ApplySnapshot(settled && current.Revision == next.Revision ? next : current);
+        }
+        catch (Exception error)
+        {
+            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session)) return;
+            ApplySnapshot(next);
+            ShowFeedback($"表现播放失败：{error.Message}");
+            GD.PushError(error.ToString());
+        }
+        finally
+        {
+            if (generation == _presentationGeneration) _presenting = false;
+        }
+    }
+
+    private void ApplySnapshot(BattleSnapshot next)
+    {
+        if (_session is null) return;
+        _snapshot = next;
+        _presentedRevision = next.Revision;
         _state = Empire.Core.Determinism.EcmaJson.Parse(_snapshot.State.GetRawText()) as JsonObject
             ?? throw new InvalidOperationException("Battle session returned a non-object state.");
         _board.RenderState(_state, _snapshot.VisibleUnitIds);
@@ -127,6 +194,15 @@ public partial class BattleScreen : Control
     {
         if (_built) return;
         _built = true;
+        _board.PresentationRepaintRequested += () =>
+        {
+            if (!_presenting || !_bound || _session is null || !IsInsideTree()) return;
+            var current = _session.GetSnapshot();
+            if (current.Revision != _presentedRevision) return;
+            _state = Empire.Core.Determinism.EcmaJson.Parse(current.State.GetRawText())!.AsObject();
+            UpdateHeader();
+            _objectiveSummary.Text = current.ObjectiveSummary ?? "";
+        };
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         // Material layers use negative world depths; a default-Z UI backdrop would cover them.
         var background = new ColorRect { Name = "Backdrop", Color = new Color("#091712"),
@@ -220,7 +296,7 @@ public partial class BattleScreen : Control
 
     private void MapInput(InputEvent input)
     {
-        if (!_bound || input is not InputEventMouseButton { Pressed: true } mouse) return;
+        if (_presenting || !_bound || input is not InputEventMouseButton { Pressed: true } mouse) return;
         if (mouse.ButtonIndex == MouseButton.Right)
         {
             _target = null;
@@ -240,7 +316,7 @@ public partial class BattleScreen : Control
     /// <summary>Cell interaction entry point also used by native contract checks.</summary>
     public void SelectCell(BoardCell cell)
     {
-        if (_state is null || _session is null) return;
+        if (!_bound || !IsInsideTree() || _presenting || _state is null || _session is null) return;
         var choices = TargetChoices(cell).ToArray();
         if (choices.Length > 0)
         {
@@ -329,7 +405,7 @@ public partial class BattleScreen : Control
 
     public void SubmitOrder(BattleOrderChoice order)
     {
-        if (_session is null || _snapshot is null) return;
+        if (!_bound || !IsInsideTree() || _presenting || _session is null || _snapshot is null) return;
         // The JSON is the session's complete canonical command, not a UI reconstruction.
         var result = _session.Dispatch(order.Action, _snapshot.Revision);
         ShowFeedback(result.Message);

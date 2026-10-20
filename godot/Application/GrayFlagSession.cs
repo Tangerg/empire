@@ -15,6 +15,7 @@ public sealed class GrayFlagSession : IBattleSession
     private readonly GrayFlagEngine engine;
     private readonly Battle battle;
     private long revision;
+    private BattlePresentationTransition? transition;
     private readonly List<JsonObject> actions = new();
     private readonly List<JsonObject> events = new();
 
@@ -61,8 +62,7 @@ public sealed class GrayFlagSession : IBattleSession
         IReadOnlySet<BoardCell>? cells = null;
         if (state["rules"]?["fog"]?.GetValue<bool>() == true)
         {
-            var viewer = state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["controller"]?.GetValue<string>() == "human")?["id"]?.GetValue<int>()
-                ?? state["currentPlayer"]!.GetValue<int>();
+            var viewer = Viewer(state);
             var vision = new BattleVision(engine.Movement);
             visible = vision.VisibleUnits(state, viewer).Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
             cells = vision.VisibleTiles(state, viewer).Select(index => engine.Movement.Board(state).CoordOf(index)).Select(at => new BoardCell(at.X, at.Y)).ToHashSet();
@@ -73,7 +73,7 @@ public sealed class GrayFlagSession : IBattleSession
             var status = Empire.Core.Scenario.CompositeRules.Status(state, id);
             return $"{id}：{status.Neutralized}/{composite["parts"]!.AsArray().Count} · {status.State}";
         });
-        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives));
+        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives), transition);
     }
     public IReadOnlyList<JsonObject> ActionLog => actions.Select(action => (JsonObject)action.DeepClone()).ToArray();
 
@@ -176,12 +176,30 @@ public sealed class GrayFlagSession : IBattleSession
 
     private BattleReceipt Commit(JsonObject command)
     {
+        var before = battle.Snapshot();
+        var computer = IsComputerTurn;
+        IReadOnlySet<int>? beforeVisible = null;
+        if (before["rules"]?["fog"]?.GetValue<bool>() == true)
+        {
+            var viewer = Viewer(before);
+            beforeVisible = new BattleVision(engine.Movement).VisibleUnits(before, viewer)
+                .Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
+        }
         var receipt = battle.Dispatch(command);
         actions.Add((JsonObject)command.DeepClone());
         events.AddRange(receipt.Events.Select(value => (JsonObject)value.DeepClone()));
         revision++;
+        transition = new BattlePresentationTransition(revision,
+            Empire.Core.Determinism.EcmaJson.ToElement(receipt.Before),
+            Empire.Core.Determinism.EcmaJson.ToElement(command),
+            receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray(),
+            Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot()), computer, beforeVisible);
         return receipt;
     }
+
+    private static int Viewer(JsonObject state) =>
+        state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["controller"]?.GetValue<string>() == "human")?["id"]?.GetValue<int>()
+        ?? state["currentPlayer"]!.GetValue<int>();
 
     private static BattleOrderChoice Choice(string label, string role, Coord? at, JsonObject action) =>
         new(label, role, at is { } target ? new BoardCell(target.X, target.Y) : null,

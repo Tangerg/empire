@@ -59,7 +59,18 @@ function visit(node: ts.Node): void {
   ts.forEachChild(node, visit);
 }
 visit(actorSource); if (!actors) throw new Error('Missing actor declaration');
-write('data/art-bindings.json', { ...bindings, CANDIDATE_01_ACTOR_ART: actors });
+const presentationSource = ts.createSourceFile('presentation.ts', readFileSync('packages/story-candidate-01/src/presentation/index.ts', 'utf8'), ts.ScriptTarget.Latest, true);
+let healFx: string | undefined;
+function visitPresentation(node: ts.Node): void {
+  if (ts.isPropertyAssignment(node) && ts.isIdentifier(node.name) && node.name.text === 'healFx') {
+    if (healFx !== undefined || !ts.isStringLiteral(node.initializer)) throw new Error('Heal FX binding changed');
+    healFx = node.initializer.text;
+  }
+  ts.forEachChild(node, visitPresentation);
+}
+visitPresentation(presentationSource);
+if (!healFx) throw new Error('Missing source heal FX binding');
+write('data/art-bindings.json', { ...bindings, CANDIDATE_01_ACTOR_ART: actors, CANDIDATE_01_HEAL_FX: healFx });
 const scene = read('environment-builder-v1/scenes/c01-01.scene.json');
 write('data/grayflag-authored-scene.json', scene);
 const scenes = CANDIDATE_01_LEVELS.map(candidate => {
@@ -125,6 +136,7 @@ for (const tile of terrainIds) { const binding = bindings.CANDIDATE_01_MAP_STRUC
 for (const prop of scenes.flatMap(scene => [...scene.placements, ...(scene.framePlacements ?? [])])) if (prop.topicId) topics.add(prop.topicId);
 for (const structure of CANDIDATE_01_LEVELS.flatMap(candidate => candidate.structures ?? [])) { const topic = bindings.CANDIDATE_01_STRUCTURE_ART[structure.type]; if (topic) topics.add(topic); }
 for (const topic of [...Object.values(bindings.CANDIDATE_01_STRUCTURE_ART), 'C01-BPROP-AFTERMATH-2', 'C01-BPROP-AFTERMATH-3', 'C01-BPROP-EVIDENCE-1']) if (topic !== undefined) topics.add(topic);
+for (const topic of [...Object.values(bindings.CANDIDATE_01_WEAPON_FX), healFx]) if (topic !== undefined) topics.add(topic);
 const assets = manifest.assets.filter((record: { topicId: string }) => topics.has(record.topicId)).map((record: { topicId: string; png: string; width: number; height: number }) => {
   const physical = hd.assets.find((entry: { topicId: string }) => entry.topicId === record.topicId);
   return { ...record, png: physical?.png ?? record.png, physicalWidth: physical?.width ?? record.width, physicalHeight: physical?.height ?? record.height, pixelDensity: physical?.pixelDensity ?? 1 };

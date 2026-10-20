@@ -33,7 +33,7 @@ public partial class GrayFlagGame : Node
 
     public override void _Process(double delta)
     {
-        if (session is null) return;
+        if (session is null || screen?.IsPresenting == true) return;
         if (session.Snapshot()["phase"]!.GetValue<string>() == "over")
         {
             if (!resultOffered)
@@ -41,9 +41,18 @@ public partial class GrayFlagGame : Node
                 resultOffered = true;
                 var result = new AcceptDialog { Title = "战斗结束", DialogText = session.Snapshot()["endReason"]!.GetValue<string>() };
                 resultDialog = result;
-                result.CloseRequested += () => { resultOffered = false; resultDialog = null; result.QueueFree(); };
+                var expectedSession = session;
+                var handled = false;
+                result.CloseRequested += () => {
+                    if (handled || !ReferenceEquals(resultDialog, result)) return;
+                    handled = true; resultOffered = false; resultDialog = null; result.QueueFree();
+                };
                 result.GetOkButton().Text = "继续战役";
-                result.Confirmed += () => { campaign.FinishBattle(); session = null; resultDialog = null; result.QueueFree(); ShowNode(); };
+                result.Confirmed += () => {
+                    if (handled || !ReferenceEquals(resultDialog, result) || !ReferenceEquals(session, expectedSession)) return;
+                    handled = true;
+                    campaign.FinishBattle(); session = null; resultDialog = null; result.QueueFree(); ShowNode();
+                };
                 AddChild(result); result.PopupCentered();
             }
             return;
@@ -108,7 +117,10 @@ public partial class GrayFlagGame : Node
             facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); });
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         screen.ConfigureDynamicState(packs);
-        screen.BindApplicationActions(Save, Load, () => { campaign.RestartBattle(); resultOffered = false; ShowBattle(); });
+        screen.BindApplicationActions(Save, Load, () => {
+            if (resultDialog is not null) { resultDialog.QueueFree(); resultDialog = null; }
+            campaign.RestartBattle(); resultOffered = false; ShowBattle();
+        });
     }
 
     private void Save()

@@ -27,6 +27,7 @@ public partial class BoardView : Node2D
     private AuthoredScene? _scene;
     private EnvironmentCatalog? _environment;
     private readonly List<StandingEntry> _authoredStanding = new();
+    private readonly List<StandingEntry> _standing = new();
     private readonly List<string> _sceneDiagnostics = new();
     private ReadOnlyCollection<string> _diagnostics = Array.AsReadOnly(Array.Empty<string>());
 
@@ -64,6 +65,7 @@ public partial class BoardView : Node2D
     public void Configure(AssetCatalog catalog, JsonObject level, AuthoredScene scene,
         EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null)
     {
+        CancelPresentation();
         ArgumentNullException.ThrowIfNull(facesLeft);
         var width = Integer(level, "width");
         var height = Integer(level, "height");
@@ -269,6 +271,8 @@ public partial class BoardView : Node2D
         }
 
         ReplaceChild(ref _projection, staging);
+        _standing.Clear();
+        _standing.AddRange(entries);
         ProjectionUnitCount = snapshot.Units.Count;
         RenderedUnitCount = renderedUnits;
         RenderedStructureCount = renderedStructures;

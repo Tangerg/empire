@@ -31,7 +31,10 @@ public sealed record RuntimeAsset(
     int PhysicalWidth,
     int PhysicalHeight,
     bool PreserveAuthoredPalette,
-    float PresentationScale);
+    float PresentationScale,
+    double? FramesPerSecond,
+    bool Loop,
+    string BlendMode);
 
 public sealed class AssetCatalog
 {
@@ -41,6 +44,8 @@ public sealed class AssetCatalog
     private readonly Dictionary<string, ActorArtBinding> _actors;
     private readonly Dictionary<string, MapStructureArtBinding> _mapStructures;
     private readonly Dictionary<string, string> _structures;
+    private readonly Dictionary<string, string> _weaponEffects;
+    private readonly string? _healEffect;
     private readonly RasterResources _rasters = new();
 
     public int LogicalTileSize { get; }
@@ -54,6 +59,8 @@ public sealed class AssetCatalog
         _actors = new(bindings.Actors, StringComparer.Ordinal);
         _mapStructures = new(bindings.MapStructures, StringComparer.Ordinal);
         _structures = new(bindings.Structures, StringComparer.Ordinal);
+        _weaponEffects = new(bindings.WeaponEffects, StringComparer.Ordinal);
+        _healEffect = bindings.HealEffect;
 
         foreach (var record in manifest.Assets.Where(item => item.Id is null))
         {
@@ -105,6 +112,18 @@ public sealed class AssetCatalog
 
     public RuntimeAsset? ResolveStructure(string structureType) =>
         _structures.TryGetValue(structureType, out var topic) ? ResolveTopic(topic) : null;
+
+    public RuntimeAsset? ResolveWeaponEffect(string weapon) =>
+        _weaponEffects.TryGetValue(weapon, out var topic) ? ResolveEffect(topic) : null;
+
+    public RuntimeAsset? ResolveHealEffect() => _healEffect is null ? null : ResolveEffect(_healEffect);
+
+    public RuntimeAsset ResolveEffect(string topic)
+    {
+        var asset = ResolveTopic(topic);
+        return asset.Category == "fx" ? asset
+            : throw new InvalidOperationException($"Effect binding does not reference an FX strip: {topic}");
+    }
 
     public RuntimeAsset ResolveMapStructure(string terrainId)
     {
@@ -159,6 +178,8 @@ public sealed class AssetCatalog
         var height = record.FrameHeight ?? record.Height;
         var frames = record.Frames ?? 1;
         var density = record.PixelDensity;
+        var category = basis?.Category ?? record.Category ?? "";
+        var effect = category == "fx";
         var order = record.FrameOrder ?? record.StateOrder ?? Array.Empty<string>();
         if (string.IsNullOrWhiteSpace(identity) || string.IsNullOrWhiteSpace(record.TopicId)
             || !record.ResourcePath.StartsWith("res://assets/", StringComparison.Ordinal)
@@ -168,7 +189,9 @@ public sealed class AssetCatalog
             || Math.Abs(record.PhysicalWidth - width * (double)frames * density) > 0.001
             || Math.Abs(record.PhysicalHeight - height * density) > 0.001)
             throw new InvalidOperationException($"Invalid asset identity, resource path, or logical/physical geometry: {identity}");
-        if ((frames > 1 || order.Length > 0)
+        // Actors and structures name their semantic roles. Source FX instead play
+        // every numeric strip index; inventing actor roles would change that contract.
+        if (((frames > 1 && !effect) || order.Length > 0)
             && (order.Length != frames || order.Distinct(StringComparer.Ordinal).Count() != frames
                 || order.Any(string.IsNullOrWhiteSpace)))
             throw new InvalidOperationException($"Invalid authored frame order: {identity}");
@@ -176,6 +199,12 @@ public sealed class AssetCatalog
             ?? new[] { width / 2.0, height - 1.0 }, $"anchor of {identity}");
         if (anchor.X < 0 || anchor.X > width || anchor.Y < 0 || anchor.Y > height)
             throw new InvalidOperationException($"Anchor outside frame: {identity}");
+        var fps = effect ? record.Fps ?? 12 : record.Fps;
+        var blend = record.BlendMode ?? "normal";
+        if (fps is { } speed && (!double.IsFinite(speed) || speed <= 0))
+            throw new InvalidOperationException($"Invalid strip frame rate: {identity}");
+        if (effect && (record.Anchor is null || anchor.X >= width || anchor.Y >= height || blend != "normal"))
+            throw new InvalidOperationException($"Invalid or unsupported effect pivot/blend: {identity}");
         RasterResources.Positive(record.PresentationScale, $"presentation scale of {identity}");
 
         // Named actors change their sheet, never the base actor's canonical footprint.
@@ -184,11 +213,12 @@ public sealed class AssetCatalog
         if (isHero && record.Footprint is not null
             && RasterResources.Footprint(record.Footprint, identity) != basis!.Footprint)
             throw new InvalidOperationException($"Actor appearance changes canonical footprint: {identity}");
-        return new RuntimeAsset(identity, record.TopicId, basis?.Category ?? record.Category ?? "",
+        return new RuntimeAsset(identity, record.TopicId, category,
             record.ResourcePath, width, height, frames,
             new ReadOnlyCollection<string>((string[])order.Clone()), anchor, footprint,
             (float)density, record.PhysicalWidth, record.PhysicalHeight,
-            isHero || record.PreserveAuthoredPalette, (float)record.PresentationScale);
+            isHero || record.PreserveAuthoredPalette, (float)record.PresentationScale,
+            fps, record.Loop ?? false, blend);
     }
 }
 

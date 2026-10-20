@@ -3,7 +3,7 @@
 ## Run the GrayFlag campaign integration
 
 Install Godot **4.6.3 .NET** (not the standard build) and Microsoft **.NET SDK 8**.
-Open `project.godot`, build the C# project, and run it. From a terminal:
+Open `project.godot`, build the C# project, and run it. From inside `godot`, use:
 
 ```sh
 dotnet build Empire.csproj
@@ -20,6 +20,11 @@ Select a friendly unit, choose an action category and destination, then confirm
 the complete order. Movement commits the destination and waiting together;
 attack orders include their exact firing position. End turn lets the original
 ported AI play the opposing side. The native core revalidates every command.
+
+From the repository root, `bash tools/godot/run-native.sh` builds, imports and
+launches using the configured workspace-local toolchain. See
+[run and package instructions](docs/RUN-AND-PACKAGE.md) for portable setup and
+the explicitly pending stand-alone export/visual acceptance gates.
 
 ## Verified behavior (2026-10-20)
 
@@ -61,7 +66,7 @@ capabilities before gameplay. See `tools/godot/scenario-checks` and
 ## Scope and remaining migration work
 
 This is a playable-level integration checkpoint, not the finished migration.
-The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, action animation/effects, sound, richer scenario feedback, lighting/shadows, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
+The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, descriptive event logs and postbattle summaries, lighting/shadows, camera follow/panning, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
 See `docs/RECOVERY.md` for evidence and `docs/COMPATIBILITY.md` for explicit
 malformed-input hardening differences. Original source and art are preserved.
 

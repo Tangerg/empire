@@ -27,6 +27,9 @@ public sealed class AssetRecord
     public int? Frames { get; init; }
     public string[]? FrameOrder { get; init; }
     public string[]? StateOrder { get; init; }
+    public double? Fps { get; init; }
+    public bool? Loop { get; init; }
+    public string? BlendMode { get; init; }
     public double[]? Anchor { get; init; }
     public int[]? Footprint { get; init; }
     public double PixelDensity { get; init; }
@@ -64,6 +67,10 @@ public sealed class ArtBindings
     public Dictionary<string, MapStructureArtBinding> MapStructures { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_STRUCTURE_ART")]
     public Dictionary<string, string> Structures { get; init; } = new();
+    [JsonPropertyName("CANDIDATE_01_WEAPON_FX")]
+    public Dictionary<string, string> WeaponEffects { get; init; } = new();
+    [JsonPropertyName("CANDIDATE_01_HEAL_FX")]
+    public string? HealEffect { get; init; }
 }
 
 public sealed class EnvironmentManifest
