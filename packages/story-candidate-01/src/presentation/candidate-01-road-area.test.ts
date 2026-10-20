@@ -145,13 +145,37 @@ describe('continuous authored earth roads', () => {
     expect(singleton.alpha).toContain('<circle cx="48" cy="48" r="16"/>');
   });
 
-  it('keeps the old connector path for every other scene and for editable c01-01 geometry', () => {
+  it('registers all 33 river-map road and settlement cells without repainting bridge decks or moving scenery', () => {
+    const level = candidate01Level('c01-02');
+    const state = engine.createState(level);
+    const before = hash(state);
+    const map = state.map;
+    expect(candidate01EnvironmentScene(level.id)?.mapSize).toEqual([map.width, map.height]);
+    const graph = candidate01RoadGraph(map.width, map.height, painted(map));
+    expect(graph.cells).toHaveLength(33);
+    expect(graph.chains.reduce((n, chain) => n + chain.length - 1, 0)).toBe(21);
+    const play = layers(map, level.id);
+    const edit = layers(map, level.id, true);
+    const road = play.ground.filter(piece => piece.markup.includes('data-runtime-raster="area-road"'));
+    expect(road).toHaveLength(1);
+    expect(play.underUnits).toEqual(edit.underUnits);
+    expect(play.overUnits).toEqual(edit.overUnits);
+    for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
+      if (map.tiles[y * map.width + x] !== 'bridge') continue;
+      expect(graph.occupied.has(`${x},${y}`)).toBe(false);
+      expect(road[0].markup).not.toContain(`<rect x="${x * 32}" y="${y * 32}" width="32" height="32"/>`);
+    }
+    expect(hash(state)).toBe(before);
+    expect(layers(map, level.id)).toEqual(play);
+  });
+
+  it('keeps the old connector path for unreviewed scenes and editable geometry', () => {
     for (const level of CANDIDATE_01_LEVELS) {
       const map = mapFromLevel(content, level);
       const play = layers(map, level.id);
       const edit = layers(map, level.id, true);
       expect(edit.ground.some(piece => piece.markup.includes('data-runtime-raster="area-road"'))).toBe(false);
-      if (level.id === 'c01-01') {
+      if (level.id === 'c01-01' || level.id === 'c01-02') {
         expect(boardPiecesMarkup(edit.ground)).toContain('route-dirt-road@2x.png');
         expect(boardPiecesMarkup(play.ground)).not.toContain('route-dirt-road@2x.png');
         expect(play.underUnits).toEqual(edit.underUnits);

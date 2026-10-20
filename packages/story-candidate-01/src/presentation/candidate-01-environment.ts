@@ -1,5 +1,6 @@
 import environmentManifestJson from '../../assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json';
 import twinHillsSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json';
+import riverSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-02.scene.json';
 import redstoneSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-03.scene.json';
 import blackCampSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-04.scene.json';
 import oldBannerSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-10.scene.json';
@@ -127,6 +128,7 @@ function readScene(document: SceneDocument): CandidateEnvironmentScene {
 
 const scenes = new Map<string, CandidateEnvironmentScene>([
   [twinHillsSceneJson.levelId, readScene(twinHillsSceneJson)],
+  [riverSceneJson.levelId, readScene(riverSceneJson)],
   [redstoneSceneJson.levelId, readScene(redstoneSceneJson)],
   [blackCampSceneJson.levelId, readScene(blackCampSceneJson)],
   [oldBannerSceneJson.levelId, readScene(oldBannerSceneJson)],
