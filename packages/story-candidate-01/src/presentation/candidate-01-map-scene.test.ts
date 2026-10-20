@@ -94,12 +94,12 @@ describe('candidate-01 authored map scenery', () => {
   it('applies each registered forest scale once while keeping its contact at the placement origin', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
     map.tiles.fill('forest');
-    const context = sceneContext('c01-02', map);
+    const context = sceneContext('forest-scale-probe', map);
     const field = boardPiecesMarkup(candidate01MapSceneryLayers(context).underUnits);
     const frame = candidate01SceneFrameMarkup(context).foreground;
     const motherRootMap = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
     motherRootMap.tiles.fill('c01.mother-root');
-    const motherRoot = boardPiecesMarkup(candidate01MapSceneryLayers(sceneContext('c01-02', motherRootMap)).underUnits);
+    const motherRoot = boardPiecesMarkup(candidate01MapSceneryLayers(sceneContext('forest-scale-probe', motherRootMap)).underUnits);
     const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
     for (const [id, minPlacement, maxPlacement] of [
       ['oak-ancient', 0.74, 0.86], ['mixed-forest-dense', 0.74, 0.86],
