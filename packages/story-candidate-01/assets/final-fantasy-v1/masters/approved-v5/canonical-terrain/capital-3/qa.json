@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-TERRAIN-CAPITAL-3",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-2b47d647-181b-478a-8620-259b012a15be.png",
+  "master": "master.png",
+  "sourceSHA256": "ea19e92560bc346fa59a52508f9a9744fd1aec076beff3189170c143192129f6",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedVariantCount": 4,
+  "visualSourceQA": {
+    "subject": "Pale fitted limestone slabs with sparse broad cracks, four distributed cool blue-gray gutter fragments including two complete flush drain/elbow motifs.",
+    "style": "Chunky light matte slab planes, restrained warm mortar, muted slate-blue gutters with no glow or medical motif.",
+    "caveats": [
+      "The upper-right gutter fragment reaches the top/right canvas edges, while its drain is complete; reviewed source windows should retain local detail deliberately.",
+      "Four crop variants must be sampled from this one material, not counted as independent art.",
+      "Stone faces contain low-contrast broad mottled paint planes; native visual density needs actual export review.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticIdentityRetained": true,
+    "noNewMotifsOrBuildings": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero active ground consumers"
+  }
+}

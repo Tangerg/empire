@@ -1,0 +1,132 @@
+{
+  "topicId": "C01-FX-04",
+  "selectedPhases": [
+    {
+      "phase": "contact",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/contact/master.png",
+      "sha256": "0bb3c62659d2601019bf3652b62e2701c7b96adbe49236ba51bf8e826f80a844"
+    },
+    {
+      "phase": "expand",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/expand/master.png",
+      "sha256": "fc065264d2ea362cc9acb91eab174bca6228ff8e070d178b88a05704264aec04"
+    },
+    {
+      "phase": "peak",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/peak/master.png",
+      "sha256": "36be71b43da20ef53b6d4a4533f22cb9630c1841bfafcb1129b7bd4695809ca9"
+    },
+    {
+      "phase": "settle",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/settle/master.png",
+      "sha256": "27e291466feb576c3a74fda69e264e10fcb53e39cdcb22faecb996f0f47a8515"
+    }
+  ],
+  "reviewedOrder": [
+    "contact",
+    "expand",
+    "peak",
+    "settle"
+  ],
+  "selection": {
+    "contact": "first generated source",
+    "expand": "first generated source, bounded9 alpha1 perimeter samples",
+    "peak": "first generated source",
+    "settle": "settle-repair-v3, first two attempts preserved"
+  },
+  "sourceContract": "Atlas01 row4 columns1\u20134; hollow elliptical ochre shock ring, paired tan dust puffs, flying stone debris at peak and small final residue.",
+  "semanticReview": "Contact compact ring/puffs; expand wider double broken ring and larger side puffs; peak has broken layered arcs, taller billows and airborne stone chips; settle removes most ring, reduces puffs and leaves sparse real translucent remnants. Not duplicate geometry with opacity only.",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sharedTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "perFrameTransform": false,
+  "alphaCleanup": false,
+  "sourcePerimeterMaxima": [
+    0,
+    1,
+    0,
+    0
+  ],
+  "sourcePerimeterAlpha1Samples": [
+    0,
+    9,
+    0,
+    0
+  ],
+  "allFinal2PixelBordersExactlyZero": true,
+  "settleMaximumSourceAlpha": 106,
+  "visualCompositesReviewed": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth"
+  ],
+  "sourceBackingOrVisibleCutoff": false,
+  "authoredImpactCentreNotes": {
+    "nominalRequested": [
+      627,
+      671
+    ],
+    "nominalLogicalOffsetFromRuntimePivot": [
+      0,
+      0.9824561403508771
+    ],
+    "contactEnclosedHoleMeasured": [
+      627.1758,
+      670.7898
+    ],
+    "expandEnclosedHoleMeasured": [
+      640.2409,
+      686.0191
+    ],
+    "peakBrokenRingVisualEstimate": [
+      635,
+      702
+    ],
+    "settleBrokenRingVisualEstimate": [
+      630,
+      672
+    ],
+    "interpretation": "The same authored impact region persists with less than one logical-pixel contour-centre variation; no independent fitting or coded shift. Broken arc shapes have no exact closed-hole centroid. The artwork lies about1\u20131.7 logical pixels below the runtime metadata pivot."
+  },
+  "timing": {
+    "fps": 12,
+    "frameStartMs": [
+      0,
+      83.33333333333333,
+      166.66666666666666,
+      250
+    ],
+    "durationFractionsSeconds": [
+      "1/12",
+      "1/12",
+      "1/12",
+      "17/100"
+    ],
+    "totalMs": 420,
+    "finalHoldMs": 170,
+    "numPlays": 1,
+    "actualRuntimeRemovalMs": 420,
+    "APNGCaveat": "A standalone one-play APNG retains its final pixels after finishing; game animateHit removes the effect at420ms. The provided offline HTML wrapper implements that removal but could not be browser-executed in this sandbox."
+  },
+  "liveGamePlayback": false,
+  "browserPlayback": "attempt blocked before page creation; see qa/browser-playback-attempt.json",
+  "noGitOrProductionEdits": true
+}

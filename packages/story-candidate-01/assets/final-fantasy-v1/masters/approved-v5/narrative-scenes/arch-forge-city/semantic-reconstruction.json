@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-ARCH-FORGE-CITY",
+  "label": "山炉炉城",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 67,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+  "sourceBoardSha256": "75c85d844f0d2c0fe46974218875ee07f94ace55b97b80e6e9259d32cb5501ee",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "top-right",
+  "legacyInsetCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "currentActualUse": false,
+  "newConsumerCreated": false,
+  "semanticReview": {
+    "preserved": [
+      "exterior cliffside multi-tier forge settlement",
+      "separate central, upper and side furnace buildings",
+      "slate masonry, timber structures, warm arched furnaces and large wheel mechanisms",
+      "hoists, cranes, connected stairs and terrace walkways",
+      "lower cool stream and wooden bridge",
+      "anonymous ordinary forge workers and ore carts"
+    ],
+    "interpreted": [
+      "square source expanded into a wide open-air mountain establishment view",
+      "fewer grouped mechanical details and larger floor slabs for logical-size readability",
+      "small cooling-water devices made readable among the original pipes, wheels and stream context"
+    ],
+    "notClaimed": [
+      "the underground shared furnace-repair scene C01-CH03-S14",
+      "a precise archive-furnace identity or archive-room plan",
+      "any named craftsperson, political faction or dramatic story event",
+      "new map occupancy, cooling-water rule or city selector"
+    ],
+    "caveats": [
+      "Centered 390×778 portrait cover preserves the complete central furnace house, some upper hoist context, descending paths/terrace edges and the lower bridge. It clips the outer workshops, most of the large upper forge, left cooling works, tree border and distant mountain horizon. The whole multi-building city reads much more fully in landscape. The 280×245 inset keeps the central/upper/lower tier logic but reduces side context. No current consumer was changed."
+    ]
+  }
+}

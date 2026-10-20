@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-04": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "contact",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/contact/master.png",
+          "sha256": "0bb3c62659d2601019bf3652b62e2701c7b96adbe49236ba51bf8e826f80a844"
+        },
+        {
+          "phase": "expand",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/expand/master.png",
+          "sha256": "fc065264d2ea362cc9acb91eab174bca6228ff8e070d178b88a05704264aec04"
+        },
+        {
+          "phase": "peak",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/peak/master.png",
+          "sha256": "36be71b43da20ef53b6d4a4533f22cb9630c1841bfafcb1129b7bd4695809ca9"
+        },
+        {
+          "phase": "settle",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/settle/master.png",
+          "sha256": "27e291466feb576c3a74fda69e264e10fcb53e39cdcb22faecb996f0f47a8515"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  }
+}

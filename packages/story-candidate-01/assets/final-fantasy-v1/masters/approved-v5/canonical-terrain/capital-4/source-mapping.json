@@ -1,0 +1,173 @@
+{
+  "topicId": "C01-TERRAIN-CAPITAL-4",
+  "label": "宫城地面",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-CAPITAL-4",
+    "topicId": "C01-TERRAIN-CAPITAL-4",
+    "label": "宫城地面",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-capital-4.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-4.png",
+      "sha256": "508f40a5eda5d69249be0874899a4eb9296eef10b782a18208e4c332a5b1ce20",
+      "pixelSHA256": "6e8416fbd47ced4baa4847ac2af95328f3a13e755dceb729fcaf6a3fe6153841",
+      "dimensions": [
+        128,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      },
+      "alphaBounds": [
+        0,
+        0,
+        128,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-capital-4.png",
+      "sha256": "37979301549d85456a744a154faf82229742ffc1f5165c0fe00ac762efaeb214",
+      "pixelSHA256": "a465c609f9c8bdd42a96196621d4f98cba210b0a82c0999a522f8205bb9c6ce1",
+      "dimensions": [
+        256,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 16384
+      },
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      11
+    ],
+    "2": [
+      11
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 11,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+    "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+    "slotRow": 0,
+    "slotColumn": 3,
+    "slotNumber1Based": 4,
+    "cropXYXY": [
+      1089,
+      3,
+      1445,
+      540
+    ],
+    "cropSize": [
+      356,
+      537
+    ],
+    "variantCropXYXY": [
+      [
+        1092,
+        64,
+        1313,
+        285
+      ],
+      [
+        1221,
+        64,
+        1442,
+        285
+      ],
+      [
+        1092,
+        258,
+        1313,
+        479
+      ],
+      [
+        1221,
+        258,
+        1442,
+        479
+      ]
+    ],
+    "tileMode": "variants"
+  },
+  "observedSourceIdentity": "Pale octagonal palace paving with a burgundy geometric border",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Four square samples fragment the palace border; no complete palace building",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 22.622,
+      "maxRGBDifference": 87
+    },
+    "2": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 24.853,
+      "maxRGBDifference": 115
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "topicId": "C01-ARCH-TWIN-HILLS",
+  "historicalAuditActualUse": false,
+  "currentRuntimeLiteralReferenceCommand": "rg -n 'C01-ARCH-TWIN-HILLS' packages --glob '*.ts' --glob '*.tsx' --glob '*.css' --glob '*.js'",
+  "exitCode": 1,
+  "matches": [],
+  "consumerStatus": "catalog-only; no shipped direct scene consumer",
+  "storySelectorFileSha256": "230b746b644834893153498fb852fef21304b9141feb8aa69d4f4b8f54240195",
+  "geometryChecksAreHypothetical": true,
+  "selectorsChanged": false,
+  "browserOrLiveCheck": false
+}

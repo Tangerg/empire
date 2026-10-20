@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-ARCH-TWIN-HILLS",
+  "label": "双子丘陵战斗地点",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 63,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+  "sourceBoardSha256": "bea6f843b636aba30bfac221569c8fb72a3c21747598a47a9920c81adfbca840",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "top-right",
+  "legacyInsetCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "currentActualUse": false,
+  "newConsumerCreated": false,
+  "semanticReview": {
+    "preserved": [
+      "paired rocky hill masses on opposite sides of a winding stream",
+      "two rough timber crossings at different depths",
+      "stepped high ground and lower paths",
+      "empty fenced clearings and timber stairs",
+      "pine border and slate rock material identity"
+    ],
+    "interpreted": [
+      "original square terrain is recomposed into a wide establishing view",
+      "individual small terraces and clearings consolidated into six readable fenced areas",
+      "upstream water cascade and distant mountains emphasize depth without assigning mission directions"
+    ],
+    "notClaimed": [
+      "exact tactical map layout or gameplay heights",
+      "which pictured side is north",
+      "deployment, rescue or initial-command story action",
+      "central village absent from original source",
+      "year-zero wheat-drying variant or year-four memorial variant"
+    ],
+    "caveats": [
+      "Centered 390×778 portrait cover retains the stream, waterfall and both crossings, but removes almost all six fenced clearings and the full paired upper hill shoulders. This is insufficient to communicate the complete Twin Hills geography. Preserve a full landscape view or design a separately authorized portrait composition if a future consumer needs both hills. The 280×245 inset also trims outer clearings; 366×220 is near-complete. No current consumer was changed."
+    ]
+  }
+}

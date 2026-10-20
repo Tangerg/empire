@@ -4,22 +4,22 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 375,
+    "formalBound": 378,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 3,
+      "fx": 4,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 21,
+      "narrative-static": 23,
       "skill": 48,
       "status": 24,
       "terrain": 4
     },
-    "rawPreservedTopics": 376,
+    "rawPreservedTopics": 382,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -291,13 +291,20 @@
       "category": "narrative-static",
       "label": "山炉炉城",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-forge-city/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-forge-city.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived paired-hill geography or exterior workshop terraces; not underground story Forge scene",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed with cropped upper clearings/side workshops explicitly documented",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-GRAY-CAMP",
@@ -431,13 +438,20 @@
       "category": "narrative-static",
       "label": "双子丘陵战斗地点",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-twin-hills/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-twin-hills.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived paired-hill geography or exterior workshop terraces; not underground story Forge scene",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed with cropped upper clearings/side workshops explicitly documented",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-VEINPORT",
@@ -3361,8 +3375,10 @@
       "category": "terrain",
       "label": "城墙步道",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-1/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3375,8 +3391,10 @@
       "category": "terrain",
       "label": "王都街道",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-2/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3389,8 +3407,10 @@
       "category": "terrain",
       "label": "医院区地面",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-3/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3403,8 +3423,10 @@
       "category": "terrain",
       "label": "宫城地面",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-4/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7585,14 +7607,24 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/contact/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/expand/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/expand/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/peak/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/settle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/settle-rejected-v1/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/settle-repair-v2/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/settle-repair-v3/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-04.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four immutable RGBA phases contact/expand/peak/settle preserved; hollow elliptical ochre shock ring and dust growth/decay reviewed; settle repair-v3 selected with true partialalpha; source expand retains9alpha1edgepixels unchanged",
+        "export": "One shared1254 canvas scale28/1254 at[2,2]; exact32/64 phase export checked; genuine partial-alpha finalphase preserved; five-background native review passed",
+        "runtimeBinding": "Canonical FX04 and density2 HD resolver; actual existing blunt-weapon hit binding;12fps nonloop with existing420ms hit lifetime; centered anchor16,16 preserves prior runtime placement",
+        "liveGame": "pending; exact-duration APNG and static phase comparisons only, no browser/GPU playback verification"
+      }
     },
     {
       "topicId": "C01-FX-05",

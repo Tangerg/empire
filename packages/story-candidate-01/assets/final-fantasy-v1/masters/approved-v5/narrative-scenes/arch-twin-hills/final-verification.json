@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-ARCH-TWIN-HILLS",
+  "readyForParentIntegration": true,
+  "nativeDimensions": [
+    1671,
+    941
+  ],
+  "mode": "RGB",
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "masterSha256": "64aa4e54efd0ce8f31413aa5f82972796bb7a7c006830e754c6d1b38c490bbe0",
+  "rawEqualsNativeEqualsMaster": true,
+  "sourceNativeCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "sourceNativeDimensions": [
+    1664,
+    936
+  ],
+  "sourceNativeMatchesExactCrop": true,
+  "canonicalLogicalDimensions": [
+    256,
+    144
+  ],
+  "proposedHDDensity": 6.5,
+  "artificialUpscaling": false,
+  "opaqueNarrativeScene": true,
+  "transparentSprite": false,
+  "visualInspection": {
+    "fullNative": "pass",
+    "logical256x144": "pass",
+    "landscape960x534": "pass-hypothetical",
+    "portrait390x778Centered": "context-loss-recorded-hypothetical",
+    "stagingInset280x245": "side-context-loss-recorded-hypothetical",
+    "stagingMobile366x220": "pass-hypothetical",
+    "microTexture": "pass after targeted surface-simplification edit",
+    "namedHeroDuplication": "none",
+    "readableInventedText": "none"
+  },
+  "cropCaveat": "Centered 390×778 portrait cover retains the stream, waterfall and both crossings, but removes almost all six fenced clearings and the full paired upper hill shoulders. This is insufficient to communicate the complete Twin Hills geography. Preserve a full landscape view or design a separately authorized portrait composition if a future consumer needs both hills. The 280×245 inset also trims outer clearings; 366×220 is near-complete. No current consumer was changed.",
+  "generationAttempts": 2,
+  "selectedAttempt": 2,
+  "selectedRequest": "request-v2.json",
+  "nativeDimensionCaveat": "The tool returned 1671×941, one pixel narrower than the requested target. No padding, interpolation or resizing was applied. The explicit common-family crop [4,2,1668,938] removes 4 px left, 3 px right, 2 px top and 3 px bottom.",
+  "formalRegistrationPerformed": false,
+  "repositoryEditsPerformed": false,
+  "browserOrLiveGameVerification": false
+}

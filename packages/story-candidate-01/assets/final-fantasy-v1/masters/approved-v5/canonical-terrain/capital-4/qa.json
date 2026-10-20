@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-TERRAIN-CAPITAL-4",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-38454ba5-4f32-4ff8-9d1e-b00872e92b24.png",
+  "master": "master.png",
+  "sourceSHA256": "1de0ef4b9630eba5ebc9d1f59aaff2286f49c372f1f98943f901953031eae41b",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedVariantCount": 4,
+  "visualSourceQA": {
+    "subject": "Ordered pale octagonal palace paving with small diamond corner stones and distributed burgundy joint-edging segments.",
+    "style": "Broad calm warm-ivory matte faces, simple muted taupe geometric joints, restrained burgundy edging throughout the floor.",
+    "caveats": [
+      "Burgundy accent coverage is less than the requested approximate twelve percent but appears in all four source regions; actual crop variants must retain readable burgundy fragments.",
+      "Geometric floor is continuous and has no complete framed courtyard, heraldry, symbols or palace building.",
+      "Stone faces have low-contrast broad mottled paint planes; native visual density needs actual export review.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticIdentityRetained": true,
+    "noNewMotifsOrBuildings": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero active ground consumers"
+  }
+}

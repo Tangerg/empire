@@ -1,0 +1,124 @@
+[
+  {
+    "topicId": "C01-ARCH-TWIN-HILLS",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-twin-hills/master.png",
+        "sha256": "64aa4e54efd0ce8f31413aa5f82972796bb7a7c006830e754c6d1b38c490bbe0",
+        "size": [
+          1671,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 3,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9905196542125436,
+      "method": "explicit-region-resize",
+      "resampling": "LANCZOS"
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-twin-hills.png",
+    "pixelSha256": "e8632b6256e956ec1eaa3103bcee7e7d80a3977bf9c8306baa6dc40b491cb516",
+    "size": [
+      256,
+      144
+    ]
+  },
+  {
+    "topicId": "C01-ARCH-TWIN-HILLS",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-twin-hills/master.png",
+        "sha256": "64aa4e54efd0ce8f31413aa5f82972796bb7a7c006830e754c6d1b38c490bbe0",
+        "size": [
+          1671,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 3,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9905196542125436,
+      "method": "explicit-region-copy",
+      "resampling": null
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 6.5,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-twin-hills.png",
+    "pixelSha256": "c77bd082ca1a7169e1fb132f6b21d1d653c6f375ab61ba5c1ca12fcdf11dc41a",
+    "size": [
+      1664,
+      936
+    ]
+  }
+]

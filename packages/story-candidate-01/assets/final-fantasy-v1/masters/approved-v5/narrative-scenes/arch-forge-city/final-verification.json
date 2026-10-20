@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-ARCH-FORGE-CITY",
+  "readyForParentIntegration": true,
+  "nativeDimensions": [
+    1672,
+    941
+  ],
+  "mode": "RGB",
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "masterSha256": "562489fa6fc91adf1ea4dbe66abe89f909309d54245aed7b250eec917fe8b21e",
+  "rawEqualsNativeEqualsMaster": true,
+  "sourceNativeCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "sourceNativeDimensions": [
+    1664,
+    936
+  ],
+  "sourceNativeMatchesExactCrop": true,
+  "canonicalLogicalDimensions": [
+    256,
+    144
+  ],
+  "proposedHDDensity": 6.5,
+  "artificialUpscaling": false,
+  "opaqueNarrativeScene": true,
+  "transparentSprite": false,
+  "visualInspection": {
+    "fullNative": "pass",
+    "logical256x144": "pass",
+    "landscape960x534": "pass-hypothetical",
+    "portrait390x778Centered": "context-loss-recorded-hypothetical",
+    "stagingInset280x245": "side-context-loss-recorded-hypothetical",
+    "stagingMobile366x220": "pass-hypothetical",
+    "microTexture": "pass after targeted surface-simplification edit",
+    "namedHeroDuplication": "none",
+    "readableInventedText": "none"
+  },
+  "cropCaveat": "Centered 390×778 portrait cover preserves the complete central furnace house, some upper hoist context, descending paths/terrace edges and the lower bridge. It clips the outer workshops, most of the large upper forge, left cooling works, tree border and distant mountain horizon. The whole multi-building city reads much more fully in landscape. The 280×245 inset keeps the central/upper/lower tier logic but reduces side context. No current consumer was changed.",
+  "generationAttempts": 2,
+  "selectedAttempt": 2,
+  "selectedRequest": "request-v2.json",
+  "nativeDimensionCaveat": "The selected output is native1672×941. The explicit common-family crop [4,2,1668,938] removes 4 px left/right, 2 px top and 3 px bottom.",
+  "formalRegistrationPerformed": false,
+  "repositoryEditsPerformed": false,
+  "browserOrLiveGameVerification": false
+}
