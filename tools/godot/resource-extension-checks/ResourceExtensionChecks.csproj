@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EmpireResourcesRoot Condition="'$(EmpireResourcesRoot)' == ''">$(EmpireRoot)/godot/Empire.Core/Resources</EmpireResourcesRoot>
+    <EmpireCombatRoot Condition="'$(EmpireCombatRoot)' == ''">$(EmpireRoot)/godot/Empire.Core/Combat</EmpireCombatRoot>
+    <EmpireOrdersRoot Condition="'$(EmpireOrdersRoot)' == ''">$(EmpireRoot)/godot/Empire.Core/Orders</EmpireOrdersRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="*.cs"/>
+    <Compile Include="$(EmpireRoot)/godot/Empire.Core/**/*.cs" Exclude="$(EmpireRoot)/godot/Empire.Core/obj/**/*.cs;$(EmpireRoot)/godot/Empire.Core/bin/**/*.cs;$(EmpireRoot)/godot/Empire.Core/Resources/**/*.cs;$(EmpireRoot)/godot/Empire.Core/Combat/**/*.cs;$(EmpireRoot)/godot/Empire.Core/Orders/**/*.cs"/>
+    <Compile Include="$(EmpireResourcesRoot)/*.cs"/>
+    <Compile Include="$(EmpireCombatRoot)/*.cs"/>
+    <Compile Include="$(EmpireOrdersRoot)/*.cs"/>
+  </ItemGroup>
+</Project>

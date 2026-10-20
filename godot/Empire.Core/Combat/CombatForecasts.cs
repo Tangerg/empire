@@ -81,35 +81,26 @@ public sealed class CombatForecasts
         var id = StateJson.Text(weapon, "id");
         if (!UnitWeapons(unit).Any(value => StateJson.Text(value, "id") == id)) return false;
         if (unit["weaponState"]?[id] is not JsonObject runtime || StateJson.Number(runtime, "cooldownRemaining", 0) > 0) return false;
-        return Affordable(state, unit, id, weapon["resourceRequirements"]!.AsArray())
-            && Affordable(state, unit, id, weapon["resourceCosts"]!.AsArray());
+        var context = ResourceContext(state, unit, id);
+        return resources.CanAffordTransactions(context, Transactions(weapon["resourceRequirements"]!.AsArray()))
+            && resources.CanAffordTransactions(context, Transactions(weapon["resourceCosts"]!.AsArray()));
     }
-    private BattleResources.Subject Subject(JsonObject state, JsonObject unit, string weapon, string kind) => kind switch
-    {
-        "player" => new(kind, TacticalQueries.Player(state, StateJson.Integer(unit, "owner"))),
-        "unit" => new(kind, unit), "weapon" => new(kind, unit, weapon),
-        _ => throw new DomainInvariantException($"unknown resource subject \"{kind}\""),
-    };
-    private bool Affordable(JsonObject state, JsonObject unit, string weapon, JsonArray transactions)
-    {
-        var totals = StateJson.Objects(transactions, "transactions")
-            .GroupBy(value => (Kind: StateJson.Text(value, "subject"), Id: StateJson.Text(value, "resource")));
-        return totals.All(group =>
-        {
-            var subject = Subject(state, unit, weapon, group.Key.Kind);
-            return resources.HasAccount(subject, group.Key.Id)
-                && resources.CanSpend(subject, group.Key.Id, group.Sum(value => StateJson.Number(value, "amount", 0)));
-        });
-    }
+    private static ResourceTransactionContext ResourceContext(JsonObject state, JsonObject unit, string weapon) =>
+        new(unit, weapon, TacticalQueries.Player(state, StateJson.Integer(unit, "owner")));
+
+    private static IEnumerable<ResourceTransaction> Transactions(JsonArray transactions) =>
+        StateJson.Objects(transactions, "transactions").Select(value => new ResourceTransaction(
+            StateJson.Text(value, "subject"), StateJson.Text(value, "resource"), StateJson.Number(value, "amount", 0)));
+
     public void ConsumeWeapon(JsonObject state, JsonObject unit, string id, Action<JsonObject> emit)
     {
         var weapon = RequireReadyWeapon(state, unit, id);
-        foreach (var cost in StateJson.Objects(weapon["resourceCosts"], "resourceCosts"))
+        var context = ResourceContext(state, unit, id);
+        foreach (var cost in Transactions(weapon["resourceCosts"]!.AsArray()))
         {
-            var subject = Subject(state, unit, id, StateJson.Text(cost, "subject"));
-            var resource = StateJson.Text(cost, "resource");
-            var amount = resources.Spend(subject, resource, StateJson.Number(cost, "amount", 0));
-            resources.Announce(subject, resource, -amount, emit);
+            var subject = resources.SubjectFor(context, cost);
+            var amount = resources.Spend(subject, cost.Resource, cost.Amount);
+            resources.Announce(subject, cost.Resource, -amount, emit);
         }
         var runtime = unit["weaponState"]![id]!.AsObject();
         runtime["cooldownRemaining"] = Math.Max(StateJson.Number(runtime, "cooldownRemaining", 0), StateJson.Number(weapon, "cooldown", 0));

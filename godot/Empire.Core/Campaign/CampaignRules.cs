@@ -1,36 +1,11 @@
 using System.Text.Json.Nodes;
+using Empire.Core.Registries;
 using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Campaign;
 
-public abstract class CampaignRegistry<T> where T : class
-{
-    private readonly Dictionary<string, T> entries = new(StringComparer.Ordinal);
-    private readonly string subject;
-    protected CampaignRegistry(string subject) => this.subject = subject;
-    protected abstract string KeyOf(T entry);
-    public bool IsSealed { get; private set; }
-    public int Count => entries.Count;
-    public CampaignRegistry<T> Register(T entry)
-    {
-        RequireMutable();
-        if (!entries.TryAdd(KeyOf(entry), entry)) throw new DomainInvariantException($"{subject} already registered: \"{KeyOf(entry)}\"");
-        return this;
-    }
-    public CampaignRegistry<T> Replace(T entry) { RequireMutable(); entries[KeyOf(entry)] = entry; return this; }
-    public T Get(string id) => entries.GetValueOrDefault(id) ?? throw new DomainInvariantException($"unknown {subject} \"{id}\"");
-    public T? TryGet(string id) => entries.GetValueOrDefault(id);
-    public bool Has(string id) => entries.ContainsKey(id);
-    public IReadOnlyList<T> All() => entries.Values.ToArray();
-    public IReadOnlyList<string> Keys() => entries.Keys.ToArray();
-    public CampaignRegistry<T> Seal() { IsSealed = true; return this; }
-    protected R CopyInto<R>(R result) where R : CampaignRegistry<T>
-    { foreach (var entry in entries.Values) result.Register(entry); return result; }
-    private void RequireMutable() { if (IsSealed) throw new DomainInvariantException($"{subject} registry is sealed after composition"); }
-}
-
 public sealed record CampaignConditionHandler(string Kind, Func<JsonObject, JsonObject, CampaignConditionRegistry, bool> Evaluate);
-public sealed class CampaignConditionRegistry : CampaignRegistry<CampaignConditionHandler>
+public sealed class CampaignConditionRegistry : KeyedRegistry<CampaignConditionHandler, CampaignConditionRegistry>
 {
     public CampaignConditionRegistry() : base("campaign condition handler") { }
     protected override string KeyOf(CampaignConditionHandler value) => value.Kind;
@@ -61,7 +36,7 @@ public sealed class CampaignConditionRegistry : CampaignRegistry<CampaignConditi
 }
 
 public sealed record CampaignEffectHandler(string Kind, Action<JsonObject, JsonObject> Apply);
-public sealed class CampaignEffectRegistry : CampaignRegistry<CampaignEffectHandler>
+public sealed class CampaignEffectRegistry : KeyedRegistry<CampaignEffectHandler, CampaignEffectRegistry>
 {
     public CampaignEffectRegistry() : base("campaign effect handler") { }
     protected override string KeyOf(CampaignEffectHandler value) => value.Kind;

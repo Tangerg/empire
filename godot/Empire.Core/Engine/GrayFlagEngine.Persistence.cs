@@ -30,7 +30,7 @@ public sealed partial class GrayFlagEngine
             ["engine.tactical-rules"] = 1,
         });
         var features = new BattleSaveFeatures()
-            .Register("abilities", SupportedAbilities)
+            .Register("abilities", Abilities.Keys())
             .Register("reactions", Combat.Forecasts.ReactionIds)
             .Register("directives", Directives.Keys())
             .Register("turnOrders", TurnOrderSystem.SupportedPolicies)
@@ -41,7 +41,7 @@ public sealed partial class GrayFlagEngine
             .Register("areaShapes", AreaShapes.Keys())
             .Register("hitEffects", BattleCombat.SupportedHitEffects)
             .Register("castAbilities", BattleCombat.SupportedCastAbilities)
-            .Register("resources", BattleResources.SupportedResources)
+            .Register("resources", Resources.Adapters.Keys())
             .Register("tacticEffects", SupportOrders.SupportedTacticEffects)
             .Register("stateFeatures", new[] { "composites", "deployment", "embarkedUnits" })
             .Guard("deployment", DeploymentStateValidation.Issues)

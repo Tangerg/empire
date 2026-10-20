@@ -1,4 +1,5 @@
 using Empire.Core.Geometry;
+using Empire.Core.Registries;
 using Empire.Core.Tactics;
 
 namespace Empire.Core.Combat;
@@ -9,40 +10,12 @@ public sealed record WeaponAreaShape(
     Func<TacticalBoard, Coord, Coord, IReadOnlyList<Coord>> Cells);
 
 /// <summary>Per-engine shape policies shared by combat planning, delayed casts and threat queries.</summary>
-public sealed class WeaponAreaRegistry
+public sealed class WeaponAreaRegistry : KeyedRegistry<WeaponAreaShape, WeaponAreaRegistry>
 {
-    private readonly Dictionary<string, WeaponAreaShape> entries = new(StringComparer.Ordinal);
-    private readonly List<string> order = new();
-    public int Count => entries.Count;
-    public bool IsSealed { get; private set; }
-
-    public WeaponAreaRegistry Register(WeaponAreaShape shape)
-    {
-        RequireMutable();
-        ArgumentNullException.ThrowIfNull(shape);
-        ArgumentNullException.ThrowIfNull(shape.Cells);
-        if (!entries.TryAdd(shape.Id, shape))
-            throw new DomainInvariantException($"weapon area shape already registered: \"{shape.Id}\"");
-        order.Add(shape.Id);
-        return this;
-    }
-
-    public WeaponAreaRegistry Replace(WeaponAreaShape shape)
-    {
-        RequireMutable();
-        ArgumentNullException.ThrowIfNull(shape);
-        ArgumentNullException.ThrowIfNull(shape.Cells);
-        if (!entries.ContainsKey(shape.Id)) order.Add(shape.Id);
-        entries[shape.Id] = shape;
-        return this;
-    }
-
-    public WeaponAreaShape Get(string id) => entries.TryGetValue(id, out var shape) ? shape :
-        throw new DomainInvariantException($"unknown weapon area shape \"{id}\"");
-    public WeaponAreaShape? TryGet(string id) => entries.GetValueOrDefault(id);
-    public bool Has(string id) => entries.ContainsKey(id);
-    public IReadOnlyList<WeaponAreaShape> All() => order.Select(id => entries[id]).ToArray();
-    public IReadOnlyList<string> Keys() => order.ToArray();
+    public WeaponAreaRegistry() : base("weapon area shape") { }
+    protected override string KeyOf(WeaponAreaShape entry) => entry.Id;
+    protected override void ValidateEntry(WeaponAreaShape entry) => ArgumentNullException.ThrowIfNull(entry.Cells);
+    public WeaponAreaRegistry Clone() => CopyInto(new WeaponAreaRegistry());
 
     public IReadOnlyList<Coord> Coverage(TacticalBoard board, Coord from, Coord target, string area)
     {
@@ -51,24 +24,6 @@ public sealed class WeaponAreaRegistry
         foreach (var cell in Get(area).Cells(board, from, target))
             if (board.Contains(cell) && seen.Add(board.IndexOf(cell))) cells.Add(cell);
         return cells.AsReadOnly();
-    }
-
-    public WeaponAreaRegistry Seal()
-    {
-        IsSealed = true;
-        return this;
-    }
-
-    public WeaponAreaRegistry Clone()
-    {
-        var result = new WeaponAreaRegistry();
-        foreach (var id in order) result.Register(entries[id]);
-        return result;
-    }
-
-    private void RequireMutable()
-    {
-        if (IsSealed) throw new DomainInvariantException("weapon area shape registry is sealed after composition");
     }
 
     /// <summary>Unsealed built-in definitions for the application composition root to install or replace.</summary>

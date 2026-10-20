@@ -12,21 +12,21 @@ EMPIRE_ACTION_ORACLE_OUTPUT="$scratch/oracle.json" ./node_modules/.bin/vite-node
 dotnet build "$scratch/ActionRefusalChecks.csproj" --configfile "$scratch/NuGet.Config" --disable-build-servers --nologo "-p:EmpireRoot=$root"
 dotnet "$scratch/bin/Debug/net8.0/ActionRefusalChecks.dll" "$scratch/oracle.json"
 if [[ "${1:-}" == "--verify-guard" ]]; then
-  mkdir "$scratch/engine-mutant" "$scratch/resource-mutant" "$scratch/announcement-mutant"
-  cp godot/Empire.Core/Engine/*.cs "$scratch/engine-mutant/"
+  mkdir "$scratch/ability-mutant" "$scratch/resource-mutant" "$scratch/announcement-mutant"
+  cp godot/Empire.Core/Abilities/*.cs "$scratch/ability-mutant/"
   cp godot/Empire.Core/Resources/*.cs "$scratch/resource-mutant/"
   cp godot/Empire.Core/Resources/*.cs "$scratch/announcement-mutant/"
   node - "$scratch" <<'JS'
 const fs = require('node:fs'), root = process.argv[2];
 const edits = [
   ['announcement-mutant/BattleResources.cs', 'var current = Balance(subject, resource);\n        if (amount == 0 || current is null) return;', 'if (amount == 0) return;\n        var current = Balance(subject, resource);\n        if (current is null) return;'],
-  ['engine-mutant/GrayFlagEngine.cs', 'if (target is null) throw new IllegalActionException($"「{name}」需要指定目标");', 'if (target is null) throw new IllegalActionException("目标不合法");'],
+  ['ability-mutant/AbilityCommands.cs', 'if (target is null) throw new IllegalActionException($"「{ability.Name}」需要指定目标");', 'if (target is null) throw new IllegalActionException("目标不合法");'],
   ['resource-mutant/BattleResources.cs', 'var current = Balance(subject, resource);\n        var amount = Normalize(resource, requested);\n        return current is null || current >= amount;', 'return Balance(subject, resource) is not { } current || current >= Normalize(resource, requested);'],
 ];
 for (const [file, before, after] of edits) { const path = `${root}/${file}`, text = fs.readFileSync(path, 'utf8'); if (!text.includes(before)) throw new Error(`Explicit guard target changed: ${file}`); fs.writeFileSync(path, text.replace(before, after)); }
 JS
-  for mode in engine resource announcement; do
-    property=EmpireEngineRoot; expected='attack missing target with no eligible target error'
+  for mode in ability resource announcement; do
+    property=EmpireAbilitiesRoot; expected='attack missing target with no eligible target error'
     if [[ "$mode" == resource ]]; then property=EmpireResourcesRoot; expected='funds error: null'; fi
     if [[ "$mode" == announcement ]]; then property=EmpireResourcesRoot; expected='funds announce error: null'; fi
     dotnet build "$scratch/ActionRefusalChecks.csproj" --configfile "$scratch/NuGet.Config" --disable-build-servers --nologo \

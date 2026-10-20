@@ -1,8 +1,8 @@
 # Extension composition migration plan
 
-**Planning only, not implemented.** Audited 2026-10-20 at `ee4e6a39`. The final default-rules regression passed all 16 independent GreyFlag battles, including 2,983 actions, ordered events and state digests. That establishes exercised default behavior, not arbitrary custom-plugin compatibility. See [built-in coverage](BUILTIN-COVERAGE.md) and [compatibility limits](COMPATIBILITY.md).
+**Implementation in progress, not full extension parity.** Updated 2026-10-20 after renderer checkpoint `5593b1b6`. The final default-rules regression passed all 16 independent GreyFlag battles, including 2,983 actions, ordered events and state digests. That establishes exercised default behavior, not arbitrary custom-plugin compatibility. See [built-in coverage](BUILTIN-COVERAGE.md) and [compatibility limits](COMPATIBILITY.md).
 
-Native GreyFlag presentation and feedback take priority. Restoring the original extension kernel is a required remaining migration milestone, not a permanent compatibility exclusion. This document records that work; none of the planned architecture is implemented yet.
+Native GreyFlag presentation and feedback take priority. Restoring the original extension kernel is a required remaining migration milestone, not a permanent compatibility exclusion. This document records completed contract slices and the remaining production integration. Primitive kernel tests do not establish composed-engine compatibility.
 
 ## Goal and invariant
 
@@ -56,8 +56,14 @@ Planning estimate: 4–6 coherent implementation batches, approximately 30–45 
 ## Caveats requiring explicit tests or decisions
 
 - The source [TacticalRulesPlugin](../../packages/battle-engine/src/plugins/default.ts#L79) constructs DefaultTacticalSpace using its local grids before later overrides. Replacing only `grids` does not rebind that space. Characterize this source coupling before deciding the native contract; do not silently alter it or conceal captures with lazy lookup.
-- Native AI priority is currently integer-valued while source priority is numeric. Include fractional priorities if claiming source-level extension parity.
-- [campaign-checks/rules-oracle.ts](../../tools/godot/campaign-checks/rules-oracle.ts) contains 27 registry cases that [run.sh](../../tools/godot/campaign-checks/run.sh) and its current native runner do not execute. Wire them deliberately; their presence is not passed coverage.
+- Native AI priority now preserves source double values and ordinary fractional ordering. Mixed NaN priorities can make the source comparator non-transitive; native stable sort retains accepted values and comparator semantics, but does not claim V8-specific ordering for inconsistent comparisons. See registry-checks documentation.
+- The 27 campaign registry cases are now executed by campaign-checks, including frozen-clone isolation.
 - Native integer-domain and malformed-document restrictions remain documented in [COMPATIBILITY.md](COMPATIBILITY.md). Extensible composition alone does not remove those restrictions, establish arbitrary plugin safety, or provide custom presentation.
 
-The architecture audit was read-only. The milestones and tests above remain required future work, not completed implementation.
+## Current implementation boundary
+
+Implemented contract slices: shared keyed/priority registries; typed kernel planning and scoped installation; open ability definitions and canonical command dispatch; resource adapter/subject registries used by weapon readiness, consumption and support orders. Frozen source fixtures and deliberate mutants cover these slices. Existing default engine construction still owns a fixed recipe and manifest; it has not yet become the one real plugin composition path.
+
+Required next integration: resolved spatial capability; actual default plugin recipes and engine assembly; action lifecycle metadata dispatch; combat/status/turn/departure policies; scenario/objective registries and handler-owned references; named custom-plugin save/replay. Resource admission currently snapshots registered IDs and traverses standard account holders, so post-construction registration or arbitrary holder fields are not claimed to work. Public casting must preserve arbitrary ability metadata without inventing registered-ability execution at resolution.
+
+Kernel contracts preserve source retained-context behavior and the full finite positive integral double version range. They do not add rollback of installation callbacks or revoke scopes after composition. Full default battle regression and actual GUI acceptance remain separate gates for every integration batch.

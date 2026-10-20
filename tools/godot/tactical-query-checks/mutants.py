@@ -16,7 +16,7 @@ mutants = [
     ('aggregate card costs', 'Orders/RecruitmentOrders.cs', 'costs.All(cost => resources.CanSpend(subject, cost.Resource, cost.Amount))', 'resources.CanAfford(subject, StateJson.Array(content.Get("units", type)["recruitCosts"], "recruitCosts"))'),
     ('leak hidden objectives', 'Lifecycle/VictorySystem.Progress.cs', '.Where(objective => !IsTrue(Player(state, owner)["objectiveStates"]?[Text(objective, "id")]?["hidden"]))', '.Where(objective => true)'),
     ('change rank threshold', 'Combat/CombatEffects.cs', 'RankThresholds = [120, 320]', 'RankThresholds = [121, 320]'),
-    ('invert account ordering', 'Resources/BattleResources.cs', 'SupportedResources.Where(resource => HasAccount(subject, resource))', 'SupportedResources.Reverse().Where(resource => HasAccount(subject, resource))'),
+    ('invert account ordering', 'Resources/BattleResources.cs', 'Adapters.Keys().Where(resource => HasAccount(subject, resource))', 'Adapters.Keys().Reverse().Where(resource => HasAccount(subject, resource))'),
     ('neutral aura loses identity', 'Tactics/TacticalModifiers.cs', 'return grid.Distance(TacticalQueries.Position(unit), TacticalQueries.Position(leader)) <=', 'return StateJson.Number(commander["aura"]!["attackMultiplier"], "attack") != 1 && grid.Distance(TacticalQueries.Position(unit), TacticalQueries.Position(leader)) <='),
     ('first cast wins overlap', 'Combat/BattleCombat.Telegraphs.cs', 'result[cell] = cast.Remaining;', 'result.TryAdd(cell, cast.Remaining);'),
     ('flatten cast progress', 'Combat/BattleCombat.Telegraphs.cs', 'Math.Clamp((now - declared) / (resolve - declared), 0, 1)', '0'),

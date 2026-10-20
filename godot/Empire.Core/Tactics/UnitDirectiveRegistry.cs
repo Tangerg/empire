@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
+using Empire.Core.Registries;
 using Empire.Core.State;
 
 namespace Empire.Core.Tactics;
@@ -15,50 +16,11 @@ public sealed record UnitDirectiveBehavior(
     Action<JsonObject, Coord>? ArriveAt = null);
 
 /// <summary>One mode declaration owns both AI appraisal and movement arrival.</summary>
-public sealed class UnitDirectiveRegistry
+public sealed class UnitDirectiveRegistry : KeyedRegistry<UnitDirectiveBehavior, UnitDirectiveRegistry>
 {
-    private readonly Dictionary<string, UnitDirectiveBehavior> entries = new(StringComparer.Ordinal);
-
-    public bool IsSealed { get; private set; }
-    public int Count => entries.Count;
-
-    public UnitDirectiveRegistry Register(UnitDirectiveBehavior behavior)
-    {
-        RequireMutable();
-        ArgumentNullException.ThrowIfNull(behavior);
-        if (!entries.TryAdd(behavior.Id, behavior))
-            throw new DomainInvariantException($"unit directive already registered: \"{behavior.Id}\"");
-        return this;
-    }
-
-    public UnitDirectiveRegistry Replace(UnitDirectiveBehavior behavior)
-    {
-        RequireMutable();
-        ArgumentNullException.ThrowIfNull(behavior);
-        entries[behavior.Id] = behavior;
-        return this;
-    }
-
-    public UnitDirectiveBehavior Get(string id) => entries.TryGetValue(id, out var behavior) ? behavior :
-        throw new DomainInvariantException($"unknown unit directive \"{id}\"");
-
-    public UnitDirectiveBehavior? TryGet(string id) => entries.GetValueOrDefault(id);
-    public bool Has(string id) => entries.ContainsKey(id);
-    public IReadOnlyList<UnitDirectiveBehavior> All() => entries.Values.ToArray();
-    public IReadOnlyList<string> Keys() => entries.Keys.ToArray();
-
-    public UnitDirectiveRegistry Seal()
-    {
-        IsSealed = true;
-        return this;
-    }
-
-    public UnitDirectiveRegistry Clone()
-    {
-        var clone = new UnitDirectiveRegistry();
-        foreach (var behavior in entries.Values) clone.Register(behavior);
-        return clone;
-    }
+    public UnitDirectiveRegistry() : base("unit directive") { }
+    protected override string KeyOf(UnitDirectiveBehavior entry) => entry.Id;
+    public UnitDirectiveRegistry Clone() => CopyInto(new UnitDirectiveRegistry());
 
     public UnitDirectiveBehavior Of(JsonObject unit) =>
         Get(StateJson.Text(StateJson.Object(unit["directive"], "directive"), "mode"));
@@ -112,9 +74,4 @@ public sealed class UnitDirectiveRegistry
         return distance == 0 ? 1_200 : -distance * 180;
     }
 
-    private void RequireMutable()
-    {
-        if (IsSealed)
-            throw new DomainInvariantException("unit directive registry is sealed after composition");
-    }
 }

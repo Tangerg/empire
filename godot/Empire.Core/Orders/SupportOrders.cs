@@ -16,12 +16,13 @@ public sealed class SupportOrders
     private readonly StateContent content;
     private readonly GridRegistry grids;
     private readonly CombatEffects effects;
-    private readonly BattleResources resources = new();
+    private readonly BattleResources resources;
 
-    public SupportOrders(JsonArray packs, GridRegistry grids)
+    public SupportOrders(JsonArray packs, GridRegistry grids, BattleResources resources, CombatEffects effects)
     {
         content = new StateContent(packs);
-        effects = new CombatEffects(packs);
+        this.resources = resources;
+        this.effects = effects;
         this.grids = grids;
     }
 

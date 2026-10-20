@@ -247,3 +247,11 @@ Source ground decorations, per-cell connector filters, live cover and generic pe
 ## Exact-output performance follow-on
 
 The separate pending batch introduces format-checked bulk RGBA pixels, exact tap-order SIMD and an exact no-cutout interior-coverage path. Focused normal/scalar fallback reference tests passed before integration. Temporary byte snapshots trade higher cumulative managed allocation for lower first-use CPU time; this is not a peak-memory or 16 ms frame-budget claim. Immutable aggregate and repeated teardown are required again before committing. Native GUI acceptance and standalone packaging remain pending; no new screenshots or publication are claimed.
+
+## Extension foundation integration (verified 2026-10-20 23:13 UTC)
+
+After `5593b1b6`, shared registry mechanics, typed kernel primitives, open command abilities, and resource adapter/subject policies are integrated around existing rule owners. Focused source comparisons and deliberate mutants passed. The combined frozen native aggregate exited cleanly on immutable tree `c13dff11e4dbdb976dda0c2e16ffcb545200d49f`; all 16 independently replayed default battles matched 2,983 chosen actions, ordered events and state digests. Only this verification documentation changed after that code snapshot. Kernel primitives are not yet the engine composition root. Custom plugin persistence, spatial replacement, action lifecycle metadata, combat/lifecycle policies, and handler-owned admission remain required.
+
+The preceding lighting optimization checkpoint passed both SIMD and hardware-disabled scalar reference comparisons and repeated clean teardown. Its benchmark improvement does not establish desktop responsiveness or visual acceptance.
+
+Foundation evidence: 227 defined registry outcomes (mixed-NaN orders separately characterized), 121 kernel checks with 13 source/15 native mutants, 55 ability cases/307 assertions with 10 mutants, 284 resource policies +24 registry +22 canonical-consumer cases/1,895 assertions with 9 mutants. The immutable aggregate also passed persistence 96, application 127 actions, narrative 4,949, staging 151, navigation 169, source lighting 1,537, exact SIMD/scalar raster checks, session/tactical/HUD contracts and clean native exits. Source campaign validation and 27 registry cases passed in focused tests. No new GUI acceptance or publication is implied.

@@ -6,6 +6,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Errors.cs" />
+    <Compile Include="$(EmpireRoot)/godot/Empire.Core/Registries/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Determinism/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateJson.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateContent.cs" />

@@ -1,17 +1,22 @@
 using System.Text.Json.Nodes;
 using Empire.Core.State;
+using Empire.Core.Determinism;
 
 namespace Empire.Core.Persistence;
 
 public static class RulesetManifest
 {
     public static JsonObject Create(JsonArray packs, IReadOnlyDictionary<string, int> plugins)
+        => Create(packs, plugins.ToDictionary(pair => pair.Key, pair => (double)pair.Value, StringComparer.Ordinal));
+
+    public static JsonObject Create(JsonArray packs, IReadOnlyDictionary<string, double> plugins)
     {
         _ = new StateContent(packs);
         var pluginVersions = new JsonObject();
         foreach (var pair in plugins.OrderBy(pair => pair.Key, StringComparer.Ordinal))
         {
-            if (string.IsNullOrWhiteSpace(pair.Key) || pair.Value < 1)
+            if (EcmaText.IsBlank(pair.Key) || !double.IsFinite(pair.Value) ||
+                pair.Value != Math.Truncate(pair.Value) || pair.Value < 1)
                 throw new DomainInvariantException("plugin identity requires a nonempty id and positive integer version");
             pluginVersions[pair.Key] = pair.Value;
         }
@@ -45,7 +50,7 @@ public static class RulesetManifest
                 if (!current.ContainsKey(id)) result.Add($"{family} \"{id}\" is not part of the current ruleset");
                 else if (!saved.ContainsKey(id)) result.Add($"{family} \"{id}\" is missing");
                 else if (StateJson.Number(current[id], id) != StateJson.Number(saved[id], id))
-                    result.Add($"{family} \"{id}\" version is {saved[id]!.ToJsonString()}, expected {current[id]!.ToJsonString()}");
+                    result.Add($"{family} \"{id}\" version is {EcmaNumber.Format(StateJson.Number(saved[id], id))}, expected {EcmaNumber.Format(StateJson.Number(current[id], id))}");
             }
         }
         Compare("plugin", "plugins");
@@ -59,7 +64,7 @@ public static class RulesetManifest
             manifest["contentPacks"] is not JsonObject packs)
             StoredSchema.Reject("规则集版本信息缺失或损坏");
         else foreach (var pair in plugins.Concat(packs))
-            if (string.IsNullOrWhiteSpace(pair.Key) || !StoredSchema.Matches(pair.Value, StoredKind.Integer) ||
+            if (EcmaText.IsBlank(pair.Key) || !StoredSchema.Matches(pair.Value, StoredKind.Integer) ||
                 StateJson.Number(pair.Value, "version") < 1)
                 StoredSchema.Reject($"规则集版本「{pair.Key}」损坏");
     }

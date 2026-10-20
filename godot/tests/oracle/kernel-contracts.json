@@ -1,0 +1,3067 @@
+{
+  "source": [
+    "packages/battle-engine/src/kernel.ts",
+    "packages/battle-engine/src/dependency-order.ts",
+    "packages/battle-engine/src/ruleset-manifest.ts"
+  ],
+  "cases": [
+    {
+      "input": {
+        "name": "empty dependency graph",
+        "kind": "dependency",
+        "nodes": [],
+        "external": []
+      },
+      "expected": {
+        "order": [],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "dependencies precede consumer without global sorting",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "feature",
+            "requires": [
+              "foundation"
+            ]
+          },
+          {
+            "id": "unrelated"
+          },
+          {
+            "id": "foundation"
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "order": [
+          "foundation",
+          "feature",
+          "unrelated"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "external dependency satisfied",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "addon",
+            "requires": [
+              "installed"
+            ]
+          }
+        ],
+        "external": [
+          "installed"
+        ]
+      },
+      "expected": {
+        "order": [
+          "addon"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "batch node wins over external satisfaction",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "child",
+            "requires": [
+              "base"
+            ]
+          },
+          {
+            "id": "base"
+          }
+        ],
+        "external": [
+          "base"
+        ]
+      },
+      "expected": {
+        "order": [
+          "base",
+          "child"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "missing dependency",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "addon",
+            "requires": [
+              "missing"
+            ]
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "error": "addon misses missing",
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "duplicate dependency nodes",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "same"
+          },
+          {
+            "id": "same"
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "error": "duplicate dependency node: \"same\"",
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "self cycle",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "self",
+            "requires": [
+              "self"
+            ]
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "error": "cycle: self -> self",
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "complete cycle slice",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "entry",
+            "requires": [
+              "left"
+            ]
+          },
+          {
+            "id": "left",
+            "requires": [
+              "right"
+            ]
+          },
+          {
+            "id": "right",
+            "requires": [
+              "left"
+            ]
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "error": "cycle: left -> right -> left",
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "diamond and duplicate dependency edges",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "top",
+            "requires": [
+              "right",
+              "left",
+              "right"
+            ]
+          },
+          {
+            "id": "left",
+            "requires": [
+              "root"
+            ]
+          },
+          {
+            "id": "right",
+            "requires": [
+              "root"
+            ]
+          },
+          {
+            "id": "root"
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "order": [
+          "root",
+          "right",
+          "left",
+          "top"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "case-sensitive node identity",
+        "kind": "dependency",
+        "nodes": [
+          {
+            "id": "A"
+          },
+          {
+            "id": "a"
+          }
+        ],
+        "external": []
+      },
+      "expected": {
+        "order": [
+          "A",
+          "a"
+        ],
+        "inputUnchanged": true
+      }
+    },
+    {
+      "input": {
+        "name": "empty kernel",
+        "kind": "kernel",
+        "plugins": [],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "manifest": [],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "open capabilities and insertion manifest",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "z",
+            "provides": [
+              "test.b"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.b",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "z"
+          ],
+          [
+            "install",
+            "a"
+          ]
+        ],
+        "manifest": [
+          [
+            "z",
+            1
+          ],
+          [
+            "a",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "a",
+            "value": "original"
+          },
+          {
+            "id": "test.b",
+            "has": true,
+            "provider": "z",
+            "value": "original"
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "consumer installed after late provider",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "consumer",
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          },
+          {
+            "id": "unrelated"
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "consumer"
+          ],
+          [
+            "require",
+            "test.a",
+            "original"
+          ],
+          [
+            "install",
+            "unrelated"
+          ]
+        ],
+        "manifest": [
+          [
+            "consumer",
+            1
+          ],
+          [
+            "unrelated",
+            1
+          ],
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "original"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "explicit dependencies preserve DFS order",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "feature",
+            "requires": [
+              "base"
+            ]
+          },
+          {
+            "id": "unrelated"
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "feature"
+          ],
+          [
+            "install",
+            "unrelated"
+          ]
+        ],
+        "manifest": [
+          [
+            "feature",
+            1
+          ],
+          [
+            "unrelated",
+            1
+          ],
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "original"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "self explicit dependency is filtered",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "self",
+            "requires": [
+              "self"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "self"
+          ]
+        ],
+        "manifest": [
+          [
+            "self",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "unused declared requirement is valid",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "unused",
+            "requiresCapabilities": [
+              "test.a"
+            ]
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "unused"
+          ]
+        ],
+        "manifest": [
+          [
+            "unused",
+            1
+          ],
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "original"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "probes never consume or create edges",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "probe-before",
+            "ops": [
+              {
+                "op": "has",
+                "key": "test.a"
+              },
+              {
+                "op": "provider",
+                "key": "test.a"
+              }
+            ]
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "probe-after",
+            "ops": [
+              {
+                "op": "has",
+                "key": "test.a"
+              },
+              {
+                "op": "provider",
+                "key": "test.a"
+              },
+              {
+                "op": "has",
+                "key": "test.missing"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "probe-before"
+          ],
+          [
+            "has",
+            "test.a",
+            false
+          ],
+          [
+            "provider",
+            "test.a",
+            null
+          ],
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "probe-after"
+          ],
+          [
+            "has",
+            "test.a",
+            true
+          ],
+          [
+            "provider",
+            "test.a",
+            "base"
+          ],
+          [
+            "has",
+            "test.missing",
+            false
+          ]
+        ],
+        "manifest": [
+          [
+            "probe-before",
+            1
+          ],
+          [
+            "base",
+            1
+          ],
+          [
+            "probe-after",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "original"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "override precedes all install-time consumers",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "consumer",
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "swap",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "swap"
+          ],
+          [
+            "install",
+            "consumer"
+          ],
+          [
+            "require",
+            "test.a",
+            "replacement"
+          ]
+        ],
+        "manifest": [
+          [
+            "consumer",
+            1
+          ],
+          [
+            "base",
+            1
+          ],
+          [
+            "swap",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "replacement"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "override consumes previous value without self cycle",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "consumer",
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          },
+          {
+            "id": "swap",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              },
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "decorated"
+              }
+            ],
+            "requiresCapabilities": [
+              "test.a"
+            ]
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "swap"
+          ],
+          [
+            "require",
+            "test.a",
+            "original"
+          ],
+          [
+            "install",
+            "consumer"
+          ],
+          [
+            "require",
+            "test.a",
+            "decorated"
+          ]
+        ],
+        "manifest": [
+          [
+            "consumer",
+            1
+          ],
+          [
+            "swap",
+            1
+          ],
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "decorated"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "self-provide consumption declared",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "self"
+              },
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ],
+            "requiresCapabilities": [
+              "test.a"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "require",
+            "test.a",
+            "self"
+          ]
+        ],
+        "manifest": [
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "self"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "self-provide consumption undeclared",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "self"
+              },
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "require",
+            "test.a",
+            "self"
+          ]
+        ],
+        "error": "engine plugin \"base\" required undeclared capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "undeclared consumer cannot capture outrun value",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "greedy",
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          },
+          {
+            "id": "swap",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "greedy"
+          ],
+          [
+            "require",
+            "test.a",
+            "original"
+          ]
+        ],
+        "error": "engine plugin \"greedy\" required undeclared capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "declared missing capability fails before installation",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "first"
+          },
+          {
+            "id": "consumer",
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"consumer\" requires missing capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "undeclared missing require reports missing first",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "greedy",
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "greedy"
+          ]
+        ],
+        "error": "missing kernel capability: \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "missing explicit plugin dependency",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "child",
+            "requires": [
+              "missing"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"child\" requires \"missing\""
+      }
+    },
+    {
+      "input": {
+        "name": "plugin cycle retains path",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "entry",
+            "requires": [
+              "left"
+            ]
+          },
+          {
+            "id": "left",
+            "requires": [
+              "right"
+            ]
+          },
+          {
+            "id": "right",
+            "requires": [
+              "left"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "cyclic engine plugin dependency: left -> right -> left"
+      }
+    },
+    {
+      "input": {
+        "name": "override missing introducer",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "swap",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"swap\" requires missing capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "competing declared introducers",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "first",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "second",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "kernel capability \"test.a\" declared by both \"first\" and \"second\""
+      }
+    },
+    {
+      "input": {
+        "name": "duplicate actual provide",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "sneaky",
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "second"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "sneaky"
+          ]
+        ],
+        "error": "kernel capability \"test.a\" already provided by \"base\""
+      }
+    },
+    {
+      "input": {
+        "name": "duplicate actual provide within plugin",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "first"
+              },
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "second"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ]
+        ],
+        "error": "kernel capability \"test.a\" already provided by \"base\""
+      }
+    },
+    {
+      "input": {
+        "name": "competing override declarations",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "left",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "kernel capability \"test.a\" overridden by multiple plugins: \"left\", \"right\""
+      }
+    },
+    {
+      "input": {
+        "name": "repeated override declaration itself ambiguous",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "swap",
+            "overrides": [
+              "test.a",
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "kernel capability \"test.a\" overridden by multiple plugins: \"swap\", \"swap\""
+      }
+    },
+    {
+      "input": {
+        "name": "repeated provide declaration is set-like",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a",
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ]
+        ],
+        "manifest": [
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "original"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "undeclared actual provide rejected",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "sneaky",
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "value"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "sneaky"
+          ]
+        ],
+        "error": "engine plugin \"sneaky\" did provide undeclared capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "declared provide not installed",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "idle",
+            "provides": [
+              "test.a"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "idle"
+          ]
+        ],
+        "error": "engine plugin \"idle\" declared but did not provide capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "declared missing checked before undeclared extra",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "liar",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.b",
+                "value": "wrong"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "liar"
+          ]
+        ],
+        "error": "engine plugin \"liar\" declared but did not provide capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "undeclared actual override rejected",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "sneaky",
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "wrong"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "sneaky"
+          ]
+        ],
+        "error": "engine plugin \"sneaky\" did override undeclared capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "declared override not installed",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "idle",
+            "overrides": [
+              "test.a"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "idle"
+          ]
+        ],
+        "error": "engine plugin \"idle\" declared but did not override capability \"test.a\""
+      }
+    },
+    {
+      "input": {
+        "name": "undeclared replacement before introduction",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "sneaky",
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "wrong"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "sneaky"
+          ]
+        ],
+        "error": "kernel capability \"test.a\" cannot be replaced before it is provided"
+      }
+    },
+    {
+      "input": {
+        "name": "multiple replacements within one plugin allowed",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "swap",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "first"
+              },
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "last"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "swap"
+          ]
+        ],
+        "manifest": [
+          [
+            "base",
+            1
+          ],
+          [
+            "swap",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "last"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "plugin may introduce and replace own slot",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "first"
+              },
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "last"
+              }
+            ],
+            "overrides": [
+              "test.a"
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ]
+        ],
+        "manifest": [
+          [
+            "base",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "last"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "context manifest is empty while result carries identity",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "manifest"
+              },
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "value"
+              }
+            ],
+            "version": 7
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "manifest",
+            []
+          ]
+        ],
+        "manifest": [
+          [
+            "base",
+            7
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "value"
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "null is a present capability",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "consumer",
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "consumer"
+          ],
+          [
+            "require",
+            "test.a",
+            null
+          ]
+        ],
+        "manifest": [
+          [
+            "base",
+            1
+          ],
+          [
+            "consumer",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "installation errors propagate with prior side effects",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "throwing",
+            "ops": [
+              {
+                "op": "fail",
+                "value": "installation failed"
+              }
+            ]
+          },
+          {
+            "id": "not-installed"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "throwing"
+          ]
+        ],
+        "error": "installation failed"
+      }
+    },
+    {
+      "input": {
+        "name": "same id same version rejected",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "same"
+          },
+          {
+            "id": "same"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"same\" already registered at version 1; a second declaration at version 1 is ambiguous"
+      }
+    },
+    {
+      "input": {
+        "name": "same id different version rejected",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "same",
+            "version": 2
+          },
+          {
+            "id": "same",
+            "version": 3
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"same\" already registered at version 2; a second declaration at version 3 is ambiguous"
+      }
+    },
+    {
+      "input": {
+        "name": "empty plugin id",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": ""
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin id cannot be empty"
+      }
+    },
+    {
+      "input": {
+        "name": "blank plugin id",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": " \t\n"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin id cannot be empty"
+      }
+    },
+    {
+      "input": {
+        "name": "ECMAScript BOM is whitespace",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "﻿"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin id cannot be empty"
+      }
+    },
+    {
+      "input": {
+        "name": "ECMAScript next-line is not whitespace",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": ""
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            ""
+          ]
+        ],
+        "manifest": [
+          [
+            "",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "zero plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "bad",
+            "version": 0
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"bad\" version must be a positive integer"
+      }
+    },
+    {
+      "input": {
+        "name": "negative plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "bad",
+            "version": -1
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"bad\" version must be a positive integer"
+      }
+    },
+    {
+      "input": {
+        "name": "fractional plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "bad",
+            "version": 1.5
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"bad\" version must be a positive integer"
+      }
+    },
+    {
+      "input": {
+        "name": "NaN plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "bad",
+            "version": "NaN"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"bad\" version must be a positive integer"
+      }
+    },
+    {
+      "input": {
+        "name": "infinite plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "bad",
+            "version": "Infinity"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"bad\" version must be a positive integer"
+      }
+    },
+    {
+      "input": {
+        "name": "negative infinite plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "bad",
+            "version": "-Infinity"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"bad\" version must be a positive integer"
+      }
+    },
+    {
+      "input": {
+        "name": "plugin version beyond Int32",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "wide",
+            "version": 2147483648
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "wide"
+          ]
+        ],
+        "manifest": [
+          [
+            "wide",
+            2147483648
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "plugin version beyond safe integer",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "wide",
+            "version": 9007199254740992
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "wide"
+          ]
+        ],
+        "manifest": [
+          [
+            "wide",
+            9007199254740992
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "largest finite integer plugin version",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "wide",
+            "version": 1.7976931348623157e+308
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "wide"
+          ]
+        ],
+        "manifest": [
+          [
+            "wide",
+            1.7976931348623157e+308
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "duplicate wide version uses ECMAScript decimal formatting",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "wide",
+            "version": 100000000000000000000
+          },
+          {
+            "id": "wide",
+            "version": 1e+21
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "engine plugin \"wide\" already registered at version 100000000000000000000; a second declaration at version 1e+21 is ambiguous"
+      }
+    },
+    {
+      "input": {
+        "name": "case sensitive plugin IDs",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "A"
+          },
+          {
+            "id": "a"
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "A"
+          ],
+          [
+            "install",
+            "a"
+          ]
+        ],
+        "manifest": [
+          [
+            "A",
+            1
+          ],
+          [
+            "a",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.b",
+            "has": false,
+            "provider": null,
+            "value": null
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "combined override cycle is not silently reordered",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "middle",
+            "provides": [
+              "test.b"
+            ],
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              },
+              {
+                "op": "provide",
+                "key": "test.b",
+                "value": "b"
+              }
+            ]
+          },
+          {
+            "id": "combined",
+            "overrides": [
+              "test.a",
+              "test.b"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "a2"
+              },
+              {
+                "op": "replace",
+                "key": "test.b",
+                "value": "b2"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [],
+        "error": "cyclic engine plugin dependency: middle -> combined -> middle"
+      }
+    },
+    {
+      "input": {
+        "name": "separate overrides avoid composition cycle",
+        "kind": "kernel",
+        "plugins": [
+          {
+            "id": "end",
+            "requiresCapabilities": [
+              "test.b"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.b"
+              }
+            ]
+          },
+          {
+            "id": "middle",
+            "provides": [
+              "test.b"
+            ],
+            "requiresCapabilities": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "require",
+                "key": "test.a"
+              },
+              {
+                "op": "provide",
+                "key": "test.b",
+                "value": "b"
+              }
+            ]
+          },
+          {
+            "id": "base",
+            "provides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "provide",
+                "key": "test.a",
+                "value": "original"
+              }
+            ]
+          },
+          {
+            "id": "swap-a",
+            "overrides": [
+              "test.a"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.a",
+                "value": "replacement"
+              }
+            ]
+          },
+          {
+            "id": "swap-b",
+            "overrides": [
+              "test.b"
+            ],
+            "ops": [
+              {
+                "op": "replace",
+                "key": "test.b",
+                "value": "replacement"
+              }
+            ]
+          }
+        ],
+        "queries": [
+          "test.a",
+          "test.b",
+          "test.missing"
+        ]
+      },
+      "expected": {
+        "trace": [
+          [
+            "install",
+            "base"
+          ],
+          [
+            "install",
+            "swap-a"
+          ],
+          [
+            "install",
+            "middle"
+          ],
+          [
+            "require",
+            "test.a",
+            "replacement"
+          ],
+          [
+            "install",
+            "swap-b"
+          ],
+          [
+            "install",
+            "end"
+          ],
+          [
+            "require",
+            "test.b",
+            "replacement"
+          ]
+        ],
+        "manifest": [
+          [
+            "end",
+            1
+          ],
+          [
+            "middle",
+            1
+          ],
+          [
+            "base",
+            1
+          ],
+          [
+            "swap-a",
+            1
+          ],
+          [
+            "swap-b",
+            1
+          ]
+        ],
+        "queries": [
+          {
+            "id": "test.a",
+            "has": true,
+            "provider": "base",
+            "value": "replacement"
+          },
+          {
+            "id": "test.b",
+            "has": true,
+            "provider": "middle",
+            "value": "replacement"
+          },
+          {
+            "id": "test.missing",
+            "has": false,
+            "provider": null,
+            "value": null
+          }
+        ]
+      }
+    }
+  ],
+  "lifecycle": {
+    "failure": "first install fails",
+    "calls": 4,
+    "failedScopeValue": "value-1",
+    "first": [
+      "late replacement",
+      "base",
+      "late addition",
+      "base"
+    ],
+    "second": [
+      "value-3",
+      false
+    ],
+    "before": [
+      [
+        "base",
+        2
+      ]
+    ],
+    "firstManifest": [
+      [
+        "base",
+        2
+      ]
+    ],
+    "builderManifest": [
+      [
+        "base",
+        2
+      ],
+      [
+        "later",
+        4
+      ]
+    ],
+    "latestManifest": [
+      [
+        "base",
+        2
+      ],
+      [
+        "later",
+        4
+      ]
+    ],
+    "scopeManifests": [
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  "persistence": {
+    "manifest": {
+      "plugins": {
+        "a.plugin": 2,
+        "z.plugin": 3
+      },
+      "contentPacks": {
+        "a": 1,
+        "z": 2
+      }
+    },
+    "differences": [
+      "plugin \"a.plugin\" is missing",
+      "plugin \"new.plugin\" is not part of the current ruleset",
+      "plugin \"z.plugin\" version is 4, expected 3"
+    ],
+    "errors": [
+      "ruleset has no versioned content pack; install authored content through ContentPackInstaller before persisting",
+      "ruleset contains unversioned override \"engine.override.test.a\"; persist it through a named, versioned plugin",
+      "accepted"
+    ],
+    "anonymousId": "engine.override.test.a"
+  }
+}

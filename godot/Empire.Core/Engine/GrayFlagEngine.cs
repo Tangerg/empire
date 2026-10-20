@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
+using Empire.Core.Abilities;
 using Empire.Core.Scenario;
 using Empire.Core.Deployment;
 using Empire.Core.Transport;
@@ -15,13 +16,9 @@ using Empire.Core.Transactions;
 
 namespace Empire.Core.Engine;
 
-public sealed record CommandOption(string Key, string Ability, string? Weapon, string Name,
-    string Hint, bool SelfTargeted, IReadOnlyList<Coord> Targets, string? Engagement = null);
-
 /// <summary>Native composition root. The battle owns state; nodes never own gameplay rules.</summary>
 public sealed partial class GrayFlagEngine
 {
-    public static IReadOnlyList<string> SupportedAbilities { get; } = System.Array.AsReadOnly(new[] { "wait", "capture", "attack", "heal" });
     private readonly JsonArray packs;
     private readonly BattleActionRegistry actionHandlers;
     public bool HandsOffTurn(JsonObject action) => actionHandlers.HandsOffTurn(action);
@@ -39,6 +36,9 @@ public sealed partial class GrayFlagEngine
     public BattleTransport Transport { get; }
     public BattleProgression Progression { get; }
     public BattleCombat Combat { get; }
+    public AbilityRegistry Abilities { get; }
+    public AbilityRules AbilityRules { get; }
+    public AbilityCommands AbilityCommands { get; }
     public WeaponAreaRegistry AreaShapes { get; }
     public AiPlanner Ai { get; }
     public ScenarioExtensions ScenarioEffects { get; }
@@ -60,12 +60,15 @@ public sealed partial class GrayFlagEngine
         Directives = UnitDirectiveRegistry.Core().Seal();
         Commands = new TacticalCommands(Movement, Turns.MayAct, Directives);
         Deployment = new DeploymentSystem(packs, Commands.OwnUnit);
-        Support = new SupportOrders(packs, Grids);
-        Recruitment = new RecruitmentOrders(packs, Movement, Resources, (state, type, owner, at, done) =>
-            BattleStateFactory.SpawnUnit(packs, Grids, state, type, owner, at, done: done));
         AreaShapes = WeaponAreaRegistry.Core().Seal();
         Combat = new BattleCombat(packs, Grids, Resources, Movement, AreaShapes);
+        Support = new SupportOrders(packs, Grids, Resources, Combat.Effects);
+        Recruitment = new RecruitmentOrders(packs, Movement, Resources, (state, type, owner, at, done) =>
+            BattleStateFactory.SpawnUnit(packs, Grids, state, type, owner, at, done: done));
         Progression = new BattleProgression(packs, Grids, Resources, Commands, Combat.Effects);
+        Abilities = DefaultAbilities.Create().Seal();
+        AbilityRules = new(Catalog, Movement, Combat, Support, Progression.Careers, Abilities);
+        AbilityCommands = new(AbilityRules, Commands);
         ScenarioEffects = new ScenarioExtensions(packs, Movement, Combat, Resources, (state, source, done) =>
             BattleStateFactory.SpawnUnit(packs, Grids, state, StateJson.Text(source, "unit"),
                 StateJson.Integer(source, "owner"), TacticalQueries.Position(source), done: done, source: source));
@@ -156,107 +159,11 @@ public sealed partial class GrayFlagEngine
         if (StateJson.Text(state, "phase") == "playing" && !deploymentAction) lifecycle.AfterAction();
     }
 
-    private void ExecuteCommand(JsonObject state, JsonObject action, Action<JsonObject> emit)
-    {
-        var movement = Commands.ValidateMovement(state, action);
-        var unit = TacticalQueries.RequireUnit(state, movement.UnitId);
-        var command = StateJson.Object(action["command"], "command");
-        var ability = StateJson.Text(command, "ability");
-        var name = AbilityName(ability);
-        if (!Progression.Careers.UnitAbilityIds(unit).Contains(ability))
-            throw new IllegalActionException($"{StateJson.Text(Content.Get("units", StateJson.Text(unit, "type")), "name")} 没有「{name}」");
-        var weapon = command["weapon"]?.GetValue<string>();
-        if (!string.IsNullOrEmpty(weapon) && (ability != "attack" ||
-            !Combat.Forecasts.UnitWeapons(unit).Any(candidate => StateJson.Text(candidate, "id") == weapon)))
-            throw new IllegalActionException($"「{name}」无法使用「{weapon}」");
-        if (!CanUseAbility(state, unit, movement.Destination, ability, weapon))
-            throw new IllegalActionException($"此处无法使用「{name}」");
-        Coord? target = command["target"] is JsonObject targetObject ? TacticalQueries.Position(targetObject) : null;
-        if (ability is "attack" or "heal")
-        {
-            if (target is null) throw new IllegalActionException($"「{name}」需要指定目标");
-            var targets = ability == "attack" ? Combat.AttackTargets(state, unit, movement.Destination, weapon)
-                : HealTargets(state, unit, movement.Destination);
-            if (!targets.Contains(target.Value)) throw new IllegalActionException("目标不合法");
-        }
-        var surviving = Commands.ApplyMovement(state, movement, emit, Combat.ResolvePartingShots);
-        if (surviving is null) return;
-        if (target is { } at) TacticalCommands.TurnToFace(surviving, Movement.Grid(state).Toward(movement.Destination, at), emit);
-        switch (ability)
-        {
-            case "wait": break;
-            case "capture": Support.Capture(state, surviving, movement.Destination, emit); break;
-            case "attack": Combat.ExecuteAttack(state, surviving, movement.Destination, target!.Value, weapon, emit); break;
-            case "heal": Heal(state, surviving, target!.Value, emit); break;
-            default: throw new DomainInvariantException($"Unsupported ability \"{ability}\"");
-        }
-        TacticalCommands.FinishCommand(state, movement.UnitId);
-    }
+    private void ExecuteCommand(JsonObject state, JsonObject action, Action<JsonObject> emit) =>
+        AbilityCommands.Execute(state, action, emit);
 
-    private static string AbilityName(string id) => id switch
-    {
-        "wait" => "待机", "capture" => "占领", "attack" => "攻击", "heal" => "治疗",
-        _ => throw new DomainInvariantException($"unknown ability \"{id}\""),
-    };
+    public IReadOnlyList<CommandOption> CommandsAt(JsonObject state, JsonObject unit, Coord at) =>
+        AbilityCommands.Options(state, unit, at);
 
-    private bool CanUseAbility(JsonObject state, JsonObject unit, Coord at, string ability, string? weapon = null) => ability switch
-    {
-        "attack" => Combat.CanUseAttack(state, unit, at, at != TacticalQueries.Position(unit), weapon),
-        "capture" => Support.CanCapture(state, unit, at),
-        "heal" => Combat.Effects.BlockedAbilityStatus(unit, new[] { "healing" }) is null,
-        "wait" => true,
-        _ => throw new DomainInvariantException($"unknown ability \"{ability}\""),
-    };
-
-    public IReadOnlyList<CommandOption> CommandsAt(JsonObject state, JsonObject unit, Coord at)
-    {
-        var abilities = Progression.Careers.UnitAbilityIds(unit);
-        var options = new List<CommandOption>();
-        foreach (var ability in abilities)
-        {
-            switch (ability)
-            {
-                case "wait": options.Add(new("wait", "wait", null, AbilityName(ability), "结束该单位的行动。", true, [])); break;
-                case "capture":
-                    if (CanUseAbility(state, unit, at, ability)) options.Add(new("capture", "capture", null, AbilityName(ability), "占下城镇、兵营或城堡；只有人类步兵可以占领。", true, []));
-                    break;
-                case "attack":
-                    foreach (var weapon in Combat.Forecasts.UnitWeapons(unit))
-                    {
-                        var id = StateJson.Text(weapon, "id");
-                        if (!CanUseAbility(state, unit, at, ability, id)) continue;
-                        var targets = Combat.AttackTargets(state, unit, at, id);
-                        if (targets.Count > 0) options.Add(new($"attack:{id}", "attack", id,
-                            $"{AbilityName(ability)} · {StateJson.Text(weapon, "name")}", $"对射程内的敌人造成伤害；若对方也能打到你，会遭到反击。 射程 {StateJson.Number(weapon["minRange"], "minRange")}-{StateJson.Number(weapon["maxRange"], "maxRange")}", false, targets, "attack"));
-                    }
-                    break;
-                case "heal":
-                    if (!CanUseAbility(state, unit, at, ability)) break;
-                    var allies = HealTargets(state, unit, at);
-                    if (allies.Count > 0) options.Add(new("heal", "heal", null, AbilityName(ability), "恢复相邻友军的生命值。", false, allies));
-                    break;
-                default: throw new DomainInvariantException($"Unsupported ability \"{ability}\"");
-            }
-        }
-        int Priority(string id) => id switch { "capture" => 5, "attack" => 10, "heal" => 20, "wait" => 90, _ => 50 };
-        return options.OrderBy(option => Priority(option.Ability)).ThenBy(option => option.Key, StringComparer.Ordinal).ToArray();
-    }
-
-    private IReadOnlyList<Coord> HealTargets(JsonObject state, JsonObject unit, Coord from) =>
-        Movement.HealTargetsFrom(state, unit, from).Select(TacticalQueries.Position).ToArray();
-
-    public double HealAmount(JsonObject unit) => Math.Min(30,
-        StateJson.Number(Content.Get("units", StateJson.Text(unit, "type"))["maxHp"], "maxHp") - StateJson.Number(unit["hp"], "hp"));
-
-    private void Heal(JsonObject state, JsonObject source, Coord target, Action<JsonObject> emit)
-    {
-        var unit = TacticalQueries.UnitAt(state, target) ?? throw new DomainInvariantException("no unit to heal");
-        var maximum = StateJson.Number(Content.Get("units", StateJson.Text(unit, "type"))["maxHp"], "maxHp");
-        var hp = StateJson.Number(unit["hp"], "hp");
-        var amount = Math.Min(Math.Max(0, StateJson.Round(HealAmount(unit))), Math.Max(0, maximum - hp));
-        unit["hp"] = hp + amount;
-        emit(new JsonObject { ["type"] = "heal", ["source"] = source["id"]!.DeepClone(), ["target"] = unit["id"]!.DeepClone(), ["amount"] = amount });
-        Combat.Effects.AwardRankProgress(source, Math.Max(5, amount), emit);
-    }
-
+    public double HealAmount(JsonObject unit) => DefaultAbilities.HealAmount(AbilityRules, unit);
 }

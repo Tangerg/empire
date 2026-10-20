@@ -1,18 +1,12 @@
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Empire.Core.Determinism;
 
 namespace Empire.Core.Campaign;
 
 public static class CampaignValidation
 {
-    private static readonly char[] Whitespace =
-    [
-        '\u0009', '\u000A', '\u000B', '\u000C', '\u000D', '\u0020', '\u00A0', '\u1680',
-        '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005', '\u2006', '\u2007',
-        '\u2008', '\u2009', '\u200A', '\u2028', '\u2029', '\u202F', '\u205F', '\u3000', '\uFEFF',
-    ];
-
     public static void ValidateDefinition(JsonObject definition)
     {
         if (!NumberEquals(definition["schema"], 1))
@@ -187,7 +181,7 @@ public static class CampaignValidation
         return values.All(value => Named(value) && names.Add(Text(value)));
     }
 
-    internal static bool Named(string value) => value.Trim(Whitespace).Length != 0;
+    internal static bool Named(string value) => !EcmaText.IsBlank(value);
     private static bool Named(JsonNode? value) => value is JsonValue scalar && scalar.TryGetValue<string>(out var text) && Named(text);
     internal static bool ScenarioValue(JsonNode? value) => value is JsonValue scalar &&
         (scalar.TryGetValue<string>(out _) || scalar.TryGetValue<bool>(out _) || Finite(value));

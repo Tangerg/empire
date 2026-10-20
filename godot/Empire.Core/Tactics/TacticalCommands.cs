@@ -117,7 +117,13 @@ public sealed class TacticalCommands
     public static void FinishCommand(JsonObject state, int unitId)
     {
         var unit = TacticalQueries.UnitById(state, unitId);
-        if (unit is not null) unit["done"] = true;
+        if (unit is not null) FinishCommand(state, unit);
+    }
+
+    public static void FinishCommand(JsonObject state, JsonObject actor)
+    {
+        // An ability can replace the stored object; the accepted order still owns its captured actor.
+        if (TacticalQueries.UnitById(state, StateJson.Integer(actor, "id")) is not null) actor["done"] = true;
     }
 
     public void ExecuteWait(

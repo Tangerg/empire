@@ -1,5 +1,7 @@
 using System.Text.Json.Nodes;
+using Empire.Core.Registries;
 using static Empire.Core.State.StateJson;
+using Empire.Core.Determinism;
 
 namespace Empire.Core.Campaign;
 
@@ -21,7 +23,7 @@ public sealed class CampaignNodeInspection
 }
 public sealed record CampaignNodeHandler(string Kind, Action<CampaignNodeAdvance, JsonObject> Advance,
     Action<CampaignNodeInspection, JsonObject>? Validate = null);
-public sealed class CampaignNodeRegistry : CampaignRegistry<CampaignNodeHandler>
+public sealed class CampaignNodeRegistry : KeyedRegistry<CampaignNodeHandler, CampaignNodeRegistry>
 {
     public CampaignNodeRegistry() : base("campaign node handler") { }
     protected override string KeyOf(CampaignNodeHandler entry) => entry.Kind;
@@ -53,7 +55,7 @@ public sealed class CampaignNodeRegistry : CampaignRegistry<CampaignNodeHandler>
         registry.Register(new("battle", (context, _) => context.Needs("beginBattle()"), (inspection, node) =>
         {
             var id = Text(node, "id");
-            if (string.IsNullOrWhiteSpace(Text(node, "level"))) inspection.Reject($"battle node \"{id}\" has no level");
+            if (EcmaText.IsBlank(Text(node, "level"))) inspection.Reject($"battle node \"{id}\" has no level");
             foreach (var pair in Object(node["next"], "next"))
                 if (pair.Value is not null && !string.IsNullOrEmpty(Text(pair.Value, "next"))) RequireNext(inspection, id, Text(pair.Value, "next"));
             var roster = new HashSet<string>(StringComparer.Ordinal); var keys = new HashSet<string>(StringComparer.Ordinal);

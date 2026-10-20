@@ -44,3 +44,4 @@ foreach(var entry in fixture["results"]!.AsArray())
 Console.WriteLine($"PASS {fixture["results"]!.AsArray().Count} source roster bridge projection cases");
 
 if(args.Length>2)CampaignValidationChecks.Run(args[2]);
+if(args.Length>4)CampaignRegistryChecks.Run(args[4],Equal);

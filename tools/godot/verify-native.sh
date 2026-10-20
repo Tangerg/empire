@@ -5,6 +5,11 @@ source tools/godot/env.sh
 # No installation, publication or user-save mutation. Native checks use fixture sessions.
 dotnet build godot/Empire.csproj
 dotnet run --project godot/Empire.Core.Tests -- godot/tests/oracle
+# Frozen original-source contracts: these paths require .NET, not a TypeScript runtime.
+bash tools/godot/registry-checks/run.sh --frozen
+dotnet run --project tools/godot/kernel-contract-checks -- godot/tests/oracle/kernel-contracts.json godot/tests/oracle/kernel-version-contracts.json "$PWD"
+bash tools/godot/resource-extension-checks/run.sh --frozen
+bash tools/godot/ability-extension-checks/run.sh --frozen
 dotnet run --project tools/godot/application-checks -- .
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
 "$GODOT_NET" --headless --editor --path godot --import
@@ -47,6 +52,10 @@ run_scene CampaignStagingChecks -- "$ORACLE_DATA/staging.json"
 run_scene CampaignNavigationChecks
 if [[ "${1:-}" == '--full' ]]; then
   # These are development-only comparisons against the preserved original source.
+  bash tools/godot/registry-checks/run.sh
+  bash tools/godot/kernel-contract-checks/run.sh
+  bash tools/godot/resource-extension-checks/run.sh --verify-guard
+  bash tools/godot/ability-extension-checks/run.sh --verify-guard
   for suite in feedback staging action-refusal deployment scenario utf16-boundary vision content-validation level-validation persistence-reference progression recruitment transport; do
     bash "tools/godot/$suite-checks/run.sh"
   done

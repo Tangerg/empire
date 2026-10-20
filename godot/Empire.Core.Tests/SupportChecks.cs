@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using Empire.Core.Combat;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.Orders;
@@ -10,7 +11,7 @@ internal static class SupportChecks
     {
         var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "../../data/content-packs.json")))!.AsArray();
         var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
-        var orders = new SupportOrders(packs, grids);
+        var orders = new SupportOrders(packs, grids, new BattleResources(), new CombatEffects(packs));
         using var archive = File.OpenRead(Path.Combine(root, "action-cases.json.gz"));
         using var decompressed = new System.IO.Compression.GZipStream(archive, System.IO.Compression.CompressionMode.Decompress);
         var cases = JsonNode.Parse(decompressed)!.AsArray();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
+using Empire.Core.Determinism;
 
 namespace Empire.Core.State;
 
@@ -92,7 +93,7 @@ internal sealed class StateContent
         {
             var pack = StateJson.Object(node, "content pack");
             var id = StateJson.Text(pack, "id");
-            if (string.IsNullOrWhiteSpace(id)) throw new DomainInvariantException("content pack id cannot be empty");
+            if (EcmaText.IsBlank(id)) throw new DomainInvariantException("content pack id cannot be empty");
             var version = StateJson.Number(pack["version"], "content pack version");
             if (version < 1 || version != Math.Truncate(version))
                 throw new DomainInvariantException($"content pack \"{id}\" version must be a positive integer");

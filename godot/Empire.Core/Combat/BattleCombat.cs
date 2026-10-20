@@ -27,26 +27,32 @@ public sealed partial class BattleCombat : ILifecycleEffects
         Damage = new BattleDamage(packs, grids);
         Effects = new CombatEffects(packs);
     }
-    public bool CanUseAttack(JsonObject state, JsonObject unit, Coord at, bool moved, string? weapon = null)
+    public JsonObject? SelectedWeapon(JsonObject state, JsonObject unit, string? weapon = null)
     {
         var id = weapon ?? Forecasts.UnitWeapons(unit).FirstOrDefault()?["id"]?.GetValue<string>();
-        if (id is null || Forecasts.ReadyWeapon(state, unit, id) is not { } selected) return false;
-        return (!moved || StateJson.IsTrue(selected["moveAndAttack"]))
+        return id is null ? null : Forecasts.ReadyWeapon(state, unit, id);
+    }
+    public bool CanUseWeapon(JsonObject state, JsonObject unit, bool moved, string? weapon = null) =>
+        SelectedWeapon(state, unit, weapon) is { } selected && (!moved || StateJson.IsTrue(selected["moveAndAttack"]));
+    public bool CanUseAttack(JsonObject state, JsonObject unit, Coord at, bool moved, string? weapon = null)
+    {
+        var selected = SelectedWeapon(state, unit, weapon);
+        return selected is not null && CanUseWeapon(state, unit, moved, weapon)
             && Effects.BlockedAbilityStatus(unit, selected["tags"]!.AsArray().Select(value => value!.GetValue<string>()).Prepend("attack")) is null;
     }
     public IReadOnlyList<Coord> AttackTargets(JsonObject state, JsonObject unit, Coord at, string? weapon = null)
     {
-        var id = weapon ?? Forecasts.UnitWeapons(unit).FirstOrDefault()?["id"]?.GetValue<string>();
-        if (id is null || Forecasts.ReadyWeapon(state, unit, id) is not { } selected) return Array.Empty<Coord>();
+        if (SelectedWeapon(state, unit, weapon) is not { } selected) return Array.Empty<Coord>();
         return movement.AttackTargetCoords(state, unit, at, selected)
             .Where(target => HostileActionAllowed(state, StateJson.Integer(unit, "owner"), at, target)).ToArray();
     }
-    public static bool HostileActionAllowed(JsonObject state, int actor, Coord from, Coord target)
+    public static bool HostileActionAllowed(JsonObject state, int actor, Coord from, Coord target, string kind = "attack")
     {
         var scenario = state["scenario"]!.AsObject();
         foreach (var rule in StateJson.Objects(scenario["engagementRules"], "engagementRules"))
         {
             if (rule["players"] is JsonArray players && players.Count > 0 && !players.Any(value => StateJson.Integer(value, "player") == actor)) continue;
+            if (StateJson.Text(rule, "mode") == "no-attacks" && kind != "attack") continue;
             var cells = scenario["zones"]?[StateJson.Text(rule, "zone")];
             if (StateJson.Objects(cells, "zone").Any(cell => TacticalQueries.Position(cell) == from || TacticalQueries.Position(cell) == target)) return false;
         }
