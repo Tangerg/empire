@@ -721,3 +721,7 @@ The owning evidence is
 Keep historical provenance there. Successful export does not register quality,
 increment the approved-art ledger, or demonstrate a current gameplay consumer;
 those acceptance and publication steps belong to the parent integration review.
+
+### Canonical capital family extension
+
+CAPITAL1/2 use the same verified historical sixteen NESW alpha masks as BORDER2/4; CAPITAL3/4 are four opaque variants. All eight existing capital alpha strips were byte-hashed against the bounded exporter contract before enabling these four IDs. Source materials are independently reviewed paving subjects, not automatic reuse of border material. This extension does not register artwork or create gameplay consumers.

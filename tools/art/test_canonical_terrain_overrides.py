@@ -62,8 +62,8 @@ class CanonicalTerrainTests(unittest.TestCase):
         inputs = {p: p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
         reports = export(self.root, self.catalog)
         self.assertEqual(reports, export(self.root, self.catalog, check=True))
-        self.assertEqual(len(reports), 8)
-        self.assertEqual(sum(r['derivedCellCount'] for r in reports), 80)
+        self.assertEqual(len(reports), len(TOPICS) * 2)
+        self.assertEqual(sum(r['derivedCellCount'] for r in reports), sum(4 if mode == 'variants' else 16 for mode in TOPICS.values()) * 2)
         for path, original in inputs.items():
             self.assertEqual(path.read_bytes(), original)
         for report in reports:
@@ -113,7 +113,7 @@ class CanonicalTerrainTests(unittest.TestCase):
                     self.assertEqual(list(alpha.crop(box).tobytes()), expected)
             self.assertEqual(pixel_hash(alpha_strip), ALPHA_SHA256['nesw-16', size])
             self.assertEqual(alpha_strip.histogram()[255], 4608 if size == 32 else 18496)
-            for topic in ('terrain-border-2', 'terrain-border-4'):
+            for topic in ('terrain-border-2', 'terrain-border-4', 'terrain-capital-1', 'terrain-capital-2'):
                 with Image.open(ROOT / PACK / directory / 'terrain' / f'{topic}.png') as historical:
                     self.assertEqual(alpha_strip.tobytes(), historical.getchannel('A').tobytes())
         nearest = canonical_masks(32)[0].resize((64, 64), Image.Resampling.NEAREST)
@@ -215,9 +215,9 @@ class CanonicalTerrainTests(unittest.TestCase):
                 self.fail_without_writes(message)
 
     def test_unknown_topics_duplicate_keys_and_shared_source_rejected(self):
-        self.entries['C01-TERRAIN-CAPITAL-1'] = self.entries.pop('C01-TERRAIN-BORDER-1')
+        self.entries['C01-TERRAIN-FORGE-1'] = self.entries.pop('C01-TERRAIN-BORDER-1')
         self.fail_without_writes('unsupported canonical')
-        self.entries['C01-TERRAIN-BORDER-1'] = self.entries.pop('C01-TERRAIN-CAPITAL-1')
+        self.entries['C01-TERRAIN-BORDER-1'] = self.entries.pop('C01-TERRAIN-FORGE-1')
         self.entries['C01-TERRAIN-BORDER-3'] = self.entries['C01-TERRAIN-BORDER-1']
         self.fail_without_writes('own authored material')
         self.catalog.write_text('{"schemaVersion":1,"assets":{},"assets":{}}')
