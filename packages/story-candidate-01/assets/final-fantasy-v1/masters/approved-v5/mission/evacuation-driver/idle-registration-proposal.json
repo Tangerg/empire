@@ -1,0 +1,28 @@
+{
+  "status": "Accepted by coordinator before remaining poses",
+  "sharedScale": 0.04636459430979979,
+  "bodyReferenceSourcePixels": 949,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Idle cap crown alpha>127 y22 to supporting lowest sole y971. One fixed44/949 across every whole source canvas.",
+  "canonicalSourceFoot": [
+    802.75,
+    971
+  ],
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "paddingPolicy": "Export only: pad transparent right/bottom to common canvas. Native raw/master images are never altered.",
+  "canvasPaddingToleranceRequired": 0,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Separate boot bottom4-row alpha>127 bands. Anchor x averages underside band centers; anchor y is lowest supporting sole. Translate whole canvas only; no per-pose rescale/crop/fitting.",
+  "requiredMaximumTranslationLogicalPixels": 0.0,
+  "recommendedRegistrationLimitLogicalPixels": 4
+}

@@ -20,5 +20,6 @@
     1297,
     986
   ],
-  "visualAssessment": "Direct black/white alpha composites show a clean silhouette and no visible exterior haze. Tool-display RGB is not used for this verdict. Perimeter alpha<=1 passes. Native alpha max254 is preserved without repair."
+  "visualAssessment": "Direct white/black alpha composites inspected: no visible exterior haze, no painted background or floor shadow, complete unclipped silhouette. Unassociated RGB in fully transparent pixels is intentionally retained. Native alpha max254 is preserved.",
+  "visibleHazePass": true
 }

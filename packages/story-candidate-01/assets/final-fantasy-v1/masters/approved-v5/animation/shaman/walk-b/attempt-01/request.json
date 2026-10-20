@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen__imagegen",
+  "useCase": "identity-preserve",
+  "pose": "walk-b",
+  "attempt": 1,
+  "promptSha256": "87b85b1db7591964651f30c59dc3ec1536816842266a9ff0695c38b28197ee0b",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/master.png",
+      "role": "approved idle target",
+      "sha256": "5087a96abe12deb475766b12399d9db2847aaff1e23257ea5df8c5f99e2e384c"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/master.png",
+      "role": "opposite leg contact comparison",
+      "sha256": "eced98dfe665fd7e86fb988d4a3ebaada788f6ff352334b35c89b1cebb80d9d8"
+    }
+  ]
+}

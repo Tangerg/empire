@@ -363,6 +363,8 @@ export class StoryCampaignController {
     const order = this.adapter.levelOrder(level);
     const story = this.adapter.story(this.adapter.briefingId(level));
     const scene = this.adapter.storyArt(story.scene);
+    const currentNode = this.adapter.definition.nodes.find((node) => node.id === this.runtime.state.currentNode);
+    const rosterBindings = currentNode?.type === 'battle' ? currentNode.rosterBindings : undefined;
     const completed = this.runtime.state.battleHistory.length;
     const roster = Object.values(this.runtime.state.roster).filter((unit) => (this.adapter.joinAfter?.[unit.id] ?? 0) <= completed);
     const resources = Object.entries(this.runtime.state.resources)
@@ -380,9 +382,10 @@ export class StoryCampaignController {
            */
           const definition = this.content.units.get(unit.unitType);
           const portrait = this.adapter.portraits[unit.id];
+          const actorKey = rosterBindings?.find((binding) => binding.campaignUnit === unit.id)?.levelUnitKey;
           const avatar = portrait
             ? `<img src="${portrait}" alt=""/>`
-            : `<span class="campaign-unit-plate">${portraitSvg(this.options.art, definition, PAL.neutral, 40)}</span>`;
+            : `<span class="campaign-unit-plate">${portraitSvg(this.options.art, definition, PAL.neutral, 40, actorKey === undefined ? undefined : { actorKey })}</span>`;
           return `<div class="campaign-unit">${avatar}<div><b>${escapeHtml(definition.name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
         }).join('')}</div></section>
         <section class="campaign-panel"><h2>战役状态</h2><div class="resource-row">${resources}</div>

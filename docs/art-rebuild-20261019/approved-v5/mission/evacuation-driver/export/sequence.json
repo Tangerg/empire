@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-b/master.png"
+    },
+    "scale": 0.04636459430979979,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      802.75,
+      971
+    ],
+    "sourceFeet": {
+      "idle": [
+        802.75,
+        971
+      ],
+      "walk-a": [
+        804.75,
+        965
+      ],
+      "carry-or-work": [
+        805.0,
+        965
+      ],
+      "walk-b": [
+        812.75,
+        962
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.09272918861959958,
+        0.2781875658587988
+      ],
+      "carry-or-work": [
+        -0.10432033719704953,
+        0.2781875658587988
+      ],
+      "walk-b": [
+        -0.4636459430979979,
+        0.4172813487881981
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 0,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1585,
+    992
+  ],
+  "logicalPivot": [
+    45.21917808219178,
+    49.020021074815595
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "e2292962b275e2e5c0dc845c41a9aa9d95e7a0bc80d15ddcd3c744b3456109d3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5631,
+        "nearOpaquePixels": 878,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          5,
+          68,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "e2292962b275e2e5c0dc845c41a9aa9d95e7a0bc80d15ddcd3c744b3456109d3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22596,
+        "nearOpaquePixels": 3620,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          10,
+          136,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-a/master.png",
+      "registrationOffset": [
+        -0.09272918861959958,
+        0.2781875658587988
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "97956cc1a1be2ee0fd59d3225810f529cbfc59dfe51bc7d67fe67ce2f18b5ad7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5582,
+        "nearOpaquePixels": 913,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          5,
+          68,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-a/master.png",
+      "registrationOffset": [
+        -0.09272918861959958,
+        0.2781875658587988
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "97956cc1a1be2ee0fd59d3225810f529cbfc59dfe51bc7d67fe67ce2f18b5ad7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22426,
+        "nearOpaquePixels": 3724,
+        "edgeMax": 0,
+        "visibleBounds": [
+          52,
+          11,
+          136,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.10432033719704953,
+        0.2781875658587988
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f863628ea3b361d4ffdafef146a074157c4b40ea9fd6cc7ee98c675aa1eb9f82",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5637,
+        "nearOpaquePixels": 859,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          5,
+          69,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.10432033719704953,
+        0.2781875658587988
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f863628ea3b361d4ffdafef146a074157c4b40ea9fd6cc7ee98c675aa1eb9f82",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22650,
+        "nearOpaquePixels": 3525,
+        "edgeMax": 0,
+        "visibleBounds": [
+          53,
+          10,
+          138,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-b/master.png",
+      "registrationOffset": [
+        -0.4636459430979979,
+        0.4172813487881981
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5c54fa61692784e9a11f7f689007953c339c5a354182f86c4dac95dd397ef641",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5666,
+        "nearOpaquePixels": 839,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          5,
+          67,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-b/master.png",
+      "registrationOffset": [
+        -0.4636459430979979,
+        0.4172813487881981
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5c54fa61692784e9a11f7f689007953c339c5a354182f86c4dac95dd397ef641",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22759,
+        "nearOpaquePixels": 3437,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          11,
+          135,
+          98
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

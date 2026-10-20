@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen__imagegen",
+  "useCase": "identity-preserve",
+  "pose": "walk-b",
+  "attempt": 2,
+  "reason": "Targeted correction for repeated leg contact in successful generation attempt01; no tool refusal.",
+  "promptSha256": "6878f013d31a3289ecd1842354bca93337ca3b0b9dcc4c1c2f6e1c42a7748ad9",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/master.png",
+      "role": "approved idle edit target",
+      "sha256": "5087a96abe12deb475766b12399d9db2847aaff1e23257ea5df8c5f99e2e384c"
+    }
+  ]
+}

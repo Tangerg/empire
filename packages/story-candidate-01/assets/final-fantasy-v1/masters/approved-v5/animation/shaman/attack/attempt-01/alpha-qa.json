@@ -1,0 +1,32 @@
+{
+  "nativeMode": "RGBA",
+  "nativeSize": [
+    1536,
+    1024
+  ],
+  "sha256": "6ed99966dcd7822e5e9af89c454db5b4d0424c2225b97676b148e5392ca1c706",
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "perimeterAlphaMax": 0,
+  "perimeterAbove1": 0,
+  "transparentPixels": 967590,
+  "semiTransparentPixels": 605274,
+  "opaquePixels": 0,
+  "bboxAlpha1": [
+    321,
+    11,
+    1299,
+    1001
+  ],
+  "bboxAlpha127": [
+    323,
+    13,
+    1297,
+    999
+  ],
+  "nativePixelsPreserved": true,
+  "visualAssessment": "Direct white/black alpha composites inspected: no visible exterior haze, no painted background or floor shadow, complete unclipped silhouette. Unassociated RGB in fully transparent pixels is intentionally retained. Native alpha max254 is preserved.",
+  "visibleHazePass": true
+}

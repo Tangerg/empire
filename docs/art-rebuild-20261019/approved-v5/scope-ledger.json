@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 324,
+    "formalBound": 326,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 39,
+      "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 7,
+      "mission-unit": 8,
       "narrative-static": 7,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 325,
+    "rawPreservedTopics": 326,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2036,14 +2036,22 @@
       "label": "萨满",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-shaman.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-shaman.png",
+      "stageEvidence": {
+        "raw": "Original olive-skinned drummer, fur shoulders, rust coat and forked staff; opposing walks and physical drum strike; immutable native sources and exact evidence preserved",
+        "export": "shared44/890 scale, measured boot registration within1.286logicalpx; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-SILVER-LONGBOW",
@@ -2505,13 +2513,23 @@
       "category": "mission-unit",
       "label": "撤离车夫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/evacuation-driver/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-evacuation-driver.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-evacuation-driver.png",
+      "stageEvidence": {
+        "raw": "Original elderly driver, blue-gray coat and left-hand rope; opposite steps and rope inspection; immutable native sources and exact evidence preserved",
+        "export": "shared44/949 scale, measured boot registration within0.464logicalpx; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-FIELD-MESSENGER",

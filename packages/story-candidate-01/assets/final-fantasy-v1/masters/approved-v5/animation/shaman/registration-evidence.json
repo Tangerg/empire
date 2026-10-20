@@ -1,0 +1,268 @@
+{
+  "status": "Evidence and proposal only; parent is sole formal integrator",
+  "sharedScale": 0.04943820224719101,
+  "scaleFraction": "44/890",
+  "bodyReferenceSourcePixels": 890,
+  "bodyTargetHeightLogicalPixels": 44,
+  "canonicalSourceFoot": [
+    731,
+    982
+  ],
+  "commonNativeCanvas": [
+    1536,
+    1024
+  ],
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "proposedFrameAnchor": [
+    44.13932584269663,
+    52.54831460674157
+  ],
+  "registrationMethod": "One exact whole-canvas44/890 scale; translation aligns midpoint of both measured boot sole-band x centers and lowest boot sole y. No per-pose fit, alpha trim, body recenter or equipment transform. All native dimensions are identical; no padding needed.",
+  "existingRegistrationLimitLogicalPixels": 4,
+  "requiredMaximumTranslationLogicalPixels": 1.2853932584269663,
+  "poses": {
+    "idle": {
+      "sourceSupportAnchorEstimated": [
+        731,
+        982
+      ],
+      "bothBootSoles": [
+        {
+          "sampleBoxLTRB": [
+            420,
+            870,
+            650,
+            1024
+          ],
+          "soleBandXMean": 532.0094637223975,
+          "soleBandXExtent": [
+            481,
+            582
+          ],
+          "lowestSoleY": 982
+        },
+        {
+          "sampleBoxLTRB": [
+            750,
+            870,
+            1020,
+            1024
+          ],
+          "soleBandXMean": 929.9483394833949,
+          "soleBandXExtent": [
+            881,
+            979
+          ],
+          "lowestSoleY": 975
+        }
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        378,
+        33,
+        1295,
+        983
+      ],
+      "logicalVisibleBounds": [
+        26.687640449438202,
+        5.631460674157303,
+        72.02247191011236,
+        52.597752808988766
+      ],
+      "logicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        83.9370786516854,
+        54.624719101123596
+      ],
+      "wholeCanvasFitsFrame": true
+    },
+    "walk-a": {
+      "sourceSupportAnchorEstimated": [
+        734,
+        1002
+      ],
+      "bothBootSoles": [
+        {
+          "sampleBoxLTRB": [
+            340,
+            870,
+            600,
+            1024
+          ],
+          "soleBandXMean": 504.3856502242152,
+          "soleBandXExtent": [
+            466,
+            543
+          ],
+          "lowestSoleY": 974
+        },
+        {
+          "sampleBoxLTRB": [
+            900,
+            870,
+            1200,
+            1024
+          ],
+          "soleBandXMean": 963.827067669173,
+          "soleBandXExtent": [
+            945,
+            988
+          ],
+          "lowestSoleY": 1002
+        }
+      ],
+      "registrationOffsetLogical": [
+        -0.14831460674157304,
+        -0.9887640449438202
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        352,
+        28,
+        1307,
+        1003
+      ],
+      "logicalVisibleBounds": [
+        25.253932584269663,
+        4.395505617977529,
+        72.46741573033707,
+        52.597752808988766
+      ],
+      "logicalFullCanvasBounds": [
+        7.8516853932584265,
+        3.01123595505618,
+        83.78876404494382,
+        53.635955056179775
+      ],
+      "wholeCanvasFitsFrame": true
+    },
+    "attack": {
+      "sourceSupportAnchorEstimated": [
+        718,
+        998
+      ],
+      "bothBootSoles": [
+        {
+          "sampleBoxLTRB": [
+            320,
+            870,
+            580,
+            1024
+          ],
+          "soleBandXMean": 451.6745762711864,
+          "soleBandXExtent": [
+            399,
+            502
+          ],
+          "lowestSoleY": 998
+        },
+        {
+          "sampleBoxLTRB": [
+            790,
+            870,
+            1100,
+            1024
+          ],
+          "soleBandXMean": 985.1644295302013,
+          "soleBandXExtent": [
+            931,
+            1039
+          ],
+          "lowestSoleY": 992
+        }
+      ],
+      "registrationOffsetLogical": [
+        0.6426966292134831,
+        -0.7910112359550562
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        323,
+        13,
+        1297,
+        999
+      ],
+      "logicalVisibleBounds": [
+        24.61123595505618,
+        3.851685393258427,
+        72.76404494382022,
+        52.597752808988766
+      ],
+      "logicalFullCanvasBounds": [
+        8.642696629213484,
+        3.208988764044944,
+        84.57977528089889,
+        53.83370786516854
+      ],
+      "wholeCanvasFitsFrame": true
+    },
+    "walk-b": {
+      "sourceSupportAnchorEstimated": [
+        757,
+        1000
+      ],
+      "bothBootSoles": [
+        {
+          "sampleBoxLTRB": [
+            440,
+            870,
+            730,
+            1024
+          ],
+          "soleBandXMean": 611.3670033670033,
+          "soleBandXExtent": [
+            564,
+            664
+          ],
+          "lowestSoleY": 1000
+        },
+        {
+          "sampleBoxLTRB": [
+            750,
+            870,
+            980,
+            1024
+          ],
+          "soleBandXMean": 903.1176470588235,
+          "soleBandXExtent": [
+            863,
+            943
+          ],
+          "lowestSoleY": 950
+        }
+      ],
+      "registrationOffsetLogical": [
+        -1.2853932584269663,
+        -0.8898876404494382
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        338,
+        32,
+        1282,
+        1001
+      ],
+      "logicalVisibleBounds": [
+        23.424719101123593,
+        4.692134831460674,
+        70.0943820224719,
+        52.597752808988766
+      ],
+      "logicalFullCanvasBounds": [
+        6.714606741573034,
+        3.1101123595505618,
+        82.65168539325843,
+        53.73483146067416
+      ],
+      "wholeCanvasFitsFrame": true
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "assetId": "C01-FFV1-MISSION-EVACUATION-DRIVER",
+  "topicId": "C01-MISSION-EVACUATION-DRIVER",
+  "label": "\u64a4\u79bb\u8f66\u592b",
+  "category": "mission-unit",
+  "png": "runtime/mission-unit/mission-evacuation-driver.png",
+  "width": 128,
+  "height": 48,
+  "runtimeReady": true,
+  "qualityTier": "final-cartoon-fantasy-v1",
+  "frameWidth": 32,
+  "frameHeight": 48,
+  "frames": 4,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "anchor": [
+    16,
+    47
+  ],
+  "footprint": [
+    1,
+    1
+  ],
+  "campaign": "story-candidate-01",
+  "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+  "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-evacuation-driver.png",
+  "status": "pending-redraw",
+  "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+  "alpha_requirement": "genuine-transparent-background",
+  "derived_outputs": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-evacuation-driver.png"
+  ]
+}

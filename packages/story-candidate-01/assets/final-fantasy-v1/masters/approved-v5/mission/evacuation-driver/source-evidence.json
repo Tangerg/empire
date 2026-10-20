@@ -1,0 +1,143 @@
+{
+  "topicId": "C01-MISSION-EVACUATION-DRIVER",
+  "assetId": "C01-FFV1-MISSION-EVACUATION-DRIVER",
+  "label": "撤离车夫",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+    "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 3,
+    "rowIndex1": 4,
+    "rowCropXYXY": [
+      0,
+      940,
+      1254,
+      1254
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        940,
+        314,
+        1254
+      ],
+      [
+        314,
+        940,
+        627,
+        1254
+      ],
+      [
+        627,
+        940,
+        940,
+        1254
+      ],
+      [
+        940,
+        940,
+        1254,
+        1254
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        945,
+        309,
+        1249
+      ],
+      [
+        319,
+        945,
+        622,
+        1249
+      ],
+      [
+        632,
+        945,
+        935,
+        1249
+      ],
+      [
+        945,
+        945,
+        1249,
+        1249
+      ]
+    ],
+    "observedIdentity": "Older gray-haired adult man in brown cap and blue-gray coat with pale collar, cross-body strap and pouch. Screen-left hand holds coiled rope; screen-right hand gestures. No cart or horse is part of the source figure."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-evacuation-driver.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-EVACUATION-DRIVER",
+    "png": "runtime-hd/mission-unit/mission-evacuation-driver.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "referenceHashes": {
+    "references/approved-refugee-adult-idle.png": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6",
+    "references/original-idle-cell.png": "cec895550a390a281e370ac05ca96e57934fe9eda9d5f33b64a32d19712f12ad",
+    "references/approved-city-doctor-idle.png": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+    "references/current-runtime.png": "44d9dc9639cf6035a7bdf5b52a03e29c5b843861192278cfab7f6fba3b187fc0",
+    "references/original-masterboard.png": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f",
+    "references/approved-border-farmer-idle.png": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+    "references/original-row.png": "631726d2c9ce3fd214fd3f330f9d82d1b587989f32a10a1de34a1acde4d18855",
+    "references/approved-forge-artisan-idle.png": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+    "references/current-runtime-hd.png": "d99bbbc89366b3a97438321f62bc866b448484932d57d6fa63c97179a71e8da8",
+    "references/original-complete-idle.png": "5d987091323e01baba2d1994e2b45c83f52000ad98a734afb72e6b041b7b685b"
+  },
+  "status": "Native quartet complete; catalog-only; no repository files or runtime bindings edited.",
+  "supplementalIdentityCrop": {
+    "cropXYXY": [
+      0,
+      900,
+      314,
+      1254
+    ],
+    "reason": "Canonical row crop starts at y940 and cuts cap crown; exact board region from y900 retains full source figure. Original canonical crop is also retained unchanged."
+  },
+  "independentVisualInspection": "Original board and row viewed. Older gray-haired clean-shaven warm-tan man, brown cap, blue-gray coat with beige shearling collar/cuffs/hem, brown cross-body strap and waist belt with brass buckle, small brown screen-right belt pouch, dark trousers, large brown boots. Coiled rope retained in screen-left hand; open directing screen-right hand. No vehicle or horse. Source idle/work near duplicates and walks repeated; semantic third action will be rope/directing work, walk contacts opposite.",
+  "referenceRowAndIdlePixelExactToOriginalBoard": true,
+  "semanticContract": "Exact idle/walk-a/carry-or-work/walk-b order. Existing source repeats idle/work and repeats both walk contacts. Stable one-rope idle identity preserved; new third slot checks the rope and directs, walking contacts are genuinely opposite. No combat action, horse or vehicle is introduced.",
+  "bindingConstraint": "Catalog-only. Zero domain bindings, initial/reinforcement actors, rendered scene placements and population metadata. Do not invent deployed evacuation-driver consumers."
+}

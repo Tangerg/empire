@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-b/master.png"
+    },
+    "scale": 0.04943820224719101,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      731,
+      982
+    ],
+    "sourceFeet": {
+      "idle": [
+        731,
+        982
+      ],
+      "walk-a": [
+        734,
+        1002
+      ],
+      "attack": [
+        718,
+        998
+      ],
+      "walk-b": [
+        757,
+        1000
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.14831460674157304,
+        -0.9887640449438202
+      ],
+      "attack": [
+        0.6426966292134831,
+        -0.7910112359550562
+      ],
+      "walk-b": [
+        -1.2853932584269663,
+        -0.8898876404494382
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 0,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1536,
+    1024
+  ],
+  "logicalPivot": [
+    44.13932584269663,
+    52.54831460674157
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5087a96abe12deb475766b12399d9db2847aaff1e23257ea5df8c5f99e2e384c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5219,
+        "nearOpaquePixels": 1172,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          6,
+          72,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5087a96abe12deb475766b12399d9db2847aaff1e23257ea5df8c5f99e2e384c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21070,
+        "nearOpaquePixels": 4866,
+        "edgeMax": 0,
+        "visibleBounds": [
+          53,
+          11,
+          144,
+          105
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-a/master.png",
+      "registrationOffset": [
+        -0.14831460674157304,
+        -0.9887640449438202
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "eced98dfe665fd7e86fb988d4a3ebaada788f6ff352334b35c89b1cebb80d9d8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5207,
+        "nearOpaquePixels": 1178,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          4,
+          72,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-a/master.png",
+      "registrationOffset": [
+        -0.14831460674157304,
+        -0.9887640449438202
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "eced98dfe665fd7e86fb988d4a3ebaada788f6ff352334b35c89b1cebb80d9d8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21007,
+        "nearOpaquePixels": 4888,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          9,
+          145,
+          105
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/attack/master.png",
+      "registrationOffset": [
+        0.6426966292134831,
+        -0.7910112359550562
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6ed99966dcd7822e5e9af89c454db5b4d0424c2225b97676b148e5392ca1c706",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5062,
+        "nearOpaquePixels": 1323,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          4,
+          73,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/attack/master.png",
+      "registrationOffset": [
+        0.6426966292134831,
+        -0.7910112359550562
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6ed99966dcd7822e5e9af89c454db5b4d0424c2225b97676b148e5392ca1c706",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20467,
+        "nearOpaquePixels": 5408,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          8,
+          145,
+          105
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-b/master.png",
+      "registrationOffset": [
+        -1.2853932584269663,
+        -0.8898876404494382
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "dda46c45539872acf1454ca45f1d348aaea85306d86bcab4967b01638d6fdc96",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5221,
+        "nearOpaquePixels": 1167,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          5,
+          70,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/walk-b/master.png",
+      "registrationOffset": [
+        -1.2853932584269663,
+        -0.8898876404494382
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "dda46c45539872acf1454ca45f1d348aaea85306d86bcab4967b01638d6fdc96",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21079,
+        "nearOpaquePixels": 4846,
+        "edgeMax": 0,
+        "visibleBounds": [
+          47,
+          9,
+          140,
+          105
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

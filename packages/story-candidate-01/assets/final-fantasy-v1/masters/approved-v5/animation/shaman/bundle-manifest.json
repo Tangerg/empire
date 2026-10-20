@@ -1,0 +1,140 @@
+{
+  "asset": "C01-UNIT-SHAMAN",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only; no current binding, no consumer invented.",
+  "status": "Native quartet complete; coordinator final sequence/export review pending",
+  "generationTool": "built-in image_gen",
+  "transparentBackground": true,
+  "masterPolicy": "Every selected native/raw/master has identical bytes. No painting, recoloring, resizing, cropping, background removal or alpha cleanup. Original source rectangle crops and technical whole-canvas fixed-scale/black-white review composites are separate artifacts only.",
+  "sharedScale": 0.04943820224719101,
+  "bodyReferenceSourcePixels": 890,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1536,
+    1024
+  ],
+  "identityContract": "Original row3 olive-skinned pointy-eared mature humanoid, tied black locks/orange beads, ivory fur shoulders, rusty brown coat, blue-gray neck medallion, dark belt and brass buckle, dark trousers and brown boots. Exactly one rope-laced tan-hide drum at screen-left and one forked wooden staff at screen-right with purple bindings and blue/brown tassels. Bold outlines and broad matte chunky planes.",
+  "semanticContract": "Keep canonical idle/walk-a/attack/walk-b order and original equipment identity. Opposite walk contacts and a physical palm-down drum-strike contact, without new spell FX or gameplay meaning. Catalog-only; no binding created.",
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/registration-evidence.json",
+  "idleApproval": "Parent approved44/890 and support[731,982] at2026-10-20 00:11UTC after reviewing actual alpha composites and common-scale family comparison. Main scalp crown used; high hair knot retained and excluded as adornment.",
+  "selectedAttempts": {
+    "idle": "attempt-01",
+    "walk-a": "attempt-01",
+    "attack": "attempt-01",
+    "walk-b": "attempt-03"
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/tool-request.json",
+      "toolResult": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/tool-result.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "6e307d3a2f0ed0a2ef984046afc18ae74517ec88e646bfdd557f855631ff5a4e",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/idle/qa-black.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceFootAnchorSuggested": [
+        731,
+        982
+      ],
+      "sha256": "5087a96abe12deb475766b12399d9db2847aaff1e23257ea5df8c5f99e2e384c",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-67b57f8a-ac40-44cd-98c0-e80ba2e1f21c.png",
+      "selectedAttempt": "attempt-01",
+      "review": "Both boots planted, drum-side hand resting near drumhead, staff upright. Source identity and equipment retained."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/tool-request.json",
+      "toolResult": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/tool-result.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "860bd7cb728213653704e6836dff914ac611b0b835e1d86f390f3a96a3babc9b",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-a/qa-black.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceFootAnchorSuggested": [
+        734,
+        1002
+      ],
+      "sha256": "eced98dfe665fd7e86fb988d4a3ebaada788f6ff352334b35c89b1cebb80d9d8",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7be81ee8-fd00-44c2-8957-940703c84f15.png",
+      "selectedAttempt": "attempt-01",
+      "review": "Far/staff-side screen-right heel advances with toe raised and sole visible; near/drum-side screen-left boot trails with heel raised and toe low. Drum/staff retained on original sides."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/tool-request.json",
+      "toolResult": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/tool-result.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "3df4320428d21e7a0438aec57de78598adcce02c52347192207ecf4f50890ae8",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/attack/qa-black.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceFootAnchorSuggested": [
+        718,
+        998
+      ],
+      "sha256": "6ed99966dcd7822e5e9af89c454db5b4d0424c2225b97676b148e5392ca1c706",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a1ccb2f4-6b03-4fdb-9dfb-0d17a4983f06.png",
+      "selectedAttempt": "attempt-01",
+      "review": "Palm-down drum-strike contact: screen-left elbow raised, open palm at drumhead, torso leans into drum with feet braced. Staff held by original screen-right hand. Tool returned contact rather than requested separated wind-up; actual contact action is reported honestly. No spell effect or gameplay meaning introduced."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/request.json",
+      "exactToolRequest": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/tool-request.json",
+      "toolResult": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/tool-result.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "d1ed73f7815cce49f45783c2789f65a7734ea053e990ddfb357d6c8ef348b1a1",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/alpha-qa.json",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/qa-white.png",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/qa-black.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceFootAnchorSuggested": [
+        757,
+        1000
+      ],
+      "sha256": "dda46c45539872acf1454ca45f1d348aaea85306d86bcab4967b01638d6fdc96",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ca461269-c560-4e4f-adb2-4972068a08a2.png",
+      "selectedAttempt": "attempt-03",
+      "review": "Near/drum-side screen-left heel advances into foreground with sole visible; far/staff-side screen-right boot trails toe-down and heel raised. This reverses walk-a. A costume-only imagegen edit restores dark trousers over an accidental bare knee."
+    }
+  },
+  "rejectedAttempts": {
+    "walk-b/attempt-01": "Repeated walk-a contact; full successful native result preserved.",
+    "walk-b/attempt-02": "Correct opposite contact but accidental bare olive knee; full native result preserved, corrected through imagegen costume-only attempt03."
+  },
+  "toolRefusals": []
+}

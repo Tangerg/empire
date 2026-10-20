@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen__imagegen",
+  "useCase": "precise-object-edit",
+  "pose": "walk-b",
+  "attempt": 3,
+  "reason": "Costume-only correction of successful opposite walking pose: restore dark trousers over accidental bare knee.",
+  "promptSha256": "d1ed73f7815cce49f45783c2789f65a7734ea053e990ddfb357d6c8ef348b1a1",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/walk-b/attempt-02/master.png",
+      "role": "edit target, correct opposite walking contacts",
+      "sha256": "50e3b93fd0105bb449bdb58085406b571c85b7f68d66240de3b4120d97346b66"
+    }
+  ]
+}

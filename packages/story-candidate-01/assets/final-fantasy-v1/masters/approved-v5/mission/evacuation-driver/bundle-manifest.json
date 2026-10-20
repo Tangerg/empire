@@ -1,0 +1,109 @@
+{
+  "topicId": "C01-MISSION-EVACUATION-DRIVER",
+  "assetId": "C01-FFV1-MISSION-EVACUATION-DRIVER",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every selected raw/master/native output is byte-identical. No alpha cleanup, painting, recoloring, cropping, per-pose scaling or source padding. QA/export composites are separate only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "classification": "catalog-only",
+  "semanticContract": "Exact idle/walk-a/carry-or-work/walk-b order. Existing source repeats idle/work and repeats both walk contacts. Stable one-rope idle identity preserved; new third slot checks the rope and directs, walking contacts are genuinely opposite. No combat action, horse or vehicle is introduced.",
+  "sourceAnomalyResolution": "Canonical y940 row crop clips cap crown, so an additional exact y900 complete-idle crop of the original board supplies the full cap identity. Legacy row is retained pixel-exact. Repeated source contacts replaced with distinct walking phases.",
+  "palettePolicy": "Preserve warm-tan skin, gray hair/brows, brown cap, blue-gray coat, beige trim, dark olive-charcoal trousers, brown boots/rope/strap/belt/pouch and simple brass buckle. No faction recolor.",
+  "sharedScale": 0.04636459430979979,
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyReferenceSourcePixels": 949,
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "e2292962b275e2e5c0dc845c41a9aa9d95e7a0bc80d15ddcd3c744b3456109d3",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        802.75,
+        971
+      ],
+      "review": "Older warm-tan gray-haired clean-shaven man, soft brown cap, blue-gray shearling-trimmed coat, diagonal strap, belt and screen-right pouch. Same screen-left hand holds one coiled rope low; empty screen-right palm directs. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "97956cc1a1be2ee0fd59d3225810f529cbfc59dfe51bc7d67fe67ce2f18b5ad7",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        804.75,
+        965
+      ],
+      "review": "Forward screen-right boot heel-first, toe tilted upward and dark underside visible. Screen-left boot remains flat and supporting. Rope swings back slightly in the same near/screen-left hand; far/screen-right palm directs. No mirroring."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "f863628ea3b361d4ffdafef146a074157c4b40ea9fd6cc7ee98c675aa1eb9f82",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        805.0,
+        965
+      ],
+      "review": "Distinct practical rope check: near/screen-left hand raises the same coil to lower chest height; gaze turns down-left toward it. Far/screen-right arm keeps an empty open directing hand extended. Both boots planted. The first swapped-hands result was rejected and retained separately."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "5c54fa61692784e9a11f7f689007953c339c5a354182f86c4dac95dd397ef641",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        812.75,
+        962
+      ],
+      "review": "Opposite walking contacts: screen-right boot flat and supporting; screen-left knee bent, heel raised and toe pointing downward behind. Rope swings slightly forward in its same near hand; empty far hand directs. Same body orientation, not mirrored."
+    }
+  },
+  "idleScaleReview": "review-approval.json",
+  "rejections": "rejected-attempts.json"
+}

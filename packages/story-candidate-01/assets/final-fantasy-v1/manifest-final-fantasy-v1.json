@@ -1780,13 +1780,13 @@
       "topicId": "C01-UNIT-SHAMAN",
       "label": "萨满",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-shaman.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-shaman.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1795,13 +1795,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        44.13932584269663,
+        52.54831460674157
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-SILVER-LONGBOW",
@@ -2412,13 +2413,13 @@
       "topicId": "C01-MISSION-EVACUATION-DRIVER",
       "label": "撤离车夫",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-evacuation-driver.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-evacuation-driver.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2427,13 +2428,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        45.21917808219178,
+        49.020021074815595
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-FIELD-MESSENGER",

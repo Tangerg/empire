@@ -43,6 +43,29 @@ describe('candidate-01 campaign UI', () => {
     controller.dispose();
   });
 
+  it.each([true, false])('resolves only explicit roster actor bindings (bound=%s)', (bound) => {
+    const adapter = candidate01CampaignAdapter();
+    adapter.definition = structuredClone(adapter.definition);
+    adapter.definition.initial!.roster!.push({ id: 'unbound-soldier', unitType: 'c01.swordsman', owner: 1 });
+    if (!bound) for (const node of adapter.definition.nodes) {
+      if (node.type === 'battle' && node.rosterBindings) node.rosterBindings = node.rosterBindings.filter((binding) => binding.campaignUnit !== 'torren');
+    }
+    const definitionBefore = JSON.stringify(adapter.definition);
+    const controller = new StoryCampaignController(adapter, null, () => {}, TEST_OPTIONS);
+    for (let index = 0; index < 7; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
+    click(controller.root, '[data-choice="steady-advance"]');
+    const rows = controller.root.querySelectorAll('.campaign-unit');
+    expect(rows[1].innerHTML.includes('char-torren-01')).toBe(bound);
+    expect(rows[2].innerHTML).not.toContain('char-torren-01');
+    expect(rows[rows.length - 1].innerHTML).toContain('unit-swordsman@2x.png');
+    expect(rows[rows.length - 1].innerHTML).not.toContain('char-torren-01');
+    expect(JSON.stringify(adapter.definition)).toBe(definitionBefore);
+    const saved = JSON.parse(localStorage.getItem(localStorage.key(0)!)!);
+    expect(saved.state.roster.torren.unitType).toBe('c01.swordsman');
+    expect(saved.state.roster['unbound-soldier'].unitType).toBe('c01.swordsman');
+    controller.dispose();
+  });
+
   it('enters the real battle controller and can return to campaign staging', () => {
     const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_OPTIONS);
     for (let index = 0; index < 4; index++) click(controller.root, '[data-campaign-act="nextBeat"]');

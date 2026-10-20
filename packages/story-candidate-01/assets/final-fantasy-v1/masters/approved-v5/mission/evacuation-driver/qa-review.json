@@ -1,0 +1,36 @@
+{
+  "status": "Native source quartet technical and visual review passed; parent integration pending",
+  "nativeRGBA": true,
+  "rawMasterNativeByteIdentical": true,
+  "allNativeDimensions": [
+    1585,
+    992
+  ],
+  "nativePerimeterMaxAlphaByPose": {
+    "idle": 0,
+    "walk-a": 0,
+    "carry-or-work": 0,
+    "walk-b": 0
+  },
+  "allExteriorBeyond7pxAlphaAtMost1": true,
+  "blackWhiteSceneReview": "Reviewed native montages and fixed44 three-background comparison. No visible rectangular haze, cast shadow, cutoff or detached equipment.",
+  "identityReview": "Gray-haired clean-shaven elder and original coat/palette/equipment retained across four poses. Rope stays in near screen-left hand; far screen-right hand stays open and empty.",
+  "scaleReview": "Parent accepted idle shared44/949. Same whole-canvas scale used for all poses; no per-pose fitting. Whole-canvas translations from measured soles only.",
+  "maximumRegistrationTranslationLogicalPixels": 0.4636459430979979,
+  "sharedScale": 0.04636459430979979,
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "oppositeContacts": {
+    "walk-a": "Screen-right heel-first and toe-up; screen-left flat supporting",
+    "walk-b": "Screen-right flat supporting; screen-left heel-up and toe-down behind"
+  },
+  "workAction": "Lift existing rope in original hand for inspection while continuing to direct with empty other hand",
+  "sourcePixelExactVerification": true,
+  "rejectedAttempts": 1,
+  "consumerCaveat": "Catalog-only: source quartet does not create actor bindings or animation reachability.",
+  "repoChanges": false,
+  "runtimeTests": "Not run: worker is read-only to repository; parent is sole integrator.",
+  "checks": "Native/source hashes, alpha boundary, exterior alpha, exact references/prompts, equal dimensions, source crop equality, common-scale full-canvas fit, boot measurements and black/white/scene visual comparisons."
+}
