@@ -1,0 +1,141 @@
+{
+  "topicId": "c03-equip-4566788b",
+  "assetId": "C03-ACV1-equip-4566788b",
+  "label": "军医主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b201b7fc-cfa8-49a7-9155-ff91afdaef4a.png",
+  "sha256": "66efd9bb6830750ecfb0cd1c03486e8170b32bfe72ff7efbb5914b66cb7683e5",
+  "rawMasterByteIdentical": true,
+  "promptFile": "prompt.txt",
+  "generationAttempts": 1,
+  "boundedCorrectionUsed": false,
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    }
+  ],
+  "referenceDelivery": "The full atlas and approved broad-matte reference were visually inspected to design the following textual prompts. These are new generations, not edits; neither reference image was passed as a tool argument.",
+  "identityReconstruction": "Canonical support/healing role and ART-DIRECTION explicitly require a medicine box. Full atlas medical bandage/jar vocabulary is retained. Legacy preserved slot shows a siege tower, so this is a role reconstruction rather than exact legacy-slot recovery.",
+  "identityEvidence": [
+    "docs/art-rebuild-20261019/canonical-topic-manifest.json",
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "canonicalEntry": {
+    "assetId": "C03-ACV1-equip-4566788b",
+    "topicId": "c03-equip-4566788b",
+    "label": "军医主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-4566788b.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ],
+    "campaign": "story-candidate-03",
+    "manifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4566788b.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": []
+  },
+  "currentManifestEntry": {
+    "assetId": "C03-ACV1-equip-4566788b",
+    "topicId": "c03-equip-4566788b",
+    "label": "军医主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-4566788b.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "reservationEvidence": {
+    "noApprovedV5StageAtSelection": true,
+    "priorRegistryEntry": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4566788b/master.png",
+      "sha256": "43e240a068b86935daf60249d91c65978ffcec7dc46d83c0d928d975e350ad4d"
+    },
+    "priorRegistryDoesNotCountAsApprovedV5": true
+  },
+  "legacySlot": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4566788b/original-evidence.png",
+    "sha256": "2678080dfffc2af5ada3d75f5ed8318526bb8488421a16af50753b4ec378aa8b",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-04/c03-equip-4566788b-legacy-native.png"
+  },
+  "beforeRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4566788b.png",
+    "sha256": "97cfb4cd8ba373578b527e807ec673b91219ea8a545a415ae6acbe53b12fe432",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-04/c03-equip-4566788b-before-runtime.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 62,
+    "coreBoundingBox": [
+      87,
+      114,
+      1194,
+      1142
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "canonicalNativeContract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "padding": 2
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      6,
+      7,
+      43,
+      41
+    ]
+  },
+  "postprocessing": "None. Raw/master are byte-identical native generation. Review exports use the existing whole-canvas contain only; no crop, repaint, recolor, alpha surgery or pixel cleanup.",
+  "registered": false,
+  "runtimeIntegrated": false,
+  "liveGameVerified": false
+}

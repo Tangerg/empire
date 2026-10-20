@@ -62,6 +62,10 @@ CHINA_TOPICS = {
     'c03-terrain-980abbed': 'variants',
     'c03-terrain-b499c3bf': 'variants',
     'c03-terrain-c053bd0c': 'nesw-16',
+    'c03-terrain-70b193fa': 'nesw-16',
+    'c03-terrain-44bffd59': 'nesw-16',
+    'c03-terrain-769e91a5': 'nesw-16',
+    'c03-terrain-b7e36bf1': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of

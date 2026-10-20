@@ -1,0 +1,138 @@
+{
+  "topicId": "c03-equip-4377f3e4",
+  "assetId": "C03-ACV1-equip-4377f3e4",
+  "label": "筑城守备主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e2d1db98-c05d-4b7a-9574-eed205d08c43.png",
+  "sha256": "22a318297d4d30f56203d9559fcd3275010c1e81271449eb9503d14fdae738fd",
+  "rawMasterByteIdentical": true,
+  "promptFile": "prompt.txt",
+  "generationAttempts": 1,
+  "boundedCorrectionUsed": false,
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    }
+  ],
+  "referenceDelivery": "The full atlas and approved broad-matte reference were visually inspected to design the following textual prompts. These are new generations, not edits; neither reference image was passed as a tool argument.",
+  "identityReconstruction": "Canonical engineering role reconstructed using full-atlas tool-crate and masonry vocabulary. The legacy runtime contains grain sacks, not construction equipment; this is explicit semantic reconstruction rather than exact legacy-slot recovery.",
+  "identityEvidence": [
+    "docs/art-rebuild-20261019/canonical-topic-manifest.json",
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "canonicalEntry": {
+    "assetId": "C03-ACV1-equip-4377f3e4",
+    "topicId": "c03-equip-4377f3e4",
+    "label": "筑城守备主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-4377f3e4.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ],
+    "campaign": "story-candidate-03",
+    "manifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4377f3e4.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": []
+  },
+  "currentManifestEntry": {
+    "assetId": "C03-ACV1-equip-4377f3e4",
+    "topicId": "c03-equip-4377f3e4",
+    "label": "筑城守备主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-4377f3e4.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "reservationEvidence": {
+    "noApprovedV5StageAtSelection": true,
+    "priorRegistryEntry": null,
+    "priorRegistryDoesNotCountAsApprovedV5": true
+  },
+  "legacySlot": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4377f3e4.png",
+    "sha256": "ac855011f2aeafb54c30fb103ce2f06122936d99b63e2c6d2aa7d4a44124c200",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-04/c03-equip-4377f3e4-legacy-native.png"
+  },
+  "beforeRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4377f3e4.png",
+    "sha256": "ac855011f2aeafb54c30fb103ce2f06122936d99b63e2c6d2aa7d4a44124c200",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-04/c03-equip-4377f3e4-before-runtime.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 35,
+    "coreBoundingBox": [
+      105,
+      93,
+      1180,
+      1193
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "canonicalNativeContract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "padding": 2
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      6,
+      6,
+      43,
+      43
+    ]
+  },
+  "postprocessing": "None. Raw/master are byte-identical native generation. Review exports use the existing whole-canvas contain only; no crop, repaint, recolor, alpha surgery or pixel cleanup.",
+  "registered": false,
+  "runtimeIntegrated": false,
+  "liveGameVerified": false
+}

@@ -1,0 +1,30 @@
+{
+  "visuallyInspectedReferences": [
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png"
+  ],
+  "referenceDelivery": "The full atlas and approved broad-matte reference were visually inspected to design the following textual prompts. These are new generations, not edits; neither reference image was passed as a tool argument.",
+  "shared": "Use case: stylized-concept. Create ONE complete ancient Chinese tactical equipment inventory icon, inspired by the exaggerated readability of Legends of Kingdom Rush, not copying a specific asset. Thick dark contour, chunky oversized shapes, huge calm matte color planes and only TWO main light/shadow tones per material. Native destination 48x48, so simplify aggressively; clear silhouette before ornament. Oblique three-quarter overhead game view. One compact group centered in a square canvas with all objects complete, about 78 percent fill and at least 8 percent clear margin on every side. Genuine transparent alpha outside the objects and through all gaps. No background, ground, cast shadow, checkerboard, text, labels, UI frame or characters. Avoid stipple, mottling, mosaic, scratches, grain, glossy rendering, gradients, tiny ornamental lines, glitter and metal microfacets. No modern or Japanese equipment. ",
+  "assets": [
+    {
+      "topicId": "c03-equip-4377f3e4",
+      "subject": "Subject: 筑城守备主装备组, ancient Chinese fortification-building garrison tool kit. ONE squat ochre wooden open toolbox with a simple thick arched carrying handle and ONE oversized broad triangular dark-iron mason's trowel resting diagonally across it. TWO chunky rectangular pale-gray masonry blocks lie together beside its lower corner. A compact portable engineering kit, not a complete wall or scene. Four large calm wood panels, smooth stone faces, no woodgrain or stone cracks, no spare tools, no nails or decorative fittings. Emphasize sturdy trowel blade and rectangular building blocks.",
+      "identity": "Canonical engineering role reconstructed using full-atlas tool-crate and masonry vocabulary. The legacy runtime contains grain sacks, not construction equipment; this is explicit semantic reconstruction rather than exact legacy-slot recovery."
+    },
+    {
+      "topicId": "c03-equip-4566788b",
+      "subject": "Subject: 军医主装备组, ancient Chinese field medic's equipment. ONE squat closed dark-brown wooden medicine box with an oversized simple arched handle and dull-brass latch, ONE large warm-ivory rolled bandage at its front with a short loose cloth tail, and ONE small round muted-jade ceramic medicine jar with a plain cork stopper beside it. Only these three objects in a compact triangular group. Large simple shapes, calm smooth broad surfaces, no insignia, no cross symbol, no lettering, no herbs, no tools, no modern medicine packaging. The rolled cloth must be unmistakably a broad bandage, not a scroll.",
+      "identity": "Canonical support/healing role and ART-DIRECTION explicitly require a medicine box. Full atlas medical bandage/jar vocabulary is retained. Legacy preserved slot shows a siege tower, so this is a role reconstruction rather than exact legacy-slot recovery."
+    },
+    {
+      "topicId": "c03-equip-4619e546",
+      "subject": "Subject: 宁朝禁军主装备组, ancient Chinese imperial guard equipment. ONE empty broad-shouldered dark-iron lamellar cuirass with indigo cloth shoulder backing and a simple dull-gold collar edge, with ONE straight short display-length spear leaning diagonally behind it. The cuirass has only FOUR broad horizontal armor bands, each divided into TWO large plates, no tiny scales. Spear has a wide leaf-shaped iron head and ochre shaft, with no tassel. Compact heavy ceremonial guard silhouette, restrained indigo and gold as faction accents. No body, mannequin, helmet, face, animal emblem, filigree or lettering. No Japanese samurai construction.",
+      "identity": "Canonical infantry guard role interpreted through full-atlas Chinese cuirass and spear vocabulary and ART-DIRECTION Ning-army indigo/restrained-gold palette. Legacy preserved slot is a straw-hatted peasant with fork, so this is explicit canonical role reconstruction, not exact original-slot recovery."
+    },
+    {
+      "topicId": "c03-equip-4c02a584",
+      "subject": "Subject: 刀盾卒主装备组, ancient Chinese dao-and-shield infantry equipment. ONE thick round ochre wooden shield with a heavy plain dark-iron rim and ONE oversized smooth iron center boss. Exactly THREE broad wood panels, no grain. ONE short wide gently curved Chinese dao sword runs diagonally behind the shield, exposing its broad matte iron blade at upper right and its simple dark-red wrapped grip at lower left. Plain small round guard, no tassel, no jewels, no ornate fittings. Clearly a paired curved saber and round shield, not a spear, not a straight sword, not a European kite shield. Two broad tones per surface and a bold readable outline.",
+      "identity": "Canonical sword-and-shield infantry role uses the full atlas Chinese dao and round wooden shield vocabulary. The legacy preserved slot contains a lone straight sword, so the complete paired kit is a semantic reconstruction and not exact slot recovery."
+    }
+  ]
+}
