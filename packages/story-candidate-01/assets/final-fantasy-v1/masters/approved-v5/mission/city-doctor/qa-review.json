@@ -1,0 +1,48 @@
+{
+  "status": "Native source quartet passes identity, geometry, hand/prop, pose semantics and three-background visual QA; awaiting coordinator integration",
+  "topicId": "C01-MISSION-CITY-DOCTOR",
+  "scale": 0.04856512141280353,
+  "bodyReferenceSourcePixels": 906,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "originalRowAndIdlePixelExactToBoard": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "Idle1, walk-a0, carry-or-work0, walk-b0. Every perimeter has zero pixels alpha>1.",
+  "exteriorHazeGate": "All4 native files have zero alpha>1 pixels more than7pixels from the alpha>127 silhouette. Visual black/white/scene-tone composites show no haze, ground shadow or residue.",
+  "sourceCanvas": [
+    1585,
+    992
+  ],
+  "paddingTolerance": 0,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 0.8863134657836644,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Warm tan-skinned adult woman doctor with short black bob, cream open coat over blue-gray dress, brown satchel with cream rolled cloth at screen-left hip, brown boots. Screen-left hand grips satchel strap; screen-right hand holds one amber corked bottle. Both boots planted.",
+    "walk-a": "Screen-right boot forward heel-first with toe raised and broad underside visible; screen-left boot flat behind. Same bottle held securely screen-right, satchel/strap screen-left. Head direction unchanged.",
+    "carry-or-work": "Meaningful noncombat medicine-bottle inspection. Screen-right elbow raises the same single amber bottle to eye level; tilted head and attentive eyes inspect it. Screen-left hand retains satchel strap. Both boots planted; no duplicate bottle, pouring, new patient or gear.",
+    "walk-b": "Opposite contacts: screen-right boot flat and weight-bearing, screen-left rear leg bent with heel raised and toe pointing downward. Satchel swings forward slightly; bottle remains in the same hand. Same face direction, not mirrored."
+  },
+  "generationAttempts": 4,
+  "rejections": [],
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only; zero domain actors and scene placements. No deployed doctor binding.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-shared-scale-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png"
+  ],
+  "logicalReviewExportMethod": "Same exact full-canvas44/906 transform for every pose,4x supersampled for antialias review, then common downsample to104x64. No silhouette fitting.",
+  "scenePreviewMeaning": "Scene-tone green comparison background is technical QA only; no authored doctor placement or invented game consumer."
+}

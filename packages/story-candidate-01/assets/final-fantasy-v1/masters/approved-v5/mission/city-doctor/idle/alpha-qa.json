@@ -66,5 +66,9 @@
   "sha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
   "rawMatchesMaster": true,
   "nativeAlphaUntouched": true,
-  "bootMeasurement": "Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Only translate the entire canvas."
+  "bootMeasurement": "Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Only translate the entire canvas.",
+  "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+    "pixelCountAlphaGreaterThan1": 0,
+    "maxAlpha": 1
+  }
 }

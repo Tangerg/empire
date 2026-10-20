@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-b/master.png"
+    },
+    "scale": 0.04856512141280353,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      808.5,
+      957
+    ],
+    "sourceFeet": {
+      "idle": [
+        808.5,
+        957
+      ],
+      "walk-a": [
+        795.75,
+        956
+      ],
+      "carry-or-work": [
+        801.0,
+        953
+      ],
+      "walk-b": [
+        790.25,
+        948
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.619205298013245,
+        0.04856512141280353
+      ],
+      "carry-or-work": [
+        0.36423841059602646,
+        0.19426048565121412
+      ],
+      "walk-b": [
+        0.8863134657836644,
+        0.4370860927152318
+      ]
+    },
+    "registrationLimit": 2,
+    "canvasPaddingTolerance": 0,
+    "meaning": "Original female city doctor, one bottle and satchel, opposite steps and bottle inspection. Catalog-only, shared scale/full canvas."
+  },
+  "authoredCanvas": [
+    1585,
+    992
+  ],
+  "logicalPivot": [
+    47.264900662251655,
+    50.47682119205298
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5719,
+        "nearOpaquePixels": 796,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          6,
+          62,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22966,
+        "nearOpaquePixels": 3251,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          13,
+          124,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-a/master.png",
+      "registrationOffset": [
+        0.619205298013245,
+        0.04856512141280353
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cb2766704461a4654cb8508a7e6430a173ba8c0771e54ce8a2ff968efd69dec2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5701,
+        "nearOpaquePixels": 808,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          6,
+          63,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-a/master.png",
+      "registrationOffset": [
+        0.619205298013245,
+        0.04856512141280353
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cb2766704461a4654cb8508a7e6430a173ba8c0771e54ce8a2ff968efd69dec2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22897,
+        "nearOpaquePixels": 3315,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          12,
+          126,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/carry-or-work/master.png",
+      "registrationOffset": [
+        0.36423841059602646,
+        0.19426048565121412
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8740df10b6c44baf7a27654d0645ccfca59bb3c2bbcfbde892fb66949074737e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5695,
+        "nearOpaquePixels": 801,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          7,
+          61,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/carry-or-work/master.png",
+      "registrationOffset": [
+        0.36423841059602646,
+        0.19426048565121412
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8740df10b6c44baf7a27654d0645ccfca59bb3c2bbcfbde892fb66949074737e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22894,
+        "nearOpaquePixels": 3284,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          14,
+          122,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-b/master.png",
+      "registrationOffset": [
+        0.8863134657836644,
+        0.4370860927152318
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f13ede3d5d77eebfe9dcf9b2be3144e996ad2be18c80898e80e35f0d730b6a4a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5756,
+        "nearOpaquePixels": 755,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          7,
+          63,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-b/master.png",
+      "registrationOffset": [
+        0.8863134657836644,
+        0.4370860927152318
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f13ede3d5d77eebfe9dcf9b2be3144e996ad2be18c80898e80e35f0d730b6a4a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23122,
+        "nearOpaquePixels": 3095,
+        "edgeMax": 0,
+        "visibleBounds": [
+          64,
+          14,
+          126,
+          101
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

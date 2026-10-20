@@ -1,5 +1,5 @@
 from pathlib import Path
-from PIL import Image,ImageDraw
+from PIL import Image,ImageDraw,ImageFilter
 import numpy as np,json,hashlib
 B=Path(__file__).parent; ORDER=['idle','walk-a','carry-or-work','walk-b'];POSES=[p for p in ORDER if (B/p/'master.png').exists()]
 SCALE=44/906;CANONICAL=[808.5,957];ORIGIN=[8,4];FRAME=[104,64];COLORS={'black':(16,16,16),'white':(255,255,255),'scene':(114,128,86)}
@@ -12,6 +12,7 @@ for p,im in ims.items():
   yy,xx=np.where(a[800:,x0:x1]>127);bot=int(yy.max()+800);yy,xx=np.where(a[bot-3:bot+1,x0:x1]>127);feet.append({'xRange':[x0,x1],'bottom':bot,'bottom4RowsBounds':[int(xx.min()+x0),bot-3,int(xx.max()+x0+1),bot+1],'soleCenterX':float((xx.min()+xx.max())/2+x0)})
  foot=[sum(f['soleCenterX'] for f in feet)/2,max(f['bottom'] for f in feet)];delta=[(CANONICAL[j]-foot[j])*SCALE for j in range(2)];bounds=bbox(127);vbox=[ORIGIN[j%2]+delta[j%2]+bounds[j]*SCALE for j in range(4)];full=[ORIGIN[0]+delta[0],ORIGIN[1]+delta[1],ORIGIN[0]+delta[0]+common[0]*SCALE,ORIGIN[1]+delta[1]+common[1]*SCALE]
  q={'nativeSize':list(im.size),'nativeMode':im.mode,'bboxAlphaNonzero':bbox(0),'bboxAlphaGreaterThan1':bbox(1),'bboxAlphaGreaterThan127':bounds,'alphaZeroFraction':float((a==0).mean()),'alphaRange':[int(a.min()),int(a.max())],'perimeterMaxAlpha':int(perim.max()),'perimeterCountAlphaGreaterThan1':int((perim>1).sum()),'measuredBootSoleBands':feet,'sourceFoot':foot,'sha256':sha(d/'master.png'),'rawMatchesMaster':sha(d/'raw.png')==sha(d/'master.png'),'nativeAlphaUntouched':True,'bootMeasurement':'Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Only translate the entire canvas.'};(d/'alpha-qa.json').write_text(json.dumps(q,indent=2)+'\n')
+ outside=np.array(Image.fromarray((a>127).astype('uint8')*255).filter(ImageFilter.MaxFilter(15)))==0;q['exteriorBeyond7PixelsFromOpaqueSilhouette']={'pixelCountAlphaGreaterThan1':int(((a>1)&outside).sum()),'maxAlpha':int(a[outside].max())};(d/'alpha-qa.json').write_text(json.dumps(q,indent=2)+'\n')
  rows[p]={'nativeSize':list(im.size),'padRight':common[0]-im.width,'padBottom':common[1]-im.height,'measuredBootSoleBands':feet,'sourceSupportAnchor':foot,'registrationOffsetLogical':delta,'nativeVisibleBoundsAlphaGreaterThan127':bounds,'nativeAllNonzeroAlphaBounds':q['bboxAlphaNonzero'],'proposedLogicalVisibleBounds':vbox,'proposedLogicalFullCanvasBounds':full,'wholeCanvasFitsProposedFrame':full[0]>=0 and full[1]>=0 and full[2]<=FRAME[0] and full[3]<=FRAME[1],'perimeterGate':{'maxNativePerimeterAlpha':q['perimeterMaxAlpha'],'pixelsWithPerimeterAlphaGreaterThan1':q['perimeterCountAlphaGreaterThan1'],'passesNativeSilhouettePerimeterGate':q['perimeterMaxAlpha']<=1}}
  for name,col in COLORS.items():
   bg=Image.new('RGBA',im.size,col+(255,));bg.alpha_composite(im);bg.convert('RGB').save(d/f'qa-{name}.png')

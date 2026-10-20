@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 321,
+    "formalBound": 322,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 38,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 5,
+      "mission-unit": 6,
       "narrative-static": 7,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 321,
+    "rawPreservedTopics": 325,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2035,8 +2035,10 @@
       "category": "combat-unit",
       "label": "萨满",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/shaman/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2313,8 +2315,10 @@
       "category": "combat-unit",
       "label": "飞龙骑手",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2327,8 +2331,10 @@
       "category": "mission-unit",
       "label": "面包师",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/baker/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2417,13 +2423,23 @@
       "category": "mission-unit",
       "label": "城市医师",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/city-doctor/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-city-doctor.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-city-doctor.png",
+      "stageEvidence": {
+        "raw": "four native transparent female doctor poses, cream coat/blue dress, one amber bottle and medical satchel preserved",
+        "export": "one shared44/906 scale, measured feet,same native1585x992canvas without padding; native quartet and actual exported frames reviewed",
+        "runtimeBinding": "canonical and HD resolver; catalog-only; no current domain actor or authored scenery consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-CONTROLLED-SOLDIER",

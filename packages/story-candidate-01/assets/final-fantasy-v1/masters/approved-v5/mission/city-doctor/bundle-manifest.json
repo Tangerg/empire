@@ -1,0 +1,101 @@
+{
+  "topicId": "C01-MISSION-CITY-DOCTOR",
+  "assetId": "C01-FFV1-MISSION-CITY-DOCTOR",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every selected raw/master/native output is byte-identical. No alpha cleanup, painting, recoloring, cropping, per-pose scaling or source padding. QA/export composites are separate only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "classification": "catalog-only",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Zero current actors or scene placements. Carry-or-work is noncombat bottle inspection. Do not invent doctor actors or deployed doctor binding.",
+  "sourceAnomalyResolution": "Original work and fourth cells duplicate a second bottle; second and fourth cells repeat the same walking contact. Stable one-bottle idle identity retained throughout, work interprets bottle inspection, walking contacts genuinely opposite.",
+  "palettePolicy": "Preserve warm tan skin, short black bob, cream coat, muted blue-gray dress, brown trousers/boots/satchel, cream rolled cloth and small pouch, amber bottle, dull gold tiny pendant. No faction recolor.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        808.5,
+        957
+      ],
+      "review": "Warm tan-skinned adult woman doctor with short black bob, cream open coat over blue-gray dress, brown satchel with cream rolled cloth at screen-left hip, brown boots. Screen-left hand grips satchel strap; screen-right hand holds one amber corked bottle. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "cb2766704461a4654cb8508a7e6430a173ba8c0771e54ce8a2ff968efd69dec2",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        795.75,
+        956
+      ],
+      "review": "Screen-right boot forward heel-first with toe raised and broad underside visible; screen-left boot flat behind. Same bottle held securely screen-right, satchel/strap screen-left. Head direction unchanged."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "8740df10b6c44baf7a27654d0645ccfca59bb3c2bbcfbde892fb66949074737e",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        801.0,
+        953
+      ],
+      "review": "Meaningful noncombat medicine-bottle inspection. Screen-right elbow raises the same single amber bottle to eye level; tilted head and attentive eyes inspect it. Screen-left hand retains satchel strap. Both boots planted; no duplicate bottle, pouring, new patient or gear."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "f13ede3d5d77eebfe9dcf9b2be3144e996ad2be18c80898e80e35f0d730b6a4a",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        790.25,
+        948
+      ],
+      "review": "Opposite contacts: screen-right boot flat and weight-bearing, screen-left rear leg bent with heel raised and toe pointing downward. Satchel swings forward slightly; bottle remains in the same hand. Same face direction, not mirrored."
+    }
+  },
+  "idleScaleReview": "review-approval.json"
+}
