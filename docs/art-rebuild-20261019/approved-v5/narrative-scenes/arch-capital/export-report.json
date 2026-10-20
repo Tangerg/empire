@@ -1,0 +1,124 @@
+[
+  {
+    "topicId": "C01-ARCH-CAPITAL",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-capital/master.png",
+        "sha256": "a7c39ec3a838e705e857a5bc4ab3198bfdb444e740ca053f9e80b0d7dec186a5",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-resize",
+      "resampling": "LANCZOS"
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-capital.png",
+    "pixelSha256": "2a3c51913a633eac5983689599ab560cfd257e934855811f908c4d9d1702ce8e",
+    "size": [
+      256,
+      144
+    ]
+  },
+  {
+    "topicId": "C01-ARCH-CAPITAL",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-capital/master.png",
+        "sha256": "a7c39ec3a838e705e857a5bc4ab3198bfdb444e740ca053f9e80b0d7dec186a5",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-copy",
+      "resampling": null
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 6.5,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-capital.png",
+    "pixelSha256": "bd6b3a71b0847344ae5ecfcc3c571f00754f9321d245831c3005fbf077747b73",
+    "size": [
+      1664,
+      936
+    ]
+  }
+]

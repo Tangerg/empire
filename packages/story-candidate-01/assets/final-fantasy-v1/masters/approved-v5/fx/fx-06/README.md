@@ -4,7 +4,7 @@ Completed source staging: low-ring → rising-ring → sealed-ring → fading-fr
 
 ## Exact source and consumer audit
 
-`source-evidence.json` preserves the canonical topic audit, original four cell bounds, current metadata, binding and placement evidence. `reference/` includes original full board, full row, four full-grid cells, original/legacy-alpha inset crops, and legacy32/64 strips. Decoded-pixel checks confirm original snapshots. Actual current metadata anchor is[16,16], four frames at12fps, nonlooping. Four weapon consumers are c01.gray-oath, c01.oath-dispel, c01.inquisitor-flame and c01.oath-bolt. Board animateHit places effect at target-cell center and removes it after420ms. White burst and damage number remain separate runtime overlays.
+`source-evidence.json` preserves the canonical topic audit, original four cell bounds, current metadata, binding and placement evidence. `reference/` includes original full board, full row, four full-grid cells, original/legacy-alpha inset crops, and legacy32/64 strips. Decoded-pixel checks confirm the original board and cells against repository originals, and legacy32/64 strips against the original audit snapshot at79904dc748b7e7e6ede3d3ae1e8038b45741b0fd. The integrator updated runtime during final packaging; separate current-runtime-at-worker-audit snapshots exactly match the new QA strips, while the intentionally preserved legacy strips differ. Actual current metadata anchor is[16,16], four frames at12fps, nonlooping. Four weapon consumers are c01.gray-oath, c01.oath-dispel, c01.inquisitor-flame and c01.oath-bolt. Board animateHit places effect at target-cell center and removes it after420ms. White burst and damage number remain separate runtime overlays.
 
 ## Source/export contract
 
@@ -24,4 +24,4 @@ One common full-canvas export uses scale28/1254, origin[2,2], sourcePivot[627,62
 
 Start with qa/native-32-64-five-backgrounds.png, qa/qa-metrics.json, qa/apng-timing-verification.json and final-review.json. Full-size five-background composites are also preserved. Integration-catalog.json specifies exact phase paths/hashes and placement. The integrator must explicitly register this phase order and retain the existing consumer contract.
 
-No repository, runtime or Git changes were made by this worker. Runtime integration and live-game observation remain the integrator’s step.
+No repository, runtime or Git changes were made by this worker. The parent integrator confirmed runtime integration and decoded-pixel equality during packaging. Live-game observation is not asserted by this worker.

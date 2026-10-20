@@ -1,0 +1,124 @@
+[
+  {
+    "topicId": "C01-ARCH-VEINPORT",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-veinport/master.png",
+        "sha256": "502bbbf0c73a4d38fa67836a9257e204434166d55f8b735939e3cf9258fe2b9a",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-resize",
+      "resampling": "LANCZOS"
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-veinport.png",
+    "pixelSha256": "b5f00c60e5bff3ceb6a7f3243da05d5100e7318ad593e233d6a070fc09083658",
+    "size": [
+      256,
+      144
+    ]
+  },
+  {
+    "topicId": "C01-ARCH-VEINPORT",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-veinport/master.png",
+        "sha256": "502bbbf0c73a4d38fa67836a9257e204434166d55f8b735939e3cf9258fe2b9a",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-copy",
+      "resampling": null
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 6.5,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-veinport.png",
+    "pixelSha256": "752d378119c4ce839e3aafe9316c9074016d28c6732f731a3774416df62c0114",
+    "size": [
+      1664,
+      936
+    ]
+  }
+]

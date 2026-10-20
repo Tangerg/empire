@@ -1,0 +1,167 @@
+{
+  "topicId": "C01-PROP-EVACUATION-MAP",
+  "label": "多语言撤离路线图",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-EVACUATION-MAP",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "多语言撤离路线图",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-evacuation-map.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-EVACUATION-MAP",
+    "topicId": "C01-PROP-EVACUATION-MAP",
+    "label": "多语言撤离路线图",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-evacuation-map.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 2,
+    "slot": "BL",
+    "originalNarrativeIndexZeroBased": 79,
+    "fullCellCropBox": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-evacuation-map/full-cell.png",
+        "sourceCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "8ebf141d32e7067a2ad6f7166b07a14c7e2343870aa257f593cef2e1089c05c5",
+        "pixelSha256": "c1f06f1b35b67900fea7ea893062074ccc0ff1a29107cd3b0326d6ee1026b421",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-evacuation-map/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "6d5502a1a2317ec560bed9fd91171d8065c5f8b1b9a3a2279a9b28eda78d689c",
+        "pixelSha256": "fbd2604028296721f7f6b0ceb0a5824638cd48d71d50920c3a3cc30f1f3c4110",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-evacuation-map.png",
+    "sha256": "41936ffa7628c8103122a1fe9982437bbf8d71938dfd6aa4a6fd679efb181b92",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 8282,
+      "partialPixels": 8098,
+      "opaquePixels": 4,
+      "nearOpaquePixels": 83,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Unfurled folded parchment map with blue/green/red dashed arrow paths, circles/triangles/squares and a blue river.",
+    "semanticRequirements": "Multiple routes/communities must be distinguishable; canonical label says multilingual, but source uses shapes/colors and no literal languages. No geographic labels or real text are approved.",
+    "riskOrHold": "Symbol semantics and route topology require review; preserve arrows, river crossings and differentiated routes, not random decorative glyphs. Historical output has only4 fully opaque pixels.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        92,
+        92
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        92,
+        92
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

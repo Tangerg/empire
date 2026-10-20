@@ -12,8 +12,14 @@ referenceChecks=[]
 for i,s in enumerate(e['originalTopic']['slots']):
  p=R/f'reference/original-full-cell-f{i}.png';board.crop(s['fullGridBoundsXYXY']).save(p)
  referenceChecks.append({'phaseIndex':i,'boundsXYXY':s['fullGridBoundsXYXY'],'path':str(p.relative_to(R)),'decodedEqualOriginalBoardCell':Image.open(p).tobytes()==board.crop(s['fullGridBoundsXYXY']).tobytes(),'sha256':sha(p)})
-for name,path in [('original-board.png',orig),('legacy-runtime@1x.png',REPO/'packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-06.png'),('legacy-runtime@2x.png',REPO/'packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-06.png')]:
- p=R/'reference'/name;referenceChecks.append({'path':str(p.relative_to(R)),'repositorySource':str(path.relative_to(REPO)),'repositoryFileSha256':sha(path),'savedFileSha256':sha(p),'decodedPixelsExact':Image.open(p).tobytes()==Image.open(path).tobytes()})
+p=R/'reference/original-board.png'
+referenceChecks.append({'path':str(p.relative_to(R)),'repositorySource':str(orig.relative_to(REPO)),'repositoryFileSha256':sha(orig),'savedFileSha256':sha(p),'decodedPixelsExact':Image.open(p).tobytes()==Image.open(orig).tobytes()})
+auditRoot=Path('/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit')
+for density,dr in [(1,'runtime'),(2,'runtime-hd')]:
+ legacy=R/f'reference/legacy-runtime@{density}x.png';old=auditRoot/f'current-runtime/C01-FX-06@{density}x.png'
+ current=R/f'reference/current-runtime-at-worker-audit@{density}x.png';repoCurrent=REPO/f'packages/story-candidate-01/assets/final-fantasy-v1/{dr}/fx/fx-06.png'
+ referenceChecks.append({'path':str(legacy.relative_to(R)),'sourceAuditSnapshot':str(old),'sourceAuditGitHead':'79904dc748b7e7e6ede3d3ae1e8038b45741b0fd','savedFileSha256':sha(legacy),'decodedPixelsExact':Image.open(legacy).tobytes()==Image.open(old).tobytes(),'matchesNowIntegratedRuntime':Image.open(legacy).tobytes()==Image.open(repoCurrent).tobytes(),'note':'Legacy original audit snapshot intentionally differs from newly integrated remake runtime.'})
+ referenceChecks.append({'path':str(current.relative_to(R)),'repositorySource':str(repoCurrent.relative_to(REPO)),'repositoryFileSha256':sha(repoCurrent),'savedFileSha256':sha(current),'decodedPixelsExact':Image.open(current).tobytes()==Image.open(repoCurrent).tobytes(),'matchesWholeCanvasQaStrip':Image.open(current).tobytes()==Image.open(R/f'qa/phase-strip@{density}x.png').tobytes(),'note':'Integrator updated runtime during source package completion; this snapshot is the integrated remake, not the legacy original.'})
 write(R/'reference/reference-verification.json',referenceChecks)
 sourceSnapshots=[]
 for name,start,end in [('packages/story-candidate-01/src/presentation/candidate-01-bindings.ts',153,177),('packages/story-candidate-01/src/presentation/candidate-01-runtime.ts',239,269),('packages/game-ui/src/ui/board.ts',611,645)]:
@@ -39,7 +45,7 @@ Completed source staging: low-ring → rising-ring → sealed-ring → fading-fr
 
 ## Exact source and consumer audit
 
-`source-evidence.json` preserves the canonical topic audit, original four cell bounds, current metadata, binding and placement evidence. `reference/` includes original full board, full row, four full-grid cells, original/legacy-alpha inset crops, and legacy32/64 strips. Decoded-pixel checks confirm original snapshots. Actual current metadata anchor is[16,16], four frames at12fps, nonlooping. Four weapon consumers are c01.gray-oath, c01.oath-dispel, c01.inquisitor-flame and c01.oath-bolt. Board animateHit places effect at target-cell center and removes it after420ms. White burst and damage number remain separate runtime overlays.
+`source-evidence.json` preserves the canonical topic audit, original four cell bounds, current metadata, binding and placement evidence. `reference/` includes original full board, full row, four full-grid cells, original/legacy-alpha inset crops, and legacy32/64 strips. Decoded-pixel checks confirm the original board and cells against repository originals, and legacy32/64 strips against the original audit snapshot at79904dc748b7e7e6ede3d3ae1e8038b45741b0fd. The integrator updated runtime during final packaging; separate current-runtime-at-worker-audit snapshots exactly match the new QA strips, while the intentionally preserved legacy strips differ. Actual current metadata anchor is[16,16], four frames at12fps, nonlooping. Four weapon consumers are c01.gray-oath, c01.oath-dispel, c01.inquisitor-flame and c01.oath-bolt. Board animateHit places effect at target-cell center and removes it after420ms. White burst and damage number remain separate runtime overlays.
 
 ## Source/export contract
 
@@ -59,7 +65,7 @@ One common full-canvas export uses scale28/1254, origin[2,2], sourcePivot[627,62
 
 Start with qa/native-32-64-five-backgrounds.png, qa/qa-metrics.json, qa/apng-timing-verification.json and final-review.json. Full-size five-background composites are also preserved. Integration-catalog.json specifies exact phase paths/hashes and placement. The integrator must explicitly register this phase order and retain the existing consumer contract.
 
-No repository, runtime or Git changes were made by this worker. Runtime integration and live-game observation remain the integrator’s step.
+No repository, runtime or Git changes were made by this worker. The parent integrator confirmed runtime integration and decoded-pixel equality during packaging. Live-game observation is not asserted by this worker.
 ''')
 write(R/'final-quartet.json',{'topicId':'C01-FX-06','readyForBackup':True,'phaseOrder':phases,'hashes':{p:json.loads((R/p/'hashes.json').read_text()) for p in phases},'review':'final-review.json','integrationCatalog':'integration-catalog.json'})
 write(R/'deliverable-manifest.json',{'topicId':'C01-FX-06','root':str(R),'phaseOrder':phases,'method':'built-in image_gen','sourceCount':4,'attemptCount':5,'repoWrites':False,'files':[{'path':str(p.relative_to(R)),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(R.rglob('*')) if p.is_file() and p.name!='deliverable-manifest.json']})

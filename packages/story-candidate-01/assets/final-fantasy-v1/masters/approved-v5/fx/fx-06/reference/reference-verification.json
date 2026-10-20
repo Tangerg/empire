@@ -56,16 +56,38 @@
   },
   {
     "path": "reference/legacy-runtime@1x.png",
+    "sourceAuditSnapshot": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/current-runtime/C01-FX-06@1x.png",
+    "sourceAuditGitHead": "79904dc748b7e7e6ede3d3ae1e8038b45741b0fd",
+    "savedFileSha256": "5f8f10f65b32d9bf389125c44f5e3d544379202052c737759f3cd6dbebbb14ae",
+    "decodedPixelsExact": true,
+    "matchesNowIntegratedRuntime": false,
+    "note": "Legacy original audit snapshot intentionally differs from newly integrated remake runtime."
+  },
+  {
+    "path": "reference/current-runtime-at-worker-audit@1x.png",
     "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-06.png",
     "repositoryFileSha256": "d654418f1299f33d7d14ca41779d7f762add88ff4748a5a687037336b70df0bd",
-    "savedFileSha256": "5f8f10f65b32d9bf389125c44f5e3d544379202052c737759f3cd6dbebbb14ae",
-    "decodedPixelsExact": false
+    "savedFileSha256": "d654418f1299f33d7d14ca41779d7f762add88ff4748a5a687037336b70df0bd",
+    "decodedPixelsExact": true,
+    "matchesWholeCanvasQaStrip": true,
+    "note": "Integrator updated runtime during source package completion; this snapshot is the integrated remake, not the legacy original."
   },
   {
     "path": "reference/legacy-runtime@2x.png",
+    "sourceAuditSnapshot": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/current-runtime/C01-FX-06@2x.png",
+    "sourceAuditGitHead": "79904dc748b7e7e6ede3d3ae1e8038b45741b0fd",
+    "savedFileSha256": "9eecd23bee9132a02c5f4aa6bf02f7fa50bc9c6b592d75a0955a627825ba1c20",
+    "decodedPixelsExact": true,
+    "matchesNowIntegratedRuntime": false,
+    "note": "Legacy original audit snapshot intentionally differs from newly integrated remake runtime."
+  },
+  {
+    "path": "reference/current-runtime-at-worker-audit@2x.png",
     "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-06.png",
     "repositoryFileSha256": "f158c6411ded2f6339a7a4b4d110f4caab4dde0cf69f7f3b2c7dc1c02301eb66",
-    "savedFileSha256": "9eecd23bee9132a02c5f4aa6bf02f7fa50bc9c6b592d75a0955a627825ba1c20",
-    "decodedPixelsExact": false
+    "savedFileSha256": "f158c6411ded2f6339a7a4b4d110f4caab4dde0cf69f7f3b2c7dc1c02301eb66",
+    "decodedPixelsExact": true,
+    "matchesWholeCanvasQaStrip": true,
+    "note": "Integrator updated runtime during source package completion; this snapshot is the integrated remake, not the legacy original."
   }
 ]

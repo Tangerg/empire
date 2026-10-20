@@ -1,0 +1,97 @@
+{
+  "scope": "Four records/map/flag narrative key-prop source-art packages",
+  "tool": "built-in image_gen.imagegen",
+  "generationCalls": 5,
+  "rejectedAttempts": 1,
+  "sources": [
+    {
+      "slug": "prop-casualty-register",
+      "topicId": "C01-PROP-CASUALTY-REGISTER",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-casualty-register/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-casualty-register/sourceproof.json",
+      "sha256": "0e7800d1849bac20e855f48933738760cbfeed1b4cf006e89ac5a2797f99a235",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sourceEdgeMaxAlpha": 1,
+      "finalEdgeMaxAlpha": 0,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true,
+      "registrationPending": true
+    },
+    {
+      "slug": "prop-name-tags",
+      "topicId": "C01-PROP-NAME-TAGS",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-name-tags/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-name-tags/sourceproof.json",
+      "sha256": "bfb83acf69fd87a996a378e4747e5fd4973da9abf4941aa58ba9f4cd1a49cf5e",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sourceEdgeMaxAlpha": 1,
+      "finalEdgeMaxAlpha": 0,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true,
+      "registrationPending": true
+    },
+    {
+      "slug": "prop-evacuation-map",
+      "topicId": "C01-PROP-EVACUATION-MAP",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-evacuation-map/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-evacuation-map/sourceproof.json",
+      "sha256": "7efcde31a0a9e3135e22f332da009dca52ed473da72c6fcf5aa96128475219cf",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sourceEdgeMaxAlpha": 1,
+      "finalEdgeMaxAlpha": 0,
+      "selectedAttempt": 2,
+      "generationCalls": 2,
+      "rejectedAttempts": [
+        {
+          "attempt": 1,
+          "reason": "Native source right boundary intersects map silhouette; edgeMaxAlpha253 exceeds allowed1. Canonical padded border0 cannot excuse cropped source. Reject unchanged master and regenerate framing.",
+          "raw": "raw/attempt-01.png",
+          "sha256": "c71e7b98ff7e7101d27fc4390e05960573df3f277e92a4d97c4462b29a8ddf2c"
+        }
+      ],
+      "qaPass": true,
+      "fidelityPass": true,
+      "registrationPending": true
+    },
+    {
+      "slug": "prop-first-grey-flag",
+      "topicId": "C01-PROP-FIRST-GREY-FLAG",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-first-grey-flag/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-first-grey-flag/sourceproof.json",
+      "sha256": "02446d8320d4dadb33c72028849ace47012ee77b36eb864a8666668ebde932ec",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sourceEdgeMaxAlpha": 0,
+      "finalEdgeMaxAlpha": 0,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true,
+      "registrationPending": true
+    }
+  ],
+  "canonicalExport": "whole1254canvas contain124 on128,2px pad,unmasked paste",
+  "codeEditsToSourcePixels": false,
+  "repositoryWrites": false,
+  "runtimeWrites": false,
+  "gitWrites": false,
+  "status": "source-art ready; integrator owns registration"
+}

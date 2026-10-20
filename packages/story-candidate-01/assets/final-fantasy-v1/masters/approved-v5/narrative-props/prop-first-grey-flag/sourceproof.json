@@ -1,0 +1,99 @@
+{
+  "topicId": "C01-PROP-FIRST-GREY-FLAG",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-6aaf5279-1b64-479c-9414-c6b79b2042f7.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "generatedNativeSha256": "02446d8320d4dadb33c72028849ace47012ee77b36eb864a8666668ebde932ec",
+  "rawSha256": "02446d8320d4dadb33c72028849ace47012ee77b36eb864a8666668ebde932ec",
+  "masterSha256": "02446d8320d4dadb33c72028849ace47012ee77b36eb864a8666668ebde932ec",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "sourceBoundaryMaxAlpha": 0,
+  "sourceBoundaryNonzeroSamples": 0,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "referencePaths": [
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/narrative-keyprop-audit/original-crops/c01-prop-first-grey-flag/legacy-inset.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-evidence-1/master.png"
+  ],
+  "references": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/narrative-keyprop-audit/original-crops/c01-prop-first-grey-flag/legacy-inset.png",
+      "sha256": "a869369b668b5fd3bfa6c55ad9bf0f816dd2a8760778d8f3f7e0634f430a44eb"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-evidence-1/master.png",
+      "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+    }
+  ],
+  "originalBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+    "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 0,
+    "slot": "TL",
+    "originalNarrativeIndexZeroBased": 14,
+    "fullCellCropBox": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-first-grey-flag/full-cell.png",
+        "sourceCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "393d2f4afcd3d01f0dbac488ee07018021af20bccb5287f0289131ff718d3670",
+        "pixelSha256": "d7460f088d7fdfdd5603ee60c4e28a1533c1675c44594c65ce47d1a264e12267",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-first-grey-flag/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "a869369b668b5fd3bfa6c55ad9bf0f816dd2a8760778d8f3f7e0634f430a44eb",
+        "pixelSha256": "f6404212a380fecb5c07fc33426e47122f37672a5f1f8c2a10dd6848a0daec09",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "sourceProofScope": "Independent native genuine RGBA generation. Original617px RGB image was identity reference only; approved master style reference only. Master/raw are byte-exact generated native output. QA contain128 uses whole canvas124+2px padding and unmasked paste; no bbox fit or normalization."
+}

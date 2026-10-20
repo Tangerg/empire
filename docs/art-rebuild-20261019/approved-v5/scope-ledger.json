@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 402,
+    "formalBound": 408,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 33,
+      "narrative-static": 39,
       "skill": 48,
       "status": 24,
       "terrain": 16
     },
-    "rawPreservedTopics": 404,
+    "rawPreservedTopics": 408,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -256,13 +256,20 @@
       "category": "narrative-static",
       "label": "阿斯塔里亚王都",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-capital/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-capital.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived walled capital palace/avenue/gate or harbor/civic/market/watchyard composition; Veinport remains one static setting despite historical three-stage label",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed with cropped capital lateral districts or Veinport cranes/boats/watchyard explicitly documented",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
@@ -473,13 +480,20 @@
       "category": "narrative-static",
       "label": "维恩港三阶段治理区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-veinport/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-veinport.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived walled capital palace/avenue/gate or harbor/civic/market/watchyard composition; Veinport remains one static setting despite historical three-stage label",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed with cropped capital lateral districts or Veinport cranes/boats/watchyard explicitly documented",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-CH01-S00",
@@ -1161,11 +1175,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-casualty-register/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-casualty-register.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Original record rows, four figures and four tags, three colored route networks and patched grayflag preserved. Clipped flag pole reconstructed; map clipped attempt rejected and repaired",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter<=1 residue documented for all four; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-CONTROL-FRAGMENT",
@@ -1236,13 +1255,20 @@
       "category": "narrative-static",
       "label": "多语言撤离路线图",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-evacuation-map/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-evacuation-map.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Original record rows, four figures and four tags, three colored route networks and patched grayflag preserved. Clipped flag pole reconstructed; map clipped attempt rejected and repaired",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter<=1 residue documented for all four; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-EXILE-HARDTACK",
@@ -1285,13 +1311,20 @@
       "category": "narrative-static",
       "label": "第一面灰旗",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-first-grey-flag/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-first-grey-flag.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Original record rows, four figures and four tags, three colored route networks and patched grayflag preserved. Clipped flag pole reconstructed; map clipped attempt rejected and repaired",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter<=1 residue documented for all four; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-FREE-OATH-STONE",
@@ -1380,11 +1413,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-name-tags/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-name-tags.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254square genuineRGBA, exact original617slot and prompt/reference provenance. Original record rows, four figures and four tags, three colored route networks and patched grayflag preserved. Clipped flag pole reconstructed; map clipped attempt rejected and repaired",
+        "export": "Wholecanvascontain128 with2pxtransparent margin; unmaskedpaste preserves alpha. Source perimeter<=1 residue documented for all four; native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog only; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-THREE-PEOPLES-CLASP",

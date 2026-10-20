@@ -1644,6 +1644,60 @@
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-three-peoples-clasp/master.png",
         "sha256": "6f6e1c546cb475e2c77bf9570f66d1f77587a05a53d0f4a02f03f6026bb00546"
       }
+    },
+    "C01-PROP-CASUALTY-REGISTER": {
+      "kind": "transparent-prop-v1",
+      "prop": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-casualty-register/master.png",
+        "sha256": "0e7800d1849bac20e855f48933738760cbfeed1b4cf006e89ac5a2797f99a235"
+      }
+    },
+    "C01-PROP-NAME-TAGS": {
+      "kind": "transparent-prop-v1",
+      "prop": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-name-tags/master.png",
+        "sha256": "bfb83acf69fd87a996a378e4747e5fd4973da9abf4941aa58ba9f4cd1a49cf5e"
+      }
+    },
+    "C01-PROP-EVACUATION-MAP": {
+      "kind": "transparent-prop-v1",
+      "prop": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-evacuation-map/master.png",
+        "sha256": "7efcde31a0a9e3135e22f332da009dca52ed473da72c6fcf5aa96128475219cf"
+      }
+    },
+    "C01-PROP-FIRST-GREY-FLAG": {
+      "kind": "transparent-prop-v1",
+      "prop": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-first-grey-flag/master.png",
+        "sha256": "02446d8320d4dadb33c72028849ace47012ee77b36eb864a8666668ebde932ec"
+      }
+    },
+    "C01-ARCH-CAPITAL": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-capital/master.png",
+        "sha256": "a7c39ec3a838e705e857a5bc4ab3198bfdb444e740ca053f9e80b0d7dec186a5"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-VEINPORT": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-veinport/master.png",
+        "sha256": "502bbbf0c73a4d38fa67836a9257e204434166d55f8b735939e3cf9258fe2b9a"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
     }
   }
 }

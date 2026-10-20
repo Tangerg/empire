@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-FIRST-GREY-FLAG",
+  "label": "第一面灰旗",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-FIRST-GREY-FLAG",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "第一面灰旗",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-first-grey-flag.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-FIRST-GREY-FLAG",
+    "topicId": "C01-PROP-FIRST-GREY-FLAG",
+    "label": "第一面灰旗",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-first-grey-flag.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+    "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 0,
+    "slot": "TL",
+    "originalNarrativeIndexZeroBased": 14,
+    "fullCellCropBox": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-first-grey-flag/full-cell.png",
+        "sourceCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "393d2f4afcd3d01f0dbac488ee07018021af20bccb5287f0289131ff718d3670",
+        "pixelSha256": "d7460f088d7fdfdd5603ee60c4e28a1533c1675c44594c65ce47d1a264e12267",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-first-grey-flag/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "a869369b668b5fd3bfa6c55ad9bf0f816dd2a8760778d8f3f7e0634f430a44eb",
+        "pixelSha256": "f6404212a380fecb5c07fc33426e47122f37672a5f1f8c2a10dd6848a0daec09",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-first-grey-flag.png",
+    "sha256": "c59ed63b0ec84443bd9139dea21912b71d12c50a9dd6aecaddde842a6183f6c2",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 11710,
+      "partialPixels": 4578,
+      "opaquePixels": 96,
+      "nearOpaquePixels": 379,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        123,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Ragged smoky gray cloth with stitch repairs on a wood T-pole, tied rope and spear finial. The pole visibly ends at the bottom of its source panel.",
+    "semanticRequirements": "Preserve the smoke-darkened cloth and one remaining bright blue thread required by chapter1; no new heraldry. Original panel does not make the blue thread legible.",
+    "riskOrHold": "HOLD source-cutoff: full pole end is unavailable. Do not copy the flat cut into an allegedly complete transparent master.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        27,
+        27
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "lines": [
+        123,
+        139
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        109,
+        109
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "topicId": "C01-PROP-EVACUATION-MAP",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-7052d2eb-4257-4244-a895-1a0434bf7bc6.png",
+  "selectedAttempt": 2,
+  "generationCalls": 2,
+  "rejectedAttempts": [
+    {
+      "attempt": 1,
+      "reason": "Native source right boundary intersects map silhouette; edgeMaxAlpha253 exceeds allowed1. Canonical padded border0 cannot excuse cropped source. Reject unchanged master and regenerate framing.",
+      "raw": "raw/attempt-01.png",
+      "sha256": "c71e7b98ff7e7101d27fc4390e05960573df3f277e92a4d97c4462b29a8ddf2c"
+    }
+  ],
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "generatedNativeSha256": "7efcde31a0a9e3135e22f332da009dca52ed473da72c6fcf5aa96128475219cf",
+  "rawSha256": "7efcde31a0a9e3135e22f332da009dca52ed473da72c6fcf5aa96128475219cf",
+  "masterSha256": "7efcde31a0a9e3135e22f332da009dca52ed473da72c6fcf5aa96128475219cf",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "sourceBoundaryMaxAlpha": 1,
+  "sourceBoundaryNonzeroSamples": 36,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "referencePaths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-86ab8b47-87d7-417a-96c8-ea420a80fe25.png",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/narrative-keyprop-audit/original-crops/c01-prop-evacuation-map/legacy-inset.png"
+  ],
+  "references": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/generated_images/exec-86ab8b47-87d7-417a-96c8-ea420a80fe25.png",
+      "sha256": "c71e7b98ff7e7101d27fc4390e05960573df3f277e92a4d97c4462b29a8ddf2c"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/narrative-keyprop-audit/original-crops/c01-prop-evacuation-map/legacy-inset.png",
+      "sha256": "6d5502a1a2317ec560bed9fd91171d8065c5f8b1b9a3a2279a9b28eda78d689c"
+    }
+  ],
+  "originalBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 2,
+    "slot": "BL",
+    "originalNarrativeIndexZeroBased": 79,
+    "fullCellCropBox": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-evacuation-map/full-cell.png",
+        "sourceCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "8ebf141d32e7067a2ad6f7166b07a14c7e2343870aa257f593cef2e1089c05c5",
+        "pixelSha256": "c1f06f1b35b67900fea7ea893062074ccc0ff1a29107cd3b0326d6ee1026b421",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-evacuation-map/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "6d5502a1a2317ec560bed9fd91171d8065c5f8b1b9a3a2279a9b28eda78d689c",
+        "pixelSha256": "fbd2604028296721f7f6b0ceb0a5824638cd48d71d50920c3a3cc30f1f3c4110",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "sourceProofScope": "Independent native genuine RGBA generation. Original617px RGB image was identity reference only; approved master style reference only. Master/raw are byte-exact generated native output. QA contain128 uses whole canvas124+2px padding and unmasked paste; no bbox fit or normalization.",
+  "selectedRawPath": "raw/attempt-02.png",
+  "originalStyleReference": {
+    "path": "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-evidence-1/master.png",
+    "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+  },
+  "regenerationReason": "Native framing repair only. Attempt1 edgeMax253 cut the parchment silhouette; attempt2 retains complete silhouette and routes with edgeMax1 numerical trace only."
+}
