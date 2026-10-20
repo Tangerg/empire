@@ -48,6 +48,9 @@ class ScifiTerrainExportTests(unittest.TestCase):
         reports = self.run_export()
         self.assertEqual(len(reports), len(SCIFI_TOPICS))
         self.assertEqual(reports, self.run_export(check=True))
+        for report in reports:
+            self.assertEqual(report['fileSha256'], hashlib.sha256(
+                (self.root / report['output']).read_bytes()).hexdigest())
         self.assertFalse((self.pack / 'runtime-hd').exists())
         for report in reports:
             self.assertEqual(report['density'], 1)

@@ -45,7 +45,10 @@ class ExportTests(unittest.TestCase):
         before = {p: p.read_bytes() for p in self.root.rglob('*.json')}
         result = export(self.root, self.catalog)
         self.assertEqual([r['size'] for r in result], [[64, 64], [128, 128]])
-        export(self.root, self.catalog, True)
+        self.assertEqual(result, export(self.root, self.catalog, True))
+        for report in result:
+            self.assertEqual(report['fileSha256'], hashlib.sha256(
+                (self.root / report['output']).read_bytes()).hexdigest())
         self.assertEqual(unrelated.read_bytes(), b'legacy unchanged')
         self.assertEqual(before, {p: p.read_bytes() for p in self.root.rglob('*.json')})
 

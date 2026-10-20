@@ -1,33 +1,34 @@
 {
-  "asOfUtc": "2026-10-20T07:51:00Z",
-  "formalSnapshot": "584 local bindings under focused verification; remote576 verified at4106d88545a04f32a622d886f9eb3b54ab2343cd",
+  "asOfUtc": "2026-10-20T08:01:00Z",
+  "formalSnapshot": "592 local under final verification; remote584 verified at6a4a5ae77b9e22f7d512551dbc458d61535f4f95",
   "assignments": [
     {
       "topics": [
         "c02-unit-boarding-team"
       ],
-      "stage": "four raw poses preserved and guard-clean diagnostic; UNBOUND because blue bearer walk does not fully alternate; no scene-ready claim"
+      "stage": "UNBOUND; new blue-gait-v2 opposite gait real but4.15px drift exceeds registration criterion, candidate rejected and original untouched"
     },
     {
-      "scope": "Kairon terrain four canonical topics",
-      "stage": "new independent sources in production; Hesha four locally bound"
+      "scope": "Milight terrain four canonical topics",
+      "stage": "new independent sources in production; Kairon four locally bound"
+    },
+    {
+      "scope": "C03 battle-props canonical batch03",
+      "stage": "next four after first8, new source production"
     },
     {
       "topics": [
-        "c03-battle-prop-27872fa1",
-        "c03-battle-prop-2e0af0f2",
-        "c03-battle-prop-2e7df413",
-        "c03-battle-prop-2f038eea"
+        "c02-unit-defoliator-pilot"
       ],
-      "stage": "batch02 sources in production; first four locally bound"
+      "stage": "next original-combat-authority four-pose source bundle in production"
     },
     {
       "scope": "antler-knight scene quality",
-      "stage": "catalog-bound; shared-renderer contact proof only, common baseline gap unresolved for actual scene"
+      "stage": "catalog-bound; shared-renderer contact proof only; source correction proposal preserved, no scene-ready claim"
     },
     {
       "scope": "c01-02 asymmetric river layout",
-      "stage": "isolated worktree; intentional map delta requires separate gameplay verification"
+      "stage": "isolated worktree, intentional map delta requires separate gameplay verification"
     }
   ],
   "canonicalRemaining": {
@@ -39,7 +40,7 @@
       "combat-unit": 39,
       "mission-unit": 24,
       "faction-kit": 12,
-      "terrain": 24,
+      "terrain": 20,
       "interactive-structure": 24,
       "fx": 24
     },
@@ -50,7 +51,7 @@
       "faction-kit": 12,
       "terrain": 32,
       "interactive-structure": 24,
-      "battle-prop": 28,
+      "battle-prop": 24,
       "equipment": 48,
       "skill": 48,
       "status": 24,

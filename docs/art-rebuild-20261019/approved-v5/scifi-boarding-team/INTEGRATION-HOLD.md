@@ -1,3 +1,5 @@
 # Raw-source backup, not a completed catalog animation
 
 This quartet is deliberately not formally registered. The corrected attack has four boots and the orange operator changes planted contact between walk phases, but the blue shield-bearer's principal planted foot does not alternate. Existing exporter guards pass and shared contact-shadow diagnostics are preserved; neither establishes a finished two-person walking cycle. All accepted and rejected source candidates are retained for a genuine source correction, not hidden with cropping, anchor changes or weaker registration guards.
+
+A subsequent versioned blue-gait-v2 correction genuinely alternates the blue foot, but its planted support shifts too far left: required X correction +5.85 exceeds the unchanged ±2 limit; allowed placement retains4.15px quartet drift. This candidate is rejected and unbound, with original quartet untouched. The next genuine pose-recomposition target is documented in blue-gait-v2/NEXT-SOURCE-CORRECTION.md; no further correction has been executed.

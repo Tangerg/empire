@@ -1,0 +1,262 @@
+{
+  "status": "Candidate blocked on X registration at unchanged scale/origin; structural exporter pass is not semantic acceptance",
+  "frameSize": [
+    64,
+    48
+  ],
+  "canonicalAnchor": [
+    32,
+    47
+  ],
+  "commonSourceCanvas": [
+    1254,
+    1254
+  ],
+  "renderWidth": 44,
+  "origin": [
+    5,
+    3
+  ],
+  "registrationOffsets": {
+    "idle": [
+      2,
+      -1
+    ],
+    "walk-a": [
+      2,
+      0
+    ],
+    "attack": [
+      2,
+      0
+    ],
+    "walk-b": [
+      2,
+      0
+    ]
+  },
+  "measuredSupport": {
+    "idle": {
+      "feet": [
+        {
+          "roi": [
+            190,
+            1090,
+            375,
+            1200
+          ],
+          "soleY": 1185,
+          "bottomFourRowsMeanX": 286.86037735849055,
+          "planted": true
+        },
+        {
+          "roi": [
+            500,
+            1090,
+            630,
+            1170
+          ],
+          "soleY": 1169,
+          "bottomFourRowsMeanX": 609.35625,
+          "planted": true
+        },
+        {
+          "roi": [
+            660,
+            1160,
+            825,
+            1220
+          ],
+          "soleY": 1210,
+          "bottomFourRowsMeanX": 746.563829787234,
+          "planted": true
+        },
+        {
+          "roi": [
+            960,
+            1080,
+            1220,
+            1200
+          ],
+          "soleY": 1186,
+          "bottomFourRowsMeanX": 1106.953125,
+          "planted": true
+        }
+      ],
+      "support": [
+        687.4333955364311,
+        1210
+      ],
+      "registrationOffset": [
+        2,
+        -1
+      ],
+      "projectedSupport": [
+        31.120470018822147,
+        44.45614035087719
+      ],
+      "canonicalAnchorError": [
+        -0.8795299811778534,
+        -2.5438596491228083
+      ]
+    },
+    "walk-a": {
+      "feet": [
+        {
+          "roi": [
+            190,
+            1040,
+            360,
+            1140
+          ],
+          "soleY": 1130,
+          "bottomFourRowsMeanX": 288.5149253731343,
+          "planted": true
+        },
+        {
+          "roi": [
+            990,
+            1080,
+            1240,
+            1190
+          ],
+          "soleY": 1173,
+          "bottomFourRowsMeanX": 1123.8103448275863,
+          "planted": true
+        }
+      ],
+      "support": [
+        706.1626351003603,
+        1173
+      ],
+      "registrationOffset": [
+        2,
+        0
+      ],
+      "projectedSupport": [
+        31.777636319310886,
+        44.1578947368421
+      ],
+      "canonicalAnchorError": [
+        -0.2223636806891136,
+        -2.8421052631578974
+      ]
+    },
+    "attack": {
+      "feet": [
+        {
+          "roi": [
+            155,
+            1080,
+            345,
+            1175
+          ],
+          "soleY": 1163,
+          "bottomFourRowsMeanX": 266.59016393442624,
+          "planted": true
+        },
+        {
+          "roi": [
+            455,
+            1050,
+            670,
+            1140
+          ],
+          "soleY": 1127,
+          "bottomFourRowsMeanX": 603.0,
+          "planted": true
+        },
+        {
+          "roi": [
+            785,
+            1150,
+            947,
+            1205
+          ],
+          "soleY": 1193,
+          "bottomFourRowsMeanX": 874.9278846153846,
+          "planted": true
+        },
+        {
+          "roi": [
+            1000,
+            1080,
+            1230,
+            1180
+          ],
+          "soleY": 1168,
+          "bottomFourRowsMeanX": 1140.2669683257918,
+          "planted": true
+        }
+      ],
+      "support": [
+        721.1962542189007,
+        1193
+      ],
+      "registrationOffset": [
+        2,
+        0
+      ],
+      "projectedSupport": [
+        32.30513172697897,
+        44.85964912280702
+      ],
+      "canonicalAnchorError": [
+        0.3051317269789706,
+        -2.1403508771929793
+      ]
+    },
+    "walk-b": {
+      "feet": [
+        {
+          "roi": [
+            420,
+            1090,
+            595,
+            1200
+          ],
+          "soleY": 1175,
+          "bottomFourRowsMeanX": 529.8295454545455,
+          "planted": true
+        },
+        {
+          "roi": [
+            600,
+            1090,
+            760,
+            1200
+          ],
+          "soleY": 1182,
+          "bottomFourRowsMeanX": 675.7293233082706,
+          "planted": true
+        }
+      ],
+      "support": [
+        602.779434381408,
+        1182
+      ],
+      "registrationOffset": [
+        2,
+        0
+      ],
+      "projectedSupport": [
+        28.15015559233011,
+        44.473684210526315
+      ],
+      "canonicalAnchorError": [
+        -3.8498444076698917,
+        -2.526315789473685
+      ]
+    }
+  },
+  "method": "Bottom four rows alpha>=128 mean X per visually planted foot ROI, equal-weight mean of planted soles X, deepest sole Y; lifted boots excluded.",
+  "residualDriftXY": [
+    4.154976134648862,
+    0.701754385964918
+  ],
+  "fullCanvasFit": true,
+  "guardLimit": 2,
+  "masterPixelsModified": false,
+  "formalRuntimeIntegration": false,
+  "liveGamePlayback": "not performed"
+}

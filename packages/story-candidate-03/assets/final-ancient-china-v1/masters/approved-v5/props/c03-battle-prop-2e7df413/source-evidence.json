@@ -1,0 +1,62 @@
+{
+  "topicId": "c03-battle-prop-2e7df413",
+  "assetId": "C03-ACV1-battle-prop-2e7df413",
+  "label": "水盟航旗标识组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/call_a23a6686317f479f8805e06c59bb0640.png",
+  "sha256": "b14fca8f87ad903960cd4627f73ee8e682ffb52f5f5dad3f6b9f71470dc0c10f",
+  "originalFullAtlas": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/props/props-board-01.png",
+    "sha256": "8fe923907680667604cbc1be15c3c7667cfceb5f4a636684b769f60ad2933439",
+    "identityLocation": "bottom row third object"
+  },
+  "styleReference": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/props/bprop-engineering-1/master.png",
+    "sha256": "ac16d96d830af9e50d59d93319025d29c09c5e8bb4956157be3b4fd2f866a6fd"
+  },
+  "generationCallId": "a23a6686317f479f8805e06c59bb0640",
+  "promptFile": "prompt.txt",
+  "promptSha256": "eac4454d6f0a518bbfe1196d337652a5296ce2885de8cd5ccc3708c4ecd557b0",
+  "promptFileSha256": "9bca78d484bfd980b393fb300bbf642d080dac24598b7dc1ddc0829577bfd252",
+  "postprocessing": "None; raw.png and master.png are byte-identical copies of native output. Review export alone uses existing whole-canvas contain contract. No crop, recolor or alpha stripping.",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 7,
+    "coreBoundingBox": [
+      135,
+      69,
+      1205,
+      1198
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      60,
+      60
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      9,
+      6,
+      59,
+      59
+    ]
+  },
+  "registered": false
+}

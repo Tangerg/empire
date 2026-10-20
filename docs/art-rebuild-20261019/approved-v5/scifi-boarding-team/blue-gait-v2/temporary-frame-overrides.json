@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "c02-unit-boarding-team": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+          "sha256": "cb9de8805cd71b92e8d53974d9a5d9f3b2b557d70ca1bce9c66570f9e6137545",
+          "registrationOffset": [
+            2,
+            -1
+          ]
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
+          "sha256": "fe8fbe05fe32c500b9fa8e62556009dd59160577f6cf324041bceb0e13a9fc30",
+          "registrationOffset": [
+            2,
+            0
+          ]
+        },
+        "attack": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
+          "sha256": "b438b8f2fa99ecce0445327d31870cb49b52e892790c142d8ebc4979a2e7a4a8",
+          "registrationOffset": [
+            2,
+            0
+          ]
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/candidates/blue-gait-v2/walk-b.png",
+          "sha256": "08748bf8c73c12d83c8ca72df06e39ce1a5bed4ffa39eb78502a15872a138f9d",
+          "registrationOffset": [
+            2,
+            0
+          ]
+        }
+      },
+      "placement": {
+        "renderWidth": 44,
+        "origin": [
+          5,
+          3
+        ]
+      }
+    }
+  }
+}

@@ -31,6 +31,10 @@ SCIFI_TOPICS = {
     'c02-terrain-hesha-red-sand': 'variants',
     'c02-terrain-hesha-sandstorm-quicksand': 'nesw-16',
     'c02-terrain-hesha-sealed-waterway': 'nesw-16',
+    'c02-terrain-kairon-separation-ring': 'nesw-16',
+    'c02-terrain-kairon-train-platform': 'variants',
+    'c02-terrain-kairon-vacuum-breach': 'nesw-16',
+    'c02-terrain-kairon-vertical-city': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of
@@ -286,7 +290,7 @@ def export(root, catalog, check=False):
     # Validate every source, registration, destination and rendered contract
     # before the first output write, including failures in later topics.
     planned = plan(root, catalog)
-    for target, sheet, _ in planned:
+    for target, sheet, report in planned:
         if check:
             with Image.open(target) as current:
                 if current.mode != sheet.mode or current.size != sheet.size or current.tobytes() != sheet.tobytes():
@@ -294,6 +298,7 @@ def export(root, catalog, check=False):
         else:
             target.parent.mkdir(parents=True, exist_ok=True)
             sheet.save(target, format='PNG', optimize=True)
+        report['fileSha256'] = hashlib.sha256(target.read_bytes()).hexdigest()
     return [report for _, _, report in planned]
 
 

@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "rawEqualsMaster": true,
+  "sha256": "69d8bde6c971dca153109914c148182e1fcc1be4162ed4bb306c89aff44de163",
+  "references": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-03.png",
+      "sha256": "9c89ad1915479b42bf5986cba4884e79f7d236baaf0424ce6744ee9f2785ff6c"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png",
+      "sha256": "df3151cef9f435b2dc5395b6cb2e0374a4ebcbd66d6d27c85b7cf0458335c0a2"
+    }
+  ],
+  "topicId": "c02-terrain-kairon-separation-ring",
+  "status": "candidate-native-reviewed-not-registered"
+}

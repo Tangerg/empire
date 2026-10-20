@@ -79,6 +79,39 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         self.assertEqual(result['summary']['formalBound'], 0)
 
+    def test_scifi_terrain_and_chinese_props_require_their_selected_source_directory(self):
+        cases = [
+            ('c02-terrain-hesha-glass-sea', 'terrain', 'story-candidate-02',
+             'canonical-terrain/hesha-glass-sea'),
+            ('c03-battle-prop-0fb580c9', 'battle-prop', 'story-candidate-03',
+             'props/c03-battle-prop-0fb580c9'),
+        ]
+        for identity, category, campaign, directory in cases:
+            with self.subTest(topic=identity):
+                topic = {**self.topic, 'topicId': identity, 'category': category,
+                         'qualityTier': 'approved-chunky-v5-export-verified'}
+                self.write('pack/manifest.json', {'assets': [topic]})
+                self.write(DOC / 'canonical-topic-manifest.json', [{**topic,
+                           'manifest': self.manifest, 'campaign': campaign, 'label': identity}])
+                self.progress.update(topicStages={identity: {'raw': 'reviewed'}},
+                                     formalRuntimeBoundTopics=1)
+                self.write(DOC / 'approved-v5/progress.json', self.progress)
+                unrelated = self.root / 'pack/masters/approved-v5/unrelated' / identity
+                unrelated.mkdir(parents=True)
+                (unrelated / 'master.png').write_bytes(b'wrong directory cannot substitute')
+                with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
+                    build(self.root)
+                raw = self.root / 'pack/masters/approved-v5' / directory
+                raw.mkdir(parents=True)
+                (raw / 'master.png').write_bytes(b'independent native source')
+                (raw / 'raw.png').write_bytes(b'duplicate does not add a topic')
+                result = build(self.root)
+                self.assertEqual(result['summary']['formalBound'], 1)
+                self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+                self.assertEqual(result['summary']['liveGameVerified'], 0)
+                self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'],
+                                 [str((raw / 'master.png').relative_to(self.root))])
+
     def test_skill_master_uses_its_native_skill_directory(self):
         topic = {**self.topic, 'topicId': 'C01-SKILL-01', 'category': 'skill'}
         self.write('pack/manifest.json', {'assets': [topic]})

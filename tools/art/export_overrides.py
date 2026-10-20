@@ -361,6 +361,7 @@ def export(root: Path, catalog: Path, check: bool = False):
             target.write_bytes(buffer.getvalue())
         report.append({'topicId': topic, **provenance,
                        'output': str(target.relative_to(root)),
+                       'fileSha256': hashlib.sha256(target.read_bytes()).hexdigest(),
                        'pixelSha256': hashlib.sha256(rendered.tobytes()).hexdigest(),
                        'size': list(rendered.size)})
     return report

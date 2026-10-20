@@ -1,0 +1,47 @@
+{
+  "topics": [
+    "c02-terrain-kairon-separation-ring",
+    "c02-terrain-kairon-train-platform",
+    "c02-terrain-kairon-vacuum-breach",
+    "c02-terrain-kairon-vertical-city"
+  ],
+  "reason": "Next uncompleted manifest-order C02 family after Farlight and Hesha",
+  "requests": [
+    {
+      "slug": "kairon-separation-ring",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-kairon-separation-ring. Input image 1 is subject reference ONLY: use its top row fourth column, ignore all seven other subjects. Input image 2 is STYLE ONLY: match its chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, broad beveled shapes, restrained two-step cel shading; do not copy its cargo motifs or layout. Subject: Broad curved beige-gray segmented orbital ring pavement with charcoal recessed seams and sparse amber edge markings, against muted midnight violet void. Translate the ring identity into an overhead material of wide interlocking curved deck slabs, not a perspective bridge. Composition: flat orthographic overhead ground texture, no perspective or walls. Exactly one square continuous material, not a sheet and not multiple variants. Concentrate the essential motif within central 40 percent and four cardinal middle-quarter strips for subsequent historical NESW masking. Fully fill the canvas with opaque material, every pixel opaque, material extends to every edge. Readable at 32px logical tile size. No text, symbols, labels, arrows, gridlines, borders, blank margins, tiny speckles, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-03.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "slug": "kairon-train-platform",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-kairon-train-platform. Input image 1 is subject reference ONLY: use its top row first column, ignore all seven other subjects. Input image 2 is STYLE ONLY: match its chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, broad beveled shapes, restrained two-step cel shading; do not copy its cargo motifs or layout. Subject: Warm beige-gray heavy railway platform plates, a broad central round cyan-inset mechanism and sparse amber safety strips, charcoal metal seams. Four distinct arrangements of this same material, with readable large plates and cyan mechanical insets. Composition: flat orthographic overhead ground texture, no perspective or walls. Exactly four equally sized square material variants in a precise 2-by-2 arrangement occupying the entire square canvas. Each quadrant is an independent overhead square, equal scale, no gutters, divider lines, frames or labels. Quadrants will be sampled whole in top-left, top-right, bottom-left, bottom-right order. Fully fill the canvas with opaque material, every pixel opaque, material extends to every edge. Readable at 32px logical tile size. No text, symbols, labels, arrows, gridlines, borders, blank margins, tiny speckles, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-03.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "slug": "kairon-vacuum-breach",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-kairon-vacuum-breach. Input image 1 is subject reference ONLY: use its top row third column, ignore all seven other subjects. Input image 2 is STYLE ONLY: match its chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, broad beveled shapes, restrained two-step cel shading; do not copy its cargo motifs or layout. Subject: Broken gray-brown spacecraft deck slabs surrounding dark navy vacuum gaps, with large exposed graphite conduit shapes and sparse cyan mechanical accents. One bold dark angular breach near the central core, with broad cracked deck fragments crossing cardinal strips. No transparency; the vacuum is painted opaque navy. Composition: flat orthographic overhead ground texture, no perspective or walls. Exactly one square continuous material, not a sheet and not multiple variants. Concentrate the essential motif within central 40 percent and four cardinal middle-quarter strips for subsequent historical NESW masking. Fully fill the canvas with opaque material, every pixel opaque, material extends to every edge. Readable at 32px logical tile size. No text, symbols, labels, arrows, gridlines, borders, blank margins, tiny speckles, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-03.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "slug": "kairon-vertical-city",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-kairon-vertical-city. Input image 1 is subject reference ONLY: use its top row second column, ignore all seven other subjects. Input image 2 is STYLE ONLY: match its chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, broad beveled shapes, restrained two-step cel shading; do not copy its cargo motifs or layout. Subject: Pale warm-gray urban deck plates, broad charcoal structural seams and cyan utility channels, compact teal inset panels. Translate the vertical city identity to an overhead walkable deck material, with cyan conduits and engineered slabs, not tall buildings or a perspective city scene. Composition: flat orthographic overhead ground texture, no perspective or walls. Exactly one square continuous material, not a sheet and not multiple variants. Concentrate the essential motif within central 40 percent and four cardinal middle-quarter strips for subsequent historical NESW masking. Fully fill the canvas with opaque material, every pixel opaque, material extends to every edge. Readable at 32px logical tile size. No text, symbols, labels, arrows, gridlines, borders, blank margins, tiny speckles, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-03.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    }
+  ]
+}

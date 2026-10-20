@@ -1,0 +1,16 @@
+{
+  "phase": "walk-b",
+  "status": "candidate awaiting parent review",
+  "tool": "built-in image_gen",
+  "request": {
+    "prompt": "Use case: precise-object-edit. ONE bounded gait correction to Image 1 WALK-B. Change ONLY the BLUE shield-bearer's TWO legs and boots below the shield; preserve the entire ORANGE astronaut and both of his current legs EXACTLY unchanged. Blue gait MUST reverse: the CURRENT RIGHTMOST blue leg with planted boot at x1120,y1170 must instead bend backward/up at knee with its boot LIFTED, pointing downward, its lowest toe around x1100,y1050 with a clearly visible transparent air gap below. The OTHER blue leg currently tucked behind the shield's left edge at x650,y1020 must now extend straight DOWN from behind shield, with one planted boot emerging below shield around x830,y1180. This is a swap of planted versus lifted BLUE legs, not adding a leg. Exactly TWO humans and FOUR boots TOTAL: orange has leftmost lifted boot and center-left planted boot, blue has center-right planted boot and rightmost lifted boot. Keep shield itself at exactly same position, same size, same cyan hexagon; a small part of planted blue boot may emerge below it. Keep torso, giant helmets, visors, orange cutter held low, cable reel/backpacks, all arms, upper bodies, painting and palette unchanged. Same 1254x1254 native canvas, no resize, zoom, crop or recenter. Same chunky matte outlined cel-shaded scifi style. No extra anatomy. Full silhouettes inside canvas. Native transparent RGBA with no ground, shadow, text, effects, or scene. Image 2 is WALK-A for comparison only: do NOT repeat its rightmost planted blue boot.",
+    "referenced_image_paths": [
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-b/master.png",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png"
+    ],
+    "transparent_background": true
+  },
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-89e822d3-07c0-47b6-a0ce-381fa12de4b8.png",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/candidates/blue-gait-v2/walk-b.png",
+  "attemptCount": 1
+}

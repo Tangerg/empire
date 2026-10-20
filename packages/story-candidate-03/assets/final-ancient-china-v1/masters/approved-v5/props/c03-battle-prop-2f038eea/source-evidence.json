@@ -1,0 +1,62 @@
+{
+  "topicId": "c03-battle-prop-2f038eea",
+  "assetId": "C03-ACV1-battle-prop-2f038eea",
+  "label": "行军锅生活组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/call_5d23ef182b5141bab93c6563998fd4e1.png",
+  "sha256": "a9f7587acbec1d861ee80be0f449db5eaa034bba38c41023196e1b687a4f6254",
+  "originalFullAtlas": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/props/props-board-01.png",
+    "sha256": "8fe923907680667604cbc1be15c3c7667cfceb5f4a636684b769f60ad2933439",
+    "identityLocation": "third row fifth object"
+  },
+  "styleReference": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/props/bprop-engineering-1/master.png",
+    "sha256": "ac16d96d830af9e50d59d93319025d29c09c5e8bb4956157be3b4fd2f866a6fd"
+  },
+  "generationCallId": "5d23ef182b5141bab93c6563998fd4e1",
+  "promptFile": "prompt.txt",
+  "promptSha256": "bf2026d26c29ac02b09cd1ff1456a402c67170aa3aa4caae991bd9ef85d7b1c1",
+  "promptFileSha256": "2894fab3c94ff1449cafab5b74a0ca2a7984d980d06fab62a0eb81a51567f2f3",
+  "postprocessing": "None; raw.png and master.png are byte-identical copies of native output. Review export alone uses existing whole-canvas contain contract. No crop, recolor or alpha stripping.",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      163,
+      84,
+      1108,
+      1173
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      60,
+      60
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      10,
+      7,
+      54,
+      58
+    ]
+  },
+  "registered": false
+}

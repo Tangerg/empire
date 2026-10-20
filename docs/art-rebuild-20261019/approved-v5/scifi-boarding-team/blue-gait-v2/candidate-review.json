@@ -1,0 +1,159 @@
+{
+  "status": "Rejected/unbound by integration owner: genuine gait fix, support registration fails",
+  "candidateOnly": true,
+  "selected": false,
+  "previousMasterUnchanged": true,
+  "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/candidates/blue-gait-v2/walk-b.png",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-89e822d3-07c0-47b6-a0ce-381fa12de4b8.png",
+  "sha256": "08748bf8c73c12d83c8ca72df06e39ce1a5bed4ffa39eb78502a15872a138f9d",
+  "rawByteIdentical": true,
+  "sourceSemanticReview": {
+    "twoActors": true,
+    "fourBoots": true,
+    "originalGearRetained": true,
+    "sameCanvas": [
+      1254,
+      1254
+    ],
+    "walkA": "Blue rightmost leg planted, other leg tucked/lifted behind shield; orange rear planted and front lifted",
+    "candidateWalkB": "Blue rightmost leg lifted with air gap, left/other boot planted left of shield; orange rear lifted and front planted",
+    "remainingConcern": "Blue plant lands x675.73 instead of requested near830; source planted-support center moves to602.78."
+  },
+  "placement": {
+    "renderWidth": 44,
+    "origin": [
+      5,
+      3
+    ],
+    "offset": [
+      2,
+      0
+    ],
+    "offsetLimitUnchanged": 2
+  },
+  "nativeResult": {
+    "feet": [
+      {
+        "roi": [
+          420,
+          1090,
+          595,
+          1200
+        ],
+        "soleY": 1175,
+        "bottomFourRowsMeanX": 529.8295454545455,
+        "planted": true
+      },
+      {
+        "roi": [
+          600,
+          1090,
+          760,
+          1200
+        ],
+        "soleY": 1182,
+        "bottomFourRowsMeanX": 675.7293233082706,
+        "planted": true
+      }
+    ],
+    "support": [
+      602.779434381408,
+      1182
+    ],
+    "registrationOffset": [
+      2,
+      0
+    ],
+    "projectedSupport": [
+      28.15015559233011,
+      44.473684210526315
+    ],
+    "canonicalAnchorError": [
+      -3.8498444076698917,
+      -2.526315789473685
+    ]
+  },
+  "requiredOffsetXForExactAnchor": 5.849844407669892,
+  "structuralPlanPassed": true,
+  "registrationCriterionPassed": false,
+  "residualDriftXY": [
+    4.154976134648862,
+    0.701754385964918
+  ],
+  "nativeAlphaReports": [
+    {
+      "pose": "idle",
+      "pixelSha256": "b8d066f26cfb496ebb4c1843c0e0992465096dd4dce0144cfd4582143438d190",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          10,
+          15,
+          49,
+          44
+        ]
+      },
+      "registrationOffset": [
+        2,
+        -1
+      ]
+    },
+    {
+      "pose": "walk-a",
+      "pixelSha256": "e139035f864b364195af8c26e5428a90f0063f24a2a173a9cfc4ccb4c2345c1b",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          10,
+          16,
+          50,
+          44
+        ]
+      },
+      "registrationOffset": [
+        2,
+        0
+      ]
+    },
+    {
+      "pose": "attack",
+      "pixelSha256": "2cae6121f46e6e96290cfcf8b9fc9d95c1f379dab3930e4dccb8c728a5288a2c",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          10,
+          16,
+          49,
+          44
+        ]
+      },
+      "registrationOffset": [
+        2,
+        0
+      ]
+    },
+    {
+      "pose": "walk-b",
+      "pixelSha256": "3ed4171b6b4759410e7c133bc55923438848b3742d748327ba98a1eaa6ec99e8",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          9,
+          16,
+          50,
+          44
+        ]
+      },
+      "registrationOffset": [
+        2,
+        0
+      ]
+    }
+  ],
+  "scope": "No selection, runtime changes, shared edits, consumer creation, alpha cleanup or source crop. One bounded correction only. Static actual-helper proof, not live game.",
+  "nextCorrectionExecuted": false
+}

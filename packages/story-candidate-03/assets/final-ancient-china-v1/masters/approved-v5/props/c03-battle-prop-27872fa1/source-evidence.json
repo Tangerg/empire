@@ -1,0 +1,62 @@
+{
+  "topicId": "c03-battle-prop-27872fa1",
+  "assetId": "C03-ACV1-battle-prop-27872fa1",
+  "label": "军籍牌证据组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/call_8a3e4e935c3d430cb70c6e66a5277923.png",
+  "sha256": "48bfcb74dd0f718ea41b06cf8afa5792cc51667e187b50c5f91db099def06b80",
+  "originalFullAtlas": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/props/props-board-01.png",
+    "sha256": "8fe923907680667604cbc1be15c3c7667cfceb5f4a636684b769f60ad2933439",
+    "identityLocation": "fourth row fifth object; semantic mapping, original crop mapping unverified"
+  },
+  "styleReference": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/props/bprop-engineering-1/master.png",
+    "sha256": "ac16d96d830af9e50d59d93319025d29c09c5e8bb4956157be3b4fd2f866a6fd"
+  },
+  "generationCallId": "8a3e4e935c3d430cb70c6e66a5277923",
+  "promptFile": "prompt.txt",
+  "promptSha256": "384ac0dad2c591ca493735ac86bbe4298d3346c0c023ad00bc7756d3ba057fbb",
+  "promptFileSha256": "1320c5fa4cebdbb3ddfcfe0876a4e755bb0e41928948c622504d3f3ee1331cc1",
+  "postprocessing": "None; raw.png and master.png are byte-identical copies of native output. Review export alone uses existing whole-canvas contain contract. No crop, recolor or alpha stripping.",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      62,
+      90,
+      1224,
+      1140
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      60,
+      60
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      5,
+      7,
+      60,
+      56
+    ]
+  },
+  "registered": false
+}
