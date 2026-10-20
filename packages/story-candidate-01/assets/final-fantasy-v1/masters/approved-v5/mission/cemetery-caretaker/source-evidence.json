@@ -141,7 +141,8 @@
     "rowExtractionLines": "249-259",
     "missionBoardIndex0": 4,
     "rowIndex0": 1,
-    "missionTopicIndex0": 17,
-    "algorithm": "MISSION_BOARDS in declared order, rows0..3, columns0..3; grid_cell with inset5, then zip mission topics with mission_crops"
+    "algorithm": "MISSION_BOARDS in declared order, rows0..3, columns0..3; grid_cell with inset5, then zip mission topics with mission_crops",
+    "missionRowOrdinal0": 17,
+    "sourceCatalogAvailability": "Original manifest-complete.json is absent in this checkout. Original row recovered and independently verified by mission-consumer-audit; final manifest is sorted by topic, not builder-row order."
   }
 }

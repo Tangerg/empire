@@ -1,0 +1,141 @@
+{
+  "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+  "assetId": "C01-FFV1-MISSION-CEMETERY-CARETAKER",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Each selected raw and master is byte-identical to its built-in output. No alpha cleanup, painting, recoloring, source cropping, per-pose scaling or source padding. QA/export composites are separate.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "renderedScenePlacementCount": 0,
+  "classification": "catalog-only",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. No real domain actor or rendered scene placement exists. Work uses the original broom for noncombat sweeping. Do not invent caretaker actors or confuse this living civilian with the combat gravekeeper.",
+  "sourceAnomalyResolution": "Original four-cell board repeated idle for work and the same step in both walk cells. Source identity is preserved while work becomes functional and two walking contacts become opposite.",
+  "palettePolicy": "Preserve warm tan elderly skin, silver-gray hair, warm-gray hood, cream gown, dark-gray inner hem, brown rope belt and boots, ochre belt tags, dark-gray watering can, golden straw broom.",
+  "sharedScale": 0.046169989506820566,
+  "bodyReferenceSourcePixels": 953,
+  "bodyTargetHeightLogicalPixels": 44,
+  "canonicalSourceFoot": [
+    774.0,
+    973
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "proposedFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "canvasPaddingToleranceRequired": 1,
+  "maximumMeasuredTranslationLogicalPixels": 3.739769150052466,
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "f0e60efe2dbac57c497458ffd90646cf5431543ad1e03686fb1c978113c934ff",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        774.0,
+        973
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Gray hood over silver-gray hair, elderly tan face, cream gown with dark-gray hem, brown rope belt and two ochre tags. Screen-left hand carries one gray watering can; screen-right holds one straw broom. Two planted brown boots."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "c0b4a4fd6f7bc1b638668516b6a4d4c02e7286a6cb928f655eb75dafd29b7574",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        768.75,
+        964
+      ],
+      "registrationOffsetLogical": [
+        0.24239244491080797,
+        0.4155299055613851
+      ],
+      "review": "Screen-right boot swings forward with raised toe and broad underside visible; screen-left boot is flat and supports weight. Broom lifted clear and can retained by original hand. Not mirrored."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "48f8cf0f519427f00deb6ca2de81599a313ff6b614179eee5b2bce406335cde5",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        693.0,
+        950
+      ],
+      "registrationOffsetLogical": [
+        3.739769150052466,
+        1.061909758656873
+      ],
+      "review": "Clear functional single-handed sweep: screen-right forearm extends diagonal broom, straw head contacts implied ground at boot-sole height; eyes look down, upper body leans. Screen-left hand draws original watering can up to hip. Exactly two hands and one of each tool."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "2abe96b9d0d4cbb6df5b46c9178bc9bb6bffed7fb11d7ac87c854f28dedbb2a6",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        784.5,
+        967
+      ],
+      "registrationOffsetLogical": [
+        -0.48478488982161594,
+        0.2770199370409234
+      ],
+      "review": "Opposite contacts from walk-a: screen-right boot flat and supporting, screen-left boot tilted with raised heel. Original can and broom stay in their original hands. Same facing, not mirrored."
+    }
+  },
+  "idleScaleReview": "review-approval.json",
+  "rejectedAttempts": "rejected-attempts.json"
+}

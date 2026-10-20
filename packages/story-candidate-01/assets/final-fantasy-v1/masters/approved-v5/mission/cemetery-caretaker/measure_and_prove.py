@@ -8,7 +8,7 @@ ims={p:Image.open(B/p/'master.png') for p in POSES};common=[max(i.width for i in
 for p,im in ims.items():
  d=B/p;a=np.array(im.getchannel('A'));perim=np.concatenate([a[0],a[-1],a[:,0],a[:,-1]]);feet=[]
  bbox=lambda t: list(Image.fromarray((a>t).astype('uint8')*255).getbbox())
- for x0,x1 in [(450,760),(760,1035)]:
+ for x0,x1 in {'idle':[(450,760),(760,1035)],'walk-a':[(450,760),(760,1140)],'carry-or-work':[(350,650),(700,1010)],'walk-b':[(450,730),(760,1040)]}[p]:
   yy,xx=np.where(a[850:,x0:x1]>127);bot=int(yy.max()+850);yy,xx=np.where(a[bot-3:bot+1,x0:x1]>127);feet.append({'xRange':[x0,x1],'bottom':bot,'bottom4RowsBounds':[int(xx.min()+x0),bot-3,int(xx.max()+x0+1),bot+1],'soleCenterX':float((xx.min()+xx.max())/2+x0)})
  foot=[sum(f['soleCenterX'] for f in feet)/2,max(f['bottom'] for f in feet)];delta=[(CANONICAL[j]-foot[j])*SCALE for j in range(2)];bounds=bbox(127);vbox=[ORIGIN[j%2]+delta[j%2]+bounds[j]*SCALE for j in range(4)];full=[ORIGIN[0]+delta[0],ORIGIN[1]+delta[1],ORIGIN[0]+delta[0]+common[0]*SCALE,ORIGIN[1]+delta[1]+common[1]*SCALE]
  q={'nativeSize':list(im.size),'nativeMode':im.mode,'bboxAlphaNonzero':bbox(0),'bboxAlphaGreaterThan1':bbox(1),'bboxAlphaGreaterThan127':bounds,'alphaZeroFraction':float((a==0).mean()),'alphaRange':[int(a.min()),int(a.max())],'perimeterMaxAlpha':int(perim.max()),'perimeterCountAlphaGreaterThan1':int((perim>1).sum()),'measuredBootSoleBands':feet,'sourceFoot':foot,'sha256':sha(d/'master.png'),'rawMatchesMaster':sha(d/'raw.png')==sha(d/'master.png'),'nativeAlphaUntouched':True,'bootMeasurement':'Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Only translate the entire canvas.'};(d/'alpha-qa.json').write_text(json.dumps(q,indent=2)+'\n')

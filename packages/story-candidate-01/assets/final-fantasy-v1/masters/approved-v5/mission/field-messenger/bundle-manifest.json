@@ -1,0 +1,137 @@
+{
+  "topicId": "C01-MISSION-FIELD-MESSENGER",
+  "assetId": "C01-FFV1-MISSION-FIELD-MESSENGER",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationCallCount": 4,
+  "nativeArtPolicy": "Every selected native/raw/master output is byte-identical. No cleanup, recoloring, painting, cropping, per-pose rescaling or source padding. Common-canvas right/bottom technical padding only in export/QA; originals are preserved.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "consumerClassification": "catalog-only",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Source repeats first/third stance and second/fourth running contact; those duplicate artifacts are replaced by opposite walk contacts and a functional calling-and-flagging third pose while retaining original identity/equipment.",
+  "palettePolicy": "Preserve source warm-tan skin, dark-brown hair, blue-gray tunic/trousers, gray-beige scarf/trim/patches, brown leather equipment and boots, muted slate-blue pennant. No faction recolor.",
+  "sharedScale": 0.048672566371681415,
+  "commonSourceCanvas": [
+    1585,
+    993
+  ],
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyReferenceSourcePixels": 904,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "paddingToleranceRequired": 1,
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "ded546d4e751027dda14db96940afe04ba5799720f09ab0bf461d677731db2f4",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        815.0,
+        960
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Young warm-tan clean-shaven male, tousled dark-brown hair, blue-gray tunic and trousers, gray-beige scarf/trim/patches, brown boots/strap/belt/satchel and a single scroll tube behind screen-left shoulder. Screen-right hand holds one upright slate-blue pennant; empty screen-left hand hangs down. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "179cfc996b1a87623b718672a45962fd06d9600d1dcc0f85ca5c907ba51bdb6b",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        804.5,
+        950
+      ],
+      "registrationOffsetLogical": [
+        0.5110619469026548,
+        0.48672566371681414
+      ],
+      "review": "Screen-right boot advances heel-first with raised toe and visible dark underside; screen-left boot stays flat supporting behind. Empty screen-left hand swings backward, satchel moves with stride, flag remains upright in the same screen-right hand. Same camera and character scale."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "cc0354917424835b6749f530ed2c27491820d71ba2a841553831c34b3a61cebc",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        809.75,
+        948
+      ],
+      "registrationOffsetLogical": [
+        0.2555309734513274,
+        0.584070796460177
+      ],
+      "review": "Messenger signals and calls: screen-right arm extends the same pennant outward, screen-left empty hand cups beside his open mouth. Both boots planted. Flag remains in original hand; all original satchel/tube/strap equipment preserved. No added props."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "fcf33d1d26de55e7e3919e4b3860d2270c11abd409d280e96776998f1c0427e9",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        810.5,
+        947
+      ],
+      "registrationOffsetLogical": [
+        0.21902654867256638,
+        0.6327433628318584
+      ],
+      "review": "Opposite contact to walk-a: screen-right boot planted flat carrying weight, screen-left boot trails with bent knee, raised heel and toe down. Empty screen-left hand swings forward. Camera/flag/satchel orientation unchanged, not mirrored."
+    }
+  },
+  "idleScaleReview": "review-approval.json",
+  "rejectedAttempts": [],
+  "liveGameAcceptance": false
+}

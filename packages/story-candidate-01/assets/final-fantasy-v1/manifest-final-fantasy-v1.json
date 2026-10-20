@@ -2272,13 +2272,13 @@
       "topicId": "C01-MISSION-CEMETERY-CARETAKER",
       "label": "墓园看守",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-cemetery-caretaker.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-cemetery-caretaker.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2287,13 +2287,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        43.73557187827912,
+        48.92339979013641
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-CITY-DOCTOR",
@@ -2442,13 +2443,13 @@
       "topicId": "C01-MISSION-FIELD-MESSENGER",
       "label": "战地传令员",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-field-messenger.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-field-messenger.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2457,13 +2458,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.66814159292036,
+        50.72566371681416
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-FORGE-ARTISAN",

@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-b/master.png"
+    },
+    "scale": 0.046169989506820566,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      774.0,
+      973
+    ],
+    "sourceFeet": {
+      "idle": [
+        774.0,
+        973
+      ],
+      "walk-a": [
+        768.75,
+        964
+      ],
+      "carry-or-work": [
+        693.0,
+        950
+      ],
+      "walk-b": [
+        784.5,
+        967
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.24239244491080797,
+        0.4155299055613851
+      ],
+      "carry-or-work": [
+        3.739769150052466,
+        1.061909758656873
+      ],
+      "walk-b": [
+        -0.48478488982161594,
+        0.2770199370409234
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    43.73557187827912,
+    48.92339979013641
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "f0e60efe2dbac57c497458ffd90646cf5431543ad1e03686fb1c978113c934ff",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5564,
+        "nearOpaquePixels": 948,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          5,
+          63,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "f0e60efe2dbac57c497458ffd90646cf5431543ad1e03686fb1c978113c934ff",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22343,
+        "nearOpaquePixels": 3855,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          10,
+          125,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-a/master.png",
+      "registrationOffset": [
+        0.24239244491080797,
+        0.4155299055613851
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c0b4a4fd6f7bc1b638668516b6a4d4c02e7286a6cb928f655eb75dafd29b7574",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5548,
+        "nearOpaquePixels": 954,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          5,
+          64,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-a/master.png",
+      "registrationOffset": [
+        0.24239244491080797,
+        0.4155299055613851
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "c0b4a4fd6f7bc1b638668516b6a4d4c02e7286a6cb928f655eb75dafd29b7574",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22299,
+        "nearOpaquePixels": 3899,
+        "edgeMax": 0,
+        "visibleBounds": [
+          53,
+          11,
+          129,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/carry-or-work/master.png",
+      "registrationOffset": [
+        3.739769150052466,
+        1.061909758656873
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "48f8cf0f519427f00deb6ca2de81599a313ff6b614179eee5b2bce406335cde5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5538,
+        "nearOpaquePixels": 942,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          6,
+          76,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/carry-or-work/master.png",
+      "registrationOffset": [
+        3.739769150052466,
+        1.061909758656873
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "48f8cf0f519427f00deb6ca2de81599a313ff6b614179eee5b2bce406335cde5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22251,
+        "nearOpaquePixels": 3861,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          12,
+          152,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-b/master.png",
+      "registrationOffset": [
+        -0.48478488982161594,
+        0.2770199370409234
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "2abe96b9d0d4cbb6df5b46c9178bc9bb6bffed7fb11d7ac87c854f28dedbb2a6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5571,
+        "nearOpaquePixels": 920,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          5,
+          64,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-b/master.png",
+      "registrationOffset": [
+        -0.48478488982161594,
+        0.2770199370409234
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "2abe96b9d0d4cbb6df5b46c9178bc9bb6bffed7fb11d7ac87c854f28dedbb2a6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22392,
+        "nearOpaquePixels": 3763,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          10,
+          128,
+          98
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

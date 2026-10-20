@@ -4,14 +4,14 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 327,
+    "formalBound": 329,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 9,
+      "mission-unit": 11,
       "narrative-static": 7,
       "skill": 48,
       "status": 24
@@ -2434,14 +2434,22 @@
       "label": "墓园看守",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/cemetery-caretaker/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-cemetery-caretaker.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-cemetery-caretaker.png",
+      "stageEvidence": {
+        "raw": "Original elderly woman, gray hood, cream gown, watering can and broom; opposite steps and physical sweeping action; immutable native sources and exact evidence preserved",
+        "export": "shared44/953 scale, measured support translation within3.740logicalpx, technical padding1px; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-CITY-DOCTOR",
@@ -2540,14 +2548,22 @@
       "label": "战地传令员",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/field-messenger/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/field-messenger/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/field-messenger/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/field-messenger/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/field-messenger/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-field-messenger.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-field-messenger.png",
+      "stageEvidence": {
+        "raw": "Original young messenger, blue-gray patched tunic, satchel and right-hand pennant; opposing walks and calling/flagging action; immutable native sources and exact evidence preserved",
+        "export": "shared44/904 scale, measured support translation within0.633logicalpx, technical padding1px; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-FORGE-ARTISAN",

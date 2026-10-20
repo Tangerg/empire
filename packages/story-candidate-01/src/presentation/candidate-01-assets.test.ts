@@ -12,6 +12,8 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-MISSION-CEMETERY-CARETAKER', source: 'mission/cemetery-caretaker', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
+  { topic: 'C01-MISSION-FIELD-MESSENGER', source: 'mission/field-messenger', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-MISSION-MINER', source: 'mission/miner', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-MISSION-EVACUATION-DRIVER', source: 'mission/evacuation-driver', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-UNIT-SHAMAN', source: 'animation/shaman', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },

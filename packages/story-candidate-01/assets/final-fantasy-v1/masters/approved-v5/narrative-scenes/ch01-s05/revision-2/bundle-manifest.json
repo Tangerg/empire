@@ -1,0 +1,68 @@
+{
+  "artifactKind": "independent-opaque-narrative-scene-master",
+  "canonicalTopicId": "C01-CH01-S05",
+  "label": "焚村后的第一面灰旗",
+  "status": "v2 submitted for parent visual acceptance",
+  "selectedRevision": "v2",
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "nativeMode": "RGB",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/master.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/raw.png",
+  "native": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/native.png",
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cdcae30a-c9ea-4a34-94c2-dad4760acc58.png",
+  "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/prompt.txt",
+  "exactPromptSha256": "e7d62c34cffa9db42eaa7e7014b9049e6a5ef1ef664b0bee09e1bc164063820e",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/request.json",
+  "requestSha256": "ecc70526771d8d25eb813cd37b81ad627afb69aa7dffc51612a7d2cd76659242",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/master.png",
+      "sha256": "40944d9d8438c2eb612dd9836c06d598e24640a4ba49ba1e6adb9987696cecaa",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/review-v1/master.png",
+      "hashVerified": true
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+      "hashVerified": true
+    }
+  ],
+  "originalAuditedCell": {
+    "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/original-cell-617.png",
+    "size": [
+      617,
+      617
+    ],
+    "sha256": "e240b3fe2d301ee46870f2e29ae9dcd89b7fd9bb93a86721ae349e52b3d9bb7e",
+    "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+    "boardSha256": "891cf39f451913388f36bc16c61ad629c9c6e390a5ba4098d92a64157424ed1f",
+    "cropBox": [
+      5,
+      5,
+      622,
+      622
+    ]
+  },
+  "allNativeRawMasterPromptReferenceHashesVerified": true,
+  "sourceQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/source-qa.json",
+  "visualQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/qa-covers-contact-sheet.png",
+  "logicalQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/qa-logical-256x144.png",
+  "sourcePolicy": "Exact byte-for-byte native output, no crop, fit, painting, alpha alteration, padding, extension, cleanup or resize. Only QA derivatives are resized/cropped for review.",
+  "exportContract": "Parent owns registered256x144 opaqueRGBA whole-canvas narrative-scene export. Generated aspect differs from16:9 by0.053%; do not silently crop or alter master to force exact aspect.",
+  "actualConsumers": [
+    "game main menu",
+    "experience-lab entry",
+    "c01/brief-05",
+    "c01/aftermath-05",
+    "c01/campaign-failed",
+    "c01-05 staging hero"
+  ],
+  "repositoryWrites": false,
+  "liveGameAcceptance": "not performed by this worker",
+  "v1Evidence": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/review-v1"
+}
