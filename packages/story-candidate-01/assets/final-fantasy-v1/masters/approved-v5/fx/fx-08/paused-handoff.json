@@ -1,0 +1,67 @@
+{
+  "topicId": "C01-FX-08",
+  "status": "paused-partial",
+  "completedSources": 2,
+  "requiredSources": 4,
+  "localParentBackupCommit": "c4dafa5",
+  "remoteBackupStatus": "pending-auth-restoration",
+  "inFlightGeneration": false,
+  "resumeOnlyAfterParentConfirmsBackupRestored": true,
+  "completedPhases": [
+    "clustered-echoes",
+    "rising-echoes"
+  ],
+  "remainingPhases": [
+    {
+      "phase": "dissolving-echoes",
+      "exactRequest": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-08/dissolving-echoes/request.json",
+      "requestSha256": "854ae1f36d73cb26379c0dbe7615ba9e254eb367ca5374d21aa9ed5ad03be829",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-08/dissolving-echoes/prompt.txt",
+      "promptSha256": "dd225848e5c7ad58fdba6942d68e2f34a96b2f0ef72bb5d542b56aa269663a2e",
+      "notGenerated": true
+    },
+    {
+      "phase": "wisp-remnants",
+      "exactRequest": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-08/wisp-remnants/request.json",
+      "requestSha256": "9b3ddb60fb2e2b6da31296e40175ce12a03e48d2965f88d35e413ccea075a07a",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-08/wisp-remnants/prompt.txt",
+      "promptSha256": "08dd0d80627aa83d538f53bf26c99229ba12a91e4bc2ca0ce6bcf986ab1e6f2c",
+      "notGenerated": true
+    }
+  ],
+  "noDuplicateCalls": "First two sources accepted and persisted; do not regenerate them. Resume with the saved exact request for dissolving-echoes, then wisp-remnants.",
+  "remainingValidation": "Persist each returned PNG byte-identically as raw/master using persist-source.py. Run build-qa.py, inspect full black/white and native five-background composites for all four. Verify authored translucency of dissolving bodies distinct from opaque papers, inspect final no-person wisps. Run verify-apng.py after4sources; generate final catalog and quartet acceptance. No current APNG/four-phase timing proof exists.",
+  "sourceSemantics": [
+    "clustered-echoes:3 substantial ordinary-person echoes",
+    "rising-echoes:5 taller overlapping human echoes",
+    "dissolving-echoes:3 genuinely translucent incomplete people with loose amber papers",
+    "wisp-remnants:no figures; separated gray curls and amber papers"
+  ],
+  "sourceReference": "Common original-row.png plus exact per-phase full-grid original cell; all are persisted under reference/",
+  "transform": {
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "runtimeContract": {
+    "fps": 12,
+    "loop": false,
+    "removalMs": 420,
+    "finalHoldMs": 170
+  },
+  "repoOrGitWritesByWorker": false
+}

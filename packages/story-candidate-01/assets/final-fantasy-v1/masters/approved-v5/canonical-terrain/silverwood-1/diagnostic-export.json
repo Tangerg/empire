@@ -1,0 +1,307 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-1",
+  "diagnosticOnly": true,
+  "formalCatalogRegistered": false,
+  "mode": "variants",
+  "windowsXYXY": [
+    [
+      0,
+      0,
+      627,
+      627
+    ],
+    [
+      627,
+      0,
+      1254,
+      627
+    ],
+    [
+      0,
+      627,
+      627,
+      1254
+    ],
+    [
+      627,
+      627,
+      1254,
+      1254
+    ]
+  ],
+  "method": "existing read-only exporter: crop+independent LANCZOS32/64+approved outermost1px edge average+unchanged historical alpha; no texture painting, blur or recolor",
+  "reports": {
+    "32": {
+      "sheet": "native-review/diagnostic-sheet-32.png",
+      "size": [
+        128,
+        32
+      ],
+      "samples": [
+        {
+          "windowXYXY": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.051036682615629984,
+          "samplePixelSha256": "22d59ef5dd91613d34a18e1d30f55d9a6e05f3a3b73cb0257c8df84ded80011e",
+          "edgeBandPixels": 1,
+          "changedPixels": 124,
+          "maxChannelChange": 56,
+          "interiorPixelSha256": "219619cd0b187778b5ebe01fb5791130ea30f2c29a23aab7ecfe0932d5fd8513",
+          "edgeHashes": {
+            "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+            "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+          },
+          "pixelSha256": "7704a2fcaf9f5c7fc19f0ba4ac553239c7ff095f04224693cb165eb08f2f8f82"
+        },
+        {
+          "windowXYXY": [
+            627,
+            0,
+            1254,
+            627
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.051036682615629984,
+          "samplePixelSha256": "83652de2d420574ec3d98eaed7da42ad3f9c871f295218cf7ae8c319af722347",
+          "edgeBandPixels": 1,
+          "changedPixels": 124,
+          "maxChannelChange": 43,
+          "interiorPixelSha256": "6bd0234e14696bc95f31ce6392736609d1d79cfca4698c99ebfef569b43bde4c",
+          "edgeHashes": {
+            "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+            "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+          },
+          "pixelSha256": "6c0a841aaabbdee36630414f4c624a58412506ffce31f8c80c1f968b468704b7"
+        },
+        {
+          "windowXYXY": [
+            0,
+            627,
+            627,
+            1254
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.051036682615629984,
+          "samplePixelSha256": "5dd6d18f22514c43121665ee766d1e4af8456faf1dc346e4b742eb2eeff9301c",
+          "edgeBandPixels": 1,
+          "changedPixels": 124,
+          "maxChannelChange": 64,
+          "interiorPixelSha256": "800f16f11874a9e048c75cacda9810b0907924786aacd7a2ecaeabe98ffcdd50",
+          "edgeHashes": {
+            "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+            "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+          },
+          "pixelSha256": "a49f58c12fb34057b6a6f112bf0dbea0b7d9094fc67ef78e825eda790f968bae"
+        },
+        {
+          "windowXYXY": [
+            627,
+            627,
+            1254,
+            1254
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.051036682615629984,
+          "samplePixelSha256": "911673baebea296ef1d6f0a2d94839b00f74025ae42143417eddbc9209191a18",
+          "edgeBandPixels": 1,
+          "changedPixels": 123,
+          "maxChannelChange": 44,
+          "interiorPixelSha256": "53459c00ff14f9cb80562a455c57cebe50f9a8c4d8e552e8a9a4160b0798473e",
+          "edgeHashes": {
+            "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+            "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+            "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+          },
+          "pixelSha256": "b51e37c58fcf50090627f7c05aa896b994d59b295c72c1ce84a8014bfde61579"
+        }
+      ],
+      "edges": {
+        "comparison": "exact RGBA equality for every allowed pair",
+        "pairs": {
+          "eastWest": 16,
+          "southNorth": 16
+        }
+      },
+      "cells": [
+        {
+          "index": 0,
+          "variant": "a",
+          "pixelSha256": "db48a70f3033e87b0273d9ee9d67c55f3de08d0cc3be9504a8cd4f22b7010eab",
+          "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+        },
+        {
+          "index": 1,
+          "variant": "b",
+          "pixelSha256": "33323e951069e2e873a28273b9b09d355a56a29c8be62ac94f6f75281a264a5d",
+          "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+        },
+        {
+          "index": 2,
+          "variant": "c",
+          "pixelSha256": "f4b02ff09fff72e4da2c0ad1380fd3255f8cfde4a6aeb9095ceef6fbd721e240",
+          "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+        },
+        {
+          "index": 3,
+          "variant": "d",
+          "pixelSha256": "01bbf852573bf41e01bd28ea66f49cedd4340efe5d4ffddb22b7ad34d0498f8f",
+          "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+        }
+      ],
+      "alphaSHA256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    "64": {
+      "sheet": "native-review/diagnostic-sheet-64.png",
+      "size": [
+        256,
+        64
+      ],
+      "samples": [
+        {
+          "windowXYXY": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.10207336523125997,
+          "samplePixelSha256": "6a25e9a8c85be68d8b841f359048c6806f37861cfb1d94d1953ed96d63a7746f",
+          "edgeBandPixels": 1,
+          "changedPixels": 252,
+          "maxChannelChange": 61,
+          "interiorPixelSha256": "b0494f90103df40308f6fd891dd83c5c83374e42b8da76753191bd3ca4e17c2b",
+          "edgeHashes": {
+            "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+            "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+          },
+          "pixelSha256": "b0998312af58acb2e2fd20aa1546a4dca71ccc75203bfa7af934aa5b8b17545c"
+        },
+        {
+          "windowXYXY": [
+            627,
+            0,
+            1254,
+            627
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.10207336523125997,
+          "samplePixelSha256": "dcf60c4211bed89039caa86506b54f0d2b4de5b5e618a196ff3e3626afb5004d",
+          "edgeBandPixels": 1,
+          "changedPixels": 252,
+          "maxChannelChange": 44,
+          "interiorPixelSha256": "09301f0b880622c199ca75490243c835e194a9034e3e65f7fda4c4b1648c99ad",
+          "edgeHashes": {
+            "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+            "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+          },
+          "pixelSha256": "d8fade1384307ab6f6c23468e7dd2789c7eaa9b33fa3ef8630b32f15e9318ae3"
+        },
+        {
+          "windowXYXY": [
+            0,
+            627,
+            627,
+            1254
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.10207336523125997,
+          "samplePixelSha256": "64839567067b2b8b2ce21759e56396ec29a4dc33da27856e7e4aad42d20667d9",
+          "edgeBandPixels": 1,
+          "changedPixels": 252,
+          "maxChannelChange": 60,
+          "interiorPixelSha256": "7f389d2b37eb044002bf3f4ff2c81d87c41d656db43e157de3a0a94f933dfe1f",
+          "edgeHashes": {
+            "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+            "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+          },
+          "pixelSha256": "32000395307d783c24c02dca60d0455956d609716d03ac7fc2622a7e30fd1b3a"
+        },
+        {
+          "windowXYXY": [
+            627,
+            627,
+            1254,
+            1254
+          ],
+          "sourcePixelsPerLogicalPixel": 19.59375,
+          "outputPixelsPerSourcePixel": 0.10207336523125997,
+          "samplePixelSha256": "21da67c8bd5564b95bfdc5e308356bd82a2df4947ac900a1064b075842fd1788",
+          "edgeBandPixels": 1,
+          "changedPixels": 252,
+          "maxChannelChange": 58,
+          "interiorPixelSha256": "17f5abc266c42777cc08ed8ba6b1e3af6f3db01db4eec4338fb2d0cf601b7888",
+          "edgeHashes": {
+            "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+            "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+            "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+          },
+          "pixelSha256": "a719d6df1b76040bbdd9cdf451c4227d38b015546b6ea530790e7e02e849f3a4"
+        }
+      ],
+      "edges": {
+        "comparison": "exact RGBA equality for every allowed pair",
+        "pairs": {
+          "eastWest": 16,
+          "southNorth": 16
+        }
+      },
+      "cells": [
+        {
+          "index": 0,
+          "variant": "a",
+          "pixelSha256": "585270dd4d1e71f28926cb937798df47da20d1cd16c6e8aec70fa1485e3abc1b",
+          "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+        },
+        {
+          "index": 1,
+          "variant": "b",
+          "pixelSha256": "3e27bf2e69db4a79ee380e7bbfc680fa6c48b6416f82735d90c4d76f9215ce0d",
+          "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+        },
+        {
+          "index": 2,
+          "variant": "c",
+          "pixelSha256": "c1b5f9bd2a39cccfaa73969ae64a89a1e38542180bce16b4cbc01baaa661ab41",
+          "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+        },
+        {
+          "index": 3,
+          "variant": "d",
+          "pixelSha256": "d1e1f553d873955bc119d279f4cb458484f8928c94286508d07229b99a06ee29",
+          "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+        }
+      ],
+      "alphaSHA256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 16384
+      }
+    }
+  }
+}
