@@ -11,7 +11,7 @@ using Empire.Presentation.Feedback;
 namespace Empire.Application;
 
 /// <summary>Thin application adapter. All choices come from the same core that dispatches them.</summary>
-public sealed class GrayFlagSession : IBattleSession
+public sealed partial class GrayFlagSession : IBattleSession
 {
     private readonly GrayFlagEngine engine;
     private readonly Battle battle;
@@ -20,6 +20,25 @@ public sealed class GrayFlagSession : IBattleSession
     private readonly BattleEventText eventText = BattleEventText.CreateDefault().Seal();
     private readonly List<JsonObject> actions = new();
     private readonly List<JsonObject> events = new();
+    private readonly Stack<UndoCheckpoint> undo = new();
+    private sealed record UndoCheckpoint(BattleReceipt Receipt, int ActionCount, int EventCount);
+    public bool? LastActionHandsOffTurn { get; private set; }
+    public bool CanUndo => undo.Count > 0 && !IsComputerTurn && battle.Snapshot()["phase"]?.GetValue<string>() != "over";
+
+    public BattleDispatchResult Undo(long expectedRevision)
+    {
+        if (expectedRevision != revision) return new(false, "战场已变化，请重新选择命令。");
+        if (!CanUndo) return new(false, "当前无法撤销。");
+        var checkpoint = undo.Peek();
+        battle.Restore(checkpoint.Receipt);
+        undo.Pop();
+        actions.RemoveRange(checkpoint.ActionCount, actions.Count - checkpoint.ActionCount);
+        events.RemoveRange(checkpoint.EventCount, events.Count - checkpoint.EventCount);
+        revision++;
+        transition = null;
+        LastActionHandsOffTurn = null;
+        return new(true, "已撤销上一步");
+    }
 
     public GrayFlagSession(GrayFlagEngine engine, JsonObject level)
     {
@@ -190,6 +209,9 @@ public sealed class GrayFlagSession : IBattleSession
                 .Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
         }
         var receipt = battle.Dispatch(command);
+        if (receipt.HandsOffTurn) undo.Clear();
+        else undo.Push(new(receipt, actions.Count, events.Count));
+        LastActionHandsOffTurn = receipt.HandsOffTurn;
         actions.Add((JsonObject)command.DeepClone());
         events.AddRange(receipt.Events.Select(value => (JsonObject)value.DeepClone()));
         revision++;

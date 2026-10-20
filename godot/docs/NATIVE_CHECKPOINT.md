@@ -177,3 +177,19 @@ No newer GUI acceptance has been obtained.
 ## Explicit remaining gaps
 
 Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Remaining source lighting paths and cold-render performance still require work. Camera controls are integrated but desktop usability and remaining keyboard/selection behavior are not accepted. Narrative/menu/autosave behavior now has source-backed and native integration evidence, but actual desktop acceptance remains required. Tactical selection/keyboard/undo, destination commands, complete inspection/forecast/support HUD and exact AI pacing remain required; see TACTICAL-UI-MIGRATION.md. The recovered source has no audio playback implementation, so silence is not an omitted original feature. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.
+
+## Tactical canonical foundations, before widget integration
+
+The narrative/menu parent `87da7282` passed the exact staged aggregate, including
+4,949 narrative, 102 full-project menu/art, 151 staging, 169 navigation and 150
+result-flow assertions, clean exits and four deliberately induced autosave warnings.
+The new canonical foundation adds registration-owned handoff metadata, trusted
+lineage-checked restore, session-owned undo history and detached read queries at
+their original owners. Source session comparison covers 138 operations plus
+terminal/deployment cases; four compiled mutants are rejected. Tactical query
+comparison covers 740 actual source outputs; eight compiled mutants are rejected.
+Recruitment-card affordability is intentionally distinct from full legality, and
+objective/cast/progression/content facts have one configured owner. The engine
+shares its singleton VictorySystem between lifecycle and inspection. Existing
+core replay hashes and application continuation are unchanged. These APIs are
+not yet a completed tactical HUD/selection/keyboard/AI-pacing implementation.

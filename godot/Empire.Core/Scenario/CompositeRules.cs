@@ -40,6 +40,15 @@ public static class CompositeRules
         return Status(state, id).Neutralized >= Number(threshold, "minimumNeutralized") ? "success" : "pending";
     }
 
+    public static string ObjectiveProgress(JsonObject state, int owner, JsonObject objective)
+    {
+        if (Text(objective, "type") != "neutralizeComposite")
+            throw new DomainInvariantException($"unknown objective handler \"{Text(objective, "type")}\"");
+        var id = Text(objective, "composite");
+        var composite = Require(state, id);
+        return $"{Status(state, id).Neutralized}/{Number(objective["minimumNeutralized"] ?? composite["minimumNeutralized"], "minimumNeutralized")} 部件";
+    }
+
     public static string DescribeObjective(JsonObject objective) => Text(objective, "type") == "neutralizeComposite"
         ? "瘫痪复合战场目标" : throw new DomainInvariantException($"unknown objective handler \"{Text(objective, "type")}\"");
 

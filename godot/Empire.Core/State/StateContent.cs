@@ -73,6 +73,8 @@ internal sealed class StateContent
             throw new DomainInvariantException($"default terrain \"{defaultTerrain}\" has no character encoding");
     }
 
+    internal IEnumerable<string> FamilyIds => Families.Keys;
+
     internal JsonObject Get(string family, string id) =>
         definitions[family].TryGetValue(id, out var entry) ? entry :
         throw new DomainInvariantException($"unknown {Families[family]} \"{id}\"");

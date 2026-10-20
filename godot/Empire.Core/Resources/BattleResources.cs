@@ -8,6 +8,23 @@ public sealed class BattleResources
 {
     public sealed record Subject(string Kind, JsonObject Holder, string? Weapon = null);
     public sealed record Amount(string Resource, double Value);
+    public sealed record Cost(string Resource, double Amount);
+    public sealed record AccountSnapshot(string Resource, string Name, double? Current, double? Capacity);
+
+    public static IReadOnlyList<Cost> CopyCosts(JsonArray costs) => System.Array.AsReadOnly(
+        StateJson.Objects(costs, "costs").Select(cost => new Cost(StateJson.Text(cost, "resource"),
+            StateJson.Number(cost["amount"], "amount"))).ToArray());
+
+    public AccountSnapshot Inspect(Subject subject, string resource)
+    {
+        var account = Account(subject, resource);
+        return new(resource, Kinds[resource].Name,
+            account["current"] is { } current ? StateJson.Number(current, "current") : null,
+            account["capacity"] is { } capacity ? StateJson.Number(capacity, "capacity") : null);
+    }
+
+    public IReadOnlyList<AccountSnapshot> Accounts(Subject subject) => System.Array.AsReadOnly(
+        SupportedResources.Where(resource => HasAccount(subject, resource)).Select(resource => Inspect(subject, resource)).ToArray());
 
     private static readonly IReadOnlyDictionary<string, (string Kind, string Name)> Kinds = new Dictionary<string, (string Kind, string Name)>
     {

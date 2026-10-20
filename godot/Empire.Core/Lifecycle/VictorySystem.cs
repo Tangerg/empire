@@ -8,7 +8,7 @@ namespace Empire.Core.Lifecycle;
 public readonly record struct VictoryResult(int? Team, string Reason);
 
 /// <summary>Source objective resolution and defeat ordering, including GrayFlag's critical survivor objective.</summary>
-public sealed class VictorySystem
+public sealed partial class VictorySystem
 {
     public static IReadOnlyList<string> SupportedObjectives { get; } = System.Array.AsReadOnly(new[]
     {
@@ -19,23 +19,28 @@ public sealed class VictorySystem
     private readonly ScenarioSystem scenarios;
     private readonly Func<JsonObject, int, JsonObject, string>? extraObjective;
     private readonly Func<JsonObject, string>? extraObjectiveDescription;
+    private readonly Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress;
     public VictorySystem(JsonArray packs, ScenarioSystem? scenarios = null,
         Func<JsonObject, int, JsonObject, string>? extraObjective = null,
-        Func<JsonObject, string>? extraObjectiveDescription = null)
+        Func<JsonObject, string>? extraObjectiveDescription = null,
+        Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress = null)
     {
         content = new StateContent(packs);
         this.scenarios = scenarios ?? new ScenarioSystem(content);
         this.extraObjective = extraObjective;
         this.extraObjectiveDescription = extraObjectiveDescription;
+        this.extraObjectiveProgress = extraObjectiveProgress;
     }
     internal VictorySystem(StateContent content, ScenarioSystem scenarios,
         Func<JsonObject, int, JsonObject, string>? extraObjective = null,
-        Func<JsonObject, string>? extraObjectiveDescription = null)
+        Func<JsonObject, string>? extraObjectiveDescription = null,
+        Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress = null)
     {
         this.content = content;
         this.scenarios = scenarios;
         this.extraObjective = extraObjective;
         this.extraObjectiveDescription = extraObjectiveDescription;
+        this.extraObjectiveProgress = extraObjectiveProgress;
     }
 
     public VictoryResult Evaluate(JsonObject state, Action<JsonObject> emit)

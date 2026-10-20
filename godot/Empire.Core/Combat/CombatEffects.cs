@@ -89,6 +89,10 @@ public sealed class CombatEffects
         return true;
     }
 
+    private static readonly double[] RankThresholds = [120, 320];
+    public double? NextRankThreshold(int rank) => rank >= 0 && rank < RankThresholds.Length ? RankThresholds[rank] : null;
+    public int RankFor(double progress) => progress >= RankThresholds[1] ? 2 : progress >= RankThresholds[0] ? 1 : 0;
+
     public void AwardRankProgress(JsonObject unit, double requested, Action<JsonObject> emit)
     {
         var gained = Math.Max(0, StateJson.Round(requested));
@@ -98,7 +102,7 @@ public sealed class CombatEffects
         emit(new JsonObject { ["type"] = "rankProgressChanged", ["unit"] = unit["id"]!.DeepClone(),
             ["amount"] = gained, ["current"] = unit["rankProgress"]!.DeepClone() });
         var progress = StateJson.Number(unit, "rankProgress", 0);
-        var next = progress >= 320 ? 2 : progress >= 120 ? 1 : 0;
+        var next = RankFor(progress);
         var previous = StateJson.Integer(unit, "rank");
         if (next <= previous) return;
         unit["rank"] = next;

@@ -23,7 +23,11 @@ public sealed partial class GrayFlagEngine
 {
     public static IReadOnlyList<string> SupportedAbilities { get; } = System.Array.AsReadOnly(new[] { "wait", "capture", "attack", "heal" });
     private readonly JsonArray packs;
+    private readonly BattleActionRegistry actionHandlers;
+    public bool HandsOffTurn(JsonObject action) => actionHandlers.HandsOffTurn(action);
     internal StateContent Content { get; }
+    public ReadOnlyContent Catalog { get; }
+    public VictorySystem Victory { get; }
     public GridRegistry Grids { get; }
     public MovementRules Movement { get; }
     public TurnOrderSystem Turns { get; }
@@ -48,6 +52,7 @@ public sealed partial class GrayFlagEngine
     {
         packs = Empire.Core.Determinism.EcmaJson.Normalize(contentPacks)!.AsArray();
         Content = new StateContent(packs);
+        Catalog = new ReadOnlyContent(Content);
         Grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
         Movement = new MovementRules(packs, Grids);
         Turns = new TurnOrderSystem(packs);
@@ -65,8 +70,11 @@ public sealed partial class GrayFlagEngine
             BattleStateFactory.SpawnUnit(packs, Grids, state, StateJson.Text(source, "unit"),
                 StateJson.Integer(source, "owner"), TacticalQueries.Position(source), done: done, source: source));
         Scenarios = new ScenarioSystem(packs, ScenarioEffects.ConditionMet, ScenarioEffects.Apply);
+        Victory = new VictorySystem(Content, Scenarios, CompositeRules.ObjectiveOutcome,
+            CompositeRules.DescribeObjective, CompositeRules.ObjectiveProgress);
         Ai = new AiPlanner(this, DefaultAiIntents.Create(), DefaultAbilityAiEvaluators.Create(), DefaultAiObjectiveAdvisors.Create());
         ComposePersistence();
+        actionHandlers = Registry();
     }
 
     public JsonObject CreateState(JsonObject level, uint? seed = null)
@@ -78,19 +86,22 @@ public sealed partial class GrayFlagEngine
         return state;
     }
 
-    public Battle CreateBattle(JsonObject level, uint? seed = null) => new(CreateState(level, seed), Registry());
-    private Battle RestoreBattle(JsonObject state) => new(state, Registry());
+    public Battle CreateBattle(JsonObject level, uint? seed = null) => new(CreateState(level, seed), actionHandlers);
+    private Battle RestoreBattle(JsonObject state) => new(state, actionHandlers);
 
     private BattleActionRegistry Registry()
     {
         var registry = new BattleActionRegistry();
-        foreach (var kind in new[] { "command", "endTurn", "tactic", "reaction", "face", "recruit", "deployUnit", "finishDeployment", "embark", "disembark", "changeCareer", "changeFormation" })
+        foreach (var kind in new[] { "command", "tactic", "reaction", "face", "recruit", "deployUnit", "embark", "disembark", "changeCareer", "changeFormation" })
             registry.Register(kind, ApplyAction);
+        registry.Register("endTurn", ApplyAction, handsOffTurn: true);
+        registry.Register("finishDeployment", ApplyAction, handsOffTurn: true);
         return registry;
     }
 
     private BattleLifecycle Lifecycle(JsonObject state, Action<JsonObject> emit) => new(state, packs, emit,
-        Combat, Resources, Scenarios, CompositeRules.ObjectiveOutcome, CompositeRules.DescribeObjective);
+        Combat, Resources, Scenarios, CompositeRules.ObjectiveOutcome, CompositeRules.DescribeObjective,
+        CompositeRules.ObjectiveProgress, Victory);
 
     private void ApplyAction(JsonObject state, JsonObject action, Action<JsonObject> output)
     {

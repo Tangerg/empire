@@ -4,10 +4,16 @@ using Empire.Core.State;
 
 namespace Empire.Core.Tactics;
 
-internal readonly record struct CommandAura(double AttackMultiplier, double DefenseDelta, double MovementDelta);
+public readonly record struct CommandAura(double AttackMultiplier, double DefenseDelta, double MovementDelta);
 
-internal static class TacticalModifiers
+public static class TacticalModifiers
 {
+    public static JsonObject? CommanderUnit(JsonObject state, JsonObject commander) =>
+        TacticalQueries.UnitById(state, StateJson.Integer(commander, "unitId"))?.DeepClone().AsObject();
+
+    public static JsonObject? ActiveCommanderFor(ITacticalGrid grid, JsonObject state, JsonObject unit) =>
+        ActiveCommander(grid, state, unit)?.DeepClone().AsObject();
+
     internal static JsonObject? ActiveCommander(ITacticalGrid grid, JsonObject state, JsonObject unit)
     {
         if (unit["commanderId"] is not { } rawId) return null;
@@ -23,7 +29,7 @@ internal static class TacticalModifiers
             StateJson.Number(commander, "radius", 0) ? commander : null;
     }
 
-    internal static CommandAura CommanderAura(ITacticalGrid grid, JsonObject state, JsonObject unit)
+    public static CommandAura CommanderAura(ITacticalGrid grid, JsonObject state, JsonObject unit)
     {
         var commander = ActiveCommander(grid, state, unit);
         if (commander is null) return new(1, 0, 0);

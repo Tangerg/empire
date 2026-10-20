@@ -6,7 +6,9 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Orders;
 
-/// <summary>One recruitment validator shared by menus and committed orders.</summary>
+public sealed record RecruitCard(string Unit, IReadOnlyList<BattleResources.Cost> Costs, bool Affordable);
+
+/// <summary>Recruitment cards and authoritative command validation.</summary>
 public sealed class RecruitmentOrders
 {
     private readonly StateContent content;
@@ -44,6 +46,24 @@ public sealed class RecruitmentOrders
         var terrain = content.Get("terrains",StateJson.Text(state["map"]!["tiles"]![board.IndexOf(at)],"terrain"));
         return StateJson.Array(terrain["produces"],"produces").Select(value => StateJson.Text(value,"unit"))
             .Where(type => Refusal(state,type,at) is null).ToArray();
+    }
+
+    public IReadOnlyList<RecruitCard> Cards(JsonObject state, Coord at)
+    {
+        var board = movement.Board(state);
+        if (!board.Contains(at)) return [];
+        var index = board.IndexOf(at);
+        var terrain = content.Get("terrains", StateJson.Text(state["map"]!["tiles"]![index], "terrain"));
+        var owner = StateJson.Integer(state, "currentPlayer");
+        if (state["map"]!["owners"]![index] is not { } tileOwner || StateJson.Integer(tileOwner, "owner") != owner) return [];
+        var subject = new BattleResources.Subject("player", TacticalQueries.Player(state, owner));
+        return StateJson.Array(terrain["produces"], "produces").Select(value =>
+        {
+            var type = StateJson.Text(value, "unit");
+            var costs = BattleResources.CopyCosts(StateJson.Array(content.Get("units", type)["recruitCosts"], "recruitCosts"));
+            // Source cards check each authored cost, while dispatch aggregates duplicate resources.
+            return new RecruitCard(type, costs, costs.All(cost => resources.CanSpend(subject, cost.Resource, cost.Amount)));
+        }).ToArray();
     }
 
     public void Recruit(JsonObject state, string type, Coord at, Action<JsonObject> emit)
