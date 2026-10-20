@@ -1,0 +1,660 @@
+[
+  {
+    "atlasId": "crossings-fortifications",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications.png",
+    "baseline": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/crossings-fortifications.png",
+      "sha256": "43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab"
+    },
+    "sources": {
+      "stone-gatehouse": {
+        "sourceSha256": "5aae5c65a3f7b08200464a8a5c58e65ed79ece5d33ff44f492ea9d9e49055478",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 29,
+          "coreBoundingBox": [
+            33,
+            151,
+            1221,
+            1103
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627,
+            1067
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          80.28070175438596
+        ],
+        "presentationScale": 1
+      },
+      "stone-wall-corner": {
+        "sourceSha256": "0565c4c05376d233e270d888c842ac2ec8aad241856c8d0e9804d4bee16b3bf6",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 1,
+          "coreBoundingBox": [
+            49,
+            332,
+            1212,
+            1020
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            538,
+            1018
+          ]
+        },
+        "logicalAnchor": [
+          41.47049441786284,
+          76.68580542264753
+        ],
+        "presentationScale": 1
+      },
+      "stone-wall-straight": {
+        "sourceSha256": "f522f0f190ff343f9fe0cd134007b45767e3abc408e12673dfd0244489a83917",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            71,
+            266,
+            1196,
+            1017
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627,
+            850
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          64.3604465709729
+        ],
+        "presentationScale": 1
+      },
+      "palisade-straight": {
+        "sourceSha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            48,
+            262,
+            1207,
+            970
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627.0,
+            970
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          73.16427432216906
+        ],
+        "presentationScale": 1
+      },
+      "palisade-corner": {
+        "sourceSha256": "345a9b0e7c28bf01ea9cb58fb62e084a85b1becdab919feab1b09a8513c4ead2",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            68,
+            223,
+            1187,
+            1039
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627.0,
+            1040
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          78.29984051036682
+        ],
+        "presentationScale": 1
+      },
+      "palisade-breach": {
+        "sourceSha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            52,
+            169,
+            1215,
+            1001
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627.0,
+            1002
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          75.51196172248804
+        ],
+        "presentationScale": 1
+      },
+      "palisade-gate": {
+        "sourceSha256": "6572fb978b8000171bb4cb3e20a545f947bbaa02f19e9b8bd228cb16a94a33ce",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 13,
+          "coreBoundingBox": [
+            73,
+            81,
+            1175,
+            1216
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627,
+            1100
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          82.70175438596492
+        ],
+        "presentationScale": 1
+      }
+    },
+    "pixelSha256": "b36cc1d679b73922e50b7f6a1767e806eda8a94f2f23361954465bef2ef8802c",
+    "cells": [
+      {
+        "id": "wood-bridge-horizontal",
+        "index": 0,
+        "overridden": false,
+        "baselinePixelSha256": "fdcbf1e6a417ac8742b641183dbc6a19d58eb3e77da3ec4fba034a223c3bfa2d",
+        "outputPixelSha256": "fdcbf1e6a417ac8742b641183dbc6a19d58eb3e77da3ec4fba034a223c3bfa2d"
+      },
+      {
+        "id": "wood-bridge-vertical",
+        "index": 1,
+        "overridden": false,
+        "baselinePixelSha256": "12de1c21889131fe7807018510137edc80b1357b6f28a6bf5bba98fb52d226d1",
+        "outputPixelSha256": "12de1c21889131fe7807018510137edc80b1357b6f28a6bf5bba98fb52d226d1"
+      },
+      {
+        "id": "stone-bridge-horizontal",
+        "index": 2,
+        "overridden": false,
+        "baselinePixelSha256": "930ff595a0539d4314ce9a1dac7f91bc022282e779e36a8d2f8cfb7dae7ef0a1",
+        "outputPixelSha256": "930ff595a0539d4314ce9a1dac7f91bc022282e779e36a8d2f8cfb7dae7ef0a1"
+      },
+      {
+        "id": "stone-bridge-vertical",
+        "index": 3,
+        "overridden": false,
+        "baselinePixelSha256": "7287b9a4b7a915cdb9bf1752a79559371a14b60d2e07b7cca7b83f083f4aa880",
+        "outputPixelSha256": "7287b9a4b7a915cdb9bf1752a79559371a14b60d2e07b7cca7b83f083f4aa880"
+      },
+      {
+        "id": "wood-bridgehead-west",
+        "index": 4,
+        "overridden": false,
+        "baselinePixelSha256": "a2697fec000e6149124ff56f8beec3a23c799beccd96550022a040404ea8c969",
+        "outputPixelSha256": "a2697fec000e6149124ff56f8beec3a23c799beccd96550022a040404ea8c969"
+      },
+      {
+        "id": "wood-bridgehead-east",
+        "index": 5,
+        "overridden": false,
+        "baselinePixelSha256": "5dc10662adc396f977d3ca49451e67c7e4a5485226be21532b06912be8d3fb32",
+        "outputPixelSha256": "5dc10662adc396f977d3ca49451e67c7e4a5485226be21532b06912be8d3fb32"
+      },
+      {
+        "id": "palisade-straight",
+        "index": 6,
+        "overridden": true,
+        "baselinePixelSha256": "8f32bba776d15402f86cb5872f31f150d0b30998da09ce7b73df044056f6f513",
+        "outputPixelSha256": "cd229bdd1c054a758986cdbc478655a4343fc9f8ad7c508dae4e8589d0a290ce"
+      },
+      {
+        "id": "palisade-corner",
+        "index": 7,
+        "overridden": true,
+        "baselinePixelSha256": "35c2738f53ce8e93fa55b466e2f2ed0bbf1fd0986bc19f7d0e30e620c2b5114f",
+        "outputPixelSha256": "b2b57e09a2b6f8937207e2558b821a9f2e3cbe799e5d92ce8d7d872d573bf1d6"
+      },
+      {
+        "id": "palisade-gate",
+        "index": 8,
+        "overridden": true,
+        "baselinePixelSha256": "77e3adead0e88dde549ea715f8e24de9962b1b9f354052f721ac3767027d5d10",
+        "outputPixelSha256": "3526f49347916618f9504e4fb42c3e4eba59490385f5d1a6d986744781bda261"
+      },
+      {
+        "id": "palisade-breach",
+        "index": 9,
+        "overridden": true,
+        "baselinePixelSha256": "7bc9719f97ff258ac892fc9579c1798fc1af10e3781d130848eb4e0d1786fe52",
+        "outputPixelSha256": "2b043c53c6e9c82e3a9782fa5a9cb8772aad7d5f5783f9101b9c3a7d7ee2b619"
+      },
+      {
+        "id": "stone-wall-straight",
+        "index": 10,
+        "overridden": true,
+        "baselinePixelSha256": "7f5977a75f1fe6c4eaf4c5ab3bf44c8507fcfff0caa10e7c718880e7e3576608",
+        "outputPixelSha256": "58c747ee1d03f0cd339aa8c96ba91a1b1eb4caf368432c46147e61c8bac96aa2"
+      },
+      {
+        "id": "stone-wall-corner",
+        "index": 11,
+        "overridden": true,
+        "baselinePixelSha256": "e8116535b6bbf8b4c48c58b81a90a9e032b7f0fbeab5edeb04d87ed244de95e6",
+        "outputPixelSha256": "9815866d0daa02c75345acc66cb43cf1b2f3685ab9a84cb9ab078595d2b82e03"
+      },
+      {
+        "id": "stone-gatehouse",
+        "index": 12,
+        "overridden": true,
+        "baselinePixelSha256": "ae724dbd041b835a2e11840b1949af6f9154cec7a190f8575c45b54802fefb04",
+        "outputPixelSha256": "11fc8b74433a68e918e9b381312526f71b08f27f28dba64c5941441aa5146716"
+      },
+      {
+        "id": "stone-wall-breach",
+        "index": 13,
+        "overridden": false,
+        "baselinePixelSha256": "f828fffae253554a12f32f271b0d3d8b4721d98e96e394aa52b76c1c3779928a",
+        "outputPixelSha256": "f828fffae253554a12f32f271b0d3d8b4721d98e96e394aa52b76c1c3779928a"
+      },
+      {
+        "id": "watchtower-wood",
+        "index": 14,
+        "overridden": false,
+        "baselinePixelSha256": "6fde43adc22e2d15dcf3ad76f82b0c754b19d0f3e599bbff93c0b355352a403f",
+        "outputPixelSha256": "6fde43adc22e2d15dcf3ad76f82b0c754b19d0f3e599bbff93c0b355352a403f"
+      },
+      {
+        "id": "wood-barricade",
+        "index": 15,
+        "overridden": false,
+        "baselinePixelSha256": "d8f8d1a52acff2b1159d8f2416d73244da635b93e1b5156a0a8829d108f271ff",
+        "outputPixelSha256": "d8f8d1a52acff2b1159d8f2416d73244da635b93e1b5156a0a8829d108f271ff"
+      }
+    ]
+  },
+  {
+    "atlasId": "crossings-fortifications",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png",
+    "baseline": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/crossings-fortifications@2x.png",
+      "sha256": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1"
+    },
+    "sources": {
+      "stone-gatehouse": {
+        "sourceSha256": "5aae5c65a3f7b08200464a8a5c58e65ed79ece5d33ff44f492ea9d9e49055478",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 29,
+          "coreBoundingBox": [
+            33,
+            151,
+            1221,
+            1103
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627,
+            1067
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          80.28070175438596
+        ],
+        "presentationScale": 1
+      },
+      "stone-wall-corner": {
+        "sourceSha256": "0565c4c05376d233e270d888c842ac2ec8aad241856c8d0e9804d4bee16b3bf6",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 1,
+          "coreBoundingBox": [
+            49,
+            332,
+            1212,
+            1020
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            538,
+            1018
+          ]
+        },
+        "logicalAnchor": [
+          41.47049441786284,
+          76.68580542264753
+        ],
+        "presentationScale": 1
+      },
+      "stone-wall-straight": {
+        "sourceSha256": "f522f0f190ff343f9fe0cd134007b45767e3abc408e12673dfd0244489a83917",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            71,
+            266,
+            1196,
+            1017
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627,
+            850
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          64.3604465709729
+        ],
+        "presentationScale": 1
+      },
+      "palisade-straight": {
+        "sourceSha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            48,
+            262,
+            1207,
+            970
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627.0,
+            970
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          73.16427432216906
+        ],
+        "presentationScale": 1
+      },
+      "palisade-corner": {
+        "sourceSha256": "345a9b0e7c28bf01ea9cb58fb62e084a85b1becdab919feab1b09a8513c4ead2",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            68,
+            223,
+            1187,
+            1039
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627.0,
+            1040
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          78.29984051036682
+        ],
+        "presentationScale": 1
+      },
+      "palisade-breach": {
+        "sourceSha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            52,
+            169,
+            1215,
+            1001
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627.0,
+            1002
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          75.51196172248804
+        ],
+        "presentationScale": 1
+      },
+      "palisade-gate": {
+        "sourceSha256": "6572fb978b8000171bb4cb3e20a545f947bbaa02f19e9b8bd228cb16a94a33ce",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 13,
+          "coreBoundingBox": [
+            73,
+            81,
+            1175,
+            1216
+          ]
+        },
+        "registration": {
+          "scale": 0.0733652312599681,
+          "origin": [
+            2,
+            2
+          ],
+          "sourceFoot": [
+            627,
+            1100
+          ]
+        },
+        "logicalAnchor": [
+          48.0,
+          82.70175438596492
+        ],
+        "presentationScale": 1
+      }
+    },
+    "pixelSha256": "12e32a961c3bda7fd68abf99416a35b660927a7ff3baafcc660e945d5e2848bf",
+    "cells": [
+      {
+        "id": "wood-bridge-horizontal",
+        "index": 0,
+        "overridden": false,
+        "baselinePixelSha256": "ac3038febf2f837d1fd4eb93b300defc3c48b61643b7566ea3b63a5ead164288",
+        "outputPixelSha256": "ac3038febf2f837d1fd4eb93b300defc3c48b61643b7566ea3b63a5ead164288"
+      },
+      {
+        "id": "wood-bridge-vertical",
+        "index": 1,
+        "overridden": false,
+        "baselinePixelSha256": "5859baeeb09e69c0de84ab40b3c9a419a566aebbc5f3ec4122c46e78868c960d",
+        "outputPixelSha256": "5859baeeb09e69c0de84ab40b3c9a419a566aebbc5f3ec4122c46e78868c960d"
+      },
+      {
+        "id": "stone-bridge-horizontal",
+        "index": 2,
+        "overridden": false,
+        "baselinePixelSha256": "65a6de578ad94ecc955fccedc970518176e9f48dd27911e08f10fae1fcaa95e3",
+        "outputPixelSha256": "65a6de578ad94ecc955fccedc970518176e9f48dd27911e08f10fae1fcaa95e3"
+      },
+      {
+        "id": "stone-bridge-vertical",
+        "index": 3,
+        "overridden": false,
+        "baselinePixelSha256": "2f7559586e384f6c3a6c8fb47a28ea2cec4411acb74a575c2c13476fe05713a7",
+        "outputPixelSha256": "2f7559586e384f6c3a6c8fb47a28ea2cec4411acb74a575c2c13476fe05713a7"
+      },
+      {
+        "id": "wood-bridgehead-west",
+        "index": 4,
+        "overridden": false,
+        "baselinePixelSha256": "809a53a7abe4f20382d2fcc3b8ddbbb450e9d8bfb4ced59b8eb985cf226b3876",
+        "outputPixelSha256": "809a53a7abe4f20382d2fcc3b8ddbbb450e9d8bfb4ced59b8eb985cf226b3876"
+      },
+      {
+        "id": "wood-bridgehead-east",
+        "index": 5,
+        "overridden": false,
+        "baselinePixelSha256": "5f51fafc412ce759ad7492e538c6d271689997ebbb8a430339b07c843001af1c",
+        "outputPixelSha256": "5f51fafc412ce759ad7492e538c6d271689997ebbb8a430339b07c843001af1c"
+      },
+      {
+        "id": "palisade-straight",
+        "index": 6,
+        "overridden": true,
+        "baselinePixelSha256": "ffb753c5993f7e79aa5a858dbae3c102434a37868a5f3fcfcaaa38a38c7d29c5",
+        "outputPixelSha256": "abfb2863abdb998029e3d7ba6af6a0e69d454cf8de858170d40ec1b6a614094c"
+      },
+      {
+        "id": "palisade-corner",
+        "index": 7,
+        "overridden": true,
+        "baselinePixelSha256": "3a91e8b15dc0ae2b77846471c56f25478d39f9f0e01ab34bbeae8192bea79dfc",
+        "outputPixelSha256": "5e59b9844fa0bb9f1c388dde7c7f0ba418778d55eaf213d047d96317cf57c1bc"
+      },
+      {
+        "id": "palisade-gate",
+        "index": 8,
+        "overridden": true,
+        "baselinePixelSha256": "4ce5f2a6321f077e61183e0e1683d76a0ef5bbe4d8c1737237e92acb335ec924",
+        "outputPixelSha256": "9da8f56907832e4a9fb4a0805341bb4c96aa44d7afc4f5d95ddfc2438c06a914"
+      },
+      {
+        "id": "palisade-breach",
+        "index": 9,
+        "overridden": true,
+        "baselinePixelSha256": "ebdfbb878afa168be313499262e0cd255b599738c036de94851cf4c4b2cf39b9",
+        "outputPixelSha256": "a2284b2e1a2ff21ca651b2ec068ab475580c97a22c915fb645f914dd629f9f80"
+      },
+      {
+        "id": "stone-wall-straight",
+        "index": 10,
+        "overridden": true,
+        "baselinePixelSha256": "c2ec6712591010ac11714b700f8ca684622dc405f553e0bf00ec4160ceecd9f5",
+        "outputPixelSha256": "970239afc5818d8feadfb4094b331428da56af57ce0acdf3f4520ea50f10f81e"
+      },
+      {
+        "id": "stone-wall-corner",
+        "index": 11,
+        "overridden": true,
+        "baselinePixelSha256": "6ef1396ddf44226ed7d27bde440991a3f7dd043d6c30660cdd8e459698a405ee",
+        "outputPixelSha256": "89cd295dd04e2be5124adb4b1796c21c92a3677f906a93a4c1fd41a93a3ff9c3"
+      },
+      {
+        "id": "stone-gatehouse",
+        "index": 12,
+        "overridden": true,
+        "baselinePixelSha256": "854a9663b9837c7bd5863e26c30637364efed7c17b982f5fc14c239fcbc7fa2e",
+        "outputPixelSha256": "5176f46f3107521788d413e31f311b8a01879857d59d5f27683ba15f61a3901a"
+      },
+      {
+        "id": "stone-wall-breach",
+        "index": 13,
+        "overridden": false,
+        "baselinePixelSha256": "c8f1d0ac76998ae975f8532208e361af34de84c305685b938017c96067e0ae6c",
+        "outputPixelSha256": "c8f1d0ac76998ae975f8532208e361af34de84c305685b938017c96067e0ae6c"
+      },
+      {
+        "id": "watchtower-wood",
+        "index": 14,
+        "overridden": false,
+        "baselinePixelSha256": "a35cccd5bd639bfcd4d921c450e64123f9d1bab02f2b03eaf0952f5d7dfd3970",
+        "outputPixelSha256": "a35cccd5bd639bfcd4d921c450e64123f9d1bab02f2b03eaf0952f5d7dfd3970"
+      },
+      {
+        "id": "wood-barricade",
+        "index": 15,
+        "overridden": false,
+        "baselinePixelSha256": "d0c399597c0cdb0c788c50a578f2667c27b9192c28e53f12b3364093c2ee8b55",
+        "outputPixelSha256": "d0c399597c0cdb0c788c50a578f2667c27b9192c28e53f12b3364093c2ee8b55"
+      }
+    ]
+  }
+]

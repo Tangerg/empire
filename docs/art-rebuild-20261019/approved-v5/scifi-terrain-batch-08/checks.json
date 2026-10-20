@@ -1,0 +1,118 @@
+[
+  {
+    "topicId": "c02-terrain-verdant-fungus-bed",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "rawEqualsMaster": true,
+    "returnedEqualsRaw": true,
+    "sha256": "c4073c7a26a39f913654415741b62dd2191ab1534f31a16296dff8834451e757",
+    "promptSha256": "436ed08de9ded3984cca14ff127d5b9cf1baa42747f1f804e3b75658a2da17d8",
+    "requestSha256": "a6d4f2191ba87b615523ab61d53d97ae6e16d925fd4d9a032ed349828e04cda1",
+    "fullSourceInspected": true,
+    "nativeWhiteBlackOliveInspected": true,
+    "connectedGridInspected": true,
+    "alphaMatchesOriginal": true,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "distinctCells": 4
+  },
+  {
+    "topicId": "c02-terrain-verdant-living-bridge",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "rawEqualsMaster": true,
+    "returnedEqualsRaw": true,
+    "sha256": "04cd511e76963d5d73355b5c828fb2438722776104fa14167ea819bff6f031c4",
+    "promptSha256": "3968feecce014b19496ec50c842bb2809febdfc20e0cc4d1c57da287f4af55f3",
+    "requestSha256": "42c776fc2079b2682ea4e7e6821de8154c8792a02a89805760cb8e6f18262698",
+    "fullSourceInspected": true,
+    "nativeWhiteBlackOliveInspected": true,
+    "connectedGridInspected": true,
+    "alphaMatchesOriginal": true,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "distinctCells": 16
+  },
+  {
+    "topicId": "c02-terrain-verdant-root-nest",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "rawEqualsMaster": true,
+    "returnedEqualsRaw": true,
+    "sha256": "d797d3018e1b7a8e76792e74d3b7cc0edb7e063496f67b166764e1f76198c69c",
+    "promptSha256": "08058a10f7700c5c3e571f1510013ded9b07a8551dcad93b6d4321392c375f9f",
+    "requestSha256": "2d2a9f99cd7d4f332fa8b0582599f5122e8469b57764704cf028361ad97437d4",
+    "fullSourceInspected": true,
+    "nativeWhiteBlackOliveInspected": true,
+    "connectedGridInspected": true,
+    "alphaMatchesOriginal": true,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "distinctCells": 4
+  },
+  {
+    "topicId": "c02-terrain-verdant-spore-fog",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "rawEqualsMaster": true,
+    "returnedEqualsRaw": true,
+    "sha256": "b1e4ed77c40c5d58c24a484202e0af86c434000c6f2faae42fb69142c63fabdd",
+    "promptSha256": "1fd68099a7faea780ff8bdb97838cb9d552ce527fd49dbdf2483ebafb74106b9",
+    "requestSha256": "e290cda406d9c23f3bcdbe662a96455e252f71624de3bd57b688a28c99a3849f",
+    "fullSourceInspected": true,
+    "nativeWhiteBlackOliveInspected": true,
+    "connectedGridInspected": true,
+    "alphaMatchesOriginal": true,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "distinctCells": 16
+  }
+]

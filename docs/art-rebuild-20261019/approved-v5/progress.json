@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 66,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 624,
+  "formalRuntimeBoundTopics": 628,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -3820,6 +3820,30 @@
       "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
       "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
       "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-verdant-fungus-bed": {
+      "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+      "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+      "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-verdant-living-bridge": {
+      "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+      "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+      "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-verdant-root-nest": {
+      "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+      "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+      "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-verdant-spore-fog": {
+      "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+      "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+      "liveGame": "pending; catalog review only"
     }
   },
   "supplementalBundles": {
@@ -4041,14 +4065,15 @@
       "formalRuntimeBoundCells": [
         "palisade-breach",
         "palisade-corner",
+        "palisade-gate",
         "palisade-straight",
         "stone-gatehouse",
         "stone-wall-corner",
         "stone-wall-straight"
       ],
-      "count": 6,
-      "export": "96/192 whole authored canvas and measured sourceFoot; existing exporter derives per-cell contact anchors, atlas default48,91 unchanged. New palisade slots6,7,9 only, other13 cells byte-identical to prior runtime at both densities.",
-      "runtimeBinding": "Existing three stone sources use later-level fortress selectors; palisade straight/corner/breach are catalog-only, with no invented gameplay placements. Gate remains unbound for perspective.",
+      "count": 7,
+      "export": "96/192 complete authored canvas and measured contacts via unchanged per-cell exporter owner. Palisade gate selects genuine oblique-v2 source; only its slot8 changes from previous189-source snapshot at both densities.",
+      "runtimeBinding": "Existing three stone sources use later-level fortress selectors; all four palisades are catalog-only with no invented gameplay placements.",
       "sceneReview": "Unresolved legacy topology: c01-13 randomly places26 decorative gatehouses on impassable wall cells;28/35 north-south adjacent wall pairs have alpha gaps up to15.55px. Native source/export pass does not establish coherent fortress integration.",
       "liveGame": "pending"
     },

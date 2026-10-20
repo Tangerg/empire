@@ -1,6 +1,6 @@
 {
   "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
-  "asOfUtc": "2026-10-20T08:57:00Z",
+  "asOfUtc": "2026-10-20T09:04:00Z",
   "fullTaskAccepted": false,
   "issues": [
     {
@@ -100,11 +100,12 @@
     },
     {
       "topic": "environment:crossings-fortifications:palisade-gate",
-      "binding": "unbound",
-      "status": "source-layout-correction-required",
+      "binding": "bound-catalog-only",
+      "status": "resolved-source-camera-only",
       "issue": "Frontal-camera discrepancy against original oblique gate; size/anchor concern was an audit mistake, not an actual exporter constraint.",
       "evidence": "palisade-catalog-sources/REVIEW.md",
-      "resolution": "Keep unbound for genuine camera/source correction only. Do not regenerate solely to force atlas-default anchor."
+      "resolution": "One genuine oblique-v2 source edit selected after complete/native96/192 white-black-olive review; both closed doors/posts/banners/handles retained. Original source preserved. Existing measured-contact owner used unchanged; no scene placement or live acceptance.",
+      "resolutionEvidence": "palisade-gate-camera-correction/REVIEW.md"
     },
     {
       "topic": "environment:crossings-fortifications:palisade-breach",

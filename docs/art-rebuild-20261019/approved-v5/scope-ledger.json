@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 624,
+    "formalBound": 628,
     "boundByCategory": {
       "battle-prop": 76,
       "combat-unit": 41,
@@ -17,17 +17,17 @@
       "narrative-static": 80,
       "skill": 96,
       "status": 48,
-      "terrain": 60
+      "terrain": 64
     },
-    "rawPreservedTopics": 626,
+    "rawPreservedTopics": 630,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 189
+    "registeredEnvironmentCells": 190
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 189,
+    "registeredIndividualSourceCells": 190,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -11830,13 +11830,20 @@
       "category": "terrain",
       "label": "维尔达菌床",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/verdant-fungus-bed/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-verdant-fungus-bed.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+        "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-verdant-living-bridge",
@@ -11844,13 +11851,20 @@
       "category": "terrain",
       "label": "维尔达活桥",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/verdant-living-bridge/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-verdant-living-bridge.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+        "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-verdant-root-nest",
@@ -11858,13 +11872,20 @@
       "category": "terrain",
       "label": "维尔达根巢",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/verdant-root-nest/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-verdant-root-nest.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+        "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-verdant-spore-fog",
@@ -11872,13 +11893,20 @@
       "category": "terrain",
       "label": "维尔达孢子雾",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/verdant-spore-fog/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-verdant-spore-fog.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material, whole original atlas identity and raw/master bytes preserved. Broad clean planes; minor organic highlight lobes remain.",
+        "export": "Native32 historical alpha and exact cardinal edges unchanged; integration owner inspected full sources/native white-black-olive. Inherited masks remove peripheral roots/cyan nodes and most mushrooms; bridge/fog identities remain as native connector materials.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Root/fog motif repetition and interior joins remain documented.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-structure-cargo-terminal",
@@ -22543,6 +22571,7 @@
       "registeredApprovedCells": [
         "palisade-breach",
         "palisade-corner",
+        "palisade-gate",
         "palisade-straight",
         "stone-gatehouse",
         "stone-wall-corner",
@@ -22553,14 +22582,15 @@
         "formalRuntimeBoundCells": [
           "palisade-breach",
           "palisade-corner",
+          "palisade-gate",
           "palisade-straight",
           "stone-gatehouse",
           "stone-wall-corner",
           "stone-wall-straight"
         ],
-        "count": 6,
-        "export": "96/192 whole authored canvas and measured sourceFoot; existing exporter derives per-cell contact anchors, atlas default48,91 unchanged. New palisade slots6,7,9 only, other13 cells byte-identical to prior runtime at both densities.",
-        "runtimeBinding": "Existing three stone sources use later-level fortress selectors; palisade straight/corner/breach are catalog-only, with no invented gameplay placements. Gate remains unbound for perspective.",
+        "count": 7,
+        "export": "96/192 complete authored canvas and measured contacts via unchanged per-cell exporter owner. Palisade gate selects genuine oblique-v2 source; only its slot8 changes from previous189-source snapshot at both densities.",
+        "runtimeBinding": "Existing three stone sources use later-level fortress selectors; all four palisades are catalog-only with no invented gameplay placements.",
         "sceneReview": "Unresolved legacy topology: c01-13 randomly places26 decorative gatehouses on impassable wall cells;28/35 north-south adjacent wall pairs have alpha gaps up to15.55px. Native source/export pass does not establish coherent fortress integration.",
         "liveGame": "pending"
       }

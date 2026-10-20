@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "atlases": {
+    "crossings-fortifications": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/crossings-fortifications.png",
+          "sha256": "43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/crossings-fortifications@2x.png",
+          "sha256": "3d7bdd4b141721c668256b9d378b6ff833cd979e2f317c3078b472ee8cf27fd1"
+        }
+      },
+      "cells": {
+        "stone-gatehouse": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-gatehouse/master.png",
+          "sha256": "5aae5c65a3f7b08200464a8a5c58e65ed79ece5d33ff44f492ea9d9e49055478",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1067
+            ]
+          }
+        },
+        "stone-wall-corner": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-wall-corner/master.png",
+          "sha256": "0565c4c05376d233e270d888c842ac2ec8aad241856c8d0e9804d4bee16b3bf6",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              538,
+              1018
+            ]
+          }
+        },
+        "stone-wall-straight": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-wall-straight/master.png",
+          "sha256": "f522f0f190ff343f9fe0cd134007b45767e3abc408e12673dfd0244489a83917",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              850
+            ]
+          }
+        },
+        "palisade-straight": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-straight/palisade-straight-master.png",
+          "sha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627.0,
+              970
+            ]
+          }
+        },
+        "palisade-corner": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-corner/palisade-corner-master.png",
+          "sha256": "345a9b0e7c28bf01ea9cb58fb62e084a85b1becdab919feab1b09a8513c4ead2",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627.0,
+              1040
+            ]
+          }
+        },
+        "palisade-breach": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-breach/palisade-breach-master.png",
+          "sha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627.0,
+              1002
+            ]
+          }
+        },
+        "palisade-gate": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-gate/candidates/oblique-v2/master.png",
+          "sha256": "6572fb978b8000171bb4cb3e20a545f947bbaa02f19e9b8bd228cb16a94a33ce",
+          "registration": {
+            "scale": 0.0733652312599681,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1100
+            ]
+          }
+        }
+      }
+    }
+  }
+}

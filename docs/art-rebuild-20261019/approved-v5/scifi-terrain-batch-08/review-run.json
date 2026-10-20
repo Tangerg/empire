@@ -1,0 +1,46 @@
+[
+  {
+    "topic": "c02-terrain-verdant-fungus-bed",
+    "distinctCells": 4,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-verdant-living-bridge",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-verdant-root-nest",
+    "distinctCells": 4,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-verdant-spore-fog",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  }
+]

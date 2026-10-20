@@ -1,0 +1,9 @@
+# Genuine palisade gate camera correction
+
+One built-in imagegen edit uses the original approved candidate as subject/style target and the complete original4x4 atlas (row3 column1) as camera reference only. Original source bytes remain unchanged. Candidate raw/master are exact copies of the returned1254-square RGBA PNG; prompt, complete request and reference hashes are preserved. No crop, skew, rotate, recolor, alpha surgery or raster filter was applied to the source.
+
+The original candidate was symmetric/front-facing. The new gate has coherent elevated shallow three-quarter perspective: top/right-side planes are visible and right footing lies lower on screen. Both closed doors, posts, stone footings, banners/emblems and ring handles remain. Camera is somewhat more oblique than the old atlas, not a pixel-identical recreation, but its orientation now belongs with the tactical structure family. Full source and native96/192 white/black/olive previews were visually inspected by the integration owner.
+
+Full authored canvas uses the established92/1254 at[2,2] transform. Visually assessed projected ground contact near[627,1100] lies between the two stone footings, not the lowest overall alpha pixel. Existing exporter derives the per-cell anchor[48,82.70175438596492]; atlas default[48,91] is unchanged. Footprint[2,2], obstruction1, slot8 and dimensions96/192 remain. Source body is near opaque with tiny low-alpha edge residue within unchanged validation; no literal all255-interior claim.
+
+Only slot8 differs from the prior runtime at both densities; the other15 slots are pixel-identical, including all bridge and stone cells. Exact export check reproduces both atlases. This is catalog-only selection, not invented gameplay placement or live scene acceptance. The specific camera hold is resolved; general full-task acceptance remains false.

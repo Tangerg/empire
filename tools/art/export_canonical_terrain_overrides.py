@@ -51,6 +51,10 @@ SCIFI_TOPICS = {
     'c02-terrain-uker-memory-overlay': 'nesw-16',
     'c02-terrain-uker-physical-ruin': 'nesw-16',
     'c02-terrain-uker-reality-rebuild': 'nesw-16',
+    'c02-terrain-verdant-fungus-bed': 'variants',
+    'c02-terrain-verdant-living-bridge': 'nesw-16',
+    'c02-terrain-verdant-root-nest': 'variants',
+    'c02-terrain-verdant-spore-fog': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of

@@ -7,16 +7,16 @@ import overrides from '../../../tools/art/canonical-terrain-overrides.json';
 const root = new URL('../../../', import.meta.url);
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const registered = Object.entries(overrides.assets).filter(([topic]) => topic.startsWith('c02-'));
-const historicalReports = ['scifi-terrain-pilot', 'scifi-hesha-terrain', 'scifi-next-terrain', 'scifi-terrain-batch-04', 'scifi-terrain-batch-05', 'scifi-terrain-batch-06', 'scifi-terrain-batch-07'].flatMap(folder => JSON.parse(readFileSync(new URL(
+const historicalReports = ['scifi-terrain-pilot', 'scifi-hesha-terrain', 'scifi-next-terrain', 'scifi-terrain-batch-04', 'scifi-terrain-batch-05', 'scifi-terrain-batch-06', 'scifi-terrain-batch-07', 'scifi-terrain-batch-08'].flatMap(folder => JSON.parse(readFileSync(new URL(
   `docs/art-rebuild-20261019/approved-v5/${folder}/formal-export.json`, root), 'utf8')));
 const correctionReports = JSON.parse(readFileSync(new URL('docs/art-rebuild-20261019/approved-v5/soler-matte-corrections/formal-export.json', root), 'utf8'));
 const reports = [...new Map([...historicalReports, ...correctionReports].map(report => [report.topicId, report])).values()];
 
 describe('C02 native-density terrain catalog', () => {
-  it('retains the complete 32-topic inventory and twenty-eight source-reviewed bindings', () => {
+  it('retains the complete 32-topic inventory and thirty-two source-reviewed bindings', () => {
     expect(manifest.assets.filter(asset => asset.category === 'terrain')).toHaveLength(32);
-    expect(registered).toHaveLength(28);
-    expect(reports).toHaveLength(28);
+    expect(registered).toHaveLength(32);
+    expect(reports).toHaveLength(32);
   });
 
   it.each(registered)('preserves %s geometry, source ownership and exact runtime bytes', (topic, source) => {

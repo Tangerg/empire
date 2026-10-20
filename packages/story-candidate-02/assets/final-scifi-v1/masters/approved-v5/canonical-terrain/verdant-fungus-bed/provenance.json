@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "rawEqualsMaster": true,
+  "sha256": "c4073c7a26a39f913654415741b62dd2191ab1534f31a16296dff8834451e757",
+  "references": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-02.png",
+      "sha256": "a0bb8096065bcd22ad2b61915269d5fac7a7d2bffe381692f8b3ff03d031fdc7"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/candidates/broad-matte-v2/master.png",
+      "sha256": "22cc0fc7b51b4a3a11891537695aec3faaed5db4993daed7de756e2b5bcb3e63"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-heated-walkway/candidates/broad-matte-v2/master.png",
+      "sha256": "71ad80ae86ef50b9175316f95a4c2f679c807c451affe0cca44a2288c7520375"
+    }
+  ],
+  "topicId": "c02-terrain-verdant-fungus-bed",
+  "status": "candidate-native-reviewed-not-registered"
+}

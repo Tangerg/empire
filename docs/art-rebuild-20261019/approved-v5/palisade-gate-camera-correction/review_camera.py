@@ -1,0 +1,11 @@
+from pathlib import Path
+import json,sys,hashlib
+from PIL import Image,ImageDraw
+r=Path.cwd();sys.path.insert(0,str(r/'tools/art'));from export_environment_overrides import render_cell
+p=r/'packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-gate/candidates/oblique-v2';out=r/'docs/art-rebuild-20261019/approved-v5/palisade-gate-camera-correction';im=Image.open(p/'master.png').convert('RGBA');reg={'scale':92/1254,'origin':[2,2],'sourceFoot':[627,1100]};native,hd,anchor=render_cell(im,reg);native.save(out/'native96.png');hd.save(out/'native192.png');sheet=Image.new('RGB',(1000,235),'#ddd');draw=ImageDraw.Draw(sheet)
+for j,bg in enumerate(['white','black','#777e4d']):
+ for image,x in [(native,0),(hd,110)]:
+  frame=Image.new('RGBA',image.size,bg);frame.alpha_composite(image);sheet.paste(frame.convert('RGB'),(j*330+x,25))
+draw.text((0,0),'Oblique gate: measured projected ground contact '+str(anchor),fill='black');sheet.save(out/'native-white-black-olive.png');a=im.getchannel('A');edges=[a.crop(b) for b in [(0,0,1254,1),(0,1253,1254,1254),(0,0,1,1254),(1253,0,1254,1254)]]
+record={'source':str((p/'master.png').relative_to(r)),'sha256':hashlib.sha256((p/'master.png').read_bytes()).hexdigest(),'registration':reg};(out/'proposed-entry.json').write_text(json.dumps(record,indent=2)+'\n');(out/'review.json').write_text(json.dumps({'derivedContactAnchor':anchor,'contactAssessment':'Projected midpoint between the left and right stone-footing ground planes, visually assessed near[627,1100]; not the lowest overall alpha pixel and not forced to atlas default. The shallow diagonal groundline descends to the right.','sourceSize':im.size,'sourceEdgeMaxAlpha':max(e.getextrema()[1] for e in edges),'sourceAlpha128Bbox':a.point(lambda v:255 if v>=128 else 0).getbbox(),'nativeAlpha128Bbox':native.getchannel('A').point(lambda v:255 if v>=128 else 0).getbbox(),'sourceBytesUnchanged':(p/'raw.png').read_bytes()==(p/'master.png').read_bytes()},indent=2)+'\n')
+prompt=(p/'prompt.txt').read_text().strip().replace('\n',' ');(p/'request.json').write_text(json.dumps({'prompt':prompt,'transparent_background':True,'referenced_image_paths':[str(r/v['path']) for v in json.loads((p/'provenance.json').read_text())['originalReferences']]},indent=2)+'\n')

@@ -38,7 +38,7 @@ describe('registered horizontal crossing', () => {
 
   it('preserves immutable legacy atlases and excludes bridge cells from registered fortress overlays', () => {
     const catalog = JSON.parse(readFileSync(resolve(pack, '../../../../tools/art/environment-overrides.json'), 'utf8'));
-    expect(Object.keys(catalog.atlases['crossings-fortifications'].cells).sort()).toEqual(['palisade-breach', 'palisade-corner', 'palisade-straight', 'stone-gatehouse', 'stone-wall-corner', 'stone-wall-straight']);
+    expect(Object.keys(catalog.atlases['crossings-fortifications'].cells).sort()).toEqual(['palisade-breach', 'palisade-corner', 'palisade-gate', 'palisade-straight', 'stone-gatehouse', 'stone-wall-corner', 'stone-wall-straight']);
     // Exact unchanged-cell pixel checks are also enforced by export_environment_overrides --check.
     for (const [name, hash] of [
       ['crossings-fortifications.png', '43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab'],
@@ -56,7 +56,8 @@ describe('registered horizontal crossing', () => {
     expect(atlas.anchor).toEqual([48, 91]);
     expect([atlas.cellWidth, atlas.cellHeight, atlas.cellWidth2x, atlas.cellHeight2x]).toEqual([96, 96, 192, 192]);
     for (const [id, index, footprint] of [
-      ['palisade-straight', 6, [2, 1]], ['palisade-corner', 7, [2, 2]], ['palisade-breach', 9, [2, 1]],
+      ['palisade-straight', 6, [2, 1]], ['palisade-corner', 7, [2, 2]],
+      ['palisade-gate', 8, [2, 2]], ['palisade-breach', 9, [2, 1]],
     ] as const) {
       const spec = catalog.atlases['crossings-fortifications'].cells[id];
       const bytes = readFileSync(resolve(pack, '../../../../', spec.source));
