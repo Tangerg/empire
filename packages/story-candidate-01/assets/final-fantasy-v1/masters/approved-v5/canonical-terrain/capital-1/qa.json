@@ -1,0 +1,41 @@
+{
+  "topicId": "C01-TERRAIN-CAPITAL-1",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-fc37f89c-7ca1-4867-a8f8-77d21abbb706.png",
+  "master": "master.png",
+  "sourceSHA256": "b0aa73f59c15e9db59f0f7b7eca1984f3d5262934772daedeeea4fe4fc1e6bef",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "visualSourceQA": {
+    "subject": "Broad fitted uneven dark masonry with five subdued blue-gray damp seam pockets, rather than a wall or walkway scene.",
+    "style": "Chunky matte slabs, broad muted charcoal faces, restrained low-contrast planes; narrow shallow bevel lines and sparse edge chips remain.",
+    "caveats": [
+      "Some stone faces contain low-contrast mottled paint planes rather than perfectly flat fills.",
+      "Stone-scale coherence and survival of damp seam identity in narrow masks need review against the actual exporter sample window.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticIdentityRetained": true,
+    "noNewMotifsOrBuildings": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero active ground consumers"
+  }
+}

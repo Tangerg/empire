@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-TERRAIN-CAPITAL-2",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-738a1b11-24bf-49dc-9c03-12bc16dc2fa0.png",
+  "master": "master.png",
+  "sourceSHA256": "c63c45b9304e0697e74f341e5c2c38e871ca2706f2dd6d76727a4c67ef7ec0c4",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "visualSourceQA": {
+    "subject": "Orderly staggered capital-street cobbles, four distributed flush square grates with short local subdued blue-gray drainage segments.",
+    "style": "Broad quiet warm-gray/taupe/slate matte stone faces, bold simple grates, muted drainage without glow.",
+    "caveats": [
+      "The generated swatch contains about twelve cobble rows, more than the requested eight, while retaining small ordered paving identity.",
+      "Grates are complete local source details; no guarantee they survive every old narrow connection mask.",
+      "Some broad low-contrast face mottling and shallow bevel lines remain; native visual density needs actual export review.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticIdentityRetained": true,
+    "noNewMotifsOrBuildings": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero active ground consumers"
+  }
+}
