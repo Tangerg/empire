@@ -226,7 +226,7 @@ describe('candidate-01 authored map scenery', () => {
       const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
       expect(layers.ground.slice(0, field.length), levelId).toEqual(field);
       expect(ground, levelId).toContain('world-materials-v1/runtime/meadow-base@2x.png');
-      expect(ground, levelId).toContain('candidate-ground-route');
+      expect(ground, levelId).toContain(candidate01EnvironmentScene(levelId)?.roadCorridor ? 'data-runtime-raster="area-road"' : 'candidate-ground-route');
       expect(boardPiecesMarkup(layers.underUnits), levelId).toContain('candidate-environment-prop');
     }
   });

@@ -2,8 +2,8 @@
 import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
-import { content, engine, shippedLevel, CANDIDATE_01_ART, emptyOverlay } from '../board-harness';
-import { BoardView, SvgBoardSurface } from '@empire/game-ui';
+import { content, engine, shippedLevel, CANDIDATE_01_ART, emptyOverlay, mountBoard } from '../board-harness';
+import { idx } from '@empire/battle-engine';
 import { candidate01RoadGraph } from '../../packages/story-candidate-01/src/presentation/candidate-01-road-corridor';
 import { candidate01IsAreaRoad } from '../../packages/story-candidate-01/src/presentation/candidate-01-road-material';
 import { candidateMaterial } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
@@ -14,9 +14,7 @@ mkdirSync(output, { recursive: true });
 const hash = (value: string) => createHash('sha256').update(value).digest('hex');
 const state = engine.createState(shippedLevel('c01-02'));
 const before = JSON.stringify(state);
-const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART,
-  renderer: scene => new SvgBoardSurface(scene) }, state,
-{ onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {} });
+const board = mountBoard(shippedLevel('c01-02'), CANDIDATE_01_ART);
 board.render(emptyOverlay());
 const initial = board.el.outerHTML;
 const actors = () => [...board.el.querySelectorAll('.layer-units > .unit')].map(unit => unit.outerHTML).join('');
@@ -53,7 +51,7 @@ writeFileSync(resolve(output, 'full-board.svg'), full.outerHTML.replace(/href="(
   return `href="${relative(output, file)}"`;
 }));
 const map = state.map;
-const graph = candidate01RoadGraph(map.width, map.height, (x, y) => candidate01IsAreaRoad(candidateMaterial(content, map.tiles[y * map.width + x])));
+const graph = candidate01RoadGraph(map.width, map.height, (x, y) => candidate01IsAreaRoad(candidateMaterial(content, map.tiles[idx(map, x, y)])));
 writeFileSync(resolve(output, 'review.json'), JSON.stringify({
   kind: 'Full production BoardView SVG with all actors, scenery and targets; offline only',
   levelId: state.levelId, mapSize: [map.width, map.height], stateSha256: hash(before),
