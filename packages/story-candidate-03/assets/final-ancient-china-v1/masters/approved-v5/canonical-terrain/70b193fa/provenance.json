@@ -1,0 +1,48 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "selectedRequest": "edit-request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-236a4a09-bc2c-4a5f-9432-e7c1f61ac540.png",
+  "rawEqualsMasterEqualsReturned": true,
+  "sha256": "977f3461ddf1ca53dd6be4a80bf3f83c5913aa7b6efc358dd33cc4d5ad89e342",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/terrain/terrain-board-01.png",
+      "sha256": "5f288013b8024ad956a2afebf7fc9ed55a56794cbc32be96c5829a7344712460"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/candidates/broad-matte-v2/master.png",
+      "sha256": "22cc0fc7b51b4a3a11891537695aec3faaed5db4993daed7de756e2b5bcb3e63"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-heated-walkway/candidates/broad-matte-v2/master.png",
+      "sha256": "71ad80ae86ef50b9175316f95a4c2f679c807c451affe0cca44a2288c7520375"
+    }
+  ],
+  "topicId": "c03-terrain-70b193fa",
+  "status": "parent-selected-native-reviewed-integration-pending",
+  "invocations": [
+    {
+      "kind": "generate",
+      "requestFile": "request.json",
+      "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-a4a1a9f7-898e-445e-8d4f-f02dbffd4243.png",
+      "sha256": "f410510e5665c1d03a20100c3a856e154a289b8f33a1368de54f1e828d8a83b9"
+    },
+    {
+      "kind": "bounded-edit",
+      "requestFile": "edit-request.json",
+      "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-236a4a09-bc2c-4a5f-9432-e7c1f61ac540.png",
+      "sha256": "977f3461ddf1ca53dd6be4a80bf3f83c5913aa7b6efc358dd33cc4d5ad89e342",
+      "reason": "Initial full-material E/W arm endpoints contained water instead of dry levee earth; native32 diagnostic confirmed the failure.",
+      "outcome": "Dry earth now reaches every cardinal midpoint. No second edit or retry."
+    }
+  ],
+  "processing": "None. Exact generated PNG bytes copied; no source crop, recolor, repaint, filtering or resample."
+}

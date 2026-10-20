@@ -1,0 +1,778 @@
+[
+  {
+    "topicId": "c03-terrain-70b193fa",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/70b193fa/master.png",
+      "sourceSha256": "977f3461ddf1ca53dd6be4a80bf3f83c5913aa7b6efc358dd33cc4d5ad89e342",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "9cd058398dfde44cc127b125f55db4000355efe1bf05988ef88096336a89404f",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "e275549abe35ad7b70e4742d6f2c1477ff52062bf9569872697942e32c439dd9",
+        "edgeBandPixels": 1,
+        "changedPixels": 103,
+        "maxChannelChange": 49,
+        "interiorPixelSha256": "6280fe50a13520098f5d59dcc4c9b56b43321a4611fbc9b84c73253ad2675287",
+        "edgeHashes": {
+          "top": "9a70011c742bcc7a4dc41256094f64d8089ff64facdef039657a42a53564b317",
+          "bottom": "9a70011c742bcc7a4dc41256094f64d8089ff64facdef039657a42a53564b317",
+          "left": "6182b0ff557f45339f36397d0d286f553cad1c188f83810ab4546b49cf1a2a82",
+          "right": "6182b0ff557f45339f36397d0d286f553cad1c188f83810ab4546b49cf1a2a82"
+        },
+        "pixelSha256": "2c633f5cb71b095b8afcdee68d1ee2e5c4744b0ad63a335ba3454d4ec5fc2489"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "b9a783cbaa262cea7bf9146ca25d3f1e915404052ea77db80f8962cf7fa5eb51",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "39af1c91c37a656acef0da6cddcd0c95ef521efe9ae0990d84d272a0e8be1c82",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "3b54b686357b100d44f3bf20850462706897b79b71285f59a4b7807bfa1a891c",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "0f45b30d06a8e3f41a4de53a799171d618d0b6ef9baf6d63abf061b3c615fefa",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "889f84a14e7bb615f9d068b28c136e09c172aa0ea4aa6c6510e2726bcf053a37",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "132b819274c17f854604a8faee96095da33f1e008f92f72246f0b0ac4141351f",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "e384f38520a3bd5eff3925b3b7d1d17e433d00df437a08596815f78a99422722",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "03f620b368468d629e1d23b9bc08a8bfde235f21145b2ba956bde4200be039f7",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "3e2e014e016ac7ecb611a15f9598df5bc1746eb42f3a4ae0276c22089ae4182d",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "03d9eedd0564d6fabdb9a8f96e613801b04a4cd3363ddb0192216004e2b96919",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "e4db47983a62ce65361cb9a2946573f6c7527bfc29bb5bbfba3bdf80d14905ed",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "a1d6f22d6179247e8bb47a5f69ed1adad6bbb32010879260c1f9bb68af668c2b",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "6931e61c33f6185893452372b869802a090366f62c79f9218c954b9ab7681430",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "737b66af1f6635a88f3276811ecbbd0179109442490d9c6e2be607e5d51c3a62",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "bc3a5ad24dd2334c61e664d346088750fdc5a663bb21d5679b28d03bbb5def09",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "3e4f9041872bdfdb468eb42e0f33660dd8c265fb7536c8e0f3f773a596f65d75",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "83866358673ce58f4e557a3cd71088d2833054c4af772188470c5235a52a8125",
+    "pixelSha256": "ba2c569336d11d0b3d64c54c7afbbbf8246725485a6f323a411485dc67816c4d",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        205,
+        155,
+        84,
+        255
+      ],
+      "E": [
+        206,
+        156,
+        83,
+        255
+      ],
+      "S": [
+        205,
+        155,
+        84,
+        255
+      ],
+      "W": [
+        206,
+        156,
+        83,
+        255
+      ]
+    },
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: warm earth R>B for levee; blue water B>R for drains. Does not replace visual topology review."
+  },
+  {
+    "topicId": "c03-terrain-44bffd59",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/44bffd59/master.png",
+      "sourceSha256": "bb2295e311f97a2a1c8a03f8f15b78f14bb6840e26367f7aec45429c0d2811c3",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "7697810b7799e9e77f5b43d552b56737fbba452bcf3b37c29055a8f019f3f6c0",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "87268197b4dd4039c21324341620cfde69603c384cd0c9da3945187d32179b80",
+        "edgeBandPixels": 1,
+        "changedPixels": 94,
+        "maxChannelChange": 30,
+        "interiorPixelSha256": "72c2ef949c49a6a7c3c5961b3a9bec1265515b3fc2d0acf3f0e84f1bf3269305",
+        "edgeHashes": {
+          "top": "94cbd3ccfebc2063d7542d90f18e80e3be1384351133e36984d369153d4c8ca2",
+          "bottom": "94cbd3ccfebc2063d7542d90f18e80e3be1384351133e36984d369153d4c8ca2",
+          "left": "8d4ffe790eb3b73191d59011ce35851e2c6f7a0cca278055da98aeffb70c0796",
+          "right": "8d4ffe790eb3b73191d59011ce35851e2c6f7a0cca278055da98aeffb70c0796"
+        },
+        "pixelSha256": "bbaae46658eeb8f350bab5e65ef71adfc2323fb016039c397428e3afe62f6c75"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "7b59c1a21736377b6e9e7a84a740eeaeb3423e5373e72acf1d0c961e9b52b6ee",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "d58e2a9705436eab8d1e0b3355718cfbb014adcd1994dd64d31c1049a00a48f3",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "a9ee480d28eeebc1d3bef6815d22a60d3dbfc0e7c00aac48e9f927d7aab7cb60",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "61938f7e17e2b1de896a64bd60ed3fb687af2fa4e07cd42d90b1dc179b9de0a2",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "c3e4c4ed0687743a21d6b45e5407209953e8d2303e8647d01d6a675d80986261",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "5f6bbdef3f055226a44680289ea831e8902191fc1610b993906846d8f9ef834e",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "5392d554bac8dbeb520562f8f442fc975881a07567fb0c252a31493eb28e032f",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "0042ab024b020596965c773704de314b93cd66d9a1a38e06cd037e2f7f7c7d42",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "8e8a2f68b9b730b74b7a9715bea16bec76f2612ef9945a11159e3c0809d4cb28",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "08632571e61da17ab6fb16abca75bc7a7a732b56c1f55a6c8f406891bd27feae",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "81a5100eefd02ac18e5ca2b4aec78c994683b9adf8d1247a0183d92fe45c1fb7",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "5f8c3ca2065cf5217decb890603d00a09c99e6e6dd9c03fb8a7f9de52cd3de91",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "e13ecab771b5664d03cee3576560e0c620725671679e24abbb412de668ce6ae0",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "be7b3ca3d41175afa53aa21e9c66794c2f4839ff8925140c41b7978e5d317591",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "ee15d0abc2bc1b5ef5361232868587877855f4ee915230a0a94aee648f7d4ca8",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "0af70dda3266d76f4928cb448437bf5eb8a2a7ad9d85e9e56861601a9f261bb3",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "bf6dccd20d64ea9f5373db24240156b2b289565f9217d7bc76031d7fc16108a7",
+    "pixelSha256": "07414661a7d074ac9df9779f1f86ed719b7ca65a4c36f1d1eed73e65f20cb123",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        92,
+        109,
+        113,
+        255
+      ],
+      "E": [
+        93,
+        111,
+        117,
+        255
+      ],
+      "S": [
+        92,
+        109,
+        113,
+        255
+      ],
+      "W": [
+        93,
+        111,
+        117,
+        255
+      ]
+    },
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: warm earth R>B for levee; blue water B>R for drains. Does not replace visual topology review."
+  },
+  {
+    "topicId": "c03-terrain-769e91a5",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/769e91a5/master.png",
+      "sourceSha256": "1fb909dd045889ce30ff5da2205e318656e8163d24e6c192dd680d1d1668d1e6",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "30dadbe87930c22585be56b6f1ed363ff9b6615cb272b817083b33ce90e84b09",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "1027b28d34e085582ef1a034ef21062ac47f4bd0400fd83dd593c9df0ebd2ac7",
+        "edgeBandPixels": 1,
+        "changedPixels": 84,
+        "maxChannelChange": 35,
+        "interiorPixelSha256": "0783b34fe72f839fd0838a0bbc6edfc30899feab293c5446815bc78a936f0c96",
+        "edgeHashes": {
+          "top": "9960dcffb53ecccd5dc40e4b1ee42fb79f4faf3382571103a83dbe7041a37dfe",
+          "bottom": "9960dcffb53ecccd5dc40e4b1ee42fb79f4faf3382571103a83dbe7041a37dfe",
+          "left": "8326b1f97dd16bf7cfb9a8168fb39740020b5a07a24044a079a8898738b15dac",
+          "right": "8326b1f97dd16bf7cfb9a8168fb39740020b5a07a24044a079a8898738b15dac"
+        },
+        "pixelSha256": "6a810ad2aff5c5875fdb563887622134c916fbabeac9ce5a375d6a48247335dc"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "b724b9eb4e3cd202d1f0636fdc8f92ab74c9261c4e3036565b706e319f53d875",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "c830d876b4ad055eed26d0607ca4e470b701fb4f857df1025fa0d9ba178d08e1",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "9bca5fb2ffd40399bd14913eff2ac9e356a5c0637db716b35f963f910daef63b",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "c9bea144cbe7d483e2ed4efe6d4c5fee3e192f661c2d3daaaa5ec0eac19ae7ff",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "b07e1f89d87ea979f3a6c461a1788c74bcc6f176a817044d118320bd265c4b1e",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "fc09b4e49d7835d001bbdc0e98d450d9bf27d04dae07d2164dfa183fa74425f6",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "294ae6a68f181d646669b753649f2f40c798e3a5e209c336680aba1072700917",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "2b5253ad6aece1c80cd3ccda565b28887c79677c64b40dadbad25080188de73b",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "4f17852c8310182e2ccac38f9fa1b7e048afcdaef36b05ff288ce34ca5b7a843",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "a0b263b360bd053a436bb30c0363c3ea101780d35f90b0314e7f19ce96c3df2a",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "60147f994bee8a312701d2313f0a95217d29c9da27d3e15bedda251b0f0b7f67",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "e078fe4e71954da1227e592fe2687e1e808fb83f84777dd300e9ebfa2399818b",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "4b0de5e86a6b9d77293d7e27ae9c14f06fd5a39fe3758a7cdb6382ec605faf1a",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "1d27cf7c8c5ff8cdfb1b61acdfec4d73a070f4e1164f9697530cfa381bba839b",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "7296ee039ddd2aafdb712794443b1931bf2fe6438d9ff081b34ca1f03ca2620e",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "9db3468074841d3277c19694c07695b74c2e17f58a9bd85931b2aa4baa1e4144",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "e6cc457320e37e6cc915b7ac744355aac935c52ba3f50d7ff4b5e28bbf18cf76",
+    "pixelSha256": "52531ac65d3639d56d428bf77b334735556819af98f5603d231605bc5c09ec2a",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        86,
+        145,
+        164,
+        255
+      ],
+      "E": [
+        67,
+        127,
+        147,
+        255
+      ],
+      "S": [
+        86,
+        145,
+        164,
+        255
+      ],
+      "W": [
+        67,
+        127,
+        147,
+        255
+      ]
+    },
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: warm earth R>B for levee; blue water B>R for drains. Does not replace visual topology review."
+  },
+  {
+    "topicId": "c03-terrain-b7e36bf1",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/b7e36bf1/master.png",
+      "sourceSha256": "3796a839b53c5ca4d4ee9319ba255944bd43137858814aa238fc4737e40f7394",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "9c6356f1e4253e51d712bc6211d2ba97e51419de05915aeba55e9d7c3f9b6a8e",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "87a0a8076641560603287e9ec95ef8bd80e4b5b9f2cac8082f071623068ddc38",
+        "edgeBandPixels": 1,
+        "changedPixels": 119,
+        "maxChannelChange": 44,
+        "interiorPixelSha256": "a37a16777256ef5af4ddf2722e7ed4fb25cea190a385370cd20dd42d631315d3",
+        "edgeHashes": {
+          "top": "64d6a1d36781ac70be71f465d234cf63f554a1bc6eeeb998398bdc733ba52128",
+          "bottom": "64d6a1d36781ac70be71f465d234cf63f554a1bc6eeeb998398bdc733ba52128",
+          "left": "bf8dcc31345e961d61dfd0e9c7469fec084c47d4f130bb6131b355fdd779178f",
+          "right": "bf8dcc31345e961d61dfd0e9c7469fec084c47d4f130bb6131b355fdd779178f"
+        },
+        "pixelSha256": "3dd22ca78924cbff56d6634156f476fd021eb8dc5f374b4c83265c96025ead2f"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "ace2219dbfa9210d3b2ac858337e7e21b8f196b24180c5946d30efb4c7e9232c",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "9dac8a17611ebc9d421781e7a3d40b9097cd360a5cdf9b33afb9418c9ca455f7",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "de422b244c86ea71322e08a97eeca98b8c8e80e58be48e9bc5392129ff5b1d48",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "9e2cb3e57a8cf21da1a217366b6c5122d02177c8b82eecb0e3c70f9b0799c86c",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "f9e2f138c742a16e47dcbf6b20daa74a224d08c7401de6660c21663bce411dc4",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "f92d3dd0a66b1e0d1796a4573876c5ff1e614eaaabdea06920a14c86658e92ee",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "4e6c39f36785ce254d0dc2ef7884acb6c3184f9b70f4763be81ccc0f3ecbb444",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "4f907c01f179dabac22b82a84920f55fdd02f26e3062297cbe66013d90b43b4e",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "7a9b8a2d12faff8b76f831746e41aa28082440cbaf86bc3a2803fdfaffa88197",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "33685219dadde165a24c77ff525abc52cea097f1950729a8c952af651691bfd3",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "2ebe0ff09e1a75216740f6259edff58c5cbfaeedf2df05a78fde50ef6dfad0c4",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "12daf2492a9757ec669e75e96dc26323147e0afd41c2d1aed7bc1da2ec869368",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "380e366b33f2412fc560a4ca5d3abf7a1ab23b822e31d1ade87a57c2725767e6",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "6a8edf87d1b788b499b9be8786fa7e5ab3f40f5286cbfb11974ee05ee17efed2",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "f9a052c41272a0e84194b3113d5153fc4e6f479c3251c99b2c805d7bdd0fa68d",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "67cee832b734cc0ed13805238dbee999b2476287bc52d022cc51ba571698cb93",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "aedfe2eda195094b91ba45e477d68eed6bfd6a354a76df5913d4585d824db694",
+    "pixelSha256": "b7e8faaa5d041a3f0007143aaf481605c2a674cba4ad59accdacada956ee3a03",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        55,
+        87,
+        108,
+        255
+      ],
+      "E": [
+        90,
+        130,
+        154,
+        255
+      ],
+      "S": [
+        55,
+        87,
+        108,
+        255
+      ],
+      "W": [
+        90,
+        130,
+        154,
+        255
+      ]
+    },
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: warm earth R>B for levee; blue water B>R for drains. Does not replace visual topology review."
+  }
+]
