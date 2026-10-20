@@ -1,0 +1,206 @@
+{
+  "status": "Native production source/identity/pose/alpha checks pass; coordinator sequence and actual full-scene acceptance still required",
+  "checks": {
+    "idle": {
+      "rgba": true,
+      "nativeDimensionsMatch": true,
+      "rawMasterByteIdentical": true,
+      "masterMatchesGenerationHash": true,
+      "exactPromptMatchesToolRequest": true,
+      "transparentBackgroundRequested": true,
+      "noPerimeterAlphaAboveOne": true,
+      "wholeCanvasFitsCommonFrame": true
+    },
+    "walk-a": {
+      "rgba": true,
+      "nativeDimensionsMatch": true,
+      "rawMasterByteIdentical": true,
+      "masterMatchesGenerationHash": true,
+      "exactPromptMatchesToolRequest": true,
+      "transparentBackgroundRequested": true,
+      "noPerimeterAlphaAboveOne": true,
+      "wholeCanvasFitsCommonFrame": true
+    },
+    "attack": {
+      "rgba": true,
+      "nativeDimensionsMatch": true,
+      "rawMasterByteIdentical": true,
+      "masterMatchesGenerationHash": true,
+      "exactPromptMatchesToolRequest": true,
+      "transparentBackgroundRequested": true,
+      "noPerimeterAlphaAboveOne": true,
+      "wholeCanvasFitsCommonFrame": true
+    },
+    "walk-b": {
+      "rgba": true,
+      "nativeDimensionsMatch": true,
+      "rawMasterByteIdentical": true,
+      "masterMatchesGenerationHash": true,
+      "exactPromptMatchesToolRequest": true,
+      "transparentBackgroundRequested": true,
+      "noPerimeterAlphaAboveOne": true,
+      "wholeCanvasFitsCommonFrame": true
+    }
+  },
+  "passed": true,
+  "poseOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "allArtworkViaBuiltInImagegen": true,
+  "noSourcePostprocessing": true,
+  "sourceEdits": "Only builtin imagegen edits; native raw/master copied byte-for-byte. QA composites/resamples are separate inspection-only derivatives.",
+  "nativeAlphaCaveat": "Selected idle/attack/walk-b contain native alpha1 edge speckles, none with alpha>1 on perimeter; all preserve exact generated alpha without cleanup. Walk-a perimeteralpha0.",
+  "sameBodyScale": "One64/940 scalar from accepted idle horn22 to forepaw962; no pose-dependent fit or source scaling.",
+  "registrationCaveat": "Far hind toes are partly occluded in idle/attack/walk-b; manual bounded visible-contact estimates are disclosed. Translation is calculated mechanically from measured support estimates, never chosen to reduce neighbor overlap.",
+  "neighborhoodGate": {
+    "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/quartet-position-gate-report.json",
+    "results": [
+      {
+        "dragonCell": [
+          5,
+          6
+        ],
+        "pose": "legacy",
+        "target": "soldier#1@[4, 6]",
+        "areaLogical": 612.3125,
+        "targetVisibleAlphaAreaFraction": 0.4080893072853751,
+        "dragonDrawsInFront": true
+      },
+      {
+        "dragonCell": [
+          5,
+          6
+        ],
+        "pose": "idle",
+        "target": "soldier#1@[4, 6]",
+        "areaLogical": 503.4375,
+        "targetVisibleAlphaAreaFraction": 0.33552713791810723,
+        "dragonDrawsInFront": true
+      },
+      {
+        "dragonCell": [
+          5,
+          6
+        ],
+        "pose": "walk-a",
+        "target": "soldier#1@[4, 6]",
+        "areaLogical": 492.5625,
+        "targetVisibleAlphaAreaFraction": 0.3282792518848669,
+        "dragonDrawsInFront": true
+      },
+      {
+        "dragonCell": [
+          5,
+          6
+        ],
+        "pose": "attack",
+        "target": "soldier#1@[4, 6]",
+        "areaLogical": 506.5,
+        "targetVisibleAlphaAreaFraction": 0.3375682092722956,
+        "dragonDrawsInFront": true
+      },
+      {
+        "dragonCell": [
+          5,
+          6
+        ],
+        "pose": "walk-b",
+        "target": "soldier#1@[4, 6]",
+        "areaLogical": 527.3125,
+        "targetVisibleAlphaAreaFraction": 0.35143916357728994,
+        "dragonDrawsInFront": true
+      },
+      {
+        "dragonCell": [
+          18,
+          7
+        ],
+        "pose": "legacy",
+        "target": "soldier#13@[19, 7]",
+        "areaLogical": 389.5,
+        "targetVisibleAlphaAreaFraction": 0.25959095263881365,
+        "dragonDrawsInFront": false
+      },
+      {
+        "dragonCell": [
+          18,
+          7
+        ],
+        "pose": "idle",
+        "target": "soldier#13@[19, 7]",
+        "areaLogical": 202.8125,
+        "targetVisibleAlphaAreaFraction": 0.13516890906818846,
+        "dragonDrawsInFront": false
+      },
+      {
+        "dragonCell": [
+          18,
+          7
+        ],
+        "pose": "walk-a",
+        "target": "soldier#13@[19, 7]",
+        "areaLogical": 210.0,
+        "targetVisibleAlphaAreaFraction": 0.13995917857291623,
+        "dragonDrawsInFront": false
+      },
+      {
+        "dragonCell": [
+          18,
+          7
+        ],
+        "pose": "attack",
+        "target": "soldier#13@[19, 7]",
+        "areaLogical": 443.625,
+        "targetVisibleAlphaAreaFraction": 0.29566376473528555,
+        "dragonDrawsInFront": false
+      },
+      {
+        "dragonCell": [
+          18,
+          7
+        ],
+        "pose": "walk-b",
+        "target": "soldier#13@[19, 7]",
+        "areaLogical": 186.9375,
+        "targetVisibleAlphaAreaFraction": 0.1245886616403549,
+        "dragonDrawsInFront": false
+      }
+    ],
+    "leftSoldierLegacyFraction": 0.4080893072853751,
+    "allFourLeftSoldierCoverageNoWorseThanLegacy": true,
+    "caveat": "Neighborhood diagram excludes scenery/trees, badge/ring/shadows and terrain materials. It is placement/overlap evidence only, NOT full-scene acceptance or live renderer validation. Original full-scene occlusion is not altered or claimed resolved.",
+    "rightSoldierAttackCaveat": "Attack forward head overlaps right-side foreground soldier by29.57%versus25.96%legacy; soldier draws in front, so this is increased coverage of the dragon rather than the soldier. Nearby foreground knight overlap also remains disclosed; no hiding or depth-order changes."
+  },
+  "rejectedCandidates": [
+    {
+      "candidate": "idle-v1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v1",
+      "reason": "Too broad: soldier[4,6] overlap71.9%at64 and77.7%at68 versus40.8%legacy",
+      "masterSha256": "095b5da0fb2fcfbafb5c65c402a32710dd964a78e1aa2dfbc63de62194121c96",
+      "promptSha256": "e02bb461fe6af32c00396cfc84c14732cac7f54757ea665d0b3541f41206a40f",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    },
+    {
+      "candidate": "idle-v2",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v2",
+      "reason": "Partial compact revision still47.8%soldier overlap at64",
+      "masterSha256": "a22c6a090a094ad67155898a8b7f31658a12bb1c3cee902139856dd85bb6527c",
+      "promptSha256": "12c768b8f2b15fe9c112900a164225d8a378c62242b32d8f02700c0fbadbd5f0",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    },
+    {
+      "candidate": "walk-a-v1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/walk-a-v1",
+      "reason": "Overextended diagonal gait shifted measured support center;44.8%soldier overlap after honest registration",
+      "masterSha256": "e2fc92ac9290d4c5ba04e15eafc8e396e48f4ad1dbf67eb2b443ee92ae5e1ece",
+      "promptSha256": "b75c1c94ed2da5e7e673b95a24e20a4553b4915a93407c6b1470c563c0f16703",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    }
+  ]
+}

@@ -128,5 +128,61 @@
     "golem": 62,
     "policy": "One idle-derived shared scale for complete native canvases, no per-pose fits. Parent actual Three Bridges full-scene gate remains required."
   },
-  "status": "Identity and consumer audit complete; generating first idle only for scale gate"
+  "status": "Native quartet complete; parent final sequence/export/full-scene tests pending",
+  "selectedScale": {
+    "scaleFraction": "64/940",
+    "canonicalSourceFoot": [
+      1024,
+      962
+    ],
+    "commonSourceCanvas": [
+      1586,
+      992
+    ],
+    "proposedFrame": [
+      128,
+      88
+    ],
+    "proposedOrigin": [
+      6,
+      6
+    ]
+  },
+  "selectedAttempts": {
+    "idle": "v3",
+    "walk-a": "v2",
+    "attack": "v1",
+    "walk-b": "v1"
+  },
+  "coordinatorIdleApproval": "2026-10-19 23:50 UTC: revision3 accepted at64/940, support[1024,962]; three poses authorized, preserving compact silhouette, and pose extremes must pass same actual-neighborhood gate.",
+  "quartetManifest": "bundle-manifest.json",
+  "rejectedCandidates": [
+    {
+      "candidate": "idle-v1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v1",
+      "reason": "Too broad: soldier[4,6] overlap71.9%at64 and77.7%at68 versus40.8%legacy",
+      "masterSha256": "095b5da0fb2fcfbafb5c65c402a32710dd964a78e1aa2dfbc63de62194121c96",
+      "promptSha256": "e02bb461fe6af32c00396cfc84c14732cac7f54757ea665d0b3541f41206a40f",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    },
+    {
+      "candidate": "idle-v2",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v2",
+      "reason": "Partial compact revision still47.8%soldier overlap at64",
+      "masterSha256": "a22c6a090a094ad67155898a8b7f31658a12bb1c3cee902139856dd85bb6527c",
+      "promptSha256": "12c768b8f2b15fe9c112900a164225d8a378c62242b32d8f02700c0fbadbd5f0",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    },
+    {
+      "candidate": "walk-a-v1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/walk-a-v1",
+      "reason": "Overextended diagonal gait shifted measured support center;44.8%soldier overlap after honest registration",
+      "masterSha256": "e2fc92ac9290d4c5ba04e15eafc8e396e48f4ad1dbf67eb2b443ee92ae5e1ece",
+      "promptSha256": "b75c1c94ed2da5e7e673b95a24e20a4553b4915a93407c6b1470c563c0f16703",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    }
+  ]
 }

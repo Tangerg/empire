@@ -1,0 +1,105 @@
+{
+  "checks": {
+    "viewport": true,
+    "unitCount": true,
+    "buildingCount": true,
+    "namedPieces": true,
+    "standingDrawOrder": true,
+    "stateSha256": true,
+    "sourceLayerCounts": true,
+    "displayedLayerCounts": true
+  },
+  "changedActors": [
+    {
+      "before": {
+        "id": "actor:12",
+        "actorId": 12,
+        "type": "dragon",
+        "cell": [
+          5,
+          6
+        ],
+        "facing": "south",
+        "origin": [
+          160,
+          192
+        ],
+        "worldFoot": [
+          176,
+          223
+        ],
+        "topicId": "C01-UNIT-ANCIENT-DRAGON",
+        "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ancient-dragon.png",
+        "usesApprovedV5": false
+      },
+      "after": {
+        "id": "actor:12",
+        "actorId": 12,
+        "type": "dragon",
+        "cell": [
+          5,
+          6
+        ],
+        "facing": "south",
+        "origin": [
+          160,
+          192
+        ],
+        "worldFoot": [
+          176,
+          223
+        ],
+        "topicId": "C01-UNIT-ANCIENT-DRAGON",
+        "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ancient-dragon@2x.png",
+        "usesApprovedV5": true
+      }
+    },
+    {
+      "before": {
+        "id": "actor:24",
+        "actorId": 24,
+        "type": "dragon",
+        "cell": [
+          18,
+          7
+        ],
+        "facing": "south",
+        "origin": [
+          576,
+          224
+        ],
+        "worldFoot": [
+          592,
+          255
+        ],
+        "topicId": "C01-UNIT-ANCIENT-DRAGON",
+        "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ancient-dragon.png",
+        "usesApprovedV5": false
+      },
+      "after": {
+        "id": "actor:24",
+        "actorId": 24,
+        "type": "dragon",
+        "cell": [
+          18,
+          7
+        ],
+        "facing": "south",
+        "origin": [
+          576,
+          224
+        ],
+        "worldFoot": [
+          592,
+          255
+        ],
+        "topicId": "C01-UNIT-ANCIENT-DRAGON",
+        "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ancient-dragon@2x.png",
+        "usesApprovedV5": true
+      }
+    }
+  ],
+  "unchangedActorCount": 22,
+  "kind": "actual offline full BoardView comparison",
+  "limitations": "Dense builtin troop formations and environmental occlusion remain. Native pose neighborhood bounds separately checked; no live animation playback."
+}

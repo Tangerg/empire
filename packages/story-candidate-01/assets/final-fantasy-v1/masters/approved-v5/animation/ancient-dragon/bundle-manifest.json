@@ -1,0 +1,262 @@
+{
+  "asset": "C01-UNIT-ANCIENT-DRAGON",
+  "status": "Complete native quartet ready for coordinator acceptance and sole-integrator export/full-scene tests",
+  "generationTool": "built-in image_gen",
+  "selectedAttempts": {
+    "idle": "v3",
+    "walk-a": "v2",
+    "attack": "v1",
+    "walk-b": "v1"
+  },
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sharedScale": 0.06808510638297872,
+  "bodyTargetHeightLogicalPixels": 64,
+  "canonicalSourceFoot": [
+    1024,
+    962
+  ],
+  "proposedCommonFrameSize": [
+    128,
+    88
+  ],
+  "proposedOrigin": [
+    6,
+    6
+  ],
+  "proposedRuntimePivot": [
+    75.71914893617021,
+    71.49787234042553
+  ],
+  "originalArtFootprint": [
+    2,
+    2
+  ],
+  "gameplayChanges": false,
+  "originalSourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-colossus-ivra-wyvern-dragon.png",
+  "identityContract": "Mature gray/olive quadruped adult dragon, four legs plus two wings, amber eye, heavy gray horn crown, beaked snout/chin point, broad slate belly plates, muted olive lichen islands, compact resting membrane wings and inward armored tail. No juvenile red palette or white scar.",
+  "semanticContract": "idle,walk-a,attack,walk-b; opposite diagonal walking supports and braced open-mouth breath-ready attack. Independent breath effect stays separate.",
+  "actualConsumers": [
+    {
+      "level": "three-bridges",
+      "unit": "dragon",
+      "owner": 1,
+      "position": [
+        5,
+        6
+      ]
+    },
+    {
+      "level": "three-bridges",
+      "unit": "dragon",
+      "owner": 2,
+      "position": [
+        18,
+        7
+      ]
+    }
+  ],
+  "consumerClarification": "c01-14 red c01.ivra is IVRA-GROWTH, not this topic.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/request.json",
+      "exactPromptSha256": "f204b49d6d917b3aff90487131256fadd1ed43cfc63b9f4b9915dfcc5930f7ff",
+      "sha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-45c9e6fc-8b00-4113-ba84-cbf55da04fc7.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "referenceImages": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v2/master.png",
+          "sha256": "a22c6a090a094ad67155898a8b7f31658a12bb1c3cee902139856dd85bb6527c"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        1024,
+        962
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Accepted revision3, mature gray/olive dragon with tightly backward-folded wing and compact inward tail; four planted paws."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/request.json",
+      "exactPromptSha256": "2dda926c31656adeb3e0b93a7e93b95198e12fb76fd4a2aae4dd8125e91523b6",
+      "sha256": "d2dd8377c538ac0deac8fa334d731c3e650ff5f48a363bbc17681be25b7d249f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4e61a56b-5c49-4b67-af27-dce8cbb76a1f.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "referenceImages": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/master.png",
+          "sha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/walk-a-v1/master.png",
+          "sha256": "e2fc92ac9290d4c5ba04e15eafc8e396e48f4ad1dbf67eb2b443ee92ae5e1ece"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-a/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        1035,
+        920
+      ],
+      "registrationOffsetLogical": [
+        -0.7489361702127659,
+        2.8595744680851065
+      ],
+      "review": "Accepted candidatev2 short in-place first diagonal gait: near forepaw raised vertically near chest and far hindpaw lifted; far forepaw and near hindpaw support. The broad rightward v1 is preserved and rejected for44.8% neighboring-soldier coverage."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/request.json",
+      "exactPromptSha256": "e359cd7fa7f6ec696cc8d5bdec3e9f8c1590c392a95bb50a2a5ff75bde247c29",
+      "sha256": "d7a70459b7cfb776a3e4a8b1cdf749142a5cde5934136fcf4badf9c725fad750",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b34c55ea-e902-4de5-8f36-e12353af5452.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "referenceImages": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/master.png",
+          "sha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/attack/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        964,
+        956
+      ],
+      "registrationOffsetLogical": [
+        4.085106382978723,
+        0.4085106382978724
+      ],
+      "review": "Forward/down articulated neck and open mouth in a braced breath-ready strike, all four paws planted; no baked fire or independentFX. Mature head/horn dimensions and main body mass hold."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/request.json",
+      "exactPromptSha256": "b8690485442beb378cfcf2b1f92cbb235c173eca0cf8f4b221203441029d66df",
+      "sha256": "601efd4b3ef51dfca06fb781524b7641c2355729ae2f02d564286748a11fe459",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3e5688ba-d6db-45dd-80ed-24f63e9bde3b.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "referenceImages": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/idle/master.png",
+          "sha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/walk-b/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        1045,
+        962
+      ],
+      "registrationOffsetLogical": [
+        -1.4297872340425533,
+        0.0
+      ],
+      "review": "Opposite diagonal phase: far forepaw raised forward and near hindpaw lifted, near forepaw/far hindpaw planted. Visibly distinct support pattern from walk-a."
+    }
+  },
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/registration-evidence.json",
+  "qaReview": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/qa-review.json",
+  "nativeScaleReview": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/quartet-native-scale-1x.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/quartet-native-scale-2x.png"
+  ],
+  "actualNeighborhoodGate": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/quartet-position-gate-report.json",
+  "actualNeighborhoodDiagram": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/quartet-position-gate-neighborhoods-2x.png",
+  "neighborhoodCaveat": "Neighborhood diagram excludes scenery/trees, badge/ring/shadows and terrain materials. It is placement/overlap evidence only, NOT full-scene acceptance or live renderer validation. Original full-scene occlusion is not altered or claimed resolved.",
+  "rejectedCandidates": [
+    {
+      "candidate": "idle-v1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v1",
+      "reason": "Too broad: soldier[4,6] overlap71.9%at64 and77.7%at68 versus40.8%legacy",
+      "masterSha256": "095b5da0fb2fcfbafb5c65c402a32710dd964a78e1aa2dfbc63de62194121c96",
+      "promptSha256": "e02bb461fe6af32c00396cfc84c14732cac7f54757ea665d0b3541f41206a40f",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    },
+    {
+      "candidate": "idle-v2",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/idle-v2",
+      "reason": "Partial compact revision still47.8%soldier overlap at64",
+      "masterSha256": "a22c6a090a094ad67155898a8b7f31658a12bb1c3cee902139856dd85bb6527c",
+      "promptSha256": "12c768b8f2b15fe9c112900a164225d8a378c62242b32d8f02700c0fbadbd5f0",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    },
+    {
+      "candidate": "walk-a-v1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/candidates/walk-a-v1",
+      "reason": "Overextended diagonal gait shifted measured support center;44.8%soldier overlap after honest registration",
+      "masterSha256": "e2fc92ac9290d4c5ba04e15eafc8e396e48f4ad1dbf67eb2b443ee92ae5e1ece",
+      "promptSha256": "b75c1c94ed2da5e7e673b95a24e20a4553b4915a93407c6b1470c563c0f16703",
+      "rawMasterByteIdentical": true,
+      "exactPromptMatchesToolRequest": true
+    }
+  ],
+  "evidenceScripts": [
+    {
+      "source": "capture-position-gate.ts",
+      "repositoryDestination": "capture-position-gate.ts.txt",
+      "policy": "Evidence-only exact bytes; never sync as .ts under repository masters/docs because root TypeScript compile includes it."
+    },
+    {
+      "source": "check_position_gate.py",
+      "policy": "Read-only analytical metadata/alpha comparison helper, not artwork generation."
+    },
+    {
+      "source": "check_quartet_position_gate.py",
+      "policy": "Read-only actual-neighborhood extreme pose analysis; no full-scene acceptance."
+    },
+    {
+      "source": "measure_quartet.py",
+      "policy": "Read-only registration and native scale inspection derivatives."
+    },
+    {
+      "source": "record_native.py",
+      "policy": "Byte-preserving raw/master copy and QA composites only."
+    }
+  ],
+  "integrationOwnership": "Parent is sole exporter/integrator/test/push owner; worker changed no repository or Git files.",
+  "exactPromptPolicy": "Every selected/rejected prompt exactly matches retained request JSON; source references and generated outputs are hashed."
+}

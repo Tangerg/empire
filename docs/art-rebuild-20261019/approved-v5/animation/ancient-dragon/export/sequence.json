@@ -1,0 +1,341 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-b/master.png"
+    },
+    "scale": 0.06808510638297872,
+    "origin": [
+      6,
+      6
+    ],
+    "frameSize": [
+      128,
+      88
+    ],
+    "sourceFoot": [
+      1024,
+      962
+    ],
+    "sourceFeet": {
+      "idle": [
+        1024,
+        962
+      ],
+      "walk-a": [
+        1035,
+        920
+      ],
+      "attack": [
+        964,
+        956
+      ],
+      "walk-b": [
+        1045,
+        962
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.7489361702127659,
+        2.8595744680851065
+      ],
+      "attack": [
+        4.085106382978723,
+        0.4085106382978724
+      ],
+      "walk-b": [
+        -1.4297872340425533,
+        0.0
+      ]
+    },
+    "registrationLimit": 5,
+    "canvasPaddingTolerance": 0,
+    "meaning": "Actual builtin three-bridges adult gray dragon; compact wing/tail, opposing support gait and open-mouth attack. Same full-canvas scale and measured paw support.",
+    "registrationReason": "Measured attack stance center differs60native pixels, giving4.085logicalpx horizontal full-canvas registration; no scale change. Actual-neighborhood pose extremes reviewed against unchanged legacy placement."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    75.71914893617021,
+    71.49787234042553
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8924,
+        "nearOpaquePixels": 1981,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          8,
+          101,
+          71
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 36054,
+        "nearOpaquePixels": 8198,
+        "edgeMax": 0,
+        "visibleBounds": [
+          91,
+          15,
+          202,
+          143
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-a/master.png",
+      "registrationOffset": [
+        -0.7489361702127659,
+        2.8595744680851065
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d2dd8377c538ac0deac8fa334d731c3e650ff5f48a363bbc17681be25b7d249f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9118,
+        "nearOpaquePixels": 1785,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          11,
+          100,
+          71
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-a/master.png",
+      "registrationOffset": [
+        -0.7489361702127659,
+        2.8595744680851065
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d2dd8377c538ac0deac8fa334d731c3e650ff5f48a363bbc17681be25b7d249f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 36783,
+        "nearOpaquePixels": 7460,
+        "edgeMax": 0,
+        "visibleBounds": [
+          90,
+          21,
+          200,
+          143
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/attack/master.png",
+      "registrationOffset": [
+        4.085106382978723,
+        0.4085106382978724
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d7a70459b7cfb776a3e4a8b1cdf749142a5cde5934136fcf4badf9c725fad750",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8822,
+        "nearOpaquePixels": 2048,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          17,
+          115,
+          71
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/attack/master.png",
+      "registrationOffset": [
+        4.085106382978723,
+        0.4085106382978724
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d7a70459b7cfb776a3e4a8b1cdf749142a5cde5934136fcf4badf9c725fad750",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 35662,
+        "nearOpaquePixels": 8506,
+        "edgeMax": 0,
+        "visibleBounds": [
+          90,
+          34,
+          231,
+          143
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-b/master.png",
+      "registrationOffset": [
+        -1.4297872340425533,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "601efd4b3ef51dfca06fb781524b7641c2355729ae2f02d564286748a11fe459",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8961,
+        "nearOpaquePixels": 1927,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          8,
+          105,
+          71
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-b/master.png",
+      "registrationOffset": [
+        -1.4297872340425533,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "601efd4b3ef51dfca06fb781524b7641c2355729ae2f02d564286748a11fe459",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 36194,
+        "nearOpaquePixels": 8005,
+        "edgeMax": 0,
+        "visibleBounds": [
+          85,
+          15,
+          211,
+          143
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

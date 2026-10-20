@@ -997,13 +997,13 @@
       "topicId": "C01-UNIT-ANCIENT-DRAGON",
       "label": "古龙",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-ancient-dragon.png",
-      "width": 256,
-      "height": 64,
+      "png": "runtime-approved-v5/combat-unit/unit-ancient-dragon.png",
+      "width": 512,
+      "height": 88,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 88,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1012,13 +1012,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        63
+        75.71914893617021,
+        71.49787234042553
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-ARCHER",

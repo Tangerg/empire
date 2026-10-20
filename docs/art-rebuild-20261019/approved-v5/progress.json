@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 42,
+  "authoredFourPoseBundles": 43,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 319,
+  "formalRuntimeBoundTopics": 320,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1987,6 +1987,12 @@
       "raw": "four native transparent mounted poses; original rider, mount and weapon identity preserved; rejected attempts retained",
       "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
       "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored map consumer; not claimed deployed",
+      "liveGame": "pending"
+    },
+    "C01-UNIT-ANCIENT-DRAGON": {
+      "raw": "four native transparent mounted poses; original rider, mount and weapon identity preserved; rejected attempts retained",
+      "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+      "runtimeBinding": "canonical and HD resolver; actual builtin three-bridges two dragon actors; full offline BoardView comparison,22otheractors/scenery/rules/standingorder unchanged; dense formation occlusion remains",
       "liveGame": "pending"
     }
   },

@@ -1,0 +1,61 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/walk-b/master.png"
+  },
+  "scale": 0.06808510638297872,
+  "origin": [
+    6,
+    6
+  ],
+  "frameSize": [
+    128,
+    88
+  ],
+  "sourceFoot": [
+    1024,
+    962
+  ],
+  "sourceFeet": {
+    "idle": [
+      1024,
+      962
+    ],
+    "walk-a": [
+      1035,
+      920
+    ],
+    "attack": [
+      964,
+      956
+    ],
+    "walk-b": [
+      1045,
+      962
+    ]
+  },
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      -0.7489361702127659,
+      2.8595744680851065
+    ],
+    "attack": [
+      4.085106382978723,
+      0.4085106382978724
+    ],
+    "walk-b": [
+      -1.4297872340425533,
+      0.0
+    ]
+  },
+  "registrationLimit": 5,
+  "canvasPaddingTolerance": 0,
+  "meaning": "Actual builtin three-bridges adult gray dragon; compact wing/tail, opposing support gait and open-mouth attack. Same full-canvas scale and measured paw support.",
+  "registrationReason": "Measured attack stance center differs60native pixels, giving4.085logicalpx horizontal full-canvas registration; no scale change. Actual-neighborhood pose extremes reviewed against unchanged legacy placement."
+}

@@ -1,0 +1,318 @@
+{
+  "idle": {
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      1024,
+      962
+    ],
+    "feet": {
+      "near-hind": {
+        "roi": [
+          810,
+          850,
+          860,
+          930
+        ],
+        "bottomBandX": 849.483870967742,
+        "soleY": 922,
+        "planted": true,
+        "caveat": null
+      },
+      "far-hind": {
+        "roi": [
+          885,
+          835,
+          923,
+          904
+        ],
+        "bottomBandX": 916.3673469387755,
+        "soleY": 903,
+        "planted": true,
+        "caveat": "Visible far-hind toe partly occluded by near foreleg; bounded manual estimate"
+      },
+      "near-fore": {
+        "roi": [
+          930,
+          850,
+          1150,
+          980
+        ],
+        "bottomBandX": 1033.9545454545455,
+        "soleY": 962,
+        "planted": true,
+        "caveat": null
+      },
+      "far-fore": {
+        "roi": [
+          1200,
+          850,
+          1400,
+          960
+        ],
+        "bottomBandX": 1295.030303030303,
+        "soleY": 939,
+        "planted": true,
+        "caveat": null
+      }
+    },
+    "registrationOffsetLogical": [
+      0.0,
+      0.0
+    ],
+    "nativeVisibleBoundsAlphaGreaterThan127": [
+      577,
+      22,
+      1395,
+      963
+    ],
+    "logicalVisibleBounds": [
+      45.285106382978725,
+      7.497872340425532,
+      100.97872340425532,
+      71.56595744680851
+    ],
+    "fullCanvasFits": true
+  },
+  "walk-a": {
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      1035,
+      920
+    ],
+    "feet": {
+      "near-hind": {
+        "roi": [
+          700,
+          820,
+          870,
+          940
+        ],
+        "bottomBandX": 796.8,
+        "soleY": 910,
+        "planted": true,
+        "caveat": null
+      },
+      "far-hind": {
+        "roi": [
+          890,
+          750,
+          1060,
+          880
+        ],
+        "bottomBandX": 1016.5555555555555,
+        "soleY": 862,
+        "planted": false,
+        "caveat": null
+      },
+      "near-fore": {
+        "roi": [
+          1010,
+          650,
+          1180,
+          830
+        ],
+        "bottomBandX": 1030.1272727272728,
+        "soleY": 829,
+        "planted": false,
+        "caveat": null
+      },
+      "far-fore": {
+        "roi": [
+          1160,
+          810,
+          1400,
+          960
+        ],
+        "bottomBandX": 1294.8275862068965,
+        "soleY": 920,
+        "planted": true,
+        "caveat": null
+      }
+    },
+    "registrationOffsetLogical": [
+      -0.7489361702127659,
+      2.8595744680851065
+    ],
+    "nativeVisibleBoundsAlphaGreaterThan127": [
+      584,
+      21,
+      1395,
+      921
+    ],
+    "logicalVisibleBounds": [
+      45.01276595744681,
+      10.28936170212766,
+      100.22978723404255,
+      71.56595744680851
+    ],
+    "fullCanvasFits": true
+  },
+  "attack": {
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      964,
+      956
+    ],
+    "feet": {
+      "near-hind": {
+        "roi": [
+          680,
+          820,
+          810,
+          930
+        ],
+        "bottomBandX": 738.3428571428572,
+        "soleY": 919,
+        "planted": true,
+        "caveat": null
+      },
+      "far-hind": {
+        "roi": [
+          800,
+          810,
+          890,
+          900
+        ],
+        "bottomBandX": 862.6363636363636,
+        "soleY": 899,
+        "planted": true,
+        "caveat": "Visible far-hind toe partly occluded by near foreleg; bounded manual estimate"
+      },
+      "near-fore": {
+        "roi": [
+          880,
+          830,
+          1120,
+          980
+        ],
+        "bottomBandX": 989.7037037037037,
+        "soleY": 956,
+        "planted": true,
+        "caveat": null
+      },
+      "far-fore": {
+        "roi": [
+          1140,
+          830,
+          1390,
+          960
+        ],
+        "bottomBandX": 1266.0,
+        "soleY": 932,
+        "planted": true,
+        "caveat": null
+      }
+    },
+    "registrationOffsetLogical": [
+      4.085106382978723,
+      0.4085106382978724
+    ],
+    "nativeVisibleBoundsAlphaGreaterThan127": [
+      510,
+      156,
+      1548,
+      957
+    ],
+    "logicalVisibleBounds": [
+      44.808510638297875,
+      17.02978723404255,
+      115.48085106382979,
+      71.56595744680851
+    ],
+    "fullCanvasFits": true
+  },
+  "walk-b": {
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      1045,
+      962
+    ],
+    "feet": {
+      "near-hind": {
+        "roi": [
+          700,
+          750,
+          825,
+          910
+        ],
+        "bottomBandX": 770.3148148148148,
+        "soleY": 895,
+        "planted": false,
+        "caveat": null
+      },
+      "far-hind": {
+        "roi": [
+          825,
+          820,
+          935,
+          910
+        ],
+        "bottomBandX": 922.3711340206186,
+        "soleY": 909,
+        "planted": true,
+        "caveat": "Visible far-hind toe partly occluded by near foreleg; bounded manual estimate"
+      },
+      "near-fore": {
+        "roi": [
+          930,
+          850,
+          1160,
+          980
+        ],
+        "bottomBandX": 1031.4772727272727,
+        "soleY": 962,
+        "planted": true,
+        "caveat": null
+      },
+      "far-fore": {
+        "roi": [
+          1280,
+          700,
+          1510,
+          860
+        ],
+        "bottomBandX": 1457.2711864406779,
+        "soleY": 845,
+        "planted": false,
+        "caveat": null
+      }
+    },
+    "registrationOffsetLogical": [
+      -1.4297872340425533,
+      0.0
+    ],
+    "nativeVisibleBoundsAlphaGreaterThan127": [
+      560,
+      22,
+      1482,
+      963
+    ],
+    "logicalVisibleBounds": [
+      42.69787234042553,
+      7.497872340425532,
+      105.47234042553193,
+      71.56595744680851
+    ],
+    "fullCanvasFits": true
+  }
+}

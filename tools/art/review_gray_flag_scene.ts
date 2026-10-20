@@ -1,4 +1,4 @@
-/** Complete selected Gray Flag level BoardView/SvgBoardSurface evidence, with actual actor bindings and no omissions. */
+/** Complete existing level with Gray Flag presentation: actual BoardView, bindings and no omissions. */
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
@@ -10,7 +10,7 @@ const root = resolve(import.meta.dirname, '../..');
 const output = resolve(process.env.STANDING_REVIEW_OUTPUT ?? '/tmp/empire-gray-flag-scene-review');
 mkdirSync(output, { recursive: true });
 const requestedLevel = process.env.SCENE_REVIEW_LEVEL ?? 'c01-01';
-if (!/^c01-\d{2}$/.test(requestedLevel)) throw new Error('expected an existing c01 campaign level ID');
+if (!/^c01-\d{2}$/.test(requestedLevel) && requestedLevel !== 'three-bridges') throw new Error('expected an existing c01 campaign level or builtin three-bridges');
 const level = shippedLevel(requestedLevel);
 const sources = new Map<string, string>();
 const appStylesPath = 'packages/game-ui/src/styles/app.css';
