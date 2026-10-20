@@ -1,0 +1,179 @@
+{
+  "topicId": "C01-CH05-S26",
+  "label": "灰誓议会与灰夜",
+  "originalNarrativeIndexZeroBased": 50,
+  "subgroup": "chapter-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-CH05-S26",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "灰誓议会与灰夜",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s26.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+    "sha256": "412ed4ff17d93d893e6fd6b79e2c3a9f9d6fc359b003bb354989d83ff52a200a",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      47,
+      48,
+      49,
+      50
+    ],
+    "cellIndexZeroBased": 3,
+    "columnZeroBased": 1,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-right",
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-CH05-S26",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH05-S26",
+    "topicId": "C01-CH05-S26",
+    "label": "灰誓议会与灰夜",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch05-s26.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s26.png",
+    "sha256": "8c736d9a0b1d777cbe6280058387e191f3d9a020d5eff2d94e164165a4be484a",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-04",
+        "chapter": 1,
+        "title": "黑旗营地",
+        "location": "灰境西林"
+      },
+      {
+        "id": "c01/aftermath-04",
+        "chapter": 1,
+        "title": "违令留下的证人",
+        "location": "黑旗营外"
+      },
+      {
+        "id": "c01/aftermath-08",
+        "chapter": 2,
+        "title": "一份可以解除的契约",
+        "location": "洛岬粮仓"
+      },
+      {
+        "id": "c01/brief-10",
+        "chapter": 2,
+        "title": "旧旗下的追兵",
+        "location": "灰境东部山口"
+      },
+      {
+        "id": "c01/aftermath-10",
+        "chapter": 2,
+        "title": "允许退出的誓",
+        "location": "山口外营地"
+      },
+      {
+        "id": "c01/brief-13",
+        "chapter": 3,
+        "title": "圣城档案",
+        "location": "圣辉白塔"
+      },
+      {
+        "id": "c01/aftermath-13",
+        "chapter": 3,
+        "title": "保留修改痕迹",
+        "location": "圣城外旧医院"
+      },
+      {
+        "id": "c01/chapter-three-ending",
+        "chapter": 3,
+        "title": "灰旗成为一支军队",
+        "location": "洛岬晨议会"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-04",
+      "c01-10",
+      "c01-13"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": [
+    "Late-campaign council/gray-night identity is reused by shipped early black-camp, mercenary, old-banner and finale scenes; remake does not resolve semantic selection mismatch."
+  ]
+}

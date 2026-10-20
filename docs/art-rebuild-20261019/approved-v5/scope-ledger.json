@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 357,
+    "formalBound": 358,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -13,11 +13,11 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 16,
+      "narrative-static": 17,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 357,
+    "rawPreservedTopics": 358,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -632,13 +632,20 @@
       "category": "narrative-static",
       "label": "灰誓议会与灰夜",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch05-s26/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s26.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque council/map/document hall with anonymous delegates and four source-derived standards; restrained guarded tower window supplements canonical design. Original crowded council and rejected accidental named-lookalike v1 preserved",
+        "export": "Canonical256x144 and reviewed native1664x936 exact crop; full source immutable, native desktop and narrow cover QA recorded; mobile retains council/map/window but crops outer standards; reauthored crowd and composition not pixel-identical",
+        "runtimeBinding": "Actual shared council story resolver, including eight story and three staging selectors; known unrelated-selector reuse remains documented and unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CH06-S29",

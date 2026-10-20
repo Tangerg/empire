@@ -1,0 +1,95 @@
+{
+  "status": "authorized-canonical-design-semantic-completion",
+  "topicId": "C01-CH05-S26",
+  "parentApproval": "2026-10-20 01:34 UTC: A restrained outer-window defense/tower-light view is approved from canonical design; document as design-semantic completion rather than exact restoration. Keep council map/documents primary; do not mix the eight incorrectly reused selectors into this asset; preserve source-derived standards and anonymous people.",
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+    "sha256": "412ed4ff17d93d893e6fd6b79e2c3a9f9d6fc359b003bb354989d83ff52a200a",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      47,
+      48,
+      49,
+      50
+    ],
+    "cellIndexZeroBased": 3,
+    "columnZeroBased": 1,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-right",
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "observedOriginal": "Stone council hall, broad central map table, documents, candles/lanterns, many anonymous representatives and independently hanging heraldic standards. The cropped source omits exterior defense and Gray Night.",
+  "mappingAccuracy": "Exact audited bottom-right source slot retained; accurate mapping does not make every current scene selector semantically correct.",
+  "storyAuthority": {
+    "path": "packages/story-candidate-01/src/story.ts",
+    "sha256": "f0e31a172ff45a1dae57d988e8c672b87e384881e3fe3ec890b84a49588c1299",
+    "consumerIds": [
+      "c01/brief-04",
+      "c01/aftermath-04",
+      "c01/aftermath-08",
+      "c01/brief-10",
+      "c01/aftermath-10",
+      "c01/brief-13",
+      "c01/aftermath-13",
+      "c01/chapter-three-ending"
+    ]
+  },
+  "canonicalDesign": [
+    {
+      "path": "docs/story-candidates/candidate-01/05-two-peaces.md",
+      "sha256": "382d97706f99f80ee0f516d56a7ac251a1f2af71fd6a7dd5837e6ad5fbd0f591"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/05-two-peaces.md",
+      "sha256": "cbd8240ec63faa9415f3b2177509cc696cd2f038f14882b96cd7b5d98fae5e32"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "sha256": "f58d80c8b17003ae22029c8058d4ee53650349568b9e9335ff695d94dfaa4587"
+    }
+  ],
+  "designSupport": [
+    "Chapter05 scene26 Gray Oath Council at Veinport debates limits on command, representation and shared infrastructure",
+    "Representatives distributed among halls, protected by independent defenders",
+    "The seven towers enter partial linkage and cast gray oath light as Gray Night begins",
+    "Static-art specification asks council representatives, defense and gray-tower light in one scene"
+  ],
+  "deliberateChanges": [
+    "Recompose original square crowded council hall as a broad landscape and reduce crowd to readable representatives",
+    "Add modest back opening, two tiny parapet sentries and one distant local signal tower with ash-gray sky light, supported by canonical design but absent from old crop",
+    "Do not invent seven nearby towers: the continent-scale linkage is represented by restrained sky light and one local tower only",
+    "Select four simplified source-derived independent standard motifs: three-pronged spear/trident, eight-ray star, branching twig and elongated angular diamond/spear",
+    "Make central map/documents and equal-height discussion dominant; no throne or named ruler",
+    "Remove accidental Leia-like brown braid and blue armor from initial generation; replace one delegate with plain hooded civilian in targeted attempt2"
+  ],
+  "identity": "All delegates and sentries are anonymous; no approved named character master/identity transplanted or changed.",
+  "knownSelectorMismatch": {
+    "status": "unresolved and out of art scope",
+    "storyCount": 8,
+    "stagingLevels": [
+      "c01-04",
+      "c01-10",
+      "c01-13"
+    ],
+    "finding": "This late-campaign council asset is also selected for black camp, mountain pass, archive, old hospital and earlier council beats. Art alone cannot repair the wrong selector reuse. Selectors were not edited; mixed-topic art was explicitly avoided."
+  },
+  "noCodeOrTextChanges": true
+}

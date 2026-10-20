@@ -1,0 +1,1 @@
+Council scene formally bound with native1664x936 crop and canonical256x144.314 focused tests/typecheck pass. Existing unrelated selector reuse remains documented, not resolved by painting; live pending.
