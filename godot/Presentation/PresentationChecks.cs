@@ -1,0 +1,142 @@
+#nullable enable
+using System;
+using System.Linq;
+using System.Text.Json.Nodes;
+using Godot;
+
+namespace Empire.Presentation;
+
+/// <summary>Executable native-resource checks; run only through the dedicated test scene.</summary>
+public partial class PresentationChecks : Node
+{
+    public override void _Ready()
+    {
+        try
+        {
+            Check();
+            GD.Print("Presentation resource contracts passed.");
+            GetTree().Quit();
+        }
+        catch (Exception error)
+        {
+            GD.PushError(error.ToString());
+            GetTree().Quit(1);
+        }
+    }
+
+    private void Check()
+    {
+        var assets = AssetCatalog.Load();
+        var generic = assets.ResolveUnit("c01.swordsman");
+        var torren = assets.ResolveUnit("c01.swordsman", "campaign-torren");
+        Require(torren.Identity == "torren-stage01", "Actor key must select Torren's own declared sheet.");
+        Require(torren.TopicId == generic.TopicId && torren.Footprint == generic.Footprint,
+            "Named sheet must preserve canonical identity/footprint.");
+        Require(torren.FrameWidth != generic.FrameWidth, "Fixture must exercise independent actor canvas width.");
+        Throws<InvalidOperationException>(() => assets.ResolveUnit("c01.archer", "campaign-torren"),
+            "Mismatched actor type must be rejected.");
+
+        var unitSprite = assets.CreateSprite(torren);
+        try
+        {
+            var frame = unitSprite.Texture as AtlasTexture
+                ?? throw new InvalidOperationException("Sprite must use a native AtlasTexture.");
+            Require(frame.Region.Size.IsEqualApprox(new Vector2(
+                torren.FrameWidth * torren.PixelDensity, torren.FrameHeight * torren.PixelDensity)),
+                "Atlas frame must be measured in physical pixels.");
+            Require((unitSprite.Offset * unitSprite.Scale).IsEqualApprox(-torren.Anchor * torren.PresentationScale),
+                "Logical anchor must be preserved through density scaling.");
+            Require(unitSprite.Modulate == Colors.White, "Actor pixels must not receive a team recolor.");
+            Require((unitSprite.Texture.GetSize() * unitSprite.Scale).IsEqualApprox(
+                new Vector2(torren.FrameWidth, torren.FrameHeight) * torren.PresentationScale),
+                "Density must not double the visual canvas.");
+        }
+        finally { unitSprite.Free(); }
+        Require(AssetCatalog.FrameIndex(torren, "walk-b") == 3
+            && AssetCatalog.FrameIndex(torren, "attack") == 2,
+            "Animation roles must use declared ordering.");
+        var attack = assets.CreateFrameTexture(torren, AssetCatalog.FrameIndex(torren, "attack"));
+        Require(Mathf.IsEqualApprox(attack.Region.Position.X, 2 * torren.FrameWidth * torren.PixelDensity),
+            "Attack frame must crop the correct atlas region.");
+        Throws<InvalidOperationException>(() => AssetCatalog.FrameIndex(torren, "nonexistent"),
+            "Undeclared animation role must not fall back to idle.");
+        const string missingPath = "res://assets/not-exported-contract-check.png";
+        try
+        {
+            assets.CreateFrameTexture(torren with { ResourcePath = missingPath }, 0);
+            throw new InvalidOperationException("Missing physical art must not produce a placeholder texture.");
+        }
+        catch (MissingArtResourceException error)
+        {
+            Require(error.Resource == missingPath, "Missing resource diagnostics must retain the exact path.");
+        }
+
+        var environment = EnvironmentCatalog.Load();
+        var scene = AuthoredScene.Load();
+        var placement = environment.ResolveCell("temperate-hill-cap");
+        var propSprite = environment.CreateSprite(placement.Id, 0.82f, true);
+        try
+        {
+            Require(propSprite.FlipH, "Environment flip must remain frame-local.");
+            Require((propSprite.Offset * propSprite.Scale).IsEqualApprox(
+                -placement.Anchor * placement.PresentationScale * 0.82f),
+                "Authored environment scale must be applied exactly once.");
+        }
+        finally { propSprite.Free(); }
+
+        var fixture = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json");
+        var level = fixture["level"] as JsonObject ?? throw new InvalidOperationException("Fixture level absent.");
+        var state = fixture["state"] as JsonObject ?? throw new InvalidOperationException("Fixture state absent.");
+        var before = state.ToJsonString();
+        var board = new BoardView();
+        AddChild(board);
+        board.Configure(assets, level, scene, environment, facing => facing == "west");
+        board.RenderState(state);
+        Require(state.ToJsonString() == before, "Rendering must not mutate canonical state.");
+        Require(board.RenderedUnitCount == board.ProjectionUnitCount && board.ProjectionUnitCount == 19,
+            "All GrayFlag actors must resolve to real resources.");
+        Require(board.RenderedAuthoredPlacementCount == scene.Placements.Count + scene.FramePlacements.Count,
+            "Every authored placement must resolve to a real resource.");
+        Require(!board.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)
+            || message.Contains("not included", StringComparison.Ordinal)),
+            "The current fixture must not silently omit selected art.");
+        var unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
+        Require(unit.GetMeta("actor_key").AsString() == "campaign-torren",
+            "Canonical actor key must survive projection.");
+        Require(unit.Position.IsEqualApprox(new Vector2(5 * 32 + 16, 8 * 32 + 31)),
+            "Actor contact must preserve CELL_FOOT.");
+        Require(board.StatusText.Contains("terrain compositor is not migrated", StringComparison.Ordinal),
+            "Incomplete compositor must never be described as the complete scene.");
+        board.RenderState(state);
+        Require(board.GetChildCount() == 2, "Repeated projection must not duplicate visual layers.");
+        var changed = (JsonObject)state.DeepClone();
+        changed["units"]!.AsArray()[1]!["x"] = 6;
+        changed["units"]!.AsArray()[1]!["hp"] = 98.0d;
+        board.RenderState(changed);
+        Require(board.GetNode<Node2D>("CanonicalProjection/Unit_2").Position.X == 6 * 32 + 16,
+            "New canonical position must replace, not append to, the old projection.");
+        Require(state.ToJsonString() == before, "Rendering another projection must leave the original intact.");
+        changed["units"]!.AsArray()[1]!["key"] = null;
+        changed["units"]!.AsArray()[1]!["type"] = "not-exported-unit";
+        board.RenderState(changed);
+        Require(board.RenderedUnitCount == 18 && board.ProjectionUnitCount == 19
+            && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal)),
+            "Unavailable art must be explicitly diagnosed without substituting another actor.");
+        board.Configure(assets, level, scene, environment, facing => facing == "west");
+        board.RenderState(state);
+        Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
+        board.QueueFree();
+    }
+
+    private static void Require(bool condition, string message)
+    {
+        if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private static void Throws<T>(Action action, string message) where T : Exception
+    {
+        try { action(); }
+        catch (T) { return; }
+        throw new InvalidOperationException(message);
+    }
+}

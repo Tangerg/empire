@@ -1,0 +1,35 @@
+[
+  {
+    "value": {
+      "text": "灰旗😀\u0000\n\t\"\\",
+      "lone": "\ud800",
+      "numbers": [
+        0,
+        0,
+        1e-7,
+        0.000001,
+        100000000000000000000,
+        1e+21,
+        1.7976931348623157e+308
+      ]
+    },
+    "hash": "668bed03"
+  },
+  {
+    "value": {
+      "😀": 1,
+      "": 2,
+      "levelName": "ignored",
+      "players": [
+        {
+          "controller": "human",
+          "id": 1
+        }
+      ],
+      "nested": {
+        "levelName": "included"
+      }
+    },
+    "hash": "9dbdb85b"
+  }
+]

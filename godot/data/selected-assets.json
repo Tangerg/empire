@@ -1,0 +1,581 @@
+{
+  "schema": 1,
+  "logicalTileSize": 32,
+  "assets": [
+    {
+      "assetId": "C01-FFV1-UNIT-ARCHER",
+      "topicId": "C01-UNIT-ARCHER",
+      "label": "弓箭手",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-archer@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        52.38987341772152,
+        54.68354430379747
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+      "sha256": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "label": "旗卫",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        49.09179926560588,
+        56.83231334149327
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+      "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "label": "守墓人",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.81159420289855,
+        52.02229654403567
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+      "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-HEAVY-KNIGHT",
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "label": "重装骑士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        47.69849246231156,
+        52.29145728643216
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
+      "sha256": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-KNIGHT",
+      "topicId": "C01-UNIT-KNIGHT",
+      "label": "骑士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-knight@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        47.7908787541713,
+        50.93659621802002
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-knight@2x.png",
+      "sha256": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "label": "军团盾卫",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        45.44474986256184,
+        50.975261132490374
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+      "sha256": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-SWORDSMAN",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "label": "剑士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.44444444444444,
+        53.27777777777778
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 768,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+      "sha256": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a"
+    },
+    {
+      "assetId": "C01-FFV1-MISSION-BORDER-FARMER",
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "label": "边境农户",
+      "category": "mission-unit",
+      "png": "runtime-approved-v5/mission-unit/mission-border-farmer@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        44.584664536741215,
+        49.68690095846646
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-border-farmer@2x.png",
+      "sha256": "2d77679f07911b244cad28027dd7534641d01f88f2e567e0b37a4d0f17db371e"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-JOINT-GRANARY",
+      "topicId": "C01-STRUCT-JOINT-GRANARY",
+      "label": "三方共管粮仓",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/structure/struct-joint-granary@2x.png",
+      "width": 516,
+      "height": 172,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 172,
+      "frameHeight": 172,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 0.6,
+      "physicalWidth": 1032,
+      "physicalHeight": 344,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/structure/struct-joint-granary@2x.png",
+      "sha256": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-LORNE-KEEP",
+      "topicId": "C01-STRUCT-LORNE-KEEP",
+      "label": "洛恩堡垒据点",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/structure/struct-lorne-keep@2x.png",
+      "width": 480,
+      "height": 160,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 160,
+      "frameHeight": 160,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 0.65,
+      "physicalWidth": 960,
+      "physicalHeight": 320,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/structure/struct-lorne-keep@2x.png",
+      "sha256": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-WOUNDED-SHELTER",
+      "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+      "label": "伤兵棚",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/interactive-structure/struct-wounded-shelter@2x.png",
+      "width": 384,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        61.419460343417825,
+        107.11692559280458
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "physicalWidth": 768,
+      "physicalHeight": 256,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-wounded-shelter@2x.png",
+      "sha256": "e5a52afe0a2bc5cd862701029ba3e45088921380f3b9e0af23df9ca9cdc3d5a9"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-COVER-2",
+      "topicId": "C01-BPROP-COVER-2",
+      "label": "临时盾墙",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-cover-2.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        49
+      ],
+      "presentationScale": 1.2,
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-cover-2.png",
+      "sha256": "6a71345b1ccecbee95c217d3dcabdff174ffdb18ecd8d9f0c8149a36ea68474a"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-FACTION-2",
+      "topicId": "C01-BPROP-FACTION-2",
+      "label": "洛恩盾标",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-faction-2.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-faction-2.png",
+      "sha256": "ec4783d974488459b3a8477d7926aeb6c017b35dad672c8a4d3091d3c816c12c"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-FACTION-3",
+      "topicId": "C01-BPROP-FACTION-3",
+      "label": "维尔萨道路牌",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-faction-3.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-faction-3.png",
+      "sha256": "9e40ba16dad381e8fc9d1fbabc7ff265a272770c8e3d45b8d5c42f0421477bc4"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-LOGISTICS-1",
+      "topicId": "C01-BPROP-LOGISTICS-1",
+      "label": "粮袋车",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-logistics-1.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-logistics-1.png",
+      "sha256": "110469b5ba0cda64ffd1dd2507cffe71670bc50d0fb33c2460137fcda6b7c14f"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-LOGISTICS-3",
+      "topicId": "C01-BPROP-LOGISTICS-3",
+      "label": "备件架",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-logistics-3.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-logistics-3.png",
+      "sha256": "b688b8790ba6ffc6ac58bde65067b4691c3e3d747a8ee44b83726b9e83bdc735"
+    },
+    {
+      "id": "laiya-stage01",
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "png": "runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        55.33163265306123,
+        59.28061224489796
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "sha256": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57"
+    },
+    {
+      "id": "roderick-stage01",
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "png": "runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        60.2428722280887,
+        63.65575501583949
+      ],
+      "hdWidth": 1024,
+      "hdHeight": 160,
+      "physicalWidth": 1024,
+      "physicalHeight": 160,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+      "sha256": "215fc2c3d3206fc5319ea6d5cbd9042453c422e6c677d73d588c655364b4dbdf"
+    },
+    {
+      "id": "torren-stage01",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        44.51901565995526,
+        51.44519015659955
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
+      "sha256": "456d29121b7e597f05c00a3f00ef529de638eca0da32160d4dad7979db5205c3"
+    },
+    {
+      "id": "cain-stage01",
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "png": "runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        40.8372602739726,
+        50.579726027397264
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "sha256": "0967c3364daa06890b5c9791b1131ffb8f312e851e3f7611141267e425d6d01f"
+    }
+  ]
+}

@@ -1,0 +1,3540 @@
+{
+  "schemaVersion": "environment-builder-v1.1",
+  "campaignId": "candidate-01",
+  "packId": "environment-builder-v1.1",
+  "title": "剧本一 · 通用西幻 SRPG 地图建造包 V1.1",
+  "runtimeReady": false,
+  "qualityTier": "environment-builder-v1.1-candidate",
+  "logicalTileSize": 32,
+  "runtimeScales": [
+    1,
+    2
+  ],
+  "componentCount": 1188,
+  "styleCompatibility": {
+    "existingPack": "../manifest-final-fantasy-v1.json",
+    "reference": "../../../art-assets/reference/art-direction-map.png",
+    "camera": "high-oblique tactical map; existing units remain side-front readable",
+    "palette": [
+      "gray-blue",
+      "moss green",
+      "rain brown",
+      "old stone",
+      "muted burgundy",
+      "restrained amber"
+    ],
+    "lighting": "diffuse overcast upper-left",
+    "material": "matte two-step cartoon shading with dark brown-black outlines"
+  },
+  "assetReview": {
+    "directUseCandidate": [
+      "cliff-modules-temperate",
+      "forest-temperate",
+      "forest-existing",
+      "camps-foundations",
+      "decals-small",
+      "crossings-fortifications",
+      "rural-life"
+    ],
+    "controlledUseCandidate": [
+      "surface-*",
+      "transition-*",
+      "route-*",
+      "route-edge-*",
+      "landmarks-large"
+    ],
+    "laterBiomeCandidate": [
+      "water-*",
+      "cliff-modules-highland",
+      "scenery-regional"
+    ],
+    "holdout": [
+      "elevation-auto-temperate",
+      "elevation-auto-highland"
+    ],
+    "note": "All tiers remain runtimeReady=false until a real level screenshot is approved."
+  },
+  "renderLayers": [
+    "base-surface",
+    "transition",
+    "route",
+    "route-edge",
+    "water",
+    "elevation-edge",
+    "foundation",
+    "ground-decal",
+    "rural-life",
+    "structure-kit",
+    "large-landmark",
+    "forest-scenery",
+    "regional-scenery",
+    "units",
+    "foreground"
+  ],
+  "sceneLayerOrder": [
+    "foundation",
+    "ground-decal",
+    "under-units",
+    "units",
+    "foreground"
+  ],
+  "elevationContract": {
+    "source": "GameMap.elevation integer layer",
+    "supportedVisualLevels": [
+      0,
+      1,
+      2
+    ],
+    "higherLevels": "repeat one-level face by delta",
+    "automaticEdgeMode": "N/E/S/W 16-mask",
+    "movement": "engine maxClimb/maxDrop/uphillCostPerLevel remains authoritative",
+    "lineOfSight": "engine elevation and obstructionHeight remain authoritative",
+    "ramps": "only rampCells are visually passable; editor cliff edges remain authoritative"
+  },
+  "atlases": [
+    {
+      "id": "surface-meadow",
+      "png": "runtime/atlas/surface-meadow.png",
+      "png2x": "runtime/atlas/surface-meadow@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "meadow-1",
+        "meadow-2",
+        "meadow-3",
+        "meadow-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-forest-floor",
+      "png": "runtime/atlas/surface-forest-floor.png",
+      "png2x": "runtime/atlas/surface-forest-floor@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "forest-floor-1",
+        "forest-floor-2",
+        "forest-floor-3",
+        "forest-floor-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-earth",
+      "png": "runtime/atlas/surface-earth.png",
+      "png2x": "runtime/atlas/surface-earth@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "earth-1",
+        "earth-2",
+        "earth-3",
+        "earth-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-old-stone",
+      "png": "runtime/atlas/surface-old-stone.png",
+      "png2x": "runtime/atlas/surface-old-stone@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "old-stone-1",
+        "old-stone-2",
+        "old-stone-3",
+        "old-stone-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-snow",
+      "png": "runtime/atlas/surface-snow.png",
+      "png2x": "runtime/atlas/surface-snow@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "snow-1",
+        "snow-2",
+        "snow-3",
+        "snow-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-wasteland",
+      "png": "runtime/atlas/surface-wasteland.png",
+      "png2x": "runtime/atlas/surface-wasteland@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "wasteland-1",
+        "wasteland-2",
+        "wasteland-3",
+        "wasteland-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-graveyard",
+      "png": "runtime/atlas/surface-graveyard.png",
+      "png2x": "runtime/atlas/surface-graveyard@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "graveyard-1",
+        "graveyard-2",
+        "graveyard-3",
+        "graveyard-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "surface-forge-stone",
+      "png": "runtime/atlas/surface-forge-stone.png",
+      "png2x": "runtime/atlas/surface-forge-stone@2x.png",
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 4,
+      "category": "base-surface",
+      "tileMode": "variants",
+      "variants": 4,
+      "cellOrder": [
+        "forge-stone-1",
+        "forge-stone-2",
+        "forge-stone-3",
+        "forge-stone-4"
+      ],
+      "edgeLocked": true
+    },
+    {
+      "id": "transition-meadow-earth",
+      "png": "runtime/atlas/transition-meadow-earth.png",
+      "png2x": "runtime/atlas/transition-meadow-earth@2x.png",
+      "columns": 16,
+      "rows": 3,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 47,
+      "category": "transition",
+      "tileMode": "blob-47",
+      "baseSurface": "surface-meadow",
+      "overlaySurface": "surface-earth",
+      "maskOrder": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ]
+    },
+    {
+      "id": "transition-meadow-forest",
+      "png": "runtime/atlas/transition-meadow-forest.png",
+      "png2x": "runtime/atlas/transition-meadow-forest@2x.png",
+      "columns": 16,
+      "rows": 3,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 47,
+      "category": "transition",
+      "tileMode": "blob-47",
+      "baseSurface": "surface-meadow",
+      "overlaySurface": "surface-forest-floor",
+      "maskOrder": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ]
+    },
+    {
+      "id": "transition-meadow-snow",
+      "png": "runtime/atlas/transition-meadow-snow.png",
+      "png2x": "runtime/atlas/transition-meadow-snow@2x.png",
+      "columns": 16,
+      "rows": 3,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 47,
+      "category": "transition",
+      "tileMode": "blob-47",
+      "baseSurface": "surface-meadow",
+      "overlaySurface": "surface-snow",
+      "maskOrder": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ]
+    },
+    {
+      "id": "transition-earth-stone",
+      "png": "runtime/atlas/transition-earth-stone.png",
+      "png2x": "runtime/atlas/transition-earth-stone@2x.png",
+      "columns": 16,
+      "rows": 3,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 47,
+      "category": "transition",
+      "tileMode": "blob-47",
+      "baseSurface": "surface-earth",
+      "overlaySurface": "surface-old-stone",
+      "maskOrder": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "bitOrder": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ]
+    },
+    {
+      "id": "route-dirt-road",
+      "png": "runtime/atlas/route-dirt-road.png",
+      "png2x": "runtime/atlas/route-dirt-road@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-edge-dirt-road",
+      "png": "runtime/atlas/route-edge-dirt-road.png",
+      "png2x": "runtime/atlas/route-edge-dirt-road@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route-edge",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "renderAfter": "route-dirt-road",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-mud-road",
+      "png": "runtime/atlas/route-mud-road.png",
+      "png2x": "runtime/atlas/route-mud-road@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-edge-mud-road",
+      "png": "runtime/atlas/route-edge-mud-road.png",
+      "png2x": "runtime/atlas/route-edge-mud-road@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route-edge",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "renderAfter": "route-mud-road",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-stone-road",
+      "png": "runtime/atlas/route-stone-road.png",
+      "png2x": "runtime/atlas/route-stone-road@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-edge-stone-road",
+      "png": "runtime/atlas/route-edge-stone-road.png",
+      "png2x": "runtime/atlas/route-edge-stone-road@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route-edge",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "renderAfter": "route-stone-road",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-forest-trail",
+      "png": "runtime/atlas/route-forest-trail.png",
+      "png2x": "runtime/atlas/route-forest-trail@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "route-edge-forest-trail",
+      "png": "runtime/atlas/route-edge-forest-trail.png",
+      "png2x": "runtime/atlas/route-edge-forest-trail@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route-edge",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "renderAfter": "route-forest-trail",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "water-slow-river",
+      "png": "runtime/atlas/water-slow-river.png",
+      "png2x": "runtime/atlas/water-slow-river@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "water",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": false
+    },
+    {
+      "id": "water-shallow-stream",
+      "png": "runtime/atlas/water-shallow-stream.png",
+      "png2x": "runtime/atlas/water-shallow-stream@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "water",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "water-marsh-channel",
+      "png": "runtime/atlas/water-marsh-channel.png",
+      "png2x": "runtime/atlas/water-marsh-channel@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "water",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true
+    },
+    {
+      "id": "water-icy-water",
+      "png": "runtime/atlas/water-icy-water.png",
+      "png2x": "runtime/atlas/water-icy-water@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "water",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": false
+    },
+    {
+      "id": "elevation-auto-temperate",
+      "png": "runtime/atlas/elevation-auto-temperate.png",
+      "png2x": "runtime/atlas/elevation-auto-temperate@2x.png",
+      "columns": 16,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 48,
+      "cellWidth2x": 64,
+      "cellHeight2x": 96,
+      "componentCount": 16,
+      "category": "elevation-edge",
+      "tileMode": "nesw-16",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "heightDelta": 1,
+      "repeatForHigherDelta": true,
+      "obstructionHeight": 1,
+      "passableOnlyWithRamp": true,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cliff-modules-temperate",
+      "png": "runtime/atlas/cliff-modules-temperate.png",
+      "png2x": "runtime/atlas/cliff-modules-temperate@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 128,
+      "cellHeight": 128,
+      "cellWidth2x": 256,
+      "cellHeight2x": 256,
+      "componentCount": 16,
+      "category": "elevation-module",
+      "tileMode": "modules",
+      "cellOrder": [
+        "straight-south",
+        "end-west",
+        "end-east",
+        "concave-corner",
+        "hill-cap",
+        "ramp-level-1",
+        "ramp-level-2",
+        "mountain-pass",
+        "convex-corner",
+        "broken-ledge",
+        "low-ledge",
+        "talus-foot",
+        "pillar-wide",
+        "pillar-narrow",
+        "ledge-end",
+        "plateau-cap"
+      ],
+      "heightDeltaRange": [
+        1,
+        2
+      ],
+      "anchor": [
+        64,
+        127
+      ],
+      "ySort": "bottom-anchor",
+      "rampCells": [
+        5,
+        6,
+        7
+      ],
+      "blockingByDefault": true,
+      "cells": [
+        {
+          "id": "temperate-cliff-straight-south",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            65.28548644338119,
+            109.18979266347688
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-cliff-end-west",
+          "footprint": [
+            1,
+            2
+          ],
+          "anchor": [
+            58.85805422647528,
+            115.22169059011165
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-cliff-end-east",
+          "footprint": [
+            1,
+            2
+          ],
+          "anchor": [
+            75.96491228070175,
+            110.27751196172248
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-cliff-concave-corner",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            64,
+            96.73046251993621
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            64,
+            102.26794258373205
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-ramp-level-1",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            64,
+            111.7511961722488
+          ],
+          "heightDelta": 1,
+          "obstructionHeight": 0,
+          "passable": true
+        },
+        {
+          "id": "temperate-ramp-level-2",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            64,
+            114.33173843700159
+          ],
+          "heightDelta": 2,
+          "obstructionHeight": 0,
+          "passable": true
+        },
+        {
+          "id": "temperate-mountain-pass",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            68.35087719298245,
+            100.09250398724083
+          ],
+          "heightDelta": 1,
+          "obstructionHeight": 0,
+          "passable": true
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            64,
+            104.83891547049441
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-broken-ledge",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            64,
+            109.48644338118022
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            68.25199362041467,
+            110.87081339712918
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-talus-foot",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            64,
+            111.56299840510367
+          ],
+          "obstructionHeight": 0,
+          "passable": true
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            70.82296650717703,
+            119.47368421052632
+          ],
+          "obstructionHeight": 2,
+          "passable": false
+        },
+        {
+          "id": "temperate-pillar-narrow",
+          "footprint": [
+            1,
+            2
+          ],
+          "anchor": [
+            54.90271132376395,
+            116.21052631578948
+          ],
+          "obstructionHeight": 2,
+          "passable": false
+        },
+        {
+          "id": "temperate-ledge-end",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            63.802232854864435,
+            107.90430622009569
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            68.25199362041467,
+            111.76076555023923
+          ],
+          "obstructionHeight": 1,
+          "passable": false
+        }
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+      "sha256": "59a6e5e226f6ce004ea53f4dc36a0df9825abd7a5ef339b28977b5f70719e9b1"
+    },
+    {
+      "id": "elevation-auto-highland",
+      "png": "runtime/atlas/elevation-auto-highland.png",
+      "png2x": "runtime/atlas/elevation-auto-highland@2x.png",
+      "columns": 16,
+      "rows": 1,
+      "cellWidth": 32,
+      "cellHeight": 48,
+      "cellWidth2x": 64,
+      "cellHeight2x": 96,
+      "componentCount": 16,
+      "category": "elevation-edge",
+      "tileMode": "nesw-16",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "heightDelta": 1,
+      "repeatForHigherDelta": true,
+      "obstructionHeight": 1,
+      "passableOnlyWithRamp": true,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cliff-modules-highland",
+      "png": "runtime/atlas/cliff-modules-highland.png",
+      "png2x": "runtime/atlas/cliff-modules-highland@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 128,
+      "cellHeight": 128,
+      "cellWidth2x": 256,
+      "cellHeight2x": 256,
+      "componentCount": 16,
+      "category": "elevation-module",
+      "tileMode": "modules",
+      "cellOrder": [
+        "straight-south",
+        "end-west",
+        "end-east",
+        "concave-corner",
+        "hill-cap",
+        "ramp-level-1",
+        "ramp-level-2",
+        "mountain-pass",
+        "convex-corner",
+        "broken-ledge",
+        "low-ledge",
+        "talus-foot",
+        "pillar-wide",
+        "pillar-narrow",
+        "ledge-end",
+        "plateau-cap"
+      ],
+      "heightDeltaRange": [
+        1,
+        2
+      ],
+      "anchor": [
+        64,
+        127
+      ],
+      "ySort": "bottom-anchor",
+      "rampCells": [
+        5,
+        6,
+        7
+      ],
+      "blockingByDefault": true,
+      "cells": []
+    },
+    {
+      "id": "forest-existing",
+      "png": "runtime/atlas/forest-existing.png",
+      "png2x": "runtime/atlas/forest-existing@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "cellWidth2x": 192,
+      "cellHeight2x": 192,
+      "componentCount": 16,
+      "category": "forest-scenery",
+      "tileMode": "modules",
+      "cellOrder": [
+        "pine-tall",
+        "pine-pair",
+        "pine-cluster",
+        "pine-sapling",
+        "pine-underbrush-a",
+        "pine-underbrush-b",
+        "pine-underbrush-c",
+        "pine-underbrush-d",
+        "pine-dead",
+        "pine-mature-a",
+        "pine-mature-b",
+        "pine-mature-c",
+        "pine-low-shrub",
+        "pine-fallen-log",
+        "pine-stump",
+        "pine-mossy-rock"
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "pine-tall",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.89154704944178,
+            84.896331738437
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.2
+        },
+        {
+          "id": "pine-pair",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            49.577352472089316,
+            77.00956937799043
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.4
+        },
+        {
+          "id": "pine-cluster",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48.548644338118024,
+            78.03827751196172
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.5
+        },
+        {
+          "id": "pine-sapling",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.165869218500795,
+            79.40988835725678
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.7
+        },
+        {
+          "id": "pine-underbrush-a",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.75438596491228,
+            74.26634768740031
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.8
+        },
+        {
+          "id": "pine-underbrush-b",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.65709728867623,
+            67.68261562998404
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.65
+        },
+        {
+          "id": "pine-underbrush-c",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            46.834130781499205,
+            68.57416267942584
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 1
+        },
+        {
+          "id": "pine-underbrush-d",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            46.696969696969695,
+            65.62519936204146
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.75
+        },
+        {
+          "id": "pine-dead",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.920255183413076,
+            80.91866028708134
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.2
+        },
+        {
+          "id": "pine-mature-a",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.20574162679426,
+            81.67304625199363
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.5
+        },
+        {
+          "id": "pine-mature-b",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.75438596491228,
+            78.9298245614035
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.65
+        },
+        {
+          "id": "pine-mature-c",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.09728867623605,
+            81.53588516746412
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.25
+        },
+        {
+          "id": "pine-low-shrub",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            46.834130781499205,
+            67.6140350877193
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.62
+        },
+        {
+          "id": "pine-fallen-log",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48.548644338118024,
+            60.89314194577352
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.7
+        },
+        {
+          "id": "pine-stump",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.02870813397129,
+            65.28229665071771
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.68
+        },
+        {
+          "id": "pine-mossy-rock",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.20574162679426,
+            67.7511961722488
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.67
+        }
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/forest-existing@2x.png",
+      "sha256": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace"
+    },
+    {
+      "id": "forest-temperate",
+      "png": "runtime/atlas/forest-temperate.png",
+      "png2x": "runtime/atlas/forest-temperate@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "cellWidth2x": 192,
+      "cellHeight2x": 192,
+      "componentCount": 16,
+      "category": "forest-scenery",
+      "tileMode": "modules",
+      "cellOrder": [
+        "oak-ancient",
+        "mixed-forest-autumn",
+        "mixed-forest-dense",
+        "oak-grove-dense",
+        "mixed-forest-edge",
+        "sapling-rock-cluster",
+        "bramble-dark",
+        "fern-bed",
+        "bramble-berries",
+        "stump-low",
+        "stump-hollow",
+        "fallen-hollow-log",
+        "leaf-pile",
+        "boulder-large",
+        "boulder-ferns",
+        "forest-floor-cluster"
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "oak-ancient",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48.89154704944178,
+            83.8676236044657
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.375
+        },
+        {
+          "id": "mixed-forest-autumn",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48.89154704944178,
+            79.75279106858054
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.5
+        },
+        {
+          "id": "mixed-forest-dense",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48.89154704944178,
+            83.52472089314195
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.4375
+        },
+        {
+          "id": "oak-grove-dense",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            47.8628389154705,
+            79.75279106858054
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.625
+        },
+        {
+          "id": "mixed-forest-edge",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48.89154704944178,
+            80.43859649122807
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.5
+        },
+        {
+          "id": "sapling-rock-cluster",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.577352472089316,
+            77.69537480063796
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.9
+        },
+        {
+          "id": "bramble-dark",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.8628389154705,
+            72.89473684210526
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.8
+        },
+        {
+          "id": "fern-bed",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.8628389154705,
+            70.49441786283892
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.65
+        },
+        {
+          "id": "bramble-berries",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.8628389154705,
+            70.83732057416267
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.85
+        },
+        {
+          "id": "stump-low",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48,
+            65.35087719298247
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.8
+        },
+        {
+          "id": "stump-hollow",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.8628389154705,
+            73.23763955342903
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.75
+        },
+        {
+          "id": "fallen-hollow-log",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48.89154704944178,
+            65.00797448165869
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.7
+        },
+        {
+          "id": "leaf-pile",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.068580542264755,
+            51.634768740031895
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.4
+        },
+        {
+          "id": "boulder-large",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.89154704944178,
+            76.87240829346092
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.6
+        },
+        {
+          "id": "boulder-ferns",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.8628389154705,
+            74.60925039872409
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.65
+        },
+        {
+          "id": "forest-floor-cluster",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.068580542264755,
+            56.43540669856459
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.65
+        }
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
+      "sha256": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+    },
+    {
+      "id": "scenery-regional",
+      "png": "runtime/atlas/scenery-regional.png",
+      "png2x": "runtime/atlas/scenery-regional@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "cellWidth2x": 192,
+      "cellHeight2x": 192,
+      "componentCount": 16,
+      "category": "regional-scenery",
+      "tileMode": "modules",
+      "cellOrder": [
+        "snow-pine-cluster",
+        "snow-bare-shrub",
+        "ice-boulder-cluster",
+        "snowdrift-rock",
+        "wasteland-bramble",
+        "wasteland-rock-spire",
+        "wasteland-dry-grass",
+        "wasteland-broken-standard",
+        "grave-cross-cluster",
+        "grave-signboards",
+        "grave-dead-tree",
+        "grave-marker-lantern",
+        "forge-coal-pile",
+        "forge-coal-sacks",
+        "forge-ember-pile",
+        "forge-charcoal-kiln"
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "snow-pine-cluster",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48.96012759170654,
+            82.63317384370016
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.1
+        },
+        {
+          "id": "snow-bare-shrub",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.931419457735245,
+            75.63795853269538
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.7
+        },
+        {
+          "id": "ice-boulder-cluster",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.27432216905901,
+            76.52950558213716
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.9
+        },
+        {
+          "id": "snowdrift-rock",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.09728867623605,
+            71.72886762360447
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.8
+        },
+        {
+          "id": "wasteland-bramble",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.931419457735245,
+            74.60925039872409
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 0.8
+        },
+        {
+          "id": "wasteland-rock-spire",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.09728867623605,
+            78.38118022328548
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.4
+        },
+        {
+          "id": "wasteland-dry-grass",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.27432216905901,
+            76.3237639553429
+          ],
+          "obstructionHeight": 0,
+          "presentationScale": 0.7
+        },
+        {
+          "id": "wasteland-broken-standard",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.89154704944178,
+            80.78149920255183
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1
+        },
+        {
+          "id": "grave-cross-cluster",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            47.8628389154705,
+            75.63795853269538
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.4
+        },
+        {
+          "id": "grave-signboards",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            53.006379585326954,
+            77.69537480063796
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.2
+        },
+        {
+          "id": "grave-dead-tree",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.8628389154705,
+            79.06698564593302
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 2
+        },
+        {
+          "id": "grave-marker-lantern",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            49.577352472089316,
+            77.35247208931419
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.25
+        },
+        {
+          "id": "forge-coal-pile",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            47.931419457735245,
+            71.2488038277512
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.1
+        },
+        {
+          "id": "forge-coal-sacks",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.548644338118024,
+            73.5805422647528
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.6
+        },
+        {
+          "id": "forge-ember-pile",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            48.548644338118024,
+            68.36842105263159
+          ],
+          "obstructionHeight": 1,
+          "presentationScale": 1.1
+        },
+        {
+          "id": "forge-charcoal-kiln",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            47.931419457735245,
+            73.5805422647528
+          ],
+          "obstructionHeight": 2,
+          "presentationScale": 1.7
+        }
+      ]
+    },
+    {
+      "id": "crossings-fortifications",
+      "png": "runtime/atlas/crossings-fortifications.png",
+      "png2x": "runtime/atlas/crossings-fortifications@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "cellWidth2x": 192,
+      "cellHeight2x": 192,
+      "componentCount": 16,
+      "category": "structure-kit",
+      "tileMode": "modules",
+      "cellOrder": [
+        "wood-bridge-horizontal",
+        "wood-bridge-vertical",
+        "stone-bridge-horizontal",
+        "stone-bridge-vertical",
+        "wood-bridgehead-west",
+        "wood-bridgehead-east",
+        "palisade-straight",
+        "palisade-corner",
+        "palisade-gate",
+        "palisade-breach",
+        "stone-wall-straight",
+        "stone-wall-corner",
+        "stone-gatehouse",
+        "stone-wall-breach",
+        "watchtower-wood",
+        "wood-barricade"
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "wood-bridge-horizontal",
+          "footprint": [
+            3,
+            2
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "wood-bridge-vertical",
+          "footprint": [
+            2,
+            3
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "stone-bridge-horizontal",
+          "footprint": [
+            3,
+            2
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "stone-bridge-vertical",
+          "footprint": [
+            2,
+            3
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "wood-bridgehead-west",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "wood-bridgehead-east",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "palisade-straight",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48,
+            73.16427432216906
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "palisade-corner",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48,
+            78.29984051036682
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "palisade-gate",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48,
+            82.70175438596492
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "palisade-breach",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48,
+            75.51196172248804
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "stone-wall-straight",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48,
+            64.3604465709729
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "stone-wall-corner",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            41.47049441786284,
+            76.68580542264753
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "stone-gatehouse",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48,
+            80.28070175438596
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "stone-wall-breach",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "watchtower-wood",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "wood-barricade",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            48,
+            91
+          ],
+          "obstructionHeight": 1
+        }
+      ],
+      "bridgeCells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "wallCells": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "obstructionHeight": 1
+    },
+    {
+      "id": "camps-foundations",
+      "png": "runtime/atlas/camps-foundations.png",
+      "png2x": "runtime/atlas/camps-foundations@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 144,
+      "cellHeight": 144,
+      "cellWidth2x": 288,
+      "cellHeight2x": 288,
+      "componentCount": 16,
+      "category": "foundation",
+      "tileMode": "modules",
+      "cellOrder": [
+        "gray-camp-ground",
+        "vilsa-camp-ground",
+        "keep-foundation",
+        "village-square-foundation",
+        "field-tent-cluster",
+        "supply-tent-workyard",
+        "field-kitchen",
+        "wounded-shelter-ground",
+        "forge-workyard",
+        "livestock-pen",
+        "supply-yard",
+        "watch-post-ground",
+        "border-gate-ground",
+        "abandoned-cart-stop",
+        "ruined-foundation",
+        "memorial-ground"
+      ],
+      "anchor": [
+        72,
+        139
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "gray-camp-ground",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            72,
+            121.76076555023923
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "vilsa-camp-ground",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            72,
+            119.58373205741627
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "keep-foundation",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            126.01116427432217
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "village-square-foundation",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            72,
+            119.79106858054226
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "field-tent-cluster",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            110.66826156299841
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "supply-tent-workyard",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            109.73524720893143
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "field-kitchen",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            122.27910685805422
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "wounded-shelter-ground",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            125.59649122807018
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "forge-workyard",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            121.34609250398724
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "livestock-pen",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            76.45773524720893,
+            121.55342902711324
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "supply-yard",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            121.76076555023923
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "watch-post-ground",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            75.93939393939394,
+            128.70653907496012
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "border-gate-ground",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            125.49282296650718
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "abandoned-cart-stop",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            116.26634768740031
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "ruined-foundation",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            118.33971291866028
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "memorial-ground",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            72,
+            122.59011164274322
+          ],
+          "obstructionHeight": 1
+        }
+      ],
+      "footprintRange": [
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "renderBelowStructures": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+      "sha256": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344"
+    },
+    {
+      "id": "landmarks-large",
+      "png": "runtime/atlas/landmarks-large.png",
+      "png2x": "runtime/atlas/landmarks-large@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 160,
+      "cellHeight": 160,
+      "cellWidth2x": 320,
+      "cellHeight2x": 320,
+      "componentCount": 16,
+      "category": "large-landmark",
+      "tileMode": "modules",
+      "cellOrder": [
+        "border-palisade-fort",
+        "lorne-stone-castle",
+        "vilsa-stone-castle",
+        "mountain-gate-fort",
+        "frontier-longhall",
+        "walled-trade-town",
+        "field-hospital-compound",
+        "fortified-armory",
+        "border-chapel",
+        "watch-keep",
+        "market-gate-compound",
+        "ruined-gatehouse",
+        "cemetery-chapel-compound",
+        "river-gate-fort",
+        "guildhall-market",
+        "black-oath-fortress"
+      ],
+      "anchor": [
+        80,
+        155
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "border-palisade-fort",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            146.54545454545453
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "lorne-stone-castle",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            85.45454545454545,
+            149.93939393939394
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "vilsa-stone-castle",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            148.84848484848484
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "mountain-gate-fort",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            147.5151515151515
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "frontier-longhall",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            80,
+            143.03030303030303
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "walled-trade-town",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            144
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "field-hospital-compound",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            80,
+            144
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "fortified-armory",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            80,
+            139.3939393939394
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "border-chapel",
+          "footprint": [
+            3,
+            3
+          ],
+          "anchor": [
+            80,
+            147.5151515151515
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "watch-keep",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            148.36363636363637
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "market-gate-compound",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            80,
+            143.27272727272728
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "ruined-gatehouse",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            145.57575757575756
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "cemetery-chapel-compound",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            145.57575757575756
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "river-gate-fort",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            147.87878787878788
+          ],
+          "obstructionHeight": 3
+        },
+        {
+          "id": "guildhall-market",
+          "footprint": [
+            4,
+            3
+          ],
+          "anchor": [
+            80,
+            145.0909090909091
+          ],
+          "obstructionHeight": 2
+        },
+        {
+          "id": "black-oath-fortress",
+          "footprint": [
+            4,
+            4
+          ],
+          "anchor": [
+            80,
+            146.54545454545453
+          ],
+          "obstructionHeight": 3
+        }
+      ],
+      "footprintRange": [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "obstructionHeight": 2
+    },
+    {
+      "id": "decals-small",
+      "png": "runtime/atlas/decals-small.png",
+      "png2x": "runtime/atlas/decals-small@2x.png",
+      "columns": 6,
+      "rows": 4,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "cellWidth2x": 128,
+      "cellHeight2x": 128,
+      "componentCount": 24,
+      "category": "ground-decal",
+      "tileMode": "modules",
+      "cellOrder": [
+        "grass-tuft-a",
+        "grass-tuft-b",
+        "grass-tuft-c",
+        "stone-cluster-a",
+        "stone-cluster-b",
+        "stone-cluster-c",
+        "mud-patch",
+        "dry-crack",
+        "cart-ruts",
+        "bootprints",
+        "animal-tracks",
+        "fallen-leaves",
+        "burned-twigs",
+        "exposed-roots",
+        "stump-small",
+        "branch-fallen",
+        "firewood-stack",
+        "mossy-boulder",
+        "boulder-mossy-large",
+        "broken-planks",
+        "abandoned-tools",
+        "rope-coil",
+        "folded-canvas",
+        "ash-scorch"
+      ],
+      "anchor": [
+        32,
+        60
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "grass-tuft-a",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.30622009569378,
+            43.0622009569378
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "grass-tuft-b",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.57416267942584,
+            45.39712918660287
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "grass-tuft-c",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.248803827751196,
+            44.55502392344498
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "stone-cluster-a",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32,
+            42.066985645933016
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "stone-cluster-b",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.11483253588517,
+            39.34928229665071
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "stone-cluster-c",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.109375,
+            40.75
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "mud-patch",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.11483253588517,
+            42.2200956937799
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "dry-crack",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.0625,
+            42.71875
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "cart-ruts",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.61244019138756,
+            48.76555023923445
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "bootprints",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.057416267942585,
+            47.08133971291866
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "animal-tracks",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.65071770334929,
+            44.40191387559808
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "fallen-leaves",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.40191387559808,
+            45.282296650717704
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "burned-twigs",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.19138755980861,
+            40.30622009569378
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "exposed-roots",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.535885167464116,
+            43.21531100478469
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "stump-small",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.038277511961724,
+            45.74162679425837
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "branch-fallen",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            31.961722488038276,
+            43.63636363636363
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "firewood-stack",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.995215311004785,
+            48.688995215311
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "mossy-boulder",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            33.72248803827751,
+            45.7799043062201
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "boulder-mossy-large",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32,
+            48.535885167464116
+          ],
+          "obstructionHeight": 1
+        },
+        {
+          "id": "broken-planks",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.057416267942585,
+            46.430622009569376
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "abandoned-tools",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.01913875598086,
+            49.301435406698566
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "rope-coil",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.688995215311,
+            48.8421052631579
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "folded-canvas",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            31.980861244019138,
+            48
+          ],
+          "obstructionHeight": 0
+        },
+        {
+          "id": "ash-scorch",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            32.61244019138756,
+            43.98086124401914
+          ],
+          "obstructionHeight": 0
+        }
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "sha256": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84"
+    },
+    {
+      "id": "rural-life",
+      "png": "runtime/atlas/rural-life.png",
+      "png2x": "runtime/atlas/rural-life@2x.png",
+      "columns": 4,
+      "rows": 4,
+      "cellWidth": 112,
+      "cellHeight": 112,
+      "cellWidth2x": 224,
+      "cellHeight2x": 224,
+      "componentCount": 16,
+      "category": "rural-life",
+      "tileMode": "modules",
+      "cellOrder": [
+        "grain-drying-mat-dark",
+        "grain-drying-mat-linen",
+        "grain-drying-mat-earth",
+        "threshing-floor",
+        "wheat-sheaves",
+        "wheat-bundles",
+        "grain-sacks-baskets",
+        "wheat-drying-rack",
+        "frontier-granary",
+        "frontier-farmhouse",
+        "stone-well",
+        "livestock-pen-small",
+        "farm-fence-straight",
+        "farm-fence-corner",
+        "farm-handcart-tools",
+        "roadside-waystation"
+      ],
+      "anchor": [
+        56,
+        108
+      ],
+      "ySort": "bottom-anchor",
+      "cells": [
+        {
+          "id": "grain-drying-mat-dark",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            57.22488038277512,
+            86.69856459330144
+          ],
+          "obstructionHeight": 0,
+          "renderLayer": "foundation"
+        },
+        {
+          "id": "grain-drying-mat-linen",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            56.07655502392345,
+            87.92344497607655
+          ],
+          "obstructionHeight": 0,
+          "renderLayer": "foundation"
+        },
+        {
+          "id": "grain-drying-mat-earth",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            56.07655502392345,
+            86.39234449760765
+          ],
+          "obstructionHeight": 0,
+          "renderLayer": "foundation"
+        },
+        {
+          "id": "threshing-floor",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            56,
+            86.85167464114832
+          ],
+          "obstructionHeight": 0,
+          "renderLayer": "foundation"
+        },
+        {
+          "id": "wheat-sheaves",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            56.229665071770334,
+            85.32057416267942
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "wheat-bundles",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            57.07177033492823,
+            87.46411483253588
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "grain-sacks-baskets",
+          "footprint": [
+            1,
+            1
+          ],
+          "anchor": [
+            55.92344497607655,
+            85.32057416267942
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "wheat-drying-rack",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            49.72248803827751,
+            78.66028708133972
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "frontier-granary",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            55.84688995215311,
+            92.21052631578948
+          ],
+          "obstructionHeight": 2,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "frontier-farmhouse",
+          "footprint": [
+            3,
+            2
+          ],
+          "anchor": [
+            56.535885167464116,
+            85.93301435406698
+          ],
+          "obstructionHeight": 2,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "stone-well",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "livestock-pen-small",
+          "footprint": [
+            3,
+            2
+          ],
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units",
+          "presentationScale": 1.5
+        },
+        {
+          "id": "farm-fence-straight",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            56.535885167464116,
+            73.76076555023923
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "farm-fence-corner",
+          "footprint": [
+            2,
+            2
+          ],
+          "anchor": [
+            55.61722488038278,
+            83.71291866028709
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "farm-handcart-tools",
+          "footprint": [
+            2,
+            1
+          ],
+          "anchor": [
+            53.933014354066984,
+            76.89952153110048
+          ],
+          "obstructionHeight": 1,
+          "renderLayer": "under-units"
+        },
+        {
+          "id": "roadside-waystation",
+          "footprint": [
+            3,
+            2
+          ],
+          "anchor": [
+            56.61244019138756,
+            87.61722488038278
+          ],
+          "obstructionHeight": 2,
+          "renderLayer": "under-units"
+        }
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/rural-life@2x.png",
+      "sha256": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49"
+    }
+  ]
+}

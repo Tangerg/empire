@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "sourceRevision": "bfe9334a29630351ba4f46fd4c195cb3a72c36d9",
+  "fixtures": [
+    {
+      "aggression": 0.35,
+      "actions": 142,
+      "finalHash": "3942584e"
+    },
+    {
+      "aggression": 0.58,
+      "actions": 119,
+      "finalHash": "f0fe6f08"
+    },
+    {
+      "aggression": 0.8,
+      "actions": 135,
+      "finalHash": "ecb676a7"
+    }
+  ],
+  "selectedAssets": 20,
+  "recovery": "Reconstructed from verified remote bfe9334a after workspace reset. Local checkpoints cc43ac3a, 904351d9 and 8bbca062 are unavailable. Actor overrides were re-exported from the recovered source declaration."
+}
