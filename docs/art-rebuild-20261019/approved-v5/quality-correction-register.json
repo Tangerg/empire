@@ -1,6 +1,6 @@
 {
   "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
-  "asOfUtc": "2026-10-20T08:44:00Z",
+  "asOfUtc": "2026-10-20T08:49:00Z",
   "fullTaskAccepted": false,
   "issues": [
     {
@@ -79,6 +79,38 @@
       "evidence": "scifi-terrain-batch-06/REVIEW.md",
       "resolution": "Selected genuine broad-matte-v2 source; original bytes preserved. Fullsource/native review accepts minor ice contour drift; inherited masks and scene limitations remain.",
       "resolutionEvidence": "soler-matte-corrections/selection-review.json"
+    },
+    {
+      "topic": "environment:crossings-fortifications:palisade-straight",
+      "binding": "unbound",
+      "status": "source-layout-correction-required",
+      "issue": "Honest measured ground contact plus whole-canvas fit produces visibly undersized native silhouette; diagnostic anchor not exact.",
+      "evidence": "palisade-catalog-sources/REVIEW.md",
+      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+    },
+    {
+      "topic": "environment:crossings-fortifications:palisade-corner",
+      "binding": "unbound",
+      "status": "source-layout-correction-required",
+      "issue": "Honest measured ground contact plus whole-canvas fit produces visibly undersized native silhouette; diagnostic anchor not exact.",
+      "evidence": "palisade-catalog-sources/REVIEW.md",
+      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+    },
+    {
+      "topic": "environment:crossings-fortifications:palisade-gate",
+      "binding": "unbound",
+      "status": "source-layout-correction-required",
+      "issue": "Frontal-camera mismatch; diagnostic anchor not exact.",
+      "evidence": "palisade-catalog-sources/REVIEW.md",
+      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+    },
+    {
+      "topic": "environment:crossings-fortifications:palisade-breach",
+      "binding": "unbound",
+      "status": "source-layout-correction-required",
+      "issue": "Honest measured ground contact plus whole-canvas fit produces visibly undersized native silhouette; diagnostic anchor not exact.",
+      "evidence": "palisade-catalog-sources/REVIEW.md",
+      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
     }
   ]
 }

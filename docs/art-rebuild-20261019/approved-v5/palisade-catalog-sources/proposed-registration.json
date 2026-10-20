@@ -1,0 +1,381 @@
+{
+  "status": "UNBOUND_DIAGNOSTICS_NOT_REGISTRY_ENTRIES",
+  "entries": [
+    {
+      "id": "palisade-straight",
+      "index": 6,
+      "footprint": [
+        2,
+        1
+      ],
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-straight/palisade-straight-master.png",
+      "sha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+      "rawSha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_f01933efbf58477a9f7a55a12bcc79aa.png",
+        "transparent_background": true,
+        "independentSource": true
+      },
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+      "measuredSourceFoot": [
+        627.0,
+        970
+      ],
+      "proposedDiagnosticRegistration": {
+        "scale": 0.018341307814992026,
+        "origin": [
+          36.5,
+          73.0
+        ],
+        "sourceFoot": [
+          627.0,
+          970
+        ]
+      },
+      "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+      "requiredAnchor": [
+        48,
+        91
+      ],
+      "alpha": {
+        "bboxAlpha1": [
+          42,
+          95,
+          1222,
+          1206
+        ],
+        "bboxAlpha128": [
+          47,
+          259,
+          1208,
+          971
+        ],
+        "edgeMax": 0,
+        "transparentPixels": 835572,
+        "opaquePixels": 744,
+        "partialPixels": 736200,
+        "exporterValidation": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            48,
+            262,
+            1207,
+            970
+          ]
+        },
+        "nearOpaque240Pixels": 681037
+      },
+      "actualAnchor": [
+        48.0,
+        90.79106858054226
+      ],
+      "anchorExact": false,
+      "wholeCanvasGuard": "passed",
+      "hdCanvasSize": [
+        46,
+        46
+      ],
+      "nativeCoreBBox": [
+        37,
+        78,
+        59,
+        91
+      ],
+      "oversizedWholeCanvasNegativeTest": "passed: rejected",
+      "originalCoreBBox": [
+        5,
+        39,
+        91,
+        91
+      ]
+    },
+    {
+      "id": "palisade-corner",
+      "index": 7,
+      "footprint": [
+        2,
+        2
+      ],
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-corner/palisade-corner-master.png",
+      "sha256": "345a9b0e7c28bf01ea9cb58fb62e084a85b1becdab919feab1b09a8513c4ead2",
+      "rawSha256": "345a9b0e7c28bf01ea9cb58fb62e084a85b1becdab919feab1b09a8513c4ead2",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_49ec0ff5538841929bb8cc9d39bafa52.png",
+        "transparent_background": true,
+        "independentSource": true
+      },
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+      "measuredSourceFoot": [
+        627.0,
+        1040
+      ],
+      "proposedDiagnosticRegistration": {
+        "scale": 0.023923444976076555,
+        "origin": [
+          33.0,
+          66.0
+        ],
+        "sourceFoot": [
+          627.0,
+          1040
+        ]
+      },
+      "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+      "requiredAnchor": [
+        48,
+        91
+      ],
+      "alpha": {
+        "bboxAlpha1": [
+          0,
+          219,
+          1192,
+          1212
+        ],
+        "bboxAlpha128": [
+          67,
+          222,
+          1188,
+          1040
+        ],
+        "edgeMax": 1,
+        "transparentPixels": 1009226,
+        "opaquePixels": 682,
+        "partialPixels": 562608,
+        "exporterValidation": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            68,
+            223,
+            1187,
+            1039
+          ]
+        },
+        "nearOpaque240Pixels": 545359
+      },
+      "actualAnchor": [
+        48.0,
+        90.88038277511961
+      ],
+      "anchorExact": false,
+      "wholeCanvasGuard": "passed",
+      "hdCanvasSize": [
+        60,
+        60
+      ],
+      "nativeCoreBBox": [
+        35,
+        72,
+        61,
+        91
+      ],
+      "oversizedWholeCanvasNegativeTest": "passed: rejected",
+      "originalCoreBBox": [
+        5,
+        18,
+        91,
+        91
+      ]
+    },
+    {
+      "id": "palisade-gate",
+      "index": 8,
+      "footprint": [
+        2,
+        2
+      ],
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-gate/palisade-gate-master.png",
+      "sha256": "d1b3fc5e6c41bfdc5eb2af3d5a3737da7d8a6b89bf371727f2fabb40d98f4040",
+      "rawSha256": "d1b3fc5e6c41bfdc5eb2af3d5a3737da7d8a6b89bf371727f2fabb40d98f4040",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_9853aa6f3fec4b42bbfbc7e19adbf2c8.png",
+        "transparent_background": true,
+        "independentSource": true
+      },
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+      "measuredSourceFoot": [
+        627.0,
+        1151
+      ],
+      "proposedDiagnosticRegistration": {
+        "scale": 0.050239234449760764,
+        "origin": [
+          16.5,
+          33.0
+        ],
+        "sourceFoot": [
+          627.0,
+          1151
+        ]
+      },
+      "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+      "requiredAnchor": [
+        48,
+        91
+      ],
+      "alpha": {
+        "bboxAlpha1": [
+          0,
+          19,
+          1238,
+          1254
+        ],
+        "bboxAlpha128": [
+          23,
+          70,
+          1232,
+          1151
+        ],
+        "edgeMax": 1,
+        "transparentPixels": 653232,
+        "opaquePixels": 1299,
+        "partialPixels": 917985,
+        "exporterValidation": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 8,
+          "coreBoundingBox": [
+            24,
+            71,
+            1231,
+            1150
+          ]
+        },
+        "nearOpaque240Pixels": 888920
+      },
+      "actualAnchor": [
+        48.0,
+        90.82535885167465
+      ],
+      "anchorExact": false,
+      "wholeCanvasGuard": "passed",
+      "hdCanvasSize": [
+        126,
+        126
+      ],
+      "nativeCoreBBox": [
+        18,
+        37,
+        78,
+        91
+      ],
+      "oversizedWholeCanvasNegativeTest": "passed: rejected",
+      "originalCoreBBox": [
+        7,
+        5,
+        89,
+        91
+      ]
+    },
+    {
+      "id": "palisade-breach",
+      "index": 9,
+      "footprint": [
+        2,
+        1
+      ],
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-breach/palisade-breach-master.png",
+      "sha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+      "rawSha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_0bea1f48e30c4fdf8591ad4dc76574ed.png",
+        "transparent_background": true,
+        "independentSource": true
+      },
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+      "measuredSourceFoot": [
+        627.0,
+        1002
+      ],
+      "proposedDiagnosticRegistration": {
+        "scale": 0.02073365231259968,
+        "origin": [
+          35.0,
+          70.0
+        ],
+        "sourceFoot": [
+          627.0,
+          1002
+        ]
+      },
+      "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+      "requiredAnchor": [
+        48,
+        91
+      ],
+      "alpha": {
+        "bboxAlpha1": [
+          0,
+          9,
+          1234,
+          1236
+        ],
+        "bboxAlpha128": [
+          46,
+          168,
+          1219,
+          1002
+        ],
+        "edgeMax": 1,
+        "transparentPixels": 1047202,
+        "opaquePixels": 577,
+        "partialPixels": 524737,
+        "exporterValidation": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            52,
+            169,
+            1215,
+            1001
+          ]
+        },
+        "nearOpaque240Pixels": 478651
+      },
+      "actualAnchor": [
+        48.0,
+        90.77511961722487
+      ],
+      "anchorExact": false,
+      "wholeCanvasGuard": "passed",
+      "hdCanvasSize": [
+        52,
+        52
+      ],
+      "nativeCoreBBox": [
+        36,
+        74,
+        60,
+        91
+      ],
+      "oversizedWholeCanvasNegativeTest": "passed: rejected",
+      "originalCoreBBox": [
+        18,
+        34,
+        91,
+        91
+      ]
+    }
+  ]
+}

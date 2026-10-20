@@ -1,0 +1,94 @@
+{
+  "id": "palisade-gate",
+  "index": 8,
+  "footprint": [
+    2,
+    2
+  ],
+  "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-gate/palisade-gate-master.png",
+  "sha256": "d1b3fc5e6c41bfdc5eb2af3d5a3737da7d8a6b89bf371727f2fabb40d98f4040",
+  "rawSha256": "d1b3fc5e6c41bfdc5eb2af3d5a3737da7d8a6b89bf371727f2fabb40d98f4040",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_9853aa6f3fec4b42bbfbc7e19adbf2c8.png",
+    "transparent_background": true,
+    "independentSource": true
+  },
+  "canvas": [
+    1254,
+    1254
+  ],
+  "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+  "measuredSourceFoot": [
+    627.0,
+    1151
+  ],
+  "proposedDiagnosticRegistration": {
+    "scale": 0.050239234449760764,
+    "origin": [
+      16.5,
+      33.0
+    ],
+    "sourceFoot": [
+      627.0,
+      1151
+    ]
+  },
+  "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+  "requiredAnchor": [
+    48,
+    91
+  ],
+  "alpha": {
+    "bboxAlpha1": [
+      0,
+      19,
+      1238,
+      1254
+    ],
+    "bboxAlpha128": [
+      23,
+      70,
+      1232,
+      1151
+    ],
+    "edgeMax": 1,
+    "transparentPixels": 653232,
+    "opaquePixels": 1299,
+    "partialPixels": 917985,
+    "exporterValidation": {
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroPixels": 8,
+      "coreBoundingBox": [
+        24,
+        71,
+        1231,
+        1150
+      ]
+    },
+    "nearOpaque240Pixels": 888920
+  },
+  "actualAnchor": [
+    48.0,
+    90.82535885167465
+  ],
+  "anchorExact": false,
+  "wholeCanvasGuard": "passed",
+  "hdCanvasSize": [
+    126,
+    126
+  ],
+  "nativeCoreBBox": [
+    18,
+    37,
+    78,
+    91
+  ],
+  "oversizedWholeCanvasNegativeTest": "passed: rejected",
+  "originalCoreBBox": [
+    7,
+    5,
+    89,
+    91
+  ]
+}

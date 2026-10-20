@@ -1,0 +1,94 @@
+{
+  "id": "palisade-breach",
+  "index": 9,
+  "footprint": [
+    2,
+    1
+  ],
+  "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-breach/palisade-breach-master.png",
+  "sha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+  "rawSha256": "ae305dfb181c4490ffeb541b56eafcf4341d76dcd5538a6b30a48d8a2330b49d",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_0bea1f48e30c4fdf8591ad4dc76574ed.png",
+    "transparent_background": true,
+    "independentSource": true
+  },
+  "canvas": [
+    1254,
+    1254
+  ],
+  "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+  "measuredSourceFoot": [
+    627.0,
+    1002
+  ],
+  "proposedDiagnosticRegistration": {
+    "scale": 0.02073365231259968,
+    "origin": [
+      35.0,
+      70.0
+    ],
+    "sourceFoot": [
+      627.0,
+      1002
+    ]
+  },
+  "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+  "requiredAnchor": [
+    48,
+    91
+  ],
+  "alpha": {
+    "bboxAlpha1": [
+      0,
+      9,
+      1234,
+      1236
+    ],
+    "bboxAlpha128": [
+      46,
+      168,
+      1219,
+      1002
+    ],
+    "edgeMax": 1,
+    "transparentPixels": 1047202,
+    "opaquePixels": 577,
+    "partialPixels": 524737,
+    "exporterValidation": {
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroPixels": 2,
+      "coreBoundingBox": [
+        52,
+        169,
+        1215,
+        1001
+      ]
+    },
+    "nearOpaque240Pixels": 478651
+  },
+  "actualAnchor": [
+    48.0,
+    90.77511961722487
+  ],
+  "anchorExact": false,
+  "wholeCanvasGuard": "passed",
+  "hdCanvasSize": [
+    52,
+    52
+  ],
+  "nativeCoreBBox": [
+    36,
+    74,
+    60,
+    91
+  ],
+  "oversizedWholeCanvasNegativeTest": "passed: rejected",
+  "originalCoreBBox": [
+    18,
+    34,
+    91,
+    91
+  ]
+}

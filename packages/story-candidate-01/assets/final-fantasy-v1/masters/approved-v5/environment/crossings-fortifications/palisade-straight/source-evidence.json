@@ -1,0 +1,94 @@
+{
+  "id": "palisade-straight",
+  "index": 6,
+  "footprint": [
+    2,
+    1
+  ],
+  "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/palisade-straight/palisade-straight-master.png",
+  "sha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+  "rawSha256": "ffe37dccfc3196690c33232c8d78a6b86055fabb0578e4bf63bb76f459457b22",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "callOutput": "/workspace/scratch/84c9fe948755/generated_images/call_f01933efbf58477a9f7a55a12bcc79aa.png",
+    "transparent_background": true,
+    "independentSource": true
+  },
+  "canvas": [
+    1254,
+    1254
+  ],
+  "sourceFootAssessment": "Visual ground-contact plane, not alpha-bounding-box inference; center x projected to contact plane. Approximate source-pixel measurement; no source editing.",
+  "measuredSourceFoot": [
+    627.0,
+    970
+  ],
+  "proposedDiagnosticRegistration": {
+    "scale": 0.018341307814992026,
+    "origin": [
+      36.5,
+      73.0
+    ],
+    "sourceFoot": [
+      627.0,
+      970
+    ]
+  },
+  "bindingStatus": "HOLD_UNBOUND_SOURCE_LAYOUT",
+  "requiredAnchor": [
+    48,
+    91
+  ],
+  "alpha": {
+    "bboxAlpha1": [
+      42,
+      95,
+      1222,
+      1206
+    ],
+    "bboxAlpha128": [
+      47,
+      259,
+      1208,
+      971
+    ],
+    "edgeMax": 0,
+    "transparentPixels": 835572,
+    "opaquePixels": 744,
+    "partialPixels": 736200,
+    "exporterValidation": {
+      "edgeMaxAlpha": 0,
+      "edgeNonzeroPixels": 0,
+      "coreBoundingBox": [
+        48,
+        262,
+        1207,
+        970
+      ]
+    },
+    "nearOpaque240Pixels": 681037
+  },
+  "actualAnchor": [
+    48.0,
+    90.79106858054226
+  ],
+  "anchorExact": false,
+  "wholeCanvasGuard": "passed",
+  "hdCanvasSize": [
+    46,
+    46
+  ],
+  "nativeCoreBBox": [
+    37,
+    78,
+    59,
+    91
+  ],
+  "oversizedWholeCanvasNegativeTest": "passed: rejected",
+  "originalCoreBBox": [
+    5,
+    39,
+    91,
+    91
+  ]
+}
