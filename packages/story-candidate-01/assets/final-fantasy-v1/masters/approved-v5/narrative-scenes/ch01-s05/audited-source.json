@@ -1,0 +1,148 @@
+{
+  "topicId": "C01-CH01-S05",
+  "label": "焚村后的第一面灰旗",
+  "originalNarrativeIndexZeroBased": 10,
+  "subgroup": "chapter-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-CH01-S05",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "焚村后的第一面灰旗",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s05.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+    "sha256": "891cf39f451913388f36bc16c61ad629c9c6e390a5ba4098d92a64157424ed1f",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "cellIndexZeroBased": 0,
+    "columnZeroBased": 0,
+    "rowZeroBased": 0,
+    "cellLabel": "top-left",
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-CH01-S05",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH01-S05",
+    "topicId": "C01-CH01-S05",
+    "label": "焚村后的第一面灰旗",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch01-s05.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s05.png",
+    "sha256": "3a825bc91dfbbdae877b8dd5827fd6534250800030b7a6ef781167ce3040bb66",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-05",
+        "chapter": 1,
+        "title": "焚村令",
+        "location": "苇草村"
+      },
+      {
+        "id": "c01/aftermath-05",
+        "chapter": 1,
+        "title": "灰旗升起",
+        "location": "烧毁的苇草村"
+      },
+      {
+        "id": "c01/campaign-failed",
+        "chapter": 1,
+        "title": "灰旗倒下",
+        "location": "伊瑟兰"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-05"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [
+      "apps/game/src/main.ts:title",
+      "apps/experience-lab/src/main.ts:experience-art"
+    ],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}
