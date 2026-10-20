@@ -1,0 +1,124 @@
+[
+  {
+    "topicId": "C01-ARCH-LOAK-BAKERY",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-loak-bakery/master.png",
+        "sha256": "344ced5f9e3a27948f94c9e8f3a09edad6c6eeefe5a439d95bd2d984c10248d2",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-resize",
+      "resampling": "LANCZOS"
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-loak-bakery.png",
+    "pixelSha256": "3d7019ec0e473990acfae51e2c0a6fa5a6bb9f8bd56b99deee434ebf7249cc84",
+    "size": [
+      256,
+      144
+    ]
+  },
+  {
+    "topicId": "C01-ARCH-LOAK-BAKERY",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-loak-bakery/master.png",
+        "sha256": "344ced5f9e3a27948f94c9e8f3a09edad6c6eeefe5a439d95bd2d984c10248d2",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-copy",
+      "resampling": null
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 6.5,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-loak-bakery.png",
+    "pixelSha256": "e835cc6dd281226573123a825b7aa77a28f4cc09be24c1d4bc867d64e34a220b",
+    "size": [
+      1664,
+      936
+    ]
+  }
+]

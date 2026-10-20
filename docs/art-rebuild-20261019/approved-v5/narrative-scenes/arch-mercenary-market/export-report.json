@@ -1,0 +1,124 @@
+[
+  {
+    "topicId": "C01-ARCH-MERCENARY-MARKET",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-mercenary-market/master.png",
+        "sha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-resize",
+      "resampling": "LANCZOS"
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-mercenary-market.png",
+    "pixelSha256": "52661be904de8664b21a5f4e2c08b1e50c4e928374cf7131464dad137360ea5f",
+    "size": [
+      256,
+      144
+    ]
+  },
+  {
+    "topicId": "C01-ARCH-MERCENARY-MARKET",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-mercenary-market/master.png",
+        "sha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c",
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceRegion": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "croppedSourcePixels": {
+        "left": 4,
+        "top": 2,
+        "right": 4,
+        "bottom": 3
+      },
+      "retainedAreaFraction": 0.9899272381514118,
+      "method": "explicit-region-copy",
+      "resampling": null
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 6.5,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-mercenary-market.png",
+    "pixelSha256": "fe095e0f0bc7aa69e0c82bb9e2d13f4f6b85daa590d3c9ed670f1bc1d360f47f",
+    "size": [
+      1664,
+      936
+    ]
+  }
+]

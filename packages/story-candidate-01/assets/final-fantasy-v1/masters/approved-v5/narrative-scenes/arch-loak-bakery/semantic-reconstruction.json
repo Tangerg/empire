@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-ARCH-LOAK-BAKERY",
+  "preserved": [
+    "Modest gabled stone-and-timber bakery with dark slate roof and striped awnings",
+    "Central glowing arched bread oven and separate round stone oven",
+    "Bread displayed in carts and grouped baskets",
+    "Ordinary civilian and militia bread-service queues",
+    "River edge, short landing, pines, rough stone and simple fences"
+  ],
+  "reconstruction": [
+    "Expanded the square source into a deliberately framed landscape rather than cropping it to the old square scene",
+    "Reduced crowd density and small ground detail for broad matte-plane readability",
+    "Added a modest open account book and grouped bread sizes to support the documented public-accounting arrangement",
+    "Named bakery retained as a setting, with anonymous baker role figures rather than an unverified canonical portrait of Marta"
+  ],
+  "limitations": [
+    "Old bathhouse adaptation appears only as a reused stone ground floor; the legacy source itself depicts a gabled bakery, so its visual identity was preserved instead of inventing a new bathhouse design",
+    "No branch-specific price, later gray-wing pastry emblem, timestamp or governance outcome is depicted",
+    "The narrow center cover clips most of the left oven arch and loses the separate round oven and queues; it retains glowing bread, the baking frontage, loaf counter, ledger and bread exchange"
+  ],
+  "actualConsumers": [],
+  "loreSources": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": "79",
+      "evidence": "C01-ARCH-LOAK-BAKERY: 洛岬玛尔塔面包房"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+      "lines": "32-50",
+      "evidence": "Marta adapts an abandoned bathhouse for baking; military bread, relief bread and paid bread have public accounts. Different governance choices change supply and access."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+      "lines": "60-64",
+      "evidence": "Recurring bakery visits show governance through bread size, price and ingredients; the baker records practical effects of each flag."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": "97",
+      "evidence": "Planned asset includes refugee hard bread, prosperous gray-wing bread and scarcity price boards, but current topic is one image without stage selector."
+    }
+  ]
+}

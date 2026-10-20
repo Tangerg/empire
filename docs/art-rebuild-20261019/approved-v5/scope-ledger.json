@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 369,
+    "formalBound": 371,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,11 +14,11 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 19,
+      "narrative-static": 21,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 369,
+    "rawPreservedTopics": 371,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -325,13 +325,20 @@
       "category": "narrative-static",
       "label": "洛岬玛尔塔面包房",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-loak-bakery/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-loak-bakery.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived faction cues, not a new universal insignia",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-MERCENARY-MARKET",
@@ -339,13 +346,20 @@
       "category": "narrative-static",
       "label": "佣兵补给市集",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-mercenary-market/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-mercenary-market.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived faction cues, not a new universal insignia",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-REDSTONE",

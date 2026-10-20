@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "topicId": "C01-ARCH-MERCENARY-MARKET",
+  "approvedSource": "master.png",
+  "rawCopies": [
+    "raw.png",
+    "native.png"
+  ],
+  "sourceSha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c",
+  "expectedCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "expectedPhysicalSize": [
+    1664,
+    936
+  ],
+  "density": 6.5,
+  "logicalSize": [
+    256,
+    144
+  ],
+  "deliberatelyOpaque": true,
+  "noFormalBindingClaim": true,
+  "files": [
+    {
+      "path": "audited-source.json",
+      "bytes": 3615,
+      "sha256": "0b8336dc57e8985193166c389b52ae61534963199b9b202ce84210f2a3810a02"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 3119,
+      "sha256": "f14b5c69414cef1d09b6d18d32e0bc7fdf0e9de79ee318981d1e60c2e00476d5"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 615,
+      "sha256": "abf1d2c2077ba46e787c4722290079de551c3d3ec3a8c5d551dfa44dea56f7ce"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 370,
+      "sha256": "e5b080a74f93863b127625fc8bce4ad6c2bdf5e4db0550157faa16f5a1de7afc"
+    },
+    {
+      "path": "hash.txt",
+      "bytes": 228,
+      "sha256": "6fc5ec82017e701a0ac6549883b136e64bdcc05c9345a2d16d110675b2d612bb"
+    },
+    {
+      "path": "master.png",
+      "bytes": 3113773,
+      "sha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "native.png",
+      "bytes": 3113773,
+      "sha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "original-cell-617.png",
+      "bytes": 788926,
+      "sha256": "517a45f962bf51f0d24dd26c596eec2d3570d07b03a5a737539388299ffad0e1",
+      "size": [
+        617,
+        617
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "original-full-board.png",
+      "bytes": 3249667,
+      "sha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 3878,
+      "sha256": "f3b6f52dbe55b31b3272fcaca8e26e986576cfae1ba0ccbbb87713573e630284"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 181401,
+      "sha256": "210844d7c189be3f03111bc8bd7a4f900cd91cb7e1bcc5ab86612a3e8af54ea4",
+      "size": [
+        280,
+        245
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 216993,
+      "sha256": "87ae0e8b20d6403737117dc2f4b2dbfa1943829ceae5476a9dae89937c5c3a4d",
+      "size": [
+        366,
+        220
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 1243261,
+      "sha256": "14f0bd94a1b290b0745e943ad88e7e4cbd23cefbac67cc20378551976a4c35f1",
+      "size": [
+        960,
+        534
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 676259,
+      "sha256": "92a03aa0cebf98ee1dfc9854d09e6f0070df79c057a6b02a092013e7c566a867",
+      "size": [
+        390,
+        778
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-covers-contact-sheet.png",
+      "bytes": 765155,
+      "sha256": "aa3dcc43873ca622769c78bada36948178ceb3b6154e3869790ac9265b0202f3",
+      "size": [
+        880,
+        880
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-exact-crop-512x288.png",
+      "bytes": 388118,
+      "sha256": "64c0dabc56c22ec86fce51ab0285e3757be13e6187f1b0f291ea3541d7b2026f",
+      "size": [
+        512,
+        288
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-logical-256x144.png",
+      "bytes": 102663,
+      "sha256": "587795961bf3bfaa0feb24778888298906161d982acec85d7e2d9f2757624d8d",
+      "size": [
+        256,
+        144
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-source-native-1664x936.png",
+      "bytes": 3355025,
+      "sha256": "d86a043d7ff56cfde1bb688d5eb12250363dde13850845163449011113a10cd4",
+      "size": [
+        1664,
+        936
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 3113773,
+      "sha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 617,
+      "sha256": "80f5d08989ba66be618b255dc4f40731575cc591545dd2ce977920118cbbe4d5"
+    },
+    {
+      "path": "request.json",
+      "bytes": 4293,
+      "sha256": "6bb12456b00938b43f2044fc2b88314a4f8aa95e496a9e78a609eb78421eda06"
+    },
+    {
+      "path": "semantic-reconstruction.json",
+      "bytes": 2165,
+      "sha256": "9140b6800a85878f8bf9172509dbde0e8aa998b91f9cf727421d40343312956a"
+    },
+    {
+      "path": "semantic-review.json",
+      "bytes": 3200,
+      "sha256": "8718e7ad1e2e7ac38a8c3a7b887ac6e2e23ecdcd41947b2e3a05732539bd4c1e"
+    },
+    {
+      "path": "source-proof.json",
+      "bytes": 2311,
+      "sha256": "a0e2361faf136808520365802a4c08afc96983808e615e40e83320a560b58c5a"
+    },
+    {
+      "path": "source-qa.json",
+      "bytes": 1041,
+      "sha256": "f63ba984f3e99d75578449705e7a1700572049116e480146b9f721a3fcb59e9b"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 3877,
+      "sha256": "697c93f5e71d3f15df9b8a177b75021858e0eb1474f170ed037dc1276432abe2"
+    },
+    {
+      "path": "story-source-context.txt",
+      "bytes": 479,
+      "sha256": "6e45e0b9d199da98483337cb3ebc3a7b8db0ee0a2388a71a816aeb6c0072f1bc"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 3242,
+      "sha256": "35f5125aa4a613d9366ccac8f33c8ad848e0071e79c21c9a5c094b787523b90c"
+    }
+  ]
+}

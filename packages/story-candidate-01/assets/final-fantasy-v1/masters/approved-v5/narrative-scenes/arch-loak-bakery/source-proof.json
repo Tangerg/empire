@@ -1,0 +1,58 @@
+{
+  "topicId": "C01-ARCH-LOAK-BAKERY",
+  "sourceMapAuthority": "remaining-narrative-audit/manifest.json + tools/art/build_final_fantasy_v1.py explicit narrative source indices",
+  "originalSourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+  "originalBoardSha256": "75c85d844f0d2c0fe46974218875ee07f94ace55b97b80e6e9259d32cb5501ee",
+  "auditBoardHashMatches": true,
+  "originalBoardCopy": "original-full-board.png",
+  "originalBoardCopyByteIdentical": true,
+  "boardSize": [
+    1254,
+    1254
+  ],
+  "cellIndexZeroBased": 0,
+  "cellLabel": "top-left",
+  "originalNarrativeIndexZeroBased": 66,
+  "exactOriginalCellCrop": [
+    5,
+    5,
+    622,
+    622
+  ],
+  "originalCellSize": [
+    617,
+    617
+  ],
+  "originalCellPixelMatchesCopiedCell": true,
+  "originalRuntimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-loak-bakery.png",
+  "originalRuntimeSha256AtReview": "7e88dde42592d1a58144ac528ebd0ba15ea09b2bbf9e1410434840e4a3ef0730",
+  "originalRuntimeReconstructionMatchesCurrentPixels": true,
+  "fullBoardAndExactCellVisuallyInspected": true,
+  "sourceDescription": "The original full board10 top-left cell shows a timber-and-stone gabled bakery, central arched bread oven, separate round stone bake-oven, two striped awnings, bread carts, small civilian and helmeted queues, river/landing, pines and stone fences.",
+  "loreSources": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": "79",
+      "evidence": "C01-ARCH-LOAK-BAKERY: 洛岬玛尔塔面包房"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+      "lines": "32-50",
+      "evidence": "Marta adapts an abandoned bathhouse for baking; military bread, relief bread and paid bread have public accounts. Different governance choices change supply and access."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+      "lines": "60-64",
+      "evidence": "Recurring bakery visits show governance through bread size, price and ingredients; the baker records practical effects of each flag."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": "97",
+      "evidence": "Planned asset includes refugee hard bread, prosperous gray-wing bread and scarcity price boards, but current topic is one image without stage selector."
+    }
+  ],
+  "actualConsumers": [],
+  "consumerScope": "catalog-only; original audit and current source references inspected; shared shell geometry is stress-tested only",
+  "preservedProtectedCharacters": true,
+  "gitOrProductionChanges": false
+}

@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-ARCH-MERCENARY-MARKET",
+  "sourceMapAuthority": "remaining-narrative-audit/manifest.json + tools/art/build_final_fantasy_v1.py explicit narrative source indices",
+  "originalSourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+  "originalBoardSha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20",
+  "auditBoardHashMatches": true,
+  "originalBoardCopy": "original-full-board.png",
+  "originalBoardCopyByteIdentical": true,
+  "boardSize": [
+    1254,
+    1254
+  ],
+  "cellIndexZeroBased": 1,
+  "cellLabel": "top-right",
+  "originalNarrativeIndexZeroBased": 71,
+  "exactOriginalCellCrop": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "originalCellSize": [
+    617,
+    617
+  ],
+  "originalCellPixelMatchesCopiedCell": true,
+  "originalRuntimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-mercenary-market.png",
+  "originalRuntimeSha256AtReview": "78938168baeb389f3200e484634adc9cb6f103c67939ee6dbf767f444b007fbf",
+  "originalRuntimeReconstructionMatchesCurrentPixels": true,
+  "fullBoardAndExactCellVisuallyInspected": true,
+  "sourceDescription": "The original full board11 top-right cell shows a pine-and-stone enclosed market with canvas stalls, wagons and a draft animal, numerous mercenaries, a central ledger table, practical goods and a rear display board bearing round disk-like wares.",
+  "loreSources": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": "84",
+      "evidence": "C01-ARCH-MERCENARY-MARKET: 佣兵补给市集"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+      "lines": "52-70",
+      "evidence": "Mercenaries negotiate concrete sums, dates and recipients; paired boots are returned to families and single boots serve as identity evidence. The first pension register is established. This context informs practical accounting rather than depicting Tasha or a specific bereavement."
+    }
+  ],
+  "actualConsumers": [],
+  "consumerScope": "catalog-only; original audit and current source references inspected; shared shell geometry is stress-tested only",
+  "preservedProtectedCharacters": true,
+  "gitOrProductionChanges": false
+}

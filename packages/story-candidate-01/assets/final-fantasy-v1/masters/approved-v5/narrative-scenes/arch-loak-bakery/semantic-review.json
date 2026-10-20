@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-ARCH-LOAK-BAKERY",
+  "label": "洛岬玛尔塔面包房",
+  "category": "narrative-static",
+  "kind": "scene",
+  "selectedAttempt": 1,
+  "nativeSourceSha256": "344ced5f9e3a27948f94c9e8f3a09edad6c6eeefe5a439d95bd2d984c10248d2",
+  "decision": "accepted as authored opaque source; formal binding and live-game verification remain parent-owned",
+  "sourceContentPreserved": [
+    "Modest gabled stone-and-timber bakery with dark slate roof and striped awnings",
+    "Central glowing arched bread oven and separate round stone oven",
+    "Bread displayed in carts and grouped baskets",
+    "Ordinary civilian and militia bread-service queues",
+    "River edge, short landing, pines, rough stone and simple fences"
+  ],
+  "semanticReconstruction": [
+    "Expanded the square source into a deliberately framed landscape rather than cropping it to the old square scene",
+    "Reduced crowd density and small ground detail for broad matte-plane readability",
+    "Added a modest open account book and grouped bread sizes to support the documented public-accounting arrangement",
+    "Named bakery retained as a setting, with anonymous baker role figures rather than an unverified canonical portrait of Marta"
+  ],
+  "knownLimitations": [
+    "Old bathhouse adaptation appears only as a reused stone ground floor; the legacy source itself depicts a gabled bakery, so its visual identity was preserved instead of inventing a new bathhouse design",
+    "No branch-specific price, later gray-wing pastry emblem, timestamp or governance outcome is depicted",
+    "The narrow center cover clips most of the left oven arch and loses the separate round oven and queues; it retains glowing bread, the baking frontage, loaf counter, ledger and bread exchange"
+  ],
+  "namedFigures": "none; anonymous ordinary role figures only",
+  "emblems": "none invented or depicted; market circular shields are unmarked merchandise",
+  "stageOrBranch": "single neutral catalog setting; no governance/age/branch selector activated",
+  "styleReview": {
+    "boldContours": true,
+    "chunkyArchitectureAndCompactFigures": true,
+    "broadMattePlanes": true,
+    "groupedObjectsNotConfetti": true,
+    "quietGround": true,
+    "noReadableText": true,
+    "noWatermark": true
+  },
+  "visualReview": "At native size the ovens, large bread shapes and service exchange read cleanly. The 256x144 canonical derivative retains the gabled bakery, both ovens, bread carts and mixed queues. Desktop cover preserves the full location. Narrow 390x778 centered cover preserves the central bread exchange, account book, bread display, awning and part of the glowing oven. Ground remains broad ochre with sparse large paving stones. No invented symbol or recognizable named hero appears.",
+  "viewChecks": {
+    "native1672x941": "pass",
+    "canonical256x144": "pass",
+    "centerCoverDesktop960x534": "pass",
+    "centerCoverNarrow390x778": "pass with explicitly recorded peripheral clipping",
+    "stagingInset280x245": "pass",
+    "stagingMobile366x220": "pass"
+  },
+  "intentionallyOpaque": true,
+  "transparentSpriteCredit": false,
+  "liveBrowserChecked": false
+}
