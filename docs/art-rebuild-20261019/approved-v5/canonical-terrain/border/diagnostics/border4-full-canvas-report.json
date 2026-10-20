@@ -1,0 +1,290 @@
+[
+  {
+    "source": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-4/master.png",
+    "sourceSha256": "56bf13a7b49998c3d36cb33114b30048556b827f74982f2f9de1e2c25ca45379",
+    "density": 1,
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ],
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "a7193902f6cf7402d0b57b19b432c36c0583a8c20d5ad34f744a0201f6578848",
+        "edgeBandPixels": 1,
+        "changedPixels": 110,
+        "maxChannelChange": 7,
+        "interiorPixelSha256": "103be749cbb02eab8a6b190fa5b64dcc3b1900c61cdc7a6994660a927d449067",
+        "edgeHashes": {
+          "top": "8fc631d5f89e2f5b36898ff5405a27464c6e3ae074e8f680f645fc28dd3d20ca",
+          "bottom": "8fc631d5f89e2f5b36898ff5405a27464c6e3ae074e8f680f645fc28dd3d20ca",
+          "left": "f6b7b7d3480e54f90a5bfe14d8cf5f76b0fa46c792553d690fd20c62a32a539a",
+          "right": "f6b7b7d3480e54f90a5bfe14d8cf5f76b0fa46c792553d690fd20c62a32a539a"
+        },
+        "pixelSha256": "65b0a02fdda9562b91a49dd23c09f328e4f62ac85822410157afbed2d91a43d6"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "4aed1504aa165fe6abe40eccec184174dd90c3939008806c6b16b87e1f4038a2",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "a43de7fa61cd4c32baefea84134b17fbcbc5d47d37367c41b16006ba73ff81aa",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "a676671f40b33fe15c623184a56886699c734aeb3142192e0dabb18ca3fb4751",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "71c1d210ce280fa539affbbd24eff9705c395a9c17ae493636a4f147c84a757c",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "62db80f358d4cbfd08d146f321df78ce56d1d5facd6ab84338135393998d4aec",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "600d0c8d10915143b098daa66de2d3f45991b819dbbc8d2bb0cd64f5c7155499",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "f51b6c2b555802bd5b00050278930cae56353b312f55cde1395610b5a2be68e5",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "b790aaaaf63692dd1504cf9c08ef855256b7cd0b8a7b8c10f51435b65f7fa0a3",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "e34cfcd6f26bedda40b9f91a22e710ec5bec8bd340f93143ecc8c4e3f0e504af",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "08f827a94db88e5261ed43b0a6f7488a3896c23bf4ab4edacdbea378f8ac2146",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "9a3feee4c4d7312934b21f5cb7edbe214db93f7e543df3a5e71b20bc38b14c48",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "b1dee54e2f5db15688dea64c73b02ccc992ddf840e1d50c35e152033cdcac17a",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "dcfa2a8801d196afc95ee2f42af3723e23178efe975ead7c2f119090b036d938",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "f45528f25d2ae705c9b6c1ed1f93531465cf2a0c3849d045835c7bbab778bef3",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "536b51aad5bb536769948bff4ee3ae7f0996c5bf03ce3b656788e6bf740a750e",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "caa5c33902a5e2029ff8755c32786ded0f116b4d6cb8515d1db548001653c984",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "pixelSha256": "913bb98964c946991b4ddcdb36b0d8d46d9eac9d7fc578c8baa6ad1df4d063e2",
+    "status": "diagnostic only; native semantic review pending; no registration"
+  },
+  {
+    "source": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-4/master.png",
+    "sourceSha256": "56bf13a7b49998c3d36cb33114b30048556b827f74982f2f9de1e2c25ca45379",
+    "density": 2,
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ],
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "01362b42ec88066ebc148e94a5156602fea094ec83fc926d638dc056864fef64",
+        "edgeBandPixels": 1,
+        "changedPixels": 223,
+        "maxChannelChange": 9,
+        "interiorPixelSha256": "c16c075d739e3fa766b723a3e84a5c5c0ebdadb88d81111b5c1a009c6f34b72c",
+        "edgeHashes": {
+          "top": "0382be345843c0a5867f9f1fbef6e22fdb7b10bc0ab2e2b04b4fb8de7f3c0e0e",
+          "bottom": "0382be345843c0a5867f9f1fbef6e22fdb7b10bc0ab2e2b04b4fb8de7f3c0e0e",
+          "left": "d01987b265d6dbd310bca6fdfcc84fa80bc57b18d7efcc0385a130585566be09",
+          "right": "d01987b265d6dbd310bca6fdfcc84fa80bc57b18d7efcc0385a130585566be09"
+        },
+        "pixelSha256": "316f09515e8928bf0dd0c422040efaed80dc2cbc1a6df10cf2a6fe581c97f005"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "f8f2c0feef9448ebabcbe303baeaab1f83a100ab06a72edec693b3318bd3f456",
+        "alphaSha256": "2f773e31e9f833472f51357bed5933b2885399680f0cfd376800e4603471f03e"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "2005c564842cfa442a9e103296934bd584787fcd5cfc734ccc9b4b22898fb177",
+        "alphaSha256": "d4270fa122ceabe2d378dda5fd7d21821d4c622665cdf38afe8bb0e6c7af85cd"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "0dc43a6b4c9aa222785e2f0dffc05f98797198489f8745299a286a761036c35b",
+        "alphaSha256": "a386b2d36c69b6123d5e89ba676bcdaca196e1e968f458174d1e77257dee1ae1"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "906099cc5975c6a403e275fa0075baae78d93dfec282a38c0b3fa2979eaca27d",
+        "alphaSha256": "e1f50ef7252c99496bdfea9993471b9f223d03ac946800cd735a6942b714d26e"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "f4b2e95faa2374b6ee2834de3ecece83fad26f93c502af2913257c6e1dd09241",
+        "alphaSha256": "a3afb24231d1f4aafe1bd02813d0d5c8340aef4fc0989f11a111fb086998b4a8"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "ad21912a8b3825b00ac052fdeb823ea2b02b47935e9163e34e43e1b74defc033",
+        "alphaSha256": "a98ea5e2eda0f98dc856fa531951f11284698550ac7c2d6c4096da0db4058256"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "a6d2eddc77b4cd365fdd9b0101c7ed21e4d83bd056d85bbbacb39317fc057bff",
+        "alphaSha256": "8391349d71952bf192eafb729e3bfc6311e90e55cfc3724035aeacc6f87e5591"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "613e6f26ae2130b0ba848124ea6750f7dead1f810e788e2e43c387d3aafc0fc6",
+        "alphaSha256": "cb2a85db295d8588f34b75c92ec417401ea8f990865d6c74b1106da35f87c369"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "cf08b51da3baf29cc82d997cffddb03e706a52a4e099b9a6f8503ccd41388396",
+        "alphaSha256": "06c3e79df5499e1531e0b240df128040745a0e55ef76cc3848cb904728605b3e"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "5583b7078e02c4fb7c09c9c627ca571df60730f365bc2e0e90e07eb80338e554",
+        "alphaSha256": "462d195e8fba8b3a9531b0f080432ecf4ef2ac3ae7be7bc6ea4e19287705f5ea"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "504d12333527ea6c3726441a778be5c8b37943d14fc282cc01ffbfe44c6cf27b",
+        "alphaSha256": "196d8b07d970a42d7983829753c9e150688cf1c3245bc1f9f5e553368d8cc172"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "dc88625b4d236b1fa84c7c77bd01c7c10f632fe255d3af51b8ab1b25b1574130",
+        "alphaSha256": "68c7d6a0720a2be48c93a71abebfc6dec3116a5a730daa82a1ae522a0dcfaf8a"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "bc810cdc3858a463dc561891bb255b3d5fa11fabcb6c4f932dcace4f6e6dc157",
+        "alphaSha256": "963c273deb8730831143d3536774f3e13c68d2bfc25113f1f130292840362b4d"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "db333bc4ed1dfb5eb9e99e75e40f16fe9bd3b0ce229c7ed6bc03f962fcfb1e80",
+        "alphaSha256": "d91fe9db432bec5341181f8e9c00399325196507aa5251cd4803c116389b9117"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "cfce82eccc201dfac0d261f6da0b78bb2b817889af2955d0522c28f246842072",
+        "alphaSha256": "7b7db09c81b0bfd3984946017ee95548116c3872556b3c1612d4730681cf957a"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "3fe623cf189c50b6ea7d23150e0403fd6f413845696425397e1851397b87ee1d",
+        "alphaSha256": "a3204f06aea0fed7f444c50a39c43a504594c4bec08703ed772ee0680f7f590d"
+      }
+    ],
+    "pixelSha256": "af48fda3b2a9be3ee3c5dda4f592e77402d433755ae008d38bc3201d46cc38aa",
+    "status": "diagnostic only; native semantic review pending; no registration"
+  }
+]

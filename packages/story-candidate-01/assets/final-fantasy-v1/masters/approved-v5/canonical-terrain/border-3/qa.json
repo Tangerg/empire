@@ -27,7 +27,54 @@
       "Wide diagonal agricultural furrow bands preserve the source identity and are not a connected-path contract.",
       "Ground planes are more numerous than the requested 5–6 but remain broad and low-contrast.",
       "Raw edge periodicity is not claimed; exporter must establish exact seams through bounded texture composition."
-    ]
+    ],
+    "nativeVariantDiagnosticReview": {
+      "windowsXYXY": [
+        [
+          0,
+          0,
+          600,
+          600
+        ],
+        [
+          654,
+          65,
+          1254,
+          665
+        ],
+        [
+          0,
+          640,
+          600,
+          1240
+        ],
+        [
+          654,
+          640,
+          1254,
+          1240
+        ]
+      ],
+      "sourcePixelsPerLogicalPixel": 18.75,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "evidenceDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-export-engineering-qa",
+      "evidence": [
+        "border3-broad-windows-32-inspection4x.png",
+        "border3-broad-windows-32-mixed-4x4.png",
+        "border3-broad-windows-32-repeated-2x2.png",
+        "border3-broad-windows-64-inspection4x.png",
+        "border3-broad-windows-64-mixed-4x4.png",
+        "border3-broad-windows-64-repeated-2x2.png"
+      ],
+      "sourceSemanticSelection": "pass: complete local straw/stubble motifs survive, sparse motifs read at material scale; quiet ember accents for BORDER3. No historical .62 or quadrant assumption used.",
+      "visualTilingCaveat": "Diagonal furrow cadence visibly interrupts or resets at tile borders in repeated and mixed tiling. Exact edge equality must not be presented as visually invisible tiling.",
+      "scope": "Source-semantic diagnostic review only. Final atlas, alpha equivalence, adjacency/seam tests, actor cohesion and catalog acceptance remain owned by exporter/integrator."
+    }
   },
   "export": {
     "performed": false,

@@ -28,7 +28,23 @@
       "Central complete bootprint and nearby paired ruts are large enough for source sampling; retaining both through smallest mask0 needs deliberate common-window or documented source UV review.",
       "Ground has some subdued small patches in addition to broad planes; no dense fine-grain noise.",
       "Raw edge periodicity and NESW semantic retention are not claimed; exporter must establish exact seams and inspect motifs at 32/64."
-    ]
+    ],
+    "nativeMaskDiagnosticReview": {
+      "sourceWindowXYXY": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "sourcePixelsPerLogicalPixel": 39.1875,
+      "evidenceDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-export-engineering-qa",
+      "evidence": [
+        "border4-full-canvas-32-inspection4x.png",
+        "border4-full-canvas-64-inspection4x.png"
+      ],
+      "review": "Visual inspection of all sixteen exact-mask diagnostic cells at both densities: complete central bootprint survives; low-contrast rut marks remain material strokes at alpha boundary, not fragments of a standalone object. Full source window is acceptable for source-semantic sampling; no arm-local UV change needed.",
+      "scope": "Source-semantic diagnostic review only. Final atlas, alpha equivalence, adjacency/seam tests, actor cohesion and catalog acceptance remain owned by exporter/integrator."
+    }
   },
   "export": {
     "performed": false,

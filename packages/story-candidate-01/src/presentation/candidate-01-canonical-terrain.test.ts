@@ -50,3 +50,21 @@ describe('canonical border terrain catalog contract', () => {
     expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(40);
   });
 });
+
+describe('registered canonical terrain provenance', () => {
+  it('ties all registered sources and native exports to reviewed hashes', async () => {
+    const { createHash } = await import('node:crypto');
+    const root = new URL('../../../../', import.meta.url);
+    const catalog = JSON.parse(readFileSync(new URL('tools/art/canonical-terrain-overrides.json', root), 'utf8'));
+    const report = JSON.parse(readFileSync(new URL('docs/art-rebuild-20261019/approved-v5/canonical-terrain/border/formal-export.json', root), 'utf8'));
+    const hash = (path: string) => createHash('sha256').update(readFileSync(new URL(path, root))).digest('hex');
+    expect(Object.keys(catalog.assets).sort()).toEqual(topics.map(([topic]) => topic).sort());
+    for (const [topic, entry] of Object.entries(catalog.assets) as [string, { source: string; sha256: string }][]) {
+      expect(hash(entry.source)).toBe(entry.sha256);
+      expect(candidate01Asset(topic).qualityTier).toBe('approved-chunky-v5-export-verified');
+      const exports = report.filter((item: { topicId: string }) => item.topicId === topic);
+      expect(exports.map((item: { density: number }) => item.density)).toEqual([1, 2]);
+      for (const item of exports) expect(hash(item.output)).toBe(item.fileSha256);
+    }
+  });
+});

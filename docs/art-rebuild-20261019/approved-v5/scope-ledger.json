@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 371,
+    "formalBound": 375,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -16,9 +16,10 @@
       "mission-unit": 24,
       "narrative-static": 21,
       "skill": 48,
-      "status": 24
+      "status": 24,
+      "terrain": 4
     },
-    "rawPreservedTopics": 371,
+    "rawPreservedTopics": 376,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -3276,13 +3277,20 @@
       "category": "terrain",
       "label": "晒麦农田",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/border-1/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254x1254 material, source-board identity and exact generation provenance preserved",
+        "export": "Exact canonical32/64 sheets; original alpha bytes and NESW order preserved; approved1px edge-only matching. Native motif review passed; BORDER1 square plane rhythm and BORDER3 periodic furrow reset remain documented landscape tiling limits",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay terrain consumer. Environment186 counted separately. Four material identities, not40derived cells",
+        "liveGame": "pending; no actual gameplay usage or landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-BORDER-2",
@@ -3290,13 +3298,20 @@
       "category": "terrain",
       "label": "雨泥道路",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/border-2/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254x1254 material, source-board identity and exact generation provenance preserved",
+        "export": "Exact canonical32/64 sheets; original alpha bytes and NESW order preserved; approved1px edge-only matching. Native motif review passed; BORDER1 square plane rhythm and BORDER3 periodic furrow reset remain documented landscape tiling limits",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay terrain consumer. Environment186 counted separately. Four material identities, not40derived cells",
+        "liveGame": "pending; no actual gameplay usage or landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-BORDER-3",
@@ -3304,13 +3319,20 @@
       "category": "terrain",
       "label": "焦土农田",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/border-3/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-3.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254x1254 material, source-board identity and exact generation provenance preserved",
+        "export": "Exact canonical32/64 sheets; original alpha bytes and NESW order preserved; approved1px edge-only matching. Native motif review passed; BORDER1 square plane rhythm and BORDER3 periodic furrow reset remain documented landscape tiling limits",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay terrain consumer. Environment186 counted separately. Four material identities, not40derived cells",
+        "liveGame": "pending; no actual gameplay usage or landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-BORDER-4",
@@ -3318,13 +3340,20 @@
       "category": "terrain",
       "label": "难民车辙",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/border-4/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-4.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254x1254 material, source-board identity and exact generation provenance preserved",
+        "export": "Exact canonical32/64 sheets; original alpha bytes and NESW order preserved; approved1px edge-only matching. Native motif review passed; BORDER1 square plane rhythm and BORDER3 periodic furrow reset remain documented landscape tiling limits",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay terrain consumer. Environment186 counted separately. Four material identities, not40derived cells",
+        "liveGame": "pending; no actual gameplay usage or landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-CAPITAL-1",
@@ -7554,8 +7583,11 @@
       "category": "fx",
       "label": "钝击",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/contact/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-04/expand/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

@@ -27,7 +27,23 @@
       "A complete small central puddle is visible for retained mask-core sampling.",
       "Ground contains a few small low-contrast marks and more planes than requested; no dense photographic grain.",
       "Raw edge periodicity and NESW semantic retention are not yet claimed; exporter must establish exact seams and inspect retained source motifs at 32/64."
-    ]
+    ],
+    "nativeMaskDiagnosticReview": {
+      "sourceWindowXYXY": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "sourcePixelsPerLogicalPixel": 39.1875,
+      "evidenceDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-export-engineering-qa",
+      "evidence": [
+        "border2-full-canvas-32-inspection4x.png",
+        "border2-full-canvas-64-inspection4x.png"
+      ],
+      "review": "Visual inspection of all sixteen exact-mask diagnostic cells at both densities: complete central puddle survives; low-contrast rut marks remain material strokes at alpha boundary, not fragments of a standalone object. Full source window is acceptable for source-semantic sampling; no arm-local UV change needed.",
+      "scope": "Source-semantic diagnostic review only. Final atlas, alpha equivalence, adjacency/seam tests, actor cohesion and catalog acceptance remain owned by exporter/integrator."
+    }
   },
   "export": {
     "performed": false,

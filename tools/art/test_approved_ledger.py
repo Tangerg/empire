@@ -67,6 +67,18 @@ class ApprovedLedgerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
             build(self.root)
 
+    def test_canonical_terrain_counts_source_once_not_mask_variants(self):
+        topic = {**self.topic, 'topicId': 'C01-TERRAIN-BORDER-2', 'category': 'terrain'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-01', 'label': 'Rain mud'}])
+        raw = self.root / 'pack/masters/approved-v5/canonical-terrain/border-2'
+        raw.mkdir(parents=True)
+        (raw / 'master.png').write_bytes(b'preserved source placeholder')
+        result = build(self.root)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(result['summary']['formalBound'], 0)
+
     def test_skill_master_uses_its_native_skill_directory(self):
         topic = {**self.topic, 'topicId': 'C01-SKILL-01', 'category': 'skill'}
         self.write('pack/manifest.json', {'assets': [topic]})
