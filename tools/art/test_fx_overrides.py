@@ -115,7 +115,8 @@ class FxTests(unittest.TestCase):
                              ('C01-FX-20', ['bare-crescent', 'contact-spark', 'spark-spray', 'residual-sparks']),
                              ('C01-FX-21', ['debris-lift', 'rubble-scatter', 'dust-impact', 'settling-dust']),
                              ('C01-FX-22', ['loose-hardware', 'seating-impact', 'repair-swirl', 'finished-fit']),
-                             ('C01-FX-23', ['intact-link', 'unstable-link', 'link-breakup', 'disconnected-beacons'])]:
+                             ('C01-FX-23', ['intact-link', 'unstable-link', 'link-breakup', 'disconnected-beacons']),
+                             ('C01-FX-24', ['neutral-standard', 'capture-spiral', 'blue-standard-peak', 'settled-standard'])]:
             with self.subTest(topic=topic):
                 asset = {**self.asset, 'topicId': topic, 'png': f'runtime/fx/fx-{topic[-2:]}.png'}
                 hd = {**self.hd, 'topicId': topic, 'png': f'runtime-hd/fx/fx-{topic[-2:]}.png'}

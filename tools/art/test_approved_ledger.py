@@ -91,6 +91,18 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         self.assertEqual(result['summary']['formalBound'], 0)
 
+    def test_scifi_hud_master_uses_its_full_identity_directory(self):
+        topic = {**self.topic, 'topicId': 'c02-hud-ally', 'category': 'hud'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-02', 'label': 'Ally'}])
+        raw = self.root / 'pack/masters/approved-v5/hud/c02-hud-ally'
+        raw.mkdir(parents=True)
+        (raw / 'master.png').write_bytes(b'preserved source placeholder')
+        result = build(self.root)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(result['summary']['formalBound'], 0)
+
     def test_scifi_skill_requires_own_full_identity_source(self):
         topic = {**self.topic, 'topicId': 'c02-skill-assault', 'category': 'skill', 'qualityTier': 'approved-chunky-v5-export-verified'}
         self.write('pack/manifest.json', {'assets': [topic]})

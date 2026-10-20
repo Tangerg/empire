@@ -75,6 +75,8 @@ describe('approved FX source and export binding', () => {
     'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
     'C01-FX-07': ['airborne-burst', 'falling-pieces', 'falling-remnants', 'settled-heap'],
     'C01-FX-08': ['clustered-echoes', 'rising-echoes', 'dissolving-echoes', 'wisp-remnants'],
+    'C01-FX-23': ['intact-link', 'unstable-link', 'link-breakup', 'disconnected-beacons'],
+    'C01-FX-22': ['loose-hardware', 'seating-impact', 'repair-swirl', 'finished-fit'],
     'C01-FX-21': ['debris-lift', 'rubble-scatter', 'dust-impact', 'settling-dust'],
     'C01-FX-20': ['bare-crescent', 'contact-spark', 'spark-spray', 'residual-sparks'],
     'C01-FX-19': ['dense-veil', 'curling-veil', 'veil-breakup', 'leaf-wisps'],

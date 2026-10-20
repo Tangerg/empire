@@ -41,6 +41,7 @@ PHASE_ORDERS = {
     'C01-FX-21': ['debris-lift', 'rubble-scatter', 'dust-impact', 'settling-dust'],
     'C01-FX-22': ['loose-hardware', 'seating-impact', 'repair-swirl', 'finished-fit'],
     'C01-FX-23': ['intact-link', 'unstable-link', 'link-breakup', 'disconnected-beacons'],
+    'C01-FX-24': ['neutral-standard', 'capture-spiral', 'blue-standard-peak', 'settled-standard'],
     **AMBIENT_PHASE_ORDERS,
 }
 

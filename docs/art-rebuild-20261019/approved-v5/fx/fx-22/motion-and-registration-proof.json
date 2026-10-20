@@ -1,0 +1,600 @@
+{
+  "topicId": "C01-FX-22",
+  "phaseOrder": [
+    "loose-hardware",
+    "seating-impact",
+    "repair-swirl",
+    "finished-fit"
+  ],
+  "method": "Fixed nut and stone ROIs compared with finished-fit using RGB mean absolute error on its alpha128 mask, subsampled every 3 pixels; coarse offset search then one-pixel refinement. Diagnostic offsets are never applied to images. Ground-stone windows and the central nut baseline are separate alpha128 checks. Approximate bolt landmarks distinguish intended articulation from fixed-material drift.",
+  "frames": {
+    "loose-hardware": {
+      "sourceSHA256": "7526233a28406ed461b7b2f7bad8105fed96bb067ec5db3e18c6a36a7a204515",
+      "sourceAlphaMass": 333290.831372549,
+      "fixedMaterialROIs": {
+        "nut-front": {
+          "roi": [
+            480,
+            875,
+            750,
+            1085
+          ],
+          "bestOffsetXY": [
+            -1,
+            13
+          ],
+          "meanAbsoluteRGBError": 5.454224787558121
+        },
+        "nut-left-facet": {
+          "roi": [
+            365,
+            845,
+            500,
+            1010
+          ],
+          "bestOffsetXY": [
+            2,
+            15
+          ],
+          "meanAbsoluteRGBError": 4.138981173864895
+        },
+        "stone-left": {
+          "roi": [
+            120,
+            945,
+            275,
+            1070
+          ],
+          "bestOffsetXY": [
+            2,
+            15
+          ],
+          "meanAbsoluteRGBError": 8.473108192620387
+        },
+        "stone-lower-left": {
+          "roi": [
+            295,
+            1040,
+            405,
+            1140
+          ],
+          "bestOffsetXY": [
+            1,
+            14
+          ],
+          "meanAbsoluteRGBError": 5.528455284552845
+        },
+        "stone-lower-right": {
+          "roi": [
+            830,
+            1040,
+            965,
+            1140
+          ],
+          "bestOffsetXY": [
+            1,
+            15
+          ],
+          "meanAbsoluteRGBError": 6.863717605004468
+        },
+        "stone-right": {
+          "roi": [
+            990,
+            945,
+            1130,
+            1060
+          ],
+          "bestOffsetXY": [
+            0,
+            15
+          ],
+          "meanAbsoluteRGBError": 5.19682151589242
+        }
+      },
+      "groundStoneWindows": {
+        "left": {
+          "pixels": 9048,
+          "bounds": [
+            132,
+            973,
+            265,
+            1065
+          ]
+        },
+        "lower-left": {
+          "pixels": 4914,
+          "bounds": [
+            304,
+            1020,
+            420,
+            1136
+          ]
+        },
+        "lower-right": {
+          "pixels": 6618,
+          "bounds": [
+            815,
+            1020,
+            955,
+            1142
+          ]
+        },
+        "right": {
+          "pixels": 7096,
+          "bounds": [
+            996,
+            973,
+            1117,
+            1055
+          ]
+        }
+      },
+      "centralNutBaselineYAlpha128": 1095,
+      "approximateVisualBoltLandmarks": {
+        "headCenter": [
+          972,
+          350
+        ],
+        "shaftTip": [
+          780,
+          720
+        ],
+        "leanFromVerticalDegrees": 27.42565266691193,
+        "uncertaintySourcePixels": 20,
+        "note": "Hand-read semantic landmarks, not optical flow. Impact obscures the exact shaft endpoint in seating-impact."
+      }
+    },
+    "seating-impact": {
+      "sourceSHA256": "6e835aa0dcab2a45a217639a3be8efc210f90ff8b5cccade610f623bbee34fdf",
+      "sourceAlphaMass": 332509.01960784313,
+      "fixedMaterialROIs": {
+        "nut-front": {
+          "roi": [
+            480,
+            875,
+            750,
+            1085
+          ],
+          "bestOffsetXY": [
+            4,
+            25
+          ],
+          "meanAbsoluteRGBError": 6.5498369942814385
+        },
+        "nut-left-facet": {
+          "roi": [
+            365,
+            845,
+            500,
+            1010
+          ],
+          "bestOffsetXY": [
+            7,
+            24
+          ],
+          "meanAbsoluteRGBError": 9.86655592469546
+        },
+        "stone-left": {
+          "roi": [
+            120,
+            945,
+            275,
+            1070
+          ],
+          "bestOffsetXY": [
+            8,
+            28
+          ],
+          "meanAbsoluteRGBError": 11.659161976235147
+        },
+        "stone-lower-left": {
+          "roi": [
+            295,
+            1040,
+            405,
+            1140
+          ],
+          "bestOffsetXY": [
+            5,
+            27
+          ],
+          "meanAbsoluteRGBError": 7.381533101045296
+        },
+        "stone-lower-right": {
+          "roi": [
+            830,
+            1040,
+            965,
+            1140
+          ],
+          "bestOffsetXY": [
+            3,
+            27
+          ],
+          "meanAbsoluteRGBError": 8.866845397676498
+        },
+        "stone-right": {
+          "roi": [
+            990,
+            945,
+            1130,
+            1060
+          ],
+          "bestOffsetXY": [
+            6,
+            28
+          ],
+          "meanAbsoluteRGBError": 7.798288508557457
+        }
+      },
+      "groundStoneWindows": {
+        "left": {
+          "pixels": 9190,
+          "bounds": [
+            137,
+            985,
+            271,
+            1079
+          ]
+        },
+        "lower-left": {
+          "pixels": 5111,
+          "bounds": [
+            308,
+            1020,
+            420,
+            1149
+          ]
+        },
+        "lower-right": {
+          "pixels": 7328,
+          "bounds": [
+            815,
+            1020,
+            957,
+            1156
+          ]
+        },
+        "right": {
+          "pixels": 7361,
+          "bounds": [
+            1000,
+            985,
+            1124,
+            1068
+          ]
+        }
+      },
+      "centralNutBaselineYAlpha128": 1107,
+      "approximateVisualBoltLandmarks": {
+        "headCenter": [
+          918,
+          510
+        ],
+        "shaftTip": [
+          660,
+          810
+        ],
+        "leanFromVerticalDegrees": 40.69553103949202,
+        "uncertaintySourcePixels": 20,
+        "note": "Hand-read semantic landmarks, not optical flow. Impact obscures the exact shaft endpoint in seating-impact."
+      }
+    },
+    "repair-swirl": {
+      "sourceSHA256": "b73eb62ae4312874a4d1d8a3d8d50e97037852d8c868644cfbf7d58aa9af3ef5",
+      "sourceAlphaMass": 434990.86666666664,
+      "fixedMaterialROIs": {
+        "nut-front": {
+          "roi": [
+            480,
+            875,
+            750,
+            1085
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 3.0219656886323554
+        },
+        "nut-left-facet": {
+          "roi": [
+            365,
+            845,
+            500,
+            1010
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 6.119739756367664
+        },
+        "stone-left": {
+          "roi": [
+            120,
+            945,
+            275,
+            1070
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 3.342714196372733
+        },
+        "stone-lower-left": {
+          "roi": [
+            295,
+            1040,
+            405,
+            1140
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 3.3815331010452963
+        },
+        "stone-lower-right": {
+          "roi": [
+            830,
+            1040,
+            965,
+            1140
+          ],
+          "bestOffsetXY": [
+            1,
+            0
+          ],
+          "meanAbsoluteRGBError": 4.742180518319929
+        },
+        "stone-right": {
+          "roi": [
+            990,
+            945,
+            1130,
+            1060
+          ],
+          "bestOffsetXY": [
+            1,
+            0
+          ],
+          "meanAbsoluteRGBError": 3.528524857375713
+        }
+      },
+      "groundStoneWindows": {
+        "left": {
+          "pixels": 9545,
+          "bounds": [
+            129,
+            957,
+            265,
+            1052
+          ]
+        },
+        "lower-left": {
+          "pixels": 5056,
+          "bounds": [
+            303,
+            1047,
+            400,
+            1123
+          ]
+        },
+        "lower-right": {
+          "pixels": 6709,
+          "bounds": [
+            815,
+            1020,
+            957,
+            1130
+          ]
+        },
+        "right": {
+          "pixels": 7356,
+          "bounds": [
+            996,
+            957,
+            1119,
+            1041
+          ]
+        }
+      },
+      "centralNutBaselineYAlpha128": 1082,
+      "approximateVisualBoltLandmarks": {
+        "headCenter": [
+          627,
+          300
+        ],
+        "shaftTip": [
+          627,
+          780
+        ],
+        "leanFromVerticalDegrees": 0.0,
+        "uncertaintySourcePixels": 20,
+        "note": "Hand-read semantic landmarks, not optical flow. Impact obscures the exact shaft endpoint in seating-impact."
+      }
+    },
+    "finished-fit": {
+      "sourceSHA256": "663d4d9acf6768564d5766f3e65d0b0d6241dc4c52e99b0bbba44c80443f7eca",
+      "sourceAlphaMass": 439405.02352941176,
+      "fixedMaterialROIs": {
+        "nut-front": {
+          "roi": [
+            480,
+            875,
+            750,
+            1085
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        },
+        "nut-left-facet": {
+          "roi": [
+            365,
+            845,
+            500,
+            1010
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        },
+        "stone-left": {
+          "roi": [
+            120,
+            945,
+            275,
+            1070
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        },
+        "stone-lower-left": {
+          "roi": [
+            295,
+            1040,
+            405,
+            1140
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        },
+        "stone-lower-right": {
+          "roi": [
+            830,
+            1040,
+            965,
+            1140
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        },
+        "stone-right": {
+          "roi": [
+            990,
+            945,
+            1130,
+            1060
+          ],
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        }
+      },
+      "groundStoneWindows": {
+        "left": {
+          "pixels": 9570,
+          "bounds": [
+            128,
+            957,
+            264,
+            1052
+          ]
+        },
+        "lower-left": {
+          "pixels": 5151,
+          "bounds": [
+            302,
+            1020,
+            420,
+            1122
+          ]
+        },
+        "lower-right": {
+          "pixels": 6833,
+          "bounds": [
+            815,
+            1020,
+            956,
+            1129
+          ]
+        },
+        "right": {
+          "pixels": 7362,
+          "bounds": [
+            995,
+            957,
+            1118,
+            1040
+          ]
+        }
+      },
+      "centralNutBaselineYAlpha128": 1083,
+      "approximateVisualBoltLandmarks": {
+        "headCenter": [
+          627,
+          300
+        ],
+        "shaftTip": [
+          627,
+          780
+        ],
+        "leanFromVerticalDegrees": 0.0,
+        "uncertaintySourcePixels": 20,
+        "note": "Hand-read semantic landmarks, not optical flow. Impact obscures the exact shaft endpoint in seating-impact."
+      }
+    }
+  },
+  "nutBaselineYSourcePixels": [
+    1095,
+    1107,
+    1082,
+    1083
+  ],
+  "nutBaselineSpreadSourcePixels": 25,
+  "nutBaselineSpreadLogicalPixels": 0.5582137161084529,
+  "maxFixedMaterialBestOffsetSourcePixels": 28,
+  "adjacentSourceAlphaMassChangesPercent": [
+    -0.23457343890506457,
+    30.820772073999457,
+    1.0147700103615478
+  ],
+  "missingStoneCorrection": {
+    "rejectedSourceSHA256": "579e582f9f0cc307d3273d834bf5baf4b7876bd39d8e41eb96157b8cd3302709",
+    "selectedSourceSHA256": "b73eb62ae4312874a4d1d8a3d8d50e97037852d8c868644cfbf7d58aa9af3ef5",
+    "rejectedGroundStoneWindowAlpha128Counts": {
+      "left": 0,
+      "lower-left": 0,
+      "lower-right": 54,
+      "right": 0
+    },
+    "selectedGroundStoneWindowAlpha128Counts": {
+      "left": 9545,
+      "lower-left": 5056,
+      "lower-right": 6709,
+      "right": 7356
+    },
+    "method": "One bounded built-in imagegen repair, no code compositing or source alpha cleanup."
+  },
+  "noPerFrameFitOrShift": true,
+  "loop": false,
+  "livePlaybackObserved": false,
+  "continuityCaveats": [
+    "Bolt articulation is real semantic motion: the loose tip sits outside the visible empty opening, the next angled bolt seats into the opening under a gold flash, then it stands upright. Approximate visual lean angles are about 27, 41, 0 and 0 degrees from vertical, so the motion is not monotonic straightening or a physically simulated screw rotation.",
+    "The nut central alpha128 baseline is y1095,1107,1082,1083 in source coordinates: a 25-pixel spread, or 0.558 logical pixels. Fixed ground-stone ROI best offsets reach 28 source pixels, or 0.625 logical pixels, in seating-impact. This exceeds the earlier first-pair 0.34-pixel observation and may produce a small vertical jitter in actual playback. Common canvas placement remains exact; no per-frame fitting or corrective pixel shifting was applied.",
+    "The selected repair-swirl and finished-fit nut/stone ROIs differ by at most 1 source pixel. Four grounded stones are retained in every selected phase. The rejected first swirl omitted those stones and was repaired in one bounded imagegen call, without compositing or alpha cleanup.",
+    "The airborne chip cohort changes from two small fragments to four during impact, then retires before the blue swirl. These are separate from the four persistent ground stones. Unique trajectories or complete landings are not claimed.",
+    "A warm amber reflection appears on the bolt head and thread highlights during the repair/impact poses, then returns to cool steel in the final pose, following the original material staging. It is an imagegen-authored lighting change, not a replacement brass bolt or programmatic recolor.",
+    "The blue orbit is a single authored phase: the far ribbon is occluded by the shaft and the near ribbon crosses in front. The final blue star and three shard glints replace it. Four poses do not establish a full revolution or smooth blue-ribbon particle correspondence.",
+    "Source alpha mass changes by -0.23%, +30.82%, then +1.01%. The upright hardware and broad completion glints increase visible area; the last phase is not a fade or disappearance. Fine thread shading, small stones and sparks are subordinate at native 32, especially on dark backgrounds, and clearer at 64.",
+    "No authored FX22 consumer, scene removal rule, extra hold, 420/500 ms lifetime or runtime loop was found. The sequence is four equal 1/12-second frames, one play. Static native/source review and APNG encoding are verified; actual browser/game playback remains unobserved."
+  ]
+}

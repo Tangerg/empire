@@ -1,0 +1,59 @@
+{
+  "source": {
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "perimeterAlphaMax": 0,
+    "perimeterNonzeroCount": 0,
+    "alpha0PixelCount": 1056522,
+    "alpha255PixelCount": 2187,
+    "alpha1PixelCount": 2507,
+    "alpha2to254PixelCount": 511300
+  },
+  "runtime": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "resize": "Whole authored canvas Lanczos-contained into 28x28 without crop; centered on 32x32 transparent canvas",
+    "containedSize": [
+      28,
+      28
+    ],
+    "offset": [
+      2,
+      2
+    ],
+    "twoPixelMarginAlphaMax": 0
+  },
+  "integrity": {
+    "rawSha256": "2577f51b15e755541f7f9587e3c19a35038dc36c8d08000bc82e1f79d0d94975",
+    "masterSha256": "2577f51b15e755541f7f9587e3c19a35038dc36c8d08000bc82e1f79d0d94975",
+    "rawEqualsMaster": true,
+    "noAlphaCleanup": true,
+    "noRecolor": true,
+    "allowedProcessing": [
+      "unchanged raw copy",
+      "whole-canvas resize",
+      "transparent padding",
+      "diagnostic background compositing only"
+    ]
+  },
+  "visualComposites": {
+    "required": [
+      "white",
+      "black",
+      "olive"
+    ],
+    "status": "Pass: actual source and native runtime checked on white, black, olive; no haze, magenta or residue. Source perimeter alpha zero."
+  }
+}

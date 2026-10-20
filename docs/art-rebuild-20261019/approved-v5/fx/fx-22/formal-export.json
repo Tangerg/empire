@@ -1,0 +1,426 @@
+[
+  {
+    "topicId": "C01-FX-22",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-22.png",
+    "size": [
+      128,
+      32
+    ],
+    "frameSize": [
+      32,
+      32
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      28,
+      28
+    ],
+    "sources": [
+      {
+        "phase": "loose-hardware",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/loose-hardware/master.png",
+        "sourceSha256": "7526233a28406ed461b7b2f7bad8105fed96bb067ec5db3e18c6a36a7a204515",
+        "sourcePixelSha256": "ced728ca64aab5f8773b8e28f6d3e6dd27499fa35aefb8fb17632dd15dd8b959",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            49,
+            141,
+            1208,
+            1230
+          ],
+          "nonzeroPixels": 353122
+        }
+      },
+      {
+        "phase": "seating-impact",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/seating-impact/master.png",
+        "sourceSha256": "6e835aa0dcab2a45a217639a3be8efc210f90ff8b5cccade610f623bbee34fdf",
+        "sourcePixelSha256": "dc1103cf75bcf0f395d48e8852bc017fa9824c63ac959ef21573202005c6516f",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            25,
+            35,
+            1238,
+            1238
+          ],
+          "nonzeroPixels": 383860
+        }
+      },
+      {
+        "phase": "repair-swirl",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/repair-swirl/master.png",
+        "sourceSha256": "b73eb62ae4312874a4d1d8a3d8d50e97037852d8c868644cfbf7d58aa9af3ef5",
+        "sourcePixelSha256": "2f7e80db1ccce1b96e1f9a2c2c83eac493d709c8b0bd28baf49b79478e88c89d",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            33,
+            35,
+            1210,
+            1230
+          ],
+          "nonzeroPixels": 470271
+        }
+      },
+      {
+        "phase": "finished-fit",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/finished-fit/master.png",
+        "sourceSha256": "663d4d9acf6768564d5766f3e65d0b0d6241dc4c52e99b0bbba44c80443f7eca",
+        "sourcePixelSha256": "bee0fb2e8bbf942114285ae59a59269503b55c1e53099bba69df1dfc61e3e185",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 6,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            31,
+            1214,
+            1236
+          ],
+          "nonzeroPixels": 479414
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "loose-hardware",
+        "pixelSha256": "e2fd6fef0206aac0d64ad915b6efd9904af918268f33a85f13ae89d360850a6a",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            4,
+            30,
+            30
+          ],
+          "nonzeroPixels": 339
+        }
+      },
+      {
+        "phase": "seating-impact",
+        "pixelSha256": "43e6a3577a4f8a79be5feb96f8bd3c007c5312da99667fa761e3199e7168c933",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            3,
+            8,
+            30,
+            30
+          ],
+          "nonzeroPixels": 329
+        }
+      },
+      {
+        "phase": "repair-swirl",
+        "pixelSha256": "34853de55337f1434b90b949bea8b235740762046245a0164a0e58ab759a48ab",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            3,
+            30,
+            30
+          ],
+          "nonzeroPixels": 402
+        }
+      },
+      {
+        "phase": "finished-fit",
+        "pixelSha256": "fb1ccd5ade846c657a8d7fbc30f09e17776fa8bc42a975a925facaba63c580f7",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            3,
+            30,
+            30
+          ],
+          "nonzeroPixels": 425
+        }
+      }
+    ],
+    "pixelSha256": "180ec7a7e5d6bd10855446a045acbaf8ccbe05e9d0431bed530a411998a71664",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "playback": {
+      "mode": "once-hold",
+      "sequenceDurationMs": 333.3333333333333,
+      "afterLastFrame": "hold-last-frame",
+      "wrapTransition": null,
+      "lifetimeOwner": "consumer"
+    },
+    "loopClosureReview": "not-applicable",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "6a787f034f450ec27a86dc2afa437f8994f11e6065afa5be11b63f30caf44a95"
+  },
+  {
+    "topicId": "C01-FX-22",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-22.png",
+    "size": [
+      256,
+      64
+    ],
+    "frameSize": [
+      64,
+      64
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      56,
+      56
+    ],
+    "sources": [
+      {
+        "phase": "loose-hardware",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/loose-hardware/master.png",
+        "sourceSha256": "7526233a28406ed461b7b2f7bad8105fed96bb067ec5db3e18c6a36a7a204515",
+        "sourcePixelSha256": "ced728ca64aab5f8773b8e28f6d3e6dd27499fa35aefb8fb17632dd15dd8b959",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            49,
+            141,
+            1208,
+            1230
+          ],
+          "nonzeroPixels": 353122
+        }
+      },
+      {
+        "phase": "seating-impact",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/seating-impact/master.png",
+        "sourceSha256": "6e835aa0dcab2a45a217639a3be8efc210f90ff8b5cccade610f623bbee34fdf",
+        "sourcePixelSha256": "dc1103cf75bcf0f395d48e8852bc017fa9824c63ac959ef21573202005c6516f",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            25,
+            35,
+            1238,
+            1238
+          ],
+          "nonzeroPixels": 383860
+        }
+      },
+      {
+        "phase": "repair-swirl",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/repair-swirl/master.png",
+        "sourceSha256": "b73eb62ae4312874a4d1d8a3d8d50e97037852d8c868644cfbf7d58aa9af3ef5",
+        "sourcePixelSha256": "2f7e80db1ccce1b96e1f9a2c2c83eac493d709c8b0bd28baf49b79478e88c89d",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            33,
+            35,
+            1210,
+            1230
+          ],
+          "nonzeroPixels": 470271
+        }
+      },
+      {
+        "phase": "finished-fit",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/finished-fit/master.png",
+        "sourceSha256": "663d4d9acf6768564d5766f3e65d0b0d6241dc4c52e99b0bbba44c80443f7eca",
+        "sourcePixelSha256": "bee0fb2e8bbf942114285ae59a59269503b55c1e53099bba69df1dfc61e3e185",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 6,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            31,
+            1214,
+            1236
+          ],
+          "nonzeroPixels": 479414
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "loose-hardware",
+        "pixelSha256": "3740e3789e7839d3ad590a0e9acdc96f25af210792ea107e66bb22abe29b9657",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            7,
+            11,
+            57,
+            58
+          ],
+          "nonzeroPixels": 1049
+        }
+      },
+      {
+        "phase": "seating-impact",
+        "pixelSha256": "89ccc659099937406795dd4d24fc328401220d0a2ddb33ecda314542cfde7c23",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            8,
+            15,
+            57,
+            58
+          ],
+          "nonzeroPixels": 1067
+        }
+      },
+      {
+        "phase": "repair-swirl",
+        "pixelSha256": "fa070411ce674c120fe8c40678445b1e787c9d8f31175caa392b9f843df132ab",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            7,
+            9,
+            57,
+            58
+          ],
+          "nonzeroPixels": 1307
+        }
+      },
+      {
+        "phase": "finished-fit",
+        "pixelSha256": "cd37c159492306f9fc6aba8d34f99851ec020d486fa2b3d32be7844291a4ac08",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            7,
+            9,
+            58,
+            57
+          ],
+          "nonzeroPixels": 1387
+        }
+      }
+    ],
+    "pixelSha256": "736aa57ed6288aa82cf8ebb55f36fe422f320d271ff58a946d5de69a8b533647",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "playback": {
+      "mode": "once-hold",
+      "sequenceDurationMs": 333.3333333333333,
+      "afterLastFrame": "hold-last-frame",
+      "wrapTransition": null,
+      "lifetimeOwner": "consumer"
+    },
+    "loopClosureReview": "not-applicable",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "ffebad00a8566f09a4d082f715ecc131ecde09bad188dc25953a425fcda1c2df"
+  }
+]

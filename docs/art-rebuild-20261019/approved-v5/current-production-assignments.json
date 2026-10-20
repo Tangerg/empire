@@ -1,46 +1,31 @@
 {
-  "asOfUtc": "2026-10-20T06:42:00Z",
-  "formalSnapshot": "543 local; current ordinary push in progress",
+  "asOfUtc": "2026-10-20T07:14:00Z",
+  "formalSnapshot": "552 committed and remote verified at742dc3e9;560 pending verification",
   "assignments": [
     {
       "topics": [
-        "C01-FX-23"
+        "C01-FX-24"
       ],
-      "stage": "source identity and phase audit"
+      "stage": "recover remaining three authored phases; existing neutral source preserved"
     },
     {
       "topics": [
-        "C01-FX-22"
+        "c02-hud-breakable",
+        "c02-hud-engineering",
+        "c02-hud-escort",
+        "c02-hud-evacuation"
       ],
-      "stage": "original hardware assembly audited; source generation"
+      "stage": "legacy full-board identity audit and source generation"
     },
     {
-      "topics": [
-        "c02-status-capture",
-        "c02-status-destroy",
-        "c02-status-escort",
-        "c02-status-evacuate"
-      ],
-      "stage": "specific original board identities audited; source generation"
-    },
-    {
-      "topics": [
-        "c02-status-deliver-evidence",
-        "c02-status-hold-timer",
-        "c02-status-repair",
-        "c02-status-rescue"
-      ],
-      "stage": "next exclusive target-status group"
-    },
-    {
-      "scope": "c01-12 two southern stone crossing components",
-      "stage": "isolated engineering: source-alpha junction clipping, actual full BoardView review,27focusedTS/6Python/typecheck; final exact-state/scene checks pending"
+      "scope": "c01-02 road world-material integration",
+      "stage": "separate scene worktree; existing southern crossings confirmed already integrated"
     }
   ],
   "canonicalRemaining": {
     "C01": {
       "equipment": 1,
-      "fx": 3
+      "fx": 1
     },
     "C02": {
       "narrative-static": 80,
@@ -49,9 +34,8 @@
       "faction-kit": 12,
       "terrain": 32,
       "interactive-structure": 24,
-      "status": 8,
       "fx": 24,
-      "hud": 16
+      "hud": 10
     },
     "C03": {
       "narrative-static": 80,
@@ -68,9 +52,15 @@
       "hud": 16
     }
   },
-  "counting": "544 formal canonical topics of1212; C01 400, C02 144, C03 0. Environment186 source cells separate from36 atlases/1188 derived slots; liveGame0.",
-  "queuedExclusiveGroups": [],
-  "unassignedFinalC01Effects": [
-    "C01-FX-24"
+  "counting": "560 pending formal catalog bindings of1212;652 remaining. Environment186 independent source cells, not added to canonical topics. LiveGame0.",
+  "blocked": [
+    {
+      "topic": "C01 equipment shaman",
+      "reason": "prior moderation rejection; do not retry to evade"
+    },
+    {
+      "scope": "browser live acceptance",
+      "reason": "fresh Vite route connection-refused from shell and cloud browser; Sky AT-SPI unavailable"
+    }
   ]
 }
