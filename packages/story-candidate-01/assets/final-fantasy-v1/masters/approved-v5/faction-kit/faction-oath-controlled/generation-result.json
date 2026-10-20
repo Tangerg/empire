@@ -1,0 +1,16 @@
+{
+  "status": "generated-built-in",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-72c1e8cd-0fb1-497e-b245-02221932868e.png",
+  "sha256": "e84722eb4c26d6fc807c68bd3e5111cb2a66a75d04f6f23e5b86078ab03d2155",
+  "request": "refinement-request.json",
+  "exactToolRequestVerified": true,
+  "rawAndMasterIdentical": true,
+  "alphaMutation": false,
+  "postprocessing": null,
+  "rejectedCandidate": {
+    "file": "candidate-v1.png",
+    "reason": "Canvas perimeter alpha maximum 5 exceeded existing exporter source gate (<=1).",
+    "candidateSha256": "63a965bb194d5523d66e178203c72711b34e2507cfee85f87223dd95e2b6af1c",
+    "generationResult": "candidate-v1-generation-result.json"
+  }
+}

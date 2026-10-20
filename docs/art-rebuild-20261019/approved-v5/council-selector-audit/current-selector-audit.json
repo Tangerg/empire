@@ -1,0 +1,90 @@
+{
+  "kind": "read-only AST audit",
+  "allStoryCount": 35,
+  "councilStoryConsumers": [
+    {
+      "id": "c01/brief-04",
+      "chapter": 1,
+      "title": "黑旗营地",
+      "location": "灰境西林",
+      "topic": "C01-CH05-S26",
+      "line": 117
+    },
+    {
+      "id": "c01/aftermath-04",
+      "chapter": 1,
+      "title": "违令留下的证人",
+      "location": "黑旗营外",
+      "topic": "C01-CH05-S26",
+      "line": 123
+    },
+    {
+      "id": "c01/aftermath-08",
+      "chapter": 2,
+      "title": "一份可以解除的契约",
+      "location": "洛岬粮仓",
+      "topic": "C01-CH05-S26",
+      "line": 171
+    },
+    {
+      "id": "c01/brief-10",
+      "chapter": 2,
+      "title": "旧旗下的追兵",
+      "location": "灰境东部山口",
+      "topic": "C01-CH05-S26",
+      "line": 190
+    },
+    {
+      "id": "c01/aftermath-10",
+      "chapter": 2,
+      "title": "允许退出的誓",
+      "location": "山口外营地",
+      "topic": "C01-CH05-S26",
+      "line": 196
+    },
+    {
+      "id": "c01/brief-13",
+      "chapter": 3,
+      "title": "圣城档案",
+      "location": "圣辉白塔",
+      "topic": "C01-CH05-S26",
+      "line": 226
+    },
+    {
+      "id": "c01/aftermath-13",
+      "chapter": 3,
+      "title": "保留修改痕迹",
+      "location": "圣城外旧医院",
+      "topic": "C01-CH05-S26",
+      "line": 232
+    },
+    {
+      "id": "c01/chapter-three-ending",
+      "chapter": 3,
+      "title": "灰旗成为一支军队",
+      "location": "洛岬晨议会",
+      "topic": "C01-CH05-S26",
+      "line": 274
+    }
+  ],
+  "derivedStagingLevels": [
+    "c01-04",
+    "c01-10",
+    "c01-13"
+  ],
+  "proposedRegression": {
+    "expectCouncilConsumers": [
+      "c01/chapter-three-ending"
+    ],
+    "unexpectedConsumers": [
+      "c01/brief-04",
+      "c01/aftermath-04",
+      "c01/aftermath-08",
+      "c01/brief-10",
+      "c01/aftermath-10",
+      "c01/brief-13",
+      "c01/aftermath-13"
+    ],
+    "passes": false
+  }
+}

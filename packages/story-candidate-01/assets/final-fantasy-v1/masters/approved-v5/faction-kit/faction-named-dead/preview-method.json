@@ -1,0 +1,86 @@
+{
+  "purpose": "QA only; formal production export belongs to parent",
+  "exporterPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/export_overrides.py",
+  "exporterSha256": "1e025037b5f3d02b7138e5790497a465b180ec25b7405084ab537294aaffd7a6",
+  "function": "fit",
+  "size": [
+    128,
+    128
+  ],
+  "padding": 2,
+  "anchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "fullCanvasContainment": true,
+  "alphaCleanup": false,
+  "alphaBBoxCropping": false,
+  "nativeAlpha": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentFractionAlpha0": 0.50323486328125,
+    "nearOpaqueFractionAlphaGE250": 0.4068603515625,
+    "alphaThresholdBoundingBoxes": {
+      "1": [
+        5,
+        7,
+        125,
+        114
+      ],
+      "8": [
+        7,
+        20,
+        123,
+        112
+      ],
+      "28": [
+        7,
+        20,
+        123,
+        112
+      ],
+      "128": [
+        8,
+        20,
+        123,
+        111
+      ],
+      "240": [
+        8,
+        21,
+        122,
+        111
+      ],
+      "250": [
+        9,
+        21,
+        122,
+        111
+      ],
+      "255": [
+        9,
+        21,
+        122,
+        111
+      ]
+    },
+    "visibleMarginsPixelsL_T_R_B": [
+      7,
+      20,
+      5,
+      16
+    ],
+    "canvasEdgeMaxAlpha": 0,
+    "canvasEdgeNonzeroPixelCount": 0,
+    "sourceGatePass": true
+  },
+  "nativeSha256": "8ebf69e617562c2aab9390d28de62422b46de2a8b9babda095278590ba8771e8"
+}

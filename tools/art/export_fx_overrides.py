@@ -13,7 +13,11 @@ from PIL import Image
 from export_overrides import ROOT, read_json, read_source, records, within
 
 # Phase meaning is topic-specific. Enable further topics only with their reviewed order.
-PHASE_ORDERS = {'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate']}
+PHASE_ORDERS = {
+    'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate'],
+    'C01-FX-02': ['onset', 'sweep', 'peak', 'dissipate'],
+    'C01-FX-03': ['approach', 'impact', 'burst', 'dissipate'],
+}
 
 
 def validate_fx_alpha(image, label):

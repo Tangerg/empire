@@ -1,0 +1,160 @@
+{
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFractionAlpha0": 0.5183781913824724,
+  "nearOpaqueFractionAlphaGE250": 0.46110182662688326,
+  "alphaThresholdBoundingBoxes": {
+    "1": [
+      49,
+      31,
+      1224,
+      1230
+    ],
+    "8": [
+      57,
+      185,
+      1222,
+      1106
+    ],
+    "28": [
+      59,
+      186,
+      1222,
+      1106
+    ],
+    "128": [
+      60,
+      186,
+      1221,
+      1105
+    ],
+    "240": [
+      61,
+      187,
+      1220,
+      1104
+    ],
+    "250": [
+      63,
+      190,
+      1220,
+      1104
+    ],
+    "255": [
+      64,
+      191,
+      1220,
+      1104
+    ]
+  },
+  "visibleMarginsPixelsL_T_R_B": [
+    57,
+    185,
+    32,
+    148
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sourceGatePass": true,
+  "topicId": "C01-FACTION-NAMED-DEAD",
+  "sha256": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+  "rawSha256": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-072f45db-09e7-45dc-a034-030dcf9b64c8.png",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "None; raw and master are unchanged copies of native generation bytes. QA previews only use the existing exporter full-canvas containment.",
+  "runtimeReady": false,
+  "bindingStatus": "Pending parent formal binding; source completion does not claim integration completion.",
+  "previewExport": {
+    "purpose": "QA only; formal production export belongs to parent",
+    "exporterPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/export_overrides.py",
+    "exporterSha256": "1e025037b5f3d02b7138e5790497a465b180ec25b7405084ab537294aaffd7a6",
+    "function": "fit",
+    "size": [
+      128,
+      128
+    ],
+    "padding": 2,
+    "anchor": [
+      64,
+      64
+    ],
+    "hdRecord": null,
+    "fullCanvasContainment": true,
+    "alphaCleanup": false,
+    "alphaBBoxCropping": false,
+    "nativeAlpha": {
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFractionAlpha0": 0.50323486328125,
+      "nearOpaqueFractionAlphaGE250": 0.4068603515625,
+      "alphaThresholdBoundingBoxes": {
+        "1": [
+          5,
+          7,
+          125,
+          114
+        ],
+        "8": [
+          7,
+          20,
+          123,
+          112
+        ],
+        "28": [
+          7,
+          20,
+          123,
+          112
+        ],
+        "128": [
+          8,
+          20,
+          123,
+          111
+        ],
+        "240": [
+          8,
+          21,
+          122,
+          111
+        ],
+        "250": [
+          9,
+          21,
+          122,
+          111
+        ],
+        "255": [
+          9,
+          21,
+          122,
+          111
+        ]
+      },
+      "visibleMarginsPixelsL_T_R_B": [
+        7,
+        20,
+        5,
+        16
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "canvasEdgeNonzeroPixelCount": 0,
+      "sourceGatePass": true
+    },
+    "nativeSha256": "8ebf69e617562c2aab9390d28de62422b46de2a8b9babda095278590ba8771e8"
+  }
+}

@@ -4,12 +4,12 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 361,
+    "formalBound": 364,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
-      "faction-kit": 8,
+      "faction-kit": 11,
       "fx": 1,
       "hud": 16,
       "interactive-structure": 24,
@@ -18,7 +18,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 362,
+    "rawPreservedTopics": 364,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -3000,11 +3000,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-dragon-covenant/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-dragon-covenant.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Literal source balance-scale shield, gray scale cloth with red edge and separate buckled loop; recovered interrupted output hash verified, exact invocation linkage unavailable and disclosed; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-GRAY-BANNER",
@@ -3131,13 +3136,20 @@
       "category": "faction-kit",
       "label": "归名亡者态基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-named-dead/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-named-dead.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Source pale shield with amber lantern emblem, dark tied cloth with wooden name tags and separate amber lantern; no invented skull or ghost symbol; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-OATH-CONTROLLED",
@@ -3145,13 +3157,20 @@
       "category": "faction-kit",
       "label": "誓文受控态基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-oath-controlled/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-oath-controlled.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Source shield with crossed amber oath bands, cream red-fringed banded cloth and straight sword; rejected faint-edge candidate preserved; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-SILVERWOOD",

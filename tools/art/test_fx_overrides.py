@@ -97,6 +97,29 @@ class FxTests(unittest.TestCase):
         self.assertLess(reports[1]['frames'][3]['alpha']['maxAlpha'], 240)
         self.assertEqual([f['alpha']['edgeMaxAlpha'] for r in reports for f in r['frames']], [0] * 8)
 
+    def test_reviewed_pierce_and_arrow_contracts_keep_their_own_phase_meanings(self):
+        for topic, names in [('C01-FX-02', ['onset', 'sweep', 'peak', 'dissipate']),
+                             ('C01-FX-03', ['approach', 'impact', 'burst', 'dissipate'])]:
+            with self.subTest(topic=topic):
+                asset = {**self.asset, 'topicId': topic, 'png': f'runtime/fx/fx-{topic[-2:]}.png'}
+                hd = {**self.hd, 'topicId': topic, 'png': f'runtime-hd/fx/fx-{topic[-2:]}.png'}
+                entry = copy.deepcopy(self.entry)
+                for phase, name in zip(entry['phases'], names):
+                    phase['phase'] = name
+                self.manifest.write_text(json.dumps({'assets': [asset]}))
+                self.hd_path.write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2',
+                                                  'assetCount': 1, 'assets': [hd]}))
+                self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {topic: entry}}))
+                reports = export(self.root, self.catalog)
+                self.assertEqual(reports, export(self.root, self.catalog, True))
+                self.assertEqual([phase['phase'] for phase in reports[0]['frames']], names)
+                self.assertEqual(reports[0]['output'], str((self.pack / asset['png']).relative_to(self.root)))
+                self.assertLess(reports[1]['frames'][-1]['alpha']['maxAlpha'], 240)
+                entry['phases'][0]['phase'] = 'impact' if topic.endswith('02') else 'onset'
+                self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {topic: entry}}))
+                with self.assertRaisesRegex(ValueError, 'semantic phase order'):
+                    export(self.root, self.catalog)
+
     def test_hd_native_fade_retains_every_pixel_without_alpha_normalization(self):
         for index in range(4):
             self.mutate_source(index, lambda image: image.resize((64, 64), Image.Resampling.NEAREST))

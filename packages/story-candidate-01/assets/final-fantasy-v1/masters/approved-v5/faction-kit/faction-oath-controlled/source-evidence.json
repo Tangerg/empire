@@ -1,0 +1,112 @@
+{
+  "topicId": "C01-FACTION-OATH-CONTROLLED",
+  "assetId": "C01-FFV1-FACTION-OATH-CONTROLLED",
+  "label": "誓文受控态基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      314,
+      836,
+      627,
+      1254
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      319,
+      841,
+      622,
+      1249
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/10-faction-oath-controlled-full-cell.png",
+    "referenceLegacyInset5": "source-crops/10-faction-oath-controlled-legacy-inset5.png",
+    "referenceFullCellSha256": "888a3fdbb330501bfee2b3c9b36909680e2d87febe7d2e170a39ecce773312b9",
+    "referenceLegacyInset5Sha256": "8683e3a1cdc38cfcdcffbbe731da5499278c278b27880fe81e1b72250dd3ef4d"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Lorne-like old-steel, ivory-chevron, wine-red shield bound by two crossing amber/gold inscribed bands",
+      "Patched ivory/wine-red cloth bound by two horizontal amber/gold inscribed bands",
+      "Plain straight steel sword"
+    ],
+    "emblem": "Preserve recognizable Lorne base and crossed binding bands; band marks are source ornament, not new readable wording. Do not substitute skulls, glowing red eyes or generic evil glyphs",
+    "palette": "Old steel, ivory, wine-red and constrained amber/gold binding bands"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "5b65e5ad542e428623c1351d0b19374c3e31d392c9edccde04a09808535dc96a",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/10-faction-oath-controlled-full-cell.png",
+          "sha256": "888a3fdbb330501bfee2b3c9b36909680e2d87febe7d2e170a39ecce773312b9"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-lorne/master.png",
+          "sha256": "f954b35190f6e913322927d0acfc7411d667de8ce5466e678102d9ef4d2fd408"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-vilsa/master.png",
+          "sha256": "ef8cdb4fe029f6bf8abaa632e10bd242ab93596098ff6930a3230289fb15204f"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-mountain-forge/master.png",
+          "sha256": "6afefbeb5c0129745adf6d521d3b2d153a28efcff447c8b68fa7cfd46853d964"
+        }
+      ]
+    },
+    {
+      "file": "refinement-request.json",
+      "sha256": "50e88741f59297fcc4c93058b6a2640b374c1c478fe7bacd12e84e3c23c76ab7",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-oath-controlled/candidate-v1.png",
+          "sha256": "63a965bb194d5523d66e178203c72711b34e2507cfee85f87223dd95e2b6af1c"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-72c1e8cd-0fb1-497e-b245-02221932868e.png",
+  "generationProvenance": {
+    "status": "generated-built-in",
+    "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-72c1e8cd-0fb1-497e-b245-02221932868e.png",
+    "sha256": "e84722eb4c26d6fc807c68bd3e5111cb2a66a75d04f6f23e5b86078ab03d2155",
+    "request": "refinement-request.json",
+    "exactToolRequestVerified": true,
+    "rawAndMasterIdentical": true,
+    "alphaMutation": false,
+    "postprocessing": null,
+    "rejectedCandidate": {
+      "file": "candidate-v1.png",
+      "reason": "Canvas perimeter alpha maximum 5 exceeded existing exporter source gate (<=1).",
+      "candidateSha256": "63a965bb194d5523d66e178203c72711b34e2507cfee85f87223dd95e2b6af1c",
+      "generationResult": "candidate-v1-generation-result.json"
+    }
+  },
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "e84722eb4c26d6fc807c68bd3e5111cb2a66a75d04f6f23e5b86078ab03d2155",
+  "promptHashes": {
+    "prompt.txt": "52a44c4586f527d8c0ec78c1f6d7e9e883abb5b04e06546b17e8f894891ede53",
+    "refinement-prompt.txt": "9d3ea177ddf70f42e841ca2bd573d8f0b6c37c29c6323c7c2dc541e036189591"
+  },
+  "postprocessing": "None; raw and master are unchanged copies of native generation bytes. QA previews only use the existing exporter full-canvas containment.",
+  "runtimeReady": false
+}

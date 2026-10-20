@@ -1,0 +1,93 @@
+{
+  "topicId": "C01-FACTION-NAMED-DEAD",
+  "assetId": "C01-FFV1-FACTION-NAMED-DEAD",
+  "label": "归名亡者态基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      627,
+      836,
+      940,
+      1254
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      632,
+      841,
+      935,
+      1249
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/11-faction-named-dead-full-cell.png",
+    "referenceLegacyInset5": "source-crops/11-faction-named-dead-legacy-inset5.png",
+    "referenceFullCellSha256": "35b988e5a4bd36237ae65b587a49dc085b77072240ebdf028813bddb29457d9b",
+    "referenceLegacyInset5Sha256": "c0731c2b8d116da65c055e8689d0880a8dec52b21e9923a879e2cfb5a5836548"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Tall pointed ivory shield with large lit amber lantern motif",
+      "Folded gray cloth tied with cord and two wooden name tags",
+      "Small separate lit amber memory lantern"
+    ],
+    "emblem": "Preserve lantern shield and two wooden name tags; no skull or blue-ghost replacement and no fabricated readable names",
+    "palette": "Gray cloth, weathered ivory, wooden names, warm amber memory lamp"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "a763be902d16b3c41fe0ce4718ce394d10b40c2d317461b1bc733cf071218abf",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/11-faction-named-dead-full-cell.png",
+          "sha256": "35b988e5a4bd36237ae65b587a49dc085b77072240ebdf028813bddb29457d9b"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-lorne/master.png",
+          "sha256": "f954b35190f6e913322927d0acfc7411d667de8ce5466e678102d9ef4d2fd408"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-vilsa/master.png",
+          "sha256": "ef8cdb4fe029f6bf8abaa632e10bd242ab93596098ff6930a3230289fb15204f"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-mountain-forge/master.png",
+          "sha256": "6afefbeb5c0129745adf6d521d3b2d153a28efcff447c8b68fa7cfd46853d964"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-072f45db-09e7-45dc-a034-030dcf9b64c8.png",
+  "generationProvenance": {
+    "status": "generated-built-in",
+    "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-072f45db-09e7-45dc-a034-030dcf9b64c8.png",
+    "sha256": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+    "request": "request.json",
+    "exactToolRequestVerified": true,
+    "rawAndMasterIdentical": true,
+    "alphaMutation": false,
+    "postprocessing": null
+  },
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+  "promptHashes": {
+    "prompt.txt": "06bbf0e7690d28eaac87f97124b93b99869f0c39eff55d6c58619c3c7c91b3b6"
+  },
+  "postprocessing": "None; raw and master are unchanged copies of native generation bytes. QA previews only use the existing exporter full-canvas containment.",
+  "runtimeReady": false
+}

@@ -66,10 +66,16 @@ describe('candidate-01 effect pivot ownership', () => {
 describe('approved FX source and export binding', () => {
   const root = new URL('../../../../', import.meta.url);
   const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
+  const phaseOrders: Record<string, readonly string[]> = {
+    'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate'],
+    'C01-FX-02': ['onset', 'sweep', 'peak', 'dissipate'],
+    'C01-FX-03': ['approach', 'impact', 'burst', 'dissipate'],
+  };
   it.each(Object.entries(fxOverrides.assets))('binds %s to its reviewed full-canvas phases at both densities', (topic, override) => {
     const record = assets.candidate01Asset(topic);
     expect(record.qualityTier).toBe('approved-chunky-v5-export-verified');
-    expect(override.phases.map(phase => phase.phase)).toEqual(['onset', 'sweep', 'peak', 'dissipate']);
+    expect(phaseOrders[topic]).toBeDefined();
+    expect(override.phases.map(phase => phase.phase)).toEqual(phaseOrders[topic]);
     expect(override.placement).toEqual({ scale: 28 / 1254, origin: [2, 2], sourcePivot: [627, 627] });
     for (const phase of override.phases) {
       expect(hash(readFileSync(new URL(phase.source, root)))).toBe(phase.sha256);

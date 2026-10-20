@@ -1,7 +1,7 @@
 # Registered FX phase export
 
 `export_fx_overrides.py` is a deliberately narrow exporter for the first slash
-pilot, C01-FX-01. It does not register art, edit manifests, generate artwork,
+pilots C01-FX-01 (slash), C01-FX-02 (pierce), and C01-FX-03 (arrow impact). It does not register art, edit manifests, generate artwork,
 clean alpha, or approve motion. Further topics require their own reviewed phase
 semantics before adding a contract; generic growth/burst/decay labels would be
 wrong for effects such as construction or capture.
@@ -120,3 +120,7 @@ Before registering the slash pilot:
 
 No generated art, new source registration, source alpha edit, live playback or
 semantic animation approval is included in this engineering change.
+
+## Reviewed next impact phase contracts
+
+FX02 keeps the original fixed-axis puncture: onset, longer sweep, peak needle/chips, translucent dissipate. FX03 uses approach, impact, burst, dissipate: short arrow approaching down-right, cream impact at its tip, arrow removed with radial chips, then residue. These meanings are verified against full original source rows in the source audit. Enabling a contract does not approve generated artwork or register a topic. All shared-canvas, transparent-edge, density and timing gates remain identical.
