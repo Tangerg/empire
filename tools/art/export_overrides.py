@@ -252,7 +252,7 @@ def plan(root: Path, catalog: Path):
             raise ValueError(f'unknown topic: {topic}')
         pack, asset, hd = known[topic]
         category = asset['category']
-        contracts = {'battle-prop': 64, 'equipment': 48, 'skill': 48, 'status': 32, 'hud': 32}
+        contracts = {'battle-prop': 64, 'equipment': 48, 'skill': 48, 'status': 32, 'hud': 32, 'faction-kit': 128}
         if category == 'narrative-static':
             if asset.get('kind') == 'scene':
                 exports = render_scene(root, pack, asset, hd, override)
@@ -260,7 +260,7 @@ def plan(root: Path, catalog: Path):
                 rendered, provenance = compose_character_card(root, pack, asset, hd, override)
                 exports = [(asset, 1, rendered, provenance)]
         elif category not in contracts or asset.get('frames') or asset.get('variants'):
-            raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud exports supported')
+            raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud/faction-kit exports supported')
         else:
             side = contracts[category]
             anchor = asset.get('anchor')

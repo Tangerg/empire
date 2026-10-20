@@ -1,0 +1,1772 @@
+{
+  "schemaVersion": 1,
+  "audit": "C01 faction-kit identity/crop/consumer audit",
+  "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+  "artifactDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit",
+  "generatedDateUtc": "2026-10-20",
+  "scope": {
+    "count": 12,
+    "codeEdits": false,
+    "gitWrites": false,
+    "imageGeneration": false,
+    "sourceMutation": false
+  },
+  "sourceBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "sha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "columns": 4,
+    "rows": 3,
+    "mappingEvidence": "All 12 row-major cells were reconstructed with original gutter cleanup, alpha-bbox fitting and final pixel cleanup; each uniquely matches the current named runtime PNG byte-for-byte at pixel level. Topic catalogue order independently agrees. Runtime manifest is alphabetically sorted after generation."
+  },
+  "checks": {
+    "uniqueSlotMatches": 12,
+    "exactRuntimePixelMatches": 12,
+    "contractMatches128Centered": 12,
+    "hdEntries": 0,
+    "sourceCodeFilesScanned": 434,
+    "sourceCodeLiteralReferences": [
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-assets.ts",
+        "line": 20,
+        "text": "'faction-kit',"
+      }
+    ],
+    "legacyTopicInputExists": false,
+    "legacyTopicInputWarning": "Legacy full builder expects absent packages/story-candidate-01/assets/manifest-complete.json. It must not be run to produce this family; it also overwrites unrelated exports.",
+    "sourceJsonFilesSeparatelyScanned": 5,
+    "sourceJsonTopicOrPathReferences": []
+  },
+  "cropFindings": {
+    "noTopicSwapDetected": true,
+    "slotsWithCorePixelsLostByInset5": [
+      5,
+      8,
+      12
+    ],
+    "interpretation": "Edge hits refer to alpha >= 28 after existing legacy chroma/gutter operations. Use raw full-cell crop to distinguish art from cleanup residues; remake complete outlines rather than copying clipped cuts. Full board is identity evidence, not an approved transparent source.",
+    "slotsWhoseLegacyCoreTouchesCellEdge": [
+      4,
+      5,
+      7,
+      8,
+      12
+    ]
+  },
+  "globalSemanticConstraints": [
+    "Twelve equipment/material-kit cutouts, not portrait/scene sprites or a single logo per faction",
+    "Use approved concept-v2 chunky matte visual language; preserve original object set, emblem topology, material identity and relative arrangement",
+    "True alpha exterior; no white/magenta/checkerboard backdrop, board separator lines or labels baked in",
+    "Keep every shield/weapon/cloth/strap/tag/lantern/clasp fully in canvas with transparent breathing room",
+    "Do not invent a new heraldic symbol or readable text where source has no such element",
+    "New masters are independent artwork. Do not use legacy chroma removal, alpha-bbox recentering, recoloring or cropped original cells as a substitute for redraw",
+    "Topic IDs, canonical labels, category, runtime paths, size 128x128 and center anchor [64,64] remain fixed; no HD contract or gameplay binding is needed for this family",
+    "Broad art-assets/02-asset-scope prose loosely names additional social groups. Exact twelve topics come from canonical manifest and 07-topic-catalog; do not substitute capital guard/border militia topics"
+  ],
+  "minimalExporterRecommendation": {
+    "path": "tools/art/export_overrides.py",
+    "change": "Add faction-kit: 128 to existing static contracts and include it in unsupported-category diagnostic. Existing source/hash-only schema, pack-master confinement, RGBA/edge validation, complete-canvas contain fit, exact centered anchor check, per-topic output-path check and check-mode already fit this family. Retain non-battle HD rejection.",
+    "sourceCatalog": "tools/art/source-overrides.json",
+    "specShape": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/factions/<faction-slug>/master.png",
+      "sha256": "<verified SHA-256 of immutable new generated PNG>"
+    },
+    "output": "Existing runtime/faction-kit/<faction-slug>.png only, 128x128 RGBA, 2px fit padding; no new crop field, composite kind, HD schema, anchor calculation or frame exporter",
+    "tests": [
+      "Valid 128x128 centered faction kit produces deterministic matching export and check mode passes",
+      "Reject changed dimensions/anchor, framed/variant entry, wrong source hash, source outside pack masters, RGB/opaque exterior, clipped edge and unexpected HD record",
+      "Ensure fit preserves complete authored master canvas and real alpha rather than alpha-bbox cropping",
+      "Verify canonical IDs/path/count are unchanged and approved static bindings use canonical runtime path with no HD",
+      "Visual QA of all 12 master full canvases and native128 light/dark composites, with source-board comparison for each emblem/object group"
+    ],
+    "catalogPromotion": "Only after approved source identity and export verification; update exact canonical qualityTier/progress/ledger using existing process, without claiming in-game usage"
+  },
+  "evidence": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": [
+        99,
+        108
+      ],
+      "meaning": "Exact grid_cell crop formula"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": [
+        135,
+        176
+      ],
+      "meaning": "Historical chroma/pixel cleanup and alpha-bbox fitting"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": [
+        264,
+        280
+      ],
+      "meaning": "Row-major cells zipped to topic order, 2px pad and centered anchor"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": [
+        466,
+        480
+      ],
+      "meaning": "4x3 faction board and later alphabetic manifest sort"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": [
+        497,
+        497
+      ],
+      "meaning": "Offline map-assets preview includes faction-kit"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-assets.ts",
+      "lines": [
+        175,
+        231
+      ],
+      "meaning": "Generic Vite catalog eager imports and topic resolution; faction kits included in ordinary runtime graph"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/ART-DIRECTION.md",
+      "meaning": "Faction material and identity guardrails"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        168,
+        183
+      ],
+      "meaning": "Exact topic order and Chinese labels"
+    }
+  ],
+  "assets": [
+    {
+      "slot": 1,
+      "row": 1,
+      "column": 1,
+      "topicId": "C01-FACTION-LORNE",
+      "label": "洛恩王国装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-LORNE",
+        "topicId": "C01-FACTION-LORNE",
+        "label": "洛恩王国装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-lorne.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-lorne.png",
+        "fileSha256": "44be5b7fc1b8b66fed928e5d3f8b1a87b146e4ed67c4f5563182f661c457a455",
+        "pixelSha256": "7f97b2408df35037560fe3400ee4cbcf08b6e15da64d4e6ff2a1e9c2ba68ff95",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          5,
+          5,
+          309,
+          413
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/01-faction-lorne-full-cell.png",
+        "referenceLegacyInset5": "source-crops/01-faction-lorne-legacy-inset5.png",
+        "referenceFullCellSha256": "2a7b71d77bbdc9edae36829d555d0de58786314ce8f30f0314d720feafa93f51",
+        "referenceLegacyInset5Sha256": "1d8022767434ed428583773b06a115c15774a90f702aa7bc01ee42e48fd20319"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-LORNE"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          2,
+          83,
+          301,
+          342
+        ],
+        "coreBoxOnBoard": [
+          7,
+          88,
+          306,
+          347
+        ],
+        "bboxFittedSize": [
+          124,
+          107
+        ],
+        "fitOrigin": [
+          2,
+          10
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 11,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 13,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 49496,
+        "insetCellCorePixels": 49496,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/01-faction-lorne.png",
+        "nativeProof": "native-proofs/01-faction-lorne-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Pointed riveted old-steel shield with broad upward ivory chevron and dark wine-red lower field",
+          "Patched ivory and wine-red cloth strip with ragged lower edge",
+          "Plain straight steel sword with small rounded pommel"
+        ],
+        "emblem": "Preserve broad upward ivory chevron, old-steel upper field, dark wine-red lower field; no crown, lion or new heraldry",
+        "palette": "Old steel, worn ivory, restrained wine-red; repaired practical feudal equipment"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 2,
+      "row": 1,
+      "column": 2,
+      "topicId": "C01-FACTION-VILSA",
+      "label": "维尔萨帝国装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-VILSA",
+        "topicId": "C01-FACTION-VILSA",
+        "label": "维尔萨帝国装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-vilsa.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-vilsa.png",
+        "fileSha256": "071ce473ee59593a147ffc2944ef14b60fc3eb7b3273cc501570f18014436078",
+        "pixelSha256": "e55dd827b3309237c5872e25b8ce359bacad6d97a7ac98904e04ea320a42bac7",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          319,
+          5,
+          622,
+          413
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/02-faction-vilsa-full-cell.png",
+        "referenceLegacyInset5": "source-crops/02-faction-vilsa-legacy-inset5.png",
+        "referenceFullCellSha256": "d417f61a7541a2793ca0412ddd7af20754ad6a15daeaaeddce864191c67f487f",
+        "referenceLegacyInset5Sha256": "ee0352ef5637cd103ba699d2b3dbc2bea23888dc63ff81d4103e138ca6ea47ff"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-VILSA"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          7,
+          55,
+          293,
+          338
+        ],
+        "coreBoxOnBoard": [
+          326,
+          60,
+          612,
+          343
+        ],
+        "bboxFittedSize": [
+          124,
+          123
+        ],
+        "fitOrigin": [
+          2,
+          2
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 15,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 45771,
+        "insetCellCorePixels": 45771,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/02-faction-vilsa.png",
+        "nativeProof": "native-proofs/02-faction-vilsa-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Pointed navy shield, brass rim and rivets, ivory upward chevron",
+          "Folded navy cloth with ivory lower horizontal stripe and brass-bottom trim",
+          "Straight spear with steel diamond/leaf-shaped head"
+        ],
+        "emblem": "Preserve navy/ivory upward-chevron shield and standardized brass fittings; do not replace with an eagle or villain crest",
+        "palette": "Standardized navy, ivory, restrained brass; orderly practical equipment, not evil-black armor"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 3,
+      "row": 1,
+      "column": 3,
+      "topicId": "C01-FACTION-HOLY-LIGHT",
+      "label": "圣辉教廷装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-HOLY-LIGHT",
+        "topicId": "C01-FACTION-HOLY-LIGHT",
+        "label": "圣辉教廷装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-holy-light.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-holy-light.png",
+        "fileSha256": "5f8788ff28853e4335f3122a742877fafac64b928a832ff061b8a711be91a0fb",
+        "pixelSha256": "348125593b9ba602f9db94642232b97a748b8c78cf6cd415396567a2db757ed4",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          632,
+          5,
+          935,
+          413
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/03-faction-holy-light-full-cell.png",
+        "referenceLegacyInset5": "source-crops/03-faction-holy-light-legacy-inset5.png",
+        "referenceFullCellSha256": "7110b920eb20ee509e80d18eece2510dee7b5a5e77166664343ceb837cc126fe",
+        "referenceLegacyInset5Sha256": "011ebd453c972b4c6ba9b327da11e5c9cc5977f16c6ec3546e1180a4ec5135d2"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-HOLY-LIGHT"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          8,
+          99,
+          298,
+          354
+        ],
+        "coreBoxOnBoard": [
+          640,
+          104,
+          930,
+          359
+        ],
+        "bboxFittedSize": [
+          124,
+          109
+        ],
+        "fitOrigin": [
+          2,
+          9
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 47661,
+        "insetCellCorePixels": 47661,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/03-faction-holy-light.png",
+        "nativeProof": "native-proofs/03-faction-holy-light-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Tall pointed ivory-and-charcoal paneled shield with central lit candle and holder",
+          "Ivory folded cloth with charcoal longitudinal stripe, crossband and small fringe",
+          "Round amber/gold wax seal with source-specific stamped glyph and two hanging tabs"
+        ],
+        "emblem": "Keep literal candle-and-holder motif and original seal glyph; do not invent a sun/cross/holy crest or readable text",
+        "palette": "Warm ivory, charcoal, restrained amber; medicine/registration meaning"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 4,
+      "row": 1,
+      "column": 4,
+      "topicId": "C01-FACTION-GRAY-BANNER",
+      "label": "灰旗自由领装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-GRAY-BANNER",
+        "topicId": "C01-FACTION-GRAY-BANNER",
+        "label": "灰旗自由领装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-gray-banner.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-gray-banner.png",
+        "fileSha256": "6aaf632bf7448dd37d4ab2ff55037a27dffd6c1d22e9247bb6d848489738f4f6",
+        "pixelSha256": "687e06a1e5292f9a33c8ccad274d2886f8c9b129eedb9f7a4213c9b2246d43d8",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          945,
+          5,
+          1249,
+          413
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/04-faction-gray-banner-full-cell.png",
+        "referenceLegacyInset5": "source-crops/04-faction-gray-banner-legacy-inset5.png",
+        "referenceFullCellSha256": "ed151338ab41c14189980264ba8428e142b4c6eec91c3d7b2e66b90245fd4285",
+        "referenceLegacyInset5Sha256": "e8340000ee4b9fd60365cafc1b4d284f9a63eba0521ec79867cb50dcc09837f4"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-GRAY-BANNER"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          0,
+          58,
+          302,
+          347
+        ],
+        "coreBoxOnBoard": [
+          945,
+          63,
+          1247,
+          352
+        ],
+        "bboxFittedSize": [
+          124,
+          119
+        ],
+        "fitOrigin": [
+          2,
+          4
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 111,
+            "pixelsAtLeast28": 17
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 44572,
+        "insetCellCorePixels": 44572,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/04-faction-gray-banner.png",
+        "nativeProof": "native-proofs/04-faction-gray-banner-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Round patchwork wood shield with dark-metal rim, steel boss and muted blue-gray repair panel",
+          "Folded blue-gray cloth with large visible brown repair stitches and brown hem",
+          "Simple narrow steel spear with cloth/leather tie"
+        ],
+        "emblem": "Source has no independent crest; repaired round shield and visibly stitched gray cloth are the identity. Do not add a crown or generic flag logo",
+        "palette": "Gray-blue patched cloth, ordinary iron, old leather and wood"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 5,
+      "row": 2,
+      "column": 1,
+      "topicId": "C01-FACTION-SILVERWOOD",
+      "label": "银林装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-SILVERWOOD",
+        "topicId": "C01-FACTION-SILVERWOOD",
+        "label": "银林装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-silverwood.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-silverwood.png",
+        "fileSha256": "e440109857a2f979420874bc7092c026c8a226c6fd9d7cccdb16e16261b6bcac",
+        "pixelSha256": "3f21f0c7ef492948bf5b080e59d78f06b8ae5ba466a0adb4ca09569037c037c4",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          5,
+          423,
+          309,
+          831
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/05-faction-silverwood-full-cell.png",
+        "referenceLegacyInset5": "source-crops/05-faction-silverwood-legacy-inset5.png",
+        "referenceFullCellSha256": "7303cbb4449ac3930144189689b2c207a0b60b203ec0b9f1d591d7df2b7c4218",
+        "referenceLegacyInset5Sha256": "6609d81e65e4fafef77b83978072e42a569db27a354d78f6e93f9db081fcb860"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-SILVERWOOD"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          0,
+          47,
+          295,
+          342
+        ],
+        "coreBoxOnBoard": [
+          5,
+          470,
+          300,
+          765
+        ],
+        "bboxFittedSize": [
+          124,
+          124
+        ],
+        "fitOrigin": [
+          2,
+          2
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 255,
+            "pixelsAtLeast28": 54
+          },
+          "right": {
+            "maxAlpha": 14,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 63,
+            "pixelsAtLeast28": 23
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 43078,
+        "insetCellCorePixels": 42916,
+        "corePixelsLostByInset5": 162,
+        "referenceLegacyAlpha": "legacy-alpha-crops/05-faction-silverwood.png",
+        "nativeProof": "native-proofs/05-faction-silverwood-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Oval vertically planked wooden shield with woven/vine-bound rim and iron boss",
+          "Patched moss/sage cloth swatch with lacing and ragged edge",
+          "Curved wooden longbow with string"
+        ],
+        "emblem": "No heraldic tree/leaf symbol is drawn; preserve woven wood, cloth repair and longbow as identity",
+        "palette": "Sage/moss green, bark brown, wood and textile; avoid flawless white aristocratic elf styling"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 6,
+      "row": 2,
+      "column": 2,
+      "topicId": "C01-FACTION-MOUNTAIN-FORGE",
+      "label": "山炉装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-MOUNTAIN-FORGE",
+        "topicId": "C01-FACTION-MOUNTAIN-FORGE",
+        "label": "山炉装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-mountain-forge.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-mountain-forge.png",
+        "fileSha256": "a9a2b8f93bc89c3adee151d42657484624a019545560a2f96b9692f5310ce5af",
+        "pixelSha256": "53f0719a893198c81de48dce0a8e6e0cef1a34e26f3f307cdd5f9c268256bc21",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          319,
+          423,
+          622,
+          831
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/06-faction-mountain-forge-full-cell.png",
+        "referenceLegacyInset5": "source-crops/06-faction-mountain-forge-legacy-inset5.png",
+        "referenceFullCellSha256": "31790cbecec14b6497657cb258fc8529bf278470d958324a05b37681c9901040",
+        "referenceLegacyInset5Sha256": "11dff2446f2921be3fa392791efa9bd6d54bf710b2e7a99e0e26213c38b557ae"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-MOUNTAIN-FORGE"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          1,
+          97,
+          302,
+          329
+        ],
+        "coreBoxOnBoard": [
+          320,
+          520,
+          621,
+          752
+        ],
+        "bboxFittedSize": [
+          124,
+          96
+        ],
+        "fitOrigin": [
+          2,
+          16
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 42004,
+        "insetCellCorePixels": 42004,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/06-faction-mountain-forge.png",
+        "nativeProof": "native-proofs/06-faction-mountain-forge-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Angular six-sided iron shield with riveted border and large amber hammer-like smithing emblem over a downward shaft and warm forge curl",
+          "Dark leather work apron with neck loop and tool pocket",
+          "Short thick square-headed metal hammer with small source-specific stamped face detail"
+        ],
+        "emblem": "Preserve source hammer/shaft/forge-curl emblem and hammer-face stamp, rather than adding mountain/cog/anvil heraldry",
+        "palette": "Iron-black, stone-gray, worn leather, restrained amber; craft and archive institution"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 7,
+      "row": 2,
+      "column": 3,
+      "topicId": "C01-FACTION-WASTELAND",
+      "label": "荒原诸部装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-WASTELAND",
+        "topicId": "C01-FACTION-WASTELAND",
+        "label": "荒原诸部装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-wasteland.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-wasteland.png",
+        "fileSha256": "a93f9ec14f9a64a129c5e80adc2eea3d25a491bb674d319255fa9113f0a1381b",
+        "pixelSha256": "82cb04a21f9664be523ce8d86dee808905e764582fbef3ebe9ab9602a7805a3a",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          632,
+          423,
+          935,
+          831
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/07-faction-wasteland-full-cell.png",
+        "referenceLegacyInset5": "source-crops/07-faction-wasteland-legacy-inset5.png",
+        "referenceFullCellSha256": "4e325964acb74ff6b50e0fead2e0e3cc1aa9ee251556469a2872038db29110f8",
+        "referenceLegacyInset5Sha256": "b3c4c8774173069cc32da51b30e5394c3f4ab6c582bd2201d0328a279ef48d30"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-WASTELAND"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          0,
+          78,
+          292,
+          323
+        ],
+        "coreBoxOnBoard": [
+          632,
+          501,
+          924,
+          746
+        ],
+        "bboxFittedSize": [
+          124,
+          104
+        ],
+        "fitOrigin": [
+          2,
+          12
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 155,
+            "pixelsAtLeast28": 19
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 40829,
+        "insetCellCorePixels": 40829,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/07-faction-wasteland.png",
+        "nativeProof": "native-proofs/07-faction-wasteland-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Round patchwork wooden shield with warm rust/ochre and blue-gray triangular panels, rim and iron boss",
+          "Folded terracotta/worn leather cloth swatch with stitches and dark lower hem",
+          "Slender practical steel-tipped spear with wrapped shaft"
+        ],
+        "emblem": "Retain patchwork triangular panel arrangement, no skull/totem or invented tribal crest",
+        "palette": "Weathered earth-red, old leather and practical metal; trade, riding and professional labor rather than barbarian stereotype"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 8,
+      "row": 2,
+      "column": 4,
+      "topicId": "C01-FACTION-MILITIA-MERCENARY",
+      "label": "城市民兵与佣兵装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-MILITIA-MERCENARY",
+        "topicId": "C01-FACTION-MILITIA-MERCENARY",
+        "label": "城市民兵与佣兵装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-militia-mercenary.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-militia-mercenary.png",
+        "fileSha256": "956407f0260d0ac73774aeb9b1af50d08ef4fa515ce4ddff7efcadff3922c293",
+        "pixelSha256": "f71e0ee3c7ad786aa9eade729b3db195786152e27f85c02bdaa2ff98d2944a2f",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          945,
+          423,
+          1249,
+          831
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/08-faction-militia-mercenary-full-cell.png",
+        "referenceLegacyInset5": "source-crops/08-faction-militia-mercenary-legacy-inset5.png",
+        "referenceFullCellSha256": "0e3d6dcdd0b8e5036c05955417eacc79f690d0aa8b49ea7fed7e18c6c5a22582",
+        "referenceLegacyInset5Sha256": "a724bc8d6fd112246f0096a45100460f604f83c6ac48f4bf02a9bd4302368c08"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-MILITIA-MERCENARY"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          0,
+          122,
+          304,
+          314
+        ],
+        "coreBoxOnBoard": [
+          945,
+          545,
+          1249,
+          737
+        ],
+        "bboxFittedSize": [
+          124,
+          78
+        ],
+        "fitOrigin": [
+          2,
+          25
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 162,
+            "pixelsAtLeast28": 26
+          },
+          "right": {
+            "maxAlpha": 255,
+            "pixelsAtLeast28": 26
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 29,
+            "pixelsAtLeast28": 1
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 37582,
+        "insetCellCorePixels": 37536,
+        "corePixelsLostByInset5": 46,
+        "referenceLegacyAlpha": "legacy-alpha-crops/08-faction-militia-mercenary.png",
+        "nativeProof": "native-proofs/08-faction-militia-mercenary-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Round vertically planked shield with muted blue-gray left and ochre-brown right panels and steel boss",
+          "Folded dark teal cloth or kit roll secured by a brown belt and small circular brass clasp",
+          "Short practical square-headed gray metal hammer with wood handle"
+        ],
+        "emblem": "Retain simple two-tone plank shield and small source clasp; no city crest or mercenary logo is present",
+        "palette": "Blue-gray, worn teal, wood brown and restrained ochre; ordinary practical militia/mercenary equipment"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 9,
+      "row": 3,
+      "column": 1,
+      "topicId": "C01-FACTION-DRAGON-COVENANT",
+      "label": "巨龙盟约装备基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-DRAGON-COVENANT",
+        "topicId": "C01-FACTION-DRAGON-COVENANT",
+        "label": "巨龙盟约装备基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-dragon-covenant.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-dragon-covenant.png",
+        "fileSha256": "9529a46f1fbc194d8cc643898043152f94f090a8a2d2744774b04cac737a4dec",
+        "pixelSha256": "60fb1740a50d9dfca17248df01dce2dafce3d2cfe6829df334a120eda8d2bb2d",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          5,
+          841,
+          309,
+          1249
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/09-faction-dragon-covenant-full-cell.png",
+        "referenceLegacyInset5": "source-crops/09-faction-dragon-covenant-legacy-inset5.png",
+        "referenceFullCellSha256": "a5352891ade673ae7f5fe8ff79ea2d2a4fe46206ade06b783901a961c8cece12",
+        "referenceLegacyInset5Sha256": "1ba198ee6e4b1a60224a2e361aec443d3cc8f1854eee9d6ff361febeeadc402d"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-DRAGON-COVENANT"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          8,
+          90,
+          297,
+          336
+        ],
+        "coreBoxOnBoard": [
+          13,
+          931,
+          302,
+          1177
+        ],
+        "bboxFittedSize": [
+          124,
+          106
+        ],
+        "fitOrigin": [
+          2,
+          11
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 10,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 26,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 26,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 46496,
+        "insetCellCorePixels": 46496,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/09-faction-dragon-covenant.png",
+        "nativeProof": "native-proofs/09-faction-dragon-covenant-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Tall angular beveled steel shield/plate with a literal hanging balance-scale emblem and source geometric/rune-like border relief",
+          "Gray overlapping dragon-scale material swatch with dark wine-red edge",
+          "Separate looped gray strap/cord with rectangular silver buckle"
+        ],
+        "emblem": "CRITICAL: original shield motif is hanging balance scales, not a dragon-head silhouette. Preserve source emblem and scale material. The separate loop/buckle is not authorization to add a saddle or bridle",
+        "palette": "Old gray metal, overlapping gray scales, muted wine-red edge"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 10,
+      "row": 3,
+      "column": 2,
+      "topicId": "C01-FACTION-OATH-CONTROLLED",
+      "label": "誓文受控态基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-OATH-CONTROLLED",
+        "topicId": "C01-FACTION-OATH-CONTROLLED",
+        "label": "誓文受控态基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-oath-controlled.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-oath-controlled.png",
+        "fileSha256": "cac9a325c631e04853ac134b8c0da851be2ad9772fc55b351bce9abaa7e6590b",
+        "pixelSha256": "51e9044c8a51ea61bdb2dd503ab567ff06420c3c8c97d84c726e7afac525f778",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          319,
+          841,
+          622,
+          1249
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/10-faction-oath-controlled-full-cell.png",
+        "referenceLegacyInset5": "source-crops/10-faction-oath-controlled-legacy-inset5.png",
+        "referenceFullCellSha256": "888a3fdbb330501bfee2b3c9b36909680e2d87febe7d2e170a39ecce773312b9",
+        "referenceLegacyInset5Sha256": "8683e3a1cdc38cfcdcffbbe731da5499278c278b27880fe81e1b72250dd3ef4d"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-OATH-CONTROLLED"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          3,
+          75,
+          300,
+          336
+        ],
+        "coreBoxOnBoard": [
+          322,
+          916,
+          619,
+          1177
+        ],
+        "bboxFittedSize": [
+          124,
+          109
+        ],
+        "fitOrigin": [
+          2,
+          9
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 12,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 51224,
+        "insetCellCorePixels": 51224,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/10-faction-oath-controlled.png",
+        "nativeProof": "native-proofs/10-faction-oath-controlled-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Lorne-like old-steel, ivory-chevron, wine-red shield bound by two crossing amber/gold inscribed bands",
+          "Patched ivory/wine-red cloth bound by two horizontal amber/gold inscribed bands",
+          "Plain straight steel sword"
+        ],
+        "emblem": "Preserve recognizable Lorne base and crossed binding bands; band marks are source ornament, not new readable wording. Do not substitute skulls, glowing red eyes or generic evil glyphs",
+        "palette": "Old steel, ivory, wine-red and constrained amber/gold binding bands"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 11,
+      "row": 3,
+      "column": 3,
+      "topicId": "C01-FACTION-NAMED-DEAD",
+      "label": "归名亡者态基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-NAMED-DEAD",
+        "topicId": "C01-FACTION-NAMED-DEAD",
+        "label": "归名亡者态基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-named-dead.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-named-dead.png",
+        "fileSha256": "24510b28b264daced3cf8b6791fdb09f025924e3ac36352e2ec848c94c9414e5",
+        "pixelSha256": "1a0ee40ed21c133ab89181f8c5717447dc9b0b1ac997683a47d95676836e12a0",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          632,
+          841,
+          935,
+          1249
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/11-faction-named-dead-full-cell.png",
+        "referenceLegacyInset5": "source-crops/11-faction-named-dead-legacy-inset5.png",
+        "referenceFullCellSha256": "35b988e5a4bd36237ae65b587a49dc085b77072240ebdf028813bddb29457d9b",
+        "referenceLegacyInset5Sha256": "c0731c2b8d116da65c055e8689d0880a8dec52b21e9923a879e2cfb5a5836548"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-NAMED-DEAD"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          5,
+          99,
+          295,
+          341
+        ],
+        "coreBoxOnBoard": [
+          637,
+          940,
+          927,
+          1182
+        ],
+        "bboxFittedSize": [
+          124,
+          103
+        ],
+        "fitOrigin": [
+          2,
+          12
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 17,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 49635,
+        "insetCellCorePixels": 49635,
+        "corePixelsLostByInset5": 0,
+        "referenceLegacyAlpha": "legacy-alpha-crops/11-faction-named-dead.png",
+        "nativeProof": "native-proofs/11-faction-named-dead-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Tall pointed ivory shield with large lit amber lantern motif",
+          "Folded gray cloth tied with cord and two wooden name tags",
+          "Small separate lit amber memory lantern"
+        ],
+        "emblem": "Preserve lantern shield and two wooden name tags; no skull or blue-ghost replacement and no fabricated readable names",
+        "palette": "Gray cloth, weathered ivory, wooden names, warm amber memory lamp"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    },
+    {
+      "slot": 12,
+      "row": 3,
+      "column": 4,
+      "topicId": "C01-FACTION-LATE-ALLIANCE",
+      "label": "后期联盟态基准",
+      "canonical": {
+        "assetId": "C01-FFV1-FACTION-LATE-ALLIANCE",
+        "topicId": "C01-FACTION-LATE-ALLIANCE",
+        "label": "后期联盟态基准",
+        "category": "faction-kit",
+        "png": "runtime/faction-kit/faction-late-alliance.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "anchor": [
+          64,
+          64
+        ],
+        "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-late-alliance.png",
+        "fileSha256": "12ccdc217352d5c09456240b9b3e676b714598e3cce82a2126fc8633a07a088a",
+        "pixelSha256": "fe49d1734e693669ec2da5192e8b773838b0834c996b7210467378131c448eff",
+        "mode": "RGBA",
+        "hdRecord": null
+      },
+      "source": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+        "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+        "fullCellBox": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "legacyInset": 5,
+        "legacySourceCropBox": [
+          945,
+          841,
+          1249,
+          1249
+        ],
+        "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+        "referenceFullCell": "source-crops/12-faction-late-alliance-full-cell.png",
+        "referenceLegacyInset5": "source-crops/12-faction-late-alliance-legacy-inset5.png",
+        "referenceFullCellSha256": "c717778fd6644346062ffd85f83612b2c75815c48bfb7d71c68707616d5c08fa",
+        "referenceLegacyInset5Sha256": "f31df7cb1831cc96d4e662b42e7a794e7628e8af53f41bdc18192ae62752f725"
+      },
+      "legacyReproduction": {
+        "inputAlpha": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/factions/faction-kits-12.png",
+        "inputAlphaSha256": "4b6bf6ae6a03a7f8921454ccbaa949510debd09bc4c1913fb2efa18c83375948",
+        "matchedTopicIds": [
+          "C01-FACTION-LATE-ALLIANCE"
+        ],
+        "exactPixelEquality": true,
+        "alphaCoreThreshold": 28,
+        "coreBoxWithinInsetCell": [
+          0,
+          111,
+          296,
+          357
+        ],
+        "coreBoxOnBoard": [
+          945,
+          952,
+          1241,
+          1198
+        ],
+        "bboxFittedSize": [
+          124,
+          103
+        ],
+        "fitOrigin": [
+          2,
+          12
+        ],
+        "legacyCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 214,
+            "pixelsAtLeast28": 34
+          },
+          "right": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellEdgeAlpha": {
+          "left": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "right": {
+            "maxAlpha": 14,
+            "pixelsAtLeast28": 0
+          },
+          "top": {
+            "maxAlpha": 0,
+            "pixelsAtLeast28": 0
+          },
+          "bottom": {
+            "maxAlpha": 14,
+            "pixelsAtLeast28": 0
+          }
+        },
+        "fullCellCorePixels": 53561,
+        "insetCellCorePixels": 53543,
+        "corePixelsLostByInset5": 18,
+        "referenceLegacyAlpha": "legacy-alpha-crops/12-faction-late-alliance.png",
+        "nativeProof": "native-proofs/12-faction-late-alliance-128.png"
+      },
+      "semanticConstraints": {
+        "objects": [
+          "Round shield of multiple differently colored radial panels, central gray boss enclosed by segmented gold ring/clasps",
+          "Several distinct vertical folded cloth swatches in gray-blue, green, rust, ochre and ivory, held by individual interlinked-looking buckles",
+          "Separate small linked clasp/chain with multicolor ties"
+        ],
+        "emblem": "Preserve visibly plural colors, individual buckles and linked clasp; do not collapse alliance into one imperial flag/crest/crown",
+        "palette": "Retain multiple source faction colors together with restrained gold connectors; coalition remains plural"
+      },
+      "consumers": {
+        "viteCatalogBundled": true,
+        "authoredGameplayOrUiTopicReferences": [],
+        "browserObserved": false,
+        "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+        "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+      }
+    }
+  ]
+}

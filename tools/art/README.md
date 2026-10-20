@@ -656,3 +656,7 @@ all nonzero and alpha>=128 bounds; alpha=1 native dust is retained, never erased
 Passing this geometry/provenance gate does not substitute for visual approval of
 normal/damaged/captured, owner banners, all six consumer levels, or native-scale
 standing/moving/selected and hidden-visibility review.
+
+### Faction-kit source overrides
+
+The audited C01 collection has 12 static faction kits at128×128 with centered[64,64] anchors and no HD records. Use the existing source+sha256 override schema, preserve the full authored RGBA canvas and the existing alpha gate, then fit inside a2-pixel export margin. No per-component crops, palette changes or alpha extraction. The family is catalog-bundled; this does not imply an authored gameplay/UI consumer. Preserve exact source insignia; the Dragon Covenant source uses balance scales. Original row-major source mapping and clipped legacy edges are documented in the approved-v5 faction-kit audit.

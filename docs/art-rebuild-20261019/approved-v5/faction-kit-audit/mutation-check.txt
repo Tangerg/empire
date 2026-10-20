@@ -1,0 +1,19 @@
+Removing faction-kit support is caught by the new semantic contract test.
+F
+======================================================================
+FAIL: test_faction_kit_preserves_source_and_rejects_unregistered_hd (test_export_overrides.ExportTests.test_faction_kit_preserves_source_and_rejects_unregistered_hd)
+----------------------------------------------------------------------
+ValueError: C01-PROP-01: only static battle-prop/equipment/skill/status/hud/faction-kit exports supported
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/test_export_overrides.py", line 177, in test_faction_kit_preserves_source_and_rejects_unregistered_hd
+    with self.assertRaisesRegex(ValueError, 'unsupported HD contract'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "unsupported HD contract" does not match "C01-PROP-01: only static battle-prop/equipment/skill/status/hud/faction-kit exports supported"
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+FAILED (failures=1)

@@ -154,7 +154,7 @@ class ExportTests(unittest.TestCase):
         manifest = self.pack / 'manifest-final-fantasy-v1.json'
         data = json.loads(manifest.read_text())
         (self.pack / 'manifest-tactical-runtime-hd.json').unlink()
-        for category, side in [('equipment', 48), ('skill', 48), ('status', 32), ('hud', 32)]:
+        for category, side in [('equipment', 48), ('skill', 48), ('status', 32), ('hud', 32), ('faction-kit', 128)]:
             with self.subTest(category=category):
                 data['assets'][0].update(category=category, width=side, height=side,
                                          anchor=[side // 2, side // 2], png=f'runtime/{category}/icon.png')
@@ -166,6 +166,23 @@ class ExportTests(unittest.TestCase):
                 manifest.write_text(json.dumps(data))
                 with self.assertRaisesRegex(ValueError, 'size/anchor'):
                     export(self.root, self.catalog)
+
+    def test_faction_kit_preserves_source_and_rejects_unregistered_hd(self):
+        manifest = self.pack / 'manifest-final-fantasy-v1.json'
+        data = json.loads(manifest.read_text())
+        data['assets'][0].update(category='faction-kit', width=128, height=128,
+                                anchor=[64, 64], png='runtime/faction-kit/kit.png')
+        manifest.write_text(json.dumps(data))
+        before = self.source.read_bytes()
+        with self.assertRaisesRegex(ValueError, 'unsupported HD contract'):
+            export(self.root, self.catalog)
+        self.assertFalse((self.pack / 'runtime').exists())
+        (self.pack / 'manifest-tactical-runtime-hd.json').unlink()
+        result = export(self.root, self.catalog)
+        self.assertEqual([item['size'] for item in result], [[128, 128]])
+        self.assertEqual(self.source.read_bytes(), before)
+        self.assertEqual(result[0]['outputAlpha']['edgeMaxAlpha'], 0)
+        export(self.root, self.catalog, True)
 
     def test_empty_catalog_no_changes(self):
         self.catalog.write_text('{"schemaVersion": 1, "assets": {}}')
