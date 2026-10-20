@@ -1,0 +1,13 @@
+{
+  "topicId": "C01-ARCH-CAPITAL",
+  "historicalAuditActualUse": false,
+  "currentReadOnlyScan": "rg -n -i C01-ARCH-CAPITAL|arch-capital apps packages --glob *.ts --glob *.tsx --glob *.js --glob *.css",
+  "exitCode": 1,
+  "matches": [],
+  "stderr": "",
+  "directRuntimeConsumerFound": false,
+  "selectorChanges": false,
+  "newConsumerSuggested": false,
+  "cssCoverQA": "hypothetical compatibility only; no browser/live evidence",
+  "stageVariantGap": false
+}

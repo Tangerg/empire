@@ -1,0 +1,66 @@
+{
+  "status": "future proposal only; NOT implemented or needed for next three transparent masters",
+  "currentContract": {
+    "logicalCard": [
+      192,
+      224
+    ],
+    "runtimeCard": [
+      192,
+      224
+    ],
+    "cardHdEntries": 0,
+    "exporterRejectsHd": "tools/art/export_overrides.py:127-133",
+    "cardDispatchOnlyExportsDensity1": "tools/art/export_overrides.py:310-312"
+  },
+  "futureContract": {
+    "logicalCard": [
+      192,
+      224
+    ],
+    "physicalCard": [
+      384,
+      448
+    ],
+    "pixelDensity": 2,
+    "nativeCharacterMaster": [
+      1024,
+      1536
+    ],
+    "composition": "Recompose directly from unchanged native RGBA master and separate backdrop at doubled placement; never upscale the192x224 composite",
+    "examplePlacement": {
+      "logicalRenderWidth": 144,
+      "logicalOrigin": [
+        24,
+        4
+      ],
+      "physicalRenderWidth": 288,
+      "physicalOrigin": [
+        48,
+        8
+      ],
+      "physicalRenderHeight": 432
+    }
+  },
+  "requiredChecks": [
+    "Explicit existing C01 narrative-static character-card identity, no frames/variants; preserve canonical topic count22 cards/404 total and every topic ID",
+    "2x physical metadata exactly384x448 for192x224 logical card, pixelDensity2; reject duplicates, wrong topic/density/dimensions and missing file",
+    "Read immutable native character/background source hashes; true RGBA alpha0, near-opaque core>=240 and edge<=1; independent background fully opaque",
+    "Multiply logical placement uniformly by2; same full authored canvas and centered background cover semantics at both densities; reject any out-of-canvas character placement, implicit bbox crop, flip or color/alpha rewrite",
+    "Export deterministic192x224 and384x448 derivations from native sources; check exact decoded pixels across repeat exports; --check detects stale output without writing",
+    "Maintain planned all-input validation before output writes; duplicate destinations/path traversal and a later-invalid-source failure must leave all outputs untouched",
+    "Keep unrelated runtime files, source files, all source hashes, generic troop geometry, named stage01 selections, story state and gameplay/replay outputs unchanged",
+    "Vite glob at candidate-01-assets.ts188-193 already admits runtime-hd/**/*.png; verify actual new file resolves in the asset graph rather than assuming metadata makes it available",
+    "Existing resolveRuntimeUrl at candidate-01-assets.ts198-206 automatically prefers an HD entry for the same topic. Verify candidate01AssetUrl and all selected portrait consumers receive the HD URL while logical geometry stays192x224; no additional hardcoded route or stage owner",
+    "Review actual dialogue92x112/mobile64x88/roster44x44/HUD96x112 at display DPR1 and2, with existing cover/slice crops; faces, hand props, banners and plural No-banner faces remain readable",
+    "Test unchanged scene-HD and tactical-HD density contracts; no generic fallback weakening or misclassification of card as scene",
+    "Do not call a catalog-only later card live-integrated until a separately authorized explicit stage selector exists"
+  ],
+  "existingTestBoundaries": [
+    "tools/art/test_narrative_card_overrides.py",
+    "packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-actor-consumers.test.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts"
+  ],
+  "implementationPerformed": false
+}

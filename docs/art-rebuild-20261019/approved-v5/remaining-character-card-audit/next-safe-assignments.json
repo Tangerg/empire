@@ -1,0 +1,473 @@
+[
+  {
+    "order": 1,
+    "task": "Author transparent C01-CHAR-LEIA-02 later-stage character source",
+    "topicId": "C01-CHAR-LEIA-02",
+    "scope": "Recommended next safe art assignment only; not authorization or execution in this audit. Create one reusable native transparent source and separate intentional card composition. No combat sheet work or consumers/stage switches.",
+    "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+    "originalFullboardSha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+    "originalCell": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-leia-02-original-cell.png",
+    "originalCellSha256": "2a3d76920b956055371016dab73f5edd59d4cfed604e0eb2b557a720ba3be43f",
+    "cropBoxXYXYExclusive": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "approvedNamedPortrait": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+      "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.5360685984293619,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedCombatIdle": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "dimensions": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7436891093438555,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedAllFourPoses": {
+      "idle": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "walk-a": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-a/master.png",
+      "attack": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/attack/master.png",
+      "walk-b": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-b/master.png"
+    },
+    "nativeContract": {
+      "recommendedDimensions": [
+        1024,
+        1536
+      ],
+      "dimensionBasis": "Matches all seven approved named portrait masters; not a legacy manifest requirement. Author full-canvas independent RGBA at native resolution.",
+      "alphaMode": "RGBA",
+      "alphaMin": 0,
+      "nearOpaqueSubjectAlphaMin": 240,
+      "outerEdgeAlphaMax": 1,
+      "retainFullCanvas": true,
+      "forbidden": [
+        "opaque character master",
+        "painted checkerboard/faux transparency",
+        "chroma or segmentation extraction from old RGB card",
+        "hidden alpha-bbox cropping",
+        "recoloring or warping the approved character",
+        "UI frame/text/backdrop baked into reusable character source"
+      ]
+    },
+    "uiBackgroundReference": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "runtimeContract": {
+      "dimensions": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "compositionKind": "character-card-composite-v1",
+      "recommendedStartingPlacementFor1024x1536": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ],
+        "renderHeight": 216
+      },
+      "placementWarning": "Starting point copied from seven approved cards, not automatic artistic acceptance; whole canvas must fit and all actual UI crops must be reviewed.",
+      "sourceOwner": "tools/art/source-overrides.json",
+      "identityOwner": "manifest-final-fantasy-v1.json",
+      "exporter": "tools/art/export_overrides.py:127-176"
+    },
+    "HDContract": {
+      "nativeMasterIsHighResolution": true,
+      "runtimeCardHdEntryExists": false,
+      "currentExporterRejectsCardHd": true,
+      "existingCardNotTrue2xForEveryConsumer": "192x224 approximately supplies 2x dialogue size92x112, but remains a low-resolution composite; a high-res master alone does not publish HD.",
+      "optionalFutureContractOnly": {
+        "logical": [
+          192,
+          224
+        ],
+        "physical2x": [
+          384,
+          448
+        ],
+        "requires": "Explicit bounded card-export/manifest/resolver migration and UI tests; not performed or silently promised by this audit."
+      }
+    },
+    "stageBrief": {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 43,
+      "endLine": 43,
+      "originalText": "| P0 | `C01-CHAR-LEIA-02.png` | 22 岁灰旗女王 | 多族扣件、龙翼徽记开始个人化、左肩伤痕 |"
+    },
+    "mustPreserve": [
+      "Same brown-haired, side-braided woman as approved Laiya stage01, now an adult commander; brown narrow headband/circlet in original",
+      "Standing three-quarter, gray flag held upright at viewer-left, closed ledger/book held at viewer-right",
+      "Steel blue-gray segmented armor and long dark cape; patched gray standard, belts, narrow circlet, book",
+      "Stern, guarded, alert; eyes turned toward viewer-right"
+    ],
+    "reconcileWithExplicitBrief": [
+      {
+        "code": "brief_detail_gap",
+        "detail": "Original does not clearly show the specified multi-people clasp, personalizing dragon-wing emblem, or left-shoulder injury; newer explicit brief supplies these, while approved Laiya face remains identity authority."
+      },
+      {
+        "code": "symbol_risk",
+        "detail": "Queen is a social/political title, not hidden royal blood. Do not turn the narrow original band into a tall royal crown or kneeling-subject composition."
+      }
+    ],
+    "approvalGates": [
+      "Native true-alpha on black/white/checker plus whole-canvas integrity",
+      "Identity continuity versus approved named portrait; correct age/stage and lore detail",
+      "Separate background composition at192x224 and all actual UI crops",
+      "No generic troop or stage01 binding/source changed",
+      "Do not claim HD publication or live-game acceptance from source generation alone"
+    ]
+  },
+  {
+    "order": 2,
+    "task": "Author transparent C01-CHAR-LEIA-03 later-stage character source",
+    "topicId": "C01-CHAR-LEIA-03",
+    "scope": "Recommended next safe art assignment only; not authorization or execution in this audit. Create one reusable native transparent source and separate intentional card composition. No combat sheet work or consumers/stage switches.",
+    "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+    "originalFullboardSha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+    "originalCell": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-leia-03-original-cell.png",
+    "originalCellSha256": "88c37aff1f552516e0109f8ac27b0ac6c9087893f37cbb93c91a2be2729867a1",
+    "cropBoxXYXYExclusive": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "approvedNamedPortrait": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+      "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.5360685984293619,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedCombatIdle": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "dimensions": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7436891093438555,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedAllFourPoses": {
+      "idle": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "walk-a": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-a/master.png",
+      "attack": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/attack/master.png",
+      "walk-b": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-b/master.png"
+    },
+    "nativeContract": {
+      "recommendedDimensions": [
+        1024,
+        1536
+      ],
+      "dimensionBasis": "Matches all seven approved named portrait masters; not a legacy manifest requirement. Author full-canvas independent RGBA at native resolution.",
+      "alphaMode": "RGBA",
+      "alphaMin": 0,
+      "nearOpaqueSubjectAlphaMin": 240,
+      "outerEdgeAlphaMax": 1,
+      "retainFullCanvas": true,
+      "forbidden": [
+        "opaque character master",
+        "painted checkerboard/faux transparency",
+        "chroma or segmentation extraction from old RGB card",
+        "hidden alpha-bbox cropping",
+        "recoloring or warping the approved character",
+        "UI frame/text/backdrop baked into reusable character source"
+      ]
+    },
+    "uiBackgroundReference": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "runtimeContract": {
+      "dimensions": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "compositionKind": "character-card-composite-v1",
+      "recommendedStartingPlacementFor1024x1536": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ],
+        "renderHeight": 216
+      },
+      "placementWarning": "Starting point copied from seven approved cards, not automatic artistic acceptance; whole canvas must fit and all actual UI crops must be reviewed.",
+      "sourceOwner": "tools/art/source-overrides.json",
+      "identityOwner": "manifest-final-fantasy-v1.json",
+      "exporter": "tools/art/export_overrides.py:127-176"
+    },
+    "HDContract": {
+      "nativeMasterIsHighResolution": true,
+      "runtimeCardHdEntryExists": false,
+      "currentExporterRejectsCardHd": true,
+      "existingCardNotTrue2xForEveryConsumer": "192x224 approximately supplies 2x dialogue size92x112, but remains a low-resolution composite; a high-res master alone does not publish HD.",
+      "optionalFutureContractOnly": {
+        "logical": [
+          192,
+          224
+        ],
+        "physical2x": [
+          384,
+          448
+        ],
+        "requires": "Explicit bounded card-export/manifest/resolver migration and UI tests; not performed or silently promised by this audit."
+      }
+    },
+    "stageBrief": {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 44,
+      "endLine": 44,
+      "originalText": "| P0 | `C01-CHAR-LEIA-03.png` | 27 岁联盟统帅 | 无王冠，多旗纹披风，装备偏指挥与防护 |"
+    },
+    "mustPreserve": [
+      "Same Laiya; long dark-brown braid, pale/silver forelock and cheek mark in original; no head crown",
+      "Standing with arms lowered, closed command ledger at viewer-right; gaze viewer-right",
+      "Long gray-blue cloak over practical dark armor, round cloak clasp, small varied ribbon tabs, belt and bracer",
+      "Composed, serious and contemplative rather than triumphant"
+    ],
+    "reconcileWithExplicitBrief": [
+      {
+        "code": "brief_detail_gap",
+        "detail": "Original has generic ribbon tabs and a small round clasp; explicit brief requires a multi-flag cloak and multipeople covenant clasp, with command/protection emphasis."
+      },
+      {
+        "code": "continuity",
+        "detail": "Retain the approved Laiya facial structure and old left wrist guard. Silver forelock/cheek mark are original visual stage cues, not a reason to age her beyond the stated 27."
+      }
+    ],
+    "approvalGates": [
+      "Native true-alpha on black/white/checker plus whole-canvas integrity",
+      "Identity continuity versus approved named portrait; correct age/stage and lore detail",
+      "Separate background composition at192x224 and all actual UI crops",
+      "No generic troop or stage01 binding/source changed",
+      "Do not claim HD publication or live-game acceptance from source generation alone"
+    ]
+  },
+  {
+    "order": 3,
+    "task": "Author transparent C01-CHAR-RODERICK-02 later-stage character source",
+    "topicId": "C01-CHAR-RODERICK-02",
+    "scope": "Recommended next safe art assignment only; not authorization or execution in this audit. Create one reusable native transparent source and separate intentional card composition. No combat sheet work or consumers/stage switches.",
+    "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+    "originalFullboardSha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+    "originalCell": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-roderick-02-original-cell.png",
+    "originalCellSha256": "93c14955a585ebf217de94f8f9227da783aacd797fd5f221f27a6631f949e571",
+    "cropBoxXYXYExclusive": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "approvedNamedPortrait": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png",
+      "sha256": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.4827416737874349,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedCombatIdle": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/idle/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/idle/master.png",
+      "sha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+      "dimensions": [
+        1560,
+        1008
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6519625050875051,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedAllFourPoses": {
+      "idle": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/idle/master.png",
+      "walk-a": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-a/master.png",
+      "attack": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/attack/master.png",
+      "walk-b": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-b/master.png"
+    },
+    "nativeContract": {
+      "recommendedDimensions": [
+        1024,
+        1536
+      ],
+      "dimensionBasis": "Matches all seven approved named portrait masters; not a legacy manifest requirement. Author full-canvas independent RGBA at native resolution.",
+      "alphaMode": "RGBA",
+      "alphaMin": 0,
+      "nearOpaqueSubjectAlphaMin": 240,
+      "outerEdgeAlphaMax": 1,
+      "retainFullCanvas": true,
+      "forbidden": [
+        "opaque character master",
+        "painted checkerboard/faux transparency",
+        "chroma or segmentation extraction from old RGB card",
+        "hidden alpha-bbox cropping",
+        "recoloring or warping the approved character",
+        "UI frame/text/backdrop baked into reusable character source"
+      ]
+    },
+    "uiBackgroundReference": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "runtimeContract": {
+      "dimensions": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "compositionKind": "character-card-composite-v1",
+      "recommendedStartingPlacementFor1024x1536": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ],
+        "renderHeight": 216
+      },
+      "placementWarning": "Starting point copied from seven approved cards, not automatic artistic acceptance; whole canvas must fit and all actual UI crops must be reviewed.",
+      "sourceOwner": "tools/art/source-overrides.json",
+      "identityOwner": "manifest-final-fantasy-v1.json",
+      "exporter": "tools/art/export_overrides.py:127-176"
+    },
+    "HDContract": {
+      "nativeMasterIsHighResolution": true,
+      "runtimeCardHdEntryExists": false,
+      "currentExporterRejectsCardHd": true,
+      "existingCardNotTrue2xForEveryConsumer": "192x224 approximately supplies 2x dialogue size92x112, but remains a low-resolution composite; a high-res master alone does not publish HD.",
+      "optionalFutureContractOnly": {
+        "logical": [
+          192,
+          224
+        ],
+        "physical2x": [
+          384,
+          448
+        ],
+        "requires": "Explicit bounded card-export/manifest/resolver migration and UI tests; not performed or silently promised by this audit."
+      }
+    },
+    "stageBrief": {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 46,
+      "endLine": 46,
+      "originalText": "| P0 | `C01-CHAR-RODERICK-02.png` | 王冠军统帅 | 同一装备老化，不做邪恶黑甲 |"
+    },
+    "mustPreserve": [
+      "Same older gray-haired, gray-bearded knight as approved Roderick stage01",
+      "Dismounted standing three-quarter; sword lowered diagonally toward viewer-right, round shield upright at viewer-right",
+      "Aged steel plate/mail with blue tabard/cape, gold crown/royal motifs, medals and practical belts",
+      "Stern and steady, not crazed or gleefully villainous"
+    ],
+    "reconcileWithExplicitBrief": [
+      {
+        "code": "continuity",
+        "detail": "The later brief says same equipment aged, not evil black armor. Preserve the approved mentor face and worn material continuity; royal motifs express allegiance, not a new identity."
+      },
+      {
+        "code": "portrait_combat_distinction",
+        "detail": "Original card depicts sword/shield while existing Roderick combat rules and approved named appearance are mounted lance cavalry. This standing portrait does not authorize changing combat weapons or mobility."
+      }
+    ],
+    "approvalGates": [
+      "Native true-alpha on black/white/checker plus whole-canvas integrity",
+      "Identity continuity versus approved named portrait; correct age/stage and lore detail",
+      "Separate background composition at192x224 and all actual UI crops",
+      "No generic troop or stage01 binding/source changed",
+      "Do not claim HD publication or live-game acceptance from source generation alone"
+    ]
+  }
+]

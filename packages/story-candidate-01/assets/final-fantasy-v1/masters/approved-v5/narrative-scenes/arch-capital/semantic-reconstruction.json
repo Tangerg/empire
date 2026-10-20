@@ -1,0 +1,47 @@
+{
+  "topicId": "C01-ARCH-CAPITAL",
+  "label": "阿斯塔里亚王都",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 65,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+  "sourceBoardSha256": "bea6f843b636aba30bfac221569c8fb72a3c21747598a47a9920c81adfbca840",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "bottom-right",
+  "legacyInsetCropBox": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "semanticReview": {
+    "preserved": [
+      "Elevated substantial fortified-city setting with dark blue-gray roofed timber-and-stone neighborhoods",
+      "Central stout round palace/control core and a second broad domed civic structure",
+      "Layered defensive hierarchy, arched gates, wall towers and broad connected streets",
+      "Tall narrow watchtowers on individual rocky perimeter hills",
+      "Muted slate, ochre and olive materials, modest localized warm windows"
+    ],
+    "interpreted": [
+      "Nested defensive hierarchy condensed to an outer urban wall and smaller palace enclosure, not a literal canonical street map",
+      "Foreground water gate, left older wall route and rear tower route express the authored three approaches",
+      "Public water basins, grain storage and working districts express actual civic services without claiming a governance outcome"
+    ],
+    "notClaimed": [
+      "Exact canonical cadastral/city map",
+      "Named character appearances, forced-kneeling episode or chosen ending",
+      "Every service district independently recognizable at canonical256x144",
+      "Formal runtime binding or browser/live-game coverage"
+    ],
+    "caveats": [
+      "Centered390x778 cover retains main palace, rear dome, avenue, basins and foreground gate/bridge but clips the broad wall ring, lateral service districts and most outer hilltop towers. Right gate tower and bridge edge are partly clipped.",
+      "At256x144 the city plan, palace, wall and river gate read; tiny citizens, facade details and individual services do not.",
+      "All towers are inside the native1672x941 and exact1664x936 crop. Two distant rear finials have only a few pixels of top clearance, not the requested45px. The slightly wider960x534 desktop-cover crop can graze the highest peripheral finial; main palace and all primary city structures remain intact."
+    ]
+  }
+}

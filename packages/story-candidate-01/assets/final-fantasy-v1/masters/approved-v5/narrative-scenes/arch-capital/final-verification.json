@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-ARCH-CAPITAL",
+  "nativePreserved": true,
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "sourceNativeExportCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "sourceNativeExportSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "density": 6.5,
+  "upscaled": false,
+  "visualQAComplete": true,
+  "nativeAndLogicalAndCenteredNarrowInspected": true,
+  "rejectedAttemptsPreserved": [
+    "rejected-v1"
+  ],
+  "currentConsumerFound": false,
+  "runtimeOrSelectorEdits": false,
+  "liveGameVerified": false,
+  "masterSha256": "a7c39ec3a838e705e857a5bc4ab3198bfdb444e740ca053f9e80b0d7dec186a5",
+  "visualCaveats": [
+    "Centered390x778 cover retains main palace, rear dome, avenue, basins and foreground gate/bridge but clips the broad wall ring, lateral service districts and most outer hilltop towers. Right gate tower and bridge edge are partly clipped.",
+    "At256x144 the city plan, palace, wall and river gate read; tiny citizens, facade details and individual services do not.",
+    "All towers are inside the native1672x941 and exact1664x936 crop. Two distant rear finials have only a few pixels of top clearance, not the requested45px. The slightly wider960x534 desktop-cover crop can graze the highest peripheral finial; main palace and all primary city structures remain intact."
+  ]
+}
