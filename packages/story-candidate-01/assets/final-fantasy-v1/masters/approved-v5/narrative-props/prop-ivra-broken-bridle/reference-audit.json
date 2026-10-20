@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+  "label": "伊芙拉断裂缰具",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "伊芙拉断裂缰具",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ivra-broken-bridle.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-IVRA-BROKEN-BRIDLE",
+    "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+    "label": "伊芙拉断裂缰具",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-ivra-broken-bridle.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+    "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 2,
+    "slot": "BL",
+    "originalNarrativeIndexZeroBased": 74,
+    "fullCellCropBox": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-ivra-broken-bridle/full-cell.png",
+        "sourceCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "b19444d985b7c3221eae6124d9c7af095ab65f5d8fe2407eebf203e94b0020f5",
+        "pixelSha256": "08126c23cf86964bc77eeb1be380f2d4770c137fe5e9ca3178c12a44ce52d9bd",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-ivra-broken-bridle/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "884231c4da9651dec48529e79e6a6c0727509af1139e317d46d75d34d6650004",
+        "pixelSha256": "7545f7ca7247b06219c3955c11354ccdff039772d4acccd910297afd7aa46ade",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ivra-broken-bridle.png",
+    "sha256": "86f5dbe8b1fe3d1f76beb6ba68204f854a2c14af396a5fcfbffffc590552cf7d",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 11556,
+      "partialPixels": 4685,
+      "opaquePixels": 143,
+      "nearOpaquePixels": 557,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        9,
+        4,
+        119,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Separated torn brown leather bridle strap with rectangular buckle, detached torn red-brown strap, and two broken halves of a metal bit/ring.",
+    "semanticRequirements": "The broken/open condition is essential: freedom to leave, not tame-dragon ownership. Preserve all loose parts and open gaps. No dragon, saddle or body attached.",
+    "riskOrHold": "Recommended; complete multi-part object and clear story semantics.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": 3,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        87,
+        87
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+      "lines": [
+        69,
+        90
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        110,
+        110
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-CROWN-FRAGMENT",
+  "label": "誓约王冠碎片",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-CROWN-FRAGMENT",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "誓约王冠碎片",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-crown-fragment.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-CROWN-FRAGMENT",
+    "topicId": "C01-PROP-CROWN-FRAGMENT",
+    "label": "誓约王冠碎片",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-crown-fragment.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+    "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 2,
+    "slot": "BL",
+    "originalNarrativeIndexZeroBased": 16,
+    "fullCellCropBox": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-crown-fragment/full-cell.png",
+        "sourceCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "2094ec363f9a34ffc6eb09fd4b539c10681dce6f043258e71108676d19479955",
+        "pixelSha256": "408379ac9293db5f4225c3bdd2326e8477f8c29302dfab4d8285336350d14fdc",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-crown-fragment/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "59803a620c978d39d565e90c60a466fbb079485838887bd6c1c22c0ec6f02bf9",
+        "pixelSha256": "650431626852643d438a42d364311197d2d8f6de0aa26a4eeaf598521ab494c2",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-crown-fragment.png",
+    "sha256": "f1c60f4441c0ccafb3c79387ea482658131a5e25aff4a453b6a74ef76f667d48",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 12395,
+      "partialPixels": 3682,
+      "opaquePixels": 307,
+      "nearOpaquePixels": 1036,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        123,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "One incomplete curved bronze/gold crown band with raised angular bevels, a diamond boss, broken high ends and dark inner face.",
+    "semanticRequirements": "It is a fragment, never a complete wearable crown. The creative brief forbids obviously evil spikes; dignity and practical construction matter.",
+    "riskOrHold": "Clear original silhouette; complete subject, no text or symbol transcription needed.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": 4,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        29,
+        29
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        137,
+        143
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/03-elder-peoples-novel.md",
+      "lines": [
+        99,
+        99
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

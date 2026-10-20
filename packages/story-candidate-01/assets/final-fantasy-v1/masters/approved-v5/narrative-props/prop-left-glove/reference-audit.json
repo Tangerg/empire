@@ -1,0 +1,183 @@
+{
+  "topicId": "C01-PROP-LEFT-GLOVE",
+  "label": "莱娅左手护腕",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-LEFT-GLOVE",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "莱娅左手护腕",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-left-glove.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-LEFT-GLOVE",
+    "topicId": "C01-PROP-LEFT-GLOVE",
+    "label": "莱娅左手护腕",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-left-glove.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+    "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 0,
+    "slot": "TL",
+    "originalNarrativeIndexZeroBased": 18,
+    "fullCellCropBox": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-left-glove/full-cell.png",
+        "sourceCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "7077a46fe0ec3f23f371bd02134cdde74bf7a69663f2a1174396f1cd8ae37b85",
+        "pixelSha256": "52d7007f26f62f91a8d842d3ea141814f92faac97635f715e96b0797c6c154c0",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-left-glove/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "d14d936beac94db36ad2794f0dd34dd29c4d93c23d1f04312069e0feb205ba97",
+        "pixelSha256": "d6321d7bd37e82c4027c711681c9cf410968eb6b2cf1e9cf5046ade72c3aaa62",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-left-glove.png",
+    "sha256": "75494ca70afb0ca9b38409419483e4b6265cf1b14891ed20659c3cad41d4b1cf",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 12168,
+      "partialPixels": 4064,
+      "opaquePixels": 152,
+      "nearOpaquePixels": 435,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        11,
+        124,
+        116
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Worn blue-gray cylindrical wrist guard, tan stitched repairs and rope tie; its near opening shows a dark hollow interior.",
+    "semanticRequirements": "LEFT-GLOVE is the stable ID, but its canonical label and current source are a wrist guard, not a fingered glove. Chapter1 ties this to Leia and Roderick; preserve wear, blue-gray material, seam and loose cord.",
+    "riskOrHold": "Recommended; do not substitute CH01-S00's distinct metal-rimmed bracer or Roderick's literal left glove.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": 1,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        31,
+        31
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "lines": [
+        7,
+        15
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        25,
+        25
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        107,
+        107
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

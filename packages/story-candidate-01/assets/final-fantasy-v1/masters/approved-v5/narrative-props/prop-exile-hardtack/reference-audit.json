@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-EXILE-HARDTACK",
+  "label": "逃亡硬饼",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-EXILE-HARDTACK",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "逃亡硬饼",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-exile-hardtack.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-EXILE-HARDTACK",
+    "topicId": "C01-PROP-EXILE-HARDTACK",
+    "label": "逃亡硬饼",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-exile-hardtack.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+    "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 1,
+    "slot": "TR",
+    "originalNarrativeIndexZeroBased": 19,
+    "fullCellCropBox": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-exile-hardtack/full-cell.png",
+        "sourceCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "16d5995ad212ec6367c3f0693a1453299ba597798c80089026147ed0d295a260",
+        "pixelSha256": "44426adc382782f4d37fe104885651f3dfee6150a88ac4ff7e73764ba7d710f9",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-exile-hardtack/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "aef428a919916dd5503abbc32761f7fccfa132b5b5d71d6e5ab9bcb4ea988f6b",
+        "pixelSha256": "f3ce7ee0bef395dd466dd83429c791695828701da13a3fe7353326d1b49e9e65",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-exile-hardtack.png",
+    "sha256": "4f344f76e9d044d55718d5d7691b8cb9343531ea929d329105fe9ead2e74f8da",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 10321,
+      "partialPixels": 5881,
+      "opaquePixels": 182,
+      "nearOpaquePixels": 423,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Three rough tan hard biscuits, cracked/nicked edges, bundled in a folded gray cloth.",
+    "semanticRequirements": "Scarce plain food, not a luxurious pastry, crest-shaped loaf or decorated later gray-wing biscuit. No writing or emblem.",
+    "riskOrHold": "Recommended; complete subject and simple countable identity.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": 2,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        32,
+        32
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "lines": [
+        111,
+        137
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        25,
+        25
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

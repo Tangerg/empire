@@ -1,0 +1,65 @@
+{
+  "scope": "four native transparent narrative key-props",
+  "sourceGenerationCalls": 4,
+  "selectedMasters": 4,
+  "rejectedAttempts": 0,
+  "sourcePostprocessing": "none; all masters byte-exact generated PNGs",
+  "sourceNativeSize": [
+    1254,
+    1254
+  ],
+  "sourceQAPassed": true,
+  "formalRegistrationClaimed": false,
+  "liveGameAcceptanceClaimed": false,
+  "wholeCanvasContainContract": "ImageOps.contain(source,(124,124),LANCZOS); unmasked paste into128x128 RGBA at(2,2)",
+  "topics": [
+    {
+      "topicId": "C01-PROP-LEFT-GLOVE",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-left-glove/master.png",
+      "sha256": "811dbfbc99767f1edf3452a7e0891ab2033ac7a507cb62ef29b65340297d8025",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-57777bc0-7d95-4bf0-b29a-b9ffc9d62bfa.png",
+      "generationCalls": 1,
+      "sourceEdgeMaxAlpha": 0,
+      "sourceEdgeNonzeroPixels": 0,
+      "native128EdgeMaxAlpha": 0,
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-left-glove/QA",
+      "visualStatus": "PASS"
+    },
+    {
+      "topicId": "C01-PROP-EXILE-HARDTACK",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-exile-hardtack/master.png",
+      "sha256": "e4a5e89286b22371f86da62e58715650e44d1ca9228b2a9d222f36fbf2505ec5",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-fc658fc7-4c27-4b93-bb5a-8c21971550fd.png",
+      "generationCalls": 1,
+      "sourceEdgeMaxAlpha": 1,
+      "sourceEdgeNonzeroPixels": 35,
+      "native128EdgeMaxAlpha": 0,
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-exile-hardtack/QA",
+      "visualStatus": "PASS"
+    },
+    {
+      "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ivra-broken-bridle/master.png",
+      "sha256": "6b3077cb447f2cb4eb2609690d7477566d990cd96a8d6f405911de44e9e31729",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-ed052317-f4c7-4734-818f-68f6cd3847cb.png",
+      "generationCalls": 1,
+      "sourceEdgeMaxAlpha": 0,
+      "sourceEdgeNonzeroPixels": 0,
+      "native128EdgeMaxAlpha": 0,
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ivra-broken-bridle/QA",
+      "visualStatus": "PASS"
+    },
+    {
+      "topicId": "C01-PROP-CROWN-FRAGMENT",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-crown-fragment/master.png",
+      "sha256": "1c12c0d021bc55854788305bb06ada1d369e4ae71aa9ffd8e86152bb697abb56",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-321ac11b-4d24-49a2-8639-d755c280d440.png",
+      "generationCalls": 1,
+      "sourceEdgeMaxAlpha": 1,
+      "sourceEdgeNonzeroPixels": 11,
+      "native128EdgeMaxAlpha": 0,
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-crown-fragment/QA",
+      "visualStatus": "PASS"
+    }
+  ]
+}
