@@ -90,8 +90,8 @@ Do not activate the four-state pilot. Its masks `[5,10,7,13]` cover only 71/190 
 
 - Snow/stone blends can reuse the approved `snow-1` and `old-stone-1` RGB with existing alpha
 - Mud/forest trail topology can be reused; earth-2/earth-4/forest-floor-1 are candidates requiring semantic and scale review, not automatically equivalent to the original route families
-- Distinct stream/marsh/ice RGB families and geological automatic-cliff plane material have no verified matching approved isolated sources. Commission them only if those unused families enter scope
-- The inactive stone-horizontal slot can reuse the approved horizontal source. Ten other unused crossing/fortification identities need isolated art if exact catalog completion is requested
+- Distinct stream/marsh/ice RGB families and geological automatic-cliff plane material have no verified matching approved isolated sources. They remain in the already authorized full-catalog scope; schedule them after active-playable gaps, and commission distinct sources rather than substituting unrelated RGB
+- The inactive stone-horizontal slot can reuse the approved horizontal source. Ten other unused crossing/fortification identities still need isolated art under the existing full-catalog request
 
 Physical reconciliation: 186 individual source overrides + 128 approved dirt/edge slots + 287 legacy slots bypassed by typed world material + 585 inactive slots + 2 active old vertical slots = 1188. This is not a canonical-topic or live visual-acceptance percentage.
 
@@ -104,3 +104,7 @@ Physical reconciliation: 186 individual source overrides + 128 approved dirt/edg
 - `audit-runtime-consumers.ts`, `audit-bridge-context.ts`, `summarize-audit.py`: reproducible read-only collectors; they only write to this audit directory
 
 Twelve approved world-source hashes and both approved dirt-road 2× output hashes were independently verified. No full-suite or browser pass is claimed by this audit.
+
+## Coordinator scope clarification
+
+Unused does not mean excluded: the user has already authorized all existing artwork. The585 inactive derived slots remain explicit backlog, grouped by source family rather than commissioned as585 unrelated paintings. Active-consumer priority only sets order. The287 bypassed slots still require an audit of catalog/export consumers before calling their old stored bytes fully replaced.
