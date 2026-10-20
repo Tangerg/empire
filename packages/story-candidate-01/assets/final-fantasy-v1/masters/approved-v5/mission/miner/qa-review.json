@@ -1,0 +1,53 @@
+{
+  "status": "Source quartet passed static visual and technical QA; coordinator formal export/integration pending.",
+  "sourcePolicy": "Every selected and rejected raw/master is byte-identical. No cleanup, painting, recoloring, cropping, per-pose rescaling or source padding. QA composites and technical export proposals are separate only.",
+  "canonicalFrameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "distinctDecodedSourceHashes": {
+    "idle": "277b14f49b9bf2d1f32fcedfcc582ac8d12c9c05ec72b2454dd3dabd655c572a",
+    "walk-a": "4064e14d053f3754592855802c776e08622717e0673c01025ed583e911ac1fef",
+    "carry-or-work": "f882e647df3a24827f2f299273751966f75cdb9e91bf5756b9bc73d8f5538d82",
+    "walk-b": "6b91b959c2b733dcf7b582df174ccd008cf5216b621dcb35029022c1e07b3015"
+  },
+  "allNativePerimetersAlphaAtMost1": true,
+  "noAlphaAbove1Beyond7PixelOpaqueSilhouette": true,
+  "wholeCanvasPlacementFits": true,
+  "sharedScale": 0.048087431693989074,
+  "bodyTargetHeightLogicalPixels": 44,
+  "reviews": {
+    "identity": "Same warm medium-brown young-adult woman, thick black braid, brown round-lamp helmet, charcoal work coat, brown gloves and boots; original apparent age, proportions and palette retained.",
+    "handRoles": "All selected poses: screen-left near glove holds lantern loop; screen-right far glove grips the same pickaxe. Neither prop is dropped or swapped.",
+    "oppositeWalks": "Screen-right front boot reaches heel-first with toe raised and sole visible; screen-left rear boot supports with toe/sole down. Lantern swings slightly back in original near hand; pick remains in original far hand. Screen-right front boot flat and weight-bearing; screen-left rear heel raised and knee bent, toe at ground. Opposite support/contact to walk-a. Lantern and pick remain in original physical hands.",
+    "work": "Both boots planted; torso leans toward work. Original screen-left near hand raises hanging lantern to waist, original screen-right far hand lowers pick horizontally/outward into a controlled inspection/preparation action. No new objects or prop-hand swap.",
+    "scale": "Coordinator accepted idle44/915 and support[810.75,965] before remaining poses. Same full-source scale across every selected pose; independently measured sole-only whole-canvas registration.",
+    "transparency": "Inspected native black/white/scene composites and fixed44 comparison. Perimeter maxima0,1,0,0; no broad halo, exterior lamp glow or clipping. Alpha1 residue is unchanged."
+  },
+  "sourceCanvasRegistrationNote": "Shared technical export canvas1586x993 with at most2px transparent right/bottom padding, preserving native sources. Exact max whole-canvas translation 2.103825136612022 logical pixels; fits104x64/origin[8,4] and4px registration limit. No per-pose fitting.",
+  "rejectedAttempts": [
+    {
+      "pose": "walk-b",
+      "attempt": 1,
+      "path": "rejected/walk-b-attempt-01",
+      "sha256": "e19254d15f45c2cbd0770514431e6cd636cdc22820082d0118ee9f9baa42696b",
+      "reason": "Pose reproduces the same screen-right forward heel-raised/sole-visible step as walk-a; opposite walking support is insufficiently clear. Identity/alpha not reason for rejection. No edited or cleaned derivative used."
+    }
+  ],
+  "liveGameAcceptance": false,
+  "actualConsumers": {
+    "domainActors": 0,
+    "scenePlacements": 0,
+    "classification": "catalog-only"
+  },
+  "testsNotRun": [
+    "Repository formal exporter",
+    "Repository validation suites",
+    "Build",
+    "Live game animation playback"
+  ],
+  "repositoryWrites": false,
+  "gitOperations": false
+}

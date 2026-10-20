@@ -1,0 +1,28 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "requestFile": "request.json",
+  "exactPrompt": "prompt.txt",
+  "promptSha256": "babba1739d3693b82838d94e18125aabf6fc90b36fb265f5b4e1ef380ed20b52",
+  "referenceInputs": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/idle/master.png",
+      "sha256": "6e741e92f3efad4183a0f579f7c8ef7219eb19932ff1d9d4d409f5f39bdcc5ef"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/references/original-idle-cell.png",
+      "sha256": "916d89f05abddfcdda307a7973637ad07be86a40e24a287c73894abfb45e23b6"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/references/approved-border-farmer-idle.png",
+      "sha256": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/references/approved-forge-artisan-idle.png",
+      "sha256": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c"
+    }
+  ],
+  "rawSha256": "e19254d15f45c2cbd0770514431e6cd636cdc22820082d0118ee9f9baa42696b",
+  "masterSha256": "e19254d15f45c2cbd0770514431e6cd636cdc22820082d0118ee9f9baa42696b",
+  "rejected": true,
+  "rejectionReason": "Pose reproduces the same screen-right forward heel-raised/sole-visible step as walk-a; opposite walking support is insufficiently clear. Identity/alpha not reason for rejection. No edited or cleaned derivative used."
+}

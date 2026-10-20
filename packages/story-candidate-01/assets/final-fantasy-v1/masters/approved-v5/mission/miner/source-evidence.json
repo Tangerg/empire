@@ -1,0 +1,128 @@
+{
+  "topicId": "C01-MISSION-MINER",
+  "assetId": "C01-FFV1-MISSION-MINER",
+  "label": "采矿工",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+    "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+    "size": [
+      1024,
+      1536
+    ],
+    "rowIndex0": 1,
+    "rowIndex1": 2,
+    "rowCropXYXY": [
+      0,
+      384,
+      1024,
+      768
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        384,
+        256,
+        768
+      ],
+      [
+        256,
+        384,
+        512,
+        768
+      ],
+      [
+        512,
+        384,
+        768,
+        768
+      ],
+      [
+        768,
+        384,
+        1024,
+        768
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        389,
+        251,
+        763
+      ],
+      [
+        261,
+        389,
+        507,
+        763
+      ],
+      [
+        517,
+        389,
+        763,
+        763
+      ],
+      [
+        773,
+        389,
+        1019,
+        763
+      ]
+    ],
+    "observedIdentity": "Warm medium-brown-skinned woman with long black braid, brown lamp helmet, charcoal work coat and gloves. Screen-left hand holds yellow lantern, screen-right small pickaxe in idle. Preserve her identity rather than substituting a stereotypical male miner."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-miner.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-MINER",
+    "png": "runtime-hd/mission-unit/mission-miner.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "referenceCopies": {
+    "original-idle-cell.png": "916d89f05abddfcdda307a7973637ad07be86a40e24a287c73894abfb45e23b6",
+    "approved-city-doctor-idle.png": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+    "original-masterboard.png": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+    "approved-farmer-walk-b.png": "364eb6d39b98d4bad9bfa5a52dff4f6d4f22c44b91261b3c32c1da47632fa5b1",
+    "approved-border-farmer-idle.png": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+    "original-row.png": "9bf41bf10ab9e2cb7602272c53039846b2f730ecb309cb18fcfb3e865f6c8960",
+    "approved-forge-artisan-idle.png": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c"
+  },
+  "referenceRowAndIdlePixelExactToOriginalBoard": true,
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "status": "Native quartet complete with static QA; catalog-only collection. Coordinator formal export/integration pending."
+}

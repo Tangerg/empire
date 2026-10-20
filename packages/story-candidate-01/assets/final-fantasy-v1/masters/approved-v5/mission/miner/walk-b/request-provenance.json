@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "requestFile": "request.json",
+  "exactPrompt": "prompt.txt",
+  "promptSha256": "2b1da4f60e2d6c816beafd5d75c7fa44831395c00a59cad9b2ca846d67c7a8e6",
+  "referenceInputs": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/idle/master.png",
+      "sha256": "6e741e92f3efad4183a0f579f7c8ef7219eb19932ff1d9d4d409f5f39bdcc5ef"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/references/original-idle-cell.png",
+      "sha256": "916d89f05abddfcdda307a7973637ad07be86a40e24a287c73894abfb45e23b6"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/miner/references/approved-farmer-walk-b.png",
+      "sha256": "364eb6d39b98d4bad9bfa5a52dff4f6d4f22c44b91261b3c32c1da47632fa5b1"
+    }
+  ],
+  "rawSha256": "1a73c21be739045c231426149122bf4baadfaa2f5aa773dddce250a6f5fbc5ae",
+  "masterSha256": "1a73c21be739045c231426149122bf4baadfaa2f5aa773dddce250a6f5fbc5ae",
+  "transformation": "Byte-identical copy only. No source crop, alpha cleanup, painting, recoloring, fitting, resizing or padding."
+}

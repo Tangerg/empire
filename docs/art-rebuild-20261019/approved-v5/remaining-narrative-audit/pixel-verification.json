@@ -1,0 +1,675 @@
+{
+  "summary": {
+    "canonicalScope": 80,
+    "formalBound": 7,
+    "remaining": 73,
+    "totalByKind": {
+      "character-card": 22,
+      "scene": 41,
+      "key-prop": 17
+    },
+    "remainingBySubgroup": {
+      "architecture-scene": 14,
+      "chapter-scene": 16,
+      "key-prop": 15,
+      "style-scene": 6,
+      "character-card-stage": 15,
+      "chapter-topic-as-key-prop": 2,
+      "everyday-scene": 5
+    },
+    "actualUseTopics": 19,
+    "actualUseRemaining": 12,
+    "catalogOnlyRemaining": 61,
+    "sourceBoardCount": 21,
+    "mappedTopicCount": 80,
+    "missingSourceBoards": [],
+    "unusedBoardCells": [
+      {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+        "cellIndexZeroBased": 2
+      },
+      {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+        "cellIndexZeroBased": 3
+      },
+      {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+        "cellIndexZeroBased": 3
+      },
+      {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+        "cellIndexZeroBased": 3
+      }
+    ],
+    "originalPixelMatches": 73,
+    "approvedReplacementsExpectedMismatches": 7,
+    "unexpectedPixelMismatches": [],
+    "narrativeHDCount": 0
+  },
+  "topics": [
+    {
+      "topicId": "C01-CHAR-LEIA-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-RODERICK-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-CAIN-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-MIREL-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-BRAN-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-TASHA-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-REDSTONE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-GRAY-CAMP",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-SILVERWOOD",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH01-S05",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH01-S01",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH02-S06",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH07-S33-EST",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-PROP-FIRST-GREY-FLAG",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-01.png",
+        "exists": true,
+        "sha256": "fc6359c43c01d796d329921482520c2d1086bd1574cdcb9300e7bd0878378841"
+      }
+    },
+    {
+      "topicId": "C01-PROP-FREE-OATH-STONE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-01.png",
+        "exists": true,
+        "sha256": "fc6359c43c01d796d329921482520c2d1086bd1574cdcb9300e7bd0878378841"
+      }
+    },
+    {
+      "topicId": "C01-PROP-CROWN-FRAGMENT",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-01.png",
+        "exists": true,
+        "sha256": "fc6359c43c01d796d329921482520c2d1086bd1574cdcb9300e7bd0878378841"
+      }
+    },
+    {
+      "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-01.png",
+        "exists": true,
+        "sha256": "fc6359c43c01d796d329921482520c2d1086bd1574cdcb9300e7bd0878378841"
+      }
+    },
+    {
+      "topicId": "C01-PROP-LEFT-GLOVE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-02.png",
+        "exists": true,
+        "sha256": "2e1c4073b3d4b98b8b234d930662a92f49e1d2f48b3bb42e57161ecf64c1e9c6"
+      }
+    },
+    {
+      "topicId": "C01-PROP-EXILE-HARDTACK",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-02.png",
+        "exists": true,
+        "sha256": "2e1c4073b3d4b98b8b234d930662a92f49e1d2f48b3bb42e57161ecf64c1e9c6"
+      }
+    },
+    {
+      "topicId": "C01-PROP-CONTROL-FRAGMENT",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-02.png",
+        "exists": true,
+        "sha256": "2e1c4073b3d4b98b8b234d930662a92f49e1d2f48b3bb42e57161ecf64c1e9c6"
+      }
+    },
+    {
+      "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-02.png",
+        "exists": true,
+        "sha256": "2e1c4073b3d4b98b8b234d930662a92f49e1d2f48b3bb42e57161ecf64c1e9c6"
+      }
+    },
+    {
+      "topicId": "C01-STYLE-KEYART",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-STYLE-BORDER-AUTUMN",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-STYLE-OATH-LIGHT",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-STYLE-LONG-NIGHT",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-STYLE-ELDER-PEOPLES",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-STYLE-CAPITAL-ORDER",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-LEIA-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-LEIA-03",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-RODERICK-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-IVRA-01",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-IVRA-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-IVRA-03",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-CAIN-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-BRAN-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-MIREL-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-NOBANNER-01",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-NOBANNER-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-SEVERIN",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-ADA-01",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-ADA-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-TORREN-01",
+      "formalApprovedReplacement": true,
+      "originalReconstructionMatchesCurrentPixels": false,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CHAR-TORREN-02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH01-S00",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-04.png",
+        "exists": true,
+        "sha256": "d8bb795ade200384090e47d83198f969889e89881958d44c769666891eacc170"
+      }
+    },
+    {
+      "topicId": "C01-CH01-S02",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH02-S09",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH03-S16",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH04-S19",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH05-S24",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH05-S26",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH06-S32",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH07-S34",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH07-S36E",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH03-S11",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH03-S14",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH05-S22",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-CH06-S29",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-SCENE-PUBLIC-RATIONS",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-SCENE-REFUGEE-BRIDGEWORK",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-SCENE-NURSERY-DEBATE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-SCENE-ARCHIVE-FORGE-OPEN",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-SCENE-OLD-FLAG-HOMECOMING",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-TWIN-HILLS",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-VEINPORT",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-CAPITAL",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-LOAK-BAKERY",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-FORGE-CITY",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-ANSEL-TOWER",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-BONE-TOWER",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-FIELD-HOSPITAL",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-MERCENARY-MARKET",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+      "intermediate": null
+    },
+    {
+      "topicId": "C01-PROP-ADA-MEDICINE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-03.png",
+        "exists": true,
+        "sha256": "c67b60447b346d606646db59b6e21f58065e6949957280e4924544fd95bc3f12"
+      }
+    },
+    {
+      "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-03.png",
+        "exists": true,
+        "sha256": "c67b60447b346d606646db59b6e21f58065e6949957280e4924544fd95bc3f12"
+      }
+    },
+    {
+      "topicId": "C01-PROP-EXPIRING-MANDATE",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-03.png",
+        "exists": true,
+        "sha256": "c67b60447b346d606646db59b6e21f58065e6949957280e4924544fd95bc3f12"
+      }
+    },
+    {
+      "topicId": "C01-PROP-NAME-TAGS",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-03.png",
+        "exists": true,
+        "sha256": "c67b60447b346d606646db59b6e21f58065e6949957280e4924544fd95bc3f12"
+      }
+    },
+    {
+      "topicId": "C01-PROP-CASUALTY-REGISTER",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-04.png",
+        "exists": true,
+        "sha256": "d8bb795ade200384090e47d83198f969889e89881958d44c769666891eacc170"
+      }
+    },
+    {
+      "topicId": "C01-PROP-GRANARY-KEY",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-04.png",
+        "exists": true,
+        "sha256": "d8bb795ade200384090e47d83198f969889e89881958d44c769666891eacc170"
+      }
+    },
+    {
+      "topicId": "C01-PROP-EVACUATION-MAP",
+      "formalApprovedReplacement": false,
+      "originalReconstructionMatchesCurrentPixels": true,
+      "formula": "cached original chroma → saturation cleanup → 2x2 cell inset5 / edge-white cleanup → alpha>=28 bbox fit,4px pad,center,128x128 → final magenta alpha cleanup",
+      "intermediate": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-04.png",
+        "exists": true,
+        "sha256": "d8bb795ade200384090e47d83198f969889e89881958d44c769666891eacc170"
+      }
+    }
+  ]
+}

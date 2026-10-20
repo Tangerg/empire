@@ -1,0 +1,605 @@
+{
+  "meaning": "All40 canonical combat idle frames at actual2x density, shared displayed footing. Catalog comparison, not deployed formation or live screenshot; all four poses tested separately. Named actor variants and red faction variant are not added to40 count.",
+  "assets": [
+    {
+      "topicId": "C01-UNIT-ANCIENT-DRAGON",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ancient-dragon@2x.png",
+      "sha256": "b1d8536421592d2f035bf1f54e3bf6139c22238551443faa0483809306205294",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        75.71914893617021,
+        71.49787234042553
+      ],
+      "paste": [
+        9,
+        33
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-ARCHER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png",
+      "sha256": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        52.38987341772152,
+        54.68354430379747
+      ],
+      "paste": [
+        375,
+        67
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-ASSASSIN",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-assassin@2x.png",
+      "sha256": "10b60d1cd9cc233a0d171129d5288b2d3d08f6bbade70bc45488a12009f56191",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        45.58090185676392,
+        49.51724137931034
+      ],
+      "paste": [
+        709,
+        77
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-AXE-BREAKER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-axe-breaker@2x.png",
+      "sha256": "45cd53de2095c8a0f53423d00bd4b29145ce9b9c0cd67a643f8904b994f7e562",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        45.85474860335195,
+        51.34301675977653
+      ],
+      "paste": [
+        1028,
+        73
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-BALLISTA",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ballista@2x.png",
+      "sha256": "78a24015d823536e9f8151ea7fab3aa03ce9e3add3506458c743af821c911b36",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        54.43605036447978,
+        53.50828363154407
+      ],
+      "paste": [
+        1331,
+        69
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+      "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        49.09179926560588,
+        56.83231334149327
+      ],
+      "paste": [
+        1662,
+        62
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-BATTLE-MAGE",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
+      "sha256": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        46.18589025755879,
+        50.9070548712206
+      ],
+      "paste": [
+        1988,
+        74
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-BERSERKER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-berserker@2x.png",
+      "sha256": "41010ea5688ad9214a8f95905d3e83afae1e70f85d311948c75515452e381408",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        45.83177570093458,
+        50.539857064321055
+      ],
+      "paste": [
+        2308,
+        75
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-CANNON-WAGON",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-cannon-wagon@2x.png",
+      "sha256": "51c9a26dc026a4a9044677b9d37bb3db27b1f99699bcc624c168713b0b53c995",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        63.87301587301587,
+        61.26984126984127
+      ],
+      "paste": [
+        32,
+        277
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-cemetery-colossus@2x.png",
+      "sha256": "aaa49b440b930ea108a16d44b03e10e6cf1c6556e02a1ea62b49fe77f6014877",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        64.10478359908885,
+        68.64692482915717
+      ],
+      "paste": [
+        352,
+        263
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-CLERIC",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-cleric@2x.png",
+      "sha256": "6952ebefbfde04cea50e96fc79da9cacc2ed7321f25d350be855d6a91e855edb",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        47.06681766704417,
+        51.23895809739525
+      ],
+      "paste": [
+        706,
+        298
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-DRUID",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-druid@2x.png",
+      "sha256": "6949527913cb9b598b51fafcd8b0b6ffa3ef0c067e48b20511795cd473b4e34e",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        44.766142159522516,
+        50.124796527400974
+      ],
+      "paste": [
+        1030,
+        300
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-EAGLE-SCOUT",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-eagle-scout@2x.png",
+      "sha256": "fed6ffd962f1d86e68b6018abca29393af95ae2ee9edcc5ba83570a2d14890fe",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        57.95762711864407,
+        59.652542372881356
+      ],
+      "paste": [
+        1324,
+        281
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-ENGINEER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+      "sha256": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        47.38360655737705,
+        50.35628415300547
+      ],
+      "paste": [
+        1665,
+        299
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-GHOST",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ghost@2x.png",
+      "sha256": "d1b1d21357aae89f342ad3dd60c3242146c0b7a98984b6f6c507c3b56b73835e",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        47.443365695792885,
+        49.51887810140238
+      ],
+      "paste": [
+        1985,
+        301
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+      "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        48.81159420289855,
+        52.02229654403567
+      ],
+      "paste": [
+        2302,
+        296
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
+      "sha256": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        47.69849246231156,
+        52.29145728643216
+      ],
+      "paste": [
+        65,
+        519
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-INQUISITOR",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png",
+      "sha256": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        45.50084889643463,
+        52.95529145444256
+      ],
+      "paste": [
+        389,
+        518
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+      "sha256": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        72.56286165176223,
+        63.91478169384534
+      ],
+      "paste": [
+        655,
+        496
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-JAVELIN-HUNTER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-javelin-hunter@2x.png",
+      "sha256": "2934ddc63769eded218bf16da8a7c66ce87e5d45d63723d8977ec1ad651dd906",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        44.93394077448747,
+        52.91116173120729
+      ],
+      "paste": [
+        1030,
+        518
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-KNIGHT",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png",
+      "sha256": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        47.7908787541713,
+        50.93659621802002
+      ],
+      "paste": [
+        1344,
+        522
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-lance-cavalry@2x.png",
+      "sha256": "01e79cdca52acb2b2bc22398d1e8d80e220c541ebfffb35f20c9360d985b4aaa",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        55.86581469648562,
+        64.26624068157615
+      ],
+      "paste": [
+        1648,
+        495
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+      "sha256": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        45.44474986256184,
+        50.975261132490374
+      ],
+      "paste": [
+        1989,
+        522
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-MAGE",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-mage@2x.png",
+      "sha256": "c3f04e0b8c6bb1575d07a24fe9f980aa029e8191d4edc99779e2c42b4adbf323",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        46.582729805013926,
+        50.867966573816155
+      ],
+      "paste": [
+        2307,
+        522
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-RANGER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+      "sha256": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        48.95248998282771,
+        51.80309101316543
+      ],
+      "paste": [
+        62,
+        744
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-ARTIFICER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-rune-artificer@2x.png",
+      "sha256": "ca96c7555ee47328d8d6199640fa2a4cec0767411578f79131ee76029dd0d36d",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        46.608315098468275,
+        50.74398249452954
+      ],
+      "paste": [
+        387,
+        747
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-SHIELD",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-rune-shield@2x.png",
+      "sha256": "7a2748d8cef0235137d4461171b281e205306e2c66adaef09f7ca05c2025b1ca",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        45.943615257048094,
+        51.3322277501382
+      ],
+      "paste": [
+        708,
+        745
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-SHAMAN",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-shaman@2x.png",
+      "sha256": "d4f7218f6dacb419e1513459e1a2e53347a856fe2edfd3caf327939c4863f42d",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        44.13932584269663,
+        52.54831460674157
+      ],
+      "paste": [
+        1032,
+        743
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-SILVER-LONGBOW",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-silver-longbow@2x.png",
+      "sha256": "12d2d9649672634337ab8057903f70ee0c139818a840b7f12c7136d742844f3d",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        50.10526315789473,
+        54.315789473684205
+      ],
+      "paste": [
+        1340,
+        739
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-SKELETON-GUARD",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png",
+      "sha256": "65afc66a4ebfdda0681f4dee79463286e5fe574d9e3d9e6583d25815284e5572",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        51.13023255813953,
+        54.08837209302325
+      ],
+      "paste": [
+        1658,
+        740
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-SPEARMAN",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-spearman@2x.png",
+      "sha256": "5185a0627ae1c215a4fe1d2b65f0867e4aeb89b0e2b22685c593cbbf37f745b1",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        48.82981366459627,
+        55.1055900621118
+      ],
+      "paste": [
+        1982,
+        738
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-SPIRIT-FIRE",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-spirit-fire@2x.png",
+      "sha256": "bce76732b855b9024e95f890c54ca2d766107647deab54c88ac41d31407cbed2",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        61.531914893617014,
+        66.14893617021276
+      ],
+      "paste": [
+        2277,
+        716
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-STONE-GOLEM",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-stone-golem@2x.png",
+      "sha256": "75fed81f7f665d328b541a0df1d19cd8cfa7e5a8b09bc47e61b9219e2971abdb",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        68.78064943671305,
+        86.03711066931743
+      ],
+      "paste": [
+        22,
+        900
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+      "sha256": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        48.44444444444444,
+        53.27777777777778
+      ],
+      "paste": [
+        383,
+        965
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-TEMPLAR",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png",
+      "sha256": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        43.0788777130757,
+        49.3276866066702
+      ],
+      "paste": [
+        714,
+        973
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-TROLL",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-troll@2x.png",
+      "sha256": "522be60db1d4e826c8c85c8c538bb29a44a02bfbe9c8b1a6dee9bca5ca767b74",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        63.14715359828142,
+        64.36734693877551
+      ],
+      "paste": [
+        994,
+        943
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-WHITE-STAG-RIDER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-white-stag-rider@2x.png",
+      "sha256": "754988bac8ecb7a8aef1b28b42fba67ace98e895f53beb6ced36986d973f2b8a",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        62.804837822979664,
+        63.88894997251237
+      ],
+      "paste": [
+        1314,
+        944
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-WOLF-RIDER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
+      "sha256": "e801d786e50d20cd4c734070f57a8d88c405c7a9a6ac379cc9d4c37970428682",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        61.549420209828824,
+        61.70403092214246
+      ],
+      "paste": [
+        1637,
+        949
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-WOODLAND-WALKER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-woodland-walker@2x.png",
+      "sha256": "63d19ef7e59ec001072efe67d39c37770dc5f2b93031b9bccacffd6da2940be9",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        48.164904862579284,
+        51.215644820295985
+      ],
+      "paste": [
+        1984,
+        970
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-WYVERN-RIDER",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-wyvern-rider@2x.png",
+      "sha256": "d0a9a8e375dea9c4ee541964f6f7439b1eeca1b780e2f5c21dec08283582c344",
+      "frame": 0,
+      "density": 2,
+      "anchor": [
+        69.19591141396933,
+        66.16354344122658
+      ],
+      "paste": [
+        2262,
+        940
+      ]
+    }
+  ]
+}

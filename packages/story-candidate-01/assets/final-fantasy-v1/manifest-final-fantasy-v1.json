@@ -2527,13 +2527,13 @@
       "topicId": "C01-MISSION-MINER",
       "label": "采矿工",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-miner.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-miner.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2542,13 +2542,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        46.98688524590164,
+        50.404371584699454
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-NAME-REGISTRAR",

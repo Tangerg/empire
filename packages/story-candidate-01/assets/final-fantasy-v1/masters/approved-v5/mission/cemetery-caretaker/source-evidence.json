@@ -1,0 +1,147 @@
+{
+  "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+  "assetId": "C01-FFV1-MISSION-CEMETERY-CARETAKER",
+  "label": "墓园看守",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+    "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 1,
+    "rowIndex1": 2,
+    "rowCropXYXY": [
+      0,
+      314,
+      1254,
+      627
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        314,
+        314,
+        627
+      ],
+      [
+        314,
+        314,
+        627,
+        627
+      ],
+      [
+        627,
+        314,
+        940,
+        627
+      ],
+      [
+        940,
+        314,
+        1254,
+        627
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        319,
+        309,
+        622
+      ],
+      [
+        319,
+        319,
+        622,
+        622
+      ],
+      [
+        632,
+        319,
+        935,
+        622
+      ],
+      [
+        945,
+        319,
+        1249,
+        622
+      ]
+    ],
+    "observedIdentity": "Elderly woman in gray hood/headscarf and pale cream belted gown. Screen-left metal watering can, screen-right straw broom. This is a living civilian, not the combat gravekeeper."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-cemetery-caretaker.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+    "png": "runtime-hd/mission-unit/mission-cemetery-caretaker.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "copiedReferences": {
+    "original-masterboard.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+      "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b"
+    },
+    "current-runtime-logical.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-cemetery-caretaker.png",
+      "sha256": "3beeff9fdd24837883b5780ef2dd7093fcdf0a0b39d271d1cf5f09d0a6302354"
+    },
+    "current-runtime-hd.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-cemetery-caretaker.png",
+      "sha256": "2cd428cf705a5aca027a9f6d19f0f3ef497293ea91fee9588308710419fdd182"
+    },
+    "approved-border-farmer-idle.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/mission/border-farmer/idle/master.png",
+      "sha256": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d"
+    },
+    "approved-city-doctor-idle.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/mission/city-doctor/idle/master.png",
+      "sha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50"
+    }
+  },
+  "builderMapping": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+    "boardListLines": "59-66",
+    "rowExtractionLines": "249-259",
+    "missionBoardIndex0": 4,
+    "rowIndex0": 1,
+    "missionTopicIndex0": 17,
+    "algorithm": "MISSION_BOARDS in declared order, rows0..3, columns0..3; grid_cell with inset5, then zip mission topics with mission_crops"
+  }
+}

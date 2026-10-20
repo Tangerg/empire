@@ -1,0 +1,106 @@
+{
+  "status": "Measured source proposal only; no runtime edits.",
+  "sharedScale": 0.046169989506820566,
+  "bodyReferenceSourcePixels": 953,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Idle hood crown alpha>127 y20 to supporting lowest sole y973. One fixed44/953 across every whole source canvas.",
+  "canonicalSourceFoot": [
+    774.0,
+    973
+  ],
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "paddingPolicy": "Export only: pad transparent right/bottom to common canvas. Native raw/master images are never altered.",
+  "canvasPaddingToleranceRequired": 0,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Separate boot bottom4-row alpha>127 bands. Anchor x averages underside band centers; anchor y is lowest supporting sole. Translate whole canvas only; no per-pose rescale/crop/fitting.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "measuredBootSoleBands": [
+        {
+          "xRange": [
+            450,
+            760
+          ],
+          "bottom": 973,
+          "bottom4RowsBounds": [
+            565,
+            970,
+            659,
+            974
+          ],
+          "soleCenterX": 611.5
+        },
+        {
+          "xRange": [
+            760,
+            1035
+          ],
+          "bottom": 962,
+          "bottom4RowsBounds": [
+            886,
+            959,
+            988,
+            963
+          ],
+          "soleCenterX": 936.5
+        }
+      ],
+      "sourceSupportAnchor": [
+        774.0,
+        973
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        433,
+        20,
+        1184,
+        974
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        41,
+        16,
+        1509,
+        977
+      ],
+      "proposedLogicalVisibleBounds": [
+        27.991605456453303,
+        4.923399790136411,
+        62.66526757607555,
+        48.96956977964323
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        81.1794333683106,
+        49.800629590766
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 0.0,
+  "recommendedRegistrationLimitLogicalPixels": 4
+}

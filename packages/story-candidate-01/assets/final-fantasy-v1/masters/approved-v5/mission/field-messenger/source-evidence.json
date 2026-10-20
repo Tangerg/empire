@@ -1,0 +1,131 @@
+{
+  "topicId": "C01-MISSION-FIELD-MESSENGER",
+  "assetId": "C01-FFV1-MISSION-FIELD-MESSENGER",
+  "label": "战地传令员",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+    "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 3,
+    "rowIndex1": 4,
+    "rowCropXYXY": [
+      0,
+      940,
+      1254,
+      1254
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        940,
+        314,
+        1254
+      ],
+      [
+        314,
+        940,
+        627,
+        1254
+      ],
+      [
+        627,
+        940,
+        940,
+        1254
+      ],
+      [
+        940,
+        940,
+        1254,
+        1254
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        945,
+        309,
+        1249
+      ],
+      [
+        319,
+        945,
+        622,
+        1249
+      ],
+      [
+        632,
+        945,
+        935,
+        1249
+      ],
+      [
+        945,
+        945,
+        1249,
+        1249
+      ]
+    ],
+    "observedIdentity": "Young short-haired man in patched blue-gray tunic, scarf and cross-body satchel with scroll tube. Screen-right hand holds small dark blue triangular flag on wooden pole. No horse or weapon."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-field-messenger.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-FIELD-MESSENGER",
+    "png": "runtime-hd/mission-unit/mission-field-messenger.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "independentVisualInspection": "Viewed original full board, canonical row, original runtime and approved baker/evacuation-driver reference art. Messenger is a young warm-tan clean-shaven man with short dark-brown hair, patched blue-gray tunic and trousers, gray-beige neckerchief/trim, brown strap/belt/satchel, single scroll tube behind screen-left shoulder, brown cuffed boots, and one muted slate-blue pennant on wooden pole in screen-right hand. No weapon, horse or headwear. Hair crown is wholly within canonical source row.",
+  "sourceBuilderMapping": "build_final_fantasy_v1.py MISSION_BOARDS[3], rowIndex0 3, mission topic index15; lines250-257 generate row-major four frames. Exact source repeat of first/third stance and second/fourth running contact is not reproduced as a duplicate animation.",
+  "bindingConstraint": "Catalog-only: zero current domain bindings or authored initial/reinforcement/scene actors. Do not invent deployments.",
+  "referenceHashes": {
+    "references/original-complete-idle.png": "15b3f4d92add83f43258908c01efad6d31720c20533c367e6d0ab7470ece7ee4",
+    "references/original-idle-cell.png": "224929f492ee9901638fc8732248996aff52bf6a8f2bd2cf9063ebdb5a40cd4b",
+    "references/approved-baker-idle.png": "13d441e016a1e89403fe859da160dac6599473ab0dad207c5a95c9530f952dd2",
+    "references/current-runtime.png": "516ca4c66e3f21025fb3999a606576c2fcdecd8283c9ff7779f807f7bbd96dc1",
+    "references/original-masterboard.png": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "references/approved-evacuation-driver-idle.png": "e2292962b275e2e5c0dc845c41a9aa9d95e7a0bc80d15ddcd3c744b3456109d3",
+    "references/original-row.png": "d9c855bd59304fe718d4a00e319e5c554a7c5e106b4728791233a65fe592154f",
+    "references/current-runtime-hd.png": "958deec0dc683e86d4eef125dfcea59fd2e6a10cb5e551773fb82bc47d1dec3d"
+  },
+  "referenceRowAndIdlePixelExactToOriginalBoard": true,
+  "consumerVerification": "Read current mission-consumer audit plus direct text search of packages/apps for exact topic ID, asset ID, filename, messenger and Chinese label. Only catalogs/manifests and legacy source builder reference identity, consistent with catalog-only result. No runtime actor/scene binding found."
+}

@@ -1,0 +1,42 @@
+from pathlib import Path
+from PIL import Image
+import json, hashlib
+B=Path(__file__).parent
+ORDER=['idle','walk-a','carry-or-work','walk-b']
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+write=lambda p,v:(B/p).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
+reg=json.loads((B/'registration-evidence.json').read_text())
+source=json.loads((B/'source-evidence.json').read_text())
+source['referenceCopies']={p.name:sha(p) for p in (B/'references').glob('*.png')}
+source['status']='Native quartet complete with static QA; catalog-only collection. Coordinator formal export/integration pending.'
+write('source-evidence.json',source)
+reviews={
+'idle':'Both boots planted. Screen-left near hand hangs original lantern beside leg; screen-right far hand holds original pickaxe upright. Same female face, braid, brown lamp helmet and charcoal workwear.',
+'walk-a':'Screen-right front boot reaches heel-first with toe raised and sole visible; screen-left rear boot supports with toe/sole down. Lantern swings slightly back in original near hand; pick remains in original far hand.',
+'carry-or-work':'Both boots planted; torso leans toward work. Original screen-left near hand raises hanging lantern to waist, original screen-right far hand lowers pick horizontally/outward into a controlled inspection/preparation action. No new objects or prop-hand swap.',
+'walk-b':'Screen-right front boot flat and weight-bearing; screen-left rear heel raised and knee bent, toe at ground. Opposite support/contact to walk-a. Lantern and pick remain in original physical hands.'
+}
+poses={}
+for pose in ORDER:
+ d=B/pose;req=json.loads((d/'request.json').read_text());q=json.loads((d/'alpha-qa.json').read_text())
+ write(f'{pose}/request-provenance.json',{'tool':'built-in image_gen.imagegen','requestFile':'request.json','exactPrompt':'prompt.txt','promptSha256':sha(d/'prompt.txt'),'referenceInputs':[{'path':p,'sha256':sha(p)} for p in req['referenced_image_paths']],'rawSha256':sha(d/'raw.png'),'masterSha256':sha(d/'master.png'),'transformation':'Byte-identical copy only. No source crop, alpha cleanup, painting, recoloring, fitting, resizing or padding.'})
+ poses[pose]={'raw':f'{pose}/raw.png','master':f'{pose}/master.png','exactPrompt':f'{pose}/prompt.txt','request':f'{pose}/request.json','generationResult':f'{pose}/generation-result.json','requestProvenance':f'{pose}/request-provenance.json','alphaQA':f'{pose}/alpha-qa.json','sha256':q['sha256'],'nativeSize':q['nativeSize'],'sourceFoot':q['sourceFoot'],'registrationOffsetLogical':reg['poses'][pose]['registrationOffsetLogical'],'review':reviews[pose]}
+ assert sha(d/'raw.png')==sha(d/'master.png')
+ assert q['nativeMode']=='RGBA'
+ assert q['perimeterMaxAlpha']<=1
+ assert q['exteriorBeyond7PixelsFromOpaqueSilhouette']['pixelCountAlphaGreaterThan1']==0
+ assert reg['poses'][pose]['wholeCanvasFitsProposedFrame']
+rej=json.loads((B/'rejected-attempts.json').read_text())
+for r in rej:
+ d=B/r['path'];req=json.loads((d/'request.json').read_text())
+ write(str(d.relative_to(B)/'request-provenance.json'),{'tool':'built-in image_gen.imagegen','requestFile':'request.json','exactPrompt':'prompt.txt','promptSha256':sha(d/'prompt.txt'),'referenceInputs':[{'path':p,'sha256':sha(p)} for p in req['referenced_image_paths']],'rawSha256':sha(d/'raw.png'),'masterSha256':sha(d/'master.png'),'rejected':True,'rejectionReason':r['reason']})
+manifest={'topicId':'C01-MISSION-MINER','assetId':'C01-FFV1-MISSION-MINER','category':'mission-unit','status':'Native source quartet and static QA complete; coordinator formal export/integration pending','frameOrder':ORDER,'generationTool':'built-in image_gen.imagegen','nativeArtPolicy':'Every selected and rejected raw/master is byte-identical. No cleanup, painting, recoloring, cropping, per-pose rescaling or source padding. QA composites and technical export proposals are separate only.','sourceEvidence':'source-evidence.json','registrationEvidence':'registration-evidence.json','qaReview':'qa-review.json','originalLogicalRuntimeContract':source['logicalRuntime'],'originalHDRuntimeContract':source['hdRuntime'],'actualConsumers':[],'domainActorCount':0,'scenePlacementCount':0,'consumerClassification':'catalog-only','palettePolicy':'Original warm medium-brown female skin, black braid, brown lamp helmet/gloves/boots, charcoal coat, brown belt, brass-yellow lantern, wood-and-gray pick. Broad soot shapes retained; no faction recolor.','semanticContract':'idle/walk-a/carry-or-work/walk-b. Purposeful noncombat lantern/pick handling. Catalog availability does not imply authored gameplay use or permission to invent rules.','liveGameAcceptance':False,'rejectedAttempts':rej,'poses':poses}
+write('bundle-manifest.json',manifest)
+hashes={p:hashlib.sha256(Image.open(B/p/'master.png').tobytes()).hexdigest() for p in ORDER}
+assert len(set(hashes.values()))==4
+write('qa-review.json',{'status':'Source quartet passed static visual and technical QA; coordinator formal export/integration pending.','sourcePolicy':manifest['nativeArtPolicy'],'canonicalFrameOrder':ORDER,'distinctDecodedSourceHashes':hashes,'allNativePerimetersAlphaAtMost1':True,'noAlphaAbove1Beyond7PixelOpaqueSilhouette':True,'wholeCanvasPlacementFits':True,'sharedScale':reg['sharedScale'],'bodyTargetHeightLogicalPixels':44,'reviews':{'identity':'Same warm medium-brown young-adult woman, thick black braid, brown round-lamp helmet, charcoal work coat, brown gloves and boots; original apparent age, proportions and palette retained.','handRoles':'All selected poses: screen-left near glove holds lantern loop; screen-right far glove grips the same pickaxe. Neither prop is dropped or swapped.','oppositeWalks':reviews['walk-a']+' '+reviews['walk-b'],'work':reviews['carry-or-work'],'scale':'Coordinator accepted idle44/915 and support[810.75,965] before remaining poses. Same full-source scale across every selected pose; independently measured sole-only whole-canvas registration.','transparency':'Inspected native black/white/scene composites and fixed44 comparison. Perimeter maxima0,1,0,0; no broad halo, exterior lamp glow or clipping. Alpha1 residue is unchanged.'},'sourceCanvasRegistrationNote':'Shared technical export canvas1586x993 with at most2px transparent right/bottom padding, preserving native sources. Exact max whole-canvas translation '+str(reg['requiredMaximumTranslationLogicalPixels'])+' logical pixels; fits104x64/origin[8,4] and4px registration limit. No per-pose fitting.','rejectedAttempts':rej,'liveGameAcceptance':False,'actualConsumers':{'domainActors':0,'scenePlacements':0,'classification':'catalog-only'},'testsNotRun':['Repository formal exporter','Repository validation suites','Build','Live game animation playback'],'repositoryWrites':False,'gitOperations':False})
+(B/'pose-review.md').write_text('# Miner pose review\n\n'+''.join('## '+p+'\n\n'+reviews[p]+'\n\n' for p in ORDER)+'## Limits\n\nStatic source QA only. No authored consumers, runtime binding edits, repository writes, Git operations, or live-game acceptance. The first walk-b attempt is preserved and rejected because it repeated walk-a contact.\n')
+(B/'README.md').write_text('# C01-MISSION-MINER\n\nFour source poses, built-in image_gen: idle, walk-a, carry-or-work, walk-b. Native raw/master pairs and exact prompts, requests, input reference hashes and output provenance are retained under each pose. One rejected walk-b attempt is retained under rejected/.\n\nCoordinator accepted fixed44/915, support[810.75,965],104×64 and origin[8,4] before non-idle generation. Read registration-evidence.json for independently measured boots and exact full-canvas translations; do not per-pose fit or clean source pixels. Technical export-only padding to1586×993 is at most2px.\n\nReview qa-idle-shared-scale-3x.png (farmer, doctor, artisan, miner), qa-native44-three-backgrounds-3x.png, native montages and qa-walk-6.25fps.gif. Source identity and catalog-only consumer evidence are in source-evidence.json and source-contract-review.md. Formal exporter/build/live-game verification belongs to coordinator and is not claimed here.\n')
+write('SHA256SUMS.json',{str(p.relative_to(B)):sha(p) for p in sorted(B.rglob('*')) if p.is_file() and p.name!='SHA256SUMS.json'})
+print(json.dumps({'status':'passed','selectedPoses':len(poses),'rejectedAttempts':len(rej),'sharedScale':reg['sharedScale'],'commonCanvas':reg['commonSourceCanvas'],'maxTranslationLogical':reg['requiredMaximumTranslationLogicalPixels'],'masterHashes':{p:v['sha256'] for p,v in poses.items()}},indent=2))
+
