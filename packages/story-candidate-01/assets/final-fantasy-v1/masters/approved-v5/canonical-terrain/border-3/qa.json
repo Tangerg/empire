@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-BORDER-3",
+  "status": "raw-source-reviewed-export-and-catalog-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-eee5a1d1-7c5b-4caf-b445-a2101a9f8289.png",
+  "master": "master.png",
+  "sourceSHA256": "0799f2b503b691ee84a6433028d0db7d1726fd0c195106bbcaab1f11a0ced7fc",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "visualQA": {
+    "subject": "Charcoal-brown agricultural furrow bands with eight sparse blackened cut-stubble clusters and eight tiny orange ember accents",
+    "style": "Broad matte dark earth planes; simplified charred stalk silhouettes, no dense grain or realistic burnt debris",
+    "fullbleedSquare": true,
+    "noSceneOrBridge": true,
+    "notes": [
+      "Eight ember accents were generated rather than requested 5–6, one per stubble cluster. They have no glow, flame plume, smoke, or associated lighting. Native-size subduedness remains an export gate.",
+      "Wide diagonal agricultural furrow bands preserve the source identity and are not a connected-path contract.",
+      "Ground planes are more numerous than the requested 5–6 but remain broad and low-contrast.",
+      "Raw edge periodicity is not claimed; exporter must establish exact seams through bounded texture composition."
+    ]
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending exporter",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending"
+  }
+}

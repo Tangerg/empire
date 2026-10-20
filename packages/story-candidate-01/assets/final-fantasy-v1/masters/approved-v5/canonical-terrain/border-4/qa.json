@@ -1,0 +1,39 @@
+{
+  "topicId": "C01-TERRAIN-BORDER-4",
+  "status": "raw-source-reviewed-export-and-catalog-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-a939f8ad-135b-4309-b9cc-526da14317f3.png",
+  "master": "master.png",
+  "sourceSHA256": "56bf13a7b49998c3d36cb33114b30048556b827f74982f2f9de1e2c25ca45379",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "visualQA": {
+    "subject": "Four locally complete paired shallow wheel-rut impressions, five simple complete heel-and-toe bootprints and four chunky pebble pairs on warm dry muddy soil",
+    "style": "Broad matte muted earth planes, simple subdued local impressions, sparse chunky stones",
+    "fullbleedSquare": true,
+    "noSceneOrBridge": true,
+    "notes": [
+      "Five bootprints rather than requested six; original traveled-mud identity is still clear.",
+      "Rut clusters are short and separated with no continuous route; mild varied diagonal orientations do not define cardinal topology.",
+      "Central complete bootprint and nearby paired ruts are large enough for source sampling; retaining both through smallest mask0 needs deliberate common-window or documented source UV review.",
+      "Ground has some subdued small patches in addition to broad planes; no dense fine-grain noise.",
+      "Raw edge periodicity and NESW semantic retention are not claimed; exporter must establish exact seams and inspect motifs at 32/64."
+    ]
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending exporter",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending"
+  }
+}
