@@ -1577,6 +1577,100 @@
               ]
             ]
           }
+        },
+        {
+          "id": "village-entry-apron-north",
+          "assetId": "village-ground-apron",
+          "center": [
+            112,
+            127
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              1,
+              2
+            ],
+            "rows": [
+              [
+                "c01.outside",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "village",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "road",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "road",
+                "road",
+                "road"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "village-entry-apron-east",
+          "assetId": "village-ground-apron",
+          "center": [
+            880,
+            319
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              25,
+              8
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "village",
+                "road",
+                "road"
+              ],
+              [
+                "road",
+                "road",
+                "road",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ]
+            ]
+          }
         }
       ]
     }
