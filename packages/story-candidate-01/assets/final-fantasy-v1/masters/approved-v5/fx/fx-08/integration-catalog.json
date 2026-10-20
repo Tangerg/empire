@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-08": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "clustered-echoes",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/clustered-echoes/master.png",
+          "sha256": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1"
+        },
+        {
+          "phase": "rising-echoes",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/rising-echoes/master.png",
+          "sha256": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2"
+        },
+        {
+          "phase": "dissolving-echoes",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/dissolving-echoes/master.png",
+          "sha256": "b4778b284d73a89e99b6320fea356a0e18920a778b7b1c7f6409bfb021db24ef"
+        },
+        {
+          "phase": "wisp-remnants",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/wisp-remnants/master.png",
+          "sha256": "a6ab1b5d96f59284a7a236934145797987b4755a3e45b67e473fb6e86a29d365"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  }
+}

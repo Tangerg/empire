@@ -1,0 +1,106 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-2",
+  "status": "raw-candidate-reviewed; integrator-final-acceptance-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "method": "Built-in image_gen; immutable generated PNG bytes copied or decoded exactly; no source-pixel modifications",
+  "master": "master.png",
+  "sourceSHA256": "9894a56702015c87dd27af8fe263dcf49431c096ac66b26ab6cc3bbea92f2d35",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "attempts/attempt-01/raw.png",
+    "attempts/attempt-02/raw.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "visualSourceQA": {
+    "subject": "Compact complete branching bark-root fork over dark olive forest soil. Large corner roots remain outside the selected connected-pad/arms coverage.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board/slot was checked before prompt; no original generation prompt recovered.",
+      "Source is intentionally opaque; historical binary NESW alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic exports pass only the established outermost1px matching contract; that does not certify invisible higher-order seams.",
+      "Some generated medium-scale mottling exceeds the minimal-texture prompt, but no photoreal microtexture or regular bright confetti is present.",
+      "No current live-game ground consumer found for these canonical IDs; this work is canonical catalog material only.",
+      "Attempt01 remains rejected for clipping; retained with its full diagnostics. Attempt02 imagegen reduced the root fork to fit the original pad without topology edits.",
+      "Requested40percent shrink was approximate: actual root extent is roughly x430..840,y440..770. Source-boundary proof confirms its natural tips remain inside both fixed rounded pads.",
+      "At32px this is a small branching woody silhouette; tiny bark grooves, moss accents and twig-like side branches are not independently legible.",
+      "At64px the main fork and natural tapered ends are clearer. This is a local root section, not a complete mother-tree network or a new gameplay connection rule."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ],
+    "review": "PASS: full1254px source window retains the complete principal root fork in all16 historical masks at32 and64. Source-center overlay proof checks full natural tips against both independently rasterized rounded pads. Native32 reads the branching shape;64 improves bark/root tips. Other corner roots are excluded by fixed crop/mask composition, not authored into directional route arms.",
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 7.483253588516747,
+    "northSouthMeanAbsoluteRGBDifference": 10.636629452418926
+  },
+  "export": {
+    "performed": "diagnostics in shared directory only; no runtime/catalog edit",
+    "alphaAndSeamQA": "diagnostic sheet exact historical alpha and allowed-pair edge equality pass at32/64; visual/motif caveats above remain",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog-only per source audit"
+  },
+  "fixedMaskDiagnostic": {
+    "performed": true,
+    "oldMaskGeometryUnchanged": true,
+    "proofs": [
+      "fixed-mask-32-proof.png",
+      "fixed-mask-64-proof.png"
+    ],
+    "all16MasksInspectedAtBothDensities": true,
+    "mainMotifComplete": true,
+    "sourceMotifApproxXYXY": [
+      430,
+      440,
+      840,
+      770
+    ],
+    "sourceBoundaryProof": "source-center-mask-boundary-proof.png",
+    "nativeComparisons": [
+      "native-center-compare-32.png",
+      "native-center-compare-64.png"
+    ]
+  },
+  "parentReviewReported": {
+    "source": "Parent authorized root correction2026-10-20 04:05UTC",
+    "decision": "Selected attempt02 passes source worker review; parent final visual review pending",
+    "formalCatalogRegistrationBySourceWorker": false
+  },
+  "selectedAttempt": 2,
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "selectedReferences": "references-selected.json"
+}

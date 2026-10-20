@@ -1,11 +1,11 @@
 {
   "topicId": "C01-TERRAIN-SILVERWOOD-2",
-  "status": "rejected-semantic-mask-clipping; retry-paused",
+  "status": "raw-candidate-reviewed; integrator-final-acceptance-pending",
   "authoredMaterialCount": 1,
-  "builtInImagegenCalls": 1,
+  "builtInImagegenCalls": 2,
   "method": "Built-in image_gen; immutable generated PNG bytes copied or decoded exactly; no source-pixel modifications",
   "master": "master.png",
-  "sourceSHA256": "d629e070d5ca4e82f7073ddf4ff2466a9fc874f4d530fdaeffcea4947193d2af",
+  "sourceSHA256": "9894a56702015c87dd27af8fe263dcf49431c096ac66b26ab6cc3bbea92f2d35",
   "dimensions": [
     1254,
     1254
@@ -14,7 +14,8 @@
   "fullyOpaque": true,
   "rawPixelsPreserved": true,
   "attempts": [
-    "attempts/attempt-01/raw.png"
+    "attempts/attempt-01/raw.png",
+    "attempts/attempt-02/raw.png"
   ],
   "prompt": "prompt.txt",
   "request": "request.json",
@@ -24,7 +25,7 @@
   "tileMode": "nesw-16",
   "derivedCellCount": 16,
   "visualSourceQA": {
-    "subject": "Branching bark root fork over dark olive forest soil; oversized root motif is cut by fixed center mask",
+    "subject": "Compact complete branching bark-root fork over dark olive forest soil. Large corner roots remain outside the selected connected-pad/arms coverage.",
     "broadMatteStyle": true,
     "fullbleedSquare": true,
     "centeredVignette": false,
@@ -37,8 +38,10 @@
       "Raw opposite edges are not exact matches. Diagnostic exports pass only the established outermost1px matching contract; that does not certify invisible higher-order seams.",
       "Some generated medium-scale mottling exceeds the minimal-texture prompt, but no photoreal microtexture or regular bright confetti is present.",
       "No current live-game ground consumer found for these canonical IDs; this work is canonical catalog material only.",
-      "Attempt01 rejected; preserve raw and request. New generation temporarily paused by parent while remote backup access is recovered.",
-      "Requested compact central fork was not honored. Never enlarge masks, paint away roots, rescale into artificial padding, or alter source alpha to force acceptance."
+      "Attempt01 remains rejected for clipping; retained with its full diagnostics. Attempt02 imagegen reduced the root fork to fit the original pad without topology edits.",
+      "Requested40percent shrink was approximate: actual root extent is roughly x430..840,y440..770. Source-boundary proof confirms its natural tips remain inside both fixed rounded pads.",
+      "At32px this is a small branching woody silhouette; tiny bark grooves, moss accents and twig-like side branches are not independently legible.",
+      "At64px the main fork and natural tapered ends are clearer. This is a local root section, not a complete mother-tree network or a new gameplay connection rule."
     ]
   },
   "diagnosticNativeQA": {
@@ -51,18 +54,18 @@
         1254
       ]
     ],
-    "review": "REJECTED for semantic clipping: the central root fork spans approximately x270..980,y330..900, far beyond the fixed central pad x392..862 and rounded-corner guarantee. Masks0,1 and others clip principal natural tips at32/64. No crop confined to this1254px canvas can shrink the entire motif further; imagegen edit required. Do not register this attempt as accepted.",
+    "review": "PASS: full1254px source window retains the complete principal root fork in all16 historical masks at32 and64. Source-center overlay proof checks full natural tips against both independently rasterized rounded pads. Native32 reads the branching shape;64 improves bark/root tips. Other corner roots are excluded by fixed crop/mask composition, not authored into directional route arms.",
     "nativeFiles": "native-review",
     "diagnosticExport": "diagnostic-export.json",
     "sourceEdits": "none",
     "finalExportWindowsApproved": false,
-    "semanticGatePass": false
+    "semanticGatePass": true
   },
   "rawOppositeEdgeMeasurements": {
     "eastWestExact": false,
     "northSouthExact": false,
-    "eastWestMeanAbsoluteRGBDifference": 7.302498670919723,
-    "northSouthMeanAbsoluteRGBDifference": 10.713716108452951
+    "eastWestMeanAbsoluteRGBDifference": 7.483253588516747,
+    "northSouthMeanAbsoluteRGBDifference": 10.636629452418926
   },
   "export": {
     "performed": "diagnostics in shared directory only; no runtime/catalog edit",
@@ -78,11 +81,26 @@
       "fixed-mask-64-proof.png"
     ],
     "all16MasksInspectedAtBothDensities": true,
-    "mainMotifComplete": false
+    "mainMotifComplete": true,
+    "sourceMotifApproxXYXY": [
+      430,
+      440,
+      840,
+      770
+    ],
+    "sourceBoundaryProof": "source-center-mask-boundary-proof.png",
+    "nativeComparisons": [
+      "native-center-compare-32.png",
+      "native-center-compare-64.png"
+    ]
   },
   "parentReviewReported": {
-    "source": "Parent integration worker,2026-10-20 03:59UTC",
-    "decision": "Explicitly rejected; pending root-shrink retry only after remote backup authentication restored",
+    "source": "Parent authorized root correction2026-10-20 04:05UTC",
+    "decision": "Selected attempt02 passes source worker review; parent final visual review pending",
     "formalCatalogRegistrationBySourceWorker": false
-  }
+  },
+  "selectedAttempt": 2,
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "selectedReferences": "references-selected.json"
 }

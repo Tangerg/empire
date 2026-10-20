@@ -1,0 +1,73 @@
+{
+  "topicId": "C01-FX-08",
+  "label": "亡者记忆冲击",
+  "selectedPhaseOrder": [
+    "clustered-echoes",
+    "rising-echoes",
+    "dissolving-echoes",
+    "wisp-remnants"
+  ],
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "attemptCount": 4,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "perFrameCropFitShiftPaintCleanup": false,
+  "actualCurrentRuntimeAnchor": [
+    16,
+    16
+  ],
+  "acceptedSourceEdgeMaxima": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "acceptedSourceEdgeNonzeroSamples": [
+    2,
+    16,
+    75,
+    26
+  ],
+  "sourceResidueDisclosure": "All perimeters have onlyalpha1 numerical residue:2,16,75,26 perimeter samples. Source3 has more faint generated residue than the others but no visible halo/backing on full black/white or native colored composites. No alpha values were edited and no gate relaxed.",
+  "allNativeTwoPixelBordersAlpha0": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth"
+  ],
+  "fullSourceBackgroundsActuallyInspected": [
+    "black",
+    "white"
+  ],
+  "semanticReview": [
+    "Three overlapping ordinary gray human memories with pale rims, curled gray wisps and amber paper scraps",
+    "Five taller overlapping human memories emerge with a larger denser center and same low wisp region",
+    "Three smaller separated incomplete memories with genuine head/torso translucency, arms dissolving and amber papers still more opaque",
+    "No human figure remains; only five separated gray curls and amber paper scraps across an open center"
+  ],
+  "identityPreserved": "Ordinary-person memories and name-paper vocabulary, muted gray/taupe, cream rims and ochre papers. No skull, cyan magic, weapon, legible inscription, generic blast or opaque panel.",
+  "registrationReview": "One common entire1254 canvas, pivot627,627 to logical16,16. Original lower wisps vary as people overlap/dissolve; authored visible lower bounds1153,1196,1146,1101 differ naturally. Bounds never drive crop, fit, scale or translation.",
+  "nativeReadability": "Four silhouettes and substantial-to-sparse progression are distinct on all five backgrounds at32 and64. Individual head counts are clearest at64;32 reads a low clustered mass, taller denser mass, separated three remnants, then hollow sparse curls/papers.",
+  "authoredTranslucencyProof": "qa/authored-translucency-proof.json",
+  "sourceAlphaMasses": [
+    594283.9529411765,
+    634170.9098039216,
+    255674.95294117648,
+    133879.85882352942
+  ],
+  "noForcedGlobalFade": true,
+  "excludedRuntimeOverlays": [
+    "white impact circle",
+    "damage number"
+  ],
+  "rejectedAttempts": [],
+  "APNGVerification": "12 APNGs;48 decoded frames exactly match exports; durations1/12,1/12,1/12,17/100 seconds total420ms; one play; final starts250ms and holds170ms. This is offline timing/frame evidence. APNG retains its last image on completion; actual BoardView node removal is established from code, not a live rendering observation.",
+  "actualLiveGameObserved": false,
+  "runtimeAndGitWrites": false
+}

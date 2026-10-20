@@ -1,10 +1,8 @@
 {
-  "generationAttempts": 2,
-  "selectedSources": 2,
+  "topicId": "C01-FX-08",
+  "generationAttempts": 4,
+  "selectedSources": 4,
   "failedOrRejectedGenerations": [],
-  "pendingPhases": [
-    "dissolving-echoes",
-    "wisp-remnants"
-  ],
-  "pauseReason": "Parent requested pause on new generation calls until remote backup auth is restored"
+  "operationalPause": "After2sources parent paused generation for remote auth recovery. Resumed only saved pending phases after verified backup. No duplicate calls.",
+  "scopeNote": "No main repository/runtime writes or Git operations by this worker. Live-game acceptance belongs to integrator."
 }

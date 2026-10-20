@@ -32,8 +32,11 @@
   "semanticChangesAndLimits": [
     "Material artwork reconstruction only; no topology, geometry, gameplay, height or consumer changes",
     "No original generation prompt recovered; source board identity and exact slot are independently verified",
-    "Canonical catalog-only terrain; no current static gameplay ground consumers found by source audit"
+    "Canonical catalog-only terrain; no current static gameplay ground consumers found by source audit",
+    "Attempt02 retains complete local root fork inside the fixed connected central pad; no connected-route direction, original tree network scale, or gameplay consumer is inferred."
   ],
   "rawSourceVisuallyInspected": true,
-  "rawAllFourEdgesInspected": true
+  "rawAllFourEdgesInspected": true,
+  "selectedAttempt": 2,
+  "selectedSourceSHA256": "9894a56702015c87dd27af8fe263dcf49431c096ac66b26ab6cc3bbea92f2d35"
 }

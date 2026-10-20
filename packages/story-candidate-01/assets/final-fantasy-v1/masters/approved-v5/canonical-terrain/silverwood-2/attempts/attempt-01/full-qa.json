@@ -1,0 +1,88 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-2",
+  "status": "rejected-semantic-mask-clipping; retry-paused",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; immutable generated PNG bytes copied or decoded exactly; no source-pixel modifications",
+  "master": "master.png",
+  "sourceSHA256": "d629e070d5ca4e82f7073ddf4ff2466a9fc874f4d530fdaeffcea4947193d2af",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "attempts/attempt-01/raw.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "visualSourceQA": {
+    "subject": "Branching bark root fork over dark olive forest soil; oversized root motif is cut by fixed center mask",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board/slot was checked before prompt; no original generation prompt recovered.",
+      "Source is intentionally opaque; historical binary NESW alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic exports pass only the established outermost1px matching contract; that does not certify invisible higher-order seams.",
+      "Some generated medium-scale mottling exceeds the minimal-texture prompt, but no photoreal microtexture or regular bright confetti is present.",
+      "No current live-game ground consumer found for these canonical IDs; this work is canonical catalog material only.",
+      "Attempt01 rejected; preserve raw and request. New generation temporarily paused by parent while remote backup access is recovered.",
+      "Requested compact central fork was not honored. Never enlarge masks, paint away roots, rescale into artificial padding, or alter source alpha to force acceptance."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ],
+    "review": "REJECTED for semantic clipping: the central root fork spans approximately x270..980,y330..900, far beyond the fixed central pad x392..862 and rounded-corner guarantee. Masks0,1 and others clip principal natural tips at32/64. No crop confined to this1254px canvas can shrink the entire motif further; imagegen edit required. Do not register this attempt as accepted.",
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": false
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 7.302498670919723,
+    "northSouthMeanAbsoluteRGBDifference": 10.713716108452951
+  },
+  "export": {
+    "performed": "diagnostics in shared directory only; no runtime/catalog edit",
+    "alphaAndSeamQA": "diagnostic sheet exact historical alpha and allowed-pair edge equality pass at32/64; visual/motif caveats above remain",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog-only per source audit"
+  },
+  "fixedMaskDiagnostic": {
+    "performed": true,
+    "oldMaskGeometryUnchanged": true,
+    "proofs": [
+      "fixed-mask-32-proof.png",
+      "fixed-mask-64-proof.png"
+    ],
+    "all16MasksInspectedAtBothDensities": true,
+    "mainMotifComplete": false
+  },
+  "parentReviewReported": {
+    "source": "Parent integration worker,2026-10-20 03:59UTC",
+    "decision": "Explicitly rejected; pending root-shrink retry only after remote backup authentication restored",
+    "formalCatalogRegistrationBySourceWorker": false
+  }
+}

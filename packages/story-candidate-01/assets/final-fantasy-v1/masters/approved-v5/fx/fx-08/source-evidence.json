@@ -694,7 +694,19 @@
     "No complete people remain: only separated gray curls and amber name papers"
   ],
   "semanticRequirement": "Preserve ordinary-person memory silhouettes/name papers; no skulls, weapons, literal readable names, blue magic or invented glowing rings. Source progression is people overlapping then dissolving, not generic growing blast.",
-  "sourceCanvasRegistration": "Full source canvas shared origin only; figures can rise/change count by authored motion while lower wisp region stays near y1000-1080. No per-frame alignment or fit.",
+  "sourceCanvasRegistration": "One common entire1254 canvas, pivot627,627 to logical16,16. Original lower wisps vary as people overlap/dissolve; authored visible lower bounds1153,1196,1146,1101 differ naturally. Bounds never drive crop, fit, scale or translation.",
   "sourceAlphaPolicy": "Genuine transparent exterior and gaps. Authored body/wisp translucency allowed and necessary for dissolving phase; do not globally multiply opacity or normalize source alpha. Raw edge alpha<=1; final2px alpha0.",
-  "livePlaybackObserved": false
+  "livePlaybackObserved": false,
+  "sourceReferenceVerification": "reference/reference-verification.json",
+  "consumerCodeEvidence": "reference/consumer-source-snapshots.json",
+  "semanticApprovedPhaseOrder": [
+    "clustered-echoes",
+    "rising-echoes",
+    "dissolving-echoes",
+    "wisp-remnants"
+  ],
+  "anchorNote": "Historical source-audit metadata16,24 is preserved as history; actual current canonical anchor and target-hit pivot are16,16.",
+  "generationAttempts": 4,
+  "selectedSources": 4,
+  "generationPauseResolved": "First pair was paused and retained until parent confirmed remote backup main04bc18b7357e954d097dd61dbcaa54f6c9902cbf; only pending last two phases generated on resume."
 }

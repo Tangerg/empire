@@ -1,0 +1,124 @@
+{
+  "phase": "dissolving-echoes",
+  "sourceSha256": "b4778b284d73a89e99b6320fea356a0e18920a778b7b1c7f6409bfb021db24ef",
+  "samples": [
+    {
+      "region": "central-head",
+      "xy": [
+        630,
+        400
+      ],
+      "rgba": [
+        160,
+        145,
+        141,
+        205
+      ]
+    },
+    {
+      "region": "central-torso",
+      "xy": [
+        630,
+        540
+      ],
+      "rgba": [
+        162,
+        146,
+        144,
+        205
+      ]
+    },
+    {
+      "region": "left-head",
+      "xy": [
+        440,
+        620
+      ],
+      "rgba": [
+        167,
+        152,
+        147,
+        212
+      ]
+    },
+    {
+      "region": "left-torso",
+      "xy": [
+        440,
+        740
+      ],
+      "rgba": [
+        169,
+        153,
+        148,
+        194
+      ]
+    },
+    {
+      "region": "right-head",
+      "xy": [
+        830,
+        700
+      ],
+      "rgba": [
+        158,
+        144,
+        142,
+        220
+      ]
+    },
+    {
+      "region": "right-torso",
+      "xy": [
+        830,
+        800
+      ],
+      "rgba": [
+        163,
+        149,
+        144,
+        207
+      ]
+    },
+    {
+      "region": "top-paper",
+      "xy": [
+        480,
+        160
+      ],
+      "rgba": [
+        248,
+        215,
+        130,
+        253
+      ]
+    },
+    {
+      "region": "upper-right-paper",
+      "xy": [
+        980,
+        330
+      ],
+      "rgba": [
+        248,
+        213,
+        125,
+        253
+      ]
+    },
+    {
+      "region": "left-wisp",
+      "xy": [
+        240,
+        500
+      ],
+      "rgba": [
+        77,
+        76,
+        75,
+        249
+      ]
+    }
+  ],
+  "conclusion": "All six reviewed head/torso samples have alpha194..220; paper cores253. Partial figure translucency is in generated source itself; no alpha multiplication, normalization, cleanup or painted repair occurred. Pale rims retain higher alpha and are not claimed uniformly translucent."
+}

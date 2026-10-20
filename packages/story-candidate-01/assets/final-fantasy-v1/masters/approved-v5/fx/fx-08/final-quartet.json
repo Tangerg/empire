@@ -1,0 +1,35 @@
+{
+  "topicId": "C01-FX-08",
+  "readyForIntegrationReview": true,
+  "phaseOrder": [
+    "clustered-echoes",
+    "rising-echoes",
+    "dissolving-echoes",
+    "wisp-remnants"
+  ],
+  "hashes": {
+    "clustered-echoes": {
+      "raw": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1",
+      "master": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1",
+      "decodedRgba": "dab23a866295cae2b3f852af743b555dd33b69be4c982dbaf70685d43e332947"
+    },
+    "rising-echoes": {
+      "raw": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2",
+      "master": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2",
+      "decodedRgba": "99a26bbab00ccbf63fb228f50a6a18768bad94596d0aa3d9fe0ef0a86df0d15f"
+    },
+    "dissolving-echoes": {
+      "raw": "b4778b284d73a89e99b6320fea356a0e18920a778b7b1c7f6409bfb021db24ef",
+      "master": "b4778b284d73a89e99b6320fea356a0e18920a778b7b1c7f6409bfb021db24ef",
+      "decodedRgba": "4677debd7e69c87860b9266117ec3a0840ebe131ed8e60237f01f4f892103177"
+    },
+    "wisp-remnants": {
+      "raw": "a6ab1b5d96f59284a7a236934145797987b4755a3e45b67e473fb6e86a29d365",
+      "master": "a6ab1b5d96f59284a7a236934145797987b4755a3e45b67e473fb6e86a29d365",
+      "decodedRgba": "c81027b7a531cc80eeb183cfe88eb6e0d299c6189c5a4acfa5b8ea1c815e9820"
+    }
+  },
+  "review": "final-review.json",
+  "integrationCatalog": "integration-catalog.json",
+  "APNGTimingProof": "qa/apng-timing-verification.json"
+}
