@@ -1,0 +1,41 @@
+{
+  "topicId": "C01-CH06-S32",
+  "sourceReady": true,
+  "semanticQa": "pass for canonical opaque landscape scene",
+  "fullNativeRawInspected": true,
+  "exactNativeCropInspected": true,
+  "preview512Inspected": true,
+  "logical256Inspected": true,
+  "modeledCoversInspected": true,
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "physicalExportSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "rawNativeMasterByteIdentical": true,
+  "generationAttempts": 1,
+  "noInventedCrownsCaptiveDragonOrNewEmblems": true,
+  "portraitCoverSafe": false,
+  "coverLimitations": "Exact 16:9 crop [4,2,1668,938] loses only 4 px left/right and 2/3 px top/bottom; no narrative detail is lost. Hypothetical 960×534 desktop and 366×220 staging-mobile covers retain the scene. 280×245 staging inset clips much of the forge worker and some outer protection; central Bran/Cain/evacuation remains. 390×778 portrait cover loses Bran, most of Cain and the forge worker, so it fails the full autonomous-cooperation narrative. Do not claim this is portrait-safe or route into a portrait cover without a separate layout decision.",
+  "formalBinding": false,
+  "browserOrLiveVerification": false,
+  "repositoryCodeOrGitWrites": false
+}

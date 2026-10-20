@@ -1,0 +1,11 @@
+{
+  "topicId": "C01-CH07-S34",
+  "hasDirectConsumer": false,
+  "evidence": [
+    "docs/art-rebuild-20261019/approved-v5/narrative-family-audit/inventory.json hasDirectConsumer=false",
+    "Read-only rg search for exact topic IDs and slugs across packages/*/src and apps returned zero matches."
+  ],
+  "search": "rg -n C01-CH06-S32|C01-CH07-S34|ch06-s32|ch07-s34 packages/*/src apps",
+  "coverBasis": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "coverClassification": "Offline modeled hypothetical CSS cover; not an actual bound consumer or browser/live verification."
+}

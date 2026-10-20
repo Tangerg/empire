@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "rainfall",
+    "edgeAlphaMax": 1,
+    "edgeNonzeroSamples": 12,
+    "maxRGBEdgeDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "noAlphaProcessing": true
+  },
+  {
+    "phase": "splash-onset",
+    "edgeAlphaMax": 0,
+    "edgeNonzeroSamples": 0,
+    "maxRGBEdgeDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "noAlphaProcessing": true
+  },
+  {
+    "phase": "splash-crown",
+    "edgeAlphaMax": 0,
+    "edgeNonzeroSamples": 0,
+    "maxRGBEdgeDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "noAlphaProcessing": true
+  },
+  {
+    "phase": "rain-renewal",
+    "edgeAlphaMax": 0,
+    "edgeNonzeroSamples": 0,
+    "maxRGBEdgeDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "noAlphaProcessing": true
+  }
+]

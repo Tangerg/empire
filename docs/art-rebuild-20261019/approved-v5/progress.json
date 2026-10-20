@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 65,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 453,
+  "formalRuntimeBoundTopics": 457,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -2792,6 +2792,30 @@
       "export": "Exact1664x936 crop, S33[4,2,1668,938] and S36E[3,2,1667,938] from measured1672/1671 widths, nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
       "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
       "liveGame": "pending; static source/native/cover QA only"
+    },
+    "C01-CH05-S22": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch05-s22/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-CH05-S24": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch05-s24/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-CH06-S32": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch06-s32/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-CH07-S34": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch07-s34/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
     }
   },
   "supplementalBundles": {
@@ -3212,16 +3236,18 @@
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 1634,
-      "failed": 0,
-      "files": 126,
+      "passed": 1695,
+      "failed": 1,
+      "files": 129,
       "command": "npm test -- --maxWorkers=2 --minWorkers=1",
-      "scope": "431 formally bound topics, after S00 classification and scene/terrain/FX08 integration",
-      "evidence": "verification-431/full-typescript.txt"
+      "scope": "stable453-topic commit0967e0d",
+      "evidence": "verification-453/full-typescript.txt",
+      "failure": "existing field-post BoardView test15000ms timeout; unchanged isolated one-worker suite9/9 passed, no assertion or timeout relaxation",
+      "retryEvidence": "verification-453/field-post-isolated-retry.txt"
     },
-    "latestBindingAndEdges": "451:34 canonical terrain TS and14 terrain Python;446:205 scene/assets/ivra TS+23 all-card source tests+61 narrative Python;442:19 selected-card/runtime tests;15 ledger Python passed",
+    "latestBindingAndEdges": "457:37 scene binding TS passed;453:104 architecture tests and33 scene tests;451:34 terrain TS/14 terrain Python/15 ledger Python",
     "artPythonLatest": "189 exporter tests plus15 ledger tests passed after S00 classification and cemetery HD registration",
-    "typecheckLatest": "passed at451-topic snapshot",
+    "typecheckLatest": "passed at457-topic snapshot",
     "appBuildsLatest": "all4 passed at431; experience-lab intentional offline file:// single-file build169924.34kB per README/vite contract, while game app uses external PNG URLs. Browser load not verified."
   },
   "liveGameVerifiedAnimationTopics": 0,

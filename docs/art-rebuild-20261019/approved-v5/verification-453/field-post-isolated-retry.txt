@@ -1,0 +1,28 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> empire-srpg-workspace@0.1.0 test
+> vitest run packages/story-candidate-01/src/presentation/candidate-01-field-post-board.test.ts --maxWorkers=1 --minWorkers=1
+
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-field-post-board.test.ts (9 tests) 24377ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-03' without changing state 735ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-04' without changing state 481ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-07' without changing state 1409ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-08' without changing state 1060ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-13' without changing state 874ms
+   ✓ field-post consumers through the complete existing board path > keeps c01-04 campaign-mirelle hidden through repeated selection/movement and restores its standing placement 6321ms
+   ✓ field-post consumers through the complete existing board path > keeps c01-04 south-patrol hidden through repeated selection/movement and restores its standing placement 6481ms
+   ✓ field-post consumers through the complete existing board path > keeps c01-04 scout-1 hidden through repeated selection/movement and restores its standing placement 6791ms
+
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+   Start at  12:52:09
+   Duration  32.21s (transform 3.72s, setup 0ms, collect 5.63s, tests 24.38s, environment 1.09s, prepare 120ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

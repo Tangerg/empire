@@ -1,0 +1,201 @@
+{
+  "status": "actual-output measurements; coordinate plan is visual target only",
+  "drops": {
+    "rainfall": {
+      "left": [
+        362,
+        340,
+        477,
+        515
+      ],
+      "center": [
+        565,
+        890,
+        674,
+        1045
+      ],
+      "right": [
+        777,
+        685,
+        894,
+        858
+      ]
+    },
+    "splash-onset": {
+      "left": [
+        368,
+        697,
+        486,
+        879
+      ],
+      "center": [
+        737,
+        94,
+        852,
+        288
+      ],
+      "right": [
+        803,
+        910,
+        925,
+        1080
+      ]
+    },
+    "splash-crown": {
+      "left": [
+        371,
+        901,
+        488,
+        1079
+      ],
+      "center": [
+        716,
+        456,
+        832,
+        636
+      ],
+      "right": [
+        934,
+        86,
+        1048,
+        266
+      ]
+    },
+    "rain-renewal": {
+      "left": [
+        415,
+        122,
+        537,
+        307
+      ],
+      "center": [
+        581,
+        855,
+        699,
+        1022
+      ],
+      "right": [
+        852,
+        489,
+        973,
+        668
+      ]
+    }
+  },
+  "transitions": [
+    {
+      "from": "rainfall",
+      "to": "splash-onset",
+      "survivors": {
+        "left": {
+          "sourceDeltaCenterX": 7.5,
+          "sourceDeltaBottomY": 364,
+          "logicalDeltaX": 0.16746411483253587,
+          "logicalDeltaY": 8.127591706539075,
+          "descends": true
+        },
+        "right": {
+          "sourceDeltaCenterX": 28.5,
+          "sourceDeltaBottomY": 222,
+          "logicalDeltaX": 0.6363636363636364,
+          "logicalDeltaY": 4.956937799043062,
+          "descends": true
+        }
+      }
+    },
+    {
+      "from": "splash-onset",
+      "to": "splash-crown",
+      "survivors": {
+        "left": {
+          "sourceDeltaCenterX": 2.5,
+          "sourceDeltaBottomY": 200,
+          "logicalDeltaX": 0.05582137161084529,
+          "logicalDeltaY": 4.4657097288676235,
+          "descends": true
+        },
+        "center": {
+          "sourceDeltaCenterX": -20.5,
+          "sourceDeltaBottomY": 348,
+          "logicalDeltaX": -0.45773524720893144,
+          "logicalDeltaY": 7.770334928229665,
+          "descends": true
+        }
+      }
+    },
+    {
+      "from": "splash-crown",
+      "to": "rain-renewal",
+      "survivors": {
+        "center": {
+          "sourceDeltaCenterX": -134.0,
+          "sourceDeltaBottomY": 386,
+          "logicalDeltaX": -2.9920255183413076,
+          "logicalDeltaY": 8.618819776714513,
+          "descends": true
+        },
+        "right": {
+          "sourceDeltaCenterX": -78.5,
+          "sourceDeltaBottomY": 402,
+          "logicalDeltaX": -1.7527910685805423,
+          "logicalDeltaY": 8.976076555023923,
+          "descends": true
+        }
+      }
+    },
+    {
+      "from": "rain-renewal",
+      "to": "rainfall",
+      "survivors": {
+        "left": {
+          "sourceDeltaCenterX": -56.5,
+          "sourceDeltaBottomY": 208,
+          "logicalDeltaX": -1.2615629984051036,
+          "logicalDeltaY": 4.644338118022328,
+          "descends": true
+        },
+        "center": {
+          "sourceDeltaCenterX": -20.5,
+          "sourceDeltaBottomY": 23,
+          "logicalDeltaX": -0.45773524720893144,
+          "logicalDeltaY": 0.5135566188197767,
+          "descends": true
+        },
+        "right": {
+          "sourceDeltaCenterX": -77.0,
+          "sourceDeltaBottomY": 190,
+          "logicalDeltaX": -1.719298245614035,
+          "logicalDeltaY": 4.242424242424242,
+          "descends": true
+        }
+      }
+    }
+  ],
+  "nearTopEntries": {
+    "splash-onset": {
+      "lane": "center",
+      "top": 94,
+      "bottom": 288
+    },
+    "splash-crown": {
+      "lane": "right",
+      "top": 86,
+      "bottom": 266
+    },
+    "rain-renewal": {
+      "lane": "left",
+      "top": 122,
+      "bottom": 307
+    }
+  },
+  "contactBottomSourceY": [
+    1079,
+    1112,
+    1166,
+    1167
+  ],
+  "contactSpreadLogicalPx": 1.9649122807017543,
+  "lastFirstContactDeltaLogicalPx": -1.9649122807017543,
+  "seamAssessment": "All three surviving droplets descend on4to1. New cohorts enter near top at prior birth events. Low water row shifts upward about1.96logicalpixels on4to1; this is a visible registration concern, not remedied by correct timing.",
+  "browserObserved": false
+}

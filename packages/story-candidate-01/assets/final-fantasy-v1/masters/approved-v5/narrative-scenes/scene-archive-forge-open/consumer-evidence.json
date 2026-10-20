@@ -1,0 +1,30 @@
+{
+  "topicId": "C01-SCENE-ARCHIVE-FORGE-OPEN",
+  "actualUse": false,
+  "consumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "canonicalRegistered": true,
+  "canonicalShape": [
+    256,
+    144
+  ],
+  "auditSource": "docs/art-rebuild-20261019/approved-v5/remaining-narrative-audit/manifest.json",
+  "freshStaticCheck": "2026-10-20: rg of both exact topic IDs and scene slugs across packages TypeScript, TSX and CSS files returned no matches. Manifest registration is not actual presentation consumption.",
+  "modeledGeometrySource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "notLiveEvidence": true,
+  "noSelectorOrCodeChanges": true
+}

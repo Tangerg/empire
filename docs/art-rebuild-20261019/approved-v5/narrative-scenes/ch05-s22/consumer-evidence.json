@@ -1,0 +1,32 @@
+{
+  "topicId": "C01-CH05-S22",
+  "auditedActualUse": false,
+  "auditedConsumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "recheck": {
+    "scope": "packages/*/src and apps/*/src",
+    "exactTokens": [
+      "ch05-s22",
+      "C01-CH05-S22"
+    ],
+    "directMatches": []
+  },
+  "classification": "No direct existing story/scene/staging selector discovered; available asset catalog alone is not a live consumer.",
+  "cssGeometryOnly": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "formalBinding": false,
+  "browserOrLiveVerification": false
+}

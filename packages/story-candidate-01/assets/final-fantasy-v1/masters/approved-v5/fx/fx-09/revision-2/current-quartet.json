@@ -1,0 +1,41 @@
+{
+  "status": "four-source candidate; alpha/export timing verified; visible contact and cadence issues pending parent review",
+  "topicId": "C01-FX-09",
+  "attemptCount": 4,
+  "phaseOrder": [
+    "rainfall",
+    "splash-onset",
+    "splash-crown",
+    "rain-renewal"
+  ],
+  "phases": [
+    {
+      "phase": "rainfall",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/rainfall/master.png",
+      "sha256": "8ebf7f8f93ec873e413f8eeb8df5641ff3039ae400227a5b8e152b625a29f8ab"
+    },
+    {
+      "phase": "splash-onset",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/splash-onset/master.png",
+      "sha256": "e445144b41c1d601206ea8416d24b332b1dd0735d530a5a418318a248742a701"
+    },
+    {
+      "phase": "splash-crown",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/splash-crown/master.png",
+      "sha256": "092596b6673073856106e8d3081dae4bd1ab3d8456a0cc7e1a636109379b3ce5"
+    },
+    {
+      "phase": "rain-renewal",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/rain-renewal/master.png",
+      "sha256": "be782ce55e3d683fe1f5dc60f6e5916985de7220383f6c1015a1aa8299c402a9"
+    }
+  ],
+  "originalQuartetUntouched": true,
+  "rawMasterByteIdentical": true,
+  "proofs": [
+    "qa/full-and-seam-labeled.png",
+    "qa/native-32-64-six-backgrounds.png",
+    "qa/motion-and-registration-proof.json",
+    "qa/apng-timing-verification.json"
+  ]
+}

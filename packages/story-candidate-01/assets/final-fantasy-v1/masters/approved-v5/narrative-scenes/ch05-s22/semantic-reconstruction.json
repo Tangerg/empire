@@ -1,0 +1,58 @@
+{
+  "topicId": "C01-CH05-S22",
+  "label": "安瑟尔秩序街道",
+  "status": "authorized-canonical-story-semantic-reconstruction",
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+    "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      54,
+      55,
+      56,
+      57
+    ],
+    "cellIndexZeroBased": 2,
+    "columnZeroBased": 0,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-left",
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "authority": [
+    "docs/story-candidates/candidate-01/05-two-peaces.md",
+    "docs/story-candidates/candidate-01/deep-customized/05-two-peaces.md",
+    "docs/story-candidates/candidate-01/deep-novel-v2/05-two-peaces-novel.md",
+    "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md"
+  ],
+  "legacyMismatch": "Orderly queued city supports location but lacks clearly staged synchronized kneeling and civic ambivalence.",
+  "namedIdentities": [
+    "Leia char-leia-02",
+    "Ada char-ada-02"
+  ],
+  "unnamedPeople": "Three kneeling citizens and baker are anonymous residents.",
+  "spatialCompression": false,
+  "storyLimitation": "Shows benefits and involuntary synchronized kneeling; no extra command beams or physical coercion.",
+  "parentFullSourceReview": "2026-10-20 04:49 UTC parent reviewed corrected S22/S24, confirmed narrative readability, requested final metadata and no extra art.",
+  "actualConsumer": false,
+  "artworkOnly": true,
+  "formalBinding": false,
+  "browserOrLiveVerification": false
+}

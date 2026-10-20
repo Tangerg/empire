@@ -1,0 +1,118 @@
+{
+  "topicId": "C01-FX-10",
+  "label": "河流浅水",
+  "meaning": "river shallows",
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+  "sourceBoardSha256": "78c7a4ec6437de61ec8193afcaaa394b5a3f6c755445a03d1f259c0b5e0e5cf8",
+  "sourceBoardMode": "RGB",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceRow1Based": 2,
+  "sourceGridCellsBeforeLegacyCleanup": [
+    [
+      5,
+      319,
+      309,
+      622
+    ],
+    [
+      319,
+      319,
+      622,
+      622
+    ],
+    [
+      632,
+      319,
+      935,
+      622
+    ],
+    [
+      945,
+      319,
+      1249,
+      622
+    ]
+  ],
+  "subject": "two stationary gray-brown stones with small, medium, broad, and smaller broken blue-gray elliptical ripple arcs",
+  "sourceCropHashEvidence": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        319,
+        309,
+        622
+      ],
+      "sha256": "cf1d915707738ba899a9fce67924d8d87b7704ccf7cd757075ceb553635ed2d5"
+    },
+    {
+      "phase": 1,
+      "box": [
+        319,
+        319,
+        622,
+        622
+      ],
+      "sha256": "54ef8418d794e716dadb39d1ed7ccc482e3af641d96c351512efb0769e375bda"
+    },
+    {
+      "phase": 2,
+      "box": [
+        632,
+        319,
+        935,
+        622
+      ],
+      "sha256": "4ae0a4ac89457f5ef8b56b3dab471d133d44f3ce6848019d874c1f61749cd308"
+    },
+    {
+      "phase": 3,
+      "box": [
+        945,
+        319,
+        1249,
+        622
+      ],
+      "sha256": "c621f42d4ad8eb01f5a87228f80a86b0c8d7e5ed5d5b036b0e5651f232adbdf7"
+    }
+  ],
+  "canonicalTiming": {
+    "assetId": "C01-FFV1-FX-10",
+    "topicId": "C01-FX-10",
+    "label": "河流浅水",
+    "category": "fx",
+    "png": "runtime/fx/fx-10.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": true,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "newPhaseOrder": [
+    "ripple-near",
+    "ripple-growing",
+    "ripple-wide",
+    "ripple-renewal"
+  ],
+  "timing": {
+    "fps": 12,
+    "loop": true,
+    "equalFrameDurationSeconds": "1/12",
+    "cycleSeconds": "1/3",
+    "old420msRemovalApplies": false
+  },
+  "currentConsumer": null,
+  "sourceAlphaWarning": "Original RGB board and legacy alpha intermediates are reference-only, not eligible new transparent masters. No chroma/alpha cleanup of new generated art."
+}

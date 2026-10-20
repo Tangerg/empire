@@ -1,3 +1,25 @@
 {
-  "reconstructionExact": true
+  "topicId": "C01-CH05-S22",
+  "sourceSha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+  "sourceMatchesAuditedHash": true,
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceCell": [
+    5,
+    632,
+    622,
+    1249
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "exactCellPixels": true,
+  "originalRuntimeSha256": "3bc3a78a7823c9b1a46efe9593ae83bb2be7f271e4a34a48b9598cd093712cfb",
+  "runtimeMatchesAuditedHash": true,
+  "reconstructionExact": true,
+  "reconstruction": "RGB exact617x617 inset then centered ImageOps.fit LANCZOS256x144 and opaque RGBA",
+  "fullboardAndCellVisuallyInspected": true
 }

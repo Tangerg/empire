@@ -1,0 +1,165 @@
+{
+  "status": "two-source candidate; actual geometry below is measured, not target compliance",
+  "phases": [
+    {
+      "phase": "rainfall",
+      "visibleComponentsAlpha128": [
+        [
+          362,
+          340,
+          477,
+          515
+        ],
+        [
+          777,
+          685,
+          894,
+          858
+        ],
+        [
+          565,
+          890,
+          674,
+          1045
+        ],
+        [
+          476,
+          1020,
+          567,
+          1074
+        ],
+        [
+          871,
+          1029,
+          945,
+          1073
+        ],
+        [
+          298,
+          1030,
+          370,
+          1073
+        ],
+        [
+          692,
+          1037,
+          764,
+          1079
+        ]
+      ],
+      "provenance": {
+        "phase": "rainfall",
+        "tool": "built-in image_gen",
+        "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a8ac2e8f-dcc3-4a6e-b46e-c4781b7fec7a.png",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "8ebf7f8f93ec873e413f8eeb8df5641ff3039ae400227a5b8e152b625a29f8ab",
+        "decodedRgbaSha256": "c23cf7ca188ad910ffc3bed0fa81f904066bca252e5146af802ea5fe3457a4d8",
+        "edgeMax": 1,
+        "edgeNonzero": 12,
+        "alphaMax": 255,
+        "partialAlphaCount": 39258,
+        "bboxAlpha1": [
+          47,
+          119,
+          1045,
+          1254
+        ],
+        "bboxAlpha128": [
+          298,
+          340,
+          945,
+          1079
+        ],
+        "rawMasterByteIdentical": true,
+        "alphaCleanup": false
+      }
+    },
+    {
+      "phase": "splash-onset",
+      "visibleComponentsAlpha128": [
+        [
+          737,
+          94,
+          852,
+          288
+        ],
+        [
+          368,
+          697,
+          486,
+          879
+        ],
+        [
+          803,
+          910,
+          925,
+          1080
+        ],
+        [
+          593,
+          1027,
+          757,
+          1110
+        ],
+        [
+          481,
+          1061,
+          572,
+          1112
+        ],
+        [
+          879,
+          1068,
+          953,
+          1111
+        ],
+        [
+          301,
+          1069,
+          374,
+          1111
+        ]
+      ],
+      "provenance": {
+        "phase": "splash-onset",
+        "tool": "built-in image_gen",
+        "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-daddc341-c59c-4f05-9d1a-d4e413987780.png",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "e445144b41c1d601206ea8416d24b332b1dd0735d530a5a418318a248742a701",
+        "decodedRgbaSha256": "89bf4a77aff41c448d79f9ac9b8c05013dd3c3957056a6d8369c5f74251f1a3c",
+        "edgeMax": 0,
+        "edgeNonzero": 0,
+        "alphaMax": 255,
+        "partialAlphaCount": 49308,
+        "bboxAlpha1": [
+          73,
+          39,
+          1166,
+          1238
+        ],
+        "bboxAlpha128": [
+          301,
+          94,
+          953,
+          1112
+        ],
+        "rawMasterByteIdentical": true,
+        "alphaCleanup": false
+      }
+    }
+  ],
+  "assessment": {
+    "nearTopEntry": "Achieved: new drop alpha128top94,bottom288 versus old first version top268,bottom434",
+    "geometryGate": "Not passed: source watercontact moves1079to1112(+33),newcenter is89pxrightofplan;leftsurvivor+364y and+7x,rightsurvivor+222y and+29x",
+    "planExactnessClaimed": false,
+    "remainingPairGenerated": false
+  }
+}

@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 453,
+    "formalBound": 457,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 66,
+      "narrative-static": 70,
       "skill": 48,
       "status": 24,
       "terrain": 32
     },
-    "rawPreservedTopics": 454,
+    "rawPreservedTopics": 459,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -718,13 +718,20 @@
       "category": "narrative-static",
       "label": "安瑟尔秩序街道",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch05-s22/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s22.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch05-s22/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-CH05-S24",
@@ -732,13 +739,20 @@
       "category": "narrative-static",
       "label": "第一次命令后的安静",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch05-s24/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s24.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch05-s24/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-CH05-S26",
@@ -788,13 +802,20 @@
       "category": "narrative-static",
       "label": "联盟失联后自行行动",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch06-s32/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch06-s32.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch06-s32/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-CH07-S33-EST",
@@ -823,13 +844,20 @@
       "category": "narrative-static",
       "label": "万人跪拜之城",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch07-s34/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch07-s34.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/ch07-s34/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-CH07-S36E",
@@ -8247,8 +8275,12 @@
       "category": "fx",
       "label": "河流浅水",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-growing/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-near/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-wide/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
