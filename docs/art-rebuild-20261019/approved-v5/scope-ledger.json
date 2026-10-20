@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 431,
+    "formalBound": 435,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 52,
+      "narrative-static": 56,
       "skill": 48,
       "status": 24,
       "terrain": 24
     },
-    "rawPreservedTopics": 431,
+    "rawPreservedTopics": 439,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -508,13 +508,20 @@
       "category": "narrative-static",
       "label": "罗德里克系护腕",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s00/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s00.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Complete opaque square1254 source; mentor Roderick fastening18-year-old Leia left wristguard before first command. Anatomical handedness correction by imagegen; rejected right-arm attempt and original wrongly mapped loose bracer preserved",
+        "export": "Whole square source,1254HD and128canonical; both faces and fastening readable at128. Wide and portrait covers trim meaningful parts and are diagnostics only",
+        "runtimeBinding": "Canonical square scene+HD resolver; distinct from LEFT-GLOVE prop. Existing prologueS01 selector unchanged; no new scene consumer",
+        "liveGame": "pending; static native/crop evidence only"
+      }
     },
     {
       "topicId": "C01-CH01-S01",
@@ -823,13 +830,20 @@
       "category": "narrative-static",
       "label": "艾达 8 岁桥上孩子",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ada-01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ada-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent1024x1536 transparent named portraits; Mirelle oath-builder identity, Ada child8 and medic17 share brown-haired identity and single cracked bottle. Source edgesalpha1 preserved, real blackwhite composites inspected; rejected/superseded attempts retained honestly",
+        "export": "Whole source144width at24,4 on separate approved card background,192x224. Parent native/card/stage comparison passed;44px tiny marks not individually legible, HUD crops extreme boots. No HD or alpha cleanup",
+        "runtimeBinding": "Existing canonical card catalog resolver only; no laterstage selector or combatclass change",
+        "liveGame": "pending; modeled consumer crops and static native proof only"
+      }
     },
     {
       "topicId": "C01-CHAR-ADA-02",
@@ -837,13 +851,20 @@
       "category": "narrative-static",
       "label": "艾达 17 岁王都医师",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ada-02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ada-02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent1024x1536 transparent named portraits; Mirelle oath-builder identity, Ada child8 and medic17 share brown-haired identity and single cracked bottle. Source edgesalpha1 preserved, real blackwhite composites inspected; rejected/superseded attempts retained honestly",
+        "export": "Whole source144width at24,4 on separate approved card background,192x224. Parent native/card/stage comparison passed;44px tiny marks not individually legible, HUD crops extreme boots. No HD or alpha cleanup",
+        "runtimeBinding": "Existing canonical card catalog resolver only; no laterstage selector or combatclass change",
+        "liveGame": "pending; modeled consumer crops and static native proof only"
+      }
     },
     {
       "topicId": "C01-CHAR-BRAN-01",
@@ -1063,13 +1084,20 @@
       "category": "narrative-static",
       "label": "米蕾尔最后誓约建立者",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent1024x1536 transparent named portraits; Mirelle oath-builder identity, Ada child8 and medic17 share brown-haired identity and single cracked bottle. Source edgesalpha1 preserved, real blackwhite composites inspected; rejected/superseded attempts retained honestly",
+        "export": "Whole source144width at24,4 on separate approved card background,192x224. Parent native/card/stage comparison passed;44px tiny marks not individually legible, HUD crops extreme boots. No HD or alpha cleanup",
+        "runtimeBinding": "Existing canonical card catalog resolver only; no laterstage selector or combatclass change",
+        "liveGame": "pending; modeled consumer crops and static native proof only"
+      }
     },
     {
       "topicId": "C01-CHAR-NOBANNER-01",
@@ -3914,8 +3942,10 @@
       "category": "terrain",
       "label": "河岸",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-1/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3928,8 +3958,10 @@
       "category": "terrain",
       "label": "浅水",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-2/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3942,8 +3974,10 @@
       "category": "terrain",
       "label": "桥头地面",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-3/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3956,8 +3990,10 @@
       "category": "terrain",
       "label": "断桥边缘",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-4/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

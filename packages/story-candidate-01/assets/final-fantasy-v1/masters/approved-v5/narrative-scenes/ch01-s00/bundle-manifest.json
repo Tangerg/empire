@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "topicId": "C01-CH01-S00",
+  "label": "罗德里克系护腕",
+  "kind": "scene",
+  "selectedAttempt": 2,
+  "approvedSource": "master.png",
+  "sourceStatus": "Coordinator accepted for square export only",
+  "sourceSha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+  "nativeCopies": [
+    "raw.png",
+    "native.png"
+  ],
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "sourceCropBox": null,
+  "logicalSize": [
+    128,
+    128
+  ],
+  "density": 9.796875,
+  "deliberatelyOpaque": true,
+  "currentConsumers": [],
+  "noFormalBindingClaim": true,
+  "files": [
+    {
+      "path": "attempt-01/generation-provenance.json",
+      "bytes": 599,
+      "sha256": "6715a7958f99b04be536d54cbfc0c2f3c7d3cd9412dcab5346c7909dd24976b8"
+    },
+    {
+      "path": "attempt-01/prompt.txt",
+      "bytes": 4795,
+      "sha256": "1954339fb380b544bf44d2396284b9c5576baf53888f2abe5341d62d394c6369"
+    },
+    {
+      "path": "attempt-01/raw.png",
+      "bytes": 2181422,
+      "sha256": "fb5da4f2c7eed21997b69c09978b2554442fb8f28aedc3c0c2c8c1c567faf397",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "attempt-01/reference-hashes.json",
+      "bytes": 1387,
+      "sha256": "4b603efe940fb8497fd2179d8a8c8d312f027337f5c553daa0cf6c71b613b026"
+    },
+    {
+      "path": "attempt-01/request.json",
+      "bytes": 5234,
+      "sha256": "9b60efbd3d018bfbda4d683d7df9c6a3e2fc4ff6b502113e860116301e0e1489"
+    },
+    {
+      "path": "audited-source.json",
+      "bytes": 4331,
+      "sha256": "7c7c9ed4fbeef9f1a2b509da1e41456e0677d63881e47822f5fa94f3ad87ea8d"
+    },
+    {
+      "path": "build-source-qa.py",
+      "bytes": 3950,
+      "sha256": "6287e38b5a30dcaada39da7a4dfac953a26508b0251c7039fa04d25e5a7a6d9c"
+    },
+    {
+      "path": "coordinator-acceptance.json",
+      "bytes": 722,
+      "sha256": "f94cad0925a0edae47159b1fcb001d3eba1a30185f30049340ba7fc540ea30c2"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 1790,
+      "sha256": "7017903466d28b2029669814332d995cd320fc0d1367eab85d8244c1778cda0d"
+    },
+    {
+      "path": "finalize-acceptance.py",
+      "bytes": 2749,
+      "sha256": "515afe56b2ac8321879b2dc626bca78ffc829b17005c5e6bf098f415dd5a86e3"
+    },
+    {
+      "path": "generation-provenance.json",
+      "bytes": 2064,
+      "sha256": "215ed97785af6d7b964b20e39d42f7f184db03574a12bcd74fd9acc236bac57f"
+    },
+    {
+      "path": "legacy-runtime-128.png",
+      "bytes": 24509,
+      "sha256": "3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "master.png",
+      "bytes": 2079131,
+      "sha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "native.png",
+      "bytes": 2079131,
+      "sha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "original-full-board.png",
+      "bytes": 1926381,
+      "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "original-full-cell-627.png",
+      "bytes": 473420,
+      "sha256": "2a23effbf2932fdf52ab7880fe647b42ec321e9d36e3017d939630d3bc201406",
+      "size": [
+        627,
+        627
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "original-inset-cell-617.png",
+      "bytes": 466869,
+      "sha256": "729be420eeae3eefae21c019b23c6f0e9d5149a3940aa5d15450311483950fc1",
+      "size": [
+        617,
+        617
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 2554,
+      "sha256": "d5246c45856fab6fc20d07c1bc542ad109f478e9969f550a3e32af60235aeab6"
+    },
+    {
+      "path": "qa-canonical-128.png",
+      "bytes": 43566,
+      "sha256": "ffe7f982dfc79f089b22ebdaa6d4deb82f9c66faef6d7fded1bc930deabfaa26",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "qa-contact-sheet.png",
+      "bytes": 1737883,
+      "sha256": "f2c6a587cfff26ed5cf775efe746600ea57c1bff0fa4a8ef10b4a986f58590f4",
+      "size": [
+        1290,
+        1130
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 141674,
+      "sha256": "104b0392d91ad16f3ebf14bffe819dd0e0de8e9529cce4b5cb8e96b191d955c5",
+      "size": [
+        280,
+        245
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 160037,
+      "sha256": "ceed54ae4bd4cd3b823471db727fc174364f0c5e5b42fe333a7789f9b4deccd1",
+      "size": [
+        366,
+        220
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 776001,
+      "sha256": "0b10c54e23d03e8ef6930544e311e68950687a94141d38e8db3f3b0ceafbf010",
+      "size": [
+        960,
+        534
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 473600,
+      "sha256": "f64f5670488fffa31f8a6905f8e14f60971c15f958aab189dd2535da13361fde",
+      "size": [
+        390,
+        778
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-full-plate-627.png",
+      "bytes": 627114,
+      "sha256": "d40ba6d7c09624010cb7ea556322e85400dbf01c1db5a3b45f7d78d66ede1115",
+      "size": [
+        627,
+        627
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "qa-square-256.png",
+      "bytes": 133410,
+      "sha256": "0c335d324e758bdca716ceb6ff2f4bb63583ac60ad7bd70f5b78d8acc1710432",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 2079131,
+      "sha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 402,
+      "sha256": "30bf5a7957a76f63e697b1aff299dc8f9149d8410e1cd1e19b3633ddfc14e52e"
+    },
+    {
+      "path": "references/char-leia-01.png",
+      "bytes": 1779032,
+      "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "references/char-roderick-01.png",
+      "bytes": 1779856,
+      "sha256": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "references/concept-v2.png",
+      "bytes": 1981739,
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "rejections.json",
+      "bytes": 251,
+      "sha256": "e74a14385f5eef31f9e0cad35f72c779addc88356ef148f88fcf9ca6a7e19dc8"
+    },
+    {
+      "path": "request.json",
+      "bytes": 2755,
+      "sha256": "f5da5a16ceb4c141e2534110fd22778ba7720c5fd8ead8a0119038eebc128a37"
+    },
+    {
+      "path": "semantic-review.json",
+      "bytes": 3930,
+      "sha256": "f65c1b93223a68c36c8723453d774c7fe4d5c538cf6af5a6bf8b12a3a9ddc3fe"
+    },
+    {
+      "path": "source-proof.json",
+      "bytes": 2534,
+      "sha256": "25122139709ede3b43c54588ab9a40a5421baf544315731c9c5128586cdedc44"
+    },
+    {
+      "path": "source-qa.json",
+      "bytes": 2064,
+      "sha256": "215ed97785af6d7b964b20e39d42f7f184db03574a12bcd74fd9acc236bac57f"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 4062,
+      "sha256": "09fc79cdd340f621d586b41a3e2c1ccd21714d0d9bc80d3c5f81bf24caa2d2a1"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 1623,
+      "sha256": "bf5ef85dca3d90d6165478a2c92f110e89fad094f2bd7fbb6400184400d983f4"
+    },
+    {
+      "path": "write-delivery.py",
+      "bytes": 11529,
+      "sha256": "1f5c989425e2e48ddff63629208ffd54c7c91eb430a55ea838910f8f28dde493"
+    }
+  ],
+  "coordinatorAcceptance": {
+    "accepted": true,
+    "reviewedAt": "2026-10-20T04:22:15Z",
+    "scope": "Exact full square1254 source and native128 canonical only; formal export/integration parent-owned",
+    "review": "Parent reviewed corrected full square plus native128 contact sheet: left-arm fastening, both faces and intimate pre-battle interaction pass. Accept for square scene formal export only; wide/portrait cover diagnostics remain explicitly unsuitable. Please finalize hashes/provenance, no more generation. I will integrate whole1254 source and128 canonical, preserving prologueS01 selector.",
+    "sourceSha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+    "sourceCropBox": null,
+    "noCurrentConsumerAdded": true
+  }
+}

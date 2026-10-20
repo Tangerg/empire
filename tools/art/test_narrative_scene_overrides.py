@@ -149,24 +149,27 @@ class NarrativeSceneTests(unittest.TestCase):
         with Image.open(ROOT / PACK / physical['png']) as rendered, Image.open(source) as master:
             self.assertEqual(rendered.tobytes(), master.convert('RGBA').tobytes())
 
-    def test_opening_scene_classification_preserves_pending_legacy_record_and_inventory(self):
+    def test_opening_scene_registers_complete_reviewed_square_and_preserves_inventory_history(self):
         topic = 'C01-CH01-S00'
         asset = next(a for a in self.assets if a['topicId'] == topic)
         self.assertEqual(asset, {
             'assetId': 'C01-FFV1-CH01-S00', 'topicId': topic, 'label': '罗德里克系护腕',
             'category': 'narrative-static', 'png': 'runtime/narrative-static/ch01-s00.png',
             'width': 128, 'height': 128, 'runtimeReady': True,
-            'qualityTier': 'final-cartoon-fantasy-v1', 'kind': 'scene',
+            'qualityTier': 'approved-chunky-v5-export-verified', 'kind': 'scene',
         })
-        runtime = ROOT / PACK / asset['png']
-        self.assertEqual(hashlib.sha256(runtime.read_bytes()).hexdigest(),
-                         '3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f')
-        with Image.open(runtime) as image:
-            self.assertEqual(image.size, (128, 128))
-            self.assertEqual(image.getchannel('A').getextrema(), (0, 255))
-        self.assertNotIn(topic, json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'])
+        entry = json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'][topic]
+        source = ROOT / entry['scene']['source']
+        self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), entry['scene']['sha256'])
+        self.assertEqual(entry['scene']['sha256'], 'e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9')
         hd = json.loads((ROOT / PACK / 'manifest-tactical-runtime-hd.json').read_text())
-        self.assertNotIn(topic, {a['topicId'] for a in hd['assets']})
+        physical = next(a for a in hd['assets'] if a['topicId'] == topic)
+        self.assertEqual((physical['width'], physical['height'], physical['pixelDensity']), (1254,1254,1254/128))
+        with Image.open(source) as master, Image.open(ROOT / PACK / asset['png']) as image, Image.open(ROOT / PACK / physical['png']) as native:
+            expected = master.convert('RGBA')
+            self.assertEqual(native.tobytes(), expected.tobytes())
+            self.assertEqual(image.tobytes(), expected.resize((128,128), Image.Resampling.LANCZOS).tobytes())
+            self.assertEqual(image.getchannel('A').getextrema(), (255,255))
         inventory = json.loads((ROOT / 'docs/art-rebuild-20261019/canonical-topic-manifest.json').read_text())
         row = next(a for a in inventory if a['topicId'] == topic)
         self.assertEqual(row['kind'], 'scene')
@@ -176,7 +179,8 @@ class NarrativeSceneTests(unittest.TestCase):
             csv_row = next(a for a in csv.DictReader(handle) if a['topicId'] == topic)
         for field in ('kind', 'alpha_requirement', 'status', 'path'):
             self.assertEqual(csv_row[field], row[field])
-        self.assertEqual({key: row[key] for key in asset}, asset)
+        self.assertEqual({key: row[key] for key in asset if key != 'qualityTier'}, {key: value for key,value in asset.items() if key != 'qualityTier'})
+        self.assertEqual(row['qualityTier'], 'final-cartoon-fantasy-v1')
         self.assertEqual(len([a for a in self.assets if a['kind'] == 'scene']), 43)
         self.assertEqual(len([a for a in self.assets if a['kind'] == 'key-prop']), 15)
         self.assertEqual(next(a for a in self.assets if a['topicId'] == 'C01-PROP-LEFT-GLOVE')['kind'], 'key-prop')

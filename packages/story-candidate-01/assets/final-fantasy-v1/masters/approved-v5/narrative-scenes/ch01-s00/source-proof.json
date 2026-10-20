@@ -1,0 +1,63 @@
+{
+  "topicId": "C01-CH01-S00",
+  "classification": "128x128 scene; legacy lone-bracer source retained as evidence only",
+  "originalBoardPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+  "originalBoardSha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+  "originalBoardMatchesAudit": true,
+  "copiedBoardByteIdentical": true,
+  "fullCellBox": [
+    627,
+    627,
+    1254,
+    1254
+  ],
+  "fullCellPixelSha256": "b110e8f570d065fa2dd9e081e8d1ac2cd2131eaf81b12fa3a911172a1cc3998e",
+  "fullCellMatchesAudit": true,
+  "fullCellCopyPixelIdentical": true,
+  "legacyInsetBox": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "legacyInsetPixelSha256": "705bf07672c18a04f28e4e7c4031a65a54be0db62493a4f1a5d76d1ce74e4ccc",
+  "legacyInsetMatchesAudit": true,
+  "legacyRuntimeSha256": "3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f",
+  "legacyRuntimeMatchesAudit": true,
+  "fullBoardAndExactCellVisuallyInspected": true,
+  "namedReferencesVisuallyInspected": true,
+  "sourceInterpretation": "Original bracer cell proves original subject mapping, not intended scene identity. Authored S00 and distinct PROP-LEFT-GLOVE IDs determine the two-person scene.",
+  "currentConsumerCheck": {
+    "classificationAuditCount": 35,
+    "auditedConsumers": [],
+    "prologueUses": "C01-CH01-S01",
+    "files": [
+      {
+        "path": "packages/story-candidate-01/src/story.ts",
+        "sha256": "230b746b644834893153498fb852fef21304b9141feb8aa69d4f4b8f54240195",
+        "openingTopicOccurrences": 0,
+        "sameHashAsClassification": true
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-story.ts",
+        "sha256": "a51ef93978cdbef035321d8a489b827b27bb1560e6bdf083140f2a2ba58f558b",
+        "openingTopicOccurrences": 0,
+        "sameHashAsClassification": true
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+        "openingTopicOccurrences": 0,
+        "sameHashAsClassification": true
+      },
+      {
+        "path": "packages/story-candidate-01/src/campaign.ts",
+        "sha256": "4c217fe0b950c81a7e3d5c6f49192c69bdefdb6eaa0f7ab857ed25137f50bf9a",
+        "openingTopicOccurrences": 0,
+        "sameHashAsClassification": true
+      }
+    ]
+  },
+  "noNewSelector": true,
+  "repositoryWrites": false
+}

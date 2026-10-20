@@ -1,0 +1,114 @@
+[
+  {
+    "topicId": "C01-CH01-S00",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s00/master.png",
+        "sha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": null,
+      "sourceRegion": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "croppedSourcePixels": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "retainedAreaFraction": 1.0,
+      "method": "explicit-region-resize",
+      "resampling": "LANCZOS"
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s00.png",
+    "pixelSha256": "c76e7ca31da5b754d58a320b9649f1cd83b58e7b618d48d29e0629322c1091de",
+    "size": [
+      128,
+      128
+    ]
+  },
+  {
+    "topicId": "C01-CH01-S00",
+    "kind": "opaque-scene-v1",
+    "sources": {
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s00/master.png",
+        "sha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      }
+    },
+    "sceneFit": {
+      "sourceCropBox": null,
+      "sourceRegion": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "croppedSourcePixels": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "retainedAreaFraction": 1.0,
+      "method": "explicit-region-copy",
+      "resampling": null
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque scene painting; reusable people/props require separate transparent masters"
+    },
+    "visualReviewRequired": [
+      "complete master and topic identity",
+      "native exports",
+      "actual UI cover crops"
+    ],
+    "pixelDensity": 9.796875,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s00.png",
+    "pixelSha256": "c0f524aa61368e14f762bf1b61df85f99e9720db4e839aeee89852fea13d120c",
+    "size": [
+      1254,
+      1254
+    ]
+  }
+]

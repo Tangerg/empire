@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> empire-srpg-workspace@0.1.0 test
+> vitest run packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts packages/story-candidate-01/src/presentation/candidate-01-assets.test.ts packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts --maxWorkers=2 --minWorkers=1
+
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts (37 tests) 518ms
+   ✓ per-asset physical density > fails loudly if the registered physical file is missing instead of using canonical fallback 497ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-assets.test.ts (171 tests) 314ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts (29 tests) 252ms
+
+ Test Files  3 passed (3)
+      Tests  237 passed (237)
+   Start at  12:23:05
+   Duration  4.95s (transform 2.10s, setup 0ms, collect 4.94s, tests 1.08s, environment 1ms, prepare 253ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

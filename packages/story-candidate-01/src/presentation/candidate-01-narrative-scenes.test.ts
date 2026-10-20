@@ -64,18 +64,19 @@ describe('narrative scene consumer contracts', () => {
     expect(wideScenes).toHaveLength(41);
   });
 
-  it('keeps the corrected square opening scene pending without replacing its legacy prop pixels or prologue', () => {
+  it('binds the corrected square opening scene while preserving the separate prop and prologue', () => {
     const asset = candidate01Asset('C01-CH01-S00');
     expect(asset).toMatchObject({ assetId: 'C01-FFV1-CH01-S00', topicId: 'C01-CH01-S00',
       label: '罗德里克系护腕', category: 'narrative-static', kind: 'scene',
       width: 128, height: 128, png: 'runtime/narrative-static/ch01-s00.png',
-      qualityTier: 'final-cartoon-fantasy-v1' });
+      qualityTier: 'approved-chunky-v5-export-verified' });
     for (const field of ['anchor', 'frames', 'variants', 'frameWidth', 'frameHeight']) {
       expect(asset).not.toHaveProperty(field);
     }
-    expect(hdManifest.assets.some(record => record.topicId === asset.topicId)).toBe(false);
-    expect(sourceOverrides.assets).not.toHaveProperty(asset.topicId);
-    expect(asset.url).toContain(asset.png);
+    const hd = hdManifest.assets.find(record => record.topicId === asset.topicId)!;
+    expect(hd).toMatchObject({ width: 1254, height: 1254, pixelDensity: 1254 / 128 });
+    expect(sourceOverrides.assets).toHaveProperty(asset.topicId);
+    expect(asset.url).toContain(hd.png);
     expect(candidate01StoryArt(asset.topicId)).toBe(asset.url);
     const prop = candidate01Asset('C01-PROP-LEFT-GLOVE');
     expect(prop.kind).toBe('key-prop');

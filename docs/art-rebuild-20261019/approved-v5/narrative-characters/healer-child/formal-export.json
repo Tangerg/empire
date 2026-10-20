@@ -1,0 +1,206 @@
+[
+  {
+    "topicId": "C01-CHAR-MIREL-02",
+    "kind": "character-card-composite-v1",
+    "sources": {
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-02/master.png",
+        "sha256": "369abab4966ebd99cf89e2870ed53e5becb2ab4f19a9049cd13678c4a83ef380",
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 33,
+          "coreBoundingBox": [
+            47,
+            50,
+            1003,
+            1486
+          ]
+        }
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      }
+    },
+    "characterPlacement": {
+      "renderWidth": 144,
+      "origin": [
+        24,
+        4
+      ],
+      "renderSize": [
+        144,
+        216
+      ],
+      "crop": null
+    },
+    "backgroundFit": {
+      "method": "center-cover",
+      "sourceCropBox": [
+        89.57142857142856,
+        0.0,
+        1164.4285714285716,
+        1254.0
+      ]
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque UI composition; transparent character source remains independent"
+    },
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-02.png",
+    "pixelSha256": "e9a2bb7dc75426f2ac129fb9a1acc44c9df2b46746e4af923318e86661b9c53c",
+    "size": [
+      192,
+      224
+    ]
+  },
+  {
+    "topicId": "C01-CHAR-ADA-01",
+    "kind": "character-card-composite-v1",
+    "sources": {
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ada-01/master.png",
+        "sha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 47,
+          "coreBoundingBox": [
+            234,
+            71,
+            827,
+            1496
+          ]
+        }
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      }
+    },
+    "characterPlacement": {
+      "renderWidth": 144,
+      "origin": [
+        24,
+        4
+      ],
+      "renderSize": [
+        144,
+        216
+      ],
+      "crop": null
+    },
+    "backgroundFit": {
+      "method": "center-cover",
+      "sourceCropBox": [
+        89.57142857142856,
+        0.0,
+        1164.4285714285716,
+        1254.0
+      ]
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque UI composition; transparent character source remains independent"
+    },
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ada-01.png",
+    "pixelSha256": "837f5009ad45235ad8c5847fe5ad5c5b613cfb666a455adc8b2b465d89df9613",
+    "size": [
+      192,
+      224
+    ]
+  },
+  {
+    "topicId": "C01-CHAR-ADA-02",
+    "kind": "character-card-composite-v1",
+    "sources": {
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ada-02/master.png",
+        "sha256": "c9fbf515637f9189230b0871178a5d8cd6c0c9cc4ec75cefb1d727de47e6f7f0",
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 64,
+          "coreBoundingBox": [
+            160,
+            29,
+            865,
+            1516
+          ]
+        }
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      }
+    },
+    "characterPlacement": {
+      "renderWidth": 144,
+      "origin": [
+        24,
+        4
+      ],
+      "renderSize": [
+        144,
+        216
+      ],
+      "crop": null
+    },
+    "backgroundFit": {
+      "method": "center-cover",
+      "sourceCropBox": [
+        89.57142857142856,
+        0.0,
+        1164.4285714285716,
+        1254.0
+      ]
+    },
+    "outputAlpha": {
+      "extrema": [
+        255,
+        255
+      ],
+      "meaning": "opaque UI composition; transparent character source remains independent"
+    },
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ada-02.png",
+    "pixelSha256": "7654249a9d9aed3522161643f13f6a86a6076ccdb5723767f324fd541e6730cf",
+    "size": [
+      192,
+      224
+    ]
+  }
+]

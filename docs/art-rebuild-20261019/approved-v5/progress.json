@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 65,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 431,
+  "formalRuntimeBoundTopics": 435,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -2660,6 +2660,30 @@
       "export": "Exact1664x936 crop[4,2,1668,938], nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
       "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
       "liveGame": "pending; static source/native/cover QA only"
+    },
+    "C01-CHAR-MIREL-02": {
+      "raw": "Independent1024x1536 transparent named portraits; Mirelle oath-builder identity, Ada child8 and medic17 share brown-haired identity and single cracked bottle. Source edgesalpha1 preserved, real blackwhite composites inspected; rejected/superseded attempts retained honestly",
+      "export": "Whole source144width at24,4 on separate approved card background,192x224. Parent native/card/stage comparison passed;44px tiny marks not individually legible, HUD crops extreme boots. No HD or alpha cleanup",
+      "runtimeBinding": "Existing canonical card catalog resolver only; no laterstage selector or combatclass change",
+      "liveGame": "pending; modeled consumer crops and static native proof only"
+    },
+    "C01-CHAR-ADA-01": {
+      "raw": "Independent1024x1536 transparent named portraits; Mirelle oath-builder identity, Ada child8 and medic17 share brown-haired identity and single cracked bottle. Source edgesalpha1 preserved, real blackwhite composites inspected; rejected/superseded attempts retained honestly",
+      "export": "Whole source144width at24,4 on separate approved card background,192x224. Parent native/card/stage comparison passed;44px tiny marks not individually legible, HUD crops extreme boots. No HD or alpha cleanup",
+      "runtimeBinding": "Existing canonical card catalog resolver only; no laterstage selector or combatclass change",
+      "liveGame": "pending; modeled consumer crops and static native proof only"
+    },
+    "C01-CHAR-ADA-02": {
+      "raw": "Independent1024x1536 transparent named portraits; Mirelle oath-builder identity, Ada child8 and medic17 share brown-haired identity and single cracked bottle. Source edgesalpha1 preserved, real blackwhite composites inspected; rejected/superseded attempts retained honestly",
+      "export": "Whole source144width at24,4 on separate approved card background,192x224. Parent native/card/stage comparison passed;44px tiny marks not individually legible, HUD crops extreme boots. No HD or alpha cleanup",
+      "runtimeBinding": "Existing canonical card catalog resolver only; no laterstage selector or combatclass change",
+      "liveGame": "pending; modeled consumer crops and static native proof only"
+    },
+    "C01-CH01-S00": {
+      "raw": "Complete opaque square1254 source; mentor Roderick fastening18-year-old Leia left wristguard before first command. Anatomical handedness correction by imagegen; rejected right-arm attempt and original wrongly mapped loose bracer preserved",
+      "export": "Whole square source,1254HD and128canonical; both faces and fastening readable at128. Wide and portrait covers trim meaningful parts and are diagnostics only",
+      "runtimeBinding": "Canonical square scene+HD resolver; distinct from LEFT-GLOVE prop. Existing prologueS01 selector unchanged; no new scene consumer",
+      "liveGame": "pending; static native/crop evidence only"
     }
   },
   "supplementalBundles": {
