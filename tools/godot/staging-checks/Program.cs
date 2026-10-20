@@ -58,7 +58,19 @@ if (args.Length == 2)
         foreach (var entry in obj.ToArray()) NormalizeArt(entry.Value);
     }
     NormalizeArt(normalized);
-    Check("live adapter export metadata", normalized, oracle["metadata"]);
+    // This shared document also carries narrative/menu contracts checked by their own source suites.
+    var narrativeMenuFields = new[] { "completionLabel", "menu", "menuArt", "chapters", "storyScenes" };
+    var stagingMetadata = oracle["metadata"]!.AsObject();
+    Check("shared metadata field ownership",
+        JsonSerializer.SerializeToNode(normalized!.AsObject().Select(pair => pair.Key).Order(StringComparer.Ordinal)),
+        JsonSerializer.SerializeToNode(stagingMetadata.Select(pair => pair.Key).Concat(narrativeMenuFields).Order(StringComparer.Ordinal)));
+    foreach (var field in narrativeMenuFields)
+        Check($"documented narrative/menu extension {field}",
+            JsonValue.Create(field == "completionLabel" ? normalized[field]?.GetValueKind() == JsonValueKind.String : normalized[field] is JsonObject),
+            JsonValue.Create(true));
+    var stagingProjection = new JsonObject(stagingMetadata.Select(pair =>
+        new KeyValuePair<string, JsonNode?>(pair.Key, normalized[pair.Key]?.DeepClone())));
+    Check("live adapter staging-owned export metadata", stagingProjection, stagingMetadata);
     var art = exported["portraits"]!.AsObject().Select(pair => pair.Value!.AsObject()).Concat(
         exported["levels"]!.AsObject().SelectMany(pair => new[] { pair.Value!["chapterArt"], pair.Value!["briefingArt"] }.OfType<JsonObject>()));
     var directory = Path.GetDirectoryName(Path.GetFullPath(args[1]))!;

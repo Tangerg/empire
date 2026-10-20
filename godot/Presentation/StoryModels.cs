@@ -21,7 +21,7 @@ public sealed class StoryEntry
     public string Title { get; init; } = "";
     public string Date { get; init; } = "";
     public string Location { get; init; } = "";
-    public string Scene { get; init; } = "";
+    public string? Scene { get; init; }
     public string Summary { get; init; } = "";
     public List<StoryBeat> Beats { get; init; } = new();
     public StoryMission? Mission { get; init; }

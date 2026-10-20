@@ -14,11 +14,18 @@ public partial class GrayFlagGame : Node
     private JsonArray packs = null!;
     private GrayFlagCampaign campaign = null!;
     private StoryDocument stories = null!;
+    private JsonObject definition = null!;
+    private JsonArray levels = null!;
+    private JsonObject presentation = null!;
+    private NarrativePresentationDocument narrative = null!;
     private GrayFlagSession? session;
     private BattleScreen? screen;
     private Control? view;
     private double computerDelay;
     private bool resultOffered;
+    private long lifecycleGeneration;
+
+    public override void _ExitTree() => lifecycleGeneration++;
     private const string SavePath = "user://grayflag-campaign-save.json";
     private const string CampaignSavePath = "user://grayflag-campaign-autosave.json";
 
@@ -26,10 +33,13 @@ public partial class GrayFlagGame : Node
     {
         packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         engine = new GrayFlagEngine(packs);
-        campaign = new GrayFlagCampaign(PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json"),
-            PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"), packs, engine);
+        definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
+        levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
+        presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+        narrative = NarrativePresentationDocument.Load();
+        campaign = NewCampaign();
         stories = StoryDocument.Load();
-        ShowNode();
+        ShowMenu();
     }
 
     public override void _Process(double delta)
@@ -51,8 +61,14 @@ public partial class GrayFlagGame : Node
                     () => {
                         if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
                         campaign.FinishBattle(); session = null;
+                        var saved = TryPersistCampaign();
                         var summary = new BattleResultScreen(); SetView(summary);
-                        summary.ShowResult("victory", report.Summary, () => { if (ReferenceEquals(view, summary)) ShowNode(); });
+                        var stateAfter = campaign.Runtime.Snapshot();
+                        var summaryShell = CampaignShellView.Create(new NarrativeContext(narrative,
+                            stateAfter["battleHistory"]!.AsArray().Count, stateAfter["status"]!.GetValue<string>() == "active"), report.Summary.Chapter);
+                        summary.ShowResult("victory", report.Summary, () => { if (ReferenceEquals(view, summary)) ShowNode(); },
+                            summaryShell, () => { if (ReferenceEquals(view, summary)) ShowMenu(); });
+                        if (!saved) Notify("战果已在当前战役中结算，但自动保存失败。请保留窗口并使用 F5 保存。");
                     },
                     () => {
                         if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
@@ -82,6 +98,52 @@ public partial class GrayFlagGame : Node
         view = next; AddChild(next);
     }
 
+    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, packs, engine, state);
+
+    private bool TryPersistCampaign()
+    {
+        try { CampaignSlotStorage.Save(definition, campaign.Runtime.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); return true; }
+        catch (Exception error) { GD.PushWarning("Campaign autosave failed: " + error.Message); return false; }
+    }
+
+    private void ShowMenu()
+    {
+        screen = null; session = null; resultOffered = false;
+        var loaded = CampaignSlotStorage.Load(definition, ProjectSettings.GlobalizePath(CampaignSavePath));
+        var projection = CampaignMenu.Create(loaded, Empire.Core.Determinism.EcmaJson.ToElement(presentation));
+        var menu = new CampaignMenuScreen(); SetView(menu);
+        var generation = lifecycleGeneration;
+        bool CurrentMenu() => generation == lifecycleGeneration && IsInsideTree() && menu.IsInsideTree() && ReferenceEquals(view, menu);
+        void StartNew()
+        {
+            if (!CurrentMenu()) return;
+            try { CampaignSlotStorage.ClearForNewCampaign(ProjectSettings.GlobalizePath(CampaignSavePath)); campaign = NewCampaign(); ShowNode(); }
+            catch (Exception error) { ShowMenu(); Notify("无法开始战役：" + error.Message); }
+        }
+        menu.ShowMenu(projection, () => {
+            if (!CurrentMenu() || loaded.State is null) return;
+            campaign = NewCampaign(loaded.State); ShowNode();
+        }, () => {
+            if (!CurrentMenu()) return;
+            if (loaded.State is null) { StartNew(); return; }
+            var dialog = new ConfirmationDialog { Title = "重新开始战役", DialogText = projection.ReplacePrompt };
+            var handled = false;
+            dialog.Confirmed += () => { if (handled) return; handled = true; dialog.QueueFree(); StartNew(); };
+            void Cancel() { if (handled) return; handled = true; dialog.QueueFree(); if (CurrentMenu()) ShowMenu(); }
+            dialog.Canceled += Cancel; dialog.CloseRequested += Cancel;
+            menu.AddChild(dialog); dialog.PopupCentered();
+        });
+    }
+
+    private void AdvanceCampaign(Action transition)
+    {
+        try { transition(); }
+        catch (Exception error) { ShowNode(); Notify("战役操作失败：" + error.Message); return; }
+        var saved = TryPersistCampaign();
+        ShowNode();
+        if (!saved) Notify("战役已继续，但自动保存失败。当前进度仍保留在窗口中，请使用 F5 保存。");
+    }
+
     private void ShowNode(string? battleLogMessage = null)
     {
         screen = null; session = null; resultOffered = false;
@@ -95,13 +157,22 @@ public partial class GrayFlagGame : Node
         }
         var story = new StoryScreen(); SetView(story);
         var presentation = node["presentation"]?.GetValue<string>();
+        var state = campaign.Runtime.Snapshot();
+        var context = new NarrativeContext(narrative, state["battleHistory"]!.AsArray().Count, state["status"]!.GetValue<string>() == "active");
+        bool Current() => ReferenceEquals(view, story);
         if (type == "choice")
             story.ShowChoice(stories.Choices.Single(value => value.Id == presentation),
-                campaign.Runtime.Choices().Select(value => value!["id"]!.GetValue<string>()).ToArray(),
-                id => { campaign.Runtime.Choose(id); ShowNode(); });
+                campaign.Runtime.Choices().Select(value => value!["id"]!.GetValue<string>()).ToArray(), context,
+                id => { if (Current()) AdvanceCampaign(() => campaign.Runtime.Choose(id)); },
+                () => { if (Current()) ShowMenu(); });
         else
-            story.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.Speakers,
-                () => { if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") campaign.Runtime.Advance(); if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") ShowNode(); else Notify("灰旗战役已结束。F5 保存，F9 读取存档。"); });
+            story.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.Speakers, context, type == "ending",
+                () => { if (Current()) AdvanceCampaign(() => campaign.Runtime.Advance()); },
+                () => {
+                    if (!Current()) return;
+                    if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") AdvanceCampaign(() => campaign.Runtime.Advance());
+                    else ShowMenu();
+                }, () => { if (Current()) ShowMenu(); });
     }
 
     private void ShowStaging()
@@ -117,11 +188,11 @@ public partial class GrayFlagGame : Node
             if (!ReferenceEquals(view, staging)) return;
             if (campaign.Request is null)
             {
-                try { WriteSave(CampaignSavePath); }
+                try { CampaignSlotStorage.Save(definition, campaign.Runtime.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); }
                 catch (Exception error) { ShowStaging(); Notify("自动保存失败，尚未进入战斗：" + error.Message); return; }
             }
             campaign.BeginBattle(); ShowBattle();
-        });
+        }, () => { if (ReferenceEquals(view, staging)) ShowMenu(); });
     }
 
     private void ExitBattle()

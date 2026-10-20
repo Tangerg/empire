@@ -22,6 +22,15 @@ public partial class BattleResultFlowChecks : Node
 
     public override void _Ready()
     {
+        try
+        {
+            var userData = RequireIsolatedUserData();
+            Require(!System.IO.Directory.Exists(userData) || System.IO.Directory.EnumerateFileSystemEntries(userData)
+                .All(entry => System.IO.Path.GetFileName(entry) == "logs"),
+                "Result-flow checks refuse pre-existing user data before mounting any game; use a fresh generated directory.");
+        }
+        catch (Exception error) { GD.PushError("Result-flow safety guard: " + error); GetTree().Quit(1); return; }
+        Check("isolated clean prebattle autosave", CheckPrebattleAutosave);
         Check("completion one-shot navigation", CheckCompletionButtons);
         Check("result summary and invalid outcomes", CheckSummary);
         Check("stale rebind and unmount callbacks", CheckStaleButtons);
@@ -29,7 +38,6 @@ public partial class BattleResultFlowChecks : Node
             foreach (var action in outcome == "victory" ? new[] { "Settle", "Retry", "Exit" } : new[] { "Retry", "Exit" })
                 Check($"game {outcome}/{action}", () => CheckGameFlow(outcome, action));
         Check("busy save/load keyboard and direct entry", CheckBusySaveLoad);
-        Check("isolated clean prebattle autosave", CheckPrebattleAutosave);
         if (failures.Count == 0)
         {
             GD.Print($"Battle result-flow native checks passed: {assertions} assertions.");
@@ -147,8 +155,8 @@ public partial class BattleResultFlowChecks : Node
         document["battle"] = oracle["finalSave"]!.DeepClone();
         document["events"] = new JsonArray(oracle["steps"]!.AsArray().OfType<JsonObject>()
             .SelectMany(step => step["events"]!.AsArray()).Select(value => value!.DeepClone()).ToArray());
-        // Victory is an actual original-engine final save. Defeat/draw are terminal
-        // UI fixtures, not simulated gameplay outcomes or source-parity claims.
+        // All three outcomes are terminal UI fixtures, not native gameplay or route-parity claims.
+        // Victory reuses an actual original-engine final save; defeat/draw alter its terminal fields.
         if (outcome != "victory")
         {
             document["battle"]!["state"]!["winnerTeam"] = outcome == "draw" ? null : JsonValue.Create(2);
@@ -174,7 +182,7 @@ public partial class BattleResultFlowChecks : Node
             var committed = StateDigest.Hash(campaign.Runtime.Snapshot());
             foreach (var button in buttons.Values) Press(button);
             Require(StateDigest.Hash(campaign.Runtime.Snapshot()) == committed && ReferenceEquals(Field<Control>(game, "view"), summary), "Stale completion navigated or settled twice.");
-            var proceed = Buttons(summary).Single(); Press(proceed); Press(proceed);
+            var proceed = Buttons(summary).Single(button => button.Name == "Proceed"); Press(proceed); Press(proceed);
             Require(!ReferenceEquals(Field<Control>(game, "view"), summary) && StateDigest.Hash(campaign.Runtime.Snapshot()) == committed,
                 "Summary proceed must navigate once without committing the result again.");
         }
@@ -286,14 +294,14 @@ public partial class BattleResultFlowChecks : Node
                     campaign.Runtime.Choose(campaign.Runtime.Choices()[0]!["id"]!.GetValue<string>());
                 else campaign.Runtime.Advance();
             }
-            var clean = campaign.Save();
+            var clean = Empire.Core.Campaign.CampaignSave.Create(campaign.Runtime.Definition, campaign.Runtime.Snapshot());
             var cleanText = StableSave(clean);
-            Require(campaign.Request is null && campaign.Battle is null && clean["campaign"]!["state"]!["pendingBattle"] is null,
+            Require(campaign.Request is null && campaign.Battle is null && clean["state"]!["pendingBattle"] is null,
                 "Autosave fixture must begin at a clean battle node without a pending request.");
             Invoke(game, "ShowStaging");
             var staging = Field<Control>(game, "view") as CampaignStagingScreen ?? throw new Exception("Clean battle node did not show staging.");
             var start = Buttons(staging).Single(button => button.Name == "StartBattle");
-            Require(!System.IO.File.Exists(automaticPath) && StableSave(campaign.Save()) == cleanText,
+            Require(!System.IO.File.Exists(automaticPath) && StableSave(Empire.Core.Campaign.CampaignSave.Create(campaign.Runtime.Definition, campaign.Runtime.Snapshot())) == cleanText,
                 "Merely showing staging must not autosave or begin the battle.");
             var earliestSave = DateTimeOffset.FromUnixTimeMilliseconds(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
             Press(start);
@@ -305,10 +313,10 @@ public partial class BattleResultFlowChecks : Node
             var automatic = System.IO.File.ReadAllText(automaticPath);
             var saved = EcmaJson.Parse(automatic)!.AsObject();
             Require(StableSave(saved) == cleanText, "Automatic save is not the exact clean pre-BeginBattle document apart from its save timestamp.");
-            Require(DateTimeOffset.TryParse(saved["campaign"]!["savedAt"]!.GetValue<string>(), out var savedAt)
+            Require(DateTimeOffset.TryParse(saved["savedAt"]!.GetValue<string>(), out var savedAt)
                 && savedAt >= earliestSave && savedAt <= latestSave, "Automatic save timestamp is not from the explicit Start action.");
-            Require(saved["request"] is null && saved["battle"] is null && saved["campaign"]!["state"]!["pendingBattle"] is null
-                && saved["events"]!.AsArray().Count == 0, "Automatic save contains a pending request, battle, or battle history.");
+            Require(!saved.ContainsKey("request") && !saved.ContainsKey("battle") && saved["state"]!["pendingBattle"] is null
+                && !saved.ContainsKey("events") && !saved.ContainsKey("atCamp"), "Automatic save contains a pending request, battle, or battle events.");
             Require(System.IO.File.ReadAllText(manualPath) == manual && FileStamp(manualPath) == manualStamp,
                 "Prebattle autosave overwrote the separate manual save.");
             var automaticStamp = FileStamp(automaticPath);
@@ -367,7 +375,8 @@ public partial class BattleResultFlowChecks : Node
     {
         // Save envelopes timestamp serialization, not campaign/battle mutations.
         var copy = document.DeepClone().AsObject();
-        copy["campaign"]!["savedAt"] = "2026-10-20T00:00:00.000Z";
+        if (copy.ContainsKey("state")) copy["savedAt"] = "2026-10-20T00:00:00.000Z";
+        else copy["campaign"]!["savedAt"] = "2026-10-20T00:00:00.000Z";
         if (copy["battle"] is JsonObject battle) battle["savedAt"] = "2026-10-20T00:00:00.000Z";
         return EcmaJson.Stringify(copy);
     }

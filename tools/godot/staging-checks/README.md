@@ -15,7 +15,7 @@ Check the native screen with the same fixture (no campaign saves or external sta
 
 `CampaignStaging.Create(state, battleNode, level, metadata, unitTypeName, hasPendingRequest)` returns an immutable `CampaignStagingView`. Inputs are the canonical campaign snapshot/current battle node, the original catalog level, exported presentation metadata, and the composed engine's name query. It never starts, completes, exits, or resumes a battle.
 
-`CampaignStagingScreen.ShowStaging(view, assets, startBattle)` renders supplied facts and gives the caller one guarded callback. Repeated clicks, callbacks retained from a previous binding, and callbacks after unmount cannot dispatch another start. Rebinding resets the one-shot action. Canonical request ownership and initial versus reentry behavior remain in the application root.
+`CampaignStagingScreen.ShowStaging(view, assets, startBattle, exitCampaign)` renders supplied facts inside the shared `CampaignShell`. Start and the shell's menu exit are one mutually exclusive action per binding. Repeated clicks, detached buttons, callbacks retained from a previous binding, and callbacks after unmount/remount cannot dispatch navigation. Explicit rebinding resets the one-shot action. Canonical request ownership and initial versus reentry behavior remain in the application root.
 
 Original `StoryCampaignController.renderBattleStaging` semantics are preserved:
 
@@ -60,3 +60,9 @@ The oracle extracts and executes the actual source `shell` and `renderBattleStag
 The 45 source renders cover every battle's initial/reentry screen, JOIN_AFTER boundaries, unavailable-unit status, HP rounding, unknown-label fallback, resource ordering, first-five nonzero relations, empty state, and bound/unbound actors. Native tests verify the original text, actual texture identity, explicit diagnostics for unexported art, one-shot actions, stale callbacks, unmount, and remount.
 
 The final export check independently compares metadata against the live adapter and verifies copied narrative PNG bytes against both the original source and declared SHA256. Native screen checks also run all 45 views with the real exported metadata and require zero missing-art diagnostics.
+
+## Shared metadata ownership
+
+The staging oracle still compares every original staging-owned field exactly: `schema`, `title`, `battleTotal`, `joinAfter`, `resourceLabels`, `relationLabels`, `portraits`, and `levels`. The shared export now also requires five separately owned extensions: `completionLabel`, `menu`, `menuArt`, `chapters`, and `storyScenes`. This suite validates the complete union of field names, rejects unknown or missing fields, and checks the extension value shapes; it does not discard arbitrary extra metadata.
+
+The narrative suite owns completion labels, chapters, story-scene metadata and their original asset contracts. The campaign-slot/menu suite owns menu text and menu-art metadata. Their presence does not relax any staging projection, original asset byte/hash, or real-art zero-diagnostics assertion. The native staging scene also checks shared-shell exit accessibility and both directions of Start/Exit single-use, rebind, detached-button, unmount and remount behavior.

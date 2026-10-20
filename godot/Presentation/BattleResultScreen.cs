@@ -10,6 +10,8 @@ public partial class BattleResultScreen : Control
 {
     private int generation;
     private bool handled;
+    private CampaignShell? shell;
+    public System.Collections.Generic.IReadOnlyList<string> RenderingDiagnostics => shell?.RenderingDiagnostics ?? Array.Empty<string>();
     public override void _ExitTree() { generation++; handled = true; }
 
     public void ShowCompletion(string heading, string reason, bool victory, Action settle, Action retry, Action exit)
@@ -21,11 +23,23 @@ public partial class BattleResultScreen : Control
         ActionButton(column, "Exit", "战役营地", exit);
     }
 
-    private VBoxContainer Begin()
+    private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null)
     {
         generation++; handled = false;
         foreach (Node child in GetChildren()) { RemoveChild(child); child.QueueFree(); }
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        shell = null;
+        if (shellView is not null)
+        {
+            ArgumentNullException.ThrowIfNull(onExit);
+            shell = new CampaignShell(); AddChild(shell);
+            var token = generation;
+            shell.Show(shellView, () => {
+                if (handled || token != generation || !IsInsideTree()) return;
+                handled = true; shell.DisableNavigation(); onExit();
+            });
+            return shell.Body;
+        }
         var background = new ColorRect { Color = new Color("#091712"), MouseFilter = MouseFilterEnum.Ignore };
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(background);
         var margin = new MarginContainer(); margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -55,10 +69,10 @@ public partial class BattleResultScreen : Control
         column.AddChild(button);
     }
 
-    public void ShowResult(string outcome, CampaignBattleSummary summary, Action proceed)
+    public void ShowResult(string outcome, CampaignBattleSummary summary, Action proceed, CampaignShellView? shellView = null, Action? onExit = null)
     {
         if (outcome != "victory") throw new ArgumentException("Only committed victories have a campaign result summary.", nameof(outcome));
-        var column = Begin();
+        var column = Begin(shellView, onExit);
         var victory = true;
         void Line(string text, int size = 20) => BattleResultScreen.Line(column, text, size);
         Line(victory ? CampaignBattleSummary.Heading : "战斗结束", 24);

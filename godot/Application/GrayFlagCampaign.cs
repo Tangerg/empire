@@ -20,7 +20,7 @@ public sealed class GrayFlagCampaign
     public GrayFlagSession? Battle { get; private set; }
     public JsonObject? Request { get; private set; }
 
-    public GrayFlagCampaign(JsonObject definition, JsonArray levels, JsonArray packs, GrayFlagEngine engine)
+    public GrayFlagCampaign(JsonObject definition, JsonArray levels, JsonArray packs, GrayFlagEngine engine, JsonObject? initialState = null)
     {
         this.definition = Empire.Core.Determinism.EcmaJson.Normalize(definition)!.AsObject();
         this.engine = engine;
@@ -28,7 +28,9 @@ public sealed class GrayFlagCampaign
         this.levels = catalog;
         bridge = new CampaignBattleBridge(id => catalog.TryGetValue(id, out var level) ? (JsonObject)level.DeepClone()
             : throw new InvalidOperationException($"Unknown campaign level {id}"), packs);
-        Runtime = new CampaignRuntime(definition);
+        Runtime = new CampaignRuntime(definition, initialState);
+        if (Runtime.Snapshot()["pendingBattle"] is not null)
+            throw new InvalidOperationException("A campaign-only resume cannot reconstruct a pending battle. Load the complete application save instead.");
     }
 
     public void BeginBattle()

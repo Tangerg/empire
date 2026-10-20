@@ -10,42 +10,34 @@ public partial class CampaignStagingScreen : Control
     private readonly List<string> diagnostics = new();
     private int generation;
     private bool submitted;
+    private CampaignShell? shell;
     public CampaignStagingView? Presented { get; private set; }
-    public IReadOnlyList<string> RenderingDiagnostics => diagnostics.ToArray();
+    public IReadOnlyList<string> RenderingDiagnostics => diagnostics.Concat(shell?.RenderingDiagnostics ?? Array.Empty<string>()).ToArray();
 
     public override void _ExitTree() { generation++; submitted = true; }
 
-    public void ShowStaging(CampaignStagingView view, AssetCatalog assets, Action startBattle)
+    public void ShowStaging(CampaignStagingView view, AssetCatalog assets, Action startBattle, Action exitCampaign)
     {
         ArgumentNullException.ThrowIfNull(view);
         ArgumentNullException.ThrowIfNull(assets);
         ArgumentNullException.ThrowIfNull(startBattle);
+        ArgumentNullException.ThrowIfNull(exitCampaign);
         generation++;
         var currentGeneration = generation;
         submitted = false; Presented = view; diagnostics.Clear();
         foreach (var child in GetChildren()) { RemoveChild(child); child.QueueFree(); }
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        var background = new ColorRect { Color = new Color("#091712"), MouseFilter = MouseFilterEnum.Ignore };
-        background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(background);
-        var chapterTexture = Texture(view.ChapterArt, "chapter backdrop");
-        if (chapterTexture is not null)
-        {
-            var backdrop = Picture(chapterTexture); backdrop.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(backdrop);
-            var dim = new ColorRect { Color = new Color(0.025f, 0.06f, 0.04f, 0.84f), MouseFilter = MouseFilterEnum.Ignore };
-            dim.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(dim);
-        }
-        var margins = new MarginContainer { Name = "StagingMargins" };
-        margins.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        foreach (var edge in new[] { "left", "right", "top", "bottom" }) margins.AddThemeConstantOverride($"margin_{edge}", 28);
-        AddChild(margins);
-        var column = new VBoxContainer(); column.AddThemeConstantOverride("separation", 18); margins.AddChild(column);
-        var header = new HBoxContainer(); column.AddChild(header);
-        var heading = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; header.AddChild(heading);
-        heading.AddChild(Text(view.CampaignTitle, 16, "#b8c5b7")); heading.AddChild(Text(view.ChapterHeading, 20, "#efdfb4"));
-        header.AddChild(Text(view.Progress, 20, "#d5bc7f"));
-        var scroll = new ScrollContainer { Name = "StagingScroll", SizeFlagsVertical = SizeFlags.ExpandFill,
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; column.AddChild(scroll);
-        var body = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; body.AddThemeConstantOverride("separation", 22); scroll.AddChild(body);
+        shell = new CampaignShell(); AddChild(shell);
+        Button? startButton = null;
+        shell.Show(new CampaignShellView(view.CampaignTitle, view.ChapterHeading, view.CompletedBattles, view.BattleTotal,
+            new NarrativeArt { Source = view.ChapterArt.Source, ResourcePath = view.ChapterArt.ResourcePath }), () => {
+            if (submitted || currentGeneration != generation || !IsInsideTree()) return;
+            submitted = true; shell.DisableNavigation();
+            if (startButton is not null) startButton.Disabled = true;
+            exitCampaign();
+        });
+        var body = shell.Body;
+        var column = body;
         var hero = new HBoxContainer(); hero.AddThemeConstantOverride("separation", 24); body.AddChild(hero);
         if (view.BriefingArt is { } briefing && Texture(briefing, "briefing scene") is { } scene)
         {
@@ -91,10 +83,11 @@ public partial class CampaignStagingScreen : Control
         var footer = new HBoxContainer(); footer.AddThemeConstantOverride("separation", 24); column.AddChild(footer);
         footer.AddChild(Text(view.ActionNote, 16, "#b8c6b6"));
         var button = new Button { Name = "StartBattle", Text = view.StartLabel, CustomMinimumSize = new Vector2(210, 48) };
+        startButton = button;
         button.Pressed += () =>
         {
             if (submitted || currentGeneration != generation || !IsInsideTree() || !button.IsInsideTree()) return;
-            submitted = true; button.Disabled = true; startBattle();
+            submitted = true; button.Disabled = true; shell.DisableNavigation(); startBattle();
         };
         footer.AddChild(button);
     }

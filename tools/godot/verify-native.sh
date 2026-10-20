@@ -26,11 +26,22 @@ for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenC
   run_scene "$scene"
 done
 run_scene LightingChecks -- --lighting-oracle="$PWD/godot/tests/oracle/lighting.json"
+ORACLE_DATA="$(mktemp -d /tmp/empire-native-oracles.XXXXXX)"
+for fixture in narrative campaign-menu staging; do
+  gzip -dc "godot/tests/oracle/$fixture.json.gz" > "$ORACLE_DATA/$fixture.json"
+done
+export EMPIRE_NARRATIVE_ORACLE="$ORACLE_DATA/narrative.json"
+run_scene NarrativeChecks
+run_scene CampaignMenuChecks -- "$ORACLE_DATA/campaign-menu.json"
+run_scene CampaignStagingChecks -- "$ORACLE_DATA/staging.json"
+run_scene CampaignNavigationChecks
 if [[ "${1:-}" == '--full' ]]; then
   # These are development-only comparisons against the preserved original source.
   for suite in feedback staging action-refusal deployment scenario utf16-boundary vision content-validation level-validation persistence-reference progression recruitment transport; do
     bash "tools/godot/$suite-checks/run.sh"
   done
+  bash tools/godot/narrative-checks/run.sh --verify-guard
+  bash tools/godot/campaign-slot-checks/run.sh --native --verify-guard
   bash tools/godot/camera-checks/run.sh --native --verify-guard
   bash tools/godot/lighting-checks/run.sh
   bash tools/godot/camp-flow-checks/run.sh

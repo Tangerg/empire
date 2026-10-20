@@ -12,8 +12,23 @@ bash tools/godot/run-native.sh
 For another workspace-local toolchain, set `EMPIRE_TOOLCHAIN_ROOT` to its root
 before running the command. The helper builds the C# project, imports Godot
 resources, then runs the actual campaign. It does not install software, publish
-files or modify an existing save by itself. The application writes a save only
-when Save/F5 is selected. Headless smoke checks use:
+files or clear an existing save on launch. The initial title menu offers New or
+Continue when a valid campaign autosave exists. New requires confirmation before
+replacing an existing valid campaign. Ordinary final story beats, choices,
+prebattle entry, victory settlement and ending completion save the campaign-only
+slot automatically. F5/F9 (or battle Save/Load controls) use a separate full manual
+slot, including a pending battle. Exit to camp restarts that battle on reentry,
+while returning to the title and Continue uses the last clean autosave boundary.
+Invalid saves are reported and left intact; explicit New replaces only the
+autosave, never the manual slot. Preserve both files when migrating machines.
+
+The slots are `grayflag-campaign-autosave.json` and
+`grayflag-campaign-save.json` under Godot's application user-data directory, not
+inside the checkout. With the workspace helper, this is normally
+`$EMPIRE_TOOLCHAIN_ROOT/xdg-data/godot/app_userdata/Empire GrayFlag Migration/`.
+A directly launched desktop editor uses that platform's normal Godot user-data
+location instead. Headless smoke checks use isolated temporary user data:
+
 
 ```sh
 bash tools/godot/verify-native.sh

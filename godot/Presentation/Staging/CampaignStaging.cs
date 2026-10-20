@@ -18,6 +18,8 @@ public sealed class CampaignStagingView
     public string CampaignTitle { get; }
     public string ChapterHeading { get; }
     public string Progress { get; }
+    public int CompletedBattles { get; }
+    public int BattleTotal { get; }
     public string Eyebrow { get; }
     public string Title { get; }
     public string Description { get; }
@@ -34,11 +36,12 @@ public sealed class CampaignStagingView
     public const string EmptyRelations = "尚未形成明确阵营关系。";
 
     internal CampaignStagingView(string levelId, string campaignTitle, string chapterHeading, string progress,
-        string eyebrow, string title, string description, string actionNote, string startLabel,
+        int completedBattles, int battleTotal, string eyebrow, string title, string description, string actionNote, string startLabel,
         CampaignStagingArt chapterArt, CampaignStagingArt? briefingArt, IEnumerable<CampaignStagingUnit> roster,
         IEnumerable<CampaignStagingResource> resources, IEnumerable<CampaignStagingRelation> relations)
     {
         LevelId = levelId; CampaignTitle = campaignTitle; ChapterHeading = chapterHeading; Progress = progress;
+        CompletedBattles = completedBattles; BattleTotal = battleTotal;
         Eyebrow = eyebrow; Title = title; Description = description; ActionNote = actionNote; StartLabel = startLabel;
         ChapterArt = chapterArt; BriefingArt = briefingArt;
         Roster = Array.AsReadOnly(roster.ToArray()); Resources = Array.AsReadOnly(resources.ToArray());
@@ -91,7 +94,7 @@ public static class CampaignStaging
         });
         return new CampaignStagingView(id, Text(metadata.GetProperty("title")),
             $"第 {Number(chapter)} 章 · {Text(presentation.GetProperty("chapterTitle"))}", $"{Number(completed)}/{Number(battleTotal)}",
-            $"作战准备 · {order.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0')}/{Number(battleTotal)}",
+            completed, battleTotal, $"作战准备 · {order.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0')}/{Number(battleTotal)}",
             Text(level.GetProperty("name")), level.TryGetProperty("description", out var description) && description.ValueKind != JsonValueKind.Null ? Text(description) : "",
             hasPendingRequest ? "离开战场后将从本关开局重新开始。" : "进入战斗后自动保留关前存档。",
             (hasPendingRequest ? "重新进入战斗" : "开始战斗") + " →",

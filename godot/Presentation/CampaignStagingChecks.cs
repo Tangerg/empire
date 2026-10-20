@@ -25,8 +25,8 @@ public partial class CampaignStagingChecks : Node
             var assets = AssetCatalog.Load();
             var view = View(false);
             var screen = new CampaignStagingScreen(); AddChild(screen);
-            var starts = 0;
-            screen.ShowStaging(view, assets, () => starts++);
+            var starts = 0; var exits = 0;
+            screen.ShowStaging(view, assets, () => starts++, () => exits++);
             var text = string.Join("\n", Descendants(screen).OfType<Label>().Select(label => label.Text));
             foreach (var value in new[] { view.Title, view.Description, view.Eyebrow, view.ChapterHeading, view.Progress,
                 CampaignStagingView.RosterHeading, CampaignStagingView.StateHeading, view.ActionNote })
@@ -41,18 +41,23 @@ public partial class CampaignStagingChecks : Node
                 Require(((AtlasTexture)picture.Texture).Atlas.ResourcePath == expected.ResourcePath,
                     "Roster fallback must respect the explicit actor binding and its source texture");
             }
-            Require(screen.RenderingDiagnostics.Any(value => value.Contains("chapter backdrop", StringComparison.Ordinal)), "Missing source chapter art must be reported");
+            Require(screen.RenderingDiagnostics.Any(value => value.Contains("campaign backdrop", StringComparison.Ordinal)), "Missing source chapter art must be reported");
             foreach (var unit in view.Roster.Where(unit => unit.Portrait is not null))
                 Require(screen.RenderingDiagnostics.Any(value => value.Contains($"portrait {unit.Id}", StringComparison.Ordinal)), "Missing authored portrait must be reported");
-            var oldButton = Descendants(screen).OfType<Button>().Single();
+            var oldButton = NavigationButton(screen, "StartBattle");
+            var oldExit = NavigationButton(screen, "CampaignExit");
+            Require(oldExit.AccessibilityName == CampaignShellView.ExitLabel, "Shared shell exit must retain the source accessible label");
             Require(oldButton.Text == view.StartLabel, "First entry label must match source");
             oldButton.EmitSignal(Button.SignalName.Pressed); oldButton.EmitSignal(Button.SignalName.Pressed);
-            Require(starts == 1 && oldButton.Disabled, "Start callback must run once");
+            Require(starts == 1 && oldButton.Disabled && oldExit.Disabled, "Start callback must run once and disable sibling exit");
+            oldExit.EmitSignal(Button.SignalName.Pressed);
+            Require(exits == 0, "Shared-shell exit escaped a submitted Start action");
             var reentry = View(true);
-            screen.ShowStaging(reentry, assets, () => starts++);
-            oldButton.EmitSignal(Button.SignalName.Pressed);
-            Require(starts == 1, "Stale callback after rebind must not start another battle");
-            var newButton = Descendants(screen).OfType<Button>().Single();
+            screen.ShowStaging(reentry, assets, () => starts++, () => exits++);
+            oldButton.EmitSignal(Button.SignalName.Pressed); oldExit.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1 && exits == 0, "Stale Start/Exit callbacks after rebind must not navigate");
+            var newButton = NavigationButton(screen, "StartBattle");
+            var newExit = NavigationButton(screen, "CampaignExit");
             Require(newButton.Text == "重新进入战斗 →", "Reentry must not be called resume or continue");
             Require(Descendants(screen).OfType<Label>().Any(label => label.Text == "离开战场后将从本关开局重新开始。"), "Reentry must disclose restart semantics");
             var buttonParent = newButton.GetParent();
@@ -61,17 +66,29 @@ public partial class CampaignStagingChecks : Node
             newButton.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1, "Detached Start button must not act on campaign state while its screen stays mounted");
             buttonParent.AddChild(newButton);
-            RemoveChild(screen); newButton.EmitSignal(Button.SignalName.Pressed);
-            Require(starts == 1, "Unmounted callback must not act on campaign state");
-            AddChild(screen); screen.ShowStaging(view, assets, () => starts++);
-            Descendants(screen).OfType<Button>().Single().EmitSignal(Button.SignalName.Pressed);
-            Require(starts == 2, "Remounted and explicitly rebound screen must accept one new action");
+            var exitParent = newExit.GetParent(); exitParent.RemoveChild(newExit);
+            newExit.EmitSignal(Button.SignalName.Pressed);
+            Require(exits == 0, "Detached shared-shell Exit must not navigate while its screen stays mounted");
+            exitParent.AddChild(newExit);
+            RemoveChild(screen); newButton.EmitSignal(Button.SignalName.Pressed); newExit.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1 && exits == 0, "Unmounted Start/Exit callbacks must not act on campaign state");
+            AddChild(screen); newButton.EmitSignal(Button.SignalName.Pressed); newExit.EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 1 && exits == 0, "Remount alone must not revive stale Start/Exit callbacks");
+            screen.ShowStaging(view, assets, () => starts++, () => exits++);
+            var reboundStart = NavigationButton(screen, "StartBattle"); var reboundExit = NavigationButton(screen, "CampaignExit");
+            reboundExit.EmitSignal(Button.SignalName.Pressed); reboundExit.EmitSignal(Button.SignalName.Pressed); reboundStart.EmitSignal(Button.SignalName.Pressed);
+            Require(exits == 1 && starts == 1 && reboundExit.Disabled && reboundStart.Disabled, "Exit must be single-use and block sibling Start");
+            screen.ShowStaging(view, assets, () => starts++, () => exits++);
+            reboundExit.EmitSignal(Button.SignalName.Pressed); reboundStart.EmitSignal(Button.SignalName.Pressed);
+            Require(exits == 1 && starts == 1, "A new staging binding revived previously submitted navigation");
+            NavigationButton(screen, "StartBattle").EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 2 && exits == 1, "Remounted and explicitly rebound screen must accept one new action");
             metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
             {
                 var live = CampaignStaging.Create(EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
                     EcmaJson.ToElement(sourceCase["level"]), EcmaJson.ToElement(metadata), UnitName, sourceCase["pending"]!.GetValue<bool>());
-                screen.ShowStaging(live, assets, () => starts++);
+                screen.ShowStaging(live, assets, () => starts++, () => exits++);
                 Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");
                 foreach (var unit in live.Roster.Where(unit => unit.Portrait is not null))
                 {
@@ -86,6 +103,7 @@ public partial class CampaignStagingChecks : Node
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
+    private static Button NavigationButton(Node root, string name) => Descendants(root).OfType<Button>().Single(button => button.Name == name);
     private static IEnumerable<Node> Descendants(Node root)
     {
         foreach (var child in root.GetChildren())

@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
+    <Compile Include="../../../godot/Application/CampaignSlotStorage.cs" Link="CampaignSlotStorage.cs" />
+    <Compile Include="../../../godot/Presentation/CampaignMenu.cs" Link="CampaignMenu.cs" />
+  </ItemGroup>
+</Project>

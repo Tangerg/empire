@@ -145,6 +145,35 @@ No new desktop visual acceptance accompanies these headless results. The full
 [feature inventory](GREYFLAG-FEATURE-INVENTORY.md) distinguishes implementation,
 differential/native tests and actual GUI evidence.
 
+## Narrative, menu and autosave integration
+
+The camera/lighting parent is `27cf0d79`; its exact-index aggregate command exited
+cleanly after the ownership repair, including 73 lifecycle assertions. This batch
+adds the original single-beat narrative, source speaker portraits and 13 scene
+images, a shared campaign shell, title Continue/New, guarded overwrite dialogs,
+clean campaign autosaves and source ending behavior. F5/F9 remain a separate full
+manual slot. Local story cursors do not advance canonical state until the final
+ordinary beat. The original ending's beat-zero/finish behavior is deliberately
+preserved rather than silently rewritten.
+
+Focused source-backed evidence: 4,949 native narrative assertions, 299 storage/
+menu .NET assertions, 82 isolated menu controls, 377 staging comparisons across
+45 actual source renders, and 151 native staging assertions. Narrative label,
+storage broad-catch and staging metadata mutants are rejected. Native integrated
+navigation passes 169 assertions and result flow 150, including actual opening
+beats/choice/staging/battle/camp/Continue, failed saves, invalid data, overwrite
+cancellation and detached/remounted stale confirmation. The latter regression
+caught and fixed a genuine autosave deletion after application unmount. Each
+save-mutating suite refuses existing data before reading or writing and uses a
+fresh temporary namespace. Terminal/settlement fixtures are explicitly labeled;
+these tests do not claim a played victorious campaign route.
+
+Committed gzip fixtures allow the base native check to run without TypeScript.
+They are test-only outputs of the included live-source exporters; `--full`
+regenerates source comparisons. The shared menu/art and aggregate exact-index
+validation are integration gates, not implied by isolated fixture assertions.
+No newer GUI acceptance has been obtained.
+
 ## Explicit remaining gaps
 
-Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Remaining source lighting paths and cold-render performance still require work. Camera controls are integrated but desktop usability and remaining keyboard/selection behavior are not accepted. Story beat-by-beat speaker/scene presentation, full campaign autosave/startup menu and terminal-ending navigation remain required, not completed by battle-rule parity. The recovered source has no audio playback implementation, so silence is not an omitted original feature. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.
+Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Remaining source lighting paths and cold-render performance still require work. Camera controls are integrated but desktop usability and remaining keyboard/selection behavior are not accepted. Narrative/menu/autosave behavior now has source-backed and native integration evidence, but actual desktop acceptance remains required. Tactical selection/keyboard/undo, destination commands, complete inspection/forecast/support HUD and exact AI pacing remain required; see TACTICAL-UI-MIGRATION.md. The recovered source has no audio playback implementation, so silence is not an omitted original feature. All default built-in action, effect and condition families have now been independently audited; arbitrary custom plugin registration and extension API parity are not claimed (see BUILTIN-COVERAGE.md). Unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.

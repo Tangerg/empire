@@ -1,6 +1,115 @@
 {
   "schema": 1,
   "title": "断冠之誓",
+  "completionLabel": "完成前三章",
+  "menu": {
+    "title": "远古帝国",
+    "kicker": "剧情战役型 SRPG · 确定性战斗预测",
+    "description": "《断冠之誓》从十八岁的边境见习旗官开始，经历灰旗流亡与诸族远征。16 场连续战斗，选择、关系、补给与伤亡跨关保留。",
+    "artAlt": "灰旗立在烧毁的边境村庄",
+    "continueLabel": "继续战役",
+    "restartLabel": "重新开始战役",
+    "newLabel": "开始战役",
+    "replacePrompt": "重新开始会覆盖当前《断冠之誓》战役进度。继续吗？"
+  },
+  "menuArt": {
+    "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s05.png",
+    "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s05.png",
+    "sha256": "e20af417541b6b6d79684d6933b2eeb2e5dcf48797cb29de0dc645a96e7b92c0"
+  },
+  "chapters": {
+    "1": {
+      "title": "边境之火",
+      "art": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+        "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+      }
+    },
+    "2": {
+      "title": "灰旗流亡",
+      "art": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+        "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+      }
+    },
+    "3": {
+      "title": "古老诸族",
+      "art": {
+        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+        "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+        "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+      }
+    }
+  },
+  "storyScenes": {
+    "C01-CH01-S01": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s01.png",
+      "sha256": "071b12d5d44e5ca3dc609700a7ec3ea7b219fed331724428dd3833d82bae01cf"
+    },
+    "C01-CH01-S02": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s02.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s02.png",
+      "sha256": "7bd1c7c9b50ebf538d503158fa29a4d28193524845b18cd983543f3596100112"
+    },
+    "C01-ARCH-REDSTONE": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
+      "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
+    },
+    "C01-CH01-S05": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s05.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch01-s05.png",
+      "sha256": "e20af417541b6b6d79684d6933b2eeb2e5dcf48797cb29de0dc645a96e7b92c0"
+    },
+    "C01-CH02-S06": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch02-s06.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch02-s06.png",
+      "sha256": "9f2cf7bbfe09d1bac8c15f4ace1f5b98296ee452495c847d22b971edc4d70f41"
+    },
+    "C01-SCENE-PUBLIC-RATIONS": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/scene-public-rations.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/scene-public-rations.png",
+      "sha256": "eb46595a4de0dbc92d7a3ef7664fa379920fed87e47cc2440885b871a3560e6a"
+    },
+    "C01-CH02-S09": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch02-s09.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch02-s09.png",
+      "sha256": "6ae627123578565d5e2724e979caaa414ff1495613c211b75b0dc64302746fe7"
+    },
+    "C01-ARCH-GRAY-CAMP": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-gray-camp.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/arch-gray-camp.png",
+      "sha256": "224b5d1940849e3929cd00b3f1699cf503552b01d5c7394e7092a6ec7de94136"
+    },
+    "C01-ARCH-THREE-BRIDGES": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
+      "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
+    },
+    "C01-ARCH-FIELD-HOSPITAL": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-field-hospital.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/arch-field-hospital.png",
+      "sha256": "301b08606571be0e7ae2643a603824f268a41d9d63db5069994652014d484697"
+    },
+    "C01-CH03-S14": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch03-s14.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch03-s14.png",
+      "sha256": "7c029f66c6fa894ea1056643178508a4984d49224f77f18d2959d3baaf50542f"
+    },
+    "C01-ARCH-SILVERWOOD": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
+      "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
+    },
+    "C01-CH05-S26": {
+      "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch05-s26.png",
+      "resourcePath": "res://assets/runtime-hd/narrative-static/ch05-s26.png",
+      "sha256": "b66d9441a5b3ffef0e844785a805a00eb8a20463b104410e1d7e005dd65a4bf0"
+    }
+  },
   "battleTotal": 16,
   "joinAfter": {
     "mirelle": 3,
