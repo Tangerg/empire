@@ -1,0 +1,76 @@
+{
+  "sourceGate": "Actual source perimeter alpha <= 1, retained without cleanup; alpha >= 2 would fail.",
+  "frames": [
+    {
+      "phase": "low-fumes",
+      "sourceSHA256": "94c2be76191e9777d5b0ed02719ccee642b4fd6756f76ceab296222cd671ca52",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 19,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 1
+        }
+      ],
+      "visualReview": "Full-resolution source black/white pairs and native six-background composites show no visible backing card, clipped outline, rectangular haze or colored matte fringe. The dark irregular soil is intentional subject matter."
+    },
+    {
+      "phase": "rising-fumes",
+      "sourceSHA256": "19d8b90853027ae556c9652b92e10fca971d0cfe5b850dd6f4f4ae70398235c6",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 32,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 1
+        }
+      ],
+      "visualReview": "Full-resolution source black/white pairs and native six-background composites show no visible backing card, clipped outline, rectangular haze or colored matte fringe. The dark irregular soil is intentional subject matter."
+    },
+    {
+      "phase": "plume-crest",
+      "sourceSHA256": "f957be770816c48cfa845de394579b6f131f8353d7fce878f89a408b9674070a",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 21,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 1
+        }
+      ],
+      "visualReview": "Full-resolution source black/white pairs and native six-background composites show no visible backing card, clipped outline, rectangular haze or colored matte fringe. The dark irregular soil is intentional subject matter."
+    },
+    {
+      "phase": "settling-wisps",
+      "sourceSHA256": "b21123d4cdd049ef53ae373e48657f0e1b7ec576532d0048bf89f89b0dc5b45c",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 76,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 1
+        }
+      ],
+      "visualReview": "Full-resolution source black/white pairs and native six-background composites show no visible backing card, clipped outline, rectangular haze or colored matte fringe. The dark irregular soil is intentional subject matter."
+    }
+  ],
+  "finalPadding": "Every final cell has 2 logical pixels of alpha 0 padding, 4 physical pixels at 2x.",
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeSixBackgroundsReviewed": true
+}

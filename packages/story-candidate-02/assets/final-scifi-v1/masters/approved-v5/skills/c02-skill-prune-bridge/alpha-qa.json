@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-prune-bridge",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 857288,
+  "partialAlphaPixels": 712145,
+  "opaquePixels": 3083,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    53,
+    82,
+    1219,
+    1197
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    53,
+    82,
+    35,
+    57
+  ],
+  "nearOpaquePixelCountGE240": 674475,
+  "diagnostic8pxErosion": {
+    "minAlpha": 248,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 668,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "54a304b5b3db03975ef099caae12127c98625d057db0b4e1ec75eaa22ae2672a",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

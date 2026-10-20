@@ -1,0 +1,51 @@
+{
+  "topicId": "c02-skill-redirect-wind",
+  "assetId": "C02-SFV1-skill-redirect-wind",
+  "label": "改风向",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-redirect-wind",
+    "topicId": "c02-skill-redirect-wind",
+    "label": "改风向",
+    "category": "skill",
+    "png": "runtime/skill/skill-redirect-wind.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 13,
+  "catalogIndexZeroBased": 13,
+  "sourceCropBox": [
+    319,
+    945,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual 48 px icons inspected and each subject independently matched on the complete 1254 px board. Catalog order agrees; alphabetical manifest ordering was not used. Legacy grid algorithm read only; manifest-complete.json is absent.",
+  "functionalMotif": "Mechanical wind vane with triangular tail on the left and round cup on the right, central spindle and two directional rotation arrows",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "legacyBackgroundConflict": "Magenta chroma background is not icon content.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-redirect-wind.png",
+  "runtimeReferenceSha256": "e69bbf34a4227343b9516fe092894320e192c618435a98a195701f7c277f0f32",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only source reference crop and separate QA derivatives. Generated source will be preserved unchanged."
+}

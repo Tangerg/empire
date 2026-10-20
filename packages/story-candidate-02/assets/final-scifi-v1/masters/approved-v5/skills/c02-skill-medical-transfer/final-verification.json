@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-medical-transfer",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "3c0e13c115a0d7f1095760b61dda48c1ceb7059aacb5bc406ff608f454ce4f3e",
+    "raw-native-v1.png": "3c0e13c115a0d7f1095760b61dda48c1ceb7059aacb5bc406ff608f454ce4f3e",
+    "native.png": "3c0e13c115a0d7f1095760b61dda48c1ceb7059aacb5bc406ff608f454ce4f3e",
+    "master.png": "3c0e13c115a0d7f1095760b61dda48c1ceb7059aacb5bc406ff608f454ce4f3e"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "The small chest plus, caster interiors, finger shapes and drone joint divisions simplify at 48 pixels. The reclined patient, stretcher and overhead care assembly remain legible. The opaque bounded care plane has some tonal interpolation, but is limited to the source-defined functional region and does not create an exterior light curtain. Bottom visible margin is 56 native pixels, below the requested 8 percent but complete.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:44:39.149177+00:00"
+}

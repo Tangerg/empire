@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-shield-chain",
+  "assetId": "C02-SFV1-skill-shield-chain",
+  "label": "星盾联防",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-shield-chain",
+    "topicId": "c02-skill-shield-chain",
+    "label": "星盾联防",
+    "category": "skill",
+    "png": "runtime/skill/skill-shield-chain.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 40,
+  "sourceBoardCellIndexZeroBased": 8,
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    935
+  ],
+  "sourceCropSize": [
+    304,
+    303
+  ],
+  "sourceMappingEvidence": "Actual 48x48 runtime icons visually inspected, then matched to full source boards by action; catalog order independently agrees. No inference from alphabetically sorted manifest.",
+  "functionalMotif": "Three cyan shield faces form a triangular linked protection network around a single four-point star.",
+  "semanticConflictDetected": false,
+  "sourceArtifacts": "Original magenta backing and legacy faint color fringe are reference artifacts, not motif requirements. New generated sources require true transparency; no legacy alpha cleanup is applied.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-shield-chain.png",
+  "runtimeReferenceSha256": "29885b9edc4663ef4b29e7516d36b79c05d6b85c3c60fba5a8630212bef55b74",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source crop and separate QA-only derivatives; generated alpha will remain unchanged."
+}

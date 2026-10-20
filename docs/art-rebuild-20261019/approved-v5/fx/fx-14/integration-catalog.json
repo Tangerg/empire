@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-14": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "low-fumes",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-14/low-fumes/master.png",
+          "sha256": "94c2be76191e9777d5b0ed02719ccee642b4fd6756f76ceab296222cd671ca52"
+        },
+        {
+          "phase": "rising-fumes",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-14/rising-fumes/master.png",
+          "sha256": "19d8b90853027ae556c9652b92e10fca971d0cfe5b850dd6f4f4ae70398235c6"
+        },
+        {
+          "phase": "plume-crest",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-14/plume-crest/master.png",
+          "sha256": "f957be770816c48cfa845de394579b6f131f8353d7fce878f89a408b9674070a"
+        },
+        {
+          "phase": "settling-wisps",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-14/settling-wisps/master.png",
+          "sha256": "b21123d4cdd049ef53ae373e48657f0e1b7ec576532d0048bf89f89b0dc5b45c"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  }
+}

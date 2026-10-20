@@ -1,0 +1,111 @@
+{
+  "topicId": "C01-FX-14",
+  "label": "墓园污染",
+  "semanticName": "graveyard-pollution",
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-04.png",
+  "sourceBoardSha256": "4761b6846cce254e16ef4cec54c62b30ae5ca3e6879cce60fa2c135be135ee02",
+  "sourceBoardMode": "RGB",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceRow1Based": 2,
+  "sourceRowBoundsXYXY": [
+    0,
+    314,
+    1254,
+    627
+  ],
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-14",
+    "topicId": "C01-FX-14",
+    "label": "墓园污染",
+    "category": "fx",
+    "png": "runtime/fx/fx-14.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "earlierAuditManifestAnchor": [
+    16,
+    24
+  ],
+  "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/fx-source-audit.json",
+  "sourceAuditSHA256": "4e7e77ceba7077e10a7b16ad7869fda6098ba618872a8a1ef3d136f6616c1cd2",
+  "cropChecks": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        319,
+        309,
+        622
+      ],
+      "path": "reference/original-f0.png",
+      "sha256": "08522fe08879ade0fa504fb03d723f97ce71e9c44b08e4a683b7cdea0e8534d7",
+      "matchesPriorAudit": true,
+      "sourceObservation": "low green-gray fumes above soil/name papers"
+    },
+    {
+      "phase": 1,
+      "box": [
+        319,
+        319,
+        622,
+        622
+      ],
+      "path": "reference/original-f1.png",
+      "sha256": "19707b3d68fce0e2fe6adb01432e9737027eca6947ed18c3db369e0296f8672a",
+      "matchesPriorAudit": true,
+      "sourceObservation": "rising twisting fumes and lifted papers"
+    },
+    {
+      "phase": 2,
+      "box": [
+        632,
+        319,
+        935,
+        622
+      ],
+      "path": "reference/original-f2.png",
+      "sha256": "b96cc607a656bfdc267214e8766e76db891243cdc86f784d56ab6a1706ba5c8a",
+      "matchesPriorAudit": true,
+      "sourceObservation": "largest curled pollution plume"
+    },
+    {
+      "phase": 3,
+      "box": [
+        945,
+        319,
+        1249,
+        622
+      ],
+      "path": "reference/original-f3.png",
+      "sha256": "150b2c0d2b30f85eeda5ed6eab60d7531bc04c1875ce3c335e9a43b2d931adf1",
+      "matchesPriorAudit": true,
+      "sourceObservation": "low fading wisps"
+    }
+  ],
+  "currentConsumer": "No literal C01-FX-14 or fx-14 consumer found in repository TS/TSX/JS/JSON outside assets; source catalog only.",
+  "storyIdentity": "Graveyard memory/name-paper pollution: restrained green-gray fumes, soil fragments and pale name papers. The story distinguishes the graveyard echoes from a blanket judgment that every echo is pollution. Preserve material motifs without adding a demon/skull or ordinary poison bottle.",
+  "storySource": "docs/story-candidates/candidate-01/deep-novel-v2/03-elder-peoples-novel.md lines5–81; topic catalog07-topic-catalog.md line440",
+  "proposedPhaseOrder": [
+    "low-fumes",
+    "rising-fumes",
+    "plume-crest",
+    "settling-wisps"
+  ],
+  "proposalStatus": "Parent approved the audited phase order before generation on 2026-10-20. Four equal 1/12-second frames, one play, no invented 420 ms consumer lifetime.",
+  "sourceAlphaWarning": "Original source is RGB and legacy alpha is unsuitable as a new master. Soil patch is semantic irregular material, not a matte rectangle."
+}

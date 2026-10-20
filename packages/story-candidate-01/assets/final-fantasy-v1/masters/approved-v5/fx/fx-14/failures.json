@@ -1,0 +1,26 @@
+[
+  {
+    "attempt": "rejected/low-fumes-attempt01-registration-reference",
+    "reason": "Valid isolated low-fume artwork, but taller phases did not preserve its soil position. Testing tall-phase layout as the common registration reference. This earlier low-phase candidate is not selected.",
+    "eligibleForIntegration": false,
+    "sourceSHA256": "4672ed566167a0efdc6353d9e6f972d5969380723515f04ae7dd06f75becdfca"
+  },
+  {
+    "attempt": "rejected/rising-fumes-attempt01-ground-drift",
+    "reason": "Material soil patch, grass, rocks and ground papers translated down about 93 source pixels compared with low-fumes. Violates fixed emitter and common canvas registration. No programmatic correction performed.",
+    "eligibleForIntegration": false,
+    "sourceSHA256": "4af5aa3aefa29f9b40c20808919214abf00d8ae1aec8219f1be74cdb4d1c2244"
+  },
+  {
+    "attempt": "rejected/rising-fumes-attempt02-ground-drift",
+    "reason": "Material soil patch translated down about 53 source pixels compared with low-fumes. Violates fixed emitter and common canvas registration. No programmatic correction performed.",
+    "eligibleForIntegration": false,
+    "sourceSHA256": "657423d97a8025b645fc0ad5f967b34c6577546e75fbf0b328c22475f9d0bf1e"
+  },
+  {
+    "attempt": "rejected/settling-wisps-attempt01-ground-drift",
+    "reason": "Soil patch, grass, rocks and ground papers translated down about 84 source pixels compared with the common tall-canvas master. No programmatic correction performed.",
+    "eligibleForIntegration": false,
+    "sourceSHA256": "d11ee139049de3864883a6e856c632eedbb546c853c84c0b6a3bb34edc7c2db3"
+  }
+]

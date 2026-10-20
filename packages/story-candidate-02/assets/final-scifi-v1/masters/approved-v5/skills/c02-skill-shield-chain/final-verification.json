@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-shield-chain",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "b128e3c0be691f4dd83e4a34d3880589b5d84979f5142f8e0b93e1905960a29b",
+    "raw-native-v1.png": "b128e3c0be691f4dd83e4a34d3880589b5d84979f5142f8e0b93e1905960a29b",
+    "native.png": "b128e3c0be691f4dd83e4a34d3880589b5d84979f5142f8e0b93e1905960a29b",
+    "master.png": "b128e3c0be691f4dd83e4a34d3880589b5d84979f5142f8e0b93e1905960a29b"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Polygon divisions and small ring-segment notches simplify at 48 pixels. Three separate shield silhouettes and their network remain clear. The broad cyan rims are opaque shapes rather than a glow. The visible 48/49-pixel side margins are below the requested 8 percent but no component is clipped.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:44:39.036185+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "topicId": "c02-skill-rescue-dash",
+  "label": "救援冲刺",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "Exactly two separate unarmed space-suited figures move toward the upper-right, joined at one central handclasp. The front figure leads the lower-left figure; dark helmets and armor are separated by broad gray planes. Local cyan speed ribbons preserve the rescue dash cue.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "The hand connection remains visible, but individual fingers, armor divisions and visor highlights simplify at 48 pixels. Dark outlines partly merge into black backgrounds while cyan rims and gray limbs preserve the two silhouettes. There are more speed-ribbon pieces than the three requested in the prompt, still bounded and local. Visible left/right margins of 26/22 native pixels are below the requested 8 percent but no component is clipped.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Faithful redraw from matching source; remove inherited color-key backing/fringe through new generation, not cleanup. No topic reassignment or invented mechanical effect."
+}

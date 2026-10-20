@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-rescue-dash",
+  "assetId": "C02-SFV1-skill-rescue-dash",
+  "label": "救援冲刺",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-rescue-dash",
+    "topicId": "c02-skill-rescue-dash",
+    "label": "救援冲刺",
+    "category": "skill",
+    "png": "runtime/skill/skill-rescue-dash.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 2,
+  "sourceBoardCellIndexZeroBased": 2,
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    309
+  ],
+  "sourceCropSize": [
+    303,
+    304
+  ],
+  "sourceMappingEvidence": "Actual 48x48 runtime icons visually inspected, then matched to full source boards by action; catalog order independently agrees. No inference from alphabetically sorted manifest.",
+  "functionalMotif": "Two dark suited figures move right while holding hands, with cyan speed strokes trailing left.",
+  "semanticConflictDetected": false,
+  "sourceArtifacts": "Original magenta backing and legacy faint color fringe are reference artifacts, not motif requirements. New generated sources require true transparency; no legacy alpha cleanup is applied.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-rescue-dash.png",
+  "runtimeReferenceSha256": "64581746eb2e6a08e928b390454eea4c454663c65f3e7129e2f4b13c6453298e",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source crop and separate QA-only derivatives; generated alpha will remain unchanged."
+}

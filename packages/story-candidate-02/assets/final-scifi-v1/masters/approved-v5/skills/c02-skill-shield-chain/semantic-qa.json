@@ -1,0 +1,20 @@
+{
+  "topicId": "c02-skill-shield-chain",
+  "label": "星盾联防",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "Exactly three blue shield panels form a triangular defense network, connected by segmented cyan arcs behind them. One four-point star occupies the open center. All shields, points, star and arcs are complete, with genuinely transparent negative spaces.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "Polygon divisions and small ring-segment notches simplify at 48 pixels. Three separate shield silhouettes and their network remain clear. The broad cyan rims are opaque shapes rather than a glow. The visible 48/49-pixel side margins are below the requested 8 percent but no component is clipped.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Faithful redraw from matching source; remove inherited color-key backing/fringe through new generation, not cleanup. No topic reassignment or invented mechanical effect."
+}

@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-rescue-dash",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "38a0f0af1389705e45f6b9af7f9ec556044cca1bd6fdcd149e2abe0746bcbac8",
+    "raw-native-v1.png": "38a0f0af1389705e45f6b9af7f9ec556044cca1bd6fdcd149e2abe0746bcbac8",
+    "native.png": "38a0f0af1389705e45f6b9af7f9ec556044cca1bd6fdcd149e2abe0746bcbac8",
+    "master.png": "38a0f0af1389705e45f6b9af7f9ec556044cca1bd6fdcd149e2abe0746bcbac8"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "The hand connection remains visible, but individual fingers, armor divisions and visor highlights simplify at 48 pixels. Dark outlines partly merge into black backgrounds while cyan rims and gray limbs preserve the two silhouettes. There are more speed-ribbon pieces than the three requested in the prompt, still bounded and local. Visible left/right margins of 26/22 native pixels are below the requested 8 percent but no component is clipped.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:44:38.804907+00:00"
+}

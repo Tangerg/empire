@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-resupply-ammo",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "8015f5d02ec666f4c6f9682a7d00496b3738bc945bf6e7b44f16f947c0689e2f",
+    "raw-native-v1.png": "8015f5d02ec666f4c6f9682a7d00496b3738bc945bf6e7b44f16f947c0689e2f",
+    "native.png": "8015f5d02ec666f4c6f9682a7d00496b3738bc945bf6e7b44f16f947c0689e2f",
+    "master.png": "8015f5d02ec666f4c6f9682a7d00496b3738bc945bf6e7b44f16f947c0689e2f"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Fine cap openings, panel grooves and small status bars simplify at 48 pixels. The three bright vertical cartridges and surrounding compact case remain distinct. The generated status display uses four broad bars rather than the prompt preference of three; this is a secondary nonsemantic detail.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:44:38.925444+00:00"
+}

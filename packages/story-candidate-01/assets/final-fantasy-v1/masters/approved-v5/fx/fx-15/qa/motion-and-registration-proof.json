@@ -1,0 +1,111 @@
+{
+  "measurement": "Unedited source alpha128 lower-bed silhouette below Y950; olive-leaf and mint-spirit color thresholds are diagnostic masks only, never applied to artwork.",
+  "frames": [
+    {
+      "phase": "spirit-onset",
+      "lowerBedAlpha128Bounds": [
+        238,
+        950,
+        1062,
+        1141
+      ],
+      "lowerBedAlpha128IoUWithFirst": 1.0,
+      "oliveLeafBedBounds": [
+        238,
+        930,
+        1062,
+        1141
+      ],
+      "mintSpiritDiagnosticAreaSourcePx": 92077,
+      "mintSpiritDiagnosticBounds": [
+        320,
+        529,
+        916,
+        1131
+      ],
+      "sourceHash": "3e5483d5589e9fbadb511f30bb89fd1e07974dfcb16754ed716a51d224f87947"
+    },
+    {
+      "phase": "spirit-growth",
+      "lowerBedAlpha128Bounds": [
+        234,
+        950,
+        1060,
+        1165
+      ],
+      "lowerBedAlpha128IoUWithFirst": 0.7176772775864116,
+      "oliveLeafBedBounds": [
+        234,
+        930,
+        1060,
+        1165
+      ],
+      "mintSpiritDiagnosticAreaSourcePx": 154156,
+      "mintSpiritDiagnosticBounds": [
+        282,
+        290,
+        972,
+        1137
+      ],
+      "sourceHash": "cc61c3cccef955c9b5386abe039db84d38d53f57cfff0bed7d2b5796f9e99800"
+    },
+    {
+      "phase": "leafy-spirit-peak",
+      "lowerBedAlpha128Bounds": [
+        230,
+        950,
+        1065,
+        1171
+      ],
+      "lowerBedAlpha128IoUWithFirst": 0.6635790548183298,
+      "oliveLeafBedBounds": [
+        230,
+        930,
+        1065,
+        1171
+      ],
+      "mintSpiritDiagnosticAreaSourcePx": 235758,
+      "mintSpiritDiagnosticBounds": [
+        308,
+        57,
+        1050,
+        1145
+      ],
+      "sourceHash": "71ae5adedc0b21583f5c479f8ceb886c8678cb66f977d5745a464a8356a84129"
+    },
+    {
+      "phase": "spirit-residue",
+      "lowerBedAlpha128Bounds": [
+        231,
+        950,
+        1065,
+        1172
+      ],
+      "lowerBedAlpha128IoUWithFirst": 0.6129733672818074,
+      "oliveLeafBedBounds": [
+        231,
+        957,
+        1065,
+        1172
+      ],
+      "mintSpiritDiagnosticAreaSourcePx": 52571,
+      "mintSpiritDiagnosticBounds": [
+        251,
+        598,
+        1047,
+        1161
+      ],
+      "sourceHash": "a31a16a926a6c3da261609705258943f8edc36fe3434e7a00f08b952f4de6cf4"
+    }
+  ],
+  "bedBottomContactSourceY": [
+    1141,
+    1165,
+    1171,
+    1172
+  ],
+  "bedBottomContactSpreadLogicalPx": 0.6921850079744817,
+  "lowerBedMinimumIoUWithFirst": 0.6129733672818074,
+  "interpretation": "Leaf-bed footprint stays near its common registration with disclosed subpixel logical variation; spirit wisp grows, reaches a leafy/branch peak, then settles into a narrower residual wisp. This is a nonloop single pass. No 4\u21921 continuity is required or claimed.",
+  "browserObserved": false
+}

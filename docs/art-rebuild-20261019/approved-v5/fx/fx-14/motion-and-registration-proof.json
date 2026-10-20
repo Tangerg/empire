@@ -1,0 +1,450 @@
+{
+  "topicId": "C01-FX-14",
+  "method": "Upper alpha128 components are measured only above y680 to separate motion from the fixed material patch. Warm paper interiors use fixed color and lane masks above y760. These are diagnostics only and never alter source pixels or placement.",
+  "materialRegistrationProof": "material-registration-proof.json",
+  "frames": [
+    {
+      "phase": "low-fumes",
+      "upperComponentsClippedAtY680": [
+        {
+          "bounds": [
+            399,
+            447,
+            682,
+            680
+          ],
+          "alpha128PixelCount": 27283,
+          "meanRGB": [
+            127.42257083165342,
+            127.42799545504526,
+            79.51621889088443
+          ],
+          "centroid": [
+            541.5276545834403,
+            580.2162885313198
+          ]
+        },
+        {
+          "bounds": [
+            831,
+            563,
+            967,
+            680
+          ],
+          "alpha128PixelCount": 8668,
+          "meanRGB": [
+            121.46065989847716,
+            121.59771573604061,
+            74.88509460083064
+          ],
+          "centroid": [
+            888.9240886017536,
+            626.908744808491
+          ]
+        }
+      ],
+      "airbornePaperWarmInteriors": [],
+      "wholeSourceAlphaMass": 363559.7254901961
+    },
+    {
+      "phase": "rising-fumes",
+      "upperComponentsClippedAtY680": [
+        {
+          "bounds": [
+            400,
+            90,
+            687,
+            680
+          ],
+          "alpha128PixelCount": 45436,
+          "meanRGB": [
+            130.8774540012325,
+            132.47141033541686,
+            81.0249801919183
+          ],
+          "centroid": [
+            552.0213487102737,
+            439.69317281450833
+          ]
+        },
+        {
+          "bounds": [
+            1009,
+            265,
+            1165,
+            384
+          ],
+          "alpha128PixelCount": 8804,
+          "meanRGB": [
+            151.09768287142208,
+            129.7654475238528,
+            100.69877328487051
+          ],
+          "centroid": [
+            1087.6953657428442,
+            323.3077010449796
+          ]
+        },
+        {
+          "bounds": [
+            799,
+            389,
+            979,
+            680
+          ],
+          "alpha128PixelCount": 18075,
+          "meanRGB": [
+            121.3318948824343,
+            123.27352697095435,
+            74.55230982019364
+          ],
+          "centroid": [
+            891.107939142462,
+            554.0511756569848
+          ]
+        },
+        {
+          "bounds": [
+            254,
+            444,
+            405,
+            568
+          ],
+          "alpha128PixelCount": 9571,
+          "meanRGB": [
+            152.50517187336746,
+            130.99508933235816,
+            101.31313342388465
+          ],
+          "centroid": [
+            333.2863859575802,
+            506.883397764079
+          ]
+        }
+      ],
+      "airbornePaperWarmInteriors": [
+        {
+          "lane": "left",
+          "warmInteriorBounds": [
+            265,
+            454,
+            393,
+            560
+          ],
+          "warmInteriorCentroid": [
+            333.6598976390953,
+            507.26778933465414
+          ],
+          "pixels": 6057
+        },
+        {
+          "lane": "right",
+          "warmInteriorBounds": [
+            1022,
+            275,
+            1156,
+            373
+          ],
+          "warmInteriorCentroid": [
+            1087.774291860882,
+            323.46504123341697
+          ],
+          "pixels": 5578
+        }
+      ],
+      "wholeSourceAlphaMass": 408146.18823529413
+    },
+    {
+      "phase": "plume-crest",
+      "upperComponentsClippedAtY680": [
+        {
+          "bounds": [
+            397,
+            88,
+            1018,
+            680
+          ],
+          "alpha128PixelCount": 165570,
+          "meanRGB": [
+            136.93776046385216,
+            139.8826055444827,
+            85.53003563447484
+          ],
+          "centroid": [
+            677.5515431539529,
+            424.12020897505585
+          ]
+        },
+        {
+          "bounds": [
+            909,
+            126,
+            1038,
+            256
+          ],
+          "alpha128PixelCount": 8295,
+          "meanRGB": [
+            153.3543098251959,
+            130.35201928872814,
+            101.4910186859554
+          ],
+          "centroid": [
+            971.2765521398433,
+            191.39553948161543
+          ]
+        },
+        {
+          "bounds": [
+            489,
+            244,
+            529,
+            274
+          ],
+          "alpha128PixelCount": 704,
+          "meanRGB": [
+            65.00852272727273,
+            64.70454545454545,
+            41.95028409090909
+          ],
+          "centroid": [
+            508.02272727272725,
+            257.0042613636364
+          ]
+        },
+        {
+          "bounds": [
+            835,
+            277,
+            883,
+            311
+          ],
+          "alpha128PixelCount": 869,
+          "meanRGB": [
+            66.51668584579977,
+            66.8849252013809,
+            41.96892980437284
+          ],
+          "centroid": [
+            857.5627157652474,
+            293.4257767548907
+          ]
+        },
+        {
+          "bounds": [
+            262,
+            307,
+            402,
+            447
+          ],
+          "alpha128PixelCount": 9958,
+          "meanRGB": [
+            157.2080739104238,
+            133.5313315926893,
+            103.5752159068086
+          ],
+          "centroid": [
+            336.45521188993774,
+            379.29102229363326
+          ]
+        },
+        {
+          "bounds": [
+            884,
+            458,
+            914,
+            499
+          ],
+          "alpha128PixelCount": 684,
+          "meanRGB": [
+            63.961988304093566,
+            63.71491228070175,
+            42.0687134502924
+          ],
+          "centroid": [
+            898.5248538011696,
+            479.16959064327483
+          ]
+        }
+      ],
+      "airbornePaperWarmInteriors": [
+        {
+          "lane": "left",
+          "warmInteriorBounds": [
+            273,
+            319,
+            391,
+            438
+          ],
+          "warmInteriorCentroid": [
+            336.6781881313131,
+            379.8186553030303
+          ],
+          "pixels": 6336
+        },
+        {
+          "lane": "right",
+          "warmInteriorBounds": [
+            918,
+            138,
+            1027,
+            244
+          ],
+          "warmInteriorCentroid": [
+            970.4540687512139,
+            191.39114391143912
+          ],
+          "pixels": 5149
+        }
+      ],
+      "wholeSourceAlphaMass": 513536.7568627451
+    },
+    {
+      "phase": "settling-wisps",
+      "upperComponentsClippedAtY680": [
+        {
+          "bounds": [
+            433,
+            374,
+            689,
+            680
+          ],
+          "alpha128PixelCount": 21072,
+          "meanRGB": [
+            122.6617312072893,
+            120.95985193621868,
+            75.08779422930904
+          ],
+          "centroid": [
+            557.4402050113895,
+            565.6189730447988
+          ]
+        },
+        {
+          "bounds": [
+            755,
+            466,
+            850,
+            552
+          ],
+          "alpha128PixelCount": 2847,
+          "meanRGB": [
+            101.20969441517387,
+            100.14014752370917,
+            61.97892518440464
+          ],
+          "centroid": [
+            816.0720056199508,
+            519.2240955391641
+          ]
+        },
+        {
+          "bounds": [
+            869,
+            535,
+            1026,
+            680
+          ],
+          "alpha128PixelCount": 7140,
+          "meanRGB": [
+            114.17282913165266,
+            112.50742296918767,
+            69.73977591036414
+          ],
+          "centroid": [
+            945.6754901960784,
+            617.1998599439776
+          ]
+        },
+        {
+          "bounds": [
+            205,
+            571,
+            371,
+            680
+          ],
+          "alpha128PixelCount": 10035,
+          "meanRGB": [
+            167.2417538614848,
+            140.7150971599402,
+            110.35445939212755
+          ],
+          "centroid": [
+            288.7237668161435,
+            631.4855007473842
+          ]
+        },
+        {
+          "bounds": [
+            1039,
+            614,
+            1159,
+            680
+          ],
+          "alpha128PixelCount": 4284,
+          "meanRGB": [
+            147.43837535014006,
+            123.54715219421102,
+            96.65756302521008
+          ],
+          "centroid": [
+            1089.1433239962653,
+            654.6540616246499
+          ]
+        }
+      ],
+      "airbornePaperWarmInteriors": [
+        {
+          "lane": "left",
+          "warmInteriorBounds": [
+            217,
+            578,
+            360,
+            697
+          ],
+          "warmInteriorCentroid": [
+            290.836056494046,
+            637.4723068402104
+          ],
+          "pixels": 7222
+        },
+        {
+          "lane": "right",
+          "warmInteriorBounds": [
+            1046,
+            624,
+            1168,
+            726
+          ],
+          "warmInteriorCentroid": [
+            1107.965805007124,
+            677.4842255241197
+          ],
+          "pixels": 4913
+        }
+      ],
+      "wholeSourceAlphaMass": 376361.22352941177
+    }
+  ],
+  "adjacentWholeSourceAlphaMassChangesPercent": [
+    12.263861923919398,
+    25.821769666189766,
+    -26.711921104022696
+  ],
+  "sequenceInterpretation": [
+    "Frame 1: two low curls over a fixed irregular soil patch and two stationary ground papers.",
+    "Frame 2: upper tips extend sharply upward; two additional paper scraps are airborne.",
+    "Frame 3: broad connected crest curls across the upper region; both airborne papers rise further and change angle; three small fragments appear.",
+    "Frame 4: the broad crest retires, leaving slender lower curls and one detached remnant; airborne papers descend toward the patch. The fixed ground papers remain."
+  ],
+  "continuityCaveats": [
+    "The four poses are strongly differentiated over only one third of a second. The initial left tip rises 357 source pixels (7.97 logical pixels) between frames 1 and 2, while frames 2 and 3 primarily broaden the crest. The cadence is not uniform and may feel abrupt at 12 fps.",
+    "The total alpha mass grows about 12.3%, then 25.8%, and drops about 26.7% at the settling frame. The last drop is an authored plume collapse, not a whole-frame opacity fade. It may read as a fast collapse.",
+    "The airborne paper cohort first appears in frame 2 and is separate from the two stationary ground papers. Do not claim those fixed ground papers lift or that every contour point follows a measured physical trajectory.",
+    "The final frame retains two low wisps, one detached remnant, falling papers and the soil. It is a nonblank terminal pose, not a seamless return to frame 1. No scene-removal time or 420 ms node lifetime is known without a consumer.",
+    "The material features are registered within 1 source pixel in the fixed-ROI search, and soil bounds vary by at most 2 source pixels (0.045 logical pixels). Their generated shading is not byte-identical, so subtle texture flicker remains possible.",
+    "At 32 pixels the smallest crest fragments and detached final remnant are subordinate, sometimes only a pixel. They read more clearly at 64 pixels. Browser and live runtime playback remain unobserved."
+  ],
+  "loop": false,
+  "browserObserved": false,
+  "liveGameObserved": false
+}

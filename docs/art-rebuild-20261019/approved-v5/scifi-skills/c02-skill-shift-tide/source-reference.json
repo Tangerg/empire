@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-skill-shift-tide",
+  "assetId": "C02-SFV1-skill-shift-tide",
+  "label": "潮线移动",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-shift-tide",
+    "topicId": "c02-skill-shift-tide",
+    "label": "潮线移动",
+    "category": "skill",
+    "png": "runtime/skill/skill-shift-tide.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 16,
+  "sourceCropBox": [
+    34,
+    35,
+    315,
+    318
+  ],
+  "sourceMappingEvidence": "Each actual 48px runtime icon was inspected first, then matched visually to the full original board. Correct actual card bounds were independently extracted after discovering nonuniform vertical card spacing. Topic-catalog order corroborates identity, not crop coordinates.",
+  "functionalMotif": "Wavy shoreline with moving teal water and three upward flow arrows along the coast.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": true,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-shift-tide.png",
+  "runtimeReferenceSha256": "b1c3c5707e52cc2fb68dc8ddc6b7f20fcdb5254e6e44a1356e4e256a2c4fae39",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork will remain unchanged; no chroma key, alpha cleanup or pixel repainting.",
+  "legacyGridInsetCropBox": [
+    5,
+    5,
+    309,
+    309
+  ],
+  "sourceCropBasis": "Exact subject-card bounds visually verified on the nonuniform skills-board-02 layout. Non-magenta connected rectangle bounds corroborate visual locations; no source color/alpha pixels modified.",
+  "legacyGridCropIssue": "Uniform 4x4 legacy 5px inset is not the exact card bounds for this board. For reroute-water it includes a thin neighboring-row fragment; preserved in source-legacy-grid-cell.png. The generation input is the clean original subject-card crop."
+}

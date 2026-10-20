@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-climate-correction",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 851410,
+  "partialAlphaPixels": 717870,
+  "opaquePixels": 3236,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    75,
+    94,
+    1180,
+    1158
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    75,
+    94,
+    74,
+    96
+  ],
+  "nearOpaquePixelCountGE240": 685040,
+  "diagnostic8pxErosion": {
+    "minAlpha": 252,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 689,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "bd55be5a63fcd314273575870806a8d562351813ef6d94591afd0e64f56ee24b",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

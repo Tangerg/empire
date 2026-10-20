@@ -1,0 +1,73 @@
+{
+  "topicId": "C01-FX-14",
+  "label": "墓园污染",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "low-fumes",
+    "rising-fumes",
+    "plume-crest",
+    "settling-wisps"
+  ],
+  "sourceCount": 4,
+  "imagegenAttemptCount": 8,
+  "rejectedAttemptCount": 4,
+  "referenceSnapshotCount": 10,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "sourceEdgeMaxima": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "sourceEdgeProof": "qa/source-edge-composite-proof.json",
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perFrameFitCropShiftFadeAlphaCleanup": false,
+  "native32And64SixBackgroundsReviewed": true,
+  "fullAndTerminalComparisonReviewed": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "parentStaticReview": "Accepted full/native/terminal static phase review on 2026-10-20. Fixed soil and ground papers; clear low, tall, crest, settling poses.",
+  "materialRegistrationProof": "qa/material-registration-proof.json",
+  "cohortReview": "qa/COHORT-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "actualCaveats": [
+    "The four poses are strongly differentiated over only one third of a second. The initial left tip rises 357 source pixels (7.97 logical pixels) between frames 1 and 2, while frames 2 and 3 primarily broaden the crest. The cadence is not uniform and may feel abrupt at 12 fps.",
+    "The total alpha mass grows about 12.3%, then 25.8%, and drops about 26.7% at the settling frame. The last drop is an authored plume collapse, not a whole-frame opacity fade. It may read as a fast collapse.",
+    "The airborne paper cohort first appears in frame 2 and is separate from the two stationary ground papers. Do not claim those fixed ground papers lift or that every contour point follows a measured physical trajectory.",
+    "The final frame retains two low wisps, one detached remnant, falling papers and the soil. It is a nonblank terminal pose, not a seamless return to frame 1. No scene-removal time or 420 ms node lifetime is known without a consumer.",
+    "The material features are registered within 1 source pixel in the fixed-ROI search, and soil bounds vary by at most 2 source pixels (0.045 logical pixels). Their generated shading is not byte-identical, so subtle texture flicker remains possible.",
+    "At 32 pixels the smallest crest fragments and detached final remnant are subordinate, sometimes only a pixel. They read more clearly at 64 pixels. Browser and live runtime playback remain unobserved."
+  ],
+  "exactAPNGTimingVerified": true,
+  "apngCount": 28,
+  "verifiedDecodedFrames": 112,
+  "canonicalTiming": {
+    "fps": 12,
+    "loop": false,
+    "numPlays": 1,
+    "frameDurationSeconds": "1/12",
+    "sequenceSeconds": "1/3",
+    "encodedFinalFrameHold": false,
+    "old420msRemovalApplies": false,
+    "sceneRemovalMs": null
+  },
+  "diagnosticTiming": "Separate slow-diagnostic-repeat APNGs run at 3 fps and repeat for inspection; they are not the runtime contract.",
+  "browserObserved": false,
+  "browserReason": "Known blocked browser/GPU environment reported by parent; no repeated escalation. Encoding and source-derived frames verified offline only.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoCodeRuntimeOrGitWrites": false
+}
