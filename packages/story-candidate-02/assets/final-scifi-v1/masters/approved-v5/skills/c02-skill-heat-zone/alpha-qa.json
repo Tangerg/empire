@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-heat-zone",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 901393,
+  "partialAlphaPixels": 666103,
+  "opaquePixels": 5020,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    48,
+    48,
+    1205,
+    1202
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    48,
+    48,
+    49,
+    52
+  ],
+  "nearOpaquePixelCountGE240": 595940,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 546,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "8b18b7662a98ac66e47c0a4a8ae68e92cbb89c0c9cf7e6cc4376c89a8c7cd6ee",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}
