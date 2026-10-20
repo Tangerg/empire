@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 378,
+    "formalBound": 382,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -17,7 +17,7 @@
       "narrative-static": 23,
       "skill": 48,
       "status": 24,
-      "terrain": 4
+      "terrain": 8
     },
     "rawPreservedTopics": 382,
     "liveGameVerified": 0,
@@ -3379,11 +3379,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-1/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254square capital paving; actual source masonry,drains,limestone and burgundy octagonal motifs preserved",
+        "export": "Canonical32/64 strips with exact oldalpha/topology, reviewed wholecanvas or680square windows; only1px RGB edges matched. Native shape/readability passed; patterned paving joints may reset at variant boundaries",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay ground consumers; mechanical cells not separate topics",
+        "liveGame": "pending; native mask/repeat diagnostics only, no full-map cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-CAPITAL-2",
@@ -3395,11 +3400,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-2/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254square capital paving; actual source masonry,drains,limestone and burgundy octagonal motifs preserved",
+        "export": "Canonical32/64 strips with exact oldalpha/topology, reviewed wholecanvas or680square windows; only1px RGB edges matched. Native shape/readability passed; patterned paving joints may reset at variant boundaries",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay ground consumers; mechanical cells not separate topics",
+        "liveGame": "pending; native mask/repeat diagnostics only, no full-map cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-CAPITAL-3",
@@ -3411,11 +3421,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-3/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-3.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254square capital paving; actual source masonry,drains,limestone and burgundy octagonal motifs preserved",
+        "export": "Canonical32/64 strips with exact oldalpha/topology, reviewed wholecanvas or680square windows; only1px RGB edges matched. Native shape/readability passed; patterned paving joints may reset at variant boundaries",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay ground consumers; mechanical cells not separate topics",
+        "liveGame": "pending; native mask/repeat diagnostics only, no full-map cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-CAPITAL-4",
@@ -3427,11 +3442,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/capital-4/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-4.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque source-native1254square capital paving; actual source masonry,drains,limestone and burgundy octagonal motifs preserved",
+        "export": "Canonical32/64 strips with exact oldalpha/topology, reviewed wholecanvas or680square windows; only1px RGB edges matched. Native shape/readability passed; patterned paving joints may reset at variant boundaries",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no current gameplay ground consumers; mechanical cells not separate topics",
+        "liveGame": "pending; native mask/repeat diagnostics only, no full-map cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-FORGE-1",

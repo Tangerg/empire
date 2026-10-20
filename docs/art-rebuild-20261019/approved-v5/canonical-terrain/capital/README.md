@@ -1,0 +1,3 @@
+# Capital canonical material family
+
+Four material sources retain dark masonry, ordered cobbles/drains, pale limestone/gutters and burgundy geometric palace paving. Full-canvas samples for connected1/2; equal680px windows for opaque3/4. Exact historical alpha/topology and canonical geometry are unchanged; only approved1px outer RGB edges matched. Native32/64 all-mask and mixed-variant diagnostics inspected. Some paving joints reset across variant boundaries, so exact edge equality does not imply invisible continuous masonry. Catalog/HD binding only, no current gameplay ground consumer or live-map acceptance. Eight total border+capital source identities produce80 mechanical cells per density, not80 completed designs.

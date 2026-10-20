@@ -10,9 +10,13 @@ const topics = [
   ['C01-TERRAIN-BORDER-2', 'nesw-16', 16],
   ['C01-TERRAIN-BORDER-3', 'variants', 4],
   ['C01-TERRAIN-BORDER-4', 'nesw-16', 16],
+  ['C01-TERRAIN-CAPITAL-1', 'nesw-16', 16],
+  ['C01-TERRAIN-CAPITAL-2', 'nesw-16', 16],
+  ['C01-TERRAIN-CAPITAL-3', 'variants', 4],
+  ['C01-TERRAIN-CAPITAL-4', 'variants', 4],
 ] as const;
 
-describe('canonical border terrain catalog contract', () => {
+describe('canonical border and capital terrain catalog contract', () => {
   it.each(topics)('resolves %s through HD without changing logical geometry', (topic, mode, count) => {
     const matches = manifest.assets.filter(asset => asset.topicId === topic);
     const high = hdManifest.assets.filter(asset => asset.topicId === topic);
@@ -45,9 +49,9 @@ describe('canonical border terrain catalog contract', () => {
     expect(() => validateCandidate01HdAsset(record, { ...hd, width: record.width })).toThrow();
   });
 
-  it('counts the four source identities independently from their forty derived cells', () => {
-    expect(new Set(topics.map(([topic]) => topic)).size).toBe(4);
-    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(40);
+  it('counts eight source identities independently from their eighty derived cells', () => {
+    expect(new Set(topics.map(([topic]) => topic)).size).toBe(8);
+    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(80);
   });
 });
 
@@ -56,7 +60,7 @@ describe('registered canonical terrain provenance', () => {
     const { createHash } = await import('node:crypto');
     const root = new URL('../../../../', import.meta.url);
     const catalog = JSON.parse(readFileSync(new URL('tools/art/canonical-terrain-overrides.json', root), 'utf8'));
-    const report = JSON.parse(readFileSync(new URL('docs/art-rebuild-20261019/approved-v5/canonical-terrain/border/formal-export.json', root), 'utf8'));
+    const report = ['border', 'capital'].flatMap(family => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/canonical-terrain/${family}/formal-export.json`, root), 'utf8')));
     const hash = (path: string) => createHash('sha256').update(readFileSync(new URL(path, root))).digest('hex');
     expect(Object.keys(catalog.assets).sort()).toEqual(topics.map(([topic]) => topic).sort());
     for (const [topic, entry] of Object.entries(catalog.assets) as [string, { source: string; sha256: string }][]) {
