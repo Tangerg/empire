@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-ARCH-TWIN-HILLS",
+  "rawMode": "RGB",
+  "nativeSize": [
+    1671,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "rawEqualsNativeEqualsMaster": true,
+  "sha256": "64aa4e54efd0ce8f31413aa5f82972796bb7a7c006830e754c6d1b38c490bbe0",
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "croppedExportSize": [
+    1664,
+    936
+  ],
+  "cropLossPx": {
+    "left": 4,
+    "top": 2,
+    "right": 3,
+    "bottom": 3
+  },
+  "cropReason": "Explicit approved-family 16:9 crop [4,2,1668,938]; selected native width is 1671, so this removes 4 px left and 3 px right without resizing. Full authored native master preserved byte-for-byte.",
+  "opaqueSceneIntentional": true,
+  "countsAsTransparentSprite": false,
+  "programmaticArtworkChanges": false,
+  "qaOnlyDerivatives": [
+    "qa-source-native-1664x936.png",
+    "qa-exact-crop-512x288.png",
+    "qa-logical-256x144.png",
+    "qa-cover-*.png",
+    "qa-covers-contact-sheet.png"
+  ],
+  "generationAttempts": 2,
+  "tool": "built-in image_gen",
+  "browserOrLiveVerification": false
+}
