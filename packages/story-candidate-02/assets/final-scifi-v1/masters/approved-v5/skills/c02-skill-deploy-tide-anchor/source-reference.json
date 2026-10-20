@@ -1,0 +1,57 @@
+{
+  "topicId": "c02-skill-deploy-tide-anchor",
+  "assetId": "C02-SFV1-skill-deploy-tide-anchor",
+  "label": "部署潮锚",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-deploy-tide-anchor",
+    "topicId": "c02-skill-deploy-tide-anchor",
+    "label": "部署潮锚",
+    "category": "skill",
+    "png": "runtime/skill/skill-deploy-tide-anchor.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 17,
+  "sourceCropBox": [
+    336,
+    35,
+    617,
+    318
+  ],
+  "sourceMappingEvidence": "Each actual48 runtime icon was inspected first, then matched visually to the full original board. Correct actual card bounds were independently extracted after discovering nonuniform vertical card spacing. Topic-catalog order corroborates identity, not crop coordinates.",
+  "functionalMotif": "Mechanical cylindrical tide-anchor with two curved side flukes and downward placement arrows.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": true,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-deploy-tide-anchor.png",
+  "runtimeReferenceSha256": "528af49a1ce34e22b17ea1abc31e13d69dd10f48e22e79207e88ed91594e0bb0",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork will remain unchanged; no chroma key, alpha cleanup or pixel repainting.",
+  "legacyGridInsetCropBox": [
+    319,
+    5,
+    622,
+    309
+  ],
+  "sourceCropBasis": "Exact subject-card bounds visually verified on the nonuniform skills-board-02 layout. Non-magenta connected rectangle bounds corroborate visual locations; no source color/alpha pixels modified.",
+  "legacyGridCropIssue": "Uniform4x4 legacy5px inset is not the exact card bounds for this board. For reroute-water it includes a thin neighboring-row fragment; preserved in source-legacy-grid-cell.png. The generation input is the clean original subject-card crop."
+}

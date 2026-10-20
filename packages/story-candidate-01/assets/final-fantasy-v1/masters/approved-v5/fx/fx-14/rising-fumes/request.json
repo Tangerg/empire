@@ -1,0 +1,8 @@
+{
+  "prompt": "Use case: precise-object-edit / compositing. Produce ONE 1254 x 1254 RGBA animation frame. Image 1 is the strict edit target and immutable layout. Image 2 is ONLY a reference for the taller upper fumes and flying papers. Preserve the exact soil, rocks, grass, ground papers and every pixel below row 700 from image 1. Do not use the displaced lower ground from image 2. Image 1's soil bottom is y1086, its grass tip is y640, left ground paper center is (372,930), right ground paper center is (916,925); these coordinates must remain unchanged.\nOnly edit the empty region ABOVE row 700 of image 1: draw the taller rising upper green-olive wisps and the two flying paper scraps seen in image 2. Let the left tall wisp reach y150 and the right reach y390. Reconnect those upper wisps to the UNCHANGED lower wisps of image 1 at row 700. Keep the exact original canvas and lower-half alignment, no translation, no zoom, no recentering. This is local upper-region inpainting, not a new composition.\nSame clean outlined chunky fantasy style, flat sage and olive shading, tan papers with dark abstract strokes. Genuine transparent exterior. No glow, blur, fog, backdrop, floor shadow or new material. The entire irregular soil island remains exactly as image 1. Output only the edited frame, not a comparison or sheet.\n",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-14/low-fumes/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-14/rejected/rising-fumes-attempt02-ground-drift/master.png"
+  ],
+  "transparent_background": true
+}

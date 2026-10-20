@@ -1,0 +1,301 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> empire-srpg-workspace@0.1.0 test
+> vitest run --maxWorkers=1 --minWorkers=1
+
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ✓ packages/battle-engine/src/__tests__/architecture-boundaries.test.ts (104 tests) 4020ms
+   ✓ dependency injection invariants > computes no answer nobody asks for 447ms
+   ✓ the battle screen is its own screen > emits no class or data attribute that nothing reads 811ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-assets.test.ts (171 tests) 360ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-map-scene.test.ts (12 tests) 236ms
+ ✓ packages/battle-engine/src/__tests__/level-lint.test.ts (50 tests) 48ms
+ ✓ packages/battle-engine/src/__tests__/advanced-battle-primitives.test.ts (10 tests) 54ms
+ ✓ packages/battle-engine/src/__tests__/determinism.test.ts (20 tests) 9793ms
+   ✓ replay > reproduces a full AI battle exactly 1965ms
+   ✓ replay > reproduces the same battle twice from the same seed 2987ms
+   ✓ replay > reports where a recording stops applying instead of failing silently 1657ms
+   ✓ replay > refuses a compatible-looking action stream when its ruleset or hashes differ 1618ms
+   ✓ replay > hands the simulator a state that shares nothing with the battle 1525ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-road-area.test.ts (11 tests) 431ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-black-camp-clearance.test.ts (11 tests) 86ms
+ ✓ packages/battle-engine/src/__tests__/campaign-battle-primitives.test.ts (11 tests) 45ms
+ ✓ packages/battle-engine/src/__tests__/kernel-resources.test.ts (13 tests) 23ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts (11 tests) 17ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-hero-appearances.test.ts (24 tests) 72ms
+ ✓ packages/game-ui/src/art/__tests__/battle-presentation.test.ts (8 tests) 90ms
+ ✓ packages/campaign-engine/src/__tests__/save-and-bridge.test.ts (17 tests) 38ms
+ ✓ packages/battle-engine/src/__tests__/engine-extension-seams.test.ts (10 tests) 48ms
+ ✓ packages/battle-engine/src/__tests__/battle-save.test.ts (11 tests) 533ms
+ ✓ packages/story-candidate-01/src/invariant-sweep.test.ts (1 test) 104800ms
+   ✓ invariant sweep over every shipped level > finds nothing wrong with any state any shipped level reaches 104799ms
+ ✓ packages/battle-engine/src/__tests__/extension-contracts.test.ts (6 tests) 25ms
+ ✓ tools/art/fortification_pilot.test.ts (12 tests) 63ms
+ ✓ packages/battle-engine/src/__tests__/tactical-grid.test.ts (26 tests) 162ms
+ ✓ packages/game-ui/src/ui/__tests__/selection.test.ts (13 tests) 125ms
+ ✓ packages/battle-engine/src/__tests__/content-pack.test.ts (8 tests) 28ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-environment.test.ts (6 tests) 25ms
+ ✓ packages/battle-engine/src/__tests__/command-authority.test.ts (10 tests) 3605ms
+   ✓ refusals are typed, not stringly relabelled > refuses every malformed order instead of raising a defect at the shell 3300ms
+ ✓ packages/battle-engine/src/__tests__/rules.test.ts (16 tests) 219ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-map-structure-presentations.test.ts (29 tests) 21ms
+ ✓ packages/battle-engine/src/__tests__/casting.test.ts (10 tests) 253ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-open-ground-materials.test.ts (3 tests) 2238ms
+   ✓ native meadow and wasteland keep their original semantic tones > replaces only the 68 hill, 56 scorched, and 30 non-authored scree cells across all campaign levels 1545ms
+   ✓ native meadow and wasteland keep their original semantic tones > registers the complete original families while keeping unused tones and snow catalog-only 626ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-earth-material.test.ts (4 tests) 355ms
+ ✓ packages/battle-engine/src/__tests__/damage-settlement.test.ts (8 tests) 27ms
+ ✓ packages/battle-engine/src/__tests__/content-isolation.test.ts (6 tests) 24ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-roderick-clearance.test.ts (7 tests) 89ms
+ ✓ packages/battle-engine/src/__tests__/combat.test.ts (12 tests) 72ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts (37 tests) 336ms
+   ✓ per-asset physical density > fails loudly if the registered physical file is missing instead of using canonical fallback 312ms
+ ✓ packages/battle-engine/src/__tests__/scenario.test.ts (9 tests) 16ms
+ ✓ packages/campaign-engine/src/__tests__/campaign-runtime.test.ts (7 tests) 25ms
+ ✓ packages/battle-engine/src/__tests__/extension-points.test.ts (8 tests) 36ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-actor-art.test.ts (5 tests) 63ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-cemetery-clearance.test.ts (5 tests) 97ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-field-material.test.ts (6 tests) 292ms
+ ✓ packages/editor/src/__tests__/document.test.ts (8 tests) 18ms
+ ✓ packages/battle-engine/src/__tests__/turn-order.test.ts (11 tests) 108ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-forest-material.test.ts (4 tests) 512ms
+   ✓ forest floor world sampling through the original Blob47 alpha > changes exactly 625 ground pieces across 11 actual maps and leaves rule/standing projections alone 436ms
+ ✓ packages/battle-engine/src/__tests__/unit-return.test.ts (8 tests) 39ms
+ ✓ packages/battle-engine/src/__tests__/zone-of-control.test.ts (10 tests) 33ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts (47 tests) 856ms
+ ✓ packages/battle-engine/src/__tests__/rule-references.test.ts (7 tests) 35ms
+ ✓ packages/story-candidate-01/src/twin-hills-layout.test.ts (5 tests) 99ms
+ ✓ packages/battle-engine/src/__tests__/objectives.test.ts (5 tests) 14ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-fx.test.ts (45 tests) 116ms
+ ✓ packages/campaign-engine/src/__tests__/shipped-contracts.test.ts (9 tests) 14ms
+ ✓ packages/battle-engine/src/__tests__/commanders.test.ts (5 tests) 26ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-silverwood-clearance.test.ts (6 tests) 106ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-crossing.test.ts (4 tests) 68ms
+ ✓ packages/game-ui/src/art/__tests__/unit-from-rules.test.ts (7 tests) 20ms
+ ✓ packages/battle-engine/src/__tests__/battlefield.test.ts (7 tests) 12ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-graveyard-material.test.ts (2 tests) 344ms
+   ✓ graveyard world surface and original four-slot catalog > registers all four original source slots without inventing a terrain consumer for tones 1–3 321ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-forge-material.test.ts (2 tests) 449ms
+   ✓ forge world surface and original four-slot catalog > registers all four original source slots without inventing a terrain consumer for tones 1–3 426ms
+ ✓ packages/story-candidate-01/src/campaign.test.ts (4 tests) 72ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-canonical-terrain.test.ts (34 tests) 351ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-edge-decoration.test.ts (5 tests) 61ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-stone-material.test.ts (3 tests) 256ms
+ ✓ packages/battle-engine/src/__tests__/reactions.test.ts (5 tests) 22ms
+ ✓ packages/battle-engine/src/__tests__/asking-versus-committing.test.ts (8 tests) 26ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-water-material.test.ts (5 tests) 45ms
+stdout | packages/story-candidate-01/src/balance.test.ts > candidate-01 balance envelope > lets objective-aware AI finish every chapter battle inside a hard action bound
+┌─────────┬──────────┬────────┬───────┬─────────┬────────┬─────────┬────────┬─────────┬────────┬─────────┬─────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ (index) │ id       │ winner │ turns │ actions │ allies │ enemies │ allyHp │ attacks │ skills │ signals │ reason                                              │ fallen                                                                                                                                                                                                                                                                        │
+├─────────┼──────────┼────────┼───────┼─────────┼────────┼─────────┼────────┼─────────┼────────┼─────────┼─────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 0       │ 'c01-01' │ 1      │ 7     │ 124     │ 8      │ 0       │ 69     │ 51      │ 4      │ 1       │ '敌军已被全歼'                                      │ 'field-knight,vanguard-2,north-shield,village-runner,vanguard-1,field-cleric,camp-bow,vanguard-cain,south-sword,vanguard-archer,south-bow'                                                                                                                                    │
+│ 1       │ 'c01-02' │ 1      │ 13    │ 243     │ 6      │ 0       │ 85     │ 59      │ 4      │ 1       │ '敌军已被全歼'                                      │ 'north-bank-guard,bridge-knight,river-scout,shield-1,shield-2,bridge-cleric,south-bank-bow,bow-1,bridge-guard-1,cain,refugee-2,unmarked-ballista,campaign-torren,battery-screen'                                                                                              │
+│ 2       │ 'c01-03' │ 1      │ 12    │ 241     │ 11     │ 3       │ 82     │ 36      │ 7      │ 1       │ '灰旗军 完成目标：在十八回合内夺取赤石或切断控制链' │ 'outer-screen,field-cleric,roderick,campaign-torren,redstone-wave-bow,siege-engineer,keep-reserve,redstone-shield'                                                                                                                                                            │
+│ 3       │ 'c01-04' │ 1      │ 26    │ 377     │ 6      │ 3       │ 100    │ 46      │ 2      │ 3       │ '灰旗军 完成目标：调查黑旗营地并带证人撤离'         │ 'south-patrol,campaign-mirelle,campaign-elin,camp-bow,scout-cleric,camp-mage,north-patrol,camp-inquisitor,scout-reserve,east-patrol'                                                                                                                                          │
+│ 4       │ 'c01-05' │ 1      │ 8     │ 161     │ 5      │ 7       │ 68     │ 60      │ 6      │ 1       │ '灰旗军 完成目标：拒绝焚村令并保护苇草村'           │ 'purifier-5,campaign-mirelle,campaign-bran,east-militia,campaign-torren,fire-support,north-purifier,village-guard,purifier-2,village-guard-2,villager-2,west-militia'                                                                                                         │
+│ 5       │ 'c01-06' │ 1      │ 8     │ 147     │ 8      │ 0       │ 76     │ 57      │ 11     │ 2       │ '敌军已被全歼'                                      │ 'pursuer-ballista,campaign-mirelle,river-mage,ford-shield,pursuer-1,pursuer-4,pursuer-3,white-river-cleric,north-pursuer,pursuer-2,pursuit-wave-sword,rearguard-2,campaign-bran,pursuit-wave-bow,campaign-elin,pursuit-wave-knight'                                           │
+│ 6       │ 'c01-07' │ 2      │ 6     │ 138     │ 7      │ 10      │ 84     │ 27      │ 1      │ 0       │ '敌军已被全歼'                                      │ 'campaign-mirelle,city-cleric,campaign-bran,engineer,south-militia,campaign-laiya'                                                                                                                                                                                            │
+│ 7       │ 'c01-08' │ 1      │ 10    │ 174     │ 7      │ 0       │ 88     │ 62      │ 7      │ 1       │ '敌军已被全歼'                                      │ 'campaign-bran,south-thief,mercenary-spear,thief-chief,thief-3,north-thief,warehouse-bow,thief-1,mercenary-guard,mercenary-scout,thief-2,fraud-shield,east-thief,fraud-enforcer'                                                                                              │
+│ 8       │ 'c01-09' │ 1      │ 6     │ 143     │ 4      │ 9       │ 28     │ 44      │ 8      │ 0       │ '灰旗军 完成目标：不用控制誓文释放伊芙拉'           │ 'campaign-mirelle,campaign-bran,escort-mage,prison-cleric,chain-breaker,east-breach-sword,campaign-torren,prison-scout,west-breach-guard,campaign-elin'                                                                                                                       │
+│ 9       │ 'c01-10' │ 2      │ 9     │ 178     │ 1      │ 8       │ 84     │ 50      │ 17     │ 1       │ '敌军已被全歼'                                      │ 'north-rider,royal-guard-1,campaign-ivra,campaign-mirelle,royal-mage,gray-scout,gray-rearguard,campaign-bran,roderick,south-rider,campaign-tasha,old-banner-cleric,campaign-torren,campaign-elin,campaign-laiya'                                                              │
+│ 10      │ 'c01-11' │ 1      │ 12    │ 201     │ 8      │ 0       │ 78     │ 59      │ 17     │ 1       │ '敌军已被全歼'                                      │ 'west-ghost,campaign-tasha,echo-3,echo-4,south-echo,campaign-mirelle,east-ghost,north-echo,echo-1,grave-inquisitor,echo-2,ossuary-guard,colossus'                                                                                                                             │
+│ 11      │ 'c01-12' │ 1      │ 6     │ 118     │ 9      │ 10      │ 68     │ 27      │ 10     │ 1       │ '灰旗军 完成目标：在塔底崩塌前关闭钟塔机构'         │ 'south-echo,oath-echo-2'                                                                                                                                                                                                                                                      │
+│ 12      │ 'c01-13' │ 1      │ 10    │ 198     │ 8      │ 0       │ 81     │ 71      │ 13     │ 1       │ '敌军已被全歼'                                      │ 'campaign-mirelle,west-archive-guard,south-archive-knight,campaign-tasha,archive-guard-2,archive-guard-1,campaign-ivra,central-archive-mage,archive-inquisitor,archive-knight,campaign-bran,exit-inquisitor,north-archive-bow,archive-cleric,archive-mage,east-archive-guard' │
+│ 13      │ 'c01-14' │ 1      │ 12    │ 220     │ 6      │ 0       │ 73     │ 86      │ 24     │ 2       │ '敌军已被全歼'                                      │ 'forge-guard-1,north-golem,golem-1,forge-bow,rune-rebel-2,south-artificer,forge-mage,forge-bow-guard,campaign-bran,forge-engineer,east-rune-shield,campaign-tasha,rune-rebel-1,campaign-torren,golem-2,forge-guard-2'                                                         │
+│ 14      │ 'c01-15' │ 2      │ 12    │ 236     │ 4      │ 2       │ 97     │ 96      │ 20     │ 0       │ '敌军已被全歼'                                      │ 'south-longbow,controlled-druid,controlled-longbow-2,controlled-walker,root-guard-2,campaign-mirelle,controlled-longbow-1,campaign-ivra,silverwood-cleric,north-longbow,root-guard-1,silverwood-scout,campaign-tasha,east-walker,campaign-bran,campaign-laiya'                │
+│ 15      │ 'c01-16' │ 2      │ 16    │ 340     │ 6      │ 6       │ 91     │ 61      │ 9      │ 1       │ '敌军已被全歼'                                      │ 'memory-1,memory-3,memory-5,campaign-mirelle,memory-4,campaign-ivra,memory-2,campaign-tasha,memory-6,memory-shield,campaign-bran,campaign-torren,campaign-laiya'                                                                                                              │
+└─────────┴──────────┴────────┴───────┴─────────┴────────┴─────────┴────────┴─────────┴────────┴─────────┴─────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+ ✓ packages/story-candidate-01/src/balance.test.ts (2 tests) 64417ms
+   ✓ candidate-01 balance envelope > lets objective-aware AI finish every chapter battle inside a hard action bound 19055ms
+   ✓ candidate-01 balance envelope > stays resolvable for cautious and aggressive allied AI profiles 45359ms
+ ✓ packages/story-candidate-01/src/levels.test.ts (5 tests) 69ms
+ ✓ tools/art/approved_catalog_bindings.test.ts (344 tests) 33489ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-CHAR-MIREL-01 in its owning manifest without inventing a playable consumer 4057ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-HUD-07 in its owning manifest without inventing a playable consumer 435ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-HUD-11 in its owning manifest without inventing a playable consumer 1641ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-CHAR-TASHA-01 in its owning manifest without inventing a playable consumer 633ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-CH01-S05 in its owning manifest without inventing a playable consumer 6204ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-CH01-S01 in its owning manifest without inventing a playable consumer 4328ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-ARCH-SILVERWOOD in its owning manifest without inventing a playable consumer 428ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-LORNE in its owning manifest without inventing a playable consumer 519ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-VILSA in its owning manifest without inventing a playable consumer 1649ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-SILVERWOOD in its owning manifest without inventing a playable consumer 1297ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-MOUNTAIN-FORGE in its owning manifest without inventing a playable consumer 389ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-HOLY-LIGHT in its owning manifest without inventing a playable consumer 409ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-GRAY-BANNER in its owning manifest without inventing a playable consumer 2055ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-CH05-S26 in its owning manifest without inventing a playable consumer 430ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-WASTELAND in its owning manifest without inventing a playable consumer 1027ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-MILITIA-MERCENARY in its owning manifest without inventing a playable consumer 721ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-DRAGON-COVENANT in its owning manifest without inventing a playable consumer 1423ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-FACTION-OATH-CONTROLLED in its owning manifest without inventing a playable consumer 355ms
+ ✓ packages/game-ui/src/art/__tests__/field-objects-from-rules.test.ts (5 tests) 39ms
+ ✓ packages/battle-engine/src/__tests__/action-system.test.ts (5 tests) 19ms
+ ✓ packages/battle-engine/src/__tests__/cross-theme-contracts.test.ts (3 tests) 17ms
+ ✓ packages/battle-engine/src/__tests__/ai.test.ts (7 tests) 872ms
+   ✓ ai driver > only ever emits legal actions and always reaches endTurn 860ms
+ ✓ packages/battle-engine/src/__tests__/state-cloning.test.ts (3 tests) 201ms
+ ✓ packages/battle-engine/src/__tests__/progression.test.ts (4 tests) 68ms
+ ✓ packages/game-ui/src/art/__tests__/terrain-from-rules.test.ts (6 tests) 13ms
+ ✓ packages/battle-engine/src/__tests__/ai-intents.test.ts (8 tests) 33ms
+ ✓ packages/battle-engine/src/__tests__/combat-plan.test.ts (4 tests) 24ms
+ ✓ packages/battle-engine/src/__tests__/statuses.test.ts (6 tests) 26ms
+ ✓ packages/battle-engine/src/__tests__/movement.test.ts (9 tests) 314ms
+ ✓ packages/battle-engine/src/__tests__/weapons.test.ts (5 tests) 21ms
+ ✓ packages/game-ui/src/art/__tests__/battlefield-layer.test.ts (4 tests) 10ms
+ ✓ packages/story-candidate-01/src/performance-budget.test.ts (1 test) 431ms
+   ✓ what the AI costs to run > keeps its spatial work per action inside a bounded budget 426ms
+ ✓ packages/battle-engine/src/__tests__/levels.test.ts (20 tests) 13063ms
+   ✓ built-in levels > 01-twin-hills.json > is playable: 12 AI-driven turns without an illegal action 4509ms
+   ✓ built-in levels > 02-three-bridges.json > is playable: 12 AI-driven turns without an illegal action 5328ms
+   ✓ built-in levels > 03-siege.json > is playable: 12 AI-driven turns without an illegal action 1982ms
+   ✓ built-in levels > 04-cliff-training.json > is playable: 12 AI-driven turns without an illegal action 1212ms
+ ✓ packages/battle-engine/src/__tests__/domain-model.test.ts (5 tests) 13ms
+ ✓ packages/game-ui/src/art/__tests__/runtime-raster.test.ts (4 tests) 14ms
+ ✓ packages/battle-engine/src/__tests__/spatial-rules.test.ts (5 tests) 16ms
+ ✓ packages/battle-engine/src/__tests__/overlays.test.ts (4 tests) 20ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-road-material.test.ts (2 tests) 228ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-documents.test.ts (4 tests) 10ms
+ ✓ packages/battle-engine/src/__tests__/unit-directive.test.ts (3 tests) 19ms
+ ✓ packages/battle-engine/src/__tests__/combat-modifiers.test.ts (2 tests) 1243ms
+   ✓ combat modifier pipeline > injects an isolated ruleset through BattleEngine and GameSession 1209ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-story-scenes.test.ts (14 tests) 25ms
+ ✓ packages/game-ui/src/ui/__tests__/battle-log.test.ts (6 tests) 7ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-world-material-tile.test.ts (3 tests) 22ms
+ ✓ packages/battle-engine/src/__tests__/careers.test.ts (3 tests) 18ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-narrative-props.test.ts (8 tests) 10ms
+ ✓ packages/game-ui/src/art/__tests__/picture-textures.test.ts (4 tests) 6ms
+ ✓ packages/story-candidate-02/src/skill-art.test.ts (5 tests) 19ms
+ ✓ packages/game-ui/src/art/__tests__/board-depth-order.test.ts (3 tests) 7ms
+ ✓ packages/battle-engine/src/__tests__/structures-combat.test.ts (2 tests) 12ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-ivra-cards.test.ts (4 tests) 17ms
+ ✓ packages/battle-engine/src/__tests__/hit-effects.test.ts (2 tests) 15ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-character-cards.test.ts (23 tests) 203ms
+ ✓ packages/battle-engine/src/__tests__/dependency-order.test.ts (4 tests) 6ms
+ ✓ packages/game-ui/src/art/__tests__/scene-viewport.test.ts (2 tests) 4ms
+ ✓ packages/experience-lab/src/index.test.ts (1 test) 12ms
+ ✓ tools/art/candidate_review_viewport.test.ts (2 tests) 3ms
+ ✓ packages/game-ui/src/ui/__tests__/ui.test.ts (38 tests) 13812ms
+   ✓ game controller > mounts a level, draws the board and fills the HUD 518ms
+   ✓ game controller > keeps authored hill elevation available in the hovered-cell inspector 784ms
+   ✓ game controller > leaves a region alone while it has nothing new to say 718ms
+   ✓ game controller > walks the cursor and commits with the keyboard 791ms
+   ✓ game controller > keeps authored roads below every tactical actor 359ms
+   ✓ game controller > selects a unit, previews the path, and shows a move range 322ms
+   ✓ game controller > opens the recruit modal on an owned castle and lists affordable units 403ms
+   ✓ game controller > draws and reports every structure a shipped level places 1462ms
+   ✓ game controller > reports the structure under the cursor, with its condition 1173ms
+   ✓ game controller > places an effect at the cell rather than drawing it there 1316ms
+   ✓ game controller > renders every built-in level without throwing 896ms
+   ✓ a battle you can come back to > saves the turn it is on and resumes into it 323ms
+   ✓ a battle you can come back to > reports a save this ruleset cannot honour instead of dying on it 322ms
+   ✓ a battle you can come back to > does not blame the save for a defect underneath it 339ms
+   ✓ a hex board > offers the six facings the tiling has, not four 335ms
+stderr | packages/game-ui/src/art/__tests__/two-backends-agree.test.ts
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+stderr | packages/game-ui/src/art/__tests__/two-backends-agree.test.ts > two backends draw the same board > projects only a visible selected actor above scenery, on its existing frame and lifetime
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ ✓ packages/game-ui/src/art/__tests__/two-backends-agree.test.ts (18 tests) 3967ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-02) 633ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-11) 983ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-03) 572ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-10) 469ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-01) 709ms
+ ✓ packages/editor/src/__tests__/editor.test.ts (18 tests) 7673ms
+   ✓ map editor > answers every intent its own markup declares 587ms
+   ✓ map editor > passes actual placed actor keys while keeping the unit palette type-only 705ms
+   ✓ map editor > retains cell-local roads while editing the authored Twin Hills level 595ms
+   ✓ map editor > paints terrain with the brush and records it in the exported level 481ms
+   ✓ map editor > drag-paints a whole run of tiles in one undo step 809ms
+   ✓ map editor > places and erases units 611ms
+   ✓ map editor > assigns building ownership with the owner tool 367ms
+   ✓ map editor > clears ownership when a building is painted over 561ms
+   ✓ map editor > flags a unit standing on impassable terrain 532ms
+   ✓ map editor > resizes the map, keeping the top-left content 345ms
+   ✓ map editor > round-trips: exported level loads back into a playable map 573ms
+   ✓ map editor > autosaves a draft that survives a reload 482ms
+   ✓ a general editor knows no particular game > draws with the art it was opened with, on the board and in the palette 561ms
+ ✓ packages/game-ui/src/ui/__tests__/campaign-game.test.ts (22 tests) 14001ms
+   ✓ candidate-01 campaign UI > enters the real battle controller and can return to campaign staging 1161ms
+   ✓ candidate-01 explicit scene availability > keeps brief-04 prose and chapter backdrop without resolving a missing scene 357ms
+   ✓ candidate-01 explicit scene availability > preserves navigation, save and battle reentry after brief-04 4214ms
+   ✓ candidate-01 explicit scene availability > preserves navigation, save and battle reentry after brief-10 878ms
+   ✓ candidate-01 explicit scene availability > preserves navigation, save and battle reentry after brief-13 6502ms
+ ✓ packages/editor/src/__tests__/tools.test.ts (12 tests) 7750ms
+   ✓ tools drive the editor > releases document shortcuts when the editor is disposed 381ms
+   ✓ tools drive the editor > selects every advertised tool by its shortcut 1185ms
+   ✓ tools drive the editor > renders the toolbox composed by its host and owns an isolated runtime copy 1160ms
+   ✓ tools drive the editor > paints a whole rectangle on release, as one undo step 1982ms
+   ✓ tools drive the editor > only cuts a cliff between orthogonal neighbours 1242ms
+   ✓ tools drive the editor > adopts what it samples into the palette 1788ms
+ ✓ packages/game-ui/src/art/__tests__/svg-board-surface.test.ts (7 tests) 103ms
+ ✓ packages/game-ui/src/ui/__tests__/event-presentation.test.ts (7 tests) 18ms
+ ✓ packages/game-ui/src/ui/__tests__/board-scaling.test.ts (4 tests) 2264ms
+   ✓ rescaling the field > changes the scale at most once per frame, however fast the input arrives 902ms
+   ✓ rescaling the field > settles even while the wheel keeps turning against the clamp 475ms
+   ✓ rescaling the field > says while it is rescaling, and stops saying it once it settles 868ms
+ ✓ packages/game-ui/src/ui/__tests__/actor-art-context.test.ts (3 tests) 1017ms
+   ✓ explicit unit art context through existing UI paths > draws distinct actor keys without adding presentation fields to state or saves 328ms
+   ✓ explicit unit art context through existing UI paths > passes actor identity to hover inspector and initiative, while recruitment stays type-only 674ms
+ ✓ packages/game-ui/src/ui/__tests__/board-decorations.test.ts (5 tests) 7ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-actor-consumers.test.ts (4 tests) 853ms
+   ✓ activated fixture through the real candidate provider > draws the named fixture through actual BoardView while a hidden selection stays hidden 845ms
+ ✓ packages/game-ui/src/application/__tests__/level-storage.test.ts (9 tests) 24ms
+ ❯ packages/story-candidate-01/src/presentation/candidate-01-field-post-board.test.ts (9 tests | 2 failed) 134891ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-03' without changing state 722ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-04' without changing state 480ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-07' without changing state 1838ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-08' without changing state 1492ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-09' without changing state 410ms
+   ✓ field-post consumers through the complete existing board path > draws every actor/building and all field-posts in 'c01-13' without changing state 3156ms
+   ✓ field-post consumers through the complete existing board path > keeps c01-04 campaign-mirelle hidden through repeated selection/movement and restores its standing placement 8165ms
+   × field-post consumers through the complete existing board path > keeps c01-04 south-patrol hidden through repeated selection/movement and restores its standing placement 15901ms
+     → Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × field-post consumers through the complete existing board path > keeps c01-04 scout-1 hidden through repeated selection/movement and restores its standing placement 102724ms
+     → Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ apps/game/src/main.test.ts (1 test | 1 failed) 6471ms
+   × game entry point > offers every way into the game from the title screen 6470ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ✓ packages/game-ui/src/ui/__tests__/candidate-ambient-fx-playback.test.ts (8 tests) 75ms
+ ✓ packages/game-ui/src/ui/__tests__/candidate-fx-playback.test.ts (1 test) 109ms
+ ✓ packages/game-ui/src/art/__tests__/frame-animation.test.ts (2 tests) 4ms
+ ✓ packages/game-ui/src/application/__tests__/campaign-storage.test.ts (3 tests) 9ms
+ ✓ packages/game-ui/src/art/__tests__/frame-clock.test.ts (2 tests) 7ms
+ ✓ apps/engine-demo/src/main.test.ts (1 test) 854ms
+   ✓ engine capability demo > runs forecasts and committed actions through the real engine 852ms
+ ✓ apps/editor/src/main.test.ts (1 test) 1159ms
+   ✓ editor entry point > boots onto a blank map with the palette mounted 1157ms
+ ✓ packages/game-ui/src/application/__tests__/battle-storage.test.ts (1 test) 4ms
+ ✓ apps/experience-lab/src/main.test.ts (1 test) 846ms
+   ✓ experience lab entry > presents a seed-player landing before the battle 845ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/main.test.ts > game entry point > offers every way into the game from the title screen
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  packages/story-candidate-01/src/presentation/candidate-01-field-post-board.test.ts > field-post consumers through the complete existing board path > keeps c01-04 south-patrol hidden through repeated selection/movement and restores its standing placement
+ FAIL  packages/story-candidate-01/src/presentation/candidate-01-field-post-board.test.ts > field-post consumers through the complete existing board path > keeps c01-04 scout-1 hidden through repeated selection/movement and restores its standing placement
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ Test Files  2 failed | 128 passed (130)
+      Tests  3 failed | 1734 passed (1737)
+   Start at  13:22:42
+   Duration  825.56s (transform 17.87s, setup 0ms, collect 144.00s, tests 443.59s, environment 94.91s, prepare 22.66s)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

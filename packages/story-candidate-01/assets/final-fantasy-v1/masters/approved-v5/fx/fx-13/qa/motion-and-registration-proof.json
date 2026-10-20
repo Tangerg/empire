@@ -1,0 +1,111 @@
+{
+  "measurement": "Unedited source alpha128 lower-patch silhouette below Y700; dark-earth and warm-fire color thresholds are diagnostic masks only, never applied to artwork.",
+  "frames": [
+    {
+      "phase": "cracked-earth",
+      "lowerPatchAlpha128Bounds": [
+        85,
+        700,
+        1195,
+        1134
+      ],
+      "lowerPatchAlpha128IoUWithFirst": 1.0,
+      "opaqueDarkEarthBounds": [
+        86,
+        612,
+        1194,
+        1133
+      ],
+      "warmFireDiagnosticAreaSourcePx": 68,
+      "warmFireDiagnosticBounds": [
+        465,
+        867,
+        820,
+        899
+      ],
+      "sourceHash": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4"
+    },
+    {
+      "phase": "ember-rise",
+      "lowerPatchAlpha128Bounds": [
+        86,
+        700,
+        1195,
+        1135
+      ],
+      "lowerPatchAlpha128IoUWithFirst": 0.9961099577757183,
+      "opaqueDarkEarthBounds": [
+        87,
+        612,
+        1194,
+        1134
+      ],
+      "warmFireDiagnosticAreaSourcePx": 11656,
+      "warmFireDiagnosticBounds": [
+        366,
+        529,
+        933,
+        1027
+      ],
+      "sourceHash": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773"
+    },
+    {
+      "phase": "flame-peak",
+      "lowerPatchAlpha128Bounds": [
+        86,
+        700,
+        1196,
+        1136
+      ],
+      "lowerPatchAlpha128IoUWithFirst": 0.9907333180103262,
+      "opaqueDarkEarthBounds": [
+        86,
+        600,
+        1195,
+        1135
+      ],
+      "warmFireDiagnosticAreaSourcePx": 63387,
+      "warmFireDiagnosticBounds": [
+        354,
+        294,
+        968,
+        1085
+      ],
+      "sourceHash": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b"
+    },
+    {
+      "phase": "ember-residue",
+      "lowerPatchAlpha128Bounds": [
+        86,
+        700,
+        1197,
+        1136
+      ],
+      "lowerPatchAlpha128IoUWithFirst": 0.987126716670483,
+      "opaqueDarkEarthBounds": [
+        87,
+        613,
+        1196,
+        1136
+      ],
+      "warmFireDiagnosticAreaSourcePx": 4899,
+      "warmFireDiagnosticBounds": [
+        360,
+        655,
+        915,
+        1073
+      ],
+      "sourceHash": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98"
+    }
+  ],
+  "patchBottomContactSourceY": [
+    1134,
+    1135,
+    1136,
+    1136
+  ],
+  "patchBottomContactSpreadLogicalPx": 0.044657097288676235,
+  "lowerPatchMinimumIoUWithFirst": 0.987126716670483,
+  "interpretation": "Earth footprint remains registered; fire/smoke rise and flare, then settle into low residual embers. This is a nonloop single pass. No 4\u21921 continuity is required or claimed.",
+  "browserObserved": false
+}

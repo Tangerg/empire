@@ -1,0 +1,176 @@
+{
+  "referencePhase": "rising-fumes",
+  "method": "Fixed source-coordinate material ROIs, alpha-weighted RGB absolute-difference search over +/-6 pixels. Diagnostic measurement only; no source or export movement.",
+  "rois": {
+    "left-ground-paper": [
+      250,
+      920,
+      480,
+      1045
+    ],
+    "right-ground-paper": [
+      800,
+      915,
+      1020,
+      1030
+    ],
+    "grass": [
+      220,
+      680,
+      410,
+      810
+    ],
+    "left-rock": [
+      250,
+      880,
+      360,
+      930
+    ],
+    "center-rock": [
+      480,
+      915,
+      565,
+      965
+    ],
+    "front-rock": [
+      620,
+      980,
+      725,
+      1030
+    ]
+  },
+  "phases": {
+    "low-fumes": {
+      "staticMaterialMatches": {
+        "left-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 6.509
+        },
+        "right-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 6.656
+        },
+        "grass": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 4.645
+        },
+        "left-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 5.822
+        },
+        "center-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 5.49
+        },
+        "front-rock": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 5.329
+        }
+      },
+      "soilExtrema": {
+        "leftTip": [
+          66,
+          858,
+          160,
+          1000
+        ],
+        "rightTip": [
+          1100,
+          850,
+          1189,
+          1000
+        ],
+        "bottomTip": [
+          500,
+          1080,
+          800,
+          1142
+        ]
+      }
+    },
+    "rising-fumes": {
+      "staticMaterialMatches": {
+        "left-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "right-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "grass": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "left-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "center-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "front-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        }
+      },
+      "soilExtrema": {
+        "leftTip": [
+          66,
+          857,
+          160,
+          1000
+        ],
+        "rightTip": [
+          1100,
+          850,
+          1189,
+          1000
+        ],
+        "bottomTip": [
+          500,
+          1080,
+          800,
+          1140
+        ]
+      }
+    }
+  }
+}
