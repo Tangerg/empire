@@ -12,6 +12,14 @@ from PIL import Image
 
 from export_overrides import ROOT, read_json, read_source, records, within
 
+# Cyclic phase order does not approve authored art or prove the 4 -> 1 seam.
+AMBIENT_PHASE_ORDERS = {
+    'C01-FX-09': ['rainfall', 'splash-onset', 'splash-crown', 'rain-renewal'],
+    'C01-FX-10': ['ripple-near', 'ripple-growing', 'ripple-wide', 'ripple-renewal'],
+    'C01-FX-11': ['gust-curl-a', 'gust-curl-b', 'gust-breakup', 'gust-renewal'],
+    'C01-FX-12': ['heat-curl-a', 'heat-curl-b', 'heat-split', 'heat-renewal'],
+}
+
 # Phase meaning is topic-specific. Enable further topics only with their reviewed order.
 PHASE_ORDERS = {
     'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate'],
@@ -22,6 +30,7 @@ PHASE_ORDERS = {
     'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
     'C01-FX-07': ['airborne-burst', 'falling-pieces', 'falling-remnants', 'settled-heap'],
     'C01-FX-08': ['clustered-echoes', 'rising-echoes', 'dissolving-echoes', 'wisp-remnants'],
+    **AMBIENT_PHASE_ORDERS,
 }
 
 
@@ -65,11 +74,12 @@ def plan(root, catalog):
         if (pack / 'masters').resolve() != pack.resolve() / 'masters':
             raise ValueError(f'{topic}: source masters must use the canonical owned directory')
         order = PHASE_ORDERS[topic]
+        loop = topic in AMBIENT_PHASE_ORDERS
         geometry = {'width': 128, 'height': 32, 'frameWidth': 32, 'frameHeight': 32, 'frames': 4, 'fps': 12}
         if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
                 or asset.get('category') != 'fx'
                 or any(type(asset.get(k)) is not int or asset[k] != v for k, v in geometry.items())
-                or asset.get('anchor') != [16, 16] or asset.get('loop') is not False
+                or asset.get('anchor') != [16, 16] or asset.get('loop') is not loop
                 or asset.get('blendMode') != 'normal'):
             raise ValueError(f'{topic}: inconsistent canonical FX contract')
         if (not hd or any(type(hd.get(k)) is not int or hd[k] != v
@@ -152,6 +162,12 @@ def plan(root, catalog):
                       'renderedCanvasSize': [v * density for v in size], 'sources': provenance,
                       'frames': frame_reports, 'pixelSha256': hashlib.sha256(sheet.tobytes()).hexdigest(),
                       'fps': asset['fps'], 'loop': asset['loop'], 'blendMode': asset['blendMode'],
+                      'playback': {'mode': 'continuous-loop' if loop else 'once-hold',
+                                   'sequenceDurationMs': asset['frames'] * 1000 / asset['fps'],
+                                   'afterLastFrame': 'wrap-to-first-frame' if loop else 'hold-last-frame',
+                                   'wrapTransition': [order[-1], order[0]] if loop else None,
+                                   'lifetimeOwner': 'consumer'},
+                      'loopClosureReview': 'required-separately' if loop else 'not-applicable',
                       'independentFrameFit': False, 'semanticMotionReview': 'required-separately',
                       'liveGamePlayback': 'not-performed'}
             planned.append((target, sheet, report))

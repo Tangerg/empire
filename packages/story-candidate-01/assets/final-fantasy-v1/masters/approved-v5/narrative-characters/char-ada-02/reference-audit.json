@@ -1,0 +1,193 @@
+{
+  "topicId": "C01-CHAR-ADA-02",
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+  "originalFullboardSha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+  "originalCell": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-02-original-cell.png",
+  "originalCellSha256": "e6c115bef5bae97e95947e090399b7a55eeb961db4495082c0f5feb5df83f71e",
+  "cropBoxXYXYExclusive": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "catalogSlotZeroBased": 41,
+  "originalAuditSource": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/audit.json",
+  "originalAuditSha256": "bb8d90cbaf22e7c1abd2428d9b02d399dfa970c450a50bf8b8cd885d6ff0ce7d",
+  "originalCardAudit": {
+    "fullName": "艾达·科尔",
+    "stage": "17-year-old royal-capital physician, final year 9",
+    "face": "Same brown-haired girl grown into an adolescent, hair tied back in low bun; not a middle-aged healer",
+    "emotion": "Serious, capable, slightly worried",
+    "pose": "Standing with one hand on satchel strap at viewer-left; other hand holds two bottles at viewer-right",
+    "costume": "Cream medic coat over teal clothing, brown belts/satchel, rolled bandages/supplies, blue-green and reddish medicine bottles",
+    "framing": "Full body and medical equipment on parchment, no hospital bed or patient scene",
+    "priority": "reconcile-before-generation",
+    "topicId": "C01-CHAR-ADA-02",
+    "catalog": {
+      "assetId": "C01-FFV1-CHAR-ADA-02",
+      "topicId": "C01-CHAR-ADA-02",
+      "label": "艾达 17 岁王都医师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ada-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card"
+    },
+    "status": "pending-remake",
+    "original": {
+      "catalogSlotZeroBased": 41,
+      "boardCellZeroBased": 3,
+      "quadrant": "BR",
+      "cropBoxXYXYExclusive": [
+        632,
+        632,
+        1249,
+        1249
+      ],
+      "board": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+        "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "exactCrop": {
+        "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-02-original-cell.png",
+        "repoRelativePath": null,
+        "sha256": "e6c115bef5bae97e95947e090399b7a55eeb961db4495082c0f5feb5df83f71e",
+        "dimensions": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "legacyRuntimeReproducesExactRGBA": true,
+      "mappingEvidence": [
+        {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+          "startLine": 75,
+          "endLine": 75,
+          "originalText": "    \"character-board-05.png\": [38, 39, 40, 41],"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "startLine": 54,
+          "endLine": 54,
+          "originalText": "- `C01-CHAR-ADA-02`：艾达 17 岁王都医师"
+        }
+      ]
+    },
+    "currentRuntime": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ada-02.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ada-02.png",
+      "sha256": "2db9c36e3c86f6660510efc2f5f57f41aa1fd5270a8d13db9a339479c12204f6",
+      "dimensions": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedIdentityRef": null,
+    "approvedIdentityReferenceExists": false,
+    "loreEvidence": [
+      {
+        "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+        "startLine": 61,
+        "endLine": 61,
+        "originalText": "| P2 | `C01-CHAR-ADA-02.png` | 王都医师 | 两国标签习惯、塔疗手套 |"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 54,
+        "endLine": 54,
+        "originalText": "- `C01-CHAR-ADA-02`：艾达 17 岁王都医师"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+        "startLine": 46,
+        "endLine": 52,
+        "originalText": "### 4.1 艾达·科尔：桥上孩子到联盟医师\n\n艾达在第二关 8 岁，来自维尔萨一侧。凯恩把她交给莱娅的牧师救治，她拒绝说自己是哪国人。\n\n第二章她与难民一起生活，学会给药瓶贴两种文字标签。第四章她在维恩港医署工作，第一次以莱娅名义拒绝帝国居民就医，随后承认自己借身份报复。第七章她成为王都医院的被控医师，也是解除控制后主动要求保留部分塔疗功能的人。\n\n她证明“释放”不等于拒绝王冠的一切功能，也证明儿童受害者长大后不会天然成为主角价值观的复制品。"
+      }
+    ],
+    "sourceMismatchFlags": [
+      {
+        "code": "brief_detail_gap",
+        "detail": "Original has two medicine bottles but no clearly legible two-language labels and no visible tower-healing gloves. Explicit brief requires label habit and tower-therapy gloves."
+      },
+      {
+        "code": "age_identity",
+        "detail": "Manifest/catalog explicitly age17; keep adolescent continuity with ADA01 rather than copying a generic adult city doctor."
+      },
+      {
+        "code": "no_named_approved_reference",
+        "detail": "No approved named Ada face; must be paired with the age8 identity, while transparent source is independent of any hospital background."
+      }
+    ],
+    "consumers": {
+      "directProductionTopicReferences": [],
+      "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+      "catalogPresenceIsNotConsumer": true,
+      "stageSelectorExists": false,
+      "liveGameVerified": false,
+      "state": "catalog-only-no-selected-consumer",
+      "channels": [],
+      "risk": "No shipped selector currently names this later/new card; rendering the file in an audit or catalog is not live integration."
+    },
+    "contractRef": "contracts.characterMasterAndCard",
+    "currentHdEntry": null,
+    "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation.",
+    "auditCheckpointMeaning": "Read-only source audit before this remake; runtime/consumer entries are historical checkpoint evidence, not a claim of current integration."
+  },
+  "references": [
+    {
+      "role": "original-board.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/references/original-board.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c"
+    },
+    {
+      "role": "original-cell.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-02-original-cell.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/references/original-cell.png",
+      "sha256": "e6c115bef5bae97e95947e090399b7a55eeb961db4495082c0f5feb5df83f71e"
+    },
+    {
+      "role": "approved-mirelle-stage01.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/references/approved-mirelle-stage01.png",
+      "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+    },
+    {
+      "role": "independent-card-background.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/references/independent-card-background.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+    },
+    {
+      "role": "approved-ada-medicine.png",
+      "sourcePath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/references/approved-ada-medicine.png",
+      "sha256": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281"
+    },
+    {
+      "role": "ada-age8-selected-master.png",
+      "sourcePath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/references/ada-age8-selected-master.png",
+      "sha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855"
+    }
+  ]
+}

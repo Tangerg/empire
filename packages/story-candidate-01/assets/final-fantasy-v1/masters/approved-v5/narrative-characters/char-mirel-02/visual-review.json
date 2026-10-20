@@ -1,0 +1,27 @@
+{
+  "dateUtc": "2026-10-20",
+  "status": "passed",
+  "nativeBlackWhite": "Both actual RGB composites reviewed; clean exterior, no painted backdrop, all full-source body/props intact. Hidden RGB outside alpha is preserved and is not a visible halo.",
+  "nativeCard": "192x224 opaque RGBA proof uses approved independent background and whole source144x216 at24,4, no foreground bbox fitting",
+  "consumerReview": "92x112 desktop,64x88 mobile,44x44 roster and96x112 HUD modeled crops inspected. Faces and primary silhouettes read. Current HUD square-cover convention can trim the extreme bottom of boots; face, hands and primary props remain present. This is an existing modeled consumer crop, not source clipping.",
+  "smallestSizeLimit": "At44x44 the medicine label marks/crack and tiny tool distinctions are not individually readable; the age/costume silhouette and colored primary prop read. No tiny-script readability claimed.",
+  "liveGameVerified": false,
+  "runtimeHdPublished": false,
+  "sourceModification": "None after image_gen output; selected raw/master byte-identical",
+  "identityAndStory": "Same approved mature female face and charcoal/cream keeper identity; strong lantern/book grips, three separated belt tools and removable name tags. No intact commanding seal.",
+  "reviewedFiles": {
+    "qa-native-white.png": "81714cafe1fd673d05762dcffba10c4a02be9c007bdfa958f40c1a1000350a58",
+    "qa-native-black.png": "b4302a7e08205a3c8937267ee2ce4c53f8a33264e378967d7d315f962d10e12d",
+    "qa-native-black-white.png": "22e329570cd8a0e907c861a56848be60eaadca29619b450c1887be69b273e862",
+    "card-preview.png": "9f2afee755581a3fcc2baf10e877b1ce0c4db3a87565b8921835f694291e12b0",
+    "qa-ui-desktop-dialogue.png": "c062ffda3b97037246a140c65887879c7342118ca3e9a210d939941c4283f84a",
+    "qa-ui-mobile-dialogue.png": "bb946084666031f3f8825ec86049a94e686646553987b0f655f289d4a50453ac",
+    "qa-ui-roster.png": "a68a95a71a517632f1448857c8c4b5b15fb47e151083edf94756ddfcb2717319",
+    "qa-ui-hud.png": "9289afa455138292810206d97e9f5c2eeb78c7b6a4fe06048e8a4633221baeb8"
+  },
+  "familyComparisons": {
+    "qa-three-card-and-ui-comparison.png": "c2c053ed8a2d07cc30605ebbd80a90d172748b967b0611878d410c6637846fd5",
+    "qa-three-character-transparent-proof.png": "b5fc8380a001aa0ead9d5691c1e8b9f7bcf8bc9dcb782ccf28ac0967bb18cddc",
+    "qa-stage-continuity-comparison.png": "2af0062ce88b4b8dbf7499a2cc98866fb7927fa22a4a7deddc636e77bd3da0d9"
+  }
+}

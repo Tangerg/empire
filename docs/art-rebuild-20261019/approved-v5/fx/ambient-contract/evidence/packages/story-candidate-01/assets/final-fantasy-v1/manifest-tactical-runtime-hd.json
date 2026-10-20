@@ -1,0 +1,1423 @@
+{
+  "schemaVersion": "candidate-01-runtime-hd-v2",
+  "assetCount": 201,
+  "categories": [
+    "combat-unit",
+    "mission-unit",
+    "terrain",
+    "interactive-structure",
+    "battle-prop",
+    "fx",
+    "environment",
+    "narrative-static"
+  ],
+  "assets": [
+    {
+      "topicId": "C01-BPROP-AFTERMATH-1",
+      "png": "runtime-hd/battle-prop/bprop-aftermath-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-2",
+      "png": "runtime-hd/battle-prop/bprop-aftermath-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-3",
+      "png": "runtime-hd/battle-prop/bprop-aftermath-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-AFTERMATH-4",
+      "png": "runtime-hd/battle-prop/bprop-aftermath-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-COVER-1",
+      "png": "runtime-hd/battle-prop/bprop-cover-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-COVER-2",
+      "png": "runtime-hd/battle-prop/bprop-cover-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-COVER-3",
+      "png": "runtime-hd/battle-prop/bprop-cover-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-COVER-4",
+      "png": "runtime-hd/battle-prop/bprop-cover-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-1",
+      "png": "runtime-hd/battle-prop/bprop-engineering-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-2",
+      "png": "runtime-hd/battle-prop/bprop-engineering-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-3",
+      "png": "runtime-hd/battle-prop/bprop-engineering-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-ENGINEERING-4",
+      "png": "runtime-hd/battle-prop/bprop-engineering-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-1",
+      "png": "runtime-hd/battle-prop/bprop-evidence-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-2",
+      "png": "runtime-hd/battle-prop/bprop-evidence-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-3",
+      "png": "runtime-hd/battle-prop/bprop-evidence-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-EVIDENCE-4",
+      "png": "runtime-hd/battle-prop/bprop-evidence-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-1",
+      "png": "runtime-hd/battle-prop/bprop-faction-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-2",
+      "png": "runtime-hd/battle-prop/bprop-faction-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-3",
+      "png": "runtime-hd/battle-prop/bprop-faction-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-FACTION-4",
+      "png": "runtime-hd/battle-prop/bprop-faction-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-1",
+      "png": "runtime-hd/battle-prop/bprop-hazard-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-2",
+      "png": "runtime-hd/battle-prop/bprop-hazard-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-3",
+      "png": "runtime-hd/battle-prop/bprop-hazard-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-HAZARD-4",
+      "png": "runtime-hd/battle-prop/bprop-hazard-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-1",
+      "png": "runtime-hd/battle-prop/bprop-life-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-2",
+      "png": "runtime-hd/battle-prop/bprop-life-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-3",
+      "png": "runtime-hd/battle-prop/bprop-life-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LIFE-4",
+      "png": "runtime-hd/battle-prop/bprop-life-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-1",
+      "png": "runtime-hd/battle-prop/bprop-logistics-1.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-2",
+      "png": "runtime-hd/battle-prop/bprop-logistics-2.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-3",
+      "png": "runtime-hd/battle-prop/bprop-logistics-3.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-BPROP-LOGISTICS-4",
+      "png": "runtime-hd/battle-prop/bprop-logistics-4.png",
+      "width": 128,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-ENV-TWIN-HILLS-GROUND",
+      "png": "runtime-hd/environment/env-twin-hills-ground.png",
+      "width": 1344,
+      "height": 832,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-01",
+      "png": "runtime-hd/fx/fx-01.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-02",
+      "png": "runtime-hd/fx/fx-02.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-03",
+      "png": "runtime-hd/fx/fx-03.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-04",
+      "png": "runtime-hd/fx/fx-04.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-05",
+      "png": "runtime-hd/fx/fx-05.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-06",
+      "png": "runtime-hd/fx/fx-06.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-07",
+      "png": "runtime-hd/fx/fx-07.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-08",
+      "png": "runtime-hd/fx/fx-08.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-09",
+      "png": "runtime-hd/fx/fx-09.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-10",
+      "png": "runtime-hd/fx/fx-10.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-11",
+      "png": "runtime-hd/fx/fx-11.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-12",
+      "png": "runtime-hd/fx/fx-12.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-13",
+      "png": "runtime-hd/fx/fx-13.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-14",
+      "png": "runtime-hd/fx/fx-14.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-15",
+      "png": "runtime-hd/fx/fx-15.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-16",
+      "png": "runtime-hd/fx/fx-16.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-17",
+      "png": "runtime-hd/fx/fx-17.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-18",
+      "png": "runtime-hd/fx/fx-18.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-19",
+      "png": "runtime-hd/fx/fx-19.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-20",
+      "png": "runtime-hd/fx/fx-20.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-21",
+      "png": "runtime-hd/fx/fx-21.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-22",
+      "png": "runtime-hd/fx/fx-22.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-23",
+      "png": "runtime-hd/fx/fx-23.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-FX-24",
+      "png": "runtime-hd/fx/fx-24.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-BAKER",
+      "png": "runtime-approved-v5/mission-unit/mission-baker@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "png": "runtime-approved-v5/mission-unit/mission-border-farmer@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-BRIDGE-LABORER",
+      "png": "runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-CARAVAN-ESCORT",
+      "png": "runtime-approved-v5/mission-unit/mission-caravan-escort@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-CEMETERY-CARETAKER",
+      "png": "runtime-approved-v5/mission-unit/mission-cemetery-caretaker@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-CITY-DOCTOR",
+      "png": "runtime-approved-v5/mission-unit/mission-city-doctor@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
+      "png": "runtime-approved-v5/mission-unit/mission-controlled-soldier@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+      "png": "runtime-approved-v5/mission-unit/mission-council-delegate@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-DETAINED-WITNESS",
+      "png": "runtime-approved-v5/mission-unit/mission-detained-witness@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-EVACUATION-DRIVER",
+      "png": "runtime-approved-v5/mission-unit/mission-evacuation-driver@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-FIELD-MESSENGER",
+      "png": "runtime-approved-v5/mission-unit/mission-field-messenger@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-FORGE-ARTISAN",
+      "png": "runtime-approved-v5/mission-unit/mission-forge-artisan@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
+      "png": "runtime-approved-v5/mission-unit/mission-mercenary-quartermaster@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-MINER",
+      "png": "runtime-approved-v5/mission-unit/mission-miner@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-NAME-REGISTRAR",
+      "png": "runtime-approved-v5/mission-unit/mission-name-registrar@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-NURSERY-CARETAKER",
+      "png": "runtime-approved-v5/mission-unit/mission-nursery-caretaker@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-ADULT",
+      "png": "runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-CHILD",
+      "png": "runtime-approved-v5/mission-unit/mission-refugee-child@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-RELEASED-VETERAN",
+      "png": "runtime-approved-v5/mission-unit/mission-released-veteran@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-RELIEF-COOK",
+      "png": "runtime-approved-v5/mission-unit/mission-relief-cook@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-SCRIBE",
+      "png": "runtime-approved-v5/mission-unit/mission-scribe@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-TOWN-MILITIA",
+      "png": "runtime-approved-v5/mission-unit/mission-town-militia@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-WALL-LABORER",
+      "png": "runtime-approved-v5/mission-unit/mission-wall-laborer@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-MISSION-WOUNDED",
+      "png": "runtime-approved-v5/mission-unit/mission-wounded@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-ARCHIVE-FURNACE",
+      "png": "runtime-approved-v5/interactive-structure/struct-archive-furnace@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-BALLISTA-EMPLACEMENT",
+      "png": "runtime-approved-v5/interactive-structure/struct-ballista-emplacement@2x.png",
+      "width": 696,
+      "height": 232,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-CAPITAL-GATE",
+      "png": "runtime-approved-v5/interactive-structure/struct-capital-gate@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-FIELD-HOSPITAL",
+      "png": "runtime-approved-v5/interactive-structure/struct-field-hospital@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-FORGE-GUN-POSITION",
+      "png": "runtime-approved-v5/interactive-structure/struct-forge-gun-position@2x.png",
+      "width": 696,
+      "height": 232,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-FORGE-WORKSHOP",
+      "png": "runtime-approved-v5/interactive-structure/struct-forge-workshop@2x.png",
+      "width": 744,
+      "height": 248,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-GRAY-FLAG-POINT",
+      "png": "runtime-approved-v5/interactive-structure/struct-gray-flag-point@2x.png",
+      "width": 636,
+      "height": 212,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
+      "png": "runtime-approved-v5/interactive-structure/struct-gray-oath-notice@2x.png",
+      "width": 696,
+      "height": 232,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-HOLY-MEDICINE-SHED",
+      "png": "runtime-approved-v5/interactive-structure/struct-holy-medicine-shed@2x.png",
+      "width": 720,
+      "height": 240,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-JOINT-GRANARY",
+      "png": "runtime-approved-v5/structure/struct-joint-granary@2x.png",
+      "width": 1032,
+      "height": 344,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-LORNE-KEEP",
+      "png": "runtime-approved-v5/structure/struct-lorne-keep@2x.png",
+      "width": 960,
+      "height": 320,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+      "png": "runtime-approved-v5/interactive-structure/struct-mercenary-depot@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-MILITARY-REGISTRY",
+      "png": "runtime-approved-v5/structure/struct-military-registry@2x.png",
+      "width": 960,
+      "height": 320,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-NAME-MEMORIAL",
+      "png": "runtime-approved-v5/interactive-structure/struct-name-memorial@2x.png",
+      "width": 708,
+      "height": 236,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+      "png": "runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png",
+      "width": 672,
+      "height": 224,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
+      "png": "runtime-approved-v5/interactive-structure/struct-old-city-tunnel@2x.png",
+      "width": 696,
+      "height": 232,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-PUBLIC-RATION-POINT",
+      "png": "runtime-approved-v5/interactive-structure/struct-public-ration-point@2x.png",
+      "width": 744,
+      "height": 248,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+      "png": "runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png",
+      "width": 960,
+      "height": 320,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+      "png": "runtime-approved-v5/structure/struct-repairable-gate@2x.png",
+      "width": 960,
+      "height": 320,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+      "png": "runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-THREE-BRIDGE-SPAN",
+      "png": "runtime-approved-v5/interactive-structure/struct-three-bridge-span@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+      "png": "runtime-approved-v5/interactive-structure/struct-wall-lift-gate@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+      "png": "runtime-approved-v5/interactive-structure/struct-wasteland-chevaux@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+      "png": "runtime-approved-v5/interactive-structure/struct-wounded-shelter@2x.png",
+      "width": 768,
+      "height": 256,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-1",
+      "png": "runtime-hd/terrain/terrain-border-1.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-2",
+      "png": "runtime-hd/terrain/terrain-border-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-3",
+      "png": "runtime-hd/terrain/terrain-border-3.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-4",
+      "png": "runtime-hd/terrain/terrain-border-4.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-1",
+      "png": "runtime-hd/terrain/terrain-capital-1.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-2",
+      "png": "runtime-hd/terrain/terrain-capital-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-3",
+      "png": "runtime-hd/terrain/terrain-capital-3.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-4",
+      "png": "runtime-hd/terrain/terrain-capital-4.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-1",
+      "png": "runtime-hd/terrain/terrain-forge-1.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-2",
+      "png": "runtime-hd/terrain/terrain-forge-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-3",
+      "png": "runtime-hd/terrain/terrain-forge-3.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-4",
+      "png": "runtime-hd/terrain/terrain-forge-4.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-1",
+      "png": "runtime-hd/terrain/terrain-graveyard-1.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-2",
+      "png": "runtime-hd/terrain/terrain-graveyard-2.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-3",
+      "png": "runtime-hd/terrain/terrain-graveyard-3.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-4",
+      "png": "runtime-hd/terrain/terrain-graveyard-4.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-1",
+      "png": "runtime-hd/terrain/terrain-oathlight-1.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-2",
+      "png": "runtime-hd/terrain/terrain-oathlight-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-3",
+      "png": "runtime-hd/terrain/terrain-oathlight-3.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-4",
+      "png": "runtime-hd/terrain/terrain-oathlight-4.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-1",
+      "png": "runtime-hd/terrain/terrain-river-1.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-2",
+      "png": "runtime-hd/terrain/terrain-river-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-3",
+      "png": "runtime-hd/terrain/terrain-river-3.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-4",
+      "png": "runtime-hd/terrain/terrain-river-4.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-1",
+      "png": "runtime-hd/terrain/terrain-silverwood-1.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-2",
+      "png": "runtime-hd/terrain/terrain-silverwood-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-3",
+      "png": "runtime-hd/terrain/terrain-silverwood-3.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-4",
+      "png": "runtime-hd/terrain/terrain-silverwood-4.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-1",
+      "png": "runtime-hd/terrain/terrain-wasteland-1.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-2",
+      "png": "runtime-hd/terrain/terrain-wasteland-2.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-3",
+      "png": "runtime-hd/terrain/terrain-wasteland-3.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-4",
+      "png": "runtime-hd/terrain/terrain-wasteland-4.png",
+      "width": 1024,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-ANCIENT-DRAGON",
+      "png": "runtime-approved-v5/combat-unit/unit-ancient-dragon@2x.png",
+      "width": 1024,
+      "height": 176,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-ARCHER",
+      "png": "runtime-approved-v5/combat-unit/unit-archer@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-ASSASSIN",
+      "png": "runtime-approved-v5/combat-unit/unit-assassin@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-AXE-BREAKER",
+      "png": "runtime-approved-v5/combat-unit/unit-axe-breaker@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-BALLISTA",
+      "png": "runtime-approved-v5/combat-unit/unit-ballista@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "png": "runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-BATTLE-MAGE",
+      "png": "runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-BERSERKER",
+      "png": "runtime-approved-v5/combat-unit/unit-berserker@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-CANNON-WAGON",
+      "png": "runtime-approved-v5/combat-unit/unit-cannon-wagon@2x.png",
+      "width": 896,
+      "height": 144,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+      "png": "runtime-approved-v5/combat-unit/unit-cemetery-colossus@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-CLERIC",
+      "png": "runtime-approved-v5/combat-unit/unit-cleric@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-DRUID",
+      "png": "runtime-approved-v5/combat-unit/unit-druid@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-EAGLE-SCOUT",
+      "png": "runtime-approved-v5/combat-unit/unit-eagle-scout@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-ENGINEER",
+      "png": "runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-GHOST",
+      "png": "runtime-approved-v5/combat-unit/unit-ghost@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "png": "runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-INQUISITOR",
+      "png": "runtime-approved-v5/combat-unit/unit-inquisitor@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "png": "runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-JAVELIN-HUNTER",
+      "png": "runtime-approved-v5/combat-unit/unit-javelin-hunter@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-KNIGHT",
+      "png": "runtime-approved-v5/combat-unit/unit-knight@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "png": "runtime-approved-v5/combat-unit/unit-lance-cavalry@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "png": "runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-MAGE",
+      "png": "runtime-approved-v5/combat-unit/unit-mage@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-RANGER",
+      "png": "runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-ARTIFICER",
+      "png": "runtime-approved-v5/combat-unit/unit-rune-artificer@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-SHIELD",
+      "png": "runtime-approved-v5/combat-unit/unit-rune-shield@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-SHAMAN",
+      "png": "runtime-approved-v5/combat-unit/unit-shaman@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-SILVER-LONGBOW",
+      "png": "runtime-approved-v5/combat-unit/unit-silver-longbow@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-SKELETON-GUARD",
+      "png": "runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-SPEARMAN",
+      "png": "runtime-approved-v5/combat-unit/unit-spearman@2x.png",
+      "width": 896,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-SPIRIT-FIRE",
+      "png": "runtime-approved-v5/combat-unit/unit-spirit-fire@2x.png",
+      "width": 928,
+      "height": 152,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-STONE-GOLEM",
+      "png": "runtime-approved-v5/combat-unit/unit-stone-golem@2x.png",
+      "width": 1152,
+      "height": 208,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
+      "width": 768,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-TEMPLAR",
+      "png": "runtime-approved-v5/combat-unit/unit-templar@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-TROLL",
+      "png": "runtime-approved-v5/combat-unit/unit-troll@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-WHITE-STAG-RIDER",
+      "png": "runtime-approved-v5/combat-unit/unit-white-stag-rider@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-WOLF-RIDER",
+      "png": "runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-WOODLAND-WALKER",
+      "png": "runtime-approved-v5/combat-unit/unit-woodland-walker@2x.png",
+      "width": 832,
+      "height": 128,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-UNIT-WYVERN-RIDER",
+      "png": "runtime-approved-v5/combat-unit/unit-wyvern-rider@2x.png",
+      "width": 1024,
+      "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-CH01-S05",
+      "png": "runtime-hd/narrative-static/ch01-s05.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH01-S01",
+      "png": "runtime-hd/narrative-static/ch01-s01.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "png": "runtime-hd/narrative-static/arch-three-bridges.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-REDSTONE",
+      "png": "runtime-hd/narrative-static/arch-redstone.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-SILVERWOOD",
+      "png": "runtime-hd/narrative-static/arch-silverwood.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH01-S02",
+      "png": "runtime-hd/narrative-static/ch01-s02.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH03-S14",
+      "png": "runtime-hd/narrative-static/ch03-s14.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-SCENE-PUBLIC-RATIONS",
+      "png": "runtime-hd/narrative-static/scene-public-rations.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH02-S06",
+      "png": "runtime-hd/narrative-static/ch02-s06.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH05-S26",
+      "png": "runtime-hd/narrative-static/ch05-s26.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-GRAY-CAMP",
+      "png": "runtime-hd/narrative-static/arch-gray-camp.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-FIELD-HOSPITAL",
+      "png": "runtime-hd/narrative-static/arch-field-hospital.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-LOAK-BAKERY",
+      "png": "runtime-hd/narrative-static/arch-loak-bakery.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-MERCENARY-MARKET",
+      "png": "runtime-hd/narrative-static/arch-mercenary-market.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-TWIN-HILLS",
+      "png": "runtime-hd/narrative-static/arch-twin-hills.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-FORGE-CITY",
+      "png": "runtime-hd/narrative-static/arch-forge-city.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-ANSEL-TOWER",
+      "png": "runtime-hd/narrative-static/arch-ansel-tower.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-BONE-TOWER",
+      "png": "runtime-hd/narrative-static/arch-bone-tower.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-CAPITAL",
+      "png": "runtime-hd/narrative-static/arch-capital.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-VEINPORT",
+      "png": "runtime-hd/narrative-static/arch-veinport.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "png": "runtime-hd/narrative-static/arch-dragon-covenant-ruin.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH03-S11",
+      "png": "runtime-hd/narrative-static/ch03-s11.png",
+      "width": 1254,
+      "height": 1254,
+      "pixelDensity": 9.796875
+    },
+    {
+      "topicId": "C01-CH02-S09",
+      "png": "runtime-hd/narrative-static/ch02-s09.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    },
+    {
+      "topicId": "C01-CH03-S16",
+      "png": "runtime-hd/narrative-static/ch03-s16.png",
+      "width": 1664,
+      "height": 936,
+      "pixelDensity": 6.5
+    }
+  ]
+}

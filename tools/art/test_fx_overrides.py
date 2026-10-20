@@ -9,7 +9,7 @@ import unittest
 from PIL import Image
 
 from export_overrides import PACKS, validate_alpha
-from export_fx_overrides import PHASE_ORDERS, export, validate_fx_alpha
+from export_fx_overrides import AMBIENT_PHASE_ORDERS, PHASE_ORDERS, export, validate_fx_alpha
 
 
 class FxTests(unittest.TestCase):
@@ -51,7 +51,7 @@ class FxTests(unittest.TestCase):
         self.manifest.write_text(json.dumps({'assets': [self.asset]}))
         self.hd_path.write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2',
                                           'assetCount': 1, 'assets': [self.hd]}))
-        self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {'C01-FX-01': self.entry}}))
+        self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {self.asset['topicId']: self.entry}}))
 
     def mutate_source(self, index, change):
         entry = self.entry['phases'][index]
@@ -124,6 +124,85 @@ class FxTests(unittest.TestCase):
                 self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {topic: entry}}))
                 with self.assertRaisesRegex(ValueError, 'semantic phase order'):
                     export(self.root, self.catalog)
+
+    def use_topic(self, topic, loop):
+        self.asset.update(topicId=topic, png=f'runtime/fx/fx-{topic[-2:]}.png', loop=loop)
+        self.hd.update(topicId=topic, png=f'runtime-hd/fx/fx-{topic[-2:]}.png')
+        for phase, name in zip(self.entry['phases'], PHASE_ORDERS[topic]):
+            phase['phase'] = name
+        self.write()
+
+    def test_ambient_topics_keep_cyclic_order_and_consumer_owned_lifetime(self):
+        expected = {
+            'C01-FX-09': ['rainfall', 'splash-onset', 'splash-crown', 'rain-renewal'],
+            'C01-FX-10': ['ripple-near', 'ripple-growing', 'ripple-wide', 'ripple-renewal'],
+            'C01-FX-11': ['gust-curl-a', 'gust-curl-b', 'gust-breakup', 'gust-renewal'],
+            'C01-FX-12': ['heat-curl-a', 'heat-curl-b', 'heat-split', 'heat-renewal'],
+        }
+        self.assertEqual(AMBIENT_PHASE_ORDERS, expected)
+        for topic, order in expected.items():
+            with self.subTest(topic=topic):
+                self.use_topic(topic, True)
+                before = {path: path.read_bytes() for path in self.root.rglob('*') if path.is_file()}
+                reports = export(self.root, self.catalog)
+                self.assertEqual(reports, export(self.root, self.catalog, True))
+                for path, raw in before.items():
+                    self.assertEqual(path.read_bytes(), raw, path)
+                for report in reports:
+                    self.assertEqual([p['phase'] for p in report['frames']], order)
+                    self.assertIs(report['loop'], True)
+                    self.assertEqual(report['fps'], 12)
+                    self.assertEqual(report['blendMode'], 'normal')
+                    self.assertEqual(report['logicalAnchor'], [16, 16])
+                    self.assertEqual(report['placement'], self.entry['placement'])
+                    self.assertEqual(report['playback'], {
+                        'mode': 'continuous-loop', 'sequenceDurationMs': 1000 / 3,
+                        'afterLastFrame': 'wrap-to-first-frame',
+                        'wrapTransition': [order[3], order[0]], 'lifetimeOwner': 'consumer',
+                    })
+                    self.assertEqual(report['loopClosureReview'], 'required-separately')
+                    self.assertEqual(report['semanticMotionReview'], 'required-separately')
+                    self.assertEqual(report['liveGamePlayback'], 'not-performed')
+                    self.assertFalse(report['independentFrameFit'])
+                    self.assertEqual([p['alpha']['edgeMaxAlpha'] for p in report['frames']], [0] * 4)
+                with Image.open(self.root / reports[0]['output']) as sheet:
+                    for i, phase in enumerate(self.entry['phases']):
+                        with Image.open(self.root / phase['source']) as source:
+                            self.assertEqual(sheet.crop((i * 32 + 4, 4, i * 32 + 28, 28)).tobytes(),
+                                             source.tobytes())
+
+    def test_ambient_loop_flag_is_required_as_an_exact_boolean_before_writes(self):
+        for topic in AMBIENT_PHASE_ORDERS:
+            for wrong in (False, 1, 0, None, 'true'):
+                with self.subTest(topic=topic, wrong=wrong):
+                    self.use_topic(topic, wrong)
+                    self.assert_rejected('canonical FX contract')
+
+    def test_one_shot_topics_do_not_silently_become_loops(self):
+        for topic in PHASE_ORDERS.keys() - AMBIENT_PHASE_ORDERS.keys():
+            with self.subTest(topic=topic):
+                self.use_topic(topic, True)
+                self.assert_rejected('canonical FX contract')
+
+    def test_loop_order_cannot_be_rotated_or_given_one_shot_labels(self):
+        self.use_topic('C01-FX-09', True)
+        original = copy.deepcopy(self.entry['phases'])
+        for names in (PHASE_ORDERS['C01-FX-09'][1:] + PHASE_ORDERS['C01-FX-09'][:1],
+                      PHASE_ORDERS['C01-FX-01']):
+            self.entry['phases'] = copy.deepcopy(original)
+            for phase, name in zip(self.entry['phases'], names):
+                phase['phase'] = name
+            self.write()
+            self.assert_rejected('semantic phase order')
+
+    def test_one_shot_report_does_not_assign_hit_lifetime_to_every_effect(self):
+        for report in export(self.root, self.catalog):
+            self.assertEqual(report['playback'], {
+                'mode': 'once-hold', 'sequenceDurationMs': 1000 / 3,
+                'afterLastFrame': 'hold-last-frame', 'wrapTransition': None,
+                'lifetimeOwner': 'consumer',
+            })
+            self.assertEqual(report['loopClosureReview'], 'not-applicable')
 
     def test_hd_native_fade_retains_every_pixel_without_alpha_normalization(self):
         for index in range(4):

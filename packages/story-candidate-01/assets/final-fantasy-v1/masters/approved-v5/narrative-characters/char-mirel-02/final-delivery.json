@@ -1,0 +1,64 @@
+{
+  "selected": [
+    {
+      "topicId": "C01-CHAR-MIREL-02",
+      "masterSha256": "369abab4966ebd99cf89e2870ed53e5becb2ab4f19a9049cd13678c4a83ef380",
+      "rawSha256": "369abab4966ebd99cf89e2870ed53e5becb2ab4f19a9049cd13678c4a83ef380",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha": [
+        0,
+        254
+      ],
+      "edgeMaxAlpha": 1,
+      "qa": "passed source/card/modeled-consumer only"
+    },
+    {
+      "topicId": "C01-CHAR-ADA-01",
+      "masterSha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+      "rawSha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha": [
+        0,
+        254
+      ],
+      "edgeMaxAlpha": 1,
+      "qa": "passed source/card/modeled-consumer only"
+    },
+    {
+      "topicId": "C01-CHAR-ADA-02",
+      "masterSha256": "c9fbf515637f9189230b0871178a5d8cd6c0c9cc4ec75cefb1d727de47e6f7f0",
+      "rawSha256": "c9fbf515637f9189230b0871178a5d8cd6c0c9cc4ec75cefb1d727de47e6f7f0",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha": [
+        0,
+        254
+      ],
+      "edgeMaxAlpha": 1,
+      "qa": "passed source/card/modeled-consumer only"
+    }
+  ],
+  "builtInImageGenCalls": 6,
+  "selectedAttemptPerTopic": 2,
+  "failedAttempts": [
+    "Mirelle02 attempt1 edge alpha2",
+    "Ada02 attempt1 extra satchel vial"
+  ],
+  "supersededAttempts": [
+    "Ada01 attempt1; mechanical checks pass; cautious perimeter retry, no proven visible-halo defect"
+  ],
+  "noMainRepoOrGitWrites": true,
+  "noRuntimeHdOrSelectorChange": true,
+  "allThreeCatalogOnly": true
+}

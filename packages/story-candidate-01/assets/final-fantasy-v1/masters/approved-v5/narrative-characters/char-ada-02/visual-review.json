@@ -1,0 +1,27 @@
+{
+  "dateUtc": "2026-10-20",
+  "status": "passed",
+  "nativeBlackWhite": "Both actual RGB composites reviewed; clean exterior, no painted backdrop, all full-source body/props intact. Hidden RGB outside alpha is preserved and is not a visible halo.",
+  "nativeCard": "192x224 opaque RGBA proof uses approved independent background and whole source144x216 at24,4, no foreground bbox fitting",
+  "consumerReview": "92x112 desktop,64x88 mobile,44x44 roster and96x112 HUD modeled crops inspected. Faces and primary silhouettes read. Current HUD square-cover convention can trim the extreme bottom of boots; face, hands and primary props remain present. This is an existing modeled consumer crop, not source clipping.",
+  "smallestSizeLimit": "At44x44 the medicine label marks/crack and tiny tool distinctions are not individually readable; the age/costume silhouette and colored primary prop read. No tiny-script readability claimed.",
+  "liveGameVerified": false,
+  "runtimeHdPublished": false,
+  "sourceModification": "None after image_gen output; selected raw/master byte-identical",
+  "identityAndStory": "Recognizable same Ada matured to young medic with longer face/body and low brown bun, practical cream/teal coat and plain gloves. The sole held medicine bottle remains; extra satchel vial removed in selected attempt2.",
+  "reviewedFiles": {
+    "qa-native-white.png": "b8be80172bc592ef28397e61f02f6e3ddccc04378ede8660812b945be892e824",
+    "qa-native-black.png": "e72d32459f278452e149a80ff0643f511bb674a300df191d807261ba7f86a08f",
+    "qa-native-black-white.png": "e41c217c0f43c696c677e36133154117b06b36f247029f1df47ef4490d272367",
+    "card-preview.png": "45a61e5ba760bfb99dc70c3be90e496cbaaca151c425c645fb4ff971b90b7469",
+    "qa-ui-desktop-dialogue.png": "545c9e9a44b78b645cf5620ee373141adcfb132ed0fb6a3ebcecc9441ca951be",
+    "qa-ui-mobile-dialogue.png": "44802e5426625f168bf136b5ab959e79651cce0b95fb56055512c65af0496ba6",
+    "qa-ui-roster.png": "40307d00fb83d9dc4047fb5e60449917de62153e83650dbed07fd12004f890c7",
+    "qa-ui-hud.png": "a68b2c5ec9cebaad9d251956c9bb3d88d6635fafdbe72b98746f97e1372d7395"
+  },
+  "familyComparisons": {
+    "qa-three-card-and-ui-comparison.png": "c2c053ed8a2d07cc30605ebbd80a90d172748b967b0611878d410c6637846fd5",
+    "qa-three-character-transparent-proof.png": "b5fc8380a001aa0ead9d5691c1e8b9f7bcf8bc9dcb782ccf28ac0967bb18cddc",
+    "qa-stage-continuity-comparison.png": "2af0062ce88b4b8dbf7499a2cc98866fb7927fa22a4a7deddc636e77bd3da0d9"
+  }
+}

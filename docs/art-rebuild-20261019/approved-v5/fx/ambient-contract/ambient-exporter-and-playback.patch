@@ -1,0 +1,229 @@
+--- a/tools/art/export_fx_overrides.py
++++ b/tools/art/export_fx_overrides.py
+@@ -12,6 +12,14 @@
+ 
+ from export_overrides import ROOT, read_json, read_source, records, within
+ 
++# Cyclic phase order does not approve authored art or prove the 4 -> 1 seam.
++AMBIENT_PHASE_ORDERS = {
++    'C01-FX-09': ['rainfall', 'splash-onset', 'splash-crown', 'rain-renewal'],
++    'C01-FX-10': ['ripple-near', 'ripple-growing', 'ripple-wide', 'ripple-renewal'],
++    'C01-FX-11': ['gust-curl-a', 'gust-curl-b', 'gust-breakup', 'gust-renewal'],
++    'C01-FX-12': ['heat-curl-a', 'heat-curl-b', 'heat-split', 'heat-renewal'],
++}
++
+ # Phase meaning is topic-specific. Enable further topics only with their reviewed order.
+ PHASE_ORDERS = {
+     'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate'],
+@@ -22,6 +30,7 @@
+     'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
+     'C01-FX-07': ['airborne-burst', 'falling-pieces', 'falling-remnants', 'settled-heap'],
+     'C01-FX-08': ['clustered-echoes', 'rising-echoes', 'dissolving-echoes', 'wisp-remnants'],
++    **AMBIENT_PHASE_ORDERS,
+ }
+ 
+ 
+@@ -65,11 +74,12 @@
+         if (pack / 'masters').resolve() != pack.resolve() / 'masters':
+             raise ValueError(f'{topic}: source masters must use the canonical owned directory')
+         order = PHASE_ORDERS[topic]
++        loop = topic in AMBIENT_PHASE_ORDERS
+         geometry = {'width': 128, 'height': 32, 'frameWidth': 32, 'frameHeight': 32, 'frames': 4, 'fps': 12}
+         if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
+                 or asset.get('category') != 'fx'
+                 or any(type(asset.get(k)) is not int or asset[k] != v for k, v in geometry.items())
+-                or asset.get('anchor') != [16, 16] or asset.get('loop') is not False
++                or asset.get('anchor') != [16, 16] or asset.get('loop') is not loop
+                 or asset.get('blendMode') != 'normal'):
+             raise ValueError(f'{topic}: inconsistent canonical FX contract')
+         if (not hd or any(type(hd.get(k)) is not int or hd[k] != v
+@@ -152,6 +162,12 @@
+                       'renderedCanvasSize': [v * density for v in size], 'sources': provenance,
+                       'frames': frame_reports, 'pixelSha256': hashlib.sha256(sheet.tobytes()).hexdigest(),
+                       'fps': asset['fps'], 'loop': asset['loop'], 'blendMode': asset['blendMode'],
++                      'playback': {'mode': 'continuous-loop' if loop else 'once-hold',
++                                   'sequenceDurationMs': asset['frames'] * 1000 / asset['fps'],
++                                   'afterLastFrame': 'wrap-to-first-frame' if loop else 'hold-last-frame',
++                                   'wrapTransition': [order[-1], order[0]] if loop else None,
++                                   'lifetimeOwner': 'consumer'},
++                      'loopClosureReview': 'required-separately' if loop else 'not-applicable',
+                       'independentFrameFit': False, 'semanticMotionReview': 'required-separately',
+                       'liveGamePlayback': 'not-performed'}
+             planned.append((target, sheet, report))
+--- a/tools/art/test_fx_overrides.py
++++ b/tools/art/test_fx_overrides.py
+@@ -9,7 +9,7 @@
+ from PIL import Image
+ 
+ from export_overrides import PACKS, validate_alpha
+-from export_fx_overrides import PHASE_ORDERS, export, validate_fx_alpha
++from export_fx_overrides import AMBIENT_PHASE_ORDERS, PHASE_ORDERS, export, validate_fx_alpha
+ 
+ 
+ class FxTests(unittest.TestCase):
+@@ -51,7 +51,7 @@
+         self.manifest.write_text(json.dumps({'assets': [self.asset]}))
+         self.hd_path.write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2',
+                                           'assetCount': 1, 'assets': [self.hd]}))
+-        self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {'C01-FX-01': self.entry}}))
++        self.catalog.write_text(json.dumps({'schemaVersion': 1, 'assets': {self.asset['topicId']: self.entry}}))
+ 
+     def mutate_source(self, index, change):
+         entry = self.entry['phases'][index]
+@@ -125,6 +125,85 @@
+                 with self.assertRaisesRegex(ValueError, 'semantic phase order'):
+                     export(self.root, self.catalog)
+ 
++    def use_topic(self, topic, loop):
++        self.asset.update(topicId=topic, png=f'runtime/fx/fx-{topic[-2:]}.png', loop=loop)
++        self.hd.update(topicId=topic, png=f'runtime-hd/fx/fx-{topic[-2:]}.png')
++        for phase, name in zip(self.entry['phases'], PHASE_ORDERS[topic]):
++            phase['phase'] = name
++        self.write()
++
++    def test_ambient_topics_keep_cyclic_order_and_consumer_owned_lifetime(self):
++        expected = {
++            'C01-FX-09': ['rainfall', 'splash-onset', 'splash-crown', 'rain-renewal'],
++            'C01-FX-10': ['ripple-near', 'ripple-growing', 'ripple-wide', 'ripple-renewal'],
++            'C01-FX-11': ['gust-curl-a', 'gust-curl-b', 'gust-breakup', 'gust-renewal'],
++            'C01-FX-12': ['heat-curl-a', 'heat-curl-b', 'heat-split', 'heat-renewal'],
++        }
++        self.assertEqual(AMBIENT_PHASE_ORDERS, expected)
++        for topic, order in expected.items():
++            with self.subTest(topic=topic):
++                self.use_topic(topic, True)
++                before = {path: path.read_bytes() for path in self.root.rglob('*') if path.is_file()}
++                reports = export(self.root, self.catalog)
++                self.assertEqual(reports, export(self.root, self.catalog, True))
++                for path, raw in before.items():
++                    self.assertEqual(path.read_bytes(), raw, path)
++                for report in reports:
++                    self.assertEqual([p['phase'] for p in report['frames']], order)
++                    self.assertIs(report['loop'], True)
++                    self.assertEqual(report['fps'], 12)
++                    self.assertEqual(report['blendMode'], 'normal')
++                    self.assertEqual(report['logicalAnchor'], [16, 16])
++                    self.assertEqual(report['placement'], self.entry['placement'])
++                    self.assertEqual(report['playback'], {
++                        'mode': 'continuous-loop', 'sequenceDurationMs': 1000 / 3,
++                        'afterLastFrame': 'wrap-to-first-frame',
++                        'wrapTransition': [order[3], order[0]], 'lifetimeOwner': 'consumer',
++                    })
++                    self.assertEqual(report['loopClosureReview'], 'required-separately')
++                    self.assertEqual(report['semanticMotionReview'], 'required-separately')
++                    self.assertEqual(report['liveGamePlayback'], 'not-performed')
++                    self.assertFalse(report['independentFrameFit'])
++                    self.assertEqual([p['alpha']['edgeMaxAlpha'] for p in report['frames']], [0] * 4)
++                with Image.open(self.root / reports[0]['output']) as sheet:
++                    for i, phase in enumerate(self.entry['phases']):
++                        with Image.open(self.root / phase['source']) as source:
++                            self.assertEqual(sheet.crop((i * 32 + 4, 4, i * 32 + 28, 28)).tobytes(),
++                                             source.tobytes())
++
++    def test_ambient_loop_flag_is_required_as_an_exact_boolean_before_writes(self):
++        for topic in AMBIENT_PHASE_ORDERS:
++            for wrong in (False, 1, 0, None, 'true'):
++                with self.subTest(topic=topic, wrong=wrong):
++                    self.use_topic(topic, wrong)
++                    self.assert_rejected('canonical FX contract')
++
++    def test_one_shot_topics_do_not_silently_become_loops(self):
++        for topic in PHASE_ORDERS.keys() - AMBIENT_PHASE_ORDERS.keys():
++            with self.subTest(topic=topic):
++                self.use_topic(topic, True)
++                self.assert_rejected('canonical FX contract')
++
++    def test_loop_order_cannot_be_rotated_or_given_one_shot_labels(self):
++        self.use_topic('C01-FX-09', True)
++        original = copy.deepcopy(self.entry['phases'])
++        for names in (PHASE_ORDERS['C01-FX-09'][1:] + PHASE_ORDERS['C01-FX-09'][:1],
++                      PHASE_ORDERS['C01-FX-01']):
++            self.entry['phases'] = copy.deepcopy(original)
++            for phase, name in zip(self.entry['phases'], names):
++                phase['phase'] = name
++            self.write()
++            self.assert_rejected('semantic phase order')
++
++    def test_one_shot_report_does_not_assign_hit_lifetime_to_every_effect(self):
++        for report in export(self.root, self.catalog):
++            self.assertEqual(report['playback'], {
++                'mode': 'once-hold', 'sequenceDurationMs': 1000 / 3,
++                'afterLastFrame': 'hold-last-frame', 'wrapTransition': None,
++                'lifetimeOwner': 'consumer',
++            })
++            self.assertEqual(report['loopClosureReview'], 'not-applicable')
++
+     def test_hd_native_fade_retains_every_pixel_without_alpha_normalization(self):
+         for index in range(4):
+             self.mutate_source(index, lambda image: image.resize((64, 64), Image.Resampling.NEAREST))
+--- /dev/null
++++ b/packages/game-ui/src/ui/__tests__/candidate-ambient-fx-playback.test.ts
+@@ -0,0 +1,68 @@
++// @vitest-environment jsdom
++import { afterEach, beforeEach, describe, expect, it } from 'vitest';
++import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
++import { FrameClock } from '../../art/__tests__/frame-clock';
++import { SvgBoardSurface } from '../../art/svg-board-surface';
++import type { BoardSurfaceScene } from '../../art/board-surface';
++
++const clock = new FrameClock();
++const topics = ['C01-FX-09', 'C01-FX-10', 'C01-FX-11', 'C01-FX-12'];
++const scene: BoardSurfaceScene = {
++  width: 64, height: 64, originX: 0, originY: 0,
++  shapeRendering: 'crispEdges', backdrop: '', foreground: '',
++};
++beforeEach(() => clock.install());
++afterEach(() => clock.restore());
++
++/** Adapter/renderer contract only: these catalog topics have no authored scene binding. */
++describe('candidate ambient FX keep cyclic playback and consumer-owned lifetime', () => {
++  it.each(topics)('%s wraps frame 4 to frame 1 and survives the hit lifetime', topic => {
++    const surface = new SvgBoardSurface(scene);
++    try {
++      const picture = CANDIDATE_01_ART.presentation.effect(topic)!;
++      expect(picture.strip!.clips).toEqual([
++        { id: 'effect', frames: [0, 1, 2, 3], fps: 12, loop: true },
++      ]);
++      const drawing = surface.effect(picture);
++      drawing.place(32, 32);
++      const effect = surface.element.querySelector('.fx')!;
++      const strip = effect.querySelector('.board-strip')!;
++      expect(effect.getAttribute('transform')).toBe('translate(32.00,32.00)');
++      expect(strip.getAttribute('x')).toBe('-16');
++      expect(strip.getAttribute('y')).toBe('-16');
++      expect(strip.getAttribute('width')).toBe('32');
++      expect(strip.getAttribute('height')).toBe('32');
++      expect(strip.querySelector('image')!.getAttribute('href')).toContain(`/runtime-hd/fx/fx-${topic.slice(-2)}.png`);
++      expect(effect.querySelector('mask, clipPath, filter, [data-part]')).toBeNull();
++      for (const [ms, frame] of [[0, 0], [83.34, 1], [166.67, 2], [250, 3],
++        [333.32, 3], [333.34, 0], [416.67, 1], [420, 1], [666.66, 3],
++        [666.67, 0], [999.99, 3], [1000.01, 0], [1500.01, 2], [5000.01, 0]]) {
++        clock.at(ms);
++        expect(strip.getAttribute('viewBox'), `${topic} at ${ms}ms`).toBe(`${frame * 32} 0 32 32`);
++        expect(surface.element.contains(effect)).toBe(true);
++      }
++      drawing.remove();
++      expect(surface.element.querySelector('.fx')).toBeNull();
++      expect(clock.pump(3)).toBe(0);
++    } finally {
++      surface.dispose();
++    }
++  });
++
++  it.each(topics)('%s starts a new instance at frame 1 after the owner removes the old one', topic => {
++    const surface = new SvgBoardSurface(scene);
++    try {
++      const drawing = surface.effect(CANDIDATE_01_ART.presentation.effect(topic)!);
++      clock.at(250);
++      expect(surface.element.querySelector('.board-strip')!.getAttribute('viewBox')).toBe('96 0 32 32');
++      drawing.remove();
++      expect(clock.pump(3)).toBe(0);
++      surface.effect(CANDIDATE_01_ART.presentation.effect(topic)!);
++      expect(surface.element.querySelector('.board-strip')!.getAttribute('viewBox')).toBe('0 0 32 32');
++      surface.dispose();
++      expect(clock.pump(3)).toBe(0);
++    } finally {
++      surface.dispose();
++    }
++  });
++});

@@ -1,0 +1,249 @@
+{
+  "topicId": "C01-CHAR-ADA-01",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-4beb6248-0e96-4866-acf8-54746741a4ca.png",
+  "selectedAttempt": 2,
+  "generationCalls": 2,
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-42ceafd3-1aee-40a9-b820-990b1879d084.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/attempt-01/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "1d7ec2ed854f450897258ad82806922de215ea527314e1c673da6e2d5d489393",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/attempt-01/request.json",
+      "requestSha256": "cc072bab50718e49ce4752431373aeb979f5807b4e56185697ef0535cd048789",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/attempt-01/prompt.txt",
+      "promptSha256": "9e9a58f83debcbb57b5a3bf22e83a1fca433f3db76c87574186681784a4431ab",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-01-original-cell.png": "32737d51b6c2626e6861c4de54b2aba15ca1f05e51cbcd2f1e3e8b75c9ca24cc",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd",
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/master.png": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281"
+      },
+      "disposition": {
+        "reason": "Superseded by perimeter-focused retry after direct PNG viewer suggested colored haze. Later RGB black-composite testing showed the exterior color was transparent hidden RGB, so a visible-halo defect was not established. Original passes mechanical alpha/edge checks.",
+        "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-42ceafd3-1aee-40a9-b820-990b1879d084.png",
+        "classification": "superseded-not-proven-defective"
+      }
+    },
+    {
+      "attempt": 2,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-4beb6248-0e96-4866-acf8-54746741a4ca.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/request.json",
+      "requestSha256": "f92bef0d358edd79c196d5b5e076911ead34727e6e2cbe7a9e6be920623e3ce5",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/prompt.txt",
+      "promptSha256": "45dde840a308c7f35e8db5dd25dd093f7818693c6bcd6f05176cf1389e317426",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/generated_images/exec-42ceafd3-1aee-40a9-b820-990b1879d084.png": "1d7ec2ed854f450897258ad82806922de215ea527314e1c673da6e2d5d489393"
+      }
+    }
+  ],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+  "rawSha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+  "masterSha256": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 964389,
+    "transparentFraction": 0.6131420135498047,
+    "nearOpaquePixels": 589583,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 47,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      231,
+      67,
+      830,
+      1500
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/scratch/84c9fe948755/generated_images/exec-42ceafd3-1aee-40a9-b820-990b1879d084.png": "1d7ec2ed854f450897258ad82806922de215ea527314e1c673da6e2d5d489393"
+  },
+  "allPreservedReferences": [
+    {
+      "role": "original-board.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/references/original-board.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c"
+    },
+    {
+      "role": "original-cell.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-01-original-cell.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/references/original-cell.png",
+      "sha256": "32737d51b6c2626e6861c4de54b2aba15ca1f05e51cbcd2f1e3e8b75c9ca24cc"
+    },
+    {
+      "role": "approved-mirelle-stage01.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/references/approved-mirelle-stage01.png",
+      "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+    },
+    {
+      "role": "independent-card-background.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/references/independent-card-background.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+    },
+    {
+      "role": "approved-ada-medicine.png",
+      "sourcePath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/references/approved-ada-medicine.png",
+      "sha256": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281"
+    }
+  ],
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+  "originalFullboardSha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+  "originalCell": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-01-original-cell.png",
+  "originalCellSha256": "32737d51b6c2626e6861c4de54b2aba15ca1f05e51cbcd2f1e3e8b75c9ca24cc",
+  "originalCropBox": [
+    5,
+    632,
+    622,
+    1249
+  ],
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "959b019fa2127b104fe244dcd789d635f783dc802ac28bdbc9ee01e4363038b9"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "stageSelectorExists": false,
+  "liveGameVerified": false,
+  "verificationLimits": [
+    "Source and mathematically modeled UI-crop QA only; no browser/GPU/live-game acceptance",
+    "No main repo, exporter, binding, consumer, gameplay, stage-selector or Git writes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed source and modeled consumer QA",
+  "identityDecision": "identity-decision.json",
+  "visualReview": {
+    "dateUtc": "2026-10-20",
+    "status": "passed",
+    "nativeBlackWhite": "Both actual RGB composites reviewed; clean exterior, no painted backdrop, all full-source body/props intact. Hidden RGB outside alpha is preserved and is not a visible halo.",
+    "nativeCard": "192x224 opaque RGBA proof uses approved independent background and whole source144x216 at24,4, no foreground bbox fitting",
+    "consumerReview": "92x112 desktop,64x88 mobile,44x44 roster and96x112 HUD modeled crops inspected. Faces and primary silhouettes read. Current HUD square-cover convention can trim the extreme bottom of boots; face, hands and primary props remain present. This is an existing modeled consumer crop, not source clipping.",
+    "smallestSizeLimit": "At44x44 the medicine label marks/crack and tiny tool distinctions are not individually readable; the age/costume silhouette and colored primary prop read. No tiny-script readability claimed.",
+    "liveGameVerified": false,
+    "runtimeHdPublished": false,
+    "sourceModification": "None after image_gen output; selected raw/master byte-identical",
+    "identityAndStory": "Clearly young age8 child proportions, round face and short limbs, modest patched travel coat; one protected blue-thread cracked bottle with two abstract mark systems; no adult glamour.",
+    "reviewedFiles": {
+      "qa-native-white.png": "0b2aba83ac1ece60f9baf881884bc8bf76d3cb0bc4258d3393d16f717c3a3e4c",
+      "qa-native-black.png": "cd66689dc47e72bc3ba5708cc07718d456f16d6617f2d3102e3e1a73ef8640be",
+      "qa-native-black-white.png": "bc060e57158558f6926e68627bfc2a8d49fe6d4fd1ecbe8ab8466ca420c0ab33",
+      "card-preview.png": "959b019fa2127b104fe244dcd789d635f783dc802ac28bdbc9ee01e4363038b9",
+      "qa-ui-desktop-dialogue.png": "61c27305752d25a7e71c00b473e67b0e026451a7dfb19f8b40382af60d57630b",
+      "qa-ui-mobile-dialogue.png": "fe5147b9ca1f87789c82f991af55885c7952133a54a186c54b87e0673c7e4487",
+      "qa-ui-roster.png": "471d9ae6d3b9ea33bf8bc05e4a19a78298d53c92891efc0074623ff6e8b1b00c",
+      "qa-ui-hud.png": "8a268671880b9e4805d12852b0ea8697206f50be1120cf89c9d6c1167b92bf56"
+    },
+    "familyComparisons": {
+      "qa-three-card-and-ui-comparison.png": "c2c053ed8a2d07cc30605ebbd80a90d172748b967b0611878d410c6637846fd5",
+      "qa-three-character-transparent-proof.png": "b5fc8380a001aa0ead9d5691c1e8b9f7bcf8bc9dcb782ccf28ac0967bb18cddc",
+      "qa-stage-continuity-comparison.png": "2af0062ce88b4b8dbf7499a2cc98866fb7927fa22a4a7deddc636e77bd3da0d9"
+    }
+  },
+  "selectedEditTargetPreservedAt": "attempt-01/raw.png"
+}

@@ -1,0 +1,29 @@
+{
+  "attempt": 1,
+  "selected": false,
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-42ceafd3-1aee-40a9-b820-990b1879d084.png",
+  "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/attempt-01/raw.png",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "rawSha256": "1d7ec2ed854f450897258ad82806922de215ea527314e1c673da6e2d5d489393",
+  "masterOrRawByteExact": true,
+  "transparentBackgroundRequested": true,
+  "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/attempt-01/request.json",
+  "requestSha256": "cc072bab50718e49ce4752431373aeb979f5807b4e56185697ef0535cd048789",
+  "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/attempt-01/prompt.txt",
+  "promptSha256": "9e9a58f83debcbb57b5a3bf22e83a1fca433f3db76c87574186681784a4431ab",
+  "referenceHashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-01-original-cell.png": "32737d51b6c2626e6861c4de54b2aba15ca1f05e51cbcd2f1e3e8b75c9ca24cc",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/master.png": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281"
+  },
+  "disposition": {
+    "reason": "Superseded by perimeter-focused retry after direct PNG viewer suggested colored haze. Later RGB black-composite testing showed the exterior color was transparent hidden RGB, so a visible-halo defect was not established. Original passes mechanical alpha/edge checks.",
+    "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-42ceafd3-1aee-40a9-b820-990b1879d084.png",
+    "classification": "superseded-not-proven-defective"
+  }
+}

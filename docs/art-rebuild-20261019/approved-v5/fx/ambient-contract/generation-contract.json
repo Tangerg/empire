@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "status": "proposal-only",
+  "topics": [
+    {
+      "topicId": "C01-FX-09",
+      "label": "秋雨",
+      "meaning": "autumn rain",
+      "sourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+      "sourceRowOneBased": 1,
+      "sourceGridCellsBeforeLegacyCleanup": [
+        [
+          5,
+          5,
+          309,
+          309
+        ],
+        [
+          319,
+          5,
+          622,
+          309
+        ],
+        [
+          632,
+          5,
+          935,
+          309
+        ],
+        [
+          945,
+          5,
+          1249,
+          309
+        ]
+      ],
+      "canonical": {
+        "assetId": "C01-FFV1-FX-09",
+        "topicId": "C01-FX-09",
+        "label": "秋雨",
+        "category": "fx",
+        "png": "runtime/fx/fx-09.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frames": 4,
+        "fps": 12,
+        "loop": true,
+        "blendMode": "normal",
+        "anchor": [
+          16,
+          16
+        ]
+      },
+      "hd": {
+        "topicId": "C01-FX-09",
+        "png": "runtime-hd/fx/fx-09.png",
+        "width": 256,
+        "height": 64,
+        "pixelDensity": 2
+      },
+      "proposedPhaseOrder": [
+        "rainfall",
+        "splash-onset",
+        "splash-crown",
+        "rain-renewal"
+      ],
+      "phaseOrderStatus": "proposal-not-generated-art-approval",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      },
+      "reviewTransitions": [
+        [
+          "rainfall",
+          "splash-onset"
+        ],
+        [
+          "splash-onset",
+          "splash-crown"
+        ],
+        [
+          "splash-crown",
+          "rain-renewal"
+        ],
+        [
+          "rain-renewal",
+          "rainfall"
+        ]
+      ],
+      "authoredConsumerStatus": "no-static-consumer-reference-found",
+      "liveGamePlayback": "not-performed"
+    },
+    {
+      "topicId": "C01-FX-10",
+      "label": "河流浅水",
+      "meaning": "river shallows",
+      "sourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+      "sourceRowOneBased": 2,
+      "sourceGridCellsBeforeLegacyCleanup": [
+        [
+          5,
+          319,
+          309,
+          622
+        ],
+        [
+          319,
+          319,
+          622,
+          622
+        ],
+        [
+          632,
+          319,
+          935,
+          622
+        ],
+        [
+          945,
+          319,
+          1249,
+          622
+        ]
+      ],
+      "canonical": {
+        "assetId": "C01-FFV1-FX-10",
+        "topicId": "C01-FX-10",
+        "label": "河流浅水",
+        "category": "fx",
+        "png": "runtime/fx/fx-10.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frames": 4,
+        "fps": 12,
+        "loop": true,
+        "blendMode": "normal",
+        "anchor": [
+          16,
+          16
+        ]
+      },
+      "hd": {
+        "topicId": "C01-FX-10",
+        "png": "runtime-hd/fx/fx-10.png",
+        "width": 256,
+        "height": 64,
+        "pixelDensity": 2
+      },
+      "proposedPhaseOrder": [
+        "ripple-near",
+        "ripple-growing",
+        "ripple-wide",
+        "ripple-renewal"
+      ],
+      "phaseOrderStatus": "proposal-not-generated-art-approval",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      },
+      "reviewTransitions": [
+        [
+          "ripple-near",
+          "ripple-growing"
+        ],
+        [
+          "ripple-growing",
+          "ripple-wide"
+        ],
+        [
+          "ripple-wide",
+          "ripple-renewal"
+        ],
+        [
+          "ripple-renewal",
+          "ripple-near"
+        ]
+      ],
+      "authoredConsumerStatus": "no-static-consumer-reference-found",
+      "liveGamePlayback": "not-performed"
+    },
+    {
+      "topicId": "C01-FX-11",
+      "label": "荒原强风",
+      "meaning": "strong wasteland wind",
+      "sourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+      "sourceRowOneBased": 3,
+      "sourceGridCellsBeforeLegacyCleanup": [
+        [
+          5,
+          632,
+          309,
+          935
+        ],
+        [
+          319,
+          632,
+          622,
+          935
+        ],
+        [
+          632,
+          632,
+          935,
+          935
+        ],
+        [
+          945,
+          632,
+          1249,
+          935
+        ]
+      ],
+      "canonical": {
+        "assetId": "C01-FFV1-FX-11",
+        "topicId": "C01-FX-11",
+        "label": "荒原强风",
+        "category": "fx",
+        "png": "runtime/fx/fx-11.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frames": 4,
+        "fps": 12,
+        "loop": true,
+        "blendMode": "normal",
+        "anchor": [
+          16,
+          16
+        ]
+      },
+      "hd": {
+        "topicId": "C01-FX-11",
+        "png": "runtime-hd/fx/fx-11.png",
+        "width": 256,
+        "height": 64,
+        "pixelDensity": 2
+      },
+      "proposedPhaseOrder": [
+        "gust-curl-a",
+        "gust-curl-b",
+        "gust-breakup",
+        "gust-renewal"
+      ],
+      "phaseOrderStatus": "proposal-not-generated-art-approval",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      },
+      "reviewTransitions": [
+        [
+          "gust-curl-a",
+          "gust-curl-b"
+        ],
+        [
+          "gust-curl-b",
+          "gust-breakup"
+        ],
+        [
+          "gust-breakup",
+          "gust-renewal"
+        ],
+        [
+          "gust-renewal",
+          "gust-curl-a"
+        ]
+      ],
+      "authoredConsumerStatus": "no-static-consumer-reference-found",
+      "liveGamePlayback": "not-performed"
+    },
+    {
+      "topicId": "C01-FX-12",
+      "label": "山炉热浪",
+      "meaning": "mountain-forge heat",
+      "sourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+      "sourceRowOneBased": 4,
+      "sourceGridCellsBeforeLegacyCleanup": [
+        [
+          5,
+          945,
+          309,
+          1249
+        ],
+        [
+          319,
+          945,
+          622,
+          1249
+        ],
+        [
+          632,
+          945,
+          935,
+          1249
+        ],
+        [
+          945,
+          945,
+          1249,
+          1249
+        ]
+      ],
+      "canonical": {
+        "assetId": "C01-FFV1-FX-12",
+        "topicId": "C01-FX-12",
+        "label": "山炉热浪",
+        "category": "fx",
+        "png": "runtime/fx/fx-12.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "frameWidth": 32,
+        "frameHeight": 32,
+        "frames": 4,
+        "fps": 12,
+        "loop": true,
+        "blendMode": "normal",
+        "anchor": [
+          16,
+          16
+        ]
+      },
+      "hd": {
+        "topicId": "C01-FX-12",
+        "png": "runtime-hd/fx/fx-12.png",
+        "width": 256,
+        "height": 64,
+        "pixelDensity": 2
+      },
+      "proposedPhaseOrder": [
+        "heat-curl-a",
+        "heat-curl-b",
+        "heat-split",
+        "heat-renewal"
+      ],
+      "phaseOrderStatus": "proposal-not-generated-art-approval",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      },
+      "reviewTransitions": [
+        [
+          "heat-curl-a",
+          "heat-curl-b"
+        ],
+        [
+          "heat-curl-b",
+          "heat-split"
+        ],
+        [
+          "heat-split",
+          "heat-renewal"
+        ],
+        [
+          "heat-renewal",
+          "heat-curl-a"
+        ]
+      ],
+      "authoredConsumerStatus": "no-static-consumer-reference-found",
+      "liveGamePlayback": "not-performed"
+    }
+  ],
+  "playback": {
+    "fps": 12,
+    "frames": 4,
+    "loop": true,
+    "sequenceDurationMs": 333.3333333333333,
+    "lifetimeOwner": "consumer",
+    "hitLifetimeApplies": false
+  },
+  "approvalRequirements": [
+    "genuine-transparent-RGBA",
+    "same-full-canvas-and-transform",
+    "four-independently-authored-frames",
+    "native-1x-and-2x-12fps-review",
+    "explicit-4-to-1-continuity-review",
+    "no-programmatic-faded-copies",
+    "no-catalog-only-deployment-claim"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-cac7d162-617b-413d-90eb-fb7c3548da05.png",
+  "rawSha256": "369abab4966ebd99cf89e2870ed53e5becb2ab4f19a9049cd13678c4a83ef380",
+  "masterSha256": "369abab4966ebd99cf89e2870ed53e5becb2ab4f19a9049cd13678c4a83ef380",
+  "generationCalls": 2,
+  "selectedAttempt": 2,
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-6e490629-2a88-442d-9eef-f08738898651.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-mirel-02/attempt-01/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "64d0a5c1b9d9cb31111d4bf0808a172996eb44599f813a66f07137e89918c974",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-mirel-02/attempt-01/request.json",
+      "requestSha256": "8d9cc96b852c877971efc2c7af0ad6105da71ce3ad12c20eace4f8a913ab6aa3",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-mirel-02/attempt-01/prompt.txt",
+      "promptSha256": "c733946bb9c709c375d51e2f7a10ab51ae10e4007ecc24953aaed3abe1cbbeba",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-mirel-02-original-cell.png": "feee7c0630836cd057def0fc960aaf5c9a481a4330dd0da6a4de12b3fbdfec87"
+      },
+      "disposition": {
+        "reason": "Native alpha edge maximum2 exceeds contractual<=1; ledger also lies near the right edge. No visible-haze failure is asserted from direct PNG display because transparent hidden RGB can be displayed misleadingly.",
+        "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-6e490629-2a88-442d-9eef-f08738898651.png",
+        "classification": "failed-source-edge-alpha"
+      }
+    },
+    {
+      "attempt": 2,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-cac7d162-617b-413d-90eb-fb7c3548da05.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-mirel-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "369abab4966ebd99cf89e2870ed53e5becb2ab4f19a9049cd13678c4a83ef380",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-mirel-02/request.json",
+      "requestSha256": "c6bd4a90e45bbe3671df9290bf9d2e88f0742966aa06ded91df0972d13c52522",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-mirel-02/prompt.txt",
+      "promptSha256": "85faa31404149cb601bbc3601708cca26f8103fa8e757ae0efbbf68541461c34",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/generated_images/exec-6e490629-2a88-442d-9eef-f08738898651.png": "64d0a5c1b9d9cb31111d4bf0808a172996eb44599f813a66f07137e89918c974"
+      }
+    }
+  ],
+  "noPostGenerationSourceModification": true,
+  "sourceproof": "sourceproof.json",
+  "finalPrompt": "prompt.txt",
+  "request": "request.json"
+}

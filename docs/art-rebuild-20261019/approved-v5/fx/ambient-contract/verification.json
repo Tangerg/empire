@@ -1,0 +1,148 @@
+{
+  "status": "proposal-tested-not-integrated",
+  "gitHeadAtHandoff": "1eaf10b9392a9f9358c8187e0dd20bc8dd1798b7",
+  "mainSourceChangedByThisAudit": false,
+  "pythonTestsPassed": 31,
+  "typescriptPlaybackTestsPassed": 8,
+  "mutationExpectedErrors": 4,
+  "patchApplyCheck": "passed",
+  "generatedArtwork": false,
+  "catalogRegistered": false,
+  "browserTexturePlayback": "not-performed",
+  "liveGameDeployment": "not-performed",
+  "fullTypecheck": "not-run-here",
+  "fullApplicationBuild": "not-run-here",
+  "evidence": [
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/fx/fx-atlas-03.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-09.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-10.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-11.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-12.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-09.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-10.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-11.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-12.png",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "tools/art/export_fx_overrides.py",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "tools/art/test_fx_overrides.py",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/story-candidate-01/src/presentation/index.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/game-ui/src/ui/board.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/game-ui/src/art/board-surface.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/game-ui/src/art/svg-board-surface.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    },
+    {
+      "source": "packages/game-ui/src/art/frame-animation.ts",
+      "savedCopyMatches": true,
+      "currentMainMatchesAtHandoff": true
+    }
+  ],
+  "deliverables": {
+    "legacy-runtime-measurements.json": "a645e6fea26274a73be7cf068ca867db6c090eb326936b0d80dc884c3dfd7270",
+    "evidence-index.json": "6bb84a0a80907632b7b63dd4d6c9da87ffa7628345fd10ff496b885b84782699",
+    "ts-playback-test.log": "c2f569945f2a9952c7f9e30752a2562ef1bcac3dbdc3e1430b3729613b397576",
+    "ambient-exporter-and-playback.patch": "45878797711077f79ab64f4dea8026fa4195e4dc01574e6ee41ba61282847766",
+    "mutation-test.log": "78ede039734727c4dc4c4b85037163dcd9c91d2f5acd124c030e1022f20b82d6",
+    "README.md": "9ed1f7a8a8473195481c66c8b60e98ae1a4d4b5cfbaa714a40d8afe4d33e9686",
+    "generation-contract.json": "afecb1c072bd2163356efdc450588cb97d4e3809afb52966fef6df7670b4fb71",
+    "python-test.log": "e1a1e9ce2d10bb9682dcaec7a19997890dbff195bb3ddcc218f07f45ab5aa2d8",
+    "GENERATION-CONTRACT.md": "0d299aca8d5c3d8db033d9bae02b7d5570cc190da52eb8a5c853a2459791582a"
+  }
+}

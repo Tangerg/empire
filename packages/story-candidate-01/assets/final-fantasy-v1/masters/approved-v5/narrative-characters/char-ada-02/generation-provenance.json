@@ -1,0 +1,64 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-342029c4-61c1-47c7-b004-a7ef107f0d42.png",
+  "rawSha256": "c9fbf515637f9189230b0871178a5d8cd6c0c9cc4ec75cefb1d727de47e6f7f0",
+  "masterSha256": "c9fbf515637f9189230b0871178a5d8cd6c0c9cc4ec75cefb1d727de47e6f7f0",
+  "generationCalls": 2,
+  "selectedAttempt": 2,
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-c6840c57-4db6-4cd2-8054-58fa8cf88fa8.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/attempt-01/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "cc6e8f2eb723e93105026a02bef27b78eb7f8066bac3b3a9f05c69952855bc47",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/attempt-01/request.json",
+      "requestSha256": "045fb3477e035aa449c9c68e88f5f19983b7c95b5a5b4b8eadea416e52f50367",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/attempt-01/prompt.txt",
+      "promptSha256": "88d9fec594f424f873b2ed234ec20705812c91a60f80557bb5cc60d9084b877b",
+      "referenceHashes": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-01/master.png": "b3f65d03fbb119ec62da0c561dc38e75966cff3b444451d1110dc52bf26f4855",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-ada-02-original-cell.png": "e6c115bef5bae97e95947e090399b7a55eeb961db4495082c0f5feb5df83f71e",
+        "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/master.png": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281"
+      },
+      "disposition": {
+        "reason": "Unexpected second corked vial in satchel; exactly one story bottle required",
+        "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-c6840c57-4db6-4cd2-8054-58fa8cf88fa8.png"
+      }
+    },
+    {
+      "attempt": 2,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-342029c4-61c1-47c7-b004-a7ef107f0d42.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "c9fbf515637f9189230b0871178a5d8cd6c0c9cc4ec75cefb1d727de47e6f7f0",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/request.json",
+      "requestSha256": "7ed9b538e3395632e778cae6368fe4dca3a366172d7c939c2365c302103604c8",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ada-02/prompt.txt",
+      "promptSha256": "a4b71150c35a5f2c4c577a9f3bc396979852ffc99ea3baa13852dee28f792a3c",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/generated_images/exec-c6840c57-4db6-4cd2-8054-58fa8cf88fa8.png": "cc6e8f2eb723e93105026a02bef27b78eb7f8066bac3b3a9f05c69952855bc47"
+      }
+    }
+  ],
+  "noPostGenerationSourceModification": true,
+  "sourceproof": "sourceproof.json",
+  "finalPrompt": "prompt.txt",
+  "request": "request.json"
+}
