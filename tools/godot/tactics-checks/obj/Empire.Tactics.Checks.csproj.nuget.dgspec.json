@@ -1,0 +1,130 @@
+{
+  "format": 1,
+  "restore": {
+    "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/tools/godot/tactics-checks/Empire.Tactics.Checks.csproj": {}
+  },
+  "projects": {
+    "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/godot/Empire.Core/Empire.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/godot/Empire.Core/Empire.Core.csproj",
+        "projectName": "Empire.Core",
+        "projectPath": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/godot/Empire.Core/Empire.Core.csproj",
+        "packagesPath": "/workspace/shared/empire-toolchain/nuget",
+        "outputPath": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/godot/Empire.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/workspace/shared/empire-toolchain/home/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/workspace/shared/empire-toolchain/dotnet/sdk/8.0.426/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/tools/godot/tactics-checks/Empire.Tactics.Checks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/tools/godot/tactics-checks/Empire.Tactics.Checks.csproj",
+        "projectName": "Empire.Tactics.Checks",
+        "projectPath": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/tools/godot/tactics-checks/Empire.Tactics.Checks.csproj",
+        "packagesPath": "/workspace/shared/empire-toolchain/nuget",
+        "outputPath": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/tools/godot/tactics-checks/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/workspace/shared/empire-toolchain/home/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/godot/Empire.Core/Empire.Core.csproj": {
+                "projectPath": "/workspace/scratch/84c9fe948755/empire-godot-migration-20261020/godot/Empire.Core/Empire.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/workspace/shared/empire-toolchain/dotnet/sdk/8.0.426/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import ts from 'typescript';
+import { GROUND_TAGS } from '../../packages/game-ui/src/art/ports';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync, copyFileSync, constants } from 'node:fs';
@@ -11,6 +12,7 @@ import { SplitMixRandom } from '../../packages/battle-engine/src/random';
 import { COMMON_CONTENT_PACK } from '../../packages/content-common/src/index';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '../../packages/content-ancient-empires/src/index';
 import { CANDIDATE_01_CONTENT_PACK, candidate01Level } from '../../packages/story-candidate-01/src/index';
+import { candidateMaterial, CANDIDATE_FOREST_FLOOR, CANDIDATE_SETTLEMENT_LIFE } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
 import * as bindings from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
 const assetRoot = resolve('packages/story-candidate-01/assets/final-fantasy-v1');
 const output = resolve('godot');
@@ -51,6 +53,7 @@ write('data/art-bindings.json', { ...bindings, CANDIDATE_01_ACTOR_ART: actors })
 const scene = read('environment-builder-v1/scenes/c01-01.scene.json');
 write('data/grayflag-authored-scene.json', scene);
 const fixtures = [];
+const actionCases: unknown[] = [];
 for (const aggression of [0.35, 0.58, 0.8]) {
   const oracleLevel = structuredClone(level);
   for (const player of oracleLevel.players) { player.controller = 'ai'; player.ai = { aggression }; }
@@ -58,7 +61,10 @@ for (const aggression of [0.35, 0.58, 0.8]) {
   const recorder = new BattleRecorder(engine, state); const steps = [];
   while (state.phase !== 'over' && steps.length < 800) {
     const action = engine.chooseAiAction(state); recorder.record(action);
-    const events = engine.dispatch(state, action); steps.push({ action, events, stateHash: hashState(state) });
+    const before = structuredClone(state);
+    const events = engine.dispatch(state, action);
+    if (aggression === 0.58) actionCases.push({ action, before, events, after: structuredClone(state) });
+    steps.push({ action, events, stateHash: hashState(state) });
   }
   if (state.phase !== 'over') throw new Error('Oracle did not finish');
   const replay = recorder.replay(state); const check = engine.createState(oracleLevel, { seed: replay.seed });
@@ -69,6 +75,7 @@ for (const aggression of [0.35, 0.58, 0.8]) {
     finalSave: createBattleSave(engine.rulesetManifest, state, '2026-10-20T00:00:00.000Z') });
   fixtures.push({ aggression, actions: steps.length, finalHash: hashState(state) });
 }
+write('tests/oracle/action-cases.json', actionCases);
 const vectors = [];
 for (const seed of [0, 1, 2147483648, 4294967295]) {
   const state = engine.createState(level, { seed });
@@ -116,6 +123,18 @@ const environment = read('environment-builder-v1/manifest-environment-builder-v1
 const ids = new Set([...scene.placements, ...(scene.framePlacements ?? [])].map((entry: { id: string }) => entry.id));
 for (const atlas of environment.atlases) if ((atlas.cells ?? []).some((cell: { id: string }) => ids.has(cell.id))) Object.assign(atlas, copy(`environment-builder-v1/${atlas.png2x ?? atlas.png}`));
 write('data/environment-catalog.json', environment);
+const materials = Object.fromEntries(['field-material', 'road-material', 'forest-floor'].map(name => {
+  const spec = read(`world-materials-v1/manifest-${name}-v2.json`);
+  return [name, { ...spec, ...copy(`world-materials-v1/${spec.png2x ?? spec.png}`) }];
+}));
+const mask = read('world-materials-v1/manifest-forest-blend-masks-v1.json').atlases[0];
+const geometryAtlas = environment.atlases.find((atlas: { id: string }) => atlas.id === mask.id);
+write('data/world-materials.json', { schema: 1, materials, groundTagFamilies: GROUND_TAGS,
+  scenery: { forestFloor: CANDIDATE_FOREST_FLOOR, settlementLife: CANDIDATE_SETTLEMENT_LIFE },
+  terrainTags: Object.fromEntries([...new Set(raw.map.tiles)].map(id => [id, content.terrains.get(id).tags])),
+  forestMask: { ...geometryAtlas, ...mask, ...copy(`world-materials-v1/${mask.png2x ?? mask.png}`) },
+  terrainBindings: Object.fromEntries([...new Set(raw.map.tiles)].map(id => [id, candidateMaterial(content, id)])) });
+
 write('data/source-provenance.json', { schema: 1, sourceRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), fixtures, selectedAssets: assets.length,
   recovery: 'Reconstructed from verified remote bfe9334a after workspace reset. Local checkpoints cc43ac3a, 904351d9 and 8bbca062 are unavailable. Actor overrides were re-exported from the recovered source declaration.' });
 console.log(JSON.stringify({ fixtures, selectedAssets: assets.length }));

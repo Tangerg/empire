@@ -19,7 +19,6 @@ Check("independent RNG streams", () => {
 Check("initial state factory", () => {
  var f=Read("grayflag-initial-raw.json");var packs=JsonNode.Parse(File.ReadAllText(Path.Combine(root,"../../data/content-packs.json")))!.AsArray();
  var actual=BattleStateFactory.Create(f["level"]!.AsObject(),packs);
- File.WriteAllText(Path.Combine(root,"../../../actual-initial-state.json"),actual.ToJsonString(new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerOptions.Default) { WriteIndented=true }));
  Equal(StateDigest.Hash(f["state"]!),StateDigest.Hash(actual));
 });
 Check("three tactical grids", () => {
@@ -35,4 +34,8 @@ Check("transaction rollback",()=>{
 Check("detached committed state and events",()=>{
  JsonObject? retained=null;var emitted=new JsonObject{["n"]=2};var r=new BattleActionRegistry();r.Register("go",(s,a,emit)=>{retained=s;s["n"]=2;a["kind"]="changed";emit(emitted);});var b=new Battle(new JsonObject{["n"]=1},r);var action=new JsonObject{["kind"]="go"};var receipt=b.Dispatch(action);retained!["n"]=3;emitted["n"]=4;receipt.Before["n"]=5;var snapshot=b.Snapshot();snapshot["n"]=6;Equal(2,b.Snapshot()["n"]!.GetValue<int>());Equal(2,receipt.Events[0]["n"]!.GetValue<int>());Equal("go",action["kind"]!.GetValue<string>());
 });
+Check("six TS tactic action snapshots", () => SupportChecks.Tactics(root));
+Check("resource clamping and atomic costs", SupportChecks.Resources);
+foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
+    Check($"full native replay {aggression}", () => ReplayChecks.Run(root, aggression));
 Console.WriteLine($"{passed} passed; {failed} failed");return failed==0?0:1;

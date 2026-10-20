@@ -1,0 +1,383 @@
+{
+  "schema": 1,
+  "materials": {
+    "field-material": {
+      "schemaVersion": 2,
+      "id": "meadow-base",
+      "replaces": {
+        "atlas": "surface-meadow",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/grass-material/master.png",
+      "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/meadow-base.png",
+      "png2x": "runtime/meadow-base@2x.png",
+      "rasterSize": [
+        512,
+        512
+      ],
+      "resourcePath": "res://assets/world-materials-v1/runtime/meadow-base@2x.png",
+      "sha256": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003"
+    },
+    "road-material": {
+      "schemaVersion": 2,
+      "id": "road-earth",
+      "replaces": {
+        "atlas": "route-dirt-road",
+        "mask": "route"
+      },
+      "source": "masters/approved-v5/earth-material/revision-2/master.png",
+      "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/road-earth.png",
+      "png2x": "runtime/road-earth@2x.png",
+      "occupancy": {
+        "tileSize": 32,
+        "columns": 16,
+        "rows": 16,
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "geometry": "external-inset-rounded-convex-concave-v1",
+        "inset": 5,
+        "convexRadius": 9,
+        "concaveRadius": 5,
+        "png": "runtime/road-masks.png",
+        "png2x": "runtime/road-masks@2x.png"
+      },
+      "resourcePath": "res://assets/world-materials-v1/runtime/road-earth@2x.png",
+      "sha256": "bbdae871cfd2ce1e54c441d47f4bfa12d3929a21b116c63861d6174146727879"
+    },
+    "forest-floor": {
+      "schemaVersion": 2,
+      "id": "forest-floor",
+      "replaces": {
+        "atlas": "surface-forest-floor",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/forest-floor.png",
+      "png2x": "runtime/forest-floor@2x.png",
+      "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+      "resourcePath": "res://assets/world-materials-v1/runtime/forest-floor@2x.png",
+      "sha256": "d6e01a08400a3b880f7e2cedd2d041b4a4b8efba26476bf223573df6e993f167"
+    }
+  },
+  "groundTagFamilies": {
+    "way": [
+      "road"
+    ],
+    "settlement": [
+      "building",
+      "outpost"
+    ],
+    "obstacle": [
+      "blocking"
+    ],
+    "outside": [
+      "outside"
+    ]
+  },
+  "scenery": {
+    "forestFloor": {
+      "ids": [
+        "sapling-rock-cluster",
+        "bramble-dark",
+        "fern-bed",
+        "bramble-berries",
+        "stump-low",
+        "stump-hollow",
+        "forest-floor-cluster",
+        "pine-underbrush-a",
+        "pine-underbrush-c"
+      ],
+      "scale": 0.58,
+      "chance": 0.66,
+      "jitter": 8
+    },
+    "settlementLife": {
+      "ids": [
+        "wheat-sheaves",
+        "wheat-bundles",
+        "grain-sacks-baskets",
+        "farm-fence-straight",
+        "farm-fence-corner",
+        "farm-handcart-tools",
+        "stone-well",
+        "livestock-pen-small",
+        "firewood-stack",
+        "field-tent-cluster",
+        "supply-tent-workyard",
+        "abandoned-cart-stop"
+      ],
+      "scale": 0.3,
+      "chance": 0.42,
+      "jitter": 7
+    }
+  },
+  "terrainTags": {
+    "forest": [
+      "rough"
+    ],
+    "plain": [],
+    "hill": [
+      "rough",
+      "high"
+    ],
+    "mountain": [
+      "rough",
+      "high"
+    ],
+    "road": [
+      "road"
+    ],
+    "c01.outpost": [
+      "building",
+      "outpost"
+    ],
+    "village": [
+      "building"
+    ]
+  },
+  "forestMask": {
+    "id": "transition-meadow-forest",
+    "png": "runtime/forest-blend-masks.png",
+    "png2x": "runtime/forest-blend-masks@2x.png",
+    "columns": 16,
+    "rows": 3,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 47,
+    "category": "transition",
+    "tileMode": "blob-47",
+    "baseSurface": "surface-meadow",
+    "overlaySurface": "surface-forest-floor",
+    "maskOrder": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      16,
+      17,
+      20,
+      21,
+      23,
+      28,
+      29,
+      31,
+      64,
+      65,
+      68,
+      69,
+      71,
+      80,
+      81,
+      84,
+      85,
+      87,
+      92,
+      93,
+      95,
+      112,
+      113,
+      116,
+      117,
+      119,
+      124,
+      125,
+      127,
+      193,
+      197,
+      199,
+      209,
+      213,
+      215,
+      221,
+      223,
+      241,
+      245,
+      247,
+      253,
+      255
+    ],
+    "bitOrder": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "sourceSha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
+    "sourceSha2562x": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+    "resourcePath": "res://assets/world-materials-v1/runtime/forest-blend-masks@2x.png",
+    "sha256": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d"
+  },
+  "terrainBindings": {
+    "forest": {
+      "blend": "transition-meadow-forest",
+      "scenery": {
+        "ids": [
+          "oak-ancient",
+          "mixed-forest-autumn",
+          "mixed-forest-dense",
+          "oak-grove-dense",
+          "mixed-forest-edge",
+          "pine-mature-a",
+          "pine-mature-b",
+          "pine-cluster"
+        ],
+        "scale": 0.74,
+        "jitter": 9
+      }
+    },
+    "plain": {
+      "decals": {
+        "ids": [
+          "grass-tuft-a",
+          "grass-tuft-b",
+          "grass-tuft-c",
+          "fallen-leaves",
+          "stone-cluster-a",
+          "stone-cluster-b",
+          "mud-patch",
+          "animal-tracks",
+          "exposed-roots",
+          "mossy-boulder"
+        ],
+        "chance": 0.3,
+        "scale": 0.58
+      }
+    },
+    "hill": {
+      "tone": 2,
+      "decals": {
+        "ids": [
+          "stone-cluster-a",
+          "grass-tuft-c"
+        ],
+        "chance": 0.3,
+        "scale": 0.6
+      },
+      "scenery": {
+        "ids": [
+          "temperate-hill-cap",
+          "temperate-low-ledge",
+          "temperate-talus-foot"
+        ],
+        "scale": 0.46,
+        "jitter": 5
+      }
+    },
+    "mountain": {
+      "surface": "surface-wasteland",
+      "tone": 2,
+      "scenery": {
+        "ids": [
+          "temperate-pillar-wide",
+          "temperate-plateau-cap",
+          "temperate-mountain-pass",
+          "temperate-cliff-convex-corner"
+        ],
+        "scale": 0.56,
+        "jitter": 6
+      }
+    },
+    "road": {
+      "connected": {
+        "atlas": "route-dirt-road",
+        "edge": "route-edge-dirt-road",
+        "mask": "route"
+      },
+      "decals": {
+        "ids": [
+          "cart-ruts",
+          "bootprints"
+        ],
+        "chance": 0.16,
+        "scale": 0.55
+      }
+    },
+    "c01.outpost": {
+      "connected": {
+        "atlas": "route-dirt-road",
+        "edge": "route-edge-dirt-road",
+        "mask": "route"
+      }
+    },
+    "village": {
+      "connected": {
+        "atlas": "route-dirt-road",
+        "edge": "route-edge-dirt-road",
+        "mask": "route"
+      },
+      "scenery": {
+        "ids": [
+          "wheat-sheaves",
+          "stone-well",
+          "farm-fence-straight",
+          "grain-sacks-baskets",
+          "farm-handcart-tools"
+        ],
+        "scale": 0.3,
+        "chance": 0.5,
+        "jitter": 7
+      }
+    }
+  }
+}
