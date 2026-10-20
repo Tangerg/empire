@@ -1,0 +1,375 @@
+{
+  "scope": "Independent QA of existing Wasteland and Militia sources only; no image generation, source mutation, repository or Git writes.",
+  "reviewDateUtc": "2026-10-20",
+  "exporterPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/export_overrides.py",
+  "exporterSha256": "1e025037b5f3d02b7138e5790497a465b180ec25b7405084ab537294aaffd7a6",
+  "assets": [
+    {
+      "slug": "faction-wasteland",
+      "topicId": "C01-FACTION-WASTELAND",
+      "slot": 7,
+      "fullCellBox": [
+        627,
+        418,
+        940,
+        836
+      ],
+      "masterPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-wasteland/master.png",
+      "masterSha256": "7b67f82c3d587e36df465b5ae483d56f68a6a3278e0cdbc2f087434fa71d279f",
+      "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4137f81d-9359-43ea-9ff6-5b6f5464fe93.png",
+      "sourceEvidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-wasteland/source-evidence.json",
+      "checks": {
+        "masterHashRecorded": true,
+        "rawEqualsMaster": true,
+        "rawOriginExists": true,
+        "rawOriginEqualsMaster": true,
+        "auditHashRecorded": true,
+        "sourceFullCellHashRecorded": true,
+        "sourceBoardHashRecorded": true,
+        "fullCellEqualsOriginalBoardCrop": true,
+        "auditTopicMatchesEvidence": true,
+        "canonicalAssetIdMatches": true,
+        "canonicalContract128Centered": true,
+        "noHD": true,
+        "noFramesOrVariants": true,
+        "fullCanvasExporterPixelEquality": true,
+        "hash:request.json": true,
+        "prompt:prompt.txt": true,
+        "hash:prompt.txt": true,
+        "reference:/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/07-faction-wasteland-full-cell.png": true,
+        "reference:/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png": true,
+        "reference:/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png": true,
+        "previewPixels:white": true,
+        "previewPixels:dark": true,
+        "previewPixels:olive": true
+      },
+      "allChecksPass": true,
+      "sourceImage": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "zeroAlphaFraction": 0.582768633196737,
+        "nearOpaqueFractionGE250": 0.3986751168191611,
+        "visibleBoundsGE8": [
+          26,
+          141,
+          1207,
+          1098
+        ],
+        "visibleMarginsL_T_R_B": [
+          26,
+          141,
+          47,
+          156
+        ],
+        "exporterAlphaGate": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            28,
+            142,
+            1205,
+            1096
+          ]
+        }
+      },
+      "native128": {
+        "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-wasteland/native-128.png",
+        "sha256": "9ae26df033261eeecd86b8f83ef89f02b4cea8d184ec0d2c99b0280341d4b4a4",
+        "method": "Current exporter fit(), complete authored canvas, 2px padding, no bbox crop or alpha cleanup",
+        "exporterAlphaGate": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            5,
+            17,
+            121,
+            110
+          ]
+        },
+        "componentsGE8": [
+          {
+            "pixels": 5808,
+            "bbox": [
+              4,
+              34,
+              107,
+              108
+            ]
+          },
+          {
+            "pixels": 752,
+            "bbox": [
+              108,
+              15,
+              122,
+              111
+            ]
+          }
+        ],
+        "componentsGE64": [
+          {
+            "pixels": 3399,
+            "bbox": [
+              4,
+              34,
+              69,
+              102
+            ]
+          },
+          {
+            "pixels": 2291,
+            "bbox": [
+              63,
+              44,
+              107,
+              108
+            ]
+          },
+          {
+            "pixels": 689,
+            "bbox": [
+              108,
+              16,
+              121,
+              111
+            ]
+          }
+        ],
+        "componentsGE240": [
+          {
+            "pixels": 3242,
+            "bbox": [
+              5,
+              35,
+              68,
+              102
+            ]
+          },
+          {
+            "pixels": 2144,
+            "bbox": [
+              64,
+              44,
+              106,
+              107
+            ]
+          },
+          {
+            "pixels": 538,
+            "bbox": [
+              109,
+              17,
+              121,
+              110
+            ]
+          }
+        ]
+      },
+      "visualReview": {
+        "viewed": [
+          "full original source cell",
+          "complete generated master",
+          "native 128px white/dark/olive strip",
+          "approved Lorne/rune-artificer masters and concept-v2"
+        ],
+        "style": "Bold charcoal outlines, simplified broad matte facets, complete catalog silhouettes. More saturated and faceted than legacy source, consistent with inspected approved-v5 references. Minor source texture was intentionally simplified; no photoreal or ornate reinterpretation.",
+        "native128": "All three object identities remain readable on each inspected background. No visible opaque backdrop, magenta key, external glow or cropped silhouette.",
+        "lowAlphaGapCaveat": "Lanczos low-alpha fringes connect some close silhouettes at threshold 8; this is not proof of exactly zero alpha in every inter-object gap. Three separate substantial components exist at alpha >=64 for both kits, and at >=28 for Wasteland. No source alpha was changed.",
+        "sourceMarginCaveat": "The authored sources do not achieve the prompt target of 6%/inner-88% margins. Actual complete silhouettes and zero-alpha runtime perimeter pass the existing exporter contract. Parent accepted this documented margin deviation.",
+        "identity": "Round repaired shield with rust/ochre/angular blue-gray panel arrangement and iron boss; folded rust cloth with branching repair stitches, tan lower-right patch and blue-gray/ochre hem; slender plain spear with wrapped shaft and complete butt. Three original source objects, no invented tribal emblem.",
+        "semanticCaveat": "Patch count/brush facets and exact spear angle are stylized, not a pixel-identical redraw. Defining object and patchwork topology preserved."
+      },
+      "acceptance": "ready-for-formal-binding-with-documented-caveats",
+      "integrationStatus": "Formal binding/export catalog mutation was not performed by this reviewer. No runtime-completion claim.",
+      "provenanceLimit": "Preserved raw/master/origin hashes and request/prompt/reference hashes verified. This review did not independently replay or recover the original image-generation tool response."
+    },
+    {
+      "slug": "faction-militia-mercenary",
+      "topicId": "C01-FACTION-MILITIA-MERCENARY",
+      "slot": 8,
+      "fullCellBox": [
+        940,
+        418,
+        1254,
+        836
+      ],
+      "masterPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/master.png",
+      "masterSha256": "ae4fce8d882a7386177589e8519956984e9a9517d818e05ffc97b07dfff7d0b4",
+      "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c6823d8c-6108-4804-8e98-5be0a6e15b29.png",
+      "sourceEvidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/source-evidence.json",
+      "checks": {
+        "masterHashRecorded": true,
+        "rawEqualsMaster": true,
+        "rawOriginExists": true,
+        "rawOriginEqualsMaster": true,
+        "auditHashRecorded": true,
+        "sourceFullCellHashRecorded": true,
+        "sourceBoardHashRecorded": true,
+        "fullCellEqualsOriginalBoardCrop": true,
+        "auditTopicMatchesEvidence": true,
+        "canonicalAssetIdMatches": true,
+        "canonicalContract128Centered": true,
+        "noHD": true,
+        "noFramesOrVariants": true,
+        "fullCanvasExporterPixelEquality": true,
+        "hash:request.json": true,
+        "prompt:prompt.txt": true,
+        "hash:prompt.txt": true,
+        "reference:/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/08-faction-militia-mercenary-full-cell.png": true,
+        "reference:/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-rune-artificer/master.png": true,
+        "reference:/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png": true,
+        "hash:refinement-request.json": true,
+        "prompt:refinement-prompt.txt": true,
+        "hash:refinement-prompt.txt": true,
+        "reference:/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/candidate-v1.png": true,
+        "previewPixels:white": true,
+        "previewPixels:dark": true,
+        "previewPixels:olive": true
+      },
+      "allChecksPass": true,
+      "sourceImage": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "zeroAlphaFraction": 0.6389651997181587,
+        "nearOpaqueFractionGE250": 0.3456327312408904,
+        "visibleBoundsGE8": [
+          11,
+          312,
+          1248,
+          962
+        ],
+        "visibleMarginsL_T_R_B": [
+          11,
+          312,
+          6,
+          292
+        ],
+        "exporterAlphaGate": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 97,
+          "coreBoundingBox": [
+            13,
+            314,
+            1246,
+            961
+          ]
+        }
+      },
+      "native128": {
+        "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/native-128.png",
+        "sha256": "9e639bd3cb0b9a72155053d0a3a6de6fb80f734e0b2ca90717d0b40a209fcc2f",
+        "method": "Current exporter fit(), complete authored canvas, 2px padding, no bbox crop or alpha cleanup",
+        "exporterAlphaGate": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            4,
+            33,
+            125,
+            97
+          ]
+        },
+        "componentsGE8": [
+          {
+            "pixels": 5672,
+            "bbox": [
+              3,
+              32,
+              126,
+              98
+            ]
+          }
+        ],
+        "componentsGE64": [
+          {
+            "pixels": 3007,
+            "bbox": [
+              3,
+              33,
+              64,
+              96
+            ]
+          },
+          {
+            "pixels": 1719,
+            "bbox": [
+              59,
+              40,
+              97,
+              96
+            ]
+          },
+          {
+            "pixels": 787,
+            "bbox": [
+              97,
+              43,
+              126,
+              97
+            ]
+          }
+        ],
+        "componentsGE240": [
+          {
+            "pixels": 2864,
+            "bbox": [
+              4,
+              33,
+              63,
+              95
+            ]
+          },
+          {
+            "pixels": 1597,
+            "bbox": [
+              60,
+              41,
+              96,
+              96
+            ]
+          },
+          {
+            "pixels": 679,
+            "bbox": [
+              97,
+              44,
+              125,
+              97
+            ]
+          }
+        ]
+      },
+      "visualReview": {
+        "viewed": [
+          "full original source cell",
+          "complete generated master",
+          "native 128px white/dark/olive strip",
+          "approved Lorne/rune-artificer masters and concept-v2"
+        ],
+        "style": "Bold charcoal outlines, simplified broad matte facets, complete catalog silhouettes. More saturated and faceted than legacy source, consistent with inspected approved-v5 references. Minor source texture was intentionally simplified; no photoreal or ornate reinterpretation.",
+        "native128": "All three object identities remain readable on each inspected background. No visible opaque backdrop, magenta key, external glow or cropped silhouette.",
+        "lowAlphaGapCaveat": "Lanczos low-alpha fringes connect some close silhouettes at threshold 8; this is not proof of exactly zero alpha in every inter-object gap. Three separate substantial components exist at alpha >=64 for both kits, and at >=28 for Wasteland. No source alpha was changed.",
+        "sourceMarginCaveat": "The authored sources do not achieve the prompt target of 6%/inner-88% margins. Actual complete silhouettes and zero-alpha runtime perimeter pass the existing exporter contract. Parent accepted this documented margin deviation.",
+        "identity": "Round/oval plank shield with slate/teal left, small green upper-left patch and ochre/brown right; folded teal cloth with brown belt, brass circular clasp and downturned belt end; plain short square-headed steel hammer with wood handle. Full shield/head outlines restored relative to legacy inset.",
+        "semanticCaveat": "The source clasp contains a small curved incised groove. The accepted generated master has a plain gold boss and does not preserve that groove. Parent explicitly accepted this as a nonsemantic stylization; do not claim exact motif fidelity."
+      },
+      "acceptance": "ready-for-formal-binding-with-documented-caveats",
+      "integrationStatus": "Formal binding/export catalog mutation was not performed by this reviewer. No runtime-completion claim.",
+      "provenanceLimit": "Preserved raw/master/origin hashes and request/prompt/reference hashes verified. This review did not independently replay or recover the original image-generation tool response."
+    }
+  ]
+}

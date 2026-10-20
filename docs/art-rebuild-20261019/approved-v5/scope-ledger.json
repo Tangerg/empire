@@ -4,12 +4,13 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 358,
+    "formalBound": 361,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
-      "faction-kit": 6,
+      "faction-kit": 8,
+      "fx": 1,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -17,7 +18,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 361,
+    "rawPreservedTopics": 362,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2995,8 +2996,10 @@
       "category": "faction-kit",
       "label": "巨龙盟约装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-dragon-covenant/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3090,11 +3093,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-militia-mercenary/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-militia-mercenary.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Source complete round wood shield, belted teal kit roll and plain hammer; minute brass clasp groove simplified to plain boss, documented nonsemantic variation; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-MOUNTAIN-FORGE",
@@ -3197,11 +3205,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-wasteland/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-wasteland.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Source patchwork round shield, terracotta stitched cloth with tan patch and bluegray hem, practical spear; no invented crest; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-TERRAIN-BORDER-1",
@@ -7421,11 +7434,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-01/sweep/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four immutable RGBA phases onset/sweep/peak/dissipate preserved; original semantic growth/decay reviewed",
+        "export": "One shared1254 canvas scale28/1254 at[2,2]; exact32/64 phase export checked; genuine partial-alpha finalphase preserved; five-background native review passed",
+        "runtimeBinding": "Canonical FX01 and density2 HD resolver; actual existing border-blade hit binding;12fps nonloop with existing420ms hit lifetime; centered anchor16,16 preserves prior runtime placement",
+        "liveGame": "pending; exact-duration APNG and static phase comparisons only, no browser/GPU playback verification"
+      }
     },
     {
       "topicId": "C01-FX-02",

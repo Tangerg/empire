@@ -1,0 +1,92 @@
+{
+  "topicId": "C01-FACTION-DRAGON-COVENANT",
+  "assetId": "C01-FFV1-FACTION-DRAGON-COVENANT",
+  "label": "巨龙盟约装备基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      0,
+      836,
+      314,
+      1254
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      5,
+      841,
+      309,
+      1249
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/09-faction-dragon-covenant-full-cell.png",
+    "referenceLegacyInset5": "source-crops/09-faction-dragon-covenant-legacy-inset5.png",
+    "referenceFullCellSha256": "a5352891ade673ae7f5fe8ff79ea2d2a4fe46206ade06b783901a961c8cece12",
+    "referenceLegacyInset5Sha256": "1ba198ee6e4b1a60224a2e361aec443d3cc8f1854eee9d6ff361febeeadc402d"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Tall angular beveled steel shield/plate with a literal hanging balance-scale emblem and source geometric/rune-like border relief",
+      "Gray overlapping dragon-scale material swatch with dark wine-red edge",
+      "Separate looped gray strap/cord with rectangular silver buckle"
+    ],
+    "emblem": "CRITICAL: original shield motif is hanging balance scales, not a dragon-head silhouette. Preserve source emblem and scale material. The separate loop/buckle is not authorization to add a saddle or bridle",
+    "palette": "Old gray metal, overlapping gray scales, muted wine-red edge"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "9765a3311d101a83ca8d9b4e5b7b65ae81ef224b63dea98eede3906d542dc214",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/09-faction-dragon-covenant-full-cell.png",
+          "sha256": "a5352891ade673ae7f5fe8ff79ea2d2a4fe46206ade06b783901a961c8cece12"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-lorne/master.png",
+          "sha256": "f954b35190f6e913322927d0acfc7411d667de8ce5466e678102d9ef4d2fd408"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-vilsa/master.png",
+          "sha256": "ef8cdb4fe029f6bf8abaa632e10bd242ab93596098ff6930a3230289fb15204f"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-mountain-forge/master.png",
+          "sha256": "6afefbeb5c0129745adf6d521d3b2d153a28efcff447c8b68fa7cfd46853d964"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b6b1a99c-34f8-431c-8e81-20c74a3c5b3e.png",
+  "generationProvenance": {
+    "status": "recovered-existing-output",
+    "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-b6b1a99c-34f8-431c-8e81-20c74a3c5b3e.png",
+    "sha256": "d5eef75d61818a5322f4d32ab3cb42e7bcf1abf6e1e0feb6e84e219e3b54d89a",
+    "promptLinkage": "Visually matches this folder pending request and original Dragon Covenant cell; exact prior tool-response/request linkage was not recovered and is not claimed. Existing output preserved instead of duplicate generation.",
+    "rawAndMasterIdentical": true,
+    "alphaMutation": false,
+    "postprocessing": null
+  },
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "d5eef75d61818a5322f4d32ab3cb42e7bcf1abf6e1e0feb6e84e219e3b54d89a",
+  "promptHashes": {
+    "prompt.txt": "e490b4c31bfc87058c1e9bb20031eaeb509682eacf7a95daa1037e853967b109"
+  },
+  "postprocessing": "None; raw and master are unchanged copies of native generation bytes. QA previews only use the existing exporter full-canvas containment.",
+  "runtimeReady": false
+}

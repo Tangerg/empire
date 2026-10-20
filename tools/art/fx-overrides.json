@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-01": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "onset",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-01/onset/master.png",
+          "sha256": "f1be1cc4ee569124d7e07449ebc2cfaa2692c36813d5a44282acbb87ef4df35b"
+        },
+        {
+          "phase": "sweep",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-01/sweep/master.png",
+          "sha256": "f1d8e2d1064122659f1a2b5cd62521fbc64969fa3e328355ba8e048ee634733b"
+        },
+        {
+          "phase": "peak",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-01/peak/master.png",
+          "sha256": "a91d7cdb69563a73acc47f5ff7ccc28fffe0d1c3e0c6df4d023ae0069f35388f"
+        },
+        {
+          "phase": "dissipate",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-01/dissipate/master.png",
+          "sha256": "00faec90705ccdd282abae756f44cc81ab1a5460183201486b3cb1c231cea983"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  }
+}

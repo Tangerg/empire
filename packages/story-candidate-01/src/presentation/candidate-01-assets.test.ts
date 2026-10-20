@@ -8,6 +8,7 @@ import { candidate01Asset, readCandidate01AssetRecord } from './candidate-01-ass
 import { runtimeAtlasCellMarkup } from '@empire/game-ui';
 
 import sourceOverrides from '../../../../tools/art/source-overrides.json';
+import fxOverrides from '../../../../tools/art/fx-overrides.json';
 
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
@@ -106,7 +107,7 @@ const bundles = [
 describe('approved runtime asset documents', () => {
   it('covers every formally bound approved sequence with an explicit geometry and byte-equality contract', () => {
     const bound = manifest.assets.filter(record => record.qualityTier === 'approved-chunky-v5-export-verified' && record.frames !== undefined).map(record => record.topicId).sort();
-    expect(bundles.map(bundle => bundle.topic).sort()).toEqual(bound);
+    expect([...bundles.map(bundle => bundle.topic), ...Object.keys(fxOverrides.assets)].sort()).toEqual(bound);
   });
   it.each(bundles)('binds $topic to byte-identical approved sheets and registered logical geometry', ({ topic, source, size, footprint, frames }) => {
     const record = candidate01Asset(topic);

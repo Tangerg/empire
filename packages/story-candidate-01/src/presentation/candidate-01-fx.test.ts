@@ -1,3 +1,7 @@
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import fxOverrides from '../../../../tools/art/fx-overrides.json';
+import hdManifest from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import manifest from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
 import * as assets from './candidate-01-assets';
@@ -56,4 +60,36 @@ describe('candidate-01 effect pivot ownership', () => {
       expect(() => candidate01FxPicture(record.topicId)).toThrow('no valid anchor');
     },
   );
+});
+
+
+describe('approved FX source and export binding', () => {
+  const root = new URL('../../../../', import.meta.url);
+  const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
+  it.each(Object.entries(fxOverrides.assets))('binds %s to its reviewed full-canvas phases at both densities', (topic, override) => {
+    const record = assets.candidate01Asset(topic);
+    expect(record.qualityTier).toBe('approved-chunky-v5-export-verified');
+    expect(override.phases.map(phase => phase.phase)).toEqual(['onset', 'sweep', 'peak', 'dissipate']);
+    expect(override.placement).toEqual({ scale: 28 / 1254, origin: [2, 2], sourcePivot: [627, 627] });
+    for (const phase of override.phases) {
+      expect(hash(readFileSync(new URL(phase.source, root)))).toBe(phase.sha256);
+    }
+    const report = JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/fx/fx-${topic.slice(-2)}/formal-export.json`, root), 'utf8'));
+    expect(report.map((entry: { density: number }) => entry.density)).toEqual([1, 2]);
+    const canonical = manifest.assets.find(asset => asset.topicId === topic)!;
+    const hd = hdManifest.assets.find(asset => asset.topicId === topic)!;
+    for (const entry of report) {
+      const descriptor = entry.density === 1 ? canonical : hd;
+      const png = readFileSync(new URL(entry.output, root));
+      expect(entry.output).toBe(`packages/story-candidate-01/assets/final-fantasy-v1/${descriptor.png}`);
+      expect(hash(png)).toBe(entry.fileSha256);
+      expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([128 * entry.density, 32 * entry.density]);
+      expect(entry.placement).toEqual(override.placement);
+      expect(entry.frames.map((frame: { phase: string }) => frame.phase)).toEqual(override.phases.map(phase => phase.phase));
+      expect(entry.sources.map((source: { sourceSha256: string }) => source.sourceSha256)).toEqual(override.phases.map(phase => phase.sha256));
+      expect(entry.independentFrameFit).toBe(false);
+    }
+    expect(record.url).toContain(hd.png);
+    expect(hd.pixelDensity).toBe(2);
+  });
 });
