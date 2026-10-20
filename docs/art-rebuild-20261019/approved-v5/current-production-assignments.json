@@ -1,5 +1,5 @@
 {
-  "asOfUtc": "2026-10-20T06:22:00Z",
+  "asOfUtc": "2026-10-20T06:24:00Z",
   "formalSnapshot": "9469b9de408ce299bc46edb0858b3f7f2f160980",
   "assignments": [
     {
@@ -75,6 +75,18 @@
     ],
     [
       "C01-FX-21"
+    ],
+    [
+      "c02-status-overheated",
+      "c02-status-hypothermia",
+      "c02-status-spore-contamination",
+      "c02-status-memory-corrosion"
+    ],
+    [
+      "c02-status-local-support",
+      "c02-status-controlled",
+      "c02-status-shielded",
+      "c02-status-hidden"
     ]
   ],
   "unassignedFinalC01Effects": [
