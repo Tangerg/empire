@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-13": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "cracked-earth",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/cracked-earth/master.png",
+          "sha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4"
+        },
+        {
+          "phase": "ember-rise",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-rise/master.png",
+          "sha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773"
+        },
+        {
+          "phase": "flame-peak",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/flame-peak/master.png",
+          "sha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b"
+        },
+        {
+          "phase": "ember-residue",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-residue/master.png",
+          "sha256": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  },
+  "note": "Source/export handoff. Four phase names approved by parent; final parent static review accepted on 2026-10-20. Source paths are proposed repository destinations. Keep existing 12fps, loop=false, normal blend and anchor [16,16]. No assumed hit lifetime or scene deployment."
+}

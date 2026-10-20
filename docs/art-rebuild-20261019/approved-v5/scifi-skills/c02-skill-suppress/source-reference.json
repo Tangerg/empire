@@ -1,0 +1,52 @@
+{
+  "topicId": "c02-skill-suppress",
+  "assetId": "C02-SFV1-skill-suppress",
+  "label": "轨道压制",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-suppress",
+    "topicId": "c02-skill-suppress",
+    "label": "轨道压制",
+    "category": "skill",
+    "png": "runtime/skill/skill-suppress.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 3,
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    309
+  ],
+  "sourceCropSize": [
+    304,
+    304
+  ],
+  "sourceMappingEvidence": "Each actual 48x48 runtime icon was visually inspected first, then matched by depicted action to the complete original 4x4 skills-board-01. Catalog order agrees independently. No inference from alphabetical final manifest ordering.",
+  "functionalMotif": "Short turret with one broad orange cone of suppressive fire directed right.",
+  "semanticConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-suppress.png",
+  "runtimeReferenceSha256": "f9c693ede2bc47a9b5701d07ed651ef4274867ef7ef41f5ad9f0bea1157ddc6a",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only exact source-reference crop and separate QA diagnostics; no generated source cleanup or alpha editing."
+}

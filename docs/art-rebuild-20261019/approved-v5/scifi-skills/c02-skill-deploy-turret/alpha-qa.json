@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-deploy-turret",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 701836,
+  "partialAlphaPixels": 868151,
+  "opaquePixels": 2529,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    59,
+    72,
+    1195,
+    1195
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    59,
+    72,
+    59,
+    59
+  ],
+  "nearOpaquePixelCountGE240": 850696,
+  "diagnostic8pxErosion": {
+    "minAlpha": 252,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 944,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "6cf38a062d974d197a4c93597ab1a49cd8ff88a2cc02407e9dad87c726c0afc2",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

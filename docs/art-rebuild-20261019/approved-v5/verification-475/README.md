@@ -9,3 +9,5 @@
 ## Complete-suite result
 
 At the frozen production snapshot b14045e, all130 test files ran:1734/1737 tests passed, with three timeouts in two existing UI files (south-patrol and scout-1 hidden-field-post tests at15000ms, and game title entry at5000ms). Total825.56s. No test assertions or timeouts were changed. A source/QA-only backup series advanced Git during this run; no runtime PNG, manifest, catalog or production/test code changed. The full failure log is retained. An unchanged isolated rerun of both files is pending and will not be described as a passing complete suite.
+
+The unchanged isolated rerun completed with10/10 tests passing in30.83s. Both test files and their original timeouts were unchanged. This supports intermittent scheduling/load sensitivity, but does not turn the recorded complete-suite failure into a pass.

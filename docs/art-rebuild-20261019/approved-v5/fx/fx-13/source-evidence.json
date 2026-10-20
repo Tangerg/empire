@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-FX-13",
+  "label": "焦土余火",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-04.png",
+    "sha256": "4761b6846cce254e16ef4cec54c62b30ae5ca3e6879cce60fa2c135be135ee02",
+    "row1Based": 1,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-13/reference/original-row.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-13.png",
+    "builderMapping": "build_final_fantasy_v1.py build_fx appends four rows per atlas in order; FX13 is atlas04 row1."
+  },
+  "originalRowOneBased": 1,
+  "semanticPhases": [
+    "Compact dark cracked earth patch, nearly dormant",
+    "Orange cracks brighten; small flames and a few upward smoke wisps appear",
+    "Peak orange crack fire, short tongues and sparse rising sparks",
+    "Low glowing embers remain in cracks, flames subside; compact earth remains"
+  ],
+  "contract": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-13/generation-contract.json",
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-13",
+    "topicId": "C01-FX-13",
+    "label": "焦土余火",
+    "category": "fx",
+    "png": "runtime/fx/fx-13.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": "No literal C01-FX-13, C01-FFV1-FX-13 or fx-13.png reference found in package TypeScript/TSX/nonmanifest JSON search. Catalog-only, not deployed."
+}

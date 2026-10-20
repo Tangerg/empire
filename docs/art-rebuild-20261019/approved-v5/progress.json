@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 65,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 475,
+  "formalRuntimeBoundTopics": 484,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -2924,6 +2924,60 @@
       "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
       "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
       "liveGame": "pending; static native/export validation only"
+    },
+    "C01-FX-13": {
+      "raw": "Four independent transparent semantic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+      "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+      "runtimeBinding": "Canonical FX and HD resolver;12fps, loop=False; four equal phases, lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+      "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+    },
+    "c02-skill-snipe": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-suppress": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-boarding": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-quick-repair": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-deploy-turret": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-brace-platform": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-heat-zone": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
+    },
+    "c02-skill-emergency-water": {
+      "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+      "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+      "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+      "liveGame": "pending; static native/export validation only"
     }
   },
   "supplementalBundles": {
@@ -3337,10 +3391,10 @@
   "totalCanonicalScope": 1212,
   "priorTechnicalExportsRequireStyleReview": true,
   "tests": {
-    "focusedRuntime": 50,
-    "typecheck": "passed at475-topic snapshot",
+    "focusedRuntime": 59,
+    "typecheck": "passed at484-topic snapshot",
     "artToolTests": 47,
-    "fullSuite": "475-topic production snapshot b14045e: 1734/1737 passed, 3 existing UI tests timed out; full log retained, unchanged isolated rerun pending",
+    "fullSuite": "475-topic production snapshot b14045e: 1734/1737 passed; three existing UI timeout failures retained. Unchanged isolated rerun of both files:10/10 passed. This is not a passing complete-suite claim.",
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {

@@ -1,0 +1,426 @@
+[
+  {
+    "topicId": "C01-FX-13",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-13.png",
+    "size": [
+      128,
+      32
+    ],
+    "frameSize": [
+      32,
+      32
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      28,
+      28
+    ],
+    "sources": [
+      {
+        "phase": "cracked-earth",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/cracked-earth/master.png",
+        "sourceSha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4",
+        "sourcePixelSha256": "be9bfae4b0ffae5356b298f94537977a5b0f906318fc8f4cd88994eadea00bc1",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 35,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            53,
+            1222,
+            1254
+          ],
+          "nonzeroPixels": 398261
+        }
+      },
+      {
+        "phase": "ember-rise",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-rise/master.png",
+        "sourceSha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773",
+        "sourcePixelSha256": "8c57f555b2224c7324474416f0393add222a4a592e5b376cab61a65cba56e018",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            25,
+            23,
+            1222,
+            1230
+          ],
+          "nonzeroPixels": 414153
+        }
+      },
+      {
+        "phase": "flame-peak",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/flame-peak/master.png",
+        "sourceSha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b",
+        "sourcePixelSha256": "161b504746375fb81f7aa293d7047d183bcd10a5291a9e7c28d31305a16bf233",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 44,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            28,
+            1218,
+            1254
+          ],
+          "nonzeroPixels": 466293
+        }
+      },
+      {
+        "phase": "ember-residue",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-residue/master.png",
+        "sourceSha256": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98",
+        "sourcePixelSha256": "70d9541f441c65e8b117338a1a802618e944ac924953787b9f135270b8e494cb",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 6,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            69,
+            19,
+            1200,
+            1254
+          ],
+          "nonzeroPixels": 402596
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "cracked-earth",
+        "pixelSha256": "e78c61bbb50da4de7b63752d040aebb538382bcd648cbeeacca7832e75ae9937",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            13,
+            30,
+            30
+          ],
+          "nonzeroPixels": 298
+        }
+      },
+      {
+        "phase": "ember-rise",
+        "pixelSha256": "e1252c7ff0edd27d590b8caf9336f09d5399d169247382a4b6b812849d8efbd4",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            10,
+            30,
+            30
+          ],
+          "nonzeroPixels": 317
+        }
+      },
+      {
+        "phase": "flame-peak",
+        "pixelSha256": "060dfbdacfd577357b218d5e0cc50b6d6a056f198f9ca4010028dc89fcf2cd05",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            5,
+            30,
+            30
+          ],
+          "nonzeroPixels": 389
+        }
+      },
+      {
+        "phase": "ember-residue",
+        "pixelSha256": "fc513992f16b5e0e2426676fc949565f9b4151140311b08edf54369111860321",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            13,
+            30,
+            30
+          ],
+          "nonzeroPixels": 299
+        }
+      }
+    ],
+    "pixelSha256": "c3ac73cfd3f6e3b0699d51f9b0ace9ffddef89a79242adad723ff13eb33ce863",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "playback": {
+      "mode": "once-hold",
+      "sequenceDurationMs": 333.3333333333333,
+      "afterLastFrame": "hold-last-frame",
+      "wrapTransition": null,
+      "lifetimeOwner": "consumer"
+    },
+    "loopClosureReview": "not-applicable",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "76948f4195272d6196df5fce449cc42e6f0c49d03dce3fc471a36fac88bd629f"
+  },
+  {
+    "topicId": "C01-FX-13",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-13.png",
+    "size": [
+      256,
+      64
+    ],
+    "frameSize": [
+      64,
+      64
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      56,
+      56
+    ],
+    "sources": [
+      {
+        "phase": "cracked-earth",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/cracked-earth/master.png",
+        "sourceSha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4",
+        "sourcePixelSha256": "be9bfae4b0ffae5356b298f94537977a5b0f906318fc8f4cd88994eadea00bc1",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 35,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            53,
+            1222,
+            1254
+          ],
+          "nonzeroPixels": 398261
+        }
+      },
+      {
+        "phase": "ember-rise",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-rise/master.png",
+        "sourceSha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773",
+        "sourcePixelSha256": "8c57f555b2224c7324474416f0393add222a4a592e5b376cab61a65cba56e018",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            25,
+            23,
+            1222,
+            1230
+          ],
+          "nonzeroPixels": 414153
+        }
+      },
+      {
+        "phase": "flame-peak",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/flame-peak/master.png",
+        "sourceSha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b",
+        "sourcePixelSha256": "161b504746375fb81f7aa293d7047d183bcd10a5291a9e7c28d31305a16bf233",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 44,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            28,
+            1218,
+            1254
+          ],
+          "nonzeroPixels": 466293
+        }
+      },
+      {
+        "phase": "ember-residue",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-residue/master.png",
+        "sourceSha256": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98",
+        "sourcePixelSha256": "70d9541f441c65e8b117338a1a802618e944ac924953787b9f135270b8e494cb",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 6,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            69,
+            19,
+            1200,
+            1254
+          ],
+          "nonzeroPixels": 402596
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "cracked-earth",
+        "pixelSha256": "ceae54261e9b94b9c749cabe9f3e8f0244eb1c83d1abb219e6bd730f2dc9251b",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            29,
+            60,
+            57
+          ],
+          "nonzeroPixels": 982
+        }
+      },
+      {
+        "phase": "ember-rise",
+        "pixelSha256": "acfa81de9107da14d63ec9abe9e9b362943355ee20bf785f1ebe5808f5072575",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            21,
+            60,
+            57
+          ],
+          "nonzeroPixels": 1062
+        }
+      },
+      {
+        "phase": "flame-peak",
+        "pixelSha256": "ddc305a56486fb54eeacfef8926a8f0f283d6cf70f6f57cbb25c450b54c7e300",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            10,
+            60,
+            57
+          ],
+          "nonzeroPixels": 1257
+        }
+      },
+      {
+        "phase": "ember-residue",
+        "pixelSha256": "480a5b200d40b7f1a282128ea0ac35b1a66aaaaf890031b555f0b4ec5624bf5a",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            29,
+            60,
+            57
+          ],
+          "nonzeroPixels": 987
+        }
+      }
+    ],
+    "pixelSha256": "1fe6c0e2f277d99bc2d308c131bf1e752392d9e57a1f0157055443c9cebce140",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "playback": {
+      "mode": "once-hold",
+      "sequenceDurationMs": 333.3333333333333,
+      "afterLastFrame": "hold-last-frame",
+      "wrapTransition": null,
+      "lifetimeOwner": "consumer"
+    },
+    "loopClosureReview": "not-applicable",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "006ef0e724c7ca23455ed6c110c8a9b04c375d6b6ba893cfc2242761c9138447"
+  }
+]

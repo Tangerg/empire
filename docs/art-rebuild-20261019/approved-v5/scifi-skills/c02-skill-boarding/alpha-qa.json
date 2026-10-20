@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-boarding",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 712652,
+  "partialAlphaPixels": 857785,
+  "opaquePixels": 2079,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    89,
+    121,
+    1187,
+    1152
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    89,
+    121,
+    67,
+    102
+  ],
+  "nearOpaquePixelCountGE240": 842598,
+  "diagnostic8pxErosion": {
+    "minAlpha": 252,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 951,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "862ec81c7edc24fca2798115d82ce05e2d7d5a38a4e5bac3d1cbffd342bc2127",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

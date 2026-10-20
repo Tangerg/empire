@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-suppress",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 971044,
+  "partialAlphaPixels": 599089,
+  "opaquePixels": 2383,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    47,
+    126,
+    1220,
+    1131
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    47,
+    126,
+    34,
+    123
+  ],
+  "nearOpaquePixelCountGE240": 582917,
+  "diagnostic8pxErosion": {
+    "minAlpha": 250,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 624,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "2b17cd31dbf8f4b1f46bf2e35dc94feb62eec4fd3ea8cacac2726aa63b910892",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

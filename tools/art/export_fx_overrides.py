@@ -32,6 +32,7 @@ PHASE_ORDERS = {
     'C01-FX-08': ['clustered-echoes', 'rising-echoes', 'dissolving-echoes', 'wisp-remnants'],
     'C01-FX-13': ['cracked-earth', 'ember-rise', 'flame-peak', 'ember-residue'],
     'C01-FX-14': ['low-fumes', 'rising-fumes', 'plume-crest', 'settling-wisps'],
+    'C01-FX-15': ['spirit-onset', 'spirit-growth', 'leafy-spirit-peak', 'spirit-residue'],
     **AMBIENT_PHASE_ORDERS,
 }
 

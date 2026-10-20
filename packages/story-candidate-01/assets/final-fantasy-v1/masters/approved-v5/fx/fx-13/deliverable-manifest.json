@@ -1,0 +1,698 @@
+{
+  "root": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-13",
+  "status": "accepted-source-static-phase-candidate",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1516,
+      "sha256": "5b6540fa8f8fdbabf922a457a99c4d024252dd79b2eb493869ce3b2c3ec7b1aa"
+    },
+    {
+      "path": "SEMANTIC-PROPOSAL.md",
+      "bytes": 1561,
+      "sha256": "49be93d8ae59e57768a77a41fe4644f3748c8d5645d637e5495fe5e38747fa84"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 6482,
+      "sha256": "ba5070a22e204cfc0d595487f5875cb6a011d20b2849d135b5bba3c370ac5dfe"
+    },
+    {
+      "path": "cracked-earth/hashes.json",
+      "bytes": 245,
+      "sha256": "740afb8d02dcfe912142624ca22a98ecd1c8dabf71c901b8985982e5cde5d3cf"
+    },
+    {
+      "path": "cracked-earth/master.png",
+      "bytes": 681134,
+      "sha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4"
+    },
+    {
+      "path": "cracked-earth/prompt.txt",
+      "bytes": 2144,
+      "sha256": "d3a373248ee0fb6e9903d4035fcfb2e3007737aea9eb4e19a7ede4827a0d8cdf"
+    },
+    {
+      "path": "cracked-earth/provenance.json",
+      "bytes": 679,
+      "sha256": "73c2f50eeb1a6b1a5bdff3864e01265fc5d714b987151bf19fdf18edcc341eec"
+    },
+    {
+      "path": "cracked-earth/raw.png",
+      "bytes": 681134,
+      "sha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4"
+    },
+    {
+      "path": "cracked-earth/reference-hashes.json",
+      "bytes": 193,
+      "sha256": "db07126cb1f1d724865dd4f8fb51642878c628d46a756fdb5bf215446ee70ba3"
+    },
+    {
+      "path": "cracked-earth/reference-snapshots/input-1.png",
+      "bytes": 397480,
+      "sha256": "70c199fb0697469054bd558af28949853df05d49dc07f8986f1c95fc1b1d17e1"
+    },
+    {
+      "path": "cracked-earth/reference-snapshots.json",
+      "bytes": 248,
+      "sha256": "6fbf8f1c57cfd02e495f477048f25b59d6d7494d73e11a56314ea49778afd389"
+    },
+    {
+      "path": "cracked-earth/request.json",
+      "bytes": 2325,
+      "sha256": "6d13f27b58801ea19cd1c2ac2cbf937ab4b9cabb6878537e7c94c9b437026946"
+    },
+    {
+      "path": "cracked-earth/source-evidence.json",
+      "bytes": 286,
+      "sha256": "8dfcd1020a2ccf5f0d81d04d75cb59b45b6c6a21de7ff77ba746481b3eb3e2b5"
+    },
+    {
+      "path": "ember-residue/hashes.json",
+      "bytes": 245,
+      "sha256": "5823cc9d8de086eb6425133f3ccf90140b9e3ce638753aa410645dadc575aa6c"
+    },
+    {
+      "path": "ember-residue/master.png",
+      "bytes": 676363,
+      "sha256": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98"
+    },
+    {
+      "path": "ember-residue/prompt.txt",
+      "bytes": 1720,
+      "sha256": "dd994d586be9be4cf5fd266de55a420d252a1279f71ec15a0e8a3d84034be345"
+    },
+    {
+      "path": "ember-residue/provenance.json",
+      "bytes": 679,
+      "sha256": "3afbcc7cad7b8b329fdbb1ce4d79818d2103d3b56970cb07e8d99b5c3c6f3eb1"
+    },
+    {
+      "path": "ember-residue/raw.png",
+      "bytes": 676363,
+      "sha256": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98"
+    },
+    {
+      "path": "ember-residue/reference-hashes.json",
+      "bytes": 188,
+      "sha256": "8adab49da96f3388a3b3a524feab91811ce937f7b69765bd9202db8632ec40bc"
+    },
+    {
+      "path": "ember-residue/reference-snapshots/input-1.png",
+      "bytes": 829096,
+      "sha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b"
+    },
+    {
+      "path": "ember-residue/reference-snapshots.json",
+      "bytes": 243,
+      "sha256": "914644c5b9cceb8c353428106e06aa24b80cc1a3fe8e77c6c6e8bc9502725e6f"
+    },
+    {
+      "path": "ember-residue/request.json",
+      "bytes": 1894,
+      "sha256": "207a065df6dccf1a0af4db77fcd19b0a8b3292c586c77e20657d5c1388dc6666"
+    },
+    {
+      "path": "ember-residue/source-evidence.json",
+      "bytes": 286,
+      "sha256": "538a46b9f3b56c0aa12b91466916ba2a9dccd4730d6146d9bce9c7d6fc757263"
+    },
+    {
+      "path": "ember-rise/hashes.json",
+      "bytes": 245,
+      "sha256": "f0f7ec62033e839f42751f784530d00122010e33963afe121d4d8961351674b9"
+    },
+    {
+      "path": "ember-rise/master.png",
+      "bytes": 703421,
+      "sha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773"
+    },
+    {
+      "path": "ember-rise/prompt.txt",
+      "bytes": 1748,
+      "sha256": "42057233590cb00b254c4784d49657c6c00177b320c69ed7cec1a21d4bca5a3f"
+    },
+    {
+      "path": "ember-rise/provenance.json",
+      "bytes": 676,
+      "sha256": "d03662876970b286f8c9d8cd37a29c041d60a097a38cbf17fdd8a8dbe8db74be"
+    },
+    {
+      "path": "ember-rise/raw.png",
+      "bytes": 703421,
+      "sha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773"
+    },
+    {
+      "path": "ember-rise/reference-hashes.json",
+      "bytes": 191,
+      "sha256": "fe56685bd60a39b7efc4e71937c67ed497a5ef407326780f0873af39214218c4"
+    },
+    {
+      "path": "ember-rise/reference-snapshots/input-1.png",
+      "bytes": 681134,
+      "sha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4"
+    },
+    {
+      "path": "ember-rise/reference-snapshots.json",
+      "bytes": 246,
+      "sha256": "3147089d56a68d5307fe42eeb180a11150ec6077777ffed4c126162847f2be88"
+    },
+    {
+      "path": "ember-rise/request.json",
+      "bytes": 1925,
+      "sha256": "b287038da71bb2c5bb23a10cf2234e3b2d63832e0b5acc6821d2825ea3fe1676"
+    },
+    {
+      "path": "ember-rise/source-evidence.json",
+      "bytes": 283,
+      "sha256": "40142c6016bbd711c55465a5c7037e5de4bf44133d8cfcb774e686907ca3ed0e"
+    },
+    {
+      "path": "final-quartet.json",
+      "bytes": 2498,
+      "sha256": "b6ba4ac0599f4818400b75f26e1152a7617eeb1068af5035e3234bae1e1823d3"
+    },
+    {
+      "path": "final-review.json",
+      "bytes": 2991,
+      "sha256": "b6548c073b8af53059b5a7e35dc5c8c15e7b2e3d3d24db9e8b9c9981db47a12d"
+    },
+    {
+      "path": "finalize.py",
+      "bytes": 9777,
+      "sha256": "0f654a5ee335ea15a1007a6cdaad8ba03deabcd58c4ae9c04d0577d4d3ff06a6"
+    },
+    {
+      "path": "first-pair-qa.py",
+      "bytes": 1499,
+      "sha256": "47f97a5c57af4b1e48f9466f6e075ba084afb870c369383289b6a60e61b1675f"
+    },
+    {
+      "path": "first-pair.json",
+      "bytes": 282,
+      "sha256": "5e248f80acef65529a9899691f0b0680c29740fe210fe8bb57098fc284d141a8"
+    },
+    {
+      "path": "flame-peak/hashes.json",
+      "bytes": 245,
+      "sha256": "c6c012a606158db3d765cf4730f43c138ac12cffa8ed8571196aae558f71e982"
+    },
+    {
+      "path": "flame-peak/master.png",
+      "bytes": 829096,
+      "sha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b"
+    },
+    {
+      "path": "flame-peak/prompt.txt",
+      "bytes": 2009,
+      "sha256": "fb5be4e4e4fa3b6c5cd81aa2eb8a7b1beb5577e2bd6199d60db86ef98f9049ff"
+    },
+    {
+      "path": "flame-peak/provenance.json",
+      "bytes": 676,
+      "sha256": "63c046a690c06d2e8af8a0ac693f904d2796166a24d496adb80f14d89d8c0b7b"
+    },
+    {
+      "path": "flame-peak/raw.png",
+      "bytes": 829096,
+      "sha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b"
+    },
+    {
+      "path": "flame-peak/reference-hashes.json",
+      "bytes": 188,
+      "sha256": "beac59275edf709cd223b7446c5a78872a371b1dd374e9d853de9755f2156d7d"
+    },
+    {
+      "path": "flame-peak/reference-snapshots/input-1.png",
+      "bytes": 703421,
+      "sha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773"
+    },
+    {
+      "path": "flame-peak/reference-snapshots.json",
+      "bytes": 243,
+      "sha256": "cd7590102c3c5d575048f45e3920fcfedf8b8b4e6539669ec48178c0b58ee1b2"
+    },
+    {
+      "path": "flame-peak/request.json",
+      "bytes": 2183,
+      "sha256": "22af2e7c43692917505240adcfd359d9dcfe2857ca1f424e575bf874f7a9caaa"
+    },
+    {
+      "path": "flame-peak/source-evidence.json",
+      "bytes": 283,
+      "sha256": "0c50852b6092c6d6cc23a1d824a0528f221e9231ee16a0a77e9aacb8551d62ff"
+    },
+    {
+      "path": "generation-contract.json",
+      "bytes": 3624,
+      "sha256": "6eae176e82c7048f21b7d35e34344be5269bee61b79d2621f8600c914329add5"
+    },
+    {
+      "path": "integration-catalog.json",
+      "bytes": 1679,
+      "sha256": "bcd3b5f56055e90bf7f50f6e81b28e9db2c8fd7bbffeb915cf3dd04d9c58b446"
+    },
+    {
+      "path": "persist-source.py",
+      "bytes": 1628,
+      "sha256": "ab7d8d391a4d51dd59dde8415ef8a59618e3510722e6d4047f3d910fd204af5c"
+    },
+    {
+      "path": "qa/12fps-once-black@1x.apng",
+      "bytes": 3889,
+      "sha256": "36d1c4d824eb989eca260c575eb12fec7a8d455805a18b01c4eaf8916dcbf6e2"
+    },
+    {
+      "path": "qa/12fps-once-black@2x.apng",
+      "bytes": 11732,
+      "sha256": "a5a8a8b2b8fe6467d68e396f71489d6886540d2576f737a1e60a80e5e0c5744a"
+    },
+    {
+      "path": "qa/12fps-once-bright-stone@1x.apng",
+      "bytes": 4854,
+      "sha256": "d7c5adab9f477d3fab0b1b58d5dfa7d196fb078f9a48a21317dd09b24a0f7a9f"
+    },
+    {
+      "path": "qa/12fps-once-bright-stone@2x.apng",
+      "bytes": 13797,
+      "sha256": "eb64bb15da842545623a53b986976cca2afb1b340d04ba0af954241e1618bb0d"
+    },
+    {
+      "path": "qa/12fps-once-checker@1x.apng",
+      "bytes": 5060,
+      "sha256": "3d9ebd43f4ab85fc534932a23056b2948f4b8ace63161dd821df260400360a3b"
+    },
+    {
+      "path": "qa/12fps-once-checker@2x.apng",
+      "bytes": 14278,
+      "sha256": "e495b309000c44d1eac8b0ca4a4b625ef8269ac63f1459840c3b6918bb478d1f"
+    },
+    {
+      "path": "qa/12fps-once-dark-earth@1x.apng",
+      "bytes": 3997,
+      "sha256": "668fef105d8af4de69bbecc04c81e9983471e3ba4976459bbb5c948ff59ab911"
+    },
+    {
+      "path": "qa/12fps-once-dark-earth@2x.apng",
+      "bytes": 12299,
+      "sha256": "ce4760069e7384355c36e8dbc4c1d6b7155e66460c41d2aa24b48f54f1ea02f7"
+    },
+    {
+      "path": "qa/12fps-once-green-ground@1x.apng",
+      "bytes": 4319,
+      "sha256": "e682e85562753a8c0f7918ec7c126867bf617017ae020454b334a3d5395e40a1"
+    },
+    {
+      "path": "qa/12fps-once-green-ground@2x.apng",
+      "bytes": 12833,
+      "sha256": "903cf16c195095d0424211063e2f236a7bceb80f6193cd070b02d5228b16b267"
+    },
+    {
+      "path": "qa/12fps-once-transparent@1x.apng",
+      "bytes": 5003,
+      "sha256": "0e18244f7674b0d90b45b5f3a1d014baf4df17bbd23506795213826d93453554"
+    },
+    {
+      "path": "qa/12fps-once-transparent@2x.apng",
+      "bytes": 14211,
+      "sha256": "47ff0430f6cb4e920786ac40cfaf81c6113519b7529a4d2d489a4d57489d7658"
+    },
+    {
+      "path": "qa/12fps-once-white@1x.apng",
+      "bytes": 4834,
+      "sha256": "5b1395199a14d271b7d637f7107ba4ae4c170838d61fb0158bc07a0906557442"
+    },
+    {
+      "path": "qa/12fps-once-white@2x.apng",
+      "bytes": 13730,
+      "sha256": "043ff0456fe7f4dd8726f496544e194b787886904411366a70af1c1a1177801c"
+    },
+    {
+      "path": "qa/PHASE-REVIEW.md",
+      "bytes": 2402,
+      "sha256": "6de74a1ba1677630d9db22da88fe641dfa8168eba7ed943aa480a8ec993cde1b"
+    },
+    {
+      "path": "qa/all-source-black-white.png",
+      "bytes": 4482539,
+      "sha256": "61f58b6f13e300281c1c5f9abfedc1a91e14aa4ea6976e8397ebd888efb49ec2"
+    },
+    {
+      "path": "qa/apng-timing-verification.json",
+      "bytes": 20086,
+      "sha256": "c18d919996eb80126e9fb75939c1c92c2a7f7c49293e74432280eff428a445af"
+    },
+    {
+      "path": "qa/cracked-earth-black-source-full.png",
+      "bytes": 497695,
+      "sha256": "159e5dc83864ac47dde99143780cac4d0b98933cf9eb7aa7f68c0f91ad5ddc3b"
+    },
+    {
+      "path": "qa/cracked-earth-bright-stone-source-full.png",
+      "bytes": 535420,
+      "sha256": "7b1c7f612f124dc9702422b097d43337ecc1265506851f15206ce432d419b901"
+    },
+    {
+      "path": "qa/cracked-earth-checker-source-full.png",
+      "bytes": 547073,
+      "sha256": "75d083d2c4b6f5d915720588cc3d89ec1f941ce2db1407fc9cde6c57c833f7bd"
+    },
+    {
+      "path": "qa/cracked-earth-dark-earth-source-full.png",
+      "bytes": 512485,
+      "sha256": "53383520f772f060f74811dbc3e69cc75caad33b3ec9aba741b292b120344db7"
+    },
+    {
+      "path": "qa/cracked-earth-green-ground-source-full.png",
+      "bytes": 522020,
+      "sha256": "698ed96c4801a638a0f1f9e9181b5e5e0a01aa444cf57a32c076c48dd2aa5e69"
+    },
+    {
+      "path": "qa/cracked-earth-white-source-full.png",
+      "bytes": 535231,
+      "sha256": "6f6ee22376525f1c66479798c720ce11fed39dfbe14fc9a17d99591d428a9e2b"
+    },
+    {
+      "path": "qa/cracked-earth@1x.png",
+      "bytes": 1084,
+      "sha256": "5dc50e55adef3c2f471316c77ed04c10289213a5c70c8eb724706c07cfa433e9"
+    },
+    {
+      "path": "qa/cracked-earth@2x.png",
+      "bytes": 2995,
+      "sha256": "1e7f51feabaa43ba513e0a4f59fed61b928074f16d4d12de2ea8f95b596f783a"
+    },
+    {
+      "path": "qa/ember-residue-black-source-full.png",
+      "bytes": 503598,
+      "sha256": "faedbb3c492a71e70471ad62565c90e3eed7d363459d509fc8e5a78ba86dd967"
+    },
+    {
+      "path": "qa/ember-residue-bright-stone-source-full.png",
+      "bytes": 538669,
+      "sha256": "19dce769a34597873d0681115918d50c2441c6a2c70c280a274655e2283a4d13"
+    },
+    {
+      "path": "qa/ember-residue-checker-source-full.png",
+      "bytes": 541269,
+      "sha256": "62d82df3cc2a46281faffb1cf8c00400e1425a9851901b04572ed288ab179d06"
+    },
+    {
+      "path": "qa/ember-residue-dark-earth-source-full.png",
+      "bytes": 518380,
+      "sha256": "774c03726753c6c636985a635fb7cc79ccc155e56f7b03701fb6158867bd0559"
+    },
+    {
+      "path": "qa/ember-residue-green-ground-source-full.png",
+      "bytes": 527842,
+      "sha256": "7ca288126de1cb0427e890498d2b3e5511d1bb330b54b10039835b4a06f66b5f"
+    },
+    {
+      "path": "qa/ember-residue-white-source-full.png",
+      "bytes": 537512,
+      "sha256": "5d854ba0c9de26330addadd7dc205764edefa6949f99f54b7b67e639700ae421"
+    },
+    {
+      "path": "qa/ember-residue@1x.png",
+      "bytes": 1145,
+      "sha256": "3472e33e0e0849de476ff468cac5c6099c9aa6f253ef4d9b080493ca5a356e9a"
+    },
+    {
+      "path": "qa/ember-residue@2x.png",
+      "bytes": 3261,
+      "sha256": "570657a6dd9782c3624ca29f2061b0b83bf18ef20d5073b5f3ad3aabe77b1ef6"
+    },
+    {
+      "path": "qa/ember-rise-black-source-full.png",
+      "bytes": 519248,
+      "sha256": "fc0541fccacb296ad774f550c15a2d5bb38869093db7604febf05d454bc9ec0a"
+    },
+    {
+      "path": "qa/ember-rise-bright-stone-source-full.png",
+      "bytes": 557571,
+      "sha256": "37067166216541bb37602d33f62f58ce179d81cd9d07738cec1c91f304447b70"
+    },
+    {
+      "path": "qa/ember-rise-checker-source-full.png",
+      "bytes": 561183,
+      "sha256": "6de8006194e94f673d88d3d848f3ca29a7968b049bd16273f882c9939e5db4a2"
+    },
+    {
+      "path": "qa/ember-rise-dark-earth-source-full.png",
+      "bytes": 533122,
+      "sha256": "06e89eafcdd20f24212877d38aa6c8305ef2588183c92005e6803eacf3db1d75"
+    },
+    {
+      "path": "qa/ember-rise-green-ground-source-full.png",
+      "bytes": 539509,
+      "sha256": "040745184d7576de27cd50ed2836804d84bf27c36a12299446767ef521589d4f"
+    },
+    {
+      "path": "qa/ember-rise-white-source-full.png",
+      "bytes": 557850,
+      "sha256": "edcb08e0cd14307ded990bd9a5bd5140b431233b97df7c7b8f830741c7961377"
+    },
+    {
+      "path": "qa/ember-rise@1x.png",
+      "bytes": 1242,
+      "sha256": "23c0fe39b3c18d4d5a1066773973261e00e757f26acb867a5d741a4d0ce9c7e1"
+    },
+    {
+      "path": "qa/ember-rise@2x.png",
+      "bytes": 3545,
+      "sha256": "696db57a646faefe5216a57fe4ce0c7ff6ad287c8bb3ba729d8c1f1822a9460d"
+    },
+    {
+      "path": "qa/first-pair-native-black-white.png",
+      "bytes": 37088,
+      "sha256": "558d01a25ffeb5eebce4aaa009612ecab6790b2add1105a4329a0a0929a67cd1"
+    },
+    {
+      "path": "qa/first-pair-source-black-white.png",
+      "bytes": 2112898,
+      "sha256": "ad847e493fcb3df6eb6f9257256b6eaec7e62b41eee94c84b165c4da1268a25c"
+    },
+    {
+      "path": "qa/flame-peak-black-source-full.png",
+      "bytes": 638788,
+      "sha256": "a8d54c3914de543cb9c16e916cf5a8339958f3b0eb2de2ef04fb1f67f5283b37"
+    },
+    {
+      "path": "qa/flame-peak-bright-stone-source-full.png",
+      "bytes": 677151,
+      "sha256": "b0bb117d79b3bd09fde255eb65a6bca22e8e0a55a437480f77759b339e4d47dd"
+    },
+    {
+      "path": "qa/flame-peak-checker-source-full.png",
+      "bytes": 675303,
+      "sha256": "fb8109db18ad8502179c098f2200c43c1548869a36310edc9fcda0243334a3ff"
+    },
+    {
+      "path": "qa/flame-peak-dark-earth-source-full.png",
+      "bytes": 647784,
+      "sha256": "b795e0613b4558bf6f0e36548b6232ccc64fdf0c349788c4c46f8b26b3649794"
+    },
+    {
+      "path": "qa/flame-peak-green-ground-source-full.png",
+      "bytes": 651211,
+      "sha256": "6899c7cb660f20a50fe319893a3240eae5777da0530308fef0abd1b6b26f6765"
+    },
+    {
+      "path": "qa/flame-peak-white-source-full.png",
+      "bytes": 678595,
+      "sha256": "38f95a62ce26e96efd62add6a939dc17b43ced6f182b6f42c15046a5bd85800a"
+    },
+    {
+      "path": "qa/flame-peak@1x.png",
+      "bytes": 1650,
+      "sha256": "0df883e6a5f2ad01088e1167605b4533b3fbd5808a87d8d32882bd4a451c0a8c"
+    },
+    {
+      "path": "qa/flame-peak@2x.png",
+      "bytes": 4610,
+      "sha256": "cc856665abd3a4819fa2b19b8e8d541567b63e812c17b6a82d6b526e4f62bb99"
+    },
+    {
+      "path": "qa/full-and-terminal-labeled.png",
+      "bytes": 40442,
+      "sha256": "2ff601642962239b20326e049f93110dba0b6ef0a4b1a883de50cc52d59b3471"
+    },
+    {
+      "path": "qa/motion-and-registration-proof.json",
+      "bytes": 2699,
+      "sha256": "25b75a968f98e4c2c268b4b6d94b5dbe83def8c65944739911121aabbb0351b6"
+    },
+    {
+      "path": "qa/native-32-64-six-backgrounds.png",
+      "bytes": 158869,
+      "sha256": "efdb52e018c64b6524469d393d3f23920802622040586eb18cec7cc158b62424"
+    },
+    {
+      "path": "qa/phase-strip@1x.png",
+      "bytes": 4450,
+      "sha256": "c01dc2a5406364d14677adf198cb01a871f2df30c961efc50b93a381ba96c71d"
+    },
+    {
+      "path": "qa/phase-strip@2x.png",
+      "bytes": 13512,
+      "sha256": "699dc0f0b304cceb23e34b956de1a71f353315815b1847b8c8378614aa33e40a"
+    },
+    {
+      "path": "qa/qa-metrics.json",
+      "bytes": 25784,
+      "sha256": "32ad230c7c16c3c724f78bef8a918c3e70cfebe80a9c79ebfd42acd9ed13260d"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-black@1x.apng",
+      "bytes": 3889,
+      "sha256": "dde5fbdea7bb9e8f0f8e1148447567f01a6b2b9496bbd2cd564321df920437ae"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-black@2x.apng",
+      "bytes": 11732,
+      "sha256": "6cb479b78b05d61f56ba6f894f4895d8a43044e110ac15e79ca1a7c610b7a29b"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-bright-stone@1x.apng",
+      "bytes": 4854,
+      "sha256": "d58265782c8d26c10051ac0d8cf61f4621aa47fca8932ff2e741497c8bea813d"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-bright-stone@2x.apng",
+      "bytes": 13797,
+      "sha256": "e7d9c9bec464177cefe7de71dc92c7dad4558898f20aafb43009d388e1c6747f"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-checker@1x.apng",
+      "bytes": 5060,
+      "sha256": "90e753c686292bc4696b65cfc5fc03df9758b2086377aa63f847b33d0e54cdc1"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-checker@2x.apng",
+      "bytes": 14278,
+      "sha256": "60b1588290f64c6a48813fdbda74e298b8d9792f68473c3b9fe610e7e12f5c7f"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-dark-earth@1x.apng",
+      "bytes": 3997,
+      "sha256": "d7ba21e9ebdc9eda7e42b2dc80a9b33dde21f8b6bc04405dfdaa851f62468d67"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-dark-earth@2x.apng",
+      "bytes": 12299,
+      "sha256": "327abe3bb5893cb97e0c6941d77b3f8a16ccf909397a549ea8100621194983a7"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-green-ground@1x.apng",
+      "bytes": 4319,
+      "sha256": "ac7defc4c8a0234e2fc587b294897fd65b64d12f2bfb3576e8b651d29bc31008"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-green-ground@2x.apng",
+      "bytes": 12833,
+      "sha256": "0ccf241fcdedd5a64231a24692573194a5b75b40eaa0b65f45422c38df884e8e"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-transparent@1x.apng",
+      "bytes": 5003,
+      "sha256": "2cac70693f798015c273a0ab1a725b4c509eaefdd60048a3da153f48d3a08caa"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-transparent@2x.apng",
+      "bytes": 14211,
+      "sha256": "133a9964b03d2c3e2e3d1696d4215b929e1ed72ae8695fd2b7607ff315fc1f04"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-white@1x.apng",
+      "bytes": 4834,
+      "sha256": "de45f9a793a63757ab17219db8b11f737eb7436b65ec03e3e0eba2e5d7eabd10"
+    },
+    {
+      "path": "qa/slow-diagnostic-once-white@2x.apng",
+      "bytes": 13730,
+      "sha256": "8a1f63118754c5da3657a432492157179e6b28b8fc345f3729e940fa4671f17c"
+    },
+    {
+      "path": "qa/source-edge-composite-proof.json",
+      "bytes": 815,
+      "sha256": "ccd75a8b34c09b5200f8d8815e381294dad4d8ffd2b2428e9197e726facb065f"
+    },
+    {
+      "path": "reference/current-runtime@1x.png",
+      "bytes": 6204,
+      "sha256": "763687805aa0401397cd6d16a742b23a2d5e37fd3ddfc161fb42c108d7d4bd3d"
+    },
+    {
+      "path": "reference/current-runtime@2x.png",
+      "bytes": 20706,
+      "sha256": "1868cbd9424562330e5de402fcfce3248e435f63dc577b106a73f6b88bba550d"
+    },
+    {
+      "path": "reference/original-board.png",
+      "bytes": 1629401,
+      "sha256": "4761b6846cce254e16ef4cec54c62b30ae5ca3e6879cce60fa2c135be135ee02"
+    },
+    {
+      "path": "reference/original-f0.png",
+      "bytes": 92591,
+      "sha256": "37ac3ed61e974d1e3bfe40cbc949c86ff88716142ad061e6808c5d20c90245d5"
+    },
+    {
+      "path": "reference/original-f1.png",
+      "bytes": 101115,
+      "sha256": "d094547ed9d5bb25533f4aa3e02fcf1a06c1b4120d2e8ab74b2a497a4a61a87d"
+    },
+    {
+      "path": "reference/original-f2.png",
+      "bytes": 106570,
+      "sha256": "c455ce6ee9891def67d7c9d9bd23786ff6a006e708043057ae34bdd870a32c82"
+    },
+    {
+      "path": "reference/original-f3.png",
+      "bytes": 92671,
+      "sha256": "28d4197319c984979400c4973167b0d602b546c154f20c5b11f4b41ac5f1bc31"
+    },
+    {
+      "path": "reference/original-row.png",
+      "bytes": 397480,
+      "sha256": "70c199fb0697469054bd558af28949853df05d49dc07f8986f1c95fc1b1d17e1"
+    },
+    {
+      "path": "review-actual.py",
+      "bytes": 3222,
+      "sha256": "d689b55d5d03c58784cca2e0c08fb77b8d4b1f629d69917a45350ef99d41edfc"
+    },
+    {
+      "path": "semantic-proposal.json",
+      "bytes": 3470,
+      "sha256": "df45ef904113c782da56e7f79dfd5b2e89f46b51c5f219ba1197b460c4ee2a7d"
+    },
+    {
+      "path": "source-evidence.json",
+      "bytes": 1767,
+      "sha256": "5bb6b3a9495165a4d8323f0b5297ce0156e616151807b498cba21aed32a1b5e1"
+    }
+  ],
+  "selectedSources": [
+    {
+      "phase": "cracked-earth",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/cracked-earth/master.png",
+      "sha256": "1633ca3f2f2e184b862e10dee3486df61e29e0ef830907c32e04796214a69cb4"
+    },
+    {
+      "phase": "ember-rise",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-rise/master.png",
+      "sha256": "0f1d36b32995a8a508b52471477ecc31cd01176ed720bdc0d17625273ddad773"
+    },
+    {
+      "phase": "flame-peak",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/flame-peak/master.png",
+      "sha256": "8d5863d1af56d40f9d006066e1157f6225bae85ef161974bb13ba0fb1106bd7b"
+    },
+    {
+      "phase": "ember-residue",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-13/ember-residue/master.png",
+      "sha256": "cfc1b7bcb2f349bbddb4c132ce73f192d16ee0e121bfbd98512f2df3294c2f98"
+    }
+  ]
+}

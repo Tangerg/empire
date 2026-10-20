@@ -1,0 +1,90 @@
+{
+  "topicId": "C01-FX-13",
+  "label": "焦土余火",
+  "status": "accepted-source-static-phase-candidate",
+  "phaseOrder": [
+    "cracked-earth",
+    "ember-rise",
+    "flame-peak",
+    "ember-residue"
+  ],
+  "phaseOrderApproval": "Parent approval on 2026-10-20T05:21:05Z",
+  "firstPairStaticApproval": "Parent inspected source black/white and accepted stable patch, broad planes and genuine fire/smoke phase change on 2026-10-20T05:28:05Z",
+  "parentFinalStaticPhaseAcceptance": "accepted on 2026-10-20T05:36:56Z after full and terminal native comparison; live playback remains unobserved",
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": [],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    1,
+    0,
+    1,
+    1
+  ],
+  "sourceEdgeNonzeroSamples": [
+    35,
+    0,
+    44,
+    6
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeFullAndTerminalReviewed": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "subjectPreserved": "Same compact ragged charcoal-brown cracked-earth patch; restrained crack ignition, peak short flames/sparks and rising smoke, then low remaining embers. The earth is source-semantic subject, not an unrelated backing.",
+  "patchBottomContactSpreadLogicalPx": 0.044657097288676235,
+  "lowerPatchMinimumIoUWithFirst": 0.987126716670483,
+  "phaseReview": "qa/PHASE-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "sourceHashProof": "final-quartet.json",
+  "semanticCaveats": [
+    "Minor hand-authored earth outline variation remains: lower silhouette IoU is at least 98.71%, with a two-source-pixel overall contact spread.",
+    "The dark dormant earth is naturally low contrast against dark earth; no global brightening or opacity normalization was applied.",
+    "Static phase interpretation and encoded timing do not establish observed live playback."
+  ],
+  "APNGVerification": {
+    "proof": "qa/apng-timing-verification.json",
+    "files": 28,
+    "decodedFrames": 112,
+    "exact12fpsFiles": 14,
+    "slowDiagnosticFiles": 14,
+    "everyDecodedFrameMatchesExpected": true,
+    "exactFrameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "numPlays": 1,
+    "loop": false,
+    "encodedFinalHold": false,
+    "removalRule": null,
+    "lifetimeOwner": "Future consumer; no current binding"
+  },
+  "browserObserved": false,
+  "browserBlocker": "Established browser/socket restriction; no repeated browser attempts were made.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false
+}
