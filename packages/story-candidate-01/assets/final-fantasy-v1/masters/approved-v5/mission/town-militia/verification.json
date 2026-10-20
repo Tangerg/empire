@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "pose": "idle",
+      "sha256": "9ba964d3d5d4c9e31263c0c4d8d9da0d478cd36198d9158c830ec670a6c69a94",
+      "rawEqualsMaster": true,
+      "generatedOutputEqualsRaw": true,
+      "requestPromptExact": true
+    },
+    {
+      "pose": "walk-a",
+      "sha256": "634d7c7908761f5bf9bfb1ac4f03e4c2f83939d82ab70ab48f9283f504d4ae52",
+      "rawEqualsMaster": true,
+      "generatedOutputEqualsRaw": true,
+      "requestPromptExact": true
+    },
+    {
+      "pose": "carry-or-work",
+      "sha256": "407ceb28686eb00fb7726cf7b6530e4bede4fced20e125bcd515c1bcf18bd312",
+      "rawEqualsMaster": true,
+      "generatedOutputEqualsRaw": true,
+      "requestPromptExact": true
+    },
+    {
+      "pose": "walk-b",
+      "sha256": "a6de579403047a0f50cb0a29e827f2b528594d57d0a450013d02185420a2524c",
+      "rawEqualsMaster": true,
+      "generatedOutputEqualsRaw": true,
+      "requestPromptExact": true
+    }
+  ],
+  "originalAtlasCropsPixelExact": true,
+  "commonCanvas": [
+    1584,
+    993
+  ],
+  "paddingRequired": 0,
+  "gifVerification": {
+    "qa-walking-loop.gif": {
+      "frames": 4,
+      "size": [
+        416,
+        256
+      ],
+      "uniqueDecodedFrames": 3,
+      "durationsMs": [
+        260,
+        100,
+        260,
+        100
+      ]
+    },
+    "qa-sequence.gif": {
+      "frames": 6,
+      "size": [
+        416,
+        256
+      ],
+      "uniqueDecodedFrames": 4,
+      "durationsMs": [
+        600,
+        260,
+        200,
+        260,
+        700,
+        300
+      ]
+    }
+  },
+  "failures": []
+}

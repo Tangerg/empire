@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "exactPromptFile": "prompt.txt",
+  "requestSha256": "9ae06a154695b536d59227db70ca14f2859893c0b5809b96f611db6a32af1bc1",
+  "exactPromptSha256": "b7ed6d8250449098f21ee97f6d7c247081d3e0e206ac502857f0623e1889fccc",
+  "transparentBackground": true,
+  "references": [
+    {
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/idle/master.png",
+      "sha256AtGeneration": "9ba964d3d5d4c9e31263c0c4d8d9da0d478cd36198d9158c830ec670a6c69a94",
+      "retainedSnapshotPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/idle/master.png",
+      "snapshotNote": "Reference unchanged since generation."
+    },
+    {
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/source-evidence/original-highres-row.png",
+      "sha256AtGeneration": "f55f48072ab8b3f085e248fc63d76b65b64d07479f97212f6c23b94739ecdceb",
+      "retainedSnapshotPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/source-evidence/original-highres-row.png",
+      "snapshotNote": "Reference unchanged since generation."
+    }
+  ],
+  "generatedOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-0bfc11fe-5594-44e2-96bf-6bd29bb0c2b2.png",
+  "nativePixelsModified": false
+}

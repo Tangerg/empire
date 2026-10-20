@@ -1,0 +1,1 @@
+C01 mission24/24 canonical topics now authored four-pose and formally bound. Last town militia retains shield/spear hand identity and opposite walk contacts.434 focused tests and typecheck pass. Board shows actual HD idle cells; catalog-only items are not claimed deployed. Live playback remains pending.

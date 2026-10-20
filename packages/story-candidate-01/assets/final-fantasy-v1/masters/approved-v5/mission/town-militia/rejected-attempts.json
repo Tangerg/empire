@@ -1,0 +1,37 @@
+[
+  {
+    "pose": "carry-or-work",
+    "attempt": 1,
+    "rawPath": "rejected-attempts/carry-or-work-01/raw.png",
+    "requestPath": "rejected-attempts/carry-or-work-01/request.json",
+    "promptPath": "rejected-attempts/carry-or-work-01/prompt.txt",
+    "sha256": "0775d961e0a14509143bb244437efb41974500b7942bd461c3c152dd8e0572b3",
+    "generatedOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-d7da7697-c0e5-4d6e-b732-c41c9fa1a854.png",
+    "rejectionReason": "Generated work pose swapped spear and shield between arms. Source identity requires same shield arm and spear hand throughout animation. Native pixels retained unchanged."
+  },
+  {
+    "pose": "walk-b",
+    "attempt": 1,
+    "rawPath": "rejected-attempts/walk-b-01/raw.png",
+    "requestPath": "rejected-attempts/walk-b-01/request.json",
+    "promptPath": "rejected-attempts/walk-b-01/prompt.txt",
+    "sha256": "6e62af53bb9be6d6cf05170fbff0e850341726bb5190b89ed9cde31c13cfd945",
+    "generatedOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-d0bbbbd1-e387-4246-bd62-bd75b873ba7a.png",
+    "rejectionReason": "Patch identities reverse but lower-body silhouette/contact side is too similar to walk-a. Regenerate with clearly lowest boot on screen-left and raised trailing boot on screen-right. Native pixels retained unchanged."
+  },
+  {
+    "pose": "walk-a",
+    "attempt": 1,
+    "rawPath": "rejected-attempts/walk-a-01/raw.png",
+    "requestPath": "rejected-attempts/walk-a-01/request.json",
+    "promptPath": "rejected-attempts/walk-a-01/prompt.txt",
+    "sha256": "31f98149d3836be6a4210c0061eef49a20119fe3e118f10888dea60958269fc9",
+    "generatedOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-0bfc11fe-5594-44e2-96bf-6bd29bb0c2b2.png",
+    "nativeSize": [
+      1560,
+      1008
+    ],
+    "rejectionReason": "Native canvas differs from accepted idle1584x993 by 24px width and15px height, exceeding allowed2px technical padding. Regenerate rather than crop or rescale source. Native pixels retained unchanged.",
+    "wasIntermediatePoseReferenceForWalkB": true
+  }
+]

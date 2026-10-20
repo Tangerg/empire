@@ -1,0 +1,86 @@
+{
+  "status": "Parent accepted final selected native quartet; technical verification passed; export/integration remains with coordinator",
+  "topicId": "C01-MISSION-TOWN-MILITIA",
+  "scale": 0.04851157662624035,
+  "bodyReferenceSourcePixels": 907,
+  "bodyTargetLogicalPixels": 44,
+  "bodyHeightExcludesSpearTip": true,
+  "rawMasterNativeHashesAllMatch": true,
+  "allGeneratedOutputHashesMatchRaw": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "historicalReferenceNote": "walk-b used the first walk-a as a pose reference; that source was later rejected for its1560x1008 canvas. Its exact bytes are retained and the at-generation reference hash points to rejected-attempts/walk-a-01/raw.png.",
+  "originalRowAndIdlePixelExactToBoard": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "All selected perimeters have zero alpha>1 pixels. Max values idle1/walk-a0/work0/walk-b1.",
+  "exteriorHazeGate": "All selected masters contain zero alpha>1 pixels more than7px outside alpha>127 silhouette. Native black/white/scene composites show no visible background or halo. Native alpha1 trace pixels remain untouched.",
+  "sourceCanvas": [
+    1584,
+    993
+  ],
+  "paddingToleranceRequired": 0,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 1.2734288864388092,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Same mustached brown-haired working townsman, blue-gray rolled-sleeve shirt, leather apron and patched trousers; boots planted. Screen-left arm bears gray metal shield; screen-right hand grips upright wooden spear with gray leaf-shaped tip. Exactly two arms/hands, left hand naturally occluded.",
+    "walk-a": "Tan-patched leg advances to screen-right with lowest boot at y965; gray-patched leg trails raised at screen-left with sole y907. Clear 58-source-pixel contact difference, unchanged shield arm/spear hand and facing.",
+    "carry-or-work": "Practical militia guard brace: feet spread, left forearm raises metal shield to chest, right arm extends the same spear diagonally forward. Same two arms/hands and equipment; no professional armor or combat-class redesign.",
+    "walk-b": "Opposite contact silhouette: gray-patched leg advances to screen-left with lowest boot y959, tan-patched leg trails raised on screen-right with sole y876. Clear83-source-pixel contact difference. Same facing and shield/spear hands; not mirrored."
+  },
+  "generationAttempts": 7,
+  "rejectedAttempts": 3,
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only: zero verified domain actors or scene placements. No live placement claimed.",
+  "runtimeOrRepositoryWrites": false,
+  "gifVerification": {
+    "qa-walking-loop.gif": {
+      "frames": 4,
+      "size": [
+        416,
+        256
+      ],
+      "uniqueDecodedFrames": 3,
+      "durationsMs": [
+        260,
+        100,
+        260,
+        100
+      ]
+    },
+    "qa-sequence.gif": {
+      "frames": 6,
+      "size": [
+        416,
+        256
+      ],
+      "uniqueDecodedFrames": 4,
+      "durationsMs": [
+        600,
+        260,
+        200,
+        260,
+        700,
+        300
+      ]
+    }
+  },
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-shared-scale-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif",
+    "qa-walking-loop.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png",
+    "qa-foot-measurements.png"
+  ],
+  "logicalReviewExportMethod": "Every whole source canvas uses44/907 affine scale; sole measurements determine translation only.4x supersampled review downsampled to104x64; no silhouette fitting.",
+  "scenePreviewMeaning": "Muted green is a QA backdrop only, not a verified live consumer.",
+  "parentReviewApproval": "review-approval.json"
+}

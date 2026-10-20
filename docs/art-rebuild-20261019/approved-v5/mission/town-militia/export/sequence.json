@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/walk-b/master.png"
+    },
+    "scale": 0.04851157662624035,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      785,
+      971
+    ],
+    "sourceFeet": {
+      "idle": [
+        785.0,
+        971
+      ],
+      "walk-a": [
+        758.75,
+        965
+      ],
+      "carry-or-work": [
+        771.0,
+        957
+      ],
+      "walk-b": [
+        758.75,
+        959
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.2734288864388092,
+        0.29106945975744214
+      ],
+      "carry-or-work": [
+        0.679162072767365,
+        0.679162072767365
+      ],
+      "walk-b": [
+        1.2734288864388092,
+        0.5821389195148843
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1584,
+    993
+  ],
+  "logicalPivot": [
+    46.081587651598674,
+    51.104740904079385
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9ba964d3d5d4c9e31263c0c4d8d9da0d478cd36198d9158c830ec670a6c69a94",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5664,
+        "nearOpaquePixels": 800,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          5,
+          65,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9ba964d3d5d4c9e31263c0c4d8d9da0d478cd36198d9158c830ec670a6c69a94",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22785,
+        "nearOpaquePixels": 3308,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          11,
+          130,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/walk-a/master.png",
+      "registrationOffset": [
+        1.2734288864388092,
+        0.29106945975744214
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "634d7c7908761f5bf9bfb1ac4f03e4c2f83939d82ab70ab48f9283f504d4ae52",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5687,
+        "nearOpaquePixels": 769,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          6,
+          66,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/walk-a/master.png",
+      "registrationOffset": [
+        1.2734288864388092,
+        0.29106945975744214
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "634d7c7908761f5bf9bfb1ac4f03e4c2f83939d82ab70ab48f9283f504d4ae52",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22926,
+        "nearOpaquePixels": 3179,
+        "edgeMax": 0,
+        "visibleBounds": [
+          65,
+          11,
+          133,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/carry-or-work/master.png",
+      "registrationOffset": [
+        0.679162072767365,
+        0.679162072767365
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "407ceb28686eb00fb7726cf7b6530e4bede4fced20e125bcd515c1bcf18bd312",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5664,
+        "nearOpaquePixels": 772,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          8,
+          74,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/carry-or-work/master.png",
+      "registrationOffset": [
+        0.679162072767365,
+        0.679162072767365
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "407ceb28686eb00fb7726cf7b6530e4bede4fced20e125bcd515c1bcf18bd312",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22810,
+        "nearOpaquePixels": 3243,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          16,
+          147,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/walk-b/master.png",
+      "registrationOffset": [
+        1.2734288864388092,
+        0.5821389195148843
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "a6de579403047a0f50cb0a29e827f2b528594d57d0a450013d02185420a2524c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5678,
+        "nearOpaquePixels": 784,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          6,
+          66,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/town-militia/walk-b/master.png",
+      "registrationOffset": [
+        1.2734288864388092,
+        0.5821389195148843
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "a6de579403047a0f50cb0a29e827f2b528594d57d0a450013d02185420a2524c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22848,
+        "nearOpaquePixels": 3246,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          11,
+          133,
+          102
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

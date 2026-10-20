@@ -1,0 +1,38 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "exactPromptFile": "prompt.txt",
+  "requestSha256": "62cbe33084718f2d4379ee30d55f215525c51645b05e7f8b21e3e23700577019",
+  "exactPromptSha256": "ddc1119d4e8f7da290b53d97b0103b1861459c3dd4a112a4a48322479faca6df",
+  "transparentBackground": true,
+  "references": [
+    {
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/source-evidence/original-highres-idle.png",
+      "sha256AtGeneration": "93d321fe8cf003461aace6e0359c81ccf0880cafb8b7ea9ebfc3aed5afb7c65e",
+      "retainedSnapshotPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/source-evidence/original-highres-idle.png",
+      "snapshotNote": "Reference unchanged since generation."
+    },
+    {
+      "requestPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wall-laborer/idle/master.png",
+      "sha256AtGeneration": "0ba608815a55c6b947d0e3e1639b08262a444c54e04cedd444897a1df62f0fa3",
+      "retainedSnapshotPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wall-laborer/idle/master.png",
+      "snapshotNote": "Reference unchanged since generation."
+    },
+    {
+      "requestPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/idle/master.png",
+      "sha256AtGeneration": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e",
+      "retainedSnapshotPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/idle/master.png",
+      "snapshotNote": "Reference unchanged since generation."
+    },
+    {
+      "requestPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/idle/master.png",
+      "sha256AtGeneration": "7704211987a30d8c5c06b33817413e2f20bba84ff41eaa3e0758199b9db53d66",
+      "retainedSnapshotPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/idle/master.png",
+      "snapshotNote": "Reference unchanged since generation."
+    }
+  ],
+  "generatedOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-07de9d77-84bb-49cd-9d83-27113c24f92c.png",
+  "nativePixelsModified": false,
+  "masterCopiedByteForByte": true
+}

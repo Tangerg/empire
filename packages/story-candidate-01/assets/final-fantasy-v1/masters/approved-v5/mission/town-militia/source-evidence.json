@@ -1,0 +1,139 @@
+{
+  "topicId": "C01-MISSION-TOWN-MILITIA",
+  "assetId": "C01-FFV1-MISSION-TOWN-MILITIA",
+  "label": "城镇民兵",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+    "sha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 2,
+    "rowIndex1": 3,
+    "rowCropXYXY": [
+      0,
+      627,
+      1254,
+      940
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        627,
+        314,
+        940
+      ],
+      [
+        314,
+        627,
+        627,
+        940
+      ],
+      [
+        627,
+        627,
+        940,
+        940
+      ],
+      [
+        940,
+        627,
+        1254,
+        940
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        632,
+        309,
+        935
+      ],
+      [
+        319,
+        632,
+        622,
+        935
+      ],
+      [
+        632,
+        632,
+        935,
+        935
+      ],
+      [
+        945,
+        632,
+        1249,
+        935
+      ]
+    ],
+    "observedIdentity": "Brown-haired mustached adult man with blue-gray sleeves and brown leather apron/vest. Screen-left round gray metal shield, screen-right wooden spear with gray leaf-shaped tip; patched trousers."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-town-militia.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-TOWN-MILITIA",
+    "png": "runtime-hd/mission-unit/mission-town-militia.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "independentVisualAudit": {
+    "sourceInspected": [
+      "original-runtime.png",
+      "original-runtime-hd.png",
+      "original-highres-row.png",
+      "original-highres-idle.png"
+    ],
+    "appearance": "Adult light-tan man with short tousled brown hair, thick dark eyebrows, worried brown eyes and drooping brown moustache. No helmet or beard.",
+    "costume": "Blue-gray rolled-sleeve collared shirt, pale cuffs, brown leather apron/vest with strap fittings and split bottom, brown belt with rectangular brass buckle, belt pouch, short blue-gray trousers patched tan at screen-left knee and gray-beige at screen-right knee, brown boots.",
+    "props": "Round plain gray metal shield with raised rim, boss and rivets carried by screen-left arm; long wooden spear with gray leaf-shaped spearhead carried in screen-right hand.",
+    "newIdlePreservesIdentity": true,
+    "anatomy": "Exactly two arms and hands. Screen-right hand grips spear; screen-left hand occluded behind shield with forearm entering grip region.",
+    "symbolPolicy": "No emblems, text, heraldry or invented marks. Rivets, metal fittings and cloth patches are functional details."
+  },
+  "retainedEvidence": {
+    "source-evidence/original-highres-idle.png": "93d321fe8cf003461aace6e0359c81ccf0880cafb8b7ea9ebfc3aed5afb7c65e",
+    "source-evidence/original-highres-row.png": "f55f48072ab8b3f085e248fc63d76b65b64d07479f97212f6c23b94739ecdceb",
+    "source-evidence/original-runtime-hd.png": "19bda9fe4fbb71a12b647e244034830212cae2d5c35707a2d5d9fd3df95a6684",
+    "source-evidence/original-runtime.png": "c5d8ae7ff05e27ba7a7c6478d64dfd2fd63785fcd826b541499a348da6a00bab"
+  },
+  "runtimeCopiesByteExact": true,
+  "atlasCropsPixelExact": true,
+  "atlasSha256Verified": true
+}

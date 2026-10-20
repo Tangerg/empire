@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "exactPromptFile": "prompt.txt",
+  "requestSha256": "56b3eda17fd4151df0f779c50a789efdec974a846a6abdad4574be753558cf5d",
+  "exactPromptSha256": "67288bd205020a2df688952ea5339be303c377952649b541d535d862c010c9eb",
+  "transparentBackground": true,
+  "references": [
+    {
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/idle/master.png",
+      "sha256AtGeneration": "9ba964d3d5d4c9e31263c0c4d8d9da0d478cd36198d9158c830ec670a6c69a94",
+      "retainedSnapshotPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/idle/master.png",
+      "snapshotNote": "Reference unchanged since generation."
+    },
+    {
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/walk-a/master.png",
+      "sha256AtGeneration": "31f98149d3836be6a4210c0061eef49a20119fe3e118f10888dea60958269fc9",
+      "retainedSnapshotPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission/town-militia/rejected-attempts/walk-a-01/raw.png",
+      "snapshotNote": "At-generation walk-a pose reference later rejected only for native canvas dimensions; unchanged bytes retained at this path."
+    }
+  ],
+  "generatedOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-d0bbbbd1-e387-4246-bd62-bd75b873ba7a.png",
+  "nativePixelsModified": false
+}
