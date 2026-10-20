@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "transparentBackgroundRequested": true,
+  "nativeOutputUntouched": true,
+  "referenceRoles": [
+    "Original identity/costume/restraints/tube reference",
+    "Approved name-registrar style only",
+    "Approved caravan-escort style only"
+  ],
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/detained-witness/source-evidence/original-highres-idle.png",
+      "sha256": "e9d3edfffac6bd52bff049c7cd41bd8dac2dc46304b70e664e1f8df401e26509"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/name-registrar/idle/master.png",
+      "sha256": "5c7f4750dd1ee75b5cef65fbaf2594e625e1728f3fe4f2c9797ce385b1f03922"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/caravan-escort/idle/master.png",
+      "sha256": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e"
+    }
+  ]
+}

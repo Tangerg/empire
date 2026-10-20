@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 345,
+    "formalBound": 347,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 21,
+      "mission-unit": 23,
       "narrative-static": 13,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 346,
+    "rawPreservedTopics": 347,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2588,11 +2588,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-detained-witness.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-detained-witness.png",
+      "stageEvidence": {
+        "raw": "Original tired man in patched teal coat, rope-bound wrists and sealed scroll tube; opposite walking contacts and raised-bound-hands testimony; immutable native sources and exact evidence preserved",
+        "export": "shared44/942 scale, measured support translation within2.184logicalpx, no padding; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-EVACUATION-DRIVER",
@@ -2672,13 +2677,23 @@
       "category": "mission-unit",
       "label": "佣兵军需员",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-mercenary-quartermaster.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-mercenary-quartermaster.png",
+      "stageEvidence": {
+        "raw": "Original bun-haired quartermaster woman, ochre coat, clipboard, keys, rope and single sealed pouch; opposite steps and pouch inspection; immutable native sources and exact evidence preserved",
+        "export": "shared44/923 scale, measured support translation within0.894logicalpx, no padding; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-MINER",

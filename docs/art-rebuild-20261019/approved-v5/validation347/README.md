@@ -1,0 +1,1 @@
+Two catalog-only mission quartets formally bound. Fixed authored scale, opposite steps, functional actions and actual 1x/2x alpha reviewed; 431 focused tests and typecheck pass. Live playback pending.

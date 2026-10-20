@@ -1,0 +1,36 @@
+{
+  "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
+  "label": "佣兵军需员",
+  "classification": "catalog-only",
+  "actualDomainBindings": 0,
+  "actualScenePlacements": 0,
+  "sourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+  "sourceAtlasSha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+  "sourceAtlasSize": [
+    1254,
+    1254
+  ],
+  "rowIndex0": 3,
+  "rowCropXYXY": [
+    0,
+    910,
+    1254,
+    1254
+  ],
+  "idleCropXYXY": [
+    0,
+    910,
+    314,
+    1254
+  ],
+  "cropNote": "Nominal fourth row starts y940 but original hair crown begins about y923. Identity-inspection crop begins y910 to preserve the complete crown rather than reproduce a nominal-grid clipping defect. No source pixels edited.",
+  "sourceAudit": "docs/art-rebuild-20261019/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "independentVisualAudit": {
+    "appearance": "Light warm-tan adult woman; brown swept hair pulled into a rounded bun behind screen-left ear, dark brown eyes, dark brows and serious round face. No hat, beard or weapon.",
+    "costume": "Cream collared shirt with rolled sleeves; long sleeveless ochre/mustard open-front lapelled coat, broad dark brown belt with plain gray-metal rectangular buckle, dark warm gray trousers, broad dark brown boots.",
+    "props": "Dark wooden clipboard with plain gray top clip gripped in screen-right hand; metal key ring with two long keys at screen-left/front belt; tied brown pouch with red circular wax seal at screen-left hip; tan rope coil at screen-right hip.",
+    "handRoles": "Screen-right far hand grips clipboard side; screen-left near hand rests by belt/pouch. Exactly two hands.",
+    "sealPolicy": "Preserve original plain red circular wax seal as supply-pouch identity; do not invent markings or heraldry.",
+    "sourcePoseDefect": "Original work pose largely duplicates idle and two walk steps repeat the same leading foot. New source-grounded distinct work and opposite strides requested."
+  }
+}

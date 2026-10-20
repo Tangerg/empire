@@ -1,0 +1,152 @@
+{
+  "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
+  "assetId": "C01-FFV1-MISSION-MERCENARY-QUARTERMASTER",
+  "label": "佣兵军需员",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; parent final review/export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationAttempts": 4,
+  "rejectedAttempts": [],
+  "nativeArtPolicy": "Every selected raw/master pair is byte-identical. No native alpha cleanup, painting, recoloring, crop, per-pose scaling, source padding or source pixel modification. Separate technical QA composites and registration measurements only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "idleGateApproval": "idle-gate-approval.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-mercenary-quartermaster.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "png": "runtime-hd/mission-unit/mission-mercenary-quartermaster.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "classification": "catalog-only",
+  "consumerClassification": "catalog-only",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "liveGameAcceptance": false,
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Work is an original-prop supply inventory check: single sealed pouch lifted while clipboard remains in other hand. Catalog availability does not imply authored gameplay use.",
+  "sourceAnomalyResolution": "Original nominal fourth atlas row clips hair crown and original runtime crops retain that clipping. Inspection crop y910 preserves full identity. Legacy work repeats idle and walks repeat leading foot; generated work is distinct and new walks have opposite leading boots.",
+  "palettePolicy": "Preserve warm light-tan adult woman, brown swept bun, cream rolled-sleeve collared shirt, muted ochre sleeveless long coat, dark warm gray-brown trousers, brown belt/boots; wooden clipboard with gray metal clip, two silver keys, tan rope coil and tied brown pouch with red circular wax seal. No faction recolor, weapon or invented writing.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "fc5860307b2886b3c204ce1199c6eadc4b0f83541d1f85be109b8b63b8a97a15",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        830.0,
+        960
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Same adult woman with swept brown bun, cream rolled sleeves, ochre sleeveless long coat, brown belt, dark trousers and huge brown boots. Near screen-left hand rests at belt; far screen-right hand grips wooden clipboard. Two silver keys, red-sealed pouch and rope coil remain attached to the original sides."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "064f786cc59eefca118fd2891543d7b12268eb56a66452f7cda12646610c7c15",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        811.25,
+        962
+      ],
+      "registrationOffsetLogical": [
+        0.8938244853737811,
+        -0.09534127843986999
+      ],
+      "review": "Selected output leads with screen-right boot, broad sole visible and heel low; screen-left boot trails lifted. Free near arm swings backward/down; far hand securely grips clipboard. Pouch, keys and rope remain on belt. The exact prompt initially requested the other leading side; actual selected pose is recorded here and the second walk prompt explicitly uses this output to ensure the opposite contact."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "4d50ce16c1471e7424edcd2297bf7e4f27cd0b5003be41b921c578d6e6987012",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        821.0,
+        956
+      ],
+      "registrationOffsetLogical": [
+        0.42903575297941493,
+        0.19068255687973998
+      ],
+      "review": "Practical supply inventory check: near screen-left hand grips the tied neck of the single original red-sealed pouch and raises it alongside chest. Pouch is absent from belt while held. Far screen-right hand grips same clipboard, eyes lower toward the check. Exactly two hands, no added pen or tool. Silver keys and tan rope remain on belt; boots stable."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "39d2397509492eab4d53241523a45669a78fe12012218abaf00e7829182f313f",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        830.75,
+        964
+      ],
+      "registrationOffsetLogical": [
+        -0.035752979414951244,
+        -0.19068255687973998
+      ],
+      "review": "Visibly opposite step: screen-left boot leads heel-first with broad sole visible; screen-right boot trails lifted. Free near arm bends and swings forward at waist; far hand continues holding clipboard. All supply props stay on original sides. Character identity and camera are not mirrored."
+    }
+  }
+}

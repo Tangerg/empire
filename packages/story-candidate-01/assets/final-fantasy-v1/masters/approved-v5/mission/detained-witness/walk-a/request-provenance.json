@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "transparentBackgroundRequested": true,
+  "nativeOutputUntouched": true,
+  "referenceRoles": [
+    "Accepted walk-b edit target for opposite contact; fixed identity and scale"
+  ],
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/detained-witness/walk-b/master.png",
+      "sha256": "cb8ef3604a26890d3f857c8f272aca247a8ac1bdf2bb2fced795ee2a3990f03a"
+    }
+  ]
+}

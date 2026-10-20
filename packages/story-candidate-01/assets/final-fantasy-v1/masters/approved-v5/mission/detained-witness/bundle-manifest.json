@@ -1,0 +1,160 @@
+{
+  "topicId": "C01-MISSION-DETAINED-WITNESS",
+  "assetId": "C01-FFV1-MISSION-DETAINED-WITNESS",
+  "label": "被押证人",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator final review/export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationAttempts": 5,
+  "rejectedAttempts": [
+    {
+      "pose": "walk-a",
+      "attempt": 1,
+      "path": "rejected/walk-a-attempt01",
+      "reason": "Wrong leading leg: near-leg-forward request generated far screen-right leg forward, same contact as walk-b. All raw, master, prompt, request, result and reference hashes retained.",
+      "sourcePixelsEdited": false
+    }
+  ],
+  "nativeArtPolicy": "Every selected raw/master pair is byte-identical. No alpha cleanup, painting, recoloring, cropping, per-pose scaling, native-source padding or source pixel modification. Separate technical export and QA composites only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "idleGateApproval": "idle-gate-approval.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-detained-witness.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "png": "runtime-hd/mission-unit/mission-detained-witness.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "classification": "catalog-only",
+  "consumerClassification": "catalog-only",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "liveGameAcceptance": false,
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Carry-or-work is a calm testimony gesture using existing bound hands. Catalog availability does not imply authored gameplay use.",
+  "sourceAnomalyResolution": "Legacy source idle/work cells repeat effectively the same stance and both walk cells repeat the same contact. New work lifts both bound wrists together to chest for testimony; accepted walking poses have opposite leading boots. Original costume, restraint and document tube retained.",
+  "palettePolicy": "Preserve tan man, dark brown hair and stubble, deep teal patched coat, tan shirt, brown belt/trousers/boots, ochre-golden rope joining wrists, tan cylindrical document tube with plain red seal. No faction recolor, metal manacles or invented injury/equipment.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "00f80954de06108b002bf300a6f43ca34f7a96a995bb41ba939697fcd645a66f",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        808.5,
+        956
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Tired dark-haired tan adult man in patched deep teal coat, tan collared shirt, brown trousers and large brown boots. Exactly two wrists joined by thick ochre rope in front, two hands low at waist, same sealed tan scroll tube at screen-left hip. Both boots planted. Original tired facial shading retained; no invented injury or gear."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "759e6aa6c01b1986dd9b0d71119132246edb5e6e29a45d25d93992ddad7860d5",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        804.75,
+        965
+      ],
+      "registrationOffsetLogical": [
+        0.1751592356687898,
+        -0.4203821656050955
+      ],
+      "review": "Corrected opposite contact: near screen-left boot advances toward viewer, broad sole visible and low; far screen-right boot is lifted and trails. Both bound wrists remain together at waist. Same identity, facing and tube side. Attempt 1 was rejected for duplicating walk-b contact and is retained unchanged."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "276cd31ddcc183ecdcb5f81b8d514f72afc921f461ca9990c6c5f91c92a28c74",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        810.5,
+        958
+      ],
+      "registrationOffsetLogical": [
+        -0.09341825902335456,
+        -0.09341825902335456
+      ],
+      "review": "Noncombat testimony role gesture: both bound wrists raised together toward lower chest, head slightly tilted up toward screen-right, mouth slightly open as if speaking. Two intact hands, coherent wrist rope, no struggle, weapon or new prop. Boots planted; scroll tube remains at hip."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "cb8ef3604a26890d3f857c8f272aca247a8ac1bdf2bb2fced795ee2a3990f03a",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        761.75,
+        947
+      ],
+      "registrationOffsetLogical": [
+        2.183651804670913,
+        0.4203821656050955
+      ],
+      "review": "Far screen-right boot advances heel-first while near screen-left boot trails back with heel lifted. This is the opposite leading leg from accepted walk-a. Both bound wrists remain together; tube remains at screen-left hip. No mirrored identity."
+    }
+  }
+}

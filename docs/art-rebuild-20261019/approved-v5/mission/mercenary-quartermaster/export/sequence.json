@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-b/master.png"
+    },
+    "scale": 0.047670639219934995,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      830,
+      960
+    ],
+    "sourceFeet": {
+      "idle": [
+        830.0,
+        960
+      ],
+      "walk-a": [
+        811.25,
+        962
+      ],
+      "carry-or-work": [
+        821.0,
+        956
+      ],
+      "walk-b": [
+        830.75,
+        964
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.8938244853737811,
+        -0.09534127843986999
+      ],
+      "carry-or-work": [
+        0.42903575297941493,
+        0.19068255687973998
+      ],
+      "walk-b": [
+        -0.035752979414951244,
+        -0.19068255687973998
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1584,
+    993
+  ],
+  "logicalPivot": [
+    47.566630552546044,
+    49.763813651137596
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fc5860307b2886b3c204ce1199c6eadc4b0f83541d1f85be109b8b63b8a97a15",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5712,
+        "nearOpaquePixels": 796,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          6,
+          62,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fc5860307b2886b3c204ce1199c6eadc4b0f83541d1f85be109b8b63b8a97a15",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22961,
+        "nearOpaquePixels": 3268,
+        "edgeMax": 0,
+        "visibleBounds": [
+          65,
+          12,
+          123,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-a/master.png",
+      "registrationOffset": [
+        0.8938244853737811,
+        -0.09534127843986999
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "064f786cc59eefca118fd2891543d7b12268eb56a66452f7cda12646610c7c15",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5700,
+        "nearOpaquePixels": 793,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          6,
+          63,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-a/master.png",
+      "registrationOffset": [
+        0.8938244853737811,
+        -0.09534127843986999
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "064f786cc59eefca118fd2891543d7b12268eb56a66452f7cda12646610c7c15",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22920,
+        "nearOpaquePixels": 3253,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          11,
+          126,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/carry-or-work/master.png",
+      "registrationOffset": [
+        0.42903575297941493,
+        0.19068255687973998
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4d50ce16c1471e7424edcd2297bf7e4f27cd0b5003be41b921c578d6e6987012",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5740,
+        "nearOpaquePixels": 759,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          6,
+          62,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/carry-or-work/master.png",
+      "registrationOffset": [
+        0.42903575297941493,
+        0.19068255687973998
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4d50ce16c1471e7424edcd2297bf7e4f27cd0b5003be41b921c578d6e6987012",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23079,
+        "nearOpaquePixels": 3128,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          11,
+          124,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-b/master.png",
+      "registrationOffset": [
+        -0.035752979414951244,
+        -0.19068255687973998
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "39d2397509492eab4d53241523a45669a78fe12012218abaf00e7829182f313f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5723,
+        "nearOpaquePixels": 778,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          5,
+          62,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/mercenary-quartermaster/walk-b/master.png",
+      "registrationOffset": [
+        -0.035752979414951244,
+        -0.19068255687973998
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "39d2397509492eab4d53241523a45669a78fe12012218abaf00e7829182f313f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23021,
+        "nearOpaquePixels": 3196,
+        "edgeMax": 0,
+        "visibleBounds": [
+          65,
+          11,
+          123,
+          100
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-b/master.png"
+    },
+    "scale": 0.04670912951167728,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      808.5,
+      956
+    ],
+    "sourceFeet": {
+      "idle": [
+        808.5,
+        956
+      ],
+      "walk-a": [
+        804.75,
+        965
+      ],
+      "carry-or-work": [
+        810.5,
+        958
+      ],
+      "walk-b": [
+        761.75,
+        947
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.1751592356687898,
+        -0.4203821656050955
+      ],
+      "carry-or-work": [
+        -0.09341825902335456,
+        -0.09341825902335456
+      ],
+      "walk-b": [
+        2.183651804670913,
+        0.4203821656050955
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1584,
+    993
+  ],
+  "logicalPivot": [
+    45.76433121019108,
+    48.65392781316348
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "00f80954de06108b002bf300a6f43ca34f7a96a995bb41ba939697fcd645a66f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5914,
+        "nearOpaquePixels": 621,
+        "edgeMax": 0,
+        "visibleBounds": [
+          34,
+          5,
+          54,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "00f80954de06108b002bf300a6f43ca34f7a96a995bb41ba939697fcd645a66f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23751,
+        "nearOpaquePixels": 2550,
+        "edgeMax": 0,
+        "visibleBounds": [
+          68,
+          9,
+          109,
+          97
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-a/master.png",
+      "registrationOffset": [
+        0.1751592356687898,
+        -0.4203821656050955
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "759e6aa6c01b1986dd9b0d71119132246edb5e6e29a45d25d93992ddad7860d5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5916,
+        "nearOpaquePixels": 614,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          4,
+          55,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-a/master.png",
+      "registrationOffset": [
+        0.1751592356687898,
+        -0.4203821656050955
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "759e6aa6c01b1986dd9b0d71119132246edb5e6e29a45d25d93992ddad7860d5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23763,
+        "nearOpaquePixels": 2526,
+        "edgeMax": 0,
+        "visibleBounds": [
+          64,
+          9,
+          109,
+          97
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.09341825902335456,
+        -0.09341825902335456
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "276cd31ddcc183ecdcb5f81b8d514f72afc921f461ca9990c6c5f91c92a28c74",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5911,
+        "nearOpaquePixels": 623,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          4,
+          56,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.09341825902335456,
+        -0.09341825902335456
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "276cd31ddcc183ecdcb5f81b8d514f72afc921f461ca9990c6c5f91c92a28c74",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23739,
+        "nearOpaquePixels": 2561,
+        "edgeMax": 0,
+        "visibleBounds": [
+          69,
+          9,
+          111,
+          97
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-b/master.png",
+      "registrationOffset": [
+        2.183651804670913,
+        0.4203821656050955
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cb8ef3604a26890d3f857c8f272aca247a8ac1bdf2bb2fced795ee2a3990f03a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5903,
+        "nearOpaquePixels": 624,
+        "edgeMax": 0,
+        "visibleBounds": [
+          34,
+          5,
+          60,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/detained-witness/walk-b/master.png",
+      "registrationOffset": [
+        2.183651804670913,
+        0.4203821656050955
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cb8ef3604a26890d3f857c8f272aca247a8ac1bdf2bb2fced795ee2a3990f03a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23716,
+        "nearOpaquePixels": 2563,
+        "edgeMax": 0,
+        "visibleBounds": [
+          68,
+          11,
+          121,
+          97
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

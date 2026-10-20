@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "transparentBackgroundRequested": true,
+  "nativeOutputUntouched": true,
+  "referenceRoles": [
+    "Approved idle identity, style, scale and proportions"
+  ],
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/detained-witness/idle/master.png",
+      "sha256": "00f80954de06108b002bf300a6f43ca34f7a96a995bb41ba939697fcd645a66f"
+    }
+  ]
+}
