@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "topicId": "C01-FX-21",
+  "label": "结构受损",
+  "status": "Semantic phase proposal awaiting parent approval; no new art generated",
+  "phaseOrder": [
+    "debris-lift",
+    "rubble-scatter",
+    "dust-impact",
+    "settling-dust"
+  ],
+  "phaseObservations": [
+    "Small cluster of angular gray stones, ochre-brown splintered wood and a few chips lifting; no dust plume yet.",
+    "More scattered stone and wood fragments with a larger foreground gray rock and additional chips; still no major dust plume.",
+    "Broadest flying wood/stone debris with a warm beige-peach dust burst at the lower central impact origin.",
+    "Fewer remaining stone/wood fragments and a residual warm dust plume settling over the same lower central area."
+  ],
+  "fixedLandmark": "Common lower-central impact/emission origin for the fragment burst and later dust, with one source scale. No permanent wall, ground slab or intact structure is invented.",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+    "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+    "atlasSize": [
+      1536,
+      1024
+    ],
+    "row1Based": 1,
+    "originalSlotSize": [
+      384,
+      256
+    ],
+    "originalInsetSize": [
+      374,
+      246
+    ],
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-row.png",
+    "peakSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-f2.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-21.png",
+    "builderMapping": "Legacy build_fx appends four rows per atlas; FX21 is atlas06 row1. Unlike atlas05, this original board is 1536x1024; new sources still use the approved shared 1254-square contract.",
+    "backingRisk": "Original RGBA board contains gray/white vignette backing. Alpha ranges 0..254 and outer-edge alpha reaches252. RGBA mode is not proof of usable transparency. Recreate only debris and actual localized dust; do not copy the backing or perform chroma/alpha cleanup."
+  },
+  "existingManifest": {
+    "assetId": "C01-FFV1-FX-21",
+    "topicId": "C01-FX-21",
+    "label": "结构受损",
+    "category": "fx",
+    "png": "runtime/fx/fx-21.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumer": {
+    "status": "catalog-only-no-current-literal-consumer-found",
+    "search": {
+      "command": [
+        "rg",
+        "-n",
+        "C01-FX-21|C01-FFV1-FX-21|fx-21\\.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/apps",
+        "--glob",
+        "*.{ts,tsx,json}",
+        "--glob",
+        "!manifest*.json",
+        "--glob",
+        "!package-lock.json",
+        "--glob",
+        "!pnpm-lock.yaml"
+      ],
+      "exitCode": 1,
+      "matches": []
+    },
+    "structureEventPath": "attackStructure and areaAttackStructure pass event.weapon into playStrike, which calls BoardView.animateHit. That selects presentation.weaponFx(weapon), not FX21 by the structure-damage label.",
+    "currentWeaponFxRange": "Current CANDIDATE_01_WEAPON_FX maps weapon ids to FX01–08 only; no FX21 mapping.",
+    "structureEventUsesGenericHit420ms": true,
+    "fx21UsesHit420ms": false,
+    "consumerLifetimeMs": null,
+    "newBindingProposed": false,
+    "sourceTrace": [
+      {
+        "relativePath": "packages/game-ui/src/ui/event-presentation.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/event-presentation.ts",
+        "sha256": "2b906c70b5fdef28ea6368f3c236ddfde37ebd88e094f36a1671083cf2457f3b",
+        "lineStart": 150,
+        "lineEnd": 161,
+        "excerpt": "150: /** Wind up, land, and report — the shape every direct strike shares. */\n151: async function playStrike(\n152:   stage: BattleStage,\n153:   strike: { attacker?: number; at: Coord | null; damage: number; fatal: boolean; weapon?: string },\n154: ): Promise<void> {\n155:   const { at } = strike;\n156:   const attacker = strike.attacker === undefined ? null : stage.unit(strike.attacker);\n157:   if (attacker) {\n158:     await stage.board.animateStrike(attacker, at ?? { x: attacker.x, y: attacker.y });\n159:   }\n160:   if (at) await stage.board.animateHit(at, strike.damage, strike.fatal, strike.weapon);\n161: }"
+      },
+      {
+        "relativePath": "packages/game-ui/src/ui/event-presentation.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/event-presentation.ts",
+        "sha256": "2b906c70b5fdef28ea6368f3c236ddfde37ebd88e094f36a1671083cf2457f3b",
+        "lineStart": 248,
+        "lineEnd": 275,
+        "excerpt": "248:   .register(presenter({\n249:     type: 'attackStructure',\n250:     animate: (stage, event) => {\n251:       const structure = stage.structure(event.structure);\n252:       return playStrike(stage, {\n253:         attacker: event.attacker,\n254:         at: structure ? { x: structure.x, y: structure.y } : null,\n255:         damage: event.damage,\n256:         fatal: event.destroyed,\n257:         weapon: event.weapon,\n258:       });\n259:     },\n260:     describe: (_context, event) =>\n261:       `对结构造成 ${event.damage} 点伤害${casualty(event.destroyed, '，结构被摧毁')}`,\n262:   }))\n263:   .register(presenter({\n264:     type: 'areaAttackStructure',\n265:     animate: (stage, event) => {\n266:       const structure = stage.structure(event.structure);\n267:       return playStrike(stage, {\n268:         at: structure ? { x: structure.x, y: structure.y } : null,\n269:         damage: event.damage,\n270:         fatal: event.destroyed,\n271:         weapon: event.weapon,\n272:       });\n273:     },\n274:     describe: (_context, event) =>\n275:       `范围攻击对结构造成 ${event.damage} 点伤害${casualty(event.destroyed, '，结构被摧毁')}`,"
+      },
+      {
+        "relativePath": "packages/game-ui/src/ui/board.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/board.ts",
+        "sha256": "7211c79358e4f6d1422fa8ef84df5b2b2706d89bb05563ff47b054c3b5901ad1",
+        "lineStart": 611,
+        "lineEnd": 640,
+        "excerpt": "611:   async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {\n612:     const fx = weapon ? this.presentation.weaponFx(weapon) : null;\n613:     // Drawn about its own origin and then placed, like everything else on the board.\n614:     // These used to bake the cell's scene coordinates into the markup, which is the\n615:     // one thing left that a renderer could not treat as a picture at a position: it\n616:     // would have had to rasterise a field-sized image to hold a damage number.\n617:     // The pack's picture, with the board's own parts drawn over it.\n618:     const art = fx ? this.presentation.effect(fx) : null;\n619:     const drawing = this.surface.effect({\n620:       body: art?.body ?? '',\n621:       strip: art?.strip,\n622:       parts: [\n623:         { role: 'burst', markup: '<circle r=\"12\" fill=\"#ffffff\" opacity=\"0.65\"/>' },\n624:         { role: 'number', markup: `<text y=\"-8\" text-anchor=\"middle\" class=\"fx-damage\">-${damage}</text>` },\n625:       ],\n626:     });\n627:     const { x: cx, y: cy } = this.centre(at);\n628:     drawing.place(cx, cy);\n629:     const burst = drawing.part('burst');\n630:     const number = drawing.part('number');\n631:     if (!await this.timeline.tween(420, (t) => {\n632:       // 12 → 22 was written as a radius; as a swell it is the same picture and the\n633:       // one property a backend without shapes can also honour.\n634:       burst?.swell(1 + t * 0.83);\n635:       burst?.opacity(0.8 * (1 - t));\n636:       number?.nudge(0, -14 * t);\n637:       number?.opacity(1 - t ** 2);\n638:     })) return;\n639:     drawing.remove();\n640:     if (killed) await this.timeline.wait(40);"
+      },
+      {
+        "relativePath": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+        "lineStart": 153,
+        "lineEnd": 177,
+        "excerpt": "153: export const CANDIDATE_01_WEAPON_FX: Readonly<Partial<Record<WeaponId, string>>> = {\n154:   'c01.border-blade': 'C01-FX-01',\n155:   'c01.gray-oath': 'C01-FX-06',\n156:   'c01.guard-spear': 'C01-FX-02',\n157:   'c01.legion-spear': 'C01-FX-02',\n158:   'c01.knight-lance': 'C01-FX-02',\n159:   'c01.knight-charge': 'C01-FX-07',\n160:   'c01.longbow': 'C01-FX-03',\n161:   'c01.ranger-bow': 'C01-FX-03',\n162:   'c01.lantern-staff': 'C01-FX-04',\n163:   'c01.oath-dispel': 'C01-FX-06',\n164:   'c01.engineer-hammer': 'C01-FX-04',\n165:   'c01.satchel-charge': 'C01-FX-07',\n166:   'c01.rune-hammer': 'C01-FX-04',\n167:   'c01.forge-burst': 'C01-FX-07',\n168:   'c01.wolf-spear': 'C01-FX-02',\n169:   'c01.undead-blade': 'C01-FX-01',\n170:   'c01.ghost-touch': 'C01-FX-08',\n171:   'c01.inquisitor-flame': 'C01-FX-06',\n172:   'c01.golem-slam': 'C01-FX-04',\n173:   'c01.ballista': 'C01-FX-03',\n174:   'c01.oath-bolt': 'C01-FX-06',\n175:   'c01.dragon-breath': 'C01-FX-05',\n176:   'c01.colossus-sweep': 'C01-FX-08',\n177: };"
+      },
+      {
+        "relativePath": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+        "sha256": "d4b44da3360753e77511ad6f7aa9d2e0fff5f368c40e803d9a4411346022edc8",
+        "lineStart": 227,
+        "lineEnd": 230,
+        "excerpt": "227: export function candidate01WeaponFxTopic(weapon: WeaponId): string | null {\n228:   return CANDIDATE_01_WEAPON_FX[weapon] ?? null;\n229: }\n230: "
+      }
+    ],
+    "liveGamePlaybackObserved": false
+  },
+  "timing": {
+    "fps": 12,
+    "frames": 4,
+    "loop": false,
+    "authoredClipFrameDurationsSeconds": [
+      "1/12",
+      "1/12",
+      "1/12",
+      "1/12"
+    ],
+    "frameStartTimesSeconds": [
+      "0",
+      "1/12",
+      "1/6",
+      "1/4"
+    ],
+    "nominalClipSeconds": "1/3",
+    "consumerLifetimeMs": null,
+    "hit420msLifetimeAssumed": false,
+    "heal500msLifetimeAssumed": false,
+    "finalFrame": "Nonempty settling dust and sparse rubble; future explicit consumer owns any hold/removal."
+  },
+  "canvas": [
+    1254,
+    1254
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "output": {
+    "1x": [
+      128,
+      32
+    ],
+    "2x": [
+      256,
+      64
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "blend": "normal source-over"
+  },
+  "style": "Chunky outlined angular gray stone, ochre-brown splintered wood, small chips and localized beige/peach dust. No original gray/white vignette, backing card, exterior glow or broad opaque ground patch.",
+  "alpha": "Genuine RGBA; perimeter at most 1 with actual clean black/white composites, final logical 2px alpha0. Never repair alpha in code.",
+  "gates": [
+    "Parent approves exact order before generation.",
+    "Peak dust-impact baseline first to establish largest envelope and lower impact origin, then independent other phases with common framing.",
+    "Preserve original material identity and source order, including dust emerging in phase3 rather than replacing the effect with a generic structure icon.",
+    "Full-source black/white, native32/64 on six backgrounds, full/terminal review and exact single-play decoded-frame verification.",
+    "No actual FX21 consumer or inferred 420/500 ms lifecycle. No gameplay binding added by this source task.",
+    "No browser/live playback claim."
+  ]
+}
