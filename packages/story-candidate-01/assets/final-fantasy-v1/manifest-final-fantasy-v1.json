@@ -2558,13 +2558,13 @@
       "topicId": "C01-MISSION-NAME-REGISTRAR",
       "label": "姓名登记员",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-name-registrar.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-name-registrar.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2573,13 +2573,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        45.831887201735356,
+        49.95661605206074
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-NURSERY-CARETAKER",
@@ -2728,13 +2729,13 @@
       "topicId": "C01-MISSION-SCRIBE",
       "label": "抄写员",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-scribe.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-scribe.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2743,13 +2744,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.652267818574515,
+        50.138228941684666
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-TOWN-MILITIA",

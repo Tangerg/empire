@@ -1,0 +1,82 @@
+[
+  {
+    "view": "story-desktop",
+    "size": [
+      960,
+      534
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "sourceCrop": [
+      0.0,
+      5.475000000000023,
+      1672.0,
+      935.525
+    ],
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "note": "QA ONLY actual CSS cover geometry; master unchanged. Native source used; display filters, wash, interface overlays and text are not simulated.",
+    "resampling": "LANCZOS inspection derivative of CSS source crop; no claim of exact browser rasterization"
+  },
+  {
+    "view": "story-mobile",
+    "size": [
+      390,
+      778
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "sourceCrop": [
+      600.1452442159383,
+      0.0,
+      1071.8547557840616,
+      941.0
+    ],
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "note": "QA ONLY actual CSS cover geometry; master unchanged. Native source used; display filters, wash, interface overlays and text are not simulated.",
+    "resampling": "LANCZOS inspection derivative of CSS source crop; no claim of exact browser rasterization"
+  },
+  {
+    "view": "staging-inset",
+    "size": [
+      280,
+      245
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "sourceCrop": [
+      298.28571428571433,
+      5.684341886080802e-14,
+      1373.7142857142858,
+      941.0
+    ],
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "note": "QA ONLY actual CSS cover geometry; master unchanged. Native source used; display filters, wash, interface overlays and text are not simulated.",
+    "resampling": "LANCZOS inspection derivative of CSS source crop; no claim of exact browser rasterization"
+  },
+  {
+    "view": "staging-mobile",
+    "size": [
+      366,
+      220
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "sourceCrop": [
+      53.2590909090909,
+      0.0,
+      1618.740909090909,
+      941.0
+    ],
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "note": "QA ONLY actual CSS cover geometry; master unchanged. Native source used; display filters, wash, interface overlays and text are not simulated.",
+    "resampling": "LANCZOS inspection derivative of CSS source crop; no claim of exact browser rasterization"
+  }
+]

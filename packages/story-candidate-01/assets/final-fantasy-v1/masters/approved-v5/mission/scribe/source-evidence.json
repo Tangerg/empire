@@ -112,5 +112,27 @@
     "pixelDensity": 2
   },
   "formalProgress": null,
-  "baselineCanonicalStatus": "pending-redraw"
+  "baselineCanonicalStatus": "pending-redraw",
+  "verifiedBuilderMapping": {
+    "builder": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+    "boardArrayIndex0": 3,
+    "rowIndex0": 0,
+    "mapping": "Builder iterates MISSION_BOARDS in listed order and each board row0..3. Existing audited pixel-exact rebuild proves this topic is scribe-registrar-delegate-messenger row0.",
+    "pixelExactAudit": "docs/art-rebuild-20261019/approved-v5/mission-consumer-audit/original-row-pixel-verification.json",
+    "auditedLogicalRuntimePixelExact": true,
+    "auditedHdRuntimePixelExact": true,
+    "sourceBoardSha256Rechecked": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "sourceRowCrop": "references/original-row.png",
+    "sourceIdleCrop": "references/original-idle-cell.png",
+    "runtimeObserved": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-scribe.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "6330af0ec1ceffe5258769723b5c42d84985f069066b74141b1bed80d5488cfc",
+      "visuallyInspected": true
+    },
+    "observedIdentityConfirmed": "Original row has young dark-haired clean-shaven man, dusty-plum coat, charcoal scarf, screen-right hand supporting brown book/board, screen-left hand holding tan feather quill, screen-left satchel and cream rolled scrolls."
+  }
 }

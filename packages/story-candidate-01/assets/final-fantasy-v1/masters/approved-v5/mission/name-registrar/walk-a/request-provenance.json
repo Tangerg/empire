@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "requestSHA256": "73d8785482aa7d4a94469585a4694c5451f49240cae8cddd4ab304a3b378c600",
+  "promptSHA256": "2047874ccec1cd0d7e74c93039ee9f71334df41fa8a4928e9ad04b17b83a1d60",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/name-registrar/idle/master.png",
+      "sha256": "5c7f4750dd1ee75b5cef65fbaf2594e625e1728f3fe4f2c9797ce385b1f03922"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/name-registrar/references/original-idle-cell.png",
+      "sha256": "f3d9db530aa20b7ed0b503524258eadbdc93ec9d45232b6f8df807be639319ee"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/name-registrar/references/approved-messenger-idle.png",
+      "sha256": "ded546d4e751027dda14db96940afe04ba5799720f09ab0bf461d677731db2f4"
+    }
+  ],
+  "nativeAlphaUntouched": true,
+  "rawMasterBytesIdentical": true,
+  "postprocessing": "No cleanup, alpha editing, painting, crop, fit, or resize. Black/white compositing is QA-only, stored separately."
+}

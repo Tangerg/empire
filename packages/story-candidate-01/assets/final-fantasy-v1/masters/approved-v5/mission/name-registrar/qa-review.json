@@ -1,0 +1,98 @@
+{
+  "status": "Parent coordinator accepted quartet visual evidence and native-alpha caveat for formal export; live-game export acceptance remains pending",
+  "nativeRGBA": true,
+  "nativeSourceByteIdentical": true,
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 0,
+      "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+        "pixelCountAlphaGreaterThan1": 0,
+        "maxAlpha": 1
+      },
+      "rawMasterNativeByteIdentical": true,
+      "sourceFoot": [
+        792.75,
+        963
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "perimeterMaxAlpha": 0,
+      "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+        "pixelCountAlphaGreaterThan1": 8,
+        "maxAlpha": 2
+      },
+      "rawMasterNativeByteIdentical": true,
+      "sourceFoot": [
+        745.25,
+        960
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    },
+    "carry-or-work": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "perimeterMaxAlpha": 0,
+      "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+        "pixelCountAlphaGreaterThan1": 13,
+        "maxAlpha": 2
+      },
+      "rawMasterNativeByteIdentical": true,
+      "sourceFoot": [
+        793.75,
+        963
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "perimeterMaxAlpha": 0,
+      "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+        "pixelCountAlphaGreaterThan1": 0,
+        "maxAlpha": 1
+      },
+      "rawMasterNativeByteIdentical": true,
+      "sourceFoot": [
+        748.75,
+        954
+      ],
+      "wholeCanvasFitsProposedFrame": true
+    }
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "technicalPadding": "Walk-a and walk-b need1 native pixel right padding in QA/export common canvas only; original files untouched",
+  "sharedScale": 0.04772234273318872,
+  "bodyReferenceSourcePixels": 922,
+  "bodyTargetHeightLogicalPixels": 44,
+  "maximumRegistrationTranslationLogicalPixels": 2.2668112798264644,
+  "bodyScalePolicy": "One parent-approved44/922 fixed across all whole canvases, no per-pose fitting. Pose crown-to-sole at that scale:44.00 idle,44.67 walk-a,44.95 work,44.38 walk-b; small bun/head posture variation remains natural and uncorrected.",
+  "identityReview": "Same original older woman, bun, scarf, tagged coat, book and lantern. Book stays screen-left, lantern screen-right. Blank tags and pages, no invented readable text or emblems.",
+  "visualReview": "Inspected full native white/black composites, four-pose montage and true44px family and sequence comparisons. Broad contours and props remain legible, no visible alpha rectangle or detached background.",
+  "nativeAlphaDisclosure": "All native perimeters alpha0. Beyond Euclidean7pixels from alpha>127 silhouette, walk-a contains8pixels at alpha2 and work13pixels at alpha2; idle and walk-b max1. These native residues are preserved, not cleaned.",
+  "oppositeContacts": {
+    "walk-a": "Right sole960 below left933; right heel-first forward, left heel raised trailing",
+    "walk-b": "Left sole954 below right925; left heel-first forward, right heel raised trailing"
+  },
+  "workAction": "Open-register reading and page-turn supported by left forearm, same lantern raised in right hand; two hands only",
+  "sourcePixelExactVerification": true,
+  "consumerCaveat": "Catalog-only completion. No deployment, runtime actor or new gameplay behavior invented.",
+  "repoChanges": false,
+  "runtimeTests": "Not run: art worker made no repository changes; parent owns export/integration.",
+  "rejectedAttempts": 0
+}

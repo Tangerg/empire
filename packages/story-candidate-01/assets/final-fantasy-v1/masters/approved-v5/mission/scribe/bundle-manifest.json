@@ -1,0 +1,148 @@
+{
+  "topicId": "C01-MISSION-SCRIBE",
+  "assetId": "C01-FFV1-MISSION-SCRIBE",
+  "category": "mission-unit",
+  "status": "Native source quartet and shared technical QA complete; parent final review and formal repository integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every raw/master pair is byte-identical. No cleanup, painting, recolor, crop, source padding, per-pose rescale or fit. Whole-canvas shared-scale technical export and separate QA composites only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-scribe.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "topicId": "C01-MISSION-SCRIBE",
+    "png": "runtime-hd/mission-unit/mission-scribe.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "consumerClassification": "catalog-only",
+  "palettePolicy": "Preserve original warm-tan skin, tousled dark-brown hair, dusty-plum coat, charcoal scarf, brown book/satchel/boots and cream scrolls. No faction recolor.",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Catalog availability does not imply authored gameplay use.",
+  "liveGameAcceptance": false,
+  "rejectedAttempts": [],
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "generationResult": "idle/generation-result.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "61186a6e1565eac31fc307cd548fe61554b5fe6cbba9ba684ceca17b56f8efe8",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        834.5,
+        971
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Both boots planted, screen-right hand supports upright brown book, screen-left hand waits with quill; original young man and plum/charcoal wardrobe."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "generationResult": "walk-a/generation-result.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "ac0125652ccaf39786e1c243bdc1d5c97c64b5f3d98f2be6e7754916c818285e",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        806.0,
+        963
+      ],
+      "registrationOffsetLogical": [
+        1.3542116630669547,
+        0.3801295896328294
+      ],
+      "review": "Screen-right boot extends heel-first with sole exposed; screen-left boot planted behind. Same book/quill hand roles."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "9613314858221e3e04ab2889563f7f8ee68ab3dc13cd3ca8cac4be098ecb0b95",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        826.75,
+        959
+      ],
+      "registrationOffsetLogical": [
+        0.36825053995680346,
+        0.5701943844492441
+      ],
+      "review": "Stable boots; head lowered toward blank cream page; screen-right hand supports opened/tilted book while screen-left quill tip contacts the page. No invented lettering."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "generationResult": "walk-b/generation-result.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "99f15a3dd578f0d7c53db31bc538c14039831f90b608fd67936eee00c266f4dd",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        807.25,
+        955
+      ],
+      "registrationOffsetLogical": [
+        1.294816414686825,
+        0.7602591792656588
+      ],
+      "review": "Screen-right boot planted, screen-left rear knee bends and heel lifts. Opposite weight-bearing contact. Same book/quill hand roles."
+    }
+  }
+}

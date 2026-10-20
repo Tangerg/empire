@@ -1,0 +1,137 @@
+{
+  "topicId": "C01-MISSION-NAME-REGISTRAR",
+  "assetId": "C01-FFV1-MISSION-NAME-REGISTRAR",
+  "category": "mission-unit",
+  "status": "Native quartet and QA approved by parent coordinator; ready for parent formal export",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationCallCount": 4,
+  "nativeArtPolicy": "Every native/raw/master output is byte-identical. No cleanup, recoloring, painting, cropping, per-pose rescaling or source padding. Common-canvas right padding only in parent export and QA; originals are preserved.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "consumerClassification": "catalog-only",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Original duplicate stance and step are replaced by two opposing physical contacts and open-register reading/page-turn work, preserving original woman and equipment.",
+  "palettePolicy": "Original warm tan skin, gray-brown hair, slate scarf, charcoal/taupe coat, plain tan tags, brown book/belt/boots, dark metal lantern with contained amber light. No faction recolor, lettering or emblem.",
+  "sharedScale": 0.04772234273318872,
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyReferenceSourcePixels": 922,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "paddingToleranceRequired": 1,
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "5c7f4750dd1ee75b5cef65fbaf2594e625e1728f3fe4f2c9797ce385b1f03922",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        792.75,
+        963
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Older human woman with gray-brown bun, tan skin, dark slate scarf, charcoal/taupe long coat with blank tan name tags, brown belt and huge boots. Screen-left arm hugs closed brown register; screen-right hand holds square amber lantern. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "044ad48af70a26f148b138e9d4fab275b40c5e0ccab9fb2bb708ffc061812b4b",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        745.25,
+        960
+      ],
+      "registrationOffsetLogical": [
+        2.2668112798264644,
+        0.14316702819956617
+      ],
+      "review": "Right-side boot advances heel-first with raised toe, sole y960; left-side boot trails with raised heel, sole y933. Same left book/right lantern hand roles and three-quarter camera. Long coat hem swings naturally."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "f0c35ac9bdd0bba8acaf44984e0f9f3b37b5204bec0721f71b340b2e2c2159a5",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        793.75,
+        963
+      ],
+      "registrationOffsetLogical": [
+        -0.04772234273318872,
+        0.0
+      ],
+      "review": "Left forearm and left hand support the opened brown register, broad curled cream page attached to gutter; head and eyes look down. Right hand raises the same lantern beside pages. Exactly two visible hands; no extra tool. Both boots planted."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "9e3844a1494a0eda9a2fcb31a36fc1918bf7edd1d39953b04d4bbf918b18e8f1",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        748.75,
+        954
+      ],
+      "registrationOffsetLogical": [
+        2.0997830802603037,
+        0.42950108459869846
+      ],
+      "review": "Genuine opposite contact: left-side boot advances heel-first, sole y954; right-side boot trails with raised heel, sole y925. Character is not mirrored; book remains left, lantern right."
+    }
+  },
+  "idleScaleReview": "review-approval.json",
+  "rejectedAttempts": [],
+  "liveGameAcceptance": false
+}

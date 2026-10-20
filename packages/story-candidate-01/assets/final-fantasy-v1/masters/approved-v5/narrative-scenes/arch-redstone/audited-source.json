@@ -1,0 +1,180 @@
+{
+  "topicId": "C01-ARCH-REDSTONE",
+  "label": "赤石誓约烽塔",
+  "originalNarrativeIndexZeroBased": 6,
+  "subgroup": "architecture-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-ARCH-REDSTONE",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "赤石誓约烽塔",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-redstone.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+    "sha256": "4ccf940515763d1b92d10fc9909e8e64ff3382d995fb5b4b9b2f8777157364be",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "cellIndexZeroBased": 0,
+    "columnZeroBased": 0,
+    "rowZeroBased": 0,
+    "cellLabel": "top-left",
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-ARCH-REDSTONE",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-ARCH-REDSTONE",
+    "topicId": "C01-ARCH-REDSTONE",
+    "label": "赤石誓约烽塔",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/arch-redstone.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-redstone.png",
+    "sha256": "2e7ad1dd8452efbcfae797fe79b733d05032acd9f07ee820c9aaa6f6bd113d4d",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-03",
+        "chapter": 1,
+        "title": "赤石围城",
+        "location": "赤石堡垒"
+      },
+      {
+        "id": "c01/aftermath-03",
+        "chapter": 1,
+        "title": "名字归于谁",
+        "location": "赤石塔下"
+      },
+      {
+        "id": "c01/brief-11",
+        "chapter": 3,
+        "title": "无声墓园",
+        "location": "圣辉领外墓园"
+      },
+      {
+        "id": "c01/aftermath-11",
+        "chapter": 3,
+        "title": "墓碑拒绝净化",
+        "location": "无声墓园"
+      },
+      {
+        "id": "c01/brief-16",
+        "chapter": 3,
+        "title": "记住我的名字",
+        "location": "旧帝国归名场"
+      },
+      {
+        "id": "c01/aftermath-16",
+        "chapter": 3,
+        "title": "一个新名字",
+        "location": "归名场"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-03",
+      "c01-11",
+      "c01-16"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [
+      2
+    ],
+    "chapterChoiceScreens": [
+      "c01/choice-white-river-priority",
+      "c01/choice-mercenary-contract",
+      "c01/choice-free-ivra",
+      "c01/choice-old-banner-terms"
+    ],
+    "chapterStagingAndResultLevels": [
+      "c01-06",
+      "c01-07",
+      "c01-08",
+      "c01-09",
+      "c01-10"
+    ],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": [
+    "Also used for cemetery story beats11 and entire chapter2 fallback; changing source must not silently change these selectors."
+  ]
+}

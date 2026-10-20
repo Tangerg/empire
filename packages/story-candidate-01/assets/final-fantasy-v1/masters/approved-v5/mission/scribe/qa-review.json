@@ -1,0 +1,60 @@
+{
+  "status": "Static native quartet visual and technical QA passed; parent quartet review and formal integration pending.",
+  "sourcePolicy": "Every raw/master pair is byte-identical. No cleanup, painting, recolor, crop, source padding, per-pose rescale or fit. Whole-canvas shared-scale technical export and separate QA composites only.",
+  "canonicalFrameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "distinctDecodedSourceHashes": {
+    "idle": "4d3190de8394b4df2dc29df0d3f71324c843e7c662d074d8573213bc2c874013",
+    "walk-a": "8ff4cb9e6707ef675c8b9f4cc01bcc9d487a02861edf5fe1d502e1891ad0f99e",
+    "carry-or-work": "36a8005ab7036d3591d2db46797533b1ac91cfa5f8be87b3ee984e343c657d23",
+    "walk-b": "f33616b8b490ccf313a7efcc74154af1ccfe445e6f63208893df1a69e5d91253"
+  },
+  "allNativePerimetersAlphaAtMost1": true,
+  "wholeCanvasPlacementFits": true,
+  "sharedScale": 0.047516198704103674,
+  "bodyTargetHeightLogicalPixels": 44,
+  "reviews": {
+    "identity": "Same young clean-shaven warm-tan man, dark tousled hair, plum coat, charcoal scarf, brown cross-body satchel, cream scrolls and oversized boots across every pose.",
+    "equipment": "Exactly one book/board and one feather quill. All poses keep book in screen-right hand, quill in screen-left hand. Work shows one blank cream page with no letters, runes or emblems.",
+    "oppositeWalks": "Screen-right boot extends heel-first with sole exposed; screen-left boot planted behind. Same book/quill hand roles. Screen-right boot planted, screen-left rear knee bends and heel lifts. Opposite weight-bearing contact. Same book/quill hand roles.",
+    "work": "Stable boots; head lowered toward blank cream page; screen-right hand supports opened/tilted book while screen-left quill tip contacts the page. No invented lettering.",
+    "nativeTransparency": "Inspected black and white composites and native44 three-background export. No broad halo, matte, ground shadow, clipped silhouette or stray visible objects. Native faint alpha residues retained without cleanup. Perimeter maxima1,0,0,0.",
+    "native44": "QA1x images are104\u00d764 source-canvas exports through existing registered-sequence exporter at fixed44/926;3x examples are nearest-neighbor enlargement of actual1x raster images. Family comparison uses exact existing1x repository-runtime idle crops for active border-farmer/refugee-adult/bridge-laborer; see qa-family-actual-bound-evidence.json.",
+    "scale": "Single parent-approved44/926 scale. Largest measured sole-only translation1.354211663logical pixels. Native source canvas dimensions vary by2px width/1px height; explicit2px export-only padding tolerance."
+  },
+  "sharedTechnicalExport": {
+    "tool": "tools/art/export_registered_sequence.py",
+    "config": "qa-export-config.json",
+    "output": "qa-export/",
+    "passed": true,
+    "repositoryRuntimeWritten": false,
+    "sheet1x": [
+      416,
+      64
+    ],
+    "sheet2x": [
+      832,
+      128
+    ],
+    "allExportPerimetersZero": true
+  },
+  "rejectedAttempts": [],
+  "liveGameAcceptance": false,
+  "actualConsumers": {
+    "domainActors": 0,
+    "scenePlacements": 0,
+    "classification": "catalog-only"
+  },
+  "testsNotRun": [
+    "Repository integration validation suites",
+    "Build",
+    "Live game animation playback"
+  ],
+  "repositorySourceWrites": false,
+  "gitOperations": false,
+  "coordinatorVisualReview": "Idle approved; full quartet pending"
+}

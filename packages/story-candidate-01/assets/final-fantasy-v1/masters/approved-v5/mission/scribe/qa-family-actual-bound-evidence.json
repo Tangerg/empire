@@ -1,0 +1,94 @@
+{
+  "leftToRight": [
+    "border-farmer",
+    "refugee-adult",
+    "bridge-laborer",
+    "scribe"
+  ],
+  "topToBottom": [
+    "black",
+    "white",
+    "scene"
+  ],
+  "oneXPolicy": "All inputs are actual104x64 PNG frames. No family member rescaling.3x file is nearest-neighbor enlargement of the already composed1x board.",
+  "members": [
+    {
+      "topicId": "C01-MISSION-BORDER-FARMER",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-border-farmer.png",
+      "sourceSha256": "34bac776b098a6f77f824eab6b9fc52dad24371c0997553a6e3835dcda3e8812",
+      "sourceType": "Existing repository-approved1x runtime sheet, idle frame exact crop",
+      "nativeFrameSize": [
+        104,
+        64
+      ],
+      "rescaling": false,
+      "actualConsumerClassification": "scene-active-idle-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 2,
+        "nonrenderingPopulationMetadata": 1
+      }
+    },
+    {
+      "topicId": "C01-MISSION-REFUGEE-ADULT",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-refugee-adult.png",
+      "sourceSha256": "d9d4794f826d5c84a95718efd04ca130ab92dbf846b636cd44b0ad427f58f565",
+      "sourceType": "Existing repository-approved1x runtime sheet, idle frame exact crop",
+      "nativeFrameSize": [
+        104,
+        64
+      ],
+      "rescaling": false,
+      "actualConsumerClassification": "domain-active",
+      "actualConsumerCounts": {
+        "domainBindings": 1,
+        "initialActors": 9,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      }
+    },
+    {
+      "topicId": "C01-MISSION-BRIDGE-LABORER",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-bridge-laborer.png",
+      "sourceSha256": "1c131717420e9d84f5243089848ae450a86486aa49b828fc10d72ce1a275c3b4",
+      "sourceType": "Existing repository-approved1x runtime sheet, idle frame exact crop",
+      "nativeFrameSize": [
+        104,
+        64
+      ],
+      "rescaling": false,
+      "actualConsumerClassification": "domain-active",
+      "actualConsumerCounts": {
+        "domainBindings": 1,
+        "initialActors": 2,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      }
+    },
+    {
+      "topicId": "C01-MISSION-SCRIBE",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/mission/scribe/qa-export/idle@1x.png",
+      "sourceSha256": "75a14bba0fccab9f758e38729bad4ddaf6339449efe3bc6b2a9854d345529bdc",
+      "sourceType": "Unintegrated shared QA1x proposal",
+      "nativeFrameSize": [
+        104,
+        64
+      ],
+      "rescaling": false,
+      "actualConsumerClassification": "catalog-only",
+      "actualConsumerCounts": {
+        "domainBindings": 0,
+        "initialActors": 0,
+        "reinforcementActors": 0,
+        "renderedScenePlacements": 0,
+        "nonrenderingPopulationMetadata": 0
+      }
+    }
+  ],
+  "liveGamePlayback": false,
+  "scribeDeployed": false
+}

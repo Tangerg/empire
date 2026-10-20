@@ -1,0 +1,38 @@
+{
+  "assets": [
+    {
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "bundle": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/arch-three-bridges",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/arch-three-bridges/master.png",
+      "masterSha256": "8f9fc6d169f66c0932023fdf7dd8ca2f99f2e01b0e0695f64389d8dd0e1fa237",
+      "bundleManifestSha256": "a8e9f427f2a7e2861c011b0666c419a3cb7e407dd8d2b9cc836d45d1cff02890",
+      "formalIntegerCrop": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceApproval": "accepted by parent",
+      "nativeSourceMutations": []
+    },
+    {
+      "topicId": "C01-ARCH-REDSTONE",
+      "bundle": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/arch-redstone",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/arch-redstone/master.png",
+      "masterSha256": "e59d492c2b93f6b70fbe47d9c36ad39d31cab60d62968c4f11e220dd8b2f3642",
+      "bundleManifestSha256": "7b365086e689ec3cd949f9f83bc3ac3f8dfc1d74f32480d2a3c2b8605bfe43fc",
+      "formalIntegerCrop": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sourceApproval": "accepted by parent",
+      "nativeSourceMutations": []
+    }
+  ],
+  "tool": "built-in image_gen",
+  "nextOwner": "parent formal export/binding/live UI",
+  "repositoryWrites": false,
+  "gitWrites": false
+}

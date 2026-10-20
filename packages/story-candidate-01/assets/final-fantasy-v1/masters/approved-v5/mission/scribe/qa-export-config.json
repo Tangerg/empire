@@ -1,0 +1,60 @@
+{
+  "topicId": "C01-MISSION-SCRIBE",
+  "frames": {
+    "idle": "/workspace/shared/empire-art-rebuild/approved-v5/mission/scribe/idle/master.png",
+    "walk-a": "/workspace/shared/empire-art-rebuild/approved-v5/mission/scribe/walk-a/master.png",
+    "carry-or-work": "/workspace/shared/empire-art-rebuild/approved-v5/mission/scribe/carry-or-work/master.png",
+    "walk-b": "/workspace/shared/empire-art-rebuild/approved-v5/mission/scribe/walk-b/master.png"
+  },
+  "scale": 0.047516198704103674,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    834.5,
+    971
+  ],
+  "sourceFeet": {
+    "idle": [
+      834.5,
+      971
+    ],
+    "walk-a": [
+      806.0,
+      963
+    ],
+    "carry-or-work": [
+      826.75,
+      959
+    ],
+    "walk-b": [
+      807.25,
+      955
+    ]
+  },
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      1.3542116630669547,
+      0.3801295896328294
+    ],
+    "carry-or-work": [
+      0.36825053995680346,
+      0.5701943844492441
+    ],
+    "walk-b": [
+      1.294816414686825,
+      0.7602591792656588
+    ]
+  },
+  "registrationLimit": 2,
+  "canvasPaddingTolerance": 2
+}
