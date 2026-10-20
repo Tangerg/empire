@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "motif": "Exactly two separate vermilion components: one centered vertical tapered wedge above one broad downward-pointing chevron.",
+  "checks": {
+    "Exactly one vertical red tapered wedge": true,
+    "Exactly one broad downward red chevron": true,
+    "Transparent gap between two components": true,
+    "No dot, skull, enclosure, extra chevron or text": true
+  },
+  "native32": "Actual native-size white/black/olive strips inspected; component counts and orientation readable.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or source-board magenta residue.",
+  "uncertainty": "No uncertainty about component count or downward orientations. Fine inner seam placement is simplified without changing silhouette.",
+  "consumerStatus": "Catalog entry verified; no authored UI consumer asserted."
+}

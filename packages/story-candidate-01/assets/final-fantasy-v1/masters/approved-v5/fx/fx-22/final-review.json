@@ -1,7 +1,7 @@
 {
   "topicId": "C01-FX-22",
   "label": "工程修复",
-  "status": "source-alpha-export-and-worker-static-phase-review-complete; parent-final-review-pending; live-playback-unobserved",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
   "phaseOrder": [
     "loose-hardware",
     "seating-impact",
@@ -39,7 +39,7 @@
   "native32And64SixBackgroundsReviewed": true,
   "fullAndTerminalComparisonReviewed": true,
   "fullSourceBlackWhiteReviewed": true,
-  "parentStaticReview": "Parent reviewed the corrected native full/terminal quartet and accepted the semantic identity and natural tightening on 2026-10-20. This is static phase review, not live animation acceptance.",
+  "parentStaticReview": "Parent reviewed the corrected native full/terminal quartet on 2026-10-20 and accepted the assembly action, restored four stones, and static identity/scale continuity. The measured 0.558/0.625 logical-pixel registration differences and warm repair-swirl versus cool finished-fit bolt lighting are retained as caveats. Actual playback remains unobserved, and no jitter-free claim is made.",
   "cohortReview": "qa/COHORT-REVIEW.md",
   "motionProof": "qa/motion-and-registration-proof.json",
   "actualCaveats": [

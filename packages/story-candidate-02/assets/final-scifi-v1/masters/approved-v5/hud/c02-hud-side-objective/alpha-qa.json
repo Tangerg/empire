@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-hud-side-objective",
+  "source": "master.png",
+  "sourceCanvasSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 1097955,
+  "partialAlphaPixels": 472527,
+  "opaquePixels": 2034,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    78,
+    75,
+    1176,
+    1183
+  ],
+  "nearOpaquePixelCountGE240": 460491,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 200,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "247c4e4be376ec5bacf59551a4ea5fc9fe361be1c8ed06a4fe5c34f9f9893b76",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the four corners, cyan rails and open center remain clear on white/black/olive. The hollow mark remains distinct from the main-objective filled star. Full-size source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullSourceWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One cyan open diamond frame retains four equal sides, beveled rails, dark outline and a fully transparent central diamond aperture."
+}

@@ -1,0 +1,105 @@
+{
+  "topicId": "C01-FX-24",
+  "label": "据点占领",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+    "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+    "atlasSize": [
+      1536,
+      1024
+    ],
+    "row1Based": 4,
+    "rawRowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-row.png",
+    "matchedCompleteRow": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-row.png",
+    "matchedCropRectangle": [
+      0,
+      738,
+      1536,
+      1024
+    ],
+    "cropReason": "The legacy nominal row starts at y768 and clips the gold finials. The unedited full board shows the complete finials from around y754. Reference-only crop y738 retains them; this crop is not used for output fitting.",
+    "backingRisk": "Original gray/white and colored vignette is unwanted, outer-edge alpha max252; regenerate shapes on true alpha."
+  },
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-24",
+    "topicId": "C01-FX-24",
+    "label": "据点占领",
+    "category": "fx",
+    "png": "runtime/fx/fx-24.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "semanticPhases": [
+    "A pale cream/gray swallowtail flag on a gold-brown pole and circular stone plinth, surrounded by a segmented pale ring.",
+    "The same pale flag and fixed pole/plinth, blue ring, rising cyan/cream curved energy ribbons and small blue chips.",
+    "The flag is now muted blue. Curved energy and chips are strongest while pole/plinth remain planted.",
+    "Blue flag remains, segmented blue ring persists, most spiral energy is gone and a few tiny particles remain."
+  ],
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/current-runtime@1x.png",
+      "sha256": "1d1d3f59516f1b18e94c655cb61daeb7272801efb0a0b1158d9cd50598c2b7cf"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/current-runtime@2x.png",
+      "sha256": "6c20fb3bcd52779aabb5dfb5b577ea34d805c938ea8f14cddfe27fea433cd438"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-f0.png",
+      "sha256": "58200788ac597c52bbacc752fbc49498066c38d222d9aeda26dcf1017438e161"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-f1.png",
+      "sha256": "2fc687cfea9cf8ba2da5091c7cc6ad0e8c020ca28bbccd860d2a904a0766441a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-f2.png",
+      "sha256": "ffb6033cf42dbbacd1e0846e6bcd69e569d5cacd96b139bc9f5bdbb4fd3ad4b9"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-f3.png",
+      "sha256": "8b82e697ec1f39cbfa45b1e3533739e2820bccaf14063d33e2d2e4a83f8ca7c7"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-row.png",
+      "sha256": "3745632650fd807049c71d422e742f06e33a3374672a0f4608d39682418e30a0"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-board.png",
+      "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-f0.png",
+      "sha256": "173a5add7005b713b0b36ebd32679d5c35ce394a622429e283bde737fe427126"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-f1.png",
+      "sha256": "579b6ac72bbbabf974733bbb53e83e73fcc4decf62a37d2eb6e31398611e1a65"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-f2.png",
+      "sha256": "2c11c04c2a2e15c5801a65559ad4f673b3da4c97530d91aced00456c879d1df0"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-f3.png",
+      "sha256": "8ddc0421eb12db31cbab22b867263ad18b1c83c59ad21f6ec7f59d267f0fff75"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-row.png",
+      "sha256": "812dbc813d47ae1db65ebe0fb5680791ea1aaa6162d7c3cb6d6621eb5cb7643c"
+    }
+  ],
+  "consumerAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/consumer-audit.json"
+}

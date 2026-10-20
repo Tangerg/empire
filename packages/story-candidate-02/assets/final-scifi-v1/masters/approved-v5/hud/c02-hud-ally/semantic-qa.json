@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "motif": "Exactly two separate cyan upward-pointing chevrons, stacked with a larger upper chevron and smaller lower chevron, with transparent separation.",
+  "checks": {
+    "Exactly two independent upward cyan chevrons": true,
+    "Upper chevron larger than lower": true,
+    "Transparent gap between chevrons": true,
+    "No added frame, third chevron, shaft or text": true
+  },
+  "native32": "Actual native-size white/black/olive strips inspected; component counts and orientation readable.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or source-board magenta residue.",
+  "uncertainty": "No uncertainty about the two-chevron count, orientation or relative size. Small panel seam details are decorative and simplified.",
+  "consumerStatus": "Catalog entry verified; no authored UI consumer asserted."
+}

@@ -1,0 +1,255 @@
+{
+  "topicId": "c02-hud-reinforcement",
+  "status": "source-ready",
+  "sourceReady": true,
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "contract": {
+    "width": 32,
+    "height": 32,
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "files": [
+    {
+      "path": "alpha-qa.json",
+      "bytes": 1702,
+      "sha256": "011148676969beb542b6d374fa2086bb7ed4bb6b0626d1daa4350290e965e891"
+    },
+    {
+      "path": "canonical-identity.json",
+      "bytes": 316,
+      "sha256": "58e48e046edd1a11175b7a020bc7485495f0cf10274e1789d3a298a24e2a5bf7"
+    },
+    {
+      "path": "crop-evidence.json",
+      "bytes": 538,
+      "sha256": "db85af0685f634de0f774b95776191771d737fdb6551df44163d45261dfeb5ed"
+    },
+    {
+      "path": "diagnostic-native32/native32-on-black.png",
+      "bytes": 1263,
+      "sha256": "ea3a796b902dd975cdc11dd856ccad0570cfd82728d27272923c1ef677cedf79",
+      "imageSize": [
+        32,
+        32
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "diagnostic-native32/native32-on-olive.png",
+      "bytes": 1465,
+      "sha256": "cf5be95c61c7a53be9ed3cfdae34bbe1be7dad8898bd4731bdc94ffd5d0d7d06",
+      "imageSize": [
+        32,
+        32
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "diagnostic-native32/native32-on-white.png",
+      "bytes": 1571,
+      "sha256": "05453115bd0ed2e1e9b7b004b90de6aaafbca2256906ef7dfff917e95eae38ff",
+      "imageSize": [
+        32,
+        32
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "diagnostic-native32/native32-white-black-olive.png",
+      "bytes": 15035,
+      "sha256": "c750f11b201d3a7f5d07e69ca1832613bc30ba815d2db7c114004b9f65f1a7f7",
+      "imageSize": [
+        1056,
+        400
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "diagnostic-native32/native32.png",
+      "bytes": 1735,
+      "sha256": "23b260e7ff66b66e164e9011b2495c11997cb15e3689c071d87d668d01ad115f",
+      "imageSize": [
+        32,
+        32
+      ],
+      "imageMode": "RGBA"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 316,
+      "sha256": "b38d63037456ffbda76ddcb668d417d80f254f5edece3cf68a46ecbefdd58db3"
+    },
+    {
+      "path": "master.png",
+      "bytes": 876330,
+      "sha256": "a876248c2d4249baeeabea8cf047c69f0536eaecf513451750e71143f51f45f8",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGBA"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 2215,
+      "sha256": "f003c671dcc6903f13aa5921c1171ee63b862df9a892db1111c0be6aa2454e11"
+    },
+    {
+      "path": "qa-source-full-on-black.png",
+      "bytes": 667233,
+      "sha256": "28f0f1f95a8a69742912d89146d16bb60258f9f2438bcdbf1b77513b6758c8f7",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "qa-source-full-on-olive.png",
+      "bytes": 693867,
+      "sha256": "ad261510fb434510231e4c0151faf05310968797ceba2f03cb897f4541bc9ccc",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "qa-source-full-on-white.png",
+      "bytes": 712485,
+      "sha256": "e51f03aa8217f52c6ed9b2ad5af3809ea27b5e64e86ea063e9d3a3ee6e450cee",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "qa-source512-on-black.png",
+      "bytes": 143334,
+      "sha256": "d662dda6a5350e4d366f5940ea1bfb6500c85a6e701552466f5f2f62f84f4f9f",
+      "imageSize": [
+        512,
+        512
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "qa-source512-on-olive.png",
+      "bytes": 152833,
+      "sha256": "61f4febe0e67340a00a0ed08e61b08fabd9c330da41bb51470f71e3258c3c88d",
+      "imageSize": [
+        512,
+        512
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "qa-source512-on-white.png",
+      "bytes": 156830,
+      "sha256": "323cb6dc8c37b60a6138e3d29fe02955a4f97d503029acaf093bfa6ef629d39c",
+      "imageSize": [
+        512,
+        512
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "raw-source-v1.png",
+      "bytes": 876330,
+      "sha256": "a876248c2d4249baeeabea8cf047c69f0536eaecf513451750e71143f51f45f8",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGBA"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 876330,
+      "sha256": "a876248c2d4249baeeabea8cf047c69f0536eaecf513451750e71143f51f45f8",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGBA"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 510,
+      "sha256": "e35f2ee7633fdee1ae92d3b6eb9e82bd8dde28c882f12f5540ae7c5a3f03931e"
+    },
+    {
+      "path": "request.json",
+      "bytes": 2531,
+      "sha256": "f57c92d7361a4ba354e8e3de6a06c5e2339189505b883ff66957d3f93d7abdf2"
+    },
+    {
+      "path": "semantic-notes.txt",
+      "bytes": 532,
+      "sha256": "98f2d50424d3e5eb44b70f67bf64013bbb2d3e93899e186ee13d3df9b1d9d67f"
+    },
+    {
+      "path": "source-evidence.json",
+      "bytes": 2913,
+      "sha256": "27fa3f5d15fae9e1284473e499c344271af8f07465066a3135d86fe2b663a445"
+    },
+    {
+      "path": "source-fullboard.png",
+      "bytes": 1695839,
+      "sha256": "ec1ba35ece18cc577623d83403922267294541c739ba4ccd3bbf1790389bfedb",
+      "imageSize": [
+        1254,
+        1254
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "source-master-slot.png",
+      "bytes": 98999,
+      "sha256": "923df5ac76e5333c6a667ab5d9c700a9111e8e0a1c846bd5a08bd4ff4395e19b",
+      "imageSize": [
+        299,
+        310
+      ],
+      "imageMode": "RGB"
+    },
+    {
+      "path": "source-reference.json",
+      "bytes": 452,
+      "sha256": "018c2f28316fd4a59e404a0d7ec9f20ef780b532fda64b02d12d26616e50bf77"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 1052,
+      "sha256": "bad2445bc7a448ff66278e8809d5ee949f32062fa4d71491f9d3de9e09dc3bad"
+    },
+    {
+      "path": "source-runtime-nearest8x.png",
+      "bytes": 3662,
+      "sha256": "5dd393e2bd173ec4006b9eb74a384882cad9e69f8e4e51cdf4acb2979dd9a572",
+      "imageSize": [
+        256,
+        256
+      ],
+      "imageMode": "RGBA"
+    },
+    {
+      "path": "source-runtime.png",
+      "bytes": 1787,
+      "sha256": "f636059ce4c175ad6d32879f1cfde75ddfdc62f24337107cb2d253446afdb56d",
+      "imageSize": [
+        32,
+        32
+      ],
+      "imageMode": "RGBA"
+    }
+  ]
+}

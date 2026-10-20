@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-hud-reinforcement",
+  "source": "master.png",
+  "sourceCanvasSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 943927,
+  "partialAlphaPixels": 626935,
+  "opaquePixels": 1654,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    157,
+    107,
+    1096,
+    1144
+  ],
+  "nearOpaquePixelCountGE240": 607311,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 248,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "a876248c2d4249baeeabea8cf047c69f0536eaecf513451750e71143f51f45f8",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the three arrowheads, tall-center hierarchy and oval platform remain readable across white/black/olive. All arrows point upward and remain distinct. Full-size source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullSourceWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "Exactly three cyan arrows point upward from one short elliptical arrival platform. The tall central arrow remains dominant, with one shorter arrow on each side."
+}

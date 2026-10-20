@@ -1,7 +1,7 @@
 {
   "topicId": "C01-FX-22",
   "root": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-22",
-  "status": "source-alpha-export-and-worker-static-phase-review-complete; parent-final-review-pending; live-playback-unobserved",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
   "phaseOrder": [
     "loose-hardware",
     "seating-impact",
@@ -19,8 +19,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 1197,
-      "sha256": "66f3023efc208a7ff5b7736b20ecb154f7accd27095821297bf17067035c5291"
+      "bytes": 1253,
+      "sha256": "d2f0048b3e33b707565b63c8366fe9f050bd2e26f5c42969996e786c6c8d3d5f"
     },
     {
       "path": "audit-working.json",
@@ -39,18 +39,18 @@
     },
     {
       "path": "final-quartet.json",
-      "bytes": 1506,
-      "sha256": "cd24edc99f0407870fb4cddaacf7efd6fbbcf3cc2f9c6ef136786f705a7584b8"
+      "bytes": 1477,
+      "sha256": "69bd1afe56865989ee97055fa07c33bda45758e35edc22ff96988c599eaf4fbf"
     },
     {
       "path": "final-review.json",
-      "bytes": 4525,
-      "sha256": "79cb8589b46b34bd03ec23d2440eb48839ddcf7e85e7dbbab874bbd9518fae45"
+      "bytes": 4691,
+      "sha256": "ef31aa84b0036a4f40bb942d8abca226594e71cd909aa75e016b8fb9f61afabf"
     },
     {
       "path": "finalize.py",
-      "bytes": 12059,
-      "sha256": "475b3b7f42a6dfb5db720c3178a4dffe2a6b6cbcf837cc5315a83fb2893ff663"
+      "bytes": 12368,
+      "sha256": "6c1c5b812c555fe18d7d8066e6e1ac0fd8ba45a13040ecbecca200858e210a36"
     },
     {
       "path": "finished-fit/hashes.json",
@@ -269,8 +269,8 @@
     },
     {
       "path": "qa/COHORT-REVIEW.md",
-      "bytes": 4049,
-      "sha256": "85882e266389b58a1e952049b96dd44a7d60f83566474948ec2ff0153115230c"
+      "bytes": 4136,
+      "sha256": "2efd9947c47b9a14743450b5d0bdee6f0329cc5b6703dabfe173ec01c6cd30d1"
     },
     {
       "path": "qa/all-source-green-ground-overview.png",

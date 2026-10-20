@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-hud-danger",
+  "assetId": "C02-SFV1-hud-danger",
+  "label": "危险区域标记",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-hud-danger",
+    "topicId": "c02-hud-danger",
+    "label": "危险区域标记",
+    "category": "hud",
+    "png": "runtime/hud/hud-danger.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/hud-board-01.png",
+  "originalMasterSha256": "ec1ba35ece18cc577623d83403922267294541c739ba4ccd3bbf1790389bfedb",
+  "sourceCellOneBased": {
+    "row": 2,
+    "column": 4
+  },
+  "sourceCropBox": [
+    944,
+    322,
+    1242,
+    621
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original hud-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-danger.png",
+  "runtimeReferenceSha256": "fe25c9f4238356afeb3701ee2f121bce3d2d4eb0e6330fa9cc5719c30f20c52a",
+  "functionalMotif": "One upright amber warning triangle retains a dark outer/inset rim and one exclamation mark composed of a thick dark bar plus a separate round dot.",
+  "reconstructionCaveats": "Small scratches and cracks are removed in favor of broad matte planes. The original warning mark and triangular silhouette are preserved; no skull, lightning bolt or new signal is introduced.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e2fbd0fb-d842-4826-bbee-3c9591135f2c.png",
+  "immutableRaw": "raw-source-v1.png",
+  "sourceMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-hud/c02-hud-danger/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live HUD integration is claimed."
+}

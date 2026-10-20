@@ -22,6 +22,6 @@ Original atlas 06 row 2 contains brass nut, steel bolt, stones, gold impact and 
 
 ## Verification
 
-Actual full-source black/white composites and colored overview were inspected. Native 32/64 cells were inspected on black, white, bright stone, green ground, dark earth and checker. Full 1–2–3–4 and terminal 3–4–1–2 comparisons were inspected. The terminal comparison is not a runtime loop. Final parent static review is pending.
+Actual full-source black/white composites and colored overview were inspected. Native 32/64 cells were inspected on black, white, bright stone, green ground, dark earth and checker. Full 1–2–3–4 and terminal 3–4–1–2 comparisons were inspected. The terminal comparison is not a runtime loop. Parent accepted the full quartet and terminal comparison as static phase review on 2026-10-20; actual playback remains gated.
 
 Source perimeter maxima are 0, 0, 0, 1 with clean composites; all exports have two logical pixels of alpha0 border. All 28 APNGs and 112 decoded frames match expected exports. Four equal 1/12-second frames and one play are encoded in 14 canonical previews; 14 slow repeating diagnostics are separate. Actual playback remains unobserved.

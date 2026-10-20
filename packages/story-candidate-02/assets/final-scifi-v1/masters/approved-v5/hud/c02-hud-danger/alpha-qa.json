@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-hud-danger",
+  "source": "master.png",
+  "sourceCanvasSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 939942,
+  "partialAlphaPixels": 631780,
+  "opaquePixels": 794,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    88,
+    159,
+    1154,
+    1098
+  ],
+  "nearOpaquePixelCountGE240": 622502,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 279,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "caa40605041854fee29ce9cf6fc8c220d97b523941d26473c0d7c8545492f0bb",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the amber triangle and separated exclamation bar/dot remain readable on white/black/olive. No additional text or warning symbol is needed. Full-size source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullSourceWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One upright amber warning triangle retains a dark outer/inset rim and one exclamation mark composed of a thick dark bar plus a separate round dot."
+}

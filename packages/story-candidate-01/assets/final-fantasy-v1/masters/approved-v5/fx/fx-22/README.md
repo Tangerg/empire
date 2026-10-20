@@ -6,6 +6,6 @@ Integration: integration-catalog.json is the strict payload. Common 1254-square 
 
 Contract: four equal 12 fps frames, nonloop, one play, 1/3 second. No current authored FX22 consumer or scene lifecycle. The bolt articulates; the nut and four ground stones retain their identity with the documented 0.558–0.625 logical-pixel full-sequence registration spread.
 
-Review: final-review.json and qa/COHORT-REVIEW.md contain the source/phase caveats. Motion proof, source-edge proof and APNG timing proof are linked there. Final parent static review is pending; actual playback is unobserved.
+Review: final-review.json and qa/COHORT-REVIEW.md contain the source/phase caveats. Motion proof, source-edge proof and APNG timing proof are linked there. Parent accepted the full quartet and terminal comparison as static phase review on 2026-10-20; actual playback is unobserved.
 
 Complete file hashes: deliverable-manifest.json excludes itself. No repository or Git writes were made by this task.

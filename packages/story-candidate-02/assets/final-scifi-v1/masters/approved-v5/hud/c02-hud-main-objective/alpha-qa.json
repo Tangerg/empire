@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-hud-main-objective",
+  "source": "master.png",
+  "sourceCanvasSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 981783,
+  "partialAlphaPixels": 589666,
+  "opaquePixels": 1067,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    71,
+    89,
+    1182,
+    1163
+  ],
+  "nearOpaquePixelCountGE240": 577860,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 244,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "3ef29d1a647fe0c2bc965a9df1b76c75cf7f72fc2209c155794888d97b041b6a",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the five-point star silhouette and gold center remain clear on white/black/olive. The star stays filled and distinct from the open side-objective diamond. Full-size source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullSourceWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One upright filled five-point amber/gold star retains a thick charcoal outer contour, gold inset rim and broad facets meeting at the center."
+}

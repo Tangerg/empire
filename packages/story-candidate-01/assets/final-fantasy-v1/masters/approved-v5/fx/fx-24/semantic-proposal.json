@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "topicId": "C01-FX-24",
+  "label": "据点占领",
+  "status": "Semantic proposal awaiting parent approval; no generation called",
+  "phaseOrder": [
+    "neutral-standard",
+    "capture-spiral",
+    "blue-standard-peak",
+    "settled-standard"
+  ],
+  "phaseObservations": [
+    "A pale cream/gray swallowtail flag on a gold-brown pole and circular stone plinth, surrounded by a segmented pale ring.",
+    "The same pale flag and fixed pole/plinth, blue ring, rising cyan/cream curved energy ribbons and small blue chips.",
+    "The flag is now muted blue. Curved energy and chips are strongest while pole/plinth remain planted.",
+    "Blue flag remains, segmented blue ring persists, most spiral energy is gone and a few tiny particles remain."
+  ],
+  "fixedLandmark": "Gold-brown vertical pole, gold finial and circular stone plinth remain fixed. Flag keeps swallowtail identity while changing from pale to muted blue. Segmented elliptical ground ring stays registered; rising energy varies.",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+    "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+    "atlasSize": [
+      1536,
+      1024
+    ],
+    "row1Based": 4,
+    "rawRowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/original-row.png",
+    "matchedCompleteRow": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-24/reference/matched-complete-row.png",
+    "matchedCropRectangle": [
+      0,
+      738,
+      1536,
+      1024
+    ],
+    "cropReason": "The legacy nominal row starts at y768 and clips the gold finials. The unedited full board shows the complete finials from around y754. Reference-only crop y738 retains them; this crop is not used for output fitting.",
+    "backingRisk": "Original gray/white and colored vignette is unwanted, outer-edge alpha max252; regenerate shapes on true alpha."
+  },
+  "existingManifest": {
+    "assetId": "C01-FFV1-FX-24",
+    "topicId": "C01-FX-24",
+    "label": "据点占领",
+    "category": "fx",
+    "png": "runtime/fx/fx-24.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumer": {
+    "topicId": "C01-FX-24",
+    "status": "catalog-only-no-current-literal-consumer-found",
+    "literalSearch": {
+      "command": [
+        "rg",
+        "-n",
+        "C01-FX-24|C01-FFV1-FX-24|fx-24\\.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/apps",
+        "-g",
+        "*.ts",
+        "-g",
+        "*.tsx",
+        "-g",
+        "*.json",
+        "-g",
+        "!manifest*.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "actualCapturePresentation": "The capture presenter only calls board.syncTerrain when event.captured is true. It does not create an effect. syncTerrain redraws ownership-dependent terrain/scene; candidate terrain/structure painters choose captured building frames and owner colors independently.",
+    "abilityIcon": "capture is bound to C01-SKILL-01, not this effect.",
+    "genericEffectAdapterIsNotConsumer": true,
+    "specificLifetimeMs": null,
+    "preserveGameplayOwnership": true,
+    "codeEvidence": [
+      {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/event-presentation.ts",
+        "sha256": "2b906c70b5fdef28ea6368f3c236ddfde37ebd88e094f36a1671083cf2457f3b",
+        "lineRange": [
+          294,
+          306
+        ],
+        "text": "294:     },\n295:     describe: ({ unitName, playerName, state }, event) =>\n296:       `${playerName(state.currentPlayer)} 征募了 ${unitName(event.unit)}`,\n297:   }))\n298:   .register(presenter({\n299:     type: 'capture',\n300:     animate: async (stage, event) => {\n301:       if (event.captured) stage.board.syncTerrain();\n302:     },\n303:     describe: ({ playerName }, event) =>\n304:       event.captured ? `${playerName(event.player)} 占领了 (${event.at.x}, ${event.at.y})` : '占领进度提升',\n305:   }))\n306:   .register(presenter({"
+      },
+      {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/ui/board.ts",
+        "sha256": "7211c79358e4f6d1422fa8ef84df5b2b2706d89bb05563ff47b054c3b5901ad1",
+        "lineRange": [
+          381,
+          400
+        ],
+        "text": "381:   /** Terrain only changes when ownership does, so it is cheap to diff by hash. */\n382:   syncTerrain(): void {\n383:     const s = this.state;\n384:     const signature = battlefieldRenderKey(s.map);\n385:     if (signature === this.mapSignature) return;\n386:     this.mapSignature = signature;\n387:     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;\n388:     this.surface.setLayer('terrain', terrainLayerPieces(\n389:       { art: this.art, layout: this.layout, content: this.content }, s.map, colorOf, s.levelId,\n390:     ));\n391:     // An authored scene is one painting, not a picture per cell, so it crosses\n392:     // the seam as the whole field. Which is why the layer it lands in is the\n393:     // second-largest on a big board and the one still worth breaking up.\n394:     const sceneLayers = this.presentation.sceneLayers({\n395:       content: this.content,\n396:       levelId: s.levelId,\n397:       map: s.map,\n398:       viewport: this.viewport,\n399:     });\n400:     this.surface.setLayer('ground', sceneLayers.ground);"
+      },
+      {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+        "sha256": "d4b44da3360753e77511ad6f7aa9d2e0fff5f368c40e803d9a4411346022edc8",
+        "lineRange": [
+          175,
+          201
+        ],
+        "text": "175:  */\n176: export function candidate01TerrainPicture(id: TerrainId, ctx: TileContext): BoardImage {\n177:   const binding = CANDIDATE_01_MAP_STRUCTURE_ART[id];\n178:   if (!binding) return { markup: '' };\n179:   const record = resolveCandidate01MapStructureArt(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, binding);\n180:   const frame = structureFrame(record, ctx.ownerColor !== undefined ? 'captured' : 'normal');\n181:   return { markup: structureAssetMarkup(record, frame, ctx.ownerColor), foot: CELL_FOOT };\n182: }\n183: \n184: /** Markup-only previews project the same picture that supplies scene depth. */\n185: export const candidate01TerrainMarkup = (id: TerrainId, ctx: TileContext): string =>\n186:   candidate01TerrainPicture(id, ctx).markup;\n187: \n188: /** Render a destructible battle structure without leaking campaign art into the engine model. */\n189: export function candidate01StructureMarkup(\n190:   state: StructureState,\n191:   def: StructureDef,\n192:   ownerColor?: string,\n193: ): string | null {\n194:   const topic = CANDIDATE_01_STRUCTURE_ART[state.type];\n195:   if (!topic) return null;\n196:   const record = candidate01Asset(topic);\n197:   const visualState = state.hp <= def.maxHp * 0.5 || state.disabled ? 'damaged' : ownerColor ? 'captured' : 'normal';\n198:   const frame = structureFrame(record, visualState);\n199:   const ratio = gaugeRatio(state.hp, def.maxHp);\n200:   return `${structureAssetMarkup(record, frame, ownerColor)}${tileGaugeBar(ratio)}`;\n201: }"
+      },
+      {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+        "lineRange": [
+          143,
+          150
+        ],
+        "text": "143: \n144: export const CANDIDATE_01_ABILITY_ART: Readonly<Record<string, string>> = {\n145:   capture: 'C01-SKILL-01',\n146:   heal: 'C01-SKILL-07',\n147:   attack: 'C01-SKILL-04',\n148:   'c01.gray-rally': 'C01-SKILL-13',\n149:   'c01.hold-the-line': 'C01-SKILL-02',\n150:   'c01.name-the-dead': 'C01-SKILL-47',"
+      }
+    ]
+  },
+  "generation": {
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "independentlyAuthoredDrawings": 4,
+    "commonPlacement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "outputs": [
+      32,
+      64
+    ],
+    "sourcePerimeterAlphaMaximum": 1,
+    "alpha1ConditionalOnCleanActualBlackWhiteComposites": true,
+    "nativeLogicalPaddingPixels": 2,
+    "nativePaddingAlpha": 0,
+    "noPerPhaseFitShiftScaleFade": true,
+    "noProgrammaticArtOrAlphaCleanup": true,
+    "rawMasterByteIdentical": true,
+    "firstSource": "neutral-standard to define complete finial, pole, stone plinth, ring and flag baseline"
+  },
+  "playback": {
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "frameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "holdOrRemovalLifetime": null,
+    "browserObserved": false
+  },
+  "boundaries": [
+    "Preserve original blue flag in terminal art; do not invent runtime team tinting or ownership logic.",
+    "Do not copy clipped original finial or broad vignette.",
+    "No added 420 ms or500 ms lifetime from unrelated consumers."
+  ]
+}
