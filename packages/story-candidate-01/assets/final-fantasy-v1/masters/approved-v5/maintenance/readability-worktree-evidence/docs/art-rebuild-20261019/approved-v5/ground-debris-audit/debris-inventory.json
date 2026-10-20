@@ -1,0 +1,2672 @@
+{
+  "captureCheckpoint": "36555c4",
+  "readOnlyMainCheckpoint": "14b043f",
+  "sourcesUnchangedAtMainCheckpoint": true,
+  "notes": [
+    "Current main only appends ground edge-decoration after the inspected ground consumer; existing decal selection/positions unchanged.",
+    "Alpha bounds include any legacy cross-cell fragments; not clean subject bounds.",
+    "All c01-02 procedural ground decals use opacity 0.72.",
+    "No art replaced, removed, hidden, resized, or gameplay mutated."
+  ],
+  "sources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png": "ec62ec03545fadca86f8c67a265633a59496cd981a92e7572cce472d54f016fd",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/decals-small-6x4.png": "a43372339938f21460a35bc54460910dc32e58ae9e3513f9538ddd738b139fe2",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small.png": "5de4daacaca825b3a9c0b51c7afbf7fafe04aececcd0b0459d9d39daa0731499",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68"
+  },
+  "priority": [
+    {
+      "priority": 1,
+      "id": "stone-cluster-a",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 3,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        384,
+        0,
+        512,
+        128
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        768,
+        0,
+        1024,
+        256
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        6.0,
+        6.5,
+        59.5,
+        60.0
+      ],
+      "c01-02Count": 11,
+      "c01-01Count": 8,
+      "c01-02Scales": [
+        0.56,
+        0.58,
+        0.6
+      ],
+      "c01-02WindowSizes": [
+        35.84,
+        37.12,
+        38.4
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.56,
+          "size": [
+            29.96,
+            29.96
+          ]
+        },
+        {
+          "scale": 0.58,
+          "size": [
+            31.03,
+            31.03
+          ]
+        },
+        {
+          "scale": 0.6,
+          "size": [
+            32.1,
+            32.1
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:173",
+        "scale": 0.56,
+        "worldFoot": [
+          304.0,
+          256.0
+        ],
+        "screenFoot": [
+          378.0,
+          318.0
+        ]
+      },
+      "exampleSceneCrop": [
+        342,
+        268,
+        414,
+        332
+      ]
+    },
+    {
+      "priority": 2,
+      "id": "stone-cluster-b",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 4,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        512,
+        0,
+        640,
+        128
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        1024,
+        0,
+        1280,
+        256
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        4.5,
+        29.0,
+        59.5,
+        60.0
+      ],
+      "c01-02Count": 8,
+      "c01-01Count": 7,
+      "c01-02Scales": [
+        0.5,
+        0.58
+      ],
+      "c01-02WindowSizes": [
+        32.0,
+        37.12
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.5,
+          "size": [
+            27.5,
+            15.5
+          ]
+        },
+        {
+          "scale": 0.58,
+          "size": [
+            31.9,
+            17.98
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:177",
+        "scale": 0.58,
+        "worldFoot": [
+          272.0,
+          288.0
+        ],
+        "screenFoot": [
+          346.0,
+          350.0
+        ]
+      },
+      "exampleSceneCrop": [
+        310,
+        300,
+        382,
+        364
+      ]
+    },
+    {
+      "priority": 3,
+      "id": "mud-patch",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 6,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        0,
+        128,
+        128,
+        256
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        0,
+        256,
+        256,
+        512
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        9.5,
+        4.0,
+        53.5,
+        60.0
+      ],
+      "c01-02Count": 8,
+      "c01-01Count": 4,
+      "c01-02Scales": [
+        0.56,
+        0.58
+      ],
+      "c01-02WindowSizes": [
+        35.84,
+        37.12
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.56,
+          "size": [
+            24.64,
+            31.36
+          ]
+        },
+        {
+          "scale": 0.58,
+          "size": [
+            25.52,
+            32.48
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:132",
+        "scale": 0.56,
+        "worldFoot": [
+          400.0,
+          96.0
+        ],
+        "screenFoot": [
+          474.0,
+          158.0
+        ]
+      },
+      "exampleSceneCrop": [
+        438,
+        108,
+        510,
+        172
+      ]
+    },
+    {
+      "priority": 4,
+      "id": "exposed-roots",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 13,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        128,
+        256,
+        256,
+        384
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        256,
+        512,
+        512,
+        768
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        10.0,
+        4.0,
+        53.0,
+        60.0
+      ],
+      "c01-02Count": 11,
+      "c01-01Count": 5,
+      "c01-02Scales": [
+        0.56,
+        0.58
+      ],
+      "c01-02WindowSizes": [
+        35.84,
+        37.12
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.56,
+          "size": [
+            24.08,
+            31.36
+          ]
+        },
+        {
+          "scale": 0.58,
+          "size": [
+            24.94,
+            32.48
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:179",
+        "scale": 0.56,
+        "worldFoot": [
+          400.0,
+          288.0
+        ],
+        "screenFoot": [
+          474.0,
+          350.0
+        ]
+      },
+      "exampleSceneCrop": [
+        438,
+        300,
+        510,
+        364
+      ]
+    },
+    {
+      "priority": 5,
+      "id": "grass-tuft-a",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 0,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        4.5,
+        24.0,
+        59.5,
+        59.5
+      ],
+      "c01-02Count": 13,
+      "c01-01Count": 10,
+      "c01-02Scales": [
+        0.58
+      ],
+      "c01-02WindowSizes": [
+        37.12
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.58,
+          "size": [
+            31.9,
+            20.59
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:131",
+        "scale": 0.58,
+        "worldFoot": [
+          272.0,
+          96.0
+        ],
+        "screenFoot": [
+          346.0,
+          158.0
+        ]
+      },
+      "exampleSceneCrop": [
+        310,
+        108,
+        382,
+        172
+      ]
+    },
+    {
+      "priority": 6,
+      "id": "grass-tuft-b",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 1,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        128,
+        0,
+        256,
+        128
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        256,
+        0,
+        512,
+        256
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        4.5,
+        20.5,
+        60.0,
+        60.0
+      ],
+      "c01-02Count": 5,
+      "c01-01Count": 7,
+      "c01-02Scales": [
+        0.58
+      ],
+      "c01-02WindowSizes": [
+        37.12
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.58,
+          "size": [
+            32.19,
+            22.91
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:145",
+        "scale": 0.58,
+        "worldFoot": [
+          560.0,
+          128.0
+        ],
+        "screenFoot": [
+          634.0,
+          190.0
+        ]
+      },
+      "exampleSceneCrop": [
+        598,
+        140,
+        670,
+        204
+      ]
+    },
+    {
+      "priority": 7,
+      "id": "grass-tuft-c",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 2,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        256,
+        0,
+        384,
+        128
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        512,
+        0,
+        768,
+        256
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        5.5,
+        4.0,
+        57.5,
+        40.0
+      ],
+      "c01-02Count": 9,
+      "c01-01Count": 9,
+      "c01-02Scales": [
+        0.56,
+        0.58,
+        0.6
+      ],
+      "c01-02WindowSizes": [
+        35.84,
+        37.12,
+        38.4
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.56,
+          "size": [
+            29.12,
+            20.16
+          ]
+        },
+        {
+          "scale": 0.58,
+          "size": [
+            30.16,
+            20.88
+          ]
+        },
+        {
+          "scale": 0.6,
+          "size": [
+            31.2,
+            21.6
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:164",
+        "scale": 0.56,
+        "worldFoot": [
+          304.0,
+          224.0
+        ],
+        "screenFoot": [
+          378.0,
+          286.0
+        ]
+      },
+      "exampleSceneCrop": [
+        342,
+        236,
+        414,
+        300
+      ]
+    },
+    {
+      "priority": 8,
+      "id": "fallen-leaves",
+      "atlas": "decals-small",
+      "cellIndexZeroBased": 11,
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png",
+      "runtime2xCrop": [
+        640,
+        128,
+        768,
+        256
+      ],
+      "masterPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+      "masterCrop": [
+        1280,
+        256,
+        1536,
+        512
+      ],
+      "runtimeLogicalCell": [
+        64,
+        64
+      ],
+      "logicalAlpha128Bounds": [
+        9.0,
+        4.0,
+        54.0,
+        60.0
+      ],
+      "c01-02Count": 7,
+      "c01-01Count": 8,
+      "c01-02Scales": [
+        0.58
+      ],
+      "c01-02WindowSizes": [
+        37.12
+      ],
+      "c01-02Alpha128Sizes": [
+        {
+          "scale": 0.58,
+          "size": [
+            26.1,
+            32.48
+          ]
+        }
+      ],
+      "example": {
+        "sourceId": "ground:172",
+        "scale": 0.58,
+        "worldFoot": [
+          240.0,
+          256.0
+        ],
+        "screenFoot": [
+          314.0,
+          318.0
+        ]
+      },
+      "exampleSceneCrop": [
+        278,
+        268,
+        350,
+        332
+      ]
+    }
+  ],
+  "allActualDecalPlacements": {
+    "c01-02": {
+      "stone-cluster-a": [
+        {
+          "sourceId": "ground:116",
+          "scale": 0.58,
+          "worldFoot": [
+            176.0,
+            32.0
+          ],
+          "screenFoot": [
+            250.0,
+            94.0
+          ]
+        },
+        {
+          "sourceId": "ground:126",
+          "scale": 0.6,
+          "worldFoot": [
+            464.0,
+            64.0
+          ],
+          "screenFoot": [
+            538.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:137",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            96.0
+          ],
+          "screenFoot": [
+            730.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:144",
+          "scale": 0.58,
+          "worldFoot": [
+            464.0,
+            128.0
+          ],
+          "screenFoot": [
+            538.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:173",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            256.0
+          ],
+          "screenFoot": [
+            378.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:178",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            288.0
+          ],
+          "screenFoot": [
+            378.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:184",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            320.0
+          ],
+          "screenFoot": [
+            378.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:188",
+          "scale": 0.6,
+          "worldFoot": [
+            144.0,
+            352.0
+          ],
+          "screenFoot": [
+            218.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:196",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            352.0
+          ],
+          "screenFoot": [
+            730.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:199",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            384.0
+          ],
+          "screenFoot": [
+            570.0,
+            446.0
+          ]
+        },
+        {
+          "sourceId": "ground:209",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            448.0
+          ],
+          "screenFoot": [
+            378.0,
+            510.0
+          ]
+        }
+      ],
+      "mud-patch": [
+        {
+          "sourceId": "ground:117",
+          "scale": 0.58,
+          "worldFoot": [
+            272.0,
+            32.0
+          ],
+          "screenFoot": [
+            346.0,
+            94.0
+          ]
+        },
+        {
+          "sourceId": "ground:119",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            32.0
+          ],
+          "screenFoot": [
+            634.0,
+            94.0
+          ]
+        },
+        {
+          "sourceId": "ground:132",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            96.0
+          ],
+          "screenFoot": [
+            474.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:142",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            128.0
+          ],
+          "screenFoot": [
+            378.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:161",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            192.0
+          ],
+          "screenFoot": [
+            762.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:176",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            288.0
+          ],
+          "screenFoot": [
+            314.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:191",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            352.0
+          ],
+          "screenFoot": [
+            474.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:203",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            416.0
+          ],
+          "screenFoot": [
+            378.0,
+            478.0
+          ]
+        }
+      ],
+      "exposed-roots": [
+        {
+          "sourceId": "ground:118",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            32.0
+          ],
+          "screenFoot": [
+            378.0,
+            94.0
+          ]
+        },
+        {
+          "sourceId": "ground:125",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            64.0
+          ],
+          "screenFoot": [
+            474.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:140",
+          "scale": 0.58,
+          "worldFoot": [
+            176.0,
+            128.0
+          ],
+          "screenFoot": [
+            250.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:141",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            128.0
+          ],
+          "screenFoot": [
+            314.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:166",
+          "scale": 0.58,
+          "worldFoot": [
+            592.0,
+            224.0
+          ],
+          "screenFoot": [
+            666.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:179",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            288.0
+          ],
+          "screenFoot": [
+            474.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:183",
+          "scale": 0.58,
+          "worldFoot": [
+            176.0,
+            320.0
+          ],
+          "screenFoot": [
+            250.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:189",
+          "scale": 0.58,
+          "worldFoot": [
+            208.0,
+            352.0
+          ],
+          "screenFoot": [
+            282.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:192",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            352.0
+          ],
+          "screenFoot": [
+            506.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:198",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            384.0
+          ],
+          "screenFoot": [
+            474.0,
+            446.0
+          ]
+        },
+        {
+          "sourceId": "ground:211",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            448.0
+          ],
+          "screenFoot": [
+            506.0,
+            510.0
+          ]
+        }
+      ],
+      "grass-tuft-a": [
+        {
+          "sourceId": "ground:121",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            64.0
+          ],
+          "screenFoot": [
+            186.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:122",
+          "scale": 0.58,
+          "worldFoot": [
+            208.0,
+            64.0
+          ],
+          "screenFoot": [
+            282.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:127",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            64.0
+          ],
+          "screenFoot": [
+            570.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:129",
+          "scale": 0.58,
+          "worldFoot": [
+            16.0,
+            96.0
+          ],
+          "screenFoot": [
+            90.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:131",
+          "scale": 0.58,
+          "worldFoot": [
+            272.0,
+            96.0
+          ],
+          "screenFoot": [
+            346.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:134",
+          "scale": 0.58,
+          "worldFoot": [
+            464.0,
+            96.0
+          ],
+          "screenFoot": [
+            538.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:146",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            128.0
+          ],
+          "screenFoot": [
+            698.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:147",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            128.0
+          ],
+          "screenFoot": [
+            762.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:149",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            160.0
+          ],
+          "screenFoot": [
+            314.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:160",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            192.0
+          ],
+          "screenFoot": [
+            730.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:185",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            320.0
+          ],
+          "screenFoot": [
+            634.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:186",
+          "scale": 0.58,
+          "worldFoot": [
+            16.0,
+            352.0
+          ],
+          "screenFoot": [
+            90.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:194",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            352.0
+          ],
+          "screenFoot": [
+            634.0,
+            414.0
+          ]
+        }
+      ],
+      "stone-cluster-b": [
+        {
+          "sourceId": "ground:123",
+          "scale": 0.58,
+          "worldFoot": [
+            272.0,
+            64.0
+          ],
+          "screenFoot": [
+            346.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:124",
+          "scale": 0.5,
+          "worldFoot": [
+            336.0,
+            64.0
+          ],
+          "screenFoot": [
+            410.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:157",
+          "scale": 0.5,
+          "worldFoot": [
+            368.0,
+            192.0
+          ],
+          "screenFoot": [
+            442.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:177",
+          "scale": 0.58,
+          "worldFoot": [
+            272.0,
+            288.0
+          ],
+          "screenFoot": [
+            346.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:180",
+          "scale": 0.58,
+          "worldFoot": [
+            464.0,
+            288.0
+          ],
+          "screenFoot": [
+            538.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:190",
+          "scale": 0.5,
+          "worldFoot": [
+            336.0,
+            352.0
+          ],
+          "screenFoot": [
+            410.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:201",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            384.0
+          ],
+          "screenFoot": [
+            698.0,
+            446.0
+          ]
+        },
+        {
+          "sourceId": "ground:207",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            416.0
+          ],
+          "screenFoot": [
+            762.0,
+            478.0
+          ]
+        }
+      ],
+      "grass-tuft-b": [
+        {
+          "sourceId": "ground:130",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            96.0
+          ],
+          "screenFoot": [
+            186.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:133",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            96.0
+          ],
+          "screenFoot": [
+            506.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:136",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            96.0
+          ],
+          "screenFoot": [
+            634.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:145",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            128.0
+          ],
+          "screenFoot": [
+            634.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:208",
+          "scale": 0.58,
+          "worldFoot": [
+            16.0,
+            448.0
+          ],
+          "screenFoot": [
+            90.0,
+            510.0
+          ]
+        }
+      ],
+      "fallen-leaves": [
+        {
+          "sourceId": "ground:135",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            96.0
+          ],
+          "screenFoot": [
+            570.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:165",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            224.0
+          ],
+          "screenFoot": [
+            570.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:172",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            256.0
+          ],
+          "screenFoot": [
+            314.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:174",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            256.0
+          ],
+          "screenFoot": [
+            634.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:182",
+          "scale": 0.58,
+          "worldFoot": [
+            144.0,
+            320.0
+          ],
+          "screenFoot": [
+            218.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:187",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            352.0
+          ],
+          "screenFoot": [
+            186.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:212",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            448.0
+          ],
+          "screenFoot": [
+            730.0,
+            510.0
+          ]
+        }
+      ],
+      "mossy-boulder": [
+        {
+          "sourceId": "ground:138",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            96.0
+          ],
+          "screenFoot": [
+            762.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:155",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            192.0
+          ],
+          "screenFoot": [
+            314.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:156",
+          "scale": 0.58,
+          "worldFoot": [
+            272.0,
+            192.0
+          ],
+          "screenFoot": [
+            346.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:168",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            224.0
+          ],
+          "screenFoot": [
+            730.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:171",
+          "scale": 0.58,
+          "worldFoot": [
+            144.0,
+            256.0
+          ],
+          "screenFoot": [
+            218.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:204",
+          "scale": 0.5,
+          "worldFoot": [
+            336.0,
+            416.0
+          ],
+          "screenFoot": [
+            410.0,
+            478.0
+          ]
+        },
+        {
+          "sourceId": "ground:205",
+          "scale": 0.5,
+          "worldFoot": [
+            368.0,
+            416.0
+          ],
+          "screenFoot": [
+            442.0,
+            478.0
+          ]
+        }
+      ],
+      "grass-tuft-c": [
+        {
+          "sourceId": "ground:143",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            128.0
+          ],
+          "screenFoot": [
+            506.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:150",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            160.0
+          ],
+          "screenFoot": [
+            378.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:153",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            192.0
+          ],
+          "screenFoot": [
+            186.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:158",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            192.0
+          ],
+          "screenFoot": [
+            474.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:163",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            224.0
+          ],
+          "screenFoot": [
+            314.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:164",
+          "scale": 0.56,
+          "worldFoot": [
+            304.0,
+            224.0
+          ],
+          "screenFoot": [
+            378.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:169",
+          "scale": 0.6,
+          "worldFoot": [
+            48.0,
+            256.0
+          ],
+          "screenFoot": [
+            122.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:193",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            352.0
+          ],
+          "screenFoot": [
+            570.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:210",
+          "scale": 0.56,
+          "worldFoot": [
+            400.0,
+            448.0
+          ],
+          "screenFoot": [
+            474.0,
+            510.0
+          ]
+        }
+      ],
+      "cart-ruts": [
+        {
+          "sourceId": "ground:148",
+          "scale": 0.55,
+          "worldFoot": [
+            144.0,
+            160.0
+          ],
+          "screenFoot": [
+            218.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:152",
+          "scale": 0.55,
+          "worldFoot": [
+            624.0,
+            160.0
+          ],
+          "screenFoot": [
+            698.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:181",
+          "scale": 0.55,
+          "worldFoot": [
+            560.0,
+            288.0
+          ],
+          "screenFoot": [
+            634.0,
+            350.0
+          ]
+        }
+      ],
+      "bootprints": [
+        {
+          "sourceId": "ground:151",
+          "scale": 0.55,
+          "worldFoot": [
+            592.0,
+            160.0
+          ],
+          "screenFoot": [
+            666.0,
+            222.0
+          ]
+        }
+      ],
+      "animal-tracks": [
+        {
+          "sourceId": "ground:162",
+          "scale": 0.58,
+          "worldFoot": [
+            144.0,
+            224.0
+          ],
+          "screenFoot": [
+            218.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:167",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            224.0
+          ],
+          "screenFoot": [
+            698.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:170",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            256.0
+          ],
+          "screenFoot": [
+            186.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:175",
+          "scale": 0.58,
+          "worldFoot": [
+            208.0,
+            288.0
+          ],
+          "screenFoot": [
+            282.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:195",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            352.0
+          ],
+          "screenFoot": [
+            698.0,
+            414.0
+          ]
+        }
+      ]
+    },
+    "c01-01": {
+      "grass-tuft-a": [
+        {
+          "sourceId": "ground:319",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            64.0
+          ],
+          "screenFoot": [
+            186.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:323",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            64.0
+          ],
+          "screenFoot": [
+            570.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:327",
+          "scale": 0.58,
+          "worldFoot": [
+            400.0,
+            96.0
+          ],
+          "screenFoot": [
+            474.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:338",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            128.0
+          ],
+          "screenFoot": [
+            698.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:339",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            128.0
+          ],
+          "screenFoot": [
+            762.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:347",
+          "scale": 0.58,
+          "worldFoot": [
+            368.0,
+            192.0
+          ],
+          "screenFoot": [
+            442.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:349",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            192.0
+          ],
+          "screenFoot": [
+            730.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:351",
+          "scale": 0.58,
+          "worldFoot": [
+            752.0,
+            192.0
+          ],
+          "screenFoot": [
+            826.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:373",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            320.0
+          ],
+          "screenFoot": [
+            634.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:377",
+          "scale": 0.58,
+          "worldFoot": [
+            144.0,
+            352.0
+          ],
+          "screenFoot": [
+            218.0,
+            414.0
+          ]
+        }
+      ],
+      "stone-cluster-b": [
+        {
+          "sourceId": "ground:320",
+          "scale": 0.58,
+          "worldFoot": [
+            272.0,
+            64.0
+          ],
+          "screenFoot": [
+            346.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:325",
+          "scale": 0.58,
+          "worldFoot": [
+            720.0,
+            64.0
+          ],
+          "screenFoot": [
+            794.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:344",
+          "scale": 0.58,
+          "worldFoot": [
+            752.0,
+            160.0
+          ],
+          "screenFoot": [
+            826.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:375",
+          "scale": 0.58,
+          "worldFoot": [
+            720.0,
+            320.0
+          ],
+          "screenFoot": [
+            794.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:389",
+          "scale": 0.58,
+          "worldFoot": [
+            80.0,
+            448.0
+          ],
+          "screenFoot": [
+            154.0,
+            510.0
+          ]
+        },
+        {
+          "sourceId": "ground:398",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            512.0
+          ],
+          "screenFoot": [
+            730.0,
+            574.0
+          ]
+        },
+        {
+          "sourceId": "ground:406",
+          "scale": 0.72,
+          "worldFoot": [
+            198.4,
+            227.2
+          ],
+          "screenFoot": [
+            272.4,
+            289.2
+          ]
+        }
+      ],
+      "grass-tuft-c": [
+        {
+          "sourceId": "ground:321",
+          "scale": 0.58,
+          "worldFoot": [
+            336.0,
+            64.0
+          ],
+          "screenFoot": [
+            410.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:335",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            128.0
+          ],
+          "screenFoot": [
+            506.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:342",
+          "scale": 0.6,
+          "worldFoot": [
+            592.0,
+            160.0
+          ],
+          "screenFoot": [
+            666.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:345",
+          "scale": 0.58,
+          "worldFoot": [
+            80.0,
+            192.0
+          ],
+          "screenFoot": [
+            154.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:346",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            192.0
+          ],
+          "screenFoot": [
+            186.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:382",
+          "scale": 0.58,
+          "worldFoot": [
+            400.0,
+            384.0
+          ],
+          "screenFoot": [
+            474.0,
+            446.0
+          ]
+        },
+        {
+          "sourceId": "ground:387",
+          "scale": 0.6,
+          "worldFoot": [
+            368.0,
+            416.0
+          ],
+          "screenFoot": [
+            442.0,
+            478.0
+          ]
+        },
+        {
+          "sourceId": "ground:388",
+          "scale": 0.6,
+          "worldFoot": [
+            688.0,
+            416.0
+          ],
+          "screenFoot": [
+            762.0,
+            478.0
+          ]
+        },
+        {
+          "sourceId": "ground:395",
+          "scale": 0.58,
+          "worldFoot": [
+            336.0,
+            512.0
+          ],
+          "screenFoot": [
+            410.0,
+            574.0
+          ]
+        }
+      ],
+      "fallen-leaves": [
+        {
+          "sourceId": "ground:322",
+          "scale": 0.58,
+          "worldFoot": [
+            400.0,
+            64.0
+          ],
+          "screenFoot": [
+            474.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:329",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            96.0
+          ],
+          "screenFoot": [
+            570.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:361",
+          "scale": 0.58,
+          "worldFoot": [
+            240.0,
+            256.0
+          ],
+          "screenFoot": [
+            314.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:362",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            256.0
+          ],
+          "screenFoot": [
+            634.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:370",
+          "scale": 0.58,
+          "worldFoot": [
+            144.0,
+            320.0
+          ],
+          "screenFoot": [
+            218.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:374",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            320.0
+          ],
+          "screenFoot": [
+            698.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:396",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            512.0
+          ],
+          "screenFoot": [
+            506.0,
+            574.0
+          ]
+        },
+        {
+          "sourceId": "ground:407",
+          "scale": 0.62,
+          "worldFoot": [
+            518.4,
+            236.8
+          ],
+          "screenFoot": [
+            592.4,
+            298.8
+          ]
+        }
+      ],
+      "mud-patch": [
+        {
+          "sourceId": "ground:324",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            64.0
+          ],
+          "screenFoot": [
+            730.0,
+            126.0
+          ]
+        },
+        {
+          "sourceId": "ground:350",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            192.0
+          ],
+          "screenFoot": [
+            762.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:357",
+          "scale": 0.58,
+          "worldFoot": [
+            48.0,
+            256.0
+          ],
+          "screenFoot": [
+            122.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:372",
+          "scale": 0.58,
+          "worldFoot": [
+            304.0,
+            320.0
+          ],
+          "screenFoot": [
+            378.0,
+            382.0
+          ]
+        }
+      ],
+      "grass-tuft-b": [
+        {
+          "sourceId": "ground:326",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            96.0
+          ],
+          "screenFoot": [
+            186.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:328",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            96.0
+          ],
+          "screenFoot": [
+            506.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:330",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            96.0
+          ],
+          "screenFoot": [
+            634.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:337",
+          "scale": 0.58,
+          "worldFoot": [
+            560.0,
+            128.0
+          ],
+          "screenFoot": [
+            634.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:355",
+          "scale": 0.58,
+          "worldFoot": [
+            752.0,
+            224.0
+          ],
+          "screenFoot": [
+            826.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:356",
+          "scale": 0.58,
+          "worldFoot": [
+            816.0,
+            224.0
+          ],
+          "screenFoot": [
+            890.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:378",
+          "scale": 0.58,
+          "worldFoot": [
+            336.0,
+            352.0
+          ],
+          "screenFoot": [
+            410.0,
+            414.0
+          ]
+        }
+      ],
+      "stone-cluster-a": [
+        {
+          "sourceId": "ground:331",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            96.0
+          ],
+          "screenFoot": [
+            730.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:336",
+          "scale": 0.58,
+          "worldFoot": [
+            464.0,
+            128.0
+          ],
+          "screenFoot": [
+            538.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:341",
+          "scale": 0.58,
+          "worldFoot": [
+            176.0,
+            160.0
+          ],
+          "screenFoot": [
+            250.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:343",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            160.0
+          ],
+          "screenFoot": [
+            698.0,
+            222.0
+          ]
+        },
+        {
+          "sourceId": "ground:381",
+          "scale": 0.58,
+          "worldFoot": [
+            720.0,
+            352.0
+          ],
+          "screenFoot": [
+            794.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:383",
+          "scale": 0.58,
+          "worldFoot": [
+            496.0,
+            384.0
+          ],
+          "screenFoot": [
+            570.0,
+            446.0
+          ]
+        },
+        {
+          "sourceId": "ground:394",
+          "scale": 0.6,
+          "worldFoot": [
+            624.0,
+            480.0
+          ],
+          "screenFoot": [
+            698.0,
+            542.0
+          ]
+        },
+        {
+          "sourceId": "ground:397",
+          "scale": 0.58,
+          "worldFoot": [
+            592.0,
+            512.0
+          ],
+          "screenFoot": [
+            666.0,
+            574.0
+          ]
+        }
+      ],
+      "mossy-boulder": [
+        {
+          "sourceId": "ground:332",
+          "scale": 0.58,
+          "worldFoot": [
+            688.0,
+            96.0
+          ],
+          "screenFoot": [
+            762.0,
+            158.0
+          ]
+        },
+        {
+          "sourceId": "ground:348",
+          "scale": 0.58,
+          "worldFoot": [
+            400.0,
+            192.0
+          ],
+          "screenFoot": [
+            474.0,
+            254.0
+          ]
+        },
+        {
+          "sourceId": "ground:354",
+          "scale": 0.58,
+          "worldFoot": [
+            656.0,
+            224.0
+          ],
+          "screenFoot": [
+            730.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:359",
+          "scale": 0.58,
+          "worldFoot": [
+            144.0,
+            256.0
+          ],
+          "screenFoot": [
+            218.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:393",
+          "scale": 0.58,
+          "worldFoot": [
+            368.0,
+            480.0
+          ],
+          "screenFoot": [
+            442.0,
+            542.0
+          ]
+        }
+      ],
+      "bootprints": [
+        {
+          "sourceId": "ground:334",
+          "scale": 0.55,
+          "worldFoot": [
+            176.0,
+            128.0
+          ],
+          "screenFoot": [
+            250.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:363",
+          "scale": 0.55,
+          "worldFoot": [
+            208.0,
+            288.0
+          ],
+          "screenFoot": [
+            282.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:364",
+          "scale": 0.55,
+          "worldFoot": [
+            240.0,
+            288.0
+          ],
+          "screenFoot": [
+            314.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:365",
+          "scale": 0.55,
+          "worldFoot": [
+            272.0,
+            288.0
+          ],
+          "screenFoot": [
+            346.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:366",
+          "scale": 0.55,
+          "worldFoot": [
+            304.0,
+            288.0
+          ],
+          "screenFoot": [
+            378.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:384",
+          "scale": 0.55,
+          "worldFoot": [
+            784.0,
+            384.0
+          ],
+          "screenFoot": [
+            858.0,
+            446.0
+          ]
+        },
+        {
+          "sourceId": "ground:386",
+          "scale": 0.55,
+          "worldFoot": [
+            336.0,
+            416.0
+          ],
+          "screenFoot": [
+            410.0,
+            478.0
+          ]
+        },
+        {
+          "sourceId": "ground:404",
+          "scale": 0.72,
+          "worldFoot": [
+            624.0,
+            307.2
+          ],
+          "screenFoot": [
+            698.0,
+            369.2
+          ]
+        }
+      ],
+      "exposed-roots": [
+        {
+          "sourceId": "ground:340",
+          "scale": 0.58,
+          "worldFoot": [
+            816.0,
+            128.0
+          ],
+          "screenFoot": [
+            890.0,
+            190.0
+          ]
+        },
+        {
+          "sourceId": "ground:352",
+          "scale": 0.58,
+          "worldFoot": [
+            592.0,
+            224.0
+          ],
+          "screenFoot": [
+            666.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:371",
+          "scale": 0.58,
+          "worldFoot": [
+            176.0,
+            320.0
+          ],
+          "screenFoot": [
+            250.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:379",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            352.0
+          ],
+          "screenFoot": [
+            506.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:391",
+          "scale": 0.58,
+          "worldFoot": [
+            432.0,
+            448.0
+          ],
+          "screenFoot": [
+            506.0,
+            510.0
+          ]
+        }
+      ],
+      "animal-tracks": [
+        {
+          "sourceId": "ground:353",
+          "scale": 0.58,
+          "worldFoot": [
+            624.0,
+            224.0
+          ],
+          "screenFoot": [
+            698.0,
+            286.0
+          ]
+        },
+        {
+          "sourceId": "ground:358",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            256.0
+          ],
+          "screenFoot": [
+            186.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:376",
+          "scale": 0.58,
+          "worldFoot": [
+            784.0,
+            320.0
+          ],
+          "screenFoot": [
+            858.0,
+            382.0
+          ]
+        },
+        {
+          "sourceId": "ground:390",
+          "scale": 0.58,
+          "worldFoot": [
+            400.0,
+            448.0
+          ],
+          "screenFoot": [
+            474.0,
+            510.0
+          ]
+        },
+        {
+          "sourceId": "ground:392",
+          "scale": 0.58,
+          "worldFoot": [
+            112.0,
+            480.0
+          ],
+          "screenFoot": [
+            186.0,
+            542.0
+          ]
+        }
+      ],
+      "cart-ruts": [
+        {
+          "sourceId": "ground:360",
+          "scale": 0.55,
+          "worldFoot": [
+            208.0,
+            256.0
+          ],
+          "screenFoot": [
+            282.0,
+            318.0
+          ]
+        },
+        {
+          "sourceId": "ground:369",
+          "scale": 0.55,
+          "worldFoot": [
+            560.0,
+            288.0
+          ],
+          "screenFoot": [
+            634.0,
+            350.0
+          ]
+        },
+        {
+          "sourceId": "ground:380",
+          "scale": 0.55,
+          "worldFoot": [
+            560.0,
+            352.0
+          ],
+          "screenFoot": [
+            634.0,
+            414.0
+          ]
+        },
+        {
+          "sourceId": "ground:405",
+          "scale": 0.82,
+          "worldFoot": [
+            310.4,
+            310.4
+          ],
+          "screenFoot": [
+            384.4,
+            372.4
+          ]
+        }
+      ]
+    }
+  }
+}

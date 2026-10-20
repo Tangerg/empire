@@ -1,0 +1,77 @@
+{
+  "method": "Exact pixel comparison of manually inspected doorway regions in actual offline complete-scene renders; not a navigation or collision check.",
+  "rows": [
+    {
+      "factor": 1.5,
+      "region": "keep doorway and arch",
+      "screenBox": [
+        729,
+        99,
+        748,
+        125
+      ],
+      "changedPixels": 0,
+      "totalPixels": 494
+    },
+    {
+      "factor": 1.5,
+      "region": "joint granary doorway and arch",
+      "screenBox": [
+        511,
+        212,
+        542,
+        250
+      ],
+      "changedPixels": 44,
+      "totalPixels": 1178
+    },
+    {
+      "factor": 1.5,
+      "region": "joint granary doorway core",
+      "screenBox": [
+        516,
+        218,
+        530,
+        241
+      ],
+      "changedPixels": 0,
+      "totalPixels": 322
+    },
+    {
+      "factor": 1.8,
+      "region": "keep doorway and arch",
+      "screenBox": [
+        729,
+        99,
+        748,
+        125
+      ],
+      "changedPixels": 0,
+      "totalPixels": 494
+    },
+    {
+      "factor": 1.8,
+      "region": "joint granary doorway and arch",
+      "screenBox": [
+        511,
+        212,
+        542,
+        250
+      ],
+      "changedPixels": 166,
+      "totalPixels": 1178
+    },
+    {
+      "factor": 1.8,
+      "region": "joint granary doorway core",
+      "screenBox": [
+        516,
+        218,
+        530,
+        241
+      ],
+      "changedPixels": 0,
+      "totalPixels": 322
+    }
+  ]
+}
