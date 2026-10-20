@@ -1,0 +1,3 @@
+Headless actual BoardView test passes: existing c01.border-blade selects approved FX01 HD sheet, centered at an actual first-level actor cell. Frames change at 12fps, phase3 holds through419ms, and the complete effect is removed at420ms. The existing white burst and damage-number parts remain separate. State JSON is unchanged. This is a synthetic presentation call using real campaign state, not an observed combat event or browser/GPU visual acceptance.
+
+FX02/FX03 new raw phases are backed up before acceptance; FX03 burst v1 has strict source-edge alpha1 and remains rejected pending imagegen revision. No new topic counts in this backup.
