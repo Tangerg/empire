@@ -91,7 +91,10 @@ describe('battle presentation', () => {
     const geometry = (markup: string) => {
       const match = /data-runtime-raster="area-road">([\s\S]*?)<\/svg>/.exec(markup);
       if (!match) throw new Error('expected runtime area-road geometry');
-      return match[1];
+      // Coverage clips may contain paths; only mask alpha owns road connections.
+      const mask = /<mask\b[^>]*>([\s\S]*?)<\/mask>/.exec(match[1]);
+      if (!mask) throw new Error('expected runtime area-road connection mask');
+      return mask[1];
     };
     expect(original).toContain('data-runtime-raster="area-road"');
     expect(changed).toContain('data-runtime-raster="area-road"');
