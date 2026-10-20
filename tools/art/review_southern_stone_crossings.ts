@@ -46,7 +46,7 @@ for (const [index, axis] of (['horizontal', 'vertical'] as const).entries()) {
 }
 const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART,
   renderer: scene => new SvgBoardSurface(scene) }, state,
-{ onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {} });
+{ onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {}, onPan() {} });
 board.render(emptyOverlay());
 const initial = board.el.outerHTML;
 const units = () => [...board.el.querySelectorAll('.layer-units > .unit')].map(unit => unit.outerHTML).join('');

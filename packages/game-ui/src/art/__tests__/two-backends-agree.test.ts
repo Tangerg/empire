@@ -150,7 +150,7 @@ function draw(level: LevelData, renderer: BoardComposition['renderer']): BoardVi
     onTileEnter: () => {},
     onLeave: () => {},
     onSecondary: () => {},
-    onScale: () => {},
+    onScale: () => {}, onPan: () => {},
   });
   board.render(emptyOverlay());
   return board;
@@ -352,7 +352,7 @@ describe('two backends draw the same board', () => {
     const gpu = new PixiBoardSurface(scene, { textures: new InstantTextures(), painter: new IdlePainter() });
     const boards = [svg, gpu].map((surface) => new BoardView({ content: TEST_CATALOG,
       grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART, renderer: () => surface }, state,
-    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} }));
+    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} }));
     const overlay = emptyOverlay();
     overlay.selected = { x: unit.x, y: unit.y };
     overlay.hiddenUnits.add(unit.id);
@@ -381,8 +381,8 @@ describe('two backends draw the same board', () => {
     const state = engine.createState(level);
     const before = JSON.stringify(state);
     const grid = engine.rules.grids.get('square4');
-    const scene = CANDIDATE_01_ART.presentation.sceneLayers({ content: TEST_CATALOG, levelId: level.id, map: state.map,
-      viewport: createSceneViewport(grid, level.width, level.height, 32, CANDIDATE_01_ART.presentation.sceneProfile(level.id)) });
+    const viewport = createSceneViewport(grid, level.width, level.height, 32, CANDIDATE_01_ART.presentation.sceneProfile(level.id));
+    const scene = CANDIDATE_01_ART.presentation.sceneLayers({ content: TEST_CATALOG, levelId: level.id, map: state.map, viewport });
     const buildings = terrainLayerPieces({ art: CANDIDATE_01_ART, content: TEST_CATALOG, layout: squareLayout },
       state.map, (owner) => state.players.find((player) => player.id === owner)?.color);
     expect(buildings).toHaveLength(9);
@@ -394,9 +394,11 @@ describe('two backends draw the same board', () => {
     const actors = state.units.map((unit) => ({ markup: '', x: unit.x * 32, y: unit.y * 32, foot: CELL_FOOT }));
     const expected = boardScenePieces({ terrain: buildings, scenery: scene.underUnits, units: actors })
       .filter((piece) => piece.foot).map(({ x, y }) => `${x.toFixed(2)},${y.toFixed(2)}`);
-    const handlers = { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} };
-    const svg = new SvgBoardSurface({ width: 704, height: 448, originX: 0, originY: 0, shapeRendering: 'crispEdges', backdrop: '', foreground: '' });
-    const gpu = new PixiBoardSurface({ width: 704, height: 448, originX: 0, originY: 0, shapeRendering: 'crispEdges', backdrop: '', foreground: '' },
+    const handlers = { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} };
+    const surfaceScene = { width: viewport.sceneWidth, height: viewport.sceneHeight,
+      originX: viewport.originX, originY: viewport.originY, shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
+    const svg = new SvgBoardSurface(surfaceScene);
+    const gpu = new PixiBoardSurface(surfaceScene,
       { textures: new InstantTextures(), painter: new IdlePainter() });
     const boards = [svg, gpu].map((surface) => new BoardView({ content: TEST_CATALOG, grid, art: CANDIDATE_01_ART,
       renderer: () => surface }, state, handlers));
@@ -574,13 +576,16 @@ describe('two backends draw the same board', () => {
       move: () => {},
       leave: () => {},
       scale: () => {},
+      pan: () => {},
     });
 
     const first = renderer(scene);
     first.listen(board('first'));
-    const click = () => canvas.dispatchEvent(
-      new window.MouseEvent('pointerdown', { bubbles: true, clientX: 10, clientY: 10, button: 0 }),
-    );
+    const click = () => {
+      for (const type of ['pointerdown', 'pointerup']) {
+        canvas.dispatchEvent(new window.MouseEvent(type, { bubbles: true, clientX: 10, clientY: 10, button: 0 }));
+      }
+    };
     click();
     expect(heard).toEqual(['first']);
 

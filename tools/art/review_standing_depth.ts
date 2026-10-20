@@ -34,7 +34,7 @@ for (const standing of [false, true]) {
       };
       return surface;
     },
-  }, state, { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} });
+  }, state, { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} });
   board.render(emptyOverlay());
   const svg = board.el as SVGSVGElement;
   // The renderer is mounted inside app.css in production. Keep its actual

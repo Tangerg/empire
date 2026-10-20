@@ -49,7 +49,7 @@ for (const [name, art] of [['before', CANDIDATE_01_ART], ['candidate', candidate
   const dir = resolve(output, name); mkdirSync(dir, { recursive: true });
   const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art,
     renderer: scene => new SvgBoardSurface(scene) }, state,
-    { onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {} });
+    { onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {}, onPan() {} });
   board.render(emptyOverlay());
   const svg = board.el as SVGSVGElement;
   const actors = [...svg.querySelectorAll('.layer-units > .unit')].map(x => x.outerHTML).join('');

@@ -27,6 +27,8 @@ export const GROUND_TAGS = {
   settlement: ['building', 'outpost'],
   /** Something standing in the way, which joins its own kind and nothing else. */
   obstacle: ['blocking'],
+  /** Beyond the scene's playable silhouette: no ground picture or tactical hit. */
+  outside: ['outside'],
 } as const;
 
 /** Does this terrain carry any of those tags? */

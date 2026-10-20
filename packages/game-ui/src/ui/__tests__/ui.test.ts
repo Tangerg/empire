@@ -73,11 +73,11 @@ function cellPoint(el: Element, tile: { x: number; y: number }): { clientX: numb
 }
 
 function click(el: Element, tile: { x: number; y: number }, button = 0): void {
-  el.dispatchEvent(new window.MouseEvent('pointerdown', {
-    bubbles: true,
-    ...cellPoint(el, tile),
-    button,
-  }));
+  for (const type of ['pointerdown', 'pointerup']) {
+    el.dispatchEvent(new window.MouseEvent(type, {
+      bubbles: true, ...cellPoint(el, tile), button,
+    }));
+  }
 }
 
 function hover(el: Element, tile: { x: number; y: number }): void {
@@ -340,46 +340,16 @@ describe('game controller', () => {
     controller.dispose();
   });
 
-  /**
-   * The field fills the screen it was given, and is never cropped by it.
-   *
-   * It used to stop growing at 1.25×, so an ordinary 20×14 field on an ordinary
-   * screen was a rectangle floating in the middle of a gradient — a picture on a
-   * page rather than the thing being played.
-   */
-  it('fills the tactical viewport with the whole field, uncropped', () => {
+  it('keeps actors at a readable scale on a battlefield larger than the screen', () => {
     const level = BUILTIN_LEVELS[0];
     const board = new BoardView(composition(ART), TEST_ENGINE.createState(level), {
-      onTileClick: () => {},
-      onTileEnter: () => {},
-      onLeave: () => {},
-      onSecondary: () => {},
-      onScale: () => {},
+      onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {},
+      onSecondary: () => {}, onScale: () => {}, onPan: () => {},
     });
-    board.fitWithin(540, 380);
-
-    /*
-     * The *field* fills the box; the painted margin around it may run off.
-     *
-     * This used to assert the board element fitted inside the box, margin and all —
-     * which is why a painted battle sat small in the middle with the page showing
-     * along two edges. The trees and cliffs a scene draws around the field are
-     * decoration and exist to be cropped; the field is not, and never is.
-     */
-    const zoom = board.zoomLevel;
-    const fieldWidth = level.width * TILE * zoom;
-    const fieldHeight = level.height * TILE * zoom;
-    expect(fieldWidth).toBeLessThanOrEqual(540.01);
-    expect(fieldHeight).toBeLessThanOrEqual(380.01);
-    // Touching one of the two edges is the difference between filling and fitting.
-    expect(Math.max(fieldWidth / 540, fieldHeight / 380)).toBeCloseTo(1, 2);
-    expect(zoom).toBeGreaterThanOrEqual(0.5);
-
-    // And the element is the field plus that margin, so it is the larger of the two.
-    const width = Number.parseFloat(board.el.style.width);
-    const height = Number.parseFloat(board.el.style.height);
-    expect(width).toBeGreaterThanOrEqual(fieldWidth);
-    expect(height).toBeGreaterThanOrEqual(fieldHeight);
+    expect(board.zoomLevel).toBe(1.25);
+    expect(TILE * board.zoomLevel).toBe(40);
+    expect(Number.parseFloat(board.el.style.width)).toBeGreaterThan(level.width * TILE);
+    board.dispose();
   });
 
   it('keeps authored roads below every tactical actor', () => {
@@ -389,7 +359,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-      onScale: () => {},
+      onScale: () => {}, onPan: () => {},
     });
     board.render(emptyOverlay());
 
@@ -487,7 +457,7 @@ describe('game controller', () => {
     for (const level of withStructures) {
       const state = TEST_ENGINE.createState(level);
       const board = new BoardView(composition(ART), state, {
-        onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {},
+        onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {},
       });
       board.render(emptyOverlay());
       const drawn = [...board.el.querySelectorAll('.layer-structures > g, .layer-units > g')];
@@ -550,7 +520,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-      onScale: () => {},
+      onScale: () => {}, onPan: () => {},
     });
     board.render(emptyOverlay());
 
@@ -578,7 +548,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-      onScale: () => {},
+      onScale: () => {}, onPan: () => {},
     });
 
     const played = board.animateHit({ x: 3, y: 2 }, 12, false);
@@ -898,9 +868,11 @@ describe('a hex board', () => {
 
     const mine = level.units.find((unit) => unit.owner === 1)!;
     const centre = TEST_ENGINE.rules.grids.get('hex').center(mine);
-    board.dispatchEvent(new window.MouseEvent('pointerdown', {
-      bubbles: true, button: 0, clientX: centre.x * TILE, clientY: centre.y * TILE,
-    }));
+    for (const type of ['pointerdown', 'pointerup']) {
+      board.dispatchEvent(new window.MouseEvent(type, {
+        bubbles: true, button: 0, clientX: centre.x * TILE, clientY: centre.y * TILE,
+      }));
+    }
 
     const facings = [...controller.root.querySelectorAll('[data-act="facing"]')]
       .map((button) => button.getAttribute('data-arg'));

@@ -196,7 +196,7 @@ describe('battle presentation', () => {
     expect(() => new BoardView(
       { content: TEST_CATALOG, grid: hex, art: CANDIDATE_01_ART, renderer: svgBoardSurface },
       ENGINE.createState(level),
-      { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} },
+      { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} },
     )).toThrow(/candidate-01.*6 corners.*hex/s);
   });
 

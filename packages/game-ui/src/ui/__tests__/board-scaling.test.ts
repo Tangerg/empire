@@ -67,6 +67,8 @@ describe('rescaling the field', () => {
       art: CANDIDATE_01_ART,
     });
     host.append(controller.root);
+    // jsdom has no scrolling; navigation geometry is covered by camera tests.
+    (controller.root.querySelector('.battlefield') as HTMLElement).scrollTo = vi.fn();
     return { controller, board: controller.root.querySelector('svg.board') as SVGSVGElement };
   };
 

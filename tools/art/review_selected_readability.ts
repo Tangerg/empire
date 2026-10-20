@@ -26,7 +26,7 @@ for (const scenario of [
     let origin = [0, 0];
     const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART,
       renderer: (scene) => { origin = [scene.originX, scene.originY]; return new SvgBoardSurface(scene); } }, state,
-    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} });
+    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} });
     const overlay = emptyOverlay();
     overlay.selected = { x: actor.x, y: actor.y };
     if (scenario.hidden) overlay.hiddenUnits.add(actor.id);

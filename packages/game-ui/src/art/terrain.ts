@@ -301,6 +301,7 @@ const cellClipDefinition = (layout: TerrainLayout): string =>
  * a meadow.
  */
 export function terrainPicture(art: ArtDirection, terrain: TerrainDef, ctx: TileContext): BoardImage {
+  if (taggedGround(terrain, GROUND_TAGS.outside)) return { markup: '' };
   const runtime = art.resolve((provider) => provider.terrainPicture?.(terrain.id, ctx));
   // Empty is an answer: a painted scene that has drawn its own ground asks for no
   // tile here. This used to be `if (runtime)`, so the only way to say that was to

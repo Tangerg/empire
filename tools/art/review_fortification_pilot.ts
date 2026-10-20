@@ -92,7 +92,7 @@ for (const [name, art] of [['before', CANDIDATE_01_ART], ['partial', partial]] a
     const setLayer = surface.setLayer.bind(surface);
     surface.setLayer = (layer, pieces) => { layers.set(layer, pieces); setLayer(layer, pieces); };
     return surface;
-  } }, state, { onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {} });
+  } }, state, { onTileClick() {}, onTileEnter() {}, onLeave() {}, onSecondary() {}, onScale() {}, onPan() {} });
   board.render(emptyOverlay());
   const element = board.el as SVGSVGElement;
   const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');

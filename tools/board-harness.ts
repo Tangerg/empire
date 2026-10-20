@@ -120,7 +120,7 @@ export function mountBoard(level: LevelData, art: ArtDirection, state: GameState
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-      onScale: () => {},
+      onScale: () => {}, onPan: () => {},
     },
   );
 }

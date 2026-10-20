@@ -15,7 +15,7 @@ const scenes = CANDIDATE_01_LEVELS.map(level => {
   const before = JSON.stringify(state);
   const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART,
     renderer: scene => new SvgBoardSurface(scene) }, state,
-  { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} });
+  { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} });
   try {
     board.render(emptyOverlay());
     if (before !== JSON.stringify(state)) throw new Error(`BoardView mutated state: ${level.id}`);

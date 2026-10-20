@@ -1,3 +1,5 @@
+import type { BoardPointer } from './board-surface';
+
 /**
  * Where a pointer is, in scene units, for a picture letterboxed inside its box.
  *
@@ -33,7 +35,7 @@ export function shownAt(box: { width: number; height: number }, scene: SceneBox)
 /**
  * Every event a board answers, wired onto one element.
  *
- * The two backends had a copy each — the same five listeners, the same policy that
+ * The two backends had a copy each — the same listeners, the same policy that
  * a wheel with ctrl or meta held is a zoom and a right-click is a secondary press —
  * and the DOM one also carried a second copy of the letterbox arithmetic this
  * module exists to own, in a method whose comment called it "the only geometry this
@@ -43,31 +45,95 @@ export function shownAt(box: { width: number; height: number }, scene: SceneBox)
  *
  * A backend still owns *what* it is listening on. This owns what the listening
  * means — and it hands back the way to stop, because one of the two backends draws
- * every battle of a session onto *one* canvas. Five listeners went onto it per
+ * every battle of a session onto *one* canvas. Listeners went onto it per
  * battle and none came off, so the third battle's click also reached the first
  * two — boards that had been disposed.
  */
 export function listenForPointer(
   element: Element,
   scene: SceneBox,
-  pointer: {
-    press(at: { x: number; y: number }, button: number): void;
-    move(at: { x: number; y: number } | null): void;
-    leave(): void;
-    scale(notches: number): void;
-  },
+  pointer: BoardPointer,
 ): () => void {
   const at = (event: Event) =>
     scenePointOf(element.getBoundingClientRect(), scene, event as MouseEvent);
+  let gesture: {
+    id: number;
+    button: number;
+    startX: number;
+    startY: number;
+    x: number;
+    y: number;
+    dragging: boolean;
+  } | null = null;
+
+  const stopGesture = () => {
+    const ended = gesture;
+    gesture = null;
+    element.classList.remove('is-panning');
+    if (ended && element.hasPointerCapture?.(ended.id)) element.releasePointerCapture(ended.id);
+  };
+
+  const moveGesture = (event: PointerEvent) => {
+    if (!gesture || (event.pointerId ?? 0) !== gesture.id) return;
+    const dx = event.clientX - gesture.x;
+    const dy = event.clientY - gesture.y;
+    if (!gesture.dragging
+      && Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY) >= 6) {
+      gesture.dragging = true;
+      element.classList.add('is-panning');
+      pointer.leave();
+    }
+    if (!gesture.dragging) return;
+    event.preventDefault();
+    pointer.pan({ x: dx, y: dy });
+    gesture.x = event.clientX;
+    gesture.y = event.clientY;
+  };
 
   const listeners: [string, (event: Event) => void, AddEventListenerOptions?][] = [
     ['pointerdown', (event) => {
+      const input = event as PointerEvent;
+      if (gesture || input.isPrimary === false) return;
+      if (input.button === 0 || input.button === 1) {
+        gesture = {
+          id: input.pointerId ?? 0,
+          button: input.button,
+          startX: input.clientX, startY: input.clientY,
+          x: input.clientX, y: input.clientY,
+          dragging: false,
+        };
+        // Keep a drag alive outside the board, including across floating HUDs.
+        if (input.isTrusted) element.setPointerCapture(input.pointerId);
+        event.preventDefault();
+        return;
+      }
       const point = at(event);
-      if (point) pointer.press(point, (event as MouseEvent).button);
+      if (point) pointer.press(point, input.button);
+    }],
+    ['pointerup', (event) => {
+      const input = event as PointerEvent;
+      if (!gesture || (input.pointerId ?? 0) !== gesture.id || input.button !== gesture.button) return;
+      moveGesture(input);
+      const click = !gesture.dragging && gesture.button === 0;
+      stopGesture();
+      const point = at(event);
+      if (click && point) pointer.press(point, 0);
+    }],
+    ['pointercancel', (event) => {
+      if (((event as PointerEvent).pointerId ?? 0) === gesture?.id) stopGesture();
+    }],
+    ['lostpointercapture', (event) => {
+      if (((event as PointerEvent).pointerId ?? 0) === gesture?.id) stopGesture();
+    }],
+    ['dragstart', (event) => event.preventDefault()],
+    ['pointermove', (event) => {
+      if (gesture) moveGesture(event as PointerEvent);
+      else pointer.move(at(event));
+    }],
+    ['pointerleave', () => {
+      if (!gesture) pointer.leave();
     }],
     ['contextmenu', (event) => event.preventDefault()],
-    ['pointermove', (event) => pointer.move(at(event))],
-    ['pointerleave', () => pointer.leave()],
     ['wheel', (event) => {
       const wheel = event as WheelEvent;
       // Ctrl or meta held: the gesture every application uses for zoom, and the
@@ -81,6 +147,7 @@ export function listenForPointer(
   for (const [type, handler, options] of listeners) element.addEventListener(type, handler, options);
   return () => {
     for (const [type, handler, options] of listeners) element.removeEventListener(type, handler, options);
+    stopGesture();
   };
 }
 

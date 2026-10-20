@@ -62,7 +62,7 @@ describe('activated fixture through the real candidate provider', () => {
     const torren = state.units.find(actor => actor.key === 'campaign-torren')!;
     const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART,
       renderer: svgBoardSurface }, state,
-    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} });
+    { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} });
     try {
       const overlay = emptyOverlay();
       board.render(overlay);

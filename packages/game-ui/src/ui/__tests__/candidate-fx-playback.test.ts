@@ -22,7 +22,7 @@ describe('Gray Flag registered hit phase playback', () => {
     const board = new BoardView({ content, grid: engine.rules.grids.get('square4'),
       art: CANDIDATE_01_ART, renderer: svgBoardSurface }, state, {
       onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {},
-      onSecondary: () => {}, onScale: () => {},
+      onSecondary: () => {}, onScale: () => {}, onPan: () => {},
     });
     try {
       const at = { x: state.units[0].x, y: state.units[0].y };
@@ -61,7 +61,7 @@ describe('Gray Flag healing effect lifetime', () => {
     const board = new BoardView({ content, grid: engine.rules.grids.get('square4'),
       art: CANDIDATE_01_ART, renderer: svgBoardSurface }, state, {
       onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {},
-      onSecondary: () => {}, onScale: () => {},
+      onSecondary: () => {}, onScale: () => {}, onPan: () => {},
     });
     try {
       const at = { x: state.units[0].x, y: state.units[0].y };

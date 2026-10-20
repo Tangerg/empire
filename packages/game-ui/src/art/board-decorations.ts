@@ -97,7 +97,7 @@ export interface BoardDecorations {
    * shapes of answer: a square lattice is two families of lines across the whole
    * field, while a painted scene seats one identical node under every cell.
    */
-  gridLines(layout: BoardLayout, map: GameMap): readonly BoardPiece[];
+  gridLines(layout: BoardLayout, map: GameMap, contains: (at: Coord) => boolean): readonly BoardPiece[];
   /** One tile of move range, threat, healing or a marked blast, at a cell's origin. */
   actionSpot(layout: BoardLayout, tint: DecorationTint): string;
   /** The march order, from tile centre to tile centre — one line through many cells. */
@@ -123,13 +123,14 @@ function* everyCell(map: GameMap): Generator<Coord> {
 export const SquareBoardDecorations: BoardDecorations = {
   id: 'square',
   shapeRendering: 'crispEdges',
-  gridLines: (layout, map) => {
+  gridLines: (layout, map, contains) => {
     // A four-cornered cell tiles into a lattice, which is two families of lines
     // rather than one outline per cell. Anything else draws its own edges — the
     // same picture at every cell, which is why those are pieces.
-    if (layout.corners !== 4) {
+    const cells = [...everyCell(map)].filter(contains);
+    if (layout.corners !== 4 || cells.length !== map.width * map.height) {
       const cell = `<polygon points="${layout.shape()}" fill="none" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.14"/>`;
-      return [...everyCell(map)].map((at) => ({ markup: cell, ...layout.origin(at) }));
+      return cells.map((at) => ({ markup: cell, ...layout.origin(at) }));
     }
     const parts: string[] = [];
     const size = layout.tileSize;

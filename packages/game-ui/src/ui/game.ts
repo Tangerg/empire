@@ -10,7 +10,6 @@ import {
   type BattleSave,
   areEnemies,
   unitAt,
-  inBounds,
   sameCoord,
 } from '@empire/battle-engine';
 import type {
@@ -23,12 +22,13 @@ import type {
   ReactionStance,
   Unit,
 } from '@empire/battle-engine';
-import type { BoardSurfaceFactory } from '../art/board-surface';
+import { TILE, type BoardSurfaceFactory } from '../art/board-surface';
 import { svgBoardSurface } from '../art/svg-board-surface';
 import { GENERIC_ART, type ArtDirection } from '../art/direction';
 import { PAL } from '../art/palette';
 import { PresentationTimeline } from '../art/frame-animation';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
+import { BattlefieldCamera } from './battlefield-camera';
 import { BattleLog } from './battle-log';
 import {
   DefaultBattleEventPresenters,
@@ -126,6 +126,7 @@ export class GameController {
   private readonly board: BoardView;
   private readonly hud: Hud;
   private readonly scroller = document.createElement('div');
+  private readonly camera: BattlefieldCamera;
   private readonly presenters: BattleEventPresenterRegistry;
   private readonly stage: SessionBattleStage;
   /** Positions remembered one frame back, so a killed unit's number still lands. */
@@ -152,7 +153,11 @@ export class GameController {
   private readonly applyZoom = this.frames.perFrame(() => {
     const step = this.pendingZoom;
     this.pendingZoom = 0;
-    this.board.setZoom(this.board.zoomLevel + step);
+    const center = this.camera.position;
+    const previous = this.board.zoomLevel;
+    this.board.setZoom(previous + step);
+    const ratio = this.board.zoomLevel / previous;
+    this.camera.centerOn({ x: center.x * ratio, y: center.y * ratio }, 'instant');
   });
 
   private readonly art: ArtDirection;
@@ -180,6 +185,7 @@ export class GameController {
       },
       onSecondary: () => this.cancel(),
       onScale: (notches) => this.zoomBy(notches * 0.1),
+      onPan: (delta) => this.camera.pan(delta),
     });
 
     this.hud = new Hud(this.art, {
@@ -219,15 +225,30 @@ export class GameController {
     this.scroller.className = 'battlefield';
     this.scroller.append(this.board.el);
     this.root.append(this.scroller, this.hud.el);
+    this.camera = new BattlefieldCamera(this.scroller, this.board.el);
+    this.scroller.title = '拖动地图移动镜头 · 滚轮平移 · Ctrl/⌘ + 滚轮缩放';
 
-    // The field's content box is what the board has to fit into — the HUD's
-    // standing bands are padding on it — and `contentRect` is exactly that box.
-    // A ResizeObserver also reports once when it starts observing, so that first
-    // callback is the initial fit: one writer of the zoom, instead of a
-    // requestAnimationFrame racing the observer for the last word.
+    // A larger world is explored, not reduced to fit. Only the first usable
+    // layout chooses a focal point; subsequent resizes preserve the player's
+    // scale and camera instead of repeatedly undoing their navigation.
     if (typeof ResizeObserver !== 'undefined') {
+      let opened = false;
       this.resizeObserver = new ResizeObserver(([entry]) => {
-        this.board.fitWithin(entry.contentRect.width, entry.contentRect.height);
+        if (!entry || entry.contentRect.width <= 0 || entry.contentRect.height <= 0) return;
+        if (opened) {
+          this.camera.resize();
+          return;
+        }
+        opened = true;
+        const units = this.state.units.filter((unit) => unit.owner === this.human?.id && unit.hp > 0);
+        const points = units.map((unit) => this.board.pointAt(unit));
+        const focal = points.length > 0
+          ? {
+            x: points.reduce((sum, point) => sum + point.x, 0) / points.length,
+            y: points.reduce((sum, point) => sum + point.y, 0) / points.length,
+          }
+          : this.board.pointAt({ x: (this.state.map.width - 1) / 2, y: (this.state.map.height - 1) / 2 });
+        this.camera.centerOn(focal, 'instant');
       });
       this.resizeObserver.observe(this.scroller);
     }
@@ -358,11 +379,14 @@ export class GameController {
     let best: { to: Coord; reach: number } | null = null;
     for (const facing of grid.directions) {
       const to = grid.step(here, facing.id);
-      if (!inBounds(this.state.map, to.x, to.y)) continue;
+      if (!this.board.contains(to)) continue;
       const reach = (to.x - here.x) * dx + (to.y - here.y) * dy;
       if (reach > 0 && (!best || reach > best.reach)) best = { to, reach };
     }
-    if (best) this.handleHover(best.to);
+    if (best) {
+      this.handleHover(best.to);
+      this.camera.reveal(this.board.pointAt(best.to), TILE * this.board.zoomLevel / 2);
+    }
   }
 
   /* ------------------------------------------------------------------ input */
@@ -520,7 +544,7 @@ export class GameController {
     const next = idle[(at + 1) % idle.length];
     this.selection = new UnitSelection(next.id);
     this.inspect = next;
-    this.board.centerOn({ x: next.x, y: next.y }, this.scroller);
+    this.camera.centerOn(this.board.pointAt(next));
     this.refresh();
   }
 
@@ -620,7 +644,7 @@ export class GameController {
     if (action.kind !== 'command' || action.path.length < 2) return;
     const unit = this.session.unit(action.unit);
     if (!unit) return;
-    if (follow) this.board.centerOn(action.path[action.path.length - 1], this.scroller);
+    if (follow) this.camera.centerOn(this.board.pointAt(action.path[action.path.length - 1]));
     await this.board.animateMove(unit, action.path, pace);
   }
 
@@ -729,7 +753,7 @@ export class GameController {
     if (!unit) return;
     this.selection = new DeploymentSelection(unit.id);
     this.inspect = unit;
-    this.board.centerOn({ x: unit.x, y: unit.y }, this.scroller);
+    this.camera.centerOn(this.board.pointAt(unit));
     this.refresh();
   }
 

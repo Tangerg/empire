@@ -30,6 +30,14 @@ const hex: BoardLayout = {
 };
 
 describe('how a board draws its tactical layer', () => {
+  it('draws only included cells when a square board has an irregular silhouette', () => {
+    const pieces = SquareBoardDecorations.gridLines(squareLayout, map as never, (at) => at.x !== 0 || at.y !== 0);
+    expect(pieces).toHaveLength(3);
+    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[32, 0], [0, 32], [32, 32]]);
+    expect(pieces.every((piece) => piece.markup.includes('<polygon'))).toBe(true);
+    expect(SquareBoardDecorations.gridLines(squareLayout, map as never, () => false)).toEqual([]);
+  });
+
   it('keeps the grid for art that states no preference', () => {
     const plain: BattlePresentation = {
       id: 'test.plain',
@@ -74,11 +82,11 @@ describe('how a board draws its tactical layer', () => {
     expect(SquareBoardDecorations.ring(squareLayout, 'cursor')).toContain('<rect');
     expect(GroundBoardDecorations.ring(squareLayout, 'cursor')).toContain('candidate-cursor-ring');
 
-    expect(boardPiecesMarkup(SquareBoardDecorations.gridLines(squareLayout, map as never)))
+    expect(boardPiecesMarkup(SquareBoardDecorations.gridLines(squareLayout, map as never, () => true)))
       .toContain('<line');
     // A painted scene shows its own ground and draws no lattice over it. It used to
     // seat a stand node under every cell, which `battle.css` then made invisible.
-    expect(GroundBoardDecorations.gridLines(squareLayout, map as never)).toEqual([]);
+    expect(GroundBoardDecorations.gridLines(squareLayout, map as never, () => true)).toEqual([]);
 
     const path = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
     expect(SquareBoardDecorations.movePath(squareLayout, path)).toMatch(/^M\d/);
@@ -97,7 +105,7 @@ describe('how a board draws its tactical layer', () => {
   it('draws one picture at many places rather than many pictures', () => {
     // A tiling whose cells do not lattice draws its own edge per cell, which is the
     // same picture at every one of them.
-    const nodes = SquareBoardDecorations.gridLines(hex, map as never);
+    const nodes = SquareBoardDecorations.gridLines(hex, map as never, () => true);
     expect(nodes).toHaveLength(map.width * map.height);
     expect(new Set(nodes.map((piece) => piece.markup)).size).toBe(1);
     expect(nodes.map((piece) => `${piece.x},${piece.y}`)).toEqual(['0,0', '32,0', '0,24', '32,24']);
@@ -118,7 +126,7 @@ describe('how a board draws its tactical layer', () => {
   it('draws a six-cornered cell as its own outline', () => {
     const tint = { fill: '#abc', opacity: 0.2 };
 
-    const lattice = boardPiecesMarkup(SquareBoardDecorations.gridLines(hex, map as never));
+    const lattice = boardPiecesMarkup(SquareBoardDecorations.gridLines(hex, map as never, () => true));
     expect(lattice).toContain('<polygon');
     expect(lattice).not.toContain('<line');
     expect(SquareBoardDecorations.actionSpot(hex, tint)).toContain('<polygon');

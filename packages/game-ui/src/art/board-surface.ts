@@ -572,6 +572,7 @@ export interface BoardEffect extends BoardDrawing {
  * which is why it held `getBoundingClientRect` and a scale calculation.
  */
 export interface BoardPointer {
+  /** A tactical click; primary clicks wait until release to rule out camera drag. */
   press(at: { x: number; y: number }, button: number): void;
   move(at: { x: number; y: number } | null): void;
   leave(): void;
@@ -583,6 +584,8 @@ export interface BoardPointer {
    * both facts about the input device, and neither about the battle.
    */
   scale(notches: number): void;
+  /** A drag displacement in screen pixels, independent of the scene scale. */
+  pan(delta: { x: number; y: number }): void;
 }
 
 /** What a surface is asked to be when it is created. */

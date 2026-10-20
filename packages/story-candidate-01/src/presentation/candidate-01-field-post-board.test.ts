@@ -11,7 +11,7 @@ import contract from './fixtures/c01-04-presentation-contract.json';
 
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const engine = createBattleEngine({ content });
-const handlers = { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} };
+const handlers = { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} };
 
 function mount(levelId: string) {
   const state = engine.createState(candidate01Level(levelId));

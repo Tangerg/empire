@@ -238,8 +238,9 @@ const CLICK_CELL = (x: number, y: number) => `
     clientX: box.left + (box.width - view.width * scale) / 2 + (-view.x + (${x} + 0.5) * 32) * scale,
     clientY: box.top + (box.height - view.height * scale) / 2 + (-view.y + (${y} + 0.5) * 32) * scale,
   };
-  svg.dispatchEvent(new PointerEvent('pointermove', { ...point, bubbles: true }));
-  svg.dispatchEvent(new PointerEvent('pointerdown', { ...point, bubbles: true, button: 0 }));
+  svg.dispatchEvent(new PointerEvent('pointermove', { ...point, bubbles: true, pointerId: 1, isPrimary: true }));
+  svg.dispatchEvent(new PointerEvent('pointerdown', { ...point, bubbles: true, button: 0, pointerId: 1, isPrimary: true }));
+  svg.dispatchEvent(new PointerEvent('pointerup', { ...point, bubbles: true, button: 0, pointerId: 1, isPrimary: true }));
   return true;
 `;
 

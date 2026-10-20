@@ -8,6 +8,7 @@ import {
   type TacticalGrid,
   gaugeRatio,
   sameCoord,
+  inBounds,
 } from '@empire/battle-engine';
 import { tileGaugeBar } from '../art/gauges';
 import { PAL } from '../art/palette';
@@ -28,6 +29,7 @@ import {
   type SceneViewport,
 } from '../art/scene-viewport';
 import { unitPicture } from '../art/units';
+import { GROUND_TAGS, taggedGround } from '../art/ports';
 import { escapeHtml } from './html';
 import { PresentationTimeline } from '../art/frame-animation';
 import {
@@ -103,6 +105,8 @@ export interface BoardHandlers {
   onTileClick(at: Coord): void;
   /** The player asked for a different scale, in notches. */
   onScale(notches: number): void;
+  /** Camera drag displacement in screen pixels, independent of board zoom. */
+  onPan(delta: { x: number; y: number }): void;
   onTileEnter(at: Coord): void;
   onLeave(): void;
   onSecondary(at: Coord): void;
@@ -286,7 +290,14 @@ export class BoardView {
   /* ------------------------------------------------------------------ setup */
 
   private buildGrid(): void {
-    this.surface.setLayer('grid', this.decor.gridLines(this.layout, this.state.map));
+    this.surface.setLayer('grid', this.decor.gridLines(this.layout, this.state.map, (at) => this.contains(at)));
+  }
+
+  /** Terrain is the sole source of the scene's silhouette, including holes. */
+  contains(at: Coord): boolean {
+    if (!inBounds(this.state.map, at.x, at.y)) return false;
+    const terrain = this.content.terrains.get(this.state.map.tiles[idx(this.state.map, at.x, at.y)]);
+    return !taggedGround(terrain, GROUND_TAGS.outside);
   }
 
   /**
@@ -297,7 +308,10 @@ export class BoardView {
    * `getBoundingClientRect` and a letterbox calculation.
    */
   private bindPointer(): void {
-    const cellAt = (at: { x: number; y: number }) => scenePointToCell(this.viewport, at.x, at.y);
+    const cellAt = (at: { x: number; y: number }) => {
+      const cell = scenePointToCell(this.viewport, at.x, at.y);
+      return cell && this.contains(cell) ? cell : null;
+    };
     this.surface.listen({
       press: (at, button) => {
         const cell = cellAt(at);
@@ -323,6 +337,7 @@ export class BoardView {
         this.handlers.onLeave();
       },
       scale: (notches) => this.handlers.onScale(notches),
+      pan: (delta) => this.handlers.onPan(delta),
     });
   }
 
@@ -338,28 +353,6 @@ export class BoardView {
       this.settleTimer = null;
       this.surface.rescaling(false);
     }, SETTLE_MS);
-  }
-
-  /**
-   * Fills the given box with the whole tactical field, without cropping it.
-   *
-   * "Fills", not "fits inside": this used to cap the scale at 1.25, so a 20×14
-   * field on any ordinary screen was a 800×560 rectangle floating in the middle
-   * of a much larger gradient — the single clearest reason the battle read as a
-   * figure on a page rather than the thing being played. The zoom clamp still
-   * bounds how large a tile may get; a tiny field simply stops growing there.
-   *
-   * The *field*, not the scene. A painted scene carries a margin of trees and
-   * cliffs around the tactical area, and fitting that margin inside the box too
-   * left the field small in the middle with the page showing along two edges — a
-   * map in a frame rather than a map. The margin is decoration and exists to be
-   * cropped: the board overflows its container, which centres and clips it, so the
-   * forest runs off the screen the way it does on a painted map. Nothing tactical
-   * is ever cropped, because the field itself is what fills the box.
-   */
-  fitWithin(width: number, height: number): void {
-    if (width <= 0 || height <= 0) return;
-    this.setZoom(Math.min(width / this.viewport.fieldWidth, height / this.viewport.fieldHeight));
   }
 
   get zoomLevel(): number {
@@ -457,7 +450,10 @@ export class BoardView {
     const pieces: BoardPiece[] = [];
     const spread = (cells: Iterable<number>, tint: DecorationTint) => {
       const spot = this.decor.actionSpot(this.layout, tint);
-      for (const i of cells) pieces.push(this.at(this.cellOf(i), spot));
+      for (const i of cells) {
+        const at = this.cellOf(i);
+        if (this.contains(at)) pieces.push(this.at(at, spot));
+      }
     };
     spread(o.threat, { fill: '#ff3b30', opacity: 0.1 });
     // Held ground is drawn under the move range: the player needs to see why a
@@ -468,6 +464,7 @@ export class BoardView {
     const marked = this.decor.actionSpot(this.layout, { fill: '#ffb020', opacity: 0.3, stroke: '#ffd479' });
     const middle = TILE / 2;
     for (const [i, remaining] of o.incoming) {
+      if (!this.contains(this.cellOf(i))) continue;
       pieces.push(this.at(this.cellOf(i), `${marked}<text class="incoming-count" x="${middle}" y="${middle + 4}"
         text-anchor="middle" font-size="11" font-weight="700" fill="#2a1a00">${remaining}</text>`));
     }
@@ -556,8 +553,8 @@ export class BoardView {
 
   private renderCursor(o: BoardOverlay): void {
     const pieces: BoardPiece[] = [];
-    if (o.selected) pieces.push(this.at(o.selected, this.decor.ring(this.layout, 'selection')));
-    if (o.cursor) pieces.push(this.at(o.cursor, this.decor.ring(this.layout, 'cursor')));
+    if (o.selected && this.contains(o.selected)) pieces.push(this.at(o.selected, this.decor.ring(this.layout, 'selection')));
+    if (o.cursor && this.contains(o.cursor)) pieces.push(this.at(o.cursor, this.decor.ring(this.layout, 'cursor')));
     this.surface.setLayer('cursor', pieces);
   }
 
@@ -724,15 +721,13 @@ export class BoardView {
     drawing.remove();
   }
 
-  centerOn(at: Coord, container: HTMLElement): void {
+  /** A cell's centre in presented pixels, for the camera that owns scrolling. */
+  pointAt(at: Coord): Coord {
     const centre = this.centre(at);
-    const px = (this.viewport.originX + centre.x) * this.zoom;
-    const py = (this.viewport.originY + centre.y) * this.zoom;
-    container.scrollTo({
-      left: px - container.clientWidth / 2,
-      top: py - container.clientHeight / 2,
-      behavior: 'smooth',
-    });
+    return {
+      x: (this.viewport.originX + centre.x) * this.zoom,
+      y: (this.viewport.originY + centre.y) * this.zoom,
+    };
   }
 
 }

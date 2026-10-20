@@ -69,7 +69,7 @@ describe('explicit unit art context through existing UI paths', () => {
     const state = engine.createState(level);
     const before = JSON.stringify(engine.saveBattle(state, '2026-10-19T00:00:00.000Z'));
     const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art, renderer: svgBoardSurface }, state,
-      { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} });
+      { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {}, onPan: () => {} });
     dispose.push(() => board.dispose());
     board.render(emptyOverlay());
     expect(calls.filter(call => call.kind === 'picture').map(call => call.context?.actorKey))
@@ -94,6 +94,7 @@ describe('explicit unit art context through existing UI paths', () => {
     expect(controller.root.querySelector('.portrait [data-context="ordinary-soldier"]')).not.toBeNull();
     calls.length = 0;
     point(svg, { x: 1, y: 1 }, 'pointerdown');
+    point(svg, { x: 1, y: 1 }, 'pointerup');
     expect(controller.root.querySelectorAll('.recruit-card').length).toBeGreaterThan(0);
     expect(calls.filter(call => call.kind === 'icon').length).toBeGreaterThan(0);
     expect(calls.filter(call => call.kind === 'icon').every(call => call.context === undefined)).toBe(true);
