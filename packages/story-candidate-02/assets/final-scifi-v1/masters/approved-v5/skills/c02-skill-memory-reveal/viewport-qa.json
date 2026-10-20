@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Complete source canvas Lanczos contain44x44, paste centered in 48x48 with 2px transparent margin. No bounds recrop. Offline diagnostic, not formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source 512-on-white.png",
+    "qa-source 512-on-black.png",
+    "qa-source 512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "One complete stout tan/graphite archive reader carries a front-left upright cyan memory panel showing a dark industrial tower, low remembered buildings and broad clouds. Upper projecting tray and lower control/card pad retain the original relative arrangement. Rear/right housing is reconstructed to complete the portion clipped by the original scene card.",
+  "rawMasterSha256": "fce89a0c9bd4d34f21efcb083257b0ed40c3d49bebe930a35b8cb48b6d943710",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48px the tower and skyline simplify into a compact image on a clearly framed blue screen; fine architecture and tray seams merge. The generated olive panels echo the approved style reference rather than exact original tan surfaces. Visible margins [90,103,66,79] are below the requested 8 percent on some sides, but no component is clipped."
+}

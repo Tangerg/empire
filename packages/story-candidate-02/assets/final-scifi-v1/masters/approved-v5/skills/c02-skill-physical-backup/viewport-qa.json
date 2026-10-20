@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Complete source canvas Lanczos contain44x44, paste centered in 48x48 with 2px transparent margin. No bounds recrop. Offline diagnostic, not formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source 512-on-white.png",
+    "qa-source 512-on-black.png",
+    "qa-source 512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "One reinforced tan/graphite shield-like plate tilts right, with broad central armor, dark flanking panels and two local cyan angular impact bursts. All extremities are complete. This follows the literal board image and catalog identity while leaving the physical-backup label-to-mechanic ambiguity explicit.",
+  "rawMasterSha256": "e2a9f1caf081cc98c67c14245b9454eaa942e2bffe98407b677ec7b531b62e37",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48px bolts, chips and some armor seams simplify; the reinforced plate and two impact bursts remain clear. The generation has three fasteners per side rather than the requested two and more than three small chip marks on one side, secondary nonsemantic differences. Visible margins [65,89,58,70] are below the requested 8 percent, but no point is clipped. No disk drive, data-copy function or gameplay backup behavior was invented."
+}

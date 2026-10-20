@@ -55,5 +55,20 @@
   },
   "formalRuntimeIntegration": false,
   "liveGameVerified": false,
-  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved."
+  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-101202cf-a90a-436d-81de-f49e8ec20c18.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "One reinforced tan/graphite shield-like plate tilts right, with broad central armor, dark flanking panels and two local cyan angular impact bursts. All extremities are complete. This follows the literal board image and catalog identity while leaving the physical-backup label-to-mechanic ambiguity explicit.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-physical-backup/master.png"
 }

@@ -1,0 +1,22 @@
+{
+  "topicId": "c02-skill-rider-rescue-chain",
+  "label": "游骑连救",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "One upper-left rescue buggy contains one visible helmeted driver. Two separate non-crossing chains extend toward two complete dark-suited rescued figures, each holding a terminal link with a raised gloved hand while the other arm is free. Two local dust-puff groups preserve movement; no body-wrapping chains or restraints are depicted.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "At 48 pixels, the single buggy, two chains and two rescued silhouettes remain distinct; individual finger grips, small wheel divisions and dust-puff lobes simplify and cannot be judged in anatomical detail. Grip semantics are verified at full source size. The visible left/right margins are 36/34 pixels, below the requested 8–10 percent, with complete limbs and vehicle. The dust groups include small detached lobes, a secondary detail variation from the prompt.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful redraw. Repair node uses the complete intended source card to exclude adjacent rail-switch contamination and restore its clipped right strip; the maintenance arm is completed and source wall/floor backing excluded. Other motifs use exact original slots. No topic reassignment or invented gameplay effect.",
+  "legacySourceCropDefect": null,
+  "completeMotifCropBox": null
+}

@@ -37,11 +37,17 @@
   "actual48TwoPixelBorderNonzeroCount": 0,
   "actual48NearOpaquePixelsGE240": 844,
   "sourceNumericContractPass": true,
-  "visualCompositeReviewPending": true,
+  "visualCompositeReviewPending": false,
   "sha256": "147392d223171cc6bf0c1aba909dbd75c49ad89e32dae6d29f3ab37cae0d6d9f",
   "matchesRawGeneratedBytes": true,
   "derivation": "Offline diagnostic only: entire generated canvas Lanczos contain44x44 centered in48x48 with2px margin; no bbox crop, alpha change, recolor or cleanup. All source bytes preserved.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "source512WhiteBlackOliveVisualPass": true,
+  "actual48WhiteBlackOliveVisualPass": true,
+  "noVisibleExteriorGlowObserved": true,
+  "formalSourceContractPass": true,
+  "sourceEdgeAlphaOneAcceptedOnlyAfterActualCompositeInspection": true,
+  "actual48EdgeMaxAlpha": 0
 }

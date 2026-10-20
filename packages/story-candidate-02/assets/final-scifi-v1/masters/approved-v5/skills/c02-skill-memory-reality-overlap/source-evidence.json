@@ -55,5 +55,20 @@
   },
   "formalRuntimeIntegration": false,
   "liveGameVerified": false,
-  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved."
+  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-dbc1d4b9-cc7f-4938-a418-19009dcdcf5a.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "Exactly three bust profiles overlap: dark left-facing rear profile, blue right-facing middle profile and pale-cyan right-facing foreground profile. Broad opaque planes, separated contours and a large stepped digital seam retain the opposing/overlapping memory-reality cue.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-memory-reality-overlap/master.png"
 }

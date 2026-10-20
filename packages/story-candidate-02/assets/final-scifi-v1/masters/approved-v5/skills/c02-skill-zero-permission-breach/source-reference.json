@@ -1,0 +1,51 @@
+{
+  "topicId": "c02-skill-zero-permission-breach",
+  "assetId": "C02-SFV1-skill-zero-permission-breach",
+  "label": "零权限突入",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-zero-permission-breach",
+    "topicId": "c02-skill-zero-permission-breach",
+    "label": "零权限突入",
+    "category": "skill",
+    "png": "runtime/skill/skill-zero-permission-breach.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 44,
+  "sourceCropBox": [
+    5,
+    945,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates the identity and original order. No alphabetical final-manifest slot inference was used.",
+  "functionalMotif": "A broken graphite access gate with side keypad, centered orange/yellow impact burst and broken left-side pieces.",
+  "semanticConflictDetected": false,
+  "labelAmbiguity": "The Chinese label is treated as catalog identity; the original picture determines the motif. No invented story or authored gameplay use is claimed.",
+  "oldSourceCondition": "The original board has an opaque magenta field. The old keyed 48px runtime has faint magenta/purple antialiasing contamination. The full verified grid crop contains the complete intended motif without neighboring-card contamination or observable clipping. No old-keyed pixels are reused in the new generated master.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-zero-permission-breach.png",
+  "runtimeReferenceSha256": "424c5a7e31ae0e3f50cedcb550a52bc3461402d268ed85b96039528232b1cea3",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ],
+    "noHdEntry": true
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup, recolor or pixel repainting."
+}

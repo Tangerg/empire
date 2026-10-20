@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-publish-cargo",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "0bbc6c72595725dbeeee5f7d3d3ccb713d37ce4d0e62919bb33af8ef1eee118e",
+    "raw-native-v1.png": "0bbc6c72595725dbeeee5f7d3d3ccb713d37ce4d0e62919bb33af8ef1eee118e",
+    "native.png": "0bbc6c72595725dbeeee5f7d3d3ccb713d37ce4d0e62919bb33af8ef1eee118e",
+    "master.png": "0bbc6c72595725dbeeee5f7d3d3ccb713d37ce4d0e62919bb33af8ef1eee118e"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Fine box seams and arrow-face shading simplify at 48 pixels. The case, latch accent and two circulating arrows remain readable. The narrowest visible margin is 59 pixels, below the requested 8–10 percent, with both arrowheads intact.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T06:09:35.411327+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "topicId": "c02-skill-repair-node",
+  "originalRuntimePixelMatch": true,
+  "differingPixels": 0,
+  "comparedRGBABytes": 9216,
+  "existingAlphaBoard": "packages/story-candidate-02/assets/final-scifi-v1/intermediate/alpha/skills/skills-board-02.png",
+  "existingAlphaBoardSha256": "a9278268b1713750c75ee7aa3c300149e6ce31484b931fd3420f55836d687aab",
+  "builderSha256": "dead2b13e5a38a7ba4960193fe97de9b33b12776dfb47081d227fa9ef7a84f49",
+  "method": "Replayed four pure legacy builder functions in memory on the existing original alpha board; reproduced existing chroma postfilters in memory. No builder main, chroma helper, save, or repository write was called. Generated artwork was not used or modified.",
+  "sourceMappingConfirmed": true
+}

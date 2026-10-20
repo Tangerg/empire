@@ -55,5 +55,20 @@
   },
   "formalRuntimeIntegration": false,
   "liveGameVerified": false,
-  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved."
+  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3764cf4e-da5a-4a3f-a7e2-f9716c2be449.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "One tan/graphite cylindrical canister encloses a pale cyan anonymous human-memory graphic against an opaque blue chamber. Three bounded cyan echo brackets on each side remain distinct. The two end caps, side rails and orange bottom latches preserve the source containment motif.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-echo-isolation/master.png"
 }

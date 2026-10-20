@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Complete source canvas Lanczos contain44x44, paste centered in 48x48 with 2px transparent margin. No bounds recrop. Offline diagnostic, not formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source 512-on-white.png",
+    "qa-source 512-on-black.png",
+    "qa-source 512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "Exactly three bust profiles overlap: dark left-facing rear profile, blue right-facing middle profile and pale-cyan right-facing foreground profile. Broad opaque planes, separated contours and a large stepped digital seam retain the opposing/overlapping memory-reality cue.",
+  "rawMasterSha256": "f29e62835179680742e8832b505bba0e4f3f967716d20ba56c45c2b8954ac0a5",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48px the dark profile becomes lower contrast on black but its gray edge still identifies the left-facing contour. Nose and mouth notches simplify; the three heads remain distinct. More than the requested three or four step blocks and several larger memory squares remain, matching the original pixelated idea. No fine facial detail or identity is asserted."
+}

@@ -55,5 +55,20 @@
   },
   "formalRuntimeIntegration": false,
   "liveGameVerified": false,
-  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved."
+  "postprocessing": "Reference crops and offline QA only. Generated source bytes and alpha will be preserved.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-93a1bb23-72a5-428c-9bb9-0357e1c04f85.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "One complete stout tan/graphite archive reader carries a front-left upright cyan memory panel showing a dark industrial tower, low remembered buildings and broad clouds. Upper projecting tray and lower control/card pad retain the original relative arrangement. Rear/right housing is reconstructed to complete the portion clipped by the original scene card.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-memory-reveal/master.png"
 }

@@ -1,0 +1,27 @@
+{
+  "topicId": "c02-skill-repair-node",
+  "label": "修复节点",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "One short technical node with a seated cyan top cell stands on a squat octagonal service platform. One articulated mechanical claw works at its side with a small localized cyan service mark. The arm housing and functional platform are complete; the unrelated rail-switch strip and scene backing are absent.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "Small pincer hinges, energy-cell facets and service-mark points simplify at 48 pixels. The node-plus-maintenance-arm silhouette remains legible. The local service mark is retained as bounded action color; no broad exterior aura appears. Some margins are below the requested 8–10 percent, with no clipped equipment.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful redraw. Repair node uses the complete intended source card to exclude adjacent rail-switch contamination and restore its clipped right strip; the maintenance arm is completed and source wall/floor backing excluded. Other motifs use exact original slots. No topic reassignment or invented gameplay effect.",
+  "legacySourceCropDefect": "Uniform crop includes the top strip of the next row rail-switch card at y=913..934 and clips the intended card right strip beyond x=309.",
+  "completeMotifCropBox": [
+    34,
+    638,
+    315,
+    892
+  ]
+}

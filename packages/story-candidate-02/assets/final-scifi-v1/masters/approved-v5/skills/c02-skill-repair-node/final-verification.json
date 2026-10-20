@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-repair-node",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "a727ea3cdadad0c8c816192d1a68da4bcf008afd7dc4c39d68f982e10b89c8a6",
+    "raw-native-v1.png": "a727ea3cdadad0c8c816192d1a68da4bcf008afd7dc4c39d68f982e10b89c8a6",
+    "native.png": "a727ea3cdadad0c8c816192d1a68da4bcf008afd7dc4c39d68f982e10b89c8a6",
+    "master.png": "a727ea3cdadad0c8c816192d1a68da4bcf008afd7dc4c39d68f982e10b89c8a6"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Small pincer hinges, energy-cell facets and service-mark points simplify at 48 pixels. The node-plus-maintenance-arm silhouette remains legible. The local service mark is retained as bounded action color; no broad exterior aura appears. Some margins are below the requested 8–10 percent, with no clipped equipment.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T06:09:35.675206+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "topicId": "c02-skill-publish-cargo",
+  "label": "公开货舱",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "One closed blue-gray/tan cargo container with an orange latch is encircled by exactly two large curved cyan arrows. The closed-case source meaning is retained rather than changed into an open treasure chest.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "Fine box seams and arrow-face shading simplify at 48 pixels. The case, latch accent and two circulating arrows remain readable. The narrowest visible margin is 59 pixels, below the requested 8–10 percent, with both arrowheads intact.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful redraw. Repair node uses the complete intended source card to exclude adjacent rail-switch contamination and restore its clipped right strip; the maintenance arm is completed and source wall/floor backing excluded. Other motifs use exact original slots. No topic reassignment or invented gameplay effect.",
+  "legacySourceCropDefect": null,
+  "completeMotifCropBox": null
+}
