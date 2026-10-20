@@ -1,7 +1,7 @@
 {
-  "updatedUTC": "2026-10-19T16:26:25Z",
+  "updatedUTC": "2026-10-20T04:42:00Z",
   "counting": "Assignments do not imply completion; scope-ledger owns formal stages.",
-  "batches": [
+  "historicalAssignments": [
     {
       "family": "combat",
       "current": [
@@ -46,6 +46,40 @@
       "current": [
         "strict128/256 cliff module adapter and source-index validation"
       ]
+    }
+  ],
+  "historicalAssignmentsAsOfUTC": "2026-10-19T16:26:25Z",
+  "batches": [
+    {
+      "family": "narrative-scenes",
+      "current": [
+        "C01-CH05-S22",
+        "C01-CH05-S24",
+        "C01-CH06-S32",
+        "C01-CH07-S34",
+        "C01-CH07-S33-EST",
+        "C01-CH07-S36E"
+      ]
+    },
+    {
+      "family": "ambient-fx",
+      "current": [
+        "C01-FX-09",
+        "C01-FX-10"
+      ],
+      "review": "FX09 current candidate passes alpha/timing but reset-cohort cadence repair planning; not formally bound. FX10 source generation underway."
+    },
+    {
+      "family": "integration-engineering",
+      "current": [
+        "451-topic full regression",
+        "next reviewed narrative plates"
+      ],
+      "completedFamilies": [
+        "C01 character cards22/22",
+        "C01 canonical terrain32/32"
+      ],
+      "liveGame": "pending"
     }
   ]
 }

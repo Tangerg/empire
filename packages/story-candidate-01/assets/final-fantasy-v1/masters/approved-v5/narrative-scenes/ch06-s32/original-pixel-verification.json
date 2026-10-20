@@ -1,0 +1,22 @@
+{
+  "board": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+  "boardSha256": "d1240b9f9bfaabd4388dac4abace0c70870518b9cef2eaab8d81a2cd6e91117b",
+  "boardSize": [
+    1254,
+    1254
+  ],
+  "catalogSlot": 51,
+  "insetCropBox": [
+    5,
+    5,
+    622,
+    622
+  ],
+  "insetSize": [
+    617,
+    617
+  ],
+  "formula": "Original RGB board -> exact 617px inset -> ImageOps.fit centered Lanczos cover 256x144 -> opaque RGBA",
+  "exactRgbaPixelsMatchOriginalRuntime": true,
+  "runtimeSha256": "86fa9febf62894476a370ce38b6e838e3a93af125ed8244e2539716145c7c742"
+}

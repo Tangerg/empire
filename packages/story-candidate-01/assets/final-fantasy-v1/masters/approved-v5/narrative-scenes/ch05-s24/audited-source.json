@@ -1,0 +1,124 @@
+{
+  "topicId": "C01-CH05-S24",
+  "label": "第一次命令后的安静",
+  "originalNarrativeIndexZeroBased": 49,
+  "subgroup": "chapter-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-CH05-S24",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "第一次命令后的安静",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s24.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+    "sha256": "412ed4ff17d93d893e6fd6b79e2c3a9f9d6fc359b003bb354989d83ff52a200a",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      47,
+      48,
+      49,
+      50
+    ],
+    "cellIndexZeroBased": 2,
+    "columnZeroBased": 0,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-left",
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-CH05-S24",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH05-S24",
+    "topicId": "C01-CH05-S24",
+    "label": "第一次命令后的安静",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch05-s24.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch05-s24.png",
+    "sha256": "a9830b4f442cb8056e000b5849d3c616876eef74aaa4cecf89687868da743e2e",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": false,
+  "consumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}

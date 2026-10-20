@@ -1,0 +1,1 @@
+UNSUBMITTED DRAFT ONLY. No second imagegen call was made. Parent retained the full first scene because no actual narrow consumer exists. The historical draft request references the prior working review path; it is not an executed provenance record. The selected generation is root request.json and root master.png.

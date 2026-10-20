@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-CH07-S36E",
+  "rawMode": "RGB",
+  "nativeSize": [
+    1671,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "zeroAlphaPixels": 0,
+  "partialAlphaPixels": 0,
+  "opaquePixels": 1572411,
+  "rawEqualsNativeEqualsMaster": true,
+  "sha256": "a3a89ed1676258459abfaacb6a46e2c40c03ad43a97aecd8d66d08778731803c",
+  "formalIntegerCrop": [
+    3,
+    2,
+    1667,
+    938
+  ],
+  "croppedExportSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "cropLossPx": {
+    "left": 3,
+    "top": 2,
+    "right": 4,
+    "bottom": 3
+  },
+  "cropReason": "Largest centered integer 16:9 crop, tiny explicit edge removal for deterministic source-native export. Full authored native master preserved byte-for-byte.",
+  "opaqueSceneIntentional": true,
+  "countsAsTransparentSprite": false,
+  "programmaticArtworkChanges": false,
+  "qaOnlyDerivatives": [
+    "qa-source-native-*.png",
+    "qa-exact-crop-512x288.png",
+    "qa-logical-256x144.png",
+    "qa-full-native-preview.png",
+    "qa-cover-*.png",
+    "qa-covers-contact-sheet.png"
+  ],
+  "generationAttempts": 1,
+  "tool": "built-in image_gen",
+  "browserOrLiveVerification": false,
+  "formalBinding": false
+}

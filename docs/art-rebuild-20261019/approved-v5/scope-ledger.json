@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 451,
+    "formalBound": 453,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 64,
+      "narrative-static": 66,
       "skill": 48,
       "status": 24,
       "terrain": 32
     },
-    "rawPreservedTopics": 452,
+    "rawPreservedTopics": 454,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -802,13 +802,20 @@
       "category": "narrative-static",
       "label": "七塔王城终局远景",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch07-s33-est/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch07-s33-est.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S33 seven major capital towers in fortified civic setting; S36E ordinary-seat older Leia in contested water-budget council and freely flying unridden Ivra. Water-gate banners are authored generic civic motifs, not recovered faction heraldry",
+        "export": "Exact1664x936 crop, S33[4,2,1668,938] and S36E[3,2,1667,938] from measured1672/1671 widths, nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+        "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+        "liveGame": "pending; static source/native/cover QA only"
+      }
     },
     {
       "topicId": "C01-CH07-S34",
@@ -830,13 +837,20 @@
       "category": "narrative-static",
       "label": "最后议会与无骑龙影",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch07-s36e/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch07-s36e.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S33 seven major capital towers in fortified civic setting; S36E ordinary-seat older Leia in contested water-budget council and freely flying unridden Ivra. Water-gate banners are authored generic civic motifs, not recovered faction heraldry",
+        "export": "Exact1664x936 crop, S33[4,2,1668,938] and S36E[3,2,1667,938] from measured1672/1671 widths, nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+        "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+        "liveGame": "pending; static source/native/cover QA only"
+      }
     },
     {
       "topicId": "C01-CHAR-ADA-01",

@@ -1,0 +1,215 @@
+{
+  "status": "study-only; awaiting parent approval before imagegen",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "placementUnchanged": true,
+  "currentQuartetStatus": "export-verified candidate; not formal complete",
+  "redrawPhases": [
+    "rainfall",
+    "splash-onset",
+    "splash-crown",
+    "rain-renewal"
+  ],
+  "dropBodySize": [
+    114,
+    170
+  ],
+  "contactY": 1075,
+  "entryTopY": 80,
+  "entryBottomY": 250,
+  "survivorStep": [
+    -30,
+    260
+  ],
+  "frames": [
+    {
+      "phase": "rainfall",
+      "drops": {
+        "left": [
+          362,
+          340,
+          476,
+          510
+        ],
+        "center": [
+          558,
+          860,
+          672,
+          1030
+        ],
+        "right": [
+          778,
+          600,
+          892,
+          770
+        ]
+      },
+      "newCohorts": []
+    },
+    {
+      "phase": "splash-onset",
+      "drops": {
+        "left": [
+          332,
+          600,
+          446,
+          770
+        ],
+        "center": [
+          648,
+          80,
+          762,
+          250
+        ],
+        "right": [
+          748,
+          860,
+          862,
+          1030
+        ]
+      },
+      "newCohorts": [
+        "center"
+      ]
+    },
+    {
+      "phase": "splash-crown",
+      "drops": {
+        "left": [
+          302,
+          860,
+          416,
+          1030
+        ],
+        "center": [
+          618,
+          340,
+          732,
+          510
+        ],
+        "right": [
+          838,
+          80,
+          952,
+          250
+        ]
+      },
+      "newCohorts": [
+        "right"
+      ]
+    },
+    {
+      "phase": "rain-renewal",
+      "drops": {
+        "left": [
+          392,
+          80,
+          506,
+          250
+        ],
+        "center": [
+          588,
+          600,
+          702,
+          770
+        ],
+        "right": [
+          808,
+          340,
+          922,
+          510
+        ]
+      },
+      "newCohorts": [
+        "left"
+      ]
+    }
+  ],
+  "survivingTransitionsVerified": [
+    {
+      "from": "rainfall",
+      "to": "splash-onset",
+      "lane": "left",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "rainfall",
+      "to": "splash-onset",
+      "lane": "right",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "splash-onset",
+      "to": "splash-crown",
+      "lane": "left",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "splash-onset",
+      "to": "splash-crown",
+      "lane": "center",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "splash-crown",
+      "to": "rain-renewal",
+      "lane": "center",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "splash-crown",
+      "to": "rain-renewal",
+      "lane": "right",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "rain-renewal",
+      "to": "rainfall",
+      "lane": "left",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "rain-renewal",
+      "to": "rainfall",
+      "lane": "center",
+      "delta": [
+        -30,
+        260
+      ]
+    },
+    {
+      "from": "rain-renewal",
+      "to": "rainfall",
+      "lane": "right",
+      "delta": [
+        -30,
+        260
+      ]
+    }
+  ],
+  "browserAttemptsPlanned": false,
+  "generationCallsPerformedForStudy": 0
+}

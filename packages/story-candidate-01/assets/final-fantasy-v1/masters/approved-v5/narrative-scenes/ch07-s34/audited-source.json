@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-CH07-S34",
+  "label": "万人跪拜之城",
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH07-S34",
+    "topicId": "C01-CH07-S34",
+    "label": "万人跪拜之城",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch07-s34.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene",
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch07-s34.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "opaque-scene",
+    "derived_outputs": []
+  },
+  "originalAudit": {
+    "assetId": "C01-FFV1-CH07-S34",
+    "topicId": "C01-CH07-S34",
+    "label": "万人跪拜之城",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch07-s34.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene",
+    "fileSha256": "52425dcf96dcc505fc99bd299e5c1a39f0ecb38cc3e73c6fcc02c00f4d0fcecb",
+    "pixelSha256": "2862cee73f2bb708f4c622696478059a5ec9094406039b157d891573c90e6d0b",
+    "mode": "RGBA",
+    "actualSize": [
+      256,
+      144
+    ],
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "exactLegacyMatches": [
+      {
+        "slot": 52,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "kind": "scene",
+        "size": [
+          256,
+          144
+        ]
+      }
+    ],
+    "catalogSlot": 52,
+    "documentedSource": {
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+      "boardCell": 1,
+      "cropBox": [
+        632,
+        5,
+        1249,
+        622
+      ]
+    },
+    "hasDirectConsumer": false
+  },
+  "actualUse": false,
+  "exportContract": "Opaque 256x144 logical narrative scene; full native immutable master. Source-native physical export largest centered integer 16:9 crop; no invented anchor or frames.",
+  "originalReconstructionMatchesCurrentPixels": true,
+  "sourceAuthority": "Final deep-novel-v2 prose controls narrative timing and agency. Original full board, inset cell and canonical label verified independently; original visual alone does not establish story correctness.",
+  "masterAlphaContract": "Opaque narrative artwork; never counted as a transparent sprite."
+}

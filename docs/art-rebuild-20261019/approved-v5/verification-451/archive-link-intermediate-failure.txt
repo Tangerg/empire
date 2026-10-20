@@ -1,0 +1,48 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> empire-srpg-workspace@0.1.0 test
+> vitest run packages/battle-engine/src/__tests__/architecture-boundaries.test.ts --maxWorkers=2 --minWorkers=1
+
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ❯ packages/battle-engine/src/__tests__/architecture-boundaries.test.ts (104 tests | 1 failed) 2746ms
+   ✓ dependency injection invariants > computes no answer nobody asks for 301ms
+   ✓ the battle screen is its own screen > emits no class or data attribute that nothing reads 565ms
+   × one answer per question > links only to files that exist 128ms
+     → expected [ …(2) ] to deeply equal []
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/battle-engine/src/__tests__/architecture-boundaries.test.ts > one answer per question > links only to files that exist
+AssertionError: expected [ …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "docs/art-rebuild-20261019/approved-v5/fx/ambient-contract/evidence/docs/story-candidates/candidate-01/art-assets/03-runtime-inventory.md -> ../../../../packages/story-candidate-01/assets/final-fantasy-v1/README.md",
++   "docs/art-rebuild-20261019/approved-v5/fx/ambient-contract/evidence/docs/story-candidates/candidate-01/art-assets/03-runtime-inventory.md -> ../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/README.md",
++ ]
+
+ ❯ packages/battle-engine/src/__tests__/architecture-boundaries.test.ts:3405:20
+    3403|     // A guard that found no documents would pass by having read nothi…
+    3404|     expect(docs.length).toBeGreaterThan(40);
+    3405|     expect(broken).toEqual([]);
+       |                    ^
+    3406|   });
+    3407| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 103 passed (104)
+   Start at  12:46:35
+   Duration  7.26s (transform 2.46s, setup 0ms, collect 4.03s, tests 2.75s, environment 0ms, prepare 82ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

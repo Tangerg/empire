@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-CH06-S32",
+  "label": "联盟失联后自行行动",
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH06-S32",
+    "topicId": "C01-CH06-S32",
+    "label": "联盟失联后自行行动",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch06-s32.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene",
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch06-s32.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "opaque-scene",
+    "derived_outputs": []
+  },
+  "originalAudit": {
+    "assetId": "C01-FFV1-CH06-S32",
+    "topicId": "C01-CH06-S32",
+    "label": "联盟失联后自行行动",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch06-s32.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene",
+    "fileSha256": "86fa9febf62894476a370ce38b6e838e3a93af125ed8244e2539716145c7c742",
+    "pixelSha256": "fe903df16fcecc2584378e1b166863dc99b27f74fa3805813dcaa492d6bffe72",
+    "mode": "RGBA",
+    "actualSize": [
+      256,
+      144
+    ],
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "exactLegacyMatches": [
+      {
+        "slot": 51,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "kind": "scene",
+        "size": [
+          256,
+          144
+        ]
+      }
+    ],
+    "catalogSlot": 51,
+    "documentedSource": {
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+      "boardCell": 0,
+      "cropBox": [
+        5,
+        5,
+        622,
+        622
+      ]
+    },
+    "hasDirectConsumer": false
+  },
+  "actualUse": false,
+  "exportContract": "Opaque 256x144 logical narrative scene; full native immutable master. Source-native physical export largest centered integer 16:9 crop; no invented anchor or frames.",
+  "originalReconstructionMatchesCurrentPixels": true,
+  "sourceAuthority": "Final deep-novel-v2 prose controls narrative timing and agency. Original full board, inset cell and canonical label verified independently; original visual alone does not establish story correctness.",
+  "masterAlphaContract": "Opaque narrative artwork; never counted as a transparent sprite."
+}

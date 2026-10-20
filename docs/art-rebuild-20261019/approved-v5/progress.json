@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 65,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 451,
+  "formalRuntimeBoundTopics": 453,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -2780,6 +2780,18 @@
       "export": "Historical masks at32/64 unchanged; variants1/3 and NESW2/4. Parent reviewed all native fixture boards: compact ledges and storm motif survive isolated masks, rug variants remain intact. Repeated rugs are not generic floor; narrow NESW masks do not establish broad battlefield terrain cohesion",
       "runtimeBinding": "Canonical catalog and HD resolver only; no active battlefield ground consumer. Four identities,40 derived cells per density; no environment count increment or gameplay topology change",
       "liveGame": "pending; catalog mask/edge review only"
+    },
+    "C01-CH07-S33-EST": {
+      "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S33 seven major capital towers in fortified civic setting; S36E ordinary-seat older Leia in contested water-budget council and freely flying unridden Ivra. Water-gate banners are authored generic civic motifs, not recovered faction heraldry",
+      "export": "Exact1664x936 crop, S33[4,2,1668,938] and S36E[3,2,1667,938] from measured1672/1671 widths, nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+      "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+      "liveGame": "pending; static source/native/cover QA only"
+    },
+    "C01-CH07-S36E": {
+      "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S33 seven major capital towers in fortified civic setting; S36E ordinary-seat older Leia in contested water-budget council and freely flying unridden Ivra. Water-gate banners are authored generic civic motifs, not recovered faction heraldry",
+      "export": "Exact1664x936 crop, S33[4,2,1668,938] and S36E[3,2,1667,938] from measured1672/1671 widths, nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+      "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+      "liveGame": "pending; static source/native/cover QA only"
     }
   },
   "supplementalBundles": {
@@ -3207,10 +3219,10 @@
       "scope": "431 formally bound topics, after S00 classification and scene/terrain/FX08 integration",
       "evidence": "verification-431/full-typescript.txt"
     },
-    "latestBindingAndEdges": "431 checkpoint:199 scene/asset TS,67 canonical terrain/FX TS;29 scene exporter,17 generic exporter,14 terrain,26 FX and15 ledger Python tests passed",
+    "latestBindingAndEdges": "451:34 canonical terrain TS and14 terrain Python;446:205 scene/assets/ivra TS+23 all-card source tests+61 narrative Python;442:19 selected-card/runtime tests;15 ledger Python passed",
     "artPythonLatest": "189 exporter tests plus15 ledger tests passed after S00 classification and cemetery HD registration",
-    "typecheckLatest": "passed at431-topic snapshot",
-    "appBuildsLatest": "all4 passed at431-topic checkpoint; experience-lab single-file output169924.34kB (gzip127403.02kB), bundle-size concern recorded, not browser-load verified"
+    "typecheckLatest": "passed at451-topic snapshot",
+    "appBuildsLatest": "all4 passed at431; experience-lab intentional offline file:// single-file build169924.34kB per README/vite contract, while game app uses external PNG URLs. Browser load not verified."
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

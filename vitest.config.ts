@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 /**
  * The test runner's configuration, and nothing else.
@@ -12,4 +12,10 @@ import { defineConfig } from 'vitest/config';
  * A setup file that installed content ambiently made every suite share one
  * namespace, which hid conflicts and made isolation untestable.
  */
-export default defineConfig({});
+export default defineConfig({
+  test: {
+    // Archived proposals and harness copies are evidence, not a second test owner.
+    // Their integrated equivalents remain under packages/ and run normally.
+    exclude: [...configDefaults.exclude, 'docs/art-rebuild-20261019/**'],
+  },
+});
