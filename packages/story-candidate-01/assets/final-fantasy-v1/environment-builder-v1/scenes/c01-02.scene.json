@@ -13,8 +13,92 @@
     "protectedCells": []
   },
   "selection": {
-    "allowAtlases": []
+    "allowAtlases": [
+      "forest-temperate"
+    ]
   },
-  "zones": [],
-  "placements": []
+  "zones": [
+    {
+      "id": "clearing-19-5",
+      "bounds": [
+        19,
+        5,
+        19,
+        5
+      ],
+      "role": "river-battle-clearing",
+      "authoredTerrainScenery": [
+        "forest"
+      ]
+    },
+    {
+      "id": "clearing-2-9",
+      "bounds": [
+        2,
+        9,
+        2,
+        9
+      ],
+      "role": "river-battle-clearing",
+      "authoredTerrainScenery": [
+        "forest"
+      ]
+    },
+    {
+      "id": "clearing-19-9",
+      "bounds": [
+        19,
+        9,
+        19,
+        9
+      ],
+      "role": "river-battle-clearing",
+      "authoredTerrainScenery": [
+        "forest"
+      ]
+    },
+    {
+      "id": "clearing-2-13",
+      "bounds": [
+        2,
+        13,
+        2,
+        13
+      ],
+      "role": "river-battle-clearing",
+      "authoredTerrainScenery": [
+        "forest"
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": "fern-bed",
+      "x": 19.5,
+      "y": 5.18,
+      "layer": "under-units",
+      "scale": 0.48
+    },
+    {
+      "id": "stump-low",
+      "x": 2.5,
+      "y": 9.18,
+      "layer": "under-units",
+      "scale": 0.42
+    },
+    {
+      "id": "fern-bed",
+      "x": 19.5,
+      "y": 9.18,
+      "layer": "under-units",
+      "scale": 0.48
+    },
+    {
+      "id": "stump-low",
+      "x": 2.5,
+      "y": 13.18,
+      "layer": "under-units",
+      "scale": 0.42
+    }
+  ]
 }
