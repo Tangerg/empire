@@ -1,0 +1,29 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-4",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "cropXYXY": [
+    1333,
+    3,
+    1771,
+    441
+  ],
+  "cropSize": [
+    438,
+    438
+  ],
+  "slotSHA256": "a6a0139aa3c7a1a995ee4384cc326318bb5307c584034f36d07bb5954522b3c5",
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Dark paving with brass rails or archive machinery strips and scattered parchment",
+  "originalSlotVisuallyInspected": true,
+  "rawSourceVisuallyInspected": true,
+  "redrawInterpretation": "Dark rectangular archive-furnace paving with four local brass rail segments, two complete circular couplings and seven visible scattered tan parchment scraps.",
+  "semanticChangesAndLimits": [
+    "The upper-left short rail continues to the top canvas edge and a lower-right cross strip continues to the right edge. Circular couplings remain complete. Broad crop windows should preserve local coupling groups deliberately.",
+    "Parchment is mottled and crumpled rather than the requested single fold plane, but has no legible writing. Native crop review must verify it reads as small ground paper rather than oversized debris.",
+    "Stone faces contain more age cracking and mottled planes than requested, so native-scale density and metal contrast remain a review gate."
+  ],
+  "originalExportMode": "variants",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true
+}

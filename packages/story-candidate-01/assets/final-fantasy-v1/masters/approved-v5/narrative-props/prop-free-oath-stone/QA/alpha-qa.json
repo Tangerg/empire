@@ -1,0 +1,98 @@
+{
+  "source": {
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 816296,
+    "partialPixels": 754384,
+    "opaquePixels": 1836,
+    "nearOpaquePixels": 734133,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 120,
+    "alphaBoundingBox": [
+      0,
+      0,
+      1240,
+      1254
+    ],
+    "alpha8BoundingBox": [
+      77,
+      154,
+      1177,
+      1178
+    ]
+  },
+  "contain128": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 8377,
+    "partialPixels": 7617,
+    "opaquePixels": 390,
+    "nearOpaquePixels": 6825,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      7,
+      2,
+      121,
+      123
+    ],
+    "alpha8BoundingBox": [
+      9,
+      17,
+      119,
+      119
+    ]
+  },
+  "wholeCanvasResize": {
+    "source": [
+      1254,
+      1254
+    ],
+    "target": [
+      128,
+      128
+    ],
+    "fit": [
+      124,
+      124
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "crop": null
+  },
+  "composites": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-free-oath-stone/QA/native128-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-free-oath-stone/QA/native128-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-free-oath-stone/QA/native128-olive.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-free-oath-stone/QA/native128-dark.png"
+  ],
+  "sourceBytesUnmodified": true,
+  "alphaCleanup": false,
+  "chromaKey": false,
+  "bboxFit": false,
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-afd02f92-2fc9-498d-866c-90b314c2abf2.png",
+  "visualReview": {
+    "status": "pass",
+    "original617Inspected": true,
+    "nativeSourceInspected": true,
+    "fourActual128BackgroundsInspected": true,
+    "referenceFidelity": true,
+    "notes": "Pass. Singular canonical two-slab stone object, low split stone base, loose chips, sparse nonverbal notches and dark iron ring with top sleeve retained. The central split and visible ring aperture are genuinely transparent. This is not represented as the planned seven-stone final ending. Actual128 remains legible on all four backgrounds. Source boundary max alpha1 at120 sampled edge pixels; no visible fringe or cutoff in native black/white/dark review; alpha retained unchanged."
+  }
+}

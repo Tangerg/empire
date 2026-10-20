@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-4",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-4d1e5125-85dc-420a-9138-4f65e4b5d3c3.png",
+  "master": "master.png",
+  "sourceSHA256": "93ebe4cf3d5ae13ba457223cce85b3bf2e6e2a3180732a7eb3a110f33c7e8327",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Dark rectangular archive-furnace paving with four local brass rail segments, two complete circular couplings and seven visible scattered tan parchment scraps.",
+    "style": "Broad matte shapes, source-grounded industrial ground details; no new writing, global building or character scene.",
+    "caveats": [
+      "The upper-left short rail continues to the top canvas edge and a lower-right cross strip continues to the right edge. Circular couplings remain complete. Broad crop windows should preserve local coupling groups deliberately.",
+      "Parchment is mottled and crumpled rather than the requested single fold plane, but has no legible writing. Native crop review must verify it reads as small ground paper rather than oversized debris.",
+      "Stone faces contain more age cracking and mottled planes than requested, so native-scale density and metal contrast remain a review gate.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticMaterialIdentityRetained": true,
+    "nativeCropAndMaskAcceptancePending": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero current active ground consumers"
+  }
+}

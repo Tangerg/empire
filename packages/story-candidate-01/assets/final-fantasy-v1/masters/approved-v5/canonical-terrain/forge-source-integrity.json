@@ -1,0 +1,65 @@
+{
+  "authoredMaterialCount": 4,
+  "builtInImagegenCalls": 4,
+  "derivedCellsPerDensity": 28,
+  "rawSourceAcceptanceOnly": true,
+  "exportOrCatalogChanges": false,
+  "sources": [
+    {
+      "topicId": "C01-TERRAIN-FORGE-1",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/forge-1",
+      "sha256": "1db1cb370c1603686f96daf7fcf56af622d5752f3409e830c3c9f80e11af140e",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "checks": "exact prompt/request; all references and source hashes match; raw master unchanged; files present",
+      "authoredMaterialCount": 1,
+      "derivedCellsPerDensity": 4,
+      "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending"
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-2",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/forge-2",
+      "sha256": "5d492fde387e0e9481e8dcdab71efc6adeeb16a4fcdbd734924ecb1ebd1bf271",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "checks": "exact prompt/request; all references and source hashes match; raw master unchanged; files present",
+      "authoredMaterialCount": 1,
+      "derivedCellsPerDensity": 16,
+      "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending"
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-3",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/forge-3",
+      "sha256": "426239d5048e36dae58b780e57e663a32396c745982c75cc04b8f59734bbc8b6",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "checks": "exact prompt/request; all references and source hashes match; raw master unchanged; files present",
+      "authoredMaterialCount": 1,
+      "derivedCellsPerDensity": 4,
+      "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending"
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-4",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/forge-4",
+      "sha256": "93ebe4cf3d5ae13ba457223cce85b3bf2e6e2a3180732a7eb3a110f33c7e8327",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "checks": "exact prompt/request; all references and source hashes match; raw master unchanged; files present",
+      "authoredMaterialCount": 1,
+      "derivedCellsPerDensity": 4,
+      "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending"
+    }
+  ]
+}

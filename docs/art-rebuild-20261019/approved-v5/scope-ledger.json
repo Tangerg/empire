@@ -4,13 +4,13 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 388,
+    "formalBound": 389,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 4,
+      "fx": 5,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -7703,15 +7703,24 @@
       "label": "普通火焰",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/embers/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/embers-rejected-v1/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/embers-repair-v2/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/flare/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/ignite/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/rise/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-05.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four immutable RGBA phases ignite/rise/flare/embers preserve ordinary orange fire; all source perimeters0; repaired embers truealpha max121 with original too-opaque failure retained",
+        "export": "One shared1254 canvas scale28/1254 at[2,2]; exact32/64 phase export checked; genuine partial-alpha finalphase preserved; five-background native review passed; authored fire root lies x+0.04..0.67 and y+11.74..12.19logical from fixed center, no per-phase alignment",
+        "runtimeBinding": "Canonical FX05 and density2 HD resolver; actual existing c01.dragon-breath target hit binding;12fps nonloop with existing420ms hit lifetime; centered anchor16,16 preserves prior runtime placement",
+        "liveGame": "pending; exact-duration APNG and static phase comparisons only, no browser/GPU playback verification"
+      }
     },
     {
       "topicId": "C01-FX-06",

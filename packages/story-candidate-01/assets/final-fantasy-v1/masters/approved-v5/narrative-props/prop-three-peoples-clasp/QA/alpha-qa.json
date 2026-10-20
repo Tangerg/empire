@@ -1,0 +1,98 @@
+{
+  "source": {
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 927322,
+    "partialPixels": 643088,
+    "opaquePixels": 2106,
+    "nearOpaquePixels": 616340,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 23,
+    "alphaBoundingBox": [
+      31,
+      28,
+      1238,
+      1254
+    ],
+    "alpha8BoundingBox": [
+      66,
+      76,
+      1203,
+      1210
+    ]
+  },
+  "contain128": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 9353,
+    "partialPixels": 6649,
+    "opaquePixels": 382,
+    "nearOpaquePixels": 5672,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      6,
+      7,
+      124,
+      124
+    ],
+    "alpha8BoundingBox": [
+      8,
+      9,
+      121,
+      122
+    ]
+  },
+  "wholeCanvasResize": {
+    "source": [
+      1254,
+      1254
+    ],
+    "target": [
+      128,
+      128
+    ],
+    "fit": [
+      124,
+      124
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "crop": null
+  },
+  "composites": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/QA/native128-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/QA/native128-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/QA/native128-olive.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/QA/native128-dark.png"
+  ],
+  "sourceBytesUnmodified": true,
+  "alphaCleanup": false,
+  "chromaKey": false,
+  "bboxFit": false,
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fa078722-22df-4d32-ae64-9affd3a87f48.png",
+  "visualReview": {
+    "status": "pass",
+    "original617Inspected": true,
+    "nativeSourceInspected": true,
+    "fourActual128BackgroundsInspected": true,
+    "referenceFidelity": true,
+    "notes": "Pass. Olive braid, plain brass sleeve, angular bronze links, cool steel clasp links and tied rust-red cloth with loose pointed tails stay distinct. Original ring construction and large transparent center are retained with visible mechanically separable interlocks. No crown, insignia or welded single-metal empire ring. All four actual128 backgrounds read clearly. Source boundary max alpha1 at23 sampled edge pixels; no visible fringe or cutoff in native black/white/dark review; alpha retained unchanged."
+  }
+}

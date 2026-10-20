@@ -1,0 +1,3 @@
+Pass. Olive braid, plain brass sleeve, angular bronze links, cool steel clasp links and tied rust-red cloth with loose pointed tails stay distinct. Original ring construction and large transparent center are retained with visible mechanically separable interlocks. No crown, insignia or welded single-metal empire ring. All four actual128 backgrounds read clearly. Source boundary max alpha1 at23 sampled edge pixels; no visible fringe or cutoff in native black/white/dark review; alpha retained unchanged.
+
+Inspected original617px, native1254px transparent source and white/dark composites, exact128 four backgrounds, reference-fidelity comparison. No source processing; no repository, Git, production or export writes.

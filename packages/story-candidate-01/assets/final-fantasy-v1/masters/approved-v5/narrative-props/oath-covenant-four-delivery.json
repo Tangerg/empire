@@ -1,0 +1,90 @@
+{
+  "scope": "Four canonical oath/covenant key-prop faithful restyles, source-art readiness only",
+  "tool": "built-in image_gen.imagegen",
+  "generationCalls": 4,
+  "rejectedAttempts": 0,
+  "sources": [
+    {
+      "slug": "prop-control-fragment",
+      "topicId": "C01-PROP-CONTROL-FRAGMENT",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-control-fragment/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-control-fragment/sourceproof.json",
+      "sha256": "73d7b6604999ad3dcb74557f3d5d01f85c708261cd805e68fa21fdec985baba6",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "edgeMaxAlpha": 0,
+      "edgeNonzeroSamples": 0,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true
+    },
+    {
+      "slug": "prop-dragon-alliance-clasp",
+      "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-dragon-alliance-clasp/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-dragon-alliance-clasp/sourceproof.json",
+      "sha256": "4dc47debc85fe807861911e9ad1cb76f91ec09f305e6914876aa1f332893234b",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroSamples": 2,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true
+    },
+    {
+      "slug": "prop-free-oath-stone",
+      "topicId": "C01-PROP-FREE-OATH-STONE",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-free-oath-stone/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-free-oath-stone/sourceproof.json",
+      "sha256": "07ee0f21c5db3cde62329f2f92d4291dc208dbf668e4dc1581e5c26d848e9e7d",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroSamples": 120,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true
+    },
+    {
+      "slug": "prop-three-peoples-clasp",
+      "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/master.png",
+      "sourceproof": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-three-peoples-clasp/sourceproof.json",
+      "sha256": "6f6e1c546cb475e2c77bf9570f66d1f77587a05a53d0f4a02f03f6026bb00546",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroSamples": 23,
+      "selectedAttempt": 1,
+      "generationCalls": 1,
+      "rejectedAttempts": [],
+      "qaPass": true,
+      "fidelityPass": true
+    }
+  ],
+  "overview": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/oath-covenant-four-native128-review.png",
+  "sourceProcessing": "None. Generated/native/raw/master bytes identical; no alpha cleanup, source crop or resize.",
+  "qaDerivative": "Whole native1254px square contain124px LANCZOS then unmasked paste at2,2 on128px RGBA. Four actual128 backgrounds and native-source composites inspected.",
+  "repositoryOrProductionWrites": false,
+  "semanticConstraints": [
+    "CONTROL preserves only original nonverbal marks; no invented spell or will/name/witness glyph language claims.",
+    "DRAGON is gold rings, gray cloth, red scale pendant; no ownership/bridle implication.",
+    "FREE is the original singular two-slab/ring object, not final-ending seven stones.",
+    "THREE retains braid, separable metal links, rust cloth and open center; no crown or welded empire insignia."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-3",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-968a0ef0-0841-4db1-8d16-d1ad4492d776.png",
+  "master": "master.png",
+  "sourceSHA256": "426239d5048e36dae58b780e57e663a32396c745982c75cc04b8f59734bbc8b6",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Dark fitted hexagonal stone paving with restrained bronze edge strips, simple angular elbows and three complete small outlined diamond junctions.",
+    "style": "Broad matte shapes, source-grounded industrial ground details; no new writing, global building or character scene.",
+    "caveats": [
+      "Source-local diamond connector geometry is preserved without legible runes, script, magical seal or central emblem.",
+      "Stone faces have low-contrast mottling and visible age cracks; this exceeds the prompt minimal texture target and needs actual 32/64 density review.",
+      "Broad same-scale crop windows should retain complete diamond junctions where selected; there are no full-canvas ornaments.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticMaterialIdentityRetained": true,
+    "nativeCropAndMaskAcceptancePending": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero current active ground consumers"
+  }
+}

@@ -1,0 +1,3 @@
+Pass. Singular canonical two-slab stone object, low split stone base, loose chips, sparse nonverbal notches and dark iron ring with top sleeve retained. The central split and visible ring aperture are genuinely transparent. This is not represented as the planned seven-stone final ending. Actual128 remains legible on all four backgrounds. Source boundary max alpha1 at120 sampled edge pixels; no visible fringe or cutoff in native black/white/dark review; alpha retained unchanged.
+
+Inspected original617px, native1254px transparent source and white/dark composites, exact128 four backgrounds, reference-fidelity comparison. No source processing; no repository, Git, production or export writes.

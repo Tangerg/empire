@@ -1,0 +1,29 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-3",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "cropXYXY": [
+    890,
+    3,
+    1327,
+    441
+  ],
+  "cropSize": [
+    437,
+    438
+  ],
+  "slotSHA256": "56a506cc953624d85445e761118e9c809e06039cd1c4860f9eb0cf6f1b17bbce",
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Dark hexagonal stone tiles with bronze rune seams and small junction emblems",
+  "originalSlotVisuallyInspected": true,
+  "rawSourceVisuallyInspected": true,
+  "redrawInterpretation": "Dark fitted hexagonal stone paving with restrained bronze edge strips, simple angular elbows and three complete small outlined diamond junctions.",
+  "semanticChangesAndLimits": [
+    "Source-local diamond connector geometry is preserved without legible runes, script, magical seal or central emblem.",
+    "Stone faces have low-contrast mottling and visible age cracks; this exceeds the prompt minimal texture target and needs actual 32/64 density review.",
+    "Broad same-scale crop windows should retain complete diamond junctions where selected; there are no full-canvas ornaments."
+  ],
+  "originalExportMode": "variants",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true
+}

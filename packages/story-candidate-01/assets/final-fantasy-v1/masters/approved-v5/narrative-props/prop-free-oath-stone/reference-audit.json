@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-FREE-OATH-STONE",
+  "label": "自由誓石",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-FREE-OATH-STONE",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "自由誓石",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-free-oath-stone.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-FREE-OATH-STONE",
+    "topicId": "C01-PROP-FREE-OATH-STONE",
+    "label": "自由誓石",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-free-oath-stone.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+    "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 1,
+    "slot": "TR",
+    "originalNarrativeIndexZeroBased": 15,
+    "fullCellCropBox": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-free-oath-stone/full-cell.png",
+        "sourceCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "26d2547c729ad4f2d42c13f19922ca6cc1ef00bb041e42878665b46c36a81259",
+        "pixelSha256": "d31af478eeccc6c59b15ad47a45eee352546d4f3e38cbb9778951ca1d884c5b5",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-free-oath-stone/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "c7428f188f6e37302729b5b273398ccd6e8003bbd85bc3a68e0eba3c441c5ba3",
+        "pixelSha256": "c098499a5f3ffde6a87d7fbd1882cf5264ec2488fff9049ac18112ca69d58e83",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-free-oath-stone.png",
+    "sha256": "db78fd2d869c90282e78329ffa270595238d0657308e0e33835c88922cb45399",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 10424,
+      "partialPixels": 5874,
+      "opaquePixels": 86,
+      "nearOpaquePixels": 346,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        123,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Two split upright stone slabs on a broken stone base, connected by a dark iron ring; incised nonverbal marks.",
+    "semanticRequirements": "Canonical singular STONE is not the planned plural FREE-OATH-STONES. Ending prose calls for seven differently shaped stones, independent holders, and no recombination into a crown.",
+    "riskOrHold": "Identity scope hold for a narrative-accurate final-ending asset. Preserve this specific singular canonical object until intentionally redesigned.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        28,
+        28
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        118,
+        118
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/07-throne-without-king-novel.md",
+      "lines": [
+        477,
+        503
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

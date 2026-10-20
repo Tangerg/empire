@@ -1,0 +1,177 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-3",
+  "label": "符文地面",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-FORGE-3",
+    "topicId": "C01-TERRAIN-FORGE-3",
+    "label": "符文地面",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-forge-3.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-3.png",
+      "sha256": "740ea025a23beb31b313eef8c496dcc3c679215fcf0e9c59e4ce7aaf1051e723",
+      "pixelSHA256": "abb297bcad830314e3b5e09592c5042ca9c6750a8ff89004ffac95bb1eb1b7a1",
+      "dimensions": [
+        128,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      },
+      "alphaBounds": [
+        0,
+        0,
+        128,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-forge-3.png",
+      "sha256": "2cfc60495c84d08ec6ecf97f0808de906910415e63111a832ff32e89ae533c98",
+      "pixelSHA256": "cc1f0b2fc6ff74fc02439c61b8eb02fd21968842dc861a4b3ae7cb1b67d2850b",
+      "dimensions": [
+        256,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 16384
+      },
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      18
+    ],
+    "2": [
+      18
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 18,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+    "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+    "slotRow": 0,
+    "slotColumn": 2,
+    "slotNumber1Based": 3,
+    "cropXYXY": [
+      890,
+      3,
+      1327,
+      441
+    ],
+    "cropSize": [
+      437,
+      438
+    ],
+    "variantCropXYXY": [
+      [
+        894,
+        8,
+        1165,
+        279
+      ],
+      [
+        1052,
+        8,
+        1323,
+        279
+      ],
+      [
+        894,
+        165,
+        1165,
+        436
+      ],
+      [
+        1052,
+        165,
+        1323,
+        436
+      ]
+    ],
+    "tileMode": "variants"
+  },
+  "observedSourceIdentity": "Dark hexagonal stone tiles with bronze rune seams and small junction emblems",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Intact paving material; avoid inventing legible text or new rune symbols",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 7.686,
+      "maxRGBDifference": 52
+    },
+    "2": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 10.158,
+      "maxRGBDifference": 72
+    }
+  },
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/canonical-terrain-mapping.json",
+  "auditSHA256": "c3a20718befac0c200de3d118775f008a83a133f708011260b33f249b04030fd",
+  "exactUneditedSlotCrop": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/forge-3/canonical-source-slot.png",
+  "slotSHA256": "56a506cc953624d85445e761118e9c809e06039cd1c4860f9eb0cf6f1b17bbce"
+}

@@ -1,0 +1,167 @@
+{
+  "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+  "label": "三族盟约扣件",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "三族盟约扣件",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-three-peoples-clasp.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-THREE-PEOPLES-CLASP",
+    "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+    "label": "三族盟约扣件",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-three-peoples-clasp.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+    "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 3,
+    "slot": "BR",
+    "originalNarrativeIndexZeroBased": 21,
+    "fullCellCropBox": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-three-peoples-clasp/full-cell.png",
+        "sourceCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "bf0219c7b5872ee0dbe1e55f8cce0c2ce422e873a8680e296c5e945e9005426c",
+        "pixelSha256": "a067169cc30102f13d42c51fa9bca92bcf71af4305a7c92fc15947b888c89694",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-three-peoples-clasp/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "4bf1a411233918f5f15334de395cb0dcb86d72c1ca743a93f28f1c0442f7f3b0",
+        "pixelSha256": "8810baaa1048e23eef7ad251a70ceea2d1355b6d7567e5fa451203d00982c9e4",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-three-peoples-clasp.png",
+    "sha256": "0c9602113d5185ddfa172325d35ba3a77b85793b8d0bc3345fbf57f4ab25f094",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 11005,
+      "partialPixels": 5122,
+      "opaquePixels": 257,
+      "nearOpaquePixels": 665,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Circular alliance fastening composed of braided olive cord, bronze angular links, dark steel link and tied rust-red cloth.",
+    "semanticRequirements": "Three peoples must remain visibly distinct within one releasable covenant. No existing heraldry or readable text per sheet02. Preserve the open center.",
+    "riskOrHold": "Clear complete original; avoid turning it into a crown, single empire insignia or welded unbreakable ring.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        34,
+        34
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        25,
+        25
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

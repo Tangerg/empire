@@ -1,0 +1,121 @@
+{
+  "topicId": "C01-FX-05",
+  "phaseOrder": [
+    "ignite",
+    "rise",
+    "flare",
+    "embers"
+  ],
+  "sourceStatus": "four staged genuine RGBA sources, ready for parent integration review",
+  "reviewedSourceSemantics": "atlas02 row1 columns1\u20134 small ordinary orange flame, medium rise, tall flare, collapsed dying flame and loose embers. FX06 gold rune-ring row is excluded.",
+  "actualConsumer": "c01.dragon-breath for c01.ivra; target-cell hit effect; no projectile trajectory or gameplay changes",
+  "authoredMotionReview": {
+    "ignite": "Compact curled small flame with one ember, small pale core",
+    "rise": "Height and width grow; side tongue lifts; several detached sparks; larger core",
+    "flare": "Tall S-curve, broader branched lateral tongues, separated curved hot fragments",
+    "embers": "Large plume removed; short low flame and five separated rising fragments; genuine fading alpha with maximum121; not a faded copy of peak"
+  },
+  "staticVisualReview": {
+    "native32And64OnFiveBackgrounds": "pass",
+    "backgrounds": [
+      "black",
+      "white",
+      "bright stone",
+      "green ground",
+      "dark earth"
+    ],
+    "noVisibleBackingOrMatte": "pass",
+    "noVisibleClipping": "pass",
+    "orangeYellowIdentityDistinctFromOathFire": "pass",
+    "growthCurlFragmentationDecay": "pass",
+    "sourceFullSizeBlackWhiteReview": "pass",
+    "wholeCanvasSourceTransformOnly": true,
+    "alphaCleanupOrOpacityMultiplication": false
+  },
+  "alpha": {
+    "sourceEdgeMaxima": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sourceMaxima": [
+      255,
+      255,
+      255,
+      121
+    ],
+    "sourceAlphaMasses": [
+      56817.81568627451,
+      166973.03921568627,
+      349698.39215686277,
+      10509.862745098038
+    ],
+    "allOutput2pxBordersZero": true,
+    "wholeTranslucentFinalPhase": true,
+    "nearOpaqueFinalPhasePixelCount": 0
+  },
+  "registration": {
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ],
+    "actualRootOffsetFromTargetCentreByPhase": {
+      "ignite": [
+        0.04465709728867573,
+        11.74481658692185
+      ],
+      "rise": [
+        0.5805422647527916,
+        11.923444976076556
+      ],
+      "flare": [
+        0.669856459330143,
+        12.19138755980861
+      ],
+      "embers": [
+        0.3572567783094094,
+        11.834130781499201
+      ]
+    },
+    "interpretation": "Shared effect pivot is the target centre. Flame root is about12 logical pixels below it, not at the target centre. Measured lowest component band varies by0.63 logical x and0.45 y across differently shaped flame bases; no per-frame fitting, shifting or scaling."
+  },
+  "apngVerification": {
+    "files": 12,
+    "framesDecoded": 48,
+    "fps": 12,
+    "loop": false,
+    "rationalFrameDurations": [
+      "1/12",
+      "1/12",
+      "1/12",
+      "17/100"
+    ],
+    "totalDurationMs": 420,
+    "finalFrameHoldMs": 170,
+    "decodedPixelsMatchQaExports": true
+  },
+  "realTimeBrowserPlaybackObserved": false,
+  "liveGamePlaybackObserved": false,
+  "playbackScope": "Static frame semantics and exact APNG encoding/decoding verified. Offline HTML is provided but not asserted as observed browser animation; integrated game with separate white burst/damage number remains parent verification.",
+  "rejectedAndPreserved": [
+    "embers-rejected-v1"
+  ],
+  "selectedFinalPhase": "embers-repair-v2 copied byte-exact to embers",
+  "repositoryWritesByWorker": false,
+  "runtimeExportByWorker": false,
+  "gitChangesByWorker": false
+}
