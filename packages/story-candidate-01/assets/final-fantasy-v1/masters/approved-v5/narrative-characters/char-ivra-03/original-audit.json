@@ -1,0 +1,156 @@
+{
+  "fullName": "伊芙拉",
+  "stage": "Adult independent allied commander in final chapter",
+  "face": "Larger, angular red dragon with amber eyes and long pale horns; recognizable species/palette progression",
+  "emotion": "Self-possessed, vigilant, commanding",
+  "pose": "Seated upright, head high toward viewer-right, wings partly open, long tail curved around foreground",
+  "costume": "Small red/blue-gray ribbons near horns/neck; no rider, saddle or reins",
+  "framing": "Whole adult dragon fills parchment cell; identity is the dragon itself, not a human riding silhouette",
+  "priority": "reconcile-before-generation",
+  "topicId": "C01-CHAR-IVRA-03",
+  "catalog": {
+    "assetId": "C01-FFV1-CHAR-IVRA-03",
+    "topicId": "C01-CHAR-IVRA-03",
+    "label": "伊芙拉成年指挥官",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/char-ivra-03.png",
+    "width": 192,
+    "height": 224,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "character-card"
+  },
+  "status": "pending-remake",
+  "original": {
+    "catalogSlotZeroBased": 33,
+    "boardCellZeroBased": 3,
+    "quadrant": "BR",
+    "cropBoxXYXYExclusive": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+      "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "exactCrop": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-ivra-03-original-cell.png",
+      "repoRelativePath": null,
+      "sha256": "1129577ab252b655c846e1d97d1f9673e367a9ffd0da7a2dc3434fed090e879d",
+      "dimensions": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "legacyRuntimeReproducesExactRGBA": true,
+    "mappingEvidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+        "startLine": 73,
+        "endLine": 73,
+        "originalText": "    \"character-board-03.png\": [30, 31, 32, 33],"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 46,
+        "endLine": 46,
+        "originalText": "- `C01-CHAR-IVRA-03`：伊芙拉成年指挥官"
+      }
+    ]
+  },
+  "currentRuntime": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-03.png",
+    "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-03.png",
+    "sha256": "056dbe40c5e40610a386e327a4fa82e6f5ba452408eaa9f6e39d471b5f5ef9b3",
+    "dimensions": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "nearOpaqueCore": true
+  },
+  "approvedNamedIdentityRef": null,
+  "approvedIdentityReferenceExists": false,
+  "loreEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 49,
+      "endLine": 49,
+      "originalText": "| P0 | `C01-CHAR-IVRA-03.png` | 成年独立指挥官 | 自有盟约标识，无骑手与缰绳 |"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "startLine": 46,
+      "endLine": 46,
+      "originalText": "- `C01-CHAR-IVRA-03`：伊芙拉成年指挥官"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/README.md",
+      "startLine": 357,
+      "endLine": 366,
+      "originalText": "### 6.8 伊芙拉\n\n第二章从教廷运输队中被释放的幼龙。\n\n- 不说人类语言时仍能表达明确意志，后期才学会使用誓语；\n- 与莱娅共同成长，而不是成为她的所有物；\n- 第四章在龙眠山脉主动选择与莱娅缔结盟约；\n- 第五章莱娅使用王冠后解除骑乘盟约；\n- 第六章是否重新参战取决于莱娅是否愿意步行、等待和接受拒绝；\n- 终章作为独立盟军指挥官，而非莱娅的装备。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+      "startLine": 136,
+      "endLine": 140,
+      "originalText": "### 6.7 伊芙拉：意志通过动作先于语言\n\n伊芙拉前期不说完整人话。它用尾巴挡路、把食物推回、远离缰绳、主动替儿童遮雨表达边界。学会誓语后仍少说，不变成负责给人类下哲学判词的龙。\n\n解除盟约后，它会继续保护与莱娅无关的人，证明离开主角不等于退出故事。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md",
+      "startLine": 21,
+      "endLine": 21,
+      "originalText": "- 伊芙拉幼年可出现临时救援鞍具，成年阶段不得有永久鞍、缰绳或灰旗纹章。"
+    },
+    {
+      "path": "packages/story-candidate-01/src/units.ts",
+      "startLine": 61,
+      "endLine": 65,
+      "originalText": "    tags: ['hero', 'dragon', 'monster', 'flying'], blurb: '只接受平等盟约、始终保有离开权的幼龙。',\n  }),\n\n  unit({ id: 'c01.swordsman', name: '边境剑士', weapons: ['c01.border-blade'], value: 120, maxHp: 98, defense: 0.08, movement: 3, formations: ['formation-line', 'formation-loose'], tags: ['infantry'], blurb: '可靠的近战与占领骨干。' }),\n  unit({ id: 'c01.banner-guard', name: '灰旗卫士', weapons: ['c01.guard-spear'], value: 170, maxHp: 112, defense: 0.14, movement: 3, defaultReaction: 'guard', formations: ['formation-defensive', 'formation-line'], tags: ['infantry', 'guard'], blurb: '以援护和阵线保护灰旗同伴。' }),"
+    }
+  ],
+  "sourceMismatchFlags": [
+    {
+      "code": "independence",
+      "detail": "Explicit brief and continuity rule require own covenant insignia, no rider/reins/permanent saddle/Gray Flag emblem. Do not label original gray-blue ribbon as Gray Flag ownership."
+    },
+    {
+      "code": "stage_distinction",
+      "detail": "Do not reuse adult03 as juvenile01. No runtime stage progression exists."
+    },
+    {
+      "code": "identity_gap",
+      "detail": "No approved named adult Ivra card/master; approved growth art is only a constrained reference."
+    }
+  ],
+  "consumers": {
+    "directProductionTopicReferences": [],
+    "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+    "catalogPresenceIsNotConsumer": true,
+    "stageSelectorExists": false,
+    "liveGameVerified": false,
+    "state": "catalog-only-no-selected-consumer",
+    "channels": [],
+    "risk": "No shipped selector currently names this later/new card; rendering the file in an audit or catalog is not live integration."
+  },
+  "contractRef": "contracts.characterMasterAndCard",
+  "currentHdEntry": null,
+  "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation."
+}

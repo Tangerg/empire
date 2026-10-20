@@ -1,0 +1,1378 @@
+[
+  {
+    "topicId": "C01-TERRAIN-RIVER-1",
+    "density": 1,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-1.png",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-1/master.png",
+      "sourceSha256": "1dd6cb9eb4ff1223164bf09b9e9f1f50eaa25c46e9be80895e282777139a0029",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "9493c0ea808db0f98174e01f5912ea17eadf4a00cf3756111e5cf500069043ed",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "c1f4697237df4fcf944ee41fcc4e37e21ae7dc3f47334d18154417a50c813930",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 61,
+        "interiorPixelSha256": "ef804f4129d3d1575df41a1579925bad3d66b76f6bc4e0fdd7eacc003a399f15",
+        "edgeHashes": {
+          "top": "9e7d017728c398b026e24c56dccce637190bc17ac0a61eefdfd41f338f3db49e",
+          "bottom": "9e7d017728c398b026e24c56dccce637190bc17ac0a61eefdfd41f338f3db49e",
+          "left": "0acb000eccef2704e77e8cf0a15b60111ff2a25454cd0243954b932910b65135",
+          "right": "0acb000eccef2704e77e8cf0a15b60111ff2a25454cd0243954b932910b65135"
+        },
+        "pixelSha256": "4d24eda79964145193cf818030c0a9313978de81bb4c72efb45d22ea8850916e"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "20f61dfc450ec708a34df474ef166058c084b637c56a624efdb3e747bbc142bf",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "8869407da0ed16f5ab99ddd9a6209e092349b3582c48e508f6bbdb2d341f6d3f",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "b8ca1cbad3624b6672bc8a1304fe9ed47c0f0994163c0ea79c1a380709cd0b7b",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "9732d6b943631ee0f8a1a9e77ef384d83ce972f2c59cf0f9edb457433d21e886",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "5d68f6366f48b42b887ebf220c168bfd1a1048cc500590145daf52ccb13e352c",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "38a59318e4d606df690d0a48645a2e68dccd9abb1e99662279f1162bd7d7cea8",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "4d48d0e1e30cfe220c8344f532b486aedaf6581067957f8c53b0c6232b3f181b",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "e79d658b78c25660f7785b0f7804c73af32480c1bbb373f551c6f0adb42f239e",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "d7dd7b8215ae36b3ebf940375660467af401ad09f8d56ffb6ee7b577b01ba9a7",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "ffca4c66abc2acf9005ee3147f3120effbbe68ceb03f214f25c12aaef79c2e0c",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "ec19279b12d5a4d1ec3ffed09bacc29283daf0c1ebb79c80dec259222c1660b2",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "9b4fd59b8c14461ea4068bdb0daf2ed7ee4db45911f6dd6fd437b46e5e85002f",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "8ddf4038bffb78d22b633a9b29e3cd33d2d7be63a24b616183545e8b5363197d",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "eafda51cba1060986d0bdbbd6eb2f89ebc7a888c09fbabee683692e0629625e4",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "f4237ed5da3c92eb5e967caeaf1cac738e7a0417ea9c23ce7217cd8337979c24",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "aaab848f9dc5018a661d984eb36138c2af0e8e81a95b29f9a81290458d50056e",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "861d92d48b9f8298ea3db416966284eb0509ff0635dd5878d046f0793fd5ba7d",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "9bebacd03aa4f0d314bfa579ae24fd533c3683e7108b220961aea1776159f7ca"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-1",
+    "density": 2,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-1.png",
+    "size": [
+      1024,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-1/master.png",
+      "sourceSha256": "1dd6cb9eb4ff1223164bf09b9e9f1f50eaa25c46e9be80895e282777139a0029",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "9493c0ea808db0f98174e01f5912ea17eadf4a00cf3756111e5cf500069043ed",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "b9cdbf97c983ec8dbedf38eecdac8272012f9a4f471bd9eec00c85cbb1443b21",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 66,
+        "interiorPixelSha256": "8d9a376d9e8978cffba1b254791f081a7981bc11ce877a6c0e61ab36d4a4f64f",
+        "edgeHashes": {
+          "top": "3a2783c78ca64245a647fcbadab932195accd69d4b2107c470da1b031fc153ae",
+          "bottom": "3a2783c78ca64245a647fcbadab932195accd69d4b2107c470da1b031fc153ae",
+          "left": "2015e3f0db64a0061ecc1d0afaf06cb639322a2d6bc6584f969a9258e408f988",
+          "right": "2015e3f0db64a0061ecc1d0afaf06cb639322a2d6bc6584f969a9258e408f988"
+        },
+        "pixelSha256": "723a7ffe516b293b907878dc43dc88d78aeaafcae0252832c50dc9c85d2d5f74"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "f90574526fa878775963c35e8f52c96df27efab64420f65f0909b7158d105fae",
+        "alphaSha256": "2f773e31e9f833472f51357bed5933b2885399680f0cfd376800e4603471f03e"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "d486aca9b4077e2238c2f0407873afe062b681ebb0dfeaab25ccdcb05aab70a9",
+        "alphaSha256": "d4270fa122ceabe2d378dda5fd7d21821d4c622665cdf38afe8bb0e6c7af85cd"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "566a6c8f18800e7dc7aae909fc7b0af5b00c57032c9a3e613aed85cad8943f2b",
+        "alphaSha256": "a386b2d36c69b6123d5e89ba676bcdaca196e1e968f458174d1e77257dee1ae1"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "e33f134d5aa3686b45fe07447dfdd82fad7336b74cf84faa7dc2f83c1804e203",
+        "alphaSha256": "e1f50ef7252c99496bdfea9993471b9f223d03ac946800cd735a6942b714d26e"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "b1252b7abe4f9b7f0742d9b6883290280d05f0bde3e89c3f8767180064e31a62",
+        "alphaSha256": "a3afb24231d1f4aafe1bd02813d0d5c8340aef4fc0989f11a111fb086998b4a8"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "9dbff4a2ab756cdae61a375a94cc486c37e9274ac1eb8921a3fe50e6aa488e92",
+        "alphaSha256": "a98ea5e2eda0f98dc856fa531951f11284698550ac7c2d6c4096da0db4058256"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "9271fdc18ef6f3cd5101750ce38677d8cac73f53661a8e07e50d79e00380f4b8",
+        "alphaSha256": "8391349d71952bf192eafb729e3bfc6311e90e55cfc3724035aeacc6f87e5591"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "614a6b7d0502b49e3b9f818fd20c3189d95959d24e16b6172d0c0f7609632fc4",
+        "alphaSha256": "cb2a85db295d8588f34b75c92ec417401ea8f990865d6c74b1106da35f87c369"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "bdc2397f2f0f28c98d263f419bb14a109ad1d73544fb0194d37d843ab56f366a",
+        "alphaSha256": "06c3e79df5499e1531e0b240df128040745a0e55ef76cc3848cb904728605b3e"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "b4b12140b2e7d1a3ec09a6f3e265d17ca3dc0271fe35adcb1eb87d0dd819bebc",
+        "alphaSha256": "462d195e8fba8b3a9531b0f080432ecf4ef2ac3ae7be7bc6ea4e19287705f5ea"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "8dcb80dc608bd723ad4f7b452a0053c99f8d9a94ec3e979c84393a5cd2c5a0a2",
+        "alphaSha256": "196d8b07d970a42d7983829753c9e150688cf1c3245bc1f9f5e553368d8cc172"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "c698467de1b01ece7f14654478a77a222d02dbf32c089b4df3b0b13315a1d672",
+        "alphaSha256": "68c7d6a0720a2be48c93a71abebfc6dec3116a5a730daa82a1ae522a0dcfaf8a"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "27dc9017037acc7b5a7489f7d8d0e01357d816c9501ff7c2f0e9fca5961b3164",
+        "alphaSha256": "963c273deb8730831143d3536774f3e13c68d2bfc25113f1f130292840362b4d"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "bb889dc07992af94b81c2af1a84045b9f298460ff4117eb7c38a53f48d14e8de",
+        "alphaSha256": "d91fe9db432bec5341181f8e9c00399325196507aa5251cd4803c116389b9117"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "e5221bbba232099a9c57b14de58f5ec591320371af431970ebdc12c32a108bdd",
+        "alphaSha256": "7b7db09c81b0bfd3984946017ee95548116c3872556b3c1612d4730681cf957a"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "3db471ee56242cf485293a836fc3286d6350d8f700682c8e65fe57de9c851b30",
+        "alphaSha256": "a3204f06aea0fed7f444c50a39c43a504594c4bec08703ed772ee0680f7f590d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "fec13e1c18cb9022d2c295a7058d25b539e9a08fcfe56807f27e1849c291a7f1",
+    "alphaSha256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "6a149002b52d022105fc9cde99243c55827598b8d16d040a354ee00eba762f39"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-2",
+    "density": 1,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-2.png",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-2/master.png",
+      "sourceSha256": "1976e9cc0562bcd31fd5a6471a487dcb3ff356037fab3b2c1dfe249311f60943",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "fdb4f6f13124593609d17f5b146f2c901fd936c9aacdb32d623d30b3121747d5",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "f544dfba98c607a38519c22511accb330f0535b2ef5e54573a1b1fa8a2e90121",
+        "edgeBandPixels": 1,
+        "changedPixels": 122,
+        "maxChannelChange": 27,
+        "interiorPixelSha256": "791ce0e69fbe968539a1cbc446138e937fcb51f07279b7de9770141a9970b93a",
+        "edgeHashes": {
+          "top": "70f6dd33dd6de1d5d6ecea64132debac103ebc7f83930f01691c515ee4acc3e3",
+          "bottom": "70f6dd33dd6de1d5d6ecea64132debac103ebc7f83930f01691c515ee4acc3e3",
+          "left": "63bf24565550a4feb3f1d9c76ea752ec6ab3429c82e35ed6dc2d8e1fd8c0c271",
+          "right": "63bf24565550a4feb3f1d9c76ea752ec6ab3429c82e35ed6dc2d8e1fd8c0c271"
+        },
+        "pixelSha256": "2dffe1527946fb45d71ea55f6c93a6d75f7c666398ab4be44a3a8963d6096a64"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "97d5fa2dba9e46802826dba523901d02d52d2f0848fde6e72110c0b8b427be1f",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "cc15ded7365f3ce4dbc0f39aaa5914edb32348f1ff8d0282f4d44260f1bb346b",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "511f7fd23230149f1953e2ab1f6da2ba19457a51fb15f7d5d03213009edf076b",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "462ce4e8a1bad51d05009bb627d2ffa9c62f3daea2aa52f58de43bf9f99941ba",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "83b330ed516bc6a6c5ccb82adeed6b723d268578310bb15b574499a55c8243e4",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "9b5a77bf328c2ddbac5387fc913dc8b8448e167f25806e3d1ece1e3b5e5ba565",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "eca71f6e60ab0906bf7322df608fe8d3f3db09ead525220f15c8a80e47a41b6d",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "f1698c8e41db15157b20e526d115aeea4eb85e432470956d3e5adf5af35b0827",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "bd6b8b9f5b2f37aa74699d4c8a468dc62349aa614fa5e1a0011bdf5e4cbe6568",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "9b9e49ece1ba05f60e56846ea7faf9cae318113ae9685de86fbe0a3b20ec43c5",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "6339fd6f8f4938a7dac89f29084388766c28443c9ab9b9f55bb2173cfc84b1c4",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "b471856d5443d4c83d1da382c3fa625e091ad3bb6b9c6504922ad587fddddb48",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "0a1125cc93cf0f72aa192e8c5de85dae0379d95a9360ae1f577171a3c9f3f6cb",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "2b24bd533fb9aba648086832603f67f29ca1286b0f1fd2ff2c710b4fe0112f91",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "f84114e6ad0a912ef8f094b82ae15080c8fa701b756d6b62b38a33c706558127",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "90177f95d7b05177f9337aebbc09e12ffebbccb5481b609c7420aff52aa29131",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "4e7b08135cf95e33d2dc6b6c8f0c5b87a4d6a73850962bfdd11bd6440ddf9fcf",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "942ef51be0f9b9db51ee7015475fe9e6364a0752d892d8f610e244284f2c0748"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-2",
+    "density": 2,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-2.png",
+    "size": [
+      1024,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-2/master.png",
+      "sourceSha256": "1976e9cc0562bcd31fd5a6471a487dcb3ff356037fab3b2c1dfe249311f60943",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "fdb4f6f13124593609d17f5b146f2c901fd936c9aacdb32d623d30b3121747d5",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "08e12ba0c46b13f32eeabef0c9c5c2206027bed125015049f5ad219839816566",
+        "edgeBandPixels": 1,
+        "changedPixels": 243,
+        "maxChannelChange": 31,
+        "interiorPixelSha256": "df4ec315a2bbd41168a621a6c17604ea667144815c30fdc3c9a94c367fd9b7b5",
+        "edgeHashes": {
+          "top": "26fef2df619b1484fa166a18ef0050bbdf2616c5d59deeae7ba57ac66fbe4c41",
+          "bottom": "26fef2df619b1484fa166a18ef0050bbdf2616c5d59deeae7ba57ac66fbe4c41",
+          "left": "c7ca9989a3796118d98a17e345154084668e04fd42c64a21ea635953f02231a4",
+          "right": "c7ca9989a3796118d98a17e345154084668e04fd42c64a21ea635953f02231a4"
+        },
+        "pixelSha256": "a371ed4a08a75e2f28795eb17d162b9cee6eed7d0411deaadf13032dc9809e24"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "7af451352fc4d30ec55ac919f0e33f4861b767d44ddb382732281b9f1b064980",
+        "alphaSha256": "2f773e31e9f833472f51357bed5933b2885399680f0cfd376800e4603471f03e"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "5b88660b7267cc7bba24ec0b153b09df16bf2c3bcb05cc913998b41c924bd645",
+        "alphaSha256": "d4270fa122ceabe2d378dda5fd7d21821d4c622665cdf38afe8bb0e6c7af85cd"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "e6a78f01f9f58b9fb87a9146835227f11bd51ba10d494974880e0ef8596954a0",
+        "alphaSha256": "a386b2d36c69b6123d5e89ba676bcdaca196e1e968f458174d1e77257dee1ae1"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "bb29a0cb920949d2f7803183a79ee073d376e4ea134137c4caaa6c4af6289010",
+        "alphaSha256": "e1f50ef7252c99496bdfea9993471b9f223d03ac946800cd735a6942b714d26e"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "6dbd3a8d3c713ef8cba477a301ae9dbe610d5065b6cabbc849d7ad5602c3bdf5",
+        "alphaSha256": "a3afb24231d1f4aafe1bd02813d0d5c8340aef4fc0989f11a111fb086998b4a8"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "d5d347cee90502c1e2f260729ac1e554a08d750833bd9b851bb9b7bee77da88b",
+        "alphaSha256": "a98ea5e2eda0f98dc856fa531951f11284698550ac7c2d6c4096da0db4058256"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "b7dfe643ba73281572887690f0d2fbd107be632b8fe26b3fbae0adaa482d5de3",
+        "alphaSha256": "8391349d71952bf192eafb729e3bfc6311e90e55cfc3724035aeacc6f87e5591"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "657719a53116387f889808c4dd31f3057dafad374d017b1f08a77892814c90d9",
+        "alphaSha256": "cb2a85db295d8588f34b75c92ec417401ea8f990865d6c74b1106da35f87c369"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "d4aaf745fba6546fb8ca98bd8a972dcb80df9fac9813400af6288c85a25e8111",
+        "alphaSha256": "06c3e79df5499e1531e0b240df128040745a0e55ef76cc3848cb904728605b3e"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "897e1e9474ce3b528b4be67e78f3b42881cf94b6a768a3c6463172a918cc5f40",
+        "alphaSha256": "462d195e8fba8b3a9531b0f080432ecf4ef2ac3ae7be7bc6ea4e19287705f5ea"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "b769e8d10d16db12e41b89d5025dd72146d9d194e122cf5d1737c53ff2873f5e",
+        "alphaSha256": "196d8b07d970a42d7983829753c9e150688cf1c3245bc1f9f5e553368d8cc172"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "69815b0aca67c1a465a966b021f583d27db442d5b867527047608b188676dba0",
+        "alphaSha256": "68c7d6a0720a2be48c93a71abebfc6dec3116a5a730daa82a1ae522a0dcfaf8a"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "71c697125031a13dbfee321c067ee5a56382f2a3625f220102075e590b0c63b8",
+        "alphaSha256": "963c273deb8730831143d3536774f3e13c68d2bfc25113f1f130292840362b4d"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "299f88afe1855863da49c2c2baa6cb3aa41b94f02066415c6db79ee54961b248",
+        "alphaSha256": "d91fe9db432bec5341181f8e9c00399325196507aa5251cd4803c116389b9117"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "4291ff2a2d6ee03a48e246d45d5ac3e3a6e08fb7ce017ea51905e39860bc40b4",
+        "alphaSha256": "7b7db09c81b0bfd3984946017ee95548116c3872556b3c1612d4730681cf957a"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "5e289a9cbd8bbbe1fd5b8b7f7f8bdcb886de8041c6d612655b6d2dc87f05f334",
+        "alphaSha256": "a3204f06aea0fed7f444c50a39c43a504594c4bec08703ed772ee0680f7f590d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "ed75501bdbef0abc76c7e7fb36865892d651a8a27e6111db10aaf0ba972f7669",
+    "alphaSha256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "a8045514b9d4177c706181bc55f623777c0ef2487009ce696dc9a2466e63b14c"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-3",
+    "density": 1,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-3.png",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-3/master.png",
+      "sourceSha256": "8c9fbb3969cf6f9e6cc8862610a41f000c84efc945e5b079c1d6db3e1448ca54",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "6cfeb4f730c9927ebfd6bc77a4c836714968100ac35194e9a252f439c802a13f",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "94bf25a261635fdc066cddc697df8fb2ea5e1078b48d000bba5f8fd91af0e86d",
+        "edgeBandPixels": 1,
+        "changedPixels": 121,
+        "maxChannelChange": 20,
+        "interiorPixelSha256": "2a5a435b52f70411312779a08c9f733cfb1d98ce698ac24c5107b882c7c64714",
+        "edgeHashes": {
+          "top": "e23aaa6b23be3311a6f5d07ee9805392b0cd3c4eb96c6a03eb9b4c463816ce29",
+          "bottom": "e23aaa6b23be3311a6f5d07ee9805392b0cd3c4eb96c6a03eb9b4c463816ce29",
+          "left": "98abdd502ab4426edb2ec826bb7748ee3ac04f9bbedfa302b1767545d25634e9",
+          "right": "98abdd502ab4426edb2ec826bb7748ee3ac04f9bbedfa302b1767545d25634e9"
+        },
+        "pixelSha256": "d4bfef70088e4b68b0987af261e0f017e26558f2ad3f1e43e93213e540100c5b"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "63ceb5ebf1a1641da3139a28a47f62e090f7ccb2e8e01131364ee74f5fe97ef5",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "1a292b4fbe2351a83aa19894dd844012bb7c0047e1dfa90b96519687a5126779",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "806beb8d4c07f25835fce4d1aa974b5bbfe15b1711c66d16c8cd827523fd13a4",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "0649748ea6687f080868296f3ef4356b31ee5fdf927a2042fcb42a083f7a04d7",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "98debe0df970135db5c8abbcdce8ee263f395733ff48af748518053e7b56c0ee",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "e623293764ad4f7794a51d49324c757ddf608ee1c668bd934e44cce4aa68f3e7",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "9c368bdca4f6764ce9c714ce69eb21c9a8cb1ea1f2a9372ca4fdef1976c65b84",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "a1104ed7f27d6115b7ca85bbdec9780da809ada712d5b8d4859aa53feb1d46f2",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "50830559eac40ea200570c1e8531a811b486b7440fd6684f2436677dbcf8c82a",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "94ce11c5b582fe75ed6f22c8be98c4ad1fa6ed6b7214733045a09efb13acd3b6",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "2a49684321cfe1a7bc14d905a42707cf3ab83bc0ca128c301b38ee63062fd115",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "751ce509b632f034dcd668c8f795565c3ad95c2405b2eb9cea849d4a4dbb1db2",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "57cf5679cfe684a17c58b22420e22ce2c06db0d10e9dfd048cc0b8b865abe847",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "728cf750d9b569ee8ceb543378320e38d1db810a7af569f7eddbeb39e3468cee",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "2003e60977c6a94418093f747f2fe318a9de92a07b0f9ec85fd0cc0ba2790326",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "78852c461417f98b3d010292eb5463c4349e35c4b07f492e1f670df630296274",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "442621f39398d2d42ba44d927360c1316d345ba0ba66168711573c67fec7f6a5",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "4e3a3b2b7cddd3e21d560617ab2babc40e8f9b0bd8146b75e34929db09199fee"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-3",
+    "density": 2,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-3.png",
+    "size": [
+      1024,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-3/master.png",
+      "sourceSha256": "8c9fbb3969cf6f9e6cc8862610a41f000c84efc945e5b079c1d6db3e1448ca54",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "6cfeb4f730c9927ebfd6bc77a4c836714968100ac35194e9a252f439c802a13f",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "57a6d97e5ed88c82ac4a09890818171fe7fa5ff9bf72840bad24d5d84cb1bc7c",
+        "edgeBandPixels": 1,
+        "changedPixels": 246,
+        "maxChannelChange": 20,
+        "interiorPixelSha256": "821490b5295c48080d75dac49eabfa2c14582ec7c67ca69d591010bb4b2e9e89",
+        "edgeHashes": {
+          "top": "9cf723c061f7e4ecb09638f084f52964b3605bad2b8440b5acbb581277d95d03",
+          "bottom": "9cf723c061f7e4ecb09638f084f52964b3605bad2b8440b5acbb581277d95d03",
+          "left": "2801ff55575717385829cc9a2112028d9f9854d12f697e9cdf4c18d1f16a3af8",
+          "right": "2801ff55575717385829cc9a2112028d9f9854d12f697e9cdf4c18d1f16a3af8"
+        },
+        "pixelSha256": "002e537aabd4ad22e94ee85df6960df15bf146332f655ecfcda35a57a0e5e1fd"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "d7b4f88703f2cb11ec8f08159d98cb85c75b5958376a06b84a50d9c83b322425",
+        "alphaSha256": "2f773e31e9f833472f51357bed5933b2885399680f0cfd376800e4603471f03e"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "9aed899b6cfbd1bdb787fe22b138a73a2e6b434756d90e396ba871091fd99c4f",
+        "alphaSha256": "d4270fa122ceabe2d378dda5fd7d21821d4c622665cdf38afe8bb0e6c7af85cd"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "b50a482404240430f2935b76e80a74e15f40b420ce9afeaca98580e141961bf2",
+        "alphaSha256": "a386b2d36c69b6123d5e89ba676bcdaca196e1e968f458174d1e77257dee1ae1"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "90d6534e459f18c5d4d52c591f6663319b3d2b53c0555d63730bc0e564b26998",
+        "alphaSha256": "e1f50ef7252c99496bdfea9993471b9f223d03ac946800cd735a6942b714d26e"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "db228842e1883923ff35e375b9242c31fa49af1ae7f382f9a41287630f7cedf5",
+        "alphaSha256": "a3afb24231d1f4aafe1bd02813d0d5c8340aef4fc0989f11a111fb086998b4a8"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "d7bdbec53f39598e814ef3d360bfce9b19626f799218eef24236107813cae07a",
+        "alphaSha256": "a98ea5e2eda0f98dc856fa531951f11284698550ac7c2d6c4096da0db4058256"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "2d20882aae04af88740f7484a38fb6ff1191ed37c25503985e9734499faf3c1d",
+        "alphaSha256": "8391349d71952bf192eafb729e3bfc6311e90e55cfc3724035aeacc6f87e5591"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "bf8bc200b3660f8b42af0f6505e7333825c358396908f9db892cdfb682afbf4c",
+        "alphaSha256": "cb2a85db295d8588f34b75c92ec417401ea8f990865d6c74b1106da35f87c369"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "f6534fca52f34db2dc4669a603966e0379244b36bc6ef118cbcfe36e1126bb61",
+        "alphaSha256": "06c3e79df5499e1531e0b240df128040745a0e55ef76cc3848cb904728605b3e"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "da5388b4b284869b515e877123960d6597f938f9f5778766d8cb3512f897e7cb",
+        "alphaSha256": "462d195e8fba8b3a9531b0f080432ecf4ef2ac3ae7be7bc6ea4e19287705f5ea"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "ca5d4514abdff6e5a133290e15b94b016525e38e8a40a5d164558d1128d3bf31",
+        "alphaSha256": "196d8b07d970a42d7983829753c9e150688cf1c3245bc1f9f5e553368d8cc172"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "df4277ff996841be10f67ac8712cdab14e1546b8b498b02a7c778f313154acc7",
+        "alphaSha256": "68c7d6a0720a2be48c93a71abebfc6dec3116a5a730daa82a1ae522a0dcfaf8a"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "50c51d3e3dd3c4be5797a599f9bdf58d78e2563e476029ae650e189899a663a5",
+        "alphaSha256": "963c273deb8730831143d3536774f3e13c68d2bfc25113f1f130292840362b4d"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "4129fb9755788cb4cf1d930e023b5523fdf15d674e17eb5d7cd826d52ca1a019",
+        "alphaSha256": "d91fe9db432bec5341181f8e9c00399325196507aa5251cd4803c116389b9117"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "0ddb13b6495918bf07108a8c1949cd6c96260277aff0ad673e5000d02576f28a",
+        "alphaSha256": "7b7db09c81b0bfd3984946017ee95548116c3872556b3c1612d4730681cf957a"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "c9313cb87f3d564702d2ec03f3bf542e4a7b651fe3686ff791bd05d211d03261",
+        "alphaSha256": "a3204f06aea0fed7f444c50a39c43a504594c4bec08703ed772ee0680f7f590d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "5bc7c0ff32b3b12760fb693626922af5473d9dfe3ae46ea4cb9a9186f57823f9",
+    "alphaSha256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "0121bc46a8e4fa4f99073e2d8fdc48c3166382369cbbc04b06e2a5fbe29793dc"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-4",
+    "density": 1,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-4.png",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-4/master.png",
+      "sourceSha256": "55a82abb80014fcf50be0cd202124ee8dd124e099dbacb7949ceb66e5e8fca54",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "bf4fbaaa012561ec75f1be23fc64ab34bb014caa280a2cc0af0485a5333a909e",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "7afd9a8b59df9185e2ccf1dc750d4fb4ebd374259ce9a32ebe2f94f0696d6e25",
+        "edgeBandPixels": 1,
+        "changedPixels": 123,
+        "maxChannelChange": 65,
+        "interiorPixelSha256": "39b0ee5700a7fd94af015e16250771cad06b7361c1672aacf5c8fe3729e6aa9b",
+        "edgeHashes": {
+          "top": "19215d92cb56106eb35e644fbacb28f4f2734122382ee61ee30a9c65f1a2a917",
+          "bottom": "19215d92cb56106eb35e644fbacb28f4f2734122382ee61ee30a9c65f1a2a917",
+          "left": "c8a8e3377318b7222942e34e6e66bc9f2483d404a8f0099f165504eb394e19a5",
+          "right": "c8a8e3377318b7222942e34e6e66bc9f2483d404a8f0099f165504eb394e19a5"
+        },
+        "pixelSha256": "1c07c7b6bccf1f19315dfa7e76a590a5b79128c732ecfbc4420554dc512c5ed7"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "dbbb7137b1e19537380e1ddb898f0d01689bf2f459734af6c68b9cea3e28a78a",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "1243882c5372c2214f8d37f9b86ce1592904f53779a664f80a85400f03880be8",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "c2e692a357843baf2e3d5b2388cf3bf2b0a626fee774df7258c595a8f3752dfc",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "7438d49c45306139ec7c1acbe06aef1ad92164263c8f0c5f8333bafd9e47d55e",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "8d6230a17f186ce8abdc0277229845fdf3e537c78c27dcde09aef1a9e522c28e",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "dde1c78dae7f6355399b6fb174502f5d66a75971dd8c2a350bedb1475ac03acd",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "eb3707f51034f64320f33bd8b0aefd4566a363e4b9e2a72a8d724841d4c330d4",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "6c4148138508d8ee036c80259e114d66da563b8a72eab3843e955b6c5b7abcba",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "49298324be68033b5da318fad496fc3dd909b1589037e173144bab9a7cb9fdc4",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "f874545ee3eda7b7e5d17c22c36f006ebc70af3f6016f32d39206cf63b08a488",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "2b73fd3dace83812915118bd135629fcae0852c50ab013bd684507e884ede676",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "19366cd92bb3e52aa832cdfd13ca6d0024b5ae90cdad4712651848ce20df5dc6",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "4105e18758404f1a093b010caeee42dc3e0af44f3388d8008e4aeaecdecd7be8",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "19d0ddd1c069a733655ecdf20066e6ac2ce2dd9602e618aceedf1c477a63abd7",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "9ce4c30a34ee2a95d4153fe1b14e993af0764750ec374317857e3390a59b8de7",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "05282cb0187c68531bd29ccacfcddf32bb02f0e387550d91bd9aa0ccadfd9205",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "bd9570345b41b329030cdbc9e3bf8f3a0bf9685b7e9bb2ef65f9c115707d743e",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "5714d8bf728762985dac88adcf3e17a49d27cd1d6138cb574e0b06c0a9ab6ce3"
+  },
+  {
+    "topicId": "C01-TERRAIN-RIVER-4",
+    "density": 2,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-4.png",
+    "size": [
+      1024,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/river-4/master.png",
+      "sourceSha256": "55a82abb80014fcf50be0cd202124ee8dd124e099dbacb7949ceb66e5e8fca54",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "bf4fbaaa012561ec75f1be23fc64ab34bb014caa280a2cc0af0485a5333a909e",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "e19381a325ceda2a683c37604c8854f1de2005012964ff3d8da31aecbb7617b1",
+        "edgeBandPixels": 1,
+        "changedPixels": 249,
+        "maxChannelChange": 65,
+        "interiorPixelSha256": "8dc9b6555eb9b14535a95f22de424410b0b472f741278c908635d3c9c8cdd8b2",
+        "edgeHashes": {
+          "top": "1ff595cc627f4abd4b17da872a486b8e56546b7a0443147a1a795cb029b4f3a6",
+          "bottom": "1ff595cc627f4abd4b17da872a486b8e56546b7a0443147a1a795cb029b4f3a6",
+          "left": "7e4a0a49bfad0afa337dae06c02000a3551acbd52d34f2da2411e540eb15c111",
+          "right": "7e4a0a49bfad0afa337dae06c02000a3551acbd52d34f2da2411e540eb15c111"
+        },
+        "pixelSha256": "ac9e0fbdcf1744ee6cf857bf24ae89353c7d7ae507ff144d2721403d9aa1cc2f"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "883f9ffbc2c5a5880a83af4d956ab20a5e8abeed292de2a89e1470e9d39ec04e",
+        "alphaSha256": "2f773e31e9f833472f51357bed5933b2885399680f0cfd376800e4603471f03e"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "c3bcf5a959f63ed2e6b89ba8fa8ac73fad86e1017a7541f4da64d190f1b582c5",
+        "alphaSha256": "d4270fa122ceabe2d378dda5fd7d21821d4c622665cdf38afe8bb0e6c7af85cd"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "ca75c3ea4a909263defa2c247c635f0aaf5a77d4296927ccb1ffffb8b1ef7cf5",
+        "alphaSha256": "a386b2d36c69b6123d5e89ba676bcdaca196e1e968f458174d1e77257dee1ae1"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "aafb33eaa4c72b7fea7f4d0f0205156d3f2a30bdebbe3cb00f21618ad4b04228",
+        "alphaSha256": "e1f50ef7252c99496bdfea9993471b9f223d03ac946800cd735a6942b714d26e"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "bdf197f40c1460af27e22271ecd786ea8aa7737fb37fa26cd1ee121e52d87dcc",
+        "alphaSha256": "a3afb24231d1f4aafe1bd02813d0d5c8340aef4fc0989f11a111fb086998b4a8"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "9248502e38382e926556fea295cf6df3f00b17fa2e02d7b73f9fe97b27a3ed31",
+        "alphaSha256": "a98ea5e2eda0f98dc856fa531951f11284698550ac7c2d6c4096da0db4058256"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "753e398f0a732269f3e82bb183e10407e3f21d338b50c4bb9fc8369cb73e5ea4",
+        "alphaSha256": "8391349d71952bf192eafb729e3bfc6311e90e55cfc3724035aeacc6f87e5591"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "4bd2b4ec12ea4028b9282a0b608259c4c7c3746e872ff385470d6bbcf93e3625",
+        "alphaSha256": "cb2a85db295d8588f34b75c92ec417401ea8f990865d6c74b1106da35f87c369"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "58b1978f75aaf1f92701a746e4ec5172c09ba72e72113e0419352de9a3796d27",
+        "alphaSha256": "06c3e79df5499e1531e0b240df128040745a0e55ef76cc3848cb904728605b3e"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "1b6c128abeb11a9fb7710f37517a1ae1c86ae7dd5c6c4218e37e618a57779d3e",
+        "alphaSha256": "462d195e8fba8b3a9531b0f080432ecf4ef2ac3ae7be7bc6ea4e19287705f5ea"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "e4e10c5e79280b39912cc9eceaee2cce47e54055654a804f8a22fcbddebb5524",
+        "alphaSha256": "196d8b07d970a42d7983829753c9e150688cf1c3245bc1f9f5e553368d8cc172"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "87d45f56d600b9ab1f15a4100db41d22c9f4f0063472dfba70e7c249a32acff6",
+        "alphaSha256": "68c7d6a0720a2be48c93a71abebfc6dec3116a5a730daa82a1ae522a0dcfaf8a"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "fd03f9a859622fc78fb9b017a8c91965eb66c404cd8c1a03043bc309f241cc26",
+        "alphaSha256": "963c273deb8730831143d3536774f3e13c68d2bfc25113f1f130292840362b4d"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "13da4f8846de4f9aa9e5ed0c0d99756bc6036e02929af7873d270a51ca307e4e",
+        "alphaSha256": "d91fe9db432bec5341181f8e9c00399325196507aa5251cd4803c116389b9117"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "c6b693e62dd153002996a2233806c77ea8dbba98b0f14fa38d6ff11f92440bea",
+        "alphaSha256": "7b7db09c81b0bfd3984946017ee95548116c3872556b3c1612d4730681cf957a"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "d2d64931aaea07e4d103650e2834e6fcf88dbcc3212c2978d7c74b6c1b5340a2",
+        "alphaSha256": "a3204f06aea0fed7f444c50a39c43a504594c4bec08703ed772ee0680f7f590d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "aa81468ca0b90f70006773ce707cfc8e262e6a461925d8b3c6146329eafd0274",
+    "alphaSha256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "16f1d3aff9242dd628eeae8f70bebe1b76579b9b76fadfb5e62888b3e72ffebb"
+  }
+]

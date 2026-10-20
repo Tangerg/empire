@@ -1,0 +1,103 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-4",
+  "label": "断桥边缘",
+  "status": "source-ready-for-integrator-review; native fixed-mask diagnostics passed; formal catalog integration pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte; no generated pixels painted, recolored, filtered or alpha-edited",
+  "master": "master.png",
+  "sourceSHA256": "55a82abb80014fcf50be0cd202124ee8dd124e099dbacb7949ceb66e5e8fca54",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawBytesPreserved": true,
+  "initialPrompt": "prompt.txt",
+  "initialRequest": "request.json",
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "references": "references.json",
+  "selectedReferences": "references-selected.json",
+  "referenceHashesVerified": true,
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "registration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "derivedCellCountPerDensity": 16,
+  "environmentCellCountIncrement": 0,
+  "rawOppositeEdgeMeasurements": {
+    "eastWest": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 57.346889952153106
+    },
+    "northSouth": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 11.539606592238172
+    }
+  },
+  "visualReview": {
+    "fullSourceAndAllFourEdgesInspected": true,
+    "all16MasksAtActual32And64Inspected": true,
+    "sourceSpaceFixedCenterMaskInspected": true,
+    "sevenNativeTopologyFixturesInspected": true,
+    "repeated8x8CrossNetworkInspected": true,
+    "noTextOrLogos": true,
+    "broadMattePlanes": true,
+    "semanticIdentity": "Both complete snapped plank ends, one round post and the local broken stone-to-water edge survive every fixed mask. At32px the two broken wood bars above water remain distinguishable, while fine split tips and post rings merge. At64px the wood/post/stone relation is clearer.",
+    "primaryLocalSubjectCompleteInsideFixedCenter": true,
+    "reviewedProofs": [
+      "source-crop-32-64-proof.png",
+      "source-center-mask-proof.png",
+      "network-32-64-proof.png",
+      "diagnostics/32-repeated-cross-network.png",
+      "diagnostics/64-repeated-cross-network.png"
+    ],
+    "caveats": [
+      "Catalog-only canonical material: no current gameplay ground binding or live scene acceptance is claimed.",
+      "The fixed historical mask is a skinny path network, not an area-water/shore geometry contract. Artwork does not change it.",
+      "Raw opposite edges are not exact; the existing allowed outermost1px edge match gives exact compatible RGBA boundary pixels without asserting broader physical continuity.",
+      "Fine source details are not native32px semantic requirements; complete primary local material relation is retained.",
+      "Directional grass/stone/water or broken-shore content visibly alternates along some repeated NESW networks. This inherited topology/subject mismatch is documented, not hidden by an alpha or geometry change. These remain canonical catalog materials, not certified connected shoreline gameplay tiles."
+    ]
+  },
+  "mechanicalQA": {
+    "existingExporterHelperUsed": true,
+    "historicalAlphaPreservedBothDensities": true,
+    "exactAllowedEdgePairsPerDensity": {
+      "eastWest": 64,
+      "northSouth": 64
+    },
+    "outputDimensions": {
+      "32": [
+        512,
+        32
+      ],
+      "64": [
+        1024,
+        64
+      ]
+    },
+    "noManifestGeometryGameplayOrCodeChanges": true,
+    "diagnosticExportReport": "diagnostic-export.json"
+  },
+  "integration": {
+    "performed": false,
+    "formalCatalog": "pending sole integrator",
+    "liveSceneAcceptance": "not claimed"
+  }
+}

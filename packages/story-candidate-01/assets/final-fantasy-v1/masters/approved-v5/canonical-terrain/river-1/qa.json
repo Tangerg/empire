@@ -1,0 +1,103 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-1",
+  "label": "河岸",
+  "status": "source-ready-for-integrator-review; native fixed-mask diagnostics passed; formal catalog integration pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte; no generated pixels painted, recolored, filtered or alpha-edited",
+  "master": "master.png",
+  "sourceSHA256": "1dd6cb9eb4ff1223164bf09b9e9f1f50eaa25c46e9be80895e282777139a0029",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawBytesPreserved": true,
+  "initialPrompt": "prompt.txt",
+  "initialRequest": "request.json",
+  "selectedPrompt": "prompt.txt",
+  "selectedRequest": "request.json",
+  "references": "references.json",
+  "selectedReferences": "references.json",
+  "referenceHashesVerified": true,
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "registration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "derivedCellCountPerDensity": 16,
+  "environmentCellCountIncrement": 0,
+  "rawOppositeEdgeMeasurements": {
+    "eastWest": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 56.96544391281233
+    },
+    "northSouth": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 63.38304093567251
+    }
+  },
+  "visualReview": {
+    "fullSourceAndAllFourEdgesInspected": true,
+    "all16MasksAtActual32And64Inspected": true,
+    "sourceSpaceFixedCenterMaskInspected": true,
+    "sevenNativeTopologyFixturesInspected": true,
+    "repeated8x8CrossNetworkInspected": true,
+    "noTextOrLogos": true,
+    "broadMattePlanes": true,
+    "semanticIdentity": "Olive grassy bank, complete central shoreline boulder group, and blue water remain visible inside every fixed mask. Peripheral shoreline stones are naturally cropped as continuous material. The selected first output uses its complete square source.",
+    "primaryLocalSubjectCompleteInsideFixedCenter": true,
+    "reviewedProofs": [
+      "source-crop-32-64-proof.png",
+      "source-center-mask-proof.png",
+      "network-32-64-proof.png",
+      "diagnostics/32-repeated-cross-network.png",
+      "diagnostics/64-repeated-cross-network.png"
+    ],
+    "caveats": [
+      "Catalog-only canonical material: no current gameplay ground binding or live scene acceptance is claimed.",
+      "The fixed historical mask is a skinny path network, not an area-water/shore geometry contract. Artwork does not change it.",
+      "Raw opposite edges are not exact; the existing allowed outermost1px edge match gives exact compatible RGBA boundary pixels without asserting broader physical continuity.",
+      "Fine source details are not native32px semantic requirements; complete primary local material relation is retained.",
+      "Directional grass/stone/water or broken-shore content visibly alternates along some repeated NESW networks. This inherited topology/subject mismatch is documented, not hidden by an alpha or geometry change. These remain canonical catalog materials, not certified connected shoreline gameplay tiles."
+    ]
+  },
+  "mechanicalQA": {
+    "existingExporterHelperUsed": true,
+    "historicalAlphaPreservedBothDensities": true,
+    "exactAllowedEdgePairsPerDensity": {
+      "eastWest": 64,
+      "northSouth": 64
+    },
+    "outputDimensions": {
+      "32": [
+        512,
+        32
+      ],
+      "64": [
+        1024,
+        64
+      ]
+    },
+    "noManifestGeometryGameplayOrCodeChanges": true,
+    "diagnosticExportReport": "diagnostic-export.json"
+  },
+  "integration": {
+    "performed": false,
+    "formalCatalog": "pending sole integrator",
+    "liveSceneAcceptance": "not claimed"
+  }
+}

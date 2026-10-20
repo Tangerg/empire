@@ -1,0 +1,103 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-3",
+  "label": "桥头地面",
+  "status": "source-ready-for-integrator-review; native fixed-mask diagnostics passed; formal catalog integration pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte; no generated pixels painted, recolored, filtered or alpha-edited",
+  "master": "master.png",
+  "sourceSHA256": "8c9fbb3969cf6f9e6cc8862610a41f000c84efc945e5b079c1d6db3e1448ca54",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawBytesPreserved": true,
+  "initialPrompt": "prompt.txt",
+  "initialRequest": "request.json",
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "references": "references.json",
+  "selectedReferences": "references-selected.json",
+  "referenceHashesVerified": true,
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "registration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "derivedCellCountPerDensity": 16,
+  "environmentCellCountIncrement": 0,
+  "rawOppositeEdgeMeasurements": {
+    "eastWest": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 7.688197767145135
+    },
+    "northSouth": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 10.13290802764487
+    }
+  },
+  "visualReview": {
+    "fullSourceAndAllFourEdgesInspected": true,
+    "all16MasksAtActual32And64Inspected": true,
+    "sourceSpaceFixedCenterMaskInspected": true,
+    "sevenNativeTopologyFixturesInspected": true,
+    "repeated8x8CrossNetworkInspected": true,
+    "noTextOrLogos": true,
+    "broadMattePlanes": true,
+    "semanticIdentity": "Both complete short timber cheeks, both round post tops and the stone approach between them survive every fixed mask. At32px the timber-flanked paving identity remains; post growth rings are subpixel detail. At64px the post tops and paving grouping are clearer.",
+    "primaryLocalSubjectCompleteInsideFixedCenter": true,
+    "reviewedProofs": [
+      "source-crop-32-64-proof.png",
+      "source-center-mask-proof.png",
+      "network-32-64-proof.png",
+      "diagnostics/32-repeated-cross-network.png",
+      "diagnostics/64-repeated-cross-network.png"
+    ],
+    "caveats": [
+      "Catalog-only canonical material: no current gameplay ground binding or live scene acceptance is claimed.",
+      "The fixed historical mask is a skinny path network, not an area-water/shore geometry contract. Artwork does not change it.",
+      "Raw opposite edges are not exact; the existing allowed outermost1px edge match gives exact compatible RGBA boundary pixels without asserting broader physical continuity.",
+      "Fine source details are not native32px semantic requirements; complete primary local material relation is retained.",
+      "Some subdued medium-scale ground mottling and small source pebbles remain, but native32/64 reads as quiet broad ground rather than a grain carpet."
+    ]
+  },
+  "mechanicalQA": {
+    "existingExporterHelperUsed": true,
+    "historicalAlphaPreservedBothDensities": true,
+    "exactAllowedEdgePairsPerDensity": {
+      "eastWest": 64,
+      "northSouth": 64
+    },
+    "outputDimensions": {
+      "32": [
+        512,
+        32
+      ],
+      "64": [
+        1024,
+        64
+      ]
+    },
+    "noManifestGeometryGameplayOrCodeChanges": true,
+    "diagnosticExportReport": "diagnostic-export.json"
+  },
+  "integration": {
+    "performed": false,
+    "formalCatalog": "pending sole integrator",
+    "liveSceneAcceptance": "not claimed"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-2",
+  "label": "浅水",
+  "status": "source-ready-for-integrator-review; native fixed-mask diagnostics passed; formal catalog integration pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte; no generated pixels painted, recolored, filtered or alpha-edited",
+  "master": "master.png",
+  "sourceSHA256": "1976e9cc0562bcd31fd5a6471a487dcb3ff356037fab3b2c1dfe249311f60943",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawBytesPreserved": true,
+  "initialPrompt": "prompt.txt",
+  "initialRequest": "request.json",
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "references": "references.json",
+  "selectedReferences": "references-selected.json",
+  "referenceHashesVerified": true,
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "registration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "derivedCellCountPerDensity": 16,
+  "environmentCellCountIncrement": 0,
+  "rawOppositeEdgeMeasurements": {
+    "eastWest": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 8.578149920255184
+    },
+    "northSouth": {
+      "exact": false,
+      "meanAbsoluteRGBDifference": 10.37745879851143
+    }
+  },
+  "visualReview": {
+    "fullSourceAndAllFourEdgesInspected": true,
+    "all16MasksAtActual32And64Inspected": true,
+    "sourceSpaceFixedCenterMaskInspected": true,
+    "sevenNativeTopologyFixturesInspected": true,
+    "repeated8x8CrossNetworkInspected": true,
+    "noTextOrLogos": true,
+    "broadMattePlanes": true,
+    "semanticIdentity": "One complete submerged stone and its pale blue flowing current remain inside every fixed mask. Imagegen edit reduced the originally oversized off-center stone. Other stones and water continue as crop-safe material.",
+    "primaryLocalSubjectCompleteInsideFixedCenter": true,
+    "reviewedProofs": [
+      "source-crop-32-64-proof.png",
+      "source-center-mask-proof.png",
+      "network-32-64-proof.png",
+      "diagnostics/32-repeated-cross-network.png",
+      "diagnostics/64-repeated-cross-network.png"
+    ],
+    "caveats": [
+      "Catalog-only canonical material: no current gameplay ground binding or live scene acceptance is claimed.",
+      "The fixed historical mask is a skinny path network, not an area-water/shore geometry contract. Artwork does not change it.",
+      "Raw opposite edges are not exact; the existing allowed outermost1px edge match gives exact compatible RGBA boundary pixels without asserting broader physical continuity.",
+      "Fine source details are not native32px semantic requirements; complete primary local material relation is retained."
+    ]
+  },
+  "mechanicalQA": {
+    "existingExporterHelperUsed": true,
+    "historicalAlphaPreservedBothDensities": true,
+    "exactAllowedEdgePairsPerDensity": {
+      "eastWest": 64,
+      "northSouth": 64
+    },
+    "outputDimensions": {
+      "32": [
+        512,
+        32
+      ],
+      "64": [
+        1024,
+        64
+      ]
+    },
+    "noManifestGeometryGameplayOrCodeChanges": true,
+    "diagnosticExportReport": "diagnostic-export.json"
+  },
+  "integration": {
+    "performed": false,
+    "formalCatalog": "pending sole integrator",
+    "liveSceneAcceptance": "not claimed"
+  }
+}
