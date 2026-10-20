@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-06": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "low-ring",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/low-ring/master.png",
+          "sha256": "96438fd50128b407d45bb76a1365f16568c567fbe556cc8f31a3924d22ca206f"
+        },
+        {
+          "phase": "rising-ring",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/rising-ring/master.png",
+          "sha256": "a075dea3675657b353da7b944ff2a76f97ec7b9f5133fb57ad757847db4139bb"
+        },
+        {
+          "phase": "sealed-ring",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/sealed-ring/master.png",
+          "sha256": "221e705e1c3d1b6df197a0e26036fadca020ebb22ef0ada5e7c86b14d2b95ed9"
+        },
+        {
+          "phase": "fading-fragments",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/fading-fragments/master.png",
+          "sha256": "000329b384f0f97e5d7fbf13d5af51ff597bd7c338828eb6e22a1de09c811736"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  }
+}

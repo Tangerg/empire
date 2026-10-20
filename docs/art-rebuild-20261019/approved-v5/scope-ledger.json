@@ -4,13 +4,13 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 401,
+    "formalBound": 402,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 5,
+      "fx": 6,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -7809,15 +7809,23 @@
       "label": "琥珀誓火",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/fading-fragments/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/fading-fragments-rejected-v1/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/low-ring/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/rising-ring/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/rising-ring/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/sealed-ring/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-06.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four immutable RGBA phases low-ring/rising-ring/sealed-ring/fading-fragments preserve amber angular oath rings and nonverbal diamond sigils. Peak/final retain20/3 alpha1edge samples; repaired final truealpha max152 with opaque failure retained",
+        "export": "One shared1254 canvas scale28/1254 at[2,2]; exact32/64 phase export checked; genuine partial-alpha finalphase preserved; five-background native review passed; native central holes alpha0, no individual frame alignment",
+        "runtimeBinding": "Canonical FX06 and density2 HD resolver; actual gray-oath/oath-dispel/inquisitor-flame/oath-bolt target hit bindings;12fps nonloop with existing420ms hit lifetime; centered anchor16,16 preserves prior runtime placement",
+        "liveGame": "pending; exact-duration APNG and static phase comparisons only, no browser/GPU playback verification"
+      }
     },
     {
       "topicId": "C01-FX-07",

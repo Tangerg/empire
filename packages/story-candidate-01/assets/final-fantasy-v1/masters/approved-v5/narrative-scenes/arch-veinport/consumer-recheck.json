@@ -1,0 +1,13 @@
+{
+  "topicId": "C01-ARCH-VEINPORT",
+  "historicalAuditActualUse": false,
+  "currentReadOnlyScan": "rg -n -i C01-ARCH-VEINPORT|arch-veinport apps packages --glob *.ts --glob *.tsx --glob *.js --glob *.css",
+  "exitCode": 1,
+  "matches": [],
+  "stderr": "",
+  "directRuntimeConsumerFound": false,
+  "selectorChanges": false,
+  "newConsumerSuggested": false,
+  "cssCoverQA": "hypothetical compatibility only; no browser/live evidence",
+  "stageVariantGap": true
+}

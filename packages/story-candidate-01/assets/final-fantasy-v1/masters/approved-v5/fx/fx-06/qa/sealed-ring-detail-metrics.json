@@ -1,0 +1,78 @@
+{
+  "phase": "sealed-ring",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sha256": "221e705e1c3d1b6df197a0e26036fadca020ebb22ef0ada5e7c86b14d2b95ed9",
+  "decodedPixelSha256": "f71529b708e994aa7d88ad9a4933309e7a6ed507c6c503141a7b9a16aaf9deec",
+  "rawMasterByteIdentical": true,
+  "edgeAlphaMax": 1,
+  "edgeAlphaNonzeroSamples": 20,
+  "edgeAlpha1ToleranceOnly": true,
+  "bboxAlpha1": [
+    25,
+    17,
+    1244,
+    1254
+  ],
+  "bboxAlpha128": [
+    73,
+    55,
+    1185,
+    1177
+  ],
+  "alphaMass": 413920.0274509804,
+  "maxAlpha": 255,
+  "exports": {
+    "1": {
+      "size": [
+        32,
+        32
+      ],
+      "decodedPixelSha256": "d3446004f45e7f09332489546b6cb63361a4cd3a284c80c4f5731ff8272f0f6c",
+      "bboxAlpha1": [
+        2,
+        2,
+        30,
+        30
+      ],
+      "alphaMass": 207.77254901960785,
+      "final2PixelBorderMax": 0,
+      "central4x4LogicalAlphaMax": 0
+    },
+    "2": {
+      "size": [
+        64,
+        64
+      ],
+      "decodedPixelSha256": "9cef61f79e91dd33da8e8b921127f0cada22e31029a596d4999eac51ca79a24d",
+      "bboxAlpha1": [
+        5,
+        4,
+        60,
+        59
+      ],
+      "alphaMass": 825.6,
+      "final2PixelBorderMax": 0,
+      "central4x4LogicalAlphaMax": 0
+    }
+  },
+  "ringBoundsAlpha32": [
+    73,
+    55,
+    1186,
+    1178
+  ],
+  "boundsCenterAlpha32": [
+    629.5,
+    616.5
+  ],
+  "center100x100AlphaMax": 1,
+  "faintExteriorAlpha1to4Pixels": 51468,
+  "opaquePixelCount": 3984,
+  "centralSource100x100AlphaCounts": {
+    "0": 9998,
+    "1": 2
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "topicId": "C01-FX-06",
+  "readyForBackup": true,
+  "phaseOrder": [
+    "low-ring",
+    "rising-ring",
+    "sealed-ring",
+    "fading-fragments"
+  ],
+  "hashes": {
+    "low-ring": {
+      "raw": "96438fd50128b407d45bb76a1365f16568c567fbe556cc8f31a3924d22ca206f",
+      "master": "96438fd50128b407d45bb76a1365f16568c567fbe556cc8f31a3924d22ca206f",
+      "decodedRgba": "99d73997189d209c669d8c63bc3653bb5bd561823eb2c08b2db770d556680f19"
+    },
+    "rising-ring": {
+      "raw": "a075dea3675657b353da7b944ff2a76f97ec7b9f5133fb57ad757847db4139bb",
+      "master": "a075dea3675657b353da7b944ff2a76f97ec7b9f5133fb57ad757847db4139bb",
+      "decodedRgba": "fde6daed7b2f7c9ab348ad8c4f548290be006ccb64e9287f1bfa7a8b004011fb"
+    },
+    "sealed-ring": {
+      "raw": "221e705e1c3d1b6df197a0e26036fadca020ebb22ef0ada5e7c86b14d2b95ed9",
+      "master": "221e705e1c3d1b6df197a0e26036fadca020ebb22ef0ada5e7c86b14d2b95ed9",
+      "decodedRgba": "f71529b708e994aa7d88ad9a4933309e7a6ed507c6c503141a7b9a16aaf9deec"
+    },
+    "fading-fragments": {
+      "raw": "000329b384f0f97e5d7fbf13d5af51ff597bd7c338828eb6e22a1de09c811736",
+      "master": "000329b384f0f97e5d7fbf13d5af51ff597bd7c338828eb6e22a1de09c811736",
+      "decodedRgba": "9c5bad204e02c7af5ddd171ada2b7877cc57a875908dd4b11a596cce63e00af7"
+    }
+  },
+  "review": "final-review.json",
+  "integrationCatalog": "integration-catalog.json"
+}

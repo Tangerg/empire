@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-FX-06",
+  "selectedPhaseOrder": [
+    "low-ring",
+    "rising-ring",
+    "sealed-ring",
+    "fading-fragments"
+  ],
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "attemptCount": 5,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "perFrameCropFitShiftPaintCleanup": false,
+  "actualCurrentRuntimeAnchor": [
+    16,
+    16
+  ],
+  "acceptedSourceEdgeMaxima": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "acceptedSourceEdgeNonzeroSamples": [
+    0,
+    0,
+    20,
+    3
+  ],
+  "sourceResidueDisclosure": "Peak and final perimeter contain only alpha1 numerical residue, visually clean on black,white and colored composites. Central100x100 source holes contain 1-3 alpha1 pixels; native central4x4 logical regions are fully alpha0. Raw sources retained unchanged.",
+  "allNativeTwoPixelBordersAlpha0": true,
+  "allNativeCentral4x4LogicalRegionsAlpha0": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth"
+  ],
+  "semanticReview": "Low broken oval rises into an assembling angular ring, peaks as thicker interlocking bars with top/bottom diamond lozenges, then disperses into sparse dim angular and diamond fragments. Original geometric symbols retained; no readable runes invented.",
+  "finalPhaseMaxAlpha": 152,
+  "finalPhaseOpaquePixels": 0,
+  "finalAlphaMassFractionOfPeak": 0.06651061239858524,
+  "rejectedAttempts": [
+    "fading-fragments-rejected-v1"
+  ],
+  "APNGVerification": "12 APNGs,48 decoded frames match exports,exact1/12+1/12+1/12+17/100 seconds=420ms,one play. Offline evidence only.",
+  "actualLiveGameObserved": false,
+  "runtimeAndGitWrites": false,
+  "reviewedBy": "native image inspection and deterministic source/alpha/transform/APNG checks"
+}

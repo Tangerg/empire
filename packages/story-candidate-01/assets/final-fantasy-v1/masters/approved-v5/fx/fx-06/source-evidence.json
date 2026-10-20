@@ -942,5 +942,33 @@
     "white expanding circle",
     "damage number"
   ],
-  "livePlaybackObserved": false
+  "livePlaybackObserved": false,
+  "currentRuntimeMetadata": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "fileSha256": "8e463dc492b4a51c11c5974fc72d8c8a815dd7d79cac43fd1a846fd0ce8e04da",
+    "record": {
+      "assetId": "C01-FFV1-FX-06",
+      "topicId": "C01-FX-06",
+      "label": "琥珀誓火",
+      "category": "fx",
+      "png": "runtime/fx/fx-06.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        16
+      ]
+    }
+  },
+  "sourceReferenceVerification": "reference/reference-verification.json",
+  "consumerCodeEvidence": "reference/consumer-source-snapshots.json",
+  "registrationNote": "Full source canvases and shared pivot are preserved. Natural asymmetric fragment bounds have different centers; they are diagnostic, not a crop, fit or shift instruction. All native central4x4 logical pixels remain alpha0."
 }

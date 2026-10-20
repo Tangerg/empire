@@ -1,0 +1,46 @@
+{
+  "topicId": "C01-ARCH-VEINPORT",
+  "nativePreserved": true,
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "sourceNativeExportCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "sourceNativeExportSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "density": 6.5,
+  "upscaled": false,
+  "visualQAComplete": true,
+  "nativeAndLogicalAndCenteredNarrowInspected": true,
+  "rejectedAttemptsPreserved": [
+    "rejected-v1",
+    "rejected-v2"
+  ],
+  "currentConsumerFound": false,
+  "runtimeOrSelectorEdits": false,
+  "liveGameVerified": false,
+  "masterSha256": "502bbbf0c73a4d38fa67836a9257e204434166d55f8b735939e3cf9258fe2b9a",
+  "visualCaveats": [
+    "390x778 centered portrait retains the civic porch/ledger, most main hall, well and several market stalls, but clips outer right hall turret, the entire watch yard, lifting cranes, boats and most riverfront; only a lower-left dock/water glimpse remains. It is not a complete harbor overview in portrait.",
+    "At256x144 harbor/cranes, hall, market and watch yard remain separated; tiny ledger marks, faces and individual goods are not legible.",
+    "Native and exact crop preserve the repaired hall roof tips, though highest decorative tips have only several pixels of margin. Slightly wider desktop cover can graze a tip. The extended lower-right dock and side palisades meet the frame as environmental continuation.",
+    "Canonical label requests uprising/governance crisis/council stages, but source, manifest and current code contain only one static image and no state selector. This bundle supplies one coherent location plate only."
+  ],
+  "generationAttempts": 3,
+  "qaZoomUpscaleOnly": "qa-top-needles-detail-zoom.png is6x nearest-neighbor inspection only. Master/export never upscaled."
+}

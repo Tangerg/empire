@@ -1,0 +1,71 @@
+[
+  {
+    "phaseIndex": 0,
+    "boundsXYXY": [
+      0,
+      314,
+      314,
+      627
+    ],
+    "path": "reference/original-full-cell-f0.png",
+    "decodedEqualOriginalBoardCell": true,
+    "sha256": "ce5adf0feef6fca637c0acd44ad1a30ea2f6c826839a5220c5a0af6152097311"
+  },
+  {
+    "phaseIndex": 1,
+    "boundsXYXY": [
+      314,
+      314,
+      627,
+      627
+    ],
+    "path": "reference/original-full-cell-f1.png",
+    "decodedEqualOriginalBoardCell": true,
+    "sha256": "332ddec7c4738828cf434ffac87ff88f388be1056e5a35da0e830e84484fc2f4"
+  },
+  {
+    "phaseIndex": 2,
+    "boundsXYXY": [
+      627,
+      314,
+      940,
+      627
+    ],
+    "path": "reference/original-full-cell-f2.png",
+    "decodedEqualOriginalBoardCell": true,
+    "sha256": "263790d0d6ceb46a5b441b851e12f796be4bbf897c66646daf0fbf5bec4f0f4f"
+  },
+  {
+    "phaseIndex": 3,
+    "boundsXYXY": [
+      940,
+      314,
+      1254,
+      627
+    ],
+    "path": "reference/original-full-cell-f3.png",
+    "decodedEqualOriginalBoardCell": true,
+    "sha256": "a602b6410b9a11335d1dc0a628680e1a6d2d7ad967a27253275c532a157bab16"
+  },
+  {
+    "path": "reference/original-board.png",
+    "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-02.png",
+    "repositoryFileSha256": "37fd8d95a3286cb65db28a0f702d9235c8d927b65b5a7b77817ee1b79cdac7a3",
+    "savedFileSha256": "4c7f6210796de508d4b4fc422b6a9ad1af0fea5119c7831a3d6b144adbac6efc",
+    "decodedPixelsExact": true
+  },
+  {
+    "path": "reference/legacy-runtime@1x.png",
+    "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-06.png",
+    "repositoryFileSha256": "d654418f1299f33d7d14ca41779d7f762add88ff4748a5a687037336b70df0bd",
+    "savedFileSha256": "5f8f10f65b32d9bf389125c44f5e3d544379202052c737759f3cd6dbebbb14ae",
+    "decodedPixelsExact": false
+  },
+  {
+    "path": "reference/legacy-runtime@2x.png",
+    "repositorySource": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-06.png",
+    "repositoryFileSha256": "f158c6411ded2f6339a7a4b4d110f4caab4dde0cf69f7f3b2c7dc1c02301eb66",
+    "savedFileSha256": "9eecd23bee9132a02c5f4aa6bf02f7fa50bc9c6b592d75a0955a627825ba1c20",
+    "decodedPixelsExact": false
+  }
+]

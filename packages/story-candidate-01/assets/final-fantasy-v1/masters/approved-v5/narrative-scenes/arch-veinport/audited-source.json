@@ -1,0 +1,126 @@
+{
+  "topicId": "C01-ARCH-VEINPORT",
+  "label": "维恩港三阶段治理区",
+  "originalNarrativeIndexZeroBased": 64,
+  "subgroup": "architecture-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-ARCH-VEINPORT",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "维恩港三阶段治理区",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-veinport.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+    "sha256": "bea6f843b636aba30bfac221569c8fb72a3c21747598a47a9920c81adfbca840",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      62,
+      63,
+      64,
+      65
+    ],
+    "cellIndexZeroBased": 2,
+    "columnZeroBased": 0,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-left",
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-ARCH-VEINPORT",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-ARCH-VEINPORT",
+    "topicId": "C01-ARCH-VEINPORT",
+    "label": "维恩港三阶段治理区",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/arch-veinport.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-veinport.png",
+    "sha256": "95d35fdab085ea01ffb0d3472ef8e83f5918faba4ddbbcf93af7bb3958c26b4b",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": false,
+  "consumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": [
+    "Label mentions3 governance stages, but one static image and no stage/state selector exist."
+  ]
+}

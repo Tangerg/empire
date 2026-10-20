@@ -1,0 +1,49 @@
+{
+  "topicId": "C01-ARCH-VEINPORT",
+  "label": "维恩港三阶段治理区",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 64,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+  "sourceBoardSha256": "bea6f843b636aba30bfac221569c8fb72a3c21747598a47a9920c81adfbca840",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "bottom-left",
+  "legacyInsetCropBox": [
+    5,
+    632,
+    622,
+    1249
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "semanticReview": {
+    "preserved": [
+      "Working blue-gray river harbor with angular timber piers, two lifting cranes, small brown river boats and cargo",
+      "Three connected spatial precincts: turreted civic/service hall compound, central fenced open market and watch/transport yard",
+      "Slate gabled hall with stout capped corner turrets, grain shed and stored supplies",
+      "Multicolor broad canvas awnings around a public well, timber fences, wide connecting earth roads",
+      "Modest watchtower, wagon/horses and guards; slate rock banks and olive/russet autumn trees"
+    ],
+    "interpreted": [
+      "Modest public ledger table and separate adults express civic administration without naming a regime or decision",
+      "Recomposed the square source into landscape; moved civic hall toward upper center for better narrow-cover compatibility",
+      "Targeted framing edit removed the clipped lowest decorative boat rather than repositioning it; four complete boats remain and harbor function is unchanged",
+      "Second targeted repair shortened two overlong roof needles after native close inspection found remaining top-edge clipping."
+    ],
+    "notClaimed": [
+      "Three separate temporal governance-stage images or a stage/state selector",
+      "Chosen uprising/crisis/council outcome or simultaneous historical events",
+      "Named heroes, coronation, forced kneeling or new faction heraldry",
+      "Formal runtime binding or browser/live-game coverage"
+    ],
+    "caveats": [
+      "390x778 centered portrait retains the civic porch/ledger, most main hall, well and several market stalls, but clips outer right hall turret, the entire watch yard, lifting cranes, boats and most riverfront; only a lower-left dock/water glimpse remains. It is not a complete harbor overview in portrait.",
+      "At256x144 harbor/cranes, hall, market and watch yard remain separated; tiny ledger marks, faces and individual goods are not legible.",
+      "Native and exact crop preserve the repaired hall roof tips, though highest decorative tips have only several pixels of margin. Slightly wider desktop cover can graze a tip. The extended lower-right dock and side palisades meet the frame as environmental continuation.",
+      "Canonical label requests uprising/governance crisis/council stages, but source, manifest and current code contain only one static image and no state selector. This bundle supplies one coherent location plate only."
+    ]
+  }
+}
