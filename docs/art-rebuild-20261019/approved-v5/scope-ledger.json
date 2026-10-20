@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 534,
+    "formalBound": 536,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -16,10 +16,10 @@
       "mission-unit": 24,
       "narrative-static": 80,
       "skill": 96,
-      "status": 32,
+      "status": 34,
       "terrain": 32
     },
-    "rawPreservedTopics": 534,
+    "rawPreservedTopics": 537,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -8590,8 +8590,11 @@
       "category": "fx",
       "label": "援护盾",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/bare-crescent/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/spark-spray/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -14851,13 +14854,20 @@
       "category": "status",
       "label": "失温",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-hypothermia/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-hypothermia.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-local-support",
@@ -14914,13 +14924,20 @@
       "category": "status",
       "label": "过热",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-overheated/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-overheated.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-permission",
