@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export registered masters, character/background cards and opaque scene plates."""
+"""Export registered transparent masters, character/background cards and opaque scenes."""
 from __future__ import annotations
 
 import argparse
@@ -64,13 +64,20 @@ def validate_alpha(image: Image.Image, label: str):
     }
 
 
-def fit(source: Image.Image, size: tuple[int, int], padding: int) -> Image.Image:
+def fit_canvas(source: Image.Image, size: tuple[int, int], padding: int):
     # Fit the complete authored canvas; never infer a new crop or replace alpha.
     fitted = ImageOps.contain(source, (size[0] - 2 * padding, size[1] - 2 * padding), Image.Resampling.LANCZOS)
     result = Image.new('RGBA', size, (0, 0, 0, 0))
-    result.paste(fitted, ((size[0] - fitted.width) // 2, (size[1] - fitted.height) // 2))
+    origin = ((size[0] - fitted.width) // 2, (size[1] - fitted.height) // 2)
+    result.paste(fitted, origin)
     validate_alpha(result, 'export')
-    return result
+    return result, {'method': 'whole-canvas-contain', 'sourceCropBox': None,
+                    'renderSize': list(fitted.size), 'origin': list(origin),
+                    'padding': padding, 'resampling': 'LANCZOS'}
+
+
+def fit(source: Image.Image, size: tuple[int, int], padding: int) -> Image.Image:
+    return fit_canvas(source, size, padding)[0]
 
 
 def records(root: Path):
@@ -169,6 +176,47 @@ def compose_character_card(root: Path, pack: Path, asset, hd, override):
     return rendered, provenance
 
 
+def render_narrative_prop(root: Path, pack: Path, asset, hd, override):
+    topic = asset['topicId']
+    if topic in ('C01-CH01-S00', 'C01-CH03-S11'):
+        raise ValueError(f'{topic}: scene/prop identity excludes transparent-prop registration')
+    if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
+            or asset.get('category') != 'narrative-static' or asset.get('kind') != 'key-prop'
+            or any(type(asset.get(axis)) is not int or asset[axis] != 128 for axis in ('width', 'height'))
+            or any(key in asset for key in ('frames', 'variants', 'frameWidth', 'frameHeight', 'anchor'))):
+        raise ValueError(f'{topic}: only existing Gray Flag 128x128 unframed, unanchored key-prop contracts supported')
+    if (not isinstance(override, dict) or set(override) != {'kind', 'prop'}
+            or override['kind'] != 'transparent-prop-v1'):
+        raise ValueError(f'{topic}: expected transparent-prop-v1 with prop only')
+    output_records = [(asset, 1)]
+    if hd is not None:
+        if (set(hd) != {'topicId', 'png', 'width', 'height', 'pixelDensity'}
+                or hd['topicId'] != topic
+                or any(type(hd[axis]) is not int or hd[axis] != 256 for axis in ('width', 'height'))
+                or type(hd['pixelDensity']) not in (int, float) or hd['pixelDensity'] != 2):
+            raise ValueError(f'{topic}: key-prop HD contract requires explicit 256x256 at density 2')
+        output_records.append((hd, 2))
+    source, digest = read_source(root, pack, override['prop'], f'{topic} prop')
+    source_alpha = validate_alpha(source, f'{topic} prop')
+    largest = output_records[-1][0]
+    if source.width < largest['width'] or source.height < largest['height']:
+        raise ValueError(f'{topic}: prop source canvas is smaller than the largest requested export')
+    result = []
+    for record, density in output_records:
+        rendered, geometry = fit_canvas(source, (record['width'], record['height']), 2 * density)
+        result.append((record, density, rendered, {
+            'kind': override['kind'],
+            'sources': {'prop': {**override['prop'], 'sha256': digest, 'size': list(source.size),
+                                  'mode': source.mode, 'alpha': source_alpha}},
+            'propFit': geometry,
+            'pixelDensity': density,
+            'outputAlpha': validate_alpha(rendered, f'{topic} export'),
+            'visualReviewRequired': ['complete master and topic identity', 'holes and detached pieces',
+                                     'native export on light/dark backgrounds'],
+        }))
+    return result
+
+
 def render_scene(root: Path, pack: Path, asset, hd, override):
     topic = asset['topicId']
     if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
@@ -256,9 +304,13 @@ def plan(root: Path, catalog: Path):
         if category == 'narrative-static':
             if asset.get('kind') == 'scene':
                 exports = render_scene(root, pack, asset, hd, override)
-            else:
+            elif asset.get('kind') == 'character-card':
                 rendered, provenance = compose_character_card(root, pack, asset, hd, override)
                 exports = [(asset, 1, rendered, provenance)]
+            elif asset.get('kind') == 'key-prop':
+                exports = render_narrative_prop(root, pack, asset, hd, override)
+            else:
+                raise ValueError(f'{topic}: unsupported narrative kind: {asset.get("kind")!r}')
         elif category not in contracts or asset.get('frames') or asset.get('variants'):
             raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud/faction-kit exports supported')
         else:

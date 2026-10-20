@@ -215,3 +215,32 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.write(DOC / 'approved-v5/progress.json', self.progress)
         with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
             build(self.root)
+
+    def test_reviewed_narrative_props_discover_own_native_master_without_counting_consumers(self):
+        for suffix in ['LEFT-GLOVE', 'EXILE-HARDTACK', 'IVRA-BROKEN-BRIDLE', 'CROWN-FRAGMENT']:
+            with self.subTest(prop=suffix):
+                topic = {**self.topic, 'topicId': f'C01-PROP-{suffix}',
+                         'category': 'narrative-static', 'kind': 'key-prop'}
+                self.write('pack/manifest.json', {'assets': [topic]})
+                self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                    'campaign': 'story-candidate-01', 'label': suffix}])
+                self.progress.update(topicStages={}, formalRuntimeBoundTopics=0)
+                self.write(DOC / 'approved-v5/progress.json', self.progress)
+                raw = self.root / f'pack/masters/approved-v5/narrative-props/prop-{suffix.lower()}/master.png'
+                raw.parent.mkdir(parents=True)
+                raw.write_bytes(b'independent immutable transparent prop placeholder')
+                result = build(self.root)
+                self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+                self.assertEqual(result['summary']['formalBound'], 0)
+                self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'], [str(raw.relative_to(self.root))])
+                topic['qualityTier'] = 'approved-chunky-v5-export-verified'
+                self.write('pack/manifest.json', {'assets': [topic]})
+                self.progress.update(topicStages={topic['topicId']: {'raw': 'independent transparent prop',
+                    'export': 'canonical128 reviewed; catalog only'}}, formalRuntimeBoundTopics=1)
+                self.write(DOC / 'approved-v5/progress.json', self.progress)
+                result = build(self.root)
+                self.assertEqual(result['summary']['boundByCategory'], {'narrative-static': 1})
+                self.assertEqual(result['summary']['liveGameVerified'], 0)
+                raw.unlink()
+                with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
+                    build(self.root)

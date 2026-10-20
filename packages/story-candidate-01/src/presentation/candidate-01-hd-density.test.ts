@@ -4,10 +4,14 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 // checked by the exporter tests and the integrated narrative scene contract suite.
 vi.mock('../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json', async importOriginal => {
   const actual = await importOriginal<{ default: typeof import('../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json') }>();
+  const canonical = await import('../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json');
+  const wideSceneTopics = new Set(canonical.default.assets
+    .filter(asset => asset.kind === 'scene' && asset.width === 256 && asset.height === 144)
+    .map(asset => asset.topicId));
   const data = actual.default;
   return { default: {
     schemaVersion: 'candidate-01-runtime-hd-v2', assetCount: data.assetCount,
-    assets: data.assets.map(asset => asset.png.startsWith('runtime-hd/narrative-static/')
+    assets: data.assets.map(asset => wideSceneTopics.has(asset.topicId)
       ? { ...asset, width: 1664, height: 936, pixelDensity: 6.5 } : asset),
   } };
 });

@@ -477,6 +477,88 @@ python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
 python3 -m unittest discover -s tools/art -p 'test_narrative_card_overrides.py' -v
 ```
 
+## Gray Flag transparent narrative key-props
+
+`export_overrides.py` accepts an explicit `transparent-prop-v1` entry for an
+existing C01 `narrative-static`, kind `key-prop`, 128×128 record. Register only
+reviewed independent masters in the same `source-overrides.json` catalog:
+
+```json
+{
+  "kind": "transparent-prop-v1",
+  "prop": {
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-left-glove/master.png",
+    "sha256": "the SHA-256 of the complete immutable PNG bytes"
+  }
+}
+```
+
+This example does not register or approve any source. The first reviewed
+identities are LEFT-GLOVE, EXILE-HARDTACK, IVRA-BROKEN-BRIDLE and CROWN-FRAGMENT.
+Do not infer a fingered glove from the LEFT-GLOVE identifier: its reviewed
+reference is a cylindrical wrist guard. CH01-S00 is excluded pending its
+scene-versus-prop identity decision. CH03-S11 is an opaque cemetery scene and is
+also excluded; its separate canonical classification correction must preserve
+128×128 and is not part of transparent export.
+
+The canonical manifest remains the sole geometry owner. Anchors, frames,
+variants, frameWidth and frameHeight must all be absent, even if a proposed
+field is null or zero. These props are not tactical battle-props. Unknown
+narrative kinds reject explicitly; scene and character-card dispatch retain
+their existing separate contracts.
+
+The source must be a PNG in its own pack's `masters` directory, match its
+whole-file checksum, have real RGBA transparency and a near-opaque core, and
+have both dimensions at least as large as the largest requested physical
+export. Source edge alpha may be at most 1/255 and remains untouched. Edge
+alpha ≥2, opaque/matte images, empty images and RGB or palette sources reject.
+These numeric checks cannot establish native authoring, spot every painted
+checkerboard or guarantee complete silhouettes. Visual review on light/dark
+backgrounds, including holes and detached pieces, remains mandatory.
+
+Export contains the **complete authored canvas** proportionally with LANCZOS
+inside 128×128 with 2px padding and centers that canvas, preserving its internal
+off-center composition. There is no inferred crop, bbox fitting, chroma key,
+background removal, recoloring, second alpha mask or alpha cleanup. Resampling
+interpolates the source RGBA samples; all original source bytes are preserved.
+The padded output's outer edge is fully transparent. Reports include the source
+hash/mode/size/alpha, exact contain size/origin/padding, density, output alpha and
+decoded pixel hash, plus the remaining visual-review requirement.
+
+No HD record is synthesized. An explicitly registered existing v2 HD record may
+request exactly 256×256 at density 2, with 4px padding and independent sampling
+from the same complete source. The source must then be at least 256×256; never
+enlarge the canonical128 image into an alleged new master or physical export.
+Density above2 remains rejected for key-props. A registered HD file must exist
+in the Vite graph before runtime resolution. The density regression fixture
+selects canonical wide-scene identities rather than treating every narrative
+HD path as a 16:9 scene.
+
+The reviewed four currently have generic catalog resolution, with no shipped
+prop presentation surface. Resolver tests establish URL selection and unchanged
+logical geometry only. Do not send a transparent prop through the existing
+full-screen, cover-cropped story-backdrop consumer and call it accepted UI.
+Existing scene and character-card consumers remain unchanged.
+
+The ledger discovers `C01-PROP-*` key-prop native masters at
+`masters/approved-v5/narrative-props/<topic-without-C01-prefix-lowercased>/master.png`
+or one child revision directory. Raw discovery alone does not count as formal
+binding or live-game acceptance; manifest quality and progress must agree.
+
+Every registration is planned before any output write. The fixture covers all
+three canonical catalogs, changes only the four selected runtime files, and
+preserves all unregistered files, character cards, manifests and masters. Tests
+also cover holes, loose pieces, off-center composition, semi-alpha, magenta
+source color, source/path/hash/schema/geometry failures, semantic exclusions,
+optional2×, stale checks and repeatable output:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/art -p 'test_narrative_prop_overrides.py' -v
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/art -p 'test_narrative*_overrides.py' -v
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
+npm test -- packages/story-candidate-01/src/presentation/candidate-01-narrative-props.test.ts packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts tools/art/approved_catalog_bindings.test.ts
+```
+
 ## Gray Flag opaque narrative scene plates
 
 `export_overrides.py` also accepts existing C01 `narrative-static`, kind `scene`,
