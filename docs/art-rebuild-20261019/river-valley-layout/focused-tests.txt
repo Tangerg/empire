@@ -1,0 +1,19 @@
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-scene-connectivity-20261020
+
+ ✓ packages/story-candidate-01/src/levels.test.ts (5 tests) 66ms
+ ✓ packages/story-candidate-01/src/river-layout.test.ts (3 tests) 113ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-river-material.test.ts (5 tests) 103ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-water-material.test.ts (5 tests) 117ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-river-clearance.test.ts (2 tests) 122ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-edge-decoration.test.ts (5 tests) 200ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-crossing.test.ts (5 tests) 211ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-map-scene.test.ts (12 tests) 376ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-road-area.test.ts (13 tests) 538ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-earth-material.test.ts (4 tests) 760ms
+   ✓ earth material for terrain interiors and generated shores > covers 169 explicit interiors and 106 generated banks outside the authored river using their different original neighbour predicates 617ms
+
+ Test Files  10 passed (10)
+      Tests  59 passed (59)
+   Start at  16:15:19
+   Duration  5.81s (transform 3.99s, setup 0ms, collect 33.84s, tests 2.61s, environment 7ms, prepare 1.40s)

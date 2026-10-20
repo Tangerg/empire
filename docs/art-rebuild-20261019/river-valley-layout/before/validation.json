@@ -1,0 +1,325 @@
+{
+  "levelId": "c01-02",
+  "bridges": [
+    {
+      "x": 10,
+      "y": 3
+    },
+    {
+      "x": 11,
+      "y": 3
+    },
+    {
+      "x": 10,
+      "y": 6
+    },
+    {
+      "x": 11,
+      "y": 6
+    },
+    {
+      "x": 10,
+      "y": 9
+    },
+    {
+      "x": 11,
+      "y": 9
+    }
+  ],
+  "buildings": [
+    {
+      "x": 2,
+      "y": 1,
+      "id": "village"
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "id": "c01.outpost"
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "id": "c01.outpost"
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "id": "village"
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "id": "village"
+    },
+    {
+      "x": 1,
+      "y": 11,
+      "id": "village"
+    },
+    {
+      "x": 17,
+      "y": 11,
+      "id": "village"
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "id": "c01.outpost"
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "id": "c01.outpost"
+    }
+  ],
+  "actorReachability": [
+    {
+      "key": "campaign-laiya",
+      "cell": [
+        1,
+        9
+      ],
+      "movement": "foot",
+      "openingStops": 11,
+      "shortestSafetyCellSteps": 26
+    },
+    {
+      "key": "campaign-torren",
+      "cell": [
+        2,
+        8
+      ],
+      "movement": "foot",
+      "openingStops": 14,
+      "shortestSafetyCellSteps": 24
+    },
+    {
+      "key": "campaign-elin",
+      "cell": [
+        2,
+        10
+      ],
+      "movement": "foot",
+      "openingStops": 11,
+      "shortestSafetyCellSteps": 26
+    },
+    {
+      "key": "bridge-knight",
+      "cell": [
+        3,
+        7
+      ],
+      "movement": "mounted",
+      "openingStops": 62,
+      "shortestSafetyCellSteps": 22
+    },
+    {
+      "key": "bridge-guard-1",
+      "cell": [
+        1,
+        10
+      ],
+      "movement": "foot",
+      "openingStops": 11,
+      "shortestSafetyCellSteps": 27
+    },
+    {
+      "key": "bridge-guard-2",
+      "cell": [
+        3,
+        10
+      ],
+      "movement": "foot",
+      "openingStops": 14,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "refugee-1",
+      "cell": [
+        1,
+        11
+      ],
+      "movement": "foot",
+      "openingStops": 11,
+      "shortestSafetyCellSteps": 28
+    },
+    {
+      "key": "refugee-2",
+      "cell": [
+        2,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 13,
+      "shortestSafetyCellSteps": 28
+    },
+    {
+      "key": "refugee-3",
+      "cell": [
+        3,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 15,
+      "shortestSafetyCellSteps": 27
+    },
+    {
+      "key": "river-scout",
+      "cell": [
+        5,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 18,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "bridge-cleric",
+      "cell": [
+        2,
+        9
+      ],
+      "movement": "foot",
+      "openingStops": 13,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "bridge-reserve",
+      "cell": [
+        1,
+        8
+      ],
+      "movement": "foot",
+      "openingStops": 12,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "cain",
+      "cell": [
+        20,
+        4
+      ],
+      "movement": "foot",
+      "openingStops": 29,
+      "shortestSafetyCellSteps": 2
+    },
+    {
+      "key": "shield-1",
+      "cell": [
+        19,
+        3
+      ],
+      "movement": "foot",
+      "openingStops": 21,
+      "shortestSafetyCellSteps": 2
+    },
+    {
+      "key": "shield-2",
+      "cell": [
+        19,
+        5
+      ],
+      "movement": "foot",
+      "openingStops": 22,
+      "shortestSafetyCellSteps": 4
+    },
+    {
+      "key": "bow-1",
+      "cell": [
+        18,
+        8
+      ],
+      "movement": "foot",
+      "openingStops": 24,
+      "shortestSafetyCellSteps": 8
+    },
+    {
+      "key": "unmarked-ballista",
+      "cell": [
+        20,
+        10
+      ],
+      "movement": "heavy",
+      "openingStops": 10,
+      "shortestSafetyCellSteps": 8
+    },
+    {
+      "key": "north-bank-guard",
+      "cell": [
+        15,
+        2
+      ],
+      "movement": "foot",
+      "openingStops": 21,
+      "shortestSafetyCellSteps": 5
+    },
+    {
+      "key": "south-bank-bow",
+      "cell": [
+        16,
+        11
+      ],
+      "movement": "foot",
+      "openingStops": 22,
+      "shortestSafetyCellSteps": 13
+    },
+    {
+      "key": "battery-screen",
+      "cell": [
+        20,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 15,
+      "shortestSafetyCellSteps": 10
+    }
+  ],
+  "independentCrossings": [
+    {
+      "row": 3,
+      "westToEastCellSteps": 27
+    },
+    {
+      "row": 6,
+      "westToEastCellSteps": 27
+    },
+    {
+      "row": 9,
+      "westToEastCellSteps": 27
+    }
+  ],
+  "validateLevelErrors": [],
+  "replay": [
+    {
+      "aggression": 0.35,
+      "actions": 294,
+      "turn": 17,
+      "winner": 1,
+      "reason": "灰旗军 完成目标：护送平民并阻止无标记弩车",
+      "eventCount": 770,
+      "eventSha256": "7326eef7ecf11761ff0f48a782800b14ec1f3fc7872779bb3593331aa6295e05",
+      "stateSha256": "67967c78"
+    },
+    {
+      "aggression": 0.58,
+      "actions": 243,
+      "turn": 13,
+      "winner": 1,
+      "reason": "敌军已被全歼",
+      "eventCount": 720,
+      "eventSha256": "3f885b70500e7db689f1f6ab93532406a6de1b55edaf3e6e4a53e5d3cbcadcca",
+      "stateSha256": "dc2fba50"
+    },
+    {
+      "aggression": 0.8,
+      "actions": 217,
+      "turn": 11,
+      "winner": 1,
+      "reason": "灰旗军 完成目标：护送平民并阻止无标记弩车",
+      "eventCount": 596,
+      "eventSha256": "52c43c27c588314f405c8ea18e5a1aa20205a32b37eded3a505ffb54ecd86f47",
+      "stateSha256": "cdb4d578"
+    }
+  ]
+}

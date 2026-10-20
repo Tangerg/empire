@@ -32,7 +32,8 @@ describe('river battle clearings', () => {
     expect(after.underUnits.filter(p => !local(p))).toEqual(before.underUnits.filter(p => !local(p)));
     expect(after.underUnits).toHaveLength(before.underUnits.length);
     expect(after.overUnits).toEqual(before.overUnits);
-    expect(candidate01SceneFrameMarkup(context)).toEqual(candidate01SceneFrameMarkup(baseline));
+    expect(scene.framePlacements).toHaveLength(24);
+    expect(candidate01SceneFrameMarkup(context).foreground.match(/is-scene-frame/g)).toHaveLength(24);
   });
 
   it('keeps all gameplay terrain, actors, buildings, truce and escort contracts unchanged', () => {

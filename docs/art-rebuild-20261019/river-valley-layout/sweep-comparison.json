@@ -1,0 +1,38 @@
+{
+  "runCount": 60,
+  "identicalRuns": 57,
+  "changed": [
+    {
+      "run": "c01-02 @0.35",
+      "before": "END c01-02 winner=1 turn=17 actions=294 hash=67967c78 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+      "after": "END c01-02 winner=1 turn=17 actions=294 hash=5191b7f8 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+      "beforeSha256": "91efd7f404aefcdf0dbb30efaa35e39d4d19b3b81b5a5def0f48e8db13b02475",
+      "afterSha256": "0265f70902af607568d1d523a8fceaf4cec7c3d6d12b4d1765a597d8d2326619",
+      "identicalTrailingEvents": 698,
+      "beforeEventCount": 770,
+      "afterEventCount": 769
+    },
+    {
+      "run": "c01-02 @0.58",
+      "before": "END c01-02 winner=1 turn=13 actions=243 hash=dc2fba50 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+      "after": "END c01-02 winner=1 turn=13 actions=243 hash=78f2647f reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+      "beforeSha256": "9de16d02a7868c8167926fd38a1af31af9c7216aeeefa7d82a53e834c50258cd",
+      "afterSha256": "a2b41fa054336533489b3f609f7a2c8930d8dbcf564b69600349909d890ca8ac",
+      "identicalTrailingEvents": 648,
+      "beforeEventCount": 720,
+      "afterEventCount": 719
+    },
+    {
+      "run": "c01-02 @0.8",
+      "before": "END c01-02 winner=1 turn=11 actions=217 hash=cdb4d578 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+      "after": "END c01-02 winner=1 turn=11 actions=217 hash=93fcc348 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+      "beforeSha256": "4c75b28edf35420036bf20d5909f490ce848713e68aab8066826b80e2843b377",
+      "afterSha256": "a89e8f5b4457e5e39a63f6240101412206a7457ace263223ca22136bb9ad90db",
+      "identicalTrailingEvents": 524,
+      "beforeEventCount": 596,
+      "afterEventCount": 595
+    }
+  ],
+  "beforeSweepSha256": "3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9",
+  "afterSweepSha256": "29c88094ab0ddb3aa331eb1f4d9ee14a2bf6807441d4649aaf96d1c47592153b"
+}

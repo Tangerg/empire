@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-scene-connectivity-20261020
+
+ ✓ packages/story-candidate-01/src/river-layout.test.ts (3 tests) 112ms
+ ✓ packages/battle-engine/src/__tests__/architecture-boundaries.test.ts (104 tests) 3718ms
+   ✓ the battle screen is its own screen > emits no class or data attribute that nothing reads 1353ms
+
+ Test Files  2 passed (2)
+      Tests  107 passed (107)
+   Start at  16:18:34
+   Duration  10.18s (transform 3.97s, setup 0ms, collect 8.13s, tests 3.83s, environment 0ms, prepare 270ms)

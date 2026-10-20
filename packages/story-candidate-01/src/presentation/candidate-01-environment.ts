@@ -10,6 +10,7 @@ import {
   EnvironmentCatalog,
   type EnvironmentManifest,
 } from '@empire/game-ui';
+import type { CandidateRiverProfile } from './candidate-01-river-material';
 import type { CandidateRoadCorridorProfile } from './candidate-01-road-corridor';
 import { fixedNumbers, oneOf, type FixedNumbers } from './candidate-01-documents';
 
@@ -34,6 +35,7 @@ export interface CandidateEnvironmentScene {
   readonly levelId: string;
   readonly runtimeReady: boolean;
   readonly roadCorridor?: CandidateRoadCorridorProfile;
+  readonly river?: CandidateRiverProfile;
   readonly mapSize: FixedNumbers<2>;
   readonly zones: readonly {
     readonly id: string;
@@ -85,7 +87,8 @@ export const CANDIDATE_01_ENVIRONMENT = new EnvironmentCatalog(
   (relativePath) => environmentUrls[`${ENVIRONMENT_ROOT}${relativePath}`],
 );
 
-type SceneDocument = Omit<CandidateEnvironmentScene, 'mapSize' | 'zones' | 'placements' | 'roadCorridor' | 'framePlacements' | 'groundOutline'> & {
+type SceneDocument = Omit<CandidateEnvironmentScene, 'mapSize' | 'zones' | 'placements' | 'roadCorridor' | 'framePlacements' | 'groundOutline' | 'river'> & {
+  readonly river?: Omit<CandidateRiverProfile, 'knots'> & { readonly knots: readonly (readonly number[])[] };
   readonly mapSize: readonly number[];
   readonly zones: readonly (Omit<CandidateEnvironmentScene['zones'][number], 'bounds'> & { readonly bounds: readonly number[] })[];
   readonly placements: readonly (Omit<CandidateEnvironmentPlacement, 'layer'> & { readonly layer?: string })[];
@@ -97,9 +100,10 @@ type SceneDocument = Omit<CandidateEnvironmentScene, 'mapSize' | 'zones' | 'plac
 /** An authored scene, read rather than asserted. See `candidate-01-documents.ts`. */
 function readScene(document: SceneDocument): CandidateEnvironmentScene {
   const subject = document.levelId;
-  const { roadCorridor, framePlacements, groundOutline, ...required } = document;
+  const { roadCorridor, river, framePlacements, groundOutline, ...required } = document;
   return {
     ...required,
+    ...(river ? { river: { ...river, knots: river.knots.map(point => fixedNumbers(2, point, 'river knot', subject)) } } : {}),
     ...(roadCorridor ? { roadCorridor: {
       ...roadCorridor,
       protectedCells: roadCorridor.protectedCells.map(point => fixedNumbers(2, point, 'protected road cell', subject)),

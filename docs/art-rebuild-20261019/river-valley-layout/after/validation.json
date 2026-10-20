@@ -1,0 +1,844 @@
+{
+  "levelId": "c01-02",
+  "bridges": [
+    {
+      "x": 10,
+      "y": 3
+    },
+    {
+      "x": 11,
+      "y": 3
+    },
+    {
+      "x": 10,
+      "y": 6
+    },
+    {
+      "x": 11,
+      "y": 6
+    },
+    {
+      "x": 10,
+      "y": 9
+    },
+    {
+      "x": 11,
+      "y": 9
+    }
+  ],
+  "buildings": [
+    {
+      "x": 2,
+      "y": 1,
+      "id": "village"
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "id": "c01.outpost"
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "id": "c01.outpost"
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "id": "village"
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "id": "village"
+    },
+    {
+      "x": 1,
+      "y": 11,
+      "id": "village"
+    },
+    {
+      "x": 17,
+      "y": 11,
+      "id": "village"
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "id": "c01.outpost"
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "id": "c01.outpost"
+    }
+  ],
+  "actorReachability": [
+    {
+      "key": "campaign-laiya",
+      "cell": [
+        1,
+        9
+      ],
+      "movement": "foot",
+      "openingStops": 12,
+      "shortestSafetyCellSteps": 26
+    },
+    {
+      "key": "campaign-torren",
+      "cell": [
+        2,
+        8
+      ],
+      "movement": "foot",
+      "openingStops": 16,
+      "shortestSafetyCellSteps": 24
+    },
+    {
+      "key": "campaign-elin",
+      "cell": [
+        3,
+        11
+      ],
+      "movement": "foot",
+      "openingStops": 14,
+      "shortestSafetyCellSteps": 26
+    },
+    {
+      "key": "bridge-knight",
+      "cell": [
+        3,
+        7
+      ],
+      "movement": "mounted",
+      "openingStops": 63,
+      "shortestSafetyCellSteps": 22
+    },
+    {
+      "key": "bridge-guard-1",
+      "cell": [
+        1,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 12,
+      "shortestSafetyCellSteps": 29
+    },
+    {
+      "key": "bridge-guard-2",
+      "cell": [
+        3,
+        10
+      ],
+      "movement": "foot",
+      "openingStops": 15,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "refugee-1",
+      "cell": [
+        1,
+        11
+      ],
+      "movement": "foot",
+      "openingStops": 11,
+      "shortestSafetyCellSteps": 28
+    },
+    {
+      "key": "refugee-2",
+      "cell": [
+        2,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 13,
+      "shortestSafetyCellSteps": 28
+    },
+    {
+      "key": "refugee-3",
+      "cell": [
+        3,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 14,
+      "shortestSafetyCellSteps": 27
+    },
+    {
+      "key": "river-scout",
+      "cell": [
+        5,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 17,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "bridge-cleric",
+      "cell": [
+        2,
+        9
+      ],
+      "movement": "foot",
+      "openingStops": 14,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "bridge-reserve",
+      "cell": [
+        1,
+        8
+      ],
+      "movement": "foot",
+      "openingStops": 14,
+      "shortestSafetyCellSteps": 25
+    },
+    {
+      "key": "cain",
+      "cell": [
+        20,
+        4
+      ],
+      "movement": "foot",
+      "openingStops": 29,
+      "shortestSafetyCellSteps": 2
+    },
+    {
+      "key": "shield-1",
+      "cell": [
+        19,
+        3
+      ],
+      "movement": "foot",
+      "openingStops": 21,
+      "shortestSafetyCellSteps": 2
+    },
+    {
+      "key": "shield-2",
+      "cell": [
+        19,
+        5
+      ],
+      "movement": "foot",
+      "openingStops": 22,
+      "shortestSafetyCellSteps": 4
+    },
+    {
+      "key": "bow-1",
+      "cell": [
+        18,
+        8
+      ],
+      "movement": "foot",
+      "openingStops": 24,
+      "shortestSafetyCellSteps": 8
+    },
+    {
+      "key": "unmarked-ballista",
+      "cell": [
+        20,
+        10
+      ],
+      "movement": "heavy",
+      "openingStops": 10,
+      "shortestSafetyCellSteps": 8
+    },
+    {
+      "key": "north-bank-guard",
+      "cell": [
+        15,
+        2
+      ],
+      "movement": "foot",
+      "openingStops": 21,
+      "shortestSafetyCellSteps": 5
+    },
+    {
+      "key": "south-bank-bow",
+      "cell": [
+        15,
+        11
+      ],
+      "movement": "foot",
+      "openingStops": 22,
+      "shortestSafetyCellSteps": 14
+    },
+    {
+      "key": "battery-screen",
+      "cell": [
+        20,
+        12
+      ],
+      "movement": "foot",
+      "openingStops": 15,
+      "shortestSafetyCellSteps": 10
+    }
+  ],
+  "independentCrossings": [
+    {
+      "row": 3,
+      "westToEastCellSteps": 27
+    },
+    {
+      "row": 6,
+      "westToEastCellSteps": 27
+    },
+    {
+      "row": 9,
+      "westToEastCellSteps": 27
+    }
+  ],
+  "validateLevelErrors": [],
+  "replay": [
+    {
+      "firstCombat": {
+        "turn": 4,
+        "units": [
+          {
+            "key": "campaign-laiya",
+            "x": 4,
+            "y": 8,
+            "hp": 116
+          },
+          {
+            "key": "campaign-torren",
+            "x": 7,
+            "y": 7,
+            "hp": 98
+          },
+          {
+            "key": "campaign-elin",
+            "x": 6,
+            "y": 8,
+            "hp": 78
+          },
+          {
+            "key": "bridge-knight",
+            "x": 8,
+            "y": 8,
+            "hp": 93
+          },
+          {
+            "key": "bridge-guard-1",
+            "x": 6,
+            "y": 6,
+            "hp": 112
+          },
+          {
+            "key": "bridge-guard-2",
+            "x": 5,
+            "y": 9,
+            "hp": 78
+          },
+          {
+            "key": "refugee-1",
+            "x": 8,
+            "y": 7,
+            "hp": 58
+          },
+          {
+            "key": "refugee-2",
+            "x": 6,
+            "y": 7,
+            "hp": 58
+          },
+          {
+            "key": "refugee-3",
+            "x": 7,
+            "y": 5,
+            "hp": 58
+          },
+          {
+            "key": "river-scout",
+            "x": 7,
+            "y": 9,
+            "hp": 98
+          },
+          {
+            "key": "bridge-cleric",
+            "x": 5,
+            "y": 10,
+            "hp": 72
+          },
+          {
+            "key": "bridge-reserve",
+            "x": 5,
+            "y": 7,
+            "hp": 112
+          },
+          {
+            "key": "cain",
+            "x": 19,
+            "y": 5,
+            "hp": 125
+          },
+          {
+            "key": "shield-1",
+            "x": 12,
+            "y": 5,
+            "hp": 120
+          },
+          {
+            "key": "shield-2",
+            "x": 12,
+            "y": 6,
+            "hp": 120
+          },
+          {
+            "key": "bow-1",
+            "x": 10,
+            "y": 9,
+            "hp": 78
+          },
+          {
+            "key": "unmarked-ballista",
+            "x": 15,
+            "y": 11,
+            "hp": 72
+          },
+          {
+            "key": "north-bank-guard",
+            "x": 12,
+            "y": 7,
+            "hp": 98
+          },
+          {
+            "key": "south-bank-bow",
+            "x": 12,
+            "y": 11,
+            "hp": 78
+          },
+          {
+            "key": "battery-screen",
+            "x": 15,
+            "y": 12,
+            "hp": 120
+          }
+        ]
+      },
+      "survivors": [
+        {
+          "key": "campaign-laiya",
+          "x": 14,
+          "y": 5,
+          "hp": 11
+        },
+        {
+          "key": "campaign-torren",
+          "x": 17,
+          "y": 2,
+          "hp": 41
+        },
+        {
+          "key": "bridge-guard-1",
+          "x": 15,
+          "y": 4,
+          "hp": 96
+        },
+        {
+          "key": "refugee-1",
+          "x": 20,
+          "y": 2,
+          "hp": 58
+        },
+        {
+          "key": "refugee-2",
+          "x": 20,
+          "y": 1,
+          "hp": 58
+        },
+        {
+          "key": "refugee-3",
+          "x": 21,
+          "y": 2,
+          "hp": 58
+        },
+        {
+          "key": "cain",
+          "x": 13,
+          "y": 5,
+          "hp": 76
+        }
+      ],
+      "aggression": 0.35,
+      "actions": 294,
+      "turn": 17,
+      "winner": 1,
+      "reason": "灰旗军 完成目标：护送平民并阻止无标记弩车",
+      "eventCount": 769,
+      "eventSha256": "8514bb419752bde79ff91c94587d8fb592d07169408d8c9f9f1e0c8019a51182",
+      "stateSha256": "5191b7f8"
+    },
+    {
+      "firstCombat": {
+        "turn": 4,
+        "units": [
+          {
+            "key": "campaign-laiya",
+            "x": 4,
+            "y": 8,
+            "hp": 116
+          },
+          {
+            "key": "campaign-torren",
+            "x": 7,
+            "y": 7,
+            "hp": 98
+          },
+          {
+            "key": "campaign-elin",
+            "x": 6,
+            "y": 8,
+            "hp": 78
+          },
+          {
+            "key": "bridge-knight",
+            "x": 8,
+            "y": 8,
+            "hp": 93
+          },
+          {
+            "key": "bridge-guard-1",
+            "x": 6,
+            "y": 6,
+            "hp": 112
+          },
+          {
+            "key": "bridge-guard-2",
+            "x": 5,
+            "y": 9,
+            "hp": 78
+          },
+          {
+            "key": "refugee-1",
+            "x": 7,
+            "y": 6,
+            "hp": 58
+          },
+          {
+            "key": "refugee-2",
+            "x": 5,
+            "y": 6,
+            "hp": 58
+          },
+          {
+            "key": "refugee-3",
+            "x": 6,
+            "y": 7,
+            "hp": 58
+          },
+          {
+            "key": "river-scout",
+            "x": 7,
+            "y": 9,
+            "hp": 98
+          },
+          {
+            "key": "bridge-cleric",
+            "x": 5,
+            "y": 10,
+            "hp": 72
+          },
+          {
+            "key": "bridge-reserve",
+            "x": 5,
+            "y": 7,
+            "hp": 112
+          },
+          {
+            "key": "cain",
+            "x": 15,
+            "y": 5,
+            "hp": 125
+          },
+          {
+            "key": "shield-1",
+            "x": 12,
+            "y": 5,
+            "hp": 120
+          },
+          {
+            "key": "shield-2",
+            "x": 12,
+            "y": 6,
+            "hp": 120
+          },
+          {
+            "key": "bow-1",
+            "x": 10,
+            "y": 9,
+            "hp": 78
+          },
+          {
+            "key": "unmarked-ballista",
+            "x": 15,
+            "y": 11,
+            "hp": 72
+          },
+          {
+            "key": "north-bank-guard",
+            "x": 10,
+            "y": 6,
+            "hp": 98
+          },
+          {
+            "key": "south-bank-bow",
+            "x": 12,
+            "y": 11,
+            "hp": 78
+          },
+          {
+            "key": "battery-screen",
+            "x": 15,
+            "y": 12,
+            "hp": 120
+          }
+        ]
+      },
+      "survivors": [
+        {
+          "key": "campaign-laiya",
+          "x": 9,
+          "y": 2,
+          "hp": 85
+        },
+        {
+          "key": "campaign-elin",
+          "x": 16,
+          "y": 5,
+          "hp": 62
+        },
+        {
+          "key": "bridge-guard-2",
+          "x": 13,
+          "y": 2,
+          "hp": 78
+        },
+        {
+          "key": "refugee-1",
+          "x": 17,
+          "y": 1,
+          "hp": 58
+        },
+        {
+          "key": "refugee-3",
+          "x": 17,
+          "y": 2,
+          "hp": 58
+        },
+        {
+          "key": "bridge-reserve",
+          "x": 13,
+          "y": 4,
+          "hp": 65
+        }
+      ],
+      "aggression": 0.58,
+      "actions": 243,
+      "turn": 13,
+      "winner": 1,
+      "reason": "敌军已被全歼",
+      "eventCount": 719,
+      "eventSha256": "9958373fd4314a83ca331dc7f477a99ff097e5e76b6d94f68d7d3b68a883fa9e",
+      "stateSha256": "78f2647f"
+    },
+    {
+      "firstCombat": {
+        "turn": 3,
+        "units": [
+          {
+            "key": "campaign-laiya",
+            "x": 3,
+            "y": 11,
+            "hp": 116
+          },
+          {
+            "key": "campaign-torren",
+            "x": 6,
+            "y": 9,
+            "hp": 98
+          },
+          {
+            "key": "campaign-elin",
+            "x": 5,
+            "y": 10,
+            "hp": 78
+          },
+          {
+            "key": "bridge-knight",
+            "x": 5,
+            "y": 7,
+            "hp": 116
+          },
+          {
+            "key": "bridge-guard-1",
+            "x": 6,
+            "y": 8,
+            "hp": 112
+          },
+          {
+            "key": "bridge-guard-2",
+            "x": 5,
+            "y": 12,
+            "hp": 78
+          },
+          {
+            "key": "refugee-1",
+            "x": 7,
+            "y": 8,
+            "hp": 58
+          },
+          {
+            "key": "refugee-2",
+            "x": 5,
+            "y": 8,
+            "hp": 58
+          },
+          {
+            "key": "refugee-3",
+            "x": 8,
+            "y": 8,
+            "hp": 23
+          },
+          {
+            "key": "river-scout",
+            "x": 6,
+            "y": 11,
+            "hp": 98
+          },
+          {
+            "key": "bridge-cleric",
+            "x": 4,
+            "y": 11,
+            "hp": 72
+          },
+          {
+            "key": "bridge-reserve",
+            "x": 4,
+            "y": 8,
+            "hp": 112
+          },
+          {
+            "key": "cain",
+            "x": 17,
+            "y": 5,
+            "hp": 125
+          },
+          {
+            "key": "shield-1",
+            "x": 15,
+            "y": 5,
+            "hp": 120
+          },
+          {
+            "key": "shield-2",
+            "x": 14,
+            "y": 5,
+            "hp": 120
+          },
+          {
+            "key": "bow-1",
+            "x": 10,
+            "y": 9,
+            "hp": 78
+          },
+          {
+            "key": "unmarked-ballista",
+            "x": 17,
+            "y": 11,
+            "hp": 72
+          },
+          {
+            "key": "north-bank-guard",
+            "x": 12,
+            "y": 5,
+            "hp": 98
+          },
+          {
+            "key": "south-bank-bow",
+            "x": 14,
+            "y": 11,
+            "hp": 78
+          },
+          {
+            "key": "battery-screen",
+            "x": 17,
+            "y": 12,
+            "hp": 120
+          }
+        ]
+      },
+      "survivors": [
+        {
+          "key": "campaign-laiya",
+          "x": 9,
+          "y": 5,
+          "hp": 99
+        },
+        {
+          "key": "bridge-guard-1",
+          "x": 14,
+          "y": 5,
+          "hp": 62
+        },
+        {
+          "key": "refugee-1",
+          "x": 20,
+          "y": 2,
+          "hp": 58
+        },
+        {
+          "key": "refugee-2",
+          "x": 21,
+          "y": 2,
+          "hp": 5
+        },
+        {
+          "key": "refugee-3",
+          "x": 20,
+          "y": 1,
+          "hp": 23
+        },
+        {
+          "key": "river-scout",
+          "x": 9,
+          "y": 6,
+          "hp": 21
+        },
+        {
+          "key": "bridge-reserve",
+          "x": 10,
+          "y": 6,
+          "hp": 39
+        },
+        {
+          "key": "cain",
+          "x": 14,
+          "y": 3,
+          "hp": 78
+        },
+        {
+          "key": "shield-1",
+          "x": 11,
+          "y": 6,
+          "hp": 69
+        },
+        {
+          "key": "battery-screen",
+          "x": 13,
+          "y": 5,
+          "hp": 73
+        }
+      ],
+      "aggression": 0.8,
+      "actions": 217,
+      "turn": 11,
+      "winner": 1,
+      "reason": "灰旗军 完成目标：护送平民并阻止无标记弩车",
+      "eventCount": 595,
+      "eventSha256": "2f77d40f132a5525d2697bac1312dace2959d4b92e550610d8b849e99687becb",
+      "stateSha256": "93fcc348"
+    }
+  ]
+}

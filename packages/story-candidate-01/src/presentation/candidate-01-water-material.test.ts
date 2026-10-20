@@ -58,10 +58,10 @@ describe('approved reusable area water', () => {
     const before = JSON.stringify(map);
     const occupied = (x: number, y: number) => candidate01IsAreaWater(candidateMaterial(content, map.tiles[y * map.width + x]));
     const pieces = candidate01WaterMaterialPieces(map.width, map.height, occupied);
-    const layers = candidate01MapSceneryLayers({ content, levelId: 'c01-02', map, viewport: candidateReviewViewport(map) });
+    const layers = candidate01MapSceneryLayers({ content, levelId: 'c01-02', map, viewport: candidateReviewViewport(map), editing: true });
     expect(layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"'))).toEqual(pieces);
     expect(pieces).toHaveLength(1);
-    expect(pieces.reduce((count, piece) => count + (piece.markup.match(/water-masks@2x.png/g)?.length ?? 0), 0)).toBe(28);
+    expect(pieces.reduce((count, piece) => count + (piece.markup.match(/water-masks@2x.png/g)?.length ?? 0), 0)).toBe(31);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'bridge'))).toBe(true);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'road'))).toBe(false);
     expect(layers.ground.every((piece) => !piece.markup.includes('/water-slow-river'))).toBe(true);

@@ -49,7 +49,7 @@ describe('registered horizontal crossing', () => {
     }
   });
 
-  it('draws each c01-02 bridge run once at the original midpoint without changing the map', () => {
+  it('draws each c01-02 bridge run once at the authored tactical midpoint without changing the map', () => {
     const map = mapFromLevel(content, candidate01Level('c01-02'));
     const before = JSON.stringify(map);
     const layers = candidate01MapSceneryLayers({ content, map, levelId: 'c01-02', viewport: candidateReviewViewport(map) });

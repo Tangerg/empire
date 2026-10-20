@@ -7,9 +7,9 @@
     14
   ],
   "roadCorridor": {
-    "width": 32,
-    "maxTangentCut": 22,
-    "maxPlainOverhang": 2,
+    "width": 20,
+    "maxTangentCut": 16,
+    "maxPlainOverhang": 0,
     "protectedCells": []
   },
   "selection": {
@@ -100,5 +100,355 @@
       "layer": "under-units",
       "scale": 0.42
     }
-  ]
+  ],
+  "framePlacements": [
+    {
+      "id": "oak-grove-dense",
+      "contact": [
+        -0.9,
+        1.0
+      ],
+      "scale": 0.88,
+      "flip": false
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        0.7,
+        -0.15
+      ],
+      "scale": 0.74,
+      "flip": true
+    },
+    {
+      "id": "pine-mature-a",
+      "contact": [
+        2.5,
+        -0.45
+      ],
+      "scale": 0.78,
+      "flip": false
+    },
+    {
+      "id": "oak-ancient",
+      "contact": [
+        4.6,
+        -0.65
+      ],
+      "scale": 0.86,
+      "flip": true
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        6.5,
+        -0.55
+      ],
+      "scale": 0.6,
+      "flip": false
+    },
+    {
+      "id": "pine-mature-c",
+      "contact": [
+        14.2,
+        -0.45
+      ],
+      "scale": 0.72,
+      "flip": true
+    },
+    {
+      "id": "oak-grove-dense",
+      "contact": [
+        16.2,
+        -0.3
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        18.4,
+        -0.5
+      ],
+      "scale": 0.72,
+      "flip": true
+    },
+    {
+      "id": "pine-mature-a",
+      "contact": [
+        21.8,
+        0.1
+      ],
+      "scale": 0.78,
+      "flip": false
+    },
+    {
+      "id": "oak-ancient",
+      "contact": [
+        -1.3,
+        4.4
+      ],
+      "scale": 0.88,
+      "flip": true
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        -1.3,
+        7.1
+      ],
+      "scale": 0.68,
+      "flip": false
+    },
+    {
+      "id": "pine-mature-c",
+      "contact": [
+        -1.6,
+        10.3
+      ],
+      "scale": 0.8,
+      "flip": true
+    },
+    {
+      "id": "oak-grove-dense",
+      "contact": [
+        -0.9,
+        14.8
+      ],
+      "scale": 0.88,
+      "flip": false
+    },
+    {
+      "id": "pine-mature-c",
+      "contact": [
+        22.9,
+        3.6
+      ],
+      "scale": 0.8,
+      "flip": true
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        23,
+        6.5
+      ],
+      "scale": 0.68,
+      "flip": false
+    },
+    {
+      "id": "oak-ancient",
+      "contact": [
+        22.8,
+        9.0
+      ],
+      "scale": 0.86,
+      "flip": true
+    },
+    {
+      "id": "pine-mature-a",
+      "contact": [
+        23,
+        12.8
+      ],
+      "scale": 0.78,
+      "flip": false
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        2.5,
+        16
+      ],
+      "scale": 0.68,
+      "flip": true
+    },
+    {
+      "id": "oak-ancient",
+      "contact": [
+        5,
+        16.1
+      ],
+      "scale": 0.82,
+      "flip": false
+    },
+    {
+      "id": "pine-mature-c",
+      "contact": [
+        7.5,
+        15.5
+      ],
+      "scale": 0.64,
+      "flip": true
+    },
+    {
+      "id": "oak-grove-dense",
+      "contact": [
+        13.8,
+        15.8
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "id": "mixed-forest-edge",
+      "contact": [
+        16.5,
+        15.9
+      ],
+      "scale": 0.68,
+      "flip": true
+    },
+    {
+      "id": "pine-mature-a",
+      "contact": [
+        20,
+        15.7
+      ],
+      "scale": 0.84,
+      "flip": false
+    },
+    {
+      "id": "oak-ancient",
+      "contact": [
+        22,
+        15.1
+      ],
+      "scale": 0.86,
+      "flip": true
+    }
+  ],
+  "groundOutline": [
+    [
+      -0.5,
+      -0.6
+    ],
+    [
+      3,
+      -1.1
+    ],
+    [
+      7,
+      -0.4
+    ],
+    [
+      10,
+      0
+    ],
+    [
+      12,
+      0
+    ],
+    [
+      12,
+      -0.3
+    ],
+    [
+      16,
+      -0.9
+    ],
+    [
+      20,
+      -0.5
+    ],
+    [
+      22.3,
+      0.2
+    ],
+    [
+      22.6,
+      3
+    ],
+    [
+      22.2,
+      6
+    ],
+    [
+      22.6,
+      10
+    ],
+    [
+      22.3,
+      14.4
+    ],
+    [
+      18,
+      14.8
+    ],
+    [
+      15,
+      14.3
+    ],
+    [
+      12.5,
+      14
+    ],
+    [
+      10.5,
+      14
+    ],
+    [
+      8,
+      14.4
+    ],
+    [
+      3,
+      14.8
+    ],
+    [
+      -0.3,
+      14.3
+    ],
+    [
+      -0.8,
+      11
+    ],
+    [
+      -0.4,
+      6
+    ],
+    [
+      -0.8,
+      3
+    ]
+  ],
+  "river": {
+    "width": 48,
+    "bankWidth": 58,
+    "knots": [
+      [
+        11.1,
+        0
+      ],
+      [
+        10.8,
+        1.5
+      ],
+      [
+        11,
+        3.5
+      ],
+      [
+        11.2,
+        5
+      ],
+      [
+        11,
+        6.5
+      ],
+      [
+        10.8,
+        8
+      ],
+      [
+        11,
+        9.5
+      ],
+      [
+        11.5,
+        14
+      ]
+    ]
+  }
 }

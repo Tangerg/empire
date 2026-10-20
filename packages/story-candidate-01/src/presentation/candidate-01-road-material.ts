@@ -29,7 +29,7 @@ export function candidate01RoadMaterialPieces(
   for (let top = 0; top < height; top += cellsY) for (let left = 0; left < width; left += cellsX) {
     // Include the bounded shoulder if a road sits across this material seam.
     if (!graph.cells.some(([x, y]) => x >= left - 1 && x <= left + cellsX && y >= top - 1 && y <= top + cellsY)) continue;
-    const id = `c01-road-${left}_${top}-${graph.cells.map(([x, y]) => `${x}_${y}`).join('-')}`;
+    const id = `c01-road-${left}_${top}-${profile.width}_${profile.maxTangentCut}_${profile.maxPlainOverhang}-${graph.cells.map(([x, y]) => `${x}_${y}`).join('-')}`;
     const w = Math.min(cellsX, width - left) * TILE, h = Math.min(cellsY, height - top) * TILE;
     pieces.push({ x: left * TILE, y: top * TILE,
       markup: `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" overflow="hidden" data-runtime-raster="area-road">`

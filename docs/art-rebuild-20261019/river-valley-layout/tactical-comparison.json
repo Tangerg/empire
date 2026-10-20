@@ -1,0 +1,896 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Evidence for river layout tactical behavior preservation, using existing diagnostics only. No new simulation was run to produce this artifact.",
+  "baselineLevel": "/tmp/empire-river-layout-contract-before/level.json",
+  "selectedLevel": "/tmp/empire-river-north-half-level.json",
+  "verifiedParentLevel": "/tmp/empire-river-layout-balanced-contract/level.json",
+  "selectedAndParentLevelsDeepEqual": true,
+  "baselineValidation": "/tmp/empire-river-layout-contract-before/validation.json",
+  "afterValidation": "/tmp/empire-river-layout-balanced-contract/validation.json",
+  "sourceFileSha256": {
+    "/tmp/empire-river-layout-contract-before/level.json": "6a593b13c38d7cc3b63d77a5ecf15e66bda280843bd3b9152251c343aef605a2",
+    "/tmp/empire-river-layout-contract-before/validation.json": "183e81996d8e601cab7a70a9a4962f621d85de8e59b18c99afe81c10e576191d",
+    "/tmp/empire-river-north-half-level.json": "57b0616dea155bb255e283b02fb8ceaeddac623db7182c84a6babe0faa290960",
+    "/tmp/empire-river-layout-balanced-contract/level.json": "bf425d7d54c0e84fcc9e507214b86d1d182949b35b36fffcb37db75fd5c62fff",
+    "/tmp/empire-river-layout-balanced-contract/validation.json": "357c8c6f88adf04cb3f15fe213de28f649f1db373291f658fb6d4d4b40a30f20",
+    "/tmp/empire-river-layout-balanced-contract/replay-0.35.jsonl": "23e1de923ba1223d62e332a932fea89b90789d2424ba33102a3b64b1c9c0b6be",
+    "/tmp/empire-river-baseline-0.35.jsonl": "7326eef7ecf11761ff0f48a782800b14ec1f3fc7872779bb3593331aa6295e05",
+    "/tmp/empire-river-baseline-frames-0.35.json": "764ce011f77b4144eb95cd1e934063f92ff34b1636f1461c9f23b100722da002",
+    "/tmp/empire-river-layout-balanced-contract/replay-0.58.jsonl": "1b8e04b24d308aca8e0cde7be28df19570a086821421ef092e050076757674aa",
+    "/tmp/empire-river-baseline-0.58.jsonl": "3f885b70500e7db689f1f6ab93532406a6de1b55edaf3e6e4a53e5d3cbcadcca",
+    "/tmp/empire-river-baseline-frames-0.58.json": "e26ad440cea4f58de30377f34813d88cbceb42e61a675e8736933e3d6ac7b65a",
+    "/tmp/empire-river-layout-balanced-contract/replay-0.8.jsonl": "9ce563278f2bb36eec940f6af5843b2170f6e2d845a2dc26cc4764109c77e783"
+  },
+  "profiles": [
+    {
+      "aggression": 0.35,
+      "before": {
+        "winnerTeam": 1,
+        "turn": 17,
+        "actions": 294,
+        "laiyaHp": 11,
+        "laiyaHpSource": "/tmp/empire-river-baseline-frames-0.35.json",
+        "eventCount": 770,
+        "eventSha256": "7326eef7ecf11761ff0f48a782800b14ec1f3fc7872779bb3593331aa6295e05",
+        "stateDigest": "67967c78"
+      },
+      "after": {
+        "winnerTeam": 1,
+        "turn": 17,
+        "actions": 294,
+        "laiyaHp": 11,
+        "eventCount": 769,
+        "eventSha256": "8514bb419752bde79ff91c94587d8fb592d07169408d8c9f9f1e0c8019a51182",
+        "stateDigest": "5191b7f8"
+      },
+      "sameWinnerTurnsActions": true
+    },
+    {
+      "aggression": 0.58,
+      "before": {
+        "winnerTeam": 1,
+        "turn": 13,
+        "actions": 243,
+        "laiyaHp": 85,
+        "laiyaHpSource": "/tmp/empire-river-baseline-frames-0.58.json",
+        "eventCount": 720,
+        "eventSha256": "3f885b70500e7db689f1f6ab93532406a6de1b55edaf3e6e4a53e5d3cbcadcca",
+        "stateDigest": "dc2fba50"
+      },
+      "after": {
+        "winnerTeam": 1,
+        "turn": 13,
+        "actions": 243,
+        "laiyaHp": 85,
+        "eventCount": 719,
+        "eventSha256": "9958373fd4314a83ca331dc7f477a99ff097e5e76b6d94f68d7d3b68a883fa9e",
+        "stateDigest": "78f2647f"
+      },
+      "sameWinnerTurnsActions": true
+    },
+    {
+      "aggression": 0.8,
+      "before": {
+        "winnerTeam": 1,
+        "turn": 11,
+        "actions": 217,
+        "laiyaHp": null,
+        "laiyaHpSource": null,
+        "eventCount": 596,
+        "eventSha256": "52c43c27c588314f405c8ea18e5a1aa20205a32b37eded3a505ffb54ecd86f47",
+        "stateDigest": "cdb4d578"
+      },
+      "after": {
+        "winnerTeam": 1,
+        "turn": 11,
+        "actions": 217,
+        "laiyaHp": 99,
+        "eventCount": 595,
+        "eventSha256": "2f77d40f132a5525d2697bac1312dace2959d4b92e550610d8b849e99687becb",
+        "stateDigest": "93fcc348"
+      },
+      "sameWinnerTurnsActions": true
+    }
+  ],
+  "exactOpeningComparisons": [
+    {
+      "aggression": 0.35,
+      "scope": "Selected north-half candidate versus original baseline; not the earlier minimal-west-bow precursor.",
+      "fields": [
+        "key",
+        "x",
+        "y",
+        "hp"
+      ],
+      "unitIdentity": "key; both teams and all surviving units",
+      "baselineReconstructionValidatedAgainst": "/tmp/empire-river-baseline-frames-0.35.json",
+      "checkpoints": [
+        {
+          "turn": 1,
+          "afterPlayerTurnEnd": 1,
+          "equal": false,
+          "unitCount": 20,
+          "differences": [
+            {
+              "key": "south-bank-bow",
+              "before": {
+                "key": "south-bank-bow",
+                "x": 16,
+                "y": 11,
+                "hp": 78
+              },
+              "after": {
+                "key": "south-bank-bow",
+                "x": 15,
+                "y": 11,
+                "hp": 78
+              }
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "0ce28cb31ec03036fa5e0650e566c4e887def7f8cd6a8964c7b8511ad1652c16"
+        },
+        {
+          "turn": 2,
+          "afterPlayerTurnEnd": 1,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "304321e19fc28951fa342c9426347399cc29e0281dec51b33b87d43d2412ba22"
+        },
+        {
+          "turn": 2,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "dcf0c910ca0888469ecb514e6c4e0b1369afef12336d8768cb548d12c9f7dae1"
+        },
+        {
+          "turn": 3,
+          "afterPlayerTurnEnd": 1,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "775b468b3912b2e6a947e344a3464e13bcacf36765cda255ff4d6e43aeda2c23"
+        },
+        {
+          "turn": 3,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "b47cb5ae946959f674bab69051a4ff1dd329d9f0dc302372045eacb62e1399be"
+        },
+        {
+          "turn": 4,
+          "afterPlayerTurnEnd": 1,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "acbb47c4f61e2d65a9e2ddc6e0fd5af786795809234c6ff78d81ccba01dff758"
+        },
+        {
+          "turn": 4,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "647f4be58639efdee92dc49345ef79b99ff4dcd8b06ac43d73bc4a2d87cb3ce7"
+        }
+      ],
+      "notCompared": [
+        "facing",
+        "reaction",
+        "statuses",
+        "resources",
+        "map",
+        "other state fields"
+      ]
+    },
+    {
+      "aggression": 0.58,
+      "scope": "Selected north-half candidate versus original baseline; not the earlier minimal-west-bow precursor.",
+      "fields": [
+        "key",
+        "x",
+        "y",
+        "hp"
+      ],
+      "unitIdentity": "key; both teams and all surviving units",
+      "baselineReconstructionValidatedAgainst": "/tmp/empire-river-baseline-frames-0.58.json",
+      "checkpoints": [
+        {
+          "turn": 1,
+          "afterPlayerTurnEnd": 1,
+          "equal": false,
+          "unitCount": 20,
+          "differences": [
+            {
+              "key": "south-bank-bow",
+              "before": {
+                "key": "south-bank-bow",
+                "x": 16,
+                "y": 11,
+                "hp": 78
+              },
+              "after": {
+                "key": "south-bank-bow",
+                "x": 15,
+                "y": 11,
+                "hp": 78
+              }
+            }
+          ]
+        },
+        {
+          "turn": 1,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "0ce28cb31ec03036fa5e0650e566c4e887def7f8cd6a8964c7b8511ad1652c16"
+        },
+        {
+          "turn": 2,
+          "afterPlayerTurnEnd": 1,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "304321e19fc28951fa342c9426347399cc29e0281dec51b33b87d43d2412ba22"
+        },
+        {
+          "turn": 2,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "5131645c42254665c20d503d23d2283d57b4f0672debadc0be5c2fc921408785"
+        },
+        {
+          "turn": 3,
+          "afterPlayerTurnEnd": 1,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "8d86d7171b36686573b63ff86001d9452ecb620b9f175c2342b6744b98828149"
+        },
+        {
+          "turn": 3,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "b863d7272637a6392e5643683137eb44d7eab17e5db0de7b085e6bd28bb062d8"
+        },
+        {
+          "turn": 4,
+          "afterPlayerTurnEnd": 1,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "3f81b06d282f8a2031afc3144c153be19e05656185d7b6244c5a4e6bd3142189"
+        },
+        {
+          "turn": 4,
+          "afterPlayerTurnEnd": 2,
+          "equal": true,
+          "unitCount": 20,
+          "differences": [],
+          "matchingFrameSha256": "7affb335c7c095c1cf0e8edc457fce5b72af4650fa56fbc0478567dcd1632c90"
+        }
+      ],
+      "notCompared": [
+        "facing",
+        "reaction",
+        "statuses",
+        "resources",
+        "map",
+        "other state fields"
+      ]
+    }
+  ],
+  "eventStreamComparisons": [
+    {
+      "aggression": 0.35,
+      "beforeTrace": "/tmp/empire-river-baseline-0.35.jsonl",
+      "afterTrace": "/tmp/empire-river-layout-balanced-contract/replay-0.35.jsonl",
+      "indicesAreZeroBasedHalfOpen": true,
+      "exactCommonSuffix": {
+        "beforeStart": 72,
+        "beforeEnd": 770,
+        "afterStart": 71,
+        "afterEnd": 769,
+        "eventCount": 698,
+        "startsDuringTurn": 2,
+        "startsDuringPlayer": 1,
+        "endsAtGameOver": true,
+        "sha256": "fbf738273b84e36e7848317e21153ef4dffe0a42fdf12e129d7ef1a8fe0887f3"
+      },
+      "nonmatchingRanges": [
+        {
+          "operation": "delete",
+          "before": [
+            3,
+            7
+          ],
+          "after": [
+            3,
+            3
+          ],
+          "beforeEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "east",
+              "to": "south"
+            },
+            {
+              "type": "move",
+              "unit": 3,
+              "path": [
+                {
+                  "x": 2,
+                  "y": 10
+                },
+                {
+                  "x": 2,
+                  "y": 11
+                }
+              ]
+            },
+            {
+              "type": "facingChanged",
+              "unit": 5,
+              "from": "east",
+              "to": "south"
+            },
+            {
+              "type": "move",
+              "unit": 5,
+              "path": [
+                {
+                  "x": 1,
+                  "y": 10
+                },
+                {
+                  "x": 2,
+                  "y": 10
+                },
+                {
+                  "x": 3,
+                  "y": 10
+                },
+                {
+                  "x": 3,
+                  "y": 11
+                }
+              ]
+            }
+          ],
+          "afterEvents": []
+        },
+        {
+          "operation": "insert",
+          "before": [
+            9,
+            9
+          ],
+          "after": [
+            5,
+            8
+          ],
+          "beforeEvents": [],
+          "afterEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "east",
+              "to": "west"
+            },
+            {
+              "type": "move",
+              "unit": 3,
+              "path": [
+                {
+                  "x": 3,
+                  "y": 11
+                },
+                {
+                  "x": 2,
+                  "y": 11
+                }
+              ]
+            },
+            {
+              "type": "move",
+              "unit": 5,
+              "path": [
+                {
+                  "x": 1,
+                  "y": 12
+                },
+                {
+                  "x": 1,
+                  "y": 11
+                },
+                {
+                  "x": 2,
+                  "y": 11
+                },
+                {
+                  "x": 3,
+                  "y": 11
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "replace",
+          "before": [
+            32,
+            33
+          ],
+          "after": [
+            31,
+            32
+          ],
+          "beforeEvents": [
+            {
+              "type": "move",
+              "unit": 19,
+              "path": [
+                {
+                  "x": 16,
+                  "y": 11
+                },
+                {
+                  "x": 17,
+                  "y": 11
+                }
+              ]
+            }
+          ],
+          "afterEvents": [
+            {
+              "type": "move",
+              "unit": 19,
+              "path": [
+                {
+                  "x": 15,
+                  "y": 11
+                },
+                {
+                  "x": 16,
+                  "y": 11
+                },
+                {
+                  "x": 17,
+                  "y": 11
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "replace",
+          "before": [
+            67,
+            68
+          ],
+          "after": [
+            66,
+            67
+          ],
+          "beforeEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 5,
+              "from": "south",
+              "to": "north"
+            }
+          ],
+          "afterEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 5,
+              "from": "east",
+              "to": "north"
+            }
+          ]
+        },
+        {
+          "operation": "replace",
+          "before": [
+            71,
+            72
+          ],
+          "after": [
+            70,
+            71
+          ],
+          "beforeEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "south",
+              "to": "east"
+            }
+          ],
+          "afterEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "west",
+              "to": "east"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "aggression": 0.58,
+      "beforeTrace": "/tmp/empire-river-baseline-0.58.jsonl",
+      "afterTrace": "/tmp/empire-river-layout-balanced-contract/replay-0.58.jsonl",
+      "indicesAreZeroBasedHalfOpen": true,
+      "exactCommonSuffix": {
+        "beforeStart": 72,
+        "beforeEnd": 720,
+        "afterStart": 71,
+        "afterEnd": 719,
+        "eventCount": 648,
+        "startsDuringTurn": 2,
+        "startsDuringPlayer": 1,
+        "endsAtGameOver": true,
+        "sha256": "5225ac6b1facc314f646ee1db6f980e622fcf9f1db08cbe0187c41cf8dca2aa6"
+      },
+      "nonmatchingRanges": [
+        {
+          "operation": "delete",
+          "before": [
+            3,
+            7
+          ],
+          "after": [
+            3,
+            3
+          ],
+          "beforeEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "east",
+              "to": "south"
+            },
+            {
+              "type": "move",
+              "unit": 3,
+              "path": [
+                {
+                  "x": 2,
+                  "y": 10
+                },
+                {
+                  "x": 2,
+                  "y": 11
+                }
+              ]
+            },
+            {
+              "type": "facingChanged",
+              "unit": 5,
+              "from": "east",
+              "to": "south"
+            },
+            {
+              "type": "move",
+              "unit": 5,
+              "path": [
+                {
+                  "x": 1,
+                  "y": 10
+                },
+                {
+                  "x": 2,
+                  "y": 10
+                },
+                {
+                  "x": 3,
+                  "y": 10
+                },
+                {
+                  "x": 3,
+                  "y": 11
+                }
+              ]
+            }
+          ],
+          "afterEvents": []
+        },
+        {
+          "operation": "insert",
+          "before": [
+            9,
+            9
+          ],
+          "after": [
+            5,
+            8
+          ],
+          "beforeEvents": [],
+          "afterEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "east",
+              "to": "west"
+            },
+            {
+              "type": "move",
+              "unit": 3,
+              "path": [
+                {
+                  "x": 3,
+                  "y": 11
+                },
+                {
+                  "x": 2,
+                  "y": 11
+                }
+              ]
+            },
+            {
+              "type": "move",
+              "unit": 5,
+              "path": [
+                {
+                  "x": 1,
+                  "y": 12
+                },
+                {
+                  "x": 1,
+                  "y": 11
+                },
+                {
+                  "x": 2,
+                  "y": 11
+                },
+                {
+                  "x": 3,
+                  "y": 11
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "replace",
+          "before": [
+            32,
+            33
+          ],
+          "after": [
+            31,
+            32
+          ],
+          "beforeEvents": [
+            {
+              "type": "move",
+              "unit": 19,
+              "path": [
+                {
+                  "x": 16,
+                  "y": 11
+                },
+                {
+                  "x": 17,
+                  "y": 11
+                }
+              ]
+            }
+          ],
+          "afterEvents": [
+            {
+              "type": "move",
+              "unit": 19,
+              "path": [
+                {
+                  "x": 15,
+                  "y": 11
+                },
+                {
+                  "x": 16,
+                  "y": 11
+                },
+                {
+                  "x": 17,
+                  "y": 11
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "operation": "replace",
+          "before": [
+            67,
+            68
+          ],
+          "after": [
+            66,
+            67
+          ],
+          "beforeEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 5,
+              "from": "south",
+              "to": "north"
+            }
+          ],
+          "afterEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 5,
+              "from": "east",
+              "to": "north"
+            }
+          ]
+        },
+        {
+          "operation": "replace",
+          "before": [
+            71,
+            72
+          ],
+          "after": [
+            70,
+            71
+          ],
+          "beforeEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "south",
+              "to": "east"
+            }
+          ],
+          "afterEvents": [
+            {
+              "type": "facingChanged",
+              "unit": 3,
+              "from": "west",
+              "to": "east"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hashNotes": {
+    "eventSha256": "SHA-256 of JSON event lines joined by newline, without a final newline; verified against available baseline and after traces.",
+    "stateDigest": "Copied from validation source field named stateSha256. Values are the repository hashState eight-hex-digit digest, not a cryptographic SHA-256. State digests are expected to differ because maps/deployment differ.",
+    "sourceFileSha256": "SHA-256 of exact file bytes, including any trailing newline."
+  },
+  "missingEvidence": [
+    "Baseline aggression 0.8 final Laiya HP and event trace were not captured in the available baseline evidence. Baseline win/turn/actions/event hash/state digest are available in validation.json. No value was inferred and no simulation rerun."
+  ],
+  "causalRejectedBowDownControl": {
+    "method": "Bounded opening-only diagnostic at aggression 0.58, current pre-restoration river geometry. Exact control results observed in diagnostic stdout, not saved as full replay files.",
+    "alliedRelocationsHeldFixed": {
+      "campaign-elin": [
+        2,
+        11
+      ],
+      "bridge-guard-1": [
+        3,
+        11
+      ]
+    },
+    "onlyComparedDeploymentDifference": {
+      "south-bank-bow": {
+        "rejected": [
+          16,
+          12
+        ],
+        "preferred": [
+          15,
+          11
+        ]
+      }
+    },
+    "rejected": {
+      "refugee-3EndTurn1": [
+        6,
+        12
+      ],
+      "campaign-laiyaEndTurn3": [
+        5,
+        11
+      ]
+    },
+    "preferred": {
+      "refugee-3EndTurn1": [
+        5,
+        11
+      ],
+      "campaign-laiyaEndTurn3": [
+        3,
+        11
+      ],
+      "allTwelveAlliedPositionFramesMatchBaselineThroughTurn3": true
+    },
+    "explanation": "Moving the bow south changes nearest-enemy preference between refugee stops (5,11) and (6,12); moving it horizontally preserves their equal north/south distance. Mission destination distance is equal at those candidate stops. Escort pull then carries other units with the refugees.",
+    "codeEvidence": [
+      "packages/battle-engine/src/ai/tile-appraisal.ts:128-161",
+      "packages/battle-engine/src/ai/default-intents.ts:66-75"
+    ],
+    "relatedSavedRejectedTrace": "/tmp/empire-river-layout-fair-south/replay-0.58.jsonl",
+    "relatedTraceCaveat": "The saved fair-south trace also uses different allied starts. It illustrates the south-diverted failure, but is not the isolated bow-only control."
+  },
+  "rejectedGeometryControl": {
+    "level": "/tmp/empire-river-north-gateway-level.json",
+    "description": "Restore northern gateway rows2-5 but retain shifted headwaters rows0-1; same minimal clear deployments.",
+    "results": [
+      {
+        "aggression": 0.35,
+        "winnerTeam": 2,
+        "turn": 23
+      },
+      {
+        "aggression": 0.58,
+        "winnerTeam": 1,
+        "turn": 13,
+        "laiyaHp": 85
+      },
+      {
+        "aggression": 0.8,
+        "winnerTeam": 1,
+        "turn": 11,
+        "laiyaHp": 99
+      }
+    ],
+    "provenance": "Observed bounded in-memory simulation stdout; no event trace captured for this control."
+  },
+  "selectedDeploymentsRelativeToBaseline": {
+    "campaign-elin": {
+      "before": [
+        2,
+        10
+      ],
+      "after": [
+        3,
+        11
+      ]
+    },
+    "bridge-guard-1": {
+      "before": [
+        1,
+        10
+      ],
+      "after": [
+        1,
+        12
+      ]
+    },
+    "south-bank-bow": {
+      "before": [
+        16,
+        11
+      ],
+      "after": [
+        15,
+        11
+      ]
+    }
+  },
+  "detailedEvidenceArtifact": "/tmp/empire-river-tactical-comparison-detail.json",
+  "frameHashDefinition": "SHA-256 of JSON array sorted by unit key, containing key/x/y/hp only, with JSON keys sorted, separators comma/colon, no whitespace or trailing newline."
+}

@@ -1,0 +1,301 @@
+{
+  "id": "c01-02",
+  "width": 22,
+  "height": 14,
+  "owners": [
+    {
+      "x": 1,
+      "y": 3,
+      "owner": 1
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "owner": 2
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "owner": 0
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "owner": 0
+    }
+  ],
+  "victory": [
+    {
+      "id": "primary",
+      "type": "failOn",
+      "label": "护送平民并阻止无标记弩车",
+      "condition": {
+        "type": "unitCount",
+        "selector": {
+          "keys": [
+            "campaign-laiya"
+          ]
+        },
+        "op": "lte",
+        "value": 0
+      },
+      "objective": {
+        "id": "bridge-all",
+        "type": "all",
+        "label": "护送平民并摧毁无标记弩车",
+        "objectives": [
+          {
+            "id": "escort-east-safety",
+            "type": "escort",
+            "selector": {
+              "keys": [
+                "refugee-1",
+                "refugee-2",
+                "refugee-3"
+              ]
+            },
+            "zone": "east-safety",
+            "count": 3,
+            "label": "护送三名平民抵达东岸"
+          },
+          {
+            "id": "eliminate-unmarked-ballista",
+            "type": "eliminate",
+            "selector": {
+              "keys": [
+                "unmarked-ballista"
+              ]
+            },
+            "label": "摧毁向平民开火的无标记弩车"
+          }
+        ]
+      }
+    }
+  ],
+  "scenario": {
+    "zones": [
+      {
+        "id": "middle-bridge",
+        "cells": [
+          {
+            "x": 10,
+            "y": 6
+          },
+          {
+            "x": 11,
+            "y": 6
+          }
+        ]
+      },
+      {
+        "id": "east-safety",
+        "cells": [
+          {
+            "x": 20,
+            "y": 0
+          },
+          {
+            "x": 21,
+            "y": 0
+          },
+          {
+            "x": 20,
+            "y": 1
+          },
+          {
+            "x": 21,
+            "y": 1
+          },
+          {
+            "x": 20,
+            "y": 2
+          },
+          {
+            "x": 21,
+            "y": 2
+          }
+        ]
+      }
+    ],
+    "engagementRules": [
+      {
+        "id": "bridge-truce",
+        "zone": "middle-bridge",
+        "mode": "no-attacks",
+        "players": [
+          1,
+          2
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "truce-kept",
+        "timing": "turnEnd",
+        "condition": {
+          "type": "turnAtLeast",
+          "turn": 3
+        },
+        "effects": [
+          {
+            "type": "removeEngagementRule",
+            "id": "bridge-truce"
+          },
+          {
+            "type": "emitSignal",
+            "signal": "accepted_bridge_truce"
+          }
+        ]
+      }
+    ]
+  },
+  "roster": [
+    {
+      "key": "campaign-laiya",
+      "unit": "c01.laiya",
+      "owner": 1
+    },
+    {
+      "key": "campaign-torren",
+      "unit": "c01.swordsman",
+      "owner": 1
+    },
+    {
+      "key": "campaign-elin",
+      "unit": "c01.archer",
+      "owner": 1
+    },
+    {
+      "key": "bridge-knight",
+      "unit": "c01.knight",
+      "owner": 1
+    },
+    {
+      "key": "bridge-guard-1",
+      "unit": "c01.banner-guard",
+      "owner": 1
+    },
+    {
+      "key": "bridge-guard-2",
+      "unit": "c01.archer",
+      "owner": 1
+    },
+    {
+      "key": "refugee-1",
+      "unit": "c01.refugee",
+      "owner": 1
+    },
+    {
+      "key": "refugee-2",
+      "unit": "c01.refugee",
+      "owner": 1
+    },
+    {
+      "key": "refugee-3",
+      "unit": "c01.refugee",
+      "owner": 1
+    },
+    {
+      "key": "river-scout",
+      "unit": "c01.swordsman",
+      "owner": 1
+    },
+    {
+      "key": "bridge-cleric",
+      "unit": "c01.gravekeeper",
+      "owner": 1
+    },
+    {
+      "key": "bridge-reserve",
+      "unit": "c01.banner-guard",
+      "owner": 1
+    },
+    {
+      "key": "cain",
+      "unit": "c01.cain",
+      "owner": 2
+    },
+    {
+      "key": "shield-1",
+      "unit": "c01.legion-shield",
+      "owner": 2
+    },
+    {
+      "key": "shield-2",
+      "unit": "c01.legion-shield",
+      "owner": 2
+    },
+    {
+      "key": "bow-1",
+      "unit": "c01.archer",
+      "owner": 2
+    },
+    {
+      "key": "unmarked-ballista",
+      "unit": "c01.ballista",
+      "owner": 2
+    },
+    {
+      "key": "north-bank-guard",
+      "unit": "c01.swordsman",
+      "owner": 2
+    },
+    {
+      "key": "south-bank-bow",
+      "unit": "c01.archer",
+      "owner": 2
+    },
+    {
+      "key": "battery-screen",
+      "unit": "c01.legion-shield",
+      "owner": 2
+    }
+  ],
+  "buildings": [
+    {
+      "x": 2,
+      "y": 1,
+      "symbol": "v"
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "symbol": "q"
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "symbol": "q"
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "symbol": "v"
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "symbol": "v"
+    },
+    {
+      "x": 1,
+      "y": 11,
+      "symbol": "v"
+    },
+    {
+      "x": 17,
+      "y": 11,
+      "symbol": "v"
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "symbol": "q"
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "symbol": "q"
+    }
+  ]
+}

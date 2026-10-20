@@ -1,0 +1,787 @@
+{
+  "schema": 2,
+  "id": "c01-02",
+  "name": "02 · 三桥河谷",
+  "author": "《断冠之誓》战役",
+  "description": "短暂停火，把六军之争让给过桥的平民。",
+  "width": 22,
+  "height": 14,
+  "terrain": [
+    "...T...h..~~....T.....",
+    "..v.......~~..h.....q.",
+    ".....T....~~......T...",
+    ".q..h.....==..........",
+    "------....~~....------",
+    "..T...v...~~..v....T..",
+    "..........==..........",
+    ".h....T...~~....h.....",
+    "------....~~....------",
+    "..T.......==.......T..",
+    "....h.....~~..T.......",
+    ".v....T...~~.....v....",
+    ".....q....~~..h.....q.",
+    "..T.......~~......T..."
+  ],
+  "elevation": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "owners": [
+    {
+      "x": 1,
+      "y": 3,
+      "owner": 1
+    },
+    {
+      "x": 20,
+      "y": 1,
+      "owner": 2
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "owner": 0
+    },
+    {
+      "x": 20,
+      "y": 12,
+      "owner": 0
+    }
+  ],
+  "units": [
+    {
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 9,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "bridge-knight",
+      "x": 3,
+      "y": 7,
+      "unit": "c01.knight",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "bridge-guard-1",
+      "x": 1,
+      "y": 10,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "bridge-guard-2",
+      "x": 3,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-1",
+      "x": 1,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-2",
+      "x": 2,
+      "y": 12,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-3",
+      "x": 3,
+      "y": 12,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "river-scout",
+      "x": 5,
+      "y": 12,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "bridge-cleric",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "bridge-reserve",
+      "x": 1,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "cain",
+      "x": 20,
+      "y": 4,
+      "unit": "c01.cain",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "shield-1",
+      "x": 19,
+      "y": 3,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "shield-2",
+      "x": 19,
+      "y": 5,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "bow-1",
+      "x": 18,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "unmarked-ballista",
+      "x": 20,
+      "y": 10,
+      "unit": "c01.ballista",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "north-bank-guard",
+      "x": 15,
+      "y": 2,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "south-bank-bow",
+      "x": 16,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "battery-screen",
+      "x": 20,
+      "y": 12,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    }
+  ],
+  "commanders": [
+    {
+      "id": "laiya-command",
+      "unitKey": "campaign-laiya",
+      "radius": 1,
+      "turnGrants": [
+        {
+          "resource": "command_points",
+          "amount": 1
+        }
+      ],
+      "tactics": [
+        "c01.gray-rally",
+        "c01.hold-the-line"
+      ]
+    },
+    {
+      "id": "enemy-command",
+      "unitKey": "cain",
+      "radius": 2,
+      "turnGrants": [
+        {
+          "resource": "command_points",
+          "amount": 1
+        }
+      ],
+      "tactics": [
+        "rally"
+      ]
+    }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "name": "灰旗军",
+      "team": 1,
+      "color": "#4d86b8",
+      "controller": "human",
+      "resources": {
+        "funds": {
+          "current": 300,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 1,
+          "capacity": 6
+        }
+      },
+      "objectives": [
+        {
+          "id": "primary",
+          "type": "failOn",
+          "label": "护送平民并阻止无标记弩车",
+          "condition": {
+            "type": "unitCount",
+            "selector": {
+              "keys": [
+                "campaign-laiya"
+              ]
+            },
+            "op": "lte",
+            "value": 0
+          },
+          "objective": {
+            "id": "bridge-all",
+            "type": "all",
+            "label": "护送平民并摧毁无标记弩车",
+            "objectives": [
+              {
+                "id": "escort-east-safety",
+                "type": "escort",
+                "selector": {
+                  "keys": [
+                    "refugee-1",
+                    "refugee-2",
+                    "refugee-3"
+                  ]
+                },
+                "zone": "east-safety",
+                "count": 3,
+                "label": "护送三名平民抵达东岸"
+              },
+              {
+                "id": "eliminate-unmarked-ballista",
+                "type": "eliminate",
+                "selector": {
+                  "keys": [
+                    "unmarked-ballista"
+                  ]
+                },
+                "label": "摧毁向平民开火的无标记弩车"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "敌对部队",
+      "team": 2,
+      "color": "#a8493f",
+      "controller": "ai",
+      "resources": {
+        "funds": {
+          "current": 250,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 1,
+          "capacity": 6
+        }
+      },
+      "ai": {
+        "aggression": 0.55
+      },
+      "objectives": [
+        {
+          "id": "route",
+          "type": "routEnemies",
+          "label": "击退敌军"
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "turnLimit": null,
+    "moraleEnabled": false,
+    "captureMode": "progressive",
+    "captureThreshold": 100,
+    "baseResourceGrants": []
+  },
+  "victory": [
+    {
+      "id": "primary",
+      "type": "failOn",
+      "label": "护送平民并阻止无标记弩车",
+      "condition": {
+        "type": "unitCount",
+        "selector": {
+          "keys": [
+            "campaign-laiya"
+          ]
+        },
+        "op": "lte",
+        "value": 0
+      },
+      "objective": {
+        "id": "bridge-all",
+        "type": "all",
+        "label": "护送平民并摧毁无标记弩车",
+        "objectives": [
+          {
+            "id": "escort-east-safety",
+            "type": "escort",
+            "selector": {
+              "keys": [
+                "refugee-1",
+                "refugee-2",
+                "refugee-3"
+              ]
+            },
+            "zone": "east-safety",
+            "count": 3,
+            "label": "护送三名平民抵达东岸"
+          },
+          {
+            "id": "eliminate-unmarked-ballista",
+            "type": "eliminate",
+            "selector": {
+              "keys": [
+                "unmarked-ballista"
+              ]
+            },
+            "label": "摧毁向平民开火的无标记弩车"
+          }
+        ]
+      }
+    }
+  ],
+  "scenario": {
+    "zones": [
+      {
+        "id": "middle-bridge",
+        "cells": [
+          {
+            "x": 10,
+            "y": 6
+          },
+          {
+            "x": 11,
+            "y": 6
+          }
+        ]
+      },
+      {
+        "id": "east-safety",
+        "cells": [
+          {
+            "x": 20,
+            "y": 0
+          },
+          {
+            "x": 21,
+            "y": 0
+          },
+          {
+            "x": 20,
+            "y": 1
+          },
+          {
+            "x": 21,
+            "y": 1
+          },
+          {
+            "x": 20,
+            "y": 2
+          },
+          {
+            "x": 21,
+            "y": 2
+          }
+        ]
+      }
+    ],
+    "engagementRules": [
+      {
+        "id": "bridge-truce",
+        "zone": "middle-bridge",
+        "mode": "no-attacks",
+        "players": [
+          1,
+          2
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "truce-kept",
+        "timing": "turnEnd",
+        "condition": {
+          "type": "turnAtLeast",
+          "turn": 3
+        },
+        "effects": [
+          {
+            "type": "removeEngagementRule",
+            "id": "bridge-truce"
+          },
+          {
+            "type": "emitSignal",
+            "signal": "accepted_bridge_truce"
+          }
+        ]
+      }
+    ]
+  },
+  "extra": {
+    "campaign": "candidate-01-gray-banner",
+    "chapter": 1,
+    "order": 2,
+    "subtitle": "短暂停火，把六军之争让给过桥的平民。",
+    "tacticalTheme": "三条渡河路线、护送纵队与远程封锁",
+    "recommendedTurns": 12,
+    "battleScale": "company",
+    "fronts": 3
+  }
+}

@@ -1,3 +1,4 @@
+import { candidate01RiverMaterialPieces, type CandidateRiverProfile } from './candidate-01-river-material';
 import type { CandidateRoadCorridorProfile } from './candidate-01-road-corridor';
 import { candidate01IsAreaRoad, candidate01RoadMaterialPieces } from './candidate-01-road-material';
 import { candidate01HorizontalCrossingMarkup, candidate01StoneJunctionMarkup } from './candidate-01-crossing';
@@ -305,7 +306,7 @@ function authoredTerrain(levelId: string, id: string, x: number, y: number, prop
   ) ?? false;
 }
 
-function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, roadCorridor: CandidateRoadCorridorProfile | undefined): BoardPiece[] {
+function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, roadCorridor: CandidateRoadCorridorProfile | undefined, river: CandidateRiverProfile | undefined): BoardPiece[] {
   const field = materialField(content, map);
   const base = CANDIDATE_01_FIELD_MATERIAL.replaces;
   const surfaces = candidate01FieldMaterialPieces(map.width * TILE, map.height * TILE);
@@ -340,7 +341,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
       }
 
       // The mud a river leaves, before the water is drawn over it.
-      if (material.blend === undefined && isShore(content, map, x, y)) {
+      if (!river && material.blend === undefined && isShore(content, map, x, y)) {
         const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(
           CANDIDATE_SHORE,
           blobMask(x, y, (nx, ny) => isShore(content, map, nx, ny)),
@@ -389,7 +390,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
        */
       const decals = isWater(content, map, x, y)
         ? CANDIDATE_RIVER_STONES
-        : isShore(content, map, x, y) ? CANDIDATE_SHORE_DECALS : material.decals;
+        : !river && isShore(content, map, x, y) ? CANDIDATE_SHORE_DECALS : material.decals;
       if (decals && tileHash(x, y, 1103) < decals.chance) {
         const pick = decals.ids[Math.floor(tileHash(x, y, 1104) * decals.ids.length)];
         detail.push({
@@ -404,7 +405,12 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
       }
     }
   }
-  const water = candidate01WaterMaterialPieces(map.width, map.height, (x, y) => isWater(content, map, x, y));
+  const water = river
+    ? candidate01RiverMaterialPieces(map.width, map.height, (x, y) => isWater(content, map, x, y), river,
+      (x, y) => isWater(content, map, x, y) || tileAt(map, x, y) === 'plain'
+        || candidate01IsAreaRoad(candidateMaterial(content, map.tiles[idx(map, x, y)]))
+          && !taggedGround(content.terrains.get(map.tiles[idx(map, x, y)]), GROUND_TAGS.settlement))
+    : candidate01WaterMaterialPieces(map.width, map.height, (x, y) => isWater(content, map, x, y));
   const road = roadCorridor ? candidate01RoadMaterialPieces(map.width, map.height,
     (x, y) => candidate01IsAreaRoad(candidateMaterial(content, map.tiles[idx(map, x, y)])),
     (x, y) => isRoute(content, map, x, y),
@@ -742,7 +748,7 @@ export function candidate01MapSceneryLayers(
 ): SceneLayers {
   const roadCorridor = editing === true ? undefined : candidate01EnvironmentScene(levelId)?.roadCorridor;
   return {
-    ground: [...groundPieces(content, map, levelId, roadCorridor), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
+    ground: [...groundPieces(content, map, levelId, roadCorridor, editing === true ? undefined : candidate01EnvironmentScene(levelId)?.river), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
     underUnits: [
       // Light before the things that stand in it.
       ...hearthPieces(content, map),

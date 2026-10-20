@@ -145,15 +145,26 @@ describe('continuous authored earth roads', () => {
     expect(singleton.alpha).toContain('<circle cx="48" cy="48" r="16"/>');
   });
 
-  it('registers all 33 river-map road and settlement cells without repainting bridge decks or moving scenery', () => {
+  it('keeps river trails narrow and rounded without filling two-by-two road aprons', () => {
+    const trail = candidate01EnvironmentScene('c01-02')!.roadCorridor!;
+    expect(trail).toEqual({ width: 20, maxTangentCut: 16, maxPlainOverhang: 0, protectedCells: [] });
+    const graph = candidate01RoadGraph(4, 4, (x, y) => x >= 1 && x <= 2 && y >= 1 && y <= 2);
+    const geometry = candidate01RoadCorridorGeometry(graph, trail, () => true);
+    expect(geometry.alpha).toContain('stroke-width="20"');
+    expect(geometry.alpha.match(/ Q /g)).toHaveLength(4);
+    expect(geometry.alpha).not.toContain('<rect');
+    expect(geometry.limits).toContain('width="32" height="32" rx="0"');
+  });
+
+  it('registers all 85 river-map road and settlement cells without repainting bridge decks or moving scenery', () => {
     const level = candidate01Level('c01-02');
     const state = engine.createState(level);
     const before = hash(state);
     const map = state.map;
     expect(candidate01EnvironmentScene(level.id)?.mapSize).toEqual([map.width, map.height]);
     const graph = candidate01RoadGraph(map.width, map.height, painted(map));
-    expect(graph.cells).toHaveLength(33);
-    expect(graph.chains.reduce((n, chain) => n + chain.length - 1, 0)).toBe(21);
+    expect(graph.cells).toHaveLength(85);
+    expect(graph.chains.reduce((n, chain) => n + chain.length - 1, 0)).toBe(84);
     const play = layers(map, level.id);
     const edit = layers(map, level.id, true);
     const road = play.ground.filter(piece => piece.markup.includes('data-runtime-raster="area-road"'));

@@ -78,8 +78,10 @@ export function candidate01RoadCorridorGeometry(
   profile: CandidateRoadCorridorProfile,
   plain: (x: number, y: number) => boolean,
 ) {
-  if (profile.width !== 32 || profile.maxTangentCut !== 22 || profile.maxPlainOverhang !== 2) {
-    throw new Error('candidate-01: road corridor requires the reviewed 32/22/2 profile');
+  const broadRoad = profile.width === 32 && profile.maxTangentCut === 22 && profile.maxPlainOverhang === 2;
+  const narrowTrail = profile.width === 20 && profile.maxTangentCut === 16 && profile.maxPlainOverhang === 0;
+  if (!broadRoad && !narrowTrail) {
+    throw new Error('candidate-01: road corridor requires a reviewed 32/22/2 or 20/16/0 profile');
   }
   const { width, height, cells, chains, occupied, neighbors, connected } = graph;
   const protectedCells = new Set(profile.protectedCells.map(key));
@@ -100,8 +102,8 @@ export function candidate01RoadCorridorGeometry(
         paths.push(`M ${cx} ${cy} L ${cx + dx * TILE / 2} ${cy + dy * TILE / 2}`);
       }
     }
-    if ([[x, y], [x + 1, y], [x, y + 1], [x + 1, y + 1]].every(p => occupied.has(key([p[0], p[1]])) && connected(p[0], p[1]))) {
-      // Filled aprons have a solid interior, including a standalone 2x2 cycle.
+    if (broadRoad && [[x, y], [x + 1, y], [x, y + 1], [x + 1, y + 1]].every(p => occupied.has(key([p[0], p[1]])) && connected(p[0], p[1]))) {
+      // Broad roads keep their filled aprons; narrow trails retain rounded junction paths.
       filled.push(rectangle((x + .5) * TILE, (y + .5) * TILE, TILE, TILE));
     }
     const overhang = profile.maxPlainOverhang;

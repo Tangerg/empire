@@ -7,7 +7,7 @@ import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '../index';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
 import catalog from '../../../../tools/art/surface-overrides.json';
-import { CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
+import { candidate01EnvironmentScene, CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
 import { candidate01MapSceneryLayers } from './candidate-01-map-scene';
 import { candidateMaterial } from './candidate-01-terrain-materials';
 import { candidate01IsAreaWater } from './candidate-01-water-material';
@@ -65,8 +65,8 @@ describe('earth material for terrain interiors and generated shores', () => {
     expect(() => readCandidateWorldMaskAtlas({ id: blendId, png: 'runtime/missing.png', png2x: 'runtime/earth-blend-masks@2x.png' })).toThrow('missing material mask');
   });
 
-  it('covers 169 explicit interiors and 134 generated banks using their different original neighbour predicates', () => {
-    const counts = new Map([['c01-02', [0, 28]], ['c01-05', [55, 0]], ['c01-06', [0, 28]], ['c01-12', [114, 38]], ['c01-14', [0, 40]]]);
+  it('covers 169 explicit interiors and 106 generated banks outside the authored river using their different original neighbour predicates', () => {
+    const counts = new Map([['c01-02', [0, 0]], ['c01-05', [55, 0]], ['c01-06', [0, 28]], ['c01-12', [114, 38]], ['c01-14', [0, 40]]]);
     let total = 0;
     for (const level of CANDIDATE_01_LEVELS) {
       const map = mapFromLevel(content, level);
@@ -80,7 +80,7 @@ describe('earth material for terrain interiors and generated shores', () => {
         && [[0, -1], [1, 0], [0, 1], [-1, 0]].some(([dx, dy]) => isWater(x + dx, y + dy));
       const context = { content, levelId: level.id, map, viewport: candidateReviewViewport(map) };
       const scene = candidate01MapSceneryLayers(context);
-      const expected = [];
+      const expected = [], expectedEditor = [];
       let interiors = 0, banks = 0;
       for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
         const material = materialAt(x, y);
@@ -90,7 +90,10 @@ describe('earth material for terrain interiors and generated shores', () => {
         expect(isWater(x, y)).toBe(false);
         const mask = candidate01BlobMask(x, y, interior ? (nx, ny) => materialAt(nx, ny)?.blend === blendId : isShore);
         const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(blendId, mask);
-        expected.push({ x: x * 32, y: y * 32, markup: candidate01EarthBlendMarkup(blendId, cell, x * 32, y * 32) });
+        const piece = { x: x * 32, y: y * 32, markup: candidate01EarthBlendMarkup(blendId, cell, x * 32, y * 32) };
+        expectedEditor.push(piece);
+        if (bank && candidate01EnvironmentScene(level.id)?.river) continue;
+        expected.push(piece);
         if (interior) interiors++; else banks++;
       }
       expect([interiors, banks], level.id).toEqual(counts.get(level.id) ?? [0, 0]);
@@ -100,12 +103,12 @@ describe('earth material for terrain interiors and generated shores', () => {
       for (const piece of actual) if (water.length) expect(scene.ground.indexOf(piece)).toBeLessThan(Math.min(...water));
       expect(scene.ground.map(piece => piece.markup).join('')).not.toContain(CANDIDATE_01_ENVIRONMENT.atlas(blendId).raster.href);
       for (const layer of [scene.underUnits, scene.overUnits]) expect(layer.some(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href))).toBe(false);
-      expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground.filter(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href)), level.id).toEqual(actual);
+      expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground.filter(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href)), level.id).toEqual(expectedEditor);
       expect(candidate01MapSceneryLayers({ ...context, viewport: { ...context.viewport, sceneWidth: context.viewport.sceneWidth + 71 } }), level.id).toEqual(scene);
       expect(JSON.stringify({ level, map })).toBe(before);
       total += actual.length;
     }
-    expect(total).toBe(303);
+    expect(total).toBe(275);
   });
 
   it('keeps the other three native earth slots catalog-only without reclassifying terrain', () => {
