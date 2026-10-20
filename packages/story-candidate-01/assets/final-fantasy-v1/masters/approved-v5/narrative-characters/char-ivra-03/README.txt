@@ -1,0 +1,1 @@
+C01-CHAR-IVRA-03: accepted complete native transparent character source. Coordinator accepted common whole-canvas card placement176/[8,2] on2026-10-20 04:28UTC. See source-review.md, sourceproof.json and bundle-manifest.json. No production/selector changes by this worker.

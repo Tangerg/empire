@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-1",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "boardHashReverified": true,
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    3,
+    447,
+    441,
+    884
+  ],
+  "cropSize": [
+    438,
+    437
+  ],
+  "slotSHA256": "403aef44a73f05dab403e46139fe496d510d209b4ba29b2b462749d1aefc8fdd",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Wind-eroded ochre earth, shallow cracks, small gray stones",
+  "originalExportMode": "variants",
+  "redrawInterpretation": "Redraw WIND-ERODED EARTH: warm ochre-brown dry packed ground with several broad shallow eroded sweeps, sparse short thick broken cracks, scattered compact cool gray stones, and a very few simple straw-colored dry tufts. Reduce the original tiny gravel and fissure noise drastically to broad matte shapes. Preserve the wind-eroded diagonal flow and the gray stones. Compose one continuous ground material at one scale across the entire canvas, with roughly two complete rock clusters and one short crack group safely inside each imaginary quarter. Each full quarter will become a32px terrain tile, so stones should be broad clearly separated chunks. Keep distinguishing motifs well away from canvas boundaries and imaginary middle sampling lines x=627,y=627. The ground alone continues calmly through those lines. No drawn grid.",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original natural-language generation prompt recovered; board mapping established independently by pixel equality",
+    "Catalog-only canonical terrain, no current static gameplay ground consumer identified",
+    "NESW masks encode historical alpha only, not physical terrain topology"
+  ]
+}

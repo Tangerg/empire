@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-4",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "boardHashReverified": true,
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    1333,
+    447,
+    1771,
+    884
+  ],
+  "cropSize": [
+    438,
+    437
+  ],
+  "slotSHA256": "fe9a4808ebdfd61bc400757d78bcbd4c79998f404409ceff83de8298f62c49f0",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Dark wind-scoured soil with diagonal pale erosion streaks and dry grass",
+  "originalExportMode": "nesw-16",
+  "redrawInterpretation": "Redraw STORM-WEATHERED GROUND: dark cool charcoal-brown wind-scoured soil, broad muted pale taupe diagonal erosion streaks sweeping from lower-left to upper-right, scattered small subdued gray stones and sparse bent dry ochre grass. Preserve the original visual weathering identity; do not invent lightning, magical effects, hazard icons, road markings, craters or new gameplay geometry. The existing NESW clipping mask retains only a12x12 central opaque pad at32px. Therefore put one complete distinguishing crop-safe local motif entirely in the central x=477..777,y=477..777 box of a1254-square canvas: TWO compact broad gently tapering diagonal pale erosion swipes with natural tapered ends, one small gray pebble and ONE small five-blade dry grass tuft leaning in the same diagonal direction, all contained in that box. The swipes must be clearly separate irregular scraped-soil shapes, not slashes or painted symbols. Outside this box use quiet dark soil with very restrained broad diagonal variations and two distant sparse dry grass tufts far toward corners, never touching the central motif. No drawn center pad, island or framing. Grass has only five chunky matte blades, no hairline brush, grain or dense stippling.",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original natural-language generation prompt recovered; board mapping established independently by pixel equality",
+    "Catalog-only canonical terrain, no current static gameplay ground consumer identified",
+    "NESW masks encode historical alpha only, not physical terrain topology"
+  ]
+}

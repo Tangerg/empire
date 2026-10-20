@@ -1,0 +1,468 @@
+[
+  {
+    "topicId": "C01-CHAR-IVRA-01",
+    "native": {
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 1019794,
+      "partialPixels": 551208,
+      "opaquePixels": 2042,
+      "nearOpaquePixels": 524977,
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroPixels": 8,
+      "edgeGreaterThan1Pixels": 0,
+      "alphaBbox": [
+        0,
+        138,
+        1068,
+        1370
+      ],
+      "threshold2BboxDiagnosticOnly": [
+        90,
+        282,
+        1062,
+        1174
+      ]
+    },
+    "sourceIntegrity": {
+      "rawMasterIdentical": true,
+      "rawSha256": "839c1dca56dc2491b425fd995e9b4cdd68b32ecc024f8615f5505a4a547d268a",
+      "masterSha256": "839c1dca56dc2491b425fd995e9b4cdd68b32ecc024f8615f5505a4a547d268a",
+      "noSoftwareSourceEdits": true,
+      "fullNativeCanvasPreserved": true
+    },
+    "sourceAudit": "original-audit.json",
+    "background": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "candidatePlacement": {
+      "renderWidth": 176,
+      "origin": [
+        8,
+        2
+      ]
+    },
+    "selectionStatus": "Coordinator accepted source and common whole-canvas176 width origin[8,2] at2026-10-20 04:28UTC; formal integration/live review remain coordinator-owned",
+    "actualSelector": true,
+    "noLaterStageSelectorClaim": true,
+    "uiDiagnostics": {
+      "desktop": [
+        92,
+        112
+      ],
+      "mobile": [
+        64,
+        88
+      ],
+      "roster": [
+        44,
+        44
+      ],
+      "HUD": [
+        96,
+        112
+      ],
+      "method": "offline exact image-cover/slice geometry only; no live browser, text/washes/overlays or production changes",
+      "cardAlphaExtrema": [
+        255,
+        255
+      ],
+      "completeCharacterCanvasFit": true,
+      "renderedCanvas": [
+        176,
+        220
+      ]
+    },
+    "referenceHashes": {
+      "references/approved-ivra-growth-style-only.png": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "references/approved-s09-liberation-scene.png": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361",
+      "references/generation-ref-01.png": "96a5a734b81d1a64382b0d36293c8f5d6686fa26cda42d4f2fa4b510bbdeaf73",
+      "references/original-cell.png": "e7746cfffaf14c81b59ae5a0ecc2a6040c16ca50e30f7227a6f73efa8296268f",
+      "references/original-fullboard.png": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca"
+    },
+    "generationReferenceHashes": {
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ivra-01/attempt-01/master.png": "96a5a734b81d1a64382b0d36293c8f5d6686fa26cda42d4f2fa4b510bbdeaf73"
+    },
+    "promptSha256": "6499c17cf107e8a368ce0bd79d01c1436c1916ac69c4cf2359782c837a611688",
+    "requestSha256": "49291324b28c3a39ca3482f4b835861a727f0f749af964ec152c168e81240463",
+    "negativeSpaceProbes": [
+      {
+        "center": [
+          555,
+          360
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      },
+      {
+        "center": [
+          325,
+          980
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      },
+      {
+        "center": [
+          650,
+          1040
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      }
+    ],
+    "visualReview": "Compact juvenile with shorter neck, youthful head, guarded brow, four grounded limbs, two raised wings with small membrane notches, complete curled tail and non-graphic neck abrasion. Corrects the old petlike portrait using the accepted S09 wary juvenile. Head faces viewer-right in selected result, consistently with S09, rather than preserving the old portrait viewer-left turn. No detached restraint prop is baked into the reusable character.",
+    "nativeOuterMarginNote": "No visible anatomy touches native border. Alpha1 native residue is retained unmodified under existing edge≤1 contract; requested60–70px margins were not fully achieved on young/adult sides, but all wings/tails/claws remain complete.",
+    "uiCropReview": "Full192×224 composition preserves the complete source. Desktop dialogue preserves anatomy. Narrow mobile/HUD crops may trim outer wing or claw tips on the broader young/adult; square roster crops lower tail/paws. Face and stage silhouette remain readable. Offline geometry diagnostics only, not live-game acceptance.",
+    "coordinatorAcceptance": {
+      "utc": "2026-10-20T04:28:00Z",
+      "sourceApproved": true,
+      "commonPlacementApproved": true,
+      "renderWidth": 176,
+      "origin": [
+        8,
+        2
+      ],
+      "actualRuntimeRegistrationByWorker": false
+    }
+  },
+  {
+    "topicId": "C01-CHAR-IVRA-02",
+    "native": {
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 815263,
+      "partialPixels": 755030,
+      "opaquePixels": 2751,
+      "nearOpaquePixels": 714668,
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroPixels": 124,
+      "edgeGreaterThan1Pixels": 0,
+      "alphaBbox": [
+        0,
+        0,
+        1105,
+        1402
+      ],
+      "threshold2BboxDiagnosticOnly": [
+        30,
+        146,
+        1103,
+        1272
+      ]
+    },
+    "sourceIntegrity": {
+      "rawMasterIdentical": true,
+      "rawSha256": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a",
+      "masterSha256": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a",
+      "noSoftwareSourceEdits": true,
+      "fullNativeCanvasPreserved": true
+    },
+    "sourceAudit": "original-audit.json",
+    "background": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "candidatePlacement": {
+      "renderWidth": 176,
+      "origin": [
+        8,
+        2
+      ]
+    },
+    "selectionStatus": "Coordinator accepted source and common whole-canvas176 width origin[8,2] at2026-10-20 04:28UTC; formal integration/live review remain coordinator-owned",
+    "actualSelector": false,
+    "noLaterStageSelectorClaim": true,
+    "uiDiagnostics": {
+      "desktop": [
+        92,
+        112
+      ],
+      "mobile": [
+        64,
+        88
+      ],
+      "roster": [
+        44,
+        44
+      ],
+      "HUD": [
+        96,
+        112
+      ],
+      "method": "offline exact image-cover/slice geometry only; no live browser, text/washes/overlays or production changes",
+      "cardAlphaExtrema": [
+        255,
+        255
+      ],
+      "completeCharacterCanvasFit": true,
+      "renderedCanvas": [
+        176,
+        220
+      ]
+    },
+    "referenceHashes": {
+      "references/approved-ivra-growth-style-only.png": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "references/approved-s09-liberation-scene.png": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361",
+      "references/generation-ref-01.png": "839c1dca56dc2491b425fd995e9b4cdd68b32ecc024f8615f5505a4a547d268a",
+      "references/generation-ref-02.png": "0651d94a17d072e3da711a04ab8ccec47c8d82435e754d3708ef3aede68a7b49",
+      "references/generation-ref-03.png": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "references/original-cell.png": "0651d94a17d072e3da711a04ab8ccec47c8d82435e754d3708ef3aede68a7b49",
+      "references/original-fullboard.png": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca"
+    },
+    "generationReferenceHashes": {
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ivra-01/master.png": "839c1dca56dc2491b425fd995e9b4cdd68b32ecc024f8615f5505a4a547d268a",
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ivra-02/references/original-cell.png": "0651d94a17d072e3da711a04ab8ccec47c8d82435e754d3708ef3aede68a7b49",
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ivra-02/references/approved-ivra-growth-style-only.png": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb"
+    },
+    "promptSha256": "d4d12fa59ac22d5c8daf070cd37d84a336b15364f951bbcaf2238efa922d8414",
+    "requestSha256": "72d9a3608c6c59b5873e23a104b885c7203a65924fd0f56165e323147a3a4192",
+    "negativeSpaceProbes": [
+      {
+        "center": [
+          610,
+          370
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      },
+      {
+        "center": [
+          870,
+          1050
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      },
+      {
+        "center": [
+          490,
+          1100
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      }
+    ],
+    "visualReview": "Young free ally has distinctly longer neck, longer swept-back horns, lean taller standing quadruped, developed wings, smaller eye-to-skull ratio and muted healed neck mark. It keeps the copper-red/gray/amber lineage without rider, tack or ownership. Source pose echoes original young card rather than becoming another juvenile or an adult commander.",
+    "nativeOuterMarginNote": "No visible anatomy touches native border. Alpha1 native residue is retained unmodified under existing edge≤1 contract; requested60–70px margins were not fully achieved on young/adult sides, but all wings/tails/claws remain complete.",
+    "uiCropReview": "Full192×224 composition preserves the complete source. Desktop dialogue preserves anatomy. Narrow mobile/HUD crops may trim outer wing or claw tips on the broader young/adult; square roster crops lower tail/paws. Face and stage silhouette remain readable. Offline geometry diagnostics only, not live-game acceptance.",
+    "coordinatorAcceptance": {
+      "utc": "2026-10-20T04:28:00Z",
+      "sourceApproved": true,
+      "commonPlacementApproved": true,
+      "renderWidth": 176,
+      "origin": [
+        8,
+        2
+      ],
+      "actualRuntimeRegistrationByWorker": false
+    }
+  },
+  {
+    "topicId": "C01-CHAR-IVRA-03",
+    "native": {
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 623681,
+      "partialPixels": 947449,
+      "opaquePixels": 1914,
+      "nearOpaquePixels": 909188,
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroPixels": 45,
+      "edgeGreaterThan1Pixels": 0,
+      "alphaBbox": [
+        17,
+        90,
+        1122,
+        1402
+      ],
+      "threshold2BboxDiagnosticOnly": [
+        21,
+        109,
+        1115,
+        1345
+      ]
+    },
+    "sourceIntegrity": {
+      "rawMasterIdentical": true,
+      "rawSha256": "1d728b8b1327f7009e70a36eebcf42bfe20f56113e9b7c793a0ab000ee088934",
+      "masterSha256": "1d728b8b1327f7009e70a36eebcf42bfe20f56113e9b7c793a0ab000ee088934",
+      "noSoftwareSourceEdits": true,
+      "fullNativeCanvasPreserved": true
+    },
+    "sourceAudit": "original-audit.json",
+    "background": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "candidatePlacement": {
+      "renderWidth": 176,
+      "origin": [
+        8,
+        2
+      ]
+    },
+    "selectionStatus": "Coordinator accepted source and common whole-canvas176 width origin[8,2] at2026-10-20 04:28UTC; formal integration/live review remain coordinator-owned",
+    "actualSelector": false,
+    "noLaterStageSelectorClaim": true,
+    "uiDiagnostics": {
+      "desktop": [
+        92,
+        112
+      ],
+      "mobile": [
+        64,
+        88
+      ],
+      "roster": [
+        44,
+        44
+      ],
+      "HUD": [
+        96,
+        112
+      ],
+      "method": "offline exact image-cover/slice geometry only; no live browser, text/washes/overlays or production changes",
+      "cardAlphaExtrema": [
+        255,
+        255
+      ],
+      "completeCharacterCanvasFit": true,
+      "renderedCanvas": [
+        176,
+        220
+      ]
+    },
+    "referenceHashes": {
+      "references/approved-ivra-growth-style-only.png": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "references/approved-s09-liberation-scene.png": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361",
+      "references/generation-ref-01.png": "1129577ab252b655c846e1d97d1f9673e367a9ffd0da7a2dc3434fed090e879d",
+      "references/generation-ref-02.png": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a",
+      "references/original-cell.png": "1129577ab252b655c846e1d97d1f9673e367a9ffd0da7a2dc3434fed090e879d",
+      "references/original-fullboard.png": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca"
+    },
+    "generationReferenceHashes": {
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ivra-03/references/original-cell.png": "1129577ab252b655c846e1d97d1f9673e367a9ffd0da7a2dc3434fed090e879d",
+      "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-ivra-02/master.png": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a"
+    },
+    "promptSha256": "a6a9f82effeadd4c25aa8a769497b16376146e12112029d1f2d06a8ea2ec8b79",
+    "requestSha256": "db191ea14bbb124d61a3f24186f0fb3319d62e0ef8a390813faad65be55907ef",
+    "negativeSpaceProbes": [
+      {
+        "center": [
+          900,
+          485
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      },
+      {
+        "center": [
+          885,
+          1100
+        ],
+        "boxSize": [
+          7,
+          7
+        ],
+        "alphaExtrema": [
+          0,
+          0
+        ]
+      }
+    ],
+    "visualReview": "Adult commander is substantially broader, seated on folded haunches, with deeper chest, heavier angular muzzle, long horns, more slate-gray flank/neck plates and its own sourced red/blue-gray horn ties. Red face, amber eye, gray belly, old neck mark and natural wing/tail anatomy retain lineage. No human rider, Gray Flag ownership, reins, saddle or invented emblem.",
+    "nativeOuterMarginNote": "No visible anatomy touches native border. Alpha1 native residue is retained unmodified under existing edge≤1 contract; requested60–70px margins were not fully achieved on young/adult sides, but all wings/tails/claws remain complete.",
+    "uiCropReview": "Full192×224 composition preserves the complete source. Desktop dialogue preserves anatomy. Narrow mobile/HUD crops may trim outer wing or claw tips on the broader young/adult; square roster crops lower tail/paws. Face and stage silhouette remain readable. Offline geometry diagnostics only, not live-game acceptance.",
+    "coordinatorAcceptance": {
+      "utc": "2026-10-20T04:28:00Z",
+      "sourceApproved": true,
+      "commonPlacementApproved": true,
+      "renderWidth": 176,
+      "origin": [
+        8,
+        2
+      ],
+      "actualRuntimeRegistrationByWorker": false
+    }
+  }
+]

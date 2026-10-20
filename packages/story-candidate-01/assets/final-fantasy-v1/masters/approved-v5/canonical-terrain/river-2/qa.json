@@ -1,7 +1,7 @@
 {
   "topicId": "C01-TERRAIN-RIVER-2",
   "label": "浅水",
-  "status": "source-ready-for-integrator-review; native fixed-mask diagnostics passed; formal catalog integration pending",
+  "status": "parent accepted native catalog semantics; formal integration owned by parent",
   "authoredMaterialCount": 1,
   "builtInImagegenCalls": 2,
   "method": "Built-in image_gen; selected raw copied byte-for-byte; no generated pixels painted, recolored, filtered or alpha-edited",
@@ -98,5 +98,9 @@
     "performed": false,
     "formalCatalog": "pending sole integrator",
     "liveSceneAcceptance": "not claimed"
+  },
+  "parentReview": {
+    "acceptance": "Parent viewed all four actual64 all-mask sheets and accepted native catalog semantics with directional shoreline limitation explicit. No live topology/cohesion claim.",
+    "source": "Parent collaboration message2026-10-20 04:24 UTC"
   }
 }

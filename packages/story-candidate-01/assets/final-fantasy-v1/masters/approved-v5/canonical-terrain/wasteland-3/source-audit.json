@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-3",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "boardHashReverified": true,
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    890,
+    447,
+    1327,
+    884
+  ],
+  "cropSize": [
+    437,
+    437
+  ],
+  "slotSHA256": "f5a52bee64cbe106814cae1ff4d604097e97250367528e16b38f2f7fe0e68823",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Bare camp soil, woven rugs, tent stakes, sticks and small stones",
+  "originalExportMode": "variants",
+  "redrawInterpretation": "Redraw TRIBAL CAMP GROUND as a continuous field of quiet warm brown packed soil bearing the original sparse practical camping traces: small complete flat woven rectangular rugs in muted rust-red and blue-gray with tan straw fringes, a few short blunt wooden tent pegs, loose brown sticks and compact gray stones. This is a top-down ground material, not tents or a complete camp scene. Place EXACTLY FOUR separate modest rugs, one wholly within each imaginary627px quarter, each about220x150px and with generous earth all around it. Alternate red and muted blue-gray centers and one simple angular diamond patch per rug, no intricate patterns or readable symbols. Give each rug a broad tan woven border and a few broad short grouped fringes, not many fibers. Beside each rug put one or two short flat-readable wooden peg stubs, a loose stick and one small stone, all complete within its own quarter, far from the canvas edges and x=627/y=627 lines. Vary their position and rotation subtly so the four sampled windows read as distinct ground variants. Maintain a continuous undivided earth background with no atlas grid. No extra tribal insignia, bones, totems, fire, tents, characters or structures.",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original natural-language generation prompt recovered; board mapping established independently by pixel equality",
+    "Catalog-only canonical terrain, no current static gameplay ground consumer identified",
+    "NESW masks encode historical alpha only, not physical terrain topology"
+  ]
+}

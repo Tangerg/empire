@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> empire-srpg-workspace@0.1.0 test
+> vitest run packages/story-candidate-01/src/presentation/candidate-01-ivra-cards.test.ts packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts packages/story-candidate-01/src/presentation/candidate-01-actor-consumers.test.ts --maxWorkers=2 --minWorkers=1
+
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-ivra-cards.test.ts (4 tests) 14ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts (11 tests) 19ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-actor-consumers.test.ts (4 tests) 708ms
+   ✓ activated fixture through the real candidate provider > draws the named fixture through actual BoardView while a hidden selection stays hidden 701ms
+
+ Test Files  3 passed (3)
+      Tests  19 passed (19)
+   Start at  12:33:45
+   Duration  9.42s (transform 5.02s, setup 0ms, collect 8.97s, tests 742ms, environment 873ms, prepare 314ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

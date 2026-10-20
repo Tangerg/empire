@@ -1,0 +1,167 @@
+{
+  "fullName": "摄政王塞维恩",
+  "stage": "Regent of Lorne, main political opponent; one canonical card, no numbered stage variant",
+  "face": "Older man with swept gray hair, short full gray beard and heavy brows; visually resembles Roderick, but is a different person",
+  "emotion": "Reserved, tired and concerned rather than theatrical tyrant",
+  "pose": "Standing three-quarter, one hand lowered, bundle of sealed books/records held against torso at viewer-right",
+  "costume": "Cream-and-burgundy gold-edged political/armored coat over mail, small crown collar clasp and red document seal",
+  "framing": "Full body with administrative records on parchment; no throne, feast or spiked evil crown",
+  "priority": "reconcile-before-generation",
+  "topicId": "C01-CHAR-SEVERIN",
+  "catalog": {
+    "assetId": "C01-FFV1-CHAR-SEVERIN",
+    "topicId": "C01-CHAR-SEVERIN",
+    "label": "摄政王塞维恩",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/char-severin.png",
+    "width": 192,
+    "height": 224,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "character-card"
+  },
+  "status": "pending-remake",
+  "original": {
+    "catalogSlotZeroBased": 39,
+    "boardCellZeroBased": 1,
+    "quadrant": "TR",
+    "cropBoxXYXYExclusive": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "exactCrop": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-severin-original-cell.png",
+      "repoRelativePath": null,
+      "sha256": "49a91771b071c93f7bb41162f2ca0d4109998f6fd96d8b188c8f5261c7dbd71e",
+      "dimensions": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "legacyRuntimeReproducesExactRGBA": true,
+    "mappingEvidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+        "startLine": 75,
+        "endLine": 75,
+        "originalText": "    \"character-board-05.png\": [38, 39, 40, 41],"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 52,
+        "endLine": 52,
+        "originalText": "- `C01-CHAR-SEVERIN`：摄政王塞维恩"
+      }
+    ]
+  },
+  "currentRuntime": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-severin.png",
+    "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-severin.png",
+    "sha256": "b9d2d6bff7f6b430d1bcd9a2a4da1807a973c4938f06d6fa0cc1670dda237214",
+    "dimensions": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "nearOpaqueCore": true
+  },
+  "approvedNamedIdentityRef": null,
+  "approvedIdentityReferenceExists": false,
+  "loreEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 59,
+      "endLine": 59,
+      "originalText": "| P1 | `C01-CHAR-SEVERIN.png` | 摄政王 | 朴素政治服、疲惫、无享乐暴君符号 |"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "startLine": 52,
+      "endLine": 52,
+      "originalText": "- `C01-CHAR-SEVERIN`：摄政王塞维恩"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/README.md",
+      "startLine": 368,
+      "endLine": 376,
+      "originalText": "### 6.9 摄政王塞维恩\n\n洛恩实际统治者，主要政治对手。\n\n- 曾试图通过传统盟约结束战争，但亲眼见证三次停战失败；\n- 知道教廷制造冲突，却认为这些牺牲能够换来永久和平；\n- 不追求个人享乐，也不把王冠视为荣耀；\n- 相信自己有责任成为最后一个暴君；\n- 最终败因不是不理解自由，而是不相信普通人有承担自由后果的能力。"
+    }
+  ],
+  "sourceMismatchFlags": [
+    {
+      "code": "original_vs_brief",
+      "detail": "Original has conspicuous mail, gold edging and crown jewelry. Explicit brief calls for plain political clothes, fatigue and no pleasure-loving tyrant symbols. Simplify according to the brief rather than canonizing old decoration."
+    },
+    {
+      "code": "identity_collision",
+      "detail": "Do not reuse approved Roderick face just because both originals are gray-bearded older men. No approved named Severin identity source exists."
+    },
+    {
+      "code": "single_topic",
+      "detail": "Only C01-CHAR-SEVERIN exists in current 404-topic manifest; no CHAR-SEVERIN-01/02 or combat unit is selected. Additional narrative drafts are not extra card slots."
+    }
+  ],
+  "consumers": {
+    "directProductionTopicReferences": [],
+    "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+    "catalogPresenceIsNotConsumer": true,
+    "stageSelectorExists": false,
+    "liveGameVerified": false,
+    "state": "catalog-only-no-selected-consumer",
+    "channels": [],
+    "risk": "No shipped selector currently names this later/new card; rendering the file in an audit or catalog is not live integration."
+  },
+  "contractRef": "contracts.characterMasterAndCard",
+  "currentHdEntry": null,
+  "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation.",
+  "task": "Author final remaining transparent named regent portrait",
+  "currentProductionIsReadOnly": true,
+  "generationReferences": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-severin-original-cell.png",
+      "sha256": "49a91771b071c93f7bb41162f2ca0d4109998f6fd96d8b188c8f5261c7dbd71e",
+      "role": "named historical identity/pose/records authority, explicit clothing defects overridden"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+      "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd",
+      "role": "approved broad matte style only, no identity transfer"
+    }
+  ],
+  "chronologicalAge": "Not numerically specified in canonical biography; mature/older appearance preserved from exact historical cell.",
+  "crownReconciliation": {
+    "generalCard": "No worn crown in original exact cell. Remove decorative crown collar clasp per plain-political-clothes brief.",
+    "endgameNovel": "Chapter7 explicitly shows him wearing the unfinished crown as a control device, not a glory symbol; this sole unsuffixed general regent portrait is not an additional endgame variant.",
+    "evidence": {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/07-throne-without-king-novel.md",
+      "lines": [
+        203,
+        207
+      ],
+      "text": "塞维恩没有坐在王座上。...他在旧王宫的账房等待...未完成的王冠戴在他头上，缺口以誓光连接，像一圈始终没有愈合的伤。"
+    }
+  },
+  "designedReconstruction": "Keep original older regent face, gray swept hair and rounded beard, cream/burgundy clothing colors, sealed brown ledger bundle and standing pose. Replace chainmail/gold trimming/crown clasp with plain cream/burgundy political cloth per explicit brief. No invented heraldry, no sovereign crown, no combat variant inferred.",
+  "artworkReferencesVisuallyInspected": true
+}

@@ -1,0 +1,144 @@
+{
+  "fullName": "无旗者",
+  "stage": "Coordinator after internal negotiation; still plural",
+  "face": "Large hooded face plus several distinct faces nested in the cloak/chest; eyes mostly closed in original",
+  "emotion": "Calm and meditative, reconciliatory; not assumed unanimous political submission",
+  "pose": "Robed composite body with both palms open/outward and cloak pooling on ground",
+  "costume": "Soft dark-gray hooded shroud, no royal crown or single soldier uniform",
+  "framing": "Full plural cloaked silhouette against parchment; distinct faces remain separately readable",
+  "priority": "reconcile-before-generation",
+  "topicId": "C01-CHAR-NOBANNER-02",
+  "catalog": {
+    "assetId": "C01-FFV1-CHAR-NOBANNER-02",
+    "topicId": "C01-CHAR-NOBANNER-02",
+    "label": "无旗者协调者",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/char-nobanner-02.png",
+    "width": 192,
+    "height": 224,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "character-card"
+  },
+  "status": "pending-remake",
+  "original": {
+    "catalogSlotZeroBased": 38,
+    "boardCellZeroBased": 0,
+    "quadrant": "TL",
+    "cropBoxXYXYExclusive": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "exactCrop": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-nobanner-02-original-cell.png",
+      "repoRelativePath": null,
+      "sha256": "41a1452cee99ada59c937ace3685c070f072edb785aefffa649999bada6455d3",
+      "dimensions": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "legacyRuntimeReproducesExactRGBA": true,
+    "mappingEvidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+        "startLine": 75,
+        "endLine": 75,
+        "originalText": "    \"character-board-05.png\": [38, 39, 40, 41],"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 51,
+        "endLine": 51,
+        "originalText": "- `C01-CHAR-NOBANNER-02`：无旗者协调者"
+      }
+    ]
+  },
+  "currentRuntime": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-nobanner-02.png",
+    "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-nobanner-02.png",
+    "sha256": "d70ad9f847ea113b0c70ae42b8c8244042c8b34a1cabf7fdf38ad89fbe404b25",
+    "dimensions": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "nearOpaqueCore": true
+  },
+  "approvedNamedIdentityRef": null,
+  "approvedIdentityReferenceExists": false,
+  "loreEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 58,
+      "endLine": 58,
+      "originalText": "| P1 | `C01-CHAR-NOBANNER-02.png` | 协调者 | 仍保留复数差异，不变成正常单人幽灵 |"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "startLine": 51,
+      "endLine": 51,
+      "originalText": "- `C01-CHAR-NOBANNER-02`：无旗者协调者"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/README.md",
+      "startLine": 347,
+      "endLine": 355,
+      "originalText": "### 6.7 无旗者\n\n由无数无名阵亡者形成的聚忆体。\n\n- 不属于活人任何国家；\n- 反对教廷使用死者，也反对活人擅自让所有死者安息；\n- 希望亡者在新秩序中拥有发言权；\n- 一度试图建立不会背叛的亡灵国家；\n- 与米蕾尔和解后接受“自愿且有限的归来”。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+      "startLine": 130,
+      "endLine": 134,
+      "originalText": "### 6.6 无旗者：复数，不伪装成单数\n\n无旗者说话不应总是整齐合唱。它有时用“我”，有时用“我们”，不同声音会打断彼此。其稳定人格是一项政治协商成果，不是天然灵魂。\n\n它的极端冲动来自害怕个体死者被教廷逐个取走。它想把所有声音合成一个不会背叛的整体，正好镜像王冠。"
+    }
+  ],
+  "sourceMismatchFlags": [
+    {
+      "code": "plural_identity",
+      "detail": "Brief explicitly forbids becoming a normal single-person ghost; preserve plural differences even in the stable stage."
+    },
+    {
+      "code": "source_expression_risk",
+      "detail": "Original unified closed-eye calm is a visual cue only; creative bible says stable personality is negotiated, not a natural single soul. Avoid erasing disagreement."
+    },
+    {
+      "code": "no_named_approved_reference",
+      "detail": "No approved named coordinator source or runtime selector exists; do not derive from generic ghost art."
+    }
+  ],
+  "consumers": {
+    "directProductionTopicReferences": [],
+    "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+    "catalogPresenceIsNotConsumer": true,
+    "stageSelectorExists": false,
+    "liveGameVerified": false,
+    "state": "catalog-only-no-selected-consumer",
+    "channels": [],
+    "risk": "No shipped selector currently names this later/new card; rendering the file in an audit or catalog is not live integration."
+  },
+  "contractRef": "contracts.characterMasterAndCard",
+  "currentHdEntry": null,
+  "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation."
+}

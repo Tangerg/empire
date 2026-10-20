@@ -1,0 +1,177 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-2",
+  "label": "岩坡",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-WASTELAND-2",
+    "topicId": "C01-TERRAIN-WASTELAND-2",
+    "label": "岩坡",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-wasteland-2.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-2.png",
+      "sha256": "aa44001446d32bd10c08343df0ec6c37585255abfd6223842532b5f8a5db0cec",
+      "pixelSHA256": "168e66cf63201e86277a111e616723236df1a0b98ce1f75d5378af4637a385d3",
+      "dimensions": [
+        512,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 11776,
+        "partial": 0,
+        "opaque": 4608
+      },
+      "alphaBounds": [
+        10,
+        0,
+        512,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-wasteland-2.png",
+      "sha256": "6869a4fab70a0866e9a9e123415034c5a6ba782812c454a5b0978d901edad838",
+      "pixelSHA256": "eaa0fa0dc7f98a17162d3313c82a8fac80b8991dd108bbaef98de937cf01d81f",
+      "dimensions": [
+        1024,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 47040,
+        "partial": 0,
+        "opaque": 18496
+      },
+      "alphaBounds": [
+        20,
+        0,
+        1024,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      21
+    ],
+    "2": [
+      21
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 21,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+    "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+    "slotRow": 1,
+    "slotColumn": 1,
+    "slotNumber1Based": 6,
+    "cropXYXY": [
+      447,
+      447,
+      884,
+      884
+    ],
+    "cropSize": [
+      437,
+      437
+    ],
+    "variantCropXYXY": [
+      [
+        451,
+        451,
+        722,
+        722
+      ],
+      [
+        609,
+        451,
+        880,
+        722
+      ],
+      [
+        451,
+        609,
+        722,
+        880
+      ],
+      [
+        609,
+        609,
+        880,
+        880
+      ]
+    ],
+    "tileMode": "nesw-16"
+  },
+  "observedSourceIdentity": "Tiered rock shelves and ledges with visible vertical faces",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Not a flat rock texture: masking the upper-left shelf can sever elevation cues; do not infer elevation/gameplay changes",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 18.938,
+      "maxRGBDifference": 43
+    },
+    "2": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 21.709,
+      "maxRGBDifference": 60
+    }
+  },
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/canonical-terrain-mapping.json",
+  "auditSHA256": "c3a20718befac0c200de3d118775f008a83a133f708011260b33f249b04030fd",
+  "exactUneditedSlotCrop": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/canonical-source-slot.png",
+  "slotSHA256": "a5f70d17bad91b888a63c5bbbecaf4924105fedf837f30a67bf427a32aebd344"
+}

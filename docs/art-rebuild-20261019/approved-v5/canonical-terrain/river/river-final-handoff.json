@@ -1,0 +1,34 @@
+{
+  "status": "four opaque source masters complete; parent accepted actual64 native catalog semantics; formal integration underway in parent",
+  "root": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain",
+  "counts": {
+    "authoredMaterialCount": 4,
+    "builtInImagegenCalls": 7,
+    "selectedRawImages": 4,
+    "retainedRejectedRawImages": 3,
+    "derivedCellCountPerDensity": 64,
+    "densities": [
+      1,
+      2
+    ],
+    "environmentCellCountIncrement": 0
+  },
+  "folders": [
+    "river-1",
+    "river-2",
+    "river-3",
+    "river-4"
+  ],
+  "registration": "Every selected master is1254x1254 RGB; use one full-source window[0,0,1254,1254], nesw-16, derived16 cells at32 and64.",
+  "catalogEntries": "river-suggested-catalog-entries.json",
+  "integrity": "river-source-integrity.json",
+  "proofs": "Each directory contains source-crop-32-64-proof.png, source-center-mask-proof.png, network-32-64-proof.png and native/export files in diagnostics.",
+  "integrationRequirement": "Current read-only exporter helper rendered diagnostic materials, but formal family TOPICS/catalog integration is for sole integrator. No code, manifest, alpha mask or geometry changes made by this worker.",
+  "importantCaveat": "River1 and4 preserve local shoreline identities, but arbitrary NESW networks visibly alternate shore land/water; fixed historical path masks are not a valid modern shoreline-area contract. Do not claim gameplay shoreline topology acceptance.",
+  "subjects": [
+    "Olive grassy bank, complete central shoreline boulder group, and blue water remain visible inside every fixed mask. Peripheral shoreline stones are naturally cropped as continuous material. The selected first output uses its complete square source.",
+    "One complete submerged stone and its pale blue flowing current remain inside every fixed mask. Imagegen edit reduced the originally oversized off-center stone. Other stones and water continue as crop-safe material.",
+    "Both complete short timber cheeks, both round post tops and the stone approach between them survive every fixed mask. At32px the timber-flanked paving identity remains; post growth rings are subpixel detail. At64px the post tops and paving grouping are clearer.",
+    "Both complete snapped plank ends, one round post and the local broken stone-to-water edge survive every fixed mask. At32px the two broken wood bars above water remain distinguishable, while fine split tips and post rings merge. At64px the wood/post/stone relation is clearer."
+  ]
+}

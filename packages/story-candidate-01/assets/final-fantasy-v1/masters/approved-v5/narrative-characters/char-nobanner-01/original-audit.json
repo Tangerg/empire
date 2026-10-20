@@ -1,0 +1,144 @@
+{
+  "fullName": "无旗者",
+  "stage": "Unstable aggregate memory being formed from unnamed war dead",
+  "face": "Multiple distinct human soldier/hooded faces and profiles, different headwear and directions; not one canonical individual face",
+  "emotion": "Distracted, unsettled, internally divided; expressions are not one synchronized emotion",
+  "pose": "Overlapping bodies and hands branching outward, ragged cloth and smoke/wisps surrounding the aggregate",
+  "costume": "Mixed gray soldiers garments/helmets, fragments, individual hanging name tags",
+  "framing": "One composite plural entity, full clustered silhouette on parchment; not a lineup of separate hero cards or a single skeleton king",
+  "priority": "reconcile-before-generation",
+  "topicId": "C01-CHAR-NOBANNER-01",
+  "catalog": {
+    "assetId": "C01-FFV1-CHAR-NOBANNER-01",
+    "topicId": "C01-CHAR-NOBANNER-01",
+    "label": "无旗者不稳定聚忆体",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/char-nobanner-01.png",
+    "width": 192,
+    "height": 224,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "character-card"
+  },
+  "status": "pending-remake",
+  "original": {
+    "catalogSlotZeroBased": 37,
+    "boardCellZeroBased": 3,
+    "quadrant": "BR",
+    "cropBoxXYXYExclusive": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+      "sha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "exactCrop": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-nobanner-01-original-cell.png",
+      "repoRelativePath": null,
+      "sha256": "096d70ef3d4e9ef9119115bffa0c6cadc9b48d5ba65426bca5e4f5ee374994d8",
+      "dimensions": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "legacyRuntimeReproducesExactRGBA": true,
+    "mappingEvidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+        "startLine": 74,
+        "endLine": 74,
+        "originalText": "    \"character-board-04.png\": [34, 35, 36, 37],"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 50,
+        "endLine": 50,
+        "originalText": "- `C01-CHAR-NOBANNER-01`：无旗者不稳定聚忆体"
+      }
+    ]
+  },
+  "currentRuntime": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-nobanner-01.png",
+    "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-nobanner-01.png",
+    "sha256": "a24fb262cd35e145828dc81bed3a4648fcf846999767a74e91960191bbf5fb70",
+    "dimensions": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "nearOpaqueCore": true
+  },
+  "approvedNamedIdentityRef": null,
+  "approvedIdentityReferenceExists": false,
+  "loreEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 57,
+      "endLine": 57,
+      "originalText": "| P1 | `C01-CHAR-NOBANNER-01.png` | 不稳定聚忆体 | 多轮廓、多嘴型、拒绝单一骷髅王模板 |"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "startLine": 50,
+      "endLine": 50,
+      "originalText": "- `C01-CHAR-NOBANNER-01`：无旗者不稳定聚忆体"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/README.md",
+      "startLine": 347,
+      "endLine": 355,
+      "originalText": "### 6.7 无旗者\n\n由无数无名阵亡者形成的聚忆体。\n\n- 不属于活人任何国家；\n- 反对教廷使用死者，也反对活人擅自让所有死者安息；\n- 希望亡者在新秩序中拥有发言权；\n- 一度试图建立不会背叛的亡灵国家；\n- 与米蕾尔和解后接受“自愿且有限的归来”。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+      "startLine": 130,
+      "endLine": 134,
+      "originalText": "### 6.6 无旗者：复数，不伪装成单数\n\n无旗者说话不应总是整齐合唱。它有时用“我”，有时用“我们”，不同声音会打断彼此。其稳定人格是一项政治协商成果，不是天然灵魂。\n\n它的极端冲动来自害怕个体死者被教廷逐个取走。它想把所有声音合成一个不会背叛的整体，正好镜像王冠。"
+    }
+  ],
+  "sourceMismatchFlags": [
+    {
+      "code": "plural_identity",
+      "detail": "No-banner is a plural memory aggregate, not a generic ghost, skeleton guard or cemetery-colossus identity."
+    },
+    {
+      "code": "no_named_approved_reference",
+      "detail": "No named No-banner source/selector exists. Use exact original plural structure and explicit brief; approved human heroes are rendering-style references only."
+    },
+    {
+      "code": "multi_version",
+      "detail": "Stage01 instability must remain visibly different from coordinator02 without erasing individuals."
+    }
+  ],
+  "consumers": {
+    "directProductionTopicReferences": [],
+    "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+    "catalogPresenceIsNotConsumer": true,
+    "stageSelectorExists": false,
+    "liveGameVerified": false,
+    "state": "catalog-only-no-selected-consumer",
+    "channels": [],
+    "risk": "No shipped selector currently names this later/new card; rendering the file in an audit or catalog is not live integration."
+  },
+  "contractRef": "contracts.characterMasterAndCard",
+  "currentHdEntry": null,
+  "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation."
+}

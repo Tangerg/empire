@@ -1936,6 +1936,60 @@
         "sha256": "e84b6873a0237d5a01c4a111795dd053a62eafd9a90bfb98b130c9379f98c3d9"
       },
       "sourceCropBox": null
+    },
+    "C01-CHAR-IVRA-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ivra-01/master.png",
+        "sha256": "839c1dca56dc2491b425fd995e9b4cdd68b32ecc024f8615f5505a4a547d268a"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 176,
+        "origin": [
+          8,
+          2
+        ]
+      }
+    },
+    "C01-CHAR-IVRA-02": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ivra-02/master.png",
+        "sha256": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 176,
+        "origin": [
+          8,
+          2
+        ]
+      }
+    },
+    "C01-CHAR-IVRA-03": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-ivra-03/master.png",
+        "sha256": "1d728b8b1327f7009e70a36eebcf42bfe20f56113e9b7c793a0ab000ee088934"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 176,
+        "origin": [
+          8,
+          2
+        ]
+      }
     }
   }
 }

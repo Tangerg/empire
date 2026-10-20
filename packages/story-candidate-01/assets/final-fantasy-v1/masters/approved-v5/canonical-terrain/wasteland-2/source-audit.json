@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-2",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "boardHashReverified": true,
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    447,
+    447,
+    884,
+    884
+  ],
+  "cropSize": [
+    437,
+    437
+  ],
+  "slotSHA256": "a5f70d17bad91b888a63c5bbbecaf4924105fedf837f30a67bf427a32aebd344",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Tiered rock shelves and ledges with visible vertical faces",
+  "originalExportMode": "nesw-16",
+  "redrawInterpretation": "Redraw ROCK SLOPE GROUND: the original identity is low stepped gray-brown bedrock SHELVES with shallow visible darker rock FACES, not generic loose gravel and not paved stone blocks. Preserve that identity in one complete compact local two-tier rocky shelf formation at the CENTER of a quiet taupe-gray packed-earth ground. The complete outcrop, including its irregular horizontal top slabs, a continuous short dark front ledge face and lower ledge, must be entirely inside x=477..777,y=487..767 on a1254-square canvas. This is a tiny central crop-safe LOCAL ROCK LEDGE, not a mountain or whole landscape. Make the upper shelf a broad irregular flattened slab and the lower shelf a second broad slightly wider staggered slab; clearly separate their matte top and darker front face planes, with no fine surface cracks. Keep outer95percent of surrounding material quiet gray-brown earth with sparse small low-contrast stones, no other dominant ledges. Everything beyond the central motif is restrained continuation. The existing NESW clipping mask has only a12x12 central opaque pad at32px, so never let any part of the distinguishing ledge motif leave this safe central box. Do not draw the mask, a circular island, boundary or pedestal. No inferable travel/elevation system or raised cliff wall.",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original natural-language generation prompt recovered; board mapping established independently by pixel equality",
+    "Catalog-only canonical terrain, no current static gameplay ground consumer identified",
+    "NESW masks encode historical alpha only, not physical terrain topology"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "topicId": "C01-CHAR-IVRA-02",
+  "status": "source and placement accepted; integration coordinator-owned",
+  "masterSha256": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a",
+  "files": [
+    {
+      "path": "README.txt",
+      "sha256": "be1930731bce32e26afd237dee3801255604e066a609ff0978f57a80647d1515",
+      "bytes": 273
+    },
+    {
+      "path": "alpha-qa.json",
+      "sha256": "74f5b732edabe37f24e290ff2ee360993c51c8a545ad5e377b6c92d03d78c623",
+      "bytes": 420
+    },
+    {
+      "path": "card-consumer-contract.json",
+      "sha256": "bb143f11c936df6f57baf3b42680dbdda846de8806f95e1a1b105643348f8c1a",
+      "bytes": 9938
+    },
+    {
+      "path": "card-placement.json",
+      "sha256": "90ae7de88e33a37a86a683a5a2a2f0b3ec27dcc057b02e3face9a7c08af266f0",
+      "bytes": 294
+    },
+    {
+      "path": "card-preview.png",
+      "sha256": "dd960199cdf491914855def8f1c1231255620e954d867e49284240b52dd1d33b",
+      "bytes": 82079
+    },
+    {
+      "path": "generation-result.json",
+      "sha256": "7c3d7059cfa6db0ec6500360dacd3fe7e74b589be46595841c30d4d78addfbf2",
+      "bytes": 411
+    },
+    {
+      "path": "hash.sha256",
+      "sha256": "f64910d1ef3a15196e64cdc4ded0a94353b6b5dc9c2ac41d6d53587d53b30aaa",
+      "bytes": 390
+    },
+    {
+      "path": "master.png",
+      "sha256": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a",
+      "bytes": 1512703
+    },
+    {
+      "path": "original-audit.json",
+      "sha256": "c93c1d7bd48864bb57135d278ec5bdc08dc33f9bed66231c3ae46b6c0b8ba2e8",
+      "bytes": 7398
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "d4d12fa59ac22d5c8daf070cd37d84a336b15364f951bbcaf2238efa922d8414",
+      "bytes": 2892
+    },
+    {
+      "path": "qa-192-black.png",
+      "sha256": "a308e57b22e4518897c0a4ebc366b401133c59b241d056a5ef7e74d0bc99249f",
+      "bytes": 44895
+    },
+    {
+      "path": "qa-192-white.png",
+      "sha256": "df8cc53abf07998a6050980f661eb7ccd258da6e12e9cd57100ec12051ef4230",
+      "bytes": 51679
+    },
+    {
+      "path": "qa-native-black.png",
+      "sha256": "bc977555cceba07290738ef8860389d22b769c910265c88992a14dfc82ce2d5d",
+      "bytes": 1188062
+    },
+    {
+      "path": "qa-native-card-and-ui-2x.png",
+      "sha256": "bb31ef0e669906493bc8ececd29f5e5d66e2ea23484ab1cfe1313d4011a30bf7",
+      "bytes": 263703
+    },
+    {
+      "path": "qa-native-card-and-ui.png",
+      "sha256": "dcee0b53e5f474b1b95c112342b03bfd2acab3acf83a1747db5db8a6b7b2c054",
+      "bytes": 201758
+    },
+    {
+      "path": "qa-native-checker.png",
+      "sha256": "1186beb1596e30466fcd43c8d6153598a9d47fa4e81fa6a39d48bf1b78b45ad6",
+      "bytes": 1266458
+    },
+    {
+      "path": "qa-native-white.png",
+      "sha256": "e8dae59277b684782bdcc791e156f4688ea0dfa94d248b4d183a39c62406636b",
+      "bytes": 1270538
+    },
+    {
+      "path": "qa-ui-desktop-dialogue.png",
+      "sha256": "184deeb64503ead83aaddf820d7ebd0d3aed02c2df698eb1afac2f7d50c1d9b9",
+      "bytes": 22812
+    },
+    {
+      "path": "qa-ui-hud.png",
+      "sha256": "a7da342b900999be8b65ad037d87b5474c07e6814b6974e07a0c0080cb879388",
+      "bytes": 25963
+    },
+    {
+      "path": "qa-ui-mobile-dialogue.png",
+      "sha256": "2f5bdbaa0656fc94df3cea4a1dc014521e9e9e2329f78d8d1c7428f2a73ec621",
+      "bytes": 13558
+    },
+    {
+      "path": "qa-ui-roster.png",
+      "sha256": "1ba8f0926a65f1b56e639e7c8645ab802c7e2d1b4bb9c54b2cd28df0094c81bc",
+      "bytes": 5051
+    },
+    {
+      "path": "raw.png",
+      "sha256": "5278541dd6e34a59c8ec35327dc86ac14bd13fb7b3b2c8127cf1d22a96b7bc5a",
+      "bytes": 1512703
+    },
+    {
+      "path": "reference-hashes.json",
+      "sha256": "fc726ec55d4962c956ceb2f5e54e719fa41f16d8dc1b8ecdac4db99381524ca7",
+      "bytes": 1021
+    },
+    {
+      "path": "references/approved-ivra-growth-style-only.png",
+      "sha256": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "bytes": 1149359
+    },
+    {
+      "path": "references/approved-s09-liberation-scene.png",
+      "sha256": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361",
+      "bytes": 2439663
+    },
+    {
+      "path": "references/generation-ref-01.png",
+      "sha256": "839c1dca56dc2491b425fd995e9b4cdd68b32ecc024f8615f5505a4a547d268a",
+      "bytes": 1103396
+    },
+    {
+      "path": "references/generation-ref-02.png",
+      "sha256": "0651d94a17d072e3da711a04ab8ccec47c8d82435e754d3708ef3aede68a7b49",
+      "bytes": 654410
+    },
+    {
+      "path": "references/generation-ref-03.png",
+      "sha256": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "bytes": 1149359
+    },
+    {
+      "path": "references/original-cell.png",
+      "sha256": "0651d94a17d072e3da711a04ab8ccec47c8d82435e754d3708ef3aede68a7b49",
+      "bytes": 654410
+    },
+    {
+      "path": "references/original-fullboard.png",
+      "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+      "bytes": 2673441
+    },
+    {
+      "path": "rejections.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "request.json",
+      "sha256": "72d9a3608c6c59b5873e23a104b885c7203a65924fd0f56165e323147a3a4192",
+      "bytes": 3342
+    },
+    {
+      "path": "source-contract-review.md",
+      "sha256": "45c390516b879c78890574f9a787882b1cb7e161910e86f4c98d1aa304fa447d",
+      "bytes": 1747
+    },
+    {
+      "path": "source-review.md",
+      "sha256": "3405a749f58a3eb39f2fb10b4d8bb0509a2c36f88a676f70c360cac5b4fad516",
+      "bytes": 2827
+    },
+    {
+      "path": "sourceproof.json",
+      "sha256": "31412b603cbbd822fa899614a1c2b2011eb4501757c332e7e4feeb1802b0747c",
+      "bytes": 5277
+    },
+    {
+      "path": "story-source-context.txt",
+      "sha256": "1682f8130d5b678b99fbb268cf20086695b18b64e2ed41aa934a63458c30d5bf",
+      "bytes": 249219
+    },
+    {
+      "path": "story-source-hashes.json",
+      "sha256": "750309b2cb4f31374f27d0b1c7b7fe4b9d279e4f2d224f8187e062533d95d3fb",
+      "bytes": 1327
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "counts": {
+    "authoredMaterialCount": 4,
+    "builtInImagegenCalls": 7,
+    "selectedRawImages": 4,
+    "retainedRejectedRawImages": 3,
+    "derivedCellCountPerDensity": 64,
+    "densities": [
+      1,
+      2
+    ],
+    "environmentCellCountIncrement": 0
+  },
+  "sources": [
+    {
+      "topicId": "C01-TERRAIN-RIVER-1",
+      "sharedDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-1",
+      "masterSHA256": "1dd6cb9eb4ff1223164bf09b9e9f1f50eaa25c46e9be80895e282777139a0029",
+      "rawCopySHA256": "1dd6cb9eb4ff1223164bf09b9e9f1f50eaa25c46e9be80895e282777139a0029",
+      "rawCopyExact": true,
+      "fullyOpaque": true,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "originalExactRuntimeRGBAReplay": [
+        {
+          "size": 32,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "0379bab5eb00bfc2244b553556ec39eef680c756c553a58c6fd57b1361725cc2",
+          "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+          "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+        },
+        {
+          "size": 64,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "e97aee1e8d97e76c50f792471054deb3fd6a9670dcb61f9452dcf54fab15409d",
+          "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+          "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+        }
+      ],
+      "referenceChecks": [
+        {
+          "role": "exact pixel-proven original canonical material subject; preserve relationships, simplify noise",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-1/canonical-source-slot.png",
+          "sha256": "3b204f96ad31ef66dd52020510ee00af11fb816512999f68e371a9a1e8f4a07b",
+          "verified": true
+        },
+        {
+          "role": "approved broad matte low-noise material language only, not mud subject",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-2/master.png",
+          "sha256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+          "verified": true
+        },
+        {
+          "role": "approved chunky fantasy-game overall style only, not scene composition",
+          "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verified": true
+        },
+        {
+          "role": "exact pixel-proven original canonical material subject; preserve relationships, simplify noise",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-1/canonical-source-slot.png",
+          "sha256": "3b204f96ad31ef66dd52020510ee00af11fb816512999f68e371a9a1e8f4a07b",
+          "verified": true
+        },
+        {
+          "role": "approved broad matte low-noise material language only, not mud subject",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-2/master.png",
+          "sha256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+          "verified": true
+        },
+        {
+          "role": "approved chunky fantasy-game overall style only, not scene composition",
+          "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verified": true
+        }
+      ],
+      "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-1/source-audit.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-1/qa.json",
+      "visualReview": "Olive grassy bank, complete central shoreline boulder group, and blue water remain visible inside every fixed mask. Peripheral shoreline stones are naturally cropped as continuous material. The selected first output uses its complete square source."
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-2",
+      "sharedDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-2",
+      "masterSHA256": "1976e9cc0562bcd31fd5a6471a487dcb3ff356037fab3b2c1dfe249311f60943",
+      "rawCopySHA256": "1976e9cc0562bcd31fd5a6471a487dcb3ff356037fab3b2c1dfe249311f60943",
+      "rawCopyExact": true,
+      "fullyOpaque": true,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "originalExactRuntimeRGBAReplay": [
+        {
+          "size": 32,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "d08e6e10a5b7f28a0be4e0bc434a0bc2996b26b45d896948524164a7925b2ed4",
+          "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+          "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+        },
+        {
+          "size": 64,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "665d0d649e059705d0d0c3a8c8d59653f0c8c57520763ce78d80fb1b05486889",
+          "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+          "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+        }
+      ],
+      "referenceChecks": [
+        {
+          "role": "exact pixel-proven original canonical material subject; preserve relationships, simplify noise",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-2/canonical-source-slot.png",
+          "sha256": "cbe41a476b160fabe1bfa3b8b8483cd9bd9273d9d200f292a54781e3c8a5cc65",
+          "verified": true
+        },
+        {
+          "role": "approved broad matte low-noise material language only, not mud subject",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-2/master.png",
+          "sha256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+          "verified": true
+        },
+        {
+          "role": "approved chunky fantasy-game overall style only, not scene composition",
+          "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verified": true
+        },
+        {
+          "role": "edit target; immutable first raw imagegen output",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-2/raw/imagegen-01.png",
+          "sha256": "acf9b53e8c679e7f7b1b5ef2e7da3d4a6ebd1f5621f8e24b2b2fa8e2ff6248ce",
+          "verified": true
+        }
+      ],
+      "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-2/source-audit.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-2/qa.json",
+      "visualReview": "One complete submerged stone and its pale blue flowing current remain inside every fixed mask. Imagegen edit reduced the originally oversized off-center stone. Other stones and water continue as crop-safe material."
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-3",
+      "sharedDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-3",
+      "masterSHA256": "8c9fbb3969cf6f9e6cc8862610a41f000c84efc945e5b079c1d6db3e1448ca54",
+      "rawCopySHA256": "8c9fbb3969cf6f9e6cc8862610a41f000c84efc945e5b079c1d6db3e1448ca54",
+      "rawCopyExact": true,
+      "fullyOpaque": true,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "originalExactRuntimeRGBAReplay": [
+        {
+          "size": 32,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "e763c710652a52ae430b384f5c9c98f6254e1eb1eef34d8a36321145daddfe61",
+          "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+          "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+        },
+        {
+          "size": 64,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "64d6c43f06af8ae392b0a59c715ea81f0c3af680a1dce6a20f5b74ba1cfa4891",
+          "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+          "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+        }
+      ],
+      "referenceChecks": [
+        {
+          "role": "exact pixel-proven original canonical material subject; preserve relationships, simplify noise",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-3/canonical-source-slot.png",
+          "sha256": "a3944408afabd8597440dc7a00c2b79023da86af48dc31b1169a3dbab8de50f6",
+          "verified": true
+        },
+        {
+          "role": "approved broad matte low-noise material language only, not mud subject",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-2/master.png",
+          "sha256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+          "verified": true
+        },
+        {
+          "role": "approved chunky fantasy-game overall style only, not scene composition",
+          "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verified": true
+        },
+        {
+          "role": "edit target; immutable first raw imagegen output",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-3/raw/imagegen-01.png",
+          "sha256": "e9352f28701c14350911f206ed714936a5e435b0c25677359243ad28aa4db595",
+          "verified": true
+        }
+      ],
+      "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-3/source-audit.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-3/qa.json",
+      "visualReview": "Both complete short timber cheeks, both round post tops and the stone approach between them survive every fixed mask. At32px the timber-flanked paving identity remains; post growth rings are subpixel detail. At64px the post tops and paving grouping are clearer."
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-4",
+      "sharedDirectory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-4",
+      "masterSHA256": "55a82abb80014fcf50be0cd202124ee8dd124e099dbacb7949ceb66e5e8fca54",
+      "rawCopySHA256": "55a82abb80014fcf50be0cd202124ee8dd124e099dbacb7949ceb66e5e8fca54",
+      "rawCopyExact": true,
+      "fullyOpaque": true,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "originalExactRuntimeRGBAReplay": [
+        {
+          "size": 32,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "11e1af9c4eb2d152ddfa13d12bc5794c619efacf429cdaa1db320ce0834356ec",
+          "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+          "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+        },
+        {
+          "size": 64,
+          "exactOriginalRGBAEqual": true,
+          "originalRuntimeSHA256": "c29d092af9c1af472cfbea31ae00175b578521dac06c806eaf1f7ae46a6bf27f",
+          "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+          "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+        }
+      ],
+      "referenceChecks": [
+        {
+          "role": "exact pixel-proven original canonical material subject; preserve relationships, simplify noise",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-4/canonical-source-slot.png",
+          "sha256": "7091bf1551b5af314e8cebc83ad8dbea28e1f86fb942ac7869eda8d46502008a",
+          "verified": true
+        },
+        {
+          "role": "approved broad matte low-noise material language only, not mud subject",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-2/master.png",
+          "sha256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+          "verified": true
+        },
+        {
+          "role": "approved chunky fantasy-game overall style only, not scene composition",
+          "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verified": true
+        },
+        {
+          "role": "edit target; immutable first raw imagegen output",
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-4/raw/imagegen-01.png",
+          "sha256": "d6c0ba2724f0f8bb8065e691799345b90b9420126e1233b3e4d3b010897fd045",
+          "verified": true
+        }
+      ],
+      "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-4/source-audit.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/river-4/qa.json",
+      "visualReview": "Both complete snapped plank ends, one round post and the local broken stone-to-water edge survive every fixed mask. At32px the two broken wood bars above water remain distinguishable, while fine split tips and post rings merge. At64px the wood/post/stone relation is clearer."
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-1",
+  "label": "风蚀土",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-WASTELAND-1",
+    "topicId": "C01-TERRAIN-WASTELAND-1",
+    "label": "风蚀土",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-wasteland-1.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-1.png",
+      "sha256": "94c0d5eb20521a6d764d1de6df1df16d5a93d64ad8cb4c622492fff83b4df82b",
+      "pixelSHA256": "be4f5773f6657742569ac6472472fa2920fff2cfb7cb14e04b9219921d20862f",
+      "dimensions": [
+        128,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      },
+      "alphaBounds": [
+        0,
+        0,
+        128,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-wasteland-1.png",
+      "sha256": "1a57fc387cdfb543b8baf00a73f8714df6421b1828d3ceb2fbc6af6d67982a04",
+      "pixelSHA256": "32985da30dcc5ca7043efc1cb8113ecd873364643cde0ba492a362fb9311d1ce",
+      "dimensions": [
+        256,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 16384
+      },
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      20
+    ],
+    "2": [
+      20
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 20,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+    "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+    "slotRow": 1,
+    "slotColumn": 0,
+    "slotNumber1Based": 5,
+    "cropXYXY": [
+      3,
+      447,
+      441,
+      884
+    ],
+    "cropSize": [
+      438,
+      437
+    ],
+    "variantCropXYXY": [
+      [
+        8,
+        451,
+        279,
+        722
+      ],
+      [
+        165,
+        451,
+        436,
+        722
+      ],
+      [
+        8,
+        609,
+        279,
+        880
+      ],
+      [
+        165,
+        609,
+        436,
+        880
+      ]
+    ],
+    "tileMode": "variants"
+  },
+  "observedSourceIdentity": "Wind-eroded ochre earth, shallow cracks, small gray stones",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Intact ground material",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 9.627,
+      "maxRGBDifference": 46
+    },
+    "2": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 11.469,
+      "maxRGBDifference": 64
+    }
+  },
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/canonical-terrain-mapping.json",
+  "auditSHA256": "c3a20718befac0c200de3d118775f008a83a133f708011260b33f249b04030fd",
+  "exactUneditedSlotCrop": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-1/canonical-source-slot.png",
+  "slotSHA256": "403aef44a73f05dab403e46139fe496d510d209b4ba29b2b462749d1aefc8fdd"
+}

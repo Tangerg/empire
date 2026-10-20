@@ -1,0 +1,26 @@
+[
+  {
+    "phase": "splash-crown",
+    "attempt": 1,
+    "path": "rejected/splash-crown-attempt01",
+    "reason": "Authoring geometry drift: center falls345px rather than~160px; right renewal drop expands and shifts; contact baseline down38px. Re-author through imagegen, never fit or shift masters."
+  },
+  {
+    "phase": "splash-crown",
+    "attempt": 2,
+    "path": "rejected/splash-crown-attempt02",
+    "reason": "Authoring shifts falling columns right and baseline down, breaking registration; retry with single predecessor reference and simpler edits."
+  },
+  {
+    "phase": "rain-renewal",
+    "attempt": 1,
+    "path": "rejected/rain-renewal-attempt01",
+    "reason": "Center drop reaches bottom917, below next rainfall bottom895, causing22px upward seam. Correct source drawing to center bottom~780 by imagegen only; no programmatic motion."
+  },
+  {
+    "phase": "rain-renewal",
+    "attempt": 2,
+    "path": "rejected/rain-renewal-attempt02",
+    "reason": "Imagegen overcorrected central drop upward; phase3->4 center would stall/reverse. Retry smaller correction from attempt01."
+  }
+]
