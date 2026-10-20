@@ -1,0 +1,18 @@
+{
+  "topicId": "c02-hud-evacuation",
+  "review": "pass-with-native-resolution-caveat",
+  "legacyFullBoardInspected": true,
+  "runtimeUsedOnlyToMatchMotif": true,
+  "sourceAndNative32VisuallyReviewed": true,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "caveat": "Small ramp grid and jamb strips simplify at native32. Cyan doorway and outward ramp remain readable. Central cyan is a bounded filled portal/panel as in legacy, not alpha.",
+  "notClaimed": [
+    "in-game integration review",
+    "user individual asset approval",
+    "shared source registration"
+  ]
+}

@@ -4,14 +4,14 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 560,
+    "formalBound": 565,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 23,
-      "hud": 22,
+      "fx": 24,
+      "hud": 26,
       "interactive-structure": 24,
       "mission-unit": 24,
       "narrative-static": 80,
@@ -19,7 +19,7 @@
       "status": 48,
       "terrain": 32
     },
-    "rawPreservedTopics": 561,
+    "rawPreservedTopics": 566,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -8687,14 +8687,22 @@
       "label": "据点占领",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/blue-standard-peak/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/capture-spiral/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/settled-standard/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-24.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four1254-square true-alpha phases preserved; original neutral unchanged, three built-in imagegen phases with exact prompt and source provenance",
+        "export": "Shared28/1254 whole-canvas scale at2,2; native32/64 six-background integration-owner review passed; landmark drift≤0.045logical px; source edge alpha≤1 preserved, final border0",
+        "runtimeBinding": "Canonical32x32 four-frame12fps non-looping catalog export; no authored scene consumer or removal lifetime invented",
+        "liveGame": "pending; no browser gameplay verified"
+      }
     },
     {
       "topicId": "C01-HUD-01",
@@ -10158,8 +10166,10 @@
       "category": "combat-unit",
       "label": "角枝骑士",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -15579,13 +15589,20 @@
       "category": "hud",
       "label": "可破坏结构标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-breakable/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-breakable.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Full legacy board identity audited; independent built-in imagegen source, exact prompt and hashes preserved",
+        "export": "Whole1254 canvas fitted28x28 into32x32 with2px true alpha padding; integration-owner native white/black/olive review passed",
+        "runtimeBinding": "Canonical static HUD identity/anchor preserved; catalog-only binding, no shipped UI consumer invented",
+        "liveGame": "pending; static export review only"
+      }
     },
     {
       "topicId": "c02-hud-danger",
@@ -15635,13 +15652,20 @@
       "category": "hud",
       "label": "工程交互标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-engineering/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-engineering.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Full legacy board identity audited; independent built-in imagegen source, exact prompt and hashes preserved",
+        "export": "Whole1254 canvas fitted28x28 into32x32 with2px true alpha padding; integration-owner native white/black/olive review passed",
+        "runtimeBinding": "Canonical static HUD identity/anchor preserved; catalog-only binding, no shipped UI consumer invented",
+        "liveGame": "pending; static export review only"
+      }
     },
     {
       "topicId": "c02-hud-escort",
@@ -15649,13 +15673,20 @@
       "category": "hud",
       "label": "护送目标标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-escort/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-escort.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Full legacy board identity audited; independent built-in imagegen source, exact prompt and hashes preserved",
+        "export": "Whole1254 canvas fitted28x28 into32x32 with2px true alpha padding; integration-owner native white/black/olive review passed",
+        "runtimeBinding": "Canonical static HUD identity/anchor preserved; catalog-only binding, no shipped UI consumer invented",
+        "liveGame": "pending; static export review only"
+      }
     },
     {
       "topicId": "c02-hud-evacuation",
@@ -15663,13 +15694,20 @@
       "category": "hud",
       "label": "撤离出口标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-evacuation/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-evacuation.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Full legacy board identity audited; independent built-in imagegen source, exact prompt and hashes preserved",
+        "export": "Whole1254 canvas fitted28x28 into32x32 with2px true alpha padding; integration-owner native white/black/olive review passed",
+        "runtimeBinding": "Canonical static HUD identity/anchor preserved; catalog-only binding, no shipped UI consumer invented",
+        "liveGame": "pending; static export review only"
+      }
     },
     {
       "topicId": "c02-hud-healing",

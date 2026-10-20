@@ -1,0 +1,110 @@
+{
+  "topicId": "C01-FX-24",
+  "status": "Sources complete; recommended for parent integration",
+  "generationMode": "built-in image_gen",
+  "neutralRegenerated": false,
+  "phaseOrder": [
+    "neutral-standard",
+    "capture-spiral",
+    "blue-standard-peak",
+    "settled-standard"
+  ],
+  "phases": [
+    {
+      "phase": "neutral-standard",
+      "master": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/master.png",
+      "request": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/request.json",
+      "prompt": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/prompt.txt",
+      "sha256": "96a04c13c45c8d146fa4c4f45cec5f5b5f499179d08dbf18ab37661606c775af",
+      "provenance": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/provenance.json"
+    },
+    {
+      "phase": "capture-spiral",
+      "master": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/capture-spiral/master.png",
+      "request": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/capture-spiral/request.json",
+      "prompt": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/capture-spiral/prompt.txt",
+      "sha256": "3305d84333f7f5c99ced09041a4f00b51b640e9d1359d4834f15578b39c2118d",
+      "provenance": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/capture-spiral/provenance.json"
+    },
+    {
+      "phase": "blue-standard-peak",
+      "master": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/blue-standard-peak/master.png",
+      "request": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/blue-standard-peak/request.json",
+      "prompt": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/blue-standard-peak/prompt.txt",
+      "sha256": "036d0e7ce229f85853bddb6e9800f96ef9feef6c8f442fe37291f755692c05f9",
+      "provenance": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/blue-standard-peak/provenance.json"
+    },
+    {
+      "phase": "settled-standard",
+      "master": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/settled-standard/master.png",
+      "request": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/settled-standard/request.json",
+      "prompt": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/settled-standard/prompt.txt",
+      "sha256": "90325b2850e38d6116aed0dc6af65fd175336696b80f9f80cb5741fc8e7b3014",
+      "provenance": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/settled-standard/provenance.json"
+    }
+  ],
+  "commonTransform": {
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ],
+    "logicalCanvas": [
+      32,
+      32
+    ],
+    "hdScale": 0.044657097288676235,
+    "hdOrigin": [
+      4,
+      4
+    ],
+    "perPhaseFit": false
+  },
+  "recommendedRuntimeStrips": {
+    "1x": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/qa/phase-strip@1x.png",
+    "2x": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/qa/phase-strip@2x.png"
+  },
+  "playback": {
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "frameSeconds": "1/12",
+    "nominalSeconds": "1/3",
+    "holdOrRemovalLifetime": null
+  },
+  "qa": {
+    "allSourceMode": "RGBA",
+    "sourcePerimeterAlphaMaximum": 1,
+    "sourceBlackWhiteCompositesVisuallyReviewed": true,
+    "nativeSixBackgroundsVisuallyReviewed": true,
+    "nativeLogicalPadding": 2,
+    "nativePaddingAlphaMaximum": 0,
+    "rawMasterByteIdentical": true,
+    "alphaCleanup": false,
+    "sharedScaleOnly": true,
+    "apngFilesChecked": 28,
+    "decodedFramesChecked": 112,
+    "exactTimingVerified": true,
+    "goldLandmarkMaxDeltaSourcePixels": 2,
+    "goldLandmarkMaxDeltaLogicalPixels": 0.044657097288676235,
+    "nativeRegistrationVisualReview": "Stable gold finial/pole/stone-plinth size and registration; no visible pumping across four phases. Color/energy progression readable at 32 and 64 px.",
+    "browserAnimationObserved": false
+  },
+  "boundaries": [
+    "Catalog-only at audit time; capture presenter changes terrain ownership but does not create FX24.",
+    "No gameplay/ownership/tint/lifetime changes.",
+    "Parent owns manifests, catalogs, runtime integration and commit."
+  ]
+}

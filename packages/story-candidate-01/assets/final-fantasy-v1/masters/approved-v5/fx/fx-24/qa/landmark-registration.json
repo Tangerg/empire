@@ -1,0 +1,72 @@
+{
+  "method": "Threshold gold finial/collar and foot (exclude energy-bearing middle) within fixed source ROI; compare bounding extrema to unchanged neutral. Diagnostic only, no pixel manipulation.",
+  "baseline": "neutral-standard",
+  "sharedScale": 0.022328548644338118,
+  "frames": [
+    {
+      "phase": "neutral-standard",
+      "goldLandmarkBounds": [
+        527,
+        108,
+        656,
+        901
+      ],
+      "goldBoundsDeltaSourcePixels": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxGoldBoundsDeltaLogicalPixels": 0.0
+    },
+    {
+      "phase": "capture-spiral",
+      "goldLandmarkBounds": [
+        527,
+        108,
+        657,
+        902
+      ],
+      "goldBoundsDeltaSourcePixels": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "maxGoldBoundsDeltaLogicalPixels": 0.022328548644338118
+    },
+    {
+      "phase": "blue-standard-peak",
+      "goldLandmarkBounds": [
+        527,
+        108,
+        657,
+        902
+      ],
+      "goldBoundsDeltaSourcePixels": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "maxGoldBoundsDeltaLogicalPixels": 0.022328548644338118
+    },
+    {
+      "phase": "settled-standard",
+      "goldLandmarkBounds": [
+        528,
+        108,
+        658,
+        902
+      ],
+      "goldBoundsDeltaSourcePixels": [
+        1,
+        0,
+        2,
+        1
+      ],
+      "maxGoldBoundsDeltaLogicalPixels": 0.044657097288676235
+    }
+  ],
+  "visualReviewRequired": true
+}

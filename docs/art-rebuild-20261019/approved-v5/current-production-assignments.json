@@ -1,31 +1,32 @@
 {
-  "asOfUtc": "2026-10-20T07:14:00Z",
-  "formalSnapshot": "552 committed and remote verified at742dc3e9;560 pending verification",
+  "asOfUtc": "2026-10-20T07:23:00Z",
+  "formalSnapshot": "565 local verified bindings;560 remote at135f384e",
   "assignments": [
     {
       "topics": [
-        "C01-FX-24"
+        "c02-hud-healing",
+        "c02-hud-neutral",
+        "c02-hud-permission-dispute",
+        "c02-hud-recruitable",
+        "c02-hud-repairable",
+        "c02-hud-supply"
       ],
-      "stage": "recover remaining three authored phases; existing neutral source preserved"
+      "stage": "full-board audit and independent alpha source generation"
     },
     {
       "topics": [
-        "c02-hud-breakable",
-        "c02-hud-engineering",
-        "c02-hud-escort",
-        "c02-hud-evacuation"
+        "c02-unit-antler-knight"
       ],
-      "stage": "legacy full-board identity audit and source generation"
+      "stage": "four-pose combat pilot source generation; incomplete raw only"
     },
     {
-      "scope": "c01-02 road world-material integration",
-      "stage": "separate scene worktree; existing southern crossings confirmed already integrated"
+      "scope": "c01-02 forest actor overlap",
+      "stage": "separate scene worktree; continuous road integrated, further geometry review pending"
     }
   ],
   "canonicalRemaining": {
     "C01": {
-      "equipment": 1,
-      "fx": 1
+      "equipment": 1
     },
     "C02": {
       "narrative-static": 80,
@@ -35,7 +36,7 @@
       "terrain": 32,
       "interactive-structure": 24,
       "fx": 24,
-      "hud": 10
+      "hud": 6
     },
     "C03": {
       "narrative-static": 80,
@@ -52,7 +53,7 @@
       "hud": 16
     }
   },
-  "counting": "560 pending formal catalog bindings of1212;652 remaining. Environment186 independent source cells, not added to canonical topics. LiveGame0.",
+  "counting": "565 catalog-bound canonical topics of1212;647 remain. C01 FX24/24, C02 HUD10/16. Environment186 separate source cells. LiveGame0.",
   "blocked": [
     {
       "topic": "C01 equipment shaman",

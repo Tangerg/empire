@@ -828,6 +828,42 @@
           627
         ]
       }
+    },
+    "C01-FX-24": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "neutral-standard",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/neutral-standard/master.png",
+          "sha256": "96a04c13c45c8d146fa4c4f45cec5f5b5f499179d08dbf18ab37661606c775af"
+        },
+        {
+          "phase": "capture-spiral",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/capture-spiral/master.png",
+          "sha256": "3305d84333f7f5c99ced09041a4f00b51b640e9d1359d4834f15578b39c2118d"
+        },
+        {
+          "phase": "blue-standard-peak",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/blue-standard-peak/master.png",
+          "sha256": "036d0e7ce229f85853bddb6e9800f96ef9feef6c8f442fe37291f755692c05f9"
+        },
+        {
+          "phase": "settled-standard",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-24/settled-standard/master.png",
+          "sha256": "90325b2850e38d6116aed0dc6af65fd175336696b80f9f80cb5741fc8e7b3014"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "topicId": "C01-FX-24",
   "label": "据点占领",
-  "status": "Parent-approved semantic phase order; generation in progress",
+  "status": "All four sources preserved and offline QA passed; awaiting parent integration",
   "phaseOrder": [
     "neutral-standard",
     "capture-spiral",
@@ -170,5 +170,6 @@
   "parentApproval": {
     "timeUtc": "2026-10-20T06:58:58Z",
     "message": "已查看完整源四相，批准你提议的FX24相位与非循环合同：neutral-standard / capture-spiral / blue-standard-peak / settled-standard。先以完整杆顶+固定石座浅旗基准锁身份，再保持同尺度/注册做3相；分段环和浅→蓝旗改变保留，不把旧灰底/外发光背板复制进透明源。catalog-only与无生命周期假设如实标注。"
-  }
+  },
+  "recoveryRecommendation": "docs/art-rebuild-20261019/approved-v5/fx/fx-24-source-recovery/integration-recommendation.json"
 }
