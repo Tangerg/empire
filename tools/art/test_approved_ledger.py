@@ -115,8 +115,13 @@ class ApprovedLedgerTests(unittest.TestCase):
                                  [str((raw / 'master.png').relative_to(self.root))])
 
     def test_versioned_static_selection_uses_catalog_owner_not_default_master(self):
-        identity = 'c03-battle-prop-27872fa1'
-        topic = {**self.topic, 'topicId': identity, 'category': 'battle-prop',
+        self.assert_versioned_selection('c03-battle-prop-27872fa1', 'battle-prop', 'props/c03-battle-prop-27872fa1', 'source-overrides.json')
+
+    def test_versioned_terrain_selection_uses_catalog_owner_not_default_master(self):
+        self.assert_versioned_selection('c02-terrain-soler-blue-ice', 'terrain', 'canonical-terrain/soler-blue-ice', 'canonical-terrain-overrides.json')
+
+    def assert_versioned_selection(self, identity, category, relative, catalog):
+        topic = {**self.topic, 'topicId': identity, 'category': category,
                  'qualityTier': 'approved-chunky-v5-export-verified'}
         self.write('pack/manifest.json', {'assets': [topic]})
         self.write(DOC / 'canonical-topic-manifest.json', [{**topic,
@@ -124,19 +129,19 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.progress.update(topicStages={identity: {'raw': 'versioned source selected'}},
                              formalRuntimeBoundTopics=1)
         self.write(DOC / 'approved-v5/progress.json', self.progress)
-        directory = Path('pack/masters/approved-v5/props') / identity
+        directory = Path('pack/masters/approved-v5') / relative
         (self.root / directory).mkdir(parents=True)
         (self.root / directory / 'master.png').write_bytes(b'preserved original, not selected')
         version = directory / 'candidates/matte-v2/master.png'
         (self.root / version).parent.mkdir(parents=True)
         (self.root / version).write_bytes(b'new selected native source')
         (self.root / 'tools/art').mkdir(parents=True)
-        self.write('tools/art/source-overrides.json', {'assets': {identity: {'source': str(version)}}})
+        self.write(Path('tools/art') / catalog, {'assets': {identity: {'source': str(version)}}})
         result = build(self.root)
         self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'], [str(version)])
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         (self.root / version).unlink()
-        with self.assertRaisesRegex(ValueError, 'selected approved static source is missing'):
+        with self.assertRaisesRegex(ValueError, 'selected approved source is missing'):
             build(self.root)
 
     def test_skill_master_uses_its_native_skill_directory(self):

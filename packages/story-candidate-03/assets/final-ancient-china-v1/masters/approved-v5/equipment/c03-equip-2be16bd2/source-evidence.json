@@ -1,0 +1,72 @@
+{
+  "topicId": "c03-equip-2be16bd2",
+  "assetId": "C03-ACV1-equip-2be16bd2",
+  "label": "架桥营主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e011de46-96f9-4123-b744-c85b420e9848.png",
+  "sha256": "5b81b9de9ac5cc4507e78fc861a357b05b35a4b9803f8f19f389c9d950f789ae",
+  "promptFile": "prompt.txt",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb"
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960"
+    }
+  ],
+  "identityReconstruction": "Bridge-building engineering role reconstructed using full atlas bridge panel and rope vocabulary, not exact legacy slot recovery.",
+  "identityEvidence": [
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "legacyRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-2be16bd2.png",
+    "sha256": "29810151b628e0e179b721c9aaa48166277e13b7455da9a6103ea393a1bb1dd2",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-03/c03-equip-2be16bd2-legacy-native.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 9,
+    "coreBoundingBox": [
+      15,
+      142,
+      1244,
+      1156
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      3,
+      8,
+      45,
+      42
+    ]
+  },
+  "postprocessing": "None. Raw/master byte-identical native generation. Only review exports use existing whole-canvas contain; no crop or pixel cleanup.",
+  "registered": false,
+  "legacySemanticAudit": "Older bridge-panel remake is relevant but not approved-v5 completion."
+}

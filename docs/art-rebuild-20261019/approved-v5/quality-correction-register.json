@@ -1,6 +1,6 @@
 {
   "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
-  "asOfUtc": "2026-10-20T08:35:00Z",
+  "asOfUtc": "2026-10-20T08:44:00Z",
   "fullTaskAccepted": false,
   "issues": [
     {
@@ -47,30 +47,38 @@
     {
       "topic": "c02-terrain-soler-blue-ice",
       "binding": "bound",
-      "status": "source-style-correction-required",
+      "status": "resolved-source-style-only",
       "issue": "Conspicuous secondary mottled/faceted patches on complete source exceed approved broad matte planes; readable native32 does not resolve source-style mismatch. Preserve original for genuine source correction.",
-      "evidence": "scifi-terrain-batch-06/REVIEW.md"
+      "evidence": "scifi-terrain-batch-06/REVIEW.md",
+      "resolution": "Selected genuine broad-matte-v2 source; original bytes preserved. Fullsource/native review accepts minor ice contour drift; inherited masks and scene limitations remain.",
+      "resolutionEvidence": "soler-matte-corrections/selection-review.json"
     },
     {
       "topic": "c02-terrain-soler-brittle-ice",
       "binding": "bound",
-      "status": "source-style-correction-required",
+      "status": "resolved-source-style-only",
       "issue": "Conspicuous secondary mottled/faceted patches on complete source exceed approved broad matte planes; readable native32 does not resolve source-style mismatch. Preserve original for genuine source correction.",
-      "evidence": "scifi-terrain-batch-06/REVIEW.md"
+      "evidence": "scifi-terrain-batch-06/REVIEW.md",
+      "resolution": "Selected genuine broad-matte-v2 source; original bytes preserved. Fullsource/native review accepts minor ice contour drift; inherited masks and scene limitations remain.",
+      "resolutionEvidence": "soler-matte-corrections/selection-review.json"
     },
     {
       "topic": "c02-terrain-soler-deep-factory",
       "binding": "bound",
-      "status": "source-style-correction-required",
+      "status": "resolved-source-style-only",
       "issue": "Conspicuous secondary mottled/faceted patches on complete source exceed approved broad matte planes; readable native32 does not resolve source-style mismatch. Preserve original for genuine source correction.",
-      "evidence": "scifi-terrain-batch-06/REVIEW.md"
+      "evidence": "scifi-terrain-batch-06/REVIEW.md",
+      "resolution": "Selected genuine broad-matte-v2 source; original bytes preserved. Fullsource/native review accepts minor ice contour drift; inherited masks and scene limitations remain.",
+      "resolutionEvidence": "soler-matte-corrections/selection-review.json"
     },
     {
       "topic": "c02-terrain-soler-heated-walkway",
       "binding": "bound",
-      "status": "source-style-correction-required",
+      "status": "resolved-source-style-only",
       "issue": "Conspicuous secondary mottled/faceted patches on complete source exceed approved broad matte planes; readable native32 does not resolve source-style mismatch. Preserve original for genuine source correction.",
-      "evidence": "scifi-terrain-batch-06/REVIEW.md"
+      "evidence": "scifi-terrain-batch-06/REVIEW.md",
+      "resolution": "Selected genuine broad-matte-v2 source; original bytes preserved. Fullsource/native review accepts minor ice contour drift; inherited masks and scene limitations remain.",
+      "resolutionEvidence": "soler-matte-corrections/selection-review.json"
     }
   ]
 }

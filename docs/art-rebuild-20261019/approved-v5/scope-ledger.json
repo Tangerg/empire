@@ -4,11 +4,11 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 616,
+    "formalBound": 620,
     "boundByCategory": {
       "battle-prop": 76,
       "combat-unit": 41,
-      "equipment": 103,
+      "equipment": 107,
       "faction-kit": 12,
       "fx": 24,
       "hud": 32,
@@ -19,7 +19,7 @@
       "status": 48,
       "terrain": 56
     },
-    "rawPreservedTopics": 618,
+    "rawPreservedTopics": 622,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -4279,9 +4279,7 @@
       "label": "风蚀土",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/attempt-01/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/attempt-02/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -4302,9 +4300,7 @@
       "label": "岩坡",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/attempt-01/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/attempt-02/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -4325,8 +4321,7 @@
       "label": "部族营地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/attempt-01/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -4347,10 +4342,7 @@
       "label": "风暴危险区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-01/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-02/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-03/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -11671,7 +11663,7 @@
       "label": "索勒蓝冰",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-blue-ice/master.png"
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-blue-ice/candidates/broad-matte-v2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -11680,7 +11672,7 @@
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-soler-blue-ice.png",
       "stageEvidence": {
         "raw": "Independent opaque1254-square material, full original atlas identity and raw/master bytes preserved",
-        "export": "Native32 historical alpha and cardinal-edge checks pass. Full source review identifies excess mottled/faceted surfaces: source-style correction required; native binding is not final art acceptance.",
+        "export": "Native32 historical alpha and cardinal edge checks pass. Genuine broad-matte-v2 source selection resolves excessive surface mottling after fullsource/native review; ice fine crack/bevel contours reinterpreted, not pixel-identical geometry. No scene acceptance.",
         "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
         "liveGame": "pending; catalog/native review only"
       }
@@ -11692,7 +11684,7 @@
       "label": "索勒脆冰",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-brittle-ice/master.png"
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-brittle-ice/candidates/broad-matte-v2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -11701,7 +11693,7 @@
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-soler-brittle-ice.png",
       "stageEvidence": {
         "raw": "Independent opaque1254-square material, full original atlas identity and raw/master bytes preserved",
-        "export": "Native32 historical alpha and cardinal-edge checks pass. Full source review identifies excess mottled/faceted surfaces: source-style correction required; native binding is not final art acceptance.",
+        "export": "Native32 historical alpha and cardinal edge checks pass. Genuine broad-matte-v2 source selection resolves excessive surface mottling after fullsource/native review; ice fine crack/bevel contours reinterpreted, not pixel-identical geometry. No scene acceptance.",
         "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
         "liveGame": "pending; catalog/native review only"
       }
@@ -11713,7 +11705,7 @@
       "label": "索勒深层工厂",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-deep-factory/master.png"
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-deep-factory/candidates/broad-matte-v2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -11722,7 +11714,7 @@
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-soler-deep-factory.png",
       "stageEvidence": {
         "raw": "Independent opaque1254-square material, full original atlas identity and raw/master bytes preserved",
-        "export": "Native32 historical alpha and cardinal-edge checks pass. Full source review identifies excess mottled/faceted surfaces: source-style correction required; native binding is not final art acceptance.",
+        "export": "Native32 historical alpha and cardinal edge checks pass. Genuine broad-matte-v2 source selection resolves excessive surface mottling after fullsource/native review; ice fine crack/bevel contours reinterpreted, not pixel-identical geometry. No scene acceptance.",
         "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
         "liveGame": "pending; catalog/native review only"
       }
@@ -11734,7 +11726,7 @@
       "label": "索勒热灯步道",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-heated-walkway/master.png"
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-heated-walkway/candidates/broad-matte-v2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -11743,7 +11735,7 @@
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-soler-heated-walkway.png",
       "stageEvidence": {
         "raw": "Independent opaque1254-square material, full original atlas identity and raw/master bytes preserved",
-        "export": "Native32 historical alpha and cardinal-edge checks pass. Full source review identifies excess mottled/faceted surfaces: source-style correction required; native binding is not final art acceptance.",
+        "export": "Native32 historical alpha and cardinal edge checks pass. Genuine broad-matte-v2 source selection resolves excessive surface mottling after fullsource/native review; ice fine crack/bevel contours reinterpreted, not pixel-identical geometry. No scene acceptance.",
         "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
         "liveGame": "pending; catalog/native review only"
       }
@@ -19760,13 +19752,20 @@
       "category": "equipment",
       "label": "架桥营主装备组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/equipment/c03-equip-2be16bd2/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-2be16bd2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent true-alpha broad-matte equipment source; canonical role reconstruction from definitions/fullatlas vocabulary, not claimed exact legacy slot recovery; raw/master exact",
+        "export": "Wholecanvas native48 contain padding2; unchanged source alpha guard and zero native edge; fullsource/native white-black-olive integration-owner review passed",
+        "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-equip-3d86046f",
@@ -19774,13 +19773,20 @@
       "category": "equipment",
       "label": "火铳手主装备组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/equipment/c03-equip-3d86046f/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-3d86046f.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent true-alpha broad-matte equipment source; canonical role reconstruction from definitions/fullatlas vocabulary, not claimed exact legacy slot recovery; raw/master exact",
+        "export": "Wholecanvas native48 contain padding2; unchanged source alpha guard and zero native edge; fullsource/native white-black-olive integration-owner review passed",
+        "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-equip-3f4a6e1d",
@@ -19788,13 +19794,20 @@
       "category": "equipment",
       "label": "密察司缉事主装备组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/equipment/c03-equip-3f4a6e1d/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-3f4a6e1d.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent true-alpha broad-matte equipment source; canonical role reconstruction from definitions/fullatlas vocabulary, not claimed exact legacy slot recovery; raw/master exact",
+        "export": "Wholecanvas native48 contain padding2; unchanged source alpha guard and zero native edge; fullsource/native white-black-olive integration-owner review passed",
+        "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-equip-3f6fea2f",
@@ -19802,13 +19815,20 @@
       "category": "equipment",
       "label": "潜渡凿船手主装备组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/equipment/c03-equip-3f6fea2f/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-3f6fea2f.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent true-alpha broad-matte equipment source; canonical role reconstruction from definitions/fullatlas vocabulary, not claimed exact legacy slot recovery; raw/master exact",
+        "export": "Wholecanvas native48 contain padding2; unchanged source alpha guard and zero native edge; fullsource/native white-black-olive integration-owner review passed",
+        "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-equip-4377f3e4",
