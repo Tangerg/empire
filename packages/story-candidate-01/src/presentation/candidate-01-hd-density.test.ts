@@ -51,7 +51,7 @@ describe('per-asset physical density', () => {
     expect(square).toMatchObject({ kind: 'scene', width: 128, height: 128 });
     expect(readCandidate01HdManifest({ ...manifest, assets: [hd] }).get(square.topicId)).toEqual(hd);
     expect(() => validateCandidate01HdAsset(square, hd)).not.toThrow();
-    expect(square.url).toContain(square.png);
+    expect(square.url).toContain('runtime-hd/narrative-static/ch03-s11.png');
     expect(candidate01StoryArt(square.topicId)).toBe(square.url);
     for (const patch of [{ width: 616 }, { height: 616 }, { pixelDensity: 4 },
       { width: 512, height: 288, pixelDensity: 4 }]) {

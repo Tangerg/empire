@@ -1,0 +1,65 @@
+{
+  "baseCommit": "be235b1",
+  "topicId": "C01-CH03-S11",
+  "canonicalDelta": {
+    "kind": {
+      "from": "key-prop",
+      "to": "scene"
+    }
+  },
+  "allOtherManifestFieldsIdentical": true,
+  "runtimeByteIdentical": true,
+  "runtimeSha256": "e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58",
+  "sourceBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+    "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+    "slot": "top-left",
+    "fullCell": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInset": [
+      5,
+      5,
+      622,
+      622
+    ]
+  },
+  "narrativeCounts": {
+    "scene": 42,
+    "key-prop": 16,
+    "character-card": 22
+  },
+  "newCompletedTopics": 0,
+  "sourceOverridesUnchanged": true,
+  "hdManifestUnchanged": true,
+  "artworkModified": false,
+  "historicalInventoryReconciliation": "parent-owned integration step",
+  "verification": {
+    "python": {
+      "narrative": 59,
+      "static": 17,
+      "ledger": 13,
+      "total": 89
+    },
+    "typescript": {
+      "suites": 4,
+      "tests": 330
+    },
+    "typecheck": "passed",
+    "build": "all four applications passed",
+    "registeredExportCheck": {
+      "outputs": 362,
+      "topics": 320,
+      "mode": "read-only --check"
+    },
+    "mutation": "Both square export guards fail against be235b1 renderer; in-memory substitution only",
+    "fullRepositoryTestSuite": "not run; scoped suites and aggregate typecheck/build passed",
+    "browserVisualAcceptance": "not claimed; no art or presentation output change"
+  },
+  "commit": "fae5cf3f7f902c5cae219baaa27465826494b7aa",
+  "branch": "fix/cemetery-square-scene-20261020",
+  "worktreeClean": true
+}

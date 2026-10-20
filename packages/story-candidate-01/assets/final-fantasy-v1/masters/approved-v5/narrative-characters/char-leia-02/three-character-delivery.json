@@ -1,77 +1,133 @@
-[
-  {
-    "topicId": "C01-CHAR-LEIA-02",
-    "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-02/master.png",
-    "sha256": "cae587283354f62bfd9ad7181189892efc72bbefe08829fab438c8af6e3ce06d",
-    "nativeAlpha": {
-      "mode": "RGBA",
-      "extrema": [
-        0,
-        254
-      ],
-      "transparentPixels": 715447,
-      "transparentFraction": 0.45486895243326825,
-      "nearOpaquePixels": 822110,
-      "edgeMaxAlpha": 1,
-      "edgeNonzeroPixels": 64,
-      "edgePixelsAbove1": 0,
-      "alphaAbove1BoundsDiagnosticOnly": [
-        108,
-        11,
-        1023,
-        1513
-      ]
+{
+  "status": "source-generation-and-modeled-UI-review-complete",
+  "sources": [
+    {
+      "topicId": "C01-CHAR-LEIA-02",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-02/master.png",
+      "sha256": "cae587283354f62bfd9ad7181189892efc72bbefe08829fab438c8af6e3ce06d",
+      "nativeAlpha": {
+        "mode": "RGBA",
+        "extrema": [
+          0,
+          254
+        ],
+        "transparentPixels": 715447,
+        "transparentFraction": 0.45486895243326825,
+        "nearOpaquePixels": 822110,
+        "edgeMaxAlpha": 1,
+        "edgeNonzeroPixels": 64,
+        "edgePixelsAbove1": 0,
+        "alphaAbove1BoundsDiagnosticOnly": [
+          108,
+          11,
+          1023,
+          1513
+        ]
+      },
+      "selectedAttempt": 2
     },
-    "selectedAttempt": 2
+    {
+      "topicId": "C01-CHAR-LEIA-03",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/master.png",
+      "sha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a",
+      "nativeAlpha": {
+        "mode": "RGBA",
+        "extrema": [
+          0,
+          254
+        ],
+        "transparentPixels": 728308,
+        "transparentFraction": 0.46304575602213544,
+        "nearOpaquePixels": 822969,
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "edgePixelsAbove1": 0,
+        "alphaAbove1BoundsDiagnosticOnly": [
+          50,
+          42,
+          999,
+          1515
+        ]
+      },
+      "selectedAttempt": 2
+    },
+    {
+      "topicId": "C01-CHAR-RODERICK-02",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/master.png",
+      "sha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b",
+      "nativeAlpha": {
+        "mode": "RGBA",
+        "extrema": [
+          0,
+          254
+        ],
+        "transparentPixels": 655715,
+        "transparentFraction": 0.4168923695882161,
+        "nearOpaquePixels": 898483,
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "edgePixelsAbove1": 0,
+        "alphaAbove1BoundsDiagnosticOnly": [
+          34,
+          68,
+          1011,
+          1488
+        ]
+      },
+      "selectedAttempt": 3
+    }
+  ],
+  "threeCardAndUiComparison": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-02/qa-three-card-and-ui-comparison.png",
+  "transparentComparison": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-02/qa-three-character-transparent-proof.png",
+  "nativeBlackWhiteProofPerSource": "qa-native-black-white.png",
+  "sourceAuditPerSource": "sourceproof.json",
+  "refAuditPerSource": "reference-audit.json",
+  "composition": {
+    "cardSize": [
+      192,
+      224
+    ],
+    "renderWidth": 144,
+    "origin": [
+      24,
+      4
+    ],
+    "wholeCanvas": true,
+    "cardAlpha": [
+      255,
+      255
+    ]
   },
-  {
-    "topicId": "C01-CHAR-LEIA-03",
-    "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-leia-03/master.png",
-    "sha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a",
-    "nativeAlpha": {
-      "mode": "RGBA",
-      "extrema": [
-        0,
-        254
-      ],
-      "transparentPixels": 728308,
-      "transparentFraction": 0.46304575602213544,
-      "nearOpaquePixels": 822969,
-      "edgeMaxAlpha": 0,
-      "edgeNonzeroPixels": 0,
-      "edgePixelsAbove1": 0,
-      "alphaAbove1BoundsDiagnosticOnly": [
-        50,
-        42,
-        999,
-        1515
-      ]
-    },
-    "selectedAttempt": 2
-  },
-  {
-    "topicId": "C01-CHAR-RODERICK-02",
-    "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-roderick-02/master.png",
-    "sha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b",
-    "nativeAlpha": {
-      "mode": "RGBA",
-      "extrema": [
-        0,
-        254
-      ],
-      "transparentPixels": 655715,
-      "transparentFraction": 0.4168923695882161,
-      "nearOpaquePixels": 898483,
-      "edgeMaxAlpha": 0,
-      "edgeNonzeroPixels": 0,
-      "edgePixelsAbove1": 0,
-      "alphaAbove1BoundsDiagnosticOnly": [
-        34,
-        68,
-        1011,
-        1488
-      ]
-    },
-    "selectedAttempt": 3
-  }
-]
+  "reviewedUiSizes": [
+    [
+      92,
+      112
+    ],
+    [
+      64,
+      88
+    ],
+    [
+      44,
+      44
+    ],
+    [
+      96,
+      112
+    ]
+  ],
+  "notPerformed": [
+    "repository changes",
+    "Git commands",
+    "runtime exporter writes",
+    "consumer or stage selector changes",
+    "HD publication",
+    "live browser/GPU/game acceptance"
+  ],
+  "notes": [
+    "Named stage identity and explicit brief govern. Original617 cells are retained provenance.",
+    "Covenant/cloak/injury gaps are documented designed reconstruction.",
+    "Selected sources retain generated alpha and complete native canvas byte-for-byte.",
+    "Roster44px cannot resolve fine clasp, injury, or aging details; source silhouettes and named coloring remain recognizable."
+  ]
+}

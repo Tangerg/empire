@@ -216,6 +216,42 @@
           627
         ]
       }
+    },
+    "C01-FX-07": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "airborne-burst",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/airborne-burst/master.png",
+          "sha256": "ebc945b8d07e0f763040f32f0bedeb6797e281215fe532aa66efd11c0f06cad8"
+        },
+        {
+          "phase": "falling-pieces",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-pieces/master.png",
+          "sha256": "f6cd42c6b833008307cc5d6c0437a93cea41a42699474acdba04ba28ac1b1e26"
+        },
+        {
+          "phase": "falling-remnants",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-remnants/master.png",
+          "sha256": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f"
+        },
+        {
+          "phase": "settled-heap",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/settled-heap/master.png",
+          "sha256": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
     }
   }
 }

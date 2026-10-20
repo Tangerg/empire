@@ -1,0 +1,203 @@
+{
+  "source": "docs/art-rebuild-20261019/approved-v5/narrative-keyprop-audit/manifest.json",
+  "sha256": "61d1ac1e02306c27afb22edd5c34a79a175c0b74d9aefe56a92494dfc70db0bc",
+  "record": {
+    "topicId": "C01-CH03-S11",
+    "label": "墓园姓名木片",
+    "pending": true,
+    "ledger": {
+      "topicId": "C01-CH03-S11",
+      "campaign": "story-candidate-01",
+      "category": "narrative-static",
+      "label": "墓园姓名木片",
+      "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+      "selectedRawMasters": [],
+      "raw": "pending",
+      "export": "pending",
+      "formalBinding": "pending",
+      "liveGame": "pending",
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s11.png",
+      "stageEvidence": null
+    },
+    "canonicalRecord": {
+      "assetId": "C01-FFV1-CH03-S11",
+      "topicId": "C01-CH03-S11",
+      "label": "墓园姓名木片",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch03-s11.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop"
+    },
+    "canonicalAnchor": null,
+    "hdRecord": null,
+    "registeredOverride": null,
+    "source": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+      "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "genuineAlpha": false,
+      "cellIndexZeroBased": 0,
+      "slot": "TL",
+      "originalNarrativeIndexZeroBased": 54,
+      "fullCellCropBox": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "legacyInsetCropBox": [
+        5,
+        5,
+        622,
+        622
+      ],
+      "crops": [
+        {
+          "path": "original-crops/c01-ch03-s11/full-cell.png",
+          "sourceCropBox": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "size": [
+            627,
+            627
+          ],
+          "mode": "RGB",
+          "sha256": "6ef4f1c42a2be145d7066c587446bf995618d04d71060a82cf32911a95e5b277",
+          "pixelSha256": "4098ec718b5c3aaa6e5107fdca67dadfea8496761afd1f83818e5afd6bb103e4",
+          "originalPixelsOnly": true
+        },
+        {
+          "path": "original-crops/c01-ch03-s11/legacy-inset.png",
+          "sourceCropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "size": [
+            617,
+            617
+          ],
+          "mode": "RGB",
+          "sha256": "480fc5a6cade4a836f673145aaf86f622841589ead0e94e89e2c2d10a5a17d48",
+          "pixelSha256": "8b8cd0d509de4410cf7bedc4fe29fdccf48b3646703df6797991508a872d60cb",
+          "originalPixelsOnly": true
+        }
+      ]
+    },
+    "runtime": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s11.png",
+      "sha256": "e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58",
+      "size": [
+        128,
+        128
+      ],
+      "alpha": {
+        "mode": "RGBA",
+        "hasAlpha": true,
+        "extrema": [
+          255,
+          255
+        ],
+        "zeroPixels": 0,
+        "partialPixels": 0,
+        "opaquePixels": 16384,
+        "nearOpaquePixels": 16384,
+        "edgeMaxAlpha": 255,
+        "alphaBoundingBox": [
+          0,
+          0,
+          128,
+          128
+        ]
+      }
+    },
+    "originalReconstruction": {
+      "matches": true,
+      "method": "RGB inset5 cell, centered square fit, opaque RGBA"
+    },
+    "actualConsumers": {
+      "storyScenes": [],
+      "portraitKeys": [],
+      "chapterDefaults": [],
+      "characterTypeBindings": []
+    },
+    "shippedConsumerCount": 0,
+    "visualReview": {
+      "reviewedOriginalBoard": true,
+      "sourceIdentity": "Complete opaque isometric cemetery: people carrying lights/markers, central statue, graves, masonry paths, fenced gate and autumn trees.",
+      "semanticRequirements": "Living waist-name tags and dead gravestone names are a scene interaction. Distinct transparent PROP-NAME-TAGS owns isolated markers.",
+      "riskOrHold": "Evidence-backed metadata correction: key-prop→scene, preserving topic/path/128×128/opaque pixels. Original and lore both identify the cemetery scene; no semantic redesign required.",
+      "highResolutionInputAvailable": true,
+      "referenceNativeCellSize": [
+        617,
+        617
+      ],
+      "runtimeIsHighResolutionReference": false,
+      "sourceVsLoreResolution": "Original painting and authored scene brief agree; only canonical kind/transparency classification conflicts. Correct that classification explicitly instead of indefinitely holding the scene."
+    },
+    "recommendedPriority": null,
+    "proposedExportClassification": "opaque-scene-v1-after-documented-canonical-kind-correction",
+    "proposedSourceAlpha": "complete opaque RGB or RGBA square scene; reusable isolated name tags remain separate PROP-NAME-TAGS",
+    "semanticSourceReferences": [
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "lines": [
+          67,
+          67
+        ],
+        "evidence": "exact canonical topic and label"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+        "lines": [
+          65,
+          81
+        ],
+        "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/deep-customized/03-elder-peoples.md",
+        "lines": [
+          7,
+          25
+        ],
+        "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+      }
+    ],
+    "proposedCanonicalChange": {
+      "onlyChangedCanonicalField": {
+        "kind": {
+          "from": "key-prop",
+          "to": "scene"
+        }
+      },
+      "preserve": [
+        "topicId",
+        "assetId",
+        "label",
+        "png",
+        "width=128",
+        "height=128",
+        "no anchor",
+        "no frames",
+        "current opaque runtime pixels",
+        "pending art status",
+        "existing separate PROP-NAME-TAGS identity"
+      ],
+      "requiresArtworkRedesign": false,
+      "performed": false
+    }
+  },
+  "note": "Historical classification snapshot. Explicit cemetery-scene-classification later changes kind to scene and retains128 square."
+}

@@ -1,0 +1,624 @@
+{
+  "topicId": "C01-FX-07",
+  "phaseOrder": [
+    "airborne-burst",
+    "falling-pieces",
+    "falling-remnants",
+    "settled-heap"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "registrationNote": "Full source canvas and pivot627,627 are the authority. Authored ground settles low in the canvas around y1120-1178. Alpha32 bottom differences are about one logical pixel across changing shapes, not a whole-image origin shift. No per-frame bbox, fit, crop or translate has been applied.",
+  "perPhaseFitCropShiftOrAlphaCleanup": false,
+  "sourceEdgeGate": "alpha <= 1, actual composites and native borders separately reviewed",
+  "nativeFinal2pxBorderGate": 0,
+  "fps": 12,
+  "loop": false,
+  "frameStartTimesMs": [
+    0,
+    83.33333333333333,
+    166.66666666666666,
+    250
+  ],
+  "finalFrameHoldMs": 170,
+  "removalTimeMs": 420,
+  "runtimeConsumer": "BoardView.animateHit target cell center; candidate01FxPicture uses metadata [16,16] and HD strip; normal source-over",
+  "excludedRuntimeOverlays": [
+    "white circle",
+    "damage number"
+  ],
+  "liveGameObserved": false,
+  "frames": [
+    {
+      "phase": "airborne-burst",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "ebc945b8d07e0f763040f32f0bedeb6797e281215fe532aa66efd11c0f06cad8",
+      "decodedPixelSha256": "caf509ca2cd1fc8dc4b7ff228eaffd32afcd1f4a8aaf69080f44ff58b2dbc6f5",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 1,
+      "edgeAlphaNonzeroSamples": 20,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        0,
+        55,
+        1216,
+        1254
+      ],
+      "bboxAlpha128": [
+        48,
+        99,
+        1204,
+        1130
+      ],
+      "alphaMass": 494456.3725490196,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "d846a582e780da9ee76b1cdd6a445a59510caa59f7bc593ae86b30eaadea81ea",
+          "bboxAlpha1": [
+            2,
+            2,
+            30,
+            30
+          ],
+          "alphaMass": 249.07450980392156,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "8586288e0d45396c1946f69e027cd8ab69f5190a3b89125913d3f12f476c5350",
+          "bboxAlpha1": [
+            4,
+            6,
+            60,
+            57
+          ],
+          "alphaMass": 991.4823529411765,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "boundsAlpha32": [
+        47,
+        98,
+        1204,
+        1130
+      ],
+      "boundsCenterAlpha32": [
+        625.5,
+        614.0
+      ],
+      "center100x100AlphaMax": 255,
+      "faintExteriorAlpha1to4Pixels": 19409
+    },
+    {
+      "phase": "falling-pieces",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "f6cd42c6b833008307cc5d6c0437a93cea41a42699474acdba04ba28ac1b1e26",
+      "decodedPixelSha256": "161897f396e1d23be20c87f3b143449327ca8c823efc64969bbfb0a292f188de",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 1,
+      "edgeAlphaNonzeroSamples": 52,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        51,
+        19,
+        1236,
+        1254
+      ],
+      "bboxAlpha128": [
+        138,
+        208,
+        1171,
+        1167
+      ],
+      "alphaMass": 247567.00392156863,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "d26bede2e03cccfb210e654220ff8678f1ad2d98e7da01d5c6d9be0abd916f22",
+          "bboxAlpha1": [
+            3,
+            4,
+            30,
+            30
+          ],
+          "alphaMass": 127.27843137254902,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "f61a377a2a161399bf9ee2f4ce199227fe37e4877bf970e1ac702b276f649dfe",
+          "bboxAlpha1": [
+            8,
+            11,
+            59,
+            59
+          ],
+          "alphaMass": 498.35686274509806,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "boundsAlpha32": [
+        137,
+        208,
+        1171,
+        1168
+      ],
+      "boundsCenterAlpha32": [
+        654.0,
+        688.0
+      ],
+      "center100x100AlphaMax": 1,
+      "faintExteriorAlpha1to4Pixels": 13188
+    },
+    {
+      "phase": "falling-remnants",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f",
+      "decodedPixelSha256": "acb4fb470a5de88f7ba6fc9184f76fc64659f12fc02b21685227b8eafceeae5e",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        244,
+        182,
+        1184,
+        1183
+      ],
+      "bboxAlpha128": [
+        276,
+        621,
+        1039,
+        1178
+      ],
+      "alphaMass": 60302.99607843137,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "8e178d77583e68dadefbe5a887481d8e3b51bd79a03e680f326127abc26bf584",
+          "bboxAlpha1": [
+            6,
+            13,
+            28,
+            30
+          ],
+          "alphaMass": 32.588235294117645,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "7b874dec33134c1d4d158d507cc58d8e106eb41ae88e2bb6e60cc77e0f493e26",
+          "bboxAlpha1": [
+            14,
+            29,
+            53,
+            59
+          ],
+          "alphaMass": 124.20392156862745,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "boundsAlpha32": [
+        275,
+        621,
+        1039,
+        1179
+      ],
+      "boundsCenterAlpha32": [
+        657.0,
+        900.0
+      ],
+      "center100x100AlphaMax": 255,
+      "faintExteriorAlpha1to4Pixels": 5201
+    },
+    {
+      "phase": "settled-heap",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc",
+      "decodedPixelSha256": "e37e72530d441720205495880381abf447e4bb9995a0bbc74ab853912fbd7639",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        33,
+        150,
+        1146,
+        1155
+      ],
+      "bboxAlpha128": [
+        141,
+        802,
+        1143,
+        1151
+      ],
+      "alphaMass": 154896.968627451,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "42acc55e616ed4279f0ae4ee96a05c79dc31144adc84530bccb7d03774f7ce76",
+          "bboxAlpha1": [
+            3,
+            17,
+            30,
+            30
+          ],
+          "alphaMass": 78.08235294117647,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "b821b9ce9bdffd7bd2c5ab4e3b5440f4d695d8c682832df4a834abb92d4dabfc",
+          "bboxAlpha1": [
+            8,
+            37,
+            58,
+            58
+          ],
+          "alphaMass": 309.29411764705884,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "boundsAlpha32": [
+        140,
+        801,
+        1144,
+        1152
+      ],
+      "boundsCenterAlpha32": [
+        642.0,
+        976.5
+      ],
+      "center100x100AlphaMax": 0,
+      "faintExteriorAlpha1to4Pixels": 3761
+    }
+  ],
+  "apng": [
+    {
+      "path": "12fps-420ms-heldfinal-transparent@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "5fdb048c1ce10fb180b76fea9a4ab4f3e14bdc1d1eacc922d7d9fc97502415aa"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "144f5345dd4caa25777a711b4dde9f6a4aeb28a884c085c9ff6da9ba0bac1345"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "fb73203dae874f0f251ce3b06352d856d313fee34c28565420ce3fc9f6cf1f53"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "2d41d1e9c477cc652a79e6df48494648b81c7717b778508c06fc036ee2eeaddd"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "e56e572852688162f3f2635832794c5c11d43d8e37508e18914c4e291f85664a"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "6fbe096a8f6f6cba24d64cffa6cd8517b74199ca5f6ec4ec0685ace931fb2e82"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-transparent@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "11d6829c3eabb30488ad3b698725db335ddca4b4c0004842c8f250b0a8669b8d"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "9a586d86963d73e765d5728b87523953f72c7d79384e5450fe20f281332b1062"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "21b4fbe6b34ea1d5b554c44c84ec09eba7c723a69003720cd85ae903c7fc521a"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "6916e09d67db60db66e60a35fd96baf5f79ccd1ef794efe6609e16ebba1ffed8"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "b64a2e62845f7e5a89d26220ae20927ee1a7ce768a9b3f36119df14ca86f1539"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "42b7181fd87234cb908f15c94547465ac9df09dfbcc947dee0725a99bf53a929"
+    }
+  ]
+}

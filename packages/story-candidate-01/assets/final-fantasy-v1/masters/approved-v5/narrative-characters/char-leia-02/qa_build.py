@@ -91,6 +91,10 @@ for i, slug in enumerate(SLUGS):
            'verificationLimits':['Inspection-only source and mathematically modeled UI crop QA; no browser/GPU/live-game acceptance',
                                  'No repo/Git/exporter/binding/consumer edits','No stage selector changes','No runtime HD publication'],
            'visualReviewStatus':'awaiting final contact-sheet inspection'}
+    if (folder/'sourceproof.json').exists():
+        previous=json.load(open(folder/'sourceproof.json'))
+        for key in ['generationHistory','visualReviewStatus','visualReview','reviewedProofFiles','qaComparison','transparentComparison']:
+            if key in previous: proof[key]=previous[key]
     (folder/'sourceproof.json').write_text(json.dumps(proof,indent=2,ensure_ascii=False)+'\n')
     (folder/'hash.sha256').write_text(sha(master)+'  master.png\n'+sha(folder/'raw.png')+'  raw.png\n')
     summary.append({'topicId':ra['topicId'],'master':str(master),'sha256':sha(master),'nativeAlpha':alpha,'selectedAttempt':calls})

@@ -1,0 +1,410 @@
+[
+  {
+    "topicId": "C01-FX-07",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-07.png",
+    "size": [
+      128,
+      32
+    ],
+    "frameSize": [
+      32,
+      32
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      28,
+      28
+    ],
+    "sources": [
+      {
+        "phase": "airborne-burst",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/airborne-burst/master.png",
+        "sourceSha256": "ebc945b8d07e0f763040f32f0bedeb6797e281215fe532aa66efd11c0f06cad8",
+        "sourcePixelSha256": "caf509ca2cd1fc8dc4b7ff228eaffd32afcd1f4a8aaf69080f44ff58b2dbc6f5",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 20,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            55,
+            1216,
+            1254
+          ],
+          "nonzeroPixels": 531125
+        }
+      },
+      {
+        "phase": "falling-pieces",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-pieces/master.png",
+        "sourceSha256": "f6cd42c6b833008307cc5d6c0437a93cea41a42699474acdba04ba28ac1b1e26",
+        "sourcePixelSha256": "161897f396e1d23be20c87f3b143449327ca8c823efc64969bbfb0a292f188de",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 52,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            51,
+            19,
+            1236,
+            1254
+          ],
+          "nonzeroPixels": 270025
+        }
+      },
+      {
+        "phase": "falling-remnants",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-remnants/master.png",
+        "sourceSha256": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f",
+        "sourcePixelSha256": "acb4fb470a5de88f7ba6fc9184f76fc64659f12fc02b21685227b8eafceeae5e",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            244,
+            182,
+            1184,
+            1183
+          ],
+          "nonzeroPixels": 69925
+        }
+      },
+      {
+        "phase": "settled-heap",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/settled-heap/master.png",
+        "sourceSha256": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc",
+        "sourcePixelSha256": "e37e72530d441720205495880381abf447e4bb9995a0bbc74ab853912fbd7639",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            33,
+            150,
+            1146,
+            1155
+          ],
+          "nonzeroPixels": 163074
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "airborne-burst",
+        "pixelSha256": "d846a582e780da9ee76b1cdd6a445a59510caa59f7bc593ae86b30eaadea81ea",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            2,
+            30,
+            30
+          ],
+          "nonzeroPixels": 511
+        }
+      },
+      {
+        "phase": "falling-pieces",
+        "pixelSha256": "d26bede2e03cccfb210e654220ff8678f1ad2d98e7da01d5c6d9be0abd916f22",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            3,
+            4,
+            30,
+            30
+          ],
+          "nonzeroPixels": 363
+        }
+      },
+      {
+        "phase": "falling-remnants",
+        "pixelSha256": "8e178d77583e68dadefbe5a887481d8e3b51bd79a03e680f326127abc26bf584",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            6,
+            13,
+            28,
+            30
+          ],
+          "nonzeroPixels": 152
+        }
+      },
+      {
+        "phase": "settled-heap",
+        "pixelSha256": "42acc55e616ed4279f0ae4ee96a05c79dc31144adc84530bccb7d03774f7ce76",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            3,
+            17,
+            30,
+            30
+          ],
+          "nonzeroPixels": 164
+        }
+      }
+    ],
+    "pixelSha256": "544a3fb618d1d348d28d5ab5f61bb44ae04d7fc107c0100f9d761d3fa18ae43c",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "1d7cb0d1710c833aa56ab1b3e8d8f75d8c3723f8f53ee4a89d6642b80bb710cf"
+  },
+  {
+    "topicId": "C01-FX-07",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-07.png",
+    "size": [
+      256,
+      64
+    ],
+    "frameSize": [
+      64,
+      64
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      56,
+      56
+    ],
+    "sources": [
+      {
+        "phase": "airborne-burst",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/airborne-burst/master.png",
+        "sourceSha256": "ebc945b8d07e0f763040f32f0bedeb6797e281215fe532aa66efd11c0f06cad8",
+        "sourcePixelSha256": "caf509ca2cd1fc8dc4b7ff228eaffd32afcd1f4a8aaf69080f44ff58b2dbc6f5",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 20,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            55,
+            1216,
+            1254
+          ],
+          "nonzeroPixels": 531125
+        }
+      },
+      {
+        "phase": "falling-pieces",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-pieces/master.png",
+        "sourceSha256": "f6cd42c6b833008307cc5d6c0437a93cea41a42699474acdba04ba28ac1b1e26",
+        "sourcePixelSha256": "161897f396e1d23be20c87f3b143449327ca8c823efc64969bbfb0a292f188de",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 52,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            51,
+            19,
+            1236,
+            1254
+          ],
+          "nonzeroPixels": 270025
+        }
+      },
+      {
+        "phase": "falling-remnants",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-remnants/master.png",
+        "sourceSha256": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f",
+        "sourcePixelSha256": "acb4fb470a5de88f7ba6fc9184f76fc64659f12fc02b21685227b8eafceeae5e",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            244,
+            182,
+            1184,
+            1183
+          ],
+          "nonzeroPixels": 69925
+        }
+      },
+      {
+        "phase": "settled-heap",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/settled-heap/master.png",
+        "sourceSha256": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc",
+        "sourcePixelSha256": "e37e72530d441720205495880381abf447e4bb9995a0bbc74ab853912fbd7639",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            33,
+            150,
+            1146,
+            1155
+          ],
+          "nonzeroPixels": 163074
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "airborne-burst",
+        "pixelSha256": "8586288e0d45396c1946f69e027cd8ab69f5190a3b89125913d3f12f476c5350",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            4,
+            6,
+            60,
+            57
+          ],
+          "nonzeroPixels": 1731
+        }
+      },
+      {
+        "phase": "falling-pieces",
+        "pixelSha256": "f61a377a2a161399bf9ee2f4ce199227fe37e4877bf970e1ac702b276f649dfe",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            8,
+            11,
+            59,
+            59
+          ],
+          "nonzeroPixels": 1047
+        }
+      },
+      {
+        "phase": "falling-remnants",
+        "pixelSha256": "7b874dec33134c1d4d158d507cc58d8e106eb41ae88e2bb6e60cc77e0f493e26",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            14,
+            29,
+            53,
+            59
+          ],
+          "nonzeroPixels": 427
+        }
+      },
+      {
+        "phase": "settled-heap",
+        "pixelSha256": "b821b9ce9bdffd7bd2c5ab4e3b5440f4d695d8c682832df4a834abb92d4dabfc",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            8,
+            37,
+            58,
+            58
+          ],
+          "nonzeroPixels": 498
+        }
+      }
+    ],
+    "pixelSha256": "254a9e5c31a6fdff8707a4c620596856c2929382dc0053754e49bf2be5dba7a3",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "a28158ad21019548ffb41d0bb8704f47c1741b1bad49f794ca9d2a6547a6e9da"
+  }
+]

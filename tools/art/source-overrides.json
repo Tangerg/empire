@@ -1719,6 +1719,81 @@
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-expiring-mandate/master.png",
         "sha256": "b34ba7fc7c0f4b6d25436cfade78a7625d29e98b268c1f9c48ec9afec119ed6a"
       }
+    },
+    "C01-CHAR-LEIA-02": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-02/master.png",
+        "sha256": "cae587283354f62bfd9ad7181189892efc72bbefe08829fab438c8af6e3ce06d"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-LEIA-03": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-03/master.png",
+        "sha256": "2a10986979331dae20b0b696990a05e7952d260579950576697f814368a06f8a"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-RODERICK-02": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-02/master.png",
+        "sha256": "b43d92a8a8e2177b4afdc33414be4cf1acbdc85987fc1976d76a09065c8f036b"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-ARCH-DRAGON-COVENANT-RUIN": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-dragon-covenant-ruin/master.png",
+        "sha256": "fd026c5551fbc2de46c8a18953759106c0d1c945a8078c2a56cb8f7fdcb8fa71"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-CH03-S11": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch03-s11/master.png",
+        "sha256": "fa38890b9c42084b6cdcbba4ba142c1304f3a5a688ffdd90a30a8160ab4ccfd6"
+      },
+      "sourceCropBox": null
     }
   }
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "worktree": "/workspace/scratch/84c9fe948755/empire-edge-binding-20261019",
+    "head": "6a8d46ba899d8a49557b4d099327fc91d1a4eff1",
+    "status": "",
+    "patchEquivalenceAgainstMain": "- 6a8d46ba899d8a49557b4d099327fc91d1a4eff1\n",
+    "ignoredFiles": 156,
+    "ignoredBytes": 50226416,
+    "ignoredAllowedClasses": [
+      "node_modules/",
+      "dist/",
+      "tools/art/__pycache__/",
+      "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/__pycache__/"
+    ],
+    "hashManifest": "empire-edge-binding-20261019-ignored-hashes.jsonl.gz",
+    "hashManifestSha256": "6e3bba373ab347ab8fa4ebceaaea7a3b360b6fce998829f45175fb5145854ee4",
+    "recovery": "Tracked files and commits retained in branches and equivalent main patches. Ignored dependencies recoverable from lockfile; dist from build; Python cache from sources. No original/shared art or unique untracked evidence.",
+    "statusCleanup": "pending remote verification and fresh clean/inactive check"
+  },
+  {
+    "worktree": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019",
+    "head": "a2b34488ca67052ab203247b27954d49fc34a434",
+    "status": "",
+    "patchEquivalenceAgainstMain": "- bde655cd3cc6ad327ecc37497c714c02beac50aa\n- a2b34488ca67052ab203247b27954d49fc34a434\n",
+    "ignoredFiles": 156,
+    "ignoredBytes": 564214,
+    "ignoredAllowedClasses": [
+      "node_modules/",
+      "dist/",
+      "tools/art/__pycache__/",
+      "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/__pycache__/"
+    ],
+    "hashManifest": "empire-atlas-contracts-20261019-ignored-hashes.jsonl.gz",
+    "hashManifestSha256": "0fb6af07962d8157279e90334531f26bf00c6e24c4eedda5804b7703455a87b5",
+    "recovery": "Tracked files and commits retained in branches and equivalent main patches. Ignored dependencies recoverable from lockfile; dist from build; Python cache from sources. No original/shared art or unique untracked evidence.",
+    "statusCleanup": "pending remote verification and fresh clean/inactive check"
+  }
+]

@@ -42,18 +42,19 @@ describe('narrative scene consumer contracts', () => {
     expect(png[25]).toBe(6); // RGBA PNG; exporter pixel tests separately enforce fully opaque alpha.
   });
 
-  it('keeps the corrected square cemetery pending at its existing canonical path', () => {
+  it('registers the corrected square cemetery with source-native HD and unchanged logical geometry', () => {
     const asset = candidate01Asset('C01-CH03-S11');
     expect(asset).toMatchObject({ assetId: 'C01-FFV1-CH03-S11', topicId: 'C01-CH03-S11',
       label: '墓园姓名木片', category: 'narrative-static', kind: 'scene',
       width: 128, height: 128, png: 'runtime/narrative-static/ch03-s11.png',
-      qualityTier: 'final-cartoon-fantasy-v1' });
+      qualityTier: 'approved-chunky-v5-export-verified' });
     for (const field of ['anchor', 'frames', 'variants', 'frameWidth', 'frameHeight']) {
       expect(asset).not.toHaveProperty(field);
     }
-    expect(hdManifest.assets.some(record => record.topicId === asset.topicId)).toBe(false);
-    expect(sourceOverrides.assets).not.toHaveProperty(asset.topicId);
-    expect(asset.url).toContain(asset.png);
+    const squareHd = hdManifest.assets.find(record => record.topicId === asset.topicId)!;
+    expect(squareHd).toMatchObject({ width: 1254, height: 1254, pixelDensity: 1254 / 128 });
+    expect(sourceOverrides.assets).toHaveProperty(asset.topicId);
+    expect(asset.url).toContain(squareHd.png);
     expect(candidate01StoryArt(asset.topicId)).toBe(asset.url);
     expect(candidate01Asset('C01-CH01-S00').kind).toBe('key-prop');
     expect(candidate01Asset('C01-PROP-NAME-TAGS').kind).toBe('key-prop');
