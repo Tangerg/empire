@@ -22,9 +22,11 @@ run_scene() {
     return 1
   fi
 }
-for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks BattleResultFlowChecks CameraChecks CameraIntegrationChecks LightingLifetimeChecks TacticalHudChecks AiPacingIntegrationChecks BoardDecorationChecks LightingPerformanceChecks; do
+for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks BattleResultFlowChecks CameraChecks CameraIntegrationChecks LightingLifetimeChecks TacticalHudChecks AiPacingIntegrationChecks BoardDecorationChecks LightingRasterParityChecks LightingPerformanceChecks; do
   run_scene "$scene"
 done
+DOTNET_EnableHWIntrinsic=0 run_scene LightingRasterParityChecks
+DOTNET_EnableHWIntrinsic=0 run_scene LightingPerformanceChecks
 run_scene SceneryChecks -- --scenery-oracle=res://tests/oracle/board-scenery.json.gz
 run_scene ConnectorDecorationChecks -- --connectors="$PWD/godot/tests/oracle/board-connectors.json.gz"
 run_scene LightingChecks -- --lighting-oracle="$PWD/godot/tests/oracle/lighting.json"

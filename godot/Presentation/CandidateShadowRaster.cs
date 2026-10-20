@@ -26,8 +26,9 @@ internal static class CandidateShadowRaster
         var width = checked(sourceWidth + padding * 2);
         var height = checked(sourceHeight + padding * 2);
         var original = new float[checked(width * height)];
+        var sourcePixels = new CandidateRasterPixels(source);
         for (var y = 0; y < sourceHeight; y++) for (var x = 0; x < sourceWidth; x++)
-            original[(y + padding) * width + x + padding] = source.GetPixel(x, y).A;
+            original[(y + padding) * width + x + padding] = sourcePixels.Alpha(x, y);
         var alpha = (float[])original.Clone();
         var red = new float[alpha.Length]; var green = new float[alpha.Length]; var blue = new float[alpha.Length]; var shadowAlpha = new float[alpha.Length];
         // Every pass overwrites its scratch buffers; they never outlive this bake.
@@ -59,14 +60,14 @@ internal static class CandidateShadowRaster
                 alpha[index] = original[index] + (1 - original[index]) * shadowAlpha[index];
             }
         }
-        var image = Image.CreateEmpty(width, height, false, Image.Format.Rgba8);
+        var rgba = new byte[checked(width * height * 4)];
         for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
         {
             var index = y * width + x;
             var a = shadowAlpha[index];
-            image.SetPixel(x, y, a == 0 ? Colors.Transparent : new Color(red[index] / a, green[index] / a, blue[index] / a, a));
+            CandidateRasterPixels.Write(rgba, index, a == 0 ? Colors.Transparent : new Color(red[index] / a, green[index] / a, blue[index] / a, a));
         }
-        return (image, padding);
+        return (Image.CreateFromData(width, height, false, Image.Format.Rgba8, rgba), padding);
     }
 
     internal static (Image Image, Vector2 Centre) Ellipse(Vector2 radii, Color color, float opacity, float sigma, float density)
@@ -89,10 +90,10 @@ internal static class CandidateShadowRaster
             alpha[y * width + x] = hits / 16f * opacity;
         }
         alpha = Blur(alpha, width, height, sigma * density);
-        var image = Image.CreateEmpty(width, height, false, Image.Format.Rgba8);
+        var rgba = new byte[checked(width * height * 4)];
         for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
-            image.SetPixel(x, y, new Color(color, alpha[y * width + x]));
-        return (image, centre);
+            CandidateRasterPixels.Write(rgba, y * width + x, new Color(color, alpha[y * width + x]));
+        return (Image.CreateFromData(width, height, false, Image.Format.Rgba8, rgba), centre);
     }
 
     internal static float[] Blur(float[] source, int width, int height, float sigma)
@@ -116,26 +117,52 @@ internal static class CandidateShadowRaster
         for (var offset = -radius; offset <= radius; offset++)
             total += kernel[offset + radius] = MathF.Exp(-offset * offset / (2 * sigma * sigma));
         for (var index = 0; index < kernel.Length; index++) kernel[index] /= total;
-        // Clip omitted zero-padding taps without changing their accumulation order.
-        for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
+        // Lanes are independent output pixels, never a reduction across taps. Each
+        // lane retains scalar multiply/add order; edges and unsupported hardware stay scalar.
+        var lanes = System.Numerics.Vector<float>.Count;
+        for (var y = 0; y < height; y++)
         {
-            var first = Math.Max(-radius, -x);
-            var last = Math.Min(radius, width - x - 1);
-            var index = y * width + x;
-            var sum = 0f;
-            for (var offset = first; offset <= last; offset++)
-                sum += source[index + offset] * kernel[offset + radius];
-            horizontal[index] = sum;
+            var row = y * width;
+            var x = 0;
+            for (; x < Math.Min(radius, width); x++) HorizontalPixel(x, row);
+            for (; System.Numerics.Vector.IsHardwareAccelerated && x + lanes <= width - radius; x += lanes)
+            {
+                var sum = System.Numerics.Vector<float>.Zero;
+                for (var offset = -radius; offset <= radius; offset++)
+                    sum += new System.Numerics.Vector<float>(source, row + x + offset) * new System.Numerics.Vector<float>(kernel[offset + radius]);
+                sum.CopyTo(horizontal, row + x);
+            }
+            for (; x < width; x++) HorizontalPixel(x, row);
         }
-        for (var y = 0; y < height; y++) for (var x = 0; x < width; x++)
+        for (var y = 0; y < height; y++)
         {
             var first = Math.Max(-radius, -y);
             var last = Math.Min(radius, height - y - 1);
-            var index = y * width + x;
+            var row = y * width;
+            var x = 0;
+            for (; System.Numerics.Vector.IsHardwareAccelerated && x + lanes <= width; x += lanes)
+            {
+                var sum = System.Numerics.Vector<float>.Zero;
+                for (var offset = first; offset <= last; offset++)
+                    sum += new System.Numerics.Vector<float>(horizontal, row + x + offset * width) * new System.Numerics.Vector<float>(kernel[offset + radius]);
+                sum.CopyTo(output, row + x);
+            }
+            for (; x < width; x++)
+            {
+                var sum = 0f;
+                for (var offset = first; offset <= last; offset++)
+                    sum += horizontal[row + x + offset * width] * kernel[offset + radius];
+                output[row + x] = sum;
+            }
+        }
+        void HorizontalPixel(int x, int row)
+        {
+            var first = Math.Max(-radius, -x);
+            var last = Math.Min(radius, width - x - 1);
             var sum = 0f;
             for (var offset = first; offset <= last; offset++)
-                sum += horizontal[index + offset * width] * kernel[offset + radius];
-            output[index] = sum;
+                sum += source[row + x + offset] * kernel[offset + radius];
+            horizontal[row + x] = sum;
         }
     }
 

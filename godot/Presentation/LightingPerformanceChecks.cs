@@ -18,6 +18,7 @@ public partial class LightingPerformanceChecks : Node
     {
         try
         {
+            GD.Print($"SIMD hardware={System.Numerics.Vector.IsHardwareAccelerated}, lanes={System.Numerics.Vector<float>.Count}");
             BlurParity();
             RasterParity();
             await Board();
@@ -33,7 +34,7 @@ public partial class LightingPerformanceChecks : Node
     private void BlurParity()
     {
         var random = new Random(6301);
-        foreach (var size in new[] { new Vector2I(1, 1), new(2, 3), new(7, 5), new(31, 48), new(128, 96) })
+        foreach (var size in new[] { new Vector2I(1, 1), new(2, 3), new(7, 5), new(9, 7), new(17, 9), new(33, 17), new(31, 48), new(128, 96), new(129, 97) })
         foreach (var sigma in new[] { 0f, .01f, .55f, .65f, 1f, 1.1f, 1.2f, 2f, 7f, 14f })
         {
             var input = Enumerable.Range(0, size.X * size.Y).Select(_ => (float)random.NextDouble()).ToArray();

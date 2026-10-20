@@ -31,6 +31,7 @@ internal static class CandidateFilterComposition
         var pixels = new Color[checked(size.X * size.Y)]; // premultiplied source-over accumulator
         foreach (var layer in layers)
         {
+            var input = new CandidateRasterPixels(layer.Image);
             var start = (Vector2I)((layer.Bounds.Position - origin) * density).Floor();
             var end = (Vector2I)((layer.Bounds.End - origin) * density).Ceil();
             for (var y = Math.Max(0, start.Y); y < Math.Min(size.Y, end.Y); y++)
@@ -40,17 +41,17 @@ internal static class CandidateFilterComposition
                 var coverage = Coverage(layer, origin + new Vector2(x, y) / density, 1 / density);
                 if (coverage == 0) continue;
                 var uv = (point - layer.Bounds.Position) / layer.Bounds.Size;
-                var sample = Sample(layer.Image, uv * new Vector2(layer.Image.GetWidth(), layer.Image.GetHeight()) - Vector2.One / 2) * coverage;
+                var sample = Sample(input, uv * new Vector2(input.Width, input.Height) - Vector2.One / 2) * coverage;
                 pixels[y * size.X + x] = sample + pixels[y * size.X + x] * (1 - sample.A);
             }
         }
-        var output = Image.CreateEmpty(size.X, size.Y, false, Image.Format.Rgba8);
+        var rgba = new byte[checked(size.X * size.Y * 4)];
         for (var y = 0; y < size.Y; y++) for (var x = 0; x < size.X; x++)
         {
             var color = pixels[y * size.X + x];
-            output.SetPixel(x, y, color.A == 0 ? Colors.Transparent : new Color(color.R / color.A, color.G / color.A, color.B / color.A, color.A));
+            CandidateRasterPixels.Write(rgba, y * size.X + x, color.A == 0 ? Colors.Transparent : new Color(color.R / color.A, color.G / color.A, color.B / color.A, color.A));
         }
-        return new(output, origin, density);
+        return new(Image.CreateFromData(size.X, size.Y, false, Image.Format.Rgba8, rgba), origin, density);
     }
 
     internal static Raster Filter(Raster source, CandidateShadowKind kind)
@@ -61,6 +62,14 @@ internal static class CandidateFilterComposition
 
     private static float Coverage(Layer layer, Vector2 topLeft, float size)
     {
+        if (layer.Cutouts is null || layer.Cutouts.Count == 0)
+        {
+            // Use the original sample locations, not cell bounds: their float
+            // rounding at an edge belongs to the coverage contract.
+            var first = topLeft + Vector2.One * (.5f * (size / 4));
+            var last = topLeft + Vector2.One * (3.5f * (size / 4));
+            if (layer.Bounds.HasPoint(first) && layer.Bounds.HasPoint(last)) return 1;
+        }
         var hits = 0;
         for (var y = 0; y < 4; y++) for (var x = 0; x < 4; x++)
         {
@@ -76,13 +85,13 @@ internal static class CandidateFilterComposition
         return hits / 16f;
     }
 
-    private static Color Sample(Image image, Vector2 point)
+    private static Color Sample(CandidateRasterPixels image, Vector2 point)
     {
         var left = (int)MathF.Floor(point.X); var top = (int)MathF.Floor(point.Y);
         Color Pixel(int x, int y)
         {
             // Image edge clamps within its declared canvas; geometry coverage owns the boundary.
-            var color = image.GetPixel(Math.Clamp(x, 0, image.GetWidth() - 1), Math.Clamp(y, 0, image.GetHeight() - 1));
+            var color = image.Pixel(Math.Clamp(x, 0, image.Width - 1), Math.Clamp(y, 0, image.Height - 1));
             return new Color(color.R * color.A, color.G * color.A, color.B * color.A, color.A);
         }
         return Pixel(left, top).Lerp(Pixel(left + 1, top), point.X - left)
