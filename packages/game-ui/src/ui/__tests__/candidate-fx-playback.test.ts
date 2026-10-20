@@ -50,3 +50,40 @@ describe('Gray Flag registered hit phase playback', () => {
     }
   });
 });
+
+
+describe('Gray Flag healing effect lifetime', () => {
+  it('holds the terminal heal phase through 499 ms and removes it at 500 ms, independently of hit timing', async () => {
+    const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+    const engine = createBattleEngine({ content });
+    const state = engine.createState(CANDIDATE_01_LEVELS[0]);
+    const before = JSON.stringify(state);
+    const board = new BoardView({ content, grid: engine.rules.grids.get('square4'),
+      art: CANDIDATE_01_ART, renderer: svgBoardSurface }, state, {
+      onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {},
+      onSecondary: () => {}, onScale: () => {},
+    });
+    try {
+      const at = { x: state.units[0].x, y: state.units[0].y };
+      const played = board.animateHeal(at, 9);
+      const effect = board.el.querySelector('.fx')!;
+      const strip = effect.querySelector('svg')!;
+      expect(strip.querySelector('image')!.getAttribute('href')).toContain('/runtime-hd/fx/fx-17.png');
+      expect([strip.getAttribute('x'), strip.getAttribute('y')]).toEqual(['-16', '-16']);
+      expect(effect.getAttribute('transform')).toBe(`translate(${(at.x * 32 + 16).toFixed(2)},${(at.y * 32 + 16).toFixed(2)})`);
+      expect(effect.querySelector('[data-part="number"]')!.textContent).toBe('+9');
+      for (const [ms, frame] of [[0, 0], [83.34, 1], [166.67, 2], [250, 3], [420, 3], [499, 3]]) {
+        clock.at(ms);
+        await Promise.resolve();
+        expect(strip.getAttribute('viewBox')).toBe(`${frame * 32} 0 32 32`);
+        expect(board.el.contains(effect)).toBe(true);
+      }
+      clock.at(500);
+      await played;
+      expect(board.el.querySelector('.fx')).toBeNull();
+      expect(JSON.stringify(state)).toBe(before);
+    } finally {
+      board.dispose();
+    }
+  });
+});

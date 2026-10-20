@@ -1,0 +1,160 @@
+{
+  "phase": "healing-peak",
+  "sourceComponentsAlpha128": [
+    {
+      "bbox": [
+        82,
+        253,
+        1185,
+        1072
+      ],
+      "area": 331262,
+      "center": [
+        633.5,
+        662.5
+      ]
+    },
+    {
+      "bbox": [
+        639,
+        306,
+        752,
+        361
+      ],
+      "area": 3705,
+      "center": [
+        695.5,
+        333.5
+      ]
+    },
+    {
+      "bbox": [
+        445,
+        347,
+        479,
+        380
+      ],
+      "area": 604,
+      "center": [
+        462.0,
+        363.5
+      ]
+    },
+    {
+      "bbox": [
+        1013,
+        431,
+        1045,
+        463
+      ],
+      "area": 570,
+      "center": [
+        1029.0,
+        447.0
+      ]
+    },
+    {
+      "bbox": [
+        118,
+        442,
+        200,
+        530
+      ],
+      "area": 3878,
+      "center": [
+        159.0,
+        486.0
+      ]
+    },
+    {
+      "bbox": [
+        513,
+        600,
+        742,
+        815
+      ],
+      "area": 31011,
+      "center": [
+        627.5,
+        707.5
+      ]
+    },
+    {
+      "bbox": [
+        337,
+        864,
+        502,
+        946
+      ],
+      "area": 2353,
+      "center": [
+        419.5,
+        905.0
+      ]
+    },
+    {
+      "bbox": [
+        489,
+        904,
+        521,
+        937
+      ],
+      "area": 572,
+      "center": [
+        505.0,
+        920.5
+      ]
+    },
+    {
+      "bbox": [
+        968,
+        949,
+        1068,
+        1056
+      ],
+      "area": 5626,
+      "center": [
+        1018.0,
+        1002.5
+      ]
+    },
+    {
+      "bbox": [
+        188,
+        985,
+        280,
+        1070
+      ],
+      "area": 4599,
+      "center": [
+        234.0,
+        1027.5
+      ]
+    }
+  ],
+  "plus": {
+    "bbox": [
+      513,
+      600,
+      742,
+      815
+    ],
+    "area": 31011,
+    "center": [
+      627.5,
+      707.5
+    ]
+  },
+  "plusCenterLogical": [
+    16.01116427432217,
+    17.79744816586922
+  ],
+  "contractSourcePivot": [
+    627,
+    627
+  ],
+  "canvasTransformUnchanged": true,
+  "sourceTargetVsObserved": "The prompt suggested plus centre y627; actual centre is y708.5. Future phases should match the observed baseline, without shifting or fitting this image.",
+  "sourceCompositeReview": "Actual black and white composites viewed. Clean margins and gaps, no exterior glow or opaque background disc.",
+  "nativeReview": "32 and64 pixel outputs plus nearest-neighbor diagnostic zoom viewed. Medical plus and bandages readable."
+}

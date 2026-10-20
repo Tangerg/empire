@@ -34,6 +34,7 @@ PHASE_ORDERS = {
     'C01-FX-14': ['low-fumes', 'rising-fumes', 'plume-crest', 'settling-wisps'],
     'C01-FX-15': ['spirit-onset', 'spirit-growth', 'leafy-spirit-peak', 'spirit-residue'],
     'C01-FX-16': ['short-rays', 'rising-fan', 'graylight-crest', 'residual-rays'],
+    'C01-FX-17': ['healing-onset', 'leaf-spiral', 'healing-peak', 'orbit-dissipation'],
     **AMBIENT_PHASE_ORDERS,
 }
 

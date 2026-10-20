@@ -1,0 +1,94 @@
+{
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-04.png",
+  "sourceBoardSha256": "4761b6846cce254e16ef4cec54c62b30ae5ca3e6879cce60fa2c135be135ee02",
+  "sourceBoardMode": "RGB",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceRowBoundsXYXY": [
+    0,
+    940,
+    1254,
+    1254
+  ],
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-16",
+    "topicId": "C01-FX-16",
+    "label": "七塔灰光",
+    "category": "fx",
+    "png": "runtime/fx/fx-16.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "earlierAuditManifestAnchor": [
+    16,
+    24
+  ],
+  "cropChecks": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        945,
+        309,
+        1249
+      ],
+      "path": "reference/original-f0.png",
+      "sha256": "53fb08a60d1fa05fd1f9f6fde964ebd68f8dad023ef45b69402a5275adf5accf",
+      "matchesPriorAudit": true,
+      "sourceObservation": "small tower with short gray rays"
+    },
+    {
+      "phase": 1,
+      "box": [
+        319,
+        945,
+        622,
+        1249
+      ],
+      "path": "reference/original-f1.png",
+      "sha256": "22e18c0ffac6a7083ec33afd6f38575277d0f965d90336bd3ba0a39a86891801",
+      "matchesPriorAudit": true,
+      "sourceObservation": "wider longer tower rays"
+    },
+    {
+      "phase": 2,
+      "box": [
+        632,
+        945,
+        935,
+        1249
+      ],
+      "path": "reference/original-f2.png",
+      "sha256": "e66285ff5d0857348168e9ea078e0cfcd589913bdbf24491c293fcafff6a08f7",
+      "matchesPriorAudit": true,
+      "sourceObservation": "largest tall gray ray fan and stones"
+    },
+    {
+      "phase": 3,
+      "box": [
+        945,
+        945,
+        1249,
+        1249
+      ],
+      "path": "reference/original-f3.png",
+      "sha256": "70b291077978090bf228459fe1c24a1a73b66add644f70bdba699781c11d266e",
+      "matchesPriorAudit": true,
+      "sourceObservation": "short residual gray beams"
+    }
+  ]
+}

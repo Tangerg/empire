@@ -1,0 +1,268 @@
+{
+  "referencePhase": "graylight-crest",
+  "method": "Fixed source-coordinate tower ROIs, alpha-weighted RGB absolute-difference search over +/-6 pixels. Largest alpha128 connected component isolates the physical tower/rays from floating stones; its region below y820 measures the registered lower tower. Diagnostic only, never image placement.",
+  "rois": {
+    "emitter-socket": [
+      575,
+      778,
+      681,
+      865
+    ],
+    "front-parapet": [
+      550,
+      864,
+      700,
+      931
+    ],
+    "front-door": [
+      545,
+      974,
+      620,
+      1069
+    ],
+    "base-front": [
+      490,
+      1082,
+      750,
+      1146
+    ],
+    "left-rubble": [
+      385,
+      1055,
+      485,
+      1168
+    ],
+    "right-rubble": [
+      775,
+      1050,
+      866,
+      1165
+    ]
+  },
+  "phases": {
+    "short-rays": {
+      "staticMaterialMatches": {
+        "emitter-socket": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 23.567
+        },
+        "front-parapet": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 20.517
+        },
+        "front-door": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 21.945
+        },
+        "base-front": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 28.236
+        },
+        "left-rubble": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 27.856
+        },
+        "right-rubble": {
+          "bestOffsetXY": [
+            1,
+            1
+          ],
+          "meanAbsoluteRgbError": 25.209
+        }
+      },
+      "lowerTowerBoundsAlpha128": [
+        378,
+        820,
+        868,
+        1205
+      ],
+      "amberInteriorCentroid": [
+        628.9838572642311,
+        813.0212404418012
+      ]
+    },
+    "rising-fan": {
+      "staticMaterialMatches": {
+        "emitter-socket": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 18.143
+        },
+        "front-parapet": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.864
+        },
+        "front-door": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 6.637
+        },
+        "base-front": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.693
+        },
+        "left-rubble": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.798
+        },
+        "right-rubble": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 6.902
+        }
+      },
+      "lowerTowerBoundsAlpha128": [
+        377,
+        820,
+        867,
+        1204
+      ],
+      "amberInteriorCentroid": [
+        628.7014995313964,
+        811.4400187441424
+      ]
+    },
+    "graylight-crest": {
+      "staticMaterialMatches": {
+        "emitter-socket": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "front-parapet": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "front-door": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "base-front": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "left-rubble": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        },
+        "right-rubble": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 0.0
+        }
+      },
+      "lowerTowerBoundsAlpha128": [
+        377,
+        820,
+        867,
+        1203
+      ],
+      "amberInteriorCentroid": [
+        627.9577522559475,
+        809.531173092699
+      ]
+    },
+    "residual-rays": {
+      "staticMaterialMatches": {
+        "emitter-socket": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 29.628
+        },
+        "front-parapet": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 9.22
+        },
+        "front-door": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.289
+        },
+        "base-front": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 7.454
+        },
+        "left-rubble": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 9.48
+        },
+        "right-rubble": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 6.356
+        }
+      },
+      "lowerTowerBoundsAlpha128": [
+        378,
+        820,
+        867,
+        1204
+      ],
+      "amberInteriorCentroid": [
+        627.9492789656887,
+        810.8239681750373
+      ]
+    }
+  }
+}

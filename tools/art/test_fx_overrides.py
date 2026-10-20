@@ -108,7 +108,8 @@ class FxTests(unittest.TestCase):
                              ('C01-FX-13', ['cracked-earth', 'ember-rise', 'flame-peak', 'ember-residue']),
                              ('C01-FX-14', ['low-fumes', 'rising-fumes', 'plume-crest', 'settling-wisps']),
                              ('C01-FX-15', ['spirit-onset', 'spirit-growth', 'leafy-spirit-peak', 'spirit-residue']),
-                             ('C01-FX-16', ['short-rays', 'rising-fan', 'graylight-crest', 'residual-rays'])]:
+                             ('C01-FX-16', ['short-rays', 'rising-fan', 'graylight-crest', 'residual-rays']),
+                             ('C01-FX-17', ['healing-onset', 'leaf-spiral', 'healing-peak', 'orbit-dissipation'])]:
             with self.subTest(topic=topic):
                 asset = {**self.asset, 'topicId': topic, 'png': f'runtime/fx/fx-{topic[-2:]}.png'}
                 hd = {**self.hd, 'topicId': topic, 'png': f'runtime-hd/fx/fx-{topic[-2:]}.png'}

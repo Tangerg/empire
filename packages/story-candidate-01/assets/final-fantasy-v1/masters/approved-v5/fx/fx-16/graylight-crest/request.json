@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: precise-object-edit / background-extraction. Correct ONLY the unwanted speckled white halo in this transparent 1254 x 1254 image. Keep the tower, every masonry block, amber socket, all seven straight gray ray silhouettes, six floating stones and rubble at EXACTLY their current coordinates and sizes. Do not shift, redraw, crop, zoom or recenter any subject.\nRemove all white speckle, mottled white spray, amber fog and stray luminous debris OUTSIDE the seven crisp silver-gray ray silhouettes and outside the small amber lamp socket. The gaps between rays must be genuinely clear alpha 0, especially the area just above the lamp and the sides of the central ray. No broad halo or glow cloud around the emitter. Keep the lamp's bright pale center and amber rim, but confine that light to its outlined socket. Preserve the solid clean gray faces and pale inner stripes INSIDE each ray. Preserve the full pointed upper ray tip and all exterior margins.\nThe result should be cleanly cut out on black, white and colored terrain, with no white fringe, glitter, haze or matte residue. Genuine transparent RGBA, same canvas and pixel alignment. Output one corrected frame; nothing else changes.\n",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-16/rejected/graylight-crest-attempt01-speckled-halo/master.png"
+  ],
+  "transparent_background": true
+}
