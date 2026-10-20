@@ -46,7 +46,7 @@ class ScifiTerrainExportTests(unittest.TestCase):
 
     def test_scifi_exports_only_declared_native_density_without_fantasy_or_hd_files(self):
         reports = self.run_export()
-        self.assertEqual(len(reports), 4)
+        self.assertEqual(len(reports), len(SCIFI_TOPICS))
         self.assertEqual(reports, self.run_export(check=True))
         self.assertFalse((self.pack / 'runtime-hd').exists())
         for report in reports:

@@ -1,0 +1,86 @@
+[
+  {
+    "assetId": "C02-SFV1-terrain-hesha-glass-sea",
+    "topicId": "c02-terrain-hesha-glass-sea",
+    "label": "\u8d6b\u6c99\u73bb\u7483\u6d77",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-hesha-glass-sea.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  {
+    "assetId": "C02-SFV1-terrain-hesha-red-sand",
+    "topicId": "c02-terrain-hesha-red-sand",
+    "label": "\u8d6b\u6c99\u8d64\u7802\u6c99\u4e18",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-hesha-red-sand.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  {
+    "assetId": "C02-SFV1-terrain-hesha-sandstorm-quicksand",
+    "topicId": "c02-terrain-hesha-sandstorm-quicksand",
+    "label": "\u8d6b\u6c99\u6c99\u66b4\u6d41\u6c99",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-hesha-sandstorm-quicksand.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  {
+    "assetId": "C02-SFV1-terrain-hesha-sealed-waterway",
+    "topicId": "c02-terrain-hesha-sealed-waterway",
+    "label": "\u8d6b\u6c99\u5bc6\u5c01\u6c34\u8def",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-hesha-sealed-waterway.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  }
+]

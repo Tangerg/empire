@@ -1,0 +1,43 @@
+{
+  "topicId": "c02-unit-boarding-team",
+  "originalSourceLocation": "combat-board-06.png row 2; full board inspected before reference extraction",
+  "originalReferenceCrop": [
+    0,
+    315,
+    1254,
+    625
+  ],
+  "sources": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
+      "sha256": "65a1e585663d6254fbec5881eec82eabff57851850854f61bd8933b6bd82c009"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/combat/combat-board-06.png",
+      "sha256": "10ab0baf68bf7924c606747ce31aae0e4a2939e4eae0fccffbc3cd582235b10b"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-boarding-team.png",
+      "sha256": "1447da818a6b6517a8d1a52f2a835be4d33eef67a48de93970c28b211d608723"
+    }
+  ],
+  "identity": "Two astronauts, orange-trim ivory cutter operator with backpack and cable reel, blue-trim ivory shield bearer with tall dark oval shield and cyan hexagon insert. Four legs total. Both face screen-right.",
+  "canonical": {
+    "frameSize": [
+      64,
+      48
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "order": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ]
+  },
+  "masterPolicy": "Raw native imagegen RGBA canvases, byte-identical copies. No alpha cleanup, crop, paint, resize, recolor or independent fit. Original quartet crop is reference extraction only.",
+  "formalRuntimeIntegration": false
+}

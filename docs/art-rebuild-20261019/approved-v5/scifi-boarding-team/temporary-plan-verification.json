@@ -1,0 +1,184 @@
+{
+  "passed": true,
+  "outputCount": 1,
+  "wouldWrite": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-boarding-team.png",
+  "report": {
+    "topicId": "c02-unit-boarding-team",
+    "density": 1,
+    "output": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-boarding-team.png",
+    "size": [
+      256,
+      48
+    ],
+    "logicalAnchor": [
+      32,
+      47
+    ],
+    "placement": {
+      "renderWidth": 44,
+      "origin": [
+        5,
+        3
+      ]
+    },
+    "renderedCanvasSize": [
+      44,
+      44
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+        "sourceSha256": "cb9de8805cd71b92e8d53974d9a5d9f3b2b557d70ca1bce9c66570f9e6137545",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 26,
+          "coreBoundingBox": [
+            79,
+            358,
+            1200,
+            1209
+          ]
+        },
+        "registrationOffset": [
+          2,
+          -1
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
+        "sourceSha256": "fe8fbe05fe32c500b9fa8e62556009dd59160577f6cf324041bceb0e13a9fc30",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 113,
+          "coreBoundingBox": [
+            58,
+            358,
+            1232,
+            1174
+          ]
+        },
+        "registrationOffset": [
+          2,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
+        "sourceSha256": "b438b8f2fa99ecce0445327d31870cb49b52e892790c142d8ebc4979a2e7a4a8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 14,
+          "coreBoundingBox": [
+            60,
+            354,
+            1224,
+            1193
+          ]
+        },
+        "registrationOffset": [
+          2,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-b/master.png",
+        "sourceSha256": "405988b5c5c66c8b765f571adac47e4d991245e6b8cda6703fed95f113def055",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 68,
+          "coreBoundingBox": [
+            41,
+            359,
+            1238,
+            1174
+          ]
+        },
+        "registrationOffset": [
+          -2,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "b8d066f26cfb496ebb4c1843c0e0992465096dd4dce0144cfd4582143438d190",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            10,
+            15,
+            49,
+            44
+          ]
+        },
+        "registrationOffset": [
+          2,
+          -1
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "e139035f864b364195af8c26e5428a90f0063f24a2a173a9cfc4ccb4c2345c1b",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            10,
+            16,
+            50,
+            44
+          ]
+        },
+        "registrationOffset": [
+          2,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "2cae6121f46e6e96290cfcf8b9fc9d95c1f379dab3930e4dccb8c728a5288a2c",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            10,
+            16,
+            49,
+            44
+          ]
+        },
+        "registrationOffset": [
+          2,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "406e69a43a57efe6e11a4aca0ff031dd481578e35afa804ebc7c138788b0c37d",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            5,
+            16,
+            46,
+            44
+          ]
+        },
+        "registrationOffset": [
+          -2,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "1ba4ca755bf64895a4690cbbf56ef63d12cdf975b98f02916e5e08ad365d741c",
+    "semanticAnimationReview": "required-separately"
+  },
+  "runtimeWritesPerformed": false
+}

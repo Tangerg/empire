@@ -7,14 +7,14 @@ import overrides from '../../../tools/art/canonical-terrain-overrides.json';
 const root = new URL('../../../', import.meta.url);
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const registered = Object.entries(overrides.assets).filter(([topic]) => topic.startsWith('c02-'));
-const reports = JSON.parse(readFileSync(new URL(
-  'docs/art-rebuild-20261019/approved-v5/scifi-terrain-pilot/formal-export.json', root), 'utf8'));
+const reports = ['scifi-terrain-pilot', 'scifi-hesha-terrain'].flatMap(folder => JSON.parse(readFileSync(new URL(
+  `docs/art-rebuild-20261019/approved-v5/${folder}/formal-export.json`, root), 'utf8')));
 
 describe('C02 native-density terrain catalog', () => {
-  it('retains the complete 32-topic inventory and exactly four pilot bindings', () => {
+  it('retains the complete 32-topic inventory and eight reviewed bindings', () => {
     expect(manifest.assets.filter(asset => asset.category === 'terrain')).toHaveLength(32);
-    expect(registered).toHaveLength(4);
-    expect(reports).toHaveLength(4);
+    expect(registered).toHaveLength(8);
+    expect(reports).toHaveLength(8);
   });
 
   it.each(registered)('preserves %s geometry, source ownership and exact runtime bytes', (topic, source) => {

@@ -27,6 +27,10 @@ SCIFI_TOPICS = {
     'c02-terrain-farlight-living-deck': 'variants',
     'c02-terrain-farlight-projection-garden': 'variants',
     'c02-terrain-farlight-service-pipes': 'nesw-16',
+    'c02-terrain-hesha-glass-sea': 'nesw-16',
+    'c02-terrain-hesha-red-sand': 'variants',
+    'c02-terrain-hesha-sandstorm-quicksand': 'nesw-16',
+    'c02-terrain-hesha-sealed-waterway': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of

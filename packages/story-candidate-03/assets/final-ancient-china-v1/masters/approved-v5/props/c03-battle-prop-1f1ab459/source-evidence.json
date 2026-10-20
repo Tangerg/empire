@@ -1,0 +1,59 @@
+{
+  "topicId": "c03-battle-prop-1f1ab459",
+  "assetId": "C03-ACV1-battle-prop-1f1ab459",
+  "label": "燃烧箭束危险组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/call_b0425e1770444280bc6560810f555a39.png",
+  "sha256": "1b939520685895b9b67b5faea34a7410cb4c491d0bb9955542c44eef824bb379",
+  "originalFullAtlas": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/props/props-board-01.png",
+    "sha256": "8fe923907680667604cbc1be15c3c7667cfceb5f4a636684b769f60ad2933439",
+    "identityLocation": "second row second object"
+  },
+  "styleReference": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/props/bprop-engineering-1/master.png",
+    "sha256": "ac16d96d830af9e50d59d93319025d29c09c5e8bb4956157be3b4fd2f866a6fd"
+  },
+  "promptFile": "prompt.txt",
+  "postprocessing": "None; raw.png and master.png are byte-identical copies of native output. Review export alone uses existing whole-canvas contain contract. No crop, recolor or alpha stripping.",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      173,
+      17,
+      1237,
+      1224
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      60,
+      60
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      11,
+      4,
+      61,
+      60
+    ]
+  },
+  "registered": false
+}

@@ -1,0 +1,85 @@
+{
+  "topicId": "c02-unit-boarding-team",
+  "status": "Authored quartet and native plan complete; static shared-renderer contact overlaps shadow; gameplay acceptance pending",
+  "tool": "built-in image_gen",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "canonicalFrameSize": [
+    64,
+    48
+  ],
+  "canonicalAnchor": [
+    32,
+    47
+  ],
+  "commonSourceCanvas": [
+    1254,
+    1254
+  ],
+  "poses": {
+    "idle": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+      "sha256": "cb9de8805cd71b92e8d53974d9a5d9f3b2b557d70ca1bce9c66570f9e6137545",
+      "rawByteIdentical": true,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "walk-a": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
+      "sha256": "fe8fbe05fe32c500b9fa8e62556009dd59160577f6cf324041bceb0e13a9fc30",
+      "rawByteIdentical": true,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "attack": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
+      "sha256": "b438b8f2fa99ecce0445327d31870cb49b52e892790c142d8ebc4979a2e7a4a8",
+      "rawByteIdentical": true,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "walk-b": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-b/master.png",
+      "sha256": "405988b5c5c66c8b765f571adac47e4d991245e6b8cda6703fed95f113def055",
+      "rawByteIdentical": true,
+      "size": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "masterPolicy": "Byte-identical raw generated outputs. No alpha cleanup/crop/resize/recolor/paint. QA views are separate projections.",
+  "rejections": {
+    "idle-clipped-retry": "Generated placement correction clipped boot bottoms. Not used.",
+    "attack-first": "Five boot shapes; bounded correction removes extra blue leg.",
+    "walk-b-first": "Repeated walk-a contact pattern; bounded correction reverses orange foot contact."
+  },
+  "semanticReview": {
+    "subjectCount": 2,
+    "fourLegs": true,
+    "gear": "Orange cutter operator with cable reel; blue oval shield bearer",
+    "idle": "Stable low tool guard",
+    "walk-a": "Orange leading boot lifted, trailing boot planted",
+    "attack": "Raised cutter and braced four-foot stance",
+    "walk-b": "Orange leading boot planted, trailing boot lifted; blue leg cadence remains subtle",
+    "facingPreserved": true
+  },
+  "temporaryPlanVerification": "docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/temporary-plan-verification.json",
+  "nativeReview": "docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/native64x48-three-backgrounds.png",
+  "registrationEvidence": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/registration-evidence.json",
+  "formalRuntimeIntegration": false,
+  "liveGamePlayback": "not performed",
+  "limitation": "Measured planted support is 2.14\u20132.84 logical pixels above canonical y47 in alpha-safe full-canvas fit. No geometry, atlas consumer, anchor, exporter guard or source alpha was changed to conceal this.",
+  "sharedRendererContactProof": "docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/renderer-contact-proof.png",
+  "sharedRendererContactReview": "docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/renderer-contact-review.json"
+}

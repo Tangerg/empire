@@ -1,0 +1,95 @@
+[
+  {
+    "phase": "idle",
+    "request": {
+      "prompt": "Use case: stylized-concept. Create ONE IDLE combat sprite c02-unit-boarding-team, NOT a sheet. Image 1 is authoritative subject and gear reference, first cell: TWO astronauts working together, not one. Left/back orange-trim ivory armored engineer with enormous enclosed helmet, dark teal visor, backpack and hanging cable reel, holds compact industrial boarding cutter low. Right/front blue-trim ivory armored shield bearer with enormous enclosed helmet and dark teal visor carries ONE tall oval dark armored shield with broad cyan hexagon insert in front. Two humans, four legs total, no merged bodies. Both face screen-right in elevated three-quarter tactical view. Image 2 is STYLE ONLY: chunky exaggerated squat matte hand-painted 2D Legends of Kingdom Rush-inspired forms, oversized heads and gauntlets, stout short legs, bold near-black outer outlines, broad two-step cel shading, tiny details simplified. Do not copy fantasy subject. Composition engineering requirement: square canvas; pair occupies central x=20%..80% and y=18%..98%, both planted boot bottoms aligned at y=98% of full canvas, planted support center x=50%; only 2% transparent clearance below soles, ample 18% empty margin above helmets and 20% at sides for next poses. Do not auto-center vertically. Keep pair low on canvas with boots nearly bottom, not cropped. Neutral idle guarding pose. Native true transparent RGBA background, no backdrop, floor, shadow, haze, text, labels, panel, border, spark or muzzle flash. Opaque cyan inserts, no glossy plastic, no photorealism. Preserve actual two-person team and tool/shield gear from combat reference.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/original-quartet.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b7566c65-cc73-4563-8a04-01deeb19ea66.png",
+    "accepted": true
+  },
+  {
+    "phase": "idle",
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this IDLE boarding-team sprite to fix ONLY its authored canvas placement. Preserve exactly the same two astronauts, four legs, gear, pose, proportions, painting and transparent alpha. Keep same 1254x1254 canvas. Move complete paired-character artwork DOWN by about 33 pixels, without scaling, without cropping any pixel. Lowest foreground boot sole must be at y=1242, exactly 12 transparent pixels above bottom, not 44 pixels above bottom as now. This tiny bottom margin is essential. Keep everything else identical, there is plenty of empty space above. No added ground or shadow, no changes to design. Whole pair centered on support x approximately 650. True transparent background. Do NOT re-center or enlarge artwork.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-995060b4-1758-4981-8ee2-930732020ade.png",
+    "accepted": false,
+    "reason": "Clipped boots"
+  },
+  {
+    "phase": "walk-a",
+    "request": {
+      "prompt": "Use case: identity-preserve. Edit target Image 1 is accepted IDLE c02-unit-boarding-team. Produce ONE walk-a phase, not a sheet. Preserve exactly TWO astronauts: orange-trim ivory armored cutter operator left/back with backpack cable reel and blue-trim ivory shield bearer right/front with tall dark oval shield and cyan hexagon. Preserve enormous enclosed teal-visored helmets, stout short legs, chunky matte Legends of Kingdom Rush-inspired painting, bold outlines, broad cel shading, color and exact gear. Image 2 is original combat quartet for motion only. Forward WALK-A stride. Both astronauts move screen-right together, orange operator's near leg swings forward with heel lifted and other boot planted, blue bearer's near boot plants ahead while far knee bends behind. Preserve readable four-leg anatomy. Tool stays low; shield stays in front. Clear changes in leg silhouette and a modest forward lean, not just translated idle. Critical common canvas: same native 1254x1254 as Image 1, same character head/body pixel size, same pair body center x650, deepest planted sole y1210. Leave 44px transparent bottom clearance just like Image 1. Preserve full artwork and all limbs inside canvas. No autozoom, no cropping, no vertical recentering, no equipment substitution. No background, ground shadow, haze, text, frame, labels. Genuine transparent RGBA background.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/original-quartet.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d100fe1c-9f9e-4cea-a0b9-c2db4ee41e7d.png",
+    "accepted": true,
+    "reason": "Distinct forward stride"
+  },
+  {
+    "phase": "attack",
+    "request": {
+      "prompt": "Use case: identity-preserve. Edit target Image 1 is accepted IDLE c02-unit-boarding-team. Produce ONE attack phase, not a sheet. Preserve exactly TWO astronauts: orange-trim ivory armored cutter operator left/back with backpack cable reel and blue-trim ivory shield bearer right/front with tall dark oval shield and cyan hexagon. Preserve enormous enclosed teal-visored helmets, stout short legs, chunky matte Legends of Kingdom Rush-inspired painting, bold outlines, broad cel shading, color and exact gear. Image 2 is original combat quartet for motion only. ATTACK bracing. Orange engineer raises the industrial boarding cutter horizontally with both hands and extends its barrel screen-right past shield at chest height. Blue teammate angles oval shield slightly screen-right and braces on bent knees. Both pairs of boots grounded. One short opaque cyan cutter tip only, no beam or sparks. Clear upper-body/arm action different from idle. Do not lose cable reel. Critical common canvas: same native 1254x1254 as Image 1, same character head/body pixel size, same pair body center x650, deepest planted sole y1210. Leave 44px transparent bottom clearance just like Image 1. Preserve full artwork and all limbs inside canvas. No autozoom, no cropping, no vertical recentering, no equipment substitution. No background, ground shadow, haze, text, frame, labels. Genuine transparent RGBA background.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/original-quartet.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8c069105-9076-457d-b091-3825847cac52.png",
+    "accepted": false,
+    "reason": "Rejected five boots"
+  },
+  {
+    "phase": "walk-b",
+    "request": {
+      "prompt": "Use case: identity-preserve. Edit target Image 1 is accepted IDLE c02-unit-boarding-team. Produce ONE walk-b phase, not a sheet. Preserve exactly TWO astronauts: orange-trim ivory armored cutter operator left/back with backpack cable reel and blue-trim ivory shield bearer right/front with tall dark oval shield and cyan hexagon. Preserve enormous enclosed teal-visored helmets, stout short legs, chunky matte Legends of Kingdom Rush-inspired painting, bold outlines, broad cel shading, color and exact gear. Image 2 is original combat quartet for motion only. Opposite WALK-B stride, NOT mirrored. Orange operator's near boot plants behind and far knee advances forward; blue bearer's near knee bends back with lifted boot and far boot plants forward. Keep same screen-right facing. Tool low and shield front. Opposite leg silhouette to normal forward stride. Two figures, four anatomical legs only. Critical common canvas: same native 1254x1254 as Image 1, same character head/body pixel size, same pair body center x650, deepest planted sole y1210. Leave 44px transparent bottom clearance just like Image 1. Preserve full artwork and all limbs inside canvas. No autozoom, no cropping, no vertical recentering, no equipment substitution. No background, ground shadow, haze, text, frame, labels. Genuine transparent RGBA background.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-boarding-team/original-quartet.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a3a5b33b-a051-4f13-8148-cdc4237404a1.png",
+    "accepted": false,
+    "reason": "Rejected repeated walk-a contacts"
+  },
+  {
+    "phase": "attack",
+    "request": {
+      "prompt": "Use case: precise-object-edit. Fix anatomical error ONLY in Image 1 attack pose. There are FIVE boot shapes, but two people must have FOUR legs and FOUR boots total. Remove the extra blue armored bent leg and boot immediately left of the shield at image x=650,y=1100. Keep orange operator's TWO legs (leftmost boot x250 and rear boot x530), and shield bearer's TWO legs (boot below shield x850 and rightmost boot x1110). The region vacated by extra third blue leg should be transparent negative space. Preserve raised cutter, orange operator, blue bearer, cable reel, oval shield, all other armor, exact sizes, head positions, source1254x1254 canvas and full pose baseline. No crop, no scale, no recenter. True transparent alpha, no shadow. Make exactly FOUR boots, not five.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-491a1ad5-4b2d-4ea6-ab2f-194b8ca6ae90.png",
+    "accepted": true
+  },
+  {
+    "phase": "walk-b",
+    "request": {
+      "prompt": "Use case: identity-preserve. Image 1 is WALK-A and Image 2 is idle. Create genuinely opposite WALK-B stride, not nearly identical WALK-A. Keep TWO astronauts, same upper bodies, orange low cutter/cable reel, blue oval shield, palette, chunky matte 2D painting, same facing screen-right. Change legs decisively: ORANGE LEFTMOST leg must now reach FORWARD toward screen-right with foot planted under center x500; ORANGE OTHER leg extends BACK toward screen-left with boot lifted at x260,y1070. BLUE RIGHTMOST leg must bend BACK with boot visibly LIFTED at x1000,y1070; BLUE OTHER leg extends FORWARD with planted boot at x1100,y1210. Exactly four legs and four boots. Opposite foot contacts, not a mirror of entire character, not same forward raised orange boot as Image 1. Preserve helmets and torso same positions and size on1254x1254 canvas. Planted boot y1210 with44px bottom margin. Entire silhouette inside canvas, transparent RGBA, no shadow, no blur, no text. Shield stays same hand. No new equipment.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png"
+      ],
+      "transparent_background": true
+    },
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e7781131-06f4-4463-a2b8-2e1e6627553d.png",
+    "accepted": true
+  }
+]

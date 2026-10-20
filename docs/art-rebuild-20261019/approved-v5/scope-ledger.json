@@ -4,9 +4,9 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 576,
+    "formalBound": 584,
     "boundByCategory": {
-      "battle-prop": 64,
+      "battle-prop": 68,
       "combat-unit": 41,
       "equipment": 95,
       "faction-kit": 12,
@@ -17,9 +17,9 @@
       "narrative-static": 80,
       "skill": 96,
       "status": 48,
-      "terrain": 36
+      "terrain": 40
     },
-    "rawPreservedTopics": 576,
+    "rawPreservedTopics": 585,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -10190,8 +10190,13 @@
       "category": "combat-unit",
       "label": "接舷队",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11324,13 +11329,20 @@
       "category": "terrain",
       "label": "赫沙玻璃海",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/hesha-glass-sea/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-hesha-glass-sea.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Declared source windows with exact historical native32 alpha masks and matching cardinal edges; native integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c02-terrain-hesha-red-sand",
@@ -11338,13 +11350,20 @@
       "category": "terrain",
       "label": "赫沙赤砂沙丘",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/hesha-red-sand/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-hesha-red-sand.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Declared source windows with exact historical native32 alpha masks and matching cardinal edges; native integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c02-terrain-hesha-sandstorm-quicksand",
@@ -11352,13 +11371,20 @@
       "category": "terrain",
       "label": "赫沙沙暴流沙",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/hesha-sandstorm-quicksand/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-hesha-sandstorm-quicksand.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Declared source windows with exact historical native32 alpha masks and matching cardinal edges; native integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c02-terrain-hesha-sealed-waterway",
@@ -11366,13 +11392,20 @@
       "category": "terrain",
       "label": "赫沙密封水路",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/hesha-sealed-waterway/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-hesha-sealed-waterway.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Declared source windows with exact historical native32 alpha masks and matching cardinal edges; native integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c02-terrain-kairon-separation-ring",
@@ -18908,13 +18941,20 @@
       "category": "battle-prop",
       "label": "木盾墙组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-0fb580c9/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-0fb580c9.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Whole-canvas native64 contain export, unchanged two-pixel padding; source edge alpha<=1 and runtime edge zero, native white/black/olive integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-10c026c1",
@@ -18922,13 +18962,20 @@
       "category": "battle-prop",
       "label": "沙袋湿毡工程组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-10c026c1/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-10c026c1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Whole-canvas native64 contain export, unchanged two-pixel padding; source edge alpha<=1 and runtime edge zero, native white/black/olive integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-16fa4a1f",
@@ -18936,13 +18983,20 @@
       "category": "battle-prop",
       "label": "晾衣绳生活组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-16fa4a1f/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-16fa4a1f.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Whole-canvas native64 contain export, unchanged two-pixel padding; source edge alpha<=1 and runtime edge zero, native white/black/olive integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-1f1ab459",
@@ -18950,13 +19004,20 @@
       "category": "battle-prop",
       "label": "燃烧箭束危险组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-1f1ab459/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-1f1ab459.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent approved matte built-in imagegen source; original atlas identity, exact prompt and byte-identical raw/master preserved",
+        "export": "Whole-canvas native64 contain export, unchanged two-pixel padding; source edge alpha<=1 and runtime edge zero, native white/black/olive integration-owner review passed",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no invented scene consumer or HD density",
+        "liveGame": "pending; catalog/native review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-27872fa1",
