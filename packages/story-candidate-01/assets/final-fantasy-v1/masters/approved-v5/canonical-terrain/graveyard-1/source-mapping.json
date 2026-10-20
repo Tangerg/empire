@@ -1,0 +1,173 @@
+{
+  "topicId": "C01-TERRAIN-GRAVEYARD-1",
+  "label": "普通墓碑地",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-GRAVEYARD-1",
+    "topicId": "C01-TERRAIN-GRAVEYARD-1",
+    "label": "普通墓碑地",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-graveyard-1.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-1.png",
+      "sha256": "f1890d241b9e0a118692797a1dba86f8af59b30863ed292cbd3ab356fec0a1cd",
+      "pixelSHA256": "c7ff499df33c0a64c13d2c37e04cf000988ec84de1875fca543b48295e8748d1",
+      "dimensions": [
+        128,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      },
+      "alphaBounds": [
+        0,
+        0,
+        128,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-graveyard-1.png",
+      "sha256": "d9e38dde7dfc147930d301c471a7e5eb8bab5c495f8b323982c10c7273f22612",
+      "pixelSHA256": "1ff4b70e07fb2dd5670609aebf4bb3fb3d9866f9c367ad1cebb606705cc2d3e6",
+      "dimensions": [
+        256,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 16384
+      },
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      24
+    ],
+    "2": [
+      24
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 24,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+    "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+    "slotRow": 0,
+    "slotColumn": 0,
+    "slotNumber1Based": 1,
+    "cropXYXY": [
+      3,
+      3,
+      347,
+      558
+    ],
+    "cropSize": [
+      344,
+      555
+    ],
+    "variantCropXYXY": [
+      [
+        7,
+        74,
+        220,
+        287
+      ],
+      [
+        130,
+        74,
+        343,
+        287
+      ],
+      [
+        7,
+        274,
+        220,
+        487
+      ],
+      [
+        130,
+        274,
+        343,
+        487
+      ]
+    ],
+    "tileMode": "variants"
+  },
+  "observedSourceIdentity": "Bare grass-flecked earth enclosed by a ring of loose round stones",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Label says ordinary gravestone ground, but source slot contains no obvious standing gravestones; preserve observed ring rather than invent graves",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 15.07,
+      "maxRGBDifference": 50
+    },
+    "2": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 27.59,
+      "maxRGBDifference": 98
+    }
+  }
+}
