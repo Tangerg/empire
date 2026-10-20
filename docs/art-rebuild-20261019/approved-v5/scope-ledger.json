@@ -4,13 +4,13 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 543,
+    "formalBound": 544,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 20,
+      "fx": 21,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -8621,11 +8621,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/settling-dust/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-21.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent semantic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps, loop=False; four equal phases, lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-22",

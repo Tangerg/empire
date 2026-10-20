@@ -1,46 +1,46 @@
 {
-  "asOfUtc": "2026-10-20T06:24:00Z",
-  "formalSnapshot": "9469b9de408ce299bc46edb0858b3f7f2f160980",
+  "asOfUtc": "2026-10-20T06:42:00Z",
+  "formalSnapshot": "543 local; current ordinary push in progress",
   "assignments": [
     {
       "topics": [
-        "C01-FX-18"
+        "C01-FX-23"
       ],
-      "stage": "four sources; corrected terminal phase static-reviewed; integrity sealing"
+      "stage": "source identity and phase audit"
     },
     {
       "topics": [
-        "C01-FX-19"
+        "C01-FX-22"
       ],
-      "stage": "dense first phase saved; remaining shared-canvas phases generating"
+      "stage": "original hardware assembly audited; source generation"
     },
     {
       "topics": [
-        "c02-status-water",
-        "c02-status-heat",
-        "c02-status-ammo",
-        "c02-status-low-oxygen"
+        "c02-status-capture",
+        "c02-status-destroy",
+        "c02-status-escort",
+        "c02-status-evacuate"
       ],
-      "stage": "first two formally bound; last two generating"
+      "stage": "specific original board identities audited; source generation"
     },
     {
       "topics": [
-        "c02-status-spare-parts",
-        "c02-status-star-vein-energy",
-        "c02-status-cargo-capacity",
-        "c02-status-permission"
+        "c02-status-deliver-evidence",
+        "c02-status-hold-timer",
+        "c02-status-repair",
+        "c02-status-rescue"
       ],
-      "stage": "source identities audited; independent32px generation"
+      "stage": "next exclusive target-status group"
     },
     {
-      "scope": "all16 Gray Flag environment projections",
-      "stage": "read-only gap audit; southern two stone crossing engineering plan pending implementation"
+      "scope": "c01-12 two southern stone crossing components",
+      "stage": "isolated engineering: source-alpha junction clipping, actual full BoardView review,27focusedTS/6Python/typecheck; final exact-state/scene checks pending"
     }
   ],
   "canonicalRemaining": {
     "C01": {
       "equipment": 1,
-      "fx": 7
+      "fx": 3
     },
     "C02": {
       "narrative-static": 80,
@@ -49,7 +49,7 @@
       "faction-kit": 12,
       "terrain": 32,
       "interactive-structure": 24,
-      "status": 22,
+      "status": 8,
       "fx": 24,
       "hud": 16
     },
@@ -68,31 +68,9 @@
       "hud": 16
     }
   },
-  "counting": "526 formal canonical topics of1212; environment186 source cells separate from36 atlas sets/1188 derived components; liveGame0. Old-style candidates excluded.",
-  "queuedExclusiveGroups": [
-    [
-      "C01-FX-20"
-    ],
-    [
-      "C01-FX-21"
-    ],
-    [
-      "c02-status-overheated",
-      "c02-status-hypothermia",
-      "c02-status-spore-contamination",
-      "c02-status-memory-corrosion"
-    ],
-    [
-      "c02-status-local-support",
-      "c02-status-controlled",
-      "c02-status-shielded",
-      "c02-status-hidden"
-    ]
-  ],
+  "counting": "544 formal canonical topics of1212; C01 400, C02 144, C03 0. Environment186 source cells separate from36 atlases/1188 derived slots; liveGame0.",
+  "queuedExclusiveGroups": [],
   "unassignedFinalC01Effects": [
-    "C01-FX-22",
-    "C01-FX-23",
     "C01-FX-24"
-  ],
-  "reservedSlot": "next completed environment audit slot reserved for requested parent memory update; no active source generation interrupted"
+  ]
 }

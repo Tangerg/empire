@@ -36,7 +36,7 @@
   "liveGameVerified": false,
   "countsTowardFormalCategory": false,
   "formalSourceContractPass": true,
-  "visualQA": "At actual 32px the dark hood, two cyan eyes, large blocking rock and two colored plant clusters remain readable across white/black/olive. Minor leaves and rock facet boundaries intentionally simplify. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "visualQA": "At actual 32px the dark hood, two cyan eyes, large blocking rock and two colored plant clusters remain readable across white/black/olive. Minor leaves and rock facet boundaries intentionally simplify. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze. Native32 caveat: the cyan eyes are still very small details and are not as readable as at source512; acceptance relies on the clear hood, cover-rock and plant silhouette rather than claiming equal eye detail at both sizes.",
   "fullNativeWhiteInspected": true,
   "source512BlackWhiteOliveInspected": true,
   "actual32ThreeBackgroundInspected": true,

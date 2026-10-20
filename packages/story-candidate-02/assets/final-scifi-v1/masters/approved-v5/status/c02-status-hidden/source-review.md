@@ -14,3 +14,5 @@ Raw and master bytes match. Source canvas edge max alpha: 1. Two-pixel native bo
 
 ## Scope
 Source ready for parent integration only. C02 catalog-only; no authored consumer, formal runtime count or live HUD claim. 32x32, anchor16,16, no HD.
+
+Native32 caveat: the cyan eyes are still very small details and are not as readable as at source512; acceptance relies on the clear hood, cover-rock and plant silhouette rather than claiming equal eye detail at both sizes.

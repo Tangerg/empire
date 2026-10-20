@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-21": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "debris-lift",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/debris-lift/master.png",
+          "sha256": "650786622348f4c6aead5311b1c52182fc86bba00be2f3307d8b3608c4f8405b"
+        },
+        {
+          "phase": "rubble-scatter",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/rubble-scatter/master.png",
+          "sha256": "f3dc33304bc7acf880ec729225fc2135bee34a0e0eebbfbeb5fc08671dd4a53c"
+        },
+        {
+          "phase": "dust-impact",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/dust-impact/master.png",
+          "sha256": "18183042c350fa81ad469b1349b50eb49fd4f260adc6c58d602c07073a299e78"
+        },
+        {
+          "phase": "settling-dust",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/settling-dust/master.png",
+          "sha256": "3233db97a87133b010201554d72fc3172bbc6d381eedd7b1c2894ba433932327"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  },
+  "note": "Exact phase order and full source/static quartet accepted by parent. Source paths are proposed repository destinations. Preserve 12 fps, loop=false, normal blend and anchor [16,16]. Catalog-only: current structure attacks use weapon FX01–08, not FX21. No inferred 420/500 ms lifetime."
+}

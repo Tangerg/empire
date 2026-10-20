@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "topicId": "C01-FX-21",
   "label": "结构受损",
-  "status": "Phase order approved by parent on 2026-10-20T06:31:20Z; peak baseline generation in progress",
+  "status": "accepted-source-static-phase-candidate",
   "phaseOrder": [
     "debris-lift",
     "rubble-scatter",
@@ -191,5 +191,6 @@
     "Full-source black/white, native32/64 on six backgrounds, full/terminal review and exact single-play decoded-frame verification.",
     "No actual FX21 consumer or inferred 420/500 ms lifecycle. No gameplay binding added by this source task.",
     "No browser/live playback claim."
-  ]
+  ],
+  "parentFinalStaticAcceptance": "Parent accepted full native and terminal sequence on 2026-10-20T06:39:54Z: stone/wood scatter, warm impact dust, then sparse rubble and settling dust."
 }

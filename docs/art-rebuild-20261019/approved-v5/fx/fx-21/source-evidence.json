@@ -1,0 +1,90 @@
+{
+  "topicId": "C01-FX-21",
+  "label": "结构受损",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+    "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+    "atlasSize": [
+      1536,
+      1024
+    ],
+    "row1Based": 1,
+    "originalSlotSize": [
+      384,
+      256
+    ],
+    "originalInsetSize": [
+      374,
+      246
+    ],
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-row.png",
+    "peakSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-f2.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-21.png",
+    "builderMapping": "Legacy build_fx appends four rows per atlas; FX21 is atlas06 row1. Unlike atlas05, this original board is 1536x1024; new sources still use the approved shared 1254-square contract.",
+    "backingRisk": "Original RGBA board contains gray/white vignette backing. Alpha ranges 0..254 and outer-edge alpha reaches252. RGBA mode is not proof of usable transparency. Recreate only debris and actual localized dust; do not copy the backing or perform chroma/alpha cleanup."
+  },
+  "originalRowOneBased": 1,
+  "semanticPhases": [
+    "Small cluster of angular gray stones, ochre-brown splintered wood and a few chips lifting; no dust plume yet.",
+    "More scattered stone and wood fragments with a larger foreground gray rock and additional chips; still no major dust plume.",
+    "Broadest flying wood/stone debris with a warm beige-peach dust burst at the lower central impact origin.",
+    "Fewer remaining stone/wood fragments and a residual warm dust plume settling over the same lower central area."
+  ],
+  "contract": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/generation-contract.json",
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-21",
+    "topicId": "C01-FX-21",
+    "label": "结构受损",
+    "category": "fx",
+    "png": "runtime/fx/fx-21.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/consumer-audit.json",
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/current-runtime@1x.png",
+      "sha256": "3e14d086fff0aaa2046fd06ea983c79f3e9763b93229142af148add70e325024"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/current-runtime@2x.png",
+      "sha256": "8e999f656e56b6adc41380bc9de3c055147d4bcdae8e2c74808d16bc911951d5"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-board.png",
+      "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-f0.png",
+      "sha256": "7095bd35a20f13feaac6cb9e6dc1b4fd658749e5badb19011d10fa8e9872bc0a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-f1.png",
+      "sha256": "3fcbea8590b959c1e98d41fcd34167bff67132cba7010573afb9aedd26bd34a9"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-f2.png",
+      "sha256": "3781175528b230022af2ff517a24431dbf1132a54eb70ffaf53c46743db04367"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-f3.png",
+      "sha256": "c006261e4dacf26acb74f3bbbb7d791d4c536026c6a53f9de32f779bf803b967"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-21/reference/original-row.png",
+      "sha256": "422e37463f2800d483a2f0bd62c2862050371c9428b7168813e0dddaf22428a2"
+    }
+  ]
+}

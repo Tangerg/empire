@@ -1,0 +1,875 @@
+{
+  "measurement": "Unedited source alpha mass, visible bounds and connected components at alpha >=128. The warm-color mask is a diagnostic for dust only in phases3/4 and can include warm fragment edges. No mask is applied to artwork.",
+  "frames": [
+    {
+      "phase": "debris-lift",
+      "sourceHash": "650786622348f4c6aead5311b1c52182fc86bba00be2f3307d8b3608c4f8405b",
+      "alphaMassSourcePx": 204003.74901960784,
+      "visibleAreaAlpha128": 205729,
+      "visibleBoundsAlpha128": [
+        210,
+        309,
+        1123,
+        1161
+      ],
+      "largeComponentCountAlpha128": 13,
+      "largestComponentAreaAlpha128": 51892,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            733,
+            753,
+            1031,
+            1020
+          ],
+          "area": 51892,
+          "center": [
+            882.0,
+            886.5
+          ]
+        },
+        {
+          "bbox": [
+            210,
+            596,
+            523,
+            844
+          ],
+          "area": 38311,
+          "center": [
+            366.5,
+            720.0
+          ]
+        },
+        {
+          "bbox": [
+            500,
+            368,
+            699,
+            647
+          ],
+          "area": 37038,
+          "center": [
+            599.5,
+            507.5
+          ]
+        },
+        {
+          "bbox": [
+            794,
+            309,
+            1051,
+            655
+          ],
+          "area": 35357,
+          "center": [
+            922.5,
+            482.0
+          ]
+        },
+        {
+          "bbox": [
+            376,
+            991,
+            538,
+            1142
+          ],
+          "area": 16538,
+          "center": [
+            457.0,
+            1066.5
+          ]
+        },
+        {
+          "bbox": [
+            885,
+            1043,
+            1019,
+            1161
+          ],
+          "area": 7187,
+          "center": [
+            952.0,
+            1102.0
+          ]
+        },
+        {
+          "bbox": [
+            306,
+            466,
+            405,
+            559
+          ],
+          "area": 4458,
+          "center": [
+            355.5,
+            512.5
+          ]
+        },
+        {
+          "bbox": [
+            226,
+            804,
+            314,
+            871
+          ],
+          "area": 4135,
+          "center": [
+            270.0,
+            837.5
+          ]
+        },
+        {
+          "bbox": [
+            734,
+            711,
+            789,
+            786
+          ],
+          "area": 3082,
+          "center": [
+            761.5,
+            748.5
+          ]
+        },
+        {
+          "bbox": [
+            1033,
+            633,
+            1104,
+            691
+          ],
+          "area": 2464,
+          "center": [
+            1068.5,
+            662.0
+          ]
+        },
+        {
+          "bbox": [
+            1077,
+            915,
+            1123,
+            967
+          ],
+          "area": 1842,
+          "center": [
+            1100.0,
+            941.0
+          ]
+        },
+        {
+          "bbox": [
+            428,
+            582,
+            477,
+            633
+          ],
+          "area": 1726,
+          "center": [
+            452.5,
+            607.5
+          ]
+        },
+        {
+          "bbox": [
+            649,
+            1061,
+            700,
+            1111
+          ],
+          "area": 1699,
+          "center": [
+            674.5,
+            1086.0
+          ]
+        }
+      ],
+      "warmDustDiagnosticArea": null,
+      "warmDustDiagnosticBounds": null
+    },
+    {
+      "phase": "rubble-scatter",
+      "sourceHash": "f3dc33304bc7acf880ec729225fc2135bee34a0e0eebbfbeb5fc08671dd4a53c",
+      "alphaMassSourcePx": 264445.7098039216,
+      "visibleAreaAlpha128": 266660,
+      "visibleBoundsAlpha128": [
+        158,
+        192,
+        1218,
+        1121
+      ],
+      "largeComponentCountAlpha128": 19,
+      "largestComponentAreaAlpha128": 71012,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            471,
+            793,
+            798,
+            1121
+          ],
+          "area": 71012,
+          "center": [
+            634.5,
+            957.0
+          ]
+        },
+        {
+          "bbox": [
+            788,
+            352,
+            1027,
+            610
+          ],
+          "area": 43513,
+          "center": [
+            907.5,
+            481.0
+          ]
+        },
+        {
+          "bbox": [
+            331,
+            192,
+            594,
+            598
+          ],
+          "area": 32945,
+          "center": [
+            462.5,
+            395.0
+          ]
+        },
+        {
+          "bbox": [
+            935,
+            699,
+            1218,
+            956
+          ],
+          "area": 28865,
+          "center": [
+            1076.5,
+            827.5
+          ]
+        },
+        {
+          "bbox": [
+            654,
+            577,
+            898,
+            839
+          ],
+          "area": 26956,
+          "center": [
+            776.0,
+            708.0
+          ]
+        },
+        {
+          "bbox": [
+            216,
+            576,
+            392,
+            733
+          ],
+          "area": 19238,
+          "center": [
+            304.0,
+            654.5
+          ]
+        },
+        {
+          "bbox": [
+            182,
+            843,
+            305,
+            948
+          ],
+          "area": 6239,
+          "center": [
+            243.5,
+            895.5
+          ]
+        },
+        {
+          "bbox": [
+            290,
+            952,
+            389,
+            1041
+          ],
+          "area": 5999,
+          "center": [
+            339.5,
+            996.5
+          ]
+        },
+        {
+          "bbox": [
+            359,
+            771,
+            469,
+            862
+          ],
+          "area": 5898,
+          "center": [
+            414.0,
+            816.5
+          ]
+        },
+        {
+          "bbox": [
+            868,
+            988,
+            964,
+            1075
+          ],
+          "area": 4330,
+          "center": [
+            916.0,
+            1031.5
+          ]
+        },
+        {
+          "bbox": [
+            1060,
+            482,
+            1147,
+            576
+          ],
+          "area": 3896,
+          "center": [
+            1103.5,
+            529.0
+          ]
+        },
+        {
+          "bbox": [
+            477,
+            641,
+            532,
+            720
+          ],
+          "area": 3097,
+          "center": [
+            504.5,
+            680.5
+          ]
+        },
+        {
+          "bbox": [
+            348,
+            457,
+            421,
+            536
+          ],
+          "area": 3014,
+          "center": [
+            384.5,
+            496.5
+          ]
+        },
+        {
+          "bbox": [
+            755,
+            304,
+            813,
+            368
+          ],
+          "area": 2642,
+          "center": [
+            784.0,
+            336.0
+          ]
+        },
+        {
+          "bbox": [
+            961,
+            675,
+            1027,
+            730
+          ],
+          "area": 2546,
+          "center": [
+            994.0,
+            702.5
+          ]
+        },
+        {
+          "bbox": [
+            1057,
+            966,
+            1107,
+            1021
+          ],
+          "area": 1939,
+          "center": [
+            1082.0,
+            993.5
+          ]
+        },
+        {
+          "bbox": [
+            642,
+            429,
+            690,
+            484
+          ],
+          "area": 1839,
+          "center": [
+            666.0,
+            456.5
+          ]
+        },
+        {
+          "bbox": [
+            158,
+            751,
+            201,
+            798
+          ],
+          "area": 1506,
+          "center": [
+            179.5,
+            774.5
+          ]
+        },
+        {
+          "bbox": [
+            264,
+            477,
+            302,
+            518
+          ],
+          "area": 1186,
+          "center": [
+            283.0,
+            497.5
+          ]
+        }
+      ],
+      "warmDustDiagnosticArea": null,
+      "warmDustDiagnosticBounds": null
+    },
+    {
+      "phase": "dust-impact",
+      "sourceHash": "18183042c350fa81ad469b1349b50eb49fd4f260adc6c58d602c07073a299e78",
+      "alphaMassSourcePx": 539562.431372549,
+      "visibleAreaAlpha128": 544733,
+      "visibleBoundsAlpha128": [
+        98,
+        258,
+        1184,
+        1100
+      ],
+      "largeComponentCountAlpha128": 13,
+      "largestComponentAreaAlpha128": 470228,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            113,
+            321,
+            1181,
+            1100
+          ],
+          "area": 470228,
+          "center": [
+            647.0,
+            710.5
+          ]
+        },
+        {
+          "bbox": [
+            403,
+            259,
+            605,
+            543
+          ],
+          "area": 38881,
+          "center": [
+            504.0,
+            401.0
+          ]
+        },
+        {
+          "bbox": [
+            214,
+            365,
+            327,
+            487
+          ],
+          "area": 6666,
+          "center": [
+            270.5,
+            426.0
+          ]
+        },
+        {
+          "bbox": [
+            187,
+            738,
+            288,
+            822
+          ],
+          "area": 5810,
+          "center": [
+            237.5,
+            780.0
+          ]
+        },
+        {
+          "bbox": [
+            677,
+            369,
+            745,
+            463
+          ],
+          "area": 4282,
+          "center": [
+            711.0,
+            416.0
+          ]
+        },
+        {
+          "bbox": [
+            1077,
+            868,
+            1162,
+            942
+          ],
+          "area": 4219,
+          "center": [
+            1119.5,
+            905.0
+          ]
+        },
+        {
+          "bbox": [
+            102,
+            899,
+            183,
+            968
+          ],
+          "area": 3959,
+          "center": [
+            142.5,
+            933.5
+          ]
+        },
+        {
+          "bbox": [
+            1045,
+            485,
+            1130,
+            558
+          ],
+          "area": 3623,
+          "center": [
+            1087.5,
+            521.5
+          ]
+        },
+        {
+          "bbox": [
+            783,
+            258,
+            842,
+            334
+          ],
+          "area": 3055,
+          "center": [
+            812.5,
+            296.0
+          ]
+        },
+        {
+          "bbox": [
+            360,
+            462,
+            402,
+            510
+          ],
+          "area": 1342,
+          "center": [
+            381.0,
+            486.0
+          ]
+        },
+        {
+          "bbox": [
+            98,
+            817,
+            136,
+            853
+          ],
+          "area": 1019,
+          "center": [
+            117.0,
+            835.0
+          ]
+        },
+        {
+          "bbox": [
+            130,
+            688,
+            164,
+            723
+          ],
+          "area": 884,
+          "center": [
+            147.0,
+            705.5
+          ]
+        },
+        {
+          "bbox": [
+            1152,
+            968,
+            1184,
+            1000
+          ],
+          "area": 765,
+          "center": [
+            1168.0,
+            984.0
+          ]
+        }
+      ],
+      "warmDustDiagnosticArea": 292229,
+      "warmDustDiagnosticBounds": [
+        108,
+        271,
+        1175,
+        1100
+      ]
+    },
+    {
+      "phase": "settling-dust",
+      "sourceHash": "3233db97a87133b010201554d72fc3172bbc6d381eedd7b1c2894ba433932327",
+      "alphaMassSourcePx": 291859.8352941176,
+      "visibleAreaAlpha128": 294604,
+      "visibleBoundsAlpha128": [
+        227,
+        400,
+        1087,
+        1102
+      ],
+      "largeComponentCountAlpha128": 11,
+      "largestComponentAreaAlpha128": 191887,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            273,
+            687,
+            1046,
+            1102
+          ],
+          "area": 191887,
+          "center": [
+            659.5,
+            894.5
+          ]
+        },
+        {
+          "bbox": [
+            375,
+            400,
+            715,
+            793
+          ],
+          "area": 82492,
+          "center": [
+            545.0,
+            596.5
+          ]
+        },
+        {
+          "bbox": [
+            259,
+            570,
+            369,
+            689
+          ],
+          "area": 9597,
+          "center": [
+            314.0,
+            629.5
+          ]
+        },
+        {
+          "bbox": [
+            227,
+            965,
+            300,
+            1036
+          ],
+          "area": 3900,
+          "center": [
+            263.5,
+            1000.5
+          ]
+        },
+        {
+          "bbox": [
+            884,
+            602,
+            930,
+            651
+          ],
+          "area": 1561,
+          "center": [
+            907.0,
+            626.5
+          ]
+        },
+        {
+          "bbox": [
+            401,
+            735,
+            437,
+            771
+          ],
+          "area": 1008,
+          "center": [
+            419.0,
+            753.0
+          ]
+        },
+        {
+          "bbox": [
+            1048,
+            756,
+            1086,
+            791
+          ],
+          "area": 1002,
+          "center": [
+            1067.0,
+            773.5
+          ]
+        },
+        {
+          "bbox": [
+            271,
+            893,
+            307,
+            929
+          ],
+          "area": 1000,
+          "center": [
+            289.0,
+            911.0
+          ]
+        },
+        {
+          "bbox": [
+            745,
+            472,
+            778,
+            508
+          ],
+          "area": 911,
+          "center": [
+            761.5,
+            490.0
+          ]
+        },
+        {
+          "bbox": [
+            269,
+            520,
+            297,
+            549
+          ],
+          "area": 655,
+          "center": [
+            283.0,
+            534.5
+          ]
+        },
+        {
+          "bbox": [
+            1058,
+            882,
+            1087,
+            909
+          ],
+          "area": 591,
+          "center": [
+            1072.5,
+            895.5
+          ]
+        }
+      ],
+      "warmDustDiagnosticArea": 266769,
+      "warmDustDiagnosticBounds": [
+        242,
+        400,
+        1079,
+        1092
+      ]
+    }
+  ],
+  "sourceAlphaMass": [
+    204003.74901960784,
+    264445.7098039216,
+    539562.431372549,
+    291859.8352941176
+  ],
+  "visibleBoundsAlpha128": [
+    [
+      210,
+      309,
+      1123,
+      1161
+    ],
+    [
+      158,
+      192,
+      1218,
+      1121
+    ],
+    [
+      98,
+      258,
+      1184,
+      1100
+    ],
+    [
+      227,
+      400,
+      1087,
+      1102
+    ]
+  ],
+  "peakAndTerminalOverallBottomSourceY": [
+    1100,
+    1102
+  ],
+  "peakTerminalOverallBottomDifferenceLogicalPx": 0.044657097288676235,
+  "peakAndTerminalWarmDustDiagnosticBounds": [
+    [
+      108,
+      271,
+      1175,
+      1100
+    ],
+    [
+      242,
+      400,
+      1079,
+      1092
+    ]
+  ],
+  "interpretation": "The source starts with fragments only, scatters more rubble, introduces localized warm dust at the impact peak, then removes most large debris while rounded dust puffs remain. Same full canvas and transform throughout.",
+  "caveats": [
+    "The original source changes fragment distribution and sizes; not every stone/splinter is claimed to be a continuously tracked ballistic particle.",
+    "Overall lower bounds include rocks and chips, so their close match is not proof of exact dust contact geometry.",
+    "Warm dust color thresholds can include fragment edges and are diagnostic, not material-perfect segmentation.",
+    "Source/static review and exact APNG timing do not establish observed live playback."
+  ],
+  "consumerBoundary": "Catalog-only. Structure events currently use weapon-selected FX01\u201308 via animateHit; no actual FX21 lifetime is assigned.",
+  "browserObserved": false
+}

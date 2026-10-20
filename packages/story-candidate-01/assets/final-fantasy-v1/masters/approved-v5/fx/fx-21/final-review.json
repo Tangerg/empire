@@ -1,0 +1,95 @@
+{
+  "topicId": "C01-FX-21",
+  "label": "结构受损",
+  "status": "accepted-source-static-phase-candidate",
+  "phaseOrder": [
+    "debris-lift",
+    "rubble-scatter",
+    "dust-impact",
+    "settling-dust"
+  ],
+  "phaseOrderApproval": "Parent approved exact phase order on 2026-10-20T06:31:20Z",
+  "parentFinalStaticPhaseAcceptance": "Parent accepted full native and terminal sequence on 2026-10-20T06:39:54Z: stone/wood scatter, warm impact dust, then sparse rubble and settling dust.",
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": [],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    1,
+    0,
+    1,
+    0
+  ],
+  "sourceEdgeNonzeroSamples": [
+    6,
+    0,
+    83,
+    0
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "originalBackingEvidence": "qa/original-backing-evidence.json",
+  "originalOuterEdgeAlphaMax": 252,
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeFullAndTerminalReviewed": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "subjectPreserved": "Gray faceted stones, jagged ochre wood, small chips, localized warm beige/peach impact dust and settled rounded dust.",
+  "peakTerminalOverallBottomDifferenceLogicalPx": 0.044657097288676235,
+  "phaseReview": "qa/PHASE-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "sourceHashProof": "final-quartet.json",
+  "semanticCaveats": [
+    "The original source changes fragment distribution and sizes; not every stone/splinter is claimed to be a continuously tracked ballistic particle.",
+    "Overall lower bounds include rocks and chips, so their close match is not proof of exact dust contact geometry.",
+    "Warm dust color thresholds can include fragment edges and are diagnostic, not material-perfect segmentation.",
+    "Source/static review and exact APNG timing do not establish observed live playback."
+  ],
+  "APNGVerification": {
+    "proof": "qa/apng-timing-verification.json",
+    "files": 28,
+    "decodedFrames": 112,
+    "exact12fpsFiles": 14,
+    "slowDiagnosticFiles": 14,
+    "everyDecodedFrameMatchesExpected": true,
+    "exactFrameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "numPlays": 1,
+    "loop": false,
+    "encodedFinalHold": false,
+    "removalRule": null,
+    "lifetimeOwner": "Future consumer; none currently bound"
+  },
+  "consumerAudit": "consumer-audit.json",
+  "authoredSceneConsumer": null,
+  "currentStructureAttackBinding": "Weapon-selected FX01–08, not FX21",
+  "hit420msAssumed": false,
+  "heal500msAssumed": false,
+  "browserObserved": false,
+  "browserBlocker": "Established browser/socket restriction; no repeated browser attempts were made.",
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false
+}
