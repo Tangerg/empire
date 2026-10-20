@@ -1,0 +1,76 @@
+{
+  "sourceGate": "Actual source perimeter alpha <= 1; >= 2 rejected. All selected source perimeters are exactly alpha0.",
+  "frames": [
+    {
+      "phase": "bare-crescent",
+      "sourceSHA256": "3b87948d4f1b906eb569f896855ec5335989801e6143c70d5ed9e43bdcb9e2bb",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "actualCompositePerimeter": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full-source actual black/white composites and green-ground overview inspected. No matte rectangle, broad alpha wash, clipped outline or visible fringe. No source alpha cleanup was applied."
+    },
+    {
+      "phase": "contact-spark",
+      "sourceSHA256": "ab94507b8231dd2b2bac21d3ac42d38bbdeb7e0eebe763db8c1573d66af99ad5",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "actualCompositePerimeter": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full-source actual black/white composites and green-ground overview inspected. No matte rectangle, broad alpha wash, clipped outline or visible fringe. No source alpha cleanup was applied."
+    },
+    {
+      "phase": "spark-spray",
+      "sourceSHA256": "45149ee23b3c352b35cc32ac54acb6db21e08909f5e3fd60b4e442e6ebbbedb3",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "actualCompositePerimeter": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full-source actual black/white composites and green-ground overview inspected. No matte rectangle, broad alpha wash, clipped outline or visible fringe. No source alpha cleanup was applied."
+    },
+    {
+      "phase": "residual-sparks",
+      "sourceSHA256": "6f6001b9c63007cf71c3c06efef444ad1fc54bd8d05194d5145fbc8029d43d2a",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "actualCompositePerimeter": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full-source actual black/white composites and green-ground overview inspected. No matte rectangle, broad alpha wash, clipped outline or visible fringe. No source alpha cleanup was applied."
+    }
+  ],
+  "finalPadding": "Every native32/64 cell has 2 logical pixels of alpha0 padding, 4 physical pixels at 2x.",
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeSixBackgroundsReviewed": true
+}

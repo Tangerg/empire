@@ -39,6 +39,7 @@ PHASE_ORDERS = {
     'C01-FX-19': ['dense-veil', 'curling-veil', 'veil-breakup', 'leaf-wisps'],
     'C01-FX-20': ['bare-crescent', 'contact-spark', 'spark-spray', 'residual-sparks'],
     'C01-FX-21': ['debris-lift', 'rubble-scatter', 'dust-impact', 'settling-dust'],
+    'C01-FX-22': ['loose-hardware', 'seating-impact', 'repair-swirl', 'finished-fit'],
     **AMBIENT_PHASE_ORDERS,
 }
 

@@ -4,13 +4,13 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 540,
+    "formalBound": 541,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 19,
+      "fx": 20,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -19,7 +19,7 @@
       "status": 38,
       "terrain": 32
     },
-    "rawPreservedTopics": 542,
+    "rawPreservedTopics": 543,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -8592,14 +8592,21 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/bare-crescent/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/contact-spark/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/residual-sparks/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/spark-spray/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-20.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent semantic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps, loop=False; four equal phases, lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-21",
@@ -8608,7 +8615,9 @@
       "label": "结构受损",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/dust-impact/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/debris-lift/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/dust-impact/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/rubble-scatter/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -15017,8 +15026,10 @@
       "category": "status",
       "label": "护盾",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-shielded/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

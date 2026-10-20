@@ -1,0 +1,112 @@
+{
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-05.png",
+  "sourceBoardSha256": "6e77f15cbe15d1b5a1ffc441daf8f29819161d6b6b68b3a9ae50aa47979c52e5",
+  "sourceBoardMode": "RGB",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceRowBoundsXYXY": [
+    0,
+    940,
+    1254,
+    1254
+  ],
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-20",
+    "topicId": "C01-FX-20",
+    "label": "援护盾",
+    "category": "fx",
+    "png": "runtime/fx/fx-20.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "earlierAuditManifestAnchor": [
+    16,
+    24
+  ],
+  "cropChecks": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        945,
+        309,
+        1249
+      ],
+      "path": "reference/original-f0.png",
+      "sha256": "2e0aaf2843c76566f662b1cb38ffa584cfb2e82519998cc82e5573b24ac95e48",
+      "matchesPriorAudit": true,
+      "sourceObservation": "curved blue-gray shield stroke"
+    },
+    {
+      "phase": 1,
+      "box": [
+        319,
+        945,
+        622,
+        1249
+      ],
+      "path": "reference/original-f1.png",
+      "sha256": "98ecc44418079be6a1bb70e71563690bb16be4146565e515f99e6613e58c280b",
+      "matchesPriorAudit": true,
+      "sourceObservation": "small amber impact spark on arc"
+    },
+    {
+      "phase": 2,
+      "box": [
+        632,
+        945,
+        935,
+        1249
+      ],
+      "path": "reference/original-f2.png",
+      "sha256": "33ecb8702e444d7f8d7e1555eea16a5fe7e79960c239acd40fae5f7ccc571960",
+      "matchesPriorAudit": true,
+      "sourceObservation": "peak spark spray on shield arc"
+    },
+    {
+      "phase": 3,
+      "box": [
+        945,
+        945,
+        1249,
+        1249
+      ],
+      "path": "reference/original-f3.png",
+      "sha256": "c637f9d6dde103d476389de9a3adf9cfd3670de04551b7e98d0055b284f08055",
+      "matchesPriorAudit": true,
+      "sourceObservation": "few fading sparks with arc"
+    }
+  ],
+  "topicId": "C01-FX-20",
+  "label": "援护盾",
+  "semanticName": "guard-shield",
+  "sourceRow1Based": 4,
+  "currentConsumer": "No literal C01-FX-20/fx-20 or guard-shield animation consumer found in repository source. Guard rules and banner-guard flavor text exist but do not bind this FX. Catalog-only.",
+  "storyIdentity": "A narrow blue-gray blocking crescent, convex right and open left, takes an amber impact at its mid-right contour. Spark spray grows then recedes while the arc remains. No solid shield face, heraldry, wearer or ground emitter.",
+  "storySource": "Original atlas 05 row 4 is the primary shape/motion reference. art-assets/07-topic-catalog.md line 446 labels it 援护盾. packages/story-candidate-01/src/units.ts line 65 describes the banner guard support role; this is thematic context, not a specific FX consumer.",
+  "proposedPhaseOrder": [
+    "bare-crescent",
+    "contact-spark",
+    "spark-spray",
+    "residual-sparks"
+  ],
+  "proposalStatus": "Parent approved phase names/order and peak-first composition on 2026-10-20, with shared crescent registration and stable mid-right contact point.",
+  "sourceAlphaWarning": "Original board is RGB with magenta backdrop. Legacy keyed crops are chroma-degraded and have some edge residue; do not reuse their alpha or colored pixels. New source outlines and spark tips must be complete with genuine transparent exterior and left-side negative space.",
+  "timing": "Four equal 1/12-second frames, one play. No authored consumer or scene lifetime established.",
+  "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/fx-source-audit.json",
+  "sourceAuditSHA256": "4e7e77ceba7077e10a7b16ad7869fda6098ba618872a8a1ef3d136f6616c1cd2"
+}

@@ -1,0 +1,72 @@
+{
+  "topicId": "C01-FX-20",
+  "label": "援护盾",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "bare-crescent",
+    "contact-spark",
+    "spark-spray",
+    "residual-sparks"
+  ],
+  "sourceCount": 4,
+  "imagegenAttemptCount": 4,
+  "rejectedAttemptCount": 0,
+  "referenceSnapshotCount": 6,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "sourceEdgeMaxima": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "sourceEdgeProof": "qa/source-edge-composite-proof.json",
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perFrameFitCropShiftFadeAlphaCleanup": false,
+  "native32And64SixBackgroundsReviewed": true,
+  "fullAndTerminalComparisonReviewed": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "parentStaticReview": "Parent reviewed the corrected native full/terminal quartet and accepted the semantic identity and natural tightening on 2026-10-20. This is static phase review, not live animation acceptance.",
+  "cohortReview": "qa/COHORT-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "actualCaveats": [
+    "The slender crescent remains fixed while the impact shape and detached spark cohort change. Fixed upper/lower material ROI best offsets are at most 1 source pixel per axis; blue-color diagnostic bounds vary by up to 9 source pixels, or 0.201 logical pixels. The colored-bound variation partly reflects shading/occlusion, not rigid-body travel.",
+    "At rows 590 through 630, the leftmost gold contact boundary in the initial and peak impact differs by at most 1 source pixel, or 0.022 logical pixels. This verifies attachment at the same mid-right contour, not an identical burst silhouette or centroid.",
+    "The contact phase has a compact starburst and six detached gold components; peak has a larger starburst and eleven detached components; terminal has six small detached gold components and no burst. The upper large streak and left-side shards retire; six terminal right-side embers are not all provable one-to-one continuations of the peak particles.",
+    "Spark paths and sizes are independently authored, not a constant-speed particle simulation. The peak-to-residual change removes the central star and much of the spray in one frame. Source alpha mass changes by +24.0%, +39.5%, then -36.9%, so the 12 fps peak decay may feel abrupt.",
+    "At native 32, fine residual embers and small chips are visually subordinate, especially against black/dark earth and bright stone; they are clearer at 64. The crescent silhouette and main impact remain readable across all six backgrounds.",
+    "The last pose retains the intact crescent with sparse sparks. No blank ending, runtime loop, extra final-frame duration, scene removal rule or 420/500 ms lifetime is inferred for this catalog-only effect. Only encoding and static phase review were verified; browser/game playback remains unobserved."
+  ],
+  "exactAPNGTimingVerified": true,
+  "apngCount": 28,
+  "verifiedDecodedFrames": 112,
+  "canonicalTiming": {
+    "fps": 12,
+    "loop": false,
+    "numPlays": 1,
+    "frameDurationSeconds": "1/12",
+    "sequenceSeconds": "1/3",
+    "encodedFinalFrameHold": false,
+    "old420msOr500msRemovalApplies": false,
+    "sceneRemovalMs": null
+  },
+  "diagnosticTiming": "Separate slow-diagnostic-repeat APNGs use 3 fps and infinite repetition, not the runtime contract.",
+  "browserObserved": false,
+  "browserReason": "Known blocked browser/GPU environment; no repeated escalation. Only encoding, decoded frame identity and static phase review are verified.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoCodeRuntimeOrGitWrites": false
+}

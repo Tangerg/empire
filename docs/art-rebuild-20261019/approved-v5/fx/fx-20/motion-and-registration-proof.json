@@ -1,0 +1,907 @@
+{
+  "topicId": "C01-FX-20",
+  "phaseOrder": [
+    "bare-crescent",
+    "contact-spark",
+    "spark-spray",
+    "residual-sparks"
+  ],
+  "method": "Blue/gold color-and-alpha diagnostic masks separate fixed crescent from authored sparks. Alpha128 blue mask uses B>R+8 and B>G+3. Gold mask uses R>B+30, G>B+10 and R>100. Masks are measurements only; no generated pixels are modified.",
+  "frames": {
+    "bare-crescent": {
+      "sourceSHA256": "3b87948d4f1b906eb569f896855ec5335989801e6143c70d5ed9e43bdcb9e2bb",
+      "sourceAlphaMass": 90479.38823529411,
+      "blueMaterialBounds": [
+        318,
+        177,
+        766,
+        1114
+      ],
+      "blueMaterialPixels": 69169,
+      "goldMaterialBounds": null,
+      "goldMaterialPixels": 0,
+      "goldComponentsOver100Pixels": [],
+      "detectedGoldComponents": 0,
+      "fixedMaterialROIs": {
+        "upper-crescent": {
+          "roi": [
+            285,
+            170,
+            620,
+            440
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        },
+        "lower-crescent": {
+          "roi": [
+            580,
+            850,
+            770,
+            1142
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 0.0
+        }
+      },
+      "contactRootAtRows590Through630": [],
+      "medianContactRootX": null
+    },
+    "contact-spark": {
+      "sourceSHA256": "ab94507b8231dd2b2bac21d3ac42d38bbdeb7e0eebe763db8c1573d66af99ad5",
+      "sourceAlphaMass": 112230.21176470588,
+      "blueMaterialBounds": [
+        322,
+        176,
+        760,
+        1119
+      ],
+      "blueMaterialPixels": 68712,
+      "goldMaterialBounds": [
+        543,
+        346,
+        937,
+        824
+      ],
+      "goldMaterialPixels": 24425,
+      "goldComponentsOver100Pixels": [
+        {
+          "pixels": 2742,
+          "bounds": [
+            751,
+            346,
+            827,
+            487
+          ],
+          "centroid": [
+            787.0539752005835,
+            415.7556528081692
+          ]
+        },
+        {
+          "pixels": 15038,
+          "bounds": [
+            698,
+            430,
+            912,
+            747
+          ],
+          "centroid": [
+            765.5012634658864,
+            595.7432504322384
+          ]
+        },
+        {
+          "pixels": 1305,
+          "bounds": [
+            543,
+            523,
+            611,
+            577
+          ],
+          "centroid": [
+            578.7731800766284,
+            549.9547892720307
+          ]
+        },
+        {
+          "pixels": 762,
+          "bounds": [
+            820,
+            542,
+            872,
+            571
+          ],
+          "centroid": [
+            844.8569553805775,
+            556.5354330708661
+          ]
+        },
+        {
+          "pixels": 1130,
+          "bounds": [
+            576,
+            649,
+            633,
+            699
+          ],
+          "centroid": [
+            604.4309734513274,
+            672.8991150442478
+          ]
+        },
+        {
+          "pixels": 1764,
+          "bounds": [
+            855,
+            676,
+            937,
+            737
+          ],
+          "centroid": [
+            895.1303854875283,
+            704.0504535147393
+          ]
+        },
+        {
+          "pixels": 1677,
+          "bounds": [
+            801,
+            737,
+            851,
+            824
+          ],
+          "centroid": [
+            825.0685748360168,
+            779.3070960047704
+          ]
+        }
+      ],
+      "detectedGoldComponents": 7,
+      "fixedMaterialROIs": {
+        "upper-crescent": {
+          "roi": [
+            285,
+            170,
+            620,
+            440
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 7.041394335511982
+        },
+        "lower-crescent": {
+          "roi": [
+            580,
+            850,
+            770,
+            1142
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            -1
+          ],
+          "meanAbsoluteRGBError": 4.634729424278686
+        }
+      },
+      "contactRootAtRows590Through630": [
+        [
+          720,
+          590
+        ],
+        [
+          721,
+          591
+        ],
+        [
+          721,
+          592
+        ],
+        [
+          721,
+          593
+        ],
+        [
+          721,
+          594
+        ],
+        [
+          722,
+          595
+        ],
+        [
+          722,
+          596
+        ],
+        [
+          722,
+          597
+        ],
+        [
+          722,
+          598
+        ],
+        [
+          723,
+          599
+        ],
+        [
+          723,
+          600
+        ],
+        [
+          723,
+          601
+        ],
+        [
+          724,
+          602
+        ],
+        [
+          724,
+          603
+        ],
+        [
+          724,
+          604
+        ],
+        [
+          724,
+          605
+        ],
+        [
+          725,
+          606
+        ],
+        [
+          725,
+          607
+        ],
+        [
+          725,
+          608
+        ],
+        [
+          726,
+          609
+        ],
+        [
+          726,
+          610
+        ],
+        [
+          726,
+          611
+        ],
+        [
+          726,
+          612
+        ],
+        [
+          727,
+          613
+        ],
+        [
+          727,
+          614
+        ],
+        [
+          727,
+          615
+        ],
+        [
+          727,
+          616
+        ],
+        [
+          728,
+          617
+        ],
+        [
+          728,
+          618
+        ],
+        [
+          728,
+          619
+        ],
+        [
+          729,
+          620
+        ],
+        [
+          729,
+          621
+        ],
+        [
+          729,
+          622
+        ],
+        [
+          729,
+          623
+        ],
+        [
+          730,
+          624
+        ],
+        [
+          730,
+          625
+        ],
+        [
+          730,
+          626
+        ],
+        [
+          730,
+          627
+        ],
+        [
+          731,
+          628
+        ],
+        [
+          731,
+          629
+        ],
+        [
+          731,
+          630
+        ]
+      ],
+      "medianContactRootX": 726.0
+    },
+    "spark-spray": {
+      "sourceSHA256": "45149ee23b3c352b35cc32ac54acb6db21e08909f5e3fd60b4e442e6ebbbedb3",
+      "sourceAlphaMass": 156541.69411764707,
+      "blueMaterialBounds": [
+        314,
+        177,
+        761,
+        1115
+      ],
+      "blueMaterialPixels": 66979,
+      "goldMaterialBounds": [
+        390,
+        97,
+        1127,
+        1014
+      ],
+      "goldMaterialPixels": 67192,
+      "goldComponentsOver100Pixels": [
+        {
+          "pixels": 9450,
+          "bounds": [
+            710,
+            97,
+            874,
+            352
+          ],
+          "centroid": [
+            784.501164021164,
+            214.6626455026455
+          ]
+        },
+        {
+          "pixels": 1940,
+          "bounds": [
+            843,
+            298,
+            918,
+            371
+          ],
+          "centroid": [
+            880.0644329896908,
+            333.91443298969074
+          ]
+        },
+        {
+          "pixels": 30986,
+          "bounds": [
+            642,
+            307,
+            945,
+            813
+          ],
+          "centroid": [
+            770.3032337184535,
+            580.9748596140192
+          ]
+        },
+        {
+          "pixels": 2300,
+          "bounds": [
+            1029,
+            326,
+            1127,
+            380
+          ],
+          "centroid": [
+            1077.52,
+            351.6391304347826
+          ]
+        },
+        {
+          "pixels": 2911,
+          "bounds": [
+            390,
+            356,
+            499,
+            442
+          ],
+          "centroid": [
+            443.00446581930606,
+            396.665063552044
+          ]
+        },
+        {
+          "pixels": 1640,
+          "bounds": [
+            452,
+            516,
+            540,
+            555
+          ],
+          "centroid": [
+            496.6963414634146,
+            535.9012195121951
+          ]
+        },
+        {
+          "pixels": 3885,
+          "bounds": [
+            894,
+            524,
+            1067,
+            567
+          ],
+          "centroid": [
+            979.1238095238095,
+            544.7845559845559
+          ]
+        },
+        {
+          "pixels": 4212,
+          "bounds": [
+            412,
+            641,
+            554,
+            746
+          ],
+          "centroid": [
+            480.46652421652425,
+            693.8945868945868
+          ]
+        },
+        {
+          "pixels": 554,
+          "bounds": [
+            559,
+            733,
+            591,
+            776
+          ],
+          "centroid": [
+            573.9205776173285,
+            755.1570397111914
+          ]
+        },
+        {
+          "pixels": 3134,
+          "bounds": [
+            929,
+            749,
+            1029,
+            843
+          ],
+          "centroid": [
+            979.5366943203574,
+            796.1008296107211
+          ]
+        },
+        {
+          "pixels": 1783,
+          "bounds": [
+            428,
+            856,
+            489,
+            939
+          ],
+          "centroid": [
+            456.25070106561975,
+            897.6965787997757
+          ]
+        },
+        {
+          "pixels": 3899,
+          "bounds": [
+            832,
+            870,
+            915,
+            1014
+          ],
+          "centroid": [
+            872.6563221338805,
+            939.9730700179533
+          ]
+        }
+      ],
+      "detectedGoldComponents": 12,
+      "fixedMaterialROIs": {
+        "upper-crescent": {
+          "roi": [
+            285,
+            170,
+            620,
+            440
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            -1,
+            -1
+          ],
+          "meanAbsoluteRGBError": 7.217643366197703
+        },
+        "lower-crescent": {
+          "roi": [
+            580,
+            850,
+            770,
+            1142
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            -1
+          ],
+          "meanAbsoluteRGBError": 5.201542348092009
+        }
+      },
+      "contactRootAtRows590Through630": [
+        [
+          719,
+          590
+        ],
+        [
+          720,
+          591
+        ],
+        [
+          720,
+          592
+        ],
+        [
+          720,
+          593
+        ],
+        [
+          721,
+          594
+        ],
+        [
+          721,
+          595
+        ],
+        [
+          721,
+          596
+        ],
+        [
+          721,
+          597
+        ],
+        [
+          722,
+          598
+        ],
+        [
+          722,
+          599
+        ],
+        [
+          722,
+          600
+        ],
+        [
+          722,
+          601
+        ],
+        [
+          723,
+          602
+        ],
+        [
+          723,
+          603
+        ],
+        [
+          723,
+          604
+        ],
+        [
+          723,
+          605
+        ],
+        [
+          724,
+          606
+        ],
+        [
+          724,
+          607
+        ],
+        [
+          724,
+          608
+        ],
+        [
+          725,
+          609
+        ],
+        [
+          725,
+          610
+        ],
+        [
+          725,
+          611
+        ],
+        [
+          726,
+          612
+        ],
+        [
+          726,
+          613
+        ],
+        [
+          726,
+          614
+        ],
+        [
+          726,
+          615
+        ],
+        [
+          727,
+          616
+        ],
+        [
+          727,
+          617
+        ],
+        [
+          727,
+          618
+        ],
+        [
+          727,
+          619
+        ],
+        [
+          728,
+          620
+        ],
+        [
+          728,
+          621
+        ],
+        [
+          728,
+          622
+        ],
+        [
+          728,
+          623
+        ],
+        [
+          729,
+          624
+        ],
+        [
+          729,
+          625
+        ],
+        [
+          729,
+          626
+        ],
+        [
+          730,
+          627
+        ],
+        [
+          730,
+          628
+        ],
+        [
+          730,
+          629
+        ],
+        [
+          730,
+          630
+        ]
+      ],
+      "medianContactRootX": 725.0
+    },
+    "residual-sparks": {
+      "sourceSHA256": "6f6001b9c63007cf71c3c06efef444ad1fc54bd8d05194d5145fbc8029d43d2a",
+      "sourceAlphaMass": 98709.76862745098,
+      "blueMaterialBounds": [
+        319,
+        175,
+        766,
+        1123
+      ],
+      "blueMaterialPixels": 69755,
+      "goldMaterialBounds": [
+        743,
+        220,
+        1064,
+        982
+      ],
+      "goldMaterialPixels": 7167,
+      "goldComponentsOver100Pixels": [
+        {
+          "pixels": 1145,
+          "bounds": [
+            743,
+            220,
+            776,
+            292
+          ],
+          "centroid": [
+            757.943231441048,
+            256.44192139737993
+          ]
+        },
+        {
+          "pixels": 1570,
+          "bounds": [
+            863,
+            343,
+            939,
+            405
+          ],
+          "centroid": [
+            900.4433121019108,
+            372.71337579617835
+          ]
+        },
+        {
+          "pixels": 404,
+          "bounds": [
+            895,
+            469,
+            930,
+            495
+          ],
+          "centroid": [
+            911.9108910891089,
+            481.4579207920792
+          ]
+        },
+        {
+          "pixels": 1023,
+          "bounds": [
+            986,
+            620,
+            1064,
+            639
+          ],
+          "centroid": [
+            1022.7517106549365,
+            628.9843597262952
+          ]
+        },
+        {
+          "pixels": 780,
+          "bounds": [
+            872,
+            761,
+            921,
+            808
+          ],
+          "centroid": [
+            896.3897435897436,
+            784.75
+          ]
+        },
+        {
+          "pixels": 2194,
+          "bounds": [
+            859,
+            881,
+            935,
+            982
+          ],
+          "centroid": [
+            897.2948951686418,
+            931.7456700091158
+          ]
+        }
+      ],
+      "detectedGoldComponents": 6,
+      "fixedMaterialROIs": {
+        "upper-crescent": {
+          "roi": [
+            285,
+            170,
+            620,
+            440
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRGBError": 7.375816993464053
+        },
+        "lower-crescent": {
+          "roi": [
+            580,
+            850,
+            770,
+            1142
+          ],
+          "comparison": "Mean absolute RGB error on fixed bare-crescent blue-material mask; diagnostic offsets only, never applied to pixels.",
+          "bestOffsetXY": [
+            0,
+            -1
+          ],
+          "meanAbsoluteRGBError": 5.982289589150379
+        }
+      },
+      "contactRootAtRows590Through630": [],
+      "medianContactRootX": null
+    }
+  },
+  "blueMaterialBoundsSpreadSourcePx": [
+    8,
+    2,
+    6,
+    9
+  ],
+  "maxBlueBoundsSpreadLogicalPx": 0.20095693779904306,
+  "maxMaterialBestOffsetSourcePx": 1,
+  "contactRootComparison": {
+    "rows": [
+      590,
+      630
+    ],
+    "interpretation": "The leftmost gold boundary across the contact-height cross-section is stable. This bounds attachment to the crescent, not a claim that the entire burst silhouette or centroid is fixed.",
+    "medianDeltaSourcePx": 1.0,
+    "maxDeltaSourcePx": 1,
+    "maxDeltaLogicalPx": 0.022328548644338118
+  },
+  "adjacentSourceAlphaMassChangesPercent": [
+    24.039534255965737,
+    39.482668397562676,
+    -36.94346468917935
+  ],
+  "noPerFrameFitOrShift": true,
+  "loop": false,
+  "livePlaybackObserved": false,
+  "continuityCaveats": [
+    "The slender crescent remains fixed while the impact shape and detached spark cohort change. Fixed upper/lower material ROI best offsets are at most 1 source pixel per axis; blue-color diagnostic bounds vary by up to 9 source pixels, or 0.201 logical pixels. The colored-bound variation partly reflects shading/occlusion, not rigid-body travel.",
+    "At rows 590 through 630, the leftmost gold contact boundary in the initial and peak impact differs by at most 1 source pixel, or 0.022 logical pixels. This verifies attachment at the same mid-right contour, not an identical burst silhouette or centroid.",
+    "The contact phase has a compact starburst and six detached gold components; peak has a larger starburst and eleven detached components; terminal has six small detached gold components and no burst. The upper large streak and left-side shards retire; six terminal right-side embers are not all provable one-to-one continuations of the peak particles.",
+    "Spark paths and sizes are independently authored, not a constant-speed particle simulation. The peak-to-residual change removes the central star and much of the spray in one frame. Source alpha mass changes by +24.0%, +39.5%, then -36.9%, so the 12 fps peak decay may feel abrupt.",
+    "At native 32, fine residual embers and small chips are visually subordinate, especially against black/dark earth and bright stone; they are clearer at 64. The crescent silhouette and main impact remain readable across all six backgrounds.",
+    "The last pose retains the intact crescent with sparse sparks. No blank ending, runtime loop, extra final-frame duration, scene removal rule or 420/500 ms lifetime is inferred for this catalog-only effect. Only encoding and static phase review were verified; browser/game playback remains unobserved."
+  ]
+}
