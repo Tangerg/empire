@@ -1,0 +1,50 @@
+{
+  "status": "Native quartet passes identity, geometry, hand/prop, opposite-step semantics and three-background visual QA; parent final integration pending",
+  "topicId": "C01-MISSION-CARAVAN-ESCORT",
+  "scale": 0.04835164835164835,
+  "bodyReferenceSourcePixels": 910,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "originalRowAndIdlePixelExactToBoard": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "Every perimeter has zero pixels alpha>1. Max alpha: idle0, walk-a1, work0, walk-b0.",
+  "exteriorHazeGate": "All four native files have zero alpha>1 pixels more than7pixels from alpha>127 silhouette. Native black/white/scene composites show no background, cast shadow or halo. Unmodified native alpha1 trace pixels remain.",
+  "sourceCanvas": [
+    1584,
+    993
+  ],
+  "paddingTolerance": 0,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 0.9912087912087912,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Brown-haired adult woman with low bun, dark teal scarf, blue-gray cream-trim coat and brown scale vest; both boots planted, near hand rests over sheathed short blade, far forearm supports round wood-and-gray-metal shield. Functional rope, blank tags and keys remain at belt.",
+    "walk-a": "Near screen-left boot swings forward heel-first, broad underside visible. Screen-right boot stays behind. Free near arm swings back and down; far arm carries same shield. Same face direction, equipment and body scale.",
+    "carry-or-work": "Actual escort halt action: near screen-left hand extends open palm toward route with five fingers. Far forearm raises the same shield protectively before chest. Two boots brace apart; blade remains sheathed. Exactly two arms and hands; far grip naturally hidden behind shield. No extra hand at belt.",
+    "walk-b": "Opposite walking contact: far screen-right boot moves forward heel-first with visible underside, near screen-left boot remains behind. Free hand swings forward near belt. Same face direction and equipment, no mirrored identity."
+  },
+  "generationAttempts": 4,
+  "rejections": [],
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only; zero verified actors and scene placements. No deployed caravan escort binding.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-shared-scale-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif",
+    "qa-walking-loop.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png",
+    "qa-foot-measurements.png"
+  ],
+  "logicalReviewExportMethod": "Same full-canvas44/910 affine scale for every pose, with independently measured sole offsets.4x supersampled antialias review then downsample to104x64. No silhouette fitting.",
+  "scenePreviewMeaning": "Green backdrop is scene-tone QA only; it does not claim a live consumer or authored placement."
+}

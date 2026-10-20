@@ -2244,13 +2244,13 @@
       "topicId": "C01-MISSION-CARAVAN-ESCORT",
       "label": "商团护运员",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-caravan-escort.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-caravan-escort.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2259,13 +2259,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.55164835164835,
+        50.610989010989016
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-CEMETERY-CARETAKER",
@@ -2358,13 +2359,13 @@
       "topicId": "C01-MISSION-COUNCIL-DELEGATE",
       "label": "地方议会代表",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-council-delegate.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-council-delegate.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2373,13 +2374,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        44.77142857142857,
+        49.303703703703704
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-DETAINED-WITNESS",

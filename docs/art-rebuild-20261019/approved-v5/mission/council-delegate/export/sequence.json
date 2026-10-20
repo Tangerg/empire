@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/walk-b/master.png"
+    },
+    "scale": 0.04656084656084656,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      789.75,
+      973
+    ],
+    "sourceFeet": {
+      "idle": [
+        789.75,
+        973
+      ],
+      "walk-a": [
+        769.75,
+        974
+      ],
+      "carry-or-work": [
+        784.75,
+        968
+      ],
+      "walk-b": [
+        765.25,
+        971
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.9312169312169312,
+        -0.04656084656084656
+      ],
+      "carry-or-work": [
+        0.2328042328042328,
+        0.2328042328042328
+      ],
+      "walk-b": [
+        1.1407407407407406,
+        0.09312169312169312
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1585,
+    993
+  ],
+  "logicalPivot": [
+    44.77142857142857,
+    49.303703703703704
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "9792e26b8758cc3efa5a5db0593cbc81273be4f439b8ff9a8c22bc221c31d2d6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5689,
+        "nearOpaquePixels": 829,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          5,
+          63,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "9792e26b8758cc3efa5a5db0593cbc81273be4f439b8ff9a8c22bc221c31d2d6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22838,
+        "nearOpaquePixels": 3396,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          11,
+          126,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/walk-a/master.png",
+      "registrationOffset": [
+        0.9312169312169312,
+        -0.04656084656084656
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "30ef2137ccf06742ebb94a0ad2b3523e41e5e5ab557e777e680a6184fe4a2190",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5664,
+        "nearOpaquePixels": 828,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          5,
+          65,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/walk-a/master.png",
+      "registrationOffset": [
+        0.9312169312169312,
+        -0.04656084656084656
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "30ef2137ccf06742ebb94a0ad2b3523e41e5e5ab557e777e680a6184fe4a2190",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22764,
+        "nearOpaquePixels": 3435,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          10,
+          130,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/carry-or-work/master.png",
+      "registrationOffset": [
+        0.2328042328042328,
+        0.2328042328042328
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "9dfa4e2f67ed470ae31e4677691d47188143d59bb8b39b37f08c6f19bbb5e3bd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5632,
+        "nearOpaquePixels": 863,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          5,
+          70,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/carry-or-work/master.png",
+      "registrationOffset": [
+        0.2328042328042328,
+        0.2328042328042328
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "9dfa4e2f67ed470ae31e4677691d47188143d59bb8b39b37f08c6f19bbb5e3bd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22642,
+        "nearOpaquePixels": 3533,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          11,
+          140,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/walk-b/master.png",
+      "registrationOffset": [
+        1.1407407407407406,
+        0.09312169312169312
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "12ef716bb4537697be0c37bd7e423dea82b3a758ebf275468b4d65c111274675",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5698,
+        "nearOpaquePixels": 813,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          5,
+          64,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/council-delegate/walk-b/master.png",
+      "registrationOffset": [
+        1.1407407407407406,
+        0.09312169312169312
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "12ef716bb4537697be0c37bd7e423dea82b3a758ebf275468b4d65c111274675",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22888,
+        "nearOpaquePixels": 3333,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          11,
+          129,
+          99
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

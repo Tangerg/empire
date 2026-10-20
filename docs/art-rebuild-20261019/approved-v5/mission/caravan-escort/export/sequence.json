@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/walk-b/master.png"
+    },
+    "scale": 0.04835164835164835,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      818,
+      964
+    ],
+    "sourceFeet": {
+      "idle": [
+        818.0,
+        964
+      ],
+      "walk-a": [
+        820.5,
+        954
+      ],
+      "carry-or-work": [
+        811.75,
+        954
+      ],
+      "walk-b": [
+        797.5,
+        960
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.12087912087912088,
+        0.4835164835164835
+      ],
+      "carry-or-work": [
+        0.30219780219780223,
+        0.4835164835164835
+      ],
+      "walk-b": [
+        0.9912087912087912,
+        0.1934065934065934
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1584,
+    993
+  ],
+  "logicalPivot": [
+    47.55164835164835,
+    50.610989010989016
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5702,
+        "nearOpaquePixels": 810,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          7,
+          63,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22897,
+        "nearOpaquePixels": 3345,
+        "edgeMax": 0,
+        "visibleBounds": [
+          65,
+          13,
+          127,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/walk-a/master.png",
+      "registrationOffset": [
+        -0.12087912087912088,
+        0.4835164835164835
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "daa5622075202eab63741a502f580c7371009d028097cf90a72fed382ae92acf",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5741,
+        "nearOpaquePixels": 762,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          7,
+          63,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/walk-a/master.png",
+      "registrationOffset": [
+        -0.12087912087912088,
+        0.4835164835164835
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "daa5622075202eab63741a502f580c7371009d028097cf90a72fed382ae92acf",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23056,
+        "nearOpaquePixels": 3158,
+        "edgeMax": 0,
+        "visibleBounds": [
+          63,
+          14,
+          126,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/carry-or-work/master.png",
+      "registrationOffset": [
+        0.30219780219780223,
+        0.4835164835164835
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "334a463c59b31ca63b28a608a185655270b5d4397099cb50cc7cc01524f726ef",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5652,
+        "nearOpaquePixels": 826,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          7,
+          63,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/carry-or-work/master.png",
+      "registrationOffset": [
+        0.30219780219780223,
+        0.4835164835164835
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "334a463c59b31ca63b28a608a185655270b5d4397099cb50cc7cc01524f726ef",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22741,
+        "nearOpaquePixels": 3420,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          14,
+          126,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/walk-b/master.png",
+      "registrationOffset": [
+        0.9912087912087912,
+        0.1934065934065934
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "a636d6c804548878aad969da092b0a86a0da6406c6e461a7545b17c5e0e8f227",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5722,
+        "nearOpaquePixels": 780,
+        "edgeMax": 0,
+        "visibleBounds": [
+          36,
+          7,
+          65,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/caravan-escort/walk-b/master.png",
+      "registrationOffset": [
+        0.9912087912087912,
+        0.1934065934065934
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "a636d6c804548878aad969da092b0a86a0da6406c6e461a7545b17c5e0e8f227",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23004,
+        "nearOpaquePixels": 3217,
+        "edgeMax": 0,
+        "visibleBounds": [
+          72,
+          14,
+          131,
+          101
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

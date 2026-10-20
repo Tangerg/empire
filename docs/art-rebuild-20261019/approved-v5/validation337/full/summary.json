@@ -1,0 +1,18 @@
+{
+  "sourceCodeCheckpoint": "1811a68af37433f5999fefd15e80053a5fbfee58",
+  "formalTopics": 337,
+  "testFiles": 120,
+  "tests": 1404,
+  "typecheck": "passed",
+  "productionAppsBuilt": [
+    "game",
+    "editor",
+    "engine-demo",
+    "experience-lab"
+  ],
+  "liveBrowser": "not verified",
+  "warnings": [
+    "jsdom canvas context unavailable in existing test environment",
+    "existing large chunk and npm proxy-config warnings"
+  ]
+}

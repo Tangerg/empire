@@ -1,0 +1,149 @@
+{
+  "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+  "assetId": "C01-FFV1-MISSION-COUNCIL-DELEGATE",
+  "category": "mission-unit",
+  "status": "Native source quartet and static QA complete; coordinator formal export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every selected raw/master is byte-identical to native generated output. No cleanup, painting, recoloring, cropping, per-pose rescaling or source padding. Separate QA composites and technical export proposal only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "qaExportConfig": "qa-export-config.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-council-delegate.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+    "png": "runtime-hd/mission-unit/mission-council-delegate.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "consumerClassification": "catalog-only",
+  "palettePolicy": "Original olive-brown older female skin, gray braids, charcoal and ochre patched coat, tan trim, brown boots, carved tan oval tablet and cream roll with red/purple/blue-green ribbons. No faction recolor or invented emblem.",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Noncombat presentation of original rolled parchment with council tablet retained. Catalog availability does not imply authored gameplay use.",
+  "liveGameAcceptance": false,
+  "rejectedAttempts": [],
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "generationResult": "idle/generation-result.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "9792e26b8758cc3efa5a5db0593cbc81273be4f439b8ff9a8c22bc221c31d2d6",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        789.75,
+        973
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Both boots planted. Oval carved tablet at chest in screen-left hand and rolled parchment with red/purple/blue-green ribbons at screen-right hip."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "generationResult": "walk-a/generation-result.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "30ef2137ccf06742ebb94a0ad2b3523e41e5e5ab557e777e680a6184fe4a2190",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        769.75,
+        974
+      ],
+      "registrationOffsetLogical": [
+        0.9312169312169312,
+        -0.04656084656084656
+      ],
+      "review": "Screen-right leg extends forward with visible tilted boot sole, screen-left boot planted. Both original props retained in original hands."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "9dfa4e2f67ed470ae31e4677691d47188143d59bb8b39b37f08c6f19bbb5e3bd",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        784.75,
+        968
+      ],
+      "registrationOffsetLogical": [
+        0.2328042328042328,
+        0.2328042328042328
+      ],
+      "review": "Screen-right forearm and hand lift and extend the rolled parchment to address the council; screen-left hand securely retains oval tablet. Exactly two connected hands. Distinct readable presentation gesture."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "generationResult": "walk-b/generation-result.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "12ef716bb4537697be0c37bd7e423dea82b3a758ebf275468b4d65c111274675",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        765.25,
+        971
+      ],
+      "registrationOffsetLogical": [
+        1.1407407407407406,
+        0.09312169312169312
+      ],
+      "review": "Screen-right boot planted under body, screen-left leg bent behind with heel lifted and toe down. Opposite support state from walk-a without mirroring. Both original props retained."
+    }
+  }
+}

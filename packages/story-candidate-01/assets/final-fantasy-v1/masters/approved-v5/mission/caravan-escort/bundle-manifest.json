@@ -1,0 +1,152 @@
+{
+  "topicId": "C01-MISSION-CARAVAN-ESCORT",
+  "assetId": "C01-FFV1-MISSION-CARAVAN-ESCORT",
+  "label": "商团护运员",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator final review/export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationAttempts": 4,
+  "rejectedAttempts": [],
+  "nativeArtPolicy": "Every selected raw/master pair is byte-identical. No alpha cleanup, painting, recoloring, crop, per-pose scaling, source padding or source pixel modification. Separate technical export/QA composites only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "idleGateApproval": "idle-gate-approval.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-caravan-escort.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "png": "runtime-hd/mission-unit/mission-caravan-escort.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "classification": "catalog-only",
+  "consumerClassification": "catalog-only",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "liveGameAcceptance": false,
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Carry-or-work is a protective escort halt signal using the existing shield. Catalog availability does not imply authored gameplay use.",
+  "sourceAnomalyResolution": "Legacy source idle/work cells repeat effectively the same stance and both walk cells repeat the same contact. New work clearly signals halt and walking poses have opposite leading boots. Stable original costume/equipment retained.",
+  "palettePolicy": "Preserve warm light-tan woman, brown low bun, dark teal scarf, muted blue-gray coat with cream trims, brown scale vest/belt/boots, blank tan tags, tan rope and brass keys; round wood shield with gray rim/boss. No faction recolor or invented markings.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        818.0,
+        964
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Brown-haired adult woman with low bun, dark teal scarf, blue-gray cream-trim coat and brown scale vest; both boots planted, near hand rests over sheathed short blade, far forearm supports round wood-and-gray-metal shield. Functional rope, blank tags and keys remain at belt."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "daa5622075202eab63741a502f580c7371009d028097cf90a72fed382ae92acf",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        820.5,
+        954
+      ],
+      "registrationOffsetLogical": [
+        -0.12087912087912088,
+        0.4835164835164835
+      ],
+      "review": "Near screen-left boot swings forward heel-first, broad underside visible. Screen-right boot stays behind. Free near arm swings back and down; far arm carries same shield. Same face direction, equipment and body scale."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "334a463c59b31ca63b28a608a185655270b5d4397099cb50cc7cc01524f726ef",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        811.75,
+        954
+      ],
+      "registrationOffsetLogical": [
+        0.30219780219780223,
+        0.4835164835164835
+      ],
+      "review": "Actual escort halt action: near screen-left hand extends open palm toward route with five fingers. Far forearm raises the same shield protectively before chest. Two boots brace apart; blade remains sheathed. Exactly two arms and hands; far grip naturally hidden behind shield. No extra hand at belt."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "a636d6c804548878aad969da092b0a86a0da6406c6e461a7545b17c5e0e8f227",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        797.5,
+        960
+      ],
+      "registrationOffsetLogical": [
+        0.9912087912087912,
+        0.1934065934065934
+      ],
+      "review": "Opposite walking contact: far screen-right boot moves forward heel-first with visible underside, near screen-left boot remains behind. Free hand swings forward near belt. Same face direction and equipment, no mirrored identity."
+    }
+  }
+}
