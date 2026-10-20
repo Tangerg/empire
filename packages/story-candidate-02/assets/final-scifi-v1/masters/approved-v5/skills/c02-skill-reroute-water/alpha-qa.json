@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-reroute-water",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 820104,
+  "partialAlphaPixels": 751268,
+  "opaquePixels": 1144,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    55,
+    56,
+    1202,
+    1199
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    55,
+    56,
+    52,
+    55
+  ],
+  "nearOpaquePixelCountGE240": 733911,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 821,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "2527f25d0e70edb4b34794b0712894ba02737222e9855c9b0c189892f7574ca9",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}
