@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "approved-stone-crossing-plus",
+  "centerMask": 15,
+  "axisLength": 3,
+  "horizontal": {
+    "id": "approved-stone-crossing-horizontal",
+    "cutouts": [
+      [
+        -17,
+        -16,
+        34,
+        10
+      ],
+      [
+        -17,
+        6,
+        34,
+        27
+      ]
+    ]
+  },
+  "vertical": {
+    "id": "approved-stone-crossing-vertical",
+    "cutouts": [
+      [
+        -31,
+        -6,
+        16,
+        12
+      ],
+      [
+        15,
+        -6,
+        16,
+        12
+      ]
+    ]
+  },
+  "windowCoordinates": "world pixels relative to the shared deck pivot",
+  "derivation": "Complementary alpha-only rail and underlying arch openings; approved source RGB and complete canvas preserved outside these windows."
+}

@@ -1,0 +1,340 @@
+{
+  "kind": "Actual production component markup and offline SVG redraw checks; no GPU or gameplay claim",
+  "viewBox": [
+    -76.77551020408163,
+    -72.73469387755102,
+    153.55102040816325,
+    153.55102040816325
+  ],
+  "rasterSize1x": [
+    154,
+    154
+  ],
+  "registeredNativeSizes": [
+    [
+      154,
+      154
+    ],
+    [
+      307,
+      307
+    ]
+  ],
+  "horizontal": {
+    "schemaVersion": 1,
+    "id": "approved-stone-crossing-horizontal",
+    "orientation": "horizontal",
+    "source": "masters/approved-v5/bridge/bridge-master.png",
+    "sourceSha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+    "sourceSize": [
+      1729,
+      910
+    ],
+    "sourceFoot": [
+      864,
+      418
+    ],
+    "logicalPerSourcePixel": 0.08098336948662328,
+    "png": "runtime/stone-crossing-horizontal.png",
+    "png2x": "runtime/stone-crossing-horizontal@2x.png",
+    "approvedExports": {
+      "png": "2fb201b72ceaf579ca1453a003697b612685cd3baafb63cecb92a93a718c7c58",
+      "png2x": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d"
+    },
+    "logicalSize": [
+      140.02024584237165,
+      73.69486623282718
+    ],
+    "anchor": [
+      69.96963123644251,
+      33.85104844540853
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png"
+  },
+  "vertical": {
+    "schemaVersion": 1,
+    "id": "approved-stone-crossing-vertical",
+    "orientation": "vertical",
+    "source": "masters/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/stone-bridge-vertical-master.png",
+    "sourceSha256": "49d5a96e9a051aecb6196d8cb5f9312beb60e31cf6eafcb0f2bc483f543c0e03",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceFoot": [
+      627,
+      594
+    ],
+    "logicalPerSourcePixel": 0.12244897959183673,
+    "png": "runtime/stone-crossing-vertical.png",
+    "png2x": "runtime/stone-crossing-vertical@2x.png",
+    "approvedExports": {
+      "png": "7ae5d103768e33970dacbabc4d08b1737c7a4d85868a6cd7f75ae41a156d420a",
+      "png2x": "c724425282c1bc38f8f6bbe479e479447c134ac12b284e162780405ba95f3b7c"
+    },
+    "logicalSize": [
+      153.55102040816325,
+      153.55102040816325
+    ],
+    "anchor": [
+      76.77551020408163,
+      72.73469387755102
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-vertical@2x.png"
+  },
+  "windows": {
+    "schemaVersion": 1,
+    "id": "approved-stone-crossing-plus",
+    "centerMask": 15,
+    "axisLength": 3,
+    "horizontal": [
+      [
+        -17,
+        -16,
+        34,
+        10
+      ],
+      [
+        -17,
+        6,
+        34,
+        27
+      ]
+    ],
+    "vertical": [
+      [
+        -31,
+        -6,
+        16,
+        12
+      ],
+      [
+        15,
+        -6,
+        16,
+        12
+      ]
+    ],
+    "windowCoordinates": "world pixels relative to the shared deck pivot",
+    "derivation": "Complementary alpha-only rail and underlying arch openings; approved source RGB and complete canvas preserved outside these windows."
+  },
+  "components": [
+    {
+      "cells": [
+        {
+          "cell": [
+            6,
+            9
+          ],
+          "mask": 4
+        },
+        {
+          "cell": [
+            5,
+            10
+          ],
+          "mask": 2
+        },
+        {
+          "cell": [
+            6,
+            10
+          ],
+          "mask": 15
+        },
+        {
+          "cell": [
+            7,
+            10
+          ],
+          "mask": 8
+        },
+        {
+          "cell": [
+            6,
+            11
+          ],
+          "mask": 1
+        }
+      ],
+      "runs": [
+        {
+          "axis": "vertical",
+          "start": [
+            6,
+            9
+          ],
+          "length": 3,
+          "pivot": [
+            208,
+            336
+          ]
+        },
+        {
+          "axis": "horizontal",
+          "start": [
+            5,
+            10
+          ],
+          "length": 3,
+          "pivot": [
+            208,
+            336
+          ]
+        }
+      ],
+      "junction": {
+        "center": [
+          6,
+          10
+        ],
+        "pivot": [
+          208,
+          336
+        ],
+        "ports": [
+          [
+            208,
+            288
+          ],
+          [
+            256,
+            336
+          ],
+          [
+            208,
+            384
+          ],
+          [
+            160,
+            336
+          ]
+        ]
+      }
+    },
+    {
+      "cells": [
+        {
+          "cell": [
+            17,
+            9
+          ],
+          "mask": 4
+        },
+        {
+          "cell": [
+            16,
+            10
+          ],
+          "mask": 2
+        },
+        {
+          "cell": [
+            17,
+            10
+          ],
+          "mask": 15
+        },
+        {
+          "cell": [
+            18,
+            10
+          ],
+          "mask": 8
+        },
+        {
+          "cell": [
+            17,
+            11
+          ],
+          "mask": 1
+        }
+      ],
+      "runs": [
+        {
+          "axis": "vertical",
+          "start": [
+            17,
+            9
+          ],
+          "length": 3,
+          "pivot": [
+            560,
+            336
+          ]
+        },
+        {
+          "axis": "horizontal",
+          "start": [
+            16,
+            10
+          ],
+          "length": 3,
+          "pivot": [
+            560,
+            336
+          ]
+        }
+      ],
+      "junction": {
+        "center": [
+          17,
+          10
+        ],
+        "pivot": [
+          560,
+          336
+        ],
+        "ports": [
+          [
+            560,
+            288
+          ],
+          [
+            608,
+            336
+          ],
+          [
+            560,
+            384
+          ],
+          [
+            512,
+            336
+          ]
+        ]
+      }
+    }
+  ],
+  "nativeSources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-vertical@2x.png": "c724425282c1bc38f8f6bbe479e479447c134ac12b284e162780405ba95f3b7c"
+  },
+  "stateSha256": "7770de01ae1c52519760d1142f2dffbd881bbef434c9aaa27c5f38cd6fa43bfb",
+  "actorsSha256": "bec6400d2d8c833b0de6c974e3f0f945bb648bbd7ea80f96607d1788dcfc52c4",
+  "terrainAndTargetStructuresSha256": "4849b2fe80d962494977c90135007891ad23c77dd3320c736f1af0dfe81eb4e9",
+  "deferredWoodMarkupSha256": "b7345f7a92f5f1b051c1f83396d82bea9ed0f9504b95d1d7f14c67196c896956",
+  "repeatedRedrawExact": true,
+  "selectionCursorAndPathRoundTripExact": true,
+  "editorPreviewProjectionRoundTripExact": true,
+  "isolatedTargetStateProbes": [
+    {
+      "variant": "half-hp",
+      "targets": 3,
+      "targetMarkupSha256": "bbd8025a3a6361d2a479d9194ff6da806fd56bfba3038c5519dbc729ea4ed61d",
+      "actorsUnchanged": true,
+      "deferredWoodUnchanged": true,
+      "hpGaugeWidth": 10.4
+    },
+    {
+      "variant": "disabled",
+      "targets": 3,
+      "targetMarkupSha256": "01fad0d78102c94cb69b027daae777c23caccdc750857e2b5ee223bd278d2ecd",
+      "actorsUnchanged": true,
+      "deferredWoodUnchanged": true,
+      "hpGaugeWidth": 20.8
+    }
+  ],
+  "noStandingFoot": true,
+  "dryTerrainPolicy": "New strong vertical pixels stay inside the existing water channel; source alpha-1 residue is retained."
+}

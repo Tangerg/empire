@@ -7,7 +7,7 @@ import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { candidate01Level } from '../levels';
 import { candidate01MapSceneryLayers } from './candidate-01-map-scene';
-import { CANDIDATE_01_HORIZONTAL_CROSSING as crossing, candidate01HorizontalCrossingMarkup } from './candidate-01-crossing';
+import { CANDIDATE_01_HORIZONTAL_CROSSING as crossing, CANDIDATE_01_VERTICAL_CROSSING as vertical, candidate01HorizontalCrossingMarkup } from './candidate-01-crossing';
 import { candidate01Asset } from './candidate-01-assets';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
 
@@ -82,5 +82,26 @@ describe('registered horizontal crossing', () => {
       }
       expect(JSON.stringify(map)).toBe(before);
     }
+  });
+});
+
+describe('registered southern stone source', () => {
+  it('retains its full canvas, independent densities and deck pivot without a standing foot', () => {
+    expect(createHash('sha256').update(readFileSync(resolve(pack, vertical.source))).digest('hex')).toBe(vertical.sourceSha256);
+    expect(vertical.sourceSha256).toBe('49d5a96e9a051aecb6196d8cb5f9312beb60e31cf6eafcb0f2bc483f543c0e03');
+    expect(vertical.sourceSize).toEqual([1254, 1254]);
+    expect(vertical.sourceFoot).toEqual([627, 594]);
+    expect(vertical.logicalPerSourcePixel).toBe(96 / 784);
+    expect(vertical.logicalSize).toEqual([1254 * 96 / 784, 1254 * 96 / 784]);
+    for (const [key, size] of [['png', [154, 154]], ['png2x', [307, 307]]] as const) {
+      const png = readFileSync(resolve(pack, 'registered-crossings-v1', vertical[key]));
+      expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual(size);
+      expect(createHash('sha256').update(png).digest('hex')).toBe(vertical.approvedExports[key]);
+    }
+    for (let axis = 0; axis < 2; axis++) {
+      expect(vertical.sourceFoot[axis] * vertical.logicalSize[axis] / vertical.sourceSize[axis] - vertical.anchor[axis]).toBeCloseTo(0, 10);
+    }
+    expect((202 - vertical.sourceFoot[1]) * vertical.logicalPerSourcePixel).toBe(-48);
+    expect((986 - vertical.sourceFoot[1]) * vertical.logicalPerSourcePixel).toBe(48);
   });
 });

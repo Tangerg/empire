@@ -1,6 +1,7 @@
 import type { CandidateRoadCorridorProfile } from './candidate-01-road-corridor';
 import { candidate01IsAreaRoad, candidate01RoadMaterialPieces } from './candidate-01-road-material';
-import { candidate01HorizontalCrossingMarkup } from './candidate-01-crossing';
+import { candidate01HorizontalCrossingMarkup, candidate01StoneJunctionMarkup } from './candidate-01-crossing';
+import { candidate01CrossingJunction, candidate01CrossingTopology } from './candidate-01-crossing-topology';
 import { candidate01EdgeDecorationPieces } from './candidate-01-edge-decoration';
 import { candidate01BlobMask as blobMask } from './candidate-01-square-mask';
 import { tileHash, type ContentCatalog, type GameMap, type TerrainId, inBounds, idx} from '@empire/battle-engine';
@@ -424,41 +425,29 @@ function authoredPlacementPieces(
     .filter((piece): piece is BoardPiece => piece !== null);
 }
 
-/**
- * The deck spanning one crossing, drawn once at the run's near end.
- *
- * The run owns the midpoint, not the artwork. The approved horizontal image
- * places its registered deck contact there; vertical runs retain the legacy
- * atlas-centre placement until an authored counterpart exists. No run is stretched
- * or changed to fit art, and only its near end draws.
- */
-function crossing(
-  content: ContentCatalog,
-  map: GameMap,
-  parts: BoardPiece[],
-  x: number,
-  y: number,
-): void {
-  const deck = (dx: number, dy: number): boolean => tileAt(map, x + dx, y + dy) === 'bridge';
-  // Which way it carries: what a traveller could reach from it, then how the run lies.
-  const alongX = isRoute(content, map, x - 1, y) || isRoute(content, map, x + 1, y)
-    ? true
-    : !(isRoute(content, map, x, y - 1) || isRoute(content, map, x, y + 1)) && (deck(-1, 0) || deck(1, 0));
-  // Only the near end of the run draws, so a two-cell crossing is one bridge.
-  if (alongX ? deck(-1, 0) : deck(0, -1)) return;
-  let length = 1;
-  while (alongX ? deck(length, 0) : deck(0, length)) length += 1;
-
-  const markup = alongX ? candidate01HorizontalCrossingMarkup()
-    : environmentCellMarkup(CANDIDATE_VERTICAL_CROSSINGS[Math.floor(tileHash(x, y, 1131) * CANDIDATE_VERTICAL_CROSSINGS.length)],
-      { className: 'is-standing', lying: true });
-  const middle = (span: number) => (span + length / 2) * TILE;
-  // The middle of the run, both ways: a deck lies across the channel.
-  parts.push({
-    markup,
-    x: alongX ? middle(x) : (x + 0.5) * TILE,
-    y: alongX ? (y + 0.5) * TILE : middle(y),
-  });
+/** The component owns overlapping runs; accepted stone pluses draw exactly once. */
+function crossingPieces(content: ContentCatalog, map: GameMap): Map<string, BoardPiece> {
+  const pieces = new Map<string, BoardPiece>();
+  const verticalArt = ([x, y]: readonly number[]) =>
+    CANDIDATE_VERTICAL_CROSSINGS[Math.floor(tileHash(x, y, 1131) * CANDIDATE_VERTICAL_CROSSINGS.length)];
+  for (const component of candidate01CrossingTopology(map.width, map.height,
+    (x, y) => tileAt(map, x, y) === 'bridge', (x, y) => isRoute(content, map, x, y))) {
+    const junction = candidate01CrossingJunction(component);
+    const vertical = component.runs.find(run => run.axis === 'vertical');
+    if (junction && vertical && verticalArt(vertical.start) === 'stone-bridge-vertical') {
+      pieces.set(component.runs[0].start.join(','), {
+        x: junction.pivot[0], y: junction.pivot[1], markup: candidate01StoneJunctionMarkup(component),
+      });
+      continue;
+    }
+    for (const run of component.runs) {
+      pieces.set(run.start.join(','), {
+        markup: run.axis === 'horizontal' ? candidate01HorizontalCrossingMarkup()
+          : environmentCellMarkup(verticalArt(run.start), { className: 'is-standing', lying: true }),
+        x: run.pivot[0], y: run.pivot[1] });
+    }
+  }
+  return pieces;
 }
 
 /**
@@ -545,6 +534,7 @@ function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, 
 function sceneryPieces(content: ContentCatalog, map: GameMap, levelId: string): BoardPiece[] {
   const field = materialField(content, map);
   const parts: BoardPiece[] = [];
+  const crossings = crossingPieces(content, map);
   const stand = (id: string, x: number, y: number, placing: EnvironmentCellPlacing, jitter = 0): void => {
     parts.push({
       markup: environmentCellMarkup(id, placing),
@@ -565,7 +555,8 @@ function sceneryPieces(content: ContentCatalog, map: GameMap, levelId: string): 
       if (authoredTerrain(levelId, id, x, y, 'authoredTerrainScenery')) continue;
 
       if (id === 'bridge') {
-        crossing(content, map, parts, x, y);
+        const crossing = crossings.get(`${x},${y}`);
+        if (crossing) parts.push(crossing);
         continue;
       }
 

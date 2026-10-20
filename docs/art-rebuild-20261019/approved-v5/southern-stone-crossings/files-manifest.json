@@ -1,0 +1,91 @@
+{
+  "worktree": "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019",
+  "base": "e9e9669",
+  "branch": "fix/southern-stone-crossings-20261020",
+  "files": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/manifest-crossing-vertical-v1.json",
+      "bytes": 729,
+      "sha256": "6bc8257c1dab24c2e7ca4dde7cc61582f219161f22d4adcb677c164d7d5ee266",
+      "trackedAtBase": false
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/manifest-junction-v1.json",
+      "bytes": 770,
+      "sha256": "485cf785c55c33ca68a6a1c4558a06abc1800fafb59b8295eddefc636f939ac9",
+      "trackedAtBase": false
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-vertical.png",
+      "bytes": 18288,
+      "sha256": "7ae5d103768e33970dacbabc4d08b1737c7a4d85868a6cd7f75ae41a156d420a",
+      "trackedAtBase": false
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-vertical@2x.png",
+      "bytes": 56173,
+      "sha256": "c724425282c1bc38f8f6bbe479e479447c134ac12b284e162780405ba95f3b7c",
+      "trackedAtBase": false
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-crossing-topology.test.ts",
+      "bytes": 6207,
+      "sha256": "8eab6200057f700f7057f6607027f2e6eba55fa6aaadf2514057ae656bda81a2",
+      "trackedAtBase": false
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-crossing-topology.ts",
+      "bytes": 4034,
+      "sha256": "516648de8e78be04948de1ade51111ca268043c82196f3f803a51cf785d435e9",
+      "trackedAtBase": false
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-crossing.test.ts",
+      "bytes": 6896,
+      "sha256": "b674298fc60396ffdb8005d25edd062891da80ffbc60ecd1f039e4706d060cbc",
+      "trackedAtBase": true
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-crossing.ts",
+      "bytes": 6742,
+      "sha256": "7c12167d4221611faccf2b2b4d336b9d08e17ac2edd40ad83ddeacd668996d15",
+      "trackedAtBase": true
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+      "bytes": 35941,
+      "sha256": "d694492f14b567f98642fb192f25d7ed6663a4a44bb1938459ac6ae5478fe4b4",
+      "trackedAtBase": true
+    },
+    {
+      "path": "tools/art/export_crossing.py",
+      "bytes": 4356,
+      "sha256": "e81debddd33012aa40b783d938d42d6dd2fe6052b7f1d36785c9f0fb93c533ec",
+      "trackedAtBase": true
+    },
+    {
+      "path": "tools/art/export_vertical_crossing.py",
+      "bytes": 1030,
+      "sha256": "f22e2886bae210521700c9f5a62b8f1e2afde62ac4c348aa374535c7b4777a97",
+      "trackedAtBase": false
+    },
+    {
+      "path": "tools/art/review_southern_stone_crossings.ts",
+      "bytes": 7644,
+      "sha256": "14b3caa47bba3ff302022745d37ee40d27f52681c65fa0470e0472a697c3c8ce",
+      "trackedAtBase": false
+    },
+    {
+      "path": "tools/art/test_vertical_crossing.py",
+      "bytes": 3275,
+      "sha256": "53509ba8b0b078985c36f81236986fd159809cc3ae89ce33ccdcc74ec606d8c5",
+      "trackedAtBase": false
+    },
+    {
+      "path": "tools/art/validate_stone_junction_review.py",
+      "bytes": 9270,
+      "sha256": "239fedac4796b8759aabd512c4c5757c0046080d7707dae88fecbc16c30066b4",
+      "trackedAtBase": false
+    }
+  ]
+}

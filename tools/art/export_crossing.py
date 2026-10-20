@@ -12,11 +12,11 @@ from export_environment_overrides import PACK, finite_number, point
 MANIFEST = PACK / 'registered-crossings-v1/manifest-crossing-v1.json'
 
 
-def plan(root, manifest):
+def plan_registered_crossing(root, manifest, orientation):
     data = read_json(manifest)
     required = {'schemaVersion', 'id', 'orientation', 'source', 'sourceSha256', 'sourceSize', 'sourceFoot', 'logicalPerSourcePixel', 'png', 'png2x', 'approvedExports'}
-    if set(data) != required or data['schemaVersion'] != 1 or data['orientation'] != 'horizontal':
-        raise ValueError('expected the authored horizontal crossing manifest')
+    if set(data) != required or data['schemaVersion'] != 1 or data['orientation'] != orientation:
+        raise ValueError(f'expected the authored {orientation} crossing manifest')
     source = within(root / PACK, data['source'])
     if not source.is_relative_to((root / PACK / 'masters').resolve()) or hashlib.sha256(source.read_bytes()).hexdigest() != data['sourceSha256']:
         raise ValueError('crossing source SHA-256 mismatch')
@@ -56,6 +56,10 @@ def plan(root, manifest):
     if len({target for target, _, _, _ in planned}) != 2:
         raise ValueError('crossing outputs must be distinct')
     return planned
+
+
+def plan(root, manifest):
+    return plan_registered_crossing(root, manifest, 'horizontal')
 
 
 def export(root, manifest, check=False):
