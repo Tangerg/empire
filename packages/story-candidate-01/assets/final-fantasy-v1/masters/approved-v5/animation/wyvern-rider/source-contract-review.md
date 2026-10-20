@@ -12,3 +12,6 @@ Idle generated with built-in imagegen, true RGBA, raw/master byte-identical. Per
 
 ## Coordinator idle gate
 At2026-10-20 00:03UTC, coordinator approved grounded identity, exact54/880.5 shared scale, source support[900,981], frame128x80/origin[14,6]. Opposite grounded steps and source-consistent spear action authorized. No wings or flight.
+
+## Final coordinator gate
+At2026-10-20 00:13UTC, coordinator approved final quartet, opposite grounded phases and correction03 short-spear projection. Actual planted-contact centroids are recorded separately from calibrated pivots. Preserve idle pivot[900,981], use one constant xcalibration63.4449735449735source pixels for all poses, and derive offsets from the measured planted-contact deltas. Lifted paws are excluded from contact sets. Maximum5.381879181344607logical translation accepted under limit6; all native canvases fit128x80 at exact54/880.5, with1px transparent right padding only for walk-a/b. No source mutation, alpha cleanup, individual fitting, rule change, invented consumer or live-game claim.

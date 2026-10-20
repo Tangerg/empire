@@ -1,81 +1,85 @@
 {
-  "size": [
+  "nativeSize": [
     1586,
     992
   ],
-  "sha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
-  "sourceCopyByteIdentical": true,
-  "bboxAlpha2": [
-    205,
-    16,
-    1344,
-    985
-  ],
-  "bboxAlpha128": [
+  "nativeSha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+  "rawByteIdentical": true,
+  "perimeterAlphaMax": 1,
+  "boundsAlpha128": [
     208,
     17,
     1341,
     982
   ],
-  "perimeterAlphaMax": 1,
-  "nonzeroAlphaPixels": 518231,
-  "fullyOpaquePixels": 1480,
-  "transparentPixelRatio": 0.670611423544726,
-  "measurements": {
-    "hair": {
-      "roi": [
-        620,
-        65,
-        900,
-        155
-      ],
-      "top": 92,
-      "bottom": 154,
-      "bottomBandX": 780.7494199535963
-    },
-    "near-hind": {
+  "padRight": 0,
+  "padBottom": 0,
+  "feet": [
+    {
+      "foot": "near-hind",
       "roi": [
         490,
         870,
         700,
-        985
+        980
       ],
-      "top": 870,
-      "bottom": 964,
-      "bottomBandX": 601.8222222222222
+      "soleY": 964,
+      "bottomFourRowsMeanX": 601.8222222222222,
+      "planted": true
     },
-    "far-hind": {
+    {
+      "foot": "far-hind",
       "roi": [
         780,
         845,
-        935,
+        905,
         950
       ],
-      "top": 845,
-      "bottom": 949,
-      "bottomBandX": 922.1212121212121
+      "soleY": 937,
+      "bottomFourRowsMeanX": 893.5,
+      "planted": true
     },
-    "near-fore": {
+    {
+      "foot": "near-fore",
       "roi": [
-        880,
-        900,
-        1110,
+        910,
+        910,
+        1100,
         992
       ],
-      "top": 900,
-      "bottom": 981,
-      "bottomBandX": 1014.3428571428572
+      "soleY": 981,
+      "bottomFourRowsMeanX": 1014.3428571428572,
+      "planted": true
     },
-    "raised-fore": {
+    {
+      "foot": "far-fore",
       "roi": [
-        1035,
-        800,
+        1065,
+        815,
         1170,
-        925
+        915
       ],
-      "top": 800,
-      "bottom": 924,
-      "bottomBandX": 1055.030487804878
+      "soleY": 903,
+      "bottomFourRowsMeanX": 1090.8101265822784,
+      "planted": false
     }
-  }
+  ],
+  "plantedContactCentroid": [
+    836.5550264550265,
+    981
+  ],
+  "sourceSupportAnchor": [
+    900.0000000000001,
+    981
+  ],
+  "registrationOffsetLogical": [
+    -6.97227624868514e-15,
+    0.0
+  ],
+  "fullCanvasBoundsLogical": [
+    13.999999999999993,
+    6.0,
+    111.26746166950596,
+    66.8381601362862
+  ]
 }

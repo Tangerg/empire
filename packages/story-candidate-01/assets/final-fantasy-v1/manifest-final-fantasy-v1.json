@@ -2127,13 +2127,13 @@
       "topicId": "C01-UNIT-WYVERN-RIDER",
       "label": "飞龙骑手",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-wyvern-rider.png",
-      "width": 256,
-      "height": 64,
+      "png": "runtime-approved-v5/combat-unit/unit-wyvern-rider.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2142,26 +2142,27 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        63
+        69.19591141396933,
+        66.16354344122658
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-BAKER",
       "topicId": "C01-MISSION-BAKER",
       "label": "面包师",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-baker.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-baker.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2170,13 +2171,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        46.830000000000005,
+        50.88444444444445
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-BORDER-FARMER",

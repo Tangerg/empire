@@ -1,0 +1,8 @@
+{
+  "prompt": "Use case: precise-object-edit. Image1 is the sprite to correct. Image2 is identity reference for actual short-spear length. Make one very small local correction ONLY to the spear in image1: shorten the forward wooden shaft between the gripping hand and the steel head by about20percent (roughly75pixels). Keep the butt end at(657,312) and gripping hand at(855,270) unchanged. Move the existing blade and attached pennant TOGETHER75pixels left and about17pixels down along the same shaft axis, keeping their exact size and shape. New spear tip must end near(1263,175), so butt-to-tip length is approximately622pixels, same as image2. This is a SHORT spear and must not extend as far as the reptile snout. Do not change shaft thickness, blade size, pennant motif or rear shaft/butt. It remains one straight continuous shaft through the hand.\nEverything except that shorter forward shaft and moved blade/pennant must stay exactly the same: rider pose, hands, torso, mount, head, horns, four legs, tail, color, scale, position, full1586x992canvas, alpha. No new object, wing, effect, backdrop, ground or shadow. Keep true transparent background and internal negative spaces. No crop, zoom, fit or recenter.",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/attack/candidates/attack-correction-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/idle/master.png"
+  ],
+  "transparent_background": true
+}

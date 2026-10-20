@@ -1,0 +1,46 @@
+{
+  "status": "Source quartet passed static visual and technical QA; coordinator formal export/integration pending.",
+  "sourcePolicy": "Four native raw/master pairs are byte-identical. No source pixel cleanup or resampling. Only separate QA compositing and technical placement proposals.",
+  "canonicalFrameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "distinctDecodedSourceHashes": {
+    "idle": "a8477610abae6a0ec3c89b57b20efaef6a61dfa4c6d5bb0aa5cb5cb7d72ab6f9",
+    "walk-a": "b5949a5e757975ace61b967453f58d46a5986f9db66abd09e4ffb5f2ec5d07ed",
+    "carry-or-work": "fc63ad8740d877f6a61dac237c00fbfe7c2830eff595c9bef5d079e79a1bc47c",
+    "walk-b": "1baea03c2ab1040c46209ad7baacc3083480bb7c754ea3540644009e80531480"
+  },
+  "allNativePerimetersAlphaAtMost1": true,
+  "wholeCanvasPlacementFits": true,
+  "sharedScale": 0.04888888888888889,
+  "bodyTargetHeightLogicalPixels": 44,
+  "reviews": {
+    "identity": "Same middle-aged wavy-haired moustached baker, broad flour marks, cream rolled sleeves, brown bib apron and boots. No full beard or new equipment.",
+    "food": "Dark brown scored oblong bread in broad golden-brown wicker basket; same single wooden paddle. Work clearly shows two large basket loaves and one paddle loaf; prompt requested three basket loaves, but no additional count guarantee is claimed.",
+    "handRoles": "Idle/walks: near screen-left hand supports left rim, far screen-right hand supports right rim. Work: near hand continues basket support; far screen-right hand operates original paddle. Exactly two hands and one paddle.",
+    "oppositeWalks": "Walk-a front screen-right boot extends heel-first with sole visible, screen-left boot planted. Walk-b screen-right boot planted, rear screen-left heel raised. Same camera, identity and basket support.",
+    "work": "Separate bread-serving/baking action: basket cradled near hip, one loaf carried on extended horizontal paddle, gaze lowered to work.",
+    "scale": "Coordinator approved idle44/900. Same full-source scale used for every pose; measured sole-only whole-canvas registration.",
+    "transparency": "Inspected native white/black/scene composites and44logical comparison. No broad halo or clipping. Native perimeter maxima1,0,0,0. Very faint alpha residue left intact, never cleaned."
+  },
+  "sourceCanvasRegistrationNote": "Carry-or-work is authored106.25native pixels left of idle sole midpoint; physical whole-canvas x translation5.194444logical pixels at shared scale44/900. Entire source canvas safely fits104x64. Coordinator accepted the exact measured translation with explicit6px per-topic registration bound; no general default relaxation.",
+  "rejectedAttempts": [],
+  "liveGameAcceptance": false,
+  "actualConsumers": {
+    "domainActors": 0,
+    "scenePlacements": 0,
+    "classification": "catalog-only"
+  },
+  "testsNotRun": [
+    "Repository formal exporter",
+    "Repository validation suites",
+    "Build",
+    "Live game animation playback"
+  ],
+  "repositoryWrites": false,
+  "gitOperations": false,
+  "coordinatorVisualReview": "Accepted quartet identity, opposite walk contacts and paddle work; exact6px per-topic placement bound accepted."
+}

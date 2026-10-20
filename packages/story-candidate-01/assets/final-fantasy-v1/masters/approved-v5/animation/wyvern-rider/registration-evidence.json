@@ -1,0 +1,372 @@
+{
+  "sharedScale": 0.06132879045996593,
+  "scaleFraction": "54/880.5",
+  "canonicalSourceFoot": [
+    900,
+    981
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "frameSize": [
+    128,
+    80
+  ],
+  "origin": [
+    14,
+    6
+  ],
+  "sourceFootMethod": "Preserve approved idle reference pivot[900,981]. Measure actual planted paw bottom-four-row centers, exclude raised paws from contact set, and use changes in planted-contact mean relative to idle. Constant idle calibration900-minus-idle-contact-x applies to every pose. Y is lowest planted claw. This prevents a lifted foot from pulling grounded registration.",
+  "idleActualPlantedContactCentroid": [
+    836.5550264550265,
+    981
+  ],
+  "constantSourceXCalibration": 63.44497354497355,
+  "registrationPolicy": "Uniform54/880.5 full native canvas for all poses; only transparent right padding1px for walkA/B and measured whole-canvas translation. No per-pose fit, trim, art edits or alpha cleanup.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeSha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+      "rawByteIdentical": true,
+      "perimeterAlphaMax": 1,
+      "boundsAlpha128": [
+        208,
+        17,
+        1341,
+        982
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "feet": [
+        {
+          "foot": "near-hind",
+          "roi": [
+            490,
+            870,
+            700,
+            980
+          ],
+          "soleY": 964,
+          "bottomFourRowsMeanX": 601.8222222222222,
+          "planted": true
+        },
+        {
+          "foot": "far-hind",
+          "roi": [
+            780,
+            845,
+            905,
+            950
+          ],
+          "soleY": 937,
+          "bottomFourRowsMeanX": 893.5,
+          "planted": true
+        },
+        {
+          "foot": "near-fore",
+          "roi": [
+            910,
+            910,
+            1100,
+            992
+          ],
+          "soleY": 981,
+          "bottomFourRowsMeanX": 1014.3428571428572,
+          "planted": true
+        },
+        {
+          "foot": "far-fore",
+          "roi": [
+            1065,
+            815,
+            1170,
+            915
+          ],
+          "soleY": 903,
+          "bottomFourRowsMeanX": 1090.8101265822784,
+          "planted": false
+        }
+      ],
+      "plantedContactCentroid": [
+        836.5550264550265,
+        981
+      ],
+      "sourceSupportAnchor": [
+        900,
+        981
+      ],
+      "registrationOffsetLogical": [
+        0,
+        0
+      ],
+      "fullCanvasBoundsLogical": [
+        13.999999999999993,
+        6.0,
+        111.26746166950596,
+        66.8381601362862
+      ]
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeSha256": "d6bb5a8c10e2d317fcaf8a582950da38a3d658a8a2a08622380ec56a7518898c",
+      "rawByteIdentical": true,
+      "perimeterAlphaMax": 1,
+      "boundsAlpha128": [
+        208,
+        14,
+        1322,
+        978
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "feet": [
+        {
+          "foot": "near-hind",
+          "roi": [
+            625,
+            870,
+            745,
+            965
+          ],
+          "soleY": 955,
+          "bottomFourRowsMeanX": 698.7674418604652,
+          "planted": false
+        },
+        {
+          "foot": "far-hind",
+          "roi": [
+            475,
+            895,
+            625,
+            975
+          ],
+          "soleY": 967,
+          "bottomFourRowsMeanX": 575.0,
+          "planted": true
+        },
+        {
+          "foot": "near-fore",
+          "roi": [
+            990,
+            885,
+            1190,
+            990
+          ],
+          "soleY": 977,
+          "bottomFourRowsMeanX": 1093.3,
+          "planted": true
+        },
+        {
+          "foot": "far-fore",
+          "roi": [
+            840,
+            835,
+            956,
+            946
+          ],
+          "soleY": 940,
+          "bottomFourRowsMeanX": 903.4606741573034,
+          "planted": false
+        }
+      ],
+      "plantedContactCentroid": [
+        834.15,
+        977
+      ],
+      "sourceSupportAnchor": [
+        897.5949735449736,
+        977
+      ],
+      "registrationOffsetLogical": [
+        0.14749736351098625,
+        0.2453151618398637
+      ],
+      "fullCanvasBoundsLogical": [
+        14.147497363510986,
+        6.245315161839864,
+        111.41495903301694,
+        67.08347529812606
+      ]
+    },
+    "attack": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeSha256": "424432f457808ecffb78958efb1b70f237740ed04825ba92d9df315e63a941fc",
+      "rawByteIdentical": true,
+      "perimeterAlphaMax": 0,
+      "boundsAlpha128": [
+        107,
+        80,
+        1336,
+        961
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "feet": [
+        {
+          "foot": "near-hind",
+          "roi": [
+            425,
+            835,
+            600,
+            948
+          ],
+          "soleY": 939,
+          "bottomFourRowsMeanX": 533.1724137931035,
+          "planted": true
+        },
+        {
+          "foot": "far-hind",
+          "roi": [
+            748,
+            810,
+            915,
+            900
+          ],
+          "soleY": 897,
+          "bottomFourRowsMeanX": 869.6333333333333,
+          "planted": true
+        },
+        {
+          "foot": "near-fore",
+          "roi": [
+            910,
+            870,
+            1110,
+            975
+          ],
+          "soleY": 960,
+          "bottomFourRowsMeanX": 1032.3555555555556,
+          "planted": true
+        },
+        {
+          "foot": "far-fore",
+          "roi": [
+            1130,
+            830,
+            1320,
+            940
+          ],
+          "soleY": 922,
+          "bottomFourRowsMeanX": 1262.076923076923,
+          "planted": true
+        }
+      ],
+      "plantedContactCentroid": [
+        924.3095564397288,
+        960
+      ],
+      "sourceSupportAnchor": [
+        987.7545299847023,
+        960
+      ],
+      "registrationOffsetLogical": [
+        -5.381879181344607,
+        1.2879045996592844
+      ],
+      "fullCanvasBoundsLogical": [
+        8.618120818655392,
+        7.287904599659284,
+        105.88558248816136,
+        68.12606473594548
+      ]
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeSha256": "818fa204b4878b39c238b5b19eb189f128c323ee974c0cf27b63f498d057c7c4",
+      "rawByteIdentical": true,
+      "perimeterAlphaMax": 1,
+      "boundsAlpha128": [
+        197,
+        7,
+        1366,
+        972
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "feet": [
+        {
+          "foot": "near-hind",
+          "roi": [
+            480,
+            870,
+            670,
+            982
+          ],
+          "soleY": 971,
+          "bottomFourRowsMeanX": 556.6666666666666,
+          "planted": true
+        },
+        {
+          "foot": "far-hind",
+          "roi": [
+            775,
+            830,
+            877,
+            930
+          ],
+          "soleY": 925,
+          "bottomFourRowsMeanX": 830.5052631578948,
+          "planted": false
+        },
+        {
+          "foot": "near-fore",
+          "roi": [
+            880,
+            775,
+            1010,
+            887
+          ],
+          "soleY": 877,
+          "bottomFourRowsMeanX": 933.1159420289855,
+          "planted": false
+        },
+        {
+          "foot": "far-fore",
+          "roi": [
+            1110,
+            860,
+            1310,
+            985
+          ],
+          "soleY": 971,
+          "bottomFourRowsMeanX": 1240.7068965517242,
+          "planted": true
+        }
+      ],
+      "plantedContactCentroid": [
+        898.6867816091954,
+        971
+      ],
+      "sourceSupportAnchor": [
+        962.1317551541689,
+        971
+      ],
+      "registrationOffsetLogical": [
+        -3.8104653927599323,
+        0.6132879045996593
+      ],
+      "fullCanvasBoundsLogical": [
+        10.189534607240068,
+        6.613287904599659,
+        107.45699627674603,
+        67.45144804088585
+      ]
+    }
+  },
+  "maximumAbsoluteRegistrationLogical": 5.381879181344607,
+  "status": "Coordinator-approved final quartet and exact planted-support delta registration at2026-10-20 00:13UTC",
+  "coordinatorApproval": "Same constant idle calibration for every pose; maximum5.382logicalpixels accepted; calibrated pivot separate from actual planted-contact centroid; no scale change."
+}

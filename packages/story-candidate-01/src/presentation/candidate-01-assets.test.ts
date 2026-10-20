@@ -12,6 +12,8 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-UNIT-WYVERN-RIDER', source: 'animation/wyvern-rider', size: [128, 80], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
+  { topic: 'C01-MISSION-BAKER', source: 'mission/baker', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-MISSION-CITY-DOCTOR', source: 'mission/city-doctor', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-MISSION-FORGE-ARTISAN', source: 'mission/forge-artisan', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-UNIT-ANCIENT-DRAGON', source: 'animation/ancient-dragon', size: [128, 88], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },

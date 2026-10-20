@@ -1,0 +1,60 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-b/master.png"
+  },
+  "scale": 0.06132879045996593,
+  "origin": [
+    14,
+    6
+  ],
+  "frameSize": [
+    128,
+    80
+  ],
+  "sourceFoot": [
+    900,
+    981
+  ],
+  "sourceFeet": {
+    "idle": [
+      900,
+      981
+    ],
+    "walk-a": [
+      897.5949735449736,
+      977
+    ],
+    "attack": [
+      987.7545299847023,
+      960
+    ],
+    "walk-b": [
+      962.1317551541689,
+      971
+    ]
+  },
+  "registrationOffsets": {
+    "idle": [
+      0,
+      0
+    ],
+    "walk-a": [
+      0.14749736351098625,
+      0.2453151618398637
+    ],
+    "attack": [
+      -5.381879181344607,
+      1.2879045996592844
+    ],
+    "walk-b": [
+      -3.8104653927599323,
+      0.6132879045996593
+    ]
+  },
+  "registrationLimit": 6,
+  "canvasPaddingTolerance": 1,
+  "meaning": "Canonical catalog-only original wingless grounded quadrupedal mount; opposite planted-support walking phases and original near-hand short-spear thrust. One shared scale. Calibrated pivots derive exactly from actual planted-contact deltas, with one constant idle calibration; see registration-evidence.json."
+}

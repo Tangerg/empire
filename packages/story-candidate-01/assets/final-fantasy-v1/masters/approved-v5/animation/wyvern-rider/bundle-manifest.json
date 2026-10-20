@@ -1,0 +1,190 @@
+{
+  "asset": "C01-UNIT-WYVERN-RIDER",
+  "generationTool": "built-in image_gen",
+  "actualConsumers": [],
+  "consumerStatus": "Canonical catalog-only; no matching unit definition, art binding or deployed actor. Design label flying troop differs from original wingless grounded source anatomy; source anatomy retained.",
+  "status": "Coordinator-approved quartet, source identity and planted-support registration; ready for formal export/integration by sole coordinator. No live-game verification claimed.",
+  "masterPolicy": "All selected and rejected native raw/master are unchanged byte-identical tool outputs. Technical QA/compositing, full-canvas exports and1px right padding only.",
+  "sharedScale": 0.06132879045996593,
+  "scaleFraction": "54/880.5",
+  "bodyReferenceSourcePixels": 880.5,
+  "bodyTargetHeightLogicalPixels": 54,
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "frameSize": [
+    128,
+    80
+  ],
+  "origin": [
+    14,
+    6
+  ],
+  "sourceFoot": [
+    900,
+    981
+  ],
+  "maximumMeasuredRegistrationLogical": 5.381879181344607,
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/registration-evidence.json",
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/source-evidence.json",
+  "selectedAttempts": {
+    "idle": "attempt01",
+    "walk-a": "attempt01 original retained",
+    "attack": "correction03",
+    "walk-b": "attempt01"
+  },
+  "supersededAttempts": {
+    "attack/candidates/attack-v1": "Spear about888px vs624idle; overly long.",
+    "attack/candidates/attack-correction-02": "Spear reduced to about700px, superseded by compact foreshortened03.",
+    "walk-a/candidates/walk-a-correction-02": "Unexecuted correction request. Original preserved because planted-support audit resolved concern without changing anatomy."
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/idle/raw.png",
+      "sha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/idle/request.json",
+      "referenceHashEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/idle/request-evidence.json",
+      "exactPromptSha256": "98e846231c0f74261fefaea5652f4d4d0efa95f8a09315f0a45dd223879481d1",
+      "sourceFoot": [
+        900,
+        981
+      ],
+      "registrationOffsetLogical": [
+        0,
+        0
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "perimeterAlphaMax": 1,
+      "wholeCanvasFits": true
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-a/raw.png",
+      "sha256": "d6bb5a8c10e2d317fcaf8a582950da38a3d658a8a2a08622380ec56a7518898c",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-a/request.json",
+      "referenceHashEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-a/request-evidence.json",
+      "exactPromptSha256": "13f43aaf2eeaec4b2f65581bd1c5e32ec2bbdbed182c5a7bca51889516827359",
+      "sourceFoot": [
+        897.5949735449736,
+        977
+      ],
+      "registrationOffsetLogical": [
+        0.14749736351098625,
+        0.2453151618398637
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "perimeterAlphaMax": 1,
+      "wholeCanvasFits": true
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/attack/raw.png",
+      "sha256": "424432f457808ecffb78958efb1b70f237740ed04825ba92d9df315e63a941fc",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/attack/request.json",
+      "referenceHashEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/attack/request-evidence.json",
+      "exactPromptSha256": "275d1ceb55e8f12e0ff7703fd56ec5d8b1888687b67768c734fa9f52252a21c7",
+      "sourceFoot": [
+        987.7545299847023,
+        960
+      ],
+      "registrationOffsetLogical": [
+        -5.381879181344607,
+        1.2879045996592844
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "perimeterAlphaMax": 0,
+      "wholeCanvasFits": true
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-b/raw.png",
+      "sha256": "818fa204b4878b39c238b5b19eb189f128c323ee974c0cf27b63f498d057c7c4",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-b/request.json",
+      "referenceHashEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/walk-b/request-evidence.json",
+      "exactPromptSha256": "d4acd2963f2e7ddbcf27336240043cd7c7c73e2979073a47421878fdc54971b2",
+      "sourceFoot": [
+        962.1317551541689,
+        971
+      ],
+      "registrationOffsetLogical": [
+        -3.8104653927599323,
+        0.6132879045996593
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "perimeterAlphaMax": 1,
+      "wholeCanvasFits": true
+    }
+  },
+  "registrationFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/registration.json",
+  "registrationLimitRequiredLogicalPixels": 6,
+  "canvasPaddingToleranceRequired": 1,
+  "finalApprovalAt": "2026-10-20 00:13 UTC",
+  "calibratedSourceFeet": {
+    "idle": [
+      900,
+      981
+    ],
+    "walk-a": [
+      897.5949735449736,
+      977
+    ],
+    "attack": [
+      987.7545299847023,
+      960
+    ],
+    "walk-b": [
+      962.1317551541689,
+      971
+    ]
+  },
+  "actualPlantedContactCentroids": {
+    "idle": [
+      836.5550264550265,
+      981
+    ],
+    "walk-a": [
+      834.15,
+      977
+    ],
+    "attack": [
+      924.3095564397288,
+      960
+    ],
+    "walk-b": [
+      898.6867816091954,
+      971
+    ]
+  }
+}

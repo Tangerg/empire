@@ -1,0 +1,197 @@
+{
+  "topic": "C01-UNIT-WYVERN-RIDER",
+  "selectedNativePerimeterGate": true,
+  "rawMasterHashesExact": true,
+  "negativeSpaceProbes": {
+    "idle": [
+      {
+        "roi": [
+          732,
+          907,
+          739,
+          914
+        ],
+        "maxAlpha": 1,
+        "alphaZeroPixels": 48
+      },
+      {
+        "roi": [
+          1042,
+          802,
+          1049,
+          809
+        ],
+        "maxAlpha": 0,
+        "alphaZeroPixels": 49
+      }
+    ],
+    "walk-a": [
+      {
+        "roi": [
+          767,
+          927,
+          774,
+          934
+        ],
+        "maxAlpha": 0,
+        "alphaZeroPixels": 49
+      },
+      {
+        "roi": [
+          972,
+          907,
+          979,
+          914
+        ],
+        "maxAlpha": 0,
+        "alphaZeroPixels": 49
+      }
+    ],
+    "attack": [
+      {
+        "roi": [
+          667,
+          897,
+          674,
+          904
+        ],
+        "maxAlpha": 0,
+        "alphaZeroPixels": 49
+      },
+      {
+        "roi": [
+          1117,
+          887,
+          1124,
+          894
+        ],
+        "maxAlpha": 0,
+        "alphaZeroPixels": 49
+      }
+    ],
+    "walk-b": [
+      {
+        "roi": [
+          727,
+          927,
+          734,
+          934
+        ],
+        "maxAlpha": 0,
+        "alphaZeroPixels": 49
+      },
+      {
+        "roi": [
+          1062,
+          897,
+          1069,
+          904
+        ],
+        "maxAlpha": 1,
+        "alphaZeroPixels": 34
+      }
+    ]
+  },
+  "derivedFullCanvasExports": [
+    {
+      "file": "export-preview/walk-b-2x.png",
+      "size": [
+        256,
+        160
+      ],
+      "sha256": "330adf879238f361a8ac6fae008a9f42a45df7e8db7cb1036b4811443929e82e",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/quartet-1x.png",
+      "size": [
+        512,
+        80
+      ],
+      "sha256": "00b31d0e0769fb34e0c97b7a54e4adafeee9f83403e082d97185165db676dc85",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/walk-b-1x.png",
+      "size": [
+        128,
+        80
+      ],
+      "sha256": "f1e3e9aa8cdc35318901bfa11bfd34039edf41def2023ce41457cd92f3c0f23f",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/quartet-2x.png",
+      "size": [
+        1024,
+        160
+      ],
+      "sha256": "c619d6fea52a9071a8ec2dc21075b2d23e5b0bfd5a2a2ae3fbead8c949b822d3",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/walk-a-1x.png",
+      "size": [
+        128,
+        80
+      ],
+      "sha256": "9528d6ca62ac53191eda92368648570535567bd1d84cdc94daa0753d8a6ecd61",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/attack-1x.png",
+      "size": [
+        128,
+        80
+      ],
+      "sha256": "76bf5268fb21e7216c9b5adeb2ef84a6a11e944a518fce98e223dc9d7cb66759",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/idle-1x.png",
+      "size": [
+        128,
+        80
+      ],
+      "sha256": "c98866d86a654d7b0c27672377d49be679ff176076924f5066744fbec0cf7960",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/attack-2x.png",
+      "size": [
+        256,
+        160
+      ],
+      "sha256": "b30c33fa535f898c5e0e84223157df44d6184ab63778a36c1cf492a2fd37fc43",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/idle-2x.png",
+      "size": [
+        256,
+        160
+      ],
+      "sha256": "fa47f494ab1d0b3f4e3217e8876fcd8ca496bb79c6fda0b2892573f106a06739",
+      "perimeterMaxAlpha": 0
+    },
+    {
+      "file": "export-preview/walk-a-2x.png",
+      "size": [
+        256,
+        160
+      ],
+      "sha256": "e5fc10da86f2f10b39e66c55a7ad120289ee3198ff2d3eb2b6b555989cff2095",
+      "perimeterMaxAlpha": 0
+    }
+  ],
+  "nativeArtMutation": "None",
+  "bodyScale": "54/880.5 all four full canvases, independent fitting forbidden",
+  "artSemanticReview": {
+    "idle": "Grounded original wingless four-legged mounted identity; near spear hand and forward reins hand preserved.",
+    "walk-a": "Near fore/far hind planted, near hind/far fore lifted; original stable torso and compact tail.",
+    "walk-b": "Opposite near hind/far fore planted, opposite pair lifted.",
+    "attack": "Correct original spear-hand thrust with distinct reins hand; compact short spear. Grounded braced mount. Selected03 spear is approximately560projected pixels versus624idle; orientation/foreshortening differs. No extra weapon, FX or flight."
+  },
+  "status": "Coordinator-approved final visual, projected short-spear length and calibrated planted-support registration; ready for formal export.",
+  "sourceInteriorAlphaOneDust": "Sparse alpha1 samples are preserved unchanged, including two small negative-space probes. They are not visible haze; no alpha editing performed."
+}

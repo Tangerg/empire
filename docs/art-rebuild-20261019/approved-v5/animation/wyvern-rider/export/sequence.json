@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-b/master.png"
+    },
+    "scale": 0.06132879045996593,
+    "origin": [
+      14,
+      6
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      900,
+      981
+    ],
+    "sourceFeet": {
+      "idle": [
+        900,
+        981
+      ],
+      "walk-a": [
+        897.5949735449736,
+        977
+      ],
+      "attack": [
+        987.7545299847023,
+        960
+      ],
+      "walk-b": [
+        962.1317551541689,
+        971
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0,
+        0
+      ],
+      "walk-a": [
+        0.14749736351098625,
+        0.2453151618398637
+      ],
+      "attack": [
+        -5.381879181344607,
+        1.2879045996592844
+      ],
+      "walk-b": [
+        -3.8104653927599323,
+        0.6132879045996593
+      ]
+    },
+    "registrationLimit": 6,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Canonical catalog-only original wingless grounded quadrupedal mount; opposite planted-support walking phases and original near-hand short-spear thrust. One shared scale. Calibrated pivots derive exactly from actual planted-contact deltas, with one constant idle calibration; see registration-evidence.json."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    69.19591141396933,
+    66.16354344122658
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8103,
+        "nearOpaquePixels": 1663,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          7,
+          96,
+          66
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32865,
+        "nearOpaquePixels": 7054,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          15,
+          192,
+          132
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-a/master.png",
+      "registrationOffset": [
+        0.14749736351098625,
+        0.2453151618398637
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d6bb5a8c10e2d317fcaf8a582950da38a3d658a8a2a08622380ec56a7518898c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8159,
+        "nearOpaquePixels": 1610,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          7,
+          95,
+          66
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-a/master.png",
+      "registrationOffset": [
+        0.14749736351098625,
+        0.2453151618398637
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d6bb5a8c10e2d317fcaf8a582950da38a3d658a8a2a08622380ec56a7518898c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33056,
+        "nearOpaquePixels": 6828,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          15,
+          190,
+          132
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/attack/master.png",
+      "registrationOffset": [
+        -5.381879181344607,
+        1.2879045996592844
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "424432f457808ecffb78958efb1b70f237740ed04825ba92d9df315e63a941fc",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8007,
+        "nearOpaquePixels": 1752,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          12,
+          91,
+          66
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/attack/master.png",
+      "registrationOffset": [
+        -5.381879181344607,
+        1.2879045996592844
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "424432f457808ecffb78958efb1b70f237740ed04825ba92d9df315e63a941fc",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32449,
+        "nearOpaquePixels": 7409,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          24,
+          181,
+          132
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-b/master.png",
+      "registrationOffset": [
+        -3.8104653927599323,
+        0.6132879045996593
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "818fa204b4878b39c238b5b19eb189f128c323ee974c0cf27b63f498d057c7c4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8027,
+        "nearOpaquePixels": 1716,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          7,
+          94,
+          66
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/walk-b/master.png",
+      "registrationOffset": [
+        -3.8104653927599323,
+        0.6132879045996593
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "818fa204b4878b39c238b5b19eb189f128c323ee974c0cf27b63f498d057c7c4",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32594,
+        "nearOpaquePixels": 7245,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          14,
+          188,
+          132
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}
