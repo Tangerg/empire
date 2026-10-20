@@ -1,0 +1,40 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "selectedRequest": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-5c4fb0bb-14e2-4296-80ea-e9243f0f8886.png",
+  "rawEqualsMasterEqualsReturned": true,
+  "sha256": "222be792cd8dcce15f0e446d2cd35434fc0e67a22b7929df83714ef2a21074bf",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/terrain/terrain-board-02.png",
+      "sha256": "94ced58f452d34ae1d67aa4a18f5fc1a2eb0083acbac5ce286986325b28d6452"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/candidates/broad-matte-v2/master.png",
+      "sha256": "22cc0fc7b51b4a3a11891537695aec3faaed5db4993daed7de756e2b5bcb3e63"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-heated-walkway/candidates/broad-matte-v2/master.png",
+      "sha256": "71ad80ae86ef50b9175316f95a4c2f679c807c451affe0cca44a2288c7520375"
+    }
+  ],
+  "topicId": "c03-terrain-e1b682d1",
+  "status": "worker-native-reviewed-parent-selection-pending",
+  "invocations": [
+    {
+      "kind": "generate",
+      "requestFile": "request.json",
+      "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-5c4fb0bb-14e2-4296-80ea-e9243f0f8886.png",
+      "sha256": "222be792cd8dcce15f0e446d2cd35434fc0e67a22b7929df83714ef2a21074bf"
+    }
+  ],
+  "processing": "None. Exact generated PNG bytes copied; no source crop, recolor, repaint, filtering or resample."
+}

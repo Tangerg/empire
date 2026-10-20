@@ -7,13 +7,13 @@ import overrides from '../../../tools/art/canonical-terrain-overrides.json';
 const root = new URL('../../../', import.meta.url);
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const registered = Object.entries(overrides.assets).filter(([topic]) => topic.startsWith('c03-'));
-const reports = ['chinese-terrain-batch-01', 'chinese-terrain-batch-02'].flatMap(folder => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/${folder}/formal-export.json`, root), 'utf8')));
+const reports = ['chinese-terrain-batch-01', 'chinese-terrain-batch-02', 'chinese-terrain-batch-03'].flatMap(folder => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/${folder}/formal-export.json`, root), 'utf8')));
 
 describe('C03 native-density terrain catalog', () => {
-  it('retains the complete 32-topic inventory and eight source-reviewed bindings', () => {
+  it('retains the complete 32-topic inventory and twelve source-reviewed bindings', () => {
     expect(manifest.assets.filter(asset => asset.category === 'terrain')).toHaveLength(32);
-    expect(registered).toHaveLength(8);
-    expect(reports).toHaveLength(8);
+    expect(registered).toHaveLength(12);
+    expect(reports).toHaveLength(12);
   });
 
   it.each(registered)('preserves %s geometry, source ownership and exact runtime bytes', (topic, source) => {

@@ -1,0 +1,163 @@
+{
+  "topicId": "c03-equip-6a62b51e",
+  "assetId": "C03-ACV1-equip-6a62b51e",
+  "label": "铁锤破阵手主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6577ff2f-b7bb-42b4-869a-fdea9773396a.png",
+  "sha256": "a083b4dbce3caeb0528010457623bc5faa86146c0516f6dd0cfb0cb3957c27f0",
+  "rawMasterByteIdentical": true,
+  "promptFile": "prompt.txt",
+  "generationAttempts": 1,
+  "boundedCorrectionUsed": false,
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-01.png",
+      "sha256": "c874d39df7da9caa67d7fa0ecebf5863ea44c6a290f277e39083653e61418b87",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    }
+  ],
+  "referenceDelivery": "Complete original atlas, builder board and approved broad-matte source inspected visually to derive textual new-generation prompts. No reference image supplied as imagegen tool argument.",
+  "identityReconstruction": "Canonical iron-hammer breaker role reconstructed using full-atlas row6 col1 hammer/tool material vocabulary. Inferred builder slot row4 col5 and preserved legacy runtime show grain containers. Older remake warhammer identity is retained with approved-v5 broad matte treatment. This is not exact original-slot recovery.",
+  "identityEvidence": [
+    "packages/story-candidate-03/assets/final-ancient-china-v1/tools/build_final_ancient_china_v1.py",
+    "docs/art-rebuild-20261019/canonical-topic-manifest.json",
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "canonicalEntry": {
+    "assetId": "C03-ACV1-equip-6a62b51e",
+    "topicId": "c03-equip-6a62b51e",
+    "label": "铁锤破阵手主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-6a62b51e.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ],
+    "campaign": "story-candidate-03",
+    "manifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-6a62b51e.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": []
+  },
+  "currentManifestEntry": {
+    "assetId": "C03-ACV1-equip-6a62b51e",
+    "topicId": "c03-equip-6a62b51e",
+    "label": "铁锤破阵手主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-6a62b51e.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "builderAudit": {
+    "topicId": "c03-equip-6a62b51e",
+    "label": "铁锤破阵手主装备组",
+    "catalogOrderIndex": 28,
+    "reconstructedBuilderSlotOneBased": [
+      4,
+      5
+    ],
+    "mappingCertainty": "Builder preserves missing manifest-complete.json topic order; ordered 07-topic-catalog is a reconstruction supported by legacy runtime contents, not the unavailable original builder input.",
+    "legacyPath": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6a62b51e/original-evidence.png",
+    "legacySha256": "82e2b5a74dc802cd906c1a26b65d9acc04e0c17ea5de514601edc75d2dae9130",
+    "currentPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-6a62b51e.png",
+    "currentSha256": "b09dfbff21efb911aee4713869da09203f583801ce8778f6cefb334319d98185"
+  },
+  "builderAuditPath": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/legacy-builder-audit.json",
+  "approvedV5SelectionProgressSnapshot": 641,
+  "reservationEvidence": {
+    "noApprovedV5StageAtSelection": true,
+    "priorRegistryEntry": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6a62b51e/master.png",
+      "sha256": "d82d241a1675215a204a9693dcb766cb4df1806db63587be4653f03683de72bc"
+    },
+    "priorRegistryDoesNotCountAsApprovedV5": true
+  },
+  "legacySlot": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6a62b51e/original-evidence.png",
+    "sha256": "82e2b5a74dc802cd906c1a26b65d9acc04e0c17ea5de514601edc75d2dae9130",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/c03-equip-6a62b51e-legacy-native.png"
+  },
+  "beforeRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-6a62b51e.png",
+    "sha256": "b09dfbff21efb911aee4713869da09203f583801ce8778f6cefb334319d98185",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/c03-equip-6a62b51e-before-runtime.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      77,
+      37,
+      1190,
+      1195
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "canonicalNativeContract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "padding": 2
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      5,
+      4,
+      43,
+      43
+    ]
+  },
+  "postprocessing": "None. Raw/master are byte-identical native generation. Review exports use the existing whole-canvas contain only; no crop, repaint, recolor, alpha surgery or pixel cleanup.",
+  "registered": false,
+  "runtimeIntegrated": false,
+  "liveGameVerified": false
+}

@@ -1,6 +1,6 @@
 {
   "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
-  "asOfUtc": "2026-10-20T09:29:00Z",
+  "asOfUtc": "2026-10-20T09:54:00Z",
   "fullTaskAccepted": false,
   "issues": [
     {
@@ -147,6 +147,34 @@
       "status": "scene-material-continuity-review-required",
       "issue": "Inherited narrow NESW masks produce regular ladder-like road repetition; source ruts are readable but full scene road composition is not accepted.",
       "evidence": "chinese-terrain-batch-01/REVIEW.md"
+    },
+    {
+      "topic": "c03-terrain-e1b682d1",
+      "binding": "bound-catalog-only",
+      "status": "scene-material-continuity-review-required",
+      "issue": "Repeated reed tufts and narrow inherited masks require scene material continuity review.",
+      "evidence": "chinese-terrain-batch-03/REVIEW.md"
+    },
+    {
+      "topic": "c03-terrain-62e36a0f",
+      "binding": "bound-catalog-only",
+      "status": "scene-material-continuity-review-required",
+      "issue": "Shoal reads as stone-dotted or stepping-stone-like repeated cores; assess water continuity in a real scene.",
+      "evidence": "chinese-terrain-batch-03/REVIEW.md"
+    },
+    {
+      "topic": "c03-terrain-237c17a6",
+      "binding": "bound-catalog-only",
+      "status": "scene-material-continuity-review-required",
+      "issue": "Fixed diagonal current motif across NESW masks needs scene direction/cohesion review.",
+      "evidence": "chinese-terrain-batch-03/REVIEW.md"
+    },
+    {
+      "topic": "c03-terrain-98a758f5",
+      "binding": "bound-catalog-only",
+      "status": "scene-material-continuity-review-required",
+      "issue": "Fixed timber and rope orientation across NESW branches needs scene orientation review.",
+      "evidence": "chinese-terrain-batch-03/REVIEW.md"
     }
   ]
 }

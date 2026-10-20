@@ -1,0 +1,806 @@
+[
+  {
+    "topicId": "c03-terrain-e1b682d1",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/e1b682d1/master.png",
+      "sourceSha256": "222be792cd8dcce15f0e446d2cd35434fc0e67a22b7929df83714ef2a21074bf",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "cbd6c544a3ccb66530327ea5e738c0014edac858151149953a88fb5cd987b1c0",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "1abf1ca100eb377444e6241e55c75fca97a41f19c7c51b30c63833fff4a056db",
+        "edgeBandPixels": 1,
+        "changedPixels": 123,
+        "maxChannelChange": 46,
+        "interiorPixelSha256": "807e9d9c5ea93e8772913807034dc11cef68f0d7a603d1f336ae7b7216be79b9",
+        "edgeHashes": {
+          "top": "9989a02cba44c7f6857748ead7f96d8eeaa5e0d6eb1f16331ca077442c95b3b6",
+          "bottom": "9989a02cba44c7f6857748ead7f96d8eeaa5e0d6eb1f16331ca077442c95b3b6",
+          "left": "cd9c10ea54d7a70f70fe59d3b15d55d1eb15162cd7652dbd7c155e07b4a55522",
+          "right": "cd9c10ea54d7a70f70fe59d3b15d55d1eb15162cd7652dbd7c155e07b4a55522"
+        },
+        "pixelSha256": "369efc4a5c3649b4e30c17d98085446303389ef788601b021c1dce8540fc14dd"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "a92ec3f08053de3134bc9b3457b6d116243521a03c2740773d9e2bf7c9aa3198",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "a42cef1c3d7506f212c6d23739c96e5bc4d365ea8fada355b46081368f8fdd79",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "a7bd72b7e614b57b6e7d574f657ad3a669720ce0a59138a1f0959a42f2b6b1e7",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "e96abb9e73f70e1cb39710e30a66de5e30e59176f2dbf765818d4b40ce203059",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "6404f4094465c07bfd0e9c87bb9d7528836ec576c4b83d230bb1b17ef1fda3af",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "277a0b561d30abad0a30fca01e8f90edbcc5af40d77c934d523bed5220ea4cff",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "1ec908b88d1de77aaf1e62e140a8f8f8cd70b376d8505fa13bc9ae5b6428aed2",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "ed03024f762dc839723d64cbe9362d484cf7c43591b3c752165146dd20971490",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "25105e717e24afbf56f4912239a56eb7024f9508475885e429187c5641ee1dcb",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "3240497dc671884bb563ca8edd540fd588d25e6ed8ac56f6588ac6e2938dbbfe",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "5860cec63d5f3d47e9b5090f99fcbcfb058ec8d87ccb094caedebabdd5b74c16",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "f3becc225f61e74dc5bd177c887cd4a8a970fe20dd1002e68017caa06602f4de",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "b23eb63cb9012369db166fd6d2dc8724e65d72928d182fa64c3d97e60a25d3f9",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "5440485815eae1be7fb0821e3565d9d1e2357646c5af11ed3b435b8881b91f68",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "da8a2edf0bdad44f816b13b3d5d9e99e681dc648400a39b617c3d0639d801163",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "40d0703c7ef6bbd6a2482ba6b82949d968d08c7e6cd841dc380c99d617812d7f",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "9f90b414a2c92c05117078cde68501a8ee3e164950646099b9fd7a1bd4c918a8",
+    "pixelSha256": "1ca96d9e268cacbf5355251662d1e2db963b04ae9fcca99ef94afc6b9432301f",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        129,
+        111,
+        62,
+        255
+      ],
+      "E": [
+        139,
+        111,
+        64,
+        255
+      ],
+      "S": [
+        129,
+        111,
+        62,
+        255
+      ],
+      "W": [
+        139,
+        111,
+        64,
+        255
+      ]
+    },
+    "centerRGBA": [
+      78,
+      75,
+      39,
+      255
+    ],
+    "visibleOliveGreenPixels": 110,
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: reeds retain >=6 olive-green pixels; shoal center is warm stone R>B; rapids midpoint routes are blue B>R; bridge midpoint routes are warm wood R>B. Does not replace visual semantic/topology review."
+  },
+  {
+    "topicId": "c03-terrain-62e36a0f",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/62e36a0f/master.png",
+      "sourceSha256": "780d80f776fb298302e7802c800a95d6e0e14447b3f74bf4ec0b752aa47d9671",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "e0bc88a533b7bd62a0a8651be9b9da94d9e9303c5834c319ab44373196b12c6f",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "d620d29f3c954ca7d74c5be03386f8f1b4e38f1199c4de08baf8551c2a4ee2da",
+        "edgeBandPixels": 1,
+        "changedPixels": 122,
+        "maxChannelChange": 58,
+        "interiorPixelSha256": "51a4b106163684eb27a6926994e5402518061a35bc1989a66f30168d528cc28b",
+        "edgeHashes": {
+          "top": "2720f52acd86d17c3f61f812c6b3373986a73a8439ada9e1cba92587e7e6b154",
+          "bottom": "2720f52acd86d17c3f61f812c6b3373986a73a8439ada9e1cba92587e7e6b154",
+          "left": "a7d52c97b976ad59a14e25e87046a979d410fbf415817fbf4445c9f1ec059f23",
+          "right": "a7d52c97b976ad59a14e25e87046a979d410fbf415817fbf4445c9f1ec059f23"
+        },
+        "pixelSha256": "6df3d3dbd49ba9cd45a7c3f0fb1051975ca9aeb9cb1c2f91f9ffd3f9d83d8d78"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "1c124a671aad045902a6a499e7f0bb541b8a529476dc3217cdd8e09424c9f549",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "e45e7839a94c411417a9fe758d70b15a8adc9d2000018f760e126ed6300c796d",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "7a87f0b667be125751aae82b90b480b98490e1ba481040a41bc93a1d8acdb490",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "584957dd15cc313e364efb0098fad96268e8d14e4a060b48dbad7dfe54d3a922",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "b6a7d71609ac819d3a0b616e6e5abfef95b83f6606fea1be4530c70b48e194ee",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "0797363f8e1887e03916d53ef8e7c9be5857bd637a0713d1308a643571334297",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "ed3cbab76f266971f1f2b33361cc458dafa192aba5b1b78a16615f79346644e0",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "0a39ed144386214d94e31748aad824ce315018f26111769749ce6c70dd1b21ce",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "3c3d872a8e2c67d5a24b1a5f71d16742b7a16a743c5fa3d2812a3fa8fcf49818",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "2992eadc9dae9d35bee5835d02be30241c7a68f2c84130ade9d49f822149386a",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "c2e1f58d60f841d8036ab4cd2d31e1a97217e2910db125237563700615ea4047",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "166ce46262c6c7a21cd2ebe3470c947eb5b7d0119d3d9da54034330045e6e04f",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "ca929109377b56b15007728d8f9242ddb2e3814884cdc9318e0b0443300b885c",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "10ed73ef3c0dbb2cece38a6ed209c39aa736e8beaa949bbb01ba5fc42951e322",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "1970e0b1a1e364f2848c41bb755cf7f56bc6737e1b9330a6ee4da7d848a5c24d",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "d226e115081a6f6ec0dced7ea13dccb53f6dd92ceb9d40e4c7e39c95c03ba012",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "3216baafc4017617228d0e9e2739a28a7b5e6a6c6b7579df80faf35cb7f404b5",
+    "pixelSha256": "456652a0bbb93f9c3a898f9fd539f56bdd5c71bf6bfa2fe3fb5abba384c9a339",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        154,
+        171,
+        161,
+        255
+      ],
+      "E": [
+        155,
+        160,
+        151,
+        255
+      ],
+      "S": [
+        154,
+        171,
+        161,
+        255
+      ],
+      "W": [
+        155,
+        160,
+        151,
+        255
+      ]
+    },
+    "centerRGBA": [
+      164,
+      152,
+      133,
+      255
+    ],
+    "visibleOliveGreenPixels": 2,
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: reeds retain >=6 olive-green pixels; shoal center is warm stone R>B; rapids midpoint routes are blue B>R; bridge midpoint routes are warm wood R>B. Does not replace visual semantic/topology review."
+  },
+  {
+    "topicId": "c03-terrain-237c17a6",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/237c17a6/master.png",
+      "sourceSha256": "95c0d3b02e034c556f83cdde4f0e112d5abf007aab86b05ddccf69775847a4e3",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "3ed39dd18d693bfffb1cd41d2ff31b88733e7fb0418cfb19ef93be54baf1bb39",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "a86fe5a1f37c1d172ef8c519dd59bafb80ec8361cfb9434728c44865fb2f2d91",
+        "edgeBandPixels": 1,
+        "changedPixels": 123,
+        "maxChannelChange": 84,
+        "interiorPixelSha256": "b10b108ba07a34bd98ea2cadb7203953294c1f91aae2295710867dbae49c88f6",
+        "edgeHashes": {
+          "top": "e2720036b49c4e495b382ba675d567f338cab6a4649b688e0a1e0a0622259143",
+          "bottom": "e2720036b49c4e495b382ba675d567f338cab6a4649b688e0a1e0a0622259143",
+          "left": "06356f5fb53f0b2b8f2f184cdf7f6db61d1730fd28ed5a5f2d641ea9b9e47e74",
+          "right": "06356f5fb53f0b2b8f2f184cdf7f6db61d1730fd28ed5a5f2d641ea9b9e47e74"
+        },
+        "pixelSha256": "72516bbf1c78a77e38dc9db71bcefe6e534661dfd6a5d8b6c178e944791cf812"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "1f8defe6cf02aa290d81478a8be01cb996706573b36433596bb0b1dafdad7aed",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "324dc754cadc7f5d54ca7143bc265247982400ef3a4217d8ecff0a905c4e42b5",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "a7087e0a0ac75e12b7fbd258ab2d719271cc217d5d6758a0bc0fc705b7171411",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "375ccf84ec313408ff7545ccf52dc78999c5978776f6d61f35815785f485e8d4",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "395d334736f6ac6be17f6c64089b4ee609c1746890d5bffb0561983fc2b9e67f",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "9a67c413651d72eed7f6ed2ed8cd439da572165da620bbdf956831bd3c9c7437",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "19e153a9d6daa3711bca869ed0d9efa19ad8f0808319d2077024dbf196d8bac9",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "abda40f2e1b318357f6c9467270b970351c4fe242518cd785488d33a18ccda2a",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "eb034a1e0a04226b08ce05a1277a33a0b9d6ca7a1c2d2151c7909139b3d56d3b",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "f4fa6848fabbdd1b5da56e830bbd4d39fc806f8a8d30d37b0ba373daf46eb836",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "c9fbf1362af1b565bead4e6060e15cf896eb3e9d967ed995ac11e5e76832e6d9",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "27b9d742719566765526715c9a3fc730ec3d8524dc21c1665d6a972b059278f6",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "3f3ed43e5bfa3a60b470e468e905cb540625f8c1d4114ee31098c05a9cf59c9e",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "f69c9d14c0f442bf6ec516d59943ea67cf53ca770b0f581f25c50ba2b897cf7b",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "bd03bbad505e28463525e511691bbf26a5132ff86dc23cf198f7403646b43849",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "7d87434fa935ff3287eeb4bbfaee3e6342b54c782af623a843ca5641e8349cb6",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "4e79fb723ab329af8eef31bdb9a4e8faa8c44443346cf107681db6a45add88ba",
+    "pixelSha256": "7ac058e6bd4fe64e7c0a75e90cee9bcd5cfad59f6420e54acccf659322f3439f",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        52,
+        105,
+        142,
+        255
+      ],
+      "E": [
+        51,
+        107,
+        146,
+        255
+      ],
+      "S": [
+        52,
+        105,
+        142,
+        255
+      ],
+      "W": [
+        51,
+        107,
+        146,
+        255
+      ]
+    },
+    "centerRGBA": [
+      19,
+      54,
+      82,
+      255
+    ],
+    "visibleOliveGreenPixels": 0,
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: reeds retain >=6 olive-green pixels; shoal center is warm stone R>B; rapids midpoint routes are blue B>R; bridge midpoint routes are warm wood R>B. Does not replace visual semantic/topology review."
+  },
+  {
+    "topicId": "c03-terrain-98a758f5",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/canonical-terrain/98a758f5/master.png",
+      "sourceSha256": "23501b5b82f05f86848522f80360838528c939057ec0c0bd26022bbd6e1145be",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "01aa3dea841ff0f102e4478266d9eac4595d6e4749d1944711d3ebec62c29797",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "b426264ac058888262e4dafb968ed7a9896503cd9b6e53153166a04ad16fa898",
+        "edgeBandPixels": 1,
+        "changedPixels": 123,
+        "maxChannelChange": 39,
+        "interiorPixelSha256": "bb3b70d536a369319b3f73e40cf1c1fbb271cd73053c76170a278268a5d1c4f5",
+        "edgeHashes": {
+          "top": "91b53171891ce168832a47df9441fab8e0de00cc6671b619611d9a1d325cfbef",
+          "bottom": "91b53171891ce168832a47df9441fab8e0de00cc6671b619611d9a1d325cfbef",
+          "left": "cdbea2af5f2e0e495bf1935f5949412ccde11484e6e8ba5478c219dff6425844",
+          "right": "cdbea2af5f2e0e495bf1935f5949412ccde11484e6e8ba5478c219dff6425844"
+        },
+        "pixelSha256": "98e89b6cfaa8d6730188a95903ede11704698d97c103a5846e16159116714aeb"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "8574e94eba11db52bb4b9c12ef62c1d7e6e1ccd7a15f0242732f0a2a80f4629a",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "8faa8e56db7e85100c136cbe7bac9347746a4d1bc946923eb3f5e8480ff7ad0d",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "17c204555f88f4272d4d7b7c150b82b5e5aeb1471ef6a5a2b3d91b3b72734a9a",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "43f09e7b2d0a0c110f0e09d87069fb23008a3b35e4fe814ef505c8c0106f2be3",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "8eb36af711112840edffaf67d7a4cbfb22cfa7d69f5eb0f4f0cb8285cd75bcb7",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "61a70af67282e30d867d347fd1e0ac9e7789bf2c379b40d515ffde8f6882f55e",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "739b4b7e5529c9700ef1a314a869d21ea3e48ed897b369213280338385233399",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "24a72387de4a71d5168e9fc85f354769f5ce09936af8f0abb1913e96e8d338d6",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "e71ac3a0834ea41d3099c53d55a99a0bc10c5af4bda9ab8519284618e95dfaab",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "fd658b187d0f711fc298ad76a72b34947b62c05540b8d1bd209c31aecb26a9f4",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "a2c35b2c9573959f40329f1485a31570db485819d055c71be62dd9c31f7e2559",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "6b953604ed13b5b53fea26e03f9018a5c761667a5fedeb6fb67f7c31c561dd48",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "a1b9f7b1fba96bfe1991784db8ecb4d07f1849cd1ef82288304167d9374b8d8d",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "70e3159c818bc1942f61dae1e467e737d5cd55e5b6512a310f1cdbf76bdd1a2c",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "f0df8bfb9d0b4cb4420302253f311bbc00a719dd97991f9ecbbd60f23ae3c963",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "d17f59d37d119c154f0dd2bdb20ef71b72519a094a1f73b4158ad2cddf7f1c2d",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "5a285b5932959629269d947a445f9b9242bcba1e0f7a989b3eb90f17597616ca",
+    "pixelSha256": "333dfd5d87b274f00cdff9c79ed7b1fd7824eb150a5a666d777d71ae3f1c004f",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16,
+    "cardinalMidpointRGBA": {
+      "N": [
+        156,
+        115,
+        64,
+        255
+      ],
+      "E": [
+        153,
+        114,
+        64,
+        255
+      ],
+      "S": [
+        156,
+        115,
+        64,
+        255
+      ],
+      "W": [
+        153,
+        114,
+        64,
+        255
+      ]
+    },
+    "centerRGBA": [
+      175,
+      130,
+      71,
+      255
+    ],
+    "visibleOliveGreenPixels": 0,
+    "cardinalMaterialProbePass": true,
+    "probeMeaning": "Coarse color evidence only: reeds retain >=6 olive-green pixels; shoal center is warm stone R>B; rapids midpoint routes are blue B>R; bridge midpoint routes are warm wood R>B. Does not replace visual semantic/topology review."
+  }
+]

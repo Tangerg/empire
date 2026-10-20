@@ -11,7 +11,9 @@ import batchThreeReports from '../../../docs/art-rebuild-20261019/approved-v5/ch
 
 import batchFourReports from '../../../docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-04/formal-export.json';
 
-const reports = [...pilotReports, ...batchTwoReports, ...batchThreeReports, ...batchFourReports];
+import batchFiveReports from '../../../docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/formal-export.json';
+
+const reports = [...pilotReports, ...batchTwoReports, ...batchThreeReports, ...batchFourReports, ...batchFiveReports];
 const root = new URL('../../../', import.meta.url);
 const prefix = 'packages/story-candidate-03/assets/final-ancient-china-v1/';
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
@@ -19,10 +21,10 @@ const registered = Object.entries(overrides.assets).filter(([topic, spec]) =>
   topic.startsWith('c03-equip-') && 'source' in spec && spec.source.includes('/approved-v5/'));
 
 describe('C03 native equipment catalog', () => {
-  it('keeps all48 identities and sixteen independently reviewed bindings', () => {
+  it('keeps all48 identities and twenty independently reviewed bindings', () => {
     expect(manifest.assets.filter(asset => asset.category === 'equipment')).toHaveLength(48);
-    expect(registered).toHaveLength(16);
-    expect(reports).toHaveLength(16);
+    expect(registered).toHaveLength(20);
+    expect(reports).toHaveLength(20);
   });
   it.each(registered)('preserves %s source ownership, geometry and runtime bytes', (topic, spec) => {
     if (!('source' in spec)) throw new Error(`${topic}: expected static source`);

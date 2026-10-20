@@ -1,0 +1,31 @@
+{
+  "visuallyInspectedReferences": [
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-01.png",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png"
+  ],
+  "referenceDelivery": "Complete original atlas, builder board and approved broad-matte source inspected visually to derive textual new-generation prompts. No reference image supplied as imagegen tool argument.",
+  "shared": "Use case: stylized-concept. Create ONE complete ancient Chinese tactical equipment inventory icon, inspired by the exaggerated readability of Legends of Kingdom Rush, not copying a specific asset. Bold thick dark contour, chunky oversized shapes, huge calm matte color planes with just TWO main light/shadow tones per material. Native destination 48x48, simplify aggressively; clear silhouette before ornament. Oblique three-quarter overhead game view. One compact group centered in a square canvas, all objects complete, about 76 percent fill with at least 10 percent clear margin on every side. Genuine transparent alpha outside objects and through every gap. Absolutely no background, ground, cast shadow, checkerboard, text, labels, frame or characters. No stipple, mottling, mosaic, scratches, woodgrain, metal microfacets, glossy rendering, gradients, tiny ornamental lines or glitter. Smooth matte surfaces and broad simple silhouette. No modern or Japanese equipment. ",
+  "assets": [
+    {
+      "topicId": "c03-equip-4dad36ef",
+      "subject": "Subject: 云梯队主装备组, an ancient Chinese siege-ladder crew equipment icon. ONE compact wooden wheeled assault ladder, a steeply raised short ladder with TWO stout ochre side rails and exactly FIVE broad widely spaced rungs, mounted on a small sturdy two-wheel axle base with one simple rear brace. The large open gaps between rungs must remain genuinely transparent. Dark iron wheel rims, plain old-wood beams in broad flat planes. No planked ramp, platform, turret, wall, rope coil, flags or people. Ladder is unmistakable and occupies the main silhouette; the tiny two-wheel base makes it portable siege equipment. No woodgrain, tiny nails, extra cross-bracing or realistic engineering detail.",
+      "identity": "Canonical engineering role reconstruction: builder/catalog row2 col7 and legacy runtime show a planked bridge ramp, not an assault ladder. Use full-atlas row3 col1 wheeled siege-ladder vocabulary, simplified for native48. Not exact slot recovery."
+    },
+    {
+      "topicId": "c03-equip-58b98436",
+      "subject": "Subject: 边军斥候主装备组, ancient Chinese frontier scout equipment. ONE squat broad brown leather riding saddle with a raised dark-brown seat and high simple curved pommel, TWO wide hanging leather stirrup straps ending in large plain iron stirrups, and ONE warm-ivory rolled map tied horizontally behind the saddle with a single dark cord. Only these objects, in one compact sturdy group. The map is a thick short roll, no printed marks or text. Very plain unornamented riding equipment, no horse, rider, weapon, modern telescope, tassels, filigree or gold decoration. Oversize saddle silhouette, large clean stirrup holes with genuine transparency, smooth dark and ochre matte planes.",
+      "identity": "Canonical frontier scout equipment abstraction. Legacy slot row2 col1 contains a saddled horse; full atlas row2 col2 saddle and row4 col7 map supply role vocabulary. Saddle plus map is deliberate reconstruction rather than exact original-slot recovery. Older remake role combination is retained with the approved-v5 broad matte treatment."
+    },
+    {
+      "topicId": "c03-equip-5e64c3a6",
+      "subject": "Subject: 火箭营主装备组, ancient Chinese fire-arrow company equipment, a stylized historical-fantasy inventory icon. ONE small plain wooden rack holding FOUR oversized upright traditional fire-arrow rockets, each a chunky ochre cylinder with a broad muted-red conical tip and a short dark lower rod. Exactly four clearly separated red tips form the upper silhouette. Two thick horizontal dark-brown rack bars and two broad feet. An unlit stored equipment group, NOT firing, no flame or smoke, no explosive diagram, no labels, no mechanisms or realistic technical details. No modern missiles, metal fins, cannon, ammunition box, wheels or extra weapons. Large matte red, ochre and brown planes, simple heavy cartoon outline.",
+      "identity": "Canonical ranged 火箭营 role reconstructed using full-atlas row3 col6 red-tipped rocket rack vocabulary. Inferred builder slot row3 col2 and unchanged runtime instead contain a battering ram. This is semantic role reconstruction, not exact legacy-slot recovery."
+    },
+    {
+      "topicId": "c03-equip-6a62b51e",
+      "subject": "Subject: 铁锤破阵手主装备组, ancient Chinese iron-hammer line-breaker equipment. ONE oversized heavy dark-iron rectangular warhammer head with TWO broad square flat striking faces on a short stout ochre wooden haft. The lower grip has exactly THREE broad dark-brown leather wraps and a plain wooden butt. Diagonal from lower-left handle butt to upper-right hammer head, all contours fully inside canvas. Very exaggerated blocky head, broad two-tone iron planes and almost no bevel highlights. No spikes, axe blade, carvings, magic, jewels, decoration, metallic shine, cracks, dents or texture. One weapon only, no hands, no stand, no background.",
+      "identity": "Canonical iron-hammer breaker role reconstructed using full-atlas row6 col1 hammer/tool material vocabulary. Inferred builder slot row4 col5 and preserved legacy runtime show grain containers. Older remake warhammer identity is retained with approved-v5 broad matte treatment. This is not exact original-slot recovery."
+    }
+  ]
+}

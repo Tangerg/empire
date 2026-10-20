@@ -1,0 +1,163 @@
+{
+  "topicId": "c03-equip-58b98436",
+  "assetId": "C03-ACV1-equip-58b98436",
+  "label": "边军斥候主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4b26ccf1-e7aa-4787-acf0-2b14769b027e.png",
+  "sha256": "1b23e52ce3688f7390c4bc136e0ea649096edae1d58ad974e203db4e1d9be04c",
+  "rawMasterByteIdentical": true,
+  "promptFile": "prompt.txt",
+  "generationAttempts": 1,
+  "boundedCorrectionUsed": false,
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-01.png",
+      "sha256": "c874d39df7da9caa67d7fa0ecebf5863ea44c6a290f277e39083653e61418b87",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960",
+      "role": "Visually inspected for design; not passed to imagegen for this new generation."
+    }
+  ],
+  "referenceDelivery": "Complete original atlas, builder board and approved broad-matte source inspected visually to derive textual new-generation prompts. No reference image supplied as imagegen tool argument.",
+  "identityReconstruction": "Canonical frontier scout equipment abstraction. Legacy slot row2 col1 contains a saddled horse; full atlas row2 col2 saddle and row4 col7 map supply role vocabulary. Saddle plus map is deliberate reconstruction rather than exact original-slot recovery. Older remake role combination is retained with the approved-v5 broad matte treatment.",
+  "identityEvidence": [
+    "packages/story-candidate-03/assets/final-ancient-china-v1/tools/build_final_ancient_china_v1.py",
+    "docs/art-rebuild-20261019/canonical-topic-manifest.json",
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "canonicalEntry": {
+    "assetId": "C03-ACV1-equip-58b98436",
+    "topicId": "c03-equip-58b98436",
+    "label": "边军斥候主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-58b98436.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ],
+    "campaign": "story-candidate-03",
+    "manifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-58b98436.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": []
+  },
+  "currentManifestEntry": {
+    "assetId": "C03-ACV1-equip-58b98436",
+    "topicId": "c03-equip-58b98436",
+    "label": "边军斥候主装备组",
+    "category": "equipment",
+    "png": "runtime/equipment/equip-58b98436.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-ancient-china-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "builderAudit": {
+    "topicId": "c03-equip-58b98436",
+    "label": "边军斥候主装备组",
+    "catalogOrderIndex": 8,
+    "reconstructedBuilderSlotOneBased": [
+      2,
+      1
+    ],
+    "mappingCertainty": "Builder preserves missing manifest-complete.json topic order; ordered 07-topic-catalog is a reconstruction supported by legacy runtime contents, not the unavailable original builder input.",
+    "legacyPath": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-58b98436/original-evidence.png",
+    "legacySha256": "7ab5bfd54a32a1c13ef8347973d9f256c1d0f62079759cc71c401bfc7267011c",
+    "currentPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-58b98436.png",
+    "currentSha256": "1e4a027be98d0aed04d890365d8d167d1437941ea31bff36b02d1649343870b5"
+  },
+  "builderAuditPath": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/legacy-builder-audit.json",
+  "approvedV5SelectionProgressSnapshot": 641,
+  "reservationEvidence": {
+    "noApprovedV5StageAtSelection": true,
+    "priorRegistryEntry": {
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-58b98436/master.png",
+      "sha256": "766eb56a61356d5e394b36f0386a3ccfdaae7f6c67026c635d1aba1a8d259f15"
+    },
+    "priorRegistryDoesNotCountAsApprovedV5": true
+  },
+  "legacySlot": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-58b98436/original-evidence.png",
+    "sha256": "7ab5bfd54a32a1c13ef8347973d9f256c1d0f62079759cc71c401bfc7267011c",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/c03-equip-58b98436-legacy-native.png"
+  },
+  "beforeRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-58b98436.png",
+    "sha256": "1e4a027be98d0aed04d890365d8d167d1437941ea31bff36b02d1649343870b5",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-05/c03-equip-58b98436-before-runtime.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 42,
+    "coreBoundingBox": [
+      78,
+      75,
+      1229,
+      1162
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "canonicalNativeContract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "padding": 2
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      5,
+      5,
+      45,
+      42
+    ]
+  },
+  "postprocessing": "None. Raw/master are byte-identical native generation. Review exports use the existing whole-canvas contain only; no crop, repaint, recolor, alpha surgery or pixel cleanup.",
+  "registered": false,
+  "runtimeIntegrated": false,
+  "liveGameVerified": false
+}

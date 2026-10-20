@@ -1,0 +1,63 @@
+{
+  "builder": "packages/story-candidate-03/assets/final-ancient-china-v1/tools/build_final_ancient_china_v1.py",
+  "builderBehavior": "build_grid_category iterates 8x6 board row-major and zips unsorted category topics; main later sorts output manifest by topicId. Sorted output manifest positions must not be used as atlas slots.",
+  "missingInput": "packages/story-candidate-03/assets/manifest-complete.json",
+  "assets": [
+    {
+      "topicId": "c03-equip-4dad36ef",
+      "label": "云梯队主装备组",
+      "catalogOrderIndex": 14,
+      "reconstructedBuilderSlotOneBased": [
+        2,
+        7
+      ],
+      "mappingCertainty": "Builder preserves missing manifest-complete.json topic order; ordered 07-topic-catalog is a reconstruction supported by legacy runtime contents, not the unavailable original builder input.",
+      "legacyPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4dad36ef.png",
+      "legacySha256": "deb448b1691f491c32c811ecb6c27bec7485568de8883a059b76887bb0118494",
+      "currentPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4dad36ef.png",
+      "currentSha256": "deb448b1691f491c32c811ecb6c27bec7485568de8883a059b76887bb0118494"
+    },
+    {
+      "topicId": "c03-equip-58b98436",
+      "label": "边军斥候主装备组",
+      "catalogOrderIndex": 8,
+      "reconstructedBuilderSlotOneBased": [
+        2,
+        1
+      ],
+      "mappingCertainty": "Builder preserves missing manifest-complete.json topic order; ordered 07-topic-catalog is a reconstruction supported by legacy runtime contents, not the unavailable original builder input.",
+      "legacyPath": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-58b98436/original-evidence.png",
+      "legacySha256": "7ab5bfd54a32a1c13ef8347973d9f256c1d0f62079759cc71c401bfc7267011c",
+      "currentPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-58b98436.png",
+      "currentSha256": "1e4a027be98d0aed04d890365d8d167d1437941ea31bff36b02d1649343870b5"
+    },
+    {
+      "topicId": "c03-equip-5e64c3a6",
+      "label": "火箭营主装备组",
+      "catalogOrderIndex": 17,
+      "reconstructedBuilderSlotOneBased": [
+        3,
+        2
+      ],
+      "mappingCertainty": "Builder preserves missing manifest-complete.json topic order; ordered 07-topic-catalog is a reconstruction supported by legacy runtime contents, not the unavailable original builder input.",
+      "legacyPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-5e64c3a6.png",
+      "legacySha256": "a130d7402e90226e241eb2582e2380f54f7114c070ed259a1aa0c1c651188848",
+      "currentPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-5e64c3a6.png",
+      "currentSha256": "a130d7402e90226e241eb2582e2380f54f7114c070ed259a1aa0c1c651188848"
+    },
+    {
+      "topicId": "c03-equip-6a62b51e",
+      "label": "铁锤破阵手主装备组",
+      "catalogOrderIndex": 28,
+      "reconstructedBuilderSlotOneBased": [
+        4,
+        5
+      ],
+      "mappingCertainty": "Builder preserves missing manifest-complete.json topic order; ordered 07-topic-catalog is a reconstruction supported by legacy runtime contents, not the unavailable original builder input.",
+      "legacyPath": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6a62b51e/original-evidence.png",
+      "legacySha256": "82e2b5a74dc802cd906c1a26b65d9acc04e0c17ea5de514601edc75d2dae9130",
+      "currentPath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-6a62b51e.png",
+      "currentSha256": "b09dfbff21efb911aee4713869da09203f583801ce8778f6cefb334319d98185"
+    }
+  ]
+}

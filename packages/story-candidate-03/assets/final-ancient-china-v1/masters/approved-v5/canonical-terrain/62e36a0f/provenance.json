@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "selectedRequest": "edit-request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-b2b0f5b7-4fe9-4163-85f4-fade0faa74ef.png",
+  "rawEqualsMasterEqualsReturned": true,
+  "sha256": "780d80f776fb298302e7802c800a95d6e0e14447b3f74bf4ec0b752aa47d9671",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/terrain/terrain-board-02.png",
+      "sha256": "94ced58f452d34ae1d67aa4a18f5fc1a2eb0083acbac5ce286986325b28d6452"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/candidates/broad-matte-v2/master.png",
+      "sha256": "22cc0fc7b51b4a3a11891537695aec3faaed5db4993daed7de756e2b5bcb3e63"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/soler-heated-walkway/candidates/broad-matte-v2/master.png",
+      "sha256": "71ad80ae86ef50b9175316f95a4c2f679c807c451affe0cca44a2288c7520375"
+    }
+  ],
+  "topicId": "c03-terrain-62e36a0f",
+  "status": "worker-native-reviewed-parent-selection-pending",
+  "invocations": [
+    {
+      "kind": "generate",
+      "requestFile": "request.json",
+      "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-6fec3223-75dc-44f1-83c7-908b6ea60cd9.png",
+      "sha256": "502c284b9c6eb3309b537146a4869ba8fb2f1c76d8b0f55c403e99fb58e3ee90"
+    },
+    {
+      "kind": "bounded-edit",
+      "requestFile": "edit-request.json",
+      "returnedImagePath": "/workspace/scratch/84c9fe948755/generated_images/exec-b2b0f5b7-4fe9-4163-85f4-fade0faa74ef.png",
+      "sha256": "780d80f776fb298302e7802c800a95d6e0e14447b3f74bf4ec0b752aa47d9671",
+      "referenceSha256": "502c284b9c6eb3309b537146a4869ba8fb2f1c76d8b0f55c403e99fb58e3ee90",
+      "reason": "Initial complete shoal source contained excessive secondary water/sand patchwork and crowded ripple lines, contrary to requested broad minimal planes; complete-source inspection confirmed the defect.",
+      "outcome": "Water and sand were simplified into broad clean planes and two current bands while retaining all three central/cardinal stones. No second edit or retry."
+    }
+  ],
+  "processing": "None. Exact generated PNG bytes copied; no source crop, recolor, repaint, filtering or resample."
+}
