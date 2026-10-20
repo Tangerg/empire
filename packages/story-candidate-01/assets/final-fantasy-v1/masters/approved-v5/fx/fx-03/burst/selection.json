@@ -1,0 +1,16 @@
+{
+  "selectedCandidate": "burst-repair-v2",
+  "selectedSha256": "b43939c0037b8874e6b80cbdb0ce3eb1e1a81a9cd9bd45a8686afadbde934df9",
+  "approvalBasis": "Parent reports root explicitly approved bounded source-only perimeter alpha<=1; source alpha>=2 still rejects, final padded output edges strictly 0. No pixel normalization.",
+  "sourceEdgeMaxAlpha": 1,
+  "sourceEdgeNonzeroCount": 4,
+  "actualCompositesReviewed": [
+    "black",
+    "white",
+    "olive",
+    "blue"
+  ],
+  "visibleCutoffOrHardGlowEdge": false,
+  "previousCandidatePreserved": "rejected/burst-v1",
+  "pixelNormalizationApplied": false
+}

@@ -1,0 +1,49 @@
+{
+  "topicId": "C01-ARCH-GRAY-CAMP",
+  "label": "灰旗野战营",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 7,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+  "sourceBoardSha256": "4ccf940515763d1b92d10fc9909e8e64ff3382d995fb5b4b9b2f8777157364be",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "top-right",
+  "legacyInsetCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "newJustifiedConsumer": "c01/aftermath-10",
+  "consumerAuthority": "/workspace/shared/empire-art-rebuild/approved-v5/council-selector-audit/README.md",
+  "semanticReview": {
+    "preserved": [
+      "Gray Banner field camp",
+      "gray tents and pale radial banner marks",
+      "supplies and command space",
+      "forge/repair station",
+      "medical side tent with source-derived red cross",
+      "anonymous soldiers",
+      "wooded rocky setting and dirt lanes"
+    ],
+    "interpreted": [
+      "quiet central ledger discussion supporting camp exit-terms story",
+      "distant mountain pass supporting justified aftermath setting"
+    ],
+    "notClaimed": [
+      "exact pledge or named participants",
+      "universal canonical radial-star emblem",
+      "first gray flag prop identity",
+      "Black Camp"
+    ],
+    "caveats": [
+      "Gray flag marks follow this legacy source; earliest story flag is smoke-stained plain cloth with remaining blue stitch, and dragon-wing personalization occurs later.",
+      "Red cross on a pale medical-tent patch follows the original camp cell rather than inventing a new symbol."
+    ]
+  }
+}

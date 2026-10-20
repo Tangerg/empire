@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-ARCH-FIELD-HOSPITAL",
+  "label": "圣辉野战医院",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 70,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+  "sourceBoardSha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "top-left",
+  "legacyInsetCropBox": [
+    5,
+    5,
+    622,
+    622
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "newJustifiedConsumer": "c01/aftermath-13",
+  "consumerAuthority": "/workspace/shared/empire-art-rebuild/approved-v5/council-selector-audit/README.md",
+  "semanticReview": {
+    "preserved": [
+      "Holy Light field hospital",
+      "pale canvas ward with gray/gold trim",
+      "caregivers and cots",
+      "washing basin and medical supplies",
+      "record table",
+      "peripheral cemetery",
+      "anonymous patient and caregiver roles"
+    ],
+    "interpreted": [
+      "old stone enclosure and distant holy city",
+      "two readers examining recovered records"
+    ],
+    "notClaimed": [
+      "Holy Archives or White Tower raid setting",
+      "named Mirelle or Laiya likeness",
+      "exact hospital floor plan",
+      "pixel-exact gold heraldry"
+    ],
+    "caveats": [
+      "The record scene supports justified generic hospital reuse, not a literal portrait of the named speakers."
+    ]
+  }
+}

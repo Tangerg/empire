@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-ARCH-FIELD-HOSPITAL",
+  "readyForParentIntegration": true,
+  "nativeDimensions": [
+    1672,
+    941
+  ],
+  "mode": "RGB",
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "masterSha256": "8a78169f8661da0811601692b02e16aeb90c5e63b4fe4d7f7a1ecec5fe24d37e",
+  "rawEqualsNativeEqualsMaster": true,
+  "sourceNativeCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "sourceNativeDimensions": [
+    1664,
+    936
+  ],
+  "sourceNativeMatchesExactCrop": true,
+  "canonicalLogicalDimensions": [
+    256,
+    144
+  ],
+  "proposedHDDensity": 6.5,
+  "artificialUpscaling": false,
+  "opaqueNarrativeScene": true,
+  "transparentSprite": false,
+  "visualInspection": {
+    "fullNative": "pass",
+    "storyDesktop960x534": "pass",
+    "storyMobile390x778Centered": "pass",
+    "stagingInset280x245": "pass-secondary-context-only",
+    "stagingMobile366x220": "pass-secondary-context-only",
+    "microTexture": "pass",
+    "namedHeroDuplication": "none observed",
+    "readableInventedText": "none observed"
+  },
+  "generationAttempts": 1,
+  "formalRegistrationPerformed": false,
+  "repositoryEditsPerformed": false,
+  "browserOrLiveGameVerification": false
+}

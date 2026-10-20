@@ -1,0 +1,6 @@
+{
+  "reason": "Source perimeter contains 81 pixels with alpha=1, violates exact alpha-zero perimeter gate. No code normalization permitted.",
+  "sourceSha256": "ea3dd80da5c3d8ed8d3c3270620202cec37f5c4f0c18a974c9176257251c8bed",
+  "outerEdgeAlphaMax": 1,
+  "replacement": "one targeted built-in imagegen repair"
+}

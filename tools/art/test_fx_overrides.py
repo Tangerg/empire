@@ -213,10 +213,28 @@ class FxTests(unittest.TestCase):
 
     def test_source_edge_rejected_before_writes(self):
         def touch_edge(image):
-            image.putpixel((0, 10), (80, 90, 100, 1))
+            image.putpixel((0, 10), (80, 90, 100, 2))
             return image
         self.mutate_source(3, touch_edge)
         self.assert_rejected('outer edge')
+
+    def test_source_alpha_one_residue_is_preserved_but_output_margin_stays_zero(self):
+        def residue(image):
+            image.putpixel((0, 10), (80, 90, 100, 1))
+            return image
+        self.mutate_source(3, residue)
+        path = self.root / self.entry['phases'][3]['source']
+        original = path.read_bytes()
+        report = export(self.root, self.catalog)
+        self.assertEqual(path.read_bytes(), original)
+        self.assertEqual(report[0]['sources'][3]['alpha']['edgeMaxAlpha'], 1)
+        self.assertEqual(report[0]['sources'][3]['alpha']['edgeNonzeroPixels'], 1)
+        for output in report:
+            self.assertEqual(output['frames'][3]['alpha']['edgeMaxAlpha'], 0)
+            self.assertEqual(output['frames'][3]['alpha']['allowedEdgeMaxAlpha'], 0)
+        with Image.open(self.root / report[0]['output']) as sheet:
+            self.assertEqual(sheet.getpixel((3 * 32 + 4, 10 + 4)), (80, 90, 100, 1))
+        self.assertEqual(report, export(self.root, self.catalog, True))
 
     def test_each_output_cell_edge_gated_even_with_clean_source_edges(self):
         # Downsampling can bring content onto the output perimeter: no silent trim.

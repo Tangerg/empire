@@ -1,0 +1,9 @@
+{
+  "status": "historical-exact-zero-gate-failure-superseded",
+  "reason": "Targeted imagegen repair still has 4 outer-edge samples at alpha 1; exact transparent perimeter gate requires 0",
+  "sourceSha256": "b43939c0037b8874e6b80cbdb0ce3eb1e1a81a9cd9bd45a8686afadbde934df9",
+  "exactExporterError": "burst-repair-v2: effect outer edge must be fully transparent",
+  "furtherGenerationStopped": true,
+  "alphaNormalizationApplied": false,
+  "currentStatus": "selected-under-explicit-source-alpha<=1-tolerance"
+}

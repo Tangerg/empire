@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "status": "audit-only, no artwork generated or repository edited",
+  "family": "C01-TERRAIN-BORDER-1..4",
+  "topics": [
+    {
+      "topicId": "C01-TERRAIN-BORDER-1",
+      "label": "晒麦农田",
+      "observedIdentity": "Golden straw stubble clumps and cut wheat on dry ochre earth",
+      "referencePath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/first-family-references/c01-terrain-border-1-source-slot.png",
+      "referenceSHA256": "dddd3696b8a9ce0fc0875f494c904ddf406773d89334f7273da0480c6dab3648",
+      "sourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "sourceBoardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "sourceSlotZeroBased": [
+        0,
+        0
+      ],
+      "sourceCropXYXY": [
+        3,
+        3,
+        441,
+        441
+      ],
+      "referenceRole": "Exact original source-slot crop, unedited pixels; appearance/motif reference, not finished artwork",
+      "tileMode": "variants",
+      "frames": 4,
+      "runtimeDimensions1x": [
+        128,
+        32
+      ],
+      "runtimeDimensions2x": [
+        256,
+        64
+      ],
+      "logicalTileSize": [
+        32,
+        32
+      ],
+      "physicalTileSize": [
+        64,
+        64
+      ],
+      "alpha": "fully opaque",
+      "anchor": null,
+      "canonicalCount": 1,
+      "generationStatus": "not-generated",
+      "historicalSourceWindowsXYXY": [
+        [
+          7,
+          7,
+          279,
+          279
+        ],
+        [
+          165,
+          7,
+          437,
+          279
+        ],
+        [
+          7,
+          165,
+          279,
+          437
+        ],
+        [
+          165,
+          165,
+          437,
+          437
+        ]
+      ],
+      "authoredMaterialCount": 1,
+      "mechanicalDerivedCellsPerDensity": 4,
+      "generatedMaterialWindowRegistration": "Pending actual generated source dimensions. Record exact source image, SHA256, canvas, UV scale/origin, and windows a/b/c/d (opaque) or material sampling/16 alpha masks (connected); do not apply original-board crop coordinates to the new canvas."
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-2",
+      "label": "雨泥道路",
+      "observedIdentity": "Rain-softened brown mud, diagonal ruts, cool gray puddles, scattered pebbles",
+      "referencePath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/first-family-references/c01-terrain-border-2-source-slot.png",
+      "referenceSHA256": "777a01a37a85eeb8804b261298362f4f9efff8f16bbd84706630be21263a1155",
+      "sourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "sourceBoardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "sourceSlotZeroBased": [
+        1,
+        0
+      ],
+      "sourceCropXYXY": [
+        447,
+        3,
+        884,
+        441
+      ],
+      "referenceRole": "Exact original source-slot crop, unedited pixels; appearance/motif reference, not finished artwork",
+      "tileMode": "nesw-16",
+      "frames": 16,
+      "runtimeDimensions1x": [
+        512,
+        32
+      ],
+      "runtimeDimensions2x": [
+        1024,
+        64
+      ],
+      "logicalTileSize": [
+        32,
+        32
+      ],
+      "physicalTileSize": [
+        64,
+        64
+      ],
+      "alpha": "reuse exact historical per-mask binary alpha at each density",
+      "anchor": null,
+      "canonicalCount": 1,
+      "generationStatus": "not-generated",
+      "historicalSourceWindowsXYXY": [
+        [
+          451,
+          8,
+          722,
+          279
+        ],
+        [
+          609,
+          8,
+          880,
+          279
+        ],
+        [
+          451,
+          165,
+          722,
+          436
+        ],
+        [
+          609,
+          165,
+          880,
+          436
+        ]
+      ],
+      "authoredMaterialCount": 1,
+      "mechanicalDerivedCellsPerDensity": 16,
+      "generatedMaterialWindowRegistration": "Pending actual generated source dimensions. Record exact source image, SHA256, canvas, UV scale/origin, and windows a/b/c/d (opaque) or material sampling/16 alpha masks (connected); do not apply original-board crop coordinates to the new canvas."
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-3",
+      "label": "焦土农田",
+      "observedIdentity": "Charred furrows, black wheat stubble, tiny ember points",
+      "referencePath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/first-family-references/c01-terrain-border-3-source-slot.png",
+      "referenceSHA256": "11528d983e9274d6af4ed0b05735ffd6b31626066f6c0cd80df6047e987161c5",
+      "sourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "sourceBoardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "sourceSlotZeroBased": [
+        2,
+        0
+      ],
+      "sourceCropXYXY": [
+        890,
+        3,
+        1327,
+        441
+      ],
+      "referenceRole": "Exact original source-slot crop, unedited pixels; appearance/motif reference, not finished artwork",
+      "tileMode": "variants",
+      "frames": 4,
+      "runtimeDimensions1x": [
+        128,
+        32
+      ],
+      "runtimeDimensions2x": [
+        256,
+        64
+      ],
+      "logicalTileSize": [
+        32,
+        32
+      ],
+      "physicalTileSize": [
+        64,
+        64
+      ],
+      "alpha": "fully opaque",
+      "anchor": null,
+      "canonicalCount": 1,
+      "generationStatus": "not-generated",
+      "historicalSourceWindowsXYXY": [
+        [
+          894,
+          8,
+          1165,
+          279
+        ],
+        [
+          1052,
+          8,
+          1323,
+          279
+        ],
+        [
+          894,
+          165,
+          1165,
+          436
+        ],
+        [
+          1052,
+          165,
+          1323,
+          436
+        ]
+      ],
+      "authoredMaterialCount": 1,
+      "mechanicalDerivedCellsPerDensity": 4,
+      "generatedMaterialWindowRegistration": "Pending actual generated source dimensions. Record exact source image, SHA256, canvas, UV scale/origin, and windows a/b/c/d (opaque) or material sampling/16 alpha masks (connected); do not apply original-board crop coordinates to the new canvas."
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-4",
+      "label": "难民车辙",
+      "observedIdentity": "Paired wheel ruts, bootprints, stones, dry muddy soil",
+      "referencePath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/first-family-references/c01-terrain-border-4-source-slot.png",
+      "referenceSHA256": "a49358ff4e452a2f6fb331ba0627f6e840fdd146b082e7f9b612cfc1d9e1b9e6",
+      "sourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "sourceBoardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "sourceSlotZeroBased": [
+        3,
+        0
+      ],
+      "sourceCropXYXY": [
+        1333,
+        3,
+        1771,
+        441
+      ],
+      "referenceRole": "Exact original source-slot crop, unedited pixels; appearance/motif reference, not finished artwork",
+      "tileMode": "nesw-16",
+      "frames": 16,
+      "runtimeDimensions1x": [
+        512,
+        32
+      ],
+      "runtimeDimensions2x": [
+        1024,
+        64
+      ],
+      "logicalTileSize": [
+        32,
+        32
+      ],
+      "physicalTileSize": [
+        64,
+        64
+      ],
+      "alpha": "reuse exact historical per-mask binary alpha at each density",
+      "anchor": null,
+      "canonicalCount": 1,
+      "generationStatus": "not-generated",
+      "historicalSourceWindowsXYXY": [
+        [
+          1337,
+          7,
+          1609,
+          279
+        ],
+        [
+          1495,
+          7,
+          1767,
+          279
+        ],
+        [
+          1337,
+          165,
+          1609,
+          437
+        ],
+        [
+          1495,
+          165,
+          1767,
+          437
+        ]
+      ],
+      "authoredMaterialCount": 1,
+      "mechanicalDerivedCellsPerDensity": 16,
+      "generatedMaterialWindowRegistration": "Pending actual generated source dimensions. Record exact source image, SHA256, canvas, UV scale/origin, and windows a/b/c/d (opaque) or material sampling/16 alpha masks (connected); do not apply original-board crop coordinates to the new canvas."
+    }
+  ],
+  "styleReference": {
+    "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+    "role": "approved chunky/matte visual language only; original terrain crop owns identity"
+  },
+  "proposedArtDirection": [
+    "Top-down flat ground; broad simplified matte forms, restrained ochre/soil/charcoal palette, minimum high-frequency microtexture",
+    "Keep golden cut-straw clumps, rainy mud with cool puddles, blackened agricultural furrows and quiet embers, and cart ruts/foot impressions distinguishable",
+    "No new buildings, bridges, props, navigation routes, elevation, collision, or hazard shapes",
+    "For connected topics, material detail must not pretend that a fixed diagonal rut is an authored N/E/S/W turn; preserve source motifs without adding route topology",
+    "Keep any complete small motif inside a tile-safe interior; peripheral marks must cross seams coherently rather than end in cropped fragments"
+  ],
+  "exportContract": {
+    "density": 2,
+    "masks": "0..15 in integer order, N=1 E=2 S=4 W=8; 0 is isolated central pad, 15 is four-way connection",
+    "1xMask": {
+      "coreRoundedRectangleInclusive": [
+        10,
+        10,
+        21,
+        21
+      ],
+      "radius": 4,
+      "N": [
+        12,
+        0,
+        19,
+        16
+      ],
+      "E": [
+        16,
+        12,
+        31,
+        19
+      ],
+      "S": [
+        12,
+        16,
+        19,
+        31
+      ],
+      "W": [
+        0,
+        12,
+        16,
+        19
+      ]
+    },
+    "2xMask": {
+      "coreRoundedRectangleInclusive": [
+        20,
+        20,
+        43,
+        43
+      ],
+      "radius": 8,
+      "N": [
+        24,
+        0,
+        39,
+        32
+      ],
+      "E": [
+        32,
+        24,
+        63,
+        39
+      ],
+      "S": [
+        24,
+        32,
+        39,
+        63
+      ],
+      "W": [
+        0,
+        24,
+        32,
+        39
+      ]
+    },
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "1xVariantStrip": [
+      128,
+      32
+    ],
+    "2xVariantStrip": [
+      256,
+      64
+    ],
+    "1xConnectedStrip": [
+      512,
+      32
+    ],
+    "2xConnectedStrip": [
+      1024,
+      64
+    ],
+    "noImplicitAnchor": "No anchor or footprint currently declared; flat cell origin 0,0. Never introduce planted-foot sprite positioning.",
+    "preserveLogicalMetadata": true,
+    "doNotReplaceWithEnvironmentAtlas": true
+  },
+  "acceptance": [
+    "Both 1x and 2x sheet dimensions and mode metadata unchanged",
+    "For each connected tile, alpha matches the exact baseline mask at that density, including all closed edges and open 8px/16px spans",
+    "Opaque variants have alpha=255 everywhere; connected strips have real alpha=0 outside mask, never painted checkerboards",
+    "Texture seams: compare every a/b/c/d E-W and S-N pairing; compare all open connected-edge pairings; shared border signature obtained from bounded source-texture edge matching/UV composition, not painted procedural detail, and verified in deliverable",
+    "Review 2x2 identical and 4x4 mixed opaque tilings; connected isolated/end/straight/corner/T/cross fixtures; native 32px cell scale plus 2x inspection",
+    "Source-grounded motif review against exact source slots, plus approved-v5 actor/material cohesion fixture",
+    "Formal catalog registration and HD resolver tests; keep gameplay status catalog-only unless a separate existing consumer is explicitly bound",
+    "Count4canonical identities only after raw/export/formal-catalog stages pass; no environment increment and no live-game assertion"
+  ],
+  "currentBaselineEdges": "All alpha edges match the existing contract; no topic is RGB edge-perfect at either density. The old canonical builder does not lock tile color edges.",
+  "boundaries": "A source-grounded redraw may simplify image motifs and make the material periodic. It must not change NESW mask geometry, gameplay terrain, map layout, or substitute current environment sources and call them canonical completions.",
+  "authorshipAndDerivation": {
+    "authoredSources": 4,
+    "authoredSourcesPerCanonicalTopic": 1,
+    "kind": "one new imagegen-authored coherent material per canonical topic",
+    "derivativeCells1x": 40,
+    "derivativeCells2x": 40,
+    "independentCanonicalIdentityCount": 4,
+    "variantsAndMasksAreNewArtIdentities": false,
+    "environmentCellCountIncrement": 0,
+    "artAllowed": "Material appearance comes from preserved imagegen sources. Bounded edge matching and mask/UV composition from those textures is within the stated task scope.",
+    "artNotAllowed": "Do not paint procedural dirt, stones, ruts, grain, cracks, embers, or replacement texture detail in code. Do not reuse completed environment material pixels under new canonical names.",
+    "sourceWindows": "Keep historical source windows as provenance; new generated-source windows are independently measured and registered. One common physical/logical material scale per topic; no per-mask zooms."
+  },
+  "defectDisposition": [
+    {
+      "issue": "Nonmatching RGB boundaries in all four topics at both densities",
+      "disposition": "correct",
+      "method": "Author a coherent periodic imagegen material, then use only bounded source-texture edge matching/UV composition. Compare every allowed adjacent output pair. Preserve generated texture as the appearance source.",
+      "no": "No procedural texture painting or fake detailed noise"
+    },
+    {
+      "issue": "BORDER2/4 diagonal rut stripes clipped identically into all cardinal paths",
+      "disposition": "correct-source-design-and-sampling",
+      "method": "New material must keep mud/puddle/cart-impression identity with locally complete, subdued marks that do not imply incompatible route direction. If directional continuity needs arm-local UV composition, document transforms at one scale and verify all sixteen masks.",
+      "no": "Do not add routes, widen gameplay passage, or create new mask identities"
+    },
+    {
+      "issue": "Generic NESW alpha topology in first family",
+      "disposition": "retain-exactly",
+      "method": "No technical occupancy defect found: N/E/S/W bit contract, core, arm widths and edge spans match across all masks at both densities. Use exact supplied alpha arrays/shapes.",
+      "no": "Do not redesign mask0 as empty, reorder masks, silently soften/widen connections, or substitute environment route masks"
+    },
+    {
+      "issue": "Legacy four overlapping source windows lose source-wide compositions",
+      "disposition": "correct-through-new-source-and-explicit-windows",
+      "method": "One newly authored material per topic, four mechanical variant windows for BORDER1/3. Preserve complete local straw/char motifs in interiors and make edge signatures agree using bounded texture composition.",
+      "no": "Do not claim four separate authored sources or carry unsafe automatic 0.62 cropping into new sources without review"
+    },
+    {
+      "issue": "Legacy color/contrast transform .82/.94",
+      "disposition": "historical-provenance-only",
+      "method": "It is necessary to reproduce old pixels for audit, not a mandatory treatment for already-approved new material. Register any new export transforms explicitly and keep source appearance faithful.",
+      "no": "Do not blindly recolor the approved source to mimic the old detailed style"
+    },
+    {
+      "issue": "Later-family shoreline, bridge, root, grave-circle and oath-hub fragmentation",
+      "disposition": "semantic-gate-before-formal-acceptance",
+      "method": "Try complete source-grounded local motifs designed for the retained tile/core envelope and documented texture UV composition. If identity cannot survive, report the exact conflict; do not manufacture new topology to claim completion.",
+      "no": "No invented bridge/elevation/node-network gameplay rules"
+    }
+  ]
+}

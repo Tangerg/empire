@@ -1,0 +1,625 @@
+{
+  "topicId": "C01-FX-02",
+  "generationMode": "four built-in imagegen calls, one per phase",
+  "scope": "Shared workspace artwork and deterministic staged QA only. No repository or Git writes.",
+  "exporterStatus": "FX-02 is not registered/enabled here. Preview duplicates the current full-canvas render operation; this is not a canonical exporter export/check.",
+  "sharedAuthoredCanvas": [
+    1254,
+    1254
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "logicalFrame": [
+    32,
+    32
+  ],
+  "logicalAnchor": [
+    16,
+    16
+  ],
+  "logicalCanvas": [
+    28,
+    28
+  ],
+  "phases": [
+    {
+      "phase": "onset",
+      "rawSha256": "2b65917ea8039678b4eceee12699d5278fbea0edfc79d8ad36101c1a22a59fd1",
+      "masterSha256": "2b65917ea8039678b4eceee12699d5278fbea0edfc79d8ad36101c1a22a59fd1",
+      "rawMasterByteIdentical": true,
+      "centralNeedleBottomYByAlphaThreshold": {
+        "1": 1151,
+        "16": 1150,
+        "64": 1149,
+        "128": 1149
+      },
+      "maxAlpha": 255,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        65,
+        45,
+        1202,
+        1212
+      ],
+      "nonzeroPixels": 71787,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelSha256": "33baad54e794c7c91ab019b19f481950f7a48b55f9cf03c2e570bad81393b6ca",
+      "alphaLevels": 256,
+      "alphaEquivalentPixels": 63807.301961,
+      "nearOpaquePixels": 62549,
+      "partialAlphaPixels": 71096,
+      "alphaGt1BoundingBox": [
+        416,
+        319,
+        839,
+        1152
+      ],
+      "alphaGt16BoundingBox": [
+        418,
+        321,
+        837,
+        1151
+      ],
+      "alphaWeightedCentroid": [
+        626.58052,
+        813.73577
+      ]
+    },
+    {
+      "phase": "sweep",
+      "rawSha256": "84e40deb7f4c068e097493c59614c8b080b99674ca56a467df986fb6c088a98a",
+      "masterSha256": "84e40deb7f4c068e097493c59614c8b080b99674ca56a467df986fb6c088a98a",
+      "rawMasterByteIdentical": true,
+      "centralNeedleBottomYByAlphaThreshold": {
+        "1": 1168,
+        "16": 1167,
+        "64": 1164,
+        "128": 1163
+      },
+      "maxAlpha": 255,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        33,
+        53,
+        1079,
+        1228
+      ],
+      "nonzeroPixels": 110343,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelSha256": "c4f929c57e55d7e437a602ce084829bb24516e650306e7f44d2071f7a20f55c6",
+      "alphaLevels": 256,
+      "alphaEquivalentPixels": 96083.05098,
+      "nearOpaquePixels": 93481,
+      "partialAlphaPixels": 109150,
+      "alphaGt1BoundingBox": [
+        309,
+        155,
+        945,
+        1169
+      ],
+      "alphaGt16BoundingBox": [
+        311,
+        156,
+        943,
+        1168
+      ],
+      "alphaWeightedCentroid": [
+        626.52302,
+        795.64908
+      ]
+    },
+    {
+      "phase": "peak",
+      "rawSha256": "e0482382842a7339ffcc60d5cfe857344261d17051fab81195625197604987fa",
+      "masterSha256": "e0482382842a7339ffcc60d5cfe857344261d17051fab81195625197604987fa",
+      "rawMasterByteIdentical": true,
+      "centralNeedleBottomYByAlphaThreshold": {
+        "1": 1206,
+        "16": 1205,
+        "64": 1203,
+        "128": 1202
+      },
+      "maxAlpha": 255,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        31,
+        35,
+        1194,
+        1208
+      ],
+      "nonzeroPixels": 164891,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelSha256": "6bf054032fbdf6e8de00a46e166ce9a4c4d09d04318bc536d150155b68c2af45",
+      "alphaLevels": 256,
+      "alphaEquivalentPixels": 148384.160784,
+      "nearOpaquePixels": 145680,
+      "partialAlphaPixels": 163116,
+      "alphaGt1BoundingBox": [
+        274,
+        59,
+        1003,
+        1207
+      ],
+      "alphaGt16BoundingBox": [
+        276,
+        60,
+        1001,
+        1206
+      ],
+      "alphaWeightedCentroid": [
+        634.4319,
+        792.16208
+      ]
+    },
+    {
+      "phase": "dissipate",
+      "rawSha256": "6722934eb622d5b9c9a21851f27266f8ec8d6860d8c8b6714a99e15793fc9670",
+      "masterSha256": "6722934eb622d5b9c9a21851f27266f8ec8d6860d8c8b6714a99e15793fc9670",
+      "rawMasterByteIdentical": true,
+      "centralNeedleBottomYByAlphaThreshold": {
+        "1": 1135,
+        "16": 1132,
+        "64": 1126,
+        "128": 1122
+      },
+      "maxAlpha": 182,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        25,
+        39,
+        1226,
+        1214
+      ],
+      "nonzeroPixels": 43169,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelSha256": "858b52b2e8c35e79b7848eb1257a429d40674a2c96411554f7c50bec89f43c61",
+      "alphaLevels": 183,
+      "alphaEquivalentPixels": 16496.035294,
+      "nearOpaquePixels": 0,
+      "partialAlphaPixels": 43169,
+      "alphaGt1BoundingBox": [
+        443,
+        330,
+        813,
+        1136
+      ],
+      "alphaGt16BoundingBox": [
+        444,
+        334,
+        812,
+        1133
+      ],
+      "alphaWeightedCentroid": [
+        626.07394,
+        791.3179
+      ]
+    }
+  ],
+  "outputs": {
+    "1": [
+      {
+        "phase": "onset",
+        "maxAlpha": 255,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          9,
+          7,
+          23,
+          30
+        ],
+        "nonzeroPixels": 118,
+        "size": [
+          32,
+          32
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "dda7a69e46b3d81bdbef3c3e2cd0f11154b5da1435471041c3d4e42d547391f6",
+        "alphaLevels": 54,
+        "alphaEquivalentPixels": 34.07451,
+        "nearOpaquePixels": 8,
+        "partialAlphaPixels": 116,
+        "alphaGt1BoundingBox": [
+          9,
+          9,
+          23,
+          28
+        ],
+        "alphaGt16BoundingBox": [
+          11,
+          9,
+          21,
+          27
+        ],
+        "alphaWeightedCentroid": [
+          15.50224,
+          19.58453
+        ]
+      },
+      {
+        "phase": "sweep",
+        "maxAlpha": 255,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          7,
+          5,
+          25,
+          30
+        ],
+        "nonzeroPixels": 171,
+        "size": [
+          32,
+          32
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "794d146cb3c1fe608f8715c3ab871934fc1c0901902d956728cbbb3d24f7cd3a",
+        "alphaLevels": 89,
+        "alphaEquivalentPixels": 50.984314,
+        "nearOpaquePixels": 12,
+        "partialAlphaPixels": 163,
+        "alphaGt1BoundingBox": [
+          7,
+          5,
+          25,
+          30
+        ],
+        "alphaGt16BoundingBox": [
+          9,
+          6,
+          23,
+          28
+        ],
+        "alphaWeightedCentroid": [
+          15.49865,
+          19.19345
+        ]
+      },
+      {
+        "phase": "peak",
+        "maxAlpha": 255,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          6,
+          3,
+          27,
+          30
+        ],
+        "nonzeroPixels": 224,
+        "size": [
+          32,
+          32
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "45b1d2627c907d1d8ddf11c5834ba03cbcfb6c967e6d4cd1e1bbcde7fd3b57bb",
+        "alphaLevels": 102,
+        "alphaEquivalentPixels": 76.815686,
+        "nearOpaquePixels": 33,
+        "partialAlphaPixels": 208,
+        "alphaGt1BoundingBox": [
+          6,
+          3,
+          26,
+          30
+        ],
+        "alphaGt16BoundingBox": [
+          8,
+          4,
+          25,
+          29
+        ],
+        "alphaWeightedCentroid": [
+          15.67894,
+          19.10021
+        ]
+      },
+      {
+        "phase": "dissipate",
+        "maxAlpha": 109,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          10,
+          9,
+          22,
+          27
+        ],
+        "nonzeroPixels": 83,
+        "size": [
+          32,
+          32
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "722dbee4be5a505250d1e5536537af4b26e8ba0129920fee2391694b74be183d",
+        "alphaLevels": 40,
+        "alphaEquivalentPixels": 9.709804,
+        "nearOpaquePixels": 0,
+        "partialAlphaPixels": 83,
+        "alphaGt1BoundingBox": [
+          11,
+          10,
+          21,
+          27
+        ],
+        "alphaGt16BoundingBox": [
+          12,
+          11,
+          20,
+          26
+        ],
+        "alphaWeightedCentroid": [
+          15.4899,
+          19.15913
+        ]
+      }
+    ],
+    "2": [
+      {
+        "phase": "onset",
+        "maxAlpha": 255,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          20,
+          16,
+          44,
+          56
+        ],
+        "nonzeroPixels": 310,
+        "size": [
+          64,
+          64
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "aee1341b9bb69c2461e400abc2525808013f96768299dc72da41affea355ec6b",
+        "alphaLevels": 109,
+        "alphaEquivalentPixels": 130.482353,
+        "nearOpaquePixels": 76,
+        "partialAlphaPixels": 266,
+        "alphaGt1BoundingBox": [
+          20,
+          18,
+          44,
+          56
+        ],
+        "alphaGt16BoundingBox": [
+          22,
+          18,
+          42,
+          55
+        ],
+        "alphaWeightedCentroid": [
+          31.50251,
+          39.81634
+        ]
+      },
+      {
+        "phase": "sweep",
+        "maxAlpha": 255,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          16,
+          11,
+          48,
+          57
+        ],
+        "nonzeroPixels": 488,
+        "size": [
+          64,
+          64
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "288d0ac400d9003dc142204b2a86d3cb7ca55be99265c7bce9ea519b512b407b",
+        "alphaLevels": 162,
+        "alphaEquivalentPixels": 196.87451,
+        "nearOpaquePixels": 105,
+        "partialAlphaPixels": 419,
+        "alphaGt1BoundingBox": [
+          16,
+          11,
+          48,
+          57
+        ],
+        "alphaGt16BoundingBox": [
+          18,
+          11,
+          46,
+          56
+        ],
+        "alphaWeightedCentroid": [
+          31.49883,
+          39.04902
+        ]
+      },
+      {
+        "phase": "peak",
+        "maxAlpha": 255,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          14,
+          6,
+          51,
+          60
+        ],
+        "nonzeroPixels": 643,
+        "size": [
+          64,
+          64
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "cfe0465714a4a4724a67ba66965d128556bda8d87b946071a5ed7b3eeb129436",
+        "alphaLevels": 173,
+        "alphaEquivalentPixels": 301.427451,
+        "nearOpaquePixels": 198,
+        "partialAlphaPixels": 561,
+        "alphaGt1BoundingBox": [
+          14,
+          6,
+          51,
+          58
+        ],
+        "alphaGt16BoundingBox": [
+          16,
+          7,
+          49,
+          58
+        ],
+        "alphaWeightedCentroid": [
+          31.85291,
+          38.86873
+        ]
+      },
+      {
+        "phase": "dissipate",
+        "maxAlpha": 153,
+        "edgeMaxAlpha": 0,
+        "boundingBox": [
+          22,
+          19,
+          43,
+          55
+        ],
+        "nonzeroPixels": 215,
+        "size": [
+          64,
+          64
+        ],
+        "mode": "RGBA",
+        "pixelSha256": "45da58c97018120f3b4a11ad53254784563d35c233c875e756267daadb3ec606",
+        "alphaLevels": 89,
+        "alphaEquivalentPixels": 35.333333,
+        "nearOpaquePixels": 0,
+        "partialAlphaPixels": 215,
+        "alphaGt1BoundingBox": [
+          22,
+          19,
+          42,
+          55
+        ],
+        "alphaGt16BoundingBox": [
+          24,
+          20,
+          40,
+          54
+        ],
+        "alphaWeightedCentroid": [
+          31.47736,
+          38.89279
+        ]
+      }
+    ]
+  },
+  "preservedSourceAndProvenanceHashes": {
+    "onset/master.png": "2b65917ea8039678b4eceee12699d5278fbea0edfc79d8ad36101c1a22a59fd1",
+    "onset/provenance.json": "85087299411bebf5d03a0082bc29e9c0f04fe739112271a2ef9f5899a5ca02f8",
+    "onset/reference-hashes.json": "d9caff29bce452744e482580911b3d9f046b009d1e80f1f66e8c40d4a11db306",
+    "onset/prompt.txt": "5a9fdf1389bff848f8bcbb4b0c6efd7c8273dcf0b203b707d15949c8494df84f",
+    "onset/request.json": "23d35d8c4d288b2b1811551c8d64c331d60f5876fa030e570ca660af8142208b",
+    "onset/raw.png": "2b65917ea8039678b4eceee12699d5278fbea0edfc79d8ad36101c1a22a59fd1",
+    "sweep/master.png": "84e40deb7f4c068e097493c59614c8b080b99674ca56a467df986fb6c088a98a",
+    "sweep/provenance.json": "871fe2e2d812664a73c5209bb6e31da82b2a6c3ed33a0616bb7c11c1457d1a9d",
+    "sweep/reference-hashes.json": "6d3e9980f9bc9f56635553fac6da773faf07b62052c227fe5022b8fae22949cc",
+    "sweep/prompt.txt": "e054e647f106381d8b8914c6d96708eb807bade2b683b5a8d5012f4c2af0b9e0",
+    "sweep/request.json": "fb4f59083481afda41787f68decb1f37a4faeb5a41daeb46f754aade96a898ce",
+    "sweep/raw.png": "84e40deb7f4c068e097493c59614c8b080b99674ca56a467df986fb6c088a98a",
+    "peak/master.png": "e0482382842a7339ffcc60d5cfe857344261d17051fab81195625197604987fa",
+    "peak/provenance.json": "fb6cee979f6c0dbb124eb7c85aa098f8802f5d204feafe7c9261a59329420180",
+    "peak/reference-hashes.json": "956b25164973c74a0f4147deea1360801d141af6d06a458dae73482a954f8251",
+    "peak/prompt.txt": "081ba95c1411c57bacafcafc7af3895fdaedadfc24d0c663d0b2d50f9adb9411",
+    "peak/request.json": "60f03504317ce77bf1705e7290b6ba34ab86c23422b543c9c1eee2fc5a278799",
+    "peak/raw.png": "e0482382842a7339ffcc60d5cfe857344261d17051fab81195625197604987fa",
+    "dissipate/master.png": "6722934eb622d5b9c9a21851f27266f8ec8d6860d8c8b6714a99e15793fc9670",
+    "dissipate/provenance.json": "809aedc71e6aeb2d679884aad6457e6a7067a74035a5e4059cefd1cf5cfca235",
+    "dissipate/reference-hashes.json": "ce25f8127a3828368602a7b28f2c7d249732fa1ea20e5e345f12106db24d77db",
+    "dissipate/prompt.txt": "6740c7b856c1f2e4394581858c0b66f0bca130a6d88de10181d6dabe9d604265",
+    "dissipate/request.json": "36a43d79bbb785ab64ba8c4733af4494490c4ea56c2b1a8099bf5f0244d337f4",
+    "dissipate/raw.png": "6722934eb622d5b9c9a21851f27266f8ec8d6860d8c8b6714a99e15793fc9670"
+  },
+  "checks": {
+    "rawAndMasterPreserved": true,
+    "rawMasterByteIdenticalAll": true,
+    "sourcePerimetersClear": true,
+    "outputPerimetersClear": true,
+    "noIndependentBboxFit": true,
+    "noSourceCropping": true,
+    "noOpacityNormalization": true,
+    "fourDistinctSourcePixels": true,
+    "browserObserved": false,
+    "liveGameplayObserved": false,
+    "registeredExportCheckRun": false
+  },
+  "registrationDiagnostics": {
+    "centralNeedleBottomAlphaGt16Y": [
+      1150,
+      1167,
+      1205,
+      1132
+    ],
+    "bottomTipRangeLogicalPixels": 1.6299840510366825,
+    "interpretation": "Generated lower tip shifts despite shared canvas and prompts; no post-generation correction was applied. Requires art acceptance or targeted regeneration."
+  },
+  "timing": {
+    "fps": 12,
+    "frameStartMs": [
+      0,
+      83.33333333333333,
+      166.66666666666666,
+      250
+    ],
+    "lastFrameVisibleThroughMs": 420,
+    "lastFrameHoldMs": 170,
+    "nominalClipEndMs": 333.3333333333333,
+    "apngDurationsRationalSeconds": [
+      [
+        1,
+        12
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        17,
+        100
+      ],
+      [
+        3,
+        5
+      ]
+    ],
+    "apngPreviewBlankIntervalMs": 600,
+    "gameLoop": false,
+    "previewRepetitionOnly": true
+  },
+  "limitations": [
+    "No browser playback observed",
+    "No live gameplay or white-hit-overlay/damage-number integration observed",
+    "No canonical exporter changes or registration",
+    "Shared authored coordinates do not guarantee exact generated contour contact-point lock"
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "topicId": "C01-FX-03",
+  "phaseOrder": [
+    "approach",
+    "impact",
+    "burst",
+    "dissipate"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "conceptualPivot": [
+    627,
+    627
+  ],
+  "wholeCanvasFit": {
+    "logicalSize": 28,
+    "logicalOffset": [
+      2,
+      2
+    ],
+    "cell": [
+      32,
+      32
+    ]
+  },
+  "noPerPhaseFitCropOrTranslate": true,
+  "estimatedApproachTip": [
+    657,
+    697
+  ],
+  "estimatedImpactPoint": [
+    719,
+    741
+  ],
+  "estimatedImpactLogical": [
+    18.05422647527911,
+    18.545454545454547
+  ],
+  "estimatedImpactOffsetFromLogicalPivot": [
+    2.0542264752791084,
+    2.5454545454545467
+  ],
+  "fps": 12,
+  "loop": false,
+  "blendMode": "normal",
+  "phaseStartMs": [
+    0,
+    83.33333333333333,
+    166.66666666666666,
+    250
+  ],
+  "finalHoldUntilMs": 420,
+  "apngDurationsMs": [
+    83,
+    84,
+    83,
+    170
+  ],
+  "gifPreviewDurationsMs": [
+    80,
+    90,
+    80,
+    170
+  ],
+  "actualBrowserReview": false,
+  "frames": [
+    {
+      "phase": "approach",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "rawEqualsMaster": true,
+      "masterSha256": "ad5c534ed2079a41ba3bb9e9c20bf087f00813f1ff6740313c4a5573eda6e0c2",
+      "outerEdgeAlphaMax": 0,
+      "outerEdgeNonzeroCount": 0,
+      "alphaMass": 22498.258823529413,
+      "bboxAlpha1": [
+        73,
+        101,
+        1111,
+        988
+      ],
+      "bboxAlpha128": [
+        230,
+        432,
+        658,
+        698
+      ],
+      "exports": {
+        "1x": {
+          "size": [
+            32,
+            32
+          ],
+          "bboxAlpha1": [
+            5,
+            9,
+            19,
+            20
+          ],
+          "alphaMass": 12.149019607843137,
+          "outerEdgeAlphaMax": 0
+        },
+        "2x": {
+          "size": [
+            64,
+            64
+          ],
+          "bboxAlpha1": [
+            12,
+            21,
+            36,
+            38
+          ],
+          "alphaMass": 46.015686274509804,
+          "outerEdgeAlphaMax": 0
+        }
+      }
+    },
+    {
+      "phase": "impact",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "rawEqualsMaster": true,
+      "masterSha256": "839c6f0de6c2915aea792bc36cb6656777950bb6ab4a97c6b6e07fdbca6cac16",
+      "outerEdgeAlphaMax": 0,
+      "outerEdgeNonzeroCount": 0,
+      "alphaMass": 132006.0,
+      "bboxAlpha1": [
+        48,
+        29,
+        1208,
+        1164
+      ],
+      "bboxAlpha128": [
+        233,
+        356,
+        968,
+        968
+      ],
+      "exports": {
+        "1x": {
+          "size": [
+            32,
+            32
+          ],
+          "bboxAlpha1": [
+            5,
+            8,
+            26,
+            26
+          ],
+          "alphaMass": 67.35686274509804,
+          "outerEdgeAlphaMax": 0
+        },
+        "2x": {
+          "size": [
+            64,
+            64
+          ],
+          "bboxAlpha1": [
+            12,
+            18,
+            49,
+            50
+          ],
+          "alphaMass": 265.4823529411765,
+          "outerEdgeAlphaMax": 0
+        }
+      }
+    },
+    {
+      "phase": "burst",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "rawEqualsMaster": true,
+      "masterSha256": "b43939c0037b8874e6b80cbdb0ce3eb1e1a81a9cd9bd45a8686afadbde934df9",
+      "outerEdgeAlphaMax": 1,
+      "outerEdgeNonzeroCount": 4,
+      "alphaMass": 81548.01960784313,
+      "bboxAlpha1": [
+        0,
+        19,
+        1218,
+        1254
+      ],
+      "bboxAlpha128": [
+        376,
+        350,
+        1175,
+        1099
+      ],
+      "exports": {
+        "1x": {
+          "size": [
+            32,
+            32
+          ],
+          "bboxAlpha1": [
+            8,
+            8,
+            30,
+            29
+          ],
+          "alphaMass": 43.91372549019608,
+          "outerEdgeAlphaMax": 0
+        },
+        "2x": {
+          "size": [
+            64,
+            64
+          ],
+          "bboxAlpha1": [
+            19,
+            17,
+            59,
+            55
+          ],
+          "alphaMass": 168.0313725490196,
+          "outerEdgeAlphaMax": 0
+        }
+      }
+    },
+    {
+      "phase": "dissipate",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "rawEqualsMaster": true,
+      "masterSha256": "df0069ae54241b8d677451cbb1f17c9d9fd8cd1d65a206ec9937e963d863abbf",
+      "outerEdgeAlphaMax": 0,
+      "outerEdgeNonzeroCount": 0,
+      "alphaMass": 7393.070588235294,
+      "bboxAlpha1": [
+        119,
+        29,
+        1192,
+        1167
+      ],
+      "bboxAlpha128": [
+        476,
+        555,
+        923,
+        1050
+      ],
+      "exports": {
+        "1x": {
+          "size": [
+            32,
+            32
+          ],
+          "bboxAlpha1": [
+            10,
+            12,
+            25,
+            28
+          ],
+          "alphaMass": 4.419607843137255,
+          "outerEdgeAlphaMax": 0
+        },
+        "2x": {
+          "size": [
+            64,
+            64
+          ],
+          "bboxAlpha1": [
+            23,
+            28,
+            48,
+            53
+          ],
+          "alphaMass": 16.16470588235294,
+          "outerEdgeAlphaMax": 0
+        }
+      }
+    }
+  ]
+}

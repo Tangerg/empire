@@ -32,7 +32,7 @@ not a registration; replace the paths and hashes with verified master files:
 The illustrated placement assumes all four source canvases are 64×64. Paths are
 repository-relative and must resolve inside this topic's owning pack `masters/`.
 Sources must be PNG RGBA with exactly equal canvas dimensions, different decoded
-pixels, nonempty visible content and fully transparent outer edges. The explicit
+pixels and nonempty visible content. Raw outer-edge alpha may be at most1; alpha2+ is rejected. Final padded output perimeters must be exactly0. The explicit
 phase array must have exactly the reviewed order, without repeated or arbitrary
 names. Source hashes lock provenance; changing labels cannot prove the artwork
 actually depicts those phases. That still needs visual review.
@@ -65,7 +65,7 @@ the shared scale, followed by unmasked paste. Native-resolution identity exports
 retain every RGBA byte, including a wholly translucent final phase with maximum
 alpha 104. Resampling at other sizes naturally changes edge samples; it never
 opacity-normalizes a fade or multiplies alpha by itself. The FX alpha gate
-requires nonempty content and strictly clear perimeters, but no near-opaque
+requires nonempty content, raw perimeter alpha≤1 and strictly clear final perimeters, but no near-opaque
 core. Unit and prop alpha gates remain independent and unchanged.
 
 Reports include ordered source file and decoded-pixel hashes, source canvases,
@@ -124,3 +124,7 @@ semantic animation approval is included in this engineering change.
 ## Reviewed next impact phase contracts
 
 FX02 keeps the original fixed-axis puncture: onset, longer sweep, peak needle/chips, translucent dissipate. FX03 uses approach, impact, burst, dissipate: short arrow approaching down-right, cream impact at its tip, arrow removed with radial chips, then residue. These meanings are verified against full original source rows in the source audit. Enabling a contract does not approve generated artwork or register a topic. All shared-canvas, transparent-edge, density and timing gates remain identical.
+
+## Bounded source residue tolerance
+
+The reviewed arrow burst revision contained exactly four perimeter pixels at alpha1 after one targeted imagegen repair (the prior candidate had81). Actual black/white/color compositing and padded32/64 exports determine acceptance; no alpha values are changed. Source-only allowance is at most1, matching the existing static source ingestion contract. Alpha2+ still rejects before writes. All final cell borders remain alpha0. Reports record measured edge maxima/counts and tolerance separately for sources and outputs. This is not a general license to accept visible halo, cutoff, or increasingly relaxed thresholds.

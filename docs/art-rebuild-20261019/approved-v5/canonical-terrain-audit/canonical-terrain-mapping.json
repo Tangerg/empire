@@ -1,0 +1,7122 @@
+{
+  "boards": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "sha256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "sourceMode": "RGB",
+      "grid": [
+        4,
+        2
+      ],
+      "inset": 3
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "sha256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "sourceMode": "RGB",
+      "grid": [
+        4,
+        2
+      ],
+      "inset": 3
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "sha256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "sourceMode": "RGB",
+      "grid": [
+        4,
+        2
+      ],
+      "inset": 3
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "sha256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "dimensions": [
+        1402,
+        1122
+      ],
+      "sourceMode": "RGB",
+      "grid": [
+        4,
+        2
+      ],
+      "inset": 3
+    }
+  ],
+  "topics": [
+    {
+      "topicId": "C01-TERRAIN-BORDER-1",
+      "label": "晒麦农田",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-BORDER-1",
+        "topicId": "C01-TERRAIN-BORDER-1",
+        "label": "晒麦农田",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-border-1.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-1.png",
+          "sha256": "555145ee1e31bc3214d8708276c68972b776d5bab2d83cc82159ebd15a451e6d",
+          "pixelSHA256": "280e7867b5ec221c1407f6ca7d15fcea091e7d30f4c913025771c1f12eb24353",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-border-1.png",
+          "sha256": "ec725940a98515c262371d1ce40c982a82e4108d7ca17b85fa3602966614827a",
+          "pixelSHA256": "4d35ba1e48d8c6097efdcc19970652a913c6501c5ed9a00b474e08c7408d2fa9",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          0
+        ],
+        "2": [
+          0
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 0,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 0,
+        "slotColumn": 0,
+        "slotNumber1Based": 1,
+        "cropXYXY": [
+          3,
+          3,
+          441,
+          441
+        ],
+        "cropSize": [
+          438,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            7,
+            7,
+            279,
+            279
+          ],
+          [
+            165,
+            7,
+            437,
+            279
+          ],
+          [
+            7,
+            165,
+            279,
+            437
+          ],
+          [
+            165,
+            165,
+            437,
+            437
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Golden straw stubble clumps and cut wheat on dry ochre earth",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact material source; no mislabeled object or missing slot",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 15.705,
+          "maxRGBDifference": 86
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 19.314,
+          "maxRGBDifference": 113
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-2",
+      "label": "雨泥道路",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-BORDER-2",
+        "topicId": "C01-TERRAIN-BORDER-2",
+        "label": "雨泥道路",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-border-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-2.png",
+          "sha256": "177be06819577d104d2747af76f3685fb3ab656d9cc17eb6873f40058d00d649",
+          "pixelSHA256": "b8fffa24180486791ac7a9db20a610c204819ada834c6cc011e37d68b49f4e99",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-border-2.png",
+          "sha256": "013d13e686968ace89e823ff93e5df6b11843717d2f5065e4063fc3c02d14a23",
+          "pixelSHA256": "6e36f43de962a3df5a70b2231cbd1a15e5dafc9484ac468dfff397accbb5a7ec",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          1
+        ],
+        "2": [
+          1
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 1,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 0,
+        "slotColumn": 1,
+        "slotNumber1Based": 2,
+        "cropXYXY": [
+          447,
+          3,
+          884,
+          441
+        ],
+        "cropSize": [
+          437,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            451,
+            8,
+            722,
+            279
+          ],
+          [
+            609,
+            8,
+            880,
+            279
+          ],
+          [
+            451,
+            165,
+            722,
+            436
+          ],
+          [
+            609,
+            165,
+            880,
+            436
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Rain-softened brown mud, diagonal ruts, cool gray puddles, scattered pebbles",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "The only consumed sample a is clipped to generic cardinal arms; diagonal ruts do not turn with the mask",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 6.229,
+          "maxRGBDifference": 17
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 7.541,
+          "maxRGBDifference": 24
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-3",
+      "label": "焦土农田",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-BORDER-3",
+        "topicId": "C01-TERRAIN-BORDER-3",
+        "label": "焦土农田",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-border-3.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-3.png",
+          "sha256": "2f49711f9400921a0f0dc0a7ccffc0e6e1e2a0b608827312f72ebe0930747387",
+          "pixelSHA256": "e58fbf6b83ef8ad373d119e7ab530cabc02caca916f4bdb6104b1a9acd8bb3b5",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-border-3.png",
+          "sha256": "77bafca86b6f28ca0d68d324f163ef78b11d1ae1bc985c9a0a4ec222a57ecf94",
+          "pixelSHA256": "6d1d78fa1bd85c249e75e5edc817ad26cc9aeeb214cf4409f74ca28a88b514fe",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          2
+        ],
+        "2": [
+          2
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 2,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 0,
+        "slotColumn": 2,
+        "slotNumber1Based": 3,
+        "cropXYXY": [
+          890,
+          3,
+          1327,
+          441
+        ],
+        "cropSize": [
+          437,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            894,
+            8,
+            1165,
+            279
+          ],
+          [
+            1052,
+            8,
+            1323,
+            279
+          ],
+          [
+            894,
+            165,
+            1165,
+            436
+          ],
+          [
+            1052,
+            165,
+            1323,
+            436
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Charred furrows, black wheat stubble, tiny ember points",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact material source; ember texture must remain subdued at native size",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 9.607,
+          "maxRGBDifference": 39
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 11.269,
+          "maxRGBDifference": 84
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-BORDER-4",
+      "label": "难民车辙",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-BORDER-4",
+        "topicId": "C01-TERRAIN-BORDER-4",
+        "label": "难民车辙",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-border-4.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-border-4.png",
+          "sha256": "1992446bfff3600c6da196ff156ca0c114d458847a3160894c18e5d77a709e50",
+          "pixelSHA256": "f0685857048c21ddadae91540dd15c580e11150af9de3a3d2aa8d650fbe6119a",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-border-4.png",
+          "sha256": "a44af6395ea1ca26b02b780ed96ed96939f4e764b392472e9291590b4a8bc852",
+          "pixelSHA256": "680eae384209246c3c7471dabde9cff40d476b82fceea4bbfac16bfb1e907814",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          3
+        ],
+        "2": [
+          3
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 3,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 0,
+        "slotColumn": 3,
+        "slotNumber1Based": 4,
+        "cropXYXY": [
+          1333,
+          3,
+          1771,
+          441
+        ],
+        "cropSize": [
+          438,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            1337,
+            7,
+            1609,
+            279
+          ],
+          [
+            1495,
+            7,
+            1767,
+            279
+          ],
+          [
+            1337,
+            165,
+            1609,
+            437
+          ],
+          [
+            1495,
+            165,
+            1767,
+            437
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Paired wheel ruts, bootprints, stones, dry muddy soil",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "A diagonal rut field is clipped to a generic NESW network; not authored turning tracks",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 10.583,
+          "maxRGBDifference": 38
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 12.114,
+          "maxRGBDifference": 49
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-1",
+      "label": "城墙步道",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-CAPITAL-1",
+        "topicId": "C01-TERRAIN-CAPITAL-1",
+        "label": "城墙步道",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-capital-1.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-1.png",
+          "sha256": "1653cd25149f3c3fbeab8d1939a52e9a3e0a6b81a988b570500371c10ca50fbf",
+          "pixelSHA256": "e06b61f6d9519856236e84894fa2b17ba8ad273ad826b1b9e981c138019cf53a",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-capital-1.png",
+          "sha256": "eff5be703eef90ba975c8cccb848a66121c5bdb6f95937135da7104ba440e406",
+          "pixelSHA256": "a0edf14298d98948ebff145ca200e66722f417b9eeb4cf1803f782ed8c78db06",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          8
+        ],
+        "2": [
+          8
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 8,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 0,
+        "slotColumn": 0,
+        "slotNumber1Based": 1,
+        "cropXYXY": [
+          3,
+          3,
+          359,
+          540
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            6,
+            64,
+            227,
+            285
+          ],
+          [
+            135,
+            64,
+            356,
+            285
+          ],
+          [
+            6,
+            258,
+            227,
+            479
+          ],
+          [
+            135,
+            258,
+            356,
+            479
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Dark uneven stone masonry paving, damp blue seams",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact material source; old mask topology retained despite walkway label",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 14.625,
+          "maxRGBDifference": 38
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 14.563,
+          "maxRGBDifference": 46
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-2",
+      "label": "王都街道",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-CAPITAL-2",
+        "topicId": "C01-TERRAIN-CAPITAL-2",
+        "label": "王都街道",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-capital-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-2.png",
+          "sha256": "b67d140d151bc4d84cfc95778ad72a9165d51e260d48058fa96e8a30d4f1ca0f",
+          "pixelSHA256": "517b8e4a50162c01f85afd58c9104de8999d909370e6e04905ebdee0f17027e6",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-capital-2.png",
+          "sha256": "971d873e9ca11b7831cdd8b1027413166639fa32bbec9bd629643df65469b3e9",
+          "pixelSHA256": "b3eb77e15b0e46635320ca300e2f479f9dcd555e318e9ffabcdf6f86128dde00",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          9
+        ],
+        "2": [
+          9
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 9,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 0,
+        "slotColumn": 1,
+        "slotNumber1Based": 2,
+        "cropXYXY": [
+          365,
+          3,
+          721,
+          540
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            368,
+            64,
+            589,
+            285
+          ],
+          [
+            497,
+            64,
+            718,
+            285
+          ],
+          [
+            368,
+            258,
+            589,
+            479
+          ],
+          [
+            497,
+            258,
+            718,
+            479
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Small ordered cobbles with a central drainage strip and square grates",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Sample a is offset left of the centered drain; masks can preserve only tiny drain fragments",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 5.27,
+          "maxRGBDifference": 26
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 8.416,
+          "maxRGBDifference": 37
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-3",
+      "label": "医院区地面",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-CAPITAL-3",
+        "topicId": "C01-TERRAIN-CAPITAL-3",
+        "label": "医院区地面",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-capital-3.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-3.png",
+          "sha256": "87473662c0d2b379d1f180e323e12baa852902f24e2b2d1c4d80f801d9fe8bad",
+          "pixelSHA256": "be658aca9fc7198814033e65ac241d13ba13171613d95c091fff085986417515",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-capital-3.png",
+          "sha256": "6bd8e86767064f30b07f2b2dbc26bd5283f65284f2875084f912905f82c476f1",
+          "pixelSHA256": "c7d11b3c2783d9a53ab106272ebcebe8481e8c0afa189c0715597ab15494bc28",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          10
+        ],
+        "2": [
+          10
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 10,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 0,
+        "slotColumn": 2,
+        "slotNumber1Based": 3,
+        "cropXYXY": [
+          727,
+          3,
+          1083,
+          540
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            730,
+            64,
+            951,
+            285
+          ],
+          [
+            859,
+            64,
+            1080,
+            285
+          ],
+          [
+            730,
+            258,
+            951,
+            479
+          ],
+          [
+            859,
+            258,
+            1080,
+            479
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Pale cracked limestone paving with intersecting blue gutters and drains",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four overlapping square samples clip portions of the gutter junction; hospital meaning comes from identity/context, not recognizable hospital icon",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 19.429,
+          "maxRGBDifference": 72
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 26.237,
+          "maxRGBDifference": 95
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-4",
+      "label": "宫城地面",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-CAPITAL-4",
+        "topicId": "C01-TERRAIN-CAPITAL-4",
+        "label": "宫城地面",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-capital-4.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-capital-4.png",
+          "sha256": "508f40a5eda5d69249be0874899a4eb9296eef10b782a18208e4c332a5b1ce20",
+          "pixelSHA256": "6e8416fbd47ced4baa4847ac2af95328f3a13e755dceb729fcaf6a3fe6153841",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-capital-4.png",
+          "sha256": "37979301549d85456a744a154faf82229742ffc1f5165c0fe00ac762efaeb214",
+          "pixelSHA256": "a465c609f9c8bdd42a96196621d4f98cba210b0a82c0999a522f8205bb9c6ce1",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          11
+        ],
+        "2": [
+          11
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 11,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 0,
+        "slotColumn": 3,
+        "slotNumber1Based": 4,
+        "cropXYXY": [
+          1089,
+          3,
+          1445,
+          540
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            1092,
+            64,
+            1313,
+            285
+          ],
+          [
+            1221,
+            64,
+            1442,
+            285
+          ],
+          [
+            1092,
+            258,
+            1313,
+            479
+          ],
+          [
+            1221,
+            258,
+            1442,
+            479
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Pale octagonal palace paving with a burgundy geometric border",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four square samples fragment the palace border; no complete palace building",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 22.622,
+          "maxRGBDifference": 87
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 24.853,
+          "maxRGBDifference": 115
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-1",
+      "label": "炉城石地",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-FORGE-1",
+        "topicId": "C01-TERRAIN-FORGE-1",
+        "label": "炉城石地",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-forge-1.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-1.png",
+          "sha256": "6798bc36b99389222d8c0362f85c9bc472f1f2fa7cdf86c49f999d36bd0842a3",
+          "pixelSHA256": "f8571abf193e4991304b094d3f59832d2b9e3d5561ceeedf147d882cba8fdec4",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-forge-1.png",
+          "sha256": "32253118a44a30817d720fb66e73e615af91b899639b05a983a73205a89deb56",
+          "pixelSHA256": "bbc98c21109bc3930968e143c93b87589af8bc1c057b84744e03f1573d5b855a",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          16
+        ],
+        "2": [
+          16
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 16,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 0,
+        "slotColumn": 0,
+        "slotNumber1Based": 1,
+        "cropXYXY": [
+          3,
+          3,
+          441,
+          441
+        ],
+        "cropSize": [
+          438,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            7,
+            7,
+            279,
+            279
+          ],
+          [
+            165,
+            7,
+            437,
+            279
+          ],
+          [
+            7,
+            165,
+            279,
+            437
+          ],
+          [
+            165,
+            165,
+            437,
+            437
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Dark forge paving crossed by iron trench grates and square service cover",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four samples truncate the grate junction; source art is flat paving, not standalone mechanism",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 9.719,
+          "maxRGBDifference": 40
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 12.449,
+          "maxRGBDifference": 50
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-2",
+      "label": "熔沟",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-FORGE-2",
+        "topicId": "C01-TERRAIN-FORGE-2",
+        "label": "熔沟",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-forge-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-2.png",
+          "sha256": "3a8f0f5bc44e7080cd2ccfa21138488494fc135414b03f6409d4ee58541721be",
+          "pixelSHA256": "57e38d7dcf765afc562b158e939143ddc65abf08d95eba3fc5372d5f9106c57b",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-forge-2.png",
+          "sha256": "8458936d9b92e6157fe687a23bb6c1db04c276106916dbc2992523ae8594fe22",
+          "pixelSHA256": "cfd7ad0e76de541c333641cc988114a2c689dffbfdaef2c439668725a9950f63",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          17
+        ],
+        "2": [
+          17
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 17,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 0,
+        "slotColumn": 1,
+        "slotNumber1Based": 2,
+        "cropXYXY": [
+          447,
+          3,
+          884,
+          441
+        ],
+        "cropSize": [
+          437,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            451,
+            8,
+            722,
+            279
+          ],
+          [
+            609,
+            8,
+            880,
+            279
+          ],
+          [
+            451,
+            165,
+            722,
+            436
+          ],
+          [
+            609,
+            165,
+            880,
+            436
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Bright amber molten channel between metal-lined dark stone banks",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Upper-left material sample and generic masking fragment central lava channel; no evidence that each resulting arm is an authored lava bend",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 6.438,
+          "maxRGBDifference": 34
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 8.146,
+          "maxRGBDifference": 50
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-3",
+      "label": "符文地面",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-FORGE-3",
+        "topicId": "C01-TERRAIN-FORGE-3",
+        "label": "符文地面",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-forge-3.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-3.png",
+          "sha256": "740ea025a23beb31b313eef8c496dcc3c679215fcf0e9c59e4ce7aaf1051e723",
+          "pixelSHA256": "abb297bcad830314e3b5e09592c5042ca9c6750a8ff89004ffac95bb1eb1b7a1",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-forge-3.png",
+          "sha256": "2cfc60495c84d08ec6ecf97f0808de906910415e63111a832ff32e89ae533c98",
+          "pixelSHA256": "cc1f0b2fc6ff74fc02439c61b8eb02fd21968842dc861a4b3ae7cb1b67d2850b",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          18
+        ],
+        "2": [
+          18
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 18,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 0,
+        "slotColumn": 2,
+        "slotNumber1Based": 3,
+        "cropXYXY": [
+          890,
+          3,
+          1327,
+          441
+        ],
+        "cropSize": [
+          437,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            894,
+            8,
+            1165,
+            279
+          ],
+          [
+            1052,
+            8,
+            1323,
+            279
+          ],
+          [
+            894,
+            165,
+            1165,
+            436
+          ],
+          [
+            1052,
+            165,
+            1323,
+            436
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Dark hexagonal stone tiles with bronze rune seams and small junction emblems",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact paving material; avoid inventing legible text or new rune symbols",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 7.686,
+          "maxRGBDifference": 52
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 10.158,
+          "maxRGBDifference": 72
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-FORGE-4",
+      "label": "档案炉区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-FORGE-4",
+        "topicId": "C01-TERRAIN-FORGE-4",
+        "label": "档案炉区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-forge-4.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-4.png",
+          "sha256": "15f46a57149063ddfdcd02b2387b36b38fb1575c251f7a5f7379c7f1e0ed3cb6",
+          "pixelSHA256": "5f799bef3ebf03f97236d90ed912b7bea48e879dbc400389120f9171cecbceb8",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-forge-4.png",
+          "sha256": "de5f34c54f156b3679ad1d07b807c712a469074f7eb33f0bdaa561da55878a3d",
+          "pixelSHA256": "68508ae8148245c703753999c6e13a2b03c76db00715f9790944cc16344a00d5",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          19
+        ],
+        "2": [
+          19
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 19,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 0,
+        "slotColumn": 3,
+        "slotNumber1Based": 4,
+        "cropXYXY": [
+          1333,
+          3,
+          1771,
+          441
+        ],
+        "cropSize": [
+          438,
+          438
+        ],
+        "variantCropXYXY": [
+          [
+            1337,
+            7,
+            1609,
+            279
+          ],
+          [
+            1495,
+            7,
+            1767,
+            279
+          ],
+          [
+            1337,
+            165,
+            1609,
+            437
+          ],
+          [
+            1495,
+            165,
+            1767,
+            437
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Dark paving with brass rails or archive machinery strips and scattered parchment",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four source windows split mechanical runs and paper fragments; archive label is context-supported, not a separate building",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 9.514,
+          "maxRGBDifference": 81
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 11.686,
+          "maxRGBDifference": 100
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-1",
+      "label": "普通墓碑地",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-GRAVEYARD-1",
+        "topicId": "C01-TERRAIN-GRAVEYARD-1",
+        "label": "普通墓碑地",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-graveyard-1.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-1.png",
+          "sha256": "f1890d241b9e0a118692797a1dba86f8af59b30863ed292cbd3ab356fec0a1cd",
+          "pixelSHA256": "c7ff499df33c0a64c13d2c37e04cf000988ec84de1875fca543b48295e8748d1",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-graveyard-1.png",
+          "sha256": "d9e38dde7dfc147930d301c471a7e5eb8bab5c495f8b323982c10c7273f22612",
+          "pixelSHA256": "1ff4b70e07fb2dd5670609aebf4bb3fb3d9866f9c367ad1cebb606705cc2d3e6",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          24
+        ],
+        "2": [
+          24
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 24,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 0,
+        "slotColumn": 0,
+        "slotNumber1Based": 1,
+        "cropXYXY": [
+          3,
+          3,
+          347,
+          558
+        ],
+        "cropSize": [
+          344,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            7,
+            74,
+            220,
+            287
+          ],
+          [
+            130,
+            74,
+            343,
+            287
+          ],
+          [
+            7,
+            274,
+            220,
+            487
+          ],
+          [
+            130,
+            274,
+            343,
+            487
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Bare grass-flecked earth enclosed by a ring of loose round stones",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Label says ordinary gravestone ground, but source slot contains no obvious standing gravestones; preserve observed ring rather than invent graves",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 15.07,
+          "maxRGBDifference": 50
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 27.59,
+          "maxRGBDifference": 98
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-2",
+      "label": "记名区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-GRAVEYARD-2",
+        "topicId": "C01-TERRAIN-GRAVEYARD-2",
+        "label": "记名区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-graveyard-2.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-2.png",
+          "sha256": "b4cd40bb9b2cac835b88f857b14d9a634df9da57939024ac2c49953632a15fa7",
+          "pixelSHA256": "8a256ee5993ff8f01aeb2738fa79ee677db6669a77fe74c3b5a6c41cffa6dd83",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-graveyard-2.png",
+          "sha256": "2bf05defa0b6b3c14bf63efc8b5bada34bece3c5a38073af40f58f4ce884fc51",
+          "pixelSHA256": "d979ed895af796c384f3c6d58b91d0f1ef031a4cfddee45f218f8e931c5398d5",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          25
+        ],
+        "2": [
+          25
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 25,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 0,
+        "slotColumn": 1,
+        "slotNumber1Based": 2,
+        "cropXYXY": [
+          353,
+          3,
+          698,
+          558
+        ],
+        "cropSize": [
+          345,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            356,
+            74,
+            570,
+            288
+          ],
+          [
+            481,
+            74,
+            695,
+            288
+          ],
+          [
+            356,
+            273,
+            570,
+            487
+          ],
+          [
+            481,
+            273,
+            695,
+            487
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Ordered rows of upright name/grave markers inside a stone border with small warm lamps",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four crop windows clip markers and ring; top/bottom of original composition omitted",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 8.406,
+          "maxRGBDifference": 64
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 12.141,
+          "maxRGBDifference": 128
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-3",
+      "label": "污染地",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-GRAVEYARD-3",
+        "topicId": "C01-TERRAIN-GRAVEYARD-3",
+        "label": "污染地",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-graveyard-3.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-3.png",
+          "sha256": "1091ec50d51da44ad92bd62c6fd957333b1d12dae66dc3d5e99fe8971730aaaf",
+          "pixelSHA256": "1bd4404bde41e60b4447c64a638aa6ca2aa9c14b3fb815d75f34bfa949633e8a",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-graveyard-3.png",
+          "sha256": "9636fe67d5ae605f1d09bb24f5caf098b2b788f827d5885b833fcb4436d377a7",
+          "pixelSHA256": "9600836dfebc47b6dbcb3763c5e4950dd0320d5d3c4d221fc6cdddcff6225304",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          26
+        ],
+        "2": [
+          26
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 26,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 0,
+        "slotColumn": 2,
+        "slotNumber1Based": 3,
+        "cropXYXY": [
+          704,
+          3,
+          1049,
+          558
+        ],
+        "cropSize": [
+          345,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            707,
+            74,
+            921,
+            288
+          ],
+          [
+            832,
+            74,
+            1046,
+            288
+          ],
+          [
+            707,
+            273,
+            921,
+            487
+          ],
+          [
+            832,
+            273,
+            1046,
+            487
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Dark cracked soil with faint desaturated purple staining and dead tufts",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact contaminated ground; avoid substituting bright magical goo",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 18.724,
+          "maxRGBDifference": 74
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 31.8,
+          "maxRGBDifference": 130
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-GRAVEYARD-4",
+      "label": "归名净化区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-GRAVEYARD-4",
+        "topicId": "C01-TERRAIN-GRAVEYARD-4",
+        "label": "归名净化区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-graveyard-4.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-4.png",
+          "sha256": "5bd09d57d3ddfb3f23a1017d7083d27f6f400b89284589523b67414c61801d57",
+          "pixelSHA256": "84aaf21a844fe60b8a532f845860fba66ee353545115070138df72f1f2f0f531",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-graveyard-4.png",
+          "sha256": "e81de4d2e29c0a6d0216c655001034206c20ee501e31446199a4339084fdf266",
+          "pixelSHA256": "0fed11e4d85eca1344c06a9c8a0d022dc9c1d2ccd22ef62cfe6d21fed9a98f5f",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          27
+        ],
+        "2": [
+          27
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 27,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 0,
+        "slotColumn": 3,
+        "slotNumber1Based": 4,
+        "cropXYXY": [
+          1055,
+          3,
+          1399,
+          558
+        ],
+        "cropSize": [
+          344,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            1059,
+            74,
+            1272,
+            287
+          ],
+          [
+            1182,
+            74,
+            1395,
+            287
+          ],
+          [
+            1059,
+            274,
+            1272,
+            487
+          ],
+          [
+            1182,
+            274,
+            1395,
+            487
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Concentric stone rings with rectangular name markers and small amber lamps",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four square samples sever the purification circle; no full circle remains as a canonical tile",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 18.96,
+          "maxRGBDifference": 64
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 34.983,
+          "maxRGBDifference": 135
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-1",
+      "label": "普通节点地",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-OATHLIGHT-1",
+        "topicId": "C01-TERRAIN-OATHLIGHT-1",
+        "label": "普通节点地",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-oathlight-1.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-oathlight-1.png",
+          "sha256": "b38dff72c5933ec0d37b527345505781131cacad61eef83d053e2fcc672eb2d8",
+          "pixelSHA256": "8c0d209ebe96af98b0bf716d1423983227c060aa8efcd088958ae79c4fe37330",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-oathlight-1.png",
+          "sha256": "ca1261e3996d612f7b8ba65c465a21c3c74201f17c985a930f1ca0d1e62a244d",
+          "pixelSHA256": "85e1b738b3facc46d9102eb4d792a3e097101092942123644e21a08839476431",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          28
+        ],
+        "2": [
+          28
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 28,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 1,
+        "slotColumn": 0,
+        "slotNumber1Based": 5,
+        "cropXYXY": [
+          3,
+          564,
+          347,
+          1119
+        ],
+        "cropSize": [
+          344,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            7,
+            635,
+            220,
+            848
+          ],
+          [
+            130,
+            635,
+            343,
+            848
+          ],
+          [
+            7,
+            835,
+            220,
+            1048
+          ],
+          [
+            130,
+            835,
+            343,
+            1048
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Gray polygonal stone centered on a gold hub with six small circular nodes",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four overlapping samples cut the hub, yielding emblem fragments rather than four authored node designs",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 19.999,
+          "maxRGBDifference": 73
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 33.791,
+          "maxRGBDifference": 137
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-2",
+      "label": "誓文受控区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-OATHLIGHT-2",
+        "topicId": "C01-TERRAIN-OATHLIGHT-2",
+        "label": "誓文受控区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-oathlight-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-oathlight-2.png",
+          "sha256": "6b71613006730e1a08b0f61e047b0fc821e9d85d1903c83bcd999ae59d01100f",
+          "pixelSHA256": "374e6a13d453528278ed2783f104885266f91baa27acedae7398ee1fced7a229",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-oathlight-2.png",
+          "sha256": "60987dfeb1028732b667d48982d2cddf5c1dece3935d2a3bb1325396edb68301",
+          "pixelSHA256": "a9ad5746930b1274a940bd94b1656ae3c2f86054353b7e0041c95e22b824b28d",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          29
+        ],
+        "2": [
+          29
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 29,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 1,
+        "slotColumn": 1,
+        "slotNumber1Based": 6,
+        "cropXYXY": [
+          353,
+          564,
+          698,
+          1119
+        ],
+        "cropSize": [
+          345,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            356,
+            635,
+            570,
+            849
+          ],
+          [
+            481,
+            635,
+            695,
+            849
+          ],
+          [
+            356,
+            834,
+            570,
+            1048
+          ],
+          [
+            481,
+            834,
+            695,
+            1048
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Gray paving, gold controlled hub, straight band and triangular frame",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Only upper-left crop enters generic connector masks; central control seal is clipped",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 15.521,
+          "maxRGBDifference": 50
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 19.531,
+          "maxRGBDifference": 71
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-3",
+      "label": "失联区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-OATHLIGHT-3",
+        "topicId": "C01-TERRAIN-OATHLIGHT-3",
+        "label": "失联区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-oathlight-3.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-oathlight-3.png",
+          "sha256": "ffe857ff8303cc15dad1b476fc1d23f967af3166d12d8c2f9b781f4cf3c6b82a",
+          "pixelSHA256": "6fdac7dc6bd97738547db98cdf2be88e4850d9d992d3db1c74a1a5a9df6de2c4",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-oathlight-3.png",
+          "sha256": "6b3b7f030e8a9535de1ee93920627359fd86fafb248cb7ff5df8cd99384cdc82",
+          "pixelSHA256": "abb5e67b239f196befccb21d78afbd4f9997317eb0d8794ea442277d1f6dfa7b",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          30
+        ],
+        "2": [
+          30
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 30,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 1,
+        "slotColumn": 2,
+        "slotNumber1Based": 7,
+        "cropXYXY": [
+          704,
+          564,
+          1049,
+          1119
+        ],
+        "cropSize": [
+          345,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            707,
+            635,
+            921,
+            849
+          ],
+          [
+            832,
+            635,
+            1046,
+            849
+          ],
+          [
+            707,
+            834,
+            921,
+            1048
+          ],
+          [
+            832,
+            834,
+            1046,
+            1048
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Gray paving, broken radial bands, dim disconnected hub",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Only upper-left crop enters generic connector masks; no new broken-state topology should be invented",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 15.395,
+          "maxRGBDifference": 46
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 20.552,
+          "maxRGBDifference": 83
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-OATHLIGHT-4",
+      "label": "自由誓石区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-OATHLIGHT-4",
+        "topicId": "C01-TERRAIN-OATHLIGHT-4",
+        "label": "自由誓石区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-oathlight-4.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-oathlight-4.png",
+          "sha256": "905a63195b47d9992058d036d5143d3bd558f4eb03e35b9eb7e4e7a7cf2d2be5",
+          "pixelSHA256": "dbc83409702f395f4e8564a825efdbf0b8cd2a9274b8f1d0320152f2a7bbfc20",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-oathlight-4.png",
+          "sha256": "017b096be1dae263ed76d114ba5f3e4f6bd9b273b2b498115660137b90bd2056",
+          "pixelSHA256": "630655c3a1060d0c8159f4810f6e13b3f9a7cc158feba746c561e558b975f190",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          31
+        ],
+        "2": [
+          31
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 31,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+        "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+        "slotRow": 1,
+        "slotColumn": 3,
+        "slotNumber1Based": 8,
+        "cropXYXY": [
+          1055,
+          564,
+          1399,
+          1119
+        ],
+        "cropSize": [
+          344,
+          555
+        ],
+        "variantCropXYXY": [
+          [
+            1059,
+            635,
+            1272,
+            848
+          ],
+          [
+            1182,
+            635,
+            1395,
+            848
+          ],
+          [
+            1059,
+            835,
+            1272,
+            1048
+          ],
+          [
+            1182,
+            835,
+            1395,
+            1048
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Loose network of round stone/gold node discs linked by colored fine cords",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four crops clip the network; source supports a less rigid open network, not a distinct independent sigil per variant",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 20.561,
+          "maxRGBDifference": 79
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 35.845,
+          "maxRGBDifference": 144
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-1",
+      "label": "河岸",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-RIVER-1",
+        "topicId": "C01-TERRAIN-RIVER-1",
+        "label": "河岸",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-river-1.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-1.png",
+          "sha256": "0379bab5eb00bfc2244b553556ec39eef680c756c553a58c6fd57b1361725cc2",
+          "pixelSHA256": "d42fe73ed33e5c964d6eaf5f0c30a425d862a86cf8c5388e2fcc0432a3a48879",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-1.png",
+          "sha256": "e97aee1e8d97e76c50f792471054deb3fd6a9670dcb61f9452dcf54fab15409d",
+          "pixelSHA256": "d0ed4812a0bf8f545c9300bbdf646f908ebe185ba44ca97ac1b78bf7e42f5db3",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          4
+        ],
+        "2": [
+          4
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 4,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 1,
+        "slotColumn": 0,
+        "slotNumber1Based": 5,
+        "cropXYXY": [
+          3,
+          447,
+          441,
+          884
+        ],
+        "cropSize": [
+          438,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            8,
+            451,
+            279,
+            722
+          ],
+          [
+            165,
+            451,
+            436,
+            722
+          ],
+          [
+            8,
+            609,
+            279,
+            880
+          ],
+          [
+            165,
+            609,
+            436,
+            880
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Diagonal grassy bank, large stone shoreline, blue water",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Window a plus generic path mask can cut shoreline into unrelated fragments; source is a shoreline scene, not a 16-way shore topology",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 20.375,
+          "maxRGBDifference": 60
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 23.26,
+          "maxRGBDifference": 61
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-2",
+      "label": "浅水",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-RIVER-2",
+        "topicId": "C01-TERRAIN-RIVER-2",
+        "label": "浅水",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-river-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-2.png",
+          "sha256": "d08e6e10a5b7f28a0be4e0bc434a0bc2996b26b45d896948524164a7925b2ed4",
+          "pixelSHA256": "229eec77d234665ec3f501be36814dafb1e21f25e543df621a5ca9ac41aeca45",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-2.png",
+          "sha256": "665d0d649e059705d0d0c3a8c8d59653f0c8c57520763ce78d80fb1b05486889",
+          "pixelSHA256": "07eeccc96ec5eb98566f2465388ad11129703d1743bf3c7db81148f1471d88b0",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          5
+        ],
+        "2": [
+          5
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 5,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 1,
+        "slotColumn": 1,
+        "slotNumber1Based": 6,
+        "cropXYXY": [
+          447,
+          447,
+          884,
+          884
+        ],
+        "cropSize": [
+          437,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            451,
+            451,
+            722,
+            722
+          ],
+          [
+            609,
+            451,
+            880,
+            722
+          ],
+          [
+            451,
+            609,
+            722,
+            880
+          ],
+          [
+            609,
+            609,
+            880,
+            880
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Shallow blue water over visible rounded stones and pale flowing ripples",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact water material source; inherited generic skinny connector masks are not the modern water-area occupancy contract",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 11.646,
+          "maxRGBDifference": 21
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 11.865,
+          "maxRGBDifference": 25
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-3",
+      "label": "桥头地面",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-RIVER-3",
+        "topicId": "C01-TERRAIN-RIVER-3",
+        "label": "桥头地面",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-river-3.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-3.png",
+          "sha256": "e763c710652a52ae430b384f5c9c98f6254e1eb1eef34d8a36321145daddfe61",
+          "pixelSHA256": "f0bae6101aaafa7f008747e46625c4dc6d76b04f0e69bfcd30386d92040c2671",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-3.png",
+          "sha256": "64d6c43f06af8ae392b0a59c715ea81f0c3af680a1dce6a20f5b74ba1cfa4891",
+          "pixelSHA256": "f59c1f13f86649c8c41f6609817e2f268ff2062dcc47222abdc9cb44aca55301",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          6
+        ],
+        "2": [
+          6
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 6,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 1,
+        "slotColumn": 2,
+        "slotNumber1Based": 7,
+        "cropXYXY": [
+          890,
+          447,
+          1327,
+          884
+        ],
+        "cropSize": [
+          437,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            894,
+            451,
+            1165,
+            722
+          ],
+          [
+            1052,
+            451,
+            1323,
+            722
+          ],
+          [
+            894,
+            609,
+            1165,
+            880
+          ],
+          [
+            1052,
+            609,
+            1323,
+            880
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Stone and dirt bridgehead between wooden side beams/posts",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Only upper-left window survives in masks; corner posts/beams are fragmented; this is not a reusable standing bridge sprite",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 31.187,
+          "maxRGBDifference": 80
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 29.532,
+          "maxRGBDifference": 90
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-RIVER-4",
+      "label": "断桥边缘",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-RIVER-4",
+        "topicId": "C01-TERRAIN-RIVER-4",
+        "label": "断桥边缘",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-river-4.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-4.png",
+          "sha256": "11e1af9c4eb2d152ddfa13d12bc5794c619efacf429cdaa1db320ce0834356ec",
+          "pixelSHA256": "697e960f5f1e6c6b245c327d4368b597e1f6aa07eff5bd3f5e2ff2ef6ce28e3c",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-4.png",
+          "sha256": "c29d092af9c1af472cfbea31ae00175b578521dac06c806eaf1f7ae46a6bf27f",
+          "pixelSHA256": "1f9fb14c78184d1cb68fb5bdb122593f721aa4f14ee35f48301b3ce99d3744a4",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          7
+        ],
+        "2": [
+          7
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 7,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+        "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+        "slotRow": 1,
+        "slotColumn": 3,
+        "slotNumber1Based": 8,
+        "cropXYXY": [
+          1333,
+          447,
+          1771,
+          884
+        ],
+        "cropSize": [
+          438,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            1338,
+            451,
+            1609,
+            722
+          ],
+          [
+            1495,
+            451,
+            1766,
+            722
+          ],
+          [
+            1338,
+            609,
+            1609,
+            880
+          ],
+          [
+            1495,
+            609,
+            1766,
+            880
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Broken paving edge and jagged wooden bridge remains over water",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Generic masking cuts a compositional broken-edge source into fragments; source explicitly contains broken structure geometry",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 11.521,
+          "maxRGBDifference": 48
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 13.26,
+          "maxRGBDifference": 59
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-1",
+      "label": "普通林地",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-SILVERWOOD-1",
+        "topicId": "C01-TERRAIN-SILVERWOOD-1",
+        "label": "普通林地",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-silverwood-1.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-1.png",
+          "sha256": "f2f43c77a66f68a9e1498b7ed5b472d38e23034fa204c66ab90ad6b9cc4a740f",
+          "pixelSHA256": "43e71fc8da95d1ffa48ca43aa944d8e8ce0a960f742e2ee7914d5e6c9382f741",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-1.png",
+          "sha256": "a397946179458b058e20cdd1d726e71b65ef0c305668122dabdd3f53c69baa16",
+          "pixelSHA256": "aa1125584b9a01cc3fe6af8908514758d04cd54ddd7137871d3c20670e2f650a",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          12
+        ],
+        "2": [
+          12
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 12,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 1,
+        "slotColumn": 0,
+        "slotNumber1Based": 5,
+        "cropXYXY": [
+          3,
+          546,
+          359,
+          1083
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            6,
+            607,
+            227,
+            828
+          ],
+          [
+            135,
+            607,
+            356,
+            828
+          ],
+          [
+            6,
+            801,
+            227,
+            1022
+          ],
+          [
+            135,
+            801,
+            356,
+            1022
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Olive/brown leaf litter, moss, twigs, pebbles, small plants",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact ground material; this same original source slot also feeds the separate HD twin-hills ground derivative",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 9.014,
+          "maxRGBDifference": 48
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 14.694,
+          "maxRGBDifference": 63
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-2",
+      "label": "母树根区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-SILVERWOOD-2",
+        "topicId": "C01-TERRAIN-SILVERWOOD-2",
+        "label": "母树根区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-silverwood-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-2.png",
+          "sha256": "60e1906a3392dce914f47ac901a38c2a398467a287035f62366b349c866cdf51",
+          "pixelSHA256": "c524fd2d23edfd12677edd77d7fb20b32c8ccfb12f21740a0c78b9e7343d4e88",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-2.png",
+          "sha256": "e9c158ded8746813d8599a0d60c7ebbe4672b8c216bbac754225824205fe9eaa",
+          "pixelSHA256": "016cbf9a186b4fcce9746de7f4bd5b0b0aae5a7189bc25e62c2c8b355a3f51e2",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          13
+        ],
+        "2": [
+          13
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 13,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 1,
+        "slotColumn": 1,
+        "slotNumber1Based": 6,
+        "cropXYXY": [
+          365,
+          546,
+          721,
+          1083
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            368,
+            607,
+            589,
+            828
+          ],
+          [
+            497,
+            607,
+            718,
+            828
+          ],
+          [
+            368,
+            801,
+            589,
+            1022
+          ],
+          [
+            497,
+            801,
+            718,
+            1022
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Thick branching bark roots over dark forest soil",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "The upper-left sample and cardinal mask cut a unique root network; do not count root branches as independent art",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 19.979,
+          "maxRGBDifference": 58
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 25.479,
+          "maxRGBDifference": 68
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-3",
+      "label": "育儿屋边缘",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-SILVERWOOD-3",
+        "topicId": "C01-TERRAIN-SILVERWOOD-3",
+        "label": "育儿屋边缘",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-silverwood-3.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-3.png",
+          "sha256": "c8e07353842e6556bd41900c94d504a0e10c0a3b815322e591de127aa6860434",
+          "pixelSHA256": "d1597616193d676bf2fad1fc777670e643cc9553d91a140f35265cebc816ec98",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-3.png",
+          "sha256": "57f1345ed70542210cbcf3006881823594d1e78d72aa14d2977645ee6434dbeb",
+          "pixelSHA256": "dfee99b7db83d1b76ca5e9a565f7de09c2800a3425b817280ff9bb6089f0369e",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          14
+        ],
+        "2": [
+          14
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 14,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 1,
+        "slotColumn": 2,
+        "slotNumber1Based": 7,
+        "cropXYXY": [
+          727,
+          546,
+          1083,
+          1083
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            730,
+            607,
+            951,
+            828
+          ],
+          [
+            859,
+            607,
+            1080,
+            828
+          ],
+          [
+            730,
+            801,
+            951,
+            1022
+          ],
+          [
+            859,
+            801,
+            1080,
+            1022
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Straw mat or thatched edge, pebble border, packed earth and leafy planting",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Source is a linear boundary, not a nursery building; independent crops lose continuity",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 26.978,
+          "maxRGBDifference": 103
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 29.095,
+          "maxRGBDifference": 130
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-4",
+      "label": "隐蔽草丛",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-SILVERWOOD-4",
+        "topicId": "C01-TERRAIN-SILVERWOOD-4",
+        "label": "隐蔽草丛",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-silverwood-4.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-4.png",
+          "sha256": "ac23907f034c86cca66c5633e513971945b1b66b06fcd98b181a4884dda5aa94",
+          "pixelSHA256": "d188668849d761252515605866a98563aea2f2550e5e6cdde3d3d55ceb46aa15",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-4.png",
+          "sha256": "816a98e40826ecaf852ccf5bdc130c3f5dc15c46b8198181369397fcc37caedf",
+          "pixelSHA256": "ea444b1fef55c1c4c95b808c29d844513defe23f27f2abf0b809b15c8f554206",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          15
+        ],
+        "2": [
+          15
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 15,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+        "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+        "slotRow": 1,
+        "slotColumn": 3,
+        "slotNumber1Based": 8,
+        "cropXYXY": [
+          1089,
+          546,
+          1445,
+          1083
+        ],
+        "cropSize": [
+          356,
+          537
+        ],
+        "variantCropXYXY": [
+          [
+            1092,
+            607,
+            1313,
+            828
+          ],
+          [
+            1221,
+            607,
+            1442,
+            828
+          ],
+          [
+            1092,
+            801,
+            1313,
+            1022
+          ],
+          [
+            1221,
+            801,
+            1442,
+            1022
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Dense layered green leaves and ferns",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact close-up foliage material; do not reinterpret it as standing tree scenery",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 16.488,
+          "maxRGBDifference": 58
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 26.098,
+          "maxRGBDifference": 91
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-1",
+      "label": "风蚀土",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-WASTELAND-1",
+        "topicId": "C01-TERRAIN-WASTELAND-1",
+        "label": "风蚀土",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-wasteland-1.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-1.png",
+          "sha256": "94c0d5eb20521a6d764d1de6df1df16d5a93d64ad8cb4c622492fff83b4df82b",
+          "pixelSHA256": "be4f5773f6657742569ac6472472fa2920fff2cfb7cb14e04b9219921d20862f",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-wasteland-1.png",
+          "sha256": "1a57fc387cdfb543b8baf00a73f8714df6421b1828d3ceb2fbc6af6d67982a04",
+          "pixelSHA256": "32985da30dcc5ca7043efc1cb8113ecd873364643cde0ba492a362fb9311d1ce",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          20
+        ],
+        "2": [
+          20
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 20,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 1,
+        "slotColumn": 0,
+        "slotNumber1Based": 5,
+        "cropXYXY": [
+          3,
+          447,
+          441,
+          884
+        ],
+        "cropSize": [
+          438,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            8,
+            451,
+            279,
+            722
+          ],
+          [
+            165,
+            451,
+            436,
+            722
+          ],
+          [
+            8,
+            609,
+            279,
+            880
+          ],
+          [
+            165,
+            609,
+            436,
+            880
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Wind-eroded ochre earth, shallow cracks, small gray stones",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Intact ground material",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 9.627,
+          "maxRGBDifference": 46
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 11.469,
+          "maxRGBDifference": 64
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-2",
+      "label": "岩坡",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-WASTELAND-2",
+        "topicId": "C01-TERRAIN-WASTELAND-2",
+        "label": "岩坡",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-wasteland-2.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-2.png",
+          "sha256": "aa44001446d32bd10c08343df0ec6c37585255abfd6223842532b5f8a5db0cec",
+          "pixelSHA256": "168e66cf63201e86277a111e616723236df1a0b98ce1f75d5378af4637a385d3",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-wasteland-2.png",
+          "sha256": "6869a4fab70a0866e9a9e123415034c5a6ba782812c454a5b0978d901edad838",
+          "pixelSHA256": "eaa0fa0dc7f98a17162d3313c82a8fac80b8991dd108bbaef98de937cf01d81f",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          21
+        ],
+        "2": [
+          21
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 21,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 1,
+        "slotColumn": 1,
+        "slotNumber1Based": 6,
+        "cropXYXY": [
+          447,
+          447,
+          884,
+          884
+        ],
+        "cropSize": [
+          437,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            451,
+            451,
+            722,
+            722
+          ],
+          [
+            609,
+            451,
+            880,
+            722
+          ],
+          [
+            451,
+            609,
+            722,
+            880
+          ],
+          [
+            609,
+            609,
+            880,
+            880
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Tiered rock shelves and ledges with visible vertical faces",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Not a flat rock texture: masking the upper-left shelf can sever elevation cues; do not infer elevation/gameplay changes",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 18.938,
+          "maxRGBDifference": 43
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 21.709,
+          "maxRGBDifference": 60
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-3",
+      "label": "部族营地",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-WASTELAND-3",
+        "topicId": "C01-TERRAIN-WASTELAND-3",
+        "label": "部族营地",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-wasteland-3.png",
+        "width": 128,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "variants": 4,
+        "variantOrder": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "tileMode": "variants"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-3.png",
+          "sha256": "d91ef10a472ca55d3af00f5bc15299da5520741db9892ceaa84cfa79e3b05d2c",
+          "pixelSHA256": "7459df665a163830c916f77dd8f0035be61652c2845cafd5338a2aae188f7cb7",
+          "dimensions": [
+            128,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 4096
+          },
+          "alphaBounds": [
+            0,
+            0,
+            128,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-wasteland-3.png",
+          "sha256": "560d9460083b9a7bfb4d616ba767e6e24ad408e3c4d18b5896d8c0163411f363",
+          "pixelSHA256": "b21081ff6ff87695e12928bd0a3265b8b2849dc91c49081b8737d7cbb3c05737",
+          "dimensions": [
+            256,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 0,
+            "partial": 0,
+            "opaque": 16384
+          },
+          "alphaBounds": [
+            0,
+            0,
+            256,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          22
+        ],
+        "2": [
+          22
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 22,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 1,
+        "slotColumn": 2,
+        "slotNumber1Based": 7,
+        "cropXYXY": [
+          890,
+          447,
+          1327,
+          884
+        ],
+        "cropSize": [
+          437,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            894,
+            451,
+            1165,
+            722
+          ],
+          [
+            1052,
+            451,
+            1323,
+            722
+          ],
+          [
+            894,
+            609,
+            1165,
+            880
+          ],
+          [
+            1052,
+            609,
+            1323,
+            880
+          ]
+        ],
+        "tileMode": "variants"
+      },
+      "observedSourceIdentity": "Bare camp soil, woven rugs, tent stakes, sticks and small stones",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Four crops fragment a camp composition; not four independent camps or props",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 9.095,
+          "maxRGBDifference": 50
+        },
+        "2": {
+          "checks": 32,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 10.109,
+          "maxRGBDifference": 66
+        }
+      }
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-4",
+      "label": "风暴危险区",
+      "manifest": {
+        "assetId": "C01-FFV1-TERRAIN-WASTELAND-4",
+        "topicId": "C01-TERRAIN-WASTELAND-4",
+        "label": "风暴危险区",
+        "category": "terrain",
+        "png": "runtime/terrain/terrain-wasteland-4.png",
+        "width": 512,
+        "height": 32,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "tileWidth": 32,
+        "tileHeight": 32,
+        "connectionMasks": 16,
+        "maskBits": [
+          "N",
+          "E",
+          "S",
+          "W"
+        ],
+        "tileMode": "nesw-16"
+      },
+      "runtime": {
+        "1": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-4.png",
+          "sha256": "f2be67b7f758331aa23418f99b5a39f4d9690ba1ce30bb8f9a53c49747ea0c22",
+          "pixelSHA256": "8d46594a0914a7585310b26204fed659fca6d9d314a20b2d9eb898109c4a817a",
+          "dimensions": [
+            512,
+            32
+          ],
+          "alphaCounts": {
+            "transparent": 11776,
+            "partial": 0,
+            "opaque": 4608
+          },
+          "alphaBounds": [
+            10,
+            0,
+            512,
+            32
+          ],
+          "mode": "RGBA"
+        },
+        "2": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-wasteland-4.png",
+          "sha256": "54f3625fee3a5a4415a682a9ddbd4c8e6a2070a3b628552f83dce4207086a931",
+          "pixelSHA256": "776b9845cb7320d19b79aa8faeee980284aa340cc948e59e153e333d7789880c",
+          "dimensions": [
+            1024,
+            64
+          ],
+          "alphaCounts": {
+            "transparent": 47040,
+            "partial": 0,
+            "opaque": 18496
+          },
+          "alphaBounds": [
+            20,
+            0,
+            1024,
+            64
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "matches": {
+        "1": [
+          23
+        ],
+        "2": [
+          23
+        ]
+      },
+      "mapping": "exact-RGBA-pixel-match-at-both-densities",
+      "source": {
+        "sourceIndex": 23,
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+        "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+        "slotRow": 1,
+        "slotColumn": 3,
+        "slotNumber1Based": 8,
+        "cropXYXY": [
+          1333,
+          447,
+          1771,
+          884
+        ],
+        "cropSize": [
+          438,
+          437
+        ],
+        "variantCropXYXY": [
+          [
+            1338,
+            451,
+            1609,
+            722
+          ],
+          [
+            1495,
+            451,
+            1766,
+            722
+          ],
+          [
+            1338,
+            609,
+            1609,
+            880
+          ],
+          [
+            1495,
+            609,
+            1766,
+            880
+          ]
+        ],
+        "tileMode": "nesw-16"
+      },
+      "observedSourceIdentity": "Dark wind-scoured soil with diagonal pale erosion streaks and dry grass",
+      "sourceIntegrity": {
+        "mappingVerified": true,
+        "wholeSourceSlotIntact": true,
+        "note": "Storm identity is visual weathering only; no lightning or new hazard geometry in source",
+        "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+      },
+      "consumerStatus": {
+        "catalogLoaded": true,
+        "selectedTexture": "runtime-hd",
+        "pixelDensity": 2,
+        "gameplayGroundConsumerFound": false,
+        "staticTopicReferenceFound": false,
+        "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+        "liveGameObserved": false
+      },
+      "anchorContract": {
+        "declaredAnchor": null,
+        "declaredFootprint": null,
+        "cellOrigin": [
+          0,
+          0
+        ],
+        "logicalCell": [
+          32,
+          32
+        ],
+        "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+      },
+      "variantsAreDerived": true,
+      "independentIdentityCount": 1,
+      "remakeStatus": "not-remade-approved-v5",
+      "edges": {
+        "1": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 8.396,
+          "maxRGBDifference": 34
+        },
+        "2": {
+          "checks": 128,
+          "allAlphaEdgesMatch": true,
+          "allColorEdgesMatch": false,
+          "exactRGBPairs": 0,
+          "meanAbsoluteRGBDifference": 10.761,
+          "maxRGBDifference": 50
+        }
+      }
+    }
+  ],
+  "sourceSlots": [
+    {
+      "sourceIndex": 0,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 0,
+      "slotColumn": 0,
+      "slotNumber1Based": 1,
+      "cropXYXY": [
+        3,
+        3,
+        441,
+        441
+      ],
+      "cropSize": [
+        438,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          7,
+          7,
+          279,
+          279
+        ],
+        [
+          165,
+          7,
+          437,
+          279
+        ],
+        [
+          7,
+          165,
+          279,
+          437
+        ],
+        [
+          165,
+          165,
+          437,
+          437
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 1,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 0,
+      "slotColumn": 1,
+      "slotNumber1Based": 2,
+      "cropXYXY": [
+        447,
+        3,
+        884,
+        441
+      ],
+      "cropSize": [
+        437,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          451,
+          8,
+          722,
+          279
+        ],
+        [
+          609,
+          8,
+          880,
+          279
+        ],
+        [
+          451,
+          165,
+          722,
+          436
+        ],
+        [
+          609,
+          165,
+          880,
+          436
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 2,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 0,
+      "slotColumn": 2,
+      "slotNumber1Based": 3,
+      "cropXYXY": [
+        890,
+        3,
+        1327,
+        441
+      ],
+      "cropSize": [
+        437,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          894,
+          8,
+          1165,
+          279
+        ],
+        [
+          1052,
+          8,
+          1323,
+          279
+        ],
+        [
+          894,
+          165,
+          1165,
+          436
+        ],
+        [
+          1052,
+          165,
+          1323,
+          436
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 3,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 0,
+      "slotColumn": 3,
+      "slotNumber1Based": 4,
+      "cropXYXY": [
+        1333,
+        3,
+        1771,
+        441
+      ],
+      "cropSize": [
+        438,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          1337,
+          7,
+          1609,
+          279
+        ],
+        [
+          1495,
+          7,
+          1767,
+          279
+        ],
+        [
+          1337,
+          165,
+          1609,
+          437
+        ],
+        [
+          1495,
+          165,
+          1767,
+          437
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 4,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 1,
+      "slotColumn": 0,
+      "slotNumber1Based": 5,
+      "cropXYXY": [
+        3,
+        447,
+        441,
+        884
+      ],
+      "cropSize": [
+        438,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          8,
+          451,
+          279,
+          722
+        ],
+        [
+          165,
+          451,
+          436,
+          722
+        ],
+        [
+          8,
+          609,
+          279,
+          880
+        ],
+        [
+          165,
+          609,
+          436,
+          880
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 5,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 1,
+      "slotColumn": 1,
+      "slotNumber1Based": 6,
+      "cropXYXY": [
+        447,
+        447,
+        884,
+        884
+      ],
+      "cropSize": [
+        437,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          451,
+          451,
+          722,
+          722
+        ],
+        [
+          609,
+          451,
+          880,
+          722
+        ],
+        [
+          451,
+          609,
+          722,
+          880
+        ],
+        [
+          609,
+          609,
+          880,
+          880
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 6,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 1,
+      "slotColumn": 2,
+      "slotNumber1Based": 7,
+      "cropXYXY": [
+        890,
+        447,
+        1327,
+        884
+      ],
+      "cropSize": [
+        437,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          894,
+          451,
+          1165,
+          722
+        ],
+        [
+          1052,
+          451,
+          1323,
+          722
+        ],
+        [
+          894,
+          609,
+          1165,
+          880
+        ],
+        [
+          1052,
+          609,
+          1323,
+          880
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 7,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+      "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+      "slotRow": 1,
+      "slotColumn": 3,
+      "slotNumber1Based": 8,
+      "cropXYXY": [
+        1333,
+        447,
+        1771,
+        884
+      ],
+      "cropSize": [
+        438,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          1338,
+          451,
+          1609,
+          722
+        ],
+        [
+          1495,
+          451,
+          1766,
+          722
+        ],
+        [
+          1338,
+          609,
+          1609,
+          880
+        ],
+        [
+          1495,
+          609,
+          1766,
+          880
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 8,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 0,
+      "slotColumn": 0,
+      "slotNumber1Based": 1,
+      "cropXYXY": [
+        3,
+        3,
+        359,
+        540
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          6,
+          64,
+          227,
+          285
+        ],
+        [
+          135,
+          64,
+          356,
+          285
+        ],
+        [
+          6,
+          258,
+          227,
+          479
+        ],
+        [
+          135,
+          258,
+          356,
+          479
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 9,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 0,
+      "slotColumn": 1,
+      "slotNumber1Based": 2,
+      "cropXYXY": [
+        365,
+        3,
+        721,
+        540
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          368,
+          64,
+          589,
+          285
+        ],
+        [
+          497,
+          64,
+          718,
+          285
+        ],
+        [
+          368,
+          258,
+          589,
+          479
+        ],
+        [
+          497,
+          258,
+          718,
+          479
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 10,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 0,
+      "slotColumn": 2,
+      "slotNumber1Based": 3,
+      "cropXYXY": [
+        727,
+        3,
+        1083,
+        540
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          730,
+          64,
+          951,
+          285
+        ],
+        [
+          859,
+          64,
+          1080,
+          285
+        ],
+        [
+          730,
+          258,
+          951,
+          479
+        ],
+        [
+          859,
+          258,
+          1080,
+          479
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 11,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 0,
+      "slotColumn": 3,
+      "slotNumber1Based": 4,
+      "cropXYXY": [
+        1089,
+        3,
+        1445,
+        540
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          1092,
+          64,
+          1313,
+          285
+        ],
+        [
+          1221,
+          64,
+          1442,
+          285
+        ],
+        [
+          1092,
+          258,
+          1313,
+          479
+        ],
+        [
+          1221,
+          258,
+          1442,
+          479
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 12,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 1,
+      "slotColumn": 0,
+      "slotNumber1Based": 5,
+      "cropXYXY": [
+        3,
+        546,
+        359,
+        1083
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          6,
+          607,
+          227,
+          828
+        ],
+        [
+          135,
+          607,
+          356,
+          828
+        ],
+        [
+          6,
+          801,
+          227,
+          1022
+        ],
+        [
+          135,
+          801,
+          356,
+          1022
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 13,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 1,
+      "slotColumn": 1,
+      "slotNumber1Based": 6,
+      "cropXYXY": [
+        365,
+        546,
+        721,
+        1083
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          368,
+          607,
+          589,
+          828
+        ],
+        [
+          497,
+          607,
+          718,
+          828
+        ],
+        [
+          368,
+          801,
+          589,
+          1022
+        ],
+        [
+          497,
+          801,
+          718,
+          1022
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 14,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 1,
+      "slotColumn": 2,
+      "slotNumber1Based": 7,
+      "cropXYXY": [
+        727,
+        546,
+        1083,
+        1083
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          730,
+          607,
+          951,
+          828
+        ],
+        [
+          859,
+          607,
+          1080,
+          828
+        ],
+        [
+          730,
+          801,
+          951,
+          1022
+        ],
+        [
+          859,
+          801,
+          1080,
+          1022
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 15,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+      "slotRow": 1,
+      "slotColumn": 3,
+      "slotNumber1Based": 8,
+      "cropXYXY": [
+        1089,
+        546,
+        1445,
+        1083
+      ],
+      "cropSize": [
+        356,
+        537
+      ],
+      "variantCropXYXY": [
+        [
+          1092,
+          607,
+          1313,
+          828
+        ],
+        [
+          1221,
+          607,
+          1442,
+          828
+        ],
+        [
+          1092,
+          801,
+          1313,
+          1022
+        ],
+        [
+          1221,
+          801,
+          1442,
+          1022
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 16,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 0,
+      "slotColumn": 0,
+      "slotNumber1Based": 1,
+      "cropXYXY": [
+        3,
+        3,
+        441,
+        441
+      ],
+      "cropSize": [
+        438,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          7,
+          7,
+          279,
+          279
+        ],
+        [
+          165,
+          7,
+          437,
+          279
+        ],
+        [
+          7,
+          165,
+          279,
+          437
+        ],
+        [
+          165,
+          165,
+          437,
+          437
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 17,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 0,
+      "slotColumn": 1,
+      "slotNumber1Based": 2,
+      "cropXYXY": [
+        447,
+        3,
+        884,
+        441
+      ],
+      "cropSize": [
+        437,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          451,
+          8,
+          722,
+          279
+        ],
+        [
+          609,
+          8,
+          880,
+          279
+        ],
+        [
+          451,
+          165,
+          722,
+          436
+        ],
+        [
+          609,
+          165,
+          880,
+          436
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 18,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 0,
+      "slotColumn": 2,
+      "slotNumber1Based": 3,
+      "cropXYXY": [
+        890,
+        3,
+        1327,
+        441
+      ],
+      "cropSize": [
+        437,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          894,
+          8,
+          1165,
+          279
+        ],
+        [
+          1052,
+          8,
+          1323,
+          279
+        ],
+        [
+          894,
+          165,
+          1165,
+          436
+        ],
+        [
+          1052,
+          165,
+          1323,
+          436
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 19,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 0,
+      "slotColumn": 3,
+      "slotNumber1Based": 4,
+      "cropXYXY": [
+        1333,
+        3,
+        1771,
+        441
+      ],
+      "cropSize": [
+        438,
+        438
+      ],
+      "variantCropXYXY": [
+        [
+          1337,
+          7,
+          1609,
+          279
+        ],
+        [
+          1495,
+          7,
+          1767,
+          279
+        ],
+        [
+          1337,
+          165,
+          1609,
+          437
+        ],
+        [
+          1495,
+          165,
+          1767,
+          437
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 20,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 1,
+      "slotColumn": 0,
+      "slotNumber1Based": 5,
+      "cropXYXY": [
+        3,
+        447,
+        441,
+        884
+      ],
+      "cropSize": [
+        438,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          8,
+          451,
+          279,
+          722
+        ],
+        [
+          165,
+          451,
+          436,
+          722
+        ],
+        [
+          8,
+          609,
+          279,
+          880
+        ],
+        [
+          165,
+          609,
+          436,
+          880
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 21,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 1,
+      "slotColumn": 1,
+      "slotNumber1Based": 6,
+      "cropXYXY": [
+        447,
+        447,
+        884,
+        884
+      ],
+      "cropSize": [
+        437,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          451,
+          451,
+          722,
+          722
+        ],
+        [
+          609,
+          451,
+          880,
+          722
+        ],
+        [
+          451,
+          609,
+          722,
+          880
+        ],
+        [
+          609,
+          609,
+          880,
+          880
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 22,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 1,
+      "slotColumn": 2,
+      "slotNumber1Based": 7,
+      "cropXYXY": [
+        890,
+        447,
+        1327,
+        884
+      ],
+      "cropSize": [
+        437,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          894,
+          451,
+          1165,
+          722
+        ],
+        [
+          1052,
+          451,
+          1323,
+          722
+        ],
+        [
+          894,
+          609,
+          1165,
+          880
+        ],
+        [
+          1052,
+          609,
+          1323,
+          880
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 23,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+      "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+      "slotRow": 1,
+      "slotColumn": 3,
+      "slotNumber1Based": 8,
+      "cropXYXY": [
+        1333,
+        447,
+        1771,
+        884
+      ],
+      "cropSize": [
+        438,
+        437
+      ],
+      "variantCropXYXY": [
+        [
+          1338,
+          451,
+          1609,
+          722
+        ],
+        [
+          1495,
+          451,
+          1766,
+          722
+        ],
+        [
+          1338,
+          609,
+          1609,
+          880
+        ],
+        [
+          1495,
+          609,
+          1766,
+          880
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 24,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 0,
+      "slotColumn": 0,
+      "slotNumber1Based": 1,
+      "cropXYXY": [
+        3,
+        3,
+        347,
+        558
+      ],
+      "cropSize": [
+        344,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          7,
+          74,
+          220,
+          287
+        ],
+        [
+          130,
+          74,
+          343,
+          287
+        ],
+        [
+          7,
+          274,
+          220,
+          487
+        ],
+        [
+          130,
+          274,
+          343,
+          487
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 25,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 0,
+      "slotColumn": 1,
+      "slotNumber1Based": 2,
+      "cropXYXY": [
+        353,
+        3,
+        698,
+        558
+      ],
+      "cropSize": [
+        345,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          356,
+          74,
+          570,
+          288
+        ],
+        [
+          481,
+          74,
+          695,
+          288
+        ],
+        [
+          356,
+          273,
+          570,
+          487
+        ],
+        [
+          481,
+          273,
+          695,
+          487
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 26,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 0,
+      "slotColumn": 2,
+      "slotNumber1Based": 3,
+      "cropXYXY": [
+        704,
+        3,
+        1049,
+        558
+      ],
+      "cropSize": [
+        345,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          707,
+          74,
+          921,
+          288
+        ],
+        [
+          832,
+          74,
+          1046,
+          288
+        ],
+        [
+          707,
+          273,
+          921,
+          487
+        ],
+        [
+          832,
+          273,
+          1046,
+          487
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 27,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 0,
+      "slotColumn": 3,
+      "slotNumber1Based": 4,
+      "cropXYXY": [
+        1055,
+        3,
+        1399,
+        558
+      ],
+      "cropSize": [
+        344,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          1059,
+          74,
+          1272,
+          287
+        ],
+        [
+          1182,
+          74,
+          1395,
+          287
+        ],
+        [
+          1059,
+          274,
+          1272,
+          487
+        ],
+        [
+          1182,
+          274,
+          1395,
+          487
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 28,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 1,
+      "slotColumn": 0,
+      "slotNumber1Based": 5,
+      "cropXYXY": [
+        3,
+        564,
+        347,
+        1119
+      ],
+      "cropSize": [
+        344,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          7,
+          635,
+          220,
+          848
+        ],
+        [
+          130,
+          635,
+          343,
+          848
+        ],
+        [
+          7,
+          835,
+          220,
+          1048
+        ],
+        [
+          130,
+          835,
+          343,
+          1048
+        ]
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "sourceIndex": 29,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 1,
+      "slotColumn": 1,
+      "slotNumber1Based": 6,
+      "cropXYXY": [
+        353,
+        564,
+        698,
+        1119
+      ],
+      "cropSize": [
+        345,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          356,
+          635,
+          570,
+          849
+        ],
+        [
+          481,
+          635,
+          695,
+          849
+        ],
+        [
+          356,
+          834,
+          570,
+          1048
+        ],
+        [
+          481,
+          834,
+          695,
+          1048
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 30,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 1,
+      "slotColumn": 2,
+      "slotNumber1Based": 7,
+      "cropXYXY": [
+        704,
+        564,
+        1049,
+        1119
+      ],
+      "cropSize": [
+        345,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          707,
+          635,
+          921,
+          849
+        ],
+        [
+          832,
+          635,
+          1046,
+          849
+        ],
+        [
+          707,
+          834,
+          921,
+          1048
+        ],
+        [
+          832,
+          834,
+          1046,
+          1048
+        ]
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "sourceIndex": 31,
+      "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+      "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+      "slotRow": 1,
+      "slotColumn": 3,
+      "slotNumber1Based": 8,
+      "cropXYXY": [
+        1055,
+        564,
+        1399,
+        1119
+      ],
+      "cropSize": [
+        344,
+        555
+      ],
+      "variantCropXYXY": [
+        [
+          1059,
+          635,
+          1272,
+          848
+        ],
+        [
+          1182,
+          635,
+          1395,
+          848
+        ],
+        [
+          1059,
+          835,
+          1272,
+          1048
+        ],
+        [
+          1182,
+          835,
+          1395,
+          1048
+        ]
+      ],
+      "tileMode": "variants"
+    }
+  ],
+  "sharedSourceDerivatives": [
+    {
+      "id": "C01-ENV-TWIN-HILLS-GROUND",
+      "sourceTopicSlot": "C01-TERRAIN-SILVERWOOD-1",
+      "sourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+      "cropXYXY": [
+        24,
+        567,
+        338,
+        1062
+      ],
+      "derivedPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/environment/env-twin-hills-ground.png",
+      "independentIdentityCount": 0,
+      "sourceEvidence": "build_tactical_runtime_hd.py build_environment: grid_cell(source,4,2,0,1,24), tint/mirror mosaic",
+      "currentConsumerReferenceFound": false,
+      "availableFiles": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/environment/env-twin-hills-ground.png"
+      ]
+    }
+  ],
+  "audit": {
+    "scope": "C01 canonical terrain32 only",
+    "readOnlyRepository": true,
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "checkpoint": "b179027da36ed4642a76c3b823e50fe3b40b4cfe",
+    "uniquePixelMappings": 32,
+    "verifiedDensityOutputs": 64,
+    "sourceBoards": 4,
+    "sourceCells": 32,
+    "canonicalIdentities": 32,
+    "variantsTopics": 18,
+    "neswTopics": 14,
+    "tilesPerDensity": 296,
+    "authoredIndependentTopicsApprovedV5": 0,
+    "currentGameplayGroundBindings": 0,
+    "environmentRegisteredCellsSeparate": 186,
+    "allSourceFilesDecodable": true,
+    "sourceOrderRecoveredBy": "unique exact regenerated RGBA pixels at both densities, not manifest sort",
+    "originalBuilderExecutableAsWhole": false,
+    "originalBuilderBlocker": "assets/manifest-complete.json absent; do not rerun original main. Replay only terrain math with explicit recovered mapping.",
+    "finalCheckpoint": "3647f568570cf61ebea98db2dcc0d7316b8433d8",
+    "finalDriftCheck": "final-drift-check.json"
+  },
+  "filesToRead": [
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts",
+    "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+    "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_tactical_runtime_hd.py"
+  ],
+  "sourceFileHashes": [
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-assets.ts",
+      "sha256": "821dacd8f867d227bc8a2839b1a85f5869be7b9cf1193c82796386d0676930fa"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+      "sha256": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+      "sha256": "144a2d2c7fd2fee19c929f006903665092b4e342fc6c167ee8aab3c0f1ea6575"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+      "sha256": "d4b44da3360753e77511ad6f7aa9d2e0fff5f368c40e803d9a4411346022edc8"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts",
+      "sha256": "6761c36d20f5cf621466c60cc7eaa39900c77f36ee630b8040a171f4a9c7b347"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "sha256": "b533ecffd7628905c744d9ddcfa40c93f08e76800b2c4427ee7d1ca5d9d74bd7"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_tactical_runtime_hd.py",
+      "sha256": "0da696023ff7e02e5ec2878144e68353f38d62807fcd18ac99821e36f40f304d"
+    }
+  ]
+}

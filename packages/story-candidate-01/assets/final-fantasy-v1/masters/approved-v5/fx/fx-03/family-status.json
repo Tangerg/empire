@@ -1,0 +1,50 @@
+{
+  "topicId": "C01-FX-03",
+  "readyForRegistration": true,
+  "status": "art-ready-under-approved-source-alpha<=1-tolerance",
+  "phaseOrder": [
+    "approach",
+    "impact",
+    "burst",
+    "dissipate"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourcePivot": [
+    627,
+    627
+  ],
+  "logicalOrigin": [
+    2,
+    2
+  ],
+  "logicalRenderedCanvas": [
+    28,
+    28
+  ],
+  "logicalCell": [
+    32,
+    32
+  ],
+  "fps": 12,
+  "loop": false,
+  "blendMode": "normal",
+  "finalHoldUntilMs": 420,
+  "phaseReadiness": {
+    "approach": "source-alpha-pass-semantic-pass",
+    "impact": "source-alpha-pass-semantic-pass",
+    "burst": "source-alpha-pass-approved-max1-tolerance-semantic-pass",
+    "dissipate": "source-alpha-pass-semantic-pass"
+  },
+  "repairCandidate": "burst-repair-v2",
+  "repairStatus": "selected-v2-semantic-pass-source-perimeter-max1-four-pixels",
+  "sourceAlphaThresholding": false,
+  "individualFrameTransform": false,
+  "actualBrowserReview": false,
+  "repoOrGitWrites": false,
+  "sourcePerimeterMaxAllowed": 1,
+  "renderedPerimeterMaxAllowed": 0,
+  "normalizationApplied": false
+}

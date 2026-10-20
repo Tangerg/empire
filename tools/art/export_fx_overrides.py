@@ -20,7 +20,7 @@ PHASE_ORDERS = {
 }
 
 
-def validate_fx_alpha(image, label):
+def validate_fx_alpha(image, label, allowed_edge_max=0):
     if image.mode != 'RGBA':
         raise ValueError(f'{label}: expected PNG RGBA')
     alpha = image.getchannel('A')
@@ -30,9 +30,10 @@ def validate_fx_alpha(image, label):
     width, height = image.size
     edges = [alpha.getpixel((x, y)) for y in (0, height - 1) for x in range(width)]
     edges += [alpha.getpixel((x, y)) for x in (0, width - 1) for y in range(1, height - 1)]
-    if max(edges) != 0:
-        raise ValueError(f'{label}: effect outer edge must be fully transparent')
-    return {'maxAlpha': high, 'edgeMaxAlpha': 0, 'boundingBox': list(alpha.getbbox()),
+    if max(edges) > allowed_edge_max:
+        raise ValueError(f'{label}: effect outer edge exceeds alpha{allowed_edge_max}')
+    return {'maxAlpha': high, 'edgeMaxAlpha': max(edges), 'edgeNonzeroPixels': sum(v > 0 for v in edges),
+            'allowedEdgeMaxAlpha': allowed_edge_max, 'boundingBox': list(alpha.getbbox()),
             'nonzeroPixels': sum(alpha.histogram()[1:])}
 
 
@@ -93,7 +94,9 @@ def plan(root, catalog):
             if not within(root, entry['source']).is_file():
                 raise ValueError(f'{name}: source must be a regular file')
             source, digest = read_source(root, pack, {k: entry[k] for k in ('source', 'sha256')}, name)
-            alpha = validate_fx_alpha(source, name)
+            # Imagegen can leave alpha1 perimeter residue; preserve it, then require
+            # strict zero on every final padded cell. Visible alpha2+ is rejected.
+            alpha = validate_fx_alpha(source, name, allowed_edge_max=1)
             if source_size is None:
                 source_size = source.size
             if source.size != source_size:

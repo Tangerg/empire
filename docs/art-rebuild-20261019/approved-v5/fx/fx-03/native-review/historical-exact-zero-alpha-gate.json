@@ -1,0 +1,62 @@
+[
+  {
+    "phase": "approach",
+    "alphaResult": {
+      "maxAlpha": 255,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        73,
+        101,
+        1111,
+        988
+      ],
+      "nonzeroPixels": 25541
+    },
+    "alphaGate": "PASS",
+    "previewMatchesExporterResize": true
+  },
+  {
+    "phase": "impact",
+    "alphaResult": {
+      "maxAlpha": 255,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        48,
+        29,
+        1208,
+        1164
+      ],
+      "nonzeroPixels": 142678
+    },
+    "alphaGate": "PASS",
+    "previewMatchesExporterResize": true
+  },
+  {
+    "phase": "burst",
+    "alphaGate": "FAIL",
+    "exactError": "burst: effect outer edge must be fully transparent",
+    "previewMatchesExporterResize": true
+  },
+  {
+    "phase": "dissipate",
+    "alphaResult": {
+      "maxAlpha": 255,
+      "edgeMaxAlpha": 0,
+      "boundingBox": [
+        119,
+        29,
+        1192,
+        1167
+      ],
+      "nonzeroPixels": 10229
+    },
+    "alphaGate": "PASS",
+    "previewMatchesExporterResize": true
+  },
+  {
+    "phase": "burst-repair-v2",
+    "alphaGate": "FAIL",
+    "exactError": "burst-repair-v2: effect outer edge must be fully transparent",
+    "previewMatchesExporterResize": true
+  }
+]
