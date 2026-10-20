@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-b/master.png"
+    },
+    "scale": 0.046610169491525424,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      817.25,
+      966
+    ],
+    "sourceFeet": {
+      "idle": [
+        817.25,
+        966
+      ],
+      "walk-a": [
+        862.5,
+        952
+      ],
+      "carry-or-work": [
+        827.75,
+        965
+      ],
+      "walk-b": [
+        796.75,
+        964
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -2.1091101694915255,
+        0.652542372881356
+      ],
+      "carry-or-work": [
+        -0.489406779661017,
+        0.046610169491525424
+      ],
+      "walk-b": [
+        0.9555084745762712,
+        0.09322033898305085
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    46.092161016949156,
+    49.02542372881356
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "1ce0da6b1d1549dba69a31e31fc7ca0fc8528872639ed95af5f6868542f2afc7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5716,
+        "nearOpaquePixels": 817,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          5,
+          61,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "1ce0da6b1d1549dba69a31e31fc7ca0fc8528872639ed95af5f6868542f2afc7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22919,
+        "nearOpaquePixels": 3331,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          10,
+          123,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-a/master.png",
+      "registrationOffset": [
+        -2.1091101694915255,
+        0.652542372881356
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f1dadd557dddd3cffabe45284bd64f769675b09cf9de818acedad6c10b66992d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5646,
+        "nearOpaquePixels": 856,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          6,
+          60,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-a/master.png",
+      "registrationOffset": [
+        -2.1091101694915255,
+        0.652542372881356
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f1dadd557dddd3cffabe45284bd64f769675b09cf9de818acedad6c10b66992d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22676,
+        "nearOpaquePixels": 3501,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          12,
+          121,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.489406779661017,
+        0.046610169491525424
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "0d5f91a73452869702d76f0e91604f14ff32026a3ffae5fd90362b99b50450f7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5657,
+        "nearOpaquePixels": 842,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          6,
+          67,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/carry-or-work/master.png",
+      "registrationOffset": [
+        -0.489406779661017,
+        0.046610169491525424
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "0d5f91a73452869702d76f0e91604f14ff32026a3ffae5fd90362b99b50450f7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22735,
+        "nearOpaquePixels": 3472,
+        "edgeMax": 0,
+        "visibleBounds": [
+          58,
+          12,
+          133,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-b/master.png",
+      "registrationOffset": [
+        0.9555084745762712,
+        0.09322033898305085
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "60a41a61b884ee985ee3b42c795cd8067a494641acf386ec9295032577709cbe",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5708,
+        "nearOpaquePixels": 805,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          5,
+          63,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-b/master.png",
+      "registrationOffset": [
+        0.9555084745762712,
+        0.09322033898305085
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "60a41a61b884ee985ee3b42c795cd8067a494641acf386ec9295032577709cbe",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22932,
+        "nearOpaquePixels": 3299,
+        "edgeMax": 0,
+        "visibleBounds": [
+          64,
+          10,
+          126,
+          98
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

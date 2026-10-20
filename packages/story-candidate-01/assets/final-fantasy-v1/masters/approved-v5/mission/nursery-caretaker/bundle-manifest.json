@@ -1,0 +1,153 @@
+{
+  "topicId": "C01-MISSION-NURSERY-CARETAKER",
+  "assetId": "C01-FFV1-MISSION-NURSERY-CARETAKER",
+  "category": "mission-unit",
+  "status": "Native source quartet and shared technical QA complete; parent final review and formal repository integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Native/raw/master exact bytes from built-in output. No cleanup, painting, recolor, crop, source padding, per-pose rescale or fit. Whole-canvas shared-scale technical export proposal and separate QA composites only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "nativeResidueEvidence": "native-residue-evidence.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-nursery-caretaker.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "topicId": "C01-MISSION-NURSERY-CARETAKER",
+    "png": "runtime-hd/mission-unit/mission-nursery-caretaker.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "consumerClassification": "catalog-only",
+  "palettePolicy": "Original dark warm-brown skin, gray curls, olive patched dress, brown basket/boots, sage cloth bundles, golden produce and terracotta cup. No faction recolor.",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b; catalog availability does not imply authored gameplay use.",
+  "liveGameAcceptance": false,
+  "rejectedAttempts": [],
+  "poses": {
+    "idle": {
+      "native": "idle/native.png",
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "generationResult": "idle/generation-result.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "1ce0da6b1d1549dba69a31e31fc7ca0fc8528872639ed95af5f6868542f2afc7",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        817.25,
+        966
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Upright stance with both boots planted. Screen-left hand holds produce basket; screen-right hand holds upright terracotta cup. Original older brown-skinned woman, olive dress, gray curls and sage bundle basket retained."
+    },
+    "walk-a": {
+      "native": "walk-a/native.png",
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "generationResult": "walk-a/generation-result.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "f1dadd557dddd3cffabe45284bd64f769675b09cf9de818acedad6c10b66992d",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        862.5,
+        952
+      ],
+      "registrationOffsetLogical": [
+        -2.1091101694915255,
+        0.652542372881356
+      ],
+      "review": "Screen-left boot bears weight; screen-right leg advances with broad sole visible and toe raised. Basket swings rearward while cup stays upright. No mirroring or hand-role swap."
+    },
+    "carry-or-work": {
+      "native": "carry-or-work/native.png",
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "0d5f91a73452869702d76f0e91604f14ff32026a3ffae5fd90362b99b50450f7",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        827.75,
+        965
+      ],
+      "registrationOffsetLogical": [
+        -0.489406779661017,
+        0.046610169491525424
+      ],
+      "review": "Both boots planted. Torso leans forward, chin and gaze lower, screen-right arm extends cup in a readable offering gesture. Produce basket remains in screen-left hand; no recipient, infant or extra hand invented."
+    },
+    "walk-b": {
+      "native": "walk-b/native.png",
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "generationResult": "walk-b/generation-result.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "60a41a61b884ee985ee3b42c795cd8067a494641acf386ec9295032577709cbe",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        796.75,
+        964
+      ],
+      "registrationOffsetLogical": [
+        0.9555084745762712,
+        0.09322033898305085
+      ],
+      "review": "Screen-right boot bears weight. Screen-left leg bends backward and heel lifts; opposite step to walk-a. Basket swings forward while cup stays upright; exactly two original limbs."
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "1ce0da6b1d1549dba69a31e31fc7ca0fc8528872639ed95af5f6868542f2afc7",
+  "rawMatchesMaster": true,
+  "nativeOutputMatchesRaw": true,
+  "nativeAlphaUntouched": true,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "alphaZeroFraction": 0.739358118415165,
+  "perimeterMaxAlpha": 0,
+  "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+    "pixelCountAlphaGreaterThan1": 0,
+    "maxAlpha": 1
+  },
+  "bboxAlphaGreaterThan0": [
+    33,
+    19,
+    1534,
+    972
+  ],
+  "bboxAlphaGreaterThan1": [
+    461,
+    19,
+    1151,
+    970
+  ],
+  "bboxAlphaGreaterThan127": [
+    464,
+    22,
+    1148,
+    967
+  ],
+  "measuredBootSoleBands": [
+    {
+      "side": "screen-left",
+      "isWeightBearing": true,
+      "xRange": [
+        570,
+        790
+      ],
+      "bottom": 966,
+      "bottom4RowsBounds": [
+        674,
+        963,
+        748,
+        967
+      ],
+      "soleCenterX": 710.5
+    },
+    {
+      "side": "screen-right",
+      "isWeightBearing": true,
+      "xRange": [
+        790,
+        1030
+      ],
+      "bottom": 954,
+      "bottom4RowsBounds": [
+        884,
+        951,
+        965,
+        955
+      ],
+      "soleCenterX": 924.0
+    }
+  ],
+  "sourceFoot": [
+    817.25,
+    966
+  ],
+  "nativeRawMasterBytesIdentical": true,
+  "nativeResidueEvidence": "../native-residue-evidence.json",
+  "passesNativePerimeterAtMost1": true
+}

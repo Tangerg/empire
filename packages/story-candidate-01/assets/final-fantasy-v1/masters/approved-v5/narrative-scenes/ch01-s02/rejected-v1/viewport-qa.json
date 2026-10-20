@@ -1,0 +1,137 @@
+[
+  {
+    "view": "story-desktop",
+    "targetSize": [
+      960,
+      534
+    ],
+    "input": "qa-exact-crop-512x288.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropIn512x288": [
+      0.0,
+      1.5999999999999943,
+      512.0,
+      286.4
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerGeometry": true,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "provenance": "Offline CSS-cover geometry inspection from exact proposed 512x288 export. Not browser/live evidence. Display filters, overlays and text are not simulated."
+  },
+  {
+    "view": "story-mobile",
+    "targetSize": [
+      390,
+      778
+    ],
+    "input": "qa-exact-crop-512x288.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropIn512x288": [
+      183.81491002570692,
+      0.0,
+      328.1850899742931,
+      288.0
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerGeometry": true,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "provenance": "Offline CSS-cover geometry inspection from exact proposed 512x288 export. Not browser/live evidence. Display filters, overlays and text are not simulated."
+  },
+  {
+    "view": "staging-inset",
+    "targetSize": [
+      280,
+      245
+    ],
+    "input": "qa-exact-crop-512x288.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropIn512x288": [
+      91.42857142857142,
+      0.0,
+      420.57142857142856,
+      288.0
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerGeometry": true,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "provenance": "Offline CSS-cover geometry inspection from exact proposed 512x288 export. Not browser/live evidence. Display filters, overlays and text are not simulated."
+  },
+  {
+    "view": "staging-mobile",
+    "targetSize": [
+      366,
+      220
+    ],
+    "input": "qa-exact-crop-512x288.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropIn512x288": [
+      16.43636363636361,
+      0.0,
+      495.5636363636364,
+      288.0
+    ],
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerGeometry": true,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:180-213,475-490,746-752",
+    "provenance": "Offline CSS-cover geometry inspection from exact proposed 512x288 export. Not browser/live evidence. Display filters, overlays and text are not simulated."
+  },
+  {
+    "view": "title-mobile-stress",
+    "targetSize": [
+      390,
+      844
+    ],
+    "input": "qa-exact-crop-512x288.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropIn512x288": [
+      189.45971563981044,
+      0.0,
+      322.5402843601896,
+      288.0
+    ],
+    "objectPosition": [
+      0.5,
+      0.46
+    ],
+    "actualConsumerGeometry": false,
+    "cssSource": "packages/game-ui/src/styles/app.css:774-785; stress only, topic is NOT title consumer",
+    "provenance": "Offline CSS-cover geometry inspection from exact proposed 512x288 export. Not browser/live evidence. Display filters, overlays and text are not simulated."
+  }
+]

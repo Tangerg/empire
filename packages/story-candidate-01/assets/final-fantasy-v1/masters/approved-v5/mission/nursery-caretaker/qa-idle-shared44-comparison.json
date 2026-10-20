@@ -1,0 +1,158 @@
+{
+  "columnOrder": [
+    "nursery-caretaker",
+    "name-registrar",
+    "wall-laborer",
+    "scribe",
+    "border-farmer",
+    "refugee-adult"
+  ],
+  "backgroundRows": [
+    "black",
+    "white",
+    "scene"
+  ],
+  "evidence": [
+    {
+      "name": "name-registrar",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-name-registrar.png",
+      "size": [
+        416,
+        64
+      ],
+      "firstFrameCropOnly": [
+        0,
+        0,
+        104,
+        64
+      ],
+      "noRescale": true
+    },
+    {
+      "name": "wall-laborer",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-wall-laborer.png",
+      "size": [
+        416,
+        64
+      ],
+      "firstFrameCropOnly": [
+        0,
+        0,
+        104,
+        64
+      ],
+      "noRescale": true
+    },
+    {
+      "name": "scribe",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-scribe.png",
+      "size": [
+        416,
+        64
+      ],
+      "firstFrameCropOnly": [
+        0,
+        0,
+        104,
+        64
+      ],
+      "noRescale": true
+    },
+    {
+      "name": "border-farmer",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-border-farmer.png",
+      "size": [
+        416,
+        64
+      ],
+      "firstFrameCropOnly": [
+        0,
+        0,
+        104,
+        64
+      ],
+      "noRescale": true
+    },
+    {
+      "name": "refugee-adult",
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-refugee-adult.png",
+      "size": [
+        416,
+        64
+      ],
+      "firstFrameCropOnly": [
+        0,
+        0,
+        104,
+        64
+      ],
+      "noRescale": true
+    }
+  ],
+  "nursery": {
+    "bodyReferenceSourcePixels": 944,
+    "bodyTargetHeightLogicalPixels": 44,
+    "sharedScale": 0.046610169491525424,
+    "canonicalSourceFoot": [
+      817.25,
+      966
+    ],
+    "proposedOrigin": [
+      8,
+      4
+    ],
+    "proposedCommonFrameSize": [
+      104,
+      64
+    ],
+    "sourceFootMeasurement": [
+      {
+        "xRange": [
+          570,
+          790
+        ],
+        "bottom": 966,
+        "bottom4RowsBounds": [
+          674,
+          963,
+          748,
+          967
+        ],
+        "soleCenterX": 710.5
+      },
+      {
+        "xRange": [
+          790,
+          1030
+        ],
+        "bottom": 954,
+        "bottom4RowsBounds": [
+          884,
+          951,
+          965,
+          955
+        ],
+        "soleCenterX": 924.0
+      }
+    ],
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "nativeAlphaGreaterThan127Bounds": [
+      464,
+      22,
+      1148,
+      967
+    ],
+    "fullCanvasProposedBounds": [
+      8,
+      4,
+      81.92372881355932,
+      50.23728813559322
+    ],
+    "maximumPaddingAllowedPixels": 2,
+    "nativeRawMasterBytesIdentical": true,
+    "fullCanvasNotCropped": true
+  }
+}

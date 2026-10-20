@@ -1,0 +1,106 @@
+{
+  "unchangedNativeAlpha": true,
+  "parentReview": "Retain native residues with exact evidence. Existing strict source gate is perimeter<=1, derived export outeredge0; internal3pixels atalpha2 are not a standalone failure. Do not regenerate or normalize purely for these if actual native1x/2x black/white previews show no visible halo and source silhouettes intact. Record pixel counts/locations separately; parent exporter will enforce unchanged perimeter and visible checks.",
+  "poses": {
+    "idle": {
+      "perimeterNonzeroCount": 0,
+      "perimeterNonzeroCoordinates": [],
+      "farExteriorAlpha1Count": 378,
+      "farExteriorAboveAlpha1Count": 0,
+      "farExteriorAboveAlpha1Coordinates": [],
+      "gate": "Native perimeter<=1; unmodified native tiny alpha1/2 residue documented, no normalization or cleanup"
+    },
+    "walk-a": {
+      "perimeterNonzeroCount": 0,
+      "perimeterNonzeroCoordinates": [],
+      "farExteriorAlpha1Count": 152,
+      "farExteriorAboveAlpha1Count": 0,
+      "farExteriorAboveAlpha1Coordinates": [],
+      "gate": "Native perimeter<=1; unmodified native tiny alpha1/2 residue documented, no normalization or cleanup"
+    },
+    "carry-or-work": {
+      "perimeterNonzeroCount": 7,
+      "perimeterNonzeroCoordinates": [
+        {
+          "x": 0,
+          "y": 817,
+          "alpha": 1
+        },
+        {
+          "x": 0,
+          "y": 818,
+          "alpha": 1
+        },
+        {
+          "x": 0,
+          "y": 819,
+          "alpha": 1
+        },
+        {
+          "x": 0,
+          "y": 820,
+          "alpha": 1
+        },
+        {
+          "x": 0,
+          "y": 821,
+          "alpha": 1
+        },
+        {
+          "x": 0,
+          "y": 822,
+          "alpha": 1
+        },
+        {
+          "x": 0,
+          "y": 823,
+          "alpha": 1
+        }
+      ],
+      "farExteriorAlpha1Count": 166,
+      "farExteriorAboveAlpha1Count": 3,
+      "farExteriorAboveAlpha1Coordinates": [
+        {
+          "x": 736,
+          "y": 146,
+          "alpha": 2
+        },
+        {
+          "x": 737,
+          "y": 146,
+          "alpha": 2
+        },
+        {
+          "x": 737,
+          "y": 147,
+          "alpha": 2
+        }
+      ],
+      "gate": "Native perimeter<=1; unmodified native tiny alpha1/2 residue documented, no normalization or cleanup"
+    },
+    "walk-b": {
+      "perimeterNonzeroCount": 0,
+      "perimeterNonzeroCoordinates": [],
+      "farExteriorAlpha1Count": 90,
+      "farExteriorAboveAlpha1Count": 3,
+      "farExteriorAboveAlpha1Coordinates": [
+        {
+          "x": 594,
+          "y": 629,
+          "alpha": 2
+        },
+        {
+          "x": 654,
+          "y": 829,
+          "alpha": 2
+        },
+        {
+          "x": 655,
+          "y": 829,
+          "alpha": 2
+        }
+      ],
+      "gate": "Native perimeter<=1; unmodified native tiny alpha1/2 residue documented, no normalization or cleanup"
+    }
+  }
+}

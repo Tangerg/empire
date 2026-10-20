@@ -1,0 +1,129 @@
+{
+  "topicId": "C01-MISSION-NURSERY-CARETAKER",
+  "assetId": "C01-FFV1-MISSION-NURSERY-CARETAKER",
+  "label": "森林育儿屋照护者",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-controlled-veteran-nursery-witness.png",
+    "sha256": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 2,
+    "rowIndex1": 3,
+    "rowCropXYXY": [
+      0,
+      627,
+      1254,
+      940
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        627,
+        314,
+        940
+      ],
+      [
+        314,
+        627,
+        627,
+        940
+      ],
+      [
+        627,
+        627,
+        940,
+        940
+      ],
+      [
+        940,
+        627,
+        1254,
+        940
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        632,
+        309,
+        935
+      ],
+      [
+        319,
+        632,
+        622,
+        935
+      ],
+      [
+        632,
+        632,
+        935,
+        935
+      ],
+      [
+        945,
+        632,
+        1249,
+        935
+      ]
+    ],
+    "observedIdentity": "Older dark-brown-skinned woman with short curly gray hair, green patched dress and gold earrings. Wicker back basket with pale green cloth bundles, small produce basket at screen-left and terracotta cup at screen-right. No visible baby in the original source."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-nursery-caretaker.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-NURSERY-CARETAKER",
+    "png": "runtime-hd/mission-unit/mission-nursery-caretaker.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "verifiedBuilderMapping": {
+    "sourceBoardSha256Rechecked": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+    "sourceRowCrop": "references/original-row.png",
+    "sourceIdleCrop": "references/original-idle-cell.png",
+    "builder": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+    "boardArrayIndex0": 5,
+    "rowIndex0": 2,
+    "pixelExactAudit": "docs/art-rebuild-20261019/approved-v5/mission-consumer-audit/original-row-pixel-verification.json",
+    "auditedLogicalRuntimePixelExact": true,
+    "auditedHdRuntimePixelExact": true,
+    "visuallyInspectedOriginalRowAndHD": true,
+    "confirmedIdentity": "Older brown-skinned woman with short gray curls, olive patched dress and gold hoop earrings. Back basket contains pale sage cloth bundles, not a visible infant. Produce basket at screen-left and terracotta cup at screen-right retained."
+  }
+}

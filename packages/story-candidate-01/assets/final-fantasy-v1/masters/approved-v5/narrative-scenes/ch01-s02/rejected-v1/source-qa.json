@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-CH01-S02",
+  "rawMode": "RGB",
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "rawEqualsNativeEqualsMaster": true,
+  "sha256": "17483178cc6fa958afe07c80d21f922adf2cba1067cea5a3f0fdcfbf8617e759",
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "croppedExportSize": [
+    1664,
+    936
+  ],
+  "cropLossPx": {
+    "left": 4,
+    "top": 2,
+    "right": 4,
+    "bottom": 3
+  },
+  "cropReason": "Largest centered integer 16:9 crop, tiny explicit edge removal only for deterministic exporter. Full authored native master preserved byte-for-byte.",
+  "opaqueSceneIntentional": true,
+  "countsAsTransparentSprite": false,
+  "programmaticArtworkChanges": false,
+  "qaOnlyDerivatives": [
+    "qa-exact-crop-512x288.png",
+    "qa-logical-256x144.png",
+    "qa-cover-*.png",
+    "qa-covers-contact-sheet.png"
+  ],
+  "generationAttempts": 1,
+  "tool": "built-in image_gen",
+  "generatedOriginal": "/workspace/scratch/84c9fe948755/generated_images/exec-c9a81cc7-35e2-486a-a9d4-31d6fdf10316.png",
+  "browserOrLiveVerification": false
+}

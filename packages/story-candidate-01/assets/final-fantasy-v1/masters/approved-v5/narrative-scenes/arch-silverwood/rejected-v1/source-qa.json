@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-ARCH-SILVERWOOD",
+  "rawMode": "RGB",
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "rawEqualsNativeEqualsMaster": true,
+  "sha256": "eebb7d658244057066ad06cd708e0db0e53c4bc1a44560902bd263553703c8b8",
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "croppedExportSize": [
+    1664,
+    936
+  ],
+  "cropLossPx": {
+    "left": 4,
+    "top": 2,
+    "right": 4,
+    "bottom": 3
+  },
+  "cropReason": "Largest centered integer 16:9 crop, tiny explicit edge removal only for deterministic exporter. Full authored native master preserved byte-for-byte.",
+  "opaqueSceneIntentional": true,
+  "countsAsTransparentSprite": false,
+  "programmaticArtworkChanges": false,
+  "qaOnlyDerivatives": [
+    "qa-exact-crop-512x288.png",
+    "qa-logical-256x144.png",
+    "qa-cover-*.png",
+    "qa-covers-contact-sheet.png"
+  ],
+  "generationAttempts": 1,
+  "tool": "built-in image_gen",
+  "generatedOriginal": "/workspace/scratch/84c9fe948755/generated_images/exec-6f9d7e87-1d95-4797-825e-8276aa203a26.png",
+  "browserOrLiveVerification": false
+}

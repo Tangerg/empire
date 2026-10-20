@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 339,
+    "formalBound": 342,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 17,
-      "narrative-static": 11,
+      "mission-unit": 18,
+      "narrative-static": 13,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 339,
+    "rawPreservedTopics": 342,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -358,13 +358,20 @@
       "category": "narrative-static",
       "label": "银林树城",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-silverwood/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-silverwood.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque suspended living tree-city scene; original source identity retained. V1 dense bright leaf repetition rejected, selected v2 groups broad muted canopy planes; both native versions preserved",
+        "export": "Explicit4/2/4/3px edgecrop, independent256x144 and512x288; actual512 and mobilecover reviewed",
+        "runtimeBinding": "Canonical and HD narrative resolver, chapter3 staging/choices/results and actual Silverwood story consumers",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-ARCH-THREE-BRIDGES",
@@ -456,13 +463,20 @@
       "category": "narrative-static",
       "label": "三桥停火",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete bridge-ceasefire scene reconstructed from actual story.ts92–104; exactly3 central civilians and approved Laiya/Cain. Wrong original amber-pylon plate preserved, not asserted faithful story setting",
+        "export": "Explicit4/2/4/3px edgecrop; independent256x144/512x288; actualnative reviewed. Mobile retains civilians/officerfaces but clips peripheral braid/cape edges; landscape complete",
+        "runtimeBinding": "Canonical and HD story resolver for level02 briefing/aftermath/staging; story text and gameplay unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CH01-S05",
@@ -2705,13 +2719,23 @@
       "category": "mission-unit",
       "label": "森林育儿屋照护者",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/nursery-caretaker/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-nursery-caretaker.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-nursery-caretaker.png",
+      "stageEvidence": {
+        "raw": "Original older dark-brown-skinned woman, short gray curls, olive patched dress, backbasket, produce basket and cup; opposite steps and cup-offering gesture; immutable native sources and exact evidence preserved",
+        "export": "shared44/944 scale, measured support translation within2.110logicalpx, no padding; invisible internal alpha2 flecks retained; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-REFUGEE-ADULT",

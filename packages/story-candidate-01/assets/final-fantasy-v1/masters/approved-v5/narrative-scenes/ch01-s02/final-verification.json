@@ -1,0 +1,39 @@
+{
+  "topicId": "C01-CH01-S02",
+  "selectedAttempt": "v2",
+  "workerVisualQA": "passed with documented narrow-mobile edge cropping",
+  "parentApproval": "pending",
+  "generationAttempts": 2,
+  "nativeInspected": true,
+  "exact512x288Inspected": true,
+  "logical256x144Inspected": true,
+  "centerCoverInspected": true,
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "nativeAndMasterUnmodified": true,
+  "opaqueSceneIntentional": true,
+  "transparentSpriteCount": 0,
+  "civilianCount": 3,
+  "namedHumansDepicted": [
+    "Laiya/LEIA01",
+    "Cain/CAIN01"
+  ],
+  "namedIdentityReferencesVerified": true,
+  "grayFlagAbsentForEarlyChronology": true,
+  "semanticReconstruction": true,
+  "inheritedOriginalStatus": "rejected-for-story-context",
+  "mobileLimitation": "390x778 centered cover retains all civilians and both officers faces, but cuts Laiya left braid/body edge and Cain outer cape edge",
+  "browserOrLiveVerification": false,
+  "formalBindingPerformed": false,
+  "rejectedAttempts": [
+    {
+      "attempt": "v1",
+      "reason": "Mobile center cover omits both officers",
+      "archive": "rejected-v1"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { candidate01Asset } from './candidate-01-assets';
 import { CANDIDATE_01_MENU_ART, candidate01ChapterArt, candidate01StoryArt } from './candidate-01-story';
 
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
-const topics = ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE'];
+const topics = ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE', 'C01-ARCH-SILVERWOOD', 'C01-CH01-S02'];
 
 describe('narrative scene consumer contracts', () => {
   it.each(topics)('resolves %s as one 256x144 scene through its explicitly registered density', (topic) => {
@@ -17,7 +17,7 @@ describe('narrative scene consumer contracts', () => {
     expect(asset.anchor).toBeUndefined();
     expect(candidate01StoryArt(topic)).toBe(asset.url);
     const hd = hdManifest.assets.find(record => record.topicId === topic);
-    expect(hd).toBeDefined(); // All four approved scene consumers require authored HD, not an enlarged legacy fallback.
+    expect(hd).toBeDefined(); // All approved scene consumers require authored HD, not an enlarged legacy fallback.
     const selected = hd ?? asset;
     if (hd) {
       expect(hd.pixelDensity).toBe(2);

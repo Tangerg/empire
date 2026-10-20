@@ -1,0 +1,14 @@
+{
+  "verified": true,
+  "checks": [
+    "Four native/raw/master/tool-output byte identities",
+    "Four native RGBA canvases exactly1586x992",
+    "All whole-canvas registration fits104x64",
+    "Maximum native perimeter alpha<=1",
+    "Derived QA outeredge0 at1x and2x for all poses",
+    "All provenance files and manifests parse",
+    "Six-frame GIF readable",
+    "SHA256SUMS entries recomputed after final review"
+  ],
+  "scope": "Read-only native validation and separate QA derivation. No repo edits or deployment."
+}

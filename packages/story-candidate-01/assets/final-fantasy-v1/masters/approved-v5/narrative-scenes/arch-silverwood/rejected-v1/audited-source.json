@@ -1,0 +1,153 @@
+{
+  "topicId": "C01-ARCH-SILVERWOOD",
+  "label": "银林树城",
+  "originalNarrativeIndexZeroBased": 9,
+  "subgroup": "architecture-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-ARCH-SILVERWOOD",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "银林树城",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-silverwood.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+    "sha256": "4ccf940515763d1b92d10fc9909e8e64ff3382d995fb5b4b9b2f8777157364be",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "cellIndexZeroBased": 3,
+    "columnZeroBased": 1,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-right",
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-ARCH-SILVERWOOD",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-ARCH-SILVERWOOD",
+    "topicId": "C01-ARCH-SILVERWOOD",
+    "label": "银林树城",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/arch-silverwood.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-silverwood.png",
+    "sha256": "cf86b7aa85ea7965edbce2f5eadc4fdd19256f7c46b81630b8c6d9949e73dd16",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-15",
+        "chapter": 3,
+        "title": "银林长梦",
+        "location": "银林母根"
+      },
+      {
+        "id": "c01/aftermath-15",
+        "chapter": 3,
+        "title": "森林第一次自己疼",
+        "location": "银林树城"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-15"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [
+      3
+    ],
+    "chapterChoiceScreens": [
+      "c01/choice-bell-tower-control",
+      "c01/choice-forge-record",
+      "c01/choice-silverwood-price",
+      "c01/choice-unflagged-personhood"
+    ],
+    "chapterStagingAndResultLevels": [
+      "c01-11",
+      "c01-12",
+      "c01-13",
+      "c01-14",
+      "c01-15",
+      "c01-16"
+    ],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}

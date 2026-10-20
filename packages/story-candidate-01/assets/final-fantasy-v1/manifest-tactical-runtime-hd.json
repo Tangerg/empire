@@ -1,7 +1,7 @@
 {
   "schemaVersion": "candidate-01-tactical-runtime-hd-v1",
   "pixelDensity": 2,
-  "assetCount": 181,
+  "assetCount": 183,
   "categories": [
     "combat-unit",
     "mission-unit",
@@ -519,9 +519,9 @@
     },
     {
       "topicId": "C01-MISSION-NURSERY-CARETAKER",
-      "png": "runtime-hd/mission-unit/mission-nursery-caretaker.png",
-      "width": 256,
-      "height": 96,
+      "png": "runtime-approved-v5/mission-unit/mission-nursery-caretaker@2x.png",
+      "width": 832,
+      "height": 128,
       "pixelDensity": 2
     },
     {
@@ -1276,6 +1276,20 @@
     {
       "topicId": "C01-ARCH-REDSTONE",
       "png": "runtime-hd/narrative-static/arch-redstone.png",
+      "width": 512,
+      "height": 288,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-ARCH-SILVERWOOD",
+      "png": "runtime-hd/narrative-static/arch-silverwood.png",
+      "width": 512,
+      "height": 288,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-CH01-S02",
+      "png": "runtime-hd/narrative-static/ch01-s02.png",
       "width": 512,
       "height": 288,
       "pixelDensity": 2

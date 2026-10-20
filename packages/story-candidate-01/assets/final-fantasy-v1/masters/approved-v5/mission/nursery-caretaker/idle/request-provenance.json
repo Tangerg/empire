@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "requestSHA256": "48602debf90b60d834f50638a8aade0445eb9ec2b24d8e2c6b2d0a8701bf3927",
+  "promptSHA256": "e0db11d3780201c5e1ed7cda16fc04cca0437679a18401a57a7808776ac6665a",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/nursery-caretaker/references/original-idle-cell.png",
+      "sha256": "59404df50a60c5b62a4fa773f6d43ef5619ad996b9947f87e5022c98183d1f8c"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/nursery-caretaker/references/approved-name-registrar-idle.png",
+      "sha256": "5c7f4750dd1ee75b5cef65fbaf2594e625e1728f3fe4f2c9797ce385b1f03922"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/nursery-caretaker/references/approved-wall-laborer-idle.png",
+      "sha256": "0ba608815a55c6b947d0e3e1639b08262a444c54e04cedd444897a1df62f0fa3"
+    }
+  ],
+  "nativeAlphaUntouched": true,
+  "rawMasterBytesIdentical": true,
+  "postprocessing": "No cleanup, alpha editing, painting, crop, fit, or resize. Black/white compositing is QA-only, stored separately."
+}

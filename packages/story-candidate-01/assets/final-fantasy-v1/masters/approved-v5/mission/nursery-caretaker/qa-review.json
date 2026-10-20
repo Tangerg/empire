@@ -1,0 +1,56 @@
+{
+  "status": "Native quartet and source-level QA complete; parent final integration remains pending",
+  "identitySourceVerified": true,
+  "observedIdentity": "Original adult older brown-skinned woman with short gray curls, small gold hoops, olive patched dress, huge brown boots, back basket with closed sage cloth bundles, produce basket and terracotta cup. No visible infant in source or generated art.",
+  "nativeCanvasDimensions": [
+    1586,
+    992
+  ],
+  "nativeRawMasterExactBytes": true,
+  "sourcePerimeterGate": "All four<=1; work max1, other poses0",
+  "nativeResidue": "Work and walk-b each have three far-exterior alpha2 pixels, exact coordinates documented. No cleanup.",
+  "scaleGate": {
+    "approvedIdleReference": 944,
+    "fixedWholeCanvasScale": 0.046610169491525424,
+    "bodyTargetHeightLogicalPixels": 44,
+    "frame": [
+      104,
+      64
+    ],
+    "origin": [
+      8,
+      4
+    ],
+    "paddingPixels": 0,
+    "maxRegistrationTranslationLogical": 2.1091101694915255
+  },
+  "poseReviews": {
+    "idle": "Upright stance with both boots planted. Screen-left hand holds produce basket; screen-right hand holds upright terracotta cup. Original older brown-skinned woman, olive dress, gray curls and sage bundle basket retained.",
+    "walk-a": "Screen-left boot bears weight; screen-right leg advances with broad sole visible and toe raised. Basket swings rearward while cup stays upright. No mirroring or hand-role swap.",
+    "carry-or-work": "Both boots planted. Torso leans forward, chin and gaze lower, screen-right arm extends cup in a readable offering gesture. Produce basket remains in screen-left hand; no recipient, infant or extra hand invented.",
+    "walk-b": "Screen-right boot bears weight. Screen-left leg bends backward and heel lifts; opposite step to walk-a. Basket swings forward while cup stays upright; exactly two original limbs."
+  },
+  "native44Preview": "qa-native44-three-backgrounds.png",
+  "native88Preview": "qa-native88-three-backgrounds.png",
+  "nativeSourceMontages": [
+    "qa-native-montage-black.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-scene.png"
+  ],
+  "gif": "qa-sequence.gif",
+  "liveGameAcceptance": false,
+  "productionFilesEdited": false,
+  "repositoryEdited": false,
+  "actualConsumerClassification": "catalog-only",
+  "deploymentClaim": false,
+  "visualInspection": {
+    "reviewed": [
+      "qa-native44-three-backgrounds-3x.png",
+      "qa-native88-three-backgrounds.png",
+      "qa-native-montage-white.png",
+      "qa-native-montage-black.png"
+    ],
+    "verdict": "No visible pale/dark halo or matte rectangle on black, white or olive backgrounds. Complete silhouettes, props and feet remain within canvas. Opposite steps and extended-cup work gesture remain legible at44px and88px. Source identity and object-hand roles preserved.",
+    "animationGIFStructure": "Six frames, looping idle/walk-a/idle/walk-b/work/idle; no source art altered."
+  }
+}
