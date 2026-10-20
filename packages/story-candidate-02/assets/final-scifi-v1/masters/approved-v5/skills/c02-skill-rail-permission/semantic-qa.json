@@ -1,0 +1,27 @@
+{
+  "topicId": "c02-skill-rail-permission",
+  "label": "列车权限",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "One gloved index finger presses a cyan permission interface at the center of one circular bronze/graphite access mechanism with amber ring segments. The whole mechanical circle and completed short wrist cuff are visible. The dark source wall/card is excluded.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "Finger joints, small panel seams and bevels simplify at 48 pixels, but the hand pressing the interface remains visible. The complete wrist cuff has a narrow 15-pixel right margin, below the requested 8–10 percent; no finger, cuff or circle edge is clipped. No train, added permission symbol or faction emblem was invented.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful redraw. Rail permission uses the separately recovered full source card to restore the clipped right strip and complete wrist; card/wall background is excluded. Other motifs use exact legacy source slots. No topic reassignment or invented gameplay effect.",
+  "legacySourceCropDefect": "Uniform grid crop ends at x=309 while the complete intended card extends to x=315, clipping a narrow right-hand strip. The original runtime also carries the dark scene-card background.",
+  "completeMotifCropBox": [
+    34,
+    339,
+    315,
+    617
+  ]
+}

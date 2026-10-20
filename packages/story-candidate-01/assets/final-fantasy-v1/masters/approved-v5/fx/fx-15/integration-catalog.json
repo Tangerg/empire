@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-15": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "spirit-onset",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-15/spirit-onset/master.png",
+          "sha256": "3e5483d5589e9fbadb511f30bb89fd1e07974dfcb16754ed716a51d224f87947"
+        },
+        {
+          "phase": "spirit-growth",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-15/spirit-growth/master.png",
+          "sha256": "cc61c3cccef955c9b5386abe039db84d38d53f57cfff0bed7d2b5796f9e99800"
+        },
+        {
+          "phase": "leafy-spirit-peak",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-15/leafy-spirit-peak/master.png",
+          "sha256": "71ae5adedc0b21583f5c479f8ceb886c8678cb66f977d5745a464a8356a84129"
+        },
+        {
+          "phase": "spirit-residue",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-15/spirit-residue/master.png",
+          "sha256": "a31a16a926a6c3da261609705258943f8edc36fe3434e7a00f08b952f4de6cf4"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  },
+  "note": "Source/export handoff. Four phase names and first pair approved by parent; final parent static review accepted on 2026-10-20. Source paths are proposed repository destinations. Preserve 12fps, loop=false, normal blend and anchor [16,16]. No inferred hit lifetime or scene deployment."
+}

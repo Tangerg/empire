@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-sand-sail",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "8f2aa8f8c428ca9cfc69f1ab4fbf13857a900a129298002dc5977f0c396c5efb",
+    "raw-native-v1.png": "8f2aa8f8c428ca9cfc69f1ab4fbf13857a900a129298002dc5977f0c396c5efb",
+    "native.png": "8f2aa8f8c428ca9cfc69f1ab4fbf13857a900a129298002dc5977f0c396c5efb",
+    "master.png": "8f2aa8f8c428ca9cfc69f1ab4fbf13857a900a129298002dc5977f0c396c5efb"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Fine runner divisions and sail shading simplify at 48 pixels. The sail, two runner fronts and maneuver arrow remain readable. The sand wake is a bounded local movement shape; it is not a terrain tile or soft exterior dust cloud. Some visible margins are narrower than the requested 8–10 percent but all arrow and sail tips remain intact.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:57:02.160797+00:00"
+}

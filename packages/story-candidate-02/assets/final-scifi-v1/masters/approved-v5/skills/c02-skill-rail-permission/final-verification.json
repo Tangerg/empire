@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-rail-permission",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "d74ef35506af1b357f1d5171def46ee4c8dbbbbf66077f007230a7538c6d5ae9",
+    "raw-native-v1.png": "d74ef35506af1b357f1d5171def46ee4c8dbbbbf66077f007230a7538c6d5ae9",
+    "native.png": "d74ef35506af1b357f1d5171def46ee4c8dbbbbf66077f007230a7538c6d5ae9",
+    "master.png": "d74ef35506af1b357f1d5171def46ee4c8dbbbbf66077f007230a7538c6d5ae9"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Finger joints, small panel seams and bevels simplify at 48 pixels, but the hand pressing the interface remains visible. The complete wrist cuff has a narrow 15-pixel right margin, below the requested 8–10 percent; no finger, cuff or circle edge is clipped. No train, added permission symbol or faction emblem was invented.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:57:02.462068+00:00"
+}

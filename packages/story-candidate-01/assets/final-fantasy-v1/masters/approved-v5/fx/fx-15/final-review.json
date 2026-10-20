@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-FX-15",
+  "label": "银林灵火",
+  "status": "accepted-source-static-phase-candidate",
+  "phaseOrder": [
+    "spirit-onset",
+    "spirit-growth",
+    "leafy-spirit-peak",
+    "spirit-residue"
+  ],
+  "phaseOrderApproval": "Parent approval on 2026-10-20T05:38:49Z",
+  "firstPairStaticApproval": "Parent accepted native 32/64 black/white appearance and asset-specific 0.54 logical-pixel contact variation on 2026-10-20T05:43:50Z",
+  "parentFinalStaticPhaseAcceptance": "accepted on 2026-10-20T05:54:52Z after four-phase native and terminal review; asset-specific registration caveat and unobserved playback retained",
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": [],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "sourceEdgeNonzeroSamples": [
+    8,
+    29,
+    1,
+    19
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeFullAndTerminalReviewed": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "subjectPreserved": "Pale sage/mint/cream living spirit flame above a compact dark olive leaf bed; lifted leaves, internal leafy motifs and a curling branch at peak; smaller residual wisp. No ordinary recolored fire, exterior glow curtain or unrelated backing.",
+  "bedBottomContactSourceY": [
+    1141,
+    1165,
+    1171,
+    1172
+  ],
+  "bedBottomContactSpreadLogicalPx": 0.6921850079744817,
+  "additionalContactSpreadBeyondApprovedFirstPairLogicalPx": 0.15629984051036683,
+  "phaseReview": "qa/PHASE-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "sourceHashProof": "final-quartet.json",
+  "semanticCaveats": [
+    "Leaf-bed outlines and contact vary slightly. Total bottom variation is 0.69 logical pixels; the accepted first-pair variation was 0.54 pixels. This visual judgement is specific to FX15.",
+    "Diagnostic lower-region mask overlap includes a changing spirit base and fine leaf tips; it does not establish exact pixel-identical leaf-bed geometry.",
+    "Static phase interpretation and encoded timing do not establish observed live playback."
+  ],
+  "APNGVerification": {
+    "proof": "qa/apng-timing-verification.json",
+    "files": 28,
+    "decodedFrames": 112,
+    "exact12fpsFiles": 14,
+    "slowDiagnosticFiles": 14,
+    "everyDecodedFrameMatchesExpected": true,
+    "exactFrameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "numPlays": 1,
+    "loop": false,
+    "encodedFinalHold": false,
+    "removalRule": null,
+    "lifetimeOwner": "Future consumer; no current binding"
+  },
+  "browserObserved": false,
+  "browserBlocker": "Established browser/socket restriction; no repeated browser attempts were made.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false
+}

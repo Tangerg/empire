@@ -1,0 +1,22 @@
+{
+  "topicId": "c02-skill-vacuum-traction",
+  "label": "真空牵引",
+  "sourceConflictDetected": false,
+  "sourceMapping": "Actual original 48x48 icon, complete original board and exact cropped source were visually inspected. Catalog order independently agreed. Legacy in-memory reconstruction matched all original runtime pixels.",
+  "preservedMotifs": "One right-side circular emitter on a short foot joins one tilted floating cargo cube at left through a single continuous narrow traction tether. Four separated opaque cyan ring-flow ribbons around the cube preserve the pulling action without a filled background.",
+  "rendering": "Chunky broad matte sci-fi cel shading, dark outline, opaque local action glyphs, transparent exterior.",
+  "noBroadExteriorGlowObserved": true,
+  "inspections": [
+    "Full native 1254x1254 selected master",
+    "Source256 white/black/olive composites",
+    "Actual 48x48 white/black/olive diagnostics"
+  ],
+  "native48Limitations": "The generated ring-flow has four major ribbon segments rather than the three requested. Fine edge irregularities at full native size simplify at 48 pixels; the continuous tether, cube and emitter remain readable. The narrowest visible margin is 28 pixels, below the requested 8–10 percent, with complete tips.",
+  "parentStaticReviewPass": true,
+  "generationAttempts": 1,
+  "selectedAttempt": 1,
+  "rejectedAttempts": 0,
+  "semanticReconstruction": "Source-faithful redraw. Rail permission uses the separately recovered full source card to restore the clipped right strip and complete wrist; card/wall background is excluded. Other motifs use exact legacy source slots. No topic reassignment or invented gameplay effect.",
+  "legacySourceCropDefect": null,
+  "completeMotifCropBox": null
+}
