@@ -1,0 +1,1076 @@
+{
+  "topicId": "C01-FX-18",
+  "method": "Alpha128 connected components; components over 7000 pixels form the main-assembly union; smaller components over 1000 identify the five detached diamonds. Horizontal scanline at y640 identifies side-clasp extents; their midpoint columns are sampled only within y500..780. These are diagnostic landmarks, not image alignment or generated-pixel edits. The side clasps change shape and the scanline includes adjacent band junctions, so these measurements bound visual registration rather than proving pixel-identical rigid motion.",
+  "phaseOrder": [
+    "scattered-bands",
+    "aligning-ring",
+    "closed-restraints",
+    "settled-restraints"
+  ],
+  "frames": {
+    "scattered-bands": {
+      "sourceSHA256": "82a626e057d78fe9b63927ba2d16ea3fa276e238d97193f70632f129fe699002",
+      "alphaMass": 154457.38823529411,
+      "componentsAlpha128Over1000": [
+        {
+          "area": 4865,
+          "bounds": [
+            213,
+            308,
+            302,
+            407
+          ],
+          "centroid": [
+            256.56649537512845,
+            356.82158273381293
+          ]
+        },
+        {
+          "area": 24603,
+          "bounds": [
+            267,
+            354,
+            583,
+            552
+          ],
+          "centroid": [
+            410.47404788033975,
+            437.3016705279844
+          ]
+        },
+        {
+          "area": 3868,
+          "bounds": [
+            961,
+            354,
+            1040,
+            443
+          ],
+          "centroid": [
+            1000.0708376421924,
+            397.7417269906929
+          ]
+        },
+        {
+          "area": 23988,
+          "bounds": [
+            684,
+            355,
+            985,
+            551
+          ],
+          "centroid": [
+            848.572828080707,
+            438.33908620977155
+          ]
+        },
+        {
+          "area": 4929,
+          "bounds": [
+            162,
+            429,
+            250,
+            531
+          ],
+          "centroid": [
+            205.32339216879691,
+            479.253804017042
+          ]
+        },
+        {
+          "area": 14350,
+          "bounds": [
+            165,
+            522,
+            298,
+            732
+          ],
+          "centroid": [
+            231.54926829268294,
+            627.145087108014
+          ]
+        },
+        {
+          "area": 14013,
+          "bounds": [
+            949,
+            524,
+            1080,
+            730
+          ],
+          "centroid": [
+            1015.0250481695568,
+            626.4786983515307
+          ]
+        },
+        {
+          "area": 24399,
+          "bounds": [
+            262,
+            694,
+            574,
+            880
+          ],
+          "centroid": [
+            405.7474486659289,
+            797.1670560268864
+          ]
+        },
+        {
+          "area": 22052,
+          "bounds": [
+            714,
+            695,
+            991,
+            879
+          ],
+          "centroid": [
+            864.1851986214402,
+            795.2656448394704
+          ]
+        },
+        {
+          "area": 4796,
+          "bounds": [
+            187,
+            772,
+            276,
+            870
+          ],
+          "centroid": [
+            230.91826522101752,
+            820.088198498749
+          ]
+        },
+        {
+          "area": 4897,
+          "bounds": [
+            975,
+            773,
+            1066,
+            872
+          ],
+          "centroid": [
+            1019.6085358382684,
+            821.5650398202981
+          ]
+        },
+        {
+          "area": 8895,
+          "bounds": [
+            285,
+            798,
+            486,
+            916
+          ],
+          "centroid": [
+            378.36301292861157,
+            862.4282181000563
+          ]
+        }
+      ],
+      "mainAssemblyUnionBoundsAlpha128": [
+        165,
+        354,
+        1080,
+        916
+      ],
+      "mainAssemblyWidth": 915,
+      "mainAssemblyHeight": 562,
+      "sideClaspScanlineY640IntervalsAlpha128": [
+        [
+          172,
+          291
+        ],
+        [
+          956,
+          1074
+        ]
+      ],
+      "sideClaspScanlineY640Midpoints": [
+        231.5,
+        1015.0
+      ],
+      "sideClaspMidlineX": 623.25,
+      "sideClaspColumnIntervalMidpointsY": [
+        627.5,
+        627.0
+      ],
+      "sideClaspMidlineY": 627.25,
+      "centerColumnX627Alpha128Intervals": [],
+      "smallDiamondCohort": {
+        "upper-left": {
+          "area": 4865,
+          "bounds": [
+            213,
+            308,
+            302,
+            407
+          ],
+          "centroid": [
+            256.56649537512845,
+            356.82158273381293
+          ]
+        },
+        "upper-right": {
+          "area": 3868,
+          "bounds": [
+            961,
+            354,
+            1040,
+            443
+          ],
+          "centroid": [
+            1000.0708376421924,
+            397.7417269906929
+          ]
+        },
+        "middle-left": {
+          "area": 4929,
+          "bounds": [
+            162,
+            429,
+            250,
+            531
+          ],
+          "centroid": [
+            205.32339216879691,
+            479.253804017042
+          ]
+        },
+        "lower-left": {
+          "area": 4796,
+          "bounds": [
+            187,
+            772,
+            276,
+            870
+          ],
+          "centroid": [
+            230.91826522101752,
+            820.088198498749
+          ]
+        },
+        "lower-right": {
+          "area": 4897,
+          "bounds": [
+            975,
+            773,
+            1066,
+            872
+          ],
+          "centroid": [
+            1019.6085358382684,
+            821.5650398202981
+          ]
+        }
+      }
+    },
+    "aligning-ring": {
+      "sourceSHA256": "1a67ac7be80e3164514556b6dfd83c53aa12e4694c22f0d9383346ec7756cbb9",
+      "alphaMass": 214845.7137254902,
+      "componentsAlpha128Over1000": [
+        {
+          "area": 5098,
+          "bounds": [
+            215,
+            303,
+            304,
+            405
+          ],
+          "centroid": [
+            259.21400549234994,
+            353.90643389564536
+          ]
+        },
+        {
+          "area": 102920,
+          "bounds": [
+            174,
+            335,
+            982,
+            751
+          ],
+          "centroid": [
+            569.5444131364166,
+            498.1430431403031
+          ]
+        },
+        {
+          "area": 5265,
+          "bounds": [
+            164,
+            428,
+            253,
+            533
+          ],
+          "centroid": [
+            207.802849002849,
+            480.3485280151947
+          ]
+        },
+        {
+          "area": 4459,
+          "bounds": [
+            1016,
+            428,
+            1100,
+            523
+          ],
+          "centroid": [
+            1057.6490244449428,
+            475.2036331015923
+          ]
+        },
+        {
+          "area": 14766,
+          "bounds": [
+            945,
+            533,
+            1079,
+            749
+          ],
+          "centroid": [
+            1012.4482595151022,
+            640.7779357984559
+          ]
+        },
+        {
+          "area": 73467,
+          "bounds": [
+            274,
+            689,
+            981,
+            943
+          ],
+          "centroid": [
+            626.9355084595804,
+            810.7698830767556
+          ]
+        },
+        {
+          "area": 5312,
+          "bounds": [
+            189,
+            782,
+            281,
+            886
+          ],
+          "centroid": [
+            234.0406626506024,
+            833.562876506024
+          ]
+        },
+        {
+          "area": 5348,
+          "bounds": [
+            973,
+            782,
+            1066,
+            886
+          ],
+          "centroid": [
+            1019.1048990276739,
+            833.6667913238593
+          ]
+        }
+      ],
+      "mainAssemblyUnionBoundsAlpha128": [
+        174,
+        335,
+        1079,
+        943
+      ],
+      "mainAssemblyWidth": 905,
+      "mainAssemblyHeight": 608,
+      "sideClaspScanlineY640IntervalsAlpha128": [
+        [
+          175,
+          309
+        ],
+        [
+          947,
+          1079
+        ]
+      ],
+      "sideClaspScanlineY640Midpoints": [
+        242.0,
+        1013.0
+      ],
+      "sideClaspMidlineX": 627.5,
+      "sideClaspColumnIntervalMidpointsY": [
+        641.0,
+        641.0
+      ],
+      "sideClaspMidlineY": 641.0,
+      "centerColumnX627Alpha128Intervals": [
+        [
+          335,
+          540
+        ],
+        [
+          747,
+          943
+        ]
+      ],
+      "smallDiamondCohort": {
+        "upper-left": {
+          "area": 5098,
+          "bounds": [
+            215,
+            303,
+            304,
+            405
+          ],
+          "centroid": [
+            259.21400549234994,
+            353.90643389564536
+          ]
+        },
+        "middle-left": {
+          "area": 5265,
+          "bounds": [
+            164,
+            428,
+            253,
+            533
+          ],
+          "centroid": [
+            207.802849002849,
+            480.3485280151947
+          ]
+        },
+        "upper-right": {
+          "area": 4459,
+          "bounds": [
+            1016,
+            428,
+            1100,
+            523
+          ],
+          "centroid": [
+            1057.6490244449428,
+            475.2036331015923
+          ]
+        },
+        "lower-left": {
+          "area": 5312,
+          "bounds": [
+            189,
+            782,
+            281,
+            886
+          ],
+          "centroid": [
+            234.0406626506024,
+            833.562876506024
+          ]
+        },
+        "lower-right": {
+          "area": 5348,
+          "bounds": [
+            973,
+            782,
+            1066,
+            886
+          ],
+          "centroid": [
+            1019.1048990276739,
+            833.6667913238593
+          ]
+        }
+      }
+    },
+    "closed-restraints": {
+      "sourceSHA256": "66389bbead08148621ae45bb53da1971708b4250968666409c6a8aebad4a609c",
+      "alphaMass": 272378.89019607846,
+      "componentsAlpha128Over1000": [
+        {
+          "area": 5162,
+          "bounds": [
+            210,
+            287,
+            301,
+            392
+          ],
+          "centroid": [
+            255.32642386671833,
+            338.88977140643163
+          ]
+        },
+        {
+          "area": 249740,
+          "bounds": [
+            180,
+            337,
+            1071,
+            975
+          ],
+          "centroid": [
+            626.4810202610715,
+            663.6738407944263
+          ]
+        },
+        {
+          "area": 5079,
+          "bounds": [
+            165,
+            427,
+            253,
+            534
+          ],
+          "centroid": [
+            208.05473518409136,
+            480.2142153967316
+          ]
+        },
+        {
+          "area": 4185,
+          "bounds": [
+            1017,
+            427,
+            1098,
+            522
+          ],
+          "centroid": [
+            1056.962724014337,
+            474.51278375149343
+          ]
+        },
+        {
+          "area": 4984,
+          "bounds": [
+            188,
+            797,
+            278,
+            900
+          ],
+          "centroid": [
+            232.45084269662922,
+            848.1845906902087
+          ]
+        },
+        {
+          "area": 5307,
+          "bounds": [
+            974,
+            799,
+            1066,
+            907
+          ],
+          "centroid": [
+            1019.6734501601658,
+            852.4842660636895
+          ]
+        }
+      ],
+      "mainAssemblyUnionBoundsAlpha128": [
+        180,
+        337,
+        1071,
+        975
+      ],
+      "mainAssemblyWidth": 891,
+      "mainAssemblyHeight": 638,
+      "sideClaspScanlineY640IntervalsAlpha128": [
+        [
+          180,
+          319
+        ],
+        [
+          933,
+          1071
+        ]
+      ],
+      "sideClaspScanlineY640Midpoints": [
+        249.5,
+        1002.0
+      ],
+      "sideClaspMidlineX": 625.75,
+      "sideClaspColumnIntervalMidpointsY": [
+        630.0,
+        632.0
+      ],
+      "sideClaspMidlineY": 631.0,
+      "centerColumnX627Alpha128Intervals": [
+        [
+          337,
+          538
+        ],
+        [
+          678,
+          975
+        ]
+      ],
+      "smallDiamondCohort": {
+        "upper-left": {
+          "area": 5162,
+          "bounds": [
+            210,
+            287,
+            301,
+            392
+          ],
+          "centroid": [
+            255.32642386671833,
+            338.88977140643163
+          ]
+        },
+        "middle-left": {
+          "area": 5079,
+          "bounds": [
+            165,
+            427,
+            253,
+            534
+          ],
+          "centroid": [
+            208.05473518409136,
+            480.2142153967316
+          ]
+        },
+        "upper-right": {
+          "area": 4185,
+          "bounds": [
+            1017,
+            427,
+            1098,
+            522
+          ],
+          "centroid": [
+            1056.962724014337,
+            474.51278375149343
+          ]
+        },
+        "lower-left": {
+          "area": 4984,
+          "bounds": [
+            188,
+            797,
+            278,
+            900
+          ],
+          "centroid": [
+            232.45084269662922,
+            848.1845906902087
+          ]
+        },
+        "lower-right": {
+          "area": 5307,
+          "bounds": [
+            974,
+            799,
+            1066,
+            907
+          ],
+          "centroid": [
+            1019.6734501601658,
+            852.4842660636895
+          ]
+        }
+      }
+    },
+    "settled-restraints": {
+      "sourceSHA256": "9ab44b83a2e6d730a91326172620c174a05480cc66828bf71b5be0df6ba769f7",
+      "alphaMass": 226502.74901960784,
+      "componentsAlpha128Over1000": [
+        {
+          "area": 5255,
+          "bounds": [
+            230,
+            331,
+            322,
+            435
+          ],
+          "centroid": [
+            276.00038058991436,
+            382.6078020932445
+          ]
+        },
+        {
+          "area": 204350,
+          "bounds": [
+            231,
+            365,
+            1022,
+            939
+          ],
+          "centroid": [
+            627.4687350134573,
+            656.937680450208
+          ]
+        },
+        {
+          "area": 4494,
+          "bounds": [
+            982,
+            446,
+            1067,
+            544
+          ],
+          "centroid": [
+            1024.0280373831777,
+            494.3963061860258
+          ]
+        },
+        {
+          "area": 4751,
+          "bounds": [
+            196,
+            447,
+            281,
+            549
+          ],
+          "centroid": [
+            237.75878762365818,
+            497.34729530625134
+          ]
+        },
+        {
+          "area": 4751,
+          "bounds": [
+            236,
+            775,
+            324,
+            874
+          ],
+          "centroid": [
+            279.7099557987792,
+            824.001894338034
+          ]
+        },
+        {
+          "area": 4868,
+          "bounds": [
+            927,
+            777,
+            1015,
+            878
+          ],
+          "centroid": [
+            970.7898520953163,
+            827.2210353327855
+          ]
+        }
+      ],
+      "mainAssemblyUnionBoundsAlpha128": [
+        231,
+        365,
+        1022,
+        939
+      ],
+      "mainAssemblyWidth": 791,
+      "mainAssemblyHeight": 574,
+      "sideClaspScanlineY640IntervalsAlpha128": [
+        [
+          232,
+          359
+        ],
+        [
+          894,
+          1022
+        ]
+      ],
+      "sideClaspScanlineY640Midpoints": [
+        295.5,
+        958.0
+      ],
+      "sideClaspMidlineX": 626.75,
+      "sideClaspColumnIntervalMidpointsY": [
+        637.0,
+        637.5
+      ],
+      "sideClaspMidlineY": 637.25,
+      "centerColumnX627Alpha128Intervals": [
+        [
+          365,
+          558
+        ],
+        [
+          669,
+          939
+        ]
+      ],
+      "smallDiamondCohort": {
+        "upper-left": {
+          "area": 5255,
+          "bounds": [
+            230,
+            331,
+            322,
+            435
+          ],
+          "centroid": [
+            276.00038058991436,
+            382.6078020932445
+          ]
+        },
+        "upper-right": {
+          "area": 4494,
+          "bounds": [
+            982,
+            446,
+            1067,
+            544
+          ],
+          "centroid": [
+            1024.0280373831777,
+            494.3963061860258
+          ]
+        },
+        "middle-left": {
+          "area": 4751,
+          "bounds": [
+            196,
+            447,
+            281,
+            549
+          ],
+          "centroid": [
+            237.75878762365818,
+            497.34729530625134
+          ]
+        },
+        "lower-left": {
+          "area": 4751,
+          "bounds": [
+            236,
+            775,
+            324,
+            874
+          ],
+          "centroid": [
+            279.7099557987792,
+            824.001894338034
+          ]
+        },
+        "lower-right": {
+          "area": 4868,
+          "bounds": [
+            927,
+            777,
+            1015,
+            878
+          ],
+          "centroid": [
+            970.7898520953163,
+            827.2210353327855
+          ]
+        }
+      }
+    }
+  },
+  "mainAssemblyWidthsSourcePx": [
+    915,
+    905,
+    891,
+    791
+  ],
+  "mainAssemblyHeightsSourcePx": [
+    562,
+    608,
+    638,
+    574
+  ],
+  "adjacentAlphaMassChangesPercent": [
+    39.0970779579692,
+    26.778833737450668,
+    -16.84276675899721
+  ],
+  "mainAssemblyTerminalWidthContractionPercent": 11.223344556677894,
+  "mainAssemblyTerminalHeightContractionPercent": 10.031347962382442,
+  "sharedCenterMidlineXRange": [
+    623.25,
+    627.5
+  ],
+  "sharedCenterMidlineYRange": [
+    627.25,
+    641.0
+  ],
+  "rejectedTerminal": {
+    "sourceSHA256": "00b2de4cb36bb2a9edd307fc3d7badba822efa348fdbd7627910a630a65d2a0b",
+    "alphaMass": 165762.23921568628,
+    "componentsAlpha128Over1000": [
+      {
+        "area": 154066,
+        "bounds": [
+          273,
+          383,
+          954,
+          869
+        ],
+        "centroid": [
+          619.2430581698752,
+          631.737489128036
+        ]
+      },
+      {
+        "area": 3305,
+        "bounds": [
+          313,
+          403,
+          385,
+          486
+        ],
+        "centroid": [
+          348.41724659606655,
+          444.0765506807867
+        ]
+      },
+      {
+        "area": 3044,
+        "bounds": [
+          894,
+          449,
+          963,
+          529
+        ],
+        "centroid": [
+          928.0565045992116,
+          488.6803547963206
+        ]
+      },
+      {
+        "area": 3485,
+        "bounds": [
+          872,
+          733,
+          946,
+          819
+        ],
+        "centroid": [
+          908.7672883787661,
+          775.1190817790531
+        ]
+      },
+      {
+        "area": 3179,
+        "bounds": [
+          309,
+          736,
+          381,
+          817
+        ],
+        "centroid": [
+          344.5262661214218,
+          775.8628499528154
+        ]
+      }
+    ],
+    "mainAssemblyUnionBoundsAlpha128": [
+      273,
+      383,
+      954,
+      869
+    ],
+    "mainAssemblyWidth": 681,
+    "mainAssemblyHeight": 486,
+    "sideClaspScanlineY640IntervalsAlpha128": [
+      [
+        306,
+        437
+      ],
+      [
+        627,
+        630
+      ],
+      [
+        816,
+        947
+      ]
+    ],
+    "sideClaspScanlineY640Midpoints": [
+      371.5,
+      628.5,
+      881.5
+    ],
+    "sideClaspMidlineX": 627.1666666666666,
+    "sideClaspColumnIntervalMidpointsY": [
+      628.5,
+      710.0,
+      628.5
+    ],
+    "sideClaspMidlineY": 655.6666666666666,
+    "centerColumnX627Alpha128Intervals": [
+      [
+        383,
+        554
+      ],
+      [
+        640,
+        869
+      ]
+    ],
+    "smallDiamondCohort": {
+      "middle-left": {
+        "area": 3305,
+        "bounds": [
+          313,
+          403,
+          385,
+          486
+        ],
+        "centroid": [
+          348.41724659606655,
+          444.0765506807867
+        ]
+      },
+      "upper-right": {
+        "area": 3044,
+        "bounds": [
+          894,
+          449,
+          963,
+          529
+        ],
+        "centroid": [
+          928.0565045992116,
+          488.6803547963206
+        ]
+      },
+      "lower-right": {
+        "area": 3485,
+        "bounds": [
+          872,
+          733,
+          946,
+          819
+        ],
+        "centroid": [
+          908.7672883787661,
+          775.1190817790531
+        ]
+      },
+      "lower-left": {
+        "area": 3179,
+        "bounds": [
+          309,
+          736,
+          381,
+          817
+        ],
+        "centroid": [
+          344.5262661214218,
+          775.8628499528154
+        ]
+      }
+    }
+  },
+  "rejectedTerminalWidthContractionPercent": 23.56902356902357,
+  "rejectedTerminalAlphaMassChangePercent": -39.14277310684453,
+  "noFixedEmitterOrGroundObject": true,
+  "noPerFrameFitOrShift": true,
+  "nativeScale": 0.022328548644338118,
+  "loop": false,
+  "livePlaybackObserved": false,
+  "continuityCaveats": [
+    "This is a nonloop assembly and tightening sequence, not a conserved rigid ring simply translating. Four broken arc segments join into two long arcs, then the secondary lower band and central clasps form; no frame is a global opacity fade.",
+    "The first pose includes a short lower-left nascent band strip. It is absent as a separate strip in aligning-ring, then the complete second lower band is present at closure, matching the original four-pose staging rather than proving continuous material correspondence.",
+    "The aligning pose has a near/actual alpha128 contact between its upper-left arc and left clasp, while other side gaps remain open. It is partial latching, not four perfectly symmetric open joints. Some thin side gaps and the secondary-band slit are subordinate at native 32 and clearer at 64.",
+    "The five peripheral diamond identities persist, but their paths are independently authored and uneven. The upper-right fragment descends from the first to the aligning pose, while the others move less. No constant-speed particle interpolation is claimed.",
+    "Main-assembly widths are 915, 905, 891, 791 source pixels. Selected closure-to-terminal contraction is 11.2% in width and 10.0% in height; the rejected first terminal contracted 23.6% in width. This is intentional restraint tightening, not whole-pad motion or per-frame fitting.",
+    "Total source alpha mass changes by +39.1%, +26.8%, then -16.8%. The addition of central clasps and a second band makes assembly cadence uneven at 12 fps, even after the excessive terminal shrink was repaired.",
+    "Side-clasp diagnostic midlines span x623.25..627.5 and y627.25..641, within 0.095 and 0.307 logical pixels respectively. They support common visual registration but do not imply identical object silhouettes or a fixed physical emitter.",
+    "The terminal double ring stays visible. There is no runtime loop, authored blank ending, extra final hold, scene removal time or 420/500 ms lifecycle. APNG encoding and static images are verified; browser and live-game playback remain unobserved."
+  ]
+}

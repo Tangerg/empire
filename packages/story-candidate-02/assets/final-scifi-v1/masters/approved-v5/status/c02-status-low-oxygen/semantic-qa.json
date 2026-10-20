@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "motif": "A respirator helmet and cropped shoulders with cyan visor; foreground round oxygen gauge at lower left and red warning triangle at lower right. Three cyan bubbles at upper right and a subordinate olive leaf accent at the lower edge preserve supporting source details.",
+  "checks": {
+    "Respirator helmet with large cyan visor": true,
+    "Foreground circular gauge with cyan and red sectors": true,
+    "Red warning triangle with pale exclamation": true,
+    "Three bounded cyan bubbles": true,
+    "Supporting foliage simplified into two leaves": true,
+    "Three dominant legible masses; no background scene": true
+  },
+  "native32": "Reviewed actual native-size white/black/olive strip and 8x nearest diagnostic. Complete primary symbol survives.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or background residue.",
+  "uncertainty": "The low-oxygen identity, helmet, gauge and warning triangle are unambiguous. Tiny gauge graduations do not encode a documented numeric value; they were omitted. Source foliage leaf count is ambiguous at tiny size and was simplified to two broad leaves. Three major bubbles are preserved; one tiny decorative dot is omitted.",
+  "catalogOnly": true
+}

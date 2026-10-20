@@ -612,6 +612,42 @@
           627
         ]
       }
+    },
+    "C01-FX-18": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "scattered-bands",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-18/scattered-bands/master.png",
+          "sha256": "82a626e057d78fe9b63927ba2d16ea3fa276e238d97193f70632f129fe699002"
+        },
+        {
+          "phase": "aligning-ring",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-18/aligning-ring/master.png",
+          "sha256": "1a67ac7be80e3164514556b6dfd83c53aa12e4694c22f0d9383346ec7756cbb9"
+        },
+        {
+          "phase": "closed-restraints",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-18/closed-restraints/master.png",
+          "sha256": "66389bbead08148621ae45bb53da1971708b4250968666409c6a8aebad4a609c"
+        },
+        {
+          "phase": "settled-restraints",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-18/settled-restraints/master.png",
+          "sha256": "9ab44b83a2e6d730a91326172620c174a05480cc66828bf71b5be0df6ba769f7"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
     }
   }
 }
