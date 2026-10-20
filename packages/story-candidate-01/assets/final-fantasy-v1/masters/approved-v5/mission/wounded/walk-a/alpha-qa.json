@@ -1,0 +1,91 @@
+{
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "nativeMode": "RGBA",
+  "bboxAlphaNonzero": [
+    41,
+    31,
+    1540,
+    944
+  ],
+  "bboxAlphaGreaterThan1": [
+    479,
+    31,
+    1124,
+    944
+  ],
+  "bboxAlphaGreaterThan127": [
+    482,
+    33,
+    1121,
+    942
+  ],
+  "alphaZeroFraction": 0.770344979253956,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "measuredBootSoleBands": [
+    {
+      "name": "screen-left boot",
+      "xRange": [
+        450,
+        750
+      ],
+      "bottom": 941,
+      "bottom4RowsBounds": [
+        591,
+        938,
+        674,
+        942
+      ],
+      "soleCenterX": 632.0
+    },
+    {
+      "name": "screen-right boot",
+      "xRange": [
+        750,
+        1040
+      ],
+      "bottom": 927,
+      "bottom4RowsBounds": [
+        796,
+        924,
+        845,
+        928
+      ],
+      "soleCenterX": 820.0
+    }
+  ],
+  "measuredCrutchTipBand": {
+    "name": "crutch tip",
+    "xRange": [
+      1040,
+      1160
+    ],
+    "bottom": 917,
+    "bottom4RowsBounds": [
+      1058,
+      914,
+      1099,
+      918
+    ],
+    "soleCenterX": 1078.0
+  },
+  "sourceFoot": [
+    726.0,
+    941
+  ],
+  "sha256": "d899b6cf740bf07e67dfe1890801d6f4d4bc91b662c455245c1ffe219c7dcc9b",
+  "rawMatchesMaster": true,
+  "nativeAlphaUntouched": true,
+  "bootMeasurement": "Separately bounded boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Crutch tip independently measured, excluded from body height. Only translate entire canvas.",
+  "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+    "pixelCountAlphaGreaterThan1": 0,
+    "maxAlpha": 1
+  }
+}

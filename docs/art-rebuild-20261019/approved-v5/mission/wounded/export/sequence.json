@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-b/master.png"
+    },
+    "scale": 0.04814004376367615,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      778,
+      952
+    ],
+    "sourceFeet": {
+      "idle": [
+        778.0,
+        952
+      ],
+      "walk-a": [
+        726.0,
+        941
+      ],
+      "carry-or-work": [
+        776.0,
+        934
+      ],
+      "walk-b": [
+        788.0,
+        931
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        2.5032822757111597,
+        0.5295404814004376
+      ],
+      "carry-or-work": [
+        0.0962800875273523,
+        0.8665207877461707
+      ],
+      "walk-b": [
+        -0.4814004376367615,
+        1.0109409190371992
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    45.45295404814004,
+    49.8293216630197
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "fabe764d852d2d3cd74bf078dd620326072e50dccb04b2c52bf91729783fc282",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5762,
+        "nearOpaquePixels": 747,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          6,
+          60,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "fabe764d852d2d3cd74bf078dd620326072e50dccb04b2c52bf91729783fc282",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23143,
+        "nearOpaquePixels": 3066,
+        "edgeMax": 0,
+        "visibleBounds": [
+          70,
+          12,
+          119,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-a/master.png",
+      "registrationOffset": [
+        2.5032822757111597,
+        0.5295404814004376
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d899b6cf740bf07e67dfe1890801d6f4d4bc91b662c455245c1ffe219c7dcc9b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5746,
+        "nearOpaquePixels": 737,
+        "edgeMax": 0,
+        "visibleBounds": [
+          34,
+          6,
+          64,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-a/master.png",
+      "registrationOffset": [
+        2.5032822757111597,
+        0.5295404814004376
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d899b6cf740bf07e67dfe1890801d6f4d4bc91b662c455245c1ffe219c7dcc9b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23088,
+        "nearOpaquePixels": 3041,
+        "edgeMax": 0,
+        "visibleBounds": [
+          67,
+          12,
+          129,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/carry-or-work/master.png",
+      "registrationOffset": [
+        0.0962800875273523,
+        0.8665207877461707
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "da3600bf233efdae388648db849b53ac5f4e263cae91afed73a19c65f9b7d68d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5756,
+        "nearOpaquePixels": 728,
+        "edgeMax": 0,
+        "visibleBounds": [
+          34,
+          8,
+          61,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/carry-or-work/master.png",
+      "registrationOffset": [
+        0.0962800875273523,
+        0.8665207877461707
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "da3600bf233efdae388648db849b53ac5f4e263cae91afed73a19c65f9b7d68d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23150,
+        "nearOpaquePixels": 3017,
+        "edgeMax": 0,
+        "visibleBounds": [
+          68,
+          15,
+          121,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-b/master.png",
+      "registrationOffset": [
+        -0.4814004376367615,
+        1.0109409190371992
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "a27e96a992f8154ab488e1cb5d8779ee4de0fdb580edc84879728704f44fb5b0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5799,
+        "nearOpaquePixels": 703,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          7,
+          60,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-b/master.png",
+      "registrationOffset": [
+        -0.4814004376367615,
+        1.0109409190371992
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "a27e96a992f8154ab488e1cb5d8779ee4de0fdb580edc84879728704f44fb5b0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23267,
+        "nearOpaquePixels": 2897,
+        "edgeMax": 0,
+        "visibleBounds": [
+          66,
+          14,
+          120,
+          100
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

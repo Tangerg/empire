@@ -1,0 +1,52 @@
+{
+  "status": "Native source quartet passes identity, anatomy, support-aid, pose semantics and three-background visual QA; coordinator integration pending",
+  "topicId": "C01-MISSION-WOUNDED",
+  "scale": 0.04814004376367615,
+  "bodyReferenceSourcePixels": 914,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "originalRowAndExpandedIdlePixelExactToBoard": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "Idle0, walk-a0, carry-or-work1, walk-b0. Every perimeter zero pixels alpha>1.",
+  "exteriorHazeGate": "All4 native files zero alpha>1 pixels more than7pixels from alpha>127 silhouette. Black/white/scene composites show no haze, shadow or residue.",
+  "sourceCanvas": [
+    1586,
+    992
+  ],
+  "paddingToleranceRequiredPixels": 1,
+  "nativeCanvasVariation": "Walk-a1586x992, others1585x992. Export only right-pad1transparent column for common1586x992; no raw/master alteration.",
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 2.5032822757111597,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Tired warm-tan adult man with dark tousled hair, cream forehead bandage and arm sling, charcoal patched jacket, brown patched trousers and enormous brown boots. Exactly two arms: near elbow bends into sling, one hand at sling right opening; far hand grips the single screen-right crutch. Both boots planted.",
+    "walk-a": "Cautious supported short-step phase: screen-right boot forward, toe gently raised with heel low; screen-left boot flat behind. Crutch angles gently forward with tip low to ground. Injured arm remains in sling; no running or large arm motion.",
+    "carry-or-work": "Noncombat supported recuperative rest: both boots planted, knees slightly bent, shoulders rounded toward crutch, head bowed with downcast eyes. Same two hands and crutch; injured arm remains immobilized. No work, attack, healing procedure or new objects.",
+    "walk-b": "Opposite weight-bearing contact: screen-right boot flat and planted, screen-left boot trails with heel raised and toe low. Crutch nearly upright bears weight. Same camera, aids and identity, not mirrored. Generation kept left leg trailing rather than prompt-requested left forward; observed output is a coherent complementary shuffle phase, not a claim of exact requested foot leading."
+  },
+  "generationAttempts": 5,
+  "acceptedCount": 4,
+  "rejections": [
+    "rejected-attempt-01-idle-extra-arm"
+  ],
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only; zero domain actors and scene placements.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-shared-scale-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png"
+  ],
+  "logicalReviewExportMethod": "Same exact full-canvas44/914 transform,4x supersampled for antialias review then common downsample104x64; no silhouette fitting.",
+  "scenePreviewMeaning": "Green comparison background is technical QA only, no authored placement or invented consumer."
+}

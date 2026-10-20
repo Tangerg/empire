@@ -1,0 +1,28 @@
+{
+  "status": "Accepted by coordinator at fixed44/914 before other poses",
+  "sharedScale": 0.04814004376367615,
+  "bodyReferenceSourcePixels": 914,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Idle hair crown alpha>127 y38 to lowest supporting boot sole y952; one fixed44/914 across all whole source canvases.",
+  "canonicalSourceFoot": [
+    778,
+    952
+  ],
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "paddingPolicy": "Export only transparent right/bottom canvas pad if native dimensions vary; raw/master byte unchanged.",
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Separate boots bottom4-row alpha>127 bands; x averages underside band centers, y lowest supporting sole. Crutch measured separately as contact aid; never counted as body crown/sole. Whole canvas translation only, no crop/per-pose scale/fitting.",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "anatomyReview": "Exactly two arms/hands: near forearm immobilized in cream sling, far hand on wooden crutch; no dangling extra arm.",
+  "crutchContact": "Native lowest crutch tip y935 vs boot sole y952; 17px difference equals0.818logical, consistent with slight three-quarter ground plane."
+}

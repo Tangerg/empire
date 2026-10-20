@@ -1,0 +1,116 @@
+{
+  "topicId": "C01-MISSION-SCRIBE",
+  "assetId": "C01-FFV1-MISSION-SCRIBE",
+  "label": "\u6284\u5199\u5458",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+    "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 0,
+    "rowIndex1": 1,
+    "rowCropXYXY": [
+      0,
+      0,
+      1254,
+      314
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        0,
+        314,
+        314
+      ],
+      [
+        314,
+        0,
+        627,
+        314
+      ],
+      [
+        627,
+        0,
+        940,
+        314
+      ],
+      [
+        940,
+        0,
+        1254,
+        314
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        5,
+        309,
+        309
+      ],
+      [
+        319,
+        5,
+        622,
+        309
+      ],
+      [
+        632,
+        5,
+        935,
+        309
+      ],
+      [
+        945,
+        5,
+        1249,
+        309
+      ]
+    ],
+    "observedIdentity": "Young adult man with tousled dark-brown hair, muted plum coat and dark scarf, brown cross-body satchel with scrolls. Small writing board/book in screen-right hand and writing implement in screen-left."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-scribe.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-SCRIBE",
+    "png": "runtime-hd/mission-unit/mission-scribe.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw"
+}

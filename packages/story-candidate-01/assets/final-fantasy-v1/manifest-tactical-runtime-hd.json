@@ -1,7 +1,7 @@
 {
   "schemaVersion": "candidate-01-tactical-runtime-hd-v1",
   "pixelDensity": 2,
-  "assetCount": 178,
+  "assetCount": 179,
   "categories": [
     "combat-unit",
     "mission-unit",
@@ -575,9 +575,9 @@
     },
     {
       "topicId": "C01-MISSION-WOUNDED",
-      "png": "runtime-hd/mission-unit/mission-wounded.png",
-      "width": 256,
-      "height": 96,
+      "png": "runtime-approved-v5/mission-unit/mission-wounded@2x.png",
+      "width": 832,
+      "height": 128,
       "pixelDensity": 2
     },
     {
@@ -1255,6 +1255,13 @@
     {
       "topicId": "C01-CH01-S05",
       "png": "runtime-hd/narrative-static/ch01-s05.png",
+      "width": 512,
+      "height": 288,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-CH01-S01",
+      "png": "runtime-hd/narrative-static/ch01-s01.png",
       "width": 512,
       "height": 288,
       "pixelDensity": 2

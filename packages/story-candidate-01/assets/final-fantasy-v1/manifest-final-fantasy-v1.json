@@ -221,7 +221,7 @@
       "width": 256,
       "height": 144,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "kind": "scene"
     },
     {
@@ -2812,13 +2812,13 @@
       "topicId": "C01-MISSION-WOUNDED",
       "label": "伤员",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-wounded.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-wounded.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2827,13 +2827,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        45.45295404814004,
+        49.8293216630197
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-FACTION-DRAGON-COVENANT",

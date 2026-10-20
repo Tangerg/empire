@@ -1,0 +1,184 @@
+{
+  "topicId": "C01-MISSION-NAME-REGISTRAR",
+  "assetId": "C01-FFV1-MISSION-NAME-REGISTRAR",
+  "label": "姓名登记员",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+    "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 1,
+    "rowIndex1": 2,
+    "rowCropXYXY": [
+      0,
+      314,
+      1254,
+      627
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        314,
+        314,
+        627
+      ],
+      [
+        314,
+        314,
+        627,
+        627
+      ],
+      [
+        627,
+        314,
+        940,
+        627
+      ],
+      [
+        940,
+        314,
+        1254,
+        627
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        319,
+        309,
+        622
+      ],
+      [
+        319,
+        319,
+        622,
+        622
+      ],
+      [
+        632,
+        319,
+        935,
+        622
+      ],
+      [
+        945,
+        319,
+        1249,
+        622
+      ]
+    ],
+    "observedIdentity": "Older woman with brown-gray bun and dark slate scarf; long charcoal/taupe coat hung with rectangular name tags. Screen-left arm holds large brown register; screen-right holds lit square lantern. No combat gear."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-name-registrar.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-NAME-REGISTRAR",
+    "png": "runtime-hd/mission-unit/mission-name-registrar.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "sourceRecovery": "build_final_fantasy_v1.py MISSION_BOARDS[3] maps scribe-registrar-delegate-messenger; rowIndex0=1, row ordinal13 across mission boards. Canonical consumer audit verifies exact row and hashes. Original board cropped unresampled, source magenta reference only.",
+  "referenceFiles": {
+    "references/approved-messenger-idle.png": {
+      "sha256": "ded546d4e751027dda14db96940afe04ba5799720f09ab0bf461d677731db2f4",
+      "size": [
+        1585,
+        992
+      ]
+    },
+    "references/original-idle-cell.png": {
+      "sha256": "f3d9db530aa20b7ed0b503524258eadbdc93ec9d45232b6f8df807be639319ee",
+      "size": [
+        314,
+        313
+      ]
+    },
+    "references/original-masterboard.png": {
+      "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "references/original-row.png": {
+      "sha256": "479de95075878961b6c6cd1a8b5db57beeff585eecf814bd309b5405c3882da1",
+      "size": [
+        1254,
+        313
+      ]
+    },
+    "references/current-runtime-hd.png": {
+      "sha256": "47fafe3c188df8150f460e41a4d8224c04c8f314b6e3564f2dfcc567055e6ffc",
+      "size": [
+        256,
+        96
+      ]
+    },
+    "references/approved-doctor-idle.png": {
+      "sha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+      "size": [
+        1585,
+        992
+      ]
+    },
+    "references/current-runtime-logical.png": {
+      "sha256": "9cb14154da859c62f0672a92c934547561131a82b951f5df6f52128e2491e3c6",
+      "size": [
+        128,
+        48
+      ]
+    }
+  },
+  "builderMapping": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+    "boardArray": "MISSION_BOARDS",
+    "boardIndex0": 3,
+    "rowIndex0": 1,
+    "missionRowOrdinal0": 13,
+    "logicalFrames": [
+      32,
+      48
+    ],
+    "hdFrames": [
+      64,
+      96
+    ],
+    "sourceCatalogAvailability": "Original manifest-complete.json is absent in this checkout. Original row recovered and independently verified by mission-consumer-audit; final manifest is sorted by topic, not builder-row order."
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "topicId": "C01-MISSION-WOUNDED",
+  "assetId": "C01-FFV1-MISSION-WOUNDED",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every selected and rejected raw/master/native output is byte-identical. No alpha cleanup, painting, recoloring, cropping, per-pose scaling or native source padding. QA/export composites separate only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "classification": "catalog-only",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Zero current actors or scene placements. Assisted low-step shuffle and supported rest, no combat or labor; do not invent new wounded actors or bind the wounded shelter to this person.",
+  "sourceAnomalyResolution": "Original row and first generated attempt contain ambiguous extra dangling arm/hand. Coordinator approved clear two-arm reconstruction. Injured near arm in sling; uninjured far hand on single crutch. Expanded exact RGB idle source crop preserves hair crossing nominal row boundary. Original poses repeat; new contacts and supported rest are authored distinctly.",
+  "palettePolicy": "Preserve warm-tan adult man, dark-brown hair, cream forehead bandage and sling, charcoal patched jacket, muted brown patched trousers, brown boots, wooden crutch with dark blunt tip. No gore, armor or weapon.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "fabe764d852d2d3cd74bf078dd620326072e50dccb04b2c52bf91729783fc282",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        778.0,
+        952
+      ],
+      "review": "Tired warm-tan adult man with dark tousled hair, cream forehead bandage and arm sling, charcoal patched jacket, brown patched trousers and enormous brown boots. Exactly two arms: near elbow bends into sling, one hand at sling right opening; far hand grips the single screen-right crutch. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "d899b6cf740bf07e67dfe1890801d6f4d4bc91b662c455245c1ffe219c7dcc9b",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        726.0,
+        941
+      ],
+      "review": "Cautious supported short-step phase: screen-right boot forward, toe gently raised with heel low; screen-left boot flat behind. Crutch angles gently forward with tip low to ground. Injured arm remains in sling; no running or large arm motion."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "da3600bf233efdae388648db849b53ac5f4e263cae91afed73a19c65f9b7d68d",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        776.0,
+        934
+      ],
+      "review": "Noncombat supported recuperative rest: both boots planted, knees slightly bent, shoulders rounded toward crutch, head bowed with downcast eyes. Same two hands and crutch; injured arm remains immobilized. No work, attack, healing procedure or new objects."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "a27e96a992f8154ab488e1cb5d8779ee4de0fdb580edc84879728704f44fb5b0",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        788.0,
+        931
+      ],
+      "review": "Opposite weight-bearing contact: screen-right boot flat and planted, screen-left boot trails with heel raised and toe low. Crutch nearly upright bears weight. Same camera, aids and identity, not mirrored. Generation kept left leg trailing rather than prompt-requested left forward; observed output is a coherent complementary shuffle phase, not a claim of exact requested foot leading."
+    }
+  },
+  "idleScaleReview": "review-approval.json",
+  "rejectedAttempts": "rejected-attempts.json"
+}

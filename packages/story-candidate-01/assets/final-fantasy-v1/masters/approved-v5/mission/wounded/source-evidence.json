@@ -1,0 +1,143 @@
+{
+  "topicId": "C01-MISSION-WOUNDED",
+  "assetId": "C01-FFV1-MISSION-WOUNDED",
+  "label": "伤员",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+    "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 2,
+    "rowIndex1": 3,
+    "rowCropXYXY": [
+      0,
+      627,
+      1254,
+      940
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        627,
+        314,
+        940
+      ],
+      [
+        314,
+        627,
+        627,
+        940
+      ],
+      [
+        627,
+        627,
+        940,
+        940
+      ],
+      [
+        940,
+        627,
+        1254,
+        940
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        632,
+        309,
+        935
+      ],
+      [
+        319,
+        632,
+        622,
+        935
+      ],
+      [
+        632,
+        632,
+        935,
+        935
+      ],
+      [
+        945,
+        632,
+        1249,
+        935
+      ]
+    ],
+    "observedIdentity": "Dark-haired adult man with cream forehead bandage and arm sling, patched charcoal coat, brown patched trousers; wooden crutch at screen-right. No gore or combat weapon."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-wounded.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-WOUNDED",
+    "png": "runtime-hd/mission-unit/mission-wounded.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "referenceHashes": {
+    "references/original-idle-cell.png": "a7081ed8c8d584c112bbfc64af10b42c84d2c71da70d6d0c4c6a8ce5d0e5497e",
+    "references/approved-baker-idle.png": "13d441e016a1e89403fe859da160dac6599473ab0dad207c5a95c9530f952dd2",
+    "references/approved-city-doctor-idle.png": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+    "references/original-masterboard.png": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+    "references/original-row.png": "1979d7e1c6c91fc7f9fa0eabbc5e13096f70db74e40bdcb55794a298516c72db",
+    "references/current-runtime-hd.png": "fd88469601a4f9256ac0c5c1d68dcdb26396700a49ca48783f5442112daa5c8a",
+    "references/current-runtime-logical.png": "abb9d367f0fb0c7915c4e0e84bd2e5511a64a614a6a79daf70c23d040adb5e86"
+  },
+  "sourceMappingEvidence": "Surviving docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md mission order plus MISSION_BOARDS/build_units sequence, and independently viewed source row/runtime strip. Original manifest-complete.json absent; never use alphabetical manifest order.",
+  "expandedIdleReferenceCropXYXY": [
+    0,
+    610,
+    314,
+    923
+  ],
+  "expandedIdleReferenceReason": "Original hair crown crosses nominal row top; expanded exact RGB crop preserves all hair without neighboring character. No alpha extraction or pixel edits.",
+  "identityRepair": "Original source has extra/ambiguous hanging hand in addition to sling and crutch. Coordinator approved clear two-arm reconstruction; injured near arm bent in sling, uninjured far hand grips crutch. Rejected first attempt preserves old extra-arm defect.",
+  "poseSemantics": {
+    "idle": "Both boots and crutch planted, hunched tired standing rest",
+    "walk-a": "Careful assisted short step; never run",
+    "carry-or-work": "Supported recuperative weight-shift/rest rather than labor or combat",
+    "walk-b": "Opposite careful assisted short step; same crutch and immobilized arm"
+  },
+  "bindingConstraint": "Catalog-only; no new gameplay actors or consumer bindings. No repo/Git edits.",
+  "status": "Native quartet complete; catalog-only collection. No runtime bindings edited.",
+  "referenceRowAndExpandedIdlePixelExactToOriginalBoard": true
+}

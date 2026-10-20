@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 330,
+    "formalBound": 332,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 11,
-      "narrative-static": 8,
+      "mission-unit": 12,
+      "narrative-static": 9,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 330,
+    "rawPreservedTopics": 334,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -421,13 +421,20 @@
       "category": "narrative-static",
       "label": "双子丘陵初次指挥",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete scene with source-matched early Lorne standard and approved Laiya identity; native/request evidence retained",
+        "export": "Explicit4/2/4/3px edgecrop, independent256x144 and512x288; actual HD and viewport covers reviewed",
+        "runtimeBinding": "Canonical+HD narrative resolver for prologue, first brief/aftermath and staging hero",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CH01-S02",
@@ -2640,8 +2647,10 @@
       "category": "mission-unit",
       "label": "姓名登记员",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/name-registrar/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2744,8 +2753,10 @@
       "category": "mission-unit",
       "label": "抄写员",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/scribe/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2786,13 +2797,24 @@
       "category": "mission-unit",
       "label": "伤员",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/rejected-attempt-01-idle-extra-arm/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wounded/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-wounded.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-wounded.png",
+      "stageEvidence": {
+        "raw": "Original bandaged man, injured arm in sling and opposite crutch; coherent two-arm anatomy, assisted opposite steps and supported rest; immutable native sources and exact evidence preserved",
+        "export": "shared44/914 scale, measured support translation within2.504logicalpx, technicalpadding1px; original extra-arm ambiguity rejected and retained; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-DRAGON-COVENANT",
