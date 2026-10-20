@@ -59,6 +59,7 @@ public sealed class CombatForecasts
     };
     public ReactionBehavior Reaction(string id) => reactions.TryGetValue(id, out var value) ? value
         : throw new DomainInvariantException($"unknown reaction stance \"{id}\"");
+    public IReadOnlyList<string> ReactionIds => reactions.Keys.ToArray();
     public double Effectiveness(string damageType, string armorClass) =>
         matchups.GetValueOrDefault((damageType, armorClass), 1);
     public ITacticalGrid Grid(JsonObject state) => grids.Get(StateJson.Text(state["rules"]!.AsObject(), "grid"));

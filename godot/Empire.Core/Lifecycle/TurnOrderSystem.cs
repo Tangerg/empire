@@ -9,6 +9,7 @@ public readonly record struct TurnHandoff(int Player, int? ActiveUnit, bool Roun
 /// <summary>The source side and initiative policies, operating on the battle's serializable clock.</summary>
 public sealed class TurnOrderSystem
 {
+    public static IReadOnlyList<string> SupportedPolicies { get; } = System.Array.AsReadOnly(new[] { "side", "initiative" });
     private readonly StateContent content;
     public TurnOrderSystem(JsonArray contentPacks) : this(new StateContent(contentPacks)) { }
     internal TurnOrderSystem(StateContent content) => this.content = content;

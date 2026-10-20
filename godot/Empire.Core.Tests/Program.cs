@@ -38,4 +38,5 @@ Check("six TS tactic action snapshots", () => SupportChecks.Tactics(root));
 Check("resource clamping and atomic costs", SupportChecks.Resources);
 foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
     Check($"full native replay {aggression}", () => ReplayChecks.Run(root, aggression));
+Check("level normalization and canonical spawn", () => StateContractChecks.Run(root));
 Console.WriteLine($"{passed} passed; {failed} failed");return failed==0?0:1;

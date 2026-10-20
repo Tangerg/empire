@@ -15,6 +15,8 @@ public sealed class BattleResources
         ["momentum"] = "unit", ["weapon_uses"] = "weapon"
     };
 
+    public static IReadOnlyList<string> SupportedResources { get; } = System.Array.AsReadOnly(Kinds.Keys.ToArray());
+
     private static JsonObject? FindAccount(Subject subject, string resource)
     {
         if (!Kinds.TryGetValue(resource, out var kind))

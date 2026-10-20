@@ -38,7 +38,7 @@ public sealed record AiAgenda(IReadOnlyList<CaptureTarget> CaptureTargets, IRead
             if (VictorySystem.Status(context.State, context.Player, objective) != "active") return;
             var weight = inheritedWeight * (VictorySystem.Role(objective) switch { "critical" => 1.4, "optional" => 0.55, _ => 1 });
             var pending = VictorySystem.Children(objective).Where(child => VictorySystem.Status(context.State, context.Player, child) is not ("completed" or "failed" or "cancelled" or "inactive"));
-            var children = (Text(objective, "type") == "sequence" ? pending.Take(1) : pending).ToArray();
+            var children = (VictorySystem.RefreshMode(objective) == "sequence" ? pending.Take(1) : pending).ToArray();
             if (children.Length > 0) { foreach (var child in children) Visit(child, weight); return; }
             var advisor = context.ObjectiveAdvisors.TryGet(Text(objective, "type"));
             if (advisor is null) return;

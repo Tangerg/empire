@@ -7,9 +7,11 @@ import { beginCast, resolveDueCasts } from '../../../packages/battle-engine/src/
 import { forceMoveUnit } from '../../../packages/battle-engine/src/forced-movement';
 import { resolvePartingShots } from '../../../packages/battle-engine/src/zone-of-control';
 import { damageStructure } from '../../../packages/battle-engine/src/structures';
-import { weaponCoverage } from '../../../packages/battle-engine/src/weapon-area';
+import { weaponCoverage, WeaponAreaShapes } from '../../../packages/battle-engine/src/weapon-area';
 import { abilityDef, abilityTargets, canUseAbility } from '../../../packages/battle-engine/src/abilities';
 import { hashState } from '../../../packages/battle-engine/src/replay';
+import { addStatus, removeStatus, combinedStatusModifiers } from '../../../packages/battle-engine/src/statuses';
+import { awardRankProgress } from '../../../packages/battle-engine/src/progression';
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const output = process.env.EMPIRE_COMBAT_ORACLE_OUTPUT;
@@ -37,19 +39,25 @@ function base(units = [unit(1, 1, 2, 3), unit(2, 2, 3, 3)]) {
   return state;
 }
 const cases = [];
-function run(name, state, op = 'attack', args = {}, patches = []) {
+function run(name, state, op = 'attack', args = {}, patches = [], areas = []) {
+  state = clone(state);
   const sourcePacks = clone(packs);
   for (const patch of patches) {
     Object.assign(sourcePacks.flatMap(pack => pack[patch.family] ?? []).find(entry => entry.id === patch.id), patch.values);
   }
   const content = createContentCatalog(); new ContentPackInstaller(content).install(...sourcePacks);
-  const rules = createBattleEngine({ content }).rules;
+  const areaShapes = WeaponAreaShapes.clone();
+  for (const area of areas) areaShapes.replace({
+    id: area.id, needsOccupant: area.needsOccupant,
+    cells: (_board, _from, target) => area.offsets.map(offset => ({ x: target.x + offset.x, y: target.y + offset.y })),
+  });
+  const rules = createBattleEngine({ content, areaShapes }).rules;
   const initial = clone(state), events = [], hashes = [];
   const emit = event => { events.push(event); hashes.push(hashState(state)); };
   const attacker = state.units.find(unit => unit.id === (args.unit ?? 1));
   const from = args.from ?? (attacker && { x: attacker.x, y: attacker.y });
   const target = args.target ?? { x: 3, y: 3 };
-  const weapon = args.weapon ?? attacker && content.units.get(attacker.type).weapons[0];
+  const weapon = args.weapon ?? (attacker && content.units.get(attacker.type).weapons[0]);
   let result = null, error = null;
   try {
     if (op === 'attack' || op === 'forecast') {
@@ -67,12 +75,21 @@ function run(name, state, op = 'attack', args = {}, patches = []) {
     else if (op === 'parting') resolvePartingShots(rules, state, attacker, from, args.to, emit);
     else if (op === 'structure') result = damageStructure(content, state, args.id, args.raw === 'NaN' ? NaN : args.raw, emit);
     else if (op === 'coverage') result = weaponCoverage(rules, state, from, target, args.area);
+    else if (op === 'status') {
+      for (const step of args.steps) {
+        if (step.remove) removeStatus(attacker, step.id, emit);
+        else addStatus(content, attacker, { id: step.id, remaining: step.duration, sourceUnitId: step.source }, emit);
+      }
+      result = combinedStatusModifiers(content, attacker);
+    } else if (op === 'progress') {
+      for (const amount of args.amounts) awardRankProgress(rules, attacker, amount, emit);
+    }
     else throw new Error(`Unknown operation ${op}`);
   } catch (caught) {
     if (!['DomainInvariantError', 'IllegalActionError'].includes(caught.name)) throw caught;
     error = { kind: caught.name.replace('Error', ''), message: caught.message };
   }
-  cases.push({ name, initial, op, args, patches, result, error, events, hashes, after: state });
+  cases.push({ name, initial, op, args, patches, areas, result, error, events, hashes, after: state });
 }
 const patchWeapon = values => [{ family: 'weapons', id: 'c01.border-blade', values }];
 const structure = (id = 'gate', x = 3, y = 3, hp = 140, owner = 2) => ({ id, type: 'gate', owner, x, y, hp, disabled: false });
@@ -178,5 +195,58 @@ for (const hp of [0, 140]) for (const raw of [-1, 'NaN', 0, 1.5, 999]) {
 run('missing structure invalid raw precedence', base(), 'structure', { id: 'missing', raw: -1 });
 run('forecast empty single is invariant', base([unit(1, 1, 2, 3)]), 'forecast');
 run('forecast allied primary is invariant', base([unit(1, 1, 2, 3), unit(2, 1, 3, 3)]), 'forecast');
+{
+  const custom = [{ id: 'test.splash', needsOccupant: false, offsets: [{ x: 1, y: 0 }, { x: 0, y: 0 }, { x: 1, y: 0 }, { x: -99, y: 0 }] }];
+  run('custom shape clipped deduplicated order', base(), 'coverage', { area: 'test.splash' }, [], custom);
+  run('custom shape vacant primary resolves', base([unit(1, 1, 1, 3), unit(2, 2, 4, 3)]), 'attack', {},
+    patchWeapon({ area: 'test.splash' }), custom);
+  const cast = charging(); cast.units[1].x = 4;
+  run('custom shape delayed vacant splash', cast, 'due', {},
+    [{ family: 'weapons', id: 'mage_meteor', values: { area: 'test.splash' } }], custom);
+  const replaceSingle = [{ id: 'single', needsOccupant: false, offsets: [{ x: 1, y: 0 }] }];
+  run('replaced single no longer requires occupant', base([unit(1, 1, 1, 3), unit(2, 2, 4, 3)]), 'attack', {}, [], replaceSingle);
+  const singleCast = charging(); singleCast.pendingCasts[0].weapon = 'mage_bolt'; singleCast.units[1].x = 4;
+  run('replaced single cast no longer requires occupant', singleCast, 'due', {}, [], replaceSingle);
+  const requireOccupant = [{ id: 'cross1', needsOccupant: true, offsets: [{ x: 1, y: 0 }] }];
+  run('replaced cross requires occupant', base([unit(1, 1, 1, 3)]), 'forecast', {}, patchWeapon({ area: 'cross1' }), requireOccupant);
+  run('replaced cross cast requires occupant', cast, 'due', {}, [], requireOccupant);
+  run('unknown area fails loudly', base(), 'coverage', { area: 'test.missing' });
+}
+for (const weapon of packs.flatMap(pack => pack.weapons ?? [])) {
+  const carrier = packs.flatMap(pack => pack.units ?? []).find(def => def.weapons.includes(weapon.id));
+  if (!carrier) throw new Error(`No installed carrier exercises weapon ${weapon.id}`);
+  for (const targetType of ['c01.swordsman', 'mage', 'knight']) {
+    const distance = Math.max(1, weapon.minRange);
+    const state = base([unit(1, 1, 1, 3, carrier.id), unit(2, 2, 1 + distance, 3, targetType)]);
+    if ([...weapon.resourceRequirements, ...weapon.resourceCosts].some(cost => cost.resource === 'momentum'))
+      state.units[0].resources.momentum = { current: 150, capacity: 150 };
+    state.units[1].statuses = [{ id: 'c01.oath-controlled', remaining: 3, stacks: 1 }];
+    run(`installed weapon ${weapon.id} against ${targetType}`, state, 'attack',
+      { weapon: weapon.id, target: { x: 1 + distance, y: 3 } });
+  }
+}
+for (const stackMode of ['refresh', 'extend', 'stack']) {
+  run(`status ${stackMode} expiry and provenance`, base(), 'status',
+    { steps: [
+      { id: 'inspired', duration: 3, source: 2 }, { id: 'inspired', duration: 1 },
+      { id: 'inspired', duration: 4, source: 3 }, { id: 'inspired', duration: 2, source: 4 },
+      { id: 'shaken', duration: 2 }, { id: 'armor_down', duration: 3 },
+    ] }, [{ family: 'statuses', id: 'inspired', values: { stackMode, maxStacks: 2 } }]);
+}
+run('status remove existing and absent', base(), 'status', { steps: [
+  { id: 'inspired', duration: 2 }, { id: 'inspired', remove: true }, { id: 'inspired', remove: true },
+] });
+for (const career of packs.flatMap(pack => pack.careers ?? [])) {
+  const state = base(); state.units[0].career = { current: career.id, unlocked: [career.id], mastery: { [career.id]: career.masteryThreshold - 1 } };
+  run(`career mastery ${career.id}`, state, 'progress', { amounts: [0, -5, 0.49, 0.5, 120, 320] });
+}
+for (const amount of [0, 1, 2]) {
+  const state = base(); state.players.find(player => player.id === 1).resources.funds.current = amount;
+  const patches = patchWeapon({ resourceCosts: [
+    { subject: 'player', resource: 'funds', amount: 0.5 }, { subject: 'player', resource: 'funds', amount: 0.5 },
+  ] });
+  run(`combined player costs readiness ${amount}`, state, 'query', {}, patches);
+  run(`ordered fractional player costs execution ${amount}`, state, 'attack', {}, patches);
+}
 writeFileSync(output, JSON.stringify({ packs, cases }));
 console.log(`Wrote ${cases.length} live TypeScript combat oracle cases`);

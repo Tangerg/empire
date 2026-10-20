@@ -15,11 +15,14 @@ public sealed partial class BattleCombat : ILifecycleEffects
     public CombatForecasts Forecasts { get; }
     public BattleDamage Damage { get; }
     public CombatEffects Effects { get; }
-    public BattleCombat(JsonArray packs, GridRegistry grids, BattleResources resources, MovementRules movement)
+    public WeaponAreaRegistry AreaShapes { get; }
+    public BattleCombat(JsonArray packs, GridRegistry grids, BattleResources resources, MovementRules movement,
+        WeaponAreaRegistry areaShapes)
     {
         content = new StateContent(packs);
         this.resources = resources;
         this.movement = movement;
+        AreaShapes = areaShapes;
         Forecasts = new CombatForecasts(packs, grids, resources);
         Damage = new BattleDamage(packs, grids);
         Effects = new CombatEffects(packs);
@@ -56,19 +59,8 @@ public sealed partial class BattleCombat : ILifecycleEffects
         var owner = StateJson.Integer(structure, "owner");
         return owner == 0 || TacticalQueries.AreEnemies(state, owner, StateJson.Integer(attacker, "owner")) ? structure : null;
     }
-    public IReadOnlyList<Coord> Coverage(JsonObject state, Coord from, Coord aimedAt, string area)
-    {
-        var board = movement.Board(state);
-        IEnumerable<Coord> cells = area switch
-        {
-            "single" => new[] { aimedAt },
-            "cross1" => board.Ring(aimedAt, 0, 1),
-            "ring1" => Enumerable.Range(-1, 3).SelectMany(y => Enumerable.Range(-1, 3).Select(x => new Coord(aimedAt.X + x, aimedAt.Y + y))),
-            "line" => board.Grid.Line(from, aimedAt).Skip(1),
-            _ => throw new DomainInvariantException($"unknown weapon area shape \"{area}\""),
-        };
-        return cells.Where(board.Contains).Distinct().ToArray();
-    }
+    public IReadOnlyList<Coord> Coverage(JsonObject state, Coord from, Coord aimedAt, string area) =>
+        AreaShapes.Coverage(movement.Board(state), from, aimedAt, area);
     public CombatPlan Forecast(JsonObject state, JsonObject attacker, Coord target, Coord? from = null, string? weapon = null)
     {
         var origin = from ?? TacticalQueries.Position(attacker);
@@ -79,7 +71,7 @@ public sealed partial class BattleCombat : ILifecycleEffects
         var area = StateJson.Text(selected, "area");
         var primaryTarget = TacticalQueries.UnitAt(state, target);
         var structureTarget = HostileStructure(state, attacker, target);
-        if (primaryTarget is null && structureTarget is null && area == "single")
+        if (primaryTarget is null && structureTarget is null && AreaShapes.Get(area).NeedsOccupant)
             throw new DomainInvariantException("combat plan requires a hostile primary target");
         if (primaryTarget is not null && !TacticalQueries.AreEnemies(state, StateJson.Integer(primaryTarget, "owner"), StateJson.Integer(attacker, "owner")))
             throw new DomainInvariantException("combat plan cannot target an allied unit");

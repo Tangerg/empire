@@ -108,6 +108,48 @@ foreach (var vector in vectors.OfType<JsonObject>())
 }
 Console.WriteLine($"Checked {vectors.Count} ordered movement, targeting, sight and threat vectors.");
 
+var directiveVectors = Read("godot/tests/oracle/directive-vectors.json").AsArray();
+foreach (var vector in directiveVectors.OfType<JsonObject>())
+{
+    Check($"directive behavior {vector["name"]}", () =>
+    {
+        var state = (JsonObject)vector["state"]!.DeepClone();
+        var unit = TacticalQueries.RequireUnit(state, vector["unit"]!.GetValue<int>());
+        var before = StateDigest.Hash(state);
+        foreach (var pull in vector["pulls"]!.AsArray().OfType<JsonObject>())
+            if (directives.Pull(state, unit, Point(pull["at"]!), movement.Grid(state)) != pull["value"]!.GetValue<double>())
+                throw new Exception("directive pull mismatch");
+        if (directives.Engagement(unit) != vector["engagement"]!.GetValue<double>() ||
+            directives.FightPenalty(unit) != vector["fightPenalty"]!.GetValue<double>())
+            throw new Exception("directive combat factors mismatch");
+        if (StateDigest.Hash(state) != before) throw new Exception("directive appraisal mutated state");
+        foreach (var at in vector["arrivalPath"]!.AsArray()) directives.ArriveAt(unit, Point(at!));
+        EqualJson(vector["afterDirective"], unit["directive"], "directive arrival");
+    });
+}
+Console.WriteLine($"Checked {directiveVectors.Count} directive appraisal and arrival vectors.");
+Check("directive registry extension, replacement, clone and seal", () =>
+{
+    var custom = new UnitDirectiveBehavior("test.forage", survey => survey.At.Y * 40, 0.5, -20,
+        (unit, at) => unit["capture"] = at.X);
+    var registry = directives.Clone().Register(custom);
+    var state = (JsonObject)vectors[0]!["state"]!.DeepClone();
+    var unit = state["units"]![0]!.AsObject();
+    unit["directive"]!["mode"] = custom.Id;
+    if (registry.Pull(state, unit, new Coord(0, 1), movement.Grid(state)) != 40 ||
+        registry.Engagement(unit) != 0.5 || registry.FightPenalty(unit) != -20)
+        throw new Exception("custom directive not dispatched");
+    registry.ArriveAt(unit, new Coord(3, 0));
+    if (unit["capture"]!.GetValue<int>() != 3) throw new Exception("custom arrival not dispatched");
+    Throws<DomainInvariantException>(() => registry.Register(custom));
+    registry.Replace(custom with { Engagement = 0.8 });
+    if (registry.Engagement(unit) != 0.8 || directives.Has(custom.Id))
+        throw new Exception("registry replacement or clone isolation failed");
+    registry.Seal();
+    Throws<DomainInvariantException>(() => registry.Replace(custom));
+    Throws<DomainInvariantException>(() => directives.Get("missing"));
+});
+
 var sample = waitCases[0];
 void Reject(string name, Action<JsonObject, JsonObject> edit)
 {

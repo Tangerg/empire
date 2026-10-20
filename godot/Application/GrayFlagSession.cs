@@ -16,11 +16,42 @@ public sealed class GrayFlagSession : IBattleSession
     private readonly Battle battle;
     private long revision;
     private readonly List<JsonObject> actions = new();
+    private readonly List<JsonObject> events = new();
 
     public GrayFlagSession(GrayFlagEngine engine, JsonObject level)
     {
         this.engine = engine;
         battle = engine.CreateBattle(level);
+    }
+
+    private GrayFlagSession(GrayFlagEngine engine, Battle battle)
+    { this.engine = engine; this.battle = battle; }
+
+    public static GrayFlagSession FromSave(GrayFlagEngine engine, JsonNode save, JsonArray? recordedEvents = null)
+    {
+        var restored = new GrayFlagSession(engine, engine.LoadSavedBattle(save));
+        if (recordedEvents is not null) restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
+        return restored;
+    }
+    public JsonObject Snapshot() => battle.Snapshot();
+    public JsonObject Save() => engine.SaveBattle(battle.Snapshot());
+    public IReadOnlyList<JsonObject> Events => events.Select(value => (JsonObject)value.DeepClone()).ToArray();
+
+    public bool IsComputerTurn
+    {
+        get
+        {
+            var state = battle.Snapshot();
+            return state["phase"]!.GetValue<string>() == "playing" &&
+                TacticalQueries.Player(state, state["currentPlayer"]!.GetValue<int>())["controller"]!.GetValue<string>() == "ai";
+        }
+    }
+
+    public bool AdvanceComputer()
+    {
+        if (!IsComputerTurn) return false;
+        Commit(engine.Ai.ChooseAction(battle.Snapshot()));
+        return true;
     }
 
     public BattleSnapshot GetSnapshot() => new(revision, JsonSerializer.SerializeToElement(battle.Snapshot()));
@@ -29,7 +60,7 @@ public sealed class GrayFlagSession : IBattleSession
     public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId)
     {
         var state = battle.Snapshot();
-        if (state["phase"]!.GetValue<string>() != "playing") return [];
+        if (state["phase"]!.GetValue<string>() != "playing" || IsComputerTurn) return [];
         var choices = new List<BattleOrderChoice>
         {
             Choice("结束回合", "turn", null, new JsonObject { ["kind"] = "endTurn" })
@@ -75,16 +106,24 @@ public sealed class GrayFlagSession : IBattleSession
     public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision)
     {
         if (expectedRevision != revision) return new(false, "战场已变化，请重新选择命令。");
+        if (IsComputerTurn) return new(false, "正在执行敌方回合。");
         var command = JsonNode.Parse(action.GetRawText()) as JsonObject;
         if (command is null) return new(false, "命令必须是对象。");
         try
         {
-            var receipt = battle.Dispatch(command);
-            actions.Add((JsonObject)command.DeepClone());
-            revision++;
+            var receipt = Commit(command);
             return new(true, $"命令完成 · {receipt.Events.Count} 条战斗事件");
         }
         catch (IllegalActionException error) { return new(false, error.Message); }
+    }
+
+    private BattleReceipt Commit(JsonObject command)
+    {
+        var receipt = battle.Dispatch(command);
+        actions.Add((JsonObject)command.DeepClone());
+        events.AddRange(receipt.Events.Select(value => (JsonObject)value.DeepClone()));
+        revision++;
+        return receipt;
     }
 
     private static BattleOrderChoice Choice(string label, string role, Coord? at, JsonObject action) =>

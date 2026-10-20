@@ -1,5 +1,7 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
+using Empire.Core.Scenario;
+using Empire.Core.Ai;
 using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
 using Empire.Core.Orders;
@@ -14,8 +16,9 @@ public sealed record CommandOption(string Key, string Ability, string? Weapon, s
     string Hint, bool SelfTargeted, IReadOnlyList<Coord> Targets, string? Engagement = null);
 
 /// <summary>Native composition root. The battle owns state; nodes never own gameplay rules.</summary>
-public sealed class GrayFlagEngine
+public sealed partial class GrayFlagEngine
 {
+    public static IReadOnlyList<string> SupportedAbilities { get; } = System.Array.AsReadOnly(new[] { "wait", "capture", "attack", "heal" });
     private readonly JsonArray packs;
     internal StateContent Content { get; }
     public GridRegistry Grids { get; }
@@ -25,6 +28,10 @@ public sealed class GrayFlagEngine
     public UnitDirectiveRegistry Directives { get; }
     public SupportOrders Support { get; }
     public BattleCombat Combat { get; }
+    public WeaponAreaRegistry AreaShapes { get; }
+    public AiPlanner Ai { get; }
+    public ScenarioExtensions ScenarioEffects { get; }
+    public ScenarioSystem Scenarios { get; }
     public BattleResources Resources { get; } = new();
 
     public GrayFlagEngine(JsonArray contentPacks)
@@ -37,7 +44,14 @@ public sealed class GrayFlagEngine
         Directives = UnitDirectiveRegistry.Core().Seal();
         Commands = new TacticalCommands(Movement, Turns.MayAct, Directives);
         Support = new SupportOrders(packs, Grids);
-        Combat = new BattleCombat(packs, Grids, Resources, Movement);
+        AreaShapes = WeaponAreaRegistry.Core().Seal();
+        Combat = new BattleCombat(packs, Grids, Resources, Movement, AreaShapes);
+        ScenarioEffects = new ScenarioExtensions(packs, Movement, Combat, (state, source, done) =>
+            BattleStateFactory.SpawnUnit(packs, Grids, state, StateJson.Text(source, "unit"),
+                StateJson.Integer(source, "owner"), TacticalQueries.Position(source), done: done, source: source));
+        Scenarios = new ScenarioSystem(packs, ScenarioEffects.ConditionMet, ScenarioEffects.Apply);
+        Ai = new AiPlanner(this, DefaultAiIntents.Create(), DefaultAbilityAiEvaluators.Create(), DefaultAiObjectiveAdvisors.Create());
+        ComposePersistence();
     }
 
     public JsonObject CreateState(JsonObject level, uint? seed = null)
@@ -48,7 +62,7 @@ public sealed class GrayFlagEngine
     }
 
     public Battle CreateBattle(JsonObject level, uint? seed = null) => new(CreateState(level, seed), Registry());
-    public Battle RestoreBattle(JsonObject state) => new(state, Registry());
+    private Battle RestoreBattle(JsonObject state) => new(state, Registry());
 
     private BattleActionRegistry Registry()
     {
@@ -59,7 +73,7 @@ public sealed class GrayFlagEngine
     }
 
     private BattleLifecycle Lifecycle(JsonObject state, Action<JsonObject> emit) => new(state, packs, emit,
-        Combat, Resources);
+        Combat, Resources, Scenarios, CompositeRules.ObjectiveOutcome, CompositeRules.DescribeObjective);
 
     private void ApplyAction(JsonObject state, JsonObject action, Action<JsonObject> output)
     {

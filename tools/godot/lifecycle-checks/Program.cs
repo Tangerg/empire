@@ -1,11 +1,15 @@
 using System.Text.Json.Nodes;
+using System.IO.Compression;
 using Empire.Core.Lifecycle;
 using Empire.Core.Determinism;
 var root = args.Length > 0 ? Path.GetFullPath(args[0]) : Path.GetFullPath("godot");
 var fixture = args.Length > 1 ? args[1] : "/tmp/empire-lifecycle-oracle.json";
 var diagnostics = Path.GetDirectoryName(Path.GetFullPath(fixture))!;
 var packs = JsonNode.Parse(File.ReadAllText(root + "/data/content-packs.json"))!.AsArray();
-var cases = JsonNode.Parse(File.ReadAllText(root + "/tests/oracle/action-cases.json"))!.AsArray();
+var casePath = root + "/tests/oracle/action-cases.json";
+JsonArray cases;
+if (File.Exists(casePath)) cases = JsonNode.Parse(File.ReadAllText(casePath))!.AsArray();
+else { using var file = File.OpenRead(casePath + ".gz"); using var gzip = new GZipStream(file, CompressionMode.Decompress); cases = JsonNode.Parse(gzip)!.AsArray(); }
 var passed = 0;
 foreach (var item in cases)
 {

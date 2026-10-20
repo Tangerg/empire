@@ -10,11 +10,33 @@ public readonly record struct VictoryResult(int? Team, string Reason);
 /// <summary>Source objective resolution and defeat ordering, including GrayFlag's critical survivor objective.</summary>
 public sealed class VictorySystem
 {
+    public static IReadOnlyList<string> SupportedObjectives { get; } = System.Array.AsReadOnly(new[]
+    {
+        "routEnemies", "failOn", "optional", "all", "any", "sequence", "captureHQ", "holdAllVillages",
+        "surviveTurns", "eliminate", "protect", "destroy", "escort", "control", "score", "interact",
+    });
     private readonly StateContent content;
     private readonly ScenarioSystem scenarios;
-    public VictorySystem(JsonArray packs, ScenarioSystem? scenarios = null)
-    { content = new StateContent(packs); this.scenarios = scenarios ?? new ScenarioSystem(content); }
-    internal VictorySystem(StateContent content, ScenarioSystem scenarios) { this.content = content; this.scenarios = scenarios; }
+    private readonly Func<JsonObject, int, JsonObject, string>? extraObjective;
+    private readonly Func<JsonObject, string>? extraObjectiveDescription;
+    public VictorySystem(JsonArray packs, ScenarioSystem? scenarios = null,
+        Func<JsonObject, int, JsonObject, string>? extraObjective = null,
+        Func<JsonObject, string>? extraObjectiveDescription = null)
+    {
+        content = new StateContent(packs);
+        this.scenarios = scenarios ?? new ScenarioSystem(content);
+        this.extraObjective = extraObjective;
+        this.extraObjectiveDescription = extraObjectiveDescription;
+    }
+    internal VictorySystem(StateContent content, ScenarioSystem scenarios,
+        Func<JsonObject, int, JsonObject, string>? extraObjective = null,
+        Func<JsonObject, string>? extraObjectiveDescription = null)
+    {
+        this.content = content;
+        this.scenarios = scenarios;
+        this.extraObjective = extraObjective;
+        this.extraObjectiveDescription = extraObjectiveDescription;
+    }
 
     public VictoryResult Evaluate(JsonObject state, Action<JsonObject> emit)
     {
@@ -36,7 +58,7 @@ public sealed class VictorySystem
         {
             var completed = Objects(owner["objectives"], "objectives").FirstOrDefault(objective =>
                 Role(objective) != "optional" && Status(state, Integer(owner, "id"), objective) == "completed");
-            if (completed is not null) return new VictoryResult(Integer(owner, "team"), $"{Text(owner, "name")} 完成目标：{Describe(completed)}");
+            if (completed is not null) return new VictoryResult(Integer(owner, "team"), $"{Text(owner, "name")} 完成目标：{Describe(completed, extraObjectiveDescription)}");
         }
         var limit = Object(state["rules"], "rules")["turnLimit"];
         return limit is not null && Number(state["turn"], "turn") > Number(limit, "turn limit")
@@ -52,13 +74,13 @@ public sealed class VictorySystem
     private void RefreshOne(JsonObject state, int owner, JsonObject objective, Action<JsonObject> emit)
     {
         if (Status(state, owner, objective) != "active") return;
-        var type = Text(objective, "type");
+        var mode = RefreshMode(objective);
         foreach (var child in Children(objective))
         {
             var status = Status(state, owner, child);
-            if (type == "sequence" && (status == "completed" || status == "cancelled")) continue;
+            if (mode == "sequence" && (status == "completed" || status == "cancelled")) continue;
             RefreshOne(state, owner, child, emit);
-            if (type == "sequence" && Status(state, owner, child) != "completed") break;
+            if (mode == "sequence" && Status(state, owner, child) != "completed") break;
         }
         var outcome = Outcome(state, owner, objective);
         if (outcome == "pending") return;
@@ -113,14 +135,15 @@ public sealed class VictorySystem
                 return Decide(cells.Length > 0 && cells.All(cell => Integer(Array(field["owners"], "owners")[Integer(cell, "y") * Integer(field, "width") + Integer(cell, "x")], "owner") == owner));
             case "score": return ScenarioSystem.Compare(Object(Object(state["scenario"], "scenario")["variables"], "variables")[Text(objective, "variable")], "gte", objective["atLeast"]) ? "success" : "pending";
             case "interact": return Decide(ScenarioSystem.Compare(Object(Object(state["scenario"], "scenario")["variables"], "variables")[Text(objective, "variable")], "eq", objective["equals"]));
-            default: throw new DomainInvariantException($"Unsupported objective \"{Text(objective, "type")}\"");
+            default: return extraObjective?.Invoke(state, owner, objective)
+                ?? throw new DomainInvariantException($"Unsupported objective \"{Text(objective, "type")}\"");
         }
     }
 
     public static string Status(JsonObject state, int owner, JsonObject objective) => objective["id"] is { } id &&
         Object(Player(state, owner)["objectiveStates"], "objective states")[Text(id, "objective id")] is JsonObject runtime ? Text(runtime, "status") : "active";
 
-    public static string Describe(JsonObject objective)
+    public static string Describe(JsonObject objective, Func<JsonObject, string>? extraDescription = null)
     {
         if (objective["label"] is JsonValue label && label.TryGetValue<string>(out var text) && text.Length > 0) return text;
         return Text(objective, "type") switch
@@ -129,11 +152,13 @@ public sealed class VictorySystem
             "surviveTurns" => $"坚守 {Number(objective["turns"], "turns")} 回合", "eliminate" => "消灭指定目标", "destroy" => "摧毁指定结构",
             "protect" => $"保护目标至第 {Number(objective["untilTurn"], "untilTurn")} 回合", "escort" => "护送目标抵达区域", "control" => "控制指定区域",
             "score" => $"达成计数 {Number(objective["atLeast"], "atLeast")}", "interact" => "完成战场交互", "all" => "完成全部目标", "any" => "完成任一目标", "sequence" => "完成阶段目标",
-            "optional" => $"额外：{Describe(Object(objective["objective"], "objective"))}", "failOn" => Describe(Object(objective["objective"], "objective")),
-            var type => throw new DomainInvariantException($"Unsupported objective \"{type}\""),
+            "optional" => $"额外：{Describe(Object(objective["objective"], "objective"), extraDescription)}",
+            "failOn" => Describe(Object(objective["objective"], "objective"), extraDescription),
+            var type => extraDescription?.Invoke(objective) ?? throw new DomainInvariantException($"Unsupported objective \"{type}\""),
         };
     }
     public static string Role(JsonObject objective) => Text(objective, "type") switch { "optional" => "optional", "failOn" => "critical", _ => "primary" };
+    public static string RefreshMode(JsonObject objective) => Text(objective, "type") == "sequence" ? "sequence" : "parallel";
     public static IEnumerable<JsonObject> Children(JsonObject objective) => Text(objective, "type") switch
     {
         "all" or "any" or "sequence" => Objects(objective["objectives"], "objectives"),

@@ -28,6 +28,9 @@ public partial class BattleScreen : Control
     private VBoxContainer _modeButtons = null!;
     private VBoxContainer _orders = null!;
     private VBoxContainer _globalOrders = null!;
+    private HBoxContainer _applicationActions = null!;
+    private ConfirmationDialog _restartConfirmation = null!;
+    private Action? _restart;
     private IReadOnlyList<BattleOrderChoice> _legalOrders = Array.Empty<BattleOrderChoice>();
     private int? _selectedId;
     private BoardCell? _target;
@@ -64,6 +67,24 @@ public partial class BattleScreen : Control
     {
         _board.ConfigureTerrain(materials);
         if (_state is not null) Refresh();
+    }
+
+    public void BindApplicationActions(Action? onSave = null, Action? onLoad = null, Action? onRestart = null)
+    {
+        BuildInterface();
+        Clear(_applicationActions);
+        _restart = onRestart;
+        if (onSave is not null) _applicationActions.AddChild(Button("保存", onSave));
+        if (onLoad is not null) _applicationActions.AddChild(Button("读取", onLoad));
+        if (onRestart is not null)
+            _applicationActions.AddChild(Button("重新开始", () => _restartConfirmation.PopupCentered()));
+    }
+
+    public void ShowFeedback(string message)
+    {
+        BuildInterface();
+        _feedback.Text = message;
+        _feedback.TooltipText = message;
     }
 
     /// <summary>Allows the application root to refresh after an external session transition.</summary>
@@ -110,8 +131,15 @@ public partial class BattleScreen : Control
         var title = Text("EMPIRE  /  灰旗", 26, new Color("#eee1bd"));
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         heading.AddChild(title);
+        _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
+        heading.AddChild(_applicationActions);
         _turn = Text("尚未绑定战斗", 18, new Color("#d1cfbc"));
         heading.AddChild(_turn);
+        _restartConfirmation = new ConfirmationDialog {
+            Title = "重新开始？", DialogText = "当前未保存的战斗进度将丢失。",
+            OkButtonText = "重新开始", CancelButtonText = "取消" };
+        _restartConfirmation.Confirmed += () => _restart?.Invoke();
+        AddChild(_restartConfirmation);
         var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         body.AddThemeConstantOverride("separation", 20);
         column.AddChild(body);
@@ -137,19 +165,23 @@ public partial class BattleScreen : Control
         side.AddChild(Text("战场指令", 21, new Color("#eee1bd")));
         _selection = Wrapped("等待应用绑定真实战斗。");
         side.AddChild(_selection);
+        var scroll = new ScrollContainer { Name = "CommandScroll", SizeFlagsVertical = SizeFlags.ExpandFill,
+            CustomMinimumSize = new Vector2(0, 60), HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        side.AddChild(scroll);
+        var commandColumn = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        commandColumn.AddThemeConstantOverride("separation", 12);
+        scroll.AddChild(commandColumn);
         _modeButtons = new VBoxContainer();
-        side.AddChild(_modeButtons);
+        commandColumn.AddChild(_modeButtons);
         _modeHint = Wrapped("");
         _modeHint.AddThemeColorOverride("font_color", new Color("#b6c4b5"));
-        side.AddChild(_modeHint);
-        var scroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill,
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        side.AddChild(scroll);
+        commandColumn.AddChild(_modeHint);
         _orders = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        scroll.AddChild(_orders);
+        commandColumn.AddChild(_orders);
         _globalOrders = new VBoxContainer();
         side.AddChild(_globalOrders);
         _feedback = Wrapped("战斗尚未连接，不能提交命令。");
+        _feedback.MaxLinesVisible = 4;
         _feedback.AddThemeColorOverride("font_color", new Color("#f1d99f"));
         side.AddChild(_feedback);
         _coverage = Wrapped("Native C# migration");
@@ -246,7 +278,8 @@ public partial class BattleScreen : Control
         {
             var count = _legalOrders.Where(order => order.PresentationRole == role)
                 .Select(order => order.Target).Distinct().Count();
-            var caption = role switch { "move" => "移动并待机", "attack" => "攻击", _ => role };
+            var caption = role switch { "move" => "移动并待机", "attack" => "攻击",
+                "tactic" => "战术", "command" => "技能", _ => role };
             var button = Button($"{caption} · {count} 个目标", () => {
                 _role = role;
                 _target = null;
@@ -281,7 +314,7 @@ public partial class BattleScreen : Control
         if (_session is null || _snapshot is null) return;
         // The JSON is the session's complete canonical command, not a UI reconstruction.
         var result = _session.Dispatch(order.Action, _snapshot.Revision);
-        _feedback.Text = result.Message;
+        ShowFeedback(result.Message);
         Refresh();
     }
 

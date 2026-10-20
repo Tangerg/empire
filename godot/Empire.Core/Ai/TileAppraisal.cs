@@ -94,7 +94,7 @@ public sealed class TileAppraisal
         if (Foes.Count == 0) return 0;
         var nearest = context.NearestDistance(at, Foes.Select(Position));
         var ideal = AiMeasures.PreferredEngagementRange(context.Content, unit);
-        var wants = context.Engine.Directives.Get(Text(Object(unit["directive"], "directive"), "mode")).Engagement;
+        var wants = context.Engine.Directives.Engagement(unit);
         return -Math.Abs(nearest - ideal) * 16 * (0.5 + Aggression) * wants;
     }
 

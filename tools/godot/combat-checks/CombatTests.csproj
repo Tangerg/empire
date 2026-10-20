@@ -1,6 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EmpireCombatRoot Condition="'$(EmpireCombatRoot)' == ''">$(EmpireRoot)/godot/Empire.Core/Combat</EmpireCombatRoot>
+  </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Errors.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Determinism/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateJson.cs" />
@@ -8,7 +12,7 @@
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Geometry/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Tactics/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Resources/*.cs" />
-    <Compile Include="$(EmpireRoot)/godot/Empire.Core/Combat/*.cs" />
+    <Compile Include="$(EmpireCombatRoot)/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Lifecycle/ILifecycleEffects.cs" />
   </ItemGroup>
 </Project>

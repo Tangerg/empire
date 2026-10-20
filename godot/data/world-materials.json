@@ -187,6 +187,58 @@
     ],
     "village": [
       "building"
+    ],
+    "c01.outside": [
+      "outside"
+    ],
+    "water": [
+      "water"
+    ],
+    "bridge": [
+      "road"
+    ],
+    "wall": [
+      "blocking"
+    ],
+    "c01.keep": [
+      "building",
+      "hq"
+    ],
+    "c01.field-post": [
+      "building",
+      "outpost"
+    ],
+    "c01.scorched": [
+      "rough",
+      "burned"
+    ],
+    "c01.street": [
+      "road",
+      "urban"
+    ],
+    "c01.oathway": [
+      "oathbound",
+      "hazard"
+    ],
+    "c01.graveyard": [
+      "graveyard",
+      "rough"
+    ],
+    "c01.riverbank": [
+      "rough",
+      "wet"
+    ],
+    "c01.forge": [
+      "forge",
+      "urban"
+    ],
+    "c01.molten": [
+      "hazard",
+      "molten"
+    ],
+    "c01.mother-root": [
+      "silverwood",
+      "rough"
     ]
   },
   "forestMask": {
@@ -377,6 +429,137 @@
         "scale": 0.3,
         "chance": 0.5,
         "jitter": 7
+      }
+    },
+    "c01.outside": {},
+    "water": {
+      "connected": {
+        "atlas": "water-slow-river",
+        "mask": "same"
+      }
+    },
+    "bridge": {
+      "connected": {
+        "atlas": "water-slow-river",
+        "mask": "same"
+      }
+    },
+    "wall": {
+      "surface": "surface-old-stone",
+      "scenery": {
+        "ids": [
+          "stone-wall-straight",
+          "stone-wall-corner",
+          "stone-gatehouse"
+        ],
+        "scale": 0.38
+      }
+    },
+    "c01.keep": {
+      "connected": {
+        "atlas": "route-dirt-road",
+        "edge": "route-edge-dirt-road",
+        "mask": "route"
+      }
+    },
+    "c01.field-post": {
+      "connected": {
+        "atlas": "route-dirt-road",
+        "edge": "route-edge-dirt-road",
+        "mask": "route"
+      }
+    },
+    "c01.scorched": {
+      "blend": "transition-meadow-earth",
+      "decals": {
+        "ids": [
+          "ash-scorch",
+          "burned-twigs",
+          "dry-crack"
+        ],
+        "chance": 0.34,
+        "scale": 0.6
+      }
+    },
+    "c01.street": {
+      "surface": "surface-old-stone",
+      "connected": {
+        "atlas": "route-stone-road",
+        "edge": "route-edge-stone-road",
+        "mask": "route"
+      }
+    },
+    "c01.oathway": {
+      "surface": "surface-old-stone",
+      "decals": {
+        "ids": [
+          "stone-cluster-b",
+          "stone-cluster-c"
+        ],
+        "chance": 0.22,
+        "scale": 0.55
+      }
+    },
+    "c01.graveyard": {
+      "surface": "surface-graveyard",
+      "scenery": {
+        "ids": [
+          "grave-cross-cluster",
+          "grave-signboards",
+          "grave-dead-tree",
+          "grave-marker-lantern"
+        ],
+        "scale": 0.42,
+        "chance": 0.55,
+        "jitter": 6
+      }
+    },
+    "c01.riverbank": {
+      "blend": "transition-meadow-earth",
+      "decals": {
+        "ids": [
+          "mud-patch",
+          "exposed-roots"
+        ],
+        "chance": 0.3,
+        "scale": 0.6
+      }
+    },
+    "c01.forge": {
+      "surface": "surface-forge-stone",
+      "scenery": {
+        "ids": [
+          "forge-coal-pile",
+          "forge-ember-pile",
+          "forge-charcoal-kiln",
+          "forge-coal-sacks"
+        ],
+        "scale": 0.4,
+        "chance": 0.4
+      }
+    },
+    "c01.molten": {
+      "surface": "surface-wasteland",
+      "tone": 1,
+      "scenery": {
+        "ids": [
+          "forge-ember-pile",
+          "wasteland-rock-spire"
+        ],
+        "scale": 0.42,
+        "chance": 0.6
+      }
+    },
+    "c01.mother-root": {
+      "blend": "transition-meadow-forest",
+      "scenery": {
+        "ids": [
+          "oak-ancient",
+          "oak-grove-dense",
+          "boulder-ferns"
+        ],
+        "scale": 0.8,
+        "jitter": 8
       }
     }
   }

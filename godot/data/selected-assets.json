@@ -37,6 +37,40 @@
       "sha256": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867"
     },
     {
+      "assetId": "C01-FFV1-UNIT-BALLISTA",
+      "topicId": "C01-UNIT-BALLISTA",
+      "label": "弩车",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-ballista@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        54.43605036447978,
+        53.50828363154407
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ballista@2x.png",
+      "sha256": "78a24015d823536e9f8151ea7fab3aa03ce9e3add3506458c743af821c911b36"
+    },
+    {
       "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
       "topicId": "C01-UNIT-BANNER-GUARD",
       "label": "旗卫",
@@ -69,6 +103,176 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
       "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "topicId": "C01-UNIT-BATTLE-MAGE",
+      "label": "战斗法师",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        46.18589025755879,
+        50.9070548712206
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
+      "sha256": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-CEMETERY-COLOSSUS",
+      "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+      "label": "墓地巨像",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-cemetery-colossus@2x.png",
+      "width": 512,
+      "height": 80,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        64.10478359908885,
+        68.64692482915717
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 1024,
+      "physicalHeight": 160,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-cemetery-colossus@2x.png",
+      "sha256": "aaa49b440b930ea108a16d44b03e10e6cf1c6556e02a1ea62b49fe77f6014877"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-DRUID",
+      "topicId": "C01-UNIT-DRUID",
+      "label": "德鲁伊",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-druid@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        44.766142159522516,
+        50.124796527400974
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-druid@2x.png",
+      "sha256": "6949527913cb9b598b51fafcd8b0b6ffa3ef0c067e48b20511795cd473b4e34e"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ENGINEER",
+      "topicId": "C01-UNIT-ENGINEER",
+      "label": "工程师",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        47.38360655737705,
+        50.35628415300547
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+      "sha256": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GHOST",
+      "topicId": "C01-UNIT-GHOST",
+      "label": "幽魂",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-ghost@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        47.443365695792885,
+        49.51887810140238
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ghost@2x.png",
+      "sha256": "d1b1d21357aae89f342ad3dd60c3242146c0b7a98984b6f6c507c3b56b73835e"
     },
     {
       "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
@@ -139,6 +343,74 @@
       "sha256": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0"
     },
     {
+      "assetId": "C01-FFV1-UNIT-INQUISITOR",
+      "topicId": "C01-UNIT-INQUISITOR",
+      "label": "审判官",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-inquisitor@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        45.50084889643463,
+        52.95529145444256
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png",
+      "sha256": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-IVRA-GROWTH",
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "label": "伊芙拉成长单位",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+      "width": 512,
+      "height": 80,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        72.56286165176223,
+        63.91478169384534
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 1024,
+      "physicalHeight": 160,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+      "sha256": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad"
+    },
+    {
       "assetId": "C01-FFV1-UNIT-KNIGHT",
       "topicId": "C01-UNIT-KNIGHT",
       "label": "骑士",
@@ -207,6 +479,210 @@
       "sha256": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76"
     },
     {
+      "assetId": "C01-FFV1-UNIT-RANGER",
+      "topicId": "C01-UNIT-RANGER",
+      "label": "游侠",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.95248998282771,
+        51.80309101316543
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+      "sha256": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-RUNE-ARTIFICER",
+      "topicId": "C01-UNIT-RUNE-ARTIFICER",
+      "label": "符文工匠",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-rune-artificer@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        46.608315098468275,
+        50.74398249452954
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-rune-artificer@2x.png",
+      "sha256": "ca96c7555ee47328d8d6199640fa2a4cec0767411578f79131ee76029dd0d36d"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-RUNE-SHIELD",
+      "topicId": "C01-UNIT-RUNE-SHIELD",
+      "label": "符文盾卫",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-rune-shield@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        45.943615257048094,
+        51.3322277501382
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-rune-shield@2x.png",
+      "sha256": "7a2748d8cef0235137d4461171b281e205306e2c66adaef09f7ca05c2025b1ca"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-SILVER-LONGBOW",
+      "topicId": "C01-UNIT-SILVER-LONGBOW",
+      "label": "长弓守卫",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-silver-longbow@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        50.10526315789473,
+        54.315789473684205
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-silver-longbow@2x.png",
+      "sha256": "12d2d9649672634337ab8057903f70ee0c139818a840b7f12c7136d742844f3d"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-SKELETON-GUARD",
+      "topicId": "C01-UNIT-SKELETON-GUARD",
+      "label": "骸骨卫士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        51.13023255813953,
+        54.08837209302325
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png",
+      "sha256": "65afc66a4ebfdda0681f4dee79463286e5fe574d9e3d9e6583d25815284e5572"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-STONE-GOLEM",
+      "topicId": "C01-UNIT-STONE-GOLEM",
+      "label": "石魔像",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-stone-golem@2x.png",
+      "width": 576,
+      "height": 104,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 144,
+      "frameHeight": 104,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        68.78064943671305,
+        86.03711066931743
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 1152,
+      "physicalHeight": 208,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-stone-golem@2x.png",
+      "sha256": "75fed81f7f665d328b541a0df1d19cd8cfa7e5a8b09bc47e61b9219e2971abdb"
+    },
+    {
       "assetId": "C01-FFV1-UNIT-SWORDSMAN",
       "topicId": "C01-UNIT-SWORDSMAN",
       "label": "剑士",
@@ -241,6 +717,108 @@
       "sha256": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a"
     },
     {
+      "assetId": "C01-FFV1-UNIT-TEMPLAR",
+      "topicId": "C01-UNIT-TEMPLAR",
+      "label": "圣殿骑士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-templar@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        43.0788777130757,
+        49.3276866066702
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-templar@2x.png",
+      "sha256": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "topicId": "C01-UNIT-WOLF-RIDER",
+      "label": "狼骑兵",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
+      "width": 512,
+      "height": 80,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        61.549420209828824,
+        61.70403092214246
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 1024,
+      "physicalHeight": 160,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
+      "sha256": "e801d786e50d20cd4c734070f57a8d88c405c7a9a6ac379cc9d4c37970428682"
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOODLAND-WALKER",
+      "topicId": "C01-UNIT-WOODLAND-WALKER",
+      "label": "林地行者",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-woodland-walker@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.164904862579284,
+        51.215644820295985
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-woodland-walker@2x.png",
+      "sha256": "63d19ef7e59ec001072efe67d39c37770dc5f2b93031b9bccacffd6da2940be9"
+    },
+    {
       "assetId": "C01-FFV1-MISSION-BORDER-FARMER",
       "topicId": "C01-MISSION-BORDER-FARMER",
       "label": "边境农户",
@@ -273,6 +851,74 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-border-farmer@2x.png",
       "sha256": "2d77679f07911b244cad28027dd7534641d01f88f2e567e0b37a4d0f17db371e"
+    },
+    {
+      "assetId": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "topicId": "C01-MISSION-BRIDGE-LABORER",
+      "label": "桥梁劳工",
+      "category": "mission-unit",
+      "png": "runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        44.93514644351465,
+        49.10460251046025
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png",
+      "sha256": "97e88d5832bd6bfceb206986d9b1cf287c489ac87ebe15704ec2e5e302115dd1"
+    },
+    {
+      "assetId": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "topicId": "C01-MISSION-REFUGEE-ADULT",
+      "label": "难民成人",
+      "category": "mission-unit",
+      "png": "runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        47.34117647058824,
+        49.83529411764706
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png",
+      "sha256": "987f85ee8cf92fce82b5fe767c54dd1c5adb97ffb2d978ab4595b7921b0fecc5"
     },
     {
       "assetId": "C01-FFV1-STRUCT-JOINT-GRANARY",
@@ -339,6 +985,103 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/structure/struct-lorne-keep@2x.png",
       "sha256": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-OATH-TOWER-CONSOLE",
+      "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+      "label": "誓约塔控制台",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png",
+      "width": 336,
+      "height": 112,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        55.44615384615385,
+        94.91282051282052
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "physicalWidth": 672,
+      "physicalHeight": 224,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png",
+      "sha256": "7cbf51570e465c109cb3d3cacc7bf9eb070203289ccdd9f52aac07d3cc5a9fea"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-REFUGEE-SHELTER",
+      "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+      "label": "难民避难棚",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png",
+      "width": 480,
+      "height": 160,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 160,
+      "frameHeight": 160,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        78.12807881773399,
+        134.99507389162562
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 0.65,
+      "physicalWidth": 960,
+      "physicalHeight": 320,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png",
+      "sha256": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-SUNKEN-BELL-SLUICE",
+      "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+      "label": "沉钟水闸",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
+      "width": 384,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        61.7025472473295,
+        112.22678718159409
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "physicalWidth": 768,
+      "physicalHeight": 256,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
+      "sha256": "fc511c10f580b297f4454aeb51b0f00902d8eb567abadba7ccc387411b0c1d93"
     },
     {
       "assetId": "C01-FFV1-STRUCT-WOUNDED-SHELTER",
@@ -526,6 +1269,32 @@
       "sha256": "215fc2c3d3206fc5319ea6d5cbd9042453c422e6c677d73d588c655364b4dbdf"
     },
     {
+      "id": "mirelle-stage01",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        44.291621327529924,
+        50.29815016322089
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
+      "sha256": "4aa82bcc86b6d330fc89c31f3a5fc41c25abe6ede20b12f2a4c5d336bb3cc131"
+    },
+    {
       "id": "torren-stage01",
       "topicId": "C01-UNIT-SWORDSMAN",
       "png": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
@@ -576,6 +1345,88 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
       "sha256": "0967c3364daa06890b5c9791b1131ffb8f312e851e3f7611141267e425d6d01f"
+    },
+    {
+      "id": "bran-stage01",
+      "topicId": "C01-UNIT-RANGER",
+      "png": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.81419624217119,
+        49.102296450939455
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "sha256": "b5c49999ff7bb96b122a989ca1d8b197f6b4b81f3aca2f7c52fc3d693db524f8"
+    },
+    {
+      "id": "tasha-stage01",
+      "topicId": "C01-UNIT-ENGINEER",
+      "png": "runtime-approved-v5/hero-appearance/tasha-stage01@2x.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/tasha-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.89891135303266,
+        49.117677553136346
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/tasha-stage01@2x.png",
+      "sha256": "59dd5a4bd43270234e9c51ae7672a58c6bdd06d4a9708ba801e0df1f49465423"
+    },
+    {
+      "id": "field-post-compact",
+      "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+      "png": "runtime-approved-v5/map-structure-presentation/field-post-compact@2x.png",
+      "hdPng": "runtime-approved-v5/map-structure-presentation/field-post-compact@2x.png",
+      "pixelDensity": 2,
+      "hdWidth": 384,
+      "hdHeight": 128,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        53.00000000000001
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.5,
+      "physicalWidth": 384,
+      "physicalHeight": 128,
+      "resourcePath": "res://assets/runtime-approved-v5/map-structure-presentation/field-post-compact@2x.png",
+      "sha256": "568733cd8d49377641b5543d49e9bd98da7285fdd30f6b0ed72e5f030e311b23"
     }
   ]
 }

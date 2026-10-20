@@ -1,0 +1,1600 @@
+{
+  "schema": 1,
+  "id": "candidate-01-gray-banner-chapters-1-3",
+  "version": 1,
+  "start": "prologue",
+  "contentPacks": {
+    "empire.common": 1,
+    "empire.ancient-empires": 1,
+    "candidate-01": 1
+  },
+  "initial": {
+    "variables": {
+      "victories": 0,
+      "boldness": 0,
+      "restraint": 0,
+      "institutions": 0,
+      "authority": 0,
+      "evidence": 0,
+      "witnesses": 0,
+      "crown_fragments": 0
+    },
+    "resources": {
+      "supplies": 5,
+      "treasury": 5
+    },
+    "relations": {
+      "cain": 0,
+      "mirelle": 0,
+      "tasha": 0,
+      "refugees": 0,
+      "silverwood": 0,
+      "mountain-forge": 0,
+      "named-dead": 0
+    },
+    "roster": [
+      {
+        "id": "laiya",
+        "unitType": "c01.laiya",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "hero",
+          "commander"
+        ]
+      },
+      {
+        "id": "torren",
+        "unitType": "c01.swordsman",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "retinue",
+          "infantry"
+        ]
+      },
+      {
+        "id": "elin",
+        "unitType": "c01.archer",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "retinue",
+          "ranged"
+        ]
+      },
+      {
+        "id": "mirelle",
+        "unitType": "c01.mirelle",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "hero",
+          "support"
+        ]
+      },
+      {
+        "id": "bran",
+        "unitType": "c01.bran",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "hero",
+          "scout"
+        ]
+      },
+      {
+        "id": "tasha",
+        "unitType": "c01.tasha",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "hero",
+          "engineer"
+        ]
+      },
+      {
+        "id": "ivra",
+        "unitType": "c01.ivra",
+        "owner": 1,
+        "rank": 0,
+        "tags": [
+          "hero",
+          "dragon"
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "prologue",
+      "type": "story",
+      "presentation": "c01/prologue",
+      "next": "brief-01"
+    },
+    {
+      "id": "brief-01",
+      "type": "story",
+      "presentation": "c01/brief-01",
+      "next": "choice-first-command"
+    },
+    {
+      "id": "choice-first-command",
+      "type": "choice",
+      "presentation": "c01/choice-first-command",
+      "choices": [
+        {
+          "id": "rush-north-hill",
+          "next": "battle-01",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "twin_hills_rushed"
+            },
+            {
+              "type": "addVariable",
+              "key": "boldness",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "id": "steady-advance",
+          "next": "battle-01",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "twin_hills_steady"
+            },
+            {
+              "type": "addVariable",
+              "key": "restraint",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-01",
+      "type": "battle",
+      "level": "c01-01",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-01",
+        "defeat": "campaign-failed",
+        "retreat": "brief-01"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_01_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-01",
+      "type": "story",
+      "presentation": "c01/aftermath-01",
+      "next": "brief-02"
+    },
+    {
+      "id": "brief-02",
+      "type": "story",
+      "presentation": "c01/brief-02",
+      "next": "choice-bridge-truce"
+    },
+    {
+      "id": "choice-bridge-truce",
+      "type": "choice",
+      "presentation": "c01/choice-bridge-truce",
+      "choices": [
+        {
+          "id": "accept-truce",
+          "next": "battle-02",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "accepted_bridge_truce"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "cain",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "id": "no-formal-promise",
+          "next": "battle-02",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "bridge_no_promise"
+            },
+            {
+              "type": "addVariable",
+              "key": "independence",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-02",
+      "type": "battle",
+      "level": "c01-02",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-02",
+        "defeat": "campaign-failed",
+        "retreat": "brief-02"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_02_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-02",
+      "type": "story",
+      "presentation": "c01/aftermath-02",
+      "next": "brief-03"
+    },
+    {
+      "id": "brief-03",
+      "type": "story",
+      "presentation": "c01/brief-03",
+      "next": "battle-03"
+    },
+    {
+      "id": "battle-03",
+      "type": "battle",
+      "level": "c01-03",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-03",
+        "defeat": "campaign-failed",
+        "retreat": "brief-03"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_03_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-03",
+      "type": "story",
+      "presentation": "c01/aftermath-03",
+      "next": "brief-04"
+    },
+    {
+      "id": "brief-04",
+      "type": "story",
+      "presentation": "c01/brief-04",
+      "next": "choice-black-camp-plan"
+    },
+    {
+      "id": "choice-black-camp-plan",
+      "type": "choice",
+      "presentation": "c01/choice-black-camp-plan",
+      "choices": [
+        {
+          "id": "rescue-and-evidence",
+          "next": "battle-04",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "black_camp_rescue"
+            },
+            {
+              "type": "addVariable",
+              "key": "witnesses",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "id": "split-the-force",
+          "next": "battle-04",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "black_camp_split"
+            },
+            {
+              "type": "addVariable",
+              "key": "evidence",
+              "amount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-04",
+      "type": "battle",
+      "level": "c01-04",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-04",
+        "defeat": "campaign-failed",
+        "retreat": "brief-04"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_04_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-04",
+      "type": "story",
+      "presentation": "c01/aftermath-04",
+      "next": "brief-05"
+    },
+    {
+      "id": "brief-05",
+      "type": "story",
+      "presentation": "c01/brief-05",
+      "next": "battle-05"
+    },
+    {
+      "id": "battle-05",
+      "type": "battle",
+      "level": "c01-05",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-05",
+        "defeat": "campaign-failed",
+        "retreat": "brief-05"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_05_won"
+          },
+          {
+            "type": "setFlag",
+            "flag": "chapter_1_complete"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-05",
+      "type": "story",
+      "presentation": "c01/aftermath-05",
+      "next": "brief-06"
+    },
+    {
+      "id": "brief-06",
+      "type": "story",
+      "presentation": "c01/brief-06",
+      "next": "choice-white-river-priority"
+    },
+    {
+      "id": "choice-white-river-priority",
+      "type": "choice",
+      "presentation": "c01/choice-white-river-priority",
+      "choices": [
+        {
+          "id": "people-first",
+          "next": "battle-06",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "white_river_people_first"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "refugees",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "id": "save-supplies",
+          "next": "battle-06",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "white_river_supplies_first"
+            },
+            {
+              "type": "addResource",
+              "resource": "supplies",
+              "amount": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-06",
+      "type": "battle",
+      "level": "c01-06",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-06",
+        "defeat": "campaign-failed",
+        "retreat": "brief-06"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_06_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-06",
+      "type": "story",
+      "presentation": "c01/aftermath-06",
+      "next": "brief-07"
+    },
+    {
+      "id": "brief-07",
+      "type": "story",
+      "presentation": "c01/brief-07",
+      "next": "battle-07"
+    },
+    {
+      "id": "battle-07",
+      "type": "battle",
+      "level": "c01-07",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-07",
+        "defeat": "campaign-failed",
+        "retreat": "brief-07"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_07_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-07",
+      "type": "story",
+      "presentation": "c01/aftermath-07",
+      "next": "brief-08"
+    },
+    {
+      "id": "brief-08",
+      "type": "story",
+      "presentation": "c01/brief-08",
+      "next": "choice-mercenary-contract"
+    },
+    {
+      "id": "choice-mercenary-contract",
+      "type": "choice",
+      "presentation": "c01/choice-mercenary-contract",
+      "choices": [
+        {
+          "id": "pay-what-is-owed",
+          "next": "battle-08",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "mercenary_debt_paid"
+            },
+            {
+              "type": "addResource",
+              "resource": "treasury",
+              "amount": -2
+            },
+            {
+              "type": "changeRelation",
+              "faction": "tasha",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "id": "create-pension-ledger",
+          "next": "battle-08",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "pension_ledger_created"
+            },
+            {
+              "type": "addVariable",
+              "key": "institutions",
+              "amount": 1
+            },
+            {
+              "type": "changeRelation",
+              "faction": "tasha",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-08",
+      "type": "battle",
+      "level": "c01-08",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-08",
+        "defeat": "campaign-failed",
+        "retreat": "brief-08"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_08_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-08",
+      "type": "story",
+      "presentation": "c01/aftermath-08",
+      "next": "brief-09"
+    },
+    {
+      "id": "brief-09",
+      "type": "story",
+      "presentation": "c01/brief-09",
+      "next": "choice-free-ivra"
+    },
+    {
+      "id": "choice-free-ivra",
+      "type": "choice",
+      "presentation": "c01/choice-free-ivra",
+      "choices": [
+        {
+          "id": "mirelle-ritual",
+          "next": "battle-09",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "ivra_freed_by_ritual"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "mirelle",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "id": "break-chain-nodes",
+          "next": "battle-09",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "ivra_freed_by_engineering"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "tasha",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-09",
+      "type": "battle",
+      "level": "c01-09",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-09",
+        "defeat": "campaign-failed",
+        "retreat": "brief-09"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_09_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-09",
+      "type": "story",
+      "presentation": "c01/aftermath-09",
+      "next": "brief-10"
+    },
+    {
+      "id": "brief-10",
+      "type": "story",
+      "presentation": "c01/brief-10",
+      "next": "choice-old-banner-terms"
+    },
+    {
+      "id": "choice-old-banner-terms",
+      "type": "choice",
+      "presentation": "c01/choice-old-banner-terms",
+      "choices": [
+        {
+          "id": "offer-exit-right",
+          "next": "battle-10",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "old_soldiers_may_leave"
+            },
+            {
+              "type": "addVariable",
+              "key": "institutions",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "id": "demand-surrender",
+          "next": "battle-10",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "old_soldiers_must_surrender"
+            },
+            {
+              "type": "addVariable",
+              "key": "authority",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-10",
+      "type": "battle",
+      "level": "c01-10",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-10",
+        "defeat": "campaign-failed",
+        "retreat": "brief-10"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_10_won"
+          },
+          {
+            "type": "setFlag",
+            "flag": "chapter_2_complete"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-10",
+      "type": "story",
+      "presentation": "c01/aftermath-10",
+      "next": "brief-11"
+    },
+    {
+      "id": "brief-11",
+      "type": "story",
+      "presentation": "c01/brief-11",
+      "next": "battle-11"
+    },
+    {
+      "id": "battle-11",
+      "type": "battle",
+      "level": "c01-11",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-11",
+        "defeat": "campaign-failed",
+        "retreat": "brief-11"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_11_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-11",
+      "type": "story",
+      "presentation": "c01/aftermath-11",
+      "next": "brief-12"
+    },
+    {
+      "id": "brief-12",
+      "type": "story",
+      "presentation": "c01/brief-12",
+      "next": "choice-bell-tower-control"
+    },
+    {
+      "id": "choice-bell-tower-control",
+      "type": "choice",
+      "presentation": "c01/choice-bell-tower-control",
+      "choices": [
+        {
+          "id": "joint-control-with-cain",
+          "next": "battle-12",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "bell_tower_joint_control"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "cain",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "id": "race-for-the-fragment",
+          "next": "battle-12",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "bell_tower_fragment_race"
+            },
+            {
+              "type": "addVariable",
+              "key": "crown_fragments",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-12",
+      "type": "battle",
+      "level": "c01-12",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-12",
+        "defeat": "campaign-failed",
+        "retreat": "brief-12"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_12_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-12",
+      "type": "story",
+      "presentation": "c01/aftermath-12",
+      "next": "brief-13"
+    },
+    {
+      "id": "brief-13",
+      "type": "story",
+      "presentation": "c01/brief-13",
+      "next": "battle-13"
+    },
+    {
+      "id": "battle-13",
+      "type": "battle",
+      "level": "c01-13",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-13",
+        "defeat": "campaign-failed",
+        "retreat": "brief-13"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_13_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-13",
+      "type": "story",
+      "presentation": "c01/aftermath-13",
+      "next": "brief-14"
+    },
+    {
+      "id": "brief-14",
+      "type": "story",
+      "presentation": "c01/brief-14",
+      "next": "choice-forge-record"
+    },
+    {
+      "id": "choice-forge-record",
+      "type": "choice",
+      "presentation": "c01/choice-forge-record",
+      "choices": [
+        {
+          "id": "publish-the-record",
+          "next": "battle-14",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "forge_record_public"
+            },
+            {
+              "type": "addVariable",
+              "key": "institutions",
+              "amount": 1
+            },
+            {
+              "type": "changeRelation",
+              "faction": "mountain-forge",
+              "amount": -1
+            }
+          ]
+        },
+        {
+          "id": "seal-dangerous-pages",
+          "next": "battle-14",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "forge_record_sealed"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "mountain-forge",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-14",
+      "type": "battle",
+      "level": "c01-14",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-14",
+        "defeat": "campaign-failed",
+        "retreat": "brief-14"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_14_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-14",
+      "type": "story",
+      "presentation": "c01/aftermath-14",
+      "next": "brief-15"
+    },
+    {
+      "id": "brief-15",
+      "type": "story",
+      "presentation": "c01/brief-15",
+      "next": "choice-silverwood-price"
+    },
+    {
+      "id": "choice-silverwood-price",
+      "type": "choice",
+      "presentation": "c01/choice-silverwood-price",
+      "choices": [
+        {
+          "id": "end-cost-transfer",
+          "next": "battle-15",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "silverwood_end_transfer"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "silverwood",
+              "amount": -1
+            }
+          ]
+        },
+        {
+          "id": "phase-out-gradually",
+          "next": "battle-15",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "silverwood_compromise"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "silverwood",
+              "amount": 1
+            },
+            {
+              "type": "addVariable",
+              "key": "institutions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-15",
+      "type": "battle",
+      "level": "c01-15",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-15",
+        "defeat": "campaign-failed",
+        "retreat": "brief-15"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_15_won"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-15",
+      "type": "story",
+      "presentation": "c01/aftermath-15",
+      "next": "brief-16"
+    },
+    {
+      "id": "brief-16",
+      "type": "story",
+      "presentation": "c01/brief-16",
+      "next": "choice-unflagged-personhood"
+    },
+    {
+      "id": "choice-unflagged-personhood",
+      "type": "choice",
+      "presentation": "c01/choice-unflagged-personhood",
+      "choices": [
+        {
+          "id": "recognize-a-new-person",
+          "next": "battle-16",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "unflagged_recognized"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "named-dead",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "id": "protect-until-heard",
+          "next": "battle-16",
+          "effects": [
+            {
+              "type": "setFlag",
+              "flag": "unflagged_protected"
+            },
+            {
+              "type": "changeRelation",
+              "faction": "named-dead",
+              "amount": 1
+            },
+            {
+              "type": "addVariable",
+              "key": "restraint",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battle-16",
+      "type": "battle",
+      "level": "c01-16",
+      "rosterBindings": [
+        {
+          "campaignUnit": "laiya",
+          "levelUnitKey": "campaign-laiya"
+        },
+        {
+          "campaignUnit": "torren",
+          "levelUnitKey": "campaign-torren"
+        },
+        {
+          "campaignUnit": "elin",
+          "levelUnitKey": "campaign-elin"
+        },
+        {
+          "campaignUnit": "mirelle",
+          "levelUnitKey": "campaign-mirelle"
+        },
+        {
+          "campaignUnit": "bran",
+          "levelUnitKey": "campaign-bran"
+        },
+        {
+          "campaignUnit": "tasha",
+          "levelUnitKey": "campaign-tasha"
+        },
+        {
+          "campaignUnit": "ivra",
+          "levelUnitKey": "campaign-ivra"
+        }
+      ],
+      "next": {
+        "victory": "aftermath-16",
+        "defeat": "campaign-failed",
+        "retreat": "brief-16"
+      },
+      "outcomeEffects": {
+        "victory": [
+          {
+            "type": "addVariable",
+            "key": "victories",
+            "amount": 1
+          },
+          {
+            "type": "addResource",
+            "resource": "supplies",
+            "amount": 1
+          },
+          {
+            "type": "setFlag",
+            "flag": "battle_16_won"
+          },
+          {
+            "type": "setFlag",
+            "flag": "chapter_3_complete"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aftermath-16",
+      "type": "story",
+      "presentation": "c01/aftermath-16",
+      "next": "chapter-three-ending"
+    },
+    {
+      "id": "chapter-three-ending",
+      "type": "ending",
+      "outcome": "completed",
+      "presentation": "c01/chapter-three-ending"
+    },
+    {
+      "id": "campaign-failed",
+      "type": "ending",
+      "outcome": "failed",
+      "presentation": "c01/campaign-failed"
+    }
+  ]
+}

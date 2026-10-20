@@ -3,6 +3,7 @@ using Empire.Core.Combat;
 using Empire.Core.Geometry;
 using Empire.Core.Resources;
 using Empire.Core.State;
+using Empire.Core.Tactics;
 
 namespace Empire.Core.Orders;
 
@@ -11,6 +12,7 @@ public sealed record TacticOption(string Id, string Name, IReadOnlyList<Coord> T
 /// <summary>Commander orders and site capture, using shared account and effect writers.</summary>
 public sealed class SupportOrders
 {
+    public static IReadOnlyList<string> SupportedTacticEffects { get; } = System.Array.AsReadOnly(new[] { "addStatus", "removeStatus" });
     private readonly StateContent content;
     private readonly GridRegistry grids;
     private readonly CombatEffects effects;
@@ -81,8 +83,7 @@ public sealed class SupportOrders
         foreach (var cost in spent) resources.Announce(subject, cost.Resource, -cost.Value, emit);
         emit(new JsonObject { ["type"] = "tacticUsed", ["commander"] = commanderId, ["tactic"] = tacticId,
             ["target"] = new JsonObject { ["x"] = at.X, ["y"] = at.Y } });
-        var team = StateJson.Integer(owner, "team");
-        var affected = Units(state).Where(unit => StateJson.Integer(Player(state, StateJson.Integer(unit, "owner")), "team") == team
+        var affected = Units(state).Where(unit => TacticalQueries.AreAllies(state, StateJson.Integer(unit, "owner"), ownerId)
             && Grid(state).Distance(Position(unit), at) <= StateJson.Number(tactic["radius"], "radius")).ToArray();
         foreach (var effect in StateJson.Objects(tactic["effects"], "effects"))
             foreach (var unit in affected)

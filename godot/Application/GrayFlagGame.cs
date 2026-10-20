@@ -11,6 +11,16 @@ public partial class GrayFlagGame : Node
 {
     private GrayFlagSession session = null!;
     private BattleScreen screen = null!;
+    private double computerDelay;
+
+    public override void _Process(double delta)
+    {
+        if (session is null || !session.IsComputerTurn) { computerDelay = 0; return; }
+        computerDelay += delta;
+        if (computerDelay < 0.3) return;
+        computerDelay = 0;
+        if (session.AdvanceComputer()) screen.Refresh();
+    }
 
     public override void _Ready()
     {

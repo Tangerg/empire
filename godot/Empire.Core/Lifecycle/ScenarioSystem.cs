@@ -9,6 +9,12 @@ namespace Empire.Core.Lifecycle;
 /// <summary>Source trigger timing, ledger and conditions. Unsupported effects require an explicit handler.</summary>
 public sealed class ScenarioSystem
 {
+    public static IReadOnlyList<string> SupportedConditions { get; } = System.Array.AsReadOnly(new[]
+    {
+        "turnAtLeast", "turnCycle", "currentPlayer", "variable", "unitCount", "eventCount",
+        "unitInZone", "unitHealth", "structure", "objective", "all", "any", "not",
+    });
+    public static IReadOnlyList<string> SupportedEffects { get; } = System.Array.AsReadOnly(new[] { "emitSignal" });
     private readonly StateContent content;
     private readonly Func<JsonObject, JsonObject, bool>? extraCondition;
     private readonly Action<JsonObject, JsonObject, Action<JsonObject>>? extraEffect;

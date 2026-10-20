@@ -19,6 +19,7 @@ import {
   pathTo,
   threatTiles,
 } from '../../../packages/battle-engine/src/movement';
+import { directiveOf, directivePull } from '../../../packages/battle-engine/src/unit-directive';
 
 const root = process.cwd();
 const read = <T>(path: string): T => JSON.parse(readFileSync(`${root}/${path}`, 'utf8')) as T;
@@ -121,3 +122,40 @@ const output = selected.map(({ name, state, unit: id }) => {
 });
 writeFileSync(`${root}/godot/tests/oracle/movement-vectors.json`, `${JSON.stringify(output)}\n`);
 console.log(`Generated ${output.length} movement-query vectors`);
+
+const directiveVectors = [];
+for (const grid of ['square4', 'square8', 'hex']) {
+  for (const mode of ['assault', 'guard', 'patrol', 'retreat']) {
+    for (const configuration of ['none', 'missing', 'empty', 'zone', 'route']) {
+      const state = structuredClone(base);
+      state.rules.grid = grid;
+      state.scenario.zones.rally = [{ x: 2, y: 2 }, { x: 5, y: 0 }];
+      state.scenario.zones.empty = [];
+      const unit = state.units[0];
+      unit.directive = { mode, cursor: 0, waypoints: [] };
+      if (configuration !== 'none') {
+        unit.directive.zone = configuration === 'route' ? 'rally' :
+          configuration === 'zone' ? 'rally' : configuration;
+      }
+      if (configuration === 'route') {
+        unit.directive.waypoints = [{ x: 1, y: 0 }, { x: 3, y: 1 }];
+        unit.directive.cursor = 3;
+      }
+      const behavior = directiveOf(engine.rules, unit);
+      const pulls = [{ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 2, y: 2 }, { x: 5, y: 3 }]
+        .map((at) => ({ at, value: directivePull(engine.rules, state, unit, at) }));
+      const arrived = structuredClone(unit);
+      const arrivalPath = [{ x: 4, y: 3 }, { x: 3, y: 1 }, { x: 1, y: 0 }, { x: 3, y: 1 }];
+      for (const at of arrivalPath) behavior.arriveAt?.(arrived, at);
+      directiveVectors.push({
+        name: `${grid}-${mode}-${configuration}`,
+        state, unit: unit.id, pulls,
+        engagement: behavior.engagement,
+        fightPenalty: behavior.fightPenalty,
+        arrivalPath, afterDirective: arrived.directive,
+      });
+    }
+  }
+}
+writeFileSync(`${root}/godot/tests/oracle/directive-vectors.json`, `${JSON.stringify(directiveVectors)}\n`);
+console.log(`Generated ${directiveVectors.length} directive-behavior vectors`);

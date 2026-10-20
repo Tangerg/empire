@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
+using Empire.Core.Geometry;
 
 namespace Empire.Core.State;
 
@@ -11,6 +12,23 @@ namespace Empire.Core.State;
 /// </summary>
 public static class BattleStateFactory
 {
+    /// <summary>Spawns through the same unit constructor used by initial levels.</summary>
+    public static JsonObject SpawnUnit(JsonArray contentPacks, GridRegistry grids, JsonObject state,
+        string type, int owner, Coord at, double? hp = null, bool done = false, JsonObject? source = null)
+    {
+        var seed = new JsonObject { ["x"] = at.X, ["y"] = at.Y, ["unit"] = type, ["owner"] = owner };
+        if (source is not null)
+            foreach (var pair in source) seed[pair.Key] = pair.Value?.DeepClone();
+        if (hp is { } explicitHp) seed["hp"] = explicitHp;
+        var id = StateJson.Integer(state, "nextUnitId");
+        var grid = grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
+        state["nextUnitId"] = checked(id + 1);
+        var unit = CreateUnit(new StateContent(contentPacks), seed, id, grid.RestingFacing);
+        unit["done"] = done;
+        StateJson.Array(state["units"], "units").Add(unit);
+        return unit;
+    }
+
     public static JsonObject Create(JsonObject level, JsonArray contentPacks, uint? seed = null)
     {
         ArgumentNullException.ThrowIfNull(level);

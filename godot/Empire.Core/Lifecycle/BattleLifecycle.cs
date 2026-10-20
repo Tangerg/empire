@@ -19,7 +19,9 @@ public sealed class BattleLifecycle
     public VictorySystem Victory { get; }
 
     public BattleLifecycle(JsonObject state, JsonArray contentPacks, Action<JsonObject> emit,
-        ILifecycleEffects? effects = null, BattleResources? resources = null, ScenarioSystem? scenarios = null)
+        ILifecycleEffects? effects = null, BattleResources? resources = null, ScenarioSystem? scenarios = null,
+        Func<JsonObject, int, JsonObject, string>? extraObjective = null,
+        Func<JsonObject, string>? extraObjectiveDescription = null)
     {
         this.state = state;
         content = new StateContent(contentPacks);
@@ -28,7 +30,7 @@ public sealed class BattleLifecycle
         this.resources = resources ?? new BattleResources();
         Turns = new TurnOrderSystem(content);
         Scenarios = scenarios ?? new ScenarioSystem(content);
-        Victory = new VictorySystem(content, Scenarios);
+        Victory = new VictorySystem(content, Scenarios, extraObjective, extraObjectiveDescription);
     }
 
     public void Start()

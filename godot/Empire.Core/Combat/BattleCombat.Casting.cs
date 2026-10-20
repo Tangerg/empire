@@ -7,6 +7,8 @@ namespace Empire.Core.Combat;
 
 public sealed partial class BattleCombat
 {
+    public static IReadOnlyList<string> SupportedCastAbilities { get; } = Array.AsReadOnly(new[] { "attack" });
+
     private void BeginCast(JsonObject state, JsonObject caster, JsonObject weapon, Coord target, Coord origin, Action<JsonObject> emit)
     {
         var casts = state["pendingCasts"]!.AsArray();
@@ -41,7 +43,7 @@ public sealed partial class BattleCombat
             var weapon = Forecasts.ReadyWeapon(state, caster, weaponId);
             if (weapon is null) { Cancel("weaponUnavailable"); continue; }
             if (!HostileActionAllowed(state, StateJson.Integer(caster, "owner"), origin, target)) { Cancel("targetProtected"); continue; }
-            if (StateJson.Text(weapon, "area") == "single" && TacticalQueries.UnitAt(state, target) is null) { Cancel("targetVacated"); continue; }
+            if (AreaShapes.Get(StateJson.Text(weapon, "area")).NeedsOccupant && TacticalQueries.UnitAt(state, target) is null) { Cancel("targetVacated"); continue; }
             emit(new JsonObject { ["type"] = "castResolved", ["unit"] = id, ["weapon"] = weaponId, ["at"] = TacticalQueries.CoordinateJson(target) });
             ExecutePlan(state, Forecast(state, caster, target, origin, weaponId), emit);
         }
