@@ -111,7 +111,8 @@ class FxTests(unittest.TestCase):
                              ('C01-FX-16', ['short-rays', 'rising-fan', 'graylight-crest', 'residual-rays']),
                              ('C01-FX-17', ['healing-onset', 'leaf-spiral', 'healing-peak', 'orbit-dissipation']),
                              ('C01-FX-18', ['scattered-bands', 'aligning-ring', 'closed-restraints', 'settled-restraints']),
-                             ('C01-FX-19', ['dense-veil', 'curling-veil', 'veil-breakup', 'leaf-wisps'])]:
+                             ('C01-FX-19', ['dense-veil', 'curling-veil', 'veil-breakup', 'leaf-wisps']),
+                             ('C01-FX-20', ['bare-crescent', 'contact-spark', 'spark-spray', 'residual-sparks'])]:
             with self.subTest(topic=topic):
                 asset = {**self.asset, 'topicId': topic, 'png': f'runtime/fx/fx-{topic[-2:]}.png'}
                 hd = {**self.hd, 'topicId': topic, 'png': f'runtime-hd/fx/fx-{topic[-2:]}.png'}

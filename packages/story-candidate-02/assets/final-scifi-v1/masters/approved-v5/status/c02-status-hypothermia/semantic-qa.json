@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "motif": "One snow-covered armored helmet-and-shoulders bust with cyan visor and thick hanging icicles, one large six-armed snowflake at upper left, and a shallow snowy foreground lip.",
+  "checks": {
+    "One helmet and cropped armored shoulders": true,
+    "Snow caps and broad hanging icicles": true,
+    "One six-armed snowflake": true,
+    "Cyan visor still visible": true,
+    "Bounded shallow snow lip, no landscape or haze": true
+  },
+  "native32": "Actual native-size white/black/olive strips inspected; complete primary motif survives reduction.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or background residue.",
+  "uncertainty": "The frozen bust, six-armed snowflake and snowy lower edge are unambiguous. Decorative floating ice chips and icicle count have no documented identity value; chips were reduced to two and icicles broadened for native readability.",
+  "catalogOnly": true
+}

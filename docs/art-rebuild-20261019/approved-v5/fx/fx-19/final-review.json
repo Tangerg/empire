@@ -1,0 +1,106 @@
+{
+  "topicId": "C01-FX-19",
+  "label": "隐蔽",
+  "status": "accepted-source-static-phase-candidate",
+  "phaseOrder": [
+    "dense-veil",
+    "curling-veil",
+    "veil-breakup",
+    "leaf-wisps"
+  ],
+  "phaseOrderApproval": "Parent approved exact phase order on 2026-10-20T06:14:25Z",
+  "parentFinalStaticPhaseAcceptance": "Parent accepted full native and terminal sequence on 2026-10-20T06:27:41Z: gray-green smoke rolls open, breaks apart and ends with leaves/small wisps.",
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": [],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "sourceEdgeNonzeroSamples": [
+    15,
+    16,
+    177,
+    5
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeFullAndTerminalReviewed": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "subjectPreserved": "Gray-green leafy smoke, initially dense, then rolling open and breaking into separated ribbons/puffs before three leaves and four small wisps remain.",
+  "alphaMassRelativeToDense": [
+    1.0,
+    0.8522221502780578,
+    0.5741792963226786,
+    0.0680497755743443
+  ],
+  "largestComponentAreaRelativeToDense": [
+    1.0,
+    0.8366686934965488,
+    0.3588958899899104,
+    0.014300843918508076
+  ],
+  "firstPairBottomVariationLogicalPx": 0.06698564593301436,
+  "phaseReview": "qa/PHASE-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "sourceHashProof": "final-quartet.json",
+  "semanticCaveats": [
+    "Breakup retains more total alpha mass than the approximate one-third prompt target, but visible holes and separated fragments establish the requested intermediate breakup. Numeric prompt targets are not claimed exact.",
+    "Leaf and puff correspondence is not tracked as exact continuous trajectories.",
+    "This is a floating smoke volume, not a fixed ground object. Sparse final elements no longer define a shared contact silhouette.",
+    "Source/static interpretation and exact encoded timing do not establish observed live playback."
+  ],
+  "APNGVerification": {
+    "proof": "qa/apng-timing-verification.json",
+    "files": 28,
+    "decodedFrames": 112,
+    "exact12fpsFiles": 14,
+    "slowDiagnosticFiles": 14,
+    "everyDecodedFrameMatchesExpected": true,
+    "exactFrameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "numPlays": 1,
+    "loop": false,
+    "encodedFinalHold": false,
+    "removalRule": null,
+    "lifetimeOwner": "Future consumer; none currently bound"
+  },
+  "consumerAudit": "consumer-audit.json",
+  "authoredSceneConsumer": null,
+  "gameplayVisibilityChanged": false,
+  "enemyMarkerOrActorSilhouetteAuthored": false,
+  "hit420msAssumed": false,
+  "heal500msAssumed": false,
+  "browserObserved": false,
+  "browserBlocker": "Established browser/socket restriction; no repeated browser attempts were made.",
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false
+}

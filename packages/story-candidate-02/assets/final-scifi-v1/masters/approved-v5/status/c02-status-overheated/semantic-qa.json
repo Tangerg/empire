@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "motif": "One overheated coil machine on a stout round base: a tilted five-turn orange coil, attached small left vent, two pale bounded steam plumes and damaged top connector.",
+  "checks": {
+    "Exactly one industrial base and main coil": true,
+    "Five broad orange coil turns": true,
+    "One attached lower left vent": true,
+    "Two solid outlined steam plumes": true,
+    "No unbounded fog, glow or haze": true
+  },
+  "native32": "Actual native-size white/black/olive strips inspected; complete primary motif survives reduction.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or background residue.",
+  "uncertainty": "The machine, coil and two main steam plumes are clear. Small top connector details and mechanical seams are not semantically specified and were simplified. The five visible source coil turns are retained.",
+  "catalogOnly": true
+}

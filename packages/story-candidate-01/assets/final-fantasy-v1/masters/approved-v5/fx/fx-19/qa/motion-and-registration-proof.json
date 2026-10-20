@@ -1,0 +1,576 @@
+{
+  "measurement": "Unedited source alpha mass and connected components at alpha >=128. Metrics include leaves as well as smoke and are not material-perfect segmentation. Diagnostic masks are never applied to artwork.",
+  "frames": [
+    {
+      "phase": "dense-veil",
+      "sourceHash": "836a79e048710d2c2c8be98179bde9592a20b5cb113c88068e48f719b024bddd",
+      "alphaMassSourcePx": 631814.1019607843,
+      "visibleAreaAlpha128": 637678,
+      "visibleBoundsAlpha128": [
+        73,
+        171,
+        1224,
+        1149
+      ],
+      "largeComponentCountAlpha128": 8,
+      "largestComponentAreaAlpha128": 598636,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            73,
+            171,
+            1162,
+            1149
+          ],
+          "area": 598636,
+          "center": [
+            617.5,
+            660.0
+          ]
+        },
+        {
+          "bbox": [
+            434,
+            231,
+            542,
+            341
+          ],
+          "area": 8449,
+          "center": [
+            488.0,
+            286.0
+          ]
+        },
+        {
+          "bbox": [
+            1126,
+            647,
+            1224,
+            787
+          ],
+          "area": 8102,
+          "center": [
+            1175.0,
+            717.0
+          ]
+        },
+        {
+          "bbox": [
+            1015,
+            499,
+            1112,
+            613
+          ],
+          "area": 6717,
+          "center": [
+            1063.5,
+            556.0
+          ]
+        },
+        {
+          "bbox": [
+            324,
+            358,
+            415,
+            446
+          ],
+          "area": 5985,
+          "center": [
+            369.5,
+            402.0
+          ]
+        },
+        {
+          "bbox": [
+            937,
+            335,
+            1026,
+            425
+          ],
+          "area": 5059,
+          "center": [
+            981.5,
+            380.0
+          ]
+        },
+        {
+          "bbox": [
+            110,
+            713,
+            176,
+            780
+          ],
+          "area": 3262,
+          "center": [
+            143.0,
+            746.5
+          ]
+        },
+        {
+          "bbox": [
+            364,
+            487,
+            407,
+            534
+          ],
+          "area": 1468,
+          "center": [
+            385.5,
+            510.5
+          ]
+        }
+      ],
+      "centralRegionVisibleAreaAlpha128": 365283
+    },
+    {
+      "phase": "curling-veil",
+      "sourceHash": "a034215b1bfb57f9996268181eaa798fe154476e1c430e70a1496b9839bad5e8",
+      "alphaMassSourcePx": 538445.9725490196,
+      "visibleAreaAlpha128": 543182,
+      "visibleBoundsAlpha128": [
+        70,
+        177,
+        1211,
+        1152
+      ],
+      "largeComponentCountAlpha128": 6,
+      "largestComponentAreaAlpha128": 500860,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            70,
+            177,
+            1099,
+            1152
+          ],
+          "area": 500860,
+          "center": [
+            584.5,
+            664.5
+          ]
+        },
+        {
+          "bbox": [
+            1031,
+            774,
+            1211,
+            979
+          ],
+          "area": 21130,
+          "center": [
+            1121.0,
+            876.5
+          ]
+        },
+        {
+          "bbox": [
+            1046,
+            518,
+            1167,
+            645
+          ],
+          "area": 8134,
+          "center": [
+            1106.5,
+            581.5
+          ]
+        },
+        {
+          "bbox": [
+            1005,
+            354,
+            1089,
+            447
+          ],
+          "area": 4984,
+          "center": [
+            1047.0,
+            400.5
+          ]
+        },
+        {
+          "bbox": [
+            222,
+            643,
+            298,
+            729
+          ],
+          "area": 4716,
+          "center": [
+            260.0,
+            686.0
+          ]
+        },
+        {
+          "bbox": [
+            400,
+            191,
+            467,
+            260
+          ],
+          "area": 3358,
+          "center": [
+            433.5,
+            225.5
+          ]
+        }
+      ],
+      "centralRegionVisibleAreaAlpha128": 302349
+    },
+    {
+      "phase": "veil-breakup",
+      "sourceHash": "6374eced807e351a4be5260e0e73efb1849ea019ebe5ba8ebb9884f0a21298c2",
+      "alphaMassSourcePx": 362774.5764705882,
+      "visibleAreaAlpha128": 366027,
+      "visibleBoundsAlpha128": [
+        96,
+        199,
+        1158,
+        1101
+      ],
+      "largeComponentCountAlpha128": 14,
+      "largestComponentAreaAlpha128": 214848,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            200,
+            199,
+            898,
+            1092
+          ],
+          "area": 214848,
+          "center": [
+            549.0,
+            645.5
+          ]
+        },
+        {
+          "bbox": [
+            96,
+            717,
+            399,
+            930
+          ],
+          "area": 38148,
+          "center": [
+            247.5,
+            823.5
+          ]
+        },
+        {
+          "bbox": [
+            873,
+            612,
+            1150,
+            814
+          ],
+          "area": 30898,
+          "center": [
+            1011.5,
+            713.0
+          ]
+        },
+        {
+          "bbox": [
+            805,
+            954,
+            1037,
+            1098
+          ],
+          "area": 21993,
+          "center": [
+            921.0,
+            1026.0
+          ]
+        },
+        {
+          "bbox": [
+            152,
+            973,
+            313,
+            1071
+          ],
+          "area": 9462,
+          "center": [
+            232.5,
+            1022.0
+          ]
+        },
+        {
+          "bbox": [
+            962,
+            265,
+            1085,
+            383
+          ],
+          "area": 8813,
+          "center": [
+            1023.5,
+            324.0
+          ]
+        },
+        {
+          "bbox": [
+            738,
+            435,
+            881,
+            533
+          ],
+          "area": 7892,
+          "center": [
+            809.5,
+            484.0
+          ]
+        },
+        {
+          "bbox": [
+            1066,
+            452,
+            1158,
+            591
+          ],
+          "area": 7601,
+          "center": [
+            1112.0,
+            521.5
+          ]
+        },
+        {
+          "bbox": [
+            265,
+            570,
+            408,
+            655
+          ],
+          "area": 7231,
+          "center": [
+            336.5,
+            612.5
+          ]
+        },
+        {
+          "bbox": [
+            1026,
+            862,
+            1151,
+            964
+          ],
+          "area": 6719,
+          "center": [
+            1088.5,
+            913.0
+          ]
+        },
+        {
+          "bbox": [
+            724,
+            965,
+            794,
+            1050
+          ],
+          "area": 4361,
+          "center": [
+            759.0,
+            1007.5
+          ]
+        },
+        {
+          "bbox": [
+            370,
+            203,
+            434,
+            264
+          ],
+          "area": 2928,
+          "center": [
+            402.0,
+            233.5
+          ]
+        },
+        {
+          "bbox": [
+            1051,
+            1042,
+            1120,
+            1101
+          ],
+          "area": 2900,
+          "center": [
+            1085.5,
+            1071.5
+          ]
+        },
+        {
+          "bbox": [
+            409,
+            733,
+            466,
+            791
+          ],
+          "area": 2233,
+          "center": [
+            437.5,
+            762.0
+          ]
+        }
+      ],
+      "centralRegionVisibleAreaAlpha128": 185141
+    },
+    {
+      "phase": "leaf-wisps",
+      "sourceHash": "cfafd31c866ac9aa5d534f62eab265d20e564c56f255473385cd764dd4c194e8",
+      "alphaMassSourcePx": 42994.807843137256,
+      "visibleAreaAlpha128": 43374,
+      "visibleBoundsAlpha128": [
+        208,
+        483,
+        1104,
+        1057
+      ],
+      "largeComponentCountAlpha128": 7,
+      "largestComponentAreaAlpha128": 8561,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            499,
+            937,
+            635,
+            1030
+          ],
+          "area": 8561,
+          "center": [
+            567.0,
+            983.5
+          ]
+        },
+        {
+          "bbox": [
+            831,
+            970,
+            966,
+            1057
+          ],
+          "area": 7467,
+          "center": [
+            898.5,
+            1013.5
+          ]
+        },
+        {
+          "bbox": [
+            208,
+            878,
+            347,
+            960
+          ],
+          "area": 6632,
+          "center": [
+            277.5,
+            919.0
+          ]
+        },
+        {
+          "bbox": [
+            369,
+            575,
+            508,
+            649
+          ],
+          "area": 6438,
+          "center": [
+            438.5,
+            612.0
+          ]
+        },
+        {
+          "bbox": [
+            1019,
+            647,
+            1104,
+            746
+          ],
+          "area": 5439,
+          "center": [
+            1061.5,
+            696.5
+          ]
+        },
+        {
+          "bbox": [
+            807,
+            687,
+            878,
+            800
+          ],
+          "area": 4907,
+          "center": [
+            842.5,
+            743.5
+          ]
+        },
+        {
+          "bbox": [
+            730,
+            483,
+            830,
+            551
+          ],
+          "area": 3930,
+          "center": [
+            780.0,
+            517.0
+          ]
+        }
+      ],
+      "centralRegionVisibleAreaAlpha128": 27191
+    }
+  ],
+  "alphaMassRelativeToDense": [
+    1.0,
+    0.8522221502780578,
+    0.5741792963226786,
+    0.0680497755743443
+  ],
+  "largestComponentAreaRelativeToDense": [
+    1.0,
+    0.8366686934965488,
+    0.3588958899899104,
+    0.014300843918508076
+  ],
+  "visibleBoundsAlpha128": [
+    [
+      73,
+      171,
+      1224,
+      1149
+    ],
+    [
+      70,
+      177,
+      1211,
+      1152
+    ],
+    [
+      96,
+      199,
+      1158,
+      1101
+    ],
+    [
+      208,
+      483,
+      1104,
+      1057
+    ]
+  ],
+  "firstPairBottomVariationLogicalPx": 0.06698564593301436,
+  "interpretation": "The source begins already dense. The main cloudy mass then rolls into deep notches, breaks into a narrower central ribbon with disconnected puffs, and disappears to leave three leaves and four wisps. Source opacity was never altered in code; shrinking connected mass is authored geometry.",
+  "caveats": [
+    "Breakup retains more total alpha mass than the approximate one-third prompt target, but visible holes and separated fragments establish the requested intermediate breakup. Numeric prompt targets are not claimed exact.",
+    "Leaf and puff correspondence is not tracked as exact continuous trajectories.",
+    "This is a floating smoke volume, not a fixed ground object. Sparse final elements no longer define a shared contact silhouette.",
+    "Source/static interpretation and exact encoded timing do not establish observed live playback."
+  ],
+  "visibilityBoundary": "Catalog-only. Existing vision/hiddenUnits rules are untouched; no enemy silhouette or marker is authored.",
+  "browserObserved": false
+}

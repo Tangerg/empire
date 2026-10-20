@@ -37,6 +37,7 @@ PHASE_ORDERS = {
     'C01-FX-17': ['healing-onset', 'leaf-spiral', 'healing-peak', 'orbit-dissipation'],
     'C01-FX-18': ['scattered-bands', 'aligning-ring', 'closed-restraints', 'settled-restraints'],
     'C01-FX-19': ['dense-veil', 'curling-veil', 'veil-breakup', 'leaf-wisps'],
+    'C01-FX-20': ['bare-crescent', 'contact-spark', 'spark-spray', 'residual-sparks'],
     **AMBIENT_PHASE_ORDERS,
 }
 
