@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: precise-object-edit. Edit the attached ground material image. Change ONLY the size and simplification of the four gold diamond-and-six-node junctions. Each is currently much too large. SHRINK EACH COMPLETE GOLD DIAMOND AND ITS SIX-NODE HUB TO EXACTLY HALF ITS CURRENT WIDTH AND HALF ITS CURRENT HEIGHT, without moving its center. The four junction centers stay at (313,313), (940,313), (313,940), (940,940) on this 1254px square. Each complete diamond must be about180px wide, not360px wide. Each hub retains one hollow center with exactly six short spokes and six small ring endpoints. Expand gray paving into the newly freed area. Keep the horizontal and vertical straight inlay bands connected to the smaller diamonds, but make these long bands much narrower and more subdued, about12px thick. Preserve the continuous flat fullbleed gray paving, its broad matte low-noise style and its colors. No additional objects, no text, no new topology, no different motif positions. Every complete small diamond should now comfortably fit inside a central190px square of its627px quarter. Keep the canvas1254x1254 RGB opaque. Do not make a sprite atlas or panels.",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/oathlight-2/raw/imagegen-01-rejected-oversized-diamond.png"
+  ],
+  "transparent_background": false
+}

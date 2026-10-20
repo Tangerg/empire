@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-TERRAIN-OATHLIGHT-1",
+  "status": "raw-candidate-reviewed; final integrator export pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte with no pixel transformation",
+  "master": "master.png",
+  "sourceSHA256": "a4d670a21aa874fdab18c6c1e252b6448f536b429181eee39179d112975c0c32",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "selectedPrompt": "prompt.txt",
+  "selectedRequest": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "rowMeaning": [
+      "627px source square reduced to192px",
+      "32px LANCZOS crop enlarged6x nearest",
+      "64px LANCZOS crop enlarged3x nearest"
+    ],
+    "edits": "QA-only crop, resize and composite; master unchanged",
+    "finalExportWindowsApproved": false,
+    "review": "All four627px crops preserve complete six-node hubs. At32px the hub remains a gold radial relation with small dark endpoint centers;64px resolves six hollow ring endpoints."
+  },
+  "fixedMaskDiagnostic": {
+    "performed": false,
+    "window": null,
+    "oldMaskGeometryUnchanged": true,
+    "notFinalExport": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 18.518075491759703,
+    "northSouthMeanAbsoluteRGBDifference": 13.976608187134502
+  },
+  "export": {
+    "performed": false,
+    "alphaAndSeamQA": "pending integrator",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; catalog-only canonical terrain per source audit"
+  },
+  "visualSourceQA": {
+    "fullbleedSquare": true,
+    "broadMatteStyle": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "primaryMotifsCompleteInAllFourWindows": true,
+    "semanticMaterialIdentityRetainedThroughDocumentedReconstruction": true,
+    "caveats": [
+      "Opposite edges are not exact matches; source is not seam-certified.",
+      "Paving has subdued medium-scale mottling beyond the minimal-texture prompt; broad stone planes remain readable.",
+      "Four motifs repeat the same semantic identity, not four independent authored node types."
+    ],
+    "subject": "Four complete six-spoke, six-ring ordinary node hubs on flat broad gray paving; no control diamond or open-network cords."
+  }
+}

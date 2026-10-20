@@ -140,3 +140,6 @@ FX05 preserves original atlas02 row1: small orange ignition, medium curled flame
 ## Oath-fire source semantics
 
 FX06 preserves the original atlas02 second-row amber angular rings, top/bottom diamond sigils, and open center. Phases low-ring/rising-ring/sealed-ring/fading-fragments are distinct from ordinary flame. Existing gray-oath/oath-dispel/inquisitor-flame/oath-bolt target-hit bindings keep12fps/420ms. No invented readable oath language or source opacity cleanup. Contract support alone does not approve generated artwork.
+
+## FX07 siege debris
+Original label and actual knight-charge/satchel-charge/forge-burst consumers identify physical siege debris, not frost. Ordered phases: airborne-burst, falling-pieces, falling-remnants, settled-heap. The final opaque wood/stone heap is intentional; existing nonloop12fps target-hit lifetime420ms removes the node. Common1254 canvas/28px content transform and strict source alpha<=1/final2px alpha0 gates remain unchanged. No per-phase fitting or forced opacity fade.

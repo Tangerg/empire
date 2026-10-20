@@ -20,6 +20,7 @@ PHASE_ORDERS = {
     'C01-FX-04': ['contact', 'expand', 'peak', 'settle'],
     'C01-FX-05': ['ignite', 'rise', 'flare', 'embers'],
     'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
+    'C01-FX-07': ['airborne-burst', 'falling-pieces', 'falling-remnants', 'settled-heap'],
 }
 
 

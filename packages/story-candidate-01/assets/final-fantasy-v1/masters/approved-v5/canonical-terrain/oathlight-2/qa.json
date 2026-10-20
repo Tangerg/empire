@@ -1,0 +1,114 @@
+{
+  "topicId": "C01-TERRAIN-OATHLIGHT-2",
+  "status": "raw-candidate-reviewed; final integrator export pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte with no pixel transformation",
+  "master": "master.png",
+  "sourceSHA256": "c91d76620d5874e00bf02b4d19b338d2996f7ff9c370a5c588ce73988e1d73a9",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "rowMeaning": [
+      "627px source square reduced to192px",
+      "32px LANCZOS crop enlarged6x nearest",
+      "64px LANCZOS crop enlarged3x nearest"
+    ],
+    "edits": "QA-only crop, resize and composite; master unchanged",
+    "finalExportWindowsApproved": false,
+    "review": "All four627px crops preserve complete control motifs. At32px the gold controlled junction reads but individual six-node hollows merge;64px improves diamond/hub structure. No readable text introduced."
+  },
+  "fixedMaskDiagnostic": {
+    "performed": true,
+    "window": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "oldMaskGeometryUnchanged": true,
+    "notFinalExport": true,
+    "review": "Inspected all16 unchanged masks at32 and64 using upper-left627px source window. Complete compact gold diamond and embedded hub remain within fixed center pad in every mask. Only continuous external band material is clipped with arms. Six hollow endpoints cannot be reliably counted at32px and remain very small at64px; this is source geometry retained, not guaranteed native symbol-detail legibility.",
+    "proofs": [
+      "fixed-mask-32-proof.png",
+      "fixed-mask-64-proof.png"
+    ],
+    "sourceMotifApproxXYXY": [
+      232,
+      234,
+      395,
+      397
+    ]
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 14.404040404040405,
+    "northSouthMeanAbsoluteRGBDifference": 13.589048378522063
+  },
+  "export": {
+    "performed": false,
+    "alphaAndSeamQA": "pending integrator",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; catalog-only canonical terrain per source audit"
+  },
+  "visualSourceQA": {
+    "fullbleedSquare": true,
+    "broadMatteStyle": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "primaryMotifsCompleteInAllFourWindows": true,
+    "semanticMaterialIdentityRetainedThroughDocumentedReconstruction": true,
+    "caveats": [
+      "Opposite edges are not exact matches; source is not seam-certified.",
+      "Paving has subdued medium-scale mottling beyond the minimal-texture prompt; broad stone planes remain readable.",
+      "Four motifs repeat the same semantic identity, not four independent authored node types.",
+      "First generation rejected for oversized diamond; immutable rejected raw and its request retained. Selected imagegen edit shrank all complete junctions, preserving centers.",
+      "Six-node relation is intact in source but too small to count reliably at32px; report semantic-detail limit rather than claim perfect native legibility."
+    ],
+    "subject": "Four compact complete six-node hubs enclosed by diamond/triangular gold frame; thin straight inlays continue through broad gray paving."
+  }
+}

@@ -1,0 +1,835 @@
+{
+  "topicId": "C01-FX-07",
+  "label": "攻城碎屑",
+  "subject": "siege wood and stone debris",
+  "sourceAuditRecord": {
+    "topicId": "C01-FX-07",
+    "label": "攻城碎屑",
+    "semanticName": "siege-debris",
+    "manifest": {
+      "assetId": "C01-FFV1-FX-07",
+      "topicId": "C01-FX-07",
+      "label": "攻城碎屑",
+      "category": "fx",
+      "png": "runtime/fx/fx-07.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    "hdManifest": {
+      "topicId": "C01-FX-07",
+      "png": "runtime-hd/fx/fx-07.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    "remainingStatus": "pending-redraw",
+    "sourceBoard": 2,
+    "sourceRow1Based": 3,
+    "sourceRowBoundsXYXY": [
+      0,
+      627,
+      1254,
+      940
+    ],
+    "originalRowCrop": {
+      "path": "source-crops/C01-FX-07/original-row.png",
+      "sha256": "4d407f7f72c59391b04141cbdb1de07fadc835f4169e5921603a618bbec314e5",
+      "size": [
+        1254,
+        313
+      ],
+      "mode": "RGB",
+      "decodedSha256": "8f01b99068650a68d6436a2f168b6fa3ecd3da013d43a845d09b573bee947640"
+    },
+    "slots": [
+      {
+        "phaseIndex": 0,
+        "sourceColumn1Based": 1,
+        "sourceRow1Based": 3,
+        "fullGridBoundsXYXY": [
+          0,
+          627,
+          314,
+          940
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          5,
+          632,
+          309,
+          935
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-07/original-f0.png",
+          "sha256": "b1b974e35e59ed40f6d7689c94850d783cc691f88c1573ebb8b0db6045b0211f",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "91421ce7039a474dfd14000d7a52369a5c8d539ac048f13bc52f56cf19114a57"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-07/legacy-alpha-f0.png",
+          "sha256": "15e0b95d14d1240989cafe1c2958bbb01d8ea6fe34e8eddf9a6628249d17c730",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "7317cdd3d8b594038b44085808b21b1c44ee368a1da183675bc4fe6bf03aeea0"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          28,
+          29,
+          269,
+          245
+        ],
+        "phaseObservation": "dense airborne wood and stone explosion",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 70176,
+          "translucentPixels1to239": 3951,
+          "nearOpaquePixels240to255": 17985,
+          "visiblePixels": 21936,
+          "edgeMaxAlpha": 9,
+          "alphaBoundingBox": [
+            0,
+            29,
+            304,
+            300
+          ],
+          "pixelSha256Rgba": "7317cdd3d8b594038b44085808b21b1c44ee368a1da183675bc4fe6bf03aeea0"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            241,
+            216
+          ],
+          "scale": 0.12448132780082988
+        }
+      },
+      {
+        "phaseIndex": 1,
+        "sourceColumn1Based": 2,
+        "sourceRow1Based": 3,
+        "fullGridBoundsXYXY": [
+          314,
+          627,
+          627,
+          940
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          319,
+          632,
+          622,
+          935
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-07/original-f1.png",
+          "sha256": "683058f8f6316f8ae1a703e1aaaafd431a5174ecdf9460d4652780d003186efc",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "f2cd67022d5346785796563d8693a42f0cecdfbfdb9c7ca526f815d4ba0b740b"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-07/legacy-alpha-f1.png",
+          "sha256": "0c910dc54dce5d7dbe30046799b117b2672fded9914627e5fb453e00a0c45fd3",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "ba3b7cc53129876068e6bf5fdbad88efe92f05e311c6513d8084713360c2be61"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          30,
+          50,
+          248,
+          243
+        ],
+        "phaseObservation": "fewer falling large pieces",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 80915,
+          "translucentPixels1to239": 2158,
+          "nearOpaquePixels240to255": 8736,
+          "visiblePixels": 10894,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            30,
+            49,
+            300,
+            300
+          ],
+          "pixelSha256Rgba": "ba3b7cc53129876068e6bf5fdbad88efe92f05e311c6513d8084713360c2be61"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            218,
+            193
+          ],
+          "scale": 0.13761467889908258
+        }
+      },
+      {
+        "phaseIndex": 2,
+        "sourceColumn1Based": 3,
+        "sourceRow1Based": 3,
+        "fullGridBoundsXYXY": [
+          627,
+          627,
+          940,
+          940
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          632,
+          632,
+          935,
+          935
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-07/original-f2.png",
+          "sha256": "1a904bf2d859be22bd66f113b2813acc88ca89e4b5c780dc39566e1b4d1e0ea0",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "56d0b5a3ff5c130ab3b6521b4c03f8921a925fd6bdb8ba05b4be8f7687e6f682"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-07/legacy-alpha-f2.png",
+          "sha256": "17f9051771a8d56a4dbcef0b2acebe8d6edb989811d5493ce20c491a07a66a9f",
+          "size": [
+            303,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "db2b0891da0f95a31885372231d1f338deefc4a6cf11b423bb907ee45884f3ed"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          54,
+          104,
+          244,
+          247
+        ],
+        "phaseObservation": "small falling remnants",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 87178,
+          "translucentPixels1to239": 1486,
+          "nearOpaquePixels240to255": 3145,
+          "visiblePixels": 4631,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            54,
+            104,
+            244,
+            247
+          ],
+          "pixelSha256Rgba": "db2b0891da0f95a31885372231d1f338deefc4a6cf11b423bb907ee45884f3ed"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            190,
+            143
+          ],
+          "scale": 0.15789473684210525
+        }
+      },
+      {
+        "phaseIndex": 3,
+        "sourceColumn1Based": 4,
+        "sourceRow1Based": 3,
+        "fullGridBoundsXYXY": [
+          940,
+          627,
+          1254,
+          940
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          945,
+          632,
+          1249,
+          935
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-07/original-f3.png",
+          "sha256": "111c3d2278bbf1a93efed1c9a916568881f8dbfa9efbd20c61dda2fda9a3ccd4",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGB",
+          "decodedSha256": "180ca139e8e2a3dd0d880db34a9fee4eca5f08f79f68f3d6fd5907af49eb031f"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-07/legacy-alpha-f3.png",
+          "sha256": "7ef27db8b95b11f7f290f98e2dccdbe22edadf1e9eebba6568d167128147b26f",
+          "size": [
+            304,
+            303
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "38a3b36310d2514f10ab6412c2a737fabc08f6d338ed0e0e40d95a7134c9517a"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          48,
+          166,
+          255,
+          245
+        ],
+        "phaseObservation": "settled wood/stone heap",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 85134,
+          "translucentPixels1to239": 1169,
+          "nearOpaquePixels240to255": 5809,
+          "visiblePixels": 6978,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            48,
+            166,
+            255,
+            245
+          ],
+          "pixelSha256Rgba": "38a3b36310d2514f10ab6412c2a737fabc08f6d338ed0e0e40d95a7134c9517a"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            207,
+            79
+          ],
+          "scale": 0.14492753623188406
+        }
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "density": 1,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-07.png",
+        "sha256": "591363c0757afd4a72b24153b661a01a334eba233ab88eb212619bf9527e0083",
+        "size": [
+          128,
+          32
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 2450,
+          "translucentPixels1to239": 1219,
+          "nearOpaquePixels240to255": 427,
+          "visiblePixels": 1646,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            1,
+            2,
+            127,
+            29
+          ],
+          "pixelSha256Rgba": "aaa6b35111f74067036bc87f69f0b2a65630258286fc74b00b5a24806b698ec0"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 422,
+            "translucentPixels1to239": 416,
+            "nearOpaquePixels240to255": 186,
+            "visiblePixels": 602,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              2,
+              31,
+              29
+            ],
+            "pixelSha256Rgba": "035507db54dbe8fd80d8d79ff6b3865c243884381f1d94a34bf256c20dbce913"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 547,
+            "translucentPixels1to239": 363,
+            "nearOpaquePixels240to255": 114,
+            "visiblePixels": 477,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              2,
+              31,
+              29
+            ],
+            "pixelSha256Rgba": "9b1bc4299f3ee2422ca7b771d8a69aa70f2b479c345fdb5734eeac0c3aae5b74"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 683,
+            "translucentPixels1to239": 302,
+            "nearOpaquePixels240to255": 39,
+            "visiblePixels": 341,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              4,
+              31,
+              27
+            ],
+            "pixelSha256Rgba": "6218073a51ad7e653165b6f34efe5ed3c9dbf353b257ca314135f55048f379dd"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 798,
+            "translucentPixels1to239": 138,
+            "nearOpaquePixels240to255": 88,
+            "visiblePixels": 226,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              10,
+              31,
+              21
+            ],
+            "pixelSha256Rgba": "66b0a0a02c52cde6cae1ef6dbaf16d7f62bc40d37a6ab58c614cb5fca8d11fe6"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-07@1x.png",
+          "sha256": "305bf4df9bd26344fcc6d0eca2ba1ad8c84f78e3946db67ab65210809b30cf4a",
+          "size": [
+            128,
+            32
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "aaa6b35111f74067036bc87f69f0b2a65630258286fc74b00b5a24806b698ec0"
+        }
+      },
+      {
+        "density": 2,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-07.png",
+        "sha256": "0606442f2b7285444e11b71a5cf9bb97c51899a5af58bfafb938535bfc1d04ed",
+        "size": [
+          256,
+          64
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 11101,
+          "translucentPixels1to239": 3038,
+          "nearOpaquePixels240to255": 2245,
+          "visiblePixels": 5283,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            2,
+            5,
+            254,
+            59
+          ],
+          "pixelSha256Rgba": "e717676a9bd6184621b42b44aaf2e88418ff7f5a4537d029170328889d6cd194"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 1954,
+            "translucentPixels1to239": 1168,
+            "nearOpaquePixels240to255": 974,
+            "visiblePixels": 2142,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              5,
+              62,
+              59
+            ],
+            "pixelSha256Rgba": "3e167a5f43a8e5e3c9d287ece3c46725d963bf9824d74d55aa5c10684b46e136"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2707,
+            "translucentPixels1to239": 819,
+            "nearOpaquePixels240to255": 570,
+            "visiblePixels": 1389,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              5,
+              62,
+              58
+            ],
+            "pixelSha256Rgba": "1bdc36c676cba1baf5dcb0b40c15e293d68932a3ca718d063c23198b9f9a07d1"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3141,
+            "translucentPixels1to239": 698,
+            "nearOpaquePixels240to255": 257,
+            "visiblePixels": 955,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              9,
+              62,
+              54
+            ],
+            "pixelSha256Rgba": "9ca6dd5e0fcd568fe3eb9186c17943c3e9d0a64382e7afe75daf32dce61b5074"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3299,
+            "translucentPixels1to239": 353,
+            "nearOpaquePixels240to255": 444,
+            "visiblePixels": 797,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              20,
+              62,
+              43
+            ],
+            "pixelSha256Rgba": "ea56a930d48f280c27173201f9668a95aba340c47b100694979c8461f5f06a86"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-07@2x.png",
+          "sha256": "0c4042d963143c93a146c0996aec02bebed1f8775fad9541b0471b75a6d70dfd",
+          "size": [
+            256,
+            64
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "e717676a9bd6184621b42b44aaf2e88418ff7f5a4537d029170328889d6cd194"
+        }
+      }
+    ],
+    "consumers": {
+      "status": "statically-bound-weapon-hit",
+      "weaponBindings": [
+        {
+          "weaponId": "c01.knight-charge",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 159
+        },
+        {
+          "weaponId": "c01.satchel-charge",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 165
+        },
+        {
+          "weaponId": "c01.forge-burst",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 167
+        }
+      ],
+      "unitDefinitions": [
+        {
+          "unitId": "c01.roderick",
+          "weapons": [
+            "c01.knight-lance",
+            "c01.knight-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 30,
+          "boundWeaponsForThisFx": [
+            "c01.knight-charge"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 412,
+              "text": "ally('field-cleric', 'c01.gravekeeper'), ally('roderick-reserve', 'c01.roderick'),"
+            },
+            {
+              "line": 464,
+              "text": "player: baseParty(ally('roderick', 'c01.roderick'), ally('siege-mage', 'c01.battle-mage'), ally('siege-engineer', 'c01.engineer'), ally('siege-guard', 'c01.banner-guard'), ally('field-cleric', 'c01.gravekeeper'), ally('north-sapper', 'c01.engineer'), ally('south-spear', 'c01.banner-guard')),"
+            },
+            {
+              "line": 667,
+              "text": "foe('roderick', 'c01.roderick'), foe('royal-guard-1', 'c01.knight'), foe('royal-guard-2', 'c01.legion-shield'), foe('royal-bow', 'c01.archer'), foe('royal-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 855,
+              "text": "(unit.unit === 'c01.cain' || unit.unit === 'c01.roderick' || unit.unit === 'c01.inquisitor'));"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.cain",
+          "weapons": [
+            "c01.legion-spear",
+            "c01.knight-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 36,
+          "boundWeaponsForThisFx": [
+            "c01.knight-charge"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 418,
+              "text": "foe('vanguard-1', 'c01.legion-shield'), foe('vanguard-2', 'c01.swordsman'), foe('vanguard-archer', 'c01.archer'), foe('vanguard-cain', 'c01.cain'),"
+            },
+            {
+              "line": 444,
+              "text": "foe('cain', 'c01.cain'), foe('shield-1', 'c01.legion-shield'), foe('shield-2', 'c01.legion-shield'), foe('bow-1', 'c01.archer'), foe('unmarked-ballista', 'c01.ballista'),"
+            },
+            {
+              "line": 705,
+              "text": "foe('imperial-cain', 'c01.cain'), foe('imperial-1', 'c01.legion-shield'), foe('imperial-2', 'c01.battle-mage'), foe('oath-echo-1', 'c01.skeleton-guard'), foe('oath-echo-2', 'c01.ghost'),"
+            },
+            {
+              "line": 855,
+              "text": "(unit.unit === 'c01.cain' || unit.unit === 'c01.roderick' || unit.unit === 'c01.inquisitor'));"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.tasha",
+          "weapons": [
+            "c01.engineer-hammer",
+            "c01.satchel-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 53,
+          "boundWeaponsForThisFx": [
+            "c01.satchel-charge"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 352,
+              "text": "tasha: { ...hero('tasha', 'c01.tasha'), formation: 'formation-defensive' },"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.knight",
+          "weapons": [
+            "c01.knight-lance",
+            "c01.knight-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 67,
+          "boundWeaponsForThisFx": [
+            "c01.knight-charge"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 415,
+              "text": "ally('camp-guard', 'c01.legion-shield'), ally('field-knight', 'c01.knight'),"
+            },
+            {
+              "line": 442,
+              "text": "player: baseParty(ally('bridge-knight', 'c01.knight'), ally('bridge-guard-1', 'c01.banner-guard'), ally('bridge-guard-2', 'c01.archer'), ally('refugee-1', 'c01.refugee'), ally('refugee-2', 'c01.refugee'), ally('refugee-3', 'c01.refugee'), ally('river-scout', 'c01.swordsman'), ally('bridge-cleric', 'c01.gravekeeper'), ally('bridge-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 554,
+              "text": "foe('purifier-1', 'c01.inquisitor'), foe('purifier-2', 'c01.templar'), foe('purifier-3', 'c01.legion-shield'), foe('purifier-4', 'c01.archer'), foe('purifier-5', 'c01.knight'),"
+            },
+            {
+              "line": 585,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('rearguard', 'c01.banner-guard'), ally('rearguard-2', 'c01.banner-guard'), ally('refugee-1', 'c01.refugee'), ally('refugee-2', 'c01.refugee'), ally('refugee-3', 'c01.refugee'), ally('refugee-4', 'c01.laborer'), ally('mounted-rearguard', 'c01.knight'), ally('white-river-cleric', 'c01.gravekeeper')),"
+            },
+            {
+              "line": 587,
+              "text": "foe('pursuer-1', 'c01.knight'), foe('pursuer-2', 'c01.swordsman'), foe('pursuer-3', 'c01.archer'), foe('pursuer-4', 'c01.swordsman'), foe('pursuer-ballista', 'c01.ballista'),"
+            },
+            {
+              "line": 597,
+              "text": "{ key: 'pursuit-wave-knight', x: 0, y: 1, unit: 'c01.knight', owner: 2, facing: 'east' },"
+            },
+            {
+              "line": 648,
+              "text": "foe('escort-1', 'c01.inquisitor'), foe('escort-2', 'c01.legion-shield'), foe('escort-3', 'c01.knight'), foe('escort-4', 'c01.archer'), foe('escort-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 667,
+              "text": "foe('roderick', 'c01.roderick'), foe('royal-guard-1', 'c01.knight'), foe('royal-guard-2', 'c01.legion-shield'), foe('royal-bow', 'c01.archer'), foe('royal-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 668,
+              "text": "foe('pass-shield', 'c01.legion-shield'), foe('north-rider', 'c01.knight'), foe('south-rider', 'c01.knight'), foe('pass-bow', 'c01.archer'), foe('banner-sword', 'c01.swordsman'),"
+            },
+            {
+              "line": 676,
+              "text": "{ key: 'old-banner-west-knight', x: 0, y: 4, unit: 'c01.knight', owner: 2, facing: 'east' },"
+            },
+            {
+              "line": 706,
+              "text": "foe('east-imperial', 'c01.knight'), foe('north-echo', 'c01.skeleton-guard'), foe('south-echo', 'c01.ghost'), foe('tower-bow', 'c01.archer'), foe('mechanism-guard', 'c01.templar'),"
+            },
+            {
+              "line": 729,
+              "text": "foe('archive-inquisitor', 'c01.inquisitor'), foe('archive-guard-1', 'c01.legion-shield'), foe('archive-guard-2', 'c01.legion-shield'), foe('archive-mage', 'c01.battle-mage'), foe('archive-knight', 'c01.knight'),"
+            },
+            {
+              "line": 730,
+              "text": "foe('west-archive-guard', 'c01.templar'), foe('north-archive-bow', 'c01.archer'), foe('central-archive-mage', 'c01.battle-mage'), foe('east-archive-guard', 'c01.legion-shield'), foe('south-archive-knight', 'c01.knight'), foe('exit-inquisitor', 'c01.inquisitor'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.engineer",
+          "weapons": [
+            "c01.engineer-hammer",
+            "c01.satchel-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 76,
+          "boundWeaponsForThisFx": [
+            "c01.satchel-charge"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 464,
+              "text": "player: baseParty(ally('roderick', 'c01.roderick'), ally('siege-mage', 'c01.battle-mage'), ally('siege-engineer', 'c01.engineer'), ally('siege-guard', 'c01.banner-guard'), ally('field-cleric', 'c01.gravekeeper'), ally('north-sapper', 'c01.engineer'), ally('south-spear', 'c01.banner-guard')),"
+            },
+            {
+              "line": 493,
+              "text": "{ key: 'redstone-wave-engineer', x: 1, y: 14, unit: 'c01.engineer', owner: 1, facing: 'east' },"
+            },
+            {
+              "line": 611,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('militia', 'c01.banner-guard'), ally('militia-2', 'c01.banner-guard'), ally('engineer', 'c01.engineer'), ally('west-militia', 'c01.swordsman'), ally('east-militia', 'c01.archer'), ally('city-cleric', 'c01.gravekeeper'), ally('north-militia', 'c01.banner-guard'), ally('south-militia', 'c01.swordsman')),"
+            },
+            {
+              "line": 646,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, ally('chain-breaker', 'c01.engineer'), ally('prison-guard', 'c01.banner-guard'), ally('prison-scout', 'c01.archer'), ally('prison-cleric', 'c01.gravekeeper'), ally('west-breach-guard', 'c01.banner-guard'), ally('east-breach-sword', 'c01.swordsman')),"
+            },
+            {
+              "line": 703,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('tower-engineer', 'c01.engineer'), ally('tower-guard', 'c01.banner-guard')),"
+            },
+            {
+              "line": 727,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('archive-guard', 'c01.banner-guard'), ally('archive-engineer', 'c01.engineer'), ally('archive-bow', 'c01.archer'), ally('archive-sword', 'c01.swordsman'), ally('archive-cleric', 'c01.gravekeeper'), ally('archive-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 741,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('forge-laborer', 'c01.laborer'), ally('forge-guard', 'c01.banner-guard'), ally('forge-engineer', 'c01.engineer'), ally('forge-bow', 'c01.archer')),"
+            },
+            {
+              "line": 787,
+              "text": "{ ...ally('memory-engineer', 'c01.engineer'), directive: { mode: 'patrol', waypoints: [{ x: 8, y: 13 }] } },"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.rune-artificer",
+          "weapons": [
+            "c01.rune-hammer",
+            "c01.forge-burst"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 85,
+          "boundWeaponsForThisFx": [
+            "c01.forge-burst"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 743,
+              "text": "foe('golem-1', 'c01.stone-golem'), foe('golem-2', 'c01.stone-golem'), foe('rune-rebel-1', 'c01.rune-shield'), foe('rune-rebel-2', 'c01.rune-artificer'), foe('forge-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 744,
+              "text": "foe('north-golem', 'c01.stone-golem'), foe('east-rune-shield', 'c01.rune-shield'), foe('south-artificer', 'c01.rune-artificer'), foe('forge-guard-1', 'c01.templar'), foe('forge-guard-2', 'c01.rune-shield'), foe('forge-bow-guard', 'c01.archer'),"
+            }
+          ]
+        }
+      ],
+      "livePlaybackObserved": false,
+      "genericConsumer": "packages/game-ui/src/ui/board.ts:611-644"
+    },
+    "semanticPhaseRequirement": "Ballistic down/out trajectory then settlement; do not arbitrarily reverse to small-to-large generic four phases.",
+    "alphaPolicy": "Genuine transparent exterior; preserve intentional interior translucency and luminous/smoke detail. No requirement that every phase reach alpha 240. Review on dark/light/terrain backgrounds; no opaque panel, matte color key or unrelated backing.",
+    "specialRisks": []
+  },
+  "currentRuntimeRecord": {
+    "assetId": "C01-FFV1-FX-07",
+    "topicId": "C01-FX-07",
+    "label": "攻城碎屑",
+    "category": "fx",
+    "png": "runtime/fx/fx-07.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "phaseOrder": [
+    "airborne-burst",
+    "falling-pieces",
+    "falling-remnants",
+    "settled-heap"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": {
+    "weapons": [
+      "c01.knight-charge",
+      "c01.satchel-charge",
+      "c01.forge-burst"
+    ],
+    "placement": "board.ts:611-642 target-cell-center hit overlay",
+    "fps": 12,
+    "loop": false,
+    "removalMs": 420,
+    "finalPhaseStartMs": 250,
+    "finalHoldMs": 170
+  },
+  "livePlaybackObserved": false,
+  "semanticRequirement": "Dense airborne debris descends into fewer falling pieces, sparse small remnants, then opaque settled heap. Do not reverse to growth or invent frost, fire, weapons, glyphs or a fading heap.",
+  "sourceCanvasRegistration": "Each full source cell maps to full1254 source square. Source center is hit-pivot627,627; settled-ground baseline approximately y1000. Natural down/out trajectory is authored, never bbox-fit or whole-source-shift.",
+  "referenceProof": "reference/reference-verification.json"
+}
