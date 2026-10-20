@@ -1,0 +1,3 @@
+# Night crossing narrative scene
+
+Original source-supported night evacuation, with anonymous civilians and guards, an injured traveler, rope-guided rafts and bank logistics. Water-only v2 simplification retains the scene while removing excessive fine ripple noise. Source-native opaque illustration; not a transparent map structure or a live gameplay screenshot. Native1672×941 retained, exact reviewed1664×936 crop (density6.5), canonical256×144. Narrow mobile cover retains the primary raft and helping action but crops the moon and outer-bank logistics; desktop/staging retain these. Original evidence and rejected v1 remain in the immutable source bundle.

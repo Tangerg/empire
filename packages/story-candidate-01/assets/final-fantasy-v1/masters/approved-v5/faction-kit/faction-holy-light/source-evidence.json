@@ -1,0 +1,91 @@
+{
+  "topicId": "C01-FACTION-HOLY-LIGHT",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "auditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "sourceBoardPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+  "sourceBoardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+  "sourceCell": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      627,
+      0,
+      940,
+      418
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      632,
+      5,
+      935,
+      413
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/03-faction-holy-light-full-cell.png",
+    "referenceLegacyInset5": "source-crops/03-faction-holy-light-legacy-inset5.png",
+    "referenceFullCellSha256": "7110b920eb20ee509e80d18eece2510dee7b5a5e77166664343ceb837cc126fe",
+    "referenceLegacyInset5Sha256": "011ebd453c972b4c6ba9b327da11e5c9cc5977f16c6ec3546e1180a4ec5135d2"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Tall pointed ivory-and-charcoal paneled shield with central lit candle and holder",
+      "Ivory folded cloth with charcoal longitudinal stripe, crossband and small fringe",
+      "Round amber/gold wax seal with source-specific stamped glyph and two hanging tabs"
+    ],
+    "emblem": "Keep literal candle-and-holder motif and original seal glyph; do not invent a sun/cross/holy crest or readable text",
+    "palette": "Warm ivory, charcoal, restrained amber; medicine/registration meaning"
+  },
+  "canonicalContract": {
+    "assetId": "C01-FFV1-FACTION-HOLY-LIGHT",
+    "topicId": "C01-FACTION-HOLY-LIGHT",
+    "label": "\u5723\u8f89\u6559\u5ef7\u88c5\u5907\u57fa\u51c6",
+    "category": "faction-kit",
+    "png": "runtime/faction-kit/faction-holy-light.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "anchor": [
+      64,
+      64
+    ],
+    "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-holy-light.png",
+    "fileSha256": "5f8788ff28853e4335f3122a742877fafac64b928a832ff061b8a711be91a0fb",
+    "pixelSha256": "348125593b9ba602f9db94642232b97a748b8c78cf6cd415396567a2db757ed4",
+    "mode": "RGBA",
+    "hdRecord": null
+  },
+  "consumers": {
+    "viteCatalogBundled": true,
+    "authoredGameplayOrUiTopicReferences": [],
+    "browserObserved": false,
+    "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+    "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+  },
+  "inputHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/03-faction-holy-light-full-cell.png",
+      "sha256": "7110b920eb20ee509e80d18eece2510dee7b5a5e77166664343ceb837cc126fe"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-legion-shield/master.png",
+      "sha256": "f10d4c3aa8d58c6dce68adeaa676f530bbc93f1d18090d5adc8541f5046af7ea"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-templar/master.png",
+      "sha256": "723e37ad51bba7cd3e1728412961860690d9fbe008919d2dd76e05bb85a96170"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+    }
+  ],
+  "tool": "image_gen.imagegen built-in",
+  "transparentBackgroundRequested": true,
+  "requestSha256": "d5f24b2a7047038976aa30b4c5a236fcf7afc30c44d709d33fd3f26b38042447",
+  "promptSha256": "0c7f2e5fc298e4c11ad7c4f450451c6de38a616dd21c4602b41e80df38f17d22",
+  "rawSha256": "77c0db64ffff768b6f864d2a5564687bf304038bf69a5d250946405412224637",
+  "masterSha256": "77c0db64ffff768b6f864d2a5564687bf304038bf69a5d250946405412224637",
+  "imageMutation": "None",
+  "status": "source ready for parent formal export"
+}

@@ -4,20 +4,20 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 354,
+    "formalBound": 357,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
-      "faction-kit": 4,
+      "faction-kit": 6,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 15,
+      "narrative-static": 16,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 354,
+    "rawPreservedTopics": 357,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -506,13 +506,20 @@
       "category": "narrative-static",
       "label": "白河夜渡",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch02-s06/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch02-s06.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete night river evacuation preserving original anonymous civilians, injured traveler, rope-guided rafts and bank horses/cart; selected v2 quiets water flecks while v1 remains preserved",
+        "export": "Canonical256x144 and reviewed native1664x936 exact crop; full source immutable, native desktop and narrow cover QA recorded; mobile retains primary raft and helping action while moon and outer bank logistics are cropped",
+        "runtimeBinding": "Actual story night-crossing selector through canonical and per-entry-HD resolver; story text and gameplay unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CH02-S09",
@@ -2995,13 +3002,20 @@
       "category": "faction-kit",
       "label": "灰旗自由领装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-gray-banner/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-gray-banner.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original patched round wood/teal shield, blue-gray cloth with branching brown stitches and tied spear; no new crest; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-HOLY-LIGHT",
@@ -3009,13 +3023,20 @@
       "category": "faction-kit",
       "label": "圣辉教廷装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-holy-light/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-holy-light.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original candle/cup shield, ivory-gray striped fringed cloth and embossed wax seal with two tabs; source motifs retained without invented lettering; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-LATE-ALLIANCE",

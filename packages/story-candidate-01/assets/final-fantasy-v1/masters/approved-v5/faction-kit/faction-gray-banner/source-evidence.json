@@ -1,0 +1,91 @@
+{
+  "topicId": "C01-FACTION-GRAY-BANNER",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "auditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "sourceBoardPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+  "sourceBoardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+  "sourceCell": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      940,
+      0,
+      1254,
+      418
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      945,
+      5,
+      1249,
+      413
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/04-faction-gray-banner-full-cell.png",
+    "referenceLegacyInset5": "source-crops/04-faction-gray-banner-legacy-inset5.png",
+    "referenceFullCellSha256": "ed151338ab41c14189980264ba8428e142b4c6eec91c3d7b2e66b90245fd4285",
+    "referenceLegacyInset5Sha256": "e8340000ee4b9fd60365cafc1b4d284f9a63eba0521ec79867cb50dcc09837f4"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Round patchwork wood shield with dark-metal rim, steel boss and muted blue-gray repair panel",
+      "Folded blue-gray cloth with large visible brown repair stitches and brown hem",
+      "Simple narrow steel spear with cloth/leather tie"
+    ],
+    "emblem": "Source has no independent crest; repaired round shield and visibly stitched gray cloth are the identity. Do not add a crown or generic flag logo",
+    "palette": "Gray-blue patched cloth, ordinary iron, old leather and wood"
+  },
+  "canonicalContract": {
+    "assetId": "C01-FFV1-FACTION-GRAY-BANNER",
+    "topicId": "C01-FACTION-GRAY-BANNER",
+    "label": "\u7070\u65d7\u81ea\u7531\u9886\u88c5\u5907\u57fa\u51c6",
+    "category": "faction-kit",
+    "png": "runtime/faction-kit/faction-gray-banner.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "anchor": [
+      64,
+      64
+    ],
+    "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-gray-banner.png",
+    "fileSha256": "6aaf632bf7448dd37d4ab2ff55037a27dffd6c1d22e9247bb6d848489738f4f6",
+    "pixelSha256": "687e06a1e5292f9a33c8ccad274d2886f8c9b129eedb9f7a4213c9b2246d43d8",
+    "mode": "RGBA",
+    "hdRecord": null
+  },
+  "consumers": {
+    "viteCatalogBundled": true,
+    "authoredGameplayOrUiTopicReferences": [],
+    "browserObserved": false,
+    "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+    "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+  },
+  "inputHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/04-faction-gray-banner-full-cell.png",
+      "sha256": "ed151338ab41c14189980264ba8428e142b4c6eec91c3d7b2e66b90245fd4285"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-legion-shield/master.png",
+      "sha256": "f10d4c3aa8d58c6dce68adeaa676f530bbc93f1d18090d5adc8541f5046af7ea"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-templar/master.png",
+      "sha256": "723e37ad51bba7cd3e1728412961860690d9fbe008919d2dd76e05bb85a96170"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+    }
+  ],
+  "tool": "image_gen.imagegen built-in",
+  "transparentBackgroundRequested": true,
+  "requestSha256": "86c51e3690319ffb418588f4e0fa2e3d68f08de2e1329c338e391ffe9685cc52",
+  "promptSha256": "7d2804a0c45199d7375e0e3e3335273d141118b074c010437cd1b1aa4ba4f69c",
+  "rawSha256": "cb3f54461f34c087b7765c8a4c194c7de8394420a492d7454ba10c0f7797551c",
+  "masterSha256": "cb3f54461f34c087b7765c8a4c194c7de8394420a492d7454ba10c0f7797551c",
+  "imageMutation": "None",
+  "status": "source ready for parent formal export"
+}

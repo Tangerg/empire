@@ -1,0 +1,74 @@
+{
+  "topicId": "C01-FACTION-GRAY-BANNER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFractionAlpha0": 0.5552782928758754,
+  "nearOpaqueFractionAlphaGE240": 0.42836638864087867,
+  "nearOpaqueFractionAlphaGE250": 0.424664677497717,
+  "alphaThresholdBoundingBoxes": {
+    "1": [
+      0,
+      21,
+      1238,
+      1222
+    ],
+    "8": [
+      20,
+      104,
+      1235,
+      1169
+    ],
+    "28": [
+      20,
+      104,
+      1235,
+      1169
+    ],
+    "128": [
+      21,
+      105,
+      1234,
+      1168
+    ],
+    "240": [
+      22,
+      106,
+      1233,
+      1167
+    ],
+    "250": [
+      22,
+      107,
+      1233,
+      1167
+    ],
+    "255": [
+      32,
+      107,
+      1222,
+      1167
+    ]
+  },
+  "visibleMarginsPixelsL_T_R_B": [
+    21,
+    105,
+    20,
+    86
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 3,
+  "sourceGatePass": true,
+  "sha256": "cb3f54461f34c087b7765c8a4c194c7de8394420a492d7454ba10c0f7797551c",
+  "rawSha256": "cb3f54461f34c087b7765c8a4c194c7de8394420a492d7454ba10c0f7797551c",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "None; raw and master are byte-identical copies of native built-in image generation output. Alpha unchanged.",
+  "runtimeReady": false,
+  "qualification": "Source and QA previews only; formal export and promotion belong to parent."
+}

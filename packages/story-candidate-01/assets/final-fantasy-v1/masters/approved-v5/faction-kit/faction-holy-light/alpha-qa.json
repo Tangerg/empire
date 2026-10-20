@@ -1,0 +1,74 @@
+{
+  "topicId": "C01-FACTION-HOLY-LIGHT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFractionAlpha0": 0.5464421347700119,
+  "nearOpaqueFractionAlphaGE240": 0.43921206525084644,
+  "nearOpaqueFractionAlphaGE250": 0.43497935792068254,
+  "alphaThresholdBoundingBoxes": {
+    "1": [
+      0,
+      2,
+      1224,
+      1206
+    ],
+    "8": [
+      51,
+      146,
+      1219,
+      1095
+    ],
+    "28": [
+      51,
+      147,
+      1218,
+      1095
+    ],
+    "128": [
+      52,
+      147,
+      1217,
+      1094
+    ],
+    "240": [
+      53,
+      148,
+      1216,
+      1094
+    ],
+    "250": [
+      53,
+      148,
+      1216,
+      1094
+    ],
+    "255": [
+      53,
+      148,
+      1216,
+      1093
+    ]
+  },
+  "visibleMarginsPixelsL_T_R_B": [
+    52,
+    147,
+    37,
+    160
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 17,
+  "sourceGatePass": true,
+  "sha256": "77c0db64ffff768b6f864d2a5564687bf304038bf69a5d250946405412224637",
+  "rawSha256": "77c0db64ffff768b6f864d2a5564687bf304038bf69a5d250946405412224637",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "None; raw and master are byte-identical copies of native built-in image generation output. Alpha unchanged.",
+  "runtimeReady": false,
+  "qualification": "Source and QA previews only; formal export and promotion belong to parent."
+}

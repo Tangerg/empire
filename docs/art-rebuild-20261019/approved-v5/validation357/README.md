@@ -1,0 +1,1 @@
+Holy Light/Gray Banner kits and revised quiet-water night crossing formally bound.483 focused tests and typecheck pass. Source-native scenes and transparent128 kits are separate contracts. Live pending.
