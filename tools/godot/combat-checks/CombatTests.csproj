@@ -11,6 +11,7 @@
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateContent.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Geometry/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Tactics/*.cs" />
+    <Compile Include="$(EmpireRoot)/godot/Empire.Core/Progression/FormationRules.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Resources/*.cs" />
     <Compile Include="$(EmpireCombatRoot)/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Lifecycle/ILifecycleEffects.cs" />

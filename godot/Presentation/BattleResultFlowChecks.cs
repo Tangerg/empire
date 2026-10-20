@@ -216,7 +216,7 @@ public partial class BattleResultFlowChecks : Node
         // regresses, evaluating campaign.Save() fails before WriteAllText executes.
         // Load only targets the isolated user-data directory supplied by the runner.
         var game = new GrayFlagGame(); SetField(game, "screen", screen);
-        SetField(game, "session", session); SetField(game, "computerDelay", 0.25);
+        SetField(game, "session", session);
         var savePaths = typeof(GrayFlagGame).GetFields(BindingFlags.Static | BindingFlags.NonPublic)
             .Where(field => field.IsLiteral && field.FieldType == typeof(string))
             .Select(field => field.GetRawConstantValue() as string).Where(value => value?.StartsWith("user://", StringComparison.Ordinal) == true)
@@ -236,7 +236,7 @@ public partial class BattleResultFlowChecks : Node
             Require(Field<Label>(screen, "_feedback").Text == feedback && screen.RecentMessages.SequenceEqual(messages), $"Busy {key} was not ignored.");
         }
         game._Process(1);
-        Require(Field<double>(game, "computerDelay") == 0.25, "Busy Game process advanced the AI timer.");
+        Require(!Field<AiTurnPacer>(game, "computerPacer").IsRunning, "Busy presentation must not start the AI pacing loop.");
         Require(screen.IsPresenting && session.GetSnapshot().Revision == revision, "Busy save/load altered the committed revision or canceled playback.");
         var invoked = 0;
         // Save/load intentionally delegate to the Game guard; restart has an

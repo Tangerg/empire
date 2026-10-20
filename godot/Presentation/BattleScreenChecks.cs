@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Engine;
+using Empire.Core.Determinism;
 using Empire.Core.Geometry;
+using Empire.Presentation.Tactical;
+using System.Collections.Generic;
 using Godot;
 
 namespace Empire.Presentation;
@@ -18,6 +21,7 @@ public partial class BattleScreenChecks : Node
         {
             Check();
             CheckPresentationTransitions();
+            CheckInputContracts();
             GD.Print("Native BattleScreen real-session integration passed.");
             GetTree().Quit();
         }
@@ -97,9 +101,20 @@ public partial class BattleScreenChecks : Node
         screen.QueueFree();
     }
 
-    private sealed class ReplaceableSession(IBattleSession inner) : IBattleSession
+    private sealed class ReplaceableSession(ITacticalBattleSession inner) : ITacticalBattleSession
     {
         public BattleSnapshot? Replacement { get; set; }
+        public ITacticalSelectionQueries GetTacticalQueries(long binding) => new StampedQueries(inner.GetTacticalQueries(binding), new(binding, GetSnapshot().Revision));
+        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy)
+        {
+            var source = inner.ProjectHud(stamp with { Revision = inner.GetSnapshot().Revision }, selection, cursor, inspectId, busy);
+            return source with { Stamp = stamp, Sections = source.Sections.Select(section => section with {
+                Rows = section.Rows.Select(row => row with { Intent = row.Intent is { } intent ? intent with { Stamp = stamp } : null }).ToArray()
+            }).ToArray() };
+        }
+        public bool CanUndo => inner.CanUndo;
+        public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
+
         public BattleSnapshot GetSnapshot() => Replacement ?? inner.GetSnapshot();
         public System.Collections.Generic.IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId) => inner.GetLegalOrders(selectedUnitId);
         public BattleDispatchResult Dispatch(System.Text.Json.JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
@@ -123,22 +138,23 @@ public partial class BattleScreenChecks : Node
         screen.SelectCell(new BoardCell(5, 8));
         Require(screen.SelectedUnitId == 2 && session.GetSnapshot().Revision == before.Revision,
             "Selecting Torren must not advance canonical state.");
-        var order = session.GetLegalOrders(2).First(choice => choice.PresentationRole == "move"
-            && choice.Target is { } cell && cell != new BoardCell(5, 8));
-        screen.SelectCell(order.Target!.Value);
-        Require(session.GetSnapshot().Revision == before.Revision,
-            "Selecting a legal target must not commit before confirmation.");
-        var confirmation = Buttons(screen).Single(button => button.Text == order.Label);
-        confirmation.EmitSignal(Button.SignalName.Pressed);
+        var queries = session.GetTacticalQueries(0);
+        var destination = queries.MoveStops(2).First(cell => cell != new BoardCell(5,8)
+            && queries.CommandsAt(2,cell) is { Count: 1 } commands && commands[0].SelfTargeted);
+        var order = session.GetLegalOrders(2).First(choice => choice.Target == destination && choice.PresentationRole == "move");
+        var staleTurnButton = Buttons(screen).Single(button => button.Text == "结束回合");
+        screen.SelectCell(destination);
         var after = session.GetSnapshot();
         Require(after.Revision == before.Revision + 1 && screen.DisplayedRevision == after.Revision,
-            "A confirmed canonical command must refresh the displayed session revision.");
+            "A sole self-targeted destination command dispatches without a confirmation menu.");
         var actor = after.State.GetProperty("units").EnumerateArray()
             .Single(unit => unit.GetProperty("id").GetInt32() == 2);
-        Require(actor.GetProperty("x").GetInt32() == order.Target.Value.X
-            && actor.GetProperty("y").GetInt32() == order.Target.Value.Y
+        Require(actor.GetProperty("x").GetInt32() == destination.X
+            && actor.GetProperty("y").GetInt32() == destination.Y
             && actor.GetProperty("done").GetBoolean(),
-            "The real move role must commit the complete wait-at-destination command.");
+            "The real destination selection must commit the complete wait-at-destination command.");
+        staleTurnButton.EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision == after.Revision, "A callback rendered before dispatch cannot end the newer turn.");
         var stale = session.Dispatch(order.Action, before.Revision);
         Require(!stale.Accepted && session.GetSnapshot().Revision == after.Revision,
             "An obsolete UI revision must not replay a command.");
@@ -155,6 +171,68 @@ public partial class BattleScreenChecks : Node
             "The sole turn button must commit through the real session and refresh current player.");
         screen.QueueFree();
     }
+    private void CheckInputContracts()
+    {
+        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var session = new GrayFlagSession(engine,level);
+        var screen = new BattleScreen();AddChild(screen);screen.Board.AnimationsEnabled=false;
+        screen.BindSession(session,AssetCatalog.Load(),level,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
+        void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed=true,Keycode=key });
+        var snapshot = session.GetSnapshot();
+        var staleSameRevision = Buttons(screen).Single(button=>button.Text=="结束回合");
+        Keypress(Key.Space);
+        Require(screen.SelectedUnitId==session.GetTacticalQueries(0).Actors()[0],"Space selects first source-ordered actor through native keyboard input.");
+        staleSameRevision.EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision==snapshot.Revision,"Removed global button cannot dispatch after same-revision selection refresh.");
+        Keypress(Key.Escape);
+        Require(screen.Selection?.Kind==TacticalSelectionKind.Idle,"Native Escape follows the source back operation.");
+        screen.SelectCell(new(5,8));
+        var selected=screen.SelectedUnitId;
+        var queries=session.GetTacticalQueries(0);
+        var destination=queries.MoveStops(2).First(at=>at!=new BoardCell(5,8)&&queries.CommandsAt(2,at) is {Count:1} commands&&commands[0].SelfTargeted);
+        var order=session.GetLegalOrders(2).First(choice=>choice.Target==destination&&choice.PresentationRole=="move");
+        screen.SetApplicationBusy(true);
+        screen.SelectCell(destination);screen.SubmitOrder(order);Keypress(Key.E);Keypress(Key.Escape);
+        Require(session.GetSnapshot().Revision==snapshot.Revision&&screen.SelectedUnitId==selected,"Application busy blocks board, direct action, end-turn and back input.");
+        screen.SetApplicationBusy(false);
+        Require(screen.SelectedUnitId==selected,"Clearing application busy preserves the valid selection.");
+        screen.SelectCell(destination);
+        Require(session.GetSnapshot().Revision==snapshot.Revision+1,"Busy release re-enables source automatic destination dispatch.");
+        var undo=Buttons(screen).Single(button=>button.Text=="撤销");
+        Require(!undo.Disabled,"Real undo button becomes enabled after a reversible move.");
+        undo.EmitSignal(Button.SignalName.Pressed);
+        var undone=session.GetSnapshot();
+        Require(undone.Revision==snapshot.Revision+2&&EcmaJson.DeepEquals(EcmaJson.Parse(undone.State.GetRawText()),EcmaJson.Parse(snapshot.State.GetRawText())),"Mounted undo restores exact canonical state and advances revision.");
+        Require(screen.Selection?.Kind==TacticalSelectionKind.Idle&&screen.RecentMessages.Contains("已撤销上一步"),"Undo resets selection and appends the source cosmetic message.");
+        var turn=Buttons(screen).Single(button=>button.Text=="结束回合");turn.EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision==undone.Revision+1,"Mounted global end-turn commits once after undo.");
+
+        // Fixture: original campaign map and units with an explicit deployment zone, not naturally reached campaign state.
+        var deploymentLevel=EcmaJson.Parse(EcmaJson.Stringify(level))!.AsObject();
+        var own=deploymentLevel["units"]!.AsArray().OfType<JsonObject>().Where(unit=>unit["owner"]!.GetValue<int>()==1).ToArray();
+        var cells=new JsonArray(own.Select(unit=>(JsonNode)new JsonObject { ["x"]=unit["x"]!.GetValue<int>(),["y"]=unit["y"]!.GetValue<int>() }).ToArray());
+        deploymentLevel["scenario"]!.AsObject()["zones"]=new JsonArray(new JsonObject { ["id"]="selection-check-zone",["cells"]=cells });
+        deploymentLevel["deployment"]=new JsonObject { ["order"]=new JsonArray(1),["zones"]=new JsonArray(new JsonObject { ["player"]=1,["zone"]="selection-check-zone" }) };
+        var deployment=new GrayFlagSession(engine,deploymentLevel);
+        screen.BindSession(deployment,AssetCatalog.Load(),deploymentLevel,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
+        var roster=deployment.GetTacticalQueries(0).DeploymentUnits();
+        var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
+        Button RosterButton(int id)
+        {
+            var row=hud.Projection!.Sections.SelectMany(section=>section.Rows.Select(row=>(section,row)))
+                .Single(pair=>pair.row.Intent is {Kind:TacticalHudIntentKind.DeployPick,Unit:var unit}&&unit==id);
+            return Buttons(screen).Single(button=>button.GetMeta("hud_key","").AsString()==row.section.Key+"/"+row.row.Key);
+        }
+        RosterButton(roster[0]).EmitSignal(Button.SignalName.Pressed);
+        RosterButton(roster[1]).EmitSignal(Button.SignalName.Pressed);
+        Require(screen.SelectedUnitId==roster[1]&&screen.Selection?.Kind==TacticalSelectionKind.DeploymentUnit&&deployment.GetSnapshot().Revision==0,
+            "Two actual deployment roster clicks change the picked unit without dispatching a swap.");
+        var confirm=Buttons(screen).Single(button=>button.Text=="确认部署");confirm.EmitSignal(Button.SignalName.Pressed);
+        Require(deployment.GetSnapshot().Revision==1&&deployment.GetSnapshot().State.GetProperty("phase").GetString()=="playing","Mounted deployment confirmation opens battle through session dispatch.");
+        screen.QueueFree();
+    }
+
     private static System.Collections.Generic.IEnumerable<Button> Buttons(Node root)
     {
         foreach (var child in root.GetChildren())
@@ -167,4 +245,32 @@ public partial class BattleScreenChecks : Node
     {
         if (!condition) throw new InvalidOperationException(message);
     }
+    // Only this synthetic replacement fixture rebases a revision. Production must never repair a mismatched stamp.
+    private sealed class StampedQueries(ITacticalSelectionQueries inner, TacticalStamp stamp) : ITacticalSelectionQueries
+    {
+        public TacticalStamp Stamp => stamp;
+        public string Phase => inner.Phase;
+        public bool HumanInput => inner.HumanInput;
+        public bool HumanTurn => inner.HumanTurn;
+        public bool CanUndo => inner.CanUndo;
+        public TacticalUnit? Unit(int id) => inner.Unit(id);
+        public TacticalUnit? UnitAt(BoardCell at) => inner.UnitAt(at);
+        public bool AreEnemies(int firstUnit,int secondUnit) => inner.AreEnemies(firstUnit,secondUnit);
+        public bool CanOpenRecruitment(BoardCell at) => inner.CanOpenRecruitment(at);
+        public bool IsEnemyOfViewer(int unit) => inner.IsEnemyOfViewer(unit);
+        public IReadOnlyList<int> Actors() => inner.Actors();
+        public IReadOnlyList<BoardCell> MoveStops(int unit) => inner.MoveStops(unit);
+        public IReadOnlyList<BoardCell>? PathTo(int unit,BoardCell at) => inner.PathTo(unit,at);
+        public IReadOnlyList<BoardCell> Threat(int unit) => inner.Threat(unit);
+        public IReadOnlyList<BoardCell> ControlZone(int unit) => inner.ControlZone(unit);
+        public IReadOnlyList<TacticalCommand> CommandsAt(int unit,BoardCell at) => inner.CommandsAt(unit,at);
+        public TacticalAttack Attack(int unit,BoardCell target,BoardCell from,string weapon) => inner.Attack(unit,target,from,weapon);
+        public IReadOnlyList<int> DeploymentUnits() => inner.DeploymentUnits();
+        public IReadOnlyList<BoardCell> DeploymentZone() => inner.DeploymentZone();
+        public IReadOnlyList<BoardCell> DeploymentSpots(int unit) => inner.DeploymentSpots(unit);
+        public IReadOnlyList<TacticalTactic> Tactics() => inner.Tactics();
+        public IReadOnlyList<TacticalPassenger> Passengers(int carrier) => inner.Passengers(carrier);
+        public IReadOnlyList<BoardCell> DirectionSteps(BoardCell from) => inner.DirectionSteps(from);
+    }
+
 }

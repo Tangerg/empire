@@ -69,11 +69,13 @@ public sealed partial class GrayFlagSession : IBattleSession
         }
     }
 
-    public bool AdvanceComputer()
+    public bool AdvanceComputer() => AdvanceComputerStep() is not null;
+
+    public ComputerStepResult? AdvanceComputerStep(Action<string>? onRefusal = null)
     {
-        if (!IsComputerTurn) return false;
-        Commit(engine.Ai.ChooseAction(battle.Snapshot()));
-        return true;
+        if (!IsComputerTurn) return null;
+        var attempted = engine.Ai.ChooseAction(battle.Snapshot());
+        return ComputerActionExecution.Execute(attempted, Commit, engine.HandsOffTurn, onRefusal);
     }
 
     public BattleSnapshot GetSnapshot()
@@ -233,4 +235,24 @@ public sealed partial class GrayFlagSession : IBattleSession
     private static BattleOrderChoice Choice(string label, string role, Coord? at, JsonObject action) =>
         new(label, role, at is { } target ? new BoardCell(target.X, target.Y) : null,
             Empire.Core.Determinism.EcmaJson.ToElement(action));
+}
+
+/// <summary>The pause belongs to the attempted order, even when endTurn recovered its refusal.</summary>
+public readonly record struct ComputerStepResult(bool Committed, bool AttemptedHandsOffTurn);
+
+internal static class ComputerActionExecution
+{
+    internal static ComputerStepResult Execute(JsonObject attempted, Func<JsonObject, BattleReceipt> dispatch,
+        Func<JsonObject, bool> handsOffTurn, Action<string>? onRefusal)
+    {
+        var committed = false;
+        try { dispatch(attempted); committed = true; }
+        catch (IllegalActionException error)
+        {
+            onRefusal?.Invoke($"AI 的行动被拒绝：{error.Message}");
+            try { dispatch(new JsonObject { ["kind"] = "endTurn" }); committed = true; }
+            catch (IllegalActionException) { /* The source settles an empty event list after a refused fallback. */ }
+        }
+        return new(committed, handsOffTurn(attempted));
+    }
 }

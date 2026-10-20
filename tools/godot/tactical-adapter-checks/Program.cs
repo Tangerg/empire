@@ -1,0 +1,154 @@
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using Empire.Application;
+using Empire.Core;
+using Empire.Core.Determinism;
+using Empire.Core.Engine;
+using Empire.Presentation;
+using Empire.Presentation.Tactical;
+
+var oracle = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
+var engine = new GrayFlagEngine(oracle["packs"]!.AsArray());
+var count = 0;
+var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+void Same<T>(T actual, JsonNode? expected, string context)
+{
+    var json = EcmaJson.Parse(JsonSerializer.Serialize(actual, options));
+    if (!EcmaJson.DeepEquals(json, expected)) throw new Exception($"{context}: {EcmaJson.Stringify(json)} != {EcmaJson.Stringify(expected)}");
+    count++;
+}
+void Require(bool ok, string context) { if (!ok) throw new Exception(context); count++; }
+BoardCell Cell(JsonNode node) => new(node["x"]!.GetValue<int>(), node["y"]!.GetValue<int>());
+foreach (var fixture in oracle["cases"]!.AsArray().OfType<JsonObject>())
+{
+    var name = fixture["name"]!.GetValue<string>();
+    var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(fixture["state"]!.AsObject()));
+    var digest = EcmaJson.Stringify(session.Snapshot());
+    var q = session.GetTacticalQueries(41);
+    Same(q.HumanInput, fixture["humanInput"], name + " input");
+    Same(q.HumanTurn, fixture["humanTurn"], name + " turn");
+    Same(q.Actors(), fixture["actors"], name + " actors");
+    foreach (var unit in fixture["units"]!.AsArray().OfType<JsonObject>())
+    {
+        var id = unit["id"]!.GetValue<int>();
+        var visible = unit["visible"]!.GetValue<bool>();
+        Require((q.Unit(id) is not null) == visible, name + " visible ID");
+        Require((q.UnitAt(Cell(unit["at"]!)) is not null) == visible, name + " visible cell");
+        if (!visible)
+        {
+            var hiddenController = new TacticalSelectionController(q);
+            hiddenController.Hover(hiddenController.Stamp, Cell(unit["at"]!));
+            Require(hiddenController.InspectId is null, name + " hidden inspection");
+            try { q.IsEnemyOfViewer(id); throw new Exception("Hidden unit allegiance escaped"); } catch (DomainInvariantException) { count++; }
+            try { q.MoveStops(id); throw new Exception("Hidden unit facts escaped"); } catch (DomainInvariantException) { count++; }
+        }
+        if (visible) { Same(q.IsEnemyOfViewer(id), unit["enemyOfViewer"], name + " viewer enemy"); Same(q.Unit(id)!.CanAct, unit["canAct"], name + " can act"); Same(q.Unit(id)!.At, unit["at"], name + " unit coordinate"); }
+    }
+    var detached = session.Snapshot();
+    detached["players"]![0]!["controller"] = "ai";
+    detached["players"]![0]!["team"] = 999;
+    foreach (var unit in fixture["units"]!.AsArray().OfType<JsonObject>().Where(unit => unit["visible"]!.GetValue<bool>()))
+        Same(q.IsEnemyOfViewer(unit["id"]!.GetValue<int>()), unit["enemyOfViewer"], name + " detached viewer ownership");
+    try { q.IsEnemyOfViewer(int.MaxValue); throw new Exception("Unknown unit allegiance accepted"); } catch (DomainInvariantException) { count++; }
+    foreach (var tile in fixture["tiles"]!.AsArray().OfType<JsonObject>())
+    {
+        Same(q.DirectionSteps(Cell(tile["at"]!)), tile["steps"], name + " directions");
+        Same(q.CanOpenRecruitment(Cell(tile["at"]!)), tile["recruit"], name + " recruit");
+    }
+    Same(q.DeploymentUnits(), fixture["deploymentUnits"], name + " deployment units");
+    Same(q.DeploymentZone(), fixture["deploymentZone"], name + " deployment zone");
+    foreach (var unit in fixture["deploymentSpots"]!.AsArray().OfType<JsonObject>())
+        Same(q.DeploymentSpots(unit["id"]!.GetValue<int>()), unit["spots"], name + " deployment spots");
+    var tactics = new JsonArray(q.Tactics().Select(t => (JsonNode)new JsonObject { ["commander"] = t.Commander, ["id"] = t.Id, ["targets"] = JsonSerializer.SerializeToNode(t.Targets, options) }).ToArray());
+    Require(EcmaJson.DeepEquals(tactics, fixture["tactics"]), name + " lossless ordered tactics");
+    foreach (var fact in fixture["facts"]!.AsArray().OfType<JsonObject>())
+    {
+        var id = fact["id"]!.GetValue<int>();
+        Same(q.MoveStops(id), fact["stops"], name + " stops");
+        Same(q.Threat(id), fact["threat"], name + " threat");
+        Same(q.ControlZone(id), fact["control"], name + " control");
+        Same(q.Passengers(id), fact["passengers"], name + " passengers");
+        foreach (var position in fact["positions"]!.AsArray().OfType<JsonObject>())
+        {
+            var at = Cell(position["at"]!);
+            Same(q.PathTo(id, at), position["path"], name + " path");
+            Same(q.CommandsAt(id, at), position["commands"], name + " commands");
+            foreach (var attack in position["attacks"]!.AsArray().OfType<JsonObject>())
+            {
+                var expected = (JsonObject)attack.DeepClone(); expected.Remove("target"); expected.Remove("weapon");
+                Same(q.Attack(id, Cell(attack["target"]!), at, EcmaJson.ReadString(attack["weapon"])), expected, name + " attack");
+            }
+        }
+    }
+    Require(EcmaJson.Stringify(session.Snapshot()) == digest, name + " read mutated session");
+}
+
+foreach (var flow in oracle["flows"]!.AsArray().OfType<JsonObject>())
+{
+    var name = EcmaJson.ReadString(flow["name"]);
+    var fixture = oracle["cases"]!.AsArray().OfType<JsonObject>().Single(c => EcmaJson.ReadString(c["name"]) == name);
+    var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(fixture["state"]!.AsObject()));
+    var q = session.GetTacticalQueries(50);
+    var control = new TacticalSelectionController(q);
+    var at = control.Stamp;
+    var expected = flow["action"]!.AsObject();
+    TacticalRequest? emitted = null;
+    switch (name)
+    {
+        case "square4":
+            control.Click(at, Cell(flow["input"]!["unit"]!));
+            control.Click(at, Cell(flow["input"]!["target"]!));
+            emitted = control.Click(at, Cell(flow["input"]!["target"]!)).Request;
+            break;
+        case "tactics":
+            emitted = control.ChooseTactic(at, EcmaJson.ReadString(expected["commander"]) + ":" + EcmaJson.ReadString(expected["tactic"])).Request;
+            emitted ??= control.Click(at, Cell(expected["target"]!)).Request;
+            break;
+        case "transport":
+            control.Click(at, q.Unit(expected["carrier"]!.GetValue<int>())!.At);
+            control.ChooseDisembark(at, expected["unit"]!.GetValue<int>());
+            emitted = control.Click(at, Cell(expected["at"]!)).Request;
+            break;
+        case "deployment":
+            control.Click(at, q.Unit(expected["unit"]!.GetValue<int>())!.At);
+            emitted = control.Click(at, Cell(expected["at"]!)).Request;
+            break;
+        default:
+            control.Click(at, Cell(expected["at"]!));
+            emitted = control.Recruit(at, EcmaJson.ReadString(expected["unit"])).Request;
+            break;
+    }
+    Require(emitted?.Action is not null, name + " no controller request");
+    Require(EcmaJson.DeepEquals(EcmaJson.Parse(emitted!.Action!.Value.GetRawText()), expected), name + " source selection action mismatch");
+    var result = session.Dispatch(emitted.Action.Value, emitted.Stamp.Revision);
+    Same(result.Accepted, flow["accepted"], name + " action acceptance");
+    Require(EcmaJson.DeepEquals(session.Snapshot(), flow["state"]), name + " resulting canonical state");
+    Require(EcmaJson.DeepEquals(new JsonArray(session.Events.Select(e => (JsonNode)e).ToArray()), flow["events"]), name + " resulting canonical events");
+    control.CompleteDispatch(at, session.GetTacticalQueries(50));
+    Require(control.Selection.Kind == (name == "deployment" ? TacticalSelectionKind.Deploying : TacticalSelectionKind.Idle), name + " reset after accepted/refused dispatch");
+}
+
+// Real controller intent goes through the revision-checked canonical dispatcher, never fake legality.
+var live = new GrayFlagSession(engine, oracle["level"]!.AsObject());
+var before = live.Snapshot();
+var queries = live.GetTacticalQueries(42);
+var controller = new TacticalSelectionController(queries);
+var stamp = controller.Stamp;
+var actor = queries.Unit(queries.Actors()[0])!;
+controller.Click(stamp, actor.At);
+controller.Click(stamp, actor.At);
+var request = controller.ChooseCommand(stamp, "wait").Request ?? throw new Exception("Controller emitted no wait request");
+Require(live.Dispatch(request.Action!.Value, request.Stamp.Revision).Accepted, "canonical controller dispatch refused");
+try { _ = queries.Phase; throw new Exception("Stale snapshot accepted"); } catch (DomainInvariantException) { count++; }
+try { queries.IsEnemyOfViewer(actor.Id); throw new Exception("Stale viewer accepted"); } catch (DomainInvariantException) { count++; }
+Require(!live.Dispatch(request.Action!.Value, request.Stamp.Revision).Accepted, "stale action accepted");
+controller.CompleteDispatch(stamp, live.GetTacticalQueries(42));
+Require(controller.Selection.Kind == TacticalSelectionKind.Idle, "completion did not reset selection");
+var undo = controller.Key(controller.Stamp, "u").Request ?? throw new Exception("Controller emitted no undo request");
+Require(live.Undo(undo.Stamp.Revision).Accepted, "controller undo refused");
+controller.CompleteDispatch(undo.Stamp, live.GetTacticalQueries(42));
+Require(EcmaJson.DeepEquals(before, live.Snapshot()), "undo did not restore canonical state");
+var frozen = live.GetTacticalQueries(42).MoveStops(actor.Id);
+Require(frozen is not BoardCell[], "mutable array escaped");
+try { ((IList<BoardCell>)frozen)[0] = new(99,99); throw new Exception("mutable collection escaped"); } catch (NotSupportedException) { count++; }
+Console.WriteLine($"Passed {count} source-backed adapter and canonical dispatch assertions.");

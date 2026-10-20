@@ -93,4 +93,16 @@ var unicodeDefinition = unicodeEngine.Catalog.Definition("units", "soldier")!.Va
 if (!EcmaJson.DeepEquals(EcmaJson.Parse(unicodeDefinition.GetRawText()), oracle["unicode"]!["definition"])) throw new Exception("UTF-16 catalog projection lost code units");
 var detached = EcmaJson.Parse(unicodeDefinition.GetRawText())!; detached["name"] = "mutated";
 if (!EcmaJson.DeepEquals(EcmaJson.Parse(unicodeEngine.Catalog.Definition("units", "soldier")!.Value.GetRawText()), oracle["unicode"]!["definition"])) throw new Exception("catalog alias");
+Equal(oracle["reactions"]!.AsArray().Select(reaction => engine.Combat.Forecasts.Reaction(reaction!["id"]!.GetValue<string>())).ToArray(), oracle["reactions"], "reaction definitions including hints");
+var seenAbilities = new HashSet<string>();
+foreach (var row in oracle["commandLabels"]!.AsArray())
+{
+    var state = row!["state"]!.AsObject();
+    var actor = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["id"]!.GetValue<int>() == row["actor"]!.GetValue<int>());
+    var at = new Coord(row["at"]!["x"]!.GetValue<int>(), row["at"]!["y"]!.GetValue<int>());
+    var options = engine.CommandsAt(state, actor, at);
+    foreach (var option in options) seenAbilities.Add(option.Ability);
+    Equal(options.Select(option => new { option.Key, option.Name, option.Hint }).ToArray(), row["options"], "command labels " + actor["type"]);
+}
+if (!seenAbilities.SetEquals(new[] { "attack", "capture", "heal", "wait" })) throw new Exception("command label fixture failed to exercise every ability");
 Console.WriteLine($"PASS {checks} live source tactical query comparisons; detached and read-only guards");

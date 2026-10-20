@@ -22,16 +22,20 @@ run_scene() {
     return 1
   fi
 }
-for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks BattleResultFlowChecks CameraChecks CameraIntegrationChecks LightingLifetimeChecks; do
+for scene in PresentationChecks DynamicStateChecks AnimationChecks BattleScreenChecks BattleResultFlowChecks CameraChecks CameraIntegrationChecks LightingLifetimeChecks TacticalHudChecks AiPacingIntegrationChecks; do
   run_scene "$scene"
 done
 run_scene LightingChecks -- --lighting-oracle="$PWD/godot/tests/oracle/lighting.json"
 ORACLE_DATA="$(mktemp -d /tmp/empire-native-oracles.XXXXXX)"
-for fixture in narrative campaign-menu staging session-contracts tactical-queries; do
+for fixture in narrative campaign-menu staging session-contracts tactical-queries tactical-selection tactical-adapter tactical-hud ai-pacing; do
   gzip -dc "godot/tests/oracle/$fixture.json.gz" > "$ORACLE_DATA/$fixture.json"
 done
 dotnet run --project tools/godot/session-contract-checks/SessionContractChecks.csproj -- "$ORACLE_DATA/session-contracts.json" "$PWD"
 dotnet run --project tools/godot/tactical-query-checks/TacticalQueryChecks.csproj -- "$ORACLE_DATA/tactical-queries.json"
+dotnet run --project tools/godot/tactical-selection-checks/TacticalSelectionChecks.csproj -- "$ORACLE_DATA/tactical-selection.json"
+dotnet run --project tools/godot/tactical-adapter-checks/TacticalAdapterChecks.csproj -- "$ORACLE_DATA/tactical-adapter.json"
+dotnet run --project tools/godot/tactical-hud-checks/TacticalHudChecks.csproj -- "$ORACLE_DATA/tactical-hud.json"
+dotnet run --project tools/godot/ai-pacing-checks/AiPacingChecks.csproj -- "$ORACLE_DATA/ai-pacing.json"
 export EMPIRE_NARRATIVE_ORACLE="$ORACLE_DATA/narrative.json"
 run_scene NarrativeChecks
 run_scene CampaignMenuChecks -- "$ORACLE_DATA/campaign-menu.json"
@@ -45,6 +49,13 @@ if [[ "${1:-}" == '--full' ]]; then
   bash tools/godot/session-contract-checks/run.sh
   bash tools/godot/session-contract-checks/mutants.sh
   bash tools/godot/tactical-query-checks/run.sh
+  bash tools/godot/tactical-selection-checks/run.sh
+  python3 tools/godot/tactical-selection-checks/mutants.py
+  bash tools/godot/tactical-adapter-checks/run.sh
+  bash tools/godot/tactical-hud-checks/run.sh
+  python3 tools/godot/tactical-hud-checks/native-mutants.py
+  bash tools/godot/ai-pacing-checks/run.sh
+  bash tools/godot/ai-pacing-checks/mutants.sh
   bash tools/godot/narrative-checks/run.sh --verify-guard
   bash tools/godot/campaign-slot-checks/run.sh --native --verify-guard
   bash tools/godot/camera-checks/run.sh --native --verify-guard

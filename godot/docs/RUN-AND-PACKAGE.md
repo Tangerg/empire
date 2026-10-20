@@ -41,6 +41,25 @@ Node dependencies or the toolchain. Native build/gameplay needs no TypeScript;
 `--full` oracle verification requires the preserved full repository and its
 locked development dependencies.
 
+## Tactical controls
+
+Select a unit, then a destination, then a command. A destination with only one
+self-targeted command commits immediately, matching the original game. Right
+click or Escape steps back through targeting, destination and unit selection.
+Tab or Space cycles available actors; arrows or WASD move the cursor and Enter
+uses the same cell-selection path as the mouse. In a destination menu, A/C/H/W
+select attack/capture/heal/wait before their cursor-key meanings. E ends the turn
+and U undoes the last eligible human action. Successful handoff clears undo;
+loading or restarting does not restore an undo stack.
+
+The sidebar exposes source forecasts, inspection, objectives, accounts and
+support/deployment/recruitment options, including unavailable options and their
+reasons. Hovering and leaving do not commit actions. Drag to pan, use the wheel
+to pan, or Ctrl/Command plus wheel to zoom. Save/load and tactical commands are
+blocked during animation and the AI's full post-settlement pause. The following
+source-backed UI contracts are under active integration validation; the exact
+checkpoint report, not this control guide, states what has passed.
+
 ## Packaged release gate: not yet built
 
 This checkpoint is a verified development project, not a tested stand-alone
@@ -71,6 +90,6 @@ not proof of those platforms.
 Headless resource and timeline contracts do not replace visual acceptance.
 Earlier real desktop story/choice/save/load/restart checks passed before the
 latest water and animation work. New terrain previews were inspected, but the
-cloud desktop later stopped answering bounded read-only calls. Do not label the
+latest desktop inspection responded, but its bounded terminal-input attempt timed out with partial input uncertain. Do not label the
 new integrated animation/campaign UI visually accepted until it can be inspected
 and exercised on a responsive native desktop. No desktop restart was attempted.

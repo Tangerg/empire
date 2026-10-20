@@ -218,7 +218,7 @@ public sealed partial class GrayFlagEngine
             {
                 case "wait": options.Add(new("wait", "wait", null, AbilityName(ability), "结束该单位的行动。", true, [])); break;
                 case "capture":
-                    if (CanUseAbility(state, unit, at, ability)) options.Add(new("capture", "capture", null, AbilityName(ability), "占领此处据点。", true, []));
+                    if (CanUseAbility(state, unit, at, ability)) options.Add(new("capture", "capture", null, AbilityName(ability), "占下城镇、兵营或城堡；只有人类步兵可以占领。", true, []));
                     break;
                 case "attack":
                     foreach (var weapon in Combat.Forecasts.UnitWeapons(unit))
@@ -227,7 +227,7 @@ public sealed partial class GrayFlagEngine
                         if (!CanUseAbility(state, unit, at, ability, id)) continue;
                         var targets = Combat.AttackTargets(state, unit, at, id);
                         if (targets.Count > 0) options.Add(new($"attack:{id}", "attack", id,
-                            $"{AbilityName(ability)} · {StateJson.Text(weapon, "name")}", "", false, targets, "attack"));
+                            $"{AbilityName(ability)} · {StateJson.Text(weapon, "name")}", $"对射程内的敌人造成伤害；若对方也能打到你，会遭到反击。 射程 {StateJson.Number(weapon["minRange"], "minRange")}-{StateJson.Number(weapon["maxRange"], "maxRange")}", false, targets, "attack"));
                     }
                     break;
                 case "heal":

@@ -9,6 +9,9 @@ import tempfile
 root = Path(__file__).resolve().parents[3]
 oracle = Path(sys.argv[1]).resolve()
 mutants = [
+    ('drop reaction hint', 'Combat/CombatForecasts.cs', '被攻击时用射程覆盖得到的最强武器还击。', ''),
+    ('replace capture hint', 'Engine/GrayFlagEngine.cs', '占下城镇、兵营或城堡；只有人类步兵可以占领。', '占领此处据点。'),
+    ('truncate weapon hint', 'Engine/GrayFlagEngine.cs', '对射程内的敌人造成伤害；若对方也能打到你，会遭到反击。 射程 ', '射程 '),
     ('drop unaffordable cards', 'Orders/RecruitmentOrders.cs', '        }).ToArray();', '        }).Where(card => card.Affordable).ToArray();'),
     ('aggregate card costs', 'Orders/RecruitmentOrders.cs', 'costs.All(cost => resources.CanSpend(subject, cost.Resource, cost.Amount))', 'resources.CanAfford(subject, StateJson.Array(content.Get("units", type)["recruitCosts"], "recruitCosts"))'),
     ('leak hidden objectives', 'Lifecycle/VictorySystem.Progress.cs', '.Where(objective => !IsTrue(Player(state, owner)["objectiveStates"]?[Text(objective, "id")]?["hidden"]))', '.Where(objective => true)'),

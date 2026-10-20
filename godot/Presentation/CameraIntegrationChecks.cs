@@ -7,6 +7,7 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Core.Engine;
+using Empire.Presentation.Tactical;
 using Godot;
 
 namespace Empire.Presentation;
@@ -47,7 +48,7 @@ public partial class CameraIntegrationChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Bind(IBattleSession session) => screen.BindSession(session, AssetCatalog.Load(), level,
+    private void Bind(ITacticalBattleSession session) => screen.BindSession(session, AssetCatalog.Load(), level,
         AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
     private async Task Layout()
     {
@@ -224,6 +225,20 @@ public partial class CameraIntegrationChecks : Node
                 GuiButton(MouseButton.Left, false, new Vector2(150, 150));
                 Near(world.Position, during, "Busy map input cannot move the camera");
                 Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null, "Busy gestures cannot dispatch or select");
+                if (!computer)
+                {
+                    var target=order.Target!.Value;
+                    map.EmitSignal(Control.SignalName.GuiInput,new InputEventMouseMotion { Position=Field(new Vector2(target.X+.5f,target.Y+.5f)*32) });
+                    var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
+                    Require(hud.Projection!.Sections.Any(section=>section.Key=="tile") && hud.Projection.Portrait?.ActorKey=="campaign-torren",
+                        "Busy pointer motion projects hovered terrain and visible inspection without tactical selection.");
+                    var portrait=hud.Projection.Portrait;
+                    map.EmitSignal(Control.SignalName.MouseExited);
+                    Require(!hud.Projection!.Sections.Any(section=>section.Key=="tile")&&hud.Projection.Portrait==portrait,
+                        "Busy mouse leave clears cursor terrain but preserves source inspection.");
+                    Require(session.GetSnapshot().Revision==revision&&screen.SelectedUnitId is null,"Busy hover and leave never commit or arm a unit.");
+                }
+
             }
             Settle();
             GuiButton(MouseButton.Left, false, new Vector2(150, 150));
@@ -292,7 +307,7 @@ public partial class CameraIntegrationChecks : Node
         if (!condition) throw new InvalidOperationException(message);
     }
 
-    private sealed class ProjectedSession(GrayFlagSession inner, bool computer, bool hidden) : IBattleSession
+    private sealed class ProjectedSession(GrayFlagSession inner, bool computer, bool hidden) : ITacticalBattleSession
     {
         public BattleSnapshot GetSnapshot()
         {
@@ -303,13 +318,21 @@ public partial class CameraIntegrationChecks : Node
                 original.EventDescriptions);
             return snapshot with { Transition = transition };
         }
+        public ITacticalSelectionQueries GetTacticalQueries(long binding) => inner.GetTacticalQueries(binding);
+        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);
+        public bool CanUndo => inner.CanUndo;
+        public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
         public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId) => inner.GetLegalOrders(selectedUnitId);
         public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
     }
 
-    private sealed class SnapshotSession(IBattleSession inner, BattleSnapshot snapshot) : IBattleSession
+    private sealed class SnapshotSession(ITacticalBattleSession inner, BattleSnapshot snapshot) : ITacticalBattleSession
     {
         public BattleSnapshot GetSnapshot() => snapshot;
+        public ITacticalSelectionQueries GetTacticalQueries(long binding) => inner.GetTacticalQueries(binding);
+        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);
+        public bool CanUndo => inner.CanUndo;
+        public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
         public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId) => inner.GetLegalOrders(selectedUnitId);
         public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
     }

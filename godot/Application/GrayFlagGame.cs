@@ -21,11 +21,16 @@ public partial class GrayFlagGame : Node
     private GrayFlagSession? session;
     private BattleScreen? screen;
     private Control? view;
-    private double computerDelay;
+    private readonly AiTurnPacer computerPacer = new();
     private bool resultOffered;
     private long lifecycleGeneration;
 
-    public override void _ExitTree() => lifecycleGeneration++;
+    public override void _ExitTree()
+    {
+        lifecycleGeneration++;
+        computerPacer.Cancel();
+        screen?.SetApplicationBusy(false);
+    }
     private const string SavePath = "user://grayflag-campaign-save.json";
     private const string CampaignSavePath = "user://grayflag-campaign-autosave.json";
 
@@ -42,9 +47,21 @@ public partial class GrayFlagGame : Node
         ShowMenu();
     }
 
-    public override void _Process(double delta)
+    public override void _Process(double delta) => ProcessBattle(Time.GetTicksMsec());
+
+    private void ProcessBattle(double nowMilliseconds)
     {
-        if (session is null || screen?.IsPresenting == true) return;
+        if (!IsInsideTree() || session is null) return;
+        if (screen is { } currentScreen)
+        {
+            var currentSession = session;
+            computerPacer.Tick(nowMilliseconds, currentSession.IsComputerTurn, currentScreen.IsPresenting,
+                () => currentSession.AdvanceComputerStep(currentScreen.AppendMessage)
+                    ?? throw new Empire.Core.DomainInvariantException("AI turn changed before its synchronous commit"),
+                () => { currentScreen.Refresh(); return currentScreen.IsPresenting; }, currentScreen.SetApplicationBusy);
+            if (!ReferenceEquals(session, currentSession) || !ReferenceEquals(screen, currentScreen)) return;
+            if (computerPacer.IsRunning || currentScreen.IsPresenting) return;
+        }
         if (session.Snapshot()["phase"]!.GetValue<string>() == "over")
         {
             if (!resultOffered)
@@ -78,22 +95,20 @@ public partial class GrayFlagGame : Node
             }
             return;
         }
-        if (!session.IsComputerTurn) { computerDelay = 0; return; }
-        computerDelay += delta;
-        if (computerDelay < 0.3) return;
-        computerDelay = 0;
-        if (session.AdvanceComputer()) screen!.Refresh();
+
     }
 
     public override void _UnhandledKeyInput(InputEvent input)
     {
-        if (input is not InputEventKey { Pressed: true, Echo: false } key) return;
+        if (!IsInsideTree() || input is not InputEventKey { Pressed: true, Echo: false } key) return;
         if (key.Keycode == Key.F5) Save();
         if (key.Keycode == Key.F9) Load();
     }
 
     private void SetView(Control next)
     {
+        computerPacer.Cancel();
+        if (view is BattleScreen previousBattle) previousBattle.SetApplicationBusy(false);
         if (view is not null) { RemoveChild(view); view.QueueFree(); }
         view = next; AddChild(next);
     }
@@ -218,9 +233,15 @@ public partial class GrayFlagGame : Node
             facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); }, initialLogMessage);
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         screen.ConfigureDynamicState(packs);
-        screen.BindApplicationActions(Save, Load, () => {
-                campaign.RestartBattle(); resultOffered = false; ShowBattle("");
-        }, ExitBattle);
+        var boundSession = session;
+        var boundScreen = screen;
+        var boundGeneration = lifecycleGeneration;
+        bool CurrentBattle() => IsInsideTree() && boundGeneration == lifecycleGeneration &&
+            ReferenceEquals(session, boundSession) && ReferenceEquals(screen, boundScreen);
+        screen.BindApplicationActions(() => { if (CurrentBattle()) Save(); }, () => { if (CurrentBattle()) Load(); }, () => {
+            if (!CurrentBattle() || boundScreen.IsInputBlocked) return;
+            campaign.RestartBattle(); resultOffered = false; ShowBattle("");
+        }, () => { if (CurrentBattle() && !boundScreen.IsInputBlocked) ExitBattle(); });
     }
 
     private void WriteSave(string resourcePath)
@@ -232,7 +253,7 @@ public partial class GrayFlagGame : Node
 
     private void Save()
     {
-        if (screen?.IsPresenting == true) return;
+        if (!IsInsideTree() || computerPacer.IsRunning || screen?.IsInputBlocked == true) return;
         try
         {
             WriteSave(SavePath);
@@ -244,7 +265,7 @@ public partial class GrayFlagGame : Node
 
     private void Load()
     {
-        if (screen?.IsPresenting == true) return;
+        if (!IsInsideTree() || computerPacer.IsRunning || screen?.IsInputBlocked == true) return;
         try
         {
             campaign.Load(Empire.Core.Determinism.EcmaJson.Parse(System.IO.File.ReadAllText(ProjectSettings.GlobalizePath(SavePath)))!.AsObject());

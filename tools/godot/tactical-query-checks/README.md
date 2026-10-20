@@ -13,8 +13,9 @@ Covered contracts:
 - Live/dead casts, malformed live clocks, future/partial/due/overdue progress, public names and identity, and last-cast incoming-cell overwrite order.
 - Commander absence, ownership, range and identity even with a neutral aura; detached leader/commander snapshots; tactic costs and source availability.
 - Every composed catalog family and definition, detached projections, and escaped/unpaired UTF-16 code units in content keys and values.
+- Every source reaction definition including its hint; command names/hints for every installed unit type at stationary/moved origins, with explicit capture/heal/wait/attack coverage.
 - Every query leaves its supplied state unchanged.
 
-Eight isolated mutants must compile and fail semantic assertions: removing unaffordable cards, aggregating card costs, leaking hidden objectives, changing a threshold, reversing account order, dropping neutral-aura identity, first-cast overlap precedence, and flattened cast progress. A compiler failure is not counted as killing a mutant.
+Eleven isolated mutants must compile and fail semantic assertions: removing unaffordable cards, aggregating card costs, leaking hidden objectives, changing a threshold, reversing account order, dropping neutral-aura identity, first-cast overlap precedence, flattened cast progress, missing reaction hints, abbreviated capture hints, and truncated weapon hints. A compiler failure is not counted as killing a mutant.
 
 Off-board card queries return an empty result consistently with the existing native recruitment option boundary; they do not reproduce source flattened-index aliasing. Full command refusal still owns bounds, occupancy, resource totals and caps. No canonical state hashes were changed.

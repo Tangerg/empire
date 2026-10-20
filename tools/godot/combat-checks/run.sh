@@ -22,8 +22,8 @@ if [[ ${1:-} == "--verify-guard" ]]; then
 const fs = require('node:fs');
 const file = process.argv[2];
 const source = fs.readFileSync(file, 'utf8');
-const before = 'new ReactionBehavior("guard", "防御", false, 0.7, false, false)';
-const after = 'new ReactionBehavior("guard", "防御", false, 0.8, false, false)';
+const before = 'new ReactionBehavior("guard", "防御", false, 0.7, false, false, "减少受到的伤害，但放弃还击。")';
+const after = 'new ReactionBehavior("guard", "防御", false, 0.8, false, false, "减少受到的伤害，但放弃还击。")';
 if (!source.includes(before)) throw new Error('Guard mutation source no longer matches; update this explicit negative control.');
 fs.writeFileSync(file, source.replace(before, after));
 NODE

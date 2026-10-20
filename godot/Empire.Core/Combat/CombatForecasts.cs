@@ -17,7 +17,7 @@ public sealed record DamageBreakdown(string Weapon, string DamageType, double Ba
         Damage = Math.Max(1, StateJson.Round(Damage * modifier.Value)),
     };
 }
-public sealed record ReactionBehavior(string Id, string Name, bool Intercepts, double IncomingMultiplier, bool Retaliates, bool ConservesResources);
+public sealed record ReactionBehavior(string Id, string Name, bool Intercepts, double IncomingMultiplier, bool Retaliates, bool ConservesResources, string Hint);
 public sealed record CombatReaction(int Unit, string Stance, int? ProtectedUnit = null);
 public sealed record CombatForecast(int Attacker, int Defender, DamageBreakdown Strike, int DamageRecipient,
     int? Interceptor, CombatReaction? Reaction, double RecipientHpAfter, bool RecipientDies,
@@ -57,10 +57,10 @@ public sealed class CombatForecasts
     }
     public static IReadOnlyList<ReactionBehavior> DefaultReactions() => new[]
     {
-        new ReactionBehavior("counter", "反击", false, 1, true, false),
-        new ReactionBehavior("guard", "防御", false, 0.7, false, false),
-        new ReactionBehavior("support", "援护", true, 1, true, false),
-        new ReactionBehavior("conserve", "节制", false, 1, true, true),
+        new ReactionBehavior("counter", "反击", false, 1, true, false, "被攻击时用射程覆盖得到的最强武器还击。"),
+        new ReactionBehavior("guard", "防御", false, 0.7, false, false, "减少受到的伤害，但放弃还击。"),
+        new ReactionBehavior("support", "援护", true, 1, true, false, "替相邻友军挡下攻击，每轮一次。"),
+        new ReactionBehavior("conserve", "节制", false, 1, true, true, "只用无消耗的武器还击，保留弹药与冷却。"),
     };
     public ReactionBehavior Reaction(string id) => reactions.TryGetValue(id, out var value) ? value
         : throw new DomainInvariantException($"unknown reaction stance \"{id}\"");

@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { ContentPackInstaller, createContentCatalog, createBattleEngine } from '../../../packages/battle-engine/src/index';
-import { recruitOptions } from '../../../packages/battle-engine/src/state';
+import { recruitOptions, spawnUnit } from '../../../packages/battle-engine/src/state';
 import { playerResource, unitResource, weaponResource } from '../../../packages/battle-engine/src/resources';
 import { activeCasts } from '../../../packages/battle-engine/src/casting';
 import { SpellCastEntity } from '../../../packages/battle-engine/src/domain/spell-cast';
@@ -54,4 +54,14 @@ const catalog=Object.fromEntries(families.map(family=>[family,(content as any)[f
 const unicodePacks=structuredClone(packs);const unicodeUnit=unicodePacks.flatMap((pack:any)=>pack.units??[]).find((unit:any)=>unit.id==='soldier');unicodeUnit.name='escaped \" \\ \ud800';unicodeUnit['key\udfff']='value\ud800';
 const unicodeContent=createContentCatalog();new ContentPackInstaller(unicodeContent).install(...unicodePacks);
 const unicode={packs:unicodePacks,definition:unicodeContent.units.get('soldier')};
-writeFileSync(process.argv[2],JSON.stringify({packs,cases,thresholds,ranks,duplicate,inspectErrors,catalog,unicode}));
+const reactions=engine.rules.reactions.all();
+const commandLabels=[];
+for(const definition of content.units.all()){
+ const state=structuredClone(base);state.units=[];
+ const actor=spawnUnit(engine.rules,state,definition.id,1,{x:1,y:1});
+ spawnUnit(engine.rules,state,'soldier',2,{x:2,y:1});
+ const ally=spawnUnit(engine.rules,state,'soldier',1,{x:1,y:2});ally.hp=1;
+ state.map.tiles[1+state.map.width]='castle';state.map.owners[1+state.map.width]=2;
+ for(const at of [{x:1,y:1},{x:0,y:1}])commandLabels.push({state:structuredClone(state),actor:actor.id,at,options:engine.commandsAt(state,actor,at).map(({key,name,hint})=>({key,name,hint}))});
+}
+writeFileSync(process.argv[2],JSON.stringify({packs,cases,thresholds,ranks,duplicate,inspectErrors,catalog,unicode,reactions,commandLabels}));

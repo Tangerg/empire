@@ -193,3 +193,37 @@ objective/cast/progression/content facts have one configured owner. The engine
 shares its singleton VictorySystem between lifecycle and inspection. Existing
 core replay hashes and application continuation are unchanged. These APIs are
 not yet a completed tactical HUD/selection/keyboard/AI-pacing implementation.
+
+The canonical foundation above is committed as `2ea32bd0`. Its frozen index
+passed the full base native runner with clean process exits, including both new
+fixture consumers and all narrative/menu/navigation/lifetime suites. Recovery
+delta restoration was byte-checked against all 780 tracked files. The next
+controller/HUD/AI integration is not covered by that committed result.
+
+## Tactical interface integration gate
+
+The next frozen integration replaces the generic menu consumer with the original
+destination-first selection flow and complete canonical HUD projections. Focused
+source evidence is 430 controller assertions/eleven mutants, 2,398 adapter and
+real-dispatch assertions/six mutants, 821 core query assertions/eleven mutants,
+and 7,429 actual source GameController.hudView→Hud.render comparisons/ten projection mutants. The revised HUD
+oracle executes actual GameController.hudView into actual Hud.render; constructor-only
+board/camera/event wiring is intentionally omitted. The overlay oracle likewise
+executes GameController.overlay, not merely selection.paint. Native HUD checks cover 62
+assertions, source art SHA256, repeated Apply/rebind/teardown texture ownership
+and three rejected native mutants. Actual BattleScreen controls and 63 camera
+integration assertions pass, including source busy hover and leave behavior.
+
+AI pacing compares seven executing source-loop scenarios and 26 clock
+observations, the 2000-action guard and disposal, with five rejected mutants.
+Twenty mounted Game assertions verify actual AI-selected commits, post-animation
+Save/Load blocking, deadline timing and lifecycle cancellation. Result-flow150
+and application127 still pass. Frozen gzip fixtures run without Node; live-source
+and mutation checks are available through verify-native.sh --full. The final
+exact-index aggregate is the next gate; focused passes alone are not that gate.
+
+No new GUI acceptance is claimed. Remaining required work includes original
+marker/filter/cover/perimeter rendering and cold-composition performance, the
+original open extension kernel, real-window campaign acceptance and standalone
+desktop export. Missing authored scenery in nine recovered levels is explicit,
+not silently filled from another map. Original sources remain preserved.
