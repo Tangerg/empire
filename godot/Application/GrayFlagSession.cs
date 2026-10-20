@@ -54,7 +54,27 @@ public sealed class GrayFlagSession : IBattleSession
         return true;
     }
 
-    public BattleSnapshot GetSnapshot() => new(revision, JsonSerializer.SerializeToElement(battle.Snapshot()));
+    public BattleSnapshot GetSnapshot()
+    {
+        var state = battle.Snapshot();
+        IReadOnlySet<int>? visible = null;
+        IReadOnlySet<BoardCell>? cells = null;
+        if (state["rules"]?["fog"]?.GetValue<bool>() == true)
+        {
+            var viewer = state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["controller"]?.GetValue<string>() == "human")?["id"]?.GetValue<int>()
+                ?? state["currentPlayer"]!.GetValue<int>();
+            var vision = new BattleVision(engine.Movement);
+            visible = vision.VisibleUnits(state, viewer).Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
+            cells = vision.VisibleTiles(state, viewer).Select(index => engine.Movement.Board(state).CoordOf(index)).Select(at => new BoardCell(at.X, at.Y)).ToHashSet();
+        }
+        var incoming = engine.Combat.IncomingCasts(state).ToDictionary(pair => new BoardCell(pair.Key.X, pair.Key.Y), pair => pair.Value);
+        var objectives = state["composites"]!.AsArray().OfType<JsonObject>().Select(composite => {
+            var id = composite["id"]!.GetValue<string>();
+            var status = Empire.Core.Scenario.CompositeRules.Status(state, id);
+            return $"{id}：{status.Neutralized}/{composite["parts"]!.AsArray().Count} · {status.State}";
+        });
+        return new BattleSnapshot(revision, JsonSerializer.SerializeToElement(state), visible, cells, incoming, string.Join("\n", objectives));
+    }
     public IReadOnlyList<JsonObject> ActionLog => actions.Select(action => (JsonObject)action.DeepClone()).ToArray();
 
     public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId)

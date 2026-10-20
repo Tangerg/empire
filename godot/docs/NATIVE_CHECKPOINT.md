@@ -21,6 +21,21 @@ The original Chinese prologue, mission briefing and choice screens rendered legi
 
 The native viewport was 1180×812. The cloud machine has no usable audio device and falls back to Godot's dummy driver; no audio playback was validated.
 
+## Native presentation and query expansion
+
+Source-backed water, river banks, three registered bridges, material families,
+whole-ground clipping and 17 guarded c01-02 edge overlays are implemented. Terrain
+contract tests pass for 16 canonical projections. Dynamic presentation passes 100
+assertions including all nine live structures, markers, source mother-root fallback,
+HP/done/capture/facing badges and owner banners. The viewport consumes canonical
+fog visibility, public cast countdowns and composite status without owning rules.
+72 fog and 12 cast projection source comparisons pass across the three core grids.
+
+Actual c01-01 and c01-02 terrain previews were inspected. These previews do not
+have gameplay controls and are not a new campaign interaction acceptance test.
+The cloud desktop subsequently became unresponsive to bounded read-only checks;
+new integrated UI interaction remains unverified after this renderer expansion.
+
 ## Explicit remaining gaps
 
-Water and some terrain presentation adapters remain incomplete. Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Structure/composite/scenario state visuals and lighting/shadows require more work. All original dispatch kinds are implemented, but full extension-registry coverage still requires an independent audit; unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.
+Nine of sixteen levels have no authored scenery JSON in the recovered source, so the application labels that absence rather than borrowing another level's scene. Action animations/effects, sound, richer scenario feedback and lighting/shadows require more work. All original dispatch kinds are implemented, but full extension-registry coverage still requires an independent audit; unsupported saved feature states are rejected. Other story themes, the editor and packaged desktop distributions remain outside this checkpoint. Original TypeScript is retained as a development oracle, never a runtime rules bridge.

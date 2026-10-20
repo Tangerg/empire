@@ -25,6 +25,7 @@ public partial class BattleScreen : Control
     private Label _modeHint = null!;
     private Label _feedback = null!;
     private Label _coverage = null!;
+    private Label _objectiveSummary = null!;
     private VBoxContainer _modeButtons = null!;
     private VBoxContainer _orders = null!;
     private VBoxContainer _globalOrders = null!;
@@ -49,11 +50,11 @@ public partial class BattleScreen : Control
     }
 
     public void BindSession(IBattleSession session, AssetCatalog assets, JsonObject level,
-        AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft)
+        AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null)
     {
         ArgumentNullException.ThrowIfNull(session);
         BuildInterface();
-        _board.Configure(assets, level, authoredScene, environment, facesLeft);
+        _board.Configure(assets, level, authoredScene, environment, facesLeft, directionVector);
         _session = session;
         _bound = true;
         _selectedId = null;
@@ -66,6 +67,12 @@ public partial class BattleScreen : Control
     public void ConfigureTerrain(WorldMaterialsManifest materials)
     {
         _board.ConfigureTerrain(materials);
+        if (_state is not null) Refresh();
+    }
+
+    public void ConfigureDynamicState(JsonArray contentPacks)
+    {
+        _board.ConfigureDynamicState(contentPacks);
         if (_state is not null) Refresh();
     }
 
@@ -100,7 +107,9 @@ public partial class BattleScreen : Control
         _snapshot = _session.GetSnapshot();
         _state = JsonNode.Parse(_snapshot.State.GetRawText()) as JsonObject
             ?? throw new InvalidOperationException("Battle session returned a non-object state.");
-        _board.RenderState(_state);
+        _board.RenderState(_state, _snapshot.VisibleUnitIds);
+        _overlay.ShowPublicState(_state["map"]!["width"]!.GetValue<int>(), _state["map"]!["height"]!.GetValue<int>(), _snapshot.VisibleCells, _snapshot.Incoming);
+        _objectiveSummary.Text = _snapshot.ObjectiveSummary ?? "";
         if (SelectedUnit() is null) _selectedId = null;
         _legalOrders = _session.GetLegalOrders(_selectedId);
         var roles = _legalOrders.Where(order => order.Target is not null)
@@ -171,6 +180,9 @@ public partial class BattleScreen : Control
         side.AddChild(Text("战场指令", 21, new Color("#eee1bd")));
         _selection = Wrapped("等待应用绑定真实战斗。");
         side.AddChild(_selection);
+        _objectiveSummary = Wrapped("");
+        _objectiveSummary.MaxLinesVisible = 4;
+        side.AddChild(_objectiveSummary);
         var scroll = new ScrollContainer { Name = "CommandScroll", SizeFlagsVertical = SizeFlags.ExpandFill,
             CustomMinimumSize = new Vector2(0, 60), HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         side.AddChild(scroll);
@@ -327,6 +339,7 @@ public partial class BattleScreen : Control
     private IEnumerable<BattleOrderChoice> TargetChoices(BoardCell cell) =>
         _legalOrders.Where(order => order.PresentationRole == _role && order.Target == cell);
     private IEnumerable<JsonObject> Units() => (_state?["units"] as JsonArray)?.OfType<JsonObject>()
+        .Where(unit => _snapshot?.VisibleUnitIds is not { } visible || visible.Contains(Int(unit, "id")))
         ?? Enumerable.Empty<JsonObject>();
     private JsonObject? SelectedUnit() => _selectedId is { } id
         ? Units().FirstOrDefault(unit => Int(unit, "id") == id) : null;

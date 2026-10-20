@@ -29,6 +29,12 @@ if(StateDigest.Hash(campaign.Runtime.Snapshot())!=StateDigest.Hash(restored.Runt
 var before=StateDigest.Hash(restored.Runtime.Snapshot());var invalid=saved.DeepClone().AsObject();invalid["request"]!["id"]="wrong";
 try {restored.Load(invalid);throw new Exception("Invalid save accepted");}catch(InvalidOperationException){}
 if(StateDigest.Hash(restored.Runtime.Snapshot())!=before)throw new Exception("Invalid load mutated campaign");
+foreach (var badType in new JsonNode?[] { null, JsonValue.Create(2), JsonValue.Create(true), JsonValue.Create("") })
+{
+ var malformed=saved.DeepClone().AsObject();malformed["events"]=new JsonArray(new JsonObject { ["type"]=badType?.DeepClone() });
+ try {restored.Load(malformed);throw new Exception("Malformed event type accepted");}catch(InvalidOperationException){}
+ if(StateDigest.Hash(restored.Runtime.Snapshot())!=before)throw new Exception("Malformed event load mutated campaign");
+}
 Console.WriteLine($"PASS application story/choice -> battle -> midbattle save/load -> {actions} matching actions -> campaign result; invalid load atomic");
 void Act(GrayFlagCampaign value)
 {

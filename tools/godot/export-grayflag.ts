@@ -12,7 +12,7 @@ import { SplitMixRandom } from '../../packages/battle-engine/src/random';
 import { COMMON_CONTENT_PACK } from '../../packages/content-common/src/index';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '../../packages/content-ancient-empires/src/index';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS, CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN, candidate01Level } from '../../packages/story-candidate-01/src/index';
-import { candidateMaterial, CANDIDATE_FOREST_FLOOR, CANDIDATE_SETTLEMENT_LIFE } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
+import { candidateMaterial, CANDIDATE_FOREST_FLOOR, CANDIDATE_SETTLEMENT_LIFE, CANDIDATE_RIVER_STONES, CANDIDATE_SHORE_DECALS, CANDIDATE_SHORE, CANDIDATE_VERTICAL_CROSSINGS, CANDIDATE_FOUNDATIONS, CANDIDATE_SURFACE_FIT } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
 import { candidate01Story, candidate01Choice, CANDIDATE_01_SPEAKER_NAMES } from '../../packages/story-candidate-01/src/story';
 import * as bindings from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
 const assetRoot = resolve('packages/story-candidate-01/assets/final-fantasy-v1');
@@ -124,6 +124,7 @@ for (const unit of CANDIDATE_01_LEVELS.flatMap(candidate => candidate.units)) {
 for (const tile of terrainIds) { const binding = bindings.CANDIDATE_01_MAP_STRUCTURE_ART[tile]; if (binding) { topics.add(binding.topicId); if (binding.presentationId) presentations.add(binding.presentationId); } }
 for (const prop of scenes.flatMap(scene => [...scene.placements, ...(scene.framePlacements ?? [])])) if (prop.topicId) topics.add(prop.topicId);
 for (const structure of CANDIDATE_01_LEVELS.flatMap(candidate => candidate.structures ?? [])) { const topic = bindings.CANDIDATE_01_STRUCTURE_ART[structure.type]; if (topic) topics.add(topic); }
+for (const topic of [...Object.values(bindings.CANDIDATE_01_STRUCTURE_ART), 'C01-BPROP-AFTERMATH-2', 'C01-BPROP-AFTERMATH-3', 'C01-BPROP-EVIDENCE-1']) if (topic !== undefined) topics.add(topic);
 const assets = manifest.assets.filter((record: { topicId: string }) => topics.has(record.topicId)).map((record: { topicId: string; png: string; width: number; height: number }) => {
   const physical = hd.assets.find((entry: { topicId: string }) => entry.topicId === record.topicId);
   return { ...record, png: physical?.png ?? record.png, physicalWidth: physical?.width ?? record.width, physicalHeight: physical?.height ?? record.height, pixelDensity: physical?.pixelDensity ?? 1 };
@@ -139,16 +140,26 @@ for (const asset of assets) Object.assign(asset, copy(asset.png));
 write('data/selected-assets.json', { schema: 1, logicalTileSize: 32, assets });
 const environment = read('environment-builder-v1/manifest-environment-builder-v1.json');
 const ids = new Set(scenes.flatMap(scene => [...scene.placements, ...(scene.framePlacements ?? [])]).map((entry: { id: string }) => entry.id));
-for (const atlas of environment.atlases) if ((atlas.cells ?? []).some((cell: { id: string }) => ids.has(cell.id))) Object.assign(atlas, copy(`environment-builder-v1/${atlas.png2x ?? atlas.png}`));
+const terrainBindings = Object.fromEntries(terrainIds.map(id => [id, candidateMaterial(content, id)]));
+const bindingText = JSON.stringify([terrainBindings, CANDIDATE_RIVER_STONES, CANDIDATE_SHORE_DECALS, CANDIDATE_FOUNDATIONS, CANDIDATE_VERTICAL_CROSSINGS]);
+for (const atlas of environment.atlases) if (bindingText.includes(JSON.stringify(atlas.id)) || (atlas.cells ?? []).some((cell: { id: string }) => ids.has(cell.id) || bindingText.includes(JSON.stringify(cell.id)))) Object.assign(atlas, copy(`environment-builder-v1/${atlas.png2x ?? atlas.png}`));
 write('data/environment-catalog.json', environment);
-const materials = Object.fromEntries(['field-material', 'road-material', 'forest-floor'].map(name => {
+const edgeDecorations = read('edge-decoration-v1/manifest-edge-decoration-v1.json');
+for (const asset of edgeDecorations.assets) Object.assign(asset, copy(`edge-decoration-v1/${asset.png2x ?? asset.png}`));
+write('data/edge-decorations.json', edgeDecorations);
+const materials = Object.fromEntries(['field-material', 'road-material', 'forest-floor', 'water-material', 'earth-floor', 'stone-base', 'stone-paving', 'forge-base', 'graveyard-base', 'meadow-stony', 'wasteland-scorched', 'wasteland-scree'].map(name => {
   const spec = read(`world-materials-v1/manifest-${name}-v2.json`);
-  return [name, { ...spec, ...copy(`world-materials-v1/${spec.png2x ?? spec.png}`) }];
+  return [name, { ...spec, ...copy(`world-materials-v1/${spec.png2x ?? spec.png}`), ...(spec.occupancy ? { occupancy: { ...spec.occupancy, ...copy(`world-materials-v1/${spec.occupancy.png2x ?? spec.occupancy.png}`) } } : {}) }];
 }));
 const mask = read('world-materials-v1/manifest-forest-blend-masks-v1.json').atlases[0];
 const geometryAtlas = environment.atlases.find((atlas: { id: string }) => atlas.id === mask.id);
-write('data/world-materials.json', { schema: 1, materials, groundTagFamilies: GROUND_TAGS,
-  scenery: { forestFloor: CANDIDATE_FOREST_FLOOR, settlementLife: CANDIDATE_SETTLEMENT_LIFE },
+function maskRecords(file: string) { return read(`world-materials-v1/${file}`).atlases.map((mask: { id: string; png2x?: string; png: string }) => ({ ...environment.atlases.find((atlas: { id: string }) => atlas.id === mask.id), ...mask, ...copy(`world-materials-v1/${mask.png2x ?? mask.png}`) })); }
+function crossing(file: string) { const spec = read(`registered-crossings-v1/${file}`); return { ...spec, ...(spec.png ? copy(`registered-crossings-v1/${spec.png2x ?? spec.png}`) : {}) }; }
+write('data/world-materials.json', { edgeDecorationsResourcePath: 'res://data/edge-decorations.json', foundations: CANDIDATE_FOUNDATIONS, surfaceFit: CANDIDATE_SURFACE_FIT, shoreBlend: CANDIDATE_SHORE,
+  earthMask: maskRecords('manifest-earth-blend-masks-v1.json')[0],
+  connectorMasks: Object.fromEntries(maskRecords('manifest-stone-connectors-v1.json').map((value: { id: string }) => [value.id, value])),
+  crossings: { horizontal: crossing('manifest-crossing-v1.json'), vertical: crossing('manifest-crossing-vertical-v1.json'), junction: crossing('manifest-junction-v1.json'), verticalLegacyIds: CANDIDATE_VERTICAL_CROSSINGS }, schema: 1, materials, groundTagFamilies: GROUND_TAGS,
+  scenery: { forestFloor: CANDIDATE_FOREST_FLOOR, settlementLife: CANDIDATE_SETTLEMENT_LIFE, riverStones: CANDIDATE_RIVER_STONES, shoreDecals: CANDIDATE_SHORE_DECALS },
   terrainTags: Object.fromEntries(terrainIds.map(id => [id, content.terrains.get(id).tags])),
   forestMask: { ...geometryAtlas, ...mask, ...copy(`world-materials-v1/${mask.png2x ?? mask.png}`) },
   terrainBindings: Object.fromEntries(terrainIds.map(id => [id, candidateMaterial(content, id)])) });

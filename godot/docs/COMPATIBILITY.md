@@ -33,3 +33,11 @@ Replay verification reproduces the source divergence index and reason for unsupp
 Deployment rearranges existing owned units. It never spawns units, creates a reserve, consumes an actor turn, or requires every offered slot to be filled. Assignment selection and roster ordering come from canonical state construction; zone overlap remains visible in declared order. Placement has one refusal owner shared by queries and commands, validates both sides of a swap, clears only moved units' capture fields, and emits one placement event. A placement onto the same cell is a true no-op. Confirming advances the declared side order; the last confirmation calls the canonical lifecycle's `BeginPlaying`. Neither confirmation invokes post-action triggers or victory evaluation.
 
 Persisted deployment additionally requires a nonempty unique known-player order, an in-range current index matching the current player, valid assignments and zone coordinates, unique living assignees with the declared owner, and an assignment for every ordered player. Deployment data must be absent outside the deployment phase and present within it. These fail-closed document checks intentionally reject malformed states the source reader may accept. Empty assignments, overlapping zones, assignments for players outside the turn order, and units initially outside their zones remain source-valid. `tools/godot/deployment-checks` verifies source parity and engine save/resume through the first actor turn.
+
+## Native vision boundary
+
+Canonical fog queries preserve original terrain-only concealment, allied sight,
+owned cells and cover adjacency. The native integer grid rejects fractional vision
+radii explicitly; original content admission does not enforce this and its grid
+loops can produce fractional coordinates. Exported GrayFlag definitions use integer
+vision. This is input hardening, not exact behavior for arbitrary numeric radii.

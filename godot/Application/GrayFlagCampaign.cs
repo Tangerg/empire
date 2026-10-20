@@ -68,7 +68,7 @@ public sealed class GrayFlagCampaign
         var restored = new CampaignRuntime(definition, state);
         var request = document["request"] as JsonObject;
         var savedBattle = document["battle"];
-        if (document["events"] is not JsonArray recordedEvents || recordedEvents.Any(value => value is not JsonObject || value["type"] is not JsonValue))
+        if (document["events"] is not JsonArray recordedEvents || recordedEvents.Any(value => value is not JsonObject || value["type"] is not JsonValue type || !type.TryGetValue<string>(out var eventType) || string.IsNullOrEmpty(eventType)))
             throw new InvalidOperationException("Saved event history is malformed.");
         if ((request is null) != (savedBattle is null) || (state["pendingBattle"] is null) != (request is null))
             throw new InvalidOperationException("Campaign and battle save do not match.");

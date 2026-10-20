@@ -62,6 +62,8 @@ public sealed class ArtBindings
     public Dictionary<string, ActorArtBinding> Actors { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_MAP_STRUCTURE_ART")]
     public Dictionary<string, MapStructureArtBinding> MapStructures { get; init; } = new();
+    [JsonPropertyName("CANDIDATE_01_STRUCTURE_ART")]
+    public Dictionary<string, string> Structures { get; init; } = new();
 }
 
 public sealed class EnvironmentManifest
@@ -84,6 +86,10 @@ public sealed class EnvironmentAtlasRecord
     public int CellWidth { get; init; }
     public int CellHeight { get; init; }
     public int ComponentCount { get; init; }
+    public string TileMode { get; init; } = "";
+    public string? CellIndex { get; init; }
+    public int VariantsPerMask { get; init; } = 1;
+    public int[] MaskOrder { get; init; } = Array.Empty<int>();
     public double[]? Anchor { get; init; }
     public List<EnvironmentCellRecord> Cells { get; init; } = new();
 }
@@ -108,6 +114,7 @@ public sealed class AuthoredScene
     public List<FramePlacement> FramePlacements { get; init; } = new();
     public double[][] GroundOutline { get; init; } = Array.Empty<double[]>();
     public RoadCorridorProfile? RoadCorridor { get; init; }
+    public RiverProfile? River { get; init; }
     public List<AuthoredZone> Zones { get; init; } = new();
 
     public static AuthoredScene Load(string path = "res://data/grayflag-authored-scene.json") =>

@@ -1,4 +1,286 @@
 {
+  "edgeDecorationsResourcePath": "res://data/edge-decorations.json",
+  "foundations": {
+    "village": "village-square-foundation",
+    "barracks": "gray-camp-ground",
+    "castle": "keep-foundation",
+    "c01.outpost": "watch-post-ground",
+    "c01.field-post": "wounded-shelter-ground",
+    "c01.keep": "keep-foundation"
+  },
+  "surfaceFit": {
+    "inset": 3,
+    "bleed": 0.5
+  },
+  "shoreBlend": "transition-meadow-earth",
+  "earthMask": {
+    "id": "transition-meadow-earth",
+    "png": "runtime/earth-blend-masks.png",
+    "png2x": "runtime/earth-blend-masks@2x.png",
+    "columns": 16,
+    "rows": 3,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 47,
+    "category": "transition",
+    "tileMode": "blob-47",
+    "baseSurface": "surface-meadow",
+    "overlaySurface": "surface-earth",
+    "maskOrder": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      16,
+      17,
+      20,
+      21,
+      23,
+      28,
+      29,
+      31,
+      64,
+      65,
+      68,
+      69,
+      71,
+      80,
+      81,
+      84,
+      85,
+      87,
+      92,
+      93,
+      95,
+      112,
+      113,
+      116,
+      117,
+      119,
+      124,
+      125,
+      127,
+      193,
+      197,
+      199,
+      209,
+      213,
+      215,
+      221,
+      223,
+      241,
+      245,
+      247,
+      253,
+      255
+    ],
+    "bitOrder": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "resourcePath": "res://assets/world-materials-v1/runtime/earth-blend-masks@2x.png",
+    "sha256": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d",
+    "sourceSha256": "8da0ee2e93c72cf7313dd088b3f0d1b67c68b2e6c5c4ac9ab555f3f185f3056d",
+    "sourceSha2562x": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f"
+  },
+  "connectorMasks": {
+    "route-stone-road": {
+      "id": "route-stone-road",
+      "png": "runtime/stone-road-masks.png",
+      "png2x": "runtime/stone-road-masks@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true,
+      "resourcePath": "res://assets/world-materials-v1/runtime/stone-road-masks@2x.png",
+      "sha256": "f4b82032ca56aa458f53c822d9923fbb13a0501ab9aaa4be38ade553fe40bff3",
+      "sourceSha256": "69a5c55215815a81617bb67138e4fcef9ce962d8a18496da8ce4c48e514ceab4",
+      "sourceSha2562x": "a58f35913fc156b262a9ddee0a040bd5817d33f5e09363032d498bc5d58b0ca6"
+    },
+    "route-edge-stone-road": {
+      "id": "route-edge-stone-road",
+      "png": "runtime/stone-road-edge-masks.png",
+      "png2x": "runtime/stone-road-edge-masks@2x.png",
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "cellWidth2x": 64,
+      "cellHeight2x": 64,
+      "componentCount": 64,
+      "category": "route-edge",
+      "tileMode": "nesw-16-variants",
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "variantsPerMask": 4,
+      "cellIndex": "mask * 4 + variant",
+      "renderAfter": "route-stone-road",
+      "bitOrder": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "passable": true,
+      "resourcePath": "res://assets/world-materials-v1/runtime/stone-road-edge-masks@2x.png",
+      "sha256": "098a4363b3e62ca64b19acb872d51002d719311a2595c7516c59d90e6049653a",
+      "sourceSha256": "108b7771f30ca7ae14e3cc87b5822fcc9dd79d52a6b57a9adcbc43fc4260c93d",
+      "sourceSha2562x": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83"
+    }
+  },
+  "crossings": {
+    "horizontal": {
+      "schemaVersion": 1,
+      "id": "approved-stone-crossing-horizontal",
+      "orientation": "horizontal",
+      "source": "masters/approved-v5/bridge/bridge-master.png",
+      "sourceSha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+      "sourceSize": [
+        1729,
+        910
+      ],
+      "sourceFoot": [
+        864,
+        418
+      ],
+      "logicalPerSourcePixel": 0.08098336948662328,
+      "png": "runtime/stone-crossing-horizontal.png",
+      "png2x": "runtime/stone-crossing-horizontal@2x.png",
+      "approvedExports": {
+        "png": "2fb201b72ceaf579ca1453a003697b612685cd3baafb63cecb92a93a718c7c58",
+        "png2x": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d"
+      },
+      "resourcePath": "res://assets/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png",
+      "sha256": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d"
+    },
+    "vertical": {
+      "schemaVersion": 1,
+      "id": "approved-stone-crossing-vertical",
+      "orientation": "vertical",
+      "source": "masters/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/stone-bridge-vertical-master.png",
+      "sourceSha256": "49d5a96e9a051aecb6196d8cb5f9312beb60e31cf6eafcb0f2bc483f543c0e03",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceFoot": [
+        627,
+        594
+      ],
+      "logicalPerSourcePixel": 0.12244897959183673,
+      "png": "runtime/stone-crossing-vertical.png",
+      "png2x": "runtime/stone-crossing-vertical@2x.png",
+      "approvedExports": {
+        "png": "7ae5d103768e33970dacbabc4d08b1737c7a4d85868a6cd7f75ae41a156d420a",
+        "png2x": "c724425282c1bc38f8f6bbe479e479447c134ac12b284e162780405ba95f3b7c"
+      },
+      "resourcePath": "res://assets/registered-crossings-v1/runtime/stone-crossing-vertical@2x.png",
+      "sha256": "c724425282c1bc38f8f6bbe479e479447c134ac12b284e162780405ba95f3b7c"
+    },
+    "junction": {
+      "schemaVersion": 1,
+      "id": "approved-stone-crossing-plus",
+      "centerMask": 15,
+      "axisLength": 3,
+      "horizontal": {
+        "id": "approved-stone-crossing-horizontal",
+        "cutouts": [
+          [
+            -17,
+            -16,
+            34,
+            10
+          ],
+          [
+            -17,
+            6,
+            34,
+            27
+          ]
+        ]
+      },
+      "vertical": {
+        "id": "approved-stone-crossing-vertical",
+        "cutouts": [
+          [
+            -31,
+            -6,
+            16,
+            12
+          ],
+          [
+            15,
+            -6,
+            16,
+            12
+          ]
+        ]
+      },
+      "windowCoordinates": "world pixels relative to the shared deck pivot",
+      "derivation": "Complementary alpha-only rail and underlying arch openings; approved source RGB and complete canvas preserved outside these windows."
+    },
+    "verticalLegacyIds": [
+      "wood-bridge-vertical",
+      "stone-bridge-vertical"
+    ]
+  },
   "schema": 1,
   "materials": {
     "field-material": {
@@ -77,7 +359,9 @@
         "convexRadius": 9,
         "concaveRadius": 5,
         "png": "runtime/road-masks.png",
-        "png2x": "runtime/road-masks@2x.png"
+        "png2x": "runtime/road-masks@2x.png",
+        "resourcePath": "res://assets/world-materials-v1/runtime/road-masks@2x.png",
+        "sha256": "aa10a0fe5713819c0a9c0a77d9c4fe685a7b95a3fed88a9ff14b80b67fe4db80"
       },
       "resourcePath": "res://assets/world-materials-v1/runtime/road-earth@2x.png",
       "sha256": "bbdae871cfd2ce1e54c441d47f4bfa12d3929a21b116c63861d6174146727879"
@@ -111,6 +395,296 @@
       "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
       "resourcePath": "res://assets/world-materials-v1/runtime/forest-floor@2x.png",
       "sha256": "d6e01a08400a3b880f7e2cedd2d041b4a4b8efba26476bf223573df6e993f167"
+    },
+    "water-material": {
+      "schemaVersion": 2,
+      "id": "water-area",
+      "replaces": {
+        "atlas": "water-slow-river",
+        "mask": "same"
+      },
+      "source": "masters/approved-v5/water-material/master.png",
+      "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+      "logicalSize": [
+        512,
+        512
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/water-area.png",
+      "png2x": "runtime/water-area@2x.png",
+      "occupancy": {
+        "tileSize": 32,
+        "columns": 16,
+        "rows": 16,
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "geometry": "full-shared-interiors-exposed-shore-inset-concave-notch-v1",
+        "png": "runtime/water-masks.png",
+        "png2x": "runtime/water-masks@2x.png",
+        "resourcePath": "res://assets/world-materials-v1/runtime/water-masks@2x.png",
+        "sha256": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc"
+      },
+      "resourcePath": "res://assets/world-materials-v1/runtime/water-area@2x.png",
+      "sha256": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7"
+    },
+    "earth-floor": {
+      "schemaVersion": 2,
+      "id": "earth-floor",
+      "replaces": {
+        "atlas": "surface-earth",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-earth/earth-1/master.png",
+      "logicalSize": [
+        256,
+        256
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/earth-floor.png",
+      "png2x": "runtime/earth-floor@2x.png",
+      "sourceSha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+      "resourcePath": "res://assets/world-materials-v1/runtime/earth-floor@2x.png",
+      "sha256": "f92d8f076b5e49a949c5ff44e3f90a2894ee323cf50ae041dbc3af4c45bbd4c8"
+    },
+    "stone-base": {
+      "schemaVersion": 2,
+      "id": "stone-base",
+      "replaces": {
+        "atlas": "surface-old-stone",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+      "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/stone-base.png",
+      "png2x": "runtime/stone-base@2x.png",
+      "resourcePath": "res://assets/world-materials-v1/runtime/stone-base@2x.png",
+      "sha256": "d3e6b7868425e315f280e8198fe952e3e603af2dcea262e5509aed8637fd584e"
+    },
+    "stone-paving": {
+      "schemaVersion": 2,
+      "id": "stone-paving",
+      "replaces": {
+        "atlas": "surface-old-stone",
+        "tone": 3
+      },
+      "source": "masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+      "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/stone-paving.png",
+      "png2x": "runtime/stone-paving@2x.png",
+      "resourcePath": "res://assets/world-materials-v1/runtime/stone-paving@2x.png",
+      "sha256": "e80acefade2353d6c7e41683fe6a799731c01d9c2f9a5a11a621b791e5169c00"
+    },
+    "forge-base": {
+      "schemaVersion": 2,
+      "id": "forge-base",
+      "replaces": {
+        "atlas": "surface-forge-stone",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+      "sourceSha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+      "logicalSize": [
+        256,
+        256
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/forge-base.png",
+      "png2x": "runtime/forge-base@2x.png",
+      "resourcePath": "res://assets/world-materials-v1/runtime/forge-base@2x.png",
+      "sha256": "44d7e00b8b6dd18ac664afae34b9b33dd7ddb9b113246d7fb25e5526cb197296"
+    },
+    "graveyard-base": {
+      "schemaVersion": 2,
+      "id": "graveyard-base",
+      "replaces": {
+        "atlas": "surface-graveyard",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+      "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+      "logicalSize": [
+        256,
+        256
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/graveyard-base.png",
+      "png2x": "runtime/graveyard-base@2x.png",
+      "resourcePath": "res://assets/world-materials-v1/runtime/graveyard-base@2x.png",
+      "sha256": "d91289837313c2196d0e1d47694032c64151224b1904d2d32444d18107df3141"
+    },
+    "meadow-stony": {
+      "schemaVersion": 2,
+      "id": "meadow-stony",
+      "replaces": {
+        "atlas": "surface-meadow",
+        "tone": 2
+      },
+      "source": "masters/approved-v5/environment/surface-meadow/meadow-3/master.png",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/meadow-stony.png",
+      "png2x": "runtime/meadow-stony@2x.png",
+      "sourceSha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea",
+      "resourcePath": "res://assets/world-materials-v1/runtime/meadow-stony@2x.png",
+      "sha256": "29dbd116ccb70da0253d0ac85440b6f2dd3f0ddbf85bb21a9a1eafd8a70fa531"
+    },
+    "wasteland-scorched": {
+      "schemaVersion": 2,
+      "id": "wasteland-scorched",
+      "replaces": {
+        "atlas": "surface-wasteland",
+        "tone": 1
+      },
+      "source": "masters/approved-v5/environment/surface-wasteland/wasteland-2/master.png",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/wasteland-scorched.png",
+      "png2x": "runtime/wasteland-scorched@2x.png",
+      "sourceSha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972",
+      "resourcePath": "res://assets/world-materials-v1/runtime/wasteland-scorched@2x.png",
+      "sha256": "7a0a4926fcd899a77f94c6c1d6d25a7f1047882931b5a2091227ecb430e24a89"
+    },
+    "wasteland-scree": {
+      "schemaVersion": 2,
+      "id": "wasteland-scree",
+      "replaces": {
+        "atlas": "surface-wasteland",
+        "tone": 2
+      },
+      "source": "masters/approved-v5/environment/surface-wasteland/wasteland-3/master.png",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      },
+      "png": "runtime/wasteland-scree.png",
+      "png2x": "runtime/wasteland-scree@2x.png",
+      "sourceSha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+      "resourcePath": "res://assets/world-materials-v1/runtime/wasteland-scree@2x.png",
+      "sha256": "a5e5f25a345b6e848fbce77f2434fb778f6b4953af285e388641c7bca5c52975"
     }
   },
   "groundTagFamilies": {
@@ -163,6 +737,25 @@
       "scale": 0.3,
       "chance": 0.42,
       "jitter": 7
+    },
+    "riverStones": {
+      "ids": [
+        "stone-cluster-b",
+        "stone-cluster-c",
+        "mossy-boulder"
+      ],
+      "chance": 0.22,
+      "scale": 0.5
+    },
+    "shoreDecals": {
+      "ids": [
+        "mud-patch",
+        "exposed-roots",
+        "stone-cluster-a",
+        "grass-tuft-c"
+      ],
+      "chance": 0.4,
+      "scale": 0.56
     }
   },
   "terrainTags": {
@@ -315,10 +908,10 @@
       "W",
       "NW"
     ],
-    "sourceSha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
-    "sourceSha2562x": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
     "resourcePath": "res://assets/world-materials-v1/runtime/forest-blend-masks@2x.png",
-    "sha256": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d"
+    "sha256": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d",
+    "sourceSha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
+    "sourceSha2562x": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932"
   },
   "terrainBindings": {
     "forest": {

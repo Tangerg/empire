@@ -19,10 +19,13 @@ public sealed record RuntimeEnvironmentCell(
     Vector2I? Footprint,
     float PresentationScale);
 
+public sealed record RuntimeEnvironmentAtlas(EnvironmentAtlasRecord Spec, string ResourcePath, float PixelDensity);
+
 /// <summary>Resolves authored atlas cells only; it does not decide terrain composition or passability.</summary>
 public sealed class EnvironmentCatalog
 {
     private readonly Dictionary<string, RuntimeEnvironmentCell> _cells = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, RuntimeEnvironmentAtlas> _atlases = new(StringComparer.Ordinal);
     private readonly RasterResources _rasters = new();
 
     public int LogicalTileSize { get; }
@@ -48,6 +51,7 @@ public sealed class EnvironmentCatalog
             if (!path.StartsWith("res://assets/", StringComparison.Ordinal)
                 || path.Contains("..", StringComparison.Ordinal))
                 throw new InvalidOperationException($"Environment resource path escaped assets: {path}");
+            _atlases.Add(atlas.Id, new RuntimeEnvironmentAtlas(atlas, path, (float)density));
             for (var declaredIndex = 0; declaredIndex < atlas.Cells.Count; declaredIndex++)
             {
                 var cell = atlas.Cells[declaredIndex];
@@ -75,6 +79,36 @@ public sealed class EnvironmentCatalog
     public RuntimeEnvironmentCell ResolveCell(string id) =>
         _cells.TryGetValue(id, out var cell) ? cell
             : throw new MissingArtResourceException(id, $"Environment cell not declared in catalog: {id}");
+
+    public RuntimeEnvironmentAtlas ResolveAtlas(string id) => _atlases.TryGetValue(id, out var atlas)
+        ? atlas : throw new MissingArtResourceException(id, $"Environment atlas is not declared: {id}");
+
+    public int ConnectedIndex(string atlasId, int mask, int variant)
+    {
+        var spec = ResolveAtlas(atlasId).Spec;
+        var variants = Math.Max(1, spec.VariantsPerMask);
+        return spec.CellIndex == "mask * 4 + variant" || spec.TileMode == "nesw-16-variants"
+            ? (mask & 15) * variants + Math.Abs(variant) % variants : mask & 15;
+    }
+
+    public Sprite2D CreateGroundTile(string atlasId, int index, double inset = 0, double bleed = 0.5)
+    {
+        var atlas = ResolveAtlas(atlasId);
+        var spec = atlas.Spec;
+        if (spec.CellWidth != 32 || spec.CellHeight != 32 || index < 0 || index >= spec.ComponentCount
+            || !double.IsFinite(inset) || inset < 0 || inset >= 16 || !double.IsFinite(bleed) || bleed < 0)
+            throw new InvalidOperationException($"Invalid ground tile geometry: {atlasId}/{index}.");
+        var frame = _rasters.Frame(atlas.ResourcePath,
+            checked((int)(spec.CellWidth * spec.Columns * atlas.PixelDensity)),
+            checked((int)(spec.CellHeight * spec.Rows * atlas.PixelDensity)),
+            spec.CellWidth, spec.CellHeight, spec.Columns, index, atlas.PixelDensity);
+        var region = frame.Region.Grow(-(float)inset * atlas.PixelDensity);
+        var texture = new AtlasTexture { Atlas = frame.Atlas, Region = region, FilterClip = true };
+        return new Sprite2D { Texture = texture, Centered = false,
+            Position = Vector2.One * -(float)bleed,
+            Scale = Vector2.One * (float)((32 + bleed * 2) / (32 - inset * 2) / atlas.PixelDensity),
+            TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
+    }
 
     public Sprite2D CreateSprite(string id, float placementScale = 1, bool flip = false, float opacity = 1)
     {

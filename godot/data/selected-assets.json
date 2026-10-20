@@ -987,6 +987,38 @@
       "sha256": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0"
     },
     {
+      "assetId": "C01-FFV1-STRUCT-MERCENARY-DEPOT",
+      "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+      "label": "佣兵补给仓",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/interactive-structure/struct-mercenary-depot@2x.png",
+      "width": 384,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        62.13245033112583,
+        113.40397350993378
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "physicalWidth": 768,
+      "physicalHeight": 256,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-mercenary-depot@2x.png",
+      "sha256": "964856ec633d1a50ca01ab43dc249ee7b6499b2e380c54e2accc539465b1ee0b"
+    },
+    {
       "assetId": "C01-FFV1-STRUCT-OATH-TOWER-CONSOLE",
       "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
       "label": "誓约塔控制台",
@@ -1052,6 +1084,38 @@
       "sha256": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7"
     },
     {
+      "assetId": "C01-FFV1-STRUCT-REPAIRABLE-GATE",
+      "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+      "label": "可修城门",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/structure/struct-repairable-gate@2x.png",
+      "width": 480,
+      "height": 160,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 160,
+      "frameHeight": 160,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        79.5253112033195,
+        139.87385892116183
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "physicalWidth": 960,
+      "physicalHeight": 320,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/structure/struct-repairable-gate@2x.png",
+      "sha256": "18a8bd60945f20671e2b737e95f3f84ec7686bf1152dff14e452f55631fdf341"
+    },
+    {
       "assetId": "C01-FFV1-STRUCT-SUNKEN-BELL-SLUICE",
       "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
       "label": "沉钟水闸",
@@ -1082,6 +1146,38 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
       "sha256": "fc511c10f580b297f4454aeb51b0f00902d8eb567abadba7ccc387411b0c1d93"
+    },
+    {
+      "assetId": "C01-FFV1-STRUCT-WASTELAND-CHEVAUX",
+      "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+      "label": "荒原拒马",
+      "category": "interactive-structure",
+      "png": "runtime-approved-v5/interactive-structure/struct-wasteland-chevaux@2x.png",
+      "width": 384,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        58.935130581297386,
+        95.12047177759057
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "physicalWidth": 768,
+      "physicalHeight": 256,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-wasteland-chevaux@2x.png",
+      "sha256": "170cb10a9cec9289588c56fbdb1aa0f453491940af2c63e5b0ce968928410f08"
     },
     {
       "assetId": "C01-FFV1-STRUCT-WOUNDED-SHELTER",
@@ -1116,6 +1212,46 @@
       "sha256": "e5a52afe0a2bc5cd862701029ba3e45088921380f3b9e0af23df9ca9cdc3d5a9"
     },
     {
+      "assetId": "C01-FFV1-BPROP-AFTERMATH-2",
+      "topicId": "C01-BPROP-AFTERMATH-2",
+      "label": "弃械堆",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-aftermath-2.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-aftermath-2.png",
+      "sha256": "30d5c5474231bc97f75ecf8973e3c8316999ca00cf844961f1674651fc6c1be2"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-AFTERMATH-3",
+      "topicId": "C01-BPROP-AFTERMATH-3",
+      "label": "伤员分区",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-aftermath-3.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-aftermath-3.png",
+      "sha256": "74af01c6275aa9fce96dde908a2032190271a6d9f9b2a56d9cb0d53721b4a4ac"
+    },
+    {
       "assetId": "C01-FFV1-BPROP-COVER-2",
       "topicId": "C01-BPROP-COVER-2",
       "label": "临时盾墙",
@@ -1135,6 +1271,26 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-cover-2.png",
       "sha256": "6a71345b1ccecbee95c217d3dcabdff174ffdb18ecd8d9f0c8149a36ea68474a"
+    },
+    {
+      "assetId": "C01-FFV1-BPROP-EVIDENCE-1",
+      "topicId": "C01-BPROP-EVIDENCE-1",
+      "label": "伤亡名册",
+      "category": "battle-prop",
+      "png": "runtime-hd/battle-prop/bprop-evidence-1.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "anchor": [
+        32,
+        32
+      ],
+      "physicalWidth": 128,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-evidence-1.png",
+      "sha256": "617959c1215ca2a16cbf60a54f191009c9ad8d9ff15740aac75edd052f04478f"
     },
     {
       "assetId": "C01-FFV1-BPROP-FACTION-2",

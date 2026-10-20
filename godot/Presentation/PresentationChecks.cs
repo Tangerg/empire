@@ -14,6 +14,7 @@ public partial class PresentationChecks : Node
         try
         {
             Check();
+            TerrainChecks.Run(this);
             GD.Print("Presentation resource contracts passed.");
             GetTree().Quit();
         }

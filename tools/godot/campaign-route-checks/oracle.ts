@@ -77,7 +77,7 @@ try {
         write({ kind: 'step', index: step, human, action, events: emitted, hash: hashState(battle!) });
         step++; actions++;
         if (step % 100 === 0) console.log(`SOURCE route ${id}: ${request!.levelId}, ${step} actions, turn ${battle!.turn}`);
-        if (step % 67 === 0 && battle!.phase !== 'over') checkpoint(`mid ${request!.levelId}:${step}`);
+        if (step % 67 === 0 && (battle as GameState).phase !== 'over') checkpoint(`mid ${request!.levelId}:${step}`);
       }
       const result = bridge.result(request!, battle!, events);
       const projected = applyCandidate01BattleResultPolicy(result, runtime.state);

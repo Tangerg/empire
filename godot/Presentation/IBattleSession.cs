@@ -7,7 +7,8 @@ namespace Empire.Presentation;
 public readonly record struct BoardCell(int X, int Y);
 
 /// <summary>State must be a detached JsonElement.Clone(); its JSON is immutable to the view.</summary>
-public sealed record BattleSnapshot(long Revision, JsonElement State);
+public sealed record BattleSnapshot(long Revision, JsonElement State, IReadOnlySet<int>? VisibleUnitIds = null,
+    IReadOnlySet<BoardCell>? VisibleCells = null, IReadOnlyDictionary<BoardCell, double>? Incoming = null, string? ObjectiveSummary = null);
 
 /// <summary>
 /// The adapter supplies complete canonical actions, including any move-and-wait or

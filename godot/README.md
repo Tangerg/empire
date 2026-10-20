@@ -54,6 +54,6 @@ All 12 original action kinds have native handlers. Focused differential suites f
 ## Scope and remaining migration work
 
 This is a playable-level integration checkpoint, not the finished migration.
-The story/choice/battle/result and validated save/load flow is integrated. Remaining work includes water and other terrain rendering, authored scenery for nine levels absent from the recovered source, structure/composite/scenario visual feedback, lighting/shadows, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
+The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, action animation/effects, sound, richer scenario feedback, lighting/shadows, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
 See `docs/RECOVERY.md` for evidence and `docs/COMPATIBILITY.md` for explicit
 malformed-input hardening differences. Original source and art are preserved.

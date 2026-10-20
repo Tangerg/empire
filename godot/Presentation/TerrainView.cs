@@ -22,21 +22,28 @@ public partial class TerrainView : Node2D
         uniform sampler2D fill_texture : source_color, repeat_enable, filter_linear;
         uniform vec2 world_size;
         uniform vec2 material_period;
+        uniform bool has_playable_shape = false;
+        uniform sampler2D playable_shape : filter_linear, repeat_disable;
         void fragment() {
             vec4 fill = texture(fill_texture, UV * world_size / material_period);
-            COLOR = vec4(fill.rgb, fill.a * texture(TEXTURE, UV).a);
+            float shape_alpha = has_playable_shape ? texture(playable_shape, UV).a : 1.0;
+            COLOR = vec4(fill.rgb, fill.a * texture(TEXTURE, UV).a * shape_alpha);
         }
         """;
     private WorldMaterialsManifest _manifest = null!;
     private AuthoredScene _scene = null!;
     private EnvironmentCatalog _environment = null!;
     private string[]? _tiles;
+    private Vector2I _renderedSize;
+    private Texture2D? _groundShape;
+    private Vector2 _groundSize;
     private readonly Dictionary<string, Texture2D> _textures = new(StringComparer.Ordinal);
     private readonly List<string> _diagnostics = new();
     private readonly List<Node2D> _standing = new();
     public IReadOnlyList<string> Diagnostics => _diagnostics;
     public IReadOnlyList<Node2D> Standing => _standing;
     public int RenderedSceneryCount => _standing.Count;
+    public int RenderedEdgeDecorationCount { get; private set; }
 
     public void Configure(WorldMaterialsManifest manifest, AuthoredScene scene, EnvironmentCatalog environment)
     {
@@ -45,11 +52,12 @@ public partial class TerrainView : Node2D
         _scene = scene;
         _environment = environment;
         _tiles = null;
+        _groundShape = null;
     }
 
     public void Render(string[] tiles, Vector2I size)
     {
-        if (_tiles is not null && _tiles.SequenceEqual(tiles)) return;
+        if (_tiles is not null && _renderedSize == size && _tiles.SequenceEqual(tiles)) return;
         if (tiles.Length != size.X * size.Y) throw new InvalidOperationException("Terrain size differs from map.");
         foreach (var tile in tiles.Distinct())
             if (!_manifest.TerrainBindings.ContainsKey(tile))
@@ -57,6 +65,7 @@ public partial class TerrainView : Node2D
         var staging = new Node2D { Name = "ComposedTerrain" };
         var diagnostics = new List<string>();
         var standing = new List<Node2D>();
+        var edgeCount = 0;
         var ground = new Node2D { Name = "Ground", ZIndex = -300 };
         staging.AddChild(ground);
         string? TileAt(int x, int y) => x < 0 || y < 0 || x >= size.X || y >= size.Y ? null : tiles[y * size.X + x];
@@ -69,54 +78,177 @@ public partial class TerrainView : Node2D
                 throw new InvalidOperationException($"Terrain semantic export missing: {tile}/{family}");
             return tags.Intersect(familyTags).Any();
         }
+        var cells = Enumerable.Range(0, size.X * size.Y).Select(index => new BoardCell(index % size.X, index / size.X))
+            .Where(cell => !Tagged(cell.X, cell.Y, "outside")).ToArray();
+        bool Water(int x, int y) => Matches(At(x, y), MaterialRecord("water-material").Replaces);
+        bool Road(int x, int y) => Matches(At(x, y), MaterialRecord("road-material").Replaces);
+        bool Route(int x, int y) => Tagged(x, y, "way") || Tagged(x, y, "settlement");
+        bool Shore(int x, int y) => TileAt(x, y) is not null && !Water(x, y)
+            && Cardinal.Any(delta => Water(x + delta.X, y + delta.Y));
         try
         {
-            TryLayer("Field material", () => ground.AddChild(CreateField()), diagnostics);
-            TryLayer("Forest material", () => {
-                var spec = _manifest.ForestMask;
-                var source = Texture(spec.ResourcePath, spec.Columns * spec.CellWidth2x, spec.Rows * spec.CellHeight2x).GetImage();
-                if (source.IsCompressed()) source.Decompress();
-                source.Convert(Image.Format.Rgba8);
-                using var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
-                for (var y = 0; y < size.Y; y++)
-                for (var x = 0; x < size.X; x++)
+            TryLayer("Field material", () => ground.AddChild(CreateField(size, (x, y) => Tagged(x, y, "outside"))), diagnostics);
+            if (_scene.GroundOutline.Length == 0 && !tiles.Any(tile => _manifest.TerrainTags[tile]
+                    .Intersect(_manifest.GroundTagFamilies["outside"]).Any()))
+                diagnostics.Add("No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated.");
+
+            // Surface identity and tone come from the content export; world materials replace exact bindings only.
+            var field = MaterialRecord("field-material");
+            var surfaces = cells.Where(cell => !Authored(TileAt(cell.X, cell.Y)!, cell.X, cell.Y, surface: true))
+                .GroupBy(cell => (Atlas: At(cell.X, cell.Y)!.Surface ?? field.Replaces.Atlas,
+                    Tone: At(cell.X, cell.Y)!.Tone ?? field.Replaces.Tone ?? 0));
+            foreach (var surface in surfaces)
+            {
+                if (surface.Key.Atlas == field.Replaces.Atlas && surface.Key.Tone == field.Replaces.Tone) continue;
+                var world = _manifest.Materials.Values.SingleOrDefault(material => material.Replaces.Atlas == surface.Key.Atlas
+                    && material.Replaces.Tone == surface.Key.Tone);
+                TryLayer($"Surface {surface.Key.Atlas}/{surface.Key.Tone}", () => {
+                    if (world is not null)
+                    {
+                        using var mask = SolidMask(size, surface);
+                        ground.AddChild(Masked($"Surface_{world.Id}", mask, world, size));
+                    }
+                    else foreach (var cell in surface)
+                    {
+                        var sprite = _environment.CreateGroundTile(surface.Key.Atlas, surface.Key.Tone,
+                            _manifest.SurfaceFit.Inset, _manifest.SurfaceFit.Bleed);
+                        sprite.Position += new Vector2(cell.X, cell.Y) * 32;
+                        ground.AddChild(sprite);
+                    }
+                }, diagnostics);
+            }
+
+            var blends = cells.Select(cell => At(cell.X, cell.Y)!.Blend).Where(id => id is not null).Cast<string>().ToHashSet();
+            if (_scene.River is null && cells.Any(cell => At(cell.X, cell.Y)!.Blend is null && Shore(cell.X, cell.Y)))
+                blends.Add(_manifest.ShoreBlend ?? throw new InvalidOperationException("Shore blend identity is not exported."));
+            foreach (var blend in blends)
+            {
+                bool Owns(int x, int y) => TileAt(x, y) is not null && !Tagged(x, y, "outside")
+                    && (At(x, y)!.Blend == blend || _scene.River is null && blend == _manifest.ShoreBlend
+                        && At(x, y)!.Blend is null && Shore(x, y));
+                // Source shoreline connectivity counts every shore cell, even where another blend owns its RGB.
+                bool Joins(int x, int y, bool shore) => shore ? Shore(x, y) : At(x, y)?.Blend == blend;
+                int Index(int x, int y, ForestMaskRecord spec)
                 {
-                    if (At(x, y)?.Blend != spec.Id) continue;
-                    var bits = 0;
-                    for (var bit = 0; bit < Around.Length; bit++)
-                        if (At(x + Around[bit].X, y + Around[bit].Y)?.Blend == spec.Id) bits |= 1 << bit;
-                    var index = Array.IndexOf(spec.MaskOrder, CanonicalBlobMask(bits));
-                    if (index < 0 || spec.CellWidth != 32 || spec.CellHeight != 32
-                        || spec.CellWidth2x != 64 || spec.CellHeight2x != 64)
-                        throw new InvalidOperationException("Forest mask does not declare the required Blob47 cell.");
-                    mask.BlitRect(source, new Rect2I(index % spec.Columns * 64, index / spec.Columns * 64, 64, 64),
-                        new Vector2I(x * 64, y * 64));
+                    var shore = At(x, y)!.Blend is null;
+                    var index = Array.IndexOf(spec.MaskOrder, CanonicalBlobMask(NeighborMask(x, y, (nx, ny) => Joins(nx, ny, shore))));
+                    return index >= 0 ? index : throw new InvalidOperationException($"Blob mask is absent from {blend}.");
                 }
-                source.Dispose();
-                ground.AddChild(Masked("ForestFloor", mask, MaterialRecord("forest-floor"), size));
-            }, diagnostics);
+                var spec = blend == _manifest.ForestMask.Id ? _manifest.ForestMask
+                    : blend == _manifest.EarthMask?.Id ? _manifest.EarthMask : null;
+                TryLayer($"Blend {blend}", () => {
+                    if (spec is not null)
+                    {
+                        using var mask = AtlasMask(size, spec, Owns, (x, y) => Index(x, y, spec));
+                        var forest = blend == _manifest.ForestMask.Id;
+                        ground.AddChild(Masked(forest ? "ForestFloor" : "EarthFloor", mask,
+                            MaterialRecord(forest ? "forest-floor" : "earth-floor"), size));
+                    }
+                    else
+                    {
+                        var atlas = _environment.ResolveAtlas(blend).Spec;
+                        foreach (var cell in cells.Where(cell => Owns(cell.X, cell.Y)))
+                        {
+                            var bits = NeighborMask(cell.X, cell.Y, (x, y) => Joins(x, y, At(cell.X, cell.Y)!.Blend is null));
+                            var index = Array.IndexOf(atlas.MaskOrder, CanonicalBlobMask(bits));
+                            if (index < 0) throw new InvalidOperationException($"Blob mask is absent from {blend}.");
+                            var sprite = _environment.CreateGroundTile(blend, index);
+                            sprite.Position += new Vector2(cell.X, cell.Y) * 32;
+                            ground.AddChild(sprite);
+                        }
+                    }
+                }, diagnostics);
+            }
+
+            if (cells.Any(cell => Water(cell.X, cell.Y)))
+                TryLayer("Water material", () => {
+                    if (_scene.River is { } river)
+                    {
+                        using var bank = WaterMasks.River(size.X, size.Y, river, Water,
+                            (x, y) => Water(x, y) || TileAt(x, y) == "plain" || Road(x, y) && !Tagged(x, y, "settlement"), true);
+                        ground.AddChild(Masked("RiverBank", bank, MaterialRecord("road-material"), size));
+                        using var channel = WaterMasks.River(size.X, size.Y, river, Water, Water, false);
+                        ground.AddChild(Masked("RiverWater", channel, MaterialRecord("water-material"), size));
+                    }
+                    else
+                    {
+                        using var mask = WaterOccupancy(size, Water);
+                        ground.AddChild(Masked("AreaWater", mask, MaterialRecord("water-material"), size));
+                    }
+                }, diagnostics);
+
+            var connectors = new Dictionary<string, Dictionary<BoardCell, int>>(StringComparer.Ordinal);
+            foreach (var cell in cells)
+            {
+                var binding = At(cell.X, cell.Y)!.Connected;
+                if (binding is null || Water(cell.X, cell.Y) || _scene.RoadCorridor is not null && Road(cell.X, cell.Y)) continue;
+                var mask = 0;
+                for (var bit = 0; bit < Cardinal.Length; bit++)
+                {
+                    var neighbor = new BoardCell(cell.X + Cardinal[bit].X, cell.Y + Cardinal[bit].Y);
+                    if (binding.Mask == "route" ? Route(neighbor.X, neighbor.Y)
+                        : At(neighbor.X, neighbor.Y)?.Connected?.Atlas == binding.Atlas) mask |= 1 << bit;
+                }
+                var index = _environment.ConnectedIndex(binding.Atlas, mask, (int)Math.Floor(TileArtVariation.Hash(cell.X, cell.Y, 1102) * 4));
+                foreach (var id in new[] { binding.Atlas, binding.Edge }.Where(id => id is not null).Cast<string>())
+                {
+                    if (!connectors.TryGetValue(id, out var indices)) connectors.Add(id, indices = new());
+                    indices.Add(cell, index);
+                }
+            }
+            foreach (var (atlasId, indices) in connectors)
+                TryLayer($"Connected terrain {atlasId}", () => {
+                    if (_manifest.ConnectorMasks.TryGetValue(atlasId, out var spec))
+                    {
+                        using var mask = AtlasMask(size, spec, (x, y) => indices.ContainsKey(new BoardCell(x, y)),
+                            (x, y) => indices[new BoardCell(x, y)]);
+                        ground.AddChild(Masked($"Connector_{atlasId}", mask, MaterialRecord("stone-paving"), size));
+                    }
+                    else foreach (var (cell, index) in indices)
+                    {
+                        var sprite = _environment.CreateGroundTile(atlasId, index);
+                        sprite.Position += new Vector2(cell.X, cell.Y) * 32;
+                        ground.AddChild(sprite);
+                    }
+                }, diagnostics);
+
             if (_scene.RoadCorridor is { } corridor)
                 TryLayer("Road material", () => {
-                    var material = MaterialRecord("road-material");
-                    using var mask = RoadCorridorMask.Create(size.X, size.Y, corridor,
-                        (x, y) => At(x, y)?.Connected is { } binding
-                            && binding.Atlas == material.Replaces.Atlas && binding.Mask == material.Replaces.Mask,
-                        (x, y) => Tagged(x, y, "way") || Tagged(x, y, "settlement"),
-                        (x, y) => TileAt(x, y) == "plain");
-                    ground.AddChild(Masked("RoadCorridor", mask, material, size));
+                    using var mask = RoadCorridorMask.Create(size.X, size.Y, corridor, Road, Route, (x, y) => TileAt(x, y) == "plain");
+                    ground.AddChild(Masked("RoadCorridor", mask, MaterialRecord("road-material"), size));
                 }, diagnostics);
-            else diagnostics.Add("Authored scene has no reviewed native road corridor.");
+
             var detail = new Node2D { Name = "TerrainDecals", ZIndex = -200 };
             staging.AddChild(detail);
+            var decks = new Node2D { Name = "Crossings", ZIndex = -50 };
+            staging.AddChild(decks);
+            var crossingTopology = CrossingRenderer.Topology(size.X, size.Y, (x, y) => TileAt(x, y) == "bridge", Route);
+            if (crossingTopology.Count != 0)
+                TryLayer("Crossing resources", () => CrossingRenderer.Add(decks, _manifest.Crossings
+                    ?? throw new MissingArtResourceException("crossings", "Registered crossing metadata is not exported."),
+                    _environment, path => Texture(path), crossingTopology, diagnostics), diagnostics);
+            var edges = new Node2D { Name = "EdgeDecorations", ZIndex = -90 };
+            staging.AddChild(edges);
+            if (_manifest.EdgeDecorations is { } decoration)
+                edgeCount = EdgeDecorationRenderer.Add(edges, decoration, _scene.LevelId, size, tiles,
+                    path => Texture(path), diagnostics);
+            else diagnostics.Add("Authored edge decoration dependency is not supplied.");
             var scenery = new Node2D { Name = "TerrainScenery" };
             staging.AddChild(scenery);
-            for (var y = 0; y < size.Y; y++)
-            for (var x = 0; x < size.X; x++)
+            foreach (var cell in cells)
             {
+                var (x, y) = cell;
                 var material = At(x, y)!;
                 var tile = TileAt(x, y)!;
-                if (Tagged(x, y, "outside")) continue;
-                if (material.Decals is { Chance: { } chance } decal && TileArtVariation.Hash(x, y, 1103) < chance)
+                if (_manifest.Foundations.TryGetValue(tile, out var foundation))
+                    TryLayer($"Foundation ({x},{y}) {foundation}", () => {
+                        var sprite = _environment.CreateSprite(foundation, 0.3f);
+                        sprite.Position = new Vector2((x + 0.5f) * 32, (y + 1) * 32);
+                        detail.AddChild(sprite);
+                    }, diagnostics);
+                var decal = Water(x, y) ? _manifest.Scenery.RiverStones
+                    : _scene.River is null && Shore(x, y) ? _manifest.Scenery.ShoreDecals : material.Decals;
+                if (decal is { Chance: { } chance } && TileArtVariation.Hash(x, y, 1103) < chance)
                 {
                     var id = Pick(decal, x, y, 1104);
                     TryLayer($"Terrain decal ({x},{y}) {id}", () => {
@@ -126,9 +258,8 @@ public partial class TerrainView : Node2D
                         detail.AddChild(sprite);
                     }, diagnostics);
                 }
-                if (Authored(tile, x, y, surface: false)) continue;
-                var enclosed = material.Blend is not null
-                    && Cardinal.All(delta => At(x + delta.X, y + delta.Y)?.Blend == material.Blend);
+                if (tile == "bridge" || Authored(tile, x, y, surface: false)) continue;
+                var enclosed = material.Blend is not null && Cardinal.All(delta => At(x + delta.X, y + delta.Y)?.Blend == material.Blend);
                 var spec = enclosed ? _manifest.Scenery.ForestFloor
                     : material.Scenery ?? (Cardinal.Any(delta => Tagged(x + delta.X, y + delta.Y, "settlement"))
                         ? _manifest.Scenery.SettlementLife : null);
@@ -145,85 +276,149 @@ public partial class TerrainView : Node2D
                     scenery.AddChild(sprite);
                     standing.Add(sprite);
                 }, diagnostics);
-                if ((material.Surface is not null || material.Tone is not null) && !Authored(tile, x, y, surface: true))
-                    diagnostics.Add($"Legacy surface/tone layer is not migrated: {tile} at ({x},{y}).");
             }
         }
-        catch
-        {
-            staging.Free();
-            throw;
-        }
-        foreach (var child in GetChildren())
-        {
-            RemoveChild(child);
-            child.QueueFree();
-        }
+        catch { staging.Free(); throw; }
+        foreach (var child in GetChildren()) { RemoveChild(child); child.QueueFree(); }
         AddChild(staging);
-        _standing.Clear();
-        _standing.AddRange(standing);
-        _diagnostics.Clear();
-        _diagnostics.AddRange(diagnostics.Distinct(StringComparer.Ordinal));
+        _groundShape = ground.GetNodeOrNull<Sprite2D>("WorldField")?.Texture;
+        _groundSize = new Vector2(size.X * 32, size.Y * 32);
+        ApplyGroundClip(ground);
+        ApplyGroundClip(staging.GetNode<Node2D>("TerrainDecals"));
+        ApplyGroundClip(staging.GetNode<Node2D>("EdgeDecorations"));
+        RenderedEdgeDecorationCount = edgeCount;
+        _standing.Clear(); _standing.AddRange(standing);
+        _diagnostics.Clear(); _diagnostics.AddRange(diagnostics.Distinct(StringComparer.Ordinal));
         _tiles = tiles.ToArray();
+        _renderedSize = size;
     }
 
-    private Polygon2D CreateField()
+    /// <summary>Apply the same terrain-owned silhouette to externally authored ground sprites.</summary>
+    public void ApplyGroundClip(Node2D ground)
     {
-        if (_scene.GroundOutline.Length < 3) throw new InvalidOperationException("Authored ground outline is absent.");
-        var material = MaterialRecord("field-material");
-        var texture = MaterialTexture(material);
-        var polygon = _scene.GroundOutline.Select(pair => RasterResources.Pair(pair, "ground outline") * 32).ToArray();
-        return new Polygon2D { Name = "WorldField", Polygon = polygon, Texture = texture,
-            UV = polygon.Select(point => point * texture.GetSize()
-                / new Vector2(material.LogicalSize[0], material.LogicalSize[1])).ToArray(),
-            TextureRepeat = TextureRepeatEnum.Enabled, TextureFilter = TextureFilterEnum.Linear,
-            Antialiased = true };
+        if (_groundShape is not null) GroundClipper.Apply(ground, _groundShape, _groundSize);
+        else GroundClipper.Remove(ground);
     }
 
+    private Node2D CreateField(Vector2I size, Func<int, int, bool> outside)
+    {
+        var material = MaterialRecord("field-material");
+        if (Enumerable.Range(0, size.X * size.Y).Any(index => outside(index % size.X, index / size.X)))
+        {
+            using var mask = WaterMasks.PlayableShape(size.X, size.Y, outside);
+            return Masked("WorldField", mask, material, size);
+        }
+        var texture = MaterialTexture(material);
+        var polygon = _scene.GroundOutline.Length > 0
+            ? _scene.GroundOutline.Select(pair => RasterResources.Pair(pair, "ground outline") * 32).ToArray()
+            : new[] { Vector2.Zero, new Vector2(size.X * 32, 0), new Vector2(size.X * 32, size.Y * 32), new Vector2(0, size.Y * 32) };
+        if (polygon.Length < 3) throw new InvalidOperationException("Authored ground outline has fewer than three points.");
+        return new Polygon2D { Name = "WorldField", Polygon = polygon, Texture = texture,
+            UV = polygon.Select(point => point * texture.GetSize() / new Vector2(material.LogicalSize[0], material.LogicalSize[1])).ToArray(),
+            TextureRepeat = TextureRepeatEnum.Enabled, TextureFilter = TextureFilterEnum.Linear, Antialiased = true };
+    }
+
+    private Image WaterOccupancy(Vector2I size, Func<int, int, bool> occupied)
+    {
+        var spec = MaterialRecord("water-material").Occupancy ?? throw new InvalidOperationException("Water occupancy metadata is absent.");
+        if (spec.TileSize != 32 || spec.Columns != 16 || spec.Rows != 16
+            || spec.Geometry != "full-shared-interiors-exposed-shore-inset-concave-notch-v1"
+            || string.Join(',', spec.BitOrder) != "N,NE,E,SE,S,SW,W,NW")
+            throw new InvalidOperationException("Water requires its full original eight-neighbor occupancy atlas.");
+        using var source = Texture(spec.ResourcePath, 1024, 1024).GetImage();
+        PrepareImage(source);
+        var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
+        for (var y = 0; y < size.Y; y++)
+        for (var x = 0; x < size.X; x++)
+        {
+            if (!occupied(x, y)) continue;
+            // Water uses all 256 raw masks, not canonical Blob47 diagonal suppression.
+            var index = NeighborMask(x, y, occupied);
+            mask.BlitRect(source, new Rect2I(index % 16 * 64, index / 16 * 64, 64, 64), new Vector2I(x * 64, y * 64));
+        }
+        return mask;
+    }
+    private Image AtlasMask(Vector2I size, ForestMaskRecord spec, Func<int, int, bool> occupied, Func<int, int, int> indexAt)
+    {
+        if (spec.CellWidth != 32 || spec.CellHeight != 32 || spec.CellWidth2x != 64 || spec.CellHeight2x != 64)
+            throw new InvalidOperationException($"Native terrain requires declared 32-unit mask cells: {spec.Id}");
+        using var source = Texture(spec.ResourcePath, spec.Columns * 64, spec.Rows * 64).GetImage();
+        PrepareImage(source);
+        var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
+        for (var y = 0; y < size.Y; y++)
+        for (var x = 0; x < size.X; x++)
+        {
+            if (!occupied(x, y)) continue;
+            var index = indexAt(x, y);
+            if (index < 0 || index >= spec.Columns * spec.Rows) throw new InvalidOperationException($"Mask index outside {spec.Id}: {index}");
+            // Source runtimeTileMarkup expands mask cells by half a logical pixel.
+            using var cell = source.GetRegion(new Rect2I(index % spec.Columns * 64, index / spec.Columns * 64, 64, 64));
+            cell.Resize(66, 66, Image.Interpolation.Bilinear);
+            mask.BlendRect(cell, new Rect2I(0, 0, 66, 66), new Vector2I(x * 64 - 1, y * 64 - 1));
+        }
+        return mask;
+    }
+    private static Image SolidMask(Vector2I size, IEnumerable<BoardCell> cells)
+    {
+        var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
+        foreach (var cell in cells) mask.FillRect(new Rect2I(cell.X * 64 - 1, cell.Y * 64 - 1, 66, 66), Colors.White);
+        return mask;
+    }
+    private static void PrepareImage(Image image)
+    {
+        if (image.IsCompressed() && image.Decompress() != Error.Ok) throw new InvalidOperationException("Cannot decompress terrain mask.");
+        image.Convert(Image.Format.Rgba8);
+    }
     private Sprite2D Masked(string name, Image mask, WorldMaterialRecord material, Vector2I size)
     {
         var shader = new ShaderMaterial { Shader = new Shader { Code = MaskedMaterialShader } };
         shader.SetShaderParameter("fill_texture", MaterialTexture(material));
         shader.SetShaderParameter("world_size", new Vector2(size.X * 32, size.Y * 32));
         shader.SetShaderParameter("material_period", new Vector2(material.LogicalSize[0], material.LogicalSize[1]));
-        return new Sprite2D { Name = name, Texture = ImageTexture.CreateFromImage(mask),
+        var sprite = new Sprite2D { Name = name, Texture = ImageTexture.CreateFromImage(mask),
             Centered = false, Scale = Vector2.One / 2, Material = shader, TextureFilter = TextureFilterEnum.Linear };
+        sprite.SetMeta("world_material", true);
+        return sprite;
     }
+    private static bool Matches(TerrainMaterialBinding? binding, MaterialReplacement replacement) =>
+        binding?.Connected is { } connected && connected.Atlas == replacement.Atlas && connected.Mask == replacement.Mask;
     private WorldMaterialRecord MaterialRecord(string key) => _manifest.Materials.TryGetValue(key, out var value)
         ? value : throw new InvalidOperationException($"World material metadata is absent: {key}");
     private Texture2D MaterialTexture(WorldMaterialRecord material)
     {
         if (material.SchemaVersion != 2 || material.LogicalSize.Length != 2 || material.RasterSize.Length != 2
             || material.LogicalSize.Any(value => value <= 0) || material.RasterSize.Any(value => value <= 0)
+            || (long)material.RasterSize[0] * material.LogicalSize[1] != (long)material.RasterSize[1] * material.LogicalSize[0]
             || material.WorldOrigin.Length != 2 || material.WorldOrigin.Any(value => value != 0)
             || material.Fit.Inset != 0 || material.Fit.Bleed != 0)
             throw new InvalidOperationException($"Invalid world material geometry: {material.Id}");
         return Texture(material.ResourcePath, material.RasterSize[0] * 2, material.RasterSize[1] * 2);
     }
-    private Texture2D Texture(string path, int width, int height)
+    private Texture2D Texture(string path, int width = 0, int height = 0)
     {
         if (_textures.TryGetValue(path, out var cached)) return cached;
         if (!path.StartsWith("res://assets/", StringComparison.Ordinal) || path.Contains("..", StringComparison.Ordinal))
             throw new InvalidOperationException($"World material resource escaped assets: {path}");
-        if (!ResourceLoader.Exists(path))
-            throw new MissingArtResourceException(path, $"Missing world material resource: {path}");
+        if (!ResourceLoader.Exists(path)) throw new MissingArtResourceException(path, $"Missing world material resource: {path}");
         var texture = ResourceLoader.Load<Texture2D>(path);
-        if (texture is null || texture.GetWidth() != width || texture.GetHeight() != height)
+        if (texture is null || width > 0 && texture.GetWidth() != width || height > 0 && texture.GetHeight() != height)
             throw new InvalidOperationException($"World material physical dimensions differ: {path}, expected {width}×{height}.");
         _textures.Add(path, texture);
         return texture;
     }
     private bool Authored(string tile, int x, int y, bool surface) => _scene.Zones.Any(zone =>
-        zone.Bounds.Length == 4 && x >= zone.Bounds[0] && y >= zone.Bounds[1]
-        && x <= zone.Bounds[2] && y <= zone.Bounds[3]
+        zone.Bounds.Length == 4 && x >= zone.Bounds[0] && y >= zone.Bounds[1] && x <= zone.Bounds[2] && y <= zone.Bounds[3]
         && (surface ? zone.AuthoredTerrainSurface : zone.AuthoredTerrainScenery).Contains(tile));
     private static string Pick(ScenerySpecification spec, int x, int y, int salt)
     {
         if (spec.Ids.Length == 0) throw new InvalidOperationException("Empty scenery selection.");
         return spec.Ids[(int)Math.Floor(TileArtVariation.Hash(x, y, salt) * spec.Ids.Length)];
     }
+    private static int NeighborMask(int x, int y, Func<int, int, bool> joins) => Around.Select((delta, bit) =>
+        joins(x + delta.X, y + delta.Y) ? 1 << bit : 0).Aggregate(0, (a, b) => a | b);
     internal static int CanonicalBlobMask(int mask)
     {
+        mask &= 255;
         if ((mask & 0x05) != 0x05) mask &= ~0x02;
         if ((mask & 0x14) != 0x14) mask &= ~0x08;
         if ((mask & 0x50) != 0x50) mask &= ~0x20;

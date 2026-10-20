@@ -10,6 +10,7 @@ namespace Empire.Application;
 public partial class GrayFlagGame : Node
 {
     private GrayFlagEngine engine = null!;
+    private JsonArray packs = null!;
     private GrayFlagCampaign campaign = null!;
     private StoryDocument stories = null!;
     private GrayFlagSession? session;
@@ -22,7 +23,7 @@ public partial class GrayFlagGame : Node
 
     public override void _Ready()
     {
-        var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+        packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         engine = new GrayFlagEngine(packs);
         campaign = new GrayFlagCampaign(PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json"),
             PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"), packs, engine);
@@ -101,9 +102,12 @@ public partial class GrayFlagGame : Node
             RuntimeReady = false, Title = "此关卡尚无恢复的手工场景布局"
         };
         screen = new BattleScreen(); SetView(screen);
-        screen.BindSession(session, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(), facing =>
-            facing is not null && engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4").Step(new Coord(0, 0), facing).X < 0);
+        var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
+        screen.BindSession(session, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(),
+            facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
+            facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); });
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+        screen.ConfigureDynamicState(packs);
         screen.BindApplicationActions(Save, Load, () => { campaign.RestartBattle(); resultOffered = false; ShowBattle(); });
     }
 

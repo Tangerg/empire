@@ -9,12 +9,31 @@ public sealed class WorldMaterialsManifest
     public int Schema { get; init; }
     public Dictionary<string, WorldMaterialRecord> Materials { get; init; } = new(StringComparer.Ordinal);
     public ForestMaskRecord ForestMask { get; init; } = new();
+    public ForestMaskRecord? EarthMask { get; init; }
+    public Dictionary<string, ForestMaskRecord> ConnectorMasks { get; init; } = new(StringComparer.Ordinal);
+    public string? ShoreBlend { get; init; }
+    public Dictionary<string, string> Foundations { get; init; } = new(StringComparer.Ordinal);
+    public MaterialFit SurfaceFit { get; init; } = new();
+    public CrossingManifest? Crossings { get; init; }
+    public string? EdgeDecorationsResourcePath { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore]
+    public EdgeDecorationManifest? EdgeDecorations { get; private set; }
     public Dictionary<string, TerrainMaterialBinding> TerrainBindings { get; init; } = new(StringComparer.Ordinal);
     public Dictionary<string, string[]> TerrainTags { get; init; } = new(StringComparer.Ordinal);
     public Dictionary<string, string[]> GroundTagFamilies { get; init; } = new(StringComparer.Ordinal);
     public ScenerySpecifications Scenery { get; init; } = new();
-    public static WorldMaterialsManifest Load(string path = "res://data/world-materials.json") =>
-        PresentationJson.Load<WorldMaterialsManifest>(path);
+    public static WorldMaterialsManifest Load(string path = "res://data/world-materials.json")
+    {
+        var manifest = PresentationJson.Load<WorldMaterialsManifest>(path);
+        if (manifest.EdgeDecorationsResourcePath is { } dependency)
+        {
+            if (!dependency.StartsWith("res://data/", StringComparison.Ordinal) || dependency.Contains("..", StringComparison.Ordinal))
+                throw new InvalidOperationException("Edge decoration dependency must be declared within project data.");
+            manifest.EdgeDecorations = PresentationJson.Load<EdgeDecorationManifest>(dependency);
+            EdgeDecorationRenderer.Validate(manifest.EdgeDecorations);
+        }
+        return manifest;
+    }
 }
 
 public sealed class WorldMaterialRecord
@@ -27,12 +46,14 @@ public sealed class WorldMaterialRecord
     public double[] WorldOrigin { get; init; } = Array.Empty<double>();
     public MaterialFit Fit { get; init; } = new();
     public MaterialReplacement Replaces { get; init; } = new();
+    public OccupancyMaskRecord? Occupancy { get; init; }
 }
 public sealed class MaterialFit { public double Inset { get; init; } public double Bleed { get; init; } }
 public sealed class MaterialReplacement
 {
     public string Atlas { get; init; } = "";
     public string? Mask { get; init; }
+    public string? Edge { get; init; }
     public int? Tone { get; init; }
 }
 public sealed class ForestMaskRecord
@@ -46,6 +67,9 @@ public sealed class ForestMaskRecord
     public int CellWidth2x { get; init; }
     public int CellHeight2x { get; init; }
     public int[] MaskOrder { get; init; } = Array.Empty<int>();
+    public int VariantsPerMask { get; init; } = 1;
+    public string TileMode { get; init; } = "";
+    public string? CellIndex { get; init; }
 }
 public sealed class TerrainMaterialBinding
 {
@@ -60,6 +84,8 @@ public sealed class ScenerySpecifications
 {
     public ScenerySpecification? ForestFloor { get; init; }
     public ScenerySpecification? SettlementLife { get; init; }
+    public ScenerySpecification? RiverStones { get; init; }
+    public ScenerySpecification? ShoreDecals { get; init; }
 }
 public sealed class ScenerySpecification
 {

@@ -17,11 +17,13 @@ public partial class BoardView : Node2D
 {
     private AssetCatalog? _assets;
     private Func<string?, bool>? _facesLeft;
+    private Func<string?, Vector2>? _directionVector;
     private string _levelId = "";
     private Vector2I _mapSize;
     private Node2D? _scenery;
     private Node2D? _projection;
     private TerrainView? _terrain;
+    private DynamicStateView? _dynamicState;
     private AuthoredScene? _scene;
     private EnvironmentCatalog? _environment;
     private readonly List<StandingEntry> _authoredStanding = new();
@@ -33,9 +35,11 @@ public partial class BoardView : Node2D
     public int RenderedUnitCount { get; private set; }
     public int ProjectionUnitCount { get; private set; }
     public int RenderedAuthoredPlacementCount { get; private set; }
+    public int RenderedStructureCount { get; private set; }
+    public int RenderedMarkerCount { get; private set; }
     public string StatusText => (_terrain is null
         ? "Native actor/placement renderer; terrain compositor is not migrated."
-        : "Native C# preview · field, road, forest, authored scenery and actors. Lighting/shadow parity remains incomplete.")
+        : "Native C# preview · world materials, water, crossings, scenery and actors. Lighting/shadow parity remains incomplete.")
         + (Diagnostics.Count > 0 ? $" {Diagnostics.Count} resource/coverage diagnostics." : "");
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
@@ -52,8 +56,13 @@ public partial class BoardView : Node2D
         _scenery.AddChild(_terrain);
     }
 
+    public void ConfigureDynamicState(JsonArray contentPacks)
+    {
+        _dynamicState = new DynamicStateView(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), contentPacks);
+    }
+
     public void Configure(AssetCatalog catalog, JsonObject level, AuthoredScene scene,
-        EnvironmentCatalog environment, Func<string?, bool> facesLeft)
+        EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null)
     {
         ArgumentNullException.ThrowIfNull(facesLeft);
         var width = Integer(level, "width");
@@ -146,11 +155,13 @@ public partial class BoardView : Node2D
         ReplaceChild(ref _scenery, staging);
         _assets = catalog;
         _facesLeft = facesLeft;
+        _directionVector = directionVector;
         _levelId = levelId;
         _mapSize = new Vector2I(width, height);
         _scene = scene;
         _environment = environment;
         _terrain = null;
+        _dynamicState = null;
         _authoredStanding.Clear();
         _authoredStanding.AddRange(entries);
         _sceneDiagnostics.Clear();
@@ -158,10 +169,11 @@ public partial class BoardView : Node2D
         _diagnostics = diagnostics.AsReadOnly();
         RenderedAuthoredPlacementCount = rendered;
         RenderedUnitCount = ProjectionUnitCount = 0;
+        RenderedStructureCount = RenderedMarkerCount = 0;
     }
 
     /// <summary>Copies presentation values only. It does not retain the mutable source projection.</summary>
-    public void RenderState(JsonObject canonicalState)
+    public void RenderState(JsonObject canonicalState, IReadOnlySet<int>? visibleUnitIds = null)
     {
         var assets = _assets ?? throw new InvalidOperationException("Configure BoardView before rendering.");
         var facesLeft = _facesLeft!;
@@ -170,11 +182,14 @@ public partial class BoardView : Node2D
         var entries = new List<StandingEntry>(_authoredStanding);
         var diagnostics = new List<string>(_sceneDiagnostics);
         var renderedUnits = 0;
+        var renderedStructures = 0;
+        var renderedMarkers = 0;
         try
         {
             if (_terrain is not null)
             {
                 _terrain.Render(snapshot.Tiles, _mapSize);
+                _terrain.ApplyGroundClip(_scenery!.GetNode<Node2D>("AuthoredGround"));
                 entries.AddRange(_terrain.Standing.Select((node, index) =>
                     new StandingEntry(node, node.Position, 2, index + _authoredStanding.Count)));
                 diagnostics.AddRange(_terrain.Diagnostics);
@@ -187,18 +202,32 @@ public partial class BoardView : Node2D
                 {
                     var asset = assets.ResolveMapStructure(terrain);
                     var sprite = assets.CreateSprite(asset, snapshot.Owners[index] == 0 ? "normal" : "captured");
-                    sprite.Name = $"MapStructure_{index}";
-                    sprite.Position = CellContact(index % _mapSize.X, index / _mapSize.X);
-                    staging.AddChild(sprite);
-                    entries.Add(new StandingEntry(sprite, sprite.Position, 1, index));
+                    sprite.Name = "AuthoredSprite";
+                    var structure = new Node2D { Name = $"MapStructure_{index}", Position = CellContact(index % _mapSize.X, index / _mapSize.X) };
+                    structure.AddChild(sprite);
+                    if (snapshot.Owners[index] != 0)
+                        structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false)));
+                    staging.AddChild(structure);
+                    entries.Add(new StandingEntry(structure, structure.Position, 1, index));
                 }
                 catch (MissingArtResourceException error)
                 {
                     diagnostics.Add($"Map structure at ({index % _mapSize.X},{index / _mapSize.X}): {error.Message}");
                 }
             }
+            if (_dynamicState is not null)
+            {
+                var dynamicProjection = _dynamicState.Create(canonicalState);
+                staging.AddChild(dynamicProjection.Root);
+                entries.AddRange(dynamicProjection.Standing.Select(entry =>
+                    new StandingEntry(entry.Node, entry.Node.Position, entry.Layer, entry.Index)));
+                diagnostics.AddRange(dynamicProjection.Diagnostics);
+                renderedStructures = dynamicProjection.Structures;
+                renderedMarkers = dynamicProjection.Markers;
+            }
             foreach (var unit in snapshot.Units)
             {
+                if (visibleUnitIds is not null && !visibleUnitIds.Contains(unit.Id)) continue;
                 try
                 {
                     var asset = assets.ResolveUnit(unit.Type, unit.Key);
@@ -209,6 +238,10 @@ public partial class BoardView : Node2D
                     if (facesLeft(unit.Facing)) sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
                     actor.AddChild(CreateTeamRing(snapshot.Colors[unit.Owner]));
                     actor.AddChild(sprite);
+                    if (_dynamicState is not null)
+                        actor.AddChild(_dynamicState.CreateUnitBadges(unit.Type, unit.Hp, unit.Done,
+                            snapshot.CaptureProgress[unit.Y * _mapSize.X + unit.X], snapshot.CaptureThreshold,
+                            _directionVector?.Invoke(unit.Facing)));
                     actor.SetMeta("unit_id", unit.Id);
                     if (unit.Key is not null) actor.SetMeta("actor_key", unit.Key);
                     actor.SetMeta("unit_type", unit.Type);
@@ -224,9 +257,9 @@ public partial class BoardView : Node2D
                     diagnostics.Add($"Unit {unit.Id} ({unit.Key ?? unit.Type}): {error.Message}");
                 }
             }
-            foreach (var layer in new[] { "structures", "markers", "composites" })
+            foreach (var layer in _dynamicState is null ? new[] { "structures", "markers" } : Array.Empty<string>())
                 if (canonicalState[layer] is JsonArray { Count: > 0 })
-                    diagnostics.Add($"Canonical '{layer}' is present but its native renderer is not migrated.");
+                    diagnostics.Add($"Canonical '{layer}' is present but dynamic presentation content is not configured.");
             OrderStanding(entries);
         }
         catch
@@ -238,6 +271,8 @@ public partial class BoardView : Node2D
         ReplaceChild(ref _projection, staging);
         ProjectionUnitCount = snapshot.Units.Count;
         RenderedUnitCount = renderedUnits;
+        RenderedStructureCount = renderedStructures;
+        RenderedMarkerCount = renderedMarkers;
         _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
     }
 
@@ -254,6 +289,8 @@ public partial class BoardView : Node2D
         var owners = ArrayValue(map, "owners", count)
             .Select(node => Integer(node, "tile owner")).ToArray();
         ArrayValue(map, "elevation", count);
+        var capture = ArrayValue(map, "captureProgress", count).Select(node => Number(node, "capture progress")).ToArray();
+        var captureThreshold = Number(state["rules"]?["captureThreshold"], "capture threshold");
 
         var colors = new Dictionary<int, Color>();
         foreach (var node in ArrayValue(state, "players"))
@@ -282,7 +319,7 @@ public partial class BoardView : Node2D
                 unit["done"]?.GetValue<bool>() ?? throw new InvalidOperationException($"Unit {id} lacks done state."),
                 unit["facing"]?.GetValue<string>()));
         }
-        return new Projection(tiles, owners, colors, units);
+        return new Projection(tiles, owners, colors, units, capture, captureThreshold);
     }
 
     private Vector2 CellContact(int x, int y) =>
@@ -374,6 +411,15 @@ public partial class BoardView : Node2D
         return (int)number;
     }
 
+    private static double Number(JsonNode? value, string field)
+    {
+        if (value is not JsonValue scalar || scalar.GetValueKind() != JsonValueKind.Number)
+            throw new InvalidOperationException($"Canonical field must be numeric: {field}");
+        var number = scalar.TryGetValue<double>(out var numeric) ? numeric : JsonSerializer.Deserialize<double>(scalar.ToJsonString());
+        if (!double.IsFinite(number)) throw new InvalidOperationException($"Canonical field must be finite: {field}");
+        return number;
+    }
+
     private static JsonArray ArrayValue(JsonObject value, string field, int? length = null)
     {
         var array = value[field] as JsonArray
@@ -387,5 +433,5 @@ public partial class BoardView : Node2D
     private sealed record UnitProjection(int Id, string? Key, string Type, int Owner,
         int X, int Y, int Hp, bool Done, string? Facing);
     private sealed record Projection(string[] Tiles, int[] Owners,
-        Dictionary<int, Color> Colors, List<UnitProjection> Units);
+        Dictionary<int, Color> Colors, List<UnitProjection> Units, double[] CaptureProgress, double CaptureThreshold);
 }

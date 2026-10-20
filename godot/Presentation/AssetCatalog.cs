@@ -40,6 +40,7 @@ public sealed class AssetCatalog
     private readonly Dictionary<string, UnitArtBinding> _units;
     private readonly Dictionary<string, ActorArtBinding> _actors;
     private readonly Dictionary<string, MapStructureArtBinding> _mapStructures;
+    private readonly Dictionary<string, string> _structures;
     private readonly RasterResources _rasters = new();
 
     public int LogicalTileSize { get; }
@@ -52,6 +53,7 @@ public sealed class AssetCatalog
         _units = new(bindings.Units, StringComparer.Ordinal);
         _actors = new(bindings.Actors, StringComparer.Ordinal);
         _mapStructures = new(bindings.MapStructures, StringComparer.Ordinal);
+        _structures = new(bindings.Structures, StringComparer.Ordinal);
 
         foreach (var record in manifest.Assets.Where(item => item.Id is null))
         {
@@ -100,6 +102,9 @@ public sealed class AssetCatalog
     }
 
     public bool HasMapStructureBinding(string terrainId) => _mapStructures.ContainsKey(terrainId);
+
+    public RuntimeAsset? ResolveStructure(string structureType) =>
+        _structures.TryGetValue(structureType, out var topic) ? ResolveTopic(topic) : null;
 
     public RuntimeAsset ResolveMapStructure(string terrainId)
     {

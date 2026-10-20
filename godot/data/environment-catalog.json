@@ -178,7 +178,9 @@
         "old-stone-3",
         "old-stone-4"
       ],
-      "edgeLocked": true
+      "edgeLocked": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png",
+      "sha256": "a47db6b160b315a019f3c8464ecf1fa65df89a3a78a2fb893345e88d46acaee8"
     },
     {
       "id": "surface-snow",
@@ -222,7 +224,9 @@
         "wasteland-3",
         "wasteland-4"
       ],
-      "edgeLocked": true
+      "edgeLocked": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png",
+      "sha256": "85db1679bc9eeb611ee7f11230ee87472b1dafcf0f2767ddae6b1984de126065"
     },
     {
       "id": "surface-graveyard",
@@ -244,7 +248,9 @@
         "graveyard-3",
         "graveyard-4"
       ],
-      "edgeLocked": true
+      "edgeLocked": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/surface-graveyard@2x.png",
+      "sha256": "5049628976a7a2012ee7c68b06e06735457879cc4a4aaf2171e27608172abce8"
     },
     {
       "id": "surface-forge-stone",
@@ -266,7 +272,9 @@
         "forge-stone-3",
         "forge-stone-4"
       ],
-      "edgeLocked": true
+      "edgeLocked": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/surface-forge-stone@2x.png",
+      "sha256": "cb6bd7f51d05ba9846e90a0290caee1790436a18d6f0a02415c9c28f968bdf1f"
     },
     {
       "id": "transition-meadow-earth",
@@ -341,7 +349,9 @@
         "SW",
         "W",
         "NW"
-      ]
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png",
+      "sha256": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f"
     },
     {
       "id": "transition-meadow-forest",
@@ -416,7 +426,9 @@
         "SW",
         "W",
         "NW"
-      ]
+      ],
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png",
+      "sha256": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932"
     },
     {
       "id": "transition-meadow-snow",
@@ -607,7 +619,9 @@
         "S",
         "W"
       ],
-      "passable": true
+      "passable": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png",
+      "sha256": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785"
     },
     {
       "id": "route-edge-dirt-road",
@@ -649,7 +663,9 @@
         "S",
         "W"
       ],
-      "passable": true
+      "passable": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png",
+      "sha256": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a"
     },
     {
       "id": "route-mud-road",
@@ -773,7 +789,9 @@
         "S",
         "W"
       ],
-      "passable": true
+      "passable": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/route-stone-road@2x.png",
+      "sha256": "a58f35913fc156b262a9ddee0a040bd5817d33f5e09363032d498bc5d58b0ca6"
     },
     {
       "id": "route-edge-stone-road",
@@ -815,7 +833,9 @@
         "S",
         "W"
       ],
-      "passable": true
+      "passable": true,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/route-edge-stone-road@2x.png",
+      "sha256": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83"
     },
     {
       "id": "route-forest-trail",
@@ -939,7 +959,9 @@
         "S",
         "W"
       ],
-      "passable": false
+      "passable": false,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/water-slow-river@2x.png",
+      "sha256": "4a05475471866bf1fc73814ef487be601025224673df96a88f3f805bcd135573"
     },
     {
       "id": "water-shallow-stream",
@@ -2463,7 +2485,9 @@
         14,
         15
       ],
-      "obstructionHeight": 1
+      "obstructionHeight": 1,
+      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png",
+      "sha256": "974dfc9c1b31857716a160c4705fb4001317d834a7187403dc157f2cb31196d7"
     },
     {
       "id": "camps-foundations",
