@@ -1,0 +1,186 @@
+{
+  "kind": "Full production BoardView SVG with all actors, scenery and targets; offline only",
+  "levelId": "c01-02",
+  "mapSize": [
+    22,
+    14
+  ],
+  "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da",
+  "actors": 20,
+  "buildings": 9,
+  "actorsMarkupSha256": "4259f25982c183ee8fc52670d4c4cb1acffec24c085a6f05e6268faa20448a48",
+  "structures": 0,
+  "roadCells": [
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      1,
+      11
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      5,
+      12
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      14,
+      5
+    ],
+    [
+      16,
+      4
+    ],
+    [
+      16,
+      8
+    ],
+    [
+      17,
+      4
+    ],
+    [
+      17,
+      8
+    ],
+    [
+      17,
+      11
+    ],
+    [
+      18,
+      4
+    ],
+    [
+      18,
+      8
+    ],
+    [
+      19,
+      4
+    ],
+    [
+      19,
+      8
+    ],
+    [
+      20,
+      1
+    ],
+    [
+      20,
+      4
+    ],
+    [
+      20,
+      8
+    ],
+    [
+      20,
+      12
+    ],
+    [
+      21,
+      4
+    ],
+    [
+      21,
+      8
+    ]
+  ],
+  "cardinalEdges": 21,
+  "redrawExact": true,
+  "overlayRoundtripExact": true,
+  "stateUnchanged": true,
+  "sources": {
+    "packages/game-ui/src/styles/app.css": "1828de426c9184eba0046d17d89c57c87087cd8dfb6e9bdc790e10987d9af754",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-stony@2x.png": "29dbd116ccb70da0253d0ac85440b6f2dd3f0ddbf85bb21a9a1eafd8a70fa531",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forest-floor@2x.png": "d6e01a08400a3b880f7e2cedd2d041b4a4b8efba26476bf223573df6e993f167",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forest-blend-masks@2x.png": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/earth-floor@2x.png": "f92d8f076b5e49a949c5ff44e3f90a2894ee323cf50ae041dbc3af4c45bbd4c8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/earth-blend-masks@2x.png": "ed25aee9ee3c023fb17300bfc7ef1b76a3e48fea52bf9744caff9c0418d5835d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/road-earth@2x.png": "bbdae871cfd2ce1e54c441d47f4bfa12d3929a21b116c63861d6174146727879",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png": "17582a58180e82ef76063918dce9d9530a70e3766b2a1cfd6058aa58bd9f17dc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png": "2b36a2d633ce6aaa05066b782941d9b44d921836d8f0117c7e5129ce5c08ecda",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "59a6e5e226f6ce004ea53f4dc36a0df9825abd7a5ef339b28977b5f70719e9b1",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png": "acce57525056c38a6105b54b686241b90b92ee26acaa4984313e36b33e7f3e2e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/cain-stage01@2x.png": "0967c3364daa06890b5c9791b1131ffb8f312e851e3f7611141267e425d6d01f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/torren-stage01@2x.png": "456d29121b7e597f05c00a3f00ef529de638eca0da32160d4dad7979db5205c3",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ballista@2x.png": "78a24015d823536e9f8151ea7fab3aa03ce9e3add3506458c743af821c911b36",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png": "987f85ee8cf92fce82b5fe767c54dd1c5adb97ffb2d978ab4595b7921b0fecc5",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a"
+  }
+}
