@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-defoliator-pilot/attack-v2-review/verify_candidate.py", line 8, in <module>
+    p=B/'attack/raw-v2.png';qa={'sourceAlpha':alpha_report(Image.open(p)),'sourceHash':hashlib.sha256(p.read_bytes()).hexdigest(),'frozenUnchanged':{}}
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/assemble_approved_slice.py", line 24, in alpha_report
+    raise ValueError(f'Invalid source transparency: perimeter maximum {edge}')
+ValueError: Invalid source transparency: perimeter maximum 22

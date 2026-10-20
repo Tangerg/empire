@@ -1,0 +1,29 @@
+{
+  "references": [
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png"
+  ],
+  "shared": "Use case: stylized-concept. Create ONE ancient Chinese tactical equipment inventory icon. First reference is the FULL ORIGINAL EQUIPMENT ATLAS: use it only for historical object vocabulary, not its detailed surface style or grid arrangement. Second reference is approved broad-matte STYLE ONLY: thick dark outline, exaggerated chunky silhouette, huge calm uninterrupted painted planes and two broad light/shadow tones per material. Native destination 48x48, so simplify aggressively. No stipple, mottling, mosaic, scratches, grain, glossy rendering, gradients, tiny ornamental lines or glitter. Oblique three-quarter overhead game view. One compact group centered in a square canvas, about 80 percent fill, full objects with clear margins. Genuine transparent alpha outside and through gaps. No background, ground, cast shadow, checkerboard, text, labels, UI frame or characters. Do not reproduce atlas. ",
+  "assets": [
+    {
+      "topicId": "c03-equip-15c058cc",
+      "subject": "Subject: 神臂弩主装备组. ONE heavy ancient Chinese crossbow with a thick dark ochre wooden stock, stout wide recurved dark iron bow arms and a clearly visible taut bowstring; TWO oversized short bolts bundled close underneath. Diagonal three-quarter overhead view, the full crossbow fits comfortably in the square. Plain undecorated construction, thick stock, exaggerated readable bow silhouette. No modern gun, scope, wheels or person.",
+      "identity": "Canonical ranged role reconstructed with crossbow vocabulary from full atlas top row; not an exact legacy crop."
+    },
+    {
+      "topicId": "c03-equip-222078e0",
+      "subject": "Subject: 艨艟主装备组, ancient Chinese naval galley equipment. ONE chunky short wooden paddle with a wide flat blade crossed with ONE large matte iron two-fluke anchor, a single thick tan rope loop tied to the anchor ring. Compact readable maritime kit; exaggerate paddle blade and anchor hooks. Smooth wood planes without grain; no boat, water, people, flag or background.",
+      "identity": "Canonical naval mobility role reconstructed using full atlas paddle and anchor vocabulary; not an exact legacy crop."
+    },
+    {
+      "topicId": "c03-equip-25f91749",
+      "subject": "Subject: 楼船兵主装备组, ancient Chinese tower-ship boarding soldier equipment. ONE plain broad upright dark-red rectangular wooden boarding shield with simple dull iron rim, crossed behind by ONE short wooden-handled iron boarding hook with two large curved prongs. Compact oblique three-quarter view, shield is wide and substantial, hook silhouette clearly visible. Two broad color planes per material. No ornate emblem, letters, spear, ship or person.",
+      "identity": "Canonical tower-ship naval boarding role reconstructed with shield and hooked pole vocabulary from full atlas; not a documented exact historical loadout or legacy crop."
+    },
+    {
+      "topicId": "c03-equip-2bc4ddf7",
+      "subject": "Subject: 火油防备队主装备组, ancient Chinese defensive fire-control kit. ONE squat wide wooden bucket with a thick curved iron carrying handle and pale sand clearly visible inside, with ONE thick folded muted blue-gray wet blanket draped over its front rim. Bucket and blanket are large simple chunky silhouettes; bucket has only three broad stave panels and two thick dark hoops, blanket has two simple folds. Matte sand is a single smooth pale plane with no granules. No fire, oil, smoke, weapon, text, person or background.",
+      "identity": "Canonical fire-oil defense role interpreted as sand bucket and smothering blanket using atlas wooden containers and folded-cloth vocabulary. Semantic defensive reconstruction, not an exact legacy crop or gameplay equipment claim."
+    }
+  ]
+}

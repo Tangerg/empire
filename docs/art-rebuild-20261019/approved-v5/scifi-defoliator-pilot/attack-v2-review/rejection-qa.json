@@ -1,0 +1,77 @@
+{
+  "master.png": {
+    "size": [
+      1254,
+      1254
+    ],
+    "sha256": "b31a368fc60278f82226096fd235bba91f4c42107725e57f45f8424dd1362db1",
+    "opaqueBounds": [
+      114,
+      246,
+      1226,
+      1166
+    ],
+    "edgeMax": 1,
+    "feet": {
+      "near": {
+        "roi": [
+          230,
+          1000,
+          440,
+          1210
+        ],
+        "lowestOpaqueY": 1098
+      },
+      "far": {
+        "roi": [
+          670,
+          970,
+          865,
+          1160
+        ],
+        "lowestOpaqueY": 1064
+      }
+    }
+  },
+  "raw-v2.png": {
+    "size": [
+      1254,
+      1254
+    ],
+    "sha256": "8bf41c2d3e1be298dab930af38165d744d5d773bdfa8ee82f1882b94084fe3a8",
+    "opaqueBounds": [
+      119,
+      197,
+      1251,
+      1134
+    ],
+    "edgeMax": 22,
+    "feet": {
+      "near": {
+        "roi": [
+          230,
+          1000,
+          440,
+          1210
+        ],
+        "lowestOpaqueY": 1134
+      },
+      "far": {
+        "roi": [
+          670,
+          970,
+          865,
+          1160
+        ],
+        "lowestOpaqueY": 1057
+      }
+    }
+  },
+  "diagnosticOnly": "Unvalidated raw projections for visual comparison, NOT exporter output or canonical candidate. Source guard failure blocks export/helper proof.",
+  "frozenMasterHashesUnchanged": {
+    "idle": true,
+    "walk-a": true,
+    "attack": true,
+    "walk-b": true
+  }
+}

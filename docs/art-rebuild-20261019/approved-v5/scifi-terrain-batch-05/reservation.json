@@ -1,0 +1,47 @@
+{
+  "topics": [
+    "c02-terrain-nereia-deep-water",
+    "c02-terrain-nereia-floating-platform",
+    "c02-terrain-nereia-reverse-current",
+    "c02-terrain-nereia-shallow-tide"
+  ],
+  "reason": "Next uncompleted manifest-order C02 family after Milight. Original builder row-major board 02 and topic catalog lines 197\u2013200 map floating-platform, shallow-tide, deep-water, reverse-current at indices 8\u201311. Original manifest-complete.json absent; topic catalog, full atlas and native runtime strips corroborate mapping.",
+  "requests": [
+    {
+      "slug": "nereia-deep-water",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-nereia-deep-water. Input image 1 is subject reference ONLY: use its top row third column, ignore all seven other subjects. Input image 2 is STYLE ONLY: chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, exaggerated broad planes, restrained two-step cel shading. Do not copy cargo motifs or metal into water. Subject: Deep dark petrol-blue ocean water with large calm turquoise curved water planes, sparse broad subdued submerged stone silhouettes, and a few heavy teal wave contours. Preserve dark deep-water identity. No exposed rocks, reefs, banks, islands or structures. Composition: strictly flat orthographic overhead ground or water material, no perspective. Exactly one square continuous material, not a sheet and not multiple variants. Essential broad motif must remain legible within central 40 percent and four cardinal middle-quarter strips for historical NESW masking. Every pixel opaque; material extends to every edge. Simplify aggressively for 32px logical tile readability. No text, symbols, arrows, labels, gridlines, borders, blank margins, tiny speckles, excessive microtexture, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-02.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "slug": "nereia-floating-platform",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-nereia-floating-platform. Input image 1 is subject reference ONLY: use its top row first column, ignore all seven other subjects. Input image 2 is STYLE ONLY: chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, exaggerated broad planes, restrained two-step cel shading. Do not copy cargo motifs or metal into water. Subject: Warm ivory stone-metal floating platform DECK surface, broad cream inset paving panels, heavy charcoal and antique brass mechanical seams and sparse large cyan circular utility inset caps. Preserve the original warm pale platform material with brass and turquoise engineering accents. Flatten the deck into an overhead surface that fills every pixel; no ocean border, pillars, bridges or perspective scene. Composition: strictly flat orthographic overhead ground or water material, no perspective. Exactly four equally sized square material variants in a precise 2-by-2 arrangement filling the square canvas. Each quadrant is an independent overhead square, equal scale, no gutters, frames or labels. Sampled whole in top-left, top-right, bottom-left, bottom-right order. Every pixel opaque; material extends to every edge. Simplify aggressively for 32px logical tile readability. No text, symbols, arrows, labels, gridlines, borders, blank margins, tiny speckles, excessive microtexture, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-02.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "slug": "nereia-reverse-current",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-nereia-reverse-current. Input image 1 is subject reference ONLY: use its top row fourth column, ignore all seven other subjects. Input image 2 is STYLE ONLY: chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, exaggerated broad planes, restrained two-step cel shading. Do not copy cargo motifs or metal into water. Subject: Strong opposing reverse ocean currents in deep turquoise water, two broad curling S-shaped streams of pale cyan foam, a bold readable central countercurl and darker teal separation bands. Preserve fast turbulent water identity, not arrows. Use only a handful of very broad flat-color foam ribbons and chunky curved water planes, not froth speckles. No exposed rocks, shore, coral or obstacles. Composition: strictly flat orthographic overhead ground or water material, no perspective. Exactly one square continuous material, not a sheet and not multiple variants. Essential broad motif must remain legible within central 40 percent and four cardinal middle-quarter strips for historical NESW masking. Every pixel opaque; material extends to every edge. Simplify aggressively for 32px logical tile readability. No text, symbols, arrows, labels, gridlines, borders, blank margins, tiny speckles, excessive microtexture, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-02.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "slug": "nereia-shallow-tide",
+      "prompt": "Use case: stylized-concept. Create ONE independently authored game terrain material master for c02-terrain-nereia-shallow-tide. Input image 1 is subject reference ONLY: use its top row second column, ignore all seven other subjects. Input image 2 is STYLE ONLY: chunky matte hand-painted tactical RPG science-fiction language, bold dark contour lines, exaggerated broad planes, restrained two-step cel shading. Do not copy cargo motifs or metal into water. Subject: Shallow luminous aquamarine tidal water over pale sand, broad warm mint sandbar planes below transparent-looking but fully opaque turquoise water, a few very broad pale-cyan tidal wave contours and sparse low-contrast submerged teal stone silhouettes. Preserve light shallow-water identity, distinctly brighter than deep ocean. No exposed rocks, coral, plants, shore or obstacles. Composition: strictly flat orthographic overhead ground or water material, no perspective. Exactly one square continuous material, not a sheet and not multiple variants. Essential broad motif must remain legible within central 40 percent and four cardinal middle-quarter strips for historical NESW masking. Every pixel opaque; material extends to every edge. Simplify aggressively for 32px logical tile readability. No text, symbols, arrows, labels, gridlines, borders, blank margins, tiny speckles, excessive microtexture, glossy 3D, photographic detail or scene framing.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-02.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "transparent_background": false
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "topicId": "c03-equip-0c42f6d3",
+  "assetId": "C03-ACV1-equip-0c42f6d3",
+  "label": "地道营主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3f325504-32ca-4221-a15d-881eb4aec9ed.png",
+  "sha256": "08d51739072c856b8e8334492ef8effe721ddaa231dfc2a0be1659c42eb407ab",
+  "promptFile": "prompt.txt",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb"
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960"
+    }
+  ],
+  "identityReconstruction": "Role reconstruction from mining tools atlas row6 col1; legacy runtime helmet is mismatched.",
+  "identityEvidence": [
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "legacyRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-0c42f6d3.png",
+    "sha256": "f5090013a3ca6db8c5423d6b2d6da3f771df2bf7f2a624089a4f7e62c8131890",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-pilot/c03-equip-0c42f6d3-legacy-native.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      55,
+      120,
+      1214,
+      1155
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      4,
+      7,
+      44,
+      42
+    ]
+  },
+  "postprocessing": "None. Raw/master byte-identical native generation. Only review exports use existing whole-canvas contain; no crop or pixel cleanup.",
+  "registered": false
+}

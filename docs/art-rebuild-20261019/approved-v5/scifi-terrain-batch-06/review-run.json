@@ -1,0 +1,46 @@
+[
+  {
+    "topic": "c02-terrain-soler-blue-ice",
+    "distinctCells": 4,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-soler-brittle-ice",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-soler-deep-factory",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-soler-heated-walkway",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  }
+]

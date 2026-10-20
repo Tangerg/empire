@@ -1,0 +1,46 @@
+[
+  {
+    "topic": "c02-terrain-nereia-deep-water",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-nereia-floating-platform",
+    "distinctCells": 4,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-nereia-reverse-current",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-nereia-shallow-tide",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  }
+]

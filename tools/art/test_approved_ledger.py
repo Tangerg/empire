@@ -79,12 +79,14 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         self.assertEqual(result['summary']['formalBound'], 0)
 
-    def test_scifi_terrain_and_chinese_props_require_their_selected_source_directory(self):
+    def test_scifi_terrain_and_chinese_assets_require_their_selected_source_directory(self):
         cases = [
             ('c02-terrain-hesha-glass-sea', 'terrain', 'story-candidate-02',
              'canonical-terrain/hesha-glass-sea'),
             ('c03-battle-prop-0fb580c9', 'battle-prop', 'story-candidate-03',
              'props/c03-battle-prop-0fb580c9'),
+            ('c03-equip-0137a889', 'equipment', 'story-candidate-03',
+             'equipment/c03-equip-0137a889'),
         ]
         for identity, category, campaign, directory in cases:
             with self.subTest(topic=identity):

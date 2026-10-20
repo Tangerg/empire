@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "rawEqualsMaster": true,
+  "sha256": "bcff2ecc5ac843d00ad973cd48c0ac9712dc80a2aa761821be5c32e00a700ef7",
+  "references": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-01.png",
+      "sha256": "9a3b95f08f553419742c47e6cc6327f0acba94f8a224fcfb0080c0f871f66e12"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png",
+      "sha256": "df3151cef9f435b2dc5395b6cb2e0374a4ebcbd66d6d27c85b7cf0458335c0a2"
+    }
+  ],
+  "topicId": "c02-terrain-soler-brittle-ice",
+  "status": "candidate-native-reviewed-not-registered"
+}

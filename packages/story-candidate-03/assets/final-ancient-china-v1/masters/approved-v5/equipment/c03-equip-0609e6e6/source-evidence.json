@@ -1,0 +1,71 @@
+{
+  "topicId": "c03-equip-0609e6e6",
+  "assetId": "C03-ACV1-equip-0609e6e6",
+  "label": "炮石营主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-62dd4873-e614-4d11-85f0-2cc3ab354758.png",
+  "sha256": "fd22dcc01134351545e82f2a52f59a7cf7898351e96d3214c21a43eab3691f20",
+  "promptFile": "prompt.txt",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb"
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960"
+    }
+  ],
+  "identityReconstruction": "Role reconstruction from stone-thrower atlas row3 col3, portable sling and stone ammunition; legacy runtime pick is mismatched.",
+  "identityEvidence": [
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "legacyRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-0609e6e6.png",
+    "sha256": "3c3decf6e8e829066be4858b8fe64a2bd1d96475ed483ca6d407e99a76fcc58a",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-pilot/c03-equip-0609e6e6-legacy-native.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 17,
+    "coreBoundingBox": [
+      45,
+      91,
+      1218,
+      1166
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      4,
+      6,
+      44,
+      42
+    ]
+  },
+  "postprocessing": "None. Raw/master byte-identical native generation. Only review exports use existing whole-canvas contain; no crop or pixel cleanup.",
+  "registered": false
+}

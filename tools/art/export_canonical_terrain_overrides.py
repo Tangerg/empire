@@ -39,6 +39,14 @@ SCIFI_TOPICS = {
     'c02-terrain-milight-inverted-city': 'nesw-16',
     'c02-terrain-milight-rotating-blackout': 'nesw-16',
     'c02-terrain-milight-vein-ring': 'nesw-16',
+    'c02-terrain-nereia-deep-water': 'nesw-16',
+    'c02-terrain-nereia-floating-platform': 'variants',
+    'c02-terrain-nereia-reverse-current': 'nesw-16',
+    'c02-terrain-nereia-shallow-tide': 'nesw-16',
+    'c02-terrain-soler-blue-ice': 'variants',
+    'c02-terrain-soler-brittle-ice': 'nesw-16',
+    'c02-terrain-soler-deep-factory': 'nesw-16',
+    'c02-terrain-soler-heated-walkway': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of

@@ -34,7 +34,7 @@ def build(root=ROOT):
             relative = Path('buildings') / stem.removeprefix('struct-')
         elif stem.startswith('bprop-'):
             relative = Path('props') / stem
-        elif stem.startswith('equip-'):
+        elif topic.startswith('C01-EQUIP-'):
             relative = Path('equipment') / stem
         elif current['category'] == 'terrain' and topic.startswith(('C01-TERRAIN-', 'c02-terrain-')):
             relative = Path('canonical-terrain') / stem.removeprefix('terrain-')

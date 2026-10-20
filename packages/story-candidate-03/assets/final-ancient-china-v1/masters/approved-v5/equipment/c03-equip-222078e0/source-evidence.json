@@ -1,0 +1,71 @@
+{
+  "topicId": "c03-equip-222078e0",
+  "assetId": "C03-ACV1-equip-222078e0",
+  "label": "艨艟主装备组",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1abccd47-20e3-4791-b896-6317a91b9106.png",
+  "sha256": "a7a6a48c8a1a85b4d9ed71dee6742ea5b39f74de3c1f833df312fa2cf09caec7",
+  "promptFile": "prompt.txt",
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/equipment/equipment-board-source.png",
+      "sha256": "a76f5645071e168fc5c8d42ef3f49a8a8385957b02217b7e63b809d00dee5dfb"
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png",
+      "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960"
+    }
+  ],
+  "identityReconstruction": "Canonical naval mobility role reconstructed using full atlas paddle and anchor vocabulary; not an exact legacy crop.",
+  "identityEvidence": [
+    "docs/story-candidates/candidate-03/art-assets/02-asset-scope.md",
+    "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+    "packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md"
+  ],
+  "legacyRuntime": {
+    "path": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-222078e0.png",
+    "sha256": "ebb68a9142b539d68ea23700e97e34a381e77266e5f4c1e1bf9e183d663daf47",
+    "preservedCopy": "docs/art-rebuild-20261019/approved-v5/chinese-equipment-batch-02/c03-equip-222078e0-legacy-native.png"
+  },
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      54,
+      67,
+      1215,
+      1195
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      44,
+      44
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      4,
+      5,
+      44,
+      43
+    ]
+  },
+  "postprocessing": "None. Raw/master byte-identical native generation. Only review exports use existing whole-canvas contain; no crop or pixel cleanup.",
+  "registered": false
+}
