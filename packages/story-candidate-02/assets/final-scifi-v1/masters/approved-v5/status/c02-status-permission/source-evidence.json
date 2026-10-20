@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-permission",
+  "assetId": "C02-SFV1-status-permission",
+  "label": "权限资源",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-permission",
+    "topicId": "c02-status-permission",
+    "label": "权限资源",
+    "category": "status",
+    "png": "runtime/status/status-permission.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 4,
+    "column": 1
+  },
+  "sourceCropBox": [
+    0,
+    1120,
+    256,
+    1536
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-permission.png",
+  "runtimeReferenceSha256": "33a5824030a442c83c5dc5930a732f21e46cf37b7efb87526660eba7785477c7",
+  "functionalMotif": "One mechanical key and one access fob hang from one common ring. The key has a blue concentric inset. The fob retains one amber outlined hexagon surrounding one smaller solid amber hexagon, with blue/amber rim accents.",
+  "reconstructionCaveats": "Tiny blade teeth and bevel subdivisions are simplified for 32px. No new checkmark, lock or permission lettering is added. The original physical key/fob identity is retained.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-65bef5a0-4fd0-466e-ba80-d1a69f312cc0.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-permission/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

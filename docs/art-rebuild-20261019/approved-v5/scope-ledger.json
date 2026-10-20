@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 529,
+    "formalBound": 533,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -16,10 +16,10 @@
       "mission-unit": 24,
       "narrative-static": 80,
       "skill": 96,
-      "status": 28,
+      "status": 32,
       "terrain": 32
     },
-    "rawPreservedTopics": 530,
+    "rawPreservedTopics": 534,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -14704,13 +14704,20 @@
       "category": "status",
       "label": "舱容资源",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-cargo-capacity/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-cargo-capacity.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-controlled",
@@ -14914,13 +14921,20 @@
       "category": "status",
       "label": "权限资源",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-permission/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-permission.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-repair",
@@ -14970,13 +14984,20 @@
       "category": "status",
       "label": "备件资源",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-spare-parts/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-spare-parts.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-spore-contamination",
@@ -14998,13 +15019,20 @@
       "category": "status",
       "label": "星脉能",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-star-vein-energy/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-star-vein-energy.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-water",

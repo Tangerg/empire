@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-cargo-capacity",
+  "assetId": "C02-SFV1-status-cargo-capacity",
+  "label": "舱容资源",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-cargo-capacity",
+    "topicId": "c02-status-cargo-capacity",
+    "label": "舱容资源",
+    "category": "status",
+    "png": "runtime/status/status-cargo-capacity.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 4,
+    "column": 3
+  },
+  "sourceCropBox": [
+    512,
+    1120,
+    768,
+    1536
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-cargo-capacity.png",
+  "runtimeReferenceSha256": "adf0d51f7db894a2f6c1366225f6a80fed17ee61052f9bbdcaa42ba76ec39756",
+  "functionalMotif": "Exactly three connected seats remain on one shared base, with three distinct headrests, three blue backs/cushions, three lap belts and three rectangular buckles. The amber right base accent is preserved. This original icon is a seat-capacity motif, not cargo crates.",
+  "reconstructionCaveats": "Small upholstery divisions and frame fasteners are simplified. The source perspective and connected-bench structure are preserved, with no invented crates or cargo labels.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7533f5b4-9d63-4f42-9ad2-5fdc8b8cf26e.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-cargo-capacity/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

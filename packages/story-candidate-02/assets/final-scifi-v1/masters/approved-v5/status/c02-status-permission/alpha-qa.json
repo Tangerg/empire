@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-permission",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 862549,
+  "partialAlphaPixels": 708423,
+  "opaquePixels": 1544,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    156,
+    54,
+    1108,
+    1194
+  ],
+  "nearOpaquePixelCountGE240": 692777,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 296,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "951fc2c37ea2587c430bcd187ba9f16476ec9849ec03eebc608c5b6bf43697d8",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the ring, left key blade and separate right fob silhouette remain recognizable across white/black/olive. The amber fob emblem reads as a compact functional mark; its nested hexagons are confirmed at source size. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One mechanical key and one access fob hang from one common ring. The key has a blue concentric inset. The fob retains one amber outlined hexagon surrounding one smaller solid amber hexagon, with blue/amber rim accents."
+}

@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-spare-parts",
+  "assetId": "C02-SFV1-status-spare-parts",
+  "label": "备件资源",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-spare-parts",
+    "topicId": "c02-status-spare-parts",
+    "label": "备件资源",
+    "category": "status",
+    "png": "runtime/status/status-spare-parts.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 4,
+    "column": 2
+  },
+  "sourceCropBox": [
+    256,
+    1120,
+    512,
+    1536
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-spare-parts.png",
+  "runtimeReferenceSha256": "8942f35b19b79e318fafd277c012e6a1d3c1cc2a75b031b1c262053ef2c4451e",
+  "functionalMotif": "The full original maintenance cluster is preserved: one dominant cog, one rectangular component, one bolt, one diagonal open-jaw/ring wrench, and two differently sized hex nuts. Blue openings, an amber ring end, and small amber cog insets remain bounded on hardware.",
+  "reconstructionCaveats": "Tiny threads, bevel divisions and scratches are simplified. The original gear center has a purple backdrop through its blue ring; the remake correctly uses real transparency through that opening. The exact tooth count is not a semantic acceptance criterion.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-dea89497-039d-43c2-9add-23b33fe052ae.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-spare-parts/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

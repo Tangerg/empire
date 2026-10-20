@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-star-vein-energy",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 1007217,
+  "partialAlphaPixels": 563851,
+  "opaquePixels": 1448,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    223,
+    54,
+    1022,
+    1197
+  ],
+  "nearOpaquePixelCountGE240": 540376,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 198,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "272c3380b58908c52593f38a2f67ffda2358ee599601a2aff3b86ef31e54afee",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the central gem, violet satellite group, magenta energy center and cyan lower section remain readable across white/black/olive. All eight satellites exist in the mother; the two smallest bottom shards reduce to tiny pixels, so individual shard counting at 32px is not a guaranteed user interaction. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One central elongated violet crystal, eight surrounding shards, magenta upper/middle branching energy veins and cyan lower branching vein are retained. The main warm pale central energy node remains visible."
+}

@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-star-vein-energy",
+  "assetId": "C02-SFV1-status-star-vein-energy",
+  "label": "星脉能",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-star-vein-energy",
+    "topicId": "c02-status-star-vein-energy",
+    "label": "星脉能",
+    "category": "status",
+    "png": "runtime/status/status-star-vein-energy.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 3,
+    "column": 4
+  },
+  "sourceCropBox": [
+    768,
+    768,
+    1024,
+    1110
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-star-vein-energy.png",
+  "runtimeReferenceSha256": "bbeccd705d3e3a1d54282c65526be3411af021af3bab9d914c30f187f01c8f05",
+  "functionalMotif": "One central elongated violet crystal, eight surrounding shards, magenta upper/middle branching energy veins and cyan lower branching vein are retained. The main warm pale central energy node remains visible.",
+  "reconstructionCaveats": "Dense old internal texture and sparkle noise are replaced by broad facets and bounded channels. Source-specific purple/magenta is deliberately preserved; recoloring this energy identity into generic gray/amber would lose the source meaning.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2581f25f-1262-4bb5-9573-23574d767cf0.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-star-vein-energy/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}
