@@ -1,0 +1,65 @@
+{
+  "status": "source-and-story-grounded-remake",
+  "topicId": "C01-CH02-S06",
+  "parentGuidance": "2026-10-20 01:34 UTC: Continue night crossing with the original anonymous escort ensemble.",
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+    "sha256": "891cf39f451913388f36bc16c61ad629c9c6e390a5ba4098d92a64157424ed1f",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "cellIndexZeroBased": 2,
+    "columnZeroBased": 0,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-left",
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "observedOriginal": "Moonlit blue river; four rope-guided timber rafts carrying bundled civilians; anonymous soldiers wading and helping from rocky forest banks; horses remain on shore.",
+  "storyAuthority": {
+    "path": "packages/story-candidate-01/src/story.ts",
+    "sha256": "f0e31a172ff45a1dae57d988e8c672b87e384881e3fe3ec890b84a49588c1299",
+    "consumerIds": [
+      "c01/brief-06",
+      "c01/aftermath-06"
+    ],
+    "supportedDetails": [
+      "Year 1 deep winter at White River",
+      "Wounded people and children in the withdrawing group",
+      "Reed shallows are suitable for people but not horses and grain carts",
+      "Noncombatant escort and cold/time pressure"
+    ]
+  },
+  "deliberateChanges": [
+    "Recompose square atlas cell as wide standalone landscape",
+    "Reduce raft count from four to two for clear narrative reading, preserving evacuation rather than exact unit simulation",
+    "Clarify deep-winter cold with spare pale bank patches and reeds",
+    "Show grain cart waiting on bank, supported by spoken tactical constraint in story.ts",
+    "Increase central wounded-person raft for mobile center-cover readability",
+    "Remove dense surface pebble/fleck texture and excess anonymous people"
+  ],
+  "identity": "All figures are anonymous ensemble escorts/civilians; no named identity inferred from original or synthesized.",
+  "symbols": "Crossing guide ropes, shore anchor posts and lantern retained; no heraldry added.",
+  "noCodeOrTextChanges": true
+}
