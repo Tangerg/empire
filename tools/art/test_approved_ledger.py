@@ -179,8 +179,8 @@ class ApprovedLedgerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'lacks a discoverable'):
             build(self.root)
 
-    def test_scene_master_is_discovered_without_reclassifying_key_prop_exception(self):
-        for topic_id in ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE', 'C01-CH03-S11']:
+    def test_scene_master_is_discovered_only_for_canonical_scene_kind(self):
+        for topic_id in ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE', 'C01-CH03-S11', 'C01-CH01-S00']:
             with self.subTest(topic=topic_id):
                 topic = {**self.topic, 'topicId': topic_id, 'category': 'narrative-static', 'kind': 'scene'}
                 self.write('pack/manifest.json', {'assets': [topic]})
@@ -207,14 +207,28 @@ class ApprovedLedgerTests(unittest.TestCase):
         topic = {**topic, 'topicId': 'C01-CH01-S00', 'kind': 'key-prop'}
         self.write('pack/manifest.json', {'assets': [topic]})
         self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
-                   'campaign': 'story-candidate-01', 'label': 'Unresolved wrist-guard scene/prop identity'}])
+                   'campaign': 'story-candidate-01', 'label': 'Deliberately reverted scene kind must not discover scene master'}])
         raw = self.root / 'pack/masters/approved-v5/narrative/ch01-s00/master.png'
-        raw.parent.mkdir(parents=True)
+        raw.parent.mkdir(parents=True, exist_ok=True)
         raw.write_bytes(b'scene-like pixels do not change the canonical kind')
         self.progress.update(topicStages={topic['topicId']: {'raw': 'claimed'}}, formalRuntimeBoundTopics=1)
         self.write(DOC / 'approved-v5/progress.json', self.progress)
         with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
             build(self.root)
+
+    def test_opening_scene_kind_correction_alone_adds_no_completion(self):
+        topic = {**self.topic, 'topicId': 'C01-CH01-S00', 'category': 'narrative-static', 'kind': 'scene'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-01', 'label': 'Roderick tying the wristguard'}])
+        result = build(self.root)
+        self.assertEqual(result['summary']['formalBound'], 0)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 0)
+        self.assertEqual(result['summary']['liveGameVerified'], 0)
+        row = result['canonicalTopics'][0]
+        self.assertEqual(row['selectedRawMasters'], [])
+        for stage in ('raw', 'export', 'formalBinding', 'liveGame'):
+            self.assertEqual(row[stage], 'pending')
 
     def test_reviewed_narrative_props_discover_own_native_master_without_counting_consumers(self):
         for suffix in ['LEFT-GLOVE', 'EXILE-HARDTACK', 'IVRA-BROKEN-BRIDLE', 'CROWN-FRAGMENT']:

@@ -178,8 +178,6 @@ def compose_character_card(root: Path, pack: Path, asset, hd, override):
 
 def render_narrative_prop(root: Path, pack: Path, asset, hd, override):
     topic = asset['topicId']
-    if topic == 'C01-CH01-S00':
-        raise ValueError(f'{topic}: scene/prop identity excludes transparent-prop registration')
     if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
             or asset.get('category') != 'narrative-static' or asset.get('kind') != 'key-prop'
             or any(type(asset.get(axis)) is not int or asset[axis] != 128 for axis in ('width', 'height'))

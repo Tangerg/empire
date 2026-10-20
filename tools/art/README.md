@@ -677,16 +677,54 @@ No master override or HD entry was added. This is one existing pending topic and
 adds **zero** completed art topics. There is no shipped scene consumer for it at
 this correction; a generic resolver call does not establish one. New art and
 actual presentation review are separate work. Do not crop it to 16:9, extract
-transparent name tags from it, or reinterpret the unresolved `C01-CH01-S00`.
+transparent name tags from it. The separate opening-scene correction is below.
 
 The other 41 wide scenes retain 256×144; all 22 character cards retain 192×224;
-the remaining 16 key-props retain 128×128 and their transparency contracts.
+the remaining 15 key-props retain 128×128 and their transparency contracts.
+The opening scene below is the second 128×128 scene; no dimensions change.
 Square scenes share `opaque-scene-v1`: null crop means the complete square
 master; an explicit crop must be square; physical width/height must exactly equal
 canonical width/height times their registered density. For example, a reviewed
 617×617 source region may be copied at 617×617 with explicit density 617/128,
 while the canonical 128×128 output is independently downsampled. This example
 registers no art and is not permission to promote the legacy sourceboard.
+
+### Source-backed opening-scene classification correction
+
+`C01-CH01-S00`, 罗德里克系护腕, is now `scene` with its exact 128×128
+geometry, asset ID, label, runtime path, absent anchors/frames, legacy quality
+tier and PNG bytes preserved. The canonical inventory projects the same kind
+and the intended `opaque-scene` alpha requirement. It stays pending-redraw and
+adds **zero** completed topics, native masters, overrides or HD registrations.
+
+The intended image is Roderick fastening Leia's left wristguard, with their
+relationship expressed through the hand action. [The chapter opening](../../docs/story-candidates/candidate-01/deep-customized/01-border-fire.md#1-章首冷开场)
+explicitly assigns this scene ID and separately names `C01-PROP-LEFT-GLOVE`.
+[The scene list](../../docs/story-candidates/candidate-01/deep-customized/09-static-assets.md#3-关键场景-assetsscenes)
+and [novel continuity table](../../docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md)
+confirm the same scene. A lone wristguard cannot fulfill that brief.
+
+The historical slot is correctly reconstructed: zero-based catalog slot 44,
+prop-board-04 bottom-right, full cell `[627,627,1254,1254]`, old inset
+`[632,632,1249,1249]`. That original RGB/magenta panel genuinely depicts only a
+loose metal-rimmed bracer and cord, without hands or people. This is a subject
+mismatch, not an offset error. The original board, cached alpha, legacy builder
+and prior audits remain evidence; do not relabel them as a completed scene or
+alias this ID to the distinct reusable `C01-PROP-LEFT-GLOVE` object.
+
+Unlike the cemetery scene, the unchanged old S00 runtime still has alpha 0–255,
+SHA-256 `3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f`.
+Its remaining visual/alpha mismatch is deliberate pending-redraw evidence, not
+an exception to opaque scene export. Any future approved redraw must use a new
+complete opaque scene master through the existing `opaque-scene-v1` square
+contract; transparent masters and prop overrides are rejected. There is no new
+exporter branch or topic-name exception. Source identity, hand interaction,
+opaque pixels and any actual consumer framing need separate review.
+
+No concrete shipped selector currently chooses S00. The existing prologue still
+uses `C01-CH01-S01`; generic catalog/URL resolution is not a new scene consumer.
+Do not change gameplay or presentation selectors to claim completion. Full audit
+and byte-preservation evidence: [opening-scene classification](../../docs/art-rebuild-20261019/approved-v5/opening-scene-classification/README.md).
 
 ### Actual UI cover crop is a second review gate
 

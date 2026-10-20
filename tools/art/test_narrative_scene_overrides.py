@@ -1,4 +1,5 @@
 import copy
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -137,11 +138,76 @@ class NarrativeSceneTests(unittest.TestCase):
             self.assertEqual(image.getchannel('A').getextrema(), (255, 255))
         self.assertEqual(len([a for a in self.assets if a['kind'] == 'scene'
                               and (a['width'], a['height']) == (256, 144)]), 41)
-        for topic in ('C01-CH01-S00', 'C01-PROP-NAME-TAGS'):
+        for topic in ('C01-PROP-LEFT-GLOVE', 'C01-PROP-NAME-TAGS'):
             self.assertEqual(next(a for a in self.assets if a['topicId'] == topic)['kind'], 'key-prop')
         self.assertNotIn(SQUARE_TOPIC, json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'])
         hd = json.loads((ROOT / PACK / 'manifest-tactical-runtime-hd.json').read_text())
         self.assertNotIn(SQUARE_TOPIC, {a['topicId'] for a in hd['assets']})
+
+    def test_opening_scene_classification_preserves_pending_legacy_record_and_inventory(self):
+        topic = 'C01-CH01-S00'
+        asset = next(a for a in self.assets if a['topicId'] == topic)
+        self.assertEqual(asset, {
+            'assetId': 'C01-FFV1-CH01-S00', 'topicId': topic, 'label': '罗德里克系护腕',
+            'category': 'narrative-static', 'png': 'runtime/narrative-static/ch01-s00.png',
+            'width': 128, 'height': 128, 'runtimeReady': True,
+            'qualityTier': 'final-cartoon-fantasy-v1', 'kind': 'scene',
+        })
+        runtime = ROOT / PACK / asset['png']
+        self.assertEqual(hashlib.sha256(runtime.read_bytes()).hexdigest(),
+                         '3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f')
+        with Image.open(runtime) as image:
+            self.assertEqual(image.size, (128, 128))
+            self.assertEqual(image.getchannel('A').getextrema(), (0, 255))
+        self.assertNotIn(topic, json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'])
+        hd = json.loads((ROOT / PACK / 'manifest-tactical-runtime-hd.json').read_text())
+        self.assertNotIn(topic, {a['topicId'] for a in hd['assets']})
+        inventory = json.loads((ROOT / 'docs/art-rebuild-20261019/canonical-topic-manifest.json').read_text())
+        row = next(a for a in inventory if a['topicId'] == topic)
+        self.assertEqual(row['kind'], 'scene')
+        self.assertEqual(row['alpha_requirement'], 'opaque-scene')
+        self.assertEqual(row['status'], 'pending-redraw')
+        with (ROOT / 'docs/art-rebuild-20261019/canonical-topic-manifest.csv').open() as handle:
+            csv_row = next(a for a in csv.DictReader(handle) if a['topicId'] == topic)
+        for field in ('kind', 'alpha_requirement', 'status', 'path'):
+            self.assertEqual(csv_row[field], row[field])
+        self.assertEqual({key: row[key] for key in asset}, asset)
+        self.assertEqual(len([a for a in self.assets if a['kind'] == 'scene']), 43)
+        self.assertEqual(len([a for a in self.assets if a['kind'] == 'key-prop']), 15)
+        self.assertEqual(next(a for a in self.assets if a['topicId'] == 'C01-PROP-LEFT-GLOVE')['kind'], 'key-prop')
+
+    def test_opening_scene_uses_square_opaque_contract_and_rejects_transparent_source(self):
+        topic = 'C01-CH01-S00'
+        self.make_source((617, 617))
+        self.override['scene'] = self.ref()
+        self.register({topic: self.override})
+        self.register_hd(topicId=topic, png='runtime-hd/narrative-static/ch01-s00.png',
+                         width=617, height=617, pixelDensity=617 / 128)
+        originals = self.outputs()
+        manifests = {p: p.read_bytes() for p in self.root.rglob('*.json')}
+        report = export(self.root, self.catalog)
+        self.assertEqual([r['size'] for r in report], [[128, 128], [617, 617]])
+        self.assertEqual({t for t, b in originals.items() if self.outputs()[t] != b}, {topic})
+        with Image.open(self.source) as source:
+            for result in report:
+                with Image.open(self.root / result['output']) as image:
+                    expected = source.convert('RGBA').resize(tuple(result['size']), Image.Resampling.LANCZOS)
+                    self.assertEqual(image.tobytes(), expected.tobytes())
+                    self.assertEqual(image.getchannel('A').getextrema(), (255, 255))
+        self.assertEqual(export(self.root, self.catalog, check=True), report)
+        self.assertEqual(manifests, {p: p.read_bytes() for p in manifests})
+        before = {self.root / r['output']: (self.root / r['output']).read_bytes() for r in report}
+        canonical = self.outputs()
+        self.make_source((617, 617), mode='RGBA')
+        with Image.open(self.source) as source:
+            source.putpixel((0, 0), (0, 0, 0, 0))
+            source.save(self.source)
+        self.override['scene'] = self.ref()
+        self.register({topic: self.override})
+        with self.assertRaisesRegex(ValueError, 'complete scene master'):
+            export(self.root, self.catalog)
+        self.assertEqual(self.outputs(), canonical)
+        self.assertEqual(before, {p: p.read_bytes() for p in before})
 
     def test_square_whole_source_and_explicit_native_density_keep_canonical_identity(self):
         self.make_source((617, 617))
@@ -358,8 +424,8 @@ class NarrativeSceneTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'smaller than'):
                     export(self.root, self.catalog)
 
-    def test_existing_characters_props_semantic_exceptions_and_other_campaigns_rejected(self):
-        for topic in ['unknown', 'C01-CHAR-LEIA-01', 'C01-CH01-S00', 'C01-PROP-NAME-TAGS']:
+    def test_existing_characters_props_and_other_campaigns_rejected(self):
+        for topic in ['unknown', 'C01-CHAR-LEIA-01', 'C01-PROP-LEFT-GLOVE', 'C01-PROP-NAME-TAGS']:
             with self.subTest(topic=topic):
                 self.register({topic: self.override})
                 with self.assertRaises(ValueError):

@@ -43,10 +43,10 @@ describe('per-asset physical density', () => {
     expect(candidate01ChapterArt(1)).toContain('runtime-hd/narrative-static/arch-three-bridges.png');
   });
 
-  it('accepts explicit square-scene source density without changing the canonical record or URL', () => {
-    const square = candidate01Asset('C01-CH03-S11');
+  it.each(['C01-CH03-S11', 'C01-CH01-S00'])('accepts explicit square-scene density for %s without changing the record or URL', topic => {
+    const square = candidate01Asset(topic);
     const before = JSON.stringify(square);
-    const hd = { topicId: square.topicId, png: 'runtime-hd/narrative-static/ch03-s11.png',
+    const hd = { topicId: square.topicId, png: square.png.replace('runtime/', 'runtime-hd/'),
       width: 617, height: 617, pixelDensity: 617 / 128 };
     expect(square).toMatchObject({ kind: 'scene', width: 128, height: 128 });
     expect(readCandidate01HdManifest({ ...manifest, assets: [hd] }).get(square.topicId)).toEqual(hd);
@@ -82,7 +82,7 @@ describe('per-asset physical density', () => {
     { width: Number.NaN }, { height: Number.POSITIVE_INFINITY }, { frames: 1 }, { variants: 0 },
     { category: 'battle-prop' as const }, { frameWidth: 256 }, { frameHeight: 144 }, { anchor: [128, 72] as const }])(
     'rejects altered scene aspect or framed geometry %j', patch => {
-      for (const record of [scene, candidate01Asset('C01-CH03-S11')]) {
+      for (const record of [scene, candidate01Asset('C01-CH03-S11'), candidate01Asset('C01-CH01-S00')]) {
         expect(() => validateCandidate01HdAsset({ ...record, ...patch }, physical))
           .toThrow('unframed 256x144 or 128x128 scene');
       }

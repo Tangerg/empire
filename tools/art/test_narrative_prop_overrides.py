@@ -210,11 +210,11 @@ class NarrativePropTests(unittest.TestCase):
                 self.register()
                 self.assert_rejected_unchanged('outer edge alpha')
 
-    def test_rejects_semantic_holds_wrong_kinds_and_implicit_source_schema(self):
+    def test_rejects_scene_and_card_kinds_and_implicit_source_schema(self):
         for topic in ('C01-CH01-S00', 'C01-CH03-S11', 'C01-CH01-S05', 'C01-CHAR-LEIA-01', 'unknown'):
             with self.subTest(topic=topic):
                 self.register({topic: self.override})
-                self.assert_rejected_unchanged('identity|opaque-scene|character-card|unknown topic')
+                self.assert_rejected_unchanged('opaque-scene|character-card|unknown topic')
         for entry in (self.ref(), {**self.override, 'kind': 'unknown'},
                       {**self.override, 'sourceCropBox': None}, {**self.override, 'anchor': [64, 64]},
                       {'kind': 'transparent-prop-v1'}, {'kind': 'transparent-prop-v1', 'prop': None}):

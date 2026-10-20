@@ -1,0 +1,25 @@
+{
+  "baseCommit": "46cc02f",
+  "branch": "fix/opening-square-scene-20261020",
+  "python": {
+    "tests": 93,
+    "passed": true
+  },
+  "typescript": {
+    "suites": 4,
+    "tests": 368,
+    "passed": true
+  },
+  "typecheck": "passed",
+  "registeredExportCheck": {
+    "mode": "read-only --check",
+    "outputs": 398,
+    "topics": 346,
+    "passed": true
+  },
+  "mutation": "Both new guards fail when opening kind is restored to key-prop only in temporary fixtures",
+  "fullRepositoryTests": "not run",
+  "applicationBuild": "not run",
+  "browserVisualAcceptance": "not claimed",
+  "newCompletedTopics": 0
+}

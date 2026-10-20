@@ -1,0 +1,173 @@
+{
+  "baseCommit": "46cc02f",
+  "topicId": "C01-CH01-S00",
+  "decision": "Correct intended scene classification; preserve and disclose legacy subject/alpha mismatch pending new art.",
+  "canonicalDelta": {
+    "kind": {
+      "from": "key-prop",
+      "to": "scene"
+    }
+  },
+  "legacyCanonicalRecord": {
+    "assetId": "C01-FFV1-CH01-S00",
+    "topicId": "C01-CH01-S00",
+    "label": "罗德里克系护腕",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch01-s00.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "currentCanonicalRecord": {
+    "assetId": "C01-FFV1-CH01-S00",
+    "topicId": "C01-CH01-S00",
+    "label": "罗德里克系护腕",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch01-s00.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "allOtherManifestFieldsAndTopicsIdentical": true,
+  "inventoryDelta": {
+    "kind": {
+      "from": "key-prop",
+      "to": "scene"
+    },
+    "alpha_requirement": {
+      "from": "genuine-transparent-background",
+      "to": "opaque-scene"
+    }
+  },
+  "allOtherInventoryRowsAndFieldsIdentical": true,
+  "originalSource": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "catalogIndexZeroBased": 44,
+    "boardCellIndexZeroBased": 3,
+    "slot": "bottom-right",
+    "fullCell": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "legacyInset": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "fullCellPixelSha256": "b110e8f570d065fa2dd9e081e8d1ac2cd2131eaf81b12fa3a911172a1cc3998e",
+    "legacyInsetPixelSha256": "705bf07672c18a04f28e4e7c4031a65a54be0db62493a4f1a5d76d1ce74e4ccc",
+    "visualReview": "Full board and exact full cell inspected: lone blue-gray metal-rimmed stitched bracer and tied cord on magenta, no people or hands."
+  },
+  "legacyReconstruction": {
+    "matchesRuntimeRgbaPixels": true,
+    "method": "Cached alpha, historical magenta cleanup, inset-5 bottom-right cell, alpha>=28 bbox fit at 128 square with 4px padding, final magenta cleanup",
+    "cachedAlphaPath": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-04.png",
+    "cachedAlphaSha256": "d8bb795ade200384090e47d83198f969889e89881958d44c769666891eacc170",
+    "builderPath": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+    "builderSha256": "b533ecffd7628905c744d9ddcfa40c93f08e76800b2c4427ee7d1ca5d9d74bd7",
+    "oldBuilderUnchanged": "Historical source mapping evidence, not the approved-source exporter"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s00.png",
+    "sha256": "3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f",
+    "byteIdentical": true,
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "status": "Legacy transparent loose bracer retained; not an accepted opaque scene"
+  },
+  "authoredEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "section": "1. 章首冷开场",
+      "finding": "Roderick ties Leia’s left wristguard; image S00 and prop LEFT-GLOVE have explicit separate IDs."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "section": "3. 关键场景",
+      "finding": "Scene label and hand-action intimacy composition."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md",
+      "section": "opening",
+      "finding": "Roderick loosens and reties Leia’s wrist strap before first command."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md",
+      "section": "chapter one row",
+      "finding": "Old wristguard hand action; S00 and LEFT-GLOVE listed separately."
+    }
+  ],
+  "consumerAudit": {
+    "method": "Read-only TypeScript transpilation/evaluation of STORY and source table inspection",
+    "storyCount": 35,
+    "openingSceneConsumers": [],
+    "prologue": {
+      "id": "c01/prologue",
+      "scene": "C01-CH01-S01"
+    },
+    "portraitTopics": [
+      "C01-CHAR-LEIA-01",
+      "C01-CHAR-RODERICK-01",
+      "C01-CHAR-CAIN-01",
+      "C01-CHAR-MIREL-01",
+      "C01-CHAR-BRAN-01",
+      "C01-CHAR-TASHA-01",
+      "C01-CHAR-IVRA-01"
+    ],
+    "chapterTopics": [
+      "C01-ARCH-THREE-BRIDGES",
+      "C01-ARCH-REDSTONE",
+      "C01-ARCH-SILVERWOOD"
+    ],
+    "menuTopic": "C01-CH01-S05"
+  },
+  "consumerSourceHashes": {
+    "packages/story-candidate-01/src/story.ts": "230b746b644834893153498fb852fef21304b9141feb8aa69d4f4b8f54240195",
+    "packages/story-candidate-01/src/presentation/candidate-01-story.ts": "a51ef93978cdbef035321d8a489b827b27bb1560e6bdf083140f2a2ba58f558b",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+    "packages/story-candidate-01/src/campaign.ts": "4c217fe0b950c81a7e3d5c6f49192c69bdefdb6eaa0f7ab857ed25137f50bf9a"
+  },
+  "authoredSourceHashes": {
+    "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md": "1b9e913cbff8538d224413a5965d8d286dab126a08d5077bafaf799f650f6694",
+    "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md": "f58d80c8b17003ae22029c8058d4ee53650349568b9e9335ff695d94dfaa4587",
+    "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md": "c6907417589d8457dc1ad2c8306fa0e033ea8b903227e46fa5d428775ea9cdfb",
+    "docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md": "4b7ddc697187a434e0dfacc940d4d717145abc8af1c23050e935b695d21448c0"
+  },
+  "unchangedRegistrations": {
+    "tools/art/source-overrides.json": "d304d0f9b1605bd71526e8ffcf970ea8293a0ed5283fffbffa95b200ed943742",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json": "9572824b2b7c2fa58fe894ead6aaf2d4bf85658c38d952ed6bcfeb8a042eb117"
+  },
+  "narrativeCounts": {
+    "scene": 43,
+    "character-card": 22,
+    "key-prop": 15
+  },
+  "newCompletedTopics": 0,
+  "newNativeMasters": 0,
+  "newSourceOverrides": 0,
+  "newHdRegistrations": 0,
+  "newShippedConsumers": 0,
+  "artworkModified": false,
+  "gameplayModified": false,
+  "preservedPriorAudit": "docs/art-rebuild-20261019/approved-v5/narrative-keyprop-audit/manifest.json"
+}

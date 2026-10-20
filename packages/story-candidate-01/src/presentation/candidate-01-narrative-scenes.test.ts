@@ -4,6 +4,7 @@ import canonical from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.j
 import hdManifest from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 import sourceOverrides from '../../../../tools/art/source-overrides.json';
 import { candidate01Asset } from './candidate-01-assets';
+import { candidate01Story } from '../story';
 import { CANDIDATE_01_MENU_ART, candidate01ChapterArt, candidate01StoryArt } from './candidate-01-story';
 
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
@@ -56,11 +57,32 @@ describe('narrative scene consumer contracts', () => {
     expect(sourceOverrides.assets).toHaveProperty(asset.topicId);
     expect(asset.url).toContain(squareHd.png);
     expect(candidate01StoryArt(asset.topicId)).toBe(asset.url);
-    expect(candidate01Asset('C01-CH01-S00').kind).toBe('key-prop');
+    expect(candidate01Asset('C01-CH01-S00').kind).toBe('scene');
     expect(candidate01Asset('C01-PROP-NAME-TAGS').kind).toBe('key-prop');
     const wideScenes = canonical.assets.filter(record => record.kind === 'scene'
       && record.width === 256 && record.height === 144);
     expect(wideScenes).toHaveLength(41);
+  });
+
+  it('keeps the corrected square opening scene pending without replacing its legacy prop pixels or prologue', () => {
+    const asset = candidate01Asset('C01-CH01-S00');
+    expect(asset).toMatchObject({ assetId: 'C01-FFV1-CH01-S00', topicId: 'C01-CH01-S00',
+      label: '罗德里克系护腕', category: 'narrative-static', kind: 'scene',
+      width: 128, height: 128, png: 'runtime/narrative-static/ch01-s00.png',
+      qualityTier: 'final-cartoon-fantasy-v1' });
+    for (const field of ['anchor', 'frames', 'variants', 'frameWidth', 'frameHeight']) {
+      expect(asset).not.toHaveProperty(field);
+    }
+    expect(hdManifest.assets.some(record => record.topicId === asset.topicId)).toBe(false);
+    expect(sourceOverrides.assets).not.toHaveProperty(asset.topicId);
+    expect(asset.url).toContain(asset.png);
+    expect(candidate01StoryArt(asset.topicId)).toBe(asset.url);
+    const prop = candidate01Asset('C01-PROP-LEFT-GLOVE');
+    expect(prop.kind).toBe('key-prop');
+    expect(prop.png).not.toBe(asset.png);
+    expect(candidate01Story('c01/prologue').scene).toBe('C01-CH01-S01');
+    expect(canonical.assets.filter(record => record.kind === 'scene')).toHaveLength(43);
+    expect(canonical.assets.filter(record => record.kind === 'key-prop')).toHaveLength(15);
   });
 
   it('keeps approved scene coverage and every unrelated physical asset at 2x', () => {
