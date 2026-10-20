@@ -1,0 +1,824 @@
+{
+  "topicId": "C01-FX-04",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/fx-source-audit.json",
+  "originalBoard": {
+    "boardIndex": 1,
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-01.png",
+    "sourceSha256": "989310b743c6b9f2ba6c159c760bfd05abdcfce04495b0e2fd0906999a1bb107",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "intermediate": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/fx/fx-atlas-01.png",
+    "intermediateSha256": "9d7f7fd4787b394269eee9d9799e2836593361a9d32f89a09197cab0dc2673fa",
+    "originalAlpha": "RGB opaque board with chroma/panel background",
+    "rawReference": {
+      "path": "boards/fx-atlas-01-original.png",
+      "sha256": "a4347a2b579c7ef623a135b47de63e7e3a1416b95b64ee4019890429f682b457",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "decodedSha256": "59d4235a56329a0baafe67c9850645b39f5fd0d24dbb7805958378e40ca945fe"
+    }
+  },
+  "originalTopic": {
+    "topicId": "C01-FX-04",
+    "label": "钝击",
+    "semanticName": "blunt-hit",
+    "manifest": {
+      "assetId": "C01-FFV1-FX-04",
+      "topicId": "C01-FX-04",
+      "label": "钝击",
+      "category": "fx",
+      "png": "runtime/fx/fx-04.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    "hdManifest": {
+      "topicId": "C01-FX-04",
+      "png": "runtime-hd/fx/fx-04.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    "remainingStatus": "pending-redraw",
+    "sourceBoard": 1,
+    "sourceRow1Based": 4,
+    "sourceRowBoundsXYXY": [
+      0,
+      940,
+      1254,
+      1254
+    ],
+    "originalRowCrop": {
+      "path": "source-crops/C01-FX-04/original-row.png",
+      "sha256": "c9fae1790c847cb553e94c9cc20b42c1984076c2b62aa4287b1adeb2f6b0810a",
+      "size": [
+        1254,
+        314
+      ],
+      "mode": "RGB",
+      "decodedSha256": "cc57174aaca7f9c756991ceedd0aabc1b341cf6936cc6265860c1636100930d4"
+    },
+    "slots": [
+      {
+        "phaseIndex": 0,
+        "sourceColumn1Based": 1,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          0,
+          940,
+          314,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          5,
+          945,
+          309,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-04/original-f0.png",
+          "sha256": "1f77ad1e71936199b9a78c2f8dc17809e1f2196281675a46b1b83d14d39c9ba0",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "de7b86f761eb691278558978dd4ce7526d2f2450856795f12a85cf4355d3a047"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-04/legacy-alpha-f0.png",
+          "sha256": "1018d92829977b198d313e6d5a813b5941fd79a329a234b5a325e34c1dfc1d85",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "826795abb2e1bfa2e0eeec4fdda9df9b45b759fdf36b1ff93c1517830532d728"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          38,
+          121,
+          263,
+          211
+        ],
+        "phaseObservation": "small ochre elliptical ring and side dust",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 83669,
+          "translucentPixels1to239": 2719,
+          "nearOpaquePixels240to255": 6028,
+          "visiblePixels": 8747,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            38,
+            3,
+            293,
+            300
+          ],
+          "pixelSha256Rgba": "826795abb2e1bfa2e0eeec4fdda9df9b45b759fdf36b1ff93c1517830532d728"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            225,
+            90
+          ],
+          "scale": 0.13333333333333333
+        }
+      },
+      {
+        "phaseIndex": 1,
+        "sourceColumn1Based": 2,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          314,
+          940,
+          627,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          319,
+          945,
+          622,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-04/original-f1.png",
+          "sha256": "bf86b2e8f6a04aa515277ba0230a5dcf4a83a8eb0e1878665039f269cb26c54d",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "e1449c539b728153b7e30e92705bb3fd8243ff7dd2030550dc5f0c05b3efd283"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-04/legacy-alpha-f1.png",
+          "sha256": "5b0fa6916410992d82bddb4dbe53894f5cd49c49f1c669999b0f053776dc8aab",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "cdf0cc256ac6c30bb5d4203a4432332f62f9ba2217b9a07bfff91e3dcbe2b5aa"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          27,
+          93,
+          267,
+          235
+        ],
+        "phaseObservation": "expanded double impact ring",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 78490,
+          "translucentPixels1to239": 3706,
+          "nearOpaquePixels240to255": 9916,
+          "visiblePixels": 13622,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            27,
+            3,
+            299,
+            235
+          ],
+          "pixelSha256Rgba": "cdf0cc256ac6c30bb5d4203a4432332f62f9ba2217b9a07bfff91e3dcbe2b5aa"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            240,
+            142
+          ],
+          "scale": 0.125
+        }
+      },
+      {
+        "phaseIndex": 2,
+        "sourceColumn1Based": 3,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          627,
+          940,
+          940,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          632,
+          945,
+          935,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-04/original-f2.png",
+          "sha256": "44c4d2ad6692afe4994c600519b9191170746aff4f5f79cf0568fa040391fe33",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "07a4715006d96b64adf922e7bbb35883ef71a0c27a8952bf7f539a26e0774154"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-04/legacy-alpha-f2.png",
+          "sha256": "2380ba1132d31f56722e4ca22ac4c93238b77bc376f359fd7cb1ffcbcba35341",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "6ad58065eb1c50860e99f457abf723d48f93890b1b3148ac58526bfce2b72fbe"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          22,
+          57,
+          281,
+          250
+        ],
+        "phaseObservation": "peak dust ring with flying stone flecks",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 69561,
+          "translucentPixels1to239": 5959,
+          "nearOpaquePixels240to255": 16592,
+          "visiblePixels": 22551,
+          "edgeMaxAlpha": 12,
+          "alphaBoundingBox": [
+            0,
+            3,
+            281,
+            250
+          ],
+          "pixelSha256Rgba": "6ad58065eb1c50860e99f457abf723d48f93890b1b3148ac58526bfce2b72fbe"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            259,
+            193
+          ],
+          "scale": 0.11583011583011583
+        }
+      },
+      {
+        "phaseIndex": 3,
+        "sourceColumn1Based": 4,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          940,
+          940,
+          1254,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          945,
+          945,
+          1249,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-04/original-f3.png",
+          "sha256": "da2a4141eaa538c813a47c8f349e3c01c5699663b75063ed34874681c6923a05",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "5f53ca63003ffb88fc6c5bdce7e0668691d36f9876e06923cc2f5447604520f9"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-04/legacy-alpha-f3.png",
+          "sha256": "83ee7c3b3cc13ab16dce7951a5dd62760366b3ca1bb1ed2333736f139807e969",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "08f5e83cc5fba1e3a56ad573d2213d49f205cc1ab130a75f446b68f3969a3fe6"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          49,
+          106,
+          241,
+          213
+        ],
+        "phaseObservation": "small residual ring/puffs",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 85216,
+          "translucentPixels1to239": 2489,
+          "nearOpaquePixels240to255": 4711,
+          "visiblePixels": 7200,
+          "edgeMaxAlpha": 14,
+          "alphaBoundingBox": [
+            6,
+            3,
+            241,
+            304
+          ],
+          "pixelSha256Rgba": "08f5e83cc5fba1e3a56ad573d2213d49f205cc1ab130a75f446b68f3969a3fe6"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            192,
+            107
+          ],
+          "scale": 0.15625
+        }
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "density": 1,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-04.png",
+        "sha256": "00565018ca85b9d5847d206b92088c3706a4abfa16893909249fe0cba888b094",
+        "size": [
+          128,
+          32
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 2640,
+          "translucentPixels1to239": 1094,
+          "nearOpaquePixels240to255": 362,
+          "visiblePixels": 1456,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            1,
+            5,
+            127,
+            27
+          ],
+          "pixelSha256Rgba": "614ea4ad5b3ce5cdf99ad939acd28ddd27f46e8ce4faa96744a40364b5de338f"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 753,
+            "translucentPixels1to239": 211,
+            "nearOpaquePixels240to255": 60,
+            "visiblePixels": 271,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              10,
+              31,
+              22
+            ],
+            "pixelSha256Rgba": "52079fc6559449c39594e02d06c4c450580fdd31d8222cbb7ef356bcb061d57b"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 641,
+            "translucentPixels1to239": 292,
+            "nearOpaquePixels240to255": 91,
+            "visiblePixels": 383,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              7,
+              31,
+              25
+            ],
+            "pixelSha256Rgba": "fa5c7c863fb4e4f17664e02cd26c3f4f394dbe329d8c5d9bb4e435cb667bc857"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 543,
+            "translucentPixels1to239": 343,
+            "nearOpaquePixels240to255": 138,
+            "visiblePixels": 481,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              5,
+              31,
+              27
+            ],
+            "pixelSha256Rgba": "3c0639ef8840fd38fcf9763b67f0e3a599eacd5035b259c9a73a48836c023000"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 703,
+            "translucentPixels1to239": 248,
+            "nearOpaquePixels240to255": 73,
+            "visiblePixels": 321,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              7,
+              31,
+              24
+            ],
+            "pixelSha256Rgba": "d765c3eff1cf9373f2e792ea910784536c3e731f3c9d01667015f078a082423c"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-04@1x.png",
+          "sha256": "677a298bf7278bafecc4e3f7b8bc40b89e053cdd6d2e79b0fef0fcdd98e36f40",
+          "size": [
+            128,
+            32
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "614ea4ad5b3ce5cdf99ad939acd28ddd27f46e8ce4faa96744a40364b5de338f"
+        }
+      },
+      {
+        "density": 2,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-04.png",
+        "sha256": "9abbf2ab8271cc604777ef2a07ce92a055d31969eb930d93ecb962f0d2fc482d",
+        "size": [
+          256,
+          64
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 11494,
+          "translucentPixels1to239": 2865,
+          "nearOpaquePixels240to255": 2025,
+          "visiblePixels": 4890,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            2,
+            9,
+            254,
+            54
+          ],
+          "pixelSha256Rgba": "1d8ff40b97df2a787a5444c32dba3484f515fee8aba5a30254aa431061ed0fc9"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3192,
+            "translucentPixels1to239": 547,
+            "nearOpaquePixels240to255": 357,
+            "visiblePixels": 904,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              20,
+              62,
+              44
+            ],
+            "pixelSha256Rgba": "b40f638d502d388cf89649aa7ef850210ac6f0d5ad6e7da49042df7f71df4063"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2821,
+            "translucentPixels1to239": 753,
+            "nearOpaquePixels240to255": 522,
+            "visiblePixels": 1275,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              14,
+              62,
+              50
+            ],
+            "pixelSha256Rgba": "9fd3525e914a3e8884daf5e1fea1e686aff5d119c65ffa3b08ec491f458cfe4a"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2406,
+            "translucentPixels1to239": 929,
+            "nearOpaquePixels240to255": 761,
+            "visiblePixels": 1690,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              9,
+              62,
+              54
+            ],
+            "pixelSha256Rgba": "94c14976e30a2f707a048f071598ad3d1ebc963e0e67bd5a670020dd0a9c9c36"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3075,
+            "translucentPixels1to239": 636,
+            "nearOpaquePixels240to255": 385,
+            "visiblePixels": 1021,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              15,
+              62,
+              48
+            ],
+            "pixelSha256Rgba": "a9729aba62c6dea5b1d8130a5d629b33fb042356cabce2396c8403c5a1c2c918"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-04@2x.png",
+          "sha256": "b70ef486e991ca514c4dc4c1fe66d6eef3b180480ab79a4ceaef1806bc280b1e",
+          "size": [
+            256,
+            64
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "1d8ff40b97df2a787a5444c32dba3484f515fee8aba5a30254aa431061ed0fc9"
+        }
+      }
+    ],
+    "consumers": {
+      "status": "statically-bound-weapon-hit",
+      "weaponBindings": [
+        {
+          "weaponId": "c01.lantern-staff",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 162
+        },
+        {
+          "weaponId": "c01.engineer-hammer",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 164
+        },
+        {
+          "weaponId": "c01.rune-hammer",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 166
+        },
+        {
+          "weaponId": "c01.golem-slam",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 172
+        }
+      ],
+      "unitDefinitions": [
+        {
+          "unitId": "c01.mirelle",
+          "weapons": [
+            "c01.lantern-staff",
+            "c01.oath-dispel"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 47,
+          "boundWeaponsForThisFx": [
+            "c01.lantern-staff"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 351,
+              "text": "mirelle: hero('mirelle', 'c01.mirelle'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.tasha",
+          "weapons": [
+            "c01.engineer-hammer",
+            "c01.satchel-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 53,
+          "boundWeaponsForThisFx": [
+            "c01.engineer-hammer"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 352,
+              "text": "tasha: { ...hero('tasha', 'c01.tasha'), formation: 'formation-defensive' },"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.gravekeeper",
+          "weapons": [
+            "c01.lantern-staff",
+            "c01.oath-dispel"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 69,
+          "boundWeaponsForThisFx": [
+            "c01.lantern-staff"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 412,
+              "text": "ally('field-cleric', 'c01.gravekeeper'), ally('roderick-reserve', 'c01.roderick'),"
+            },
+            {
+              "line": 442,
+              "text": "player: baseParty(ally('bridge-knight', 'c01.knight'), ally('bridge-guard-1', 'c01.banner-guard'), ally('bridge-guard-2', 'c01.archer'), ally('refugee-1', 'c01.refugee'), ally('refugee-2', 'c01.refugee'), ally('refugee-3', 'c01.refugee'), ally('river-scout', 'c01.swordsman'), ally('bridge-cleric', 'c01.gravekeeper'), ally('bridge-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 464,
+              "text": "player: baseParty(ally('roderick', 'c01.roderick'), ally('siege-mage', 'c01.battle-mage'), ally('siege-engineer', 'c01.engineer'), ally('siege-guard', 'c01.banner-guard'), ally('field-cleric', 'c01.gravekeeper'), ally('north-sapper', 'c01.engineer'), ally('south-spear', 'c01.banner-guard')),"
+            },
+            {
+              "line": 520,
+              "text": "player: baseParty(PARTY.mirelle, ally('scout-1', 'c01.swordsman'), ally('scout-2', 'c01.banner-guard'), ally('scout-3', 'c01.archer'), ally('scout-4', 'c01.swordsman'), ally('scout-cleric', 'c01.gravekeeper'), ally('scout-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 552,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('village-guard', 'c01.banner-guard'), ally('village-guard-2', 'c01.banner-guard'), ally('villager-1', 'c01.refugee'), ally('villager-2', 'c01.refugee'), ally('villager-3', 'c01.refugee'), ally('village-cleric', 'c01.gravekeeper'), ally('west-militia', 'c01.swordsman'), ally('east-militia', 'c01.archer')),"
+            },
+            {
+              "line": 585,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('rearguard', 'c01.banner-guard'), ally('rearguard-2', 'c01.banner-guard'), ally('refugee-1', 'c01.refugee'), ally('refugee-2', 'c01.refugee'), ally('refugee-3', 'c01.refugee'), ally('refugee-4', 'c01.laborer'), ally('mounted-rearguard', 'c01.knight'), ally('white-river-cleric', 'c01.gravekeeper')),"
+            },
+            {
+              "line": 611,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('militia', 'c01.banner-guard'), ally('militia-2', 'c01.banner-guard'), ally('engineer', 'c01.engineer'), ally('west-militia', 'c01.swordsman'), ally('east-militia', 'c01.archer'), ally('city-cleric', 'c01.gravekeeper'), ally('north-militia', 'c01.banner-guard'), ally('south-militia', 'c01.swordsman')),"
+            },
+            {
+              "line": 628,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, ally('mercenary-guard', 'c01.banner-guard'), ally('ledger-guard', 'c01.banner-guard'), ally('warehouse-bow', 'c01.archer'), ally('mercenary-cleric', 'c01.gravekeeper'), ally('mercenary-spear', 'c01.banner-guard'), ally('mercenary-scout', 'c01.swordsman')),"
+            },
+            {
+              "line": 646,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, ally('chain-breaker', 'c01.engineer'), ally('prison-guard', 'c01.banner-guard'), ally('prison-scout', 'c01.archer'), ally('prison-cleric', 'c01.gravekeeper'), ally('west-breach-guard', 'c01.banner-guard'), ally('east-breach-sword', 'c01.swordsman')),"
+            },
+            {
+              "line": 665,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('gray-rearguard', 'c01.banner-guard'), ally('gray-scout', 'c01.archer'), ally('old-banner-cleric', 'c01.gravekeeper'), ally('old-banner-guard', 'c01.banner-guard')),"
+            },
+            {
+              "line": 689,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('gravekeeper-escort', 'c01.gravekeeper'), ally('cemetery-shield', 'c01.banner-guard'), ally('cemetery-bow', 'c01.archer')),"
+            },
+            {
+              "line": 727,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('archive-guard', 'c01.banner-guard'), ally('archive-engineer', 'c01.engineer'), ally('archive-bow', 'c01.archer'), ally('archive-sword', 'c01.swordsman'), ally('archive-cleric', 'c01.gravekeeper'), ally('archive-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 755,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('silverwood-guard', 'c01.banner-guard'), ally('silverwood-scout', 'c01.woodland-walker'), ally('silverwood-cleric', 'c01.gravekeeper')),"
+            },
+            {
+              "line": 783,
+              "text": "ally('memory-gravekeeper', 'c01.gravekeeper'), ally('memory-guard', 'c01.banner-guard'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.engineer",
+          "weapons": [
+            "c01.engineer-hammer",
+            "c01.satchel-charge"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 76,
+          "boundWeaponsForThisFx": [
+            "c01.engineer-hammer"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 464,
+              "text": "player: baseParty(ally('roderick', 'c01.roderick'), ally('siege-mage', 'c01.battle-mage'), ally('siege-engineer', 'c01.engineer'), ally('siege-guard', 'c01.banner-guard'), ally('field-cleric', 'c01.gravekeeper'), ally('north-sapper', 'c01.engineer'), ally('south-spear', 'c01.banner-guard')),"
+            },
+            {
+              "line": 493,
+              "text": "{ key: 'redstone-wave-engineer', x: 1, y: 14, unit: 'c01.engineer', owner: 1, facing: 'east' },"
+            },
+            {
+              "line": 611,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, ally('militia', 'c01.banner-guard'), ally('militia-2', 'c01.banner-guard'), ally('engineer', 'c01.engineer'), ally('west-militia', 'c01.swordsman'), ally('east-militia', 'c01.archer'), ally('city-cleric', 'c01.gravekeeper'), ally('north-militia', 'c01.banner-guard'), ally('south-militia', 'c01.swordsman')),"
+            },
+            {
+              "line": 646,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, ally('chain-breaker', 'c01.engineer'), ally('prison-guard', 'c01.banner-guard'), ally('prison-scout', 'c01.archer'), ally('prison-cleric', 'c01.gravekeeper'), ally('west-breach-guard', 'c01.banner-guard'), ally('east-breach-sword', 'c01.swordsman')),"
+            },
+            {
+              "line": 703,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('tower-engineer', 'c01.engineer'), ally('tower-guard', 'c01.banner-guard')),"
+            },
+            {
+              "line": 727,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('archive-guard', 'c01.banner-guard'), ally('archive-engineer', 'c01.engineer'), ally('archive-bow', 'c01.archer'), ally('archive-sword', 'c01.swordsman'), ally('archive-cleric', 'c01.gravekeeper'), ally('archive-reserve', 'c01.banner-guard')),"
+            },
+            {
+              "line": 741,
+              "text": "player: baseParty(PARTY.mirelle, PARTY.bran, PARTY.tasha, PARTY.ivra, ally('forge-laborer', 'c01.laborer'), ally('forge-guard', 'c01.banner-guard'), ally('forge-engineer', 'c01.engineer'), ally('forge-bow', 'c01.archer')),"
+            },
+            {
+              "line": 787,
+              "text": "{ ...ally('memory-engineer', 'c01.engineer'), directive: { mode: 'patrol', waypoints: [{ x: 8, y: 13 }] } },"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.rune-shield",
+          "weapons": [
+            "c01.rune-hammer"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 84,
+          "boundWeaponsForThisFx": [
+            "c01.rune-hammer"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 743,
+              "text": "foe('golem-1', 'c01.stone-golem'), foe('golem-2', 'c01.stone-golem'), foe('rune-rebel-1', 'c01.rune-shield'), foe('rune-rebel-2', 'c01.rune-artificer'), foe('forge-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 744,
+              "text": "foe('north-golem', 'c01.stone-golem'), foe('east-rune-shield', 'c01.rune-shield'), foe('south-artificer', 'c01.rune-artificer'), foe('forge-guard-1', 'c01.templar'), foe('forge-guard-2', 'c01.rune-shield'), foe('forge-bow-guard', 'c01.archer'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.rune-artificer",
+          "weapons": [
+            "c01.rune-hammer",
+            "c01.forge-burst"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 85,
+          "boundWeaponsForThisFx": [
+            "c01.rune-hammer"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 743,
+              "text": "foe('golem-1', 'c01.stone-golem'), foe('golem-2', 'c01.stone-golem'), foe('rune-rebel-1', 'c01.rune-shield'), foe('rune-rebel-2', 'c01.rune-artificer'), foe('forge-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 744,
+              "text": "foe('north-golem', 'c01.stone-golem'), foe('east-rune-shield', 'c01.rune-shield'), foe('south-artificer', 'c01.rune-artificer'), foe('forge-guard-1', 'c01.templar'), foe('forge-guard-2', 'c01.rune-shield'), foe('forge-bow-guard', 'c01.archer'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.stone-golem",
+          "weapons": [
+            "c01.golem-slam"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 86,
+          "boundWeaponsForThisFx": [
+            "c01.golem-slam"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 743,
+              "text": "foe('golem-1', 'c01.stone-golem'), foe('golem-2', 'c01.stone-golem'), foe('rune-rebel-1', 'c01.rune-shield'), foe('rune-rebel-2', 'c01.rune-artificer'), foe('forge-mage', 'c01.battle-mage'),"
+            },
+            {
+              "line": 744,
+              "text": "foe('north-golem', 'c01.stone-golem'), foe('east-rune-shield', 'c01.rune-shield'), foe('south-artificer', 'c01.rune-artificer'), foe('forge-guard-1', 'c01.templar'), foe('forge-guard-2', 'c01.rune-shield'), foe('forge-bow-guard', 'c01.archer'),"
+            }
+          ]
+        }
+      ],
+      "livePlaybackObserved": false,
+      "genericConsumer": "packages/game-ui/src/ui/board.ts:611-644"
+    },
+    "semanticPhaseRequirement": "Use a stable ground-impact center, growing ring then decay; no solid opaque disk.",
+    "alphaPolicy": "Genuine transparent exterior; preserve intentional interior translucency and luminous/smoke detail. No requirement that every phase reach alpha 240. Review on dark/light/terrain backgrounds; no opaque panel, matte color key or unrelated backing.",
+    "specialRisks": []
+  },
+  "currentRuntimeAnchor": [
+    16,
+    16
+  ],
+  "auditedPhaseOrder": [
+    "contact",
+    "expand",
+    "peak",
+    "settle"
+  ],
+  "phaseSemantics": [
+    "Small hollow ochre elliptical shock ring with compact paired side dust puffs",
+    "Expanded double/broken ring, larger lifted side puffs and a few stone flecks",
+    "Largest layered broken shock ring, chunky side dust and ejected stone flecks",
+    "Smaller residual broken ring arcs and reduced sparse settling dust/stone fragments"
+  ],
+  "runtimeOverlayExcluded": [
+    "white expanding circle",
+    "damage number"
+  ],
+  "livePlaybackObserved": false
+}

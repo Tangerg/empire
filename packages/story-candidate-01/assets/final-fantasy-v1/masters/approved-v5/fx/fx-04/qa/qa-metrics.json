@@ -1,0 +1,190 @@
+{
+  "topicId": "C01-FX-04",
+  "phaseOrder": [
+    "contact",
+    "expand"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "authoredImpactPointRequested": [
+    627,
+    671
+  ],
+  "authoredImpactOffsetLogicalRequested": [
+    0,
+    0.9824561403508771
+  ],
+  "perPhaseFitCropShiftOrAlphaCleanup": false,
+  "sourceEdgeGate": "alpha <= 1, actual composites and native borders separately reviewed",
+  "nativeFinal2pxBorderGate": 0,
+  "fps": 12,
+  "loop": false,
+  "frameStartTimesMs": [
+    0,
+    83.33333333333333,
+    166.66666666666666,
+    250
+  ],
+  "finalFrameHoldMs": 170,
+  "removalTimeMs": 420,
+  "runtimeConsumer": "BoardView.animateHit target cell center; candidate01FxPicture uses metadata [16,16] and HD strip; normal source-over",
+  "excludedRuntimeOverlays": [
+    "white circle",
+    "damage number"
+  ],
+  "liveGameObserved": false,
+  "frames": [
+    {
+      "phase": "contact",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "0bb3c62659d2601019bf3652b62e2701c7b96adbe49236ba51bf8e826f80a844",
+      "decodedPixelSha256": "72561ec298e9689b8d375403d399f93a0001e16142f14d28493ac0aa427bd159",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        224,
+        28,
+        1232,
+        1180
+      ],
+      "bboxAlpha128": [
+        228,
+        498,
+        1039,
+        828
+      ],
+      "alphaMass": 109524.46274509803,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "1c71ed167c6ee4e09bcbaf39948fdddd9de749c44eeccfa1562a7cb3016c6132",
+          "bboxAlpha1": [
+            5,
+            11,
+            28,
+            23
+          ],
+          "alphaMass": 55.63529411764706,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "5086d0935a324cad9939408949c458dd9117bfec8b468c180579b43d2f111136",
+          "bboxAlpha1": [
+            12,
+            24,
+            53,
+            44
+          ],
+          "alphaMass": 218.34509803921569,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "hollowCentreEstimate": [
+        627.1758177946964,
+        670.7897928898639
+      ],
+      "hollowCentreOffsetLogical": [
+        0.003925756181416773,
+        0.9777625206668148
+      ]
+    },
+    {
+      "phase": "expand",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "fc065264d2ea362cc9acb91eab174bca6228ff8e070d178b88a05704264aec04",
+      "decodedPixelSha256": "5e826af197b481f8ee46bb746557ce229d9ae5f666e95e55cf527a466c145b71",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 1,
+      "edgeAlphaNonzeroSamples": 9,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        0,
+        47,
+        1254,
+        1254
+      ],
+      "bboxAlpha128": [
+        65,
+        437,
+        1216,
+        928
+      ],
+      "alphaMass": 255883.23137254902,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "d3aed32390e27b744b7cc51f83a00f4ba25ced4b4e0a7005ab9ca77330483c00",
+          "bboxAlpha1": [
+            2,
+            9,
+            30,
+            25
+          ],
+          "alphaMass": 128.74901960784314,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "9746a373638ee44eee98ee8e07e08d969d13347a0feeb509248f2a6bd7b64090",
+          "bboxAlpha1": [
+            4,
+            21,
+            60,
+            48
+          ],
+          "alphaMass": 511.4235294117647,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "hollowCentreEstimate": [
+        640.2409221762586,
+        686.019062825072
+      ],
+      "hollowCentreOffsetLogical": [
+        0.29565057490848545,
+        1.3178100152328653
+      ]
+    }
+  ],
+  "apng": []
+}
