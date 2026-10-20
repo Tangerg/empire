@@ -126,6 +126,27 @@ class ApprovedLedgerTests(unittest.TestCase):
                 self.assertEqual(result['summary']['formalBound'], 0)
                 self.assertEqual(result['summary']['liveGameVerified'], 0)
 
+    def test_effect_phases_count_one_topic_after_formal_binding_only(self):
+        topic = {**self.topic, 'topicId': 'C01-FX-01', 'category': 'fx'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-01', 'label': 'Slash'}])
+        for phase in ['onset', 'sweep', 'peak', 'dissipate']:
+            raw = self.root / 'pack/masters/approved-v5/fx/fx-01' / phase / 'master.png'
+            raw.parent.mkdir(parents=True)
+            raw.write_bytes(b'immutable phase placeholder')
+        result = build(self.root)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(result['summary']['formalBound'], 0)
+        self.assertEqual(len(result['canonicalTopics'][0]['selectedRawMasters']), 4)
+        topic['qualityTier'] = 'approved-chunky-v5-export-verified'
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.progress.update(topicStages={topic['topicId']: {'raw': 'four phases'}}, formalRuntimeBoundTopics=1)
+        self.write(DOC / 'approved-v5/progress.json', self.progress)
+        result = build(self.root)
+        self.assertEqual(result['summary']['boundByCategory'], {'fx': 1})
+        self.assertEqual(result['summary']['liveGameVerified'], 0)
+
     def test_faction_kit_counts_one_native_group_not_its_components(self):
         topic = {**self.topic, 'topicId': 'C01-FACTION-LORNE', 'category': 'faction-kit'}
         self.write('pack/manifest.json', {'assets': [topic]})

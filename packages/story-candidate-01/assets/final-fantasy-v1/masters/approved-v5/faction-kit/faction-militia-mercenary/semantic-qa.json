@@ -1,0 +1,36 @@
+{
+  "topicId": "C01-FACTION-MILITIA-MERCENARY",
+  "status": "pass-source-review-pending-parent-binding",
+  "reviewedSources": [
+    "full original cell",
+    "labeled source board",
+    "audit exact slot mapping",
+    "approved-v5 equipment masters",
+    "approved concept-v2"
+  ],
+  "identityChecks": [
+    "Complete round wood shield restores the formerly cut circumference; left slate/teal planks with a small muted green upper-left section, right ochre/brown planks, riveted brown rim and simple gray boss.",
+    "Folded dark teal kit roll retains brown belt, circular brass clasp and short downward belt tongue. The minute source clasp groove is simplified; no new emblem or readable lettering is introduced.",
+    "Plain short gray square-headed hammer retains unwrapped wood handle, small top wedge and complete head.",
+    "Exactly three separate source objects in left/center/right arrangement. No city/mercenary crest or imported rune-artificer motifs.",
+    "First generated candidate carried a dark colored haze and landscape canvas; imagegen refinement removed the haze and produced the square true-alpha master. Rejected candidate bytes are retained."
+  ],
+  "styleChecks": [
+    "Broad matte planes and bold dark contour",
+    "Complete silhouettes and transparent inter-object gaps",
+    "Native 128px white/dark/olive visual proof generated from full authored canvas with 2px padding",
+    "No opaque backdrop, labels, text, ground shadow or generic crest"
+  ],
+  "noRepositoryOrGitWrites": true,
+  "actual128VisualQA": {
+    "status": "pass",
+    "reviewedAtNativeResolution": true,
+    "backgrounds": [
+      "white",
+      "dark",
+      "olive"
+    ],
+    "proof": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/preview-128-white-dark-olive.png",
+    "finding": "All source objects remain recognizable and complete at actual 128px. Material palette and defining shield/belt/weapon grouping remain distinguishable; no visible colored halo or backplate."
+  }
+}

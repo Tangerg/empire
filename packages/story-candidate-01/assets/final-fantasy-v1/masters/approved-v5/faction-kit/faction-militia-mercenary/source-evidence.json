@@ -1,0 +1,107 @@
+{
+  "topicId": "C01-FACTION-MILITIA-MERCENARY",
+  "assetId": "C01-FFV1-FACTION-MILITIA-MERCENARY",
+  "label": "城市民兵与佣兵装备基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      940,
+      418,
+      1254,
+      836
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      945,
+      423,
+      1249,
+      831
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/08-faction-militia-mercenary-full-cell.png",
+    "referenceLegacyInset5": "source-crops/08-faction-militia-mercenary-legacy-inset5.png",
+    "referenceFullCellSha256": "0e3d6dcdd0b8e5036c05955417eacc79f690d0aa8b49ea7fed7e18c6c5a22582",
+    "referenceLegacyInset5Sha256": "a724bc8d6fd112246f0096a45100460f604f83c6ac48f4bf02a9bd4302368c08"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Round vertically planked shield with muted blue-gray left and ochre-brown right panels and steel boss",
+      "Folded dark teal cloth or kit roll secured by a brown belt and small circular brass clasp",
+      "Short practical square-headed gray metal hammer with wood handle"
+    ],
+    "emblem": "Retain simple two-tone plank shield and small source clasp; no city crest or mercenary logo is present",
+    "palette": "Blue-gray, worn teal, wood brown and restrained ochre; ordinary practical militia/mercenary equipment"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "f12acb064f205523c45d727457457131927adb3bd18aff242fc8739157bd2ef7",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/08-faction-militia-mercenary-full-cell.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/08-faction-militia-mercenary-full-cell.png",
+          "sha256": "0e3d6dcdd0b8e5036c05955417eacc79f690d0aa8b49ea7fed7e18c6c5a22582"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-rune-artificer/master.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-rune-artificer/master.png",
+          "sha256": "15a51a4822c16ed6e2a3602f3767b0b29be898d3d7e98ff1bc5b3d6990036e27"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+        }
+      ]
+    },
+    {
+      "file": "refinement-request.json",
+      "sha256": "56a161035da055cc40d9e73c0609ac0be5863821b07f26716b9db65c3a8ebdb0",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/candidate-v1.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/candidate-v1.png",
+          "sha256": "a367e3f3b7ba545d0dace4e6c0fab7674b81a1691775f7c54af63a66b5e5cd0d"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/08-faction-militia-mercenary-full-cell.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/08-faction-militia-mercenary-full-cell.png",
+          "sha256": "0e3d6dcdd0b8e5036c05955417eacc79f690d0aa8b49ea7fed7e18c6c5a22582"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c6823d8c-6108-4804-8e98-5be0a6e15b29.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "ae4fce8d882a7386177589e8519956984e9a9517d818e05ffc97b07dfff7d0b4",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt.txt"
+  ],
+  "promptHashes": {
+    "prompt.txt": "51cf8b6f0c48bd2e8d1c8f7419a8fdda48c87ca5e81f1e6e45e4ed57b66c6013",
+    "refinement-prompt.txt": "31e4bcafa867e3ac700fa64e03ec79ce28f360d71d797999ee90157d5a84bda7"
+  },
+  "postprocessing": "None; raw and master are byte-identical native generated PNG copies. QA previews only use full-canvas containment.",
+  "runtimeReady": false,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true
+}

@@ -1,0 +1,1 @@
+Recovered completed raw bundles after worker interruption. FX01 four phases and Wasteland/Militia faction kits are preserved here before formal binding. This backup does not increment accepted topic counts. Runtime and semantic QA remain pending.

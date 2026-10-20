@@ -1,0 +1,644 @@
+[
+  {
+    "topicId": "C01-FX-01",
+    "label": "斩击",
+    "sourceBoard": 1,
+    "sourceRow1Based": 1,
+    "phaseObservations": [
+      "small ivory crescent",
+      "broader swept crescent",
+      "largest crescent with pointed trailing cuts",
+      "separated slender silver fragments"
+    ],
+    "requirement": "Preserve crescent orientation and open inner arc; expansion and fragmentation must be authored, not whole-image scaling.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-02",
+    "label": "穿刺",
+    "sourceBoard": 1,
+    "sourceRow1Based": 2,
+    "phaseObservations": [
+      "narrow ivory puncture with two dark chips",
+      "longer needle plus outward chips",
+      "peak spear-like puncture and chips",
+      "faint needle and small residual chips"
+    ],
+    "requirement": "Keep puncture axis and lower impact point fixed; do not translate the whole frame to fake motion.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-03",
+    "label": "箭矢命中",
+    "sourceBoard": 1,
+    "sourceRow1Based": 3,
+    "phaseObservations": [
+      "short wooden arrow approaching down-right",
+      "arrow tip makes cream starburst",
+      "arrow gone; radial cream/brown chips",
+      "few tiny dissipating chips"
+    ],
+    "requirement": "Impact point tracks the arrow tip, not the individual bbox center; no bow or unrelated target body.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-04",
+    "label": "钝击",
+    "sourceBoard": 1,
+    "sourceRow1Based": 4,
+    "phaseObservations": [
+      "small ochre elliptical ring and side dust",
+      "expanded double impact ring",
+      "peak dust ring with flying stone flecks",
+      "small residual ring/puffs"
+    ],
+    "requirement": "Use a stable ground-impact center, growing ring then decay; no solid opaque disk.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-05",
+    "label": "普通火焰",
+    "sourceBoard": 2,
+    "sourceRow1Based": 1,
+    "phaseObservations": [
+      "small orange flame and ember",
+      "medium flame with sparks",
+      "tall peak orange/yellow flame",
+      "small dying flame and loose embers"
+    ],
+    "requirement": "Hold the flame root fixed while height changes; a flame tongue can be luminous but no rectangular glow.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-06",
+    "label": "琥珀誓火",
+    "sourceBoard": 2,
+    "sourceRow1Based": 2,
+    "phaseObservations": [
+      "low broken amber rune ring",
+      "rising larger segmented ring",
+      "complete bright segmented amber ring",
+      "ring broken into floating amber fragments"
+    ],
+    "requirement": "Preserve angular oath segments and open center; this is not generic orange fire or a sunburst.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-07",
+    "label": "攻城碎屑",
+    "sourceBoard": 2,
+    "sourceRow1Based": 3,
+    "phaseObservations": [
+      "dense airborne wood and stone explosion",
+      "fewer falling large pieces",
+      "small falling remnants",
+      "settled wood/stone heap"
+    ],
+    "requirement": "Ballistic down/out trajectory then settlement; do not arbitrarily reverse to small-to-large generic four phases.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-08",
+    "label": "亡者记忆冲击",
+    "sourceBoard": 2,
+    "sourceRow1Based": 4,
+    "phaseObservations": [
+      "cluster of gray human echoes, gray wisps and amber papers",
+      "taller overlapping human echoes",
+      "faint dissolving echoes and loose papers",
+      "wisps and paper fragments only"
+    ],
+    "requirement": "Preserve ordinary-person memory silhouettes/name-paper semantics; avoid replacing them with a generic blue skull.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-weapon-hit",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-09",
+    "label": "秋雨",
+    "sourceBoard": 3,
+    "sourceRow1Based": 1,
+    "phaseObservations": [
+      "three descending blue-gray droplets",
+      "droplets near ground with first specks",
+      "one drop and crown splash",
+      "flat residual water specks"
+    ],
+    "requirement": "Loop must hand off residual specks to new falling droplets; transparent negative space, no white source panel.",
+    "fps": 12,
+    "loop": true,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Loop seam requires actual review; no current consumer instantiates it."
+    ]
+  },
+  {
+    "topicId": "C01-FX-10",
+    "label": "河流浅水",
+    "sourceBoard": 3,
+    "sourceRow1Based": 2,
+    "phaseObservations": [
+      "two stones with narrow blue ripple",
+      "expanded elliptical ripples",
+      "largest outer ripple",
+      "broken fading ripples around stones"
+    ],
+    "requirement": "Keep two stone positions fixed; authored outward wave and repeat seam, no opaque water tile.",
+    "fps": 12,
+    "loop": true,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Loop seam requires actual review; no current consumer instantiates it."
+    ]
+  },
+  {
+    "topicId": "C01-FX-11",
+    "label": "荒原强风",
+    "sourceBoard": 3,
+    "sourceRow1Based": 3,
+    "phaseObservations": [
+      "long ochre wind ribbon with grass flecks",
+      "bending gust and scattered flecks",
+      "fragmented smaller ribbons",
+      "few dust dots"
+    ],
+    "requirement": "Maintain drift direction and rhythmic seam; muted translucent gusts, not a solid background.",
+    "fps": 12,
+    "loop": true,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Loop seam requires actual review; no current consumer instantiates it."
+    ]
+  },
+  {
+    "topicId": "C01-FX-12",
+    "label": "山炉热浪",
+    "sourceBoard": 3,
+    "sourceRow1Based": 4,
+    "phaseObservations": [
+      "three thin amber heat wisps above a coal line",
+      "phase-shifted wavering wisps",
+      "broken shorter wisps",
+      "small residual wisps"
+    ],
+    "requirement": "Coals/heat origin stable; wisp deformation and continuous loop, no full-tile opaque heat haze.",
+    "fps": 12,
+    "loop": true,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Loop seam requires actual review; no current consumer instantiates it."
+    ]
+  },
+  {
+    "topicId": "C01-FX-13",
+    "label": "焦土余火",
+    "sourceBoard": 4,
+    "sourceRow1Based": 1,
+    "phaseObservations": [
+      "dark cracked earth patch",
+      "small cracks glowing and rising smoke",
+      "peak sparks/flames from cracks",
+      "low remaining embers"
+    ],
+    "requirement": "Cracked earth is a source-semantic compact motif, not permission for unrelated opaque backing; keep patch stable.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-14",
+    "label": "墓园污染",
+    "sourceBoard": 4,
+    "sourceRow1Based": 2,
+    "phaseObservations": [
+      "low green-gray fumes above soil/name papers",
+      "rising twisting fumes and lifted papers",
+      "largest curled pollution plume",
+      "low fading wisps"
+    ],
+    "requirement": "Retain name papers and restrained graveyard fumes; source soil patch is semantic, not a full rectangle.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-15",
+    "label": "银林灵火",
+    "sourceBoard": 4,
+    "sourceRow1Based": 3,
+    "phaseObservations": [
+      "small pale-green wisp above leaf litter",
+      "growing green-white flame",
+      "peak leafy spirit flame with curling branch",
+      "small residual wisp and sparks"
+    ],
+    "requirement": "Hold leaf-bed root; preserve sage/leaf identity with controlled translucent light.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-16",
+    "label": "七塔灰光",
+    "sourceBoard": 4,
+    "sourceRow1Based": 4,
+    "phaseObservations": [
+      "small tower with short gray rays",
+      "wider longer tower rays",
+      "largest tall gray ray fan and stones",
+      "short residual gray beams"
+    ],
+    "requirement": "Tower is original semantic subject; gray rays come from its amber top. Source peak touches the top crop boundary, requiring overflow review.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Source maximum gray beam contacts crop top; original crop may clip peak."
+    ]
+  },
+  {
+    "topicId": "C01-FX-17",
+    "label": "治疗",
+    "sourceBoard": 5,
+    "sourceRow1Based": 1,
+    "phaseObservations": [
+      "small sage leaf orbit, bandages and plus",
+      "larger leaf spiral around plus",
+      "peak orbit/plus and bandages",
+      "leaves and fading arc only"
+    ],
+    "requirement": "Keep medical plus and restrained sage motifs; true translucent glow is allowed, no yellow/white opaque panel.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "statically-bound-heal",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-18",
+    "label": "受控",
+    "sourceBoard": 5,
+    "sourceRow1Based": 2,
+    "phaseObservations": [
+      "broken amber bands and diamonds",
+      "bands align into ring",
+      "double closed restraint rings",
+      "settled smaller double restraint rings"
+    ],
+    "requirement": "This is closure/restraint, not burst-and-vanish; loop remains false under current contract.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-19",
+    "label": "隐蔽",
+    "sourceBoard": 5,
+    "sourceRow1Based": 3,
+    "phaseObservations": [
+      "dense gray-green leafy smoke",
+      "smoke curls and separates",
+      "broken smoky ribbons with leaves",
+      "few floating leaves and wisps"
+    ],
+    "requirement": "Density should genuinely dissipate; translucent fog can have no near-opaque core.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-20",
+    "label": "援护盾",
+    "sourceBoard": 5,
+    "sourceRow1Based": 4,
+    "phaseObservations": [
+      "curved blue-gray shield stroke",
+      "small amber impact spark on arc",
+      "peak spark spray on shield arc",
+      "few fading sparks with arc"
+    ],
+    "requirement": "Preserve narrow blocking crescent and stable contact; do not insert a shield bearer or opaque backing.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": []
+  },
+  {
+    "topicId": "C01-FX-21",
+    "label": "结构受损",
+    "sourceBoard": 6,
+    "sourceRow1Based": 1,
+    "phaseObservations": [
+      "wood/stone fragments lifting",
+      "larger dispersed rubble",
+      "peak debris/dust impact",
+      "settling dust and a few pieces"
+    ],
+    "requirement": "Original board has unrelated gray/white vignette backing; recreate fragments/dust only with genuine alpha.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Opaque/cloudy panel backing in original board; cannot treat its existing RGBA mode or keyed intermediate as proof of genuine alpha."
+    ]
+  },
+  {
+    "topicId": "C01-FX-22",
+    "label": "工程修复",
+    "sourceBoard": 6,
+    "sourceRow1Based": 2,
+    "phaseObservations": [
+      "tilted bolt and nut with tiny sparks",
+      "hammering flash at bolt/nut",
+      "upright fitted bolt with blue repair swirl",
+      "finished upright bolt and small glints"
+    ],
+    "requirement": "Preserve assembly progression and hardware; remove unrelated cloudy panel backing, not legitimate spark alpha.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Opaque/cloudy panel backing in original board; cannot treat its existing RGBA mode or keyed intermediate as proof of genuine alpha."
+    ]
+  },
+  {
+    "topicId": "C01-FX-23",
+    "label": "塔网失联",
+    "sourceBoard": 6,
+    "sourceRow1Based": 3,
+    "phaseObservations": [
+      "two beacons with intact cyan link",
+      "link bends and crackles",
+      "broken separated link/square fragments",
+      "no link, sparse fading squares"
+    ],
+    "requirement": "Preserve connected-to-disconnected causal progression and beacon spacing; no opaque source panel.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Opaque/cloudy panel backing in original board; cannot treat its existing RGBA mode or keyed intermediate as proof of genuine alpha."
+    ]
+  },
+  {
+    "topicId": "C01-FX-24",
+    "label": "据点占领",
+    "sourceBoard": 6,
+    "sourceRow1Based": 4,
+    "phaseObservations": [
+      "neutral pale banner on plinth",
+      "pale banner with blue capture swirl",
+      "blue banner and peak capture ring",
+      "blue banner with settling ring/sparks"
+    ],
+    "requirement": "Preserve neutral-to-blue ownership change and fixed flagpole/plinth; no reverse-order or unrelated backing.",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "consumerStatus": "catalog-only-no-current-renderer-consumer-found",
+    "specialRisks": [
+      "Opaque/cloudy panel backing in original board; cannot treat its existing RGBA mode or keyed intermediate as proof of genuine alpha."
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "topicId": "C01-FACTION-WASTELAND",
+  "assetId": "C01-FFV1-FACTION-WASTELAND",
+  "label": "荒原诸部装备基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      627,
+      418,
+      940,
+      836
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      632,
+      423,
+      935,
+      831
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/07-faction-wasteland-full-cell.png",
+    "referenceLegacyInset5": "source-crops/07-faction-wasteland-legacy-inset5.png",
+    "referenceFullCellSha256": "4e325964acb74ff6b50e0fead2e0e3cc1aa9ee251556469a2872038db29110f8",
+    "referenceLegacyInset5Sha256": "b3c4c8774173069cc32da51b30e5394c3f4ab6c582bd2201d0328a279ef48d30"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Round patchwork wooden shield with warm rust/ochre and blue-gray triangular panels, rim and iron boss",
+      "Folded terracotta/worn leather cloth swatch with stitches and dark lower hem",
+      "Slender practical steel-tipped spear with wrapped shaft"
+    ],
+    "emblem": "Retain patchwork triangular panel arrangement, no skull/totem or invented tribal crest",
+    "palette": "Weathered earth-red, old leather and practical metal; trade, riding and professional labor rather than barbarian stereotype"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "967f3b225168b4649a4260a92ca4eebe5c726a09d831e3a71dc077a61e70a681",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/07-faction-wasteland-full-cell.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/07-faction-wasteland-full-cell.png",
+          "sha256": "4e325964acb74ff6b50e0fead2e0e3cc1aa9ee251556469a2872038db29110f8"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png",
+          "sha256": "4719f4542ca283424b14eb6a8d39e438f9da567f7614119f42e9ef438ee3f4b6"
+        },
+        {
+          "requestPath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "evidencePath": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4137f81d-9359-43ea-9ff6-5b6f5464fe93.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "7b67f82c3d587e36df465b5ae483d56f68a6a3278e0cdbc2f087434fa71d279f",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "promptHashes": {
+    "prompt.txt": "7dd6dff2686c1e9aa101cff9632843c38a69d13643dff8b656a6a0bea39b44f0"
+  },
+  "postprocessing": "None; raw and master are byte-identical native generated PNG copies. QA previews only use full-canvas containment.",
+  "runtimeReady": false,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true
+}

@@ -1,0 +1,8 @@
+{
+  "prompt": "Use case: background-extraction and precise-object-edit\nThe first image is the kit to correct. Produce a genuinely TRANSPARENT PNG cutout of these same three objects, with true zero-alpha empty pixels everywhere outside their solid silhouettes. The current dark colored haze and black backdrop are an error: remove them completely in the generated result. Do not draw a black, white, gray, colored or checkerboard background. No shadow, halo, gradient haze, glow or ambient cloud.\nUse a SQUARE 1:1 canvas, not the current landscape canvas. Recompose the complete three objects in the original source image 2 arrangement: fully round blue-gray/ochre planked shield left, dark teal folded cloth with brown belt and round brass clasp in the center, short plain gray hammer with wood handle right. Make each fully visible, separate, centered together, with a minimum 6 percent transparent border around the entire group. All space between objects must also be zero alpha. Preserve the large simple matte facets, strong contour, palette, and gear identity. No readable text or logos.\nThe round brass clasp must keep the source's small curved incised groove, without adding an emblem. Preserve reconstructed complete shield circumference and hammer head. This is a catalog icon asset, so output only the three opaque-core items on actual transparency.",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-militia-mercenary/candidate-v1.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/08-faction-militia-mercenary-full-cell.png"
+  ],
+  "transparent_background": true
+}

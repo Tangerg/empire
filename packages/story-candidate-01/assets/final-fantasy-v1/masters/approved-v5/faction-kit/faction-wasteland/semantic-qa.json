@@ -1,0 +1,35 @@
+{
+  "topicId": "C01-FACTION-WASTELAND",
+  "status": "pass-source-review-pending-parent-binding",
+  "reviewedSources": [
+    "full original cell",
+    "labeled source board",
+    "audit exact slot mapping",
+    "approved-v5 equipment masters",
+    "approved concept-v2"
+  ],
+  "identityChecks": [
+    "Round patchwork shield preserves muted rust/tan/ochre upper-left panels, blue-gray lower-right wedges, bound segmented rim and iron boss.",
+    "Folded terracotta cloth retains branching stitched repairs, tan lower-right patch and dark blue-gray lower hem with ochre trim.",
+    "Practical slender spear retains gray point, wrapped brown shaft and complete wooden butt.",
+    "Exactly three source objects left/center/right. No new crest, skull, totem, spikes, bones, text or invented cultural imagery."
+  ],
+  "styleChecks": [
+    "Broad matte planes and bold dark contour",
+    "Complete silhouettes and transparent inter-object gaps",
+    "Native 128px white/dark/olive visual proof generated from full authored canvas with 2px padding",
+    "No opaque backdrop, labels, text, ground shadow or generic crest"
+  ],
+  "noRepositoryOrGitWrites": true,
+  "actual128VisualQA": {
+    "status": "pass",
+    "reviewedAtNativeResolution": true,
+    "backgrounds": [
+      "white",
+      "dark",
+      "olive"
+    ],
+    "proof": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-wasteland/preview-128-white-dark-olive.png",
+    "finding": "All source objects remain recognizable and complete at actual 128px. Material palette and defining shield/belt/weapon grouping remain distinguishable; no visible colored halo or backplate."
+  }
+}

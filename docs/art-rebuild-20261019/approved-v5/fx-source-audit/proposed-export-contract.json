@@ -1,0 +1,124 @@
+{
+  "status": "RECOMMENDATION ONLY; not implemented or registered",
+  "geometry": {
+    "sheetSize1x": [
+      128,
+      32
+    ],
+    "frameSize1x": [
+      32,
+      32
+    ],
+    "sheetSize2x": [
+      256,
+      64
+    ],
+    "frameSize2x": [
+      64,
+      64
+    ],
+    "physicalDensity": 2,
+    "frameCount": 4,
+    "order": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "orderMeaning": "Authored board row columns left to right, inferred phase labels below are visual audit labels, not pre-existing manifest frame names.",
+    "fps": 12,
+    "frameIntervalMs": 83.33333333333333,
+    "nominalClipDurationMs": 333.3333333333333,
+    "manifestAnchor": [
+      16,
+      24
+    ],
+    "effectiveRuntimePivot": [
+      16,
+      16
+    ],
+    "runtimeStripOrigin": [
+      -16,
+      -16
+    ],
+    "runtimePlacement": "BoardView places effect at target cell centre.",
+    "declaredBlendMode": "normal",
+    "effectiveBlendMode": "Normal source-over by default. FX metadata blendMode is not forwarded to BoardStrip; no additive/screen setting exists on BoardStrip.",
+    "lastFrameBehavior": "FrameAnimationController holds the fourth frame after clip completes until effect drawing is removed.",
+    "hitLifetimeMs": 420,
+    "healLifetimeMs": 500,
+    "hitOverlay": "BoardView additionally overlays a white circle with initial alpha 0.65 and animated opacity plus damage number. Do not bake this independent burst into the FX art.",
+    "loopTopics": [
+      "C01-FX-09",
+      "C01-FX-10",
+      "C01-FX-11",
+      "C01-FX-12"
+    ],
+    "frameStartTimesMs": [
+      0,
+      83.33333333333333,
+      166.66666666666666,
+      250
+    ],
+    "finalFrameVisibleUntilRemovalMs": {
+      "hit": 170,
+      "heal": 250
+    },
+    "runtimeTextureSource": "candidate01Asset resolves runtime-hd/fx/fx-NN.png for all 24; logical coordinates stay 32x32. Pixi slices physical image width/4; SVG displays the HD image in logical strip bounds."
+  },
+  "registrationRequirements": [
+    "Exactly four source frames mapped to original board columns 0,1,2,3. Record per-frame semantic name and original source bounds.",
+    "One shared authored canvas, scale and origin across the four phases; stable measured effect origin. No independent bbox normalization, recentering, blanket resizing or translated/scaled copies presented as authored phases.",
+    "Keep phase-specific growth, shrinkage, trajectory and material changes. Unique hashes are necessary diagnostics, not proof of meaningful motion.",
+    "Source SHA-256 and decoded-pixel SHA-256 per frame; lock shared transform, frame order, pivot and output hashes in a reproducible review bundle.",
+    "Keep 1x and 2x as deterministic exports of the same full authored canvases, with both manifest records/density and actual renderer URL checked."
+  ],
+  "alphaRequirements": [
+    "PNG RGBA; transparent exterior with no unrelated opaque backing. Preserve intended interior partial alpha, smoky decay, glow and light.",
+    "Do not force alpha maximum >=240 for each phase; do not opacity-normalize fading phases. Do not weaken unit/prop gates globally.",
+    "Default output perimeter clear; any deliberate boundary contact must be explicitly reviewed. Source/current clipped beams in FX-16 are not a good template.",
+    "Meaningful visible content in each currently specified phase. A completely empty terminal phase would be a separately reviewed semantic change.",
+    "Inspect black, white, bright stone, green terrain and dark earth composites. A clear outer border does not prove absence of an opaque internal rectangle or cloudy backdrop.",
+    "No chroma keyed background, white fringe, saturated-magenta remnant or baked scene tile in new masters. Physical source motifs (stones, coals, tower, plinth) must be deliberate and compact."
+  ],
+  "motionAndConsumerChecks": [
+    "Play exact source order 0,1,2,3 at 12 fps; verify non-loop hold through hit 420ms and heal 500ms deletion.",
+    "FX-09..12 only are loop=true; review 3→0 continuity but do not invent weather/environment consumers.",
+    "Make FX anchor the single owner by correcting all 24 records to [16,16] and consuming it directly; this preserves current [-16,-16] draw positions. Characterize all current outputs and test non-centered anchor consumption. Do not apply old [16,24] or retain competing center fallback.",
+    "Normal source-over remains the blend. A screen/additive requirement needs an explicit rendering contract change in both backends.",
+    "For FX-01 pilot compare with the BoardView hit burst/number enabled; otherwise screenshots do not show the real overlay.",
+    "Review at true 32 logical pixels and HD density, then in the existing first-level hit event path. Staged comparison is not proof of live playback."
+  ],
+  "firstPilot": {
+    "topics": [
+      "C01-FX-01"
+    ],
+    "reason": "First-level c01.border-blade is used by Laiya and swordsmen; simple readable four-phase crescent affords direct proof of original-order motion, shared registration, normal compositing, and target-centred hit playback.",
+    "source": "boards/fx-atlas-01-original.png row 1 columns 1-4; source-crops/C01-FX-01/",
+    "phaseNamesProposed": [
+      "crescent-onset",
+      "sweep-growth",
+      "peak-sweep",
+      "fragment-decay"
+    ],
+    "geometryPolicy": "Retain 32x32 logical cells, 128x32/256x64 strip outputs, 12fps, non-loop and normal source-over. Use a single authored canvas, common transform and stable pivot across all four phases; do not use alpha-bbox fit.",
+    "pivotDecision": "First unify the single pivot owner in a behavior-preserving engineering change: correct the 24 manifest anchors to actual [16,16] and make the renderer consume anchor. Keep all existing output positions [-16,-16]. Regress every topic and a non-centered test anchor; the FX-01 pilot then targets the declared [16,16] anchor without any competing fallback.",
+    "renderReview": "At actual scene size evaluate all 4 frames and 0..420ms sequence over bright stone, dark earth and green ground, with normal hit circle/number present. Check that growth is visible and final fragments are unobtrusive during held-final-frame interval.",
+    "nextOptional": "FX-17 heal exercises legitimate glow/translucent phase export after the slash pilot is accepted; do not include it in the first pilot by default."
+  },
+  "singlePivotOwnershipRecommendation": {
+    "owner": "Each FX record anchor is the single authoritative logical pivot; renderer consumes it directly.",
+    "currentFact": "All 24 manifests say [16,24], but all 24 current FX render with x=-16,y=-16, effective pivot [16,16].",
+    "recommendedChange": "Correct all 24 FX anchors to [16,16] and derive candidate01FxPicture strip x=-record.anchor[0], y=-record.anchor[1]. Apply both parts atomically; do not honor old [16,24] and shift art.",
+    "whyBehaviorPreserving": "For every current 32x32 frame, old (-frameWidth/2,-frameHeight/2)=(-16,-16), and new (-anchorX,-anchorY)=(-16,-16). Existing sheet pixels, draw position, target centre, source URL, dimensions, frame order, fps, loop and blend remain unchanged.",
+    "futureExport": "New FX uses the same one declared anchor, shared authored canvas, scale and fixed origin across all four phases. Do not keep a separate effectivePivot fallback as a second authority.",
+    "requiredRegression": [
+      "Snapshot/characterize all 24 existing FX BoardPictures; compare full strip geometry, href, clips, frame order, playing, fps and loop after metadata+renderer correction.",
+      "Assert all 24 new manifest anchors equal [16,16], logical strip origin remains [-16,-16], both 1x/2x geometry remains unchanged.",
+      "Add a non-centered synthetic valid FX anchor test so hard-coded center arithmetic fails; this proves the renderer reads the declared owner.",
+      "Reject missing/invalid FX anchors at the contract boundary instead of adding silent center defaults.",
+      "Confirm target-centre placement and SVG/Pixi frame windows remain unchanged; no BoardView timing, hit overlay, blend or gameplay change."
+    ],
+    "status": "Recommendation to independent engineering task only; no repo code or manifests changed by this audit."
+  }
+}
