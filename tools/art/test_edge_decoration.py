@@ -29,7 +29,7 @@ class EdgeDecorationTests(unittest.TestCase):
 
     def test_production_source_graph_and_reproducibility(self):
         reports = export(ROOT, ROOT / MANIFEST, True)
-        self.assertEqual(len(reports), 4)
+        self.assertEqual(len(reports), 6)
         self.assertTrue(all(r['alpha']['edgeMaxAlpha'] <= 1 for r in reports))
 
     def test_every_rgba_pixel_is_exact_full_canvas_resize_with_transparent_margin(self):

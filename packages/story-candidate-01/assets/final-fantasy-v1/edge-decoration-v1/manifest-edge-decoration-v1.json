@@ -58,6 +58,29 @@
       "png": "runtime/bank-edge.png",
       "png2x": "runtime/bank-edge@2x.png",
       "sourcePadding": 68
+    },
+    {
+      "id": "village-ground-apron",
+      "source": "masters/supplemental/village-ground-apron/revision-2/master.png",
+      "sourceSha256": "0d11e2d8ff7c87285541b319053384cc2cac7f35f5cc2c18344143b0a13f06ff",
+      "sourceSize": [
+        1692,
+        930
+      ],
+      "sourceAnchor": [
+        853.5,
+        480
+      ],
+      "meaningfulSourceBounds": [
+        39,
+        131,
+        1668,
+        858
+      ],
+      "logicalPerSourcePixel": 0.04910988336402701,
+      "png": "runtime/village-ground-apron.png",
+      "png2x": "runtime/village-ground-apron@2x.png",
+      "sourcePadding": 61
     }
   ],
   "scenes": [
@@ -1504,6 +1527,53 @@
                 "plain",
                 "plain",
                 "plain"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "village-entry-apron",
+          "assetId": "village-ground-apron",
+          "center": [
+            272,
+            191
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              6,
+              4
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "road",
+                "road",
+                "village",
+                "road",
+                "road"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "road"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "road"
               ]
             ]
           }

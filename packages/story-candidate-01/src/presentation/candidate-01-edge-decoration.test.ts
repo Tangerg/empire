@@ -26,7 +26,7 @@ function supportedFixture(scene = decorations.scenes[0]) {
 describe('authored c01-02 ground-edge decoration', () => {
   it('resolves complete immutable sources and both native-density padded exports', () => {
     expect(decorations.meaningfulAlphaMin).toBe(2);
-    expect(decorations.assets).toHaveLength(2);
+    expect(decorations.assets).toHaveLength(3);
     for (const asset of decorations.assets) {
       const source = readFileSync(resolve(pack, asset.source));
       expect(createHash('sha256').update(source).digest('hex')).toBe(asset.sourceSha256);
@@ -92,7 +92,20 @@ describe('authored c01-02 ground-edge decoration', () => {
     }
     const map = mapFromLevel(content, candidate01Level('c01-02'));
     map.tiles[idx(map, 0, 0)] = 'forest';
-    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(14);
+    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(15);
+  });
+
+  it('grounds only the reviewed village entry without changing its rules or standing geometry', () => {
+    const map = mapFromLevel(content, candidate01Level('c01-02'));
+    const before = JSON.stringify(map);
+    const apron = candidate01EdgeDecorationPieces('c01-02', map).filter(p => p.markup.includes('village-ground-apron'));
+    expect(apron).toHaveLength(1);
+    expect([apron[0].x, apron[0].y]).toEqual([272, 191]);
+    expect(apron[0].foot).toBeUndefined();
+    expect(apron[0].markup).not.toMatch(/clipPath|mask=|opacity=|filter=|rotate/);
+    expect(JSON.stringify(map)).toBe(before);
+    map.tiles[idx(map, 8, 5)] = 'plain';
+    expect(candidate01EdgeDecorationPieces('c01-02', map).some(p => p.markup.includes('village-ground-apron'))).toBe(false);
   });
 
   it('does not claim coverage for another level or reuse a mismatched map extent', () => {
@@ -100,7 +113,7 @@ describe('authored c01-02 ground-edge decoration', () => {
     expect(candidate01EdgeDecorationPieces('c01-01', map)).toEqual([]);
     expect(candidate01EdgeDecorationPieces('editor-map', map)).toEqual([]);
     expect(candidate01EdgeDecorationPieces('c01-02', { ...map, width: map.width - 1 })).toEqual([]);
-    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(14);
+    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(15);
     map.tiles.fill('forest');
     expect(candidate01EdgeDecorationPieces('c01-02', map)).toEqual([]);
   });

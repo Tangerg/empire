@@ -1,0 +1,82 @@
+{
+  "status": "revision-2 source candidate only; pending coordinator review",
+  "generator": "built-in image_gen.imagegen",
+  "original_path": "/workspace/scratch/84c9fe948755/generated_images/exec-69b0be12-23e7-44ca-8871-6e2d1c957e88.png",
+  "master_sha256": "0d11e2d8ff7c87285541b319053384cc2cac7f35f5cc2c18344143b0a13f06ff",
+  "dimensions": [
+    1692,
+    930
+  ],
+  "mode": "RGBA",
+  "alpha_bbox": [
+    0,
+    3,
+    1678,
+    894
+  ],
+  "alpha_threshold_bboxes": {
+    "2": [
+      39,
+      131,
+      1668,
+      858
+    ],
+    "8": [
+      41,
+      132,
+      1666,
+      856
+    ],
+    "32": [
+      41,
+      133,
+      1666,
+      855
+    ],
+    "128": [
+      42,
+      134,
+      1665,
+      855
+    ],
+    "240": [
+      43,
+      135,
+      1664,
+      854
+    ]
+  },
+  "outer_edge_alpha_extrema": {
+    "top": [
+      0,
+      0
+    ],
+    "bottom": [
+      0,
+      0
+    ],
+    "left": [
+      0,
+      1
+    ],
+    "right": [
+      0,
+      0
+    ]
+  },
+  "exporter_edge_contract_pass": true,
+  "transparent_pixels": 946884,
+  "partial_alpha_pixels": 626086,
+  "opaque_pixels": 590,
+  "intended_runtime_footprint_2x": [
+    160,
+    88
+  ],
+  "preservation": "Original bytes copied unchanged; no cropping or RGB/alpha edits. First candidate preserved.",
+  "reference_inputs": [
+    "../master.png",
+    "approved-v5/earth-material/revision-2/master.png",
+    "approved-v5/grass-material/master.png"
+  ],
+  "visual_review": "Substantially better muted dusty tan/olive match, large low-frequency planes instead of watercolor grain. Asymmetric apron and lower tongue preserved. Wide padding request not fully followed visually; exact alpha edge results recorded."
+}

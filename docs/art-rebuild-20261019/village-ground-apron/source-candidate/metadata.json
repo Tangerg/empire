@@ -1,0 +1,72 @@
+{
+  "status": "source-candidate-only; not canonical or runtime bound",
+  "generator": "built-in image_gen.imagegen",
+  "original_path": "/workspace/scratch/84c9fe948755/generated_images/exec-711a6e8f-4afa-4ec9-8b50-6cd9d7ae2c80.png",
+  "master_sha256": "7adbf7c8ef7d83edf727dd6f83f0148dfaf4cd92c72c7edf347df3faf7d038ea",
+  "dimensions": [
+    1691,
+    930
+  ],
+  "mode": "RGBA",
+  "alpha_bbox": [
+    0,
+    0,
+    1671,
+    930
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 963175,
+  "partially_transparent_pixels": 609259,
+  "opaque_pixels": 196,
+  "intended_meaningful_runtime_footprint_2x": [
+    160,
+    88
+  ],
+  "reference_earth_sha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+  "reference_grass_sha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+  "reference_usage": "Inspected approved originals and runtime full scene before generation; no file inputs passed. Prompt specifies inspected references.",
+  "preservation": "Master copied byte-for-byte. No alpha removal, recolor, or image editing.",
+  "visual_review": "Ground-only, asymmetrical horizontal apron, lower access tongue; no buildings, props, rocks, square pad, shadow disc or outline. Earth appears lighter and grass warmer than authoritative references; native village proof required before acceptance. Texture more painterly than low-frequency source materials.",
+  "alpha_threshold_bboxes": {
+    "8": [
+      49,
+      140,
+      1659,
+      844
+    ],
+    "32": [
+      49,
+      141,
+      1658,
+      844
+    ],
+    "64": [
+      50,
+      141,
+      1658,
+      844
+    ],
+    "128": [
+      51,
+      142,
+      1657,
+      843
+    ],
+    "200": [
+      51,
+      143,
+      1656,
+      842
+    ],
+    "240": [
+      54,
+      144,
+      1656,
+      841
+    ]
+  },
+  "nonzero_alpha_mean": 237.22512244546357
+}
