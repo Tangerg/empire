@@ -1,0 +1,20 @@
+{
+  "tool": "image_gen__imagegen",
+  "useCase": "stylized-concept",
+  "attempt": 1,
+  "pose": "idle",
+  "exactToolRequest": "tool-request.json",
+  "promptSha256": "6e307d3a2f0ed0a2ef984046afc18ae74517ec88e646bfdd557f855631ff5a4e",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/references/original-idle-cell.png",
+      "role": "identity",
+      "sha256": "c1d4e3781bf04019aeada740ece61d3b144bfe8fe55dcd634c1195f23b0cc292"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/shaman/references/approved-spearman-idle.png",
+      "role": "style only",
+      "sha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f"
+    }
+  ]
+}

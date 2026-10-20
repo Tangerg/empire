@@ -1,0 +1,1 @@
+Initial tool display showed nonzero RGB color in fully transparent pixels, which looked like brown haze. This was only a display effect. Direct native alpha inspection and actual black/white alpha composites show no visible exterior haze. Therefore the initial provisional rejection was incorrect. No pixels changed; native raw/master are accepted for coordinator review.

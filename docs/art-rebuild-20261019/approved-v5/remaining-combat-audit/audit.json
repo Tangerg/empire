@@ -1,0 +1,1067 @@
+{
+  "createdUtc": "2026-10-20T00:09:50.663693+00:00",
+  "scope": "Read-only C01 combat completion, consumers and named identity continuity. Audit files written only in shared output folder; no repository/Git/generation changes.",
+  "snapshot": {
+    "progress": {
+      "path": "docs/art-rebuild-20261019/approved-v5/progress.json",
+      "sha256": "7b3352ce4e4d1ced590207f7c1149d53b51f13fbb430da5900926ed1db6d6e0a"
+    },
+    "canonicalManifest": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+      "sha256": "2f7cb2344919f04fb869f48e6d043486d4143446a4448b53452911d1f4e518b9"
+    },
+    "hdManifest": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json",
+      "sha256": "86ad4437be092aa03769894ffdc97759ba1149f370e0b5bc7384fc92d9137093"
+    },
+    "bindingSource": {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0"
+    },
+    "levelSource": {
+      "path": "packages/story-candidate-01/src/levels.ts",
+      "sha256": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad"
+    },
+    "heroManifest": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-hero-appearances.json",
+      "sha256": "02a1396ffe557d89fb394d31ff324cfcfdffce61cecf5b115644602e01b9b078"
+    }
+  },
+  "counts": {
+    "formalAllCategories": 321,
+    "canonicalCombat": 40,
+    "formalCombat": 38,
+    "remainingCombat": [
+      "C01-UNIT-SHAMAN",
+      "C01-UNIT-WYVERN-RIDER"
+    ],
+    "builtinLevels": 4,
+    "c01Levels": 16,
+    "initialPlacements": 401,
+    "spawnUnitsReinforcements": 14,
+    "unboundCatalogCombatTopics": [
+      "C01-UNIT-AXE-BREAKER",
+      "C01-UNIT-BERSERKER",
+      "C01-UNIT-CANNON-WAGON",
+      "C01-UNIT-EAGLE-SCOUT",
+      "C01-UNIT-JAVELIN-HUNTER",
+      "C01-UNIT-LANCE-CAVALRY",
+      "C01-UNIT-SHAMAN",
+      "C01-UNIT-SPEARMAN",
+      "C01-UNIT-SPIRIT-FIRE",
+      "C01-UNIT-WHITE-STAG-RIDER",
+      "C01-UNIT-WYVERN-RIDER"
+    ]
+  },
+  "subjects": {
+    "C01-UNIT-SHAMAN": {
+      "canonical": {
+        "assetId": "C01-FFV1-UNIT-SHAMAN",
+        "topicId": "C01-UNIT-SHAMAN",
+        "label": "萨满",
+        "category": "combat-unit",
+        "png": "runtime/combat-unit/unit-shaman.png",
+        "width": 128,
+        "height": 48,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "frameWidth": 32,
+        "frameHeight": 48,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "anchor": [
+          16,
+          47
+        ],
+        "footprint": [
+          1,
+          1
+        ]
+      },
+      "hd": {
+        "topicId": "C01-UNIT-SHAMAN",
+        "png": "runtime-hd/combat-unit/unit-shaman.png",
+        "width": 256,
+        "height": 96,
+        "pixelDensity": 2
+      },
+      "currentRuntime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-shaman.png",
+        "sha256": "0aae90f5b94715642243b3305bc92c237c332f06eedfe229db55f26d673d80e4",
+        "size": [
+          128,
+          48
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "currentHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-shaman.png",
+        "sha256": "da3e489a048a8e41b5081a1e2ec58d2bfd8260a063257df18fc32cfaa0b762b5",
+        "size": [
+          256,
+          96
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-axebreaker-golem-shaman-javelin.png",
+        "sha256": "d4b3ad5bc57f65ca25758b2394ee4d6d843460bfc0e4c0903d9a7cd2946215e8",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "boardRows": 4,
+      "boardColumns": 4,
+      "rowZeroBased": 2,
+      "rowOneBased": 3,
+      "originalCombatIndexZeroBased": 26,
+      "semanticColumns": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "exactLegacyBuilderCrops": {
+        "idle": [
+          5,
+          632,
+          309,
+          935
+        ],
+        "walk-a": [
+          319,
+          632,
+          622,
+          935
+        ],
+        "attack": [
+          632,
+          632,
+          935,
+          935
+        ],
+        "walk-b": [
+          945,
+          632,
+          1249,
+          935
+        ]
+      },
+      "subjectReferenceRowBox": [
+        0,
+        627,
+        1254,
+        910
+      ],
+      "subjectReferenceIdleBox": [
+        0,
+        627,
+        314,
+        910
+      ],
+      "referenceCropPolicy": "Native unresampled read-only reference extraction. Crops are new audit files only; no source image edits or runtime regeneration. Uniform legacy grid is documented, not endorsed as complete anatomical crop.",
+      "consumers": {
+        "topicId": "C01-UNIT-SHAMAN",
+        "domainBindings": [],
+        "initialPlacements": [],
+        "reinforcements": []
+      },
+      "topicStage": null,
+      "identity": "Olive-skinned, pointed-eared adult humanoid; long dark locks tied back; rust-brown layered robe/leather, gray fur shoulder edges, necklaces/belt, brown footwear. Round laced tan drum at screen-left hip; tall crescent/fork-topped wooden staff at screen-right with small hanging colored tassels. No domain definition establishes race, gender, spells or gameplay attack. Preserve observed features rather than inventing a human or animal identity.",
+      "poseHazard": "Legacy third attack cell is effectively idle-like, no strong cast/strike. Fourth walk repeats similar direction instead of proving opposite support. New source semantics require explicit review; catalog does not prove a runtime weather/status ability.",
+      "assignment": "Parent assigned independent combat worker animate_grayflag_shaman at 00:07 UTC. Do not duplicate. Separate equipment refusal remains held."
+    },
+    "C01-UNIT-WYVERN-RIDER": {
+      "canonical": {
+        "assetId": "C01-FFV1-UNIT-WYVERN-RIDER",
+        "topicId": "C01-UNIT-WYVERN-RIDER",
+        "label": "飞龙骑手",
+        "category": "combat-unit",
+        "png": "runtime/combat-unit/unit-wyvern-rider.png",
+        "width": 256,
+        "height": 64,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "frameWidth": 64,
+        "frameHeight": 64,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "anchor": [
+          32,
+          63
+        ],
+        "footprint": [
+          2,
+          2
+        ]
+      },
+      "hd": {
+        "topicId": "C01-UNIT-WYVERN-RIDER",
+        "png": "runtime-hd/combat-unit/unit-wyvern-rider.png",
+        "width": 512,
+        "height": 128,
+        "pixelDensity": 2
+      },
+      "currentRuntime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-wyvern-rider.png",
+        "sha256": "cbe663ad16f357af7acab39fb8903700e2746ab6da0ee2dcd31c341c2b50d81b",
+        "size": [
+          256,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "currentHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-wyvern-rider.png",
+        "sha256": "6f1ff3bc08e1b8e8b1ed6a5744744101ee8d88bb410f0774d5d0c57da2cb868f",
+        "size": [
+          512,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-colossus-ivra-wyvern-dragon.png",
+        "sha256": "0388f089c7f43b805e38fea9443c9832769b27b1d1151b1a00afb103ecc0628d",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "boardRows": 4,
+      "boardColumns": 4,
+      "rowZeroBased": 2,
+      "rowOneBased": 3,
+      "originalCombatIndexZeroBased": 38,
+      "semanticColumns": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "exactLegacyBuilderCrops": {
+        "idle": [
+          5,
+          632,
+          309,
+          935
+        ],
+        "walk-a": [
+          319,
+          632,
+          622,
+          935
+        ],
+        "attack": [
+          632,
+          632,
+          935,
+          935
+        ],
+        "walk-b": [
+          945,
+          632,
+          1249,
+          935
+        ]
+      },
+      "subjectReferenceRowBox": [
+        0,
+        590,
+        1254,
+        885
+      ],
+      "subjectReferenceIdleBox": [
+        0,
+        590,
+        309,
+        885
+      ],
+      "referenceCropPolicy": "Native unresampled read-only reference extraction. Crops are new audit files only; no source image edits or runtime regeneration. Uniform legacy grid is documented, not endorsed as complete anatomical crop.",
+      "consumers": {
+        "topicId": "C01-UNIT-WYVERN-RIDER",
+        "domainBindings": [],
+        "initialPlacements": [],
+        "reinforcements": []
+      },
+      "topicStage": null,
+      "identity": "Adult human rider, brown ponytail, bare face, blue-gray scarf, brown leather armor, short spear with torn blue-gray pennant/red patch, reins, brown saddle/roll and ochre pad. Mount is visibly a gray-olive WINGLESS FOUR-LEGGED reptile with horns/spines, amber eyes, long snout and curled tail. Do not substitute a winged biped merely because its catalog says wyvern.",
+      "assignment": "Existing exclusive worker active; its approved pilot is 54/880.5 shared scale, source support [900,981], 128x80 logical frame, origin [14,6]. Current formal canonical/HD manifests remain legacy at this audit snapshot. Working source evidence at /workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider.",
+      "sourceLabelConflict": "Concept README line671 calls it a recruitable flying troop; no corresponding implemented domain unit or binding. Existing art is wingless quadruped and grounded. Legacy grid also cuts the upper spear and includes neighboring dragon horn specks; the active worker uses complete visual row/cell instead."
+    },
+    "C01-UNIT-IVRA-GROWTH": {
+      "canonical": {
+        "assetId": "C01-FFV1-UNIT-IVRA-GROWTH",
+        "topicId": "C01-UNIT-IVRA-GROWTH",
+        "label": "伊芙拉成长单位",
+        "category": "combat-unit",
+        "png": "runtime-approved-v5/combat-unit/unit-ivra-growth.png",
+        "width": 512,
+        "height": 80,
+        "runtimeReady": true,
+        "qualityTier": "approved-chunky-v5-export-verified",
+        "frameWidth": 128,
+        "frameHeight": 80,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "anchor": [
+          72.56286165176223,
+          63.91478169384534
+        ],
+        "footprint": [
+          2,
+          2
+        ],
+        "preserveAuthoredPalette": true
+      },
+      "hd": {
+        "topicId": "C01-UNIT-IVRA-GROWTH",
+        "png": "runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+        "width": 1024,
+        "height": 160,
+        "pixelDensity": 2
+      },
+      "currentRuntime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth.png",
+        "sha256": "a4963d2b7bdee05edba69d6acaec022b294264e424e0c6c1b6fda665d85466f6",
+        "size": [
+          512,
+          80
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "currentHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+        "sha256": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad",
+        "size": [
+          1024,
+          160
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-colossus-ivra-wyvern-dragon.png",
+        "sha256": "0388f089c7f43b805e38fea9443c9832769b27b1d1151b1a00afb103ecc0628d",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "boardRows": 4,
+      "boardColumns": 4,
+      "rowZeroBased": 1,
+      "rowOneBased": 2,
+      "originalCombatIndexZeroBased": 37,
+      "semanticColumns": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "exactLegacyBuilderCrops": {
+        "idle": [
+          5,
+          319,
+          309,
+          622
+        ],
+        "walk-a": [
+          319,
+          319,
+          622,
+          622
+        ],
+        "attack": [
+          632,
+          319,
+          935,
+          622
+        ],
+        "walk-b": [
+          945,
+          319,
+          1249,
+          622
+        ]
+      },
+      "subjectReferenceRowBox": [
+        0,
+        315,
+        1254,
+        590
+      ],
+      "subjectReferenceIdleBox": [
+        0,
+        315,
+        325,
+        590
+      ],
+      "referenceCropPolicy": "Native unresampled read-only reference extraction. Crops are new audit files only; no source image edits or runtime regeneration. Uniform legacy grid is documented, not endorsed as complete anatomical crop.",
+      "consumers": {
+        "topicId": "C01-UNIT-IVRA-GROWTH",
+        "domainBindings": [
+          {
+            "unit": "c01.ivra",
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        ],
+        "initialPlacements": [
+          {
+            "level": "c01-09",
+            "key": "caged-ivra",
+            "x": 7,
+            "y": 6,
+            "unit": "c01.ivra",
+            "owner": 3,
+            "facing": "west",
+            "directive": {
+              "mode": "guard"
+            },
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-10",
+            "key": "campaign-ivra",
+            "x": 11,
+            "y": 8,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-11",
+            "key": "campaign-ivra",
+            "x": 5,
+            "y": 11,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-12",
+            "key": "campaign-ivra",
+            "x": 5,
+            "y": 11,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-13",
+            "key": "campaign-ivra",
+            "x": 5,
+            "y": 12,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-14",
+            "key": "campaign-ivra",
+            "x": 5,
+            "y": 12,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-15",
+            "key": "campaign-ivra",
+            "x": 5,
+            "y": 12,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          },
+          {
+            "level": "c01-16",
+            "key": "campaign-ivra",
+            "x": 5,
+            "y": 13,
+            "unit": "c01.ivra",
+            "owner": 1,
+            "facing": "east",
+            "art": {
+              "topicId": "C01-UNIT-IVRA-GROWTH"
+            }
+          }
+        ],
+        "reinforcements": []
+      },
+      "topicStage": {
+        "raw": "four native dragon poses with preserved compact-tail revision history",
+        "export": "shared56/950.5 scale,128x80 canvas, foot registration <=1.414logical, opposite quadruped contacts and attack reviewed",
+        "runtimeBinding": "canonical+HD resolved; full c01-15 actual BoardView reviewed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/animation/ivra-growth"
+      },
+      "identity": "Accepted battle quartet explicitly preserves one juvenile-intent copper-red dragon, gold eyes, gray horns/spines/natural belly plates, white branching left-neck scar, four legs plus two separate wings, no rider/saddle/chain/collar. The four semantic action columns are never growth stages.",
+      "nativeRegistration": {
+        "frames": {
+          "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/idle/master.png",
+          "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-a/master.png",
+          "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/attack/master.png",
+          "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-b/master.png"
+        },
+        "scale": 0.058916359810625984,
+        "origin": [
+          14,
+          6
+        ],
+        "frameSize": [
+          128,
+          80
+        ],
+        "sourceFoot": [
+          994,
+          983
+        ],
+        "sourceFeet": {
+          "idle": [
+            994,
+            983
+          ],
+          "walk-a": [
+            1018,
+            967
+          ],
+          "attack": [
+            987,
+            962
+          ],
+          "walk-b": [
+            1017,
+            982
+          ]
+        },
+        "canvasPaddingTolerance": 1,
+        "registrationLimit": 4,
+        "registrationOffsets": {
+          "idle": [
+            0.0,
+            0.0
+          ],
+          "walk-a": [
+            -1.4139926354550236,
+            0.9426617569700158
+          ],
+          "attack": [
+            0.4124145186743819,
+            1.2372435560231456
+          ],
+          "walk-b": [
+            -1.3550762756443977,
+            0.058916359810625984
+          ]
+        }
+      },
+      "nativeFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/idle/master.png",
+          "sha256": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-a/master.png",
+          "sha256": "2247fe314f6a7e527b93c4ccc09bc04b1f3dbeb8a3e030259cb61b6866408448",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/attack/master.png",
+          "sha256": "e83da9e71c4e7c5da48df41a24e32a838542be7f9633f7da2bd87d84cb4664c6",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-b/master.png",
+          "sha256": "84037cae336e4216ba6123420599672ee2e1c9157f2ca5f80f9215b9ad303b24",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      },
+      "status": "Already formal. Eight initial actual C01 consumers, no builtin consumers, no reinforcements. Do not create a second canonical assignment."
+    }
+  },
+  "equipmentShamanRefusal": {
+    "topicId": "C01-EQUIP-SHAMAN",
+    "status": "No output produced. Built-in image generation HTTP400 output safety rejection, category other/abuse. Request ID 97a8e076-6f8b-4f88-b718-a2925d12242d. Do not count as generated master.",
+    "failedPrompt": "Use case: style-transfer. Remake image1 shaman equipment icon. Exact identity from image2 sourceboard THIRD ROW THIRD CELL: one round tan hide drum on left with cord-laced wooden rim and muted teal angular knot/snowflake-like painted symbol; one short forked wooden ritual stick on right wrapped with brown cord, carrying two pale feathers. Preserve source drum symbol faithfully, no invented face or letters. Exactly drum+forked featherstick, no character. Image3 style only: restrained matte hand-drawn fantasystrategy, bold warm outlines, earthy tan/brown/mutedteal, readable drumlacing, broad woodplanes and feather shapes at48px, diffuse light/no oilygloss or texture noise. Highres square, full centered objects with clear margins. Truealpha exterior, no backdrop, groundshadow, glow/haze, text or border. Ignore magenta/other atlascells.",
+    "evidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-shaman/generation-status.txt",
+        "sha256": "5b630938c425dcee4e42bb148df3b2c34817b35d520dba353999481162ac0d8a"
+      },
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-shaman/failed-prompt.txt",
+        "sha256": "f96ce405eb75effd2713c57d9b89aa9a7937a3fbdd98f7e5c7f7848ebbe23a57"
+      }
+    ],
+    "relationship": "Distinct source/category from C01-UNIT-SHAMAN. Equipment is drum plus short forked featherstick; combat board is a complete humanoid carrying drum plus tall crescent staff. Same motif does not merge topic IDs. No combat imagegen attempt or rejection was found in repository/shared saved source history at audit time. Parent has separately assigned combat source work. This audit neither retries nor interprets the equipment refusal as cleared."
+  },
+  "ivraContinuity": {
+    "portraitSlots": [
+      {
+        "topicId": "C01-CHAR-IVRA-01",
+        "label": "伊芙拉幼龙",
+        "englishStage": "juvenile",
+        "originalBoard": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "alphaExtrema": null
+        },
+        "cellZeroBased": 1,
+        "rowOneBased": 1,
+        "columnOneBased": 2,
+        "exactBuilderCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "canonical": {
+          "assetId": "C01-FFV1-CHAR-IVRA-01",
+          "topicId": "C01-CHAR-IVRA-01",
+          "label": "伊芙拉幼龙",
+          "category": "narrative-static",
+          "png": "runtime/narrative-static/char-ivra-01.png",
+          "width": 192,
+          "height": 224,
+          "runtimeReady": true,
+          "qualityTier": "final-cartoon-fantasy-v1",
+          "kind": "character-card"
+        },
+        "runtime": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-01.png",
+          "sha256": "17eb3af3e50f7902ec50234b6ee43e36f717f125788a9528a58863ae9410f00a",
+          "size": [
+            192,
+            224
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            255,
+            255
+          ]
+        },
+        "auditReference": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-combat-audit/references/ivra-portrait-stage01-original.png",
+        "inFormalTopicStages": false
+      },
+      {
+        "topicId": "C01-CHAR-IVRA-02",
+        "label": "伊芙拉青年龙",
+        "englishStage": "young dragon",
+        "originalBoard": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "alphaExtrema": null
+        },
+        "cellZeroBased": 2,
+        "rowOneBased": 2,
+        "columnOneBased": 1,
+        "exactBuilderCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "canonical": {
+          "assetId": "C01-FFV1-CHAR-IVRA-02",
+          "topicId": "C01-CHAR-IVRA-02",
+          "label": "伊芙拉青年龙",
+          "category": "narrative-static",
+          "png": "runtime/narrative-static/char-ivra-02.png",
+          "width": 192,
+          "height": 224,
+          "runtimeReady": true,
+          "qualityTier": "final-cartoon-fantasy-v1",
+          "kind": "character-card"
+        },
+        "runtime": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-02.png",
+          "sha256": "14a2685a942e1ac6904c0c69e695c4aecf005d29aa8b8dec596dab55ac8708f7",
+          "size": [
+            192,
+            224
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            255,
+            255
+          ]
+        },
+        "auditReference": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-combat-audit/references/ivra-portrait-stage02-original.png",
+        "inFormalTopicStages": false
+      },
+      {
+        "topicId": "C01-CHAR-IVRA-03",
+        "label": "伊芙拉成年指挥官",
+        "englishStage": "adult commander",
+        "originalBoard": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "alphaExtrema": null
+        },
+        "cellZeroBased": 3,
+        "rowOneBased": 2,
+        "columnOneBased": 2,
+        "exactBuilderCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "canonical": {
+          "assetId": "C01-FFV1-CHAR-IVRA-03",
+          "topicId": "C01-CHAR-IVRA-03",
+          "label": "伊芙拉成年指挥官",
+          "category": "narrative-static",
+          "png": "runtime/narrative-static/char-ivra-03.png",
+          "width": 192,
+          "height": 224,
+          "runtimeReady": true,
+          "qualityTier": "final-cartoon-fantasy-v1",
+          "kind": "character-card"
+        },
+        "runtime": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-03.png",
+          "sha256": "056dbe40c5e40610a386e327a4fa82e6f5ba452408eaa9f6e39d471b5f5ef9b3",
+          "size": [
+            192,
+            224
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            255,
+            255
+          ]
+        },
+        "auditReference": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-combat-audit/references/ivra-portrait-stage03-original.png",
+        "inFormalTopicStages": false
+      }
+    ],
+    "comparison": "ivra-age-continuity-side-by-side.png",
+    "risk": "Continuity review hazard, not absent canonical work: active card01 is round-eyed hatchling with short horns/tiny wings; accepted battle source has long horn crown/broad wings/angular head, visually closer to later-age silhouette. Current source evidence calls battle juvenile, while progress.namedHeroAppearances records maturity mismatch risk. Do not override accepted work or assign adult stage by label inference.",
+    "exactAgeSelectionState": {
+      "battle": "candidate-01-bindings.ts:16 maps c01.ivra to C01-UNIT-IVRA-GROWTH without appearanceId. candidate-01-hero-appearances.ts:resolveCandidate01UnitArt therefore uses topic/team asset, with no rank/chapter/age argument. No Ivra appearance exists in hero manifest.",
+      "hudRosterCodex": "candidate-01-bindings.ts:106 maps c01.ivra to CHAR-IVRA-01; portraitMarkup resolves the character topic without rank/chapter selection.",
+      "dialogue": "candidate-01-story.ts:10 statically maps speaker ivra to CHAR-IVRA-01.",
+      "laterCards": "CHAR-IVRA-02/03 exist in asset catalog but no shipped src/app reference selects them. Generic storyArt(topicId) could resolve an explicitly requested topic; current story data supplies no such Ivra02/03 request.",
+      "campaign": "Implemented campaign is chapters1-3 only. Initial roster uses c01.ivra rank0; battle context has no art-age transition. Concept README later chapter4/6 growth/mount/commander plans are not implemented progression.",
+      "engineFootprint": "Existing [2,2] is ART metadata. No claim or modification of domain multi-cell occupancy."
+    }
+  },
+  "protectedHumanAppearances": [
+    {
+      "id": "laiya-stage01",
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "png": "runtime-approved-v5/hero-appearance/laiya-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        55.33163265306123,
+        59.28061224489796
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    },
+    {
+      "id": "roderick-stage01",
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "png": "runtime-approved-v5/hero-appearance/roderick-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        60.2428722280887,
+        63.65575501583949
+      ],
+      "hdWidth": 1024,
+      "hdHeight": 160
+    },
+    {
+      "id": "mirelle-stage01",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "runtime-approved-v5/hero-appearance/mirelle-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        44.291621327529924,
+        50.29815016322089
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    },
+    {
+      "id": "torren-stage01",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "runtime-approved-v5/hero-appearance/torren-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        44.51901565995526,
+        51.44519015659955
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    },
+    {
+      "id": "cain-stage01",
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "png": "runtime-approved-v5/hero-appearance/cain-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        40.8372602739726,
+        50.579726027397264
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    },
+    {
+      "id": "bran-stage01",
+      "topicId": "C01-UNIT-RANGER",
+      "png": "runtime-approved-v5/hero-appearance/bran-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.81419624217119,
+        49.102296450939455
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    },
+    {
+      "id": "tasha-stage01",
+      "topicId": "C01-UNIT-ENGINEER",
+      "png": "runtime-approved-v5/hero-appearance/tasha-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/tasha-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.89891135303266,
+        49.117677553136346
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
+    }
+  ],
+  "otherNamedActorHazard": {
+    "actor": "campaign-elin",
+    "name": "艾琳",
+    "unitType": "c01.archer",
+    "topicId": "C01-UNIT-ARCHER",
+    "initialAppearances": 16,
+    "actorOverride": null,
+    "namedCardTopic": null,
+    "evidence": [
+      "packages/story-candidate-01/src/campaign.ts:138",
+      "packages/story-candidate-01/src/levels.ts:349,404",
+      "docs/story-candidates/candidate-01/PLAYABLE-CAMPAIGN.md:105"
+    ],
+    "risk": "Named retinue member still intentionally/implicitly uses generic archer. No canonical Elin appearance/portrait or reliable face/age/gender reference found. Evidence gap, not a proven identity mismatch and not permission to invent one."
+  },
+  "sourceRecordInconsistencies": [
+    "Shared approved-v5/progress.json is an obsolete early slice (formal0); repository docs approved-v5/progress.json is the formal321 owner used here.",
+    "docs/art-rebuild-20261019/canonical-topic-manifest.json is an older baseline: IVRA still says pending-redraw and 64x64 while current formal manifest says 128x80. Do not use baseline status/geometry as live completion state.",
+    "Legacy build_final_fantasy_v1.py points to missing packages/story-candidate-01/assets/manifest-complete.json. Source order is recoverable from explicit INDEPENDENT_UNITS/COMBAT_BOARDS and ordered 40-topic catalog, but blindly rerunning old builders would not preserve approved overrides.",
+    "Legacy sources are opaque magenta boards with extracted alpha derivatives, not native approved-v5 true-alpha masters. New assets require genuine native RGBA; this audit does not remove chroma or recreate alpha.",
+    "Uniform 4x4 board cells do not always contain complete subject anatomy; WYVERN top spear is truncated and next-row horns can be included. SHAMAN bottom grid strip can capture next-row javelin tips.",
+    "IVRA formal README says collar scar and armor; native/source contract says white neck scar and natural belly plates, with no collar/armor. Preserve actual original anatomy, not that loose README wording.",
+    "Earlier hero-identity-contract lists seven heroes including IVRA and no Torren; current formal human set is Laiya/Roderick/Mirelle/Torren/Cain/Bran/Tasha, plus separate already-formal IVRA combat topic. Do not confuse the older audit group with current seven human variants."
+  ],
+  "nextExclusiveWork": [
+    {
+      "topicId": "C01-UNIT-WYVERN-RIDER",
+      "disposition": "Already reserved to active worker; no duplicate assignment; catalog-only completion claim."
+    },
+    {
+      "topicId": "C01-UNIT-SHAMAN",
+      "disposition": "Parent assigned independent combat worker; preserve equipment refusal hold; catalog-only completion claim."
+    },
+    {
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "disposition": "No canonical generation assignment. Next narrative phase should resolve current stage01 portrait/battle continuity deliberately, preserving accepted quartet until approved."
+    },
+    {
+      "topicId": "campaign-elin",
+      "disposition": "Only investigate identity if narrative scope calls for it; gather source evidence before any generation."
+    }
+  ],
+  "limitations": [
+    "Shipped data materialization and static presentation trace establish consumers, not live gameplay observation.",
+    "Formal progress is a concurrent-work snapshot. Recompute remaining set immediately before integration.",
+    "No tests/builds/runtime rendering were run; no browser/live animation acceptance asserted."
+  ]
+}

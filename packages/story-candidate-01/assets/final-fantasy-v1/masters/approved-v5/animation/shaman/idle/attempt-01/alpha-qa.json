@@ -1,0 +1,24 @@
+{
+  "nativeMode": "RGBA",
+  "nativeSize": [
+    1536,
+    1024
+  ],
+  "sha256": "5087a96abe12deb475766b12399d9db2847aaff1e23257ea5df8c5f99e2e384c",
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "perimeterAlphaMax": 1,
+  "perimeterAbove1": 0,
+  "transparentPixels": 1029216,
+  "semiTransparentPixels": 543648,
+  "opaquePixels": 0,
+  "bboxAlpha1": [
+    376,
+    30,
+    1297,
+    986
+  ],
+  "visualAssessment": "Direct black/white alpha composites show a clean silhouette and no visible exterior haze. Tool-display RGB is not used for this verdict. Perimeter alpha<=1 passes. Native alpha max254 is preserved without repair."
+}

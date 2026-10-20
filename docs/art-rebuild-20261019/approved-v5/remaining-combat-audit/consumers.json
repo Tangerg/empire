@@ -1,0 +1,5593 @@
+{
+  "method": "Read-only evaluation of unchanged C01 levels.ts and binding data using TypeScript transpileModule in isolated VM; runtime import supplies only actual funds/command_points constants. Builtin schema2 JSON units read directly. All scenario trees traversed for spawnUnits; no engine, browser, Vite, builder, Git or repository writes.",
+  "builtInLevels": [
+    "twin-hills",
+    "three-bridges",
+    "siege",
+    "cliff-training"
+  ],
+  "c01Levels": [
+    "c01-01",
+    "c01-02",
+    "c01-03",
+    "c01-04",
+    "c01-05",
+    "c01-06",
+    "c01-07",
+    "c01-08",
+    "c01-09",
+    "c01-10",
+    "c01-11",
+    "c01-12",
+    "c01-13",
+    "c01-14",
+    "c01-15",
+    "c01-16"
+  ],
+  "initialPlacementCount": 401,
+  "reinforcementCount": 14,
+  "topics": [
+    {
+      "topicId": "C01-UNIT-ANCIENT-DRAGON",
+      "domainBindings": [
+        {
+          "unit": "dragon",
+          "topicId": "C01-UNIT-ANCIENT-DRAGON"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "three-bridges",
+          "x": 5,
+          "y": 6,
+          "unit": "dragon",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ANCIENT-DRAGON"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 18,
+          "y": 7,
+          "unit": "dragon",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ANCIENT-DRAGON"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-ARCHER",
+      "domainBindings": [
+        {
+          "unit": "c01.archer",
+          "topicId": "C01-UNIT-ARCHER"
+        },
+        {
+          "unit": "archer",
+          "topicId": "C01-UNIT-ARCHER"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "twin-hills",
+          "x": 4,
+          "y": 1,
+          "unit": "archer",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 4,
+          "y": 2,
+          "unit": "archer",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 13,
+          "y": 9,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 12,
+          "y": 9,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 3,
+          "y": 6,
+          "unit": "archer",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 3,
+          "y": 8,
+          "unit": "archer",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 20,
+          "y": 7,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 20,
+          "y": 9,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 2,
+          "y": 5,
+          "unit": "archer",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 13,
+          "y": 5,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 13,
+          "y": 6,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 1,
+          "y": 4,
+          "unit": "archer",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 16,
+          "y": 4,
+          "unit": "archer",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "cliff-training",
+          "x": 2,
+          "y": 2,
+          "unit": "archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "cliff-training",
+          "x": 8,
+          "y": 5,
+          "unit": "archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "campaign-elin",
+          "x": 3,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "ridge-scout",
+          "x": 5,
+          "y": 5,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "village-runner",
+          "x": 7,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "vanguard-archer",
+          "x": 21,
+          "y": 4,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "south-bow",
+          "x": 20,
+          "y": 12,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "camp-bow",
+          "x": 25,
+          "y": 5,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "bridge-guard-2",
+          "x": 3,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "bow-1",
+          "x": 18,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "south-bank-bow",
+          "x": 16,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "south-tower-bow",
+          "x": 14,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "campaign-elin",
+          "x": 4,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "scout-3",
+          "x": 5,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "camp-bow",
+          "x": 8,
+          "y": 7,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "south-patrol",
+          "x": 14,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "campaign-elin",
+          "x": 7,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "east-militia",
+          "x": 12,
+          "y": 7,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "purifier-4",
+          "x": 18,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "campaign-elin",
+          "x": 10,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "pursuer-3",
+          "x": 3,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "north-pursuer",
+          "x": 4,
+          "y": 2,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "campaign-elin",
+          "x": 10,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "east-militia",
+          "x": 16,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "royal-2",
+          "x": 20,
+          "y": 6,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "west-raider",
+          "x": 1,
+          "y": 12,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "campaign-elin",
+          "x": 3,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "warehouse-bow",
+          "x": 11,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "thief-2",
+          "x": 14,
+          "y": 2,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "east-thief",
+          "x": 20,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "prison-scout",
+          "x": 6,
+          "y": 13,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "escort-4",
+          "x": 10,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "west-chain-bow",
+          "x": 4,
+          "y": 5,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-elin",
+          "x": 9,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "gray-scout",
+          "x": 8,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "royal-bow",
+          "x": 21,
+          "y": 6,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "pass-bow",
+          "x": 20,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "cemetery-bow",
+          "x": 7,
+          "y": 14,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "tower-bow",
+          "x": 20,
+          "y": 12,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-elin",
+          "x": 5,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-bow",
+          "x": 7,
+          "y": 13,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "north-archive-bow",
+          "x": 10,
+          "y": 1,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-bow",
+          "x": 9,
+          "y": 14,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-bow-guard",
+          "x": 20,
+          "y": 13,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 9,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-bow",
+          "x": 7,
+          "y": 15,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "directive": {
+            "mode": "patrol",
+            "waypoints": [
+              {
+                "x": 6,
+                "y": 3
+              }
+            ]
+          },
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-bow-guard",
+          "x": 22,
+          "y": 12,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-03",
+          "trigger": "redstone-second-wave",
+          "path": "scenario.triggers.1.effects.0",
+          "reason": "reinforcement",
+          "key": "redstone-wave-bow",
+          "x": 2,
+          "y": 14,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-05",
+          "trigger": "purifier-reinforcement",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "purifier-west-bow",
+          "x": 2,
+          "y": 14,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-06",
+          "trigger": "pursuit-wave",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "pursuit-wave-bow",
+          "x": 1,
+          "y": 3,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "trigger": "old-banner-rearguard",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "old-banner-west-bow",
+          "x": 1,
+          "y": 6,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ARCHER"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-ASSASSIN",
+      "domainBindings": [
+        {
+          "unit": "rogue",
+          "topicId": "C01-UNIT-ASSASSIN"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "three-bridges",
+          "x": 5,
+          "y": 8,
+          "unit": "rogue",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-ASSASSIN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 18,
+          "y": 9,
+          "unit": "rogue",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-ASSASSIN"
+          }
+        },
+        {
+          "level": "cliff-training",
+          "x": 7,
+          "y": 5,
+          "unit": "rogue",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-ASSASSIN"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-AXE-BREAKER",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-BALLISTA",
+      "domainBindings": [
+        {
+          "unit": "c01.ballista",
+          "topicId": "C01-UNIT-BALLISTA"
+        },
+        {
+          "unit": "ballista",
+          "topicId": "C01-UNIT-BALLISTA"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "three-bridges",
+          "x": 6,
+          "y": 7,
+          "unit": "ballista",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 17,
+          "y": 8,
+          "unit": "ballista",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 1,
+          "y": 6,
+          "unit": "ballista",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 13,
+          "y": 4,
+          "unit": "ballista",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "unmarked-ballista",
+          "x": 20,
+          "y": 10,
+          "unit": "c01.ballista",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "redstone-ballista",
+          "x": 20,
+          "y": 6,
+          "unit": "c01.ballista",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "pursuer-ballista",
+          "x": 1,
+          "y": 12,
+          "unit": "c01.ballista",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BALLISTA"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-BANNER-GUARD",
+      "domainBindings": [
+        {
+          "unit": "c01.laiya",
+          "topicId": "C01-UNIT-BANNER-GUARD",
+          "appearanceId": "laiya-stage01"
+        },
+        {
+          "unit": "c01.banner-guard",
+          "topicId": "C01-UNIT-BANNER-GUARD"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-01",
+          "key": "campaign-laiya",
+          "x": 3,
+          "y": 9,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "ridge-guard",
+          "x": 4,
+          "y": 6,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "west-spear",
+          "x": 1,
+          "y": 9,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 9,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "bridge-guard-1",
+          "x": 1,
+          "y": 10,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "bridge-reserve",
+          "x": 1,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 7,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "siege-guard",
+          "x": 4,
+          "y": 10,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "south-spear",
+          "x": 6,
+          "y": 2,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "campaign-laiya",
+          "x": 3,
+          "y": 10,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "scout-2",
+          "x": 3,
+          "y": 11,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "scout-reserve",
+          "x": 2,
+          "y": 10,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "campaign-laiya",
+          "x": 6,
+          "y": 7,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "village-guard",
+          "x": 9,
+          "y": 6,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "village-guard-2",
+          "x": 10,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "campaign-laiya",
+          "x": 9,
+          "y": 7,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "rearguard",
+          "x": 8,
+          "y": 7,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "rearguard-2",
+          "x": 9,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "campaign-laiya",
+          "x": 10,
+          "y": 8,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "militia",
+          "x": 9,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "militia-2",
+          "x": 11,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "north-militia",
+          "x": 9,
+          "y": 9,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 7,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "mercenary-guard",
+          "x": 8,
+          "y": 10,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "ledger-guard",
+          "x": 4,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "mercenary-spear",
+          "x": 6,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 10,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "prison-guard",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "west-breach-guard",
+          "x": 7,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-laiya",
+          "x": 10,
+          "y": 7,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "gray-rearguard",
+          "x": 9,
+          "y": 7,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "old-banner-guard",
+          "x": 10,
+          "y": 6,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 8,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "cemetery-shield",
+          "x": 4,
+          "y": 14,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 7,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "tower-guard",
+          "x": 4,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 9,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-guard",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-reserve",
+          "x": 10,
+          "y": 14,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 8,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-guard",
+          "x": 4,
+          "y": 14,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 8,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "silverwood-guard",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 9,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD",
+            "appearanceId": "laiya-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-guard",
+          "x": 4,
+          "y": 15,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-shield",
+          "x": 8,
+          "y": 15,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-03",
+          "trigger": "redstone-second-wave",
+          "path": "scenario.triggers.1.effects.0",
+          "reason": "reinforcement",
+          "key": "redstone-wave-guard",
+          "x": 0,
+          "y": 13,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BANNER-GUARD"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-BATTLE-MAGE",
+      "domainBindings": [
+        {
+          "unit": "c01.battle-mage",
+          "topicId": "C01-UNIT-BATTLE-MAGE"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-03",
+          "key": "siege-mage",
+          "x": 3,
+          "y": 9,
+          "unit": "c01.battle-mage",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "node-mage",
+          "x": 19,
+          "y": 7,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "camp-mage",
+          "x": 12,
+          "y": 7,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "fire-support",
+          "x": 14,
+          "y": 13,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "river-mage",
+          "x": 3,
+          "y": 12,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "royal-mage",
+          "x": 15,
+          "y": 2,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "escort-mage",
+          "x": 9,
+          "y": 11,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "royal-mage",
+          "x": 17,
+          "y": 3,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "imperial-2",
+          "x": 19,
+          "y": 8,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-mage",
+          "x": 15,
+          "y": 8,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "central-archive-mage",
+          "x": 14,
+          "y": 10,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-mage",
+          "x": 18,
+          "y": 4,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-mage",
+          "x": 17,
+          "y": 13,
+          "unit": "c01.battle-mage",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-BATTLE-MAGE"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-BERSERKER",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-CANNON-WAGON",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+      "domainBindings": [
+        {
+          "unit": "c01.cemetery-colossus",
+          "topicId": "C01-UNIT-CEMETERY-COLOSSUS"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-11",
+          "key": "colossus",
+          "x": 11,
+          "y": 7,
+          "unit": "c01.cemetery-colossus",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-CEMETERY-COLOSSUS"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "unflagged",
+          "x": 12,
+          "y": 8,
+          "unit": "c01.cemetery-colossus",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-CEMETERY-COLOSSUS"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-CLERIC",
+      "domainBindings": [
+        {
+          "unit": "cleric",
+          "topicId": "C01-UNIT-CLERIC"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "twin-hills",
+          "x": 2,
+          "y": 3,
+          "unit": "cleric",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-CLERIC"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 14,
+          "y": 9,
+          "unit": "cleric",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-CLERIC"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 2,
+          "y": 7,
+          "unit": "cleric",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-CLERIC"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 21,
+          "y": 8,
+          "unit": "cleric",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-CLERIC"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 2,
+          "y": 3,
+          "unit": "cleric",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-CLERIC"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-DRUID",
+      "domainBindings": [
+        {
+          "unit": "c01.druid",
+          "topicId": "C01-UNIT-DRUID"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-15",
+          "key": "controlled-druid",
+          "x": 12,
+          "y": 7,
+          "unit": "c01.druid",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-DRUID"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "oath-druid",
+          "x": 17,
+          "y": 12,
+          "unit": "c01.druid",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-DRUID"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "silverwood-witness",
+          "x": 3,
+          "y": 13,
+          "unit": "c01.druid",
+          "owner": 3,
+          "facing": "west",
+          "directive": {
+            "mode": "guard"
+          },
+          "art": {
+            "topicId": "C01-UNIT-DRUID"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-EAGLE-SCOUT",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-ENGINEER",
+      "domainBindings": [
+        {
+          "unit": "c01.tasha",
+          "topicId": "C01-UNIT-ENGINEER",
+          "appearanceId": "tasha-stage01"
+        },
+        {
+          "unit": "c01.engineer",
+          "topicId": "C01-UNIT-ENGINEER"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-03",
+          "key": "siege-engineer",
+          "x": 4,
+          "y": 4,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "north-sapper",
+          "x": 2,
+          "y": 12,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "engineer",
+          "x": 10,
+          "y": 11,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "campaign-tasha",
+          "x": 5,
+          "y": 8,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 10,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "chain-breaker",
+          "x": 5,
+          "y": 12,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-tasha",
+          "x": 11,
+          "y": 6,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 8,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 7,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "tower-engineer",
+          "x": 1,
+          "y": 12,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 9,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-engineer",
+          "x": 4,
+          "y": 14,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 8,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-engineer",
+          "x": 7,
+          "y": 14,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 8,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-tasha",
+          "x": 4,
+          "y": 9,
+          "unit": "c01.tasha",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER",
+            "appearanceId": "tasha-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-engineer",
+          "x": 10,
+          "y": 15,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "directive": {
+            "mode": "patrol",
+            "waypoints": [
+              {
+                "x": 8,
+                "y": 13
+              }
+            ]
+          },
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-03",
+          "trigger": "redstone-second-wave",
+          "path": "scenario.triggers.1.effects.0",
+          "reason": "reinforcement",
+          "key": "redstone-wave-engineer",
+          "x": 1,
+          "y": 14,
+          "unit": "c01.engineer",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-ENGINEER"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-GHOST",
+      "domainBindings": [
+        {
+          "unit": "c01.ghost",
+          "topicId": "C01-UNIT-GHOST"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-11",
+          "key": "echo-3",
+          "x": 10,
+          "y": 9,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "echo-4",
+          "x": 14,
+          "y": 9,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "east-ghost",
+          "x": 18,
+          "y": 6,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "west-ghost",
+          "x": 6,
+          "y": 10,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "oath-echo-2",
+          "x": 11,
+          "y": 10,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "south-echo",
+          "x": 15,
+          "y": 12,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-1",
+          "x": 9,
+          "y": 5,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-2",
+          "x": 15,
+          "y": 5,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-4",
+          "x": 16,
+          "y": 10,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-6",
+          "x": 18,
+          "y": 3,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-12",
+          "trigger": "drowned-echoes",
+          "path": "scenario.triggers.1.effects.0",
+          "reason": "reinforcement",
+          "key": "drowned-echo-west",
+          "x": 6,
+          "y": 0,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "south",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        },
+        {
+          "level": "c01-12",
+          "trigger": "drowned-echoes",
+          "path": "scenario.triggers.1.effects.0",
+          "reason": "reinforcement",
+          "key": "drowned-echo-east",
+          "x": 16,
+          "y": 0,
+          "unit": "c01.ghost",
+          "owner": 2,
+          "facing": "south",
+          "art": {
+            "topicId": "C01-UNIT-GHOST"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "domainBindings": [
+        {
+          "unit": "c01.mirelle",
+          "topicId": "C01-UNIT-GRAVEKEEPER",
+          "appearanceId": "mirelle-stage01"
+        },
+        {
+          "unit": "c01.gravekeeper",
+          "topicId": "C01-UNIT-GRAVEKEEPER"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-01",
+          "key": "field-cleric",
+          "x": 2,
+          "y": 10,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "bridge-cleric",
+          "x": 2,
+          "y": 9,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "field-cleric",
+          "x": 6,
+          "y": 12,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "campaign-mirelle",
+          "x": 4,
+          "y": 9,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "scout-cleric",
+          "x": 4,
+          "y": 11,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "campaign-mirelle",
+          "x": 8,
+          "y": 5,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "village-cleric",
+          "x": 9,
+          "y": 8,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "campaign-mirelle",
+          "x": 8,
+          "y": 10,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "white-river-cleric",
+          "x": 7,
+          "y": 12,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "campaign-mirelle",
+          "x": 8,
+          "y": 8,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "city-cleric",
+          "x": 11,
+          "y": 9,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "campaign-mirelle",
+          "x": 5,
+          "y": 7,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "mercenary-cleric",
+          "x": 5,
+          "y": 10,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 8,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "prison-cleric",
+          "x": 4,
+          "y": 12,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-mirelle",
+          "x": 10,
+          "y": 5,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "old-banner-cleric",
+          "x": 10,
+          "y": 8,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 6,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "gravekeeper-escort",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 5,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 7,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-cleric",
+          "x": 6,
+          "y": 14,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 6,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 6,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "silverwood-cleric",
+          "x": 7,
+          "y": 14,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-mirelle",
+          "x": 3,
+          "y": 7,
+          "unit": "c01.mirelle",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER",
+            "appearanceId": "mirelle-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-gravekeeper",
+          "x": 1,
+          "y": 14,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-GRAVEKEEPER"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "domainBindings": [
+        {
+          "unit": "c01.roderick",
+          "topicId": "C01-UNIT-HEAVY-KNIGHT",
+          "appearanceId": "roderick-stage01"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-01",
+          "key": "roderick-reserve",
+          "x": 4,
+          "y": 11,
+          "unit": "c01.roderick",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-HEAVY-KNIGHT",
+            "appearanceId": "roderick-stage01"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "roderick",
+          "x": 3,
+          "y": 5,
+          "unit": "c01.roderick",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-HEAVY-KNIGHT",
+            "appearanceId": "roderick-stage01"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "roderick",
+          "x": 18,
+          "y": 6,
+          "unit": "c01.roderick",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-HEAVY-KNIGHT",
+            "appearanceId": "roderick-stage01"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-INQUISITOR",
+      "domainBindings": [
+        {
+          "unit": "c01.inquisitor",
+          "topicId": "C01-UNIT-INQUISITOR"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-03",
+          "key": "redstone-inquisitor",
+          "x": 20,
+          "y": 2,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "camp-inquisitor",
+          "x": 10,
+          "y": 5,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "purifier-1",
+          "x": 18,
+          "y": 3,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "fraud-enforcer",
+          "x": 19,
+          "y": 8,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "escort-1",
+          "x": 7,
+          "y": 2,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "grave-inquisitor",
+          "x": 19,
+          "y": 3,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-inquisitor",
+          "x": 10,
+          "y": 3,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "exit-inquisitor",
+          "x": 23,
+          "y": 13,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "inquisitor-handler",
+          "x": 20,
+          "y": 7,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-inquisitor",
+          "x": 22,
+          "y": 8,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-05",
+          "trigger": "purifier-reinforcement",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "purifier-reinforcement",
+          "x": 0,
+          "y": 13,
+          "unit": "c01.inquisitor",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-INQUISITOR"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "domainBindings": [
+        {
+          "unit": "c01.ivra",
+          "topicId": "C01-UNIT-IVRA-GROWTH"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-09",
+          "key": "caged-ivra",
+          "x": 7,
+          "y": 6,
+          "unit": "c01.ivra",
+          "owner": 3,
+          "facing": "west",
+          "directive": {
+            "mode": "guard"
+          },
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-ivra",
+          "x": 11,
+          "y": 8,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-ivra",
+          "x": 5,
+          "y": 11,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-ivra",
+          "x": 5,
+          "y": 11,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-ivra",
+          "x": 5,
+          "y": 12,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-ivra",
+          "x": 5,
+          "y": 12,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-ivra",
+          "x": 5,
+          "y": 12,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-ivra",
+          "x": 5,
+          "y": 13,
+          "unit": "c01.ivra",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-IVRA-GROWTH"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-JAVELIN-HUNTER",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-KNIGHT",
+      "domainBindings": [
+        {
+          "unit": "c01.knight",
+          "topicId": "C01-UNIT-KNIGHT"
+        },
+        {
+          "unit": "knight",
+          "topicId": "C01-UNIT-KNIGHT"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "twin-hills",
+          "x": 3,
+          "y": 3,
+          "unit": "knight",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 11,
+          "y": 8,
+          "unit": "knight",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 5,
+          "y": 7,
+          "unit": "knight",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 18,
+          "y": 8,
+          "unit": "knight",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 3,
+          "y": 5,
+          "unit": "knight",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "cliff-training",
+          "x": 2,
+          "y": 3,
+          "unit": "knight",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "field-knight",
+          "x": 6,
+          "y": 11,
+          "unit": "c01.knight",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "bridge-knight",
+          "x": 3,
+          "y": 7,
+          "unit": "c01.knight",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "purifier-5",
+          "x": 15,
+          "y": 11,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "mounted-rearguard",
+          "x": 6,
+          "y": 10,
+          "unit": "c01.knight",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "pursuer-1",
+          "x": 1,
+          "y": 4,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "escort-3",
+          "x": 12,
+          "y": 7,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "royal-guard-1",
+          "x": 20,
+          "y": 4,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "north-rider",
+          "x": 15,
+          "y": 2,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "south-rider",
+          "x": 16,
+          "y": 11,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "east-imperial",
+          "x": 21,
+          "y": 5,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-knight",
+          "x": 17,
+          "y": 4,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "south-archive-knight",
+          "x": 18,
+          "y": 12,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-06",
+          "trigger": "pursuit-wave",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "pursuit-wave-knight",
+          "x": 0,
+          "y": 1,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        },
+        {
+          "level": "c01-10",
+          "trigger": "old-banner-rearguard",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "old-banner-west-knight",
+          "x": 0,
+          "y": 4,
+          "unit": "c01.knight",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-KNIGHT"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "domainBindings": [
+        {
+          "unit": "c01.cain",
+          "topicId": "C01-UNIT-LEGION-SHIELD",
+          "appearanceId": "cain-stage01"
+        },
+        {
+          "unit": "c01.legion-shield",
+          "topicId": "C01-UNIT-LEGION-SHIELD"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-01",
+          "key": "camp-guard",
+          "x": 4,
+          "y": 7,
+          "unit": "c01.legion-shield",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "vanguard-1",
+          "x": 17,
+          "y": 6,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "vanguard-cain",
+          "x": 24,
+          "y": 7,
+          "unit": "c01.cain",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD",
+            "appearanceId": "cain-stage01"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "north-shield",
+          "x": 13,
+          "y": 5,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "cain",
+          "x": 20,
+          "y": 4,
+          "unit": "c01.cain",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD",
+            "appearanceId": "cain-stage01"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "shield-1",
+          "x": 19,
+          "y": 3,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "shield-2",
+          "x": 19,
+          "y": 5,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "battery-screen",
+          "x": 20,
+          "y": 12,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "redstone-shield",
+          "x": 16,
+          "y": 7,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "purifier-3",
+          "x": 16,
+          "y": 6,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "ford-shield",
+          "x": 4,
+          "y": 9,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "royal-3",
+          "x": 18,
+          "y": 9,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "east-royal",
+          "x": 21,
+          "y": 12,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "fraud-shield",
+          "x": 16,
+          "y": 10,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "escort-2",
+          "x": 10,
+          "y": 4,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "east-chain-guard",
+          "x": 16,
+          "y": 7,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "royal-guard-2",
+          "x": 19,
+          "y": 8,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "pass-shield",
+          "x": 16,
+          "y": 7,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "imperial-cain",
+          "x": 20,
+          "y": 7,
+          "unit": "c01.cain",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD",
+            "appearanceId": "cain-stage01"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "imperial-1",
+          "x": 19,
+          "y": 6,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-guard-1",
+          "x": 14,
+          "y": 5,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-guard-2",
+          "x": 12,
+          "y": 7,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "east-archive-guard",
+          "x": 20,
+          "y": 7,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "root-guard-2",
+          "x": 11,
+          "y": 9,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "inquisitor-guard-2",
+          "x": 20,
+          "y": 9,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-05",
+          "trigger": "purifier-reinforcement",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "purifier-west-shield",
+          "x": 0,
+          "y": 14,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        },
+        {
+          "level": "c01-10",
+          "trigger": "old-banner-rearguard",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "old-banner-west-shield",
+          "x": 0,
+          "y": 5,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-LEGION-SHIELD"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-MAGE",
+      "domainBindings": [
+        {
+          "unit": "mage",
+          "topicId": "C01-UNIT-MAGE"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "three-bridges",
+          "x": 1,
+          "y": 7,
+          "unit": "mage",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-MAGE"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 22,
+          "y": 8,
+          "unit": "mage",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-MAGE"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 1,
+          "y": 3,
+          "unit": "mage",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-MAGE"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 3,
+          "y": 6,
+          "unit": "mage",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-MAGE"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-RANGER",
+      "domainBindings": [
+        {
+          "unit": "c01.bran",
+          "topicId": "C01-UNIT-RANGER",
+          "appearanceId": "bran-stage01"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-05",
+          "key": "campaign-bran",
+          "x": 8,
+          "y": 9,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "campaign-bran",
+          "x": 7,
+          "y": 7,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "campaign-bran",
+          "x": 13,
+          "y": 8,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "campaign-bran",
+          "x": 6,
+          "y": 6,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "campaign-bran",
+          "x": 3,
+          "y": 12,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-bran",
+          "x": 10,
+          "y": 9,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-bran",
+          "x": 3,
+          "y": 10,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-bran",
+          "x": 3,
+          "y": 9,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-bran",
+          "x": 3,
+          "y": 11,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-bran",
+          "x": 2,
+          "y": 10,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-bran",
+          "x": 3,
+          "y": 10,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-bran",
+          "x": 3,
+          "y": 11,
+          "unit": "c01.bran",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-RANGER",
+            "appearanceId": "bran-stage01"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-ARTIFICER",
+      "domainBindings": [
+        {
+          "unit": "c01.rune-artificer",
+          "topicId": "C01-UNIT-RUNE-ARTIFICER"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-14",
+          "key": "rune-rebel-2",
+          "x": 15,
+          "y": 7,
+          "unit": "c01.rune-artificer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-RUNE-ARTIFICER"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "south-artificer",
+          "x": 15,
+          "y": 12,
+          "unit": "c01.rune-artificer",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-RUNE-ARTIFICER"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-RUNE-SHIELD",
+      "domainBindings": [
+        {
+          "unit": "c01.rune-shield",
+          "topicId": "C01-UNIT-RUNE-SHIELD"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-14",
+          "key": "rune-rebel-1",
+          "x": 14,
+          "y": 3,
+          "unit": "c01.rune-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-RUNE-SHIELD"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "east-rune-shield",
+          "x": 19,
+          "y": 8,
+          "unit": "c01.rune-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-RUNE-SHIELD"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-guard-2",
+          "x": 18,
+          "y": 11,
+          "unit": "c01.rune-shield",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-RUNE-SHIELD"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-SHAMAN",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-SILVER-LONGBOW",
+      "domainBindings": [
+        {
+          "unit": "c01.silver-longbow",
+          "topicId": "C01-UNIT-SILVER-LONGBOW"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-15",
+          "key": "controlled-longbow-1",
+          "x": 14,
+          "y": 5,
+          "unit": "c01.silver-longbow",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SILVER-LONGBOW"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "controlled-longbow-2",
+          "x": 14,
+          "y": 9,
+          "unit": "c01.silver-longbow",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SILVER-LONGBOW"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "north-longbow",
+          "x": 8,
+          "y": 2,
+          "unit": "c01.silver-longbow",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SILVER-LONGBOW"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "south-longbow",
+          "x": 8,
+          "y": 13,
+          "unit": "c01.silver-longbow",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SILVER-LONGBOW"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-SKELETON-GUARD",
+      "domainBindings": [
+        {
+          "unit": "c01.skeleton-guard",
+          "topicId": "C01-UNIT-SKELETON-GUARD"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-03",
+          "key": "oath-guard-1",
+          "x": 18,
+          "y": 2,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "oath-guard-2",
+          "x": 18,
+          "y": 4,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "echo-1",
+          "x": 9,
+          "y": 5,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "echo-2",
+          "x": 13,
+          "y": 5,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "north-echo",
+          "x": 7,
+          "y": 2,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "south-echo",
+          "x": 8,
+          "y": 12,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "ossuary-guard",
+          "x": 17,
+          "y": 12,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "oath-echo-1",
+          "x": 11,
+          "y": 4,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "north-echo",
+          "x": 10,
+          "y": 2,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-3",
+          "x": 10,
+          "y": 11,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-5",
+          "x": 7,
+          "y": 12,
+          "unit": "c01.skeleton-guard",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SKELETON-GUARD"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-SPEARMAN",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-SPIRIT-FIRE",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-STONE-GOLEM",
+      "domainBindings": [
+        {
+          "unit": "c01.stone-golem",
+          "topicId": "C01-UNIT-STONE-GOLEM"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-14",
+          "key": "golem-1",
+          "x": 14,
+          "y": 7,
+          "unit": "c01.stone-golem",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-STONE-GOLEM"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "golem-2",
+          "x": 14,
+          "y": 5,
+          "unit": "c01.stone-golem",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-STONE-GOLEM"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "north-golem",
+          "x": 6,
+          "y": 2,
+          "unit": "c01.stone-golem",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-STONE-GOLEM"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "domainBindings": [
+        {
+          "unit": "c01.swordsman",
+          "topicId": "C01-UNIT-SWORDSMAN"
+        },
+        {
+          "unit": "soldier",
+          "topicId": "C01-UNIT-SWORDSMAN"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "twin-hills",
+          "x": 3,
+          "y": 1,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 3,
+          "y": 2,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 13,
+          "y": 7,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "twin-hills",
+          "x": 14,
+          "y": 7,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 4,
+          "y": 6,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 4,
+          "y": 8,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 2,
+          "y": 6,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 2,
+          "y": 8,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 19,
+          "y": 7,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 19,
+          "y": 9,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 21,
+          "y": 7,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "three-bridges",
+          "x": 21,
+          "y": 9,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 2,
+          "y": 4,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 2,
+          "y": 6,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 12,
+          "y": 5,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 12,
+          "y": 6,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 1,
+          "y": 5,
+          "unit": "soldier",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 13,
+          "y": 8,
+          "unit": "soldier",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "cliff-training",
+          "key": "blue-trainee",
+          "x": 2,
+          "y": 1,
+          "unit": "soldier",
+          "owner": 1,
+          "rank": 1,
+          "rankProgress": 120,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "cliff-training",
+          "x": 7,
+          "y": 6,
+          "unit": "soldier",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "campaign-torren",
+          "x": 5,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "vanguard-2",
+          "x": 20,
+          "y": 7,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-01",
+          "key": "south-sword",
+          "x": 22,
+          "y": 10,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "river-scout",
+          "x": 5,
+          "y": 12,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-02",
+          "key": "north-bank-guard",
+          "x": 15,
+          "y": 2,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-03",
+          "key": "outer-screen",
+          "x": 13,
+          "y": 3,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "campaign-torren",
+          "x": 3,
+          "y": 9,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "scout-1",
+          "x": 5,
+          "y": 11,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "scout-4",
+          "x": 1,
+          "y": 13,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "camp-guard-1",
+          "x": 8,
+          "y": 3,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "camp-guard-2",
+          "x": 11,
+          "y": 3,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "north-patrol",
+          "x": 15,
+          "y": 4,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "east-patrol",
+          "x": 16,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-04",
+          "key": "gate-reserve",
+          "x": 18,
+          "y": 12,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "campaign-torren",
+          "x": 7,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "west-militia",
+          "x": 5,
+          "y": 9,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "north-purifier",
+          "x": 12,
+          "y": 1,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "campaign-torren",
+          "x": 8,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "pursuer-2",
+          "x": 2,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-06",
+          "key": "pursuer-4",
+          "x": 1,
+          "y": 10,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "campaign-torren",
+          "x": 10,
+          "y": 7,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "west-militia",
+          "x": 6,
+          "y": 11,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "south-militia",
+          "x": 13,
+          "y": 12,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "raider-3",
+          "x": 4,
+          "y": 9,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "royal-1",
+          "x": 20,
+          "y": 3,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "campaign-torren",
+          "x": 3,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "mercenary-scout",
+          "x": 6,
+          "y": 9,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "thief-1",
+          "x": 12,
+          "y": 3,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "north-thief",
+          "x": 8,
+          "y": 1,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 9,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "east-breach-sword",
+          "x": 8,
+          "y": 12,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "south-chain-guard",
+          "x": 14,
+          "y": 11,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "inner-jailer",
+          "x": 12,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "campaign-torren",
+          "x": 9,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-10",
+          "key": "banner-sword",
+          "x": 22,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-11",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 7,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 6,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "campaign-torren",
+          "x": 3,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "archive-sword",
+          "x": 8,
+          "y": 14,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 7,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 7,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN",
+            "appearanceId": "torren-stage01"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "memory-sword",
+          "x": 6,
+          "y": 14,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east",
+          "directive": {
+            "mode": "patrol",
+            "waypoints": [
+              {
+                "x": 16,
+                "y": 8
+              }
+            ]
+          },
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        }
+      ],
+      "reinforcements": [
+        {
+          "level": "c01-06",
+          "trigger": "pursuit-wave",
+          "path": "scenario.triggers.0.effects.0",
+          "reason": "reinforcement",
+          "key": "pursuit-wave-sword",
+          "x": 0,
+          "y": 2,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-SWORDSMAN"
+          }
+        }
+      ]
+    },
+    {
+      "topicId": "C01-UNIT-TEMPLAR",
+      "domainBindings": [
+        {
+          "unit": "c01.templar",
+          "topicId": "C01-UNIT-TEMPLAR"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-03",
+          "key": "keep-reserve",
+          "x": 16,
+          "y": 10,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "purifier-2",
+          "x": 19,
+          "y": 5,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-05",
+          "key": "south-purifier",
+          "x": 19,
+          "y": 12,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-09",
+          "key": "north-chain-guard",
+          "x": 14,
+          "y": 3,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-12",
+          "key": "mechanism-guard",
+          "x": 16,
+          "y": 4,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-13",
+          "key": "west-archive-guard",
+          "x": 8,
+          "y": 4,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-14",
+          "key": "forge-guard-1",
+          "x": 7,
+          "y": 10,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "root-guard-1",
+          "x": 11,
+          "y": 5,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        },
+        {
+          "level": "c01-16",
+          "key": "inquisitor-guard-1",
+          "x": 20,
+          "y": 7,
+          "unit": "c01.templar",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-TEMPLAR"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-TROLL",
+      "domainBindings": [
+        {
+          "unit": "ogre",
+          "topicId": "C01-UNIT-TROLL"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "siege",
+          "x": 3,
+          "y": 4,
+          "unit": "ogre",
+          "owner": 1,
+          "art": {
+            "topicId": "C01-UNIT-TROLL"
+          }
+        },
+        {
+          "level": "siege",
+          "x": 15,
+          "y": 5,
+          "unit": "ogre",
+          "owner": 2,
+          "art": {
+            "topicId": "C01-UNIT-TROLL"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-WHITE-STAG-RIDER",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-WOLF-RIDER",
+      "domainBindings": [
+        {
+          "unit": "c01.wolf-rider",
+          "topicId": "C01-UNIT-WOLF-RIDER"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-07",
+          "key": "raider-1",
+          "x": 1,
+          "y": 3,
+          "unit": "c01.wolf-rider",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOLF-RIDER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "raider-2",
+          "x": 5,
+          "y": 6,
+          "unit": "c01.wolf-rider",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOLF-RIDER"
+          }
+        },
+        {
+          "level": "c01-07",
+          "key": "north-raider",
+          "x": 8,
+          "y": 2,
+          "unit": "c01.wolf-rider",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOLF-RIDER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "thief-chief",
+          "x": 10,
+          "y": 2,
+          "unit": "c01.wolf-rider",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOLF-RIDER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "thief-3",
+          "x": 19,
+          "y": 5,
+          "unit": "c01.wolf-rider",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOLF-RIDER"
+          }
+        },
+        {
+          "level": "c01-08",
+          "key": "south-thief",
+          "x": 12,
+          "y": 12,
+          "unit": "c01.wolf-rider",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOLF-RIDER"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-WOODLAND-WALKER",
+      "domainBindings": [
+        {
+          "unit": "c01.woodland-walker",
+          "topicId": "C01-UNIT-WOODLAND-WALKER"
+        }
+      ],
+      "initialPlacements": [
+        {
+          "level": "c01-15",
+          "key": "silverwood-scout",
+          "x": 4,
+          "y": 14,
+          "unit": "c01.woodland-walker",
+          "owner": 1,
+          "facing": "east",
+          "art": {
+            "topicId": "C01-UNIT-WOODLAND-WALKER"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "controlled-walker",
+          "x": 17,
+          "y": 7,
+          "unit": "c01.woodland-walker",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOODLAND-WALKER"
+          }
+        },
+        {
+          "level": "c01-15",
+          "key": "east-walker",
+          "x": 21,
+          "y": 11,
+          "unit": "c01.woodland-walker",
+          "owner": 2,
+          "facing": "west",
+          "art": {
+            "topicId": "C01-UNIT-WOODLAND-WALKER"
+          }
+        }
+      ],
+      "reinforcements": []
+    },
+    {
+      "topicId": "C01-UNIT-WYVERN-RIDER",
+      "domainBindings": [],
+      "initialPlacements": [],
+      "reinforcements": []
+    }
+  ],
+  "namedElin": [
+    {
+      "level": "c01-01",
+      "key": "campaign-elin",
+      "x": 3,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-02",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-03",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-04",
+      "key": "campaign-elin",
+      "x": 4,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-05",
+      "key": "campaign-elin",
+      "x": 7,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-06",
+      "key": "campaign-elin",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-07",
+      "key": "campaign-elin",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-elin",
+      "x": 3,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-elin",
+      "x": 9,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-elin",
+      "x": 5,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "art": {
+        "topicId": "C01-UNIT-ARCHER"
+      }
+    }
+  ],
+  "unboundDomainPlacements": []
+}

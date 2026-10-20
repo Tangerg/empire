@@ -1,0 +1,64 @@
+{
+  "source-board.png": {
+    "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-axebreaker-golem-shaman-javelin.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "sha256": "d4b3ad5bc57f65ca25758b2394ee4d6d843460bfc0e4c0903d9a7cd2946215e8"
+  },
+  "runtime-strip.png": {
+    "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-shaman.png",
+    "size": [
+      128,
+      48
+    ],
+    "sha256": "0aae90f5b94715642243b3305bc92c237c332f06eedfe229db55f26d673d80e4"
+  },
+  "runtime-hd-strip.png": {
+    "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-shaman.png",
+    "size": [
+      256,
+      96
+    ],
+    "sha256": "da3e489a048a8e41b5081a1e2ec58d2bfd8260a063257df18fc32cfaa0b762b5"
+  },
+  "approved-spearman-idle.png": {
+    "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spearman/idle/master.png",
+    "size": [
+      1586,
+      992
+    ],
+    "sha256": "a234750f2277e89aea9345c73e4ebef7d25df8fa0d29d78b455fa4131bdf7e4f"
+  },
+  "approved-torren-idle.png": {
+    "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/idle/master.png",
+    "size": [
+      1586,
+      992
+    ],
+    "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1"
+  },
+  "original-row.png": {
+    "source": "source-board.png",
+    "cropLTRB": [
+      0,
+      627,
+      1254,
+      918
+    ],
+    "resampled": false,
+    "sha256": "7b21513f5a9d35d184a2ab759a09899a11ed988ff614f952872a9b6c153fb179"
+  },
+  "original-idle-cell.png": {
+    "source": "source-board.png",
+    "cropLTRB": [
+      0,
+      627,
+      314,
+      918
+    ],
+    "resampled": false,
+    "sha256": "c1d4e3781bf04019aeada740ece61d3b144bfe8fe55dcd634c1195f23b0cc292"
+  }
+}
