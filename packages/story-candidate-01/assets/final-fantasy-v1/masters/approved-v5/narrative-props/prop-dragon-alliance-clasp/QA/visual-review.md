@@ -1,0 +1,3 @@
+Pass. Intact gold interlocking rings/toggle, faceted boss, torn dark-gray cloth up-right and red layered scale pendant down-right retained. Open ring holes and pendant aperture are transparent. No bridle, saddle or ownership meaning added. Exact128 is clear on all four backgrounds; full source black/white/dark retains clean contours without fringe or cutoffs. Source boundary has only two alpha1 pixels; retained unchanged under allowed tolerance after visual review.
+
+Inspected original617px, native1254px transparent source and white/dark composites, exact128 four backgrounds, reference-fidelity comparison. No source processing; no repository, Git, production or export writes.

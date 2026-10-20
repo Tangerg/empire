@@ -1,0 +1,177 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-2",
+  "label": "熔沟",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-FORGE-2",
+    "topicId": "C01-TERRAIN-FORGE-2",
+    "label": "熔沟",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-forge-2.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-forge-2.png",
+      "sha256": "3a8f0f5bc44e7080cd2ccfa21138488494fc135414b03f6409d4ee58541721be",
+      "pixelSHA256": "57e38d7dcf765afc562b158e939143ddc65abf08d95eba3fc5372d5f9106c57b",
+      "dimensions": [
+        512,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 11776,
+        "partial": 0,
+        "opaque": 4608
+      },
+      "alphaBounds": [
+        10,
+        0,
+        512,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-forge-2.png",
+      "sha256": "8458936d9b92e6157fe687a23bb6c1db04c276106916dbc2992523ae8594fe22",
+      "pixelSHA256": "cfd7ad0e76de541c333641cc988114a2c689dffbfdaef2c439668725a9950f63",
+      "dimensions": [
+        1024,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 47040,
+        "partial": 0,
+        "opaque": 18496
+      },
+      "alphaBounds": [
+        20,
+        0,
+        1024,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      17
+    ],
+    "2": [
+      17
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 17,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+    "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+    "slotRow": 0,
+    "slotColumn": 1,
+    "slotNumber1Based": 2,
+    "cropXYXY": [
+      447,
+      3,
+      884,
+      441
+    ],
+    "cropSize": [
+      437,
+      438
+    ],
+    "variantCropXYXY": [
+      [
+        451,
+        8,
+        722,
+        279
+      ],
+      [
+        609,
+        8,
+        880,
+        279
+      ],
+      [
+        451,
+        165,
+        722,
+        436
+      ],
+      [
+        609,
+        165,
+        880,
+        436
+      ]
+    ],
+    "tileMode": "nesw-16"
+  },
+  "observedSourceIdentity": "Bright amber molten channel between metal-lined dark stone banks",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Upper-left material sample and generic masking fragment central lava channel; no evidence that each resulting arm is an authored lava bend",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 6.438,
+      "maxRGBDifference": 34
+    },
+    "2": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 8.146,
+      "maxRGBDifference": 50
+    }
+  },
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain-audit/canonical-terrain-mapping.json",
+  "auditSHA256": "c3a20718befac0c200de3d118775f008a83a133f708011260b33f249b04030fd",
+  "exactUneditedSlotCrop": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/forge-2/canonical-source-slot.png",
+  "slotSHA256": "7370388e31c425787caf30f1d5d3d42151a84f88c8ad4eb89aa4cf050b84516e"
+}

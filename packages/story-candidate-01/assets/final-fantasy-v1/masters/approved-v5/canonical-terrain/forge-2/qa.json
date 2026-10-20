@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-2",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-254ad671-d9cd-43a9-b285-4cc75cc5c6c8.png",
+  "master": "master.png",
+  "sourceSHA256": "5d492fde387e0e9481e8dcdab71efc6adeeb16a4fcdbd734924ecb1ebd1bf271",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "visualSourceQA": {
+    "subject": "Full-bleed amber-orange molten field with broad ochre flow folds and separate local charcoal stone/dull bolted metal rim fragments.",
+    "style": "Broad matte shapes, source-grounded industrial ground details; no new writing, global building or character scene.",
+    "caveats": [
+      "The original single metal-lined channel layout was deliberately reorganized into a predominantly molten swatch so arbitrary cardinal masks can sample molten material in all directions. This does not author per-mask trench banks.",
+      "The material is saturated orange and contains many broad flow folds; there is no bloom or white-hot highlight. Compare actual native masks and nearby actor contrast before formal acceptance.",
+      "Outer local bank fragments may be clipped by canonical mask arms. The center is unbroken molten material; future review must not claim complete bank geometry in every mask.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticMaterialIdentityRetained": true,
+    "nativeCropAndMaskAcceptancePending": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero current active ground consumers"
+  }
+}

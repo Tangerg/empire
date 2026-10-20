@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+  "label": "巨龙盟约扣",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "巨龙盟约扣",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-dragon-alliance-clasp.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-DRAGON-ALLIANCE-CLASP",
+    "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+    "label": "巨龙盟约扣",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-dragon-alliance-clasp.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+    "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 3,
+    "slot": "BR",
+    "originalNarrativeIndexZeroBased": 17,
+    "fullCellCropBox": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-dragon-alliance-clasp/full-cell.png",
+        "sourceCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "ae3e1eb530c8eeee60e21822aed8a4f784c147def4a8ae2a2ebdcdce3e137190",
+        "pixelSha256": "09619b4fe14512fe36e016fcc98b2c1da2ddafc4c3b4bc44491781da468bbfa6",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-dragon-alliance-clasp/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "7e4741b2de1fface2cd377e6995d8395c9341d1f64b0df14a19cbdcb7a8a6d20",
+        "pixelSha256": "91513b863bad7023e63a92f4e9e27885fdc92c8b219314db1b29ac488c18b903",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-dragon-alliance-clasp.png",
+    "sha256": "8a7b586c6e0e71ee40cb021640b89ec75a250362ad41adf21edf13295c5e92a1",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 11849,
+      "partialPixels": 4161,
+      "opaquePixels": 374,
+      "nearOpaquePixels": 991,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        123,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Gold interlocking clasp/rings bearing one torn dark-gray cloth piece and one red scale/leaf-shaped pendant.",
+    "semanticRequirements": "Keep this intact alliance token distinct from planned-only BROKEN-DRAGON-CLASP. No permanent bridle, saddle or ownership mark on Ivra is implied.",
+    "riskOrHold": "Clear source silhouette; confirm cloth versus wing-material interpretation before adding new lore.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        30,
+        30
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        111,
+        111
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        137,
+        143
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-CONTROL-FRAGMENT",
+  "label": "控制誓文残片",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-CONTROL-FRAGMENT",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "控制誓文残片",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-control-fragment.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-CONTROL-FRAGMENT",
+    "topicId": "C01-PROP-CONTROL-FRAGMENT",
+    "label": "控制誓文残片",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-control-fragment.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+    "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 2,
+    "slot": "BL",
+    "originalNarrativeIndexZeroBased": 20,
+    "fullCellCropBox": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      5,
+      632,
+      622,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-control-fragment/full-cell.png",
+        "sourceCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "a7b57a5c610d24ef442073f458430bf53de0896758552ccd1537d80341b780f7",
+        "pixelSha256": "84cf22ece5bc6c8b69b8c62afb5f1893b9f1192554b4de96d66f6a184604ad07",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-control-fragment/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "690dabb35c8ed74d81988698f504299b6232d9ca36f21c470475e29679349b32",
+        "pixelSha256": "719e28c6dfec86ac585e8aa202c064ea93d4c404f2345d252f7c0010d9f97acc",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-control-fragment.png",
+    "sha256": "f48ca3d28e00e467f962a8e9b51b47b3da83b5b22957f6f88df7ac9189dc04d8",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 11760,
+      "partialPixels": 4471,
+      "opaquePixels": 153,
+      "nearOpaquePixels": 304,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Torn pale parchment fragment with geometric pseudo-script, bound across the middle by a bronze ornamental band.",
+    "semanticRequirements": "No readable text or existing heraldry per prop-sheet02 requirement. The oath-language brief distinguishes will/name/witness and missing refusal; no approved literal glyph system exists.",
+    "riskOrHold": "Source identity clear but symbol semantics require a brief before generation; do not hallucinate readable spell text.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        33,
+        33
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        25,
+        33
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+      "lines": [
+        76,
+        90
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 386,
+    "formalBound": 388,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 27,
+      "narrative-static": 29,
       "skill": 48,
       "status": 24,
       "terrain": 8
     },
-    "rawPreservedTopics": 386,
+    "rawPreservedTopics": 393,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -214,13 +214,20 @@
       "category": "narrative-static",
       "label": "安瑟尔控制治疗塔",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-ansel-tower/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-ansel-tower.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived control tower with green-curtain treatment arcade, or round military bone tower with name-index stations and returned soldiers",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed with cropped queue/ward breadth or gallery ends/stair/peripheral stations explicitly documented",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-BONE-TOWER",
@@ -228,13 +235,20 @@
       "category": "narrative-static",
       "label": "白骨军塔",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-bone-tower/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-bone-tower.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable source-native opaque narrative plate, full original board reference, exact prompts and native/mobile QA preserved. Source-derived control tower with green-curtain treatment arcade, or round military bone tower with name-index stations and returned soldiers",
+        "export": "Canonical256x144 plus exact1664x936 source crop at density6.5; no upscale, full-source retained; parent full-size and worker narrow-cover review passed with cropped queue/ward breadth or gallery ends/stair/peripheral stations explicitly documented",
+        "runtimeBinding": "Canonical narrative resolver and HD catalog binding only; no current shipped consumer; no new story placement invented",
+        "liveGame": "pending; static/native-cover and resolver tests only, no browser rendering claim"
+      }
     },
     {
       "topicId": "C01-ARCH-CAPITAL",
@@ -1157,8 +1171,10 @@
       "category": "narrative-static",
       "label": "控制誓文残片",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-control-fragment/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -1192,8 +1208,10 @@
       "category": "narrative-static",
       "label": "巨龙盟约扣",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-dragon-alliance-clasp/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3487,8 +3505,10 @@
       "category": "terrain",
       "label": "炉城石地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/forge-1/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3501,8 +3521,10 @@
       "category": "terrain",
       "label": "熔沟",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/forge-2/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7680,8 +7702,11 @@
       "category": "fx",
       "label": "普通火焰",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/ignite/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-05/rise/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

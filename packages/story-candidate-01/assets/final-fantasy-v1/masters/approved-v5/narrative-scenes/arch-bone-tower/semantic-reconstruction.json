@@ -1,0 +1,47 @@
+{
+  "topicId": "C01-ARCH-BONE-TOWER",
+  "label": "白骨军塔",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 69,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+  "sourceBoardSha256": "75c85d844f0d2c0fe46974218875ee07f94ace55b97b80e6e9259d32cb5501ee",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "bottom-right",
+  "legacyInsetCropBox": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "semanticReview": {
+    "preserved": [
+      "Dominant round dark stone military tower with open circular battlement and command lectern",
+      "Timber projecting galleries, warm pointed windows and lantern posts",
+      "Curved left/front stone stair and raised rock base",
+      "Framed individual memorial/name tablets on wood supports with original simple finials",
+      "Anonymous armored returned soldiers and distinct hooded keepers",
+      "Cool pine mist and warm amber lamp palette"
+    ],
+    "interpreted": [
+      "A modest public name-ledger position below the tower makes the authored name-index and individual-confirmation brief visible",
+      "Large quiet ground planes and simplified tablet groups support small-size readability",
+      "Pale bone faces on several anonymous guards make the returned military identity legible"
+    ],
+    "notClaimed": [
+      "Named Mirelle, Oren, Laiya or Unbannered appearance",
+      "Specific faction allegiance or new heraldry",
+      "A literal chosen consent/governance outcome",
+      "Exact historically named inscriptions or a canonical map of the tower"
+    ],
+    "caveats": [
+      "Centered narrow portrait retains main stone tower mass, full top battlement and posts, door guards and individual name-check position, but clips the outer timber gallery ends, part of the curved stair and most peripheral tablet/soldier/forest context.",
+      "Canonical256×144 retains the military tower and register arrangement; tiny bone faces and ledger marks are not individually legible at that size."
+    ]
+  }
+}

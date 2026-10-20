@@ -132,3 +132,7 @@ The reviewed arrow burst revision contained exactly four perimeter pixels at alp
 ## Blunt-impact source semantics
 
 FX04 is the original atlas01 fourth-row sequence: hollow ochre elliptical impact rings, paired dust puffs, expanding stone flecks and settling residue. The reviewed phase order is contact/expand/peak/settle. It is not a weapon, spark starburst or opaque ground disk. Shared target-centered registration and existing lantern-staff/engineer-hammer/rune-hammer/golem-slam bindings remain unchanged. Contract support does not approve or count generated art.
+
+## Ordinary-fire source semantics
+
+FX05 preserves original atlas02 row1: small orange ignition, medium curled flame, tall broad yellow-core orange flare, and small dying flame/embers. Its phase order is ignite/rise/flare/embers. It is ordinary fire, distinct from FX06 oath-fire rune rings. The existing c01.dragon-breath target-centered hit binding remains unchanged. Source semantics and shared-canvas export support do not approve or count unfinished generated phases. The authored flame root is measured separately from the fixed center pivot; it is not silently individually aligned.

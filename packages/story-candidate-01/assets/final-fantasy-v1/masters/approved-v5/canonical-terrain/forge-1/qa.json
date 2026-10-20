@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-1",
+  "status": "raw-source-reviewed; actual-export-native-QA-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-423fa396-fdad-40bb-8a6c-a338fc2c343f.png",
+  "master": "master.png",
+  "sourceSHA256": "1db1cb370c1603686f96daf7fcf56af622d5752f3409e830c3c9f80e11af140e",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Dark fitted rectangular stone paving, two plain short iron grates and two complete compact grate elbows with square service covers.",
+    "style": "Broad matte shapes, source-grounded industrial ground details; no new writing, global building or character scene.",
+    "caveats": [
+      "The requested T details resolved as L-shaped two-arm junctions with intact square service covers. The original grate/service-cover material vocabulary is retained; exact original full-width crossing layout is intentionally not repeated.",
+      "Stone faces contain quiet mottled planes and more broad age cracks than requested. Native-scale density still needs actual export review.",
+      "Local grates occupy modest one-to-two-slab regions, not a giant central mechanism. Choose broad crop windows preserving complete local covers.",
+      "Raw opposite edges are not claimed exact or visually seamless."
+    ],
+    "fullbleedSquare": true,
+    "semanticMaterialIdentityRetained": true,
+    "nativeCropAndMaskAcceptancePending": true
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending actual exporter contract",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has zero current active ground consumers"
+  }
+}

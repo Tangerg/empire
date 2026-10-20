@@ -1,0 +1,98 @@
+{
+  "source": {
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 951904,
+    "partialPixels": 619265,
+    "opaquePixels": 1347,
+    "nearOpaquePixels": 605915,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      33,
+      71,
+      1206,
+      1156
+    ],
+    "alpha8BoundingBox": [
+      78,
+      73,
+      1199,
+      1152
+    ]
+  },
+  "contain128": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 9819,
+    "partialPixels": 6332,
+    "opaquePixels": 233,
+    "nearOpaquePixels": 5697,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      7,
+      7,
+      123,
+      118
+    ],
+    "alpha8BoundingBox": [
+      9,
+      9,
+      121,
+      116
+    ]
+  },
+  "wholeCanvasResize": {
+    "source": [
+      1254,
+      1254
+    ],
+    "target": [
+      128,
+      128
+    ],
+    "fit": [
+      124,
+      124
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "crop": null
+  },
+  "composites": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-control-fragment/QA/native128-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-control-fragment/QA/native128-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-control-fragment/QA/native128-olive.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-control-fragment/QA/native128-dark.png"
+  ],
+  "sourceBytesUnmodified": true,
+  "alphaCleanup": false,
+  "chromaKey": false,
+  "bboxFit": false,
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d6289ca6-4d1a-4253-a06b-ec88a276b9fb.png",
+  "visualReview": {
+    "status": "pass",
+    "original617Inspected": true,
+    "nativeSourceInspected": true,
+    "fourActual128BackgroundsInspected": true,
+    "referenceFidelity": true,
+    "notes": "Pass. Torn pale parchment, bronze hooked band and polygonal boss retained. Sparse original upper angular/arc/dot group and lower slashes/dot remain nonverbal geometric marks; no literal spell, language or claimed will/name/witness semantics. Exact128 is readable on black, white, olive and dark. Broad matte planes and clean dark outlines; all edges intact. Source boundary alpha0."
+  }
+}

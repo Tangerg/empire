@@ -1,0 +1,10 @@
+{
+  "topicId": "C01-ARCH-BONE-TOWER",
+  "historicalAuditActualUse": false,
+  "currentReadOnlyScan": "rg -n --glob *.{ts,tsx,js,css} C01-ARCH-ANSEL-TOWER|C01-ARCH-BONE-TOWER|arch-ansel-tower|arch-bone-tower apps packages",
+  "matches": [],
+  "directRuntimeConsumerFound": false,
+  "selectorChanges": false,
+  "newConsumerSuggested": false,
+  "cssCoverQA": "hypothetical compatibility only, no current consumer and no browser/live claim"
+}

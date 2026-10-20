@@ -1,0 +1,29 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-1",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "cropXYXY": [
+    3,
+    3,
+    441,
+    441
+  ],
+  "cropSize": [
+    438,
+    438
+  ],
+  "slotSHA256": "544313e94f01265740c0da1138a6865b51c9a614f36196bd227195a5f330954e",
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Dark forge paving crossed by iron trench grates and square service cover",
+  "originalSlotVisuallyInspected": true,
+  "rawSourceVisuallyInspected": true,
+  "redrawInterpretation": "Dark fitted rectangular stone paving, two plain short iron grates and two complete compact grate elbows with square service covers.",
+  "semanticChangesAndLimits": [
+    "The requested T details resolved as L-shaped two-arm junctions with intact square service covers. The original grate/service-cover material vocabulary is retained; exact original full-width crossing layout is intentionally not repeated.",
+    "Stone faces contain quiet mottled planes and more broad age cracks than requested. Native-scale density still needs actual export review.",
+    "Local grates occupy modest one-to-two-slab regions, not a giant central mechanism. Choose broad crop windows preserving complete local covers."
+  ],
+  "originalExportMode": "variants",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true
+}

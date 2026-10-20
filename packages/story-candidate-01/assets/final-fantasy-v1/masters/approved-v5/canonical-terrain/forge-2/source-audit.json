@@ -1,0 +1,29 @@
+{
+  "topicId": "C01-TERRAIN-FORGE-2",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-forge-wasteland.png",
+  "boardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "cropXYXY": [
+    447,
+    3,
+    884,
+    441
+  ],
+  "cropSize": [
+    437,
+    438
+  ],
+  "slotSHA256": "7370388e31c425787caf30f1d5d3d42151a84f88c8ad4eb89aa4cf050b84516e",
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Bright amber molten channel between metal-lined dark stone banks",
+  "originalSlotVisuallyInspected": true,
+  "rawSourceVisuallyInspected": true,
+  "redrawInterpretation": "Full-bleed amber-orange molten field with broad ochre flow folds and separate local charcoal stone/dull bolted metal rim fragments.",
+  "semanticChangesAndLimits": [
+    "The original single metal-lined channel layout was deliberately reorganized into a predominantly molten swatch so arbitrary cardinal masks can sample molten material in all directions. This does not author per-mask trench banks.",
+    "The material is saturated orange and contains many broad flow folds; there is no bloom or white-hot highlight. Compare actual native masks and nearby actor contrast before formal acceptance.",
+    "Outer local bank fragments may be clipped by canonical mask arms. The center is unbroken molten material; future review must not claim complete bank geometry in every mask."
+  ],
+  "originalExportMode": "nesw-16",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true
+}
