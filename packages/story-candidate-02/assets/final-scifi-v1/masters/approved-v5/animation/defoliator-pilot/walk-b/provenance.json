@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "promptFile": "prompt.txt",
+  "references": [
+    "../original-combat-row.png",
+    "../idle/master.png"
+  ],
+  "outputHint": "Generated images are saved to /workspace/scratch/84c9fe948755/generated_images as /workspace/scratch/84c9fe948755/generated_images/exec-ebdb10a1-5292-447b-b2dc-85d1c26fda22.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "selectedRawByteIdentical": true
+}

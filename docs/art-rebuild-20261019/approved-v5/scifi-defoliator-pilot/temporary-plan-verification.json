@@ -1,0 +1,178 @@
+{
+  "topicId": "c02-unit-defoliator-pilot",
+  "density": 1,
+  "output": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-defoliator-pilot.png",
+  "size": [
+    256,
+    64
+  ],
+  "logicalAnchor": [
+    32,
+    63
+  ],
+  "placement": {
+    "renderWidth": 52,
+    "origin": [
+      8,
+      10
+    ]
+  },
+  "renderedCanvasSize": [
+    52,
+    52
+  ],
+  "sources": [
+    {
+      "pose": "idle",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/master.png",
+      "sourceSha256": "d05d7ad94461cf53d8cd9bb78c4fda1a3165311deb2a843ec575b7438e0dfd74",
+      "sourceAlpha": {
+        "edgeMaxAlpha": 1,
+        "edgeNonzeroPixels": 43,
+        "coreBoundingBox": [
+          143,
+          252,
+          1232,
+          1187
+        ]
+      },
+      "registrationOffset": [
+        0,
+        1
+      ]
+    },
+    {
+      "pose": "walk-a",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-a/master.png",
+      "sourceSha256": "568d39124b066e514cc34dcc1c0450cc47ec4499f5d4f6f14d67e56ea1124f8c",
+      "sourceAlpha": {
+        "edgeMaxAlpha": 1,
+        "edgeNonzeroPixels": 21,
+        "coreBoundingBox": [
+          144,
+          251,
+          1232,
+          1115
+        ]
+      },
+      "registrationOffset": [
+        0,
+        2
+      ]
+    },
+    {
+      "pose": "attack",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/attack/master.png",
+      "sourceSha256": "b31a368fc60278f82226096fd235bba91f4c42107725e57f45f8424dd1362db1",
+      "sourceAlpha": {
+        "edgeMaxAlpha": 1,
+        "edgeNonzeroPixels": 40,
+        "coreBoundingBox": [
+          114,
+          247,
+          1226,
+          1163
+        ]
+      },
+      "registrationOffset": [
+        1,
+        2
+      ]
+    },
+    {
+      "pose": "walk-b",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-b/master.png",
+      "sourceSha256": "c73ade1c668dfe6b81ae56109249a426266d1c3f8339ce46d3dd87cca6526194",
+      "sourceAlpha": {
+        "edgeMaxAlpha": 1,
+        "edgeNonzeroPixels": 29,
+        "coreBoundingBox": [
+          87,
+          249,
+          1229,
+          1157
+        ]
+      },
+      "registrationOffset": [
+        -2,
+        2
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "pose": "idle",
+      "pixelSha256": "da66209e11c355212cfc2e28f56e8d8cf8dce9ad008ff749456ef359a33d85b0",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          14,
+          22,
+          58,
+          60
+        ]
+      },
+      "registrationOffset": [
+        0,
+        1
+      ]
+    },
+    {
+      "pose": "walk-a",
+      "pixelSha256": "47c81512d2547eb5185d505d1146f6e3aaa17386f8768b7cfb484bb3ea36f5c7",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          14,
+          23,
+          58,
+          58
+        ]
+      },
+      "registrationOffset": [
+        0,
+        2
+      ]
+    },
+    {
+      "pose": "attack",
+      "pixelSha256": "ae27f059d02dec85cf448ce2432650a899df405329f17a607e07644a9adb1f63",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          14,
+          23,
+          55,
+          57
+        ]
+      },
+      "registrationOffset": [
+        1,
+        2
+      ]
+    },
+    {
+      "pose": "walk-b",
+      "pixelSha256": "6ec85533af55024c6194119470c2697d8c3a82da8fada103be961c58cb317947",
+      "alpha": {
+        "edgeMaxAlpha": 0,
+        "edgeNonzeroPixels": 0,
+        "coreBoundingBox": [
+          10,
+          23,
+          56,
+          59
+        ]
+      },
+      "registrationOffset": [
+        -2,
+        2
+      ]
+    }
+  ],
+  "pixelSha256": "95f23293b474739969db14fcc4a6cfc3693c4774e27c92cdf5609984692fff81",
+  "semanticAnimationReview": "required-separately"
+}

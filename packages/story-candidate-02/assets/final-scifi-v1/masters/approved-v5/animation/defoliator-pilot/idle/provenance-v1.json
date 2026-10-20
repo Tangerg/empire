@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "promptFile": "prompt-v1.txt",
+  "references": [
+    "../original-combat-row.png",
+    "../style-only-wyvern.png"
+  ],
+  "outputHint": "Generated images are saved to /workspace/scratch/84c9fe948755/generated_images as /workspace/scratch/84c9fe948755/generated_images/exec-4e8d2211-9414-4c94-89cc-9df3bb89dd3a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "status": "retained source baseline defect: measured lowest alpha>=128 y1126, planned y1215"
+}

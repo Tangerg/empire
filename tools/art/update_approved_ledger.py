@@ -11,6 +11,8 @@ DOC = Path('docs/art-rebuild-20261019')
 def build(root=ROOT):
     progress = json.loads((root / DOC / 'approved-v5/progress.json').read_text())
     baseline = json.loads((root / DOC / 'canonical-topic-manifest.json').read_text())
+    static_catalog = root / 'tools/art/source-overrides.json'
+    static_sources = json.loads(static_catalog.read_text())['assets'] if static_catalog.exists() else {}
     manifests = {}
     rows = []
     for old in baseline:
@@ -64,6 +66,13 @@ def build(root=ROOT):
             directory = root / Path(path).parent / 'masters/approved-v5' / relative
             raw = [str(p.relative_to(root)) for p in sorted(directory.glob('master.png'))]
             raw += [str(p.relative_to(root)) for p in sorted(directory.glob('*/master.png'))]
+        selected = static_sources.get(topic, {}).get('source')
+        if selected and '/masters/approved-v5/' in selected:
+            owner = (root / Path(path).parent / 'masters/approved-v5').resolve()
+            source = (root / selected).resolve()
+            if not source.is_relative_to(owner) or not source.is_file():
+                raise ValueError(f'{topic}: selected approved static source is missing or outside its owning pack')
+            raw = [selected]
         if bound and not raw:
             raise ValueError(f'formally bound topic lacks a discoverable approved native master: {topic}')
         rows.append({'topicId': topic, 'campaign': old['campaign'], 'category': current['category'],

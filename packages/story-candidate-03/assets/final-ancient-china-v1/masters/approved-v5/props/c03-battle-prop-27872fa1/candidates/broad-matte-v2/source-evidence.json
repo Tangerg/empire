@@ -1,0 +1,63 @@
+{
+  "topicId": "c03-battle-prop-27872fa1",
+  "tool": "built-in image_gen.imagegen",
+  "generationOutputId": "exec-c816b53a-35a5-41cb-a43e-90b2a0b4ebe6",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c816b53a-35a5-41cb-a43e-90b2a0b4ebe6.png",
+  "sha256": "af2f7795aacd465692979a02607be5621dcc18836acfb9e61b9391852eb6c960",
+  "promptFile": "prompt.txt",
+  "promptFileSha256": "9aab7658261aaa3ef9f9cc44e525fcf3fdbbd829921870952f80d448c42ac9d4",
+  "references": [
+    {
+      "role": "edit-target",
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/master.png",
+      "sha256": "48bfcb74dd0f718ea41b06cf8afa5792cc51667e187b50c5f91db099def06b80"
+    },
+    {
+      "role": "approved-style-only",
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/props/bprop-engineering-1/master.png",
+      "sha256": "ac16d96d830af9e50d59d93319025d29c09c5e8bb4956157be3b4fd2f866a6fd"
+    }
+  ],
+  "postprocessing": "None. raw.png and master.png are byte-identical native imagegen output. native64.png is review-only whole-canvas-contain LANCZOS export, padding 2. No smoothing, recolor, crop, alpha replacement or source pixel operations.",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha": {
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 1,
+    "coreBoundingBox": [
+      60,
+      87,
+      1227,
+      1139
+    ]
+  },
+  "exportContract": {
+    "method": "whole-canvas-contain",
+    "sourceCropBox": null,
+    "renderSize": [
+      60,
+      60
+    ],
+    "origin": [
+      2,
+      2
+    ],
+    "padding": 2,
+    "resampling": "LANCZOS"
+  },
+  "outputAlpha": {
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "coreBoundingBox": [
+      5,
+      7,
+      60,
+      56
+    ]
+  },
+  "selected": false,
+  "newTopicCount": 0
+}

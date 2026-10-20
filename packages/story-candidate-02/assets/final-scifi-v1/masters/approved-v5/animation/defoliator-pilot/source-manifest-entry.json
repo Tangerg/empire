@@ -1,0 +1,28 @@
+{
+  "assetId": "C02-SFV1-unit-defoliator-pilot",
+  "topicId": "c02-unit-defoliator-pilot",
+  "label": "\u9664\u751f\u673a\u9a7e\u9a76\u5458",
+  "category": "combat-unit",
+  "png": "runtime/combat-unit/unit-defoliator-pilot.png",
+  "width": 256,
+  "height": 64,
+  "runtimeReady": true,
+  "qualityTier": "final-cartoon-scifi-v1",
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "frames": 4,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "anchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ]
+}

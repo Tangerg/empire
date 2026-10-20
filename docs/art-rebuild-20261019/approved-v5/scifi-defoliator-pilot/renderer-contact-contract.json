@@ -1,0 +1,39 @@
+{
+  "scope": "Shared runtimeUnitPicture + boardStripMarkup static helper diagnostic, not C02 gameplay or scene consumer",
+  "source": "packages/game-ui/src/art/runtime-raster.ts",
+  "scale": 1,
+  "frameSize": [
+    64,
+    64
+  ],
+  "anchor": [
+    32,
+    63
+  ],
+  "cellFoot": {
+    "x": 16,
+    "y": 31
+  },
+  "stripPlacement": [
+    -16,
+    -32
+  ],
+  "contactEllipse": {
+    "cx": 16,
+    "cy": 29.2,
+    "rx": 12.5,
+    "ry": 4.2,
+    "opacity": 0.48
+  },
+  "teamRing": {
+    "cx": 16,
+    "cy": 29.5,
+    "rx": 11,
+    "ry": 2.25
+  },
+  "team": "#6a9eae",
+  "tint": "#b5cfd7",
+  "rasterizerViewportGuard": "Explicit outer clip repeats declared64x64 strip viewport because Inkscape does not respect nested svg overflow reliably",
+  "candidate01CssApplied": false,
+  "reliefApplied": false
+}

@@ -1,0 +1,678 @@
+[
+  {
+    "topicId": "c02-terrain-milight-corona-service",
+    "tileMode": "variants",
+    "size": [
+      128,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-corona-service/master.png",
+      "sourceSha256": "df7934234cd4a527a22d5987f29de299a0a2be8ab3e584acfb722bae91727593",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "2bb96262d1ab7cb5c1ae003c1dd6fedb0f0968cdbd61eec451515873c0f31e7b",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "b93df837d1e8912e198e05936bdc5f76af6057e294e675d65bca2c4fe7d183eb",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 67,
+        "interiorPixelSha256": "d7fdab7709dd882531fd6264ee2b94db9dcecb4a8236053bb77110ed21d9b613",
+        "edgeHashes": {
+          "top": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "bottom": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "left": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6",
+          "right": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6"
+        },
+        "pixelSha256": "9794f5184137eacf64e39ac95d4a3c06c1a2b288259fbf09163d082aeb891bb3"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "4b88ed44b37351074fe41011f897318f2c513bba0fb9648cf89b4207ca9dc484",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 33,
+        "interiorPixelSha256": "b280c0b0944b70e8cfbc040ae0443e27565edd921e7e44d3b30eb67a5389a456",
+        "edgeHashes": {
+          "top": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "bottom": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "left": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6",
+          "right": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6"
+        },
+        "pixelSha256": "8d1238852a8266d556a00aa98b2e2e3648d845bc133ddd58697556d32e87ba50"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "b24b70816055bfc64a2e2ed378b507acc7922ee7c45e0a48be337503c0a28361",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 42,
+        "interiorPixelSha256": "5f1853e237aaafb884f745c21d07cc2132f04d1efddec76e352eaf6771a9c175",
+        "edgeHashes": {
+          "top": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "bottom": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "left": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6",
+          "right": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6"
+        },
+        "pixelSha256": "24f5c9e5d829a998149987f1d17bb4839d395a8776cbd6ed8e2a5a633771302d"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "d25bf8164ee5d507d87e5b60e865088eaabd7350dd88b95796cda988864446cd",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 34,
+        "interiorPixelSha256": "fd969ec0896c652832f92ff8f73b61fe10f6047b332ffe808b8e0c33e1a8a037",
+        "edgeHashes": {
+          "top": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "bottom": "d8f79fe9090b06f7ee83349a19f63d0bac1327cba2a65fdaab7f4b65bcd69937",
+          "left": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6",
+          "right": "be540afcfbdf619671bbf5d23e537f9fa81fe05464b522e828368918269f1fe6"
+        },
+        "pixelSha256": "54ea566433fa68bbfbd6199e5be02847e69cb68e914b445a0272b934aa1b6af2"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "6d407e1b9e5e471325d6c779848bfb2d6b482742aadc8df3a6934843af1cc340",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "83e04259f08e533778c4958a51a0cd13581c31356884cebc5b53126473a72d56",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "548671dfb099d2508e75e4bb767fd9926811d59e5c4ac4f288f527db9d5c60ed",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "f7190ffc127e1f3d7b5895bf1229de932a5991706ffb223c6271f8f2bfc402fe",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "fbc6dd8ca32f92f031a295f336747e2bc4b37ac121d9c339c1a0f0afed12533b",
+    "pixelSha256": "293d70552f30801d151879a9bd72c45311d2adb2d2593f45bd8ffb8449935d86",
+    "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+    "distinctCells": 4
+  },
+  {
+    "topicId": "c02-terrain-milight-inverted-city",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-inverted-city/master.png",
+      "sourceSha256": "a98596ebeb88476191a94996a191de1ded604feda1f4e1897c09b075ddfd9cc7",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "9d8b3416e5ea1c200900b966be00683fb41980bb65fc79629e895b2015fd8b9a",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "f7714a4ede7d864669de256c652009b6cc756373a10ef15b21b7bce80c0c66bb",
+        "edgeBandPixels": 1,
+        "changedPixels": 108,
+        "maxChannelChange": 10,
+        "interiorPixelSha256": "3bdef1e2d71df17cbd2131e15e99dda271fbc42f36a3c155d96cbcef86e9578e",
+        "edgeHashes": {
+          "top": "0e4a5b44ef410f663e0c36dede8aed9d84758a3a1d6abd20a7dbb4cc08b4ba26",
+          "bottom": "0e4a5b44ef410f663e0c36dede8aed9d84758a3a1d6abd20a7dbb4cc08b4ba26",
+          "left": "eeb3cf5f217b7d9fa93001b073ba70776e73bb4e0021091a2ce4444503f9475b",
+          "right": "eeb3cf5f217b7d9fa93001b073ba70776e73bb4e0021091a2ce4444503f9475b"
+        },
+        "pixelSha256": "836fd95d1d01d4fa67f8b0ec9a2f5264e19b92ed6305f6b8fca84a4007055792"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "3a0edd49d959cd2876e56b11cc2fa82323909ffb6b10bdeedc9a6560eabede86",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "e8097c74e53a632ef7427fee02584431b940c052b270afae518f49d4ef886636",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "b588959a90ed2e01c0512bcf55ab530683c4142a00b9396c07003f1131c70f9b",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "fecc25867fdb4daab78ab1170966e616a9a8ff8b4357bcc42de8bf0330324746",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "5257950b9849b70e9515249f26e4e65fcef10078bbb99fe3a1104a22cd4db39f",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "ede515de13a3c5bc1788fe1cb6a192c10d8b54e2d607de5ae3458be60259f007",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "ea00d58eb073d65dbf7abb7846ac22f982947d3ec6eba2e488fe59bae9435f0d",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "186e0a00b219224fd14a2738a701adf65dc6d6ef17c8b6d3d55acf416ccc7940",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "c016d61a60be0188bb78f3be3c68771a610140d3e39019d7d652fc5659634995",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "434c50f7334e21b46bc0b9db598062ed70a4f818c254a728c6c2540157ef695a",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "9f2d594e154e065827c0185834e1e980f0b25b597ec3c56dac57b83d2a025e74",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "62fc70306fd0ad510f8b104fdab13ffdfbc8381e2f5b955f5e780e489727dc6e",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "50fb474b47f43ec9d54922aa76e88bfcd818dd8b0b3e974a7fc789f8fec0df5b",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "6b904c55b6b386dc2b88c40e94f2524d0574dcd666ebde29118d63591812efc7",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "3a3656c4dd626f93cb7376275eeaa7cc3aac450232ddd1b71a9af994c2960a48",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "774ec6a3136ca4a12a3fd7350d38d711636f0ced7a96181305ea954b9ac3658e",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "8775b164f02aad752a887dddfe490a2789faf89ca323fff0ac64fe5adabde47c",
+    "pixelSha256": "674942b1175947ff2e07ceff71f5f5e97d9d1bc937b1143bbff188d2edac9ed0",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16
+  },
+  {
+    "topicId": "c02-terrain-milight-rotating-blackout",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-rotating-blackout/master.png",
+      "sourceSha256": "e4d2533a284d2a25e0c3ebf57654ebbba53f2f1902316e1b21ef8d7302a3aaea",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "3fa6ca4882c5bcb103a0e8af0dd755640007e964f18c3cf987fe064a5ad959f5",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "66c706d23d596aa03b07d92a225ba00d43255d3f8cd70f62830cf548e7e28099",
+        "edgeBandPixels": 1,
+        "changedPixels": 112,
+        "maxChannelChange": 16,
+        "interiorPixelSha256": "fa704eee53b2fc5d1b4c94287096744999c7451008814c90756d6466b2243e67",
+        "edgeHashes": {
+          "top": "3f7f86b9fbf6c92d40788651453d8b168f46a46fee20fb759ee56f0756c77d8d",
+          "bottom": "3f7f86b9fbf6c92d40788651453d8b168f46a46fee20fb759ee56f0756c77d8d",
+          "left": "7807262d317c96173aed9a36832d5de6790e35f923477e9c27e54321eb22434b",
+          "right": "7807262d317c96173aed9a36832d5de6790e35f923477e9c27e54321eb22434b"
+        },
+        "pixelSha256": "85624badf2c0b3c45dbcd28e0711f395d03bbb11ba50cfc1ff0e505a660a5a2d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "38d8b25a9c9379e18adb83ed21abfbdac34c60cb7b33f00c1de27a8b7a3915f5",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "fcbb544d1dc796380e19d060d35da0834af590f52ad1053f0b7a3f097aeaf4dc",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "17e6e2773691e19219f3eb06ff8229a2104ee66dc8886ad368ac1abd672b099a",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "a75e3b76ebc7579cf3dd9f1c4a81c1ded9e2dedcd6dbb97006508ee0d766966c",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "d214198ac1cb74ecffd69c8a0330d37079016838a3409aab85153ee9f6909b01",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "94902b96edc285d3d788c1b02fabcae2241283f61ee4f189bf12a0a75684aeb2",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "a78e18d17cb3d0097a9954f91e0696a8f44bea5b446c6caf8b710622348e568a",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "4cd0de271132474fb8a2a60aff67d7353403cf11e6b59ed88ee55d258cfaf497",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "d0b4e863900de2b9424f6c5f8f388bfd337fe76691b50235b8ee00b451a5ef87",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "95dcaebfa554264052f43c5307a386596b10c1688dfbfb2bab0f041f5b5f3f6f",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "337d19c183be3a8b5587a28a7dc946adfcc6de850af4e581cb6ed9e45f1535c8",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "f91fd839ca4580176cad17ddfb86ae3a27f546ae9f87109481de5ca716f6d434",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "1a28a009f4e9ac6e96583cdbeed6c60eb43d0398a8af8ce8e8ee2ff391557675",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "1c2f3840512273374fb3ca2383aa5e8afb92dbd50c49db5a3a7ac8b16778e262",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "5bfcdb94c24b4e49a16bad31af7b7ebc472d8d549caf754e17dfaf82575d4946",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "fadaf2ac8719448d37e4e96ce231f118055d6fea9ba991b122c8b45891e538fa",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "fa8148c30aacaa019e39c8d735be5ee856fed549babc0f6cb43d7d1712e74927",
+    "pixelSha256": "db23d3e8f61843b43cfe3b877db662842b301cfd2037f94ee70237513072b276",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16
+  },
+  {
+    "topicId": "c02-terrain-milight-vein-ring",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-vein-ring/master.png",
+      "sourceSha256": "dc95bf8c452bb561a66ef5bea71229a6a966ef097ff3abc6ee1d1ae335b073eb",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "ef4a08110326b896a5517447c5d11237789982dc88cd98a5ca495d45ee8ac2f4",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "9caf6f4e789b922bad5c81c97173074a2f55ed252e37d245abac93e4322ab43f",
+        "edgeBandPixels": 1,
+        "changedPixels": 112,
+        "maxChannelChange": 14,
+        "interiorPixelSha256": "e49d610643e2c456f946aa458d10965ee9e200aa8bdb27e0103c2b4ca308ef24",
+        "edgeHashes": {
+          "top": "7aa547b0e8d4688bf607747a5ad45da0fb882110bb3b080e340a2ac67997b4c2",
+          "bottom": "7aa547b0e8d4688bf607747a5ad45da0fb882110bb3b080e340a2ac67997b4c2",
+          "left": "7143b8abb31d673366094903018afb245e4b03bd36b36f470103f4d153f8a029",
+          "right": "7143b8abb31d673366094903018afb245e4b03bd36b36f470103f4d153f8a029"
+        },
+        "pixelSha256": "47519abfa63f004fc88dec57117141a943ce4a44f945563b0cac0de36bd8619f"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "6b658ceea5bf007b2a379b2f8a60e264af67388822e8853f5b1f4021925c3523",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "cebc23678e6da9611a81e5e890ff4d1355fe846fbc8f1f22231f8075a174d50c",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "d75965355d88bf4b45f534c3dca6fbf745799d758e2f220d7dd2a75ab8cdc813",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "47402f63c2a9a0ca5d80eb8745a61ac5fcadfbd236136827e00a7f0234e05756",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "fe6e77eadefef7f64e5473a961d9bf539118196e7c023c500da48bb56a0f2e27",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "b43db627298db80773c3cecdb078ae3460a922859a9f28ef52db73e8b8aba0fd",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "05bf0b940636e9a35b281071986bada24bff0953c5e549d63f60d3c8c39e9ec8",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "1646a83a5733e932dd09f72dcbb5702f787dbd2881810629d6a5b33c73098ced",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "a1b2e8d588e617542e7f1fef005e6603fb3d4efcad7c19265cce8e44f1699b8b",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "3d16879c056ca81011cd5ddec6eed8f611bcf4f0b2042450b5da1b047f33b038",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "776a051b41d8a09fe41433e75930ed2c7adec318afc22fe9fceb3e594e811b2d",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "626a12f19c2d473ce5574ab432ca344fd7d2aca9817b7cb57b12283da0512f94",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "0c226f0f91588bf885cb1282d0873f94c39df52f8690ef74db9db462cbe6d0d9",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "5d7922ccdef7089abdd2fe365341a392bf0e26b8372d9a08ac5faaa76588a682",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "875551bef90fc5922f4aa75997e4f7eb7207a8b290c5a70382126350f838d89c",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "86b56a02477ea7b9aa4d3675611c450be254c410199a6a8673d04c3d4e73d5ee",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "e2fd49b90fac1cd64338bb6eb75f1aa311e318295050071fa13e38980a243f1e",
+    "pixelSha256": "823f4e980d6b4f26a374ceb626dec12c8cc8d4c137b563fc9f5a7d841db23672",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16
+  }
+]

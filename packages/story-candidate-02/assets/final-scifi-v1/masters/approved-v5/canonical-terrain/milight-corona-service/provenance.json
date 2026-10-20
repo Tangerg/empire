@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "rawEqualsMaster": true,
+  "sha256": "df7934234cd4a527a22d5987f29de299a0a2be8ab3e584acfb722bae91727593",
+  "references": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-04.png",
+      "sha256": "c0be7318621bb2573d37c83cdc2021952f23bdd5d282b5f9da4947f9fd4cc1c0"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png",
+      "sha256": "df3151cef9f435b2dc5395b6cb2e0374a4ebcbd66d6d27c85b7cf0458335c0a2"
+    }
+  ],
+  "topicId": "c02-terrain-milight-corona-service",
+  "status": "candidate-native-reviewed-not-registered"
+}

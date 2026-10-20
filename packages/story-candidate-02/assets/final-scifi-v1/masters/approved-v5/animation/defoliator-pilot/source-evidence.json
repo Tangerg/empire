@@ -1,0 +1,38 @@
+{
+  "topicId": "c02-unit-defoliator-pilot",
+  "assetId": "C02-SFV1-unit-defoliator-pilot",
+  "originalSourceLocation": "combat-board-08.png row4, one-based; catalog unit32 and visual canonical runtime verification",
+  "identity": "Gray squat industrial biped mech; transparent curved pilot canopy, single seated black-helmet pilot with orange visor; two articulated legs with flat claw feet; orange circular joints; small front pincer; viewer-right articulated circular saw/nozzle tool. Original attack third cell emits contained orange cutting spray.",
+  "equipmentCardNotUsed": true,
+  "styleReferenceRole": "Wyvern idle broad matte chunky two-tone illustration only, no fantasy identity borrowed.",
+  "nativeFrame": [
+    64,
+    64
+  ],
+  "anchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "sources": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
+      "sha256": "d9653caee9e42c18c801c8b2821048383897ec61ca26b2bcec07873a5cb50f7d"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/combat/combat-board-08.png",
+      "sha256": "12cfad1de1f3e20a858fd4363bad1a08bf45ab5dc304a14657bb9655c4d9fdf5"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-defoliator-pilot.png",
+      "sha256": "059b7bef2772c6220150c7bc9e8e92ac82dbaa6f2e68bebbebde9cecd3a69fe4"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png",
+      "sha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6"
+    }
+  ]
+}

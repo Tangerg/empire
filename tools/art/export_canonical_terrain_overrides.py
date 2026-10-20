@@ -35,6 +35,10 @@ SCIFI_TOPICS = {
     'c02-terrain-kairon-train-platform': 'variants',
     'c02-terrain-kairon-vacuum-breach': 'nesw-16',
     'c02-terrain-kairon-vertical-city': 'nesw-16',
+    'c02-terrain-milight-corona-service': 'variants',
+    'c02-terrain-milight-inverted-city': 'nesw-16',
+    'c02-terrain-milight-rotating-blackout': 'nesw-16',
+    'c02-terrain-milight-vein-ring': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of

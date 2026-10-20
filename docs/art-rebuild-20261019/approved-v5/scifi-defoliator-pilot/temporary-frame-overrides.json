@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "c02-unit-defoliator-pilot": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/master.png",
+          "sha256": "d05d7ad94461cf53d8cd9bb78c4fda1a3165311deb2a843ec575b7438e0dfd74",
+          "registrationOffset": [
+            0,
+            1
+          ]
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-a/master.png",
+          "sha256": "568d39124b066e514cc34dcc1c0450cc47ec4499f5d4f6f14d67e56ea1124f8c",
+          "registrationOffset": [
+            0,
+            2
+          ]
+        },
+        "attack": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/attack/master.png",
+          "sha256": "b31a368fc60278f82226096fd235bba91f4c42107725e57f45f8424dd1362db1",
+          "registrationOffset": [
+            1,
+            2
+          ]
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-b/master.png",
+          "sha256": "c73ade1c668dfe6b81ae56109249a426266d1c3f8339ce46d3dd87cca6526194",
+          "registrationOffset": [
+            -2,
+            2
+          ]
+        }
+      },
+      "placement": {
+        "renderWidth": 52,
+        "origin": [
+          8,
+          10
+        ]
+      }
+    }
+  }
+}

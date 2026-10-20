@@ -1,0 +1,211 @@
+{
+  "placement": {
+    "renderWidth": 52,
+    "origin": [
+      8,
+      10
+    ],
+    "offsets": {
+      "idle": [
+        0,
+        1
+      ],
+      "walk-a": [
+        0,
+        2
+      ],
+      "attack": [
+        1,
+        2
+      ],
+      "walk-b": [
+        -2,
+        2
+      ]
+    },
+    "status": "Whole-canvas candidate, no independent scaling. X offsets bounded for contact, gait contact travel retained honestly."
+  },
+  "support": {
+    "idle": {
+      "feet": [
+        {
+          "name": "near-planted",
+          "roi": [
+            260,
+            1110,
+            450,
+            1200
+          ],
+          "bottomY": 1187,
+          "bottomFourRowCentroidX": 372.125,
+          "boardSupport": [
+            7.431020733652311,
+            28.221690590111642
+          ],
+          "shadowNormalizedDistance": 0.5241921593916464
+        },
+        {
+          "name": "far-planted",
+          "roi": [
+            700,
+            1070,
+            890,
+            1150
+          ],
+          "bottomY": 1136,
+          "bottomFourRowCentroidX": 798.625,
+          "boardSupport": [
+            25.116826156299844,
+            26.10685805422648
+          ],
+          "shadowNormalizedDistance": 1.0743225421918559
+        }
+      ],
+      "sourceSupport": [
+        585.375,
+        1187
+      ],
+      "projectedSupport": [
+        32.27392344497608,
+        60.22169059011164
+      ],
+      "anchorError": [
+        0.27392344497607723,
+        -2.778309409888358
+      ],
+      "boardSupport": [
+        16.273923444976077,
+        28.221690590111642
+      ],
+      "shadowNormalizedDistance": 0.05473698106595663
+    },
+    "walk-a": {
+      "feet": [
+        {
+          "name": "near-planted",
+          "roi": [
+            470,
+            1040,
+            660,
+            1130
+          ],
+          "bottomY": 1115,
+          "bottomFourRowCentroidX": 571.25,
+          "boardSupport": [
+            15.688197767145134,
+            26.23604465709729
+          ],
+          "shadowNormalizedDistance": 0.4986398580067153
+        }
+      ],
+      "sourceSupport": [
+        571.25,
+        1115
+      ],
+      "projectedSupport": [
+        31.688197767145134,
+        58.23604465709729
+      ],
+      "anchorError": [
+        -0.3118022328548662,
+        -4.763955342902712
+      ],
+      "boardSupport": [
+        15.688197767145134,
+        26.23604465709729
+      ],
+      "shadowNormalizedDistance": 0.4986398580067153
+    },
+    "attack": {
+      "feet": [
+        {
+          "name": "near-planted",
+          "roi": [
+            230,
+            1020,
+            410,
+            1110
+          ],
+          "bottomY": 1098,
+          "bottomFourRowCentroidX": 329.5,
+          "boardSupport": [
+            6.663476874003187,
+            25.5311004784689
+          ],
+          "shadowNormalizedDistance": 1.320977493839198
+        },
+        {
+          "name": "far-planted",
+          "roi": [
+            670,
+            990,
+            830,
+            1070
+          ],
+          "bottomY": 1064,
+          "bottomFourRowCentroidX": 751.5,
+          "boardSupport": [
+            24.162679425837325,
+            24.121212121212125
+          ],
+          "shadowNormalizedDistance": 1.8886775378716405
+        }
+      ],
+      "sourceSupport": [
+        540.5,
+        1098
+      ],
+      "projectedSupport": [
+        31.413078149920256,
+        57.5311004784689
+      ],
+      "anchorError": [
+        -0.5869218500797437,
+        -5.4688995215311
+      ],
+      "boardSupport": [
+        15.413078149920256,
+        25.5311004784689
+      ],
+      "shadowNormalizedDistance": 0.7652898981644954
+    },
+    "walk-b": {
+      "feet": [
+        {
+          "name": "far-planted",
+          "roi": [
+            825,
+            1090,
+            995,
+            1170
+          ],
+          "bottomY": 1157,
+          "bottomFourRowCentroidX": 913.375,
+          "boardSupport": [
+            27.875199362041464,
+            27.97767145135566
+          ],
+          "shadowNormalizedDistance": 0.9872291173907362
+        }
+      ],
+      "sourceSupport": [
+        913.375,
+        1157
+      ],
+      "projectedSupport": [
+        43.875199362041464,
+        59.97767145135566
+      ],
+      "anchorError": [
+        11.875199362041464,
+        -3.0223285486443388
+      ],
+      "boardSupport": [
+        27.875199362041464,
+        27.97767145135566
+      ],
+      "shadowNormalizedDistance": 0.9872291173907362
+    }
+  },
+  "note": "Foot centroid travel includes authored gait, not a claim of stable body anchor. Per-foot ellipse checks supplied; centroid overlap is not acceptance."
+}

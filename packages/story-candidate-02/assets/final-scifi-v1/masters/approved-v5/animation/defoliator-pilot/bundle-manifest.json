@@ -1,0 +1,151 @@
+{
+  "topicId": "c02-unit-defoliator-pilot",
+  "assetId": "C02-SFV1-unit-defoliator-pilot",
+  "status": "Four authored native sources and guard-clean isolated catalog candidate; UNBOUND and scene-quality HOLD",
+  "tool": "built-in image_gen",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourcePolicy": "All selected raw/master pairs byte-identical native outputs. No alpha cleanup, recolor, crop, per-phase scaling, source painting or guard changes. Idle v1/v2/v3 preserved.",
+  "sourceSelection": {
+    "idle": "v3 complete silhouette; earlier placement attempts retained",
+    "walk-a": "first output",
+    "attack": "first output",
+    "walk-b": "first output"
+  },
+  "poses": {
+    "idle": {
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 1009338,
+        "nearOpaquePixels": 543053,
+        "edgeMax": 1,
+        "visibleBounds": [
+          143,
+          251,
+          1233,
+          1188
+        ]
+      },
+      "rawMasterByteEqual": true,
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/master.png",
+      "sha256": "d05d7ad94461cf53d8cd9bb78c4fda1a3165311deb2a843ec575b7438e0dfd74"
+    },
+    "walk-a": {
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 1061289,
+        "nearOpaquePixels": 491598,
+        "edgeMax": 1,
+        "visibleBounds": [
+          143,
+          250,
+          1233,
+          1116
+        ]
+      },
+      "rawMasterByteEqual": true,
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-a/master.png",
+      "sha256": "568d39124b066e514cc34dcc1c0450cc47ec4499f5d4f6f14d67e56ea1124f8c"
+    },
+    "attack": {
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 1053075,
+        "nearOpaquePixels": 477663,
+        "edgeMax": 1,
+        "visibleBounds": [
+          114,
+          246,
+          1227,
+          1167
+        ]
+      },
+      "rawMasterByteEqual": true,
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/attack/master.png",
+      "sha256": "b31a368fc60278f82226096fd235bba91f4c42107725e57f45f8424dd1362db1"
+    },
+    "walk-b": {
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 1039102,
+        "nearOpaquePixels": 513075,
+        "edgeMax": 1,
+        "visibleBounds": [
+          86,
+          248,
+          1230,
+          1158
+        ]
+      },
+      "rawMasterByteEqual": true,
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-b/master.png",
+      "sha256": "c73ade1c668dfe6b81ae56109249a426266d1c3f8339ce46d3dd87cca6526194"
+    }
+  },
+  "registration": {
+    "renderWidth": 52,
+    "origin": [
+      8,
+      10
+    ],
+    "offsets": {
+      "idle": [
+        0,
+        1
+      ],
+      "walk-a": [
+        0,
+        2
+      ],
+      "attack": [
+        1,
+        2
+      ],
+      "walk-b": [
+        -2,
+        2
+      ]
+    },
+    "status": "Whole-canvas candidate, no independent scaling. X offsets bounded for contact, gait contact travel retained honestly."
+  },
+  "formalRuntimeIntegration": false,
+  "actualSceneVerified": false,
+  "sharedHelperDiagnostic": "docs/art-rebuild-20261019/approved-v5/scifi-defoliator-pilot/renderer-contact-proof.png",
+  "sceneQualityHold": "Attack and some far-foot supports remain visually above or outside central contact shadow; centroid overlap is insufficient. Stride contact X travel is not body registration stability."
+}

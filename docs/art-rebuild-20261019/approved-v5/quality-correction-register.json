@@ -1,0 +1,47 @@
+{
+  "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
+  "asOfUtc": "2026-10-20T08:16:00Z",
+  "fullTaskAccepted": false,
+  "issues": [
+    {
+      "topic": "c03-battle-prop-27872fa1",
+      "binding": "bound",
+      "status": "resolved-source-style-only",
+      "issue": "Metal face/rim has excessive mottled facets vs approved broad two-tone reference",
+      "evidence": "chinese-prop-batch-02/style-reference-comparison.png",
+      "resolution": "Genuine broad-matte-v2 source selected after source/native review; prior source preserved unchanged",
+      "resolutionEvidence": "docs/chinese-matte-corrections/selection-review.json"
+    },
+    {
+      "topic": "c03-battle-prop-2f038eea",
+      "binding": "bound",
+      "status": "resolved-source-style-only",
+      "issue": "Pot body and hearth use excessive mosaic facets rather than broad matte planes",
+      "evidence": "chinese-prop-batch-02/style-reference-comparison.png",
+      "resolution": "Genuine broad-matte-v2 source selected after source/native review; prior source preserved unchanged",
+      "resolutionEvidence": "docs/chinese-matte-corrections/selection-review.json"
+    },
+    {
+      "topic": "c02-unit-antler-knight",
+      "binding": "bound",
+      "status": "scene-placement-unresolved",
+      "issue": "Common2.742–3.230px visual baseline gap; default static shadow overlaps but actual C02 scene not verified",
+      "evidence": "scifi-combat-pilot/baseline-gap-review.md"
+    },
+    {
+      "topic": "c02-unit-boarding-team",
+      "binding": "unbound",
+      "status": "source-correction-required",
+      "issue": "Original blue walk not alternating; versioned blue-gait-v2 fixes gait but moves planted support outside registration criterion",
+      "evidence": "scifi-boarding-team/blue-gait-v2/NEXT-SOURCE-CORRECTION.md"
+    },
+    {
+      "topic": "c02-unit-defoliator-pilot",
+      "binding": "unbound",
+      "status": "source-placement-correction-required",
+      "issue": "Full quartet passes mechanical guards, but actual shared-helper attack visibly floats; sole clearance2.78–5.47px, individual-foot contact not established by centroid overlap",
+      "evidence": "scifi-defoliator-pilot/REVIEW.md",
+      "resolution": "Preserve quartet and rejects; grounded attack pose recomposition proposal required, no registration or anchor weakening"
+    }
+  ]
+}

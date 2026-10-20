@@ -1,34 +1,46 @@
 {
-  "asOfUtc": "2026-10-20T08:01:00Z",
-  "formalSnapshot": "592 local under final verification; remote584 verified at6a4a5ae77b9e22f7d512551dbc458d61535f4f95",
+  "asOfUtc": "2026-10-20T08:16:00Z",
+  "formalSnapshot": "600 local in full regression; remote592 at5aef42ffdf199e19d4f92ff1058bf7db529efe40",
   "assignments": [
+    {
+      "scope": "Nereia terrain four canonical topics",
+      "stage": "new independent materials in production; Milight four locally bound"
+    },
+    {
+      "topics": [
+        "c03-equip-0137a889",
+        "c03-equip-0609e6e6",
+        "c03-equip-0c42f6d3",
+        "c03-equip-118c7423"
+      ],
+      "stage": "first approved C03 equipment sources in production; canonical semantics audited because old atlas slots mismatch"
+    },
     {
       "topics": [
         "c02-unit-boarding-team"
       ],
-      "stage": "UNBOUND; new blue-gait-v2 opposite gait real but4.15px drift exceeds registration criterion, candidate rejected and original untouched"
-    },
-    {
-      "scope": "Milight terrain four canonical topics",
-      "stage": "new independent sources in production; Kairon four locally bound"
-    },
-    {
-      "scope": "C03 battle-props canonical batch03",
-      "stage": "next four after first8, new source production"
+      "stage": "unbound source recomposition required; blue opposite gait candidate exceeds registration criterion"
     },
     {
       "topics": [
         "c02-unit-defoliator-pilot"
       ],
-      "stage": "next original-combat-authority four-pose source bundle in production"
+      "stage": "frozen four-pose raw backup; unbound due actual helper floating attack; correction proposal pending"
+    },
+    {
+      "topics": [
+        "c03-battle-prop-27872fa1",
+        "c03-battle-prop-2f038eea"
+      ],
+      "stage": "specific mottled source-style issues resolved by selected broad-matte-v2 edits; originals retained, zero extra topics"
     },
     {
       "scope": "antler-knight scene quality",
-      "stage": "catalog-bound; shared-renderer contact proof only; source correction proposal preserved, no scene-ready claim"
+      "stage": "catalog-bound; default helper static contact only, no actual scene acceptance"
     },
     {
       "scope": "c01-02 asymmetric river layout",
-      "stage": "isolated worktree, intentional map delta requires separate gameplay verification"
+      "stage": "isolated worktree; original outcomes restored, presentation-only road narrowing under review"
     }
   ],
   "canonicalRemaining": {
@@ -40,7 +52,7 @@
       "combat-unit": 39,
       "mission-unit": 24,
       "faction-kit": 12,
-      "terrain": 20,
+      "terrain": 16,
       "interactive-structure": 24,
       "fx": 24
     },
@@ -51,7 +63,7 @@
       "faction-kit": 12,
       "terrain": 32,
       "interactive-structure": 24,
-      "battle-prop": 24,
+      "battle-prop": 20,
       "equipment": 48,
       "skill": 48,
       "status": 24,
@@ -59,7 +71,7 @@
       "hud": 16
     }
   },
-  "counting": "576 canonical catalog bindings of1212;636 remaining. C02 HUD16/16 and Farlight terrain4/32. Environment186 separate source cells; no live-game acceptance.",
+  "counting": "600 canonical catalog bindings of1212;612 unbound. Known visual holds remain separate. Environment186 separate source cells; live acceptance false.",
   "blocked": [
     {
       "topic": "C01 equipment shaman",

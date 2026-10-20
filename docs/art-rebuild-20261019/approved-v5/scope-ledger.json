@@ -4,9 +4,9 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 592,
+    "formalBound": 600,
     "boundByCategory": {
-      "battle-prop": 72,
+      "battle-prop": 76,
       "combat-unit": 41,
       "equipment": 95,
       "faction-kit": 12,
@@ -17,9 +17,9 @@
       "narrative-static": 80,
       "skill": 96,
       "status": 48,
-      "terrain": 44
+      "terrain": 48
     },
-    "rawPreservedTopics": 593,
+    "rawPreservedTopics": 602,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -10209,8 +10209,13 @@
       "category": "combat-unit",
       "label": "除生机驾驶员",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/attack/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-a/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11497,13 +11502,20 @@
       "category": "terrain",
       "label": "弥光日冕维护面",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-corona-service/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-milight-corona-service.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254-square opaque material, fullatlas identity and exactraw/master/provenance preserved",
+        "export": "Declared fullsquare/quadrant sampling, native32 historical alpha and allowed cardinal edges verified; integration-owner fullsource/native review passed. Blackout intentionally dim; inverted-city purple inset decoration mostly outside historical masks; vein-ring cyan-dominant",
+        "runtimeBinding": "Existing canonical terrain catalog only, no HD or world-ground consumer invented",
+        "liveGame": "pending; not fullscene/browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-milight-inverted-city",
@@ -11511,13 +11523,20 @@
       "category": "terrain",
       "label": "弥光倒悬城",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-inverted-city/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-milight-inverted-city.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254-square opaque material, fullatlas identity and exactraw/master/provenance preserved",
+        "export": "Declared fullsquare/quadrant sampling, native32 historical alpha and allowed cardinal edges verified; integration-owner fullsource/native review passed. Blackout intentionally dim; inverted-city purple inset decoration mostly outside historical masks; vein-ring cyan-dominant",
+        "runtimeBinding": "Existing canonical terrain catalog only, no HD or world-ground consumer invented",
+        "liveGame": "pending; not fullscene/browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-milight-rotating-blackout",
@@ -11525,13 +11544,20 @@
       "category": "terrain",
       "label": "弥光旋转重力熄灯态",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-rotating-blackout/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-milight-rotating-blackout.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254-square opaque material, fullatlas identity and exactraw/master/provenance preserved",
+        "export": "Declared fullsquare/quadrant sampling, native32 historical alpha and allowed cardinal edges verified; integration-owner fullsource/native review passed. Blackout intentionally dim; inverted-city purple inset decoration mostly outside historical masks; vein-ring cyan-dominant",
+        "runtimeBinding": "Existing canonical terrain catalog only, no HD or world-ground consumer invented",
+        "liveGame": "pending; not fullscene/browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-milight-vein-ring",
@@ -11539,13 +11565,20 @@
       "category": "terrain",
       "label": "弥光星脉环",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/milight-vein-ring/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-milight-vein-ring.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254-square opaque material, fullatlas identity and exactraw/master/provenance preserved",
+        "export": "Declared fullsquare/quadrant sampling, native32 historical alpha and allowed cardinal edges verified; integration-owner fullsource/native review passed. Blackout intentionally dim; inverted-city purple inset decoration mostly outside historical masks; vein-ring cyan-dominant",
+        "runtimeBinding": "Existing canonical terrain catalog only, no HD or world-ground consumer invented",
+        "liveGame": "pending; not fullscene/browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-nereia-deep-water",
@@ -19054,7 +19087,7 @@
       "label": "军籍牌证据组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/master.png"
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-27872fa1/candidates/broad-matte-v2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -19063,9 +19096,10 @@
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-27872fa1.png",
       "stageEvidence": {
         "raw": "Independent native true-alpha built-in imagegen source, exact raw/master bytes and original full-atlas identity/provenance preserved",
-        "export": "Whole-canvas native64 contain padding2, source alpha and zero output edge checks pass; integration-owner white/black/olive review passed. Token and cauldron retain extra mottled facets versus ideal broad two-tone",
+        "export": "Selected versioned fullcanvas native64 containpadding2 source, alpha<=1/outputedge0; broad matte planes replace excessive mottled facets, original remains archived",
         "runtimeBinding": "Existing canonical catalog geometry preserved, no invented HD density or scene consumer",
-        "liveGame": "pending; catalog/native review only"
+        "liveGame": "pending; catalog/native review only",
+        "qualityReview": "Source-style correction resolved by genuine versioned broad-matte-v2 imagegen edit, reviewed against approved reference at full source/native64; original preserved. No fullscene/live acceptance."
       }
     },
     {
@@ -19117,7 +19151,7 @@
       "label": "行军锅生活组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-2f038eea/master.png"
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-2f038eea/candidates/broad-matte-v2/master.png"
       ],
       "raw": "preserved",
       "export": "reviewed",
@@ -19126,9 +19160,10 @@
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-2f038eea.png",
       "stageEvidence": {
         "raw": "Independent native true-alpha built-in imagegen source, exact raw/master bytes and original full-atlas identity/provenance preserved",
-        "export": "Whole-canvas native64 contain padding2, source alpha and zero output edge checks pass; integration-owner white/black/olive review passed. Token and cauldron retain extra mottled facets versus ideal broad two-tone",
+        "export": "Selected versioned fullcanvas native64 containpadding2 source, alpha<=1/outputedge0; broad matte planes replace excessive mottled facets, original remains archived",
         "runtimeBinding": "Existing canonical catalog geometry preserved, no invented HD density or scene consumer",
-        "liveGame": "pending; catalog/native review only"
+        "liveGame": "pending; catalog/native review only",
+        "qualityReview": "Source-style correction resolved by genuine versioned broad-matte-v2 imagegen edit, reviewed against approved reference at full source/native64; original preserved. No fullscene/live acceptance."
       }
     },
     {
@@ -19137,13 +19172,20 @@
       "category": "battle-prop",
       "label": "桥板工程组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-30a92ab8/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-30a92ab8.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native truealpha source; exact raw/master, original fullatlas identity and prompts preserved",
+        "export": "Fullcanvas native64 containpadding2, source edge<=1 and outputedge0; integration-owner fullsource and native backgrounds reviewed. Guardian plaque uses anatomical decorative facets, not mottled texture; silhouette and gold emblem readable",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no HD or gameplay consumer invented",
+        "liveGame": "pending; native/catalog review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-5cc33643",
@@ -19151,13 +19193,20 @@
       "category": "battle-prop",
       "label": "户册证据组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-5cc33643/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-5cc33643.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native truealpha source; exact raw/master, original fullatlas identity and prompts preserved",
+        "export": "Fullcanvas native64 containpadding2, source edge<=1 and outputedge0; integration-owner fullsource and native backgrounds reviewed. Guardian plaque uses anatomical decorative facets, not mottled texture; silhouette and gold emblem readable",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no HD or gameplay consumer invented",
+        "liveGame": "pending; native/catalog review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-6a51fb07",
@@ -19165,13 +19214,20 @@
       "category": "battle-prop",
       "label": "官军门牌标识组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-6a51fb07/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-6a51fb07.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native truealpha source; exact raw/master, original fullatlas identity and prompts preserved",
+        "export": "Fullcanvas native64 containpadding2, source edge<=1 and outputedge0; integration-owner fullsource and native backgrounds reviewed. Guardian plaque uses anatomical decorative facets, not mottled texture; silhouette and gold emblem readable",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no HD or gameplay consumer invented",
+        "liveGame": "pending; native/catalog review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-6ecfadac",
@@ -19179,13 +19235,20 @@
       "category": "battle-prop",
       "label": "折叠案生活组",
       "baselineManifest": "packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-03/assets/final-ancient-china-v1/masters/approved-v5/props/c03-battle-prop-6ecfadac/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-6ecfadac.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native truealpha source; exact raw/master, original fullatlas identity and prompts preserved",
+        "export": "Fullcanvas native64 containpadding2, source edge<=1 and outputedge0; integration-owner fullsource and native backgrounds reviewed. Guardian plaque uses anatomical decorative facets, not mottled texture; silhouette and gold emblem readable",
+        "runtimeBinding": "Existing canonical catalog geometry preserved; no HD or gameplay consumer invented",
+        "liveGame": "pending; native/catalog review only"
+      }
     },
     {
       "topicId": "c03-battle-prop-6fff5dc5",

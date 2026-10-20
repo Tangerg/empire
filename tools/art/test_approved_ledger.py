@@ -112,6 +112,31 @@ class ApprovedLedgerTests(unittest.TestCase):
                 self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'],
                                  [str((raw / 'master.png').relative_to(self.root))])
 
+    def test_versioned_static_selection_uses_catalog_owner_not_default_master(self):
+        identity = 'c03-battle-prop-27872fa1'
+        topic = {**self.topic, 'topicId': identity, 'category': 'battle-prop',
+                 'qualityTier': 'approved-chunky-v5-export-verified'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic,
+                   'manifest': self.manifest, 'campaign': 'story-candidate-03', 'label': identity}])
+        self.progress.update(topicStages={identity: {'raw': 'versioned source selected'}},
+                             formalRuntimeBoundTopics=1)
+        self.write(DOC / 'approved-v5/progress.json', self.progress)
+        directory = Path('pack/masters/approved-v5/props') / identity
+        (self.root / directory).mkdir(parents=True)
+        (self.root / directory / 'master.png').write_bytes(b'preserved original, not selected')
+        version = directory / 'candidates/matte-v2/master.png'
+        (self.root / version).parent.mkdir(parents=True)
+        (self.root / version).write_bytes(b'new selected native source')
+        (self.root / 'tools/art').mkdir(parents=True)
+        self.write('tools/art/source-overrides.json', {'assets': {identity: {'source': str(version)}}})
+        result = build(self.root)
+        self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'], [str(version)])
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        (self.root / version).unlink()
+        with self.assertRaisesRegex(ValueError, 'selected approved static source is missing'):
+            build(self.root)
+
     def test_skill_master_uses_its_native_skill_directory(self):
         topic = {**self.topic, 'topicId': 'C01-SKILL-01', 'category': 'skill'}
         self.write('pack/manifest.json', {'assets': [topic]})

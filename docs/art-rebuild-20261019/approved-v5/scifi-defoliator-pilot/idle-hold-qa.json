@@ -1,0 +1,197 @@
+{
+  "raw-rejected-v1.png": {
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/raw-rejected-v1.png",
+    "sha256": "b07ad50385a0be3e5bdbe799317828e59161995f6e8b2e877056655d602ee4c6",
+    "size": [
+      1254,
+      1254
+    ],
+    "opaqueBounds": [
+      143,
+      178,
+      1231,
+      1126
+    ],
+    "sourceAlpha": {
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1001168,
+      "nearOpaquePixels": 548926,
+      "edgeMax": 1,
+      "visibleBounds": [
+        143,
+        178,
+        1232,
+        1127
+      ]
+    },
+    "diagnosticProjections": {
+      "12": {
+        "wholeCanvas": [
+          9,
+          12,
+          61,
+          64
+        ],
+        "projectedLowestOpaqueY": 58.69218500797448,
+        "alpha": {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "transparentPixels": 2808,
+          "nearOpaquePixels": 835,
+          "edgeMax": 0,
+          "visibleBounds": [
+            15,
+            19,
+            60,
+            59
+          ]
+        }
+      },
+      "11": {
+        "wholeCanvas": [
+          9,
+          11,
+          61,
+          63
+        ],
+        "projectedLowestOpaqueY": 57.69218500797448,
+        "alpha": {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "transparentPixels": 2808,
+          "nearOpaquePixels": 835,
+          "edgeMax": 0,
+          "visibleBounds": [
+            15,
+            18,
+            60,
+            58
+          ]
+        }
+      }
+    }
+  },
+  "raw-v2.png": {
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/raw-v2.png",
+    "sha256": "f067dc1ef69f29b7199ba0ba73e65e61fa01514b2fdce8a94ebe13b49a8e0afe",
+    "size": [
+      1254,
+      1254
+    ],
+    "opaqueBounds": [
+      143,
+      331,
+      1231,
+      1253
+    ],
+    "sourceAlphaError": "Invalid source transparency: perimeter maximum 254",
+    "diagnosticProjections": {
+      "12": {
+        "wholeCanvas": [
+          9,
+          12,
+          61,
+          64
+        ],
+        "projectedLowestOpaqueY": 63.9585326953748,
+        "error": "Invalid source transparency: perimeter maximum 255"
+      },
+      "11": {
+        "wholeCanvas": [
+          9,
+          11,
+          61,
+          63
+        ],
+        "projectedLowestOpaqueY": 62.9585326953748,
+        "alpha": {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "transparentPixels": 2839,
+          "nearOpaquePixels": 836,
+          "edgeMax": 0,
+          "visibleBounds": [
+            15,
+            25,
+            60,
+            63
+          ]
+        }
+      }
+    }
+  },
+  "raw-v3.png": {
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/defoliator-pilot/idle/raw-v3.png",
+    "sha256": "d05d7ad94461cf53d8cd9bb78c4fda1a3165311deb2a843ec575b7438e0dfd74",
+    "size": [
+      1254,
+      1254
+    ],
+    "opaqueBounds": [
+      143,
+      251,
+      1232,
+      1187
+    ],
+    "sourceAlpha": {
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1009338,
+      "nearOpaquePixels": 543053,
+      "edgeMax": 1,
+      "visibleBounds": [
+        143,
+        251,
+        1233,
+        1188
+      ]
+    },
+    "diagnosticProjections": {
+      "12": {
+        "wholeCanvas": [
+          9,
+          12,
+          61,
+          64
+        ],
+        "projectedLowestOpaqueY": 61.22169059011164,
+        "error": "Invalid source transparency: perimeter maximum 3"
+      },
+      "11": {
+        "wholeCanvas": [
+          9,
+          11,
+          61,
+          63
+        ],
+        "projectedLowestOpaqueY": 60.22169059011164,
+        "alpha": {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "transparentPixels": 2833,
+          "nearOpaquePixels": 823,
+          "edgeMax": 0,
+          "visibleBounds": [
+            15,
+            21,
+            60,
+            60
+          ]
+        }
+      }
+    }
+  }
+}
