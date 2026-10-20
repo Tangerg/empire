@@ -1,0 +1,76 @@
+{
+  "topicId": "C01-FX-16",
+  "label": "七塔灰光",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "short-rays",
+    "rising-fan",
+    "graylight-crest",
+    "residual-rays"
+  ],
+  "sourceCount": 4,
+  "imagegenAttemptCount": 6,
+  "rejectedAttemptCount": 2,
+  "referenceSnapshotCount": 7,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "sourceEdgeMaxima": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "sourceEdgeProof": "qa/source-edge-composite-proof.json",
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perFrameFitCropShiftFadeAlphaCleanup": false,
+  "native32And64SixBackgroundsReviewed": true,
+  "fullAndTerminalComparisonReviewed": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "parentStaticReview": "Parent accepted the corrected quartet on 2026-10-20 after one bounded imagegen-only short-rays stone-tone correction. Minor remaining lighting variation is disclosed.",
+  "materialRegistrationProof": "qa/material-registration-proof.json",
+  "toneRepairProof": "qa/tone-repair-proof.json",
+  "cohortReview": "qa/COHORT-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "actualCaveats": [
+    "The fan expands from three rays to seven, grows to the crest, then returns to three thinner rays. This is an energy-envelope change, not seven conserved solid objects translating through space.",
+    "Total alpha mass changes by about +27.0%, +42.9%, then -47.0%. The crest-to-residual change can feel abrupt at 12 fps. It is authored geometry loss rather than a global opacity fade.",
+    "Six airborne stones appear at rising-fan and move outward/upward at the crest. The two high stones retire by the final pose; four lower stones settle, with the small left stone contacting the rubble contour. Three final stones remain separate alpha128 components. No full landing or unique particle correspondence is claimed.",
+    "The selected short-rays tone repair reduces the whole lower-tower mean luminance from 81.55 to 65.19 versus crest 60.90. The other selected poses measure 63.67 and 62.55. Minor material-lighting and amber-core variation remains, although the severe initial light-stone jump is removed.",
+    "Tower bounds vary at most 2 source pixels (0.045 logical pixels) and fixed material ROI best offsets are at most 1 pixel per axis. Source shading and exact ray edges are not byte-identical.",
+    "The original peak central ray is clipped by the atlas crop. The new peak has a complete visible tip at y65 with genuine exterior margins; the correction is intentional, not a matching failure.",
+    "Tiny floating fragments and dark tower details are subordinate at 32 pixels, especially on black/dark earth, and clearer at 64 pixels. Live browser/game playback remains unobserved.",
+    "The last frame is a nonblank terminal pose. No 4-to-1 seam, blank ending, scene removal time or 420 ms lifetime is inferred for this catalog-only nonloop effect."
+  ],
+  "exactAPNGTimingVerified": true,
+  "apngCount": 28,
+  "verifiedDecodedFrames": 112,
+  "canonicalTiming": {
+    "fps": 12,
+    "loop": false,
+    "numPlays": 1,
+    "frameDurationSeconds": "1/12",
+    "sequenceSeconds": "1/3",
+    "encodedFinalFrameHold": false,
+    "old420msRemovalApplies": false,
+    "sceneRemovalMs": null
+  },
+  "diagnosticTiming": "Separate slow-diagnostic-repeat APNGs use 3 fps with infinite repetition, not the runtime contract.",
+  "browserObserved": false,
+  "browserReason": "Known blocked browser/GPU environment; no repeated escalation. Only encoding, decoded frame identity and static phase review are verified.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoCodeRuntimeOrGitWrites": false
+}

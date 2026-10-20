@@ -1,0 +1,66 @@
+{
+  "method": "Same fixed opaque lower-tower mask from selected crest, y850..1199 and x385..866. No alignment or color correction is applied.",
+  "towerColor": {
+    "unselected-short-v1": {
+      "meanRGB": [
+        87.79552156284556,
+        80.56703833394766,
+        72.87989310726134
+      ],
+      "meanLumaRec709": 81.5488019830446,
+      "meanAbsRGBDifferenceVsCrest": 27.94595159110456
+    },
+    "short-rays": {
+      "meanRGB": [
+        67.71182270549208,
+        64.7664854404718,
+        61.91799668263914
+      ],
+      "meanLumaRec709": 65.18700325469959,
+      "meanAbsRGBDifferenceVsCrest": 13.469467993611008
+    },
+    "rising-fan": {
+      "meanRGB": [
+        67.25994286767416,
+        63.131201621820864,
+        58.465176925912274
+      ],
+      "meanLumaRec709": 63.67208502764466,
+      "meanAbsRGBDifferenceVsCrest": 9.939700823196953
+    },
+    "graylight-crest": {
+      "meanRGB": [
+        63.81087357169186,
+        60.472281607077036,
+        56.59921673424254
+      ],
+      "meanLumaRec709": 60.90243097493549,
+      "meanAbsRGBDifferenceVsCrest": 0.0
+    },
+    "residual-rays": {
+      "meanRGB": [
+        66.61773866568375,
+        61.89236085514191,
+        57.04465536306672
+      ],
+      "meanLumaRec709": 62.546971841135274,
+      "meanAbsRGBDifferenceVsCrest": 11.044455707089323
+    }
+  },
+  "shortRayRepair": {
+    "upperRayAlpha128IntersectionOverUnion": 0.9573999544384539,
+    "oldUpperRayBounds": [
+      477,
+      428,
+      793,
+      770
+    ],
+    "newUpperRayBounds": [
+      477,
+      428,
+      793,
+      770
+    ],
+    "note": "Ray bounds are unchanged but source pixels are not claimed identical. The repair was imagegen-authored and no code color adjustment was used."
+  }
+}

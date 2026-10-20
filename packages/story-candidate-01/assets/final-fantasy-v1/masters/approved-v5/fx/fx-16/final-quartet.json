@@ -1,0 +1,45 @@
+{
+  "topicId": "C01-FX-16",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "short-rays",
+    "rising-fan",
+    "graylight-crest",
+    "residual-rays"
+  ],
+  "phases": [
+    {
+      "phase": "short-rays",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/short-rays/master.png",
+      "sha256": "732e59378c78d529ec6a27e70206c787e25fbef82cf8f9299d520bb391b1e857"
+    },
+    {
+      "phase": "rising-fan",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/rising-fan/master.png",
+      "sha256": "ce9afcd21efc31ac880278a24cf4040f69f616d34953ceb2e8a132f4bd86e71b"
+    },
+    {
+      "phase": "graylight-crest",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/graylight-crest/master.png",
+      "sha256": "fe4746667001389ab2dc1a9d005d4040c24524042659b09a997c26502b8e85f7"
+    },
+    {
+      "phase": "residual-rays",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-16/residual-rays/master.png",
+      "sha256": "85ddaabd9d348e7d13844273425dadb29bd32383c93341c88698d06101a3e2d4"
+    }
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "qa": "qa/qa-metrics.json",
+  "caveats": "qa/COHORT-REVIEW.md"
+}

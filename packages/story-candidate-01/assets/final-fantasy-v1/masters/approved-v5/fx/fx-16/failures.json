@@ -1,0 +1,15 @@
+[
+  {
+    "attempt": "rejected/graylight-crest-attempt01-speckled-halo",
+    "reason": "Initial raw-alpha display suggested white speckle. Subsequent actual black/white composites do NOT show a speckled matte fringe; they show only a small external amber glow. This candidate remains unselected in favor of the tool-authored local edit with stronger dark ray contours and more confined emitter light. The initial visual suspicion is not claimed as a confirmed alpha failure. No pixel cleanup was performed.",
+    "eligibleForIntegration": false,
+    "classification": "unselected alternate, not a confirmed source-alpha failure",
+    "sourceSHA256": "f5b6e0bd24e49217ad4052f6f613a6eb603448c437e71d6868f0c9618bfdd9d7"
+  },
+  {
+    "attempt": "rejected/short-rays-attempt01-light-tower",
+    "reason": "Tower geometry is registered, but its complete stone body is visibly lighter than rising-fan and graylight-crest at native scale. Parent requested one bounded imagegen-only material-tone correction, retaining short rays and canvas. No code color correction performed.",
+    "eligibleForIntegration": false,
+    "sourceSHA256": "35731bc0c402cd909e6f78cd5cc807894e0492d7361ccd572e1bb4fea42c7593"
+  }
+]
