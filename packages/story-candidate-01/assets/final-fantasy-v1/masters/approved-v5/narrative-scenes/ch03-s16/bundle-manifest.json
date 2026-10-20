@@ -1,0 +1,82 @@
+{
+  "status": "generation-paused-before-first-call-per-parent-backup-hold",
+  "generationAttempts": 0,
+  "preparedSourcesVerified": true,
+  "files": [
+    {
+      "path": "audited-source.json",
+      "bytes": 3491,
+      "sha256": "335941afdfecbe29007129e1db2908daa0a25efb08b73e0b5c254baff246893b"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 3385,
+      "sha256": "a5c7fba67307f3d59f9bf30aa000d2960f75f79c240487f535052e8fd2ed0c63"
+    },
+    {
+      "path": "consumer-evidence.json",
+      "bytes": 900,
+      "sha256": "ef94d1160133e3348ac131920bd36398719253c087c6cedd494a2cb69cbcd266"
+    },
+    {
+      "path": "original-cell-617.png",
+      "bytes": 779496,
+      "sha256": "f035e0c915650f554d118edd0c8f386368db1944ec946d24a7c048a11b92ebed"
+    },
+    {
+      "path": "original-fullboard.png",
+      "bytes": 3196713,
+      "sha256": "412ed4ff17d93d893e6fd6b79e2c3a9f9d6fc359b003bb354989d83ff52a200a"
+    },
+    {
+      "path": "original-pixel-verification.json",
+      "bytes": 388,
+      "sha256": "7deb0b9f52e039689e36c8aeb34b26716e9c201f8da97a601c211383c79ee88a"
+    },
+    {
+      "path": "original-runtime-256x144.png",
+      "bytes": 88157,
+      "sha256": "3e5af9686c0659ab88814e1e1dd3360af9312dd62782a260f3b800911cee3396"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 4289,
+      "sha256": "2672e6c627970e20c42f815381059a6250953ce7cba2a68165c05a4a348a0e8c"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 746,
+      "sha256": "39447fc1200e64924ddd1536c1c351bf020b37f79f112b49efe142ba3de02954"
+    },
+    {
+      "path": "references/01-ch01-s05-master.png",
+      "bytes": 2296975,
+      "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3"
+    },
+    {
+      "path": "references/02-original-cells-c01-char-nobanner-01-original-cell.png",
+      "bytes": 683969,
+      "sha256": "096d70ef3d4e9ef9119115bffa0c6cadc9b48d5ba65426bca5e4f5ee374994d8"
+    },
+    {
+      "path": "request.json",
+      "bytes": 4648,
+      "sha256": "1c5aacb4e2158e752f4107844820e243d1c5377799389fd54da9b64f6db28283"
+    },
+    {
+      "path": "semantic-reconstruction.json",
+      "bytes": 2154,
+      "sha256": "52515f4cf6ede7cbe4b458ebde0dc5304711660d38a209acf9b57dd2bc013938"
+    },
+    {
+      "path": "story-reference-hashes.json",
+      "bytes": 1788,
+      "sha256": "ed7aef5f7e79daa2b5c38c27792ab62bfb5f29c7fad1b627c4a8580140299f3b"
+    },
+    {
+      "path": "story-source-context.txt",
+      "bytes": 88757,
+      "sha256": "5eac437c5ce08ea56b12d6af9f7cd0fb8e8ffa7b58b52e83e44cd6fb7158420d"
+    }
+  ]
+}

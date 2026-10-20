@@ -1,0 +1,700 @@
+{
+  "topicId": "C01-FX-08",
+  "sourceAuditRecord": {
+    "topicId": "C01-FX-08",
+    "label": "亡者记忆冲击",
+    "semanticName": "dead-memory-impact",
+    "manifest": {
+      "assetId": "C01-FFV1-FX-08",
+      "topicId": "C01-FX-08",
+      "label": "亡者记忆冲击",
+      "category": "fx",
+      "png": "runtime/fx/fx-08.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    "hdManifest": {
+      "topicId": "C01-FX-08",
+      "png": "runtime-hd/fx/fx-08.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    "remainingStatus": "pending-redraw",
+    "sourceBoard": 2,
+    "sourceRow1Based": 4,
+    "sourceRowBoundsXYXY": [
+      0,
+      940,
+      1254,
+      1254
+    ],
+    "originalRowCrop": {
+      "path": "source-crops/C01-FX-08/original-row.png",
+      "sha256": "d932766ac9fe7c1f28e68b5cfd7cd05d99a3ed39f3f53e11ab30974cd46f7fc8",
+      "size": [
+        1254,
+        314
+      ],
+      "mode": "RGB",
+      "decodedSha256": "d18a621b3719ec97baf70966491bede129439c2a75b4e0e13af54a645d40da8a"
+    },
+    "slots": [
+      {
+        "phaseIndex": 0,
+        "sourceColumn1Based": 1,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          0,
+          940,
+          314,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          5,
+          945,
+          309,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-08/original-f0.png",
+          "sha256": "287ac0251d10d295d22a5a487426d48ebd98977db653b8777b5e6fa0c02a230f",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "21b312dafc7ffec366afabfc218b6678c99b718cf491d8f9f3522f9cac28e075"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-08/legacy-alpha-f0.png",
+          "sha256": "1a98044f14a76d9eb25664ab1de2f41b372455bdcf27b8c1fb3e0fed4b904404",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "6a5836c1034805207380846bcd73d876ac975a116a1899201abb85224978b079"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          27,
+          9,
+          277,
+          257
+        ],
+        "phaseObservation": "cluster of gray human echoes, gray wisps and amber papers",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 58062,
+          "translucentPixels1to239": 10578,
+          "nearOpaquePixels240to255": 23776,
+          "visiblePixels": 34354,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            27,
+            9,
+            277,
+            257
+          ],
+          "pixelSha256Rgba": "6a5836c1034805207380846bcd73d876ac975a116a1899201abb85224978b079"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            250,
+            248
+          ],
+          "scale": 0.12
+        }
+      },
+      {
+        "phaseIndex": 1,
+        "sourceColumn1Based": 2,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          314,
+          940,
+          627,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          319,
+          945,
+          622,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-08/original-f1.png",
+          "sha256": "fd4ab465eaf62349d70406dc4b6e184c90ce9dcbab1b602812aa9cd034f050ad",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "08849dffaf308b3777bf7a5a798e8dfb7c538fcb5d03f9a26f22ac5ab9af5fb0"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-08/legacy-alpha-f1.png",
+          "sha256": "2fcedc84aa0eddb951af72bfb97f6bfc249fabfec3647cf50931f153909df49a",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "df1edc2639591726a11c5a11479ca634f1d28995cf280ef1367b585424ae9a0e"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          23,
+          12,
+          268,
+          257
+        ],
+        "phaseObservation": "taller overlapping human echoes",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 58620,
+          "translucentPixels1to239": 10931,
+          "nearOpaquePixels240to255": 22561,
+          "visiblePixels": 33492,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            22,
+            12,
+            268,
+            257
+          ],
+          "pixelSha256Rgba": "df1edc2639591726a11c5a11479ca634f1d28995cf280ef1367b585424ae9a0e"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            245,
+            245
+          ],
+          "scale": 0.12244897959183673
+        }
+      },
+      {
+        "phaseIndex": 2,
+        "sourceColumn1Based": 3,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          627,
+          940,
+          940,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          632,
+          945,
+          935,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-08/original-f2.png",
+          "sha256": "ab3232c36bf20982f8ab540617306e54a75038463e3bde7776f3241602ae2719",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "abc45ed39aa08980360d2ef0f468427e474fa2c325a0fc45485f0a48c5e83b79"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-08/legacy-alpha-f2.png",
+          "sha256": "58f18e35d25d4109dd534a11a4ab6d1389ca59f80c7fab7c2e7ccf2a8c1b665a",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "15a19855b1dd8d5cf1a810a61d6ecf1b134f4f3b3745b37eef554a0fe066327b"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          28,
+          24,
+          259,
+          257
+        ],
+        "phaseObservation": "faint dissolving echoes and loose papers",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 76032,
+          "translucentPixels1to239": 9686,
+          "nearOpaquePixels240to255": 6394,
+          "visiblePixels": 16080,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            28,
+            24,
+            260,
+            257
+          ],
+          "pixelSha256Rgba": "15a19855b1dd8d5cf1a810a61d6ecf1b134f4f3b3745b37eef554a0fe066327b"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            231,
+            233
+          ],
+          "scale": 0.12875536480686695
+        }
+      },
+      {
+        "phaseIndex": 3,
+        "sourceColumn1Based": 4,
+        "sourceRow1Based": 4,
+        "fullGridBoundsXYXY": [
+          940,
+          940,
+          1254,
+          1254
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          945,
+          945,
+          1249,
+          1249
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-08/original-f3.png",
+          "sha256": "077b292b0151bfdc009d44995025bb5f6e321bbdbc0111fe4f81e449079228d7",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "b35f8419e14c420442b15125333aab01265f70724ae080de6f7696bddc4f47e4"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-08/legacy-alpha-f3.png",
+          "sha256": "c70895b5a768f24a715fe452ee3a6c8b4e297c2c046ac978742f84ad69c58c73",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "641356f375f7d3203cca872d09dabdf2262a3f7108664b62c83ac3462158c9a3"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          50,
+          50,
+          251,
+          247
+        ],
+        "phaseObservation": "wisps and paper fragments only",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 85417,
+          "translucentPixels1to239": 2974,
+          "nearOpaquePixels240to255": 4025,
+          "visiblePixels": 6999,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            49,
+            49,
+            251,
+            247
+          ],
+          "pixelSha256Rgba": "641356f375f7d3203cca872d09dabdf2262a3f7108664b62c83ac3462158c9a3"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            201,
+            197
+          ],
+          "scale": 0.14925373134328357
+        }
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "density": 1,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-08.png",
+        "sha256": "620c867dea7f9afb87819356d4d22ea321355d5fb5f3066fc68292bb3cf8f4a4",
+        "size": [
+          128,
+          32
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 1652,
+          "translucentPixels1to239": 1858,
+          "nearOpaquePixels240to255": 586,
+          "visiblePixels": 2444,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            1,
+            1,
+            127,
+            31
+          ],
+          "pixelSha256Rgba": "1446f44083b368802339fa0fd4bca3337059da6b27a6cb2203ce398066b3258f"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 318,
+            "translucentPixels1to239": 456,
+            "nearOpaquePixels240to255": 250,
+            "visiblePixels": 706,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              1,
+              31,
+              31
+            ],
+            "pixelSha256Rgba": "0bb83f9e487e232877d9a4595c38e3c5dd67d7e7509056dfbe8bf93519dfb8dd"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 313,
+            "translucentPixels1to239": 456,
+            "nearOpaquePixels240to255": 255,
+            "visiblePixels": 711,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              1,
+              31,
+              31
+            ],
+            "pixelSha256Rgba": "bdf7f56a5fa1b795997f65b7d1c48b4bc1e23f85eee0e4f049e80cb393320f05"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 437,
+            "translucentPixels1to239": 549,
+            "nearOpaquePixels240to255": 38,
+            "visiblePixels": 587,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              1,
+              31,
+              31
+            ],
+            "pixelSha256Rgba": "05a96fae00e965745319b64d169f51d15ffc07abce121bec9935b0595bf7b3ae"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 584,
+            "translucentPixels1to239": 397,
+            "nearOpaquePixels240to255": 43,
+            "visiblePixels": 440,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              1,
+              1,
+              31,
+              30
+            ],
+            "pixelSha256Rgba": "741061f387ebd2efe391712408d4554cd6a33f7c14ed6eec2718cb1f1b89dbe0"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-08@1x.png",
+          "sha256": "7607026f3f0133bc3955ac16b0b878b2b91752f4eeb116522ac1a69bdd309875",
+          "size": [
+            128,
+            32
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "1446f44083b368802339fa0fd4bca3337059da6b27a6cb2203ce398066b3258f"
+        }
+      },
+      {
+        "density": 2,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-08.png",
+        "sha256": "63385a8b87a7fcc9f8ed92f540ca34762d0711b50bf3ee8d0eae287e82d30ee7",
+        "size": [
+          256,
+          64
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 8221,
+          "translucentPixels1to239": 5129,
+          "nearOpaquePixels240to255": 3034,
+          "visiblePixels": 8163,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            2,
+            2,
+            254,
+            62
+          ],
+          "pixelSha256Rgba": "fe2ad2d2e5afc531de35c372558603568c9be0c5b5921994bfdde0cf06b75051"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 1536,
+            "translucentPixels1to239": 1328,
+            "nearOpaquePixels240to255": 1232,
+            "visiblePixels": 2560,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              2,
+              62,
+              62
+            ],
+            "pixelSha256Rgba": "36a4b19015a0235801a1afc3d63ba6e3fefe2e74123fc482e55610c86f6aa616"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 1523,
+            "translucentPixels1to239": 1358,
+            "nearOpaquePixels240to255": 1215,
+            "visiblePixels": 2573,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              2,
+              62,
+              62
+            ],
+            "pixelSha256Rgba": "98db556478f5a8e0f7030bdf47f70992a0a765aa9611eb1101a6b5a59cd7820d"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2256,
+            "translucentPixels1to239": 1543,
+            "nearOpaquePixels240to255": 297,
+            "visiblePixels": 1840,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              2,
+              61,
+              62
+            ],
+            "pixelSha256Rgba": "404d4c302d0981d64f7b7b3af28021f52fea617c4dd4c87a07b88a3814431391"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2906,
+            "translucentPixels1to239": 900,
+            "nearOpaquePixels240to255": 290,
+            "visiblePixels": 1190,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              2,
+              2,
+              62,
+              61
+            ],
+            "pixelSha256Rgba": "fd77b6ef05a7608400c19be5768368d76c89feacd91eb76bcd72ed2b2398f127"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-08@2x.png",
+          "sha256": "606045a2274cba5e3078c8e94f94f2748a2ea26a97d7b22eac8d2fcd143141e0",
+          "size": [
+            256,
+            64
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "fe2ad2d2e5afc531de35c372558603568c9be0c5b5921994bfdde0cf06b75051"
+        }
+      }
+    ],
+    "consumers": {
+      "status": "statically-bound-weapon-hit",
+      "weaponBindings": [
+        {
+          "weaponId": "c01.ghost-touch",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 170
+        },
+        {
+          "weaponId": "c01.colossus-sweep",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 176
+        }
+      ],
+      "unitDefinitions": [
+        {
+          "unitId": "c01.ghost",
+          "weapons": [
+            "c01.ghost-touch"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 79,
+          "boundWeaponsForThisFx": [
+            "c01.ghost-touch"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 691,
+              "text": "foe('colossus', 'c01.cemetery-colossus'), foe('echo-1', 'c01.skeleton-guard'), foe('echo-2', 'c01.skeleton-guard'), foe('echo-3', 'c01.ghost'), foe('echo-4', 'c01.ghost'),"
+            },
+            {
+              "line": 692,
+              "text": "foe('north-echo', 'c01.skeleton-guard'), foe('south-echo', 'c01.skeleton-guard'), foe('east-ghost', 'c01.ghost'), foe('west-ghost', 'c01.ghost'), foe('grave-inquisitor', 'c01.inquisitor'), foe('ossuary-guard', 'c01.skeleton-guard'),"
+            },
+            {
+              "line": 705,
+              "text": "foe('imperial-cain', 'c01.cain'), foe('imperial-1', 'c01.legion-shield'), foe('imperial-2', 'c01.battle-mage'), foe('oath-echo-1', 'c01.skeleton-guard'), foe('oath-echo-2', 'c01.ghost'),"
+            },
+            {
+              "line": 706,
+              "text": "foe('east-imperial', 'c01.knight'), foe('north-echo', 'c01.skeleton-guard'), foe('south-echo', 'c01.ghost'), foe('tower-bow', 'c01.archer'), foe('mechanism-guard', 'c01.templar'),"
+            },
+            {
+              "line": 718,
+              "text": "{ key: 'drowned-echo-west', x: 6, y: 0, unit: 'c01.ghost', owner: 2, facing: 'south' },"
+            },
+            {
+              "line": 719,
+              "text": "{ key: 'drowned-echo-east', x: 16, y: 0, unit: 'c01.ghost', owner: 2, facing: 'south' },"
+            },
+            {
+              "line": 790,
+              "text": "foe('unflagged', 'c01.cemetery-colossus'), foe('memory-1', 'c01.ghost'), foe('memory-2', 'c01.ghost'), foe('memory-3', 'c01.skeleton-guard'), foe('memory-inquisitor', 'c01.inquisitor'),"
+            },
+            {
+              "line": 791,
+              "text": "foe('memory-4', 'c01.ghost'), foe('memory-5', 'c01.skeleton-guard'), foe('memory-6', 'c01.ghost'), foe('inquisitor-guard-1', 'c01.templar'), foe('inquisitor-guard-2', 'c01.legion-shield'), foe('memory-mage', 'c01.battle-mage'), foe('memory-bow-guard', 'c01.archer'),"
+            }
+          ]
+        },
+        {
+          "unitId": "c01.cemetery-colossus",
+          "weapons": [
+            "c01.colossus-sweep"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 90,
+          "boundWeaponsForThisFx": [
+            "c01.colossus-sweep"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 691,
+              "text": "foe('colossus', 'c01.cemetery-colossus'), foe('echo-1', 'c01.skeleton-guard'), foe('echo-2', 'c01.skeleton-guard'), foe('echo-3', 'c01.ghost'), foe('echo-4', 'c01.ghost'),"
+            },
+            {
+              "line": 790,
+              "text": "foe('unflagged', 'c01.cemetery-colossus'), foe('memory-1', 'c01.ghost'), foe('memory-2', 'c01.ghost'), foe('memory-3', 'c01.skeleton-guard'), foe('memory-inquisitor', 'c01.inquisitor'),"
+            }
+          ]
+        }
+      ],
+      "livePlaybackObserved": false,
+      "genericConsumer": "packages/game-ui/src/ui/board.ts:611-644"
+    },
+    "semanticPhaseRequirement": "Preserve ordinary-person memory silhouettes/name-paper semantics; avoid replacing them with a generic blue skull.",
+    "alphaPolicy": "Genuine transparent exterior; preserve intentional interior translucency and luminous/smoke detail. No requirement that every phase reach alpha 240. Review on dark/light/terrain backgrounds; no opaque panel, matte color key or unrelated backing.",
+    "specialRisks": []
+  },
+  "currentRuntimeRecord": {
+    "assetId": "C01-FFV1-FX-08",
+    "topicId": "C01-FX-08",
+    "label": "亡者记忆冲击",
+    "category": "fx",
+    "png": "runtime/fx/fx-08.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "phaseOrder": [
+    "clustered-echoes",
+    "rising-echoes",
+    "dissolving-echoes",
+    "wisp-remnants"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "sourceHistoricalAnchor": [
+    16,
+    24
+  ],
+  "actualRuntimeAnchor": [
+    16,
+    16
+  ],
+  "consumerAudit": {
+    "weapons": [
+      "c01.ghost-touch",
+      "c01.colossus-sweep"
+    ],
+    "units": [
+      "c01.ghost",
+      "c01.cemetery-colossus"
+    ],
+    "placement": "target-cell center; board.ts animateHit",
+    "fps": 12,
+    "loop": false,
+    "blend": "normal source-over",
+    "removalMs": 420,
+    "finalPhaseStartMs": 250,
+    "finalHoldMs": 170
+  },
+  "sourceSemantics": [
+    "Three overlapping ordinary-person gray silhouettes with pale cream rims, curled gray wisps and amber name papers",
+    "Five taller overlapping human echoes with shared low wisp origin and separate name papers",
+    "Three faint dissolving human echoes with removed lower bodies and loose papers",
+    "No complete people remain: only separated gray curls and amber name papers"
+  ],
+  "semanticRequirement": "Preserve ordinary-person memory silhouettes/name papers; no skulls, weapons, literal readable names, blue magic or invented glowing rings. Source progression is people overlapping then dissolving, not generic growing blast.",
+  "sourceCanvasRegistration": "Full source canvas shared origin only; figures can rise/change count by authored motion while lower wisp region stays near y1000-1080. No per-frame alignment or fit.",
+  "sourceAlphaPolicy": "Genuine transparent exterior and gaps. Authored body/wisp translucency allowed and necessary for dissolving phase; do not globally multiply opacity or normalize source alpha. Raw edge alpha<=1; final2px alpha0.",
+  "livePlaybackObserved": false
+}

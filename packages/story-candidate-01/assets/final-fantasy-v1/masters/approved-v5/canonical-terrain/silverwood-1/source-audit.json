@@ -1,0 +1,37 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-1",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+  "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+  "boardDimensions": [
+    1448,
+    1086
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    3,
+    546,
+    359,
+    1083
+  ],
+  "cropSize": [
+    356,
+    537
+  ],
+  "slotSHA256": "c35704c6041545e5ed167ce75e546d3d56d6c93773b3a55e3ab764ae6c8bd247",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Olive/brown leaf litter, moss, twigs, pebbles, small plants",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "redrawInterpretation": "Redraw ORDINARY FOREST FLOOR as quiet mossy olive-brown earth, broad low-contrast olive moss patches, a few groups of fallen dry warm-brown leaves and short twigs, a few small cool gray pebbles, and sparse three-leaf plants. Ground dominates; small details form perhaps twelve restrained clusters across the entire canvas, with broad calm open ground between them. Leaves are chunky simple three-plane shapes, not outlined botanical detail. Each plant, leaf cluster or pebble group remains complete and safely inside one imaginary 627px quarter, never on the outer canvas boundary or the x=627/y=627 sampling lines. Do not draw those lines. The grass and soil alone continue evenly across all edges. Original source has leaf litter, moss, twigs, pebbles and tiny plants: preserve those relationships but drastically simplify the surface noise.",
+  "originalExportMode": "variants",
+  "sourceOpacity": "opaque requested; raw alpha not modified",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material artwork reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original generation prompt recovered; source board identity and exact slot are independently verified",
+    "Canonical catalog-only terrain; no current static gameplay ground consumers found by source audit"
+  ]
+}

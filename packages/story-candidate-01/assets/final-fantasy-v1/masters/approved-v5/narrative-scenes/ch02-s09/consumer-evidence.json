@@ -1,0 +1,39 @@
+{
+  "topicId": "C01-CH02-S09",
+  "auditConsumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-09",
+        "chapter": 2,
+        "title": "笼中之火",
+        "location": "洛岬北部大道"
+      },
+      {
+        "id": "c01/aftermath-09",
+        "chapter": 2,
+        "title": "它没有加入",
+        "location": "破碎的囚笼旁"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-09"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "actualUseInPriorAudit": true,
+  "currentReadOnlySearch": "packages/story-candidate-01/src/story.ts directly inspected; S09 SCENES.ivra used by c01/brief-09 and c01/aftermath-09, S16 no selector present.",
+  "browserOrLiveVerified": false,
+  "cssGeometry": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "qaOnly": "Any cover image shows geometry only, without current UI filters/text/overlays; not a screenshot."
+}

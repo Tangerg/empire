@@ -1,0 +1,139 @@
+{
+  "topicId": "C01-CH02-S09",
+  "label": "伊芙拉断缰",
+  "originalNarrativeIndexZeroBased": 46,
+  "subgroup": "chapter-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-CH02-S09",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "伊芙拉断缰",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch02-s09.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+    "sha256": "7642d75dd7dbd1892a5802cf62657bd9475e5d700ef7b9d177d463c877160670",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      26,
+      27,
+      45,
+      46
+    ],
+    "cellIndexZeroBased": 3,
+    "columnZeroBased": 1,
+    "rowZeroBased": 1,
+    "cellLabel": "bottom-right",
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-CH02-S09",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH02-S09",
+    "topicId": "C01-CH02-S09",
+    "label": "伊芙拉断缰",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch02-s09.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch02-s09.png",
+    "sha256": "7c93bdde809103daf6c9556c500729cb87fcf26982e92c8d439655b8a2bbfc69",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-09",
+        "chapter": 2,
+        "title": "笼中之火",
+        "location": "洛岬北部大道"
+      },
+      {
+        "id": "c01/aftermath-09",
+        "chapter": 2,
+        "title": "它没有加入",
+        "location": "破碎的囚笼旁"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-09"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}

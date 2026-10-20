@@ -1,0 +1,173 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-2",
+  "label": "母树根区",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-SILVERWOOD-2",
+    "topicId": "C01-TERRAIN-SILVERWOOD-2",
+    "label": "母树根区",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-silverwood-2.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-2.png",
+      "sha256": "60e1906a3392dce914f47ac901a38c2a398467a287035f62366b349c866cdf51",
+      "pixelSHA256": "c524fd2d23edfd12677edd77d7fb20b32c8ccfb12f21740a0c78b9e7343d4e88",
+      "dimensions": [
+        512,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 11776,
+        "partial": 0,
+        "opaque": 4608
+      },
+      "alphaBounds": [
+        10,
+        0,
+        512,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-2.png",
+      "sha256": "e9c158ded8746813d8599a0d60c7ebbe4672b8c216bbac754225824205fe9eaa",
+      "pixelSHA256": "016cbf9a186b4fcce9746de7f4bd5b0b0aae5a7189bc25e62c2c8b355a3f51e2",
+      "dimensions": [
+        1024,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 47040,
+        "partial": 0,
+        "opaque": 18496
+      },
+      "alphaBounds": [
+        20,
+        0,
+        1024,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      13
+    ],
+    "2": [
+      13
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 13,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+    "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+    "slotRow": 1,
+    "slotColumn": 1,
+    "slotNumber1Based": 6,
+    "cropXYXY": [
+      365,
+      546,
+      721,
+      1083
+    ],
+    "cropSize": [
+      356,
+      537
+    ],
+    "variantCropXYXY": [
+      [
+        368,
+        607,
+        589,
+        828
+      ],
+      [
+        497,
+        607,
+        718,
+        828
+      ],
+      [
+        368,
+        801,
+        589,
+        1022
+      ],
+      [
+        497,
+        801,
+        718,
+        1022
+      ]
+    ],
+    "tileMode": "nesw-16"
+  },
+  "observedSourceIdentity": "Thick branching bark roots over dark forest soil",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "The upper-left sample and cardinal mask cut a unique root network; do not count root branches as independent art",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 19.979,
+      "maxRGBDifference": 58
+    },
+    "2": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 25.479,
+      "maxRGBDifference": 68
+    }
+  }
+}

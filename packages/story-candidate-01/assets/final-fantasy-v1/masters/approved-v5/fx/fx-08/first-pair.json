@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-FX-08",
+  "status": "first-pair-persisted-generation-paused-for-remote-backup",
+  "phases": [
+    "clustered-echoes",
+    "rising-echoes"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sources": [
+    {
+      "phase": "clustered-echoes",
+      "sha256": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1",
+      "rawMasterByteIdentical": true,
+      "provenance": {
+        "phase": "clustered-echoes",
+        "tool": "built-in image_gen",
+        "generatedSource": "/tmp/fx08-phase0-generated.png",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1",
+        "decodedRgbaSha256": "dab23a866295cae2b3f852af743b555dd33b69be4c982dbaf70685d43e332947",
+        "edgeMax": 1,
+        "edgeNonzero": 2,
+        "alphaMax": 255,
+        "partialAlphaCount": 650971,
+        "bboxAlpha1": [
+          0,
+          21,
+          1240,
+          1230
+        ],
+        "bboxAlpha128": [
+          115,
+          70,
+          1196,
+          1152
+        ],
+        "rawMasterByteIdentical": true,
+        "alphaCleanup": false
+      }
+    },
+    {
+      "phase": "rising-echoes",
+      "sha256": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2",
+      "rawMasterByteIdentical": true,
+      "provenance": {
+        "phase": "rising-echoes",
+        "tool": "built-in image_gen",
+        "generatedSource": "/tmp/fx08-phase1-generated.png",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2",
+        "decodedRgbaSha256": "99a26bbab00ccbf63fb228f50a6a18768bad94596d0aa3d9fe0ef0a86df0d15f",
+        "edgeMax": 1,
+        "edgeNonzero": 16,
+        "alphaMax": 255,
+        "partialAlphaCount": 692274,
+        "bboxAlpha1": [
+          0,
+          33,
+          1228,
+          1254
+        ],
+        "bboxAlpha128": [
+          71,
+          70,
+          1199,
+          1196
+        ],
+        "rawMasterByteIdentical": true,
+        "alphaCleanup": false
+      }
+    }
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "qa": "qa/native-32-64-five-backgrounds.png"
+}

@@ -1,0 +1,37 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-3",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+  "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+  "boardDimensions": [
+    1448,
+    1086
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    727,
+    546,
+    1083,
+    1083
+  ],
+  "cropSize": [
+    356,
+    537
+  ],
+  "slotSHA256": "00a3d68499dd5d393f3a378f1fd2fa4ccdf7e04254c74730d44a5a5cb341a588",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Straw mat or thatched edge, pebble border, packed earth and leafy planting",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "redrawInterpretation": "Redraw NURSERY EDGE as flat ground material preserving the original left-to-right relationship: straw/reed mat margin, a small flush row of rounded gray pebbles, a narrow ochre packed-earth strip, and leafy olive planting. No nursery building. Compose a continuous top-down surface with TWO vertical narrow boundary runs at roughly x=313 and x=940 on the1254px canvas. Each run has broad warm muted straw mat on its left, pebble edging along its middle, and quiet packed earth plus olive leafy planting on its right. This lets four627px quarter sampling windows retain the entire cross-section of this linear boundary. This is one continuous source material, not an atlas grid, no panel frames, no visible quadrant breaks. Keep the pebble borders generally straight and quiet, with large simple stones and small irregularities. Straw is a few broad flat grouped reed strips with only widely spaced cross-bindings, not hairlines. Plants are sparse complete groups of three to five large matte leaves, kept inside each imaginary quarter, well away from the canvas boundary or y=627 line. Limit each quarter to one or two plant groups, no flowers, no fine grass. Preserve the original boundary identity while dramatically simplifying detail and contrast.",
+  "originalExportMode": "variants",
+  "sourceOpacity": "opaque requested; raw alpha not modified",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material artwork reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original generation prompt recovered; source board identity and exact slot are independently verified",
+    "Canonical catalog-only terrain; no current static gameplay ground consumers found by source audit"
+  ]
+}

@@ -1,0 +1,473 @@
+{
+  "topicId": "C01-CHAR-BRAN-02",
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+  "originalFullboardSha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5",
+  "originalCell": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-bran-02-original-cell.png",
+  "originalCellSha256": "afa43a3df4392dcf5e808558a55288d5d15baee32ed20910bd333e6a36c8ca78",
+  "cropBoxXYXYExclusive": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "generationReferenceHashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-bran-02-original-cell.png": "afa43a3df4392dcf5e808558a55288d5d15baee32ed20910bd333e6a36c8ca78"
+  },
+  "approvedNamedIdentity": {
+    "appearanceId": "bran-stage01",
+    "cardTopicId": "C01-CHAR-BRAN-01",
+    "namedPortraitMaster": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png",
+      "sha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.49132219950358075,
+      "edgeMaxAlpha": 1,
+      "nearOpaqueCore": true
+    },
+    "namedCombatMasters": {
+      "idle": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/idle/master.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/idle/master.png",
+        "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+        "dimensions": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentFraction": 0.6888188738152382,
+        "edgeMaxAlpha": 1,
+        "nearOpaqueCore": true
+      },
+      "walk-a": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-a/master.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-a/master.png",
+        "sha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f",
+        "dimensions": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentFraction": 0.7179942694138226,
+        "edgeMaxAlpha": 0,
+        "nearOpaqueCore": true
+      },
+      "attack": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/attack/master.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/attack/master.png",
+        "sha256": "bb72afbc0909dd0a2e783d4a598f94dae6d6602241a8b1c5ddebe7cef611f0c0",
+        "dimensions": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentFraction": 0.6961683378757678,
+        "edgeMaxAlpha": 0,
+        "nearOpaqueCore": true
+      },
+      "walk-b": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-b/master.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/bran/walk-b/master.png",
+        "sha256": "c4b220a4544d74a91bb5addc33e7f78fc4bfd22b3a0b68b3a213238cc06ad972",
+        "dimensions": [
+          1585,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentFraction": 0.719475679251043,
+        "edgeMaxAlpha": 1,
+        "nearOpaqueCore": true
+      }
+    },
+    "runtimeAppearance": {
+      "id": "bran-stage01",
+      "topicId": "C01-UNIT-RANGER",
+      "png": "runtime-approved-v5/hero-appearance/bran-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        42.81419624217119,
+        49.102296450939455
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128,
+      "runtime": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/bran-stage01.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/bran-stage01.png",
+        "sha256": "dbe191ea7f95bc5855fe638593a26c52af0e0e725c8f98cf308006ff2471aa9a",
+        "dimensions": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "transparentFraction": 0.8388671875,
+        "edgeMaxAlpha": 0,
+        "nearOpaqueCore": true
+      },
+      "runtimeHd": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+        "sha256": "b5c49999ff7bb96b122a989ca1d8b197f6b4b81f3aca2f7c52fc3d693db524f8",
+        "dimensions": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "transparentFraction": 0.8444073016826923,
+        "edgeMaxAlpha": 0,
+        "nearOpaqueCore": true
+      }
+    },
+    "currentCard": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
+      "sha256": "5b7ce3338e8a2405a507406c8bec310145f48e02d43f35120d622294515e3c2c",
+      "dimensions": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "nearOpaqueCore": true
+    },
+    "approvedProgress": {
+      "raw": "independent native1024x1536 transparent named young olive-clad scout with original bow and hand-carried provisions portrait; separate backdrop retained",
+      "export": "native quartet and true-alpha portrait, actual HUD96x112/icon48 and complete c12 scene reviewed; c04 unchanged negative control",
+      "runtimeBinding": "named portrait and independent four-pose bran appearance through explicit existing type binding; generic ranger and rules unchanged",
+      "liveGame": "pending"
+    },
+    "referenceUse": "Facial/age/gender identity and approved chunky rendering. Later-stage clothing, props and emotions follow the exact later card and explicit lore; do not bind stage01 combat automatically to later stages."
+  },
+  "audit": {
+    "fullName": "布兰·洛克",
+    "stage": "Free-scout commander, later phase of village hunter",
+    "face": "Same brown-haired scout; original later cell has weathered adult face and a pale/gray forelock under olive hood",
+    "emotion": "Focused and experienced, faint dry confidence",
+    "pose": "Standing three-quarter, rolled map/list held up at viewer-right, short blade lowered at viewer-left, bow and quiver on back",
+    "costume": "Olive hood/cape, earth-brown field clothing, leaf patch, ropes, pouches, tools",
+    "framing": "Full body and slung bow on framed parchment, no battlefield or forest scene",
+    "priority": "later-safe-with-identity-lock",
+    "topicId": "C01-CHAR-BRAN-02",
+    "catalog": {
+      "assetId": "C01-FFV1-CHAR-BRAN-02",
+      "topicId": "C01-CHAR-BRAN-02",
+      "label": "布兰自由斥候指挥官",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-bran-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card"
+    },
+    "status": "pending-remake",
+    "original": {
+      "catalogSlotZeroBased": 35,
+      "boardCellZeroBased": 1,
+      "quadrant": "TR",
+      "cropBoxXYXYExclusive": [
+        632,
+        5,
+        1249,
+        622
+      ],
+      "board": {
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+        "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+        "sha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "exactCrop": {
+        "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-bran-02-original-cell.png",
+        "repoRelativePath": null,
+        "sha256": "afa43a3df4392dcf5e808558a55288d5d15baee32ed20910bd333e6a36c8ca78",
+        "dimensions": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "legacyRuntimeReproducesExactRGBA": true,
+      "mappingEvidence": [
+        {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+          "startLine": 74,
+          "endLine": 74,
+          "originalText": "    \"character-board-04.png\": [34, 35, 36, 37],"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "startLine": 48,
+          "endLine": 48,
+          "originalText": "- `C01-CHAR-BRAN-02`：布兰自由斥候指挥官"
+        }
+      ]
+    },
+    "currentRuntime": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-02.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-02.png",
+      "sha256": "acd0a204daf47c90293d3789510b9cb3d0578461cb91d89b5cf182a658b0275d",
+      "dimensions": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "nearOpaqueCore": true
+    },
+    "approvedNamedIdentityRef": "bran",
+    "approvedIdentityReferenceExists": true,
+    "loreEvidence": [
+      {
+        "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+        "startLine": 53,
+        "endLine": 53,
+        "originalText": "| P1 | `C01-CHAR-BRAN-02.png` | 自由斥候指挥官 | 保留村庄布条与幸存者名单袋 |"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 48,
+        "endLine": 48,
+        "originalText": "- `C01-CHAR-BRAN-02`：布兰自由斥候指挥官"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/README.md",
+        "startLine": 316,
+        "endLine": 325,
+        "originalText": "### 6.4 布兰·洛克\n\n被焚村庄的猎人和斥候，后成为刺客型指挥官。\n\n- 代表被国家叙事忽略的普通受害者；\n- 认为没有审判和追责的和解只是让强者逃脱；\n- 凯恩的印章曾出现在焚村命令上；\n- 即使知道命令遭到伪造，也拒绝让凯恩以“不知情”摆脱责任；\n- 第五章可能因莱娅控制烽塔而离队；\n- 最好的关系结局不是原谅凯恩，而是愿意把战场右侧交给他。"
+      }
+    ],
+    "sourceMismatchFlags": [
+      {
+        "code": "age_continuity",
+        "detail": "Approved Bran stage01 is young/boyish. Original02 weathering/gray forelock must remain plausible later growth, not replacement by an unrelated elderly generic ranger."
+      },
+      {
+        "code": "brief_detail_gap",
+        "detail": "Brief asks for village cloth strips and survivor-list pouch. Original has a leaf patch and scroll; do not equate them without deliberate continuity review."
+      },
+      {
+        "code": "weapon_reference",
+        "detail": "Use the approved named bow source for identity/style; old crossbow/generic-ranger conflicts are not authority to change his named weapon."
+      }
+    ],
+    "consumers": {
+      "directProductionTopicReferences": [],
+      "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+      "catalogPresenceIsNotConsumer": true,
+      "stageSelectorExists": false,
+      "liveGameVerified": false,
+      "state": "catalog-only-no-selected-consumer",
+      "channels": [],
+      "risk": "No shipped selector currently names this later/new card; rendering the file in an audit or catalog is not live integration."
+    },
+    "contractRef": "contracts.characterMasterAndCard",
+    "currentHdEntry": null,
+    "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation."
+  },
+  "contracts": {
+    "characterMasterAndCard": {
+      "identityRule": "Existing named face/age/gender + explicit stage lore/brief. Original fullboard is source provenance and pose/prop evidence, not authority to preserve a proven mistake. Generic combat aliases are not named identity sources.",
+      "nativeCharacterMaster": {
+        "recommendedDimensions": [
+          1024,
+          1536
+        ],
+        "dimensionBasis": "Matches all seven approved named portrait masters; not a legacy manifest requirement. Author full-canvas independent RGBA at native resolution.",
+        "alphaMode": "RGBA",
+        "alphaMin": 0,
+        "nearOpaqueSubjectAlphaMin": 240,
+        "outerEdgeAlphaMax": 1,
+        "retainFullCanvas": true,
+        "forbidden": [
+          "opaque character master",
+          "painted checkerboard/faux transparency",
+          "chroma or segmentation extraction from old RGB card",
+          "hidden alpha-bbox cropping",
+          "recoloring or warping the approved character",
+          "UI frame/text/backdrop baked into reusable character source"
+        ]
+      },
+      "independentBackground": {
+        "use": "Optional intentional UI composition layer; current card exporter requires one. Reuse approved neutral background only deliberately; never use it as character identity.",
+        "approvedReusableReference": {
+          "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+          "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+          "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "alphaExtrema": null
+        },
+        "alpha": "RGB or RGBA alpha255 everywhere",
+        "placement": "Background center-cover crop is intentional and recorded independently; no character crop."
+      },
+      "currentRuntimeCard": {
+        "dimensions": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ],
+        "compositionKind": "character-card-composite-v1",
+        "recommendedStartingPlacementFor1024x1536": {
+          "renderWidth": 144,
+          "origin": [
+            24,
+            4
+          ],
+          "renderHeight": 216
+        },
+        "placementWarning": "Starting point copied from seven approved cards, not automatic artistic acceptance; whole canvas must fit and all actual UI crops must be reviewed.",
+        "sourceOwner": "tools/art/source-overrides.json",
+        "identityOwner": "manifest-final-fantasy-v1.json",
+        "exporter": "tools/art/export_overrides.py:127-176"
+      },
+      "HD": {
+        "nativeMasterIsHighResolution": true,
+        "runtimeCardHdEntryExists": false,
+        "currentExporterRejectsCardHd": true,
+        "existingCardNotTrue2xForEveryConsumer": "192x224 approximately supplies 2x dialogue size92x112, but remains a low-resolution composite; a high-res master alone does not publish HD.",
+        "optionalFutureContractOnly": {
+          "logical": [
+            192,
+            224
+          ],
+          "physical2x": [
+            384,
+            448
+          ],
+          "requires": "Explicit bounded card-export/manifest/resolver migration and UI tests; not performed or silently promised by this audit."
+        }
+      },
+      "actualUiReviewTargets": [
+        {
+          "name": "desktop dialogue",
+          "size": [
+            92,
+            112
+          ],
+          "crop": "cover, object-position 50% 18%",
+          "path": "packages/game-ui/src/styles/campaign.css:310-323"
+        },
+        {
+          "name": "mobile dialogue",
+          "size": [
+            64,
+            88
+          ],
+          "crop": "same cover/position",
+          "path": "packages/game-ui/src/styles/campaign.css:752"
+        },
+        {
+          "name": "campaign roster",
+          "size": [
+            44,
+            44
+          ],
+          "crop": "cover, object-position 50% 18%",
+          "path": "packages/game-ui/src/styles/campaign.css:561-578"
+        },
+        {
+          "name": "HUD authored-card plate",
+          "size": [
+            96,
+            112
+          ],
+          "crop": "image x=-8 y=0 width112 height112 xMidYMid slice, clipped96x112",
+          "path": "packages/story-candidate-01/src/presentation/index.ts:60-72"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "tools/art/export_overrides.py",
+          "startLine": 45,
+          "endLine": 62,
+          "originalText": "def validate_alpha(image: Image.Image, label: str):\n    if image.mode != 'RGBA':\n        raise ValueError(f'{label}: expected RGBA, got {image.mode}')\n    alpha = image.getchannel('A')\n    low, high = alpha.getextrema()\n    if low != 0 or high < 240:\n        raise ValueError(f'{label}: expected transparent exterior and near-opaque subject')\n    w, h = image.size\n    edge_pixels = [alpha.getpixel((x, y)) for y in (0, h - 1) for x in range(w)]\n    edge_pixels += [alpha.getpixel((x, y)) for x in (0, w - 1) for y in range(1, h - 1)]\n    edge_max = max(edge_pixels)\n    # One 8-bit alpha step changes a composite channel by at most one level.\n    # Preserve that source residue; stronger edge opacity needs an art review.\n    if edge_max > 1:\n        raise ValueError(f'{label}: outer edge alpha {edge_max} exceeds 1; subject or shadow may be clipped')\n    return {\n        'edgeMaxAlpha': edge_max,\n        'edgeNonzeroPixels': sum(value > 0 for value in edge_pixels),"
+        },
+        {
+          "path": "tools/art/export_overrides.py",
+          "startLine": 127,
+          "endLine": 164,
+          "originalText": "def compose_character_card(root: Path, pack: Path, asset, hd, override):\n    topic = asset['topicId']\n    if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'\n            or asset.get('kind') != 'character-card'\n            or (asset['width'], asset['height']) != (192, 224)\n            or asset.get('frames') or asset.get('variants') or hd):\n        raise ValueError(f'{topic}: only existing Gray Flag 192x224 character-card contracts supported')\n    if (not isinstance(override, dict)\n            or set(override) != {'kind', 'character', 'background', 'placement'}\n            or override['kind'] != 'character-card-composite-v1'):\n        raise ValueError(f'{topic}: expected character-card-composite-v1 with character, background and placement')\n    character, character_hash = read_source(root, pack, override['character'], f'{topic} character')\n    character_alpha = validate_alpha(character, f'{topic} character')\n    background, background_hash = read_source(root, pack, override['background'], f'{topic} background')\n    if (background.mode not in ('RGB', 'RGBA')\n            or (background.mode == 'RGBA' and background.getchannel('A').getextrema() != (255, 255))):\n        raise ValueError(f'{topic}: background must be RGB or fully opaque RGBA')\n    placement = override['placement']\n    if not isinstance(placement, dict) or set(placement) != {'renderWidth', 'origin'}:\n        raise ValueError(f'{topic}: expected renderWidth and origin placement')\n    width, origin = placement['renderWidth'], placement['origin']\n    if (type(width) is not int or not 1 <= width <= 192\n            or not isinstance(origin, list) or len(origin) != 2\n            or any(type(value) is not int or value < 0 for value in origin)):\n        raise ValueError(f'{topic}: placement requires positive integer width and nonnegative integer origin')\n    height = round(character.height * width / character.width)\n    if height < 1 or origin[0] + width > 192 or origin[1] + height > 224:\n        raise ValueError(f'{topic}: complete character canvas must fit inside the card')\n    # Cover is intentional only for the independent background. Character alpha\n    # and the entire authored foreground canvas are retained, without bbox fitting.\n    crop_width = min(background.width, background.height * 192 / 224)\n    crop_height = min(background.height, background.width * 224 / 192)\n    left, top = (background.width - crop_width) / 2, (background.height - crop_height) / 2\n    rendered = ImageOps.fit(background.convert('RGBA'), (192, 224), Image.Resampling.LANCZOS)\n    rendered.alpha_composite(character.resize((width, height), Image.Resampling.LANCZOS), tuple(origin))\n    provenance = {\n        'kind': override['kind'],\n        'sources': {"
+        },
+        {
+          "path": "tools/art/README.md",
+          "startLine": 446,
+          "endLine": 469,
+          "originalText": "192×224 card. `renderWidth` and `origin` are integer output pixels; the entire\ncharacter canvas is uniformly resized, preserving aspect up to nearest-pixel\nheight rounding. Every canvas edge must fit inside the output. No alpha-bbox\ncrop, flip, rotation, recoloring, background removal or source rewrite occurs.\n\nThe character must be genuine RGBA with transparent exterior and near-opaque\nsubject, following the existing alpha0/edge≤1 contract. Native RGB/opaque RGBA\ncharacter masters are rejected. A separate background must be RGB or fully\nopaque RGBA. Center-cover resampling fills the card; the report records its exact\nsource crop box, independent source hashes/sizes/modes, character alpha QA and\nplacement. The result is an **opaque RGBA UI composition**, not evidence that a\ntransparent character master was authored correctly. Keep the original RGBA\ncharacter file as the reusable source. Human review must reject faux alpha,\nwrong identity or an isolated prop accidentally registered as a character; pixel\nvalidation cannot establish semantics.\n\nCommands are the existing `export_overrides.py` / `--check`. All registered inputs\nare validated before any output writes. Existing static icon/prop registrations\nretain their original schema, pixels, alpha QA and reports. No narrative source,\nbackground or production catalog entry is included in this tooling change.\nThere is no scene/key-prop reclassification or UI change. The independent scene\ncontract below does not change character-card composition or add card HD.\n\nVerify the new source/composition in the real dialogue92×112, mobile64×88,"
+        }
+      ]
+    }
+  },
+  "authorityOrder": [
+    "Current explicit user requirement: reusable genuine-transparent character master and separate intentional opaque UI layer",
+    "Stable manifest/catalog topic identity and age/role; current narrative/rules; explicit later stage brief for documented original defects",
+    "Approved named stage01 portrait/combat source for facial/gender/age continuity and accepted rendering",
+    "Exact historical fullboard cell for original pose/framing/props; keep provenance but do not preserve demonstrable wrong details",
+    "Generic combat unit sources may inform material/class only, never override a named identity"
+  ]
+}

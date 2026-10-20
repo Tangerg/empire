@@ -1,0 +1,37 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-2",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+  "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+  "boardDimensions": [
+    1448,
+    1086
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    365,
+    546,
+    721,
+    1083
+  ],
+  "cropSize": [
+    356,
+    537
+  ],
+  "slotSHA256": "e8d47d6d4ec160760481c9a653f7e0aa4c5834027cf7036a8da5b6ed2a92760c",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Thick branching bark roots over dark forest soil",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "redrawInterpretation": "Redraw MOTHER-TREE ROOT GROUND as a continuous field of dark quiet olive-brown forest earth with thick branching warm brown bark roots and sparse moss. This connected tile uses a FIXED rounded central opaque pad only12x12px at native32, so preserve one complete recognizable local branching root motif inside it: a compact squat organic root fork with THREE thick tapered lobes that merge into one woody branching knot, entirely contained in the central 300x260px of the1254px canvas, centered at(627,627), with all tips ending naturally. The root fork lies flat at soil level, with two broad muted bark planes and at most one shallow bark groove. It is a visible natural LOCAL ROOT SECTION, not a whole tree, stump, rune, icon, road or raised root sculpture. Each tip naturally merges into dark soil, not bluntly cut. Root arms are mildly curved and asymmetrical, never geometric90degree lines. Outside this guaranteed central motif keep the canvas primarily quiet dark olive soil with broad moss planes and only two sparse incidental partial root runs near the distant corners, none adjoining the main motif. All of the central motif must fit in x=477..777,y=497..757, to survive the existing crop and fixed alpha mask. Do not draw a boundary or pad behind it. This is an intentionally crop-safe ground-material reconstruction of the original thick branching bark roots over dark forest soil, not an entire tree network miniature.",
+  "originalExportMode": "nesw-16",
+  "sourceOpacity": "opaque requested; raw alpha not modified",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Material artwork reconstruction only; no topology, geometry, gameplay, height or consumer changes",
+    "No original generation prompt recovered; source board identity and exact slot are independently verified",
+    "Canonical catalog-only terrain; no current static gameplay ground consumers found by source audit"
+  ]
+}

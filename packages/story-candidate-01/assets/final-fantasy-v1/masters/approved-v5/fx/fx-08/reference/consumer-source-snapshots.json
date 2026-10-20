@@ -1,0 +1,51 @@
+[
+  {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+    "startLine": 153,
+    "endLine": 177,
+    "excerpt": "153: export const CANDIDATE_01_WEAPON_FX: Readonly<Partial<Record<WeaponId, string>>> = {\n154:   'c01.border-blade': 'C01-FX-01',\n155:   'c01.gray-oath': 'C01-FX-06',\n156:   'c01.guard-spear': 'C01-FX-02',\n157:   'c01.legion-spear': 'C01-FX-02',\n158:   'c01.knight-lance': 'C01-FX-02',\n159:   'c01.knight-charge': 'C01-FX-07',\n160:   'c01.longbow': 'C01-FX-03',\n161:   'c01.ranger-bow': 'C01-FX-03',\n162:   'c01.lantern-staff': 'C01-FX-04',\n163:   'c01.oath-dispel': 'C01-FX-06',\n164:   'c01.engineer-hammer': 'C01-FX-04',\n165:   'c01.satchel-charge': 'C01-FX-07',\n166:   'c01.rune-hammer': 'C01-FX-04',\n167:   'c01.forge-burst': 'C01-FX-07',\n168:   'c01.wolf-spear': 'C01-FX-02',\n169:   'c01.undead-blade': 'C01-FX-01',\n170:   'c01.ghost-touch': 'C01-FX-08',\n171:   'c01.inquisitor-flame': 'C01-FX-06',\n172:   'c01.golem-slam': 'C01-FX-04',\n173:   'c01.ballista': 'C01-FX-03',\n174:   'c01.oath-bolt': 'C01-FX-06',\n175:   'c01.dragon-breath': 'C01-FX-05',\n176:   'c01.colossus-sweep': 'C01-FX-08',\n177: };"
+  },
+  {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+    "sha256": "d4b44da3360753e77511ad6f7aa9d2e0fff5f368c40e803d9a4411346022edc8",
+    "startLine": 232,
+    "endLine": 269,
+    "excerpt": "232:  * One effect: a strip, drawn about its own origin, already running.\n233:  *\n234:  * The board plays this the moment it appears and takes it away when it is done, so\n235:  * `playing` is the whole of its animation policy — there is nobody to tell it to\n236:  * start. It used to be a self-describing `<image>` whose clips the renderer found\n237:  * by class name and read out of a JSON attribute, then played whichever came first.\n238:  */\n239: export function candidate01FxPicture(topic: string): BoardPicture {\n240:   const record = candidate01Asset(topic);\n241:   const frameWidth = record.frameWidth ?? 32;\n242:   const frameHeight = record.frameHeight ?? 32;\n243:   const frames = record.frames ?? 1;\n244:   const anchor = record.anchor;\n245:   if (!anchor || anchor.length !== 2\n246:     || !Number.isFinite(anchor[0]) || anchor[0] < 0 || anchor[0] >= frameWidth\n247:     || !Number.isFinite(anchor[1]) || anchor[1] < 0 || anchor[1] >= frameHeight) {\n248:     throw new Error(`candidate-01 effect has no valid anchor: ${topic}`);\n249:   }\n250:   return {\n251:     body: '',\n252:     strip: {\n253:       href: record.url,\n254:       frameWidth,\n255:       frameHeight,\n256:       frameCount: frames,\n257:       x: -anchor[0],\n258:       y: -anchor[1],\n259:       clips: [{\n260:         id: 'effect',\n261:         frames: Array.from({ length: frames }, (_, frame) => frame),\n262:         fps: record.fps ?? 12,\n263:         loop: record.loop ?? false,\n264:       }],\n265:       playing: 'effect',\n266:     },\n267:   };\n268: }\n269: "
+  },
+  {
+    "path": "packages/game-ui/src/ui/board.ts",
+    "sha256": "7211c79358e4f6d1422fa8ef84df5b2b2706d89bb05563ff47b054c3b5901ad1",
+    "startLine": 611,
+    "endLine": 646,
+    "excerpt": "611:   async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {\n612:     const fx = weapon ? this.presentation.weaponFx(weapon) : null;\n613:     // Drawn about its own origin and then placed, like everything else on the board.\n614:     // These used to bake the cell's scene coordinates into the markup, which is the\n615:     // one thing left that a renderer could not treat as a picture at a position: it\n616:     // would have had to rasterise a field-sized image to hold a damage number.\n617:     // The pack's picture, with the board's own parts drawn over it.\n618:     const art = fx ? this.presentation.effect(fx) : null;\n619:     const drawing = this.surface.effect({\n620:       body: art?.body ?? '',\n621:       strip: art?.strip,\n622:       parts: [\n623:         { role: 'burst', markup: '<circle r=\"12\" fill=\"#ffffff\" opacity=\"0.65\"/>' },\n624:         { role: 'number', markup: `<text y=\"-8\" text-anchor=\"middle\" class=\"fx-damage\">-${damage}</text>` },\n625:       ],\n626:     });\n627:     const { x: cx, y: cy } = this.centre(at);\n628:     drawing.place(cx, cy);\n629:     const burst = drawing.part('burst');\n630:     const number = drawing.part('number');\n631:     if (!await this.timeline.tween(420, (t) => {\n632:       // 12 → 22 was written as a radius; as a swell it is the same picture and the\n633:       // one property a backend without shapes can also honour.\n634:       burst?.swell(1 + t * 0.83);\n635:       burst?.opacity(0.8 * (1 - t));\n636:       number?.nudge(0, -14 * t);\n637:       number?.opacity(1 - t ** 2);\n638:     })) return;\n639:     drawing.remove();\n640:     if (killed) await this.timeline.wait(40);\n641:   }\n642: \n643:   async animateDeath(unitId: number): Promise<void> {\n644:     const drawing = this.surface.drawnUnit(unitId);\n645:     if (!drawing) return;\n646:     if (!await this.timeline.tween(220, (t) => {"
+  },
+  {
+    "path": "packages/game-ui/src/art/svg-board-surface.ts",
+    "sha256": "87292eddf303d133460f25dda76e38fffbd9062b2de5ae30d90f05bd22f50f31",
+    "startLine": 198,
+    "endLine": 219,
+    "excerpt": "198:    * Draws the strip, and puts it on the timeline.\n199:    *\n200:    * The window is the element that moves, so this holds the one node it needs and\n201:    * looks nothing up. What it used to do was append markup, find the `<image>` in\n202:    * it again by class name, and read the frame geometry back out of the attributes\n203:    * the markup had just serialised.\n204:    */\n205:   private draw(strip: BoardStrip): void {\n206:     const window = fromMarkup(boardStripMarkup(strip)).firstElementChild as SVGSVGElement;\n207:     this.figure.append(window);\n208:     this.selectSource(window);\n209:     this.animations.register(this.id, {\n210:       frameCount: strip.frameCount,\n211:       setFrame: (frame) => {\n212:         setAttrs(window, { viewBox: boardStripWindow(strip, frame) });\n213:         this.syncSelectionCue();\n214:       },\n215:     }, strip.clips);\n216:     this.playing = true;\n217:     if (strip.playing) this.animations.play(this.id, strip.playing);\n218:   }\n219: "
+  },
+  {
+    "path": "packages/game-ui/src/art/svg-board-surface.ts",
+    "sha256": "87292eddf303d133460f25dda76e38fffbd9062b2de5ae30d90f05bd22f50f31",
+    "startLine": 387,
+    "endLine": 400,
+    "excerpt": "387:   effect(picture: BoardPicture): BoardEffect {\n388:     // An effect is placed at a cell's centre, so its origin is already its middle.\n389:     const drawing = new SvgEffect(\n390:       this.animations,\n391:       svg('g', { class: 'fx' }),\n392:       0,\n393:       `strip:${this.serial++}`,\n394:       picture,\n395:     );\n396:     this.layers.effects.append(drawing.el);\n397:     return drawing;\n398:   }\n399: \n400:   resize(width: number, height: number): void {"
+  },
+  {
+    "path": "packages/story-candidate-01/src/weapons.ts",
+    "sha256": "0c6136b2a46146e05c1ee2de109b656edd5fc597c4b59908951a28e4d4f668ef",
+    "startLine": 100,
+    "endLine": 108,
+    "excerpt": "100:     hitEffects: [{ type: 'addStatus', status: 'armor_down', duration: 2 }],\n101:     tags: ['arcane', 'rune'],\n102:   }),\n103:   weapon({ id: 'c01.wolf-spear', name: '荒原骑矛', power: 45, damageType: 'pierce', tags: ['melee', 'mounted'] }),\n104:   weapon({ id: 'c01.undead-blade', name: '回声残刃', power: 34, damageType: 'slash', tags: ['melee', 'undead'] }),\n105:   weapon({ id: 'c01.ghost-touch', name: '失名之触', power: 36, damageType: 'magic', maxRange: 2, tags: ['arcane', 'undead'] }),\n106:   weapon({\n107:     id: 'c01.inquisitor-flame',\n108:     name: '审判誓火',"
+  },
+  {
+    "path": "packages/story-candidate-01/src/weapons.ts",
+    "sha256": "0c6136b2a46146e05c1ee2de109b656edd5fc597c4b59908951a28e4d4f668ef",
+    "startLine": 148,
+    "endLine": 158,
+    "excerpt": "148:   }),\n149:   weapon({\n150:     id: 'c01.colossus-sweep',\n151:     name: '墓园横扫',\n152:     power: 54,\n153:     damageType: 'blunt',\n154:     area: 'ring1',\n155:     cooldown: 2,\n156:     tags: ['melee', 'undead', 'impact'],\n157:   }),\n158: ];"
+  }
+]
