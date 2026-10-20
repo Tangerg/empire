@@ -25,7 +25,7 @@ public sealed partial class BattleCombat
         var casts = state["pendingCasts"]!.AsArray();
         foreach (var cast in casts.OfType<JsonObject>())
             if (StateJson.Number(cast, "resolveAt", 0) <= StateJson.Number(cast, "declaredAt", 0))
-                throw new DomainInvariantException("a cast must resolve after it is declared");
+                throw new DomainInvariantException($"a cast must resolve after it is declared, got {StateJson.Number(cast, "declaredAt", 0)} -> {StateJson.Number(cast, "resolveAt", 0)}");
         var due = casts.OfType<JsonObject>().Where(cast => StateJson.Number(cast, "resolveAt", 0) <= StateJson.Number(state, "actorTurns", 0)).ToArray();
         foreach (var cast in due) casts.Remove(cast);
         foreach (var cast in due.OrderBy(value => StateJson.Number(value, "declaredAt", 0)))

@@ -11,7 +11,7 @@ using Empire.Core.Transactions;
 namespace Empire.Core.Engine;
 
 public sealed record CommandOption(string Key, string Ability, string? Weapon, string Name,
-    string Hint, bool SelfTargeted, IReadOnlyList<Coord> Targets);
+    string Hint, bool SelfTargeted, IReadOnlyList<Coord> Targets, string? Engagement = null);
 
 /// <summary>Native composition root. The battle owns state; nodes never own gameplay rules.</summary>
 public sealed class GrayFlagEngine
@@ -22,6 +22,7 @@ public sealed class GrayFlagEngine
     public MovementRules Movement { get; }
     public TurnOrderSystem Turns { get; }
     public TacticalCommands Commands { get; }
+    public UnitDirectiveRegistry Directives { get; }
     public SupportOrders Support { get; }
     public BattleCombat Combat { get; }
     public BattleResources Resources { get; } = new();
@@ -33,7 +34,8 @@ public sealed class GrayFlagEngine
         Grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
         Movement = new MovementRules(packs, Grids);
         Turns = new TurnOrderSystem(packs);
-        Commands = new TacticalCommands(Movement, Turns.MayAct, DirectiveArrivalRegistry.Core());
+        Directives = UnitDirectiveRegistry.Core().Seal();
+        Commands = new TacticalCommands(Movement, Turns.MayAct, Directives);
         Support = new SupportOrders(packs, Grids);
         Combat = new BattleCombat(packs, Grids, Resources, Movement);
     }
@@ -146,7 +148,7 @@ public sealed class GrayFlagEngine
                         if (!Combat.CanUseAttack(state, unit, at, at != TacticalQueries.Position(unit), id)) continue;
                         var targets = Combat.AttackTargets(state, unit, at, id);
                         if (targets.Count > 0) options.Add(new($"attack:{id}", "attack", id,
-                            $"攻击 · {StateJson.Text(weapon, "name")}", "", false, targets));
+                            $"攻击 · {StateJson.Text(weapon, "name")}", "", false, targets, "attack"));
                     }
                     break;
                 case "heal":

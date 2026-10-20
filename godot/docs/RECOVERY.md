@@ -55,3 +55,7 @@ being preserved under tools/godot alongside the main console harness.
 The native UI and original AI policy are still in integration. Gameplay rules
 execute in C# only. Replay JSON is test input, not a running-game implementation.
 Plugin extension registries and the rest of the campaign are not yet fully ported.
+
+The large independent per-action state fixture is committed as deterministic gzip
+(`action-cases.json.gz`). The main console harness reads it directly. Exporting
+regenerates both gzip and the ignored expanded JSON for focused parity programs.

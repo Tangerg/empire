@@ -92,7 +92,9 @@ public sealed class MovementRules
 
     public IReadOnlyList<Coord>? PathTo(MoveField field, JsonObject state, Coord to)
     {
-        var target = Board(state).IndexOf(to);
+        var board = Board(state);
+        if (!board.Contains(to)) return null;
+        var target = board.IndexOf(to);
         if (!field.Tiles.ContainsKey(target)) return null;
         var path = new List<Coord>();
         var current = target;
@@ -111,8 +113,12 @@ public sealed class MovementRules
         return null;
     }
 
-    public int? MoveCostOf(MoveField field, JsonObject state, Coord to) =>
-        field.Tiles.TryGetValue(Board(state).IndexOf(to), out var tile) ? tile.Cost : null;
+    public int? MoveCostOf(MoveField field, JsonObject state, Coord to)
+    {
+        var board = Board(state);
+        if (!board.Contains(to)) return null;
+        return field.Tiles.TryGetValue(board.IndexOf(to), out var tile) ? tile.Cost : null;
+    }
 
     public int ControlRadius(JsonObject state, JsonObject unit)
     {

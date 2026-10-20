@@ -11,7 +11,9 @@ internal static class SupportChecks
         var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "../../data/content-packs.json")))!.AsArray();
         var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
         var orders = new SupportOrders(packs, grids);
-        var cases = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "action-cases.json")))!.AsArray();
+        using var archive = File.OpenRead(Path.Combine(root, "action-cases.json.gz"));
+        using var decompressed = new System.IO.Compression.GZipStream(archive, System.IO.Compression.CompressionMode.Decompress);
+        var cases = JsonNode.Parse(decompressed)!.AsArray();
         var checkedCount = 0;
         foreach (var entry in cases)
         {

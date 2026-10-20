@@ -88,11 +88,11 @@ public sealed partial class BattleCombat
     }
     public double DamageStructure(JsonObject state, string id, double raw, Action<JsonObject> emit)
     {
-        if (!double.IsFinite(raw) || raw < 0) throw new DomainInvariantException($"structure damage must be non-negative, got {raw}");
         var structure = StateJson.Objects(state["structures"], "structures").FirstOrDefault(value => StateJson.Text(value, "id") == id)
             ?? throw new DomainInvariantException($"unknown structure \"{id}\"");
         var hp = StateJson.Number(structure, "hp", 0);
         if (hp <= 0) return 0;
+        if (!double.IsFinite(raw) || raw < 0) throw new DomainInvariantException($"structure damage must be non-negative, got {raw}");
         var definition = content.Get("structures", StateJson.Text(structure, "type"));
         var amount = Math.Min(hp, Math.Max(1, StateJson.Round(raw * (1 - StateJson.Number(definition, "defense", 0)))));
         structure["hp"] = hp - amount;

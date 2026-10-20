@@ -21,6 +21,9 @@ public partial class BoardView : Node2D
     private Vector2I _mapSize;
     private Node2D? _scenery;
     private Node2D? _projection;
+    private TerrainView? _terrain;
+    private AuthoredScene? _scene;
+    private EnvironmentCatalog? _environment;
     private readonly List<StandingEntry> _authoredStanding = new();
     private readonly List<string> _sceneDiagnostics = new();
     private ReadOnlyCollection<string> _diagnostics = Array.AsReadOnly(Array.Empty<string>());
@@ -30,9 +33,24 @@ public partial class BoardView : Node2D
     public int RenderedUnitCount { get; private set; }
     public int ProjectionUnitCount { get; private set; }
     public int RenderedAuthoredPlacementCount { get; private set; }
-    public string StatusText => "READ-ONLY MIGRATION PREVIEW · Native actor/placement renderer; "
-        + "terrain compositor is not migrated."
+    public string StatusText => (_terrain is null
+        ? "Native actor/placement renderer; terrain compositor is not migrated."
+        : "Native C# preview · field, road, forest, authored scenery and actors. Lighting/shadow parity remains incomplete.")
         + (Diagnostics.Count > 0 ? $" {Diagnostics.Count} resource/coverage diagnostics." : "");
+
+    public void ConfigureTerrain(WorldMaterialsManifest materials)
+    {
+        if (_scenery is null || _scene is null || _environment is null)
+            throw new InvalidOperationException("Configure the board before its terrain materials.");
+        if (_terrain is not null)
+        {
+            _scenery.RemoveChild(_terrain);
+            _terrain.QueueFree();
+        }
+        _terrain = new TerrainView { Name = "Terrain" };
+        _terrain.Configure(materials, _scene, _environment);
+        _scenery.AddChild(_terrain);
+    }
 
     public void Configure(AssetCatalog catalog, JsonObject level, AuthoredScene scene,
         EnvironmentCatalog environment, Func<string?, bool> facesLeft)
@@ -130,6 +148,9 @@ public partial class BoardView : Node2D
         _facesLeft = facesLeft;
         _levelId = levelId;
         _mapSize = new Vector2I(width, height);
+        _scene = scene;
+        _environment = environment;
+        _terrain = null;
         _authoredStanding.Clear();
         _authoredStanding.AddRange(entries);
         _sceneDiagnostics.Clear();
@@ -151,6 +172,13 @@ public partial class BoardView : Node2D
         var renderedUnits = 0;
         try
         {
+            if (_terrain is not null)
+            {
+                _terrain.Render(snapshot.Tiles, _mapSize);
+                entries.AddRange(_terrain.Standing.Select((node, index) =>
+                    new StandingEntry(node, node.Position, 2, index + _authoredStanding.Count)));
+                diagnostics.AddRange(_terrain.Diagnostics);
+            }
             for (var index = 0; index < snapshot.Tiles.Length; index++)
             {
                 var terrain = snapshot.Tiles[index];

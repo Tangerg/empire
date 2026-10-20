@@ -106,9 +106,20 @@ public sealed class AuthoredScene
     public int[] MapSize { get; init; } = Array.Empty<int>();
     public List<AuthoredPlacement> Placements { get; init; } = new();
     public List<FramePlacement> FramePlacements { get; init; } = new();
+    public double[][] GroundOutline { get; init; } = Array.Empty<double[]>();
+    public RoadCorridorProfile? RoadCorridor { get; init; }
+    public List<AuthoredZone> Zones { get; init; } = new();
 
     public static AuthoredScene Load(string path = "res://data/grayflag-authored-scene.json") =>
         PresentationJson.Load<AuthoredScene>(path);
+}
+
+public sealed class AuthoredZone
+{
+    public string Id { get; init; } = "";
+    public int[] Bounds { get; init; } = Array.Empty<int>();
+    public string[] AuthoredTerrainScenery { get; init; } = Array.Empty<string>();
+    public string[] AuthoredTerrainSurface { get; init; } = Array.Empty<string>();
 }
 
 public sealed class AuthoredPlacement

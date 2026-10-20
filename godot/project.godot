@@ -1,5 +1,6 @@
 config_version=5
 [application]
+run/main_scene="res://Scenes/GrayFlagGame.tscn"
 config/name="Empire GrayFlag Migration"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 [display]

@@ -1,4 +1,5 @@
 import ts from 'typescript';
+import { gzipSync } from 'node:zlib';
 import { GROUND_TAGS } from '../../packages/game-ui/src/art/ports';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -76,6 +77,7 @@ for (const aggression of [0.35, 0.58, 0.8]) {
   fixtures.push({ aggression, actions: steps.length, finalHash: hashState(state) });
 }
 write('tests/oracle/action-cases.json', actionCases);
+writeFileSync(resolve(output, 'tests/oracle/action-cases.json.gz'), gzipSync(readFileSync(resolve(output, 'tests/oracle/action-cases.json'))));
 const vectors = [];
 for (const seed of [0, 1, 2147483648, 4294967295]) {
   const state = engine.createState(level, { seed });

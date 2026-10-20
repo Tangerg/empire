@@ -11,7 +11,8 @@ var packs = Read("godot/data/content-packs.json").AsArray();
 var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
 var movement = new MovementRules(packs, grids);
 var turns = new TurnOrderSystem(packs);
-var commands = new TacticalCommands(movement, turns.MayAct, DirectiveArrivalRegistry.Core());
+var directives = UnitDirectiveRegistry.Core().Seal();
+var commands = new TacticalCommands(movement, turns.MayAct, directives);
 var cases = Read("godot/tests/oracle/action-cases.json").AsArray();
 var passed = 0;
 var failed = 0;
@@ -147,6 +148,35 @@ Check("client path interior is nonauthoritative", () =>
     commands.ExecuteWait(state, action, RecordingEmit(state, events));
     EqualJson(sample["after"], state, "canonical rerouting");
     EqualJson(sample["events"], events, "canonical rerouting events");
+});
+Check("off-board destination cannot alias a reachable flattened index", () =>
+{
+    var vector = vectors.OfType<JsonObject>().Single(entry => entry["name"]!.GetValue<string>() == "terrain-and-occupancy");
+    var state = (JsonObject)vector["state"]!.DeepClone();
+    var unitId = vector["unit"]!.GetValue<int>();
+    var unit = TacticalQueries.RequireUnit(state, unitId);
+    var origin = TacticalQueries.Position(unit);
+    var field = movement.ComputeMoveField(state, unit);
+    var width = state["map"]!["width"]!.GetValue<int>();
+    var valid = new Coord(0, 1);
+    if (movement.PathTo(field, state, valid) is null)
+        throw new Exception("regression requires reachable row-adjacent alias");
+    var before = StateDigest.Hash(state);
+    foreach (var outside in new[] { new Coord(width, 0), new Coord(-1, 1), new Coord(width, -1) })
+    {
+        if (movement.PathTo(field, state, outside) is not null ||
+            movement.MoveCostOf(field, state, outside) is not null)
+            throw new Exception($"off-board query resolved {outside}");
+        var action = new JsonObject
+        {
+            ["kind"] = "command",
+            ["unit"] = unitId,
+            ["path"] = TacticalQueries.PathJson(new[] { origin, outside }),
+            ["command"] = new JsonObject { ["ability"] = "wait" },
+        };
+        Throws<IllegalActionException>(() => commands.ExecuteWait(state, action, _ => throw new Exception("rejection emitted an event")));
+        if (StateDigest.Hash(state) != before) throw new Exception("off-board rejection mutated state");
+    }
 });
 Console.WriteLine($"Tactical checks: {passed} passed, {failed} failed.");
 return failed == 0 ? 0 : 1;

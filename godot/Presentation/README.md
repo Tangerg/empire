@@ -1,14 +1,16 @@
 # Native presentation boundary
 
-`BoardView` is a read-only migration preview, not a playable battle. The caller must
-display `StatusText` and make `Diagnostics` available. There are deliberately no
-click-to-move, attack, turn, legality, or save controls in this node.
+`BoardView` is a read-only projection, not a battle owner. The caller must display
+`StatusText` and make `Diagnostics` available. `BattleScreen` supplies interactive
+selection and commands through an explicitly injected `IBattleSession`; the view
+never computes legality or mutates the canonical state.
 
 ```csharp
 var assets = AssetCatalog.Load();
 var scene = AuthoredScene.Load();
 var environment = EnvironmentCatalog.Load();
 board.Configure(assets, level, scene, environment, facesLeft);
+board.ConfigureTerrain(WorldMaterialsManifest.Load());
 board.RenderState(canonicalState);
 ```
 
@@ -16,6 +18,26 @@ board.RenderState(canonicalState);
 state projection, such as an oracle fixture's `initialState`, not the level's seed
 unit list. The view copies its visual values and never mutates or retains that JSON
 object. The application supplies `facesLeft` from its tiling strategy.
+
+## Interactive session boundary
+
+`BattleScreen.BindSession(session, assets, level, scene, environment, facesLeft)`
+connects the screen to a real application session.
+`ConfigureTerrain(WorldMaterialsManifest.Load())` supplies the material metadata.
+
+- `GetSnapshot()` returns a revision and detached immutable `JsonElement`.
+- `GetLegalOrders(selectedUnitId)` returns complete canonical actions, labels,
+  visual roles and optional target cells. The same query supplies move ranges,
+  attack targets, command choices and turn controls.
+- The UI selects a unit, visual mode and target without advancing battle state.
+  A separate command button confirms the full action, including movement.
+- `Dispatch(action, expectedRevision)` owns revalidation and execution. The UI
+  forwards the supplied action unchanged and refreshes after accepted or rejected
+  commands. The application rejects stale revisions.
+- The `move` role is a full move-and-wait command, not a speculative move phase.
+  Attack choices may include different legal origins for the same target.
+- Right-click clears selection. No dummy session, prerecorded battle, local
+  damage calculation or UI-only turn transition is used by the application.
 
 ## Resource contracts
 
@@ -40,26 +62,52 @@ object. The application supplies `facesLeft` from its tiling strategy.
   its declared `png2x`. Missing resources are listed with their exact expected path.
   A wrong physical image size is an invariant error, not a missing-art fallback.
 
+## Native terrain
+
+`world-materials.json` exports original material manifests, source resource paths,
+terrain bindings, terrain tags, tag-family vocabulary and scenery specifications.
+The view reads these dependencies rather than creating a competing content table.
+
+- The field is a textured native `Polygon2D` using the authored irregular outline.
+  UV periods are logical material dimensions, not PNG file dimensions.
+- Forest coverage reuses the original Blob47 alpha atlas. One native mask texture
+  combines the cells, while a shader samples the continuous forest-floor RGB.
+- Roads port the source corridor graph, rounded joins, map-edge stubs, broad aprons,
+  protected cells and clipping. Only topology alpha is rasterized by Godot's SVG
+  loader. The road earth RGB remains the original independently sampled texture.
+- Decals, boundary canopies, interior understory and adjacent settlement life use
+  the exported specifications and the shared deterministic `TileArtVariation`.
+  They never consume battle randomness.
+- Authored hill zones suppress repeated procedural rock scenery. Standing native
+  terrain sprites share the actor/structure foot-depth ordering.
+- Identical tile arrays retain their cached material/scenery composition.
+- Negative-depth terrain is below actors but above the screen's backdrop.
+
 ## Deliberate remaining scope
 
-The native renderer handles actor sheets, map structure state frames, authored
-foundations/decals/standing props, and authored perimeter props. It does not claim to
-reproduce the continuous world-material ground, forest coverage/edges, road clipping,
-automatic elevation, procedural scenery, or the full original frame compositor.
-These layers are not replaced with tiled or colored placeholder terrain. The source
-scene and environment catalog's `runtimeReady=false` flags remain visible.
+The renderer does not claim full visual parity: original lighting pools, projected
+shadows, some generic legacy surfaces and automatic elevation are not migrated.
+Unavailable resources are diagnosed with their exact paths, never replaced with
+colored placeholder terrain. The source scene and environment catalog's
+`runtimeReady=false` flags remain visible.
 
 Dynamic battle structures, markers and composites are diagnosed when present. Team
 rings preserve owner color without recoloring authored sprite pixels. Animation
 timelines, HP gauges, badges and effects remain outside this snapshot renderer.
 
 Creating or importing the `.tscn` with standard Godot is not a C# execution test.
-Compile and run with a matching Godot .NET editor and .NET SDK before claiming native
-runtime verification.
+Compile and run with a matching Godot .NET editor and .NET SDK.
 
 After building the C# project and importing assets, execute
 `Godot --headless --path godot res://Scenes/PresentationChecks.tscn`.
 This native-resource test checks named actor selection, density, pivot, crop/frame
 ordering, palette, authored placement coverage, canonical-state immutability, actor
 movement projection, and repeated rendering/configuration without duplicate layers.
-It is not a full-scene screenshot comparison or battle-rule parity test.
+It also checks Blob47, road center coverage and protected-notch alpha, original
+forest coverage, native field geometry, and cached terrain.
+
+`Godot --headless --path godot res://Scenes/BattleScreenChecks.tscn` tests the real
+application session end to end: select Torren, select a queried destination,
+confirm movement plus wait, refresh state, reject a stale revision, and preserve
+earlier detached snapshots. These tests are not a full-scene screenshot comparison
+or a substitute for the engine's battle-rule differential tests.

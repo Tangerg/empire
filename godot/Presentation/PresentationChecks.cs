@@ -125,7 +125,48 @@ public partial class PresentationChecks : Node
         board.Configure(assets, level, scene, environment, facing => facing == "west");
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
+        CheckTerrain(board, state);
         board.QueueFree();
+    }
+
+    private static void CheckTerrain(BoardView board, JsonObject state)
+    {
+        var materials = WorldMaterialsManifest.Load();
+        Require(Enumerable.Range(0, 256).Select(TerrainView.CanonicalBlobMask).Distinct().Count() == 47,
+            "Canonical diagonal suppression must produce exactly Blob47.");
+        board.ConfigureTerrain(materials);
+        board.RenderState(state);
+        var terrain = board.GetNode<TerrainView>("AuthoredScene/Terrain");
+        Require(terrain.RenderedSceneryCount > 0, "Terrain must use deterministic resource-backed scenery.");
+        Require(!terrain.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
+            string.Join("\n", terrain.Diagnostics));
+        Require(board.StatusText.Contains("Lighting/shadow parity remains incomplete", StringComparison.Ordinal),
+            "Native terrain must not be described as full compositor parity.");
+        var ground = terrain.GetNode<Node2D>("ComposedTerrain/Ground");
+        var field = ground.GetNode<Polygon2D>("WorldField");
+        Require(field.Texture is not null && field.Polygon.Length == AuthoredScene.Load().GroundOutline.Length,
+            "World field must use the authored polygon and original texture.");
+        var road = ground.GetNode<Sprite2D>("RoadCorridor");
+        using var roadMask = road.Texture.GetImage();
+        Require(roadMask.GetWidth() == 27 * 64 && roadMask.GetHeight() == 17 * 64,
+            "Road technical mask must preserve the logical map extent at density two.");
+        foreach (var cell in AuthoredScene.Load().RoadCorridor!.ProtectedCells)
+            Require(roadMask.GetPixel(cell[0] * 64 + 32, cell[1] * 64 + 32).A == 0,
+                "Reviewed protected road notch must remain unpainted.");
+        var tiles = state["map"]!["tiles"]!.AsArray();
+        for (var index = 0; index < tiles.Count; index++)
+        {
+            if (tiles[index]!.GetValue<string>() != "road") continue;
+            Require(roadMask.GetPixel(index % 27 * 64 + 32, index / 27 * 64 + 32).A > 0.99,
+                $"Road center must have actual native coverage at {index % 27},{index / 27}.");
+        }
+        var forest = ground.GetNode<Sprite2D>("ForestFloor");
+        using var forestMask = forest.Texture.GetImage();
+        Require(forestMask.GetPixel(32, 32).A > 0.99, "Original forest alpha must reach the first forest cell center.");
+        var cachedLayer = terrain.GetChild(0);
+        board.RenderState(state);
+        Require(terrain.GetChildCount() == 1 && terrain.GetChild(0) == cachedLayer,
+            "Unchanged canonical terrain must retain one native composition, not append duplicate layers.");
     }
 
     private static void Require(bool condition, string message)

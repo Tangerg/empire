@@ -17,12 +17,12 @@ public sealed class TacticalCommands
 {
     private readonly MovementRules movement;
     private readonly Func<JsonObject, JsonObject, bool> mayAct;
-    private readonly DirectiveArrivalRegistry directives;
+    private readonly UnitDirectiveRegistry directives;
 
     public TacticalCommands(
         MovementRules movement,
         Func<JsonObject, JsonObject, bool> mayAct,
-        DirectiveArrivalRegistry directives)
+        UnitDirectiveRegistry directives)
     {
         this.movement = movement;
         this.mayAct = mayAct;
@@ -52,6 +52,8 @@ public sealed class TacticalCommands
         if (TacticalQueries.Position(StateJson.Object(requested[0], "path origin")) != origin)
             throw new IllegalActionException("路径起点与单位位置不符");
         var destination = TacticalQueries.Position(StateJson.Object(requested[^1], "path destination"));
+        if (!movement.Board(state).Contains(destination))
+            throw new IllegalActionException($"目标格 {destination.X},{destination.Y} 不在战场内");
         if (requested.Count == 1) return new(unitId, origin, destination, new[] { origin });
         var field = movement.ComputeMoveField(state, unit);
         var canonical = movement.PathTo(field, state, destination)
