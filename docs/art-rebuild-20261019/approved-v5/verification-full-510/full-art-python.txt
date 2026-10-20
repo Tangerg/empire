@@ -1,0 +1,11 @@
+................/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/assemble_approved_slice.py:20: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  edge = max(max(alpha.crop(box).getdata()) for box in
+........................................................................................................................................................................................................................................................../workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/assemble_approved_slice.py:20: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  edge = max(max(alpha.crop(box).getdata()) for box in
+..................................Runtime alpha fixtures: /tmp/empire-road-corridor-l6lw2u4i
+........................................
+----------------------------------------------------------------------
+Ran 340 tests in 157.470s
+
+OK
+art_suite_exit=0
