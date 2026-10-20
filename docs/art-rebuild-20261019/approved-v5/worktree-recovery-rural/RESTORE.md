@@ -1,0 +1,3 @@
+# Recover the rural worktree
+
+All files are audited against retained Git history. The original branch remains intact. Normally use `git worktree add PATH art/rural-export-20261019`. If only a fresh main clone remains, run `git fetch PATH/TO/rural-history.bundle refs/heads/art/rural-export-20261019:refs/heads/art/rural-export-20261019`, then add the worktree. The prerequisite common-base commit is in main history. This bundle preserves the one original commit absent from main ancestry; corresponding implementation was already cherry-picked. All ignored files are reproducible Python bytecode caches. Shared original art and active worktrees are outside this cleanup.

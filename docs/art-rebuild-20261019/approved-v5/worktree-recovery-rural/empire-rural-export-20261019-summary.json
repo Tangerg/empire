@@ -1,0 +1,60 @@
+{
+  "audited_at_utc": "2026-10-20T00:47:10Z",
+  "timestamp_note": "Clock tool UTC used; executor filesystem/system timestamps are approximately eight hours ahead.",
+  "path": "/workspace/scratch/84c9fe948755/empire-rural-export-20261019",
+  "allocated_bytes": 1839357952,
+  "head": "16cb145cb626bb6d2c658872a2a85ead38232afc",
+  "branch": "refs/heads/art/rural-export-20261019",
+  "main_head": "a75589cef304e76aa6184ac492472ca81facc190",
+  "origin_main_snapshot": "a75589cef304e76aa6184ac492472ca81facc190",
+  "head_reachable_from_main": false,
+  "head_reachable_from_origin_main": false,
+  "origin_main_live_remote_verification": "Not performed by this audit; parent sole Git writer owns remote verification.",
+  "tracked_modifications": [],
+  "final_status_porcelain": "",
+  "head_unchanged": true,
+  "tracked_files_count": 5587,
+  "tracked_files_bytes": 1822382111,
+  "tracked_sha256_and_git_blob_verified": true,
+  "tracked_blob_mismatches": [],
+  "tracked_blobs_not_in_origin_main_history": [],
+  "tracked_files_different_from_current_main_count": 320,
+  "ignored_count": 43,
+  "ignored_regular_files_bytes": 479654,
+  "ignored_classifications": {
+    "reproducible Python bytecode; compiled code exactly matches tracked source": 43
+  },
+  "ignored_nonreproducible": [],
+  "nonignored_untracked_count": 0,
+  "untracked_nonignored": [],
+  "full_filesystem_inventory_uncovered_files": [],
+  "missing_commits_from_origin_main": [
+    "16cb145cb626bb6d2c658872a2a85ead38232afc"
+  ],
+  "cherry_equivalence": [
+    "- 16cb145cb626bb6d2c658872a2a85ead38232afc"
+  ],
+  "bundle_assessment_manifest": "empire-rural-export-20261019-bundle-assessment.json",
+  "incoming_symlink_references": [],
+  "matching_processes_visible_namespace": [],
+  "process_check_limitation": "Tool commands run in an isolated PID namespace. Host-wide cwd/open-file/process inactivity cannot be proven here. Parent must confirm task ownership and external process inactivity.",
+  "safe_to_remove_under_requested_gate": false,
+  "decision": "BLOCKED: original HEAD is not an ancestor of origin/main. All tracked bytes are independently recoverable from retained origin/main history, but exact original commit/tree history must be retained before any alternate cleanup plan. Host-wide inactivity also requires parent confirmation.",
+  "excluded_paths": [
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019",
+    "/workspace/scratch/84c9fe948755/empire-push-check-20261019",
+    "/workspace/shared/empire-art-rebuild"
+  ],
+  "tracked_manifest": "empire-rural-export-20261019-tracked.json",
+  "ignored_manifest": "empire-rural-export-20261019-ignored.json",
+  "untracked_manifest": "empire-rural-export-20261019-untracked.json",
+  "coordinator_task_ownership_confirmation": {
+    "received_at_utc": "2026-10-20T00:49:24Z",
+    "source": "/root/inventory_empire_art_rebuild collaboration message",
+    "confirmation": "Coordinator confirms all active assigned workers use main for reads and shared for generated outputs; completed engineering uses layout-engineering. No active coordinator-assigned task uses rural. Scribe completed. Root is interrupted.",
+    "scope": "Assigned agent/task ownership only; does not assert host-wide process inactivity."
+  },
+  "coordinator_confirmed_no_active_assigned_tasks": true,
+  "audit_completed_at_utc": "2026-10-20T00:50:03Z"
+}

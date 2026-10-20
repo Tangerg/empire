@@ -1,0 +1,26 @@
+{
+  "selection": "Rural has the simplest nontracked content: 43 reproducible Python caches, no dependency symlinks or untracked files. All three permitted candidates fail the original-HEAD ancestry gate. Only rural received the full fresh per-file audit.",
+  "candidates": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019",
+      "head": "a2b34488ca67052ab203247b27954d49fc34a434",
+      "origin_main_snapshot": "a75589cef304e76aa6184ac492472ca81facc190",
+      "head_is_ancestor_of_origin_main": false,
+      "selected_for_full_audit": false
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-later-environment-audit-20261019",
+      "head": "c044fa5979c80dba1da7b54cc7b858d05319e096",
+      "origin_main_snapshot": "a75589cef304e76aa6184ac492472ca81facc190",
+      "head_is_ancestor_of_origin_main": false,
+      "selected_for_full_audit": false
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-rural-export-20261019",
+      "head": "16cb145cb626bb6d2c658872a2a85ead38232afc",
+      "origin_main_snapshot": "a75589cef304e76aa6184ac492472ca81facc190",
+      "head_is_ancestor_of_origin_main": false,
+      "selected_for_full_audit": true
+    }
+  ]
+}

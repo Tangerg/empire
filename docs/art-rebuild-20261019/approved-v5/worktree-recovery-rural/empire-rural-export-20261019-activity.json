@@ -1,0 +1,34 @@
+{
+  "visible_process_matches": [],
+  "process_scan_errors": [],
+  "process_check_limitation": "Tool commands run in an isolated PID namespace. Host-wide cwd/open-file/process inactivity cannot be proven here. Parent must confirm task ownership and external process inactivity.",
+  "active_agent_inventory": [
+    "/root (interrupted)",
+    "/root/inventory_empire_art_rebuild",
+    "/root/inventory_empire_art_rebuild/animate_grayflag_name_registrar",
+    "/root/inventory_empire_art_rebuild/animate_grayflag_scribe",
+    "/root/inventory_empire_art_rebuild/animate_grayflag_wall_laborer",
+    "/root/inventory_empire_art_rebuild/audit_safe_worktree_recovery",
+    "/root/inventory_empire_art_rebuild/redraw_grayflag_chapter_backdrops"
+  ],
+  "agent_inventory_note": "Names/statuses from collaboration.list_agents at 2026-10-20T00:45:38Z. Names do not prove cwd or worktree ownership; parent confirmation required.",
+  "incoming_symlink_references": [],
+  "incoming_symlink_scan_errors": [],
+  "incoming_symlink_scan_roots": [
+    "/workspace/scratch/84c9fe948755",
+    "/workspace/shared/empire-art-rebuild"
+  ],
+  "incoming_symlink_scan_exclusions": [
+    "candidate contents",
+    ".git",
+    ".codex",
+    ".agents",
+    ".aws"
+  ],
+  "coordinator_task_ownership_confirmation": {
+    "received_at_utc": "2026-10-20T00:49:24Z",
+    "source": "/root/inventory_empire_art_rebuild collaboration message",
+    "confirmation": "Coordinator confirms all active assigned workers use main for reads and shared for generated outputs; completed engineering uses layout-engineering. No active coordinator-assigned task uses rural. Scribe completed. Root is interrupted.",
+    "scope": "Assigned agent/task ownership only; does not assert host-wide process inactivity."
+  }
+}
