@@ -111,9 +111,11 @@ export function readCandidate01HdManifest(raw: Candidate01RuntimeHdManifest): Re
 export function validateCandidate01HdAsset(record: Candidate01AssetRecord, hd: Candidate01HdAssetRecord): void {
   validatePhysicalDimensions(hd);
   if (record.kind === 'scene') {
-    if (record.category !== 'narrative-static' || record.width !== 256 || record.height !== 144
+    const supportedShape = (record.width === 256 && record.height === 144)
+      || (record.width === 128 && record.height === 128);
+    if (record.category !== 'narrative-static' || !supportedShape
       || ['frames', 'variants', 'frameWidth', 'frameHeight', 'anchor'].some(key => key in record)) {
-      throw new Error(`candidate-01 runtime HD requires an unframed 256x144 scene: ${record.topicId}`);
+      throw new Error(`candidate-01 runtime HD requires an unframed 256x144 or 128x128 scene: ${record.topicId}`);
     }
   } else if (hd.pixelDensity !== 2) {
     throw new Error(`candidate-01 tactical HD density must remain 2: ${record.topicId}`);

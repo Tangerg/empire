@@ -180,7 +180,7 @@ class ApprovedLedgerTests(unittest.TestCase):
             build(self.root)
 
     def test_scene_master_is_discovered_without_reclassifying_key_prop_exception(self):
-        for topic_id in ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE']:
+        for topic_id in ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE', 'C01-CH03-S11']:
             with self.subTest(topic=topic_id):
                 topic = {**self.topic, 'topicId': topic_id, 'category': 'narrative-static', 'kind': 'scene'}
                 self.write('pack/manifest.json', {'assets': [topic]})
@@ -204,11 +204,11 @@ class ApprovedLedgerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
             build(self.root)
 
-        topic = {**topic, 'topicId': 'C01-CH03-S11', 'kind': 'key-prop'}
+        topic = {**topic, 'topicId': 'C01-CH01-S00', 'kind': 'key-prop'}
         self.write('pack/manifest.json', {'assets': [topic]})
         self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
-                   'campaign': 'story-candidate-01', 'label': 'Opaque cemetery key-prop exception'}])
-        raw = self.root / 'pack/masters/approved-v5/narrative/ch03-s11/master.png'
+                   'campaign': 'story-candidate-01', 'label': 'Unresolved wrist-guard scene/prop identity'}])
+        raw = self.root / 'pack/masters/approved-v5/narrative/ch01-s00/master.png'
         raw.parent.mkdir(parents=True)
         raw.write_bytes(b'scene-like pixels do not change the canonical kind')
         self.progress.update(topicStages={topic['topicId']: {'raw': 'claimed'}}, formalRuntimeBoundTopics=1)

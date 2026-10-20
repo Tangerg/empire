@@ -498,8 +498,8 @@ identities are LEFT-GLOVE, EXILE-HARDTACK, IVRA-BROKEN-BRIDLE and CROWN-FRAGMENT
 Do not infer a fingered glove from the LEFT-GLOVE identifier: its reviewed
 reference is a cylindrical wrist guard. CH01-S00 is excluded pending its
 scene-versus-prop identity decision. CH03-S11 is an opaque cemetery scene and is
-also excluded; its separate canonical classification correction must preserve
-128×128 and is not part of transparent export.
+canonically declared `scene` at its unchanged 128×128. It cannot enter the
+transparent-prop path; see the source-backed correction below.
 
 The canonical manifest remains the sole geometry owner. Anchors, frames,
 variants, frameWidth and frameHeight must all be absent, even if a proposed
@@ -562,7 +562,8 @@ npm test -- packages/story-candidate-01/src/presentation/candidate-01-narrative-
 ## Gray Flag opaque narrative scene plates
 
 `export_overrides.py` also accepts existing C01 `narrative-static`, kind `scene`,
-unframed 256×144 records. Use this distinct entry in `source-overrides.json`:
+unframed, unanchored 256×144 or explicitly declared 128×128 records. Canonical
+dimensions remain authoritative; source shape never classifies an asset. Use this distinct entry in `source-overrides.json`:
 
 ```json
 {
@@ -581,8 +582,8 @@ change. The first reviewed batch is expected to use the exact existing IDs
 `C01-CH01-S05`, `C01-CH01-S01`, `C01-ARCH-THREE-BRIDGES`, `C01-ARCH-REDSTONE`.
 Source identity comes from the remaining-narrative audit, not alphabetical
 manifest order. Preserve all seven approved character cards and their separate
-battle appearances. `CH01-S00` and `CH03-S11` remain key-prop records and cannot
-be smuggled through the scene exporter; this contract does not reclassify them.
+battle appearances. `CH01-S00` remains a held key-prop record and cannot
+enter the scene exporter. `CH03-S11` is the documented square scene below.
 
 ### Immutable source and explicit framing
 
@@ -593,9 +594,11 @@ A painted person or object inside this composition is not a reusable transparent
 character/prop source; those must be authored and retained independently.
 
 `sourceCropBox` is required. `null` samples the **entire** source, which must be
-exactly 16:9. A non-16:9 source requires an explicitly reviewed integer
+exactly the canonical aspect: 16:9 for 256×144, 1:1 for 128×128. Any differently
+shaped source requires an explicitly reviewed integer
 `[left, top, right, bottom]` box in original pixels (right/bottom exclusive),
-strictly positive, within the source, and exactly 16:9. For example a 1536×1024
+strictly positive, within the source, and exactly the canonical aspect. The
+check is `(right-left)*asset.height == (bottom-top)*asset.width`. For example a 1536×1024
 painting may explicitly register `[0,80,1536,944]` only after that framing is
 reviewed. The original 1536×1024 file and hash remain untouched. No automatic
 center crop, stretch, alpha extraction, painting, blur, recolor, sharpening,
@@ -607,9 +610,9 @@ A near-16:9 native image is still not stretched: for 1672×941, the explicit box
 pixels removed. This is a framing example, not automatic approval of that crop.
 
 The declared region is copied and resized with Pillow LANCZOS to opaque RGBA
-256×144 at the existing canonical `runtime/narrative-static/*.png` path. The
-region must be at least the largest requested export size; upsampling a legacy
-256×144 file into a purported HD scene is rejected. The report records the
+canonical dimensions at the existing `runtime/narrative-static/*.png` path. The
+region must be at least canonical width/height times the largest requested density;
+upsampling a legacy runtime file into a purported HD scene is rejected. The report records the
 complete source path/hash/mode/size, opaque alpha, nullable declared crop,
 resolved source region, pixels removed from each side, retained area fraction,
 filter, density and output pixel hash. It explicitly leaves visual review
@@ -629,7 +632,8 @@ scene resolver or CSS scaling mechanism exists.
 and a root density field are rejected. Keep `assetCount`, categories and unique
 IDs accurate. Physical dimensions must be positive integers exactly equal to
 canonical dimensions times a finite density. Tactical/non-scene assets remain
-exactly 2×; only existing unframed 256×144 scenes permit fractional densities ≥2.
+exactly 2×; only declared unframed 256×144 or 128×128 scenes permit fractional
+densities ≥2. Unknown logical shapes, anchors and frame metadata are rejected.
 
 For the reviewed 1672×941 scenes with crop `[4,2,1668,938]`, register the unchanged
 `runtime-hd/narrative-static/*.png` path at 1664×936, density 6.5. This preserves
@@ -656,6 +660,33 @@ an old schema rather than falling back. Without an HD entry the exporter still
 emits only canonical output, but formal approved scene consumer tests require a
 registered source-native file. Raw, export, runtimeBinding and liveGame remain
 separate review stages; source-native export is not live-browser acceptance.
+
+### Source-backed cemetery classification correction
+
+`C01-CH03-S11` is now `scene`, retaining its exact asset ID, label, runtime path,
+128×128 geometry, absent anchors/frames, and legacy quality tier. Only `kind`
+changed. Its original scene-board 07 top-left cell shows a complete cemetery with
+people, statue, graves, paths, fence and autumn trees. Authored evidence agrees:
+[static-assets section 3](../../docs/story-candidates/candidate-01/deep-customized/09-static-assets.md#3-关键场景-assetsscenes)
+lists it as a scene; [elder-peoples section 1](../../docs/story-candidates/candidate-01/deep-customized/03-elder-peoples.md#1-第十一关无声墓园)
+distinguishes this scene from the separate `C01-PROP-NAME-TAGS` reusable object.
+
+The existing opaque 128×128 file is unchanged, SHA-256
+`e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58`.
+No master override or HD entry was added. This is one existing pending topic and
+adds **zero** completed art topics. There is no shipped scene consumer for it at
+this correction; a generic resolver call does not establish one. New art and
+actual presentation review are separate work. Do not crop it to 16:9, extract
+transparent name tags from it, or reinterpret the unresolved `C01-CH01-S00`.
+
+The other 41 wide scenes retain 256×144; all 22 character cards retain 192×224;
+the remaining 16 key-props retain 128×128 and their transparency contracts.
+Square scenes share `opaque-scene-v1`: null crop means the complete square
+master; an explicit crop must be square; physical width/height must exactly equal
+canonical width/height times their registered density. For example, a reviewed
+617×617 source region may be copied at 617×617 with explicit density 617/128,
+while the canonical 128×128 output is independently downsampled. This example
+registers no art and is not permission to promote the legacy sourceboard.
 
 ### Actual UI cover crop is a second review gate
 

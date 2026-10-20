@@ -43,6 +43,23 @@ describe('per-asset physical density', () => {
     expect(candidate01ChapterArt(1)).toContain('runtime-hd/narrative-static/arch-three-bridges.png');
   });
 
+  it('accepts explicit square-scene source density without changing the canonical record or URL', () => {
+    const square = candidate01Asset('C01-CH03-S11');
+    const before = JSON.stringify(square);
+    const hd = { topicId: square.topicId, png: 'runtime-hd/narrative-static/ch03-s11.png',
+      width: 617, height: 617, pixelDensity: 617 / 128 };
+    expect(square).toMatchObject({ kind: 'scene', width: 128, height: 128 });
+    expect(readCandidate01HdManifest({ ...manifest, assets: [hd] }).get(square.topicId)).toEqual(hd);
+    expect(() => validateCandidate01HdAsset(square, hd)).not.toThrow();
+    expect(square.url).toContain(square.png);
+    expect(candidate01StoryArt(square.topicId)).toBe(square.url);
+    for (const patch of [{ width: 616 }, { height: 616 }, { pixelDensity: 4 },
+      { width: 512, height: 288, pixelDensity: 4 }]) {
+      expect(() => validateCandidate01HdAsset(square, { ...hd, ...patch })).toThrow('disagree');
+    }
+    expect(JSON.stringify(square)).toBe(before);
+  });
+
   it.each<Record<string, unknown>>([
     { pixelDensity: Number.NaN }, { pixelDensity: Number.POSITIVE_INFINITY },
     { pixelDensity: Number.NEGATIVE_INFINITY }, { pixelDensity: 0 }, { pixelDensity: -2 },
@@ -61,10 +78,14 @@ describe('per-asset physical density', () => {
     },
   );
 
-  it.each([{ width: 256, height: 145 }, { width: 320, height: 180 }, { frames: 1 }, { variants: 0 },
-    { frameWidth: 256 }, { frameHeight: 144 }, { anchor: [128, 72] as const }])(
+  it.each([{ width: 256, height: 145 }, { width: 320, height: 180 }, { width: 256, height: 256 },
+    { width: Number.NaN }, { height: Number.POSITIVE_INFINITY }, { frames: 1 }, { variants: 0 },
+    { category: 'battle-prop' as const }, { frameWidth: 256 }, { frameHeight: 144 }, { anchor: [128, 72] as const }])(
     'rejects altered scene aspect or framed geometry %j', patch => {
-      expect(() => validateCandidate01HdAsset({ ...scene, ...patch }, physical)).toThrow('unframed 256x144 scene');
+      for (const record of [scene, candidate01Asset('C01-CH03-S11')]) {
+        expect(() => validateCandidate01HdAsset({ ...record, ...patch }, physical))
+          .toThrow('unframed 256x144 or 128x128 scene');
+      }
     },
   );
 

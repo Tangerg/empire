@@ -178,7 +178,7 @@ def compose_character_card(root: Path, pack: Path, asset, hd, override):
 
 def render_narrative_prop(root: Path, pack: Path, asset, hd, override):
     topic = asset['topicId']
-    if topic in ('C01-CH01-S00', 'C01-CH03-S11'):
+    if topic == 'C01-CH01-S00':
         raise ValueError(f'{topic}: scene/prop identity excludes transparent-prop registration')
     if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
             or asset.get('category') != 'narrative-static' or asset.get('kind') != 'key-prop'
@@ -220,10 +220,11 @@ def render_narrative_prop(root: Path, pack: Path, asset, hd, override):
 def render_scene(root: Path, pack: Path, asset, hd, override):
     topic = asset['topicId']
     if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
-            or asset.get('kind') != 'scene'
-            or (asset['width'], asset['height']) != (256, 144)
+            or asset.get('category') != 'narrative-static' or asset.get('kind') != 'scene'
+            or any(type(asset.get(axis)) is not int for axis in ('width', 'height'))
+            or (asset['width'], asset['height']) not in ((256, 144), (128, 128))
             or any(key in asset for key in ('frames', 'variants', 'frameWidth', 'frameHeight', 'anchor'))):
-        raise ValueError(f'{topic}: only existing Gray Flag 256x144 unframed scene contracts supported')
+        raise ValueError(f'{topic}: only existing Gray Flag 256x144 or 128x128 unframed scene contracts supported')
     if (not isinstance(override, dict)
             or set(override) != {'kind', 'scene', 'sourceCropBox'}
             or override['kind'] != 'opaque-scene-v1'):
@@ -243,8 +244,10 @@ def render_scene(root: Path, pack: Path, asset, hd, override):
             raise ValueError(f'{topic}: sourceCropBox must be an integer box inside the complete master')
         box = crop
     width, height = box[2] - box[0], box[3] - box[1]
-    if width * 9 != height * 16:
-        raise ValueError(f'{topic}: scene source region must be exactly 16:9; register a reviewed crop explicitly')
+    if width * asset['height'] != height * asset['width']:
+        divisor = math.gcd(asset['width'], asset['height'])
+        aspect = f"{asset['width'] // divisor}:{asset['height'] // divisor}"
+        raise ValueError(f'{topic}: scene source region must match canonical aspect exactly {aspect}; register a reviewed crop explicitly')
     output_records = [(asset, 1)]
     if hd:
         density = hd.get('pixelDensity')
@@ -255,7 +258,7 @@ def render_scene(root: Path, pack: Path, asset, hd, override):
             raise ValueError(f'{topic}: scene HD contract requires positive integer dimensions at its finite density >= 2')
         output_records.append((hd, density))
     largest_density = output_records[-1][1]
-    if width < 256 * largest_density or height < 144 * largest_density:
+    if width < asset['width'] * largest_density or height < asset['height'] * largest_density:
         raise ValueError(f'{topic}: scene source region is smaller than the largest requested export')
     # Only this declared region is sampled, independently at each density. Never
     # infer a center-cover crop or rewrite the complete immutable source file.

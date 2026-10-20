@@ -13,6 +13,7 @@ from export_overrides import PACKS, export
 ROOT = Path(__file__).resolve().parents[2]
 PACK = Path('packages/story-candidate-01/assets/final-fantasy-v1')
 TOPICS = ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE']
+SQUARE_TOPIC = 'C01-CH03-S11'
 
 
 class NarrativeSceneTests(unittest.TestCase):
@@ -119,6 +120,153 @@ class NarrativeSceneTests(unittest.TestCase):
         self.assertEqual(manifests, {p: p.read_bytes() for p in manifests})
         self.assertEqual(export(self.root, self.catalog, check=True), report)
 
+    def test_cemetery_classification_preserves_identity_geometry_and_legacy_pixels(self):
+        actual = json.loads((ROOT / PACK / 'manifest-final-fantasy-v1.json').read_text())
+        asset = next(a for a in actual['assets'] if a['topicId'] == SQUARE_TOPIC)
+        self.assertEqual(asset, {
+            'assetId': 'C01-FFV1-CH03-S11', 'topicId': SQUARE_TOPIC, 'label': '墓园姓名木片',
+            'category': 'narrative-static', 'png': 'runtime/narrative-static/ch03-s11.png',
+            'width': 128, 'height': 128, 'runtimeReady': True,
+            'qualityTier': 'final-cartoon-fantasy-v1', 'kind': 'scene',
+        })
+        runtime = ROOT / PACK / asset['png']
+        self.assertEqual(hashlib.sha256(runtime.read_bytes()).hexdigest(),
+                         'e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58')
+        with Image.open(runtime) as image:
+            self.assertEqual(image.size, (128, 128))
+            self.assertEqual(image.getchannel('A').getextrema(), (255, 255))
+        self.assertEqual(len([a for a in self.assets if a['kind'] == 'scene'
+                              and (a['width'], a['height']) == (256, 144)]), 41)
+        for topic in ('C01-CH01-S00', 'C01-PROP-NAME-TAGS'):
+            self.assertEqual(next(a for a in self.assets if a['topicId'] == topic)['kind'], 'key-prop')
+        self.assertNotIn(SQUARE_TOPIC, json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'])
+        hd = json.loads((ROOT / PACK / 'manifest-tactical-runtime-hd.json').read_text())
+        self.assertNotIn(SQUARE_TOPIC, {a['topicId'] for a in hd['assets']})
+
+    def test_square_whole_source_and_explicit_native_density_keep_canonical_identity(self):
+        self.make_source((617, 617))
+        source_bytes = self.source.read_bytes()
+        self.override['scene'] = self.ref()
+        self.register({SQUARE_TOPIC: self.override})
+        originals = self.outputs()
+        canonical = export(self.root, self.catalog)
+        self.assertEqual([r['size'] for r in canonical], [[128, 128]])
+        self.assertFalse(self.hd_manifest.exists())
+        self.assertEqual({t for t, b in originals.items() if self.outputs()[t] != b}, {SQUARE_TOPIC})
+        self.register_hd(topicId=SQUARE_TOPIC, png='runtime-hd/narrative-static/ch03-s11.png',
+                         width=617, height=617, pixelDensity=617 / 128)
+        manifests = {p: p.read_bytes() for p in self.root.rglob('*.json')}
+        report = export(self.root, self.catalog)
+        self.assertEqual([r['size'] for r in report], [[128, 128], [617, 617]])
+        self.assertEqual([r['pixelDensity'] for r in report], [1, 617 / 128])
+        self.assertEqual(report[0], canonical[0])
+        self.assertEqual(report[1]['sceneFit']['sourceRegion'], [0, 0, 617, 617])
+        self.assertIsNone(report[1]['sceneFit']['sourceCropBox'])
+        self.assertEqual(report[1]['sceneFit']['retainedAreaFraction'], 1)
+        self.assertEqual(report[1]['sceneFit']['method'], 'explicit-region-copy')
+        self.assertIsNone(report[1]['sceneFit']['resampling'])
+        with Image.open(self.source) as source:
+            for result in report:
+                with Image.open(self.root / result['output']) as image:
+                    expected = source.convert('RGBA').resize(tuple(result['size']), Image.Resampling.LANCZOS)
+                    self.assertEqual(image.tobytes(), expected.tobytes())
+                    self.assertEqual(image.getchannel('A').getextrema(), (255, 255))
+        self.assertEqual(self.source.read_bytes(), source_bytes)
+        self.assertEqual(manifests, {p: p.read_bytes() for p in manifests})
+        self.assertEqual(export(self.root, self.catalog, check=True), report)
+        self.assertEqual(export(self.root, self.catalog), report)
+
+    def test_square_scene_uses_only_explicit_square_crop(self):
+        self.make_source((768, 600), mode='RGBA')
+        source_bytes = self.source.read_bytes()
+        self.override.update(scene=self.ref(), sourceCropBox=[40, 20, 552, 532])
+        self.register({SQUARE_TOPIC: self.override})
+        self.register_hd(topicId=SQUARE_TOPIC, png='runtime-hd/narrative-static/ch03-s11.png',
+                         width=512, height=512, pixelDensity=4)
+        for result in export(self.root, self.catalog):
+            self.assertEqual(result['sceneFit']['sourceRegion'], [40, 20, 552, 532])
+            self.assertEqual(result['sceneFit']['croppedSourcePixels'],
+                             {'left': 40, 'top': 20, 'right': 216, 'bottom': 68})
+            with Image.open(self.source) as source, Image.open(self.root / result['output']) as image:
+                expected = source.crop((40, 20, 552, 532)).resize(tuple(result['size']), Image.Resampling.LANCZOS)
+                self.assertEqual(image.tobytes(), expected.tobytes())
+        self.assertEqual(self.source.read_bytes(), source_bytes)
+
+    def test_square_scene_rejects_wide_source_or_crop_without_writes(self):
+        before = self.outputs()
+        for crop in (None, [0, 0, 512, 288], [0, 0, 400, 399]):
+            with self.subTest(crop=crop):
+                self.override['sourceCropBox'] = crop
+                self.register({SQUARE_TOPIC: self.override})
+                with self.assertRaisesRegex(ValueError, 'canonical aspect exactly 1:1'):
+                    export(self.root, self.catalog)
+                self.assertEqual(self.outputs(), before)
+
+    def test_square_scene_rejects_transparency_even_outside_reviewed_crop(self):
+        self.make_source((512, 512), mode='RGBA')
+        with Image.open(self.source) as source:
+            source.putpixel((0, 0), (10, 20, 30, 254))
+            source.save(self.source)
+        self.override.update(scene=self.ref(), sourceCropBox=[64, 64, 448, 448])
+        self.register({SQUARE_TOPIC: self.override})
+        before = self.outputs()
+        with self.assertRaisesRegex(ValueError, 'complete scene master'):
+            export(self.root, self.catalog)
+        self.assertEqual(self.outputs(), before)
+
+    def test_square_source_minimum_follows_canonical_geometry_and_density(self):
+        self.make_source((128, 128))
+        self.override['scene'] = self.ref()
+        self.register({SQUARE_TOPIC: self.override})
+        self.assertEqual(export(self.root, self.catalog)[0]['sceneFit']['method'], 'explicit-region-copy')
+        before = self.outputs()
+        self.make_source((64, 64))
+        self.override['scene'] = self.ref()
+        self.register({SQUARE_TOPIC: self.override})
+        with self.assertRaisesRegex(ValueError, 'smaller than'):
+            export(self.root, self.catalog)
+        self.make_source((128, 128))
+        self.override['scene'] = self.ref()
+        self.register({SQUARE_TOPIC: self.override})
+        self.register_hd(topicId=SQUARE_TOPIC, png='runtime-hd/narrative-static/ch03-s11.png',
+                         width=256, height=256, pixelDensity=2)
+        with self.assertRaisesRegex(ValueError, 'smaller than'):
+            export(self.root, self.catalog)
+        self.assertEqual(self.outputs(), before)
+        self.assertFalse((self.pack / 'runtime-hd').exists())
+
+    def test_square_unknown_geometry_or_framing_cannot_be_inferred_from_source(self):
+        self.make_source((512, 512))
+        self.override['scene'] = self.ref()
+        self.register({SQUARE_TOPIC: self.override})
+        manifest = self.manifest.read_bytes()
+        before = self.outputs()
+        for patch in ({'width': 256, 'height': 256}, {'height': 127}, {'width': 128.0},
+                      {'width': True}, {'height': None}, {'frames': 0}, {'anchor': None},
+                      {'variants': 0}, {'frameWidth': 128}, {'frameHeight': 128}):
+            with self.subTest(patch=patch):
+                self.manifest.write_bytes(manifest)
+                self.mutate_asset(SQUARE_TOPIC, **patch)
+                with self.assertRaisesRegex(ValueError, 'unframed scene'):
+                    export(self.root, self.catalog)
+                self.assertEqual(self.outputs(), before)
+
+    def test_square_hd_requires_exact_declared_ratio_and_density(self):
+        self.make_source((512, 512))
+        self.override['scene'] = self.ref()
+        self.register({SQUARE_TOPIC: self.override})
+        before = self.outputs()
+        for patch in ({'width': 512, 'height': 288}, {'height': 255}, {'pixelDensity': 2.5},
+                      {'width': None}, {'height': 256.0}, {'pixelDensity': True}):
+            with self.subTest(patch=patch):
+                self.register_hd(**{'topicId': SQUARE_TOPIC,
+                                    'png': 'runtime-hd/narrative-static/ch03-s11.png',
+                                    'width': 256, 'height': 256, 'pixelDensity': 2, **patch})
+                with self.assertRaisesRegex(ValueError, 'HD contract'):
+                    export(self.root, self.catalog)
+                self.assertEqual(self.outputs(), before)
+                self.assertFalse((self.pack / 'runtime-hd').exists())
+
     def test_explicit_reviewed_crop_keeps_complete_source_and_reports_removed_area(self):
         self.make_source((768, 600), mode='RGBA')
         original = self.source.read_bytes()
@@ -211,7 +359,7 @@ class NarrativeSceneTests(unittest.TestCase):
                     export(self.root, self.catalog)
 
     def test_existing_characters_props_semantic_exceptions_and_other_campaigns_rejected(self):
-        for topic in ['unknown', 'C01-CHAR-LEIA-01', 'C01-CH01-S00', 'C01-CH03-S11']:
+        for topic in ['unknown', 'C01-CHAR-LEIA-01', 'C01-CH01-S00', 'C01-PROP-NAME-TAGS']:
             with self.subTest(topic=topic):
                 self.register({topic: self.override})
                 with self.assertRaises(ValueError):

@@ -58,7 +58,11 @@ describe('approved static catalogs preserve campaign ownership', () => {
     if ('kind' in entry && entry.kind === 'opaque-scene-v1') {
       const scene = readFileSync(new URL(entry.scene.source, root));
       expect([2, 6]).toContain(scene[25]); // Native RGB or RGBA; exporter checks opaque pixels.
-      expect([asset.width, asset.height]).toEqual([256, 144]);
+      expect(asset.category).toBe('narrative-static');
+      expect(asset.kind).toBe('scene');
+      expect([[256, 144], [128, 128]]).toContainEqual([asset.width, asset.height]);
+      const crop = entry.sourceCropBox ?? [0, 0, scene.readUInt32BE(16), scene.readUInt32BE(20)];
+      expect((crop[2] - crop[0]) * asset.height).toBe((crop[3] - crop[1]) * asset.width);
     }
     if ('kind' in entry && entry.kind === 'transparent-prop-v1') {
       const prop = readFileSync(new URL(entry.prop.source, root));
