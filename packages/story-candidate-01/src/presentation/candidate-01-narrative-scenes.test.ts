@@ -17,6 +17,7 @@ describe('narrative scene consumer contracts', () => {
     expect(asset.anchor).toBeUndefined();
     expect(candidate01StoryArt(topic)).toBe(asset.url);
     const hd = hdManifest.assets.find(record => record.topicId === topic);
+    expect(hd).toBeDefined(); // All four approved scene consumers require authored HD, not an enlarged legacy fallback.
     const selected = hd ?? asset;
     if (hd) {
       expect(hd.pixelDensity).toBe(2);

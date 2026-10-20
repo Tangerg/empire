@@ -1,0 +1,185 @@
+{
+  "topicId": "C01-MISSION-WALL-LABORER",
+  "assetId": "C01-FFV1-MISSION-WALL-LABORER",
+  "category": "mission-unit",
+  "status": "Native quartet and static QA complete; coordinator final review/export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Original generated source, native.png, raw.png and master.png are byte-identical for every selected pose. No source cleanup, crop, recolor, paint, per-pose fit or alpha changes. Technical padding and fixed scale/translation are proposals for export only; review composites are separate.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-wall-laborer.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "topicId": "C01-MISSION-WALL-LABORER",
+    "png": "runtime-hd/mission-unit/mission-wall-laborer.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "consumerClassification": "catalog-only",
+  "palettePolicy": "Original older warm-tan woman, gray hair and headscarf, ochre sleeveless tunic, gray sleeves, brown gloves/boots, gray-green trousers, wicker stone basket and gray triangular masonry trowel. No faction recolor.",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b; purposeful action uses a braced heavy carry, not combat. Availability is not authored gameplay usage.",
+  "sharedScale": 0.04675876726886291,
+  "sourceAnchor": [
+    836.5,
+    966
+  ],
+  "commonCanvas": [
+    1586,
+    993
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "origin": [
+    8,
+    4
+  ],
+  "canvasPaddingToleranceRequired": 2,
+  "maximumTranslationLogicalPixels": 0.5494155154091392,
+  "liveGameAcceptance": false,
+  "rejectedAttempts": [],
+  "unusedPlanningRequests": [
+    {
+      "path": "planning/carry-two-handed-not-requested",
+      "status": "Never submitted; changed before generation to keep basket left and trowel held right, matching coordinator direction."
+    }
+  ],
+  "poses": {
+    "idle": {
+      "native": "idle/native.png",
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "generationResult": "idle/generation-result.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "0ba608815a55c6b947d0e3e1639b08262a444c54e04cedd444897a1df62f0fa3",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        836.5,
+        966
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "review": "Both boots planted; screen-left glove wraps basket handle with stones contained; screen-right glove grips the trowel wooden handle."
+    },
+    "walk-a": {
+      "native": "walk-a/native.png",
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "generationResult": "walk-a/generation-result.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "7983883b1e0001688a851135add6a65c038db6cd4d697f6483f74a011df8ab24",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        830.75,
+        956
+      ],
+      "registrationOffsetLogical": [
+        0.2688629117959617,
+        0.4675876726886291
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "review": "Screen-right boot advances heel-first with sole visible; screen-left boot remains planted. Basket and trowel keep original hand assignments."
+    },
+    "carry-or-work": {
+      "native": "carry-or-work/native.png",
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "7287d798432552a5711794ba736a5b03b8a524cf991b4a5c8de0b83c6d5fe432",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        846.25,
+        965
+      ],
+      "registrationOffsetLogical": [
+        -0.45589798087141337,
+        0.04675876726886291
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "review": "Heavy carry: bent screen-left arm holds stone basket raised against left waist/hip; right glove extends the trowel safely outward. Exactly two hands, one basket, one trowel."
+    },
+    "walk-b": {
+      "native": "walk-b/native.png",
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "generationResult": "walk-b/generation-result.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "1d69caa5124546361b8a16d3082456a66ec936f9f7687c899643a70e7c58e485",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        824.75,
+        968
+      ],
+      "registrationOffsetLogical": [
+        0.5494155154091392,
+        -0.09351753453772582
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "review": "Screen-left boot advances toward the viewer with sole visible; screen-right boot remains planted. Opposite phase to walk-a; basket swings left, with no swapped props."
+    }
+  }
+}

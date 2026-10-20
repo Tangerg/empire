@@ -1,0 +1,32 @@
+{
+  "status": "Worker visual and technical QA complete; coordinator final review pending",
+  "originalSourceIdentityPreserved": true,
+  "styleFamilyComparedAt44LogicalPixels": [
+    "border-farmer",
+    "baker",
+    "forge-artisan",
+    "wall-laborer"
+  ],
+  "inspectedFiles": [
+    "qa-family-native44-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native44-three-backgrounds-3x.png"
+  ],
+  "poseReviews": {
+    "idle": "Both boots planted; screen-left glove wraps basket handle with stones contained; screen-right glove grips the trowel wooden handle.",
+    "walk-a": "Screen-right boot advances heel-first with sole visible; screen-left boot remains planted. Basket and trowel keep original hand assignments.",
+    "carry-or-work": "Heavy carry: bent screen-left arm holds stone basket raised against left waist/hip; right glove extends the trowel safely outward. Exactly two hands, one basket, one trowel.",
+    "walk-b": "Screen-left boot advances toward the viewer with sole visible; screen-right boot remains planted. Opposite phase to walk-a; basket swings left, with no swapped props."
+  },
+  "trueAlpha": true,
+  "allOriginalNativeRawMasterIdentical": true,
+  "sourceArtModified": false,
+  "fixedScale": 0.04675876726886291,
+  "maximumTranslationLogicalPixels": 0.5494155154091392,
+  "allWholeCanvasesFit104x64": true,
+  "allNativePerimetersMaximumAlphaAtMost1": true,
+  "alphaQualification": "Very faint native alpha1 traces and alpha2-6 antialias fringe are retained without cleanup. No visible halos or matte on inspected black/white/olive composites.",
+  "animationQualification": "Two walk phases visibly reverse the advanced boot. No live-game acceptance or repo integration claimed.",
+  "rejectedGeneratedAttempts": 0
+}

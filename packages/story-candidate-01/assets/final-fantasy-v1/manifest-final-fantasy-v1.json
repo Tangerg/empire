@@ -149,7 +149,7 @@
       "width": 256,
       "height": 144,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "kind": "scene"
     },
     {
@@ -173,7 +173,7 @@
       "width": 256,
       "height": 144,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
+      "qualityTier": "approved-chunky-v5-export-verified",
       "kind": "scene"
     },
     {
@@ -2786,13 +2786,13 @@
       "topicId": "C01-MISSION-WALL-LABORER",
       "label": "城墙劳工",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-wall-laborer.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-wall-laborer.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2801,13 +2801,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.11370882040382,
+        49.16896918172157
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-WOUNDED",

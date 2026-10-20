@@ -1,0 +1,233 @@
+{
+  "topicId": "C01-MISSION-WALL-LABORER",
+  "assetId": "C01-FFV1-MISSION-WALL-LABORER",
+  "label": "城墙劳工",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+    "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 3,
+    "rowIndex1": 4,
+    "rowCropXYXY": [
+      0,
+      940,
+      1254,
+      1254
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        940,
+        314,
+        1254
+      ],
+      [
+        314,
+        940,
+        627,
+        1254
+      ],
+      [
+        627,
+        940,
+        940,
+        1254
+      ],
+      [
+        940,
+        940,
+        1254,
+        1254
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        945,
+        309,
+        1249
+      ],
+      [
+        319,
+        945,
+        622,
+        1249
+      ],
+      [
+        632,
+        945,
+        935,
+        1249
+      ],
+      [
+        945,
+        945,
+        1249,
+        1249
+      ]
+    ],
+    "observedIdentity": "Older gray-haired woman with gray headscarf, ochre sleeveless work tunic over gray sleeves, brown gloves and boots. Screen-left wicker basket filled with gray stones; screen-right masonry trowel."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-wall-laborer.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-WALL-LABORER",
+    "png": "runtime-hd/mission-unit/mission-wall-laborer.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "inspectedEvidence": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+      "lines": "59-66,249-265",
+      "proves": "Six mission board order; 4 rows and 4 cells; declared roles idle, walk-a, carry-or-work, walk-b"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": "139-154",
+      "proves": "Wall laborer is mission topic index11, third board row4. Missing TOPIC_SOURCE recovered from surviving ordered catalog."
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "lines": "35-39",
+      "proves": "Only REFUGEE-ADULT and BRIDGE-LABORER mission-domain bindings; wall laborer has no actor binding"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+      "lines": "39-67",
+      "proves": "Semantic role adapter maps purposeful mission action to carry-or-work"
+    },
+    {
+      "path": "docs/art-rebuild-20261019/approved-v5/mission-consumer-audit/all16-level-consumers.json",
+      "proves": "Actual all16 campaign actor/reinforcement and scene placements audited; this topic has no consumers"
+    }
+  ],
+  "referenceFiles": [
+    {
+      "path": "references/approved-baker-idle.png",
+      "sha256": "13d441e016a1e89403fe859da160dac6599473ab0dad207c5a95c9530f952dd2",
+      "size": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "references/approved-forge-artisan-idle.png",
+      "sha256": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+      "size": [
+        1585,
+        992
+      ]
+    },
+    {
+      "path": "references/canonical-mission-unit-6x.png",
+      "sha256": "a57f6657eaa7b599eea9ecd6421ac5288e928cce05aa1bb6b0d7d4139d168e8a",
+      "size": [
+        1536,
+        576
+      ]
+    },
+    {
+      "path": "references/canonical-runtime-6x.png",
+      "sha256": "d973701b0ec93be734f034796b40901aea5a8cf1650b7c3a6a499f396f2fd686",
+      "size": [
+        768,
+        288
+      ]
+    },
+    {
+      "path": "references/canonical-runtime-hd-6x.png",
+      "sha256": "a57f6657eaa7b599eea9ecd6421ac5288e928cce05aa1bb6b0d7d4139d168e8a",
+      "size": [
+        1536,
+        576
+      ]
+    },
+    {
+      "path": "references/original-idle-cell.png",
+      "sha256": "0452d344b85847b6c4325aa059d37a6c4fcb93b382e34182975760f10bb6decc",
+      "size": [
+        314,
+        314
+      ]
+    },
+    {
+      "path": "references/original-masterboard.png",
+      "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "references/original-row.png",
+      "sha256": "1fee4b961d51f6c682a3c93895b55f30cb3a6346e6a45af8694dbf9961f79e51",
+      "size": [
+        1254,
+        314
+      ]
+    }
+  ],
+  "sourceCropsOriginalPixelsExact": {
+    "original-row.png": true,
+    "original-idle-cell.png": true
+  },
+  "legacyRuntimeInspections": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-wall-laborer.png",
+      "sha256": "9135e89451a2d3de3ab2a94f0647b36cbd4b651b4a08906d08f44434516ddc9b",
+      "size": [
+        128,
+        48
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-wall-laborer.png",
+      "sha256": "62166302002634be33a742475e468b509db301a7ae4f40a268564de9e0f1de95",
+      "size": [
+        256,
+        96
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "referenceQualification": "Original masterboard/row/idle crops preserve exact original RGB pixels and magenta reference background. canonical-* files are separate nearest-neighbor QA enlargements only; canonical-mission-unit-6x.png is a retained duplicate HD review made during evidence preparation."
+}

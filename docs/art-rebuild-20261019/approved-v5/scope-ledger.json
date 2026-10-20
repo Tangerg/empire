@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 334,
+    "formalBound": 337,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 14,
-      "narrative-static": 9,
+      "mission-unit": 15,
+      "narrative-static": 11,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 334,
+    "rawPreservedTopics": 337,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -337,13 +337,20 @@
       "category": "narrative-static",
       "label": "赤石誓约烽塔",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-redstone/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-redstone.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete architecture backdrop; Round stone oath tower with amber crystal, pale radial flags and cliff ascent retained; immutable original and prompt evidence preserved",
+        "export": "Explicit4/2/4/3px edgecrop; independent256x144 and512x288; native HD and viewport covers reviewed",
+        "runtimeBinding": "Canonical and HD narrative resolver; actual chapter backdrop consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-ARCH-SILVERWOOD",
@@ -365,13 +372,20 @@
       "category": "narrative-static",
       "label": "三桥河谷",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-three-bridges/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/arch-three-bridges.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete architecture backdrop; Two stone bridges and one timber crossing, divided river, farms and repair-cloth identity retained; immutable original and prompt evidence preserved",
+        "export": "Explicit4/2/4/3px edgecrop; independent256x144 and512x288; native HD and viewport covers reviewed",
+        "runtimeBinding": "Canonical and HD narrative resolver; actual chapter backdrop consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-ARCH-TWIN-HILLS",
@@ -2799,13 +2813,23 @@
       "category": "mission-unit",
       "label": "城墙劳工",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wall-laborer/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wall-laborer/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wall-laborer/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/wall-laborer/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-wall-laborer.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-wall-laborer.png",
+      "stageEvidence": {
+        "raw": "Original gray-headscarf older woman, ochre workwear, left stone basket and right trowel; opposite steps and braced heavy carrying; immutable native sources and exact evidence preserved",
+        "export": "shared44/941 scale, measured support translation within0.550logicalpx, technicalpadding2px; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-WOUNDED",

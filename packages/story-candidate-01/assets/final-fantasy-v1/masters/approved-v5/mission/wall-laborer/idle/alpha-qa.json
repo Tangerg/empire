@@ -1,0 +1,77 @@
+{
+  "mode": "RGBA",
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "rawSha256": "0ba608815a55c6b947d0e3e1639b08262a444c54e04cedd444897a1df62f0fa3",
+  "masterSha256": "0ba608815a55c6b947d0e3e1639b08262a444c54e04cedd444897a1df62f0fa3",
+  "rawMasterIdentical": true,
+  "bboxAlphaNonzero": [
+    0,
+    0,
+    1523,
+    972
+  ],
+  "bboxAlphaGreaterThan1": [
+    432,
+    23,
+    1188,
+    970
+  ],
+  "bboxAlphaGreaterThan127": [
+    435,
+    25,
+    1185,
+    967
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaCounts": {
+    "0": 439914,
+    "1": 437157,
+    "16": 432278,
+    "64": 430903,
+    "127": 429527,
+    "240": 426218,
+    "250": 420812,
+    "254": 1189
+  },
+  "pixelsAlphaGreaterThan1MoreThan3pxFromOpaqueBody": 156,
+  "maxAlphaMoreThan3pxFromOpaqueBody": 6,
+  "measuredBootSoleBands": [
+    {
+      "xRange": [
+        600,
+        812
+      ],
+      "bottom": 966,
+      "bottom4RowsBounds": [
+        673,
+        963,
+        761,
+        967
+      ],
+      "soleCenterX": 716.5
+    },
+    {
+      "xRange": [
+        815,
+        1060
+      ],
+      "bottom": 953,
+      "bottom4RowsBounds": [
+        914,
+        950,
+        1000,
+        954
+      ],
+      "soleCenterX": 956.5
+    }
+  ],
+  "sourceFoot": [
+    836.5,
+    966
+  ],
+  "unchangedNativePolicy": "No source pixel cleanup, alpha modification, crop, rescale, or painting. QA transformations only."
+}

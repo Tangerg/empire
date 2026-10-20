@@ -1,7 +1,7 @@
 {
   "schemaVersion": "candidate-01-tactical-runtime-hd-v1",
   "pixelDensity": 2,
-  "assetCount": 179,
+  "assetCount": 181,
   "categories": [
     "combat-unit",
     "mission-unit",
@@ -568,9 +568,9 @@
     },
     {
       "topicId": "C01-MISSION-WALL-LABORER",
-      "png": "runtime-hd/mission-unit/mission-wall-laborer.png",
-      "width": 256,
-      "height": 96,
+      "png": "runtime-approved-v5/mission-unit/mission-wall-laborer@2x.png",
+      "width": 832,
+      "height": 128,
       "pixelDensity": 2
     },
     {
@@ -1262,6 +1262,20 @@
     {
       "topicId": "C01-CH01-S01",
       "png": "runtime-hd/narrative-static/ch01-s01.png",
+      "width": 512,
+      "height": 288,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "png": "runtime-hd/narrative-static/arch-three-bridges.png",
+      "width": 512,
+      "height": 288,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-ARCH-REDSTONE",
+      "png": "runtime-hd/narrative-static/arch-redstone.png",
       "width": 512,
       "height": 288,
       "pixelDensity": 2
