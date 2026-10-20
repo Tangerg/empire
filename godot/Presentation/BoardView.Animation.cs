@@ -258,7 +258,7 @@ public partial class BoardView
         var at = actor.Position;
         if (!await playback.Clock.TweenAsync(220, t =>
         {
-            actor.Modulate = new Color(1, 1, 1, (float)(1 - t));
+            actor.SelfModulate = new Color(1, 1, 1, (float)(1 - t));
             SwellActor(actor, at, (float)(1 - 0.35 * t));
         })) return false;
         _standing.RemoveAll(entry => entry.Node == actor);
@@ -274,7 +274,7 @@ public partial class BoardView
         var at = actor.Position;
         if (!await playback.Clock.TweenAsync(240, t =>
         {
-            actor.Modulate = new Color(1, 1, 1, (float)t);
+            actor.SelfModulate = new Color(1, 1, 1, (float)t);
             SwellActor(actor, at, (float)(0.6 + 0.4 * t));
         })) return false;
         actor.Modulate = Colors.White;
@@ -356,6 +356,7 @@ public partial class BoardView
     private void SetFrame(Sprite2D sprite, RuntimeAsset asset, int index)
     {
         sprite.Texture = _assets!.CreateFrameTexture(asset, index);
+        sprite.GetNodeOrNull<CandidateSpriteShadows>("SourceSpriteShadows")?.Synchronize(sprite, CandidateShadowKind.Figure, asset.PixelDensity);
         sprite.SetMeta("frame", index);
     }
     internal static int StripFrame(RuntimeAsset asset, double milliseconds)

@@ -33,6 +33,7 @@ public partial class TerrainView : Node2D
     private WorldMaterialsManifest _manifest = null!;
     private AuthoredScene _scene = null!;
     private EnvironmentCatalog _environment = null!;
+    private CandidateShadowCache? _shadows;
     private string[]? _tiles;
     private Vector2I _renderedSize;
     private Texture2D? _groundShape;
@@ -45,12 +46,13 @@ public partial class TerrainView : Node2D
     public int RenderedSceneryCount => _standing.Count;
     public int RenderedEdgeDecorationCount { get; private set; }
 
-    public void Configure(WorldMaterialsManifest manifest, AuthoredScene scene, EnvironmentCatalog environment)
+    public void Configure(WorldMaterialsManifest manifest, AuthoredScene scene, EnvironmentCatalog environment, CandidateShadowCache? shadows = null)
     {
         if (manifest.Schema != 1) throw new InvalidOperationException("Unsupported world materials schema.");
         _manifest = manifest;
         _scene = scene;
         _environment = environment;
+        _shadows = shadows;
         _tiles = null;
         _groundShape = null;
     }
@@ -226,7 +228,7 @@ public partial class TerrainView : Node2D
             if (crossingTopology.Count != 0)
                 TryLayer("Crossing resources", () => CrossingRenderer.Add(decks, _manifest.Crossings
                     ?? throw new MissingArtResourceException("crossings", "Registered crossing metadata is not exported."),
-                    _environment, path => Texture(path), crossingTopology, diagnostics), diagnostics);
+                    _environment, path => Texture(path), crossingTopology, diagnostics, _shadows), diagnostics);
             var edges = new Node2D { Name = "EdgeDecorations", ZIndex = -90 };
             staging.AddChild(edges);
             if (_manifest.EdgeDecorations is { } decoration)
@@ -242,7 +244,7 @@ public partial class TerrainView : Node2D
                 var tile = TileAt(x, y)!;
                 if (_manifest.Foundations.TryGetValue(tile, out var foundation))
                     TryLayer($"Foundation ({x},{y}) {foundation}", () => {
-                        var sprite = _environment.CreateSprite(foundation, 0.3f);
+                        var sprite = _environment.CreateSprite(foundation, 0.3f, shadows: _shadows);
                         sprite.Position = new Vector2((x + 0.5f) * 32, (y + 1) * 32);
                         detail.AddChild(sprite);
                     }, diagnostics);
@@ -253,7 +255,7 @@ public partial class TerrainView : Node2D
                     var id = Pick(decal, x, y, 1104);
                     TryLayer($"Terrain decal ({x},{y}) {id}", () => {
                         var sprite = _environment.CreateSprite(id, (float)decal.Scale,
-                            TileArtVariation.Hash(x, y, 1105) > 0.5, 0.72f);
+                            TileArtVariation.Hash(x, y, 1105) > 0.5, 0.72f, _shadows);
                         sprite.Position = new Vector2((x + 0.5f) * 32, (y + 1) * 32);
                         detail.AddChild(sprite);
                     }, diagnostics);
@@ -269,7 +271,8 @@ public partial class TerrainView : Node2D
                 TryLayer($"Terrain scenery ({x},{y}) {pick}", () => {
                     var sprite = _environment.CreateSprite(pick,
                         (float)(spec.Scale + TileArtVariation.Hash(x, y, 1121) * 0.12),
-                        TileArtVariation.Hash(x, y, 1123) > 0.52, enclosed ? 0.9f : 1);
+                        TileArtVariation.Hash(x, y, 1123) > 0.52, enclosed ? 0.9f : 1, _shadows,
+                        enclosed ? CandidateShadowKind.Environment : CandidateShadowKind.Standing);
                     sprite.Position = new Vector2((float)((x + 0.5) * 32
                         + (TileArtVariation.Hash(x, y, 1122) - 0.5) * spec.Jitter), (y + 1.18f) * 32);
                     sprite.Name = $"Scenery_{x}_{y}";
@@ -286,6 +289,22 @@ public partial class TerrainView : Node2D
         ApplyGroundClip(ground);
         ApplyGroundClip(staging.GetNode<Node2D>("TerrainDecals"));
         ApplyGroundClip(staging.GetNode<Node2D>("EdgeDecorations"));
+        var lighting = CandidateBoardLighting.CreateField(size, tiles, _manifest, _groundShape);
+        lighting.Hearths.ZIndex = -30;
+        lighting.Sunlight.ZIndex = -20;
+        staging.AddChild(lighting.Hearths);
+        staging.AddChild(lighting.Sunlight);
+        if (_shadows is not null)
+        {
+            var crossings = staging.GetNode<Node2D>("Crossings");
+            foreach (var deck in crossings.GetChildren().OfType<Sprite2D>())
+            {
+                var density = deck.HasMeta("environment_cell")
+                    ? _environment.ResolveCell(deck.GetMeta("environment_cell").AsString()).PixelDensity
+                    : 1 / Math.Abs(deck.Scale.X);
+                deck.AddChild(CandidateSpriteShadows.Create(deck, CandidateShadowKind.Standing, density, _shadows));
+            }
+        }
         RenderedEdgeDecorationCount = edgeCount;
         _standing.Clear(); _standing.AddRange(standing);
         _diagnostics.Clear(); _diagnostics.AddRange(diagnostics.Distinct(StringComparer.Ordinal));

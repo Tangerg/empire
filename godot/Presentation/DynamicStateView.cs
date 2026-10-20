@@ -17,14 +17,16 @@ public sealed record DynamicStateProjection(Node2D Root, IReadOnlyList<DynamicSt
 public sealed class DynamicStateView
 {
     private readonly AssetCatalog assets;
+    private readonly CandidateShadowCache? shadows;
     private readonly Dictionary<string, JsonObject> definitions;
     private readonly Dictionary<string, JsonObject> unitDefinitions;
     private const string Ink = "#28231f";
     private const string Neutral = "#918b7d";
 
-    public DynamicStateView(AssetCatalog assets, JsonArray contentPacks)
+    public DynamicStateView(AssetCatalog assets, JsonArray contentPacks, CandidateShadowCache? shadows = null)
     {
         this.assets = assets;
+        this.shadows = shadows;
         definitions = contentPacks.OfType<JsonObject>()
             .SelectMany(pack => (pack["structures"] as JsonArray)?.OfType<JsonObject>() ?? [])
             .ToDictionary(definition => Text(definition, "id"), definition => (JsonObject)definition.DeepClone(), StringComparer.Ordinal);
@@ -90,7 +92,8 @@ public sealed class DynamicStateView
                 if (asset is not null)
                 {
                     node.AddChild(assets.CreateSprite(asset, frame));
-                    if (color is not null) node.AddChild(CreateOwnerBanner(color));
+                    node.AddChild(CandidateBoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
+                    if (color is not null) node.AddChild(CreateOwnerBanner(color, shadows));
                 }
                 else node.AddChild(Svg(StructureMarkup(structure, definition, color), "RuleDerivedStructure"));
                 if (asset is not null || definition["targetable"]!.GetValue<bool>())
@@ -151,10 +154,11 @@ public sealed class DynamicStateView
         return node;
     }
 
-    public static Sprite2D CreateOwnerBanner(string color)
+    public static Sprite2D CreateOwnerBanner(string color, CandidateShadowCache? shadows = null)
     {
-        var banner = Svg(OwnerBanner(color), "OwnerBanner", new Rect2(-24, -8, 80, 60));
+        var banner = Svg(OwnerBanner(color), "OwnerBanner", new Rect2(-24, -8, 80, 60), shadows);
         banner.SetMeta("owner_color", color);
+        if (shadows is not null) banner.AddChild(CandidateSpriteShadows.Create(banner, CandidateShadowKind.OwnerBanner, 2, shadows));
         return banner;
     }
 
@@ -174,13 +178,20 @@ public sealed class DynamicStateView
         int Mix(float channel) => (int)Math.Clamp(Math.Floor((amount < 0 ? channel * 255 * (1 + amount) : channel * 255 + (255 - channel * 255) * amount) + 0.5), 0, 255);
         return $"#{Mix(color.R):x2}{Mix(color.G):x2}{Mix(color.B):x2}";
     }
-    private static Sprite2D Svg(string markup, string name, Rect2? bounds = null)
+    private static Sprite2D Svg(string markup, string name, Rect2? bounds = null, CandidateShadowCache? cache = null)
     {
         var view = bounds ?? new Rect2(0, 0, 32, 32);
-        using var image = new Image();
-        var error = image.LoadSvgFromString($"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(view.Size.X)}\" height=\"{F(view.Size.Y)}\" viewBox=\"{F(view.Position.X)} {F(view.Position.Y)} {F(view.Size.X)} {F(view.Size.Y)}\">{markup}</svg>", 2);
-        if (error != Error.Ok) throw new InvalidOperationException($"Dynamic source drawing failed: {name}, {error}");
-        return new Sprite2D { Name = name, Texture = ImageTexture.CreateFromImage(image), Centered = false,
+        var source = $"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(view.Size.X)}\" height=\"{F(view.Size.Y)}\" viewBox=\"{F(view.Position.X)} {F(view.Position.Y)} {F(view.Size.X)} {F(view.Size.Y)}\">{markup}</svg>";
+        ImageTexture texture;
+        if (cache is not null) texture = cache.SvgSource(source, 2);
+        else
+        {
+            using var image = new Image();
+            var error = image.LoadSvgFromString(source, 2);
+            if (error != Error.Ok) throw new InvalidOperationException($"Dynamic source drawing failed: {name}, {error}");
+            texture = ImageTexture.CreateFromImage(image);
+        }
+        return new Sprite2D { Name = name, Texture = texture, Centered = false,
             Offset = (view.Position - new Vector2(16, 31)) * 2, Scale = Vector2.One / 2, TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
     }
 

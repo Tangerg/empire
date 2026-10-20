@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../godot/Presentation/BattlefieldCamera.cs" Link="BattlefieldCamera.cs" />
+    <Compile Include="../../../godot/Presentation/BattlefieldGestures.cs" Link="BattlefieldGestures.cs" />
+    <Compile Include="../../../godot/Presentation/BattlefieldFocus.cs" Link="BattlefieldFocus.cs" />
+    <Compile Include="../../../godot/Presentation/IBattleSession.cs" Link="IBattleSession.cs" />
+  </ItemGroup>
+</Project>

@@ -227,12 +227,12 @@ public partial class AnimationChecks : Node
         await Tick(board, 0.151);
         Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == at, "Fatal hit lands on last-seen position despite absence from After");
         await Tick(board, 0.421);
-        Require(board.GetNodeOrNull("BattleEffects/Hit") is null && Actor(board, did).Modulate.A == 1,
+        Require(board.GetNodeOrNull("BattleEffects/Hit") is null && Actor(board, did) is CanvasGroup && Actor(board, did).SelfModulate.A == 1,
             "Fatal hit has a forty-millisecond beat before death");
         await Tick(board, 0.041);
         await Tick(board, 0.110);
         var ghost = Actor(board, did);
-        Require(Mathf.IsEqualApprox(ghost.Modulate.A, 0.5f) && Mathf.IsEqualApprox(ghost.Scale.X, 0.825f),
+        Require(ghost is CanvasGroup && Mathf.IsEqualApprox(ghost.SelfModulate.A, 0.5f) && Mathf.IsEqualApprox(ghost.Scale.X, 0.825f),
             "Death uses source 220 ms fade and 35 percent shrink");
         Require(Mathf.IsEqualApprox(ghost.Position.Y + ghost.Scale.Y * -15, Int(target, "y") * 32 + 16),
             "Death scaling pivots around the cell middle, not the sprite foot");
@@ -264,10 +264,10 @@ public partial class AnimationChecks : Node
         Require(repaints == 1 && board.ProjectionUnitCount == after["units"]!.AsArray().Count,
             "Recruit repaints committed board and requests header refresh before spawn animation");
         await Tick(board, 0.120);
-        Require(Mathf.IsEqualApprox(Actor(board, 1000).Modulate.A, 0.5f) && Mathf.IsEqualApprox(Actor(board, 1000).Scale.X, 0.8f),
+        Require(Actor(board, 1000) is CanvasGroup && Mathf.IsEqualApprox(Actor(board, 1000).SelfModulate.A, 0.5f) && Mathf.IsEqualApprox(Actor(board, 1000).Scale.X, 0.8f),
             "Recruit uses source 240 ms alpha and 0.6-to-1 scale");
         await Tick(board, 0.121);
-        Require(await task && Actor(board, 1000).Modulate == Colors.White && Actor(board, 1000).Scale == Vector2.One,
+        Require(await task && Actor(board, 1000) is CanvasGroup && Actor(board, 1000).SelfModulate == Colors.White && Actor(board, 1000).Scale == Vector2.One,
             "Spawn finishes with canonical opacity and scale");
         board.PresentationRepaintRequested -= Repaint;
     }

@@ -146,6 +146,7 @@ public sealed class AuthoredPlacement
     public double Scale { get; init; } = 1;
     public bool Flip { get; init; }
     public double Opacity { get; init; } = 1;
+    public bool StandingShadow { get; init; }
 }
 
 public sealed class FramePlacement

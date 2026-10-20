@@ -88,7 +88,7 @@ internal static class CrossingRenderer
     }
 
     internal static void Add(Node2D parent, CrossingManifest manifest, EnvironmentCatalog environment,
-        Func<string, Texture2D> texture, IReadOnlyList<CrossingComponent> components, List<string> diagnostics)
+        Func<string, Texture2D> texture, IReadOnlyList<CrossingComponent> components, List<string> diagnostics, CandidateShadowCache? shadows = null)
     {
         if (manifest.VerticalLegacyIds.Length == 0)
             throw new InvalidOperationException("Vertical crossing source choices are not exported.");
@@ -105,8 +105,11 @@ internal static class CrossingRenderer
                     var node = new Node2D { Name = $"Junction_{vertical.Start.X}_{vertical.Start.Y}", Position = pivot };
                     try
                     {
-                        node.AddChild(Registered(manifest.Horizontal, "horizontal", texture, manifest.Junction.Horizontal.Cutouts));
-                        node.AddChild(Registered(manifest.Vertical, "vertical", texture, manifest.Junction.Vertical.Cutouts));
+                        var horizontalSource = Registered(manifest.Horizontal, "horizontal", texture, manifest.Junction.Horizontal.Cutouts);
+                        var verticalSource = Registered(manifest.Vertical, "vertical", texture, manifest.Junction.Vertical.Cutouts);
+                        node.AddChild(horizontalSource);
+                        node.AddChild(verticalSource);
+                        if (shadows is not null) node.AddChild(CandidateCrossingLighting.Compose(manifest, horizontalSource, verticalSource, shadows));
                         parent.AddChild(node);
                     }
                     catch { node.Free(); throw; }

@@ -21,6 +21,11 @@ public partial class BattleScreen : Control
     private readonly BoardOverlay _overlay = new() { Name = "LegalTargets", ZIndex = 3000 };
     private Control _mapArea = null!;
     private Node2D _world = null!;
+    private BattlefieldCamera? _camera;
+    private BattlefieldGestures? _gestures;
+    private HashSet<string> _outsideTerrain = new(StringComparer.Ordinal);
+    private Button _zoomOut = null!;
+    private Button _zoomIn = null!;
     private Label _turn = null!;
     private Label _selection = null!;
     private Label _modeHint = null!;
@@ -52,6 +57,9 @@ public partial class BattleScreen : Control
     public override void _ExitTree()
     {
         _bindingGeneration++;
+        _gestures?.Dispose();
+        _gestures = null;
+        _camera = null;
         _presentationGeneration++;
         _presenting = false;
         _bound = false;
@@ -65,7 +73,49 @@ public partial class BattleScreen : Control
     public override void _Ready()
     {
         BuildInterface();
-        FitBoard();
+        ResizeCamera();
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!_built) return;
+        _zoomOut.Disabled = _zoomIn.Disabled = !_bound || _presenting;
+        if (_bound && _camera?.ApplyPendingZoom() == true) ApplyCamera();
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMWindowFocusOut || what == NotificationApplicationFocusOut) _gestures?.Cancel();
+    }
+
+    public override void _Input(InputEvent input)
+    {
+        if (!_bound || _presenting || _gestures?.ActivePointerId is null) return;
+        // An active board gesture owns its release even after crossing a HUD panel.
+        switch (input)
+        {
+            case InputEventMouseMotion motion when _gestures.ActivePointerId == 0:
+                _gestures.PointerMove(0, ViewportToMap(motion.Position));
+                GetViewport().SetInputAsHandled();
+                break;
+            case InputEventMouseButton mouse when _gestures.ActivePointerId == 0:
+                if (mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown or MouseButton.WheelLeft or MouseButton.WheelRight)
+                    MapInput(mouse);
+                else if (mouse.Canceled) _gestures.Cancel(0);
+                else if (!mouse.Pressed && SourceButton(mouse.ButtonIndex) is { } button)
+                    _gestures.PointerUp(0, button, ViewportToMap(mouse.Position));
+                GetViewport().SetInputAsHandled();
+                break;
+            case InputEventScreenDrag drag when _gestures.ActivePointerId == drag.Index + 1:
+                _gestures.PointerMove(drag.Index + 1, ViewportToMap(drag.Position));
+                GetViewport().SetInputAsHandled();
+                break;
+            case InputEventScreenTouch touch when _gestures.ActivePointerId == touch.Index + 1:
+                if (touch.Canceled) _gestures.Cancel(touch.Index + 1);
+                else if (!touch.Pressed) _gestures.PointerUp(touch.Index + 1, 0, ViewportToMap(touch.Position));
+                GetViewport().SetInputAsHandled();
+                break;
+        }
     }
 
     public void BindSession(IBattleSession session, AssetCatalog assets, JsonObject level,
@@ -74,6 +124,10 @@ public partial class BattleScreen : Control
         ArgumentNullException.ThrowIfNull(session);
         BuildInterface();
         _bindingGeneration++;
+        _gestures?.Dispose();
+        _gestures = null;
+        _camera = null;
+        _outsideTerrain.Clear();
         _restart = null;
         _restartRequest = null;
         _restartConfirmation.Hide();
@@ -91,12 +145,21 @@ public partial class BattleScreen : Control
         _messages.Clear();
         AppendMessage(initialLogMessage ?? session.GetSnapshot().InitialLogMessage ?? "");
         Refresh();
-        FitBoard();
+        var state = session.GetSnapshot().State;
+        var fallback = new CameraPoint(_board.FieldSize.X / 2, _board.FieldSize.Y / 2);
+        var focus = BattlefieldFocus.Initial(state, CellCenter, fallback);
+        _camera = new BattlefieldCamera(new(_board.FieldSize.X, _board.FieldSize.Y), new(74, 62, 74, 74), focus);
+        _gestures = new BattlefieldGestures(point => _camera?.HasViewport == true ? _camera.ToField(point) : null,
+            PressField, _ => { }, () => { }, delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1));
+        ResizeCamera();
     }
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
     {
         _board.ConfigureTerrain(materials);
+        _outsideTerrain = materials.TerrainTags.Where(entry =>
+            entry.Value.Intersect(materials.GroundTagFamilies["outside"], StringComparer.Ordinal).Any())
+            .Select(entry => entry.Key).ToHashSet(StringComparer.Ordinal);
         if (_state is not null) Refresh();
     }
 
@@ -172,8 +235,14 @@ public partial class BattleScreen : Control
     {
         var generation = ++_presentationGeneration;
         var session = _session;
+        _gestures?.Cancel();
         _board.CancelPresentation();
         _presenting = true;
+        if (BattlefieldFocus.CommandDestination(transition, CellCenter) is { } destination)
+        {
+            _camera?.CenterOn(destination);
+            ApplyCamera();
+        }
         _legalOrders = Array.Empty<BattleOrderChoice>();
         Clear(_orders); Clear(_globalOrders); Clear(_modeButtons);
         _overlay.ShowTargets(null, Array.Empty<BoardCell>(), "", null);
@@ -257,6 +326,14 @@ public partial class BattleScreen : Control
         var title = Text("EMPIRE  /  灰旗", 26, new Color("#eee1bd"));
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         heading.AddChild(title);
+        var cameraControls = new HBoxContainer { Name = "CameraControls" };
+        _zoomOut = Button("−", () => QueueZoom(-.15));
+        _zoomIn = Button("+", () => QueueZoom(.15));
+        _zoomOut.Name = "ZoomOut"; _zoomIn.Name = "ZoomIn";
+        _zoomOut.CustomMinimumSize = _zoomIn.CustomMinimumSize = new Vector2(38, 38);
+        _zoomOut.TooltipText = "缩小战场"; _zoomIn.TooltipText = "放大战场";
+        cameraControls.AddChild(_zoomOut); cameraControls.AddChild(_zoomIn);
+        heading.AddChild(cameraControls);
         _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
         heading.AddChild(_applicationActions);
         _turn = Text("尚未绑定战斗", 18, new Color("#d1cfbc"));
@@ -275,14 +352,16 @@ public partial class BattleScreen : Control
         body.AddThemeConstantOverride("separation", 20);
         column.AddChild(body);
         _mapArea = new Control { Name = "MapArea", SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Stop };
+            SizeFlagsVertical = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Stop,
+            TooltipText = "拖动平移战场 · 滚轮平移 · Ctrl/⌘ + 滚轮缩放" };
         body.AddChild(_mapArea);
         _world = new Node2D { Name = "World" };
         _mapArea.AddChild(_world);
         _world.AddChild(_board);
         _world.AddChild(_overlay);
         _mapArea.GuiInput += MapInput;
-        _mapArea.Resized += FitBoard;
+        _mapArea.Resized += ResizeCamera;
+        _mapArea.MouseExited += () => _gestures?.PointerLeave();
 
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(282, 0) };
         panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat {
@@ -329,34 +408,104 @@ public partial class BattleScreen : Control
         column.AddChild(_coverage);
     }
 
-    private void FitBoard()
+    private void ResizeCamera()
     {
-        if (!_built || _board.FieldSize.X <= 0 || _mapArea.Size.X <= 0) return;
-        // Matches the source scene's world-frame insets; this changes only the camera.
-        var frame = _board.FieldSize + new Vector2(148, 136);
-        var scale = Math.Min(_mapArea.Size.X / frame.X, _mapArea.Size.Y / frame.Y);
-        _world.Scale = Vector2.One * scale;
-        _world.Position = (_mapArea.Size - frame * scale) / 2 + new Vector2(74, 62) * scale;
+        if (!_built || _camera is null) return;
+        // MapArea already excludes the native HUD. Reserving the source overlay bands again would double-pad it.
+        _camera.Resize(new(_mapArea.Size.X, _mapArea.Size.Y));
+        ApplyCamera();
+    }
+
+    private void ApplyCamera()
+    {
+        if (_camera is null || !_camera.HasViewport) return;
+        _world.Scale = Vector2.One * (float)_camera.Zoom;
+        _world.Position = new Vector2((float)_camera.FieldOrigin.X, (float)_camera.FieldOrigin.Y);
+    }
+
+    private void QueueZoom(double delta)
+    {
+        if (_bound && IsInsideTree() && !_presenting) _camera?.QueueZoom(delta);
     }
 
     private void MapInput(InputEvent input)
     {
-        if (_presenting || !_bound || input is not InputEventMouseButton { Pressed: true } mouse) return;
-        if (mouse.ButtonIndex == MouseButton.Right)
+        if (_presenting || !_bound || !IsInsideTree() || _gestures is null || _camera is null) return;
+        switch (input)
+        {
+            case InputEventMouseButton mouse:
+                if (mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown or MouseButton.WheelLeft or MouseButton.WheelRight)
+                {
+                    if (!mouse.Pressed) return;
+                    var vertical = mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown;
+                    var sign = mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelLeft ? -1 : 1;
+                    if (!_gestures.Wheel(vertical ? sign : 0, mouse.CtrlPressed, mouse.MetaPressed))
+                    {
+                        // Browser wheel distance is platform-defined; native discrete notches use one logical tile in screen pixels.
+                        var amount = sign * 32 * (mouse.Factor == 0 ? 1 : mouse.Factor);
+                        _camera.Pan(vertical ? new(0, -amount) : new(-amount, 0));
+                        ApplyCamera();
+                    }
+                    AcceptEvent();
+                    return;
+                }
+                if (SourceButton(mouse.ButtonIndex) is not { } button) return;
+                if (mouse.Canceled) _gestures.Cancel(0);
+                else if (mouse.Pressed) _gestures.PointerDown(0, button, new(mouse.Position.X, mouse.Position.Y));
+                else _gestures.PointerUp(0, button, new(mouse.Position.X, mouse.Position.Y));
+                AcceptEvent();
+                break;
+            case InputEventMouseMotion motion:
+                _gestures.PointerMove(0, new(motion.Position.X, motion.Position.Y));
+                break;
+            case InputEventScreenTouch touch:
+                if (touch.Canceled) _gestures.Cancel(touch.Index + 1);
+                else if (touch.Pressed) _gestures.PointerDown(touch.Index + 1, 0, new(touch.Position.X, touch.Position.Y), touch.Index == 0);
+                else _gestures.PointerUp(touch.Index + 1, 0, new(touch.Position.X, touch.Position.Y));
+                AcceptEvent();
+                break;
+            case InputEventScreenDrag drag:
+                _gestures.PointerMove(drag.Index + 1, new(drag.Position.X, drag.Position.Y));
+                AcceptEvent();
+                break;
+            case InputEventPanGesture pan:
+                if (!_gestures.Wheel(pan.Delta.Y, pan.CtrlPressed, pan.MetaPressed))
+                {
+                    _camera.Pan(new(-pan.Delta.X, -pan.Delta.Y));
+                    ApplyCamera();
+                }
+                AcceptEvent();
+                break;
+        }
+    }
+
+    private void PressField(CameraPoint point, int button)
+    {
+        if (_presenting || !_bound || !IsInsideTree() || _state is null) return;
+        if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y) return;
+        var cell = new BoardCell((int)Math.Floor(point.X / 32), (int)Math.Floor(point.Y / 32));
+        var width = _state["map"]!["width"]!.GetValue<int>();
+        var tile = _state["map"]!["tiles"]![cell.Y * width + cell.X]!.GetValue<string>();
+        if (_outsideTerrain.Contains(tile)) return;
+        if (button == 0) SelectCell(cell);
+        else if (button == 2)
         {
             _target = null;
             _selectedId = null;
             Refresh();
-            AcceptEvent();
-            return;
         }
-        if (mouse.ButtonIndex != MouseButton.Left) return;
-        var point = (mouse.Position - _world.Position) / _world.Scale;
-        var cell = new BoardCell(Mathf.FloorToInt(point.X / 32), Mathf.FloorToInt(point.Y / 32));
-        if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y) return;
-        SelectCell(cell);
-        AcceptEvent();
     }
+
+    private CameraPoint ViewportToMap(Vector2 point)
+    {
+        var local = _mapArea.GetGlobalTransformWithCanvas().AffineInverse() * point;
+        return new(local.X, local.Y);
+    }
+    private static CameraPoint CellCenter(CameraPoint cell) => new((cell.X + .5) * 32, (cell.Y + .5) * 32);
+    private static int? SourceButton(MouseButton button) => button switch
+    {
+        MouseButton.Left => 0, MouseButton.Middle => 1, MouseButton.Right => 2, _ => null,
+    };
 
     /// <summary>Cell interaction entry point also used by native contract checks.</summary>
     public void SelectCell(BoardCell cell)

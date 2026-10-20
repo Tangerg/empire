@@ -26,6 +26,7 @@ public partial class BoardView : Node2D
     private DynamicStateView? _dynamicState;
     private AuthoredScene? _scene;
     private EnvironmentCatalog? _environment;
+    private CandidateShadowCache _shadows = new();
     private readonly List<StandingEntry> _authoredStanding = new();
     private readonly List<StandingEntry> _standing = new();
     private readonly List<string> _sceneDiagnostics = new();
@@ -40,7 +41,7 @@ public partial class BoardView : Node2D
     public int RenderedMarkerCount { get; private set; }
     public string StatusText => (_terrain is null
         ? "Native actor/placement renderer; terrain compositor is not migrated."
-        : "Native C# preview · world materials, water, crossings, scenery and actors. Lighting/shadow parity remains incomplete.")
+        : "Native C# preview · source field lights and composited contact/figure/prop shadows. Lighting/shadow parity remains incomplete: remaining overlay/perimeter paths and native visual inspection are pending.")
         + (Diagnostics.Count > 0 ? $" {Diagnostics.Count} resource/coverage diagnostics." : "");
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
@@ -53,13 +54,13 @@ public partial class BoardView : Node2D
             _terrain.QueueFree();
         }
         _terrain = new TerrainView { Name = "Terrain" };
-        _terrain.Configure(materials, _scene, _environment);
+        _terrain.Configure(materials, _scene, _environment, _shadows);
         _scenery.AddChild(_terrain);
     }
 
     public void ConfigureDynamicState(JsonArray contentPacks)
     {
-        _dynamicState = new DynamicStateView(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), contentPacks);
+        _dynamicState = new DynamicStateView(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), contentPacks, _shadows);
     }
 
     public void Configure(AssetCatalog catalog, JsonObject level, AuthoredScene scene,
@@ -84,6 +85,7 @@ public partial class BoardView : Node2D
         staging.AddChild(standing);
         staging.AddChild(frame);
         var entries = new List<StandingEntry>();
+        var shadows = new CandidateShadowCache();
         var diagnostics = new List<string>();
         var rendered = 0;
         try
@@ -97,7 +99,10 @@ public partial class BoardView : Node2D
                     var sprite = placement.TopicId is { } topic
                         ? CreateTopicPlacement(catalog, topic, placement)
                         : environment.CreateSprite(placement.Id!, (float)placement.Scale,
-                            placement.Flip, (float)placement.Opacity);
+                            placement.Flip, (float)placement.Opacity, shadows,
+                            placement.StandingShadow ? CandidateShadowKind.Standing : CandidateShadowKind.Environment);
+                    if (placement.TopicId is { } topicId)
+                        sprite.AddChild(CandidateSpriteShadows.Create(sprite, CandidateShadowKind.Topic, catalog.ResolveTopic(topicId).PixelDensity, shadows));
                     sprite.Name = $"Placement_{index}";
                     sprite.Position = new Vector2((float)placement.X * catalog.LogicalTileSize,
                         ((float)placement.Y + 1) * catalog.LogicalTileSize);
@@ -130,7 +135,10 @@ public partial class BoardView : Node2D
                 RasterResources.Positive(placement.Scale, $"frame scale {index}");
                 try
                 {
-                    var sprite = environment.CreateSprite(placement.Id, (float)placement.Scale, placement.Flip);
+                    // Authored frame placements emit is-scene-frame, not the generated
+                    // is-frame-left/right/bottom classes. Region names do not select CSS.
+                    var sprite = environment.CreateSprite(placement.Id, (float)placement.Scale, placement.Flip,
+                        shadows: shadows, shadowKind: CandidateShadowKind.Foreground);
                     sprite.Name = $"Frame_{index}";
                     sprite.Position = contact * catalog.LogicalTileSize;
                     frame.AddChild(sprite);
@@ -150,11 +158,14 @@ public partial class BoardView : Node2D
         catch
         {
             staging.Free();
+            shadows.Dispose();
             throw;
         }
 
         ReplaceChild(ref _projection, null);
         ReplaceChild(ref _scenery, staging);
+        _shadows.Dispose();
+        _shadows = shadows;
         _assets = catalog;
         _facesLeft = facesLeft;
         _directionVector = directionVector;
@@ -206,9 +217,10 @@ public partial class BoardView : Node2D
                     var sprite = assets.CreateSprite(asset, snapshot.Owners[index] == 0 ? "normal" : "captured");
                     sprite.Name = "AuthoredSprite";
                     var structure = new Node2D { Name = $"MapStructure_{index}", Position = CellContact(index % _mapSize.X, index / _mapSize.X) };
+                    structure.AddChild(CandidateBoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, _shadows));
                     structure.AddChild(sprite);
                     if (snapshot.Owners[index] != 0)
-                        structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false)));
+                        structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false), _shadows));
                     staging.AddChild(structure);
                     entries.Add(new StandingEntry(structure, structure.Position, 1, index));
                 }
@@ -234,11 +246,11 @@ public partial class BoardView : Node2D
                 {
                     var asset = assets.ResolveUnit(unit.Type, unit.Key);
                     var sprite = assets.CreateSprite(asset);
-                    var actor = new Node2D { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
+                    var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
                     sprite.Name = "AuthoredSprite";
                     // Actor mirroring is around the canonical foot, not the sheet's center.
                     if (facesLeft(unit.Facing)) sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
-                    actor.AddChild(CreateTeamRing(snapshot.Colors[unit.Owner]));
+                    sprite.AddChild(CandidateSpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
                     actor.AddChild(sprite);
                     if (_dynamicState is not null)
                         actor.AddChild(_dynamicState.CreateUnitBadges(unit.Type, unit.Hp, unit.Done,
@@ -338,25 +350,6 @@ public partial class BoardView : Node2D
         if (placement.Flip) sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
         sprite.Modulate = new Color(1, 1, 1, (float)placement.Opacity);
         return sprite;
-    }
-
-    private static Line2D CreateTeamRing(Color color)
-    {
-        var points = new Vector2[48];
-        for (var index = 0; index < points.Length; index++)
-        {
-            var angle = Mathf.Tau * index / points.Length;
-            points[index] = new Vector2(Mathf.Cos(angle) * 11, Mathf.Sin(angle) * 2.25f - 1.5f);
-        }
-        return new Line2D
-        {
-            Name = "TeamRing",
-            Points = points,
-            Closed = true,
-            Width = 1.8f,
-            DefaultColor = color,
-            Antialiased = true,
-        };
     }
 
     private static void ValidatePlacement(AuthoredPlacement placement)

@@ -110,7 +110,8 @@ public sealed class EnvironmentCatalog
             TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
     }
 
-    public Sprite2D CreateSprite(string id, float placementScale = 1, bool flip = false, float opacity = 1)
+    public Sprite2D CreateSprite(string id, float placementScale = 1, bool flip = false, float opacity = 1,
+        CandidateShadowCache? shadows = null, CandidateShadowKind shadowKind = CandidateShadowKind.Environment)
     {
         RasterResources.Positive(placementScale, $"placement scale of {id}");
         if (!float.IsFinite(opacity) || opacity < 0 || opacity > 1)
@@ -125,6 +126,8 @@ public sealed class EnvironmentCatalog
         // Authored environment flips mirror inside the original frame, not around the foot.
         sprite.FlipH = flip;
         sprite.Modulate = new Color(1, 1, 1, opacity);
+        if (shadows is not null)
+            sprite.AddChild(CandidateSpriteShadows.Create(sprite, shadowKind, cell.PixelDensity, shadows));
         sprite.SetMeta("environment_cell", cell.Id);
         sprite.SetMeta("atlas_id", cell.AtlasId);
         if (cell.Footprint is { } footprint) sprite.SetMeta("visual_footprint", footprint);
