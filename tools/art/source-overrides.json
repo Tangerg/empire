@@ -1990,6 +1990,73 @@
           2
         ]
       }
+    },
+    "C01-CHAR-NOBANNER-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-nobanner-01/master.png",
+        "sha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 168,
+        "origin": [
+          12,
+          28
+        ]
+      }
+    },
+    "C01-CHAR-NOBANNER-02": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-nobanner-02/master.png",
+        "sha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 168,
+        "origin": [
+          12,
+          28
+        ]
+      }
+    },
+    "C01-CHAR-SEVERIN": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-severin/master.png",
+        "sha256": "49289a7c062309483711f903d2b0b0275646ec5a7050919f633c8f2a028a995a"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CH06-S29": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch06-s29/master.png",
+        "sha256": "5b085d32548fffdb4366ab85512a7b911f80068e685644bf975043024df82993"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
     }
   }
 }

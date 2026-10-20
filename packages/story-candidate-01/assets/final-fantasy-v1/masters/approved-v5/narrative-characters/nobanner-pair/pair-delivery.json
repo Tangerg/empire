@@ -1,0 +1,89 @@
+{
+  "status": "accepted-by-parent-for-registration",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "topicId": "C01-CHAR-NOBANNER-01",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01",
+      "masterPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/master.png",
+      "rawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/raw.png",
+      "sha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "edgeMaxAlpha": 1,
+      "selectedAttempt": 1,
+      "proposedPlacement": {
+        "renderWidth": 168,
+        "origin": [
+          12,
+          28
+        ]
+      },
+      "consumerStatus": "catalog-only-no-selected-consumer",
+      "selectedRequestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/request.json",
+      "selectedPromptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/prompt.txt",
+      "sourceproofPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/sourceproof.json"
+    },
+    {
+      "topicId": "C01-CHAR-NOBANNER-02",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02",
+      "masterPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/master.png",
+      "rawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/raw.png",
+      "sha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "edgeMaxAlpha": 1,
+      "selectedAttempt": 2,
+      "proposedPlacement": {
+        "renderWidth": 168,
+        "origin": [
+          12,
+          28
+        ]
+      },
+      "consumerStatus": "catalog-only-no-selected-consumer",
+      "selectedRequestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/request.json",
+      "selectedPromptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/prompt.txt",
+      "sourceproofPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/sourceproof.json"
+    }
+  ],
+  "review": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/nobanner-pair/source-contract-review.md",
+  "comparisonFiles": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/nobanner-pair/qa-stage-comparison-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/nobanner-pair/qa-stage-comparison-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/nobanner-pair/qa-card-and-modeled-crops.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/nobanner-pair/qa-placement-variants.png"
+  ],
+  "productionChangesMade": false,
+  "gitOperationsPerformed": false,
+  "programmaticSourceMutation": false,
+  "liveGameVerified": false,
+  "parentReview": {
+    "status": "accepted-by-parent-for-registration",
+    "reviewed": "Black stage pair and modeled crop sheet; collective identity and gesture distinction accepted",
+    "placement": {
+      "renderWidth": 168,
+      "origin": [
+        12,
+        28
+      ]
+    },
+    "caveat": "Tiny44 expressions and tag marks remain explicitly unreliable",
+    "dateUtc": "2026-10-20",
+    "generationComplete": true
+  }
+}

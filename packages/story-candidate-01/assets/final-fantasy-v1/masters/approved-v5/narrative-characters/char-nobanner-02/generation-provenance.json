@@ -1,0 +1,63 @@
+{
+  "selectedAttempt": 2,
+  "attempts": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-23000099-599b-4d21-acdb-b86f633c2e0f.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "generatedNativeSha256": "cefb1950a4af439a7c2c0498bc4a53c08c197b93ea77f4ad1e8456c6a0f8c5ac",
+      "preservedRawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/raw.png",
+      "rawSha256": "cefb1950a4af439a7c2c0498bc4a53c08c197b93ea77f4ad1e8456c6a0f8c5ac",
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/request.json",
+      "requestSha256": "2d467a3189f7c45d563d7245b55934ca312ebbb698f67d38352d19bd82eb9582",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/prompt.txt",
+      "promptSha256": "399afeb150f948b11014363e31ce46c373c1a68ae07821564507f57554f76863",
+      "transparentBackgroundRequested": true,
+      "requestReferenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/original-cell.png",
+          "sha256": "41a1452cee99ada59c937ace3685c070f072edb785aefffa649999bada6455d3"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/master.png",
+          "sha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/approved-formation-scene.png",
+          "sha256": "31d97d22ba1e17d46a8a4e5590af69b54d100a07b768a94cbebc829b3da93eb5"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-916eb61f-8330-4f2e-b0a2-d32c340d7149.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "generatedNativeSha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+      "preservedRawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/raw.png",
+      "rawSha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/request.json",
+      "requestSha256": "17bfdbd25c99e98de7f0f283a6f325704406ff0d8fdc0ecb4150c2564d8e9649",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/prompt.txt",
+      "promptSha256": "4f6c314b63f46d9026115d67d6bc7899c84ed634b43e08ed64953bd21b68dc05",
+      "transparentBackgroundRequested": true,
+      "requestReferenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/raw.png",
+          "sha256": "cefb1950a4af439a7c2c0498bc4a53c08c197b93ea77f4ad1e8456c6a0f8c5ac"
+        }
+      ]
+    }
+  ]
+}

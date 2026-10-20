@@ -1,0 +1,91 @@
+{
+  "topicId": "C01-CHAR-NOBANNER-02",
+  "kind": "character-card-composite-v1",
+  "selectedPlacement": {
+    "renderWidth": 168,
+    "origin": [
+      12,
+      28
+    ]
+  },
+  "wholeCanvasRenderSize": [
+    168,
+    168
+  ],
+  "nativeSourceSize": [
+    1254,
+    1254
+  ],
+  "canonicalCardSize": [
+    192,
+    224
+  ],
+  "background": {
+    "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/independent-card-background.png",
+    "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "cropBoxXYXY": [
+      89.57142857142856,
+      0,
+      1164.4285714285716,
+      1254
+    ],
+    "operation": "independent centered cover"
+  },
+  "sourceCropped": false,
+  "alphaBBoxUsedForFit": false,
+  "registrationStatus": "proposal-only-not-registered",
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "liveGameVerified": false,
+  "modeledUiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "fit": "cover",
+      "position": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "fit": "cover",
+      "position": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "fit": "cover",
+      "position": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "viewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "fit": "xMidYMid slice"
+    }
+  }
+}

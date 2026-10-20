@@ -1,0 +1,71 @@
+{
+  "dateUtc": "2026-10-20",
+  "status": "passed-native-source-and-modeled-crop-review",
+  "selectedAttempt": 1,
+  "sourceIdentity": "Six distinct ordinary human memories, no skull or sole monarch",
+  "stageDifference": "Unstable outlines, divergent gazes, interrupted mouths and loose fragments",
+  "fullSourceBlackWhite": "Full native composites inspected; central faces/tags/hands remain readable; actual transparent exterior and partially transparent cloth; no backdrop, clipping or white halo",
+  "nativeCard": "192x224 opaque RGBA proof, independent approved background, whole1254-square source to168-square at12,28",
+  "modeledCropReview": "Desktop92x112, mobile64x88, roster44x44 and HUD96x112 inspected; all six face masses remain in frame",
+  "smallSizeCaveat": "44x44 does not reliably resolve individual expressions or tag identity; mobile loses finer facial distinctions too; no readable tiny lettering is claimed",
+  "liveGameVerified": false,
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 698929,
+    "transparentFraction": 0.44446542992249366,
+    "nearOpaquePixels": 765784,
+    "partialAlphaPixels16to239": 37942,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 194,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      40,
+      32,
+      1231,
+      1216
+    ],
+    "partialAlphaAwayFromExteriorAA": {
+      "alphaRange": [
+        32,
+        223
+      ],
+      "pixelsWith7x7NeighborhoodAlphaAbove16": 7153
+    }
+  },
+  "sourceModifiedAfterImagegen": false,
+  "runtimeHdPublished": false,
+  "reviewedFiles": {
+    "qa-ui-hud.png": "b7521eb602acedb6bc5c8ca04377f4c0c76a9b4f0812e233d3a814bf1968d05e",
+    "qa-native-checker.png": "e897cca3ade85d9d467d232d2d2da458d3daa8416fbf7f48530e0c726ff06de0",
+    "qa-ui-desktop-dialogue.png": "b5a01fa714b2575767054bf650813b1081132fdcb5d6905ddc3fe9b651d4f2e3",
+    "qa-native-black.png": "e52b0af090f88bcd7b434d45c9bb940fb4858ad84a661d53dc79f732f3a324d3",
+    "qa-native-alpha.png": "072bb39a9e8cd75cc35e99f9645462b0e814712cf2af9601a22cca4366077acc",
+    "qa-native-white.png": "33c61ea636616fd2ee4c32d15031277ea93eee0bf159eaa4fe3de822ba6c4a97",
+    "qa-ui-mobile-dialogue.png": "38725120489f5594dd5ec6f3b334ce3e787db18193b06be34434649362fdf122",
+    "qa-ui-roster.png": "87755937fb08f3524334e9a0887721f28dccb36a5c6f9d68a3c766de06c2fc6b"
+  },
+  "cardPreviewSha256": "eef0507f2b977eb45b5aa062f814d122a784cbd8648208c8a290087fffa750d1",
+  "parentReview": {
+    "status": "accepted-by-parent-for-registration",
+    "reviewed": "Black stage pair and modeled crop sheet; collective identity and gesture distinction accepted",
+    "placement": {
+      "renderWidth": 168,
+      "origin": [
+        12,
+        28
+      ]
+    },
+    "caveat": "Tiny44 expressions and tag marks remain explicitly unreliable",
+    "dateUtc": "2026-10-20",
+    "generationComplete": true
+  }
+}

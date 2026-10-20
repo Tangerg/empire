@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 442,
+    "formalBound": 446,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 59,
+      "narrative-static": 63,
       "skill": 48,
       "status": 24,
       "terrain": 28
     },
-    "rawPreservedTopics": 445,
+    "rawPreservedTopics": 451,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -760,13 +760,20 @@
       "category": "narrative-static",
       "label": "最后誓约逐一确认",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch06-s29/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch06-s29.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete scene; individually consenting/refusing gray memory echoes, exact Mirelle identity, four-column register and detached seal; rejected living-looking/clipped memorial attempt retained",
+        "export": "Exact1664x936 crop[4,2,1668,938],6.5HD and256x144; full/native512 reviewed. Narrow portrait cover unsafe because side choices/seal/faces are lost",
+        "runtimeBinding": "Canonical catalog and existing resolver only; no new scene/portrait selector, no automatic story stage switch or combat/rules change",
+        "liveGame": "pending; static/native/consumer-shape evidence only"
+      }
     },
     {
       "topicId": "C01-CH06-S32",
@@ -1126,13 +1133,20 @@
       "category": "narrative-static",
       "label": "无旗者不稳定聚忆体",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-nobanner-01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-nobanner-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable genuine RGBA; NOBANNER plural ordinary voices with unstable vs negotiated coordination and translucent cloth, or plain-clothed older regent Severin with sealed records; source/story audit and rejected candidates retained",
+        "export": "Wholecanvas card composite over separate approved background,192x224. NOBANNER168/[12,28],Severin144/[24,4]. Black/white/native/modeled UI reviewed; tiny44 expressions/tag/seal details unreliable",
+        "runtimeBinding": "Canonical catalog and existing resolver only; no new scene/portrait selector, no automatic story stage switch or combat/rules change",
+        "liveGame": "pending; static/native/consumer-shape evidence only"
+      }
     },
     {
       "topicId": "C01-CHAR-NOBANNER-02",
@@ -1140,13 +1154,20 @@
       "category": "narrative-static",
       "label": "无旗者协调者",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-nobanner-02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-nobanner-02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable genuine RGBA; NOBANNER plural ordinary voices with unstable vs negotiated coordination and translucent cloth, or plain-clothed older regent Severin with sealed records; source/story audit and rejected candidates retained",
+        "export": "Wholecanvas card composite over separate approved background,192x224. NOBANNER168/[12,28],Severin144/[24,4]. Black/white/native/modeled UI reviewed; tiny44 expressions/tag/seal details unreliable",
+        "runtimeBinding": "Canonical catalog and existing resolver only; no new scene/portrait selector, no automatic story stage switch or combat/rules change",
+        "liveGame": "pending; static/native/consumer-shape evidence only"
+      }
     },
     {
       "topicId": "C01-CHAR-RODERICK-01",
@@ -1198,13 +1219,20 @@
       "category": "narrative-static",
       "label": "摄政王塞维恩",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-severin/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-severin.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable genuine RGBA; NOBANNER plural ordinary voices with unstable vs negotiated coordination and translucent cloth, or plain-clothed older regent Severin with sealed records; source/story audit and rejected candidates retained",
+        "export": "Wholecanvas card composite over separate approved background,192x224. NOBANNER168/[12,28],Severin144/[24,4]. Black/white/native/modeled UI reviewed; tiny44 expressions/tag/seal details unreliable",
+        "runtimeBinding": "Canonical catalog and existing resolver only; no new scene/portrait selector, no automatic story stage switch or combat/rules change",
+        "liveGame": "pending; static/native/consumer-shape evidence only"
+      }
     },
     {
       "topicId": "C01-CHAR-TASHA-01",
@@ -4164,8 +4192,10 @@
       "category": "terrain",
       "label": "部族营地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4178,8 +4208,11 @@
       "category": "terrain",
       "label": "风暴危险区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-01/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -8149,7 +8182,9 @@
       "label": "秋雨",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/rain-renewal/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/rainfall/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/splash-crown/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/splash-onset/master.png"
       ],
       "raw": "preserved",

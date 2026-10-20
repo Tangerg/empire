@@ -1,0 +1,202 @@
+{
+  "topicId": "C01-CHAR-SEVERIN",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-52146dbc-7714-4a25-8e5f-677b2eda2992.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "49289a7c062309483711f903d2b0b0275646ec5a7050919f633c8f2a028a995a",
+  "rawSha256": "49289a7c062309483711f903d2b0b0275646ec5a7050919f633c8f2a028a995a",
+  "masterSha256": "49289a7c062309483711f903d2b0b0275646ec5a7050919f633c8f2a028a995a",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 754659,
+    "transparentFraction": 0.4797992706298828,
+    "nearOpaquePixels": 800576,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 49,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      68,
+      70,
+      994,
+      1488
+    ],
+    "alphaAbove1MarginsDiagnosticOnly": [
+      68,
+      70,
+      30,
+      48
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-severin-original-cell.png": "49a91771b071c93f7bb41162f2ca0d4109998f6fd96d8b188c8f5261c7dbd71e",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+  },
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+  "originalFullboardSha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+  "originalCell": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-severin-original-cell.png",
+  "originalCellSha256": "49a91771b071c93f7bb41162f2ca0d4109998f6fd96d8b188c8f5261c7dbd71e",
+  "originalCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "designedReconstruction": "Keep original older regent face, gray swept hair and rounded beard, cream/burgundy clothing colors, sealed brown ledger bundle and standing pose. Replace chainmail/gold trimming/crown clasp with plain cream/burgundy political cloth per explicit brief. No invented heraldry, no sovereign crown, no combat variant inferred.",
+  "crownReconciliation": {
+    "generalCard": "No worn crown in original exact cell. Remove decorative crown collar clasp per plain-political-clothes brief.",
+    "endgameNovel": "Chapter7 explicitly shows him wearing the unfinished crown as a control device, not a glory symbol; this sole unsuffixed general regent portrait is not an additional endgame variant.",
+    "evidence": {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/07-throne-without-king-novel.md",
+      "lines": [
+        203,
+        207
+      ],
+      "text": "塞维恩没有坐在王座上。...他在旧王宫的账房等待...未完成的王冠戴在他头上，缺口以誓光连接，像一圈始终没有愈合的伤。"
+    }
+  },
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "backgroundSourceCropBox": [
+      89.57142857142856,
+      0,
+      1164.4285714285716,
+      1254
+    ],
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "db383a8adda49e871765d384fc11104d46e7feea8627a94511d4d749394648ac"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "stageSelectorExists": false,
+  "liveGameVerified": false,
+  "verificationLimits": [
+    "Source and mathematically modeled UI-crop QA only; no browser/GPU/live-game acceptance",
+    "No repository, exporter, binding, consumer, gameplay, stage-selector or Git writes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed source and modeled UI-crop visual inspection; ready for integrator review",
+  "referenceHashesStableAtDelivery": true,
+  "visualReview": {
+    "identity": "Same older male regent identity as exact original cell: swept gray hair, short rounded gray beard, thick brows, warm tan face, lowered viewer-left hand and bound sealed administrative records viewer-right. Plain political cloth and tired serious expression; no combat identity exists to import. Face remains distinct from approved Roderick in comparative proof.",
+    "clothingAndCrown": "Explicit brief correction: cream/burgundy coat over dark cloth, no chainmail, gold edge trim, crown clasp, royal crown, weapon, villain motifs or glow. The novel endgame unfinished crown is not denied or repurposed as an invented separate stage.",
+    "alphaAndMargins": "Native black and white composites have clean contours, no visible matte halo, background rectangle or contact shadow. 49 edge pixels have alpha1; retained unchanged. Complete head, hands, records, coat and both boots visible. Alpha>1 bounds margins left68/top70/right30/bottom48; requested40px right margin not reached, but30px complete clearance passes whole-source acceptance.",
+    "card": "Whole 1024x1536 canvas scales uniformly to144x216 at24,4 on separate approved192x224 background. No bbox crop. Full figure, records and feet fit.",
+    "ui": "Desktop92x112 and mobile64x88 retain older face, cream/burgundy costume and ledger bundle. Roster44x44 retains grayhead/creamcoat/brownbooks silhouette, but facial age lines, the seal and cloth fastening are not reliably legible. HUD96x112 retains face, torso and sealed records with expected lower-body crop; no consumer-specific artwork rearrangement."
+  },
+  "smallMotifLimits": [
+    "44x44 roster cannot prove individual facial identity or wax-seal detail; head/coat/ledger silhouette survives.",
+    "Desktop/mobile preserve the wax seal as a red dot, not its surface detail; no invented heraldic mark is claimed.",
+    "Native source is high resolution, but no HD runtime composition is published."
+  ],
+  "reviewedProofFiles": [
+    "qa-native-black.png",
+    "qa-native-white.png",
+    "qa-native-checker.png",
+    "qa-native-black-white.png",
+    "card-preview.png",
+    "qa-ui-desktop-dialogue.png",
+    "qa-ui-mobile-dialogue.png",
+    "qa-ui-roster.png",
+    "qa-ui-hud.png",
+    "qa-card-and-ui-comparison.png"
+  ],
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-52146dbc-7714-4a25-8e5f-677b2eda2992.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-severin/attempt-01/raw.png",
+      "sha256": "49289a7c062309483711f903d2b0b0275646ec5a7050919f633c8f2a028a995a",
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-severin/attempt-01/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-severin/attempt-01/prompt.txt",
+      "referenceHashes": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-severin-original-cell.png": "49a91771b071c93f7bb41162f2ca0d4109998f6fd96d8b188c8f5261c7dbd71e",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+      }
+    }
+  ]
+}

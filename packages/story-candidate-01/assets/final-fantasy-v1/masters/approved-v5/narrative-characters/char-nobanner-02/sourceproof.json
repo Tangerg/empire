@@ -1,0 +1,623 @@
+{
+  "topicId": "C01-CHAR-NOBANNER-02",
+  "stage": "negotiated coordinator, still plural",
+  "status": "accepted-by-parent-for-registration",
+  "selectedAttempt": 2,
+  "attempts": [
+    {
+      "attempt": 1,
+      "selected": false,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-23000099-599b-4d21-acdb-b86f633c2e0f.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "generatedNativeSha256": "cefb1950a4af439a7c2c0498bc4a53c08c197b93ea77f4ad1e8456c6a0f8c5ac",
+      "preservedRawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/raw.png",
+      "rawSha256": "cefb1950a4af439a7c2c0498bc4a53c08c197b93ea77f4ad1e8456c6a0f8c5ac",
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/request.json",
+      "requestSha256": "2d467a3189f7c45d563d7245b55934ca312ebbb698f67d38352d19bd82eb9582",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/prompt.txt",
+      "promptSha256": "399afeb150f948b11014363e31ce46c373c1a68ae07821564507f57554f76863",
+      "transparentBackgroundRequested": true,
+      "requestReferenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/original-cell.png",
+          "sha256": "41a1452cee99ada59c937ace3685c070f072edb785aefffa649999bada6455d3"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/master.png",
+          "sha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/approved-formation-scene.png",
+          "sha256": "31d97d22ba1e17d46a8a4e5590af69b54d100a07b768a94cbebc829b3da93eb5"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-916eb61f-8330-4f2e-b0a2-d32c340d7149.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "generatedNativeSha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+      "preservedRawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/raw.png",
+      "rawSha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/request.json",
+      "requestSha256": "17bfdbd25c99e98de7f0f283a6f325704406ff0d8fdc0ecb4150c2564d8e9649",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/prompt.txt",
+      "promptSha256": "4f6c314b63f46d9026115d67d6bc7899c84ed634b43e08ed64953bd21b68dc05",
+      "transparentBackgroundRequested": true,
+      "requestReferenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/attempt-01/raw.png",
+          "sha256": "cefb1950a4af439a7c2c0498bc4a53c08c197b93ea77f4ad1e8456c6a0f8c5ac"
+        }
+      ]
+    }
+  ],
+  "masterSha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+  "rawSha256": "b622a1c8a3ae3d607c22592099d8cbe3220957f25da7025addf37c4e1fb2079d",
+  "masterIsByteExactGeneratedSource": true,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "alphaRetainedUnmodified": true,
+  "programmaticAlphaFade": false,
+  "noChromaKeyOrMaskOrRecolorOrWarp": true,
+  "noSourceResizeOrCrop": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 712940,
+    "transparentFraction": 0.4533753551633179,
+    "nearOpaquePixels": 654117,
+    "partialAlphaPixels16to239": 149511,
+    "partialAlphaHistogram": [
+      712940,
+      36412,
+      8059,
+      4398,
+      2455,
+      1332,
+      747,
+      493,
+      361,
+      341,
+      253,
+      239,
+      263,
+      198,
+      217,
+      180,
+      208,
+      179,
+      173,
+      162,
+      173,
+      171,
+      172,
+      178,
+      139,
+      163,
+      149,
+      155,
+      116,
+      155,
+      123,
+      136,
+      128,
+      113,
+      123,
+      118,
+      111,
+      124,
+      135,
+      133,
+      101,
+      117,
+      102,
+      106,
+      127,
+      112,
+      96,
+      116,
+      110,
+      104,
+      109,
+      108,
+      104,
+      105,
+      115,
+      96,
+      109,
+      102,
+      122,
+      97,
+      99,
+      84,
+      86,
+      98,
+      85,
+      97,
+      121,
+      82,
+      101,
+      108,
+      109,
+      105,
+      106,
+      107,
+      84,
+      96,
+      85,
+      93,
+      99,
+      112,
+      83,
+      82,
+      88,
+      73,
+      76,
+      99,
+      83,
+      103,
+      80,
+      80,
+      87,
+      82,
+      101,
+      83,
+      115,
+      97,
+      94,
+      96,
+      94,
+      100,
+      106,
+      89,
+      98,
+      101,
+      96,
+      89,
+      92,
+      92,
+      99,
+      103,
+      99,
+      85,
+      98,
+      113,
+      100,
+      112,
+      114,
+      93,
+      113,
+      109,
+      102,
+      119,
+      96,
+      136,
+      105,
+      123,
+      119,
+      117,
+      110,
+      117,
+      131,
+      116,
+      145,
+      167,
+      144,
+      150,
+      152,
+      146,
+      173,
+      180,
+      170,
+      181,
+      194,
+      227,
+      229,
+      251,
+      276,
+      363,
+      415,
+      368,
+      393,
+      525,
+      566,
+      632,
+      663,
+      751,
+      681,
+      795,
+      1020,
+      933,
+      843,
+      836,
+      879,
+      746,
+      702,
+      770,
+      773,
+      773,
+      863,
+      1031,
+      1285,
+      1604,
+      1487,
+      1351,
+      1381,
+      1488,
+      1582,
+      1709,
+      1774,
+      1653,
+      1696,
+      1605,
+      1726,
+      1761,
+      1869,
+      1773,
+      1608,
+      1612,
+      1601,
+      1649,
+      1586,
+      1685,
+      1802,
+      1824,
+      1831,
+      1783,
+      1761,
+      1953,
+      1976,
+      1925,
+      1902,
+      1872,
+      1867,
+      1957,
+      1961,
+      1948,
+      2078,
+      1975,
+      2101,
+      2046,
+      2046,
+      2004,
+      2109,
+      2177,
+      2170,
+      2286,
+      2162,
+      1917,
+      1551,
+      1461,
+      1636,
+      1775,
+      1593,
+      1367,
+      1219,
+      1144,
+      1157,
+      1091,
+      1088,
+      1096,
+      1127,
+      1262,
+      1278,
+      1398,
+      1397,
+      1534,
+      1513,
+      1643,
+      1657,
+      1660,
+      1742,
+      1896,
+      2346,
+      2744,
+      3228,
+      4002,
+      4553,
+      4652,
+      5304,
+      6870,
+      8913,
+      16881,
+      64278,
+      521678,
+      4484,
+      546
+    ],
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 99,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      36,
+      30,
+      1233,
+      1235
+    ],
+    "partialAlphaAwayFromExteriorAA": {
+      "alphaRange": [
+        32,
+        223
+      ],
+      "pixelsWith7x7NeighborhoodAlphaAbove16": 98907
+    }
+  },
+  "originalProvenance": {
+    "catalogSlotZeroBased": 38,
+    "boardCellZeroBased": 0,
+    "quadrant": "TL",
+    "cropBoxXYXYExclusive": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "exactCrop": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-nobanner-02-original-cell.png",
+      "repoRelativePath": null,
+      "sha256": "41a1452cee99ada59c937ace3685c070f072edb785aefffa649999bada6455d3",
+      "dimensions": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "legacyRuntimeReproducesExactRGBA": true,
+    "mappingEvidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+        "startLine": 75,
+        "endLine": 75,
+        "originalText": "    \"character-board-05.png\": [38, 39, 40, 41],"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 51,
+        "endLine": 51,
+        "originalText": "- `C01-CHAR-NOBANNER-02`：无旗者协调者"
+      }
+    ]
+  },
+  "allPreservedReferences": [
+    {
+      "role": "original-board.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/original-board.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c"
+    },
+    {
+      "role": "original-cell.png",
+      "sourcePath": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-nobanner-02-original-cell.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/original-cell.png",
+      "sha256": "41a1452cee99ada59c937ace3685c070f072edb785aefffa649999bada6455d3"
+    },
+    {
+      "role": "approved-formation-scene.png",
+      "sourcePath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch03-s16/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/approved-formation-scene.png",
+      "sha256": "31d97d22ba1e17d46a8a4e5590af69b54d100a07b768a94cbebc829b3da93eb5"
+    },
+    {
+      "role": "approved-mirelle-style.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/approved-mirelle-style.png",
+      "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+    },
+    {
+      "role": "independent-card-background.png",
+      "sourcePath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/independent-card-background.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+    },
+    {
+      "role": "new-stage01-reference.png",
+      "sourcePath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/master.png",
+      "preservedPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/new-stage01-reference.png",
+      "sha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e"
+    }
+  ],
+  "cardComposition": {
+    "topicId": "C01-CHAR-NOBANNER-02",
+    "kind": "character-card-composite-v1",
+    "selectedPlacement": {
+      "renderWidth": 168,
+      "origin": [
+        12,
+        28
+      ]
+    },
+    "wholeCanvasRenderSize": [
+      168,
+      168
+    ],
+    "nativeSourceSize": [
+      1254,
+      1254
+    ],
+    "canonicalCardSize": [
+      192,
+      224
+    ],
+    "background": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-02/references/independent-card-background.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "cropBoxXYXY": [
+        89.57142857142856,
+        0,
+        1164.4285714285716,
+        1254
+      ],
+      "operation": "independent centered cover"
+    },
+    "sourceCropped": false,
+    "alphaBBoxUsedForFit": false,
+    "registrationStatus": "proposal-only-not-registered",
+    "consumerStatus": "catalog-only-no-selected-consumer",
+    "liveGameVerified": false,
+    "modeledUiCrops": {
+      "desktopDialogue": {
+        "size": [
+          92,
+          112
+        ],
+        "fit": "cover",
+        "position": [
+          0.5,
+          0.18
+        ]
+      },
+      "mobileDialogue": {
+        "size": [
+          64,
+          88
+        ],
+        "fit": "cover",
+        "position": [
+          0.5,
+          0.18
+        ]
+      },
+      "roster": {
+        "size": [
+          44,
+          44
+        ],
+        "fit": "cover",
+        "position": [
+          0.5,
+          0.18
+        ]
+      },
+      "hud": {
+        "size": [
+          96,
+          112
+        ],
+        "viewport": [
+          112,
+          112
+        ],
+        "x": -8,
+        "y": 0,
+        "fit": "xMidYMid slice"
+      }
+    }
+  },
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "stageSelectorExists": false,
+  "liveGameVerified": false,
+  "runtimeHdPublished": false,
+  "verificationLimits": [
+    "Source and offline mathematically modeled crop QA only",
+    "No main repository, Git, exporter, consumer, selector or gameplay edits",
+    "Native master is high resolution, canonical card remains192x224; no384x448 HD publication"
+  ],
+  "visualReview": {
+    "dateUtc": "2026-10-20",
+    "status": "passed-native-source-and-modeled-crop-review",
+    "selectedAttempt": 2,
+    "sourceIdentity": "Six distinct ordinary human memories, no skull or sole monarch",
+    "stageDifference": "Gathered coordination with open palms, distinct speaking/listening faces and partial-alpha lower cloth",
+    "fullSourceBlackWhite": "Full native composites inspected; central faces/tags/hands remain readable; actual transparent exterior and partially transparent cloth; no backdrop, clipping or white halo",
+    "nativeCard": "192x224 opaque RGBA proof, independent approved background, whole1254-square source to168-square at12,28",
+    "modeledCropReview": "Desktop92x112, mobile64x88, roster44x44 and HUD96x112 inspected; all six face masses remain in frame",
+    "smallSizeCaveat": "44x44 does not reliably resolve individual expressions or tag identity; mobile loses finer facial distinctions too; no readable tiny lettering is claimed",
+    "liveGameVerified": false,
+    "consumerStatus": "catalog-only-no-selected-consumer",
+    "sourceAlpha": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 712940,
+      "transparentFraction": 0.4533753551633179,
+      "nearOpaquePixels": 654117,
+      "partialAlphaPixels16to239": 149511,
+      "edgeMaxAlpha": 1,
+      "edgeNonzeroPixels": 99,
+      "edgePixelsAbove1": 0,
+      "alphaAbove1BoundsDiagnosticOnly": [
+        36,
+        30,
+        1233,
+        1235
+      ],
+      "partialAlphaAwayFromExteriorAA": {
+        "alphaRange": [
+          32,
+          223
+        ],
+        "pixelsWith7x7NeighborhoodAlphaAbove16": 98907
+      }
+    },
+    "sourceModifiedAfterImagegen": false,
+    "runtimeHdPublished": false,
+    "reviewedFiles": {
+      "qa-ui-hud.png": "f54eea30363f1cea5e11188c70050df823b730b59f452cc6aefc0967bc7bf1d0",
+      "qa-native-checker.png": "31eb71047a858787953d4ddde287950ab98074fe803eb6b89e8d9204549b7519",
+      "qa-ui-desktop-dialogue.png": "f8075eb7d6f0fac036edc88749ecbab2a22b3249c6392603ef974809ff48e20e",
+      "qa-native-black.png": "6cf7bc3d59be75ccd43caf1b3b0413e01b1f24c4bee4d820e29852a19de1b93b",
+      "qa-native-alpha.png": "d38fb6bad1b4669681cb63c7e7b131560634d7339d2af55449dd9876e989cb2b",
+      "qa-native-white.png": "26e58a0ceeeb6dedd914b58719e532325c17f4b1e40c1471a0e0eb03b9179c87",
+      "qa-ui-mobile-dialogue.png": "bcb190a230c73780d60e9d8d2de4c6156cbcf23655833954cc84671aabc6dac2",
+      "qa-ui-roster.png": "dad9a3a9899a5d5f64658255e03104829acda8d934b9a6b452f5c8ad93f43b2e"
+    },
+    "cardPreviewSha256": "001af5d306ca343bc161212215b0d0631093cfd63bb732cdba9f586ce4bdf268"
+  },
+  "parentReview": {
+    "status": "accepted-by-parent-for-registration",
+    "reviewed": "Black stage pair and modeled crop sheet; collective identity and gesture distinction accepted",
+    "placement": {
+      "renderWidth": 168,
+      "origin": [
+        12,
+        28
+      ]
+    },
+    "caveat": "Tiny44 expressions and tag marks remain explicitly unreliable",
+    "dateUtc": "2026-10-20",
+    "generationComplete": true
+  }
+}

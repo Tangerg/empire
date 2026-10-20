@@ -1,0 +1,38 @@
+{
+  "selectedAttempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-85f53396-2f8f-4d4a-b5b2-381ed7a82e1c.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "generatedNativeSha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e",
+      "preservedRawPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/raw.png",
+      "rawSha256": "6fd61b6c243b5dd1ea7914d8f992b197dfba0d34bda17f065835bf7dc19a3a1e",
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/request.json",
+      "requestSha256": "962eebf04e2f12a3a6fed5e4619517b1d7247872d8ed9815fb2fd0ba06ecb493",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/prompt.txt",
+      "promptSha256": "7c360117b449041cef173ac40aab5ce4f916b6acf30bc1f7afc2119d3dd9c353",
+      "transparentBackgroundRequested": true,
+      "requestReferenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/references/original-cell.png",
+          "sha256": "096d70ef3d4e9ef9119115bffa0c6cadc9b48d5ba65426bca5e4f5ee374994d8"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/references/approved-formation-scene.png",
+          "sha256": "31d97d22ba1e17d46a8a4e5590af69b54d100a07b768a94cbebc829b3da93eb5"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-nobanner-01/references/approved-mirelle-style.png",
+          "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+        }
+      ]
+    }
+  ]
+}

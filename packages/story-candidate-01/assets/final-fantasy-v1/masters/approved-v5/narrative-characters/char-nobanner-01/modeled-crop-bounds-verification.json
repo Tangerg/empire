@@ -1,0 +1,48 @@
+{
+  "method": "Bounds of alpha>1 projected into the selected whole-canvas card; diagnostic only, never source cropping",
+  "foregroundCardBoundsXYXY": [
+    17.358851674641148,
+    32.28708133971292,
+    176.91866028708134,
+    190.9090909090909
+  ],
+  "checks": {
+    "desktop": {
+      "sourceCardWindowXYXY": [
+        4,
+        0,
+        188,
+        224
+      ],
+      "nontrivialForegroundBoundsFullyInside": true
+    },
+    "mobile": {
+      "sourceCardWindowXYXY": [
+        14.54545454545,
+        0,
+        177.45454545455,
+        224
+      ],
+      "nontrivialForegroundBoundsFullyInside": true
+    },
+    "roster": {
+      "sourceCardWindowXYXY": [
+        0,
+        5.76,
+        192,
+        197.76
+      ],
+      "nontrivialForegroundBoundsFullyInside": true
+    },
+    "hud": {
+      "sourceCardWindowXYXY": [
+        13.71428571428,
+        16,
+        178.28571428572,
+        208
+      ],
+      "nontrivialForegroundBoundsFullyInside": true
+    }
+  },
+  "cssFrameOverlaysModeled": false
+}
