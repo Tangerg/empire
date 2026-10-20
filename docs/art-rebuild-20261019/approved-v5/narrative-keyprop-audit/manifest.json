@@ -1,0 +1,3503 @@
+{
+  "schemaVersion": 1,
+  "audit": "C01 narrative key-prop source/export audit",
+  "createdUtc": "2026-10-20T02:59:26.927809+00:00",
+  "repo": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+  "readOnlyRepository": true,
+  "scope": {
+    "pendingTopics": 17,
+    "propPrefix": 15,
+    "chapterKeyPropExceptions": 2,
+    "genuineAlphaOriginalMasters": 0,
+    "legacyRuntimeAlpha": 16,
+    "opaqueRuntimeExceptions": [
+      "C01-CH03-S11"
+    ],
+    "topicsWithHd": 0,
+    "topicsWithShippedConsumers": 0,
+    "currentNarrativeFormalCount": 21,
+    "currentFormalTotal": 371
+  },
+  "recommendedFirstFour": [
+    "C01-PROP-LEFT-GLOVE",
+    "C01-PROP-EXILE-HARDTACK",
+    "C01-PROP-IVRA-BROKEN-BRIDLE",
+    "C01-PROP-CROWN-FRAGMENT"
+  ],
+  "topics": [
+    {
+      "topicId": "C01-CH01-S00",
+      "label": "罗德里克系护腕",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-CH01-S00",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "罗德里克系护腕",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s00.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-CH01-S00",
+        "topicId": "C01-CH01-S00",
+        "label": "罗德里克系护腕",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/ch01-s00.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 3,
+        "slot": "BR",
+        "originalNarrativeIndexZeroBased": 44,
+        "fullCellCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-ch01-s00/full-cell.png",
+            "sourceCropBox": [
+              627,
+              627,
+              1254,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "2a23effbf2932fdf52ab7880fe647b42ec321e9d36e3017d939630d3bc201406",
+            "pixelSha256": "b110e8f570d065fa2dd9e081e8d1ac2cd2131eaf81b12fa3a911172a1cc3998e",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-ch01-s00/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              632,
+              1249,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "729be420eeae3eefae21c019b23c6f0e9d5149a3940aa5d15450311483950fc1",
+            "pixelSha256": "705bf07672c18a04f28e4e7c4031a65a54be0db62493a4f1a5d76d1ce74e4ccc",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s00.png",
+        "sha256": "3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 9181,
+          "partialPixels": 7117,
+          "opaquePixels": 86,
+          "nearOpaquePixels": 580,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "A loose blue-gray metal-rimmed stitched bracer with a separate tied rope, on magenta. No person or hands.",
+        "semanticRequirements": "Authored scene brief is Roderick fastening Leia's guard through hand interaction. Existing canonical128px key-prop/source instead depicts the loose object. Distinct LEFT-GLOVE already exists.",
+        "riskOrHold": "HOLD scene-versus-prop identity. Preserve current key-prop metadata and bytes; do not silently use the bracer as the planned scene or remap to LEFT-GLOVE.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "held-chapter-scene-versus-prop-identity",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            57,
+            57
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            65,
+            69
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+          "lines": [
+            7,
+            15
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-CH03-S11",
+      "label": "墓园姓名木片",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-CH03-S11",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "墓园姓名木片",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s11.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-CH03-S11",
+        "topicId": "C01-CH03-S11",
+        "label": "墓园姓名木片",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/ch03-s11.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+        "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 0,
+        "slot": "TL",
+        "originalNarrativeIndexZeroBased": 54,
+        "fullCellCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "legacyInsetCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-ch03-s11/full-cell.png",
+            "sourceCropBox": [
+              0,
+              0,
+              627,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "6ef4f1c42a2be145d7066c587446bf995618d04d71060a82cf32911a95e5b277",
+            "pixelSha256": "4098ec718b5c3aaa6e5107fdca67dadfea8496761afd1f83818e5afd6bb103e4",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-ch03-s11/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              5,
+              622,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "480fc5a6cade4a836f673145aaf86f622841589ead0e94e89e2c2d10a5a17d48",
+            "pixelSha256": "8b8cd0d509de4410cf7bedc4fe29fdccf48b3646703df6797991508a872d60cb",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s11.png",
+        "sha256": "e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            255,
+            255
+          ],
+          "zeroPixels": 0,
+          "partialPixels": 0,
+          "opaquePixels": 16384,
+          "nearOpaquePixels": 16384,
+          "edgeMaxAlpha": 255,
+          "alphaBoundingBox": [
+            0,
+            0,
+            128,
+            128
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "RGB inset5 cell, centered square fit, opaque RGBA"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Complete opaque isometric cemetery: people carrying lights/markers, central statue, graves, masonry paths, fenced gate and autumn trees.",
+        "semanticRequirements": "Living waist-name tags and dead gravestone names are a scene interaction. Distinct transparent PROP-NAME-TAGS owns isolated markers.",
+        "riskOrHold": "Evidence-backed metadata correction: key-prop→scene, preserving topic/path/128×128/opaque pixels. Original and lore both identify the cemetery scene; no semantic redesign required.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Original painting and authored scene brief agree; only canonical kind/transparency classification conflicts. Correct that classification explicitly instead of indefinitely holding the scene."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "opaque-scene-v1-after-documented-canonical-kind-correction",
+      "proposedSourceAlpha": "complete opaque RGB or RGBA square scene; reusable isolated name tags remain separate PROP-NAME-TAGS",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            67,
+            67
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            65,
+            81
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/03-elder-peoples.md",
+          "lines": [
+            7,
+            25
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ],
+      "proposedCanonicalChange": {
+        "onlyChangedCanonicalField": {
+          "kind": {
+            "from": "key-prop",
+            "to": "scene"
+          }
+        },
+        "preserve": [
+          "topicId",
+          "assetId",
+          "label",
+          "png",
+          "width=128",
+          "height=128",
+          "no anchor",
+          "no frames",
+          "current opaque runtime pixels",
+          "pending art status",
+          "existing separate PROP-NAME-TAGS identity"
+        ],
+        "requiresArtworkRedesign": false,
+        "performed": false
+      }
+    },
+    {
+      "topicId": "C01-PROP-ADA-MEDICINE",
+      "label": "艾达双文字药瓶",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-ADA-MEDICINE",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "艾达双文字药瓶",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ada-medicine.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-ADA-MEDICINE",
+        "topicId": "C01-PROP-ADA-MEDICINE",
+        "label": "艾达双文字药瓶",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-ada-medicine.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 1,
+        "slot": "TR",
+        "originalNarrativeIndexZeroBased": 73,
+        "fullCellCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "legacyInsetCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-ada-medicine/full-cell.png",
+            "sourceCropBox": [
+              627,
+              0,
+              1254,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "ddaedbd855a4b8e82ed4fb2f2fff469d054e8ef1cb01dfed37f6bac1b42aa5a8",
+            "pixelSha256": "58986ee321f4093fa1d7963f992745f0305a78e79ced3e4a4dcb909d32ef6cdb",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-ada-medicine/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              5,
+              1249,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "deb064e7adafca3870cb4cab8e5fbca6e248292401035976ad187a8e6a771866",
+            "pixelSha256": "b10ad00b667c8c161f7aa52d01981e4e5c0a593857237fa94a7ed726f58fa8de",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ada-medicine.png",
+        "sha256": "6941f1c0ecebb9f7b7dfc9ce7fccefc8314654289e9de952c91a9660bf6ee938",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 10457,
+          "partialPixels": 5775,
+          "opaquePixels": 152,
+          "nearOpaquePixels": 496,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            14,
+            124,
+            114
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Two corked bottles: teal glass with rope/fabric tie; brown/clear glass with reddish strip and broad pale bandage wrap.",
+        "semanticRequirements": "Canonical double-writing medicine bottle and prose require two retained national scripts/labels on a cracked bottle. Original two-bottle art does not visibly communicate two scripts or crack.",
+        "riskOrHold": "HOLD semantic mismatch: do not call two bottles dual-language merely because their colors differ. Exact fictional text is not specified; two visibly distinct abstract writing systems may be proposed for review.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            86,
+            86
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+          "lines": [
+            39,
+            61
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            108,
+            108
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-CASUALTY-REGISTER",
+      "label": "普通士兵伤亡册",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-CASUALTY-REGISTER",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "普通士兵伤亡册",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-casualty-register.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-CASUALTY-REGISTER",
+        "topicId": "C01-PROP-CASUALTY-REGISTER",
+        "label": "普通士兵伤亡册",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-casualty-register.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 0,
+        "slot": "TL",
+        "originalNarrativeIndexZeroBased": 77,
+        "fullCellCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "legacyInsetCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-casualty-register/full-cell.png",
+            "sourceCropBox": [
+              0,
+              0,
+              627,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "6c30c0dbfa9a5229ec7893c77945093bfa354d836bf09863294263ba71a6eb50",
+            "pixelSha256": "b5c090f894e5b9aace634807d43ad288a51ff4bb13c6c4849191e789ea2678c5",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-casualty-register/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              5,
+              622,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "5bc6c4ffd9af6f26f5888d1db00e6eb4b02b00f1da0112e481a62fa543be7b10",
+            "pixelSha256": "687c5daef8627abf7faa5cd3634bdad459b2da0fd8f5803bf95861610c54dd6b",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-casualty-register.png",
+        "sha256": "3ac5444cb27f4c4a86cd84f91346de679504cddf0de94c1ba25224f3944ffd56",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 8054,
+          "partialPixels": 8303,
+          "opaquePixels": 27,
+          "nearOpaquePixels": 242,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Open worn ledger with repeated rows/columns of marks, attached identity tags and a separate dark pencil.",
+        "semanticRequirements": "Ordinary soldiers' identities and public accountability matter. No specific name list is approved. Preserve row structure, individual records and writing tool; do not generate false readable canon names.",
+        "riskOrHold": "Complete source, but dense marks fail at128px. Historical output has only27 fully opaque pixels, so it is not a transparency quality reference.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            90,
+            90
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+          "lines": [
+            29,
+            35
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md",
+          "lines": [
+            139,
+            153
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-CONTROL-FRAGMENT",
+      "label": "控制誓文残片",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-CONTROL-FRAGMENT",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "控制誓文残片",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-control-fragment.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-CONTROL-FRAGMENT",
+        "topicId": "C01-PROP-CONTROL-FRAGMENT",
+        "label": "控制誓文残片",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-control-fragment.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 2,
+        "slot": "BL",
+        "originalNarrativeIndexZeroBased": 20,
+        "fullCellCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-control-fragment/full-cell.png",
+            "sourceCropBox": [
+              0,
+              627,
+              627,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "a7b57a5c610d24ef442073f458430bf53de0896758552ccd1537d80341b780f7",
+            "pixelSha256": "84cf22ece5bc6c8b69b8c62afb5f1893b9f1192554b4de96d66f6a184604ad07",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-control-fragment/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              632,
+              622,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "690dabb35c8ed74d81988698f504299b6232d9ca36f21c470475e29679349b32",
+            "pixelSha256": "719e28c6dfec86ac585e8aa202c064ea93d4c404f2345d252f7c0010d9f97acc",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-control-fragment.png",
+        "sha256": "f48ca3d28e00e467f962a8e9b51b47b3da83b5b22957f6f88df7ac9189dc04d8",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 11760,
+          "partialPixels": 4471,
+          "opaquePixels": 153,
+          "nearOpaquePixels": 304,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Torn pale parchment fragment with geometric pseudo-script, bound across the middle by a bronze ornamental band.",
+        "semanticRequirements": "No readable text or existing heraldry per prop-sheet02 requirement. The oath-language brief distinguishes will/name/witness and missing refusal; no approved literal glyph system exists.",
+        "riskOrHold": "Source identity clear but symbol semantics require a brief before generation; do not hallucinate readable spell text.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            33,
+            33
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            25,
+            33
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+          "lines": [
+            76,
+            90
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-CROWN-FRAGMENT",
+      "label": "誓约王冠碎片",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-CROWN-FRAGMENT",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "誓约王冠碎片",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-crown-fragment.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-CROWN-FRAGMENT",
+        "topicId": "C01-PROP-CROWN-FRAGMENT",
+        "label": "誓约王冠碎片",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-crown-fragment.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 2,
+        "slot": "BL",
+        "originalNarrativeIndexZeroBased": 16,
+        "fullCellCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-crown-fragment/full-cell.png",
+            "sourceCropBox": [
+              0,
+              627,
+              627,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "2094ec363f9a34ffc6eb09fd4b539c10681dce6f043258e71108676d19479955",
+            "pixelSha256": "408379ac9293db5f4225c3bdd2326e8477f8c29302dfab4d8285336350d14fdc",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-crown-fragment/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              632,
+              622,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "59803a620c978d39d565e90c60a466fbb079485838887bd6c1c22c0ec6f02bf9",
+            "pixelSha256": "650431626852643d438a42d364311197d2d8f6de0aa26a4eeaf598521ab494c2",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-crown-fragment.png",
+        "sha256": "f1c60f4441c0ccafb3c79387ea482658131a5e25aff4a453b6a74ef76f667d48",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 12395,
+          "partialPixels": 3682,
+          "opaquePixels": 307,
+          "nearOpaquePixels": 1036,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            123,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "One incomplete curved bronze/gold crown band with raised angular bevels, a diamond boss, broken high ends and dark inner face.",
+        "semanticRequirements": "It is a fragment, never a complete wearable crown. The creative brief forbids obviously evil spikes; dignity and practical construction matter.",
+        "riskOrHold": "Clear original silhouette; complete subject, no text or symbol transcription needed.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": 4,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            29,
+            29
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            137,
+            143
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-novel-v2/03-elder-peoples-novel.md",
+          "lines": [
+            99,
+            99
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+      "label": "巨龙盟约扣",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "巨龙盟约扣",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-dragon-alliance-clasp.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-DRAGON-ALLIANCE-CLASP",
+        "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+        "label": "巨龙盟约扣",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-dragon-alliance-clasp.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 3,
+        "slot": "BR",
+        "originalNarrativeIndexZeroBased": 17,
+        "fullCellCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-dragon-alliance-clasp/full-cell.png",
+            "sourceCropBox": [
+              627,
+              627,
+              1254,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "ae3e1eb530c8eeee60e21822aed8a4f784c147def4a8ae2a2ebdcdce3e137190",
+            "pixelSha256": "09619b4fe14512fe36e016fcc98b2c1da2ddafc4c3b4bc44491781da468bbfa6",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-dragon-alliance-clasp/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              632,
+              1249,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "7e4741b2de1fface2cd377e6995d8395c9341d1f64b0df14a19cbdcb7a8a6d20",
+            "pixelSha256": "91513b863bad7023e63a92f4e9e27885fdc92c8b219314db1b29ac488c18b903",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-dragon-alliance-clasp.png",
+        "sha256": "8a7b586c6e0e71ee40cb021640b89ec75a250362ad41adf21edf13295c5e92a1",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 11849,
+          "partialPixels": 4161,
+          "opaquePixels": 374,
+          "nearOpaquePixels": 991,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            123,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Gold interlocking clasp/rings bearing one torn dark-gray cloth piece and one red scale/leaf-shaped pendant.",
+        "semanticRequirements": "Keep this intact alliance token distinct from planned-only BROKEN-DRAGON-CLASP. No permanent bridle, saddle or ownership mark on Ivra is implied.",
+        "riskOrHold": "Clear source silhouette; confirm cloth versus wing-material interpretation before adding new lore.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            30,
+            30
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            111,
+            111
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            137,
+            143
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-EVACUATION-MAP",
+      "label": "多语言撤离路线图",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-EVACUATION-MAP",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "多语言撤离路线图",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-evacuation-map.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-EVACUATION-MAP",
+        "topicId": "C01-PROP-EVACUATION-MAP",
+        "label": "多语言撤离路线图",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-evacuation-map.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 2,
+        "slot": "BL",
+        "originalNarrativeIndexZeroBased": 79,
+        "fullCellCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-evacuation-map/full-cell.png",
+            "sourceCropBox": [
+              0,
+              627,
+              627,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "8ebf141d32e7067a2ad6f7166b07a14c7e2343870aa257f593cef2e1089c05c5",
+            "pixelSha256": "c1f06f1b35b67900fea7ea893062074ccc0ff1a29107cd3b0326d6ee1026b421",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-evacuation-map/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              632,
+              622,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "6d5502a1a2317ec560bed9fd91171d8065c5f8b1b9a3a2279a9b28eda78d689c",
+            "pixelSha256": "fbd2604028296721f7f6b0ceb0a5824638cd48d71d50920c3a3cc30f1f3c4110",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-evacuation-map.png",
+        "sha256": "41936ffa7628c8103122a1fe9982437bbf8d71938dfd6aa4a6fd679efb181b92",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 8282,
+          "partialPixels": 8098,
+          "opaquePixels": 4,
+          "nearOpaquePixels": 83,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Unfurled folded parchment map with blue/green/red dashed arrow paths, circles/triangles/squares and a blue river.",
+        "semanticRequirements": "Multiple routes/communities must be distinguishable; canonical label says multilingual, but source uses shapes/colors and no literal languages. No geographic labels or real text are approved.",
+        "riskOrHold": "Symbol semantics and route topology require review; preserve arrows, river crossings and differentiated routes, not random decorative glyphs. Historical output has only4 fully opaque pixels.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            92,
+            92
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            92,
+            92
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-EXILE-HARDTACK",
+      "label": "逃亡硬饼",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-EXILE-HARDTACK",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "逃亡硬饼",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-exile-hardtack.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-EXILE-HARDTACK",
+        "topicId": "C01-PROP-EXILE-HARDTACK",
+        "label": "逃亡硬饼",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-exile-hardtack.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 1,
+        "slot": "TR",
+        "originalNarrativeIndexZeroBased": 19,
+        "fullCellCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "legacyInsetCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-exile-hardtack/full-cell.png",
+            "sourceCropBox": [
+              627,
+              0,
+              1254,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "16d5995ad212ec6367c3f0693a1453299ba597798c80089026147ed0d295a260",
+            "pixelSha256": "44426adc382782f4d37fe104885651f3dfee6150a88ac4ff7e73764ba7d710f9",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-exile-hardtack/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              5,
+              1249,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "aef428a919916dd5503abbc32761f7fccfa132b5b5d71d6e5ab9bcb4ea988f6b",
+            "pixelSha256": "f3ce7ee0bef395dd466dd83429c791695828701da13a3fe7353326d1b49e9e65",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-exile-hardtack.png",
+        "sha256": "4f344f76e9d044d55718d5d7691b8cb9343531ea929d329105fe9ead2e74f8da",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 10321,
+          "partialPixels": 5881,
+          "opaquePixels": 182,
+          "nearOpaquePixels": 423,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Three rough tan hard biscuits, cracked/nicked edges, bundled in a folded gray cloth.",
+        "semanticRequirements": "Scarce plain food, not a luxurious pastry, crest-shaped loaf or decorated later gray-wing biscuit. No writing or emblem.",
+        "riskOrHold": "Recommended; complete subject and simple countable identity.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": 2,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            32,
+            32
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+          "lines": [
+            111,
+            137
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            25,
+            25
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-EXPIRING-MANDATE",
+      "label": "可拆战时统帅期限扣",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-EXPIRING-MANDATE",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "可拆战时统帅期限扣",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-expiring-mandate.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-EXPIRING-MANDATE",
+        "topicId": "C01-PROP-EXPIRING-MANDATE",
+        "label": "可拆战时统帅期限扣",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-expiring-mandate.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 3,
+        "slot": "BR",
+        "originalNarrativeIndexZeroBased": 75,
+        "fullCellCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-expiring-mandate/full-cell.png",
+            "sourceCropBox": [
+              627,
+              627,
+              1254,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "bb1c9072c7b5903acb714f44b234873a0cba839ec8f5be7d3f910787ac4e2f30",
+            "pixelSha256": "bdbda0424ecdc28f047f5a7f8dfb4db346bf1b5d95e79e4f782eee4a6c6eb3da",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-expiring-mandate/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              632,
+              1249,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "8dc8d3001e606b587d9b631f7b6848666ad009972d389017f10935c40bbb28e7",
+            "pixelSha256": "e90c1f42d60fc2ca72033f93f0f16735ac4e862c643ff0d45d46e5b9d872a573",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-expiring-mandate.png",
+        "sha256": "e57930da46d1ce19ed8a262da7341a514612b38b4b6f3d6f5dc5e6d19283e30e",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 10322,
+          "partialPixels": 5828,
+          "opaquePixels": 234,
+          "nearOpaquePixels": 588,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            14,
+            124,
+            113
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Bronze round clasp with a dark central radial disk, two slotted strap ends and a separately drawn release pin.",
+        "semanticRequirements": "Detachable and externally removable by Tasha. Novel adds falling silver sand/time limit, while original is dial-like with no sandglass. Do not invent legible clock numerals or dates.",
+        "riskOrHold": "HOLD temporal mechanism interpretation if matching novel; original release pin and detachable construction remain mandatory.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            88,
+            88
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/06-war-of-seven-towers.md",
+          "lines": [
+            131,
+            133
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md",
+          "lines": [
+            5,
+            5
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md",
+          "lines": [
+            513,
+            513
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-FIRST-GREY-FLAG",
+      "label": "第一面灰旗",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-FIRST-GREY-FLAG",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "第一面灰旗",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-first-grey-flag.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-FIRST-GREY-FLAG",
+        "topicId": "C01-PROP-FIRST-GREY-FLAG",
+        "label": "第一面灰旗",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-first-grey-flag.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 0,
+        "slot": "TL",
+        "originalNarrativeIndexZeroBased": 14,
+        "fullCellCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "legacyInsetCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-first-grey-flag/full-cell.png",
+            "sourceCropBox": [
+              0,
+              0,
+              627,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "393d2f4afcd3d01f0dbac488ee07018021af20bccb5287f0289131ff718d3670",
+            "pixelSha256": "d7460f088d7fdfdd5603ee60c4e28a1533c1675c44594c65ce47d1a264e12267",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-first-grey-flag/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              5,
+              622,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "a869369b668b5fd3bfa6c55ad9bf0f816dd2a8760778d8f3f7e0634f430a44eb",
+            "pixelSha256": "f6404212a380fecb5c07fc33426e47122f37672a5f1f8c2a10dd6848a0daec09",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-first-grey-flag.png",
+        "sha256": "c59ed63b0ec84443bd9139dea21912b71d12c50a9dd6aecaddde842a6183f6c2",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 11710,
+          "partialPixels": 4578,
+          "opaquePixels": 96,
+          "nearOpaquePixels": 379,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            123,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Ragged smoky gray cloth with stitch repairs on a wood T-pole, tied rope and spear finial. The pole visibly ends at the bottom of its source panel.",
+        "semanticRequirements": "Preserve the smoke-darkened cloth and one remaining bright blue thread required by chapter1; no new heraldry. Original panel does not make the blue thread legible.",
+        "riskOrHold": "HOLD source-cutoff: full pole end is unavailable. Do not copy the flat cut into an allegedly complete transparent master.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            27,
+            27
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+          "lines": [
+            123,
+            139
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            109,
+            109
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-FREE-OATH-STONE",
+      "label": "自由誓石",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-FREE-OATH-STONE",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "自由誓石",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-free-oath-stone.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-FREE-OATH-STONE",
+        "topicId": "C01-PROP-FREE-OATH-STONE",
+        "label": "自由誓石",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-free-oath-stone.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 1,
+        "slot": "TR",
+        "originalNarrativeIndexZeroBased": 15,
+        "fullCellCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "legacyInsetCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-free-oath-stone/full-cell.png",
+            "sourceCropBox": [
+              627,
+              0,
+              1254,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "26d2547c729ad4f2d42c13f19922ca6cc1ef00bb041e42878665b46c36a81259",
+            "pixelSha256": "d31af478eeccc6c59b15ad47a45eee352546d4f3e38cbb9778951ca1d884c5b5",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-free-oath-stone/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              5,
+              1249,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "c7428f188f6e37302729b5b273398ccd6e8003bbd85bc3a68e0eba3c441c5ba3",
+            "pixelSha256": "c098499a5f3ffde6a87d7fbd1882cf5264ec2488fff9049ac18112ca69d58e83",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-free-oath-stone.png",
+        "sha256": "db78fd2d869c90282e78329ffa270595238d0657308e0e33835c88922cb45399",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 10424,
+          "partialPixels": 5874,
+          "opaquePixels": 86,
+          "nearOpaquePixels": 346,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            123,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Two split upright stone slabs on a broken stone base, connected by a dark iron ring; incised nonverbal marks.",
+        "semanticRequirements": "Canonical singular STONE is not the planned plural FREE-OATH-STONES. Ending prose calls for seven differently shaped stones, independent holders, and no recombination into a crown.",
+        "riskOrHold": "Identity scope hold for a narrative-accurate final-ending asset. Preserve this specific singular canonical object until intentionally redesigned.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            28,
+            28
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            118,
+            118
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-novel-v2/07-throne-without-king-novel.md",
+          "lines": [
+            477,
+            503
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-GRANARY-KEY",
+      "label": "三方共管粮仓钥匙",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-GRANARY-KEY",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "三方共管粮仓钥匙",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-granary-key.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-GRANARY-KEY",
+        "topicId": "C01-PROP-GRANARY-KEY",
+        "label": "三方共管粮仓钥匙",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-granary-key.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 1,
+        "slot": "TR",
+        "originalNarrativeIndexZeroBased": 78,
+        "fullCellCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "legacyInsetCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-granary-key/full-cell.png",
+            "sourceCropBox": [
+              627,
+              0,
+              1254,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "9b99fa901f1efb1658f9322b103a169923fd610e2738c383b7e2215329fa529a",
+            "pixelSha256": "9c7185fffbf55c9d3c068e895afe4fd9605aeaeb4791221061c610437c402b78",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-granary-key/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              5,
+              1249,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "d6e5693f50fccbadc9a0c80a67e0f59b0120263dd380be928cf4b490a942f923",
+            "pixelSha256": "b26b6a7ec3d4cccc5df0d05db48b63ccd168c7f863a824024ff9fd29bf8942a9",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-granary-key.png",
+        "sha256": "e860a3960f8f7689cb5710d20bbeae6f602f45e1091d232f93c29d399e0ae544",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 12579,
+          "partialPixels": 3733,
+          "opaquePixels": 72,
+          "nearOpaquePixels": 367,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "One dark iron key attached to three colored large rings, with a smaller metal connector ring.",
+        "semanticRequirements": "Prose specifies three separately held keys for merchant/militia/refugee representatives and two representatives present to open. Original shows one key with three colored rings, not three independently controlled keys.",
+        "riskOrHold": "HOLD semantic mismatch. Do not claim three-party governance from three decorative rings without deciding whether to preserve source or redesign.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            91,
+            91
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-novel-v2/02-grey-banner-exile-novel.md",
+          "lines": [
+            163,
+            165
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "label": "伊芙拉断裂缰具",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "伊芙拉断裂缰具",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ivra-broken-bridle.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-IVRA-BROKEN-BRIDLE",
+        "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+        "label": "伊芙拉断裂缰具",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-ivra-broken-bridle.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 2,
+        "slot": "BL",
+        "originalNarrativeIndexZeroBased": 74,
+        "fullCellCropBox": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          5,
+          632,
+          622,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-ivra-broken-bridle/full-cell.png",
+            "sourceCropBox": [
+              0,
+              627,
+              627,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "b19444d985b7c3221eae6124d9c7af095ab65f5d8fe2407eebf203e94b0020f5",
+            "pixelSha256": "08126c23cf86964bc77eeb1be380f2d4770c137fe5e9ca3178c12a44ce52d9bd",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-ivra-broken-bridle/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              632,
+              622,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "884231c4da9651dec48529e79e6a6c0727509af1139e317d46d75d34d6650004",
+            "pixelSha256": "7545f7ca7247b06219c3955c11354ccdff039772d4acccd910297afd7aa46ade",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ivra-broken-bridle.png",
+        "sha256": "86f5dbe8b1fe3d1f76beb6ba68204f854a2c14af396a5fcfbffffc590552cf7d",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 11556,
+          "partialPixels": 4685,
+          "opaquePixels": 143,
+          "nearOpaquePixels": 557,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            9,
+            4,
+            119,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Separated torn brown leather bridle strap with rectangular buckle, detached torn red-brown strap, and two broken halves of a metal bit/ring.",
+        "semanticRequirements": "The broken/open condition is essential: freedom to leave, not tame-dragon ownership. Preserve all loose parts and open gaps. No dragon, saddle or body attached.",
+        "riskOrHold": "Recommended; complete multi-part object and clear story semantics.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": 3,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            87,
+            87
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/02-grey-banner-exile.md",
+          "lines": [
+            69,
+            90
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            110,
+            110
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-LEFT-GLOVE",
+      "label": "莱娅左手护腕",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-LEFT-GLOVE",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "莱娅左手护腕",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-left-glove.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-LEFT-GLOVE",
+        "topicId": "C01-PROP-LEFT-GLOVE",
+        "label": "莱娅左手护腕",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-left-glove.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 0,
+        "slot": "TL",
+        "originalNarrativeIndexZeroBased": 18,
+        "fullCellCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "legacyInsetCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-left-glove/full-cell.png",
+            "sourceCropBox": [
+              0,
+              0,
+              627,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "7077a46fe0ec3f23f371bd02134cdde74bf7a69663f2a1174396f1cd8ae37b85",
+            "pixelSha256": "52d7007f26f62f91a8d842d3ea141814f92faac97635f715e96b0797c6c154c0",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-left-glove/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              5,
+              622,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "d14d936beac94db36ad2794f0dd34dd29c4d93c23d1f04312069e0feb205ba97",
+            "pixelSha256": "d6321d7bd37e82c4027c711681c9cf410968eb6b2cf1e9cf5046ade72c3aaa62",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-left-glove.png",
+        "sha256": "75494ca70afb0ca9b38409419483e4b6265cf1b14891ed20659c3cad41d4b1cf",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 12168,
+          "partialPixels": 4064,
+          "opaquePixels": 152,
+          "nearOpaquePixels": 435,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            11,
+            124,
+            116
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Worn blue-gray cylindrical wrist guard, tan stitched repairs and rope tie; its near opening shows a dark hollow interior.",
+        "semanticRequirements": "LEFT-GLOVE is the stable ID, but its canonical label and current source are a wrist guard, not a fingered glove. Chapter1 ties this to Leia and Roderick; preserve wear, blue-gray material, seam and loose cord.",
+        "riskOrHold": "Recommended; do not substitute CH01-S00's distinct metal-rimmed bracer or Roderick's literal left glove.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": 1,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            31,
+            31
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+          "lines": [
+            7,
+            15
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            25,
+            25
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            107,
+            107
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-NAME-TAGS",
+      "label": "墓园活人木片与亡者姓名牌",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-NAME-TAGS",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "墓园活人木片与亡者姓名牌",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-name-tags.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-NAME-TAGS",
+        "topicId": "C01-PROP-NAME-TAGS",
+        "label": "墓园活人木片与亡者姓名牌",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-name-tags.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 0,
+        "slot": "TL",
+        "originalNarrativeIndexZeroBased": 76,
+        "fullCellCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "legacyInsetCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-name-tags/full-cell.png",
+            "sourceCropBox": [
+              0,
+              0,
+              627,
+              627
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "c9c809236abf7962dbfae44f3d33f2424db90bc6acc2ef3a19bcc8996ca8821c",
+            "pixelSha256": "83751628e4f52967268695cd5beadab2fa8a2a3ffc8f7d17ac1d01dd4e8093c4",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-name-tags/legacy-inset.png",
+            "sourceCropBox": [
+              5,
+              5,
+              622,
+              622
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "dbcdc1f6ba1e5098e769c9b6fdd2bbc05243c70d7b2bfafe48212f3134bb4331",
+            "pixelSha256": "a98a2984aaaa4c87552d918db21999d596ccfbc408806a9e1fa2d6483e2861ec",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-name-tags.png",
+        "sha256": "6ae26461904fbb0ef0126db1ee28e51e3186d9429f2c234310de2ce9a0a000f5",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 9248,
+          "partialPixels": 6883,
+          "opaquePixels": 253,
+          "nearOpaquePixels": 784,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Four wooden humanoid memorial effigies behind four hanging wood tags with dark tally-like marks.",
+        "semanticRequirements": "Living waist-name tags and dead individual names should correspond; original tallies are not actual names. Distinct from CH03-S11 cemetery scene. Do not invent canon names or replace with anonymous skulls.",
+        "riskOrHold": "Semantic brief required for labels and living/dead pairing; preserve multiple individual markers, not one generic medallion.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            89,
+            89
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/03-elder-peoples.md",
+          "lines": [
+            9,
+            25
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            113,
+            113
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    },
+    {
+      "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+      "label": "三族盟约扣件",
+      "pending": true,
+      "ledger": {
+        "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+        "campaign": "story-candidate-01",
+        "category": "narrative-static",
+        "label": "三族盟约扣件",
+        "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+        "selectedRawMasters": [],
+        "raw": "pending",
+        "export": "pending",
+        "formalBinding": "pending",
+        "liveGame": "pending",
+        "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-three-peoples-clasp.png",
+        "stageEvidence": null
+      },
+      "canonicalRecord": {
+        "assetId": "C01-FFV1-PROP-THREE-PEOPLES-CLASP",
+        "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+        "label": "三族盟约扣件",
+        "category": "narrative-static",
+        "png": "runtime/narrative-static/prop-three-peoples-clasp.png",
+        "width": 128,
+        "height": 128,
+        "runtimeReady": true,
+        "qualityTier": "final-cartoon-fantasy-v1",
+        "kind": "key-prop"
+      },
+      "canonicalAnchor": null,
+      "hdRecord": null,
+      "registeredOverride": null,
+      "source": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "genuineAlpha": false,
+        "cellIndexZeroBased": 3,
+        "slot": "BR",
+        "originalNarrativeIndexZeroBased": 21,
+        "fullCellCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "legacyInsetCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "crops": [
+          {
+            "path": "original-crops/c01-prop-three-peoples-clasp/full-cell.png",
+            "sourceCropBox": [
+              627,
+              627,
+              1254,
+              1254
+            ],
+            "size": [
+              627,
+              627
+            ],
+            "mode": "RGB",
+            "sha256": "bf0219c7b5872ee0dbe1e55f8cce0c2ce422e873a8680e296c5e945e9005426c",
+            "pixelSha256": "a067169cc30102f13d42c51fa9bca92bcf71af4305a7c92fc15947b888c89694",
+            "originalPixelsOnly": true
+          },
+          {
+            "path": "original-crops/c01-prop-three-peoples-clasp/legacy-inset.png",
+            "sourceCropBox": [
+              632,
+              632,
+              1249,
+              1249
+            ],
+            "size": [
+              617,
+              617
+            ],
+            "mode": "RGB",
+            "sha256": "4bf1a411233918f5f15334de395cb0dcb86d72c1ca743a93f28f1c0442f7f3b0",
+            "pixelSha256": "8810baaa1048e23eef7ad251a70ceea2d1355b6d7567e5fa451203d00982c9e4",
+            "originalPixelsOnly": true
+          }
+        ]
+      },
+      "runtime": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-three-peoples-clasp.png",
+        "sha256": "0c9602113d5185ddfa172325d35ba3a77b85793b8d0bc3345fbf57f4ab25f094",
+        "size": [
+          128,
+          128
+        ],
+        "alpha": {
+          "mode": "RGBA",
+          "hasAlpha": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "zeroPixels": 11005,
+          "partialPixels": 5122,
+          "opaquePixels": 257,
+          "nearOpaquePixels": 665,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            4,
+            4,
+            124,
+            124
+          ]
+        }
+      },
+      "originalReconstruction": {
+        "matches": true,
+        "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+      },
+      "actualConsumers": {
+        "storyScenes": [],
+        "portraitKeys": [],
+        "chapterDefaults": [],
+        "characterTypeBindings": []
+      },
+      "shippedConsumerCount": 0,
+      "visualReview": {
+        "reviewedOriginalBoard": true,
+        "sourceIdentity": "Circular alliance fastening composed of braided olive cord, bronze angular links, dark steel link and tied rust-red cloth.",
+        "semanticRequirements": "Three peoples must remain visibly distinct within one releasable covenant. No existing heraldry or readable text per sheet02. Preserve the open center.",
+        "riskOrHold": "Clear complete original; avoid turning it into a crown, single empire insignia or welded unbreakable ring.",
+        "highResolutionInputAvailable": true,
+        "referenceNativeCellSize": [
+          617,
+          617
+        ],
+        "runtimeIsHighResolutionReference": false,
+        "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+      },
+      "recommendedPriority": null,
+      "proposedExportClassification": "transparent-prop-v1",
+      "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+      "semanticSourceReferences": [
+        {
+          "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+          "lines": [
+            34,
+            34
+          ],
+          "evidence": "exact canonical topic and label"
+        },
+        {
+          "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+          "lines": [
+            25,
+            25
+          ],
+          "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+        }
+      ]
+    }
+  ],
+  "currentExporterRejections": [
+    {
+      "topicId": "C01-CH01-S00",
+      "rejected": true,
+      "message": "C01-CH01-S00: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-CH03-S11",
+      "rejected": true,
+      "message": "C01-CH03-S11: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-ADA-MEDICINE",
+      "rejected": true,
+      "message": "C01-PROP-ADA-MEDICINE: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-CASUALTY-REGISTER",
+      "rejected": true,
+      "message": "C01-PROP-CASUALTY-REGISTER: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-CONTROL-FRAGMENT",
+      "rejected": true,
+      "message": "C01-PROP-CONTROL-FRAGMENT: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-CROWN-FRAGMENT",
+      "rejected": true,
+      "message": "C01-PROP-CROWN-FRAGMENT: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+      "rejected": true,
+      "message": "C01-PROP-DRAGON-ALLIANCE-CLASP: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-EVACUATION-MAP",
+      "rejected": true,
+      "message": "C01-PROP-EVACUATION-MAP: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-EXILE-HARDTACK",
+      "rejected": true,
+      "message": "C01-PROP-EXILE-HARDTACK: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-EXPIRING-MANDATE",
+      "rejected": true,
+      "message": "C01-PROP-EXPIRING-MANDATE: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-FIRST-GREY-FLAG",
+      "rejected": true,
+      "message": "C01-PROP-FIRST-GREY-FLAG: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-FREE-OATH-STONE",
+      "rejected": true,
+      "message": "C01-PROP-FREE-OATH-STONE: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-GRANARY-KEY",
+      "rejected": true,
+      "message": "C01-PROP-GRANARY-KEY: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "rejected": true,
+      "message": "C01-PROP-IVRA-BROKEN-BRIDLE: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-LEFT-GLOVE",
+      "rejected": true,
+      "message": "C01-PROP-LEFT-GLOVE: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-NAME-TAGS",
+      "rejected": true,
+      "message": "C01-PROP-NAME-TAGS: only existing Gray Flag 192x224 character-card contracts supported"
+    },
+    {
+      "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+      "rejected": true,
+      "message": "C01-PROP-THREE-PEOPLES-CLASP: only existing Gray Flag 192x224 character-card contracts supported"
+    }
+  ],
+  "protectedNarrativeOverrides": {
+    "C01-CHAR-LEIA-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+        "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-RODERICK-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-roderick-01/master.png",
+        "sha256": "ab58a7458c44a4beed4093f04dc7b82ce13f13323912a3c6902be942e9ac561a"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-MIREL-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-mirel-01/master.png",
+        "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-TORREN-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/master.png",
+        "sha256": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-CAIN-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-01/master.png",
+        "sha256": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-BRAN-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png",
+        "sha256": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CHAR-TASHA-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-tasha-01/master.png",
+        "sha256": "7da47fb6bda98b6cc37aeec2981eadd2f5643efc2cc78f88a9e6ec7b005e8047"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
+    },
+    "C01-CH01-S05": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s05/master.png",
+        "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-CH01-S01": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s01/master.png",
+        "sha256": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-THREE-BRIDGES": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-three-bridges/master.png",
+        "sha256": "8f9fc6d169f66c0932023fdf7dd8ca2f99f2e01b0e0695f64389d8dd0e1fa237"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-REDSTONE": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-redstone/master.png",
+        "sha256": "e59d492c2b93f6b70fbe47d9c36ad39d31cab60d62968c4f11e220dd8b2f3642"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-SILVERWOOD": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-silverwood/master.png",
+        "sha256": "96ce33ae7c6b84471842d459b169a2d69cae0f1a230c790f22252d3c7b04dddf"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-CH01-S02": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s02/master.png",
+        "sha256": "38ff98456bea1116ebcc1a20afeba0d0e35f0a3f723725e7cd18af554bfa7b01"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-CH03-S14": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch03-s14/master.png",
+        "sha256": "63f0a52869a56b928b1d5543f324af4c91e8776b7c7fbfecc082c8ee9862aee9"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-SCENE-PUBLIC-RATIONS": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/scene-public-rations/master.png",
+        "sha256": "7e6f0f46e5f9217b6dc8dd8b082533200054a7eeb33707eeca1c1d6966473864"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-CH02-S06": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch02-s06/master.png",
+        "sha256": "8724bb6c0eb33493c06aaa0a3cfc5d3846760473e718d0f90d82689bea76ded2"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-CH05-S26": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch05-s26/master.png",
+        "sha256": "1d84e25c896ecab875788efe53d3327f44176e281571f9a5b17cdfd8b002c781"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-GRAY-CAMP": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-gray-camp/master.png",
+        "sha256": "cf742aad26c2cb50edc82f16667aae3a465d050a2d5a3ce6216b94f8e04487f5"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-FIELD-HOSPITAL": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-field-hospital/master.png",
+        "sha256": "8a78169f8661da0811601692b02e16aeb90c5e63b4fe4d7f7a1ecec5fe24d37e"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-LOAK-BAKERY": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-loak-bakery/master.png",
+        "sha256": "344ced5f9e3a27948f94c9e8f3a09edad6c6eeefe5a439d95bd2d984c10248d2"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-MERCENARY-MARKET": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-mercenary-market/master.png",
+        "sha256": "fe658317d258668b4d3ae9ea6a7f2b5aa2ac1d6096f23754eaaba00d6520ff4c"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    }
+  },
+  "inputHashesBefore": {
+    "AGENTS.md": "8865ece9b225d088e3d880812a3edb170b8c2db62508c73dd96a328dc40beb3d",
+    "PROJECT_RULES.md": "73de4fe93a9e45921f3b09f3765f25bc0bf7f46e9ed62f6ff601e009dc8d80b7",
+    "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md": "6c3fa34dfbe5a8df87a2b2f52f9b38c26e6299e44bcfe2ff563a884d1e27aac5",
+    "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py": "b533ecffd7628905c744d9ddcfa40c93f08e76800b2c4427ee7d1ca5d9d74bd7",
+    "tools/art/source-overrides.json": "3304cd6a45219c28df6c38c702dd2ae17de72c6a736115e64d6369ff25426a93",
+    "tools/art/export_overrides.py": "1e025037b5f3d02b7138e5790497a465b180ec25b7405084ab537294aaffd7a6",
+    "tools/art/test_export_overrides.py": "981308f5967f1dca8b4123525c36132958151d8bc8b80b70d36b28397f068a65",
+    "tools/art/test_narrative_card_overrides.py": "692f4f5d6ba3df81f4587040e446460dc0218a9b478d6a009b9078ed50d389d6",
+    "tools/art/test_narrative_scene_overrides.py": "496d08547b72691ced524e7e76dee00b67d30ae3debe817f28f6a5d1856e87e6",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json": "923834d7bd31c7be32d524ae3aad6063f03271b2103594cf58727b3840b2c83b",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json": "9d6dc4ee9bf5fc2f8cd4c54baa7cce6bea656408a9f2071a0bb2b90ca7637c7c",
+    "docs/art-rebuild-20261019/approved-v5/scope-ledger.json": "abda41e9ff9a4320428dc1b0788d7b06eb31eb940b7b0981c92421a4649fc02d",
+    "docs/art-rebuild-20261019/approved-v5/progress.json": "f380f3b8caf7f75d5403703d8463efcc594e100b076c48a9296bc063285c1012",
+    "packages/story-candidate-01/src/story.ts": "230b746b644834893153498fb852fef21304b9141feb8aa69d4f4b8f54240195",
+    "packages/story-candidate-01/src/campaign.ts": "4c217fe0b950c81a7e3d5c6f49192c69bdefdb6eaa0f7ab857ed25137f50bf9a",
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/presentation/candidate-01-story.ts": "a51ef93978cdbef035321d8a489b827b27bb1560e6bdf083140f2a2ba58f558b",
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts": "821dacd8f867d227bc8a2839b1a85f5869be7b9cf1193c82796386d0676930fa",
+    "packages/game-ui/src/ui/campaign-game.ts": "8b43d338ccd432245d5f90ea93f8be82d25b90a9110a721fcbf313193ebddcd9",
+    "packages/game-ui/src/styles/campaign.css": "f0996ae715eed616754224cceda2345e28b1eb59a4528cfcf0a90fab5d577795"
+  },
+  "inputHashesAfter": {
+    "AGENTS.md": "8865ece9b225d088e3d880812a3edb170b8c2db62508c73dd96a328dc40beb3d",
+    "PROJECT_RULES.md": "73de4fe93a9e45921f3b09f3765f25bc0bf7f46e9ed62f6ff601e009dc8d80b7",
+    "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md": "6c3fa34dfbe5a8df87a2b2f52f9b38c26e6299e44bcfe2ff563a884d1e27aac5",
+    "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py": "b533ecffd7628905c744d9ddcfa40c93f08e76800b2c4427ee7d1ca5d9d74bd7",
+    "tools/art/source-overrides.json": "3304cd6a45219c28df6c38c702dd2ae17de72c6a736115e64d6369ff25426a93",
+    "tools/art/export_overrides.py": "1e025037b5f3d02b7138e5790497a465b180ec25b7405084ab537294aaffd7a6",
+    "tools/art/test_export_overrides.py": "981308f5967f1dca8b4123525c36132958151d8bc8b80b70d36b28397f068a65",
+    "tools/art/test_narrative_card_overrides.py": "692f4f5d6ba3df81f4587040e446460dc0218a9b478d6a009b9078ed50d389d6",
+    "tools/art/test_narrative_scene_overrides.py": "496d08547b72691ced524e7e76dee00b67d30ae3debe817f28f6a5d1856e87e6",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json": "923834d7bd31c7be32d524ae3aad6063f03271b2103594cf58727b3840b2c83b",
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json": "9d6dc4ee9bf5fc2f8cd4c54baa7cce6bea656408a9f2071a0bb2b90ca7637c7c",
+    "docs/art-rebuild-20261019/approved-v5/scope-ledger.json": "abda41e9ff9a4320428dc1b0788d7b06eb31eb940b7b0981c92421a4649fc02d",
+    "docs/art-rebuild-20261019/approved-v5/progress.json": "f380f3b8caf7f75d5403703d8463efcc594e100b076c48a9296bc063285c1012",
+    "packages/story-candidate-01/src/story.ts": "230b746b644834893153498fb852fef21304b9141feb8aa69d4f4b8f54240195",
+    "packages/story-candidate-01/src/campaign.ts": "4c217fe0b950c81a7e3d5c6f49192c69bdefdb6eaa0f7ab857ed25137f50bf9a",
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/presentation/candidate-01-story.ts": "a51ef93978cdbef035321d8a489b827b27bb1560e6bdf083140f2a2ba58f558b",
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts": "821dacd8f867d227bc8a2839b1a85f5869be7b9cf1193c82796386d0676930fa",
+    "packages/game-ui/src/ui/campaign-game.ts": "8b43d338ccd432245d5f90ea93f8be82d25b90a9110a721fcbf313193ebddcd9",
+    "packages/game-ui/src/styles/campaign.css": "f0996ae715eed616754224cceda2345e28b1eb59a4528cfcf0a90fab5d577795"
+  },
+  "historicalHdPaths": [
+    {
+      "filename": "campaign-props-sheet-02-hd.png",
+      "found": []
+    },
+    {
+      "filename": "manifest-hd.json",
+      "found": []
+    }
+  ],
+  "verification": {
+    "sourceBoardMappingsFrom": "AST literal NARRATIVE_SOURCES + canonical topic catalog order",
+    "originalPixelReconstructionsMatched": 17,
+    "originalCropsExtracted": 34,
+    "originalCropDecodedPixelsVerified": true,
+    "repoWritesPerformed": false,
+    "gitCommandsPerformed": false,
+    "generationPerformed": false,
+    "browserOrLiveGameQA": false,
+    "tests": "scene-tests.log, card-tests.log, static-tests.log",
+    "literalRuntimeReferences": 0,
+    "sourceAndRuntimeFilesUnchangedAtCompletion": true,
+    "originalBoardsVisuallyReviewed": [
+      "prop-board-01.png",
+      "prop-board-02.png",
+      "prop-board-03.png",
+      "prop-board-04.png",
+      "scene-board-07.png"
+    ],
+    "recommendedNative617pxCropsIndividuallyViewed": [
+      "C01-PROP-LEFT-GLOVE",
+      "C01-PROP-EXILE-HARDTACK",
+      "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "C01-PROP-CROWN-FRAGMENT"
+    ],
+    "isolatedTestsPassed": {
+      "test_export_overrides.py": 17,
+      "test_narrative_card_overrides.py": 14,
+      "test_narrative_scene_overrides.py": 19,
+      "total": 50
+    }
+  },
+  "proposedExportContract": "proposed-export-contract.json"
+}

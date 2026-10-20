@@ -1,0 +1,118 @@
+{
+  "status": "PROPOSED ONLY; no exporter, catalog, manifest, UI or runtime writes performed",
+  "owner": "tools/art/source-overrides.json selects immutable master; canonical manifest remains sole owner of topic/kind/geometry; existing HD manifest owns optional physical density",
+  "entrySchema": {
+    "kind": "transparent-prop-v1",
+    "prop": {
+      "source": "pack masters path to complete independent native RGBA PNG",
+      "sha256": "verified whole file SHA-256"
+    }
+  },
+  "canonicalEligibility": {
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "kind": "key-prop",
+    "size": [
+      128,
+      128
+    ],
+    "forbiddenFields": [
+      "anchor",
+      "frames",
+      "variants",
+      "frameWidth",
+      "frameHeight"
+    ],
+    "currentSemanticHolds": [
+      "C01-CH01-S00"
+    ],
+    "classificationCorrectionExcludedFromTransparentPath": [
+      "C01-CH03-S11"
+    ]
+  },
+  "sourceRules": {
+    "trueAlpha": "RGBA; zero-alpha exterior/open gaps; near-opaque core; existing validate_alpha outer-edge<=1 policy; visual review still required",
+    "readSource": "reuse source containment/PNG/hash validation",
+    "size": "native source must be at least the largest requested export, never upsample a128px legacy runtime into a purported new source",
+    "forbiddenTransforms": [
+      "chroma key",
+      "background removal",
+      "bbox fitting",
+      "inferred crop",
+      "alpha cleanup/replacement",
+      "recolor",
+      "painted or baked checkerboard",
+      "flattening onto a matte"
+    ]
+  },
+  "canonicalExport": {
+    "method": "reuse existing whole-authored-canvas contain, center, LANCZOS fit",
+    "size": [
+      128,
+      128
+    ],
+    "logicalPadding": 2,
+    "target": "existing canonical runtime/narrative-static path",
+    "sourcePreserved": true,
+    "alphaValidation": "existing validate_alpha before and after",
+    "anchor": "absent; do not add battle-prop center or feet anchors"
+  },
+  "optionalHd": {
+    "default": "none; current17 have no HD records or actual consumers",
+    "supportedMinimalExtension": {
+      "size": [
+        256,
+        256
+      ],
+      "pixelDensity": 2,
+      "padding": 4,
+      "rendering": "independent from complete source, not upscaled canonical128",
+      "registration": "only if explicitly added to current v2 HD manifest and file exists in Vite graph"
+    },
+    "runtimeReaderChangesNeededFor2x": false,
+    "sourceNativeDensityAbove2": "not currently allowed for key-props; requires intentional scoped change in validateCandidate01HdAsset and density tests. Do not quietly weaken all non-scene checks."
+  },
+  "fullsceneExceptions": {
+    "C01-CH03-S11": "Propose documented canonical kind correction key-prop→scene, preserving128×128, path, topic, label and opaque current pixels. Both original source and authored scene brief agree. Then share opaque-scene-v1 with ratio derived from declared canonical geometry; no fullscene-in-prop fallback and no automatic16:9 recrop.",
+    "C01-CH01-S00": "hold loose-bracer key-prop versus hand-interaction scene mismatch; no automatic reinterpretation.",
+    "existing41SceneTopics": "opaque scene masters/outputs remain opaque; people/props inside them are not reusable alpha sources"
+  },
+  "dispatchChange": "Add explicit key-prop branch in narrative-static plan dispatch; scene remains render_scene, character-card remains compose_character_card, unknown narrative kinds reject explicitly. Do not pass key-props through tactical contracts requiring anchors.",
+  "provenance": [
+    "kind",
+    "whole-source source/sha256/mode/size/alpha",
+    "complete-canvas fit, origin, output size, density, padding and resampling",
+    "output alpha and pixel SHA-256",
+    "visual review required"
+  ],
+  "requiredTests": [
+    "All four recommended IDs export only128×128 RGBA to existing paths and preserve absent anchor/frame metadata",
+    "Source bytes, canonical and HD manifests, seven character cards and all unregistered runtime files remain unchanged",
+    "Full authored canvas is contained with expected padding; off-center subject remains off-center; disjoint bridle pieces and open holes survive; no bbox or crop",
+    "Semi-transparent source pixel survives without a second alpha mask; empty, opaque RGB/RGBA, matte/checkerboard visual QA, edge alpha>=2 rejected; edge1 retained/reported",
+    "Source smaller than requested output rejected; optional256px HD is sampled directly from source and density2 only",
+    "Hash mismatch, duplicate keys/destination, wrong pack/path, unknown kind, unexpected fields, changed geometry/anchor/frames and malformed HD reject before any write",
+    "CH03-S11 classification correction is documented with128×128 unchanged and remains opaque; CH01-S00 remains a genuine mismatch; opaque scene entry cannot bypass canonical kind/size checks; existing character and wide-scene tests continue passing",
+    "Check mode/repeated export pixel-stable; invalid later registration prevents earlier writes",
+    "Integrated catalog resolver returns canonical key-prop or explicit2x URL with unchanged128 logical geometry; this does not assert a shipped UI consumer",
+    "If adding any narrative key-prop HD entry, fix the existing density test mock to select canonical scene identities instead of all runtime-hd/narrative-static paths; it currently rewrites that whole directory to scene1664×936 geometry"
+  ],
+  "squareSceneCorrection": {
+    "status": "proposed, not applied",
+    "topicId": "C01-CH03-S11",
+    "authoritativeChange": "canonical kind key-prop→scene only;128×128 retained; update derived classification/transparency documentation",
+    "renderer": "existing render_scene; same opaque-scene-v1 schema",
+    "boundedGeometry": "accept current existing256×144 and documented128×128 scene shapes; keep unframed/no-anchor constraints",
+    "aspectRule": "(cropRight-cropLeft)*asset.height == (cropBottom-cropTop)*asset.width",
+    "sourceMinimum": "compare source region against canonical width/height times registered density, never hardcoded256/144",
+    "pixelOperations": "complete square source when sourceCropBox=null, or explicit reviewed square crop; opaque master, no inferred center cover and no stretch",
+    "hd": "none needed for metadata correction; if explicitly registered later, same exact physical/logical ratio and source sampling rules; runtime scene validator/tests must accept documented square shape",
+    "tests": [
+      "classification change does not alter existing128×128 PNG bytes/path or create a new canonical topic",
+      "square scene accepts complete square source and rejects16:9 region, transparent source, frames/anchor",
+      "existing41 wide scenes retain256×144 and16:9 behavior",
+      "integrated scene tests derive expectations from canonical geometry; update source-native-HD test mock by topic/shape rather than narrative directory",
+      "incorrect key-prop opaque entry still rejects; CH01-S00 remains a decision because original and planned scene differ"
+    ]
+  }
+}

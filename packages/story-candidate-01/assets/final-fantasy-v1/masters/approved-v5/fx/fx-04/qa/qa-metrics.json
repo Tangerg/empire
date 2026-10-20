@@ -2,7 +2,9 @@
   "topicId": "C01-FX-04",
   "phaseOrder": [
     "contact",
-    "expand"
+    "expand",
+    "peak",
+    "settle"
   ],
   "sourceCanvas": [
     1254,
@@ -184,7 +186,414 @@
         0.29565057490848545,
         1.3178100152328653
       ]
+    },
+    {
+      "phase": "peak",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "36be71b43da20ef53b6d4a4533f22cb9630c1841bfafcb1129b7bd4695809ca9",
+      "decodedPixelSha256": "8e9e4ba72048510b3d3c731d1d94324e28b06797233958c76571a84eef2cea94",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        28,
+        39,
+        1228,
+        1220
+      ],
+      "bboxAlpha128": [
+        31,
+        289,
+        1225,
+        981
+      ],
+      "alphaMass": 351526.81176470587,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "d288840f10edfa7aa6d7efebacd6fd732eab9efece08e3f2f33a4a75b68db9cf",
+          "bboxAlpha1": [
+            2,
+            6,
+            30,
+            26
+          ],
+          "alphaMass": 176.53333333333333,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "c00a31d74a3c19d0bc800c2b811a048b72e14a83146e8c3131d3aaf2c1a42c64",
+          "bboxAlpha1": [
+            4,
+            14,
+            60,
+            50
+          ],
+          "alphaMass": 702.2588235294118,
+          "final2PixelBorderMax": 0
+        }
+      }
+    },
+    {
+      "phase": "settle",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "c3f25961a3964fb186ef5dccbf3f5b0de5869e08df8b7e87beb618605e0e7829",
+      "decodedPixelSha256": "fee5d157df83be0ef543f079541a78d77bddf11b224e2b7768a930b8a3ba012e",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        39,
+        25,
+        1214,
+        1214
+      ],
+      "bboxAlpha128": [
+        293,
+        618,
+        977,
+        887
+      ],
+      "alphaMass": 23834.54117647059,
+      "maxAlpha": 170,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "24514bff0f0005b27ebaaed4d51c6e175fb72c4f0d115e578b2f3d1d04fc3afb",
+          "bboxAlpha1": [
+            6,
+            13,
+            26,
+            24
+          ],
+          "alphaMass": 12.941176470588236,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "6b5dc9ca80b67b08e144564c4f90769de3a90b6d998e6cbdca7d776cec80a403",
+          "bboxAlpha1": [
+            15,
+            29,
+            50,
+            46
+          ],
+          "alphaMass": 50.61960784313725,
+          "final2PixelBorderMax": 0
+        }
+      }
     }
   ],
-  "apng": []
+  "apng": [
+    {
+      "path": "12fps-420ms-heldfinal-transparent@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "b3df648fdff3a9881585bf2bc6cc66dc746710a72867842bea6c7fc8b10a0ba0"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "66a276c220c6aaa3b4f9d4c9ce048d5ad8125fd2077e8d567ac5756b5cbefe42"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "a24a7655cd4184d32d841837e766ff76c2a75ef5aa6abbbc3d0f5f4a75d62427"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "14320238c6b885a9c9bb724555d3d861b2567852cc591ed02ef0e64e47b8a7dc"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "1095b7e19387c1ff4e6fd5fd1730cbd071fe6c818b186ea3fc896dcc904f0d3d"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "fd72be1b0f1655a460b813dad50f28e965cd4ad14aad67323961bce0f826beb0"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-transparent@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "9dcfe7c74002a32b32703549783ad05e189c2f1ac6c5a3b69727363d11c3b3c5"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "d50c933e2509c86bb014d22d0d891ab9cb4c6f8f0eee5f4f0a125631834565be"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "adf4a8bd502a65dcd88850754f6df1052ab836a791482f792051fbe7d20b0813"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "597e0c1739b58fa3fa5ec589625263df0d72858fd2d5855ab2224b1062de3dd3"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "ec71538b8603f750c1507e62fd2c3c02512f155cb424eecb1603e71380783c15"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "c3827956049254f52c85d87906d482250ac159febc5c23064b75e416c4ff5348"
+    }
+  ]
 }
