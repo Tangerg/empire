@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-b/master.png"
+    },
+    "scale": 0.047670639219934995,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      807.75,
+      963
+    ],
+    "sourceFeet": {
+      "idle": [
+        807.75,
+        963
+      ],
+      "walk-a": [
+        780.5,
+        932
+      ],
+      "carry-or-work": [
+        805.5,
+        962
+      ],
+      "walk-b": [
+        768.75,
+        946
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.2990249187432286,
+        1.4777898158179847
+      ],
+      "carry-or-work": [
+        0.10725893824485373,
+        0.047670639219934995
+      ],
+      "walk-b": [
+        1.8591549295774648,
+        0.8104008667388949
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    46.50595882990249,
+    49.9068255687974
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "7704211987a30d8c5c06b33817413e2f20bba84ff41eaa3e0758199b9db53d66",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5830,
+        "nearOpaquePixels": 699,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          6,
+          57,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "7704211987a30d8c5c06b33817413e2f20bba84ff41eaa3e0758199b9db53d66",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23396,
+        "nearOpaquePixels": 2876,
+        "edgeMax": 0,
+        "visibleBounds": [
+          66,
+          12,
+          114,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-a/master.png",
+      "registrationOffset": [
+        1.2990249187432286,
+        1.4777898158179847
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "875ce5e486f96ab7a7b6b8d0ef0efae2e228f3aaf4157daecee946b74a55852f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5852,
+        "nearOpaquePixels": 655,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          7,
+          61,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-a/master.png",
+      "registrationOffset": [
+        1.2990249187432286,
+        1.4777898158179847
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "875ce5e486f96ab7a7b6b8d0ef0efae2e228f3aaf4157daecee946b74a55852f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23520,
+        "nearOpaquePixels": 2693,
+        "edgeMax": 0,
+        "visibleBounds": [
+          66,
+          15,
+          121,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/carry-or-work/master.png",
+      "registrationOffset": [
+        0.10725893824485373,
+        0.047670639219934995
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "02fc06e2ec10a0044c8c40351c8f73e9daa5505812055547c501a23c57abce45",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5883,
+        "nearOpaquePixels": 646,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          6,
+          57,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/carry-or-work/master.png",
+      "registrationOffset": [
+        0.10725893824485373,
+        0.047670639219934995
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "02fc06e2ec10a0044c8c40351c8f73e9daa5505812055547c501a23c57abce45",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23617,
+        "nearOpaquePixels": 2648,
+        "edgeMax": 0,
+        "visibleBounds": [
+          67,
+          11,
+          114,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-b/master.png",
+      "registrationOffset": [
+        1.8591549295774648,
+        0.8104008667388949
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "5fc28085179fa42db1693424dc92bf572e1eb928f45e6c6f49cf36623604d002",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5910,
+        "nearOpaquePixels": 612,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          7,
+          60,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-b/master.png",
+      "registrationOffset": [
+        1.8591549295774648,
+        0.8104008667388949
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "5fc28085179fa42db1693424dc92bf572e1eb928f45e6c6f49cf36623604d002",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23751,
+        "nearOpaquePixels": 2507,
+        "edgeMax": 0,
+        "visibleBounds": [
+          70,
+          13,
+          119,
+          100
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

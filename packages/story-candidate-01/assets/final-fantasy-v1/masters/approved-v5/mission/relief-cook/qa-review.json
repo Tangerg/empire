@@ -1,0 +1,51 @@
+{
+  "status": "Native quartet passes identity, geometry, hand/prop, opposite-step semantics and three-background visual QA; parent final integration pending",
+  "topicId": "C01-MISSION-RELIEF-COOK",
+  "scale": 0.047058823529411764,
+  "bodyReferenceSourcePixels": 935,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "originalCropsPixelExactToBoard": true,
+  "originalCanonicalAndHDCopiesHashExact": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "All four native perimeters have zero alpha>1 pixels. Native max alpha is idle1/walk-a1/work0/walk-b0. Trace alpha1 remains untouched.",
+  "exteriorHazeGate": "All four native files have zero alpha>1 pixels more than7 pixels from alpha>127 silhouette. Native black/white/scene composites show no visible background, cast shadow or halo.",
+  "sourceCanvas": [
+    1586,
+    992
+  ],
+  "paddingTolerance": 1,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 2.8941176470588235,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Olive-green older orc-like cook with pointed ears, two short ivory tusks, graying charcoal hair, rusty red coat, cream apron, brown trousers and boots. Screen-left hand grips beige tied supply sack; screen-right hand holds upright metal ladle. Both boots planted. No baker identity or basket.",
+    "walk-a": "Screen-right boot leads heel-first with broad underside visible; screen-left boot supports behind. Sack swings outward in screen-left hand and metal ladle remains in screen-right hand. Same unmirrored face direction and body scale.",
+    "carry-or-work": "Substantial serving gesture: near screen-left arm extends the metal ladle bowl outward at waist height; far screen-right hand grips the source round wooden spoon with grain motif. Two boots brace apart; tied supply sack rests beside outer screen-right boot. Exactly two arms and hands, one per utensil. No invented pot, basket or extra food.",
+    "walk-b": "Opposite walking contact: screen-left boot leads heel-first with broad underside visible; screen-right boot supports behind. Sack and ladle stay in their walking hands. Same unmirrored face direction. The two walking leg silhouettes are clearly opposite."
+  },
+  "generationAttempts": 4,
+  "rejections": [],
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only; zero verified actors and scene placements.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-shared-scale-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif",
+    "qa-walking-loop.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png",
+    "qa-foot-measurements.png"
+  ],
+  "logicalReviewExportMethod": "Same full-canvas44/935 affine scale for every pose, with independently measured sole offsets.4x supersampled antialias review then downsample to104x64. No silhouette fitting.",
+  "scenePreviewMeaning": "Green backdrop is scene-tone QA only, not an actual authored scene placement."
+}

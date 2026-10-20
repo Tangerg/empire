@@ -1,0 +1,86 @@
+{
+  "nativeSize": [
+    1584,
+    993
+  ],
+  "nativeMode": "RGBA",
+  "bboxAlphaNonzero": [
+    0,
+    43,
+    1563,
+    967
+  ],
+  "bboxAlphaGreaterThan1": [
+    525,
+    44,
+    1185,
+    946
+  ],
+  "bboxAlphaGreaterThan127": [
+    528,
+    46,
+    1182,
+    943
+  ],
+  "alphaZeroFraction": 0.7741475683318584,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "measuredBootSoleBands": [
+    {
+      "measurementROI": [
+        590,
+        800,
+        790,
+        940
+      ],
+      "bottom": 933,
+      "bottom4RowsBounds": [
+        705,
+        930,
+        741,
+        934
+      ],
+      "soleCenterX": 722.5
+    },
+    {
+      "measurementROI": [
+        790,
+        800,
+        1030,
+        940
+      ],
+      "bottom": 927,
+      "bottom4RowsBounds": [
+        876,
+        924,
+        958,
+        928
+      ],
+      "soleCenterX": 916.5
+    }
+  ],
+  "measurementOnlyCaneExclusion": [
+    [
+      640,
+      900,
+      705,
+      993
+    ]
+  ],
+  "sourceFoot": [
+    819.5,
+    933
+  ],
+  "sha256": "b1127bae50273ee40ca6c15c95ae2229e2dc51d6a0d2fd931ac2c84600c2932d",
+  "rawMatchesMaster": true,
+  "nativeAlphaUntouched": true,
+  "bootMeasurement": "Separate visible boot sole alpha>127 bottom4-row bands. Cane rectangle excluded ONLY in measurement mask, never from source art. Mean underside centers supplies x; lowest sole supplies y. Whole canvas translation only.",
+  "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+    "pixelCountAlphaGreaterThan1": 0,
+    "maxAlpha": 1
+  }
+}

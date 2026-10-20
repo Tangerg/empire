@@ -1,0 +1,74 @@
+{
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "nativeMode": "RGBA",
+  "bboxAlphaNonzero": [
+    43,
+    28,
+    1449,
+    961
+  ],
+  "bboxAlphaGreaterThan1": [
+    193,
+    29,
+    1249,
+    960
+  ],
+  "bboxAlphaGreaterThan127": [
+    196,
+    31,
+    1246,
+    958
+  ],
+  "alphaZeroFraction": 0.6789304976086293,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "measuredBootSoleBands": [
+    {
+      "xRange": [
+        430,
+        795
+      ],
+      "bottom": 957,
+      "bottom4RowsBounds": [
+        514,
+        954,
+        608,
+        958
+      ],
+      "soleCenterX": 560.5
+    },
+    {
+      "xRange": [
+        795,
+        1120
+      ],
+      "bottom": 938,
+      "bottom4RowsBounds": [
+        965,
+        935,
+        1052,
+        939
+      ],
+      "soleCenterX": 1008.0
+    }
+  ],
+  "sourceFoot": [
+    784.25,
+    957
+  ],
+  "sha256": "be7c7248b8d789c79491671a077e3da2d60e6a3ef2fef3acea6173285f715777",
+  "rawMatchesMaster": true,
+  "nativeAlphaUntouched": true,
+  "bootMeasurement": "Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Only translate the entire canvas.",
+  "exteriorBeyond7PixelsFromOpaqueSilhouette": {
+    "pixelCountAlphaGreaterThan1": 0,
+    "maxAlpha": 1
+  }
+}

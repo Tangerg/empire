@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "editTarget": "../idle/master.png",
+  "postprocessing": "Byte-for-byte copies to raw.png and master.png. QA-only composites/resampling. No alpha edits, cleanup, crop or per-pose fitting.",
+  "sourceArtReadOnly": true,
+  "requestSha256": "e395eeeac8eb288aa3c89c9593c0f528988e137922d8e1cb3379054a028344e6",
+  "promptSha256": "7da9959446d12225b6e1c69563c302d0273c0d67ff1fd37b8aec00f77b7bb751",
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/released-veteran/idle/master.png",
+      "sha256": "b1127bae50273ee40ca6c15c95ae2229e2dc51d6a0d2fd931ac2c84600c2932d"
+    }
+  ],
+  "rawSha256": "d743d49a12f82dcfac94432fa17a217ec50f2e13305c03431a21d1fd511d8bde",
+  "masterSha256": "d743d49a12f82dcfac94432fa17a217ec50f2e13305c03431a21d1fd511d8bde"
+}

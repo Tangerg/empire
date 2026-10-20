@@ -1,0 +1,154 @@
+{
+  "topicId": "C01-MISSION-RELIEF-COOK",
+  "assetId": "C01-FFV1-MISSION-RELIEF-COOK",
+  "label": "救济厨工",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; parent final review/export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationAttempts": 4,
+  "rejectedAttempts": [],
+  "nativeArtPolicy": "Every raw/master pair is byte-identical. No alpha cleanup, painting, recoloring, crop, per-pose scaling, source padding or source pixel modification. Separate technical export/QA composites only.",
+  "sourceEvidence": "source-evidence.json",
+  "identityAudit": "identity-audit.md",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "idleGateApproval": "idle-gate-approval.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-relief-cook.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "png": "runtime-hd/mission-unit/mission-relief-cook.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "classification": "catalog-only",
+  "consumerClassification": "catalog-only",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "liveGameAcceptance": false,
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b; opposite leading boots and a distinct two-handed serving action using original cooking utensils. No authored gameplay consumer is established.",
+  "generationInterpretation": "First walk request specified screen-left leading, but its accepted native result leads screen-right. The second walk request explicitly uses that result as reference and generates the opposite screen-left leading contact. Exact original requests are preserved; semantic review reflects the actual images.",
+  "sourceEquipmentContinuity": "Original work pose swaps ladle to screen-left hand and wooden spoon to screen-right, with sack set beside screen-right boot. New work preserves this action-specific equipment arrangement. Both new walking poses use the idle sack/ladle arrangement for continuity.",
+  "palettePolicy": "Preserve olive-green skin, ivory tusks, graying charcoal hair, rusty red coat, cream apron and beige sack, brown trousers and boots, steel-gray ladle and warm wooden grain-marked spoon. No faction recolor or baker equipment.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "d34a940f99205b72c6a3fef0951409ed1169dd0e8537e583f71381ede296e8f1",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        827.25,
+        966
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Olive-green older orc-like cook with pointed ears, two short ivory tusks, graying charcoal hair, rusty red coat, cream apron, brown trousers and boots. Screen-left hand grips beige tied supply sack; screen-right hand holds upright metal ladle. Both boots planted. No baker identity or basket."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "79b9611376bbc8eb668f40b97c805d774812f81ce978fdc4e9fe66a3cd1cd582",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        792.75,
+        952
+      ],
+      "registrationOffsetLogical": [
+        1.6235294117647059,
+        0.6588235294117647
+      ],
+      "review": "Screen-right boot leads heel-first with broad underside visible; screen-left boot supports behind. Sack swings outward in screen-left hand and metal ladle remains in screen-right hand. Same unmirrored face direction and body scale."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "be7c7248b8d789c79491671a077e3da2d60e6a3ef2fef3acea6173285f715777",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        784.25,
+        957
+      ],
+      "registrationOffsetLogical": [
+        2.023529411764706,
+        0.4235294117647059
+      ],
+      "review": "Substantial serving gesture: near screen-left arm extends the metal ladle bowl outward at waist height; far screen-right hand grips the source round wooden spoon with grain motif. Two boots brace apart; tied supply sack rests beside outer screen-right boot. Exactly two arms and hands, one per utensil. No invented pot, basket or extra food."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "66fc822fa8da23aa3250836b929db4ae46555d577648b318c84ab8f9b03b2a5f",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        888.75,
+        955
+      ],
+      "registrationOffsetLogical": [
+        -2.8941176470588235,
+        0.5176470588235293
+      ],
+      "review": "Opposite walking contact: screen-left boot leads heel-first with broad underside visible; screen-right boot supports behind. Sack and ladle stay in their walking hands. Same unmirrored face direction. The two walking leg silhouettes are clearly opposite."
+    }
+  }
+}

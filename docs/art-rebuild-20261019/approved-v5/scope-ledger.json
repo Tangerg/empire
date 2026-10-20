@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 342,
+    "formalBound": 345,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 18,
+      "mission-unit": 21,
       "narrative-static": 13,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 342,
+    "rawPreservedTopics": 345,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2533,13 +2533,23 @@
       "category": "mission-unit",
       "label": "被控制的普通士兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/controlled-soldier/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-controlled-soldier.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-controlled-soldier.png",
+      "stageEvidence": {
+        "raw": "Original worried helmeted man, gray armor and gold control bands with empty hands; opposite steps and tense duty gesture; immutable native sources and exact evidence preserved",
+        "export": "shared44/923 scale, measured support translation within1.859logicalpx, technicalpadding2px; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-COUNCIL-DELEGATE",
@@ -2791,13 +2801,23 @@
       "category": "mission-unit",
       "label": "解除控制的退伍兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/released-veteran/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/released-veteran/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/released-veteran/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/released-veteran/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-released-veteran.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-released-veteran.png",
+      "stageEvidence": {
+        "raw": "Original elderly gray-haired woman with cane and broken gold control collar/key; opposite assisted steps and raised collar inspection; immutable native sources and exact evidence preserved",
+        "export": "shared44/887 scale, measured support translation within2.568logicalpx, no padding; cane contact perspective preserved; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-RELIEF-COOK",
@@ -2805,13 +2825,23 @@
       "category": "mission-unit",
       "label": "救济厨工",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-relief-cook.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-relief-cook.png",
+      "stageEvidence": {
+        "raw": "Original olive tusked older cook, rust coat, cream apron, ladle and supply sack; opposite steps and source-derived two-utensil serving pose; immutable native sources and exact evidence preserved",
+        "export": "shared44/935 scale, measured support translation within2.895logicalpx, technicalpadding1px; full-canvas1x/2x export and three-background native visual review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored scene consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-SCRIBE",

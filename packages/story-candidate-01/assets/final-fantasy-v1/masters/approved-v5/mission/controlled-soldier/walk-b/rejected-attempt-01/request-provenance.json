@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "status": "rejected-not-selected",
+  "reason": "Same stride phase as walk-a; replacement required.",
+  "promptFileSha256": "e63c42d04ba29a0c8954e2567b0d65e60fa434b0b1dbf805054c39ab256b323b",
+  "requestFileSha256": "d3fa9a0b07474258b8d2509db06a29844728c91b043fe575400952f7e233e00f",
+  "rawSha256": "c3779586bbbf2bda485232efd72a6cc6b3b6178182c1bd4cf16ba678342ea3f6",
+  "masterSha256": "c3779586bbbf2bda485232efd72a6cc6b3b6178182c1bd4cf16ba678342ea3f6",
+  "rawMasterIdentical": true,
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/controlled-soldier/idle/master.png",
+      "sha256": "7704211987a30d8c5c06b33817413e2f20bba84ff41eaa3e0758199b9db53d66"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/controlled-soldier/walk-a/master.png",
+      "sha256": "875ce5e486f96ab7a7b6b8d0ef0efae2e228f3aaf4157daecee946b74a55852f"
+    }
+  ]
+}

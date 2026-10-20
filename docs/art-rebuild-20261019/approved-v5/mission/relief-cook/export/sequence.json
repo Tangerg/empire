@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-b/master.png"
+    },
+    "scale": 0.047058823529411764,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      827.25,
+      966
+    ],
+    "sourceFeet": {
+      "idle": [
+        827.25,
+        966
+      ],
+      "walk-a": [
+        792.75,
+        952
+      ],
+      "carry-or-work": [
+        784.25,
+        957
+      ],
+      "walk-b": [
+        888.75,
+        955
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.6235294117647059,
+        0.6588235294117647
+      ],
+      "carry-or-work": [
+        2.023529411764706,
+        0.4235294117647059
+      ],
+      "walk-b": [
+        -2.8941176470588235,
+        0.5176470588235293
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original source identity, opposite walks and functional action; same authored canvas scale and measured boot support. Catalog-only, no deployed actor invented."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    46.92941176470588,
+    49.45882352941177
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d34a940f99205b72c6a3fef0951409ed1169dd0e8537e583f71381ede296e8f1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5552,
+        "nearOpaquePixels": 942,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          5,
+          66,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d34a940f99205b72c6a3fef0951409ed1169dd0e8537e583f71381ede296e8f1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22346,
+        "nearOpaquePixels": 3851,
+        "edgeMax": 0,
+        "visibleBounds": [
+          57,
+          11,
+          132,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-a/master.png",
+      "registrationOffset": [
+        1.6235294117647059,
+        0.6588235294117647
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "79b9611376bbc8eb668f40b97c805d774812f81ce978fdc4e9fe66a3cd1cd582",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5491,
+        "nearOpaquePixels": 973,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          6,
+          68,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-a/master.png",
+      "registrationOffset": [
+        1.6235294117647059,
+        0.6588235294117647
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "79b9611376bbc8eb668f40b97c805d774812f81ce978fdc4e9fe66a3cd1cd582",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22122,
+        "nearOpaquePixels": 4017,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          12,
+          137,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/carry-or-work/master.png",
+      "registrationOffset": [
+        2.023529411764706,
+        0.4235294117647059
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "be7c7248b8d789c79491671a077e3da2d60e6a3ef2fef3acea6173285f715777",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5450,
+        "nearOpaquePixels": 992,
+        "edgeMax": 0,
+        "visibleBounds": [
+          19,
+          6,
+          69,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/carry-or-work/master.png",
+      "registrationOffset": [
+        2.023529411764706,
+        0.4235294117647059
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "be7c7248b8d789c79491671a077e3da2d60e6a3ef2fef3acea6173285f715777",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21949,
+        "nearOpaquePixels": 4123,
+        "edgeMax": 0,
+        "visibleBounds": [
+          38,
+          12,
+          137,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-b/master.png",
+      "registrationOffset": [
+        -2.8941176470588235,
+        0.5176470588235293
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "66fc822fa8da23aa3250836b929db4ae46555d577648b318c84ab8f9b03b2a5f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5452,
+        "nearOpaquePixels": 1027,
+        "edgeMax": 0,
+        "visibleBounds": [
+          20,
+          6,
+          66,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/relief-cook/walk-b/master.png",
+      "registrationOffset": [
+        -2.8941176470588235,
+        0.5176470588235293
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "66fc822fa8da23aa3250836b929db4ae46555d577648b318c84ab8f9b03b2a5f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21932,
+        "nearOpaquePixels": 4205,
+        "edgeMax": 0,
+        "visibleBounds": [
+          39,
+          12,
+          131,
+          99
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

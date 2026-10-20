@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
+  "assetId": "C01-FFV1-MISSION-CONTROLLED-SOLDIER",
+  "label": "\u88ab\u63a7\u5236\u7684\u666e\u901a\u58eb\u5175",
+  "generator": "built-in image_gen.imagegen",
+  "consumerStatus": "catalog-only",
+  "status": "ready-for-coordinator-review",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "frames": {
+    "idle": {
+      "master": "idle/master.png",
+      "raw": "idle/raw.png",
+      "native": "idle/native.png",
+      "request": "idle/request.json",
+      "prompt": "idle/prompt.txt",
+      "qa": "idle/alpha-qa.json",
+      "provenance": "idle/request-provenance.json"
+    },
+    "walk-a": {
+      "master": "walk-a/master.png",
+      "raw": "walk-a/raw.png",
+      "native": "walk-a/native.png",
+      "request": "walk-a/request.json",
+      "prompt": "walk-a/prompt.txt",
+      "qa": "walk-a/alpha-qa.json",
+      "provenance": "walk-a/request-provenance.json"
+    },
+    "carry-or-work": {
+      "master": "carry-or-work/master.png",
+      "raw": "carry-or-work/raw.png",
+      "native": "carry-or-work/native.png",
+      "request": "carry-or-work/request.json",
+      "prompt": "carry-or-work/prompt.txt",
+      "qa": "carry-or-work/alpha-qa.json",
+      "provenance": "carry-or-work/request-provenance.json"
+    },
+    "walk-b": {
+      "master": "walk-b/master.png",
+      "raw": "walk-b/raw.png",
+      "native": "walk-b/native.png",
+      "request": "walk-b/request.json",
+      "prompt": "walk-b/prompt.txt",
+      "qa": "walk-b/alpha-qa.json",
+      "provenance": "walk-b/request-provenance.json"
+    }
+  },
+  "registration": "registration-evidence.json",
+  "fixedScale": 0.047670639219934995,
+  "bodyTargetHeightLogicalPixels": 44,
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "origin": [
+    8,
+    4
+  ],
+  "sourceFoot": [
+    807.75,
+    963
+  ],
+  "anchor": [
+    46.50595882990249,
+    49.9068255687974
+  ],
+  "registrationLimit": 2,
+  "canvasPaddingTolerance": 2,
+  "sourceEvidence": "source-evidence.json",
+  "qaReview": "qa-review.json",
+  "selectedNativeMasterCount": 4,
+  "generatedNativeOutputCount": 5,
+  "rejectedNativeOutputCount": 1,
+  "scope": "Native authored masters and diagnostic technical exports only. No repository edits or runtime consumer claims."
+}

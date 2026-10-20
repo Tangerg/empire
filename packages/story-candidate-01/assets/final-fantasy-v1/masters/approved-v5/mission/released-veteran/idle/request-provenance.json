@@ -1,0 +1,30 @@
+{
+  "tool": "image_gen.imagegen",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "sourceCopies": "../source-evidence/",
+  "postprocessing": "Byte-for-byte copies to raw.png and master.png. QA-only composites/resampling. No alpha edits, cleanup, crop or per-pose fitting.",
+  "sourceArtReadOnly": true,
+  "requestSha256": "d460518c920c6638a950769b768de6ecfe5326bf2628ee6e30397b7590010ce0",
+  "promptSha256": "e460711e4062b7c5d80569427eea4d22aa3891646501efd4ab4b01d9d30a5b2c",
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/released-veteran/source-evidence/original-highres-idle.png",
+      "sha256": "64c5c2d79cc57835cf2124eefdf74873465417583081c4012bb64ced194ba05e"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/released-veteran/source-evidence/approved-wall-laborer-idle.png",
+      "sha256": "0ba608815a55c6b947d0e3e1639b08262a444c54e04cedd444897a1df62f0fa3"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/released-veteran/source-evidence/approved-scribe-idle.png",
+      "sha256": "61186a6e1565eac31fc307cd548fe61554b5fe6cbba9ba684ceca17b56f8efe8"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/released-veteran/source-evidence/approved-caravan-escort-idle.png",
+      "sha256": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e"
+    }
+  ],
+  "rawSha256": "b1127bae50273ee40ca6c15c95ae2229e2dc51d6a0d2fd931ac2c84600c2932d",
+  "masterSha256": "b1127bae50273ee40ca6c15c95ae2229e2dc51d6a0d2fd931ac2c84600c2932d"
+}

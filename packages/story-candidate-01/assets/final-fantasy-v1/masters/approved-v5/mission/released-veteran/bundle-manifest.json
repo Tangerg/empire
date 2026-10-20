@@ -1,0 +1,159 @@
+{
+  "topicId": "C01-MISSION-RELEASED-VETERAN",
+  "assetId": "C01-FFV1-MISSION-RELEASED-VETERAN",
+  "label": "解除控制的退伍兵",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator final review/export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "generationAttempts": 5,
+  "rejectedAttempts": [
+    {
+      "pose": "walk-b",
+      "attempt": 1,
+      "path": "rejected/walk-b-attempt-1",
+      "reason": "Rejected: visually repeats walk-a with screen-right boot lifted forward and screen-left boot planted; not a clearly opposing step. Identity and alpha were intact. No pixel cleanup attempted."
+    }
+  ],
+  "nativeArtPolicy": "All selected raw/master pairs are byte-identical. No alpha cleanup, painting, recolor, crop, per-pose scaling, source padding or source pixel modification. QA composites only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qaReview": "qa-review.json",
+  "idleGateApproval": "idle-gate-approval.json",
+  "originalLogicalRuntimeContract": {
+    "png": "runtime/mission-unit/mission-released-veteran.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "originalHDRuntimeContract": {
+    "png": "runtime-hd/mission-unit/mission-released-veteran.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "classification": "catalog-only",
+  "consumerClassification": "catalog-only",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "scenePlacementCount": 0,
+  "liveGameAcceptance": false,
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Work raises and examines the original broken control collar as release gesture. Catalog availability does not imply authored gameplay use.",
+  "sourceAnomalyResolution": "Legacy label might suggest a male veteran, but exact source is an elderly woman. Preserve her distinct identity and do not merge with controlled-soldier. Legacy walking cells repeat contact; selected new walks advance opposite feet.",
+  "palettePolicy": "Warm tan elderly woman, gray hair, gold hoop, green scarf, patched gray coat and skirt, brown inner top/cane/boots, open gold collar and dark iron chain/key. No armor, helmet or invented faction markings.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "b1127bae50273ee40ca6c15c95ae2229e2dc51d6a0d2fd931ac2c84600c2932d",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        819.5,
+        933
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "review": "Elderly gray-haired woman with warm tan face, gold hoop earring, green scarf, patched gray coat, brown top and gray skirt. Near screen-left hand rests on wood cane; far screen-right hand holds visibly open broken gold control collar with two links and key. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "2479ac270f12764d0074e60170942d9ba130a6904bcf24d45e5d65a4621d1278",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        821.0,
+        905
+      ],
+      "registrationOffsetLogical": [
+        -0.07440811724915444,
+        1.3889515219842163
+      ],
+      "review": "Aided first step: screen-right boot advances with raised toe and visible angled sole; screen-left boot remains planted. Cane remains in near hand and leans toward supporting side, while skirt hem and collar arm move with stride."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "d743d49a12f82dcfac94432fa17a217ec50f2e13305c03431a21d1fd511d8bde",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        767.75,
+        925
+      ],
+      "registrationOffsetLogical": [
+        2.5670800450958287,
+        0.3968432919954904
+      ],
+      "review": "Meaningful release gesture: both boots brace, near hand supports her on cane, far elbow/shoulder raise open broken collar to head/shoulder level. Eyes and face turn toward collar with relieved smile; chain and key hang below."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "a34fe7fabcfa962aea59502ad4f60037c6fc43c7285b64b800bceea49b42706f",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        826.75,
+        920
+      ],
+      "registrationOffsetLogical": [
+        -0.3596392333709132,
+        0.6448703494926719
+      ],
+      "review": "Opposite aided step: screen-left boot advances toward viewer, lifted with broad sole visible; screen-right boot is flat and planted. Cane plants farther left, stays in same hand, broken collar stays right. No mirroring or accessory-only fake motion."
+    }
+  }
+}

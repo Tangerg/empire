@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-MISSION-RELEASED-VETERAN",
+  "originalAtlas": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-controlled-veteran-nursery-witness.png",
+    "sha256": "232884feb0024754a1aa6b5b0675ee5c5aa302219dca06b43b04f260e2c5984f",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 1,
+    "rowCropXYXY": [
+      0,
+      314,
+      1254,
+      627
+    ],
+    "idleCellXYXY": [
+      0,
+      314,
+      314,
+      627
+    ]
+  },
+  "runtimeEvidence": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-released-veteran.png",
+      "sha256": "ff2e61725327aadaa91126b43a81a1b6afb8b2af7d383e4112d7d7120a7d69ee",
+      "size": [
+        128,
+        48
+      ]
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-controlled-soldier.png",
+      "sha256": "aa677f16894e55c35795601d08191db3d1fe0791845698bc0e8d1d42a231815b",
+      "size": [
+        128,
+        48
+      ]
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-released-veteran.png",
+      "sha256": "2d60f5c403ae58f6c37d68b1487f7fa479c3dec72dce83d6f3edd890f6acd4c5",
+      "size": [
+        256,
+        96
+      ]
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-controlled-soldier.png",
+      "sha256": "6c7adad4d315cb6d86e1bd2dd25935da5490a8ac7e420ccc55fdf446f815a37c",
+      "size": [
+        256,
+        96
+      ]
+    }
+  ],
+  "identity": "Elderly gray-haired woman, short swept center-parted gray hair, warm tan face, small gold hoop earring, worn patched gray long coat over brown top and gray skirt, dark green scarf. Screen-left hand rests on wood walking cane. Screen-right hand holds broken gold collar/ring with short chain and hanging key.",
+  "distinctFromControlledSoldier": "Controlled soldier row 0 is a younger helmeted man in gray armor with gold neck and wrist restraint trim, no cane and no broken collar held in hand. Do not merge identities.",
+  "consumerStatus": "Existing read-only mission-consumer-audit marks catalog-only, zero domain actors and scene placements. No deployment claim."
+}

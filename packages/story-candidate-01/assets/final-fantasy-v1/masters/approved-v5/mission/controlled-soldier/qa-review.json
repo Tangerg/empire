@@ -1,0 +1,92 @@
+{
+  "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
+  "workerStatus": "complete; coordinator final visual gate pending",
+  "consumerStatus": "catalog-only",
+  "frames": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "functionalPalettePreserved": true,
+  "controlCue": "Original physical ochre-gold collar and both wrist bands visible throughout. No glow, magic, invented faction emblem or weapon.",
+  "identity": "Worried clean-shaven young man, large gray riveted helmet, segmented gray armor, charcoal trousers, dark brown belt and boots, two empty bare hands.",
+  "poseReview": {
+    "idle": "Original upright worried stance, arms low.",
+    "walk-a": "Screen-right far boot forward, screen-left near boot trailing. Both hands swing; control bands intact.",
+    "carry-or-work": "Tense unarmed on-duty attention; both empty fists inward beside belt, both gold cuffs visible. Original stationary work-role grounded, no invented props.",
+    "walk-b": "Complementary phase: screen-left near boot planted toward viewer and screen-right far boot lifted back. Maintains screen-right facing without mirroring."
+  },
+  "rejectedAttempts": [
+    {
+      "path": "walk-b/rejected-attempt-01",
+      "reason": "Walk-b repeated walk-a stride rather than opposite phase. Native bytes and request preserved."
+    }
+  ],
+  "notGeneratedPlans": [
+    {
+      "path": "planning/cuff-inspection-superseded-not-generated",
+      "reason": "Optional cuff-inspection concept superseded by coordinator before generation; not selected work-role."
+    }
+  ],
+  "technicalChecks": [
+    {
+      "pose": "idle",
+      "originalNativeRawMasterIdentical": true,
+      "promptExactlyMatchesRequest": true,
+      "realRgba": true,
+      "perimeterAlphaAtMost1": true,
+      "wholeCanvasFits": true,
+      "offsetAtMost2": true
+    },
+    {
+      "pose": "walk-a",
+      "originalNativeRawMasterIdentical": true,
+      "promptExactlyMatchesRequest": true,
+      "realRgba": true,
+      "perimeterAlphaAtMost1": true,
+      "wholeCanvasFits": true,
+      "offsetAtMost2": true
+    },
+    {
+      "pose": "carry-or-work",
+      "originalNativeRawMasterIdentical": true,
+      "promptExactlyMatchesRequest": true,
+      "realRgba": true,
+      "perimeterAlphaAtMost1": true,
+      "wholeCanvasFits": true,
+      "offsetAtMost2": true
+    },
+    {
+      "pose": "walk-b",
+      "originalNativeRawMasterIdentical": true,
+      "promptExactlyMatchesRequest": true,
+      "realRgba": true,
+      "perimeterAlphaAtMost1": true,
+      "wholeCanvasFits": true,
+      "offsetAtMost2": true
+    }
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "maximumCanvasPadding": 2,
+  "fixedScale": 0.047670639219934995,
+  "maximumSupportTranslationLogical": 1.8591549295774648,
+  "runtimeDiagnosticFrameSize": [
+    104,
+    64
+  ],
+  "runtimeDiagnosticOrigin": [
+    8,
+    4
+  ],
+  "repositoryWrites": false,
+  "nativeByteEdits": false,
+  "perFrameFitting": false,
+  "nativeGif": "qa-walk-6.25fps.gif",
+  "allPoseGif": "qa-sequence.gif",
+  "threeBackgroundReview": "qa-native44-three-backgrounds-3x.png",
+  "visualReview": "Native masters inspected against original and approved family. 1x/3x on black/white/scene inspected for role, silhouette, full margins and alpha. Four-frame montage confirms distinct work gesture and complementary walks. GIF generated from the same registered native frames."
+}

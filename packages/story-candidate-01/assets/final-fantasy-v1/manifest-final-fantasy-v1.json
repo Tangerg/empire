@@ -2331,13 +2331,13 @@
       "topicId": "C01-MISSION-CONTROLLED-SOLDIER",
       "label": "被控制的普通士兵",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-controlled-soldier.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-controlled-soldier.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2346,13 +2346,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        46.50595882990249,
+        49.9068255687974
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-COUNCIL-DELEGATE",
@@ -2676,13 +2677,13 @@
       "topicId": "C01-MISSION-RELEASED-VETERAN",
       "label": "解除控制的退伍兵",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-released-veteran.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-released-veteran.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2691,26 +2692,27 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        48.65163472378805,
+        50.28184892897407
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-RELIEF-COOK",
       "topicId": "C01-MISSION-RELIEF-COOK",
       "label": "救济厨工",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-relief-cook.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-relief-cook.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2719,13 +2721,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        46.92941176470588,
+        49.45882352941177
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-SCRIBE",

@@ -1,0 +1,75 @@
+{
+  "status": "Native quartet passes identity, geometry, hand/prop, opposite-step and three-background visual QA; coordinator final review/integration pending",
+  "topicId": "C01-MISSION-RELEASED-VETERAN",
+  "scale": 0.0496054114994363,
+  "bodyReferenceSourcePixels": 887,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "originalRowAndIdlePixelExactToBoard": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "Every perimeter has zero pixels alpha>1; idle max1, all other poses max0.",
+  "exteriorHazeGate": "All four native files have zero alpha>1 pixels more than7pixels outside alpha>127 silhouette; raw alpha1 traces remain untouched.",
+  "sourceCanvas": [
+    1584,
+    993
+  ],
+  "paddingTolerance": 0,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 2.5670800450958287,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Elderly gray-haired woman with warm tan face, gold hoop earring, green scarf, patched gray coat, brown top and gray skirt. Near screen-left hand rests on wood cane; far screen-right hand holds visibly open broken gold control collar with two links and key. Both boots planted.",
+    "walk-a": "Aided first step: screen-right boot advances with raised toe and visible angled sole; screen-left boot remains planted. Cane remains in near hand and leans toward supporting side, while skirt hem and collar arm move with stride.",
+    "carry-or-work": "Meaningful release gesture: both boots brace, near hand supports her on cane, far elbow/shoulder raise open broken collar to head/shoulder level. Eyes and face turn toward collar with relieved smile; chain and key hang below.",
+    "walk-b": "Opposite aided step: screen-left boot advances toward viewer, lifted with broad sole visible; screen-right boot is flat and planted. Cane plants farther left, stays in same hand, broken collar stays right. No mirroring or accessory-only fake motion."
+  },
+  "generationAttempts": 5,
+  "rejections": [
+    {
+      "pose": "walk-b",
+      "attempt": 1,
+      "path": "rejected/walk-b-attempt-1",
+      "reason": "Rejected: visually repeats walk-a with screen-right boot lifted forward and screen-left boot planted; not a clearly opposing step. Identity and alpha were intact. No pixel cleanup attempted."
+    }
+  ],
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only; zero verified actors and scene placements. No deployed released-veteran binding.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-family-native44-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif",
+    "qa-walking-loop.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png",
+    "qa-foot-measurements.png"
+  ],
+  "logicalReviewExportMethod": "Same full-canvas44/887 affine scale every pose, with measured visible sole offsets.4x antialias review downsampled to104x64. No per-pose fitting.",
+  "scenePreviewMeaning": "Muted green backdrop is QA only and does not claim live gameplay placement.",
+  "gifChecks": {
+    "qa-sequence.gif": {
+      "frames": 6,
+      "size": [
+        416,
+        256
+      ],
+      "loop": 0
+    },
+    "qa-walking-loop.gif": {
+      "frames": 4,
+      "size": [
+        416,
+        256
+      ],
+      "loop": 0
+    }
+  }
+}
