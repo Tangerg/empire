@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-ice-hook",
+  "assetId": "C02-SFV1-skill-ice-hook",
+  "label": "冰钩拉拽",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-ice-hook",
+    "topicId": "c02-skill-ice-hook",
+    "label": "冰钩拉拽",
+    "category": "skill",
+    "png": "runtime/skill/skill-ice-hook.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 15,
+  "sourceBoardCellIndexZeroBased": 15,
+  "sourceCropBox": [
+    945,
+    945,
+    1249,
+    1249
+  ],
+  "sourceCropSize": [
+    304,
+    304
+  ],
+  "sourceMappingEvidence": "Actual 48x48 runtime visually inspected before matching by depicted action to full original boards. Catalog sequence independently agrees. Alphabetical manifest order was not used.",
+  "functionalMotif": "A lower-left compact mechanical winch is linked diagonally to an upper-right large cyan ice grapple by a short chain.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-ice-hook.png",
+  "runtimeReferenceSha256": "35a8bb496c9406a57a31586afbde863a20ca264fa3a14669ffcadf429d981082",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source crops and separate QA diagnostics only; generated source pixels will remain unchanged."
+}

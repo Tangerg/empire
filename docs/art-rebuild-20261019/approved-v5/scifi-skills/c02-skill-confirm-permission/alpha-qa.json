@@ -1,0 +1,50 @@
+{
+  "topicId": "c02-skill-confirm-permission",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 914005,
+  "partialAlphaPixels": 656886,
+  "opaquePixels": 1625,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    18,
+    133,
+    1236,
+    1154
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    18,
+    133,
+    18,
+    100
+  ],
+  "nearOpaquePixelCountGE240": 633305,
+  "diagnostic8pxErosion": {
+    "minAlpha": 250,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 685,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
+  "sha256": "f601cb11871b258926c4a61cfd56aad07b3a3803598d8ebe3db279dda3c5521e",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, the handshake, contrasting cuffs and key are recognizable on white, black and olive; small emphasis dashes compress as expected. Source512 inspection shows near-opaque material planes and no broad halo. The accent dashes have fine colored antialiasing at native zoom, preserved without cleanup. Both source side margins are 18px, narrower than the prompt target, but no visible subject clips and the deterministic 48px export has edge alpha 0.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
+}

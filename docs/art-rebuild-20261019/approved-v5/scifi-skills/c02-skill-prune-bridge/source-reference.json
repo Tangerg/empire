@@ -1,0 +1,59 @@
+{
+  "topicId": "c02-skill-prune-bridge",
+  "assetId": "C02-SFV1-skill-prune-bridge",
+  "label": "修剪活桥",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-prune-bridge",
+    "topicId": "c02-skill-prune-bridge",
+    "label": "修剪活桥",
+    "category": "skill",
+    "png": "runtime/skill/skill-prune-bridge.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 30,
+  "catalogIndexZeroBased": 30,
+  "sourceCropBox": [
+    632,
+    945,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Actual 48 px icons inspected and each subject independently matched on the complete 1254 px board. Catalog order agrees; alphabetical manifest ordering was not used. Legacy grid algorithm read only; manifest-complete.json is absent.",
+  "functionalMotif": "Diagonal living vine bridge with leaves and a cyan outlined pruning shear held at lower left",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "legacyBackgroundConflict": "Dark rectangular scene card, terrain and external luminous fill are not icon content.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-prune-bridge.png",
+  "runtimeReferenceSha256": "fc55b72b3854b2c7f302557af3bcc79fb868c541af877bdb00450214d7d2a6a6",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only source reference crop and separate QA derivatives. Generated source will be preserved unchanged.",
+  "completeMotifCropBox": [
+    638,
+    913,
+    919,
+    1193
+  ],
+  "completeMotifSource": "source-complete-motif.png",
+  "legacySourceCropDefect": "Legacy uniform grid cuts off the upper part of the bridge card; the complete card recovers the living span."
+}

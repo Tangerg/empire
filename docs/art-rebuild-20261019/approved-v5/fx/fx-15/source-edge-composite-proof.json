@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "spirit-onset",
+    "edgeAlphaMax": 1,
+    "edgeAlphaNonzero": 8,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "spirit-growth",
+    "edgeAlphaMax": 1,
+    "edgeAlphaNonzero": 29,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "leafy-spirit-peak",
+    "edgeAlphaMax": 1,
+    "edgeAlphaNonzero": 1,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "spirit-residue",
+    "edgeAlphaMax": 1,
+    "edgeAlphaNonzero": 19,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "sourcePixelsUnchanged": true
+  }
+]

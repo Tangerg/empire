@@ -1,0 +1,50 @@
+{
+  "topicId": "c02-skill-switch-rail",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 783478,
+  "partialAlphaPixels": 786329,
+  "opaquePixels": 2709,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    50,
+    76,
+    1203,
+    1190
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    50,
+    76,
+    51,
+    64
+  ],
+  "nearOpaquePixelCountGE240": 762871,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 801,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
+  "sha256": "b2f20d5cd7932ba265bbd2b0235a397992a57aa51aa65d9ccc825403d605b953",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, the four rail branches, circular hub, cyan left arrow and orange right arrow remain recognizable on white, black and olive. Source512 composites show clean open spaces between the branches and no opaque square backdrop. Source side margins are 50/51px, narrower than the prompt target, but the source is unclipped and the full-canvas export keeps its required padding.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
+}

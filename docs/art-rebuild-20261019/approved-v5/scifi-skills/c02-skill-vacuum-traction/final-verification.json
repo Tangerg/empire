@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-vacuum-traction",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "8f07d09a62bd5e33d6b46f759f88e6bdcbb7822e76757fa674ba8f28a43002a9",
+    "raw-native-v1.png": "8f07d09a62bd5e33d6b46f759f88e6bdcbb7822e76757fa674ba8f28a43002a9",
+    "native.png": "8f07d09a62bd5e33d6b46f759f88e6bdcbb7822e76757fa674ba8f28a43002a9",
+    "master.png": "8f07d09a62bd5e33d6b46f759f88e6bdcbb7822e76757fa674ba8f28a43002a9"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "The generated ring-flow has four major ribbon segments rather than the three requested. Fine edge irregularities at full native size simplify at 48 pixels; the continuous tether, cube and emitter remain readable. The narrowest visible margin is 28 pixels, below the requested 8–10 percent, with complete tips.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:57:02.271573+00:00"
+}

@@ -1,0 +1,50 @@
+{
+  "topicId": "c02-skill-confirm-permission",
+  "assetId": "C02-SFV1-skill-confirm-permission",
+  "label": "权限确认",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-confirm-permission",
+    "topicId": "c02-skill-confirm-permission",
+    "label": "权限确认",
+    "category": "skill",
+    "png": "runtime/skill/skill-confirm-permission.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 35,
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    309
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and then visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates identity. No alphabetical manifest slot inference was used.",
+  "functionalMotif": "Two clasped hands with blue and ochre sleeves beneath one diagonal mechanical key.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-confirm-permission.png",
+  "runtimeReferenceSha256": "d7bdd97d0d5397f192c6dd8cac1bb7a922ce9583062ea5beb9e3d4eb2cbc36ca",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup or pixel repainting.",
+  "identityDistinction": "This original is a handshake plus physical key on board 03 row 1 column 4. Rail-permission is a separate board 02 row 2 column 1 card-tapping panel; it is not used here."
+}

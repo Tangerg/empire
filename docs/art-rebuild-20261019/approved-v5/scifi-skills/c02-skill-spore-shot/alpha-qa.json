@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-spore-shot",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 1047407,
+  "partialAlphaPixels": 523247,
+  "opaquePixels": 1862,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    82,
+    111,
+    1183,
+    1206
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    82,
+    111,
+    71,
+    48
+  ],
+  "nearOpaquePixelCountGE240": 495401,
+  "diagnostic8pxErosion": {
+    "minAlpha": 250,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 512,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "7e19c54d67850ac6b158e8048df5238571f11cde6d1871809ac9ede5a8575b68",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

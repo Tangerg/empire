@@ -75,6 +75,7 @@ describe('approved FX source and export binding', () => {
     'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
     'C01-FX-07': ['airborne-burst', 'falling-pieces', 'falling-remnants', 'settled-heap'],
     'C01-FX-08': ['clustered-echoes', 'rising-echoes', 'dissolving-echoes', 'wisp-remnants'],
+    'C01-FX-15': ['spirit-onset', 'spirit-growth', 'leafy-spirit-peak', 'spirit-residue'],
     'C01-FX-14': ['low-fumes', 'rising-fumes', 'plume-crest', 'settling-wisps'],
     'C01-FX-13': ['cracked-earth', 'ember-rise', 'flame-peak', 'ember-residue'],
     'C01-FX-12': ['heat-curl-a', 'heat-curl-b', 'heat-split', 'heat-renewal'],

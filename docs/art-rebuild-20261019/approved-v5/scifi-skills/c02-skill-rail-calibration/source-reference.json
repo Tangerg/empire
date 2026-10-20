@@ -1,0 +1,49 @@
+{
+  "topicId": "c02-skill-rail-calibration",
+  "assetId": "C02-SFV1-skill-rail-calibration",
+  "label": "轨道校准",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-rail-calibration",
+    "topicId": "c02-skill-rail-calibration",
+    "label": "轨道校准",
+    "category": "skill",
+    "png": "runtime/skill/skill-rail-calibration.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 42,
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    935
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and then visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates identity. No alphabetical manifest slot inference was used.",
+  "functionalMotif": "A perspective pair of railway tracks beneath a cyan four-part circular calibration reticle and central dot.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-rail-calibration.png",
+  "runtimeReferenceSha256": "e06a9c68eaeaf097190d4149c387fe19846e2f8809880c3cfa45d7604015077b",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup or pixel repainting."
+}

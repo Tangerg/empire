@@ -1,0 +1,58 @@
+{
+  "topicId": "c02-skill-ice-hook",
+  "sourceReadyForParentBinding": true,
+  "nativeImageSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "sourcePixelHashIdentity": {
+    "raw.png": "2bff8a3dc4cdc60715cadeba446066e01ea10688cbaa9070bb90414db9641626",
+    "raw-native-v1.png": "2bff8a3dc4cdc60715cadeba446066e01ea10688cbaa9070bb90414db9641626",
+    "native.png": "2bff8a3dc4cdc60715cadeba446066e01ea10688cbaa9070bb90414db9641626",
+    "master.png": "2bff8a3dc4cdc60715cadeba446066e01ea10688cbaa9070bb90414db9641626"
+  },
+  "promptMatchesRequest": true,
+  "referenceHashesVerified": true,
+  "sourceCropPixelExact": true,
+  "original48PixelReconstructionExact": true,
+  "alphaSourceContractPass": true,
+  "fullMasterVisualPass": true,
+  "native48SemanticPass": true,
+  "parentStaticReviewPass": true,
+  "native48Geometry": {
+    "output": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "contain": [
+      44,
+      44
+    ],
+    "canvasPreserved": true,
+    "bboxCrop": false
+  },
+  "limitations": "Chain interiors, small winch facets and fine ice subdivisions simplify at 48 pixels. The diagonal joined mechanism and icy hooked head remain recognizable. The smallest visible margin is 39 native pixels, below the requested 8–10 percent but no tip is clipped.",
+  "rawUnmodified": true,
+  "sourcePostprocessing": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "repositoryTestsRunByThisWorker": false,
+  "repositoryWrites": false,
+  "gitWrites": false,
+  "generationAttempts": 1,
+  "rejectedAttempts": 0,
+  "reports": [
+    "source-review.md",
+    "source-reference.json",
+    "legacy-runtime-reconstruction.json",
+    "semantic-qa.json",
+    "alpha-qa.json",
+    "alpha-core-exceptions.json"
+  ],
+  "createdAtUTC": "2026-10-20T05:57:02.028310+00:00"
+}
