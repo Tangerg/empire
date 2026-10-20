@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-local-support",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 919134,
+  "partialAlphaPixels": 650771,
+  "opaquePixels": 2611,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    118,
+    128,
+    1145,
+    1132
+  ],
+  "nearOpaquePixelCountGE240": 625303,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 243,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "4dad115254bf1d7c8b45adc7b4dfe14abfddf9f6ed0aee77806d4ee9e7f64e78",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the four-arm X silhouette, contrasting sleeve colors, shared central clasp and cyan ring read on white/black/olive. Individual finger anatomy is not a native32 claim. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "Four armored forearms converge into one central glove-stack/support gesture: blue upper left, olive upper right, blue with pale cuff lower left, amber with pale cuff lower right. One solid cyan ring remains behind the hands."
+}

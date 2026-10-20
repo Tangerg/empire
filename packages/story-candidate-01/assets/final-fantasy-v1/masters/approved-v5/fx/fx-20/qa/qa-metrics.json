@@ -1,0 +1,910 @@
+{
+  "topicId": "C01-FX-20",
+  "phaseOrder": [
+    "bare-crescent",
+    "contact-spark",
+    "spark-spray",
+    "residual-sparks"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "fps": 12,
+  "loop": false,
+  "frameStartTimesMs": [
+    0,
+    83.33333333333333,
+    166.66666666666666,
+    250
+  ],
+  "sequenceMs": 333.3333333333333,
+  "equalFrameDurationSeconds": "1/12",
+  "encodedFinalFrameHold": false,
+  "afterOnePlay": "APNG retains its final image; scene lifetime is not established without a consumer",
+  "removalRule": null,
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "sourceProcessing": "byte-identical raw/master; no alpha cleanup, cropping, per-frame fitting, shifting, fading or synthesized motion",
+  "frames": [
+    {
+      "phase": "bare-crescent",
+      "sha256": "3b87948d4f1b906eb569f896855ec5335989801e6143c70d5ed9e43bdcb9e2bb",
+      "rawMasterByteIdentical": true,
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "edgeAlphaMax": 0,
+      "edgeNonzeroSamples": 0,
+      "alphaMax": 255,
+      "alphaMass": 90479.38823529411,
+      "boundsAlpha128": [
+        285,
+        171,
+        766,
+        1140
+      ],
+      "visibleComponentsAlpha128": [
+        [
+          285,
+          171,
+          766,
+          1140
+        ]
+      ],
+      "exports": {
+        "1": {
+          "sha256": "50a57e9e0c58516249f8e99b1818cfe0c24e8c3ca4bc4e6fda57579adc8f3b67",
+          "decodedSha256": "ab29548af615bcd92550860274d9b92feef4dfd28627510a393fe83c59e0692e",
+          "paddingPixels": 2,
+          "paddingAlphaMax": 0,
+          "alphaMass": 46.24313725490196
+        },
+        "2": {
+          "sha256": "5c53d472aeaa46d78423ab000d5a41fd171dfc62aa9fff2b39e3c98ac86a4369",
+          "decodedSha256": "5e6e083b0c1f98fbba0308f00f842fd2a20ee9a8588892f521fb011b31165b6f",
+          "paddingPixels": 4,
+          "paddingAlphaMax": 0,
+          "alphaMass": 181.92156862745097
+        }
+      }
+    },
+    {
+      "phase": "contact-spark",
+      "sha256": "ab94507b8231dd2b2bac21d3ac42d38bbdeb7e0eebe763db8c1573d66af99ad5",
+      "rawMasterByteIdentical": true,
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "edgeAlphaMax": 0,
+      "edgeNonzeroSamples": 0,
+      "alphaMax": 255,
+      "alphaMass": 112230.21176470588,
+      "boundsAlpha128": [
+        286,
+        172,
+        937,
+        1140
+      ],
+      "visibleComponentsAlpha128": [
+        [
+          286,
+          172,
+          912,
+          1140
+        ],
+        [
+          751,
+          346,
+          827,
+          487
+        ],
+        [
+          543,
+          523,
+          611,
+          577
+        ],
+        [
+          820,
+          542,
+          872,
+          571
+        ],
+        [
+          576,
+          649,
+          633,
+          699
+        ],
+        [
+          855,
+          676,
+          937,
+          737
+        ],
+        [
+          801,
+          737,
+          851,
+          824
+        ]
+      ],
+      "exports": {
+        "1": {
+          "sha256": "465e4710c5c8b9526c4a109a9436426b981b5bdd5220d70a62a21af709616a52",
+          "decodedSha256": "93c0458244faf17f64678d139f718e9fe1f1f9612c806977ae47fb17589abbc0",
+          "paddingPixels": 2,
+          "paddingAlphaMax": 0,
+          "alphaMass": 57.56078431372549
+        },
+        "2": {
+          "sha256": "412aaf6bfa793f12869f2459ad73ee7b991525444b30a6ac47bd64b1278711dd",
+          "decodedSha256": "68e9f9763c38dace0785301974b164c257077a585bec2e6304cd441e4f1622fa",
+          "paddingPixels": 4,
+          "paddingAlphaMax": 0,
+          "alphaMass": 227.35294117647058
+        }
+      }
+    },
+    {
+      "phase": "spark-spray",
+      "sha256": "45149ee23b3c352b35cc32ac54acb6db21e08909f5e3fd60b4e442e6ebbbedb3",
+      "rawMasterByteIdentical": true,
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "edgeAlphaMax": 0,
+      "edgeNonzeroSamples": 0,
+      "alphaMax": 255,
+      "alphaMass": 156541.69411764707,
+      "boundsAlpha128": [
+        285,
+        97,
+        1127,
+        1140
+      ],
+      "visibleComponentsAlpha128": [
+        [
+          709,
+          97,
+          874,
+          357
+        ],
+        [
+          285,
+          172,
+          964,
+          1140
+        ],
+        [
+          843,
+          298,
+          918,
+          371
+        ],
+        [
+          1029,
+          326,
+          1127,
+          380
+        ],
+        [
+          390,
+          356,
+          505,
+          447
+        ],
+        [
+          445,
+          515,
+          540,
+          555
+        ],
+        [
+          894,
+          524,
+          1075,
+          567
+        ],
+        [
+          412,
+          640,
+          557,
+          746
+        ],
+        [
+          922,
+          747,
+          1029,
+          843
+        ],
+        [
+          428,
+          856,
+          489,
+          939
+        ],
+        [
+          825,
+          860,
+          915,
+          1014
+        ]
+      ],
+      "exports": {
+        "1": {
+          "sha256": "b5ce13c2948080a63869b6e30e8e77cbf46384087de95d6da544f3f079ad5f19",
+          "decodedSha256": "ba69ffa81b3b37f0ba4c0ce179123715cfebd48f40d5e8b822c9e509736bcf5f",
+          "paddingPixels": 2,
+          "paddingAlphaMax": 0,
+          "alphaMass": 82.45882352941176
+        },
+        "2": {
+          "sha256": "ceccabdda4349cbe2b14240678ad93d231f8f9264696632e1ae36703f64e0c60",
+          "decodedSha256": "b20a134f315f932154c15f66b286440c20dd7a9a35fb6ae2f4c29a664d189baf",
+          "paddingPixels": 4,
+          "paddingAlphaMax": 0,
+          "alphaMass": 319.7294117647059
+        }
+      }
+    },
+    {
+      "phase": "residual-sparks",
+      "sha256": "6f6001b9c63007cf71c3c06efef444ad1fc54bd8d05194d5145fbc8029d43d2a",
+      "rawMasterByteIdentical": true,
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "edgeAlphaMax": 0,
+      "edgeNonzeroSamples": 0,
+      "alphaMax": 255,
+      "alphaMass": 98709.76862745098,
+      "boundsAlpha128": [
+        286,
+        172,
+        1064,
+        1139
+      ],
+      "visibleComponentsAlpha128": [
+        [
+          286,
+          172,
+          766,
+          1139
+        ],
+        [
+          743,
+          213,
+          778,
+          292
+        ],
+        [
+          863,
+          340,
+          942,
+          405
+        ],
+        [
+          979,
+          620,
+          1064,
+          639
+        ],
+        [
+          872,
+          761,
+          924,
+          814
+        ],
+        [
+          859,
+          881,
+          940,
+          990
+        ]
+      ],
+      "exports": {
+        "1": {
+          "sha256": "89fc0e25049fed225c4b1863a1c4115bf8bdddd5382a4c87e3c636377382cb53",
+          "decodedSha256": "e09f5174db48b8f2f40c947bf5c59cf6fedf0a525e4c6e3f102c44da12844f4f",
+          "paddingPixels": 2,
+          "paddingAlphaMax": 0,
+          "alphaMass": 51.305882352941175
+        },
+        "2": {
+          "sha256": "17fe094c1675514e1c63c28a017c809028db7cef3deeddb844fea8c9afc40920",
+          "decodedSha256": "f379f369cf835dcb4dd532d841c350094c072723ffa7de1f80eec54f1cb16708",
+          "paddingPixels": 4,
+          "paddingAlphaMax": 0,
+          "alphaMass": 200.91764705882352
+        }
+      }
+    }
+  ],
+  "apng": [
+    {
+      "file": "12fps-once-transparent@1x.apng",
+      "sha256": "10cc0e41249d051f4fbc231db1e5563e324c7c0c2e793e50e84d381ae0eff17b",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "ab29548af615bcd92550860274d9b92feef4dfd28627510a393fe83c59e0692e",
+        "93c0458244faf17f64678d139f718e9fe1f1f9612c806977ae47fb17589abbc0",
+        "ba69ffa81b3b37f0ba4c0ce179123715cfebd48f40d5e8b822c9e509736bcf5f",
+        "e09f5174db48b8f2f40c947bf5c59cf6fedf0a525e4c6e3f102c44da12844f4f"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-transparent@1x.apng",
+      "sha256": "5412e8a703984f0bfcda500a00221f06173c0aa05fe692982369d7ef08521b57",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "ab29548af615bcd92550860274d9b92feef4dfd28627510a393fe83c59e0692e",
+        "93c0458244faf17f64678d139f718e9fe1f1f9612c806977ae47fb17589abbc0",
+        "ba69ffa81b3b37f0ba4c0ce179123715cfebd48f40d5e8b822c9e509736bcf5f",
+        "e09f5174db48b8f2f40c947bf5c59cf6fedf0a525e4c6e3f102c44da12844f4f"
+      ]
+    },
+    {
+      "file": "12fps-once-black@1x.apng",
+      "sha256": "ca4cdfd0119d85ecfe82052f57d76fda6956efd9add6a74fa5ca4d4878a4cf2b",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "bfa1f4361b7646ed0afd08f4ef13c7ab227d1aa9e478173ea02d9980e0d1bd17",
+        "37363ef857f370f159561aeb3c614f80645bede11816283d8e674577cb97c702",
+        "c492b8cea368cfc6f748ffda5342aa46ad12aca207a6042e53a23fe6d504378e",
+        "9cd5fe8974bedd959afdd0cc0110cf9f929ed5558a3e8e33f0c09254c27bdbd0"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-black@1x.apng",
+      "sha256": "28e36a4bc607627f7bb977cd22fbaea39ef6d318ce3de098d2c853675a59f59e",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "bfa1f4361b7646ed0afd08f4ef13c7ab227d1aa9e478173ea02d9980e0d1bd17",
+        "37363ef857f370f159561aeb3c614f80645bede11816283d8e674577cb97c702",
+        "c492b8cea368cfc6f748ffda5342aa46ad12aca207a6042e53a23fe6d504378e",
+        "9cd5fe8974bedd959afdd0cc0110cf9f929ed5558a3e8e33f0c09254c27bdbd0"
+      ]
+    },
+    {
+      "file": "12fps-once-white@1x.apng",
+      "sha256": "a2419f1048bd49c86888826700583cb5d0e78dacbe6da9dc45b005cbb12751db",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "6ecd3ac4021dd8e4dbbaec6663ca1b68dd086612f553f83979e8f50036365434",
+        "ab2f8cab22fb91c1739be8c0b7d42cca3f258e966c6ae44c49ceeba5431b2496",
+        "f429d4c390d658572c4d607809213f8b1e2c66a01c3d51c1715923e3994ba256",
+        "36389a92531db98e5395542d137936c9b54f41c47d7da0eae5150dfa125f0232"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-white@1x.apng",
+      "sha256": "862c90cab897cf545fdd6073bdcda68131dbacb8ce40261716f81c7f79d2a894",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "6ecd3ac4021dd8e4dbbaec6663ca1b68dd086612f553f83979e8f50036365434",
+        "ab2f8cab22fb91c1739be8c0b7d42cca3f258e966c6ae44c49ceeba5431b2496",
+        "f429d4c390d658572c4d607809213f8b1e2c66a01c3d51c1715923e3994ba256",
+        "36389a92531db98e5395542d137936c9b54f41c47d7da0eae5150dfa125f0232"
+      ]
+    },
+    {
+      "file": "12fps-once-bright-stone@1x.apng",
+      "sha256": "b1c76efb018ade6575acdb690c07a34b626c73be201b8ea4b7fc9dd197d5b58e",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "f8b8fc73eef673a8b68a29bd578dca1619c669cde7a9ab1dd8583b4f8c4d09ad",
+        "5306a40aac405ad4a0cf53e976a14ed4c885750f01e1e63a3e6aa098e3a349f4",
+        "ce4e7c5821643d831fc5f6bc6c8235c63e4441a39bc2af9ab649790dc54d00a4",
+        "0779747af13fef599d237c52502e0345e1aa7f48f799f5087b29debd3606b7bf"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-bright-stone@1x.apng",
+      "sha256": "39f1746b90ad37dc0b7606b1e884b08e7c0c27df2b9bb88db66f987efccf50d5",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "f8b8fc73eef673a8b68a29bd578dca1619c669cde7a9ab1dd8583b4f8c4d09ad",
+        "5306a40aac405ad4a0cf53e976a14ed4c885750f01e1e63a3e6aa098e3a349f4",
+        "ce4e7c5821643d831fc5f6bc6c8235c63e4441a39bc2af9ab649790dc54d00a4",
+        "0779747af13fef599d237c52502e0345e1aa7f48f799f5087b29debd3606b7bf"
+      ]
+    },
+    {
+      "file": "12fps-once-green-ground@1x.apng",
+      "sha256": "226051cbbe0730f5609c5e3b58e3be14fae20d8e8babaa877c998df845d2f040",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "2a0927500e0d4c9c0c87c08adf10dc5e86599c3616bf76bc80b8e5ce09880a3f",
+        "b2fd8e8aba8838656e011a1df0ef3a7722869f04efbd09f9f1d6d9a6e42fd8f0",
+        "4e00ed1bf16a19df600b388db5db2bafaf7c260d54c105a2109b253d0fe6db38",
+        "a4311be2fb7a02c1e78c077290d91c3255a669de83f6546dc19b2d4ee7f01bbd"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-green-ground@1x.apng",
+      "sha256": "abbfc7fb45179aa2d05f1ccea38d8fa2f0bbee4b9f34957496718c9926dc4038",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "2a0927500e0d4c9c0c87c08adf10dc5e86599c3616bf76bc80b8e5ce09880a3f",
+        "b2fd8e8aba8838656e011a1df0ef3a7722869f04efbd09f9f1d6d9a6e42fd8f0",
+        "4e00ed1bf16a19df600b388db5db2bafaf7c260d54c105a2109b253d0fe6db38",
+        "a4311be2fb7a02c1e78c077290d91c3255a669de83f6546dc19b2d4ee7f01bbd"
+      ]
+    },
+    {
+      "file": "12fps-once-dark-earth@1x.apng",
+      "sha256": "681b17015e6c9f1f58dacb10a544907d37c359d651923bcfc9c7c6f2ee25fde2",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "1a2d0ff7e8132defcad6bba64b82c93f7190594cba47447acf6bfdf4bf74e496",
+        "63817092fbf2a45d5adbe861a6ea217e6e85c2111563b4c06d2a7f5d337dd5cf",
+        "df4b2f3acc9d82f9af56f59e99a24513c6ef2bb092d1acc322ff1b5427949429",
+        "a0680ccb7b1d9e71dff4d23ad4822c4be1f3a483a795b090bb27d89666a41341"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-dark-earth@1x.apng",
+      "sha256": "2fa0422ddbe4e5d67b00343ab768894539c1cc54a43fd5c23963f8f145b0ee87",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "1a2d0ff7e8132defcad6bba64b82c93f7190594cba47447acf6bfdf4bf74e496",
+        "63817092fbf2a45d5adbe861a6ea217e6e85c2111563b4c06d2a7f5d337dd5cf",
+        "df4b2f3acc9d82f9af56f59e99a24513c6ef2bb092d1acc322ff1b5427949429",
+        "a0680ccb7b1d9e71dff4d23ad4822c4be1f3a483a795b090bb27d89666a41341"
+      ]
+    },
+    {
+      "file": "12fps-once-checker@1x.apng",
+      "sha256": "355e15e6d673bd5addbf0898ce5bbda82d225aba7e1a5025e9b151163757cc3e",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "5c07747011e971c8d93271fbd5197a80dd74dcceab4d2a9c99ea19c374574a67",
+        "25af1b6e8ac7037f8c78b13d3799e88af3f37128f976ef5d6c8329a3a237b866",
+        "ecf57576a4feb085dbd4a779286976f58a3b5fb6181e1bf4e1de788b7d96ed2f",
+        "ef16e8132061d7fb319a42402fc6c3da826e74f125354891eb284ff625a46e35"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-checker@1x.apng",
+      "sha256": "4fdcfe15ca6919d91be627303a7aec34a28e5d3c11de07ff3a1f8dce824ffefd",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "5c07747011e971c8d93271fbd5197a80dd74dcceab4d2a9c99ea19c374574a67",
+        "25af1b6e8ac7037f8c78b13d3799e88af3f37128f976ef5d6c8329a3a237b866",
+        "ecf57576a4feb085dbd4a779286976f58a3b5fb6181e1bf4e1de788b7d96ed2f",
+        "ef16e8132061d7fb319a42402fc6c3da826e74f125354891eb284ff625a46e35"
+      ]
+    },
+    {
+      "file": "12fps-once-transparent@2x.apng",
+      "sha256": "854df41e043fab8ed242af4839a0f5ebd5432c423e434529be3011ef57109cad",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "5e6e083b0c1f98fbba0308f00f842fd2a20ee9a8588892f521fb011b31165b6f",
+        "68e9f9763c38dace0785301974b164c257077a585bec2e6304cd441e4f1622fa",
+        "b20a134f315f932154c15f66b286440c20dd7a9a35fb6ae2f4c29a664d189baf",
+        "f379f369cf835dcb4dd532d841c350094c072723ffa7de1f80eec54f1cb16708"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-transparent@2x.apng",
+      "sha256": "55ddcc4b8369857f510c2e3894e61b5e14f8f7b7e45ef613a6b31f906c1950b1",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "5e6e083b0c1f98fbba0308f00f842fd2a20ee9a8588892f521fb011b31165b6f",
+        "68e9f9763c38dace0785301974b164c257077a585bec2e6304cd441e4f1622fa",
+        "b20a134f315f932154c15f66b286440c20dd7a9a35fb6ae2f4c29a664d189baf",
+        "f379f369cf835dcb4dd532d841c350094c072723ffa7de1f80eec54f1cb16708"
+      ]
+    },
+    {
+      "file": "12fps-once-black@2x.apng",
+      "sha256": "d0d191130a2b42e7c6e0297a02b595968a21608177730a20b8a156a52aeb5cf0",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "1c5ba5788515819b5d1909d7f5788f55451e9fc9be2ac850a98f9ccf8af8496b",
+        "b41595c364c6740123dcac236e575bd36ce56d40e16ca69a0d64832d9e72752e",
+        "8c902a99e2a484b83bb7f071a8ba3972f245a17d2bd5127d4f394db1c8aba66e",
+        "8690d59241250482a70afd33d5ef7f98ba1e26a9225b57a1eb94cfd22da5f852"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-black@2x.apng",
+      "sha256": "051ac6dfe91a9f0792574dfba75a56c95207574f2070f1872c85ff0354f36914",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "1c5ba5788515819b5d1909d7f5788f55451e9fc9be2ac850a98f9ccf8af8496b",
+        "b41595c364c6740123dcac236e575bd36ce56d40e16ca69a0d64832d9e72752e",
+        "8c902a99e2a484b83bb7f071a8ba3972f245a17d2bd5127d4f394db1c8aba66e",
+        "8690d59241250482a70afd33d5ef7f98ba1e26a9225b57a1eb94cfd22da5f852"
+      ]
+    },
+    {
+      "file": "12fps-once-white@2x.apng",
+      "sha256": "b09fd440056a973f7c3b19ea13a97f9d2e85d9b08adfbc987dca6d4668f7976d",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "a168a6949a6eca854a82f7ff8f2205dffb4223b74e577859e9203ecf04344648",
+        "35d53dd437008839cdb32715b24d1ea4be4bcbaec99b29b97b4caf7743a87502",
+        "1037804dacf6ad016d58e719b4b8f73033e3a2460967423c6e4cdb117a39e429",
+        "44600ea0fdbb77a945f60f385a08d3cdd24b20a95ab414cf1b276a72de04c712"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-white@2x.apng",
+      "sha256": "be029353edf9f8298960d7a03c8751cb6efe26d9f47356b849a862571ba2d7c0",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "a168a6949a6eca854a82f7ff8f2205dffb4223b74e577859e9203ecf04344648",
+        "35d53dd437008839cdb32715b24d1ea4be4bcbaec99b29b97b4caf7743a87502",
+        "1037804dacf6ad016d58e719b4b8f73033e3a2460967423c6e4cdb117a39e429",
+        "44600ea0fdbb77a945f60f385a08d3cdd24b20a95ab414cf1b276a72de04c712"
+      ]
+    },
+    {
+      "file": "12fps-once-bright-stone@2x.apng",
+      "sha256": "f5f45aeb710e94483011fbdf5205b7e79e4efe4051587018cb4b54960edd6d95",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "70507cfa6212c19becbbac1c51c4119fa57ed77e0d307f571cb59e28f7aa0ead",
+        "4e3d18c97310a19a8bc52f0473d9202ef7020b2f2760ec250d5fb838813a6da7",
+        "ecbc8435f842d6e391e2f194913a0ee097bc0b719503f58e117ca2944445482a",
+        "3cdbfea85d9f8f9787ec65cba806bea9f57b00f0e50c9e5a5328a4668ae69ef0"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-bright-stone@2x.apng",
+      "sha256": "383b7be4d1161d124fd3389b2b55e4b7e7fb3d1a930819e064dd8731890e0ad7",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "70507cfa6212c19becbbac1c51c4119fa57ed77e0d307f571cb59e28f7aa0ead",
+        "4e3d18c97310a19a8bc52f0473d9202ef7020b2f2760ec250d5fb838813a6da7",
+        "ecbc8435f842d6e391e2f194913a0ee097bc0b719503f58e117ca2944445482a",
+        "3cdbfea85d9f8f9787ec65cba806bea9f57b00f0e50c9e5a5328a4668ae69ef0"
+      ]
+    },
+    {
+      "file": "12fps-once-green-ground@2x.apng",
+      "sha256": "e312c35408bf2bac82554e280591dd5c23def8470d0572deec4d93d58e0c377b",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "e7f764fd08868320451dc8b36b48dbb3d504f468dc1e976170ad16766a915f37",
+        "21de912fda3fbc1119bb91942bcb3fe1364cb40c11b2333ac1c875beb35c0dd3",
+        "41b1b91cb9c487e55d8847306847dd2059f6313e50dfef933a9c874acb9e53f0",
+        "05308731a9151f945a252a3cdbe82d39332007b408a66cfc7a330c86299dae8a"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-green-ground@2x.apng",
+      "sha256": "f2d63b4f239d00e4431c7e1bb0ae445ac9165ef56d5df5c328a4877cab3d0c23",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "e7f764fd08868320451dc8b36b48dbb3d504f468dc1e976170ad16766a915f37",
+        "21de912fda3fbc1119bb91942bcb3fe1364cb40c11b2333ac1c875beb35c0dd3",
+        "41b1b91cb9c487e55d8847306847dd2059f6313e50dfef933a9c874acb9e53f0",
+        "05308731a9151f945a252a3cdbe82d39332007b408a66cfc7a330c86299dae8a"
+      ]
+    },
+    {
+      "file": "12fps-once-dark-earth@2x.apng",
+      "sha256": "c69836705f31b1df1d24b3b59ea8aff823ed0257310307dd7065a106c5b1a86b",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "39534c8b75f11b68483b2757ff9b814dd23acdb7af9475dbdd4676158ea9061b",
+        "2143d2b5235fb977df8c8b3d469fbf91837c22dec2467bc48dceb68262bbee88",
+        "c2154cec93f8c54e25daa8645e0370bff7af0264c4f19187bf1a37dec18ecceb",
+        "2588991acf4611899095d7a2ea06b01d61f7a5a83588dc6f3b651df0e37ba597"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-dark-earth@2x.apng",
+      "sha256": "455f90021bedb2f3c4c074adbc6d51bbec879da1d939b963b23c451552ec5d4f",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "39534c8b75f11b68483b2757ff9b814dd23acdb7af9475dbdd4676158ea9061b",
+        "2143d2b5235fb977df8c8b3d469fbf91837c22dec2467bc48dceb68262bbee88",
+        "c2154cec93f8c54e25daa8645e0370bff7af0264c4f19187bf1a37dec18ecceb",
+        "2588991acf4611899095d7a2ea06b01d61f7a5a83588dc6f3b651df0e37ba597"
+      ]
+    },
+    {
+      "file": "12fps-once-checker@2x.apng",
+      "sha256": "1370294a62d6953556108eb9e560373ac1ff48b0874f5540ceca1008db929682",
+      "numPlays": 1,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "sequenceSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "6988d445f046d0cdc39d685d61f1fa3461ffdf2f1c51d542f97efc0e109bd2a0",
+        "4470910cb094fbb65cc241a1af983bf1cc0b3fa7f03442ae98c2171eb1fcabf6",
+        "b699dd7f7e51a405ee47566d490ea9aa6d49cb009254b7a5bbe4c0984e3f667e",
+        "05cc3180df891059616a237e50dea6eedc3a47c1661bb990f16f3805ed151f55"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-repeat-checker@2x.apng",
+      "sha256": "fd0c65b75ca56b65772ab259072cc32b998dee7fb6d7f9e5bd5fb56ac3f30bd6",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "sequenceSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "6988d445f046d0cdc39d685d61f1fa3461ffdf2f1c51d542f97efc0e109bd2a0",
+        "4470910cb094fbb65cc241a1af983bf1cc0b3fa7f03442ae98c2171eb1fcabf6",
+        "b699dd7f7e51a405ee47566d490ea9aa6d49cb009254b7a5bbe4c0984e3f667e",
+        "05cc3180df891059616a237e50dea6eedc3a47c1661bb990f16f3805ed151f55"
+      ]
+    }
+  ]
+}

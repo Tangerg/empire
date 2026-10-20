@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-local-support",
+  "assetId": "C02-SFV1-status-local-support",
+  "label": "地方支持",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-local-support",
+    "topicId": "c02-status-local-support",
+    "label": "地方支持",
+    "category": "status",
+    "png": "runtime/status/status-local-support.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 4,
+    "column": 4
+  },
+  "sourceCropBox": [
+    768,
+    1110,
+    1024,
+    1536
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-local-support.png",
+  "runtimeReferenceSha256": "75a68618c2c9dc5d8f9d2ac45223df8142beef009c05bcf7a3deeda2314e0089",
+  "functionalMotif": "Four armored forearms converge into one central glove-stack/support gesture: blue upper left, olive upper right, blue with pale cuff lower left, amber with pale cuff lower right. One solid cyan ring remains behind the hands.",
+  "reconstructionCaveats": "The original board cuts the four sleeve ends at its crop edges. The remake reconstructs minimal closed sleeve ends inside the new canvas, without inventing additional arms. The source glow is replaced by a bounded solid cyan ring. The original overlapping hand stack is abstracted as broad glove segments.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d2e828e2-a887-4b55-9cef-7080c5fe5c35.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-local-support/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

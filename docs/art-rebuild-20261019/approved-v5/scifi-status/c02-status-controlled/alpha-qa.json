@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-controlled",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 803803,
+  "partialAlphaPixels": 765794,
+  "opaquePixels": 2919,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    142,
+    32,
+    1126,
+    1222
+  ],
+  "nearOpaquePixelCountGE240": 744950,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 294,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "96666c46892a6b8ddc19f51856fbb528202ff4108dcbedb888480c90cb1dee0a",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the bowed armored figure, cyan visor, paired amber cuff masses and six-node surrounding circuit silhouette are readable across white/black/olive. Fine hand joints and armor segmentation compress, as expected. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One kneeling armored figure with bowed cyan visor, two amber wrist cuffs and six rounded circuit endpoints on angular amber stalks is retained. Folded legs and joined front hands preserve the restrained/controlled posture."
+}

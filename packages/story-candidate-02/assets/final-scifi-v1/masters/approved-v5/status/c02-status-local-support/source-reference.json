@@ -1,0 +1,8 @@
+{
+  "sourceCrop": "source-master-slot.png",
+  "sourceFullBoard": "source-fullboard.png",
+  "sourceRuntime": "source-runtime.png",
+  "cropEvidence": "crop-evidence.json",
+  "referenceHashes": "reference-hashes.json",
+  "reconstructionCaveats": "The original board cuts the four sleeve ends at its crop edges. The remake reconstructs minimal closed sleeve ends inside the new canvas, without inventing additional arms. The source glow is replaced by a bounded solid cyan ring. The original overlapping hand stack is abstracted as broad glove segments."
+}

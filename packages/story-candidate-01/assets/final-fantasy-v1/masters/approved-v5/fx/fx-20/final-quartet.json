@@ -1,0 +1,45 @@
+{
+  "topicId": "C01-FX-20",
+  "status": "source-alpha-export-and-parent-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "bare-crescent",
+    "contact-spark",
+    "spark-spray",
+    "residual-sparks"
+  ],
+  "phases": [
+    {
+      "phase": "bare-crescent",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/bare-crescent/master.png",
+      "sha256": "3b87948d4f1b906eb569f896855ec5335989801e6143c70d5ed9e43bdcb9e2bb"
+    },
+    {
+      "phase": "contact-spark",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/contact-spark/master.png",
+      "sha256": "ab94507b8231dd2b2bac21d3ac42d38bbdeb7e0eebe763db8c1573d66af99ad5"
+    },
+    {
+      "phase": "spark-spray",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/spark-spray/master.png",
+      "sha256": "45149ee23b3c352b35cc32ac54acb6db21e08909f5e3fd60b4e442e6ebbbedb3"
+    },
+    {
+      "phase": "residual-sparks",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-20/residual-sparks/master.png",
+      "sha256": "6f6001b9c63007cf71c3c06efef444ad1fc54bd8d05194d5145fbc8029d43d2a"
+    }
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "qa": "qa/qa-metrics.json",
+  "caveats": "qa/COHORT-REVIEW.md"
+}

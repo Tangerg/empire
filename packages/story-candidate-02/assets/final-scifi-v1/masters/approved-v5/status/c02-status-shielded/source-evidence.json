@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-shielded",
+  "assetId": "C02-SFV1-status-shielded",
+  "label": "护盾",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-shielded",
+    "topicId": "c02-status-shielded",
+    "label": "护盾",
+    "category": "status",
+    "png": "runtime/status/status-shielded.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 1,
+    "column": 3
+  },
+  "sourceCropBox": [
+    512,
+    0,
+    768,
+    384
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-shielded.png",
+  "runtimeReferenceSha256": "e4325e7f9004f054c3f1f8a6ab01768ed6204425796c03e0ae1e3084afc68ec0",
+  "functionalMotif": "One pointed angular sci-fi shield retains a thick segmented metal rim and cyan energy face with a central hexagonal barrier cell and surrounding honeycomb fragments.",
+  "reconstructionCaveats": "The original rim scratches, chip marks and many thin energy lines are reduced to broad planes and a small number of bounded honeycomb channels. No external aura or new checkmark is introduced.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8b1787e8-c78f-4eaf-882c-ce7c6354cda0.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-shielded/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

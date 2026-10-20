@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "motif": "One central purple oval spore organism with five broad curling tendrils and short lower drips, backed by a bounded scalloped green contamination shape with two small separate purple spores.",
+  "checks": {
+    "One purple central oval organism": true,
+    "Five broad dominant curled tendrils": true,
+    "Bounded solid green contamination backing": true,
+    "Short rounded lower drips": true,
+    "No eyes, mouth, mushroom or generic biohazard substitution": true,
+    "No unbounded exterior glow or haze": true
+  },
+  "native32": "Actual native-size white/black/olive strips and 8x nearest before/after inspected; complete primary motif survives reduction.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or background residue.",
+  "uncertainty": "Five dominant curled tendrils can be distinguished in the source. Small bulbs, drips, cell patches and floating spore counts are decorative and ambiguous at runtime; these have been simplified. The source green cloud is represented as a bounded solid shape rather than translucent haze.",
+  "catalogOnly": true
+}
