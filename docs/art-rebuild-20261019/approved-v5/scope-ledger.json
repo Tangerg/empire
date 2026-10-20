@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 541,
+    "formalBound": 543,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -16,10 +16,10 @@
       "mission-unit": 24,
       "narrative-static": 80,
       "skill": 96,
-      "status": 38,
+      "status": 40,
       "terrain": 32
     },
-    "rawPreservedTopics": 543,
+    "rawPreservedTopics": 544,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -8617,7 +8617,8 @@
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/debris-lift/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/dust-impact/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/rubble-scatter/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/rubble-scatter/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-21/settling-dust/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -14844,13 +14845,20 @@
       "category": "status",
       "label": "隐蔽",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-hidden/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-hidden.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-hold-timer",
@@ -15030,11 +15038,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/status/c02-status-shielded/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-shielded.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit32x32 with2px transparent margin, native32 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical status manifest/runtime PNG only, anchor16,16, no HD. C02 campaign remains a content contract; no authored status icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-status-spare-parts",

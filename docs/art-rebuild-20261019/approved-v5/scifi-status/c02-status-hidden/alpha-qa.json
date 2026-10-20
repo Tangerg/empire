@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-hidden",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 802399,
+  "partialAlphaPixels": 768699,
+  "opaquePixels": 1418,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    173,
+    110,
+    1111,
+    1183
+  ],
+  "nearOpaquePixelCountGE240": 756712,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 341,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "3819a30ebe46a092017bac0030b5deee7f03575059ef5e2301fd6df25cac48d9",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the dark hood, two cyan eyes, large blocking rock and two colored plant clusters remain readable across white/black/olive. Minor leaves and rock facet boundaries intentionally simplify. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One dark hooded figure with two cyan eyes peers from behind slate-purple cover rocks. One purple plant cluster at left and one teal plant cluster near lower center preserve the original supporting marks."
+}

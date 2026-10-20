@@ -1,0 +1,69 @@
+{
+  "topicId": "c02-status-hidden",
+  "assetId": "C02-SFV1-status-hidden",
+  "label": "隐蔽",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-hidden",
+    "topicId": "c02-status-hidden",
+    "label": "隐蔽",
+    "category": "status",
+    "png": "runtime/status/status-hidden.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-01.png",
+  "originalMasterSha256": "e9556f32ac4eb5f31baa0be0aba2092dd7ec2adc95176daf906ff66b1ca5a020",
+  "sourceCellOneBased": {
+    "row": 1,
+    "column": 2
+  },
+  "sourceCropBox": [
+    256,
+    0,
+    512,
+    384
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-01; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-hidden.png",
+  "runtimeReferenceSha256": "6e9b2a75076a0e1ada22b9061cc17c8a9c2076a8a9b9f726f3e7718adb68d1d6",
+  "functionalMotif": "One dark hooded figure with two cyan eyes peers from behind slate-purple cover rocks. One purple plant cluster at left and one teal plant cluster near lower center preserve the original supporting marks.",
+  "reconstructionCaveats": "The original source fades its bottom rocks into an opaque backdrop. The redraw reconstructs a clean closed rock silhouette and simplifies plants to broad leaf sprays. No landscape extension or extra character is introduced; the figure remains hidden behind foreground cover.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1cf93ad2-f75b-4f97-8997-4b991fa8f173.png",
+  "immutableRaw": "raw-native-v2.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-hidden/raw-native-v1.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

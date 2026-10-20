@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-shielded",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 819343,
+  "partialAlphaPixels": 752170,
+  "opaquePixels": 1003,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    179,
+    56,
+    1076,
+    1218
+  ],
+  "nearOpaquePixelCountGE240": 742430,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 339,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "54cc16b98a3439b88de2393c5a659188166dccc03cd1c6305ff4d529c7f0dce4",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the shield silhouette, gray rim and cyan honeycomb energy face are recognizable across white/black/olive. The primary center cell remains visible; fine original edge-cell detail is simplified. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One pointed angular sci-fi shield retains a thick segmented metal rim and cyan energy face with a central hexagonal barrier cell and surrounding honeycomb fragments."
+}

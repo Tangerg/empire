@@ -1,0 +1,112 @@
+{
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+  "sourceBoardSha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+  "sourceBoardMode": "RGBA",
+  "sourceBoardSize": [
+    1536,
+    1024
+  ],
+  "sourceRowBoundsXYXY": [
+    0,
+    256,
+    1536,
+    512
+  ],
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-22",
+    "topicId": "C01-FX-22",
+    "label": "工程修复",
+    "category": "fx",
+    "png": "runtime/fx/fx-22.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "earlierAuditManifestAnchor": [
+    16,
+    24
+  ],
+  "cropChecks": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        261,
+        379,
+        507
+      ],
+      "path": "reference/original-f0.png",
+      "sha256": "052d5b1f42ae0d56afb3a6c12448f917f37e32c96ab1570e88b5f7457ae03462",
+      "matchesPriorAudit": true,
+      "sourceObservation": "tilted bolt and nut with tiny sparks"
+    },
+    {
+      "phase": 1,
+      "box": [
+        389,
+        261,
+        763,
+        507
+      ],
+      "path": "reference/original-f1.png",
+      "sha256": "9bc2f70b55cdee0afa1a83f7d42aaf061d40f55909d80a86bde6ddc6cc1b0868",
+      "matchesPriorAudit": true,
+      "sourceObservation": "hammering flash at bolt/nut"
+    },
+    {
+      "phase": 2,
+      "box": [
+        773,
+        261,
+        1147,
+        507
+      ],
+      "path": "reference/original-f2.png",
+      "sha256": "d7461fc14e0b67ac9bf264cc355b931de46da0842bb2196e826f5bb0ea9e4a83",
+      "matchesPriorAudit": true,
+      "sourceObservation": "upright fitted bolt with blue repair swirl"
+    },
+    {
+      "phase": 3,
+      "box": [
+        1157,
+        261,
+        1531,
+        507
+      ],
+      "path": "reference/original-f3.png",
+      "sha256": "118411e3e2c51ca39b9b48e3661e52c4fde61283cc5bbfc88fc3693591932988",
+      "matchesPriorAudit": true,
+      "sourceObservation": "finished upright bolt and small glints"
+    }
+  ],
+  "topicId": "C01-FX-22",
+  "label": "工程修复",
+  "semanticName": "engineering-repair",
+  "sourceRow1Based": 2,
+  "currentConsumer": "No literal C01-FX-22/fx-22 or engineering-repair animation consumer found in repository source. Structure repair rules exist without a binding to this FX. Catalog-only.",
+  "storyIdentity": "A brass hexagonal nut, a gray threaded bolt and small ground-contact stones depict actual assembly: loose tilted hardware, seating impact, upright fitting with a blue repair swirl, then completed upright hardware and small blue glints. No wrench or hammer is visible.",
+  "storySource": "Original atlas 06 row 2 is the primary motion/material reference. packages/battle-engine/src/structures.ts defines repairStructure, but no authored FX22 animation binding was found.",
+  "proposedPhaseOrder": [
+    "loose-hardware",
+    "seating-impact",
+    "repair-swirl",
+    "finished-fit"
+  ],
+  "proposalStatus": "Parent approved phase names/order on 2026-10-20, with common nut/contact baseline and intentionally moving bolt. Warm cap reflections may change between the repair and finished phases, without programmatic recoloring.",
+  "sourceAlphaWarning": "Original board is RGBA but has an unrelated cloudy rectangular backing. Its mode is not proof of usable alpha. Re-author genuine transparent exterior and gaps; retain only legitimate hardware, stone fragments, impact sparks and repair glints.",
+  "timing": "Four equal 1/12-second frames, one play. No authored consumer or scene lifetime established.",
+  "sourceAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/fx-source-audit.json",
+  "sourceAuditSHA256": "4e7e77ceba7077e10a7b16ad7869fda6098ba618872a8a1ef3d136f6616c1cd2"
+}
