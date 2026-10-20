@@ -1,0 +1,91 @@
+import { describe, expect, it } from 'vitest';
+import { TEST_ENGINE, makeLevel, testApply, testChooseAction, testState, u } from './fixtures';
+import { idx } from '../grid';
+import { AiTurnContext } from '../ai/turn-context';
+
+const river = ['......=......', ...Array<string>(8).fill('......~......')];
+
+describe('long-range navigation', () => {
+  it('measures a legal detour beyond a single turn without changing geometric range', () => {
+    const state = testState(makeLevel(river, { units: [u(5, 8, 'soldier', 1)] }));
+    const destination = { x: 7, y: 8 };
+    const distances = TEST_ENGINE.space.navigationDistances(state, 'foot', [destination]);
+    expect(distances.get(idx(state.map, 5, 8))).toBe(18);
+    expect(distances.get(idx(state.map, 5, 5))).toBe(15);
+    expect(TEST_ENGINE.space.board(state).distance({ x: 5, y: 8 }, destination)).toBe(2);
+    expect(TEST_ENGINE.space.moveField(state, state.units[0]).stops.has(idx(state.map, 7, 8))).toBe(false);
+  });
+
+  it('respects the mover and reports disconnected ground without a geometric fallback', () => {
+    const state = testState(makeLevel(['.~.'], { units: [u(0, 0, 'soldier', 1)] }));
+    const destination = [{ x: 2, y: 0 }];
+    expect(TEST_ENGINE.space.navigationDistances(state, 'foot', destination).has(0)).toBe(false);
+    expect(TEST_ENGINE.space.navigationDistances(state, 'flying', destination).get(0)).toBe(2);
+  });
+
+  it('follows directed climb/drop rules while measuring backward from the destination', () => {
+    const state = testState(makeLevel(['..'], { units: [u(0, 0, 'soldier', 1)] }));
+    state.map.elevation[0] = 2;
+    expect(TEST_ENGINE.space.navigationDistances(state, 'foot', [{ x: 1, y: 0 }]).get(0)).toBe(1);
+    expect(TEST_ENGINE.space.navigationDistances(state, 'foot', [{ x: 0, y: 0 }]).has(1)).toBe(false);
+  });
+
+  it('sends melee around a distant crossing instead of waiting opposite its enemy', () => {
+    const state = testState(makeLevel(river, {
+      units: [u(5, 8, 'ogre', 1), u(7, 8, 'ogre', 2)],
+    }));
+    let action = testChooseAction(state);
+    while (action.kind === 'reaction') {
+      testApply(state, action);
+      action = testChooseAction(state);
+    }
+    expect(action.kind).toBe('command');
+    if (action.kind !== 'command') return;
+    expect(action.path.at(-1)).toEqual({ x: 5, y: 5 });
+    testApply(state, action);
+    let combat = false;
+    for (let i = 0; i < 60 && state.phase !== 'over' && !combat; i++) {
+      combat = testApply(state, testChooseAction(state)).some((event) => event.type === 'attack');
+    }
+    expect(combat).toBe(true);
+  });
+
+  it('still takes a legal ranged shot across impassable terrain', () => {
+    const state = testState(makeLevel(river, {
+      units: [u(5, 8, 'soldier', 1), u(7, 8, 'soldier', 2)],
+    }));
+    expect(testChooseAction(state)).toMatchObject({
+      kind: 'command',
+      path: [{ x: 5, y: 8 }],
+      command: { ability: 'attack', target: { x: 7, y: 8 } },
+    });
+  });
+
+  it('keeps the nearest threat relevant when a farther enemy is already at ideal range', () => {
+    const state = testState(makeLevel(['.....'], {
+      units: [u(1, 0, 'ballista', 1), u(0, 0, 'ogre', 2), u(4, 0, 'ogre', 2)],
+    }));
+    const context = new AiTurnContext({
+      rules: TEST_ENGINE.rules,
+      objectiveAdvisors: TEST_ENGINE.aiObjectiveAdvisors,
+      abilityEvaluators: TEST_ENGINE.abilityAiEvaluators,
+    }, state, 1, { aggression: 0.58 });
+    expect(context.engagementDistance(state.units[0], state.units[0], state.units.slice(1))).toBe(2);
+  });
+
+  it('takes an escort away from its exit temporarily when the crossing requires it', () => {
+    const state = testState(makeLevel(river, {
+      units: [u(5, 8, 'soldier', 1), u(12, 0, 'soldier', 2)],
+      scenario: { zones: [{ id: 'exit', cells: [{ x: 7, y: 8 }] }] },
+      victory: [{ type: 'escort', selector: { ids: [1] }, zone: 'exit', count: 1 }],
+    }));
+    let action = testChooseAction(state);
+    while (action.kind === 'reaction') {
+      testApply(state, action);
+      action = testChooseAction(state);
+    }
+    expect(action.kind).toBe('command');
+    if (action.kind !== 'command') return;
+    expect(action.path.at(-1)).toEqual({ x: 5, y: 5 });
+  });
+});

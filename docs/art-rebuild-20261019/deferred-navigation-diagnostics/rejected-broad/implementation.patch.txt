@@ -1,0 +1,269 @@
+diff --git a/packages/battle-engine/src/ai/tile-appraisal.ts b/packages/battle-engine/src/ai/tile-appraisal.ts
+index 977086f4..5cd2601f 100644
+--- a/packages/battle-engine/src/ai/tile-appraisal.ts
++++ b/packages/battle-engine/src/ai/tile-appraisal.ts
+@@ -5,7 +5,7 @@ import { enemyUnitsOf } from '../state';
+ import type { ContentCatalog } from '../content-pack';
+ import type { Coord, GameState, TerrainDef, Unit, UnitDef } from '../types';
+ import type { AiAgenda } from './agenda';
+-import { hpRatio, preferredEngagementRange } from './measures';
++import { hpRatio } from './measures';
+ import { directiveOf, directivePull, type UnitDirectiveRules } from '../unit-directive';
+ import type { AiOptions } from './rules';
+ 
+@@ -19,9 +19,11 @@ export interface TileAppraisalContext {
+   readonly threat: Map<number, number>;
+   readonly options: AiOptions;
+   readonly battlefield: Battlefield;
+-  /** The board under its tiling; every distance below is measured on it. */
++  /** Geometric ranges; navigation separately respects traversable routes. */
+   readonly board: Board;
+   readonly content: ContentCatalog;
++  navigationDistance(unit: Unit, from: Coord, destination: Coord): number | null;
++  engagementDistance(unit: Unit, from: Coord, foes: readonly Unit[]): number | null;
+ }
+ 
+ /**
+@@ -120,7 +122,8 @@ export class TileAppraisal {
+     if (!this.canCapture || this.agenda.captureTargets.length === 0) return 0;
+     let best = 0;
+     for (const target of this.agenda.captureTargets) {
+-      best = Math.max(best, (target.weight * 120) / (1 + this.board.distance(this.at, target.at)));
++      const distance = this.context.navigationDistance(this.unit, this.at, target.at);
++      if (distance !== null) best = Math.max(best, (target.weight * 120) / (1 + distance));
+     }
+     return best * (0.6 + 0.4 * this.aggression);
+   }
+@@ -131,9 +134,11 @@ export class TileAppraisal {
+     for (const destination of this.agenda.mission.destinations) {
+       if (destination.unitIds && !destination.unitIds.has(this.unit.id)) continue;
+       if (destination.captureOnly && !this.canCapture) continue;
++      const distance = this.context.navigationDistance(this.unit, this.at, destination.at);
++      if (distance === null) continue;
+       strongest = Math.max(
+         strongest,
+-        destination.weight * 180 / (1 + this.board.distance(this.at, destination.at)),
++        destination.weight * 180 / (1 + distance),
+       );
+     }
+     return strongest;
+@@ -147,7 +152,8 @@ export class TileAppraisal {
+     for (const [protectedId, weight] of protectedUnits) {
+       const charge = this.context.state.units.find((candidate) => candidate.id === protectedId);
+       if (!charge) continue;
+-      strongest = Math.max(strongest, weight * 100 / (1 + this.board.distance(this.at, charge)));
++      const distance = this.context.navigationDistance(this.unit, this.at, charge);
++      if (distance !== null) strongest = Math.max(strongest, weight * 100 / (1 + distance));
+     }
+     return strongest;
+   }
+@@ -155,10 +161,10 @@ export class TileAppraisal {
+   /** Ranged units want to be near-but-not-adjacent; melee wants contact. */
+   private engagementRange(): number {
+     if (this.foes.length === 0) return 0;
+-    const toNearestFoe = this.board.nearestDistance(this.at, this.foes.map((foe) => ({ x: foe.x, y: foe.y })));
+-    const ideal = preferredEngagementRange(this.unit, this.context.content);
++    const distance = this.context.engagementDistance(this.unit, this.at, this.foes);
++    if (distance === null) return 0;
+     const wants = directiveOf(this.context.rules, this.unit).engagement;
+-    return -Math.abs(toNearestFoe - ideal) * 16 * (0.5 + this.aggression) * wants;
++    return -distance * 16 * (0.5 + this.aggression) * wants;
+   }
+ 
+   /** Cover only counts against the shooter it is actually between you and. */
+@@ -176,7 +182,11 @@ export class TileAppraisal {
+ 
+   private enemyKeepPull(): number {
+     if (this.agenda.enemyHqs.length === 0) return 0;
+-    return -this.board.nearestDistance(this.at, this.agenda.enemyHqs) * 8 * this.aggression;
++    const distances = this.agenda.enemyHqs.flatMap((at) => {
++      const distance = this.context.navigationDistance(this.unit, this.at, at);
++      return distance === null ? [] : [distance];
++    });
++    return distances.length === 0 ? 0 : -Math.min(...distances) * 8 * this.aggression;
+   }
+ 
+   /** Stay useful to our own keep, but only while it is actually threatened. */
+@@ -186,7 +196,11 @@ export class TileAppraisal {
+     const threatened = myHqs.some((keep) =>
+       this.foes.some((foe) => this.board.distance(foe, keep) <= 5));
+     if (!threatened) return 0;
+-    return -this.board.nearestDistance(this.at, myHqs) * 14 * (1 - this.aggression * 0.5);
++    const distances = myHqs.flatMap((at) => {
++      const distance = this.context.navigationDistance(this.unit, this.at, at);
++      return distance === null ? [] : [distance];
++    });
++    return distances.length === 0 ? 0 : -Math.min(...distances) * 14 * (1 - this.aggression * 0.5);
+   }
+ 
+   /** Fear of the tile itself, discounted by armour and by how needed we are. */
+diff --git a/packages/battle-engine/src/ai/turn-context.ts b/packages/battle-engine/src/ai/turn-context.ts
+index 8f31531e..9b49fa1b 100644
+--- a/packages/battle-engine/src/ai/turn-context.ts
++++ b/packages/battle-engine/src/ai/turn-context.ts
+@@ -3,7 +3,10 @@ import { boardOf, type Board } from '../domain/board';
+ import type { AiMissionRules } from '../ai-objectives';
+ import { PriorityRegistry } from '../registry';
+ import { activeTurnOrder } from '../turn-order';
+-import type { Action, GameState, PlayerId, Unit } from '../types';
++import type { Action, Coord, GameState, PlayerId, Unit } from '../types';
++import { unitWeapons } from '../combat';
++import { preferredEngagementRange } from './measures';
++import { sameCoord } from '../grid';
+ import type { ContentCatalog } from '../content-pack';
+ import type { AbilityAiEvaluatorRegistry } from './ability-evaluators';
+ import { readAgenda, type AiAgenda } from './agenda';
+@@ -41,6 +44,8 @@ export class AiTurnContext {
+   private threatCache: Map<number, number> | null = null;
+   private battlefieldCache: Battlefield | null = null;
+   private boardCache: Board | null = null;
++  private readonly navigationCache = new Map<string, ReadonlyMap<number, number>>();
++  private readonly engagementCache = new Map<string, ReadonlyMap<number, number>>();
+ 
+   constructor(
+     readonly planning: AiPlanningDependencies,
+@@ -80,6 +85,48 @@ export class AiTurnContext {
+     return this.boardCache ??= boardOf(this.rules, this.state);
+   }
+ 
++  private navigationField(unit: Unit, destinations: readonly Coord[]): ReadonlyMap<number, number> {
++    const movement = this.content.units.get(unit.type).movementClass;
++    const key = `${movement}:${destinations.map((at) => this.board.indexOf(at)).join(',')}`;
++    let field = this.navigationCache.get(key);
++    if (!field) {
++      field = this.rules.space.navigationDistances(this.state, movement, destinations);
++      this.navigationCache.set(key, field);
++    }
++    return field;
++  }
++
++  navigationDistance(unit: Unit, from: Coord, destination: Coord): number | null {
++    const cell = this.battlefield.cell(destination);
++    const movement = this.content.units.get(unit.type).movementClass;
++    const blocked = cell.structure !== undefined && !cell.admits(movement);
++    const destinations = blocked ? this.board.neighbours(destination) : [destination];
++    const distance = this.navigationField(unit, destinations).get(this.board.indexOf(from));
++    return distance === undefined ? null : distance + (blocked ? 1 : 0);
++  }
++
++  engagementDistance(unit: Unit, from: Coord, foes: readonly Unit[]): number | null {
++    const nearestFirst = foes.slice().sort((left, right) =>
++      this.board.distance(from, left) - this.board.distance(from, right));
++    for (const foe of nearestFirst) {
++      const key = `${unit.id}:${foe.id}`;
++      let field = this.engagementCache.get(key);
++      if (!field) {
++        const range = preferredEngagementRange(unit, this.content);
++        const weapons = unitWeapons(this.content, unit);
++        const destinations = this.board.ring(foe, range, range)
++          .filter((at) => weapons.some((weapon) =>
++            this.rules.space.attackTargets(this.state, unit, at, weapon)
++              .some((target) => sameCoord(target, foe))));
++        field = this.navigationField(unit, destinations);
++        this.engagementCache.set(key, field);
++      }
++      const distance = field.get(this.board.indexOf(from));
++      if (distance !== undefined) return distance;
++    }
++    return null;
++  }
++
+   /**
+    * Units the ordering policy entitles to act right now. Under per-unit orders
+    * that is exactly one unit, and planning for any other would produce an
+diff --git a/packages/battle-engine/src/movement.ts b/packages/battle-engine/src/movement.ts
+index 7b93101e..e086dc4c 100644
+--- a/packages/battle-engine/src/movement.ts
++++ b/packages/battle-engine/src/movement.ts
+@@ -9,7 +9,7 @@ import { commanderAuraFor } from './commanders';
+ import { formationMovementDelta } from './formations';
+ import { hostileControlZone } from './zone-of-control';
+ import type { WeaponDef } from './types';
+-import type { Coord, GameState, Unit } from './types';
++import type { Coord, GameState, MovementClass, Unit } from './types';
+ import { type ContentCatalog } from './content-pack';
+ import type { GridRules } from './tactical-grid';
+ 
+@@ -40,6 +40,41 @@ export interface MoveField {
+   stops: Set<number>;
+ }
+ 
++/**
++ * Remaining traversable steps to any destination, independent of this turn's
++ * budget, occupants and control zones. This is navigation intent, not permission
++ * to move: the move field still owns legal paths and their terrain costs.
++ */
++export function computeNavigationDistances(
++  rules: MovementRules,
++  state: GameState,
++  movement: MovementClass,
++  destinations: readonly Coord[],
++): ReadonlyMap<number, number> {
++  const board = boardOf(rules, state);
++  const battlefield = new Battlefield(state, rules.content);
++  const distances = new Map<number, number>();
++  const queue: Array<{ at: Coord; distance: number }> = [];
++  for (const destination of destinations) {
++    if (!board.contains(destination) || !battlefield.cell(destination).admits(movement)) continue;
++    const index = board.indexOf(destination);
++    if (distances.has(index)) continue;
++    distances.set(index, 0);
++    queue.push({ at: destination, distance: 0 });
++  }
++  for (const { at: destination, distance } of queue) {
++    for (const from of board.neighbours(destination)) {
++      const index = board.indexOf(from);
++      if (distances.has(index) || !battlefield.cell(from).admits(movement)) continue;
++      // Climbing and dropping need not be symmetric: walk the reverse graph.
++      if (battlefield.traversalCost(from, destination, movement) === null) continue;
++      distances.set(index, distance + 1);
++      queue.push({ at: from, distance: distance + 1 });
++    }
++  }
++  return distances;
++}
++
+ /**
+  * Dijkstra over entry costs. Allies can be passed through (configurable), enemy
+  * units block entirely, and only empty tiles are valid stopping points.
+diff --git a/packages/battle-engine/src/tactical-space.ts b/packages/battle-engine/src/tactical-space.ts
+index d74d3c15..243f8f09 100644
+--- a/packages/battle-engine/src/tactical-space.ts
++++ b/packages/battle-engine/src/tactical-space.ts
+@@ -1,6 +1,7 @@
+ import {
+   attackTargetCoords,
+   computeMoveField,
++  computeNavigationDistances,
+   healTargetsFrom,
+   pathTo,
+   threatTiles,
+@@ -8,7 +9,7 @@ import {
+ } from './movement';
+ import { isUnitVisible, visibleTiles, visibleUnits } from './vision';
+ import { hostileControlZone } from './zone-of-control';
+-import type { Coord, GameState, PlayerId, Unit, WeaponDef } from './types';
++import type { Coord, GameState, MovementClass, PlayerId, Unit, WeaponDef } from './types';
+ import { type ContentCatalog } from './content-pack';
+ import { boardOf, type Board } from './domain/board';
+ import type { GridRegistry } from './tactical-grid';
+@@ -24,6 +25,8 @@ import type { GridRegistry } from './tactical-grid';
+  */
+ export interface TacticalSpace {
+   moveField(state: GameState, unit: Unit): MoveField;
++  /** Long-range traversable steps, not this turn's legal movement or cost. */
++  navigationDistances(state: GameState, movement: MovementClass, destinations: readonly Coord[]): ReadonlyMap<number, number>;
+   pathTo(field: MoveField, state: GameState, destination: Coord): Coord[] | null;
+   threatOf(state: GameState, unit: Unit, field?: MoveField): Set<number>;
+   /** Tiles held by this unit's enemies; entering one ends its move. */
+@@ -55,6 +58,10 @@ export class DefaultTacticalSpace implements TacticalSpace {
+     return computeMoveField(this, state, unit);
+   }
+ 
++  navigationDistances(state: GameState, movement: MovementClass, destinations: readonly Coord[]): ReadonlyMap<number, number> {
++    return computeNavigationDistances(this, state, movement, destinations);
++  }
++
+   pathTo(field: MoveField, state: GameState, destination: Coord): Coord[] | null {
+     return pathTo(field, state.map, destination);
+   }
