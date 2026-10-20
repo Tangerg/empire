@@ -1,0 +1,100 @@
+{
+  "source": {
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1123372,
+    "partialPixels": 446994,
+    "opaquePixels": 2150,
+    "nearOpaquePixels": 407580,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      72,
+      51,
+      1236,
+      1190
+    ],
+    "alpha8BoundingBox": [
+      74,
+      208,
+      1232,
+      1155
+    ]
+  },
+  "contain128": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 10884,
+    "partialPixels": 4904,
+    "opaquePixels": 596,
+    "nearOpaquePixels": 3415,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      7,
+      20,
+      126,
+      119
+    ],
+    "alpha8BoundingBox": [
+      9,
+      22,
+      124,
+      117
+    ]
+  },
+  "wholeCanvasResize": {
+    "source": [
+      1254,
+      1254
+    ],
+    "target": [
+      128,
+      128
+    ],
+    "fit": [
+      124,
+      124
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "crop": null
+  },
+  "composites": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/QA/native128-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/QA/native128-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/QA/native128-olive.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/QA/native128-dark.png"
+  ],
+  "sourceBytesUnmodified": true,
+  "alphaCleanup": false,
+  "chromaKey": false,
+  "bboxFit": false,
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-44a0d67d-8524-4c84-af27-10d23fde8f89.png",
+  "visualReview": {
+    "status": "pass",
+    "originalBoardsAnd617CropsInspected": true,
+    "nativeSourceInspected": true,
+    "fourActual128BackgroundsInspected": true,
+    "nativeSourceContrastingBackgroundsInspected": true,
+    "narrativeReconstructionBriefPass": true,
+    "notExactOriginalRestoration": true,
+    "notes": "PASS: Exactly three separate complete iron keys with own blue, olive and ochre ring bows, no common ring or connector, no touching/overlap, same practical key design. Every ring aperture and inter-key gap is transparent. Individual shafts and stepped bits remain countable at exact128 on all four backgrounds. Complete silhouettes, including rightmost bow near canvas edge; no cutoff. Source perimeter alpha0. Documentary narrative reconstruction corrects the old single key with three rings; it does not change gameplay or create a new key rule."
+  }
+}

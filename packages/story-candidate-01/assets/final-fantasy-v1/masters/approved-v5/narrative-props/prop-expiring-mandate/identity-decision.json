@@ -1,0 +1,69 @@
+{
+  "topicId": "C01-PROP-EXPIRING-MANDATE",
+  "decision": "designed narrative reconstruction",
+  "originalDepiction": "Bronze round clasp with a dark central radial disk, two slotted strap ends and a separately drawn release pin.",
+  "reason": "Detachable and externally removable by Tasha. Novel adds falling silver sand/time limit, while original is dial-like with no sandglass. Do not invent legible clock numerals or dates.",
+  "selectedBrief": "Subject: one practical detachable wartime mandate CLASP plus one separate loose STEEL RELEASE PIN. Preserve the old reference's chunky round bronze clasp housing and two opposite broad slotted attachment lugs, matte bronze and charcoal-steel materials, and visible mechanically separable seams. Change the old radial dial mechanism into a compact UPRIGHT TWO-CHAMBER SILVER-SAND TIMER embedded in the center of the circular bezel. The hourglass-shaped clear window has a broad upper chamber with some pale silver-gray sand, narrow central neck, lower chamber with a distinct accumulating silver-gray sand mound, and one clear short falling stream joining them. Silver sand is matte, not sparkling or glowing. Make the timer window large enough to instantly read at128px. The timer is part of the wearable/releasable clasp, not a freestanding desk hourglass. The housing remains a broad low round buckle with slotted lugs extending upper-right and lower-left; show the upright sand chambers nearly front-on so gravity is clear. Place the original-style loose dark steel pointed release pin separately at lower-right with generous transparent air gap, complete shaft and broad pull-cap fully visible. This external removable pin is essential: another person can remove the authority device. The assembly has no straps or person attached. No clock hands, radial spokes, numbers, dates, letters, emblem, bright jewelry, compass, chain, or additional components. Both mounting slots are genuine transparent holes. The timer/clasp and pin both fully inside the canvas with safe margin.",
+  "approval": "Parent confirmed 2026-10-20: reconstruct single cracked two-script bottle with blue thread; three independent keys with no common ring; detachable mandate clasp with silver-sand two-chamber timer and separate release pin. Do not claim exact source restoration.",
+  "evidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/06-war-of-seven-towers.md",
+      "sha256": "df05f34570b4211be4e57a7651e91be5754248357ded9dc730d90542af28d1c4",
+      "lines": [
+        129,
+        133
+      ],
+      "exactText": "129: ### 最终授权\n130: \n131: 灰誓议会授予最后统帅权时，旗上安装可拆期限扣。莱娅亲手把扣交给塔莎保管，战争结束由她拆下，避免主角自己宣布退权。\n132: \n133: 画面编号：`C01-CH06-S32`，道具：`C01-PROP-EXPIRING-MANDATE`。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md",
+      "sha256": "cd2e154907cf0271a7534c7737cd036e338601a200690b7a0e967c88ba380e30",
+      "lines": [
+        3,
+        5
+      ],
+      "exactText": "3: 雪没等议会作出决定，先封住了北境第一条路。\n4: \n5: 维恩港墓园里的薄霜还未融，风塔送来的寒潮已沿七塔旧线路越过半个大陆。灰誓议会的代表在同一张门板长桌上写下临时授权，限莱娅在北境、苍林、白骨原与钢铁城防四处战区内统兵四十日。银砂从期限扣上端落下时，第一批马已经冻死在驿道。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md",
+      "sha256": "cd2e154907cf0271a7534c7737cd036e338601a200690b7a0e967c88ba380e30",
+      "lines": [
+        507,
+        517
+      ],
+      "exactText": "507: 灰誓议会在圣辉塔废墟上重新开会。\n508: \n509: 他们没有恢复那枚已经断裂的授权。王都阿斯塔里亚的道路正在自行打开，塞维恩已戴上尚未完成的王冠，目标、地域与期限都必须重新写明。争论持续了一整夜。洛岬担心终战以后军队不撤，安瑟尔要求优先保留王都医院，亡者代表则拒绝任何能重新接管白骨塔的命令。\n510: \n511: 最后授权只包含阿斯塔里亚外城、王宫与王冠中枢，期限七日。终战一结束，各军团立即恢复原指挥；王都各塔最终去留由当地居民、维护者与承受停机者决定。\n512: \n513: 芙蕾达打造新的期限扣。塔莎没有把拆扣针交给莱娅，而是挂在自己账册内侧。\n514: \n515: “到期我来拆。”她说。\n516: \n517: 莱娅把新扣安在旧护腕上。银砂开始下落时，远方王都传来钟声。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "sha256": "f58d80c8b17003ae22029c8058d4ee53650349568b9e9335ff695d94dfaa4587",
+      "lines": [
+        108,
+        112
+      ],
+      "exactText": "108: | P0 | `C01-PROP-ADA-MEDICINE.png` | 两国文字、桥上孩子与王都医师 |\n109: | P0 | `C01-PROP-FIRST-GREY-FLAG.png` | 烟熏旧布、未拆净蓝线 |\n110: | P0 | `C01-PROP-IVRA-BROKEN-BRIDLE.png` | 自由跟随与控制差异 |\n111: | P0 | `C01-PROP-BROKEN-DRAGON-CLASP.png` | 第一次王冠命令后盟约破裂 |\n112: | P0 | `C01-PROP-EXPIRING-MANDATE.png` | 可拆战时统帅期限扣 |"
+    }
+  ],
+  "actualConsumerAudit": {
+    "baselineAuditShippedConsumerCount": 0,
+    "freshLiteralSourceScan": "rg -n -i prop-ada-medicine|prop-granary-key|prop-expiring-mandate packages/story-candidate-01/src returned no matches",
+    "gameplayOrConsumerChanges": false
+  },
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/full-cell.png",
+      "sha256": "bb1c9072c7b5903acb714f44b234873a0cba839ec8f5be7d3f910787ac4e2f30"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/legacy-inset.png",
+      "sha256": "8dc8d3001e606b587d9b631f7b6848666ad009972d389017f10935c40bbb28e7"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/approved-style.png",
+      "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/original-board.png",
+      "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884"
+    }
+  ]
+}

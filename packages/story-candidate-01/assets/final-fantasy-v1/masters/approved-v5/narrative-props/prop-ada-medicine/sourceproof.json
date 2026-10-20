@@ -1,0 +1,110 @@
+{
+  "topicId": "C01-PROP-ADA-MEDICINE",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-1ddafff7-39d1-40d4-ba51-0ae9bb45428e.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "generatedNativeSha256": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281",
+  "rawSha256": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281",
+  "masterSha256": "4098cbc8390a74f65b725c8279f0672eac00abee2b2128737242b48f9be12281",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "sourceBoundaryMaxAlpha": 0,
+  "sourceBoundaryNonzeroSamples": 0,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noProgrammaticPaintingOrRecolor": true,
+  "referencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/references/legacy-inset.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/references/approved-style.png"
+  ],
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/references/full-cell.png",
+      "sha256": "ddaedbd855a4b8e82ed4fb2f2fff469d054e8ef1cb01dfed37f6bac1b42aa5a8"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/references/legacy-inset.png",
+      "sha256": "deb064e7adafca3870cb4cab8e5fbca6e248292401035976ad187a8e6a771866"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/references/approved-style.png",
+      "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/references/original-board.png",
+      "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884"
+    }
+  ],
+  "originalBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+    "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 1,
+    "slot": "TR",
+    "originalNarrativeIndexZeroBased": 73,
+    "fullCellCropBox": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-ada-medicine/full-cell.png",
+        "sourceCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "ddaedbd855a4b8e82ed4fb2f2fff469d054e8ef1cb01dfed37f6bac1b42aa5a8",
+        "pixelSha256": "58986ee321f4093fa1d7963f992745f0305a78e79ced3e4a4dcb909d32ef6cdb",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-ada-medicine/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "deb064e7adafca3870cb4cab8e5fbca6e248292401035976ad187a8e6a771866",
+        "pixelSha256": "b10ad00b667c8c161f7aa52d01981e4e5c0a593857237fa94a7ed726f58fa8de",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "identityDecision": "designed narrative reconstruction",
+  "identityDecisionFile": "identity-decision.json",
+  "sourceProofScope": "Independent native genuine RGBA generation. Original617px RGB slot and original1254px RGB board preserved as historical material evidence. Explicit later story/static brief takes priority for corrected semantics. Raw/master are byte-exact generated native output. QA contain128 uses whole canvas124+2px padding and unmasked paste; no crop/bbox normalization. This is not exact original restoration."
+}

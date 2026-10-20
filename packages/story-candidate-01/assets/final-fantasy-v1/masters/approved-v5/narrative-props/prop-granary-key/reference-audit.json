@@ -1,0 +1,167 @@
+{
+  "topicId": "C01-PROP-GRANARY-KEY",
+  "label": "三方共管粮仓钥匙",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-GRANARY-KEY",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "三方共管粮仓钥匙",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-granary-key.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-GRANARY-KEY",
+    "topicId": "C01-PROP-GRANARY-KEY",
+    "label": "三方共管粮仓钥匙",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-granary-key.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 1,
+    "slot": "TR",
+    "originalNarrativeIndexZeroBased": 78,
+    "fullCellCropBox": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-granary-key/full-cell.png",
+        "sourceCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "9b99fa901f1efb1658f9322b103a169923fd610e2738c383b7e2215329fa529a",
+        "pixelSha256": "9c7185fffbf55c9d3c068e895afe4fd9605aeaeb4791221061c610437c402b78",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-granary-key/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "d6e5693f50fccbadc9a0c80a67e0f59b0120263dd380be928cf4b490a942f923",
+        "pixelSha256": "b26b6a7ec3d4cccc5df0d05db48b63ccd168c7f863a824024ff9fd29bf8942a9",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-granary-key.png",
+    "sha256": "e860a3960f8f7689cb5710d20bbeae6f602f45e1091d232f93c29d399e0ae544",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 12579,
+      "partialPixels": 3733,
+      "opaquePixels": 72,
+      "nearOpaquePixels": 367,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "One dark iron key attached to three colored large rings, with a smaller metal connector ring.",
+    "semanticRequirements": "Prose specifies three separately held keys for merchant/militia/refugee representatives and two representatives present to open. Original shows one key with three colored rings, not three independently controlled keys.",
+    "riskOrHold": "HOLD semantic mismatch. Do not claim three-party governance from three decorative rings without deciding whether to preserve source or redesign.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        91,
+        91
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/02-grey-banner-exile-novel.md",
+      "lines": [
+        163,
+        165
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

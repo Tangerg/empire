@@ -1,0 +1,110 @@
+{
+  "topicId": "C01-PROP-EXPIRING-MANDATE",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-272345e5-020e-4054-b7a2-ffef93aa2f5c.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "generatedNativeSha256": "b34ba7fc7c0f4b6d25436cfade78a7625d29e98b268c1f9c48ec9afec119ed6a",
+  "rawSha256": "b34ba7fc7c0f4b6d25436cfade78a7625d29e98b268c1f9c48ec9afec119ed6a",
+  "masterSha256": "b34ba7fc7c0f4b6d25436cfade78a7625d29e98b268c1f9c48ec9afec119ed6a",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "sourceBoundaryMaxAlpha": 1,
+  "sourceBoundaryNonzeroSamples": 15,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noProgrammaticPaintingOrRecolor": true,
+  "referencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/legacy-inset.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/approved-style.png"
+  ],
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/full-cell.png",
+      "sha256": "bb1c9072c7b5903acb714f44b234873a0cba839ec8f5be7d3f910787ac4e2f30"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/legacy-inset.png",
+      "sha256": "8dc8d3001e606b587d9b631f7b6848666ad009972d389017f10935c40bbb28e7"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/approved-style.png",
+      "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/references/original-board.png",
+      "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884"
+    }
+  ],
+  "originalBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+    "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 3,
+    "slot": "BR",
+    "originalNarrativeIndexZeroBased": 75,
+    "fullCellCropBox": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-expiring-mandate/full-cell.png",
+        "sourceCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "bb1c9072c7b5903acb714f44b234873a0cba839ec8f5be7d3f910787ac4e2f30",
+        "pixelSha256": "bdbda0424ecdc28f047f5a7f8dfb4db346bf1b5d95e79e4f782eee4a6c6eb3da",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-expiring-mandate/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "8dc8d3001e606b587d9b631f7b6848666ad009972d389017f10935c40bbb28e7",
+        "pixelSha256": "e90c1f42d60fc2ca72033f93f0f16735ac4e862c643ff0d45d46e5b9d872a573",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "identityDecision": "designed narrative reconstruction",
+  "identityDecisionFile": "identity-decision.json",
+  "sourceProofScope": "Independent native genuine RGBA generation. Original617px RGB slot and original1254px RGB board preserved as historical material evidence. Explicit later story/static brief takes priority for corrected semantics. Raw/master are byte-exact generated native output. QA contain128 uses whole canvas124+2px padding and unmasked paste; no crop/bbox normalization. This is not exact original restoration."
+}

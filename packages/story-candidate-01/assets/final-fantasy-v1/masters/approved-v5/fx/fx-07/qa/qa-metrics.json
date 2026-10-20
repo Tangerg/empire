@@ -2,7 +2,9 @@
   "topicId": "C01-FX-07",
   "phaseOrder": [
     "airborne-burst",
-    "falling-pieces"
+    "falling-pieces",
+    "falling-remnants",
+    "settled-heap"
   ],
   "sourceCanvas": [
     1254,
@@ -185,7 +187,438 @@
       ],
       "center100x100AlphaMax": 1,
       "faintExteriorAlpha1to4Pixels": 13188
+    },
+    {
+      "phase": "falling-remnants",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "4ba655519e74bd1f6fd0fa8466d1954c3c36e1bb2cac9cae81aa0d73a98ba35f",
+      "decodedPixelSha256": "acb4fb470a5de88f7ba6fc9184f76fc64659f12fc02b21685227b8eafceeae5e",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        244,
+        182,
+        1184,
+        1183
+      ],
+      "bboxAlpha128": [
+        276,
+        621,
+        1039,
+        1178
+      ],
+      "alphaMass": 60302.99607843137,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "8e178d77583e68dadefbe5a887481d8e3b51bd79a03e680f326127abc26bf584",
+          "bboxAlpha1": [
+            6,
+            13,
+            28,
+            30
+          ],
+          "alphaMass": 32.588235294117645,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "7b874dec33134c1d4d158d507cc58d8e106eb41ae88e2bb6e60cc77e0f493e26",
+          "bboxAlpha1": [
+            14,
+            29,
+            53,
+            59
+          ],
+          "alphaMass": 124.20392156862745,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "boundsAlpha32": [
+        275,
+        621,
+        1039,
+        1179
+      ],
+      "boundsCenterAlpha32": [
+        657.0,
+        900.0
+      ],
+      "center100x100AlphaMax": 255,
+      "faintExteriorAlpha1to4Pixels": 5201
+    },
+    {
+      "phase": "settled-heap",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "078202c7f439cf420c55fc564a505050c98358497a678490fa599bc2f0c8d9bc",
+      "decodedPixelSha256": "e37e72530d441720205495880381abf447e4bb9995a0bbc74ab853912fbd7639",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        33,
+        150,
+        1146,
+        1155
+      ],
+      "bboxAlpha128": [
+        141,
+        802,
+        1143,
+        1151
+      ],
+      "alphaMass": 154896.968627451,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "42acc55e616ed4279f0ae4ee96a05c79dc31144adc84530bccb7d03774f7ce76",
+          "bboxAlpha1": [
+            3,
+            17,
+            30,
+            30
+          ],
+          "alphaMass": 78.08235294117647,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "b821b9ce9bdffd7bd2c5ab4e3b5440f4d695d8c682832df4a834abb92d4dabfc",
+          "bboxAlpha1": [
+            8,
+            37,
+            58,
+            58
+          ],
+          "alphaMass": 309.29411764705884,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "boundsAlpha32": [
+        140,
+        801,
+        1144,
+        1152
+      ],
+      "boundsCenterAlpha32": [
+        642.0,
+        976.5
+      ],
+      "center100x100AlphaMax": 0,
+      "faintExteriorAlpha1to4Pixels": 3761
     }
   ],
-  "apng": []
+  "apng": [
+    {
+      "path": "12fps-420ms-heldfinal-transparent@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "5fdb048c1ce10fb180b76fea9a4ab4f3e14bdc1d1eacc922d7d9fc97502415aa"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "144f5345dd4caa25777a711b4dde9f6a4aeb28a884c085c9ff6da9ba0bac1345"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "fb73203dae874f0f251ce3b06352d856d313fee34c28565420ce3fc9f6cf1f53"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "2d41d1e9c477cc652a79e6df48494648b81c7717b778508c06fc036ee2eeaddd"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "e56e572852688162f3f2635832794c5c11d43d8e37508e18914c4e291f85664a"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "6fbe096a8f6f6cba24d64cffa6cd8517b74199ca5f6ec4ec0685ace931fb2e82"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-transparent@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "11d6829c3eabb30488ad3b698725db335ddca4b4c0004842c8f250b0a8669b8d"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "9a586d86963d73e765d5728b87523953f72c7d79384e5450fe20f281332b1062"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "21b4fbe6b34ea1d5b554c44c84ec09eba7c723a69003720cd85ae903c7fc521a"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "6916e09d67db60db66e60a35fd96baf5f79ccd1ef794efe6609e16ebba1ffed8"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "b64a2e62845f7e5a89d26220ae20927ee1a7ce768a9b3f36119df14ca86f1539"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "42b7181fd87234cb908f15c94547465ac9df09dfbcc947dee0725a99bf53a929"
+    }
+  ]
 }

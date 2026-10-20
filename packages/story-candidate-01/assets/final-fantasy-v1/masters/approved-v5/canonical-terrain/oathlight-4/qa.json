@@ -1,0 +1,98 @@
+{
+  "topicId": "C01-TERRAIN-OATHLIGHT-4",
+  "status": "raw-candidate-reviewed; final integrator export pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte with no pixel transformation",
+  "master": "master.png",
+  "sourceSHA256": "916b8409da01b430fceb55ecc16f717030ea5dbe068dc213b65b4edd82128039",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "selectedPrompt": "prompt.txt",
+  "selectedRequest": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "rowMeaning": [
+      "627px source square reduced to192px",
+      "32px LANCZOS crop enlarged6x nearest",
+      "64px LANCZOS crop enlarged3x nearest"
+    ],
+    "edits": "QA-only crop, resize and composite; master unchanged",
+    "finalExportWindowsApproved": false,
+    "review": "All four627px windows preserve all seven discs and their entire local blue/ochre network. At32px seven discs and blue/gold paths remain visible;64 resolves flat stone rims and quiet radial wedge faces. No independent network fragment crosses any diagnostic crop boundary."
+  },
+  "fixedMaskDiagnostic": {
+    "performed": false,
+    "window": null,
+    "oldMaskGeometryUnchanged": true,
+    "notFinalExport": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 14.280435938330676,
+    "northSouthMeanAbsoluteRGBDifference": 14.3264221158958
+  },
+  "export": {
+    "performed": false,
+    "alphaAndSeamQA": "pending integrator",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; catalog-only canonical terrain per source audit"
+  },
+  "visualSourceQA": {
+    "fullbleedSquare": true,
+    "broadMatteStyle": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "primaryMotifsCompleteInAllFourWindows": true,
+    "semanticMaterialIdentityRetainedThroughDocumentedReconstruction": true,
+    "caveats": [
+      "Opposite edges are not exact matches; source is not seam-certified.",
+      "Paving has subdued medium-scale mottling beyond the minimal-texture prompt; broad stone planes remain readable.",
+      "Four repeated motifs represent one canonical authored material, not four independent semantic identities.",
+      "Original external network continuation is closed within each local source group for complete reusable motifs; this is documented flat-material reconstruction, not exact network-scene restoration.",
+      "The repeated network motif is visually structured and regular; this is a canonical catalog material, not a claim of natural live-map variety."
+    ],
+    "subject": "Four complete loose seven-disc local networks with mixed ochre/blue gently curved links on flat gray paving; no radial control hub or enclosing diamond."
+  }
+}

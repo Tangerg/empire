@@ -1,0 +1,100 @@
+{
+  "source": {
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 963132,
+    "partialPixels": 607960,
+    "opaquePixels": 1424,
+    "nearOpaquePixels": 585918,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 15,
+    "alphaBoundingBox": [
+      0,
+      11,
+      1226,
+      1232
+    ],
+    "alpha8BoundingBox": [
+      91,
+      143,
+      1201,
+      1174
+    ]
+  },
+  "contain128": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 9810,
+    "partialPixels": 6218,
+    "opaquePixels": 356,
+    "nearOpaquePixels": 5381,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      8,
+      14,
+      123,
+      121
+    ],
+    "alpha8BoundingBox": [
+      11,
+      16,
+      121,
+      119
+    ]
+  },
+  "wholeCanvasResize": {
+    "source": [
+      1254,
+      1254
+    ],
+    "target": [
+      128,
+      128
+    ],
+    "fit": [
+      124,
+      124
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "crop": null
+  },
+  "composites": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/QA/native128-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/QA/native128-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/QA/native128-olive.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-expiring-mandate/QA/native128-dark.png"
+  ],
+  "sourceBytesUnmodified": true,
+  "alphaCleanup": false,
+  "chromaKey": false,
+  "bboxFit": false,
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-272345e5-020e-4054-b7a2-ffef93aa2f5c.png",
+  "visualReview": {
+    "status": "pass",
+    "originalBoardsAnd617CropsInspected": true,
+    "nativeSourceInspected": true,
+    "fourActual128BackgroundsInspected": true,
+    "nativeSourceContrastingBackgroundsInspected": true,
+    "narrativeReconstructionBriefPass": true,
+    "notExactOriginalRestoration": true,
+    "notes": "PASS: Bronze circular detachable clasp with two slotted mounting lugs, visible separable metal pieces, large upright two-chamber silver-sand timer with upper fill, narrow fall and lower pile; separate complete steel release pin remains plainly visible at exact128. No dial hands, numerals or dates. Sand timer, mounting slots and external pin clearly readable on all four backgrounds. Source outer boundary contains15 alpha1 samples only, retained unchanged; full native white/black/dark/olive review finds no fringe, haze, backdrop or cutoff. Documented narrative reconstruction preserves the old mechanical shell and pin while replacing dial depiction with the explicit later silver-sand mechanism."
+  }
+}

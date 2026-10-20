@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-PROP-GRANARY-KEY",
+  "decision": "designed narrative reconstruction",
+  "originalDepiction": "One dark iron key attached to three colored large rings, with a smaller metal connector ring.",
+  "reason": "Prose specifies three separately held keys for merchant/militia/refugee representatives and two representatives present to open. Original shows one key with three colored rings, not three independently controlled keys.",
+  "selectedBrief": "Subject: EXACTLY THREE independent complete dark iron granary KEYS, clearly separated with wide transparent gaps. NO shared keyring, NO chain, NO joining connector, NO hands. Each key has its OWN chunky circular ring bow, short strong shaft and bold simple stepped key bit. Three parallel slightly diagonal keys arranged side by side in a compact fan with adequate visible air between every part; none overlap or touch. The separate ring bows are muted slate-blue, muted olive and muted ochre-brown, materials/colors borrowed from the three historical rings, but now each bow belongs to its own full key. All three keys have the SAME utilitarian design and comparable size and importance, not a master key and two lesser keys. Their holes are truly transparent and their broad shafts/teeth stay clear at128px. Keep all three complete silhouettes wholly within safe margins. No labels, numerals, badges, shields, locks, inscription, door, pedestal, character or fourth key. The narrative meaning is distributed custody: merchant, militia and refugee each holds a separate key, so do not bind them into one collection controlled by one holder. The old single-key-with-three-rings design is intentionally replaced.",
+  "approval": "Parent confirmed 2026-10-20: reconstruct single cracked two-script bottle with blue thread; three independent keys with no common ring; detachable mandate clasp with silver-sand two-chamber timer and separate release pin. Do not claim exact source restoration.",
+  "evidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/02-grey-banner-exile-novel.md",
+      "sha256": "765d0eb3cd49897f0bb3d29925b85e8bad5bfd7ebc84480726d024d8931f559b",
+      "lines": [
+        155,
+        165
+      ],
+      "exactText": "155: 征讨军撤退后，洛岬的三方再次争夺胜利归属。商人说粮仓是他们出资修的，民兵说城墙靠他们守，难民则抬出被弩车射中的尸体，问谁愿意把这些名字写进胜利公告。\n156: \n157: 莱娅本可以宣布军管。灰旗掌握城内最完整的武装，混乱也确实需要一个能快速下令的人。她站在领主议事厅里，看见那张空椅，脑中已经排出三天内恢复秩序的办法。\n158: \n159: 布兰靠在门边，没有劝她。他只问：“你打算什么时候把椅子还回去？”\n160: \n161: 莱娅答不上来。\n162: \n163: 最后，粮仓钥匙由商人、民兵与难民代表各持一枚；开仓需要其中两人到场，战时调粮则加上灰旗军的限期签名。南门归街区维护，兵营名册由民兵管理，灰旗只留一支守城队。三方用了整整两天才把第一份条款写清，期间丢了两批未及时登记的粮。\n164: \n165: 这套办法比军管慢，也没有让人更友善。第三天，商人就指责难民代表滥发救济；民兵则拒绝承认乌赫娜的人应获守城报酬。可是当莱娅离开议事厅去巡墙时，粮仓仍然在开，钥匙也没有跟着她走。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "sha256": "6c3fa34dfbe5a8df87a2b2f52f9b38c26e6299e44bcfe2ff563a884d1e27aac5",
+      "lines": [
+        85,
+        92
+      ],
+      "exactText": "85: - `C01-ARCH-DRAGON-COVENANT-RUIN`：古龙盟约遗址\n86: - `C01-PROP-ADA-MEDICINE`：艾达双文字药瓶\n87: - `C01-PROP-IVRA-BROKEN-BRIDLE`：伊芙拉断裂缰具\n88: - `C01-PROP-EXPIRING-MANDATE`：可拆战时统帅期限扣\n89: - `C01-PROP-NAME-TAGS`：墓园活人木片与亡者姓名牌\n90: - `C01-PROP-CASUALTY-REGISTER`：普通士兵伤亡册\n91: - `C01-PROP-GRANARY-KEY`：三方共管粮仓钥匙\n92: - `C01-PROP-EVACUATION-MAP`：多语言撤离路线图"
+    }
+  ],
+  "actualConsumerAudit": {
+    "baselineAuditShippedConsumerCount": 0,
+    "freshLiteralSourceScan": "rg -n -i prop-ada-medicine|prop-granary-key|prop-expiring-mandate packages/story-candidate-01/src returned no matches",
+    "gameplayOrConsumerChanges": false
+  },
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/full-cell.png",
+      "sha256": "9b99fa901f1efb1658f9322b103a169923fd610e2738c383b7e2215329fa529a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/legacy-inset.png",
+      "sha256": "d6e5693f50fccbadc9a0c80a67e0f59b0120263dd380be928cf4b490a942f923"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/approved-style.png",
+      "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/original-board.png",
+      "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc"
+    }
+  ]
+}

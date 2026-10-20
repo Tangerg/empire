@@ -1,0 +1,116 @@
+{
+  "topicId": "C01-TERRAIN-OATHLIGHT-3",
+  "status": "raw-candidate-reviewed; final integrator export pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "method": "Built-in image_gen; selected raw copied byte-for-byte with no pixel transformation",
+  "master": "master.png",
+  "sourceSHA256": "9e7c2ca49fda36e9e1f4c0dc0cd92b966f7aaa8f65abe7aa271575ed31e06dea",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "selectedPrompt": "prompt-selected.txt",
+  "selectedRequest": "request-selected.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        38,
+        627,
+        665
+      ],
+      [
+        627,
+        38,
+        1254,
+        665
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "rowMeaning": [
+      "627px source square reduced to192px",
+      "32px LANCZOS crop enlarged6x nearest",
+      "64px LANCZOS crop enlarged3x nearest"
+    ],
+    "edits": "QA-only crop, resize and composite; master unchanged",
+    "finalExportWindowsApproved": false,
+    "review": "All four equal627px crops preserve complete local hubs. Native32 reads a dim radial junction and damaged band material;64 better resolves six small endpoints. Source upper pair remained near y350 despite exact-center prompt, so measured upper windows shift down38px. No art was transformed."
+  },
+  "fixedMaskDiagnostic": {
+    "performed": true,
+    "window": [
+      0,
+      38,
+      627,
+      665
+    ],
+    "oldMaskGeometryUnchanged": true,
+    "notFinalExport": true,
+    "review": "All16 historical masks inspected at32 and64 from source [0,38,627,665]. Entire compact central disc, six spokes and six ring endpoints remain inside unchanged guaranteed center pad in every mask. Outside broken-band material is cropped by the existing arms; no mask or movement-topology change. Fine endpoint hollows merge at32px;64 improves relation readability.",
+    "proofs": [
+      "fixed-mask-32-proof.png",
+      "fixed-mask-64-proof.png"
+    ],
+    "sourceMotifApproxXYXY": [
+      212,
+      274,
+      411,
+      434
+    ]
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 9.872408293460925,
+    "northSouthMeanAbsoluteRGBDifference": 9.446039340776183
+  },
+  "export": {
+    "performed": false,
+    "alphaAndSeamQA": "pending integrator",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; catalog-only canonical terrain per source audit"
+  },
+  "visualSourceQA": {
+    "fullbleedSquare": true,
+    "broadMatteStyle": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "primaryMotifsCompleteInAllFourWindows": true,
+    "semanticMaterialIdentityRetainedThroughDocumentedReconstruction": true,
+    "caveats": [
+      "Opposite edges are not exact matches; source is not seam-certified.",
+      "Paving has subdued medium-scale mottling beyond the minimal-texture prompt; broad stone planes remain readable.",
+      "Four repeated motifs represent one canonical authored material, not four independent semantic identities.",
+      "First generation rejected for oversized hub; selected imagegen edit reduced complete local motif. Both immutable raws and exact prompts retained.",
+      "Only upper-left [0,38,627,665] is recommended for NESW diagnostic composition. Other equally scaled crops were source-context checks, not separately accepted connected exports.",
+      "Fine endpoint hollows merge at32px; preserve six-node source relation without claiming countable tiny circles at every density.",
+      "Disconnected state is cosmetic worn/dim material; no new disconnected topology or traversal rule is introduced."
+    ],
+    "subject": "Four complete dim six-node hubs with spoke-divided bronze central discs on cool gray paving; worn interrupted radial inlay material and no controlled diamond."
+  }
+}

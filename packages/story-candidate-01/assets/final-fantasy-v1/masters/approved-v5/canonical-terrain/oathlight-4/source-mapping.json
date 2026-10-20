@@ -1,0 +1,173 @@
+{
+  "topicId": "C01-TERRAIN-OATHLIGHT-4",
+  "label": "自由誓石区",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-OATHLIGHT-4",
+    "topicId": "C01-TERRAIN-OATHLIGHT-4",
+    "label": "自由誓石区",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-oathlight-4.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-oathlight-4.png",
+      "sha256": "905a63195b47d9992058d036d5143d3bd558f4eb03e35b9eb7e4e7a7cf2d2be5",
+      "pixelSHA256": "dbc83409702f395f4e8564a825efdbf0b8cd2a9274b8f1d0320152f2a7bbfc20",
+      "dimensions": [
+        128,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      },
+      "alphaBounds": [
+        0,
+        0,
+        128,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-oathlight-4.png",
+      "sha256": "017b096be1dae263ed76d114ba5f3e4f6bd9b273b2b498115660137b90bd2056",
+      "pixelSHA256": "630655c3a1060d0c8159f4810f6e13b3f9a7cc158feba746c561e558b975f190",
+      "dimensions": [
+        256,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 16384
+      },
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      31
+    ],
+    "2": [
+      31
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 31,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+    "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+    "slotRow": 1,
+    "slotColumn": 3,
+    "slotNumber1Based": 8,
+    "cropXYXY": [
+      1055,
+      564,
+      1399,
+      1119
+    ],
+    "cropSize": [
+      344,
+      555
+    ],
+    "variantCropXYXY": [
+      [
+        1059,
+        635,
+        1272,
+        848
+      ],
+      [
+        1182,
+        635,
+        1395,
+        848
+      ],
+      [
+        1059,
+        835,
+        1272,
+        1048
+      ],
+      [
+        1182,
+        835,
+        1395,
+        1048
+      ]
+    ],
+    "tileMode": "variants"
+  },
+  "observedSourceIdentity": "Loose network of round stone/gold node discs linked by colored fine cords",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Four crops clip the network; source supports a less rigid open network, not a distinct independent sigil per variant",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 20.561,
+      "maxRGBDifference": 79
+    },
+    "2": {
+      "checks": 32,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 35.845,
+      "maxRGBDifference": 144
+    }
+  }
+}

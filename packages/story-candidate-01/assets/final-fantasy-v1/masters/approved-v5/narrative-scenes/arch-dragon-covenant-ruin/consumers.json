@@ -1,0 +1,4931 @@
+{
+  "method": "Read-only TypeScript transpile/evaluation of story.ts, levels.ts and bindings.ts; exact source portrait/chapter/roster table extraction; builtin JSON reads. No engine, Git, image generation, source edits or builder execution.",
+  "stories": [
+    {
+      "id": "c01/prologue",
+      "chapter": 1,
+      "title": "一双没有补好的靴子",
+      "date": "断冠纪第 318 年 · 初夏",
+      "location": "灰境边防营地",
+      "scene": "C01-CH01-S01",
+      "speakers": [
+        "narrator",
+        "roderick",
+        "laiya",
+        "roderick"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-01",
+      "chapter": 1,
+      "title": "双子丘陵",
+      "date": "第 0 年 · 初夏",
+      "location": "灰境北丘",
+      "scene": "C01-CH01-S01",
+      "speakers": [
+        "roderick",
+        "laiya",
+        "narrator"
+      ],
+      "mission": {
+        "objective": "莱娅存活并击退维尔萨前锋。",
+        "danger": "抢占北丘会让托伦提前进入包围；罗德里克只会救场一次。",
+        "lesson": "高低差、朝向、援护与确定性伤害预测。"
+      }
+    },
+    {
+      "id": "c01/aftermath-01",
+      "chapter": 1,
+      "title": "相同日期的命令",
+      "date": "第 0 年 · 初夏",
+      "location": "双子丘陵中央村",
+      "scene": "C01-CH01-S01",
+      "speakers": [
+        "laiya",
+        "roderick"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-02",
+      "chapter": 1,
+      "title": "三桥河谷",
+      "date": "第 0 年 · 盛夏",
+      "location": "白河三桥",
+      "scene": "C01-CH01-S02",
+      "speakers": [
+        "cain",
+        "laiya",
+        "cain"
+      ],
+      "mission": {
+        "objective": "护送三名平民抵达东岸，并摧毁无标记弩车。",
+        "danger": "前三回合中桥处于停火区；远处弩车不受停火约束。",
+        "lesson": "护送、狭窄桥面、临时交战规则与最小射程。"
+      }
+    },
+    {
+      "id": "c01/aftermath-02",
+      "chapter": 1,
+      "title": "没有道谢的停火",
+      "date": "第 0 年 · 盛夏",
+      "location": "白河东岸",
+      "scene": "C01-CH01-S02",
+      "speakers": [
+        "cain",
+        "laiya",
+        "cain"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-03",
+      "chapter": 1,
+      "title": "赤石围城",
+      "date": "第 0 年 · 长夏",
+      "location": "赤石堡垒",
+      "scene": "C01-ARCH-REDSTONE",
+      "speakers": [
+        "mirelle",
+        "roderick",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "占领赤石城堡，或深入后方关闭控制节点。",
+        "danger": "正门有重弩和重甲；绕行更安全但会消耗回合。",
+        "lesson": "攻城、复合路线、魔法克甲与非致命胜利。"
+      }
+    },
+    {
+      "id": "c01/aftermath-03",
+      "chapter": 1,
+      "title": "名字归于谁",
+      "date": "第 0 年 · 长夏",
+      "location": "赤石塔下",
+      "scene": "C01-ARCH-REDSTONE",
+      "speakers": [
+        "mirelle",
+        "roderick"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-04",
+      "chapter": 1,
+      "title": "黑旗营地",
+      "date": "第 0 年 · 初秋",
+      "location": "灰境西林",
+      "scene": null,
+      "speakers": [
+        "mirelle",
+        "laiya",
+        "narrator"
+      ],
+      "mission": {
+        "objective": "调查三处营帐，再让莱娅与米蕾尔从西侧撤离。",
+        "danger": "调查会拉长暴露时间；撤离前不要把全队压进营地。",
+        "lesson": "阶段目标、战场变量、调查触发与撤退路线。"
+      }
+    },
+    {
+      "id": "c01/aftermath-04",
+      "chapter": 1,
+      "title": "违令留下的证人",
+      "date": "第 0 年 · 初秋",
+      "location": "黑旗营外",
+      "scene": null,
+      "speakers": [
+        "mirelle",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-05",
+      "chapter": 1,
+      "title": "焚村令",
+      "date": "第 0 年 · 深秋",
+      "location": "苇草村",
+      "scene": "C01-CH01-S05",
+      "speakers": [
+        "roderick",
+        "laiya",
+        "bran"
+      ],
+      "mission": {
+        "objective": "至少保护两名村民并坚守七回合。",
+        "danger": "净化军第四回合增援；不要让脆弱单位堵死治疗线。",
+        "lesson": "生存目标、关键单位保护、增援与军团士气。"
+      }
+    },
+    {
+      "id": "c01/aftermath-05",
+      "chapter": 1,
+      "title": "灰旗升起",
+      "date": "第 0 年 · 深秋",
+      "location": "烧毁的苇草村",
+      "scene": "C01-CH01-S05",
+      "speakers": [
+        "bran",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-06",
+      "chapter": 2,
+      "title": "白河夜渡",
+      "date": "第 1 年 · 深冬",
+      "location": "白河南岸",
+      "scene": "C01-CH02-S06",
+      "speakers": [
+        "bran",
+        "mirelle",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "八回合内护送四名非战斗人员抵达北岸。",
+        "danger": "护送单位移动慢，追兵骑兵会从侧翼切入。",
+        "lesson": "多单位护送、时间压力、后卫与资源取舍。"
+      }
+    },
+    {
+      "id": "c01/aftermath-06",
+      "chapter": 2,
+      "title": "渡河以后仍会死人",
+      "date": "第 1 年 · 深冬",
+      "location": "白河北岸",
+      "scene": "C01-CH02-S06",
+      "speakers": [
+        "bran",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-07",
+      "chapter": 2,
+      "title": "无主之城",
+      "date": "第 1 年 · 初春",
+      "location": "自由城洛岬",
+      "scene": "C01-SCENE-PUBLIC-RATIONS",
+      "speakers": [
+        "laiya",
+        "bran",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "占领联合粮仓与民兵营。",
+        "danger": "荒原骑手和王国征讨军从不同方向逼近。",
+        "lesson": "多方向接敌、城市走廊、占领与防线取舍。"
+      }
+    },
+    {
+      "id": "c01/aftermath-07",
+      "chapter": 2,
+      "title": "谁拥有城墙",
+      "date": "第 1 年 · 初春",
+      "location": "洛岬议事厅",
+      "scene": "C01-SCENE-PUBLIC-RATIONS",
+      "speakers": [
+        "laiya",
+        "narrator"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-08",
+      "chapter": 2,
+      "title": "佣兵之价",
+      "date": "第 1 年 · 暮春",
+      "location": "洛岬粮道",
+      "scene": "C01-SCENE-PUBLIC-RATIONS",
+      "speakers": [
+        "tasha",
+        "laiya",
+        "tasha"
+      ],
+      "mission": {
+        "objective": "保护塔莎并击退抢粮者。",
+        "danger": "骑手会绕过正面；塔莎是高价值的爆破单位，也是失败条件。",
+        "lesson": "关键同盟保护、侧翼机动与范围爆破。"
+      }
+    },
+    {
+      "id": "c01/aftermath-08",
+      "chapter": 2,
+      "title": "一份可以解除的契约",
+      "date": "第 1 年 · 暮春",
+      "location": "洛岬粮仓",
+      "scene": "C01-SCENE-PUBLIC-RATIONS",
+      "speakers": [
+        "tasha",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-09",
+      "chapter": 2,
+      "title": "笼中之火",
+      "date": "第 1 年 · 盛夏",
+      "location": "洛岬北部大道",
+      "scene": "C01-CH02-S09",
+      "speakers": [
+        "mirelle",
+        "tasha",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "破坏四处锁链节点中的三处。",
+        "danger": "节点分散且有护卫；爆破火药的冷却需要预先规划。",
+        "lesson": "复合结构、分兵、攻城加成与非控制解法。"
+      }
+    },
+    {
+      "id": "c01/aftermath-09",
+      "chapter": 2,
+      "title": "它没有加入",
+      "date": "第 1 年 · 盛夏",
+      "location": "破碎的囚笼旁",
+      "scene": "C01-CH02-S09",
+      "speakers": [
+        "ivra",
+        "laiya",
+        "narrator"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-10",
+      "chapter": 2,
+      "title": "旧旗下的追兵",
+      "date": "第 1 年 · 初秋",
+      "location": "灰境东部山口",
+      "scene": null,
+      "speakers": [
+        "roderick",
+        "laiya",
+        "roderick"
+      ],
+      "mission": {
+        "objective": "让莱娅抵达东部山口，不必歼灭旧部。",
+        "danger": "罗德里克的骑兵和援护阵线正面强度极高。",
+        "lesson": "突破、士气、飞行侧翼与有限交战。"
+      }
+    },
+    {
+      "id": "c01/aftermath-10",
+      "chapter": 2,
+      "title": "允许退出的誓",
+      "date": "第 1 年 · 初秋",
+      "location": "山口外营地",
+      "scene": "C01-ARCH-GRAY-CAMP",
+      "speakers": [
+        "laiya",
+        "tasha"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-11",
+      "chapter": 3,
+      "title": "无声墓园",
+      "date": "第 2 年 · 早春",
+      "location": "圣辉领外墓园",
+      "scene": "C01-ARCH-REDSTONE",
+      "speakers": [
+        "mirelle",
+        "bran",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "读取三处真名，再击败墓园巨像。",
+        "danger": "亡灵会拖住路线；米蕾尔的断誓攻击有明显克制优势。",
+        "lesson": "阶段目标、题材克制、巨型单位与亡者标记。"
+      }
+    },
+    {
+      "id": "c01/aftermath-11",
+      "chapter": 3,
+      "title": "墓碑拒绝净化",
+      "date": "第 2 年 · 早春",
+      "location": "无声墓园",
+      "scene": "C01-ARCH-REDSTONE",
+      "speakers": [
+        "mirelle",
+        "bran"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-12",
+      "chapter": 3,
+      "title": "沉没钟塔",
+      "date": "第 2 年 · 暮春",
+      "location": "沉钟河谷",
+      "scene": "C01-ARCH-THREE-BRIDGES",
+      "speakers": [
+        "cain",
+        "laiya",
+        "cain"
+      ],
+      "mission": {
+        "objective": "瘫痪三处钟塔机构中的两处。",
+        "danger": "水路切断阵线，机构本身具有高耐久。",
+        "lesson": "复合设施、狭道、临时盟友与攻城分工。"
+      }
+    },
+    {
+      "id": "c01/aftermath-12",
+      "chapter": 3,
+      "title": "共同控制的半小时",
+      "date": "第 2 年 · 暮春",
+      "location": "沉钟塔顶",
+      "scene": "C01-ARCH-THREE-BRIDGES",
+      "speakers": [
+        "cain",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-13",
+      "chapter": 3,
+      "title": "圣城档案",
+      "date": "第 2 年 · 盛夏",
+      "location": "圣辉白塔",
+      "scene": null,
+      "speakers": [
+        "mirelle",
+        "tasha",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "读取三组档案，并护送米蕾尔到东侧出口。",
+        "danger": "阶段完成后仍需穿过警戒部队，不要过早消耗支援能力。",
+        "lesson": "连续阶段、关键携带者、城市掩体与撤离。"
+      }
+    },
+    {
+      "id": "c01/aftermath-13",
+      "chapter": 3,
+      "title": "保留修改痕迹",
+      "date": "第 2 年 · 盛夏",
+      "location": "圣城外旧医院",
+      "scene": "C01-ARCH-FIELD-HOSPITAL",
+      "speakers": [
+        "mirelle",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-14",
+      "chapter": 3,
+      "title": "山炉余烬",
+      "date": "第 2 年 · 深秋",
+      "location": "山炉下层炉城",
+      "scene": "C01-CH03-S14",
+      "speakers": [
+        "tasha",
+        "bran",
+        "laiya"
+      ],
+      "mission": {
+        "objective": "关闭两处熔流阀，并平息失控守卫。",
+        "danger": "熔流不可通行，石魔像会强制位移造成碰撞伤害。",
+        "lesson": "危险地貌、强制位移、重甲破防与工程路线。"
+      }
+    },
+    {
+      "id": "c01/aftermath-14",
+      "chapter": 3,
+      "title": "修好并不等于无罪",
+      "date": "第 2 年 · 深秋",
+      "location": "山炉记录厅",
+      "scene": "C01-CH03-S14",
+      "speakers": [
+        "tasha",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-15",
+      "chapter": 3,
+      "title": "银林长梦",
+      "date": "第 3 年 · 初春",
+      "location": "银林母根",
+      "scene": "C01-ARCH-SILVERWOOD",
+      "speakers": [
+        "bran",
+        "laiya",
+        "ivra"
+      ],
+      "mission": {
+        "objective": "保护母根，击退维持代价转移的受控部队。",
+        "danger": "长弓射程远且克制伊芙拉；母根一旦被毁立即失败。",
+        "lesson": "森林视线、远程压制、对空克制与结构保护。"
+      }
+    },
+    {
+      "id": "c01/aftermath-15",
+      "chapter": 3,
+      "title": "森林第一次自己疼",
+      "date": "第 3 年 · 初春",
+      "location": "银林树城",
+      "scene": "C01-ARCH-SILVERWOOD",
+      "speakers": [
+        "laiya",
+        "bran"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/brief-16",
+      "chapter": 3,
+      "title": "记住我的名字",
+      "date": "第 3 年 · 暮春",
+      "location": "旧帝国归名场",
+      "scene": "C01-ARCH-REDSTONE",
+      "speakers": [
+        "mirelle",
+        "laiya",
+        "ivra"
+      ],
+      "mission": {
+        "objective": "回应三个真名，并击退抽取记忆的审判官。",
+        "danger": "墓园巨像仍会阻挡道路；任务不要求消灭它。",
+        "lesson": "非歼灭终局、战场互动、目标优先级与火力克制。"
+      }
+    },
+    {
+      "id": "c01/aftermath-16",
+      "chapter": 3,
+      "title": "一个新名字",
+      "date": "第 3 年 · 暮春",
+      "location": "归名场",
+      "scene": "C01-ARCH-REDSTONE",
+      "speakers": [
+        "mirelle",
+        "laiya"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/chapter-three-ending",
+      "chapter": 3,
+      "title": "灰旗成为一支军队",
+      "date": "第 3 年 · 初夏",
+      "location": "洛岬晨议会",
+      "scene": "C01-CH05-S26",
+      "speakers": [
+        "tasha",
+        "cain",
+        "laiya",
+        "narrator"
+      ],
+      "mission": null
+    },
+    {
+      "id": "c01/campaign-failed",
+      "chapter": 1,
+      "title": "灰旗倒下",
+      "date": "未定",
+      "location": "伊瑟兰",
+      "scene": "C01-CH01-S05",
+      "speakers": [
+        "narrator"
+      ],
+      "mission": null
+    }
+  ],
+  "choices": [
+    {
+      "id": "c01/choice-first-command",
+      "chapter": 1
+    },
+    {
+      "id": "c01/choice-bridge-truce",
+      "chapter": 1
+    },
+    {
+      "id": "c01/choice-black-camp-plan",
+      "chapter": 1
+    },
+    {
+      "id": "c01/choice-white-river-priority",
+      "chapter": 2
+    },
+    {
+      "id": "c01/choice-mercenary-contract",
+      "chapter": 2
+    },
+    {
+      "id": "c01/choice-free-ivra",
+      "chapter": 2
+    },
+    {
+      "id": "c01/choice-old-banner-terms",
+      "chapter": 2
+    },
+    {
+      "id": "c01/choice-bell-tower-control",
+      "chapter": 3
+    },
+    {
+      "id": "c01/choice-forge-record",
+      "chapter": 3
+    },
+    {
+      "id": "c01/choice-silverwood-price",
+      "chapter": 3
+    },
+    {
+      "id": "c01/choice-unflagged-personhood",
+      "chapter": 3
+    }
+  ],
+  "sceneAliases": {
+    "hills": "C01-CH01-S01",
+    "bridges": "C01-CH01-S02",
+    "redstone": "C01-ARCH-REDSTONE",
+    "burned": "C01-CH01-S05",
+    "river": "C01-CH02-S06",
+    "council": "C01-CH05-S26",
+    "grayCamp": "C01-ARCH-GRAY-CAMP",
+    "hospital": "C01-ARCH-FIELD-HOSPITAL",
+    "rations": "C01-SCENE-PUBLIC-RATIONS",
+    "ivra": "C01-CH02-S09",
+    "forge": "C01-CH03-S14",
+    "silverwood": "C01-ARCH-SILVERWOOD",
+    "valley": "C01-ARCH-THREE-BRIDGES"
+  },
+  "storyPortraits": {
+    "laiya": "C01-CHAR-LEIA-01",
+    "roderick": "C01-CHAR-RODERICK-01",
+    "cain": "C01-CHAR-CAIN-01",
+    "mirelle": "C01-CHAR-MIREL-01",
+    "bran": "C01-CHAR-BRAN-01",
+    "tasha": "C01-CHAR-TASHA-01",
+    "ivra": "C01-CHAR-IVRA-01"
+  },
+  "chapterArt": {
+    "1": "C01-ARCH-THREE-BRIDGES",
+    "2": "C01-ARCH-REDSTONE",
+    "3": "C01-ARCH-SILVERWOOD"
+  },
+  "characterTypeBindings": {
+    "c01.laiya": "C01-CHAR-LEIA-01",
+    "c01.roderick": "C01-CHAR-RODERICK-01",
+    "c01.cain": "C01-CHAR-CAIN-01",
+    "c01.bran": "C01-CHAR-BRAN-01",
+    "c01.mirelle": "C01-CHAR-MIREL-01",
+    "c01.tasha": "C01-CHAR-TASHA-01",
+    "c01.ivra": "C01-CHAR-IVRA-01"
+  },
+  "roster": [
+    {
+      "id": "laiya",
+      "unitType": "c01.laiya",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "hero",
+        "commander"
+      ]
+    },
+    {
+      "id": "torren",
+      "unitType": "c01.swordsman",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "retinue",
+        "infantry"
+      ]
+    },
+    {
+      "id": "elin",
+      "unitType": "c01.archer",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "retinue",
+        "ranged"
+      ]
+    },
+    {
+      "id": "mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "hero",
+        "support"
+      ]
+    },
+    {
+      "id": "bran",
+      "unitType": "c01.bran",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "hero",
+        "scout"
+      ]
+    },
+    {
+      "id": "tasha",
+      "unitType": "c01.tasha",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "hero",
+        "engineer"
+      ]
+    },
+    {
+      "id": "ivra",
+      "unitType": "c01.ivra",
+      "owner": 1,
+      "rank": 0,
+      "tags": [
+        "hero",
+        "dragon"
+      ]
+    }
+  ],
+  "rosterBindings": {
+    "c01-01": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      }
+    ],
+    "c01-02": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      }
+    ],
+    "c01-03": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      }
+    ],
+    "c01-04": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      }
+    ],
+    "c01-05": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      }
+    ],
+    "c01-06": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      }
+    ],
+    "c01-07": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      }
+    ],
+    "c01-08": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      }
+    ],
+    "c01-09": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      }
+    ],
+    "c01-10": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ],
+    "c01-11": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ],
+    "c01-12": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ],
+    "c01-13": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ],
+    "c01-14": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ],
+    "c01-15": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ],
+    "c01-16": [
+      {
+        "campaignUnit": "laiya",
+        "levelUnitKey": "campaign-laiya"
+      },
+      {
+        "campaignUnit": "torren",
+        "levelUnitKey": "campaign-torren"
+      },
+      {
+        "campaignUnit": "elin",
+        "levelUnitKey": "campaign-elin"
+      },
+      {
+        "campaignUnit": "mirelle",
+        "levelUnitKey": "campaign-mirelle"
+      },
+      {
+        "campaignUnit": "bran",
+        "levelUnitKey": "campaign-bran"
+      },
+      {
+        "campaignUnit": "tasha",
+        "levelUnitKey": "campaign-tasha"
+      },
+      {
+        "campaignUnit": "ivra",
+        "levelUnitKey": "campaign-ivra"
+      }
+    ]
+  },
+  "levels": [
+    {
+      "id": "c01-01",
+      "name": "01 · 双子丘陵",
+      "chapter": 1,
+      "order": 1,
+      "briefingId": "c01/brief-01"
+    },
+    {
+      "id": "c01-02",
+      "name": "02 · 三桥河谷",
+      "chapter": 1,
+      "order": 2,
+      "briefingId": "c01/brief-02"
+    },
+    {
+      "id": "c01-03",
+      "name": "03 · 赤石围城",
+      "chapter": 1,
+      "order": 3,
+      "briefingId": "c01/brief-03"
+    },
+    {
+      "id": "c01-04",
+      "name": "04 · 黑旗营地",
+      "chapter": 1,
+      "order": 4,
+      "briefingId": "c01/brief-04"
+    },
+    {
+      "id": "c01-05",
+      "name": "05 · 焚村令",
+      "chapter": 1,
+      "order": 5,
+      "briefingId": "c01/brief-05"
+    },
+    {
+      "id": "c01-06",
+      "name": "06 · 白河夜渡",
+      "chapter": 2,
+      "order": 6,
+      "briefingId": "c01/brief-06"
+    },
+    {
+      "id": "c01-07",
+      "name": "07 · 无主之城",
+      "chapter": 2,
+      "order": 7,
+      "briefingId": "c01/brief-07"
+    },
+    {
+      "id": "c01-08",
+      "name": "08 · 佣兵之价",
+      "chapter": 2,
+      "order": 8,
+      "briefingId": "c01/brief-08"
+    },
+    {
+      "id": "c01-09",
+      "name": "09 · 笼中之火",
+      "chapter": 2,
+      "order": 9,
+      "briefingId": "c01/brief-09"
+    },
+    {
+      "id": "c01-10",
+      "name": "10 · 旧旗下的追兵",
+      "chapter": 2,
+      "order": 10,
+      "briefingId": "c01/brief-10"
+    },
+    {
+      "id": "c01-11",
+      "name": "11 · 无声墓园",
+      "chapter": 3,
+      "order": 11,
+      "briefingId": "c01/brief-11"
+    },
+    {
+      "id": "c01-12",
+      "name": "12 · 沉没钟塔",
+      "chapter": 3,
+      "order": 12,
+      "briefingId": "c01/brief-12"
+    },
+    {
+      "id": "c01-13",
+      "name": "13 · 圣城档案",
+      "chapter": 3,
+      "order": 13,
+      "briefingId": "c01/brief-13"
+    },
+    {
+      "id": "c01-14",
+      "name": "14 · 山炉余烬",
+      "chapter": 3,
+      "order": 14,
+      "briefingId": "c01/brief-14"
+    },
+    {
+      "id": "c01-15",
+      "name": "15 · 银林长梦",
+      "chapter": 3,
+      "order": 15,
+      "briefingId": "c01/brief-15"
+    },
+    {
+      "id": "c01-16",
+      "name": "16 · 记住我的名字",
+      "chapter": 3,
+      "order": 16,
+      "briefingId": "c01/brief-16"
+    }
+  ],
+  "initialActors": [
+    {
+      "level": "twin-hills",
+      "x": 3,
+      "y": 1,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "twin-hills",
+      "x": 3,
+      "y": 2,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "twin-hills",
+      "x": 4,
+      "y": 1,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "level": "twin-hills",
+      "x": 4,
+      "y": 2,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "level": "twin-hills",
+      "x": 3,
+      "y": 3,
+      "unit": "knight",
+      "owner": 1
+    },
+    {
+      "level": "twin-hills",
+      "x": 2,
+      "y": 3,
+      "unit": "cleric",
+      "owner": 1
+    },
+    {
+      "level": "twin-hills",
+      "x": 13,
+      "y": 7,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "twin-hills",
+      "x": 14,
+      "y": 7,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "twin-hills",
+      "x": 13,
+      "y": 9,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "twin-hills",
+      "x": 12,
+      "y": 9,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "twin-hills",
+      "x": 11,
+      "y": 8,
+      "unit": "knight",
+      "owner": 2
+    },
+    {
+      "level": "twin-hills",
+      "x": 14,
+      "y": 9,
+      "unit": "cleric",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 4,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 4,
+      "y": 8,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 2,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 2,
+      "y": 8,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 3,
+      "y": 6,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 3,
+      "y": 8,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 5,
+      "y": 7,
+      "unit": "knight",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 2,
+      "y": 7,
+      "unit": "cleric",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 1,
+      "y": 7,
+      "unit": "mage",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 5,
+      "y": 8,
+      "unit": "rogue",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 6,
+      "y": 7,
+      "unit": "ballista",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 5,
+      "y": 6,
+      "unit": "dragon",
+      "owner": 1
+    },
+    {
+      "level": "three-bridges",
+      "x": 19,
+      "y": 7,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 19,
+      "y": 9,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 21,
+      "y": 7,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 21,
+      "y": 9,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 20,
+      "y": 7,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 20,
+      "y": 9,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 18,
+      "y": 8,
+      "unit": "knight",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 21,
+      "y": 8,
+      "unit": "cleric",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 22,
+      "y": 8,
+      "unit": "mage",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 18,
+      "y": 9,
+      "unit": "rogue",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 17,
+      "y": 8,
+      "unit": "ballista",
+      "owner": 2
+    },
+    {
+      "level": "three-bridges",
+      "x": 18,
+      "y": 7,
+      "unit": "dragon",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 2,
+      "y": 5,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 3,
+      "y": 5,
+      "unit": "knight",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 2,
+      "y": 4,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 2,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 3,
+      "y": 4,
+      "unit": "ogre",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 1,
+      "y": 3,
+      "unit": "mage",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 1,
+      "y": 6,
+      "unit": "ballista",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 2,
+      "y": 3,
+      "unit": "cleric",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 12,
+      "y": 5,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 12,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 13,
+      "y": 5,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 13,
+      "y": 6,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 13,
+      "y": 4,
+      "unit": "ballista",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 15,
+      "y": 5,
+      "unit": "ogre",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 1,
+      "y": 5,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 1,
+      "y": 4,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 3,
+      "y": 6,
+      "unit": "mage",
+      "owner": 1
+    },
+    {
+      "level": "siege",
+      "x": 13,
+      "y": 8,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "level": "siege",
+      "x": 16,
+      "y": 4,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "level": "cliff-training",
+      "key": "blue-trainee",
+      "x": 2,
+      "y": 1,
+      "unit": "soldier",
+      "owner": 1,
+      "rank": 1,
+      "rankProgress": 120,
+      "facing": "east"
+    },
+    {
+      "level": "cliff-training",
+      "x": 2,
+      "y": 2,
+      "unit": "archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "cliff-training",
+      "x": 2,
+      "y": 3,
+      "unit": "knight",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "cliff-training",
+      "x": 7,
+      "y": 5,
+      "unit": "rogue",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "cliff-training",
+      "x": 7,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "cliff-training",
+      "x": 8,
+      "y": 5,
+      "unit": "archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "campaign-laiya",
+      "x": 3,
+      "y": 9,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-01",
+      "key": "campaign-torren",
+      "x": 5,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "campaign-elin",
+      "x": 3,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "field-cleric",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "roderick-reserve",
+      "x": 4,
+      "y": 11,
+      "unit": "c01.roderick",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "ridge-scout",
+      "x": 5,
+      "y": 5,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "ridge-guard",
+      "x": 4,
+      "y": 6,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "west-spear",
+      "x": 1,
+      "y": 9,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "village-runner",
+      "x": 7,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "camp-guard",
+      "x": 4,
+      "y": 7,
+      "unit": "c01.legion-shield",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "field-knight",
+      "x": 6,
+      "y": 11,
+      "unit": "c01.knight",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-01",
+      "key": "vanguard-1",
+      "x": 17,
+      "y": 6,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "vanguard-2",
+      "x": 20,
+      "y": 7,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "vanguard-archer",
+      "x": 21,
+      "y": 4,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "vanguard-cain",
+      "x": 24,
+      "y": 7,
+      "unit": "c01.cain",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "north-shield",
+      "x": 13,
+      "y": 5,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "south-sword",
+      "x": 22,
+      "y": 10,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "south-bow",
+      "x": 20,
+      "y": 12,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-01",
+      "key": "camp-bow",
+      "x": 25,
+      "y": 5,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 9,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-02",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "bridge-knight",
+      "x": 3,
+      "y": 7,
+      "unit": "c01.knight",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "bridge-guard-1",
+      "x": 1,
+      "y": 10,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "bridge-guard-2",
+      "x": 3,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "refugee-1",
+      "x": 1,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "refugee-2",
+      "x": 2,
+      "y": 12,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "refugee-3",
+      "x": 3,
+      "y": 12,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "river-scout",
+      "x": 5,
+      "y": 12,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "bridge-cleric",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "bridge-reserve",
+      "x": 1,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-02",
+      "key": "cain",
+      "x": 20,
+      "y": 4,
+      "unit": "c01.cain",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "shield-1",
+      "x": 19,
+      "y": 3,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "shield-2",
+      "x": 19,
+      "y": 5,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "bow-1",
+      "x": 18,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "unmarked-ballista",
+      "x": 20,
+      "y": 10,
+      "unit": "c01.ballista",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "north-bank-guard",
+      "x": 15,
+      "y": 2,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "south-bank-bow",
+      "x": 16,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-02",
+      "key": "battery-screen",
+      "x": 20,
+      "y": 12,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-03",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "roderick",
+      "x": 3,
+      "y": 5,
+      "unit": "c01.roderick",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "siege-mage",
+      "x": 3,
+      "y": 9,
+      "unit": "c01.battle-mage",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "siege-engineer",
+      "x": 4,
+      "y": 4,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "siege-guard",
+      "x": 4,
+      "y": 10,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "field-cleric",
+      "x": 6,
+      "y": 12,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "north-sapper",
+      "x": 2,
+      "y": 12,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "south-spear",
+      "x": 6,
+      "y": 2,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "key": "oath-guard-1",
+      "x": 18,
+      "y": 2,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "oath-guard-2",
+      "x": 18,
+      "y": 4,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "redstone-ballista",
+      "x": 20,
+      "y": 6,
+      "unit": "c01.ballista",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "redstone-shield",
+      "x": 16,
+      "y": 7,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "redstone-inquisitor",
+      "x": 20,
+      "y": 2,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "outer-screen",
+      "x": 13,
+      "y": 3,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "south-tower-bow",
+      "x": 14,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "keep-reserve",
+      "x": 16,
+      "y": 10,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-03",
+      "key": "node-mage",
+      "x": 19,
+      "y": 7,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "campaign-laiya",
+      "x": 3,
+      "y": 10,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-04",
+      "key": "campaign-torren",
+      "x": 3,
+      "y": 9,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "campaign-elin",
+      "x": 4,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "campaign-mirelle",
+      "x": 4,
+      "y": 9,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "scout-1",
+      "x": 5,
+      "y": 11,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "scout-2",
+      "x": 3,
+      "y": 11,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "scout-3",
+      "x": 5,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "scout-4",
+      "x": 1,
+      "y": 13,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "scout-cleric",
+      "x": 4,
+      "y": 11,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "scout-reserve",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-04",
+      "key": "camp-guard-1",
+      "x": 8,
+      "y": 3,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "camp-guard-2",
+      "x": 11,
+      "y": 3,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "camp-inquisitor",
+      "x": 10,
+      "y": 5,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "camp-bow",
+      "x": 8,
+      "y": 7,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "camp-mage",
+      "x": 12,
+      "y": 7,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "north-patrol",
+      "x": 15,
+      "y": 4,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "east-patrol",
+      "x": 16,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "south-patrol",
+      "x": 14,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-04",
+      "key": "gate-reserve",
+      "x": 18,
+      "y": 12,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "campaign-laiya",
+      "x": 6,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-05",
+      "key": "campaign-torren",
+      "x": 7,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "campaign-elin",
+      "x": 7,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "campaign-mirelle",
+      "x": 8,
+      "y": 5,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "campaign-bran",
+      "x": 8,
+      "y": 9,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "village-guard",
+      "x": 9,
+      "y": 6,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "village-guard-2",
+      "x": 10,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "villager-1",
+      "x": 5,
+      "y": 3,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "villager-2",
+      "x": 12,
+      "y": 10,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "villager-3",
+      "x": 11,
+      "y": 9,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "village-cleric",
+      "x": 9,
+      "y": 8,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "west-militia",
+      "x": 5,
+      "y": 9,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "east-militia",
+      "x": 12,
+      "y": 7,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "key": "purifier-1",
+      "x": 18,
+      "y": 3,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "purifier-2",
+      "x": 19,
+      "y": 5,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "purifier-3",
+      "x": 16,
+      "y": 6,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "purifier-4",
+      "x": 18,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "purifier-5",
+      "x": 15,
+      "y": 11,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "north-purifier",
+      "x": 12,
+      "y": 1,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "south-purifier",
+      "x": 19,
+      "y": 12,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-05",
+      "key": "fire-support",
+      "x": 14,
+      "y": 13,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "campaign-laiya",
+      "x": 9,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-06",
+      "key": "campaign-torren",
+      "x": 8,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "campaign-elin",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "campaign-mirelle",
+      "x": 8,
+      "y": 10,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "campaign-bran",
+      "x": 7,
+      "y": 7,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "rearguard",
+      "x": 8,
+      "y": 7,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "rearguard-2",
+      "x": 9,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "refugee-1",
+      "x": 7,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "refugee-2",
+      "x": 8,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "refugee-3",
+      "x": 9,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "refugee-4",
+      "x": 8,
+      "y": 12,
+      "unit": "c01.laborer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "mounted-rearguard",
+      "x": 6,
+      "y": 10,
+      "unit": "c01.knight",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "white-river-cleric",
+      "x": 7,
+      "y": 12,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "key": "pursuer-1",
+      "x": 1,
+      "y": 4,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "pursuer-2",
+      "x": 2,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "pursuer-3",
+      "x": 3,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "pursuer-4",
+      "x": 1,
+      "y": 10,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "pursuer-ballista",
+      "x": 1,
+      "y": 12,
+      "unit": "c01.ballista",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "north-pursuer",
+      "x": 4,
+      "y": 2,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "ford-shield",
+      "x": 4,
+      "y": 9,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-06",
+      "key": "river-mage",
+      "x": 3,
+      "y": 12,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "campaign-laiya",
+      "x": 10,
+      "y": 8,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-07",
+      "key": "campaign-torren",
+      "x": 10,
+      "y": 7,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "campaign-elin",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "campaign-mirelle",
+      "x": 8,
+      "y": 8,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "campaign-bran",
+      "x": 13,
+      "y": 8,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "militia",
+      "x": 9,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "militia-2",
+      "x": 11,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "engineer",
+      "x": 10,
+      "y": 11,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "west-militia",
+      "x": 6,
+      "y": 11,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "east-militia",
+      "x": 16,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "city-cleric",
+      "x": 11,
+      "y": 9,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "north-militia",
+      "x": 9,
+      "y": 9,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "south-militia",
+      "x": 13,
+      "y": 12,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-07",
+      "key": "raider-1",
+      "x": 1,
+      "y": 3,
+      "unit": "c01.wolf-rider",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "raider-2",
+      "x": 5,
+      "y": 6,
+      "unit": "c01.wolf-rider",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "raider-3",
+      "x": 4,
+      "y": 9,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "royal-1",
+      "x": 20,
+      "y": 3,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "royal-2",
+      "x": 20,
+      "y": 6,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "royal-3",
+      "x": 18,
+      "y": 9,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "west-raider",
+      "x": 1,
+      "y": 12,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "north-raider",
+      "x": 8,
+      "y": 2,
+      "unit": "c01.wolf-rider",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "east-royal",
+      "x": 21,
+      "y": 12,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-07",
+      "key": "royal-mage",
+      "x": 15,
+      "y": 2,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-torren",
+      "x": 3,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-elin",
+      "x": 3,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-mirelle",
+      "x": 5,
+      "y": 7,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-bran",
+      "x": 6,
+      "y": 6,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "campaign-tasha",
+      "x": 5,
+      "y": 8,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-08",
+      "key": "mercenary-guard",
+      "x": 8,
+      "y": 10,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "ledger-guard",
+      "x": 4,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "warehouse-bow",
+      "x": 11,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "mercenary-cleric",
+      "x": 5,
+      "y": 10,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "mercenary-spear",
+      "x": 6,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "mercenary-scout",
+      "x": 6,
+      "y": 9,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-08",
+      "key": "thief-chief",
+      "x": 10,
+      "y": 2,
+      "unit": "c01.wolf-rider",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "thief-1",
+      "x": 12,
+      "y": 3,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "thief-2",
+      "x": 14,
+      "y": 2,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "thief-3",
+      "x": 19,
+      "y": 5,
+      "unit": "c01.wolf-rider",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "fraud-enforcer",
+      "x": 19,
+      "y": 8,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "north-thief",
+      "x": 8,
+      "y": 1,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "east-thief",
+      "x": 20,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "south-thief",
+      "x": 12,
+      "y": 12,
+      "unit": "c01.wolf-rider",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-08",
+      "key": "fraud-shield",
+      "x": 16,
+      "y": 10,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 10,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 11,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 8,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-bran",
+      "x": 3,
+      "y": 12,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 10,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-09",
+      "key": "chain-breaker",
+      "x": 5,
+      "y": 12,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "prison-guard",
+      "x": 1,
+      "y": 13,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "prison-scout",
+      "x": 6,
+      "y": 13,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "prison-cleric",
+      "x": 4,
+      "y": 12,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "west-breach-guard",
+      "x": 7,
+      "y": 13,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "east-breach-sword",
+      "x": 8,
+      "y": 12,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-09",
+      "key": "escort-1",
+      "x": 7,
+      "y": 2,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "escort-2",
+      "x": 10,
+      "y": 4,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "escort-3",
+      "x": 12,
+      "y": 7,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "escort-4",
+      "x": 10,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "escort-mage",
+      "x": 9,
+      "y": 11,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "north-chain-guard",
+      "x": 14,
+      "y": 3,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "east-chain-guard",
+      "x": 16,
+      "y": 7,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "south-chain-guard",
+      "x": 14,
+      "y": 11,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "west-chain-bow",
+      "x": 4,
+      "y": 5,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "inner-jailer",
+      "x": 12,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-09",
+      "key": "caged-ivra",
+      "x": 7,
+      "y": 6,
+      "unit": "c01.ivra",
+      "owner": 3,
+      "facing": "west",
+      "directive": {
+        "mode": "guard"
+      }
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-laiya",
+      "x": 10,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-torren",
+      "x": 9,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-elin",
+      "x": 9,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-mirelle",
+      "x": 10,
+      "y": 5,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-bran",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-tasha",
+      "x": 11,
+      "y": 6,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-10",
+      "key": "campaign-ivra",
+      "x": 11,
+      "y": 8,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "gray-rearguard",
+      "x": 9,
+      "y": 7,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "gray-scout",
+      "x": 8,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "old-banner-cleric",
+      "x": 10,
+      "y": 8,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "old-banner-guard",
+      "x": 10,
+      "y": 6,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "key": "roderick",
+      "x": 18,
+      "y": 6,
+      "unit": "c01.roderick",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "royal-guard-1",
+      "x": 20,
+      "y": 4,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "royal-guard-2",
+      "x": 19,
+      "y": 8,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "royal-bow",
+      "x": 21,
+      "y": 6,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "royal-mage",
+      "x": 17,
+      "y": 3,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "pass-shield",
+      "x": 16,
+      "y": 7,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "north-rider",
+      "x": 15,
+      "y": 2,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "south-rider",
+      "x": 16,
+      "y": 11,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "pass-bow",
+      "x": 20,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-10",
+      "key": "banner-sword",
+      "x": 22,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 8,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 7,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 6,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-bran",
+      "x": 3,
+      "y": 10,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 8,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-11",
+      "key": "campaign-ivra",
+      "x": 5,
+      "y": 11,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "gravekeeper-escort",
+      "x": 1,
+      "y": 13,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "cemetery-shield",
+      "x": 4,
+      "y": 14,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "cemetery-bow",
+      "x": 7,
+      "y": 14,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-11",
+      "key": "colossus",
+      "x": 11,
+      "y": 7,
+      "unit": "c01.cemetery-colossus",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "echo-1",
+      "x": 9,
+      "y": 5,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "echo-2",
+      "x": 13,
+      "y": 5,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "echo-3",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "echo-4",
+      "x": 14,
+      "y": 9,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "north-echo",
+      "x": 7,
+      "y": 2,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "south-echo",
+      "x": 8,
+      "y": 12,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "east-ghost",
+      "x": 18,
+      "y": 6,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "west-ghost",
+      "x": 6,
+      "y": 10,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "grave-inquisitor",
+      "x": 19,
+      "y": 3,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-11",
+      "key": "ossuary-guard",
+      "x": 17,
+      "y": 12,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 5,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-bran",
+      "x": 3,
+      "y": 9,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 7,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-12",
+      "key": "campaign-ivra",
+      "x": 5,
+      "y": 11,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "tower-engineer",
+      "x": 1,
+      "y": 12,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "tower-guard",
+      "x": 4,
+      "y": 13,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "key": "imperial-cain",
+      "x": 20,
+      "y": 7,
+      "unit": "c01.cain",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "imperial-1",
+      "x": 19,
+      "y": 6,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "imperial-2",
+      "x": 19,
+      "y": 8,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "oath-echo-1",
+      "x": 11,
+      "y": 4,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "oath-echo-2",
+      "x": 11,
+      "y": 10,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "east-imperial",
+      "x": 21,
+      "y": 5,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "north-echo",
+      "x": 10,
+      "y": 2,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "south-echo",
+      "x": 15,
+      "y": 12,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "tower-bow",
+      "x": 20,
+      "y": 12,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-12",
+      "key": "mechanism-guard",
+      "x": 16,
+      "y": 4,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 9,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-torren",
+      "x": 3,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-elin",
+      "x": 5,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 7,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-bran",
+      "x": 3,
+      "y": 11,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 9,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-13",
+      "key": "campaign-ivra",
+      "x": 5,
+      "y": 12,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-guard",
+      "x": 1,
+      "y": 13,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-engineer",
+      "x": 4,
+      "y": 14,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-bow",
+      "x": 7,
+      "y": 13,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-sword",
+      "x": 8,
+      "y": 14,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-cleric",
+      "x": 6,
+      "y": 14,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-reserve",
+      "x": 10,
+      "y": 14,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-inquisitor",
+      "x": 10,
+      "y": 3,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-guard-1",
+      "x": 14,
+      "y": 5,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-guard-2",
+      "x": 12,
+      "y": 7,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-mage",
+      "x": 15,
+      "y": 8,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "archive-knight",
+      "x": 17,
+      "y": 4,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "west-archive-guard",
+      "x": 8,
+      "y": 4,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "north-archive-bow",
+      "x": 10,
+      "y": 1,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "central-archive-mage",
+      "x": 14,
+      "y": 10,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "east-archive-guard",
+      "x": 20,
+      "y": 7,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "south-archive-knight",
+      "x": 18,
+      "y": 12,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-13",
+      "key": "exit-inquisitor",
+      "x": 23,
+      "y": 13,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 8,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 7,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 6,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-bran",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 8,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-14",
+      "key": "campaign-ivra",
+      "x": 5,
+      "y": 12,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-laborer",
+      "x": 1,
+      "y": 13,
+      "unit": "c01.laborer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-guard",
+      "x": 4,
+      "y": 14,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-engineer",
+      "x": 7,
+      "y": 14,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-bow",
+      "x": 9,
+      "y": 14,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-14",
+      "key": "golem-1",
+      "x": 14,
+      "y": 7,
+      "unit": "c01.stone-golem",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "golem-2",
+      "x": 14,
+      "y": 5,
+      "unit": "c01.stone-golem",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "rune-rebel-1",
+      "x": 14,
+      "y": 3,
+      "unit": "c01.rune-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "rune-rebel-2",
+      "x": 15,
+      "y": 7,
+      "unit": "c01.rune-artificer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-mage",
+      "x": 18,
+      "y": 4,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "north-golem",
+      "x": 6,
+      "y": 2,
+      "unit": "c01.stone-golem",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "east-rune-shield",
+      "x": 19,
+      "y": 8,
+      "unit": "c01.rune-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "south-artificer",
+      "x": 15,
+      "y": 12,
+      "unit": "c01.rune-artificer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-guard-1",
+      "x": 7,
+      "y": 10,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-guard-2",
+      "x": 18,
+      "y": 11,
+      "unit": "c01.rune-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-14",
+      "key": "forge-bow-guard",
+      "x": 20,
+      "y": 13,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 8,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 7,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 6,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-bran",
+      "x": 3,
+      "y": 10,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 8,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-15",
+      "key": "campaign-ivra",
+      "x": 5,
+      "y": 12,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "silverwood-guard",
+      "x": 1,
+      "y": 13,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "silverwood-scout",
+      "x": 4,
+      "y": 14,
+      "unit": "c01.woodland-walker",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "silverwood-cleric",
+      "x": 7,
+      "y": 14,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-15",
+      "key": "controlled-druid",
+      "x": 12,
+      "y": 7,
+      "unit": "c01.druid",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "controlled-longbow-1",
+      "x": 14,
+      "y": 5,
+      "unit": "c01.silver-longbow",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "controlled-longbow-2",
+      "x": 14,
+      "y": 9,
+      "unit": "c01.silver-longbow",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "controlled-walker",
+      "x": 17,
+      "y": 7,
+      "unit": "c01.woodland-walker",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "inquisitor-handler",
+      "x": 20,
+      "y": 7,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "north-longbow",
+      "x": 8,
+      "y": 2,
+      "unit": "c01.silver-longbow",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "south-longbow",
+      "x": 8,
+      "y": 13,
+      "unit": "c01.silver-longbow",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "east-walker",
+      "x": 21,
+      "y": 11,
+      "unit": "c01.woodland-walker",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "root-guard-1",
+      "x": 11,
+      "y": 5,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "root-guard-2",
+      "x": 11,
+      "y": 9,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "oath-druid",
+      "x": 17,
+      "y": 12,
+      "unit": "c01.druid",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-15",
+      "key": "silverwood-witness",
+      "x": 3,
+      "y": 13,
+      "unit": "c01.druid",
+      "owner": 3,
+      "facing": "west",
+      "directive": {
+        "mode": "guard"
+      }
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-laiya",
+      "x": 1,
+      "y": 9,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-torren",
+      "x": 2,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-elin",
+      "x": 2,
+      "y": 10,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-mirelle",
+      "x": 3,
+      "y": 7,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-bran",
+      "x": 3,
+      "y": 11,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-tasha",
+      "x": 4,
+      "y": 9,
+      "unit": "c01.tasha",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "level": "c01-16",
+      "key": "campaign-ivra",
+      "x": 5,
+      "y": 13,
+      "unit": "c01.ivra",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-gravekeeper",
+      "x": 1,
+      "y": 14,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-guard",
+      "x": 4,
+      "y": 15,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-bow",
+      "x": 7,
+      "y": 15,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east",
+      "directive": {
+        "mode": "patrol",
+        "waypoints": [
+          {
+            "x": 6,
+            "y": 3
+          }
+        ]
+      }
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-sword",
+      "x": 6,
+      "y": 14,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east",
+      "directive": {
+        "mode": "patrol",
+        "waypoints": [
+          {
+            "x": 16,
+            "y": 8
+          }
+        ]
+      }
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-shield",
+      "x": 8,
+      "y": 15,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-engineer",
+      "x": 10,
+      "y": 15,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east",
+      "directive": {
+        "mode": "patrol",
+        "waypoints": [
+          {
+            "x": 8,
+            "y": 13
+          }
+        ]
+      }
+    },
+    {
+      "level": "c01-16",
+      "key": "unflagged",
+      "x": 12,
+      "y": 8,
+      "unit": "c01.cemetery-colossus",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-1",
+      "x": 9,
+      "y": 5,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-2",
+      "x": 15,
+      "y": 5,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-3",
+      "x": 10,
+      "y": 11,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-inquisitor",
+      "x": 22,
+      "y": 8,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-4",
+      "x": 16,
+      "y": 10,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-5",
+      "x": 7,
+      "y": 12,
+      "unit": "c01.skeleton-guard",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-6",
+      "x": 18,
+      "y": 3,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "inquisitor-guard-1",
+      "x": 20,
+      "y": 7,
+      "unit": "c01.templar",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "inquisitor-guard-2",
+      "x": 20,
+      "y": 9,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-mage",
+      "x": 17,
+      "y": 13,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "level": "c01-16",
+      "key": "memory-bow-guard",
+      "x": 22,
+      "y": 12,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    }
+  ],
+  "reinforcements": [
+    {
+      "level": "c01-03",
+      "trigger": "redstone-second-wave",
+      "path": "scenario.triggers.1.effects.0",
+      "reason": "reinforcement",
+      "key": "redstone-wave-guard",
+      "x": 0,
+      "y": 13,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "trigger": "redstone-second-wave",
+      "path": "scenario.triggers.1.effects.0",
+      "reason": "reinforcement",
+      "key": "redstone-wave-engineer",
+      "x": 1,
+      "y": 14,
+      "unit": "c01.engineer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-03",
+      "trigger": "redstone-second-wave",
+      "path": "scenario.triggers.1.effects.0",
+      "reason": "reinforcement",
+      "key": "redstone-wave-bow",
+      "x": 2,
+      "y": 14,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "trigger": "purifier-reinforcement",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "purifier-reinforcement",
+      "x": 0,
+      "y": 13,
+      "unit": "c01.inquisitor",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "trigger": "purifier-reinforcement",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "purifier-west-shield",
+      "x": 0,
+      "y": 14,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-05",
+      "trigger": "purifier-reinforcement",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "purifier-west-bow",
+      "x": 2,
+      "y": 14,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "trigger": "pursuit-wave",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "pursuit-wave-knight",
+      "x": 0,
+      "y": 1,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "trigger": "pursuit-wave",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "pursuit-wave-sword",
+      "x": 0,
+      "y": 2,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-06",
+      "trigger": "pursuit-wave",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "pursuit-wave-bow",
+      "x": 1,
+      "y": 3,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "trigger": "old-banner-rearguard",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "old-banner-west-knight",
+      "x": 0,
+      "y": 4,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "trigger": "old-banner-rearguard",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "old-banner-west-shield",
+      "x": 0,
+      "y": 5,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-10",
+      "trigger": "old-banner-rearguard",
+      "path": "scenario.triggers.0.effects.0",
+      "reason": "reinforcement",
+      "key": "old-banner-west-bow",
+      "x": 1,
+      "y": 6,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "east"
+    },
+    {
+      "level": "c01-12",
+      "trigger": "drowned-echoes",
+      "path": "scenario.triggers.1.effects.0",
+      "reason": "reinforcement",
+      "key": "drowned-echo-west",
+      "x": 6,
+      "y": 0,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "south"
+    },
+    {
+      "level": "c01-12",
+      "trigger": "drowned-echoes",
+      "path": "scenario.triggers.1.effects.0",
+      "reason": "reinforcement",
+      "key": "drowned-echo-east",
+      "x": 16,
+      "y": 0,
+      "unit": "c01.ghost",
+      "owner": 2,
+      "facing": "south"
+    }
+  ]
+}

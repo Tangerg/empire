@@ -1,0 +1,183 @@
+{
+  "topicId": "C01-PROP-EXPIRING-MANDATE",
+  "label": "可拆战时统帅期限扣",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-EXPIRING-MANDATE",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "可拆战时统帅期限扣",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-expiring-mandate.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-EXPIRING-MANDATE",
+    "topicId": "C01-PROP-EXPIRING-MANDATE",
+    "label": "可拆战时统帅期限扣",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-expiring-mandate.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+    "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 3,
+    "slot": "BR",
+    "originalNarrativeIndexZeroBased": 75,
+    "fullCellCropBox": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "legacyInsetCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-expiring-mandate/full-cell.png",
+        "sourceCropBox": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "bb1c9072c7b5903acb714f44b234873a0cba839ec8f5be7d3f910787ac4e2f30",
+        "pixelSha256": "bdbda0424ecdc28f047f5a7f8dfb4db346bf1b5d95e79e4f782eee4a6c6eb3da",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-expiring-mandate/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "8dc8d3001e606b587d9b631f7b6848666ad009972d389017f10935c40bbb28e7",
+        "pixelSha256": "e90c1f42d60fc2ca72033f93f0f16735ac4e862c643ff0d45d46e5b9d872a573",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-expiring-mandate.png",
+    "sha256": "e57930da46d1ce19ed8a262da7341a514612b38b4b6f3d6f5dc5e6d19283e30e",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 10322,
+      "partialPixels": 5828,
+      "opaquePixels": 234,
+      "nearOpaquePixels": 588,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        14,
+        124,
+        113
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Bronze round clasp with a dark central radial disk, two slotted strap ends and a separately drawn release pin.",
+    "semanticRequirements": "Detachable and externally removable by Tasha. Novel adds falling silver sand/time limit, while original is dial-like with no sandglass. Do not invent legible clock numerals or dates.",
+    "riskOrHold": "HOLD temporal mechanism interpretation if matching novel; original release pin and detachable construction remain mandatory.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        88,
+        88
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/06-war-of-seven-towers.md",
+      "lines": [
+        131,
+        133
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md",
+      "lines": [
+        5,
+        5
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md",
+      "lines": [
+        513,
+        513
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

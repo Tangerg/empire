@@ -1,0 +1,110 @@
+{
+  "topicId": "C01-PROP-GRANARY-KEY",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-44a0d67d-8524-4c84-af27-10d23fde8f89.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "generatedNativeSha256": "c347736e005af55dfcfded6df663aebc822e02e18c042a019eefba55891b4099",
+  "rawSha256": "c347736e005af55dfcfded6df663aebc822e02e18c042a019eefba55891b4099",
+  "masterSha256": "c347736e005af55dfcfded6df663aebc822e02e18c042a019eefba55891b4099",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "sourceBoundaryMaxAlpha": 0,
+  "sourceBoundaryNonzeroSamples": 0,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noProgrammaticPaintingOrRecolor": true,
+  "referencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/legacy-inset.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/approved-style.png"
+  ],
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/full-cell.png",
+      "sha256": "9b99fa901f1efb1658f9322b103a169923fd610e2738c383b7e2215329fa529a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/legacy-inset.png",
+      "sha256": "d6e5693f50fccbadc9a0c80a67e0f59b0120263dd380be928cf4b490a942f923"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/approved-style.png",
+      "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-granary-key/references/original-board.png",
+      "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc"
+    }
+  ],
+  "originalBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 1,
+    "slot": "TR",
+    "originalNarrativeIndexZeroBased": 78,
+    "fullCellCropBox": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-granary-key/full-cell.png",
+        "sourceCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "9b99fa901f1efb1658f9322b103a169923fd610e2738c383b7e2215329fa529a",
+        "pixelSha256": "9c7185fffbf55c9d3c068e895afe4fd9605aeaeb4791221061c610437c402b78",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-granary-key/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "d6e5693f50fccbadc9a0c80a67e0f59b0120263dd380be928cf4b490a942f923",
+        "pixelSha256": "b26b6a7ec3d4cccc5df0d05db48b63ccd168c7f863a824024ff9fd29bf8942a9",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "identityDecision": "designed narrative reconstruction",
+  "identityDecisionFile": "identity-decision.json",
+  "sourceProofScope": "Independent native genuine RGBA generation. Original617px RGB slot and original1254px RGB board preserved as historical material evidence. Explicit later story/static brief takes priority for corrected semantics. Raw/master are byte-exact generated native output. QA contain128 uses whole canvas124+2px padding and unmasked paste; no crop/bbox normalization. This is not exact original restoration."
+}

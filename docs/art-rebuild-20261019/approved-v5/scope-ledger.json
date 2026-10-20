@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 408,
+    "formalBound": 411,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 39,
+      "narrative-static": 42,
       "skill": 48,
       "status": 24,
       "terrain": 16
     },
-    "rawPreservedTopics": 408,
+    "rawPreservedTopics": 414,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1157,13 +1157,20 @@
       "category": "narrative-static",
       "label": "艾达双文字药瓶",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-ada-medicine/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ada-medicine.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254RGBA designed narrative reconstruction grounded in quoted story evidence: single cracked bilingual-mark medicine bottle, three detached co-managed keys, or removable mandate clasp with silver-sand timer and separate pin. Exact old slot mismatch preserved; not claimed literal restoration",
+        "export": "Wholecanvascontain128 with2pxtransparent margin, no alpha cleanup. Sources medicine/keys perimeter0, mandate15 alpha1samples; final border0. Native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-CASUALTY-REGISTER",
@@ -1297,13 +1304,20 @@
       "category": "narrative-static",
       "label": "可拆战时统帅期限扣",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-expiring-mandate/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-expiring-mandate.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254RGBA designed narrative reconstruction grounded in quoted story evidence: single cracked bilingual-mark medicine bottle, three detached co-managed keys, or removable mandate clasp with silver-sand timer and separate pin. Exact old slot mismatch preserved; not claimed literal restoration",
+        "export": "Wholecanvascontain128 with2pxtransparent margin, no alpha cleanup. Sources medicine/keys perimeter0, mandate15 alpha1samples; final border0. Native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-FIRST-GREY-FLAG",
@@ -1353,13 +1367,20 @@
       "category": "narrative-static",
       "label": "三方共管粮仓钥匙",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-granary-key/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-granary-key.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable1254RGBA designed narrative reconstruction grounded in quoted story evidence: single cracked bilingual-mark medicine bottle, three detached co-managed keys, or removable mandate clasp with silver-sand timer and separate pin. Exact old slot mismatch preserved; not claimed literal restoration",
+        "export": "Wholecanvascontain128 with2pxtransparent margin, no alpha cleanup. Sources medicine/keys perimeter0, mandate15 alpha1samples; final border0. Native blackwhiteolive dark review passes",
+        "runtimeBinding": "Existing narrative key-prop128 canonical catalog; no anchor/HD or actualstory consumer invented",
+        "liveGame": "pending; native static and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
@@ -3739,8 +3760,10 @@
       "category": "terrain",
       "label": "普通节点地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/oathlight-1/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3753,8 +3776,10 @@
       "category": "terrain",
       "label": "誓文受控区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/oathlight-2/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7871,8 +7896,11 @@
       "category": "fx",
       "label": "攻城碎屑",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/airborne-burst/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-07/falling-pieces/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

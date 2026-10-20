@@ -1,0 +1,100 @@
+{
+  "source": {
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 924753,
+    "partialPixels": 646269,
+    "opaquePixels": 1494,
+    "nearOpaquePixels": 633561,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      33,
+      33,
+      1202,
+      1230
+    ],
+    "alpha8BoundingBox": [
+      251,
+      51,
+      978,
+      1206
+    ]
+  },
+  "contain128": {
+    "size": [
+      128,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 9607,
+    "partialPixels": 6518,
+    "opaquePixels": 259,
+    "nearOpaquePixels": 5931,
+    "edgeMaxAlpha": 0,
+    "edgeNonzeroPixels": 0,
+    "alphaBoundingBox": [
+      24,
+      5,
+      101,
+      124
+    ],
+    "alpha8BoundingBox": [
+      26,
+      7,
+      99,
+      122
+    ]
+  },
+  "wholeCanvasResize": {
+    "source": [
+      1254,
+      1254
+    ],
+    "target": [
+      128,
+      128
+    ],
+    "fit": [
+      124,
+      124
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "crop": null
+  },
+  "composites": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/QA/native128-black.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/QA/native128-white.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/QA/native128-olive.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/narrative-props/prop-ada-medicine/QA/native128-dark.png"
+  ],
+  "sourceBytesUnmodified": true,
+  "alphaCleanup": false,
+  "chromaKey": false,
+  "bboxFit": false,
+  "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1ddafff7-39d1-40d4-ba51-0ae9bb45428e.png",
+  "visualReview": {
+    "status": "pass",
+    "originalBoardsAnd617CropsInspected": true,
+    "nativeSourceInspected": true,
+    "fourActual128BackgroundsInspected": true,
+    "nativeSourceContrastingBackgroundsInspected": true,
+    "narrativeReconstructionBriefPass": true,
+    "notExactOriginalRestoration": true,
+    "notes": "PASS: Exactly one cracked corked teal medicine bottle, blue neck tie and two retained torn label regions with clearly different angular versus curved abstract marks. No readable words or invented factual label content. The crack and separate label systems remain visible at exact128. Strong matte silhouette, broad facets and no dropped pieces. All four native128 backgrounds preserve clean contour and visually solid core. Source perimeter alpha0. Documented narrative reconstruction deliberately replaces the old two-bottle depiction; not exact source restoration."
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-ADA-MEDICINE",
+  "label": "艾达双文字药瓶",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-ADA-MEDICINE",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "艾达双文字药瓶",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ada-medicine.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-ADA-MEDICINE",
+    "topicId": "C01-PROP-ADA-MEDICINE",
+    "label": "艾达双文字药瓶",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-ada-medicine.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+    "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 1,
+    "slot": "TR",
+    "originalNarrativeIndexZeroBased": 73,
+    "fullCellCropBox": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-ada-medicine/full-cell.png",
+        "sourceCropBox": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "ddaedbd855a4b8e82ed4fb2f2fff469d054e8ef1cb01dfed37f6bac1b42aa5a8",
+        "pixelSha256": "58986ee321f4093fa1d7963f992745f0305a78e79ced3e4a4dcb909d32ef6cdb",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-ada-medicine/legacy-inset.png",
+        "sourceCropBox": [
+          632,
+          5,
+          1249,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "deb064e7adafca3870cb4cab8e5fbca6e248292401035976ad187a8e6a771866",
+        "pixelSha256": "b10ad00b667c8c161f7aa52d01981e4e5c0a593857237fa94a7ed726f58fa8de",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ada-medicine.png",
+    "sha256": "6941f1c0ecebb9f7b7dfc9ce7fccefc8314654289e9de952c91a9660bf6ee938",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 10457,
+      "partialPixels": 5775,
+      "opaquePixels": 152,
+      "nearOpaquePixels": 496,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        14,
+        124,
+        114
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Two corked bottles: teal glass with rope/fabric tie; brown/clear glass with reddish strip and broad pale bandage wrap.",
+    "semanticRequirements": "Canonical double-writing medicine bottle and prose require two retained national scripts/labels on a cracked bottle. Original two-bottle art does not visibly communicate two scripts or crack.",
+    "riskOrHold": "HOLD semantic mismatch: do not call two bottles dual-language merely because their colors differ. Exact fictional text is not specified; two visibly distinct abstract writing systems may be proposed for review.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        86,
+        86
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "lines": [
+        39,
+        61
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        108,
+        108
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}
