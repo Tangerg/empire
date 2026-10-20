@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-BORDER-2",
+  "status": "raw-source-reviewed-export-and-catalog-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-f01d7a62-8f40-491c-8dd2-c920247cbb74.png",
+  "master": "master.png",
+  "sourceSHA256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "visualQA": {
+    "subject": "Four cool slate-gray shallow puddle groups, short broad rut clusters and sparse chunky pebble pairs over muted rain-softened brown mud",
+    "style": "Broad matte low-contrast mud planes and sparse flat local marks; no wet glare",
+    "fullbleedSquare": true,
+    "noSceneOrBridge": true,
+    "notes": [
+      "Ruts are locally complete and separated, not continuous image-wide tracks; a mild repeated diagonal impression remains.",
+      "A complete small central puddle is visible for retained mask-core sampling.",
+      "Ground contains a few small low-contrast marks and more planes than requested; no dense photographic grain.",
+      "Raw edge periodicity and NESW semantic retention are not yet claimed; exporter must establish exact seams and inspect retained source motifs at 32/64."
+    ]
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending exporter",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending"
+  }
+}

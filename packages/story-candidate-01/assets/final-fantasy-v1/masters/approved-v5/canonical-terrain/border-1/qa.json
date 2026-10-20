@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-TERRAIN-BORDER-1",
+  "status": "raw-source-reviewed-export-and-catalog-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-f1d8fd34-ac67-4ff1-8532-562f61a43bb7.png",
+  "master": "master.png",
+  "sourceSHA256": "a4ffe69f21cbdd599d92e4b1c7fbea8355cae9684f2d2a854707df45b5ac7aef",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "visualQA": {
+    "subject": "Eight golden cut-stubble clusters and four fallen straw clusters, sparse over dry ochre soil",
+    "style": "Broad matte muted earth planes; chunky sparse golden straw silhouettes; no high-frequency noise",
+    "fullbleedSquare": true,
+    "noSceneOrBridge": true,
+    "notes": [
+      "Stubble has simple faceted depth inherited from subject, not a perfectly flat glyph; no scene or standing-object anchor.",
+      "Ground planes are more numerous than the requested 5–6 but remain broad and low-contrast.",
+      "Raw edge periodicity is not claimed; exporter must establish exact seams through bounded texture composition.",
+      "Midline crop safety is not guaranteed: one fallen-straw cluster approaches the vertical midline. Use reviewed equal-size windows, not automatic quadrants."
+    ]
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "pending exporter",
+    "alphaAndSeamQA": "pending exporter",
+    "formalCatalog": "pending"
+  }
+}
