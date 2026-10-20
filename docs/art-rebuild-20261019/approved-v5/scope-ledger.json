@@ -4,11 +4,12 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 350,
+    "formalBound": 352,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
+      "faction-kit": 2,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
@@ -16,7 +17,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 350,
+    "rawPreservedTopics": 352,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -3036,13 +3037,20 @@
       "category": "faction-kit",
       "label": "洛恩王国装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-lorne/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-lorne.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original iron chevron shield, cream/red torn cloth and downward sword; complete three-object silhouette; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-MILITIA-MERCENARY",
@@ -3120,13 +3128,20 @@
       "category": "faction-kit",
       "label": "维尔萨帝国装备基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-vilsa/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-vilsa.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original blue-gray chevron shield with brass rim, folded blue/ivory cloth and upright spear; complete three-object silhouette; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-WASTELAND",

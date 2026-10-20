@@ -1,0 +1,91 @@
+{
+  "topicId": "C01-FACTION-LORNE",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "auditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "sourceBoardPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+  "sourceBoardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+  "sourceCell": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      0,
+      0,
+      314,
+      418
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      5,
+      5,
+      309,
+      413
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/01-faction-lorne-full-cell.png",
+    "referenceLegacyInset5": "source-crops/01-faction-lorne-legacy-inset5.png",
+    "referenceFullCellSha256": "2a7b71d77bbdc9edae36829d555d0de58786314ce8f30f0314d720feafa93f51",
+    "referenceLegacyInset5Sha256": "1d8022767434ed428583773b06a115c15774a90f702aa7bc01ee42e48fd20319"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Pointed riveted old-steel shield with broad upward ivory chevron and dark wine-red lower field",
+      "Patched ivory and wine-red cloth strip with ragged lower edge",
+      "Plain straight steel sword with small rounded pommel"
+    ],
+    "emblem": "Preserve broad upward ivory chevron, old-steel upper field, dark wine-red lower field; no crown, lion or new heraldry",
+    "palette": "Old steel, worn ivory, restrained wine-red; repaired practical feudal equipment"
+  },
+  "canonicalContract": {
+    "assetId": "C01-FFV1-FACTION-LORNE",
+    "topicId": "C01-FACTION-LORNE",
+    "label": "\u6d1b\u6069\u738b\u56fd\u88c5\u5907\u57fa\u51c6",
+    "category": "faction-kit",
+    "png": "runtime/faction-kit/faction-lorne.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "anchor": [
+      64,
+      64
+    ],
+    "repositoryPath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-lorne.png",
+    "fileSha256": "44be5b7fc1b8b66fed928e5d3f8b1a87b146e4ed67c4f5563182f661c457a455",
+    "pixelSha256": "7f97b2408df35037560fe3400ee4cbcf08b6e15da64d4e6ff2a1e9c2ba68ff95",
+    "mode": "RGBA",
+    "hdRecord": null
+  },
+  "consumers": {
+    "viteCatalogBundled": true,
+    "authoredGameplayOrUiTopicReferences": [],
+    "browserObserved": false,
+    "offlinePreview": "packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png",
+    "qualification": "No authored direct topic/path reference found in apps/packages/tools source. Generic candidate01Asset/candidate01StoryArt APIs can resolve arbitrary externally supplied IDs, so this is not proof of impossibility of future or external consumption."
+  },
+  "inputHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/01-faction-lorne-full-cell.png",
+      "sha256": "2a7b71d77bbdc9edae36829d555d0de58786314ce8f30f0314d720feafa93f51"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-legion-shield/master.png",
+      "sha256": "f10d4c3aa8d58c6dce68adeaa676f530bbc93f1d18090d5adc8541f5046af7ea"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-templar/master.png",
+      "sha256": "723e37ad51bba7cd3e1728412961860690d9fbe008919d2dd76e05bb85a96170"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+    }
+  ],
+  "tool": "image_gen.imagegen built-in",
+  "transparentBackgroundRequested": true,
+  "requestSha256": "2af02cc9b428858a54b70611ac2000034e21964aa414dcec6c37f0dbae077e14",
+  "promptSha256": "ab0a0e3ed901a4a22c14d83e1e3ff81ebafd972b791e0ebaefb6dda752300e19",
+  "rawSha256": "f954b35190f6e913322927d0acfc7411d667de8ce5466e678102d9ef4d2fd408",
+  "masterSha256": "f954b35190f6e913322927d0acfc7411d667de8ce5466e678102d9ef4d2fd408",
+  "imageMutation": "None",
+  "status": "source ready for parent formal export"
+}

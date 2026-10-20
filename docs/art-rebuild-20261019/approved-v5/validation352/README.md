@@ -1,0 +1,1 @@
+Two128x128 faction groups formally bound after full-source emblem matching and native three-background review.436 focusedTS tests,11ledger tests and typecheck pass. No authored gameplay/UI use is claimed.

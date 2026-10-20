@@ -126,6 +126,26 @@ class ApprovedLedgerTests(unittest.TestCase):
                 self.assertEqual(result['summary']['formalBound'], 0)
                 self.assertEqual(result['summary']['liveGameVerified'], 0)
 
+    def test_faction_kit_counts_one_native_group_not_its_components(self):
+        topic = {**self.topic, 'topicId': 'C01-FACTION-LORNE', 'category': 'faction-kit'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest,
+                   'campaign': 'story-candidate-01', 'label': 'Lorne kit'}])
+        raw = self.root / 'pack/masters/approved-v5/faction-kit/faction-lorne/master.png'
+        raw.parent.mkdir(parents=True)
+        raw.write_bytes(b'one immutable shield-cloth-sword group')
+        self.assertEqual(build(self.root)['summary']['formalBound'], 0)
+        topic['qualityTier'] = 'approved-chunky-v5-export-verified'
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.progress.update(topicStages={topic['topicId']: {'raw': 'one group'}}, formalRuntimeBoundTopics=1)
+        self.write(DOC / 'approved-v5/progress.json', self.progress)
+        result = build(self.root)
+        self.assertEqual(result['summary']['boundByCategory'], {'faction-kit': 1})
+        self.assertEqual(result['summary']['liveGameVerified'], 0)
+        raw.unlink()
+        with self.assertRaisesRegex(ValueError, 'lacks a discoverable'):
+            build(self.root)
+
     def test_scene_master_is_discovered_without_reclassifying_key_prop_exception(self):
         for topic_id in ['C01-CH01-S05', 'C01-CH01-S01', 'C01-ARCH-THREE-BRIDGES', 'C01-ARCH-REDSTONE']:
             with self.subTest(topic=topic_id):

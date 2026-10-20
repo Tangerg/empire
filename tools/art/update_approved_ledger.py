@@ -34,6 +34,8 @@ def build(root=ROOT):
             relative = Path('props') / stem
         elif stem.startswith('equip-'):
             relative = Path('equipment') / stem
+        elif current['category'] == 'faction-kit' and topic.startswith('C01-FACTION-'):
+            relative = Path('faction-kit') / stem
         elif current['category'] in ('skill', 'status', 'hud') and topic.startswith('C01-') and stem.startswith(current['category'] + '-'):
             relative = Path(current['category']) / stem
         elif current['category'] == 'narrative-static' and current.get('kind') == 'character-card' and stem.startswith('char-'):
