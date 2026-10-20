@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-sand-sail",
+  "assetId": "C02-SFV1-skill-sand-sail",
+  "label": "沙帆机动",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-sand-sail",
+    "topicId": "c02-skill-sand-sail",
+    "label": "沙帆机动",
+    "category": "skill",
+    "png": "runtime/skill/skill-sand-sail.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 12,
+  "sourceBoardCellIndexZeroBased": 12,
+  "sourceCropBox": [
+    5,
+    945,
+    309,
+    1249
+  ],
+  "sourceCropSize": [
+    304,
+    304
+  ],
+  "sourceMappingEvidence": "Actual 48x48 runtime visually inspected before matching by depicted action to full original boards. Catalog sequence independently agrees. Alphabetical manifest order was not used.",
+  "functionalMotif": "A short sail-sled with a tan triangular sail moves above a small sand wake beside a cyan zigzag movement arrow.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-sand-sail.png",
+  "runtimeReferenceSha256": "2c9f05b5d165e0fadbeb2d4fe01b6dd76d25f0759329f2442001e379e7ca68b4",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source crops and separate QA diagnostics only; generated source pixels will remain unchanged."
+}

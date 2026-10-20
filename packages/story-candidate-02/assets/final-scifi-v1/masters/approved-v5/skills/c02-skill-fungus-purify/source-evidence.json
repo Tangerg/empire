@@ -1,0 +1,79 @@
+{
+  "topicId": "c02-skill-fungus-purify",
+  "assetId": "C02-SFV1-skill-fungus-purify",
+  "label": "菌床净化",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-fungus-purify",
+    "topicId": "c02-skill-fungus-purify",
+    "label": "菌床净化",
+    "category": "skill",
+    "png": "runtime/skill/skill-fungus-purify.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 19,
+  "catalogIndexZeroBased": 19,
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    309
+  ],
+  "sourceMappingEvidence": "Actual 48 px icons inspected and each subject independently matched on the complete 1254 px board. Catalog order agrees; alphabetical manifest ordering was not used. Legacy grid algorithm read only; manifest-complete.json is absent.",
+  "functionalMotif": "Small central cyan purifier device radiating cleaning rays among purple fungus clusters",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "legacyBackgroundConflict": "Dark rectangular scene card, terrain and external luminous fill are not icon content.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-fungus-purify.png",
+  "runtimeReferenceSha256": "bdaa13760dbc0de36b29b9bee76d4bcf5bca96098d48e87dc83854206f23277c",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only source reference crop and separate QA derivatives. Generated source will be preserved unchanged.",
+  "completeMotifCropBox": [
+    940,
+    36,
+    1221,
+    317
+  ],
+  "completeMotifSource": "source-complete-motif.png",
+  "legacySourceCropDefect": "Legacy uniform grid cuts the bottom of the original card. Complete card reference preserves all intended forms before deliberate simplification.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2598f907-b067-48db-8cb0-8a52a2b3cebe.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-fungus-purify/source-complete-motif.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-fungus-purify/style-reference-cargo-crates.png"
+  ],
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "The central cyan purifier retains its round aperture, tapered housing and mechanical foot. Four readable purple mushroom clusters retain the fungal-bed context, and six bounded opaque cyan wedges replace the broad original luminous burst. Each cluster includes two dominant mushroom caps and smaller budding caps, more than the prompt simplification, but they remain one compact silhouette. Original ground, dark card, fine mushroom field and diffuse light curtain are excluded. The optional erosion diagnostic contains 22 pixels below alpha 240; full proper-alpha and native composites show no visually apparent external haze.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "liveGameVerified": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-fungus-purify/master.png"
+}

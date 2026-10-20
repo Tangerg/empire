@@ -1,0 +1,45 @@
+{
+  "topicId": "c02-skill-vacuum-traction",
+  "diagnosticOnly": true,
+  "criterion": "Alpha below 240 within 8-pixel erosion of alpha >= 8 mask",
+  "pixels": [
+    {
+      "xy": [
+        575,
+        763
+      ],
+      "rgba": [
+        4,
+        175,
+        245,
+        233
+      ]
+    },
+    {
+      "xy": [
+        576,
+        763
+      ],
+      "rgba": [
+        9,
+        170,
+        240,
+        217
+      ]
+    },
+    {
+      "xy": [
+        575,
+        764
+      ],
+      "rgba": [
+        2,
+        169,
+        243,
+        236
+      ]
+    }
+  ],
+  "count": 3,
+  "sourceEdited": false
+}

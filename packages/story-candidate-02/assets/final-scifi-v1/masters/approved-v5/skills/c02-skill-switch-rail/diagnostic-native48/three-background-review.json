@@ -1,0 +1,21 @@
+{
+  "topicId": "c02-skill-switch-rail",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, the four rail branches, circular hub, cyan left arrow and orange right arrow remain recognizable on white, black and olive. Source512 composites show clean open spaces between the branches and no opaque square backdrop. Source side margins are 50/51px, narrower than the prompt target, but the source is unclipped and the full-canvas export keeps its required padding.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}

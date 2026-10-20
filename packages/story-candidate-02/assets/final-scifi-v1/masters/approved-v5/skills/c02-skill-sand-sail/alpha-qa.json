@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-sand-sail",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 1012864,
+  "partialAlphaPixels": 557426,
+  "opaquePixels": 2226,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    72,
+    114,
+    1190,
+    1161
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    72,
+    114,
+    64,
+    93
+  ],
+  "nearOpaquePixelCountGE240": 530651,
+  "diagnostic8pxErosion": {
+    "minAlpha": 44,
+    "pixelsBelow240": 12,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 532,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "8f2aa8f8c428ca9cfc69f1ab4fbf13857a900a129298002dc5977f0c396c5efb",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

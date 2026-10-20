@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Whole authored canvas contained at 44 x 44 and centered inside 48 x 48 with a 2 px logical margin. No visible-bounds recrop. This is a diagnostic reproduction of static-export geometry, not a formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source512-on-white.png",
+    "qa-source512-on-black.png",
+    "qa-source512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "The diagonal living woody span, wrapped green vines, broad leaves, hanging growth and pruning hand/shears are retained. The complete source card restores the upper span clipped by the uniform legacy grid. Source cyan translucent hand is reinterpreted as an opaque blue work glove holding the same pruning tool, so it remains legible without a light curtain. The main span is not cut. Water, dark scene card and fine foliage clutter are excluded. The source right margin is 35 px, narrower than requested, but all ends remain intact and edge alpha is at most one.",
+  "rawMasterSha256": "54a304b5b3db03975ef099caae12127c98625d057db0b4e1ec75eaa22ae2672a",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48 px fine seams and minor material highlights merge; the main functional silhouette and action cues remain legible. No live scene, interactive state or UI-overlay claim."
+}

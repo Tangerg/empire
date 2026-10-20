@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-vacuum-traction",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 1072894,
+  "partialAlphaPixels": 497459,
+  "opaquePixels": 2163,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    28,
+    218,
+    1213,
+    1039
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    28,
+    218,
+    41,
+    215
+  ],
+  "nearOpaquePixelCountGE240": 451809,
+  "diagnostic8pxErosion": {
+    "minAlpha": 217,
+    "pixelsBelow240": 3,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 426,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "8f07d09a62bd5e33d6b46f759f88e6bdcbb7822e76757fa674ba8f28a43002a9",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

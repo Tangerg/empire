@@ -1,0 +1,68 @@
+{
+  "topicId": "c02-skill-rail-permission",
+  "assetId": "C02-SFV1-skill-rail-permission",
+  "label": "列车权限",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-rail-permission",
+    "topicId": "c02-skill-rail-permission",
+    "label": "列车权限",
+    "category": "skill",
+    "png": "runtime/skill/skill-rail-permission.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 2
+  },
+  "sourceIndexZeroBased": 20,
+  "sourceBoardCellIndexZeroBased": 4,
+  "sourceCropBox": [
+    5,
+    319,
+    309,
+    622
+  ],
+  "sourceCropSize": [
+    304,
+    303
+  ],
+  "sourceMappingEvidence": "Actual 48x48 runtime visually inspected before matching by depicted action to full original boards. Catalog sequence independently agrees. Alphabetical manifest order was not used.",
+  "functionalMotif": "A gloved hand presses a cyan rectangular permission interface on a round segmented bronze/graphite gate mechanism.",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-rail-permission.png",
+  "runtimeReferenceSha256": "245ec6707b84ea890872daa8b470e1877398edbd51f9cd09931854e5dfc568bd",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source crops and separate QA diagnostics only; generated source pixels will remain unchanged.",
+  "completeMotifCropBox": [
+    34,
+    339,
+    315,
+    617
+  ],
+  "completeMotifCropSize": [
+    281,
+    278
+  ],
+  "completeMotifSource": "source-complete-motif.png",
+  "legacySourceCropDefect": "Uniform grid crop ends at x=309 while the complete intended card extends to x=315, clipping a narrow right-hand strip. The original runtime also carries the dark scene-card background.",
+  "legacyBackgroundConflict": "Dark rectangular card and wall are source background, not functional icon. New artwork must isolate the round gate interface and one gloved pressing hand, with a completed wrist cuff inside transparent margin.",
+  "restorationPlan": "Use the complete original card as the image reference while retaining the exact legacy slot and runtime evidence. Redraw complete functional circle, cyan interface and gloved hand without the source wall/card. Do not invent trains, weapons, permission symbols or faction crests."
+}

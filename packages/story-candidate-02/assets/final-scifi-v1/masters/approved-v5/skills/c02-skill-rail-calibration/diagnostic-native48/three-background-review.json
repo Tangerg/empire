@@ -1,0 +1,21 @@
+{
+  "topicId": "c02-skill-rail-calibration",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, the cyan calibration ring and center dot remain distinct, with the paired rails visible behind them on white, black and olive. Source512 composites confirm bounded opaque graphics without a broad projection glow. The shortest source margin is 41px, narrower than the prompt target; no clipping occurs and actual output perimeter alpha is 0.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}

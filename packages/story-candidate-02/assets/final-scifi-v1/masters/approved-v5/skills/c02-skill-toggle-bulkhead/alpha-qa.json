@@ -1,0 +1,50 @@
+{
+  "topicId": "c02-skill-toggle-bulkhead",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 648874,
+  "partialAlphaPixels": 922350,
+  "opaquePixels": 1292,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    56,
+    160,
+    1215,
+    1147
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    56,
+    160,
+    39,
+    107
+  ],
+  "nearOpaquePixelCountGE240": 910369,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 1055,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
+  "sha256": "d97660352038291fb568e82b3fd638a2313933029a02ac4da264192ca0533da2",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, both door states and their opposing cyan/orange arrows remain distinct on white, black and olive. Source512 inspection confirms clean exterior transparency and no stray horizontal strip below the doors. The right source margin is 39px, narrower than the prompt target, while all components remain unclipped and the output retains its standard transparent padding.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
+}

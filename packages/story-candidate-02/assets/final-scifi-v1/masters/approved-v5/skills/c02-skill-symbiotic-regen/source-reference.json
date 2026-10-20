@@ -1,0 +1,59 @@
+{
+  "topicId": "c02-skill-symbiotic-regen",
+  "assetId": "C02-SFV1-skill-symbiotic-regen",
+  "label": "共生再生",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-symbiotic-regen",
+    "topicId": "c02-skill-symbiotic-regen",
+    "label": "共生再生",
+    "category": "skill",
+    "png": "runtime/skill/skill-symbiotic-regen.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 18,
+  "catalogIndexZeroBased": 18,
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    309
+  ],
+  "sourceMappingEvidence": "Actual 48 px icons inspected and each subject independently matched on the complete 1254 px board. Catalog order agrees; alphabetical manifest ordering was not used. Legacy grid algorithm read only; manifest-complete.json is absent.",
+  "functionalMotif": "Green seedling in a round mechanical planter, articulated robot gripper tending it, and green plus signs",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "legacyBackgroundConflict": "Dark rectangular scene card, terrain and external luminous fill are not icon content.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-symbiotic-regen.png",
+  "runtimeReferenceSha256": "8d92dc3e358f7aa2d1e52ff805a366508d80bb0609e1d07ca2d4c8465f75188e",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only source reference crop and separate QA derivatives. Generated source will be preserved unchanged.",
+  "completeMotifCropBox": [
+    638,
+    36,
+    919,
+    317
+  ],
+  "completeMotifSource": "source-complete-motif.png",
+  "legacySourceCropDefect": "Legacy uniform grid cuts the bottom of the original card. Complete card reference preserves all intended forms before deliberate simplification."
+}

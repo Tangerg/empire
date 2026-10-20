@@ -36,11 +36,15 @@
   "actual48EdgeMaxAlpha": 0,
   "actual48NearOpaquePixelsGE240": 914,
   "formalSourceContractPass": true,
-  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
   "sha256": "8df81e662eeb8457dfd73a2a57645a1476d5a11b3d6634d6c68ecc9ef1cd1db1",
   "matchesRawGeneratedBytes": true,
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, the cyan calibration ring and center dot remain distinct, with the paired rails visible behind them on white, black and olive. Source512 composites confirm bounded opaque graphics without a broad projection glow. The shortest source margin is 41px, narrower than the prompt target; no clipping occurs and actual output perimeter alpha is 0.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
 }

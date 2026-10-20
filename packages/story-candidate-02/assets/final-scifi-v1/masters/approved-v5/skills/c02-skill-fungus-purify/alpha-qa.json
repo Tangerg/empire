@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-fungus-purify",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 910591,
+  "partialAlphaPixels": 659569,
+  "opaquePixels": 2356,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    111,
+    136,
+    1157,
+    1166
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    111,
+    136,
+    97,
+    88
+  ],
+  "nearOpaquePixelCountGE240": 612309,
+  "diagnostic8pxErosion": {
+    "minAlpha": 40,
+    "pixelsBelow240": 22,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 581,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "7bd0870675e87ef9a23dd5d8040e3ffb9f441d9748bc9f57eaca3c6c0ce1ad81",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

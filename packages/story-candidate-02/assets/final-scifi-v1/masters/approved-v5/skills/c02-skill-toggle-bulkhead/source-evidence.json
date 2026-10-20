@@ -1,0 +1,77 @@
+{
+  "topicId": "c02-skill-toggle-bulkhead",
+  "assetId": "C02-SFV1-skill-toggle-bulkhead",
+  "label": "开闭舱门",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-toggle-bulkhead",
+    "topicId": "c02-skill-toggle-bulkhead",
+    "label": "开闭舱门",
+    "category": "skill",
+    "png": "runtime/skill/skill-toggle-bulkhead.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 3
+  },
+  "sourceIndexZeroBased": 27,
+  "sourceCropBox": [
+    939,
+    638,
+    1220,
+    892
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and then visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates identity. No alphabetical manifest slot inference was used.",
+  "functionalMotif": "Paired sci-fi bulkhead states: open cyan doorway with left arrow and sealed segmented door with orange right arrow.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": true,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-toggle-bulkhead.png",
+  "runtimeReferenceSha256": "164906dcccd08b4f2a2f2b173659dcd9bf5af1e59f3d97207ca162930368eaff",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup or pixel repainting.",
+  "legacyGridInsetCropBox": [
+    945,
+    632,
+    1249,
+    935
+  ],
+  "sourceCropBasis": "Visually verified full original card boundary on nonuniform board 02. Exact crops preserve all source card pixels without color or alpha edits.",
+  "legacyGridCropIssue": "Uniform quarter-grid extraction does not match the actual card bounds. The toggle-bulkhead legacy crop includes a cyan sliver from the lower-row gravity card; this contamination survives as a horizontal bar beneath the original runtime. The switch-rail legacy crop starts below its true top edge and omits upper rail portions. The preserved complete-card reference, not the legacy crop, is used for generation.",
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-afa4d6ee-b7c1-4654-ace5-e4d8e700adf7.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-toggle-bulkhead/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "semanticNotes": "The source shows two states of a bulkhead: a left open cyan doorway with a cyan left-pointing arrow, and a right sealed segmented door with an orange right-pointing arrow and circular locking hub. Both thick physical frames and their original directional contrast survive. The surrounding square wall/ground card is omitted by generation, and the neighboring-row cyan strip contaminating the old runtime is absent. The simplified opaque dark-teal interior indicates the open passage and keeps its arrow readable; it is intentional material inside the door silhouette.",
+  "native48Review": "diagnostic-native48/native48-white-black-olive.png",
+  "visualStyle": "Accepted chunky C02 broad matte planes and bold contour, using verified original skill identity and approved cargo-crate style-only input.",
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-toggle-bulkhead/master.png",
+  "sourceReady": true,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false
+}

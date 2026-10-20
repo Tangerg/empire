@@ -1,0 +1,77 @@
+{
+  "topicId": "c02-skill-switch-rail",
+  "assetId": "C02-SFV1-skill-switch-rail",
+  "label": "切换道岔",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-switch-rail",
+    "topicId": "c02-skill-switch-rail",
+    "label": "切换道岔",
+    "category": "skill",
+    "png": "runtime/skill/skill-switch-rail.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 4
+  },
+  "sourceIndexZeroBased": 28,
+  "sourceCropBox": [
+    34,
+    913,
+    315,
+    1193
+  ],
+  "sourceMappingEvidence": "Actual 48px runtime was inspected first and then visually matched by its functional subject to the complete high-resolution source board. Topic catalog independently corroborates identity. No alphabetical manifest slot inference was used.",
+  "functionalMotif": "A circular rail-switch hub at the intersection of curved rail branches, cyan left-turn arrow and orange right arrow.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": true,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-switch-rail.png",
+  "runtimeReferenceSha256": "335ceec02707bf13d204710a4e567aa7fc42797b607bfa5905d3ba4edc6ad695",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork remains unchanged; no chroma key, alpha cleanup or pixel repainting.",
+  "legacyGridInsetCropBox": [
+    5,
+    945,
+    309,
+    1249
+  ],
+  "sourceCropBasis": "Visually verified full original card boundary on nonuniform board 02. Exact crops preserve all source card pixels without color or alpha edits.",
+  "legacyGridCropIssue": "Uniform quarter-grid extraction does not match the actual card bounds. The toggle-bulkhead legacy crop includes a cyan sliver from the lower-row gravity card; this contamination survives as a horizontal bar beneath the original runtime. The switch-rail legacy crop starts below its true top edge and omits upper rail portions. The preserved complete-card reference, not the legacy crop, is used for generation.",
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-31fe17b8-afbc-4d09-8a61-6d111fdd870c.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-switch-rail/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "semanticNotes": "The original circular rail-switch hub, four splayed paired-rail branches, cyan left/down routing arrow, orange right arrow and selected orange upper-right rail are retained. The old square ground card is removed by generation. Sleeper and small bolt detail is reduced for the icon scale. This is the original functional rail-routing motif, not a new map topology.",
+  "native48Review": "diagnostic-native48/native48-white-black-olive.png",
+  "visualStyle": "Accepted chunky C02 broad matte planes and bold contour, using verified original skill identity and approved cargo-crate style-only input.",
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-switch-rail/master.png",
+  "sourceReady": true,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false
+}

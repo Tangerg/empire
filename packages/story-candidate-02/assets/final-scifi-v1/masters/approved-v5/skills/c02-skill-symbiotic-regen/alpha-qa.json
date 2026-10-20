@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-symbiotic-regen",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 951596,
+  "partialAlphaPixels": 617735,
+  "opaquePixels": 3185,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    116,
+    58,
+    1223,
+    1155
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    116,
+    58,
+    31,
+    99
+  ],
+  "nearOpaquePixelCountGE240": 595658,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 603,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "8e91f65c1ab2651ef8c774036c91a419b750d54af80493214484a12390b7b28c",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

@@ -1,0 +1,21 @@
+{
+  "topicId": "c02-skill-toggle-bulkhead",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, both door states and their opposing cyan/orange arrows remain distinct on white, black and olive. Source512 inspection confirms clean exterior transparency and no stray horizontal strip below the doors. The right source margin is 39px, narrower than the prompt target, while all components remain unclipped and the output retains its standard transparent padding.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}
