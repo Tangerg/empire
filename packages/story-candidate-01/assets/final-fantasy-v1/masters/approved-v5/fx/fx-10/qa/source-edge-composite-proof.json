@@ -1,0 +1,76 @@
+{
+  "sourceGate": "actual source perimeter alpha<=1; no cleanup",
+  "frames": [
+    {
+      "phase": "ripple-near",
+      "sourceSHA256": "44a36d9c6121fbaa00a3022834c5bb2db01dac5d5825616ccc4f060f87be9b7c",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 24,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maximumPerimeterChannelDifferenceFromBackground": 0
+        },
+        {
+          "background": "white",
+          "maximumPerimeterChannelDifferenceFromBackground": 1
+        }
+      ],
+      "visualReview": "No visible card, clipping, halo or fringe in full source black/white composites. Alpha1 quantization residue is retained unchanged."
+    },
+    {
+      "phase": "ripple-growing",
+      "sourceSHA256": "0412ee30988e3e7efe2ad016865bff324d0c2c4d1fa94e7460c39acebb9fa150",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maximumPerimeterChannelDifferenceFromBackground": 0
+        },
+        {
+          "background": "white",
+          "maximumPerimeterChannelDifferenceFromBackground": 0
+        }
+      ],
+      "visualReview": "No visible card, clipping, halo or fringe in full source black/white composites. Alpha1 quantization residue is retained unchanged."
+    },
+    {
+      "phase": "ripple-wide",
+      "sourceSHA256": "822d14a867c6d67fcfbda6bc819ac59663541468ef6aafdc0fdac1471823766f",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 3,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maximumPerimeterChannelDifferenceFromBackground": 0
+        },
+        {
+          "background": "white",
+          "maximumPerimeterChannelDifferenceFromBackground": 1
+        }
+      ],
+      "visualReview": "No visible card, clipping, halo or fringe in full source black/white composites. Alpha1 quantization residue is retained unchanged."
+    },
+    {
+      "phase": "ripple-renewal",
+      "sourceSHA256": "e83b91798ee676ec4a53fc441a8d67759fa75ebd95e55d450a487a01bff8c046",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 1,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maximumPerimeterChannelDifferenceFromBackground": 0
+        },
+        {
+          "background": "white",
+          "maximumPerimeterChannelDifferenceFromBackground": 1
+        }
+      ],
+      "visualReview": "No visible card, clipping, halo or fringe in full source black/white composites. Alpha1 quantization residue is retained unchanged."
+    }
+  ],
+  "nativePadding": "2 logical pixels alpha0 in all exports;4physical at2x",
+  "manualFullSourceBlackWhiteReviewed": true,
+  "manualNativeSixBackgroundsReviewed": true
+}

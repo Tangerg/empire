@@ -1,5 +1,5 @@
 {
-  "updatedUTC": "2026-10-20T04:42:00Z",
+  "updatedUTC": "2026-10-20T04:59:00Z",
   "counting": "Assignments do not imply completion; scope-ledger owns formal stages.",
   "historicalAssignments": [
     {
@@ -51,15 +51,31 @@
   "historicalAssignmentsAsOfUTC": "2026-10-19T16:26:25Z",
   "batches": [
     {
-      "family": "narrative-scenes",
+      "family": "supplemental-scenes",
       "current": [
-        "C01-CH05-S22",
-        "C01-CH05-S24",
-        "C01-CH06-S32",
-        "C01-CH07-S34",
-        "C01-CH07-S33-EST",
-        "C01-CH07-S36E"
-      ]
+        "C01-SCENE-ARCHIVE-FORGE-OPEN",
+        "C01-SCENE-NURSERY-DEBATE",
+        "C01-SCENE-OLD-FLAG-HOMECOMING",
+        "C01-SCENE-REFUGEE-BRIDGEWORK"
+      ],
+      "stage": "Raw reviewed; final metadata and binding queued behind frozen457 regression"
+    },
+    {
+      "family": "style-plates",
+      "assignments": {
+        "redraw_border_capital_styleplates": [
+          "C01-STYLE-BORDER-AUTUMN",
+          "C01-STYLE-CAPITAL-ORDER"
+        ],
+        "redraw_forge_nursery_debates": [
+          "C01-STYLE-ELDER-PEOPLES",
+          "C01-STYLE-KEYART"
+        ],
+        "redraw_homecoming_bridgework_scenes": [
+          "C01-STYLE-LONG-NIGHT",
+          "C01-STYLE-OATH-LIGHT"
+        ]
+      }
     },
     {
       "family": "ambient-fx",
@@ -67,13 +83,13 @@
         "C01-FX-09",
         "C01-FX-10"
       ],
-      "review": "FX09 current candidate passes alpha/timing but reset-cohort cadence repair planning; not formally bound. FX10 source generation underway."
+      "review": "FX09 revision2 contact-row/cadence correction underway; FX10 source quartet native/cohort review finishing; neither formally bound"
     },
     {
       "family": "integration-engineering",
       "current": [
-        "451-topic full regression",
-        "next reviewed narrative plates"
+        "frozen457 one-worker regression",
+        "next reviewed scene and ambient bindings"
       ],
       "completedFamilies": [
         "C01 character cards22/22",

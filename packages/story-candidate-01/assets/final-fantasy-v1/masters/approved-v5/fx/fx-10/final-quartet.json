@@ -1,0 +1,45 @@
+{
+  "topicId": "C01-FX-10",
+  "status": "source-alpha-export-and-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "ripple-near",
+    "ripple-growing",
+    "ripple-wide",
+    "ripple-renewal"
+  ],
+  "phases": [
+    {
+      "phase": "ripple-near",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-near/master.png",
+      "sha256": "44a36d9c6121fbaa00a3022834c5bb2db01dac5d5825616ccc4f060f87be9b7c"
+    },
+    {
+      "phase": "ripple-growing",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-growing/master.png",
+      "sha256": "0412ee30988e3e7efe2ad016865bff324d0c2c4d1fa94e7460c39acebb9fa150"
+    },
+    {
+      "phase": "ripple-wide",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-wide/master.png",
+      "sha256": "822d14a867c6d67fcfbda6bc819ac59663541468ef6aafdc0fdac1471823766f"
+    },
+    {
+      "phase": "ripple-renewal",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-renewal/master.png",
+      "sha256": "e83b91798ee676ec4a53fc441a8d67759fa75ebd95e55d450a487a01bff8c046"
+    }
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "qa": "qa/qa-metrics.json",
+  "caveats": "qa/COHORT-REVIEW.md"
+}

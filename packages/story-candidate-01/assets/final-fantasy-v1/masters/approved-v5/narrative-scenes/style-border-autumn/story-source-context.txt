@@ -1,0 +1,2671 @@
+SOURCE: packages/story-candidate-01/assets/final-fantasy-v1/ART-DIRECTION.md
+# 剧本一美术形象锁定
+
+这份文件只约束“长什么样”，题材数量与路径以 `manifest-final-fantasy-v1.json` 为准。
+
+## 总体语言
+
+剧本一采用卡通战术/塔防游戏语言：角色约 3–3.5 头身，头和手略大；单位缩小到 32×48 时仍须通过帽型、武器、姿态和色块识别职业。线条用深棕黑而非纯黑硬边；光影只保留一档阴影和一档小高光。金色仅用于誓火、登记和关键权限，不铺满盔甲。
+
+主色为灰蓝、旧钢、雨褐、苔绿、暗酒红和克制琥珀。场景可暗，但必须保留中间调和道路可读性；树林、墓园和长夜不能把人物吃进背景。
+
+## 阵营材料
+
+- 灰旗：灰蓝补丁布、普通铁、旧皮革、公开账册。
+- 洛恩：旧钢与少量暗酒红，封地军的实用修补痕迹。
+- 维尔萨：标准化海军蓝、奶白、暗酒红；整齐但不邪恶。
+- 圣辉：暖象牙、炭灰、琥珀灯；医疗与登记优先于神圣装饰。
+- 银林：鼠尾草绿、树皮褐、织物和木构件；避免无瑕白色贵族精灵。
+- 山炉：石灰、铁黑、克制琥珀；锻造工具与档案机构并存。
+- 荒原：风化土红、旧皮革、实用金属；呈现贸易、骑乘和专业劳动。
+- 归名亡者：灰布、姓名木牌、琥珀记忆灯；拒绝全员骷髅和蓝色幽灵模板。
+
+## 形象锚点
+
+- 莱娅 18 岁：灰蓝轻甲、初代破布旗、左手护腕；表情仍会犹疑。
+- 莱娅 22 岁：补丁灰旗、公开账册、简单开放式冠带；权力像工作而非血统。
+- 莱娅 27 岁：多方小布条、可拆期限扣、磨损披风；不使用帝王全套礼服。
+- 罗德里克：灰胡、旧钢、圆盾或实战剑；永远保持可信赖的正面轮廓。
+- 凯恩：矩形盾、制式甲、指挥棒；改革阶段通过拆除徽记和修补表现。
+- 米蕾尔：中年女性、名册、姓名牌、琥珀灯；不是年轻圣女。
+- 布兰：苇草箭、绳索、陷阱工具；不是贵族游侠。
+- 塔莎：账本、钥匙、扳手、补给标签；佣兵首领也是军需工程负责人。
+- 伊芙拉：赤石与灰岩色鳞片、聪明非人表情；各阶段均无永久鞍具。
+- 无旗者：多张普通人的脸、灰布和姓名牌叠成集体轮廓；没有王冠。
+
+## 资产级检查
+
+1. 去掉颜色后是否还能认出职业或阵营。
+2. 每个素材是否带有其剧情身份的专属物件，而非泛用奇幻模板。
+3. 缩至实际尺寸后线条是否闭合、剪影是否干净、重要道具是否仍可辨认。
+4. 战斗特效是否短促清楚，没有大面积高饱和光污染。
+5. 地图是否保持道路、可占位置、交互建筑与背景之间的明度层级。
+6. 是否误用了写实比例、厚涂质感、商业 IP 徽记或人物特征；任一出现即退回重画。
+
+
+
+SOURCE: docs/story-candidates/candidate-01/art-assets/01-art-direction.md
+# 确认《断冠之誓》的美术方向
+
+《断冠之誓》采用明亮、粗轮廓、夸张比例的俯视卡通战场风格。画面保留阴雨中世纪气氛，但不能让森林、道路、建筑和单位沉入黑色块面。
+
+## 使用这张基准图
+
+后续地图、建筑和单位以这张定稿样张为唯一视觉基准。定稿降低饱和度与塑料高光，保留粗描边和清晰的玩法层级：
+
+![《断冠之誓》统一风格样张](./reference/art-direction-map.png)
+
+样张只定义风格与信息层级，不是最终关卡地图。不要从样张裁切运行时素材，也不要复制其中未登记的临时构图。
+
+## 保持统一的视觉规则
+
+所有新素材遵循以下规则：
+
+- **轮廓**：单位、建筑和道路边缘使用稳定的深色描边
+- **明度**：森林使用松绿、蓝绿和苔绿分层，道路保持暖赭色，河流保持冷灰蓝
+- **比例**：人物头身与武器适度夸张，建筑比真实比例更矮更宽
+- **材质**：石材、湿木、金属和布料使用大块明暗面，不使用细碎噪点堆质感
+- **阵营色**：灰旗阵营使用银灰与暖琥珀，敌对誓军使用黑铁与受控红
+- **玩法层级**：道路、桥梁、建筑基座和单位轮廓在缩略图中仍能区分
+- **特效**：誓火、治疗灯与命中效果使用小面积高饱和色，不能覆盖单位轮廓
+
+## 保留剧本辨识度
+
+这套风格使用卡通战场的可读性，不复制任何既有游戏的角色、塔楼、界面或地图。原创辨识度来自灰旗、誓约烽塔、银林、山炉、亡者记忆和断冠战争。
+
+## 各类素材怎么画
+
+| 类别 | 视觉要求 |
+| --- | --- |
+| 地图 | 路线宽度清楚，三桥、河流与丘陵形成明确战术节点 |
+| 单位 | 先区分兵器与体型，再补阵营颜色和职业细节 |
+| 建筑 | 轮廓矮宽，入口、旗点、损坏态和占领态一眼可见 |
+| 物件 | 箱、盾墙、粮车、火盆和誓石保持单格识别度 |
+| 图标 | 先读形状，再读颜色；避免细线和写实缩略图 |
+| 场景 | 沿用卡通块面与粗描边，可以提高人物和环境细节 |
+
+
+SOURCE: docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md
+# 查询《断冠之誓》的完整资源题材
+
+本页列出《断冠之誓》全部 404 个资源题材及其稳定 ID。它是策划与美术的完整内容目录，不表示题材已经完成运行时生产或实机验收。
+
+## 使用题材目录
+
+策划使用 `topicId` 绑定关卡与剧情需求。美术在生产前锁定题材，程序使用运行时清单中的同名 `topicId` 接线。当前完成状态请查询 [当前库存](./03-runtime-inventory.md)。
+
+## 叙事静态图，共 80 项
+
+本节列出《断冠之誓》的全部叙事静态图题材：
+
+- `C01-CHAR-LEIA-01`：莱娅 18 岁见习旗官
+- `C01-CHAR-RODERICK-01`：罗德里克教程导师
+- `C01-CHAR-CAIN-01`：凯恩帝国敌将
+- `C01-CHAR-MIREL-01`：米蕾尔教廷守墓人
+- `C01-CHAR-BRAN-01`：布兰苇草村猎人
+- `C01-CHAR-TASHA-01`：塔莎佣兵首领
+- `C01-ARCH-REDSTONE`：赤石誓约烽塔
+- `C01-ARCH-GRAY-CAMP`：灰旗野战营
+- `C01-ARCH-THREE-BRIDGES`：三桥河谷
+- `C01-ARCH-SILVERWOOD`：银林树城
+- `C01-CH01-S05`：焚村后的第一面灰旗
+- `C01-CH01-S01`：双子丘陵初次指挥
+- `C01-CH02-S06`：白河夜渡
+- `C01-CH07-S33-EST`：七塔王城终局远景
+- `C01-PROP-FIRST-GREY-FLAG`：第一面灰旗
+- `C01-PROP-FREE-OATH-STONE`：自由誓石
+- `C01-PROP-CROWN-FRAGMENT`：誓约王冠碎片
+- `C01-PROP-DRAGON-ALLIANCE-CLASP`：巨龙盟约扣
+- `C01-PROP-LEFT-GLOVE`：莱娅左手护腕
+- `C01-PROP-EXILE-HARDTACK`：逃亡硬饼
+- `C01-PROP-CONTROL-FRAGMENT`：控制誓文残片
+- `C01-PROP-THREE-PEOPLES-CLASP`：三族盟约扣件
+- `C01-STYLE-KEYART`：莱娅面对王冠与多面军旗
+- `C01-STYLE-BORDER-AUTUMN`：灰境边境秋季视觉基准
+- `C01-STYLE-OATH-LIGHT`：誓火视觉语言
+- `C01-STYLE-LONG-NIGHT`：七塔长夜灰光
+- `C01-STYLE-ELDER-PEOPLES`：古老诸族文化并置
+- `C01-STYLE-CAPITAL-ORDER`：阿斯塔里亚王都秩序
+- `C01-CHAR-LEIA-02`：莱娅 22 岁灰旗女王
+- `C01-CHAR-LEIA-03`：莱娅 27 岁联盟统帅
+- `C01-CHAR-RODERICK-02`：罗德里克王冠军统帅
+- `C01-CHAR-IVRA-01`：伊芙拉幼龙
+- `C01-CHAR-IVRA-02`：伊芙拉青年龙
+- `C01-CHAR-IVRA-03`：伊芙拉成年指挥官
+- `C01-CHAR-CAIN-02`：凯恩独立改革军统帅
+- `C01-CHAR-BRAN-02`：布兰自由斥候指挥官
+- `C01-CHAR-MIREL-02`：米蕾尔最后誓约建立者
+- `C01-CHAR-NOBANNER-01`：无旗者不稳定聚忆体
+- `C01-CHAR-NOBANNER-02`：无旗者协调者
+- `C01-CHAR-SEVERIN`：摄政王塞维恩
+- `C01-CHAR-ADA-01`：艾达 8 岁桥上孩子
+- `C01-CHAR-ADA-02`：艾达 17 岁王都医师
+- `C01-CHAR-TORREN-01`：托伦北丘士兵
+- `C01-CHAR-TORREN-02`：托伦旧旗军官
+- `C01-CH01-S00`：罗德里克系护腕
+- `C01-CH01-S02`：三桥停火
+- `C01-CH02-S09`：伊芙拉断缰
+- `C01-CH03-S16`：无旗者形成
+- `C01-CH04-S19`：龙眠共同逃生
+- `C01-CH05-S24`：第一次命令后的安静
+- `C01-CH05-S26`：灰誓议会与灰夜
+- `C01-CH06-S32`：联盟失联后自行行动
+- `C01-CH07-S34`：万人跪拜之城
+- `C01-CH07-S36E`：最后议会与无骑龙影
+- `C01-CH03-S11`：墓园姓名木片
+- `C01-CH03-S14`：山炉共同修炉
+- `C01-CH05-S22`：安瑟尔秩序街道
+- `C01-CH06-S29`：最后誓约逐一确认
+- `C01-SCENE-PUBLIC-RATIONS`：灰旗营地公开分粮
+- `C01-SCENE-REFUGEE-BRIDGEWORK`：难民与工程师共同修桥
+- `C01-SCENE-NURSERY-DEBATE`：银林育儿屋争议
+- `C01-SCENE-ARCHIVE-FORGE-OPEN`：山炉档案炉开封
+- `C01-SCENE-OLD-FLAG-HOMECOMING`：旧旗士兵归乡
+- `C01-ARCH-TWIN-HILLS`：双子丘陵战斗地点
+- `C01-ARCH-VEINPORT`：维恩港三阶段治理区
+- `C01-ARCH-CAPITAL`：阿斯塔里亚王都
+- `C01-ARCH-LOAK-BAKERY`：洛岬玛尔塔面包房
+- `C01-ARCH-FORGE-CITY`：山炉炉城
+- `C01-ARCH-ANSEL-TOWER`：安瑟尔控制治疗塔
+- `C01-ARCH-BONE-TOWER`：白骨军塔
+- `C01-ARCH-FIELD-HOSPITAL`：圣辉野战医院
+- `C01-ARCH-MERCENARY-MARKET`：佣兵补给市集
+- `C01-ARCH-DRAGON-COVENANT-RUIN`：古龙盟约遗址
+- `C01-PROP-ADA-MEDICINE`：艾达双文字药瓶
+- `C01-PROP-IVRA-BROKEN-BRIDLE`：伊芙拉断裂缰具
+- `C01-PROP-EXPIRING-MANDATE`：可拆战时统帅期限扣
+- `C01-PROP-NAME-TAGS`：墓园活人木片与亡者姓名牌
+- `C01-PROP-CASUALTY-REGISTER`：普通士兵伤亡册
+- `C01-PROP-GRANARY-KEY`：三方共管粮仓钥匙
+- `C01-PROP-EVACUATION-MAP`：多语言撤离路线图
+
+## 战斗单位，共 40 项
+
+本节列出《断冠之誓》的全部战斗单位题材：
+
+- `C01-UNIT-SWORDSMAN`：剑士
+- `C01-UNIT-SPEARMAN`：枪兵
+- `C01-UNIT-ARCHER`：弓箭手
+- `C01-UNIT-CLERIC`：牧师
+- `C01-UNIT-ENGINEER`：工程师
+- `C01-UNIT-BANNER-GUARD`：旗卫
+- `C01-UNIT-LEGION-SHIELD`：军团盾卫
+- `C01-UNIT-SILVER-LONGBOW`：长弓守卫
+- `C01-UNIT-RUNE-ARTIFICER`：符文工匠
+- `C01-UNIT-WOLF-RIDER`：狼骑兵
+- `C01-UNIT-GRAVEKEEPER`：守墓人
+- `C01-UNIT-SKELETON-GUARD`：骸骨卫士
+- `C01-UNIT-RANGER`：游侠
+- `C01-UNIT-ASSASSIN`：刺客
+- `C01-UNIT-MAGE`：法师
+- `C01-UNIT-KNIGHT`：骑士
+- `C01-UNIT-BALLISTA`：弩车
+- `C01-UNIT-LANCE-CAVALRY`：长枪骑兵
+- `C01-UNIT-BATTLE-MAGE`：战斗法师
+- `C01-UNIT-EAGLE-SCOUT`：鹰骑斥候
+- `C01-UNIT-WOODLAND-WALKER`：林地行者
+- `C01-UNIT-DRUID`：德鲁伊
+- `C01-UNIT-WHITE-STAG-RIDER`：白鹿骑手
+- `C01-UNIT-RUNE-SHIELD`：符文盾卫
+- `C01-UNIT-AXE-BREAKER`：战斧兵
+- `C01-UNIT-STONE-GOLEM`：石魔像
+- `C01-UNIT-SHAMAN`：萨满
+- `C01-UNIT-JAVELIN-HUNTER`：投矛猎手
+- `C01-UNIT-HEAVY-KNIGHT`：重装骑士
+- `C01-UNIT-SPIRIT-FIRE`：灵火精怪
+- `C01-UNIT-CANNON-WAGON`：火炮车
+- `C01-UNIT-TROLL`：巨魔
+- `C01-UNIT-BERSERKER`：狂战士
+- `C01-UNIT-TEMPLAR`：圣殿骑士
+- `C01-UNIT-INQUISITOR`：审判官
+- `C01-UNIT-GHOST`：幽魂
+- `C01-UNIT-CEMETERY-COLOSSUS`：墓地巨像
+- `C01-UNIT-IVRA-GROWTH`：伊芙拉成长单位
+- `C01-UNIT-WYVERN-RIDER`：飞龙骑手
+- `C01-UNIT-ANCIENT-DRAGON`：古龙
+
+## 任务单位，共 24 项
+
+本节列出《断冠之誓》的全部任务单位题材：
+
+- `C01-MISSION-BORDER-FARMER`：边境农户
+- `C01-MISSION-REFUGEE-ADULT`：难民成人
+- `C01-MISSION-REFUGEE-CHILD`：难民儿童
+- `C01-MISSION-EVACUATION-DRIVER`：撤离车夫
+- `C01-MISSION-BAKER`：面包师
+- `C01-MISSION-MINER`：采矿工
+- `C01-MISSION-FORGE-ARTISAN`：炉城工匠
+- `C01-MISSION-BRIDGE-LABORER`：桥梁劳工
+- `C01-MISSION-RELIEF-COOK`：救济厨工
+- `C01-MISSION-CITY-DOCTOR`：城市医师
+- `C01-MISSION-WOUNDED`：伤员
+- `C01-MISSION-WALL-LABORER`：城墙劳工
+- `C01-MISSION-SCRIBE`：抄写员
+- `C01-MISSION-NAME-REGISTRAR`：姓名登记员
+- `C01-MISSION-COUNCIL-DELEGATE`：地方议会代表
+- `C01-MISSION-FIELD-MESSENGER`：战地传令员
+- `C01-MISSION-CARAVAN-ESCORT`：商团护运员
+- `C01-MISSION-CEMETERY-CARETAKER`：墓园看守
+- `C01-MISSION-TOWN-MILITIA`：城镇民兵
+- `C01-MISSION-MERCENARY-QUARTERMASTER`：佣兵军需员
+- `C01-MISSION-CONTROLLED-SOLDIER`：被控制的普通士兵
+- `C01-MISSION-RELEASED-VETERAN`：解除控制的退伍兵
+- `C01-MISSION-NURSERY-CARETAKER`：森林育儿屋照护者
+- `C01-MISSION-DETAINED-WITNESS`：被押证人
+
+## 阵营套件，共 12 项
+
+本节列出《断冠之誓》的全部阵营套件题材：
+
+- `C01-FACTION-LORNE`：洛恩王国装备基准
+- `C01-FACTION-VILSA`：维尔萨帝国装备基准
+- `C01-FACTION-HOLY-LIGHT`：圣辉教廷装备基准
+- `C01-FACTION-GRAY-BANNER`：灰旗自由领装备基准
+- `C01-FACTION-SILVERWOOD`：银林装备基准
+- `C01-FACTION-MOUNTAIN-FORGE`：山炉装备基准
+- `C01-FACTION-WASTELAND`：荒原诸部装备基准
+- `C01-FACTION-MILITIA-MERCENARY`：城市民兵与佣兵装备基准
+- `C01-FACTION-DRAGON-COVENANT`：巨龙盟约装备基准
+- `C01-FACTION-OATH-CONTROLLED`：誓文受控态基准
+- `C01-FACTION-NAMED-DEAD`：归名亡者态基准
+- `C01-FACTION-LATE-ALLIANCE`：后期联盟态基准
+
+## 地形，共 32 项
+
+本节列出《断冠之誓》的全部地形题材：
+
+- `C01-TERRAIN-BORDER-1`：晒麦农田
+- `C01-TERRAIN-BORDER-2`：雨泥道路
+- `C01-TERRAIN-BORDER-3`：焦土农田
+- `C01-TERRAIN-BORDER-4`：难民车辙
+- `C01-TERRAIN-RIVER-1`：河岸
+- `C01-TERRAIN-RIVER-2`：浅水
+- `C01-TERRAIN-RIVER-3`：桥头地面
+- `C01-TERRAIN-RIVER-4`：断桥边缘
+- `C01-TERRAIN-CAPITAL-1`：城墙步道
+- `C01-TERRAIN-CAPITAL-2`：王都街道
+- `C01-TERRAIN-CAPITAL-3`：医院区地面
+- `C01-TERRAIN-CAPITAL-4`：宫城地面
+- `C01-TERRAIN-SILVERWOOD-1`：普通林地
+- `C01-TERRAIN-SILVERWOOD-2`：母树根区
+- `C01-TERRAIN-SILVERWOOD-3`：育儿屋边缘
+- `C01-TERRAIN-SILVERWOOD-4`：隐蔽草丛
+- `C01-TERRAIN-FORGE-1`：炉城石地
+- `C01-TERRAIN-FORGE-2`：熔沟
+- `C01-TERRAIN-FORGE-3`：符文地面
+- `C01-TERRAIN-FORGE-4`：档案炉区
+- `C01-TERRAIN-WASTELAND-1`：风蚀土
+- `C01-TERRAIN-WASTELAND-2`：岩坡
+- `C01-TERRAIN-WASTELAND-3`：部族营地
+- `C01-TERRAIN-WASTELAND-4`：风暴危险区
+- `C01-TERRAIN-GRAVEYARD-1`：普通墓碑地
+- `C01-TERRAIN-GRAVEYARD-2`：记名区
+- `C01-TERRAIN-GRAVEYARD-3`：污染地
+- `C01-TERRAIN-GRAVEYARD-4`：归名净化区
+- `C01-TERRAIN-OATHLIGHT-1`：普通节点地
+- `C01-TERRAIN-OATHLIGHT-2`：誓文受控区
+- `C01-TERRAIN-OATHLIGHT-3`：失联区
+- `C01-TERRAIN-OATHLIGHT-4`：自由誓石区
+
+## 交互建筑，共 24 项
+
+本节列出《断冠之誓》的全部交互建筑题材：
+
+- `C01-STRUCT-GRAY-FLAG-POINT`：灰旗旗点
+- `C01-STRUCT-LORNE-KEEP`：洛恩堡垒据点
+- `C01-STRUCT-OATH-TOWER-CONSOLE`：誓约塔控制台
+- `C01-STRUCT-CAPITAL-GATE`：王都宫门
+- `C01-STRUCT-JOINT-GRANARY`：三方共管粮仓
+- `C01-STRUCT-FORGE-WORKSHOP`：山炉工坊
+- `C01-STRUCT-HOLY-MEDICINE-SHED`：圣辉药棚
+- `C01-STRUCT-MERCENARY-DEPOT`：佣兵补给仓
+- `C01-STRUCT-THREE-BRIDGE-SPAN`：三桥桥段
+- `C01-STRUCT-SUNKEN-BELL-SLUICE`：沉钟水闸
+- `C01-STRUCT-WALL-LIFT-GATE`：城墙升降门
+- `C01-STRUCT-OLD-CITY-TUNNEL`：旧城地道口
+- `C01-STRUCT-REPAIRABLE-GATE`：可修城门
+- `C01-STRUCT-BALLISTA-EMPLACEMENT`：弩车部署位
+- `C01-STRUCT-FORGE-GUN-POSITION`：山炉炮位
+- `C01-STRUCT-WASTELAND-CHEVAUX`：荒原拒马
+- `C01-STRUCT-FIELD-HOSPITAL`：圣辉野战医院
+- `C01-STRUCT-REFUGEE-SHELTER`：难民避难棚
+- `C01-STRUCT-PUBLIC-RATION-POINT`：公开分粮点
+- `C01-STRUCT-WOUNDED-SHELTER`：伤兵棚
+- `C01-STRUCT-ARCHIVE-FURNACE`：山炉档案炉
+- `C01-STRUCT-NAME-MEMORIAL`：墓园姓名碑
+- `C01-STRUCT-GRAY-OATH-NOTICE`：灰誓公开告示
+- `C01-STRUCT-MILITARY-REGISTRY`：军籍登记点
+
+## 战场物件，共 32 项
+
+本节列出《断冠之誓》的全部战场物件题材：
+
+- `C01-BPROP-COVER-1`：木箱堆
+- `C01-BPROP-COVER-2`：临时盾墙
+- `C01-BPROP-COVER-3`：风蚀岩
+- `C01-BPROP-COVER-4`：翻倒粮车
+- `C01-BPROP-HAZARD-1`：油桶与火盆
+- `C01-BPROP-HAZARD-2`：攻城火药
+- `C01-BPROP-HAZARD-3`：失控誓石
+- `C01-BPROP-HAZARD-4`：亡者污染残片
+- `C01-BPROP-LOGISTICS-1`：粮袋车
+- `C01-BPROP-LOGISTICS-2`：水桶架
+- `C01-BPROP-LOGISTICS-3`：备件架
+- `C01-BPROP-LOGISTICS-4`：战地药箱
+- `C01-BPROP-ENGINEERING-1`：木桩
+- `C01-BPROP-ENGINEERING-2`：量绳
+- `C01-BPROP-ENGINEERING-3`：桥板
+- `C01-BPROP-ENGINEERING-4`：修塔脚手架
+- `C01-BPROP-LIFE-1`：营地炊具
+- `C01-BPROP-LIFE-2`：难民床铺
+- `C01-BPROP-LIFE-3`：议会折叠桌
+- `C01-BPROP-LIFE-4`：晾晒衣物
+- `C01-BPROP-EVIDENCE-1`：伤亡名册
+- `C01-BPROP-EVIDENCE-2`：公开告示
+- `C01-BPROP-EVIDENCE-3`：军籍牌
+- `C01-BPROP-EVIDENCE-4`：商团货单
+- `C01-BPROP-FACTION-1`：灰旗组
+- `C01-BPROP-FACTION-2`：洛恩盾标
+- `C01-BPROP-FACTION-3`：维尔萨道路牌
+- `C01-BPROP-FACTION-4`：圣辉状态灯
+- `C01-BPROP-AFTERMATH-1`：焦木废墟
+- `C01-BPROP-AFTERMATH-2`：弃械堆
+- `C01-BPROP-AFTERMATH-3`：伤员分区
+- `C01-BPROP-AFTERMATH-4`：共同修复痕迹
+
+## 装备，共 48 项
+
+本节列出《断冠之誓》的全部装备题材：
+
+- `C01-EQUIP-SWORDSMAN`：剑士主装备
+- `C01-EQUIP-SPEARMAN`：枪兵主装备
+- `C01-EQUIP-ARCHER`：弓箭手主装备
+- `C01-EQUIP-CLERIC`：牧师主装备
+- `C01-EQUIP-ENGINEER`：工程师主装备
+- `C01-EQUIP-BANNER-GUARD`：旗卫主装备
+- `C01-EQUIP-LEGION-SHIELD`：军团盾卫主装备
+- `C01-EQUIP-SILVER-LONGBOW`：长弓守卫主装备
+- `C01-EQUIP-RUNE-ARTIFICER`：符文工匠主装备
+- `C01-EQUIP-WOLF-RIDER`：狼骑兵主装备
+- `C01-EQUIP-GRAVEKEEPER`：守墓人主装备
+- `C01-EQUIP-SKELETON-GUARD`：骸骨卫士主装备
+- `C01-EQUIP-RANGER`：游侠主装备
+- `C01-EQUIP-ASSASSIN`：刺客主装备
+- `C01-EQUIP-MAGE`：法师主装备
+- `C01-EQUIP-KNIGHT`：骑士主装备
+- `C01-EQUIP-BALLISTA`：弩车主装备
+- `C01-EQUIP-LANCE-CAVALRY`：长枪骑兵主装备
+- `C01-EQUIP-BATTLE-MAGE`：战斗法师主装备
+- `C01-EQUIP-EAGLE-SCOUT`：鹰骑斥候主装备
+- `C01-EQUIP-WOODLAND-WALKER`：林地行者主装备
+- `C01-EQUIP-DRUID`：德鲁伊主装备
+- `C01-EQUIP-WHITE-STAG-RIDER`：白鹿骑手主装备
+- `C01-EQUIP-RUNE-SHIELD`：符文盾卫主装备
+- `C01-EQUIP-AXE-BREAKER`：战斧兵主装备
+- `C01-EQUIP-STONE-GOLEM`：石魔像主装备
+- `C01-EQUIP-SHAMAN`：萨满主装备
+- `C01-EQUIP-JAVELIN-HUNTER`：投矛猎手主装备
+- `C01-EQUIP-HEAVY-KNIGHT`：重装骑士主装备
+- `C01-EQUIP-SPIRIT-FIRE`：灵火精怪主装备
+- `C01-EQUIP-CANNON-WAGON`：火炮车主装备
+- `C01-EQUIP-TROLL`：巨魔主装备
+- `C01-EQUIP-BERSERKER`：狂战士主装备
+- `C01-EQUIP-TEMPLAR`：圣殿骑士主装备
+- `C01-EQUIP-INQUISITOR`：审判官主装备
+- `C01-EQUIP-GHOST`：幽魂主装备
+- `C01-EQUIP-CEMETERY-COLOSSUS`：墓地巨像主装备
+- `C01-EQUIP-IVRA-GROWTH`：伊芙拉成长单位主装备
+- `C01-EQUIP-WYVERN-RIDER`：飞龙骑手主装备
+- `C01-EQUIP-ANCIENT-DRAGON`：古龙主装备
+- `C01-EQUIP-FIELD-MEDICAL-KIT`：战地治疗包
+- `C01-EQUIP-BRIDGE-TOWER-TOOLS`：桥塔工程包
+- `C01-EQUIP-LONG-RANGE-SCOUT-KIT`：长距侦察包
+- `C01-EQUIP-QUARTERMASTER-SUPPLY-KIT`：军需补给包
+- `C01-EQUIP-ANTI-LARGE-KIT`：反大型破甲包
+- `C01-EQUIP-ANTI-OATH-GEAR`：抗誓文护具
+- `C01-EQUIP-MOBILITY-GEAR`：涉水攀岩机动具
+- `C01-EQUIP-EVIDENCE-SEAL-KIT`：证据封存交互包
+
+## 技能，共 48 项
+
+本节列出《断冠之誓》的全部技能题材：
+
+- `C01-SKILL-01`：占领
+- `C01-SKILL-02`：护卫
+- `C01-SKILL-03`：反骑
+- `C01-SKILL-04`：射击
+- `C01-SKILL-05`：侦察
+- `C01-SKILL-06`：背刺
+- `C01-SKILL-07`：治疗
+- `C01-SKILL-08`：净化
+- `C01-SKILL-09`：破甲术
+- `C01-SKILL-10`：冲锋
+- `C01-SKILL-11`：修复
+- `C01-SKILL-12`：指挥延伸
+- `C01-SKILL-13`：灰旗共誓
+- `C01-SKILL-14`：洛恩封地援护
+- `C01-SKILL-15`：维尔萨盾墙
+- `C01-SKILL-16`：道路急行
+- `C01-SKILL-17`：银林隐蔽
+- `C01-SKILL-18`：林地再生
+- `C01-SKILL-19`：山炉符文加固
+- `C01-SKILL-20`：荒原风暴鼓舞
+- `C01-SKILL-21`：圣辉照明盾
+- `C01-SKILL-22`：归名唤醒
+- `C01-SKILL-23`：自由之翼
+- `C01-SKILL-24`：誓文拒绝
+- `C01-SKILL-25`：架桥
+- `C01-SKILL-26`：拆桥
+- `C01-SKILL-27`：修塔
+- `C01-SKILL-28`：切断控制
+- `C01-SKILL-29`：部署弩车
+- `C01-SKILL-30`：架设炮位
+- `C01-SKILL-31`：清理污染
+- `C01-SKILL-32`：开启地道
+- `C01-SKILL-33`：战地补给
+- `C01-SKILL-34`：分粮
+- `C01-SKILL-35`：急救
+- `C01-SKILL-36`：抬运伤员
+- `C01-SKILL-37`：公开伤亡
+- `C01-SKILL-38`：权限确认
+- `C01-SKILL-39`：地方动员
+- `C01-SKILL-40`：撤离引导
+- `C01-SKILL-41`：双旗推进
+- `C01-SKILL-42`：右侧交给你
+- `C01-SKILL-43`：最后誓约
+- `C01-SKILL-44`：旧誓新答
+- `C01-SKILL-45`：白鹿穿林
+- `C01-SKILL-46`：符文过载
+- `C01-SKILL-47`：亡者归名
+- `C01-SKILL-48`：古龙盟约
+
+## 状态，共 24 项
+
+本节列出《断冠之誓》的全部状态题材：
+
+- `C01-STATUS-01`：中毒
+- `C01-STATUS-02`：沉默
+- `C01-STATUS-03`：护卫
+- `C01-STATUS-04`：誓文受控
+- `C01-STATUS-05`：溃退
+- `C01-STATUS-06`：隐蔽
+- `C01-STATUS-07`：风暴暴露
+- `C01-STATUS-08`：受伤
+- `C01-STATUS-09`：资金
+- `C01-STATUS-10`：粮秣
+- `C01-STATUS-11`：弹药
+- `C01-STATUS-12`：士气
+- `C01-STATUS-13`：誓约权限
+- `C01-STATUS-14`：工程材料
+- `C01-STATUS-15`：补给
+- `C01-STATUS-16`：地方支持
+- `C01-STATUS-17`：占领目标
+- `C01-STATUS-18`：护送目标
+- `C01-STATUS-19`：撤离目标
+- `C01-STATUS-20`：救援目标
+- `C01-STATUS-21`：维修目标
+- `C01-STATUS-22`：破坏目标
+- `C01-STATUS-23`：守时目标
+- `C01-STATUS-24`：证据送达
+
+## 特效，共 24 项
+
+本节列出《断冠之誓》的全部特效题材：
+
+- `C01-FX-01`：斩击
+- `C01-FX-02`：穿刺
+- `C01-FX-03`：箭矢命中
+- `C01-FX-04`：钝击
+- `C01-FX-05`：普通火焰
+- `C01-FX-06`：琥珀誓火
+- `C01-FX-07`：攻城碎屑
+- `C01-FX-08`：亡者记忆冲击
+- `C01-FX-09`：秋雨
+- `C01-FX-10`：河流浅水
+- `C01-FX-11`：荒原强风
+- `C01-FX-12`：山炉热浪
+- `C01-FX-13`：焦土余火
+- `C01-FX-14`：墓园污染
+- `C01-FX-15`：银林灵火
+- `C01-FX-16`：七塔灰光
+- `C01-FX-17`：治疗
+- `C01-FX-18`：受控
+- `C01-FX-19`：隐蔽
+- `C01-FX-20`：援护盾
+- `C01-FX-21`：结构受损
+- `C01-FX-22`：工程修复
+- `C01-FX-23`：塔网失联
+- `C01-FX-24`：据点占领
+
+## 界面标记，共 16 项
+
+本节列出《断冠之誓》的全部界面标记题材：
+
+- `C01-HUD-01`：友军
+- `C01-HUD-02`：敌军
+- `C01-HUD-03`：中立
+- `C01-HUD-04`：可招降
+- `C01-HUD-05`：主目标
+- `C01-HUD-06`：次要目标
+- `C01-HUD-07`：护送目标
+- `C01-HUD-08`：危险区域
+- `C01-HUD-09`：补给点
+- `C01-HUD-10`：治疗点
+- `C01-HUD-11`：工程交互
+- `C01-HUD-12`：可破坏结构
+- `C01-HUD-13`：可修复结构
+- `C01-HUD-14`：增援入口
+- `C01-HUD-15`：撤离出口
+- `C01-HUD-16`：多阵营权限争议点
+
+
+SOURCE: docs/story-candidates/candidate-01/deep-customized/09-static-assets.md
+# 《断冠之誓》静态素材定制清单
+
+正式素材放在 `../assets`。编号与深化稿一致。`P0` 为首批关键演出，`P1` 为完整主线，`P2` 为支线与氛围。
+
+## 0. 已同步素材对接
+
+现有文件继续保留美术侧命名，剧本用稳定编号引用。当前范围、规格和验收见[美术与素材入口](../ART-ASSETS.md)，原始 HD 映射保留在 `manifest-hd.json`。`draft-v1/` 不进入游戏构建。
+
+| 已同步文件 | 深化编号 | 使用状态 |
+| --- | --- | --- |
+| `laiya-18-portrait-hd.png` | `C01-CHAR-LEIA-01` | 正式质量标杆，可直接对接第一章 |
+| `roderick-portrait-hd.png` | `C01-CHAR-RODERICK-01` | 正式质量标杆 |
+| `kain-portrait-hd.png` | `C01-CHAR-CAIN-01` | 正式质量标杆；保留素材侧 `kain` 拼法 |
+| `mirelle-portrait-hd.png` | `C01-CHAR-MIREL-01` | 正式质量标杆 |
+| `redstone-oath-tower-hd.png` | `C01-ARCH-REDSTONE` | 正式质量标杆，可扩写受损与控制节点态 |
+| `gray-banner-field-camp-hd.png` | `C01-ARCH-GRAY-CAMP` | 正式质量标杆；营帐、泥沟、补给与指挥区可直接拆成地块语义 |
+| `gray-flag-over-burned-village-hd.png` | `C01-CH01-S05` | 对应灰旗诞生；后续补人物近景和湿面粉灭火细节 |
+| `twin-hills-first-command-hd.png` | `C01-CH01-S01` | 对应双子丘陵首次独立指挥，已把抢麦、抢高地和支援断裂放入同一镜头 |
+| `bran-portrait-hd.png` / `bran-walk-sheet-hd.png` | `C01-CHAR-BRAN-01` | 正式头像与四帧单位；短弩、修靴工具、焦痕护腕和幸存者名袋已统一 |
+| `tasha-portrait-hd.png` / `tasha-walk-sheet-hd.png` | `C01-CHAR-TASHA-01` | 正式头像与四帧单位；账本、筹绳、靴牌、工程工具和黄褐军需轮廓已统一 |
+| `three-bridges-river-valley-hd.png` | `C01-ARCH-THREE-BRIDGES` | 三条分流与三种桥制清楚可数；中桥保留难民通行、白布停火和修复痕迹 |
+| `silverwood-tree-city-hd.png` | `C01-ARCH-SILVERWOOD` | 银皮母树、生活步道、空育儿亭和人类边缘屋已进入同一地点立绘 |
+| `white-river-night-crossing-hd.png` | `C01-CH02-S06` | 对应白河夜渡；粮车、工具车、伤员车和布兰浅滩引路均可在目标尺寸辨认 |
+| `seven-towers-at-dusk-hd.png` | `C01-CH07-S33-EST` | 王都终局建立远景；严格保留七座可数主塔、正常运行的城市与多旗联军 |
+| `campaign-props-sheet-02-hd.png` | `C01-PROP-LEFT-GLOVE` / `C01-PROP-EXILE-HARDTACK` / `C01-PROP-CONTROL-FRAGMENT` / `C01-PROP-THREE-PEOPLES-CLASP` | 四格固定顺序：莱娅左手护腕、逃亡硬饼、控制誓文残片、三族盟约扣件；无可读文字与现成纹章 |
+
+## 1. 风格基准 `assets/style`
+
+| 优先级 | 文件名 | 内容 | 要求 |
+| --- | --- | --- | --- |
+| P0 | `C01-STYLE-KEYART.png` | 莱娅面对王冠与多面军旗 | 王冠在远处，前景是可拆盟约扣，避免天选女王构图 |
+| P0 | `C01-STYLE-BORDER-AUTUMN.png` | 灰境边境 | 农田、桥、烟与军旗并存，先有人居后有奇幻 |
+| P0 | `C01-STYLE-OATH-LIGHT.png` | 誓火视觉语言 | 意志、名字、见证三层纹理，控制誓文需明显失去拒绝层 |
+| P0 | `C01-STYLE-LONG-NIGHT.png` | 七塔灰光 | 灰白、低温、局部设施过亮，避免普通黑暗末日 |
+| P1 | `C01-STYLE-ELDER-PEOPLES.png` | 多族文化并置 | 不用统一中世纪欧洲模板 |
+| P1 | `C01-STYLE-CAPITAL-ORDER.png` | 王冠王都 | 整洁、安全、秩序真实吸引人，同时保留同步跪拜不安 |
+
+## 2. 角色阶段 `assets/characters`
+
+| 优先级 | 文件名 | 阶段 | 关键提示 |
+| --- | --- | --- | --- |
+| P0 | `C01-CHAR-LEIA-01.png` | 18 岁见习旗官 | 蓝灰轻甲、护腕穿戴痕迹、无个人纹章 |
+| P0 | `C01-CHAR-LEIA-02.png` | 22 岁灰旗女王 | 多族扣件、龙翼徽记开始个人化、左肩伤痕 |
+| P0 | `C01-CHAR-LEIA-03.png` | 27 岁联盟统帅 | 无王冠，多旗纹披风，装备偏指挥与防护 |
+| P0 | `C01-CHAR-RODERICK-01.png` | 教程导师 | 旧旗、左手手套、实用老骑士装 |
+| P0 | `C01-CHAR-RODERICK-02.png` | 王冠军统帅 | 同一装备老化，不做邪恶黑甲 |
+| P0 | `C01-CHAR-IVRA-01.png` | 幼龙 | 明确受伤与警惕，不做可爱宠物比例 |
+| P0 | `C01-CHAR-IVRA-02.png` | 青年龙 | 可骑乘但无永久鞍具 |
+| P0 | `C01-CHAR-IVRA-03.png` | 成年独立指挥官 | 自有盟约标识，无骑手与缰绳 |
+| P1 | `C01-CHAR-CAIN-01.png` | 帝国敌将 | 军屯出身、标准化军装、印章袋 |
+| P1 | `C01-CHAR-CAIN-02.png` | 独立改革军统帅 | 保留帝国旗，不改穿灰旗制服 |
+| P1 | `C01-CHAR-BRAN-01.png` | 苇草村猎人 | 修靴工具、猎具、无刺客贵族感 |
+| P1 | `C01-CHAR-BRAN-02.png` | 自由斥候指挥官 | 保留村庄布条与幸存者名单袋 |
+| P1 | `C01-CHAR-MIREL-01.png` | 教廷守墓人 | 工整名册、净化印、克制宗教装 |
+| P1 | `C01-CHAR-MIREL-02.png` | 最后誓约建立者 | 净化印拆分为公共工具 |
+| P1 | `C01-CHAR-TASHA-01.png` | 佣兵首领 | 靴牌、账本、工程工具 |
+| P1 | `C01-CHAR-NOBANNER-01.png` | 不稳定聚忆体 | 多轮廓、多嘴型、拒绝单一骷髅王模板 |
+| P1 | `C01-CHAR-NOBANNER-02.png` | 协调者 | 仍保留复数差异，不变成正常单人幽灵 |
+| P1 | `C01-CHAR-SEVERIN.png` | 摄政王 | 朴素政治服、疲惫、无享乐暴君符号 |
+| P2 | `C01-CHAR-ADA-01.png` | 桥上 8 岁孩子 | 双文字药瓶 |
+| P2 | `C01-CHAR-ADA-02.png` | 王都医师 | 两国标签习惯、塔疗手套 |
+| P2 | `C01-CHAR-TORREN-01.png` | 北丘士兵 | 腿伤与旧洛恩装备 |
+| P2 | `C01-CHAR-TORREN-02.png` | 旧旗军官 | 罗德里克手套保管者 |
+
+## 3. 关键场景 `assets/scenes`
+
+| 优先级 | 文件名 | 场景 | 构图重点 |
+| --- | --- | --- | --- |
+| P0 | `C01-CH01-S00.png` | 罗德里克系护腕 | 亲密通过手部动作表达 |
+| P0 | `C01-CH01-S02.png` | 三桥停火 | 两军放平武器，平民穿过，远处无标弩车 |
+| P0 | `C01-CH01-S05.png` | 灰旗诞生 | 烟熏旗布、湿面粉灭火、撤离村民 |
+| P0 | `C01-CH02-S09.png` | 伊芙拉断缰 | 幼龙、断链、三类物资车 |
+| P0 | `C01-CH03-S16.png` | 无旗者形成 | 多种姓名与军旗碎片，不做单一 Boss 站姿 |
+| P0 | `C01-CH04-S19.png` | 龙眠共同逃生 | 骑乘发生在撤离动作中，不做驯龙加冕 |
+| P0 | `C01-CH05-S24.png` | 第一次命令后的安静 | 医师、士兵、平民、亡者同时停止动作 |
+| P0 | `C01-CH05-S26.png` | 灰誓议会与灰夜 | 多厅代表、防守、七塔灰光同框 |
+| P0 | `C01-CH06-S32.png` | 联盟失联后自行行动 | 四战区独立完成目标 |
+| P0 | `C01-CH07-S34.png` | 万人跪拜之城 | 医院与粮仓正常运作，街道同步跪拜 |
+| P0 | `C01-CH07-S36E.png` | 最后议会与无骑龙影 | 吵闹议会在内，伊芙拉独飞在外 |
+| P1 | `C01-CH02-S07.png` | 洛岬三方治理 | 粮仓、城门、面包房三角关系 |
+| P1 | `C01-CH03-S11.png` | 墓园姓名木片 | 活人腰牌与亡者碑名呼应 |
+| P1 | `C01-CH03-S14.png` | 山炉共同修炉 | 对立派别共同守结构节点 |
+| P1 | `C01-CH04-S17.png` | 白旗会议混战 | 代表保留独立旗帜，不围绕莱娅排布 |
+| P1 | `C01-CH05-S22.png` | 安瑟尔秩序街道 | 安全、医疗、跪拜三种感受并存 |
+| P1 | `C01-CH06-S29.png` | 最后誓约 | 个体亡者逐一确认，不做大军宣誓 |
+| P1 | `C01-CH07-S33.png` | 王都多旗破城 | 城墙挂多面旗，视觉刻意不统一 |
+
+## 4. 建筑与地点 `assets/architecture`
+
+| 优先级 | 文件名 | 地点 | 变体要求 |
+| --- | --- | --- | --- |
+| P0 | `C01-ARCH-TWIN-HILLS.png` | 双子丘陵 | 第 0 年晒麦版、第 4 年纪念石版 |
+| P0 | `C01-ARCH-THREE-BRIDGES.png` | 三桥河谷 | 难民停火、后期修复痕迹 |
+| P0 | `C01-ARCH-REDSTONE.png` | 赤石堡垒与塔 | 控制节点、观察营、王都回声变体 |
+| P0 | `C01-ARCH-VEINPORT.png` | 维恩港 | 起义、治理危机、议会三阶段 |
+| P0 | `C01-ARCH-CAPITAL.png` | 阿斯塔里亚王都 | 外城三路、内城功能、王宫中枢 |
+| P1 | `C01-ARCH-LOAK-BAKERY.png` | 洛岬玛尔塔面包房 | 逃亡硬饼、繁荣灰翼饼、粮荒价牌 |
+| P1 | `C01-ARCH-FORGE-CITY.png` | 山炉炉城 | 熔炉、档案炉、可修结构 |
+| P1 | `C01-ARCH-SILVERWOOD.png` | 银林 | 育儿屋、母树、人类边缘村庄 |
+| P1 | `C01-ARCH-ANSEL-TOWER.png` | 跪下的城市 | 控制、治疗、净水线路可视拆分 |
+| P1 | `C01-ARCH-BONE-TOWER.png` | 白骨军塔 | 姓名索引、个体确认区 |
+
+## 5. 道具 `assets/props`
+
+| 优先级 | 文件名 | 用途 |
+| --- | --- | --- |
+| P0 | `C01-PROP-LEFT-GLOVE.png` | 师徒关系与旧旗终战回扣 |
+| P0 | `C01-PROP-ADA-MEDICINE.png` | 两国文字、桥上孩子与王都医师 |
+| P0 | `C01-PROP-FIRST-GREY-FLAG.png` | 烟熏旧布、未拆净蓝线 |
+| P0 | `C01-PROP-IVRA-BROKEN-BRIDLE.png` | 自由跟随与控制差异 |
+| P0 | `C01-PROP-BROKEN-DRAGON-CLASP.png` | 第一次王冠命令后盟约破裂 |
+| P0 | `C01-PROP-EXPIRING-MANDATE.png` | 可拆战时统帅期限扣 |
+| P1 | `C01-PROP-NAME-TAGS.png` | 墓园活人木片与亡者姓名 |
+| P1 | `C01-PROP-RETURNED-TRUE-NAME.png` | 不可朗诵的古龙真名载体 |
+| P1 | `C01-PROP-MERCENARY-BOOTS.png` | 塔莎抚恤与身份凭证 |
+| P1 | `C01-PROP-BREAD-PRICE-BOARD.png` | 九年粮价生活线 |
+| P1 | `C01-PROP-GREY-OATH-ARTICLES.png` | 可质疑、退出、公开伤亡规则 |
+| P1 | `C01-PROP-FREE-OATH-STONES.png` | 多形状、互相制约、不可组合为王冠 |
+
+## 6. 首批建议出图
+
+1. `C01-STYLE-KEYART`
+2. `C01-CHAR-LEIA-01`
+3. `C01-CHAR-LEIA-03`
+4. `C01-CHAR-RODERICK-01`
+5. `C01-CHAR-IVRA-01`
+6. `C01-CHAR-IVRA-03`
+7. `C01-CH01-S05`
+8. `C01-CH04-S19`
+9. `C01-CH05-S24`
+10. `C01-CH07-S34`
+11. `C01-CH07-S36E`
+12. `C01-PROP-LEFT-GLOVE`
+
+## 7. 视觉禁区
+
+- 不把莱娅画成隐藏王族或天选女王
+- 不让伊芙拉长期佩戴鞍、缰绳或灰旗纹章
+- 不把精灵统一画成高贵白衣，把荒原诸部统一画成野蛮兽群
+- 不把亡者全部画成骷髅或蓝色透明人
+- 不用黑化铠甲表达罗德里克、凯恩等理念变化
+- 不让王冠一眼就是邪恶尖刺，应当庄严、实用、令人信任
+- 灰誓结局不做安静大一统画面，保留多旗、多语言和争吵的视觉复杂性
+
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/00-narrative-bible.md
+# 《断冠之誓》小说化叙事总控
+
+## 1. 叙事视角
+
+正文以第三人称近距离视角为主。读者只知道当前视角人物能看见、想起或推断的事情，不使用全知旁白提前裁定谁正确。
+
+莱娅承担约七成篇幅。其余视角只在莱娅缺席，或她无法理解某项代价时切换：
+
+- 罗德里克视角展示关爱怎样变成控制，但不提前泄露全部政治选择
+- 凯恩视角展示帝国秩序的生活来源，而非给他安排自辩演说
+- 布兰视角保存受害者记忆与追责压力
+- 米蕾尔视角展示姓名、回声与“安息”的恐惧
+- 伊芙拉不使用完整内心独白，其意志继续通过感官、距离和动作呈现
+
+视角只在章节或明确空行后切换，不在同一段落跳入多人内心。
+
+## 2. 文体
+
+文体采用克制的政治奇幻现实感：
+
+- 环境先写使用痕迹，再写宏伟外观
+- 魔法先改变人的身体和声音，再产生光效
+- 战争先写路线、疲劳、误认和秩序崩坏，再写英雄动作
+- 对白保留停顿、回避、听错与未说完的话
+- 角色不替作品总结主题
+- 重要决定通过物件与动作落地
+
+避免连续使用抽象词。能写“罗德里克把门从外面锁上”，便不写“罗德里克选择了秩序”。
+
+## 3. 时间与语速
+
+战斗前放慢，让读者认识即将被破坏的生活。战斗中缩短句子，清楚交代空间与选择。战斗后再次放慢，但不复述胜利，而写伤员、名单、食物、建筑和称谓发生了什么。
+
+九年跨度通过回访形成：同一双靴、同一面旗、同一间面包房、同一个药瓶与同一张名单，在不同年份承担不同意义。
+
+## 4. 正史选择
+
+为保证小说连续性，正文采用以下主线：
+
+- 莱娅在双子丘陵冒进，托伦受伤，罗德里克救场
+- 莱娅接受三桥停火并与凯恩共同保护平民
+- 赤石先关闭控制节点，奥伦保留姓名
+- 黑旗营分兵救人取证，莱娅公开违令
+- 苇草村拒绝焚村，原洛恩部队尽量不互杀
+- 伊芙拉不受绑定，龙盟建立后仍保有离开权
+- 凯恩与布兰达到有限和解，不互相原谅
+- 莱娅在第五章使用第一次王冠命令
+- 灰誓议会建立限期统帅与碎片共管
+- 七塔战争中独立军团不重新服从莱娅个人
+- 终章拆分王冠，保留有代价的公共功能
+
+正史路线不是“每次选择最善良”。它经常更慢、更贵，也会因分兵、延误和制度试验导致额外伤亡。
+
+## 5. 每关小说化要求
+
+每关对应一个能够独立阅读的叙事单元，并完成五件事：
+
+1. 给角色一件眼前必须处理的具体事情
+2. 让至少两人对同一事实有不同需要
+3. 让战斗改变原定计划
+4. 让胜利留下不能立刻修复的现实结果
+5. 把一项动作或物件带入下一关
+
+正文不显示关卡变量与素材编号。相关内容统一放在附录。
+
+## 6. 角色语言
+
+莱娅早期说话快，经常抢着把责任揽到自己身上。她成熟后不会更擅长演讲，而会更能承受沉默和别人不按她的答案行动。
+
+罗德里克越强硬，语气越平静。他很少否认代价，只坚持有人必须决定。
+
+凯恩在情绪激烈时会把称谓说得更正式，以程序保护自己。
+
+布兰从脚印、天气、伤口、食物和姓名说起。别人越抽象，他越具体。
+
+米蕾尔在害怕时会重复完整姓名和仪式步骤。她的成长不是少记，而是允许修改痕迹留下。
+
+塔莎用数字表达感情。她不说“我舍不得”，只会保留一笔没有收件人的抚恤。
+
+伊芙拉只在必须避免误解时说短句。多数时候，让它移动、等待、推回或咬断某件东西。
+
+## 7. 主题禁区
+
+- 不把王冠写成让人发疯的邪物
+- 不用隐藏血统赋予莱娅合法性
+- 不让普通人天然支持“自由”路线
+- 不让受害者负责原谅加害者
+- 不把共管写成所有人团结按下同一个按钮
+- 不用旁白宣布某种结局正确
+- 不让巨龙、亡者或古老种族替人类给出最终答案
+
+## 8. 章节连续性
+
+七章必须读成一部长篇，而不是七份任务合集。每个章缝遵守以下规则：
+
+- 上一章最后出现的声音、物件、伤口、去向或未答问题，必须成为下一章开场的感官入口
+- 新章不复述上一章结论，人物通过继续搬运、治疗、争吵或赶路带出旧后果
+- 身份变化要先由旁人称谓和手续体现，再由章节标题确认
+- 时间跳跃前先留下一个持续动作，跳跃后再展示同一动作怎样改变
+- 每章至少有一条人物关系冲突不在章末解决，直接进入下一章
+- 新地点必须由上一地点的缺口推动，例如缺粮推动进入洛岬，洛岬制度不足推动远征诸族
+- 章节结尾避免“他们踏上新的旅程”式总结，改用具体下一步已经开始的动作
+
+同一章内的五至六场主线战斗也要形成连续因果。前一场失去的车、粮、证人或信任，会成为下一场的开场条件，不能在地图切换后自动恢复。
+
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md
+# 连续性与静态素材接口
+
+正文连续性以“物件继续被使用”为第一原则。素材位于 `../assets`，当前制作规范见[美术与素材入口](../ART-ASSETS.md)。本文件不改素材名，只把小说正文与稳定编号对齐。
+
+## 七章接缝与主画面
+
+| 章节 | 开场继续处理 | 章末交给下一章 | 主素材接口 |
+| --- | --- | --- | --- |
+| 一 | 罗德里克替莱娅系旧护腕，撤退线折在地图外层 | 莱娅尚不会让不服从她的人共同过冬，白河声逼近 | `C01-CH01-S00`、`C01-CH01-S05`、`C01-PROP-LEFT-GLOVE` |
+| 二 | 白河水声盖住人名，第一章撤退直接变成夜渡 | 新麦面包带炉灰，墓园道路穿过罗德里克未封山道 | `C01-CH02-S06`、`C01-ARCH-LOAK-BAKERY`、`C01-PROP-EXILE-HARDTACK` |
+| 三 | 活人先把姓名挂在腰间，才能进入无声墓园 | 多族邀请同袋出发，座位之争先于会议抵达 | `C01-CH03-S11`、`C01-CH03-S16`、`C01-PROP-NAME-TAGS` |
+| 四 | 第一封回信先争谁坐哪里 | 众人习惯等莱娅决定，安瑟尔请求用王冠免去争论 | `C01-CH04-S17`、`C01-CH04-S19`、`C01-PROP-IVRA-BROKEN-BRIDLE` |
+| 五 | 安瑟尔使者离开控制区后才敢说明代价 | 临时统帅期限开始流沙计时，第一场雪落下 | `C01-CH05-S22`、`C01-CH05-S24`、`C01-PROP-EXPIRING-MANDATE` |
+| 六 | 雪先封路，议会尚未形成完整答案 | 多旗军队进入王都，跪着的人同时抬头 | `C01-CH06-S29`、`C01-CH06-S32`、`C01-CH07-S33-EST` |
+| 七 | 王都居民抬头后仍然跪着 | 莱娅移开剑手，让争论继续；伊芙拉无骑手飞过 | `C01-CH07-S34`、`C01-CH07-S36E`、`C01-PROP-FREE-OATH-STONES` |
+
+## 静态素材连续性硬约束
+
+- 莱娅左手护腕从学徒期保留到终章，磨损、修补和拆卸痕迹只增不减。
+- 第一面灰旗保留烟熏、湿面粉和未拆净的蓝线，不在后期自动变成整洁王旗。
+- 伊芙拉幼年可出现临时救援鞍具，成年阶段不得有永久鞍、缰绳或灰旗纹章。
+- 玛尔塔面包房需保留同一烤炉、价牌与模具，让面包大小和价格承担九年时间变化。
+- 七塔始终可数为七座；终章城市必须仍在正常运作，压迫感来自同步行为，不来自废墟滤镜。
+- 议会构图保持多旗、多语言和互相打断，人物不围绕莱娅作臣服式放射排布。
+
+## 小说版新增取景重点
+
+现有素材已覆盖主战役。若补小说插图，优先补三类近景：罗德里克从外侧锁门的手、第一次王冠命令后断裂的龙盟扣、终章莱娅把手从旧剑移到空白记录纸。三张图分别承担关爱变控制、胜利损关系、统帅让出最后发言权，不另造新神物。
+
+## 九万字扩写后的补图优先级
+
+以下只定义构图，不新增或重编现有稳定素材：
+
+1. **白河湿面份额板**：玛尔塔在木板上反复刮改发热、伤员与儿童份额，费尔的未见遗体记录与药瓶余量夹在同一本湿名册中。
+2. **伊芙拉撑住南门**：龙爪压住落闸，受伤者从木齿下被拖出，城内守卫将弓放地；不把它画成接受征用的城市守护兽。
+3. **归名者灰灯营地**：白木名牌、灰灯、空盘换成的轻木席位与活人帐篷分区同框；强调共居边界，不做亡灵大军奇观。
+4. **金缰绳假画与草绳**：一面是《女王驯服古龙》的畅销复制画，一面是孩子脖上的草绳红痕和只画三名获救者的画角；表现个人神话怎样进入日常。
+5. **王冠命令四张登记桌**：受阻动作、得救人员、未登记平民行为与“不确定”四桌并列，石匠徒弟的靴放在莱娅面前；画面不给出“值得”的英雄结论。
+
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+.campaign-root {
+  --campaign-blue: #4d86b8;
+  --campaign-gold: #d7aa50;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: #f6ead2;
+  background:
+    radial-gradient(circle at 50% -20%, rgb(100 120 102 / 34%), transparent 42%),
+    linear-gradient(145deg, #1c1713, #0e0c0b 72%);
+  font-variant-numeric: tabular-nums;
+}
+
+.campaign-topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: grid;
+  grid-template-columns: 48px minmax(180px, 1fr) minmax(140px, 280px);
+  align-items: center;
+  gap: 12px;
+  min-height: 66px;
+  padding: 8px 20px;
+  border-bottom: 1px solid rgb(232 197 129 / 22%);
+  background: rgb(24 18 14 / 92%);
+  box-shadow: 0 5px 18px rgb(0 0 0 / 34%);
+  backdrop-filter: blur(14px);
+}
+
+.campaign-topbar > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.campaign-topbar span {
+  color: #bba88b;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.campaign-topbar strong {
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+}
+
+.campaign-icon-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(232 197 129 / 18%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 4%);
+  color: #ead8b8;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 25%), 0 3px 8px rgb(0 0 0 / 22%);
+  font: 28px/1 Georgia, serif;
+  cursor: pointer;
+  transition: background 140ms ease, transform 90ms ease, border-color 140ms ease;
+}
+
+.campaign-icon-button:hover {
+  border-color: rgb(232 197 129 / 42%);
+  background: rgb(255 255 255 / 8%);
+}
+
+.campaign-icon-button:active,
+.campaign-primary:active,
+.choice-option:active {
+  transform: scale(0.96);
+}
+
+/*
+ * A road with its stages marked, not an empty pill.
+ *
+ * The fill is zero wide at the start of a campaign, so what a player saw on the
+ * first screen was a wide empty capsule with `0/16` floating in it — a number with
+ * nothing to be a fraction *of*. The track is divided by the campaign's own battle
+ * count now, so before anything is done it already reads as sixteen stages of road.
+ */
+.campaign-progress {
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+  border: 1px solid rgb(232 197 129 / 16%);
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(100% / var(--segments) - 1px),
+      rgb(232 197 129 / 14%) calc(100% / var(--segments) - 1px),
+      rgb(232 197 129 / 14%) calc(100% / var(--segments))
+    ),
+    rgb(255 255 255 / 5%);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 38%);
+}
+
+.campaign-progress i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--progress) * 100%);
+  background: linear-gradient(90deg, #355f82, var(--campaign-blue));
+  box-shadow: 2px 0 9px rgb(78 140 186 / 48%);
+  transition: width 320ms ease;
+}
+
+.campaign-progress b {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff4dc;
+  font-size: 12px;
+  text-shadow: 0 1px 3px #000;
+}
+
+.campaign-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 10px 20px;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 58%, transparent);
+  border-radius: 10px;
+  /*
+   * The same warm accent every other primary action wears.
+   *
+   * This was `linear-gradient(#5b91ba, #3f7097)` — the one blue call-to-action in
+   * the game, and blue is a *side's* colour here (`TEAM_COLORS[0]`), so "advance
+   * the story" was painted in the player faction's identity. Bigger than a `.btn`
+   * on purpose: this is the only thing to press on a story screen, and it is a
+   * screen with no HUD around it.
+   */
+  background: linear-gradient(color-mix(in srgb, var(--accent) 88%, #fff 12%), var(--accent));
+  color: #2a1809;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 32%), 0 5px 13px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 26%);
+  font: 600 14px/1 inherit;
+  cursor: pointer;
+  transition: filter 140ms ease, transform 90ms ease, box-shadow 140ms ease;
+}
+
+.campaign-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 35%), 0 7px 18px rgb(0 0 0 / 40%), inset 0 1px rgb(255 255 255 / 24%);
+}
+
+.campaign-eyebrow {
+  color: #e2bb69;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Story presentation */
+
+.story-screen {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: calc(100vh - 66px);
+  place-items: end center;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 68px);
+}
+
+/*
+ * The place every campaign screen happens in.
+ *
+ * This was `.story-backdrop`, drawn by the story screen alone, so a choice and a
+ * result were a card on a flat gradient — the campaign alternated between a
+ * painted place and a bare dialog about it. `shell` draws it for every screen
+ * now, from the beat's own scene where there is one and the chapter's plate
+ * otherwise.
+ */
+.campaign-backdrop {
+  position: fixed;
+  z-index: 0;
+  inset: 66px 0 0;
+}
+
+.campaign-backdrop::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(180deg, rgb(8 7 6 / 8%) 0%, rgb(8 7 6 / 46%) 52%, rgb(8 7 6 / 88%) 100%),
+    radial-gradient(circle at 50% 30%, transparent 20%, rgb(9 7 5 / 30%) 100%);
+}
+
+.campaign-backdrop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.campaign-backdrop-wash {
+  opacity: 0.72;
+  filter: blur(18px) saturate(0.7);
+  transform: scale(1.08);
+}
+
+.campaign-backdrop-art {
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.story-card {
+  position: relative;
+  width: min(1050px, 100%);
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid rgb(236 205 145 / 28%);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgb(40 30 23 / 96%), rgb(22 17 14 / 97%)),
+    repeating-linear-gradient(90deg, transparent 0 19px, rgb(255 255 255 / 2%) 19px 20px);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 36%), 0 18px 55px rgb(0 0 0 / 56%), inset 0 1px rgb(255 255 255 / 6%);
+  animation: campaign-card-in 300ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  color: #d6ba89;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.story-card h1,
+.choice-card h1,
+.staging-hero h1,
+.result-card h1 {
+  margin: 8px 0;
+  font-family: 'Songti SC', 'STSong', 'Noto Serif CJK SC', serif;
+  font-weight: 700;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.story-card h1 {
+  font-size: clamp(28px, 4vw, 48px);
+}
+
+.story-summary {
+  max-width: 760px;
+  margin: 0 0 16px;
+  color: #c9bba6;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.mission-brief {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1px;
+  overflow: hidden;
+  margin: 17px 0;
+  border: 1px solid rgb(213 177 106 / 20%);
+  border-radius: 12px;
+  background: rgb(0 0 0 / 28%);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 38%);
+}
+
+.mission-brief > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 76px;
+  padding: 12px 14px;
+  background: rgb(255 255 255 / 3%);
+}
+
+.mission-brief small,
+.result-detail small {
+  color: #d7aa50;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.mission-brief span,
+.mission-brief b {
+  color: #dbcdb8;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.dialogue-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: end;
+  gap: 18px;
+  min-height: 110px;
+  margin-top: 14px;
+  animation: campaign-dialogue-in 220ms ease-out both;
+}
+
+.dialogue-row.narration {
+  grid-template-columns: 1fr;
+}
+
+.dialogue-portrait {
+  width: 92px;
+  height: 112px;
+  object-fit: cover;
+  object-position: 50% 18%;
+  border: 1px solid rgb(225 192 126 / 30%);
+  border-radius: 12px;
+  background: #18130f;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 45%), 0 7px 18px rgb(0 0 0 / 44%);
+  outline: 1px solid rgb(255 255 255 / 10%);
+  outline-offset: -2px;
+  image-rendering: auto;
+}
+
+.dialogue-copy {
+  min-height: 100px;
+  padding: 17px 20px;
+  border: 1px solid rgb(239 207 150 / 19%);
+  border-radius: 14px;
+  background: rgb(8 7 6 / 45%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 3%);
+}
+
+.dialogue-copy small {
+  color: #e7bd68;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.dialogue-copy p {
+  margin: 7px 0 0;
+  color: #f4e8d2;
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.story-actions,
+.staging-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.beat-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.beat-dots i {
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 15%);
+  transition: background 160ms ease;
+}
+
+.beat-dots i.active {
+  background: var(--campaign-gold);
+}
+
+/* Choices */
+
+.choice-screen,
+.result-screen {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: calc(100vh - 66px);
+  place-items: center;
+  padding: clamp(24px, 6vw, 72px);
+}
+
+.choice-card,
+.result-card {
+  width: min(980px, 100%);
+  padding: clamp(26px, 5vw, 52px);
+  border: 1px solid rgb(218 182 112 / 22%);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #2c211a, #1b1511);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 36%), 0 20px 60px rgb(0 0 0 / 48%), inset 0 1px rgb(255 255 255 / 5%);
+  animation: campaign-card-in 300ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.choice-card h1,
+.result-card h1 {
+  max-width: 760px;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.choice-card > p,
+.result-card > p {
+  max-width: 760px;
+  color: #c7b8a3;
+  line-height: 1.7;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.choice-option {
+  position: relative;
+  min-height: 190px;
+  padding: 22px;
+  border: 1px solid rgb(224 190 124 / 19%);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgb(255 255 255 / 6%), rgb(255 255 255 / 2%));
+  color: #eee1cb;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 24%), 0 8px 20px rgb(0 0 0 / 24%);
+  text-align: left;
+  cursor: pointer;
+  animation: campaign-option-in 260ms calc(var(--index) * 65ms) ease-out both;
+  transition: border-color 150ms ease, background 150ms ease, transform 90ms ease, box-shadow 150ms ease;
+}
+
+.choice-option:hover {
+  border-color: rgb(225 188 115 / 58%);
+  background: linear-gradient(145deg, rgb(91 134 165 / 18%), rgb(255 255 255 / 4%));
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 24%), 0 12px 26px rgb(0 0 0 / 30%);
+}
+
+.choice-number {
+  color: #806c51;
+  font: 700 11px/1.3 ui-monospace, monospace;
+}
+
+.choice-option strong {
+  display: block;
+  margin-top: 7px;
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 22px;
+}
+
+.choice-option p {
+  margin: 9px 0 15px;
+  color: #c7b9a5;
+  line-height: 1.55;
+}
+
+.choice-option small {
+  color: #d8ad5c;
+}
+
+.choice-note {
+  margin: 18px 0 0;
+  font-size: 12px;
+}
+
+/* Staging and result */
+
+.staging-screen {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 52px;
+}
+
+.staging-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.92fr) 1fr;
+  min-height: 245px;
+  overflow: hidden;
+  border: 1px solid rgb(228 193 126 / 23%);
+  border-radius: 18px;
+  background: #251c16;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 33%), 0 14px 36px rgb(0 0 0 / 40%);
+}
+
+.staging-hero--text-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.staging-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid rgb(228 193 126 / 20%);
+  outline: 1px solid rgb(255 255 255 / 8%);
+  outline-offset: -1px;
+  image-rendering: auto;
+}
+
+.staging-hero > div {
+  align-self: center;
+  padding: 34px;
+}
+
+.staging-hero h1 {
+  font-size: clamp(30px, 4vw, 48px);
+}
+
+.staging-hero p {
+  color: #c8b8a1;
+  line-height: 1.65;
+}
+
+.staging-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.campaign-panel {
+  padding: 22px;
+  border: 1px solid rgb(225 190 123 / 17%);
+  border-radius: 14px;
+  background: rgb(44 33 26 / 82%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 25%), 0 8px 20px rgb(0 0 0 / 23%);
+}
+
+.campaign-panel h2 {
+  margin: 0 0 14px;
+  font: 700 16px/1.2 'Songti SC', 'STSong', serif;
+}
+
+.roster-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.campaign-unit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 3%);
+}
+
+/*
+ * The two things a roster row shows a unit as, at one size.
+ *
+ * An authored card is an `<img>`; a unit without one gets a plate holding the
+ * portrait drawn from its own sheet, which is a `<span>` around an inline `<svg>`.
+ * They share a box — and only the box: `object-fit` and `object-position` are how
+ * a *replaced* element crops its content, so on the plate they were two
+ * declarations that could never do anything.
+ */
+.campaign-unit img,
+.campaign-unit-plate {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(220 185 118 / 20%);
+  border-radius: 8px;
+  background: #1a1511;
+  outline: 1px solid rgb(255 255 255 / 8%);
+  outline-offset: -1px;
+  image-rendering: auto;
+}
+
+/* Framed on the face, which only the picture that has one can be. */
+.campaign-unit img {
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+/*
+ * The plate a unit without an authored card is shown on.
+ *
+ * It was `.unit-fallback`, which was true when what went in it was a `◆`. What
+ * goes in it is the unit's own portrait, drawn from the sheet the board stands it
+ * on — a name that says "fallback" invites the next reader to treat it as one.
+ */
+.campaign-unit-plate {
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+}
+
+/* The sprite portrait fills its plate, the way an authored one does. */
+.campaign-unit-plate svg {
+  width: 100%;
+  height: 100%;
+}
+
+.campaign-unit div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.campaign-unit b {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.campaign-unit small {
+  color: #ad9e89;
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  gap: 8px 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgb(0 0 0 / 20%);
+}
+
+.resource-row span {
+  color: #ae9f8a;
+}
+
+.resource-row b {
+  color: #e2b961;
+}
+
+.relation-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.relation-list > div {
+  display: grid;
+  grid-template-columns: 84px 1fr 30px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.relation-list i {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7d4b43 0 50%, #477e6c 50% 100%);
+}
+
+.relation-list i::after {
+  display: block;
+  width: calc(var(--relation) * 100%);
+  height: 100%;
+  background: #e1b45e;
+  content: '';
+}
+
+.staging-actions {
+  margin-top: 20px;
+}
+
+.staging-actions > span {
+  color: #a99a86;
+  font-size: 12px;
+}
+
+.result-card {
+  text-align: center;
+}
+
+.result-card > p {
+  margin-inline: auto;
+}
+
+.result-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  margin: 28px 0 18px;
+  border: 1px solid rgb(226 190 121 / 18%);
+  border-radius: 14px;
+  background: rgb(0 0 0 / 20%);
+}
+
+.result-metrics > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 18px 12px;
+  border-right: 1px solid rgb(255 255 255 / 7%);
+}
+
+.result-metrics > div:last-child {
+  border-right: 0;
+}
+
+.result-metrics b {
+  color: #e2b961;
+  font-size: 28px;
+}
+
+.result-metrics span {
+  color: #a99a86;
+  font-size: 11px;
+}
+
+.result-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.result-detail > div {
+  padding: 14px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 3%);
+}
+
+.result-detail p {
+  margin: 5px 0 0;
+  color: #d4c6b2;
+}
+
+@keyframes campaign-card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.992); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes campaign-dialogue-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes campaign-option-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+  .campaign-topbar { grid-template-columns: 44px 1fr; padding-inline: 10px; }
+  .campaign-progress { display: none; }
+  .story-screen { padding: 16px; }
+  .story-card { border-radius: 14px; }
+  .mission-brief, .choice-grid, .staging-grid, .staging-hero, .result-detail { grid-template-columns: 1fr; }
+  .dialogue-row { grid-template-columns: 64px 1fr; gap: 10px; }
+  .dialogue-portrait { width: 64px; height: 88px; }
+  .story-actions, .staging-actions { align-items: stretch; flex-direction: column; }
+  .campaign-primary { width: 100%; }
+  .staging-screen { width: min(100% - 24px, 1120px); padding-top: 18px; }
+  .staging-hero img { max-height: 220px; border-right: 0; border-bottom: 1px solid rgb(228 193 126 / 20%); }
+  .roster-list { grid-template-columns: 1fr; }
+  .result-metrics { grid-template-columns: repeat(2, 1fr); }
+  .result-metrics > div:nth-child(2) { border-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-card, .dialogue-row, .choice-option, .choice-card, .result-card { animation: none; }
+  .campaign-progress i, .campaign-icon-button, .campaign-primary, .choice-option { transition-duration: 0.01ms; }
+}
+
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md
+# 第一章：边境之火
+
+罗德里克第三次拆开她的护腕时，天还没有亮。
+
+营火被夜雨浇得只剩一圈暗红，湿木在火心里嘶嘶作响。士兵们把斗篷搭在长枪上烘，烟贴着地面散开，比寒气更会钻衣缝。莱娅站在火边，左手已经被皮带勒得发白，仍不肯承认那道结打错了。
+
+“我握得住剑。”她说。
+
+“你昨晚握的是木剑。”
+
+罗德里克没有抬头。他蹲在托伦面前，正用两根手指掰开年轻士兵的鞋底。补线已经裂了，湿泥从缝里挤出来。托伦想把脚缩回去，被他按住鞋尖。
+
+“谁补的？”罗德里克问。
+
+“我，长官。”
+
+“所以我才问。”
+
+周围响起几声压得很低的笑。托伦红着脸脱下靴子，脚后跟已经磨破，袜子和血痂粘在一起。罗德里克叫来军需兵，让他换一双大半号的新靴，这才走到莱娅面前。
+
+他伸出左手。那只手戴着一只磨得发亮的旧手套，拇指根部补过三次。
+
+莱娅把手藏到身后。“我会系。”
+
+“你会系紧。不是一回事。”
+
+罗德里克没有再伸手。他只是等着。远处的军旗被风吹得扑响，像有人在黑暗里反复抖一张湿床单。莱娅终于把手递过去。
+
+他松开护带，绕过腕骨，重新打了一个能单手扯开的结。
+
+“受伤的时候，”他说，“另一只手未必有空救你。”
+
+“你总要留一条退路。”
+
+“留给整支队伍，不是只留给指挥官。”
+
+“我不会先走。”
+
+罗德里克看了她一眼。“这正是我担心的。”
+
+斥候在这时冲进营地。他的披风沾满苍耳，右脸被树枝刮出一道长口子。维尔萨的先遣队已经越过界碑，正沿着东坡向双子丘陵中央的村庄前进。雾里能确认的只有四十人，后面是否还有军队，谁也说不准。
+
+罗德里克接过军报，只看了一遍便递给莱娅。纸被他折成四层，最外面露出的不是敌军位置，而是西坡撤路。
+
+“你的第一次独立指挥。”他说，“我的骑兵留在西坡。除非你发信号，否则不动。”
+
+莱娅盯着地图。双子丘陵像两只并排扣在地上的碗，中央村庄落在碗沿之间。谁先占住北丘，谁就能俯射整条大道。她在训练场上做过十几次同样的判断，每一次答案都是抢高地。
+
+“北丘队由谁带？”她问。
+
+“我。”托伦已经换好新靴，走路时还有些不习惯，“见习官。”
+
+他没有叫她长官。几名士兵低头整理箭囊，耳朵却都朝着这边。
+
+莱娅本可以纠正他。她也知道第一次带队时若容忍称谓含混，下一道命令就会更难落地。可托伦的脚踝仍露在裤管下面，磨破处刚缠上布。她忽然觉得，逼他叫一声长官，比让他相信她更容易。
+
+“把鞋带松一格。”她说，“你带北丘队。”
+
+托伦点头，没改称呼。
+
+罗德里克把军报塞进她的地图袋。“你可以犯错。”
+
+“今天最好别犯。”
+
+“这是第一处错误。”
+
+他走向自己的骑兵。莱娅很想问第二处是什么，号角却已经响了。
+
+太阳升起时，丘间的雾还没有散。中央村庄的人正在收晒麦布，一个老人跪在水沟里，一粒一粒捡昨夜被雨打散的麦子。地图上那只是一枚占领标记，真正走近以后，莱娅才发现村口太窄，两辆粮车并排就能把路堵死。谷仓边还拴着羊，孩子抱着木盆来回跑，没人知道军队会从哪边冲进来。
+
+托伦指向雾中的北丘。“现在上去，帝国人得仰着打。”
+
+“斥候只看见四十人。”
+
+“所以更该抢。他们若有后队，也得从东坡绕。”
+
+“村里还有人。”
+
+托伦看了一眼那些不肯离开院子的村民。“昨夜叫他们走，他们不肯开门。总不能让整条大道为十七户人停下。”
+
+他的判断没有错。正因为没有错，莱娅更想在罗德里克看见之前把高地拿下来。
+
+她命托伦提前上丘，自己带主队进村疏散。托伦转身时，新靴在泥里滑了一下。他很快站稳，装作没人看见。
+
+北丘队消失在雾里不到一刻钟，第一声金属撞击便从坡后传来。
+
+不是零散接敌。盾牌撞在一起的声音密得像有人在山后砌墙。莱娅冲上村中瞭望台，雾恰好被风撕开一道口子。两排维尔萨盾卫从反坡站起，托伦的小队卡在石墙与枪阵之间，退路已经被第二队人截断。
+
+那四十名先遣兵不是来占村的。他们是放在雾里的钉子，等洛恩军自己撞上去。
+
+莱娅点燃通讯誓火。火光在指间闪了两次，北丘岩层阻断了大半声音。
+
+“托伦，退到石墙。”
+
+杂音里传来他的喘息。“下坡会把背面留给枪兵。”
+
+“那就守到我来。”
+
+“你离这里四百步。”
+
+一面洛恩小旗从北丘顶端倒下，没入雾里。
+
+村妇就在这时从谷仓冲出来，手里举着一张通行纸。纸上盖着维尔萨军印，写的却是洛恩军昨夜焚毁东侧农庄，要村民立即向西逃。莱娅怀中的军令则说维尔萨越境屠村，命令日期与它一模一样。
+
+“你们都说是对面先来。”村妇抓住她披风，“我们该往哪边死？”
+
+莱娅的手已经摸到预备队信号筒。只要点燃，罗德里克就会进场。那意味着她第一次独立指挥要靠导师收尾，也意味着村庄会失去唯一的后援。
+
+她看见北丘上又一人倒下。
+
+火筒在她手中亮起，红烟越过雾顶。
+
+马蹄声很快从西坡传来。罗德里克没有冲向敌军中央。他带骑士从最窄的缝隙切进枪阵与撤路之间，先给北丘队撕开一道能走人的口子。托伦被一具尸体压住半条腿，还在用盾牌替身后的弓手挡枪。
+
+罗德里克下马，把尸体推开。“左脚能踩地吗？”
+
+“能。”
+
+“名字。”
+
+托伦怔了怔。“托伦·维斯。”
+
+“我知道。我要确认你还知道。”
+
+他把托伦交给骑士，随后接入莱娅的通讯誓火。声音依旧平稳，听不出责骂。
+
+“预备队已经投入。中央村庄现在没有后援。”
+
+“我守得住。”
+
+“先守。解释留到死人不会再增加的时候。”
+
+莱娅把假通行纸塞进胸甲，带主队堵住村口。维尔萨前锋并没有趁乱冲击民居，他们只想抢下道路。这个发现本该让她松口气，却让战场变得更难理解。若敌人不是来屠村的，那么是谁让两国都相信对方已经动手？
+
+战斗持续到午后。洛恩军最终守住村庄，也夺下北丘。胜利号吹响时，村民没有出来看。他们用木板钉住窗户，像是不管哪面旗留在村口，晚上都还会有另一支军队来。
+
+谷仓改成了伤兵处。麦粒黏在血湿的地面，踩上去会发出细碎的裂声。托伦靠墙坐着，新靴已经被军医割开，脚踝肿得像塞了一只拳头。
+
+莱娅拿着伤亡册走到他面前。
+
+“北丘队七人。两人阵亡，三人受伤。”
+
+“我会数。”托伦没有看她。
+
+“命令是我下的。”
+
+“高地也拿到了。”
+
+“你想让我说值得？”
+
+“我想知道考核上怎么写。”
+
+伤亡册下面夹着预写的军报格式。上面已经留好一句话：北丘队牵制成功，骑士预备队及时接应。句子没有一个字是假，却把她的冒进擦得干干净净。
+
+莱娅拿起笔，在后面补了一行：见习旗官莱娅·维恩命北丘队提前推进，导致该队脱离支援。
+
+“写了。”她把纸转向托伦。
+
+“谁会看？”
+
+“王都军务处。”
+
+“他们会因为这行字把人还回来？”
+
+“不会。”
+
+托伦终于抬眼。他没有原谅她，也没有露出因为她诚实而生出的敬意。那双眼睛只是第一次把她当成一个可能记得自己做过什么的人。
+
+罗德里克从外面进来，把两份调动令并排摊在空粮箱上。一份来自莱娅胸甲，另一份从维尔萨军官身上搜到。命令要求相反，签发日期相同，连“为保护边境居民免遭屠戮”的措辞都只差两个词。
+
+“至少一份是假令。”罗德里克说。
+
+“也可能两份都是。”
+
+“明天三桥河谷会有两支军队。你要他们等我们查清纸张？”
+
+“我要查是谁送来的。”
+
+“可以。分两个斥候出去。少两双眼睛，明天的部署仍由你完成。”
+
+莱娅原以为他会否决，准备好的争辩一时没有去处。罗德里克拿起她写过的军报，视线在那行真实备注上停了一会儿。
+
+“把‘及时接应’留下。”他说，“预备队确实接应了。”
+
+“也把我的错误留下。”
+
+“错误不因你承认便自动偿还。托伦以后信不信你，不归这张纸决定。”
+
+他把两份命令都折成四层，仍把撤退路线留在最外面。莱娅按住其中一份。
+
+“给我留一张。”
+
+“证物归军部。”
+
+“那就给我副本。”
+
+罗德里克看了她片刻，撕下维尔萨命令签发栏的一小角，递给她。
+
+“记住字形，不要带走整张纸。被人搜出来时，疑问会先变成罪名。”
+
+他是在保护她，也是在教她怎样绕开自己刚刚捍卫的程序。莱娅把纸角收进护腕，忽然不知道哪一件事更令她不安。
+
+军队第二天抵达三桥时，河谷里已经挤满逃难的人。
+
+三座石桥横跨白河。北桥最窄，桥头架着弩车；南桥离大道太远，粮车绕过去要多走半日；中桥本来最适合大军通行，现在却塞着推车、羊群、床板和背着锅的人。桥上的队伍从洛恩一侧一直延伸到维尔萨一侧，没人说得清他们究竟从哪国逃向哪国。
+
+军需兵在西岸发硬麦饼。洛恩士兵先领，昨夜才到的平民排在后面。轮到最后一筐时，饼只剩六块，队伍还有二十多人。
+
+莱娅把自己的那块递给一名抱孩子的老妇。罗德里克从队尾拿走半块，又掰成两份，将其中一份塞回她手里。
+
+“他们没领到。”她说。
+
+“你午后会握不住旗。”
+
+“少吃一顿不会倒。”
+
+“你若倒了，谁背你？”
+
+莱娅想说不用任何人背，话到了舌尖，又想起北丘上被罗德里克从尸体下拖出来的托伦。她吃了那半块饼。太硬，边缘划破了上颚。
+
+罗德里克把桥梁木签插上地图。“王都要两座桥。主力明晚到。”
+
+“中桥不能打。”
+
+“现在不能。人走完以后可以。”
+
+“他们不会走完。”莱娅望着东边，路上还有新的黑点不断出现。
+
+“那就让你的部署回答。”
+
+托伦拄着短杖来到地图边。他脚伤未愈，只负责把北桥弩车的位置补上。莱娅伸手想扶，他侧了一步，自己站稳。
+
+“南边河滩能藏一队人。”他说，“但雨再大一点，回来的路会被水吃掉。”
+
+罗德里克把南桥路线交给莱娅，却收回了骑兵指挥牌。“你带步兵。骑兵由我掌握，直到你不再用速度填补不知道的事情。”
+
+莱娅的脸发热。托伦低头继续画弩车射界，像没听见。她最后只说了一声“明白”。
+
+两军在中桥相遇时，最前面的难民车恰好断轴。
+
+木轮歪倒，后面的人群还在向前挤。洛恩弓手和维尔萨盾卫只隔十几步，谁也无法后退，弓弦却已经拉开。一个孩子被挤倒在车底，母亲尖叫着去拉，差点被骡蹄踩中。
+
+维尔萨军阵里有人摘下头盔。他把剑插进桥缝，空出双手，独自走到队伍前方。
+
+“维尔萨第三军团副将凯恩·阿尔德。”他的声音越过人群，“中桥两侧各退二十步，直到最后一名平民离开。”
+
+莱娅也走上桥。“洛恩边境旗官莱娅·维恩。你的人先放下弩。”
+
+“弩已经退弦。你左岸第二排还在搭箭。”
+
+她回头。一个新兵正把箭搭在弦上，眼睛却只盯着罗德里克。莱娅命他放下，新兵没有动。直到罗德里克微微点头，他才松开手。
+
+凯恩看见了。
+
+“你的命令需要第二个人确认？”
+
+“他在确认你有没有撒谎。”
+
+“很好。”凯恩说，“让他继续看。”
+
+桥面上，一只药箱被人撞翻。彩色药瓶滚进车轮与脚之间，一个八岁左右的女孩跪在地上，拼命护住其中一只蓝线瓶。她用维尔萨语向东岸喊，又用不熟练的洛恩语说母亲喘不过气。两边的军医都想上前，两边的弓手也同时抬弓。
+
+“军医没有武器。”凯恩说。
+
+“让他把药放下，退回去。”
+
+女孩猛地抬头。“她等不到你们把每一步都谈完。”
+
+她抱起药瓶，自己跑到桥中央。那一瞬间，两支军队都停了。不是因为命令，而是没人敢成为先射中她的人。
+
+莱娅和凯恩同时蹲到药箱边。瓶身只有维尔萨文字，洛恩牧师不敢乱用。女孩指着蓝线瓶，说母亲需要它。
+
+“治喘闭。”凯恩说，“成人一次三滴。”
+
+莱娅用炭笔在瓶背写下洛恩语。凯恩看见她最初写成“两滴”，伸手改掉。
+
+“不是孩子喝。”女孩说，“我母亲在车后。”
+
+凯恩在剂量旁补上“成人”。他的字比军令上的小，也更难看。
+
+“停火到最后一辆车过桥。”他说，“范围是桥面与两侧二十步。违反者由各自军法处置。”
+
+“结束条件要写清。”莱娅说，“人走完，双方退回原线，停火才结束。”
+
+“见证人？”
+
+凯恩看向两军军官。莱娅却看向拿着药瓶的女孩。
+
+“你叫什么？”
+
+“艾达·科尔。”
+
+“你愿意听清我们的约定，再说一遍吗？”
+
+艾达先用洛恩语复述，又用维尔萨语复述。她的第二遍比第一遍流利。桥边一名老车夫也报上姓名。两团誓火从莱娅与凯恩脚下亮起，沿着石缝向中央延伸。火光并不整齐，洛恩一侧偏蓝，维尔萨一侧带着暗红，最后在翻倒的药箱旁相接。
+
+两军同时退开。
+
+难民开始推车。凯恩的盾卫用盾牌撑起断轴，洛恩士兵把孩子从车底拖出。没有人说这是不是合作，所有人都只做眼前缺的那只手。
+
+第一支重弩从北坡射来时，车队刚走过一半。
+
+弩箭穿透车板，钉死一头拉车骡。人群像被刀切开，骤然向两侧挤。洛恩士兵指向帝国阵地，帝国盾卫同时转向洛恩高地。第二支箭已经在远处上弦，目标正对艾达母亲所在的车。
+
+“不是我的射角。”凯恩说。
+
+罗德里克只看了一眼箭尾。“也不是我们的弦力。”
+
+弩车藏在两军射界交叠之外，没有旗，车轮包着白布，防止碾过石地时出声。
+
+“中桥不许动。”莱娅命令，“游侠走河滩。”
+
+“来不及。”凯恩指向北桥出口，“我的盾卫可以封住它。”
+
+“你的盾卫越线，誓火会断。”
+
+“那就由你的人封。四回合以后，弩车换位。”
+
+第三支箭未必还会给他们争论的时间。莱娅看向桥中央。艾达正用自己的身体挡住药瓶，像那只瓶子比她更值得被保护。
+
+“凯恩·阿尔德，”莱娅说，“你的盾卫可以越过北侧界线，只攻击无旗弩车。平民离桥后立即撤回。”
+
+“见证？”
+
+“我听见了。”艾达抬起脸，“快去。”
+
+誓火在她脚边多出一条细小的分支。凯恩没有因见证人是个孩子而迟疑。他抬手，盾卫立刻转向北坡。
+
+弩车的第二箭擦过药车，射穿一名洛恩牧师的肩。两军在北坡短暂并肩作战。洛恩游侠从河滩摸到车后，维尔萨盾卫顶住转向的弩臂。弩车手穿着没有标记的灰衣，领口却露出一截白袍。被俘前，他咬碎藏在牙后的誓石，只剩一道烧焦的名字印在舌根。
+
+最后一辆难民车离开桥面时，誓火从中央向两端退去。凯恩拔出插在桥缝中的剑，退回帝国一侧，才重新举起。
+
+“停火结束。”他说，“下一步我会夺桥。”
+
+“你可以不提醒。”
+
+“那不在约定里。”
+
+随后两军又打了整整一个下午。
+
+他们没有得到决定性的胜利。洛恩占住南桥，维尔萨守着北桥，中桥仍留给没有走完的人。黄昏时，河谷两侧都鸣金收兵，没有人敢在那座桥上追击。
+
+艾达的母亲撑到西岸伤员棚才断气。
+
+药来得及，牧师也认对了剂量，可她的肺已经被多年石尘磨坏。临死前，她只来得及握住女儿两根手指。艾达没有哭。她坐在棚外，把药瓶上的两种文字一笔一笔描深，仿佛只要字足够清楚，下一次就不会再有人迟到。
+
+莱娅把一碗汤放在她身边。
+
+“你来自哪一边？”她问完便后悔了。
+
+“桥上。”
+
+“我得把你登记进一个营。”
+
+“写桥上。”
+
+难民册只有洛恩、维尔萨、灰境自由民三栏。艾达看着那三栏，问：“药瓶能写两种，纸为什么不能？”
+
+莱娅用笔划掉栏线，在下面写下“三桥河谷”。
+
+罗德里克站在棚外，看见了，没有阻止。他把无旗弩车的弩臂放上桌。木材是教廷医院常用的白蜡木，铁件却同时符合两国军械规格，像一件故意让每个人都能认出一部分、又谁也无法完整指认的东西。
+
+“证明不了是谁造的。”他说。
+
+“至少证明有人想让我们互相开火。”
+
+“战争里每天都有人想。”
+
+“双子丘陵有人穿白袍送假通行纸。今天这台弩车也有白袍人。”
+
+“你在把相似当因果。”
+
+“你在把因果拆成永远不够相似的碎片。”
+
+伤员棚里的声音忽然小了。莱娅这才发现，许多人都在听。罗德里克没有训斥她。他拿起笔，把弩臂刻号抄进军报，然后告诉她，赤石堡垒已经失联。城头换成帝国旗，守军没有回信，王都命令他们在帝国援军之前夺回堡垒。
+
+“谁确认守军投敌？”莱娅问。
+
+“城墙上的旗。”
+
+“旗可以换。”
+
+“所以我们进城以后，再看是谁换的。”
+
+他转身去安排拔营。艾达把空药瓶放进莱娅手里。
+
+“另一面还空着。”她说。
+
+瓶身另一侧确实没有字。莱娅握着它，直到玻璃被掌心焐热，也没想出该写什么。
+
+赤石堡垒建在一块从山体中突出的红岩上。远看时，塔和城墙像从同一块石头里劈出来，只有顶端那面帝国旗显得新，红得几乎没有沾过灰。
+
+风把旗角掀起，露出下面一截洛恩蓝线。
+
+托伦没有作战资格，仍跟着伤员车来到高地。他拄着短杖站在莱娅身旁，眯眼看了很久。
+
+“换旗的人赶时间。”他说，“结绳还是我们的。”
+
+“守军投敌以后，也可能沿用旧绳。”
+
+“也可能没机会自己换。”
+
+罗德里克把十四枚木签插进泥里。太阳每向西一段，传令兵便拔掉一枚。王都援军明早才能抵达，帝国主力也在路上。若今天拿不回赤石，这场仗会从夺城变成围城，附近所有村庄都得为两支军队供粮。
+
+他把正门、北墙豁口和干涸的排水道一一标出。正门最快，也在两台弩车的交叉射界里；北墙可以绕，却要经过没有掩护的红岩坡；排水道只能容四人爬行，进去以后无法回头。
+
+“你选哪条？”他问莱娅。
+
+她还没回答，城内忽然亮起一盏灯。
+
+灯光只有豆粒大小，颜色却不是军中常用的蓝白，而是接近墓地烛火的琥珀。它亮了三次，停一息，再亮两次。莱娅在边境训练中学过，那是守墓人寻找无名尸体时使用的信号。
+
+“城里有圣辉守墓人。”她说。
+
+“教廷随军很正常。”
+
+“她在发墓园信号。”
+
+罗德里克也看见了。他拔掉第一枚木签。“先夺城。活着的人能解释灯为什么亮。”
+
+莱娅最终把主力放到北墙，自己带四人爬排水道。她不愿让罗德里克再替自己冲开一道门，又不敢把所有人押在正面。排水道比地图上窄得多。三百年前用于排洪的石槽已经塌了一半，墙缝里长满带铁锈味的苔藓。她爬到尽头时，护腕被石角割开，罗德里克重新打过的结仍没有散。
+
+内城没有帝国口令，也没有守军争吵。士兵们站在墙垛上，动作整齐得近乎安静。每个人都穿着帝国外袍，衣领下却露着洛恩旧制服。风吹动他们的披风，他们的身体却没有随风调整重心。
+
+第一名守军从转角扑来。莱娅看见那张脸时慢了半拍。对方是赤石第三旗队的士兵，她在两个月前的巡防宴上见过。他当时喝醉，把王国歌唱错了一句，被同伴笑了整晚。
+
+现在他嘴里只剩一句话。
+
+“守住塔，直到名字归于王冠。”
+
+莱娅横剑挡下劈砍。士兵腕上的誓纹被护臂遮住一半，笔直的火线从塔顶压进皮肤，没有普通誓言那种向见证人延伸的分叉。
+
+“你叫什么？”她问。
+
+“守住塔，直到名字归于王冠。”
+
+“谁命令你进城？”
+
+“守住塔。”
+
+他又一次举剑。莱娅抓住他的手腕，强行把誓纹转到石墙阴影里。塔光断了一瞬，士兵的肩膀突然塌下来，像有人抽走了撑住他的木杆。
+
+“奥……”他从喉咙里挤出一个声音，“奥伦·贝尔。”
+
+下一瞬，火线重新亮起。他抬头时，眼里已经没有自己的名字。
+
+莱娅不再试图说服他。她用剑柄击中奥伦太阳穴，把人拖进排水道口，再点燃通讯誓火。
+
+“守军被塔控制。不是投敌。”
+
+罗德里克的声音从火中传来，夹着正门弩箭撞盾的巨响。“我看见了。”
+
+“要改目标。”
+
+“你还有十二枚木签。”
+
+“我需要关掉塔。”
+
+“先告诉我怎么关，不要只告诉我不能打。”
+
+琥珀灯再次亮起，这次就在内城西侧的囚室。莱娅带人冲过去。发灯的人是个年轻女人，教廷外袍上的职位纹已经被撕掉，只剩内衬一格格细密的姓名栏。她站在铁栏后，手里抱着一盏磨花的守墓灯。
+
+“别让他们死在节点范围里。”她说。
+
+“他们活着也在被控制。”
+
+“死了会被再抄一遍。名字、最后一条命令、最强的恐惧，全抄进塔里。”
+
+“你是谁？”
+
+“米蕾尔·索恩，圣辉守墓人。至少三天前还是。”
+
+莱娅砍断牢锁。米蕾尔出来后没有先逃，她把灯放在地上，画出后墙三枚誓钉的位置。三枚钉必须同时拔出，任何一枚提前断开，另外两枚都会把约束转到最近的活人身上。
+
+“需要三支小队。”莱娅说。
+
+“正门还没开。”罗德里克听完她的报告，“分兵以后，我没有人接替伤员。”
+
+米蕾尔俯身擦去灯罩上的泥。“如果先占正门，塔会把守军的最后命令定格。你们会得到一群不再攻击的人，也只得到那一句话。”
+
+正门方向又有一名骑士坠马。莱娅隔着内墙看不见是谁，只看见一匹失去主人的马沿着红岩坡往下跑。
+
+“我去拔钉。”她说。
+
+通讯誓火沉默了片刻。
+
+“我替你守三枚木签。”罗德里克说，“不是同意。关掉节点，然后来接正门。”
+
+他让骑兵下马，把盾牌交给步兵。这样能在弩车下多撑一会儿，却也意味着帝国援军一旦出现，他们没有坐骑撤退。莱娅听见传令兵反对，罗德里克只回答：“所以别撤。”
+
+她忽然明白，他从来不是不肯为别人的判断付代价。他只要求付出以后，决定仍归到某个能够被指认的人名下。
+
+三支小队在塔后分开。誓钉嵌在不同高度，一枚藏在军械库，一枚位于蓄水井下，最后一枚直接穿过囚室地基。每靠近一处，守军便像被同一根线扯动，成排转向。莱娅必须击倒那些她正在试图解救的人，同时计算怎样不让他们从墙上摔死。
+
+米蕾尔站到三处誓纹交汇的位置，没有念圣辉祷词。她逐个读出仍能辨认的姓名。
+
+“奥伦·贝尔。苏娜·维克。马丁·科尔。艾萨·伦……”
+
+名字随着守墓灯的火光传开。念到第五个人时，她把“埃伦”读成了“艾伦”。一名被枪兵压住的女兵猛然抬头。
+
+“不是。”她说。
+
+声音很轻，却是整座城里第一个没有来自塔的词。
+
+米蕾尔的手开始抖。“请再说一次。”
+
+“埃伦。埃伦·沃斯。”
+
+米蕾尔用指甲刮掉灯座上的错字。铜面起了毛，指甲也裂开一道血线。
+
+“埃伦·沃斯。”她重新念，“由你见证。”
+
+三枚誓钉在同一刻被拔出。
+
+塔光不是爆炸，而是忽然消失。守军成片跪倒，许多人仍保持着举剑姿势，手臂却再也支撑不住。奥伦在排水道边醒来，先摸自己的胸口，再摸身旁士兵的脉搏。他低声说了三遍名字，像在确认每个音节都还属于自己。
+
+罗德里克夺下正门时，太阳只剩半轮。帝国旗被割落，下面那面洛恩旗也没有人立刻升起。两国旗帜叠在泥里，分不清哪一层沾了更多血。
+
+入夜后，恢复意识的守军被集中到塔下大厅。有人记起姓名，有人只剩一段动作。一名士兵反复叠着不存在的床铺，另一人不断把空碗递给身边的人。米蕾尔逐一登记，字写得小而端正。
+
+她走到奥伦面前。“奥伦·贝尔，洛恩边境第三旗队，是吗？”
+
+“第二旗队。”
+
+米蕾尔立刻翻到新页。
+
+“改一处就行。”
+
+“整页重写更清楚。”
+
+“我还在这里。”奥伦说，“你可以问。”
+
+米蕾尔捏着新纸，停了一会儿。她把纸放回去，没有撕掉写错的那页，只在旁边加了一行：本人修正，第二旗队。
+
+军官们把塔内文书装进带锁的箱子。米蕾尔本能地抱紧自己的登记板。罗德里克允许她保留私人姓名册，却要收走誓纹拓印、军令与两层旗帜。
+
+“王都有教廷档案官。”他说，“他们能确认这些东西。”
+
+“就是教廷的人把我关在下面。”
+
+“所以箱子由我的人押送。”
+
+莱娅站到箱子前。“给我留一份拓印。”
+
+“不行。”
+
+“双子丘陵的假令、三桥弩车、赤石控制。每次你都说单独不足以证明。现在它们在同一只箱子里，还是不许我看。”
+
+“正因为它们连在一起，才不能让一个见习旗官带着走过边境。”
+
+“你是在保护证据，还是保护我？”
+
+“两者现在没有区别。”
+
+米蕾尔一直没有看他们。她的目光落在罗德里克腰侧的旧军旗上。旗杆缝里有一道极淡的直线誓纹，与赤石塔内的控制纹路同源，只是更旧，也更克制。
+
+她什么都没说，只把看到的形状画在姓名册最后一页。
+
+恢复意识的士兵被送进堡垒后院。那里竖起栅栏，门锁在外面，军医称它为观察营。奥伦站在栅栏内问莱娅：“我现在是俘虏？”
+
+“是隔离。”
+
+“门从哪边锁？”
+
+莱娅看着那把朝外的锁，让军需兵再配一把钥匙，交给营内的人。军医反对，说被控者若夜里复发，门会从里面打开。罗德里克最后同意，却在外面增加一倍守卫。
+
+奥伦接过钥匙时没有道谢。他只是试了一遍，确认自己真的能够把门打开，又从里面锁回去。
+
+那晚没有人称这是一种新的制度。它只是一把多配出来的钥匙。
+
+赤石的证据没能到达王都。
+
+押运小队在边境森林失踪，留下的车辙到一片低地突然消失。车轮不是被抬走，而是驶进浅溪，沿水走了两里。能在夜里完成这种处理的人熟悉洛恩追踪方式，也知道证据箱的路线。
+
+罗德里克同时收到王都急召。信封蜡印完好，纸张却带着圣辉领常用的香灰味。莱娅把纸靠近灯火，想看封蜡是否被重新熔过，罗德里克按住她的手。
+
+“别把每一张纸都当陷阱。”
+
+“你也闻见香灰了。”
+
+“教廷信使替王都送件，很常见。”
+
+“押运小队在同一天失踪，也常见？”
+
+罗德里克松开手。他没有责备她把两件事连在一起，只把森林地图摊开。
+
+“你带六人侦察。确认营地，确认俘虏，确认撤路。不要交战，不要抢箱子。”
+
+“如果他们正在杀人？”
+
+“把人数和路线报给我。”
+
+“等你回来便迟了呢？”
+
+“那也不是六个人能替整支边境军决定的风险。”
+
+他把自己的旧军旗留给代理指挥官。临走前，他从腰袋里取出那只磨损的左手手套，像要递给莱娅。林地夜里湿冷，她的手套确实不防水。
+
+莱娅伸手，罗德里克却把手套收了回去，改给她一块油布。
+
+“包地图。”他说。
+
+他不再像清晨营火边那样自然地替她系护腕。两人都假装这只是一次普通的装备检查。
+
+黑旗营地藏在林地洼处。没有旗，没有军号，连营火都挖在地下，只从苔藓间漏出细烟。守卫穿帝国外袍，腰间挂洛恩水壶；火边有人唱教廷晚祷，却把歌词中的“安息”换成了“归令”。
+
+莱娅和米蕾尔伏在湿蕨后。东侧大帐传来同一句军令，隔几息重复一次。西侧则有守墓灯的低鸣，像许多人隔着厚墙同时喘气。
+
+“先看东帐俘虏，再看中帐文书，最后从南沟退出。”莱娅说。
+
+“西帐在做提取。”
+
+“命令只要求确认。”
+
+“提取结束后，他们还活着。”米蕾尔盯着西帐，“只是不会记得自己为什么来。”
+
+她没有请求莱娅救人。她只是回答，然后等着看莱娅会把这个事实放到命令的哪一边。
+
+东帐里，失踪士兵被绑在三块誓文石之间。他们没有明显外伤，只是不停复述押运命令。每重复一次，石面便亮起一段路线。
+
+“证据箱送往赤石西门。遇敌焚毁。证据箱送往赤石西门。遇敌焚毁……”
+
+一个士兵说到“遇敌”时开始流泪。眼泪沿着下巴往下滴，他的声音却没有停。
+
+莱娅割断最近一人的绳。身旁斥候抓住她手腕。
+
+“见习官，我们是来看，不是带人走。”
+
+“现在看见了。”她说，“带走。”
+
+绳子落地的声音惊动守卫。中帐帘布被人从里面掀开，一名教廷审判官没有急着喊杀。他按顺序下令终止提取、焚烧档案、给伤员注射止痛剂，再处决无法运输的俘虏。
+
+一名守卫真的先替俘虏打了止痛针，才拔出短刀。
+
+帐内水晶在混乱中亮起，投出奥德伦的记录。大祭司站在圣辉医院的长廊里，背景有人推着病床经过。他语气温和，说若记忆反复回到暴力，保存只会延长痛苦；取出最后命令，至少能让死者继续服务活人。任何干扰提取的人，都可能把污染带回城市。
+
+莱娅没有听完。她撞开举刀的守卫，命斥候把俘虏送往南沟。米蕾尔却朝三块誓文石走去。
+
+“你去哪？”
+
+“把名字取回来。”
+
+“先走。证据已经够了。”
+
+“够谁用？”米蕾尔回头，“够你相信，还是够他们记得自己？”
+
+她踏进三块石头之间。陌生姓名同时涌入守墓灯，灯罩瞬间结出一层白霜。米蕾尔从第一个名字开始念，语速越来越快，念到二十几个以后忽然停住，又从头重来。
+
+莱娅冲到石阵边缘。誓火像细线一样缠住米蕾尔的手腕，正把她自己的记忆也向石头里拖。
+
+“还要多久？”莱娅问。
+
+米蕾尔以为她会命令自己出来，怔了一下。“两轮钟声。”
+
+“你有两轮。”
+
+莱娅转身，把剩下的人全调到石阵周围。她没有用一个更安全的决定保护米蕾尔，而是让整支小队承担米蕾尔自己选择的风险。
+
+第一轮钟声响起时，营地开始焚档。第二轮响起前，南沟被追兵截断。米蕾尔终于从重叠的命令里分离出一段共同母式：两国伪造军令使用了同一个誓文接口，接口的旧名是“七塔王座”。
+
+她念出最后一个俘虏的名字，守墓灯从内部裂开。灯火没有熄灭，而是沿裂缝分成许多细小的光，每一条都指向不同的人。
+
+“走。”米蕾尔说。
+
+莱娅把她拉出石阵。营地已经烧成三片，行动不便的俘虏和原始拓印不在同一侧。只有一辆还能用的车，南沟也只能再撑一刻钟。
+
+她把人放上车，把拓印绑在车底，命两名斥候推车，自己和米蕾尔留下断后。这样做让每样东西都可能失去。也正因为她没有从中选一项放弃，负责断后的士兵多死了一个。
+
+他们冲出森林时，天边刚泛白。追兵已经贴到南侧林口，一支洛恩骑兵从晨雾里横切过来，把追兵截在溪边。
+
+罗德里克提前返回了。
+
+他下马后先看见车上的俘虏，再看见车底的证据，最后才看莱娅肩上的伤口。
+
+“谁下令进营？”他问。
+
+“我。”
+
+“谁下令解开俘虏？”
+
+“我。”
+
+“谁决定带走拓印？”
+
+“米蕾尔完成仪式，我决定运输。”
+
+他逐项询问，是为了让书记官把责任写清。若他只说一句“你违令了”，莱娅反而容易把自己想成一个受压迫的正确者。现在每个问题都对应一个受伤或死去的人。
+
+“从现在起，你停止独立指挥。”罗德里克说，“俘虏归军医，证据归我。”
+
+莱娅挡住证据车。“上一次也归你。押运队就在你的路线上失踪。”
+
+“你认为是我交出去的？”
+
+“我认为你没有告诉我，箱子还能到谁手里。”
+
+“你刚用六个人进攻一座未知营地。”罗德里克声音不高，周围的人却都听得清，“若每个军官因为不信上级，就保留自己的证据和军队，明天边境会有一百面自称正确的旗。”
+
+“至少有一百处能拦住同一道假令。”
+
+“也有一百处能伪造新的。”
+
+米蕾尔抱着裂开的守墓灯走过来，把姓名册递到两人之间。
+
+“这是我在石阵里听见的名字。你可以抄，不能拿走。”
+
+罗德里克看了一眼教廷封皮。“守墓名册依法归教廷。”
+
+“我已经被教廷剥去职位。”
+
+“所以它现在属于谁？”
+
+“属于名字还在里面的人。”
+
+罗德里克没有伸手抢。他让书记官在原地抄录，又从俘虏中选了两人，各自保留一份拓片。这样即使证据箱再次消失，也不至于所有人同时失去记忆。
+
+他不是因为认同米蕾尔才这样做。只是黑旗营已经证明，一只箱子不是保护，是诱饵。
+
+莱娅最终让开证据车。停止独立指挥的命令仍然有效。
+
+当晚，她去指挥帐归还临时军印。罗德里克不在，桌上放着那只旧手套，旁边是一封尚未封口的密信。第一行写着：黑旗营与圣辉领无正式关联，建议内部调查，暂缓公开。
+
+莱娅只要展开信纸，便能知道他还隐瞒了多少。她的手指碰到纸边，最后却把旧手套压到信封上，转身离开。
+
+罗德里克回来时，看见了信封位置的变化。他拿起手套，坐在没有点灯的帐里，很久没有封信。
+
+苇草村的人先让莱娅吃了一块面包，才肯让她检查井。
+
+那块面包又硬又酸，掺了去年剩下的黑麦壳。玛尔塔用指节敲了敲饼底，听过回声才递给她。“热的今天吃，硬的能带三天。军官要哪一种，得先说打算让我们今天走，还是三天后走。”
+
+莱娅没有回答，只说自己来查污染。
+
+“穿白袍的人也这么说。”玛尔塔把面包铲横在炉口，“他们没吃东西。”
+
+村庄比军报里写的更挤。赤石逃出的士兵住进谷仓，三桥来的难民睡在牲口棚，原本给冬季储草的屋子改成了病房。艾达坐在门槛上，用炭笔给药瓶补字。瓶里已经装进米蕾尔重新配的喘闭药，正面是维尔萨语，背面是洛恩语，瓶底又多了一行歪斜的“三桥”。
+
+奥伦在院中劈柴。他每劈几下就停下来辨认方向，仿佛北与南会在他不注意时交换。布兰蹲在晾架旁，正用一根烧黑的骨针补儿童靴。针眼太大，每拉一针，鞋面都会留下粗糙的疤。
+
+莱娅从他身边经过时，布兰看了一眼她的鞋。
+
+“右脚外侧磨得厉害。”他说，“你总抢着往左挡人。”
+
+“你认识我？”
+
+“不认识。认识走路。”
+
+他把补好的小靴子放到门边，拿起奥伦那双。鞋底嵌着赤石塔的红砂，怎么刮也刮不干净。
+
+米蕾尔检查了三处异常。面包炉里的灰只是混入了墓地木屑；谷仓的强烈读数来自赤石幸存者腕上未散的誓纹；井下则埋着一块新制的教廷碎片，表面刻意涂过腐土，假装在那里放了许多年。
+
+“没有扩散。”她说，“有人把读数放进来，又等人找到。”
+
+“能证明吗？”莱娅问。
+
+“能证明碎片是新的。不能证明村里每个人都没有携带别的东西。”
+
+布兰笑了一声，毫无喜意。“这么说，够烧，也够不烧。”
+
+午后，北路扬起骑兵的灰尘。罗德里克没有派传令兵，他亲自带着净化军进村，把封蜡命令放到玛尔塔面包房的后桌上。桌面全是面粉，鲜红的蜡印落上去，像一滴没干的血。
+
+“王都认定苇草村存在扩散性亡灵污染。”他宣读，“日落前疏散可行动者，焚毁全部建筑。拒绝撤离者视为污染携带者。”
+
+“疏散到哪？”玛尔塔问。
+
+“北侧观察营。”
+
+奥伦站在门边。“赤石那个从外面锁门的营？”
+
+罗德里克认出了他。“奥伦·贝尔。你不应离开观察范围。”
+
+“范围后来走到我家门口了。”
+
+莱娅把井下碎片放到命令旁。碎片太凉，贴着木桌凝出一层水汽。
+
+“污染是埋进去的。米蕾尔确认不会传播。”
+
+“她没有完整仪器，也没有圣辉塔权限。”
+
+“我曾负责三座边境墓园的污染判定。”米蕾尔说。
+
+“你也正被教廷追捕。”
+
+“所以我的知识一起被剥掉了？”
+
+罗德里克没有回答她。他展开军情图，指给所有人看苇草村与白河粮道的距离。若污染真的扩散，三天到白河，七天进王国腹地，沿线六座村庄，共四万三千人。
+
+“这里有多少？”玛尔塔问。
+
+罗德里克看过疏散册。“二百一十七。”
+
+屋里安静下来。炉膛里的木头塌了一角，火星从铁门缝里滚出来。
+
+“所以我们人少，”玛尔塔说，“数字就更容易算？”
+
+“所以我必须比较最坏结果。”
+
+“比较时，谁把我们放在小的那边？”布兰问。
+
+“我。”
+
+罗德里克没有说王都，也没有说大局。他报出了自己的名字所占的位置。
+
+莱娅盯着他。“你愿意亲自执行？”
+
+“愿意。把指挥印还给我，我带净化军进村。你与米蕾尔接受调查，不必背这道命令。”
+
+“你还是替我决定该背什么。”
+
+“因为我是你的上级。”
+
+“如果上级的命令能被伪造呢？”
+
+罗德里克把手按在封蜡上。“眼前这道由我确认，由我交给你。我在这里，也愿意承担。这就是士兵在真假军令之间还能服从什么。”
+
+这曾是他在赤石给出的答案。它比一张远方的王令更可靠，也比任何匿名誓文更有人性。正因为说话的人是罗德里克，莱娅几乎想把自己交回那个答案里。
+
+她想起北丘上的红烟。只要她发出信号，他就会来；只要他来了，事情就会重新有一条撤路。她还想起观察营外侧的锁、黑旗营被反复抽取的命令，以及他信中那句“暂缓公开”。
+
+罗德里克给她一个回合检查最后一处异常。日落时若没有新的证据，净化开始。
+
+村庄立刻分成几种声音。有人要走，认为一间屋不值得拿孩子冒险；有人拒绝进观察营，宁愿守着祖坟；赤石逃兵愿意把自己交出去，换村庄暂缓焚毁；几名洛恩士兵则要求莱娅服从，因为他们的家就在粮道下游。
+
+奥伦把内侧钥匙放到莱娅手里。“送我回去。门里至少只有我们这些人。”
+
+“碎片不是你带来的。”
+
+“火也不会问。”
+
+“你进去以后，谁保证日出放人？”
+
+奥伦看向罗德里克。“他。”
+
+莱娅忽然明白，奥伦仍然愿意相信罗德里克。那个选择不是愚忠。罗德里克在赤石允许他拥有内侧钥匙，也记得他的全名。对一个被命令夺走过姓名的人来说，这些事比莱娅的怀疑更具体。
+
+“你可以自愿隔离。”莱娅说，“但村庄仍要先撤老弱。日出复核，写进命令。”
+
+罗德里克答应了。他让书记官补上期限，又把一把新钥匙交给奥伦。若事情停在这里，也许真能避免最坏结果。
+
+米蕾尔却从墓地带回一段回声。死者只记得夜里有人挖井，看见白鞋、铜灯和一只缺了半边太阳纹的封蜡盒。那只盒子的纹章属于教廷边境净化所。证据仍不完整，却足以证明碎片并非村民藏匿。
+
+净化军的审判官看过回声后，第一反应不是撤令，而是拔剑刺向墓碑。回声在石面上碎成一团火。他说污染已经学会模仿教廷记忆，必须立即处理。
+
+米蕾尔冲过去挡在墓碑前。审判官认出她，叫她“被回声侵蚀的叛徒”。
+
+罗德里克终于转向审判官。“谁授权你销毁调查对象？”
+
+“圣辉法典。”
+
+“我问的是人名。”
+
+审判官没有回答，只抬手点燃第一支净化火箭。
+
+火箭越过众人，落在村东空屋的茅顶。屋里没有人，火却沿着连片屋檐迅速向面包房方向爬。净化军开始按预定路线进入村庄，像这场争论从未发生。
+
+罗德里克的脸第一次失去那种稳定。他没有下令停止净化军，也没有下令继续。他只是站在原地，看着自己确认过的命令被另一套机构抢走解释权。
+
+莱娅把临时指挥印放到面粉桌上。
+
+“军印还你。”
+
+她抽回压在印下的洛恩军旗。罗德里克抓住旗杆。
+
+“旗属于洛恩。”
+
+“布属于拿它挡箭的人。”
+
+两人隔着一根旧旗杆角力，谁也没有拔剑。最后是火星落到旗角，烧着了拆线处。莱娅用匕首割开蓝色纹章，线被旧血和烟粘住，一道亮蓝始终拆不下来。火顺着干布往上窜，玛尔塔抓起一把湿面粉，狠狠按在旗面上。
+
+火灭了。灰白的手掌印留在中央，边缘仍冒着烟。
+
+“要举就举。”玛尔塔说，“别先把唯一能裹伤员的布烧完。”
+
+莱娅转向那些刚才还归她指挥的士兵。她的喉咙发紧，所有人都在等一段能让事情变得清楚的话。她没有。
+
+“我拒绝焚村。”她说，“愿意护送村民的人，跟我走南林。不愿向旧部动手的人，可以放下武器离开。愿意执行王国命令的人去北路。现在离开的人不记逃兵。”
+
+“由谁见证？”罗德里克问。
+
+莱娅下意识想说托伦。名字几乎出口，她才想起托伦不在这里。不在场的人不能替她担保。
+
+“留下的人选一个，离开的人选一个。”她改口。
+
+玛尔塔站到灰旗旁。一名决定回归王国的老兵从队列中走出，报上自己的名字。短暂誓火从两人脚下亮起，只连接愿意接受这项约定的人。站到罗德里克身后的人没有被火光覆盖。
+
+莱娅把旗杆抬起。旗太重，她一只手没有托稳。布兰从侧面扶住下端，却避开她的手。
+
+“我只帮村里人走到林口。”他说。
+
+“够了。”
+
+“不是加入你。”
+
+“我听见了。”
+
+布兰看了她一眼，确认她没有把那句话改写成效忠。
+
+撤离从一开始就没有足够的车。南侧大路能走伤员，却在净化军弩手射界里；西侧水沟适合儿童和证据，四回合后会被涨水淹没；布兰的猎路穿过密林，只能让能步行的人通过。莱娅必须把队伍拆开，而她刚刚失去军印，许多洛恩士兵不再接受她的通讯誓火。
+
+命令只能靠人跑。
+
+她先把伤员车送往南路，又让米蕾尔带艾达和姓名册走水沟。布兰领能走的人进林。每分出一队，自己身边便少一层盾。
+
+面包房起火时，玛尔塔把最后一盘硬饼倒进湿布，头也不回。
+
+“炉子还能救。”莱娅说。
+
+“炉子不会走。人会。”
+
+墓地的木片也着了。米蕾尔转身要回去，布兰挡住她。
+
+“活人还在后面。”
+
+“木片烧了，他们以后又会变成无名。”
+
+“你能背多少？”
+
+米蕾尔没有回答。她脱下外袍，把能辨认的木片全裹进去，最终仍有一半留在火里。那些名字没有化成怨灵，也没有发出最后的光，只像普通木头一样烧黑、卷曲，落进泥水。
+
+村东传来孩子哭声。一间住着三名无法移动老人的屋子被火线围住，另一侧则是装有黑旗营拓印的马车。两处之间隔着正在交战的旧部。莱娅向证据车跑了两步，听见奥伦在身后喊她。
+
+他本该带赤石幸存者进入观察营，却用内侧钥匙提前打开后门，带人绕到了老人屋后。
+
+“车归你。”他说，“门归我们。”
+
+被控制过的士兵抬着木板冲进火里。他们不是为了证明自己无害，也不是为了报答莱娅。奥伦只是知道从里面打开一扇门是什么感觉。
+
+西边林线外，出现一辆没有旗的空车。赶车人穿维尔萨军服，把缰绳系在树上，转身离开，没有越过边界。凯恩并未参战，却兑现了三桥停火后对平民路线的默契。
+
+有了那辆车，老人和证据都能带走。可火已经烧到村中心，仍有二十七人没有出现在任何一条撤离线上。
+
+净化军追到南林时，罗德里克的骑兵先一步横在弓箭手前。他没有帮助莱娅，也没有让净化军继续射击。他只命令所有人收弓，宣布苇草村已完成净化，追击叛军另候王令。
+
+审判官质问他为何放走污染携带者。
+
+“因为我负责边境军。”罗德里克说，“你刚才已经解释过一次我的命令。不会有第二次。”
+
+这是他第一次公开阻止教廷，却没有撤销对莱娅的叛国判定。
+
+灰旗队伍走到林口时，他展开正式文书。火光在他身后映红半边天，照得字迹清晰。
+
+“莱娅·维恩拒绝王国净化令，夺取军旗，攻击或阻碍执法部队。即刻撤销军职，列为叛国嫌犯。随行者在明日日落前离开，可免除追随罪。”
+
+他读完，将文书交给传令兵。
+
+“你相信村里有污染吗？”莱娅问。
+
+“我相信证据不足以押上后面六座村。”
+
+“黑旗营的证据也不足？”
+
+“足以调查。不足以让边境军各自决定哪些王令有效。”
+
+“那要到什么时候才足够？”
+
+罗德里克望向她身后。玛尔塔背着酵种袋，米蕾尔的外袍裹着烧焦姓名木片，奥伦与其他赤石士兵抬着老人，艾达紧紧抓着双语药瓶。每一个人都在用自己的身体携带一小段不足以独自证明什么的东西。
+
+“等我能保证公开以后，两国军队不会同时失去指挥。”他说。
+
+“由你保证。”
+
+“由我承担。”
+
+“不是一回事。”
+
+罗德里克没有反驳。他告诉莱娅，白河正在涨水，西路较安全，北堤承不住伤员车。那可能是一条救命的撤路，也可能是追捕军已经准备好的口袋。
+
+莱娅无法再像过去那样把他的建议直接当成地图的一部分。
+
+他转身时，她看见他的左手仍没有戴手套。那只旧手套还压在赤石帐里的信封上，像一件来不及收回的私人证物。
+
+逃亡营地没有帐篷。能走的人先去砍湿树枝，伤员躺在拆下的门板上。那面烧焦的旗也没有被插在营地中央，它被铺在地上，包住一个冻得发抖的孩子。灰白手掌印正好盖在孩子胸口，随着呼吸一起起伏。
+
+玛尔塔分硬饼。每个人半块，连布兰也没有多拿。莱娅把自己的半块掰给艾达，布兰伸手按住她。
+
+“明天你饿倒，谁背你？”
+
+莱娅听见与罗德里克相同的句子，手指僵了一下。
+
+“怎么？”布兰问，“这话也归你老师？”
+
+“不归。”
+
+她把自己的半块吃了。饼比三桥那块更硬，混着面包房屋梁烧出的烟味。
+
+米蕾尔坐在火外整理名单。她在纸上写下“失踪二十七人”，布兰把苇草村住户册放到她膝上。
+
+“别只写数字。”
+
+“没有确认死亡，不能列进死者册。”
+
+“那就写失踪者名字。”
+
+“名单不完整。”
+
+“不完整也比空着强。”
+
+米蕾尔看着自己在赤石留下的修订痕迹，最终在正式栏外加了一页。她念一个，玛尔塔补一个；念到无人确认的人，便留下空格，不再整页重抄。
+
+艾达把药瓶压在灰旗边缘，防止夜风把布掀起。瓶子已经空了，三种字仍清楚。
+
+有人问莱娅明天去哪。
+
+她把地图摊在火边。罗德里克说西路安全，布兰说西路最适合骑兵追击；北堤危险，却能直接到白河。所有人都看着她，等她把其中一条路变成命令。
+
+“先让伤员活过今晚。”她说，“天亮以后，走过两条路的人都来说。”
+
+布兰抬眼。他显然没想到她会把决定留到早晨。
+
+“你没有路？”有人问。
+
+“没有。”
+
+这两个字让营地里的不安更重，却也让几个人开始主动靠近地图。一个车夫说北堤的旧桩还能撑空车，一个赤石士兵知道西路有废弃岗亭，玛尔塔记得白河下游有摆渡人欠她父亲一笔旧账。
+
+答案没有因为莱娅承认不知道而出现。只是第一次不再只从她一个人的嘴里来。
+
+天亮前，十一名原洛恩士兵决定离开。他们担心回去会被当成叛军，又不愿跟随一面没有国家、没有粮仓的旗。莱娅让他们带走武器，因为路上有野兽。布兰反对，说其中任何一人都可能向追兵报告营地。
+
+“我说过离开不算逃兵。”莱娅说。
+
+“你说了，他们就不会回来杀我们？”
+
+“不会。”
+
+她说得太快。那一瞬间，她听见了罗德里克的影子。
+
+“我不知道。”她改口，“他们仍能走。”
+
+十一人依次离开。没有誓火阻止他们改变主意，也没有人知道将来会在哪一面旗下再见。
+
+玛尔塔问新旗叫什么。有人提议自由旗，有人说苇草旗，还有人想把莱娅的名字缝上去。莱娅看着旗面那道始终拆不净的蓝线。
+
+“它还没缝好。”她说。
+
+“最好一直别缝得太满。”布兰把骨针收进袖口。
+
+后来，“灰旗”这个名字先出现在追捕令和商队告示上。洛恩把它写成叛军标记，维尔萨把它写成一支暂时无法归类的边境武装，难民则用它寻找那群肯让人离开的队伍。莱娅没有命名自己的阵营，正如她也没有真正创造它。
+
+日出后，他们选择北堤。
+
+灰旗被从孩子身上解下来，重新绑上旗杆。它没有在风里完全展开，湿布太重，一半始终垂着。莱娅走在队伍中段，不在最前面。最前方是认识旧堤桩的车夫与布兰，最后方是奥伦和决定留下的赤石士兵。
+
+罗德里克教她把撤退路线折在地图外层。她直到失去他以后才明白，真正的撤路不是纸上最外面的那一道线，而是那些即使不再服从她，也愿意把自己知道的路说出来的人。
+
+她还没有学会怎样让这样的人组成一个能活过冬天的军队。
+
+白河的水声已经从北面传来。

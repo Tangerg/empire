@@ -1,0 +1,148 @@
+
+SOURCE: docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md
+65: - `C01-CH07-S34`：万人跪拜之城
+66: - `C01-CH07-S36E`：最后议会与无骑龙影
+67: - `C01-CH03-S11`：墓园姓名木片
+68: - `C01-CH03-S14`：山炉共同修炉
+69: - `C01-CH05-S22`：安瑟尔秩序街道
+70: - `C01-CH06-S29`：最后誓约逐一确认
+71: - `C01-SCENE-PUBLIC-RATIONS`：灰旗营地公开分粮
+72: - `C01-SCENE-REFUGEE-BRIDGEWORK`：难民与工程师共同修桥
+73: - `C01-SCENE-NURSERY-DEBATE`：银林育儿屋争议
+74: - `C01-SCENE-ARCHIVE-FORGE-OPEN`：山炉档案炉开封
+75: - `C01-SCENE-OLD-FLAG-HOMECOMING`：旧旗士兵归乡
+76: - `C01-ARCH-TWIN-HILLS`：双子丘陵战斗地点
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md
+379: 银林猎手没有等命令，主动替山炉遮住火炮；荒原骑手发现凯恩中线将断，放弃原定追击，绕回来托住右翼；白骨原的亡者只完成自己旗符上的目标，有的救出伤者后当场离开，却把空出的路留给洛岬车夫运送弩箭。
+380: 
+381: 他们拒绝同一条命令，也没有各自逃走。
+382: 
+383: 罗德里克听见左军指挥旗倒下的声音。随后是右军。每一面旧旗失去以后，士兵都没有被灰旗强行收编。有人放下武器回到营地，有人转去保护罗德里克，也有人拿着自己的剑站到难民护卫一侧，表示只守北路，不再攻击联盟。
+384: 
+385: 中军最后一面旗被托伦取下。
+386: 
+387: 他不知何时回到战场，没有替莱娅挥剑，只爬上旗台割断绳索。旧旗落下时，他接住布，没有让它掉进泥里。
+388: 
+389: 罗德里克的剑停在莱娅颈侧。莱娅的剑也抵住他失去手套的左腕。两个人都还能向前半寸，也都没有。
+390: 
+391: “你证明了他们能拒绝你。”罗德里克说。
+392: 
+393: “还要证明拒绝以后不会各自逃走。”
+394: 
+395: “那便别急着庆祝。”他的呼吸第一次乱了，“我会看。”
+396: 
+397: 莱娅收剑。
+398: 
+399: 托伦走下旗台，把折好的左手手套放回罗德里克面前。罗德里克没有戴，只让托伦收起。他交出三支军团的统一指挥旗，却不命令士兵加入联盟。第二天，旧军在战场上分成三股：一股回乡，一股加入洛恩改革军，一股继续护送罗德里克。
+400: 
+401: 罗德里克本人没有进灰旗营。他在北路建立独立防线，答应若奥德伦追击便挡住第一轮。不是因为他相信莱娅将永远正确，而是他终于承认，自己不能因为见过三次停战失败，就替下一代取消第四次尝试。
+402: 
+403: 期限扣还剩六日时，奥德伦开始连接七塔。
+404: 
+405: 他没有从王都进攻，也没有挑战任何军队。趁联盟主力仍在断冠旧战场，他进入圣辉塔地下，把历代大祭司的姓名、教廷医院的服务线与数百年未归名者记忆一同塞进主环。塔上的圣辉先变得过亮，照得附近城镇没有影子，随后光线沿旧接口冲向北境、苍林、白骨原和钢铁誓塔。
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md
+1: # 连续性与静态素材接口
+2: 
+3: 正文连续性以“物件继续被使用”为第一原则。素材位于 `../assets`，当前制作规范见[美术与素材入口](../ART-ASSETS.md)。本文件不改素材名，只把小说正文与稳定编号对齐。
+4: 
+5: ## 七章接缝与主画面
+6: 
+7: | 章节 | 开场继续处理 | 章末交给下一章 | 主素材接口 |
+8: | --- | --- | --- | --- |
+9: | 一 | 罗德里克替莱娅系旧护腕，撤退线折在地图外层 | 莱娅尚不会让不服从她的人共同过冬，白河声逼近 | `C01-CH01-S00`、`C01-CH01-S05`、`C01-PROP-LEFT-GLOVE` |
+10: | 二 | 白河水声盖住人名，第一章撤退直接变成夜渡 | 新麦面包带炉灰，墓园道路穿过罗德里克未封山道 | `C01-CH02-S06`、`C01-ARCH-LOAK-BAKERY`、`C01-PROP-EXILE-HARDTACK` |
+11: | 三 | 活人先把姓名挂在腰间，才能进入无声墓园 | 多族邀请同袋出发，座位之争先于会议抵达 | `C01-CH03-S11`、`C01-CH03-S16`、`C01-PROP-NAME-TAGS` |
+12: | 四 | 第一封回信先争谁坐哪里 | 众人习惯等莱娅决定，安瑟尔请求用王冠免去争论 | `C01-CH04-S17`、`C01-CH04-S19`、`C01-PROP-IVRA-BROKEN-BRIDLE` |
+13: | 五 | 安瑟尔使者离开控制区后才敢说明代价 | 临时统帅期限开始流沙计时，第一场雪落下 | `C01-CH05-S22`、`C01-CH05-S24`、`C01-PROP-EXPIRING-MANDATE` |
+14: | 六 | 雪先封路，议会尚未形成完整答案 | 多旗军队进入王都，跪着的人同时抬头 | `C01-CH06-S29`、`C01-CH06-S32`、`C01-CH07-S33-EST` |
+15: | 七 | 王都居民抬头后仍然跪着 | 莱娅移开剑手，让争论继续；伊芙拉无骑手飞过 | `C01-CH07-S34`、`C01-CH07-S36E`、`C01-PROP-FREE-OATH-STONES` |
+16: 
+17: ## 静态素材连续性硬约束
+18: 
+19: - 莱娅左手护腕从学徒期保留到终章，磨损、修补和拆卸痕迹只增不减。
+20: - 第一面灰旗保留烟熏、湿面粉和未拆净的蓝线，不在后期自动变成整洁王旗。
+21: - 伊芙拉幼年可出现临时救援鞍具，成年阶段不得有永久鞍、缰绳或灰旗纹章。
+22: - 玛尔塔面包房需保留同一烤炉、价牌与模具，让面包大小和价格承担九年时间变化。
+23: - 七塔始终可数为七座；终章城市必须仍在正常运作，压迫感来自同步行为，不来自废墟滤镜。
+24: - 议会构图保持多旗、多语言和互相打断，人物不围绕莱娅作臣服式放射排布。
+25: 
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+179:  */
+180: .campaign-backdrop {
+181:   position: fixed;
+182:   z-index: 0;
+183:   inset: 66px 0 0;
+184: }
+185: 
+186: .campaign-backdrop::after {
+187:   position: absolute;
+188:   inset: 0;
+189:   content: '';
+190:   background:
+191:     linear-gradient(180deg, rgb(8 7 6 / 8%) 0%, rgb(8 7 6 / 46%) 52%, rgb(8 7 6 / 88%) 100%),
+192:     radial-gradient(circle at 50% 30%, transparent 20%, rgb(9 7 5 / 30%) 100%);
+193: }
+194: 
+195: .campaign-backdrop img {
+196:   position: absolute;
+197:   inset: 0;
+198:   width: 100%;
+199:   height: 100%;
+200:   object-fit: cover;
+201:   image-rendering: auto;
+202: }
+203: 
+204: .campaign-backdrop-wash {
+205:   opacity: 0.72;
+206:   filter: blur(18px) saturate(0.7);
+207:   transform: scale(1.08);
+208: }
+209: 
+210: .campaign-backdrop-art {
+211:   filter: saturate(0.92) contrast(1.04);
+212: }
+213: 
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+475: .staging-hero {
+476:   position: relative;
+477:   display: grid;
+478:   grid-template-columns: minmax(280px, 0.92fr) 1fr;
+479:   min-height: 245px;
+480:   overflow: hidden;
+481:   border: 1px solid rgb(228 193 126 / 23%);
+482:   border-radius: 18px;
+483:   background: #251c16;
+484:   box-shadow: 0 0 0 1px rgb(0 0 0 / 33%), 0 14px 36px rgb(0 0 0 / 40%);
+485: }
+486: 
+487: .staging-hero--text-only {
+488:   grid-template-columns: minmax(0, 1fr);
+489: }
+490: 
+491: .staging-hero img {
+492:   width: 100%;
+493:   height: 100%;
+494:   object-fit: cover;
+495:   border-right: 1px solid rgb(228 193 126 / 20%);
+496:   outline: 1px solid rgb(255 255 255 / 8%);
+497:   outline-offset: -1px;
+498:   image-rendering: auto;
+499: }
+500: 
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+746:   .campaign-topbar { grid-template-columns: 44px 1fr; padding-inline: 10px; }
+747:   .campaign-progress { display: none; }
+748:   .story-screen { padding: 16px; }
+749:   .story-card { border-radius: 14px; }
+750:   .mission-brief, .choice-grid, .staging-grid, .staging-hero, .result-detail { grid-template-columns: 1fr; }
+751:   .dialogue-row { grid-template-columns: 64px 1fr; gap: 10px; }
+752:   .dialogue-portrait { width: 64px; height: 88px; }
+753:   .story-actions, .staging-actions { align-items: stretch; flex-direction: column; }
+754:   .campaign-primary { width: 100%; }
+755:   .staging-screen { width: min(100% - 24px, 1120px); padding-top: 18px; }
+756:   .staging-hero img { max-height: 220px; border-right: 0; border-bottom: 1px solid rgb(228 193 126 / 20%); }

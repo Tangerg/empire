@@ -1,0 +1,124 @@
+{
+  "topicId": "C01-STYLE-BORDER-AUTUMN",
+  "label": "灰境边境秋季视觉基准",
+  "originalNarrativeIndexZeroBased": 23,
+  "subgroup": "style-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-STYLE-BORDER-AUTUMN",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "灰境边境秋季视觉基准",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-border-autumn.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+    "sha256": "0d4c2aed1c0a62c9b55861234d9264873ae61dcd2eaa158c4688e26f7c60d0cf",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      22,
+      23,
+      24,
+      25
+    ],
+    "cellIndexZeroBased": 1,
+    "columnZeroBased": 1,
+    "rowZeroBased": 0,
+    "cellLabel": "top-right",
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-STYLE-BORDER-AUTUMN",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-STYLE-BORDER-AUTUMN",
+    "topicId": "C01-STYLE-BORDER-AUTUMN",
+    "label": "灰境边境秋季视觉基准",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/style-border-autumn.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-border-autumn.png",
+    "sha256": "2b96362ea410b49b3f1f0590516ade3a033472e8b6fe945d4e7f83aa0701b0df",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": false,
+  "consumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}

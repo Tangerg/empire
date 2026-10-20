@@ -1,20 +1,17 @@
-[
-  {
-    "phase": "ripple-near",
-    "warmStoneFillBbox": [
-      463,
-      719,
-      772,
-      809
-    ]
-  },
-  {
-    "phase": "ripple-growing",
-    "warmStoneFillBbox": [
-      463,
-      719,
-      773,
-      809
-    ]
-  }
-]
+{
+  "topicId": "C01-FX-10",
+  "phases": [
+    {
+      "phase": "ripple-near",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-near/master.png",
+      "sha256": "44a36d9c6121fbaa00a3022834c5bb2db01dac5d5825616ccc4f060f87be9b7c"
+    },
+    {
+      "phase": "ripple-growing",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-growing/master.png",
+      "sha256": "0412ee30988e3e7efe2ad016865bff324d0c2c4d1fa94e7460c39acebb9fa150"
+    }
+  ],
+  "sourcesBackedUp": true,
+  "requestsPromptsHashesAndImmutableInputsPreserved": true
+}

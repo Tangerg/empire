@@ -1,0 +1,203 @@
+{
+  "topicId": "C01-SCENE-NURSERY-DEBATE",
+  "label": "银林育儿屋争议",
+  "sourceReady": true,
+  "selectedNative": "master.png",
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "formalCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "physicalSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "opaqueFullScene": true,
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 241,
+      "sha256": "3cdbcee3dd94e0cfab2a9f6a47c24069ba654ac1d24ee574646ab9c72a728a2e"
+    },
+    {
+      "path": "audited-source.json",
+      "bytes": 3613,
+      "sha256": "7b5cf056146e4712b56b090c5457af64b3bd300073f137cd8544fc185bf15a24"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 3472,
+      "sha256": "59b6fce7483c9f4a6bddc306bed0f6414a2aceff3269d0ecaaedad589c711adf"
+    },
+    {
+      "path": "consumer-evidence.json",
+      "bytes": 1029,
+      "sha256": "bd884645f2aa44b127d592fdb974c33153744ef0c529e9a5346c08e06242c373"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 639,
+      "sha256": "974c6b97d806f8ed01cbb808453b70c1d3ac5452492fa7e3e30defdff4398517"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 469,
+      "sha256": "72cfcc8f790cd7289646a62b273d095d13cbd84cb1e8e20579387cc33c66ad3a"
+    },
+    {
+      "path": "master.png",
+      "bytes": 2489812,
+      "sha256": "0bd131646d1bea492b396528e4635ba6e3ec3320cb3cfd8a3e221c77422843d1"
+    },
+    {
+      "path": "native.png",
+      "bytes": 2489812,
+      "sha256": "0bd131646d1bea492b396528e4635ba6e3ec3320cb3cfd8a3e221c77422843d1"
+    },
+    {
+      "path": "original-cell-617.png",
+      "bytes": 789755,
+      "sha256": "b0f7dabd159c1cd00330b2197a06a8827e9b52bb752b6b7653d62859f22495f4"
+    },
+    {
+      "path": "original-fullboard.png",
+      "bytes": 3289588,
+      "sha256": "dcf8beb9cd77c6f5b6884e94ae4ed18fc73c335c192bb83bfbf2b015cc107bd7"
+    },
+    {
+      "path": "original-pixel-verification.json",
+      "bytes": 260,
+      "sha256": "57e6f059ae8a256cb66f0c6334a3608c4a2e77ba4edfa56a1d849cc0428b7872"
+    },
+    {
+      "path": "original-runtime-256x144.png",
+      "bytes": 92814,
+      "sha256": "941b59c8a6c645c819c3bfad27caf05dd870595a0f55597ebfbbecfd2c59cb31"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 3934,
+      "sha256": "f588070b69d1dbca4aa2307816c0cc3eb02c368731b8c49a6c3774f94142ef67"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 167756,
+      "sha256": "1e27db45fb9c6e9ec90af8a53f5c78eeba77abc48128584584952741982382fb"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 199511,
+      "sha256": "02fdae98af67b4eb43150992cd1cf9e4bffb9bb28a660fe0b8b16c03f2dbac85"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 1050354,
+      "sha256": "80e56001fecbb0aa5c087ef0811f5053f5355ddac643a58a50564aad704e2810"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 573974,
+      "sha256": "70782f3b66fb0abf09ce0e5dda3a7172e631b6eb7a2879fc4091ed0227bed89a"
+    },
+    {
+      "path": "qa-covers-contact-sheet.png",
+      "bytes": 708259,
+      "sha256": "dd86688a28c1432e02350a51c2b5ffc9ad25acecef0c9049c58b30ea7bfd7a63"
+    },
+    {
+      "path": "qa-exact-crop-512x288.png",
+      "bytes": 347377,
+      "sha256": "1ad6bbd47e001b2fb66564496dbadb6f8e7136743e19d2c4c90515c2ad62798f"
+    },
+    {
+      "path": "qa-full-native-preview.png",
+      "bytes": 735785,
+      "sha256": "f95c9b5a2af3f3dc6f4e7f2f547e8777800aa074189a2df72f169e02e905789b"
+    },
+    {
+      "path": "qa-logical-256x144.png",
+      "bytes": 95930,
+      "sha256": "f92721575e8ccd8025b9d6b769f0a68a7c2c88f76362e7eeca970c68716d6b44"
+    },
+    {
+      "path": "qa-source-native-1664x936.png",
+      "bytes": 2711068,
+      "sha256": "e8797094db369313fb0fe52e424d31fd0760b69e01ebf5cbb4f5f8ef8adf408d"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 2489812,
+      "sha256": "0bd131646d1bea492b396528e4635ba6e3ec3320cb3cfd8a3e221c77422843d1"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 1718,
+      "sha256": "e3eb58716e843624f61f838bd2e290ba247497e77a8b419d5aa68465df7b057a"
+    },
+    {
+      "path": "references/01-ch06-s29.png",
+      "bytes": 2104705,
+      "sha256": "5b085d32548fffdb4366ab85512a7b911f80068e685644bf975043024df82993"
+    },
+    {
+      "path": "references/02-ch04-s19.png",
+      "bytes": 1929052,
+      "sha256": "285fb9000496f4ca995c2b10d84ff2b502574f4e06673da925339bc1135342fe"
+    },
+    {
+      "path": "references/03-ch07-s36e.png",
+      "bytes": 2257816,
+      "sha256": "a3a89ed1676258459abfaacb6a46e2c40c03ad43a97aecd8d66d08778731803c"
+    },
+    {
+      "path": "references/04-original-cell.png",
+      "bytes": 789755,
+      "sha256": "b0f7dabd159c1cd00330b2197a06a8827e9b52bb752b6b7653d62859f22495f4"
+    },
+    {
+      "path": "request.json",
+      "bytes": 4518,
+      "sha256": "804b217facb14cab520733661ac12e91b27207ee9389f1d3376dbf5dbb681c90"
+    },
+    {
+      "path": "semantic-reconstruction.json",
+      "bytes": 1269,
+      "sha256": "4a2542efd5e9d718cd9377c31b3721ce587c1d0e9308fd8629e6ea0f600a6a2e"
+    },
+    {
+      "path": "source-qa.json",
+      "bytes": 1234,
+      "sha256": "cd403c80c3e67fd7a5b5a5464af602a6bce401ddab34e86514b633896408f731"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 4448,
+      "sha256": "e3ec0b515006d9fdf5bf1fc53c3a01b6d83180509df2fb847817c046dd567c8f"
+    },
+    {
+      "path": "story-reference-hashes.json",
+      "bytes": 1247,
+      "sha256": "bb3b1ca2d4f0bae92242e5b0b9b5d0f33693376e3dd1bf2318c7c9c1ba538021"
+    },
+    {
+      "path": "story-source-context.txt",
+      "bytes": 17550,
+      "sha256": "74f559598ce6924eac4e929546c24cc806f4f267d5670c818ff4984c48d1e692"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 2918,
+      "sha256": "a814fd9e007ba392717705009806d6056ba5f345e4b973a780e5709c5a623a74"
+    }
+  ]
+}

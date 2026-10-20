@@ -1,0 +1,7 @@
+{
+  "topicId": "C01-STYLE-BORDER-AUTUMN",
+  "sourceSha256MatchesAudit": true,
+  "runtimeSha256MatchesAudit": true,
+  "originalReconstructionMatchesCurrentPixels": true,
+  "formula": "original RGB \u2192 explicit 2x2 cell inset5 \u2192 ImageOps.fit centered cover \u2192 RGBA opaque"
+}
