@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EmpireCoreRoot Condition="'$(EmpireCoreRoot)' == ''">$(EmpireRoot)/godot/Empire.Core</EmpireCoreRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs"/>
+    <Compile Include="$(EmpireCoreRoot)/**/*.cs" Exclude="$(EmpireCoreRoot)/obj/**/*.cs;$(EmpireCoreRoot)/bin/**/*.cs"/>
+  </ItemGroup>
+</Project>

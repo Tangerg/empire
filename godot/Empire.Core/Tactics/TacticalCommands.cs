@@ -13,21 +13,29 @@ public sealed record ValidatedMovement(
 public delegate void PartingShotResolver(
     JsonObject state, JsonObject unit, Coord from, Coord to, Action<JsonObject> emit);
 
+public sealed record TacticalCommandRules(ReadOnlyContent Content, GridRegistry Grids, ITacticalSpace Space);
+
 public sealed class TacticalCommands
 {
-    private readonly MovementRules movement;
+    private readonly TacticalCommandRules rules;
     private readonly Func<JsonObject, JsonObject, bool> mayAct;
     private readonly UnitDirectiveRegistry directives;
 
     public TacticalCommands(
-        MovementRules movement,
+        TacticalCommandRules rules,
         Func<JsonObject, JsonObject, bool> mayAct,
         UnitDirectiveRegistry directives)
     {
-        this.movement = movement;
+        this.rules = rules;
         this.mayAct = mayAct;
         this.directives = directives;
     }
+
+    private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"),
+        rules.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
+
+    public void TurnToward(JsonObject state, JsonObject unit, Coord from, Coord target, Action<JsonObject> emit) =>
+        TurnToFace(unit, Board(state).Grid.Toward(from, target), emit);
 
     public JsonObject OwnUnit(JsonObject state, int unitId)
     {
@@ -58,13 +66,13 @@ public sealed class TacticalCommands
         if (TacticalQueries.Position(StateJson.Object(requested[0], "path origin")) != origin)
             throw new IllegalActionException("路径起点与单位位置不符");
         var destination = TacticalQueries.Position(StateJson.Object(requested[^1], "path destination"));
-        if (!movement.Board(state).Contains(destination))
+        if (!Board(state).Contains(destination))
             throw new IllegalActionException($"目标格 {destination.X},{destination.Y} 不在战场内");
         if (requested.Count == 1) return new(unitId, origin, destination, new[] { origin });
-        var field = movement.ComputeMoveField(state, unit);
-        var canonical = movement.PathTo(field, state, destination)
+        var field = rules.Space.ComputeMoveField(state, unit);
+        var canonical = rules.Space.PathTo(field, state, destination)
             ?? throw new IllegalActionException($"目标格 {destination.X},{destination.Y} 不在移动范围内");
-        if (!field.Stops.Contains(movement.Board(state).IndexOf(destination)))
+        if (!field.Stops.Contains(Board(state).IndexOf(destination)))
             throw new IllegalActionException("目标格已被占据");
         return new(unitId, origin, destination, canonical);
     }
@@ -82,7 +90,7 @@ public sealed class TacticalCommands
         if (!validated.Moved) return unit;
         if (StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"]) && partingShots is null)
             throw new DomainInvariantException("voluntary movement with zone of control requires a parting-shot resolver");
-        var board = movement.Board(state);
+        var board = Board(state);
         StateJson.Array(board.Map["captureProgress"], "captureProgress")[board.IndexOf(validated.Origin)] = 0;
         unit["x"] = validated.Destination.X;
         unit["y"] = validated.Destination.Y;
@@ -134,7 +142,8 @@ public sealed class TacticalCommands
         var command = StateJson.Object(action["command"], "command");
         if (StateJson.Text(command, "ability") != "wait")
             throw new DomainInvariantException("wait handler received a different ability");
-        var definition = movement.Content.Get("units", StateJson.Text(unit, "type"));
+        var definition = Empire.Core.Determinism.EcmaJson.Parse((rules.Content.Definition("units", StateJson.Text(unit, "type"))
+            ?? throw new DomainInvariantException("command unit definition is missing")).GetRawText())!.AsObject();
         var abilities = StateJson.Array(definition["abilities"], "unit abilities")
             .Concat(StateJson.Array(unit["learnedAbilities"], "learnedAbilities"));
         if (!abilities.Any(ability => StateJson.Text(ability, "ability") == "wait"))
@@ -144,7 +153,7 @@ public sealed class TacticalCommands
         var surviving = ApplyMovement(state, validated, emit, partingShots);
         if (surviving is null) return;
         if (command["target"] is JsonObject target)
-            TurnToFace(surviving, movement.Grid(state).Toward(validated.Destination, TacticalQueries.Position(target)), emit);
+            TurnToFace(surviving, Board(state).Grid.Toward(validated.Destination, TacticalQueries.Position(target)), emit);
         // The core wait ability has no effect or event; finishing the actor is the command's responsibility.
         FinishCommand(state, validated.UnitId);
     }

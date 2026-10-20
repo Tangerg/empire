@@ -120,10 +120,10 @@ public sealed class MovementRules
         return field.Tiles.TryGetValue(board.IndexOf(to), out var tile) ? tile.Cost : null;
     }
 
-    public int ControlRadius(JsonObject state, JsonObject unit)
+    internal static int ControlRadius(StateContent content, JsonObject state, JsonObject unit)
     {
         if (!StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"])) return 0;
-        var definition = Content.Get("units", StateJson.Text(unit, "type"));
+        var definition = content.Get("units", StateJson.Text(unit, "type"));
         return MovementInteger(Math.Max(0, StateJson.Round(StateJson.Number(definition, "zoneOfControl", 1))), "control radius");
     }
 
@@ -136,7 +136,7 @@ public sealed class MovementRules
         foreach (var other in StateJson.Objects(state["units"], "units"))
         {
             if (!TacticalQueries.AreEnemies(state, StateJson.Integer(other, "owner"), owner)) continue;
-            var radius = ControlRadius(state, other);
+            var radius = ControlRadius(Content, state, other);
             if (radius <= 0) continue;
             foreach (var at in board.Ring(TacticalQueries.Position(other), 1, radius))
                 controlled.Add(board.IndexOf(at));

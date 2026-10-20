@@ -46,7 +46,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         foreach (var value in patch["values"]!.AsObject()) definition[value.Key] = value.Value?.DeepClone();
     }
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-    var movement = new MovementRules(packs, grids);
+    var movement = new DefaultTacticalSpace(packs, grids);
     var areaShapes = WeaponAreaRegistry.Core();
     foreach (var area in item["areas"]!.AsArray().OfType<JsonObject>())
     {

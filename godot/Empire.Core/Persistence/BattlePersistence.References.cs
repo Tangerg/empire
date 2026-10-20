@@ -229,11 +229,6 @@ public sealed partial class BattlePersistence
         foreach (var trigger in StateJson.Objects(state["scenario"]!["triggers"], "triggers"))
             foreach (var effect in StateJson.Objects(StateJson.Required(trigger, "effects"), "effects"))
                 EffectPayload(effect, $"触发器 {StateJson.Text(trigger, "id")}");
-        foreach (var cast in StateJson.Objects(state["pendingCasts"], "pendingCasts"))
-        {
-            Reference("castAbilities", "咏唱能力", StateJson.Text(cast, "ability"), "咏唱");
-            Weapon(StateJson.Text(cast, "weapon"), "咏唱");
-        }
         if (state["deployment"] is not null || StateJson.Text(state, "phase") == "deployment")
             Reference("stateFeatures", "战斗功能", "deployment", "战斗");
         foreach (var feature in new[] { "embarkedUnits", "composites" })

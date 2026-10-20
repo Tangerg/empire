@@ -104,7 +104,6 @@ public sealed partial class BattlePersistence
         {
             StoredSchema.Require(pending, "咏唱", ("caster", StoredKind.Integer), ("owner", StoredKind.Integer), ("ability", StoredKind.String),
                 ("weapon", StoredKind.String), ("target", StoredKind.Object), ("origin", StoredKind.Object), ("declaredAt", StoredKind.Number), ("resolveAt", StoredKind.Number));
-            RequireContent("weapons", StateJson.Text(pending, "weapon"), "咏唱");
             if (StateJson.Number(pending["resolveAt"], "resolveAt") <= StateJson.Number(pending["declaredAt"], "declaredAt"))
                 StoredSchema.Reject("咏唱结算时刻不合法");
         }

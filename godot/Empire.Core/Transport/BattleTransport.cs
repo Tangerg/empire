@@ -12,12 +12,14 @@ public sealed record PassengerOption(JsonObject Unit, IReadOnlyList<Coord> Spots
 public sealed class BattleTransport
 {
     private readonly StateContent content;
-    private readonly MovementRules movement;
+    private readonly GridRegistry grids;
+    private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"),
+        grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
 
-    public BattleTransport(JsonArray packs, MovementRules movement)
+    public BattleTransport(JsonArray packs, GridRegistry grids)
     {
         content = new StateContent(packs);
-        this.movement = movement;
+        this.grids = grids;
     }
 
     public static IReadOnlyList<JsonObject> PassengersOf(JsonObject state, int carrierId) =>
@@ -59,7 +61,7 @@ public sealed class BattleTransport
             return $"{StateJson.Text(carrierDefinition, "name")} 不是载具";
         if (!TacticalQueries.AreAllies(state, StateJson.Integer(unit, "owner"), StateJson.Integer(carrier, "owner")))
             return "载具与乘员不是友军";
-        if (movement.Grid(state).Distance(TacticalQueries.Position(unit), TacticalQueries.Position(carrier)) != 1)
+        if (Board(state).Grid.Distance(TacticalQueries.Position(unit), TacticalQueries.Position(carrier)) != 1)
             return "乘员必须与载具相邻";
         if (PassengersOf(state, carrierId).Count >= StateJson.Number(profile["capacity"], "capacity")) return "载具已满";
         var passengerDefinition = content.Get("units", StateJson.Text(unit, "type"));
@@ -79,7 +81,7 @@ public sealed class BattleTransport
             if (StateJson.Integer(carrier, "id") == StateJson.Integer(unit, "id")) continue;
             if (content.Get("units", StateJson.Text(carrier, "type"))["transport"] is null) continue;
             if (!TacticalQueries.AreAllies(state, StateJson.Integer(unit, "owner"), StateJson.Integer(carrier, "owner"))) continue;
-            if (movement.Grid(state).Distance(TacticalQueries.Position(unit), TacticalQueries.Position(carrier)) != 1) continue;
+            if (Board(state).Grid.Distance(TacticalQueries.Position(unit), TacticalQueries.Position(carrier)) != 1) continue;
             var refusal = EmbarkRefusal(state, unit, carrier);
             result.Add(new(carrier, refusal is null, refusal is null ? Array.Empty<string>() : new[] { refusal }));
         }
@@ -95,7 +97,7 @@ public sealed class BattleTransport
         snapshot["done"] = true;
         snapshot["capture"] = 0;
         StateJson.Array(state["embarkedUnits"], "embarkedUnits").Add(new JsonObject { ["carrier"] = carrierId, ["unit"] = snapshot });
-        var board = movement.Board(state);
+        var board = Board(state);
         StateJson.Array(board.Map["captureProgress"], "captureProgress")[board.IndexOf(TacticalQueries.Position(unit))] = 0;
         StateJson.Array(state["units"], "units").Remove(unit);
         emit(new JsonObject { ["type"] = "unitEmbarked", ["unit"] = unitId, ["carrier"] = carrierId });
@@ -110,18 +112,18 @@ public sealed class BattleTransport
         var entry = StateJson.Objects(state["embarkedUnits"], "embarkedUnits").FirstOrDefault(candidate =>
             StateJson.Integer(candidate, "carrier") == carrierId && StateJson.Integer(StateJson.Object(candidate["unit"], "embarked unit"), "id") == unitId);
         if (entry is null) return "该单位不在这辆载具上";
-        var board = movement.Board(state);
+        var board = Board(state);
         if (!board.Contains(at) || board.Distance(TacticalQueries.Position(carrier), at) != 1) return "卸载格必须与载具相邻";
         if (TacticalQueries.UnitAt(state, at) is not null) return "卸载格已被占据";
         var unit = StateJson.Object(entry["unit"], "embarked unit");
         var movementClass = StateJson.Text(content.Get("units", StateJson.Text(unit, "type")), "movementClass");
-        if (!movement.Battlefield(state).Cell(at).Admits(movementClass)) return "该乘员无法进入卸载格";
+        if (!new TacticalBattlefield(state, content).Cell(at).Admits(movementClass)) return "该乘员无法进入卸载格";
         return null;
     }
 
     public IReadOnlyList<PassengerOption> PassengerOptions(JsonObject state, JsonObject carrier) =>
         PassengersOf(state, StateJson.Integer(carrier, "id")).Select(unit => new PassengerOption(unit,
-            movement.Board(state).Neighbours(TacticalQueries.Position(carrier)).Where(at =>
+            Board(state).Neighbours(TacticalQueries.Position(carrier)).Where(at =>
                 DisembarkRefusal(state, StateJson.Integer(carrier, "id"), StateJson.Integer(unit, "id"), at) is null).ToArray())).ToArray();
 
     public void Disembark(JsonObject state, int carrierId, int unitId, Coord at, Action<JsonObject> emit)

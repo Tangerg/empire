@@ -3,7 +3,7 @@ using Empire.Core.Engine;
 using Empire.Core.Tactics;
 using Empire.Core.State;
 var input=JsonNode.Parse(File.ReadAllText(args[0]))!;
-var engine=new GrayFlagEngine(input["packs"]!.AsArray());var vision=new BattleVision(engine.Movement);var count=0;
+var engine=new GrayFlagEngine(input["packs"]!.AsArray());var vision=engine.Space;var count=0;
 foreach(var item in input["cases"]!.AsArray().OfType<JsonObject>()){
  var state=item["state"]!.AsObject();var viewer=item["viewer"]!.GetValue<int>();
  var tiles=new JsonArray(vision.VisibleTiles(state,viewer).Select(i=>(JsonNode)JsonValue.Create(i)!).ToArray());

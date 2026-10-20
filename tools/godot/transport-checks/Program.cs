@@ -38,8 +38,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     }
     var state = item["initial"]!.DeepClone().AsObject();
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-    var movement = new MovementRules(packs, grids);
-    var transport = new BattleTransport(packs, movement);
+    var transport = new BattleTransport(packs, grids);
     var damage = new BattleDamage(packs, grids);
     var events = new JsonArray();
     var hashes = new JsonArray();

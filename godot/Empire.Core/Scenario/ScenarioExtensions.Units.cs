@@ -15,7 +15,7 @@ public sealed partial class ScenarioExtensions
 
     private void TeleportSelected(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        var battlefield = movement.Battlefield(state);
+        var battlefield = new TacticalBattlefield(state, content);
         foreach (var unit in Select(state, effect))
         {
             var destination = OpenCell(state, battlefield, Text(effect, "zone"), Text(content.Get("units", Text(unit, "type")), "movementClass"));
@@ -46,7 +46,7 @@ public sealed partial class ScenarioExtensions
 
     private void RestoreWithdrawn(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        var battlefield = movement.Battlefield(state);
+        var battlefield = new TacticalBattlefield(state, content);
         foreach (var marker in selection.SelectMarkers(state, Object(effect["selector"], "selector")))
         {
             if (marker["fallenUnit"] is not JsonObject fallen) continue;

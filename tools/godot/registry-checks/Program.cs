@@ -150,8 +150,11 @@ new Battle(new JsonObject(), actionKeys).Dispatch(new JsonObject { ["kind"] = "u
 Require(JsonNode.DeepEquals(JsonSerializer.SerializeToNode(new { keys = actionKeys.Keys(), executed,
     handsOff = actionKeys.Keys().Select(kind => actionKeys.HandsOffTurn(new JsonObject { ["kind"] = kind })) }), oracle["actionKeyBoundaries"]), "Action key/dispatch boundary mismatch");
 checkedCount++;
-try { actionKeys.Register("invalid", null!); throw new Exception("Null CLR handler accepted"); } catch (ArgumentNullException) { }
-try { actionKeys.Replace("invalid", null!); throw new Exception("Null CLR handler accepted"); } catch (ArgumentNullException) { }
+try { actionKeys.Register("invalid", (BattleActionHandler)null!); throw new Exception("Null CLR handler accepted"); } catch (ArgumentNullException) { }
+try { actionKeys.Replace("invalid", (BattleActionHandler)null!); throw new Exception("Null CLR handler accepted"); } catch (ArgumentNullException) { }
+
+try { actionKeys.Register("invalid", (RuleActionHandler)null!); throw new Exception("Null rule handler accepted"); } catch (ArgumentNullException) { }
+try { actionKeys.Replace("invalid", (RuleActionHandler)null!); throw new Exception("Null rule handler accepted"); } catch (ArgumentNullException) { }
 
 var metadata = new BattleActionRegistry().Register("custom", (_, _, _) => { }, handsOffTurn: true, duringDeployment: true);
 var metadataClone = metadata.Clone().Seal();

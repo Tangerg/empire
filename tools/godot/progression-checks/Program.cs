@@ -90,7 +90,7 @@ foreach (var entry in input["cases"]!.AsArray())
                 state = sequenceBattle.Snapshot(); value = steps;
                 break;
             case "derived":
-                var field = engine.Movement.ComputeMoveField(state, unit);
+                var field = engine.Space.ComputeMoveField(state, unit);
                 value = new JsonObject
                 {
                     ["abilities"] = Serialize(progression.Careers.UnitAbilityIds(unit)),

@@ -24,18 +24,16 @@ public sealed partial class ScenarioExtensions
     public static IReadOnlyList<string> SupportedConditions { get; } = System.Array.AsReadOnly(new[] { "composite" });
     private readonly StateContent content;
     private readonly ScenarioSystem selection;
-    private readonly MovementRules movement;
     private readonly BattleCombat combat;
     private readonly BattleResources resources;
     private readonly Empire.Core.Terrain.BattleOverlays overlays;
     private readonly Func<JsonObject, JsonObject, bool, JsonObject> spawnUnit;
 
-    public ScenarioExtensions(JsonArray packs, MovementRules movement, BattleCombat combat, BattleResources resources,
+    public ScenarioExtensions(JsonArray packs, BattleCombat combat, BattleResources resources,
         Func<JsonObject, JsonObject, bool, JsonObject> spawnUnit)
     {
         content = new StateContent(packs);
         selection = new ScenarioSystem(packs);
-        this.movement = movement;
         this.combat = combat;
         this.resources = resources;
         overlays = new Empire.Core.Terrain.BattleOverlays(packs);
@@ -152,7 +150,7 @@ public sealed partial class ScenarioExtensions
 
     private void Spawn(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        var battlefield = movement.Battlefield(state);
+        var battlefield = new TacticalBattlefield(state, content);
         foreach (var source in Objects(effect["units"], "units"))
         {
             TacticalQueries.Player(state, Integer(source, "owner"));

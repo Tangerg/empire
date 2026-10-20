@@ -15,10 +15,10 @@ if (args.Length != 1) throw new ArgumentException("Usage: ScenarioTests <oracle.
 var input = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var packs = input["packs"]!.AsArray();
 var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
-var movement = new MovementRules(packs, grids);
+var movement = new DefaultTacticalSpace(packs, grids);
 var resources = new BattleResources();
 var combat = new BattleCombat(packs, grids, resources, movement, WeaponAreaRegistry.Core().Seal());
-var extensions = new ScenarioExtensions(packs, movement, combat, resources, (state, source, done) =>
+var extensions = new ScenarioExtensions(packs, combat, resources, (state, source, done) =>
     BattleStateFactory.SpawnUnit(packs, grids, state, StateJson.Text(source, "unit"), StateJson.Integer(source, "owner"),
         TacticalQueries.Position(source), done: done, source: source));
 var scenarios = new ScenarioSystem(packs, extensions.ConditionMet, extensions.Apply);

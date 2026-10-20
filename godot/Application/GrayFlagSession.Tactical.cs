@@ -26,8 +26,7 @@ public sealed partial class GrayFlagSession
             stamp = new(binding, session.revision);
             state = session.battle.Snapshot();
             canUndo = session.CanUndo;
-            visible = new BattleVision(session.engine.Movement).VisibleUnits(state, Viewer(state))
-                .Select(unit => Integer(unit, "id")).ToHashSet();
+            visible = session.VisibleUnitIds(state, Viewer(state));
             Check();
         }
 
@@ -53,7 +52,7 @@ public sealed partial class GrayFlagSession
         private static BoardCell Cell(Coord at) => new(at.X, at.Y);
         private static Coord Coord(BoardCell at) => new(at.X, at.Y);
         private IReadOnlyList<BoardCell> Cells(IEnumerable<Coord> values) => Freeze(values.Select(Cell));
-        private IReadOnlyList<BoardCell> Indices(IEnumerable<int> values) => Cells(values.Select(session.engine.Movement.Board(state).CoordOf));
+        private IReadOnlyList<BoardCell> Indices(IEnumerable<int> values) => Cells(values.Select(session.engine.Space.Board(state).CoordOf));
         private JsonObject RequireVisible(int id) => visible.Contains(id)
             ? TacticalQueries.RequireUnit(state, id)
             : throw new DomainInvariantException("Unit is not visible in this tactical snapshot.");
@@ -75,21 +74,25 @@ public sealed partial class GrayFlagSession
             TacticalQueries.UnitAt(state, Coord(at)) is null && session.engine.Recruitment.Cards(state, Coord(at)).Count > 0);
         public IReadOnlyList<int> Actors() => Read(() => Freeze((Phase == "playing" ? session.engine.Turns.Actors(state) : [])
             .Where(unit => visible.Contains(Integer(unit, "id"))).Select(unit => Integer(unit, "id"))));
-        public IReadOnlyList<BoardCell> MoveStops(int unit) => Read(() => Indices(session.engine.Movement.ComputeMoveField(state, RequireVisible(unit)).Stops));
+        public IReadOnlyList<BoardCell> MoveStops(int unit) => Read(() => Indices(session.engine.Space.ComputeMoveField(state, RequireVisible(unit)).Stops));
         public IReadOnlyList<BoardCell>? PathTo(int unit, BoardCell at) => Read(() =>
         {
-            var field = session.engine.Movement.ComputeMoveField(state, RequireVisible(unit));
-            return session.engine.Movement.PathTo(field, state, Coord(at)) is { } path ? Cells(path) : null;
+            var field = session.engine.Space.ComputeMoveField(state, RequireVisible(unit));
+            return session.engine.Space.PathTo(field, state, Coord(at)) is { } path ? Cells(path) : null;
         });
-        public IReadOnlyList<BoardCell> Threat(int unit) => Read(() => Indices(session.engine.Movement.ThreatTiles(state, RequireVisible(unit))));
-        public IReadOnlyList<BoardCell> ControlZone(int unit) => Read(() => Indices(session.engine.Movement.HostileControlZone(state, RequireVisible(unit))));
+        public IReadOnlyList<BoardCell> Threat(int unit) => Read(() =>
+        {
+            var actor = RequireVisible(unit);
+            return Indices(session.engine.Space.ThreatTiles(state, actor, session.engine.Space.ComputeMoveField(state, actor)));
+        });
+        public IReadOnlyList<BoardCell> ControlZone(int unit) => Read(() => Indices(session.engine.Space.HostileControlZone(state, RequireVisible(unit))));
         public IReadOnlyList<TacticalCommand> CommandsAt(int unit, BoardCell at) => Read(() => Freeze(
             session.engine.CommandsAt(state, RequireVisible(unit), Coord(at)).Select(option =>
                 new TacticalCommand(option.Key, option.Ability, option.Weapon, option.SelfTargeted, option.Engagement is not null, Cells(option.Targets)))));
         public TacticalAttack Attack(int unit, BoardCell target, BoardCell from, string weapon) => Read(() =>
         {
             var plan = session.engine.Combat.Forecast(state, RequireVisible(unit), Coord(target), Coord(from), weapon);
-            var index = session.engine.Movement.Board(state).IndexOf(Coord(from));
+            var index = session.engine.Space.Board(state).IndexOf(Coord(from));
             var terrainId = Text(state["map"]!["tiles"]![index], "terrain");
             var definition = session.engine.Catalog.Definition("terrains", terrainId)
                 ?? throw new DomainInvariantException($"Unknown terrain {terrainId}");
@@ -114,8 +117,8 @@ public sealed partial class GrayFlagSession
                 new TacticalPassenger(Integer(option.Unit, "id"), Cells(option.Spots)))));
         public IReadOnlyList<BoardCell> DirectionSteps(BoardCell from) => Read(() =>
         {
-            var grid = session.engine.Movement.Grid(state);
-            var board = session.engine.Movement.Board(state);
+            var grid = session.engine.Space.Board(state).Grid;
+            var board = session.engine.Space.Board(state);
             return Cells(grid.Directions.Select(direction => grid.Step(Coord(from), direction.Id)).Where(board.Contains));
         });
     }

@@ -14,7 +14,7 @@ public sealed record CommandOption(string Key, string Ability, string? Weapon, s
 public sealed record AbilityQuery(JsonObject State, JsonObject Unit, Coord At, bool Moved, string? WeaponId = null);
 
 /// <summary>The canonical collaborators read or invoked by ability definitions and command policy.</summary>
-public sealed record AbilityRules(ReadOnlyContent Content, MovementRules Space, BattleCombat Combat,
+public sealed record AbilityRules(ReadOnlyContent Content, ITacticalSpace Space, BattleCombat Combat,
     SupportOrders Support, CareerRules Careers, AbilityRegistry Abilities);
 
 public sealed record AbilityDefinition(string Id, string Name)

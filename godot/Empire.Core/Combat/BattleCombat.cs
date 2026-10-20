@@ -11,17 +11,18 @@ public sealed partial class BattleCombat : ILifecycleEffects
 {
     private readonly StateContent content;
     private readonly BattleResources resources;
-    private readonly MovementRules movement;
+    private readonly ITacticalSpace space;
+    private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"), Forecasts.Grid(state));
     public CombatForecasts Forecasts { get; }
     public BattleDamage Damage { get; }
     public CombatEffects Effects { get; }
     public WeaponAreaRegistry AreaShapes { get; }
-    public BattleCombat(JsonArray packs, GridRegistry grids, BattleResources resources, MovementRules movement,
+    public BattleCombat(JsonArray packs, GridRegistry grids, BattleResources resources, ITacticalSpace space,
         WeaponAreaRegistry areaShapes)
     {
         content = new StateContent(packs);
         this.resources = resources;
-        this.movement = movement;
+        this.space = space;
         AreaShapes = areaShapes;
         Forecasts = new CombatForecasts(packs, grids, resources);
         Damage = new BattleDamage(packs, grids);
@@ -43,7 +44,7 @@ public sealed partial class BattleCombat : ILifecycleEffects
     public IReadOnlyList<Coord> AttackTargets(JsonObject state, JsonObject unit, Coord at, string? weapon = null)
     {
         if (SelectedWeapon(state, unit, weapon) is not { } selected) return Array.Empty<Coord>();
-        return movement.AttackTargetCoords(state, unit, at, selected)
+        return space.AttackTargetCoords(state, unit, at, selected)
             .Where(target => HostileActionAllowed(state, StateJson.Integer(unit, "owner"), at, target)).ToArray();
     }
     public static bool HostileActionAllowed(JsonObject state, int actor, Coord from, Coord target, string kind = "attack")
@@ -66,7 +67,7 @@ public sealed partial class BattleCombat : ILifecycleEffects
         return owner == 0 || TacticalQueries.AreEnemies(state, owner, StateJson.Integer(attacker, "owner")) ? structure : null;
     }
     public IReadOnlyList<Coord> Coverage(JsonObject state, Coord from, Coord aimedAt, string area) =>
-        AreaShapes.Coverage(movement.Board(state), from, aimedAt, area);
+        AreaShapes.Coverage(Board(state), from, aimedAt, area);
     public CombatPlan Forecast(JsonObject state, JsonObject attacker, Coord target, Coord? from = null, string? weapon = null)
     {
         var origin = from ?? TacticalQueries.Position(attacker);
@@ -123,7 +124,7 @@ public sealed partial class BattleCombat : ILifecycleEffects
         var candidates = StateJson.Objects(state["units"], "units").Where(candidate => StateJson.Integer(candidate, "id") != StateJson.Integer(attacker, "id")
             && TacticalQueries.AreAllies(state, StateJson.Integer(candidate, "owner"), StateJson.Integer(attacker, "owner"))
             && StateJson.Text(candidate, "reaction") == "support" && CombatForecasts.CanReact(state, candidate)
-            && movement.Grid(state).Distance(TacticalQueries.Position(candidate), at) == 1)
+            && Forecasts.Grid(state).Distance(TacticalQueries.Position(candidate), at) == 1)
             .SelectMany(supporter => Forecasts.UnitWeapons(supporter).Where(weapon => StateJson.IsTrue(weapon["canCounter"])
                 && Forecasts.IsWeaponReady(state, supporter, weapon)
                 && Forecasts.CanReachWithWeapon(state, weapon, TacticalQueries.Position(supporter), TacticalQueries.Position(defender)))
@@ -140,7 +141,7 @@ public sealed partial class BattleCombat : ILifecycleEffects
     public void ExecuteAttack(JsonObject state, JsonObject unit, Coord at, Coord target, string? weapon, Action<JsonObject> emit)
     {
         var selected = Forecasts.RequireReadyWeapon(state, unit, weapon ?? StateJson.Text(Forecasts.PrimaryWeapon(unit), "id"));
-        if (StateJson.Number(selected, "castTurns", 0) > 0) { BeginCast(state, unit, selected, target, at, emit); return; }
+        if (StateJson.Number(selected, "castTurns", 0) > 0) { BeginCast(state, new(unit, "attack", selected, target, at), emit); return; }
         ExecutePlan(state, Forecast(state, unit, target, at, StateJson.Text(selected, "id")), emit);
     }
     public void DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit) =>

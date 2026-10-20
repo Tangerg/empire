@@ -34,12 +34,12 @@ public static class DefaultAiIntents
 
     private static ScoredAction? BestCommandFor(AiTurnContext context, JsonObject unit)
     {
-        var field = context.Engine.Movement.ComputeMoveField(context.State, unit);
+        var field = context.Engine.Space.ComputeMoveField(context.State, unit);
         ScoredAction? best = null;
         foreach (var stop in field.Stops)
         {
             var at = context.Board.CoordOf(stop);
-            var path = context.Engine.Movement.PathTo(field, context.State, at);
+            var path = context.Engine.Space.PathTo(field, context.State, at);
             if (path is null) continue;
             var tileValue = new TileAppraisal(context, unit, at).Value;
             foreach (var option in context.Engine.CommandsAt(context.State, unit, at))

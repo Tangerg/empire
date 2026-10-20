@@ -33,7 +33,7 @@ internal static class ResourceConsumerChecks
                 foreach (var (field, value) in definition) target[field] = value?.DeepClone();
             }
             var resources = Policies(item["config"]!.AsObject());
-            var combat = new BattleCombat(packs, baseline.Grids, resources, baseline.Movement, baseline.AreaShapes);
+            var combat = new BattleCombat(packs, baseline.Grids, resources, baseline.Space, baseline.AreaShapes);
             var support = new SupportOrders(packs, baseline.Grids, resources, combat.Effects);
             var rules = baseline.AbilityRules with { Content = new ReadOnlyContent(new StateContent(packs)), Combat = combat, Support = support };
             var commands = new AbilityCommands(rules, baseline.Commands);

@@ -34,7 +34,7 @@ public sealed partial class BattleCombat
     public IReadOnlyDictionary<Coord, double> IncomingCasts(JsonObject state)
     {
         var result = new Dictionary<Coord, double>();
-        var board = movement.Board(state);
+        var board = space.Board(state);
         foreach (var cast in ActiveCasts(state))
             foreach (var cell in AreaShapes.Coverage(board, cast.Origin, cast.Target,
                 StateJson.Text(content.Get("weapons", cast.Weapon), "area"))) result[cell] = cast.Remaining;

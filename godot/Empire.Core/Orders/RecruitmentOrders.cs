@@ -12,16 +12,18 @@ public sealed record RecruitCard(string Unit, IReadOnlyList<BattleResources.Cost
 public sealed class RecruitmentOrders
 {
     private readonly StateContent content;
-    private readonly MovementRules movement;
+    private readonly GridRegistry grids;
+    private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"),
+        grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
     private readonly BattleResources resources;
     private readonly Func<JsonObject, string, int, Coord, bool, JsonObject> spawn;
-    public RecruitmentOrders(JsonArray packs, MovementRules movement, BattleResources resources,
+    public RecruitmentOrders(JsonArray packs, GridRegistry grids, BattleResources resources,
         Func<JsonObject, string, int, Coord, bool, JsonObject> spawn)
-    { content = new StateContent(packs); this.movement = movement; this.resources = resources; this.spawn = spawn; }
+    { content = new StateContent(packs); this.grids = grids; this.resources = resources; this.spawn = spawn; }
 
     public string? Refusal(JsonObject state, string type, Coord at)
     {
-        var board = movement.Board(state);
+        var board = Board(state);
         if (!board.Contains(at)) return $"目标格 {at.X},{at.Y} 不在战场内";
         var index = board.IndexOf(at);
         var terrain = content.Get("terrains", StateJson.Text(state["map"]!["tiles"]![index], "terrain"));
@@ -41,7 +43,7 @@ public sealed class RecruitmentOrders
 
     public IReadOnlyList<string> Options(JsonObject state, Coord at)
     {
-        var board = movement.Board(state);
+        var board = Board(state);
         if (!board.Contains(at)) return [];
         var terrain = content.Get("terrains",StateJson.Text(state["map"]!["tiles"]![board.IndexOf(at)],"terrain"));
         return StateJson.Array(terrain["produces"],"produces").Select(value => StateJson.Text(value,"unit"))
@@ -50,7 +52,7 @@ public sealed class RecruitmentOrders
 
     public IReadOnlyList<RecruitCard> Cards(JsonObject state, Coord at)
     {
-        var board = movement.Board(state);
+        var board = Board(state);
         if (!board.Contains(at)) return [];
         var index = board.IndexOf(at);
         var terrain = content.Get("terrains", StateJson.Text(state["map"]!["tiles"]![index], "terrain"));

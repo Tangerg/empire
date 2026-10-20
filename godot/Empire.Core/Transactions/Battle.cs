@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
+using Empire.Core.Actions;
 namespace Empire.Core.Transactions;
 
 /// <summary>A detached result and an unforgeable checkpoint issued by its battle.</summary>
@@ -34,10 +35,12 @@ public sealed class Battle
     private readonly object _checkpointOwner = new();
     private BattleReceipt? _checkpoint;
     private bool _dispatching;
-    public Battle(JsonObject initialState, BattleActionRegistry registry)
+    private readonly ActionExecutionPipeline? pipeline;
+    public Battle(JsonObject initialState, BattleActionRegistry registry, ActionExecutionPipeline? pipeline = null)
     {
         _state = EcmaJson.Normalize(initialState)!.AsObject();
         _handlers = registry.Freeze();
+        this.pipeline = pipeline;
     }
     public JsonObject Snapshot() => (JsonObject)_state.DeepClone();
     public string StateHash => StateDigest.Hash(_state);
@@ -58,20 +61,22 @@ public sealed class Battle
         if (_dispatching) throw new DomainInvariantException("Battle dispatch cannot be reentrant");
         action = EcmaJson.Normalize(action)!.AsObject();
         var kind = action["kind"]?.GetValue<string>() ?? throw new DomainInvariantException("Action requires a kind");
-        if (!_handlers.TryGetValue(kind, out var registration)) throw new IllegalActionException($"没有处理行动类型「{kind}」的规则策略");
+        if (!_handlers.TryGetValue(kind, out var registration) && pipeline is null) throw new IllegalActionException($"没有处理行动类型「{kind}」的规则策略");
         var before = Snapshot();
         var draft = Snapshot();
         var events = new List<JsonObject>();
         _dispatching = true;
         try
         {
-            registration.Handler(draft, (JsonObject)action.DeepClone(), value => events.Add((JsonObject)value.DeepClone()));
+            void Emit(JsonObject value) => events.Add((JsonObject)value.DeepClone());
+            if (pipeline is not null) pipeline.Execute(registration, draft, (JsonObject)action.DeepClone(), Emit);
+            else registration!.Handler(ActionExecutionContext.Bare(draft, Emit), (JsonObject)action.DeepClone());
             var committed = (JsonObject)draft.DeepClone();
             var hash = StateDigest.Hash(committed);
-            var receipt = new BattleReceipt(_checkpointOwner, registration.HandsOffTurn ? null : _checkpoint,
-                before, events, hash, registration.HandsOffTurn);
+            var receipt = new BattleReceipt(_checkpointOwner, registration!.HandsOffTurn ? null : _checkpoint,
+                before, events, hash, registration!.HandsOffTurn);
             _state = committed;
-            _checkpoint = registration.HandsOffTurn ? null : receipt;
+            _checkpoint = registration!.HandsOffTurn ? null : receipt;
             return receipt;
         }
         finally { _dispatching = false; }

@@ -22,6 +22,10 @@ public sealed partial class GrayFlagSession : IBattleSession
     private readonly List<JsonObject> events = new();
     private readonly Stack<UndoCheckpoint> undo = new();
     private sealed record UndoCheckpoint(BattleReceipt Receipt, int ActionCount, int EventCount);
+    private ITacticalGrid RuleGrid(JsonObject state) => engine.Grids.Get(state["rules"]!["grid"]!.GetValue<string>());
+    private HashSet<int> VisibleUnitIds(JsonObject state, int viewer, IReadOnlySet<int>? seen = null) =>
+        state["units"]!.AsArray().OfType<JsonObject>().Where(unit => engine.Space.IsUnitVisible(state, viewer, unit, seen))
+            .Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
     public bool? LastActionHandsOffTurn { get; private set; }
     public bool CanUndo => undo.Count > 0 && !IsComputerTurn && battle.Snapshot()["phase"]?.GetValue<string>() != "over";
 
@@ -86,9 +90,9 @@ public sealed partial class GrayFlagSession : IBattleSession
         if (state["rules"]?["fog"]?.GetValue<bool>() == true)
         {
             var viewer = Viewer(state);
-            var vision = new BattleVision(engine.Movement);
-            visible = vision.VisibleUnits(state, viewer).Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
-            cells = vision.VisibleTiles(state, viewer).Select(index => engine.Movement.Board(state).CoordOf(index)).Select(at => new BoardCell(at.X, at.Y)).ToHashSet();
+            var seen = engine.Space.VisibleTiles(state, viewer);
+            visible = VisibleUnitIds(state, viewer, seen);
+            cells = seen.Select(index => engine.Space.Board(state).CoordOf(index)).Select(at => new BoardCell(at.X, at.Y)).ToHashSet();
         }
         var incoming = engine.Combat.IncomingCasts(state).ToDictionary(pair => new BoardCell(pair.Key.X, pair.Key.Y), pair => pair.Value);
         var objectives = state["composites"]!.AsArray().OfType<JsonObject>().Select(composite => {
@@ -122,11 +126,11 @@ public sealed partial class GrayFlagSession : IBattleSession
         var unit = selectedUnitId is { } id ? TacticalQueries.UnitById(state, id) : null;
         if (unit is not null && engine.Turns.MayAct(state, unit))
         {
-            var field = engine.Movement.ComputeMoveField(state, unit);
+            var field = engine.Space.ComputeMoveField(state, unit);
             foreach (var stop in field.Stops)
             {
-                var at = engine.Movement.Board(state).CoordOf(stop);
-                var path = engine.Movement.PathTo(field, state, at);
+                var at = engine.Space.Board(state).CoordOf(stop);
+                var path = engine.Space.PathTo(field, state, at);
                 if (path is null) continue;
                 foreach (var command in engine.CommandsAt(state, unit, at))
                 {
@@ -144,7 +148,7 @@ public sealed partial class GrayFlagSession : IBattleSession
                     }
                 }
             }
-            foreach (var direction in engine.Movement.Grid(state).Directions)
+            foreach (var direction in RuleGrid(state).Directions)
                 choices.Add(Choice($"朝向：{direction.Name}", "command", null,
                     new JsonObject { ["kind"]="face", ["unit"]=selectedUnitId, ["facing"]=direction.Id }));
             foreach (var option in engine.Progression.Careers.Options(state,unit).Where(option => option.Eligible))
@@ -168,7 +172,7 @@ public sealed partial class GrayFlagSession : IBattleSession
         }
         if (selectedUnitId is null)
         {
-            var board = engine.Movement.Board(state);
+            var board = engine.Space.Board(state);
             for (var index=0;index<state["map"]!["tiles"]!.AsArray().Count;index++)
             {
                 var at=board.CoordOf(index);
@@ -207,8 +211,7 @@ public sealed partial class GrayFlagSession : IBattleSession
         if (before["rules"]?["fog"]?.GetValue<bool>() == true)
         {
             var viewer = Viewer(before);
-            beforeVisible = new BattleVision(engine.Movement).VisibleUnits(before, viewer)
-                .Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
+            beforeVisible = VisibleUnitIds(before, viewer);
         }
         var receipt = battle.Dispatch(command);
         if (receipt.HandsOffTurn) undo.Clear();

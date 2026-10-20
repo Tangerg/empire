@@ -57,7 +57,7 @@ foreach(var test in fixture["cases"]!.AsArray().OfType<JsonObject>()){
  try{session.ProjectHud(new(19,1),selection,at,null,false);throw new Exception("stale HUD accepted");}catch(Empire.Core.DomainInvariantException){checks++;}
 }
 var fogState=fixture["cases"]![1]!["state"]!.DeepClone().AsObject();fogState["rules"]!["fog"]=true;
-var visible=new Empire.Core.Tactics.BattleVision(engine.Movement).VisibleUnits(fogState,1).Select(unit=>unit["id"]!.GetValue<int>()).ToHashSet();
+var visible=engine.Space.VisibleUnits(fogState,1).Select(unit=>unit["id"]!.GetValue<int>()).ToHashSet();
 var hidden=fogState["units"]!.AsArray().OfType<JsonObject>().FirstOrDefault(unit=>!visible.Contains(unit["id"]!.GetValue<int>()));
 Require(hidden is not null,"Hidden forged selection witness");
 if(hidden is not null){var session=GrayFlagSession.FromSave(engine,engine.SaveBattle(fogState));var id=hidden["id"]!.GetValue<int>();var forged=session.ProjectHud(new(5,0),new(){Kind=TacticalSelectionKind.Destination,UnitId=id,Destination=new(hidden["x"]!.GetValue<int>(),hidden["y"]!.GetValue<int>())},null,id,false);Require(!forged.Sections.Any(section=>section.Key is "unit" or "forecast" or "commands"),"Hidden forged selected/inspect IDs expose no private unit/menu/forecast");}

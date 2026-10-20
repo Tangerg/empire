@@ -10,6 +10,9 @@ bash tools/godot/registry-checks/run.sh --frozen
 dotnet run --project tools/godot/kernel-contract-checks -- godot/tests/oracle/kernel-contracts.json godot/tests/oracle/kernel-version-contracts.json "$PWD"
 bash tools/godot/resource-extension-checks/run.sh --frozen
 bash tools/godot/ability-extension-checks/run.sh --frozen
+bash tools/godot/spatial-extension-checks/run.sh
+bash tools/godot/casting-declaration-checks/run.sh --frozen
+bash tools/godot/action-extension-checks/run.sh --frozen
 dotnet run --project tools/godot/application-checks -- .
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
 "$GODOT_NET" --headless --editor --path godot --import
@@ -56,6 +59,10 @@ if [[ "${1:-}" == '--full' ]]; then
   bash tools/godot/kernel-contract-checks/run.sh
   bash tools/godot/resource-extension-checks/run.sh --verify-guard
   bash tools/godot/ability-extension-checks/run.sh --verify-guard
+  bash tools/godot/spatial-extension-checks/run.sh --verify-guard
+  bash tools/godot/casting-declaration-checks/run.sh --verify-guard
+  bash tools/godot/action-extension-checks/run.sh --verify-guard
+  python3 tools/godot/registry-checks/mutants.py
   for suite in feedback staging action-refusal deployment scenario utf16-boundary vision content-validation level-validation persistence-reference progression recruitment transport; do
     bash "tools/godot/$suite-checks/run.sh"
   done

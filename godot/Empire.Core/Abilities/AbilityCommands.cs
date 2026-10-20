@@ -81,7 +81,7 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
         }
         var surviving = commands.ApplyMovement(state, movement, emit, rules.Combat.ResolvePartingShots);
         if (surviving is null) return;
-        if (target is { } at) TacticalCommands.TurnToFace(surviving, rules.Space.Grid(state).Toward(movement.Destination, at), emit);
+        if (target is { } at) commands.TurnToward(state, surviving, movement.Destination, at, emit);
         ability.Execute(rules, query, target, emit);
         TacticalCommands.FinishCommand(state, unit);
     }

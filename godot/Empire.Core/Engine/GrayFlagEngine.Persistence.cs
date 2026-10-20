@@ -40,7 +40,6 @@ public sealed partial class GrayFlagEngine
             .Register("scenarioEffects", ScenarioSystem.SupportedEffects.Concat(ScenarioExtensions.SupportedEffects))
             .Register("areaShapes", AreaShapes.Keys())
             .Register("hitEffects", BattleCombat.SupportedHitEffects)
-            .Register("castAbilities", BattleCombat.SupportedCastAbilities)
             .Register("resources", Resources.Adapters.Keys())
             .Register("tacticEffects", SupportOrders.SupportedTacticEffects)
             .Register("stateFeatures", new[] { "composites", "deployment", "embarkedUnits" })

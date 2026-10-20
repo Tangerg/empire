@@ -121,13 +121,13 @@ public sealed partial class BattleCombat
     public void ResolvePartingShots(JsonObject state, JsonObject unit, Coord from, Coord to, Action<JsonObject> emit)
     {
         if (!StateJson.IsTrue(state["rules"]!["zoneOfControl"])) return;
-        var grid = movement.Grid(state);
+        var grid = Forecasts.Grid(state);
         var controllers = StateJson.Objects(state["units"], "units").Where(other =>
             TacticalQueries.AreEnemies(state, StateJson.Integer(other, "owner"), StateJson.Integer(unit, "owner"))
             && Forecasts.Reaction(StateJson.Text(other, "reaction")).Retaliates && CombatForecasts.CanReact(state, other)
-            && movement.ControlRadius(state, other) > 0
-            && grid.Distance(TacticalQueries.Position(other), from) <= movement.ControlRadius(state, other)
-            && grid.Distance(TacticalQueries.Position(other), to) > movement.ControlRadius(state, other)).ToArray();
+            && MovementRules.ControlRadius(content, state, other) > 0
+            && grid.Distance(TacticalQueries.Position(other), from) <= MovementRules.ControlRadius(content, state, other)
+            && grid.Distance(TacticalQueries.Position(other), to) > MovementRules.ControlRadius(content, state, other)).ToArray();
         foreach (var controller in controllers)
         {
             if (TacticalQueries.UnitById(state, StateJson.Integer(unit, "id")) is null) return;
@@ -163,10 +163,10 @@ public sealed partial class BattleCombat
         var unit = TacticalQueries.RequireUnit(state, unitId);
         var from = TacticalQueries.Position(unit);
         var count = Math.Max(0, StateJson.Round(distance));
-        var board = movement.Board(state);
+        var board = Board(state);
         var facing = mode == "push" ? board.Grid.Toward(source, from) : board.Grid.Toward(from, source);
         var path = new List<Coord> { from };
-        var battlefield = movement.Battlefield(state);
+        var battlefield = new TacticalBattlefield(state, content);
         var movementClass = StateJson.Text(content.Get("units", StateJson.Text(unit, "type")), "movementClass");
         var collided = from == source && count > 0;
         for (var step = 0; step < count && !collided; step++)

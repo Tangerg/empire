@@ -51,7 +51,7 @@ path = core / "Transactions/Battle.cs"
 original = path.read_text()
 mutant = original.replace("IReadOnlyDictionary<string, BattleActionRegistration> _handlers", "BattleActionRegistry _handlers")
 mutant = mutant.replace("_handlers = registry.Freeze();", "_handlers = registry;")
-mutant = mutant.replace("if (!_handlers.TryGetValue(kind, out var registration))", "var registration = _handlers.TryGet(kind); if (registration is null)")
+mutant = mutant.replace("if (!_handlers.TryGetValue(kind, out var registration) && pipeline is null)", "var registration = _handlers.TryGet(kind); if (registration is null && pipeline is null)")
 if mutant == original:
     raise SystemExit("Battle isolation mutation anchor missing")
 path.write_text(mutant)

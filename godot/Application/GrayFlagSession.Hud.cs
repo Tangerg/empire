@@ -19,7 +19,7 @@ public sealed partial class GrayFlagSession
         var sections = new List<TacticalHudSection>();
         var current = TacticalQueries.Player(state, N(state, "currentPlayer"));
         var human = S(current, "controller") == "human";
-        var visible = new BattleVision(engine.Movement).VisibleUnits(state, Viewer(state)).Select(unit => N(unit, "id")).ToHashSet();
+        var visible = VisibleUnitIds(state, Viewer(state));
         var selected = selection.UnitId is { } selectedId && visible.Contains(selectedId) ? TacticalQueries.UnitById(state, selectedId) : null;
         var commandable = human && selected is not null && engine.Turns.MayAct(state, selected) ? selected : null;
         var formations = commandable is null ? [] : engine.Progression.Formations.Options(state, commandable);
@@ -123,13 +123,13 @@ public sealed partial class GrayFlagSession
             }
             var account = Accounts("unit",inspect); if (account.Length > 0) rows.Add(new("unit-resources",$"单位资源 {account}"));
             var commander = state["commanders"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => S(value,"id") == S(inspect,"commanderId"));
-            if (commander is not null) rows.Add(new("commander",$"编队 {S(commander,"id")} · {(TacticalModifiers.CommanderUnit(state,commander) is null ? "指挥官已离场" : TacticalModifiers.ActiveCommanderFor(engine.Movement.Grid(state),state,inspect) is null ? "超出指挥范围" : "光环生效")}"));
+            if (commander is not null) rows.Add(new("commander",$"编队 {S(commander,"id")} · {(TacticalModifiers.CommanderUnit(state,commander) is null ? "指挥官已离场" : TacticalModifiers.ActiveCommanderFor(RuleGrid(state),state,inspect) is null ? "超出指挥范围" : "光环生效")}"));
             Section("unit",Name(inspect),rows);
             if (commandable is not null && N(commandable,"id") == N(inspect,"id"))
             {
                 var id = N(commandable,"id");
                 Section("stances","反应与朝向",engine.Combat.Forecasts.ReactionIds.Select(stance => Action($"reaction:{stance}",engine.Combat.Forecasts.Reaction(stance).Name,new() { ["kind"]="reaction",["unit"]=id,["stance"]=stance },hint:engine.Combat.Forecasts.Reaction(stance).Hint,active:S(commandable,"reaction") == stance))
-                    .Concat(engine.Movement.Grid(state).Directions.Select(direction => Action($"face:{direction.Id}",Facing(state,direction.Id),new() { ["kind"]="face",["unit"]=id,["facing"]=direction.Id },active:S(commandable,"facing") == direction.Id))));
+                    .Concat(RuleGrid(state).Directions.Select(direction => Action($"face:{direction.Id}",Facing(state,direction.Id),new() { ["kind"]="face",["unit"]=id,["facing"]=direction.Id },active:S(commandable,"facing") == direction.Id))));
                 Section("formations","阵形",formations.Select(option => Action($"formation:{S(option.Formation,"id")}",$"{S(option.Formation,"name")}{(option.Current ? " · 解除" : "")}",new() { ["kind"]="changeFormation",["unit"]=id,["formation"]=option.Current ? null : option.Formation["id"]!.DeepClone() },
                     option.Reasons.Count > 0 ? string.Join("；",option.Reasons) : $"攻击 ×{option.Formation["attackMultiplier"]} · 防御 {Signed(D(option.Formation,"defenseDelta"))} · 移动 {Signed(D(option.Formation,"movementDelta"))}",option.Eligible || option.Current,option.Current)));
                 Section("carriers","登载",engine.Transport.CarrierOptions(state,commandable).Select(option => Action($"carrier:{option.Carrier["id"]}",Name(option.Carrier),new() { ["kind"]="embark",["unit"]=id,["carrier"]=option.Carrier["id"]!.DeepClone() },option.Reasons.Count > 0 ? string.Join("；",option.Reasons) : "登上这辆载具",option.Eligible)));
@@ -137,9 +137,9 @@ public sealed partial class GrayFlagSession
                 Section("careers","职业树与转职",engine.Progression.Careers.Options(state,commandable).Select(option => Action($"career:{S(option.Career,"id")}",$"{S(option.Career,"name")} · T{option.Career["tier"]}{(option.Mastered ? " · 精通" : option.Unlocked ? " · 已解锁" : "")}",new() { ["kind"]="changeCareer",["unit"]=id,["career"]=option.Career["id"]!.DeepClone() },option.Reasons.Count > 0 ? string.Join("；",option.Reasons) : option.Mastered ? "已精通，转职后可用该职业的精通技能" : option.Unlocked ? "已解锁，可自由切换" : "满足进阶条件",option.Eligible)));
             }
         }
-        if (cursor is { } tile && engine.Movement.Board(state).Contains(new(tile.X,tile.Y)))
+        if (cursor is { } tile && engine.Space.Board(state).Contains(new(tile.X,tile.Y)))
         {
-            var index = engine.Movement.Board(state).IndexOf(new(tile.X,tile.Y));
+            var index = engine.Space.Board(state).IndexOf(new(tile.X,tile.Y));
             var terrain = Definition("terrains",EcmaJson.ReadString(state["map"]!["tiles"]![index]));
             var rows = new List<TacticalHudRow> {new("coordinate",$"{tile.X}, {tile.Y}"),new("defense",$"防御 {Pct(D(terrain,"defense"))}"),new("elevation",$"海拔 {state["map"]!["elevation"]![index]}"),new("cover",Cover(S(terrain,"cover")))};
             if (B(terrain,"capturable")) rows.Add(new("owner",state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["id"]!.ToJsonString() == state["map"]!["owners"]![index]?.ToJsonString()) is { } holder ? S(holder,"name") : "中立"));
@@ -188,7 +188,7 @@ public sealed partial class GrayFlagSession
     }
     private string Facing(JsonObject state,string facing)
     {
-        var name = engine.Movement.Grid(state).Directions.Where(direction => direction.Id == facing).Select(direction => direction.Name).FirstOrDefault() ?? facing;
+        var name = RuleGrid(state).Directions.Where(direction => direction.Id == facing).Select(direction => direction.Name).FirstOrDefault() ?? facing;
         var arrow = facing switch { "north" => "↑", "east" or "hexEast" => "→", "south" => "↓", "west" or "hexWest" => "←", "northeast" or "hexNortheast" => "↗", "southeast" or "hexSoutheast" => "↘", "southwest" or "hexSouthwest" => "↙", "northwest" or "hexNorthwest" => "↖", _ => "" };
         return name + (arrow.Length > 0 ? " " + arrow : "");
     }

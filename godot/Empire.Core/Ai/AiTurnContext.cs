@@ -23,8 +23,8 @@ public sealed class AiTurnContext
     private TacticalBoard? board;
     public AiAgenda Agenda => agenda ??= AiAgenda.Read(this);
     public IReadOnlyDictionary<int, double> Threat => threat ??= AiMeasures.ThreatMap(this);
-    public TacticalBattlefield Battlefield => battlefield ??= Engine.Movement.Battlefield(State);
-    public TacticalBoard Board => board ??= Engine.Movement.Board(State);
+    public TacticalBattlefield Battlefield => battlefield ??= new TacticalBattlefield(State, Content);
+    public TacticalBoard Board => board ??= new TacticalBoard(Object(State["map"], "map"), Engine.Grids.Get(Text(State["rules"]!["grid"], "grid")));
 
     public AiTurnContext(GrayFlagEngine engine, JsonObject state, int player, double aggression,
         AbilityAiEvaluatorRegistry abilities, AiObjectiveAdvisorRegistry objectives)
@@ -60,7 +60,7 @@ internal static class AiMeasures
         foreach (var foe in context.Enemies(context.Player))
         {
             var weight = MaximumWeaponPower(context.Content, Text(foe, "type")) * (0.5 + 0.5 * HpRatio(context.Content, foe));
-            foreach (var tile in context.Engine.Movement.ThreatTiles(context.State, foe)) threat[tile] = threat.GetValueOrDefault(tile) + weight;
+            foreach (var tile in context.Engine.Space.ThreatTiles(context.State, foe)) threat[tile] = threat.GetValueOrDefault(tile) + weight;
         }
         foreach (var cast in Objects(context.State["pendingCasts"], "pendingCasts"))
         {

@@ -10,6 +10,7 @@
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Determinism/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateJson.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateContent.cs" />
+    <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/ReadOnlyContent.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Geometry/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Tactics/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Progression/FormationRules.cs" />
