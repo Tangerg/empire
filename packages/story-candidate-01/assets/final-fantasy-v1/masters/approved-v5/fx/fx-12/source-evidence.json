@@ -1,0 +1,118 @@
+{
+  "topicId": "C01-FX-12",
+  "label": "山炉热浪",
+  "meaning": "mountain-forge heat",
+  "sourceBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-03.png",
+  "sourceBoardSha256": "78c7a4ec6437de61ec8193afcaaa394b5a3f6c755445a03d1f259c0b5e0e5cf8",
+  "sourceBoardMode": "RGB",
+  "sourceBoardSize": [
+    1254,
+    1254
+  ],
+  "sourceRow1Based": 4,
+  "sourceGridCellsBeforeLegacyCleanup": [
+    [
+      5,
+      945,
+      309,
+      1249
+    ],
+    [
+      319,
+      945,
+      622,
+      1249
+    ],
+    [
+      632,
+      945,
+      935,
+      1249
+    ],
+    [
+      945,
+      945,
+      1249,
+      1249
+    ]
+  ],
+  "subject": "amber vertical wavering heat tongues over a stationary row of small dark coals/stones",
+  "sourceCropHashEvidence": [
+    {
+      "phase": 0,
+      "box": [
+        5,
+        945,
+        309,
+        1249
+      ],
+      "sha256": "a6ce6bb93dcf4ef26a7f7891dee9cb0324762e02a8291a80f899e405cffc7763"
+    },
+    {
+      "phase": 1,
+      "box": [
+        319,
+        945,
+        622,
+        1249
+      ],
+      "sha256": "dbd7a10af743680368239ac54dc961ae4c6322255b28178a92714fbd894593d6"
+    },
+    {
+      "phase": 2,
+      "box": [
+        632,
+        945,
+        935,
+        1249
+      ],
+      "sha256": "722b46727840234cf86014017fdc7d8fb36a5af362a89c7bc6b71aeeda9a7ecb"
+    },
+    {
+      "phase": 3,
+      "box": [
+        945,
+        945,
+        1249,
+        1249
+      ],
+      "sha256": "8f78d36fe246a2647d9588333c094ad7eba5f8247db57f508e26fd036b9e2749"
+    }
+  ],
+  "canonicalTiming": {
+    "assetId": "C01-FFV1-FX-12",
+    "topicId": "C01-FX-12",
+    "label": "山炉热浪",
+    "category": "fx",
+    "png": "runtime/fx/fx-12.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": true,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "newPhaseOrder": [
+    "heat-curl-a",
+    "heat-curl-b",
+    "heat-split",
+    "heat-renewal"
+  ],
+  "timing": {
+    "fps": 12,
+    "loop": true,
+    "equalFrameDurationSeconds": "1/12",
+    "cycleSeconds": "1/3",
+    "old420msRemovalApplies": false
+  },
+  "currentConsumer": null,
+  "sourceAlphaWarning": "Original RGB board and legacy alpha intermediates are reference-only; no chroma cleanup of new generated art."
+}
