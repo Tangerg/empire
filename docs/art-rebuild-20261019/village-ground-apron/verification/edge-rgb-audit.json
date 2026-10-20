@@ -1,0 +1,290 @@
+{
+  "status": "reviewed low-alpha residue, not fully transparent; no cleanup or master edits",
+  "reports": [
+    {
+      "file": "docs/art-rebuild-20261019/village-ground-apron/source-candidate/revision-2/master.png",
+      "sha256": "0d11e2d8ff7c87285541b319053384cc2cac7f35f5cc2c18344143b0a13f06ff",
+      "redBiasedDefinition": "R>140 and R>G+70 and R>B+70",
+      "pixels": 3441,
+      "maxAlpha": 7,
+      "alphaAtLeast8": 0,
+      "backgroundContribution": {
+        "(0, 0, 0)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 7
+        },
+        "(255, 255, 255)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 5
+        },
+        "(126, 135, 91)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 4
+        }
+      }
+    },
+    {
+      "file": "packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/village-ground-apron@2x.png",
+      "sha256": "5f9386b6a5d0945af4178587aa33654186af8c31b95443df56de97cc9dcdcf4c",
+      "redBiasedDefinition": "R>140 and R>G+70 and R>B+70",
+      "pixels": 17,
+      "maxAlpha": 3,
+      "alphaAtLeast8": 0,
+      "backgroundContribution": {
+        "(0, 0, 0)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 3
+        },
+        "(255, 255, 255)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 2
+        },
+        "(126, 135, 91)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 2
+        }
+      }
+    },
+    {
+      "file": "packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/village-ground-apron.png",
+      "sha256": "8bed344917c1008bc972d248ef90dfe5423ab9e563779b6cd5f89c51aa8c9cfa",
+      "redBiasedDefinition": "R>140 and R>G+70 and R>B+70",
+      "pixels": 12,
+      "maxAlpha": 11,
+      "alphaAtLeast8": 2,
+      "backgroundContribution": {
+        "(0, 0, 0)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 11
+        },
+        "(255, 255, 255)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 6
+        },
+        "(126, 135, 91)": {
+          "maxChannelDifferenceFromBackgroundAtFlaggedPixels": 6
+        }
+      }
+    }
+  ],
+  "inSceneProjection": {
+    "method": "Project each flagged native2x pixel center using exact SVG world offset and image registration onto the actual before scene. Composite bound uses that local background; actual after delta may include neighboring interpolation/standing occlusion, not a counterfactual cleanup. No pixels or masters changed.",
+    "pixels": [
+      {
+        "nativePixel": [
+          50,
+          26
+        ],
+        "fullScenePixel": [
+          652,
+          479
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          81,
+          28
+        ],
+        "fullScenePixel": [
+          683,
+          481
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 2,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          82,
+          28
+        ],
+        "fullScenePixel": [
+          684,
+          481
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          83,
+          29
+        ],
+        "fullScenePixel": [
+          685,
+          482
+        ],
+        "alpha": 2,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          89,
+          29
+        ],
+        "fullScenePixel": [
+          691,
+          482
+        ],
+        "alpha": 2,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          42,
+          30
+        ],
+        "fullScenePixel": [
+          644,
+          483
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 2,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          168,
+          43
+        ],
+        "fullScenePixel": [
+          770,
+          496
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 4
+      },
+      {
+        "nativePixel": [
+          163,
+          52
+        ],
+        "fullScenePixel": [
+          765,
+          505
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 1
+      },
+      {
+        "nativePixel": [
+          161,
+          54
+        ],
+        "fullScenePixel": [
+          763,
+          507
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 1
+      },
+      {
+        "nativePixel": [
+          157,
+          57
+        ],
+        "fullScenePixel": [
+          759,
+          510
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 7
+      },
+      {
+        "nativePixel": [
+          31,
+          59
+        ],
+        "fullScenePixel": [
+          633,
+          512
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 1
+      },
+      {
+        "nativePixel": [
+          129,
+          60
+        ],
+        "fullScenePixel": [
+          731,
+          513
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 1
+      },
+      {
+        "nativePixel": [
+          32,
+          61
+        ],
+        "fullScenePixel": [
+          634,
+          514
+        ],
+        "alpha": 2,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 1
+      },
+      {
+        "nativePixel": [
+          95,
+          79
+        ],
+        "fullScenePixel": [
+          697,
+          532
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          113,
+          89
+        ],
+        "fullScenePixel": [
+          715,
+          542
+        ],
+        "alpha": 3,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      },
+      {
+        "nativePixel": [
+          114,
+          89
+        ],
+        "fullScenePixel": [
+          716,
+          542
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 1
+      },
+      {
+        "nativePixel": [
+          103,
+          90
+        ],
+        "fullScenePixel": [
+          705,
+          543
+        ],
+        "alpha": 1,
+        "compositeContributionBound": 1,
+        "actualFullSceneBeforeAfterDifference": 0
+      }
+    ],
+    "maxCompositeContributionBound": 2,
+    "maxObservedBeforeAfterDifference": 7
+  }
+}

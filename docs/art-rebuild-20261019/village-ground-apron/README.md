@@ -21,3 +21,9 @@ One ground-only piece is anchored at world (272,191), beneath the original full-
 - 47 focused TypeScript tests, five exporter/alpha tests and typecheck pass. Tests retain local terrain mutation rejection and exact source/resize assertions.
 
 The broader irregular layout remains unchanged. Road ribbons and some river transitions still need cohesive art work; this pilot addresses only one building entry, without adding clutter.
+
+## Low-alpha fringe qualification
+
+Raw source viewing reveals red-biased RGB in faint generated fringe, not fully transparent-only RGB. The source has 3,441 red-biased pixels, all alpha 1–7; native 2× has 17 at alpha 1–3, and native 1× has 12 at alpha 1–11 after the existing Lanczos export. These original pixels are preserved, never cleaned procedurally. `verification/edge-rgb-audit.json` defines the predicate and records exact pixel/projection measurements. Native black/white/meadow composites are preserved beside it.
+
+At production 2× the flagged pixels contribute at most two 8-bit channel levels when composited onto the actual scene backgrounds, before standing occlusion. Actual before/after differences at their projected centers range from zero to seven levels because normal neighboring edge interpolation also contributes; this is not misreported as isolated fringe attribution. The native 1× meadow composite bound is six channel levels. The inspected native composites and village group show no bright red fringe. This qualification is retained for source-quality review rather than calling the master perfectly clean.
