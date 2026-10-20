@@ -218,8 +218,7 @@ def main() -> None:
     build_fx(topics, assets)
     build_environment(assets)
     payload = {
-        "schemaVersion": "candidate-01-tactical-runtime-hd-v1",
-        "pixelDensity": DENSITY,
+        "schemaVersion": "candidate-01-runtime-hd-v2",
         "assetCount": len(assets),
         "categories": ["combat-unit", "mission-unit", "terrain", "interactive-structure", "battle-prop", "fx", "environment"],
         "assets": sorted(assets, key=lambda asset: asset["topicId"]),

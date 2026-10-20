@@ -1,7 +1,7 @@
 import { fixedNumbers, oneOf } from './candidate-01-documents';
 import manifestJson from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
 import teamVariantsJson from '../../assets/final-fantasy-v1/manifest-authored-team-variants.json';
-import tacticalHdManifestJson from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
+import runtimeHdManifestJson from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 
 /*
  * The closed sets this manifest is allowed to say, stated once as values.
@@ -70,11 +70,58 @@ interface Candidate01AssetManifest {
   assets: Candidate01AssetRecord[];
 }
 
-interface Candidate01TacticalHdManifest {
-  schemaVersion: string;
+interface Candidate01HdAssetRecord {
+  topicId: string;
+  png: string;
+  width: number;
+  height: number;
   pixelDensity: number;
+}
+
+interface Candidate01RuntimeHdManifest {
+  schemaVersion: string;
   assetCount: number;
-  assets: Array<{ topicId: string; png: string; width: number; height: number; pixelDensity: number }>;
+  assets: Candidate01HdAssetRecord[];
+}
+
+function validatePhysicalDimensions(hd: Candidate01HdAssetRecord): void {
+  if (!Number.isFinite(hd.pixelDensity) || hd.pixelDensity < 2
+    || !Number.isSafeInteger(hd.width) || hd.width < 1
+    || !Number.isSafeInteger(hd.height) || hd.height < 1) {
+    throw new Error(`candidate-01 runtime HD has invalid physical dimensions or density: ${hd.topicId}`);
+  }
+}
+
+/** Each physical image owns its density; fullscreen scenes need not share sprite density. */
+export function readCandidate01HdManifest(raw: Candidate01RuntimeHdManifest): ReadonlyMap<string, Candidate01HdAssetRecord> {
+  if (raw.schemaVersion !== 'candidate-01-runtime-hd-v2' || 'pixelDensity' in raw) {
+    throw new Error('candidate-01 runtime HD requires v2 with per-asset density only');
+  }
+  const topics = new Map<string, Candidate01HdAssetRecord>();
+  for (const asset of raw.assets) {
+    validatePhysicalDimensions(asset);
+    topics.set(asset.topicId, asset);
+  }
+  if (raw.assetCount !== raw.assets.length || raw.assetCount !== topics.size) {
+    throw new Error('candidate-01 runtime HD manifest is incomplete or contains duplicate topic ids');
+  }
+  return topics;
+}
+
+export function validateCandidate01HdAsset(record: Candidate01AssetRecord, hd: Candidate01HdAssetRecord): void {
+  validatePhysicalDimensions(hd);
+  if (record.kind === 'scene') {
+    if (record.category !== 'narrative-static' || record.width !== 256 || record.height !== 144
+      || ['frames', 'variants', 'frameWidth', 'frameHeight', 'anchor'].some(key => key in record)) {
+      throw new Error(`candidate-01 runtime HD requires an unframed 256x144 scene: ${record.topicId}`);
+    }
+  } else if (hd.pixelDensity !== 2) {
+    throw new Error(`candidate-01 tactical HD density must remain 2: ${record.topicId}`);
+  }
+  if (hd.topicId !== record.topicId
+    || hd.width !== record.width * hd.pixelDensity || hd.height !== record.height * hd.pixelDensity) {
+    throw new Error(`candidate-01 runtime HD dimensions disagree with the logical asset: ${record.topicId}`);
+  }
 }
 
 export interface Candidate01RuntimeAsset extends Candidate01AssetRecord {
@@ -136,7 +183,7 @@ const runtimeFiles = import.meta.glob<string>(
   ],
   { eager: true, import: 'default', query: '?url' },
 );
-const tacticalHdFiles = import.meta.glob<string>(
+const runtimeHdFiles = import.meta.glob<string>(
   [
     '../../assets/final-fantasy-v1/runtime-hd/**/*.png',
     '../../assets/final-fantasy-v1/runtime-approved-v5/**/*@2x.png',
@@ -144,32 +191,14 @@ const tacticalHdFiles = import.meta.glob<string>(
   { eager: true, import: 'default', query: '?url' },
 );
 const packRoot = '../../assets/final-fantasy-v1/';
-// No assertion needed: the generated JSON already satisfies this shape.
-const tacticalHdManifest: Candidate01TacticalHdManifest = tacticalHdManifestJson;
-const tacticalHdTopics = new Map(
-  tacticalHdManifest.assets.map((record) => [record.topicId, record] as const),
-);
-
-if (
-  tacticalHdManifest.pixelDensity < 2
-  || tacticalHdManifest.assetCount !== tacticalHdManifest.assets.length
-  || tacticalHdManifest.assetCount !== tacticalHdTopics.size
-) {
-  throw new Error('candidate-01 tactical HD manifest is incomplete or contains duplicate topic ids');
-}
+const runtimeHdTopics = readCandidate01HdManifest(runtimeHdManifestJson);
 
 function resolveRuntimeUrl(record: Candidate01AssetRecord): string {
-  const hd = tacticalHdTopics.get(record.topicId);
+  const hd = runtimeHdTopics.get(record.topicId);
   if (hd) {
-    if (
-      hd.pixelDensity !== tacticalHdManifest.pixelDensity
-      || hd.width !== record.width * hd.pixelDensity
-      || hd.height !== record.height * hd.pixelDensity
-    ) {
-      throw new Error(`candidate-01 tactical HD dimensions disagree with the logical asset: ${record.topicId}`);
-    }
-    const hdUrl = tacticalHdFiles[`${packRoot}${hd.png}`];
-    if (!hdUrl) throw new Error(`candidate-01 tactical HD asset is missing from the Vite graph: ${record.topicId}`);
+    validateCandidate01HdAsset(record, hd);
+    const hdUrl = runtimeHdFiles[`${packRoot}${hd.png}`];
+    if (!hdUrl) throw new Error(`candidate-01 runtime HD asset is missing from the Vite graph: ${record.topicId}`);
     return hdUrl;
   }
   const url = runtimeFiles[`${packRoot}${record.png}`];
@@ -222,7 +251,7 @@ for (const variant of teamVariantsJson.variants) {
   if (anchor[0] < 0 || anchor[0] > variant.frameWidth || anchor[1] < 0 || anchor[1] > variant.frameHeight) {
     throw new Error(`authored team variant pivot outside frame: ${key}`);
   }
-  const url = tacticalHdFiles[`${packRoot}${variant.hdPng}`];
+  const url = runtimeHdFiles[`${packRoot}${variant.hdPng}`];
   if (!url) throw new Error(`authored team variant missing from Vite graph: ${key}`);
   teamVariants.set(key, { ...base, png: variant.png, url, anchor,
     width: variant.frameWidth * variant.frames, height: variant.frameHeight,

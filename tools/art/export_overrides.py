@@ -81,7 +81,14 @@ def records(root: Path):
         hd_path = pack / 'manifest-tactical-runtime-hd.json'
         hd = {}
         if hd_path.exists():
-            for entry in read_json(hd_path)['assets']:
+            hd_manifest = read_json(hd_path)
+            if (hd_manifest.get('schemaVersion') != 'candidate-01-runtime-hd-v2'
+                    or 'pixelDensity' in hd_manifest):
+                raise ValueError(f'{campaign}: HD contract requires v2 with per-asset density only')
+            if (type(hd_manifest.get('assetCount')) is not int
+                    or hd_manifest['assetCount'] != len(hd_manifest['assets'])):
+                raise ValueError(f'{campaign}: HD contract requires matching assetCount')
+            for entry in hd_manifest['assets']:
                 if entry['topicId'] in hd:
                     raise ValueError('duplicate HD topic')
                 hd[entry['topicId']] = entry
@@ -192,12 +199,13 @@ def render_scene(root: Path, pack: Path, asset, hd, override):
         raise ValueError(f'{topic}: scene source region must be exactly 16:9; register a reviewed crop explicitly')
     output_records = [(asset, 1)]
     if hd:
-        hd_manifest = read_json(pack / 'manifest-tactical-runtime-hd.json')
-        if ((hd.get('width'), hd.get('height'), hd.get('pixelDensity')) != (512, 288, 2)
-                or hd_manifest.get('pixelDensity') != 2
-                or hd_manifest.get('assetCount') != len(hd_manifest['assets'])):
-            raise ValueError(f'{topic}: scene HD contract must be 512x288 at manifest density 2 with matching assetCount')
-        output_records.append((hd, 2))
+        density = hd.get('pixelDensity')
+        if (type(density) not in (int, float) or not math.isfinite(density) or density < 2
+                or any(type(hd.get(axis)) is not int or hd[axis] < 1 for axis in ('width', 'height'))
+                or hd['width'] != asset['width'] * density
+                or hd['height'] != asset['height'] * density):
+            raise ValueError(f'{topic}: scene HD contract requires positive integer dimensions at its finite density >= 2')
+        output_records.append((hd, density))
     largest_density = output_records[-1][1]
     if width < 256 * largest_density or height < 144 * largest_density:
         raise ValueError(f'{topic}: scene source region is smaller than the largest requested export')
@@ -209,8 +217,7 @@ def render_scene(root: Path, pack: Path, asset, hd, override):
         'sources': {'scene': {**override['scene'], 'sha256': digest,
                               'size': list(source.size), 'mode': source.mode,
                               'alphaExtrema': [255, 255]}},
-        'sceneFit': {'method': 'explicit-region-resize', 'resampling': 'LANCZOS',
-                     'sourceCropBox': crop, 'sourceRegion': box,
+        'sceneFit': {'sourceCropBox': crop, 'sourceRegion': box,
                      'croppedSourcePixels': {'left': box[0], 'top': box[1],
                                              'right': source.width - box[2], 'bottom': source.height - box[3]},
                      'retainedAreaFraction': width * height / (source.width * source.height)},
@@ -218,8 +225,19 @@ def render_scene(root: Path, pack: Path, asset, hd, override):
                         'meaning': 'opaque scene painting; reusable people/props require separate transparent masters'},
         'visualReviewRequired': ['complete master and topic identity', 'native exports', 'actual UI cover crops'],
     }
-    return [(record, density, region.resize((record['width'], record['height']), Image.Resampling.LANCZOS),
-             {**provenance, 'pixelDensity': density}) for record, density in output_records]
+    result = []
+    for record, density in output_records:
+        size = (record['width'], record['height'])
+        native = size == region.size
+        rendered = region.copy() if native else region.resize(size, Image.Resampling.LANCZOS)
+        result.append((record, density, rendered, {
+            **provenance,
+            'sceneFit': {**provenance['sceneFit'],
+                         'method': 'explicit-region-copy' if native else 'explicit-region-resize',
+                         'resampling': None if native else 'LANCZOS'},
+            'pixelDensity': density,
+        }))
+    return result
 
 
 def plan(root: Path, catalog: Path):
@@ -265,7 +283,7 @@ def plan(root: Path, catalog: Path):
                                 'sourceAlpha': source_alpha, 'outputAlpha': validate_alpha(rendered, 'export')}))
         for record, density, rendered, provenance in exports:
             target = within(pack, record['png'])
-            expected_dir = pack / ('runtime-hd' if density == 2 else 'runtime') / category
+            expected_dir = pack / ('runtime' if density == 1 else 'runtime-hd') / category
             if target.parent != expected_dir.resolve() or target.suffix != '.png':
                 raise ValueError(f'{topic}: unexpected export path')
             if target in targets:

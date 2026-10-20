@@ -70,7 +70,7 @@ class NarrativeSceneTests(unittest.TestCase):
     def register_hd(self, **values):
         record = {'topicId': TOPICS[0], 'png': 'runtime-hd/narrative-static/ch01-s05.png',
                   'width': 512, 'height': 288, 'pixelDensity': 2, **values}
-        self.hd_manifest.write_text(json.dumps({'pixelDensity': 2, 'assetCount': 1, 'assets': [record]}))
+        self.hd_manifest.write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2', 'assetCount': 1, 'assets': [record]}))
 
     def test_whole_canvas_opaque_export_provenance_and_untouched_unregistered_assets(self):
         originals = self.outputs()
@@ -234,23 +234,64 @@ class NarrativeSceneTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'unframed scene'):
                     export(self.root, self.catalog)
 
-    def test_wrong_hd_dimensions_density_or_manifest_density_rejected(self):
-        for mutation in [{'width': 1024}, {'height': 144}, {'pixelDensity': 1}]:
+    def test_native_fractional_density_copies_reviewed_region_without_resampling(self):
+        self.make_source((1672, 941))
+        source_bytes = self.source.read_bytes()
+        self.override.update(scene=self.ref(), sourceCropBox=[4, 2, 1668, 938])
+        self.register()
+        canonical = export(self.root, self.catalog)[0]
+        canonical_bytes = (self.root / canonical['output']).read_bytes()
+        self.register_hd(width=1664, height=936, pixelDensity=6.5)
+        manifests = {p: p.read_bytes() for p in self.root.rglob('*.json')}
+        report = export(self.root, self.catalog)
+        self.assertEqual([r['size'] for r in report], [[256, 144], [1664, 936]])
+        self.assertEqual([r['pixelDensity'] for r in report], [1, 6.5])
+        self.assertEqual(report[1]['sceneFit']['method'], 'explicit-region-copy')
+        self.assertIsNone(report[1]['sceneFit']['resampling'])
+        self.assertEqual(report[0]['sceneFit']['resampling'], 'LANCZOS')
+        self.assertEqual(canonical_bytes, (self.root / report[0]['output']).read_bytes())
+        with Image.open(self.source) as source, Image.open(self.root / report[1]['output']) as physical:
+            self.assertEqual(physical.tobytes(), source.crop((4, 2, 1668, 938)).convert('RGBA').tobytes())
+            self.assertEqual(physical.getchannel('A').getextrema(), (255, 255))
+        self.assertEqual(self.source.read_bytes(), source_bytes)
+        self.assertEqual(manifests, {p: p.read_bytes() for p in manifests})
+        self.assertEqual(export(self.root, self.catalog, check=True), report)
+        self.assertEqual(export(self.root, self.catalog), report)
+
+    def test_density_cannot_request_more_pixels_than_reviewed_source_region(self):
+        self.make_source((1672, 941))
+        self.override.update(scene=self.ref(), sourceCropBox=[4, 2, 1668, 938])
+        self.register()
+        self.register_hd(width=1792, height=1008, pixelDensity=7)
+        before = self.outputs()
+        with self.assertRaisesRegex(ValueError, 'smaller than'):
+            export(self.root, self.catalog)
+        self.assertEqual(self.outputs(), before)
+        self.assertFalse((self.pack / 'runtime-hd').exists())
+
+    def test_wrong_hd_dimensions_or_invalid_density_rejected(self):
+        mutations = [{'width': 1024}, {'height': 144}, {'width': 511.5}, {'height': 0},
+                     {'width': True}, {'height': False}, {'width': -512}, {'height': float('inf')}]
+        mutations += [{'pixelDensity': value} for value in
+                      [None, '6.5', True, False, 0, -2, 1, 1.5, float('nan'), float('inf'), -float('inf')]]
+        for mutation in mutations:
             with self.subTest(mutation=mutation):
                 self.register_hd(**mutation)
+                before = self.outputs()
                 with self.assertRaisesRegex(ValueError, 'HD contract'):
                     export(self.root, self.catalog)
-        self.register_hd()
-        data = json.loads(self.hd_manifest.read_text())
-        data['pixelDensity'] = 4
-        self.hd_manifest.write_text(json.dumps(data))
-        with self.assertRaisesRegex(ValueError, 'HD contract'):
-            export(self.root, self.catalog)
-        data['pixelDensity'] = 2
-        data['assetCount'] = 0
-        self.hd_manifest.write_text(json.dumps(data))
-        with self.assertRaisesRegex(ValueError, 'assetCount'):
-            export(self.root, self.catalog)
+                self.assertEqual(self.outputs(), before)
+
+    def test_legacy_schema_global_density_and_wrong_count_rejected(self):
+        for mutation in [{'schemaVersion': 'candidate-01-tactical-runtime-hd-v1'},
+                         {'pixelDensity': 2}, {'pixelDensity': 6.5}, {'assetCount': 0}]:
+            with self.subTest(mutation=mutation):
+                self.register_hd()
+                data = json.loads(self.hd_manifest.read_text())
+                data.update(mutation)
+                self.hd_manifest.write_text(json.dumps(data))
+                with self.assertRaisesRegex(ValueError, 'HD contract'):
+                    export(self.root, self.catalog)
 
     def test_hash_mismatch_and_cross_pack_or_escaped_source_fail_before_writes(self):
         before = self.outputs()

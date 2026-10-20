@@ -319,7 +319,7 @@ alphas, standing pieces and gameplay terrain table retain their existing owners.
 `preview_cohesion.py --root REPOSITORY --output-dir DIRECTORY` builds three
 real-export comparison panels: normal/idle, damaged/walk-a, captured/walk-b.
 It reads production HD sheets and manifests, keeps declared anchors and layer
-order, and records every source hash and authored placement. Native and density2
+order, and records every source hash and authored placement. Native and density 2
 PNGs are art-review evidence, not gameplay screenshots. Runtime team tint,
 shadows, sunlight and animation are explicitly omitted to inspect source art;
 these omissions and any non-level-specific placement choices are in the JSON.
@@ -534,24 +534,46 @@ filter, density and output pixel hash. It explicitly leaves visual review
 required. Pixel reproducibility does not establish framing, scene identity,
 faux transparency or named-person identity.
 
-### Optional 2× output uses the existing resolver
+### Source-density output uses the existing resolver
 
-All inspected scene consumers use `candidate01AssetUrl` through
-`candidate01StoryArt`, `candidate01ChapterArt` or `CANDIDATE_01_MENU_ART` in
-`packages/story-candidate-01/src/presentation/candidate-01-story.ts`.
-`candidate-01-assets.ts` already resolves an explicitly registered HD record,
-checks physical dimensions against the logical record, and includes
-`runtime-hd/**/*.png` in the Vite graph. No second scene resolver is necessary.
+All scene consumers use `candidate01AssetUrl` through `candidate01StoryArt`,
+`candidate01ChapterArt` or `CANDIDATE_01_MENU_ART`. The same resolver and
+`runtime-hd/**/*.png` Vite graph select the registered physical file; no second
+scene resolver or CSS scaling mechanism exists.
 
-For a reviewed scene, an optional entry in the existing
-`manifest-tactical-runtime-hd.json` may name the same topic, a
-`runtime-hd/narrative-static/*.png` path, width 512, height 288 and pixelDensity 2.
-Keep that manifest's density 2, assetCount and categories accurate. The exporter
-validates dimensions, density, count and directory, then independently resizes
-the same source region to 512×288; it never enlarges the 256×144 export. Canonical
-logical dimensions remain 256×144. Without an HD record only the native file is
-exported; no HD path, record or runtime selection is invented. 512×288 is the
-existing density convention, not a claim of full-screen display resolution.
+`manifest-tactical-runtime-hd.json` uses schema
+`candidate-01-runtime-hd-v2`. Each entry owns its physical `width`, `height` and
+`pixelDensity`; there is **no manifest-wide pixelDensity**. The obsolete v1 schema
+and a root density field are rejected. Keep `assetCount`, categories and unique
+IDs accurate. Physical dimensions must be positive integers exactly equal to
+canonical dimensions times a finite density. Tactical/non-scene assets remain
+exactly 2×; only existing unframed 256×144 scenes permit fractional densities ≥2.
+
+For the reviewed 1672×941 scenes with crop `[4,2,1668,938]`, register the unchanged
+`runtime-hd/narrative-static/*.png` path at 1664×936, density 6.5. This preserves
+**every pixel of the reviewed source region**. The exporter copies that crop at
+native physical size and records `explicit-region-copy`/`resampling:null`.
+Canonical 256×144 is independently downsampled with LANCZOS from the same region.
+A smaller explicitly registered physical output also samples the source directly;
+it is never enlarged from the canonical file. Any export larger than the reviewed
+source region is rejected before any output is replaced. Runtime directory choice
+is based on canonical versus physical output, not equality with density 2.
+
+The complete original and its hash, crop, canonical logical geometry, frame data
+and gameplay metadata do not change. The registered density describes source
+samples per logical pixel, not a CSS zoom. A 1664px source still cannot supply 1920px
+or Retina detail pixel-for-pixel; do not upscale the source to claim otherwise.
+The historical tactical builder emits the v2 schema but is not a replacement for
+the reviewed-source registration/export workflow.
+
+When adopting this schema, update the current manifest header, remove its root
+density and change only reviewed scene entries to their declared source-region
+size/density. Preserve every unrelated entry and runtime file. Regenerate those
+scene files with this exporter before building; the runtime intentionally rejects
+an old schema rather than falling back. Without an HD entry the exporter still
+emits only canonical output, but formal approved scene consumer tests require a
+registered source-native file. Raw, export, runtimeBinding and liveGame remain
+separate review stages; source-native export is not live-browser acceptance.
 
 ### Actual UI cover crop is a second review gate
 
@@ -563,7 +585,8 @@ These are the inspected consumers; this tooling does not change their CSS:
   staging hero. `campaign.css` uses cover centered 50% 50%, viewport inset 66px
   from the top, and a separate responsive hero box. The blurred wash additionally
   scales 1.08; do not confuse that treatment with source pixel modification
-- `apps/game/src/main.ts` uses CH01-S05 as the title image; `app.css .title-art`
+- `apps/game/src/main.ts` uses CH01-S05 as the title image;
+  `packages/game-ui/src/styles/app.css .title-art`
   uses cover at 50% 46% with overlays and display filters
 - `apps/experience-lab/src/main.ts` uses that same menu URL;
   `experience.css .experience-art` uses cover at 50% 50%, changing to 60% 50% below
@@ -598,7 +621,7 @@ python3 -m unittest discover -s tools/art -p 'test_narrative_scene_overrides.py'
 python3 -m unittest discover -s tools/art -p 'test_narrative_card_overrides.py' -v
 python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
 python3 -m unittest discover -s tools/art -p 'test_approved_ledger.py' -v
-npm test -- packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts tools/art/approved_catalog_bindings.test.ts
+npm test -- packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts tools/art/approved_catalog_bindings.test.ts
 ```
 
 ### Map-structure presentation variants

@@ -24,7 +24,7 @@ class FrameTests(unittest.TestCase):
                       'frames': 4, 'frameWidth': 32, 'frameHeight': 48, 'anchor': [16, 47],
                       'frameOrder': ORDERS['combat-unit'], 'png': 'runtime/combat-unit/pilot.png'}
         self.manifest.write_text(json.dumps({'assets': [self.asset]}))
-        (self.pack / 'manifest-tactical-runtime-hd.json').write_text(json.dumps({'assets': [
+        (self.pack / 'manifest-tactical-runtime-hd.json').write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2', 'assetCount': 1, 'assets': [
             {'topicId': 'pilot', 'width': 256, 'height': 96, 'pixelDensity': 2,
              'png': 'runtime-hd/combat-unit/pilot.png'}]}))
         frames = {}

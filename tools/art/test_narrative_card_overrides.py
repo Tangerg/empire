@@ -188,7 +188,8 @@ class NarrativeCardTests(unittest.TestCase):
             export(self.root, self.catalog)
         self.mutate_asset(TOPIC, width=192)
         hd = self.pack / 'manifest-tactical-runtime-hd.json'
-        hd.write_text(json.dumps({'assets': [{'topicId': TOPIC, 'width': 384, 'height': 448}]}))
+        hd.write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2', 'assetCount': 1,
+                                  'assets': [{'topicId': TOPIC, 'width': 384, 'height': 448}]}))
         with self.assertRaisesRegex(ValueError, '192x224'):
             export(self.root, self.catalog)
         hd.unlink()

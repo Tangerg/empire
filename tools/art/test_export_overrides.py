@@ -22,7 +22,7 @@ class ExportTests(unittest.TestCase):
                 self.pack = pack
                 assets = [{'topicId': 'C01-PROP-01', 'category': 'battle-prop', 'width': 64, 'height': 64,
                            'anchor': [32, 32], 'png': 'runtime/battle-prop/prop-01.png'}]
-                (pack / 'manifest-tactical-runtime-hd.json').write_text(json.dumps({'assets': [
+                (pack / 'manifest-tactical-runtime-hd.json').write_text(json.dumps({'schemaVersion': 'candidate-01-runtime-hd-v2', 'assetCount': 1, 'assets': [
                     {'topicId': 'C01-PROP-01', 'width': 128, 'height': 128, 'pixelDensity': 2,
                      'png': 'runtime-hd/battle-prop/prop-01.png'}]}))
             (pack / f'manifest-final-{suffix}-v1.json').write_text(json.dumps({'assets': assets}))
@@ -61,6 +61,14 @@ class ExportTests(unittest.TestCase):
         data['assets'][0]['anchor'] = [32, 65]
         manifest.write_text(json.dumps(data))
         with self.assertRaisesRegex(ValueError, 'anchor'):
+            export(self.root, self.catalog)
+
+    def test_tactical_prop_rejects_unintended_density_change(self):
+        path = self.pack / 'manifest-tactical-runtime-hd.json'
+        manifest = json.loads(path.read_text())
+        manifest['assets'][0].update(width=416, height=416, pixelDensity=6.5)
+        path.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, 'unsupported HD contract'):
             export(self.root, self.catalog)
 
     def test_fit_preserves_authored_alpha_without_double_mask(self):
