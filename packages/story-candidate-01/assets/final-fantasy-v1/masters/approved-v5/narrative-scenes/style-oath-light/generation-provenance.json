@@ -1,0 +1,52 @@
+{
+  "topicId": "C01-STYLE-OATH-LIGHT",
+  "tool": "built-in image_gen.imagegen",
+  "generationAttempts": 2,
+  "selectedAttempt": 2,
+  "rejectedAttempts": [
+    {
+      "attempt": 1,
+      "path": "rejected-attempt-01/raw.png",
+      "reason": "Departing civilian visually tethered by an offshoot along the cloak; corrected to an unequivocal unlit gap.",
+      "originalGeneratedPath": "/workspace/scratch/84c9fe948755/generated_images/exec-28db7ac4-5f6f-46bc-9c21-98e9b8be92fa.png"
+    }
+  ],
+  "originalGeneratedPath": "/workspace/scratch/84c9fe948755/generated_images/exec-a751224c-875c-433b-8c06-b421f6d057ba.png",
+  "rawPath": "raw.png",
+  "masterPath": "master.png",
+  "rawSha256": "4740a80d810d2209d0ec123b2319f0acd198b184bcd6cb991fc3fa8a03484c9d",
+  "masterSha256": "4740a80d810d2209d0ec123b2319f0acd198b184bcd6cb991fc3fa8a03484c9d",
+  "rawBytesUnmodified": true,
+  "masterIdenticalToRaw": true,
+  "measuredRawSize": [
+    1672,
+    941
+  ],
+  "rawMode": "RGB",
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "exactRequest": "request.json",
+  "exactPrompt": "prompt.txt",
+  "referenceHashes": "reference-hashes.json",
+  "editReferenceHashes": "reference-hashes-v2.json",
+  "formalCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "cropConvention": "left, top, right exclusive, bottom exclusive",
+  "exportSize": [
+    1664,
+    936
+  ],
+  "canonicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "derivedQaOnly": true,
+  "noProgrammaticPixelRepainting": true
+}

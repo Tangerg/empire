@@ -1,0 +1,48 @@
+{
+  "topicId": "c02-skill-assault",
+  "assetId": "C02-SFV1-skill-assault",
+  "label": "动力突击",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-assault",
+    "topicId": "c02-skill-assault",
+    "label": "动力突击",
+    "category": "skill",
+    "png": "runtime/skill/skill-assault.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-01.png",
+  "originalMasterSha256": "896d2a36f1428d669e2dcdd36c8a3e3cb8801613600e20f6148674993d355fc1",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 1,
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    309
+  ],
+  "sourceMappingEvidence": "Each actual48 runtime icon was visually inspected first, then located by subject on the full original 4x4 board. Catalog order independently agrees. Never inferred from alphabetical final manifest ordering.",
+  "functionalMotif": "Diagonal cylindrical power-weapon emitter with a sweeping blue crescent strike arc.",
+  "semanticConflictDetected": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-assault.png",
+  "runtimeReferenceSha256": "a6c9bac2ccc707a164f2c17b12ae51110261d849d90e527e0d54a56ed3c87a72",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only exact legacy reference crop and separate QA diagnostics; generated artwork will remain immutable."
+}

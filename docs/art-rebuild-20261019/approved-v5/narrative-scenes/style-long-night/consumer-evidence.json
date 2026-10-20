@@ -1,0 +1,34 @@
+{
+  "topicId": "C01-STYLE-LONG-NIGHT",
+  "actualUse": false,
+  "consumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "canonicalRegistered": true,
+  "canonicalShape": [
+    256,
+    144
+  ],
+  "freshStaticCheck": {
+    "command": "rg -n \"style-long-night|C01-STYLE-LONG-NIGHT\" packages/story-candidate-01/src apps",
+    "exitCode": 1,
+    "matches": ""
+  },
+  "auditSource": "docs/art-rebuild-20261019/approved-v5/remaining-narrative-audit/manifest.json",
+  "modeledGeometrySource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "notLiveEvidence": true,
+  "noSelectorOrCodeChanges": true
+}

@@ -1,0 +1,1 @@
+The nominally departing civilian at the left remains visually tethered by a luminous branch along his cloak. This weakens the required right to refuse. The central three-way oath and straight red control comparison are otherwise retained. Parent and worker independently observed the same issue in full/native review.

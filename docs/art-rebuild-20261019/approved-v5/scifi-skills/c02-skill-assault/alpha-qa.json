@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-assault",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 871148,
+  "partialAlphaPixels": 698090,
+  "opaquePixels": 3278,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    65,
+    82,
+    1213,
+    1167
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    65,
+    82,
+    41,
+    87
+  ],
+  "nearOpaquePixelCountGE240": 675121,
+  "diagnostic8pxErosion": {
+    "minAlpha": 250,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 706,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "b31da4415fa226d3a775463de21ea26fe32464fce810e08795d16151a1ed8148",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

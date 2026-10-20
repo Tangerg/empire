@@ -1,0 +1,197 @@
+
+SOURCE: docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md
+32: - `C01-PROP-EXILE-HARDTACK`：逃亡硬饼
+33: - `C01-PROP-CONTROL-FRAGMENT`：控制誓文残片
+34: - `C01-PROP-THREE-PEOPLES-CLASP`：三族盟约扣件
+35: - `C01-STYLE-KEYART`：莱娅面对王冠与多面军旗
+36: - `C01-STYLE-BORDER-AUTUMN`：灰境边境秋季视觉基准
+37: - `C01-STYLE-OATH-LIGHT`：誓火视觉语言
+38: - `C01-STYLE-LONG-NIGHT`：七塔长夜灰光
+39: - `C01-STYLE-ELDER-PEOPLES`：古老诸族文化并置
+40: - `C01-STYLE-CAPITAL-ORDER`：阿斯塔里亚王都秩序
+
+SOURCE: docs/story-candidates/candidate-01/art-assets/01-art-direction.md
+1: # 确认《断冠之誓》的美术方向
+2: 
+3: 《断冠之誓》采用明亮、粗轮廓、夸张比例的俯视卡通战场风格。画面保留阴雨中世纪气氛，但不能让森林、道路、建筑和单位沉入黑色块面。
+4: 
+5: ## 使用这张基准图
+6: 
+7: 后续地图、建筑和单位以这张定稿样张为唯一视觉基准。定稿降低饱和度与塑料高光，保留粗描边和清晰的玩法层级：
+8: 
+9: ![《断冠之誓》统一风格样张](./reference/art-direction-map.png)
+10: 
+11: 样张只定义风格与信息层级，不是最终关卡地图。不要从样张裁切运行时素材，也不要复制其中未登记的临时构图。
+12: 
+13: ## 保持统一的视觉规则
+14: 
+15: 所有新素材遵循以下规则：
+16: 
+17: - **轮廓**：单位、建筑和道路边缘使用稳定的深色描边
+18: - **明度**：森林使用松绿、蓝绿和苔绿分层，道路保持暖赭色，河流保持冷灰蓝
+19: - **比例**：人物头身与武器适度夸张，建筑比真实比例更矮更宽
+20: - **材质**：石材、湿木、金属和布料使用大块明暗面，不使用细碎噪点堆质感
+21: - **阵营色**：灰旗阵营使用银灰与暖琥珀，敌对誓军使用黑铁与受控红
+22: - **玩法层级**：道路、桥梁、建筑基座和单位轮廓在缩略图中仍能区分
+23: - **特效**：誓火、治疗灯与命中效果使用小面积高饱和色，不能覆盖单位轮廓
+24: 
+25: ## 保留剧本辨识度
+26: 
+27: 这套风格使用卡通战场的可读性，不复制任何既有游戏的角色、塔楼、界面或地图。原创辨识度来自灰旗、誓约烽塔、银林、山炉、亡者记忆和断冠战争。
+28: 
+29: ## 各类素材怎么画
+30: 
+31: | 类别 | 视觉要求 |
+32: | --- | --- |
+33: | 地图 | 路线宽度清楚，三桥、河流与丘陵形成明确战术节点 |
+34: | 单位 | 先区分兵器与体型，再补阵营颜色和职业细节 |
+35: | 建筑 | 轮廓矮宽，入口、旗点、损坏态和占领态一眼可见 |
+36: | 物件 | 箱、盾墙、粮车、火盆和誓石保持单格识别度 |
+37: | 图标 | 先读形状，再读颜色；避免细线和写实缩略图 |
+38: | 场景 | 沿用卡通块面与粗描边，可以提高人物和环境细节 |
+
+SOURCE: docs/story-candidates/candidate-01/deep-customized/09-static-assets.md
+29: | 优先级 | 文件名 | 内容 | 要求 |
+30: | --- | --- | --- | --- |
+31: | P0 | `C01-STYLE-KEYART.png` | 莱娅面对王冠与多面军旗 | 王冠在远处，前景是可拆盟约扣，避免天选女王构图 |
+32: | P0 | `C01-STYLE-BORDER-AUTUMN.png` | 灰境边境 | 农田、桥、烟与军旗并存，先有人居后有奇幻 |
+33: | P0 | `C01-STYLE-OATH-LIGHT.png` | 誓火视觉语言 | 意志、名字、见证三层纹理，控制誓文需明显失去拒绝层 |
+34: | P0 | `C01-STYLE-LONG-NIGHT.png` | 七塔灰光 | 灰白、低温、局部设施过亮，避免普通黑暗末日 |
+35: | P1 | `C01-STYLE-ELDER-PEOPLES.png` | 多族文化并置 | 不用统一中世纪欧洲模板 |
+36: | P1 | `C01-STYLE-CAPITAL-ORDER.png` | 王冠王都 | 整洁、安全、秩序真实吸引人，同时保留同步跪拜不安 |
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md
+15: | 七 | 王都居民抬头后仍然跪着 | 莱娅移开剑手，让争论继续；伊芙拉无骑手飞过 | `C01-CH07-S34`、`C01-CH07-S36E`、`C01-PROP-FREE-OATH-STONES` |
+16: 
+17: ## 静态素材连续性硬约束
+18: 
+19: - 莱娅左手护腕从学徒期保留到终章，磨损、修补和拆卸痕迹只增不减。
+20: - 第一面灰旗保留烟熏、湿面粉和未拆净的蓝线，不在后期自动变成整洁王旗。
+21: - 伊芙拉幼年可出现临时救援鞍具，成年阶段不得有永久鞍、缰绳或灰旗纹章。
+22: - 玛尔塔面包房需保留同一烤炉、价牌与模具，让面包大小和价格承担九年时间变化。
+23: - 七塔始终可数为七座；终章城市必须仍在正常运作，压迫感来自同步行为，不来自废墟滤镜。
+24: - 议会构图保持多旗、多语言和互相打断，人物不围绕莱娅作臣服式放射排布。
+25: 
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/05-two-peaces-novel.md
+429: 莱娅把计时扣扣在旧护腕上。那是罗德里克多年前替她系紧的护腕，皮革已经换过两次，内侧仍留着最初勒出的弧痕。
+430: 
+431: 她尚未试完活动手腕的角度，北境信使便闯进墓园。
+432: 
+433: 信使的睫毛结着冰，胸甲上却有灼烧留下的黑洞。他在长桌前摔倒，怀里滚出一只裂开的风塔测压盘。盘针先是疯狂旋转，随后指向七个不同方向。
+434: 
+435: “北境风塔失控。”他说，“它在把暴雪送进山口，也把炉火从屋里抽走。那里的议会请求我们决定最终停塔还是重启。”
+436: 
+437: 话音落下，一层不该出现在夏夜的白霜沿墓碑爬上塞洛裂开的容器。维恩港七座远塔同时亮起，三座过明，两座熄灭，余下两座呈现归名者眼中才看得见的灰色。
+438: 
+439: 莱娅没有先看王冠。
+440: 
+441: 她看向刚刚取得席位的人。安瑟尔医师已经在计算停塔会失去多少病床，乔娅弯腰检查断路铁箱，凯恩摊开北境地图，米蕾尔则把手按在塞洛残存的名字上。布兰站在会场外，没有进来，也没有离开。
+442: 
+443: 第一片雪穿过破损的墓园屋顶，落在那枚已经开始计时的银扣上。
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md
+403: 期限扣还剩六日时，奥德伦开始连接七塔。
+404: 
+405: 他没有从王都进攻，也没有挑战任何军队。趁联盟主力仍在断冠旧战场，他进入圣辉塔地下，把历代大祭司的姓名、教廷医院的服务线与数百年未归名者记忆一同塞进主环。塔上的圣辉先变得过亮，照得附近城镇没有影子，随后光线沿旧接口冲向北境、苍林、白骨原和钢铁誓塔。
+406: 
+407: 莱娅腕上的期限扣裂了一道缝。
+408: 
+409: 所有远程指挥同时中断。
+
+SOURCE: docs/story-candidates/candidate-01/deep-novel-v2/06-war-of-seven-towers-novel.md
+479: 誓光风暴却没有停止。
+480: 
+481: 七塔失去强制连接以后，各自按先前选择存活。共管的风塔与梦塔降到最低运行，白骨塔释放未同意归来的记忆，钢铁塔保住居民城防却关闭王都军路。其余远塔有的被地方摧毁，有的仍握在单一守军手中，反复闪烁。整个大陆的夜被灰光照得没有真正黑下去。
+482: 
+483: 战后，伊芙拉在副塔废墟旁留下新的盟约扣。
+484: 
+485: 扣上没有骑乘环，只有两枚方向相反的布夹，可以分别连接龙旗与人旗。莱娅拿起它时，伊芙拉站在十步外，没有低头。
+486: 
+487: “我不会再命你载我。”莱娅说。
+488: 
+489: 伊芙拉用爪推来龙旗的一角。
+490: 
+491: 莱娅把灰旗夹在另一侧。两面旗并排展开，谁也没有覆盖谁。伊芙拉随后叼起盟约扣，挂到副塔石柱上，没有交给莱娅个人保管。
+492: 
+493: 失联两日后，四处战区的报告陆续送到。
+494: 
+495: 没有一处完好无损。北境雪崩埋了东堡，苍林母树进入提前衰落，白骨原失去十一名活记录员，钢铁塔外的商队有七人在慢开的门前死于誓火。可没有一处因等不到莱娅的命令而完全停止行动。
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+179:  */
+180: .campaign-backdrop {
+181:   position: fixed;
+182:   z-index: 0;
+183:   inset: 66px 0 0;
+184: }
+185: 
+186: .campaign-backdrop::after {
+187:   position: absolute;
+188:   inset: 0;
+189:   content: '';
+190:   background:
+191:     linear-gradient(180deg, rgb(8 7 6 / 8%) 0%, rgb(8 7 6 / 46%) 52%, rgb(8 7 6 / 88%) 100%),
+192:     radial-gradient(circle at 50% 30%, transparent 20%, rgb(9 7 5 / 30%) 100%);
+193: }
+194: 
+195: .campaign-backdrop img {
+196:   position: absolute;
+197:   inset: 0;
+198:   width: 100%;
+199:   height: 100%;
+200:   object-fit: cover;
+201:   image-rendering: auto;
+202: }
+203: 
+204: .campaign-backdrop-wash {
+205:   opacity: 0.72;
+206:   filter: blur(18px) saturate(0.7);
+207:   transform: scale(1.08);
+208: }
+209: 
+210: .campaign-backdrop-art {
+211:   filter: saturate(0.92) contrast(1.04);
+212: }
+213: 
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+475: .staging-hero {
+476:   position: relative;
+477:   display: grid;
+478:   grid-template-columns: minmax(280px, 0.92fr) 1fr;
+479:   min-height: 245px;
+480:   overflow: hidden;
+481:   border: 1px solid rgb(228 193 126 / 23%);
+482:   border-radius: 18px;
+483:   background: #251c16;
+484:   box-shadow: 0 0 0 1px rgb(0 0 0 / 33%), 0 14px 36px rgb(0 0 0 / 40%);
+485: }
+486: 
+487: .staging-hero--text-only {
+488:   grid-template-columns: minmax(0, 1fr);
+489: }
+490: 
+491: .staging-hero img {
+492:   width: 100%;
+493:   height: 100%;
+494:   object-fit: cover;
+495:   border-right: 1px solid rgb(228 193 126 / 20%);
+496:   outline: 1px solid rgb(255 255 255 / 8%);
+497:   outline-offset: -1px;
+498:   image-rendering: auto;
+499: }
+500: 
+
+SOURCE: packages/game-ui/src/styles/campaign.css
+746:   .campaign-topbar { grid-template-columns: 44px 1fr; padding-inline: 10px; }
+747:   .campaign-progress { display: none; }
+748:   .story-screen { padding: 16px; }
+749:   .story-card { border-radius: 14px; }
+750:   .mission-brief, .choice-grid, .staging-grid, .staging-hero, .result-detail { grid-template-columns: 1fr; }
+751:   .dialogue-row { grid-template-columns: 64px 1fr; gap: 10px; }
+752:   .dialogue-portrait { width: 64px; height: 88px; }
+753:   .story-actions, .staging-actions { align-items: stretch; flex-direction: column; }
+754:   .campaign-primary { width: 100%; }
+755:   .staging-screen { width: min(100% - 24px, 1120px); padding-top: 18px; }
+756:   .staging-hero img { max-height: 220px; border-right: 0; border-bottom: 1px solid rgb(228 193 126 / 20%); }

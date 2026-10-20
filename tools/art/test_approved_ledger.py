@@ -91,6 +91,23 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         self.assertEqual(result['summary']['formalBound'], 0)
 
+    def test_scifi_skill_requires_own_full_identity_source(self):
+        topic = {**self.topic, 'topicId': 'c02-skill-assault', 'category': 'skill', 'qualityTier': 'approved-chunky-v5-export-verified'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest, 'campaign': 'story-candidate-02', 'label': 'Assault'}])
+        self.progress.update(topicStages={topic['topicId']: {'raw': 'reviewed'}}, formalRuntimeBoundTopics=1)
+        self.write(DOC / 'approved-v5/progress.json', self.progress)
+        with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
+            build(self.root)
+        raw = self.root / 'pack/masters/approved-v5/skills/c02-skill-assault'
+        raw.mkdir(parents=True)
+        (raw / 'master.png').write_bytes(b'preserved independent source')
+        (raw / 'raw.png').write_bytes(b'duplicate cannot count twice')
+        result = build(self.root)
+        self.assertEqual(result['summary']['formalBound'], 1)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(len(result['canonicalTopics'][0]['selectedRawMasters']), 1)
+
     def test_full_scifi_topic_identity_locates_raw_without_counting_binding(self):
         topic = {**self.topic, 'topicId': 'c02-battle-prop-cargo-crates', 'category': 'battle-prop'}
         self.write('pack/manifest.json', {'assets': [topic]})

@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 465,
+    "formalBound": 471,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 76,
-      "skill": 48,
+      "narrative-static": 80,
+      "skill": 50,
       "status": 24,
       "terrain": 32
     },
-    "rawPreservedTopics": 465,
+    "rawPreservedTopics": 473,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1815,13 +1815,20 @@
       "category": "narrative-static",
       "label": "古老诸族文化并置",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/style-elder-peoples/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-elder-peoples.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-elder-peoples/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-STYLE-KEYART",
@@ -1829,13 +1836,20 @@
       "category": "narrative-static",
       "label": "莱娅面对王冠与多面军旗",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/style-keyart/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-keyart.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-keyart/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-STYLE-LONG-NIGHT",
@@ -1843,13 +1857,20 @@
       "category": "narrative-static",
       "label": "七塔长夜灰光",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/style-long-night/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-long-night.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-long-night/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-STYLE-OATH-LIGHT",
@@ -1857,13 +1878,20 @@
       "category": "narrative-static",
       "label": "誓火视觉语言",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/style-oath-light/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-oath-light.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-oath-light/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-UNIT-ANCIENT-DRAGON",
@@ -8346,8 +8374,11 @@
       "category": "fx",
       "label": "荒原强风",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-curl-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-curl-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -8360,8 +8391,11 @@
       "category": "fx",
       "label": "山炉热浪",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -13550,13 +13584,20 @@
       "category": "skill",
       "label": "动力突击",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-assault/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-assault.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-boarding",
@@ -13746,13 +13787,20 @@
       "category": "skill",
       "label": "援护",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-guard/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-heat-zone",

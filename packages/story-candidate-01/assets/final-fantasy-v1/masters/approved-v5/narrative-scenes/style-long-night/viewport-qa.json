@@ -1,0 +1,130 @@
+[
+  {
+    "view": "story-desktop",
+    "targetSize": [
+      960,
+      534
+    ],
+    "input": "qa-source-native-1664x936.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropInPhysicalExport": [
+      -1.1368683772161603e-13,
+      5.199999999999932,
+      1664.0,
+      930.8000000000001
+    ],
+    "sourceAreaRetainedFraction": 0.9888888888888892,
+    "horizontalLossFraction": -2.220446049250313e-16,
+    "verticalLossFraction": 0.01111111111111096,
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerReferenceProven": false,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+    "provenance": "Offline CSS-cover geometry simulation. Not browser/live evidence. Display filters, text and overlays are not simulated. Exact topic has no proven consumer, so cover simulations are hypothetical.",
+    "visualReview": "Desktop and wide mobile staging retain all seven separate principal skyline beacons and the service hall.",
+    "semanticsFullyPreserved": true
+  },
+  {
+    "view": "story-mobile",
+    "targetSize": [
+      390,
+      778
+    ],
+    "input": "qa-source-native-1664x936.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropInPhysicalExport": [
+      597.3984575835476,
+      0.0,
+      1066.6015424164525,
+      936.0
+    ],
+    "sourceAreaRetainedFraction": 0.2819730077120822,
+    "horizontalLossFraction": 0.7180269922879178,
+    "verticalLossFraction": 0.0,
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerReferenceProven": false,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+    "provenance": "Offline CSS-cover geometry simulation. Not browser/live evidence. Display filters, text and overlays are not simulated. Exact topic has no proven consumer, so cover simulations are hypothetical.",
+    "visualReview": "Portrait cover keeps the central bright beacon, part of its two neighbors, the service hall and water flow, but loses the seven-tower count. Cold-grey atmosphere survives; the full seven-network subject does not.",
+    "semanticsFullyPreserved": false
+  },
+  {
+    "view": "staging-inset",
+    "targetSize": [
+      280,
+      245
+    ],
+    "input": "qa-source-native-1664x936.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropInPhysicalExport": [
+      297.1428571428572,
+      0.0,
+      1366.8571428571427,
+      936.0
+    ],
+    "sourceAreaRetainedFraction": 0.6428571428571428,
+    "horizontalLossFraction": 0.3571428571428572,
+    "verticalLossFraction": 0.0,
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerReferenceProven": false,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+    "provenance": "Offline CSS-cover geometry simulation. Not browser/live evidence. Display filters, text and overlays are not simulated. Exact topic has no proven consumer, so cover simulations are hypothetical.",
+    "visualReview": "Staging inset removes both outermost beacons, leaving five, while preserving local service and cold light. It is not a complete seven-tower view.",
+    "semanticsFullyPreserved": false
+  },
+  {
+    "view": "staging-mobile",
+    "targetSize": [
+      366,
+      220
+    ],
+    "input": "qa-source-native-1664x936.png",
+    "nativeExportCrop": [
+      4,
+      2,
+      1668,
+      938
+    ],
+    "sourceCropInPhysicalExport": [
+      53.41818181818178,
+      0.0,
+      1610.581818181818,
+      936.0
+    ],
+    "sourceAreaRetainedFraction": 0.9357954545454547,
+    "horizontalLossFraction": 0.06420454545454546,
+    "verticalLossFraction": 0.0,
+    "objectPosition": [
+      0.5,
+      0.5
+    ],
+    "actualConsumerReferenceProven": false,
+    "cssSource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+    "provenance": "Offline CSS-cover geometry simulation. Not browser/live evidence. Display filters, text and overlays are not simulated. Exact topic has no proven consumer, so cover simulations are hypothetical.",
+    "visualReview": "Desktop and wide mobile staging retain all seven separate principal skyline beacons and the service hall.",
+    "semanticsFullyPreserved": true
+  }
+]

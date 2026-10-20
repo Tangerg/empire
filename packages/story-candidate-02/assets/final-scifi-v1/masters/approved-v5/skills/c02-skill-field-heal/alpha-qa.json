@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-field-heal",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 840032,
+  "partialAlphaPixels": 730333,
+  "opaquePixels": 2151,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    130,
+    60,
+    1160,
+    1157
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    130,
+    60,
+    94,
+    97
+  ],
+  "nearOpaquePixelCountGE240": 697821,
+  "diagnostic8pxErosion": {
+    "minAlpha": 105,
+    "pixelsBelow240": 254,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 721,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "49f2386c2a557f933d1fa7b8d3f07951b320374b5bd834f9b21899192866606c",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

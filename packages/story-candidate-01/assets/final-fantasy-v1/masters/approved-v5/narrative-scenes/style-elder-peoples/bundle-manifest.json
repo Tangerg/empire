@@ -1,0 +1,203 @@
+{
+  "topicId": "C01-STYLE-ELDER-PEOPLES",
+  "label": "古老诸族文化并置",
+  "sourceReady": true,
+  "selectedNative": "master.png",
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "formalCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "physicalSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "opaqueFullScene": true,
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 276,
+      "sha256": "ab9d388717bb46960377a76dc7947f78e5c1fe436a87a958b8d88c370f97007b"
+    },
+    {
+      "path": "audited-source.json",
+      "bytes": 3605,
+      "sha256": "a8aea92d17f5c59e1041ceae63c4e9aba95944be8264cd3350ca2734df83e0ad"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 3472,
+      "sha256": "59b6fce7483c9f4a6bddc306bed0f6414a2aceff3269d0ecaaedad589c711adf"
+    },
+    {
+      "path": "consumer-evidence.json",
+      "bytes": 1043,
+      "sha256": "2bdd2dfc64486b0a2ead3e60a9eb6fa00487a2c825859541776ed2435113a997"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 496,
+      "sha256": "ab6e889d38536c0c9030da6ec0be8f70bf4a4a94e6ee65f2261c0431aa2956a9"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 469,
+      "sha256": "78eee387d18b016cb9f3fec56b807e1b1908a992d1ada4ca0c996317a7a930c0"
+    },
+    {
+      "path": "master.png",
+      "bytes": 2643904,
+      "sha256": "c350b903d521817078946ae75d762d1d902a1db4cc943aa8bb18c257048adfc3"
+    },
+    {
+      "path": "native.png",
+      "bytes": 2643904,
+      "sha256": "c350b903d521817078946ae75d762d1d902a1db4cc943aa8bb18c257048adfc3"
+    },
+    {
+      "path": "original-cell-617.png",
+      "bytes": 702226,
+      "sha256": "483a82c9428feb5ae7a3dfba0f6b96e9ff7f0d4323df5769c1a4f2727ca99eeb"
+    },
+    {
+      "path": "original-fullboard.png",
+      "bytes": 3007939,
+      "sha256": "7642d75dd7dbd1892a5802cf62657bd9475e5d700ef7b9d177d463c877160670"
+    },
+    {
+      "path": "original-pixel-verification.json",
+      "bytes": 256,
+      "sha256": "f187aa4377fa3aca94175428bc0321e4f32647a565de67286d5698dfcc0803f3"
+    },
+    {
+      "path": "original-runtime-256x144.png",
+      "bytes": 84412,
+      "sha256": "01a1380674c09a19eae2d21045be2b6cc04bec2579550d3a21d9fcb199e292b6"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 5348,
+      "sha256": "6a6e41ea615d330c9c0ab3ee25e6486b79fef8240e6f057c89a28075133d8352"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 171278,
+      "sha256": "3f4d7046dd2f7e8f80798b3a69cc2d771e8c707e187b398402ab829f49667c25"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 205422,
+      "sha256": "973308c47b7bae101d0109d04e2f28f8de5b956ba8b7fc57263254713506c1b7"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 1102902,
+      "sha256": "99b0a1d95ac9c9c3cc019b20782cfc17c8ec2d72c575ced4c384cad35403d6ab"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 605058,
+      "sha256": "b3b9c74894894a1e9b8fdd2ae272661825b06943897f762ebfd4db92a807c017"
+    },
+    {
+      "path": "qa-covers-contact-sheet.png",
+      "bytes": 724822,
+      "sha256": "fc60de6ddd88836e580e45956c0957d235efa7df4a15572d49f62b0a5b89a45a"
+    },
+    {
+      "path": "qa-exact-crop-512x288.png",
+      "bytes": 359417,
+      "sha256": "b342dc51ca91b531c45963e07243738cbf0a85dff2d27a511c99b72dcfdbbf23"
+    },
+    {
+      "path": "qa-full-native-preview.png",
+      "bytes": 766323,
+      "sha256": "b6d05a9b6dfe7c44a1f0e6df916817c50437178d5c98f1c4af68976241004fc9"
+    },
+    {
+      "path": "qa-logical-256x144.png",
+      "bytes": 99031,
+      "sha256": "a055af74624f2f6af807b25d855b34d97d07868eae0b04116b17641a0bd312c7"
+    },
+    {
+      "path": "qa-source-native-1664x936.png",
+      "bytes": 2901362,
+      "sha256": "897b3b44899464c452ecd9bf32f67ce8d5635b3b3f5e476f187a0e6a02300a33"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 2643904,
+      "sha256": "c350b903d521817078946ae75d762d1d902a1db4cc943aa8bb18c257048adfc3"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 1684,
+      "sha256": "e4854b635bfc7caa381b6f65ffad47b350c299e4e4f922b23a30994065d20f51"
+    },
+    {
+      "path": "references/01-calibration-v5-concept.png",
+      "bytes": 1981739,
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6"
+    },
+    {
+      "path": "references/02-ch06-s29.png",
+      "bytes": 2104705,
+      "sha256": "5b085d32548fffdb4366ab85512a7b911f80068e685644bf975043024df82993"
+    },
+    {
+      "path": "references/03-idle.png",
+      "bytes": 988324,
+      "sha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739"
+    },
+    {
+      "path": "references/04-idle.png",
+      "bytes": 929973,
+      "sha256": "22e2a842a5552e6cb511004271dfc234df1d0c45ea989d853cc6ea67ba9948e6"
+    },
+    {
+      "path": "request.json",
+      "bytes": 5932,
+      "sha256": "627862347ffa78aeef196450128c84acb8fa71dcfc64b6b8d782f29596e3a206"
+    },
+    {
+      "path": "semantic-reconstruction.json",
+      "bytes": 904,
+      "sha256": "79b3e463112ff8ca6d3b9e7354351c173cc076dda9e6e84f486e580d464b0a7a"
+    },
+    {
+      "path": "source-qa.json",
+      "bytes": 1233,
+      "sha256": "9f3e20863bedbc5c6398d941733148a1607c6bdcd7e9d06bc854a85f5aced316"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 3290,
+      "sha256": "fc24ead3bcf0af435392bbffa46c56c329d93ae5229b1fae05ef12a7869848bb"
+    },
+    {
+      "path": "story-reference-hashes.json",
+      "bytes": 2532,
+      "sha256": "6bda06a047eee2c64738fb2f4cde931d4458476e25371c6c4c06137b0d9d6ba2"
+    },
+    {
+      "path": "story-source-context.txt",
+      "bytes": 32059,
+      "sha256": "f202ea2f330eb1e26bdebff993a3dffa8fae8fbde9c0331508715435b9d7d7f3"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 2918,
+      "sha256": "a814fd9e007ba392717705009806d6056ba5f345e4b973a780e5709c5a623a74"
+    }
+  ]
+}

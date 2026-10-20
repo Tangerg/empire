@@ -1,5 +1,5 @@
 {
-  "updatedUTC": "2026-10-20T04:59:00Z",
+  "updatedUTC": "2026-10-20T05:16:00Z",
   "counting": "Assignments do not imply completion; scope-ledger owns formal stages.",
   "historicalAssignments": [
     {
@@ -51,49 +51,47 @@
   "historicalAssignmentsAsOfUTC": "2026-10-19T16:26:25Z",
   "batches": [
     {
-      "family": "supplemental-scenes",
-      "current": [
-        "C01-SCENE-ARCHIVE-FORGE-OPEN",
-        "C01-SCENE-NURSERY-DEBATE",
-        "C01-SCENE-OLD-FLAG-HOMECOMING",
-        "C01-SCENE-REFUGEE-BRIDGEWORK"
-      ],
-      "stage": "Raw reviewed; final metadata and binding queued behind frozen457 regression"
-    },
-    {
-      "family": "style-plates",
+      "family": "C02-skill",
       "assignments": {
         "redraw_border_capital_styleplates": [
-          "C01-STYLE-BORDER-AUTUMN",
-          "C01-STYLE-CAPITAL-ORDER"
+          "c02-skill-scan",
+          "c02-skill-field-heal"
         ],
         "redraw_forge_nursery_debates": [
-          "C01-STYLE-ELDER-PEOPLES",
-          "C01-STYLE-KEYART"
+          "c02-skill-snipe",
+          "c02-skill-suppress",
+          "c02-skill-boarding",
+          "c02-skill-quick-repair"
         ],
         "redraw_homecoming_bridgework_scenes": [
-          "C01-STYLE-LONG-NIGHT",
-          "C01-STYLE-OATH-LIGHT"
+          "c02-skill-deploy-turret",
+          "c02-skill-brace-platform",
+          "c02-skill-heat-zone",
+          "c02-skill-emergency-water"
         ]
-      }
+      },
+      "alreadyBound": [
+        "c02-skill-assault",
+        "c02-skill-guard"
+      ]
     },
     {
       "family": "ambient-fx",
       "current": [
-        "C01-FX-09",
-        "C01-FX-10"
+        "C01-FX-11",
+        "C01-FX-12"
       ],
-      "review": "FX09 revision2 contact-row/cadence correction underway; FX10 source quartet native/cohort review finishing; neither formally bound"
+      "review": "FX11 tuft contact repair; FX12 final source/seam review. FX09/10 bound with measured cadence caveats; no live playback claim"
     },
     {
       "family": "integration-engineering",
-      "current": [
-        "frozen457 one-worker regression",
-        "next reviewed scene and ambient bindings"
-      ],
       "completedFamilies": [
-        "C01 character cards22/22",
+        "C01 narrative80/80:43 scene/reference illustrations+22 transparent-source character cards+15 props",
         "C01 canonical terrain32/32"
+      ],
+      "current": [
+        "C02 native48 skill catalog regression",
+        "remaining FX export/semantic validation"
       ],
       "liveGame": "pending"
     }
