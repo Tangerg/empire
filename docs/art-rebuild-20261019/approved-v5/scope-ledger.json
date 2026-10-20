@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 382,
+    "formalBound": 386,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 23,
+      "narrative-static": 27,
       "skill": 48,
       "status": 24,
       "terrain": 8
     },
-    "rawPreservedTopics": 382,
+    "rawPreservedTopics": 386,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1171,13 +1171,20 @@
       "category": "narrative-static",
       "label": "誓约王冠碎片",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-crown-fragment/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-crown-fragment.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254square trueRGBA master, exact original617px source identity, prompt and unmodified bytes preserved",
+        "export": "Wholecanvas contain128 with2pxpad and unmaskedpaste, genuinealpha/openholes preserved. Source<=1perimeter residue disclosed; native black/white/olive/dark review passed and plannedpixels equal QA",
+        "runtimeBinding": "Existing narrative key-prop canonical128 catalog resolver; no anchor, no HD invented, no shipped consumer. No opaque card background baked into source",
+        "liveGame": "pending; catalog/static native evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
@@ -1213,13 +1220,20 @@
       "category": "narrative-static",
       "label": "逃亡硬饼",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-exile-hardtack/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-exile-hardtack.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254square trueRGBA master, exact original617px source identity, prompt and unmodified bytes preserved",
+        "export": "Wholecanvas contain128 with2pxpad and unmaskedpaste, genuinealpha/openholes preserved. Source<=1perimeter residue disclosed; native black/white/olive/dark review passed and plannedpixels equal QA",
+        "runtimeBinding": "Existing narrative key-prop canonical128 catalog resolver; no anchor, no HD invented, no shipped consumer. No opaque card background baked into source",
+        "liveGame": "pending; catalog/static native evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-EXPIRING-MANDATE",
@@ -1283,13 +1297,20 @@
       "category": "narrative-static",
       "label": "伊芙拉断裂缰具",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-ivra-broken-bridle/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-ivra-broken-bridle.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254square trueRGBA master, exact original617px source identity, prompt and unmodified bytes preserved",
+        "export": "Wholecanvas contain128 with2pxpad and unmaskedpaste, genuinealpha/openholes preserved. Source<=1perimeter residue disclosed; native black/white/olive/dark review passed and plannedpixels equal QA",
+        "runtimeBinding": "Existing narrative key-prop canonical128 catalog resolver; no anchor, no HD invented, no shipped consumer. No opaque card background baked into source",
+        "liveGame": "pending; catalog/static native evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-LEFT-GLOVE",
@@ -1297,13 +1318,20 @@
       "category": "narrative-static",
       "label": "莱娅左手护腕",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-left-glove/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-left-glove.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1254square trueRGBA master, exact original617px source identity, prompt and unmodified bytes preserved",
+        "export": "Wholecanvas contain128 with2pxpad and unmaskedpaste, genuinealpha/openholes preserved. Source<=1perimeter residue disclosed; native black/white/olive/dark review passed and plannedpixels equal QA",
+        "runtimeBinding": "Existing narrative key-prop canonical128 catalog resolver; no anchor, no HD invented, no shipped consumer. No opaque card background baked into source",
+        "liveGame": "pending; catalog/static native evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-NAME-TAGS",

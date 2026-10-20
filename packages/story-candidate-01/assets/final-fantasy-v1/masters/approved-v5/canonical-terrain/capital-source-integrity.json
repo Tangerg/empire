@@ -1,0 +1,85 @@
+{
+  "status": "four source materials complete; export/catalog/native acceptance pending",
+  "authoredMaterialCount": 4,
+  "generatedSourceCount": 4,
+  "mechanicalVariantsCountedAsArt": false,
+  "sourcePixelEdits": false,
+  "alphaExtraction": false,
+  "repositoryEdits": false,
+  "sourceFamily": "capital",
+  "topics": [
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-1",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/capital-1/master.png",
+      "sha256": "b0aa73f59c15e9db59f0f7b7eca1984f3d5262934772daedeeea4fe4fc1e6bef",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sourceUntouched": true,
+      "referenceHashesVerified": true,
+      "sourceSlotPixelsVerified": true,
+      "promptAndRequestMatch": true,
+      "authoredMaterials": 1,
+      "imagegenCalls": 1,
+      "tileMode": "nesw-16",
+      "nativeExportReview": "pending actual exporter contract"
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-2",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/capital-2/master.png",
+      "sha256": "c63c45b9304e0697e74f341e5c2c38e871ca2706f2dd6d76727a4c67ef7ec0c4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sourceUntouched": true,
+      "referenceHashesVerified": true,
+      "sourceSlotPixelsVerified": true,
+      "promptAndRequestMatch": true,
+      "authoredMaterials": 1,
+      "imagegenCalls": 1,
+      "tileMode": "nesw-16",
+      "nativeExportReview": "pending actual exporter contract"
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-3",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/capital-3/master.png",
+      "sha256": "ea19e92560bc346fa59a52508f9a9744fd1aec076beff3189170c143192129f6",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sourceUntouched": true,
+      "referenceHashesVerified": true,
+      "sourceSlotPixelsVerified": true,
+      "promptAndRequestMatch": true,
+      "authoredMaterials": 1,
+      "imagegenCalls": 1,
+      "tileMode": "variants",
+      "nativeExportReview": "pending actual exporter contract"
+    },
+    {
+      "topicId": "C01-TERRAIN-CAPITAL-4",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/capital-4/master.png",
+      "sha256": "1de0ef4b9630eba5ebc9d1f59aaff2286f49c372f1f98943f901953031eae41b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sourceUntouched": true,
+      "referenceHashesVerified": true,
+      "sourceSlotPixelsVerified": true,
+      "promptAndRequestMatch": true,
+      "authoredMaterials": 1,
+      "imagegenCalls": 1,
+      "tileMode": "variants",
+      "nativeExportReview": "pending actual exporter contract"
+    }
+  ],
+  "reviewScope": "Raw source identity, style, opacity, native generation dimensions, byte preservation, exact prompt/request and reference provenance only. No image-derived preview is treated as exported native proof. Canonical catalog has zero active gameplay ground consumers, so live-map acceptance is not claimed."
+}

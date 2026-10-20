@@ -1,0 +1,46 @@
+{
+  "topicId": "C01-ARCH-ANSEL-TOWER",
+  "label": "安瑟尔控制治疗塔",
+  "category": "narrative-static",
+  "kind": "scene",
+  "originalNarrativeIndexZeroBased": 68,
+  "sourcePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+  "sourceBoardSha256": "75c85d844f0d2c0fe46974218875ee07f94ace55b97b80e6e9259d32cb5501ee",
+  "sourceBoardSha256MatchesAudit": true,
+  "cellLabel": "bottom-left",
+  "legacyInsetCropBox": [
+    5,
+    632,
+    622,
+    1249
+  ],
+  "sourceCellSize": [
+    617,
+    617
+  ],
+  "historicalAuditActualUse": false,
+  "semanticReview": {
+    "preserved": [
+      "Dark stone round/octagonal dome-topped civic tower with warm window ring",
+      "Attached low four-bay treatment arcade with deep green curtains and occupied wooden beds",
+      "Gray care canopy with original pale circle-cross mark",
+      "Low courtyard walls, guarded entrance, municipal armored shield guards",
+      "Pale-clothed caregivers and orderly anonymous adult civilians"
+    ],
+    "interpreted": [
+      "Visible bronze branches connect tower services to treatment and clean-water basin",
+      "A guarded approach and rigid civilian queue express regulated civic order without naming heroes",
+      "Forest slopes replace unsupported distant city introduced in rejected first attempt"
+    ],
+    "notClaimed": [
+      "Exact engineered floor plan or complete four-circuit diagram",
+      "Named hero appearance",
+      "New faction heraldry",
+      "Any particular post-battle choice outcome or successful governance reform"
+    ],
+    "caveats": [
+      "Centered portrait crop retains the dome, core tower, one occupied bay, water/service junction and guards but clips part of the far-left lower tower facade, the gray care canopy, much of the civilian queue and most right treatment bays.",
+      "Finial is intact but close to the native top; the explicit 2px top crop is safe."
+    ]
+  }
+}
