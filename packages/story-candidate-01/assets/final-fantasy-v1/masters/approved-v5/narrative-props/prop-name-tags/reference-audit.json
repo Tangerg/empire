@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-NAME-TAGS",
+  "label": "墓园活人木片与亡者姓名牌",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-NAME-TAGS",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "墓园活人木片与亡者姓名牌",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-name-tags.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-NAME-TAGS",
+    "topicId": "C01-PROP-NAME-TAGS",
+    "label": "墓园活人木片与亡者姓名牌",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-name-tags.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+    "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 0,
+    "slot": "TL",
+    "originalNarrativeIndexZeroBased": 76,
+    "fullCellCropBox": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-name-tags/full-cell.png",
+        "sourceCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "c9c809236abf7962dbfae44f3d33f2424db90bc6acc2ef3a19bcc8996ca8821c",
+        "pixelSha256": "83751628e4f52967268695cd5beadab2fa8a2a3ffc8f7d17ac1d01dd4e8093c4",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-name-tags/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "dbcdc1f6ba1e5098e769c9b6fdd2bbc05243c70d7b2bfafe48212f3134bb4331",
+        "pixelSha256": "a98a2984aaaa4c87552d918db21999d596ccfbc408806a9e1fa2d6483e2861ec",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-name-tags.png",
+    "sha256": "6ae26461904fbb0ef0126db1ee28e51e3186d9429f2c234310de2ce9a0a000f5",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 9248,
+      "partialPixels": 6883,
+      "opaquePixels": 253,
+      "nearOpaquePixels": 784,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Four wooden humanoid memorial effigies behind four hanging wood tags with dark tally-like marks.",
+    "semanticRequirements": "Living waist-name tags and dead individual names should correspond; original tallies are not actual names. Distinct from CH03-S11 cemetery scene. Do not invent canon names or replace with anonymous skulls.",
+    "riskOrHold": "Semantic brief required for labels and living/dead pairing; preserve multiple individual markers, not one generic medallion.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        89,
+        89
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/03-elder-peoples.md",
+      "lines": [
+        9,
+        25
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "lines": [
+        113,
+        113
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

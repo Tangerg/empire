@@ -136,3 +136,7 @@ FX04 is the original atlas01 fourth-row sequence: hollow ochre elliptical impact
 ## Ordinary-fire source semantics
 
 FX05 preserves original atlas02 row1: small orange ignition, medium curled flame, tall broad yellow-core orange flare, and small dying flame/embers. Its phase order is ignite/rise/flare/embers. It is ordinary fire, distinct from FX06 oath-fire rune rings. The existing c01.dragon-breath target-centered hit binding remains unchanged. Source semantics and shared-canvas export support do not approve or count unfinished generated phases. The authored flame root is measured separately from the fixed center pivot; it is not silently individually aligned.
+
+## Oath-fire source semantics
+
+FX06 preserves the original atlas02 second-row amber angular rings, top/bottom diamond sigils, and open center. Phases low-ring/rising-ring/sealed-ring/fading-fragments are distinct from ordinary flame. Existing gray-oath/oath-dispel/inquisitor-flame/oath-bolt target-hit bindings keep12fps/420ms. No invented readable oath language or source opacity cleanup. Contract support alone does not approve generated artwork.

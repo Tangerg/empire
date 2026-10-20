@@ -101,7 +101,8 @@ class FxTests(unittest.TestCase):
         for topic, names in [('C01-FX-02', ['onset', 'sweep', 'peak', 'dissipate']),
                              ('C01-FX-03', ['approach', 'impact', 'burst', 'dissipate']),
                              ('C01-FX-04', ['contact', 'expand', 'peak', 'settle']),
-                             ('C01-FX-05', ['ignite', 'rise', 'flare', 'embers'])]:
+                             ('C01-FX-05', ['ignite', 'rise', 'flare', 'embers']),
+                             ('C01-FX-06', ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'])]:
             with self.subTest(topic=topic):
                 asset = {**self.asset, 'topicId': topic, 'png': f'runtime/fx/fx-{topic[-2:]}.png'}
                 hd = {**self.hd, 'topicId': topic, 'png': f'runtime-hd/fx/fx-{topic[-2:]}.png'}

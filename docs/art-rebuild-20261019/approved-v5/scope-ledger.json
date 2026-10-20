@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 397,
+    "formalBound": 401,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -17,9 +17,9 @@
       "narrative-static": 33,
       "skill": 48,
       "status": 24,
-      "terrain": 12
+      "terrain": 16
     },
-    "rawPreservedTopics": 397,
+    "rawPreservedTopics": 404,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1157,8 +1157,10 @@
       "category": "narrative-static",
       "label": "普通士兵伤亡册",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-casualty-register/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -1374,8 +1376,10 @@
       "category": "narrative-static",
       "label": "墓园活人木片与亡者姓名牌",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative-props/prop-name-tags/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3613,13 +3617,20 @@
       "category": "terrain",
       "label": "普通墓碑地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/graveyard-1/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; bare stone-loop earth, flat record-tablet earth, purple polluted cracks, or clean concentric-stone earth. GRAVEYARD2/4 explicitly reconstruct floor cues from original raised memorial/lamp scenes",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Four627px quadrants retain complete loop/tablet motifs; repeated regular group rhythm and fine cracks remain explicit catalog tiling limits, not a natural battlefield layout claim",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,16derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-GRAVEYARD-2",
@@ -3627,13 +3638,20 @@
       "category": "terrain",
       "label": "记名区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/graveyard-2/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; bare stone-loop earth, flat record-tablet earth, purple polluted cracks, or clean concentric-stone earth. GRAVEYARD2/4 explicitly reconstruct floor cues from original raised memorial/lamp scenes",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Four627px quadrants retain complete loop/tablet motifs; repeated regular group rhythm and fine cracks remain explicit catalog tiling limits, not a natural battlefield layout claim",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,16derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-GRAVEYARD-3",
@@ -3641,13 +3659,20 @@
       "category": "terrain",
       "label": "污染地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/graveyard-3/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-3.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; bare stone-loop earth, flat record-tablet earth, purple polluted cracks, or clean concentric-stone earth. GRAVEYARD2/4 explicitly reconstruct floor cues from original raised memorial/lamp scenes",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Four627px quadrants retain complete loop/tablet motifs; repeated regular group rhythm and fine cracks remain explicit catalog tiling limits, not a natural battlefield layout claim",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,16derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-GRAVEYARD-4",
@@ -3655,13 +3680,20 @@
       "category": "terrain",
       "label": "归名净化区",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/graveyard-4/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-graveyard-4.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254square material with exact original slot/fullboard audit; bare stone-loop earth, flat record-tablet earth, purple polluted cracks, or clean concentric-stone earth. GRAVEYARD2/4 explicitly reconstruct floor cues from original raised memorial/lamp scenes",
+        "export": "Canonical32/64 independent derivation with exact historical alpha and approved1pxedge matching; native all-mask/repeat review. Four627px quadrants retain complete loop/tablet motifs; repeated regular group rhythm and fine cracks remain explicit catalog tiling limits, not a natural battlefield layout claim",
+        "runtimeBinding": "Canonical terrain catalog+HD resolver only; no current active battlefield ground consumer, no environment count increment. Four authoredmaterials,16derivedcells per density",
+        "liveGame": "pending; catalog-native evidence only, no landscape-cohesion claim"
+      }
     },
     {
       "topicId": "C01-TERRAIN-OATHLIGHT-1",
@@ -7776,8 +7808,11 @@
       "category": "fx",
       "label": "琥珀誓火",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/low-ring/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-06/rising-ring/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

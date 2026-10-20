@@ -1,0 +1,99 @@
+{
+  "topicId": "C01-TERRAIN-GRAVEYARD-1",
+  "status": "raw-candidate-reviewed; not-seam-certified; actual-export-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-15de4225-fcb5-486b-9cd2-b2ba349c9079.png",
+  "master": "master.png",
+  "sourceSHA256": "5a72cb8d77005313791b69e65e17e07eeb0491234b6b3198ea0a0670c2c9dd21",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Warm brown bare earth, sparse low olive grass and scattered neutral-gray stones, with four complete loose stone loops distributed as small local ground motifs. No standing grave markers.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "rawEdgeObservation": "Ground continues to every edge. No standalone object is clipped at the raw canvas boundary; continuous soil and fissure shapes may touch edges.",
+    "semanticMaterialIdentityRetainedThroughDocumentedReconstruction": true,
+    "caveats": [
+      "The original whole-plot loose stone ring is redistributed as four small complete local loops for material sampling. This is a designed material reconstruction, not a literal original layout.",
+      "Original no-standing-graves observation retained; no new tombstone object introduced.",
+      "Generated ground has low-contrast medium-scale mottling, more than the minimal-texture prompt; native32/64 diagnostics still retain distinct primary motifs.",
+      "Only complete principal ring/tablet motifs are passed by these diagnostic windows. Some incidental natural grass/pebble detail may meet a sample boundary; integrator must select and inspect final windows.",
+      "Raw opposite edges are not exactly equal and no seam certification is claimed."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "rowMeaning": [
+      "627px source square reduced to192px",
+      "32px LANCZOS crop enlarged6x with nearest neighbor",
+      "64px LANCZOS crop enlarged3x with nearest neighbor"
+    ],
+    "edits": "QA-only crop, resize and composite; master unchanged",
+    "primaryMotifsCompleteInAllFourWindows": true,
+    "identityReadableAt32And64": true,
+    "finalExportWindowsApproved": false
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 4.482987772461457,
+    "northSouthMeanAbsoluteRGBDifference": 3.9941520467836256
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "diagnostic only; actual exporter still pending",
+    "alphaAndSeamQA": "pending integrator; opaque variants contract unchanged",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has no current active ground consumers per audit"
+  },
+  "integratorReviewReported": {
+    "source": "Parent integration worker message,2026-10-20 03:35UTC",
+    "review": "Formal candidate four627px window exports and32/64 repeat fixtures inspected by integrator; complete stone loops and three-tablet groups retained, no clipped principal motif.",
+    "limitation": "Regular repeated motifs remain a catalog ground-material limitation; no claim of natural live-battlefield tiling.",
+    "seamCertificationBySourceWorker": false
+  }
+}

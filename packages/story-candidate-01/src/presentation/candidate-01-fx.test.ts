@@ -72,6 +72,7 @@ describe('approved FX source and export binding', () => {
     'C01-FX-03': ['approach', 'impact', 'burst', 'dissipate'],
     'C01-FX-04': ['contact', 'expand', 'peak', 'settle'],
     'C01-FX-05': ['ignite', 'rise', 'flare', 'embers'],
+    'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
   };
   it.each(Object.entries(fxOverrides.assets))('binds %s to its reviewed full-canvas phases at both densities', (topic, override) => {
     const record = assets.candidate01Asset(topic);

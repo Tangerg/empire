@@ -1,0 +1,101 @@
+{
+  "topicId": "C01-TERRAIN-GRAVEYARD-4",
+  "status": "raw-candidate-reviewed; not-seam-certified; actual-export-and-catalog-registration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; copied byte-for-byte with no pixel transformation",
+  "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-0686b0b3-08bb-4bd4-9481-0609ad4f88e6.png",
+  "master": "master.png",
+  "sourceSHA256": "9e320d8376d87f57e8b1bb02d9adba9b54d00d8bc2e6ad4fd1a2b2f71c01e3d9",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Designed material reconstruction: four small complete double stone loops and separate blank ochre inlays on clean warm earth; no full-scene central monument, lamps or human pictograms.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "rawEdgeObservation": "Ground continues to every edge. No standalone object is clipped at the raw canvas boundary; continuous soil and fissure shapes may touch edges.",
+    "semanticMaterialIdentityRetainedThroughDocumentedReconstruction": true,
+    "caveats": [
+      "Original monumental concentric composition is redistributed into four small complete flat double loops for tile sampling.",
+      "Complete original raised name-marker slabs and lamps are intentionally not represented as usable upright objects in the flat128px runtime strip.",
+      "Human pictograms and lamps removed; gray stone, warm record material and cleaner warm earth retained.",
+      "Parent explicitly approved this ground abstraction before generation on2026-10-20; retain original evidence for any future separate object work.",
+      "Generated ground has low-contrast medium-scale mottling, more than the minimal-texture prompt; native32/64 diagnostics still retain distinct primary motifs.",
+      "Only complete principal ring/tablet motifs are passed by these diagnostic windows. Some incidental natural grass/pebble detail may meet a sample boundary; integrator must select and inspect final windows.",
+      "Raw opposite edges are not exactly equal and no seam certification is claimed."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "rowMeaning": [
+      "627px source square reduced to192px",
+      "32px LANCZOS crop enlarged6x with nearest neighbor",
+      "64px LANCZOS crop enlarged3x with nearest neighbor"
+    ],
+    "edits": "QA-only crop, resize and composite; master unchanged",
+    "primaryMotifsCompleteInAllFourWindows": true,
+    "identityReadableAt32And64": true,
+    "finalExportWindowsApproved": false
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 2.9906964380648593,
+    "northSouthMeanAbsoluteRGBDifference": 4.260499734183945
+  },
+  "export": {
+    "performed": false,
+    "native32And64SemanticQA": "diagnostic only; actual exporter still pending",
+    "alphaAndSeamQA": "pending integrator; opaque variants contract unchanged",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog has no current active ground consumers per audit"
+  },
+  "integratorReviewReported": {
+    "source": "Parent integration worker message,2026-10-20 03:35UTC",
+    "review": "Formal candidate four627px window exports and32/64 repeat fixtures inspected by integrator; complete stone loops and three-tablet groups retained, no clipped principal motif.",
+    "limitation": "Regular repeated motifs remain a catalog ground-material limitation; no claim of natural live-battlefield tiling.",
+    "seamCertificationBySourceWorker": false
+  }
+}

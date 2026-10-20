@@ -1,0 +1,175 @@
+{
+  "topicId": "C01-PROP-CASUALTY-REGISTER",
+  "label": "普通士兵伤亡册",
+  "pending": true,
+  "ledger": {
+    "topicId": "C01-PROP-CASUALTY-REGISTER",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "普通士兵伤亡册",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-casualty-register.png",
+    "stageEvidence": null
+  },
+  "canonicalRecord": {
+    "assetId": "C01-FFV1-PROP-CASUALTY-REGISTER",
+    "topicId": "C01-PROP-CASUALTY-REGISTER",
+    "label": "普通士兵伤亡册",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/prop-casualty-register.png",
+    "width": 128,
+    "height": 128,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "key-prop"
+  },
+  "canonicalAnchor": null,
+  "hdRecord": null,
+  "registeredOverride": null,
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "genuineAlpha": false,
+    "cellIndexZeroBased": 0,
+    "slot": "TL",
+    "originalNarrativeIndexZeroBased": 77,
+    "fullCellCropBox": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "crops": [
+      {
+        "path": "original-crops/c01-prop-casualty-register/full-cell.png",
+        "sourceCropBox": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "size": [
+          627,
+          627
+        ],
+        "mode": "RGB",
+        "sha256": "6c30c0dbfa9a5229ec7893c77945093bfa354d836bf09863294263ba71a6eb50",
+        "pixelSha256": "b5c090f894e5b9aace634807d43ad288a51ff4bb13c6c4849191e789ea2678c5",
+        "originalPixelsOnly": true
+      },
+      {
+        "path": "original-crops/c01-prop-casualty-register/legacy-inset.png",
+        "sourceCropBox": [
+          5,
+          5,
+          622,
+          622
+        ],
+        "size": [
+          617,
+          617
+        ],
+        "mode": "RGB",
+        "sha256": "5bc6c4ffd9af6f26f5888d1db00e6eb4b02b00f1da0112e481a62fa543be7b10",
+        "pixelSha256": "687c5daef8627abf7faa5cd3634bdad459b2da0fd8f5803bf95861610c54dd6b",
+        "originalPixelsOnly": true
+      }
+    ]
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/prop-casualty-register.png",
+    "sha256": "3ac5444cb27f4c4a86cd84f91346de679504cddf0de94c1ba25224f3944ffd56",
+    "size": [
+      128,
+      128
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        0,
+        255
+      ],
+      "zeroPixels": 8054,
+      "partialPixels": 8303,
+      "opaquePixels": 27,
+      "nearOpaquePixels": 242,
+      "edgeMaxAlpha": 0,
+      "alphaBoundingBox": [
+        4,
+        4,
+        124,
+        124
+      ]
+    }
+  },
+  "originalReconstruction": {
+    "matches": true,
+    "method": "cached chroma alpha, magenta cleanup, inset5 cell, alpha>=28 bbox fit with4px pad, final magenta cleanup"
+  },
+  "actualConsumers": {
+    "storyScenes": [],
+    "portraitKeys": [],
+    "chapterDefaults": [],
+    "characterTypeBindings": []
+  },
+  "shippedConsumerCount": 0,
+  "visualReview": {
+    "reviewedOriginalBoard": true,
+    "sourceIdentity": "Open worn ledger with repeated rows/columns of marks, attached identity tags and a separate dark pencil.",
+    "semanticRequirements": "Ordinary soldiers' identities and public accountability matter. No specific name list is approved. Preserve row structure, individual records and writing tool; do not generate false readable canon names.",
+    "riskOrHold": "Complete source, but dense marks fail at128px. Historical output has only27 fully opaque pixels, so it is not a transparency quality reference.",
+    "highResolutionInputAvailable": true,
+    "referenceNativeCellSize": [
+      617,
+      617
+    ],
+    "runtimeIsHighResolutionReference": false,
+    "sourceVsLoreResolution": "Preserve current source identity; any newly required semantic redesign is an explicit art brief decision, not an automatic correction."
+  },
+  "recommendedPriority": null,
+  "proposedExportClassification": "transparent-prop-v1",
+  "proposedSourceAlpha": "independent native genuine RGBA, transparent exterior/open gaps, complete subject; no extracted/chroma-keyed legacy source",
+  "semanticSourceReferences": [
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "lines": [
+        90,
+        90
+      ],
+      "evidence": "exact canonical topic and label"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "lines": [
+        29,
+        35
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md",
+      "lines": [
+        139,
+        153
+      ],
+      "evidence": "authored lore/asset brief; source image remains the evidence of current depicted design"
+    }
+  ]
+}

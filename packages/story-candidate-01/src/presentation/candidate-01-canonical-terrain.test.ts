@@ -18,9 +18,13 @@ const topics = [
   ['C01-TERRAIN-FORGE-2', 'nesw-16', 16],
   ['C01-TERRAIN-FORGE-3', 'variants', 4],
   ['C01-TERRAIN-FORGE-4', 'variants', 4],
+  ['C01-TERRAIN-GRAVEYARD-1', 'variants', 4],
+  ['C01-TERRAIN-GRAVEYARD-2', 'variants', 4],
+  ['C01-TERRAIN-GRAVEYARD-3', 'variants', 4],
+  ['C01-TERRAIN-GRAVEYARD-4', 'variants', 4],
 ] as const;
 
-describe('canonical border, capital and forge terrain catalog contract', () => {
+describe('canonical reviewed family terrain catalog contract', () => {
   it.each(topics)('resolves %s through HD without changing logical geometry', (topic, mode, count) => {
     const matches = manifest.assets.filter(asset => asset.topicId === topic);
     const high = hdManifest.assets.filter(asset => asset.topicId === topic);
@@ -53,9 +57,9 @@ describe('canonical border, capital and forge terrain catalog contract', () => {
     expect(() => validateCandidate01HdAsset(record, { ...hd, width: record.width })).toThrow();
   });
 
-  it('counts twelve source identities independently from their108 derived cells', () => {
-    expect(new Set(topics.map(([topic]) => topic)).size).toBe(12);
-    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(108);
+  it('counts sixteen source identities independently from their124 derived cells', () => {
+    expect(new Set(topics.map(([topic]) => topic)).size).toBe(16);
+    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(124);
   });
 });
 
@@ -64,7 +68,7 @@ describe('registered canonical terrain provenance', () => {
     const { createHash } = await import('node:crypto');
     const root = new URL('../../../../', import.meta.url);
     const catalog = JSON.parse(readFileSync(new URL('tools/art/canonical-terrain-overrides.json', root), 'utf8'));
-    const report = ['border', 'capital', 'forge'].flatMap(family => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/canonical-terrain/${family}/formal-export.json`, root), 'utf8')));
+    const report = ['border', 'capital', 'forge', 'graveyard'].flatMap(family => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/canonical-terrain/${family}/formal-export.json`, root), 'utf8')));
     const hash = (path: string) => createHash('sha256').update(readFileSync(new URL(path, root))).digest('hex');
     expect(Object.keys(catalog.assets).sort()).toEqual(topics.map(([topic]) => topic).sort());
     for (const [topic, entry] of Object.entries(catalog.assets) as [string, { source: string; sha256: string }][]) {

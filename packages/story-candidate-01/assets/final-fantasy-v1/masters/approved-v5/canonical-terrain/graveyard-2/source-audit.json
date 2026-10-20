@@ -1,0 +1,39 @@
+{
+  "topicId": "C01-TERRAIN-GRAVEYARD-2",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+  "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+  "boardDimensions": [
+    1402,
+    1122
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    353,
+    3,
+    698,
+    558
+  ],
+  "cropSize": [
+    345,
+    555
+  ],
+  "slotSHA256": "e42d88b297d7f977908bc897ed055684795aa06923511aeac473874f9677c607",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Ordered rows of upright name/grave markers inside a stone border with small warm lamps",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "rawSourceVisuallyInspected": true,
+  "rawAllFourEdgesInspected": true,
+  "redrawInterpretation": "Designed material reconstruction: orderly groups of three flat blank ochre record tablets embedded in quiet brown earth, removing upright object depth, lamps and human pictograms.",
+  "semanticChangesAndLimits": [
+    "Complete original raised record-marker slabs and lamps are intentionally not represented as usable upright objects in the flat128px runtime strip.",
+    "Human-shaped engravings, readable writing and lamps are removed. Order, ochre record material and brown ground identity remain.",
+    "Parent explicitly approved this ground abstraction before generation on2026-10-20; retain original evidence for any future separate object work."
+  ],
+  "originalExportMode": "variants",
+  "sourceOpacity": "RGB, fully opaque; preserve ground opacity",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true
+}

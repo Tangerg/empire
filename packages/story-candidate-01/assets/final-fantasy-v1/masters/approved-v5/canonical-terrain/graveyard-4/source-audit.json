@@ -1,0 +1,40 @@
+{
+  "topicId": "C01-TERRAIN-GRAVEYARD-4",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-graveyard-oathlight.png",
+  "boardSHA256": "5128234e4e39e45437da595bcd6a2e2dae62506bdbbdde5ab289a424873e892c",
+  "boardDimensions": [
+    1402,
+    1122
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    1055,
+    3,
+    1399,
+    558
+  ],
+  "cropSize": [
+    344,
+    555
+  ],
+  "slotSHA256": "aef46cac81b6ef4e2a9e3d05b6ec54737849ecebcb53c99ed00f8a66cb83ae0d",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "observedOriginalIdentity": "Concentric stone rings with rectangular name markers and small amber lamps",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "rawSourceVisuallyInspected": true,
+  "rawAllFourEdgesInspected": true,
+  "redrawInterpretation": "Designed material reconstruction: four small complete double stone loops and separate blank ochre inlays on clean warm earth; no full-scene central monument, lamps or human pictograms.",
+  "semanticChangesAndLimits": [
+    "Original monumental concentric composition is redistributed into four small complete flat double loops for tile sampling.",
+    "Complete original raised name-marker slabs and lamps are intentionally not represented as usable upright objects in the flat128px runtime strip.",
+    "Human pictograms and lamps removed; gray stone, warm record material and cleaner warm earth retained.",
+    "Parent explicitly approved this ground abstraction before generation on2026-10-20; retain original evidence for any future separate object work."
+  ],
+  "originalExportMode": "variants",
+  "sourceOpacity": "RGB, fully opaque; preserve ground opacity",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true
+}
