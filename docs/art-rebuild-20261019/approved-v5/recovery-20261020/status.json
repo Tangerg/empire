@@ -6,9 +6,10 @@
   "ordinaryPushError": "fatal: could not read Username for 'https://github.com': No such device or address",
   "ghStatus": "You are not logged into any GitHub hosts",
   "causeEvidence": "Executor transport reconnect reset /tmp; previous CLI auth directory absent. No claim about wider system cause.",
-  "newGeneration": "paused after already-inflight calls; immutable returned sources locally committed",
-  "cleanup": "no worktrees removed; ignored hashes and equivalent patches audited, remote backup prerequisite remains",
+  "newGeneration": "resumed after remote verification",
+  "cleanup": "two audited inactive worktrees removed normally after remote evidence verification; branches/shared/raw preserved; free5.9GB",
   "validation": "421 focused444 TypeScript +14 card Python +typecheck passed; full run underway",
   "liveGameAcceptance": false,
-  "authRecovery": "User approved fresh GitHub CLI web flow, authentication verified Tangerg via gh status; normal fetch confirms unchanged remote415. Backup push pending."
+  "authRecovery": "GitHubCLI web authorization completed, Tangerg status verified, normalfetch and normalpush successful",
+  "verifiedRestoredRemoteMain": "04bc18b7357e954d097dd61dbcaa54f6c9902cbf"
 }

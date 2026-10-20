@@ -143,3 +143,6 @@ FX06 preserves the original atlas02 second-row amber angular rings, top/bottom d
 
 ## FX07 siege debris
 Original label and actual knight-charge/satchel-charge/forge-burst consumers identify physical siege debris, not frost. Ordered phases: airborne-burst, falling-pieces, falling-remnants, settled-heap. The final opaque wood/stone heap is intentional; existing nonloop12fps target-hit lifetime420ms removes the node. Common1254 canvas/28px content transform and strict source alpha<=1/final2px alpha0 gates remain unchanged. No per-phase fitting or forced opacity fade.
+
+## FX08 memory impact
+Original gray ordinary-person memory echoes and amber name papers, not a skull. Four phases clustered-echoes/rising-echoes/dissolving-echoes/wisp-remnants, authored translucency for dissolving people and no people in final wisps. Actual ghost-touch/colossus-sweep targethit uses same16,16 center, normalblend,12fps nonloop420ms. Commonnative1254canvas transform unchanged; no programmedfade, sourcealpha<=1 and final2pxalpha0 gates unchanged.

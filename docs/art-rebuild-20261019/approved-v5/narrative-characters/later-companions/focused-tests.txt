@@ -1,0 +1,13 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ✓ tools/art/approved_catalog_bindings.test.ts (310 tests) 1309ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-hero-appearances.test.ts (24 tests) 70ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-runtime.test.ts (11 tests) 30ms
+
+ Test Files  3 passed (3)
+      Tests  345 passed (345)
+   Start at  12:06:02
+   Duration  4.29s (transform 3.38s, setup 0ms, collect 6.78s, tests 1.41s, environment 1ms, prepare 346ms)
+

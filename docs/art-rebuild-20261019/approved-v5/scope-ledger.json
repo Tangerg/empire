@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 421,
+    "formalBound": 424,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 47,
+      "narrative-static": 50,
       "skill": 48,
       "status": 24,
       "terrain": 20
     },
-    "rawPreservedTopics": 426,
+    "rawPreservedTopics": 429,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -858,13 +858,20 @@
       "category": "narrative-static",
       "label": "布兰自由斥候指挥官",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1024x1536 genuineRGBA named laterstage source. Torren retainedglove/worncoat, young brown-haired Bran map/listpouch/villagecloth, Cain imperialuniform/verifiedstandard; original slot conflicts and stage01 identity evidence retained",
+        "export": "Wholecanvas character at144width origin24,4 on separate approvedcardbackground;192x224 canonical. Sourceedges<=1, blackwhite/nativecard and actualconsumer-size modeled crops reviewed. No alpha cleanup/perposefit; no HD added",
+        "runtimeBinding": "Existing canonical narrative card catalog only; no current laterstage selector, no combatclass or gameplay change",
+        "liveGame": "pending; static card and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-CHAR-CAIN-01",
@@ -893,13 +900,20 @@
       "category": "narrative-static",
       "label": "凯恩独立改革军统帅",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-cain-02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1024x1536 genuineRGBA named laterstage source. Torren retainedglove/worncoat, young brown-haired Bran map/listpouch/villagecloth, Cain imperialuniform/verifiedstandard; original slot conflicts and stage01 identity evidence retained",
+        "export": "Wholecanvas character at144width origin24,4 on separate approvedcardbackground;192x224 canonical. Sourceedges<=1, blackwhite/nativecard and actualconsumer-size modeled crops reviewed. No alpha cleanup/perposefit; no HD added",
+        "runtimeBinding": "Existing canonical narrative card catalog only; no current laterstage selector, no combatclass or gameplay change",
+        "liveGame": "pending; static card and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-CHAR-IVRA-01",
@@ -1178,13 +1192,20 @@
       "category": "narrative-static",
       "label": "托伦旧旗军官",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-02/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-torren-02.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent native1024x1536 genuineRGBA named laterstage source. Torren retainedglove/worncoat, young brown-haired Bran map/listpouch/villagecloth, Cain imperialuniform/verifiedstandard; original slot conflicts and stage01 identity evidence retained",
+        "export": "Wholecanvas character at144width origin24,4 on separate approvedcardbackground;192x224 canonical. Sourceedges<=1, blackwhite/nativecard and actualconsumer-size modeled crops reviewed. No alpha cleanup/perposefit; no HD added",
+        "runtimeBinding": "Existing canonical narrative card catalog only; no current laterstage selector, no combatclass or gameplay change",
+        "liveGame": "pending; static card and resolver evidence only"
+      }
     },
     {
       "topicId": "C01-PROP-ADA-MEDICINE",
