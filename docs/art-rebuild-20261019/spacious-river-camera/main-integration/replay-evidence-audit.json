@@ -1,0 +1,16 @@
+{
+  "packetRuns": 60,
+  "exactPreviousCompactRuns": 57,
+  "changedProfiles": [
+    "c01-02 @0.35",
+    "c01-02 @0.58",
+    "c01-02 @0.8"
+  ],
+  "allBeforeAfterTraceHashesVerifiedAgainstRecordedRawStreams": true,
+  "mainProductionReplaySourceEqualToReviewedPacket": true,
+  "onlySourceDifferences": [
+    "packages/story-candidate-01/src/presentation/candidate-01-crossing.test.ts"
+  ],
+  "engineTree": "0466cb37c4ed66994fd38893b350d1c87cc5ded4",
+  "claim": "Verified worker60-run trace evidence against previous main raw sweep and exact current production source equality; no claim of a second main sweep execution"
+}
