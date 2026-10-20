@@ -17,7 +17,7 @@
 | `c01/aftermath-13` | `C01-ARCH-FIELD-HOSPITAL` | Appropriate Holy Light hospital setting; not the exact old building or record-reading event |
 | `c01/chapter-three-ending` | `C01-CH05-S26` | Deliberate thematic council reuse only: equal-status representatives and documents fit, but the canonical chapter-five/night/gray-light identity does not become this chapter-three morning event |
 
-`PUBLIC-RATIONS` and the retained council use their existing approved HD exports. Gray Camp and Field Hospital remain legacy 256×144 `final-cartoon-fantasy-v1` art. This semantic correction does not count either as newly rebuilt, approved-v5, HD, or live-game visually accepted.
+`PUBLIC-RATIONS` and the retained council use their existing approved HD exports. At the isolated selector commit, Gray Camp and Field Hospital still used legacy 256×144 art. The subsequent main integration separately rebuilt and registered both scenes at canonical256×144 and native1664×936 (density6.5). Their raw/source/export evidence is under the corresponding narrative-scene records; selector correction itself adds no artwork count. Live-game visual acceptance remains pending.
 
 ## Explicit missing-art contract
 

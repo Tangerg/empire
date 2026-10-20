@@ -1,0 +1,13 @@
+{
+  "canonicalFormalBound": 369,
+  "environmentRegisteredCells": 186,
+  "typescript": {
+    "files": 124,
+    "tests": 1542,
+    "result": "pass"
+  },
+  "pythonOverrideTests": 147,
+  "typecheck": "pass",
+  "liveGameVerified": false,
+  "notes": "Full actual engine invariant sweep included. Narrative scene selection and DOM missing-art tests pass; no browser/GPU rendering claim."
+}

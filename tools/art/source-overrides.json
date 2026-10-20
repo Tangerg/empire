@@ -1484,6 +1484,32 @@
     "C01-FACTION-LATE-ALLIANCE": {
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-late-alliance/master.png",
       "sha256": "81c6f589459a624f848fa748e71fd206f4e0e2ef0d05d6ec7d9ebd65f62f7344"
+    },
+    "C01-ARCH-GRAY-CAMP": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-gray-camp/master.png",
+        "sha256": "cf742aad26c2cb50edc82f16667aae3a465d050a2d5a3ce6216b94f8e04487f5"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
+    },
+    "C01-ARCH-FIELD-HOSPITAL": {
+      "kind": "opaque-scene-v1",
+      "scene": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/arch-field-hospital/master.png",
+        "sha256": "8a78169f8661da0811601692b02e16aeb90c5e63b4fe4d7f7a1ecec5fe24d37e"
+      },
+      "sourceCropBox": [
+        4,
+        2,
+        1668,
+        938
+      ]
     }
   }
 }
