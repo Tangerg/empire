@@ -1,0 +1,3 @@
+# 546 formal topics
+
+C01 400/404; C02 146/404 with18/24 status icons; C03 0/404. Capture is the source's mechanical pedestal/cyan prism/light column, not an invented flag; destroy is two broken cable sleeves, colored wires and bounded arcs, not an explosion. Each30-file source manifest verified, original raw/master unchanged, source perimeter0 and final2px alpha0. Native32 white/black/olive comparison preserves identity; very fine arcs remain weaker on black. Nineteen status binding tests pass. No current playable C02 consumer or live display is asserted. Environment186 separate; previous full/build/typecheck scopes remain510/497/534.

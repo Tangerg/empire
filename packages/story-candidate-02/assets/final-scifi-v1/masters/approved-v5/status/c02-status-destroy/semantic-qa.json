@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "motif": "Exactly two disconnected armored cable ends facing the central gap, with four exposed colored wires on the left and three on the right, plus two cyan spark marks and four major gray debris chunks.",
+  "checks": {
+    "Exactly two disconnected cable sleeves": true,
+    "Exactly four left wires: purple, salmon, amber, slate-blue": true,
+    "Exactly three right wires: teal, salmon, purple": true,
+    "Wide gap with no connecting wire": true,
+    "Exactly two cyan angular sparks": true,
+    "Four major gray debris chunks plus one subordinate speck": true,
+    "No firearm or explosion substitution, no magenta residue": true
+  },
+  "native32": "Actual native-size white/black/olive strips inspected; complete primary motif survives reduction.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or source-board magenta residue.",
+  "uncertainty": "Two sleeves, four left wires, three right wires and two major sparks are directly visible. The source outer jackets are cut by its panel edges; new short finite stubs reconstruct the same opposing cable motif without clipping the output. Four major debris chunks remain, with one subordinate speck; insignificant source pinpricks were reduced.",
+  "catalogOnly": true
+}
