@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 66,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 620,
+  "formalRuntimeBoundTopics": 624,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -3796,6 +3796,30 @@
       "export": "Wholecanvas native48 contain padding2; unchanged source alpha guard and zero native edge; fullsource/native white-black-olive integration-owner review passed",
       "runtimeBinding": "Canonical catalog geometry preserved; no invented HD density or gameplay consumer",
       "liveGame": "pending; catalog/native review only"
+    },
+    "c02-terrain-uker-grave-fragments": {
+      "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+      "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+      "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-uker-memory-overlay": {
+      "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+      "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+      "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-uker-physical-ruin": {
+      "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+      "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+      "liveGame": "pending; catalog review only"
+    },
+    "c02-terrain-uker-reality-rebuild": {
+      "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+      "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+      "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+      "liveGame": "pending; catalog review only"
     }
   },
   "supplementalBundles": {
@@ -4015,13 +4039,16 @@
     },
     "crossings-fortifications": {
       "formalRuntimeBoundCells": [
+        "palisade-breach",
+        "palisade-corner",
+        "palisade-straight",
         "stone-gatehouse",
         "stone-wall-corner",
         "stone-wall-straight"
       ],
-      "count": 3,
-      "export": "96/192 full authored canvas and measured structural contact; untouched other13 cells preserved",
-      "runtimeBinding": "existing later-level fortress selectors; no bridge or gameplay changes",
+      "count": 6,
+      "export": "96/192 whole authored canvas and measured sourceFoot; existing exporter derives per-cell contact anchors, atlas default48,91 unchanged. New palisade slots6,7,9 only, other13 cells byte-identical to prior runtime at both densities.",
+      "runtimeBinding": "Existing three stone sources use later-level fortress selectors; palisade straight/corner/breach are catalog-only, with no invented gameplay placements. Gate remains unbound for perspective.",
       "sceneReview": "Unresolved legacy topology: c01-13 randomly places26 decorative gatehouses on impassable wall cells;28/35 north-south adjacent wall pairs have alpha gaps up to15.55px. Native source/export pass does not establish coherent fortress integration.",
       "liveGame": "pending"
     },

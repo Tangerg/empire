@@ -47,6 +47,10 @@ SCIFI_TOPICS = {
     'c02-terrain-soler-brittle-ice': 'nesw-16',
     'c02-terrain-soler-deep-factory': 'nesw-16',
     'c02-terrain-soler-heated-walkway': 'nesw-16',
+    'c02-terrain-uker-grave-fragments': 'variants',
+    'c02-terrain-uker-memory-overlay': 'nesw-16',
+    'c02-terrain-uker-physical-ruin': 'nesw-16',
+    'c02-terrain-uker-reality-rebuild': 'nesw-16',
 }
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of

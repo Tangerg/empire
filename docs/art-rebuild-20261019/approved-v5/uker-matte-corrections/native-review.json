@@ -1,0 +1,334 @@
+[
+  {
+    "topicId": "c02-terrain-uker-memory-overlay",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/candidates/broad-matte-v2/master.png",
+      "sourceSha256": "22cc0fc7b51b4a3a11891537695aec3faaed5db4993daed7de756e2b5bcb3e63",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "800c201a0e4fd386d0f201b3d1943148b0c8c8a1d15e314e033d004f26ed6083",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "16a346a6481b3fe78d2f5e6f6719b19abde309292ca5158b99731b5cbf2239f4",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 42,
+        "interiorPixelSha256": "1866583f1259fc4418cc078579d470ca6537df19b9a2fbe13ee8f28b147a4255",
+        "edgeHashes": {
+          "top": "da3a8eeef3f82bb46c7245a9a543f21c6cfbc048ea39d657385179c473c91e8f",
+          "bottom": "da3a8eeef3f82bb46c7245a9a543f21c6cfbc048ea39d657385179c473c91e8f",
+          "left": "7118605a20a03e01c17eb0468ce5cc112a9a132fb5244706bd8ab3ec1980a017",
+          "right": "7118605a20a03e01c17eb0468ce5cc112a9a132fb5244706bd8ab3ec1980a017"
+        },
+        "pixelSha256": "42ab2ae82ef6a30691be6ba2f213ecebb941cf90ad55986c8c33a5ac256da22d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "f38faf16ab7c0314e266b81e9718a06da1a03edf4116da863ff6bce56a85d9ac",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "d91d0f2eadbcbf39e12aba5d09c7385711e31a13f42818540a6ce62a6590d32e",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "8173c70e79c7d6814c5c3fdc05387a8a1f6aea2fcfdd723597fa9bd8df3605ab",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "5e095e939994ed6f26d3dca22776c14712ecd25e0fe7dbe437058edb717f0670",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "098d61d0450ef9a2bb888686d5a9a034c540982f8ebc52f0fdf3115da759de6c",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "bf90a278d861169dac851954c1620bcea0589e62f433ee042d834f91e5969fd2",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "61b43ee634f07e2de4e720889662fd57ce8f37958757d52ddaccddb8570b1b95",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "f5a85bdb81b9ca7d256ae77c99d133cc9333d59f74d1c70192e8f1a522e0efd5",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "da958ffaf6a36c1ab004310de9d90680153ed9a0426ab718f99ec9dc57b0f7a5",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "85111200e2723e7dd3cb2f40f3b89a0091389d08076eecb15023d1c806d3b182",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "bf5c05f736961dc6abaf45b5e0b5837787fb0febc31b8d2d4646bb6c2134c41f",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "404134968fdf72009cdef87bbd8c1d22e68a54179fdfac338415b1dfd5c5afce",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "3540e7c15481e4c92b0b8a59d295e67d97c01f8716e2d4b035544f4470b169ff",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "17de978ad5e48153f8f451aa8d9a0321409bdf1557fc492eb4c10f8bdf3ec7bb",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "3274ec8d085ec4d60f6905e16ca71969a8050f5853a70c70f9374ea952bb37b2",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "aad56f0f69f3993ca02ea156ff86f18c63376a213cb5b3993c15d6ae68f85219",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "e1eb7361d9a586a72a218d8b94d567aafe6aee827dffe507376ea59b3c66f84e",
+    "pixelSha256": "b0e27a8d30a58fbf5618a30fbb279dc9251c4688d6406f684e27e00277d29f50",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16
+  },
+  {
+    "topicId": "c02-terrain-uker-reality-rebuild",
+    "tileMode": "nesw-16",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-reality-rebuild/candidates/broad-matte-v2/master.png",
+      "sourceSha256": "bbb958585a93294465a497106279c19dea0eb0d9fceb8b7a82bc31479d011c30",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "4f6c3f1c0132a9de8a4dba9d1d876979ddb04be462af1a5c59eb10a2853cbae3",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "f352bbff5765afbe8e624e088241a7657b5553e713412d668e889890901eef0e",
+        "edgeBandPixels": 1,
+        "changedPixels": 121,
+        "maxChannelChange": 64,
+        "interiorPixelSha256": "792d4da779d99dbc027cf6f89d2ebccddeb7336b0a7901c1038e96059e560bcd",
+        "edgeHashes": {
+          "top": "f9c02d9222b93bd34bcba6c3f83e313e1bc7d3009d5010786eac88e3535a49cc",
+          "bottom": "f9c02d9222b93bd34bcba6c3f83e313e1bc7d3009d5010786eac88e3535a49cc",
+          "left": "09a2e07011e56ee17aa0d7507b0a0810cb49b743b4134cdd9d65665b5455b2dc",
+          "right": "09a2e07011e56ee17aa0d7507b0a0810cb49b743b4134cdd9d65665b5455b2dc"
+        },
+        "pixelSha256": "109d90160ae962c97c7d998a23a28e3c34e5907c2bd6d8e0f2b8c07ae0b4e361"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "2191489b39c691b2f13dd199b1045a7a5423eb9a2f2b209530fadea6f2f6831c",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "43b0a7faacb8fb0ec71fd839b441e728577cd58bf4b285b6b925853505c85241",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "7d0b791755e07ac7ccbe8afd0e560962051aac828fb29cfde34c9b5c361e3be9",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "a21fc00f9e0eb998abc25879e4610ff177f224cf4309f15d356f5a1d09d22564",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "aeb31c6b859b5b603af2b42885936b2b51c00d327dc944d7057f0935b0180903",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "0e492e192c49b8481e83a21c670b46321fe7a576ccf740e4b26fe69f6603797c",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "b6a3d6c255ea1d2ce243ca3a283fb7afdafcb6a884dff80dc6f4d25744f50b86",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "88d1992b6a38331850fea2baca0a5ad30ccda65d8f81e69878f469a98814498d",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "482b47afa0dee301216f8cef643e025c709f8a8e663c49102b53b3b5d116e4dc",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "59de977b1615d1c9fc872e1693a792e82f6f25092d79e08e3c5249c9eea8f3a6",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "094bddce5248c061f8723a53a4a9d67f9e354b1b39cf0aae7b7517f8026a5cc0",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "82e18cd7700872ce8f4d3ec3b48b23e55a931f5808b0db7594ff5ee16fca19b0",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "af0da00d3e15c24aa19aa941741fc613be91c05fac6cf5315b4ff60a8670eac1",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "f114fcbe3af3822de46c87524b30a39712b1c2d47972efbcbd06b2981c11e16a",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "4d15425b6c190e2b0aa640ab3fb045ebeb68acc3299deefdd06313ce7bbf4b60",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "1976ac72321e9d1487b2210da75fd000e7a26782e961b1d7e8630b2376ce3973",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "alphaMatchesOriginal": true,
+    "originalSha256": "bdda002a3857415ee16bdafe23ab36eaeba06256afc28795b75fddd7abaa6c23",
+    "pixelSha256": "424fbd28466b6e1a685bf2d987d20a58bd3b1a867dfbedbedab50e18f0608f46",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "distinctCells": 16
+  }
+]

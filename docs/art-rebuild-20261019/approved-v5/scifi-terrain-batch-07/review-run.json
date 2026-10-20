@@ -1,0 +1,46 @@
+[
+  {
+    "topic": "c02-terrain-uker-grave-fragments",
+    "distinctCells": 4,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-uker-memory-overlay",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-uker-physical-ruin",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  },
+  {
+    "topic": "c02-terrain-uker-reality-rebuild",
+    "distinctCells": 16,
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    }
+  }
+]

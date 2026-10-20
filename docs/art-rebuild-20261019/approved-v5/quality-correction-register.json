@@ -1,6 +1,6 @@
 {
   "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
-  "asOfUtc": "2026-10-20T08:49:00Z",
+  "asOfUtc": "2026-10-20T08:57:00Z",
   "fullTaskAccepted": false,
   "issues": [
     {
@@ -82,35 +82,54 @@
     },
     {
       "topic": "environment:crossings-fortifications:palisade-straight",
-      "binding": "unbound",
-      "status": "source-layout-correction-required",
+      "binding": "bound-catalog-only",
+      "status": "resolved-registration-audit-error",
       "issue": "Honest measured ground contact plus whole-canvas fit produces visibly undersized native silhouette; diagnostic anchor not exact.",
       "evidence": "palisade-catalog-sources/REVIEW.md",
-      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+      "resolution": "Original diagnostic incorrectly forced atlas default as per-cell contact anchor. Unchanged existing exporter supports actual sourceFoot calibration, as existing stone cells demonstrate. Wholecanvas92 at2,2 restores native size without source change, crop, false foot or guard weakening.",
+      "resolutionEvidence": "palisade-catalog-sources/calibrated-owner-review/registration-review.json"
     },
     {
       "topic": "environment:crossings-fortifications:palisade-corner",
-      "binding": "unbound",
-      "status": "source-layout-correction-required",
+      "binding": "bound-catalog-only",
+      "status": "resolved-registration-audit-error",
       "issue": "Honest measured ground contact plus whole-canvas fit produces visibly undersized native silhouette; diagnostic anchor not exact.",
       "evidence": "palisade-catalog-sources/REVIEW.md",
-      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+      "resolution": "Original diagnostic incorrectly forced atlas default as per-cell contact anchor. Unchanged existing exporter supports actual sourceFoot calibration, as existing stone cells demonstrate. Wholecanvas92 at2,2 restores native size without source change, crop, false foot or guard weakening.",
+      "resolutionEvidence": "palisade-catalog-sources/calibrated-owner-review/registration-review.json"
     },
     {
       "topic": "environment:crossings-fortifications:palisade-gate",
       "binding": "unbound",
       "status": "source-layout-correction-required",
-      "issue": "Frontal-camera mismatch; diagnostic anchor not exact.",
+      "issue": "Frontal-camera discrepancy against original oblique gate; size/anchor concern was an audit mistake, not an actual exporter constraint.",
       "evidence": "palisade-catalog-sources/REVIEW.md",
-      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+      "resolution": "Keep unbound for genuine camera/source correction only. Do not regenerate solely to force atlas-default anchor."
     },
     {
       "topic": "environment:crossings-fortifications:palisade-breach",
-      "binding": "unbound",
-      "status": "source-layout-correction-required",
+      "binding": "bound-catalog-only",
+      "status": "resolved-registration-audit-error",
       "issue": "Honest measured ground contact plus whole-canvas fit produces visibly undersized native silhouette; diagnostic anchor not exact.",
       "evidence": "palisade-catalog-sources/REVIEW.md",
-      "resolution": "Preserve original source. Bounded genuine near-bottom groundline/camera recomposition proposed, not executed; no crop, false foot or guard change."
+      "resolution": "Original diagnostic incorrectly forced atlas default as per-cell contact anchor. Unchanged existing exporter supports actual sourceFoot calibration, as existing stone cells demonstrate. Wholecanvas92 at2,2 restores native size without source change, crop, false foot or guard weakening.",
+      "resolutionEvidence": "palisade-catalog-sources/calibrated-owner-review/registration-review.json"
+    },
+    {
+      "topic": "c02-terrain-uker-memory-overlay",
+      "binding": "bound",
+      "status": "resolved-source-style-only",
+      "issue": "Original complete material has excessive secondary mottled patches.",
+      "resolution": "One genuine broad-matte-v2 source edit selected after fullsource/native review. Minor contour simplification and brighter violet/orange accepted. Original raw/master untouched; no full scene acceptance.",
+      "resolutionEvidence": "uker-matte-corrections/REVIEW.md"
+    },
+    {
+      "topic": "c02-terrain-uker-reality-rebuild",
+      "binding": "bound",
+      "status": "resolved-source-style-only",
+      "issue": "Original complete material has excessive secondary mottled patches.",
+      "resolution": "One genuine broad-matte-v2 source edit selected after fullsource/native review. Minor contour simplification and brighter violet/orange accepted. Original raw/master untouched; no full scene acceptance.",
+      "resolutionEvidence": "uker-matte-corrections/REVIEW.md"
     }
   ]
 }

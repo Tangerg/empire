@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "rawEqualsMaster": true,
+  "sha256": "4510330ef0dceccf48ec6363b1ddc5d40c98c6db0a7a52084843bb6d6b44757d",
+  "references": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/terrain/terrain-board-03.png",
+      "sha256": "9c89ad1915479b42bf5986cba4884e79f7d236baaf0424ce6744ee9f2785ff6c"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png",
+      "sha256": "df3151cef9f435b2dc5395b6cb2e0374a4ebcbd66d6d27c85b7cf0458335c0a2"
+    }
+  ],
+  "topicId": "c02-terrain-uker-memory-overlay",
+  "status": "candidate-native-reviewed-not-registered"
+}

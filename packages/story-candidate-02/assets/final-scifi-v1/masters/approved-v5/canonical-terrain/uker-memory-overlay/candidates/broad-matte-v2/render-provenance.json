@@ -1,0 +1,16 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "request": "request.json",
+  "raw": "raw.png",
+  "master": "master.png",
+  "rawEqualsMaster": true,
+  "sha256": "22cc0fc7b51b4a3a11891537695aec3faaed5db4993daed7de756e2b5bcb3e63",
+  "references": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/master.png",
+      "sha256": "4510330ef0dceccf48ec6363b1ddc5d40c98c6db0a7a52084843bb6d6b44757d"
+    }
+  ],
+  "topicId": "c02-terrain-uker-memory-overlay",
+  "status": "candidate-native-reviewed-not-registered"
+}

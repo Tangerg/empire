@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 620,
+    "formalBound": 624,
     "boundByCategory": {
       "battle-prop": 76,
       "combat-unit": 41,
@@ -17,17 +17,17 @@
       "narrative-static": 80,
       "skill": 96,
       "status": 48,
-      "terrain": 56
+      "terrain": 60
     },
-    "rawPreservedTopics": 622,
+    "rawPreservedTopics": 626,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 186
+    "registeredEnvironmentCells": 189
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 186,
+    "registeredIndividualSourceCells": 189,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -11746,13 +11746,20 @@
       "category": "terrain",
       "label": "厄客墓星碎片",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-grave-fragments/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-uker-grave-fragments.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+        "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-uker-memory-overlay",
@@ -11760,13 +11767,20 @@
       "category": "terrain",
       "label": "厄客记忆覆盖",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-memory-overlay/candidates/broad-matte-v2/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-uker-memory-overlay.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+        "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-uker-physical-ruin",
@@ -11774,13 +11788,20 @@
       "category": "terrain",
       "label": "厄客物理废墟",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-physical-ruin/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-uker-physical-ruin.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+        "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-uker-reality-rebuild",
@@ -11788,13 +11809,20 @@
       "category": "terrain",
       "label": "厄客现实重构",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/uker-reality-rebuild/candidates/broad-matte-v2/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-uker-reality-rebuild.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque1254-square material; original fullatlas identity and exact raw/master bytes preserved. Memory/reality select versioned genuine surface corrections.",
+        "export": "Native32 historical alpha and cardinal edges unchanged. Integration owner inspected full sources/native white-black-olive. Minor contour simplification and stronger violet/orange in corrected sources accepted; no pixel identity claim.",
+        "runtimeBinding": "Canonical catalog geometry only; no invented HD or gameplay consumer. Repeated central motifs and inherited narrow masks remain.",
+        "liveGame": "pending; catalog review only"
+      }
     },
     {
       "topicId": "c02-terrain-verdant-fungus-bed",
@@ -22513,6 +22541,9 @@
       "atlasId": "crossings-fortifications",
       "baselineComponentCount": 16,
       "registeredApprovedCells": [
+        "palisade-breach",
+        "palisade-corner",
+        "palisade-straight",
         "stone-gatehouse",
         "stone-wall-corner",
         "stone-wall-straight"
@@ -22520,13 +22551,16 @@
       "liveGame": "pending",
       "stageEvidence": {
         "formalRuntimeBoundCells": [
+          "palisade-breach",
+          "palisade-corner",
+          "palisade-straight",
           "stone-gatehouse",
           "stone-wall-corner",
           "stone-wall-straight"
         ],
-        "count": 3,
-        "export": "96/192 full authored canvas and measured structural contact; untouched other13 cells preserved",
-        "runtimeBinding": "existing later-level fortress selectors; no bridge or gameplay changes",
+        "count": 6,
+        "export": "96/192 whole authored canvas and measured sourceFoot; existing exporter derives per-cell contact anchors, atlas default48,91 unchanged. New palisade slots6,7,9 only, other13 cells byte-identical to prior runtime at both densities.",
+        "runtimeBinding": "Existing three stone sources use later-level fortress selectors; palisade straight/corner/breach are catalog-only, with no invented gameplay placements. Gate remains unbound for perspective.",
         "sceneReview": "Unresolved legacy topology: c01-13 randomly places26 decorative gatehouses on impassable wall cells;28/35 north-south adjacent wall pairs have alpha gaps up to15.55px. Native source/export pass does not establish coherent fortress integration.",
         "liveGame": "pending"
       }

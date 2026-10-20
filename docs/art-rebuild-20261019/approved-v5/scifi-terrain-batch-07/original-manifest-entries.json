@@ -1,0 +1,86 @@
+[
+  {
+    "assetId": "C02-SFV1-terrain-uker-grave-fragments",
+    "topicId": "c02-terrain-uker-grave-fragments",
+    "label": "\u5384\u5ba2\u5893\u661f\u788e\u7247",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-uker-grave-fragments.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "variants": 4,
+    "variantOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "tileMode": "variants"
+  },
+  {
+    "assetId": "C02-SFV1-terrain-uker-memory-overlay",
+    "topicId": "c02-terrain-uker-memory-overlay",
+    "label": "\u5384\u5ba2\u8bb0\u5fc6\u8986\u76d6",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-uker-memory-overlay.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  {
+    "assetId": "C02-SFV1-terrain-uker-physical-ruin",
+    "topicId": "c02-terrain-uker-physical-ruin",
+    "label": "\u5384\u5ba2\u7269\u7406\u5e9f\u589f",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-uker-physical-ruin.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  {
+    "assetId": "C02-SFV1-terrain-uker-reality-rebuild",
+    "topicId": "c02-terrain-uker-reality-rebuild",
+    "label": "\u5384\u5ba2\u73b0\u5b9e\u91cd\u6784",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-uker-reality-rebuild.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  }
+]

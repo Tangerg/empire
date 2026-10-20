@@ -1,3 +1,5 @@
+> Integration correction, 2026-10-20: [48,91] is the atlas default and each unregistered cell's legacy anchor, not a frozen approved-source contact requirement. Ordinary cells are contact-calibrated by the existing exporter (lines199–215); the atlas default stays unchanged. Do not force a new source to the default or regenerate solely for that purpose. Existing stone-wall-straight is already [48,64.3604465709729].
+
 # Environment source audit: C02 premise and next C01 quartet
 
 Audit date: 2026-10-20. Scope: repository files and original atlas inspection, including the complete environment catalog outside the 1,212 canonical topics. Read AGENTS.md and PROJECT_RULES.md. No image generation, source registration, runtime changes, commits, exporter execution, or test execution. Only this review document was written.

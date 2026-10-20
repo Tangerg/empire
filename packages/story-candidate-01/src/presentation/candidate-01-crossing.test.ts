@@ -38,7 +38,7 @@ describe('registered horizontal crossing', () => {
 
   it('preserves immutable legacy atlases and excludes bridge cells from registered fortress overlays', () => {
     const catalog = JSON.parse(readFileSync(resolve(pack, '../../../../tools/art/environment-overrides.json'), 'utf8'));
-    expect(Object.keys(catalog.atlases['crossings-fortifications'].cells).sort()).toEqual(['stone-gatehouse', 'stone-wall-corner', 'stone-wall-straight']);
+    expect(Object.keys(catalog.atlases['crossings-fortifications'].cells).sort()).toEqual(['palisade-breach', 'palisade-corner', 'palisade-straight', 'stone-gatehouse', 'stone-wall-corner', 'stone-wall-straight']);
     // Exact unchanged-cell pixel checks are also enforced by export_environment_overrides --check.
     for (const [name, hash] of [
       ['crossings-fortifications.png', '43e02953833b91f400684b8ce30db4a855283148ceff2235311591799de1e3ab'],
@@ -46,6 +46,29 @@ describe('registered horizontal crossing', () => {
     ]) {
       const bytes = readFileSync(resolve(pack, 'masters/approved-v5/environment/baselines', name));
       expect(createHash('sha256').update(bytes).digest('hex')).toBe(hash);
+    }
+  });
+
+  it('calibrates catalog-only palisade contacts through the existing exporter owner', () => {
+    const catalog = JSON.parse(readFileSync(resolve(pack, '../../../../tools/art/environment-overrides.json'), 'utf8'));
+    const manifest = JSON.parse(readFileSync(resolve(pack, 'environment-builder-v1/manifest-environment-builder-v1.json'), 'utf8'));
+    const atlas = manifest.atlases.find((entry: { id: string }) => entry.id === 'crossings-fortifications');
+    expect(atlas.anchor).toEqual([48, 91]);
+    expect([atlas.cellWidth, atlas.cellHeight, atlas.cellWidth2x, atlas.cellHeight2x]).toEqual([96, 96, 192, 192]);
+    for (const [id, index, footprint] of [
+      ['palisade-straight', 6, [2, 1]], ['palisade-corner', 7, [2, 2]], ['palisade-breach', 9, [2, 1]],
+    ] as const) {
+      const spec = catalog.atlases['crossings-fortifications'].cells[id];
+      const bytes = readFileSync(resolve(pack, '../../../../', spec.source));
+      expect(createHash('sha256').update(bytes).digest('hex')).toBe(spec.sha256);
+      const sizes = [bytes.readUInt32BE(16), bytes.readUInt32BE(20)];
+      const expectedAnchor = sizes.map((size, axis) => spec.registration.origin[axis]
+        + spec.registration.sourceFoot[axis] * Math.round(size * spec.registration.scale * 2) / (2 * size));
+      expect(atlas.cells[index].id).toBe(id);
+      expect(atlas.cells[index].footprint).toEqual(footprint);
+      expect(atlas.cells[index].anchor).toEqual(expectedAnchor);
+      expect(spec.registration.origin).toEqual([2, 2]);
+      expect(spec.registration.scale).toBe(92 / Math.max(...sizes));
     }
   });
 
