@@ -1,0 +1,410 @@
+[
+  {
+    "topicId": "C01-FX-08",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-08.png",
+    "size": [
+      128,
+      32
+    ],
+    "frameSize": [
+      32,
+      32
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      28,
+      28
+    ],
+    "sources": [
+      {
+        "phase": "clustered-echoes",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/clustered-echoes/master.png",
+        "sourceSha256": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1",
+        "sourcePixelSha256": "dab23a866295cae2b3f852af743b555dd33b69be4c982dbaf70685d43e332947",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            21,
+            1240,
+            1230
+          ],
+          "nonzeroPixels": 654615
+        }
+      },
+      {
+        "phase": "rising-echoes",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/rising-echoes/master.png",
+        "sourceSha256": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2",
+        "sourcePixelSha256": "99a26bbab00ccbf63fb228f50a6a18768bad94596d0aa3d9fe0ef0a86df0d15f",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 15,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            33,
+            1228,
+            1254
+          ],
+          "nonzeroPixels": 696139
+        }
+      },
+      {
+        "phase": "dissolving-echoes",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/dissolving-echoes/master.png",
+        "sourceSha256": "b4778b284d73a89e99b6320fea356a0e18920a778b7b1c7f6409bfb021db24ef",
+        "sourcePixelSha256": "4677debd7e69c87860b9266117ec3a0840ebe131ed8e60237f01f4f892103177",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 75,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            31,
+            21,
+            1240,
+            1254
+          ],
+          "nonzeroPixels": 393902
+        }
+      },
+      {
+        "phase": "wisp-remnants",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/wisp-remnants/master.png",
+        "sourceSha256": "a6ab1b5d96f59284a7a236934145797987b4755a3e45b67e473fb6e86a29d365",
+        "sourcePixelSha256": "c81027b7a531cc80eeb183cfe88eb6e0d299c6189c5a4acfa5b8ea1c815e9820",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 26,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            41,
+            48,
+            1244,
+            1254
+          ],
+          "nonzeroPixels": 182095
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "clustered-echoes",
+        "pixelSha256": "d79178e6293c6632aadff72f3d393b4ed1035b1de08c8d25f4283154c870351d",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            2,
+            30,
+            30
+          ],
+          "nonzeroPixels": 530
+        }
+      },
+      {
+        "phase": "rising-echoes",
+        "pixelSha256": "1242c6eafe5c9096c6bb8ced5f2eb0a6c8a6eaebe9887ccc32717553410b6bda",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            2,
+            2,
+            30,
+            30
+          ],
+          "nonzeroPixels": 565
+        }
+      },
+      {
+        "phase": "dissolving-echoes",
+        "pixelSha256": "0667965160d52e0e009af0b046d68713ea1b884f3f4fe3b16ab2b3915073b497",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            3,
+            2,
+            30,
+            30
+          ],
+          "nonzeroPixels": 399
+        }
+      },
+      {
+        "phase": "wisp-remnants",
+        "pixelSha256": "f9c0d2eb01cb6a77ae1b6f5d10e5c21bca0b3adae4a511c28100c172d131e2fb",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            4,
+            4,
+            30,
+            29
+          ],
+          "nonzeroPixels": 299
+        }
+      }
+    ],
+    "pixelSha256": "479817e9e423266613e484f0425f78df6b8f7577870d2c6f410ff2cfdf69d81d",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "0750dfde429b571bab4db96933a53d87634567b49c3c69c37745f317e4653824"
+  },
+  {
+    "topicId": "C01-FX-08",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-08.png",
+    "size": [
+      256,
+      64
+    ],
+    "frameSize": [
+      64,
+      64
+    ],
+    "logicalAnchor": [
+      16,
+      16
+    ],
+    "placement": {
+      "scale": 0.022328548644338118,
+      "origin": [
+        2,
+        2
+      ],
+      "sourcePivot": [
+        627,
+        627
+      ]
+    },
+    "renderedCanvasSize": [
+      56,
+      56
+    ],
+    "sources": [
+      {
+        "phase": "clustered-echoes",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/clustered-echoes/master.png",
+        "sourceSha256": "c3d5fdac3e8b6a3f9671ab22e06f386bacfddeaaa8bcdc1ff38743f86fa57bd1",
+        "sourcePixelSha256": "dab23a866295cae2b3f852af743b555dd33b69be4c982dbaf70685d43e332947",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            21,
+            1240,
+            1230
+          ],
+          "nonzeroPixels": 654615
+        }
+      },
+      {
+        "phase": "rising-echoes",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/rising-echoes/master.png",
+        "sourceSha256": "2fae7b5203c94d332b06fba00a71f90b2cb36a60335aeb278d54173bff1ca6a2",
+        "sourcePixelSha256": "99a26bbab00ccbf63fb228f50a6a18768bad94596d0aa3d9fe0ef0a86df0d15f",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 15,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            0,
+            33,
+            1228,
+            1254
+          ],
+          "nonzeroPixels": 696139
+        }
+      },
+      {
+        "phase": "dissolving-echoes",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/dissolving-echoes/master.png",
+        "sourceSha256": "b4778b284d73a89e99b6320fea356a0e18920a778b7b1c7f6409bfb021db24ef",
+        "sourcePixelSha256": "4677debd7e69c87860b9266117ec3a0840ebe131ed8e60237f01f4f892103177",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 75,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            31,
+            21,
+            1240,
+            1254
+          ],
+          "nonzeroPixels": 393902
+        }
+      },
+      {
+        "phase": "wisp-remnants",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/wisp-remnants/master.png",
+        "sourceSha256": "a6ab1b5d96f59284a7a236934145797987b4755a3e45b67e473fb6e86a29d365",
+        "sourcePixelSha256": "c81027b7a531cc80eeb183cfe88eb6e0d299c6189c5a4acfa5b8ea1c815e9820",
+        "sourceCanvas": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 26,
+          "allowedEdgeMaxAlpha": 1,
+          "boundingBox": [
+            41,
+            48,
+            1244,
+            1254
+          ],
+          "nonzeroPixels": 182095
+        }
+      }
+    ],
+    "frames": [
+      {
+        "phase": "clustered-echoes",
+        "pixelSha256": "fcdb8b0c0f82e6ff57231b3b7e3d868b5519b238ad4987ab11db95bbe711bae8",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            7,
+            5,
+            60,
+            58
+          ],
+          "nonzeroPixels": 1801
+        }
+      },
+      {
+        "phase": "rising-echoes",
+        "pixelSha256": "9c02c68c1db980798bd3d141674f976e3d75ef7ab9a01aba6d337e64f03178a5",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            5,
+            4,
+            60,
+            60
+          ],
+          "nonzeroPixels": 1934
+        }
+      },
+      {
+        "phase": "dissolving-echoes",
+        "pixelSha256": "506520dff57ab2f75c01811a7053a3ee5985ce8c2fc2913c2e38756e14335336",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            8,
+            7,
+            57,
+            58
+          ],
+          "nonzeroPixels": 1271
+        }
+      },
+      {
+        "phase": "wisp-remnants",
+        "pixelSha256": "7a9c786cdcbc19053a75bf5595d2f6b58e4915fd07ebcb0a4d27bc8364e6d183",
+        "alpha": {
+          "maxAlpha": 255,
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "allowedEdgeMaxAlpha": 0,
+          "boundingBox": [
+            10,
+            10,
+            57,
+            56
+          ],
+          "nonzeroPixels": 791
+        }
+      }
+    ],
+    "pixelSha256": "2af4e7f3f38f3a6a8ef8d0371f4ed6e130f97596d244fa4bc9cdb766dd893cfc",
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "independentFrameFit": false,
+    "semanticMotionReview": "required-separately",
+    "liveGamePlayback": "not-performed",
+    "fileSha256": "76da1809cc8ce37d0277ecff35389d470e934b7aedc587430901bfa96a6e99be"
+  }
+]

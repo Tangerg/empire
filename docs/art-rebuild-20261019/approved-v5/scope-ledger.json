@@ -4,20 +4,20 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 424,
+    "formalBound": 429,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 7,
+      "fx": 8,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
       "narrative-static": 50,
       "skill": 48,
       "status": 24,
-      "terrain": 20
+      "terrain": 24
     },
     "rawPreservedTopics": 429,
     "liveGameVerified": 0,
@@ -3960,11 +3960,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-1/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque Silverwood material with exact board/slot audit; root fork corrected by imagegen, rejected attempt preserved",
+        "export": "Exact historical32/64 alpha masks, approved1px edge matching; complete root fork survives all16 masks. Floor, directional nursery boundary and dense canopy remain distinct. Fine bark limited at32",
+        "runtimeBinding": "Canonical terrain catalog and density2 resolver only; no current battlefield ground consumer. Four identities,28 derived cells per density; environment count unchanged",
+        "liveGame": "pending; catalog-native review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-SILVERWOOD-2",
@@ -3976,11 +3981,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-2/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque Silverwood material with exact board/slot audit; root fork corrected by imagegen, rejected attempt preserved",
+        "export": "Exact historical32/64 alpha masks, approved1px edge matching; complete root fork survives all16 masks. Floor, directional nursery boundary and dense canopy remain distinct. Fine bark limited at32",
+        "runtimeBinding": "Canonical terrain catalog and density2 resolver only; no current battlefield ground consumer. Four identities,28 derived cells per density; environment count unchanged",
+        "liveGame": "pending; catalog-native review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-SILVERWOOD-3",
@@ -3992,11 +4002,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-3/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-3.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque Silverwood material with exact board/slot audit; root fork corrected by imagegen, rejected attempt preserved",
+        "export": "Exact historical32/64 alpha masks, approved1px edge matching; complete root fork survives all16 masks. Floor, directional nursery boundary and dense canopy remain distinct. Fine bark limited at32",
+        "runtimeBinding": "Canonical terrain catalog and density2 resolver only; no current battlefield ground consumer. Four identities,28 derived cells per density; environment count unchanged",
+        "liveGame": "pending; catalog-native review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-SILVERWOOD-4",
@@ -4008,11 +4023,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-4/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-4.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Independent opaque Silverwood material with exact board/slot audit; root fork corrected by imagegen, rejected attempt preserved",
+        "export": "Exact historical32/64 alpha masks, approved1px edge matching; complete root fork survives all16 masks. Floor, directional nursery boundary and dense canopy remain distinct. Fine bark limited at32",
+        "runtimeBinding": "Canonical terrain catalog and density2 resolver only; no current battlefield ground consumer. Four identities,28 derived cells per density; environment count unchanged",
+        "liveGame": "pending; catalog-native review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-WASTELAND-1",
@@ -8010,14 +8030,21 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/clustered-echoes/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/rising-echoes/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/dissolving-echoes/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/rising-echoes/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-08/wisp-remnants/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-08.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent RGBA memory phases; original request/reference bytes and alpha1 boundary residue preserved",
+        "export": "Shared1254 canvas scale28/1254 origin2,2; exact32/64 exports, final2pxalpha0, five backgrounds, actual translucent dissolving bodies and12 APNG timing checks",
+        "runtimeBinding": "Canonical FX08+HD resolver, ghost-touch/colossus-sweep hit effect;12fps nonloop normal blend, existing420ms lifetime",
+        "liveGame": "pending; native frame/APNG evidence only"
+      }
     },
     {
       "topicId": "C01-FX-09",

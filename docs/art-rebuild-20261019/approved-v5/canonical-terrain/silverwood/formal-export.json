@@ -1,0 +1,1450 @@
+[
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-1",
+    "density": 1,
+    "tileMode": "variants",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-1.png",
+    "size": [
+      128,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-1/master.png",
+      "sourceSha256": "072f6940669d474f059626f30c3f96b5d5dedbf27a7abe3e0abbc7b1e09b9a2f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "dc97b7e7ee3c95292bdaa9add31108abb27f11daa49fcc4745a93ffc319416a5",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "22d59ef5dd91613d34a18e1d30f55d9a6e05f3a3b73cb0257c8df84ded80011e",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 56,
+        "interiorPixelSha256": "219619cd0b187778b5ebe01fb5791130ea30f2c29a23aab7ecfe0932d5fd8513",
+        "edgeHashes": {
+          "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+          "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+        },
+        "pixelSha256": "7704a2fcaf9f5c7fc19f0ba4ac553239c7ff095f04224693cb165eb08f2f8f82"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "83652de2d420574ec3d98eaed7da42ad3f9c871f295218cf7ae8c319af722347",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 43,
+        "interiorPixelSha256": "6bd0234e14696bc95f31ce6392736609d1d79cfca4698c99ebfef569b43bde4c",
+        "edgeHashes": {
+          "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+          "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+        },
+        "pixelSha256": "6c0a841aaabbdee36630414f4c624a58412506ffce31f8c80c1f968b468704b7"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "5dd6d18f22514c43121665ee766d1e4af8456faf1dc346e4b742eb2eeff9301c",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 64,
+        "interiorPixelSha256": "800f16f11874a9e048c75cacda9810b0907924786aacd7a2ecaeabe98ffcdd50",
+        "edgeHashes": {
+          "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+          "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+        },
+        "pixelSha256": "a49f58c12fb34057b6a6f112bf0dbea0b7d9094fc67ef78e825eda790f968bae"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "911673baebea296ef1d6f0a2d94839b00f74025ae42143417eddbc9209191a18",
+        "edgeBandPixels": 1,
+        "changedPixels": 123,
+        "maxChannelChange": 44,
+        "interiorPixelSha256": "53459c00ff14f9cb80562a455c57cebe50f9a8c4d8e552e8a9a4160b0798473e",
+        "edgeHashes": {
+          "top": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "bottom": "7ed7b08d37d20dfec4cad267d05ee300f3e049626927696d92083afcd4d252e8",
+          "left": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569",
+          "right": "7a815678848b46abd9ba90d3bdeef24959c772af079a85dca1592585ed67f569"
+        },
+        "pixelSha256": "b51e37c58fcf50090627f7c05aa896b994d59b295c72c1ce84a8014bfde61579"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "db48a70f3033e87b0273d9ee9d67c55f3de08d0cc3be9504a8cd4f22b7010eab",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "33323e951069e2e873a28273b9b09d355a56a29c8be62ac94f6f75281a264a5d",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "f4b02ff09fff72e4da2c0ad1380fd3255f8cfde4a6aeb9095ceef6fbd721e240",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "01bbf852573bf41e01bd28ea66f49cedd4340efe5d4ffddb22b7ad34d0498f8f",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "pixelSha256": "af2472e8755e66427d61bde17bda4b082585490e0d28b157f6efd4c871d7c6fd",
+    "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 4,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "15da64cec0e5ef29774989fe899dfc0b016059b494042e9755ad5541008b1d81"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-1",
+    "density": 2,
+    "tileMode": "variants",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-1.png",
+    "size": [
+      256,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-1/master.png",
+      "sourceSha256": "072f6940669d474f059626f30c3f96b5d5dedbf27a7abe3e0abbc7b1e09b9a2f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "dc97b7e7ee3c95292bdaa9add31108abb27f11daa49fcc4745a93ffc319416a5",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "6a25e9a8c85be68d8b841f359048c6806f37861cfb1d94d1953ed96d63a7746f",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 61,
+        "interiorPixelSha256": "b0494f90103df40308f6fd891dd83c5c83374e42b8da76753191bd3ca4e17c2b",
+        "edgeHashes": {
+          "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+          "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+        },
+        "pixelSha256": "b0998312af58acb2e2fd20aa1546a4dca71ccc75203bfa7af934aa5b8b17545c"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "dcf60c4211bed89039caa86506b54f0d2b4de5b5e618a196ff3e3626afb5004d",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 44,
+        "interiorPixelSha256": "09301f0b880622c199ca75490243c835e194a9034e3e65f7fda4c4b1648c99ad",
+        "edgeHashes": {
+          "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+          "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+        },
+        "pixelSha256": "d8fade1384307ab6f6c23468e7dd2789c7eaa9b33fa3ef8630b32f15e9318ae3"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "64839567067b2b8b2ce21759e56396ec29a4dc33da27856e7e4aad42d20667d9",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 60,
+        "interiorPixelSha256": "7f389d2b37eb044002bf3f4ff2c81d87c41d656db43e157de3a0a94f933dfe1f",
+        "edgeHashes": {
+          "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+          "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+        },
+        "pixelSha256": "32000395307d783c24c02dca60d0455956d609716d03ac7fc2622a7e30fd1b3a"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "21da67c8bd5564b95bfdc5e308356bd82a2df4947ac900a1064b075842fd1788",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 58,
+        "interiorPixelSha256": "17f5abc266c42777cc08ed8ba6b1e3af6f3db01db4eec4338fb2d0cf601b7888",
+        "edgeHashes": {
+          "top": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "bottom": "cea938dd26b8b5c86292f5b4189f4feeb606ae4a44dfbb20a03588b8afa95029",
+          "left": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9",
+          "right": "4f9b9f6820cb21746c367c16191505396618e166781580d383ffdc612a44b9a9"
+        },
+        "pixelSha256": "a719d6df1b76040bbdd9cdf451c4227d38b015546b6ea530790e7e02e849f3a4"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "585270dd4d1e71f28926cb937798df47da20d1cd16c6e8aec70fa1485e3abc1b",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "3e27bf2e69db4a79ee380e7bbfc680fa6c48b6416f82735d90c4d76f9215ce0d",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "c1b5f9bd2a39cccfaa73969ae64a89a1e38542180bce16b4cbc01baaa661ab41",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "d1e1f553d873955bc119d279f4cb458484f8928c94286508d07229b99a06ee29",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "pixelSha256": "af1233220271c2f9728a84b7942c5173d22b9628a5124b9addec6149f7f03820",
+    "alphaSha256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 4,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "1436aaa56576030193a1d2d5da63410b9b345d0d26a08eca46411807b8809e83"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-2",
+    "density": 1,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-2.png",
+    "size": [
+      512,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-2/master.png",
+      "sourceSha256": "9894a56702015c87dd27af8fe263dcf49431c096ac66b26ab6cc3bbea92f2d35",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "6d751c183191ea68e4ab0f260a9d85c602348eae415c0626dbc6b1357eb56927",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.025518341307814992,
+        "samplePixelSha256": "93ebefe5855a5b3e107fbae24fe499233f6fd4a08e5c94da95ae3fe6f2027b71",
+        "edgeBandPixels": 1,
+        "changedPixels": 122,
+        "maxChannelChange": 40,
+        "interiorPixelSha256": "ab705ecfaa8cba4493acacb3f36ac84dc7e183f4accd93450ba4ce48bb41fee7",
+        "edgeHashes": {
+          "top": "372963b19f16c94c8bb1fc5ca24049eae2ef19baf3e8c18ae8163c3ccdc6f59e",
+          "bottom": "372963b19f16c94c8bb1fc5ca24049eae2ef19baf3e8c18ae8163c3ccdc6f59e",
+          "left": "883dbb29d4d57f3d8068845d47b57c044c7a9e1b4cd0b7d33be441f45c7c4574",
+          "right": "883dbb29d4d57f3d8068845d47b57c044c7a9e1b4cd0b7d33be441f45c7c4574"
+        },
+        "pixelSha256": "f1f909258a16e0a68d61f5d74d8236f0e58951af55bd34c461d0204a55a8c169"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "6a6f5f9461b7f73e55c3d8c954e456521c383256b4b78ae35a011a1f51550a4e",
+        "alphaSha256": "2b0bd94748c320f3eb753cb320c2d921da91e95059944e0fb715294413842b34"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "4fda5083fd9824a5f6147fb6cac97892f8cde7ecadd3f22318206513533f05e5",
+        "alphaSha256": "ccdfe8a93f84082db0c9f3c36ffb2b95baf1b4d41c8c6afb26a54f20674ec833"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "ef4a563e9272f44e818fd277c8bbb21b74d9cefe11327a2fad11a8fccea561c7",
+        "alphaSha256": "6832865e86dd4ca37cd38f941ac17ebb95082c59474305885fbdc4d3ca6125a7"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "403891353dc1dff10473e94a41b20bd7422991d5ad84a7b3e3981b42425a8141",
+        "alphaSha256": "f2d5ce98ba618521480226545cff773933896b3880a0790cb5c9c5f9e091296d"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "e112c7ac7a98837814472b41d305d93e26617ef7c6539df875f18cb43aad5e18",
+        "alphaSha256": "c3976223459d79f02866010320e9d3e5ba486d66eb7a79ceb1651445bfb111b9"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "cc6bce6a8f3afd4eeca375afa528e4af3becfab873308f08fd8beb5af3e5f401",
+        "alphaSha256": "4189ac9031a97dcceb1a1af6e7e4ad8a765849cca42ca87e68a6e7bc0bb507cf"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "ff5936c24b7f1d7e5566386674f297d9c6d95a6f32e8c157ced8c70b394506bc",
+        "alphaSha256": "fd667fa6f44e4e96057f726c3c10d8b6c13e252bdb78aecf10382880779f5fe8"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "f2bdb193fc720ed1a0a55a0eb4b0e88f0bb61b4f640b2498bdfd71a8957bfdd9",
+        "alphaSha256": "1d9332e3ce805675aecb188e2b9d95b434ddba2483a6f458029296094f9d24a0"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "8f000bf0444f22c1b86d1b01e8a52aff0a524be7009386acca688603c3b8bc4a",
+        "alphaSha256": "3aca85df05ffdf7f974a4e568da7fdf796e77afa0803a98e5b0e98ca46c78ac3"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "fdd29701b955060bad3961f5c7f19dfbe34fa901f4be9e4f23fe9bf370043a2a",
+        "alphaSha256": "b948966a94c4277d11e2a105bb5548e16d005d1a016773bb559972decaeb4494"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "e6cf3d92971f92cbc98e56a3f96ea13f57db20a39e1e42ef0da43b685dfc43b8",
+        "alphaSha256": "bcd0bd1506c38877160ee6e927f4d089926cc40646586a2279756b4f8101ba3f"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "04a88e0a57f0dc65824785292e6447b5649454df965878454d8d5646d39112d3",
+        "alphaSha256": "2774f43bd2c2d78ee1c048906b0fd17e7bf13694fd3b87c2da22943aa27cfc28"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "590caff3f1cdcbeb8d2821d5e5e6011c262ef728565a97c95d11076911cc8c9d",
+        "alphaSha256": "487605c8d1bb2088ade7e08025820a1257056634538adba84d17b7f1781f27a4"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "56cbd7831fde2149ef062c87274360898fbeb0e783a6217b49b3688fa5f49389",
+        "alphaSha256": "6d8be75619d7d1c4ab77d4c009c9787bca65b8383608d9af267787048f8dd5ed"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "ff9f97fab64ef477db0b3b649f049c520c81a9c81bd1e7b790117b9f5f52992e",
+        "alphaSha256": "78d1a5e93fca8ee4a8f801c32903a1b72fd6657c44c0fdff1a21e77fc0773cfd"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "12ec264f0be2e031c6f026800320c0ea03c3d534519419d4f8c7089ce8151f64",
+        "alphaSha256": "6e9f65bfd79784f3de28ab496d2986a95a5aa09f8a2509bbaaf75893577bebef"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "df6a4471dd9d4127aa37104277eac1ccb6b6eb6b5850c98f264187297103328f",
+    "alphaSha256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "324a967a2f9e07fd453cfcaa573ce4fef4b89fd9cd16b2b574e2a6f59a1e918e"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-2",
+    "density": 2,
+    "tileMode": "nesw-16",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-2.png",
+    "size": [
+      1024,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-2/master.png",
+      "sourceSha256": "9894a56702015c87dd27af8fe263dcf49431c096ac66b26ab6cc3bbea92f2d35",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "6d751c183191ea68e4ab0f260a9d85c602348eae415c0626dbc6b1357eb56927",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 39.1875,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "c4e12e59254718ed77cc5e8eea6f16e7c3983ede08a1840fc12b6e6d82b2a18f",
+        "edgeBandPixels": 1,
+        "changedPixels": 243,
+        "maxChannelChange": 37,
+        "interiorPixelSha256": "3cd43b74de3fa0fc24ee4fdcbe85d8b8482d4d238d90cdf4b2341c96c5c1e6bf",
+        "edgeHashes": {
+          "top": "e1d6288eaf03cb75749c1e4d0526b178d052083662aae84fe5272006480f33de",
+          "bottom": "e1d6288eaf03cb75749c1e4d0526b178d052083662aae84fe5272006480f33de",
+          "left": "f9832f84b04d0d7607c9b513a2a7cd5cf533fe4168d928b1f26b47e69c9a4bca",
+          "right": "f9832f84b04d0d7607c9b513a2a7cd5cf533fe4168d928b1f26b47e69c9a4bca"
+        },
+        "pixelSha256": "f6c5b12e081ac40e6b20c0e8366ec2889e3d07fa3557c25d5cd3ea2cf779bc3e"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "mask": 0,
+        "pixelSha256": "aaf167fd81c8a7126f7a4a9e1bc25e9e05c08aa49ea59ea574a397090e5f7c5a",
+        "alphaSha256": "2f773e31e9f833472f51357bed5933b2885399680f0cfd376800e4603471f03e"
+      },
+      {
+        "index": 1,
+        "mask": 1,
+        "pixelSha256": "1f83cb4a36e1bd6df431ced0897cbce1f16601f40470eb9b93898c10741fadc0",
+        "alphaSha256": "d4270fa122ceabe2d378dda5fd7d21821d4c622665cdf38afe8bb0e6c7af85cd"
+      },
+      {
+        "index": 2,
+        "mask": 2,
+        "pixelSha256": "2f1347af5003b5dc85deb24010dcc2b9ef73f830a8fa7257f07f55bf4116a3f8",
+        "alphaSha256": "a386b2d36c69b6123d5e89ba676bcdaca196e1e968f458174d1e77257dee1ae1"
+      },
+      {
+        "index": 3,
+        "mask": 3,
+        "pixelSha256": "8d6ef90fe22f99f4895183a7a27ee422317e3958c007a49b94fe3c64c21eeda0",
+        "alphaSha256": "e1f50ef7252c99496bdfea9993471b9f223d03ac946800cd735a6942b714d26e"
+      },
+      {
+        "index": 4,
+        "mask": 4,
+        "pixelSha256": "1e71999ae98abfea00dc6a24bf2be1b507aa8a428705d4e785ab2788b6c6a2bf",
+        "alphaSha256": "a3afb24231d1f4aafe1bd02813d0d5c8340aef4fc0989f11a111fb086998b4a8"
+      },
+      {
+        "index": 5,
+        "mask": 5,
+        "pixelSha256": "4ecad69e3fc6c22007deaf45a373810d74625bcd884074fedd94c7cab1264588",
+        "alphaSha256": "a98ea5e2eda0f98dc856fa531951f11284698550ac7c2d6c4096da0db4058256"
+      },
+      {
+        "index": 6,
+        "mask": 6,
+        "pixelSha256": "16dfaeb378833a3734ef9d8b35e60a9779937dcc1a98ced198473188f82e2dd7",
+        "alphaSha256": "8391349d71952bf192eafb729e3bfc6311e90e55cfc3724035aeacc6f87e5591"
+      },
+      {
+        "index": 7,
+        "mask": 7,
+        "pixelSha256": "4195efe233fe12bf50b2f0d3787cdf6ec9b33c44f09fddbfb6354aed96c27e1f",
+        "alphaSha256": "cb2a85db295d8588f34b75c92ec417401ea8f990865d6c74b1106da35f87c369"
+      },
+      {
+        "index": 8,
+        "mask": 8,
+        "pixelSha256": "bc8d7b455b58a574f4630927341b62f385ef5212584f5812cdf151a852c03385",
+        "alphaSha256": "06c3e79df5499e1531e0b240df128040745a0e55ef76cc3848cb904728605b3e"
+      },
+      {
+        "index": 9,
+        "mask": 9,
+        "pixelSha256": "b026393f55356db228143c9ca2f646d54ff56a0eb95fc0e2da91158528ea772e",
+        "alphaSha256": "462d195e8fba8b3a9531b0f080432ecf4ef2ac3ae7be7bc6ea4e19287705f5ea"
+      },
+      {
+        "index": 10,
+        "mask": 10,
+        "pixelSha256": "57f017d2b2c2cb170b67ac4d51386cebf03eac700cbb20fa80d4f24d447f352a",
+        "alphaSha256": "196d8b07d970a42d7983829753c9e150688cf1c3245bc1f9f5e553368d8cc172"
+      },
+      {
+        "index": 11,
+        "mask": 11,
+        "pixelSha256": "2dbe7ab078da83c53f5ca59e9a2515eb5cc225a94b6ed7382076c5fd611594e6",
+        "alphaSha256": "68c7d6a0720a2be48c93a71abebfc6dec3116a5a730daa82a1ae522a0dcfaf8a"
+      },
+      {
+        "index": 12,
+        "mask": 12,
+        "pixelSha256": "baead7b62921ffd67a77aebd3c17780188796ce1002cd1495a84835469bd42af",
+        "alphaSha256": "963c273deb8730831143d3536774f3e13c68d2bfc25113f1f130292840362b4d"
+      },
+      {
+        "index": 13,
+        "mask": 13,
+        "pixelSha256": "9dd6e50d947785ed3d6f95f9bf33e5cdd0cd989da9d6287aa3b6dc536203e040",
+        "alphaSha256": "d91fe9db432bec5341181f8e9c00399325196507aa5251cd4803c116389b9117"
+      },
+      {
+        "index": 14,
+        "mask": 14,
+        "pixelSha256": "9ba38f8be64d842905e7f6da3e6804a7a0554dbc67d789c9f3afde8c82c5eb82",
+        "alphaSha256": "7b7db09c81b0bfd3984946017ee95548116c3872556b3c1612d4730681cf957a"
+      },
+      {
+        "index": 15,
+        "mask": 15,
+        "pixelSha256": "f385951519976f55634b298692898591a8aa4598eea488e480a6dd3600f300bc",
+        "alphaSha256": "a3204f06aea0fed7f444c50a39c43a504594c4bec08703ed772ee0680f7f590d"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 64,
+        "southNorth": 64
+      }
+    },
+    "pixelSha256": "2c74db3b22a4973a58ccb7f1de53dbe672a5e5f2a7688b74f056087b5ff8ece9",
+    "alphaSha256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 16,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "9411a63c65b25f31413913c9ead00e0821d6e51ef60f5461e35f89859d2ee4bf"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-3",
+    "density": 1,
+    "tileMode": "variants",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-3.png",
+    "size": [
+      128,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-3/master.png",
+      "sourceSha256": "6cd678a3bea3d98ae1ccc51820c0b30499020ee6bc1180b0d569a97922389d1f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "dac3946fc88654bf87fc61827d0dab0fe564fb89813c423025106f4bfd51c088",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "48cb6bb74dd22f1fc093ab4edef277d79317a5ef23089cea7894950471133184",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 79,
+        "interiorPixelSha256": "5911027cc7357fecdd495dd7688e1f614fbb39ef331bfb146ed4163d04dee3e1",
+        "edgeHashes": {
+          "top": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "bottom": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "left": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098",
+          "right": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098"
+        },
+        "pixelSha256": "1d690993b547332d94d22aa13544a2f3151f075f8415d8a110fd91ca68f2a9d5"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "a617b30712aa1c7cd54eb6fefe649b113985c376a53d9ccad2744f58904d86e1",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 68,
+        "interiorPixelSha256": "87022234af43efa80d2895e7d0577ae042704dcc43c9e9279fe1e51e75677b1a",
+        "edgeHashes": {
+          "top": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "bottom": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "left": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098",
+          "right": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098"
+        },
+        "pixelSha256": "2a8cfa1ccb7514b1a8da99b5192ab9a16495b8849ad7d367475a583cd5b17d94"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "23896b9118df2611fd076e01d829af28921e676bb1249965011fe183bf015db2",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 87,
+        "interiorPixelSha256": "0e9725128d5c9b84d36f9a3badc2bae753a5375339590280bcb9788e7c9fffa8",
+        "edgeHashes": {
+          "top": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "bottom": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "left": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098",
+          "right": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098"
+        },
+        "pixelSha256": "9d5a161de61fe9e586affdeb4f8bef73d040b6888ca25bbf5ba50cdba580a0f6"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "72ab7ca5c4ea2c827687c5eebd92c2f635ba8952e969428e1acaa30c4bc8ec2e",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 67,
+        "interiorPixelSha256": "62f21f38812ab5331963ab0edf571b9deee1a4ad9d97d3aa73b8736ae47a4e03",
+        "edgeHashes": {
+          "top": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "bottom": "b78693d9ab471cb693d9eb11d903cbbd0470d550e8bc4e132cdd7ff1dbda8cef",
+          "left": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098",
+          "right": "c2b1fe8654fc16bdb2b646738d66400277cfd09a23ff48e5855ce98054ede098"
+        },
+        "pixelSha256": "d719edf24448597578885d9484df2bfaf1ec03575cdfd9a29c62f20942cfb14a"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "27e9e0b9c65bc9ce9e9be5e392adc9727a8a10069395faac215a1cc6be2921c6",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "898be9d01ab1d1879bf0f402e781bb08c29a8859be6f5bf71345ed163c3dc64d",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "1133675577f855d2dbd5366e33109d66d71c7b1fae908d15940d7b0f6bb27de1",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "c525f137ea7950e1f89c367ba5ccd6f0cea625eb19e092b24c77284f8046693d",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "pixelSha256": "8a76220c5ff0a68e0175a91abb2343db7f3c2ec093143955064e2d77b66c274c",
+    "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 4,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "461afe206c196091022f9313204d573d22dbf05bded041d1d899d0bb01c64771"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-3",
+    "density": 2,
+    "tileMode": "variants",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-3.png",
+    "size": [
+      256,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-3/master.png",
+      "sourceSha256": "6cd678a3bea3d98ae1ccc51820c0b30499020ee6bc1180b0d569a97922389d1f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "dac3946fc88654bf87fc61827d0dab0fe564fb89813c423025106f4bfd51c088",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "9bc19e85afb719c543343974faa4e59361e631e88c5a80944b358a5a5bea7765",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 106,
+        "interiorPixelSha256": "3470e85659bea05f3d56c497bd826cd8292ff7ab273f9a763fdd2dbfd3966743",
+        "edgeHashes": {
+          "top": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "bottom": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "left": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1",
+          "right": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1"
+        },
+        "pixelSha256": "8312fbb407164252778cf1565e5b1b8bbcd9d372c7ca4a00f96679dfb3948090"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "22e1aa597d0946e79407c0ceacc85285207a9736ce1d964868914de4ad5c2ce7",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 61,
+        "interiorPixelSha256": "280bb60794731e39e05e1ece97b57c690d32eaf37e3b2742a9de2d67f13fa0fe",
+        "edgeHashes": {
+          "top": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "bottom": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "left": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1",
+          "right": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1"
+        },
+        "pixelSha256": "10dde946d2769bd914506b27362e1de26bd8baeed513dc5650528ffabc177033"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "08deaa683f1f9ae2385330cd45637b9bd492877ab01d272f3dffa7b9dc7806b9",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 103,
+        "interiorPixelSha256": "154f64b9bf7bf2f6611311a0f46dc92ee06b6123fcfca2cc9e34cf22c6d0f4d2",
+        "edgeHashes": {
+          "top": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "bottom": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "left": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1",
+          "right": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1"
+        },
+        "pixelSha256": "4620cb7dd4125dd51c3a7a2260a34abbdab8982c7fb1f923021fe4ee59561657"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "b6c42ecc2bd53acdc00e1310eb9f3ba2ee7dd28d90da75f9e17bc27d9232876d",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 61,
+        "interiorPixelSha256": "75e81e21bca8ad628e0d199b509b6835f12ad9487629450550fdbe8d3e7d0989",
+        "edgeHashes": {
+          "top": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "bottom": "c4ecdcd87b19c3546de8454e82f3012e72e0deaeb2a520d2f14584633266219c",
+          "left": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1",
+          "right": "95fa420c1d96f85d4c0f6e9a9725abc4796ebf334106072a6ab7e98911a8b1e1"
+        },
+        "pixelSha256": "f29981f1ffac25a424fc8f79f0ca3b5af6ff1e71ec213366a8690504c8014e1d"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "19a2127f7b56b07f3b45b61ef8c087bc41869a3c4ea55de3a4f14e3b1e2aa0b0",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "f26b7b73cde5952d098d69bdd20bd2d362773c9b2206b70b478998bf90dc1c81",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "672e371d393f7e8d5064a0c883e74faf1f8b886b4317fdb42ced0c847fe392ba",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "7c60f901399bc53dc8c30706c97d1646de3c318189f3c5ccb9721e4f4a292474",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "pixelSha256": "b3c0c2c30ebf31eb898375d83bd87ade24faee6eae27a439d272b28882817944",
+    "alphaSha256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 4,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "066f87882cf1bc8c5df1d431ad783a459a8e78dc2bafa3c92b1694d686ff31d2"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-4",
+    "density": 1,
+    "tileMode": "variants",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-silverwood-4.png",
+    "size": [
+      128,
+      32
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-4/master.png",
+      "sourceSha256": "5cea6275d4073dba486c494b4b353affb50359c1e6318871a8d3a4cb3000f26f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "8a8218421ee0b880780fbd83e8941ad3a6d4ce307923da577634471df70eedbe",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "9ce338146039993592ac4c71eed078f569880d472f5f6bcc0ad8af910d753bc0",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 51,
+        "interiorPixelSha256": "af12545dc9d2731ead45f18d1e4b3c0445e5743c7b7ca4b38a598a90ee228b74",
+        "edgeHashes": {
+          "top": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "bottom": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "left": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7",
+          "right": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7"
+        },
+        "pixelSha256": "834c4ee80204a6ddc0dbc818fdf079cfbc728d7a14637be865109672706525e9"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "b24873f2e60d40a1ecf7158575dfef4ef899aab4e0889083ba3c1f5a55d1c1d4",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 53,
+        "interiorPixelSha256": "60adf0228ab306de33dc1263b43b496f1980ac847161756496c0d83da4aa572c",
+        "edgeHashes": {
+          "top": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "bottom": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "left": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7",
+          "right": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7"
+        },
+        "pixelSha256": "5ffc4227c3c76da5bbf30a07cee4fe43ade2e138938e20991e1c66eb0a2d9e51"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "debc308047277a37294d5e93241053bc5404f431a1699c1402fe981493ae9aa8",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 44,
+        "interiorPixelSha256": "883bc57bfe445f2716c9a6f753db7faf814d7840dd97d29a0bc3b546e0ed1752",
+        "edgeHashes": {
+          "top": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "bottom": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "left": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7",
+          "right": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7"
+        },
+        "pixelSha256": "e2fdbb66047309452a58161dd9f2a8dec1d63305bb04335f834b29bd454e6b2c"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.051036682615629984,
+        "samplePixelSha256": "fd795c60698d9a475794a6c1b064dca8c10578629cdcde4fe2dc03cb23b541da",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 51,
+        "interiorPixelSha256": "b37bc1a879244c6f330921fe7c3a0f45a462d8c3307930ec1bf0c4a802c492c1",
+        "edgeHashes": {
+          "top": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "bottom": "b9024a1e78776235e42ed7bb5f7315e305781a66760d260ea202ea958e69bfe0",
+          "left": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7",
+          "right": "c77ffffea1d2ec39844b58467b42dc623d70685359b0e0ccf8d8b0a51f77d9a7"
+        },
+        "pixelSha256": "e2fe0bb7b0c45aff5f469a88400f7d3d835d7dfda3c4f5492ebe117ffcdabc62"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "a9b4b9e103f3c2749392e046add58278410ea134fb802ca2d83558b865d25f78",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "4192e2c0f5309d32b78ec3e8e88a241de613734b87c250c0c15209dc06f66c9a",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "08c452739392ba0229bdc439471cf18ff8b959381959697d93ef82fc2858e36c",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "51a3e0f4a9b38bb6fe4f0ecad0c76aadce2907bf64ad732a5612cac71359f263",
+        "alphaSha256": "5f4ecdb7b71c3e403983fe405cddcdc2f2576b655fdb3e80d94a6f7c32e58bc2"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "pixelSha256": "c8bfb0666fbb4adacad26b4c752495072d95c8e4044f8a22f1019c0fc761cf05",
+    "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 4,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "203df62ebff1d064d799757a8788a3852d207d996972f67e34adfa289d7b2090"
+  },
+  {
+    "topicId": "C01-TERRAIN-SILVERWOOD-4",
+    "density": 2,
+    "tileMode": "variants",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-silverwood-4.png",
+    "size": [
+      256,
+      64
+    ],
+    "source": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/silverwood-4/master.png",
+      "sourceSha256": "5cea6275d4073dba486c494b4b353affb50359c1e6318871a8d3a4cb3000f26f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "sourcePixelSha256": "8a8218421ee0b880780fbd83e8941ad3a6d4ce307923da577634471df70eedbe",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      }
+    },
+    "samples": [
+      {
+        "windowXYXY": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "ea3760bb83b383f8b22141f298467e864c64089b582346f13d7a33a1be44a12c",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 56,
+        "interiorPixelSha256": "f995e8e388c63e75fb3dfbd21be632e427c48e3431dfb79a5731409e019d39c5",
+        "edgeHashes": {
+          "top": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "bottom": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "left": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6",
+          "right": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6"
+        },
+        "pixelSha256": "c970105a3648545493824aaab6e889edfa11b80ec974d0ed5e79dc23945f12b0"
+      },
+      {
+        "windowXYXY": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "2214baa516a0ffe8f41f59d2130640842117283784020960da7ff2d59eb34c8c",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 50,
+        "interiorPixelSha256": "6cb434431ffff80d68c67b8d0105e60adadee13d8c3b3c108a991ac8e71d8e7b",
+        "edgeHashes": {
+          "top": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "bottom": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "left": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6",
+          "right": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6"
+        },
+        "pixelSha256": "e18850d83aa04d22c1f3f6fbafe1dec490bcd26c1e21a5ba6227b7fcaa66cc88"
+      },
+      {
+        "windowXYXY": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "25a68ec402636d8b66ab68113fd3be104f8c4fd51731f866b0c51259241bc218",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 53,
+        "interiorPixelSha256": "72efa26fb4587d2bf3cb5ad3f0493a485986201cd5e81589684b85ac4f8e46d5",
+        "edgeHashes": {
+          "top": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "bottom": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "left": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6",
+          "right": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6"
+        },
+        "pixelSha256": "33f68c0d9e3ac05f56a0d7d6ef226a2210d4c311475dd6f625fa5ea533da7da8"
+      },
+      {
+        "windowXYXY": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "sourcePixelsPerLogicalPixel": 19.59375,
+        "outputPixelsPerSourcePixel": 0.10207336523125997,
+        "samplePixelSha256": "c1458e12481c5495646587ccc6e3587fadc380197ef62eef198aed8974eb4897",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 54,
+        "interiorPixelSha256": "bf58c26e181a97fe48168c69ca61ec82a20b5da9ce5632779cd5470f8b869d3e",
+        "edgeHashes": {
+          "top": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "bottom": "1581a32ceacc78687d7304c1224dc91258b3a75e21c7a6d54c3a29385f986d3f",
+          "left": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6",
+          "right": "bbe1b06266ec99d43a3c0aa6826f4b9801cde7fd83740cc22049cb52577a33b6"
+        },
+        "pixelSha256": "4f7006782bd3bee62322a767ddc68a835f4febeb3ef00d2d7d81ca067a73cde0"
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "variant": "a",
+        "pixelSha256": "ca79c2f93d62de52a9482c282e51c75d853d02382e28a45991df7ee682ca5dae",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 1,
+        "variant": "b",
+        "pixelSha256": "211eea53b19a1e3c5668993d8d29f2a40335bef6c7253f8d32ef80f0c5435ee9",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 2,
+        "variant": "c",
+        "pixelSha256": "e55088ebe5353e430ee770e4a63be2d6a02e1b744033214dfa49728a6e91d41d",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "index": 3,
+        "variant": "d",
+        "pixelSha256": "d84404ba7b0142a3af5a4c22c0207de196202567c427aadea2f7b2f8a2f3be05",
+        "alphaSha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      }
+    ],
+    "edges": {
+      "comparison": "exact RGBA equality for every allowed pair",
+      "pairs": {
+        "eastWest": 16,
+        "southNorth": 16
+      }
+    },
+    "pixelSha256": "82170ac06e8a41dfc4629089b615c56080f55b482fd26c62c05adacde2a1a13c",
+    "alphaSha256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+    "derivation": "explicit equal-scale source crops; independent LANCZOS resize at 32/64; approved outermost 1px opposite-family-edge average; exact historical alpha; transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail",
+    "integration": "canonical-catalog-only; no current gameplay ground consumer",
+    "authoredMaterialCount": 1,
+    "derivedCellCount": 4,
+    "environmentCellCountIncrement": 0,
+    "visualReviewRequired": "source identity and motif completeness at native 32px; repeated/mixed seams or connected topology fixtures; approved-v5 actor cohesion",
+    "fileSha256": "335b31550293a684be3ef7a27116661c92c2928649c8e7af810a776af5091bd8"
+  }
+]
