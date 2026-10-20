@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-1",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+  "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    3,
+    447,
+    441,
+    884
+  ],
+  "cropSize": [
+    438,
+    437
+  ],
+  "slotSHA256": "3b204f96ad31ef66dd52020510ee00af11fb816512999f68e371a9a1e8f4a07b",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "independentRuntimeReplay": [
+    {
+      "size": 32,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "0379bab5eb00bfc2244b553556ec39eef680c756c553a58c6fd57b1361725cc2",
+      "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+      "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+    },
+    {
+      "size": 64,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "e97aee1e8d97e76c50f792471054deb3fd6a9670dcb61f9452dcf54fab15409d",
+      "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+      "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+    }
+  ],
+  "observedOriginalIdentity": "Diagonal grassy bank, large stone shoreline, blue water",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "redrawInterpretation": "RIVERBANK. Preserve the clear relationship of quiet olive-green grassy earth in the upper-left, a diagonal shoreline of rounded cool-gray boulders through the exact center, and muted blue-teal water in the lower-right. The shore runs from lower-left toward upper-right. Use only a handful of big simple broad-plane rocks, not tiny rubble. Critically, two complete adjoining shoreline boulders and the grass-to-water boundary must be clearly contained inside the central square x=467..787,y=467..787 of the1254px canvas. The central two stones are each about110px long. They lie diagonally, with grass visible immediately above-left and water visible immediately below-right. The central shore itself is a continuous material boundary, not an isolated island. Outside the center use broad calm olive earth and blue water planes, only two sparse grass clumps far from the center. Water has a few restrained broad pale-blue current ribbons parallel to the bank. Keep the bank level and low, no high cliff, no slope extrusion, no raised diorama. This is a crop-safe reconstruction of riverbank material, not a river map. No bridge, logs or structures.",
+  "originalExportMode": "nesw-16",
+  "sourceOpacity": "opaque requested; no generated alpha modifications allowed",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Source-evidenced simplification and central registration to retain distinguishing material relation inside historical central mask; not restoration of original whole-scene composition",
+    "No exact original generation prompt recovered",
+    "Catalog-only canonical terrain; no current gameplay ground consumer per established source audit; no new live map acceptance claimed",
+    "Historical mask and dimensions remain unchanged; structural hints in3/4 are artwork only, not gameplay bridges"
+  ]
+}

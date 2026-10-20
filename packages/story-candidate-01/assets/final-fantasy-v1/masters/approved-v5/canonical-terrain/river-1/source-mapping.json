@@ -1,0 +1,173 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-1",
+  "label": "河岸",
+  "manifest": {
+    "assetId": "C01-FFV1-TERRAIN-RIVER-1",
+    "topicId": "C01-TERRAIN-RIVER-1",
+    "label": "河岸",
+    "category": "terrain",
+    "png": "runtime/terrain/terrain-river-1.png",
+    "width": 512,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "tileWidth": 32,
+    "tileHeight": 32,
+    "connectionMasks": 16,
+    "maskBits": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "tileMode": "nesw-16"
+  },
+  "runtime": {
+    "1": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-river-1.png",
+      "sha256": "0379bab5eb00bfc2244b553556ec39eef680c756c553a58c6fd57b1361725cc2",
+      "pixelSHA256": "d42fe73ed33e5c964d6eaf5f0c30a425d862a86cf8c5388e2fcc0432a3a48879",
+      "dimensions": [
+        512,
+        32
+      ],
+      "alphaCounts": {
+        "transparent": 11776,
+        "partial": 0,
+        "opaque": 4608
+      },
+      "alphaBounds": [
+        10,
+        0,
+        512,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    "2": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/terrain/terrain-river-1.png",
+      "sha256": "e97aee1e8d97e76c50f792471054deb3fd6a9670dcb61f9452dcf54fab15409d",
+      "pixelSHA256": "d0ed4812a0bf8f545c9300bbdf646f908ebe185ba44ca97ac1b78bf7e42f5db3",
+      "dimensions": [
+        1024,
+        64
+      ],
+      "alphaCounts": {
+        "transparent": 47040,
+        "partial": 0,
+        "opaque": 18496
+      },
+      "alphaBounds": [
+        20,
+        0,
+        1024,
+        64
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "matches": {
+    "1": [
+      4
+    ],
+    "2": [
+      4
+    ]
+  },
+  "mapping": "exact-RGBA-pixel-match-at-both-densities",
+  "source": {
+    "sourceIndex": 4,
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+    "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+    "slotRow": 1,
+    "slotColumn": 0,
+    "slotNumber1Based": 5,
+    "cropXYXY": [
+      3,
+      447,
+      441,
+      884
+    ],
+    "cropSize": [
+      438,
+      437
+    ],
+    "variantCropXYXY": [
+      [
+        8,
+        451,
+        279,
+        722
+      ],
+      [
+        165,
+        451,
+        436,
+        722
+      ],
+      [
+        8,
+        609,
+        279,
+        880
+      ],
+      [
+        165,
+        609,
+        436,
+        880
+      ]
+    ],
+    "tileMode": "nesw-16"
+  },
+  "observedSourceIdentity": "Diagonal grassy bank, large stone shoreline, blue water",
+  "sourceIntegrity": {
+    "mappingVerified": true,
+    "wholeSourceSlotIntact": true,
+    "note": "Window a plus generic path mask can cut shoreline into unrelated fragments; source is a shoreline scene, not a 16-way shore topology",
+    "notClaimed": "No exact original natural-language prompt or missing manifest-complete topic order was recovered; mapping is independently proven by pixel equality."
+  },
+  "consumerStatus": {
+    "catalogLoaded": true,
+    "selectedTexture": "runtime-hd",
+    "pixelDensity": 2,
+    "gameplayGroundConsumerFound": false,
+    "staticTopicReferenceFound": false,
+    "runtimeRole": "catalog-only canonical terrain; current ground uses environment/world-material owners",
+    "liveGameObserved": false
+  },
+  "anchorContract": {
+    "declaredAnchor": null,
+    "declaredFootprint": null,
+    "cellOrigin": [
+      0,
+      0
+    ],
+    "logicalCell": [
+      32,
+      32
+    ],
+    "note": "Flat top-down tile grid; no standing sprite foot or bottom-center anchor may be inferred."
+  },
+  "variantsAreDerived": true,
+  "independentIdentityCount": 1,
+  "remakeStatus": "not-remade-approved-v5",
+  "edges": {
+    "1": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 20.375,
+      "maxRGBDifference": 60
+    },
+    "2": {
+      "checks": 128,
+      "allAlphaEdgesMatch": true,
+      "allColorEdgesMatch": false,
+      "exactRGBPairs": 0,
+      "meanAbsoluteRGBDifference": 23.26,
+      "maxRGBDifference": 61
+    }
+  }
+}

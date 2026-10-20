@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-2",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+  "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    447,
+    447,
+    884,
+    884
+  ],
+  "cropSize": [
+    437,
+    437
+  ],
+  "slotSHA256": "cbe41a476b160fabe1bfa3b8b8483cd9bd9273d9d200f292a54781e3c8a5cc65",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "independentRuntimeReplay": [
+    {
+      "size": 32,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "d08e6e10a5b7f28a0be4e0bc434a0bc2996b26b45d896948524164a7925b2ed4",
+      "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+      "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+    },
+    {
+      "size": 64,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "665d0d649e059705d0d0c3a8c8d59653f0c8c57520763ce78d80fb1b05486889",
+      "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+      "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+    }
+  ],
+  "observedOriginalIdentity": "Shallow blue water over visible rounded stones and pale flowing ripples",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "redrawInterpretation": "SHALLOW RIVER WATER. Preserve clear muted blue-teal shallow water with large visible submerged rounded blue-gray and olive-gray river stones and a few pale flowing current ribbons. This is water over a stone bed, never dry cobblestone, marsh, deep featureless ocean or shiny foam. Use roughly twelve generously spaced rounded stones with very simple two-plane faces under a calm continuous transparent-looking blue water-color layer, but keep actual image pixels fully opaque. Put one complete large flattened submerged stone centered near(610,610), about230px wide and175px tall, fully within x=467..787,y=467..787. One pale blue curved current ribbon gently passes beside the stone and partly across its upper face, making the water layer unmistakable in the tiny surviving central pad. Current ribbons are broad quiet curves, not dense wavelets or foam speckles. Other submerged stones and currents continue as evenly scaled material across the canvas. No shore, land, grass, bridge, fish, shells or props.",
+  "originalExportMode": "nesw-16",
+  "sourceOpacity": "opaque requested; no generated alpha modifications allowed",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Source-evidenced simplification and central registration to retain distinguishing material relation inside historical central mask; not restoration of original whole-scene composition",
+    "No exact original generation prompt recovered",
+    "Catalog-only canonical terrain; no current gameplay ground consumer per established source audit; no new live map acceptance claimed",
+    "Historical mask and dimensions remain unchanged; structural hints in3/4 are artwork only, not gameplay bridges"
+  ]
+}
