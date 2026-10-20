@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export explicitly registered BORDER1–4 and CAPITAL1–4 materials without changing canonical topology."""
+"""Export explicitly registered BORDER1–4, CAPITAL1–4 and FORGE1–4 materials without changing canonical topology."""
 import argparse
 import hashlib
 import io
@@ -15,6 +15,7 @@ from export_surface_overrides import match_edges, pixel_hash, seam_report, seam_
 CATALOG = Path('tools/art/canonical-terrain-overrides.json')
 TOPICS = {f'C01-TERRAIN-BORDER-{i}': 'variants' if i in (1, 3) else 'nesw-16' for i in range(1, 5)}
 TOPICS.update({f'C01-TERRAIN-CAPITAL-{i}': 'variants' if i in (3, 4) else 'nesw-16' for i in range(1, 5)})
+TOPICS.update({f'C01-TERRAIN-FORGE-{i}': 'nesw-16' if i == 2 else 'variants' for i in range(1, 5)})
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of
 # the complete historical horizontal alpha strips, not resized 1x masks.

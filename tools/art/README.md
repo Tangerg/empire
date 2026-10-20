@@ -838,3 +838,7 @@ those acceptance and publication steps belong to the parent integration review.
 ### Canonical capital family extension
 
 CAPITAL1/2 use the same verified historical sixteen NESW alpha masks as BORDER2/4; CAPITAL3/4 are four opaque variants. All eight existing capital alpha strips were byte-hashed against the bounded exporter contract before enabling these four IDs. Source materials are independently reviewed paving subjects, not automatic reuse of border material. This extension does not register artwork or create gameplay consumers.
+
+### Forge canonical terrain family
+
+The same bounded canonical material exporter now accepts FORGE1–4: variants for1/3/4, NESW16 for2. All eight existing32/64 alpha strips were measured against the pinned historical hashes before enabling this family (approved-v5/canonical-terrain/forge/original-alpha-proof.json). This authorizes source registration, not an assertion that unfinished materials pass native/mask review. Source windows retain distributed stone/grate, molten-channel, hex-paving and archive-floor identities. Geometry, mode, tile sizes and canonical IDs remain unchanged.

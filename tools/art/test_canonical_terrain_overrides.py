@@ -215,9 +215,9 @@ class CanonicalTerrainTests(unittest.TestCase):
                 self.fail_without_writes(message)
 
     def test_unknown_topics_duplicate_keys_and_shared_source_rejected(self):
-        self.entries['C01-TERRAIN-FORGE-1'] = self.entries.pop('C01-TERRAIN-BORDER-1')
+        self.entries['C01-TERRAIN-UNKNOWN-1'] = self.entries.pop('C01-TERRAIN-BORDER-1')
         self.fail_without_writes('unsupported canonical')
-        self.entries['C01-TERRAIN-BORDER-1'] = self.entries.pop('C01-TERRAIN-FORGE-1')
+        self.entries['C01-TERRAIN-BORDER-1'] = self.entries.pop('C01-TERRAIN-UNKNOWN-1')
         self.entries['C01-TERRAIN-BORDER-3'] = self.entries['C01-TERRAIN-BORDER-1']
         self.fail_without_writes('own authored material')
         self.catalog.write_text('{"schemaVersion":1,"assets":{},"assets":{}}')

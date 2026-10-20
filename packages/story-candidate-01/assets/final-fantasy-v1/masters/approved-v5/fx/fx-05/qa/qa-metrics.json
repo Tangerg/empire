@@ -1,0 +1,671 @@
+{
+  "topicId": "C01-FX-05",
+  "phaseOrder": [
+    "ignite",
+    "rise",
+    "flare",
+    "embers"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ],
+    "logicalPivot": [
+      16,
+      16
+    ]
+  },
+  "authoredFlameRootReference": [
+    637,
+    1153
+  ],
+  "authoredRootOffsetFromTargetCentre": [
+    0.22328548644338117,
+    11.74481658692185
+  ],
+  "rootNote": "Flame root is below target-centre pivot; not centred on the target. It is fixed across phases to source registration tolerance; no per-frame adjustment.",
+  "perPhaseFitCropShiftOrAlphaCleanup": false,
+  "sourceEdgeGate": "alpha <= 1, actual composites and native borders separately reviewed",
+  "nativeFinal2pxBorderGate": 0,
+  "fps": 12,
+  "loop": false,
+  "frameStartTimesMs": [
+    0,
+    83.33333333333333,
+    166.66666666666666,
+    250
+  ],
+  "finalFrameHoldMs": 170,
+  "removalTimeMs": 420,
+  "runtimeConsumer": "BoardView.animateHit target cell center; candidate01FxPicture uses metadata [16,16] and HD strip; normal source-over",
+  "excludedRuntimeOverlays": [
+    "white circle",
+    "damage number"
+  ],
+  "liveGameObserved": false,
+  "frames": [
+    {
+      "phase": "ignite",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "be3d5cfa744e0e6f8762ff6639f6e64272e5ab0a2d7941fca64ec3f564cc156a",
+      "decodedPixelSha256": "0966d5d9f00c122b7bf5c86389ccd2395e48207cad470f47d57bdb4928e152a3",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        49,
+        64,
+        1170,
+        1221
+      ],
+      "bboxAlpha128": [
+        502,
+        691,
+        773,
+        1154
+      ],
+      "alphaMass": 56817.81568627451,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "e56e63e0832ced2d1983ecaf4fdbe06090ccf784b8c13c7885392e3718625782",
+          "bboxAlpha1": [
+            11,
+            15,
+            22,
+            30
+          ],
+          "alphaMass": 28.749019607843138,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "3379143567407ceb5e79795860252eabe7002d2e4da65aed6879054781b5c411",
+          "bboxAlpha1": [
+            24,
+            33,
+            41,
+            58
+          ],
+          "alphaMass": 114.18823529411765,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "mainFlameComponent": {
+        "alphaThreshold": 32,
+        "bbox": [
+          501,
+          768,
+          773,
+          1154
+        ],
+        "approximateRoot": [
+          629.0,
+          1153
+        ],
+        "rootLogical": [
+          16.044657097288678,
+          27.74481658692185
+        ],
+        "rootOffsetFromTargetCentre": [
+          0.04465709728867573,
+          11.74481658692185
+        ]
+      },
+      "alphaMassAboveY700": 61.909803921568624,
+      "alphaMassAtOrBelowY700": 56755.90588235294
+    },
+    {
+      "phase": "rise",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "3bc83f34c569b54c050c32baab830f0d97b574413f171bd86f375561edbd5290",
+      "decodedPixelSha256": "13c595362ae49ea39a23622c6bfd91762d921b7d6cc227b984a1e908e783c888",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        81,
+        45,
+        1210,
+        1220
+      ],
+      "bboxAlpha128": [
+        422,
+        390,
+        873,
+        1161
+      ],
+      "alphaMass": 166973.03921568627,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "6c9ee1009234481bb1ebedbe7f96871aa66a86d4a0ae8c182a2e99174ff393a8",
+          "bboxAlpha1": [
+            9,
+            10,
+            24,
+            30
+          ],
+          "alphaMass": 84.42745098039215,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "5608f721dd43b119fa926cd3270f49fd2adef9d7dd58727b38b1a3cb4f5fe24d",
+          "bboxAlpha1": [
+            21,
+            19,
+            46,
+            58
+          ],
+          "alphaMass": 334.93333333333334,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "mainFlameComponent": {
+        "alphaThreshold": 32,
+        "bbox": [
+          421,
+          461,
+          874,
+          1162
+        ],
+        "approximateRoot": [
+          653.0,
+          1161
+        ],
+        "rootLogical": [
+          16.580542264752793,
+          27.923444976076556
+        ],
+        "rootOffsetFromTargetCentre": [
+          0.5805422647527916,
+          11.923444976076556
+        ]
+      },
+      "alphaMassAboveY700": 29985.803921568626,
+      "alphaMassAtOrBelowY700": 136987.23529411765
+    },
+    {
+      "phase": "flare",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "00fb7de5d8e77c03835cba51ddccbdab6fda991e62139f3155418f1b1c0d6805",
+      "decodedPixelSha256": "dcc38053bf17aaf70c1b56d8451f71699cac313c518030e3696b44277b90a573",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        37,
+        35,
+        1226,
+        1221
+      ],
+      "bboxAlpha128": [
+        317,
+        79,
+        984,
+        1174
+      ],
+      "alphaMass": 349698.39215686277,
+      "maxAlpha": 255,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "110df0ed128d3414e878b7ee405d2fc0f11b1890ab8d53dbec45fe1309cd32d5",
+          "bboxAlpha1": [
+            7,
+            2,
+            27,
+            30
+          ],
+          "alphaMass": 176.2156862745098,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "bee32c357fa7268595b19089f90e3f8dff3019447cc635ce53dfe15bf351d14d",
+          "bboxAlpha1": [
+            16,
+            5,
+            51,
+            59
+          ],
+          "alphaMass": 699.8705882352941,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "mainFlameComponent": {
+        "alphaThreshold": 32,
+        "bbox": [
+          315,
+          78,
+          964,
+          1174
+        ],
+        "approximateRoot": [
+          657.0,
+          1173
+        ],
+        "rootLogical": [
+          16.66985645933014,
+          28.19138755980861
+        ],
+        "rootOffsetFromTargetCentre": [
+          0.669856459330143,
+          12.19138755980861
+        ]
+      },
+      "alphaMassAboveY700": 122835.1568627451,
+      "alphaMassAtOrBelowY700": 226863.23529411765
+    },
+    {
+      "phase": "embers",
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "sha256": "2d5b771d89f50151252b6933b9d39acabfe077b8bdc5b883c1cc87fe16c9ecdc",
+      "decodedPixelSha256": "37fca38a3c9cbd2be12cb1626956c6a71e4abf44018f650e612c26a83d40ebb5",
+      "rawMasterByteIdentical": true,
+      "edgeAlphaMax": 0,
+      "edgeAlphaNonzeroSamples": 0,
+      "edgeAlpha1ToleranceOnly": true,
+      "bboxAlpha1": [
+        49,
+        19,
+        1176,
+        1182
+      ],
+      "bboxAlpha128": null,
+      "alphaMass": 10509.862745098038,
+      "maxAlpha": 121,
+      "exports": {
+        "1": {
+          "size": [
+            32,
+            32
+          ],
+          "decodedPixelSha256": "ca67f50bbe62b1a27bd079bc7e0e6f1071ca26cbd0b2dfc161bc865c01a1cac3",
+          "bboxAlpha1": [
+            11,
+            10,
+            22,
+            30
+          ],
+          "alphaMass": 5.807843137254902,
+          "final2PixelBorderMax": 0
+        },
+        "2": {
+          "size": [
+            64,
+            64
+          ],
+          "decodedPixelSha256": "befc5263468a4b30ec89bfd9631484937625aa2ddc387f8e88d6d36affa836fe",
+          "bboxAlpha1": [
+            25,
+            23,
+            41,
+            58
+          ],
+          "alphaMass": 22.274509803921568,
+          "final2PixelBorderMax": 0
+        }
+      },
+      "mainFlameComponent": {
+        "alphaThreshold": 32,
+        "bbox": [
+          516,
+          974,
+          768,
+          1158
+        ],
+        "approximateRoot": [
+          643.0,
+          1157
+        ],
+        "rootLogical": [
+          16.35725677830941,
+          27.8341307814992
+        ],
+        "rootOffsetFromTargetCentre": [
+          0.3572567783094094,
+          11.834130781499201
+        ]
+      },
+      "alphaMassAboveY700": 871.643137254902,
+      "alphaMassAtOrBelowY700": 9638.219607843137
+    }
+  ],
+  "apng": [
+    {
+      "path": "12fps-420ms-heldfinal-transparent@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "a5513faff344ae7049b9e1b0ea7a9372e2496f38e8a419e3c6ae03f76d99d567"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "a393283f0186713cb733d6087f97f8433c3b1beb17bba11c6a7fd9e4e66c9bf2"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "37fac28657d6bb47fcc16a04d4577d855101edb04034f55df397122e3a07a89b"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "1eb6d739be5b9aa345a97fdf88ace8a8437dc1a8c8698ed1766bf998db479f07"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "21403a9542f04c8d249b80b0cbff8a5e822587accfbc8a20281a54b3a9bb7a42"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@1x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "b137fd0f0d989cc78f5886d16e470a4a18ae3cdf17f114ae25b82ce30bc77d71"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-transparent@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "738d603df7e4cfb3cb6f2a3a6453368386ef51f48ac5bcba88dd9ce030a9c11e"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-black@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "aaf1defcfb24064559a81967c9b013f61721054b088a7a10286201703e9f44b7"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-white@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "957c660d01772b14f46dbf87f9217ae06c507b2724b34712242395e575650b91"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-bright-stone@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "e567b1cf238cac3e1399229be8d62a1f68a2aa99987a569ad72f432d94cc8657"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-green-ground@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "6aa7478e539938065d01b5c84a144129232c959c33fc26a8399879fcd6b2946c"
+    },
+    {
+      "path": "12fps-420ms-heldfinal-dark-earth@2x.apng",
+      "durationFractionsSeconds": [
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "durationMs": 420,
+      "numPlays": 1,
+      "sha256": "aae6f966cfe2749abbe21a559a4e23cf7534183d8afaaa36e0853b4e72bb6e8d"
+    }
+  ]
+}

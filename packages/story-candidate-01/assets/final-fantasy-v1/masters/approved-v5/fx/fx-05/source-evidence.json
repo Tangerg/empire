@@ -1,0 +1,650 @@
+{
+  "topicId": "C01-FX-05",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/fx-source-audit/fx-source-audit.json",
+  "auditSha256": "4e7e77ceba7077e10a7b16ad7869fda6098ba618872a8a1ef3d136f6616c1cd2",
+  "originalBoard": {
+    "boardIndex": 2,
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-02.png",
+    "sourceSha256": "37fd8d95a3286cb65db28a0f702d9235c8d927b65b5a7b77817ee1b79cdac7a3",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "intermediate": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/fx/fx-atlas-02.png",
+    "intermediateSha256": "a623eb393ccca85daf0b9b5d82f8e89ee5fa49b138778a7b5afd08db2a6d3b35",
+    "originalAlpha": "RGB opaque board with chroma/panel background",
+    "rawReference": {
+      "path": "boards/fx-atlas-02-original.png",
+      "sha256": "4c7f6210796de508d4b4fc422b6a9ad1af0fea5119c7831a3d6b144adbac6efc",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "decodedSha256": "784365a37cc9636e463490d9308e156e3de99d5008462bd796d4972cb6ce02e6"
+    }
+  },
+  "originalTopic": {
+    "topicId": "C01-FX-05",
+    "label": "\u666e\u901a\u706b\u7130",
+    "semanticName": "ordinary-fire",
+    "manifest": {
+      "assetId": "C01-FFV1-FX-05",
+      "topicId": "C01-FX-05",
+      "label": "\u666e\u901a\u706b\u7130",
+      "category": "fx",
+      "png": "runtime/fx/fx-05.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    "hdManifest": {
+      "topicId": "C01-FX-05",
+      "png": "runtime-hd/fx/fx-05.png",
+      "width": 256,
+      "height": 64,
+      "pixelDensity": 2
+    },
+    "remainingStatus": "pending-redraw",
+    "sourceBoard": 2,
+    "sourceRow1Based": 1,
+    "sourceRowBoundsXYXY": [
+      0,
+      0,
+      1254,
+      314
+    ],
+    "originalRowCrop": {
+      "path": "source-crops/C01-FX-05/original-row.png",
+      "sha256": "d8fbfb42cd6876240a02165686ef1b2b812657e42514ae611cfaabdd6d49f9f0",
+      "size": [
+        1254,
+        314
+      ],
+      "mode": "RGB",
+      "decodedSha256": "e740d87307cf43f9eb9f1a5e491a562286d05e7fdc2af0a56ea477337b060b11"
+    },
+    "slots": [
+      {
+        "phaseIndex": 0,
+        "sourceColumn1Based": 1,
+        "sourceRow1Based": 1,
+        "fullGridBoundsXYXY": [
+          0,
+          0,
+          314,
+          314
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          5,
+          5,
+          309,
+          309
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-05/original-f0.png",
+          "sha256": "2c2ab0232c1b8384564dd9c54cb9a193798a15585a50d29a8078529140ab7600",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "6e97e6786c2ac81e7ea68d9ae2cc4e4ea322abc12b3473b36be819dff639aa1c"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-05/legacy-alpha-f0.png",
+          "sha256": "6302c5510b26bb08285829c540f1b9b69883b9acd1c792c87eeb9d042fd4500f",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "9b5ef2ff847508d87f1c121ff7463031a00e7dc9ad3c75dc8c973385049ef7ed"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          123,
+          159,
+          172,
+          257
+        ],
+        "phaseObservation": "small orange flame and ember",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 90377,
+          "translucentPixels1to239": 471,
+          "nearOpaquePixels240to255": 1568,
+          "visiblePixels": 2039,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            123,
+            159,
+            172,
+            257
+          ],
+          "pixelSha256Rgba": "9b5ef2ff847508d87f1c121ff7463031a00e7dc9ad3c75dc8c973385049ef7ed"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            49,
+            98
+          ],
+          "scale": 0.30612244897959184
+        }
+      },
+      {
+        "phaseIndex": 1,
+        "sourceColumn1Based": 2,
+        "sourceRow1Based": 1,
+        "fullGridBoundsXYXY": [
+          314,
+          0,
+          627,
+          314
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          319,
+          5,
+          622,
+          309
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-05/original-f1.png",
+          "sha256": "550377fb30c72edd4d91bf17ac8ed0cc37a8571fe2b815279f2932945d25863d",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "16c19a49373dbfdf5d23fcbcc39c414d50c8a8427541f71200463b6e0e42929b"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-05/legacy-alpha-f1.png",
+          "sha256": "547d2e968e053263f58a802dd0ed9e339b36d35e0254550ebd64759baa774dbe",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "efcaf72728642ebd9a1e890cb54f835de3216bc014330434a5449416444a71ff"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          102,
+          94,
+          198,
+          261
+        ],
+        "phaseObservation": "medium flame with sparks",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 84270,
+          "translucentPixels1to239": 1026,
+          "nearOpaquePixels240to255": 6816,
+          "visiblePixels": 7842,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            102,
+            94,
+            198,
+            262
+          ],
+          "pixelSha256Rgba": "efcaf72728642ebd9a1e890cb54f835de3216bc014330434a5449416444a71ff"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            96,
+            167
+          ],
+          "scale": 0.17964071856287425
+        }
+      },
+      {
+        "phaseIndex": 2,
+        "sourceColumn1Based": 3,
+        "sourceRow1Based": 1,
+        "fullGridBoundsXYXY": [
+          627,
+          0,
+          940,
+          314
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          632,
+          5,
+          935,
+          309
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-05/original-f2.png",
+          "sha256": "64253e0833e3dbbdaaee77f3d30e36181fca8a83f852074389041b2d6051ca56",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "fa83922cf4b2a3f3dd5654668a29201151565e2b561180969688760c426a7192"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-05/legacy-alpha-f2.png",
+          "sha256": "321306995419929e06edd29a3499d7d5be774487e1e0c7e55fc97f6ab95ca70c",
+          "size": [
+            303,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "2b471458235503ace55282502872ef58c6c88916cefa2861ce696a88ef766574"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          84,
+          34,
+          224,
+          268
+        ],
+        "phaseObservation": "tall peak orange/yellow flame",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 75265,
+          "translucentPixels1to239": 1710,
+          "nearOpaquePixels240to255": 15137,
+          "visiblePixels": 16847,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            84,
+            34,
+            225,
+            268
+          ],
+          "pixelSha256Rgba": "2b471458235503ace55282502872ef58c6c88916cefa2861ce696a88ef766574"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            140,
+            234
+          ],
+          "scale": 0.1282051282051282
+        }
+      },
+      {
+        "phaseIndex": 3,
+        "sourceColumn1Based": 4,
+        "sourceRow1Based": 1,
+        "fullGridBoundsXYXY": [
+          940,
+          0,
+          1254,
+          314
+        ],
+        "legacyInsetCropBoundsXYXY": [
+          945,
+          5,
+          1249,
+          309
+        ],
+        "rawInsetCrop": {
+          "path": "source-crops/C01-FX-05/original-f3.png",
+          "sha256": "a41dd180940e78b69cf9a72c6dda9b55e173a70d72ec4609d5077672c0d9980b",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGB",
+          "decodedSha256": "5276a2ecb37039d963fa6c1c3484cdb7a0e5f4b9c826b04eece8563cfe8effc8"
+        },
+        "legacyProcessedAlphaCrop": {
+          "path": "source-crops/C01-FX-05/legacy-alpha-f3.png",
+          "sha256": "0e97e377d57793d3564a50fd5730207c8055683fd85e384f6e765ddc1024e2ec",
+          "size": [
+            304,
+            304
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "16edc6f6c065c7b309eb42a60b22160e6c060a633a8c00a15fbb699a9a6aea74"
+        },
+        "legacyAlpha28BoundingBoxWithinInset": [
+          108,
+          66,
+          195,
+          259
+        ],
+        "phaseObservation": "small dying flame and loose embers",
+        "sourceAlphaStatistics": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 89200,
+          "translucentPixels1to239": 934,
+          "nearOpaquePixels240to255": 2282,
+          "visiblePixels": 3216,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            108,
+            66,
+            195,
+            259
+          ],
+          "pixelSha256Rgba": "16edc6f6c065c7b309eb42a60b22160e6c060a633a8c00a15fbb699a9a6aea74"
+        },
+        "legacyIndependentFit1x": {
+          "bboxSize": [
+            87,
+            193
+          ],
+          "scale": 0.15544041450777202
+        }
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "density": 1,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-05.png",
+        "sha256": "c8ed9d9e8293c0b73b937c5ac4b8b275aa4d30245e5fc83aab2e2f988fd40017",
+        "size": [
+          128,
+          32
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 2879,
+          "translucentPixels1to239": 677,
+          "nearOpaquePixels240to255": 540,
+          "visiblePixels": 1217,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            8,
+            1,
+            119,
+            31
+          ],
+          "pixelSha256Rgba": "8cdefb0a7a08b36d6392fb8a59372dd5012fd42ad68837d5b1b0ad1a641ab214"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 754,
+            "translucentPixels1to239": 144,
+            "nearOpaquePixels240to255": 126,
+            "visiblePixels": 270,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              8,
+              1,
+              23,
+              31
+            ],
+            "pixelSha256Rgba": "3ff178e213a75b23505fd3839fc3105fc62e7162a1d283a9c0c68d7557f66961"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 662,
+            "translucentPixels1to239": 185,
+            "nearOpaquePixels240to255": 177,
+            "visiblePixels": 362,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              7,
+              1,
+              24,
+              31
+            ],
+            "pixelSha256Rgba": "454a1a9586f58a1ad9452a62a3c8c2ac272826d73510164ff45b3f831f4b5b7d"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 624,
+            "translucentPixels1to239": 195,
+            "nearOpaquePixels240to255": 205,
+            "visiblePixels": 400,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              7,
+              1,
+              25,
+              31
+            ],
+            "pixelSha256Rgba": "4d6780e30b493f0a08789c53494d50beef6558a23f4a135a6c336fb0f888d0ae"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 839,
+            "translucentPixels1to239": 153,
+            "nearOpaquePixels240to255": 32,
+            "visiblePixels": 185,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              9,
+              1,
+              23,
+              31
+            ],
+            "pixelSha256Rgba": "f1f5698e0a0cbfa2729edbe506e6217aa2d98147c76f12a8e9aa5b5b92d4a1db"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-05@1x.png",
+          "sha256": "334739c51b320e272a72ca8f15f975afba0eaf9c2065b88ba111867780086955",
+          "size": [
+            128,
+            32
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "8cdefb0a7a08b36d6392fb8a59372dd5012fd42ad68837d5b1b0ad1a641ab214"
+        }
+      },
+      {
+        "density": 2,
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/fx/fx-05.png",
+        "sha256": "43c4ca56286603603aaee740bbe708b998cac93cb6085819d260175ec8a727e7",
+        "size": [
+          256,
+          64
+        ],
+        "legacyReconstructionPixelExact": true,
+        "alpha": {
+          "alphaMin": 0,
+          "alphaMax": 255,
+          "transparentPixels": 12223,
+          "translucentPixels1to239": 1678,
+          "nearOpaquePixels240to255": 2483,
+          "visiblePixels": 4161,
+          "edgeMaxAlpha": 0,
+          "alphaBoundingBox": [
+            17,
+            2,
+            237,
+            62
+          ],
+          "pixelSha256Rgba": "dc713d2c98e516fa63b7da3ab3b47d4574ef83c529263a99b4b7655e738ff38e"
+        },
+        "frameAlpha": [
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3160,
+            "translucentPixels1to239": 362,
+            "nearOpaquePixels240to255": 574,
+            "visiblePixels": 936,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              17,
+              2,
+              47,
+              62
+            ],
+            "pixelSha256Rgba": "3a5d2515f35be2188ae3e28cc8fba79e1ee43d0b901eb506c55107fd41615895"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2831,
+            "translucentPixels1to239": 454,
+            "nearOpaquePixels240to255": 811,
+            "visiblePixels": 1265,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              15,
+              2,
+              49,
+              62
+            ],
+            "pixelSha256Rgba": "ba210b46da1622c2bcaa925ac78d2f4b85476df935ba15a1efd6f01c2c7e6973"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 2673,
+            "translucentPixels1to239": 506,
+            "nearOpaquePixels240to255": 917,
+            "visiblePixels": 1423,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              14,
+              2,
+              50,
+              62
+            ],
+            "pixelSha256Rgba": "9158bb18781072a8c73e57195993bfe52bc00a179cb5643637e36d0bbd218afa"
+          },
+          {
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "transparentPixels": 3559,
+            "translucentPixels1to239": 356,
+            "nearOpaquePixels240to255": 181,
+            "visiblePixels": 537,
+            "edgeMaxAlpha": 0,
+            "alphaBoundingBox": [
+              18,
+              2,
+              45,
+              62
+            ],
+            "pixelSha256Rgba": "f2b935c6040195f54b53fa8383d7e1814471f8e68cc5d2e1473a702fd59e3a22"
+          }
+        ],
+        "snapshot": {
+          "path": "current-runtime/C01-FX-05@2x.png",
+          "sha256": "db101c47916093221c15fc9da33cb24283e0b2d48c548711bc8108ecdf9f0a04",
+          "size": [
+            256,
+            64
+          ],
+          "mode": "RGBA",
+          "decodedSha256": "dc713d2c98e516fa63b7da3ab3b47d4574ef83c529263a99b4b7655e738ff38e"
+        }
+      }
+    ],
+    "consumers": {
+      "status": "statically-bound-weapon-hit",
+      "weaponBindings": [
+        {
+          "weaponId": "c01.dragon-breath",
+          "source": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+          "line": 175
+        }
+      ],
+      "unitDefinitions": [
+        {
+          "unitId": "c01.ivra",
+          "weapons": [
+            "c01.dragon-breath"
+          ],
+          "source": "packages/story-candidate-01/src/units.ts",
+          "line": 58,
+          "boundWeaponsForThisFx": [
+            "c01.dragon-breath"
+          ],
+          "levelSourceTextReferences": [
+            {
+              "line": 353,
+              "text": "ivra: hero('ivra', 'c01.ivra'),"
+            },
+            {
+              "line": 651,
+              "text": "neutral: [{ key: 'caged-ivra', unit: 'c01.ivra', owner: 3, x: 7, y: 6, directive: { mode: 'guard' } }],"
+            }
+          ]
+        }
+      ],
+      "livePlaybackObserved": false,
+      "genericConsumer": "packages/game-ui/src/ui/board.ts:611-644"
+    },
+    "semanticPhaseRequirement": "Hold the flame root fixed while height changes; a flame tongue can be luminous but no rectangular glow.",
+    "alphaPolicy": "Genuine transparent exterior; preserve intentional interior translucency and luminous/smoke detail. No requirement that every phase reach alpha 240. Review on dark/light/terrain backgrounds; no opaque panel, matte color key or unrelated backing.",
+    "specialRisks": []
+  },
+  "currentRuntimeAnchor": [
+    16,
+    16
+  ],
+  "auditedPhaseOrder": [
+    "ignite",
+    "rise",
+    "flare",
+    "embers"
+  ],
+  "phaseSemantics": [
+    "Small orange rooted flame with pale-yellow core and one rising ember",
+    "Taller curled tongue, wider base and a few side sparks",
+    "Largest orange/yellow flame with tall curved tongue and detached hot fragments",
+    "Collapsed small dying flame and separate rising loose embers with genuine partial-alpha decay"
+  ],
+  "fixedAuthoredRoot": [
+    637,
+    1153
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "commonTransform": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "consumerAudit": {
+    "binding": "candidate-01-bindings.ts:175 c01.dragon-breath -> C01-FX-05",
+    "unit": "units.ts:58 c01.ivra",
+    "weapon": "weapons.ts:140 range2 magic line-area breath with cooldown1",
+    "placement": "board.ts:611-642 target-cell-center hit overlay",
+    "fps": 12,
+    "loop": false,
+    "removalMs": 420,
+    "finalPhaseStartMs": 250,
+    "finalHoldMs": 170
+  },
+  "runtimeOverlayExcluded": [
+    "white expanding circle",
+    "damage number"
+  ],
+  "livePlaybackObserved": false,
+  "initialRequestedRoot": [
+    627,
+    1000
+  ],
+  "rootRegistrationNote": "First accepted generated phase places the root at approximately (637,1153); later phases preserve this actual authored root instead of shifting or fitting any source. Common source pivot remains (627,627). This is near the legacy bottom-rooted flame alignment."
+}
