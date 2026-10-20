@@ -27,8 +27,14 @@ public sealed class GrayFlagCampaign
     public void BeginBattle()
     {
         if (Battle is not null) throw new InvalidOperationException("A battle is already open.");
-        Request = Candidate01CampaignPolicy.ApplyBattleContext(Runtime.BeginBattle(bridge), Runtime.Snapshot());
-        Battle = new GrayFlagSession(engine, Request["level"]!.AsObject());
+        var before = Runtime.Snapshot();
+        try
+        {
+            var request = Candidate01CampaignPolicy.ApplyBattleContext(Runtime.BeginBattle(bridge), Runtime.Snapshot());
+            var battle = new GrayFlagSession(engine, request["level"]!.AsObject());
+            Request = request; Battle = battle;
+        }
+        catch { Runtime = new CampaignRuntime(definition, before); throw; }
     }
 
     public void FinishBattle()
@@ -58,7 +64,7 @@ public sealed class GrayFlagCampaign
     public void Load(JsonObject document)
     {
         if (document["schema"]?.GetValue<int>() != 1) throw new InvalidOperationException("Unsupported application save schema.");
-        var state = CampaignSave.Load(document["campaign"], definition);
+        var state = CampaignSave.Load(document["campaign"], definition)["state"]!.AsObject();
         var restored = new CampaignRuntime(definition, state);
         var request = document["request"] as JsonObject;
         var savedBattle = document["battle"];
@@ -67,7 +73,9 @@ public sealed class GrayFlagCampaign
         GrayFlagSession? battle = null;
         if (request is not null)
         {
-            if (request["id"]?.GetValue<string>() != state["pendingBattle"]!["requestId"]?.GetValue<string>())
+            if (request["id"]?.GetValue<string>() != state["pendingBattle"]!["requestId"]?.GetValue<string>()
+                || request["node"]?.GetValue<string>() != state["pendingBattle"]!["node"]?.GetValue<string>()
+                || request["levelId"]?.GetValue<string>() != state["pendingBattle"]!["level"]?.GetValue<string>())
                 throw new InvalidOperationException("Battle request identity mismatch.");
             battle = GrayFlagSession.FromSave(engine, savedBattle!, document["events"]?.AsArray());
             if (battle.Snapshot()["levelId"]?.GetValue<string>() != request["levelId"]?.GetValue<string>())

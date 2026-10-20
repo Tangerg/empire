@@ -74,10 +74,16 @@ public partial class BattleScreen : Control
         BuildInterface();
         Clear(_applicationActions);
         _restart = onRestart;
-        if (onSave is not null) _applicationActions.AddChild(Button("保存", onSave));
-        if (onLoad is not null) _applicationActions.AddChild(Button("读取", onLoad));
-        if (onRestart is not null)
-            _applicationActions.AddChild(Button("重新开始", () => _restartConfirmation.PopupCentered()));
+        void AddAction(string text, Action callback)
+        {
+            var button = Button(text, callback);
+            button.AutowrapMode = TextServer.AutowrapMode.Off;
+            button.CustomMinimumSize = new Vector2(90, 38);
+            _applicationActions.AddChild(button);
+        }
+        if (onSave is not null) AddAction("保存", onSave);
+        if (onLoad is not null) AddAction("读取", onLoad);
+        if (onRestart is not null) AddAction("重新开始", () => _restartConfirmation.PopupCentered());
     }
 
     public void ShowFeedback(string message)

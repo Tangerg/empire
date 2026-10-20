@@ -124,7 +124,7 @@ function objectiveState(objective, status = 'active') {
   const owner = state.players.find(player => player.id === 1);
   owner.objectives = [objective];
   function record(value) {
-    if (value.id) owner.objectiveStates[value.id] = { status, hidden: false };
+    if (value.id) owner.objectiveStates[value.id] = { id: value.id, status, hidden: false };
     for (const child of value.objectives ?? []) record(child);
     if (value.objective) record(value.objective);
   }
