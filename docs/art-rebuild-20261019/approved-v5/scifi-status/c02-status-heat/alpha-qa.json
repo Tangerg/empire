@@ -1,0 +1,59 @@
+{
+  "source": {
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "perimeterAlphaMax": 1,
+    "perimeterNonzeroCount": 1,
+    "alpha0PixelCount": 814694,
+    "alpha255PixelCount": 1253,
+    "alpha1PixelCount": 2089,
+    "alpha2to254PixelCount": 754480
+  },
+  "runtime": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "resize": "Whole authored canvas Lanczos-contained into 28x28 without crop; centered on 32x32 transparent canvas",
+    "containedSize": [
+      28,
+      28
+    ],
+    "offset": [
+      2,
+      2
+    ],
+    "twoPixelMarginAlphaMax": 0
+  },
+  "integrity": {
+    "rawSha256": "7617a117bd2540e7dacad768ffc22d986e6e2494509558d7d38a9595f7f5505f",
+    "masterSha256": "7617a117bd2540e7dacad768ffc22d986e6e2494509558d7d38a9595f7f5505f",
+    "rawEqualsMaster": true,
+    "noAlphaCleanup": true,
+    "noRecolor": true,
+    "allowedProcessing": [
+      "unchanged raw copy",
+      "whole-canvas resize",
+      "transparent padding",
+      "diagnostic background compositing only"
+    ]
+  },
+  "visualComposites": {
+    "required": [
+      "white",
+      "black",
+      "olive"
+    ],
+    "status": "Pass: actual generated source and runtime checked on white, black, olive; no visible haze or residue. Source perimeter alpha 1 is accepted as invisible quantization only, with unchanged raw."
+  }
+}

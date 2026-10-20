@@ -146,3 +146,6 @@ Original label and actual knight-charge/satchel-charge/forge-burst consumers ide
 
 ## FX08 memory impact
 Original gray ordinary-person memory echoes and amber name papers, not a skull. Four phases clustered-echoes/rising-echoes/dissolving-echoes/wisp-remnants, authored translucency for dissolving people and no people in final wisps. Actual ghost-touch/colossus-sweep targethit uses same16,16 center, normalblend,12fps nonloop420ms. Commonnative1254canvas transform unchanged; no programmedfade, sourcealpha<=1 and final2pxalpha0 gates unchanged.
+
+## FX18 restraint and FX19 veil contracts
+FX18 preserves amber metal bands and diamond buckles: scattered-bands, aligning-ring, closed-restraints, settled-restraints. FX19 starts with the original dense gray-green leaf smoke, then curling-veil, veil-breakup, leaf-wisps; do not invent a low-opacity onset. Both remain canonical four-frame, 12fps nonloop center-pivot effects. No current literal consumer or runtime lifetime has been established for either. Source review and exporter support do not count pending sources as bound or prove observed motion. Gameplay visibility and hidden-unit rules are unchanged.
