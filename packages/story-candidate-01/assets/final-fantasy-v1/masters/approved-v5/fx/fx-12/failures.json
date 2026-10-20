@@ -1,0 +1,10 @@
+[
+  {
+    "attempt": "rejected/heat-split-attempt01-root-drift",
+    "reason": "The first split drawing moved heat roots right/down and made them touch the coal bed. Rejected; a localized split redraw retained the emitter gap."
+  },
+  {
+    "attempt": "rejected/heat-renewal-attempt01-emitter-drift",
+    "reason": "The first renewal drawing moved the coal row downward by roughly55source pixels. Rejected instead of compensating with per-frame placement."
+  }
+]

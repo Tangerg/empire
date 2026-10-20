@@ -42,5 +42,11 @@
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "The green plus, injector and gloved hand read distinctly at actual48 on white, black and olive. The action arcs remain bounded and do not form a broad haze. A supplemental alpha diagnostic identifies fine arc-edge residue, documented separately; source alpha is not modified.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true,
+  "parentReview": "Delivered to parent for review",
+  "supplementalAlphaCaveat": "The 8px-eroded alpha>=8 diagnostic finds 254 pixels below 240 (minimum 105), localized to the action-arc region. This diagnostic is not a contractual gate. White/black 512 and actual 48 inspection show no broad glow or visible solid-body transparency. Fine colored antialias residue is visible at source zoom around arc edges; retained unchanged."
 }

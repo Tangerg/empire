@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-11": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "gust-curl-a",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-curl-a/master.png",
+          "sha256": "64bb010a95d6648e59f914ed1497fabd6489671348af436f5aa86323414dd1d0"
+        },
+        {
+          "phase": "gust-curl-b",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-curl-b/master.png",
+          "sha256": "bd3d11569e62ca0dcc590612bcb6f11ab27d4adb5f4cda1e1ae177f2756b08e5"
+        },
+        {
+          "phase": "gust-breakup",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-breakup/master.png",
+          "sha256": "07900a49bda835d448cd093112ee16047afa9fe17a5a89af06e7a4c6e9dd95d0"
+        },
+        {
+          "phase": "gust-renewal",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-renewal/master.png",
+          "sha256": "bfd885eae49834e997d133ffd37a13044ccf4c747f23e277cbda783e46990b1e"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  },
+  "note": "Selected integration handoff. Parent static-phase review accepted on 2026-10-20. Source paths are proposed repository destinations; actual verified staging paths appear in final-quartet.json. No repository or Git files modified."
+}

@@ -1,0 +1,544 @@
+{
+  "topicId": "C01-FX-12",
+  "measurement": "Diagnostic alpha128 connected components only. Coal bed is the occupied region below source y1060. Heat components above that line are inspected without cropping or altering the actual masters. Root tip centers use the last8occupied rows per fixed column lane. These diagnostics never feed image placement.",
+  "frames": [
+    {
+      "phase": "heat-curl-a",
+      "coalBoundsAlpha128": [
+        199,
+        1074,
+        1106,
+        1165
+      ],
+      "heatComponentsAlpha128": [
+        {
+          "bounds": [
+            329,
+            314,
+            482,
+            1054
+          ],
+          "pixels": 42570,
+          "centroid": [
+            400.3811604416255,
+            662.890180878553
+          ]
+        },
+        {
+          "bounds": [
+            570,
+            150,
+            730,
+            1042
+          ],
+          "pixels": 56429,
+          "centroid": [
+            646.4735153910224,
+            565.9961190168176
+          ]
+        },
+        {
+          "bounds": [
+            862,
+            352,
+            1006,
+            1054
+          ],
+          "pixels": 39032,
+          "centroid": [
+            930.5824451731912,
+            676.8302162328346
+          ]
+        }
+      ],
+      "roots": [
+        {
+          "lane": "left",
+          "bottomY": 1054,
+          "tipXMeanLast8Rows": 387.9111111111111,
+          "bottom8RowsBounds": [
+            384,
+            1046,
+            393,
+            1054
+          ]
+        },
+        {
+          "lane": "center",
+          "bottomY": 1042,
+          "tipXMeanLast8Rows": 645.2622950819672,
+          "bottom8RowsBounds": [
+            640,
+            1034,
+            650,
+            1042
+          ]
+        },
+        {
+          "lane": "right",
+          "bottomY": 1054,
+          "tipXMeanLast8Rows": 916.1960784313726,
+          "bottom8RowsBounds": [
+            912,
+            1046,
+            921,
+            1054
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 195883.21960784314
+    },
+    {
+      "phase": "heat-curl-b",
+      "coalBoundsAlpha128": [
+        199,
+        1075,
+        1107,
+        1167
+      ],
+      "heatComponentsAlpha128": [
+        {
+          "bounds": [
+            337,
+            267,
+            498,
+            1045
+          ],
+          "pixels": 45532,
+          "centroid": [
+            412.4627295089168,
+            622.5237195818326
+          ]
+        },
+        {
+          "bounds": [
+            587,
+            134,
+            755,
+            1028
+          ],
+          "pixels": 56977,
+          "centroid": [
+            664.0929673376977,
+            541.2963476490513
+          ]
+        },
+        {
+          "bounds": [
+            871,
+            335,
+            1032,
+            1055
+          ],
+          "pixels": 40421,
+          "centroid": [
+            948.3503871749833,
+            662.0809480220678
+          ]
+        }
+      ],
+      "roots": [
+        {
+          "lane": "left",
+          "bottomY": 1045,
+          "tipXMeanLast8Rows": 393.4390243902439,
+          "bottom8RowsBounds": [
+            389,
+            1037,
+            397,
+            1045
+          ]
+        },
+        {
+          "lane": "center",
+          "bottomY": 1028,
+          "tipXMeanLast8Rows": 650.0,
+          "bottom8RowsBounds": [
+            644,
+            1020,
+            655,
+            1028
+          ]
+        },
+        {
+          "lane": "right",
+          "bottomY": 1055,
+          "tipXMeanLast8Rows": 918.0,
+          "bottom8RowsBounds": [
+            914,
+            1047,
+            922,
+            1055
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 201357.93333333332
+    },
+    {
+      "phase": "heat-split",
+      "coalBoundsAlpha128": [
+        200,
+        1075,
+        1107,
+        1167
+      ],
+      "heatComponentsAlpha128": [
+        {
+          "bounds": [
+            336,
+            230,
+            499,
+            1044
+          ],
+          "pixels": 48253,
+          "centroid": [
+            412.42652270325163,
+            605.9694941247176
+          ]
+        },
+        {
+          "bounds": [
+            591,
+            122,
+            723,
+            429
+          ],
+          "pixels": 18709,
+          "centroid": [
+            653.9983430434551,
+            283.4142391362446
+          ]
+        },
+        {
+          "bounds": [
+            587,
+            439,
+            735,
+            1029
+          ],
+          "pixels": 32143,
+          "centroid": [
+            661.5410820396354,
+            702.5164421491461
+          ]
+        },
+        {
+          "bounds": [
+            870,
+            545,
+            1018,
+            1055
+          ],
+          "pixels": 24997,
+          "centroid": [
+            939.3994079289515,
+            777.6419570348442
+          ]
+        },
+        {
+          "bounds": [
+            902,
+            334,
+            1000,
+            548
+          ],
+          "pixels": 10457,
+          "centroid": [
+            948.7231519556278,
+            442.882184182844
+          ]
+        }
+      ],
+      "roots": [
+        {
+          "lane": "left",
+          "bottomY": 1044,
+          "tipXMeanLast8Rows": 392.8157894736842,
+          "bottom8RowsBounds": [
+            389,
+            1036,
+            396,
+            1044
+          ]
+        },
+        {
+          "lane": "center",
+          "bottomY": 1029,
+          "tipXMeanLast8Rows": 650.5833333333334,
+          "bottom8RowsBounds": [
+            645,
+            1021,
+            655,
+            1029
+          ]
+        },
+        {
+          "lane": "right",
+          "bottomY": 1055,
+          "tipXMeanLast8Rows": 918.4411764705883,
+          "bottom8RowsBounds": [
+            915,
+            1047,
+            922,
+            1055
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 192934.69019607845
+    },
+    {
+      "phase": "heat-renewal",
+      "coalBoundsAlpha128": [
+        200,
+        1075,
+        1108,
+        1169
+      ],
+      "heatComponentsAlpha128": [
+        {
+          "bounds": [
+            334,
+            394,
+            504,
+            1041
+          ],
+          "pixels": 35111,
+          "centroid": [
+            417.17421890575605,
+            699.9085471789467
+          ]
+        },
+        {
+          "bounds": [
+            400,
+            184,
+            477,
+            356
+          ],
+          "pixels": 6703,
+          "centroid": [
+            437.4092197523497,
+            269.57959122780846
+          ]
+        },
+        {
+          "bounds": [
+            603,
+            247,
+            742,
+            1028
+          ],
+          "pixels": 44931,
+          "centroid": [
+            670.6708286038593,
+            614.7563597516191
+          ]
+        },
+        {
+          "bounds": [
+            670,
+            74,
+            751,
+            233
+          ],
+          "pixels": 6056,
+          "centroid": [
+            706.0246036988111,
+            152.73216644649932
+          ]
+        },
+        {
+          "bounds": [
+            870,
+            502,
+            1025,
+            1055
+          ],
+          "pixels": 27833,
+          "centroid": [
+            944.0780368627169,
+            758.0254733589624
+          ]
+        },
+        {
+          "bounds": [
+            943,
+            315,
+            1021,
+            493
+          ],
+          "pixels": 7264,
+          "centroid": [
+            983.2488986784141,
+            402.3652257709251
+          ]
+        }
+      ],
+      "roots": [
+        {
+          "lane": "left",
+          "bottomY": 1041,
+          "tipXMeanLast8Rows": 392.50847457627117,
+          "bottom8RowsBounds": [
+            387,
+            1033,
+            397,
+            1041
+          ]
+        },
+        {
+          "lane": "center",
+          "bottomY": 1028,
+          "tipXMeanLast8Rows": 650.7936507936508,
+          "bottom8RowsBounds": [
+            645,
+            1020,
+            656,
+            1028
+          ]
+        },
+        {
+          "lane": "right",
+          "bottomY": 1055,
+          "tipXMeanLast8Rows": 919.84,
+          "bottom8RowsBounds": [
+            915,
+            1047,
+            924,
+            1055
+          ]
+        }
+      ],
+      "wholeSourceAlphaMass": 187049.96078431373
+    }
+  ],
+  "coalBoundsSpreadSourcePx": [
+    1,
+    1,
+    2,
+    4
+  ],
+  "coalMaxBoundsSpreadSourcePx": 4,
+  "coalMaxBoundsSpreadLogicalPx": 0.08931419457735247,
+  "coalMaskIntersectionOverUnionVsFirst": [
+    1.0,
+    0.9781462570891613,
+    0.9746068124823543,
+    0.9507033081531648
+  ],
+  "heatRootBottomSpreadSourcePxByLane": [
+    13,
+    14,
+    1
+  ],
+  "heatRootTipXSpreadSourcePxByLane": [
+    5.527913279132804,
+    5.531355711683659,
+    3.6439215686274338
+  ],
+  "stationaryEmitterReview": "The coal row is stationary at native32/64. Its source contour has at most4px bounds variation,0.089logicalpx; no whole-pad shift was applied. Narrow pointed heat roots have small drawing variation above the fixed emitter, so neither the coal pixels nor the exact ribbon tips are claimed byte-identical.",
+  "cohortTransitions": [
+    {
+      "from": "heat-curl-a",
+      "to": "heat-curl-b",
+      "leftCenterRightUpperTipsY": [
+        [
+          314,
+          150,
+          352
+        ],
+        [
+          267,
+          134,
+          335
+        ]
+      ],
+      "interpretation": "All three initial upper tips advance upward. Bends are independently redrawn, with no rigid full-frame motion."
+    },
+    {
+      "from": "heat-curl-b",
+      "to": "heat-split",
+      "leftTopY": [
+        267,
+        230
+      ],
+      "centerDetachedTopY": [
+        134,
+        122
+      ],
+      "rightDetachedTopY": [
+        335,
+        334
+      ],
+      "interpretation": "Left stays continuous. Center and right upper pieces separate while long lower bodies remain. Right top barely advances; it must not be described as a uniform-speed upward track."
+    },
+    {
+      "from": "heat-split",
+      "to": "heat-renewal",
+      "centerDetachedBoundsY": [
+        [
+          122,
+          429
+        ],
+        [
+          74,
+          233
+        ]
+      ],
+      "rightDetachedBoundsY": [
+        [
+          334,
+          548
+        ],
+        [
+          315,
+          493
+        ]
+      ],
+      "centerLowerTopY": [
+        439,
+        247
+      ],
+      "rightLowerTopY": [
+        545,
+        502
+      ],
+      "interpretation": "Existing detached center/right fragments move upward and become smaller. Their lower replacements extend upward. Left upper ribbon now detaches, leaving a substantial lower replacement."
+    },
+    {
+      "from": "heat-renewal",
+      "to": "heat-curl-a",
+      "leftCenterRightReplacementUpperTipsY": [
+        [
+          394,
+          247,
+          502
+        ],
+        [
+          314,
+          150,
+          352
+        ]
+      ],
+      "upwardGrowthSourcePx": [
+        80,
+        97,
+        150
+      ],
+      "upwardGrowthLogicalPx": [
+        1.7862838915470494,
+        2.1658692185007973,
+        3.349282296650718
+      ],
+      "interpretation": "The next continuous ribbons are upward-grown lower replacements; three old detached tips retire. Do not track those old tips as moving downward into the next main columns."
+    }
+  ],
+  "continuityCaveats": [
+    "Three upper remnants retire on the wrap while lower replacements grow by80/97/150source pixels. This is a plausible authored cohort transition, but could read as a reconnection pop at12fps.",
+    "Curve crests and widths are not conserved material particles. The images support upward tips and split/renewal topology, not a unique measured flow vector for every interior bend.",
+    "Roots vary slightly in source coordinates, particularly the center bottomtip; emitter registration is much tighter than these pointed ribbon tips.",
+    "The shortened right fragment advances less than the center fragment. Motion cadence is deliberately staggered, not uniform."
+  ],
+  "browserObserved": false,
+  "liveGameObserved": false
+}

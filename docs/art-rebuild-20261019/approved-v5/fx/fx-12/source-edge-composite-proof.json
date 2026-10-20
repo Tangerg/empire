@@ -1,0 +1,76 @@
+{
+  "sourceGate": "Actual source perimeter alpha<=1, retained without cleanup",
+  "frames": [
+    {
+      "phase": "heat-curl-a",
+      "sourceSHA256": "f0b38f0cd816f1053070f76566439e621ba5ffa1b571fa0767b13a2604a1519f",
+      "sourcePerimeterAlphaMax": 1,
+      "sourcePerimeterNonzeroPixels": 2,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 1
+        }
+      ],
+      "visualReview": "Full source black/white and native color composites show no visible backing card, clipped effect, wash, halo or fringe."
+    },
+    {
+      "phase": "heat-curl-b",
+      "sourceSHA256": "80f9c6ecc79cf10052e62c3baf0e96d1e3e442a42f62fd7d8f4924b6dccc148c",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full source black/white and native color composites show no visible backing card, clipped effect, wash, halo or fringe."
+    },
+    {
+      "phase": "heat-split",
+      "sourceSHA256": "d8868b274d67bb6ff8bc6ed065de3807f9a5e21ea0d40733376cef93a73cb31f",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full source black/white and native color composites show no visible backing card, clipped effect, wash, halo or fringe."
+    },
+    {
+      "phase": "heat-renewal",
+      "sourceSHA256": "3f165082d9333f35a2ce5179ae3d9eaddbc4968a6e7d1ae3a828f4f314e5fa3e",
+      "sourcePerimeterAlphaMax": 0,
+      "sourcePerimeterNonzeroPixels": 0,
+      "blackWhiteCompositeEvidence": [
+        {
+          "background": "black",
+          "maxPerimeterChannelDifference": 0
+        },
+        {
+          "background": "white",
+          "maxPerimeterChannelDifference": 0
+        }
+      ],
+      "visualReview": "Full source black/white and native color composites show no visible backing card, clipped effect, wash, halo or fringe."
+    }
+  ],
+  "finalPadding": "Every final cell has2logical pixels of alpha0padding,4physical pixels at2x",
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeSixBackgroundsReviewed": true
+}

@@ -360,6 +360,78 @@
           627
         ]
       }
+    },
+    "C01-FX-11": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "gust-curl-a",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-curl-a/master.png",
+          "sha256": "64bb010a95d6648e59f914ed1497fabd6489671348af436f5aa86323414dd1d0"
+        },
+        {
+          "phase": "gust-curl-b",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-curl-b/master.png",
+          "sha256": "bd3d11569e62ca0dcc590612bcb6f11ab27d4adb5f4cda1e1ae177f2756b08e5"
+        },
+        {
+          "phase": "gust-breakup",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-breakup/master.png",
+          "sha256": "07900a49bda835d448cd093112ee16047afa9fe17a5a89af06e7a4c6e9dd95d0"
+        },
+        {
+          "phase": "gust-renewal",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-renewal/master.png",
+          "sha256": "bfd885eae49834e997d133ffd37a13044ccf4c747f23e277cbda783e46990b1e"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    },
+    "C01-FX-12": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "heat-curl-a",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-a/master.png",
+          "sha256": "f0b38f0cd816f1053070f76566439e621ba5ffa1b571fa0767b13a2604a1519f"
+        },
+        {
+          "phase": "heat-curl-b",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-b/master.png",
+          "sha256": "80f9c6ecc79cf10052e62c3baf0e96d1e3e442a42f62fd7d8f4924b6dccc148c"
+        },
+        {
+          "phase": "heat-split",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-split/master.png",
+          "sha256": "d8868b274d67bb6ff8bc6ed065de3807f9a5e21ea0d40733376cef93a73cb31f"
+        },
+        {
+          "phase": "heat-renewal",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-renewal/master.png",
+          "sha256": "3f165082d9333f35a2ce5179ae3d9eaddbc4968a6e7d1ae3a828f4f314e5fa3e"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
     }
   }
 }

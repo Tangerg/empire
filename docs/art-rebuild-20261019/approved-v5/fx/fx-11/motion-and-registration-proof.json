@@ -1,0 +1,441 @@
+{
+  "measurement": "Actual alpha128 connected contours and smoothed top-boundary local minima. Crests are descriptive shape landmarks, not proof of rigid material-point identity.",
+  "frames": [
+    {
+      "phase": "gust-curl-a",
+      "tufts": [
+        {
+          "bounds": [
+            269,
+            834,
+            484,
+            990
+          ],
+          "alpha128Area": 16559
+        },
+        {
+          "bounds": [
+            865,
+            848,
+            1050,
+            988
+          ],
+          "alpha128Area": 13314
+        }
+      ],
+      "windComponents": [
+        {
+          "bounds": [
+            70,
+            482,
+            1213,
+            765
+          ],
+          "interiorTopCrests": [
+            {
+              "x": 347,
+              "y": 482
+            }
+          ]
+        }
+      ],
+      "otherComponents": [
+        {
+          "bounds": [
+            70,
+            482,
+            1213,
+            765
+          ],
+          "alpha128Area": 96915
+        },
+        {
+          "bounds": [
+            105,
+            634,
+            349,
+            696
+          ],
+          "alpha128Area": 6029
+        },
+        {
+          "bounds": [
+            589,
+            766,
+            634,
+            795
+          ],
+          "alpha128Area": 974
+        },
+        {
+          "bounds": [
+            157,
+            820,
+            193,
+            847
+          ],
+          "alpha128Area": 780
+        },
+        {
+          "bounds": [
+            1107,
+            825,
+            1148,
+            852
+          ],
+          "alpha128Area": 907
+        }
+      ]
+    },
+    {
+      "phase": "gust-curl-b",
+      "tufts": [
+        {
+          "bounds": [
+            265,
+            867,
+            479,
+            1017
+          ],
+          "alpha128Area": 15653
+        },
+        {
+          "bounds": [
+            862,
+            876,
+            1051,
+            1016
+          ],
+          "alpha128Area": 13357
+        }
+      ],
+      "windComponents": [
+        {
+          "bounds": [
+            136,
+            505,
+            1221,
+            764
+          ],
+          "interiorTopCrests": [
+            {
+              "x": 180,
+              "y": 536
+            },
+            {
+              "x": 612,
+              "y": 505
+            },
+            {
+              "x": 1183,
+              "y": 537
+            }
+          ]
+        }
+      ],
+      "otherComponents": [
+        {
+          "bounds": [
+            136,
+            505,
+            1221,
+            764
+          ],
+          "alpha128Area": 97391
+        },
+        {
+          "bounds": [
+            356,
+            723,
+            612,
+            793
+          ],
+          "alpha128Area": 7139
+        },
+        {
+          "bounds": [
+            807,
+            803,
+            853,
+            833
+          ],
+          "alpha128Area": 1043
+        },
+        {
+          "bounds": [
+            457,
+            840,
+            499,
+            868
+          ],
+          "alpha128Area": 925
+        },
+        {
+          "bounds": [
+            106,
+            900,
+            141,
+            925
+          ],
+          "alpha128Area": 683
+        }
+      ]
+    },
+    {
+      "phase": "gust-breakup",
+      "tufts": [
+        {
+          "bounds": [
+            270,
+            864,
+            503,
+            1021
+          ],
+          "alpha128Area": 17948
+        },
+        {
+          "bounds": [
+            855,
+            881,
+            1053,
+            1022
+          ],
+          "alpha128Area": 13951
+        }
+      ],
+      "windComponents": [
+        {
+          "bounds": [
+            783,
+            522,
+            1236,
+            755
+          ],
+          "interiorTopCrests": [
+            {
+              "x": 1188,
+              "y": 538
+            }
+          ]
+        },
+        {
+          "bounds": [
+            133,
+            558,
+            795,
+            774
+          ],
+          "interiorTopCrests": [
+            {
+              "x": 167,
+              "y": 594
+            },
+            {
+              "x": 385,
+              "y": 558
+            }
+          ]
+        }
+      ],
+      "otherComponents": [
+        {
+          "bounds": [
+            783,
+            522,
+            1236,
+            755
+          ],
+          "alpha128Area": 37063
+        },
+        {
+          "bounds": [
+            133,
+            558,
+            795,
+            774
+          ],
+          "alpha128Area": 55523
+        },
+        {
+          "bounds": [
+            678,
+            788,
+            902,
+            849
+          ],
+          "alpha128Area": 5980
+        },
+        {
+          "bounds": [
+            513,
+            811,
+            559,
+            843
+          ],
+          "alpha128Area": 1110
+        },
+        {
+          "bounds": [
+            1040,
+            820,
+            1083,
+            850
+          ],
+          "alpha128Area": 951
+        },
+        {
+          "bounds": [
+            148,
+            855,
+            188,
+            887
+          ],
+          "alpha128Area": 967
+        },
+        {
+          "bounds": [
+            791,
+            877,
+            835,
+            907
+          ],
+          "alpha128Area": 1030
+        }
+      ]
+    },
+    {
+      "phase": "gust-renewal",
+      "tufts": [
+        {
+          "bounds": [
+            275,
+            869,
+            501,
+            1019
+          ],
+          "alpha128Area": 16729
+        },
+        {
+          "bounds": [
+            856,
+            888,
+            1049,
+            1027
+          ],
+          "alpha128Area": 13455
+        }
+      ],
+      "windComponents": [
+        {
+          "bounds": [
+            60,
+            543,
+            1122,
+            795
+          ],
+          "interiorTopCrests": [
+            {
+              "x": 108,
+              "y": 589
+            },
+            {
+              "x": 307,
+              "y": 543
+            },
+            {
+              "x": 651,
+              "y": 579
+            }
+          ]
+        }
+      ],
+      "otherComponents": [
+        {
+          "bounds": [
+            60,
+            543,
+            1122,
+            795
+          ],
+          "alpha128Area": 93858
+        },
+        {
+          "bounds": [
+            1103,
+            643,
+            1242,
+            746
+          ],
+          "alpha128Area": 3612
+        },
+        {
+          "bounds": [
+            112,
+            678,
+            345,
+            739
+          ],
+          "alpha128Area": 6043
+        },
+        {
+          "bounds": [
+            512,
+            817,
+            561,
+            850
+          ],
+          "alpha128Area": 1193
+        },
+        {
+          "bounds": [
+            140,
+            847,
+            182,
+            879
+          ],
+          "alpha128Area": 1017
+        },
+        {
+          "bounds": [
+            1028,
+            855,
+            1072,
+            885
+          ],
+          "alpha128Area": 1013
+        }
+      ]
+    }
+  ],
+  "tuftContactBottomsSourceY": {
+    "left": [
+      990,
+      1017,
+      1021,
+      1019
+    ],
+    "right": [
+      988,
+      1016,
+      1022,
+      1027
+    ]
+  },
+  "tuftContactSpreadLogicalPx": {
+    "left": 0.6921850079744817,
+    "right": 0.8708133971291866
+  },
+  "lastFirstTuftContactDeltaLogicalPx": {
+    "left": -0.6475279106858054,
+    "right": -0.8708133971291866
+  },
+  "sourceAlphaMasses": [
+    134565.10588235295,
+    135236.18823529413,
+    133497.58039215687,
+    135861.87450980392
+  ],
+  "maximumMassSpreadRelativeToMinimum": 0.01771038928722013,
+  "motionReview": "qa/COHORT-REVIEW.md",
+  "browserObserved": false
+}

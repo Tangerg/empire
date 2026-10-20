@@ -1,0 +1,8 @@
+{
+  "prompt": "Use case: precise-object-edit. Make a very targeted animation frame edit. IMAGE 1 is the target canvas. IMAGE 2 supplies only the WIND RIBBON shape. Return one 1254×1254 RGBA transparent image.\nIn image 1, preserve both low grass tufts EXACTLY AS THEY ARE: same absolute locations, size, silhouettes, colors, roots, everything. Do not move them even slightly. They are already correctly positioned. The tufts occupy the low band around y870..1017. Keep that band unchanged. Do not use the higher tuft placement from image 2. Do not create any new tufts.\nOnly change the wind above those tufts: replace image 1's curled ribbon with the single broad S-shaped ribbon from image 2, at image 2's exact coordinates and scale, with crest left of center around x350,y485 and trough near x850,y730. Include image 2's small left wisp. This re-establishes the required phase 1 wind shape while retaining image 1's registered stationary tufts. The three small dust flecks should match image 2's positions at x175,y835; x610,y780; x1125,y840. No other alterations. Keep the same matte outlined ochre style and pale tan interior planes. Transparent exterior and open gaps must remain truly transparent. No glow, halo, floor, shadow, frame, background or text. Do not resize, crop or recenter the canvas. The only moving content is wind and airborne flecks; the two tuft roots remain exactly from image 1.",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/gust-curl-b/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/gust-curl-a/master.png"
+  ],
+  "transparent_background": true
+}

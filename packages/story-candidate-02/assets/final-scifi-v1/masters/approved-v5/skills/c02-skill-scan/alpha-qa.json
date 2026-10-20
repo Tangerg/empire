@@ -42,5 +42,10 @@
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "The five-node fan and scanner base remain identifiable at actual48 on white, black and olive. Some tiny gap distinctions compress, but no endpoint count or overall scanning meaning is lost.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true,
+  "parentReview": "Delivered to parent for review"
 }

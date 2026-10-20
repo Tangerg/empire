@@ -1,0 +1,45 @@
+{
+  "topicId": "C01-FX-12",
+  "status": "source-alpha-export-and-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "heat-curl-a",
+    "heat-curl-b",
+    "heat-split",
+    "heat-renewal"
+  ],
+  "phases": [
+    {
+      "phase": "heat-curl-a",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-a/master.png",
+      "sha256": "f0b38f0cd816f1053070f76566439e621ba5ffa1b571fa0767b13a2604a1519f"
+    },
+    {
+      "phase": "heat-curl-b",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-b/master.png",
+      "sha256": "80f9c6ecc79cf10052e62c3baf0e96d1e3e442a42f62fd7d8f4924b6dccc148c"
+    },
+    {
+      "phase": "heat-split",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-split/master.png",
+      "sha256": "d8868b274d67bb6ff8bc6ed065de3807f9a5e21ea0d40733376cef93a73cb31f"
+    },
+    {
+      "phase": "heat-renewal",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-renewal/master.png",
+      "sha256": "3f165082d9333f35a2ce5179ae3d9eaddbc4968a6e7d1ae3a828f4f314e5fa3e"
+    }
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "qa": "qa/qa-metrics.json",
+  "caveats": "qa/COHORT-REVIEW.md"
+}

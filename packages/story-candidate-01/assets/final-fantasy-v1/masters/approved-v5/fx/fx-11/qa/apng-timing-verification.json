@@ -1,0 +1,566 @@
+{
+  "verified": true,
+  "method": "acTL/fcTL exact rational timing plus every decoded RGBA frame compared with expected source export",
+  "files": [
+    {
+      "file": "12fps-loop-transparent@1x.apng",
+      "sha256": "ce920e946b92638413a203d6319192f0a6e660edea17adbcd5b614ac0dbb9191",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "314ed2396905bb246d664b5e50571f46ff43f08319e2773ed7b574e5f4804780",
+        "7d4a1c99b95c0a1eb50a29c433855c243e67a12d0696b10cf2c4cf15a505f2df",
+        "24ee9326c70c09a6e9a77f20f9494177efa382d11ca24ab540b4153e42ba08f3",
+        "3b66879da4689721db4ce458a020b8a14cc1a16fc0601601bf5779b9e1a0b4f5"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-transparent@1x.apng",
+      "sha256": "0e2d6ad53d9d8035199db1c44c53c4c18a2b0b06d757d9af7d761154f85078b6",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "314ed2396905bb246d664b5e50571f46ff43f08319e2773ed7b574e5f4804780",
+        "7d4a1c99b95c0a1eb50a29c433855c243e67a12d0696b10cf2c4cf15a505f2df",
+        "24ee9326c70c09a6e9a77f20f9494177efa382d11ca24ab540b4153e42ba08f3",
+        "3b66879da4689721db4ce458a020b8a14cc1a16fc0601601bf5779b9e1a0b4f5"
+      ]
+    },
+    {
+      "file": "12fps-loop-black@1x.apng",
+      "sha256": "7a7973361ba528e954638a5513c6d986addb7ae0b3266ccddf38f77fd9e7bc54",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "f90f063c25b66f1d84991b3cd4b3dd04a9990fb72094e5c522d4d8ee7c1b47a6",
+        "f13fcb6850432f1e96cf0be42aeb2da32f4cc03e413c126fe3cfb5f1563f1f0b",
+        "04f44d76a51bf8cb1aedc03cba95734755eb98103f2cc570a0e4c06ef4836402",
+        "976ae2c828525b3d8e2b406f409f60a075fdc34aef5c941a0111cc6008210380"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-black@1x.apng",
+      "sha256": "23d3abb7a25654a05510ebc4e5f62b1796dd557599785728a849e10e03ade7c5",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "f90f063c25b66f1d84991b3cd4b3dd04a9990fb72094e5c522d4d8ee7c1b47a6",
+        "f13fcb6850432f1e96cf0be42aeb2da32f4cc03e413c126fe3cfb5f1563f1f0b",
+        "04f44d76a51bf8cb1aedc03cba95734755eb98103f2cc570a0e4c06ef4836402",
+        "976ae2c828525b3d8e2b406f409f60a075fdc34aef5c941a0111cc6008210380"
+      ]
+    },
+    {
+      "file": "12fps-loop-white@1x.apng",
+      "sha256": "316761e7150683a035e32f820a8163e4cec56d04eba3e93df208b34a0b5cd8a1",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "ab3bc1a56cfab9c42865c0b300ed70a6b69a04189618232c1b6de1f0324f401e",
+        "f4ea3df2a739ba7f3ef084f935ec76c083df408ad0eb7e2e28edd2b9d4249a3c",
+        "29c6bc80cb2e5f60fa81fa7186754d4bbbe8af8250f0f1fd446bb7e8443c1841",
+        "ef9b8817e54585188c19528b8e0bdcd80aa4885d0de6011ea0b66c7451a18664"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-white@1x.apng",
+      "sha256": "5982cf82028ddbc0743b2eb42bd620f2a8c61f7b8afcaf354ff0db35e0b18853",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "ab3bc1a56cfab9c42865c0b300ed70a6b69a04189618232c1b6de1f0324f401e",
+        "f4ea3df2a739ba7f3ef084f935ec76c083df408ad0eb7e2e28edd2b9d4249a3c",
+        "29c6bc80cb2e5f60fa81fa7186754d4bbbe8af8250f0f1fd446bb7e8443c1841",
+        "ef9b8817e54585188c19528b8e0bdcd80aa4885d0de6011ea0b66c7451a18664"
+      ]
+    },
+    {
+      "file": "12fps-loop-bright-stone@1x.apng",
+      "sha256": "b622c0332504f4a4cff697aed5006ec8dc20b44b890fc481a393e6695494d4a7",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "711f1fa56ab9e42558e29c66adcbf6d42799e1ab5fe9986e8762f53b5350b034",
+        "fc84f8a3951d97487efa80df8146ddae0828703146c2b4b65227343c6aaf2d27",
+        "00f46b92fb92f18c942a75e899899e88ee97e60353c656baa04fe26ca24814b6",
+        "771f087bc994b91c058b018f77c78f356145c5526864d17ebe1cb6a80d54366a"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-bright-stone@1x.apng",
+      "sha256": "b02addc144db85e2583c05aa442e7f6a0a7472ac5aa943b26a3a469821d0edad",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "711f1fa56ab9e42558e29c66adcbf6d42799e1ab5fe9986e8762f53b5350b034",
+        "fc84f8a3951d97487efa80df8146ddae0828703146c2b4b65227343c6aaf2d27",
+        "00f46b92fb92f18c942a75e899899e88ee97e60353c656baa04fe26ca24814b6",
+        "771f087bc994b91c058b018f77c78f356145c5526864d17ebe1cb6a80d54366a"
+      ]
+    },
+    {
+      "file": "12fps-loop-green-ground@1x.apng",
+      "sha256": "c664bafe630dd0e7e0f5131686b4a3782adc1b2077c16d50a45b1809d6d1b5f9",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "2ffb554f75cadf9cec15b5262f0ef89d7a0f268f11b652d694a600ba310d469e",
+        "b544aaf7ada5af3ea7ce382e4b464f4a339234186120c4e4193a65190aa06903",
+        "cdd7b201f9bb67cc33d83bb5908669088bb9c4a837fcfafc9c2067b6b2e770d0",
+        "08fd2f2326e49a8db2179c1691f09b11ed5a58102502796e4e4e6b6ef046506f"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-green-ground@1x.apng",
+      "sha256": "b2c9bca1abee4d631533d0ecb899f022ce2ea37c63306f13d1135a02eb52ee50",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "2ffb554f75cadf9cec15b5262f0ef89d7a0f268f11b652d694a600ba310d469e",
+        "b544aaf7ada5af3ea7ce382e4b464f4a339234186120c4e4193a65190aa06903",
+        "cdd7b201f9bb67cc33d83bb5908669088bb9c4a837fcfafc9c2067b6b2e770d0",
+        "08fd2f2326e49a8db2179c1691f09b11ed5a58102502796e4e4e6b6ef046506f"
+      ]
+    },
+    {
+      "file": "12fps-loop-dark-earth@1x.apng",
+      "sha256": "d60fda51f7fc9433af9baac468416f106df36995f29435b5d194fced9dee1c32",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "06096ea34f617aa4702f71eff3f6ab0363d00eb8214b33ba9445ef3fd53332ce",
+        "acf49a07a3c0232841a631ba46406ab6295399cebf658733637dd4d03c53195f",
+        "f5a9a58d9da1b2288592ae09fba5749e10212c1377af8f89712d043cb0658105",
+        "9964de1d957088176ba6723afa5e0878c02af3cd492f45f5b5f59b17978ec9ad"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-dark-earth@1x.apng",
+      "sha256": "a0a540bfc579c70fe6af00904b2af37ec57648dc3ced3cb2039b6a364f875ad2",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "06096ea34f617aa4702f71eff3f6ab0363d00eb8214b33ba9445ef3fd53332ce",
+        "acf49a07a3c0232841a631ba46406ab6295399cebf658733637dd4d03c53195f",
+        "f5a9a58d9da1b2288592ae09fba5749e10212c1377af8f89712d043cb0658105",
+        "9964de1d957088176ba6723afa5e0878c02af3cd492f45f5b5f59b17978ec9ad"
+      ]
+    },
+    {
+      "file": "12fps-loop-checker@1x.apng",
+      "sha256": "e5f492aedb002cf226e0cc057a19e88b2845a17f42f7a68e0f1dd75a68eb86cb",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "b0052457a2ce85dcca2e6fe9dd54488432d715e9e9913c6c0d81773c990298a6",
+        "03bcd9a5859d3c4b8fd072e9fc178e1629b9753f6dc8b83825b32fe845f730c4",
+        "2e2b8789cf9f52032fd595f2cb90aee783e6aa10089168dcea1e59202d72de90",
+        "ecebd131b42576ff4f9361d0f352332f08cd5c406ef5686af0997693629ef945"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-checker@1x.apng",
+      "sha256": "e4b766b1094e4ee036b1583c272d9989e454c432a30ea6bae14b607034485e98",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "b0052457a2ce85dcca2e6fe9dd54488432d715e9e9913c6c0d81773c990298a6",
+        "03bcd9a5859d3c4b8fd072e9fc178e1629b9753f6dc8b83825b32fe845f730c4",
+        "2e2b8789cf9f52032fd595f2cb90aee783e6aa10089168dcea1e59202d72de90",
+        "ecebd131b42576ff4f9361d0f352332f08cd5c406ef5686af0997693629ef945"
+      ]
+    },
+    {
+      "file": "12fps-loop-transparent@2x.apng",
+      "sha256": "7ccfdd9d632fbdbc207ffa3e83d270ac87771c6aa94fc7038415a9eff9a3b632",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "cf0aea929bead9bdbdfffe4c103e1add04a1b6f475a8fbf1cd50f445ef862fe9",
+        "b6047980c896817b6539ef98f39b5b3963a022d3007eea78d985c5eb31375874",
+        "f59f05c01c8aa8552f366d305f929930eaec53a652227037a1708295d8bbe2b1",
+        "7405df216611348358eeafb61b2a379a33559b270cdb89c1e884b58b2f701432"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-transparent@2x.apng",
+      "sha256": "c110cb17bc8e1d85aa7bf808ae2dfd5f7eef007f9aff453ffd6690fef2abb0ed",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "cf0aea929bead9bdbdfffe4c103e1add04a1b6f475a8fbf1cd50f445ef862fe9",
+        "b6047980c896817b6539ef98f39b5b3963a022d3007eea78d985c5eb31375874",
+        "f59f05c01c8aa8552f366d305f929930eaec53a652227037a1708295d8bbe2b1",
+        "7405df216611348358eeafb61b2a379a33559b270cdb89c1e884b58b2f701432"
+      ]
+    },
+    {
+      "file": "12fps-loop-black@2x.apng",
+      "sha256": "a2ec2f3519b932b6cb3e55c8c174612ef54fa7a1876287f610780d2608be558c",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "b894ca0e86fd3c04c1858499b44079780d8a2a3717e158bebfb8f9d360cebe7e",
+        "72fa3d7af1733f251cbb5a74a11af975cd4b3615cc6320c3dac3592c08745da5",
+        "31185a25cc517a993becfbef1bf7f4a736f3b7b454f65292447097659de5defa",
+        "1ea05dd263ab27027cad5e3cc5359cca3f4e357c1753d3ecd31d8448699a83fc"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-black@2x.apng",
+      "sha256": "7742bbe0c471dc19f0c3b2d9c7ae9b96f63c7b5f6e28e898d8256154bfe01315",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "b894ca0e86fd3c04c1858499b44079780d8a2a3717e158bebfb8f9d360cebe7e",
+        "72fa3d7af1733f251cbb5a74a11af975cd4b3615cc6320c3dac3592c08745da5",
+        "31185a25cc517a993becfbef1bf7f4a736f3b7b454f65292447097659de5defa",
+        "1ea05dd263ab27027cad5e3cc5359cca3f4e357c1753d3ecd31d8448699a83fc"
+      ]
+    },
+    {
+      "file": "12fps-loop-white@2x.apng",
+      "sha256": "02c4a06fa7681ac79dc61c2ae26d53b598e261d722e35493f544a5d8714ff943",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "f6f24f6f98d2667486cc14ab26f65849bcc107c52ad32b619e1132b1ce0e94c8",
+        "e1c0fb172acf5704e55f92f84575f55c2f1a791bc5864676c20de6f8103f08c5",
+        "85b523770d4b6b4de8495e3f24cb04ef1d427ed9776cd5b43d10693d46c0a4e8",
+        "a1a6fe62bf3f9266c368e32e8c85d6c7fdcffebf84609ccc87305122250c750d"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-white@2x.apng",
+      "sha256": "8c386ef54b0df2db2ad56c18421ba39f6aa3be3ba8b95acae8e8bbb57161211a",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "f6f24f6f98d2667486cc14ab26f65849bcc107c52ad32b619e1132b1ce0e94c8",
+        "e1c0fb172acf5704e55f92f84575f55c2f1a791bc5864676c20de6f8103f08c5",
+        "85b523770d4b6b4de8495e3f24cb04ef1d427ed9776cd5b43d10693d46c0a4e8",
+        "a1a6fe62bf3f9266c368e32e8c85d6c7fdcffebf84609ccc87305122250c750d"
+      ]
+    },
+    {
+      "file": "12fps-loop-bright-stone@2x.apng",
+      "sha256": "782b58b3e62e763a1f24b36b89a61589b1856cdc6982f570c2f7c64ea9134727",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "73184f25019d6ab4bec2d90bfffa4ceaeb9006c1b4ab67524f42b9b86693af1c",
+        "0bf700af1b389a8d3adf1500ffdf113fccfd52713ac0e709fd335f7a026a1fc1",
+        "8e8ba3fdc1d84ae09383c3fc8f69dfc4006464fd1f4119e63781914c139c23ac",
+        "413cb83f342e6f670999e2f6154249f1c0619cfe0cbc532fafefde40276bc8ff"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-bright-stone@2x.apng",
+      "sha256": "72fa4e7b3a49b9187f6a1a67ca052a04886d22243cd1ed91afe9fb80045ddd0f",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "73184f25019d6ab4bec2d90bfffa4ceaeb9006c1b4ab67524f42b9b86693af1c",
+        "0bf700af1b389a8d3adf1500ffdf113fccfd52713ac0e709fd335f7a026a1fc1",
+        "8e8ba3fdc1d84ae09383c3fc8f69dfc4006464fd1f4119e63781914c139c23ac",
+        "413cb83f342e6f670999e2f6154249f1c0619cfe0cbc532fafefde40276bc8ff"
+      ]
+    },
+    {
+      "file": "12fps-loop-green-ground@2x.apng",
+      "sha256": "3759535ee1a61f09020865aed2d94045895c06a7fa9af9571af78aaa2d9b1a59",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "9848c52ea2f6f29217d6f86ca77235907550d316714f7c63f7ae3af70cb79482",
+        "9090702fda0e986941d09324e4fd93150e30a7b54c7b340aa6e19bb1ef73c209",
+        "38092f75222b9eae478caa610d51fd6660be76ce166d558e8165f236a0d9dba7",
+        "5f42790e00aa05faf1faee5f9cca2f1e4f1de78a15b8f5c9976caff7a903eb2b"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-green-ground@2x.apng",
+      "sha256": "a2a7cfe2fc9200096668a9b0484e11118d2007ee5199978c515d12bf03ab6ee9",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "9848c52ea2f6f29217d6f86ca77235907550d316714f7c63f7ae3af70cb79482",
+        "9090702fda0e986941d09324e4fd93150e30a7b54c7b340aa6e19bb1ef73c209",
+        "38092f75222b9eae478caa610d51fd6660be76ce166d558e8165f236a0d9dba7",
+        "5f42790e00aa05faf1faee5f9cca2f1e4f1de78a15b8f5c9976caff7a903eb2b"
+      ]
+    },
+    {
+      "file": "12fps-loop-dark-earth@2x.apng",
+      "sha256": "4f138dc2e9986e6697cacec31c59ba82851cbabea7c29379a80eb2ddfc628f06",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "e12419a07582432741647af5c3925c035c0f31be94e8f2ec194ab8bb4ed8114c",
+        "bfd79ef5451f61823ef24740cfd53af53dd4140c6b8ee71aae7cb1fb7c2ccf4c",
+        "b83db665844cc7a7d7b708fe3d9af2d12930b95fd0ab0d2e00124a7e0d76d612",
+        "b18f203c87ad6384b00f4de5cb70a827ad4bf3a7a60bdacd248d6586bb4bcfee"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-dark-earth@2x.apng",
+      "sha256": "e97f0387c5774613c70df68fb0ee7f64ad8eff099790321c3415d63093ed2837",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "e12419a07582432741647af5c3925c035c0f31be94e8f2ec194ab8bb4ed8114c",
+        "bfd79ef5451f61823ef24740cfd53af53dd4140c6b8ee71aae7cb1fb7c2ccf4c",
+        "b83db665844cc7a7d7b708fe3d9af2d12930b95fd0ab0d2e00124a7e0d76d612",
+        "b18f203c87ad6384b00f4de5cb70a827ad4bf3a7a60bdacd248d6586bb4bcfee"
+      ]
+    },
+    {
+      "file": "12fps-loop-checker@2x.apng",
+      "sha256": "ed58a4923f13dcab2f7cca3552b0b10635823b66208c40cf4bb1d29e2bdb3883",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/12",
+        "1/12",
+        "1/12",
+        "1/12"
+      ],
+      "cycleSeconds": "1/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "4c72a65a1ab365a1cf57fef4768cf1424464fa65385434a84e03ba88459abba0",
+        "4ac12f6344a095a8604d0491ca63b5ceafb3cd2de768b749add07cbce12ae934",
+        "9be80ea18b10cf3ac2fcafc244790ec84cdff04170fb885890ccd440195fe7e3",
+        "42ed0fb8adca7425038be10666385b0c7a3d3738c1dacb2cbc4d0bed4d487c52"
+      ]
+    },
+    {
+      "file": "slow-diagnostic-loop-checker@2x.apng",
+      "sha256": "4e6068bb7456aa3ab95891782196f01b3bbeb7723f2573520925313b7d71ac45",
+      "numPlays": 0,
+      "frameCount": 4,
+      "frameDurationsSeconds": [
+        "1/3",
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "cycleSeconds": "4/3",
+      "decodedFramesMatchExports": true,
+      "decodedFrameHashes": [
+        "4c72a65a1ab365a1cf57fef4768cf1424464fa65385434a84e03ba88459abba0",
+        "4ac12f6344a095a8604d0491ca63b5ceafb3cd2de768b749add07cbce12ae934",
+        "9be80ea18b10cf3ac2fcafc244790ec84cdff04170fb885890ccd440195fe7e3",
+        "42ed0fb8adca7425038be10666385b0c7a3d3738c1dacb2cbc4d0bed4d487c52"
+      ]
+    }
+  ]
+}

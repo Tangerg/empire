@@ -1,0 +1,52 @@
+{
+  "topicId": "c02-skill-field-heal",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 840032,
+  "partialAlphaPixels": 730333,
+  "opaquePixels": 2151,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    130,
+    60,
+    1160,
+    1157
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    130,
+    60,
+    94,
+    97
+  ],
+  "nearOpaquePixelCountGE240": 697821,
+  "diagnostic8pxErosion": {
+    "minAlpha": 105,
+    "pixelsBelow240": 254,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 721,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "49f2386c2a557f933d1fa7b8d3f07951b320374b5bd834f9b21899192866606c",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "visualQA": "The green plus, injector and gloved hand read distinctly at actual48 on white, black and olive. The action arcs remain bounded and do not form a broad haze. A supplemental alpha diagnostic identifies fine arc-edge residue, documented separately; source alpha is not modified.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true,
+  "parentReview": "Delivered to parent for review",
+  "supplementalAlphaCaveat": "The 8px-eroded alpha>=8 diagnostic finds 254 pixels below 240 (minimum 105), localized to the action-arc region. This diagnostic is not a contractual gate. White/black 512 and actual 48 inspection show no broad glow or visible solid-body transparency. Fine colored antialias residue is visible at source zoom around arc edges; retained unchanged."
+}

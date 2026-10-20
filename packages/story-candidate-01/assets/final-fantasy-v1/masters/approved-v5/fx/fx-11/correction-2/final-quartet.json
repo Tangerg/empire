@@ -1,0 +1,50 @@
+{
+  "topicId": "C01-FX-11",
+  "selectedRevision": "correction-2",
+  "status": "accepted-source-static-phase-candidate",
+  "sources": [
+    {
+      "phase": "gust-curl-a",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-curl-a/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-curl-a/master.png",
+      "sha256": "64bb010a95d6648e59f914ed1497fabd6489671348af436f5aa86323414dd1d0",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-curl-a/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-curl-a/master.png"
+    },
+    {
+      "phase": "gust-curl-b",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-curl-b/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-curl-b/master.png",
+      "sha256": "bd3d11569e62ca0dcc590612bcb6f11ab27d4adb5f4cda1e1ae177f2756b08e5",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-curl-b/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-curl-b/master.png"
+    },
+    {
+      "phase": "gust-breakup",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-breakup/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-breakup/master.png",
+      "sha256": "07900a49bda835d448cd093112ee16047afa9fe17a5a89af06e7a4c6e9dd95d0",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-breakup/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-breakup/master.png"
+    },
+    {
+      "phase": "gust-renewal",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-renewal/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-renewal/master.png",
+      "sha256": "bfd885eae49834e997d133ffd37a13044ccf4c747f23e277cbda783e46990b1e",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-2/gust-renewal/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/correction-2/gust-renewal/master.png"
+    }
+  ],
+  "history": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11",
+      "description": "Original four generated frames and initial QA, preserved unchanged."
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-11/correction-1",
+      "description": "First tuft correction overshot the contact baseline; rejected, fully preserved."
+    }
+  ],
+  "selectedDrawings": "Four independently authored drawings; phases 2–4 are byte-identical copies of their original generated sources, and phase 1 is the second targeted imagegen correction."
+}

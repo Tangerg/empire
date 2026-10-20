@@ -1,0 +1,67 @@
+{
+  "topicId": "C01-FX-12",
+  "label": "山炉热浪",
+  "status": "source-alpha-export-and-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "heat-curl-a",
+    "heat-curl-b",
+    "heat-split",
+    "heat-renewal"
+  ],
+  "sourceCount": 4,
+  "imagegenAttemptCount": 6,
+  "rejectedAttemptCount": 2,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "sourceEdgeMaxima": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "sourceEdgeProof": "qa/source-edge-composite-proof.json",
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perFrameFitCropShiftFadeAlphaCleanup": false,
+  "native32And64SixBackgroundsReviewed": true,
+  "fullAndSeamStripReviewed": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "coalMaxBoundsSpreadSourcePx": 4,
+  "coalMaxBoundsSpreadLogicalPx": 0.08931419457735247,
+  "cohortReview": "qa/COHORT-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "actualCaveats": [
+    "Three upper remnants retire on the wrap while lower replacements grow by80/97/150source pixels. This is a plausible authored cohort transition, but could read as a reconnection pop at12fps.",
+    "Curve crests and widths are not conserved material particles. The images support upward tips and split/renewal topology, not a unique measured flow vector for every interior bend.",
+    "Roots vary slightly in source coordinates, particularly the center bottomtip; emitter registration is much tighter than these pointed ribbon tips.",
+    "The shortened right fragment advances less than the center fragment. Motion cadence is deliberately staggered, not uniform."
+  ],
+  "exactAPNGTimingVerified": true,
+  "apngCount": 28,
+  "verifiedDecodedFrames": 112,
+  "canonicalTiming": {
+    "fps": 12,
+    "loop": true,
+    "frameDurationSeconds": "1/12",
+    "cycleSeconds": "1/3",
+    "lastFrameHold": false,
+    "old420msRemovalApplies": false
+  },
+  "browserObservedEightCycles": false,
+  "browserReason": "Known blocked browser/GPU environment reported by parent; no repeated escalation. Encoding and source-derived frames verified offline only.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoCodeRuntimeOrGitWrites": false
+}

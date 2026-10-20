@@ -4,22 +4,22 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 471,
+    "formalBound": 475,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 10,
+      "fx": 12,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
       "narrative-static": 80,
-      "skill": 50,
+      "skill": 52,
       "status": 24,
       "terrain": 32
     },
-    "rawPreservedTopics": 473,
+    "rawPreservedTopics": 477,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -8375,15 +8375,22 @@
       "label": "荒原强风",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-breakup/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-curl-a/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-curl-b/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-curl-b/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-11/gust-renewal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-11.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent cyclic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps looping four equal phases, existing lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-12",
@@ -8393,14 +8400,21 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-a/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-b/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-curl-b/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-renewal/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-12/heat-split/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-12.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent cyclic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps looping four equal phases, existing lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-13",
@@ -13731,13 +13745,20 @@
       "category": "skill",
       "label": "战地治疗",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-field-heal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-field-heal.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-five-world-combo",
@@ -14102,13 +14123,20 @@
       "category": "skill",
       "label": "协议扫描",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-scan/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-scan.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "True RGBA independent imagegen source with exact original runtime/visually matched board reference, immutable requests/hashes retained",
+        "export": "Common full1254canvas contain fit48x48 with2px transparent margin, native48 white/black/olive semantic review and strict source alpha gate",
+        "runtimeBinding": "C02 canonical skill manifest/runtime PNG only, anchor24,24, no HD. C02 campaign remains a content contract; no authored skill icon consumer or playable deployment invented",
+        "liveGame": "pending; static native/export validation only"
+      }
     },
     {
       "topicId": "c02-skill-shield-chain",
@@ -14144,8 +14172,10 @@
       "category": "skill",
       "label": "长束狙击",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-snipe/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -14172,8 +14202,10 @@
       "category": "skill",
       "label": "轨道压制",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-suppress/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
