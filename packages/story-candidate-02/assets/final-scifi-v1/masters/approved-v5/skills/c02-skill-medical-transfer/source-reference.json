@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-skill-medical-transfer",
+  "assetId": "C02-SFV1-skill-medical-transfer",
+  "label": "医疗转运",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-medical-transfer",
+    "topicId": "c02-skill-medical-transfer",
+    "label": "医疗转运",
+    "category": "skill",
+    "png": "runtime/skill/skill-medical-transfer.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceIndexZeroBased": 38,
+  "sourceBoardCellIndexZeroBased": 6,
+  "sourceCropBox": [
+    632,
+    319,
+    935,
+    622
+  ],
+  "sourceCropSize": [
+    303,
+    303
+  ],
+  "sourceMappingEvidence": "Actual 48x48 runtime icons visually inspected, then matched to full source boards by action; catalog order independently agrees. No inference from alphabetically sorted manifest.",
+  "functionalMotif": "One supine patient on a wheeled sci-fi stretcher under one medical drone with two side arms and a localized cyan care beam.",
+  "semanticConflictDetected": false,
+  "sourceArtifacts": "Original magenta backing and legacy faint color fringe are reference artifacts, not motif requirements. New generated sources require true transparency; no legacy alpha cleanup is applied.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-medical-transfer.png",
+  "runtimeReferenceSha256": "3219df4c58b8f30b5335c559601d9d70f826f89e2f06235d32bbeb078c2ccfb5",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source crop and separate QA-only derivatives; generated alpha will remain unchanged."
+}

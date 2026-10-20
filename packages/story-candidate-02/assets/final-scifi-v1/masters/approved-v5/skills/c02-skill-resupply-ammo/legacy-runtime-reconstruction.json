@@ -1,0 +1,11 @@
+{
+  "topicId": "c02-skill-resupply-ammo",
+  "originalRuntimePixelMatch": true,
+  "differingPixels": 0,
+  "comparedRGBABytes": 9216,
+  "existingAlphaBoard": "packages/story-candidate-02/assets/final-scifi-v1/intermediate/alpha/skills/skills-board-03.png",
+  "existingAlphaBoardSha256": "9c14c2655a8e9c3f66c8dd20645ed243cd207f8a7dc581924d269bc9f9f66772",
+  "builderSha256": "dead2b13e5a38a7ba4960193fe97de9b33b12776dfb47081d227fa9ef7a84f49",
+  "method": "Replayed four pure legacy builder functions in memory on the existing original alpha board; reproduced existing chroma postfilters in memory. No builder main, chroma helper, save, or repository write was called. Generated artwork was not used or modified.",
+  "sourceMappingConfirmed": true
+}

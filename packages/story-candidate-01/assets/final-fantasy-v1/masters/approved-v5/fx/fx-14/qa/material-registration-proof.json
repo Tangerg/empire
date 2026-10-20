@@ -171,6 +171,138 @@
           1140
         ]
       }
+    },
+    "plume-crest": {
+      "staticMaterialMatches": {
+        "left-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.697
+        },
+        "right-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.785
+        },
+        "grass": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 5.607
+        },
+        "left-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 7.017
+        },
+        "center-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 5.488
+        },
+        "front-rock": {
+          "bestOffsetXY": [
+            0,
+            0
+          ],
+          "meanAbsoluteRgbError": 6.293
+        }
+      },
+      "soilExtrema": {
+        "leftTip": [
+          67,
+          858,
+          160,
+          1000
+        ],
+        "rightTip": [
+          1100,
+          850,
+          1187,
+          1000
+        ],
+        "bottomTip": [
+          500,
+          1080,
+          800,
+          1142
+        ]
+      }
+    },
+    "settling-wisps": {
+      "staticMaterialMatches": {
+        "left-ground-paper": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 5.914
+        },
+        "right-ground-paper": {
+          "bestOffsetXY": [
+            1,
+            1
+          ],
+          "meanAbsoluteRgbError": 6.169
+        },
+        "grass": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 6.132
+        },
+        "left-rock": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 6.401
+        },
+        "center-rock": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 5.34
+        },
+        "front-rock": {
+          "bestOffsetXY": [
+            0,
+            1
+          ],
+          "meanAbsoluteRgbError": 4.704
+        }
+      },
+      "soilExtrema": {
+        "leftTip": [
+          67,
+          858,
+          160,
+          1000
+        ],
+        "rightTip": [
+          1100,
+          850,
+          1188,
+          1000
+        ],
+        "bottomTip": [
+          500,
+          1080,
+          800,
+          1142
+        ]
+      }
     }
   }
 }

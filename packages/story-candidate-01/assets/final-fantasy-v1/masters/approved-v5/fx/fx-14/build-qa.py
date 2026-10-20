@@ -36,7 +36,7 @@ for phase in P:
   row['exports'][str(density)]={'sha256':sha(Q/f'{phase}@{density}x.png'),'decodedSha256':hashlib.sha256(cell.tobytes()).hexdigest(),'paddingPixels':pad,'paddingAlphaMax':0,'alphaMass':float(aa.sum()/255)}
  rows.append(row)
 for density,frames in exports.items():
- for name,order in [('phase-strip',[0,1,2,3]),('seam-strip',[2,3,0,1])]:
+ for name,order in [('phase-strip',[0,1,2,3]),('terminal-restart-comparison',[2,3,0,1])]:
   strip=Image.new('RGBA',(128*density,32*density))
   for i,index in enumerate(order):strip.paste(frames[index],(i*32*density,0))
   strip.save(Q/f'{name}@{density}x.png')
@@ -55,7 +55,7 @@ for row,(title,order) in enumerate([('Full 1-2-3-4',[0,1,2,3]),('Terminal / rest
  y=row*305;d.text((10,y+8),title,font=F,fill='black')
  for col,i in enumerate(order):
   x=10+col*285;d.text((x,y+30),P[i],font=F,fill='black');board.paste(comp(exports[2][i],'white').resize((256,256),Image.Resampling.NEAREST).convert('RGB'),(x,y+50))
-board.save(Q/'full-and-seam-labeled.png')
+board.save(Q/'full-and-terminal-comparison-labeled.png')
 def timing(p,num=1,den=12):
  b=p.read_bytes();out=b[:8];pos=8
  while pos<len(b):
@@ -78,7 +78,7 @@ for density,frames in exports.items():
    dec=Image.open(p);hashes=[]
    for i in range(4):
     dec.seek(i);f=dec.convert('RGBA');assert f.tobytes()==fs[i].tobytes();hashes.append(hashlib.sha256(f.tobytes()).hexdigest())
-   apng.append({'file':p.name,'sha256':sha(p),'numPlays':plays,'frameCount':4,'frameDurationsSeconds':[str(t) for t in times],'cycleSeconds':str(sum(times)),'decodedFramesMatchExports':True,'decodedFrameHashes':hashes})
+   apng.append({'file':p.name,'sha256':sha(p),'numPlays':plays,'frameCount':4,'frameDurationsSeconds':[str(t) for t in times],'sequenceSeconds':str(sum(times)),'decodedFramesMatchExports':True,'decodedFrameHashes':hashes})
 report={'topicId':'C01-FX-14','phaseOrder':P,'sourceCanvas':[1254,1254],'commonTransform':{'scale':28/1254,'origin':[2,2],'sourcePivot':[627,627],'logicalPivot':[16,16]},'fps':12,'loop':False,'frameStartTimesMs':[0,1000/12,2000/12,250],'sequenceMs':1000/3,'equalFrameDurationSeconds':'1/12','encodedFinalFrameHold':False,'afterOnePlay':'APNG retains its final image; scene lifetime is not established without a consumer','removalRule':None,'authoredSceneConsumer':None,'liveGameObserved':False,'sourceProcessing':'byte-identical raw/master; no alpha cleanup, cropping, per-frame fitting, shifting, fading or synthesized motion','frames':rows,'apng':apng}
 (Q/'qa-metrics.json').write_text(json.dumps(report,indent=2)+'\n');(Q/'apng-timing-verification.json').write_text(json.dumps({'verified':True,'method':'acTL/fcTL exact rational timing plus every decoded RGBA frame compared with expected source export','files':apng},indent=2)+'\n')
 print(json.dumps({'phases':[(r['phase'],r['edgeAlphaMax'],r['alphaMass'])for r in rows],'APNGs':len(apng),'verifiedFrames':len(apng)*4},indent=2))

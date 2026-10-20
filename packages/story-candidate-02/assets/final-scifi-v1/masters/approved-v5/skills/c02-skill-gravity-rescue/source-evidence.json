@@ -1,0 +1,79 @@
+{
+  "topicId": "c02-skill-gravity-rescue",
+  "assetId": "C02-SFV1-skill-gravity-rescue",
+  "label": "重力救援",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-gravity-rescue",
+    "topicId": "c02-skill-gravity-rescue",
+    "label": "重力救援",
+    "category": "skill",
+    "png": "runtime/skill/skill-gravity-rescue.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-02.png",
+  "originalMasterSha256": "1e7fcd63eff342b1f3fc129a9913d78944603a4c19eeaed68e0b9128e2b4d50c",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceIndexZeroBased": 21,
+  "catalogIndexZeroBased": 21,
+  "sourceCropBox": [
+    319,
+    319,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Actual 48 px icons inspected and each subject independently matched on the complete 1254 px board. Catalog order agrees; alphabetical manifest ordering was not used. Legacy grid algorithm read only; manifest-complete.json is absent.",
+  "functionalMotif": "Three overhead gravity lifter disks with upward arrows raising a large boulder and a few nearby fragments",
+  "semanticConflictDetected": false,
+  "labelPixelConflictDetected": false,
+  "legacyBackgroundConflict": "Dark rectangular scene card, terrain and external luminous fill are not icon content.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-gravity-rescue.png",
+  "runtimeReferenceSha256": "ab7d566c9c851d9bb18836292eeac54477085fb1ce5c3436db3c6885414e3d43",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Only source reference crop and separate QA derivatives. Generated source will be preserved unchanged.",
+  "completeMotifCropBox": [
+    336,
+    339,
+    617,
+    617
+  ],
+  "completeMotifSource": "source-complete-motif.png",
+  "legacySourceCropDefect": "Legacy uniform grid includes card margins; full intended card isolates the complete motif.",
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-804568e0-4372-47de-95e5-366ac3f63e14.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw.png",
+  "selectedAttempt": 1,
+  "generationAttempts": 1,
+  "rejectedAttempts": [],
+  "promptFile": "prompt.txt",
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-gravity-rescue/source-complete-motif.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-gravity-rescue/style-reference-cargo-crates.png"
+  ],
+  "referenceHashes": "reference-hashes.json",
+  "semanticNotes": "The actual source depicts three overhead lifter disks raising a large boulder. Three upward cyan action arrows remain, while broad source beam columns, luminous particles and the dark scene card are excluded. Three broad loose rock fragments replace the fine original rubble. No person or medical symbol was invented. The central arrow remains visible above the rock; both side arrows remain visible beside it.",
+  "sourceReady": true,
+  "countsTowardFormalCategory": false,
+  "liveGameVerified": false,
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-gravity-rescue/master.png"
+}

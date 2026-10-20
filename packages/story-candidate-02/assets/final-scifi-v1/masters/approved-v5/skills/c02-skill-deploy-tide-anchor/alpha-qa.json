@@ -36,11 +36,15 @@
   "actual48EdgeMaxAlpha": 0,
   "actual48NearOpaquePixelsGE240": 520,
   "formalSourceContractPass": true,
-  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
   "sha256": "1928ebdf6d67dd490c70d03e4903695284b44a9fd518a91bd4a83aa9e10e2453",
   "matchesRawGeneratedBytes": true,
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, the central module, paired flukes and upper/lower down arrows remain visible on white, black and olive. The smallest seams compress as intended; the deployment silhouette and bounded cyan action glyphs remain distinct.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
 }

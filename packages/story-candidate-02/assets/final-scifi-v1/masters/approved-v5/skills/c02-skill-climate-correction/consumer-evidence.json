@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-skill-climate-correction",
+  "canonicalManifestSnapshot": {
+    "assetId": "C02-SFV1-skill-climate-correction",
+    "topicId": "c02-skill-climate-correction",
+    "label": "气候校正",
+    "category": "skill",
+    "png": "runtime/skill/skill-climate-correction.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "snapshotAuthorityHashes": "authority-hashes.json",
+  "staticExporter": "tools/art/export_overrides.py",
+  "exporterContract": {
+    "logicalSize": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ],
+    "padding": 2,
+    "sourceCropBox": null,
+    "resampling": "LANCZOS",
+    "method": "whole-canvas-contain"
+  },
+  "searchScope": [
+    "packages/story-candidate-02/src",
+    "apps"
+  ],
+  "exactTopicOrRuntimeBasenameMatchesAtReview": [],
+  "genericCatalogTestObserved": "packages/story-candidate-02/src/skill-art.test.ts",
+  "genericCatalogTestScope": "Checks all canonical identities and registered source/output contracts. A test reference is not evidence of a shipped live-game consumer.",
+  "consumerStatus": "Canonical static icon catalog slot verified; no per-icon live consumer established in this worker audit. Parent owns formal registration/export/testing.",
+  "formalExportRunByThisWorker": false,
+  "liveGameVerified": false
+}

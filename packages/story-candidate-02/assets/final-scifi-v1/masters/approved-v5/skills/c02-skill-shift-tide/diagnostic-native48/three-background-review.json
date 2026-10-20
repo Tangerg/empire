@@ -1,0 +1,21 @@
+{
+  "topicId": "c02-skill-shift-tide",
+  "width": 48,
+  "height": 48,
+  "source": "master.png",
+  "wholeSourceCanvas": true,
+  "fitSize": [
+    44,
+    44
+  ],
+  "padding": 2,
+  "backgrounds": [
+    "white",
+    "black",
+    "olive"
+  ],
+  "nativeSizeInspectionComplete": true,
+  "visualAssessment": "At actual 48px, all three flow arrows and the contrast between teal water and brown shoreline remain visible on white, black and olive. Fine original ripples and pebbles are simplified. Source margins are narrower than the prompt target on the right (17px), but no source or output pixel reaches the outer edge above alpha 0, and the full-canvas export adds its standard 2px padding.",
+  "noAuthoredConsumerOrLiveProof": true,
+  "mainRepoMutatedByWorker": false
+}

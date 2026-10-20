@@ -1,0 +1,21 @@
+{
+  "topicId": "c02-skill-rescue-dash",
+  "diagnosticOnly": true,
+  "criterion": "Alpha below 240 within 8-pixel erosion of alpha >= 8 mask",
+  "pixels": [
+    {
+      "xy": [
+        427,
+        989
+      ],
+      "rgba": [
+        1,
+        119,
+        186,
+        239
+      ]
+    }
+  ],
+  "count": 1,
+  "sourceEdited": false
+}

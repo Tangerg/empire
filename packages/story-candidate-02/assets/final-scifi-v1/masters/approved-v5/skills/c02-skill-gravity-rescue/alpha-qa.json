@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-gravity-rescue",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 870540,
+  "partialAlphaPixels": 699258,
+  "opaquePixels": 2718,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    73,
+    82,
+    1188,
+    1166
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    73,
+    82,
+    66,
+    88
+  ],
+  "nearOpaquePixelCountGE240": 676727,
+  "diagnostic8pxErosion": {
+    "minAlpha": 252,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 709,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "524e5119abe9235cf5966a65e1d9de771021683b8923f62503fcba8eee81ba36",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-FX-15",
+  "label": "银林灵火",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-04.png",
+    "sha256": "4761b6846cce254e16ef4cec54c62b30ae5ca3e6879cce60fa2c135be135ee02",
+    "row1Based": 3,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-15/reference/original-row.png",
+    "peakSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-15/reference/original-f2.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-15.png",
+    "builderMapping": "build_final_fantasy_v1.py build_fx appends four rows per atlas in order; FX15 is atlas04 row3."
+  },
+  "originalRowOneBased": 3,
+  "semanticPhases": [
+    "Small pale sage-green wisp above a low bed of dark olive leaves; a few loose leaves and pale motes",
+    "Larger green-white curling spirit flame; leaves rise along its sides",
+    "Peak broad leafy spirit flame with internal leaf forms, a curling branch and lifted leaves",
+    "Smaller residual green-white wisp with sparse loose leaves/motes; leaf bed remains"
+  ],
+  "contract": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-15/generation-contract.json",
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-15",
+    "topicId": "C01-FX-15",
+    "label": "银林灵火",
+    "category": "fx",
+    "png": "runtime/fx/fx-15.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": "No literal C01-FX-15, C01-FFV1-FX-15 or fx-15.png reference found in package TypeScript/TSX/nonmanifest JSON search. Catalog-only, not deployed."
+}

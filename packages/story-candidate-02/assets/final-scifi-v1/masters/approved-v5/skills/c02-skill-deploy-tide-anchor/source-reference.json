@@ -30,7 +30,7 @@
     617,
     318
   ],
-  "sourceMappingEvidence": "Each actual48 runtime icon was inspected first, then matched visually to the full original board. Correct actual card bounds were independently extracted after discovering nonuniform vertical card spacing. Topic-catalog order corroborates identity, not crop coordinates.",
+  "sourceMappingEvidence": "Each actual 48px runtime icon was inspected first, then matched visually to the full original board. Correct actual card bounds were independently extracted after discovering nonuniform vertical card spacing. Topic-catalog order corroborates identity, not crop coordinates.",
   "functionalMotif": "Mechanical cylindrical tide-anchor with two curved side flukes and downward placement arrows.",
   "semanticConflictDetected": false,
   "opaqueOriginalBackdropRemovedByNewGeneration": true,
@@ -53,5 +53,5 @@
     309
   ],
   "sourceCropBasis": "Exact subject-card bounds visually verified on the nonuniform skills-board-02 layout. Non-magenta connected rectangle bounds corroborate visual locations; no source color/alpha pixels modified.",
-  "legacyGridCropIssue": "Uniform4x4 legacy5px inset is not the exact card bounds for this board. For reroute-water it includes a thin neighboring-row fragment; preserved in source-legacy-grid-cell.png. The generation input is the clean original subject-card crop."
+  "legacyGridCropIssue": "Uniform 4x4 legacy 5px inset is not the exact card bounds for this board. For reroute-water it includes a thin neighboring-row fragment; preserved in source-legacy-grid-cell.png. The generation input is the clean original subject-card crop."
 }

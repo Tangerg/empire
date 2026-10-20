@@ -36,11 +36,15 @@
   "actual48EdgeMaxAlpha": 0,
   "actual48NearOpaquePixelsGE240": 821,
   "formalSourceContractPass": true,
-  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
   "sha256": "2527f25d0e70edb4b34794b0712894ba02737222e9855c9b0c189892f7574ca9",
   "matchesRawGeneratedBytes": true,
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, four channel directions, circular hub and three outbound arrows remain readable on white, black and olive. Source512 inspection confirms no adjacent-row fragment or square opaque backdrop.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
 }

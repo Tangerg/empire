@@ -1,0 +1,34 @@
+{
+  "status": "awaiting-parent-native-registration-review",
+  "rows": [
+    {
+      "phase": "spirit-onset",
+      "bedRegionAlpha128Bounds": [
+        238,
+        930,
+        1062,
+        1141
+      ],
+      "sourceEdgeCompositeMaxDeviationRgb": {
+        "black": 0,
+        "white": 1
+      }
+    },
+    {
+      "phase": "spirit-growth",
+      "bedRegionAlpha128Bounds": [
+        234,
+        930,
+        1060,
+        1165
+      ],
+      "sourceEdgeCompositeMaxDeviationRgb": {
+        "black": 0,
+        "white": 1
+      }
+    }
+  ],
+  "bottomContactDeltaSourcePx": 24,
+  "bottomContactDeltaLogicalPx": 0.5358851674641149,
+  "visualReview": "Both full sources on black/white and native 32/64 first-pair sheets viewed. No exterior halo or backing found. Growth is visibly upward; leaf bed remains near the same position with disclosed subpixel logical deviation."
+}

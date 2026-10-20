@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-skill-medical-transfer",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 909187,
+  "partialAlphaPixels": 661907,
+  "opaquePixels": 1422,
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    100,
+    108,
+    1154,
+    1198
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    100,
+    108,
+    100,
+    56
+  ],
+  "nearOpaquePixelCountGE240": 636672,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 684,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "sha256": "3c0e13c115a0d7f1095760b61dda48c1ceb7059aacb5bc406ff608f454ce4f3e",
+  "matchesRawGeneratedBytes": true,
+  "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
+  "runtimeReady": false,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false
+}

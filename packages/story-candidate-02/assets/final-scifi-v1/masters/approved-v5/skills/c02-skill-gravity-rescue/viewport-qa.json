@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Whole authored canvas contained at 44 x 44 and centered inside 48 x 48 with a 2 px logical margin. No visible-bounds recrop. This is a diagnostic reproduction of static-export geometry, not a formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source512-on-white.png",
+    "qa-source512-on-black.png",
+    "qa-source512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "The actual source depicts three overhead lifter disks raising a large boulder. Three upward cyan action arrows remain, while broad source beam columns, luminous particles and the dark scene card are excluded. Three broad loose rock fragments replace the fine original rubble. No person or medical symbol was invented. The central arrow remains visible above the rock; both side arrows remain visible beside it.",
+  "rawMasterSha256": "524e5119abe9235cf5966a65e1d9de771021683b8923f62503fcba8eee81ba36",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48 px fine seams and minor material highlights merge; the main functional silhouette and action cues remain legible. No live scene, interactive state or UI-overlay claim."
+}

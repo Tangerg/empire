@@ -1,0 +1,32 @@
+{
+  "fullSource": "pass",
+  "native48White": "pass",
+  "native48Black": "pass",
+  "native48Olive": "pass",
+  "geometry": "Whole authored canvas contained at 44 x 44 and centered inside 48 x 48 with a 2 px logical margin. No visible-bounds recrop. This is a diagnostic reproduction of static-export geometry, not a formal export.",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "canonicalDimensions": [
+    48,
+    48
+  ],
+  "canonicalAnchor": [
+    24,
+    24
+  ],
+  "fullSourceProofs": [
+    "qa-source512-on-white.png",
+    "qa-source512-on-black.png",
+    "qa-source512-on-olive.png"
+  ],
+  "nativeProof": "diagnostic-native48/native48-white-black-olive.png",
+  "nearestProof": "diagnostic-native48/native48-white-black-olive-6x-nearest.png",
+  "retainedMeaning": "The grey rain cloud, separated cyan drops, central handwheel valve on a horizontal pipe and two green seedlings are retained. Fine original rainfall was simplified to seven broad drops. The source magenta chroma field is excluded, and the cloud is a solid matte object rather than a translucent smoke effect.",
+  "rawMasterSha256": "bd55be5a63fcd314273575870806a8d562351813ef6d94591afd0e64f56ee24b",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "limitation": "At 48 px fine seams and minor material highlights merge; the main functional silhouette and action cues remain legible. No live scene, interactive state or UI-overlay claim."
+}

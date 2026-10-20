@@ -36,11 +36,15 @@
   "actual48EdgeMaxAlpha": 0,
   "actual48NearOpaquePixelsGE240": 1187,
   "formalSourceContractPass": true,
-  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
   "sha256": "c9173790137598a5416a28e00f9572869d7232f3e3c0430c198049bc179029fe",
   "matchesRawGeneratedBytes": true,
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, all three flow arrows and the contrast between teal water and brown shoreline remain visible on white, black and olive. Fine original ripples and pebbles are simplified. Source margins are narrower than the prompt target on the right (17px), but no source or output pixel reaches the outer edge above alpha 0, and the full-canvas export adds its standard 2px padding.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
 }

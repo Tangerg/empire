@@ -36,11 +36,15 @@
   "actual48EdgeMaxAlpha": 0,
   "actual48NearOpaquePixelsGE240": 745,
   "formalSourceContractPass": true,
-  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black/olive composites for inspection only.",
+  "derivation": "Diagnostic only: fit the full source canvas with LANCZOS into 44x44, centered on 48x48 with 2px padding. Source bytes are unchanged. White, black and olive composites are inspection-only derivatives.",
   "sha256": "394a7ff1bd3700f5b44be2b68ecbe28dd0ca0482f3ed1bf19a958ce60f46baa1",
   "matchesRawGeneratedBytes": true,
   "postprocessing": "No source pixel editing, crop, recolor, alpha keying or cleanup. Separate QA-only derivatives.",
   "runtimeReady": false,
   "formalRuntimeIntegration": false,
-  "liveGameVerified": false
+  "liveGameVerified": false,
+  "visualQA": "At actual 48px, two hands, heater, arch and three heat glyphs remain distinct on white, black and olive. The source and source512 composites have opaque solid materials and clean transparent gaps.",
+  "fullNativeAndSource512Inspected": true,
+  "actual48ThreeBackgroundInspected": true,
+  "sourceReady": true
 }

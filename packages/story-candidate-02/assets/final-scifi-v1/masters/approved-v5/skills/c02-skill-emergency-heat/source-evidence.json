@@ -1,0 +1,69 @@
+{
+  "topicId": "c02-skill-emergency-heat",
+  "assetId": "C02-SFV1-skill-emergency-heat",
+  "label": "应急供热",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-skill-emergency-heat",
+    "topicId": "c02-skill-emergency-heat",
+    "label": "应急供热",
+    "category": "skill",
+    "png": "runtime/skill/skill-emergency-heat.png",
+    "width": 48,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/skills/skills-board-03.png",
+  "originalMasterSha256": "2105e869b9263fa4a4ba750ea245e912c60a98fa6d474f4cdf53545e91043e6b",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceIndexZeroBased": 34,
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    309
+  ],
+  "sourceMappingEvidence": "Each actual 48px runtime icon was visually inspected first, then matched by subject to the full higher-resolution source board. Topic-catalog order independently agrees. Not inferred from alphabetical final-manifest order.",
+  "functionalMotif": "Portable heating unit cradled by two hands, with three rising heat glyphs and an overhead carrying arch.",
+  "semanticConflictDetected": false,
+  "opaqueOriginalBackdropRemovedByNewGeneration": false,
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/skill/skill-emergency-heat.png",
+  "runtimeReferenceSha256": "b195067142777839aa31fe80d7a5b523515602106e6860acfbde9d7d70f044d2",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "Exact source reference crop only. Generated artwork will remain unchanged; no chroma key, alpha cleanup or pixel repainting.",
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f2f02233-fa1f-4de1-8a60-f94c5ec6f2b3.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "requestFile": "request.json",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-skills/c02-skill-emergency-heat/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "semanticNotes": "Two cupped gloved hands hold one round portable heater under its physical carrying arch. Three bounded orange rising heat glyphs and recessed orange heater slats preserve the original emergency-warmth meaning. Small seams were reduced; no flame cloud, attack motif or outer glow was added.",
+  "native48Review": "diagnostic-native48/native48-white-black-olive.png",
+  "visualStyle": "Accepted chunky C02 broad matte planes and bold contour, using verified original skill identity and approved cargo-crate style-only input.",
+  "intendedSourcePathAfterParentCopy": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/skills/c02-skill-emergency-heat/master.png",
+  "sourceReady": true,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false
+}
