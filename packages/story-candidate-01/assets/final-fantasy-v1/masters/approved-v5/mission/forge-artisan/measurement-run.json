@@ -1,0 +1,334 @@
+{
+  "status": "Native quartet complete; measured whole-canvas export proposal only. No runtime edits.",
+  "sharedScale": 0.047311827956989246,
+  "bodyReferenceSourcePixels": 930,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Accepted idle bun crown alpha>127 y38 to lowest supporting boot sole y968. One fixed44/930 across every whole source canvas.",
+  "canonicalSourceFoot": [
+    805.25,
+    968
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "paddingPolicy": "Export only: pad transparent right/bottom to1586x993. Native raw/master images are never altered.",
+  "canvasPaddingToleranceRequired": 2,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Separate boot bottom4-row alpha>127 bands. Anchor x averages underside band centers; anchor y is lowest weight-bearing supporting sole. Translate whole canvas only; no per-pose rescale/crop/fitting.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "measuredBootSoleBands": [
+        {
+          "xRange": [
+            400,
+            770
+          ],
+          "bottom": 968,
+          "bottom4RowsBounds": [
+            625,
+            965,
+            717,
+            969
+          ],
+          "soleCenterX": 670.5
+        },
+        {
+          "xRange": [
+            770,
+            1200
+          ],
+          "bottom": 957,
+          "bottom4RowsBounds": [
+            898,
+            954,
+            983,
+            958
+          ],
+          "soleCenterX": 940.0
+        }
+      ],
+      "sourceSupportAnchor": [
+        805.25,
+        968
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        475,
+        38,
+        1139,
+        969
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        41,
+        35,
+        1237,
+        974
+      ],
+      "proposedLogicalVisibleBounds": [
+        30.473118279569892,
+        5.797849462365591,
+        61.88817204301075,
+        49.84516129032258
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        83.03655913978494,
+        50.98064516129032
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "measuredBootSoleBands": [
+        {
+          "xRange": [
+            400,
+            770
+          ],
+          "bottom": 954,
+          "bottom4RowsBounds": [
+            623,
+            951,
+            719,
+            955
+          ],
+          "soleCenterX": 670.5
+        },
+        {
+          "xRange": [
+            770,
+            1200
+          ],
+          "bottom": 952,
+          "bottom4RowsBounds": [
+            876,
+            949,
+            917,
+            953
+          ],
+          "soleCenterX": 896.0
+        }
+      ],
+      "sourceSupportAnchor": [
+        783.25,
+        954
+      ],
+      "registrationOffsetLogical": [
+        1.0408602150537634,
+        0.6623655913978495
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        425,
+        37,
+        1161,
+        955
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        0,
+        1516,
+        961
+      ],
+      "proposedLogicalVisibleBounds": [
+        29.148387096774194,
+        6.412903225806451,
+        63.96989247311828,
+        49.84516129032258
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        9.040860215053764,
+        4.662365591397849,
+        84.07741935483871,
+        51.64301075268817
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    },
+    "carry-or-work": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "measuredBootSoleBands": [
+        {
+          "xRange": [
+            400,
+            770
+          ],
+          "bottom": 965,
+          "bottom4RowsBounds": [
+            620,
+            962,
+            716,
+            966
+          ],
+          "soleCenterX": 667.5
+        },
+        {
+          "xRange": [
+            770,
+            1200
+          ],
+          "bottom": 955,
+          "bottom4RowsBounds": [
+            897,
+            952,
+            982,
+            956
+          ],
+          "soleCenterX": 939.0
+        }
+      ],
+      "sourceSupportAnchor": [
+        803.25,
+        965
+      ],
+      "registrationOffsetLogical": [
+        0.09462365591397849,
+        0.14193548387096774
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        487,
+        37,
+        1125,
+        966
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        81,
+        22,
+        1570,
+        973
+      ],
+      "proposedLogicalVisibleBounds": [
+        31.13548387096774,
+        5.89247311827957,
+        61.32043010752688,
+        49.84516129032258
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.094623655913978,
+        4.141935483870967,
+        83.13118279569892,
+        51.122580645161285
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "measuredBootSoleBands": [
+        {
+          "xRange": [
+            400,
+            770
+          ],
+          "bottom": 936,
+          "bottom4RowsBounds": [
+            658,
+            933,
+            691,
+            937
+          ],
+          "soleCenterX": 674.0
+        },
+        {
+          "xRange": [
+            770,
+            1200
+          ],
+          "bottom": 947,
+          "bottom4RowsBounds": [
+            880,
+            944,
+            967,
+            948
+          ],
+          "soleCenterX": 923.0
+        }
+      ],
+      "sourceSupportAnchor": [
+        798.5,
+        947
+      ],
+      "registrationOffsetLogical": [
+        0.3193548387096774,
+        0.9935483870967742
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        503,
+        38,
+        1168,
+        948
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        35,
+        1571,
+        958
+      ],
+      "proposedLogicalVisibleBounds": [
+        32.11720430107527,
+        6.791397849462365,
+        63.57956989247312,
+        49.84516129032258
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.319354838709678,
+        4.993548387096774,
+        83.35591397849461,
+        51.97419354838709
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 1.0408602150537634,
+  "recommendedRegistrationLimitLogicalPixels": 4
+}

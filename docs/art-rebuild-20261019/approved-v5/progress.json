@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 43,
+  "authoredFourPoseBundles": 44,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 320,
+  "formalRuntimeBoundTopics": 321,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1993,6 +1993,12 @@
       "raw": "four native transparent mounted poses; original rider, mount and weapon identity preserved; rejected attempts retained",
       "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
       "runtimeBinding": "canonical and HD resolver; actual builtin three-bridges two dragon actors; full offline BoardView comparison,22otheractors/scenery/rules/standingorder unchanged; dense formation occlusion remains",
+      "liveGame": "pending"
+    },
+    "C01-MISSION-FORGE-ARTISAN": {
+      "raw": "four native transparent female forge artisan poses, original vessel-left/tongs-right identity and palette preserved",
+      "export": "one shared44/930 scale, measured feet,2px transparent padding; native quartet and actual exported frames reviewed",
+      "runtimeBinding": "canonical and HD resolver; catalog-only; no current domain actor or authored scenery consumer",
       "liveGame": "pending"
     }
   },

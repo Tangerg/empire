@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-b/master.png"
+    },
+    "scale": 0.047311827956989246,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      805.25,
+      968
+    ],
+    "sourceFeet": {
+      "idle": [
+        805.25,
+        968
+      ],
+      "walk-a": [
+        783.25,
+        954
+      ],
+      "carry-or-work": [
+        803.25,
+        965
+      ],
+      "walk-b": [
+        798.5,
+        947
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.0408602150537634,
+        0.6623655913978495
+      ],
+      "carry-or-work": [
+        0.09462365591397849,
+        0.14193548387096774
+      ],
+      "walk-b": [
+        0.3193548387096774,
+        0.9935483870967742
+      ]
+    },
+    "registrationLimit": 2,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original female forge artisan identity, opposing steps and inspection action. Catalog-only. Whole source canvases, shared body scale."
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    46.09784946236559,
+    49.79784946236559
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5686,
+        "nearOpaquePixels": 806,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          6,
+          62,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22850,
+        "nearOpaquePixels": 3322,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          12,
+          124,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-a/master.png",
+      "registrationOffset": [
+        1.0408602150537634,
+        0.6623655913978495
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "4eaa550c7c1be15ebcf839c3e907dd2318df1ed5aa3fde28d18628c76ad75af6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5659,
+        "nearOpaquePixels": 814,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          6,
+          64,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-a/master.png",
+      "registrationOffset": [
+        1.0408602150537634,
+        0.6623655913978495
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "4eaa550c7c1be15ebcf839c3e907dd2318df1ed5aa3fde28d18628c76ad75af6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22729,
+        "nearOpaquePixels": 3344,
+        "edgeMax": 0,
+        "visibleBounds": [
+          58,
+          13,
+          128,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/carry-or-work/master.png",
+      "registrationOffset": [
+        0.09462365591397849,
+        0.14193548387096774
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "75d036e07ed26726878ce3d0857931b9d78823be4deb2761c37b0a91aac872cd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5724,
+        "nearOpaquePixels": 772,
+        "edgeMax": 0,
+        "visibleBounds": [
+          31,
+          6,
+          61,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/carry-or-work/master.png",
+      "registrationOffset": [
+        0.09462365591397849,
+        0.14193548387096774
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "75d036e07ed26726878ce3d0857931b9d78823be4deb2761c37b0a91aac872cd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22981,
+        "nearOpaquePixels": 3182,
+        "edgeMax": 0,
+        "visibleBounds": [
+          62,
+          12,
+          123,
+          100
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-b/master.png",
+      "registrationOffset": [
+        0.3193548387096774,
+        0.9935483870967742
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "024818d97a68b2505536066409642ed7a838b7f3eb05e4f39d4879df83a1b06e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5745,
+        "nearOpaquePixels": 740,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          7,
+          64,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-b/master.png",
+      "registrationOffset": [
+        0.3193548387096774,
+        0.9935483870967742
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "024818d97a68b2505536066409642ed7a838b7f3eb05e4f39d4879df83a1b06e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23110,
+        "nearOpaquePixels": 3040,
+        "edgeMax": 0,
+        "visibleBounds": [
+          64,
+          14,
+          127,
+          100
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,66 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1950d339-7f86-4668-82b8-14067feb405c.png",
+  "nativeSize": [
+    1584,
+    993
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "75d036e07ed26726878ce3d0857931b9d78823be4deb2761c37b0a91aac872cd",
+  "bboxAlphaNonzero": [
+    81,
+    22,
+    1570,
+    973
+  ],
+  "bboxAlphaGreaterThan127": [
+    487,
+    37,
+    1125,
+    966
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroFraction": 0.7532366718544966,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "rawMatchesMaster": true,
+  "nativeAlphaUntouched": true,
+  "postprocessing": "none; immutable native raw and master copied byte-for-byte",
+  "measuredBootSoleBands": [
+    {
+      "xRange": [
+        400,
+        770
+      ],
+      "bottom": 965,
+      "bottom4RowsBounds": [
+        620,
+        962,
+        716,
+        966
+      ],
+      "soleCenterX": 667.5
+    },
+    {
+      "xRange": [
+        770,
+        1200
+      ],
+      "bottom": 955,
+      "bottom4RowsBounds": [
+        897,
+        952,
+        982,
+        956
+      ],
+      "soleCenterX": 939.0
+    }
+  ],
+  "sourceFoot": [
+    803.25,
+    965
+  ],
+  "bootMeasurement": "Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest weight-bearing support sole, all transforms translate the entire canvas only."
+}

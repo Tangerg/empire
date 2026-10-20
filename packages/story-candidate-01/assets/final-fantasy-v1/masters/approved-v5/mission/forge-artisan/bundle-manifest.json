@@ -1,0 +1,101 @@
+{
+  "topicId": "C01-MISSION-FORGE-ARTISAN",
+  "assetId": "C01-FFV1-MISSION-FORGE-ARTISAN",
+  "category": "mission-unit",
+  "status": "Complete native source quartet and QA; coordinator export/integration pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "Every selected raw/master/native output is byte-identical. No alpha cleanup, painting, recoloring, cropping, per-pose scaling or source padding. QA/export composites are separate only.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "actualConsumers": [],
+  "domainActorCount": 0,
+  "classification": "catalog-only",
+  "semanticContract": "idle/walk-a/carry-or-work/walk-b. Zero current actors or scene placements. Carry-or-work is noncombat workpiece inspection. Do not rebind c01-14 forge-laborer, which uses BRIDGE-LABORER.",
+  "palettePolicy": "Preserve original bronze skin, charcoal gray-streaked hair/shirt, rust-red apron, brown gloves/boots/belt, silver earring, blue-gray vessel and orange round workpiece. No faction recolor.",
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "exactPrompt": "idle/prompt.txt",
+      "request": "idle/request.json",
+      "requestProvenance": "idle/request-provenance.json",
+      "generationResult": "idle/generation-result.json",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        805.25,
+        968
+      ],
+      "review": "Bronze-skinned woman with gray-streaked charcoal bun, round silver earring, rolled charcoal sleeves, rust-red apron, brown gloves and huge boots. Blue-gray vessel in screen-left hand and tongs with orange round workpiece in screen-right. Both boots planted."
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "exactPrompt": "walk-a/prompt.txt",
+      "request": "walk-a/request.json",
+      "requestProvenance": "walk-a/request-provenance.json",
+      "generationResult": "walk-a/generation-result.json",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "4eaa550c7c1be15ebcf839c3e907dd2318df1ed5aa3fde28d18628c76ad75af6",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        783.25,
+        954
+      ],
+      "review": "Screen-right boot extended heel-first with toe raised and dark underside visible; screen-left boot flat and weight-bearing. Vessel swings backward in its same screen-left hand. Tongs remain screen-right."
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "exactPrompt": "carry-or-work/prompt.txt",
+      "request": "carry-or-work/request.json",
+      "requestProvenance": "carry-or-work/request-provenance.json",
+      "generationResult": "carry-or-work/generation-result.json",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "75d036e07ed26726878ce3d0857931b9d78823be4deb2761c37b0a91aac872cd",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        803.25,
+        965
+      ],
+      "review": "Meaningful compact workpiece inspection: screen-right arm lifts tongs and orange workpiece toward eye level; gaze follows it. Screen-left hand lifts blue-gray vessel to waist height. Both boots planted; no pouring, combat, prop drop or swapped hands."
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "exactPrompt": "walk-b/prompt.txt",
+      "request": "walk-b/request.json",
+      "requestProvenance": "walk-b/request-provenance.json",
+      "generationResult": "walk-b/generation-result.json",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "024818d97a68b2505536066409642ed7a838b7f3eb05e4f39d4879df83a1b06e",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        798.5,
+        947
+      ],
+      "review": "Opposite walking contacts: screen-right boot flat and weight-bearing; screen-left heel raised with bent knee and downward-pointing toe. Vessel swings forward in its same screen-left hand. Tongs remain screen-right. Same face orientation, not mirrored."
+    }
+  },
+  "coordinatorSourceVisualReview": "Passed",
+  "reviewApproval": "review-approval.json"
+}

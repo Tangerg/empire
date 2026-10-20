@@ -1,0 +1,49 @@
+{
+  "status": "Native source quartet passes identity, geometry, hand/prop, pose semantics and three-background visual QA; awaiting coordinator integration",
+  "topicId": "C01-MISSION-FORGE-ARTISAN",
+  "scale": 0.047311827956989246,
+  "bodyReferenceSourcePixels": 930,
+  "bodyTargetLogicalPixels": 44,
+  "rawMasterNativeHashesAllMatch": true,
+  "allPromptsMatchRequests": true,
+  "allRequestAndReferenceHashesVerified": true,
+  "originalRowAndIdlePixelExactToBoard": true,
+  "nativeAlphaNeverEdited": true,
+  "alphaPerimeterGate": "Idle0, walk-a1, carry-or-work0, walk-b1. Every perimeter has zero pixels alpha>1.",
+  "sourceCanvas": [
+    1586,
+    993
+  ],
+  "paddingTolerance": 2,
+  "maximumWholeCanvasRegistrationTranslationLogicalPixels": 1.0408602150537634,
+  "sharedScaleUnchanged": true,
+  "poseReviews": {
+    "idle": "Bronze-skinned woman with gray-streaked charcoal bun, round silver earring, rolled charcoal sleeves, rust-red apron, brown gloves and huge boots. Blue-gray vessel in screen-left hand and tongs with orange round workpiece in screen-right. Both boots planted.",
+    "walk-a": "Screen-right boot extended heel-first with toe raised and dark underside visible; screen-left boot flat and weight-bearing. Vessel swings backward in its same screen-left hand. Tongs remain screen-right.",
+    "carry-or-work": "Meaningful compact workpiece inspection: screen-right arm lifts tongs and orange workpiece toward eye level; gaze follows it. Screen-left hand lifts blue-gray vessel to waist height. Both boots planted; no pouring, combat, prop drop or swapped hands.",
+    "walk-b": "Opposite walking contacts: screen-right boot flat and weight-bearing; screen-left heel raised with bent knee and downward-pointing toe. Vessel swings forward in its same screen-left hand. Tongs remain screen-right. Same face orientation, not mirrored."
+  },
+  "generationAttempts": 4,
+  "rejections": [],
+  "failures": [],
+  "currentRuntimeRole": "Catalog-only; zero domain actors and scene placements. Do not rebind forge-laborer.",
+  "runtimeOrRepositoryWrites": false,
+  "visualQaFiles": [
+    "qa-native44-three-backgrounds.png",
+    "qa-native44-three-backgrounds-3x.png",
+    "qa-idle-shared-scale-3x.png",
+    "qa-native-montage-white.png",
+    "qa-native-montage-black.png",
+    "qa-native-montage-scene.png",
+    "qa-sequence.gif"
+  ],
+  "perPoseFullNativeComposites": [
+    "qa-white.png",
+    "qa-black.png",
+    "qa-scene.png"
+  ],
+  "logicalReviewExportMethod": "Same exact full-canvas44/930 transform for every pose,4x supersampled for antialias review, then common downsample to104x64. No silhouette fitting.",
+  "visualAlphaReview": "Black/white/scene full-canvas composites inspected. No visible haze, ground shadow, background residue or hot-workpiece halo. Orange stays inside the solid workpiece contour.",
+  "coordinatorSourceVisualReview": "Passed",
+  "reviewApproval": "review-approval.json"
+}

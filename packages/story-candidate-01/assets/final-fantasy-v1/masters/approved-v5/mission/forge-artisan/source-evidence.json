@@ -1,0 +1,127 @@
+{
+  "topicId": "C01-MISSION-FORGE-ARTISAN",
+  "assetId": "C01-FFV1-MISSION-FORGE-ARTISAN",
+  "label": "\u7089\u57ce\u5de5\u5320",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+    "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+    "size": [
+      1024,
+      1536
+    ],
+    "rowIndex0": 2,
+    "rowIndex1": 3,
+    "rowCropXYXY": [
+      0,
+      768,
+      1024,
+      1152
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        768,
+        256,
+        1152
+      ],
+      [
+        256,
+        768,
+        512,
+        1152
+      ],
+      [
+        512,
+        768,
+        768,
+        1152
+      ],
+      [
+        768,
+        768,
+        1024,
+        1152
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        773,
+        251,
+        1147
+      ],
+      [
+        261,
+        773,
+        507,
+        1147
+      ],
+      [
+        517,
+        773,
+        763,
+        1147
+      ],
+      [
+        773,
+        773,
+        1019,
+        1147
+      ]
+    ],
+    "observedIdentity": "Warm bronze-skinned woman with dark gray-streaked hair in bun and silver round earring; rolled charcoal sleeves, rust-red leather apron, brown gloves and boots. Screen-right hand holds black tongs with a small orange-hot round workpiece; screen-left holds a small blue-gray handled vessel."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-forge-artisan.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-FORGE-ARTISAN",
+    "png": "runtime-hd/mission-unit/mission-forge-artisan.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "auditPath": "/workspace/shared/empire-art-rebuild/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "referenceCopies": {
+    "original-idle-cell.png": "c33971d9bb3bde88b160f0d076584a70889af93ce5123ff44bdaf29d852ca4aa",
+    "original-row.png": "9fb659d7aa23d1b3a9d5ae78e4176a0098c3bc32180304e91cfaecec12f8899b",
+    "original-masterboard.png": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+    "approved-farmer-idle.png": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+    "approved-refugee-idle.png": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6"
+  },
+  "status": "Native quartet complete; catalog-only collection. No runtime bindings edited.",
+  "referenceRowAndIdlePixelExactToOriginalBoard": true,
+  "doNotRebind": "c01-14 forge-laborer uses BRIDGE-LABORER, not this catalog-only FORGE-ARTISAN."
+}

@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 320,
+    "formalBound": 321,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 38,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
-      "mission-unit": 4,
+      "mission-unit": 5,
       "narrative-static": 7,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 320,
+    "rawPreservedTopics": 321,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2501,13 +2501,23 @@
       "category": "mission-unit",
       "label": "炉城工匠",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/forge-artisan/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-forge-artisan.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-forge-artisan.png",
+      "stageEvidence": {
+        "raw": "four native transparent female forge artisan poses, original vessel-left/tongs-right identity and palette preserved",
+        "export": "one shared44/930 scale, measured feet,2px transparent padding; native quartet and actual exported frames reviewed",
+        "runtimeBinding": "canonical and HD resolver; catalog-only; no current domain actor or authored scenery consumer",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-MERCENARY-QUARTERMASTER",
