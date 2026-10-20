@@ -1,0 +1,801 @@
+{
+  "auditKind": "Read-only actual production sceneLayers projections, source/manifest inspection and existing native/full-map evidence review. No source/code/Git changes; no image generation; no test rerun; no browser/GPU verification.",
+  "sourceSnapshot": {
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "144a2d2c7fd2fee19c929f006903665092b4e342fc6c167ee8aab3c0f1ea6575",
+    "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792",
+    "packages/story-candidate-01/src/presentation/candidate-01-crossing.ts": "d5367f9269de0a504be215351cc4a100b1ed15613b0828489d59dc5ee9b7e8f8",
+    "packages/story-candidate-01/src/presentation/candidate-01-world-material.ts": "ca94877f7b9cf50066b75a54f38f5a29faaf92fcac990234f3e04b37bb491bed",
+    "tools/art/environment-overrides.json": "ba08a1c0c2f737901d6ff346cc6a04d416123f83b2b76a5fefe87ebbf3bf6470",
+    "tools/art/connector-overrides.json": "40a904c17622bc21df9718e7061ced83b0d034c3f7707a6a639d73f5870c6132",
+    "docs/art-rebuild-20261019/approved-v5/progress.json": "7875861f7b586146f439531c0f9fdfbac8552e081087d6f02fd3d3f70ccf6b9c",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "403d7bb620d17d69bb111e1e6cd922eb7bb9679e98add6345f24aa9b7eac2b27"
+  },
+  "scope": {
+    "authoredCampaignLevels": 16,
+    "baselineAtlases": 36,
+    "baselinePhysicalSlots": 1188,
+    "individualApprovedEnvironmentSourceSlots": 186,
+    "canonicalTopicsSeparate": true
+  },
+  "findings": {
+    "activeLegacyRgb": {
+      "uniqueSlots": 2,
+      "drawings": 4,
+      "levels": [
+        "c01-12"
+      ],
+      "ids": {
+        "wood-bridge-vertical": 2,
+        "stone-bridge-vertical": 2
+      },
+      "remainingAfterProposedStoneBatch": {
+        "wood-bridge-vertical": 2
+      }
+    },
+    "approvedDirtWithCellRepetition": {
+      "cells": 423,
+      "edgeCompanionDrawings": 423,
+      "levels": 15,
+      "oldRgb": false,
+      "nextSource": "masters/approved-v5/earth-material/revision-2/master.png"
+    },
+    "approvedWallTopologyGap": {
+      "cells": 190,
+      "levels": 6,
+      "spriteKinds": {
+        "stone-wall-straight": 61,
+        "stone-wall-corner": 64,
+        "stone-gatehouse": 65
+      },
+      "oldRgb": false,
+      "maskCounts": {
+        "0": 18,
+        "1": 25,
+        "2": 15,
+        "3": 5,
+        "4": 26,
+        "5": 28,
+        "6": 5,
+        "7": 10,
+        "8": 12,
+        "9": 7,
+        "10": 23,
+        "12": 6,
+        "13": 10
+      },
+      "pilotSupportedMasks": [
+        5,
+        10,
+        7,
+        13
+      ],
+      "pilotSupportedActiveCells": 71,
+      "otherActiveCells": 119,
+      "productionPilotEnabled": false
+    },
+    "activeAlreadyWorldBound": {
+      "forestBlendCells": 625,
+      "earthBlendAndShoreCells": 303,
+      "stoneRouteCells": 759,
+      "stoneRouteAndEdgeDrawings": 1518,
+      "waterOccupiedCells": 162,
+      "horizontalCrossingDrawings": 14,
+      "cliffDrawings": 106,
+      "highlandCliffDrawings": 0
+    },
+    "inactiveLegacyCatalog": {
+      "transition-meadow-snow": 47,
+      "transition-earth-stone": 47,
+      "route-mud-road+edge": 128,
+      "route-forest-trail+edge": 128,
+      "water-shallow-stream": 64,
+      "water-marsh-channel": 64,
+      "water-icy-water": 64,
+      "elevation-auto-temperate": 16,
+      "elevation-auto-highland": 16,
+      "unused-crossing-fortification-slots": 11,
+      "totalPhysicalSlots": 585
+    },
+    "physicalSlotReconciliation": {
+      "individualSourceOverrides": 186,
+      "approvedBakedDirtAndTransparentEdge": 128,
+      "legacyBytesBypassedByApprovedWorldBindings": 287,
+      "inactiveUnconverted": 585,
+      "activeUnconverted": 2,
+      "sum": 1188,
+      "caution": "Physical slot coverage is not semantic topic completion or observed pixel coverage. Bypassed legacy slot bytes can remain on disk without appearing in playable scenes."
+    }
+  },
+  "perLevel": [
+    {
+      "id": "c01-01",
+      "dirtRoadRepeatedApprovedCells": 0,
+      "areaRoadApprovedCells": 84,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 8,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "forest-floor": 126,
+        "road-earth": 1
+      },
+      "projectionSha256": {
+        "all": "6d134a784dddd14f8e58ef6a5179a312480892ddc3d600ada6b631673872e41d",
+        "ground": "b9aae2ac2f838354d84df292141068c6ee513d5ba313f22f49c17b16cb5e5aec",
+        "underUnits": "d74f652603423f5ff39bb1394163de05a2079ef6d0967305d167ba5a660c2d89",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "60b986e171ccb1ee3dcc3537a563714d22c985273f92dcf9903e44cdf6a7295d"
+      }
+    },
+    {
+      "id": "c01-02",
+      "dirtRoadRepeatedApprovedCells": 33,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 28,
+      "horizontalApprovedDrawings": 3,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 7,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 7,
+        "forest-floor": 13,
+        "earth-floor": 28,
+        "water-area": 1
+      },
+      "projectionSha256": {
+        "all": "e247de817765b96a40a9e5e75e04390c45ace80fa3b8bcbce0539c4330bcc0bd",
+        "ground": "5a96cffc05ab43c93ee461790e498a132dd2fe75e1d029ac029beb4dea53150e",
+        "underUnits": "b9452e6c1c329479e806566b7bc02700776f6e5ffd714bdf790eb518dea631ee",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "e247de817765b96a40a9e5e75e04390c45ace80fa3b8bcbce0539c4330bcc0bd"
+      }
+    },
+    {
+      "id": "c01-03",
+      "dirtRoadRepeatedApprovedCells": 34,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 29,
+      "wallSpriteKinds": {
+        "stone-wall-straight": 8,
+        "stone-wall-corner": 12,
+        "stone-gatehouse": 9
+      },
+      "approvedTemperateCliffDrawings": 8,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 7,
+        "stone-base": 29,
+        "wasteland-scree": 1,
+        "forest-floor": 9
+      },
+      "projectionSha256": {
+        "all": "df459a23fa1157b99b66e276e904dc0a629e1592899db5646570f3c16922e9ef",
+        "ground": "6cc5d486767f54bffa372837f39e2ec1423ac16f8843dc396833cbff590e098e",
+        "underUnits": "74bdee5246a10a65757a0b4cf7f69dac8b38fb94457e2bd22e78fc8f1c6e111a",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "df459a23fa1157b99b66e276e904dc0a629e1592899db5646570f3c16922e9ef"
+      }
+    },
+    {
+      "id": "c01-04",
+      "dirtRoadRepeatedApprovedCells": 36,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 6,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 6,
+        "forest-floor": 17
+      },
+      "projectionSha256": {
+        "all": "83e9e42f2183c328945eff7cac44482df1b80fcd6080d908e06b83bf665ae1d2",
+        "ground": "127905253ad4d9c28c819e939cd7651a18ae23a3adbf824c8a6c9212e4c9495d",
+        "underUnits": "b7335d8876f5c76945e1329cf783616c1566f2f95590348cd6d9d09221c9b7ba",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "83e9e42f2183c328945eff7cac44482df1b80fcd6080d908e06b83bf665ae1d2"
+      }
+    },
+    {
+      "id": "c01-05",
+      "dirtRoadRepeatedApprovedCells": 24,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 6,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 6,
+        "forest-floor": 11,
+        "earth-floor": 55
+      },
+      "projectionSha256": {
+        "all": "dfb73303f6fddc54baae987217d46803f79100065f8a325fe1f8b7a8391cc1bc",
+        "ground": "0c4a398a221b3befa41a7248468886bea1b548059958cf1d6df25db817ae8591",
+        "underUnits": "836c1d56985d47eb5f57c16ad2d7c985c20980e3cfa31835761d037d28924f69",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "dfb73303f6fddc54baae987217d46803f79100065f8a325fe1f8b7a8391cc1bc"
+      }
+    },
+    {
+      "id": "c01-06",
+      "dirtRoadRepeatedApprovedCells": 32,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 28,
+      "horizontalApprovedDrawings": 3,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 6,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 6,
+        "forest-floor": 12,
+        "earth-floor": 28,
+        "water-area": 1
+      },
+      "projectionSha256": {
+        "all": "ad0ce039d7689f23d189c484e117939a23139f3a734d8f9149ad2d074bb7540c",
+        "ground": "dc7af214e91fa3de40eca4bbd639c91b4c3e2d4573a65b684b03df1422a0dbe6",
+        "underUnits": "39855e6f68612ab691cf0ae4ddd8822ac9401134954be6035e1249db0ac65331",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "ad0ce039d7689f23d189c484e117939a23139f3a734d8f9149ad2d074bb7540c"
+      }
+    },
+    {
+      "id": "c01-07",
+      "dirtRoadRepeatedApprovedCells": 60,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 35,
+      "wallSpriteKinds": {
+        "stone-gatehouse": 10,
+        "stone-wall-straight": 11,
+        "stone-wall-corner": 14
+      },
+      "approvedTemperateCliffDrawings": 0,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "stone-base": 285,
+        "stone-paving": 500
+      },
+      "projectionSha256": {
+        "all": "1b0466e53f59a47ce5e4e533273e41e6dc0edd897d5f3bc03270f4ba78d29807",
+        "ground": "99b219aba2cf29d5aa607909060454a5b19f281f257d7675b30d66d5772560d1",
+        "underUnits": "bd6ed31d5354bc0c43e81e503726c1f5d9e16bd24305b6e129c7794314090b34",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "1b0466e53f59a47ce5e4e533273e41e6dc0edd897d5f3bc03270f4ba78d29807"
+      }
+    },
+    {
+      "id": "c01-08",
+      "dirtRoadRepeatedApprovedCells": 51,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 30,
+      "wallSpriteKinds": {
+        "stone-gatehouse": 11,
+        "stone-wall-straight": 11,
+        "stone-wall-corner": 8
+      },
+      "approvedTemperateCliffDrawings": 0,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "stone-base": 257,
+        "stone-paving": 454
+      },
+      "projectionSha256": {
+        "all": "b6527568514a00914175351cffef42dc12efca249fb3288014a9dbb1897f7f4e",
+        "ground": "942206f2c43b3e4bfed4a1f2fb829f3d38d194f9ba1c0f45f9dbf51ad1cdd576",
+        "underUnits": "145bed0d55f46cfd3f5787a22a1d6ab846e60f34a032f5e906046a2dcaec4317",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "b6527568514a00914175351cffef42dc12efca249fb3288014a9dbb1897f7f4e"
+      }
+    },
+    {
+      "id": "c01-09",
+      "dirtRoadRepeatedApprovedCells": 22,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 8,
+      "wallSpriteKinds": {
+        "stone-wall-straight": 3,
+        "stone-wall-corner": 2,
+        "stone-gatehouse": 3
+      },
+      "approvedTemperateCliffDrawings": 6,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "stone-base": 39,
+        "meadow-stony": 5,
+        "wasteland-scree": 1,
+        "forest-floor": 11
+      },
+      "projectionSha256": {
+        "all": "df671e5692314bfd13599927af8963ab0136893346e5a73c8d0e4753668ca211",
+        "ground": "6a23c3a48339b50b1489f10566ce9cb889a28be55387c1fdbf5710e2b33c3b3c",
+        "underUnits": "e2ab1c148e39163671f979fb77c70d3cf60ea8ca677560ac3bf05b2e1c5304ea",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "df671e5692314bfd13599927af8963ab0136893346e5a73c8d0e4753668ca211"
+      }
+    },
+    {
+      "id": "c01-10",
+      "dirtRoadRepeatedApprovedCells": 26,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 41,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "wasteland-scree": 28,
+        "meadow-stony": 13,
+        "forest-floor": 13
+      },
+      "projectionSha256": {
+        "all": "cdfdc4a8da43a976284f3f95043094133e91a01c6ad555f821cd2f2b3e6972c9",
+        "ground": "1ab24f7e1a08d6bfc10442b6cff09856319999bc4ae7c219a8e0993588ae8672",
+        "underUnits": "c5f16c666a1061aeb4ceab768335e642a7eb567b36cb1c8e283a1a55ebbfffc7",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "cdfdc4a8da43a976284f3f95043094133e91a01c6ad555f821cd2f2b3e6972c9"
+      }
+    },
+    {
+      "id": "c01-11",
+      "dirtRoadRepeatedApprovedCells": 8,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 0,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "graveyard-base": 258,
+        "stone-base": 62,
+        "forest-floor": 24
+      },
+      "projectionSha256": {
+        "all": "2e2c1dbc1764c84c47d950b0c35f50fef2c3b16882ffd71e41a90c7d0149724d",
+        "ground": "35ebf436b9dec038cf6f3cf5c43f08e8c085b546a1349f24fad88783a2426fce",
+        "underUnits": "9391f65366a033a57f1dfb56e280b8e9528afb108842589b65302e9983042cdc",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "2e2c1dbc1764c84c47d950b0c35f50fef2c3b16882ffd71e41a90c7d0149724d"
+      }
+    },
+    {
+      "id": "c01-12",
+      "dirtRoadRepeatedApprovedCells": 6,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 90,
+      "horizontalApprovedDrawings": 4,
+      "legacyVerticalDrawings": 4,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 6,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 6,
+        "earth-floor": 152,
+        "water-area": 2
+      },
+      "projectionSha256": {
+        "all": "59e0a248cc1903322682d81480d20b4fc1806e163c1ad94019ee0bf27d46dc76",
+        "ground": "16c0d50f715c1252c7c0af5f70d0fee05c93945e227ada032a49bf022ce09a2b",
+        "underUnits": "3957071f493c6a87445e40327b2b7b2dcac33eddc1f5573ff6df23ab1e60b89a",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "59e0a248cc1903322682d81480d20b4fc1806e163c1ad94019ee0bf27d46dc76"
+      }
+    },
+    {
+      "id": "c01-13",
+      "dirtRoadRepeatedApprovedCells": 66,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 68,
+      "wallSpriteKinds": {
+        "stone-gatehouse": 26,
+        "stone-wall-straight": 24,
+        "stone-wall-corner": 18
+      },
+      "approvedTemperateCliffDrawings": 0,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "stone-base": 350,
+        "stone-paving": 564
+      },
+      "projectionSha256": {
+        "all": "65917c97a47dff3f0711d9e5016acdf97f6e00ea2b284314c99a88233f0a16c7",
+        "ground": "5e53cc448f016ebff7345828d8bfb7312faa82bee873dc236cf2c011bfbeb392",
+        "underUnits": "3a6c389213fb90075338ef66a885cf448c8ed0bddd68603fe45e55690652a26a",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "65917c97a47dff3f0711d9e5016acdf97f6e00ea2b284314c99a88233f0a16c7"
+      }
+    },
+    {
+      "id": "c01-14",
+      "dirtRoadRepeatedApprovedCells": 8,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 16,
+      "horizontalApprovedDrawings": 4,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 20,
+      "wallSpriteKinds": {
+        "stone-wall-corner": 10,
+        "stone-wall-straight": 4,
+        "stone-gatehouse": 6
+      },
+      "approvedTemperateCliffDrawings": 0,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "forge-base": 252,
+        "wasteland-scorched": 56,
+        "stone-base": 20,
+        "earth-floor": 40,
+        "water-area": 2
+      },
+      "projectionSha256": {
+        "all": "470c968bc3fcc4d0ec6b3688deb3b9cdc5ab15519bff84d69b39b738d86b2f60",
+        "ground": "e7161517f9641bd528adb7d1d1884553a30aa0035befc554048c663b4f37342d",
+        "underUnits": "d1dac6dce449fb52b4b5ac21acc2f9521220ed2b727b171b0f1da0366b2cf065",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "470c968bc3fcc4d0ec6b3688deb3b9cdc5ab15519bff84d69b39b738d86b2f60"
+      }
+    },
+    {
+      "id": "c01-15",
+      "dirtRoadRepeatedApprovedCells": 8,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 12,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "meadow-stony": 12,
+        "forest-floor": 364
+      },
+      "projectionSha256": {
+        "all": "923b2038000e0ef5b87eaa7e49e7bb5bbd8081f1d7b9081d82b5da91da61ba77",
+        "ground": "27b286873c59ed9880bd5602fea5d0f463acd9163adf4f9d5899e08bd19ff8fb",
+        "underUnits": "d9b235e843b4e92946cb1e6ed411ca73eef07df656a71a9d95e8e5b99c5ce8a2",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "923b2038000e0ef5b87eaa7e49e7bb5bbd8081f1d7b9081d82b5da91da61ba77"
+      }
+    },
+    {
+      "id": "c01-16",
+      "dirtRoadRepeatedApprovedCells": 9,
+      "areaRoadApprovedCells": 0,
+      "waterApprovedOccupiedCells": 0,
+      "horizontalApprovedDrawings": 0,
+      "legacyVerticalDrawings": 0,
+      "wallApprovedSpriteDrawings": 0,
+      "wallSpriteKinds": {},
+      "approvedTemperateCliffDrawings": 0,
+      "worldMaterialDrawings": {
+        "meadow-base": 1,
+        "graveyard-base": 296,
+        "stone-base": 95,
+        "forest-floor": 25
+      },
+      "projectionSha256": {
+        "all": "b991c74519539cea6fa43af66f9802a16e33366aa0bb53fef2d0ff15093fe422",
+        "ground": "af00865466b76a66b1fd81780040797af9dce9c82fc7685ee4e901f560afd9de",
+        "underUnits": "a7f199b9a7a5f509f9152eece802635132b89622c7cb1aadeaf1b8e8beb377c0",
+        "overUnits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "editor": "b991c74519539cea6fa43af66f9802a16e33366aa0bb53fef2d0ff15093fe422"
+      }
+    }
+  ],
+  "verifiedWorldMaterials": [
+    {
+      "id": "earth-floor",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-earth-floor-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-1/master.png",
+      "sourceSha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-earth",
+        "tone": 0
+      }
+    },
+    {
+      "id": "meadow-base",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/grass-material/master.png",
+      "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-meadow",
+        "tone": 0
+      }
+    },
+    {
+      "id": "forest-floor",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-forest-floor-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+      "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-forest-floor",
+        "tone": 0
+      }
+    },
+    {
+      "id": "forge-base",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-forge-base-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+      "sourceSha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-forge-stone",
+        "tone": 0
+      }
+    },
+    {
+      "id": "graveyard-base",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-graveyard-base-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+      "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-graveyard",
+        "tone": 0
+      }
+    },
+    {
+      "id": "meadow-stony",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-meadow-stony-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-meadow/meadow-3/master.png",
+      "sourceSha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-meadow",
+        "tone": 2
+      }
+    },
+    {
+      "id": "road-earth",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+      "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "route-dirt-road",
+        "mask": "route"
+      }
+    },
+    {
+      "id": "stone-base",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-base-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+      "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-old-stone",
+        "tone": 0
+      }
+    },
+    {
+      "id": "stone-paving",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-paving-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+      "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-old-stone",
+        "tone": 3
+      }
+    },
+    {
+      "id": "wasteland-scorched",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-wasteland-scorched-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-wasteland/wasteland-2/master.png",
+      "sourceSha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-wasteland",
+        "tone": 1
+      }
+    },
+    {
+      "id": "wasteland-scree",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-wasteland-scree-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-wasteland/wasteland-3/master.png",
+      "sourceSha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "surface-wasteland",
+        "tone": 2
+      }
+    },
+    {
+      "id": "water-area",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-water-material-v2.json",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/water-material/master.png",
+      "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+      "sourceHashVerified": true,
+      "logicalSize": [
+        512,
+        512
+      ],
+      "rasterSize": [
+        512,
+        512
+      ],
+      "replaces": {
+        "atlas": "water-slow-river",
+        "mask": "same"
+      }
+    }
+  ],
+  "connectorApproved2xHashChecks": {
+    "route-dirt-road@2x.png": true,
+    "route-edge-dirt-road@2x.png": true
+  },
+  "oldEvidenceCaveat": "docs/art-rebuild-20261019/environment-atlas-manifest.json is historical inventory with pending status, not the current binding authority. Current authority is final environment manifest plus typed consumers plus progress.materialStages.",
+  "catalogDerivationPlan": [
+    {
+      "family": "transition-meadow-snow / transition-earth-stone",
+      "slots": 94,
+      "approach": "Deterministic existing 47-mask alpha plus approved snow-1 / old-stone-1 source, matching original builder overlay index 0. No new RGB needed. Inactive; no new consumer implied."
+    },
+    {
+      "family": "mud-road / forest-trail and edge companions",
+      "slots": 256,
+      "approach": "Existing 16x4 topology can be derived. Approved earth-2/earth-4 and forest-floor-1 are candidate RGB only; their ruts/semantic differences require explicit source mapping and scale/port review. Do not count the original route families as remade solely because surface sources exist."
+    },
+    {
+      "family": "shallow-stream / marsh-channel / icy-water",
+      "slots": 192,
+      "approach": "Topology reusable; no matching approved isolated RGB families found. Fresh isolated stream/marsh/ice materials required if exact catalog families are commissioned. Do not recolor slow-river or activate them."
+    },
+    {
+      "family": "automatic temperate/highland elevation edges",
+      "slots": 32,
+      "approach": "No runtime consumer. Existing source was a standing cliff crop flattened into technical faces; approved module sprites cannot be flattened/repeated as a substitute. Need isolated geological top/face source and a typed elevation consumer before activation; fortification stone is not automatically geological identity."
+    },
+    {
+      "family": "unused crossing/fortification modules",
+      "slots": 11,
+      "ids": [
+        "wood-bridge-horizontal",
+        "stone-bridge-horizontal",
+        "wood-bridgehead-west",
+        "wood-bridgehead-east",
+        "palisade-straight",
+        "palisade-corner",
+        "palisade-gate",
+        "palisade-breach",
+        "stone-wall-breach",
+        "watchtower-wood",
+        "wood-barricade"
+      ],
+      "approach": "Stone horizontal may reuse existing approved registered horizontal source. Other ten identities need isolated subjects if catalog completion is requested; no active consumers. Do not rotate vertical whole sprites or turn standing walls into breach/gate variants."
+    }
+  ],
+  "verification": {
+    "readOnlyProjection": "passed for all 16 levels; serialized state identical before/after projection",
+    "sourceHashes": "12 approved world source manifests and two approved dirt-road 2x outputs checked against declared hashes",
+    "testSuite": "Not run in this audit. Parent reports the 524 checkpoint passed and was pushed after capture; retained projection hashes identify this audit snapshot.",
+    "liveGame": "not checked"
+  }
+}

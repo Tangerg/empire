@@ -1,0 +1,413 @@
+{
+  "status": "Recommended isolated engineering batch; not implemented or accepted",
+  "scope": "Only two southern stone vertical drawings and their two existing horizontal intersection compositions on c01-12; no movement of cells, units, structures or targets. Northern wood drawings remain explicitly legacy pending.",
+  "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/crossings-fortifications/stone-bridge-vertical/stone-bridge-vertical-master.png",
+  "sourceSha256": "49d5a96e9a051aecb6196d8cb5f9312beb60e31cf6eafcb0f2bc483f543c0e03",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceAlpha128Bounds": [
+    331,
+    117,
+    927,
+    1124
+  ],
+  "sourceDeckPivot": [
+    627,
+    594
+  ],
+  "sourceLandingEndpoints": [
+    [
+      627,
+      202
+    ],
+    [
+      627,
+      986
+    ]
+  ],
+  "logicalScale": 0.12244897959183673,
+  "logicalFullCanvasSize": [
+    153.55102040816325,
+    153.55102040816325
+  ],
+  "logicalAnchor": [
+    76.77551020408163,
+    72.73469387755102
+  ],
+  "proposedExportPixels": {
+    "1x": [
+      154,
+      154
+    ],
+    "2x": [
+      307,
+      307
+    ]
+  },
+  "exportDerivation": "Independent full-canvas Lanczos resize per density, exactly the existing crossing exporter rule. Preserve native raw alpha, including alpha-1 perimeter residue; no bbox crop, rotation, recolor, nonlinear stretching or invented support pixels.",
+  "sourcePortCaution": "Landmarks are inspected estimates, not pre-certified alpha-perfect ports. Technical occupancy masks must be tested separately from source art, whose deck alpha is near 253, not universally 255.",
+  "contexts": [
+    {
+      "verticalStart": [
+        6,
+        9
+      ],
+      "verticalLength": 3,
+      "verticalCells": [
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "horizontalStart": [
+        5,
+        10
+      ],
+      "horizontalLength": 3,
+      "horizontalCells": [
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ]
+      ],
+      "unionCells": [
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "sharedJunction": [
+        6,
+        10
+      ],
+      "sharedNeswMask": 15,
+      "worldDeckPivot": [
+        208.0,
+        336
+      ],
+      "outerTraversalPorts": {
+        "north": [
+          208.0,
+          288
+        ],
+        "east": [
+          256,
+          336
+        ],
+        "south": [
+          208.0,
+          384
+        ],
+        "west": [
+          160,
+          336
+        ]
+      },
+      "proposedStoneStrongAlphaWorldBounds": [
+        171.75510204081633,
+        277.59183673469386,
+        244.73469387755102,
+        400.8979591836735
+      ],
+      "horizontalStrongAlphaWorldBounds": [
+        152.0404916847433,
+        314.62039045553144,
+        264.0404916847433,
+        365.5589298626175
+      ]
+    },
+    {
+      "verticalStart": [
+        17,
+        9
+      ],
+      "verticalLength": 3,
+      "verticalCells": [
+        [
+          17,
+          9
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          17,
+          11
+        ]
+      ],
+      "horizontalStart": [
+        16,
+        10
+      ],
+      "horizontalLength": 3,
+      "horizontalCells": [
+        [
+          16,
+          10
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          18,
+          10
+        ]
+      ],
+      "unionCells": [
+        [
+          17,
+          9
+        ],
+        [
+          16,
+          10
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          18,
+          10
+        ],
+        [
+          17,
+          11
+        ]
+      ],
+      "sharedJunction": [
+        17,
+        10
+      ],
+      "sharedNeswMask": 15,
+      "worldDeckPivot": [
+        560.0,
+        336
+      ],
+      "outerTraversalPorts": {
+        "north": [
+          560.0,
+          288
+        ],
+        "east": [
+          608,
+          336
+        ],
+        "south": [
+          560.0,
+          384
+        ],
+        "west": [
+          512,
+          336
+        ]
+      },
+      "proposedStoneStrongAlphaWorldBounds": [
+        523.7551020408164,
+        277.59183673469386,
+        596.734693877551,
+        400.8979591836735
+      ],
+      "horizontalStrongAlphaWorldBounds": [
+        504.0404916847433,
+        314.62039045553144,
+        616.0404916847433,
+        365.5589298626175
+      ]
+    }
+  ],
+  "horizontalReference": {
+    "schemaVersion": 1,
+    "id": "approved-stone-crossing-horizontal",
+    "orientation": "horizontal",
+    "source": "masters/approved-v5/bridge/bridge-master.png",
+    "sourceSha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+    "sourceSize": [
+      1729,
+      910
+    ],
+    "sourceFoot": [
+      864,
+      418
+    ],
+    "logicalPerSourcePixel": 0.08098336948662328,
+    "png": "runtime/stone-crossing-horizontal.png",
+    "png2x": "runtime/stone-crossing-horizontal@2x.png",
+    "approvedExports": {
+      "png": "2fb201b72ceaf579ca1453a003697b612685cd3baafb63cecb92a93a718c7c58",
+      "png2x": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d"
+    }
+  },
+  "currentVerticalContract": {
+    "atlas": "crossings-fortifications",
+    "indices": [
+      1,
+      3
+    ],
+    "cellSize": [
+      96,
+      96
+    ],
+    "hdCellSize": [
+      192,
+      192
+    ],
+    "catalogAnchor": [
+      48,
+      91
+    ],
+    "actualLyingPivot": [
+      48,
+      48
+    ],
+    "currentTransform": "translate(-48 -48) scale(1 1)",
+    "footProperty": null
+  },
+  "compositingPlan": {
+    "owner": "One crossing topology reader shared by the existing crossing renderer, using current bridge terrain and route adjacency. No secondary authored path graph.",
+    "junction": "A single 5-cell plus component has two original pictures sharing its center. Source registration alone reproduces the rejected stacked-parapet obstruction. Both pictures must be composed as one readable junction with explicit complementary technical masks.",
+    "maskTopology": "Keep vertical deck source visible through north/south axis; open horizontal near/far parapet pixels only at the vertical port; open vertical side parapets only where the existing east/west bridge deck joins. Technical mask windows derive from shared junction occupancy and reviewed deck plane/rail bands, not alpha bounding boxes. Preserve approved source pixels outside those reviewed port windows. Do not simply erase a full 32x32 tile or omit either whole bridge.",
+    "pixelWindowStatus": "Exact rail-band cut coordinates must be measured in the isolated engineering test; this read-only audit has not invented or certified them. If openings expose missing side/support art, stop the batch and request a genuinely isolated junction source rather than painting filler.",
+    "depth": "Retain no BoardPiece.foot for lying crossing output, and retain the existing fixed scenery order. Adding CELL_FOOT would move the bridge into shared standing sorting and could cover actors. No source-specific topmost override.",
+    "envelope": "Traversal deck follows the five real bridge cells. Existing pier/parapet silhouettes may overhang into their existing water channel; record their alpha bounds and prevent new opaque obstruction over dry neighboring terrain. Do not promise zero art alpha outside the tactical union."
+  },
+  "northDeferred": {
+    "woodVerticalDrawings": 2,
+    "origins": [
+      [
+        208,
+        144
+      ],
+      [
+        560,
+        144
+      ]
+    ],
+    "woodRuns": [
+      [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      [
+        [
+          17,
+          2
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          17,
+          4
+        ],
+        [
+          17,
+          5
+        ],
+        [
+          17,
+          6
+        ]
+      ]
+    ],
+    "knownSources": [
+      "masters/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/wood-bridge-vertical-master.png",
+      "masters/approved-v5/environment/crossings-fortifications/wood-bridge-vertical/long-variant/master.png"
+    ],
+    "blocker": "bell-a target shares [6,4] exactly with the west crossing center; bell-b target is [16,4], one cell west of the east center [17,4]. Watergate source footprint spans 2x2 visually, but boss_part neither blocks movement nor vision. Do not interpret the watergate as an extra bridge, erase it, move it, or synthesize a passability change.",
+    "longCandidate": "Full 5-cell span source exists, SHA 4c1a2c671da15ae0c82a1dbfcc860f6f7ec7e09397db533665ce55a0180d4550; deck pivot [627,628], span1081, scale160/1081. Pilot rejected for crossing/watergate stacks; source clear deck18.35–23.83 world px is a separate measured limitation."
+  },
+  "nearbyKeepFixed": {
+    "westSouth": [
+      "campaign-ivra [5,11] nearest crossing approach",
+      "campaign-bran [3,9]",
+      "tower-guard [4,13]",
+      "hill cells [4,9], [4,14], [8,14]"
+    ],
+    "eastSouth": [
+      "south-echo [15,12]",
+      "tower-bow [20,12]",
+      "imperial-2 [19,8]",
+      "hill cells [19,9], [15,14], [19,14]"
+    ],
+    "central": [
+      "bell-c [11,10], same cell as oath-echo-2, five cells east of west junction and six west of east junction; its picture is outside both lower-crossing source bounds"
+    ]
+  },
+  "qaGates": [
+    "Pin all16 state, level, ground, scenery, editor and source hashes using audit-runtime-consumers.ts and review_candidate_scene_contract.ts before changes. The only intended scene delta is c01-12 crossing art.",
+    "Verify exact source SHA, native alpha edge<=1, full-canvas independent1x/2x exports154x154 and307x307, pivot equations, unchanged horizontal source bytes and both unchanged wood atlas cells.",
+    "Test actual southern pluses: complete 5-cell union, both3-cell axes, shared center mask15, four required traversal ports and no unexpected new route. Confirm no opaque railing visually cuts any port; source alpha cannot be replaced with invented255.",
+    "Use actual BoardView full884x616 frame at1x/2x with all19 actors, six terrain buildings and three target structures retained. Compare all source actor/structure markups and standing order; measure Ivra approach and both southern approaches; inspect hover/selection/target gauges.",
+    "Inspect SVG and GPU/native gameplay display, both safe travel directions, repeated redraw/edit-preview transitions and 50%HP/disabled watergate state visibility, without changing rules or hidden information.",
+    "Run focused existing candidate-01-crossing.test.ts, candidate-01-map-scene.test.ts, candidate-01-road-material.test.ts, candidate-01-water-material.test.ts and tools/art/test_crossing.py, plus new junction/vertical source and broken-pivot/missing-port regression cases.",
+    "Then typecheck, frozen full suite and all60 replay/output comparisons at the integrated checkpoint; preserve all16 state hashes and15 unrelated full-scene hashes. Explicitly report completed2stone drawings and still-pending2wood drawings."
+  ],
+  "testPaths": [
+    "packages/story-candidate-01/src/presentation/candidate-01-crossing.test.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.test.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-road-material.test.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-water-material.test.ts",
+    "tools/art/test_crossing.py",
+    "tools/art/review_gray_flag_scene.ts",
+    "tools/art/review_candidate_scene_contract.ts",
+    "tools/art/review_scene_actor_clearance.py",
+    "tools/art/review_vertical_crossing_pilot.ts"
+  ],
+  "existingRejectedEvidence": "docs/art-rebuild-20261019/approved-v5/vertical-crossing-pilot/candidate/runtime-standing-full@1x.png"
+}

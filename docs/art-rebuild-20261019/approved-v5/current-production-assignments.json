@@ -1,51 +1,46 @@
 {
-  "asOfUtc": "2026-10-20T05:28:00Z",
-  "formalSnapshot": "b14045e",
+  "asOfUtc": "2026-10-20T06:22:00Z",
+  "formalSnapshot": "9469b9de408ce299bc46edb0858b3f7f2f160980",
   "assignments": [
     {
       "topics": [
-        "C01-FX-13"
+        "C01-FX-18"
       ],
-      "stage": "source generation; nonloop four semantic phases approved"
+      "stage": "four sources; corrected terminal phase static-reviewed; integrity sealing"
     },
     {
       "topics": [
-        "C01-FX-14"
+        "C01-FX-19"
       ],
-      "stage": "source generation; nonloop four semantic phases approved"
+      "stage": "dense first phase saved; remaining shared-canvas phases generating"
     },
     {
       "topics": [
-        "c02-skill-emergency-heat",
-        "c02-skill-reroute-water",
-        "c02-skill-deploy-tide-anchor",
-        "c02-skill-shift-tide"
+        "c02-status-water",
+        "c02-status-heat",
+        "c02-status-ammo",
+        "c02-status-low-oxygen"
       ],
-      "stage": "original board identity audit complete; source generation"
+      "stage": "first two formally bound; last two generating"
     },
     {
       "topics": [
-        "c02-skill-snipe",
-        "c02-skill-suppress",
-        "c02-skill-boarding",
-        "c02-skill-quick-repair"
+        "c02-status-spare-parts",
+        "c02-status-star-vein-energy",
+        "c02-status-cargo-capacity",
+        "c02-status-permission"
       ],
-      "stage": "four masters saved; parent native static review passed; final integrity QA pending"
+      "stage": "source identities audited; independent32px generation"
     },
     {
-      "topics": [
-        "c02-skill-deploy-turret",
-        "c02-skill-brace-platform",
-        "c02-skill-heat-zone",
-        "c02-skill-emergency-water"
-      ],
-      "stage": "first two masters saved; remaining source generation"
+      "scope": "all16 Gray Flag environment projections",
+      "stage": "read-only gap audit; southern two stone crossing engineering plan pending implementation"
     }
   ],
   "canonicalRemaining": {
     "C01": {
       "equipment": 1,
-      "fx": 12
+      "fx": 7
     },
     "C02": {
       "narrative-static": 80,
@@ -54,8 +49,7 @@
       "faction-kit": 12,
       "terrain": 32,
       "interactive-structure": 24,
-      "skill": 44,
-      "status": 24,
+      "status": 22,
       "fx": 24,
       "hud": 16
     },
@@ -74,19 +68,19 @@
       "hud": 16
     }
   },
-  "counting": "475 formal canonical topics of1212. Environment186 source cells is separate from36 atlas sets/1188 derived components. Earlier unapproved style candidates do not count. Live game pending.",
+  "counting": "526 formal canonical topics of1212; environment186 source cells separate from36 atlas sets/1188 derived components; liveGame0. Old-style candidates excluded.",
   "queuedExclusiveGroups": [
     [
-      "c02-skill-rescue-dash",
-      "c02-skill-resupply-ammo",
-      "c02-skill-shield-chain",
-      "c02-skill-medical-transfer"
+      "C01-FX-20"
     ],
     [
-      "c02-skill-climate-correction",
-      "c02-skill-redirect-wind",
-      "c02-skill-rotate-gravity",
-      "c02-skill-gravity-rescue"
+      "C01-FX-21"
     ]
-  ]
+  ],
+  "unassignedFinalC01Effects": [
+    "C01-FX-22",
+    "C01-FX-23",
+    "C01-FX-24"
+  ],
+  "reservedSlot": "next completed environment audit slot reserved for requested parent memory update; no active source generation interrupted"
 }
