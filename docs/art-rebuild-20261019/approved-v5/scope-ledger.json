@@ -45,7 +45,7 @@
   },
   "sceneCohesion": {
     "fullMap": "road-turn-shapes/integrated-main/full-scene-labeled.png",
-    "secondLevel": "cart-stop-full-scene/full-scene-labeled.png",
+    "secondLevel": "spacious-river-camera/after/runtime-standing-full@2x.png",
     "status": "Complete first-level and second-level initial actor sets use approved art; later-level mixture and dense forest occlusion remain unresolved. Full first-level layout and curved-road presentation are verified offline, with shared foot-depth and selected-visible-only cue. No overall scene or live-game completion claim.",
     "liveGame": "pending",
     "historicalPureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
@@ -70,6 +70,15 @@
       "remaining": "Tasha42.8% and five pre-existing >50% occlusions remain; no eighth change",
       "evidence": "cemetery-local-clearance/before-after-labeled.png",
       "liveGame": "pending"
+    },
+    "spaciousRiverCheckpoint": {
+      "map": "36x24 storage with715 active and149 outside cells; movable camera",
+      "objectives": "Three profiles win escort/artillery at10/9/13 turns; allrefugees survive",
+      "engine": "Unchanged baseline; rejected route experiments diagnostic-only",
+      "visibility": "20 actors, max2% alpha overlap",
+      "cohesion": "One village ground-contact pilot integrated; hard road and bank transitions remain",
+      "liveGame": false,
+      "evidence": "spacious-river-camera/main-integration/README.md"
     }
   },
   "authoredTeamVariants": {

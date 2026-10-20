@@ -1,0 +1,3 @@
+# Main single-village pilot verification
+
+47 focused TypeScript tests, five exact-source/alpha export tests and typecheck pass on main with the new 649-topic source catalog. Only the reviewed single entry is bound; no gameplay or standing geometry change. Native composites and full source reviewed independently by integration owner. The faint colored source fringe is explicitly qualified, preserved unchanged and not perceptible as a bright fringe at native placement. Not a claim of pristine source, complete scene cohesion or live-browser acceptance. Supplemental apron does not increment canonical topic or baseline environment-component counts.
