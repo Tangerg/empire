@@ -1,0 +1,78 @@
+{
+  "asOfUtc": "2026-10-20T05:24:00Z",
+  "formalSnapshot": "b14045e",
+  "assignments": [
+    {
+      "topics": [
+        "C01-FX-13"
+      ],
+      "stage": "source generation; nonloop four semantic phases approved"
+    },
+    {
+      "topics": [
+        "C01-FX-14"
+      ],
+      "stage": "source generation; nonloop four semantic phases approved"
+    },
+    {
+      "topics": [
+        "c02-skill-emergency-heat",
+        "c02-skill-reroute-water",
+        "c02-skill-deploy-tide-anchor",
+        "c02-skill-shift-tide"
+      ],
+      "stage": "original board identity audit complete; source generation"
+    },
+    {
+      "topics": [
+        "c02-skill-snipe",
+        "c02-skill-suppress",
+        "c02-skill-boarding",
+        "c02-skill-quick-repair"
+      ],
+      "stage": "four masters saved; parent native static review passed; final integrity QA pending"
+    },
+    {
+      "topics": [
+        "c02-skill-deploy-turret",
+        "c02-skill-brace-platform",
+        "c02-skill-heat-zone",
+        "c02-skill-emergency-water"
+      ],
+      "stage": "first two masters saved; remaining source generation"
+    }
+  ],
+  "canonicalRemaining": {
+    "C01": {
+      "equipment": 1,
+      "fx": 12
+    },
+    "C02": {
+      "narrative-static": 80,
+      "combat-unit": 40,
+      "mission-unit": 24,
+      "faction-kit": 12,
+      "terrain": 32,
+      "interactive-structure": 24,
+      "skill": 44,
+      "status": 24,
+      "fx": 24,
+      "hud": 16
+    },
+    "C03": {
+      "narrative-static": 80,
+      "combat-unit": 40,
+      "mission-unit": 24,
+      "faction-kit": 12,
+      "terrain": 32,
+      "interactive-structure": 24,
+      "battle-prop": 32,
+      "equipment": 48,
+      "skill": 48,
+      "status": 24,
+      "fx": 24,
+      "hud": 16
+    }
+  },
+  "counting": "475 formal canonical topics of1212. Environment186 source cells is separate from36 atlas sets/1188 derived components. Earlier unapproved style candidates do not count. Live game pending."
+}
