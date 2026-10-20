@@ -1,0 +1,1 @@
+Two opaque narrative scenes formally registered at source-native1664x936 and canonical256x144. 474 focused tests in4files and typecheck pass. Complete source/story/cover evidence preserved; actual gameplay/browser remains unverified.

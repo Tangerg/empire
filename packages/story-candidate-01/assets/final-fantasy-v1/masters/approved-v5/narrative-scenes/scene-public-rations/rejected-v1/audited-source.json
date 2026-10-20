@@ -1,0 +1,146 @@
+{
+  "topicId": "C01-SCENE-PUBLIC-RATIONS",
+  "label": "灰旗营地公开分粮",
+  "originalNarrativeIndexZeroBased": 58,
+  "subgroup": "everyday-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-SCENE-PUBLIC-RATIONS",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "灰旗营地公开分粮",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-public-rations.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+    "sha256": "dcf8beb9cd77c6f5b6884e94ae4ed18fc73c335c192bb83bfbf2b015cc107bd7",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      58,
+      59,
+      60,
+      61
+    ],
+    "cellIndexZeroBased": 0,
+    "columnZeroBased": 0,
+    "rowZeroBased": 0,
+    "cellLabel": "top-left",
+    "legacyInsetCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-SCENE-PUBLIC-RATIONS",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-SCENE-PUBLIC-RATIONS",
+    "topicId": "C01-SCENE-PUBLIC-RATIONS",
+    "label": "灰旗营地公开分粮",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/scene-public-rations.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-public-rations.png",
+    "sha256": "9c8855d7a8d1eee08828fb8baab8c3c76523693736f8bb6062924ebb8a38175c",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/brief-07",
+        "chapter": 2,
+        "title": "无主之城",
+        "location": "自由城洛岬"
+      },
+      {
+        "id": "c01/aftermath-07",
+        "chapter": 2,
+        "title": "谁拥有城墙",
+        "location": "洛岬议事厅"
+      },
+      {
+        "id": "c01/brief-08",
+        "chapter": 2,
+        "title": "佣兵之价",
+        "location": "洛岬粮道"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-07",
+      "c01-08"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}

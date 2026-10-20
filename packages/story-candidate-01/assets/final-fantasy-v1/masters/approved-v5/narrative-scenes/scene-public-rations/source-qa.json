@@ -1,0 +1,46 @@
+{
+  "topicId": "C01-SCENE-PUBLIC-RATIONS",
+  "rawMode": "RGB",
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "effectiveAlphaExtrema": [
+    255,
+    255
+  ],
+  "rawEqualsNativeEqualsMaster": true,
+  "sha256": "7e6f0f46e5f9217b6dc8dd8b082533200054a7eeb33707eeca1c1d6966473864",
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "croppedExportSize": [
+    1664,
+    936
+  ],
+  "cropLossPx": {
+    "left": 4,
+    "top": 2,
+    "right": 4,
+    "bottom": 3
+  },
+  "cropReason": "Largest centered integer 16:9 crop, tiny explicit edge removal for deterministic source-native exporter. Full authored native master preserved byte-for-byte.",
+  "opaqueSceneIntentional": true,
+  "countsAsTransparentSprite": false,
+  "programmaticArtworkChanges": false,
+  "qaOnlyDerivatives": [
+    "qa-source-native-1664x936.png",
+    "qa-exact-crop-512x288.png",
+    "qa-logical-256x144.png",
+    "qa-cover-*.png",
+    "qa-covers-contact-sheet.png"
+  ],
+  "generationAttempts": 2,
+  "tool": "built-in image_gen",
+  "browserOrLiveVerification": false,
+  "selectedRevision": "v2",
+  "generatedOriginal": "/workspace/scratch/84c9fe948755/generated_images/exec-fe5e32f2-2ba5-487d-928c-af2600b0275d.png"
+}

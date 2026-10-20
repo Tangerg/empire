@@ -1,0 +1,61 @@
+{
+  "status": "authorized-story-grounded-reconstruction",
+  "topicId": "C01-CH03-S14",
+  "parentApproval": "2026-10-20 01:21 UTC: Proceed with both documented story-grounded reconstructions. Preserve exact original crops and enumerate deliberate setting changes; no text/rules/selector changes.",
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+    "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      54,
+      55,
+      56,
+      57
+    ],
+    "cellIndexZeroBased": 1,
+    "columnZeroBased": 1,
+    "rowZeroBased": 0,
+    "cellLabel": "top-right",
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "legacyInsetPx": 5
+  },
+  "observedOriginal": "Tall furnace, numerous anonymous dwarf workers and records tables in a forest-ringed outdoor rocky workshop.",
+  "mappingAccuracy": "Exact audited legacy atlas mapping retained; correct mapping does not establish correct setting",
+  "storyAuthority": {
+    "path": "packages/story-candidate-01/src/story.ts",
+    "sha256": "f0e31a172ff45a1dae57d988e8c672b87e384881e3fe3ec890b84a49588c1299",
+    "consumerIds": [
+      "c01/brief-14",
+      "c01/aftermath-14"
+    ]
+  },
+  "sourceContext": "story-source-context.txt",
+  "deliberateChanges": [
+    "Replace outdoor trees/sky with lower underground furnace-city hall",
+    "Clarify two functional wheel valves corresponding to actual level objective",
+    "Retain furnace repair, cooperative anonymous dwarves, accessible maintenance records",
+    "Reduce numerous small props to a few readable broad forms"
+  ],
+  "identity": "All scene figures remain anonymous. No named character identity added.",
+  "chronology": "Forge: year2 deep autumn. Rations: year1 spring after chapter1 founding of the Gray Flag, before later chapter4 dragon-wing flag. Plain gray banner permitted.",
+  "originalUsedAsGenerationReference": true,
+  "originalReferenceScope": "topic objects and broad relationships only; incorrect setting and unsupported flag emblem explicitly excluded",
+  "noCodeOrTextChanges": true
+}

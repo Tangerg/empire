@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 347,
+    "formalBound": 349,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -12,11 +12,11 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 23,
-      "narrative-static": 13,
+      "narrative-static": 15,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 347,
+    "rawPreservedTopics": 349,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -547,13 +547,20 @@
       "category": "narrative-static",
       "label": "山炉共同修炉",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch03-s14/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s14.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete lower-forge hall reconstructed from actual narrative context, cooperative smiths, records and two distinct flow controls; original mismatched outdoor furnace and rejected detailed v1 preserved",
+        "export": "Canonical256x144 and reviewed native1664x936 exact crop; full source immutable, native desktop and narrow cover QA recorded; mobile clips outer controls while main furnace/repair/ledger remain",
+        "runtimeBinding": "Actual story forge selector through canonical and per-entry-HD resolver; story text and gameplay unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CH03-S16",
@@ -1315,13 +1322,20 @@
       "category": "narrative-static",
       "label": "灰旗营地公开分粮",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/scene-public-rations/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-public-rations.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque complete civic granary courtyard reconstructed from actual narrative context, public records, mixed civilian/militia queue and visible bread/grain distribution under plain Gray Flag; original mismatched remote forest camp and rejected detailed v1 preserved",
+        "export": "Canonical256x144 and reviewed native1664x936 exact crop; full source immutable, native desktop and narrow cover QA recorded; mobile retains public panels, clerk, bread handover, plain gray flag and central queue",
+        "runtimeBinding": "Actual story rations selector through canonical and per-entry-HD resolver; story text and gameplay unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SCENE-REFUGEE-BRIDGEWORK",
