@@ -1,0 +1,192 @@
+{
+  "measurement": "Actual alpha128 connected-contour bounds; planned coordinates are not claimed exact. Cohort identities assigned by lane and visible impact/new-entry events.",
+  "drops": {
+    "rainfall": {
+      "left": [
+        362,
+        340,
+        477,
+        515
+      ],
+      "center": [
+        565,
+        890,
+        674,
+        1045
+      ],
+      "right": [
+        777,
+        685,
+        894,
+        858
+      ]
+    },
+    "splash-onset": {
+      "left": [
+        368,
+        697,
+        486,
+        879
+      ],
+      "center": [
+        737,
+        94,
+        852,
+        288
+      ],
+      "right": [
+        803,
+        910,
+        925,
+        1080
+      ]
+    },
+    "splash-crown": {
+      "left": [
+        370,
+        901,
+        489,
+        1079
+      ],
+      "center": [
+        716,
+        458,
+        832,
+        637
+      ],
+      "right": [
+        933,
+        87,
+        1048,
+        267
+      ]
+    },
+    "rain-renewal": {
+      "left": [
+        414,
+        123,
+        537,
+        308
+      ],
+      "center": [
+        581,
+        747,
+        701,
+        917
+      ],
+      "right": [
+        851,
+        489,
+        973,
+        668
+      ]
+    }
+  },
+  "transitions": [
+    {
+      "from": "rainfall",
+      "to": "splash-onset",
+      "survivors": {
+        "left": {
+          "sourceDeltaX": 7.5,
+          "sourceDeltaY": 364,
+          "logicalDeltaX": 0.16746411483253587,
+          "logicalDeltaY": 8.127591706539075
+        },
+        "right": {
+          "sourceDeltaX": 28.5,
+          "sourceDeltaY": 222,
+          "logicalDeltaX": 0.6363636363636364,
+          "logicalDeltaY": 4.956937799043062
+        }
+      }
+    },
+    {
+      "from": "splash-onset",
+      "to": "splash-crown",
+      "survivors": {
+        "left": {
+          "sourceDeltaX": 2.5,
+          "sourceDeltaY": 200,
+          "logicalDeltaX": 0.05582137161084529,
+          "logicalDeltaY": 4.4657097288676235
+        },
+        "center": {
+          "sourceDeltaX": -20.5,
+          "sourceDeltaY": 349,
+          "logicalDeltaX": -0.45773524720893144,
+          "logicalDeltaY": 7.7926634768740035
+        }
+      }
+    },
+    {
+      "from": "splash-crown",
+      "to": "rain-renewal",
+      "survivors": {
+        "center": {
+          "sourceDeltaX": -133.0,
+          "sourceDeltaY": 280,
+          "logicalDeltaX": -2.9696969696969697,
+          "logicalDeltaY": 6.251993620414673
+        },
+        "right": {
+          "sourceDeltaX": -78.5,
+          "sourceDeltaY": 401,
+          "logicalDeltaX": -1.7527910685805423,
+          "logicalDeltaY": 8.953748006379586
+        }
+      }
+    },
+    {
+      "from": "rain-renewal",
+      "to": "rainfall",
+      "survivors": {
+        "left": {
+          "sourceDeltaX": -56.0,
+          "sourceDeltaY": 207,
+          "logicalDeltaX": -1.2503987240829346,
+          "logicalDeltaY": 4.62200956937799
+        },
+        "center": {
+          "sourceDeltaX": -21.5,
+          "sourceDeltaY": 128,
+          "logicalDeltaX": -0.4800637958532695,
+          "logicalDeltaY": 2.858054226475279
+        },
+        "right": {
+          "sourceDeltaX": -76.5,
+          "sourceDeltaY": 190,
+          "logicalDeltaX": -1.708133971291866,
+          "logicalDeltaY": 4.242424242424242
+        }
+      }
+    }
+  ],
+  "nearTopEntries": {
+    "splash-onset": {
+      "lane": "center",
+      "top": 94,
+      "bottom": 288
+    },
+    "splash-crown": {
+      "lane": "right",
+      "top": 87,
+      "bottom": 267
+    },
+    "rain-renewal": {
+      "lane": "left",
+      "top": 123,
+      "bottom": 308
+    }
+  },
+  "contactBottomSourceY": [
+    1079,
+    1112,
+    1148,
+    1089
+  ],
+  "contactSpreadLogicalPx": 1.5406698564593302,
+  "lastFirstContactDeltaLogicalPx": -0.22328548644338117,
+  "interpretation": "New cohorts enter near the upper margin, all continuing cohorts fall, and4to1 has no birth reset. Corrected renewal reduces water-row seam displacement and center-drop stall. Peak crown still sits lower than rainfall and must be judged visually; exact timing alone does not approve this.",
+  "browserObserved": false
+}

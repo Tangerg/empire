@@ -4,22 +4,22 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 457,
+    "formalBound": 465,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
       "faction-kit": 12,
-      "fx": 8,
+      "fx": 10,
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 70,
+      "narrative-static": 76,
       "skill": 48,
       "status": 24,
       "terrain": 32
     },
-    "rawPreservedTopics": 459,
+    "rawPreservedTopics": 465,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1668,13 +1668,20 @@
       "category": "narrative-static",
       "label": "山炉档案炉开封",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/scene-archive-forge-open/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-archive-forge-open.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-archive-forge-open/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-SCENE-NURSERY-DEBATE",
@@ -1682,13 +1689,20 @@
       "category": "narrative-static",
       "label": "银林育儿屋争议",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/scene-nursery-debate/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-nursery-debate.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-nursery-debate/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-SCENE-OLD-FLAG-HOMECOMING",
@@ -1696,13 +1710,20 @@
       "category": "narrative-static",
       "label": "旧旗士兵归乡",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/scene-old-flag-homecoming/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-old-flag-homecoming.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-old-flag-homecoming/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-SCENE-PUBLIC-RATIONS",
@@ -1731,13 +1752,20 @@
       "category": "narrative-static",
       "label": "难民与工程师共同修桥",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/scene-refugee-bridgework/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/scene-refugee-bridgework.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-refugee-bridgework/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-STYLE-BORDER-AUTUMN",
@@ -1745,13 +1773,20 @@
       "category": "narrative-static",
       "label": "灰境边境秋季视觉基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/style-border-autumn/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-border-autumn.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-border-autumn/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-STYLE-CAPITAL-ORDER",
@@ -1759,13 +1794,20 @@
       "category": "narrative-static",
       "label": "阿斯塔里亚王都秩序",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/style-capital-order/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/style-capital-order.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-capital-order/source-review.md",
+        "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+        "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+        "liveGame": "pending; source/native/modeled-cover review only"
+      }
     },
     {
       "topicId": "C01-STYLE-ELDER-PEOPLES",
@@ -8263,11 +8305,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/splash-onset/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-09.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent cyclic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps looping four equal phases, existing lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-10",
@@ -8278,14 +8325,20 @@
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-growing/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-near/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-renewal/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-10/ripple-wide/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-10.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent transparent cyclic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+        "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+        "runtimeBinding": "Canonical FX and HD resolver;12fps looping four equal phases, existing lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+        "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+      }
     },
     {
       "topicId": "C01-FX-11",

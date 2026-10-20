@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-FX-09",
+  "selectedRevision": "revision-2/correction-1",
+  "status": "accepted source/static-phase candidate; live/browser playback pending",
+  "sources": [
+    {
+      "phase": "rainfall",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/rainfall/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/rainfall/raw.png",
+      "sha256": "8ebf7f8f93ec873e413f8eeb8df5641ff3039ae400227a5b8e152b625a29f8ab",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/rainfall/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/rainfall/master.png"
+    },
+    {
+      "phase": "splash-onset",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/splash-onset/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/splash-onset/raw.png",
+      "sha256": "e445144b41c1d601206ea8416d24b332b1dd0735d530a5a418318a248742a701",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/splash-onset/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/splash-onset/master.png"
+    },
+    {
+      "phase": "splash-crown",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/splash-crown/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/splash-crown/raw.png",
+      "sha256": "0398a74c44ae7431fa0e8f68f808c25018dea79e65c0a784a829db631464a473",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/splash-crown/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/splash-crown/master.png"
+    },
+    {
+      "phase": "rain-renewal",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/rain-renewal/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/rain-renewal/raw.png",
+      "sha256": "2ca0b8914ea43c40a7d7fbb0de72d59a310c4163d225db3560811a4a54de7514",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2/correction-1/rain-renewal/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/rain-renewal/master.png"
+    }
+  ],
+  "preservedEarlierEvidence": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09",
+    "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-09/revision-2"
+  ],
+  "drawings": "Four selected independently authored drawings. The first pair is copied byte-for-byte from revision 2; phases 3 and 4 are bounded imagegen corrections. No prior version was overwritten."
+}

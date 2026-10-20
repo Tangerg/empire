@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-09": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "rainfall",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/rainfall/master.png",
+          "sha256": "8ebf7f8f93ec873e413f8eeb8df5641ff3039ae400227a5b8e152b625a29f8ab"
+        },
+        {
+          "phase": "splash-onset",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/splash-onset/master.png",
+          "sha256": "e445144b41c1d601206ea8416d24b332b1dd0735d530a5a418318a248742a701"
+        },
+        {
+          "phase": "splash-crown",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/splash-crown/master.png",
+          "sha256": "0398a74c44ae7431fa0e8f68f808c25018dea79e65c0a784a829db631464a473"
+        },
+        {
+          "phase": "rain-renewal",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/revision-2/correction-1/rain-renewal/master.png",
+          "sha256": "2ca0b8914ea43c40a7d7fbb0de72d59a310c4163d225db3560811a4a54de7514"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  },
+  "note": "Selected source/static-phase candidate. Source paths are proposed repository destinations, not a deployment claim. Copy this revision subtree without replacing earlier masters. See final-quartet.json for verified existing staging paths."
+}

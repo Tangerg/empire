@@ -1,0 +1,191 @@
+{
+  "topicId": "C01-STYLE-BORDER-AUTUMN",
+  "label": "灰境边境秋季视觉基准",
+  "sourceReady": true,
+  "selectedNative": "master.png",
+  "formalCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "opaqueFullScene": true,
+  "role": "visual-reference plate",
+  "noAuthoredConsumerOrLiveRenderClaim": true,
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 339,
+      "sha256": "de133018bd2ae47a7cef03219e550d0c3a8740aa9c033aa1e788be30a319dcc3"
+    },
+    {
+      "path": "audited-source.json",
+      "bytes": 3627,
+      "sha256": "b9928b26e6d734e12c1befcfa68ef0b594149a84700973fb836ceb9a18cb8eea"
+    },
+    {
+      "path": "authority-hashes.json",
+      "bytes": 787,
+      "sha256": "95374b3beba9a70a41f5005e05ee7e22e99c2817d146913da28cea26b57d24c3"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 3472,
+      "sha256": "59b6fce7483c9f4a6bddc306bed0f6414a2aceff3269d0ecaaedad589c711adf"
+    },
+    {
+      "path": "consumer-evidence.json",
+      "bytes": 973,
+      "sha256": "77133194a9b37eb9c8999bc59d93a05afc67743a3eb5fcc85d89c86274de3e55"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 756,
+      "sha256": "4880a217385ef8ac47a155084f7dcf3804a944b17e399c09b9baaae397e7a7c5"
+    },
+    {
+      "path": "fresh-consumer-search.txt",
+      "bytes": 124,
+      "sha256": "45750e702e1890de705ec7b8d27e1dd53236798082f4fbffc76534bb7815d381"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 456,
+      "sha256": "b73715d4f374e7a2d9c6a37d002ee869b417ec62701080d75952361f2f19329d"
+    },
+    {
+      "path": "master.png",
+      "bytes": 3036391,
+      "sha256": "df771089504160ee48571f4350068f45e185b4717c766ba6b6bbe045165f3d76"
+    },
+    {
+      "path": "native.png",
+      "bytes": 3036391,
+      "sha256": "df771089504160ee48571f4350068f45e185b4717c766ba6b6bbe045165f3d76"
+    },
+    {
+      "path": "original-cell-617.png",
+      "bytes": 850484,
+      "sha256": "c88a2e5f2e9f36ac50f75a09fd28411e5b152ba26a14deb7120a65ba46b7239f"
+    },
+    {
+      "path": "original-fullboard.png",
+      "bytes": 3348669,
+      "sha256": "0d4c2aed1c0a62c9b55861234d9264873ae61dcd2eaa158c4688e26f7c60d0cf"
+    },
+    {
+      "path": "original-pixel-verification.json",
+      "bytes": 285,
+      "sha256": "252a5ba12de80b2bf7142ec5deb4b3b61a70480dc79090cbe669ad997197ae64"
+    },
+    {
+      "path": "original-runtime-256x144.png",
+      "bytes": 93931,
+      "sha256": "2b96362ea410b49b3f1f0590516ade3a033472e8b6fe945d4e7f83aa0701b0df"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 3941,
+      "sha256": "705c16a374c273ff01dfb230090969ce113af778b8ad333412434a868d01f1d0"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 177628,
+      "sha256": "f4a8448bb0e78db2fe79c2590b79b53d33cf6febd6a54e250f1158fac0a4df56"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 212282,
+      "sha256": "ee0ea63eb28ecdb811caa1d9e5006bd927c6e272cb2448bfc1593c46832dc351"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 1205991,
+      "sha256": "b89fe4398fb02f828a13b6d3c13db83e3fd4bfd1a104e24507c3d37bf19258c8"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 629609,
+      "sha256": "46276b93266e6bf3c2850fecf8f0557c494d72b9bf4a7a7406832cc9e2cab335"
+    },
+    {
+      "path": "qa-covers-contact-sheet.png",
+      "bytes": 742989,
+      "sha256": "2b02477242bcd41487fd931856061f8788197c4c0f4f8f4fd5b51acca482ffd6"
+    },
+    {
+      "path": "qa-exact-crop-512x288.png",
+      "bytes": 378789,
+      "sha256": "9f412b1e7bc7b26fbcdc6bab9a5fc08429d911d7594e23230d918833499c89b9"
+    },
+    {
+      "path": "qa-full-native-preview.png",
+      "bytes": 833063,
+      "sha256": "01dd1474ad7fe376c0f2937aacf46557f7d3438be17921ea5d212034214fcb1f"
+    },
+    {
+      "path": "qa-logical-256x144.png",
+      "bytes": 100824,
+      "sha256": "a536e7929679de780f1908c1bf6ce8a7881f7bd432e4602427ca0c32a153f541"
+    },
+    {
+      "path": "qa-source-native-1664x936.png",
+      "bytes": 3260550,
+      "sha256": "17f1353104bd9834ececbc21b9c5cd19d79d0808005aefd200127dcc118786b4"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 3036391,
+      "sha256": "df771089504160ee48571f4350068f45e185b4717c766ba6b6bbe045165f3d76"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 461,
+      "sha256": "9b37694baabb5942952d1742fef8db5feb24ceb5eae9e06e7503d1f70179a2b0"
+    },
+    {
+      "path": "request.json",
+      "bytes": 4228,
+      "sha256": "3c66c4aebbd287b97f343978441ad804bf22275198ee82acda717b00bce23376"
+    },
+    {
+      "path": "semantic-reconstruction.json",
+      "bytes": 1079,
+      "sha256": "39cda59a2bba502bf4f143471d185020fe861fcb8d81883881b63c8507ed197f"
+    },
+    {
+      "path": "source-qa.json",
+      "bytes": 1233,
+      "sha256": "0808b86b76b4a4826321a1625f36248462d4060bbb4140dfc194c4000ea30492"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 4717,
+      "sha256": "646500b9609956f3540ac0cfe06aeaef43f8cf9cb51186c065916a6e31b638dd"
+    },
+    {
+      "path": "story-reference-hashes.json",
+      "bytes": 1384,
+      "sha256": "01a350f00f3e2844fe5de1b0d940078073db196208cc882b70f63d6c730cbb88"
+    },
+    {
+      "path": "story-source-context.txt",
+      "bytes": 112202,
+      "sha256": "42444ea3f900cb11c3ed611e9ade92df446a36737964db79807f6c986463dc4c"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 3457,
+      "sha256": "b4d41d28e82dd359f3eb32b76117016be1c6f375d69114f49891279c5ef88892"
+    }
+  ]
+}

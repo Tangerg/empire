@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "rainfall",
+    "edgeAlphaMax": 1,
+    "edgeAlphaNonzero": 12,
+    "maxBlackWhiteEdgeRGBDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "splash-onset",
+    "edgeAlphaMax": 0,
+    "edgeAlphaNonzero": 0,
+    "maxBlackWhiteEdgeRGBDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "splash-crown",
+    "edgeAlphaMax": 0,
+    "edgeAlphaNonzero": 0,
+    "maxBlackWhiteEdgeRGBDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "rain-renewal",
+    "edgeAlphaMax": 0,
+    "edgeAlphaNonzero": 0,
+    "maxBlackWhiteEdgeRGBDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "sourcePixelsUnchanged": true
+  }
+]

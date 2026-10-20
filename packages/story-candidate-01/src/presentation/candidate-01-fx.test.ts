@@ -75,6 +75,8 @@ describe('approved FX source and export binding', () => {
     'C01-FX-06': ['low-ring', 'rising-ring', 'sealed-ring', 'fading-fragments'],
     'C01-FX-07': ['airborne-burst', 'falling-pieces', 'falling-remnants', 'settled-heap'],
     'C01-FX-08': ['clustered-echoes', 'rising-echoes', 'dissolving-echoes', 'wisp-remnants'],
+    'C01-FX-09': ['rainfall', 'splash-onset', 'splash-crown', 'rain-renewal'],
+    'C01-FX-10': ['ripple-near', 'ripple-growing', 'ripple-wide', 'ripple-renewal'],
   };
   it.each(Object.entries(fxOverrides.assets))('binds %s to its reviewed full-canvas phases at both densities', (topic, override) => {
     const record = assets.candidate01Asset(topic);

@@ -1,0 +1,67 @@
+{
+  "topicId": "C01-FX-10",
+  "label": "河流浅水",
+  "status": "source-alpha-export-and-static-phase-review-complete; live-playback-unobserved",
+  "phaseOrder": [
+    "ripple-near",
+    "ripple-growing",
+    "ripple-wide",
+    "ripple-renewal"
+  ],
+  "sourceCount": 4,
+  "attemptCount": 7,
+  "independentBuiltInImagegenCalls": 7,
+  "rawMasterByteIdentical": true,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceEdgeMaxima": [
+    1,
+    0,
+    1,
+    1
+  ],
+  "sourceEdgeProof": "qa/source-edge-composite-proof.json",
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perFrameFitCropShiftFadeAlphaCleanup": false,
+  "native32And64SixBackgroundsReviewed": true,
+  "fullAndSeamStripReviewed": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "stoneMaximumBoundsSpreadSourcePx": 2,
+  "stoneMaximumBoundsSpreadLogicalPx": 0.044657097288676235,
+  "cohortReview": "qa/COHORT-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "actualCaveats": [
+    "Uneven outward spacing of small side cohorts, including a larger seam step.",
+    "Front-arc identities are not individually unambiguous; do not present same-center shrinkage as outward motion.",
+    "Wide-to-renewal has an18.2%total alpha-mass reduction; renewal is slightly bluer/darker.",
+    "Source stones have subpixel-native contour/shading variations; they are not pixel-identical."
+  ],
+  "exactAPNGTimingVerified": true,
+  "apngCount": 28,
+  "verifiedDecodedFrames": 112,
+  "canonicalTiming": {
+    "fps": 12,
+    "loop": true,
+    "frameDurationSeconds": "1/12",
+    "cycleSeconds": "1/3",
+    "lastFrameHold": false,
+    "old420msRemovalApplies": false
+  },
+  "browserObservedEightCycles": false,
+  "browserReason": "Parent reports known blocked browser/GPU environment; no repeated escalation attempted. APNG structure and decoded frames are verified offline only.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoCodeRuntimeOrGitWrites": false
+}

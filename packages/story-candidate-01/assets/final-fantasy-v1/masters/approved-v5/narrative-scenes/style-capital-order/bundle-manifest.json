@@ -1,0 +1,191 @@
+{
+  "topicId": "C01-STYLE-CAPITAL-ORDER",
+  "label": "阿斯塔里亚王都秩序",
+  "sourceReady": true,
+  "selectedNative": "master.png",
+  "formalCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "nativeDensity": 6.5,
+  "opaqueFullScene": true,
+  "role": "visual-reference plate",
+  "noAuthoredConsumerOrLiveRenderClaim": true,
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 339,
+      "sha256": "cb922ad911ef6b1033365349dfbf933adf4b1c7d18a68d541dd572a67fab01ec"
+    },
+    {
+      "path": "audited-source.json",
+      "bytes": 3618,
+      "sha256": "b18a0c2bc3ae9a00729a9aff3f09c4cb6ab9a07be0b0fefcb97152b9d9589b08"
+    },
+    {
+      "path": "authority-hashes.json",
+      "bytes": 787,
+      "sha256": "95374b3beba9a70a41f5005e05ee7e22e99c2817d146913da28cea26b57d24c3"
+    },
+    {
+      "path": "build-qa.py",
+      "bytes": 3472,
+      "sha256": "59b6fce7483c9f4a6bddc306bed0f6414a2aceff3269d0ecaaedad589c711adf"
+    },
+    {
+      "path": "consumer-evidence.json",
+      "bytes": 973,
+      "sha256": "2e3d3729dd7fb5fde4ae93e65eb2de982c486ddc197f1d72e4c644db3d0885c6"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 756,
+      "sha256": "183ee0bbb1ad31422403d52beec8d79a173700000516a925fe621223d30e77f4"
+    },
+    {
+      "path": "fresh-consumer-search.txt",
+      "bytes": 124,
+      "sha256": "76378b10a36920713a104c497129e7ebe24d68c2d53590490ae2c11586c0843c"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 456,
+      "sha256": "0d1a88b0b377bb12f3918d9ef3806c29e779021e7cd0d69094e21fbf75895eae"
+    },
+    {
+      "path": "master.png",
+      "bytes": 2634063,
+      "sha256": "8e9c2445d204d0b70957b4e3b6c7515c0d4e09fd9dcfdef5907cdb2f0c4e5a2c"
+    },
+    {
+      "path": "native.png",
+      "bytes": 2634063,
+      "sha256": "8e9c2445d204d0b70957b4e3b6c7515c0d4e09fd9dcfdef5907cdb2f0c4e5a2c"
+    },
+    {
+      "path": "original-cell-617.png",
+      "bytes": 747609,
+      "sha256": "e1051c707dacb786eb1295b55b125a0327bd282b9e8227205bdfd363bb409ec7"
+    },
+    {
+      "path": "original-fullboard.png",
+      "bytes": 3007939,
+      "sha256": "7642d75dd7dbd1892a5802cf62657bd9475e5d700ef7b9d177d463c877160670"
+    },
+    {
+      "path": "original-pixel-verification.json",
+      "bytes": 285,
+      "sha256": "574ee404e7d4278216bc35fdbc0c1c81ccbb90426e1302d8151a7dbff0cc77cf"
+    },
+    {
+      "path": "original-runtime-256x144.png",
+      "bytes": 87217,
+      "sha256": "d49c12f76ae8c70094862321d3c769ee82d7d698f23a731388edb23e0fb7c7ae"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 4241,
+      "sha256": "a7f3e6abc603b29495007b88fbd7efdf32aecb965d527da92b2bec79d0a539e1"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 172123,
+      "sha256": "afb66ce0cb23291b97234711617c4c6eae1cd1130945c51494db70f54b3b0560"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 206049,
+      "sha256": "902d02c4202876bed18daf778ac80d20ea1a5c7272c00f93e0788a9dbd74886e"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 1110446,
+      "sha256": "aa0a2a21d2dec923922cc49fa9d40f339a483bacf9e743de7c1d84edb3008659"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 596196,
+      "sha256": "5924ea544616ccf1c49eab0704003e3dc62ad7039f6718898a64ea0b47003e2e"
+    },
+    {
+      "path": "qa-covers-contact-sheet.png",
+      "bytes": 723784,
+      "sha256": "f42922c12a6e7a099d03dd7bf1b25d0fca06d6a4d3c704d4282163bf0263ce64"
+    },
+    {
+      "path": "qa-exact-crop-512x288.png",
+      "bytes": 360747,
+      "sha256": "0f954492bb435de59c9d9e14de328cb1755fb4a2c8a09b04a3a49d41f497d3bb"
+    },
+    {
+      "path": "qa-full-native-preview.png",
+      "bytes": 769418,
+      "sha256": "a646945e8e66a1e7a0ee7b8aa905bee78c703ea3618dd156b0c5f7f0aa256b70"
+    },
+    {
+      "path": "qa-logical-256x144.png",
+      "bytes": 99871,
+      "sha256": "af69bcb6d7eb799d2714058ea4502bbf869b21fa786d7cec2955e247be83a814"
+    },
+    {
+      "path": "qa-source-native-1664x936.png",
+      "bytes": 2906504,
+      "sha256": "003b5f676887ae546ed804c806dd17c84600d31de452a050d212e18a460f34b0"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 2634063,
+      "sha256": "8e9c2445d204d0b70957b4e3b6c7515c0d4e09fd9dcfdef5907cdb2f0c4e5a2c"
+    },
+    {
+      "path": "reference-hashes.json",
+      "bytes": 461,
+      "sha256": "9b37694baabb5942952d1742fef8db5feb24ceb5eae9e06e7503d1f70179a2b0"
+    },
+    {
+      "path": "request.json",
+      "bytes": 4528,
+      "sha256": "7caeeab4cee4c665e168b51801937911f8eaf9b400cf5a7d459601e6bb21c674"
+    },
+    {
+      "path": "semantic-reconstruction.json",
+      "bytes": 1059,
+      "sha256": "6424968e575e3c3659b0fa209b890142dd58401cf70b6358dce3787fbcb80336"
+    },
+    {
+      "path": "source-qa.json",
+      "bytes": 1233,
+      "sha256": "7dc66809cdc73030c1b694eb9b599278cb541821b2671240b58cb34e0af25e7c"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 5307,
+      "sha256": "a728544c97ad565cf9ecc2c00702feb544fa8708d6891a50f8687d623072875b"
+    },
+    {
+      "path": "story-reference-hashes.json",
+      "bytes": 1392,
+      "sha256": "da367eb78df8ce154f4be0401acf78f5d68a4c9874649150691521092ec94c82"
+    },
+    {
+      "path": "story-source-context.txt",
+      "bytes": 98351,
+      "sha256": "7a6ddac610c5edde4754514dcc63e01324e52e144dc84531b12bafbfad062d11"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 3672,
+      "sha256": "0daa415b310d0ebccf12baf634252db3a565ceecbdee0be0b5008cacc4a80358"
+    }
+  ]
+}

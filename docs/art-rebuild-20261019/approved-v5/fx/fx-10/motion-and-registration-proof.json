@@ -1,0 +1,1004 @@
+{
+  "topicId": "C01-FX-10",
+  "measurement": "Diagnostic color/alpha segmentation only. Stone masks: alpha>=128, R>B+3, R>15, connected area>1000. Water masks: alpha>=128, B>R+15, connected area>200. No masks are applied to images.",
+  "frames": [
+    {
+      "phase": "ripple-near",
+      "stones": [
+        {
+          "bounds": [
+            450,
+            708,
+            625,
+            806
+          ],
+          "pixels": 13058,
+          "centroid": [
+            539.3432378618471,
+            761.9258691989585
+          ]
+        },
+        {
+          "bounds": [
+            645,
+            747,
+            784,
+            820
+          ],
+          "pixels": 7694,
+          "centroid": [
+            714.1884585391214,
+            785.7988042630622
+          ]
+        }
+      ],
+      "waterComponents": [
+        {
+          "bounds": [
+            193,
+            707,
+            348,
+            772
+          ],
+          "pixels": 1698,
+          "centroid": [
+            259.36925795053,
+            732.0842167255595
+          ]
+        },
+        {
+          "bounds": [
+            908,
+            707,
+            1063,
+            780
+          ],
+          "pixels": 1788,
+          "centroid": [
+            997.3730425055928,
+            734.3165548098434
+          ]
+        },
+        {
+          "bounds": [
+            289,
+            736,
+            428,
+            848
+          ],
+          "pixels": 2520,
+          "centroid": [
+            330.7436507936508,
+            784.8376984126984
+          ]
+        },
+        {
+          "bounds": [
+            831,
+            737,
+            965,
+            851
+          ],
+          "pixels": 2530,
+          "centroid": [
+            924.2383399209486,
+            786.9320158102767
+          ]
+        },
+        {
+          "bounds": [
+            782,
+            761,
+            874,
+            839
+          ],
+          "pixels": 1717,
+          "centroid": [
+            841.658124635993,
+            801.9213744903902
+          ]
+        },
+        {
+          "bounds": [
+            380,
+            764,
+            484,
+            840
+          ],
+          "pixels": 1691,
+          "centroid": [
+            412.49911295091664,
+            806.0898876404494
+          ]
+        },
+        {
+          "bounds": [
+            182,
+            818,
+            298,
+            883
+          ],
+          "pixels": 1319,
+          "centroid": [
+            230.76573161485973,
+            856.5337376800607
+          ]
+        },
+        {
+          "bounds": [
+            955,
+            818,
+            1072,
+            884
+          ],
+          "pixels": 1328,
+          "centroid": [
+            1022.0760542168675,
+            856.8908132530121
+          ]
+        },
+        {
+          "bounds": [
+            540,
+            844,
+            717,
+            856
+          ],
+          "pixels": 1413,
+          "centroid": [
+            627.9780608634112,
+            848.6801132342533
+          ]
+        },
+        {
+          "bounds": [
+            372,
+            855,
+            577,
+            893
+          ],
+          "pixels": 1952,
+          "centroid": [
+            469.9697745901639,
+            878.2920081967213
+          ]
+        },
+        {
+          "bounds": [
+            790,
+            858,
+            876,
+            880
+          ],
+          "pixels": 720,
+          "centroid": [
+            833.2513888888889,
+            870.0972222222222
+          ]
+        },
+        {
+          "bounds": [
+            559,
+            905,
+            769,
+            927
+          ],
+          "pixels": 2010,
+          "centroid": [
+            664.4124378109452,
+            917.644776119403
+          ]
+        }
+      ],
+      "waterCorePixelCount": 20686,
+      "waterCoreMeanRGB": [
+        82.09310644880595,
+        118.23242772889877,
+        157.51749975829063
+      ]
+    },
+    {
+      "phase": "ripple-growing",
+      "stones": [
+        {
+          "bounds": [
+            449,
+            707,
+            626,
+            807
+          ],
+          "pixels": 13333,
+          "centroid": [
+            539.2859821495538,
+            761.9336983424586
+          ]
+        },
+        {
+          "bounds": [
+            646,
+            746,
+            785,
+            820
+          ],
+          "pixels": 7849,
+          "centroid": [
+            714.9076315454198,
+            785.8650783539305
+          ]
+        }
+      ],
+      "waterComponents": [
+        {
+          "bounds": [
+            166,
+            702,
+            276,
+            743
+          ],
+          "pixels": 929,
+          "centroid": [
+            214.1345532831001,
+            718.2411194833154
+          ]
+        },
+        {
+          "bounds": [
+            985,
+            703,
+            1091,
+            743
+          ],
+          "pixels": 900,
+          "centroid": [
+            1043.4622222222222,
+            718.8177777777778
+          ]
+        },
+        {
+          "bounds": [
+            213,
+            723,
+            376,
+            850
+          ],
+          "pixels": 3106,
+          "centroid": [
+            260.3235672891178,
+            777.796200901481
+          ]
+        },
+        {
+          "bounds": [
+            883,
+            723,
+            1043,
+            851
+          ],
+          "pixels": 3085,
+          "centroid": [
+            995.5341977309563,
+            778.8194489465154
+          ]
+        },
+        {
+          "bounds": [
+            325,
+            747,
+            432,
+            850
+          ],
+          "pixels": 2504,
+          "centroid": [
+            361.3698083067093,
+            794.8626198083067
+          ]
+        },
+        {
+          "bounds": [
+            828,
+            748,
+            929,
+            852
+          ],
+          "pixels": 2398,
+          "centroid": [
+            893.7068390325271,
+            797.2435362802336
+          ]
+        },
+        {
+          "bounds": [
+            102,
+            770,
+            129,
+            826
+          ],
+          "pixels": 507,
+          "centroid": [
+            111.5680473372781,
+            796.2110453648916
+          ]
+        },
+        {
+          "bounds": [
+            1128,
+            770,
+            1155,
+            826
+          ],
+          "pixels": 525,
+          "centroid": [
+            1144.6380952380953,
+            796.3180952380952
+          ]
+        },
+        {
+          "bounds": [
+            411,
+            787,
+            490,
+            828
+          ],
+          "pixels": 770,
+          "centroid": [
+            439.9038961038961,
+            812.2597402597403
+          ]
+        },
+        {
+          "bounds": [
+            520,
+            843,
+            737,
+            861
+          ],
+          "pixels": 1892,
+          "centroid": [
+            626.8319238900634,
+            852.2362579281184
+          ]
+        },
+        {
+          "bounds": [
+            152,
+            858,
+            254,
+            904
+          ],
+          "pixels": 914,
+          "centroid": [
+            196.97045951859957,
+            883.9748358862145
+          ]
+        },
+        {
+          "bounds": [
+            1004,
+            858,
+            1106,
+            906
+          ],
+          "pixels": 935,
+          "centroid": [
+            1059.3058823529411,
+            884.7989304812834
+          ]
+        },
+        {
+          "bounds": [
+            304,
+            860,
+            551,
+            907
+          ],
+          "pixels": 2410,
+          "centroid": [
+            418.64066390041495,
+            889.9576763485477
+          ]
+        },
+        {
+          "bounds": [
+            817,
+            860,
+            952,
+            898
+          ],
+          "pixels": 1132,
+          "centroid": [
+            885.7897526501766,
+            882.291519434629
+          ]
+        },
+        {
+          "bounds": [
+            577,
+            920,
+            793,
+            941
+          ],
+          "pixels": 1960,
+          "centroid": [
+            685.9816326530612,
+            931.3729591836735
+          ]
+        }
+      ],
+      "waterCorePixelCount": 23971,
+      "waterCoreMeanRGB": [
+        74.05352300696676,
+        106.98302115055692,
+        148.4769513161737
+      ]
+    },
+    {
+      "phase": "ripple-wide",
+      "stones": [
+        {
+          "bounds": [
+            449,
+            707,
+            626,
+            807
+          ],
+          "pixels": 13414,
+          "centroid": [
+            539.2244669748025,
+            761.9181452214104
+          ]
+        },
+        {
+          "bounds": [
+            646,
+            746,
+            786,
+            820
+          ],
+          "pixels": 7906,
+          "centroid": [
+            714.9772324816595,
+            785.8565646344548
+          ]
+        }
+      ],
+      "waterComponents": [
+        {
+          "bounds": [
+            115,
+            704,
+            239,
+            745
+          ],
+          "pixels": 1108,
+          "centroid": [
+            169.98194945848377,
+            719.836642599278
+          ]
+        },
+        {
+          "bounds": [
+            1018,
+            704,
+            1141,
+            745
+          ],
+          "pixels": 1098,
+          "centroid": [
+            1086.2349726775956,
+            719.6648451730418
+          ]
+        },
+        {
+          "bounds": [
+            148,
+            727,
+            348,
+            866
+          ],
+          "pixels": 4215,
+          "centroid": [
+            205.68256227758008,
+            789.8436536180309
+          ]
+        },
+        {
+          "bounds": [
+            915,
+            727,
+            1108,
+            867
+          ],
+          "pixels": 4270,
+          "centroid": [
+            1050.9454332552693,
+            790.1252927400468
+          ]
+        },
+        {
+          "bounds": [
+            282,
+            748,
+            419,
+            862
+          ],
+          "pixels": 3321,
+          "centroid": [
+            326.9096657633243,
+            804.4065040650406
+          ]
+        },
+        {
+          "bounds": [
+            839,
+            748,
+            974,
+            866
+          ],
+          "pixels": 3425,
+          "centroid": [
+            929.0937226277372,
+            805.4598540145986
+          ]
+        },
+        {
+          "bounds": [
+            397,
+            789,
+            485,
+            834
+          ],
+          "pixels": 935,
+          "centroid": [
+            425.8545454545455,
+            817.1839572192513
+          ]
+        },
+        {
+          "bounds": [
+            516,
+            845,
+            766,
+            869
+          ],
+          "pixels": 2446,
+          "centroid": [
+            640.8887980376124,
+            859.0322976287816
+          ]
+        },
+        {
+          "bounds": [
+            94,
+            878,
+            200,
+            922
+          ],
+          "pixels": 935,
+          "centroid": [
+            142.1764705882353,
+            902.1700534759358
+          ]
+        },
+        {
+          "bounds": [
+            1058,
+            878,
+            1168,
+            922
+          ],
+          "pixels": 1039,
+          "centroid": [
+            1116.9769008662174,
+            902.9595765158806
+          ]
+        },
+        {
+          "bounds": [
+            271,
+            881,
+            538,
+            930
+          ],
+          "pixels": 2956,
+          "centroid": [
+            396.6826792963464,
+            913.2300405953991
+          ]
+        },
+        {
+          "bounds": [
+            839,
+            882,
+            1001,
+            922
+          ],
+          "pixels": 1449,
+          "centroid": [
+            924.4409937888199,
+            906.1890959282264
+          ]
+        },
+        {
+          "bounds": [
+            554,
+            944,
+            830,
+            969
+          ],
+          "pixels": 3097,
+          "centroid": [
+            690.002583144979,
+            958.0038747174685
+          ]
+        }
+      ],
+      "waterCorePixelCount": 30295,
+      "waterCoreMeanRGB": [
+        75.76217197557352,
+        110.09740881333553,
+        155.02099356329427
+      ]
+    },
+    {
+      "phase": "ripple-renewal",
+      "stones": [
+        {
+          "bounds": [
+            449,
+            708,
+            626,
+            808
+          ],
+          "pixels": 13322,
+          "centroid": [
+            539.5984086473502,
+            762.4468548266026
+          ]
+        },
+        {
+          "bounds": [
+            646,
+            746,
+            785,
+            820
+          ],
+          "pixels": 7829,
+          "centroid": [
+            714.9546557670201,
+            786.0254183165155
+          ]
+        }
+      ],
+      "waterComponents": [
+        {
+          "bounds": [
+            251,
+            752,
+            357,
+            860
+          ],
+          "pixels": 3551,
+          "centroid": [
+            290.4762038862292,
+            807.4525485778654
+          ]
+        },
+        {
+          "bounds": [
+            899,
+            752,
+            1003,
+            861
+          ],
+          "pixels": 3568,
+          "centroid": [
+            962.8183856502242,
+            807.618273542601
+          ]
+        },
+        {
+          "bounds": [
+            383,
+            765,
+            479,
+            834
+          ],
+          "pixels": 1777,
+          "centroid": [
+            413.2048396173326,
+            804.9622960045019
+          ]
+        },
+        {
+          "bounds": [
+            783,
+            766,
+            868,
+            836
+          ],
+          "pixels": 1748,
+          "centroid": [
+            838.6052631578948,
+            804.4319221967963
+          ]
+        },
+        {
+          "bounds": [
+            1119,
+            768,
+            1165,
+            801
+          ],
+          "pixels": 436,
+          "centroid": [
+            1144.8899082568807,
+            782.6192660550458
+          ]
+        },
+        {
+          "bounds": [
+            90,
+            769,
+            135,
+            801
+          ],
+          "pixels": 430,
+          "centroid": [
+            108.47441860465116,
+            782.4976744186047
+          ]
+        },
+        {
+          "bounds": [
+            433,
+            790,
+            478,
+            820
+          ],
+          "pixels": 395,
+          "centroid": [
+            447.9493670886076,
+            807.4101265822785
+          ]
+        },
+        {
+          "bounds": [
+            776,
+            790,
+            820,
+            820
+          ],
+          "pixels": 390,
+          "centroid": [
+            804.3410256410257,
+            807.2923076923076
+          ]
+        },
+        {
+          "bounds": [
+            571,
+            822,
+            668,
+            833
+          ],
+          "pixels": 700,
+          "centroid": [
+            618.5157142857142,
+            826.3514285714285
+          ]
+        },
+        {
+          "bounds": [
+            89,
+            840,
+            142,
+            875
+          ],
+          "pixels": 547,
+          "centroid": [
+            111.05118829981718,
+            858.6873857404022
+          ]
+        },
+        {
+          "bounds": [
+            547,
+            840,
+            721,
+            856
+          ],
+          "pixels": 1779,
+          "centroid": [
+            632.7262507026419,
+            847.1382799325464
+          ]
+        },
+        {
+          "bounds": [
+            1113,
+            840,
+            1166,
+            875
+          ],
+          "pixels": 543,
+          "centroid": [
+            1142.4493554327807,
+            858.5764272559852
+          ]
+        },
+        {
+          "bounds": [
+            458,
+            864,
+            605,
+            894
+          ],
+          "pixels": 1659,
+          "centroid": [
+            527.9276672694394,
+            882.1518987341772
+          ]
+        },
+        {
+          "bounds": [
+            650,
+            864,
+            797,
+            894
+          ],
+          "pixels": 1652,
+          "centroid": [
+            725.4606537530267,
+            882.2675544794189
+          ]
+        },
+        {
+          "bounds": [
+            325,
+            927,
+            458,
+            949
+          ],
+          "pixels": 942,
+          "centroid": [
+            389.73460721868366,
+            940.6825902335456
+          ]
+        },
+        {
+          "bounds": [
+            795,
+            927,
+            929,
+            949
+          ],
+          "pixels": 936,
+          "centroid": [
+            863.2980769230769,
+            940.7393162393163
+          ]
+        }
+      ],
+      "waterCorePixelCount": 21054,
+      "waterCoreMeanRGB": [
+        66.51643393179444,
+        100.07860739051962,
+        155.93089199202052
+      ]
+    }
+  ],
+  "stoneBoundsSpreadSourcePx": [
+    [
+      1,
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      1,
+      2,
+      0
+    ]
+  ],
+  "stoneMaximumBoundsSpreadSourcePx": 2,
+  "stoneMaximumBoundsSpreadLogicalPx": 0.044657097288676235,
+  "stoneCentroidSpreadSourcePx": [
+    [
+      0.373941672547744,
+      0.528709605192148
+    ],
+    [
+      0.7887739425381142,
+      0.22661405345331787
+    ]
+  ],
+  "stoneMaskIntersectionOverUnionVsNear": [
+    1.0,
+    0.9779255695486062,
+    0.9716012934064389,
+    0.9755315638112301
+  ],
+  "stoneContactBottomSourceY": [
+    [
+      806,
+      820
+    ],
+    [
+      807,
+      820
+    ],
+    [
+      807,
+      820
+    ],
+    [
+      808,
+      820
+    ]
+  ],
+  "stationaryReview": "Both stones retain their location, relative size, silhouette and water contact at native32/64. They are not byte-identical: source-level contour/shading differences remain, max2source-pixel bounds spread (0.045logicalpx). No transform correction was used.",
+  "sideArcCohortEvidence": [
+    {
+      "identity": "A, inner near-phase arcs becoming outer renewal arcs",
+      "leftmostXByPhase": [
+        380,
+        325,
+        282,
+        251
+      ],
+      "nextNearOuterFragmentsX": [
+        193,
+        182
+      ],
+      "interpretation": "Left flank progresses outward at every sampled step; corresponding right flank ends874,929,974,1003 then1063/1072."
+    },
+    {
+      "identity": "B, middle near-phase arcs becoming oldest outgoing fragments",
+      "leftmostXByPhase": [
+        289,
+        213,
+        148,
+        89
+      ],
+      "interpretation": "Moves outward and breaks into small far-side fragments; those fragments retire before the next near phase."
+    },
+    {
+      "identity": "D, new near-stone cohort visible from growing",
+      "leftmostXGrowingWideRenewalNextNear": [
+        411,
+        397,
+        383,
+        289
+      ],
+      "interpretation": "All sampled left positions move outward, but the seam step94px is much larger than the14px prior steps. Its precise association with front arcs is ambiguous."
+    },
+    {
+      "identity": "E, newborn renewal cohort",
+      "leftmostXRenewalNextNear": [
+        433,
+        380
+      ],
+      "rightmostXRenewalNextNear": [
+        820,
+        874
+      ],
+      "frontBoundsYRenewalNextNear": [
+        [
+          822,
+          833
+        ],
+        [
+          844,
+          856
+        ]
+      ],
+      "interpretation": "New inner generation expands at4to1; it does not require old outer rings to shrink inward."
+    }
+  ],
+  "frontArcCaveat": "Do not identify every front segment as the same ring. Wide has a central arc at845..869, paired lower pieces881..930 and oldest front944..969. Renewal has new inner822..833, another center840..856, split front864..894 and outgoing pieces927..949. A naive same-center matching would report apparent upward contraction from845..869to840..856. Intended roles are advancing/splitting older pieces plus newborn inner cohorts, but exact front-arc identity is not unambiguous from the four drawings. The static sequence is plausible, not proof of smooth motion.",
+  "densityCaveat": "Whole-source alpha masses41115/44828/51254/41931. Wide-to-renewal drops18.2%; renewal-to-near drops1.9%. Oldest fragments break up while inner replacements persist. This avoids all-ring disappearance but does not prove absence of perceived density pulse.",
+  "colorCaveat": "Blue-gray water becomes slightly darker/bluer in renewal. Full/native composites remain in the restrained source palette; it is an authored color variation, not postprocessing.",
+  "browserObserved": false,
+  "liveGameObserved": false
+}

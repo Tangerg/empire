@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 65,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 457,
+  "formalRuntimeBoundTopics": 465,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -2816,6 +2816,54 @@
       "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
       "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
       "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-FX-10": {
+      "raw": "Four independent transparent cyclic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+      "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+      "runtimeBinding": "Canonical FX and HD resolver;12fps looping four equal phases, existing lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+      "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
+    },
+    "C01-SCENE-ARCHIVE-FORGE-OPEN": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-archive-forge-open/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-SCENE-NURSERY-DEBATE": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-nursery-debate/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-SCENE-OLD-FLAG-HOMECOMING": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-old-flag-homecoming/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-SCENE-REFUGEE-BRIDGEWORK": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/scene-refugee-bridgework/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-STYLE-BORDER-AUTUMN": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-border-autumn/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-STYLE-CAPITAL-ORDER": {
+      "raw": "Immutable opaque complete narrative illustration, original slot and story audit; exact identity/reconstruction/rejected-attempt evidence in narrative-scenes/style-capital-order/source-review.md",
+      "export": "Exact1664x936 source crop[4, 2, 1668, 938],256x144 canonical and6.5HD. Parent full/native review; modeled cover limitations in viewport-qa.json, not automatic mobile acceptance",
+      "runtimeBinding": "Canonical scene and HD resolver only; no new selector or gameplay/story change. Catalog completion is not evidence of an authored consumer",
+      "liveGame": "pending; source/native/modeled-cover review only"
+    },
+    "C01-FX-09": {
+      "raw": "Four independent transparent cyclic phases; exact raw/request/reference/history preserved, source-edge alpha<=1 measured, no cleanup",
+      "export": "Shared1254 canvas scale28/1254 origin2,2;32/64 output with2px alpha0 border. Native multibackground and full/seam static review, exact APNG decode/timing proof. Authored spacing/density/contact caveats retained in final review",
+      "runtimeBinding": "Canonical FX and HD resolver;12fps looping four equal phases, existing lifetime owned by consumer. No current authored campaign consumer; catalog binding only",
+      "liveGame": "pending; encoded APNG timing and static phase comparisons do not establish observed motion"
     }
   },
   "supplementalBundles": {
@@ -3236,18 +3284,17 @@
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 1695,
-      "failed": 1,
+      "passed": 1704,
+      "failed": 0,
       "files": 129,
-      "command": "npm test -- --maxWorkers=2 --minWorkers=1",
-      "scope": "stable453-topic commit0967e0d",
-      "evidence": "verification-453/full-typescript.txt",
-      "failure": "existing field-post BoardView test15000ms timeout; unchanged isolated one-worker suite9/9 passed, no assertion or timeout relaxation",
-      "retryEvidence": "verification-453/field-post-isolated-retry.txt"
+      "command": "npm test -- --maxWorkers=1 --minWorkers=1",
+      "scope": "457-topic production snapshot9800fc735b3b7a1639896017f0772f3a7bc5993b; only raw backup/evidence changed during run",
+      "evidence": "verification-457/full-typescript-one-worker.txt",
+      "durationSeconds": 280.06
     },
-    "latestBindingAndEdges": "457:37 scene binding TS passed;453:104 architecture tests and33 scene tests;451:34 terrain TS/14 terrain Python/15 ledger Python",
+    "latestBindingAndEdges": "465:94 scene/FX/ambient playback DOM tests and31 FX exporter tests passed; full457 regression1704/1704 passed unchanged",
     "artPythonLatest": "189 exporter tests plus15 ledger tests passed after S00 classification and cemetery HD registration",
-    "typecheckLatest": "passed at457-topic snapshot",
+    "typecheckLatest": "passed at465-topic snapshot",
     "appBuildsLatest": "all4 passed at431; experience-lab intentional offline file:// single-file build169924.34kB per README/vite contract, while game app uses external PNG URLs. Browser load not verified."
   },
   "liveGameVerifiedAnimationTopics": 0,
