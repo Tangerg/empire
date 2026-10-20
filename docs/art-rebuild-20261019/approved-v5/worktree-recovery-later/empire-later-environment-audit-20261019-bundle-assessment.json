@@ -1,0 +1,137 @@
+{
+  "status": "assessment only; no bundle or pack file created; no Git refs modified",
+  "original_head": "c044fa5979c80dba1da7b54cc7b858d05319e096",
+  "missing_commits_from_origin_main": [
+    "c044fa5979c80dba1da7b54cc7b858d05319e096"
+  ],
+  "git_cherry": [
+    "- c044fa5979c80dba1da7b54cc7b858d05319e096"
+  ],
+  "common_base": "f8789f8fdfd54926a2485b088ca01974bb2536b3",
+  "common_base_is_ancestor_of_original_head": true,
+  "common_base_is_ancestor_of_origin_main": true,
+  "matching_main_commit": "17ff6a10de60e66f9dd0867686c1dba4545fb039",
+  "missing_commit_changed_tracked_files": [
+    {
+      "path": "tools/art/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "7dd944c2a68214017d1439dcb3bf195f71d47168",
+      "bytes": 26141,
+      "sha256": "4a8c2f6e3433e668fb0b38811e279f5f98dad03acd43a872543574d2b923b5b8",
+      "actual_git_blob": "7dd944c2a68214017d1439dcb3bf195f71d47168",
+      "matches_committed_blob": true,
+      "object_exists": true,
+      "object_size": 26141,
+      "recovered_git_object_sha256": "4a8c2f6e3433e668fb0b38811e279f5f98dad03acd43a872543574d2b923b5b8",
+      "recovered_git_object_bytes_verified": true,
+      "blob_reachable_from_retained_origin_main_history": true,
+      "current_origin_main_same_path_blob": "2eaefc4da250ad2570fd61e2a4d68cf8811887a7",
+      "recover_command": "git cat-file blob 7dd944c2a68214017d1439dcb3bf195f71d47168"
+    },
+    {
+      "path": "tools/art/export_environment_overrides.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "d2f771b85fd0259dbc7b87cb937a220af46e779a",
+      "bytes": 11995,
+      "sha256": "556dec2968136043b25ff05de77fa6f4a5a33fcfb64e3222181f15ad919c2319",
+      "actual_git_blob": "d2f771b85fd0259dbc7b87cb937a220af46e779a",
+      "matches_committed_blob": true,
+      "object_exists": true,
+      "object_size": 11995,
+      "recovered_git_object_sha256": "556dec2968136043b25ff05de77fa6f4a5a33fcfb64e3222181f15ad919c2319",
+      "recovered_git_object_bytes_verified": true,
+      "blob_reachable_from_retained_origin_main_history": true,
+      "current_origin_main_same_path_blob": "df21e2322a54325875e332e44623556907b4a6d8",
+      "recover_command": "git cat-file blob d2f771b85fd0259dbc7b87cb937a220af46e779a"
+    },
+    {
+      "path": "tools/art/test_environment_overrides.py",
+      "mode": "100644",
+      "type": "blob",
+      "git_blob": "aadd79f304e518d7059cf595c0fe97b7078f6a8e",
+      "bytes": 39003,
+      "sha256": "7b8fc0cf66b9e80c4c8f0f6b7bc7638d37f9e6b3a968db7a1af8bab656ab1ec4",
+      "actual_git_blob": "aadd79f304e518d7059cf595c0fe97b7078f6a8e",
+      "matches_committed_blob": true,
+      "object_exists": true,
+      "object_size": 39003,
+      "recovered_git_object_sha256": "7b8fc0cf66b9e80c4c8f0f6b7bc7638d37f9e6b3a968db7a1af8bab656ab1ec4",
+      "recovered_git_object_bytes_verified": true,
+      "blob_reachable_from_retained_origin_main_history": true,
+      "current_origin_main_same_path_blob": "5abaef6d19a0be784dae85bef8d3bec46ffc16a7",
+      "recover_command": "git cat-file blob aadd79f304e518d7059cf595c0fe97b7078f6a8e"
+    }
+  ],
+  "bundle_range": "f8789f8fdfd54926a2485b088ca01974bb2536b3..c044fa5979c80dba1da7b54cc7b858d05319e096",
+  "objects": [
+    {
+      "object_id": "c044fa5979c80dba1da7b54cc7b858d05319e096",
+      "type": "commit",
+      "path": "",
+      "uncompressed_bytes": 251,
+      "independent_zlib_bytes": 175,
+      "reachable_from_origin_main_history": false
+    },
+    {
+      "object_id": "dc9d078f9f7f436e511f77afa94dbf24da097f2b",
+      "type": "tree",
+      "path": "",
+      "uncompressed_bytes": 620,
+      "independent_zlib_bytes": 545,
+      "reachable_from_origin_main_history": false
+    },
+    {
+      "object_id": "5abb312319a2037f35734c966adc7dbe65fc3e25",
+      "type": "tree",
+      "path": "tools",
+      "uncompressed_bytes": 319,
+      "independent_zlib_bytes": 268,
+      "reachable_from_origin_main_history": false
+    },
+    {
+      "object_id": "d640ac835997aa72834ed48ddcdf41facc7eddb8",
+      "type": "tree",
+      "path": "tools/art",
+      "uncompressed_bytes": 3624,
+      "independent_zlib_bytes": 2131,
+      "reachable_from_origin_main_history": false
+    },
+    {
+      "object_id": "7dd944c2a68214017d1439dcb3bf195f71d47168",
+      "type": "blob",
+      "path": "tools/art/README.md",
+      "uncompressed_bytes": 26141,
+      "independent_zlib_bytes": 10175,
+      "reachable_from_origin_main_history": true
+    },
+    {
+      "object_id": "d2f771b85fd0259dbc7b87cb937a220af46e779a",
+      "type": "blob",
+      "path": "tools/art/export_environment_overrides.py",
+      "uncompressed_bytes": 11995,
+      "independent_zlib_bytes": 3892,
+      "reachable_from_origin_main_history": true
+    },
+    {
+      "object_id": "aadd79f304e518d7059cf595c0fe97b7078f6a8e",
+      "type": "blob",
+      "path": "tools/art/test_environment_overrides.py",
+      "uncompressed_bytes": 39003,
+      "independent_zlib_bytes": 7106,
+      "reachable_from_origin_main_history": true
+    }
+  ],
+  "object_count": 7,
+  "uncompressed_object_bytes": 81953,
+  "independent_zlib_payload_bytes": 24292,
+  "estimated_bundle_bytes": "Not measured; use object byte totals as assessment only. Parent must create and verify an actual bundle.",
+  "proposed_parent_only_create_command": "git -C /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019 bundle create <retained-audit-path>/later-environment-original-head.bundle dot/extend-fortifications-contract-20261019 ^f8789f8fdfd54926a2485b088ca01974bb2536b3",
+  "proposed_verify_command": "git -C /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019 bundle verify <retained-audit-path>/later-environment-original-head.bundle",
+  "recovery": "A common-base-relative bundle retains the exact original commit, tree hierarchy, and changed blobs. A clone of retained main supplies the prerequisite base; fetching the bundle branch into a new local ref can recreate the original HEAD exactly. It is not standalone without the prerequisite base.",
+  "required_before_cleanup": "Parent authorization of recovery alternative, creation and verification of actual bundle, isolated reconstruction test against a retained-main base, Git checkpoint and remote backup verification, final inactivity/status checks. This assessment does not waive the strict ancestry gate.",
+  "stable_patch_id": "7e73256fa30f073561eb7ad6b53a32e1a42660f1",
+  "changed_files_exact_blob_match_to_matching_main_commit": true,
+  "patch_id_verification": "git show --pretty=format: --no-ext-diff COMMIT | git patch-id --stable produced this same patch ID for original and matching main commit"
+}

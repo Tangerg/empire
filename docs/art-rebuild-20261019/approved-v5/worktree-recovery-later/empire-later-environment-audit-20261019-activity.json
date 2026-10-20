@@ -1,0 +1,26 @@
+{
+  "visible_process_matches": [],
+  "process_scan_errors": [],
+  "coordinator_task_ownership_confirmation": {
+    "received_at_utc": "2026-10-20T01:39:23Z",
+    "source": "/root/inventory_empire_art_rebuild collaboration message",
+    "confirmation": "已核当前全部活跃工人列表：仅你、FX审计、夜渡议事图、两组阵营生成与我。均未使用later-environment-audit或dot/extend-fortifications-contract分支；唯一保留工程工作区是empire-layout-engineering（当前无人写但将用于后续FX工程），main由我集成。可记录协调者任务所有权确认inactive，不宣称全宿主进程可见。请继续ignored/untracked恢复证据，暂不删除",
+    "scope": "Assigned agent/task ownership only; does not assert host-wide process inactivity."
+  },
+  "process_check_limitation": "Tool commands run in an isolated PID namespace. Host-wide cwd/open-file/process inactivity cannot be proven here. Parent must confirm task ownership and external process inactivity.",
+  "active_agent_inventory_source": "Coordinator task ownership confirmation quoted above",
+  "agent_inventory_note": "Coordinator explicitly confirms no active assigned task uses this worktree or branch; this is not host-wide process proof.",
+  "incoming_symlink_references": [],
+  "incoming_symlink_scan_errors": [],
+  "incoming_symlink_scan_roots": [
+    "/workspace/scratch/84c9fe948755",
+    "/workspace/shared/empire-art-rebuild"
+  ],
+  "incoming_symlink_scan_exclusions": [
+    "candidate contents",
+    ".git",
+    ".codex",
+    ".agents",
+    ".aws"
+  ]
+}

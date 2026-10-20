@@ -1,0 +1,24 @@
+{
+  "selected": "/workspace/scratch/84c9fe948755/empire-later-environment-audit-20261019",
+  "reason": "Largest of the two permitted candidates, one divergent but patch-equivalent commit, exact tracked bytes in main history, no unique ignored or untracked contents, and coordinator confirms no active assigned task owns candidate or branch. This remains blocked for deletion until parent preserves exact history and verifies remote backup.",
+  "not_selected": {
+    "path": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019",
+    "branch": "refs/heads/dot/extend-cliff-contract-20261019",
+    "head": "a2b34488ca67052ab203247b27954d49fc34a434",
+    "allocated_bytes": 2138464256,
+    "apparent_bytes": 2118518111,
+    "nonignored_status": "clean",
+    "ignored_directory_status": [
+      "node_modules/",
+      "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/__pycache__/",
+      "tools/art/__pycache__/"
+    ],
+    "head_ancestor_of_audited_main": false,
+    "git_cherry": [
+      "- bde655cd3cc6ad327ecc37497c714c02beac50aa",
+      "- a2b34488ca67052ab203247b27954d49fc34a434"
+    ],
+    "full_byte_reaudit": false,
+    "disposition": "Retain; not selected for removal."
+  }
+}

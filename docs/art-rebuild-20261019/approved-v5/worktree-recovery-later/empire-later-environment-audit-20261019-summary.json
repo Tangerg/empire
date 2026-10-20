@@ -1,0 +1,65 @@
+{
+  "audited_at_utc": "2026-10-20T01:39:34Z",
+  "timestamp_note": "Audit timestamp uses platform UTC reminder; executor filesystem/system timestamps are approximately eight hours ahead.",
+  "path": "/workspace/scratch/84c9fe948755/empire-later-environment-audit-20261019",
+  "allocated_bytes": 2382974976,
+  "head": "c044fa5979c80dba1da7b54cc7b858d05319e096",
+  "branch": "refs/heads/dot/extend-fortifications-contract-20261019",
+  "main_head": "092039d21f56fe30324660c2ac0a5584099cad62",
+  "origin_main_snapshot": "092039d21f56fe30324660c2ac0a5584099cad62",
+  "head_reachable_from_main": false,
+  "head_reachable_from_origin_main": false,
+  "origin_main_live_remote_verification": "Not performed by this audit; parent sole Git writer owns remote verification.",
+  "tracked_modifications": [],
+  "final_status_porcelain": "",
+  "head_unchanged": true,
+  "apparent_bytes": 2360944155,
+  "tracked_files_count": 7330,
+  "tracked_files_bytes": 2360363964,
+  "tracked_sha256_and_git_blob_verified": true,
+  "tracked_blob_mismatches": [],
+  "tracked_blobs_not_in_origin_main_history": [],
+  "tracked_files_different_from_current_main_count": 309,
+  "ignored_count": 156,
+  "ignored_regular_files_bytes": 571157,
+  "ignored_classifications": {
+    "dependency symlink to retained main": 91,
+    "reproducible local workspace dependency symlink": 15,
+    "reproducible Python bytecode; compiled code exactly matches tracked source": 50
+  },
+  "ignored_nonreproducible": [],
+  "nonignored_untracked_count": 0,
+  "untracked_nonignored": [],
+  "full_filesystem_inventory_uncovered_files": [],
+  "missing_commits_from_origin_main": [
+    "c044fa5979c80dba1da7b54cc7b858d05319e096"
+  ],
+  "cherry_equivalence": [
+    "- c044fa5979c80dba1da7b54cc7b858d05319e096"
+  ],
+  "bundle_assessment_manifest": "empire-later-environment-audit-20261019-bundle-assessment.json",
+  "incoming_symlink_references": [],
+  "matching_processes_visible_namespace": [],
+  "process_check_limitation": "Tool commands run in an isolated PID namespace. Host-wide cwd/open-file/process inactivity cannot be proven here. Parent must confirm task ownership and external process inactivity.",
+  "coordinator_confirmed_no_active_assigned_tasks": true,
+  "coordinator_task_ownership_confirmation": {
+    "received_at_utc": "2026-10-20T01:39:23Z",
+    "source": "/root/inventory_empire_art_rebuild collaboration message",
+    "confirmation": "已核当前全部活跃工人列表：仅你、FX审计、夜渡议事图、两组阵营生成与我。均未使用later-environment-audit或dot/extend-fortifications-contract分支；唯一保留工程工作区是empire-layout-engineering（当前无人写但将用于后续FX工程），main由我集成。可记录协调者任务所有权确认inactive，不宣称全宿主进程可见。请继续ignored/untracked恢复证据，暂不删除",
+    "scope": "Assigned agent/task ownership only; does not assert host-wide process inactivity."
+  },
+  "safe_to_remove_under_requested_gate": false,
+  "decision": "BLOCKED pending exact-history recovery bundle, isolated reconstruction, preservation in main and verified remote backup, and fresh final checks. Coordinator confirms no active assigned task uses this candidate; host-wide process visibility is unavailable. No deletion or Git mutation performed by auditor.",
+  "excluded_paths": [
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019",
+    "/workspace/scratch/84c9fe948755/empire-push-check-20261019",
+    "/workspace/shared/empire-art-rebuild"
+  ],
+  "tracked_manifest": "empire-later-environment-audit-20261019-tracked.json",
+  "ignored_manifest": "empire-later-environment-audit-20261019-ignored.json",
+  "untracked_manifest": "empire-later-environment-audit-20261019-untracked.json",
+  "tracked_executable_mode_mismatches": [],
+  "supplement_reviewed_at_utc": "2026-10-20T01:41:30Z",
+  "supplement": "Classified four apps/ workspace symlinks using exact link targets and tracked-file inventory; checked executable bits for all tracked files. Full content hashing was not repeated."
+}
