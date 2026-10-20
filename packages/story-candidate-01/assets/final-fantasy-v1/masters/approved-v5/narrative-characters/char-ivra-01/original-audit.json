@@ -1,0 +1,195 @@
+{
+  "fullName": "伊芙拉",
+  "stage": "Juvenile dragon released from the church transport in chapter 2",
+  "face": "Red juvenile dragon with amber eyes, short pale horns, pale gray belly plates; original has very large eyes and rounded petlike proportions",
+  "emotion": "Wide-eyed tentative curiosity in original; later brief explicitly requires injury and vigilance",
+  "pose": "Seated quadruped looking viewer-left, small folded/part-open wings, curled tail to viewer-right; broken rope/ring on ground at viewer-left",
+  "costume": "No clothing, rider, saddle or attached reins; natural red scales and gray belly",
+  "framing": "Whole dragon with substantial headroom and loose broken bridle in foreground, neutral parchment",
+  "priority": "reconcile-before-generation",
+  "topicId": "C01-CHAR-IVRA-01",
+  "catalog": {
+    "assetId": "C01-FFV1-CHAR-IVRA-01",
+    "topicId": "C01-CHAR-IVRA-01",
+    "label": "伊芙拉幼龙",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/char-ivra-01.png",
+    "width": 192,
+    "height": 224,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "character-card"
+  },
+  "status": "pending-remake",
+  "original": {
+    "catalogSlotZeroBased": 31,
+    "boardCellZeroBased": 1,
+    "quadrant": "TR",
+    "cropBoxXYXYExclusive": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "board": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+      "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+      "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "exactCrop": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/remaining-character-card-audit/original-cells/c01-char-ivra-01-original-cell.png",
+      "repoRelativePath": null,
+      "sha256": "e7746cfffaf14c81b59ae5a0ecc2a6040c16ca50e30f7227a6f73efa8296268f",
+      "dimensions": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "legacyRuntimeReproducesExactRGBA": true,
+    "mappingEvidence": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py",
+        "startLine": 73,
+        "endLine": 73,
+        "originalText": "    \"character-board-03.png\": [30, 31, 32, 33],"
+      },
+      {
+        "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+        "startLine": 44,
+        "endLine": 44,
+        "originalText": "- `C01-CHAR-IVRA-01`：伊芙拉幼龙"
+      }
+    ]
+  },
+  "currentRuntime": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-01.png",
+    "repoRelativePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-01.png",
+    "sha256": "17eb3af3e50f7902ec50234b6ee43e36f717f125788a9528a58863ae9410f00a",
+    "dimensions": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "transparentFraction": 0.0,
+    "edgeMaxAlpha": 255,
+    "nearOpaqueCore": true
+  },
+  "approvedNamedIdentityRef": null,
+  "approvedIdentityReferenceExists": false,
+  "loreEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "startLine": 47,
+      "endLine": 47,
+      "originalText": "| P0 | `C01-CHAR-IVRA-01.png` | 幼龙 | 明确受伤与警惕，不做可爱宠物比例 |"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+      "startLine": 44,
+      "endLine": 44,
+      "originalText": "- `C01-CHAR-IVRA-01`：伊芙拉幼龙"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/README.md",
+      "startLine": 357,
+      "endLine": 366,
+      "originalText": "### 6.8 伊芙拉\n\n第二章从教廷运输队中被释放的幼龙。\n\n- 不说人类语言时仍能表达明确意志，后期才学会使用誓语；\n- 与莱娅共同成长，而不是成为她的所有物；\n- 第四章在龙眠山脉主动选择与莱娅缔结盟约；\n- 第五章莱娅使用王冠后解除骑乘盟约；\n- 第六章是否重新参战取决于莱娅是否愿意步行、等待和接受拒绝；\n- 终章作为独立盟军指挥官，而非莱娅的装备。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/00-creative-bible.md",
+      "startLine": 136,
+      "endLine": 140,
+      "originalText": "### 6.7 伊芙拉：意志通过动作先于语言\n\n伊芙拉前期不说完整人话。它用尾巴挡路、把食物推回、远离缰绳、主动替儿童遮雨表达边界。学会誓语后仍少说，不变成负责给人类下哲学判词的龙。\n\n解除盟约后，它会继续保护与莱娅无关的人，证明离开主角不等于退出故事。"
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md",
+      "startLine": 21,
+      "endLine": 21,
+      "originalText": "- 伊芙拉幼年可出现临时救援鞍具，成年阶段不得有永久鞍、缰绳或灰旗纹章。"
+    },
+    {
+      "path": "packages/story-candidate-01/src/units.ts",
+      "startLine": 61,
+      "endLine": 65,
+      "originalText": "    tags: ['hero', 'dragon', 'monster', 'flying'], blurb: '只接受平等盟约、始终保有离开权的幼龙。',\n  }),\n\n  unit({ id: 'c01.swordsman', name: '边境剑士', weapons: ['c01.border-blade'], value: 120, maxHp: 98, defense: 0.08, movement: 3, formations: ['formation-line', 'formation-loose'], tags: ['infantry'], blurb: '可靠的近战与占领骨干。' }),\n  unit({ id: 'c01.banner-guard', name: '灰旗卫士', weapons: ['c01.guard-spear'], value: 170, maxHp: 112, defense: 0.14, movement: 3, defaultReaction: 'guard', formations: ['formation-defensive', 'formation-line'], tags: ['infantry', 'guard'], blurb: '以援护和阵线保护灰旗同伴。' }),"
+    }
+  ],
+  "sourceMismatchFlags": [
+    {
+      "code": "original_vs_brief",
+      "detail": "Original is cute/rounded and has no clear injury. Explicit later brief says 明确受伤与警惕，不做可爱宠物比例; do not preserve a known wrong petlike rendering as an eternal requirement."
+    },
+    {
+      "code": "combat_stage_mismatch",
+      "detail": "Current c01.ivra binds IVRA-GROWTH with no appearanceId; that approved style source has longer/angular horns, a more mature silhouette and a neck scar. It is not a reviewed juvenile named-stage master."
+    },
+    {
+      "code": "identity_gap",
+      "detail": "No approved independent Ivra named portrait/appearance exists among the seven completed heroes. Resolve juvenile identity before treating an adult/generic growth source as authority."
+    }
+  ],
+  "consumers": {
+    "directProductionTopicReferences": [
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-story.ts",
+        "line": 10,
+        "text": "ivra: candidate01AssetUrl('C01-CHAR-IVRA-01'),"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "line": 106,
+        "text": "'c01.ivra': 'C01-CHAR-IVRA-01',"
+      }
+    ],
+    "scopeSearched": "All 216 non-test .ts/.tsx/.js/.jsx files under packages/*/src and apps/*/src; dynamic consumers separately traced",
+    "catalogPresenceIsNotConsumer": true,
+    "stageSelectorExists": false,
+    "liveGameVerified": false,
+    "state": "active-stage01-card",
+    "speaker": "ivra",
+    "unitType": "c01.ivra",
+    "staticDialogueBeatCount": 3,
+    "dialogueBeats": [
+      {
+        "path": "packages/story-candidate-01/src/story.ts",
+        "line": 190,
+        "text": "{ speaker: 'ivra', text: '你们没有命令我。' },"
+      },
+      {
+        "path": "packages/story-candidate-01/src/story.ts",
+        "line": 261,
+        "text": "{ speaker: 'ivra', text: '不能把疼痛命名为远方。' },"
+      },
+      {
+        "path": "packages/story-candidate-01/src/story.ts",
+        "line": 273,
+        "text": "{ speaker: 'ivra', text: '名字不是锁。名字是可以回答，也可以不回答的声音。' },"
+      }
+    ],
+    "channels": [
+      "story dialogue via portraits.ivra",
+      "campaign roster via roster id ivra",
+      "battle HUD/inspector/codex via CANDIDATE_01_CHARACTER_ART and portraitMarkup"
+    ],
+    "currentCombatBinding": {
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "appearanceId": null
+    },
+    "risk": "Replacing the card affects active stage01 consumers immediately; later stages must remain catalog-only until explicit progression exists."
+  },
+  "contractRef": "contracts.characterMasterAndCard",
+  "currentHdEntry": null,
+  "nextWorkBoundary": "Audit only. No generation, exporter run, binding/code change, production edit, or Git operation."
+}

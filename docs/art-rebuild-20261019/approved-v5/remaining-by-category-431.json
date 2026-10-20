@@ -1,0 +1,212 @@
+{
+  "asOfFormalTopics": 431,
+  "canonicalScope": 1212,
+  "campaigns": {
+    "story-candidate-01": {
+      "narrative-static": {
+        "scope": 80,
+        "formallyBound": 52,
+        "remaining": 28
+      },
+      "combat-unit": {
+        "scope": 40,
+        "formallyBound": 40,
+        "remaining": 0
+      },
+      "mission-unit": {
+        "scope": 24,
+        "formallyBound": 24,
+        "remaining": 0
+      },
+      "faction-kit": {
+        "scope": 12,
+        "formallyBound": 12,
+        "remaining": 0
+      },
+      "terrain": {
+        "scope": 32,
+        "formallyBound": 24,
+        "remaining": 8
+      },
+      "interactive-structure": {
+        "scope": 24,
+        "formallyBound": 24,
+        "remaining": 0
+      },
+      "battle-prop": {
+        "scope": 32,
+        "formallyBound": 32,
+        "remaining": 0
+      },
+      "equipment": {
+        "scope": 48,
+        "formallyBound": 47,
+        "remaining": 1
+      },
+      "skill": {
+        "scope": 48,
+        "formallyBound": 48,
+        "remaining": 0
+      },
+      "status": {
+        "scope": 24,
+        "formallyBound": 24,
+        "remaining": 0
+      },
+      "fx": {
+        "scope": 24,
+        "formallyBound": 8,
+        "remaining": 16
+      },
+      "hud": {
+        "scope": 16,
+        "formallyBound": 16,
+        "remaining": 0
+      }
+    },
+    "story-candidate-02": {
+      "narrative-static": {
+        "scope": 80,
+        "formallyBound": 0,
+        "remaining": 80
+      },
+      "combat-unit": {
+        "scope": 40,
+        "formallyBound": 0,
+        "remaining": 40
+      },
+      "mission-unit": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "faction-kit": {
+        "scope": 12,
+        "formallyBound": 0,
+        "remaining": 12
+      },
+      "terrain": {
+        "scope": 32,
+        "formallyBound": 0,
+        "remaining": 32
+      },
+      "interactive-structure": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "battle-prop": {
+        "scope": 32,
+        "formallyBound": 32,
+        "remaining": 0
+      },
+      "equipment": {
+        "scope": 48,
+        "formallyBound": 48,
+        "remaining": 0
+      },
+      "skill": {
+        "scope": 48,
+        "formallyBound": 0,
+        "remaining": 48
+      },
+      "status": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "fx": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "hud": {
+        "scope": 16,
+        "formallyBound": 0,
+        "remaining": 16
+      }
+    },
+    "story-candidate-03": {
+      "narrative-static": {
+        "scope": 80,
+        "formallyBound": 0,
+        "remaining": 80
+      },
+      "combat-unit": {
+        "scope": 40,
+        "formallyBound": 0,
+        "remaining": 40
+      },
+      "mission-unit": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "faction-kit": {
+        "scope": 12,
+        "formallyBound": 0,
+        "remaining": 12
+      },
+      "terrain": {
+        "scope": 32,
+        "formallyBound": 0,
+        "remaining": 32
+      },
+      "interactive-structure": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "battle-prop": {
+        "scope": 32,
+        "formallyBound": 0,
+        "remaining": 32
+      },
+      "equipment": {
+        "scope": 48,
+        "formallyBound": 0,
+        "remaining": 48
+      },
+      "skill": {
+        "scope": 48,
+        "formallyBound": 0,
+        "remaining": 48
+      },
+      "status": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "fx": {
+        "scope": 24,
+        "formallyBound": 0,
+        "remaining": 24
+      },
+      "hud": {
+        "scope": 16,
+        "formallyBound": 0,
+        "remaining": 16
+      }
+    }
+  },
+  "environment": {
+    "baselinePhysicalComponents": 1188,
+    "registeredIndividualSourceCells": 186,
+    "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
+    "separateBindings": [
+      "meadow-base",
+      "water-area",
+      "dirt-road",
+      "horizontal-crossing",
+      "edge-decoration",
+      "stone-world-material",
+      "graveyard-world-material",
+      "forge-world-material",
+      "forest-world-material",
+      "earth-world-material",
+      "open-ground-world-materials"
+    ]
+  },
+  "liveGameVerified": 0,
+  "counting": "Formal catalog/runtime resolution is distinct from current scene usage. Environment physical derived components do not share the canonical denominator."
+}

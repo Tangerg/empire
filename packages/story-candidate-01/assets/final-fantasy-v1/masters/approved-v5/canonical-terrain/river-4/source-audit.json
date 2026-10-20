@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-4",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+  "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    1333,
+    447,
+    1771,
+    884
+  ],
+  "cropSize": [
+    438,
+    437
+  ],
+  "slotSHA256": "7091bf1551b5af314e8cebc83ad8dbea28e1f86fb942ac7869eda8d46502008a",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "independentRuntimeReplay": [
+    {
+      "size": 32,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "11e1af9c4eb2d152ddfa13d12bc5794c619efacf429cdaa1db320ce0834356ec",
+      "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+      "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+    },
+    {
+      "size": 64,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "c29d092af9c1af472cfbea31ae00175b578521dac06c806eaf1f7ae46a6bf27f",
+      "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+      "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+    }
+  ],
+  "observedOriginalIdentity": "Broken paving edge and jagged wooden bridge remains over water",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "redrawInterpretation": "BROKEN BRIDGE EDGE. Preserve the original relationship of beige-gray cracked paving on the LEFT, an irregular jagged paving edge through the center, dark blue-teal water on the RIGHT, and snapped dark-brown bridge planks projecting from the stone edge over that water. This is a top-down LOCAL BROKEN STRUCTURE FRAGMENT integrated into a continuous shore material, not a complete bridge miniature or free-standing prop. CRITICAL: inside x=457..797,y=477..777, centered near(627,627), place the complete distinctive broken fragment: one large angular paving lip on the left, TWO short thick timber planks pointing right into blue water with blunt jagged snapped ends, and ONE squat round cut post top near the bottom-left of the fragment. All the recognizable timber shapes, their broken tips and the round post top must fit fully inside that center box so the fixed existing small central mask retains the broken-bridge identity. Give broken planks about70px thickness with two big broken teeth each; keep a clear blue-water gap between them. The stone edge and water continue calmly above and below as ordinary material. Most of the left half is quiet paving/packed earth in broad fitted gray-beige stones; most of the right half is calm dark blue-teal water with only two broad muted current streaks. No tiny debris, rubble carpet, fine cracks, dense woodgrain, upright fence, intact bridge, figures or high cliff. Shallow structural depth only; no dramatic cast shadows, no isolated platform silhouette.",
+  "originalExportMode": "nesw-16",
+  "sourceOpacity": "opaque requested; no generated alpha modifications allowed",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Source-evidenced simplification and central registration to retain distinguishing material relation inside historical central mask; not restoration of original whole-scene composition",
+    "No exact original generation prompt recovered",
+    "Catalog-only canonical terrain; no current gameplay ground consumer per established source audit; no new live map acceptance claimed",
+    "Historical mask and dimensions remain unchanged; structural hints in3/4 are artwork only, not gameplay bridges"
+  ]
+}

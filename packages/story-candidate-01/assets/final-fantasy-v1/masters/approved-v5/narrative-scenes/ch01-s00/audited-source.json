@@ -1,0 +1,94 @@
+{
+  "topicId": "C01-CH01-S00",
+  "kind": "scene",
+  "canonicalSize": [
+    128,
+    128
+  ],
+  "meaning": "Roderick reties Leia’s LEFT wristguard before her first independent command",
+  "legacySource": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+    "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "catalogIndexZeroBased": 44,
+    "boardCellIndexZeroBased": 3,
+    "slot": "bottom-right",
+    "fullCell": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "legacyInset": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "fullCellPixelSha256": "b110e8f570d065fa2dd9e081e8d1ac2cd2131eaf81b12fa3a911172a1cc3998e",
+    "legacyInsetPixelSha256": "705bf07672c18a04f28e4e7c4031a65a54be0db62493a4f1a5d76d1ce74e4ccc",
+    "visualReview": "Full board and exact full cell inspected: lone blue-gray metal-rimmed stitched bracer and tied cord on magenta, no people or hands."
+  },
+  "legacyVisualReview": "Full board visually inspected: bottom-right slot is one loose blue-gray bracer with tie cord and no hands or people. Wrong subject for correctly classified scene. Preserved evidence only, not a composition reference.",
+  "classificationEvidencePath": "docs/art-rebuild-20261019/approved-v5/opening-scene-classification/evidence.json",
+  "originalBoardHashVerified": true,
+  "authoredEvidence": [
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/01-border-fire.md",
+      "section": "1. 章首冷开场",
+      "finding": "Roderick ties Leia’s left wristguard; image S00 and prop LEFT-GLOVE have explicit separate IDs."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-customized/09-static-assets.md",
+      "section": "3. 关键场景",
+      "finding": "Scene label and hand-action intimacy composition."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md",
+      "section": "opening",
+      "finding": "Roderick loosens and reties Leia’s wrist strap before first command."
+    },
+    {
+      "path": "docs/story-candidates/candidate-01/deep-novel-v2/09-continuity-and-static-assets.md",
+      "section": "chapter one row",
+      "finding": "Old wristguard hand action; S00 and LEFT-GLOVE listed separately."
+    }
+  ],
+  "identity": {
+    "Leia": "18-year-old apprentice; approved brown segmented side braid, youthful angular brows and expressive female face, gray-blue quilted light armor with mail-edge grouping, gray-blue scarf and round silver clasp, brown belt; no personal heraldry or crown",
+    "Roderick": "Elder mentor; exact numerical age not stated in audited sources; approved swept gray hair, full gray beard/moustache, thick dark brows, practical broad matte steel plate, blue-gray scarf/tabard; worn left glove patched at thumb base",
+    "interaction": "He loosens her overtight strap, wraps it around wrist bone and reties a one-hand-release knot. Her hand had been pale from tight strap. No invented wrist wound or blood. Both hands intact.",
+    "chronology": "Pre-dawn wet border camp after night rain, dying dark red campfire. Before first independent command, Redstone injury, gray-flag rebellion and later wrist/shoulder damage.",
+    "latestNovelPriority": "Use latest novel for concrete timing and knot action; earlier customized draft establishes scene and distinct reusable prop IDs."
+  },
+  "consumerAudit": {
+    "method": "Read-only TypeScript transpilation/evaluation of STORY and source table inspection",
+    "storyCount": 35,
+    "openingSceneConsumers": [],
+    "prologue": {
+      "id": "c01/prologue",
+      "scene": "C01-CH01-S01"
+    },
+    "portraitTopics": [
+      "C01-CHAR-LEIA-01",
+      "C01-CHAR-RODERICK-01",
+      "C01-CHAR-CAIN-01",
+      "C01-CHAR-MIREL-01",
+      "C01-CHAR-BRAN-01",
+      "C01-CHAR-TASHA-01",
+      "C01-CHAR-IVRA-01"
+    ],
+    "chapterTopics": [
+      "C01-ARCH-THREE-BRIDGES",
+      "C01-ARCH-REDSTONE",
+      "C01-ARCH-SILVERWOOD"
+    ],
+    "menuTopic": "C01-CH01-S05"
+  },
+  "registeredOrRuntimeEdits": false,
+  "expectedDeliverable": "One complete native opaque square scene, target1254x1254; no panorama or alpha extraction; parent owns registration and actual consumer work."
+}

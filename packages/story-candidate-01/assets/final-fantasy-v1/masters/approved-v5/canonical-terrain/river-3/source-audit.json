@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-TERRAIN-RIVER-3",
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-border-river.png",
+  "boardSHA256": "a58d135a7de58f4cd473571dfaa75f3ac432a2ec6543499474b156b07617c9dd",
+  "boardDimensions": [
+    1774,
+    887
+  ],
+  "boardHashReverified": true,
+  "fullBoardVisuallyInspected": true,
+  "cropXYXY": [
+    890,
+    447,
+    1327,
+    884
+  ],
+  "cropSize": [
+    437,
+    437
+  ],
+  "slotSHA256": "a3944408afabd8597440dc7a00c2b79023da86af48dc31b1169a3dbab8de50f6",
+  "slotExactPixelsReverified": true,
+  "mappingProof": "exact-RGBA-pixel-match-at-both-densities",
+  "independentRuntimeReplay": [
+    {
+      "size": 32,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "e763c710652a52ae430b384f5c9c98f6254e1eb1eef34d8a36321145daddfe61",
+      "originalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a",
+      "expectedHistoricalAlphaSHA256": "c9ca0ff6335c19893b720ceed9b74cea27b0a9b225696f1efa0b9216de85ef3a"
+    },
+    {
+      "size": 64,
+      "exactOriginalRGBAEqual": true,
+      "originalRuntimeSHA256": "64d6c43f06af8ae392b0a59c715ea81f0c3af680a1dce6a20f5b74ba1cfa4891",
+      "originalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e",
+      "expectedHistoricalAlphaSHA256": "e68987b3584c2836052c49d69606a404d891538bc20448f4e4206255e8fecb3e"
+    }
+  ],
+  "observedOriginalIdentity": "Stone and dirt bridgehead between wooden side beams/posts",
+  "originalSlotVisuallyInspected": true,
+  "originalAllFourEdgesInspected": true,
+  "originalRuntimeStripsInspected": true,
+  "redrawInterpretation": "BRIDGEHEAD GROUND. Preserve warm beige-gray stone paving set into quiet tan packed earth, flanked by the recognizable weathered dark-brown timber side-beams and round cut post tops of a wooden bridge entrance. This is a compact top-down LOCAL BRIDGEHEAD MATERIAL SIGNATURE, not a complete bridge miniature, building or raised isolated platform. CRITICAL: place one complete short approach cross-section centered at(627,627), all within x=457..797,y=477..777: two short parallel vertical timber cheek-beams at left and right, a round light-brown cut post top at the near end of each beam, and a few broad stone approach pavers between them. These two beams are each about65px wide and220px long, spread around260px center-to-center; round post tops are65px diameter. Keep the complete timber-and-stone motif inside that center box so it survives the existing fixed small central terrain mask. Posts and wood are low top-down fragments with only a shallow side plane, no tall upright props and no cast shadows. The rest of the canvas is continuous full-bleed packed earth with a few broad muted stone slabs at the same scale and sparse olive moss, quiet without extra structural fragments. No water in this bridgehead material. No walkway spanning the canvas, no landscape scene, no fence, no rails running off canvas, no nails or fine woodgrain. Clear stone-versus-wood shapes matter more than realism.",
+  "originalExportMode": "nesw-16",
+  "sourceOpacity": "opaque requested; no generated alpha modifications allowed",
+  "derivedNotAuthored": true,
+  "noRepositoryOrExportChanges": true,
+  "semanticChangesAndLimits": [
+    "Source-evidenced simplification and central registration to retain distinguishing material relation inside historical central mask; not restoration of original whole-scene composition",
+    "No exact original generation prompt recovered",
+    "Catalog-only canonical terrain; no current gameplay ground consumer per established source audit; no new live map acceptance claimed",
+    "Historical mask and dimensions remain unchanged; structural hints in3/4 are artwork only, not gameplay bridges"
+  ]
+}

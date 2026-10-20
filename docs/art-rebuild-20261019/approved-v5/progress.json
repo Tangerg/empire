@@ -3080,17 +3080,17 @@
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 1620,
+      "passed": 1634,
       "failed": 0,
       "files": 126,
       "command": "npm test -- --maxWorkers=2 --minWorkers=1",
-      "scope": "421-topic snapshot before S00 kind correction; subsequent S00/scene integration370 focused tests passed",
-      "evidence": "verification-421"
+      "scope": "431 formally bound topics, after S00 classification and scene/terrain/FX08 integration",
+      "evidence": "verification-431/full-typescript.txt"
     },
-    "latestBindingAndEdges": "264 binding/asset tests passed at181 topics",
+    "latestBindingAndEdges": "431 checkpoint:199 scene/asset TS,67 canonical terrain/FX TS;29 scene exporter,17 generic exporter,14 terrain,26 FX and15 ledger Python tests passed",
     "artPythonLatest": "189 exporter tests plus15 ledger tests passed after S00 classification and cemetery HD registration",
-    "typecheckLatest": "passed at421-topic snapshot including S00 classification",
-    "appBuildsLatest": "all4 passed at165-topic clearance checkpoint; logs preserved"
+    "typecheckLatest": "passed at431-topic snapshot",
+    "appBuildsLatest": "all4 passed at431-topic checkpoint; experience-lab single-file output169924.34kB (gzip127403.02kB), bundle-size concern recorded, not browser-load verified"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {
