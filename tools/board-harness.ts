@@ -24,6 +24,7 @@ import {
   createContentCatalog,
   idx,
   type LevelData,
+  type BattleState,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK, ANCIENT_EMPIRES_LEVELS } from '@empire/content-ancient-empires';
@@ -110,10 +111,10 @@ export function busyOverlay(level: LevelData): BoardOverlay {
 }
 
 /** A mounted board over one level. The caller renders it and disposes it. */
-export function mountBoard(level: LevelData, art: ArtDirection): BoardView {
+export function mountBoard(level: LevelData, art: ArtDirection, state: BattleState = engine.createState(level)): BoardView {
   return new gameUi.BoardView(
     { content, grid, art, renderer: gameUi.svgBoardSurface },
-    engine.createState(level),
+    state,
     {
       onTileClick: () => {},
       onTileEnter: () => {},
