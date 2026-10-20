@@ -1,7 +1,7 @@
 # Registered FX phase export
 
 `export_fx_overrides.py` is a deliberately narrow exporter for the first slash
-pilots C01-FX-01 (slash), C01-FX-02 (pierce), and C01-FX-03 (arrow impact). It does not register art, edit manifests, generate artwork,
+pilots C01-FX-01 (slash), C01-FX-02 (pierce), C01-FX-03 (arrow impact), and C01-FX-04 (blunt impact). It does not register art, edit manifests, generate artwork,
 clean alpha, or approve motion. Further topics require their own reviewed phase
 semantics before adding a contract; generic growth/burst/decay labels would be
 wrong for effects such as construction or capture.
@@ -128,3 +128,7 @@ FX02 keeps the original fixed-axis puncture: onset, longer sweep, peak needle/ch
 ## Bounded source residue tolerance
 
 The reviewed arrow burst revision contained exactly four perimeter pixels at alpha1 after one targeted imagegen repair (the prior candidate had81). Actual black/white/color compositing and padded32/64 exports determine acceptance; no alpha values are changed. Source-only allowance is at most1, matching the existing static source ingestion contract. Alpha2+ still rejects before writes. All final cell borders remain alpha0. Reports record measured edge maxima/counts and tolerance separately for sources and outputs. This is not a general license to accept visible halo, cutoff, or increasingly relaxed thresholds.
+
+## Blunt-impact source semantics
+
+FX04 is the original atlas01 fourth-row sequence: hollow ochre elliptical impact rings, paired dust puffs, expanding stone flecks and settling residue. The reviewed phase order is contact/expand/peak/settle. It is not a weapon, spark starburst or opaque ground disk. Shared target-centered registration and existing lantern-staff/engineer-hammer/rune-hammer/golem-slam bindings remain unchanged. Contract support does not approve or count generated art.

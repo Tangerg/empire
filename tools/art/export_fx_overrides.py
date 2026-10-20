@@ -17,6 +17,7 @@ PHASE_ORDERS = {
     'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate'],
     'C01-FX-02': ['onset', 'sweep', 'peak', 'dissipate'],
     'C01-FX-03': ['approach', 'impact', 'burst', 'dissipate'],
+    'C01-FX-04': ['contact', 'expand', 'peak', 'settle'],
 }
 
 

@@ -99,7 +99,8 @@ class FxTests(unittest.TestCase):
 
     def test_reviewed_pierce_and_arrow_contracts_keep_their_own_phase_meanings(self):
         for topic, names in [('C01-FX-02', ['onset', 'sweep', 'peak', 'dissipate']),
-                             ('C01-FX-03', ['approach', 'impact', 'burst', 'dissipate'])]:
+                             ('C01-FX-03', ['approach', 'impact', 'burst', 'dissipate']),
+                             ('C01-FX-04', ['contact', 'expand', 'peak', 'settle'])]:
             with self.subTest(topic=topic):
                 asset = {**self.asset, 'topicId': topic, 'png': f'runtime/fx/fx-{topic[-2:]}.png'}
                 hd = {**self.hd, 'topicId': topic, 'png': f'runtime-hd/fx/fx-{topic[-2:]}.png'}

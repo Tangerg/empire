@@ -70,6 +70,7 @@ describe('approved FX source and export binding', () => {
     'C01-FX-01': ['onset', 'sweep', 'peak', 'dissipate'],
     'C01-FX-02': ['onset', 'sweep', 'peak', 'dissipate'],
     'C01-FX-03': ['approach', 'impact', 'burst', 'dissipate'],
+    'C01-FX-04': ['contact', 'expand', 'peak', 'settle'],
   };
   it.each(Object.entries(fxOverrides.assets))('binds %s to its reviewed full-canvas phases at both densities', (topic, override) => {
     const record = assets.candidate01Asset(topic);
