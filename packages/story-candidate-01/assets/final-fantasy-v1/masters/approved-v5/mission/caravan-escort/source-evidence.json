@@ -1,0 +1,36 @@
+{
+  "topicId": "C01-MISSION-CARAVAN-ESCORT",
+  "label": "商团护运员",
+  "classification": "catalog-only",
+  "actualDomainBindings": 0,
+  "actualScenePlacements": 0,
+  "sourceAtlas": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-escort-caretaker-militia-quartermaster.png",
+  "sourceAtlasSha256": "276c810dc16dd40c954c52939d900050f5acb1c05fe16ae8a25ce5cc1ca4a12b",
+  "sourceAtlasSize": [
+    1254,
+    1254
+  ],
+  "rowIndex0": 0,
+  "rowCropXYXY": [
+    0,
+    0,
+    1254,
+    314
+  ],
+  "idleCropXYXY": [
+    0,
+    0,
+    314,
+    314
+  ],
+  "identityFromAudit": "Brown-haired woman with bun, teal scarf and blue-gray coat under brown scale vest. Round wooden shield at screen-right; sheathed short blade/handle at screen-left hip, keys/tags and rope at belt.",
+  "sourceAudit": "docs/art-rebuild-20261019/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "independentVisualAudit": {
+    "appearance": "Adult light-tan woman; brown swept hair in low braided bun; serious face; no hat.",
+    "costume": "Dark teal scarf, blue-gray coat, cream cuffs and divided hem, brown scale vest, brown belt with rectangular brass buckle, short brown trousers, brown boots.",
+    "props": "Round wooden shield at screen-right, gray metal rim and central boss; sheathed short blade at screen-left hip; rope, brass keys, blank tan tags at belt.",
+    "preservedInNewIdle": true,
+    "symbolPolicy": "No added heraldry or markings. Tags blank. Brass key remains functional key with round bow, long shaft and small tooth.",
+    "anatomy": "Two arms and hands: near hand over blade belt; far grip obscured behind shield."
+  }
+}

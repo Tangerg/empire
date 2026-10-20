@@ -1,0 +1,78 @@
+{
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "rawSha256": "9792e26b8758cc3efa5a5db0593cbc81273be4f439b8ff9a8c22bc221c31d2d6",
+  "masterSha256": "9792e26b8758cc3efa5a5db0593cbc81273be4f439b8ff9a8c22bc221c31d2d6",
+  "rawMasterIdentical": true,
+  "nativeOutputMatchesRaw": true,
+  "nativeAlphaUntouched": true,
+  "bboxAlphaGreaterThan0": [
+    33,
+    23,
+    1539,
+    977
+  ],
+  "bboxAlphaGreaterThan1": [
+    492,
+    25,
+    1181,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    495,
+    28,
+    1178,
+    974
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaCountsAboveThreshold": {
+    "0": 420506,
+    "1": 417651,
+    "16": 413163,
+    "64": 411880,
+    "127": 410640,
+    "240": 407587,
+    "250": 402492,
+    "254": 1121
+  },
+  "exteriorBeyond7PixelsFromOpaqueSilhouette": 1,
+  "sourcePolicy": "Native raw/master unchanged. No cleanup, paint, crop, alpha editing, per-pose scaling, or source padding. Separate QA composites only.",
+  "measuredBootSoleBands": [
+    {
+      "xRange": [
+        500,
+        750
+      ],
+      "bottom": 973,
+      "bottom4RowsBounds": [
+        603,
+        970,
+        696,
+        974
+      ],
+      "soleCenterX": 649.0
+    },
+    {
+      "xRange": [
+        750,
+        1050
+      ],
+      "bottom": 967,
+      "bottom4RowsBounds": [
+        886,
+        964,
+        976,
+        968
+      ],
+      "soleCenterX": 930.5
+    }
+  ],
+  "sourceFoot": [
+    789.75,
+    973
+  ]
+}

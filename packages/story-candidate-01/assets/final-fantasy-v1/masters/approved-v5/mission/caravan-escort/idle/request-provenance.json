@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "transparentBackgroundRequested": true,
+  "nativeOutputUntouched": true,
+  "referenceRoles": [
+    "Original identity/costume/props reference",
+    "Approved name-registrar style only",
+    "Approved miner style only"
+  ],
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/caravan-escort/source-evidence/original-highres-idle.png",
+      "sha256": "df67ec54d5afcbf6894a4c6e78e124ed11559e54fe85f28d40ea04e790dfb6ee"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/name-registrar/idle/master.png",
+      "sha256": "5c7f4750dd1ee75b5cef65fbaf2594e625e1728f3fe4f2c9797ce385b1f03922"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/miner/idle/master.png",
+      "sha256": "6e741e92f3efad4183a0f579f7c8ef7219eb19932ff1d9d4d409f5f39bdcc5ef"
+    }
+  ]
+}

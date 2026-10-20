@@ -1,0 +1,134 @@
+{
+  "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+  "assetId": "C01-FFV1-MISSION-COUNCIL-DELEGATE",
+  "label": "地方议会代表",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-scribe-registrar-delegate-messenger.png",
+    "sha256": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 2,
+    "rowIndex1": 3,
+    "rowCropXYXY": [
+      0,
+      627,
+      1254,
+      940
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        627,
+        314,
+        940
+      ],
+      [
+        314,
+        627,
+        627,
+        940
+      ],
+      [
+        627,
+        627,
+        940,
+        940
+      ],
+      [
+        940,
+        627,
+        1254,
+        940
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        632,
+        309,
+        935
+      ],
+      [
+        319,
+        632,
+        622,
+        935
+      ],
+      [
+        632,
+        632,
+        935,
+        935
+      ],
+      [
+        945,
+        632,
+        1249,
+        935
+      ]
+    ],
+    "observedIdentity": "Older olive-brown-skinned pointed-ear woman, long gray braids, patched dark coat with ochre panels. Screen-left hand holds carved oval tablet/medallion; screen-right rolled parchment with colored ribbon ties."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-council-delegate.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-COUNCIL-DELEGATE",
+    "png": "runtime-hd/mission-unit/mission-council-delegate.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "auditSourcePath": "docs/art-rebuild-20261019/approved-v5/mission-consumer-audit/mission-consumer-audit.json",
+  "identityVisualAudit": "Inspected original master row and isolated idle plus canonical HD. Older olive-brown-skinned pointed-ear woman, long gray braids, charcoal knee-length coat with ochre shoulder panels/patches, tan cuffs/hem, brown short-legged boots, plain belt. Screen-left hand holds oval carved tan tablet, screen-right hand holds cream roll with red/purple/blue-green ribbons. Golden small earring is present in original. New artwork simplifies relief; no added icon or insignia.",
+  "styleReferencesInspected": [
+    "approved-scribe-idle.png",
+    "approved-name-registrar-idle.png",
+    "approved-miner-idle.png"
+  ],
+  "artifactPolicy": "Shared delivery folder only; repository read-only. Raw/master byte-identical, native alpha unchanged. Separate technical QA composites and whole-canvas scaling only.",
+  "referenceHashes": {
+    "approved-miner-idle.png": "6e741e92f3efad4183a0f579f7c8ef7219eb19932ff1d9d4d409f5f39bdcc5ef",
+    "approved-name-registrar-idle.png": "5c7f4750dd1ee75b5cef65fbaf2594e625e1728f3fe4f2c9797ce385b1f03922",
+    "approved-scribe-idle.png": "61186a6e1565eac31fc307cd548fe61554b5fe6cbba9ba684ceca17b56f8efe8",
+    "current-runtime-hd.png": "f605ac3f18e776f0aa671712e3a84725e6c615d6786654b998fce29f2008243d",
+    "current-runtime-logical.png": "e3cb0a388a5de25c193f818e7203b99bf17646b7497408a1b0bdd9369d4a7e89",
+    "original-idle-cell.png": "ec38e074c85bdf47492176278d7c81992a7c2b6c10e54f2d5bfcbc85f1c7c6e8",
+    "original-masterboard.png": "a605b09fc2b55ce8cb44abb1aabd8e243f92de6097c73c69bfab01df7259f960",
+    "original-row.png": "c93b5130505d2bf4dbc4f4b1bfe86433a2c0535f204bcbe6a2f696f71b7fb23f"
+  }
+}

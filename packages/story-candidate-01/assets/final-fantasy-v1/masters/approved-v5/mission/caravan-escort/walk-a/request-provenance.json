@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "requestFile": "request.json",
+  "promptFile": "prompt.txt",
+  "transparentBackgroundRequested": true,
+  "nativeOutputUntouched": true,
+  "referenceRoles": [
+    "Accepted idle identity-preserving edit target"
+  ],
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/caravan-escort/idle/master.png",
+      "sha256": "13ab3102dd09f68f561d7918e35eef58cf6c156771c0e8ff63c0545964a0939e"
+    }
+  ]
+}
