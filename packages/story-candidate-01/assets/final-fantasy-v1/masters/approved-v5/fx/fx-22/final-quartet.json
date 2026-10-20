@@ -1,0 +1,45 @@
+{
+  "topicId": "C01-FX-22",
+  "status": "source-alpha-export-and-worker-static-phase-review-complete; parent-final-review-pending; live-playback-unobserved",
+  "phaseOrder": [
+    "loose-hardware",
+    "seating-impact",
+    "repair-swirl",
+    "finished-fit"
+  ],
+  "phases": [
+    {
+      "phase": "loose-hardware",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/loose-hardware/master.png",
+      "sha256": "7526233a28406ed461b7b2f7bad8105fed96bb067ec5db3e18c6a36a7a204515"
+    },
+    {
+      "phase": "seating-impact",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/seating-impact/master.png",
+      "sha256": "6e835aa0dcab2a45a217639a3be8efc210f90ff8b5cccade610f623bbee34fdf"
+    },
+    {
+      "phase": "repair-swirl",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/repair-swirl/master.png",
+      "sha256": "b73eb62ae4312874a4d1d8a3d8d50e97037852d8c868644cfbf7d58aa9af3ef5"
+    },
+    {
+      "phase": "finished-fit",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-22/finished-fit/master.png",
+      "sha256": "663d4d9acf6768564d5766f3e65d0b0d6241dc4c52e99b0bbba44c80443f7eca"
+    }
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "qa": "qa/qa-metrics.json",
+  "caveats": "qa/COHORT-REVIEW.md"
+}

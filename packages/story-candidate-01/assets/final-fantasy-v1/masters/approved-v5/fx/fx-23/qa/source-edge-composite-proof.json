@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "intact-link",
+    "edgeAlphaMax": 1,
+    "edgeAlphaNonzero": 28,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "unstable-link",
+    "edgeAlphaMax": 0,
+    "edgeAlphaNonzero": 0,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "link-breakup",
+    "edgeAlphaMax": 0,
+    "edgeAlphaNonzero": 0,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "sourcePixelsUnchanged": true
+  },
+  {
+    "phase": "disconnected-beacons",
+    "edgeAlphaMax": 0,
+    "edgeAlphaNonzero": 0,
+    "maxBlackWhiteEdgeRgbDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "sourcePixelsUnchanged": true
+  }
+]

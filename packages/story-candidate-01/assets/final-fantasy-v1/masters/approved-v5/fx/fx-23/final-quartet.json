@@ -1,0 +1,41 @@
+{
+  "topicId": "C01-FX-23",
+  "status": "accepted-source-static-phase-candidate",
+  "sources": [
+    {
+      "phase": "intact-link",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/intact-link/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/intact-link/master.png",
+      "sha256": "3f40c2d6b18b12ba825e82bcb34c0c43a59c573258378e3f74296f44c253142a",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/intact-link/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-23/intact-link/master.png"
+    },
+    {
+      "phase": "unstable-link",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/unstable-link/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/unstable-link/master.png",
+      "sha256": "d084b9c54145ae85480914f8b8b2b290fc06143e233cbc222e58aa92a46a6a7d",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/unstable-link/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-23/unstable-link/master.png"
+    },
+    {
+      "phase": "link-breakup",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/link-breakup/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/link-breakup/master.png",
+      "sha256": "6f5348b4a62fcca183e40fd52929917cd262067a661f06419e547eba059c5a18",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/link-breakup/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-23/link-breakup/master.png"
+    },
+    {
+      "phase": "disconnected-beacons",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/disconnected-beacons/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/disconnected-beacons/master.png",
+      "sha256": "3617268832463c1a480eda36195c2787152cf451cfbba945356785e6104cc2e1",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/disconnected-beacons/provenance.json",
+      "proposedRepositoryDestination": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-23/disconnected-beacons/master.png"
+    }
+  ],
+  "independentlyAuthoredDrawings": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": []
+}

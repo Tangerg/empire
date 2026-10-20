@@ -1,0 +1,111 @@
+{
+  "topicId": "C01-FX-23",
+  "label": "塔网失联",
+  "status": "accepted-source-static-phase-candidate",
+  "phaseOrder": [
+    "intact-link",
+    "unstable-link",
+    "link-breakup",
+    "disconnected-beacons"
+  ],
+  "phaseOrderApproval": "Parent approved exact phase order on 2026-10-20T06:45:41Z",
+  "parentFinalStaticPhaseAcceptance": {
+    "accepted": true,
+    "timeUtc": "2026-10-20T06:55:58Z",
+    "message": "已看FX23四相完整/终末对照，保留两灯塔且断连过程清楚，稀疏方粒不误当循环。0.045逻辑像素基线差可如实记录，当前全相静态审阅通过；继续封存源黑白与哈希。主仓正在冻结完整回归，先备份raw，待冻结结束正式绑定。"
+  },
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "imagegenCalls": 4,
+  "rejectedAttempts": [],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "sourceEdgeNonzeroSamples": [
+    28,
+    0,
+    0,
+    0
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "originalBackingEvidence": "qa/original-backing-evidence.json",
+  "originalOuterEdgeAlphaMax": 252,
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "fullSourceBlackWhiteReviewed": true,
+  "nativeFullAndTerminalReviewed": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "subjectPreserved": "Two gray/gold/cyan-core stone beacons; straight link, unstable zigzag, disconnected fragments, sparse square particles. Both beacon cores remain.",
+  "baseBottomMaxVariationLogicalPx": {
+    "left": 0.044657097288676235,
+    "right": 0.044657097288676235
+  },
+  "baseCentroidMaxAxisVariationLogicalPx": {
+    "left": [
+      0.014545702820679947,
+      0.02453437841312991
+    ],
+    "right": [
+      0.014734130147255716,
+      0.02116100611424575
+    ]
+  },
+  "phaseReview": "qa/PHASE-REVIEW.md",
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "sourceHashProof": "final-quartet.json",
+  "semanticCaveats": [
+    "Small source redraw variation is measured; beacon pixels are not identical across four independent imagegen sources.",
+    "The center particles are authored phase changes, not asserted to track every individual particle continuously.",
+    "Source/static phase review and exact timing do not establish observed live playback."
+  ],
+  "APNGVerification": {
+    "proof": "qa/apng-timing-verification.json",
+    "files": 28,
+    "decodedFrames": 112,
+    "exact12fpsFiles": 14,
+    "slowDiagnosticFiles": 14,
+    "everyDecodedFrameMatchesExpected": true,
+    "exactFrameSeconds": "1/12",
+    "nominalClipSeconds": "1/3",
+    "numPlays": 1,
+    "loop": false,
+    "encodedFinalHold": false,
+    "removalRule": null,
+    "lifetimeOwner": "Future consumer; none currently bound"
+  },
+  "consumerAudit": "consumer-audit.json",
+  "authoredSceneConsumer": null,
+  "hit420msAssumed": false,
+  "heal500msAssumed": false,
+  "newNetworkMechanic": false,
+  "browserObserved": false,
+  "browserBlocker": "Established browser/socket restriction; no repeated browser attempts were made.",
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false
+}

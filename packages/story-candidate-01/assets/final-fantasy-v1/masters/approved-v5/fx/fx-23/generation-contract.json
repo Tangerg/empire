@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "topicId": "C01-FX-23",
   "label": "塔网失联",
-  "status": "Parent-approved semantic phase order; generation in progress",
+  "status": "accepted-source-static-phase-candidate",
   "phaseOrder": [
     "intact-link",
     "unstable-link",
@@ -188,5 +188,10 @@
   "parentApproval": {
     "timeUtc": "2026-10-20T06:45:41Z",
     "message": "FX23顺序批准intact-link/unstable-link/link-breakup/disconnected-beacons，保持两座灰石金饰青核心信标位置尺度，变化限连接直束→折断→方粒，别复制底部下一行旗碎片和旧不透明底。按完整连接先定共同基准继续，catalog-only生命周期不编。"
+  },
+  "parentFinalStaticAcceptance": {
+    "accepted": true,
+    "timeUtc": "2026-10-20T06:55:58Z",
+    "message": "已看FX23四相完整/终末对照，保留两灯塔且断连过程清楚，稀疏方粒不误当循环。0.045逻辑像素基线差可如实记录，当前全相静态审阅通过；继续封存源黑白与哈希。主仓正在冻结完整回归，先备份raw，待冻结结束正式绑定。"
   }
 }

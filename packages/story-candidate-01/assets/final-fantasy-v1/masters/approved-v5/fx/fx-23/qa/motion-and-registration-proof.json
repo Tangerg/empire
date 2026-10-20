@@ -1,0 +1,506 @@
+{
+  "measurement": "Unedited source alpha >=128. Base registration sampled below y750 in left x<450 and right x>=800 regions, excluding middle connection. The central energy corridor is x445..809,y480..779 and excludes the cyan beacon cores. Masks are diagnostic only, never applied to artwork.",
+  "frames": [
+    {
+      "phase": "intact-link",
+      "sourceHash": "3f40c2d6b18b12ba825e82bcb34c0c43a59c573258378e3f74296f44c253142a",
+      "alphaMassSourcePx": 313947.06666666665,
+      "visibleBoundsAlpha128": [
+        26,
+        405,
+        1227,
+        981
+      ],
+      "bases": {
+        "left": {
+          "bbox": [
+            26,
+            750,
+            437,
+            981
+          ],
+          "alphaCentroid": [
+            230.24298280687725,
+            855.205037984806
+          ]
+        },
+        "right": {
+          "bbox": [
+            815,
+            750,
+            1227,
+            981
+          ],
+          "alphaCentroid": [
+            1021.5781021703903,
+            855.1773370879048
+          ]
+        }
+      },
+      "centralEnergyAreaAlpha128": 19228,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            26,
+            405,
+            1227,
+            981
+          ],
+          "area": 316772,
+          "center": [
+            626.5,
+            693.0
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "unstable-link",
+      "sourceHash": "d084b9c54145ae85480914f8b8b2b290fc06143e233cbc222e58aa92a46a6a7d",
+      "alphaMassSourcePx": 323525.98039215687,
+      "visibleBoundsAlpha128": [
+        27,
+        404,
+        1227,
+        983
+      ],
+      "bases": {
+        "left": {
+          "bbox": [
+            27,
+            750,
+            438,
+            983
+          ],
+          "alphaCentroid": [
+            230.65565171434233,
+            856.1675761379402
+          ]
+        },
+        "right": {
+          "bbox": [
+            815,
+            750,
+            1227,
+            983
+          ],
+          "alphaCentroid": [
+            1021.8982162426227,
+            856.1250478617357
+          ]
+        }
+      },
+      "centralEnergyAreaAlpha128": 26578,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            27,
+            404,
+            1227,
+            983
+          ],
+          "area": 320629,
+          "center": [
+            627.0,
+            693.5
+          ]
+        },
+        {
+          "bbox": [
+            541,
+            523,
+            579,
+            562
+          ],
+          "area": 1466,
+          "center": [
+            560.0,
+            542.5
+          ]
+        },
+        {
+          "bbox": [
+            473,
+            670,
+            505,
+            701
+          ],
+          "area": 966,
+          "center": [
+            489.0,
+            685.5
+          ]
+        },
+        {
+          "bbox": [
+            777,
+            634,
+            807,
+            664
+          ],
+          "area": 874,
+          "center": [
+            792.0,
+            649.0
+          ]
+        },
+        {
+          "bbox": [
+            589,
+            559,
+            616,
+            587
+          ],
+          "area": 729,
+          "center": [
+            602.5,
+            573.0
+          ]
+        },
+        {
+          "bbox": [
+            427,
+            535,
+            454,
+            563
+          ],
+          "area": 717,
+          "center": [
+            440.5,
+            549.0
+          ]
+        },
+        {
+          "bbox": [
+            662,
+            695,
+            689,
+            722
+          ],
+          "area": 711,
+          "center": [
+            675.5,
+            708.5
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "link-breakup",
+      "sourceHash": "6f5348b4a62fcca183e40fd52929917cd262067a661f06419e547eba059c5a18",
+      "alphaMassSourcePx": 291876.43137254904,
+      "visibleBoundsAlpha128": [
+        27,
+        405,
+        1227,
+        982
+      ],
+      "bases": {
+        "left": {
+          "bbox": [
+            27,
+            750,
+            438,
+            982
+          ],
+          "alphaCentroid": [
+            230.89442249748913,
+            855.3840508871778
+          ]
+        },
+        "right": {
+          "bbox": [
+            815,
+            750,
+            1227,
+            982
+          ],
+          "alphaCentroid": [
+            1021.523381463128,
+            855.4777405265337
+          ]
+        }
+      },
+      "centralEnergyAreaAlpha128": 7460,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            27,
+            405,
+            496,
+            982
+          ],
+          "area": 146144,
+          "center": [
+            261.5,
+            693.5
+          ]
+        },
+        {
+          "bbox": [
+            815,
+            405,
+            1227,
+            982
+          ],
+          "area": 140253,
+          "center": [
+            1021.0,
+            693.5
+          ]
+        },
+        {
+          "bbox": [
+            837,
+            585,
+            898,
+            633
+          ],
+          "area": 1751,
+          "center": [
+            867.5,
+            609.0
+          ]
+        },
+        {
+          "bbox": [
+            530,
+            549,
+            563,
+            582
+          ],
+          "area": 1085,
+          "center": [
+            546.5,
+            565.5
+          ]
+        },
+        {
+          "bbox": [
+            531,
+            642,
+            564,
+            675
+          ],
+          "area": 1083,
+          "center": [
+            547.5,
+            658.5
+          ]
+        },
+        {
+          "bbox": [
+            730,
+            626,
+            762,
+            659
+          ],
+          "area": 1052,
+          "center": [
+            746.0,
+            642.5
+          ]
+        },
+        {
+          "bbox": [
+            784,
+            578,
+            816,
+            610
+          ],
+          "area": 1017,
+          "center": [
+            800.0,
+            594.0
+          ]
+        },
+        {
+          "bbox": [
+            664,
+            676,
+            695,
+            707
+          ],
+          "area": 946,
+          "center": [
+            679.5,
+            691.5
+          ]
+        },
+        {
+          "bbox": [
+            595,
+            587,
+            623,
+            615
+          ],
+          "area": 759,
+          "center": [
+            609.0,
+            601.0
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "disconnected-beacons",
+      "sourceHash": "3617268832463c1a480eda36195c2787152cf451cfbba945356785e6104cc2e1",
+      "alphaMassSourcePx": 284103.75294117647,
+      "visibleBoundsAlpha128": [
+        27,
+        403,
+        1227,
+        981
+      ],
+      "bases": {
+        "left": {
+          "bbox": [
+            27,
+            750,
+            437,
+            981
+          ],
+          "alphaCentroid": [
+            230.3488830750654,
+            855.0687864761521
+          ]
+        },
+        "right": {
+          "bbox": [
+            816,
+            750,
+            1227,
+            981
+          ],
+          "alphaCentroid": [
+            1022.1832600061515,
+            855.1880073282606
+          ]
+        }
+      },
+      "centralEnergyAreaAlpha128": 3797,
+      "componentsAlpha128": [
+        {
+          "bbox": [
+            816,
+            403,
+            1227,
+            981
+          ],
+          "area": 140816,
+          "center": [
+            1021.5,
+            692.0
+          ]
+        },
+        {
+          "bbox": [
+            27,
+            403,
+            437,
+            981
+          ],
+          "area": 140456,
+          "center": [
+            232.0,
+            692.0
+          ]
+        },
+        {
+          "bbox": [
+            474,
+            587,
+            515,
+            627
+          ],
+          "area": 1622,
+          "center": [
+            494.5,
+            607.0
+          ]
+        },
+        {
+          "bbox": [
+            803,
+            596,
+            842,
+            635
+          ],
+          "area": 1488,
+          "center": [
+            822.5,
+            615.5
+          ]
+        },
+        {
+          "bbox": [
+            700,
+            683,
+            732,
+            715
+          ],
+          "area": 1016,
+          "center": [
+            716.0,
+            699.0
+          ]
+        },
+        {
+          "bbox": [
+            579,
+            664,
+            610,
+            694
+          ],
+          "area": 915,
+          "center": [
+            594.5,
+            679.0
+          ]
+        }
+      ]
+    }
+  ],
+  "baseBottomY": {
+    "left": [
+      981,
+      983,
+      982,
+      981
+    ],
+    "right": [
+      981,
+      983,
+      982,
+      981
+    ]
+  },
+  "baseBottomMaxVariationLogicalPx": {
+    "left": 0.044657097288676235,
+    "right": 0.044657097288676235
+  },
+  "baseCentroidMaxAxisVariationLogicalPx": {
+    "left": [
+      0.014545702820679947,
+      0.02453437841312991
+    ],
+    "right": [
+      0.014734130147255716,
+      0.02116100611424575
+    ]
+  },
+  "centralEnergyAreas": [
+    19228,
+    26578,
+    7460,
+    3797
+  ],
+  "interpretation": "The original straight energy link becomes a connected zigzag, then separated short pieces and squares, then sparse squares without any connecting line. Both cyan-core gray/gold beacons remain planted.",
+  "caveats": [
+    "Small source redraw variation is measured; beacon pixels are not identical across four independent imagegen sources.",
+    "The center particles are authored phase changes, not asserted to track every individual particle continuously.",
+    "Source/static phase review and exact timing do not establish observed live playback."
+  ],
+  "consumerBoundary": "Catalog-only. No actual FX23 consumer or specific lifetime found; future consumers own hold and removal.",
+  "browserObserved": false
+}
