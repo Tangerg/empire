@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-FX-23",
+  "label": "塔网失联",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+    "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+    "atlasSize": [
+      1536,
+      1024
+    ],
+    "row1Based": 3,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-row.png",
+    "baselineSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-f0.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-23.png",
+    "builderMapping": "Legacy build_fx appends four rows per atlas; FX23 is atlas06 row3.",
+    "backingRisk": "Original RGBA atlas contains gray/white and blue vignette backing, outer-edge alpha up to252. Recreate the beacons and bounded link only, with no gray/blue field or alpha cleanup.",
+    "cropCaveat": "The raw row crop includes small neighboring row4 flag-top slivers along its bottom. These are unrelated and must not be reproduced."
+  },
+  "originalRowOneBased": 3,
+  "semanticPhases": [
+    "Two gray stone beacons with gold trim and cyan diamond cores, joined by an intact straight cyan/white link with round bright endpoints.",
+    "The same beacons stay planted while the link bends into a jagged cyan/white zigzag with small square sparks.",
+    "Most of the continuous link breaks into separated short fragments and cyan square particles between the unchanged beacons.",
+    "The line is entirely absent, with only a few separate cyan squares remaining; both beacons and their cyan cores still remain."
+  ],
+  "contract": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/generation-contract.json",
+  "currentManifest": {
+    "assetId": "C01-FFV1-FX-23",
+    "topicId": "C01-FX-23",
+    "label": "塔网失联",
+    "category": "fx",
+    "png": "runtime/fx/fx-23.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumerAudit": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/consumer-audit.json",
+  "referenceHashes": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/current-runtime@1x.png",
+      "sha256": "2bf2434d7743c70ed10b4b6b6618330823b29fa94161856f50a163dc24bb6abd"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/current-runtime@2x.png",
+      "sha256": "db3db36b6d384eedbbb20803480ebe4dba31f6792d3c94946c19be95b5e9951a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-board.png",
+      "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-f0.png",
+      "sha256": "a6a51b3721cce87be65f546a58165813d203b649a09cde46803cdbdcc243dc7a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-f1.png",
+      "sha256": "0e29764679b9054baaab4ae580a33fb070f113b3876fec4daf10b0baecef591a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-f2.png",
+      "sha256": "574ccf4eb8ef5e1128ff4cc4fe52e885e2f6a9ca1b2d1d4e2140295069a515c6"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-f3.png",
+      "sha256": "c9fbc0979508b247b5facbd6ae2aa552d37d0247c8b2b9500d9ad15bb5032d6f"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-row.png",
+      "sha256": "2b2a074ec6a93c4847147eddb024909d0b1205b074bc77a7c32bf3e066ca2297"
+    }
+  ]
+}

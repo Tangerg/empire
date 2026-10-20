@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "topicId": "C01-FX-23",
+  "label": "塔网失联",
+  "status": "Semantic phase proposal awaiting parent approval; no new art generated",
+  "phaseOrder": [
+    "intact-link",
+    "unstable-link",
+    "link-breakup",
+    "disconnected-beacons"
+  ],
+  "phaseObservations": [
+    "Two gray stone beacons with gold trim and cyan diamond cores, joined by an intact straight cyan/white link with round bright endpoints.",
+    "The same beacons stay planted while the link bends into a jagged cyan/white zigzag with small square sparks.",
+    "Most of the continuous link breaks into separated short fragments and cyan square particles between the unchanged beacons.",
+    "The line is entirely absent, with only a few separate cyan squares remaining; both beacons and their cyan cores still remain."
+  ],
+  "fixedLandmark": "Exactly two identical gray stone/gold-trim beacons and their bases stay at the same positions, sizes and spacing. Cyan diamond cores remain present even in the last phase. Only the connecting energy and square particles change.",
+  "source": {
+    "atlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/fx/fx-atlas-06.png",
+    "sha256": "d7e497842750ac0ba6a09904f250ff93d4759d1af6607d8a7c407eba928fa56f",
+    "atlasSize": [
+      1536,
+      1024
+    ],
+    "row1Based": 3,
+    "rowCrop": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-row.png",
+    "baselineSlot": "/workspace/shared/empire-art-rebuild/approved-v5/fx/fx-23/reference/original-f0.png",
+    "runtimeSheet": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/fx/fx-23.png",
+    "builderMapping": "Legacy build_fx appends four rows per atlas; FX23 is atlas06 row3.",
+    "backingRisk": "Original RGBA atlas contains gray/white and blue vignette backing, outer-edge alpha up to252. Recreate the beacons and bounded link only, with no gray/blue field or alpha cleanup.",
+    "cropCaveat": "The raw row crop includes small neighboring row4 flag-top slivers along its bottom. These are unrelated and must not be reproduced."
+  },
+  "existingManifest": {
+    "assetId": "C01-FFV1-FX-23",
+    "topicId": "C01-FX-23",
+    "label": "塔网失联",
+    "category": "fx",
+    "png": "runtime/fx/fx-23.png",
+    "width": 128,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "frames": 4,
+    "fps": 12,
+    "loop": false,
+    "blendMode": "normal",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "consumer": {
+    "status": "catalog-only-no-current-literal-consumer-found",
+    "search": {
+      "command": [
+        "rg",
+        "-n",
+        "C01-FX-23|C01-FFV1-FX-23|fx-23\\.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/apps",
+        "--glob",
+        "*.{ts,tsx,json}",
+        "--glob",
+        "!manifest*.json",
+        "--glob",
+        "!package-lock.json",
+        "--glob",
+        "!pnpm-lock.yaml"
+      ],
+      "exitCode": 1,
+      "matches": []
+    },
+    "bindingDistinction": "The generic effect adapter can resolve a catalog topic, but no FX23 caller was found. The command_node binding maps to the separate structure asset C01-STRUCT-OATH-TOWER-CONSOLE, not FX23. Existing weapon FX and heal bindings do not select FX23.",
+    "newNetworkBehaviorProposed": false,
+    "newConsumerProposed": false,
+    "consumerLifetimeMs": null,
+    "hit420msAssumed": false,
+    "heal500msAssumed": false,
+    "sourceTrace": [
+      {
+        "relativePath": "packages/story-candidate-01/src/presentation/index.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/index.ts",
+        "sha256": "8614f871aee8fbbf59e4317617effbd2e27c720c02bdb287202290420a2a720a",
+        "lineStart": 85,
+        "lineEnd": 98,
+        "excerpt": "85:   boardClass: 'candidate-map',\n86:   // Painted scenes want the tactical layer on the ground, not ruled over it.\n87:   decorations: GroundBoardDecorations,\n88:   paintsCells: candidate01PaintsCells,\n89:   elevationBadges: (levelId: string) => levelId !== 'c01-01',\n90:   sceneProfile: candidate01SceneProfile,\n91:   sceneFrame: candidate01SceneFrameMarkup,\n92:   sceneLayers: candidate01MapSceneryLayers,\n93:   structure: candidate01StructurePicture,\n94:   marker: candidate01MarkerMarkup,\n95:   weaponFx: candidate01WeaponFxTopic,\n96:   effect: candidate01FxPicture,\n97:   healFx: 'C01-FX-17',\n98: });"
+      },
+      {
+        "relativePath": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+        "lineStart": 87,
+        "lineEnd": 98,
+        "excerpt": "87:   'c01.field-post': { topicId: 'C01-STRUCT-REFUGEE-SHELTER', presentationId: 'field-post-compact' },\n88:   'c01.keep': { topicId: 'C01-STRUCT-LORNE-KEEP' },\n89: };\n90: \n91: export const CANDIDATE_01_STRUCTURE_ART: Readonly<Partial<Record<StructureTypeId, string>>> = {\n92:   gate: 'C01-STRUCT-REPAIRABLE-GATE',\n93:   command_node: 'C01-STRUCT-OATH-TOWER-CONSOLE',\n94:   depot: 'C01-STRUCT-MERCENARY-DEPOT',\n95:   bulkhead: 'C01-STRUCT-WASTELAND-CHEVAUX',\n96:   boss_part: 'C01-STRUCT-SUNKEN-BELL-SLUICE',\n97: };\n98: "
+      },
+      {
+        "relativePath": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+        "sha256": "e02f438cd0d07d99f1a3c798e2ecb1a359aa945a08d1344c592a5e92a2e5aad0",
+        "lineStart": 153,
+        "lineEnd": 177,
+        "excerpt": "153: export const CANDIDATE_01_WEAPON_FX: Readonly<Partial<Record<WeaponId, string>>> = {\n154:   'c01.border-blade': 'C01-FX-01',\n155:   'c01.gray-oath': 'C01-FX-06',\n156:   'c01.guard-spear': 'C01-FX-02',\n157:   'c01.legion-spear': 'C01-FX-02',\n158:   'c01.knight-lance': 'C01-FX-02',\n159:   'c01.knight-charge': 'C01-FX-07',\n160:   'c01.longbow': 'C01-FX-03',\n161:   'c01.ranger-bow': 'C01-FX-03',\n162:   'c01.lantern-staff': 'C01-FX-04',\n163:   'c01.oath-dispel': 'C01-FX-06',\n164:   'c01.engineer-hammer': 'C01-FX-04',\n165:   'c01.satchel-charge': 'C01-FX-07',\n166:   'c01.rune-hammer': 'C01-FX-04',\n167:   'c01.forge-burst': 'C01-FX-07',\n168:   'c01.wolf-spear': 'C01-FX-02',\n169:   'c01.undead-blade': 'C01-FX-01',\n170:   'c01.ghost-touch': 'C01-FX-08',\n171:   'c01.inquisitor-flame': 'C01-FX-06',\n172:   'c01.golem-slam': 'C01-FX-04',\n173:   'c01.ballista': 'C01-FX-03',\n174:   'c01.oath-bolt': 'C01-FX-06',\n175:   'c01.dragon-breath': 'C01-FX-05',\n176:   'c01.colossus-sweep': 'C01-FX-08',\n177: };"
+      },
+      {
+        "relativePath": "packages/game-ui/src/art/battle-presentation.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/art/battle-presentation.ts",
+        "sha256": "b788a5df8a6e3469f37a0708ae3bff5dcd44a88296188fbcffc8ac7f3a9e9fc3",
+        "lineStart": 80,
+        "lineEnd": 94,
+        "excerpt": "80:   marker(marker: BattlefieldMarker, ownerColor?: string): string | null;\n81:   weaponFx(weapon: WeaponId): string | null;\n82:   /**\n83:    * A named effect, drawn about its own origin.\n84:    *\n85:    * It used to take the scene coordinates to draw at, so an effect's position was\n86:    * baked into its picture — the one thing left on the board that a renderer could\n87:    * not treat as a drawing at a place. Whoever plays it places it.\n88:    *\n89:    * A picture rather than markup, because an explosion is a strip that starts\n90:    * playing when it appears, and that is the declaration a renderer acts on.\n91:    */\n92:   effect(topic: string): BoardPicture;\n93:   healFx?: string;\n94: }"
+      },
+      {
+        "relativePath": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+        "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+        "sha256": "d4b44da3360753e77511ad6f7aa9d2e0fff5f368c40e803d9a4411346022edc8",
+        "lineStart": 239,
+        "lineEnd": 268,
+        "excerpt": "239: export function candidate01FxPicture(topic: string): BoardPicture {\n240:   const record = candidate01Asset(topic);\n241:   const frameWidth = record.frameWidth ?? 32;\n242:   const frameHeight = record.frameHeight ?? 32;\n243:   const frames = record.frames ?? 1;\n244:   const anchor = record.anchor;\n245:   if (!anchor || anchor.length !== 2\n246:     || !Number.isFinite(anchor[0]) || anchor[0] < 0 || anchor[0] >= frameWidth\n247:     || !Number.isFinite(anchor[1]) || anchor[1] < 0 || anchor[1] >= frameHeight) {\n248:     throw new Error(`candidate-01 effect has no valid anchor: ${topic}`);\n249:   }\n250:   return {\n251:     body: '',\n252:     strip: {\n253:       href: record.url,\n254:       frameWidth,\n255:       frameHeight,\n256:       frameCount: frames,\n257:       x: -anchor[0],\n258:       y: -anchor[1],\n259:       clips: [{\n260:         id: 'effect',\n261:         frames: Array.from({ length: frames }, (_, frame) => frame),\n262:         fps: record.fps ?? 12,\n263:         loop: record.loop ?? false,\n264:       }],\n265:       playing: 'effect',\n266:     },\n267:   };\n268: }"
+      }
+    ],
+    "liveGamePlaybackObserved": false
+  },
+  "timing": {
+    "fps": 12,
+    "frames": 4,
+    "loop": false,
+    "authoredClipFrameDurationsSeconds": [
+      "1/12",
+      "1/12",
+      "1/12",
+      "1/12"
+    ],
+    "frameStartTimesSeconds": [
+      "0",
+      "1/12",
+      "1/6",
+      "1/4"
+    ],
+    "nominalClipSeconds": "1/3",
+    "consumerLifetimeMs": null,
+    "hit420msLifetimeAssumed": false,
+    "heal500msLifetimeAssumed": false,
+    "finalFrame": "Two unchanged cyan-core beacons with no line and sparse square particles. Future explicit consumer owns hold/removal."
+  },
+  "canvas": [
+    1254,
+    1254
+  ],
+  "placement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "output": {
+    "1x": [
+      128,
+      32
+    ],
+    "2x": [
+      256,
+      64
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "blend": "normal source-over"
+  },
+  "style": "Chunky matte dark-gray faceted beacon stones, gold caps/rings and cyan diamond cores. A bounded white-core/cyan-edge connection changes from straight to jagged to fragments to absent. No broad blue glow, vignette, ground plate or generic broken-line icon.",
+  "alpha": "Genuine RGBA; source perimeter at most 1 with actual clean composites, final logical2px alpha0. No alpha cleanup or programmatic art.",
+  "gates": [
+    "Parent approves exact phase order before generation.",
+    "Generate intact-link baseline first to fix the two beacon silhouettes, base contacts and spacing.",
+    "Subsequent independently authored phases preserve both beacons while changing only link and particles. Measure actual registration rather than claim exact numeric plans.",
+    "Full source black/white, native32/64 on six backgrounds, full and terminal progression, and exact decoded-frame/timing verification.",
+    "Preserve catalog-only distinction; do not add network-loss mechanics or inferred lifetime.",
+    "No browser/live observation claim."
+  ]
+}
