@@ -1,0 +1,24 @@
+{
+  "topicId": "C01-CH03-S16",
+  "auditConsumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "actualUseInPriorAudit": false,
+  "currentReadOnlySearch": "packages/story-candidate-01/src/story.ts directly inspected; S09 SCENES.ivra used by c01/brief-09 and c01/aftermath-09, S16 no selector present.",
+  "browserOrLiveVerified": false,
+  "cssGeometry": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "qaOnly": "Any cover image shows geometry only, without current UI filters/text/overlays; not a screenshot."
+}

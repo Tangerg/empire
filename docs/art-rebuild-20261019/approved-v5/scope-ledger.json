@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 429,
+    "formalBound": 431,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 50,
+      "narrative-static": 52,
       "skill": 48,
       "status": 24,
       "terrain": 24
     },
-    "rawPreservedTopics": 429,
+    "rawPreservedTopics": 431,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -606,13 +606,20 @@
       "category": "narrative-static",
       "label": "伊芙拉断缰",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch02-s09/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch02-s09.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S09 self-release juvenile dragon with distant healer; S16 collective ordinary memory echoes and three disabled extraction structures. Rejected S16v1 retained",
+        "export": "Exact1664x936 crop[4,2,1668,938], nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+        "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+        "liveGame": "pending; static source/native/cover QA only"
+      }
     },
     {
       "topicId": "C01-CH03-S11",
@@ -662,13 +669,20 @@
       "category": "narrative-static",
       "label": "无旗者形成",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch03-s16/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch03-s16.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S09 self-release juvenile dragon with distant healer; S16 collective ordinary memory echoes and three disabled extraction structures. Rejected S16v1 retained",
+        "export": "Exact1664x936 crop[4,2,1668,938], nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+        "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+        "liveGame": "pending; static source/native/cover QA only"
+      }
     },
     {
       "topicId": "C01-CH04-S19",

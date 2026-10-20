@@ -1,7 +1,27 @@
 {
-  "status": "generation-paused-before-first-call-per-parent-backup-hold",
-  "generationAttempts": 0,
-  "preparedSourcesVerified": true,
+  "topicId": "C01-CH02-S09",
+  "selectedRevision": "v1",
+  "selectedMaster": "master.png",
+  "sourceNativeSize": [
+    1672,
+    941
+  ],
+  "formalIntegerCrop": [
+    4,
+    2,
+    1668,
+    938
+  ],
+  "physicalOutputSize": [
+    1664,
+    936
+  ],
+  "logicalSize": [
+    256,
+    144
+  ],
+  "sourceDensity": 6.5,
+  "status": "parent full512 view accepted; integration pending",
   "files": [
     {
       "path": "audited-source.json",
@@ -17,6 +37,26 @@
       "path": "consumer-evidence.json",
       "bytes": 1216,
       "sha256": "ae9b8122d27bde3802f6ca4e2751b2e09bc69db6ce0987b7b9a93e12fc4b448c"
+    },
+    {
+      "path": "final-verification.json",
+      "bytes": 602,
+      "sha256": "326c2d4d5edd7465e52b528e2aa5d6ef3dfcef9843398f8a4ab3b674b3f61293"
+    },
+    {
+      "path": "generation-result.json",
+      "bytes": 366,
+      "sha256": "206f904d370ba313737d78fbe63559c9f469e21750fd683f0f673bec2410f0ca"
+    },
+    {
+      "path": "master.png",
+      "bytes": 2439663,
+      "sha256": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361"
+    },
+    {
+      "path": "native.png",
+      "bytes": 2439663,
+      "sha256": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361"
     },
     {
       "path": "original-cell-617.png",
@@ -42,6 +82,56 @@
       "path": "prompt.txt",
       "bytes": 4530,
       "sha256": "e95f3a13b66c2c7f3f8e161fbb65ae74bbd06e303360024e606907abdadbc3cc"
+    },
+    {
+      "path": "qa-cover-staging-inset.png",
+      "bytes": 164367,
+      "sha256": "afcc3016c56c8b316e080196c32a1ddbc68bd7e48fed11447094b5c759080da6"
+    },
+    {
+      "path": "qa-cover-staging-mobile.png",
+      "bytes": 194584,
+      "sha256": "2412c1f8db369897cdc970181b0b89b29eb5eead5649ff9b0f3f894622a164c3"
+    },
+    {
+      "path": "qa-cover-story-desktop.png",
+      "bytes": 1026961,
+      "sha256": "20a0dfdc51636b58b10b78107e3d1f46f5daa396e4db174e4b1d8c88999d606f"
+    },
+    {
+      "path": "qa-cover-story-mobile.png",
+      "bytes": 593056,
+      "sha256": "ad87cbc2e9e7fce02f651105628b85bd90511a652a21c0b7d1795a35d286ff82"
+    },
+    {
+      "path": "qa-covers-contact-sheet.png",
+      "bytes": 696588,
+      "sha256": "5d6b4b28614ad1ff78a9a357362e058789ec22b89d77fb383e47f53af2b2e687"
+    },
+    {
+      "path": "qa-exact-crop-512x288.png",
+      "bytes": 337942,
+      "sha256": "e152ccd72aec186758ffe4d782ebe66e99d5408defcbbd9dd6aa121eeba61ba7"
+    },
+    {
+      "path": "qa-full-native-preview.png",
+      "bytes": 716803,
+      "sha256": "f97eb40de0dd4fe1396cbfbacd8c371ea24f67ace8f2e8f8029a86a6d1e3cd43"
+    },
+    {
+      "path": "qa-logical-256x144.png",
+      "bytes": 95062,
+      "sha256": "ee5c3c353831f7d2eea5ab2001f91be8d82a3def9c11d84c9bfd10c5933305fb"
+    },
+    {
+      "path": "qa-source-native-1664x936.png",
+      "bytes": 2671393,
+      "sha256": "680bed896dc5049f280c9d392627115df7c0b235b6eef317302ac0593d3ff29b"
+    },
+    {
+      "path": "raw.png",
+      "bytes": 2439663,
+      "sha256": "f8ff55501e1e6a62e5a370482b4c664cb6e4db03306ff6ab787654c157ed8361"
     },
     {
       "path": "reference-hashes.json",
@@ -84,6 +174,16 @@
       "sha256": "679883eb9384c9000638a849dcd3f35c40abb827c6e792ec6307e3c0ec049da7"
     },
     {
+      "path": "source-qa.json",
+      "bytes": 1222,
+      "sha256": "a12f0a1fb479896a995e9e1490603178a90c01cfe31a4ec1f2f2483838401eab"
+    },
+    {
+      "path": "source-review.md",
+      "bytes": 4288,
+      "sha256": "4d579d7a47ede094a3f143bc67c915ddd67594aa2aef250e9fc7070cecf7a5bf"
+    },
+    {
       "path": "story-reference-hashes.json",
       "bytes": 1788,
       "sha256": "ed7aef5f7e79daa2b5c38c27792ab62bfb5f29c7fad1b627c4a8580140299f3b"
@@ -92,6 +192,11 @@
       "path": "story-source-context.txt",
       "bytes": 88757,
       "sha256": "5eac437c5ce08ea56b12d6af9f7cd0fb8e8ffa7b58b52e83e44cd6fb7158420d"
+    },
+    {
+      "path": "viewport-qa.json",
+      "bytes": 2862,
+      "sha256": "0076a10878384e8c1d62ff9c465e1ffe6866eacde1282f0025793d49d8f40201"
     }
   ]
 }

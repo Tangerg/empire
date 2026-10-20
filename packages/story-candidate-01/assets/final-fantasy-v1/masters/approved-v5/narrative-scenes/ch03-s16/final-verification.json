@@ -1,0 +1,24 @@
+{
+  "topicId": "C01-CH03-S16",
+  "selectedRevision": "v2",
+  "allChecksPass": true,
+  "checks": {
+    "rawNativeMasterIdentical": true,
+    "native1672x941": true,
+    "opaque": true,
+    "exactCrop": true,
+    "crop1664x936": true,
+    "logical256x144": true,
+    "preview512x288": true,
+    "logicalExactDownsample": true,
+    "previewExactDownsample": true,
+    "referencesArchivedAndHashVerified": true,
+    "originalFullboardCropRuntimeVerified": true,
+    "rejectedV1Preserved": true,
+    "v2ReferencesHashVerified": true
+  },
+  "visualReview": "source-review.md",
+  "formalBinding": false,
+  "browserOrLiveVerification": false,
+  "noGameplayOrMainRepoWrites": true
+}
