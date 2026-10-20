@@ -1,0 +1,19 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+stdout | tools/build/late-inline-assets.test.ts > late original-byte resource embedding > preserves static imports, dynamic import URLs, CSS fonts, public HTML and URL fragments in one file
+[plugin empire:late-inline-assets] ORIGINAL_RESOURCE_AUDIT [{"filename":"public.svg","sha256":"75a5bc96de6853c421176a82a70c956a6813b26eda6476142bf6e70971ac4087","byteLength":61},{"filename":"static-CrqzZDj4.png","sha256":"5ec770aa8b97e5faafa2f01dcab2aed7d090c5685a47c4bc90db867b9bf6c3a4","byteLength":8},{"filename":"dynamic-CA8k8yMs.webp","sha256":"224a51bb3edf2de40b703a9062341eb6544b63520b685dc30a4399fe994faf55","byteLength":33},{"filename":"face-By0iFiWi.woff2","sha256":"5616cb2f5ad590605a10e43ab298920bc3aaf07fade4315c5f9fd2d83ac901ae","byteLength":24}]
+[plugin empire:late-inline-assets] Embedded 4 original binary resources after module generation
+[plugin vite:singlefile] 
+
+[plugin vite:singlefile] Inlining: index-BoUjX8pT.js
+[plugin vite:singlefile] Inlining: style-5fWnUet3.css
+
+ ✓ tools/build/late-inline-assets.test.ts (3 tests) 275ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  13:57:41
+   Duration  919ms (transform 83ms, setup 0ms, collect 175ms, tests 275ms, environment 0ms, prepare 103ms)
+
