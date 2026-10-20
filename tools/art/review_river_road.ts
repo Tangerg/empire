@@ -14,7 +14,7 @@ mkdirSync(output, { recursive: true });
 const hash = (value: string) => createHash('sha256').update(value).digest('hex');
 const state = engine.createState(shippedLevel('c01-02'));
 const before = JSON.stringify(state);
-const board = mountBoard(shippedLevel('c01-02'), CANDIDATE_01_ART);
+const board = mountBoard(shippedLevel('c01-02'), CANDIDATE_01_ART, state);
 board.render(emptyOverlay());
 const initial = board.el.outerHTML;
 const actors = () => [...board.el.querySelectorAll('.layer-units > .unit')].map(unit => unit.outerHTML).join('');
