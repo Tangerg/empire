@@ -241,6 +241,12 @@ export function candidate01FxPicture(topic: string): BoardPicture {
   const frameWidth = record.frameWidth ?? 32;
   const frameHeight = record.frameHeight ?? 32;
   const frames = record.frames ?? 1;
+  const anchor = record.anchor;
+  if (!anchor || anchor.length !== 2
+    || !Number.isFinite(anchor[0]) || anchor[0] < 0 || anchor[0] >= frameWidth
+    || !Number.isFinite(anchor[1]) || anchor[1] < 0 || anchor[1] >= frameHeight) {
+    throw new Error(`candidate-01 effect has no valid anchor: ${topic}`);
+  }
   return {
     body: '',
     strip: {
@@ -248,8 +254,8 @@ export function candidate01FxPicture(topic: string): BoardPicture {
       frameWidth,
       frameHeight,
       frameCount: frames,
-      x: -frameWidth / 2,
-      y: -frameHeight / 2,
+      x: -anchor[0],
+      y: -anchor[1],
       clips: [{
         id: 'effect',
         frames: Array.from({ length: frames }, (_, frame) => frame),
