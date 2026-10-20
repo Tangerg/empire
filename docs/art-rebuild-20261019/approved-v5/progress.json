@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 65,
+  "authoredFourPoseBundles": 66,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 565,
+  "formalRuntimeBoundTopics": 576,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -3464,6 +3464,72 @@
       "export": "Whole1254 canvas fitted28x28 into32x32 with2px true alpha padding; integration-owner native white/black/olive review passed",
       "runtimeBinding": "Canonical static HUD identity/anchor preserved; catalog-only binding, no shipped UI consumer invented",
       "liveGame": "pending; static export review only"
+    },
+    "c02-unit-antler-knight": {
+      "raw": "Four distinct1254-square authored mounted-antler knight poses preserve original combat atlas identity; exact prompts, immutable raw/master and support measurements saved",
+      "export": "Whole-canvas width52 at3,10; measured integer offsets within±2; actual64px native review passed. Residual interphase support0.14px X/0.488px Y, common visual baseline2.74–3.23px above anchor63. Secondary32 diagnostic has alpha ringing and is not acceptance",
+      "runtimeBinding": "Canonical256x64 four-frame catalog with64x64 cells, anchor32,63 and2x2 footprint unchanged. No C02 gameplay consumer or HD invented",
+      "liveGame": "pending; static canonical64 source/registration review only"
+    },
+    "c02-terrain-farlight-cargo-hold": {
+      "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+      "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+      "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+      "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+    },
+    "c02-terrain-farlight-living-deck": {
+      "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+      "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+      "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+      "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+    },
+    "c02-terrain-farlight-projection-garden": {
+      "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+      "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+      "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+      "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+    },
+    "c02-terrain-farlight-service-pipes": {
+      "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+      "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+      "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+      "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+    },
+    "c02-hud-healing": {
+      "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+      "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+      "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+      "liveGame": "pending; native catalog-only acceptance"
+    },
+    "c02-hud-neutral": {
+      "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+      "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+      "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+      "liveGame": "pending; native catalog-only acceptance"
+    },
+    "c02-hud-permission-dispute": {
+      "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+      "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+      "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+      "liveGame": "pending; native catalog-only acceptance"
+    },
+    "c02-hud-recruitable": {
+      "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+      "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+      "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+      "liveGame": "pending; native catalog-only acceptance"
+    },
+    "c02-hud-repairable": {
+      "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+      "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+      "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+      "liveGame": "pending; native catalog-only acceptance"
+    },
+    "c02-hud-supply": {
+      "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+      "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+      "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+      "liveGame": "pending; native catalog-only acceptance"
     }
   },
   "supplementalBundles": {

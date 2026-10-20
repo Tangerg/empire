@@ -52,6 +52,50 @@
           2
         ]
       }
+    },
+    "c02-unit-antler-knight": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/idle/master.png",
+          "sha256": "f8dba8db8bfc15498b7d44b90c3577db6f5eec691aef583c66625f8f93368994",
+          "registrationOffset": [
+            0,
+            -1
+          ]
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-a/master.png",
+          "sha256": "580c765329cd9c5fffbcbc918c9bb533012bca9f3c390d9acdfe0a3d267ea793",
+          "registrationOffset": [
+            -2,
+            0
+          ]
+        },
+        "attack": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/attack/master.png",
+          "sha256": "4de77612a8c98561daaf4cd77034de99785ab98d1a56a6959add65d91927b5e7",
+          "registrationOffset": [
+            2,
+            2
+          ]
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-b/master.png",
+          "sha256": "171ff0ea639291d9e0c80cc5f3efd2ab328455c9b076c2297e7b14f6c31b9ae1",
+          "registrationOffset": [
+            1,
+            0
+          ]
+        }
+      },
+      "placement": {
+        "renderWidth": 52,
+        "origin": [
+          3,
+          10
+        ]
+      }
     }
   }
 }

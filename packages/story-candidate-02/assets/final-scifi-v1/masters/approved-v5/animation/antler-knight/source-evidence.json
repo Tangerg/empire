@@ -1,0 +1,35 @@
+{
+  "topicId": "c02-unit-antler-knight",
+  "assetId": "C02-SFV1-unit-antler-knight",
+  "label": "角枝骑士",
+  "sources": [
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
+      "sha256": "773a9a8cd6abba3f013bf717ea406fd2da1e121c8d24edea728d72fc18ad68a9"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/combat/combat-board-05.png",
+      "sha256": "6dc8c5e1a1534d14e2fb51a630dd01a49eb3e912609d3ac0060012c685925bb6"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-antler-knight.png",
+      "sha256": "278017e27ed6abaf9c2ddcc419cd28a9f55761206498e87ad7b712aba3b82ee9"
+    },
+    {
+      "path": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-antler-knight/source-evidence.json",
+      "sha256": "3a6007b26dff6316c8e95ea9fbb179ae8349335eb9016ac85a6f4f1eac86a9fe"
+    }
+  ],
+  "originalSourceLocation": "combat-board-05.png, full row 3 (one-based), left-to-right idle/walk-a/attack/walk-b. Topic catalog #19 establishes board05 row03; visually matches canonical runtime quartet.",
+  "originalReferenceCrop": [
+    0,
+    632,
+    1254,
+    935
+  ],
+  "identity": "Mounted bio-science-fiction antlered ivory/olive rider; four-legged leaf-armored cervid; cyan faceplate/eyes/nodes; leaf shield and one cyan-tipped organic spear.",
+  "gearConflict": "Equipment card c02-equipment-antler-knight is a purple branching short spear. Do not transplant it: combat board row3 and canonical runtime both declare cyan long spear and shield, so combat source is authoritative for these animation phases.",
+  "semanticScope": "Only existing four phases. No shape-changing, self-heal, projectile, hit, death, mounted/dismounted modes added.",
+  "styleReference": "C01 approved-v5/animation/wyvern-rider/idle/master.png, style-only. Subject identity exclusively C02 combat row.",
+  "formalRuntimeIntegration": false
+}

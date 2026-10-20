@@ -1,0 +1,181 @@
+[
+  {
+    "topicId": "c02-unit-antler-knight",
+    "density": 1,
+    "output": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-antler-knight.png",
+    "size": [
+      256,
+      64
+    ],
+    "logicalAnchor": [
+      32,
+      63
+    ],
+    "placement": {
+      "renderWidth": 52,
+      "origin": [
+        3,
+        10
+      ]
+    },
+    "renderedCanvasSize": [
+      52,
+      52
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/idle/master.png",
+        "sourceSha256": "f8dba8db8bfc15498b7d44b90c3577db6f5eec691aef583c66625f8f93368994",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 75,
+          "coreBoundingBox": [
+            231,
+            43,
+            1118,
+            1227
+          ]
+        },
+        "registrationOffset": [
+          0,
+          -1
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-a/master.png",
+        "sourceSha256": "580c765329cd9c5fffbcbc918c9bb533012bca9f3c390d9acdfe0a3d267ea793",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 60,
+          "coreBoundingBox": [
+            149,
+            114,
+            1191,
+            1212
+          ]
+        },
+        "registrationOffset": [
+          -2,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/attack/master.png",
+        "sourceSha256": "4de77612a8c98561daaf4cd77034de99785ab98d1a56a6959add65d91927b5e7",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 190,
+          "coreBoundingBox": [
+            52,
+            145,
+            1244,
+            1153
+          ]
+        },
+        "registrationOffset": [
+          2,
+          2
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-b/master.png",
+        "sourceSha256": "171ff0ea639291d9e0c80cc5f3efd2ab328455c9b076c2297e7b14f6c31b9ae1",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 76,
+          "coreBoundingBox": [
+            208,
+            41,
+            1140,
+            1211
+          ]
+        },
+        "registrationOffset": [
+          1,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "103dd599f2d2cd571dc03e8c9bab2284e7cda7f94fcd6432eb6b2216331694b3",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            13,
+            13,
+            49,
+            59
+          ]
+        },
+        "registrationOffset": [
+          0,
+          -1
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "546537bfe2c7559c945e16d559caac4ff075ec65d6f5540d3c039d366278ed20",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            8,
+            15,
+            50,
+            60
+          ]
+        },
+        "registrationOffset": [
+          -2,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "3b8445e45e257c7e614ce5609d2b6bb05a8b56b176e80279422cb30dcdff18ab",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            8,
+            19,
+            55,
+            59
+          ]
+        },
+        "registrationOffset": [
+          2,
+          2
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "e8fbf64657626592762e57d6a84d9f36babfb80b9555085c5f7ba363293ab1b0",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            13,
+            13,
+            51,
+            60
+          ]
+        },
+        "registrationOffset": [
+          1,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "93faae9b61c2d5ed1d6b4c5036b6c23e4f99452fc03384527c6c4b2e28586a23",
+    "semanticAnimationReview": "required-separately",
+    "fileSha256": "ee7ec712b916714c0c937dd4a28ec3713601707286ce600249ec7ba9b598352b"
+  }
+]

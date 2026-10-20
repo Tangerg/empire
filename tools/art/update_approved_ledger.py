@@ -34,7 +34,7 @@ def build(root=ROOT):
             relative = Path('props') / stem
         elif stem.startswith('equip-'):
             relative = Path('equipment') / stem
-        elif current['category'] == 'terrain' and topic.startswith('C01-TERRAIN-'):
+        elif current['category'] == 'terrain' and topic.startswith(('C01-TERRAIN-', 'c02-terrain-')):
             relative = Path('canonical-terrain') / stem.removeprefix('terrain-')
         elif current['category'] == 'fx' and topic.startswith('C01-FX-'):
             relative = Path('fx') / stem

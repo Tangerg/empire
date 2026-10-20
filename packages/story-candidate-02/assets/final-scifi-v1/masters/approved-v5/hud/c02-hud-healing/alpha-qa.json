@@ -1,0 +1,42 @@
+{
+  "source": {
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "perimeterAlphaMax": 0,
+    "alpha0PixelCount": 794577,
+    "perimeterNote": "Raw generated alpha preserved unchanged; alpha<=1 allowed per adjacent approved HUD convention."
+  },
+  "runtime": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "resize": "Whole authored canvas Lanczos-contained in 28x28 centered on 32x32; no crop",
+    "twoPixelMarginAlphaMax": 0
+  },
+  "integrity": {
+    "rawSha256": "bd83018555bae91873ba682c34dc2651e879b5da7222f1997f5807468dd523ed",
+    "masterSha256": "bd83018555bae91873ba682c34dc2651e879b5da7222f1997f5807468dd523ed",
+    "rawEqualsMaster": true,
+    "noAlphaCleanup": true,
+    "noRecolor": true
+  },
+  "visualComposites": {
+    "required": [
+      "white",
+      "black",
+      "olive"
+    ],
+    "status": "Passed visual inspection of source and actual native32 on white, black and olive"
+  }
+}

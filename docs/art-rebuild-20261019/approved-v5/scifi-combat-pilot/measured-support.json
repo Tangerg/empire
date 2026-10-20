@@ -1,0 +1,226 @@
+{
+  "idle": {
+    "feet": [
+      {
+        "foot": "near-hind",
+        "roi": [
+          240,
+          1140,
+          360,
+          1210
+        ],
+        "planted": true,
+        "soleY": 1199,
+        "bottomFourRowsMeanX": 331.06
+      },
+      {
+        "foot": "far-hind",
+        "roi": [
+          530,
+          1110,
+          650,
+          1190
+        ],
+        "planted": true,
+        "soleY": 1179,
+        "bottomFourRowsMeanX": 605.3006535947712
+      },
+      {
+        "foot": "near-fore",
+        "roi": [
+          720,
+          1150,
+          820,
+          1240
+        ],
+        "planted": true,
+        "soleY": 1226,
+        "bottomFourRowsMeanX": 783.0636942675159
+      },
+      {
+        "foot": "far-fore",
+        "roi": [
+          990,
+          1120,
+          1110,
+          1210
+        ],
+        "planted": true,
+        "soleY": 1200,
+        "bottomFourRowsMeanX": 1049.7857142857142
+      }
+    ],
+    "support": [
+      692.3025155370003,
+      1226
+    ]
+  },
+  "walk-a": {
+    "feet": [
+      {
+        "foot": "near-hind",
+        "roi": [
+          140,
+          1090,
+          240,
+          1210
+        ],
+        "planted": false,
+        "soleY": 1195,
+        "bottomFourRowsMeanX": 216.16666666666666
+      },
+      {
+        "foot": "far-hind",
+        "roi": [
+          530,
+          1100,
+          640,
+          1190
+        ],
+        "planted": true,
+        "soleY": 1180,
+        "bottomFourRowsMeanX": 587.6855670103092
+      },
+      {
+        "foot": "near-fore",
+        "roi": [
+          820,
+          1130,
+          960,
+          1230
+        ],
+        "planted": true,
+        "soleY": 1212,
+        "bottomFourRowsMeanX": 888.5309278350516
+      },
+      {
+        "foot": "far-fore",
+        "roi": [
+          1060,
+          1030,
+          1190,
+          1150
+        ],
+        "planted": false,
+        "soleY": 1137,
+        "bottomFourRowsMeanX": 1118.7391304347825
+      }
+    ],
+    "support": [
+      738.1082474226804,
+      1212
+    ]
+  },
+  "attack": {
+    "feet": [
+      {
+        "foot": "near-hind",
+        "roi": [
+          40,
+          1070,
+          180,
+          1170
+        ],
+        "planted": true,
+        "soleY": 1146,
+        "bottomFourRowsMeanX": 132.08064516129033
+      },
+      {
+        "foot": "far-hind",
+        "roi": [
+          450,
+          1060,
+          600,
+          1160
+        ],
+        "planted": true,
+        "soleY": 1133,
+        "bottomFourRowsMeanX": 543.1847133757962
+      },
+      {
+        "foot": "near-fore",
+        "roi": [
+          710,
+          1060,
+          840,
+          1170
+        ],
+        "planted": true,
+        "soleY": 1152,
+        "bottomFourRowsMeanX": 777.1893004115226
+      },
+      {
+        "foot": "far-fore",
+        "roi": [
+          1030,
+          1060,
+          1170,
+          1170
+        ],
+        "planted": true,
+        "soleY": 1141,
+        "bottomFourRowsMeanX": 1110.3222748815165
+      }
+    ],
+    "support": [
+      640.6942334575314,
+      1152
+    ]
+  },
+  "walk-b": {
+    "feet": [
+      {
+        "foot": "near-hind",
+        "roi": [
+          190,
+          1110,
+          320,
+          1210
+        ],
+        "planted": true,
+        "soleY": 1200,
+        "bottomFourRowsMeanX": 283.10285714285715
+      },
+      {
+        "foot": "far-hind",
+        "roi": [
+          550,
+          1120,
+          680,
+          1210
+        ],
+        "planted": true,
+        "soleY": 1198,
+        "bottomFourRowsMeanX": 629.7305699481865
+      },
+      {
+        "foot": "near-fore",
+        "roi": [
+          755,
+          1020,
+          850,
+          1120
+        ],
+        "planted": false,
+        "soleY": 1103,
+        "bottomFourRowsMeanX": 785.3783783783783
+      },
+      {
+        "foot": "far-fore",
+        "roi": [
+          1030,
+          1130,
+          1150,
+          1230
+        ],
+        "planted": true,
+        "soleY": 1211,
+        "bottomFourRowsMeanX": 1091.4367088607594
+      }
+    ],
+    "support": [
+      668.0900453172677,
+      1211
+    ]
+  }
+}

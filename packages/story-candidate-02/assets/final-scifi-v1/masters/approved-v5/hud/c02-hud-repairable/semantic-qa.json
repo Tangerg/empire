@@ -1,0 +1,8 @@
+{
+  "topicId": "c02-hud-repairable",
+  "source": "Visually inspected complete legacy 4x4 HUD atlas",
+  "invariants": "ONE front-facing square repair plate with clipped corners, broad gray segmented perimeter, four corner bolt heads, and a central broad cyan repair patch shaped as a square rotated 45 degrees. The cyan diamond patch has stepped interlocking tabs and notches at its edge. Original plate itself is the subject, not an added background. Preserve upright plate and central cyan patch; no wrench or plus sign.",
+  "result": "PASS",
+  "native32Review": "Recognizable identity, unclipped silhouette and correct count/orientation on white, black and olive.",
+  "sourceIntegrity": "Generated raw copied unchanged as master; no painting, recolor, matte stripping or reconstruction from runtime fragments."
+}

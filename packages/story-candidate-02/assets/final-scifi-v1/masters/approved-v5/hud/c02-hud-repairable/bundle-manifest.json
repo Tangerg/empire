@@ -1,0 +1,40 @@
+{
+  "topicId": "c02-hud-repairable",
+  "assetId": "C02-SFV1-hud-repairable",
+  "runtime": {
+    "file": "runtime.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false
+  },
+  "acceptance": "Source and native32 QA passed; ready for parent binding",
+  "filesSha256": {
+    "alpha-qa.json": "dec1f09c04a504e5082a560ad9b7e09d9f12dfe1cb1e6bb0ea6e046df66c2163",
+    "canonical-topic-entry.json": "a617514925bbd8fc0483ef233f47b54d44c4b8667bc3e454a6d0c0071528f282",
+    "diagnostic-native32/native32-on-black.png": "0874d483a299a13bcdceb0f1c3c1fb7fce2928c23ee348b0b4a69e7274e48565",
+    "diagnostic-native32/native32-on-olive.png": "001fa4f2d820832f1107350cef0207b79390efdf4e7b7983f8a4f4c5e9e6719f",
+    "diagnostic-native32/native32-on-white.png": "431a38b014ddad79f69f294259d57e8768e19ff6272718fbeb294eecb9cec50b",
+    "diagnostic-native32/native32-white-black-olive-8x-nearest.png": "47afc802cbe0b44919f42ea13c4c14476e7781292d5ecc5cc45c272a76f11964",
+    "diagnostic-native32/native32-white-black-olive.png": "693becbb29b31fcf0248e56ec055f59607c527ed34dbb047aa33df7c4f3680cf",
+    "generation-request.json": "268813435d3ec60af432b1208bcde2714e6787ddbb1b4b24c420cbc4c07499be",
+    "generation-result.json": "19756e58c5c477e8304507b105bb68b3cdca20f977b0ec6bad56aec0027c9e78",
+    "master.png": "9010ff07fc3e7c1e2e09e3d784a50c9ed35a466edefb91e5be184196ecf483d0",
+    "prompt.txt": "073c7910844b6db679e10289fd417f2df33c224fd89a3626f0e6ac7ef45b4ce0",
+    "raw.png": "9010ff07fc3e7c1e2e09e3d784a50c9ed35a466edefb91e5be184196ecf483d0",
+    "reference-hashes.json": "3c2b7e99a574088181d1d37b969c2174165cc5173d0180dc6378e10fb48365a1",
+    "runtime.png": "067b686f37b1f36093e7bec3d891f34263df00b8d63c4196bf4a4ef11e2d7cff",
+    "semantic-qa.json": "8edb0904aa3d9526484fc064eaffbc672f9ffba478efbf46bee461e5787b0c03",
+    "source-fullboard.png": "ec1ba35ece18cc577623d83403922267294541c739ba4ccd3bbf1790389bfedb",
+    "source-manifest-entry.json": "6a2dc936bf04e3798739909445608c2633c6bf641d6094decaa946c6b113454a",
+    "source-master-crop.png": "0bb9e681189f3a287d7a450e17b03d6c135e15f9b3d1deeb1869177857a09840",
+    "source-reference.json": "90b8b60f5add65601dfda0989fb7e2198331da4adcd017f9969e84cfea0bcd8f",
+    "source-review.md": "0d244836046905c5ffa76556e616a0d58c3138f583781eb89d2cba2fdaf76058",
+    "style-reference.png": "8aaf39171826b9eb5c95a961ccb5132be3fcf8f457182fbbc86cdd1ddc2c6247"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "topicId": "c02-hud-neutral",
+  "assetId": "C02-SFV1-hud-neutral",
+  "runtime": {
+    "file": "runtime.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false
+  },
+  "acceptance": "Source and native32 QA passed; ready for parent binding",
+  "filesSha256": {
+    "alpha-qa.json": "dd1f5134d9336295753bd17b570eeac9c9a0b762ebfd6938bbbb7d53eb0a35cf",
+    "canonical-topic-entry.json": "a9e1f75616273ea21de5c3752e797057d9cd720f8bce7a2f74aec20a4a75a956",
+    "diagnostic-native32/native32-on-black.png": "701764215b2be2c9ff266064e7384fe95e51c521154b616edc72ee4cb45cc9df",
+    "diagnostic-native32/native32-on-olive.png": "3143dc1a389e4684893330c6bd50e2d1bf72c843ef53b2bc454316ee0ce0c98d",
+    "diagnostic-native32/native32-on-white.png": "4dca6056d99dea12f8eae50b0b09d1e5d42197b4f8be5460c034befe978faa36",
+    "diagnostic-native32/native32-white-black-olive-8x-nearest.png": "7ecf6d0ed5285d4e90010cab035e57e02ba3b87c38ef8eee0975b7bdb965defa",
+    "diagnostic-native32/native32-white-black-olive.png": "b76be6b69a51ae7748e2a0e8338ac53b359446f5d28f87aab3142fb450e15aa1",
+    "generation-request.json": "aca222259b792e43844f8a97d9e1b64430b773e7a9416849e8b97fa2c6dab71b",
+    "generation-result.json": "9095d5fd7219d8a7a5d25bb83ff3115ed0fc5e2ea420e99b260a29c1396169af",
+    "master.png": "985ae99646feca595e905a201481ce4c77d750e4771c4ed000b3be0b282d44eb",
+    "prompt.txt": "133f24cb014db5e93f48851d2241b4f539ea64e33cc76c5f710228a9e26d965f",
+    "raw.png": "985ae99646feca595e905a201481ce4c77d750e4771c4ed000b3be0b282d44eb",
+    "reference-hashes.json": "acd34d25001557a28d11cdc2ff75823b09a0f73a9add30456a9e28f88c232d34",
+    "runtime.png": "476298fe20c7a766dd69c46f10eaf721fdd9f17d85554d6854f19895f210fe19",
+    "semantic-qa.json": "4c1192dfbb246d402ff023782f1a1d79f99d292c0f7a26263fb141e44376309a",
+    "source-fullboard.png": "ec1ba35ece18cc577623d83403922267294541c739ba4ccd3bbf1790389bfedb",
+    "source-manifest-entry.json": "ce7b5da4a357367334620adf9052cea6bf6c8b8871f6cba761e9da27a4291a7f",
+    "source-master-crop.png": "872b376490391786624adf67a3641fb102c4c9327ae7b77ad105930cd54203bf",
+    "source-reference.json": "c5ca900d500e430984793175528c48e8a832e7a4571ee00cde5e6b2a612ac7c6",
+    "source-review.md": "5a0e0d4092b3212a731a1239cd0c21b294d33e45fd33f14d35827ae75a2f4db6",
+    "style-reference.png": "8aaf39171826b9eb5c95a961ccb5132be3fcf8f457182fbbc86cdd1ddc2c6247"
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "phase": "idle",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7a904772-2e80-4597-b825-2b9bcdc2138b.png",
+    "request": {
+      "prompt": "Use case: stylized-concept. Asset: c02-unit-antler-knight, one IDLE phase sprite, not a sheet. Input 1 is the authoritative original four-pose unit reference: preserve the first pose's mounted bio-science-fiction unit identity and gear, never its magenta background. Input 2 is STYLE ONLY: exaggerated chunky matte hand-painted 2D tactical illustration inspired by Legends of Kingdom Rush, huge expressive silhouette masses, bold dark outlines, compact shapes, two-step cel shading. Do not copy that rider or mount. Subject: a fully enclosed ivory and muted olive bio-armor rider with a cyan diamond faceplate and branching antler crown, seated on a stocky four-legged leaf-armored cervid bio-engineered mount with ivory elongated face, cyan eye and broad leaf tufts. Keep an oval olive leaf shield with cyan central node on the screen-left arm and ONE upright organic spear with cyan/ivory pointed tip in screen-right hand, as the original combat unit, not purple equipment-card gear. Idle mount grounded in a stable compact standing pose, facing screen-right in elevated three-quarter tactical view. Preserve saddle and rider boots. Simplify tiny leaf clutter into broad solid leaf plates; make rider head and mount face oversized and readable at 32px. Materials matte ivory, olive green, warm bark brown, restrained cyan opaque inserts. Composition: single complete mounted unit centered on a square 1024x1024 transparent canvas, entire silhouette inside x=110..914 and y=100..920; foot ground baseline y=920 and body center x=512, ample transparent margin for subsequent walking and spear thrust. Native true alpha transparency, no background, no ground shadow, no text, no panel, no border, no dust, no aura, no photorealism, no glossy 3D. Maintain clear negative-space gaps between limbs and branching antlers.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-combat-pilot/original-authored-quartet.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/wyvern-rider/idle/master.png"
+      ],
+      "transparent_background": true
+    }
+  },
+  {
+    "phase": "walk-a",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8620da5a-9ab2-4d40-9370-78e6fe7d2016.png",
+    "request": {
+      "prompt": "Use case: identity-preserve. Edit target Image 1 is the accepted IDLE source for c02-unit-antler-knight. Produce ONE WALK-A phase, not a sheet. Preserve EXACT rider identity, huge antler helmet with cyan faceplate, ivory/olive matte bio-armor, screen-left leaf shield, screen-right organic spear, saddle, four-legged stocky cervid bio-mount, cyan eyes, leaf plates, bold dark outlined chunky Legends of Kingdom Rush-inspired two-step 2D painting and color palette. Image 2 is original four-pose reference ONLY for motion: take the second pose's forward stride. Change only pose: near foreleg reaches forward screen-right with hoof lifted, far foreleg bends back; near rear hoof plants under hindquarters, far rear leg trails, rider leans slightly forward and spear angles diagonally up-right. Shield remains clearly attached to same screen-left arm. Keep antlers, mount face and rider torso same pixel size as first image. Maintain same square native source canvas 1254x1254, same full unit scale, same body center around x=650, hoof ground line y=1225; complete antlers and spear fully inside canvas with transparent margins. Do not auto zoom, independently fit, mirror, change equipment or add limbs. Native real alpha background, no shadow, dust, glow haze, ground, text, panel or border.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-7a904772-2e80-4597-b825-2b9bcdc2138b.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-combat-pilot/original-authored-quartet.png"
+      ],
+      "transparent_background": true
+    }
+  },
+  {
+    "phase": "attack",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a5756926-9648-4ccf-bd03-ab5a87648c74.png",
+    "request": {
+      "prompt": "Use case: identity-preserve. Image 1 is the accepted IDLE source for c02-unit-antler-knight. Produce ONE ATTACK phase, not a sheet. Image 2 is the original quartet, use third cell's forward spear thrust motion. Keep EXACT same rider, antler crown, cyan faceplate, ivory/olive bio-armor, leaf shield on screen-left arm, saddle and boots, four-legged leaf-armored cervid bio-mount with ivory face and cyan eye. Same huge chunky matte silhouettes, dark outlines and two-step 2D Legends of Kingdom Rush-inspired painting. Change only pose: rider leans forward, spear hand extends and spear is level across the torso pointing screen-right, ONE complete cyan/ivory spearhead within right edge, leaf shield held close screen-left; mount lowers its head and braces, forelegs extended in a broad grounded lunge and hind legs pushing. No energy arc, projectile or extra effect asset; readable physical thrust only. Preserve rider head, antlers, torso and mount body pixel dimensions from Image 1, do not shrink the whole unit to fit spear. Native square canvas 1254x1254, shared unit scale, body center around x=650 and feet baseline y=1225. Can shorten foreshortened spear reach to retain transparent margin. Entire silhouette inside canvas, native real transparent alpha, no shadow, no dust, no background, no text, no panel. No mirroring or swapped equipment. Do not turn this into a human standing beside the mount.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-7a904772-2e80-4597-b825-2b9bcdc2138b.png",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/scifi-combat-pilot/original-authored-quartet.png"
+      ],
+      "transparent_background": true
+    }
+  },
+  {
+    "phase": "walk-b",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7808aba6-de80-487b-bdff-b4f3ca3262ce.png",
+    "request": {
+      "prompt": "Use case: identity-preserve. Image 1 is accepted IDLE of c02-unit-antler-knight; Image 2 is WALK-A. Produce ONE WALK-B phase opposite to Image 2, not a sheet and NOT a mirror. Preserve exact character, mounted cervid anatomy, antler crown cyan faceplate, ivory/olive bio-armor, cyan-eyed ivory mount face, broad leaf armor, saddle and boots. Keep shield in same screen-left hand and upright spear in same screen-right hand. Same chunky exaggerated matte Legends of Kingdom Rush-inspired 2D silhouette, dark outlines, two-step shading. Pose change only: opposite walking step, near foreleg folds back at the knee with hoof lifted under chest, far foreleg extends forward and touches ground; near hind leg reaches forward under belly while far hind leg plants behind. Rider upright with small torso bob and upright spear, shield still visible. This must have obviously different four-leg silhouette from Image 2, with same facing screen-right. Maintain head, torso and mount pixel scale, square native 1254x1254 canvas, shared body center x=650, grounded hoof baseline y=1225. Complete antlers and spear tip with transparent margin. Real native alpha transparency, no dust, no ground shadow, no background, no text or panel, no new gear, no glow haze. Keep the rider seated, no extra legs.",
+      "referenced_image_paths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-7a904772-2e80-4597-b825-2b9bcdc2138b.png",
+        "/workspace/scratch/84c9fe948755/generated_images/exec-8620da5a-9ab2-4d40-9370-78e6fe7d2016.png"
+      ],
+      "transparent_background": true
+    }
+  }
+]

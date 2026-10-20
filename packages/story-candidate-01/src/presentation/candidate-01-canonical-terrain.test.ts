@@ -80,14 +80,16 @@ describe('canonical reviewed family terrain catalog contract', () => {
 });
 
 describe('registered canonical terrain provenance', () => {
-  it('ties all registered sources and native exports to reviewed hashes', async () => {
+  it('ties all registered C01 sources and native exports to reviewed hashes', async () => {
     const { createHash } = await import('node:crypto');
     const root = new URL('../../../../', import.meta.url);
     const catalog = JSON.parse(readFileSync(new URL('tools/art/canonical-terrain-overrides.json', root), 'utf8'));
     const report = ['border', 'capital', 'forge', 'graveyard', 'oathlight', 'silverwood', 'river', 'wasteland'].flatMap(family => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/canonical-terrain/${family}/formal-export.json`, root), 'utf8')));
     const hash = (path: string) => createHash('sha256').update(readFileSync(new URL(path, root))).digest('hex');
-    expect(Object.keys(catalog.assets).sort()).toEqual(topics.map(([topic]) => topic).sort());
-    for (const [topic, entry] of Object.entries(catalog.assets) as [string, { source: string; sha256: string }][]) {
+    const registered = (Object.entries(catalog.assets) as [string, { source: string; sha256: string }][])
+      .filter(([topic]) => topic.startsWith('C01-'));
+    expect(registered.map(([topic]) => topic).sort()).toEqual(topics.map(([topic]) => topic).sort());
+    for (const [topic, entry] of registered) {
       expect(hash(entry.source)).toBe(entry.sha256);
       expect(candidate01Asset(topic).qualityTier).toBe('approved-chunky-v5-export-verified');
       const exports = report.filter((item: { topicId: string }) => item.topicId === topic);

@@ -1,0 +1,40 @@
+{
+  "topicId": "c02-hud-permission-dispute",
+  "assetId": "C02-SFV1-hud-permission-dispute",
+  "runtime": {
+    "file": "runtime.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false
+  },
+  "acceptance": "Source and native32 QA passed; ready for parent binding",
+  "filesSha256": {
+    "alpha-qa.json": "2fb92bf0bacdf18817615b486c211d8b14e66a91a8cade9f5bc510d561e415b8",
+    "canonical-topic-entry.json": "48927d8529d25c866d880431d801d5ac47df9154b3f3697cdd0a2ad872e5950e",
+    "diagnostic-native32/native32-on-black.png": "78a577815fb7d5ff32f9a6c80ced64f4d2f17610f110365d4862f8cdcffdefea",
+    "diagnostic-native32/native32-on-olive.png": "de3e537b168a7213c85b89157ae56e2e5c39b323413a8338b91302f60f1cbf82",
+    "diagnostic-native32/native32-on-white.png": "fdedf8c0b2891f409351e4a13fb4f7ca814ffe4dbeb2480825b50c9ad63b7ae6",
+    "diagnostic-native32/native32-white-black-olive-8x-nearest.png": "830b87559ea751c2a746a259f6297534be056c71f78b6470e4bea2bca4d395fe",
+    "diagnostic-native32/native32-white-black-olive.png": "05c7b11a5a8ba8ac3ab3e55591c25636521b8de4dbeec35ff34f843e2aad9df6",
+    "generation-request.json": "27126149d1fd2893da5d47137b582fd25bc132e17ed94953811b21115002992a",
+    "generation-result.json": "22d6f922f2d89c4d704da4f1e3486d614cc9e57f5dbb830ee820094d48a5bf73",
+    "master.png": "2f8d860f2bf18f42fc78e755fa74483be1754b029489b3ff846ba1cd0c6d1403",
+    "prompt.txt": "b86237b421e5b315d7937e27050b17068726f93e82e02cea557a611a424181ed",
+    "raw.png": "2f8d860f2bf18f42fc78e755fa74483be1754b029489b3ff846ba1cd0c6d1403",
+    "reference-hashes.json": "0e2820d33837b27fd6193cb50cf14423615030b1423707f59cf40a8e3ba46e0f",
+    "runtime.png": "c2dc9187d11163c4a6ee5c256ff6da5c68fcb8d1d1088637c5995ed5f227acb9",
+    "semantic-qa.json": "be9df8e8fa8990e25fef999f577b81473bdc69e2a32aa766ae26f3561a498dd4",
+    "source-fullboard.png": "ec1ba35ece18cc577623d83403922267294541c739ba4ccd3bbf1790389bfedb",
+    "source-manifest-entry.json": "c64f08043e88b1f19168c9704d0198642ef51fa14d4587b241915f377f1be77d",
+    "source-master-crop.png": "bf9ea25ad0806354e8a71f387999cb9dfa50fd463f5a505c44bc76c6fec3738a",
+    "source-reference.json": "c7c5d561b8160bfb01b21bd153262597371e1816e30ff3aabbd547fcf3dd8cbb",
+    "source-review.md": "3e80ba3a56fa0eb89968a837ff1f91aa26bf86f7b2ee8d833144ac0f15085c86",
+    "style-reference.png": "8aaf39171826b9eb5c95a961ccb5132be3fcf8f457182fbbc86cdd1ddc2c6247"
+  }
+}

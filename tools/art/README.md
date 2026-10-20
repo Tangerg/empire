@@ -880,3 +880,19 @@ CAPITAL1/2 use the same verified historical sixteen NESW alpha masks as BORDER2/
 ### Forge canonical terrain family
 
 The same bounded canonical material exporter now accepts FORGE1–4: variants for1/3/4, NESW16 for2. All eight existing32/64 alpha strips were measured against the pinned historical hashes before enabling this family (approved-v5/canonical-terrain/forge/original-alpha-proof.json). This authorizes source registration, not an assertion that unfinished materials pass native/mask review. Source windows retain distributed stone/grate, molten-channel, hex-paving and archive-floor identities. Geometry, mode, tile sizes and canonical IDs remain unchanged.
+
+## C02 canonical terrain pilot
+
+The canonical terrain exporter also supports the four explicitly reviewed Farlight
+C02 identities. Each source belongs to that campaign's own masters directory.
+C02 uses only its declared native 32 density; no HD manifest or gameplay consumer
+is created. Four equal-size distinct windows produce the variants, while the
+pipe material uses one window and the unchanged historical 16 NESW masks. Original
+C02 alpha strips were compared byte-for-byte to the established masks. The
+outermost 1 px seam treatment remains identical to the C01 contract.
+
+The projection-garden source is 1269×1240. Its four 620 px square corner windows
+retain the full raw source while omitting a 29 px central column strip from exports.
+That is explicit registration, not stretching or a claim of a seamless world plane.
+Native motif and topology review is separate from deterministic export verification.
+Existing C01 dual-density output remains unchanged.

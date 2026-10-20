@@ -4,22 +4,22 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 565,
+    "formalBound": 576,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 40,
+      "combat-unit": 41,
       "equipment": 95,
       "faction-kit": 12,
       "fx": 24,
-      "hud": 26,
+      "hud": 32,
       "interactive-structure": 24,
       "mission-unit": 24,
       "narrative-static": 80,
       "skill": 96,
       "status": 48,
-      "terrain": 32
+      "terrain": 36
     },
-    "rawPreservedTopics": 566,
+    "rawPreservedTopics": 576,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -10167,14 +10167,22 @@
       "label": "角枝骑士",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/idle/master.png"
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/attack/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/idle/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-a/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-antler-knight.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four distinct1254-square authored mounted-antler knight poses preserve original combat atlas identity; exact prompts, immutable raw/master and support measurements saved",
+        "export": "Whole-canvas width52 at3,10; measured integer offsets within±2; actual64px native review passed. Residual interphase support0.14px X/0.488px Y, common visual baseline2.74–3.23px above anchor63. Secondary32 diagnostic has alpha ringing and is not acceptance",
+        "runtimeBinding": "Canonical256x64 four-frame catalog with64x64 cells, anchor32,63 and2x2 footprint unchanged. No C02 gameplay consumer or HD invented",
+        "liveGame": "pending; static canonical64 source/registration review only"
+      }
     },
     {
       "topicId": "c02-unit-boarding-team",
@@ -11232,13 +11240,20 @@
       "category": "terrain",
       "label": "远灯号货舱",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-cargo-hold/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-farlight-cargo-hold.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+        "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+        "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+        "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-farlight-living-deck",
@@ -11246,13 +11261,20 @@
       "category": "terrain",
       "label": "远灯号生活舱",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-living-deck/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-farlight-living-deck.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+        "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+        "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+        "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-farlight-projection-garden",
@@ -11260,13 +11282,20 @@
       "category": "terrain",
       "label": "远灯号投影培育舱",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-projection-garden/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-farlight-projection-garden.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+        "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+        "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+        "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-farlight-service-pipes",
@@ -11274,13 +11303,20 @@
       "category": "terrain",
       "label": "远灯号管道维修层",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/canonical-terrain/farlight-service-pipes/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/terrain/terrain-farlight-service-pipes.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full atlas identity preserved in independent opaque built-in imagegen material; exact prompts and immutable raw/master hashes saved",
+        "export": "Explicit equal-scale source windows, four distinct variants or16 historical NESW masks; exact original alpha and cardinal edge equality checked. Native32 integration-owner review passed. Garden uses four620px corner windows with29px central strip omitted and retained in raw",
+        "runtimeBinding": "Canonical C02 terrain catalog32px contract preserved; no HD or gameplay ground consumer invented",
+        "liveGame": "pending; native catalog samples only, not world-ground or browser acceptance"
+      }
     },
     {
       "topicId": "c02-terrain-hesha-glass-sea",
@@ -15715,13 +15751,20 @@
       "category": "hud",
       "label": "治疗点标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-healing/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-healing.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+        "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+        "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+        "liveGame": "pending; native catalog-only acceptance"
+      }
     },
     {
       "topicId": "c02-hud-main-objective",
@@ -15750,13 +15793,20 @@
       "category": "hud",
       "label": "中立标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-neutral/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-neutral.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+        "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+        "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+        "liveGame": "pending; native catalog-only acceptance"
+      }
     },
     {
       "topicId": "c02-hud-permission-dispute",
@@ -15764,13 +15814,20 @@
       "category": "hud",
       "label": "多阵营权限争议点",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-permission-dispute/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-permission-dispute.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+        "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+        "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+        "liveGame": "pending; native catalog-only acceptance"
+      }
     },
     {
       "topicId": "c02-hud-recruitable",
@@ -15778,13 +15835,20 @@
       "category": "hud",
       "label": "可招降标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-recruitable/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-recruitable.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+        "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+        "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+        "liveGame": "pending; native catalog-only acceptance"
+      }
     },
     {
       "topicId": "c02-hud-reinforcement",
@@ -15813,13 +15877,20 @@
       "category": "hud",
       "label": "可修复结构标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-repairable/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-repairable.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+        "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+        "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+        "liveGame": "pending; native catalog-only acceptance"
+      }
     },
     {
       "topicId": "c02-hud-side-objective",
@@ -15848,13 +15919,20 @@
       "category": "hud",
       "label": "补给点标记",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/hud/c02-hud-supply/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/hud/hud-supply.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original full-board motif reviewed; independent built-in imagegen source with exact prompt, raw/master hashes and semantic QA",
+        "export": "Whole-canvas native32 export; integration-owner white/black/olive review passed. Source alpha≤1 perimeter residue preserved; final2px padded perimeter alpha0. Tiny seams simplify at32",
+        "runtimeBinding": "Canonical HUD catalog identity32x32 and anchor16,16 preserved; no authored UI consumer invented",
+        "liveGame": "pending; native catalog-only acceptance"
+      }
     },
     {
       "topicId": "c03-arch-floating-bridge",

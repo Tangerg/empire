@@ -1,0 +1,8 @@
+{
+  "topicId": "c02-hud-permission-dispute",
+  "source": "Visually inspected complete legacy 4x4 HUD atlas",
+  "invariants": "ONE five-node permissions hub. A small circular gray central hub with five short spokes connects EXACTLY FIVE chunky hexagonal nodes: red at TOP, blue at UPPER RIGHT, purple at LOWER RIGHT, yellow at LOWER LEFT, green at UPPER LEFT. Keep radial order, count five and true hexagonal nodes. Simple dark radial framework; transparent spaces between nodes. No extra node or arrows.",
+  "result": "PASS",
+  "native32Review": "Recognizable identity, unclipped silhouette and correct count/orientation on white, black and olive.",
+  "sourceIntegrity": "Generated raw copied unchanged as master; no painting, recolor, matte stripping or reconstruction from runtime fragments."
+}

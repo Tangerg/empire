@@ -1,27 +1,28 @@
 {
-  "asOfUtc": "2026-10-20T07:23:00Z",
-  "formalSnapshot": "565 local verified bindings;560 remote at135f384e",
+  "asOfUtc": "2026-10-20T07:41:00Z",
+  "formalSnapshot": "576 local bindings in corrected full regression; remote565 plus river clearances at9a1b5eee",
   "assignments": [
     {
       "topics": [
-        "c02-hud-healing",
-        "c02-hud-neutral",
-        "c02-hud-permission-dispute",
-        "c02-hud-recruitable",
-        "c02-hud-repairable",
-        "c02-hud-supply"
+        "c02-unit-boarding-team"
       ],
-      "stage": "full-board audit and independent alpha source generation"
+      "stage": "retain valid two-actor idle; remaining three phases generating; rejected clipped retry preserved"
     },
     {
-      "topics": [
-        "c02-unit-antler-knight"
-      ],
-      "stage": "four-pose combat pilot source generation; incomplete raw only"
+      "scope": "four Hesha terrain topics",
+      "stage": "native sources and exact historical-mask previews reviewed; await576 verified snapshot before registering"
     },
     {
-      "scope": "c01-02 forest actor overlap",
-      "stage": "separate scene worktree; continuous road integrated, further geometry review pending"
+      "scope": "first four C03 battle-props",
+      "stage": "original identity audit and alpha source generation"
+    },
+    {
+      "scope": "antler-knight scene quality",
+      "stage": "catalog-bound; shared renderer supports overlap contact shadow, actual C02 scene still unavailable; baseline clearance not claimed resolved globally"
+    },
+    {
+      "scope": "c01-02 asymmetric river layout",
+      "stage": "separate scene worktree; intentional map delta must be verified independently"
     }
   ],
   "canonicalRemaining": {
@@ -30,13 +31,12 @@
     },
     "C02": {
       "narrative-static": 80,
-      "combat-unit": 40,
+      "combat-unit": 39,
       "mission-unit": 24,
       "faction-kit": 12,
-      "terrain": 32,
+      "terrain": 28,
       "interactive-structure": 24,
-      "fx": 24,
-      "hud": 6
+      "fx": 24
     },
     "C03": {
       "narrative-static": 80,
@@ -53,7 +53,7 @@
       "hud": 16
     }
   },
-  "counting": "565 catalog-bound canonical topics of1212;647 remain. C01 FX24/24, C02 HUD10/16. Environment186 separate source cells. LiveGame0.",
+  "counting": "576 canonical catalog bindings of1212;636 remaining. C02 HUD16/16 and Farlight terrain4/32. Environment186 separate source cells; no live-game acceptance.",
   "blocked": [
     {
       "topic": "C01 equipment shaman",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export explicitly registered reviewed Border, Capital, Forge, Graveyard and Oathlight materials without changing canonical topology."""
+"""Export explicitly reviewed campaign materials without changing canonical topology."""
 import argparse
 import hashlib
 import io
@@ -21,6 +21,13 @@ TOPICS.update({f'C01-TERRAIN-OATHLIGHT-{i}': 'variants' if i in (1, 4) else 'nes
 TOPICS.update({f'C01-TERRAIN-SILVERWOOD-{i}': 'nesw-16' if i == 2 else 'variants' for i in range(1, 5)})
 TOPICS.update({f'C01-TERRAIN-RIVER-{i}': 'nesw-16' for i in range(1, 5)})
 TOPICS.update({f'C01-TERRAIN-WASTELAND-{i}': 'nesw-16' if i in (2,4) else 'variants' for i in range(1, 5)})
+SCIFI_PACK = Path('packages/story-candidate-02/assets/final-scifi-v1')
+SCIFI_TOPICS = {
+    'c02-terrain-farlight-cargo-hold': 'variants',
+    'c02-terrain-farlight-living-deck': 'variants',
+    'c02-terrain-farlight-projection-garden': 'variants',
+    'c02-terrain-farlight-service-pipes': 'nesw-16',
+}
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of
 # the complete historical horizontal alpha strips, not resized 1x masks.
@@ -56,7 +63,7 @@ def canonical_masks(size):
     return masks
 
 
-def validate_manifests(root, topics):
+def validate_fantasy_manifests(root, topics):
     pack = root / PACK
     base = read_json(pack / 'manifest-final-fantasy-v1.json')
     hd = read_json(pack / 'manifest-tactical-runtime-hd.json')
@@ -100,14 +107,52 @@ def validate_manifests(root, topics):
     return targets
 
 
-def read_material(root, entry, mode):
+def validate_manifests(root, topics):
+    fantasy = [topic for topic in topics if topic in TOPICS]
+    targets = validate_fantasy_manifests(root, fantasy) if fantasy else {}
+    scifi = [topic for topic in topics if topic in SCIFI_TOPICS]
+    if not scifi:
+        return targets
+    pack = root / SCIFI_PACK
+    base = read_json(pack / 'manifest-final-scifi-v1.json')
+    for topic in scifi:
+        mode = SCIFI_TOPICS[topic]
+        count = 4 if mode == 'variants' else 16
+        slug = topic.removeprefix('c02-')
+        matches = [asset for asset in base['assets'] if asset.get('topicId') == topic]
+        if len(matches) != 1:
+            raise ValueError('expected exactly one canonical scifi terrain record')
+        asset = matches[0]
+        expected = {
+            'assetId': f'C02-SFV1-{slug}', 'category': 'terrain',
+            'png': f'runtime/terrain/{slug}.png', 'width': count * 32, 'height': 32,
+            'tileWidth': 32, 'tileHeight': 32, 'tileMode': mode, 'runtimeReady': True,
+        }
+        if mode == 'variants':
+            expected.update(variants=4, variantOrder=VARIANTS)
+            forbidden = ('connectionMasks', 'maskBits')
+        else:
+            expected.update(connectionMasks=16, maskBits=['N', 'E', 'S', 'W'])
+            forbidden = ('variants', 'variantOrder')
+        if (any(asset.get(key) != value for key, value in expected.items())
+                or any(key in asset for key in (*forbidden, 'anchor', 'footprint', 'pixelDensity'))):
+            raise ValueError('unexpected canonical scifi terrain geometry or metadata')
+        target = within(root, str(SCIFI_PACK / asset['png']))
+        if target != root.resolve() / SCIFI_PACK / asset['png']:
+            raise ValueError('canonical terrain destination must not use symlinks')
+        targets[topic] = [target]
+    return targets
+
+
+def read_material(root, entry, mode, pack=PACK):
     if not isinstance(entry, dict) or set(entry) != {'source', 'sha256', 'registration'}:
         raise ValueError('material requires source, sha256 and registration only')
     digest = entry['sha256']
     if not isinstance(digest, str) or len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
         raise ValueError('source SHA-256 must be 64 lowercase hex characters')
     path = within(root, entry['source'])
-    if not path.is_relative_to((root / PACK / 'masters').resolve()):
+    owned_masters = root.resolve() / pack / 'masters'
+    if owned_masters.resolve() != owned_masters or not path.is_relative_to(owned_masters):
         raise ValueError('canonical material must be in its own pack masters')
     raw = path.read_bytes()
     if hashlib.sha256(raw).hexdigest() != digest:
@@ -202,15 +247,16 @@ def plan(root, catalog):
             or type(data['schemaVersion']) is not int or data['schemaVersion'] != 1
             or not isinstance(data['assets'], dict)):
         raise ValueError('expected schemaVersion 1 and assets object')
-    if any(topic not in TOPICS for topic in data['assets']):
+    modes = TOPICS | SCIFI_TOPICS
+    if any(topic not in modes for topic in data['assets']):
         raise ValueError('unsupported canonical terrain topic; only explicitly reviewed material families are accepted')
     if not data['assets']:
         return []
     targets = validate_manifests(root, data['assets'])
     planned, sources = [], set()
     for topic, entry in data['assets'].items():
-        mode = TOPICS[topic]
-        source, provenance = read_material(root, entry, mode)
+        mode = modes[topic]
+        source, provenance = read_material(root, entry, mode, SCIFI_PACK if topic in SCIFI_TOPICS else PACK)
         if entry['sha256'] in sources:
             raise ValueError('each canonical topic requires its own authored material source')
         sources.add(entry['sha256'])
@@ -220,7 +266,8 @@ def plan(root, catalog):
                       'output': str(target.relative_to(root)), 'size': list(sheet.size),
                       'source': provenance, 'samples': samples, 'cells': cells, 'edges': edges,
                       'pixelSha256': pixel_hash(sheet), 'alphaSha256': pixel_hash(sheet.getchannel('A')),
-                      'derivation': 'explicit equal-scale source crops; independent LANCZOS resize at 32/64; '
+                      'derivation': ('explicit equal-scale source crops; independent LANCZOS resize at '
+                                     + ('32; ' if topic in SCIFI_TOPICS else '32/64; ')) +
                                     'approved outermost 1px opposite-family-edge average; exact historical alpha; '
                                     'transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail',
                       'integration': 'canonical-catalog-only; no current gameplay ground consumer',
