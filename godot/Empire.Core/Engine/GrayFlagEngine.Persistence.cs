@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
+using Empire.Core.Deployment;
 using Empire.Core.Lifecycle;
 using Empire.Core.Orders;
 using Empire.Core.Persistence;
@@ -40,7 +41,9 @@ public sealed partial class GrayFlagEngine
             .Register("castAbilities", BattleCombat.SupportedCastAbilities)
             .Register("resources", BattleResources.SupportedResources)
             .Register("tacticEffects", SupportOrders.SupportedTacticEffects)
-            .Register("stateFeatures", new[] { "composites" });
+            .Register("stateFeatures", new[] { "composites", "deployment", "embarkedUnits" })
+            .Guard("deployment", DeploymentStateValidation.Issues)
+            .Guard("transport", Transport.StoredStateIssues);
         Persistence = new BattlePersistence(packs, persistenceManifest, features);
     }
 

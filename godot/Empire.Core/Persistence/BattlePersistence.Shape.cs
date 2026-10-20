@@ -81,6 +81,7 @@ public sealed partial class BattlePersistence
             if (!StoredSchema.Matches(counter.Value, StoredKind.Integer) || StateJson.Number(counter.Value, "counter") < 0)
                 StoredSchema.Reject("随机流计数器不合法");
         var ids = new HashSet<int>();
+        var keys = new HashSet<string>(StringComparer.Ordinal);
         var occupied = new HashSet<(int X, int Y)>();
         foreach (var unit in StateJson.Objects(state["units"], "units"))
         {
@@ -88,9 +89,16 @@ public sealed partial class BattlePersistence
             var y = StateJson.Integer(unit, "y");
             if (x < 0 || y < 0 || x >= width || y >= height || !occupied.Add((x, y)))
                 StoredSchema.Reject("单位位置越界或重叠");
+        }
+        var livingUnits = StateJson.Objects(state["units"], "units").Concat(
+            StateJson.Objects(state["embarkedUnits"], "embarkedUnits").Select(entry => StateJson.Object(entry["unit"], "embarked unit")));
+        foreach (var unit in livingUnits)
+        {
             if (StateJson.Integer(unit, "id") < 1 || !ids.Add(StateJson.Integer(unit, "id")) || !owners.Contains(StateJson.Integer(unit, "owner")))
                 StoredSchema.Reject("单位标识或所属玩家不合法");
-            if (StateJson.Number(unit["hp"], "hp") <= 0) StoredSchema.Reject("在场单位生命值不合法");
+            if (unit["key"] is { } key && StateJson.Text(key, "unit key") is { Length: > 0 } text && !keys.Add(text))
+                StoredSchema.Reject("存活单位的键重复");
+            if (StateJson.Number(unit["hp"], "hp") <= 0) StoredSchema.Reject("存活单位生命值不合法");
         }
         foreach (var pending in StateJson.Objects(state["pendingCasts"], "pendingCasts"))
         {

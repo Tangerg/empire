@@ -49,9 +49,11 @@ bash tools/godot/campaign-battle-checks/run.sh
 Selected art, actor identity bindings, world materials, map and content are local
 resources. The TypeScript exporter is a development-only oracle/data tool.
 
+All 12 original action kinds have native handlers. Focused differential suites for deployment (2,519 checks), career/formation progression (175), recruitment (25), and transport (81 direct cases plus 24 dispatch steps and save/resume guards) are reproducible with the corresponding `tools/godot/*-checks/run.sh` scripts. This does not establish complete extension-registry parity.
+
 ## Scope and remaining migration work
 
 This is a playable-level integration checkpoint, not the finished migration.
-The story/choice/battle/result and validated save/load flow is integrated. Remaining work includes water and other terrain rendering, authored scenery for nine levels absent from the recovered source, structure/composite/scenario visual feedback, lighting/shadows, other engine action families (including deployment and transport), full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
+The story/choice/battle/result and validated save/load flow is integrated. Remaining work includes water and other terrain rendering, authored scenery for nine levels absent from the recovered source, structure/composite/scenario visual feedback, lighting/shadows, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
 See `docs/RECOVERY.md` for evidence and `docs/COMPATIBILITY.md` for explicit
 malformed-input hardening differences. Original source and art are preserved.

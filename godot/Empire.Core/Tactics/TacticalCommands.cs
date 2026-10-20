@@ -29,12 +29,18 @@ public sealed class TacticalCommands
         this.directives = directives;
     }
 
-    public JsonObject CommandableUnit(JsonObject state, int unitId, string order = "行动")
+    public JsonObject OwnUnit(JsonObject state, int unitId)
     {
         var unit = TacticalQueries.UnitById(state, unitId)
             ?? throw new IllegalActionException($"单位 {unitId} 不在场上");
         if (StateJson.Integer(unit, "owner") != StateJson.Integer(state, "currentPlayer"))
             throw new IllegalActionException("不是你的单位");
+        return unit;
+    }
+
+    public JsonObject CommandableUnit(JsonObject state, int unitId, string order = "行动")
+    {
+        var unit = OwnUnit(state, unitId);
         if (StateJson.IsTrue(unit["done"]))
             throw new IllegalActionException($"已行动单位不能{order}");
         if (!mayAct(state, unit))

@@ -86,7 +86,7 @@ public partial class GrayFlagGame : Node
                 id => { campaign.Runtime.Choose(id); ShowNode(); });
         else
             story.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.Speakers,
-                () => { campaign.Runtime.Advance(); if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") ShowNode(); else Notify("灰旗战役已结束。F5 保存，F9 读取存档。"); });
+                () => { if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") campaign.Runtime.Advance(); if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") ShowNode(); else Notify("灰旗战役已结束。F5 保存，F9 读取存档。"); });
     }
 
     private void ShowBattle()
@@ -124,9 +124,10 @@ public partial class GrayFlagGame : Node
         try
         {
             campaign.Load(JsonNode.Parse(System.IO.File.ReadAllText(ProjectSettings.GlobalizePath(SavePath)))!.AsObject());
-            ShowNode(); Notify("已读取存档。");
         }
-        catch (Exception error) { Notify("读取失败，当前进度未变：" + error.Message); }
+        catch (Exception error) { Notify("读取失败，当前进度未变：" + error.Message); return; }
+        try { ShowNode(); Notify("已读取存档。"); }
+        catch (Exception error) { Notify("存档已恢复，但画面加载失败：" + error.Message); }
     }
 
     private void Notify(string message)

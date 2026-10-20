@@ -108,7 +108,7 @@ public sealed class CombatEffects
     public void AwardCombatProgress(JsonObject unit, double damage, bool defeated, Action<JsonObject> emit) =>
         AwardRankProgress(unit, Math.Max(1, StateJson.Round(damage)) + (defeated ? 50 : 0), emit);
 
-    private void AwardCareerProgress(JsonObject unit, double amount, Action<JsonObject> emit)
+    public void AwardCareerProgress(JsonObject unit, double amount, Action<JsonObject> emit)
     {
         var career = unit["career"]!.AsObject();
         var current = career["current"]?.GetValue<string>();

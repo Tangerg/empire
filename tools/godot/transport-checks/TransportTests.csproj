@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors><EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EmpireTransportRoot Condition="'$(EmpireTransportRoot)' == ''">$(EmpireRoot)/godot/Empire.Core/Transport</EmpireTransportRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="$(EmpireRoot)/godot/Empire.Core/**/*.cs" Exclude="$(EmpireRoot)/godot/Empire.Core/obj/**/*.cs;$(EmpireRoot)/godot/Empire.Core/bin/**/*.cs;$(EmpireRoot)/godot/Empire.Core/Transport/**/*.cs" />
+    <Compile Include="$(EmpireTransportRoot)/*.cs" />
+  </ItemGroup>
+</Project>

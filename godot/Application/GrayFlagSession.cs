@@ -42,7 +42,7 @@ public sealed class GrayFlagSession : IBattleSession
         get
         {
             var state = battle.Snapshot();
-            return state["phase"]!.GetValue<string>() == "playing" &&
+            return state["phase"]!.GetValue<string>() is "playing" or "deployment" &&
                 TacticalQueries.Player(state, state["currentPlayer"]!.GetValue<int>())["controller"]!.GetValue<string>() == "ai";
         }
     }
@@ -60,7 +60,16 @@ public sealed class GrayFlagSession : IBattleSession
     public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId)
     {
         var state = battle.Snapshot();
-        if (state["phase"]!.GetValue<string>() != "playing" || IsComputerTurn) return [];
+        if (IsComputerTurn || state["phase"]!.GetValue<string>() == "over") return [];
+        if (state["phase"]!.GetValue<string>() == "deployment")
+        {
+            var deployment = new List<BattleOrderChoice> { Choice("确认部署", "turn", null, new JsonObject { ["kind"]="finishDeployment" }) };
+            var deployed = selectedUnitId is { } deployId ? TacticalQueries.UnitById(state,deployId) : null;
+            if (deployed is not null && deployed["owner"]!.GetValue<int>() == state["currentPlayer"]!.GetValue<int>())
+                foreach (var spot in engine.Deployment.Spots(state,deployed))
+                    deployment.Add(Choice(spot.Swaps is null ? "部署到此处" : "交换部署", "move", spot.At, new JsonObject { ["kind"]="deployUnit", ["unit"]=selectedUnitId, ["at"]=TacticalQueries.CoordinateJson(spot.At) }));
+            return deployment;
+        }
         var choices = new List<BattleOrderChoice>
         {
             Choice("结束回合", "turn", null, new JsonObject { ["kind"] = "endTurn" })
@@ -90,9 +99,37 @@ public sealed class GrayFlagSession : IBattleSession
                     }
                 }
             }
+            foreach (var direction in engine.Movement.Grid(state).Directions)
+                choices.Add(Choice($"朝向：{direction.Name}", "command", null,
+                    new JsonObject { ["kind"]="face", ["unit"]=selectedUnitId, ["facing"]=direction.Id }));
+            foreach (var option in engine.Progression.Careers.Options(state,unit).Where(option => option.Eligible))
+                choices.Add(Choice($"转职：{option.Career["name"]}", "command", null,
+                    new JsonObject { ["kind"]="changeCareer", ["unit"]=selectedUnitId, ["career"]=option.Career["id"]!.DeepClone() }));
+            foreach (var option in engine.Progression.Formations.Options(state,unit).Where(option => option.Eligible && !option.Current))
+                choices.Add(Choice($"阵形：{option.Formation["name"]}", "command", null,
+                    new JsonObject { ["kind"]="changeFormation", ["unit"]=selectedUnitId, ["formation"]=option.Formation["id"]!.DeepClone() }));
+            if (unit["formation"] is not null) choices.Add(Choice("解除阵形", "command", null,
+                new JsonObject { ["kind"]="changeFormation", ["unit"]=selectedUnitId, ["formation"]=null }));
+            foreach (var carrier in engine.Transport.CarrierOptions(state,unit).Where(option => option.Eligible && option.Carrier["owner"]!.GetValue<int>() == state["currentPlayer"]!.GetValue<int>()))
+                choices.Add(Choice($"登载单位 {carrier.Carrier["id"]}", "command", TacticalQueries.Position(carrier.Carrier),
+                    new JsonObject { ["kind"]="embark", ["unit"]=selectedUnitId, ["carrier"]=carrier.Carrier["id"]!.DeepClone() }));
+            foreach (var passenger in engine.Transport.PassengerOptions(state,unit))
+                foreach (var spot in passenger.Spots)
+                    choices.Add(Choice($"卸载单位 {passenger.Unit["id"]}", "command", spot,
+                        new JsonObject { ["kind"]="disembark", ["carrier"]=selectedUnitId, ["unit"]=passenger.Unit["id"]!.DeepClone(), ["at"]=TacticalQueries.CoordinateJson(spot) }));
             foreach (var stance in Empire.Core.Combat.CombatForecasts.DefaultReactions())
                 choices.Add(Choice($"反应：{stance.Name}", "command", null,
                     new JsonObject { ["kind"] = "reaction", ["unit"] = selectedUnitId, ["stance"] = stance.Id }));
+        }
+        if (selectedUnitId is null)
+        {
+            var board = engine.Movement.Board(state);
+            for (var index=0;index<state["map"]!["tiles"]!.AsArray().Count;index++)
+            {
+                var at=board.CoordOf(index);
+                foreach(var type in engine.Recruitment.Options(state,at))
+                    choices.Add(Choice($"招募 {type}", "command",at,new JsonObject { ["kind"]="recruit",["unit"]=type,["at"]=TacticalQueries.CoordinateJson(at) }));
+            }
         }
         foreach (var commander in state["commanders"]!.AsArray().OfType<JsonObject>())
             foreach (var tactic in engine.Support.Tactics(state, commander["id"]!.GetValue<string>()))

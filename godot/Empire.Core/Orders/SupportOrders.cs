@@ -102,7 +102,7 @@ public sealed class SupportOrders
         var index = at.Y * StateJson.Integer(map, "width") + at.X;
         return !effects.CannotCapture(unit)
             && StateJson.IsTrue(content.Get("terrains", StateJson.Text(map["tiles"]![index], "terrain"))["capturable"])
-            && StateJson.Integer(map["owners"]![index], "owner") != StateJson.Integer(unit, "owner");
+            && (map["owners"]![index] is not { } owner || StateJson.Integer(owner, "owner") != StateJson.Integer(unit, "owner"));
     }
 
     public void Capture(JsonObject state, JsonObject unit, Coord at, Action<JsonObject> emit)

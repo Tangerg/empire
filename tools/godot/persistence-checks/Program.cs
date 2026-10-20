@@ -166,10 +166,10 @@ Reject("unknown resource account", save => save["state"]!["players"]![0]!["resou
 Reject("unknown upkeep resource", save => save["state"]!["rules"]!["baseResourceGrants"]!.AsArray().Add(
     new JsonObject { ["resource"] = "unknown", ["amount"] = 1 }), "资源");
 Reject("negative resource balance", save => save["state"]!["players"]![0]!["resources"]!["funds"]!["current"] = -1, "资源数值");
-Reject("unsupported deployment", save =>
+Reject("stale deployment after battle start", save =>
 {
     save["state"]!["deployment"] = new JsonObject { ["order"] = new JsonArray(1), ["currentIndex"] = 0, ["assignments"] = new JsonArray() };
-}, "战斗功能");
+}, "部署");
 Reject("old schema", save => save["schema"] = 0, "unsupported battle save schema 0");
 Reject("future schema", save => save["schema"] = 7, "unsupported battle save schema 7");
 Check("invalid schema and document type", () =>

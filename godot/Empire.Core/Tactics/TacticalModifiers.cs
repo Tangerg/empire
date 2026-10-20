@@ -32,20 +32,6 @@ internal static class TacticalModifiers
             StateJson.Number(aura, "movementDelta", 0));
     }
 
-    internal static JsonObject? ActiveFormation(StateContent content, ITacticalGrid grid, JsonObject state, JsonObject unit)
-    {
-        if (unit["formation"] is not { } rawFormation) return null;
-        var id = StateJson.Text(rawFormation, "formation");
-        if (id.Length == 0) return null;
-        var definition = content.TryGet("formations", id);
-        if (definition is null) return null;
-        var owner = StateJson.Integer(unit, "owner");
-        var unitId = StateJson.Integer(unit, "id");
-        var at = TacticalQueries.Position(unit);
-        var adjacentAllies = StateJson.Objects(state["units"], "units").Count(candidate =>
-            StateJson.Integer(candidate, "id") != unitId &&
-            TacticalQueries.AreAllies(state, StateJson.Integer(candidate, "owner"), owner) &&
-            grid.Distance(TacticalQueries.Position(candidate), at) == 1);
-        return adjacentAllies >= StateJson.Number(definition, "minimumAdjacentAllies", 0) ? definition : null;
-    }
+    internal static JsonObject? ActiveFormation(StateContent content, ITacticalGrid grid, JsonObject state, JsonObject unit) =>
+        Empire.Core.Progression.FormationRules.InEffect(content, grid, state, unit, unit["formation"]?.GetValue<string>());
 }
