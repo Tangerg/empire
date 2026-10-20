@@ -4,12 +4,12 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 364,
+    "formalBound": 365,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
       "equipment": 95,
-      "faction-kit": 11,
+      "faction-kit": 12,
       "fx": 1,
       "hud": 16,
       "interactive-structure": 24,
@@ -18,7 +18,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 364,
+    "rawPreservedTopics": 367,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -3059,13 +3059,20 @@
       "category": "faction-kit",
       "label": "后期联盟态基准",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/faction-kit/faction-late-alliance/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/faction-kit/faction-late-alliance.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Original nine-panel radial shield with six gold clasp tabs, five ordered cloth colors and separate lower linked clasp; no invented faction motif; native source and exact generation evidence preserved",
+        "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+        "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FACTION-LORNE",
@@ -7470,8 +7477,11 @@
       "category": "fx",
       "label": "穿刺",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-02/onset/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-02/sweep/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7484,8 +7494,11 @@
       "category": "fx",
       "label": "箭矢命中",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-03/approach/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-03/impact/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

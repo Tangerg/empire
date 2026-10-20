@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 65,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 364,
+  "formalRuntimeBoundTopics": 365,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -2255,6 +2255,12 @@
     },
     "C01-FACTION-NAMED-DEAD": {
       "raw": "Source pale shield with amber lantern emblem, dark tied cloth with wooden name tags and separate amber lantern; no invented skull or ghost symbol; native source and exact generation evidence preserved",
+      "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
+      "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
+      "liveGame": "pending"
+    },
+    "C01-FACTION-LATE-ALLIANCE": {
+      "raw": "Original nine-panel radial shield with six gold clasp tabs, five ordered cloth colors and separate lower linked clasp; no invented faction motif; native source and exact generation evidence preserved",
       "export": "128x128 RGBA, fullcanvas fit inside2px margin, truealpha and actual128 white/dark/olive reviewed; no HD contract",
       "runtimeBinding": "Formal canonical faction-kit catalog; no authored gameplay/UI consumer found, no invented deployment",
       "liveGame": "pending"

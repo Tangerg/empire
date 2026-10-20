@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "delivery": "Final four C01 faction-kit raw sources and QA only",
+  "builtInImageGeneration": true,
+  "noRepositoryWrites": true,
+  "noGitOperations": true,
+  "productionRuntimeIntegrated": false,
+  "outputContract": {
+    "size": [
+      128,
+      128
+    ],
+    "anchor": [
+      64,
+      64
+    ],
+    "hdRecord": null
+  },
+  "exporterUsedForTemporarySharedQA": "tools/art/export_overrides.py:fit(source,(128,128),2)",
+  "sourceMutation": "None. Every raw/master is byte-identical to its generated PNG; no alpha cleanup, image scaling or crop applied to source files. Only QA previews are exporter-fit.",
+  "recovery": "Dragon recovered from existing anonymous generated output before new calls; exact invocation linkage is explicitly unknown. Oath initial candidate retained after alpha-gate rejection; subsequent transparent refinement selected.",
+  "nativeReview": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/final-four-native128-review.png",
+  "assets": [
+    {
+      "slug": "faction-dragon-covenant",
+      "topicId": "C01-FACTION-DRAGON-COVENANT",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-dragon-covenant",
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-b6b1a99c-34f8-431c-8e81-20c74a3c5b3e.png",
+      "sourceSha256": "d5eef75d61818a5322f4d32ab3cb42e7bcf1abf6e1e0feb6e84e219e3b54d89a",
+      "masterSize": [
+        1254,
+        1254
+      ],
+      "sourceGatePass": true,
+      "sourceEdgeMaxAlpha": 0,
+      "nativeSize": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        64
+      ],
+      "hdRecord": null,
+      "nativeGatePass": true,
+      "nativeSha256": "35dfb30bddbbaa24fa52226371f32b4597ef5a06313e10f878cfdff2f9486f2d",
+      "provenanceQualification": "Visually matches this folder pending request and original Dragon Covenant cell; exact prior tool-response/request linkage was not recovered and is not claimed. Existing output preserved instead of duplicate generation.",
+      "fileHashes": {
+        "alpha-qa.json": "da060a671865aebe521616b9883a8c1b45a5375d3d9260fef1ffd2a8eda2f0db",
+        "generation-result.json": "ffaef72a3e5e7579ec7d68e0e3959e3706bc4ed4329895d44ed744334bb0dc82",
+        "master.png": "d5eef75d61818a5322f4d32ab3cb42e7bcf1abf6e1e0feb6e84e219e3b54d89a",
+        "native-128.png": "35dfb30bddbbaa24fa52226371f32b4597ef5a06313e10f878cfdff2f9486f2d",
+        "preview-128-black.png": "9dcb8d102455976114ab052011c9ba05ded462d3ad5151cfc65042bd4b62e9bc",
+        "preview-128-dark.png": "c4eac73cf21c5c11527d8aa2b9c47280cc7e2de80467babfbf4e7309eeaa31f6",
+        "preview-128-olive.png": "6bfa6e8f70e37c53089f1c3d4b5cb171339a842fb75cef9e7f8bc784c62d1a3b",
+        "preview-128-transparent.png": "35dfb30bddbbaa24fa52226371f32b4597ef5a06313e10f878cfdff2f9486f2d",
+        "preview-128-white-black-dark-olive.png": "777d6a8105817f09e337757bb32c6ed595a7be3548a4ef2a55e38c9efd949ac1",
+        "preview-128-white-dark-olive.png": "4c4d0d31200ca3154f9c0b702d14d38c2308dc174f335a2086a7116259431ff8",
+        "preview-128-white.png": "b4e21c81ea61736eaf2d734c0a43f3a32fcdfdce7f8516f663d003af05c32c78",
+        "preview-method.json": "886cd1a3e77df800b00d63405fd592ce0aa4bd902052b9b31c274174a6d522a9",
+        "prompt.txt": "e490b4c31bfc87058c1e9bb20031eaeb509682eacf7a95daa1037e853967b109",
+        "raw.png": "d5eef75d61818a5322f4d32ab3cb42e7bcf1abf6e1e0feb6e84e219e3b54d89a",
+        "request.json": "9765a3311d101a83ca8d9b4e5b7b65ae81ef224b63dea98eede3906d542dc214",
+        "semantic-qa.json": "dba1816a66d9e7df0dbe9ea9fbf0976f4d855de70d0f92b01150e29fd6a5a1d4",
+        "source-evidence.json": "46e152d11647647f7a484dec5cf9d7aa4ea9c0c4550ec3a0adf0940aca5e56bb"
+      }
+    },
+    {
+      "slug": "faction-oath-controlled",
+      "topicId": "C01-FACTION-OATH-CONTROLLED",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-oath-controlled",
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-72c1e8cd-0fb1-497e-b245-02221932868e.png",
+      "sourceSha256": "e84722eb4c26d6fc807c68bd3e5111cb2a66a75d04f6f23e5b86078ab03d2155",
+      "masterSize": [
+        1254,
+        1254
+      ],
+      "sourceGatePass": true,
+      "sourceEdgeMaxAlpha": 0,
+      "nativeSize": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        64
+      ],
+      "hdRecord": null,
+      "nativeGatePass": true,
+      "nativeSha256": "49c7de975332faccab6d2a7d44293d2ac3e4adf454ddd2f39d3da29e7a63349f",
+      "provenanceQualification": "Exact saved request was sent to the built-in tool; current output is its returned image path.",
+      "fileHashes": {
+        "alpha-qa.json": "5689c8bc63340c4571b425a53cf16f0b81095faf298402bc4b7a2cf0e98b297f",
+        "candidate-v1-generation-result.json": "464789baee0435fdff4695270ebb597fd5cda64e5b1b9b0a1042af97722a3452",
+        "candidate-v1.png": "63a965bb194d5523d66e178203c72711b34e2507cfee85f87223dd95e2b6af1c",
+        "generation-result.json": "baf3de75b5ff950dec25d79c74ce26fd58747696f91f29befd0707fbbee27cbd",
+        "master.png": "e84722eb4c26d6fc807c68bd3e5111cb2a66a75d04f6f23e5b86078ab03d2155",
+        "native-128.png": "49c7de975332faccab6d2a7d44293d2ac3e4adf454ddd2f39d3da29e7a63349f",
+        "preview-128-black.png": "ef9daf47a407da1b1b3375ab32d83a714ae8ba258c1afb7990f77f73d21c4b61",
+        "preview-128-dark.png": "6c8c9cade83b7fc8b2447e108f09613b847d4179a64dec74125b641e7a47acb1",
+        "preview-128-olive.png": "0b176fa55ec39af7a5d12433ae97dd94394064876b16e37a2fec5d1aefae7fe6",
+        "preview-128-transparent.png": "49c7de975332faccab6d2a7d44293d2ac3e4adf454ddd2f39d3da29e7a63349f",
+        "preview-128-white-black-dark-olive.png": "32f25a36ff39fced40154d9f07d54f65cff18562eeed30665a7c3364eb0382c9",
+        "preview-128-white-dark-olive.png": "69345626b425db0e5cbae6aefb0fe7dddf1ba2ad0a9d60236af164e99b8cc503",
+        "preview-128-white.png": "3a756cbcb05737bc7d50aa8f09b7ddb1d4c7f1eb295798160cc4319c50f75229",
+        "preview-method.json": "b0660df7acfc83f11b1242cf440a0250ea32a6ba82aab133c094b0ae7f41c10b",
+        "prompt.txt": "52a44c4586f527d8c0ec78c1f6d7e9e883abb5b04e06546b17e8f894891ede53",
+        "raw.png": "e84722eb4c26d6fc807c68bd3e5111cb2a66a75d04f6f23e5b86078ab03d2155",
+        "refinement-prompt.txt": "9d3ea177ddf70f42e841ca2bd573d8f0b6c37c29c6323c7c2dc541e036189591",
+        "refinement-request.json": "50e88741f59297fcc4c93058b6a2640b374c1c478fe7bacd12e84e3c23c76ab7",
+        "request.json": "5b65e5ad542e428623c1351d0b19374c3e31d392c9edccde04a09808535dc96a",
+        "semantic-qa.json": "5e6216d16dcc56532c6571534a1a0ee0915b1db49090d18f53220de83e1159f9",
+        "source-evidence.json": "be46e3ba979cd2b2bb24b5117cb0b719bb446f62e92f3db2ed2626d8dd887faf"
+      }
+    },
+    {
+      "slug": "faction-named-dead",
+      "topicId": "C01-FACTION-NAMED-DEAD",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-named-dead",
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-072f45db-09e7-45dc-a034-030dcf9b64c8.png",
+      "sourceSha256": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+      "masterSize": [
+        1254,
+        1254
+      ],
+      "sourceGatePass": true,
+      "sourceEdgeMaxAlpha": 0,
+      "nativeSize": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        64
+      ],
+      "hdRecord": null,
+      "nativeGatePass": true,
+      "nativeSha256": "8ebf69e617562c2aab9390d28de62422b46de2a8b9babda095278590ba8771e8",
+      "provenanceQualification": "Exact saved request was sent to the built-in tool; current output is its returned image path.",
+      "fileHashes": {
+        "alpha-qa.json": "b7d60569ed0d13358e2d755278a80410b8d41d139d5f367f9273fc732ecc43b5",
+        "generation-result.json": "9f2239483f6c8b4954144294485715231f6d67a28517a5ecd426bdda70920f43",
+        "master.png": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+        "native-128.png": "8ebf69e617562c2aab9390d28de62422b46de2a8b9babda095278590ba8771e8",
+        "preview-128-black.png": "fb4f2ac46d9cecedc97ebe1d0ad27277daec30d3112b51c50afb57ff15eac4aa",
+        "preview-128-dark.png": "e550cacd1dcc80538371f15b3213f250e1beda6275cfb49e2f0d157264914a77",
+        "preview-128-olive.png": "9f63d241deb665c59a0f4fdb0c8a70ce5350f1fa8213cda2c6916abeefaa934c",
+        "preview-128-transparent.png": "8ebf69e617562c2aab9390d28de62422b46de2a8b9babda095278590ba8771e8",
+        "preview-128-white-black-dark-olive.png": "a1c5e647c4c292a17097fd1bc586925a2762ec1d61d8debab044530062529b46",
+        "preview-128-white-dark-olive.png": "f5a54e892e8c0c352479b04a7f69e7dee105143ae76dcbc475eed6ddbe5c6132",
+        "preview-128-white.png": "fcadcf277600dd6848e6277490af4b38688435fbbb583f757f3f638a5f260a76",
+        "preview-method.json": "ec31ee06e6a27bfec56d65b34ad59f1266c112cb8eb325abc1b7afc403b89c92",
+        "prompt.txt": "06bbf0e7690d28eaac87f97124b93b99869f0c39eff55d6c58619c3c7c91b3b6",
+        "raw.png": "22ef705aa7a82acf36e27436f5dcc75c433dd47096123ff9c164234a4674f28d",
+        "request.json": "a763be902d16b3c41fe0ce4718ce394d10b40c2d317461b1bc733cf071218abf",
+        "semantic-qa.json": "b2c186344ab8bc3ad5402e5876d1da3ccfd535fb5f8f3ebc87d3948a774dbd3e",
+        "source-evidence.json": "2ff681762eb62e09f029fcb5da036bd62fe938f764b56bdaeecd2aa81c7a68ff"
+      }
+    },
+    {
+      "slug": "faction-late-alliance",
+      "topicId": "C01-FACTION-LATE-ALLIANCE",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-late-alliance",
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-d4397748-b445-4201-b822-2235f5a1f2fc.png",
+      "sourceSha256": "81c6f589459a624f848fa748e71fd206f4e0e2ef0d05d6ec7d9ebd65f62f7344",
+      "masterSize": [
+        1254,
+        1254
+      ],
+      "sourceGatePass": true,
+      "sourceEdgeMaxAlpha": 1,
+      "nativeSize": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        64
+      ],
+      "hdRecord": null,
+      "nativeGatePass": true,
+      "nativeSha256": "f18c73a08d1b51fe1119a2130ef18db872b574e870f51fe541036c91fe158d42",
+      "provenanceQualification": "Exact saved request was sent to the built-in tool; current output is its returned image path.",
+      "fileHashes": {
+        "alpha-qa.json": "e30e34d033459073a83ddee9325ea85b29e8ebb245f871845b2825172c06b72e",
+        "generation-result.json": "d187de125b68542d1c852fc5fe0db095b2d3eb6cb76aa8b70fa983f48cc422c2",
+        "master.png": "81c6f589459a624f848fa748e71fd206f4e0e2ef0d05d6ec7d9ebd65f62f7344",
+        "native-128.png": "f18c73a08d1b51fe1119a2130ef18db872b574e870f51fe541036c91fe158d42",
+        "preview-128-black.png": "279d43b2eae7955bb6b6cee79cd7b9760dbde717f1c96ace0e9c862b7e69bdb2",
+        "preview-128-dark.png": "0d86b538a2598a0aa85f5802c36b3712390aa07da61e8fe674ad5e1c898360e7",
+        "preview-128-olive.png": "ce747f6f3dd9c19ba847fc6eed158e6480c7ab5c4db678a4162d9e2d9488f717",
+        "preview-128-transparent.png": "f18c73a08d1b51fe1119a2130ef18db872b574e870f51fe541036c91fe158d42",
+        "preview-128-white-black-dark-olive.png": "1e5f09d30400f4bb5c0c40b9fc8f2b51435747b0136de24a45e9619ba6a172d2",
+        "preview-128-white-dark-olive.png": "88e5fd826fd935f010b2c9ef105f35fb81e31911f51e32517f77140b0208c285",
+        "preview-128-white.png": "bf6e89b42d3af11124c42cf744436a8e893ee1bce3bc4591ab35a1b8dffd5000",
+        "preview-method.json": "03ad306ac0b3f059424d8568605dc710e3798624fa242c9d7c00eb485a91aa8e",
+        "prompt.txt": "7a77730889caed36fb47d95f76db0cfbbc7af3469900df7cf8ed7d88e44404e4",
+        "raw.png": "81c6f589459a624f848fa748e71fd206f4e0e2ef0d05d6ec7d9ebd65f62f7344",
+        "request.json": "79725705ac6405b60733f0033571a6c30172b80e743810d628ba822989fe09fe",
+        "semantic-qa.json": "693026b474b9fe7fa6da17558fd4cd72fd60d9afb9b6839c783d93a471f86417",
+        "source-evidence.json": "c764376745157bf7cb695e6a41ef882758f7464c5ccc0d44087a7cd114232ef2"
+      }
+    }
+  ]
+}

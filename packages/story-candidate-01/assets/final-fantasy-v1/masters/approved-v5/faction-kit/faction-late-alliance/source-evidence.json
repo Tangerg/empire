@@ -1,0 +1,93 @@
+{
+  "topicId": "C01-FACTION-LATE-ALLIANCE",
+  "assetId": "C01-FFV1-FACTION-LATE-ALLIANCE",
+  "label": "后期联盟态基准",
+  "category": "faction-kit",
+  "expectedRuntimeSize": [
+    128,
+    128
+  ],
+  "expectedAnchor": [
+    64,
+    64
+  ],
+  "hdRecord": null,
+  "source": {
+    "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/factions/faction-kits-12.png",
+    "boardSha256": "2da178208660d7978567c1291c24ab826aa50591e17b35b70bc2bad53c778ba5",
+    "fullCellBox": [
+      940,
+      836,
+      1254,
+      1254
+    ],
+    "legacyInset": 5,
+    "legacySourceCropBox": [
+      945,
+      841,
+      1249,
+      1249
+    ],
+    "coordinateConvention": "Pillow half-open [left,top,right,bottom]; row/column/slot 1-based; round uses Python ties-to-even",
+    "referenceFullCell": "source-crops/12-faction-late-alliance-full-cell.png",
+    "referenceLegacyInset5": "source-crops/12-faction-late-alliance-legacy-inset5.png",
+    "referenceFullCellSha256": "c717778fd6644346062ffd85f83612b2c75815c48bfb7d71c68707616d5c08fa",
+    "referenceLegacyInset5Sha256": "f31df7cb1831cc96d4e662b42e7a794e7628e8af53f41bdc18192ae62752f725"
+  },
+  "semanticConstraints": {
+    "objects": [
+      "Round shield of multiple differently colored radial panels, central gray boss enclosed by segmented gold ring/clasps",
+      "Several distinct vertical folded cloth swatches in gray-blue, green, rust, ochre and ivory, held by individual interlinked-looking buckles",
+      "Separate small linked clasp/chain with multicolor ties"
+    ],
+    "emblem": "Preserve visibly plural colors, individual buckles and linked clasp; do not collapse alliance into one imperial flag/crest/crown",
+    "palette": "Retain multiple source faction colors together with restrained gold connectors; coalition remains plural"
+  },
+  "sourceAuditPath": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/faction-kit-audit.json",
+  "sourceAuditSha256": "5e478964984e08a397e3ec0b7a3dcdd9557a23250611ff0212522906862c7f74",
+  "toolRequests": [
+    {
+      "file": "request.json",
+      "sha256": "79725705ac6405b60733f0033571a6c30172b80e743810d628ba822989fe09fe",
+      "tool": "built-in image_gen__imagegen",
+      "transparent_background": true,
+      "referenceHashes": [
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit-audit/source-crops/12-faction-late-alliance-full-cell.png",
+          "sha256": "c717778fd6644346062ffd85f83612b2c75815c48bfb7d71c68707616d5c08fa"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-lorne/master.png",
+          "sha256": "f954b35190f6e913322927d0acfc7411d667de8ce5466e678102d9ef4d2fd408"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-vilsa/master.png",
+          "sha256": "ef8cdb4fe029f6bf8abaa632e10bd242ab93596098ff6930a3230289fb15204f"
+        },
+        {
+          "path": "/workspace/shared/empire-art-rebuild/approved-v5/faction-kit/faction-mountain-forge/master.png",
+          "sha256": "6afefbeb5c0129745adf6d521d3b2d153a28efcff447c8b68fa7cfd46853d964"
+        }
+      ]
+    }
+  ],
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d4397748-b445-4201-b822-2235f5a1f2fc.png",
+  "generationProvenance": {
+    "status": "generated-built-in",
+    "sourcePath": "/workspace/scratch/84c9fe948755/generated_images/exec-d4397748-b445-4201-b822-2235f5a1f2fc.png",
+    "sha256": "81c6f589459a624f848fa748e71fd206f4e0e2ef0d05d6ec7d9ebd65f62f7344",
+    "request": "request.json",
+    "exactToolRequestVerified": true,
+    "rawAndMasterIdentical": true,
+    "alphaMutation": false,
+    "postprocessing": null
+  },
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "masterSha256": "81c6f589459a624f848fa748e71fd206f4e0e2ef0d05d6ec7d9ebd65f62f7344",
+  "promptHashes": {
+    "prompt.txt": "7a77730889caed36fb47d95f76db0cfbbc7af3469900df7cf8ed7d88e44404e4"
+  },
+  "postprocessing": "None; raw and master are unchanged copies of native generation bytes. QA previews only use the existing exporter full-canvas containment.",
+  "runtimeReady": false
+}
