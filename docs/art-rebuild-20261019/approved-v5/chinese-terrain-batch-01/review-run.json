@@ -1,0 +1,48 @@
+{
+  "references": [
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/terrain/terrain-board-01.png",
+      "sha256": "5f288013b8024ad956a2afebf7fc9ed55a56794cbc32be96c5829a7344712460"
+    },
+    {
+      "path": "docs/story-candidates/candidate-03/art-assets/07-topic-catalog.md",
+      "sha256": "62c425050374efde0df189f1c26e521d1899b89bbae317ab109c5fbb6fae07f2"
+    },
+    {
+      "path": "packages/story-candidate-03/assets/final-ancient-china-v1/tools/build_final_ancient_china_v1.py",
+      "sha256": "52c68a3dbcfde6b0a79e5f8367faa3ba8bf15b3ef2bbb991f9aed8cb1d6bb21e"
+    },
+    {
+      "path": "tools/art/export_canonical_terrain_overrides.py",
+      "sha256": "239617a93067b1f64e7265e38c99f37f47c0d8257d669ade92c1a2c9250812fb"
+    },
+    {
+      "path": "tools/art/update_approved_ledger.py",
+      "sha256": "cdbb5ee8c16268b58f23ff1eae5178ce9d4370002c4533af6724b2426d50c3ef"
+    }
+  ],
+  "builderTerrainIndices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "originalAtlasRow": 0,
+  "originalAtlasColumns": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "parentSourceReview": "Parent independently inspected full1254 canvases and accepted broad planes; road sparse patches disclosed; no correction requested.",
+  "inspectedPreviews": [
+    "all-native32.png",
+    "all-zoom2.png",
+    "original-strips-native32.png",
+    "99390ac8-connected-grid-native32.png",
+    "980abbed-connected-grid-native32.png",
+    "b499c3bf-connected-grid-native32.png",
+    "c053bd0c-connected-grid-native32.png"
+  ],
+  "sourceOnlyHandoff": true
+}
