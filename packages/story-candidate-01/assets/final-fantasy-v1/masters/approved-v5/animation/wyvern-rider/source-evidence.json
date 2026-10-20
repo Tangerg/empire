@@ -1,0 +1,74 @@
+{
+  "topicId": "C01-UNIT-WYVERN-RIDER",
+  "sourceSlot": "Third row of original1254x1254 combat-atlas-colossus-ivra-wyvern-dragon.png; native row[0,590,1254,885], idle[0,590,309,885]. Reference-only crop, no art edits.",
+  "references": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/white-stag-rider-approved-idle.png",
+      "sha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/source-idle-cell.png",
+      "sha256": "57884583a43783b51c547c186d4f42a5e33948ad75a0b9a4d0dc2195259ba9d3"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/source-idle-detail-2x.png",
+      "sha256": "584f84fedb7caf53237c5711ab44928e461cf138de1ebbec73b0728fe327c501"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/runtime-hd-strip.png",
+      "sha256": "6f1ff3bc08e1b8e8b1ed6a5744744101ee8d88bb410f0774d5d0c57da2cb868f"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/eagle-scout-approved-idle.png",
+      "sha256": "03901897edc868172ce54bb0ff6c60d1f39a647bbbc3a711bb7376519e029175"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/source-row.png",
+      "sha256": "7dca786f79f7035bbc3cbcfa19203c3ed782dcbf6a3e3493115695b606c72d1a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/ancient-dragon-approved-idle.png",
+      "sha256": "852fb005d055e0dc1dbb89d04618179197637f44abf3d371823c4c5055cf3739"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/runtime-strip.png",
+      "sha256": "cbe663ad16f357af7acab39fb8903700e2746ab6da0ee2dcd31c341c2b50d81b"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wyvern-rider/references/original-board.png",
+      "sha256": "0388f089c7f43b805e38fea9443c9832769b27b1d1151b1a00afb103ecc0628d"
+    }
+  ],
+  "consumerAudit": "Canonical catalog only. No matching unit definition, CANDIDATE_01_UNIT_ART mapping or deployed campaign actor exists. docs/story-candidates/candidate-01/README.md:671 calls it recruitable flying troop but source poses are grounded wingless quadruped. No rule or deployment invented.",
+  "manifestContract": {
+    "frameSize": [
+      64,
+      64
+    ],
+    "frames": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "artFootprint": [
+      2,
+      2
+    ]
+  },
+  "scaleProposal": {
+    "riderCrownToGroundLogical": 54,
+    "comparators": {
+      "eagleScout": 52,
+      "whiteStagRider": 54,
+      "ancientDragon": 64
+    },
+    "status": "Pending native idle measurement and coordinator gate"
+  },
+  "provenance": "Built-in imagegen, raw outputs immutable, no pixel cleanup/repaint, full native canvas uniform scaling only",
+  "status": "Generating idle only"
+}

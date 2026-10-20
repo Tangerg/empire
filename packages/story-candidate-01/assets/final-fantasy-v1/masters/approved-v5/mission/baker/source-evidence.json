@@ -1,0 +1,130 @@
+{
+  "topicId": "C01-MISSION-BAKER",
+  "assetId": "C01-FFV1-MISSION-BAKER",
+  "label": "\u9762\u5305\u5e08",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-baker-miner-artisan-bridge.png",
+    "sha256": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+    "size": [
+      1024,
+      1536
+    ],
+    "rowIndex0": 0,
+    "rowIndex1": 1,
+    "rowCropXYXY": [
+      0,
+      0,
+      1024,
+      384
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        0,
+        256,
+        384
+      ],
+      [
+        256,
+        0,
+        512,
+        384
+      ],
+      [
+        512,
+        0,
+        768,
+        384
+      ],
+      [
+        768,
+        0,
+        1024,
+        384
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        5,
+        251,
+        379
+      ],
+      [
+        261,
+        5,
+        507,
+        379
+      ],
+      [
+        517,
+        5,
+        763,
+        379
+      ],
+      [
+        773,
+        5,
+        1019,
+        379
+      ]
+    ],
+    "observedIdentity": "Dark wavy-haired mustached adult man, cream rolled sleeves and brown flour-marked apron. Large wicker basket of dark loaves with wooden paddle at waist; brown trousers and boots."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-baker.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-BAKER",
+    "png": "runtime-hd/mission-unit/mission-baker.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "independentVerification": {
+    "boardInspected": true,
+    "identity": "Middle-aged warm-tan man, dark wavy hair and thick moustache, cream rolled-sleeve shirt, flour-marked brown bib apron, brown trousers and boots. Both hands support a large wicker bread basket at waist; wooden paddle on screen-right. Bread is dark brown oblong scored loaves.",
+    "consumerSearch": "Exact topic, asset, and filename searches in packages/story-candidate-01/src returned no consumer matches. Runtime and HD manifests contain catalog records only.",
+    "constraints": "Catalog-only completion. No deployment, binding, or live animation acceptance claimed."
+  },
+  "referenceHashes": {
+    "references/approved-border-farmer-idle.png": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+    "references/approved-forge-artisan-idle.png": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+    "references/approved-refugee-adult-idle.png": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6",
+    "references/original-idle-cell.png": "441f7bf2b630c8ef8b40d18c8738a9a0c9eb3158083552ea2fae33e19ce7f24c",
+    "references/original-masterboard.png": "e467b3794ab7fe927c8c16dbcb3ea39aa9a2833a3d99cbfb24ff61c96a33ac03",
+    "references/original-row.png": "1ada629badd98bf2bcdabe1a98390fb4d912b39982ee4b5ba97c0f3915166e33"
+  }
+}

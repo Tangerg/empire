@@ -1,0 +1,130 @@
+{
+  "topicId": "C01-MISSION-CITY-DOCTOR",
+  "assetId": "C01-FFV1-MISSION-CITY-DOCTOR",
+  "label": "城市医师",
+  "scope": "remaining",
+  "classification": "catalog-only",
+  "actualConsumerCounts": {
+    "domainBindings": 0,
+    "initialActors": 0,
+    "reinforcementActors": 0,
+    "renderedScenePlacements": 0,
+    "nonrenderingPopulationMetadata": 0
+  },
+  "actualDomainActors": [],
+  "actualScenePlacements": [],
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-cook-doctor-wounded-wall.png",
+    "sha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+    "size": [
+      1254,
+      1254
+    ],
+    "rowIndex0": 1,
+    "rowIndex1": 2,
+    "rowCropXYXY": [
+      0,
+      314,
+      1254,
+      627
+    ],
+    "cellCropsXYXY": [
+      [
+        0,
+        314,
+        314,
+        627
+      ],
+      [
+        314,
+        314,
+        627,
+        627
+      ],
+      [
+        627,
+        314,
+        940,
+        627
+      ],
+      [
+        940,
+        314,
+        1254,
+        627
+      ]
+    ],
+    "legacyInset5CellCropsXYXY": [
+      [
+        5,
+        319,
+        309,
+        622
+      ],
+      [
+        319,
+        319,
+        622,
+        622
+      ],
+      [
+        632,
+        319,
+        935,
+        622
+      ],
+      [
+        945,
+        319,
+        1249,
+        622
+      ]
+    ],
+    "observedIdentity": "Warm tan-skinned woman with short black bob, cream open coat over blue-gray dress, cross-body brown medical satchel with rolled cloth; screen-right amber corked bottle. No modern red cross or stethoscope in source."
+  },
+  "logicalRuntime": {
+    "png": "runtime/mission-unit/mission-city-doctor.png",
+    "width": 128,
+    "height": 48,
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "hdRuntime": {
+    "topicId": "C01-MISSION-CITY-DOCTOR",
+    "png": "runtime-hd/mission-unit/mission-city-doctor.png",
+    "width": 256,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "formalProgress": null,
+  "baselineCanonicalStatus": "pending-redraw",
+  "referenceBoardSha256": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+  "referenceHashes": {
+    "references/approved-border-farmer-idle.png": "e31517c8bc2b5cbf1a9a60dabc6232472cb51bceeb76dd958bb29cd1bd9b7c5d",
+    "references/approved-forge-artisan-idle.png": "1a5df4be76fb5e890d1d476f2ad2df092c136130d8099d8e5bdb3b802e27909c",
+    "references/approved-refugee-adult-idle.png": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6",
+    "references/current-runtime-hd.png": "101be9479fbd4e32fb50888b67297a4803ff72fac19580a2bf03e8caa0d7c5e6",
+    "references/current-runtime-logical.png": "d62c48d52e885769677c48e76130789738a9553e54f8b86182b16044271f7aa9",
+    "references/original-idle-cell.png": "9904642a0a860f515d63e6c576981c1455c09cc511f47be5001173ce46523fb1",
+    "references/original-masterboard.png": "68c0d634210c2ae05019bcc3fa611333aafe326ec343b07962f2fe71c85cb5bf",
+    "references/original-row.png": "ce22dfa416f651caa7b49f50687d9f25b8b7c47ea52eab62324b008063911a0e"
+  },
+  "referenceRowAndIdlePixelExactToOriginalBoard": true,
+  "independentVisualInspection": "Original full-resolution row and current HD strip independently viewed. Stable adult woman, black bob, cream open coat, blue-gray dress, brown boots, brown satchel with rolled cloth, one screen-right amber bottle in idle. Work source cells add second bottle; walking cells repeat same contact. New work interprets bottle inspection without duplicated equipment, and walking contacts will be genuinely opposite.",
+  "bindingConstraint": "Catalog-only. Zero domain bindings, actors and rendered scene placements. Do not invent doctor actors or deployed doctor binding."
+}

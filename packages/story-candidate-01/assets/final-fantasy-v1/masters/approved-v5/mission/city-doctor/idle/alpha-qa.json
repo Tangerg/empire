@@ -1,0 +1,70 @@
+{
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "nativeMode": "RGBA",
+  "bboxAlphaNonzero": [
+    0,
+    37,
+    1555,
+    961
+  ],
+  "bboxAlphaGreaterThan1": [
+    474,
+    48,
+    1119,
+    960
+  ],
+  "bboxAlphaGreaterThan127": [
+    477,
+    51,
+    1116,
+    958
+  ],
+  "alphaZeroFraction": 0.7632415793222753,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "measuredBootSoleBands": [
+    {
+      "xRange": [
+        450,
+        775
+      ],
+      "bottom": 957,
+      "bottom4RowsBounds": [
+        634,
+        954,
+        719,
+        958
+      ],
+      "soleCenterX": 676.0
+    },
+    {
+      "xRange": [
+        775,
+        1200
+      ],
+      "bottom": 948,
+      "bottom4RowsBounds": [
+        900,
+        945,
+        983,
+        949
+      ],
+      "soleCenterX": 941.0
+    }
+  ],
+  "sourceFoot": [
+    808.5,
+    957
+  ],
+  "sha256": "e0f6de159052e4f592153e5a582bf194addadcfbcac26ee12f8344d6b0162c50",
+  "rawMatchesMaster": true,
+  "nativeAlphaUntouched": true,
+  "bootMeasurement": "Separate boots, alpha>127 bottom4rows; x averages underside band centers, y uses lowest supporting sole. Only translate the entire canvas."
+}

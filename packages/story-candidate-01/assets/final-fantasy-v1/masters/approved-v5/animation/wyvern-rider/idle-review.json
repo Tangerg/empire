@@ -1,0 +1,159 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "sha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+  "sourceCopyByteIdentical": true,
+  "bboxAlpha2": [
+    205,
+    16,
+    1344,
+    985
+  ],
+  "bboxAlpha128": [
+    208,
+    17,
+    1341,
+    982
+  ],
+  "perimeterAlphaMax": 1,
+  "nonzeroAlphaPixels": 518231,
+  "fullyOpaquePixels": 1480,
+  "transparentPixelRatio": 0.670611423544726,
+  "measurements": {
+    "hair": {
+      "roi": [
+        620,
+        65,
+        900,
+        155
+      ],
+      "top": 92,
+      "bottom": 154,
+      "bottomBandX": 780.7494199535963
+    },
+    "near-hind": {
+      "roi": [
+        490,
+        870,
+        700,
+        985
+      ],
+      "top": 870,
+      "bottom": 964,
+      "bottomBandX": 601.8222222222222
+    },
+    "far-hind": {
+      "roi": [
+        780,
+        845,
+        935,
+        950
+      ],
+      "top": 845,
+      "bottom": 949,
+      "bottomBandX": 922.1212121212121
+    },
+    "near-fore": {
+      "roi": [
+        880,
+        900,
+        1110,
+        992
+      ],
+      "top": 900,
+      "bottom": 981,
+      "bottomBandX": 1014.3428571428572
+    },
+    "raised-fore": {
+      "roi": [
+        1035,
+        800,
+        1170,
+        925
+      ],
+      "top": 800,
+      "bottom": 924,
+      "bottomBandX": 1055.030487804878
+    }
+  },
+  "hairCrownY": 92,
+  "feetMeasurement": [
+    {
+      "foot": "near-hind",
+      "roi": [
+        490,
+        870,
+        700,
+        980
+      ],
+      "soleY": 964,
+      "bottomFourRowsMeanX": 601.8222222222222,
+      "planted": true
+    },
+    {
+      "foot": "far-hind",
+      "roi": [
+        780,
+        845,
+        905,
+        950
+      ],
+      "soleY": 937,
+      "bottomFourRowsMeanX": 893.5,
+      "planted": true
+    },
+    {
+      "foot": "near-fore",
+      "roi": [
+        910,
+        910,
+        1100,
+        992
+      ],
+      "soleY": 981,
+      "bottomFourRowsMeanX": 1014.3428571428572,
+      "planted": true
+    },
+    {
+      "foot": "raised-fore",
+      "roi": [
+        1065,
+        815,
+        1170,
+        915
+      ],
+      "soleY": 903,
+      "bottomFourRowsMeanX": 1090.8101265822784,
+      "planted": false
+    }
+  ],
+  "nearSideSoleMeanY": 972.5,
+  "bodyHeightSource": 880.5,
+  "sharedScale": 0.06132879045996593,
+  "sharedScaleFraction": "54/880.5",
+  "targetWholeMountedHeight": 54,
+  "sourceFoot": [
+    900,
+    981
+  ],
+  "measurementMethod": "Hair crown to mean near-side hind/fore claw soles; source support x averages all four paw bottom-four-row centers including lifted forepaw stance projection; y lowest planted claw. Rider boot excluded.",
+  "logicalVisibleWidth": 69.4855195911414,
+  "candidateFrame": [
+    128,
+    80
+  ],
+  "candidateOrigin": [
+    14,
+    6
+  ],
+  "fullCanvasBounds": [
+    14,
+    6,
+    111.26746166950596,
+    66.8381601362862
+  ],
+  "status": "Coordinator-approved idle and shared scale",
+  "approvedAt": "2026-10-20 00:03 UTC"
+}

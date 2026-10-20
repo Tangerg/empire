@@ -1,0 +1,81 @@
+{
+  "size": [
+    1586,
+    992
+  ],
+  "sha256": "813714e995842641e0662f79b0874e522691b79be60b8b5e557a29eb18410df6",
+  "sourceCopyByteIdentical": true,
+  "bboxAlpha2": [
+    205,
+    16,
+    1344,
+    985
+  ],
+  "bboxAlpha128": [
+    208,
+    17,
+    1341,
+    982
+  ],
+  "perimeterAlphaMax": 1,
+  "nonzeroAlphaPixels": 518231,
+  "fullyOpaquePixels": 1480,
+  "transparentPixelRatio": 0.670611423544726,
+  "measurements": {
+    "hair": {
+      "roi": [
+        620,
+        65,
+        900,
+        155
+      ],
+      "top": 92,
+      "bottom": 154,
+      "bottomBandX": 780.7494199535963
+    },
+    "near-hind": {
+      "roi": [
+        490,
+        870,
+        700,
+        985
+      ],
+      "top": 870,
+      "bottom": 964,
+      "bottomBandX": 601.8222222222222
+    },
+    "far-hind": {
+      "roi": [
+        780,
+        845,
+        935,
+        950
+      ],
+      "top": 845,
+      "bottom": 949,
+      "bottomBandX": 922.1212121212121
+    },
+    "near-fore": {
+      "roi": [
+        880,
+        900,
+        1110,
+        992
+      ],
+      "top": 900,
+      "bottom": 981,
+      "bottomBandX": 1014.3428571428572
+    },
+    "raised-fore": {
+      "roi": [
+        1035,
+        800,
+        1170,
+        925
+      ],
+      "top": 800,
+      "bottom": 924,
+      "bottomBandX": 1055.030487804878
+    }
+  }
+}

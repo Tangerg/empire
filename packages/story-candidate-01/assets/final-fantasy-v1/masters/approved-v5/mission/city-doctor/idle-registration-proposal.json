@@ -1,0 +1,31 @@
+{
+  "status": "Submitted to coordinator for idle scale review before remaining poses",
+  "sharedScale": 0.04856512141280353,
+  "bodyReferenceSourcePixels": 906,
+  "bodyTargetHeightLogicalPixels": 44,
+  "bodyMeasurement": "Idle hair crown alpha>127 y51 to supporting lowest sole y957. One fixed44/906 across every whole source canvas.",
+  "canonicalSourceFoot": [
+    808.5,
+    957
+  ],
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "paddingPolicy": "Export only: pad transparent right/bottom to common canvas. Native raw/master images are never altered.",
+  "canvasPaddingToleranceRequired": 0,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Separate boot bottom4-row alpha>127 bands. Anchor x averages underside band centers; anchor y is lowest supporting sole. Translate whole canvas only; no per-pose rescale/crop/fitting.",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "nativeSize": [
+    1585,
+    992
+  ]
+}
