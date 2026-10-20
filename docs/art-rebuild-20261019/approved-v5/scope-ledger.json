@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 329,
+    "formalBound": 330,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -12,11 +12,11 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 11,
-      "narrative-static": 7,
+      "narrative-static": 8,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 329,
+    "rawPreservedTopics": 330,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -449,13 +449,20 @@
       "category": "narrative-static",
       "label": "焚村后的第一面灰旗",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch01-s05/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s05.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Opaque scenev2 selected, complete native master and rejectedv1 provenance retained",
+        "export": "Explicit8x5total edge crop; native256x144+HD512x288 independently sampled; actual exports and six viewport cover checks passed",
+        "runtimeBinding": "Formal canonical+HD manifests and existing menu/story/staging/experience resolver;266focused tests and typecheck passed",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CH02-S06",

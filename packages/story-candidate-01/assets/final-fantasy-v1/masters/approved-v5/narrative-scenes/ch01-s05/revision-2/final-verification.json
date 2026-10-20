@@ -1,0 +1,123 @@
+{
+  "topicId": "C01-CH01-S05",
+  "selectedRevision": "v2",
+  "accepted": true,
+  "allChecksPassed": true,
+  "checks": {
+    "originalBoardHashMatchesAudit": true,
+    "originalCellSize617": true,
+    "originalCellPixelsExactlyMatchAuditedCrop": true,
+    "nativeRawMasterByteIdentical": true,
+    "nativeOriginalBytesPreserved": true,
+    "fullyOpaque": true,
+    "promptHashMatches": true,
+    "requestHashMatches": true,
+    "referenceHashesMatchPreservedSources": true,
+    "nativeDimensionsMatch": true,
+    "logicalQADimensions": true,
+    "sourceSizeNotCanonicalOutput": true,
+    "rejectedV1NativeRawMasterPreserved": true
+  },
+  "files": {
+    "qa-cover-title-desktop.png": {
+      "sha256": "0fc2f03cd77cd7a7206b6bb36046afdb3ab1862536243e4f8e822f2427b02fc7",
+      "bytes": 868237
+    },
+    "prompt-v2.txt": {
+      "sha256": "e7d62c34cffa9db42eaa7e7014b9049e6a5ef1ef664b0bee09e1bc164063820e",
+      "bytes": 3025
+    },
+    "qa-cover-title-mobile.png": {
+      "sha256": "14c261a50b3309f133f4a92dc9fcf17f4eeaa63afd760ad6ea3940522746790f",
+      "bytes": 499719
+    },
+    "original-cell-617.png": {
+      "sha256": "e240b3fe2d301ee46870f2e29ae9dcd89b7fd9bb93a86721ae349e52b3d9bb7e",
+      "bytes": 778507
+    },
+    "viewport-qa.json": {
+      "sha256": "40afed42094732558fd52d3b09405a265047581e5814c4198bb7beea902a9951",
+      "bytes": 1935
+    },
+    "bundle-manifest.json": {
+      "sha256": "ef75c60f15277171cc6afe7d12af7643941f97eaf4067c32c7a683e359532452",
+      "bytes": 3808
+    },
+    "qa-cover-story-mobile.png": {
+      "sha256": "cbc5f8faafa186b4b2633ad0f031340554a837c83aa65cc78f63513fba108eeb",
+      "bytes": 471562
+    },
+    "master.png": {
+      "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3",
+      "bytes": 2296975
+    },
+    "source-review.md": {
+      "sha256": "27d3c337523388fcb690084d2e5e7f0a96980e7b1d8b42bb3fe86c38f9bca77e",
+      "bytes": 2370
+    },
+    "reference-hashes.json": {
+      "sha256": "575b293d6b3094cd346083f9c23f5803f94c0647040be3fec8dd7ead5502b8ac",
+      "bytes": 373
+    },
+    "qa-cover-staging-inset.png": {
+      "sha256": "2cb5c4ec6f6d224c4a84ce2a144fad827da3b1fb5e97bf4b02e8ebbe915589da",
+      "bytes": 137936
+    },
+    "qa-cover-experience-mobile.png": {
+      "sha256": "fc7fdc9124e45a33e7e0f8fafbd302d1c13db2d57ab82067ea0315bc1caa924c",
+      "bytes": 479859
+    },
+    "source-qa.json": {
+      "sha256": "6977c1cca9a410fef161d1ca7c41cec90661d4521ecee95ca09c115516e4aa80",
+      "bytes": 2106
+    },
+    "qa-covers-contact-sheet.png": {
+      "sha256": "baa18b11ec14392a0cbe42999119828008fe76a980ce89df7ab55f8935fbbce7",
+      "bytes": 1046771
+    },
+    "qa-cover-story-desktop.png": {
+      "sha256": "1d08c920894977cd1e626651108a108f5cc4fb9c628db54774b074b2c2a1f4a8",
+      "bytes": 860573
+    },
+    "qa-logical-256x144.png": {
+      "sha256": "13eaf9d7da94786e22738603f33263fcde476717d8600c3c2280a398286f3431",
+      "bytes": 81890
+    },
+    "request-v2.json": {
+      "sha256": "ecc70526771d8d25eb813cd37b81ad627afb69aa7dffc51612a7d2cd76659242",
+      "bytes": 3293
+    },
+    "native.png": {
+      "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3",
+      "bytes": 2296975
+    },
+    "prompt.txt": {
+      "sha256": "e7d62c34cffa9db42eaa7e7014b9049e6a5ef1ef664b0bee09e1bc164063820e",
+      "bytes": 3025
+    },
+    "request.json": {
+      "sha256": "ecc70526771d8d25eb813cd37b81ad627afb69aa7dffc51612a7d2cd76659242",
+      "bytes": 3293
+    },
+    "raw.png": {
+      "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3",
+      "bytes": 2296975
+    },
+    "audited-source.json": {
+      "sha256": "4d788af4141416281b790c0eff2b713e10e58b38cb9ffb588a9bf9df5b35f904",
+      "bytes": 4066
+    },
+    "reference-hashes-v2.json": {
+      "sha256": "575b293d6b3094cd346083f9c23f5803f94c0647040be3fec8dd7ead5502b8ac",
+      "bytes": 373
+    }
+  },
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "sourceHash": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3",
+  "bundleManifest": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/bundle-manifest.json",
+  "runtimeOrRepositoryChanges": false,
+  "liveGameAcceptance": "parent pending"
+}

@@ -1,0 +1,106 @@
+{
+  "topicId": "C01-CH01-S01",
+  "selectedRevision": "v1",
+  "accepted": true,
+  "allChecksPassed": true,
+  "checks": {
+    "originalBoardHashMatchesAudit": true,
+    "originalCellSize617": true,
+    "originalCellPixelsExactlyMatchAuditedCrop": true,
+    "nativeRawMasterByteIdentical": true,
+    "nativeOriginalBytesPreserved": true,
+    "fullyOpaque": true,
+    "promptHashMatches": true,
+    "requestHashMatches": true,
+    "referenceHashesMatchPreservedSources": true,
+    "nativeDimensionsMatch": true,
+    "logicalQADimensions": true,
+    "sourceSizeNotCanonicalOutput": true
+  },
+  "files": {
+    "original-cell-617.png": {
+      "sha256": "a2753120c66b8f78e8a3454c3f6ca90af305574f44bb2cc16a0f7818f646828b",
+      "bytes": 776562
+    },
+    "viewport-qa.json": {
+      "sha256": "deee91b9924f681e0eb6f008586640e5b77c896f531bfaf11929a5fee652f8d4",
+      "bytes": 1305
+    },
+    "bundle-manifest.json": {
+      "sha256": "f4ec67df17aae196cd2c9cb03f05d617219b2e9e263230787d92a8ecb6f8150a",
+      "bytes": 4816
+    },
+    "qa-cover-story-mobile.png": {
+      "sha256": "96ed0e35d77e1caf72e683cdae124a9e053bf3417fd449e6aa54fb5a10517f86",
+      "bytes": 507948
+    },
+    "master.png": {
+      "sha256": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722",
+      "bytes": 2650224
+    },
+    "source-review.md": {
+      "sha256": "1c8b2a012282879ef4b25fd953a00c1b12c9256ce36783af454658038cc22d2c",
+      "bytes": 2811
+    },
+    "reference-hashes.json": {
+      "sha256": "c27ccf3d3f09d1d7aa39e7799afe8537005d469c5ed17b5e73f49dd3dd4b107e",
+      "bytes": 971
+    },
+    "qa-cover-staging-inset.png": {
+      "sha256": "1d7df4c2e92afd6ad60c54b7f6613e390f8e96a35f4052c27e2252702091a03e",
+      "bytes": 153479
+    },
+    "source-qa.json": {
+      "sha256": "6c8be703bd4b23afac180a4593a2a816995d5ffe705c5cb1a786f540d0ae9805",
+      "bytes": 2041
+    },
+    "qa-covers-contact-sheet.png": {
+      "sha256": "920ec638ecb19a069f2a0bfd2e59b707989c4591abf4c710ae3ecb68c529a0dc",
+      "bytes": 822167
+    },
+    "qa-cover-story-desktop.png": {
+      "sha256": "debe7b7e5dc955caeb67c8471e990f7099283db57686feaf1e3c91fa5a796131",
+      "bytes": 980339
+    },
+    "qa-original-flag-detail.png": {
+      "sha256": "aa73247cd56409fb2cb4962d2d62e54b3acc4470a325dc4c2e7a6660a1e9d07d",
+      "bytes": 18416
+    },
+    "qa-logical-256x144.png": {
+      "sha256": "0509a8aa0821a7997549743938fa78ed5579d1038b9e6dd78a89fa5b88f266c9",
+      "bytes": 87297
+    },
+    "native.png": {
+      "sha256": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722",
+      "bytes": 2650224
+    },
+    "prompt.txt": {
+      "sha256": "d5a19542d170f6886d3d3084055528eb505d3e4470d30919a3318db57fe23a71",
+      "bytes": 5090
+    },
+    "qa-cover-staging-mobile.png": {
+      "sha256": "3d2f9654e3acf8ec99fe10bc699158ab7b37020006849ae22e5eeb0c176632c2",
+      "bytes": 183348
+    },
+    "request.json": {
+      "sha256": "0b3ca29c8754d719f246d58600a9bde13987b9a3502858ec66f9464d181839f6",
+      "bytes": 5674
+    },
+    "raw.png": {
+      "sha256": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722",
+      "bytes": 2650224
+    },
+    "audited-source.json": {
+      "sha256": "3bb9a90f5bb3c2b1d8c667e4d4c5635a85848f14ebedcca72d591bb3a72b4665",
+      "bytes": 3999
+    }
+  },
+  "nativeSize": [
+    1672,
+    941
+  ],
+  "sourceHash": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722",
+  "bundleManifest": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s01/bundle-manifest.json",
+  "runtimeOrRepositoryChanges": false,
+  "liveGameAcceptance": "parent pending"
+}

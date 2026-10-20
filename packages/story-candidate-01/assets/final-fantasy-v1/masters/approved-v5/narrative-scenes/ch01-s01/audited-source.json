@@ -1,0 +1,145 @@
+{
+  "topicId": "C01-CH01-S01",
+  "label": "双子丘陵初次指挥",
+  "originalNarrativeIndexZeroBased": 11,
+  "subgroup": "chapter-scene",
+  "kind": "scene",
+  "formalBoundAtSnapshot": false,
+  "preserveApproved": false,
+  "remaining": true,
+  "ledger": {
+    "topicId": "C01-CH01-S01",
+    "campaign": "story-candidate-01",
+    "category": "narrative-static",
+    "label": "双子丘陵初次指挥",
+    "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "selectedRawMasters": [],
+    "raw": "pending",
+    "export": "pending",
+    "formalBinding": "pending",
+    "liveGame": "pending",
+    "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s01.png",
+    "stageEvidence": null
+  },
+  "source": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+    "sha256": "891cf39f451913388f36bc16c61ad629c9c6e390a5ba4098d92a64157424ed1f",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "mode": "RGB",
+      "hasAlpha": false,
+      "effectiveAlphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "family": "scenes",
+    "slotIndices": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "cellIndexZeroBased": 1,
+    "columnZeroBased": 1,
+    "rowZeroBased": 0,
+    "cellLabel": "top-right",
+    "legacyInsetCropBox": [
+      632,
+      5,
+      1249,
+      622
+    ],
+    "legacyInsetPx": 5
+  },
+  "originalExportVerification": {
+    "topicId": "C01-CH01-S01",
+    "formalApprovedReplacement": false,
+    "originalReconstructionMatchesCurrentPixels": true,
+    "formula": "original RGB → explicit 2x2 cell inset5 → ImageOps.fit centered cover → RGBA opaque",
+    "intermediate": null
+  },
+  "canonicalManifest": {
+    "assetId": "C01-FFV1-CH01-S01",
+    "topicId": "C01-CH01-S01",
+    "label": "双子丘陵初次指挥",
+    "category": "narrative-static",
+    "png": "runtime/narrative-static/ch01-s01.png",
+    "width": 256,
+    "height": 144,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "kind": "scene"
+  },
+  "runtime": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch01-s01.png",
+    "sha256": "013d84c9390f5db09f6699aff4d321b87727a84ffd42b96b555b6d7e45010398",
+    "size": [
+      256,
+      144
+    ],
+    "alpha": {
+      "mode": "RGBA",
+      "hasAlpha": true,
+      "extrema": [
+        255,
+        255
+      ],
+      "zeroPixels": 0,
+      "partialPixels": 0,
+      "opaquePixels": 36864,
+      "edgeMaxAlpha": 255,
+      "alphaBoundingBox": [
+        0,
+        0,
+        256,
+        144
+      ]
+    }
+  },
+  "hdRecord": null,
+  "actualUse": true,
+  "consumers": {
+    "storyScenes": [
+      {
+        "id": "c01/prologue",
+        "chapter": 1,
+        "title": "一双没有补好的靴子",
+        "location": "灰境边防营地"
+      },
+      {
+        "id": "c01/brief-01",
+        "chapter": 1,
+        "title": "双子丘陵",
+        "location": "灰境北丘"
+      },
+      {
+        "id": "c01/aftermath-01",
+        "chapter": 1,
+        "title": "相同日期的命令",
+        "location": "双子丘陵中央村"
+      }
+    ],
+    "stagingHeroLevels": [
+      "c01-01"
+    ],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "masterAlphaContract": "deliberately opaque full narrative composition; architecture here is a setting plate, not reusable board architecture or map structure",
+  "exportContract": "canonical256x144 opaque RGBA PNG, no anchor/frames/HD entry; a new explicit registered opaque narrative export path is required; do not run legacy bulk builder",
+  "risks": []
+}

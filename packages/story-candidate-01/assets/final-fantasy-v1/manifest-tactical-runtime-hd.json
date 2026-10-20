@@ -1,7 +1,7 @@
 {
   "schemaVersion": "candidate-01-tactical-runtime-hd-v1",
   "pixelDensity": 2,
-  "assetCount": 177,
+  "assetCount": 178,
   "categories": [
     "combat-unit",
     "mission-unit",
@@ -9,7 +9,8 @@
     "interactive-structure",
     "battle-prop",
     "fx",
-    "environment"
+    "environment",
+    "narrative-static"
   ],
   "assets": [
     {
@@ -1249,6 +1250,13 @@
       "png": "runtime-approved-v5/combat-unit/unit-wyvern-rider@2x.png",
       "width": 1024,
       "height": 160,
+      "pixelDensity": 2
+    },
+    {
+      "topicId": "C01-CH01-S05",
+      "png": "runtime-hd/narrative-static/ch01-s05.png",
+      "width": 512,
+      "height": 288,
       "pixelDensity": 2
     }
   ]

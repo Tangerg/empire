@@ -1,0 +1,29 @@
+{
+  "scope": [
+    "C01-CH01-S05",
+    "C01-CH01-S01"
+  ],
+  "status": "Both selected whole opaque sources accepted for integration; parent owns formal export/live-game proof",
+  "generatedWith": "built-in image_gen",
+  "selectedSources": [
+    {
+      "topicId": "C01-CH01-S05",
+      "selectedRevision": "v2",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/master.png",
+      "sha256": "41aab682660738a3d1e8f1c1dd0970f6b8036577982abce0fb22099ad3f903b3",
+      "bundleManifest": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s05/bundle-manifest.json",
+      "verified": true
+    },
+    {
+      "topicId": "C01-CH01-S01",
+      "selectedRevision": "v1",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s01/master.png",
+      "sha256": "b7332819af07b42af6f4acd8a832bc523a5e81a89ada93f1f664986c9d4b4722",
+      "bundleManifest": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-scenes/ch01-s01/bundle-manifest.json",
+      "verified": true
+    }
+  ],
+  "exportNote": "Both are native1672x941 RGB, fully opaque and immutable. Near16:9 aspect0.053% discrepancy must be handled by registered full-canvas scene exporter, never by cropping/painting masters.",
+  "repositoryEdits": false,
+  "gitActions": false
+}
