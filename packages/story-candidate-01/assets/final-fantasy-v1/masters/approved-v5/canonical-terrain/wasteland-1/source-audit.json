@@ -34,5 +34,44 @@
     "No original natural-language generation prompt recovered; board mapping established independently by pixel equality",
     "Catalog-only canonical terrain, no current static gameplay ground consumer identified",
     "NESW masks encode historical alpha only, not physical terrain topology"
-  ]
+  ],
+  "rawSourceVisuallyInspected": true,
+  "rawAllFourEdgesInspected": true,
+  "selectedAttempt": 2,
+  "selectedSourceSHA256": "14448ac27707228865083b495c40d91c5f14f10ef8e4d632d114707f1b2a5a53",
+  "selectedInterpretation": "Quiet ochre wind-eroded earth with complete compact shallow scour patches, sparse gray rocks, dry grass and short cracks; all motifs stay within the four quarter windows.",
+  "originalRuntimeExactRGBAReconstructionReverified": true,
+  "selectedRegistration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "immutableSourceChecks": "immutable-checks.json"
 }

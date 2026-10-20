@@ -1,0 +1,173 @@
+{
+  "measurement": "Alpha128connected contours, manual drop-identity assignment across authored impact/birth events. Bboxes are diagnostics, never used to fit/shift sources. Positive survivor deltas support directional review; unique hashes alone never prove motion.",
+  "drops": {
+    "rainfall": {
+      "left": {
+        "bounds": [
+          362,
+          339,
+          476,
+          515
+        ],
+        "bottomY": 515
+      },
+      "center": {
+        "bounds": [
+          559,
+          730,
+          672,
+          895
+        ],
+        "bottomY": 895
+      },
+      "right": {
+        "bounds": [
+          779,
+          563,
+          892,
+          732
+        ],
+        "bottomY": 732
+      }
+    },
+    "splash-onset": {
+      "left": {
+        "bounds": [
+          363,
+          585,
+          480,
+          756
+        ],
+        "bottomY": 756
+      },
+      "center": {
+        "bounds": [
+          576,
+          268,
+          691,
+          434
+        ],
+        "bottomY": 434
+      },
+      "right": {
+        "bounds": [
+          781,
+          792,
+          899,
+          956
+        ],
+        "bottomY": 956
+      }
+    },
+    "splash-crown": {
+      "left": {
+        "bounds": [
+          362,
+          802,
+          482,
+          972
+        ],
+        "bottomY": 972
+      },
+      "center": {
+        "bounds": [
+          575,
+          511,
+          694,
+          678
+        ],
+        "bottomY": 678
+      },
+      "right": {
+        "bounds": [
+          827,
+          235,
+          949,
+          405
+        ],
+        "bottomY": 405
+      }
+    },
+    "rain-renewal": {
+      "left": {
+        "bounds": [
+          390,
+          191,
+          502,
+          391
+        ],
+        "bottomY": 391
+      },
+      "center": {
+        "bounds": [
+          576,
+          694,
+          694,
+          863
+        ],
+        "bottomY": 863
+      },
+      "right": {
+        "bounds": [
+          808,
+          507,
+          927,
+          671
+        ],
+        "bottomY": 671
+      }
+    }
+  },
+  "transitions": [
+    {
+      "from": "rainfall",
+      "to": "splash-onset",
+      "survivingCohortDownwardDeltaSourcePx": {
+        "left": 241,
+        "right": 224
+      },
+      "event": "center cohort lands; new upper center authored"
+    },
+    {
+      "from": "splash-onset",
+      "to": "splash-crown",
+      "survivingCohortDownwardDeltaSourcePx": {
+        "left": 216,
+        "center": 244
+      },
+      "event": "right cohort lands; next upper right authored"
+    },
+    {
+      "from": "splash-crown",
+      "to": "rain-renewal",
+      "survivingCohortDownwardDeltaSourcePx": {
+        "center": 185,
+        "right": 266
+      },
+      "event": "left cohort lands; next upper left authored"
+    },
+    {
+      "from": "rain-renewal",
+      "to": "rainfall",
+      "survivingCohortDownwardDeltaSourcePx": {
+        "left": 124,
+        "center": 32,
+        "right": 61
+      },
+      "event": "no cohort reset at seam; all three continue downward"
+    }
+  ],
+  "contactBottomSourceY": [
+    1078,
+    1082,
+    1083,
+    1077
+  ],
+  "contactSpreadSourcePx": 6,
+  "contactSpreadLogicalPx": 0.1339712918660287,
+  "staticLastFirstReview": "All three renewal drops descend into rainfall. Crown has already become low beads, then stays low; no new full crown at4to1. Left drop tilt/length changes modestly as authored rainfall; no whole-canvas shift. Center advances less on seam than prior step; no reversal or disappearance.",
+  "fullAndSeamVisualProof": "full-and-seam-labeled.png",
+  "cohortIdentityAndCaveat": "COHORT-REVIEW.md",
+  "notAClaimOfUniformMotion": true,
+  "smoothPerceivedPlaybackVerified": false
+}

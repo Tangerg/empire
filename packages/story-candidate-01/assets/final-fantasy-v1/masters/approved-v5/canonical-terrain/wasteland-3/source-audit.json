@@ -34,5 +34,44 @@
     "No original natural-language generation prompt recovered; board mapping established independently by pixel equality",
     "Catalog-only canonical terrain, no current static gameplay ground consumer identified",
     "NESW masks encode historical alpha only, not physical terrain topology"
-  ]
+  ],
+  "rawSourceVisuallyInspected": true,
+  "rawAllFourEdgesInspected": true,
+  "selectedAttempt": 1,
+  "selectedSourceSHA256": "2e1d112f10ec5d94d6d317a9a2aad42173a0bc03decbe7eed646d0cb81acf3aa",
+  "selectedInterpretation": "Bare warm camp soil with four complete small muted red/blue-gray woven rugs, wooden peg stubs, sticks and stones; each quarter preserves one complete local camping trace group.",
+  "originalRuntimeExactRGBAReconstructionReverified": true,
+  "selectedRegistration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "immutableSourceChecks": "immutable-checks.json"
 }

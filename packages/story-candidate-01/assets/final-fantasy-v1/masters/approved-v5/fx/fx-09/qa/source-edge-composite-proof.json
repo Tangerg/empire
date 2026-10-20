@@ -1,0 +1,46 @@
+[
+  {
+    "phase": "rainfall",
+    "edgeAlphaMax": 0,
+    "edgeUniquePixelNonzero": 0,
+    "blackWhitePerimeterMaximumChannelDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "allMasterPixelsPreserved": true,
+    "review": "At displayed native and source scale no clipped contour, backing card or perimeter line. Source alpha1 is tolerated only because raw composites stay within1RGBlevel at perimeter and final logical2pxpadding iszero."
+  },
+  {
+    "phase": "splash-onset",
+    "edgeAlphaMax": 1,
+    "edgeUniquePixelNonzero": 38,
+    "blackWhitePerimeterMaximumChannelDeviation": {
+      "black": 0,
+      "white": 1
+    },
+    "allMasterPixelsPreserved": true,
+    "review": "At displayed native and source scale no clipped contour, backing card or perimeter line. Source alpha1 is tolerated only because raw composites stay within1RGBlevel at perimeter and final logical2pxpadding iszero."
+  },
+  {
+    "phase": "splash-crown",
+    "edgeAlphaMax": 0,
+    "edgeUniquePixelNonzero": 0,
+    "blackWhitePerimeterMaximumChannelDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "allMasterPixelsPreserved": true,
+    "review": "At displayed native and source scale no clipped contour, backing card or perimeter line. Source alpha1 is tolerated only because raw composites stay within1RGBlevel at perimeter and final logical2pxpadding iszero."
+  },
+  {
+    "phase": "rain-renewal",
+    "edgeAlphaMax": 0,
+    "edgeUniquePixelNonzero": 0,
+    "blackWhitePerimeterMaximumChannelDeviation": {
+      "black": 0,
+      "white": 0
+    },
+    "allMasterPixelsPreserved": true,
+    "review": "At displayed native and source scale no clipped contour, backing card or perimeter line. Source alpha1 is tolerated only because raw composites stay within1RGBlevel at perimeter and final logical2pxpadding iszero."
+  }
+]

@@ -34,6 +34,10 @@ const topics = [
   ['C01-TERRAIN-RIVER-2', 'nesw-16', 16],
   ['C01-TERRAIN-RIVER-3', 'nesw-16', 16],
   ['C01-TERRAIN-RIVER-4', 'nesw-16', 16],
+  ['C01-TERRAIN-WASTELAND-1', 'variants', 4],
+  ['C01-TERRAIN-WASTELAND-2', 'nesw-16', 16],
+  ['C01-TERRAIN-WASTELAND-3', 'variants', 4],
+  ['C01-TERRAIN-WASTELAND-4', 'nesw-16', 16],
 ] as const;
 
 describe('canonical reviewed family terrain catalog contract', () => {
@@ -69,9 +73,9 @@ describe('canonical reviewed family terrain catalog contract', () => {
     expect(() => validateCandidate01HdAsset(record, { ...hd, width: record.width })).toThrow();
   });
 
-  it('counts twenty-eight source identities independently from their256 derived cells', () => {
-    expect(new Set(topics.map(([topic]) => topic)).size).toBe(28);
-    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(256);
+  it('counts thirty-two source identities independently from their296 derived cells', () => {
+    expect(new Set(topics.map(([topic]) => topic)).size).toBe(32);
+    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(296);
   });
 });
 
@@ -80,7 +84,7 @@ describe('registered canonical terrain provenance', () => {
     const { createHash } = await import('node:crypto');
     const root = new URL('../../../../', import.meta.url);
     const catalog = JSON.parse(readFileSync(new URL('tools/art/canonical-terrain-overrides.json', root), 'utf8'));
-    const report = ['border', 'capital', 'forge', 'graveyard', 'oathlight', 'silverwood', 'river'].flatMap(family => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/canonical-terrain/${family}/formal-export.json`, root), 'utf8')));
+    const report = ['border', 'capital', 'forge', 'graveyard', 'oathlight', 'silverwood', 'river', 'wasteland'].flatMap(family => JSON.parse(readFileSync(new URL(`docs/art-rebuild-20261019/approved-v5/canonical-terrain/${family}/formal-export.json`, root), 'utf8')));
     const hash = (path: string) => createHash('sha256').update(readFileSync(new URL(path, root))).digest('hex');
     expect(Object.keys(catalog.assets).sort()).toEqual(topics.map(([topic]) => topic).sort());
     for (const [topic, entry] of Object.entries(catalog.assets) as [string, { source: string; sha256: string }][]) {

@@ -1,0 +1,30 @@
+{
+  "topicId": "C01-CH04-S19",
+  "actualUse": false,
+  "canonicalRegistered": true,
+  "canonicalShape": [
+    256,
+    144
+  ],
+  "consumers": {
+    "storyScenes": [],
+    "stagingHeroLevels": [],
+    "storyDialogue": [],
+    "directRosterIds": [],
+    "hudUnitTypes": [],
+    "hudActorKeys": [],
+    "hudInitialActors": [],
+    "hudReinforcements": [],
+    "codexUnitTypes": [],
+    "chapterDefaultBackgrounds": [],
+    "chapterChoiceScreens": [],
+    "chapterStagingAndResultLevels": [],
+    "menuConsumers": [],
+    "boardPictureConsumers": []
+  },
+  "auditSource": "docs/art-rebuild-20261019/approved-v5/remaining-narrative-audit/manifest.json",
+  "freshStaticCheck": "rg for ch04-s19/C01-CH04-S19 in packages/story-candidate-01/src and apps returned no matches",
+  "modeledGeometrySource": "packages/game-ui/src/styles/campaign.css:179-213,475-500,746-756",
+  "notLiveEvidence": true,
+  "noSelectorOrCodeChanges": true
+}

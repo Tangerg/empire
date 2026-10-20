@@ -1,0 +1,104 @@
+{
+  "topicId": "C01-FX-09",
+  "label": "\u79cb\u96e8",
+  "status": "source-and-alpha-export-complete; cohort-pop-semantic-review-and-browser-playback-pending",
+  "phaseOrder": [
+    "rainfall",
+    "splash-onset",
+    "splash-crown",
+    "rain-renewal"
+  ],
+  "method": "built-in image_gen",
+  "sourceCount": 4,
+  "attemptCount": 9,
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "rawMasterByteIdentical": true,
+  "commonPlacement": {
+    "scale": 0.022328548644338118,
+    "origin": [
+      2,
+      2
+    ],
+    "sourcePivot": [
+      627,
+      627
+    ]
+  },
+  "perPhaseFitCropShiftFadeAlphaCleanup": false,
+  "sourceEdgeMaxima": [
+    0,
+    1,
+    0,
+    0
+  ],
+  "sourceEdgeNonzeroSamples": [
+    0,
+    38,
+    0,
+    0
+  ],
+  "conditionalAlpha1Proof": "qa/source-edge-composite-proof.json",
+  "allNativeLogical2pxPaddingAlpha0": true,
+  "nativeBackgrounds": [
+    "black",
+    "white",
+    "bright-stone",
+    "green-ground",
+    "dark-earth",
+    "checker"
+  ],
+  "fullSourceBlackWhiteReviewed": true,
+  "subjectPreserved": "Muted blue-gray outlined downward rain, low pale-blue beads and shallow broad crown. Matte simplified water, no weather card, glow, ground disk, flood fill or baked scene.",
+  "semantics": [
+    "Three staggered falling drops with low continuing water beads",
+    "Leading central drop impacts as shallow small splash; left and right descend while next center cohort is authored high",
+    "Crown broadens and separates beads; left and center descend, next right cohort begins high",
+    "Crown settles into separate beads; center and right descend, next left cohort begins high and all three flow into phase1"
+  ],
+  "motionProof": "qa/motion-and-registration-proof.json",
+  "nativeReadability": "Three staggered blue-gray drops remain readable at32/64 on all six backgrounds. Onset is narrow, crown is substantially wider, renewal retains three drops and low beads. No backing card or visible halo on inspected source/native composites.",
+  "rejectedAttempts": [
+    {
+      "phase": "splash-crown",
+      "attempt": 1,
+      "path": "rejected/splash-crown-attempt01",
+      "reason": "Authoring geometry drift: center falls345px rather than~160px; right renewal drop expands and shifts; contact baseline down38px. Re-author through imagegen, never fit or shift masters."
+    },
+    {
+      "phase": "splash-crown",
+      "attempt": 2,
+      "path": "rejected/splash-crown-attempt02",
+      "reason": "Authoring shifts falling columns right and baseline down, breaking registration; retry with single predecessor reference and simpler edits."
+    },
+    {
+      "phase": "rain-renewal",
+      "attempt": 1,
+      "path": "rejected/rain-renewal-attempt01",
+      "reason": "Center drop reaches bottom917, below next rainfall bottom895, causing22px upward seam. Correct source drawing to center bottom~780 by imagegen only; no programmatic motion."
+    },
+    {
+      "phase": "rain-renewal",
+      "attempt": 2,
+      "path": "rejected/rain-renewal-attempt02",
+      "reason": "Imagegen overcorrected central drop upward; phase3->4 center would stall/reverse. Retry smaller correction from attempt01."
+    },
+    {
+      "phase": "splash-crown",
+      "attempt": 3,
+      "path": "rejected/splash-crown-attempt03-narrow",
+      "reason": "Registered drop geometry passed but crown width200px insufficiently distinct at native32; imagegen expanded only crown to440px, keeping baseline within5sourcepixels."
+    }
+  ],
+  "APNGVerification": "28APNGs (14exact12fps plus14slowdiagnostics);112decodedRGBAframes exactly match exports/composites. Exact12fps fcTL delays1/12each,4frames,1/3secondcycle,acTLnumPlays0(infinite). No final hold or420msremoval.",
+  "browserObservedEightCycles": false,
+  "browserBlocker": "IsolatedChromium socketdenial; escalation environment setupfailed; cloudbrowser file:// protocolblocked. No further escalation or alternate deniedroute attempted. Parent accepted static/export gate separately, browser observation explicitlypending.",
+  "authoredSceneConsumer": null,
+  "liveGameObserved": false,
+  "repoRuntimeGitWrites": false,
+  "semanticCaveat": "The topmost drop changes cohorts at1to2,2to3,3to4. New high cohorts are authored in the impact frame, not progressively revealed earlier. Surviving cohorts move downward and4to1hasnoreset, but births and uneven speed may appear as pops or a slowbeat at12fps. Static frames cannot establish smooth perceived playback.",
+  "cohortIdentityReview": "qa/COHORT-REVIEW.md",
+  "finalSemanticApproval": "pending parent review; browser playback unobserved"
+}

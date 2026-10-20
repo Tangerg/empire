@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-FX-09": {
+      "kind": "fx-phases-v1",
+      "phases": [
+        {
+          "phase": "rainfall",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/rainfall/master.png",
+          "sha256": "6889b52af948b431d103bd3e56a3baf92295ed0e4dafde359b1f6e75c3c3d695"
+        },
+        {
+          "phase": "splash-onset",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/splash-onset/master.png",
+          "sha256": "7f5b1d2de4dfe59f869cd17e792501e24c33062c8878c66ecd82dd40d80c0b7b"
+        },
+        {
+          "phase": "splash-crown",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/splash-crown/master.png",
+          "sha256": "f00bfe32c394f5497084bb199ff7fb0a13bbdd40c3db422a0ef0e23bdf7ed789"
+        },
+        {
+          "phase": "rain-renewal",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/fx/fx-09/rain-renewal/master.png",
+          "sha256": "ebec007aad4cfa1193b1220232d5da30a7de08e9f6949ac35781e792c0ff1d97"
+        }
+      ],
+      "placement": {
+        "scale": 0.022328548644338118,
+        "origin": [
+          2,
+          2
+        ],
+        "sourcePivot": [
+          627,
+          627
+        ]
+      }
+    }
+  },
+  "note": "Proposed handoff only. No catalog file, code, main working tree or Git edited by this worker."
+}

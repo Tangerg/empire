@@ -1,0 +1,110 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-4",
+  "label": "风暴危险区",
+  "status": "source-accepted-by-parent; integration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 3,
+  "selectedAttempt": 3,
+  "method": "Built-in image_gen only for artwork; generated PNG bytes copied exactly to raw backup and selected master; Python used solely for provenance, verified crop/resize/historical-mask diagnostics and review-board composition",
+  "master": "master.png",
+  "sourceSHA256": "1c69bc9872e57bf6b0142a0221562975301c51de3dd435df922d045f27293f8b",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "raw/imagegen-01.png",
+    "raw/imagegen-02.png",
+    "raw/imagegen-03.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "immutableChecks": "immutable-checks.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "visualSourceQA": {
+    "subject": "Dark wind-scoured ground with two complete tapering pale diagonal scours, a pebble and bent dry ochre grass in the central pad; weathering identity only.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board, exact crop and original runtime strips checked before generation; original prompt not recovered.",
+      "Generated sources are opaque. Historical binary tile alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic output verifies the established outermost1px allowed-pair edge contract, not invisible higher-order texture seams.",
+      "Some medium-scale painted mottling remains; no photoreal micrograin or regular bright confetti.",
+      "No current static gameplay ground consumers found for these canonical IDs; catalog-only material, no live-map acceptance claim.",
+      "At native32 this is a subtle dark weathered patch with diagonal accents, not a distinct icon; individual grass blades are not independently legible. At64 the complete scours, pebble and grass grouping are clearer.",
+      "No lightning, magic, hazard icon, physical hazard geometry or gameplay storm semantics are inferred from the topic label.",
+      "Attempts01/02 had oversized central scours near the clip boundary; preserved. Attempt03 shrank the complete motif through imagegen, and its centered900px registered window improves native size without cropping the motif.",
+      "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "registration": {
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "windowsXYXY": [
+        [
+          177,
+          177,
+          1077,
+          1077
+        ]
+      ]
+    },
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "allFixturesProof": "all-fixtures-native-proof.png",
+    "native32And64Inspected": true,
+    "repeatOrConnectionFixturesInspected": true,
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 5.268208399787347,
+    "northSouthMeanAbsoluteRGBDifference": 6.917862838915471
+  },
+  "export": {
+    "performed": "diagnostics only in shared directory; no repository runtime, code or catalog writes",
+    "alphaAndSeamQA": "Exact historical independent32/64alpha; every allowed pair exactRGBA edge comparison passed",
+    "formalCatalog": "pending parent integration",
+    "liveMapAcceptance": "not claimed; canonical catalog-only"
+  },
+  "fixedMaskDiagnostic": {
+    "performed": true,
+    "oldMaskGeometryUnchanged": true,
+    "all16MasksInspectedAtBothDensities": true,
+    "mainMotifComplete": true,
+    "proofs": [
+      "fixed-mask-32-proof.png",
+      "fixed-mask-64-proof.png"
+    ],
+    "sourceBoundaryProof": "source-center-mask-boundary-proof.png",
+    "containmentChecks": "motif-mask-containment.json",
+    "nativeComparisons": [
+      "native-center-compare-32.png",
+      "native-center-compare-64.png"
+    ],
+    "physicalTopologyClaim": false
+  },
+  "parentReviewReported": {
+    "source": "Parent collaboration message 2026-10-20 04:39 UTC",
+    "decision": "Parent reviewed all four native32/64 fixture boards and accepted source identities and crop safety for canonical catalog",
+    "limits": "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim.",
+    "integration": "pending parent"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "family": "C01-TERRAIN-WASTELAND-1..4",
+  "status": "All4source identities and crop safety accepted by parent for canonical catalog; formal integration pending",
+  "authoredMaterialCount": 4,
+  "imagegenAttempts": 8,
+  "derivedTileCellCount": 40,
+  "environmentCellCountIncrement": 0,
+  "sourceSlots": "Bottom row slots5..8 of exact pixel-matched original forge/wasteland board",
+  "originalBoardSHA256": "0e7bf705caa3c2e51f41205aa4e303716027b9ea92e2ef114d3f9e9a4291c11b",
+  "entries": [
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-1",
+      "label": "风蚀土",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-1",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-1/master.png",
+      "sourceSHA256": "14448ac27707228865083b495c40d91c5f14f10ef8e4d632d114707f1b2a5a53",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "selectedAttempt": 2,
+      "tileMode": "variants",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "derivedCellCount": 4,
+      "status": "source-accepted-by-parent; integration-pending",
+      "proof": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-1/source-crop-32-64-proof.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-1/qa.json",
+      "semanticCaveats": [
+        "At native32, broad soil/scour/stone grouping reads; tiny crack branches and separate grass blades are not independently legible.",
+        "At native64 the shallow scour shapes and dry grass are clearer.",
+        "Attempt01 rejected for long rut discontinuities in mixed repeats; preserved. Attempt02 uses quieter ground and complete quarter-window features."
+      ]
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-2",
+      "label": "岩坡",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/master.png",
+      "sourceSHA256": "9ce175e00b31c3897cd7bea985e0b20615b4eb9a4b7a4c4d8f81d731d24ed102",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "selectedAttempt": 2,
+      "tileMode": "nesw-16",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "derivedCellCount": 16,
+      "status": "source-accepted-by-parent; integration-pending",
+      "proof": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/source-crop-32-64-proof.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/qa.json",
+      "semanticCaveats": [
+        "At native32 the small stepped rocky silhouette and dark ledge break read; subtle facets are clearer at64.",
+        "The original dense shelf field is intentionally reconstructed as a crop-safe complete local shelf motif; this does not certify physical elevation or connect shelf ledges across tiles.",
+        "Attempt01 rejected for exceeding the fixed central pad; preserved. Attempt02 shrank the complete shelf via imagegen."
+      ]
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-3",
+      "label": "部族营地",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-3",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-3/master.png",
+      "sourceSHA256": "2e1d112f10ec5d94d6d317a9a2aad42173a0bc03decbe7eed646d0cb81acf3aa",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "selectedAttempt": 1,
+      "tileMode": "variants",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            0,
+            0,
+            627,
+            627
+          ],
+          [
+            627,
+            0,
+            1254,
+            627
+          ],
+          [
+            0,
+            627,
+            627,
+            1254
+          ],
+          [
+            627,
+            627,
+            1254,
+            1254
+          ]
+        ]
+      },
+      "derivedCellCount": 4,
+      "status": "source-accepted-by-parent; integration-pending",
+      "proof": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-3/source-crop-32-64-proof.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-3/qa.json",
+      "semanticCaveats": [
+        "At native32 the red/blue-gray bordered rug shapes remain identifiable; tiny fringe and peg details are clearer at64.",
+        "The four windows are derivatives of one ground source, not four independent camps or authored props.",
+        "Camp motifs repeat visibly in synthetic repeat fixtures; no live placement density or consumer is introduced."
+      ]
+    },
+    {
+      "topicId": "C01-TERRAIN-WASTELAND-4",
+      "label": "风暴危险区",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-4",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-4/master.png",
+      "sourceSHA256": "1c69bc9872e57bf6b0142a0221562975301c51de3dd435df922d045f27293f8b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "selectedAttempt": 3,
+      "tileMode": "nesw-16",
+      "registration": {
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "windowsXYXY": [
+          [
+            177,
+            177,
+            1077,
+            1077
+          ]
+        ]
+      },
+      "derivedCellCount": 16,
+      "status": "source-accepted-by-parent; integration-pending",
+      "proof": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-4/source-crop-32-64-proof.png",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-4/qa.json",
+      "semanticCaveats": [
+        "At native32 this is a subtle dark weathered patch with diagonal accents, not a distinct icon; individual grass blades are not independently legible. At64 the complete scours, pebble and grass grouping are clearer.",
+        "No lightning, magic, hazard icon, physical hazard geometry or gameplay storm semantics are inferred from the topic label.",
+        "Attempts01/02 had oversized central scours near the clip boundary; preserved. Attempt03 shrank the complete motif through imagegen, and its centered900px registered window improves native size without cropping the motif."
+      ]
+    }
+  ],
+  "validation": {
+    "originalBoardRuntimeAndReferenceBytesUnchanged": true,
+    "originalRuntimeRerenderExactAtBothDensities": true,
+    "selectedRawGeneratorAndMasterBytesIdentical": true,
+    "fullOpaqueSourcePNGs": true,
+    "exactHistoricalAlpha32And64": true,
+    "allowedPairEdgeEquality": true,
+    "all16ConnectedMasksVisuallyInspectedAtBothDensities": true,
+    "completeConnectedCentralMotifsContainmentChecked": true,
+    "mixedAndRepeatedVariantFixturesInspected": true,
+    "noRepositoryCodeRuntimeCatalogOrGitEdits": true
+  },
+  "limits": [
+    "No new consumers, collision, topology, height, hazard or connection rules introduced.",
+    "Only selected authored source and deterministic derivative diagnostics produced; parent owns integration.",
+    "Outermost1px edge equality is not an assertion that all larger-scale material features form physical continuous structures.",
+    "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim."
+  ],
+  "parentReviewReported": {
+    "source": "Parent collaboration message 2026-10-20 04:39 UTC",
+    "decision": "Parent reviewed all four native32/64 fixture boards and accepted source identities and crop safety for canonical catalog",
+    "limits": "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim.",
+    "integration": "pending parent"
+  }
+}

@@ -22,5 +22,11 @@
     "attempt": 2,
     "path": "rejected/rain-renewal-attempt02",
     "reason": "Imagegen overcorrected central drop upward; phase3->4 center would stall/reverse. Retry smaller correction from attempt01."
+  },
+  {
+    "phase": "splash-crown",
+    "attempt": 3,
+    "path": "rejected/splash-crown-attempt03-narrow",
+    "reason": "Registered drop geometry passed but crown width200px insufficiently distinct at native32; imagegen expanded only crown to440px, keeping baseline within5sourcepixels."
   }
 ]

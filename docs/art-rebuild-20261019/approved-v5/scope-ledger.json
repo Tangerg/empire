@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 446,
+    "formalBound": 451,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 40,
@@ -14,12 +14,12 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 24,
-      "narrative-static": 63,
+      "narrative-static": 64,
       "skill": 48,
       "status": 24,
-      "terrain": 28
+      "terrain": 32
     },
-    "rawPreservedTopics": 451,
+    "rawPreservedTopics": 452,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -697,13 +697,20 @@
       "category": "narrative-static",
       "label": "龙眠共同逃生",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/ch04-s19/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/ch04-s19.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Immutable opaque1672x941 narrative plate, exact original slots/fullboard and story audit. S19 voluntary emergency rescue by young Ivra with Leia on bare back, no tack or command pose; whole wings retained after clipped and overly textured first attempt",
+        "export": "Exact1664x936 crop[4,2,1668,938], nativeHD6.5 and256x144 canonical; fullplate/native review passed. Narrow cover loses supporting context, documented separately",
+        "runtimeBinding": "Canonical scene and HD resolver; no new scene selector or story/gameplay mutation. Reconstructed story identity, not recovered original composition",
+        "liveGame": "pending; static source/native/cover QA only"
+      }
     },
     {
       "topicId": "C01-CH05-S22",
@@ -4160,14 +4167,21 @@
       "label": "风蚀土",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/attempt-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-1/attempt-02/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-1.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent opaque1254-square source materials; exact original board and crops preserved. Quiet wind-soil, compact tiered ledges, camp rugs and storm-weathering; rejected oversized/noisy attempts retained",
+        "export": "Historical masks at32/64 unchanged; variants1/3 and NESW2/4. Parent reviewed all native fixture boards: compact ledges and storm motif survive isolated masks, rug variants remain intact. Repeated rugs are not generic floor; narrow NESW masks do not establish broad battlefield terrain cohesion",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no active battlefield ground consumer. Four identities,40 derived cells per density; no environment count increment or gameplay topology change",
+        "liveGame": "pending; catalog mask/edge review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-WASTELAND-2",
@@ -4177,14 +4191,20 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/attempt-01/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/attempt-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-2/attempt-02/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-2.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent opaque1254-square source materials; exact original board and crops preserved. Quiet wind-soil, compact tiered ledges, camp rugs and storm-weathering; rejected oversized/noisy attempts retained",
+        "export": "Historical masks at32/64 unchanged; variants1/3 and NESW2/4. Parent reviewed all native fixture boards: compact ledges and storm motif survive isolated masks, rug variants remain intact. Repeated rugs are not generic floor; narrow NESW masks do not establish broad battlefield terrain cohesion",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no active battlefield ground consumer. Four identities,40 derived cells per density; no environment count increment or gameplay topology change",
+        "liveGame": "pending; catalog mask/edge review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-WASTELAND-3",
@@ -4193,14 +4213,20 @@
       "label": "部族营地",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-3/attempt-01/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-3.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent opaque1254-square source materials; exact original board and crops preserved. Quiet wind-soil, compact tiered ledges, camp rugs and storm-weathering; rejected oversized/noisy attempts retained",
+        "export": "Historical masks at32/64 unchanged; variants1/3 and NESW2/4. Parent reviewed all native fixture boards: compact ledges and storm motif survive isolated masks, rug variants remain intact. Repeated rugs are not generic floor; narrow NESW masks do not establish broad battlefield terrain cohesion",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no active battlefield ground consumer. Four identities,40 derived cells per density; no environment count increment or gameplay topology change",
+        "liveGame": "pending; catalog mask/edge review only"
+      }
     },
     {
       "topicId": "C01-TERRAIN-WASTELAND-4",
@@ -4210,14 +4236,21 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-01/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-02/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/canonical-terrain/wasteland-4/attempt-03/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/terrain/terrain-wasteland-4.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four independent opaque1254-square source materials; exact original board and crops preserved. Quiet wind-soil, compact tiered ledges, camp rugs and storm-weathering; rejected oversized/noisy attempts retained",
+        "export": "Historical masks at32/64 unchanged; variants1/3 and NESW2/4. Parent reviewed all native fixture boards: compact ledges and storm motif survive isolated masks, rug variants remain intact. Repeated rugs are not generic floor; narrow NESW masks do not establish broad battlefield terrain cohesion",
+        "runtimeBinding": "Canonical catalog and HD resolver only; no active battlefield ground consumer. Four identities,40 derived cells per density; no environment count increment or gameplay topology change",
+        "liveGame": "pending; catalog mask/edge review only"
+      }
     },
     {
       "topicId": "C01-STRUCT-ARCHIVE-FURNACE",

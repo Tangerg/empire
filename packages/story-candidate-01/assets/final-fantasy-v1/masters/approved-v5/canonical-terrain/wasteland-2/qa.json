@@ -1,0 +1,109 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-2",
+  "label": "岩坡",
+  "status": "source-accepted-by-parent; integration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "selectedAttempt": 2,
+  "method": "Built-in image_gen only for artwork; generated PNG bytes copied exactly to raw backup and selected master; Python used solely for provenance, verified crop/resize/historical-mask diagnostics and review-board composition",
+  "master": "master.png",
+  "sourceSHA256": "9ce175e00b31c3897cd7bea985e0b20615b4eb9a4b7a4c4d8f81d731d24ed102",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "raw/imagegen-01.png",
+    "raw/imagegen-02.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "immutableChecks": "immutable-checks.json",
+  "tileMode": "nesw-16",
+  "derivedCellCount": 16,
+  "visualSourceQA": {
+    "subject": "Complete small two-tier gray-brown rock shelf with lighter top planes and shallow darker front faces inside the fixed connected central pad.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board, exact crop and original runtime strips checked before generation; original prompt not recovered.",
+      "Generated sources are opaque. Historical binary tile alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic output verifies the established outermost1px allowed-pair edge contract, not invisible higher-order texture seams.",
+      "Some medium-scale painted mottling remains; no photoreal micrograin or regular bright confetti.",
+      "No current static gameplay ground consumers found for these canonical IDs; catalog-only material, no live-map acceptance claim.",
+      "At native32 the small stepped rocky silhouette and dark ledge break read; subtle facets are clearer at64.",
+      "The original dense shelf field is intentionally reconstructed as a crop-safe complete local shelf motif; this does not certify physical elevation or connect shelf ledges across tiles.",
+      "Attempt01 rejected for exceeding the fixed central pad; preserved. Attempt02 shrank the complete shelf via imagegen.",
+      "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "registration": {
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "windowsXYXY": [
+        [
+          0,
+          0,
+          1254,
+          1254
+        ]
+      ]
+    },
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "allFixturesProof": "all-fixtures-native-proof.png",
+    "native32And64Inspected": true,
+    "repeatOrConnectionFixturesInspected": true,
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 1.1794258373205742,
+    "northSouthMeanAbsoluteRGBDifference": 2.1087187666135034
+  },
+  "export": {
+    "performed": "diagnostics only in shared directory; no repository runtime, code or catalog writes",
+    "alphaAndSeamQA": "Exact historical independent32/64alpha; every allowed pair exactRGBA edge comparison passed",
+    "formalCatalog": "pending parent integration",
+    "liveMapAcceptance": "not claimed; canonical catalog-only"
+  },
+  "fixedMaskDiagnostic": {
+    "performed": true,
+    "oldMaskGeometryUnchanged": true,
+    "all16MasksInspectedAtBothDensities": true,
+    "mainMotifComplete": true,
+    "proofs": [
+      "fixed-mask-32-proof.png",
+      "fixed-mask-64-proof.png"
+    ],
+    "sourceBoundaryProof": "source-center-mask-boundary-proof.png",
+    "containmentChecks": "motif-mask-containment.json",
+    "nativeComparisons": [
+      "native-center-compare-32.png",
+      "native-center-compare-64.png"
+    ],
+    "physicalTopologyClaim": false
+  },
+  "parentReviewReported": {
+    "source": "Parent collaboration message 2026-10-20 04:39 UTC",
+    "decision": "Parent reviewed all four native32/64 fixture boards and accepted source identities and crop safety for canonical catalog",
+    "limits": "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim.",
+    "integration": "pending parent"
+  }
+}

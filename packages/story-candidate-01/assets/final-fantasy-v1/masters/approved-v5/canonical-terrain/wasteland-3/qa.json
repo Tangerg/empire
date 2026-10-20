@@ -1,0 +1,109 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-3",
+  "label": "部族营地",
+  "status": "source-accepted-by-parent; integration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "selectedAttempt": 1,
+  "method": "Built-in image_gen only for artwork; generated PNG bytes copied exactly to raw backup and selected master; Python used solely for provenance, verified crop/resize/historical-mask diagnostics and review-board composition",
+  "master": "master.png",
+  "sourceSHA256": "2e1d112f10ec5d94d6d317a9a2aad42173a0bc03decbe7eed646d0cb81acf3aa",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "raw/imagegen-01.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "immutableChecks": "immutable-checks.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Bare warm camp soil with four complete small muted red/blue-gray woven rugs, wooden peg stubs, sticks and stones; each quarter preserves one complete local camping trace group.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board, exact crop and original runtime strips checked before generation; original prompt not recovered.",
+      "Generated sources are opaque. Historical binary tile alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic output verifies the established outermost1px allowed-pair edge contract, not invisible higher-order texture seams.",
+      "Some medium-scale painted mottling remains; no photoreal micrograin or regular bright confetti.",
+      "No current static gameplay ground consumers found for these canonical IDs; catalog-only material, no live-map acceptance claim.",
+      "At native32 the red/blue-gray bordered rug shapes remain identifiable; tiny fringe and peg details are clearer at64.",
+      "The four windows are derivatives of one ground source, not four independent camps or authored props.",
+      "Camp motifs repeat visibly in synthetic repeat fixtures; no live placement density or consumer is introduced.",
+      "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "registration": {
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "windowsXYXY": [
+        [
+          0,
+          0,
+          627,
+          627
+        ],
+        [
+          627,
+          0,
+          1254,
+          627
+        ],
+        [
+          0,
+          627,
+          627,
+          1254
+        ],
+        [
+          627,
+          627,
+          1254,
+          1254
+        ]
+      ]
+    },
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "allFixturesProof": "all-fixtures-native-proof.png",
+    "native32And64Inspected": true,
+    "repeatOrConnectionFixturesInspected": true,
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 4.508506113769272,
+    "northSouthMeanAbsoluteRGBDifference": 2.2254120148856993
+  },
+  "export": {
+    "performed": "diagnostics only in shared directory; no repository runtime, code or catalog writes",
+    "alphaAndSeamQA": "Exact historical independent32/64alpha; every allowed pair exactRGBA edge comparison passed",
+    "formalCatalog": "pending parent integration",
+    "liveMapAcceptance": "not claimed; canonical catalog-only"
+  },
+  "parentReviewReported": {
+    "source": "Parent collaboration message 2026-10-20 04:39 UTC",
+    "decision": "Parent reviewed all four native32/64 fixture boards and accepted source identities and crop safety for canonical catalog",
+    "limits": "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim.",
+    "integration": "pending parent"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-2",
+  "selectedRawAndMasterByteIdentical": true,
+  "generatorOriginalAndMasterByteIdentical": true,
+  "boardUnchanged": true,
+  "slotExactPixelMatch": true,
+  "referenceHashChecks": [
+    {
+      "bundle": "references.json",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/attempt-01/master.png",
+      "sha256": "d0c94a84d66cb2615d652489092896d4fed642afcf7d68befdaf58d090be3d55",
+      "unchanged": true
+    },
+    {
+      "bundle": "references.json",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/canonical-source-slot.png",
+      "sha256": "a5f70d17bad91b888a63c5bbbecaf4924105fedf837f30a67bf427a32aebd344",
+      "unchanged": true
+    },
+    {
+      "bundle": "attempt-01/references.json",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/wasteland-2/canonical-source-slot.png",
+      "sha256": "a5f70d17bad91b888a63c5bbbecaf4924105fedf837f30a67bf427a32aebd344",
+      "unchanged": true
+    },
+    {
+      "bundle": "attempt-01/references.json",
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/border-2/master.png",
+      "sha256": "805da14605d33d1ebe31469ad6d4f98dcc06476597ac9bae6b3a5590d365e780",
+      "unchanged": true
+    },
+    {
+      "bundle": "attempt-01/references.json",
+      "path": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+      "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+      "unchanged": true
+    }
+  ],
+  "runtimeUnchanged": {
+    "32": true,
+    "64": true
+  },
+  "historicalSourceRerender": {
+    "32": "exact RGBA pixel equality",
+    "64": "exact RGBA pixel equality"
+  }
+}

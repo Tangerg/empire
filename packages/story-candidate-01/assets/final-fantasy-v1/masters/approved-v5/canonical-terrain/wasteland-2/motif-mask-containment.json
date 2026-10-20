@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-2",
+  "registration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    ]
+  },
+  "checks": [
+    {
+      "density": 1,
+      "nativeSize": 32,
+      "approxMotifBoxXYXY": [
+        487,
+        492,
+        798,
+        734
+      ],
+      "boxEntirelyInsideHistoricalPad": true
+    },
+    {
+      "density": 2,
+      "nativeSize": 64,
+      "approxMotifBoxXYXY": [
+        487,
+        492,
+        798,
+        734
+      ],
+      "boxEntirelyInsideHistoricalPad": true
+    }
+  ],
+  "interpretation": "Bounding box encloses visually identified principal local motif; it is fully inside both historical mask0 pads, so all supersets retain it. No physical terrain/elevation/hazard topology inferred."
+}

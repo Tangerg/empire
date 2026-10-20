@@ -1,0 +1,110 @@
+{
+  "topicId": "C01-TERRAIN-WASTELAND-1",
+  "label": "风蚀土",
+  "status": "source-accepted-by-parent; integration-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 2,
+  "selectedAttempt": 2,
+  "method": "Built-in image_gen only for artwork; generated PNG bytes copied exactly to raw backup and selected master; Python used solely for provenance, verified crop/resize/historical-mask diagnostics and review-board composition",
+  "master": "master.png",
+  "sourceSHA256": "14448ac27707228865083b495c40d91c5f14f10ef8e4d632d114707f1b2a5a53",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "raw/imagegen-01.png",
+    "raw/imagegen-02.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "immutableChecks": "immutable-checks.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Quiet ochre wind-eroded earth with complete compact shallow scour patches, sparse gray rocks, dry grass and short cracks; all motifs stay within the four quarter windows.",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board, exact crop and original runtime strips checked before generation; original prompt not recovered.",
+      "Generated sources are opaque. Historical binary tile alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic output verifies the established outermost1px allowed-pair edge contract, not invisible higher-order texture seams.",
+      "Some medium-scale painted mottling remains; no photoreal micrograin or regular bright confetti.",
+      "No current static gameplay ground consumers found for these canonical IDs; catalog-only material, no live-map acceptance claim.",
+      "At native32, broad soil/scour/stone grouping reads; tiny crack branches and separate grass blades are not independently legible.",
+      "At native64 the shallow scour shapes and dry grass are clearer.",
+      "Attempt01 rejected for long rut discontinuities in mixed repeats; preserved. Attempt02 uses quieter ground and complete quarter-window features.",
+      "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "registration": {
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "windowsXYXY": [
+        [
+          0,
+          0,
+          627,
+          627
+        ],
+        [
+          627,
+          0,
+          1254,
+          627
+        ],
+        [
+          0,
+          627,
+          627,
+          1254
+        ],
+        [
+          627,
+          627,
+          1254,
+          1254
+        ]
+      ]
+    },
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "allFixturesProof": "all-fixtures-native-proof.png",
+    "native32And64Inspected": true,
+    "repeatOrConnectionFixturesInspected": true,
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 4.215842636895268,
+    "northSouthMeanAbsoluteRGBDifference": 2.760233918128655
+  },
+  "export": {
+    "performed": "diagnostics only in shared directory; no repository runtime, code or catalog writes",
+    "alphaAndSeamQA": "Exact historical independent32/64alpha; every allowed pair exactRGBA edge comparison passed",
+    "formalCatalog": "pending parent integration",
+    "liveMapAcceptance": "not claimed; canonical catalog-only"
+  },
+  "parentReviewReported": {
+    "source": "Parent collaboration message 2026-10-20 04:39 UTC",
+    "decision": "Parent reviewed all four native32/64 fixture boards and accepted source identities and crop safety for canonical catalog",
+    "limits": "Repeated rug tiles are not generic ground. Ledge/storm NESW use narrow fixed masks only. No production broad-terrain cohesion claim.",
+    "integration": "pending parent"
+  }
+}

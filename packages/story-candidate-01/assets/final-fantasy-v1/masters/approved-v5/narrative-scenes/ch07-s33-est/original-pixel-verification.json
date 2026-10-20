@@ -1,0 +1,20 @@
+{
+  "originalFullboardSize": [
+    1254,
+    1254
+  ],
+  "cellBox": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "cellSize": [
+    617,
+    617
+  ],
+  "originalFullboardHashMatchesAudit": true,
+  "originalRuntimeHashMatchesAudit": true,
+  "freshRebuildExactPixelMatch": true,
+  "formula": "Original RGB \u2192 explicit 2\u00d72 inset 5 crop \u2192 centered ImageOps.fit 256\u00d7144 LANCZOS \u2192 opaque RGBA"
+}
