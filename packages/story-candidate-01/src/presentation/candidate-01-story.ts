@@ -18,7 +18,8 @@ export const candidate01StoryArt = (topicId: string): string => candidate01Asset
 /**
  * The plate a chapter is set against, for the screens that name no scene.
  *
- * A choice, a staging brief and a result happen somewhere too, and the somewhere
+ * A story without a specific plate, a choice, a staging backdrop and a result
+ * happen somewhere too, and the somewhere
  * they happen is the chapter. Three archive plates rather than three of the
  * chapters' many beats, so the backdrop stays still while the cards change.
  */

@@ -181,6 +181,14 @@ GPU 后端把一次会话里的每一场战斗都画在**同一张 canvas** 上�
 
 现在 `shell()` 给每一屏都画背景：有自己场景的那一屏传自己的，其余用**这一章的档案图版**（端口新增 `chapterArt(chapter)`，因为每一屏都知道自己是第几章——`shell` 本来就收这个参数）。
 
+### 具体场景缺图是显式状态
+
+`StoryPresentation.scene` 与通用 UI 端口 `StoryPresentationView.scene` 都是必填的 `string | null`。题材包的 `story.ts` 独占语义选择：字符串必须解析成已登记的具体场景，`null` 表示该地点尚无合适图版。未知字符串、空字符串不能悄悄退回章节背景。
+
+缺图的剧情屏保留文字、任务和对话，`shell()` 继续使用已有的 `chapterArt(chapter)`；这个通用章节图版不宣称画出了当前的具体地点。战前 hero 始终从同一份 briefing 取图，`null` 时不创建 `<img>`，并用 `.staging-hero--text-only` 明确排成一列；全屏章节背景、名册、开战与存档流程保持原契约。
+
+候选一的四处缺图、三处语义修正、结尾议会的主题性复用及遗留素材限制，见[场景选择修正记录](art-rebuild-20261019/approved-v5/council-selector-correction/README.md)。
+
 ### 屏幕上的东西现在拍得下来
 
 `npm run ui:shot` 把一张已发布的棋盘——或者围着它的整个战斗界面——渲成 `.shots/` 里的 PNG。另外三把尺子（`board:digest` / `board:flat` / `board:scale`）都用文字描述棋盘，回答「这次改动有没有挪动任何东西」；没有一把回答「看起来对不对」，而那是美术改动唯一真正的问题。这个问题一直被推给「得有人看屏幕」，于是只要这里没有东西看得见，外观就一直在漂。

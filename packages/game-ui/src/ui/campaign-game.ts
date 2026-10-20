@@ -49,7 +49,8 @@ export interface StoryBeatView {
 }
 
 export interface StoryPresentationView {
-  scene: string;
+  /** Null means no specific illustration; the chapter backdrop remains available. */
+  scene: string | null;
   chapter: number;
   kicker: string;
   title: string;
@@ -81,7 +82,7 @@ export interface StoryCampaignAdapter {
    * The place a chapter happens, for every screen in it that has no scene of
    * its own.
    *
-   * A story beat names its own scene; a choice, a staging brief and a result do
+   * A story beat may name its own scene; a choice, a staging backdrop and a result do
    * not, and they used to be a card on a flat gradient — so the campaign
    * alternated between a painted place and a bare dialog about it. Every screen
    * knows its chapter, because `shell` is handed one.
@@ -316,7 +317,7 @@ export class StoryCampaignController {
 
   private renderStory(presentationId: string, ending: boolean): void {
     const story = this.adapter.story(presentationId);
-    const scene = this.adapter.storyArt(story.scene);
+    const scene = story.scene === null ? undefined : this.adapter.storyArt(story.scene);
     const beat = story.beats[Math.min(this.beat, story.beats.length - 1)];
     const portrait = this.adapter.portraits[beat.speaker];
     const done = this.runtime.state.status !== 'active';
@@ -362,7 +363,7 @@ export class StoryCampaignController {
     const chapter = this.adapter.chapterOf(level);
     const order = this.adapter.levelOrder(level);
     const story = this.adapter.story(this.adapter.briefingId(level));
-    const scene = this.adapter.storyArt(story.scene);
+    const scene = story.scene === null ? null : this.adapter.storyArt(story.scene);
     const currentNode = this.adapter.definition.nodes.find((node) => node.id === this.runtime.state.currentNode);
     const rosterBindings = currentNode?.type === 'battle' ? currentNode.rosterBindings : undefined;
     const completed = this.runtime.state.battleHistory.length;
@@ -371,7 +372,7 @@ export class StoryCampaignController {
       .map(([id, amount]) => `<span>${escapeHtml(this.adapter.resourceLabels?.[id] ?? id)}</span><b>${amount}</b>`)
       .join('') || '<span>暂无战役资源</span>';
     this.shell(`<main class="staging-screen">
-      <section class="staging-hero"><img src="${scene}" alt=""/><div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/${this.battleTotal}</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
+      <section class="staging-hero${scene === null ? ' staging-hero--text-only' : ''}">${scene === null ? '' : `<img src="${scene}" alt=""/>`}<div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/${this.battleTotal}</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
       <div class="staging-grid">
         <section class="campaign-panel"><h2>出战名册</h2><div class="roster-list">${roster.map((unit) => {
           /*

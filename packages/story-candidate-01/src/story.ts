@@ -12,7 +12,8 @@ export interface StoryPresentation {
   title: string;
   date: string;
   location: string;
-  scene: string;
+  /** Null explicitly marks a setting whose specific illustration is not yet available. */
+  scene: string | null;
   summary: string;
   beats: StoryBeat[];
   mission?: undefined | {
@@ -48,6 +49,8 @@ const SCENES = {
   burned: 'C01-CH01-S05',
   river: 'C01-CH02-S06',
   council: 'C01-CH05-S26',
+  grayCamp: 'C01-ARCH-GRAY-CAMP',
+  hospital: 'C01-ARCH-FIELD-HOSPITAL',
   rations: 'C01-SCENE-PUBLIC-RATIONS',
   ivra: 'C01-CH02-S09',
   forge: 'C01-CH03-S14',
@@ -62,7 +65,7 @@ const p = (
   title: string,
   date: string,
   location: string,
-  scene: string,
+  scene: StoryPresentation['scene'],
   summary: string,
   beats: StoryBeat[],
   mission?: StoryPresentation['mission'],
@@ -114,13 +117,15 @@ const STORY: StoryPresentation[] = [
       { speaker: 'roderick', text: '证据封存，送往王都。莱娅，你仍然要服从眼前愿意为后果负责的人。' },
     ]),
 
-  p('c01/brief-04', 1, '第一章 · 战斗 04', '黑旗营地', '第 0 年 · 初秋', '灰境西林', SCENES.council,
+  // No Black Camp setting plate; the later gray-banner camp is a different faction.
+  p('c01/brief-04', 1, '第一章 · 战斗 04', '黑旗营地', '第 0 年 · 初秋', '灰境西林', null,
     '只侦察、不交战的命令，在第一名即将被处决的俘虏面前失去完整意义。', [
       { speaker: 'mirelle', text: '他们在反复抽取士兵最后一次听令的记忆。每抽一次，那个人就少一点自己。' },
       { speaker: 'laiya', text: '三处营帐。证人和档案都带走。' },
       { speaker: 'narrator', text: '她第一次主动把“我负责”写在一份明确违背导师命令的计划下面。' },
     ], { objective: '调查三处营帐，再让莱娅与米蕾尔从西侧撤离。', danger: '调查会拉长暴露时间；撤离前不要把全队压进营地。', lesson: '阶段目标、战场变量、调查触发与撤退路线。' }),
-  p('c01/aftermath-04', 1, '战后', '违令留下的证人', '第 0 年 · 初秋', '黑旗营外', SCENES.council,
+  // The rescued witnesses are outside Black Camp, not at a council.
+  p('c01/aftermath-04', 1, '战后', '违令留下的证人', '第 0 年 · 初秋', '黑旗营外', null,
     '获救者记得同一份誓文模板被分别写进洛恩与维尔萨命令。证据足以让人被灭口，还不足以让国家停战。', [
       { speaker: 'mirelle', text: '档案可以复制，证人不能。今晚先记他们的名字。' },
       { speaker: 'laiya', text: '也记下是我让他们继续冒险。不能只在成功以后才承认那道命令是我的。' },
@@ -168,7 +173,7 @@ const STORY: StoryPresentation[] = [
       { speaker: 'laiya', text: '名字、数目、日期。先把欠下的写清楚。然后一起把粮仓守住。' },
       { speaker: 'tasha', text: '这句话值不了一枚铜币。但我愿意看你把它写进制度。' },
     ], { objective: '保护塔莎并击退抢粮者。', danger: '骑手会绕过正面；塔莎是高价值的爆破单位，也是失败条件。', lesson: '关键同盟保护、侧翼机动与范围爆破。' }),
-  p('c01/aftermath-08', 2, '战后', '一份可以解除的契约', '第 1 年 · 暮春', '洛岬粮仓', SCENES.council,
+  p('c01/aftermath-08', 2, '战后', '一份可以解除的契约', '第 1 年 · 暮春', '洛岬粮仓', SCENES.rations,
     '塔莎没有宣誓效忠。她签下一份列明期限、欠款与退出条款的契约，并把第一份抚恤名单钉在军需处。', [
       { speaker: 'tasha', text: '我不是因为相信你才加入。我是因为这份纸允许我在不再相信你时离开。' },
       { speaker: 'laiya', text: '那它比誓言更有用。' },
@@ -187,13 +192,14 @@ const STORY: StoryPresentation[] = [
       { speaker: 'narrator', text: '伊芙拉没有回答。第二天队伍出发时，云上的影子与他们保持了整整半日距离。' },
     ]),
 
-  p('c01/brief-10', 2, '第二章 · 战斗 10', '旧旗下的追兵', '第 1 年 · 初秋', '灰境东部山口', SCENES.council,
+  // No eastern mountain-pass setting plate; a homecoming scene would change the location.
+  p('c01/brief-10', 2, '第二章 · 战斗 10', '旧旗下的追兵', '第 1 年 · 初秋', '灰境东部山口', null,
     '罗德里克带着真正的赦免令追来。回去可以活，留下才要继续承担灰旗造成的后果。', [
       { speaker: 'roderick', text: '我没有伪造这份赦免。放下武器的人可以回家。你也可以。' },
       { speaker: 'laiya', text: '回去以后，下一道焚村令由谁拒绝？' },
       { speaker: 'roderick', text: '你把一次正确的抗命，误当成了永远正确的资格。' },
     ], { objective: '让莱娅抵达东部山口，不必歼灭旧部。', danger: '罗德里克的骑兵和援护阵线正面强度极高。', lesson: '突破、士气、飞行侧翼与有限交战。' }),
-  p('c01/aftermath-10', 2, '第二章终', '允许退出的誓', '第 1 年 · 初秋', '山口外营地', SCENES.council,
+  p('c01/aftermath-10', 2, '第二章终', '允许退出的誓', '第 1 年 · 初秋', '山口外营地', SCENES.grayCamp,
     '追兵没有被消灭，灰旗也没有被带回去。每一名留下的人重新听到一遍退出条款。', [
       { speaker: 'laiya', text: '今天留下，不等于明天必须留下。我们服从共同写下的规则，不服从我这个人。' },
       { speaker: 'tasha', text: '很好。现在把“共同写下”需要几个人签字也写清楚。' },
@@ -223,13 +229,14 @@ const STORY: StoryPresentation[] = [
       { speaker: 'laiya', text: '但你还站在这里，我也没有被你命令离开。低一点可以接受。' },
     ]),
 
-  p('c01/brief-13', 3, '第三章 · 战斗 13', '圣城档案', '第 2 年 · 盛夏', '圣辉白塔', SCENES.council,
+  // No Holy White Tower archive plate; the Mountain Forge archive is a different location.
+  p('c01/brief-13', 3, '第三章 · 战斗 13', '圣城档案', '第 2 年 · 盛夏', '圣辉白塔', null,
     '米蕾尔回到曾教她删除修改痕迹的地方。三组档案分别保存战争、命令与她老师的签名。', [
       { speaker: 'mirelle', text: '档案室会在第三份卷宗离架时报警。不是因为内容重要，是因为删改记录还在。' },
       { speaker: 'tasha', text: '那就先规划出口。证据没长腿，拿证据的人有。' },
       { speaker: 'laiya', text: '读三处，米蕾尔带原件走。其余人只负责让她还能走。' },
     ], { objective: '读取三组档案，并护送米蕾尔到东侧出口。', danger: '阶段完成后仍需穿过警戒部队，不要过早消耗支援能力。', lesson: '连续阶段、关键携带者、城市掩体与撤离。' }),
-  p('c01/aftermath-13', 3, '战后', '保留修改痕迹', '第 2 年 · 盛夏', '圣城外旧医院', SCENES.council,
+  p('c01/aftermath-13', 3, '战后', '保留修改痕迹', '第 2 年 · 盛夏', '圣城外旧医院', SCENES.hospital,
     '档案证明两国军令使用同一套誓文源。米蕾尔没有抹掉老师的名字，也没有替她写上原谅。', [
       { speaker: 'mirelle', text: '如果我删除她的签名，我就用同一种方法证明她错。' },
       { speaker: 'laiya', text: '那就让名字、罪责和修改都留在同一页上。' },
@@ -271,6 +278,7 @@ const STORY: StoryPresentation[] = [
       { speaker: 'laiya', text: '如果我们要建立一个允许退出的盟约，它也拥有同样的退出权。' },
     ]),
 
+  // Thematic council reuse: the canonical chapter-five night plate is not this morning's literal setting.
   p('c01/chapter-three-ending', 3, '前三章完成', '灰旗成为一支军队', '第 3 年 · 初夏', '洛岬晨议会', SCENES.council,
     '三年以前，莱娅相信正确的人下令就足够。现在她拥有一支军队，也第一次拥有能在她错误时阻止她的人。', [
       { speaker: 'tasha', text: '十六场战斗，七份退出条款，三本公开账册。你终于开始变得没那么不可替代。' },
