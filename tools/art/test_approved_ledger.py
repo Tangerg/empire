@@ -81,6 +81,8 @@ class ApprovedLedgerTests(unittest.TestCase):
 
     def test_scifi_terrain_and_chinese_assets_require_their_selected_source_directory(self):
         cases = [
+            ('c03-terrain-99390ac8', 'terrain', 'story-candidate-03',
+             'canonical-terrain/99390ac8'),
             ('c02-terrain-hesha-glass-sea', 'terrain', 'story-candidate-02',
              'canonical-terrain/hesha-glass-sea'),
             ('c03-battle-prop-0fb580c9', 'battle-prop', 'story-candidate-03',
@@ -117,6 +119,9 @@ class ApprovedLedgerTests(unittest.TestCase):
     def test_versioned_static_selection_uses_catalog_owner_not_default_master(self):
         self.assert_versioned_selection('c03-battle-prop-27872fa1', 'battle-prop', 'props/c03-battle-prop-27872fa1', 'source-overrides.json')
 
+    def test_versioned_frame_selection_uses_complete_registered_pose_set(self):
+        self.assert_versioned_selection('c02-unit-boarding-team', 'combat-unit', 'animation/boarding-team', 'frame-overrides.json')
+
     def test_versioned_terrain_selection_uses_catalog_owner_not_default_master(self):
         self.assert_versioned_selection('c02-terrain-soler-blue-ice', 'terrain', 'canonical-terrain/soler-blue-ice', 'canonical-terrain-overrides.json')
 
@@ -136,9 +141,21 @@ class ApprovedLedgerTests(unittest.TestCase):
         (self.root / version).parent.mkdir(parents=True)
         (self.root / version).write_bytes(b'new selected native source')
         (self.root / 'tools/art').mkdir(parents=True)
-        self.write(Path('tools/art') / catalog, {'assets': {identity: {'source': str(version)}}})
+        selected = [str(version)]
+        entry = {'source': str(version)}
+        if catalog == 'frame-overrides.json':
+            frames = {}
+            for pose in ('idle', 'walk-a', 'attack'):
+                source = directory / pose / 'master.png'
+                (self.root / source).parent.mkdir(parents=True)
+                (self.root / source).write_bytes(pose.encode())
+                frames[pose] = {'source': str(source)}
+            frames['walk-b'] = {'source': str(version)}
+            entry = {'frames': frames}
+            selected = [frame['source'] for frame in frames.values()]
+        self.write(Path('tools/art') / catalog, {'assets': {identity: entry}})
         result = build(self.root)
-        self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'], [str(version)])
+        self.assertEqual(result['canonicalTopics'][0]['selectedRawMasters'], selected)
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         (self.root / version).unlink()
         with self.assertRaisesRegex(ValueError, 'selected approved source is missing'):

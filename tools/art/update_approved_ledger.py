@@ -12,7 +12,7 @@ def build(root=ROOT):
     progress = json.loads((root / DOC / 'approved-v5/progress.json').read_text())
     baseline = json.loads((root / DOC / 'canonical-topic-manifest.json').read_text())
     source_catalogs = {}
-    for name in ('source-overrides.json', 'canonical-terrain-overrides.json'):
+    for name in ('source-overrides.json', 'canonical-terrain-overrides.json', 'frame-overrides.json'):
         catalog = root / 'tools/art' / name
         source_catalogs[name] = json.loads(catalog.read_text())['assets'] if catalog.exists() else {}
     manifests = {}
@@ -38,7 +38,7 @@ def build(root=ROOT):
             relative = Path('props') / stem
         elif topic.startswith('C01-EQUIP-'):
             relative = Path('equipment') / stem
-        elif current['category'] == 'terrain' and topic.startswith(('C01-TERRAIN-', 'c02-terrain-')):
+        elif current['category'] == 'terrain' and topic.startswith(('C01-TERRAIN-', 'c02-terrain-', 'c03-terrain-')):
             relative = Path('canonical-terrain') / stem.removeprefix('terrain-')
         elif current['category'] == 'fx' and topic.startswith('C01-FX-'):
             relative = Path('fx') / stem
@@ -68,14 +68,20 @@ def build(root=ROOT):
             directory = root / Path(path).parent / 'masters/approved-v5' / relative
             raw = [str(p.relative_to(root)) for p in sorted(directory.glob('master.png'))]
             raw += [str(p.relative_to(root)) for p in sorted(directory.glob('*/master.png'))]
-        catalog_name = 'canonical-terrain-overrides.json' if current['category'] == 'terrain' else 'source-overrides.json'
-        selected = source_catalogs[catalog_name].get(topic, {}).get('source')
-        if selected and '/masters/approved-v5/' in selected:
+        if current['category'] in ('combat-unit', 'mission-unit', 'interactive-structure'):
+            frames = source_catalogs['frame-overrides.json'].get(topic, {}).get('frames', {})
+            selected = [frame['source'] for frame in frames.values()]
+        else:
+            catalog_name = 'canonical-terrain-overrides.json' if current['category'] == 'terrain' else 'source-overrides.json'
+            source = source_catalogs[catalog_name].get(topic, {}).get('source')
+            selected = [source] if source else []
+        if selected and all('/masters/approved-v5/' in source for source in selected):
             owner = (root / Path(path).parent / 'masters/approved-v5').resolve()
-            source = (root / selected).resolve()
-            if not source.is_relative_to(owner) or not source.is_file():
-                raise ValueError(f'{topic}: selected approved source is missing or outside its owning pack')
-            raw = [selected]
+            for source_path in selected:
+                source = (root / source_path).resolve()
+                if not source.is_relative_to(owner) or not source.is_file():
+                    raise ValueError(f'{topic}: selected approved source is missing or outside its owning pack')
+            raw = selected
         if bound and not raw:
             raise ValueError(f'formally bound topic lacks a discoverable approved native master: {topic}')
         rows.append({'topicId': topic, 'campaign': old['campaign'], 'category': current['category'],

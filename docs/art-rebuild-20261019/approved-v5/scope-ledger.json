@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 628,
+    "formalBound": 629,
     "boundByCategory": {
       "battle-prop": 76,
-      "combat-unit": 41,
+      "combat-unit": 42,
       "equipment": 107,
       "faction-kit": 12,
       "fx": 24,
@@ -10159,9 +10159,9 @@
       "label": "角枝骑士",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/attack/master.png",
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/idle/master.png",
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-a/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/attack/master.png",
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/antler-knight/walk-b/master.png"
       ],
       "raw": "preserved",
@@ -10183,17 +10183,22 @@
       "label": "接舷队",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
-        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-b/master.png"
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/candidates/blue-support-v3/walk-b.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/combat-unit/unit-boarding-team.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "Four distinct full-canvas boarding-team poses; genuine blue-support-v3 walk-b selected, original and rejected v2 preserved",
+        "export": "Whole-canvas width44 origin5,3; unchanged bounded integer offsets; source anatomy and native shared-helper contact reviewed. Blue step subtle at native size; quartet drift1.185px X and0.983px Y",
+        "runtimeBinding": "Canonical256x48 four-frame catalog,64x48 cells and anchor32,47 unchanged; no gameplay consumer or HD invented",
+        "liveGame": "pending; static actual shared-helper proof only"
+      }
     },
     {
       "topicId": "c02-unit-defoliator-pilot",

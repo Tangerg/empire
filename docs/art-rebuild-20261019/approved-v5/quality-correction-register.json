@@ -1,6 +1,6 @@
 {
   "scope": "Known unresolved visual/source issues, separate from canonical binding count; not exhaustive full-collection acceptance",
-  "asOfUtc": "2026-10-20T09:04:00Z",
+  "asOfUtc": "2026-10-20T09:17:00Z",
   "fullTaskAccepted": false,
   "issues": [
     {
@@ -30,10 +30,12 @@
     },
     {
       "topic": "c02-unit-boarding-team",
-      "binding": "unbound",
-      "status": "source-correction-required",
+      "binding": "bound-catalog-only",
+      "status": "resolved-source-gait-and-registration-only",
       "issue": "Original blue walk not alternating; versioned blue-gait-v2 fixes gait but moves planted support outside registration criterion",
-      "evidence": "scifi-boarding-team/blue-gait-v2/NEXT-SOURCE-CORRECTION.md"
+      "evidence": "scifi-boarding-team/blue-gait-v2/NEXT-SOURCE-CORRECTION.md",
+      "resolution": "One genuine blue-support-v3 redraw restores opposite gait and bounded contact. Integration owner reviewed complete source anatomy and actual static shared-helper shadow; no visible floating gap. Native blue gait remains subtle; live scene playback unverified.",
+      "resolutionEvidence": "scifi-boarding-team/blue-support-v3/REVIEW.md"
     },
     {
       "topic": "c02-unit-defoliator-pilot",

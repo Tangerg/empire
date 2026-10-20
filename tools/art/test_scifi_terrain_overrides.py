@@ -7,23 +7,26 @@ import unittest
 from PIL import Image
 
 from export_canonical_terrain_overrides import (
-    ALPHA_SHA256, ROOT, SCIFI_PACK, SCIFI_TOPICS, export, pixel_hash,
+    ALPHA_SHA256, ROOT, SCIFI_PACK, SCIFI_TOPICS, CHINA_PACK, CHINA_TOPICS, export, pixel_hash,
 )
 
 
 class ScifiTerrainExportTests(unittest.TestCase):
+    pack_path = SCIFI_PACK
+    topics = SCIFI_TOPICS
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        self.pack = self.root / SCIFI_PACK
+        self.pack = self.root / self.pack_path
         self.pack.mkdir(parents=True)
-        self.manifest = self.pack / 'manifest-final-scifi-v1.json'
-        document = json.loads((ROOT / SCIFI_PACK / self.manifest.name).read_text())
-        document['assets'] = [a for a in document['assets'] if a['topicId'] in SCIFI_TOPICS]
+        self.manifest = self.pack / f'manifest-{self.pack_path.name}.json'
+        document = json.loads((ROOT / self.pack_path / self.manifest.name).read_text())
+        document['assets'] = [a for a in document['assets'] if a['topicId'] in self.topics]
         self.manifest.write_text(json.dumps(document))
         self.entries = {}
-        for index, (topic, mode) in enumerate(SCIFI_TOPICS.items()):
+        for index, (topic, mode) in enumerate(self.topics.items()):
             source = self.pack / 'masters' / f'{topic}.png'
             source.parent.mkdir(exist_ok=True)
             image = Image.new('RGB', (128, 128))
@@ -46,7 +49,7 @@ class ScifiTerrainExportTests(unittest.TestCase):
 
     def test_scifi_exports_only_declared_native_density_without_fantasy_or_hd_files(self):
         reports = self.run_export()
-        self.assertEqual(len(reports), len(SCIFI_TOPICS))
+        self.assertEqual(len(reports), len(self.topics))
         self.assertEqual(reports, self.run_export(check=True))
         for report in reports:
             self.assertEqual(report['fileSha256'], hashlib.sha256(
@@ -58,12 +61,12 @@ class ScifiTerrainExportTests(unittest.TestCase):
             self.assertEqual(report['alphaSha256'], ALPHA_SHA256[report['tileMode'], 32])
 
     def test_original_scifi_alpha_matches_each_reviewed_historical_mask_contract(self):
-        original = json.loads((ROOT / SCIFI_PACK / self.manifest.name).read_text())
+        original = json.loads((ROOT / self.pack_path / self.manifest.name).read_text())
         for asset in original['assets']:
-            if asset['topicId'] in SCIFI_TOPICS:
-                with Image.open(ROOT / SCIFI_PACK / asset['png']) as image:
+            if asset['topicId'] in self.topics:
+                with Image.open(ROOT / self.pack_path / asset['png']) as image:
                     self.assertEqual(pixel_hash(image.getchannel('A')),
-                                     ALPHA_SHA256[SCIFI_TOPICS[asset['topicId']], 32])
+                                     ALPHA_SHA256[self.topics[asset['topicId']], 32])
 
     def test_wrong_campaign_source_rejected_before_any_output(self):
         entry = next(iter(self.entries.values()))
@@ -97,3 +100,8 @@ class ScifiTerrainExportTests(unittest.TestCase):
         entry['registration']['windowsXYXY'] = [[0, 0, 64, 64]] * 4
         with self.assertRaisesRegex(ValueError, 'distinct source windows'):
             self.run_export()
+
+
+class ChinaTerrainExportTests(ScifiTerrainExportTests):
+    pack_path = CHINA_PACK
+    topics = CHINA_TOPICS

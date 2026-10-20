@@ -56,6 +56,13 @@ SCIFI_TOPICS = {
     'c02-terrain-verdant-root-nest': 'variants',
     'c02-terrain-verdant-spore-fog': 'nesw-16',
 }
+CHINA_PACK = Path('packages/story-candidate-03/assets/final-ancient-china-v1')
+CHINA_TOPICS = {
+    'c03-terrain-99390ac8': 'variants',
+    'c03-terrain-980abbed': 'variants',
+    'c03-terrain-b499c3bf': 'variants',
+    'c03-terrain-c053bd0c': 'nesw-16',
+}
 VARIANTS = ['a', 'b', 'c', 'd']
 # The original 1x and 2x builders rasterized independently. These are hashes of
 # the complete historical horizontal alpha strips, not resized 1x masks.
@@ -135,24 +142,19 @@ def validate_fantasy_manifests(root, topics):
     return targets
 
 
-def validate_manifests(root, topics):
-    fantasy = [topic for topic in topics if topic in TOPICS]
-    targets = validate_fantasy_manifests(root, fantasy) if fantasy else {}
-    scifi = [topic for topic in topics if topic in SCIFI_TOPICS]
-    if not scifi:
-        return targets
-    pack = root / SCIFI_PACK
-    base = read_json(pack / 'manifest-final-scifi-v1.json')
-    for topic in scifi:
-        mode = SCIFI_TOPICS[topic]
+def validate_native_manifests(root, topics, pack, modes, topic_prefix, asset_prefix):
+    base = read_json(root / pack / f'manifest-{pack.name}.json')
+    targets = {}
+    for topic in topics:
+        mode = modes[topic]
         count = 4 if mode == 'variants' else 16
-        slug = topic.removeprefix('c02-')
+        slug = topic.removeprefix(topic_prefix)
         matches = [asset for asset in base['assets'] if asset.get('topicId') == topic]
         if len(matches) != 1:
-            raise ValueError('expected exactly one canonical scifi terrain record')
+            raise ValueError('expected exactly one canonical native terrain record')
         asset = matches[0]
         expected = {
-            'assetId': f'C02-SFV1-{slug}', 'category': 'terrain',
+            'assetId': f'{asset_prefix}{slug}', 'category': 'terrain',
             'png': f'runtime/terrain/{slug}.png', 'width': count * 32, 'height': 32,
             'tileWidth': 32, 'tileHeight': 32, 'tileMode': mode, 'runtimeReady': True,
         }
@@ -164,11 +166,24 @@ def validate_manifests(root, topics):
             forbidden = ('variants', 'variantOrder')
         if (any(asset.get(key) != value for key, value in expected.items())
                 or any(key in asset for key in (*forbidden, 'anchor', 'footprint', 'pixelDensity'))):
-            raise ValueError('unexpected canonical scifi terrain geometry or metadata')
-        target = within(root, str(SCIFI_PACK / asset['png']))
-        if target != root.resolve() / SCIFI_PACK / asset['png']:
+            raise ValueError('unexpected canonical native terrain geometry or metadata')
+        target = within(root, str(pack / asset['png']))
+        if target != root.resolve() / pack / asset['png']:
             raise ValueError('canonical terrain destination must not use symlinks')
         targets[topic] = [target]
+    return targets
+
+
+def validate_manifests(root, topics):
+    fantasy = [topic for topic in topics if topic in TOPICS]
+    targets = validate_fantasy_manifests(root, fantasy) if fantasy else {}
+    for pack, modes, topic_prefix, asset_prefix in (
+        (SCIFI_PACK, SCIFI_TOPICS, 'c02-', 'C02-SFV1-'),
+        (CHINA_PACK, CHINA_TOPICS, 'c03-', 'C03-ACV1-'),
+    ):
+        native = [topic for topic in topics if topic in modes]
+        if native:
+            targets.update(validate_native_manifests(root, native, pack, modes, topic_prefix, asset_prefix))
     return targets
 
 
@@ -275,7 +290,7 @@ def plan(root, catalog):
             or type(data['schemaVersion']) is not int or data['schemaVersion'] != 1
             or not isinstance(data['assets'], dict)):
         raise ValueError('expected schemaVersion 1 and assets object')
-    modes = TOPICS | SCIFI_TOPICS
+    modes = TOPICS | SCIFI_TOPICS | CHINA_TOPICS
     if any(topic not in modes for topic in data['assets']):
         raise ValueError('unsupported canonical terrain topic; only explicitly reviewed material families are accepted')
     if not data['assets']:
@@ -284,7 +299,8 @@ def plan(root, catalog):
     planned, sources = [], set()
     for topic, entry in data['assets'].items():
         mode = modes[topic]
-        source, provenance = read_material(root, entry, mode, SCIFI_PACK if topic in SCIFI_TOPICS else PACK)
+        pack = PACK if topic in TOPICS else SCIFI_PACK if topic in SCIFI_TOPICS else CHINA_PACK
+        source, provenance = read_material(root, entry, mode, pack)
         if entry['sha256'] in sources:
             raise ValueError('each canonical topic requires its own authored material source')
         sources.add(entry['sha256'])
@@ -295,7 +311,7 @@ def plan(root, catalog):
                       'source': provenance, 'samples': samples, 'cells': cells, 'edges': edges,
                       'pixelSha256': pixel_hash(sheet), 'alphaSha256': pixel_hash(sheet.getchannel('A')),
                       'derivation': ('explicit equal-scale source crops; independent LANCZOS resize at '
-                                     + ('32; ' if topic in SCIFI_TOPICS else '32/64; ')) +
+                                     + ('32/64; ' if topic in TOPICS else '32; ')) +
                                     'approved outermost 1px opposite-family-edge average; exact historical alpha; '
                                     'transparent RGB zeroed; no recolor, contrast adjustment, blur or painted detail',
                       'integration': 'canonical-catalog-only; no current gameplay ground consumer',

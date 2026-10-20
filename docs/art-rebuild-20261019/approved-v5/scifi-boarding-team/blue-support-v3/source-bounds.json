@@ -1,0 +1,170 @@
+[
+  {
+    "pose": "idle",
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/idle/master.png",
+    "sha256": "cb9de8805cd71b92e8d53974d9a5d9f3b2b557d70ca1bce9c66570f9e6137545",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "boundsByMinimumAlpha": {
+      "1": [
+        0,
+        21,
+        1212,
+        1238
+      ],
+      "128": [
+        78,
+        357,
+        1201,
+        1211
+      ]
+    },
+    "edgeMaxAlpha": 1
+  },
+  {
+    "pose": "walk-a",
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-a/master.png",
+    "sha256": "fe8fbe05fe32c500b9fa8e62556009dd59160577f6cf324041bceb0e13a9fc30",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "boundsByMinimumAlpha": {
+      "1": [
+        0,
+        19,
+        1236,
+        1254
+      ],
+      "128": [
+        57,
+        358,
+        1232,
+        1175
+      ]
+    },
+    "edgeMaxAlpha": 1
+  },
+  {
+    "pose": "attack",
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/attack/master.png",
+    "sha256": "b438b8f2fa99ecce0445327d31870cb49b52e892790c142d8ebc4979a2e7a4a8",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "boundsByMinimumAlpha": {
+      "1": [
+        0,
+        41,
+        1227,
+        1222
+      ],
+      "128": [
+        59,
+        354,
+        1225,
+        1194
+      ]
+    },
+    "edgeMaxAlpha": 1
+  },
+  {
+    "pose": "walk-b",
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/walk-b/master.png",
+    "sha256": "405988b5c5c66c8b765f571adac47e4d991245e6b8cda6703fed95f113def055",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "boundsByMinimumAlpha": {
+      "1": [
+        0,
+        41,
+        1242,
+        1254
+      ],
+      "128": [
+        40,
+        358,
+        1239,
+        1175
+      ]
+    },
+    "edgeMaxAlpha": 1
+  },
+  {
+    "pose": "blue-gait-v2",
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/candidates/blue-gait-v2/walk-b.png",
+    "sha256": "08748bf8c73c12d83c8ca72df06e39ce1a5bed4ffa39eb78502a15872a138f9d",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "boundsByMinimumAlpha": {
+      "1": [
+        0,
+        17,
+        1237,
+        1254
+      ],
+      "128": [
+        40,
+        358,
+        1234,
+        1183
+      ]
+    },
+    "edgeMaxAlpha": 1
+  },
+  {
+    "pose": "blue-support-v3",
+    "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/animation/boarding-team/candidates/blue-support-v3/walk-b.png",
+    "sha256": "250fe0bca2e48dca5ebd3aa1e57f8476b981e4219fadbf93e8603e49ae075ce7",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "boundsByMinimumAlpha": {
+      "1": [
+        0,
+        28,
+        1238,
+        1254
+      ],
+      "128": [
+        39,
+        357,
+        1235,
+        1202
+      ]
+    },
+    "edgeMaxAlpha": 1
+  }
+]

@@ -1,0 +1,7 @@
+# C03 native terrain contract, first four audited identities
+
+The original complete terrain-board-01 source and row-major builder were reviewed. The first four semantic catalog subjects are c03-terrain-99390ac8 (龟裂灾田), c03-terrain-980abbed (退水烂泥), c03-terrain-b499c3bf (复耕田垄), and c03-terrain-c053bd0c (粮车与难民车辙路). Top-row columns1–4 match those subjects. The first three are four-variant materials; the fourth is sixteen-mask NESW wheel-rut road material. Source generation is separate and this contract alone binds zero C03 topics.
+
+The existing C03 manifest uses C03-ACV1 identity, runtime/terrain paths, native32 cells and no anchor, footprint or pixelDensity fields. Original complete alpha strips exactly match existing historical32 variant/NESW hashes. No HD density or gameplay consumer is invented. The shared native validator now accepts explicit C02 or C03 owners, preserving all geometry, duplicate-record, source ownership and path guards. C01 independent32/64 handling is unchanged. Explicit CHINA_TOPICS is restricted to these four audited subjects.
+
+The C03 fixture subclass reuses all seven native exporter semantic/negative tests; both campaign manifests are loaded independently. The ledger discovers pending C03 masters under canonical-terrain/<hash>, then honors the canonical terrain catalog's selected source after binding. Full generated source style and native masks must still be reviewed before any formal registration.
