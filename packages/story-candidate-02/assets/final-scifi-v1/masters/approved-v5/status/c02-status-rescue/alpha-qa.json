@@ -1,0 +1,44 @@
+{
+  "topicId": "c02-status-rescue",
+  "source": "master.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "zeroAlphaPixels": 931992,
+  "partialAlphaPixels": 639086,
+  "opaquePixels": 1438,
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    213,
+    97,
+    1081,
+    1185
+  ],
+  "nearOpaquePixelCountGE240": 622812,
+  "actual32Size": [
+    32,
+    32
+  ],
+  "actual32TwoPixelBorderMaxAlpha": 0,
+  "actual32NearOpaquePixelsGE240": 253,
+  "matchesRawGeneratedBytes": true,
+  "sourceSha256": "885f966ad220519d47ae9e304d401c64092963fd73f977c4a9a2651dd401b83d",
+  "derivation": "Diagnostic only. Full source canvas LANCZOS contained into 28x28 and centered on transparent 32x32, anchor16,16. No alpha-bbox crop, pixel editing, recolor, keying or cleanup. No HD output. Composites are inspection-only derivatives.",
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "formalSourceContractPass": true,
+  "visualQA": "At actual 32px the hollow orange/ivory ring and the upturned glove silhouette remain readable across white/black/olive. Fine finger joints and rope attachments are not individually countable at that scale. Full native source on white and 512px black/olive composites show clean contours, near-opaque planes and no broad external haze.",
+  "fullNativeWhiteInspected": true,
+  "source512BlackWhiteOliveInspected": true,
+  "actual32ThreeBackgroundInspected": true,
+  "semanticReview": "One life buoy with eight alternating sections, four orange and four ivory, and one perimeter rope sits above one upturned armored helping hand. Cyan wrist/knuckle accents and amber cuff trim are retained."
+}

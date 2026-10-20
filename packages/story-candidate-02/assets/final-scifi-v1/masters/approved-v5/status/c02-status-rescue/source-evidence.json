@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-rescue",
+  "assetId": "C02-SFV1-status-rescue",
+  "label": "救援目标",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-rescue",
+    "topicId": "c02-status-rescue",
+    "label": "救援目标",
+    "category": "status",
+    "png": "runtime/status/status-rescue.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-02.png",
+  "originalMasterSha256": "28d175fa7caad52387b8d27976f7c9fcc81b0dc5ccfcaa9baaa23c49c28a84de",
+  "sourceCellOneBased": {
+    "row": 1,
+    "column": 4
+  },
+  "sourceCropBox": [
+    943,
+    5,
+    1249,
+    624
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-02; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-rescue.png",
+  "runtimeReferenceSha256": "d51428035da311a04171166d172436e4e3b1d67ad02ee330831c1353582513c2",
+  "functionalMotif": "One life buoy with eight alternating sections, four orange and four ivory, and one perimeter rope sits above one upturned armored helping hand. Cyan wrist/knuckle accents and amber cuff trim are retained.",
+  "reconstructionCaveats": "The original rope braid and glove joints are simplified to broad segments. One hand and one ring remain; no water, person, medical cross or extra rescue object is introduced.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a84dbfa4-babb-4dc6-a02a-c8b16ccdc44e.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-rescue/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}

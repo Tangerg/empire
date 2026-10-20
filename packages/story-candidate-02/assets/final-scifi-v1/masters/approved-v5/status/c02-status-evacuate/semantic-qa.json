@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "motif": "Exactly one stout sci-fi doorway with a cyan header lamp, attached shallow ramp with two green rectangular markers, and one large cyan arrow pointing outward/down-left.",
+  "checks": {
+    "Exactly one doorway/airlock arch": true,
+    "One horizontal cyan header lamp": true,
+    "Attached shallow mechanical ramp": true,
+    "Exactly two green floor markers in master": true,
+    "Exactly one down-left outward cyan arrow": true,
+    "No person, exit lettering, teleport ring or added floor tile": true
+  },
+  "native32": "Actual native-size white/black/olive strips inspected; complete primary motif survives reduction. Fine loop/panel details are not claimed to be individually readable at 32 px.",
+  "sourceComposites": "Actual generated alpha composited over white, black and olive inspected. Clean boundary, no visible exterior haze or source-board magenta residue.",
+  "uncertainty": "Doorway count, arrow count/direction, one header lamp and two ramp markers are explicit. Fine interior panel seams have no documented identity value and were simplified. The dark-blue recess is preserved without asserting mechanical open/closed game state. At native 32, doorway and outward arrow are primary; tiny floor markers remain secondary.",
+  "catalogOnly": true
+}

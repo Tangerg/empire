@@ -1,0 +1,70 @@
+{
+  "topicId": "c02-status-repair",
+  "assetId": "C02-SFV1-status-repair",
+  "label": "维修目标",
+  "canonicalManifest": {
+    "assetId": "C02-SFV1-status-repair",
+    "topicId": "c02-status-repair",
+    "label": "维修目标",
+    "category": "status",
+    "png": "runtime/status/status-repair.png",
+    "width": 32,
+    "height": 32,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-scifi-v1",
+    "anchor": [
+      16,
+      16
+    ]
+  },
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/status-hud/status-board-02.png",
+  "originalMasterSha256": "28d175fa7caad52387b8d27976f7c9fcc81b0dc5ccfcaa9baaa23c49c28a84de",
+  "sourceCellOneBased": {
+    "row": 2,
+    "column": 1
+  },
+  "sourceCropBox": [
+    5,
+    630,
+    311,
+    1249
+  ],
+  "sourceMappingEvidence": "Inspected actual runtime contact sheet and full original status-board-02; visually matched motif, never inferred alphabetical slot order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/status/status-repair.png",
+  "runtimeReferenceSha256": "43540b90626800b873255d23d051b0ea556ac93470cd9b38f8562c4462504738",
+  "functionalMotif": "One open-ended wrench crosses a circular cyan-centered mechanical hub. Exactly four exposed spokes end in round knobs at top, upper-left, upper-right and lower-right. The wrench points upper-left with its holed handle at lower-right.",
+  "reconstructionCaveats": "The original warm-gray wrench and cyan hub identity is retained. Source microtexture and fastener detail are removed in favor of broad planes. No fifth spoke, gear teeth or additional tool is introduced.",
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hd": false,
+    "fullCanvasContainPadding": 2
+  },
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-491877b1-9c1d-4781-89c3-b509b83ce332.png",
+  "immutableRaw": "raw-native-v1.png",
+  "nativeMaster": "master.png",
+  "requestFile": "request.json",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi-status/c02-status-repair/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-repair-engineer/master.png"
+  ],
+  "sourceReady": true,
+  "formalRuntimeIntegration": false,
+  "runtimeReady": false,
+  "liveGameVerified": false,
+  "countsTowardFormalCategory": false,
+  "postprocessing": "Exact original reference crop only. Generated raw and master bytes are identical. No recolor, keying, alpha cleanup or pixel repainting. Whole-canvas resize only for separate QA derivatives.",
+  "native32Review": "diagnostic-native32/native32-white-black-olive.png",
+  "catalogScope": "C02 catalog-only source asset. No authored campaign consumer or live status integration is claimed."
+}
