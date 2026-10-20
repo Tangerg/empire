@@ -4,5 +4,32 @@
   "rawSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
   "generationCalls": 1,
   "selectedAttempt": 1,
-  "noSourceModification": true
+  "noSourceModification": true,
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-3113300c-2e93-45c0-bf7a-b2dba5fb9d18.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-torren-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-torren-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-torren-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/master.png": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-torren-02-original-cell.png": "f295dfbb568e7544814b8df04d623bfa782889d5add71cdb4a44c3280c8775be"
+      }
+    }
+  ],
+  "masterSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
+  "sourceproof": "sourceproof.json",
+  "finalPrompt": "prompt.txt",
+  "request": "request.json"
 }

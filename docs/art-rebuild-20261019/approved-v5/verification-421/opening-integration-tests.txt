@@ -1,0 +1,43 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-art-rebuild-20261019
+
+ ❯ packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts (37 tests | 1 failed) 1195ms
+   × per-asset physical density > accepts explicit square-scene density for C01-CH03-S11 without changing the record or URL 10ms
+     → expected '/packages/story-candidate-01/assets/f…' to contain 'runtime/narrative-static/ch03-s11.png'
+   ✓ per-asset physical density > fails loudly if the registered physical file is missing instead of using canonical fallback 976ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-narrative-scenes.test.ts (26 tests) 1398ms
+   ✓ narrative scene consumer contracts > resolves C01-ARCH-THREE-BRIDGES as one logical scene at its complete reviewed source density 357ms
+ ✓ tools/art/approved_catalog_bindings.test.ts (307 tests) 5817ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-EQUIP-QUARTERMASTER-SUPPLY-KIT in its owning manifest without inventing a playable consumer 354ms
+   ✓ approved static catalogs preserve campaign ownership > validates C01-SKILL-03 in its owning manifest without inventing a playable consumer 303ms
+   ✓ approved static catalogs preserve campaign ownership > validates c02-equipment-protocol-analyst in its owning manifest without inventing a playable consumer 319ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts > per-asset physical density > accepts explicit square-scene density for C01-CH03-S11 without changing the record or URL
+AssertionError: expected '/packages/story-candidate-01/assets/f…' to contain 'runtime/narrative-static/ch03-s11.png'
+
+Expected: "runtime/narrative-static/ch03-s11.png"
+Received: "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch03-s11.png"
+
+ ❯ packages/story-candidate-01/src/presentation/candidate-01-hd-density.test.ts:55:24
+     53|     expect(() => validateCandidate01HdAsset(square, hd)).not.toThrow();
+     54|     const registered = manifest.assets.find(entry => entry.topicId ===…
+     55|     expect(square.url).toContain(registered?.png ?? square.png);
+       |                        ^
+     56|     expect(candidate01StoryArt(square.topicId)).toBe(square.url);
+     57|     for (const patch of [{ width: 616 }, { height: 616 }, { pixelDensi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 369 passed (370)
+   Start at  12:02:28
+   Duration  8.47s (transform 5.79s, setup 0ms, collect 13.79s, tests 8.41s, environment 2ms, prepare 631ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

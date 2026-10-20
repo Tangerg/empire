@@ -1,0 +1,160 @@
+{
+  "family": "C01-TERRAIN-SILVERWOOD-1..4",
+  "status": "paused handoff; no imagegen call active",
+  "authoredMaterialAttempts": 4,
+  "acceptedSourceIdentities": 3,
+  "rejectedSourceIdentities": 1,
+  "boardPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/terrain/terrain-atlas-capital-silverwood.png",
+  "boardSHA256": "36bb88e37f126967a098b4814c900387aa0523a0a68113f762b923f90aec80c9",
+  "sourceSlots": "bottom row, columns0..3, exact-RGBA-proven mapping",
+  "entries": [
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-1",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-1",
+      "sourceSHA256": "072f6940669d474f059626f30c3f96b5d5dedbf27a7abe3e0abbc7b1e09b9a2f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "status": "source-accepted-by-parent; integration-pending",
+      "suggestedWindowsXYXY": [
+        [
+          0,
+          0,
+          627,
+          627
+        ],
+        [
+          627,
+          0,
+          1254,
+          627
+        ],
+        [
+          0,
+          627,
+          627,
+          1254
+        ],
+        [
+          627,
+          627,
+          1254,
+          1254
+        ]
+      ],
+      "semanticCaveats": "At32px forest floor reads as broad quiet olive/brown ground with grouped green and ochre litter and gray pebbles. At64px leaves/twigs and plant grouping become recognizable. Individual leaf shapes and tiny twigs are not guaranteed legible at32px."
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-2",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-2",
+      "sourceSHA256": "d629e070d5ca4e82f7073ddf4ff2466a9fc874f4d530fdaeffcea4947193d2af",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "status": "rejected; retry-paused",
+      "suggestedWindowsXYXY": [
+        [
+          0,
+          0,
+          1254,
+          1254
+        ]
+      ],
+      "semanticCaveats": "REJECTED for semantic clipping: the central root fork spans approximately x270..980,y330..900, far beyond the fixed central pad x392..862 and rounded-corner guarantee. Masks0,1 and others clip principal natural tips at32/64. No crop confined to this1254px canvas can shrink the entire motif further; imagegen edit required. Do not register this attempt as accepted."
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-3",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-3",
+      "sourceSHA256": "6cd678a3bea3d98ae1ccc51820c0b30499020ee6bc1180b0d569a97922389d1f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "status": "source-accepted-by-parent; integration-pending",
+      "suggestedWindowsXYXY": [
+        [
+          0,
+          0,
+          627,
+          627
+        ],
+        [
+          627,
+          0,
+          1254,
+          627
+        ],
+        [
+          0,
+          627,
+          627,
+          1254
+        ],
+        [
+          627,
+          627,
+          1254,
+          1254
+        ]
+      ],
+      "semanticCaveats": "At32px the four material bands remain distinct: ochre straw, gray pebble row, earthy lane, green planting.64px preserves coarser reed ties and leaf groups. Boundary sections continue through north/south crop edges by design. Repetition creates parallel boundary stripes; it does not represent one continuous nursery perimeter."
+    },
+    {
+      "topicId": "C01-TERRAIN-SILVERWOOD-4",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-4",
+      "sourceSHA256": "5cea6275d4073dba486c494b4b353affb50359c1e6318871a8d3a4cb3000f26f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceMode": "RGB",
+      "status": "source-accepted-by-parent; integration-pending",
+      "suggestedWindowsXYXY": [
+        [
+          0,
+          0,
+          627,
+          627
+        ],
+        [
+          627,
+          0,
+          1254,
+          627
+        ],
+        [
+          0,
+          627,
+          627,
+          1254
+        ],
+        [
+          627,
+          627,
+          1254,
+          1254
+        ]
+      ],
+      "semanticCaveats": "At32px dense foliage reads as grouped olive and blue-gray forms; larger fern fans retain their silhouette.64px gives distinct leaves and fern lobes. Ongoing foliage and some incidental cluster edges intersect sample boundaries, as in the original material; do not claim every frond is complete."
+    }
+  ],
+  "pendingRequest": {
+    "topicId": "C01-TERRAIN-SILVERWOOD-2",
+    "request": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-2/attempts/attempt-02/request.json",
+    "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-2/attempts/attempt-02/prompt.txt",
+    "references": "/workspace/shared/empire-art-rebuild/approved-v5/canonical-terrain/silverwood-2/attempts/attempt-02/references.json",
+    "notCalled": true,
+    "action": "Reduce only central root fork to40percent linear size centered(627,627), entirely inside x485..769,y512..742; fill freed region with same forest soil; preserve rest and opaque source; inspect masks0..15 at both native densities after generation",
+    "resumeCondition": "Parent confirms remote backup authentication restored and releases generation pause"
+  },
+  "integrity": "All generated source PNGs preserved byte-for-byte in attempts/attempt-01/raw.png and master.png. SILVERWOOD3 tool returned data URL without native path; exact decoded PNG and returned-image.b64 preserved. No code-painted texture, source alpha, topology, recoloring or blur operations.",
+  "diagnostics": "Existing exporter imported read-only with bytecode disabled. Shared-only source crops,32/64 LANCZOS,approved outermost1px edge match,unchanged fixed alpha and fixtures. This is not repository runtime/catalog integration.",
+  "repositoryWrites": "none by this worker",
+  "gitOperations": "read-only status check only; no commits or staging by this worker",
+  "currentConsumers": "canonical catalog-only; no live-game change claimed"
+}

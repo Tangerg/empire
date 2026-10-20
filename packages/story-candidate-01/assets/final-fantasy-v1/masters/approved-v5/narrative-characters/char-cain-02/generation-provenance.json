@@ -4,5 +4,32 @@
   "rawSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
   "generationCalls": 1,
   "selectedAttempt": 1,
-  "noSourceModification": true
+  "noSourceModification": true,
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-eb073307-1d0a-45fd-b568-c5a41dec232f.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-cain-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-cain-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-cain-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-01/master.png": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-cain-02-original-cell.png": "6b53677ccd647b7a31a66efe99809063842f7772bb29d1bbe13ddce49835279f"
+      }
+    }
+  ],
+  "masterSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
+  "sourceproof": "sourceproof.json",
+  "finalPrompt": "prompt.txt",
+  "request": "request.json"
 }

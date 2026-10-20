@@ -1,0 +1,97 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-3",
+  "status": "raw-candidate-reviewed; formal-integrator-acceptance-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; immutable generated PNG bytes copied or decoded exactly; no source-pixel modifications",
+  "master": "master.png",
+  "sourceSHA256": "6cd678a3bea3d98ae1ccc51820c0b30499020ee6bc1180b0d569a97922389d1f",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "attempts/attempt-01/raw.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Flat straw/reed mat margin, flush gray pebble row, narrow ochre packed-earth strip, olive leafy planting; no nursery building",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board/slot was checked before prompt; no original generation prompt recovered.",
+      "Source is intentionally opaque; historical binary NESW alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic exports pass only the established outermost1px matching contract; that does not certify invisible higher-order seams.",
+      "Some generated medium-scale mottling exceeds the minimal-texture prompt, but no photoreal microtexture or regular bright confetti is present.",
+      "No current live-game ground consumer found for these canonical IDs; this work is canonical catalog material only.",
+      "Straw is warmer/brighter than the quiet earth and has more visible strip detail than requested. Still flat matte and source-derived.",
+      "Linear boundary is directional artwork inside an opaque variants tile. Pixel edge matching cannot create a genuine context-dependent nursery-edge topology.",
+      "East/west repeats create parallel straw/foliage bands and visible material transitions. Formal integration must preserve this limitation; do not label it a seamless homogeneous ground fill."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "review": "At32px the four material bands remain distinct: ochre straw, gray pebble row, earthy lane, green planting.64px preserves coarser reed ties and leaf groups. Boundary sections continue through north/south crop edges by design. Repetition creates parallel boundary stripes; it does not represent one continuous nursery perimeter.",
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 55.421584263689525,
+    "northSouthMeanAbsoluteRGBDifference": 18.05316321105795
+  },
+  "export": {
+    "performed": "diagnostics in shared directory only; no runtime/catalog edit",
+    "alphaAndSeamQA": "diagnostic sheet exact historical alpha and allowed-pair edge equality pass at32/64; visual/motif caveats above remain",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog-only per source audit"
+  },
+  "parentReviewReported": {
+    "source": "Parent integration worker,2026-10-20 03:59UTC",
+    "decision": "Source accepted without regeneration; preserve documented native/tiling limitations",
+    "formalCatalogRegistrationBySourceWorker": false
+  }
+}

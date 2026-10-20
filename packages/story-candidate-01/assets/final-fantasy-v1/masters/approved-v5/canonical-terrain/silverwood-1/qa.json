@@ -1,0 +1,95 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-1",
+  "status": "raw-candidate-reviewed; formal-integrator-acceptance-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; immutable generated PNG bytes copied or decoded exactly; no source-pixel modifications",
+  "master": "master.png",
+  "sourceSHA256": "072f6940669d474f059626f30c3f96b5d5dedbf27a7abe3e0abbc7b1e09b9a2f",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "attempts/attempt-01/raw.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Olive forest soil with low moss planes, grouped brown leaf litter/twigs, cool gray pebbles and low plants",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board/slot was checked before prompt; no original generation prompt recovered.",
+      "Source is intentionally opaque; historical binary NESW alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic exports pass only the established outermost1px matching contract; that does not certify invisible higher-order seams.",
+      "Some generated medium-scale mottling exceeds the minimal-texture prompt, but no photoreal microtexture or regular bright confetti is present.",
+      "No current live-game ground consumer found for these canonical IDs; this work is canonical catalog material only.",
+      "Some natural litter clusters cross quarter sampling lines. No unique story symbol is present or lost; do not claim all incidental leaves remain whole."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "review": "At32px forest floor reads as broad quiet olive/brown ground with grouped green and ochre litter and gray pebbles. At64px leaves/twigs and plant grouping become recognizable. Individual leaf shapes and tiny twigs are not guaranteed legible at32px.",
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 6.067783094098884,
+    "northSouthMeanAbsoluteRGBDifference": 5.624136097820308
+  },
+  "export": {
+    "performed": "diagnostics in shared directory only; no runtime/catalog edit",
+    "alphaAndSeamQA": "diagnostic sheet exact historical alpha and allowed-pair edge equality pass at32/64; visual/motif caveats above remain",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog-only per source audit"
+  },
+  "parentReviewReported": {
+    "source": "Parent integration worker,2026-10-20 03:59UTC",
+    "decision": "Source accepted without regeneration; preserve documented native/tiling limitations",
+    "formalCatalogRegistrationBySourceWorker": false
+  }
+}

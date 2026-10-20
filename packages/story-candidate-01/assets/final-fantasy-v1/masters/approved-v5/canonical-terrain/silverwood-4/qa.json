@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-TERRAIN-SILVERWOOD-4",
+  "status": "raw-candidate-reviewed; formal-integrator-acceptance-pending",
+  "authoredMaterialCount": 1,
+  "builtInImagegenCalls": 1,
+  "method": "Built-in image_gen; immutable generated PNG bytes copied or decoded exactly; no source-pixel modifications",
+  "master": "master.png",
+  "sourceSHA256": "5cea6275d4073dba486c494b4b353affb50359c1e6318871a8d3a4cb3000f26f",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "fullyOpaque": true,
+  "rawPixelsPreserved": true,
+  "attempts": [
+    "attempts/attempt-01/raw.png"
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "references": "references.json",
+  "sourceAudit": "source-audit.json",
+  "sourceMapping": "source-mapping.json",
+  "tileMode": "variants",
+  "derivedCellCount": 4,
+  "visualSourceQA": {
+    "subject": "Dense close-up olive broad leaves and cool blue-gray fern foliage; flat ground material, no standing shrubs or trees",
+    "broadMatteStyle": true,
+    "fullbleedSquare": true,
+    "centeredVignette": false,
+    "noIndependentUprightObjects": true,
+    "noTextOrLogo": true,
+    "rawFourEdgesInspected": true,
+    "caveats": [
+      "Original board/slot was checked before prompt; no original generation prompt recovered.",
+      "Source is intentionally opaque; historical binary NESW alpha remains exclusively an export derivative.",
+      "Raw opposite edges are not exact matches. Diagnostic exports pass only the established outermost1px matching contract; that does not certify invisible higher-order seams.",
+      "Some generated medium-scale mottling exceeds the minimal-texture prompt, but no photoreal microtexture or regular bright confetti is present.",
+      "No current live-game ground consumer found for these canonical IDs; this work is canonical catalog material only.",
+      "Natural dense foliage intersects some canvas and crop edges. Leaves are material coverage, not separately authored shrub objects.",
+      "Quarter crops preserve overall leaf/fern identity, not every full individual fan."
+    ]
+  },
+  "diagnosticNativeQA": {
+    "proof": "source-crop-32-64-proof.png",
+    "windowsXYXY": [
+      [
+        0,
+        0,
+        627,
+        627
+      ],
+      [
+        627,
+        0,
+        1254,
+        627
+      ],
+      [
+        0,
+        627,
+        627,
+        1254
+      ],
+      [
+        627,
+        627,
+        1254,
+        1254
+      ]
+    ],
+    "review": "At32px dense foliage reads as grouped olive and blue-gray forms; larger fern fans retain their silhouette.64px gives distinct leaves and fern lobes. Ongoing foliage and some incidental cluster edges intersect sample boundaries, as in the original material; do not claim every frond is complete.",
+    "nativeFiles": "native-review",
+    "diagnosticExport": "diagnostic-export.json",
+    "sourceEdits": "none",
+    "finalExportWindowsApproved": false,
+    "semanticGatePass": true
+  },
+  "rawOppositeEdgeMeasurements": {
+    "eastWestExact": false,
+    "northSouthExact": false,
+    "eastWestMeanAbsoluteRGBDifference": 22.328814460393406,
+    "northSouthMeanAbsoluteRGBDifference": 22.92982456140351
+  },
+  "export": {
+    "performed": "diagnostics in shared directory only; no runtime/catalog edit",
+    "alphaAndSeamQA": "diagnostic sheet exact historical alpha and allowed-pair edge equality pass at32/64; visual/motif caveats above remain",
+    "formalCatalog": "pending",
+    "liveMapAcceptance": "not claimed; canonical catalog-only per source audit"
+  },
+  "parentReviewReported": {
+    "source": "Parent integration worker,2026-10-20 03:59UTC",
+    "decision": "Source accepted without regeneration; preserve documented native/tiling limitations",
+    "formalCatalogRegistrationBySourceWorker": false
+  }
+}

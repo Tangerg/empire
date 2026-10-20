@@ -3020,16 +3020,16 @@
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 1592,
+      "passed": 1620,
       "failed": 0,
       "files": 126,
       "command": "npm test -- --maxWorkers=2 --minWorkers=1",
-      "scope": "397-topic runtime snapshot31b51c8; later commits only preserve raw sources",
-      "evidence": "verification-397"
+      "scope": "421-topic snapshot before S00 kind correction; subsequent S00/scene integration370 focused tests passed",
+      "evidence": "verification-421"
     },
     "latestBindingAndEdges": "264 binding/asset tests passed at181 topics",
-    "artPythonLatest": "187 exporter tests plus14 ledger tests passed at397-topic snapshot",
-    "typecheckLatest": "passed at397-topic snapshot",
+    "artPythonLatest": "189 exporter tests plus15 ledger tests passed after S00 classification and cemetery HD registration",
+    "typecheckLatest": "passed at421-topic snapshot including S00 classification",
     "appBuildsLatest": "all4 passed at165-topic clearance checkpoint; logs preserved"
   },
   "liveGameVerifiedAnimationTopics": 0,

@@ -1,0 +1,181 @@
+{
+  "topicId": "C01-CHAR-CAIN-02",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-eb073307-1d0a-45fd-b568-c5a41dec232f.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
+  "rawSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
+  "masterSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 723776,
+    "transparentFraction": 0.4601643880208333,
+    "nearOpaquePixels": 826758,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 137,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      34,
+      98,
+      997,
+      1512
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-01/master.png": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-cain-02-original-cell.png": "6b53677ccd647b7a31a66efe99809063842f7772bb29d1bbe13ddce49835279f"
+  },
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+  "originalFullboardSha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5",
+  "originalCell": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-cain-02-original-cell.png",
+  "originalCellSha256": "6b53677ccd647b7a31a66efe99809063842f7772bb29d1bbe13ddce49835279f",
+  "originalCropBox": [
+    5,
+    5,
+    622,
+    622
+  ],
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "f2f65a56734f68b755f7703eeb4d562a007057be50724863e1a5982a95cbed5a"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "stageSelectorExists": false,
+  "liveGameVerified": false,
+  "verificationLimits": [
+    "Source and mathematically modeled UI-crop QA only, no browser/GPU/live-game acceptance",
+    "No repo, exporter, binding, consumer, gameplay, stage-selector or Git writes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed native black/white, named-stage continuity and modeled native-card/UI-crop inspection; ready for integrator review",
+  "designedReconstruction": "Later board04 TL sword/round-shield pose reconciled with approved Cain face and imperial palette/marks. A small retained imperial standard uses approved diamond/star vocabulary to satisfy the explicit later-stage flag requirement.",
+  "visualReview": {
+    "identity": "Same approved severe rectangular-faced clean-shaven Cain, open navy/gold helmet, broad hands and adult officer silhouette.",
+    "stage": "Independent imperial commander retains navy/cream/gold and burgundy. Old later card sword/round-shield pose preserved. Shield uses original later four-armed cross/star; retained imperial standard combines approved stage01 diamond and four-point star marks, with no new faction or Gray Flag marks. Sword portrait does not modify spear combat.",
+    "crop": "Full flag, sword tip, round shield and boots fit native card. Helmet, round imperial shield, lowered sword and flag survive modeled dialogue/HUD. Roster44px preserves silhouette/color identity while detailed imperial marks naturally collapse.",
+    "sourceMargins": "Native edges remain alpha<=1, source/props fully visible. Black/white review shows no baked floor or halo."
+  },
+  "reviewedProofFiles": [
+    "qa-native-white.png",
+    "qa-native-black.png",
+    "qa-native-checker.png",
+    "qa-native-black-white.png",
+    "card-preview.png",
+    "qa-ui-desktop-dialogue.png",
+    "qa-ui-mobile-dialogue.png",
+    "qa-ui-roster.png",
+    "qa-ui-hud.png"
+  ],
+  "qaComparison": "../char-torren-02/qa-three-card-and-ui-comparison.png",
+  "transparentComparison": "../char-torren-02/qa-three-character-transparent-proof.png",
+  "stageContinuityComparison": "../char-torren-02/qa-stage-continuity-comparison.png",
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-eb073307-1d0a-45fd-b568-c5a41dec232f.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-cain-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "01c867f20a2cf213da17f4fb9f55b93308a769bc858c7b470f220a1a0150e24f",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-cain-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-cain-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-01/master.png": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-cain-02-original-cell.png": "6b53677ccd647b7a31a66efe99809063842f7772bb29d1bbe13ddce49835279f"
+      }
+    }
+  ]
+}

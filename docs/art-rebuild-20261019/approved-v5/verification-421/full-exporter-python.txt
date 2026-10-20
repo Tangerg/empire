@@ -1,0 +1,24 @@
+...............................................................................................................................................F...........................................
+======================================================================
+FAIL: test_cemetery_classification_preserves_identity_geometry_and_legacy_pixels (test_narrative_scene_overrides.NarrativeSceneTests.test_cemetery_classification_preserves_identity_geometry_and_legacy_pixels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/tools/art/test_narrative_scene_overrides.py", line 126, in test_cemetery_classification_preserves_identity_geometry_and_legacy_pixels
+    self.assertEqual(asset, {
+AssertionError: {'ass[211 chars]tyTier': 'approved-chunky-v5-export-verified', 'kind': 'scene'} != {'ass[211 chars]tyTier': 'final-cartoon-fantasy-v1', 'kind': 'scene'}
+  {'assetId': 'C01-FFV1-CH03-S11',
+   'category': 'narrative-static',
+   'height': 128,
+   'kind': 'scene',
+   'label': '墓园姓名木片',
+   'png': 'runtime/narrative-static/ch03-s11.png',
+-  'qualityTier': 'approved-chunky-v5-export-verified',
++  'qualityTier': 'final-cartoon-fantasy-v1',
+   'runtimeReady': True,
+   'topicId': 'C01-CH03-S11',
+   'width': 128}
+
+----------------------------------------------------------------------
+Ran 187 tests in 35.516s
+
+FAILED (failures=1)

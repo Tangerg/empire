@@ -121,18 +121,21 @@ class NarrativeSceneTests(unittest.TestCase):
         self.assertEqual(manifests, {p: p.read_bytes() for p in manifests})
         self.assertEqual(export(self.root, self.catalog, check=True), report)
 
-    def test_cemetery_classification_preserves_identity_geometry_and_legacy_pixels(self):
+    def test_registered_cemetery_preserves_logical_identity_and_exact_source_pixels(self):
         actual = json.loads((ROOT / PACK / 'manifest-final-fantasy-v1.json').read_text())
         asset = next(a for a in actual['assets'] if a['topicId'] == SQUARE_TOPIC)
         self.assertEqual(asset, {
             'assetId': 'C01-FFV1-CH03-S11', 'topicId': SQUARE_TOPIC, 'label': '墓园姓名木片',
             'category': 'narrative-static', 'png': 'runtime/narrative-static/ch03-s11.png',
             'width': 128, 'height': 128, 'runtimeReady': True,
-            'qualityTier': 'final-cartoon-fantasy-v1', 'kind': 'scene',
+            'qualityTier': 'approved-chunky-v5-export-verified', 'kind': 'scene',
         })
         runtime = ROOT / PACK / asset['png']
-        self.assertEqual(hashlib.sha256(runtime.read_bytes()).hexdigest(),
-                         'e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58')
+        override = json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'][SQUARE_TOPIC]
+        source = ROOT / override['scene']['source']
+        self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), override['scene']['sha256'])
+        with Image.open(source) as master, Image.open(runtime) as rendered:
+            self.assertEqual(rendered.tobytes(), master.convert('RGBA').resize((128,128), Image.Resampling.LANCZOS).tobytes())
         with Image.open(runtime) as image:
             self.assertEqual(image.size, (128, 128))
             self.assertEqual(image.getchannel('A').getextrema(), (255, 255))
@@ -140,9 +143,11 @@ class NarrativeSceneTests(unittest.TestCase):
                               and (a['width'], a['height']) == (256, 144)]), 41)
         for topic in ('C01-PROP-LEFT-GLOVE', 'C01-PROP-NAME-TAGS'):
             self.assertEqual(next(a for a in self.assets if a['topicId'] == topic)['kind'], 'key-prop')
-        self.assertNotIn(SQUARE_TOPIC, json.loads((ROOT / 'tools/art/source-overrides.json').read_text())['assets'])
         hd = json.loads((ROOT / PACK / 'manifest-tactical-runtime-hd.json').read_text())
-        self.assertNotIn(SQUARE_TOPIC, {a['topicId'] for a in hd['assets']})
+        physical = next(a for a in hd['assets'] if a['topicId'] == SQUARE_TOPIC)
+        self.assertEqual((physical['width'],physical['height'],physical['pixelDensity']), (1254,1254,1254/128))
+        with Image.open(ROOT / PACK / physical['png']) as rendered, Image.open(source) as master:
+            self.assertEqual(rendered.tobytes(), master.convert('RGBA').tobytes())
 
     def test_opening_scene_classification_preserves_pending_legacy_record_and_inventory(self):
         topic = 'C01-CH01-S00'

@@ -1,0 +1,181 @@
+{
+  "topicId": "C01-CHAR-BRAN-02",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-d0cf23d5-6046-4a96-afbc-ce4397263231.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "c1f545cdc50ec5ce614ee938bc5e08884af7dda14538e77c885a3280cfe17a26",
+  "rawSha256": "c1f545cdc50ec5ce614ee938bc5e08884af7dda14538e77c885a3280cfe17a26",
+  "masterSha256": "c1f545cdc50ec5ce614ee938bc5e08884af7dda14538e77c885a3280cfe17a26",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 653162,
+    "transparentFraction": 0.4152692159016927,
+    "nearOpaquePixels": 887894,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 6,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      31,
+      61,
+      1003,
+      1492
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-bran-02-original-cell.png": "afa43a3df4392dcf5e808558a55288d5d15baee32ed20910bd333e6a36c8ca78"
+  },
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+  "originalFullboardSha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5",
+  "originalCell": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-bran-02-original-cell.png",
+  "originalCellSha256": "afa43a3df4392dcf5e808558a55288d5d15baee32ed20910bd333e6a36c8ca78",
+  "originalCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "d48506d7d42a2f74b71bf389880b2e73ee739ee5371475b5526b34d3f8b35fa5"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "stageSelectorExists": false,
+  "liveGameVerified": false,
+  "verificationLimits": [
+    "Source and mathematically modeled UI-crop QA only, no browser/GPU/live-game acceptance",
+    "No repo, exporter, binding, consumer, gameplay, stage-selector or Git writes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed native black/white, named-stage continuity and modeled native-card/UI-crop inspection; ready for integrator review",
+  "designedReconstruction": "Old board04 TR map/short-blade/bow pose reconciled with approved brown-haired Bran. Village cloth strips and survivor-list pouch deliberately distinguished from old leaf patch and generic scroll; old elderly/gray-haired appearance rejected as identity authority.",
+  "visualReview": {
+    "identity": "Same approved brown-haired Bran with brown eyes and olive hood; modest adult jaw maturation, retained youthful large-eyed cartoon identity. No gray-haired elderly ranger substitution.",
+    "stage": "Free-scout commander with old later map/short-blade pose, approved wooden longbow/quiver slung on back, front survivor-list pouch with visible paper, olive/cream village cloth strips and source leaf patch.",
+    "crop": "Complete hood/bow/blade/maps/boots fit native card. Olive/brown named scout silhouette and face remain legible at actual crop dimensions; pouch and cloth strips are clear at native card and HUD, detailed paper/list meaning is not claimed at44px.",
+    "sourceMargins": "Whole source retained; source black/white previews show clean transparent gaps, bowstring/arrow separation, no background or shadow."
+  },
+  "reviewedProofFiles": [
+    "qa-native-white.png",
+    "qa-native-black.png",
+    "qa-native-checker.png",
+    "qa-native-black-white.png",
+    "card-preview.png",
+    "qa-ui-desktop-dialogue.png",
+    "qa-ui-mobile-dialogue.png",
+    "qa-ui-roster.png",
+    "qa-ui-hud.png"
+  ],
+  "qaComparison": "../char-torren-02/qa-three-card-and-ui-comparison.png",
+  "transparentComparison": "../char-torren-02/qa-three-character-transparent-proof.png",
+  "stageContinuityComparison": "../char-torren-02/qa-stage-continuity-comparison.png",
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-d0cf23d5-6046-4a96-afbc-ce4397263231.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-bran-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "c1f545cdc50ec5ce614ee938bc5e08884af7dda14538e77c885a3280cfe17a26",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-bran-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-bran-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-bran-01/master.png": "deccd9dfdd389dc0b11145747029259944ffcc3886dc0575e617e2b5061ca51f",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-bran-02-original-cell.png": "afa43a3df4392dcf5e808558a55288d5d15baee32ed20910bd333e6a36c8ca78"
+      }
+    }
+  ]
+}

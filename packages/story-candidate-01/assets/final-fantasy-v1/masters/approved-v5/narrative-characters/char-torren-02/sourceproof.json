@@ -1,0 +1,181 @@
+{
+  "topicId": "C01-CHAR-TORREN-02",
+  "tool": "built-in image_gen.imagegen",
+  "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-3113300c-2e93-45c0-bf7a-b2dba5fb9d18.png",
+  "selectedAttempt": 1,
+  "generationCalls": 1,
+  "rejectedAttempts": [],
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "generatedNativeSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
+  "rawSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
+  "masterSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
+  "masterIsByteExactGeneratedSource": true,
+  "transparentBackgroundRequested": true,
+  "alphaRetainedUnmodified": true,
+  "noAlphaCleanup": true,
+  "noChromaKey": true,
+  "noSourceResizeOrCrop": true,
+  "noWarpFlipRecolorOrBBoxFit": true,
+  "sourceAlpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 719841,
+    "transparentFraction": 0.45766258239746094,
+    "nearOpaquePixels": 832079,
+    "edgeMaxAlpha": 1,
+    "edgeNonzeroPixels": 16,
+    "edgePixelsAbove1": 0,
+    "alphaAbove1BoundsDiagnosticOnly": [
+      63,
+      53,
+      1014,
+      1500
+    ]
+  },
+  "selectedRequestReferenceHashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/master.png": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-torren-02-original-cell.png": "f295dfbb568e7544814b8df04d623bfa782889d5add71cdb4a44c3280c8775be"
+  },
+  "originalFullboard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+  "originalFullboardSha256": "773dc261c19609d5fb8ba9c3da6955e0675c3eaa7d55dd417a9f2ca1864e4354",
+  "originalCell": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-torren-02-original-cell.png",
+  "originalCellSha256": "f295dfbb568e7544814b8df04d623bfa782889d5add71cdb4a44c3280c8775be",
+  "originalCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "cardComposition": {
+    "inspectionOnly": true,
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "background": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+    "backgroundSha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+    "backgroundCenterCover": true,
+    "characterWholeCanvasSize": [
+      144,
+      216
+    ],
+    "origin": [
+      24,
+      4
+    ],
+    "characterCropped": false,
+    "sha256": "d29b1d628f5a9770841d8acfa4fcb5d9ee58058fd260704859b78aa611feff8b"
+  },
+  "uiCrops": {
+    "desktopDialogue": {
+      "size": [
+        92,
+        112
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "mobileDialogue": {
+      "size": [
+        64,
+        88
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "roster": {
+      "size": [
+        44,
+        44
+      ],
+      "objectFit": "cover",
+      "objectPosition": [
+        0.5,
+        0.18
+      ]
+    },
+    "hud": {
+      "size": [
+        96,
+        112
+      ],
+      "imageViewport": [
+        112,
+        112
+      ],
+      "x": -8,
+      "y": 0,
+      "preserveAspectRatio": "xMidYMid slice"
+    }
+  },
+  "consumerStatus": "catalog-only-no-selected-consumer",
+  "stageSelectorExists": false,
+  "liveGameVerified": false,
+  "verificationLimits": [
+    "Source and mathematically modeled UI-crop QA only, no browser/GPU/live-game acceptance",
+    "No repo, exporter, binding, consumer, gameplay, stage-selector or Git writes",
+    "No runtime HD publication"
+  ],
+  "visualReviewStatus": "passed native black/white, named-stage continuity and modeled native-card/UI-crop inspection; ready for integrator review",
+  "designedReconstruction": "Later Old Flag coat/map/shield based on board06 TR reconciled with approved young Torren identity. Empty left glove kept at a secured chest/belt pouch is deliberate reconstruction from explicit later brief and novel, not an original-cell feature.",
+  "visualReview": {
+    "identity": "Same approved concerned brown-haired Torren, broad helmet/head/hands; mature young adult with scar and faint stubble, no elderly face replacement.",
+    "stage": "Worn Lorne-blue coat, mail, rolled orders and patched wood/iron shield. Empty tan leather glove, with grouped fingers, thumb and repair seams, visibly secured at the belt pouch. The left-glove custody comes from explicit later brief/novel; the old cell omitted it.",
+    "crop": "Complete helmet, roll, shield and soles fit native card. Face, Lorne-blue coat, map/shield remain readable in modeled UI crops; glove custody detail is readable native and HUD, naturally small at44px.",
+    "sourceMargins": "Complete subject/props fit the native canvas; no alpha above1 on any edge. White/black native previews show no background, baked shadow or halo."
+  },
+  "reviewedProofFiles": [
+    "qa-native-white.png",
+    "qa-native-black.png",
+    "qa-native-checker.png",
+    "qa-native-black-white.png",
+    "card-preview.png",
+    "qa-ui-desktop-dialogue.png",
+    "qa-ui-mobile-dialogue.png",
+    "qa-ui-roster.png",
+    "qa-ui-hud.png"
+  ],
+  "qaComparison": "../char-torren-02/qa-three-card-and-ui-comparison.png",
+  "transparentComparison": "../char-torren-02/qa-three-character-transparent-proof.png",
+  "stageContinuityComparison": "../char-torren-02/qa-stage-continuity-comparison.png",
+  "generationHistory": [
+    {
+      "attempt": 1,
+      "selected": true,
+      "tool": "built-in image_gen.imagegen",
+      "generatedNativePath": "/workspace/scratch/84c9fe948755/generated_images/exec-3113300c-2e93-45c0-bf7a-b2dba5fb9d18.png",
+      "rawCopy": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-torren-02/raw.png",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "rawSha256": "5747f3ad411212995a17dfbd9616552f3061b5e643d56825bc047135fb72ff26",
+      "masterOrRawByteExact": true,
+      "transparentBackgroundRequested": true,
+      "requestPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-torren-02/request.json",
+      "promptPath": "/workspace/shared/empire-art-rebuild/approved-v5/narrative-characters/char-torren-02/prompt.txt",
+      "referenceHashes": {
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/master.png": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22",
+        "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/docs/art-rebuild-20261019/approved-v5/remaining-character-card-audit/original-cells/c01-char-torren-02-original-cell.png": "f295dfbb568e7544814b8df04d623bfa782889d5add71cdb4a44c3280c8775be"
+      }
+    }
+  ]
+}

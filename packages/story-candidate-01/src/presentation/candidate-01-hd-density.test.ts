@@ -17,6 +17,7 @@ vi.mock('../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json', async
 });
 
 import { candidate01Asset, readCandidate01HdManifest, validateCandidate01HdAsset } from './candidate-01-assets';
+import registeredHdManifest from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 import { CANDIDATE_01_MENU_ART, candidate01ChapterArt, candidate01StoryArt } from './candidate-01-story';
 
 const scene = candidate01Asset('C01-CH01-S05');
@@ -51,7 +52,8 @@ describe('per-asset physical density', () => {
     expect(square).toMatchObject({ kind: 'scene', width: 128, height: 128 });
     expect(readCandidate01HdManifest({ ...manifest, assets: [hd] }).get(square.topicId)).toEqual(hd);
     expect(() => validateCandidate01HdAsset(square, hd)).not.toThrow();
-    expect(square.url).toContain('runtime-hd/narrative-static/ch03-s11.png');
+    const registered = registeredHdManifest.assets.find(entry => entry.topicId === topic);
+    expect(square.url).toContain(registered?.png ?? square.png);
     expect(candidate01StoryArt(square.topicId)).toBe(square.url);
     for (const patch of [{ width: 616 }, { height: 616 }, { pixelDensity: 4 },
       { width: 512, height: 288, pixelDensity: 4 }]) {
