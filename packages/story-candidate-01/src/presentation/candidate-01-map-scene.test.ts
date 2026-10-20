@@ -1,3 +1,4 @@
+import { candidate01ClipGround, candidate01PlayableShape } from './candidate-01-playable-shape';
 import { TacticalGrids, createBattleEngine, mapFromLevel } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
@@ -86,7 +87,7 @@ describe('candidate-01 authored map scenery', () => {
     const bridges = layers.underUnits.filter((piece) => piece.markup.includes(CANDIDATE_01_HORIZONTAL_CROSSING.href));
     expect(bridges).toHaveLength(3);
     expect(bridges.every((piece) => piece.foot === undefined)).toBe(true);
-    expect(layers.underUnits.filter((piece) => piece.foot)).toHaveLength(41);
+    expect(layers.underUnits.filter((piece) => piece.foot)).toHaveLength(46);
     expect(layers.underUnits.filter((piece) => piece.foot).every((piece) => piece.foot!.x === 0 && piece.foot!.y === 0)).toBe(true);
     expect(JSON.stringify(map)).toBe(before);
   });
@@ -165,7 +166,7 @@ describe('candidate-01 authored map scenery', () => {
 
     // The authored hills retain the continuous meadow instead of per-cell surface squares.
     const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
-    expect(layers.ground.slice(0, field.length)).toEqual(field);
+    expect(layers.ground.slice(0, field.length)).toEqual(candidate01ClipGround(field, candidate01PlayableShape(TEST_CATALOG, map), 'ground'));
     const surfaces = layers.ground
       .filter((piece) => piece.markup.includes('/surface-'))
       .map((piece) => piece.markup);
@@ -224,7 +225,7 @@ describe('candidate-01 authored map scenery', () => {
       const ground = boardPiecesMarkup(layers.ground);
 
       const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
-      expect(layers.ground.slice(0, field.length), levelId).toEqual(field);
+      expect(layers.ground.slice(0, field.length), levelId).toEqual(candidate01ClipGround(field, candidate01PlayableShape(TEST_CATALOG, map), 'ground'));
       expect(ground, levelId).toContain('world-materials-v1/runtime/meadow-base@2x.png');
       expect(ground, levelId).toContain(candidate01EnvironmentScene(levelId)?.roadCorridor ? 'data-runtime-raster="area-road"' : 'candidate-ground-route');
       expect(boardPiecesMarkup(layers.underUnits), levelId).toContain('candidate-environment-prop');
@@ -254,7 +255,7 @@ describe('candidate-01 authored map scenery', () => {
       content: TEST_CATALOG, levelId: 'c01-02', map, viewport: square,
     });
     const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
-    expect(painted.ground.slice(0, field.length)).toEqual(field);
+    expect(painted.ground.slice(0, field.length)).toEqual(candidate01ClipGround(field, candidate01PlayableShape(TEST_CATALOG, map), 'ground'));
   });
 
   /**

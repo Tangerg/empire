@@ -2,7 +2,9 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { mapFromLevel } from '@empire/battle-engine';
+import { mapFromLevel, type GameMap } from '@empire/battle-engine';
+import type { BoardPiece } from '@empire/game-ui';
+import { candidate01PlayableShape } from './candidate-01-playable-shape';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '../index';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
@@ -24,6 +26,19 @@ const roles = [
   { id: 'wasteland-scree', atlas: 'surface-wasteland', tone: 2, cell: 'wasteland-3',
     sha256: '79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74' },
 ] as const;
+
+function unwrapPlayableClip(pieces: readonly BoardPiece[], map: GameMap): BoardPiece[] {
+  const shape = candidate01PlayableShape(content, map);
+  if (!shape) return [...pieces];
+  return pieces.map(piece => {
+    const clip = /^<defs><clipPath id="([^"]+)"><path d="([^"]*)" transform="translate\(([^)]+)\)"\/><\/clipPath><\/defs><g clip-path="url\(#([^"]+)\)">([\s\S]*)<\/g>$/.exec(piece.markup);
+    if (!clip) throw new Error('open-ground piece lacks its self-contained playable clip');
+    expect(clip[2]).toBe(shape.path);
+    expect(clip[3]).toBe(`${-piece.x} ${-piece.y}`);
+    expect(clip[4]).toBe(clip[1]);
+    return { ...piece, markup: clip[5] };
+  });
+}
 
 describe('native meadow and wasteland keep their original semantic tones', () => {
   it('binds exactly three active full sources with independent world and raster scales', () => {
@@ -53,9 +68,9 @@ describe('native meadow and wasteland keep their original semantic tones', () =>
     }
   });
 
-  it('replaces only the 68 hill, 56 scorched, and 30 non-authored scree cells across all campaign levels', () => {
+  it('replaces only the 71 hill, 56 scorched, and 30 non-authored scree cells across all campaign levels', () => {
     const expectedCounts = new Map([
-      ['c01-02', [7, 0, 0]], ['c01-03', [7, 0, 1]], ['c01-04', [6, 0, 0]],
+      ['c01-02', [10, 0, 0]], ['c01-03', [7, 0, 1]], ['c01-04', [6, 0, 0]],
       ['c01-05', [6, 0, 0]], ['c01-06', [6, 0, 0]], ['c01-09', [5, 0, 1]],
       ['c01-10', [13, 0, 28]], ['c01-12', [6, 0, 0]], ['c01-14', [0, 56, 0]], ['c01-15', [12, 0, 0]],
     ]);
@@ -80,7 +95,7 @@ describe('native meadow and wasteland keep their original semantic tones', () =>
           if (!authored) expected.push({ x: x * 32, y: y * 32, markup: candidateWorldMaterialTileMarkup(world, x * 32, y * 32) });
         }
         const actual = scene.ground.filter(piece => piece.markup.includes(world.href));
-        expect(actual, `${level.id}:${world.id}`).toEqual(expected);
+        expect(unwrapPlayableClip(actual, map), `${level.id}:${world.id}`).toEqual(expected);
         expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground
           .filter(piece => piece.markup.includes(world.href)), `${level.id}:${world.id}`).toEqual(actual);
         counts.push(actual.length);
@@ -94,7 +109,7 @@ describe('native meadow and wasteland keep their original semantic tones', () =>
       expect(candidate01MapSceneryLayers({ ...context, viewport: { ...context.viewport, sceneWidth: context.viewport.sceneWidth + 97 } }), level.id).toEqual(scene);
       expect(JSON.stringify({ level, map })).toBe(before);
     }
-    expect(totals).toEqual([68, 56, 30]);
+    expect(totals).toEqual([71, 56, 30]);
   });
 
   it('registers the complete original families while keeping unused tones and snow catalog-only', () => {

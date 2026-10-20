@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { runtimeAtlasCellMarkup, CELL_FOOT } from '@empire/game-ui';
+import { runtimeAtlasCellMarkup, CELL_FOOT, groundShadow } from '@empire/game-ui';
 import manifest from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
 import document from '../../assets/final-fantasy-v1/manifest-map-structure-presentations.json';
 import { candidate01Asset } from './candidate-01-assets';
@@ -107,6 +107,13 @@ describe('reviewed compact field-post presentation catalog', () => {
         const picture = candidate01TerrainPicture(terrain, ctx);
         expect(picture.foot).toBe(CELL_FOOT);
         expect(picture.markup).toContain(selected.url);
+        if (!selected.frameWidth || !selected.frameHeight) throw new Error('structure frame dimensions must be explicit');
+        const scale = selected.presentationScale ?? 1;
+        const contact = groundShadow({ cx: CELL_FOOT.x, cy: CELL_FOOT.y },
+          { rx: selected.frameWidth * scale * 0.32, ry: selected.frameHeight * scale * 0.055 });
+        expect(picture.markup).toContain(`<g class="candidate-structure-contact">${contact}</g>`);
+        expect(picture.markup.indexOf('candidate-structure-contact')).toBeLessThan(picture.markup.indexOf('data-candidate-art="structure"'));
+
         expect(picture.markup.includes('candidate-owner-banner')).toBe(ownerColor !== undefined);
         expect(candidate01TerrainMarkup(terrain, ctx)).toBe(picture.markup);
       }

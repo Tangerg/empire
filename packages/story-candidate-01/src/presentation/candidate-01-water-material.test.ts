@@ -11,6 +11,7 @@ import { candidateMaterial } from './candidate-01-terrain-materials';
 import { candidate01MapSceneryLayers } from './candidate-01-map-scene';
 import { CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
+import { candidate01PlayableShape } from './candidate-01-playable-shape';
 
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const neighbours = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]];
@@ -59,9 +60,22 @@ describe('approved reusable area water', () => {
     const occupied = (x: number, y: number) => candidate01IsAreaWater(candidateMaterial(content, map.tiles[y * map.width + x]));
     const pieces = candidate01WaterMaterialPieces(map.width, map.height, occupied);
     const layers = candidate01MapSceneryLayers({ content, levelId: 'c01-02', map, viewport: candidateReviewViewport(map), editing: true });
-    expect(layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"'))).toEqual(pieces);
-    expect(pieces).toHaveLength(1);
-    expect(pieces.reduce((count, piece) => count + (piece.markup.match(/water-masks@2x.png/g)?.length ?? 0), 0)).toBe(31);
+    const shape = candidate01PlayableShape(content, map);
+    if (!shape) throw new Error('Three Bridges must have a terrain-owned irregular boundary');
+    const actual = layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"'));
+    const unwrapped = actual.map(piece => {
+      const clip = /^<defs><clipPath id="([^"]+)"><path d="([^"]*)" transform="translate\(([^)]+)\)"\/><\/clipPath><\/defs><g clip-path="url\(#([^"]+)\)">([\s\S]*)<\/g>$/.exec(piece.markup);
+      if (!clip) throw new Error('water piece lacks its self-contained playable clip');
+      expect(clip[2]).toBe(shape.path);
+      expect(clip[3]).toBe(`${-piece.x} ${-piece.y}`);
+      expect(clip[4]).toBe(clip[1]);
+      return { ...piece, markup: clip[5] };
+    });
+    expect(unwrapped).toEqual(pieces);
+    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[512, 0], [512, 512]]);
+    const occupiedCells = map.tiles.filter(id => candidate01IsAreaWater(candidateMaterial(content, id)));
+    expect(occupiedCells).toHaveLength(48);
+    expect(pieces.reduce((count, piece) => count + (piece.markup.match(/water-masks@2x.png/g)?.length ?? 0), 0)).toBe(occupiedCells.length);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'bridge'))).toBe(true);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'road'))).toBe(false);
     expect(layers.ground.every((piece) => !piece.markup.includes('/water-slow-river'))).toBe(true);

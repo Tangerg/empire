@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-scene-connectivity-20261020
+
+ ✓ packages/battle-engine/src/__tests__/architecture-boundaries.test.ts (104 tests) 2975ms
+   ✓ the battle screen is its own screen > emits no class or data attribute that nothing reads 854ms
+
+ Test Files  1 passed (1)
+      Tests  104 passed (104)
+   Start at  17:38:53
+   Duration  7.06s (transform 2.32s, setup 0ms, collect 3.77s, tests 2.97s, environment 0ms, prepare 89ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

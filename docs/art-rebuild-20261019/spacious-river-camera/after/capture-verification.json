@@ -1,0 +1,89 @@
+{
+  "kind": "Verified final offline production camera and complete-scene evidence, not browser QA",
+  "sourceChecks": [
+    {
+      "provenance": "camera-provenance.json",
+      "matchingSourceCount": 45,
+      "mismatches": []
+    },
+    {
+      "provenance": "runtime-scene-provenance.json",
+      "matchingSourceCount": 54,
+      "mismatches": []
+    }
+  ],
+  "sameStateSha256": "7ba9c628acef09615152b92af48761f060362b7d1ceb7f5c87b03e56069c55b4",
+  "allReferencedAssetsExist": true,
+  "files": [
+    {
+      "file": "opening.svg",
+      "sha256": "09b125274d6618ed94e944f384cc47fcabcbc841fac0c91ef57a927264bb8999",
+      "bytes": 1195250
+    },
+    {
+      "file": "eastern-crossing.svg",
+      "sha256": "6f2b5c5792e36c716ef087ddb6e9865e009e013cd18d93c142fa2737fac3ec70",
+      "bytes": 1195240
+    },
+    {
+      "file": "runtime-standing-full.svg",
+      "sha256": "798444ccb4c0efad845f25c2751bd3eda70dc8aa07743f374ad220326f3c63b1",
+      "bytes": 1194989
+    },
+    {
+      "file": "opening@1x.png",
+      "sha256": "109994932ba75843a36c8ca9871aaea3ba0e173144a954e30f21067673978fdb",
+      "bytes": 1135904,
+      "pixels": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "opening@2x.png",
+      "sha256": "2f9b3207cc4fcda68581567142f2564ed4519f7560303bb6f1996f153f29f746",
+      "bytes": 4709649,
+      "pixels": [
+        2880,
+        1800
+      ]
+    },
+    {
+      "file": "eastern-crossing@1x.png",
+      "sha256": "097c73a52174550672db1f24e66a0ca33610d42632a86b9f8a4dfcfdbb0f0ba7",
+      "bytes": 1766829,
+      "pixels": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "eastern-crossing@2x.png",
+      "sha256": "f9d90c8793ae4ded1081d8c94b564983a062d471549108b490f9f159f02f3f57",
+      "bytes": 6163134,
+      "pixels": [
+        2880,
+        1800
+      ]
+    },
+    {
+      "file": "runtime-standing-full@1x.png",
+      "sha256": "55adfb94403f41a4b85959a80ccd3c6338b2ec110a7efa9576bf28ea4d64cb19",
+      "bytes": 1483415,
+      "pixels": [
+        1300,
+        904
+      ]
+    },
+    {
+      "file": "runtime-standing-full@2x.png",
+      "sha256": "8b3ca23f491270179fba60bb8fe540a01e6b62d66ed7c3b793321eeab0dd07f1",
+      "bytes": 5075124,
+      "pixels": [
+        2600,
+        1808
+      ]
+    }
+  ],
+  "visualInspection": "Opening, eastern-crossing at 1x and complete world at 2x reviewed; road-cell clip breakup absent. Initial actors retained; no editing of the generated scene."
+}

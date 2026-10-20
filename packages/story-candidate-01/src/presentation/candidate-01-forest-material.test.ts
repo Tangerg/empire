@@ -2,8 +2,9 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { mapFromLevel } from '@empire/battle-engine';
+import { idx, inBounds, mapFromLevel, type GameMap } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
+import type { BoardPiece } from '@empire/game-ui';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '../index';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
 import catalog from '../../../../tools/art/surface-overrides.json';
@@ -11,10 +12,25 @@ import { CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
 import { candidate01MapSceneryLayers } from './candidate-01-map-scene';
 import { candidateMaterial } from './candidate-01-terrain-materials';
 import { CANDIDATE_01_FOREST_FLOOR, candidate01ForestBlendMarkup } from './candidate-01-forest-material';
+import { candidate01PlayableShape } from './candidate-01-playable-shape';
+import { candidate01BlobMask } from './candidate-01-square-mask';
 
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const pack = resolve(import.meta.dirname, '../../assets/final-fantasy-v1');
 const blendId = 'transition-meadow-forest';
+
+function unwrapPlayableClip(pieces: readonly BoardPiece[], map: GameMap): BoardPiece[] {
+  const shape = candidate01PlayableShape(content, map);
+  if (!shape) return [...pieces];
+  return pieces.map(piece => {
+    const clip = /^<defs><clipPath id="([^"]+)"><path d="([^"]*)" transform="translate\(([^)]+)\)"\/><\/clipPath><\/defs><g clip-path="url\(#([^"]+)\)">([\s\S]*)<\/g>$/.exec(piece.markup);
+    if (!clip) throw new Error('forest piece lacks its self-contained playable clip');
+    expect(clip[2]).toBe(shape.path);
+    expect(clip[3]).toBe(`${-piece.x} ${-piece.y}`);
+    expect(clip[4]).toBe(clip[1]);
+    return { ...piece, markup: clip[5] };
+  });
+}
 
 describe('forest floor world sampling through the original Blob47 alpha', () => {
   it('keeps the native source and reviewed 128-unit world scale independent from raster density', () => {
@@ -62,8 +78,8 @@ describe('forest floor world sampling through the original Blob47 alpha', () => 
     }
   });
 
-  it('changes exactly 625 ground pieces across 11 actual maps and leaves rule/standing projections alone', () => {
-    const counts = new Map([['c01-01', 126], ['c01-02', 13], ['c01-03', 9], ['c01-04', 17], ['c01-05', 11],
+  it('changes exactly 638 ground pieces across 11 actual maps and leaves rule/standing projections alone', () => {
+    const counts = new Map([['c01-01', 126], ['c01-02', 26], ['c01-03', 9], ['c01-04', 17], ['c01-05', 11],
       ['c01-06', 12], ['c01-09', 11], ['c01-10', 13], ['c01-11', 24], ['c01-15', 364], ['c01-16', 25]]);
     let total = 0;
     for (const level of CANDIDATE_01_LEVELS) {
@@ -76,15 +92,25 @@ describe('forest floor world sampling through the original Blob47 alpha', () => 
       expect(tiles, level.id).toHaveLength(counts.get(level.id) ?? 0);
       const pieces = scene.ground.filter(piece => piece.markup.includes(CANDIDATE_01_FOREST_FLOOR.href));
       expect(pieces.map(({ x, y }) => ({ x, y })), level.id).toEqual(tiles);
+      const expected = tiles.map(({ x, y }) => {
+        const mask = candidate01BlobMask(x / 32, y / 32, (nx, ny) => inBounds(map, nx, ny)
+          && candidateMaterial(content, map.tiles[idx(map, nx, ny)]).blend === blendId);
+        const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(blendId, mask);
+        const markup = candidate01ForestBlendMarkup(blendId, cell, x, y);
+        if (markup === null) throw new Error('expected forest blend binding is missing');
+        return { x, y, markup };
+      });
+      expect(unwrapPlayableClip(pieces, map), level.id).toEqual(expected);
       expect(scene.ground.map(piece => piece.markup).join(''), level.id).not.toContain(CANDIDATE_01_ENVIRONMENT.atlas(blendId).raster.href);
       for (const layer of [scene.underUnits, scene.overUnits]) expect(layer.some(piece => piece.markup.includes(CANDIDATE_01_FOREST_FLOOR.href))).toBe(false);
-      expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground
-        .filter(piece => piece.markup.includes(CANDIDATE_01_FOREST_FLOOR.href)), level.id).toEqual(pieces);
+      const editor = candidate01MapSceneryLayers({ ...context, editing: true }).ground
+        .filter(piece => piece.markup.includes(CANDIDATE_01_FOREST_FLOOR.href));
+      expect(unwrapPlayableClip(editor, map), level.id).toEqual(expected);
       expect(candidate01MapSceneryLayers({ ...context, viewport: { ...context.viewport, sceneWidth: context.viewport.sceneWidth + 71 } }), level.id).toEqual(scene);
       expect(JSON.stringify({ level, map }), level.id).toBe(before);
       total += pieces.length;
     }
-    expect(total).toBe(625);
+    expect(total).toBe(638);
   });
 
   it('registers the four original floor slots while keeping tones 1–3 catalog-only', () => {

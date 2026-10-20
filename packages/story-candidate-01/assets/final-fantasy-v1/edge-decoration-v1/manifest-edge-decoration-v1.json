@@ -761,6 +761,754 @@
           }
         }
       ]
+    },
+    {
+      "levelId": "c01-02",
+      "mapSize": [
+        36,
+        24
+      ],
+      "placements": [
+        {
+          "id": "spacious-margin-1",
+          "assetId": "grass-road-edge",
+          "center": [
+            320,
+            162
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              7,
+              3
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "road",
+                "village",
+                "road",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "road",
+                "plain",
+                "hill"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-2",
+          "assetId": "grass-road-edge",
+          "center": [
+            448,
+            190
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": true,
+          "terrainSupport": {
+            "origin": [
+              11,
+              4
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "road",
+                "road",
+                "road",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "plain",
+                "hill",
+                "hill",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "hill",
+                "plain",
+                "plain",
+                "plain"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-3",
+          "assetId": "grass-road-edge",
+          "center": [
+            736,
+            162
+          ],
+          "scale": 1,
+          "flipX": true,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              20,
+              3
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "road",
+                "road",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "road",
+                "road",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "forest",
+                "forest",
+                "forest"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-4",
+          "assetId": "grass-road-edge",
+          "center": [
+            896,
+            190
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": true,
+          "terrainSupport": {
+            "origin": [
+              25,
+              4
+            ],
+            "rows": [
+              [
+                "road",
+                "road",
+                "road",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "forest",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "road"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "road"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-5",
+          "assetId": "grass-road-edge",
+          "center": [
+            448,
+            354
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              11,
+              9
+            ],
+            "rows": [
+              [
+                "road",
+                "road",
+                "plain",
+                "plain",
+                "plain",
+                "water"
+              ],
+              [
+                "plain",
+                "road",
+                "plain",
+                "plain",
+                "plain",
+                "water"
+              ],
+              [
+                "plain",
+                "road",
+                "road",
+                "road",
+                "road",
+                "bridge"
+              ],
+              [
+                "plain",
+                "road",
+                "plain",
+                "plain",
+                "plain",
+                "water"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-6",
+          "assetId": "grass-road-edge",
+          "center": [
+            640,
+            382
+          ],
+          "scale": 1,
+          "flipX": true,
+          "flipY": true,
+          "terrainSupport": {
+            "origin": [
+              17,
+              10
+            ],
+            "rows": [
+              [
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "road",
+                "road"
+              ],
+              [
+                "bridge",
+                "road",
+                "road",
+                "road",
+                "road",
+                "plain"
+              ],
+              [
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "forest"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-7",
+          "assetId": "grass-road-edge",
+          "center": [
+            480,
+            578
+          ],
+          "scale": 1,
+          "flipX": true,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              12,
+              16
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "forest",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "road",
+                "road",
+                "road",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "road",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-8",
+          "assetId": "grass-road-edge",
+          "center": [
+            736,
+            606
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": true,
+          "terrainSupport": {
+            "origin": [
+              20,
+              17
+            ],
+            "rows": [
+              [
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "bridge",
+                "road",
+                "road",
+                "road",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "plain",
+                "plain",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-9",
+          "assetId": "bank-edge",
+          "center": [
+            537,
+            96
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              14,
+              0
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "forest",
+                "forest",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "forest",
+                "forest",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "forest",
+                "forest",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "road",
+                "road",
+                "road",
+                "bridge",
+                "bridge"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-10",
+          "assetId": "bank-edge",
+          "center": [
+            615,
+            128
+          ],
+          "scale": 1,
+          "flipX": true,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              17,
+              1
+            ],
+            "rows": [
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "road"
+              ],
+              [
+                "bridge",
+                "bridge",
+                "road",
+                "road",
+                "road"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-11",
+          "assetId": "bank-edge",
+          "center": [
+            537,
+            240
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": true,
+          "terrainSupport": {
+            "origin": [
+              14,
+              5
+            ],
+            "rows": [
+              [
+                "road",
+                "road",
+                "road",
+                "bridge",
+                "bridge"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "water",
+                "water",
+                "plain"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-12",
+          "assetId": "bank-edge",
+          "center": [
+            615,
+            272
+          ],
+          "scale": 1,
+          "flipX": true,
+          "flipY": true,
+          "terrainSupport": {
+            "origin": [
+              17,
+              6
+            ],
+            "rows": [
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "plain",
+                "plain",
+                "plain",
+                "road"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-13",
+          "assetId": "bank-edge",
+          "center": [
+            601,
+            688
+          ],
+          "scale": 1,
+          "flipX": false,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              16,
+              19
+            ],
+            "rows": [
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ],
+              [
+                "plain",
+                "plain",
+                "plain",
+                "water",
+                "water"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "spacious-margin-14",
+          "assetId": "bank-edge",
+          "center": [
+            679,
+            720
+          ],
+          "scale": 1,
+          "flipX": true,
+          "flipY": false,
+          "terrainSupport": {
+            "origin": [
+              19,
+              20
+            ],
+            "rows": [
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ],
+              [
+                "water",
+                "water",
+                "plain",
+                "plain",
+                "plain"
+              ]
+            ]
+          }
+        }
+      ]
     }
   ]
 }

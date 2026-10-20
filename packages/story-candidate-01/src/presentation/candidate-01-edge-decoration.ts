@@ -69,7 +69,7 @@ function readDecorations() {
     if (new Set(placements.map((p) => p.id)).size !== placements.length) throw new Error('candidate-01: duplicate edge placement');
     return { ...scene, mapSize, placements };
   });
-  if (new Set(scenes.map((s) => s.levelId)).size !== scenes.length) throw new Error('candidate-01: duplicate edge scene');
+  if (new Set(scenes.map((s) => `${s.levelId}:${s.mapSize.join('x')}`)).size !== scenes.length) throw new Error('candidate-01: duplicate edge scene');
   return { ...document, assets, scenes };
 }
 
@@ -77,8 +77,8 @@ export const CANDIDATE_01_EDGE_DECORATIONS = readDecorations();
 
 /** Sparse authored ground art. Local terrain assumptions are guards, never map writes. */
 export function candidate01EdgeDecorationPieces(levelId: string, map: GameMap): BoardPiece[] {
-  const scene = CANDIDATE_01_EDGE_DECORATIONS.scenes.find((s) => s.levelId === levelId);
-  if (!scene || map.width !== scene.mapSize[0] || map.height !== scene.mapSize[1]) return [];
+  const scene = CANDIDATE_01_EDGE_DECORATIONS.scenes.find((s) => s.levelId === levelId && map.width === s.mapSize[0] && map.height === s.mapSize[1]);
+  if (!scene) return [];
   return scene.placements.flatMap((placement) => {
     const { origin, rows } = placement.terrainSupport;
     if (!rows.every((row, y) => row.every((terrain, x) => map.tiles[idx(map, x + origin[0], y + origin[1])] === terrain))) return [];

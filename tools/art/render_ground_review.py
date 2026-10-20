@@ -73,7 +73,7 @@ def rasterize(directory, densities=(1, 2)):
             ET.ElementTree(svg).write(normalized, encoding='unicode')
             for density in densities:
                 subprocess.run(['inkscape', str(normalized), '--export-type=png',
-                                f'--export-width={int(float(svg.get("width"))) * density}',
+                                f'--export-width={round(float(svg.get("width")) * density)}',
                                 f'--export-filename={directory / f"{name}@{density}x.png"}'],
                                env={**os.environ, 'INKSCAPE_PROFILE_DIR': profile}, check=True, capture_output=True)
             normalized.unlink()

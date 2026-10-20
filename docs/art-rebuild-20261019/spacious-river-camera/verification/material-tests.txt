@@ -1,0 +1,34 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-scene-connectivity-20261020
+
+stderr | packages/game-ui/src/art/__tests__/two-backends-agree.test.ts
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-map-scene.test.ts (12 tests) 328ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-road-area.test.ts (14 tests) 543ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-earth-material.test.ts (4 tests) 507ms
+   ✓ earth material for terrain interiors and generated shores > covers 169 explicit interiors and 106 generated banks outside the authored river using their different original neighbour predicates 416ms
+stderr | packages/game-ui/src/art/__tests__/two-backends-agree.test.ts > two backends draw the same board > projects only a visible selected actor above scenery, on its existing frame and lifetime
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ ✓ packages/game-ui/src/art/__tests__/two-backends-agree.test.ts (18 tests) 5419ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-02) 913ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-11) 1284ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-03) 560ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-10) 547ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay (c01-01) 773ms
+   ✓ two backends draw the same board > draws every c01-02 building, scenery piece and actor through the same depth contract 484ms
+   ✓ two backends draw the same board > puts the same number of pictures in the same places in every layer 539ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-water-material.test.ts (5 tests) 72ms
+
+ Test Files  5 passed (5)
+      Tests  53 passed (53)
+   Start at  17:37:55
+   Duration  17.79s (transform 10.39s, setup 0ms, collect 21.76s, tests 6.87s, environment 945ms, prepare 495ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

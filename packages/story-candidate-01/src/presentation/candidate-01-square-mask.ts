@@ -1,3 +1,5 @@
+import { TILE } from '@empire/game-ui';
+
 /**
  * The eight cells a blob sheet counts, in the bit order the kit numbers them.
  *
@@ -21,4 +23,18 @@ export const candidate01BlobMask = (x: number, y: number, joins: (x: number, y: 
     (mask, [dx, dy], bit) => (joins(x + dx, y + dy) ? mask | (1 << bit) : mask),
     0,
   );
+
+/**
+ * One geometric union, not separately antialiased cell clips. Equal winding
+ * cancels shared edges at fractional camera scales without expanding permission.
+ */
+export function candidate01CellUnionMarkup(
+  cells: readonly (readonly [number, number])[],
+  originX = 0,
+  originY = 0,
+): string {
+  const path = cells.map(([x, y]) =>
+    `M${x * TILE - originX} ${y * TILE - originY}h${TILE}v${TILE}h${-TILE}Z`).join('');
+  return `<path d="${path}" fill-rule="nonzero" clip-rule="nonzero"/>`;
+}
 

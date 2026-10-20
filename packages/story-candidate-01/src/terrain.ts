@@ -1,8 +1,9 @@
 import { defineTerrain, type TerrainDef, type TerrainId } from '@empire/battle-engine';
-import { moveCosts } from '@empire/content-common';
+import { IMPASSABLE, moveCosts } from '@empire/content-common';
 
 /** Story-one battlefield materials.  They remain mechanics-first terrain data. */
 export const CANDIDATE_01_TERRAINS: readonly TerrainDef[] = [
+  defineTerrain({ id: 'c01.outside', name: '地图之外', cost: IMPASSABLE, tags: ['outside'] }),
   defineTerrain({ id: 'c01.scorched', name: '焦土农田', cost: moveCosts({ foot: 2, mounted: 3, heavy: 3, flying: 1 }), defense: 0.05, tags: ['rough', 'burned'] }),
   defineTerrain({ id: 'c01.riverbank', name: '泥泞河岸', cost: moveCosts({ foot: 2, mounted: 4, heavy: 4, flying: 1 }), defense: 0.08, tags: ['rough', 'wet'] }),
   defineTerrain({ id: 'c01.street', name: '王都石街', cost: moveCosts({ foot: 1, mounted: 1, heavy: 1, flying: 1 }), defense: 0.05, tags: ['road', 'urban'] }),
@@ -17,6 +18,7 @@ export const CANDIDATE_01_TERRAINS: readonly TerrainDef[] = [
 ];
 
 export const CANDIDATE_01_TERRAIN_CHARACTERS: Readonly<Record<string, TerrainId>> = {
+  _: 'c01.outside',
   s: 'c01.scorched',
   r: 'c01.riverbank',
   p: 'c01.street',

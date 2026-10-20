@@ -354,6 +354,7 @@
 | 一个单位为什么在地形上读得出来 | `BoardPicture.relief`（端口声明,滤镜只定义一次,两个后端都读同一份 markup） |
 | 格线在两种状态下多明显 | `GRID_ALPHA`（`tactical(on)` 是端口方法,两个数字归端口） |
 | 大地图的滚动、边界与焦点 | `BattlefieldCamera`（HUD 留白、尺寸变化、键盘显露）；`listenForPointer` 负责 6px 拖拽/点击区分，`BoardView` 负责场景坐标到格子及 outside 地形命中排除 |
+| 不规则关卡的可行走边界与画面轮廓 | 地形文档的 `outside` 标签与通行成本；`candidate01PlayableShape` 只投影同一地形，`candidate01ClipGround` 保留局部 SVG 定义供两种后端使用 |
 | 一次缩放落在哪一帧 | `PresentationTimeline.perFrame`（连同它的取消义务；控制器不再自己拿 RAF） |
 | 一个东西在地上投多深的影 | `groundShadow`（`art/shading.ts`；大小归调用方，深浅是三档） |
 | 一个朝向要不要把图镜像 | `facesLeft`（问铺法走一步，看 x 有没有变小；铺法不认的朝向不镜像） |

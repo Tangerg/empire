@@ -23,6 +23,7 @@ import { CANDIDATE_01_ACTOR_ART, resolveCandidate01PresentationBinding } from '.
 import { CANDIDATE_01_HERO_APPEARANCES, resolveCandidate01UnitArt } from './candidate-01-hero-appearances';
 import {
   boardPictureMarkup,
+  groundShadow,
   CELL_FOOT,
   escapeAttr as attr,
   runtimeAtlasCellMarkup,
@@ -133,7 +134,11 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
   const x = CELL_FOOT.x - anchor[0] * scale;
   const y = CELL_FOOT.y - anchor[1] * scale;
   const owner = ownerColor ? ownerBanner(ownerColor) : '';
-  return `<g data-candidate-art="structure" transform="translate(${x} ${y}) scale(${scale})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
+  // Keep the same contact/scale as the native sprite; the shared shadow owner
+  // grounds its broad footing without another prop or a recolored source sheet.
+  const contact = groundShadow({ cx: CELL_FOOT.x, cy: CELL_FOOT.y },
+    { rx: atlas.cellWidth * scale * 0.32, ry: atlas.cellHeight * scale * 0.055 });
+  return `<g class="candidate-structure-contact">${contact}</g><g data-candidate-art="structure" transform="translate(${x} ${y}) scale(${scale})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
 }
 
 export function candidate01UnitPicture(type: UnitTypeId, team: string, context?: UnitArtContext): BoardPicture | null {

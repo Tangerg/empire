@@ -388,7 +388,7 @@ describe('two backends draw the same board', () => {
     expect(buildings).toHaveLength(9);
     expect(buildings.every((piece) => piece.foot?.x === 16 && piece.foot.y === 31)).toBe(true);
     expect(state.units).toHaveLength(20);
-    expect(scene.underUnits).toHaveLength(46);
+    expect(scene.underUnits).toHaveLength(51);
     expect(scene.overUnits).toEqual([]);
     expect(scene.underUnits.filter((piece) => !piece.foot)).toHaveLength(5);
     const actors = state.units.map((unit) => ({ markup: '', x: unit.x * 32, y: unit.y * 32, foot: CELL_FOOT }));

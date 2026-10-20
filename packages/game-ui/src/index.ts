@@ -14,6 +14,7 @@ export * from './art/frame-animation';
 export * from './art/icons';
 export * from './art/gauges';
 export * from './art/palette';
+export { groundShadow } from './art/shading';
 export * from './art/portraits';
 export * from './art/terrain';
 export * from './art/units';

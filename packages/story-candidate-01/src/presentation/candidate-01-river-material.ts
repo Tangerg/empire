@@ -1,3 +1,4 @@
+import { candidate01CellUnionMarkup } from './candidate-01-square-mask';
 import { escapeAttr, TILE, type BoardPiece } from '@empire/game-ui';
 import { CANDIDATE_01_ROAD_MATERIAL } from './candidate-01-road-material';
 import { CANDIDATE_01_WATER_MATERIAL } from './candidate-01-water-material';
@@ -7,11 +8,14 @@ export interface CandidateRiverProfile {
   readonly width: number;
   readonly bankWidth: number;
   readonly knots: readonly FixedNumbers<2>[];
+  /** Optional local widths keep a bend inside narrow terrain overlaps. */
+  readonly widths?: readonly number[];
 }
 
 /** Vertical tangents keep the authored crossings level while the banks meander. */
 export function candidate01RiverPath(profile: CandidateRiverProfile): string {
   if (!(profile.width > 0 && profile.bankWidth > profile.width && profile.bankWidth <= 64 && profile.bankWidth - profile.width <= 10)
+    || (profile.widths !== undefined && (profile.widths.length !== profile.knots.length || Array.from(profile.widths).some(width => !Number.isFinite(width) || width < 16 || width > profile.width)))
     || profile.knots.length < 2 || profile.knots.some(p => !p.every(Number.isFinite))
     || profile.knots.some((p, i) => i > 0 && p[1] <= profile.knots[i - 1][1])) {
     throw new Error('candidate-01: river needs positive bounded widths and strictly downstream knots');
@@ -22,6 +26,17 @@ export function candidate01RiverPath(profile: CandidateRiverProfile): string {
     const dy = (y - py) / 3;
     return ` C ${px} ${py + dy} ${x} ${y - dy} ${x} ${y}`;
   }).join('');
+}
+
+/** Closed curved banks share the centerline's vertical crossing tangents. */
+function riverRibbon(profile: CandidateRiverProfile, widths: readonly number[], rim: number): string {
+  const side = (sign: number) => profile.knots.map(([x, y], i) => [x * TILE + sign * (widths[i] / 2 + rim), y * TILE]);
+  const trace = (points: number[][]) => points.slice(1).map(([x, y], i) => {
+    const [px, py] = points[i], dy = (y - py) / 3;
+    return ` C ${px} ${py + dy} ${x} ${y - dy} ${x} ${y}`;
+  }).join('');
+  const left = side(-1), right = side(1).reverse();
+  return `M ${left[0].join(' ')}` + trace(left) + ` L ${right[0].join(' ')}` + trace(right) + ' Z';
 }
 
 /** Terrain owns water permission; the authored line never paints a dry cell. */
@@ -47,14 +62,16 @@ export function candidate01RiverMaterialPieces(width: number, height: number,
         && y * TILE >= top && y * TILE < top + periodY);
       if (!local.length) continue;
       const w = Math.min(periodX, width * TILE - left), h = Math.min(periodY, height * TILE - top);
-      const id = `c01-river-${kind}-${left}-${top}-${strokeWidth}-${profile.knots.map(p => p.join('_')).join('-')}-${local.map(p => p.join('_')).join('-')}-${cells.map(p => p.join('_')).join('-')}`;
+      const id = `c01-river-${kind}-${left}-${top}-${strokeWidth}-${profile.knots.map(p => p.join('_')).join('-')}-${profile.widths?.join('_') ?? 'uniform'}-${local.map(p => p.join('_')).join('-')}-${cells.map(p => p.join('_')).join('-')}`;
       const rim = (profile.bankWidth - profile.width) / 2;
       const limit = cells.map(([x, y]) => `<rect x="${x * TILE - left - rim}" y="${y * TILE - top - rim}" width="${TILE + rim * 2}" height="${TILE + rim * 2}" rx="${rim}"/>`).join('');
-      const allowed = local.map(([x, y]) => `<rect x="${x * TILE - left}" y="${y * TILE - top}" width="32" height="32"/>`).join('');
+      const allowed = candidate01CellUnionMarkup(local, left, top);
       pieces.push({ x: left, y: top, markup:
         `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" overflow="hidden" data-runtime-raster="${kind}">`
         + `<defs><clipPath id="${id}-terrain">${allowed}</clipPath><clipPath id="${id}-rim">${limit}</clipPath><mask id="${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="${w}" height="${h}">`
-        + `<g clip-path="url(#${id}-terrain)"><g clip-path="url(#${id}-rim)"><path transform="translate(${-left} ${-top})" d="${path}" fill="none" stroke="white" stroke-width="${strokeWidth}" stroke-linecap="butt"/></g></g>`
+        + `<g clip-path="url(#${id}-terrain)"><g clip-path="url(#${id}-rim)"><path transform="translate(${-left} ${-top})" `
+          + (profile.widths ? `d="${riverRibbon(profile, profile.widths, kind === 'river-bank' ? rim : 0)}" fill="white"/>`
+            : `d="${path}" fill="none" stroke="white" stroke-width="${strokeWidth}" stroke-linecap="butt"/>`) + `</g></g>`
         + `</mask></defs><image href="${escapeAttr(material.href)}" width="${periodX}" height="${periodY}" mask="url(#${id})"/></svg>` });
     }
   }

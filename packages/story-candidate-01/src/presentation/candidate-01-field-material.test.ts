@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { mapFromLevel } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
-import { runtimeTileMarkup } from '@empire/game-ui';
+import { GROUND_TAGS, runtimeTileMarkup, taggedGround } from '@empire/game-ui';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { candidate01Level } from '../levels';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './candidate-01-field-material';
@@ -14,6 +14,7 @@ import { candidate01MapSceneryLayers } from './candidate-01-map-scene';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
 import { CANDIDATE_01_OPEN_GROUND_MATERIALS } from './candidate-01-open-ground-materials';
 import { candidateWorldMaterialTileMarkup } from './candidate-01-world-material';
+import { candidate01PlayableShape } from './candidate-01-playable-shape';
 
 const material = CANDIDATE_01_FIELD_MATERIAL;
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
@@ -98,15 +99,27 @@ describe('approved broad world material', () => {
   it('preserves explicit non-base tones with their registered world sampling and catalog fit contract', () => {
     const map = mapFromLevel(content, candidate01Level('c01-02'));
     const layers = candidate01MapSceneryLayers({ content, map, levelId: 'c01-02', viewport: candidateReviewViewport(map) });
+    const shape = candidate01PlayableShape(content, map);
+    if (!shape) throw new Error('Three Bridges must have a terrain-owned irregular boundary');
+    const ground = layers.ground.map(piece => {
+      const clip = /^<defs><clipPath id="([^"]+)"><path d="([^"]*)" transform="translate\(([^)]+)\)"\/><\/clipPath><\/defs><g clip-path="url\(#([^"]+)\)">([\s\S]*)<\/g>$/.exec(piece.markup);
+      if (!clip) throw new Error('ground piece lacks its self-contained playable clip');
+      expect(clip[2]).toBe(shape.path);
+      expect(clip[3]).toBe(`${-piece.x} ${-piece.y}`);
+      expect(clip[4]).toBe(clip[1]);
+      return { ...piece, markup: clip[5] };
+    });
     for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
-      const terrain = candidateMaterial(content, map.tiles[y * map.width + x]);
+      const id = map.tiles[y * map.width + x];
+      if (taggedGround(content.terrains.get(id), GROUND_TAGS.outside)) continue;
+      const terrain = candidateMaterial(content, id);
       const atlas = terrain.surface ?? material.replaces.atlas;
       const tone = terrain.tone ?? material.replaces.tone;
       if (atlas === material.replaces.atlas && tone === material.replaces.tone) continue;
       const world = CANDIDATE_01_OPEN_GROUND_MATERIALS.find(surface => surface.replaces.atlas === atlas && surface.replaces.tone === tone);
       const expected = world ? candidateWorldMaterialTileMarkup(world, x * 32, y * 32)
         : runtimeTileMarkup(CANDIDATE_01_ENVIRONMENT.atlas(atlas).raster, tone, CANDIDATE_SURFACE_FIT);
-      expect(layers.ground.some((piece) => piece.x === x * 32 && piece.y === y * 32 && piece.markup === expected)).toBe(true);
+      expect(ground.some((piece) => piece.x === x * 32 && piece.y === y * 32 && piece.markup === expected), `${id} at ${x},${y}`).toBe(true);
     }
     expect(CANDIDATE_SURFACE_FIT).toEqual({ inset: 3, bleed: 0.5 });
     expect(CANDIDATE_01_ENVIRONMENT.atlas('surface-meadow').raster).toMatchObject({ cellWidth: 32, cellHeight: 32, columns: 4, rows: 1 });

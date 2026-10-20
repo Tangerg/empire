@@ -41,9 +41,9 @@ const actorReachability = initial.units.map(unit => {
     shortestSafetyCellSteps: Math.min(...safety.cells.map(p => found.get(key(p))!)) };
 });
 const independentCrossings = bridgeRows.map(row => {
-  const found = distances({ x: 1, y: 9 }, 'foot', row);
-  if (!found.has('20,1')) throw new Error(`bridge row ${row} does not independently join both banks`);
-  return { row, westToEastCellSteps: found.get('20,1') };
+  const found = distances(initial.units[0], 'foot', row);
+  if (!found.has(key(safety.cells[0]))) throw new Error(`bridge row ${row} does not independently join both banks`);
+  return { row, westToEastCellSteps: found.get(key(safety.cells[0])) };
 });
 const errors = validateLevel(engine.rules, level);
 if (errors.length) throw new Error(JSON.stringify(errors));
@@ -54,7 +54,7 @@ for (const aggression of [0.35, 0.58, 0.8]) {
   const events: string[] = [];
   let actions = 0;
   let firstCombat: unknown;
-  while (state.phase !== 'over' && actions < 800) {
+  while (state.phase !== 'over' && actions < 1600) {
     const action = engine.chooseAiAction(state);
     const emitted = engine.dispatch(state, action);
     events.push(...emitted.map(event => JSON.stringify(event))); actions++;

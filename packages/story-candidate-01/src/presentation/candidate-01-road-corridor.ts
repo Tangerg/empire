@@ -1,6 +1,7 @@
 import { inBounds } from '@empire/battle-engine';
 import { TILE } from '@empire/game-ui';
 import type { FixedNumbers } from './candidate-01-documents';
+import { candidate01CellUnionMarkup } from './candidate-01-square-mask';
 
 type Point = readonly [number, number];
 export interface CandidateRoadCorridorProfile {
@@ -89,7 +90,7 @@ export function candidate01RoadCorridorGeometry(
   const paths = chains.map(chain => roundedChain(chain, profile.maxTangentCut));
   const filled: string[] = [];
   const limits: string[] = [];
-  const allowed: string[] = [];
+  const allowed: Point[] = [];
   const rectangle = (x: number, y: number, w: number, h: number, extra = '') => `<rect x="${x}" y="${y}" width="${w}" height="${h}"${extra}/>`;
   for (const [x, y] of cells) {
     if (neighbors([x, y]).length === 0) filled.push(`<circle cx="${(x + .5) * TILE}" cy="${(y + .5) * TILE}" r="${profile.width / 2}"/>`);
@@ -107,16 +108,19 @@ export function candidate01RoadCorridorGeometry(
       filled.push(rectangle((x + .5) * TILE, (y + .5) * TILE, TILE, TILE));
     }
     const overhang = profile.maxPlainOverhang;
-    limits.push(rectangle(x * TILE - overhang, y * TILE - overhang, TILE + 2 * overhang, TILE + 2 * overhang, ` rx="${overhang}"`));
+    if (overhang > 0) {
+      limits.push(rectangle(x * TILE - overhang, y * TILE - overhang, TILE + 2 * overhang, TILE + 2 * overhang, ` rx="${overhang}"`));
+    }
   }
   for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
     if (!protectedCells.has(key([x, y])) && (occupied.has(key([x, y])) || plain(x, y))) {
-      allowed.push(rectangle(x * TILE, y * TILE, TILE, TILE));
+      allowed.push([x, y]);
     }
   }
   return {
     alpha: `<g fill="none" stroke="white" stroke-width="${profile.width}" stroke-linecap="round" stroke-linejoin="round">${paths.map(d => `<path d="${d}"/>`).join('')}</g><g fill="white">${filled.join('')}</g>`,
     // Intersection: Euclidean 2px buffer AND actual road/plain cells, minus notch.
-    limits: limits.join(''), allowed: allowed.join(''),
+    limits: profile.maxPlainOverhang === 0 ? candidate01CellUnionMarkup(cells) : limits.join(''),
+    allowed: candidate01CellUnionMarkup(allowed),
   };
 }

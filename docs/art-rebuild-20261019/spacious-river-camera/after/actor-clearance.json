@@ -1,0 +1,591 @@
+{
+  "kind": "actual individual scene drawings at world-aligned native pixels; source actor sprite only; all later standing and frame drawings",
+  "limitations": [
+    "offline alpha overlap, not visual recognition or live GPU",
+    "CSS shadow filters omitted"
+  ],
+  "actorCount": 20,
+  "drawingCount": 96,
+  "actors": [
+    {
+      "id": "actor:18",
+      "actorId": 18,
+      "key": "north-bank-guard",
+      "type": "c01.swordsman",
+      "cell": [
+        26,
+        3
+      ],
+      "facing": "west",
+      "origin": [
+        832,
+        96
+      ],
+      "worldFoot": [
+        848,
+        127
+      ],
+      "displayIndex": 13,
+      "cropOrigin": [
+        720,
+        -65
+      ],
+      "spriteArea": 1484.9608,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:14",
+      "actorId": 14,
+      "key": "shield-1",
+      "type": "c01.legion-shield",
+      "cell": [
+        29,
+        3
+      ],
+      "facing": "west",
+      "origin": [
+        928,
+        96
+      ],
+      "worldFoot": [
+        944,
+        127
+      ],
+      "displayIndex": 14,
+      "cropOrigin": [
+        816,
+        -65
+      ],
+      "spriteArea": 1433.6588,
+      "occludedFraction": 0.020333,
+      "covering": [
+        {
+          "id": "terrain:1",
+          "layer": "terrain",
+          "index": 1,
+          "origin": [
+            992,
+            96
+          ],
+          "worldFoot": [
+            1008,
+            127
+          ],
+          "displayIndex": 15,
+          "cropOrigin": [
+            880,
+            -65
+          ],
+          "pairwiseOverlap": 0.020333
+        }
+      ]
+    },
+    {
+      "id": "actor:13",
+      "actorId": 13,
+      "key": "cain",
+      "type": "c01.cain",
+      "cell": [
+        31,
+        4
+      ],
+      "facing": "west",
+      "origin": [
+        992,
+        128
+      ],
+      "worldFoot": [
+        1008,
+        159
+      ],
+      "displayIndex": 19,
+      "cropOrigin": [
+        880,
+        -33
+      ],
+      "spriteArea": 1280.7176,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:15",
+      "actorId": 15,
+      "key": "shield-2",
+      "type": "c01.legion-shield",
+      "cell": [
+        31,
+        6
+      ],
+      "facing": "west",
+      "origin": [
+        992,
+        192
+      ],
+      "worldFoot": [
+        1008,
+        223
+      ],
+      "displayIndex": 21,
+      "cropOrigin": [
+        880,
+        31
+      ],
+      "spriteArea": 1433.6588,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:16",
+      "actorId": 16,
+      "key": "bow-1",
+      "type": "c01.archer",
+      "cell": [
+        31,
+        8
+      ],
+      "facing": "west",
+      "origin": [
+        992,
+        256
+      ],
+      "worldFoot": [
+        1008,
+        287
+      ],
+      "displayIndex": 34,
+      "cropOrigin": [
+        880,
+        95
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:4",
+      "actorId": 4,
+      "key": "bridge-knight",
+      "type": "c01.knight",
+      "cell": [
+        12,
+        11
+      ],
+      "facing": "east",
+      "origin": [
+        384,
+        352
+      ],
+      "worldFoot": [
+        400,
+        383
+      ],
+      "displayIndex": 43,
+      "cropOrigin": [
+        272,
+        191
+      ],
+      "spriteArea": 1079.4745,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:12",
+      "actorId": 12,
+      "key": "bridge-reserve",
+      "type": "c01.banner-guard",
+      "cell": [
+        2,
+        12
+      ],
+      "facing": "east",
+      "origin": [
+        64,
+        384
+      ],
+      "worldFoot": [
+        80,
+        415
+      ],
+      "displayIndex": 44,
+      "cropOrigin": [
+        -48,
+        223
+      ],
+      "spriteArea": 1568.2,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:11",
+      "actorId": 11,
+      "key": "bridge-cleric",
+      "type": "c01.gravekeeper",
+      "cell": [
+        6,
+        12
+      ],
+      "facing": "east",
+      "origin": [
+        192,
+        384
+      ],
+      "worldFoot": [
+        208,
+        415
+      ],
+      "displayIndex": 45,
+      "cropOrigin": [
+        80,
+        223
+      ],
+      "spriteArea": 1249.8353,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:5",
+      "actorId": 5,
+      "key": "bridge-guard-1",
+      "type": "c01.banner-guard",
+      "cell": [
+        4,
+        13
+      ],
+      "facing": "east",
+      "origin": [
+        128,
+        416
+      ],
+      "worldFoot": [
+        144,
+        447
+      ],
+      "displayIndex": 46,
+      "cropOrigin": [
+        16,
+        255
+      ],
+      "spriteArea": 1568.2,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:2",
+      "actorId": 2,
+      "key": "campaign-torren",
+      "type": "c01.swordsman",
+      "cell": [
+        10,
+        13
+      ],
+      "facing": "east",
+      "origin": [
+        320,
+        416
+      ],
+      "worldFoot": [
+        336,
+        447
+      ],
+      "displayIndex": 47,
+      "cropOrigin": [
+        208,
+        255
+      ],
+      "spriteArea": 1244.1059,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:1",
+      "actorId": 1,
+      "key": "campaign-laiya",
+      "type": "c01.laiya",
+      "cell": [
+        8,
+        14
+      ],
+      "facing": "east",
+      "origin": [
+        256,
+        448
+      ],
+      "worldFoot": [
+        272,
+        479
+      ],
+      "displayIndex": 50,
+      "cropOrigin": [
+        144,
+        287
+      ],
+      "spriteArea": 1210.1804,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:7",
+      "actorId": 7,
+      "key": "refugee-1",
+      "type": "c01.refugee",
+      "cell": [
+        3,
+        16
+      ],
+      "facing": "east",
+      "origin": [
+        96,
+        512
+      ],
+      "worldFoot": [
+        112,
+        543
+      ],
+      "displayIndex": 58,
+      "cropOrigin": [
+        -16,
+        351
+      ],
+      "spriteArea": 1072.9137,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:3",
+      "actorId": 3,
+      "key": "campaign-elin",
+      "type": "c01.archer",
+      "cell": [
+        6,
+        16
+      ],
+      "facing": "east",
+      "origin": [
+        192,
+        512
+      ],
+      "worldFoot": [
+        208,
+        543
+      ],
+      "displayIndex": 59,
+      "cropOrigin": [
+        80,
+        351
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:20",
+      "actorId": 20,
+      "key": "battery-screen",
+      "type": "c01.legion-shield",
+      "cell": [
+        24,
+        16
+      ],
+      "facing": "west",
+      "origin": [
+        768,
+        512
+      ],
+      "worldFoot": [
+        784,
+        543
+      ],
+      "displayIndex": 60,
+      "cropOrigin": [
+        656,
+        351
+      ],
+      "spriteArea": 1433.6588,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:6",
+      "actorId": 6,
+      "key": "bridge-guard-2",
+      "type": "c01.archer",
+      "cell": [
+        9,
+        17
+      ],
+      "facing": "east",
+      "origin": [
+        288,
+        544
+      ],
+      "worldFoot": [
+        304,
+        575
+      ],
+      "displayIndex": 62,
+      "cropOrigin": [
+        176,
+        383
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:10",
+      "actorId": 10,
+      "key": "river-scout",
+      "type": "c01.swordsman",
+      "cell": [
+        12,
+        17
+      ],
+      "facing": "east",
+      "origin": [
+        384,
+        544
+      ],
+      "worldFoot": [
+        400,
+        575
+      ],
+      "displayIndex": 63,
+      "cropOrigin": [
+        272,
+        383
+      ],
+      "spriteArea": 1489.3961,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:17",
+      "actorId": 17,
+      "key": "unmarked-ballista",
+      "type": "c01.ballista",
+      "cell": [
+        25,
+        18
+      ],
+      "facing": "west",
+      "origin": [
+        800,
+        576
+      ],
+      "worldFoot": [
+        816,
+        607
+      ],
+      "displayIndex": 64,
+      "cropOrigin": [
+        688,
+        415
+      ],
+      "spriteArea": 1948.0235,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:8",
+      "actorId": 8,
+      "key": "refugee-2",
+      "type": "c01.refugee",
+      "cell": [
+        3,
+        19
+      ],
+      "facing": "east",
+      "origin": [
+        96,
+        608
+      ],
+      "worldFoot": [
+        112,
+        639
+      ],
+      "displayIndex": 65,
+      "cropOrigin": [
+        -16,
+        447
+      ],
+      "spriteArea": 1072.9137,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:9",
+      "actorId": 9,
+      "key": "refugee-3",
+      "type": "c01.refugee",
+      "cell": [
+        5,
+        19
+      ],
+      "facing": "east",
+      "origin": [
+        160,
+        608
+      ],
+      "worldFoot": [
+        176,
+        639
+      ],
+      "displayIndex": 66,
+      "cropOrigin": [
+        48,
+        447
+      ],
+      "spriteArea": 1072.9137,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:19",
+      "actorId": 19,
+      "key": "south-bank-bow",
+      "type": "c01.archer",
+      "cell": [
+        32,
+        20
+      ],
+      "facing": "west",
+      "origin": [
+        1024,
+        640
+      ],
+      "worldFoot": [
+        1040,
+        671
+      ],
+      "displayIndex": 68,
+      "cropOrigin": [
+        912,
+        479
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.005248,
+      "covering": [
+        {
+          "id": "terrain:8",
+          "layer": "terrain",
+          "index": 8,
+          "origin": [
+            960,
+            672
+          ],
+          "worldFoot": [
+            976,
+            703
+          ],
+          "displayIndex": 70,
+          "cropOrigin": [
+            848,
+            511
+          ],
+          "pairwiseOverlap": 0.005248
+        }
+      ]
+    }
+  ]
+}

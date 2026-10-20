@@ -78,7 +78,7 @@ describe('registered horizontal crossing', () => {
     const before = JSON.stringify(map);
     const layers = candidate01MapSceneryLayers({ content, map, levelId: 'c01-02', viewport: candidateReviewViewport(map) });
     const decks = layers.underUnits.filter((piece) => piece.markup.includes(crossing.href));
-    expect(decks.map(({ x, y }) => [x, y])).toEqual([[352, 112], [352, 208], [352, 304]]);
+    expect(decks.map(({ x, y }) => [x, y])).toEqual([[576, 176], [544, 368], [640, 592]]);
     expect(new Set(decks.map(({ markup }) => markup)).size).toBe(1);
     expect(JSON.stringify(map)).toBe(before);
     const interactive = candidate01Asset('C01-STRUCT-THREE-BRIDGE-SPAN');

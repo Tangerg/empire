@@ -1,3 +1,4 @@
+import { candidate01PlayableShape, candidate01ClipGround } from './candidate-01-playable-shape';
 import { candidate01RiverMaterialPieces, type CandidateRiverProfile } from './candidate-01-river-material';
 import type { CandidateRoadCorridorProfile } from './candidate-01-road-corridor';
 import { candidate01IsAreaRoad, candidate01RoadMaterialPieces } from './candidate-01-road-material';
@@ -318,6 +319,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
       const at = cellOrigin(x, y);
       const id = tileAt(map, x, y);
       if (id === null) continue;
+      if (taggedGround(content.terrains.get(id), GROUND_TAGS.outside)) continue;
       const material = candidateMaterial(content, id);
 
       const atlas = material.surface ?? base.atlas;
@@ -554,6 +556,7 @@ function sceneryPieces(content: ContentCatalog, map: GameMap, levelId: string): 
     for (let x = 0; x < map.width; x++) {
       const id = tileAt(map, x, y);
       if (id === null) continue;
+      if (taggedGround(content.terrains.get(id), GROUND_TAGS.outside)) continue;
       const material = candidateMaterial(content, id);
 
       // An authored landform owns its silhouette; per-cell rocks would duplicate
@@ -666,7 +669,7 @@ function sceneFrameForestMarkup(viewport: SceneViewport, levelId: string): strin
 
 /** Non-playable woodland surrounds, but never changes, the tactical field. */
 export function candidate01SceneFrameMarkup(
-  { levelId, map, viewport }: BattleSceneContext,
+  { content, levelId, map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
   // Every level of this campaign carries the pack's board style: an atlas tile and
   // a unit figure wear its shadows. It is declared as the scene's `style` rather
@@ -681,7 +684,7 @@ export function candidate01SceneFrameMarkup(
   const outline = candidate01EnvironmentScene(levelId)?.groundOutline;
   const material = CANDIDATE_01_FIELD_MATERIAL;
   const groundPath = outline?.map(([x, y], index) => `${index === 0 ? 'M' : 'L'}${viewport.originX + x * TILE},${viewport.originY + y * TILE}`).join(' ') + ' Z';
-  const ground = outline
+  const ground = candidate01PlayableShape(content, map) ? '' : outline
     ? `<defs><clipPath id="c01-authored-ground"><path d="${groundPath}"/></clipPath></defs>`
       + `<g clip-path="url(#c01-authored-ground)">`
       + [-1, 0].flatMap(y => [-1, 0].map(x => `<image href="${attr(material.href)}" x="${viewport.originX + x * material.logicalSize[0]}" y="${viewport.originY + y * material.logicalSize[1]}" width="${material.logicalSize[0]}" height="${material.logicalSize[1]}"/>`)).join('') + '</g>'
@@ -747,15 +750,16 @@ export function candidate01MapSceneryLayers(
   { content, levelId, map, editing }: BattleSceneContext,
 ): SceneLayers {
   const roadCorridor = editing === true ? undefined : candidate01EnvironmentScene(levelId)?.roadCorridor;
+  const shape = candidate01PlayableShape(content, map);
   return {
-    ground: [...groundPieces(content, map, levelId, roadCorridor, editing === true ? undefined : candidate01EnvironmentScene(levelId)?.river), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
+    ground: candidate01ClipGround([...groundPieces(content, map, levelId, roadCorridor, editing === true ? undefined : candidate01EnvironmentScene(levelId)?.river), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)], shape, 'ground'),
     underUnits: [
       // Light before the things that stand in it.
       ...hearthPieces(content, map),
       ...sceneryPieces(content, map, levelId),
       ...authoredPlacementPieces(levelId, 'under-units'),
       // The sun, which is art with no place of its own.
-      ...wholeField(fieldSunlight(map.width * TILE, map.height * TILE)),
+      ...candidate01ClipGround(wholeField(fieldSunlight(map.width * TILE, map.height * TILE)), shape, 'light'),
     ],
     overUnits: authoredPlacementPieces(levelId, 'over-units'),
   };

@@ -2,8 +2,9 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { inBounds, idx, mapFromLevel } from '@empire/battle-engine';
+import { inBounds, idx, mapFromLevel, type GameMap } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
+import { GROUND_TAGS, taggedGround, type BoardPiece } from '@empire/game-ui';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '../index';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
 import catalog from '../../../../tools/art/surface-overrides.json';
@@ -14,10 +15,24 @@ import { candidate01IsAreaWater } from './candidate-01-water-material';
 import { candidate01BlobMask } from './candidate-01-square-mask';
 import { readCandidateWorldMaskAtlas } from './candidate-01-world-material';
 import { CANDIDATE_01_EARTH_FLOOR, candidate01EarthBlendMarkup } from './candidate-01-earth-material';
+import { candidate01PlayableShape } from './candidate-01-playable-shape';
 
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const pack = resolve(import.meta.dirname, '../../assets/final-fantasy-v1');
 const blendId = 'transition-meadow-earth';
+
+function unwrapPlayableClip(pieces: readonly BoardPiece[], map: GameMap): BoardPiece[] {
+  const shape = candidate01PlayableShape(content, map);
+  if (!shape) return [...pieces];
+  return pieces.map(piece => {
+    const clip = /^<defs><clipPath id="([^"]+)"><path d="([^"]*)" transform="translate\(([^)]+)\)"\/><\/clipPath><\/defs><g clip-path="url\(#([^"]+)\)">([\s\S]*)<\/g>$/.exec(piece.markup);
+    if (!clip) throw new Error('earth piece lacks its self-contained playable clip');
+    expect(clip[2]).toBe(shape.path);
+    expect(clip[3]).toBe(`${-piece.x} ${-piece.y}`);
+    expect(clip[4]).toBe(clip[1]);
+    return { ...piece, markup: clip[5] };
+  });
+}
 
 describe('earth material for terrain interiors and generated shores', () => {
   it('retains the exact opaque source identity and reviewed independent world/raster scales', () => {
@@ -83,6 +98,7 @@ describe('earth material for terrain interiors and generated shores', () => {
       const expected = [], expectedEditor = [];
       let interiors = 0, banks = 0;
       for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
+        if (taggedGround(content.terrains.get(map.tiles[idx(map, x, y)]), GROUND_TAGS.outside)) continue;
         const material = materialAt(x, y);
         const interior = material?.blend === blendId;
         const bank = material?.blend === undefined && isShore(x, y);
@@ -90,7 +106,9 @@ describe('earth material for terrain interiors and generated shores', () => {
         expect(isWater(x, y)).toBe(false);
         const mask = candidate01BlobMask(x, y, interior ? (nx, ny) => materialAt(nx, ny)?.blend === blendId : isShore);
         const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(blendId, mask);
-        const piece = { x: x * 32, y: y * 32, markup: candidate01EarthBlendMarkup(blendId, cell, x * 32, y * 32) };
+        const markup = candidate01EarthBlendMarkup(blendId, cell, x * 32, y * 32);
+        if (markup === null) throw new Error('expected earth blend binding is missing');
+        const piece = { x: x * 32, y: y * 32, markup };
         expectedEditor.push(piece);
         if (bank && candidate01EnvironmentScene(level.id)?.river) continue;
         expected.push(piece);
@@ -98,12 +116,14 @@ describe('earth material for terrain interiors and generated shores', () => {
       }
       expect([interiors, banks], level.id).toEqual(counts.get(level.id) ?? [0, 0]);
       const actual = scene.ground.filter(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href));
-      expect(actual, level.id).toEqual(expected);
+      expect(unwrapPlayableClip(actual, map), level.id).toEqual(expected);
       const water = scene.ground.flatMap((piece, index) => piece.markup.includes('data-runtime-raster="area-water"') ? [index] : []);
       for (const piece of actual) if (water.length) expect(scene.ground.indexOf(piece)).toBeLessThan(Math.min(...water));
       expect(scene.ground.map(piece => piece.markup).join('')).not.toContain(CANDIDATE_01_ENVIRONMENT.atlas(blendId).raster.href);
       for (const layer of [scene.underUnits, scene.overUnits]) expect(layer.some(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href))).toBe(false);
-      expect(candidate01MapSceneryLayers({ ...context, editing: true }).ground.filter(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href)), level.id).toEqual(expectedEditor);
+      const editor = candidate01MapSceneryLayers({ ...context, editing: true }).ground
+        .filter(piece => piece.markup.includes(CANDIDATE_01_EARTH_FLOOR.href));
+      expect(unwrapPlayableClip(editor, map), level.id).toEqual(expectedEditor);
       expect(candidate01MapSceneryLayers({ ...context, viewport: { ...context.viewport, sceneWidth: context.viewport.sceneWidth + 71 } }), level.id).toEqual(scene);
       expect(JSON.stringify({ level, map })).toBe(before);
       total += actual.length;

@@ -1,0 +1,482 @@
+[
+  {
+    "profile": "c01-01 @0.35",
+    "identical": true,
+    "before": "END c01-01 winner=1 turn=8 actions=142 hash=3942584e reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-01 winner=1 turn=8 actions=142 hash=3942584e reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "49370ab016cc0743c0cb06fd26c4eff965545fdf263531c749c162ac219f2b76",
+    "afterSha256": "49370ab016cc0743c0cb06fd26c4eff965545fdf263531c749c162ac219f2b76"
+  },
+  {
+    "profile": "c01-01 @0.58",
+    "identical": true,
+    "before": "END c01-01 winner=1 turn=7 actions=119 hash=f0fe6f08 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-01 winner=1 turn=7 actions=119 hash=f0fe6f08 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "e33c55c7508c2035ab1d6b3d3edd5fe984c01b4045b2398b90ee81b32a0197a4",
+    "afterSha256": "e33c55c7508c2035ab1d6b3d3edd5fe984c01b4045b2398b90ee81b32a0197a4"
+  },
+  {
+    "profile": "c01-01 @0.8",
+    "identical": true,
+    "before": "END c01-01 winner=1 turn=8 actions=135 hash=ecb676a7 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-01 winner=1 turn=8 actions=135 hash=ecb676a7 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "388036e6ec3f88681d6821f7ed4d055400ccf54d2546dc034919a1129645f2ca",
+    "afterSha256": "388036e6ec3f88681d6821f7ed4d055400ccf54d2546dc034919a1129645f2ca"
+  },
+  {
+    "profile": "c01-02 @0.35",
+    "identical": false,
+    "before": "END c01-02 winner=1 turn=17 actions=294 hash=5191b7f8 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+    "after": "END c01-02 winner=1 turn=10 actions=217 hash=a292e75a reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+    "beforeSha256": "b6c541779f2e6c3aba8f6d5a5a7f26413eeee89b2b3ce2ff24c37284d7348b8a",
+    "afterSha256": "425bc53c27eb775bfbce9025a091936df83c2d444f2cfc2af363731755065bc9"
+  },
+  {
+    "profile": "c01-02 @0.58",
+    "identical": false,
+    "before": "END c01-02 winner=1 turn=13 actions=243 hash=78f2647f reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-02 winner=1 turn=9 actions=201 hash=dd3106db reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+    "beforeSha256": "93f1943a38a6b9dce25278b1abf14effc6c9993d0b746e7c990ebb67bb76b7ae",
+    "afterSha256": "4aac52cabfa9d45eccb31688d201df39946b12ed1e3b7952a83368d627a788df"
+  },
+  {
+    "profile": "c01-02 @0.8",
+    "identical": false,
+    "before": "END c01-02 winner=1 turn=11 actions=217 hash=93fcc348 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+    "after": "END c01-02 winner=1 turn=13 actions=268 hash=e9d93ecb reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62a4\u9001\u5e73\u6c11\u5e76\u963b\u6b62\u65e0\u6807\u8bb0\u5f29\u8f66",
+    "beforeSha256": "213ba057cd382b05d2bf83a0d1cbae8d4a95e5c3d940b96d07328cafc9c38c1f",
+    "afterSha256": "0c2cf000c725f60a6664f6834d80989c778a4eac53d31f585e947a6697128130"
+  },
+  {
+    "profile": "c01-03 @0.35",
+    "identical": true,
+    "before": "END c01-03 winner=1 turn=15 actions=298 hash=081f1cbd reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5341\u516b\u56de\u5408\u5185\u593a\u53d6\u8d64\u77f3\u6216\u5207\u65ad\u63a7\u5236\u94fe",
+    "after": "END c01-03 winner=1 turn=15 actions=298 hash=081f1cbd reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5341\u516b\u56de\u5408\u5185\u593a\u53d6\u8d64\u77f3\u6216\u5207\u65ad\u63a7\u5236\u94fe",
+    "beforeSha256": "f05c41cbb78efd8649eca08724d5fb2494b1ad93fefddba88c208b07ee401a39",
+    "afterSha256": "f05c41cbb78efd8649eca08724d5fb2494b1ad93fefddba88c208b07ee401a39"
+  },
+  {
+    "profile": "c01-03 @0.58",
+    "identical": true,
+    "before": "END c01-03 winner=1 turn=15 actions=257 hash=ad36a235 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5341\u516b\u56de\u5408\u5185\u593a\u53d6\u8d64\u77f3\u6216\u5207\u65ad\u63a7\u5236\u94fe",
+    "after": "END c01-03 winner=1 turn=15 actions=257 hash=ad36a235 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5341\u516b\u56de\u5408\u5185\u593a\u53d6\u8d64\u77f3\u6216\u5207\u65ad\u63a7\u5236\u94fe",
+    "beforeSha256": "90fada6a1629536930eaf0397d1a73da765f759c4edfef7ebf2289874976a1f3",
+    "afterSha256": "90fada6a1629536930eaf0397d1a73da765f759c4edfef7ebf2289874976a1f3"
+  },
+  {
+    "profile": "c01-03 @0.8",
+    "identical": true,
+    "before": "END c01-03 winner=1 turn=13 actions=232 hash=db160509 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5341\u516b\u56de\u5408\u5185\u593a\u53d6\u8d64\u77f3\u6216\u5207\u65ad\u63a7\u5236\u94fe",
+    "after": "END c01-03 winner=1 turn=13 actions=232 hash=db160509 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5341\u516b\u56de\u5408\u5185\u593a\u53d6\u8d64\u77f3\u6216\u5207\u65ad\u63a7\u5236\u94fe",
+    "beforeSha256": "50f88eefd4d706266c38eb5c6adb53fa047f1bf9f5339c79ebc6034c7817507d",
+    "afterSha256": "50f88eefd4d706266c38eb5c6adb53fa047f1bf9f5339c79ebc6034c7817507d"
+  },
+  {
+    "profile": "c01-04 @0.35",
+    "identical": true,
+    "before": "END c01-04 winner=null turn=60 actions=800 hash=889e3901 reason=",
+    "after": "END c01-04 winner=null turn=60 actions=800 hash=889e3901 reason=",
+    "beforeSha256": "5d5d632ebca6c3ebe22d291acc7f5c0eb201802f5c7b3b9a838847737bb7be45",
+    "afterSha256": "5d5d632ebca6c3ebe22d291acc7f5c0eb201802f5c7b3b9a838847737bb7be45"
+  },
+  {
+    "profile": "c01-04 @0.58",
+    "identical": true,
+    "before": "END c01-04 winner=1 turn=26 actions=377 hash=6b3359d5 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u8c03\u67e5\u9ed1\u65d7\u8425\u5730\u5e76\u5e26\u8bc1\u4eba\u64a4\u79bb",
+    "after": "END c01-04 winner=1 turn=26 actions=377 hash=6b3359d5 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u8c03\u67e5\u9ed1\u65d7\u8425\u5730\u5e76\u5e26\u8bc1\u4eba\u64a4\u79bb",
+    "beforeSha256": "18eb34d8a4c7025d8a3980263d9e850745708cefcd3b9b8100d3d427a62c71df",
+    "afterSha256": "18eb34d8a4c7025d8a3980263d9e850745708cefcd3b9b8100d3d427a62c71df"
+  },
+  {
+    "profile": "c01-04 @0.8",
+    "identical": true,
+    "before": "END c01-04 winner=1 turn=5 actions=93 hash=f720f50b reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u8c03\u67e5\u9ed1\u65d7\u8425\u5730\u5e76\u5e26\u8bc1\u4eba\u64a4\u79bb",
+    "after": "END c01-04 winner=1 turn=5 actions=93 hash=f720f50b reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u8c03\u67e5\u9ed1\u65d7\u8425\u5730\u5e76\u5e26\u8bc1\u4eba\u64a4\u79bb",
+    "beforeSha256": "f6a035560729f3a7b5f2212a3a399bb0afd957e4a6b11b250f0917084bdd2d56",
+    "afterSha256": "f6a035560729f3a7b5f2212a3a399bb0afd957e4a6b11b250f0917084bdd2d56"
+  },
+  {
+    "profile": "c01-05 @0.35",
+    "identical": true,
+    "before": "END c01-05 winner=1 turn=8 actions=158 hash=78d44822 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62d2\u7edd\u711a\u6751\u4ee4\u5e76\u4fdd\u62a4\u82c7\u8349\u6751",
+    "after": "END c01-05 winner=1 turn=8 actions=158 hash=78d44822 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62d2\u7edd\u711a\u6751\u4ee4\u5e76\u4fdd\u62a4\u82c7\u8349\u6751",
+    "beforeSha256": "5f85c3e8e2061c1fe2f85cadb869e9cd54a4d5881af04d0d84b6338256f5370c",
+    "afterSha256": "5f85c3e8e2061c1fe2f85cadb869e9cd54a4d5881af04d0d84b6338256f5370c"
+  },
+  {
+    "profile": "c01-05 @0.58",
+    "identical": true,
+    "before": "END c01-05 winner=1 turn=8 actions=161 hash=ac4dacfa reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62d2\u7edd\u711a\u6751\u4ee4\u5e76\u4fdd\u62a4\u82c7\u8349\u6751",
+    "after": "END c01-05 winner=1 turn=8 actions=161 hash=ac4dacfa reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62d2\u7edd\u711a\u6751\u4ee4\u5e76\u4fdd\u62a4\u82c7\u8349\u6751",
+    "beforeSha256": "ffa8e1aedd7d5ed68d6a9e6f99417c519715f1f34590c7fb17122951d67dbccb",
+    "afterSha256": "ffa8e1aedd7d5ed68d6a9e6f99417c519715f1f34590c7fb17122951d67dbccb"
+  },
+  {
+    "profile": "c01-05 @0.8",
+    "identical": true,
+    "before": "END c01-05 winner=1 turn=8 actions=159 hash=24b5d8c9 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62d2\u7edd\u711a\u6751\u4ee4\u5e76\u4fdd\u62a4\u82c7\u8349\u6751",
+    "after": "END c01-05 winner=1 turn=8 actions=159 hash=24b5d8c9 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u62d2\u7edd\u711a\u6751\u4ee4\u5e76\u4fdd\u62a4\u82c7\u8349\u6751",
+    "beforeSha256": "fa8cb083d657422f7809723c1b2b5b72c07e093a6419f825b9622449933815e9",
+    "afterSha256": "fa8cb083d657422f7809723c1b2b5b72c07e093a6419f825b9622449933815e9"
+  },
+  {
+    "profile": "c01-06 @0.35",
+    "identical": true,
+    "before": "END c01-06 winner=1 turn=12 actions=205 hash=0967dc4d reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-06 winner=1 turn=12 actions=205 hash=0967dc4d reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "dee76688d6cdf242e076cbfa735bbe30daa73f0ccdae1e8c42fb782779a88383",
+    "afterSha256": "dee76688d6cdf242e076cbfa735bbe30daa73f0ccdae1e8c42fb782779a88383"
+  },
+  {
+    "profile": "c01-06 @0.58",
+    "identical": true,
+    "before": "END c01-06 winner=1 turn=8 actions=150 hash=77397b78 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-06 winner=1 turn=8 actions=150 hash=77397b78 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "6d2ac3263bc854ff88b89e32b7e4d45a554ef02e29418d5c1d75cea5cf43bd47",
+    "afterSha256": "6d2ac3263bc854ff88b89e32b7e4d45a554ef02e29418d5c1d75cea5cf43bd47"
+  },
+  {
+    "profile": "c01-06 @0.8",
+    "identical": true,
+    "before": "END c01-06 winner=1 turn=9 actions=163 hash=734beead reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-06 winner=1 turn=9 actions=163 hash=734beead reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "8f1df8a0fce642f752753e99b7b35d6485c4548916f0ddf8b8ca74d0712dd726",
+    "afterSha256": "8f1df8a0fce642f752753e99b7b35d6485c4548916f0ddf8b8ca74d0712dd726"
+  },
+  {
+    "profile": "c01-07 @0.35",
+    "identical": true,
+    "before": "END c01-07 winner=2 turn=5 actions=117 hash=48bf99dc reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-07 winner=2 turn=5 actions=117 hash=48bf99dc reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "ddb7b274a90174663ea0dc1a902fd3cc3c7e2b3882ac08dba7d4dea37376e661",
+    "afterSha256": "ddb7b274a90174663ea0dc1a902fd3cc3c7e2b3882ac08dba7d4dea37376e661"
+  },
+  {
+    "profile": "c01-07 @0.58",
+    "identical": true,
+    "before": "END c01-07 winner=2 turn=5 actions=117 hash=1c2d85d9 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-07 winner=2 turn=5 actions=117 hash=1c2d85d9 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "201679115d1452bc09156ab116711b16d78f2ae618344329796da75098d68eca",
+    "afterSha256": "201679115d1452bc09156ab116711b16d78f2ae618344329796da75098d68eca"
+  },
+  {
+    "profile": "c01-07 @0.8",
+    "identical": true,
+    "before": "END c01-07 winner=2 turn=5 actions=115 hash=2032c3b8 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-07 winner=2 turn=5 actions=115 hash=2032c3b8 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "2b59c1296948b144cfcbeef6a10e01c389eeacc233b0571cad50eb4336326dc4",
+    "afterSha256": "2b59c1296948b144cfcbeef6a10e01c389eeacc233b0571cad50eb4336326dc4"
+  },
+  {
+    "profile": "c01-08 @0.35",
+    "identical": true,
+    "before": "END c01-08 winner=1 turn=11 actions=190 hash=d0012139 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-08 winner=1 turn=11 actions=190 hash=d0012139 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "217d23d60ca6b73618fe0e2395c8999bcbe47b09070773485028d38eb251e1d7",
+    "afterSha256": "217d23d60ca6b73618fe0e2395c8999bcbe47b09070773485028d38eb251e1d7"
+  },
+  {
+    "profile": "c01-08 @0.58",
+    "identical": true,
+    "before": "END c01-08 winner=1 turn=10 actions=174 hash=d590601b reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-08 winner=1 turn=10 actions=174 hash=d590601b reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "f8fafe63ede96b5cc2997a6c9bd8568ac592e6d8cfe0f603bea137e19e625167",
+    "afterSha256": "f8fafe63ede96b5cc2997a6c9bd8568ac592e6d8cfe0f603bea137e19e625167"
+  },
+  {
+    "profile": "c01-08 @0.8",
+    "identical": true,
+    "before": "END c01-08 winner=2 turn=4 actions=90 hash=3682ed96 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-08 winner=2 turn=4 actions=90 hash=3682ed96 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "ffdb4312e04239453a14a369936b1a06a6481dc6a206abae6e360a3ed20de4af",
+    "afterSha256": "ffdb4312e04239453a14a369936b1a06a6481dc6a206abae6e360a3ed20de4af"
+  },
+  {
+    "profile": "c01-09 @0.35",
+    "identical": true,
+    "before": "END c01-09 winner=1 turn=2 actions=60 hash=9e21b32c reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u4e0d\u7528\u63a7\u5236\u8a93\u6587\u91ca\u653e\u4f0a\u8299\u62c9",
+    "after": "END c01-09 winner=1 turn=2 actions=60 hash=9e21b32c reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u4e0d\u7528\u63a7\u5236\u8a93\u6587\u91ca\u653e\u4f0a\u8299\u62c9",
+    "beforeSha256": "76ec3ae5983b5cde7ae4fea07eab75db10edf76b33e99d8641f9ca180774e2a9",
+    "afterSha256": "76ec3ae5983b5cde7ae4fea07eab75db10edf76b33e99d8641f9ca180774e2a9"
+  },
+  {
+    "profile": "c01-09 @0.58",
+    "identical": true,
+    "before": "END c01-09 winner=1 turn=6 actions=143 hash=4746efdf reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u4e0d\u7528\u63a7\u5236\u8a93\u6587\u91ca\u653e\u4f0a\u8299\u62c9",
+    "after": "END c01-09 winner=1 turn=6 actions=143 hash=4746efdf reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u4e0d\u7528\u63a7\u5236\u8a93\u6587\u91ca\u653e\u4f0a\u8299\u62c9",
+    "beforeSha256": "af293712740affcb042a835cf3e7a3ae188ebbb881cb82de6727121273ad84a8",
+    "afterSha256": "af293712740affcb042a835cf3e7a3ae188ebbb881cb82de6727121273ad84a8"
+  },
+  {
+    "profile": "c01-09 @0.8",
+    "identical": true,
+    "before": "END c01-09 winner=2 turn=6 actions=139 hash=03b1f395 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-09 winner=2 turn=6 actions=139 hash=03b1f395 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "5ef9985455d44429ff3b83f372eb16721259227c904cba904e2a3354de7f6a1e",
+    "afterSha256": "5ef9985455d44429ff3b83f372eb16721259227c904cba904e2a3354de7f6a1e"
+  },
+  {
+    "profile": "c01-10 @0.35",
+    "identical": true,
+    "before": "END c01-10 winner=2 turn=9 actions=186 hash=cdcd27ae reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-10 winner=2 turn=9 actions=186 hash=cdcd27ae reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "af28bf59f7fb6140f8e169cb68ac3dca68f257d5e1de9c15c55c74f7302af673",
+    "afterSha256": "af28bf59f7fb6140f8e169cb68ac3dca68f257d5e1de9c15c55c74f7302af673"
+  },
+  {
+    "profile": "c01-10 @0.58",
+    "identical": true,
+    "before": "END c01-10 winner=2 turn=9 actions=189 hash=80b7b104 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-10 winner=2 turn=9 actions=189 hash=80b7b104 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "37d7c25fbe36deb14020f348575f34011df94d2768997ea281797971c75e860d",
+    "afterSha256": "37d7c25fbe36deb14020f348575f34011df94d2768997ea281797971c75e860d"
+  },
+  {
+    "profile": "c01-10 @0.8",
+    "identical": true,
+    "before": "END c01-10 winner=2 turn=5 actions=101 hash=93185b4f reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-10 winner=2 turn=5 actions=101 hash=93185b4f reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "7f4c098db3609d0d4339f250b379d7717cd517a958113108bf2f0614771afcfc",
+    "afterSha256": "7f4c098db3609d0d4339f250b379d7717cd517a958113108bf2f0614771afcfc"
+  },
+  {
+    "profile": "c01-11 @0.35",
+    "identical": true,
+    "before": "END c01-11 winner=null turn=17 actions=290 hash=66a374a6 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "after": "END c01-11 winner=null turn=17 actions=290 hash=66a374a6 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "beforeSha256": "982b57ca8ab9866f9205242b28d11bd40293603ce4448705951dd2df65ec648f",
+    "afterSha256": "982b57ca8ab9866f9205242b28d11bd40293603ce4448705951dd2df65ec648f"
+  },
+  {
+    "profile": "c01-11 @0.58",
+    "identical": true,
+    "before": "END c01-11 winner=1 turn=12 actions=201 hash=3701b46f reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-11 winner=1 turn=12 actions=201 hash=3701b46f reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "85708654f99a0c568e432876f1a8be640bc6f9488ab16a5539a1c1ada64c988d",
+    "afterSha256": "85708654f99a0c568e432876f1a8be640bc6f9488ab16a5539a1c1ada64c988d"
+  },
+  {
+    "profile": "c01-11 @0.8",
+    "identical": true,
+    "before": "END c01-11 winner=1 turn=13 actions=215 hash=490c173a reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-11 winner=1 turn=13 actions=215 hash=490c173a reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "9831d82882550a19921c9e2d627e55ca3b3f1dcd34bfef6914b982ef842eedc7",
+    "afterSha256": "9831d82882550a19921c9e2d627e55ca3b3f1dcd34bfef6914b982ef842eedc7"
+  },
+  {
+    "profile": "c01-12 @0.35",
+    "identical": true,
+    "before": "END c01-12 winner=1 turn=6 actions=121 hash=0c23c6d3 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5854\u5e95\u5d29\u584c\u524d\u5173\u95ed\u949f\u5854\u673a\u6784",
+    "after": "END c01-12 winner=1 turn=6 actions=121 hash=0c23c6d3 reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5854\u5e95\u5d29\u584c\u524d\u5173\u95ed\u949f\u5854\u673a\u6784",
+    "beforeSha256": "37b62fcde0ed0808b86ded41c0e2404808dd14d1b45d4c029e67c82cc1e5978f",
+    "afterSha256": "37b62fcde0ed0808b86ded41c0e2404808dd14d1b45d4c029e67c82cc1e5978f"
+  },
+  {
+    "profile": "c01-12 @0.58",
+    "identical": true,
+    "before": "END c01-12 winner=1 turn=6 actions=118 hash=da6f597b reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5854\u5e95\u5d29\u584c\u524d\u5173\u95ed\u949f\u5854\u673a\u6784",
+    "after": "END c01-12 winner=1 turn=6 actions=118 hash=da6f597b reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5854\u5e95\u5d29\u584c\u524d\u5173\u95ed\u949f\u5854\u673a\u6784",
+    "beforeSha256": "0e40fafe2609f92fd62b6a2cf20562c2d5739b11ad6a0745b90872afc918a676",
+    "afterSha256": "0e40fafe2609f92fd62b6a2cf20562c2d5739b11ad6a0745b90872afc918a676"
+  },
+  {
+    "profile": "c01-12 @0.8",
+    "identical": true,
+    "before": "END c01-12 winner=1 turn=9 actions=176 hash=76dd899e reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5854\u5e95\u5d29\u584c\u524d\u5173\u95ed\u949f\u5854\u673a\u6784",
+    "after": "END c01-12 winner=1 turn=9 actions=176 hash=76dd899e reason=\u7070\u65d7\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u5728\u5854\u5e95\u5d29\u584c\u524d\u5173\u95ed\u949f\u5854\u673a\u6784",
+    "beforeSha256": "992d938cd34dbdbd1fcc827cc46dbe005e482a7fc860a5a9a63d9135bebb9a76",
+    "afterSha256": "992d938cd34dbdbd1fcc827cc46dbe005e482a7fc860a5a9a63d9135bebb9a76"
+  },
+  {
+    "profile": "c01-13 @0.35",
+    "identical": true,
+    "before": "END c01-13 winner=1 turn=9 actions=188 hash=26c056ee reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-13 winner=1 turn=9 actions=188 hash=26c056ee reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "45d9fb8628c8fd4ec030d6d65ac6cb86c3ce7aae342ef590eee8b3df31fbb518",
+    "afterSha256": "45d9fb8628c8fd4ec030d6d65ac6cb86c3ce7aae342ef590eee8b3df31fbb518"
+  },
+  {
+    "profile": "c01-13 @0.58",
+    "identical": true,
+    "before": "END c01-13 winner=1 turn=10 actions=198 hash=4e481943 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-13 winner=1 turn=10 actions=198 hash=4e481943 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "3905d35cf4be9187dd8efe771d9193e26f625ebb98e2a7458b0258b1ac8a7def",
+    "afterSha256": "3905d35cf4be9187dd8efe771d9193e26f625ebb98e2a7458b0258b1ac8a7def"
+  },
+  {
+    "profile": "c01-13 @0.8",
+    "identical": true,
+    "before": "END c01-13 winner=1 turn=11 actions=206 hash=a60020e8 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-13 winner=1 turn=11 actions=206 hash=a60020e8 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "c5e1474fef18ff94a56e0f6c7dde8eda31e1a65e6e201e98db0cbddbbebe3e88",
+    "afterSha256": "c5e1474fef18ff94a56e0f6c7dde8eda31e1a65e6e201e98db0cbddbbebe3e88"
+  },
+  {
+    "profile": "c01-14 @0.35",
+    "identical": true,
+    "before": "END c01-14 winner=2 turn=16 actions=314 hash=c51e944a reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-14 winner=2 turn=16 actions=314 hash=c51e944a reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "5bfffb26b6dd2efe596a13af33b9fbddfa82bbdb97af8a892d65e3160d3b705a",
+    "afterSha256": "5bfffb26b6dd2efe596a13af33b9fbddfa82bbdb97af8a892d65e3160d3b705a"
+  },
+  {
+    "profile": "c01-14 @0.58",
+    "identical": true,
+    "before": "END c01-14 winner=1 turn=12 actions=220 hash=c307c47b reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-14 winner=1 turn=12 actions=220 hash=c307c47b reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "ae889d9a7f2edac766985ff506fe6ea2756354232b4b49919d5d1babef622b64",
+    "afterSha256": "ae889d9a7f2edac766985ff506fe6ea2756354232b4b49919d5d1babef622b64"
+  },
+  {
+    "profile": "c01-14 @0.8",
+    "identical": true,
+    "before": "END c01-14 winner=null turn=22 actions=314 hash=815a30a2 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "after": "END c01-14 winner=null turn=22 actions=314 hash=815a30a2 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "beforeSha256": "2c5e323518c0b71715ec6b4d03e476776a03bc6ba6938c5508c7f40af19cc277",
+    "afterSha256": "2c5e323518c0b71715ec6b4d03e476776a03bc6ba6938c5508c7f40af19cc277"
+  },
+  {
+    "profile": "c01-15 @0.35",
+    "identical": true,
+    "before": "END c01-15 winner=2 turn=13 actions=238 hash=723543ee reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-15 winner=2 turn=13 actions=238 hash=723543ee reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "16a57181567dfe4679f896fb7cf3e75989299e2623cdf13bc479ff0ac57c64fe",
+    "afterSha256": "16a57181567dfe4679f896fb7cf3e75989299e2623cdf13bc479ff0ac57c64fe"
+  },
+  {
+    "profile": "c01-15 @0.58",
+    "identical": true,
+    "before": "END c01-15 winner=2 turn=12 actions=236 hash=eaba7f6a reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-15 winner=2 turn=12 actions=236 hash=eaba7f6a reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "e868a3a1febaa31e5b24532179b433145dfca3fe98c2fd853dd5c9b5e4c36f52",
+    "afterSha256": "e868a3a1febaa31e5b24532179b433145dfca3fe98c2fd853dd5c9b5e4c36f52"
+  },
+  {
+    "profile": "c01-15 @0.8",
+    "identical": true,
+    "before": "END c01-15 winner=1 turn=15 actions=253 hash=7e61ae8d reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-15 winner=1 turn=15 actions=253 hash=7e61ae8d reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "6356c0d78c7393ab359e95d4afe02ea6e30ce513fb9dfd457179536ebe182646",
+    "afterSha256": "6356c0d78c7393ab359e95d4afe02ea6e30ce513fb9dfd457179536ebe182646"
+  },
+  {
+    "profile": "c01-16 @0.35",
+    "identical": true,
+    "before": "END c01-16 winner=2 turn=13 actions=305 hash=957014b2 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-16 winner=2 turn=13 actions=305 hash=957014b2 reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "f64ab8ebdbd8a421eb357e445d6394ca097adbebd42ab8aab84fd85181306038",
+    "afterSha256": "f64ab8ebdbd8a421eb357e445d6394ca097adbebd42ab8aab84fd85181306038"
+  },
+  {
+    "profile": "c01-16 @0.58",
+    "identical": true,
+    "before": "END c01-16 winner=2 turn=16 actions=340 hash=3326ff2c reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-16 winner=2 turn=16 actions=340 hash=3326ff2c reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "d03e7a0701e9a0a16f19afb4b48c357cae88faa78a79bf5b1ea5f9b24ba70857",
+    "afterSha256": "d03e7a0701e9a0a16f19afb4b48c357cae88faa78a79bf5b1ea5f9b24ba70857"
+  },
+  {
+    "profile": "c01-16 @0.8",
+    "identical": true,
+    "before": "END c01-16 winner=2 turn=14 actions=297 hash=616938cd reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "after": "END c01-16 winner=2 turn=14 actions=297 hash=616938cd reason=\u654c\u519b\u5df2\u88ab\u5168\u6b7c",
+    "beforeSha256": "43bbc099badf78717d8c67fafc3903cfe0462cf279c6242290c9e767d316fffb",
+    "afterSha256": "43bbc099badf78717d8c67fafc3903cfe0462cf279c6242290c9e767d316fffb"
+  },
+  {
+    "profile": "twin-hills @0.35",
+    "identical": true,
+    "before": "END twin-hills winner=null turn=19 actions=800 hash=b56576c7 reason=",
+    "after": "END twin-hills winner=null turn=19 actions=800 hash=b56576c7 reason=",
+    "beforeSha256": "e7cb55ea7741c468b85896aaf0c715e914f5d99a13d7ec75256dba716812d85d",
+    "afterSha256": "e7cb55ea7741c468b85896aaf0c715e914f5d99a13d7ec75256dba716812d85d"
+  },
+  {
+    "profile": "twin-hills @0.58",
+    "identical": true,
+    "before": "END twin-hills winner=null turn=18 actions=800 hash=d579f928 reason=",
+    "after": "END twin-hills winner=null turn=18 actions=800 hash=d579f928 reason=",
+    "beforeSha256": "4fe7a8bdcc791e30cafed0af90fc0e4b171308e67238e6933449f81eb50b6555",
+    "afterSha256": "4fe7a8bdcc791e30cafed0af90fc0e4b171308e67238e6933449f81eb50b6555"
+  },
+  {
+    "profile": "twin-hills @0.8",
+    "identical": true,
+    "before": "END twin-hills winner=null turn=19 actions=800 hash=434de0a5 reason=",
+    "after": "END twin-hills winner=null turn=19 actions=800 hash=434de0a5 reason=",
+    "beforeSha256": "8576a090d0d36765205f78a2da658aed17aa71a21d2b148b0acc9a6971d4bbc5",
+    "afterSha256": "8576a090d0d36765205f78a2da658aed17aa71a21d2b148b0acc9a6971d4bbc5"
+  },
+  {
+    "profile": "three-bridges @0.35",
+    "identical": true,
+    "before": "END three-bridges winner=null turn=18 actions=800 hash=61ee6737 reason=",
+    "after": "END three-bridges winner=null turn=18 actions=800 hash=61ee6737 reason=",
+    "beforeSha256": "3fc74bb5de22e0ba74276449c12d9e6beecfeb51d3773d4ff1fa292203602355",
+    "afterSha256": "3fc74bb5de22e0ba74276449c12d9e6beecfeb51d3773d4ff1fa292203602355"
+  },
+  {
+    "profile": "three-bridges @0.58",
+    "identical": true,
+    "before": "END three-bridges winner=null turn=18 actions=800 hash=22312684 reason=",
+    "after": "END three-bridges winner=null turn=18 actions=800 hash=22312684 reason=",
+    "beforeSha256": "b5bd8addd553350764f549bcff158747f438717afe2dc4b4fc84ec53a4534a60",
+    "afterSha256": "b5bd8addd553350764f549bcff158747f438717afe2dc4b4fc84ec53a4534a60"
+  },
+  {
+    "profile": "three-bridges @0.8",
+    "identical": true,
+    "before": "END three-bridges winner=null turn=19 actions=800 hash=84c2865c reason=",
+    "after": "END three-bridges winner=null turn=19 actions=800 hash=84c2865c reason=",
+    "beforeSha256": "575be7c275ea5dec9c73e2409f3583dfc744e1ef205318f6d0ed0bd2f3fa6197",
+    "afterSha256": "575be7c275ea5dec9c73e2409f3583dfc744e1ef205318f6d0ed0bd2f3fa6197"
+  },
+  {
+    "profile": "siege @0.35",
+    "identical": true,
+    "before": "END siege winner=2 turn=15 actions=447 hash=773d23ff reason=\u7ea2\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u575a\u5b88 14 \u56de\u5408",
+    "after": "END siege winner=2 turn=15 actions=447 hash=773d23ff reason=\u7ea2\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u575a\u5b88 14 \u56de\u5408",
+    "beforeSha256": "c7cde6f3cd52a7f2a7902a7b0a67d0cb2b9ce47c0114db80389daea42d705638",
+    "afterSha256": "c7cde6f3cd52a7f2a7902a7b0a67d0cb2b9ce47c0114db80389daea42d705638"
+  },
+  {
+    "profile": "siege @0.58",
+    "identical": true,
+    "before": "END siege winner=2 turn=15 actions=463 hash=5e344334 reason=\u7ea2\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u575a\u5b88 14 \u56de\u5408",
+    "after": "END siege winner=2 turn=15 actions=463 hash=5e344334 reason=\u7ea2\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u575a\u5b88 14 \u56de\u5408",
+    "beforeSha256": "b328b933f0f4fedfb104679f957b3390781589873cea1786a6bb87dc11514f80",
+    "afterSha256": "b328b933f0f4fedfb104679f957b3390781589873cea1786a6bb87dc11514f80"
+  },
+  {
+    "profile": "siege @0.8",
+    "identical": true,
+    "before": "END siege winner=2 turn=15 actions=479 hash=853248a6 reason=\u7ea2\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u575a\u5b88 14 \u56de\u5408",
+    "after": "END siege winner=2 turn=15 actions=479 hash=853248a6 reason=\u7ea2\u519b \u5b8c\u6210\u76ee\u6807\uff1a\u575a\u5b88 14 \u56de\u5408",
+    "beforeSha256": "77ab9d5bbdfd6516e6c7ef1d6b89ed72119a6a75d0047788b9d2bd766afefc48",
+    "afterSha256": "77ab9d5bbdfd6516e6c7ef1d6b89ed72119a6a75d0047788b9d2bd766afefc48"
+  },
+  {
+    "profile": "cliff-training @0.35",
+    "identical": true,
+    "before": "END cliff-training winner=null turn=17 actions=393 hash=9c6afdc8 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "after": "END cliff-training winner=null turn=17 actions=393 hash=9c6afdc8 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "beforeSha256": "fa3de0f74aa7deae8aab4e22c3a7fe874c3f0599f862d6015f146682bb025136",
+    "afterSha256": "fa3de0f74aa7deae8aab4e22c3a7fe874c3f0599f862d6015f146682bb025136"
+  },
+  {
+    "profile": "cliff-training @0.58",
+    "identical": true,
+    "before": "END cliff-training winner=null turn=17 actions=435 hash=c107b872 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "after": "END cliff-training winner=null turn=17 actions=435 hash=c107b872 reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "beforeSha256": "c5ad94ebc30f77cb3b7928fe91b437c4b8c4f5733cb0e944aa80b54f4564380d",
+    "afterSha256": "c5ad94ebc30f77cb3b7928fe91b437c4b8c4f5733cb0e944aa80b54f4564380d"
+  },
+  {
+    "profile": "cliff-training @0.8",
+    "identical": true,
+    "before": "END cliff-training winner=null turn=17 actions=391 hash=6da475af reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "after": "END cliff-training winner=null turn=17 actions=391 hash=6da475af reason=\u56de\u5408\u6570\u8017\u5c3d\uff0c\u5e73\u5c40",
+    "beforeSha256": "126c08fe4a28c704a9d1b21f218d6bc3124f6ebec50f6dc6f5dd6f27e128d17b",
+    "afterSha256": "126c08fe4a28c704a9d1b21f218d6bc3124f6ebec50f6dc6f5dd6f27e128d17b"
+  }
+]

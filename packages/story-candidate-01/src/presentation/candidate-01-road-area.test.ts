@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { createBattleEngine, mapFromLevel, type GameMap } from '@empire/battle-engine';
 import { CampaignBattleBridge, CampaignRuntime } from '@empire/campaign-engine';
 import { createTestCatalog } from '@empire/test-content';
-import { boardPiecesMarkup } from '@empire/game-ui';
+import { boardPiecesMarkup, GROUND_TAGS, taggedGround } from '@empire/game-ui';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '../index';
 import { candidate01Level } from '../levels';
 import { CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN, applyCandidate01BattleContext } from '../campaign';
@@ -15,6 +15,8 @@ import { CANDIDATE_01_ROAD_MATERIAL as material, candidate01IsAreaRoad, candidat
 import { candidate01RoadGraph, candidate01RoadCorridorGeometry } from './candidate-01-road-corridor';
 import { candidate01EnvironmentScene } from './candidate-01-environment';
 import { candidateReviewViewport } from '../../../../tools/art/candidate_review_viewport';
+import { candidate01PlayableShape } from './candidate-01-playable-shape';
+import { candidate01CellUnionMarkup } from './candidate-01-square-mask';
 
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const engine = createBattleEngine({ content });
@@ -129,7 +131,7 @@ describe('continuous authored earth roads', () => {
     expect(graph.cells).toEqual([[8, 8], [8, 9]]);
     const markup = roadPieces(map)[0].markup;
     expect(markup).toContain('M 272 272 L 288 272');
-    expect(markup).not.toContain('<rect x="288" y="256" width="32" height="32"/>');
+    expect(markup).not.toContain('M288 256h32v32h-32Z');
     expect(candidate01IsAreaRoad(candidateMaterial(content, 'bridge'))).toBe(false);
     expect(hash(map)).toBe(before);
   });
@@ -153,28 +155,59 @@ describe('continuous authored earth roads', () => {
     expect(geometry.alpha).toContain('stroke-width="20"');
     expect(geometry.alpha.match(/ Q /g)).toHaveLength(4);
     expect(geometry.alpha).not.toContain('<rect');
-    expect(geometry.limits).toContain('width="32" height="32" rx="0"');
+    expect(geometry.limits).toBe(candidate01CellUnionMarkup(graph.cells));
   });
 
-  it('registers all 85 river-map road and settlement cells without repainting bridge decks or moving scenery', () => {
+  it('clips touching cells as one exact union without enlarging the trail or filling holes', () => {
+    const trail = candidate01EnvironmentScene('c01-02')!.roadCorridor!;
+    const graph = candidate01RoadGraph(3, 3, (x, y) => x !== 1 || y !== 1);
+    const geometry = candidate01RoadCorridorGeometry(graph, trail, () => false);
+    expect(geometry.limits).toBe(candidate01CellUnionMarkup(graph.cells));
+    expect(geometry.allowed.match(/<path /g)).toHaveLength(1);
+    expect(geometry.allowed).toContain('clip-rule="nonzero"');
+    expect(geometry.allowed).not.toContain('<rect');
+    const cells = [...geometry.allowed.matchAll(/M(-?\d+) (-?\d+)h32v32h-32Z/g)]
+      .map(([, x, y]) => [Number(x) / 32, Number(y) / 32]);
+    expect(new Set(cells.map(cell => cell.join(',')))).toEqual(new Set(graph.cells.map(cell => cell.join(','))));
+    expect(cells).not.toContainEqual([1, 1]);
+    expect(candidate01CellUnionMarkup([[1, 2], [2, 2]], 32, 64))
+      .toBe('<path d="M0 0h32v32h-32ZM32 0h32v32h-32Z" fill-rule="nonzero" clip-rule="nonzero"/>');
+  });
+
+  it('registers all 116 river-map road and settlement cells without repainting bridge decks or moving scenery', () => {
     const level = candidate01Level('c01-02');
     const state = engine.createState(level);
     const before = hash(state);
     const map = state.map;
     expect(candidate01EnvironmentScene(level.id)?.mapSize).toEqual([map.width, map.height]);
     const graph = candidate01RoadGraph(map.width, map.height, painted(map));
-    expect(graph.cells).toHaveLength(85);
-    expect(graph.chains.reduce((n, chain) => n + chain.length - 1, 0)).toBe(84);
+    expect(graph.cells).toHaveLength(116);
+    expect(graph.chains.reduce((n, chain) => n + chain.length - 1, 0)).toBe(112);
     const play = layers(map, level.id);
     const edit = layers(map, level.id, true);
     const road = play.ground.filter(piece => piece.markup.includes('data-runtime-raster="area-road"'));
-    expect(road).toHaveLength(1);
+    const trail = candidate01EnvironmentScene(level.id)!.roadCorridor!;
+    const expected = candidate01RoadMaterialPieces(map.width, map.height, painted(map),
+      (x, y) => taggedGround(content.terrains.get(map.tiles[y * map.width + x]), GROUND_TAGS.way, GROUND_TAGS.settlement),
+      (x, y) => map.tiles[y * map.width + x] === 'plain', trail);
+    const shape = candidate01PlayableShape(content, map);
+    if (!shape) throw new Error('Three Bridges must have a terrain-owned irregular boundary');
+    const unwrapped = road.map(piece => {
+      const clip = /^<defs><clipPath id="([^"]+)"><path d="([^"]*)" transform="translate\(([^)]+)\)"\/><\/clipPath><\/defs><g clip-path="url\(#([^"]+)\)">([\s\S]*)<\/g>$/.exec(piece.markup);
+      if (!clip) throw new Error('road piece lacks its self-contained playable clip');
+      expect(clip[2]).toBe(shape.path);
+      expect(clip[3]).toBe(`${-piece.x} ${-piece.y}`);
+      expect(clip[4]).toBe(clip[1]);
+      return { ...piece, markup: clip[5] };
+    });
+    expect(unwrapped).toEqual(expected);
+    expect(road.map(({ x, y }) => [x, y])).toEqual([[0, 0], [1024, 0]]);
     expect(play.underUnits).toEqual(edit.underUnits);
     expect(play.overUnits).toEqual(edit.overUnits);
     for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
       if (map.tiles[y * map.width + x] !== 'bridge') continue;
       expect(graph.occupied.has(`${x},${y}`)).toBe(false);
-      expect(road[0].markup).not.toContain(`<rect x="${x * 32}" y="${y * 32}" width="32" height="32"/>`);
+      for (const piece of road) expect(piece.markup).not.toContain(`M${x * 32} ${y * 32}h32v32h-32Z`);
     }
     expect(hash(state)).toBe(before);
     expect(layers(map, level.id)).toEqual(play);

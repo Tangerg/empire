@@ -14,9 +14,10 @@ const pack = resolve(import.meta.dirname, '../../assets/final-fantasy-v1');
 
 
 /** Exercise every registered local support contract, independent of the remodeled map. */
-function supportedFixture() {
-  const map = mapFromLevel(content, candidate01Level('c01-02'));
-  for (const { terrainSupport: { origin, rows } } of decorations.scenes[0].placements) {
+function supportedFixture(scene = decorations.scenes[0]) {
+  const [width, height] = scene.mapSize;
+  const map = mapFromLevel(content, { ...candidate01Level('c01-02'), width, height, terrain: Array(height).fill('.'.repeat(width)), units: [], owners: [], elevation: Array(width * height).fill(0) });
+  for (const { terrainSupport: { origin, rows } } of scene.placements) {
     rows.forEach((row, y) => row.forEach((terrain, x) => { map.tiles[idx(map, x + origin[0], y + origin[1])] = terrain; }));
   }
   return map;
@@ -65,23 +66,22 @@ describe('authored c01-02 ground-edge decoration', () => {
   });
 
   it('stays below buildings and actors and keeps coordinates through camera changes', () => {
-    const map = mapFromLevel(content, candidate01Level('c01-02'));
+    const map = supportedFixture();
     const viewport = candidateReviewViewport(map);
     const context = { content, map, levelId: 'c01-02', viewport };
     const first = candidate01MapSceneryLayers(context);
     const second = candidate01MapSceneryLayers({ ...context, viewport: { ...viewport, originX: viewport.originX + 137, originY: viewport.originY + 53 } });
     const pieces = candidate01EdgeDecorationPieces('c01-02', map);
-    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[96, 168]]);
+    expect(pieces).toHaveLength(14);
     expect(first.ground.slice(-pieces.length)).toEqual(pieces);
     expect(first.ground).toEqual(second.ground);
     expect([...first.underUnits, ...first.overUnits].some((p) => p.markup.includes('candidate-ground-edge'))).toBe(false);
   });
 
   it('fails closed locally when land, water, bridge or route support changes', () => {
-    const scene = decorations.scenes[0];
-    for (const replacement of ['water', 'bridge', 'road', 'forest'] as const) {
+    for (const scene of decorations.scenes) for (const replacement of ['water', 'bridge', 'road', 'forest'] as const) {
       for (const placement of scene.placements) {
-        const map = supportedFixture();
+        const map = supportedFixture(scene);
         expect(candidate01EdgeDecorationPieces(scene.levelId, map).some(p => p.x === placement.center[0] && p.y === placement.center[1])).toBe(true);
         const [x, y] = placement.terrainSupport.origin;
         map.tiles[idx(map, x, y)] = map.tiles[idx(map, x, y)] === replacement ? 'plain' : replacement;
@@ -91,8 +91,8 @@ describe('authored c01-02 ground-edge decoration', () => {
       }
     }
     const map = mapFromLevel(content, candidate01Level('c01-02'));
-    map.tiles[idx(map, 21, 13)] = 'forest';
-    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(1);
+    map.tiles[idx(map, 0, 0)] = 'forest';
+    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(14);
   });
 
   it('does not claim coverage for another level or reuse a mismatched map extent', () => {
@@ -100,6 +100,7 @@ describe('authored c01-02 ground-edge decoration', () => {
     expect(candidate01EdgeDecorationPieces('c01-01', map)).toEqual([]);
     expect(candidate01EdgeDecorationPieces('editor-map', map)).toEqual([]);
     expect(candidate01EdgeDecorationPieces('c01-02', { ...map, width: map.width - 1 })).toEqual([]);
+    expect(candidate01EdgeDecorationPieces('c01-02', map)).toHaveLength(14);
     map.tiles.fill('forest');
     expect(candidate01EdgeDecorationPieces('c01-02', map)).toEqual([]);
   });

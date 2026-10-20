@@ -55,14 +55,17 @@ describe('candidate-01 first three chapters', () => {
     expect(audits.every((audit) => audit.playerSpan.width >= 4 && audit.playerSpan.height >= 5)).toBe(true);
     expect(audits.every((audit) => audit.enemySpan.height >= 5 && audit.enemySpan.area >= 40)).toBe(true);
     expect(audits.every((audit) => audit.occupiedSectors >= 4)).toBe(true);
-    expect(audits.filter((audit) => audit.closestContact < 2 || audit.closestContact > 12).map((audit) => ({ id: audit.id, closestContact: audit.closestContact }))).toEqual([]);
+    expect(audits.filter((audit) => audit.closestContact < 2 || audit.closestContact > (audit.id === 'c01-02' ? 20 : 12)).map((audit) => ({ id: audit.id, closestContact: audit.closestContact }))).toEqual([]);
     expect(audits.filter((audit) => audit.reinforcements > 0).length).toBeGreaterThanOrEqual(4);
+    // The camera-led C02 valley deliberately has a sparse 36×24 world (20 actors),
+    // unlike the older single-screen maps; river-layout tests enforce local spacing.
+    expect(audits.find(audit => audit.id === 'c01-02')?.cells).toBe(864);
     // Units on 4–7% of the field. A band, because both ends are real failures: a
     // handful of units on four hundred cells reads as a demo, and a wall-to-wall
     // crowd is a battle nobody can move in. `initialDensity` was computed for this
     // review and asserted by nothing, which is how a level could have drifted to
     // either end without a word.
-    expect(audits.filter((audit) => audit.initialDensity < 0.04 || audit.initialDensity > 0.1)
+    expect(audits.filter((audit) => audit.initialDensity < (audit.id === 'c01-02' ? 0.02 : 0.04) || audit.initialDensity > 0.1)
       .map((audit) => `${audit.id} ${audit.initialDensity.toFixed(3)}`)).toEqual([]);
     expect(new Set(audits.map((audit) => `${audit.width}x${audit.height}`)).size).toBeGreaterThanOrEqual(10);
     expect(CANDIDATE_01_LEVELS.every((level) => Number(level.extra?.fronts) >= 2 && typeof level.extra?.battleScale === 'string')).toBe(true);
